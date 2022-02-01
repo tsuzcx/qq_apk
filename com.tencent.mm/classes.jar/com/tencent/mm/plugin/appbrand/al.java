@@ -1,48 +1,70 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.page.ah;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.plugin.appbrand.k.a.a;
+import com.tencent.mm.plugin.appbrand.k.a.a.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/JsApiHighlightTitleForSinglePage;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "()V", "isDoingHighlightEffect", "", "invoke", "", "pageView", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/EmbedHalfScreenWxaManager;", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;)V", "currentEmbedWxaAppId", "", "markShouldReShowEmbedWxa", "Ljava/util/concurrent/atomic/AtomicBoolean;", "closeEmbedWxaBeforeHostDisappear", "", "host", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "resumeEmbedWxaWhenHostResumed", "afterCloseTask", "Ljava/lang/Runnable;", "onInitConfigUpdated", "", "initConfigWC", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "onRuntimeResume", "onStop", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class al
-  extends c<ah>
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "highlightTitleForSinglePage";
-  @Deprecated
-  public static final al.a nys;
-  private boolean nyr;
+  public static final al.a qxB;
+  final w qxC;
+  String qxD;
+  AtomicBoolean qxE;
   
   static
   {
-    AppMethodBeat.i(276100);
-    nys = new al.a((byte)0);
-    AppMethodBeat.o(276100);
+    AppMethodBeat.i(316675);
+    qxB = new al.a((byte)0);
+    AppMethodBeat.o(316675);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements a<x>
+  public al(w paramw)
   {
-    b(al paramal, ah paramah)
+    AppMethodBeat.i(316672);
+    this.qxC = paramw;
+    this.qxD = "";
+    this.qxE = new AtomicBoolean(false);
+    AppMethodBeat.o(316672);
+  }
+  
+  public final boolean a(AppBrandRuntime paramAppBrandRuntime, boolean paramBoolean, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(316678);
+    s.u(paramAppBrandRuntime, "host");
+    s.u(paramRunnable, "afterCloseTask");
+    Object localObject = paramAppBrandRuntime.qsc;
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = ((ap)localObject).getActiveRuntime())
     {
-      super();
+      AppMethodBeat.o(316678);
+      return false;
     }
+    a.a locala = a.ruh;
+    if (a.a.F((w)paramAppBrandRuntime))
+    {
+      ((AppBrandRuntime)localObject).b(null, paramRunnable);
+      Log.i("MicroMsg.EmbedHalfScreenWxaManager", "[onCloseEmbedWxaBeforeHostClose] mark down embedded wxa appid for re-show when host back to the front");
+      if (paramBoolean)
+      {
+        paramAppBrandRuntime = ((AppBrandRuntime)localObject).mAppId;
+        s.s(paramAppBrandRuntime, "activeRuntime.appId");
+        this.qxD = paramAppBrandRuntime;
+      }
+      AppMethodBeat.o(316678);
+      return true;
+    }
+    AppMethodBeat.o(316678);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.al
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,16 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.SparseArray;
 import android.widget.BaseAdapter;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.a.a;
 import com.tencent.mm.storagebase.a.d;
 import com.tencent.mm.storagebase.a.e;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,21 +25,21 @@ import java.util.LinkedList;
 public abstract class g<K, T extends a>
   extends BaseAdapter
 {
-  private int EkZ = 0;
+  private int KdI = 0;
   public String TAG = "MicroMsg.CursorDataAdapter";
-  private boolean VSZ = true;
-  private g<K, T>.c VTa;
-  protected a VTb;
-  public int VTc = 1000;
-  public int VTd = 3000;
-  public boolean VTe = true;
-  int VTf = 0;
-  private boolean VTg;
-  private boolean VTh;
-  private g<K, T>.e VTi;
-  public K VTj = null;
+  private boolean adxh = true;
+  private g<K, T>.c adxi;
+  private HashMap<K, g.b<K, T>> adxj;
+  protected a adxk;
+  public int adxl = 1000;
+  public int adxm = 3000;
+  public boolean adxn = true;
+  int adxo = 0;
+  private boolean adxp;
+  private boolean adxq;
+  private g<K, T>.e adxr;
+  public K adxs = null;
   public Context context;
-  private HashMap<K, g.b<K, T>> events;
   private int pageSize;
   
   public g(Context paramContext)
@@ -53,16 +52,16 @@ public abstract class g<K, T extends a>
   private g(Context paramContext, byte paramByte)
   {
     this.context = paramContext;
-    this.VTg = true;
+    this.adxp = true;
   }
   
   private g(Context paramContext, char paramChar)
   {
     this.context = paramContext;
-    this.VTg = true;
-    this.VTh = false;
-    this.VTc = 800;
-    this.VTd = 2000;
+    this.adxp = true;
+    this.adxq = false;
+    this.adxl = 800;
+    this.adxm = 2000;
   }
   
   public g(Context paramContext, short paramShort)
@@ -72,45 +71,45 @@ public abstract class g<K, T extends a>
   
   private void a(d<K> paramd)
   {
-    Fk(true);
-    if ((this.VTa == null) || (this.VTa.VKd != paramd))
+    KV(true);
+    if ((this.adxi == null) || (this.adxi.adoh != paramd))
     {
-      if ((this.VTa != null) && (!this.VTa.isClosed()))
+      if ((this.adxi != null) && (!this.adxi.isClosed()))
       {
-        this.VTa.close();
-        this.VTa = null;
+        this.adxi.close();
+        this.adxi = null;
       }
-      this.VTa = b(paramd);
-      this.VTa.getCount();
-      hFD();
+      this.adxi = b(paramd);
+      this.adxi.getCount();
+      jhP();
       notifyDataSetChanged();
     }
   }
   
   private void a(g<K, T>.c paramg)
   {
-    Fk(false);
-    this.VTa = paramg;
-    this.VTa.getCount();
-    hFD();
+    KV(false);
+    this.adxi = paramg;
+    this.adxi.getCount();
+    jhP();
   }
   
   private void a(final g<K, T>.c paramg, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1)
     {
-      if ((this.VTi != null) && (this.VTi.hFT())) {
-        this.VTi.hFR();
+      if ((this.adxr != null) && (this.adxr.jie())) {
+        this.adxr.jic();
       }
-      if (this.events != null) {
-        this.events.clear();
+      if (this.adxj != null) {
+        this.adxj.clear();
       }
     }
-    if ((paramBoolean2) && (paramg != null) && (!paramg.VKe))
+    if ((paramBoolean2) && (paramg != null) && (!paramg.adoi))
     {
       a(new d()
       {
-        public final void hFO()
+        public final void goi()
         {
           AppMethodBeat.i(32997);
           g.a(g.this, paramg);
@@ -119,33 +118,33 @@ public abstract class g<K, T extends a>
       });
       return;
     }
-    if ((paramg != null) && (paramg.VKe) && (paramBoolean2))
+    if ((paramg != null) && (paramg.adoi) && (paramBoolean2))
     {
-      h.ZvG.be(new Runnable()
+      h.ahAA.bm(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(277526);
+          AppMethodBeat.i(250070);
           int i = paramg.getCount();
           Log.i(g.this.TAG, "select db count: %d", new Object[] { Integer.valueOf(i) });
           MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(291188);
+              AppMethodBeat.i(249249);
               g.a(g.this, new g.d()
               {
-                public final void hFO()
+                public final void goi()
                 {
-                  AppMethodBeat.i(282585);
-                  g.a(g.this, g.3.this.VTl);
-                  AppMethodBeat.o(282585);
+                  AppMethodBeat.i(249508);
+                  g.a(g.this, g.3.this.adxu);
+                  AppMethodBeat.o(249508);
                 }
               });
-              AppMethodBeat.o(291188);
+              AppMethodBeat.o(249249);
             }
           });
-          AppMethodBeat.o(277526);
+          AppMethodBeat.o(250070);
         }
       });
       return;
@@ -156,84 +155,260 @@ public abstract class g<K, T extends a>
   private void a(d paramd)
   {
     long l = System.currentTimeMillis();
-    if (this.VTb != null) {
-      this.VTb.hFP();
+    if (this.adxk != null) {
+      this.adxk.jia();
     }
     if (paramd != null) {
-      paramd.hFO();
+      paramd.goi();
     }
     notifyDataSetChanged();
-    if (this.VTb != null) {
-      this.VTb.bxN();
+    if (this.adxk != null) {
+      this.adxk.bWC();
     }
-    if (this.VTi != null) {
-      this.VTi.hFU();
+    if (this.adxr != null) {
+      this.adxr.jif();
     }
     Log.i(this.TAG, "newcursor update callback last :%d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
   }
   
-  private void dw(String paramString, boolean paramBoolean)
+  private void aR(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((!hFL()) && ((this.VTe | paramBoolean)))
+    if ((this.adxq) || (paramBoolean1)) {
+      jhV();
+    }
+    for (;;)
+    {
+      this.KdI = 0;
+      return;
+      int i = getChangeType();
+      if (i == 0)
+      {
+        Log.i(this.TAG, "newcursor need not change ");
+        return;
+      }
+      if (i == 2)
+      {
+        Log.i(this.TAG, "newcursor enqueueMessage resetcursor ");
+        this.adxj.clear();
+      }
+      if (this.adxr == null) {
+        this.adxr = new e();
+      }
+      this.adxr.cC(i, paramBoolean2);
+    }
+  }
+  
+  private void c(K paramK, int paramInt, boolean paramBoolean)
+  {
+    if (this.adxi == null) {}
+    label89:
+    do
+    {
+      return;
+      if (this.adxj == null) {
+        this.adxj = new HashMap();
+      }
+      boolean bool = this.adxj.containsKey(this.adxs);
+      int i;
+      int j;
+      if ((paramInt == 5) || (!this.adxp) || (paramInt == 1)) {
+        if (paramInt != 5)
+        {
+          jhU();
+          Log.i(this.TAG, "newcursor syncHandle is true ,changeType is %d  ", new Object[] { Integer.valueOf(paramInt) });
+          i = 1;
+          this.KdI = getChangeType();
+          paramK = this.TAG;
+          j = this.KdI;
+          if (this.adxo != 1) {
+            break label719;
+          }
+        }
+      }
+      for (bool = true;; bool = false)
+      {
+        Log.i(paramK, "newcursor refreshStatus: %d ,hasLoadedAllDataStatus %b changeType :%d ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+        if (i == 0) {
+          break label725;
+        }
+        Log.i(this.TAG, "newcursor event is refresh sync ");
+        aR(true, paramBoolean);
+        return;
+        if (bool) {
+          break;
+        }
+        this.adxj.put(paramK, new g.b(paramK, paramInt));
+        break;
+        if (bool)
+        {
+          Log.i(this.TAG, "newcursor need reset ,return ");
+          return;
+        }
+        if (this.adxo == 1)
+        {
+          if ((this.adxi.gF(paramK)) || (paramInt == 2))
+          {
+            HashMap localHashMap = this.adxj;
+            g.b localb1 = new g.b(paramK, paramInt);
+            if ((localb1.adxx == 2) && (this.adxi.gF(localb1.object))) {
+              localb1.adxx = 3;
+            }
+            g.b localb2 = (g.b)localHashMap.get(paramK);
+            if (localb2 != null)
+            {
+              i = 1;
+              if (i == 0) {
+                break label681;
+              }
+              localHashMap.remove(localb2);
+              switch (localb1.adxx)
+              {
+              case 3: 
+              case 4: 
+              default: 
+                switch (localb2.adxx)
+                {
+                case 3: 
+                case 4: 
+                default: 
+                  localb1.adxx = 3;
+                  localHashMap.put(paramK, localb1);
+                }
+                break;
+              }
+            }
+            for (;;)
+            {
+              paramK = this.adxi;
+              i = localHashMap.size();
+              if (!paramK.adoh.azm(i))
+              {
+                Log.i(this.TAG, "newcursor events size exceed limit :size is :  %d", new Object[] { Integer.valueOf(localHashMap.size()) });
+                localHashMap.clear();
+                localHashMap.put(this.adxs, null);
+              }
+              Log.i(this.TAG, "newcursor add event events size %d", new Object[] { Integer.valueOf(this.adxj.size()) });
+              i = 0;
+              break;
+              i = 0;
+              break label307;
+              switch (localb2.adxx)
+              {
+              case 2: 
+              case 3: 
+              case 4: 
+              default: 
+                localb1.adxx = 5;
+                break;
+              case 5: 
+                Log.i(this.TAG, "newcursor processEvent last delete, now delete, impossible");
+                localb1.adxx = 5;
+                break;
+                switch (localb2.adxx)
+                {
+                case 3: 
+                case 4: 
+                default: 
+                  Log.i(this.TAG, "newcursor processEvent last update, now insert, impossible");
+                  localb1.adxx = 2;
+                  break;
+                case 5: 
+                  localb1.adxx = 3;
+                  break;
+                case 2: 
+                  Log.i(this.TAG, "newcursor processEvent last insert, now insert, impossible");
+                  localb1.adxx = 2;
+                  break;
+                  Log.i(this.TAG, "newcursor processEvent last delete, now update, impossible");
+                  break label392;
+                  localb1.adxx = 2;
+                  break;
+                  localHashMap.put(paramK, localb1);
+                }
+                break;
+              }
+            }
+          }
+          Log.i(this.TAG, "newcursor event pass ");
+          i = 0;
+          break label89;
+        }
+        jhU();
+        i = 0;
+        break label89;
+      }
+    } while ((!this.adxh) || (!this.adxn));
+    label307:
+    label719:
+    label725:
+    aR(false, paramBoolean);
+    label392:
+    label681:
+    return;
+  }
+  
+  private void ee(String paramString, boolean paramBoolean)
+  {
+    if ((!jhX()) && ((this.adxn | paramBoolean)))
     {
       if (!paramBoolean) {
-        Log.i(this.TAG, "newcursor cache needRefresh : needRefreshInfront :%b from : %s %s", new Object[] { Boolean.valueOf(this.VTe), paramString, Util.getStack() });
+        Log.i(this.TAG, "newcursor cache needRefresh : needRefreshInfront :%b from : %s", new Object[] { Boolean.valueOf(this.adxn), paramString });
       }
-      os(false);
+      aR(false, true);
     }
   }
   
   private int getChangeType()
   {
-    if ((this.events == null) || (this.events.size() == 0)) {
+    if ((this.adxj == null) || (this.adxj.size() == 0)) {
       return 0;
     }
-    if (this.events.containsKey(this.VTj)) {
+    if (this.adxj.containsKey(this.adxs)) {
       return 2;
     }
     return 1;
   }
   
-  private void hFD()
+  private void jhP()
   {
-    if (this.VTg) {
-      if (!this.VTa.hBP()) {
+    if (this.adxp) {
+      if (!this.adxi.jdV()) {
         break label92;
       }
     }
     label92:
     for (int i = 1;; i = 2)
     {
-      if ((i != this.VTf) && (this.VTf != 0))
+      if ((i != this.adxo) && (this.adxo != 0))
       {
-        if ((this.VTi != null) && (this.VTi.hFT())) {
-          a(b(hFF()), true, false);
+        if ((this.adxr != null) && (this.adxr.jie())) {
+          a(b(jhR()), true, false);
         }
         Log.i(this.TAG, "newcursor change update stats  %d ", new Object[] { Integer.valueOf(i) });
       }
-      this.VTf = i;
+      this.adxo = i;
       return;
     }
   }
   
-  private void hFI()
+  private void jhU()
   {
-    this.events.clear();
-    this.events.put(this.VTj, null);
+    this.adxj.clear();
+    this.adxj.put(this.adxs, null);
   }
   
-  private void hFJ()
+  private void jhV()
   {
-    if (!hFK()) {
+    if (!jhW()) {
       return;
     }
     int i = getChangeType();
-    if (this.VTi != null)
+    if (this.adxr != null)
     {
-      int j = this.VTi.hFV();
+      int j = this.adxr.jig();
       Log.i(this.TAG, "newcursor mWorkerHandler.isHandingMsg,type is %d ", new Object[] { Integer.valueOf(j) });
       if (j != 0) {
-        this.VTi.hFR();
+        this.adxr.jic();
       }
       if (i != 2) {
         i = j;
@@ -242,37 +417,37 @@ public abstract class g<K, T extends a>
     for (;;)
     {
       Log.i(this.TAG, "newcursor ensureNewState  refreshstatus is %d ", new Object[] { Integer.valueOf(i) });
-      this.EkZ = 0;
+      this.KdI = 0;
       if (i == 2)
       {
-        a(b(hFF()), true, true);
+        a(b(jhR()), true, true);
         return;
       }
-      hFN();
+      jhZ();
       return;
     }
   }
   
-  private boolean hFK()
+  private boolean jhW()
   {
-    return ((this.VTi != null) && (this.VTi.hFT())) || (getChangeType() != 0);
+    return ((this.adxr != null) && (this.adxr.jie())) || (getChangeType() != 0);
   }
   
-  private boolean hFL()
+  private boolean jhX()
   {
-    return this.EkZ == 0;
+    return this.KdI == 0;
   }
   
-  private void hFN()
+  private void jhZ()
   {
-    if ((this.VTa != null) && (!this.VTa.isClosed()) && (this.events.size() == 0))
+    if ((this.adxi != null) && (!this.adxi.isClosed()) && (this.adxj.size() == 0))
     {
       Log.i(this.TAG, "events size is 0  ");
       return;
     }
     a(new d()
     {
-      public final void hFO()
+      public final void goi()
       {
         AppMethodBeat.i(32996);
         Object localObject1;
@@ -293,10 +468,10 @@ public abstract class g<K, T extends a>
           AppMethodBeat.o(32996);
           return;
           long l;
-          if (!g.b(g.this).containsKey(g.this.VTj))
+          if (!g.b(g.this).containsKey(g.this.adxs))
           {
             l = System.currentTimeMillis();
-            localObject2 = g.this.hFG();
+            localObject2 = g.this.jhS();
             localObject1 = g.this.a(new HashSet(g.b(g.this).values()), (SparseArray[])localObject2);
             int j = localObject2.length;
             if (j > 1)
@@ -315,10 +490,10 @@ public abstract class g<K, T extends a>
               g.b localb = (g.b)((Iterator)localObject2).next();
               if (localb != null)
               {
-                if (localb.VTp != null) {
+                if (localb.adxy != null) {
                   Log.i(g.this.TAG, "newcursor notify cache update : key : %s ", new Object[] { localb.object });
                 }
-                g.c(g.this).c(localb.object, (a)localb.VTp);
+                g.c(g.this).c(localb.object, (a)localb.adxy);
               }
               else
               {
@@ -326,12 +501,12 @@ public abstract class g<K, T extends a>
               }
             }
             g.this.a((SparseArray[])localObject1);
-            Log.i(g.this.TAG, "newcursor after resort new pos size:%d, event:%s", new Object[] { Integer.valueOf(g.c(g.this).hBN()[0].size()), Integer.valueOf(g.b(g.this).size()) });
+            Log.i(g.this.TAG, "newcursor after resort new pos size:%d, event:%s", new Object[] { Integer.valueOf(g.c(g.this).jdT()[0].size()), Integer.valueOf(g.b(g.this).size()) });
           }
           else
           {
             l = System.currentTimeMillis();
-            g.a(g.this, g.this.b(g.this.hFF()), true, false);
+            g.a(g.this, g.this.b(g.this.jhR()), true, false);
             Log.i(g.this.TAG, "cache unuseful,reset cursor,last : %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
           }
         }
@@ -339,62 +514,35 @@ public abstract class g<K, T extends a>
     });
   }
   
-  private void os(boolean paramBoolean)
+  public final void KV(boolean paramBoolean)
   {
-    if ((this.VTh) || (paramBoolean)) {
-      hFJ();
-    }
-    for (;;)
+    if (this.adxi != null)
     {
-      this.EkZ = 0;
-      return;
-      int i = getChangeType();
-      if (i == 0)
-      {
-        Log.i(this.TAG, "newcursor need not change ");
-        return;
-      }
-      if (i == 2)
-      {
-        Log.i(this.TAG, "newcursor enqueueMessage resetcursor ");
-        this.events.clear();
-      }
-      if (this.VTi == null) {
-        this.VTi = new e();
-      }
-      this.VTi.atG(i);
+      this.adxi.close();
+      this.adxi = null;
     }
-  }
-  
-  public final void Fk(boolean paramBoolean)
-  {
-    if (this.VTa != null)
+    if ((paramBoolean) && (this.adxr != null))
     {
-      this.VTa.close();
-      this.VTa = null;
-    }
-    if ((paramBoolean) && (this.VTi != null))
-    {
-      this.VTi.quit();
-      this.VTi = null;
-      if (this.events != null)
+      this.adxr.quit();
+      this.adxr = null;
+      if (this.adxj != null)
       {
-        this.events.clear();
+        this.adxj.clear();
         Log.i(this.TAG, "newcursor closeCursor,clear events");
       }
     }
-    this.EkZ = 0;
-    this.VTf = 0;
+    this.KdI = 0;
+    this.adxo = 0;
   }
   
   public final void a(a parama)
   {
-    this.VTb = parama;
+    this.adxk = parama;
   }
   
   public final void a(SparseArray<K>[] paramArrayOfSparseArray)
   {
-    SparseArray[] arrayOfSparseArray = this.VTa.hBN();
+    SparseArray[] arrayOfSparseArray = this.adxi.jdT();
     int i = 0;
     while (i < arrayOfSparseArray.length)
     {
@@ -411,17 +559,17 @@ public abstract class g<K, T extends a>
   
   public abstract SparseArray<K>[] a(HashSet<g.b<K, T>> paramHashSet, SparseArray<K>[] paramArrayOfSparseArray);
   
-  public final T asW(int paramInt)
+  public final T azn(int paramInt)
   {
-    if (this.VTa == null) {
-      a(hFF());
+    if (this.adxi == null) {
+      a(jhR());
     }
-    dw("getItem", false);
-    this.VTa.VKd.moveToPosition(paramInt);
-    a locala = this.VTa.VKd.asW(paramInt);
+    ee("getItem", false);
+    this.adxi.adoh.moveToPosition(paramInt);
+    a locala = this.adxi.adoh.azn(paramInt);
     if (locala != null)
     {
-      locala.hvB();
+      locala.iXb();
       return locala;
     }
     Log.e(this.TAG, "newcursor getItem error %d", new Object[] { Integer.valueOf(paramInt) });
@@ -433,31 +581,36 @@ public abstract class g<K, T extends a>
     return new c(paramd, (byte)0);
   }
   
-  public abstract ArrayList<T> bD(ArrayList<K> paramArrayList);
+  public abstract ArrayList<T> ce(ArrayList<K> paramArrayList);
   
-  public final T ei(K paramK)
+  public final void d(K paramK, int paramInt, boolean paramBoolean)
   {
-    if (this.VTa == null) {
+    c(paramK, paramInt, paramBoolean);
+  }
+  
+  public final T gG(K paramK)
+  {
+    if (this.adxi == null) {
       return null;
     }
-    return this.VTa.VKd.ei(paramK);
+    return this.adxi.adoh.gG(paramK);
   }
   
   public int getCount()
   {
-    if (this.VTa == null)
+    if (this.adxi == null)
     {
       long l = System.currentTimeMillis();
-      a(hFF());
+      a(jhR());
       Log.i(this.TAG, "newcursor createCursor last : %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     }
-    dw("getcount", false);
-    if (this.VTa == null)
+    ee("getcount", false);
+    if (this.adxi == null)
     {
       Log.w(this.TAG, "[getCount] is zero!");
       return 0;
     }
-    return this.VTa.getCount();
+    return this.adxi.getCount();
   }
   
   public long getItemId(int paramInt)
@@ -465,44 +618,47 @@ public abstract class g<K, T extends a>
     return 0L;
   }
   
-  protected boolean hBP()
+  protected boolean jdV()
   {
-    if (this.VTa == null) {
+    if (this.adxi == null) {
       return false;
     }
-    return this.VTa.hBP();
+    return this.adxi.jdV();
   }
   
-  public abstract T hCa();
+  public abstract T jeg();
   
-  public final void hFC()
+  public final void jhO()
   {
-    this.VTb = null;
+    this.adxk = null;
   }
   
-  public final int hFE()
+  public final int jhQ()
   {
-    if (this.VTa == null) {
+    if (this.adxi == null) {
       return 0;
     }
-    d locald = this.VTa.VKd;
+    d locald = this.adxi.adoh;
     if (locald == null) {
       return 0;
     }
     if ((locald instanceof e)) {
-      return ((e)locald).VJT[0].getCount();
+      return ((e)locald).adnX[0].getCount();
     }
     throw new RuntimeException("the cursor is not instanceof MergeHeapCursor ,please call getCount() instead ");
   }
   
-  public abstract d<K> hFF();
+  public abstract d<K> jhR();
   
-  public final SparseArray<K>[] hFG()
+  public final SparseArray<K>[] jhS()
   {
-    if (this.VTa == null) {
+    if (this.adxi == null) {}
+    SparseArray[] arrayOfSparseArray1;
+    do
+    {
       return null;
-    }
-    SparseArray[] arrayOfSparseArray1 = this.VTa.hBN();
+      arrayOfSparseArray1 = this.adxi.jdT();
+    } while (arrayOfSparseArray1 == null);
     SparseArray[] arrayOfSparseArray2 = new SparseArray[arrayOfSparseArray1.length];
     int i = 0;
     while (i < arrayOfSparseArray2.length)
@@ -519,187 +675,44 @@ public abstract class g<K, T extends a>
     return arrayOfSparseArray2;
   }
   
-  public final HashMap<Object, T> hFH()
+  public final HashMap<Object, T> jhT()
   {
-    if (this.VTa == null) {
+    if (this.adxi == null) {
       return null;
     }
-    return this.VTa.VKd.hBO();
+    return this.adxi.adoh.jdU();
   }
   
-  public final void hFM()
+  public final void jhY()
   {
     Log.i(this.TAG, "newcursor resume syncNow ");
-    this.VSZ = true;
-    os(true);
+    this.adxh = true;
+    aR(true, true);
   }
   
   public void pause()
   {
-    this.VSZ = false;
+    this.adxh = false;
     Log.i(this.TAG, "new cursor pasue");
   }
   
   public final void resume()
   {
     Log.i(this.TAG, "newcursor resume ");
-    this.VSZ = true;
-    dw("resume", true);
+    this.adxh = true;
+    ee("resume", true);
   }
   
-  public void u(K paramK, int paramInt)
+  public void v(K paramK, int paramInt)
   {
-    boolean bool;
-    if (this.VTa != null)
-    {
-      if (this.events == null) {
-        this.events = new HashMap();
-      }
-      bool = this.events.containsKey(this.VTj);
-      if ((paramInt != 5) && (this.VTg) && (paramInt != 1)) {
-        break label197;
-      }
-      if (paramInt == 5) {
-        break label171;
-      }
-      hFI();
-    }
-    label87:
-    do
-    {
-      break label170;
-      Log.i(this.TAG, "newcursor syncHandle is true ,changeType is %d  ", new Object[] { Integer.valueOf(paramInt) });
-      int i = 1;
-      this.EkZ = getChangeType();
-      paramK = this.TAG;
-      int j = this.EkZ;
-      if (this.VTf == 1) {}
-      for (bool = true;; bool = false)
-      {
-        Log.i(paramK, "newcursor refreshStatus: %d ,hasLoadedAllDataStatus %b changeType :%d ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
-        if (i == 0) {
-          break label711;
-        }
-        Log.i(this.TAG, "newcursor event is refresh sync ");
-        os(true);
-        return;
-        if (bool) {
-          break;
-        }
-        this.events.put(paramK, new g.b(paramK, paramInt));
-        break;
-        if (bool)
-        {
-          Log.i(this.TAG, "newcursor need reset ,return ");
-          return;
-        }
-        if (this.VTf == 1)
-        {
-          if ((this.VTa.eh(paramK)) || (paramInt == 2))
-          {
-            HashMap localHashMap = this.events;
-            g.b localb1 = new g.b(paramK, paramInt);
-            if ((localb1.VTo == 2) && (this.VTa.eh(localb1.object))) {
-              localb1.VTo = 3;
-            }
-            g.b localb2 = (g.b)localHashMap.get(paramK);
-            if (localb2 != null)
-            {
-              i = 1;
-              if (i == 0) {
-                break label669;
-              }
-              localHashMap.remove(localb2);
-              switch (localb1.VTo)
-              {
-              case 3: 
-              case 4: 
-              default: 
-                switch (localb2.VTo)
-                {
-                case 3: 
-                case 4: 
-                default: 
-                  localb1.VTo = 3;
-                  localHashMap.put(paramK, localb1);
-                }
-                break;
-              }
-            }
-            for (;;)
-            {
-              paramK = this.VTa;
-              i = localHashMap.size();
-              if (!paramK.VKd.asV(i))
-              {
-                Log.i(this.TAG, "newcursor events size exceed limit :size is :  %d", new Object[] { Integer.valueOf(localHashMap.size()) });
-                localHashMap.clear();
-                localHashMap.put(this.VTj, null);
-              }
-              Log.i(this.TAG, "newcursor add event events size %d", new Object[] { Integer.valueOf(this.events.size()) });
-              i = 0;
-              break;
-              i = 0;
-              break label302;
-              switch (localb2.VTo)
-              {
-              case 2: 
-              case 3: 
-              case 4: 
-              default: 
-                localb1.VTo = 5;
-                break;
-              case 5: 
-                Log.i(this.TAG, "newcursor processEvent last delete, now delete, impossible");
-                localb1.VTo = 5;
-                break;
-                switch (localb2.VTo)
-                {
-                case 3: 
-                case 4: 
-                default: 
-                  Log.i(this.TAG, "newcursor processEvent last update, now insert, impossible");
-                  localb1.VTo = 2;
-                  break;
-                case 5: 
-                  localb1.VTo = 3;
-                  break;
-                case 2: 
-                  Log.i(this.TAG, "newcursor processEvent last insert, now insert, impossible");
-                  localb1.VTo = 2;
-                  break;
-                  Log.i(this.TAG, "newcursor processEvent last delete, now update, impossible");
-                  break label384;
-                  localb1.VTo = 2;
-                  break;
-                  localHashMap.put(paramK, localb1);
-                }
-                break;
-              }
-            }
-          }
-          Log.i(this.TAG, "newcursor event pass ");
-          i = 0;
-          break label87;
-        }
-        hFI();
-        i = 0;
-        break label87;
-      }
-    } while ((!this.VSZ) || (!this.VTe));
-    label170:
-    label171:
-    label197:
-    label711:
-    os(false);
-    label302:
+    c(paramK, paramInt, true);
   }
   
   public static abstract interface a
   {
-    public abstract void bxN();
+    public abstract void bWC();
     
-    public abstract void hFP();
+    public abstract void jia();
   }
   
   public final class c
@@ -715,22 +728,22 @@ public abstract class g<K, T extends a>
     public c(byte paramByte)
     {
       super(g.a(g.this), false);
-      AppMethodBeat.i(281292);
-      AppMethodBeat.o(281292);
+      AppMethodBeat.i(249733);
+      AppMethodBeat.o(249733);
     }
     
-    public final ArrayList<T> bD(ArrayList paramArrayList)
+    public final ArrayList<T> ce(ArrayList paramArrayList)
     {
       AppMethodBeat.i(33002);
-      paramArrayList = g.this.bD(paramArrayList);
+      paramArrayList = g.this.ce(paramArrayList);
       AppMethodBeat.o(33002);
       return paramArrayList;
     }
     
-    public final T hCc()
+    public final T jei()
     {
       AppMethodBeat.i(33001);
-      a locala = g.this.hCa();
+      a locala = g.this.jeg();
       AppMethodBeat.o(33001);
       return locala;
     }
@@ -738,68 +751,68 @@ public abstract class g<K, T extends a>
   
   static abstract interface d
   {
-    public abstract void hFO();
+    public abstract void goi();
   }
   
   final class e
   {
-    g<K, T>.e.b VTq;
-    private g<K, T>.e.c VTr;
-    LinkedList<Integer> VTs;
-    int VTt;
+    private g<K, T>.e.c adxA;
+    LinkedList<Integer> adxB;
+    int adxC;
+    g<K, T>.e.b adxz;
     
     public e()
     {
       AppMethodBeat.i(33006);
-      hFQ();
+      jib();
       AppMethodBeat.o(33006);
     }
     
-    private void hFQ()
-    {
-      AppMethodBeat.i(33007);
-      this.VTq = new b(Looper.getMainLooper());
-      this.VTr = new c(bh.aHJ().getLooper());
-      AppMethodBeat.o(33007);
-    }
-    
-    private void hfG()
+    private void iGB()
     {
       AppMethodBeat.i(33008);
-      c.a(this.VTr);
-      b localb = this.VTq;
-      localb.VTw = true;
+      c.a(this.adxA);
+      b localb = this.adxz;
+      localb.adxF = true;
       localb.removeMessages(1);
       localb.removeMessages(2);
-      this.VTs.clear();
-      this.VTt = 0;
+      this.adxB.clear();
+      this.adxC = 0;
       AppMethodBeat.o(33008);
     }
     
-    final void atG(int paramInt)
+    private void jib()
+    {
+      AppMethodBeat.i(33007);
+      this.adxz = new b(Looper.getMainLooper());
+      this.adxA = new c(bh.baH().getLooper());
+      AppMethodBeat.o(33007);
+    }
+    
+    final void cC(int paramInt, boolean paramBoolean)
     {
       try
       {
-        AppMethodBeat.i(33013);
-        if (!this.VTs.contains(Integer.valueOf(paramInt))) {
-          this.VTs.add(Integer.valueOf(paramInt));
+        AppMethodBeat.i(249750);
+        if (!this.adxB.contains(Integer.valueOf(paramInt))) {
+          this.adxB.add(Integer.valueOf(paramInt));
         }
-        this.VTt = hFS();
-        c.c(this.VTr);
-        AppMethodBeat.o(33013);
+        this.adxC = jid();
+        c.a(this.adxA, paramBoolean);
+        AppMethodBeat.o(249750);
         return;
       }
       finally {}
     }
     
-    public final void hFR()
+    public final void jic()
     {
       try
       {
         AppMethodBeat.i(33009);
         Log.i(g.this.TAG, "newcursor resetQueue ");
-        hfG();
-        hFQ();
+        iGB();
+        jib();
         AppMethodBeat.o(33009);
         return;
       }
@@ -810,31 +823,31 @@ public abstract class g<K, T extends a>
       }
     }
     
-    final int hFS()
+    final int jid()
     {
       int i = 0;
       AppMethodBeat.i(33011);
-      if (this.VTs.size() > 1) {
+      if (this.adxB.size() > 1) {
         i = 2;
       }
       for (;;)
       {
         AppMethodBeat.o(33011);
         return i;
-        if (this.VTs.size() == 1) {
-          i = ((Integer)this.VTs.get(0)).intValue();
+        if (this.adxB.size() == 1) {
+          i = ((Integer)this.adxB.get(0)).intValue();
         }
       }
     }
     
     /* Error */
-    public final boolean hFT()
+    public final boolean jie()
     {
       // Byte code:
       //   0: aload_0
       //   1: monitorenter
       //   2: aload_0
-      //   3: getfield 174	com/tencent/mm/ui/g$e:VTt	I
+      //   3: getfield 152	com/tencent/mm/ui/g$e:adxC	I
       //   6: istore_1
       //   7: iload_1
       //   8: ifeq +9 -> 17
@@ -863,12 +876,12 @@ public abstract class g<K, T extends a>
       //   2	7	22	finally
     }
     
-    final void hFU()
+    final void jif()
     {
       try
       {
         AppMethodBeat.i(33012);
-        c.b(this.VTr);
+        c.b(this.adxA);
         AppMethodBeat.o(33012);
         return;
       }
@@ -879,11 +892,11 @@ public abstract class g<K, T extends a>
       }
     }
     
-    final int hFV()
+    final int jig()
     {
       try
       {
-        int i = this.VTt;
+        int i = this.adxC;
         return i;
       }
       finally
@@ -899,7 +912,7 @@ public abstract class g<K, T extends a>
       {
         AppMethodBeat.i(33010);
         Log.i(g.this.TAG, "newcursor quit ");
-        hfG();
+        iGB();
         AppMethodBeat.o(33010);
         return;
       }
@@ -912,20 +925,20 @@ public abstract class g<K, T extends a>
     
     final class a
     {
-      int VTu;
+      int adxD;
       
       public a(int paramInt)
       {
-        this.VTu = paramInt;
+        this.adxD = paramInt;
       }
     }
     
     final class b
       extends MMHandler
     {
-      boolean VTw;
-      public final int VTx = 1;
-      public final int VTy = 2;
+      boolean adxF;
+      public final int adxG = 1;
+      public final int adxH = 2;
       
       public b(Looper paramLooper)
       {
@@ -936,15 +949,15 @@ public abstract class g<K, T extends a>
       {
         AppMethodBeat.i(33003);
         super.handleMessage(paramMessage);
-        if (this.VTw)
+        if (this.adxF)
         {
           AppMethodBeat.o(33003);
           return;
         }
         synchronized (g.e.this)
         {
-          g.e.this.VTt = g.e.this.hFS();
-          Log.i(g.this.TAG, "newcursor updateWorkerRefresh status:%d, what:%s", new Object[] { Integer.valueOf(g.e.this.VTt), Integer.valueOf(paramMessage.what) });
+          g.e.this.adxC = g.e.this.jid();
+          Log.i(g.this.TAG, "newcursor updateWorkerRefresh status:%d, what:%s", new Object[] { Integer.valueOf(g.e.this.adxC), Integer.valueOf(paramMessage.what) });
           if (paramMessage.what == 1)
           {
             g.d(g.this);
@@ -962,18 +975,19 @@ public abstract class g<K, T extends a>
     final class c
       extends MMHandler
     {
-      private final int VTA;
-      private final int VTB;
-      long VTz;
+      long adxI;
+      boolean adxJ;
+      private final int adxK;
+      private final int adxL;
       long lastUpdateTime;
       
       public c(Looper paramLooper)
       {
         super();
         AppMethodBeat.i(33004);
-        this.VTA = (hashCode() | 0x776);
-        this.VTB = (hashCode() | 0x77A);
-        g.e.this.VTs = new LinkedList();
+        this.adxK = (hashCode() | 0x776);
+        this.adxL = (hashCode() | 0x77A);
+        g.e.this.adxB = new LinkedList();
         AppMethodBeat.o(33004);
       }
       
@@ -981,22 +995,26 @@ public abstract class g<K, T extends a>
       {
         AppMethodBeat.i(33005);
         super.handleMessage(paramMessage);
-        if (paramMessage.what == this.VTB)
+        if (paramMessage.what == this.adxL)
         {
-          removeMessages(this.VTA);
+          removeMessages(this.adxK);
           long l = System.currentTimeMillis();
-          if ((l - this.VTz > g.this.VTc) || (l - this.VTz < 0L) || ((this.lastUpdateTime != 0L) && (l - this.lastUpdateTime > g.this.VTd)) || (l - this.lastUpdateTime < 0L)) {
+          this.adxJ = true;
+          if ((paramMessage.obj instanceof Boolean)) {
+            this.adxJ = ((Boolean)paramMessage.obj).booleanValue();
+          }
+          if ((l - this.adxI > g.this.adxl) || (l - this.adxI < 0L) || ((this.lastUpdateTime != 0L) && (l - this.lastUpdateTime > g.this.adxm)) || (l - this.lastUpdateTime < 0L) || (!this.adxJ)) {
             g.e.a(g.e.this);
           }
           for (;;)
           {
-            this.VTz = l;
+            this.adxI = l;
             AppMethodBeat.o(33005);
             return;
-            sendEmptyMessageDelayed(this.VTA, g.this.VTc);
+            sendEmptyMessageDelayed(this.adxK, g.this.adxl);
           }
         }
-        if (paramMessage.what == this.VTA) {
+        if (paramMessage.what == this.adxK) {
           g.e.a(g.e.this);
         }
         AppMethodBeat.o(33005);
@@ -1006,7 +1024,7 @@ public abstract class g<K, T extends a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.ui.g
  * JD-Core Version:    0.7.0.1
  */

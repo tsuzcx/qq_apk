@@ -2,7 +2,7 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ib;
+import com.tencent.mm.protocal.protobuf.ix;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -78,7 +78,7 @@ public final class o
             }
             for (;;)
             {
-              if ((paramLinkedList1 != null) && (paramLinkedList1.size() > 0) && (l2 >= ((ib)paramLinkedList1.getFirst()).startTime) && (l1 <= ((ib)paramLinkedList1.getLast()).endTime)) {
+              if ((paramLinkedList1 != null) && (paramLinkedList1.size() > 0) && (l2 >= ((ix)paramLinkedList1.getFirst()).startTime) && (l1 <= ((ix)paramLinkedList1.getLast()).endTime)) {
                 break label363;
               }
               paramLinkedList3.add(str);
@@ -89,10 +89,10 @@ public final class o
               {
                 n localn = new n();
                 localn.convertFrom((Cursor)localObject);
-                ib localib = new ib();
-                localib.startTime = localn.field_startTime;
-                localib.endTime = localn.field_endTime;
-                paramLinkedList1.add(localib);
+                ix localix = new ix();
+                localix.startTime = localn.field_startTime;
+                localix.endTime = localn.field_endTime;
+                paramLinkedList1.add(localix);
               }
               ((Cursor)localObject).close();
             }
@@ -100,19 +100,19 @@ public final class o
             if ((j >= paramLinkedList1.size()) || (l1 > l2)) {
               break label634;
             }
-            localObject = (ib)paramLinkedList1.get(j);
+            localObject = (ix)paramLinkedList1.get(j);
             k = i;
             l3 = l1;
-            if (l1 <= ((ib)localObject).endTime) {
-              if (l1 < ((ib)localObject).startTime)
+            if (l1 <= ((ix)localObject).endTime) {
+              if (l1 < ((ix)localObject).startTime)
               {
                 i = 1;
                 paramLinkedList3.add(str);
                 paramLinkedList4.add(Long.valueOf(l1));
-                if (l2 < ((ib)localObject).startTime)
+                if (l2 < ((ix)localObject).startTime)
                 {
                   paramLinkedList4.add(Long.valueOf(l2));
-                  l1 = ((ib)localObject).startTime;
+                  l1 = ((ix)localObject).startTime;
                   i = 1;
                 }
               }
@@ -138,8 +138,8 @@ public final class o
       paramLinkedList4.add(Long.valueOf(l1));
       paramLinkedList4.add(Long.valueOf(l2));
       break;
-      paramLinkedList4.add(Long.valueOf(((ib)localObject).startTime));
-      l3 = ((ib)localObject).endTime;
+      paramLinkedList4.add(Long.valueOf(((ix)localObject).startTime));
+      l3 = ((ix)localObject).endTime;
       k = i;
       j += 1;
       i = k;
@@ -151,7 +151,7 @@ public final class o
     }
   }
   
-  public final boolean aPo()
+  public final boolean bjb()
   {
     AppMethodBeat.i(32836);
     boolean bool = this.db.execSQL("BackupTempMoveTime", "delete from BackupTempMoveTime");
@@ -160,7 +160,7 @@ public final class o
     return bool;
   }
   
-  public final LinkedList<n> hvF()
+  public final LinkedList<n> iXf()
   {
     AppMethodBeat.i(32834);
     LinkedList localLinkedList = new LinkedList();
@@ -184,7 +184,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.o
  * JD-Core Version:    0.7.0.1
  */

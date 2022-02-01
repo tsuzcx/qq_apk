@@ -1,163 +1,165 @@
 package com.tencent.mm.ui.chatting.gallery;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.message.y;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.pluginsdk.ui.tools.i;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ca;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.storage.cc;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/gallery/ImageGalleryMpVideoReport;", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoShareReport;", "()V", "enterId", "", "getEnterId", "()I", "setEnterId", "(I)V", "enterTimeInMs", "", "getEnterTimeInMs", "()J", "setEnterTimeInMs", "(J)V", "report17149", "", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "opType", "reportPause", "reportPlay", "updateMpVideoReportParams", "ui", "Lcom/tencent/mm/ui/chatting/gallery/ImageGalleryUI;", "oldPos", "newPos", "Companion", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
+  extends com.tencent.mm.plugin.webview.ui.tools.media.g
 {
-  public ArrayList<ca> wQK;
-  public boolean wQL;
-  ArrayList<b> wQM;
+  private static final String TAG;
+  public static final l.a aeCq;
+  int XlS;
+  private long XlT;
   
-  private l()
+  static
   {
-    AppMethodBeat.i(36079);
-    this.wQK = new ArrayList();
-    this.wQL = false;
-    this.wQM = new ArrayList();
-    AppMethodBeat.o(36079);
+    AppMethodBeat.i(39736);
+    aeCq = new l.a((byte)0);
+    TAG = "MicroMsg.ImageGalleryMpVideoReport";
+    AppMethodBeat.o(39736);
   }
   
-  private ca Wa(long paramLong)
+  public l()
   {
-    AppMethodBeat.i(36081);
-    Iterator localIterator = this.wQK.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(39735);
+    this.XlT = System.currentTimeMillis();
+    this.XlS = ((int)(this.XlT / 1000L));
+    AppMethodBeat.o(39735);
+  }
+  
+  public final void a(ImageGalleryUI paramImageGalleryUI, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(39731);
+    s.u(paramImageGalleryUI, "ui");
+    Object localObject1;
+    Object localObject2;
+    int i;
+    if (paramInt1 > 0)
     {
-      ca localca = (ca)localIterator.next();
-      if (localca.field_msgId == paramLong)
+      localObject1 = paramImageGalleryUI.aeAg.aBV(paramInt1);
+      if ((localObject1 != null) && (((cc)localObject1).dSI()))
       {
-        AppMethodBeat.o(36081);
-        return localca;
+        localObject1 = p.dc((cc)localObject1);
+        if (localObject1 != null)
+        {
+          this.Xmu = ((int)(System.currentTimeMillis() - this.XlT));
+          localObject2 = paramImageGalleryUI.aeAg;
+          if (localObject2 != null) {
+            break label139;
+          }
+          i = 0;
+          this.Xmt = i;
+          a((y)localObject1, 2, this.XlS);
+        }
       }
     }
-    AppMethodBeat.o(36081);
-    return null;
-  }
-  
-  private void cMA()
-  {
-    AppMethodBeat.i(36087);
-    Iterator localIterator = this.wQM.iterator();
-    while (localIterator.hasNext()) {
-      ((b)localIterator.next()).clear();
-    }
-    AppMethodBeat.o(36087);
-  }
-  
-  private void hRN()
-  {
-    AppMethodBeat.i(36086);
-    Iterator localIterator = this.wQM.iterator();
-    while (localIterator.hasNext()) {
-      ((b)localIterator.next()).hRL();
-    }
-    AppMethodBeat.o(36086);
-  }
-  
-  public final void a(b paramb)
-  {
-    AppMethodBeat.i(36088);
-    this.wQM.remove(paramb);
-    this.wQM.add(paramb);
-    AppMethodBeat.o(36088);
-  }
-  
-  public final void cY(ca paramca)
-  {
-    AppMethodBeat.i(36080);
-    if (paramca == null)
+    if (paramInt2 > 0)
     {
-      AppMethodBeat.o(36080);
-      return;
-    }
-    Log.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { Long.valueOf(paramca.field_msgId) });
-    this.wQK.remove(paramca);
-    this.wQK.remove(Wa(paramca.field_msgId));
-    this.wQK.add(paramca);
-    hRN();
-    AppMethodBeat.o(36080);
-  }
-  
-  public final void cZ(ca paramca)
-  {
-    AppMethodBeat.i(36082);
-    if (paramca == null)
-    {
-      AppMethodBeat.o(36082);
-      return;
-    }
-    Log.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { Long.valueOf(paramca.field_msgId) });
-    this.wQK.remove(paramca);
-    this.wQK.remove(Wa(paramca.field_msgId));
-    hRN();
-    AppMethodBeat.o(36082);
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(36083);
-    Log.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
-    this.wQK.clear();
-    cMA();
-    AppMethodBeat.o(36083);
-  }
-  
-  public final boolean da(ca paramca)
-  {
-    AppMethodBeat.i(36085);
-    if (paramca == null)
-    {
-      AppMethodBeat.o(36085);
-      return false;
-    }
-    Iterator localIterator = this.wQK.iterator();
-    while (localIterator.hasNext()) {
-      if (((ca)localIterator.next()).field_msgId == paramca.field_msgId)
+      if (paramInt1 > 0) {}
+      for (paramImageGalleryUI.aeCD.oYt = 0;; paramImageGalleryUI.aeCD.oYt = 1)
       {
-        AppMethodBeat.o(36085);
-        return true;
+        localObject1 = paramImageGalleryUI.aeAg.aBV(paramInt2);
+        if ((localObject1 != null) && (((cc)localObject1).dSI())) {
+          break label217;
+        }
+        AppMethodBeat.o(39731);
+        return;
+        label139:
+        localObject2 = ((h)localObject2).aeAH;
+        if (localObject2 == null)
+        {
+          i = 0;
+          break;
+        }
+        localObject2 = ((g)localObject2).aCt(paramInt1);
+        if (localObject2 == null)
+        {
+          i = 0;
+          break;
+        }
+        localObject2 = ((r)localObject2).aeFr;
+        if (localObject2 == null)
+        {
+          i = 0;
+          break;
+        }
+        i = ((i)localObject2).getCurrentPosition();
+        break;
       }
+      label217:
+      this.XlT = System.currentTimeMillis();
+      this.scene = paramImageGalleryUI.getIntent().getIntExtra("KOpenArticleSceneFromScene", 1);
+      this.AcJ = 10000;
+      paramImageGalleryUI = p.dc((cc)localObject1);
+      if (paramImageGalleryUI == null)
+      {
+        Log.w(TAG, "report17537 mpShareVideoInfo is null");
+        AppMethodBeat.o(39731);
+        return;
+      }
+      this.Xmw = ab.IR(paramImageGalleryUI.hEE);
+      a(paramImageGalleryUI, 1, this.XlS);
     }
-    AppMethodBeat.o(36085);
-    return false;
+    AppMethodBeat.o(39731);
   }
   
-  public final void detach()
+  public final void dt(cc paramcc)
   {
-    AppMethodBeat.i(36084);
-    this.wQM.clear();
-    clear();
-    this.wQL = false;
-    AppMethodBeat.o(36084);
-  }
-  
-  public static final class a
-  {
-    private static final l WSR;
-    
-    static
+    AppMethodBeat.i(39732);
+    if ((paramcc == null) || (!paramcc.dSI()))
     {
-      AppMethodBeat.i(36078);
-      WSR = new l((byte)0);
-      AppMethodBeat.o(36078);
+      AppMethodBeat.o(39732);
+      return;
     }
+    if (this.oYt != 4)
+    {
+      if (this.oYt != 3) {
+        n(paramcc, 8);
+      }
+      this.oYt = 3;
+    }
+    AppMethodBeat.o(39732);
   }
   
-  public static abstract interface b
+  public final void du(cc paramcc)
   {
-    public abstract void clear();
-    
-    public abstract void hRL();
+    AppMethodBeat.i(39733);
+    if ((paramcc == null) || (!paramcc.dSI()))
+    {
+      AppMethodBeat.o(39733);
+      return;
+    }
+    if (this.oYt != 2)
+    {
+      n(paramcc, getPlayType());
+      this.oYt = 2;
+    }
+    AppMethodBeat.o(39733);
+  }
+  
+  public final void n(cc paramcc, int paramInt)
+  {
+    AppMethodBeat.i(39734);
+    if ((paramcc == null) || (!paramcc.dSI()))
+    {
+      AppMethodBeat.o(39734);
+      return;
+    }
+    a(p.dc(paramcc), paramInt, this.XlS);
+    AppMethodBeat.o(39734);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.l
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,8 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -32,48 +32,43 @@ import java.util.regex.Pattern;
 public abstract class AbstractProcessChecker
   extends BroadcastReceiver
 {
-  private MMHandler GNB;
-  a GNC = new a((byte)0);
-  private long GND = -1L;
-  private boolean dgo = true;
+  private MMHandler MKQ;
+  a MKR = new a((byte)0);
+  private long MKS = -1L;
+  boolean ffv = true;
   
   public AbstractProcessChecker()
   {
-    ((Application)MMApplicationContext.getContext()).registerActivityLifecycleCallbacks(this.GNC);
-    if (ElfCallUpReceiver.GNH > 0)
+    ((Application)MMApplicationContext.getContext()).registerActivityLifecycleCallbacks(this.MKR);
+    if (ElfCallUpReceiver.MKW > 0)
     {
-      iO(Process.myPid(), ElfCallUpReceiver.GNH);
+      ku(Process.myPid(), ElfCallUpReceiver.MKW);
       return;
     }
     Log.w(getTag(), "not processElf call up!");
   }
   
-  protected static long WF()
+  private void Ap(boolean paramBoolean)
   {
-    String str = String.format("/proc/%s/schedstat", new Object[] { Integer.valueOf(Process.myPid()) });
-    try
-    {
-      str = getStringFromFile(str);
-      if (str == null) {
-        return -1L;
-      }
-      long l = Util.safeParseLong(str.replaceAll("\n", "").split(" ")[2]);
-      return l;
-    }
-    catch (Exception localException) {}
-    return -2L;
+    ElfCheckResponse localElfCheckResponse = new ElfCheckResponse(isEnable(), gyW(), paramBoolean, gyT(), MMApplicationContext.getProcessName(), ElfCallUpReceiver.class.getName());
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("processId", Process.myPid());
+    localElfCheckResponse.EHy = ((Bundle)localObject);
+    localObject = new Intent("ACTION_ELF_CHECK_RESPONSE");
+    ((Intent)localObject).putExtra("MicroMsg.ElfCheckResponse", localElfCheckResponse);
+    MMApplicationContext.getContext().sendBroadcast((Intent)localObject);
   }
   
-  public static long Yr()
+  public static long aAm()
   {
-    Matcher localMatcher = Pattern.compile("\\d+").matcher(foc());
+    Matcher localMatcher = Pattern.compile("\\d+").matcher(gyX());
     if (localMatcher.find()) {
       return Util.safeParseInt(localMatcher.group()) * 1000L;
     }
     return -1L;
   }
   
-  protected static int ax(Map<String, Integer> paramMap)
+  protected static int aN(Map<String, Integer> paramMap)
   {
     Object localObject = Looper.getMainLooper().getThread().getThreadGroup();
     Thread[] arrayOfThread = new Thread[((ThreadGroup)localObject).activeCount() * 2];
@@ -103,6 +98,22 @@ public abstract class AbstractProcessChecker
       break label107;
       return i;
     }
+  }
+  
+  protected static long axC()
+  {
+    String str = String.format("/proc/%s/schedstat", new Object[] { Integer.valueOf(Process.myPid()) });
+    try
+    {
+      str = getStringFromFile(str);
+      if (str == null) {
+        return -1L;
+      }
+      long l = Util.safeParseLong(str.replaceAll("\n", "").split(" ")[2]);
+      return l;
+    }
+    catch (Exception localException) {}
+    return -2L;
   }
   
   private static String convertStreamToString(InputStream paramInputStream)
@@ -141,7 +152,34 @@ public abstract class AbstractProcessChecker
     return localStringBuilder.toString();
   }
   
-  private static String foc()
+  public static String getProcessName()
+  {
+    return MMApplicationContext.getProcessName();
+  }
+  
+  private static String getStringFromFile(String paramString)
+  {
+    Object localObject1 = new u(paramString);
+    paramString = null;
+    try
+    {
+      localObject1 = y.ao((u)localObject1);
+      paramString = (String)localObject1;
+      String str = convertStreamToString((InputStream)localObject1);
+      if (localObject1 != null) {
+        ((InputStream)localObject1).close();
+      }
+      return str;
+    }
+    finally
+    {
+      if (paramString != null) {
+        paramString.close();
+      }
+    }
+  }
+  
+  private static String gyX()
   {
     Object localObject = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
     for (;;)
@@ -173,191 +211,141 @@ public abstract class AbstractProcessChecker
     }
   }
   
-  public static String getProcessName()
+  protected abstract boolean aX(long paramLong1, long paramLong2);
+  
+  public void du(boolean paramBoolean)
   {
-    return MMApplicationContext.getProcessName();
+    this.ffv = paramBoolean;
   }
   
-  private static String getStringFromFile(String paramString)
+  protected String getTag()
   {
-    Object localObject1 = new q(paramString);
-    paramString = null;
-    try
-    {
-      localObject1 = u.al((q)localObject1);
-      paramString = (String)localObject1;
-      String str = convertStreamToString((InputStream)localObject1);
-      if (localObject1 != null) {
-        ((InputStream)localObject1).close();
-      }
-      return str;
+    return "AbstractProcessChecker";
+  }
+  
+  protected final MMHandler getWorkerHandler()
+  {
+    if ((this.MKQ == null) || (this.MKQ.isQuit())) {
+      this.MKQ = new MMHandler("ProcessChecker");
     }
-    finally
-    {
-      if (paramString != null) {
-        paramString.close();
-      }
-    }
+    return this.MKQ;
   }
   
-  private void vT(boolean paramBoolean)
-  {
-    ElfCheckResponse localElfCheckResponse = new ElfCheckResponse(isEnable(), fob(), paramBoolean, fnY(), MMApplicationContext.getProcessName(), ElfCallUpReceiver.class.getName());
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("processId", Process.myPid());
-    localElfCheckResponse.zDr = ((Bundle)localObject);
-    localObject = new Intent("ACTION_ELF_CHECK_RESPONSE");
-    ((Intent)localObject).putExtra("MicroMsg.ElfCheckResponse", localElfCheckResponse);
-    MMApplicationContext.getContext().sendBroadcast((Intent)localObject);
-  }
-  
-  protected final boolean aax()
-  {
-    return this.dgo;
-  }
-  
-  protected abstract boolean an(long paramLong1, long paramLong2);
-  
-  public void cN(boolean paramBoolean)
-  {
-    this.dgo = paramBoolean;
-  }
-  
-  protected boolean fnY()
+  protected boolean gyT()
   {
     return true;
   }
   
   /* Error */
-  protected final void fnZ()
+  protected final void gyU()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 28	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker:dgo	Z
-    //   4: ifne +158 -> 162
+    //   1: getfield 28	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker:ffv	Z
+    //   4: ifne +142 -> 146
     //   7: aload_0
-    //   8: getfield 26	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker:GNC	Lcom/tencent/mm/plugin/performance/elf/AbstractProcessChecker$a;
-    //   11: getfield 331	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker$a:isResume	Z
-    //   14: ifne +148 -> 162
+    //   8: getfield 26	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker:MKR	Lcom/tencent/mm/plugin/performance/elf/AbstractProcessChecker$a;
+    //   11: getfield 342	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker$a:isResume	Z
+    //   14: ifne +132 -> 146
     //   17: aload_0
     //   18: iconst_1
-    //   19: invokespecial 155	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker:vT	(Z)V
-    //   22: ldc_w 333
-    //   25: ldc_w 335
-    //   28: invokestatic 338	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   31: new 219	java/io/BufferedReader
+    //   19: invokespecial 134	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker:Ap	(Z)V
+    //   22: ldc_w 344
+    //   25: ldc_w 346
+    //   28: invokestatic 349	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   31: new 271	java/io/BufferedReader
     //   34: dup
-    //   35: new 340	java/io/FileReader
+    //   35: new 351	java/io/FileReader
     //   38: dup
-    //   39: new 216	java/lang/StringBuilder
+    //   39: new 268	java/lang/StringBuilder
     //   42: dup
-    //   43: ldc_w 342
-    //   46: invokespecial 343	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   43: ldc_w 353
+    //   46: invokespecial 354	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   49: invokestatic 56	android/os/Process:myPid	()I
-    //   52: invokevirtual 346	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   55: ldc_w 348
-    //   58: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokespecial 349	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   52: invokevirtual 357	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   55: ldc_w 359
+    //   58: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokespecial 360	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   67: sipush 1024
-    //   70: invokespecial 352	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   73: astore_3
-    //   74: aconst_null
-    //   75: astore_2
-    //   76: aload_3
-    //   77: invokevirtual 230	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   80: astore_1
-    //   81: aload_1
-    //   82: ifnull +57 -> 139
-    //   85: ldc_w 333
-    //   88: aload_1
-    //   89: invokestatic 338	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   92: goto -16 -> 76
-    //   95: astore_2
-    //   96: aload_2
-    //   97: athrow
-    //   98: astore_1
-    //   99: aload_2
-    //   100: ifnull +55 -> 155
-    //   103: aload_3
-    //   104: invokevirtual 240	java/io/BufferedReader:close	()V
-    //   107: aload_1
-    //   108: athrow
-    //   109: astore_1
-    //   110: ldc_w 333
-    //   113: aload_1
-    //   114: ldc_w 354
-    //   117: iconst_0
-    //   118: anewarray 81	java/lang/Object
-    //   121: invokestatic 358	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   124: invokestatic 361	com/tencent/mm/sdk/platformtools/Log:appenderFlush	()V
-    //   127: new 363	java/lang/RuntimeException
-    //   130: dup
-    //   131: aload_0
-    //   132: invokevirtual 366	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker:foa	()Ljava/lang/String;
-    //   135: invokespecial 367	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   138: athrow
-    //   139: aload_3
-    //   140: invokevirtual 240	java/io/BufferedReader:close	()V
-    //   143: goto -19 -> 124
-    //   146: astore_3
-    //   147: aload_2
-    //   148: aload_3
-    //   149: invokevirtual 371	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   152: goto -45 -> 107
-    //   155: aload_3
-    //   156: invokevirtual 240	java/io/BufferedReader:close	()V
-    //   159: goto -52 -> 107
-    //   162: ldc_w 333
-    //   165: ldc_w 373
-    //   168: invokestatic 72	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   171: getstatic 379	com/tencent/mm/plugin/report/f:Iyx	Lcom/tencent/mm/plugin/report/f;
-    //   174: ldc2_w 380
-    //   177: ldc2_w 382
-    //   180: lconst_1
-    //   181: iconst_1
-    //   182: invokevirtual 387	com/tencent/mm/plugin/report/f:idkeyStat	(JJJZ)V
-    //   185: aload_0
-    //   186: iconst_0
-    //   187: invokespecial 155	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker:vT	(Z)V
-    //   190: return
-    //   191: astore_1
-    //   192: goto -93 -> 99
+    //   70: invokespecial 363	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   73: astore_1
+    //   74: aload_1
+    //   75: invokevirtual 282	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   78: astore_2
+    //   79: aload_2
+    //   80: ifnull +50 -> 130
+    //   83: ldc_w 344
+    //   86: aload_2
+    //   87: invokestatic 349	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   90: goto -16 -> 74
+    //   93: astore_2
+    //   94: aload_1
+    //   95: invokevirtual 292	java/io/BufferedReader:close	()V
+    //   98: aload_2
+    //   99: athrow
+    //   100: astore_1
+    //   101: ldc_w 344
+    //   104: aload_1
+    //   105: ldc_w 365
+    //   108: iconst_0
+    //   109: anewarray 240	java/lang/Object
+    //   112: invokestatic 369	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   115: invokestatic 372	com/tencent/mm/sdk/platformtools/Log:appenderFlush	()V
+    //   118: new 374	java/lang/RuntimeException
+    //   121: dup
+    //   122: aload_0
+    //   123: invokevirtual 377	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker:gyV	()Ljava/lang/String;
+    //   126: invokespecial 378	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   129: athrow
+    //   130: aload_1
+    //   131: invokevirtual 292	java/io/BufferedReader:close	()V
+    //   134: goto -19 -> 115
+    //   137: astore_1
+    //   138: aload_2
+    //   139: aload_1
+    //   140: invokevirtual 384	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   143: goto -45 -> 98
+    //   146: ldc_w 344
+    //   149: ldc_w 386
+    //   152: invokestatic 72	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   155: getstatic 392	com/tencent/mm/plugin/report/f:Ozc	Lcom/tencent/mm/plugin/report/f;
+    //   158: ldc2_w 393
+    //   161: ldc2_w 395
+    //   164: lconst_1
+    //   165: iconst_1
+    //   166: invokevirtual 400	com/tencent/mm/plugin/report/f:idkeyStat	(JJJZ)V
+    //   169: aload_0
+    //   170: iconst_0
+    //   171: invokespecial 134	com/tencent/mm/plugin/performance/elf/AbstractProcessChecker:Ap	(Z)V
+    //   174: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	195	0	this	AbstractProcessChecker
-    //   80	9	1	str	String
-    //   98	10	1	localObject1	Object
-    //   109	5	1	localIOException	java.io.IOException
-    //   191	1	1	localObject2	Object
-    //   75	1	2	localObject3	Object
-    //   95	53	2	localThrowable1	java.lang.Throwable
-    //   73	67	3	localBufferedReader	BufferedReader
-    //   146	10	3	localThrowable2	java.lang.Throwable
+    //   0	175	0	this	AbstractProcessChecker
+    //   73	22	1	localBufferedReader	BufferedReader
+    //   100	31	1	localIOException	java.io.IOException
+    //   137	3	1	localThrowable	java.lang.Throwable
+    //   78	9	2	str	String
+    //   93	46	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   76	81	95	java/lang/Throwable
-    //   85	92	95	java/lang/Throwable
-    //   96	98	98	finally
-    //   31	74	109	java/io/IOException
-    //   103	107	109	java/io/IOException
-    //   107	109	109	java/io/IOException
-    //   139	143	109	java/io/IOException
-    //   147	152	109	java/io/IOException
-    //   155	159	109	java/io/IOException
-    //   103	107	146	java/lang/Throwable
-    //   76	81	191	finally
-    //   85	92	191	finally
+    //   74	79	93	finally
+    //   83	90	93	finally
+    //   31	74	100	java/io/IOException
+    //   98	100	100	java/io/IOException
+    //   130	134	100	java/io/IOException
+    //   138	143	100	java/io/IOException
+    //   94	98	137	finally
   }
   
-  protected String foa()
+  protected String gyV()
   {
-    return String.format("ProcessEfl found exception!kill process[%s] %s %s %s", new Object[] { Integer.valueOf(Process.myPid()), Long.valueOf(Yr()), Long.valueOf(Debug.getNativeHeapSize()), Long.valueOf(Runtime.getRuntime().totalMemory()) });
+    return String.format("ProcessEfl found exception!kill process[%s] %s %s %s", new Object[] { Integer.valueOf(Process.myPid()), Long.valueOf(aAm()), Long.valueOf(Debug.getNativeHeapSize()), Long.valueOf(Runtime.getRuntime().totalMemory()) });
   }
   
-  protected abstract long fob();
+  protected abstract long gyW();
   
-  protected final boolean fod()
+  protected final boolean gyY()
   {
     Object localObject = (ActivityManager)MMApplicationContext.getContext().getSystemService("activity");
     if (localObject == null)
@@ -382,26 +370,13 @@ public abstract class AbstractProcessChecker
     return false;
   }
   
-  protected String getTag()
-  {
-    return "AbstractProcessChecker";
-  }
-  
-  protected final MMHandler getWorkerHandler()
-  {
-    if ((this.GNB == null) || (this.GNB.isQuit())) {
-      this.GNB = new MMHandler("ProcessChecker");
-    }
-    return this.GNB;
-  }
-  
-  protected void iO(int paramInt1, int paramInt2) {}
-  
   protected abstract boolean isEnable();
+  
+  protected void ku(int paramInt1, int paramInt2) {}
   
   public final void onReceive(Context paramContext, final Intent paramIntent)
   {
-    if (paramIntent.getAction() == "ACTION_ELF_CHECK") {
+    if ("ACTION_ELF_CHECK".equals(paramIntent.getAction())) {
       getWorkerHandler().post(new Runnable()
       {
         public final void run()
@@ -416,11 +391,11 @@ public abstract class AbstractProcessChecker
               AppMethodBeat.o(124968);
               return;
             }
-            boolean bool = AbstractProcessChecker.this.an(Process.myPid(), localElfCheckRequest.FNJ);
-            Log.i("MicroMsg.AbstractProcessChecker", "[onReceive] begin to check process[%s] isCanKill:%s isNeedReCall:%s", new Object[] { AbstractProcessChecker.getProcessName(), Boolean.valueOf(bool), Boolean.valueOf(AbstractProcessChecker.this.fnY()) });
+            boolean bool = AbstractProcessChecker.this.aX(Process.myPid(), localElfCheckRequest.LIF);
+            Log.i("MicroMsg.AbstractProcessChecker", "[onReceive] begin to check process[%s] isCanKill:%s isNeedReCall:%s", new Object[] { AbstractProcessChecker.getProcessName(), Boolean.valueOf(bool), Boolean.valueOf(AbstractProcessChecker.this.gyT()) });
             if (bool)
             {
-              AbstractProcessChecker.this.fnZ();
+              AbstractProcessChecker.this.gyU();
               AppMethodBeat.o(124968);
               return;
             }
@@ -430,27 +405,36 @@ public abstract class AbstractProcessChecker
         }
       });
     }
-    while (paramIntent.getAction() != "android.intent.action.SCREEN_OFF") {
+    do
+    {
       return;
-    }
-    onScreenOff();
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
+      {
+        onScreenOff();
+        return;
+      }
+    } while (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction()));
+    onScreenOn();
   }
   
   protected abstract void onScreenOff();
+  
+  protected abstract void onScreenOn();
   
   protected void start()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("ACTION_ELF_CHECK");
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+    localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     MMApplicationContext.getContext().registerReceiver(this, localIntentFilter);
   }
   
   final class a
     implements Application.ActivityLifecycleCallbacks
   {
-    String GNF = "";
-    boolean GNG = false;
+    String MKU = "";
+    boolean MKV = false;
     boolean isResume = true;
     
     private a() {}
@@ -460,7 +444,7 @@ public abstract class AbstractProcessChecker
       AppMethodBeat.i(124969);
       if (paramActivity.getClass().getSimpleName().endsWith("WeChatSplashActivity"))
       {
-        this.GNG = true;
+        this.MKV = true;
         Log.i(AbstractProcessChecker.this.getTag(), "WeChatSplashActivity was created!");
       }
       AppMethodBeat.o(124969);
@@ -471,8 +455,8 @@ public abstract class AbstractProcessChecker
     public final void onActivityPaused(Activity paramActivity)
     {
       AppMethodBeat.i(124971);
-      if (Util.isNullOrNil(this.GNF)) {
-        this.GNF = paramActivity.getClass().getName();
+      if (Util.isNullOrNil(this.MKU)) {
+        this.MKU = paramActivity.getClass().getName();
       }
       AppMethodBeat.o(124971);
     }
@@ -480,7 +464,7 @@ public abstract class AbstractProcessChecker
     public final void onActivityResumed(Activity paramActivity)
     {
       AppMethodBeat.i(124970);
-      this.GNF = paramActivity.getClass().getName();
+      this.MKU = paramActivity.getClass().getName();
       this.isResume = true;
       AppMethodBeat.o(124970);
     }
@@ -492,8 +476,8 @@ public abstract class AbstractProcessChecker
     public final void onActivityStopped(Activity paramActivity)
     {
       AppMethodBeat.i(124972);
-      if (Util.isNullOrNil(this.GNF)) {
-        this.GNF = paramActivity.getClass().getName();
+      if (Util.isNullOrNil(this.MKU)) {
+        this.MKU = paramActivity.getClass().getName();
       }
       this.isResume = false;
       AppMethodBeat.o(124972);
@@ -502,7 +486,7 @@ public abstract class AbstractProcessChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.elf.AbstractProcessChecker
  * JD-Core Version:    0.7.0.1
  */

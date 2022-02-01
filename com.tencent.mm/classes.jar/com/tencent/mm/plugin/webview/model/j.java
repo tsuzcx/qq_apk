@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.webview.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.protocal.protobuf.zt;
-import com.tencent.mm.protocal.protobuf.zu;
+import com.tencent.mm.protocal.protobuf.abt;
+import com.tencent.mm.protocal.protobuf.abu;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.concurrent.CountDownLatch;
@@ -17,31 +17,31 @@ import java.util.concurrent.TimeUnit;
 
 public final class j
 {
-  public LinkedList<String> PUb = null;
-  public boolean sfb = false;
+  public LinkedList<String> WKN = null;
+  public boolean vqO = false;
   
-  public final int i(final LinkedList<String> paramLinkedList, String paramString)
+  public final int h(final LinkedList<String> paramLinkedList, String paramString)
   {
     AppMethodBeat.i(78869);
     try
     {
       final int[] arrayOfInt = new int[1];
       arrayOfInt[0] = 2;
-      d.a locala = new d.a();
-      locala.lBU = new zt();
-      locala.lBV = new zu();
+      c.a locala = new c.a();
+      locala.otE = new abt();
+      locala.otF = new abu();
       locala.uri = "/cgi-bin/micromsg-bin/checktextlanguage";
       locala.funcId = 528;
-      locala.lBW = 0;
+      locala.otG = 0;
       locala.respCmdId = 0;
-      zt localzt = (zt)d.b.b(locala.bgN().lBR);
-      localzt.Sma = paramLinkedList;
-      localzt.Smb = paramString;
+      abt localabt = (abt)c.b.b(locala.bEF().otB);
+      localabt.Zkn = paramLinkedList;
+      localabt.Zko = paramString;
       paramLinkedList = new CountDownLatch(1);
       new Bundle();
-      IPCRunCgi.a(locala.bgN(), new IPCRunCgi.a()
+      IPCRunCgi.a(locala.bEF(), new IPCRunCgi.a()
       {
-        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd)
+        public final void callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, c paramAnonymousc)
         {
           AppMethodBeat.i(78868);
           Log.i("MicroMsg.NetSceneCheckTextLanguage", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
@@ -52,8 +52,8 @@ public final class j
             AppMethodBeat.o(78868);
             return;
           }
-          paramAnonymousString = (zu)d.c.b(paramAnonymousd.lBS);
-          if (paramAnonymousString.Smd == 1) {
+          paramAnonymousString = (abu)c.c.b(paramAnonymousc.otC);
+          if (paramAnonymousString.Zkq == 1) {
             arrayOfInt[0] = 0;
           }
           for (;;)
@@ -61,7 +61,7 @@ public final class j
             paramLinkedList.countDown();
             AppMethodBeat.o(78868);
             return;
-            if (paramAnonymousString.Smd == 2) {
+            if (paramAnonymousString.Zkq == 2) {
               arrayOfInt[0] = 1;
             }
           }

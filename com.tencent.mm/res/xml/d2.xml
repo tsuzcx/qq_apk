@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="black_contact_list_pref" android:layout="@layout/b8j" android:summary="@string/c2m" />
+    <PreferenceSmallCategory android:key="unlike_empty" />
+    <IconPreference android:key="unlike" android:title="@string/jb7" />
+    <Preference android:key="unlike_desc" android:layout="@layout/bf0" android:title="@string/k50" />
+    <PreferenceSmallCategory android:key="black_empty" />
+    <IconPreference android:key="black" android:title="@string/jfq" />
+    <Preference android:key="not_be_seen_desc" android:layout="@layout/bf0" android:title="@string/k4o" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="settings_top_story_setting_recommend" android:layout="@layout/bdi" android:title="@string/lrf" />
+    <PreferenceSmallCategory android:key="settings_top_story_setting_recommend_small_category" />
+    <IconPreference android:key="feedback" android:title="@string/k4q" />
 </PreferenceScreen>

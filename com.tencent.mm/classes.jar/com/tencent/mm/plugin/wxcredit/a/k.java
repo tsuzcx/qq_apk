@@ -4,34 +4,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
 {
-  public String ImN;
-  public double QNY;
-  public int QOd;
-  public double QOe;
-  public double QOf;
-  public int QOg;
-  public double QOh;
-  public double QOi;
-  public boolean QOj;
-  public int QOk;
-  public String QOl;
-  public String QOm;
-  public String QOn;
-  public String QOo;
-  public String QOp;
-  public String QOq;
-  public j QOr;
+  public String Okd;
+  public int XHB;
+  public double XHC;
+  public double XHD;
+  public int XHE;
+  public double XHF;
+  public double XHG;
+  public boolean XHH;
+  public int XHI;
+  public String XHJ;
+  public String XHK;
+  public String XHL;
+  public String XHM;
+  public String XHN;
+  public String XHO;
+  public j XHP;
+  public double XHw;
   
   public k()
   {
     AppMethodBeat.i(72315);
-    this.QOr = new j();
+    this.XHP = new j();
     AppMethodBeat.o(72315);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,221 +1,194 @@
 package com.tencent.mm.plugin.finder.gallery.convert;
 
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.view.FinderPostProgressView;
-import com.tencent.mm.protocal.protobuf.csh;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.w;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.protocal.protobuf.djj;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.aa;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/gallery/convert/MaskUILogic;", "", "()V", "refresh", "", "itemView", "Landroid/view/View;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "validType", "", "forceDark", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/gallery/convert/MaskUILogic;", "", "()V", "refresh", "", "itemView", "Landroid/view/View;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "validType", "", "forceDark", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b xUn;
+  public static final b Bvm;
   
   static
   {
-    AppMethodBeat.i(289319);
-    xUn = new b();
-    AppMethodBeat.o(289319);
+    AppMethodBeat.i(334280);
+    Bvm = new b();
+    AppMethodBeat.o(334280);
   }
   
   public static void a(View paramView, BaseFinderFeed paramBaseFinderFeed, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(289318);
-    p.k(paramView, "itemView");
-    p.k(paramBaseFinderFeed, "item");
-    View localView2 = paramView.findViewById(b.f.post_failed_layout);
-    View localView3 = paramView.findViewById(b.f.post_progress_layout);
-    View localView1 = paramView.findViewById(b.f.type_invalid_layout);
-    if (localView2 != null)
+    Object localObject2 = null;
+    AppMethodBeat.i(334240);
+    s.u(paramView, "itemView");
+    s.u(paramBaseFinderFeed, "item");
+    View localView1 = paramView.findViewById(e.e.post_failed_layout);
+    View localView2 = paramView.findViewById(e.e.post_progress_layout);
+    View localView3 = paramView.findViewById(e.e.type_invalid_layout);
+    if (localView1 == null)
     {
-      localObject1 = localView2.getParent();
-      Object localObject2 = localObject1;
+      localObject1 = null;
       if (!(localObject1 instanceof ViewGroup)) {
-        localObject2 = null;
+        break label230;
       }
-      localObject1 = (ViewGroup)localObject2;
+      localObject1 = (ViewGroup)localObject1;
+      label70:
+      if (localView1 != null) {
+        localView1.setVisibility(8);
+      }
       if (localView2 != null) {
         localView2.setVisibility(8);
       }
       if (localView3 != null) {
         localView3.setVisibility(8);
       }
-      if (localView1 != null) {
-        localView1.setVisibility(8);
-      }
       if (localObject1 != null) {
         ((ViewGroup)localObject1).setVisibility(0);
       }
-      if (localObject1 != null)
-      {
-        localObject2 = paramView.getContext();
-        p.j(localObject2, "itemView.context");
-        ((ViewGroup)localObject1).setBackgroundColor(((Context)localObject2).getResources().getColor(b.c.finder_live_black_Alpha_60));
+      if (localObject1 != null) {
+        ((ViewGroup)localObject1).setBackgroundColor(paramView.getContext().getResources().getColor(e.b.finder_live_black_Alpha_60));
       }
       if (!paramBaseFinderFeed.feedObject.isPostFailed()) {
-        break label291;
-      }
-      if (localView2 != null) {
-        localView2.setVisibility(0);
-      }
-      if (localView2 == null) {
-        break label254;
-      }
-    }
-    label254:
-    for (Object localObject1 = (TextView)localView2.findViewById(b.f.failed_desc_tv);; localObject1 = null)
-    {
-      if (localObject1 != null) {
-        ((TextView)localObject1).setTextSize(0, com.tencent.mm.ci.a.fromDPToPix(paramView.getContext(), 14));
-      }
-      if (!paramBaseFinderFeed.feedObject.isPostFailedCanRetry()) {
-        break label266;
-      }
-      if (localObject1 == null) {
-        break label260;
-      }
-      ((TextView)localObject1).setText(b.j.finder_posting_failed_select_tips1);
-      AppMethodBeat.o(289318);
-      return;
-      localObject1 = null;
-      break;
-    }
-    label260:
-    AppMethodBeat.o(289318);
-    return;
-    label266:
-    if (localObject1 != null)
-    {
-      ((TextView)localObject1).setText(b.j.finder_item_post_fail);
-      AppMethodBeat.o(289318);
-      return;
-    }
-    AppMethodBeat.o(289318);
-    return;
-    label291:
-    if (paramBaseFinderFeed.feedObject.isPostFinish())
-    {
-      if (paramBoolean1)
-      {
-        if (localObject1 != null)
-        {
-          ((ViewGroup)localObject1).setVisibility(8);
-          AppMethodBeat.o(289318);
-          return;
-        }
-        AppMethodBeat.o(289318);
-        return;
+        break label271;
       }
       if (localView1 != null) {
         localView1.setVisibility(0);
       }
-      if ((ar.isDarkMode()) || (paramBoolean2)) {
-        if (localObject1 != null)
-        {
-          paramBaseFinderFeed = paramView.getContext();
-          p.j(paramBaseFinderFeed, "itemView.context");
-          ((ViewGroup)localObject1).setBackgroundColor(paramBaseFinderFeed.getResources().getColor(b.c.BW_100_Alpha_0_0_5));
-        }
+      if (localView1 != null) {
+        break label236;
       }
-      while (localView1 != null)
-      {
-        localView1.setOnClickListener((View.OnClickListener)new a(paramView));
-        AppMethodBeat.o(289318);
-        return;
-        if (localObject1 != null)
-        {
-          paramBaseFinderFeed = paramView.getContext();
-          p.j(paramBaseFinderFeed, "itemView.context");
-          ((ViewGroup)localObject1).setBackgroundColor(paramBaseFinderFeed.getResources().getColor(b.c.UN_BW_0_Alpha_0_1));
-        }
+    }
+    label230:
+    label236:
+    for (Object localObject1 = localObject2;; localObject1 = (TextView)localView1.findViewById(e.e.failed_desc_tv))
+    {
+      if (localObject1 != null) {
+        ((TextView)localObject1).setTextSize(0, com.tencent.mm.cd.a.fromDPToPix(paramView.getContext(), 14));
       }
-      AppMethodBeat.o(289318);
+      if (!paramBaseFinderFeed.feedObject.isPostFailedCanRetry()) {
+        break label252;
+      }
+      if (localObject1 == null) {
+        break label484;
+      }
+      ((TextView)localObject1).setText(e.h.finder_posting_failed_select_tips1);
+      AppMethodBeat.o(334240);
       return;
+      localObject1 = localView1.getParent();
+      break;
+      localObject1 = null;
+      break label70;
     }
-    if (localView3 != null) {
-      localView3.setVisibility(0);
-    }
-    if (localView3 != null)
+    label252:
+    if (localObject1 != null)
     {
-      paramView = (FinderPostProgressView)localView3.findViewById(b.f.progress_view);
-      if (paramView != null)
+      ((TextView)localObject1).setText(e.h.finder_item_post_fail);
+      AppMethodBeat.o(334240);
+      return;
+      if (paramBaseFinderFeed.feedObject.isPostFinish())
       {
-        paramBaseFinderFeed = ValueAnimator.ofInt(new int[] { paramView.getProgress(), paramBaseFinderFeed.feedObject.getPostInfo().TAi });
-        paramBaseFinderFeed.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new b(paramView));
-        paramView = paramBaseFinderFeed.setDuration(400L);
-        if (paramView != null)
+        if (paramBoolean1)
         {
-          paramView.start();
-          AppMethodBeat.o(289318);
-          return;
+          if (localObject1 != null)
+          {
+            ((ViewGroup)localObject1).setVisibility(8);
+            AppMethodBeat.o(334240);
+          }
         }
-        AppMethodBeat.o(289318);
-        return;
+        else
+        {
+          if (localView3 != null) {
+            localView3.setVisibility(0);
+          }
+          if ((aw.isDarkMode()) || (paramBoolean2)) {
+            if (localObject1 != null) {
+              ((ViewGroup)localObject1).setBackgroundColor(paramView.getContext().getResources().getColor(e.b.BW_100_Alpha_0_0_5));
+            }
+          }
+          while (localView3 != null)
+          {
+            localView3.setOnClickListener(new b..ExternalSyntheticLambda1(paramView));
+            AppMethodBeat.o(334240);
+            return;
+            if (localObject1 != null) {
+              ((ViewGroup)localObject1).setBackgroundColor(paramView.getContext().getResources().getColor(e.b.UN_BW_0_Alpha_0_1));
+            }
+          }
+        }
       }
-    }
-    AppMethodBeat.o(289318);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(View paramView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(275514);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/gallery/convert/MaskUILogic$refresh$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      w.cS(this.jLG.getContext(), this.jLG.getContext().getString(b.j.finder_media_type_invalid_tips));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/gallery/convert/MaskUILogic$refresh$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(275514);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class b
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    b(FinderPostProgressView paramFinderPostProgressView) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(266424);
-      FinderPostProgressView localFinderPostProgressView = this.xiI;
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
+      else
       {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(266424);
-        throw paramValueAnimator;
+        if (localView2 != null) {
+          localView2.setVisibility(0);
+        }
+        if (localView2 != null)
+        {
+          paramView = (FinderPostProgressView)localView2.findViewById(e.e.progress_view);
+          if (paramView != null)
+          {
+            paramBaseFinderFeed = ValueAnimator.ofInt(new int[] { paramView.getProgress(), paramBaseFinderFeed.feedObject.getPostInfo().aaPw });
+            paramBaseFinderFeed.addUpdateListener(new b..ExternalSyntheticLambda0(paramView));
+            paramView = paramBaseFinderFeed.setDuration(400L);
+            if (paramView != null) {
+              paramView.start();
+            }
+          }
+        }
       }
-      localFinderPostProgressView.setProgress(((Integer)paramValueAnimator).intValue());
-      this.xiI.invalidate();
-      AppMethodBeat.o(266424);
     }
+    label271:
+    label484:
+    AppMethodBeat.o(334240);
+  }
+  
+  private static final void d(FinderPostProgressView paramFinderPostProgressView, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(334269);
+    s.u(paramFinderPostProgressView, "$progress");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
+    {
+      paramFinderPostProgressView = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+      AppMethodBeat.o(334269);
+      throw paramFinderPostProgressView;
+    }
+    paramFinderPostProgressView.setProgress(((Integer)paramValueAnimator).intValue());
+    paramFinderPostProgressView.invalidate();
+    AppMethodBeat.o(334269);
+  }
+  
+  private static final void m(View paramView1, View paramView2)
+  {
+    AppMethodBeat.i(334257);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView1);
+    localb.cH(paramView2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/gallery/convert/MaskUILogic", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramView1, "$itemView");
+    aa.dc(paramView1.getContext(), paramView1.getContext().getString(e.h.finder_media_type_invalid_tips));
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/gallery/convert/MaskUILogic", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(334257);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.gallery.convert.b
  * JD-Core Version:    0.7.0.1
  */

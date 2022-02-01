@@ -1,179 +1,208 @@
 package com.tencent.mm.plugin.finder.live.utils.fake;
 
+import android.content.Context;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.live.model.context.a;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.b;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.widget.a.f;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftSingleDebug;", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "liveData", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "commandList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$MockCommand;", "getLiveData", "()Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "createDefault", "giftType", "Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "count", "", "show", "", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftSingleDebug;", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "liveData", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "commandList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$MockCommand;", "getLiveData", "()Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "createDefault", "giftType", "Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "count", "", "show", "", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  private static final String TAG = "MicroMsg.FinderLiveGiftMockDebug";
-  public static final a ySd;
-  public final MMActivity activity;
-  private final a xYp;
-  private final LinkedList<c.d> yRP;
+  public static final a DKu;
+  private static final String TAG;
+  private final a CvU;
+  private final LinkedList<c.d> DKi;
+  private final MMActivity activity;
   
   static
   {
-    AppMethodBeat.i(223297);
-    ySd = new a((byte)0);
+    AppMethodBeat.i(351154);
+    DKu = new a((byte)0);
     TAG = "MicroMsg.FinderLiveGiftMockDebug";
-    AppMethodBeat.o(223297);
+    AppMethodBeat.o(351154);
   }
   
   public d(MMActivity paramMMActivity, a parama)
   {
-    AppMethodBeat.i(223296);
+    AppMethodBeat.i(351076);
     this.activity = paramMMActivity;
-    this.xYp = parama;
-    this.yRP = new LinkedList();
-    AppMethodBeat.o(223296);
+    this.CvU = parama;
+    this.DKi = new LinkedList();
+    AppMethodBeat.o(351076);
   }
   
   private final c.d a(e parame, int paramInt)
   {
-    AppMethodBeat.i(223289);
-    c localc = c.yRV;
-    parame = (c.c)c.dES().get(parame);
-    if (parame != null)
+    AppMethodBeat.i(351084);
+    c localc = c.DKj;
+    parame = (c.c)c.euW().get(parame);
+    if (parame == null)
     {
-      parame = parame.NL(paramInt).aCS(((b)this.xYp.business(b.class)).kig);
-      AppMethodBeat.o(223289);
-      return parame;
+      AppMethodBeat.o(351084);
+      return null;
     }
-    AppMethodBeat.o(223289);
-    return null;
+    parame = parame.Pv(paramInt);
+    if (parame == null)
+    {
+      AppMethodBeat.o(351084);
+      return null;
+    }
+    parame = parame.axT(((com.tencent.mm.plugin.finder.live.viewmodel.data.business.e)this.CvU.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.e.class)).mIC);
+    AppMethodBeat.o(351084);
+    return parame;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftSingleDebug$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  public static final class b
-    implements q.f
+  private static final void a(d paramd, com.tencent.mm.ui.base.s params)
   {
-    public b(d paramd) {}
-    
-    public final void onCreateMMMenu(o paramo)
+    AppMethodBeat.i(351149);
+    kotlin.g.b.s.u(paramd, "this$0");
+    if (params.jmw())
     {
-      AppMethodBeat.i(292191);
-      p.j(paramo, "it");
-      if (paramo.hJO())
-      {
-        paramo.d(1, (CharSequence)(e.ySg.ySp + "*1")).setOnMenuItemClickListener((MenuItem.OnMenuItemClickListener)new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(289925);
-            d.a(this.ySf.ySe).offerLast(d.a(this.ySf.ySe, e.ySg));
-            paramAnonymousMenuItem = c.yRV;
-            c.ev((List)d.a(this.ySf.ySe));
-            AppMethodBeat.o(289925);
-            return true;
-          }
-        });
-        paramo.d(2, (CharSequence)(e.ySh.ySp + "*2")).setOnMenuItemClickListener((MenuItem.OnMenuItemClickListener)new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(268831);
-            d.a(this.ySf.ySe).offerLast(d.a(this.ySf.ySe, e.ySh, 2));
-            paramAnonymousMenuItem = c.yRV;
-            c.ev((List)d.a(this.ySf.ySe));
-            AppMethodBeat.o(268831);
-            return true;
-          }
-        });
-        paramo.d(3, (CharSequence)(e.ySi.ySp + "*3")).setOnMenuItemClickListener((MenuItem.OnMenuItemClickListener)new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(276963);
-            d.a(this.ySf.ySe).offerLast(d.a(this.ySf.ySe, e.ySi, 3));
-            paramAnonymousMenuItem = c.yRV;
-            c.ev((List)d.a(this.ySf.ySe));
-            AppMethodBeat.o(276963);
-            return true;
-          }
-        });
-        paramo.d(4, (CharSequence)(e.ySj.ySp + "*4")).setOnMenuItemClickListener((MenuItem.OnMenuItemClickListener)new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(286067);
-            d.a(this.ySf.ySe).offerLast(d.a(this.ySf.ySe, e.ySj, 4));
-            paramAnonymousMenuItem = c.yRV;
-            c.ev((List)d.a(this.ySf.ySe));
-            AppMethodBeat.o(286067);
-            return true;
-          }
-        });
-        paramo.d(5, (CharSequence)(e.ySk.ySp + "*1")).setOnMenuItemClickListener((MenuItem.OnMenuItemClickListener)new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(279606);
-            d.a(this.ySf.ySe).offerLast(d.a(this.ySf.ySe, e.ySk));
-            paramAnonymousMenuItem = c.yRV;
-            c.ev((List)d.a(this.ySf.ySe));
-            AppMethodBeat.o(279606);
-            return true;
-          }
-        });
-        paramo.d(6, (CharSequence)(e.ySl.ySp + "*1")).setOnMenuItemClickListener((MenuItem.OnMenuItemClickListener)new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(283837);
-            d.a(this.ySf.ySe).offerLast(d.a(this.ySf.ySe, e.ySl));
-            paramAnonymousMenuItem = c.yRV;
-            c.ev((List)d.a(this.ySf.ySe));
-            AppMethodBeat.o(283837);
-            return true;
-          }
-        });
-        paramo.d(7, (CharSequence)(e.ySm.ySp + "*1")).setOnMenuItemClickListener((MenuItem.OnMenuItemClickListener)new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(277808);
-            d.a(this.ySf.ySe).offerLast(d.a(this.ySf.ySe, e.ySm));
-            paramAnonymousMenuItem = c.yRV;
-            c.ev((List)d.a(this.ySf.ySe));
-            AppMethodBeat.o(277808);
-            return true;
-          }
-        });
-        paramo.d(8, (CharSequence)(e.ySn.ySp + "*1")).setOnMenuItemClickListener((MenuItem.OnMenuItemClickListener)new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(268211);
-            d.a(this.ySf.ySe).offerLast(d.a(this.ySf.ySe, e.ySn));
-            paramAnonymousMenuItem = c.yRV;
-            c.ev((List)d.a(this.ySf.ySe));
-            AppMethodBeat.o(268211);
-            return true;
-          }
-        });
-      }
-      AppMethodBeat.o(292191);
+      params.c(1, (CharSequence)kotlin.g.b.s.X(e.DKw.DKv, "*1")).setOnMenuItemClickListener(new d..ExternalSyntheticLambda5(paramd));
+      params.c(2, (CharSequence)kotlin.g.b.s.X(e.DKx.DKv, "*2")).setOnMenuItemClickListener(new d..ExternalSyntheticLambda4(paramd));
+      params.c(3, (CharSequence)kotlin.g.b.s.X(e.DKy.DKv, "*3")).setOnMenuItemClickListener(new d..ExternalSyntheticLambda2(paramd));
+      params.c(4, (CharSequence)kotlin.g.b.s.X(e.DKz.DKv, "*1")).setOnMenuItemClickListener(new d..ExternalSyntheticLambda9(paramd));
+      params.c(5, (CharSequence)kotlin.g.b.s.X(e.DKA.DKv, "*1")).setOnMenuItemClickListener(new d..ExternalSyntheticLambda8(paramd));
+      params.c(6, (CharSequence)kotlin.g.b.s.X(e.DKB.DKv, "*2")).setOnMenuItemClickListener(new d..ExternalSyntheticLambda6(paramd));
+      params.c(7, (CharSequence)kotlin.g.b.s.X(e.DKC.DKv, "*3")).setOnMenuItemClickListener(new d..ExternalSyntheticLambda3(paramd));
+      params.c(8, (CharSequence)kotlin.g.b.s.X(e.DKD.DKv, "*1")).setOnMenuItemClickListener(new d..ExternalSyntheticLambda7(paramd));
+      params.c(9, (CharSequence)kotlin.g.b.s.X(e.DKE.DKv, "*1")).setOnMenuItemClickListener(new d..ExternalSyntheticLambda0(paramd));
+      params.c(10, (CharSequence)kotlin.g.b.s.X(e.DKF.DKv, "*1")).setOnMenuItemClickListener(new d..ExternalSyntheticLambda1(paramd));
     }
+    AppMethodBeat.o(351149);
   }
+  
+  private static final boolean a(d paramd, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(351088);
+    kotlin.g.b.s.u(paramd, "this$0");
+    paramd.DKi.offerLast(paramd.a(e.DKw, 1));
+    paramMenuItem = c.DKj;
+    c.gH((List)paramd.DKi);
+    AppMethodBeat.o(351088);
+    return true;
+  }
+  
+  private static final boolean b(d paramd, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(351093);
+    kotlin.g.b.s.u(paramd, "this$0");
+    paramd.DKi.offerLast(paramd.a(e.DKx, 2));
+    paramMenuItem = c.DKj;
+    c.gH((List)paramd.DKi);
+    AppMethodBeat.o(351093);
+    return true;
+  }
+  
+  private static final boolean c(d paramd, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(351096);
+    kotlin.g.b.s.u(paramd, "this$0");
+    paramd.DKi.offerLast(paramd.a(e.DKy, 3));
+    paramMenuItem = c.DKj;
+    c.gH((List)paramd.DKi);
+    AppMethodBeat.o(351096);
+    return true;
+  }
+  
+  private static final boolean d(d paramd, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(351100);
+    kotlin.g.b.s.u(paramd, "this$0");
+    paramd.DKi.offerLast(paramd.a(e.DKz, 1));
+    paramMenuItem = c.DKj;
+    c.gH((List)paramd.DKi);
+    AppMethodBeat.o(351100);
+    return true;
+  }
+  
+  private static final boolean e(d paramd, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(351106);
+    kotlin.g.b.s.u(paramd, "this$0");
+    paramd.DKi.offerLast(paramd.a(e.DKA, 1));
+    paramMenuItem = c.DKj;
+    c.gH((List)paramd.DKi);
+    AppMethodBeat.o(351106);
+    return true;
+  }
+  
+  private static final boolean f(d paramd, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(351113);
+    kotlin.g.b.s.u(paramd, "this$0");
+    paramd.DKi.offerLast(paramd.a(e.DKB, 2));
+    paramMenuItem = c.DKj;
+    c.gH((List)paramd.DKi);
+    AppMethodBeat.o(351113);
+    return true;
+  }
+  
+  private static final boolean g(d paramd, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(351120);
+    kotlin.g.b.s.u(paramd, "this$0");
+    paramd.DKi.offerLast(paramd.a(e.DKC, 3));
+    paramMenuItem = c.DKj;
+    c.gH((List)paramd.DKi);
+    AppMethodBeat.o(351120);
+    return true;
+  }
+  
+  private static final boolean h(d paramd, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(351126);
+    kotlin.g.b.s.u(paramd, "this$0");
+    paramd.DKi.offerLast(paramd.a(e.DKD, 1));
+    paramMenuItem = c.DKj;
+    c.gH((List)paramd.DKi);
+    AppMethodBeat.o(351126);
+    return true;
+  }
+  
+  private static final boolean i(d paramd, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(351132);
+    kotlin.g.b.s.u(paramd, "this$0");
+    paramd.DKi.offerLast(paramd.a(e.DKE, 1));
+    paramMenuItem = c.DKj;
+    c.gH((List)paramd.DKi);
+    AppMethodBeat.o(351132);
+    return true;
+  }
+  
+  private static final boolean j(d paramd, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(351137);
+    kotlin.g.b.s.u(paramd, "this$0");
+    paramd.DKi.offerLast(paramd.a(e.DKF, 1));
+    paramMenuItem = c.DKj;
+    c.gH((List)paramd.DKi);
+    AppMethodBeat.o(351137);
+    return true;
+  }
+  
+  public final void show()
+  {
+    AppMethodBeat.i(351233);
+    f localf = new f((Context)this.activity, 1, false);
+    localf.Vtg = new d..ExternalSyntheticLambda10(this);
+    localf.dDn();
+    AppMethodBeat.o(351233);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftSingleDebug$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.utils.fake.d
  * JD-Core Version:    0.7.0.1
  */

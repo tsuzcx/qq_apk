@@ -4,13 +4,13 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.d;
+import com.tencent.mm.g.d;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class WebViewJSSDKUpFileItem
   extends WebViewJSSDKFileItem
 {
   public static final Parcelable.Creator<WebViewJSSDKUpFileItem> CREATOR;
-  public String POG;
+  public String WET;
   public int fileType = -1;
   
   static
@@ -41,7 +41,7 @@ public class WebViewJSSDKUpFileItem
     super.d(paramd);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.fileType);
-    localArrayList.add(this.POG);
+    localArrayList.add(this.WET);
     localArrayList.add(paramd.field_fileId);
     localArrayList.add(paramd.field_aesKey);
     localArrayList.add(paramd.field_fileLength);
@@ -51,15 +51,15 @@ public class WebViewJSSDKUpFileItem
     }
     for (;;)
     {
-      Log.d("MicroMsg.WebViewJSSDKVoiceItem", "fileType=%d, initUrl=%s, field_fileId=%s", new Object[] { Integer.valueOf(this.fileType), this.POG, paramd.field_fileId });
-      paramd = h.IzE;
-      h.u(12018, localArrayList);
-      paramd = this.nVa;
+      Log.d("MicroMsg.WebViewJSSDKVoiceItem", "fileType=%d, initUrl=%s, field_fileId=%s", new Object[] { Integer.valueOf(this.fileType), this.WET, paramd.field_fileId });
+      paramd = h.OAn;
+      h.P(12018, localArrayList);
+      paramd = this.qUK;
       if (!Util.isNullOrNil(paramd))
       {
-        paramd = new q(paramd);
-        if (paramd.ifE()) {
-          paramd.cFq();
+        paramd = new u(paramd);
+        if (paramd.jKS()) {
+          paramd.diJ();
         }
       }
       AppMethodBeat.o(79018);
@@ -85,22 +85,22 @@ public class WebViewJSSDKUpFileItem
     return 0;
   }
   
-  public final WebViewJSSDKFileItem gVL()
+  public final String getFileType()
+  {
+    return "nomal";
+  }
+  
+  public final WebViewJSSDKFileItem kLS()
   {
     AppMethodBeat.i(79017);
-    this.fCM = az.bkS(this.nVa);
+    this.hHB = az.bkB(this.qUK);
     AppMethodBeat.o(79017);
     return this;
   }
   
-  public final String gVM()
+  public final String kLT()
   {
     return "file";
-  }
-  
-  public final String getFileType()
-  {
-    return "nomal";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt) {}

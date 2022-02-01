@@ -12,23 +12,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class as
   implements View.OnTouchListener
 {
-  private static final int MM;
-  private boolean ryA;
-  private final Handler ryx;
-  private float ryy;
-  private float ryz;
+  private static final int uJB;
+  private final Handler H;
+  private float uJC;
+  private float uJD;
+  private boolean uJE;
   
   static
   {
     AppMethodBeat.i(136611);
-    MM = ViewConfiguration.getLongPressTimeout();
+    uJB = ViewConfiguration.getLongPressTimeout();
     AppMethodBeat.o(136611);
   }
   
   public as()
   {
     AppMethodBeat.i(136607);
-    this.ryx = new Handler(Looper.getMainLooper())
+    this.H = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -46,23 +46,23 @@ public class as
         }
       }
     };
-    this.ryA = false;
+    this.uJE = false;
     AppMethodBeat.o(136607);
   }
   
-  private void dD(View paramView)
+  private void er(View paramView)
   {
     AppMethodBeat.i(136609);
     paramView.setPressed(false);
-    this.ryA = false;
-    this.ryx.removeMessages(1);
-    this.ryx.removeMessages(2);
+    this.uJE = false;
+    this.H.removeMessages(1);
+    this.H.removeMessages(2);
     AppMethodBeat.o(136609);
   }
   
-  protected void bUS() {}
+  protected void cRr() {}
   
-  protected void coP() {}
+  protected void cvh() {}
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
@@ -74,24 +74,24 @@ public class as
     {
       AppMethodBeat.o(136608);
       return true;
-      dD(paramView);
+      er(paramView);
       continue;
-      if ((!this.ryA) && (this.ryx.hasMessages(1))) {
-        bUS();
+      if ((!this.uJE) && (this.H.hasMessages(1))) {
+        cvh();
       }
-      dD(paramView);
+      er(paramView);
       continue;
       int i = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       if ((-i > f1) || (f1 > paramView.getWidth() + i) || (-i > f2) || (f2 > i + paramView.getHeight()))
       {
-        this.ryA = true;
+        this.uJE = true;
         continue;
         paramView.setPressed(true);
-        this.ryx.sendMessageDelayed(Message.obtain(this.ryx, 1), MM);
-        this.ryy = paramMotionEvent.getX();
-        this.ryz = paramMotionEvent.getY();
+        this.H.sendMessageDelayed(Message.obtain(this.H, 1), uJB);
+        this.uJC = paramMotionEvent.getX();
+        this.uJD = paramMotionEvent.getY();
       }
     }
   }

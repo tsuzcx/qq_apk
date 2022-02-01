@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.fav.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aop;
+import com.tencent.mm.protocal.protobuf.asi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
@@ -9,50 +9,50 @@ import java.util.Map;
 
 public final class d
 {
-  public static String a(aop paramaop)
+  public static String a(asi paramasi)
   {
     int j = 0;
     AppMethodBeat.i(103502);
-    if ((paramaop == null) || ((paramaop.SAP.isEmpty()) && (paramaop.SAO.isEmpty())))
+    if ((paramasi == null) || ((paramasi.ZBH.isEmpty()) && (paramasi.ZBG.isEmpty())))
     {
       Log.v("MicroMsg.FavTagParser", "tag list toXml data list empty");
       AppMethodBeat.o(103502);
       return "";
     }
     StringBuffer localStringBuffer = new StringBuffer();
-    int k = paramaop.SAP.size();
+    int k = paramasi.ZBH.size();
     localStringBuffer.append("<taglist count='").append(k).append("'>");
     int i = 0;
     while (i < k)
     {
-      localStringBuffer.append("<tag>").append(Util.escapeStringForXml((String)paramaop.SAP.get(i))).append("</tag>");
+      localStringBuffer.append("<tag>").append(Util.escapeStringForXml((String)paramasi.ZBH.get(i))).append("</tag>");
       i += 1;
     }
     localStringBuffer.append("</taglist>");
-    k = paramaop.SAO.size();
+    k = paramasi.ZBG.size();
     localStringBuffer.append("<recommendtaglist count='").append(k).append("'>");
     i = j;
     while (i < k)
     {
-      localStringBuffer.append("<tag>").append(Util.escapeStringForXml((String)paramaop.SAO.get(i))).append("</tag>");
+      localStringBuffer.append("<tag>").append(Util.escapeStringForXml((String)paramasi.ZBG.get(i))).append("</tag>");
       i += 1;
     }
     localStringBuffer.append("</recommendtaglist>");
-    paramaop = localStringBuffer.toString();
+    paramasi = localStringBuffer.toString();
     AppMethodBeat.o(103502);
-    return paramaop;
+    return paramasi;
   }
   
-  public static void a(Map<String, String> paramMap, aop paramaop)
+  public static void a(Map<String, String> paramMap, asi paramasi)
   {
     AppMethodBeat.i(103501);
-    if ((paramMap == null) || (paramaop == null))
+    if ((paramMap == null) || (paramasi == null))
     {
       Log.w("MicroMsg.FavTagParser", "maps is null or item is null");
       AppMethodBeat.o(103501);
       return;
     }
-    paramaop.SAP.clear();
+    paramasi.ZBH.clear();
     int i = 0;
     StringBuilder localStringBuilder;
     Object localObject;
@@ -66,16 +66,16 @@ public final class d
         if (localObject == null) {
           break label107;
         }
-        paramaop.SAP.add(localObject);
+        paramasi.ZBH.add(localObject);
         i += 1;
         break;
       }
     }
     label107:
-    if (!paramaop.SAP.isEmpty()) {
-      Log.d("MicroMsg.FavTagParser", "user def tag not empty, res=%s", new Object[] { paramaop.SAP });
+    if (!paramasi.ZBH.isEmpty()) {
+      Log.d("MicroMsg.FavTagParser", "user def tag not empty, res=%s", new Object[] { paramasi.ZBH });
     }
-    paramaop.SAO.clear();
+    paramasi.ZBG.clear();
     i = 0;
     if (i < 1024)
     {
@@ -87,14 +87,14 @@ public final class d
         if (localObject == null) {
           break label216;
         }
-        paramaop.SAO.add(localObject);
+        paramasi.ZBG.add(localObject);
         i += 1;
         break;
       }
     }
     label216:
-    if (!paramaop.SAO.isEmpty()) {
-      Log.d("MicroMsg.FavTagParser", "recommended tag not empty, res=%s", new Object[] { paramaop.SAO });
+    if (!paramasi.ZBG.isEmpty()) {
+      Log.d("MicroMsg.FavTagParser", "recommended tag not empty, res=%s", new Object[] { paramasi.ZBG });
     }
     AppMethodBeat.o(103501);
   }

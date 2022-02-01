@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -19,7 +18,7 @@ import com.tencent.mm.plugin.mmsight.ui.b.a;
 import com.tencent.mm.plugin.w.a.f;
 import com.tencent.mm.plugin.w.a.h;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.k.a;
+import com.tencent.mm.pluginsdk.ui.tools.i.a;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -32,52 +31,31 @@ import com.tencent.mm.ui.MMActivity;
 public class MMSightEditUI
   extends MMActivity
 {
-  private VideoTransPara EZB;
-  private String FdA;
-  private b FdB;
-  private boolean FdC;
-  private boolean FdD;
-  private boolean FdE;
-  private k.a FdF;
-  private VideoPlayerTextureView Fdy;
-  private VideoSeekBarEditorView Fdz;
-  private com.tencent.mm.remoteservice.d jGJ;
-  private ViewGroup kiF;
+  private VideoTransPara KVn;
+  private VideoPlayerTextureView KZh;
+  private VideoSeekBarEditorView KZi;
+  private String KZj;
+  private b KZk;
+  private boolean KZl;
+  private boolean KZm;
+  private boolean KZn;
+  private i.a KZo;
+  private ViewGroup mJe;
+  private String outputPath;
+  private com.tencent.mm.remoteservice.d pfZ;
   private String thumbPath;
-  private String uVk;
   private String videoPath;
   
   public MMSightEditUI()
   {
     AppMethodBeat.i(94399);
-    this.jGJ = new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext());
-    this.FdC = false;
-    this.FdD = true;
-    this.FdE = false;
-    this.FdF = new k.a()
+    this.pfZ = new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext());
+    this.KZl = false;
+    this.KZm = true;
+    this.KZn = false;
+    this.KZo = new i.a()
     {
-      public final void eM(int paramAnonymousInt1, int paramAnonymousInt2) {}
-      
-      public final int fE(int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        return 0;
-      }
-      
-      public final void onCompletion()
-      {
-        AppMethodBeat.i(94398);
-        MMSightEditUI.j(MMSightEditUI.this).b(0.0D, true);
-        AppMethodBeat.o(94398);
-      }
-      
-      public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        AppMethodBeat.i(94396);
-        Log.e("MicroMsg.MMSightEditUI", "%d on error what %d extra %d", new Object[] { Integer.valueOf(MMSightEditUI.this.hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        AppMethodBeat.o(94396);
-      }
-      
-      public final void qX()
+      public final void Qz()
       {
         AppMethodBeat.i(94397);
         if (MMSightEditUI.j(MMSightEditUI.this) != null)
@@ -97,6 +75,27 @@ public class MMSightEditUI
         }
         AppMethodBeat.o(94397);
       }
+      
+      public final void fG(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      
+      public final int gw(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        return 0;
+      }
+      
+      public final void onCompletion()
+      {
+        AppMethodBeat.i(94398);
+        MMSightEditUI.j(MMSightEditUI.this).c(0.0D, true);
+        AppMethodBeat.o(94398);
+      }
+      
+      public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(94396);
+        Log.e("MicroMsg.MMSightEditUI", "%d on error what %d extra %d", new Object[] { Integer.valueOf(MMSightEditUI.this.hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        AppMethodBeat.o(94396);
+      }
     };
     AppMethodBeat.o(94399);
   }
@@ -114,7 +113,7 @@ public class MMSightEditUI
   public void onBackPressed()
   {
     AppMethodBeat.i(94401);
-    if ((this.FdB != null) && (this.FdB.onBackPressed()))
+    if ((this.KZk != null) && (this.KZk.onBackPressed()))
     {
       AppMethodBeat.o(94401);
       return;
@@ -129,23 +128,23 @@ public class MMSightEditUI
     supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
     getWindow().addFlags(2097280);
-    if (com.tencent.mm.compatible.util.d.qV(19))
+    if (com.tencent.mm.compatible.util.d.rb(19))
     {
       getWindow().setFlags(201327616, 201327616);
-      com.tencent.mm.plugin.mmsight.d.ue(true);
+      com.tencent.mm.plugin.mmsight.d.ys(true);
     }
     for (;;)
     {
-      CaptureMMProxy.createProxy(new CaptureMMProxy(this.jGJ));
+      CaptureMMProxy.createProxy(new CaptureMMProxy(this.pfZ));
       final long l = Util.currentTicks();
-      this.jGJ.connect(new Runnable()
+      this.pfZ.connect(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(94390);
           Log.i("MicroMsg.MMSightEditUI", "connect cost %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
           if (CaptureMMProxy.getInstance() != null) {
-            af.KN(CaptureMMProxy.getInstance().getDeviceInfoConfig());
+            af.Ds(CaptureMMProxy.getInstance().getDeviceInfoConfig());
           }
           MMSightEditUI.a(MMSightEditUI.this);
           AppMethodBeat.o(94390);
@@ -154,7 +153,7 @@ public class MMSightEditUI
       AppMethodBeat.o(94400);
       return;
       getWindow().setFlags(1024, 1024);
-      com.tencent.mm.plugin.mmsight.d.ue(false);
+      com.tencent.mm.plugin.mmsight.d.ys(false);
     }
   }
   
@@ -162,15 +161,15 @@ public class MMSightEditUI
   {
     AppMethodBeat.i(94404);
     super.onDestroy();
-    if (this.Fdy != null) {
-      this.Fdy.stop();
+    if (this.KZh != null) {
+      this.KZh.stop();
     }
-    if (this.FdB != null)
+    if (this.KZk != null)
     {
-      if (this.FdE) {
-        com.tencent.mm.plugin.mmsight.a.a.a(new a.a(this.FdB.scene));
+      if (this.KZn) {
+        com.tencent.mm.plugin.mmsight.a.a.a(new a.a(this.KZk.scene));
       }
-      this.FdB.release();
+      this.KZk.release();
     }
     AppMethodBeat.o(94404);
   }
@@ -179,8 +178,8 @@ public class MMSightEditUI
   {
     AppMethodBeat.i(94402);
     super.onPause();
-    if (this.Fdy != null) {
-      this.Fdy.pause();
+    if (this.KZh != null) {
+      this.KZh.pause();
     }
     AppMethodBeat.o(94402);
   }
@@ -189,8 +188,8 @@ public class MMSightEditUI
   {
     AppMethodBeat.i(94403);
     super.onResume();
-    if (this.Fdy != null) {
-      this.Fdy.start();
+    if (this.KZh != null) {
+      this.KZh.start();
     }
     AppMethodBeat.o(94403);
   }

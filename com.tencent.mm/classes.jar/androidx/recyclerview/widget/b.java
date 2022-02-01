@@ -3,41 +3,41 @@ package androidx.recyclerview.widget;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  implements s
+  implements q
 {
-  private final RecyclerView.a afJ;
+  private final RecyclerView.a bUp;
   
   public b(RecyclerView.a parama)
   {
-    this.afJ = parama;
+    this.bUp = parama;
   }
   
-  public final void W(int paramInt1, int paramInt2)
+  public final void aR(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(260740);
-    this.afJ.aG(paramInt1, paramInt2);
-    AppMethodBeat.o(260740);
+    AppMethodBeat.i(194682);
+    this.bUp.bA(paramInt1, paramInt2);
+    AppMethodBeat.o(194682);
   }
   
-  public final void ac(int paramInt1, int paramInt2)
+  public final void aS(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(260742);
-    this.afJ.aH(paramInt1, paramInt2);
-    AppMethodBeat.o(260742);
+    AppMethodBeat.i(194691);
+    this.bUp.bB(paramInt1, paramInt2);
+    AppMethodBeat.o(194691);
   }
   
-  public final void ad(int paramInt1, int paramInt2)
+  public final void aW(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(260746);
-    this.afJ.aF(paramInt1, paramInt2);
-    AppMethodBeat.o(260746);
+    AppMethodBeat.i(194698);
+    this.bUp.bz(paramInt1, paramInt2);
+    AppMethodBeat.o(194698);
   }
   
   public final void c(int paramInt1, int paramInt2, Object paramObject)
   {
-    AppMethodBeat.i(260748);
-    this.afJ.e(paramInt1, paramInt2, paramObject);
-    AppMethodBeat.o(260748);
+    AppMethodBeat.i(194709);
+    this.bUp.e(paramInt1, paramInt2, paramObject);
+    AppMethodBeat.o(194709);
   }
 }
 

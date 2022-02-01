@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center_horizontal" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginBottom="7.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/eq8" android:layout_width="32.0dip" android:layout_height="52.0dip" android:src="@drawable/cb0" android:layout_centerInParent="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/f8f" android:background="@null" android:paddingTop="@dimen/fy" android:paddingBottom="@dimen/fy" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/mr">
+        <RelativeLayout android:id="@id/els" android:duplicateParentState="true" android:layout_width="@dimen/fc" android:layout_height="@dimen/fc">
+            <ImageView android:id="@id/el1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/b8i" android:scaleType="fitXY" />
+            <ImageView android:background="@drawable/a7g" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/em_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:gravity="center" android:id="@id/emz" android:layout_marginTop="@dimen/fj" style="@style/ms" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:gravity="center" android:id="@id/enw" android:layout_marginTop="@dimen/fj" style="@style/mn" />
+                <ImageView android:id="@id/eof" android:visibility="gone" android:layout_width="@dimen/m_" android:layout_height="@dimen/m_" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

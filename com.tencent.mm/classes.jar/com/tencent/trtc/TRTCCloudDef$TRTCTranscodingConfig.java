@@ -38,7 +38,7 @@ public class TRTCCloudDef$TRTCTranscodingConfig
   
   public TRTCCloudDef$TRTCTranscodingConfig(TRTCTranscodingConfig paramTRTCTranscodingConfig)
   {
-    AppMethodBeat.i(216686);
+    AppMethodBeat.i(211259);
     this.appId = paramTRTCTranscodingConfig.appId;
     this.bizId = paramTRTCTranscodingConfig.bizId;
     this.mode = paramTRTCTranscodingConfig.mode;
@@ -54,7 +54,7 @@ public class TRTCCloudDef$TRTCTranscodingConfig
     this.audioChannels = paramTRTCTranscodingConfig.audioChannels;
     this.streamId = paramTRTCTranscodingConfig.streamId;
     this.mixUsers = new ArrayList(paramTRTCTranscodingConfig.mixUsers);
-    AppMethodBeat.o(216686);
+    AppMethodBeat.o(211259);
   }
   
   public String toString()
@@ -67,7 +67,7 @@ public class TRTCCloudDef$TRTCTranscodingConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloudDef.TRTCTranscodingConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,11 @@ import android.content.res.Resources;
 import android.os.Looper;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.a.a.k;
-import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.c.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.selectcontact.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.ui.contact.a.c;
 import com.tencent.mm.ui.contact.a.f;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,54 +19,55 @@ import java.util.List;
 public class u
   extends p
 {
-  private com.tencent.mm.plugin.fts.a.a.h BHY;
-  private com.tencent.mm.plugin.fts.a.a.a BIV;
-  protected List<m> BLv;
-  protected int Xqk;
-  private int Xql;
-  private int XtA;
-  private boolean XtB;
-  private int XtC;
-  private List<m> XtD;
-  private List<m> XtE;
-  private List<Integer> XtF;
-  protected com.tencent.mm.plugin.fts.a.l XtG;
-  private List<String> Xtt;
-  private int Xtw;
-  private int Xtx;
-  private int Xty;
-  private boolean Xtz;
+  private boolean Bva;
+  private com.tencent.mm.plugin.fts.a.a.j FWt;
+  private com.tencent.mm.plugin.fts.a.a.c HtE;
+  protected List<com.tencent.mm.plugin.fts.a.a.o> Hwr;
+  protected int afbN;
+  private int afbO;
+  private List<String> afeX;
+  private int affa;
+  private int affb;
+  private int affc;
+  private boolean affd;
+  private int affe;
+  private boolean afff;
+  private int affg;
+  private List<com.tencent.mm.plugin.fts.a.a.o> affh;
+  private List<com.tencent.mm.plugin.fts.a.a.o> affi;
+  private List<Integer> affj;
+  protected com.tencent.mm.plugin.fts.a.l affk;
   private int count;
   private MMHandler handler;
-  private List<m> jbu;
+  private List<com.tencent.mm.plugin.fts.a.a.o> lDu;
   protected String query;
-  private boolean xUe;
   
   public u(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean, int paramInt)
   {
     super(paramMMBaseSelectContactUI, paramBoolean, paramInt);
     AppMethodBeat.i(102871);
-    this.Xtw = 2147483647;
-    this.Xtx = 2147483647;
-    this.Xty = 2147483647;
-    this.Xtz = true;
-    this.XtA = 2147483647;
-    this.Xqk = 2147483647;
-    this.XtB = true;
-    this.XtC = 2147483647;
-    this.Xql = 2147483647;
-    this.XtD = null;
-    this.jbu = null;
-    this.BLv = null;
-    this.XtE = null;
-    this.xUe = false;
+    this.affa = 2147483647;
+    this.affb = 2147483647;
+    this.affc = 2147483647;
+    this.affd = true;
+    this.affe = 2147483647;
+    this.afbN = 2147483647;
+    this.afff = true;
+    this.affg = 2147483647;
+    this.afbO = 2147483647;
+    this.affh = null;
+    this.lDu = null;
+    this.Hwr = null;
+    this.affi = null;
+    this.Bva = false;
     this.handler = new MMHandler(Looper.getMainLooper());
-    this.XtG = new com.tencent.mm.plugin.fts.a.l()
+    this.affk = new com.tencent.mm.plugin.fts.a.l()
     {
-      public final void b(k paramAnonymousk)
+      public final void b(com.tencent.mm.plugin.fts.a.a.m paramAnonymousm)
       {
+        int j = 0;
         AppMethodBeat.i(102870);
-        switch (paramAnonymousk.resultCode)
+        switch (paramAnonymousm.resultCode)
         {
         }
         for (;;)
@@ -78,10 +76,18 @@ public class u
           return;
           if ((u.a(u.this) != null) && (u.a(u.this).equals(u.a(u.this))))
           {
-            u.a(u.this, paramAnonymousk.BHY);
-            u.this.kE(paramAnonymousk.BIW);
-            if (paramAnonymousk.BIW.size() > 0) {
-              switch (((m)paramAnonymousk.BIW.get(0)).type)
+            u.a(u.this, paramAnonymousm.FWt);
+            u.this.nV(paramAnonymousm.HtF);
+            int i = j;
+            if (paramAnonymousm.HpM.Htx != null)
+            {
+              i = j;
+              if (paramAnonymousm.HpM.Htx.length > 0) {
+                i = paramAnonymousm.HpM.Htx[0];
+              }
+            }
+            if (paramAnonymousm.HtF.size() > 0) {
+              switch (i)
               {
               default: 
                 Log.i("MicroMsg.MMSearchContactAdapter", "not support search");
@@ -89,62 +95,72 @@ public class u
             }
             for (;;)
             {
-              boolean bool = u.c(u.this);
-              u.a(u.this, paramAnonymousk.BFk.query, bool);
+              boolean bool = u.b(u.this);
+              u.a(u.this, paramAnonymousm.HpM.query, bool);
               AppMethodBeat.o(102870);
               return;
-              u.a(u.this, paramAnonymousk.BIW);
+              u.a(u.this, paramAnonymousm.HtF, i);
               continue;
-              u.this.BLv = paramAnonymousk.BIW;
+              u.this.Hwr = paramAnonymousm.HtF;
               continue;
-              u.b(u.this, paramAnonymousk.BIW);
+              u.a(u.this, paramAnonymousm.HtF);
               continue;
-              if (u.b(u.this) != null) {
-                u.b(u.this).addAll(paramAnonymousk.BIW);
-              } else {
-                u.a(u.this, paramAnonymousk.BIW);
+              switch (i)
+              {
+              default: 
+                break;
+              case 131072: 
+              case 131081: 
+                u.a(u.this, null, i);
+                break;
+              case 131075: 
+                u.this.Hwr = null;
+                break;
+              case 131076: 
+                u.a(u.this, null);
               }
             }
-            if (!paramAnonymousk.BFk.query.equals(u.this.query))
+            if (!paramAnonymousm.HpM.query.equals(u.this.query))
             {
               AppMethodBeat.o(102870);
               return;
             }
-            u.c(u.this);
+            u.b(u.this);
           }
         }
       }
     };
     this.count = 0;
-    kD(paramList);
+    nU(paramList);
     AppMethodBeat.o(102871);
   }
   
   public u(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
     super(paramMMBaseSelectContactUI, paramBoolean1, paramInt);
-    AppMethodBeat.i(186228);
-    this.Xtw = 2147483647;
-    this.Xtx = 2147483647;
-    this.Xty = 2147483647;
-    this.Xtz = true;
-    this.XtA = 2147483647;
-    this.Xqk = 2147483647;
-    this.XtB = true;
-    this.XtC = 2147483647;
-    this.Xql = 2147483647;
-    this.XtD = null;
-    this.jbu = null;
-    this.BLv = null;
-    this.XtE = null;
-    this.xUe = false;
+    AppMethodBeat.i(252866);
+    this.affa = 2147483647;
+    this.affb = 2147483647;
+    this.affc = 2147483647;
+    this.affd = true;
+    this.affe = 2147483647;
+    this.afbN = 2147483647;
+    this.afff = true;
+    this.affg = 2147483647;
+    this.afbO = 2147483647;
+    this.affh = null;
+    this.lDu = null;
+    this.Hwr = null;
+    this.affi = null;
+    this.Bva = false;
     this.handler = new MMHandler(Looper.getMainLooper());
-    this.XtG = new com.tencent.mm.plugin.fts.a.l()
+    this.affk = new com.tencent.mm.plugin.fts.a.l()
     {
-      public final void b(k paramAnonymousk)
+      public final void b(com.tencent.mm.plugin.fts.a.a.m paramAnonymousm)
       {
+        int j = 0;
         AppMethodBeat.i(102870);
-        switch (paramAnonymousk.resultCode)
+        switch (paramAnonymousm.resultCode)
         {
         }
         for (;;)
@@ -153,10 +169,18 @@ public class u
           return;
           if ((u.a(u.this) != null) && (u.a(u.this).equals(u.a(u.this))))
           {
-            u.a(u.this, paramAnonymousk.BHY);
-            u.this.kE(paramAnonymousk.BIW);
-            if (paramAnonymousk.BIW.size() > 0) {
-              switch (((m)paramAnonymousk.BIW.get(0)).type)
+            u.a(u.this, paramAnonymousm.FWt);
+            u.this.nV(paramAnonymousm.HtF);
+            int i = j;
+            if (paramAnonymousm.HpM.Htx != null)
+            {
+              i = j;
+              if (paramAnonymousm.HpM.Htx.length > 0) {
+                i = paramAnonymousm.HpM.Htx[0];
+              }
+            }
+            if (paramAnonymousm.HtF.size() > 0) {
+              switch (i)
               {
               default: 
                 Log.i("MicroMsg.MMSearchContactAdapter", "not support search");
@@ -164,54 +188,63 @@ public class u
             }
             for (;;)
             {
-              boolean bool = u.c(u.this);
-              u.a(u.this, paramAnonymousk.BFk.query, bool);
+              boolean bool = u.b(u.this);
+              u.a(u.this, paramAnonymousm.HpM.query, bool);
               AppMethodBeat.o(102870);
               return;
-              u.a(u.this, paramAnonymousk.BIW);
+              u.a(u.this, paramAnonymousm.HtF, i);
               continue;
-              u.this.BLv = paramAnonymousk.BIW;
+              u.this.Hwr = paramAnonymousm.HtF;
               continue;
-              u.b(u.this, paramAnonymousk.BIW);
+              u.a(u.this, paramAnonymousm.HtF);
               continue;
-              if (u.b(u.this) != null) {
-                u.b(u.this).addAll(paramAnonymousk.BIW);
-              } else {
-                u.a(u.this, paramAnonymousk.BIW);
+              switch (i)
+              {
+              default: 
+                break;
+              case 131072: 
+              case 131081: 
+                u.a(u.this, null, i);
+                break;
+              case 131075: 
+                u.this.Hwr = null;
+                break;
+              case 131076: 
+                u.a(u.this, null);
               }
             }
-            if (!paramAnonymousk.BFk.query.equals(u.this.query))
+            if (!paramAnonymousm.HpM.query.equals(u.this.query))
             {
               AppMethodBeat.o(102870);
               return;
             }
-            u.c(u.this);
+            u.b(u.this);
           }
         }
       }
     };
     this.count = 0;
-    this.xUe = paramBoolean2;
-    kD(paramList);
-    AppMethodBeat.o(186228);
+    this.Bva = paramBoolean2;
+    nU(paramList);
+    AppMethodBeat.o(252866);
   }
   
-  private static com.tencent.mm.ui.contact.a.a S(int paramInt1, int paramInt2, boolean paramBoolean)
+  private static com.tencent.mm.ui.contact.a.a W(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(102883);
-    com.tencent.mm.ui.contact.a.l locall = new com.tencent.mm.ui.contact.a.l(paramInt2);
-    locall.resId = paramInt1;
-    locall.AUY = paramBoolean;
+    com.tencent.mm.ui.contact.a.m localm = new com.tencent.mm.ui.contact.a.m(paramInt2);
+    localm.resId = paramInt1;
+    localm.Gxy = paramBoolean;
     AppMethodBeat.o(102883);
-    return locall;
+    return localm;
   }
   
-  private void ata()
+  private void aNi()
   {
     AppMethodBeat.i(102876);
     Log.i("MicroMsg.MMSearchContactAdapter", "initData!");
     this.query = null;
-    hVf();
+    jyT();
     clearTask();
     clearCache();
     AppMethodBeat.o(102876);
@@ -220,81 +253,81 @@ public class u
   private void clearTask()
   {
     AppMethodBeat.i(102874);
-    if (this.BIV != null)
+    if (this.HtE != null)
     {
-      ((n)com.tencent.mm.kernel.h.ag(n.class)).cancelSearchTask(this.BIV);
-      this.BIV = null;
+      ((n)com.tencent.mm.kernel.h.az(n.class)).cancelSearchTask(this.HtE);
+      this.HtE = null;
     }
     AppMethodBeat.o(102874);
   }
   
-  private void hVf()
+  private void jyT()
   {
     AppMethodBeat.i(102875);
-    this.Xtx = 2147483647;
-    this.Xty = 2147483647;
-    this.Xtz = true;
-    this.XtA = 2147483647;
-    this.Xqk = 2147483647;
-    this.XtB = true;
-    this.XtC = 2147483647;
-    this.Xql = 2147483647;
-    this.XtD = null;
-    this.jbu = null;
-    this.BLv = null;
-    this.XtE = null;
-    this.BHY = null;
+    this.affb = 2147483647;
+    this.affc = 2147483647;
+    this.affd = true;
+    this.affe = 2147483647;
+    this.afbN = 2147483647;
+    this.afff = true;
+    this.affg = 2147483647;
+    this.afbO = 2147483647;
+    this.affh = null;
+    this.lDu = null;
+    this.Hwr = null;
+    this.affi = null;
+    this.FWt = null;
     clearCache();
     notifyDataSetChanged();
     AppMethodBeat.o(102875);
   }
   
-  private boolean hVg()
+  private boolean jyU()
   {
     AppMethodBeat.i(102878);
-    if (this.XtF.size() > 0)
+    if (this.affj.size() > 0)
     {
       HashSet localHashSet = new HashSet();
-      if (this.XtD != null)
+      if (this.affh != null)
       {
-        localObject = this.XtD.iterator();
+        localObject = this.affh.iterator();
         while (((Iterator)localObject).hasNext()) {
-          localHashSet.add(((m)((Iterator)localObject).next()).BHS);
+          localHashSet.add(((com.tencent.mm.plugin.fts.a.a.o)((Iterator)localObject).next()).Hsz);
         }
       }
-      int i = ((Integer)this.XtF.remove(0)).intValue();
-      Object localObject = new com.tencent.mm.plugin.fts.a.a.j();
-      ((com.tencent.mm.plugin.fts.a.a.j)localObject).query = this.query;
-      ((com.tencent.mm.plugin.fts.a.a.j)localObject).BIP = new int[] { i };
-      ((com.tencent.mm.plugin.fts.a.a.j)localObject).BIS = localHashSet;
-      ((com.tencent.mm.plugin.fts.a.a.j)localObject).BIU = this.XtG;
-      ((com.tencent.mm.plugin.fts.a.a.j)localObject).handler = this.handler;
+      int i = ((Integer)this.affj.remove(0)).intValue();
+      Object localObject = new com.tencent.mm.plugin.fts.a.a.l();
+      ((com.tencent.mm.plugin.fts.a.a.l)localObject).query = this.query;
+      ((com.tencent.mm.plugin.fts.a.a.l)localObject).Htx = new int[] { i };
+      ((com.tencent.mm.plugin.fts.a.a.l)localObject).HtA = localHashSet;
+      ((com.tencent.mm.plugin.fts.a.a.l)localObject).HtC = this.affk;
+      ((com.tencent.mm.plugin.fts.a.a.l)localObject).handler = this.handler;
       if (i == 131075) {
-        ((com.tencent.mm.plugin.fts.a.a.j)localObject).nRn = 32;
+        ((com.tencent.mm.plugin.fts.a.a.l)localObject).qRb = 32;
       }
-      for (((com.tencent.mm.plugin.fts.a.a.j)localObject).BIT = com.tencent.mm.plugin.fts.a.c.a.BJt;; ((com.tencent.mm.plugin.fts.a.a.j)localObject).BIT = b.BJu)
+      for (((com.tencent.mm.plugin.fts.a.a.l)localObject).HtB = com.tencent.mm.plugin.fts.a.c.a.Hud;; ((com.tencent.mm.plugin.fts.a.a.l)localObject).HtB = b.Hue)
       {
-        this.BIV = ((n)com.tencent.mm.kernel.h.ag(n.class)).search(2, (com.tencent.mm.plugin.fts.a.a.j)localObject);
+        this.HtE = ((n)com.tencent.mm.kernel.h.az(n.class)).search(2, (com.tencent.mm.plugin.fts.a.a.l)localObject);
         AppMethodBeat.o(102878);
         return false;
-        ((com.tencent.mm.plugin.fts.a.a.j)localObject).nRn = 16;
+        ((com.tencent.mm.plugin.fts.a.a.l)localObject).qRb = 16;
       }
     }
     AppMethodBeat.o(102878);
     return true;
   }
   
-  private void kD(List<String> paramList)
+  private void nU(List<String> paramList)
   {
-    AppMethodBeat.i(186229);
-    this.Xtt = paramList;
-    this.XtF = new ArrayList();
+    AppMethodBeat.i(252870);
+    this.afeX = paramList;
+    this.affj = new ArrayList();
     Log.i("MicroMsg.MMSearchContactAdapter", "Create!");
-    ata();
-    AppMethodBeat.o(186229);
+    aNi();
+    AppMethodBeat.o(252870);
   }
   
-  private static int kF(List<? extends Object> paramList)
+  private static int nW(List<? extends Object> paramList)
   {
     AppMethodBeat.i(102881);
     if (paramList == null)
@@ -307,55 +340,55 @@ public class u
     return i;
   }
   
-  private void q(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  private void u(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(102879);
-    int i = kF(this.XtD);
-    int m = kF(this.jbu);
-    int k = kF(this.BLv);
-    int j = kF(this.XtE);
+    int i = nW(this.affh);
+    int m = nW(this.lDu);
+    int k = nW(this.Hwr);
+    int j = nW(this.affi);
     if (i > 0)
     {
-      this.Xtx = 0;
+      this.affb = 0;
       i = i + 1 + 0;
       if (m <= 0) {
         break label322;
       }
-      this.Xty = i;
+      this.affc = i;
       if ((m <= 3) || ((k <= 0) && (j <= 0))) {
         break label304;
       }
-      if (!this.Xtz) {
+      if (!this.affd) {
         break label280;
       }
       i += 4;
-      this.XtA = i;
+      this.affe = i;
       i += 1;
       label112:
-      if ((this.BHY == null) || (this.BHY.BIy.length <= 1) || (fJk())) {
+      if ((this.FWt == null) || (this.FWt.Htg.length <= 1) || (gZe())) {
         break label331;
       }
-      this.Xtw = i;
+      this.affa = i;
       i += 1;
       label150:
       if (k <= 0) {
         break label382;
       }
-      this.Xqk = i;
+      this.afbN = i;
       if ((k <= 3) || (j <= 0)) {
         break label364;
       }
-      if (!this.XtB) {
+      if (!this.afff) {
         break label340;
       }
       i += 4;
-      this.XtC = i;
+      this.affg = i;
       i += 1;
       label197:
       if (j <= 0) {
         break label391;
       }
-      this.Xql = i;
+      this.afbO = i;
       i += j + 1;
     }
     for (;;)
@@ -363,57 +396,57 @@ public class u
       Log.i("MicroMsg.MMSearchContactAdapter", "setCount %d", new Object[] { Integer.valueOf(i) });
       this.count = i;
       if (paramBoolean2) {
-        dE(paramString, paramBoolean1);
+        eo(paramString, paramBoolean1);
       }
       clearCache();
       notifyDataSetChanged();
       AppMethodBeat.o(102879);
       return;
-      this.Xtx = 2147483647;
+      this.affb = 2147483647;
       i = 0;
       break;
       label280:
       i += m + 1;
-      this.XtA = i;
+      this.affe = i;
       i += 1;
       break label112;
       label304:
-      this.XtA = 2147483647;
+      this.affe = 2147483647;
       i += m + 1;
       break label112;
       label322:
-      this.Xty = 2147483647;
+      this.affc = 2147483647;
       break label112;
       label331:
-      this.Xtw = 2147483647;
+      this.affa = 2147483647;
       break label150;
       label340:
       i += k + 1;
-      this.XtC = i;
+      this.affg = i;
       i += 1;
       break label197;
       label364:
-      this.XtC = 2147483647;
+      this.affg = 2147483647;
       i += k + 1;
       break label197;
       label382:
-      this.Xqk = 2147483647;
+      this.afbN = 2147483647;
       break label197;
       label391:
-      this.Xql = 2147483647;
+      this.afbO = 2147483647;
     }
   }
   
-  protected com.tencent.mm.ui.contact.a.a NO(int paramInt)
+  protected com.tencent.mm.ui.contact.a.a Py(int paramInt)
   {
     AppMethodBeat.i(102885);
-    int i = paramInt - this.Xqk - 1;
-    c localc = new c(paramInt);
-    localc.olG = ((m)this.BLv.get(i));
-    localc.XsX = fJk();
-    localc.jWq = true;
-    localc.BJH = (i + 1);
-    localc.hx(localc.olG.type, localc.olG.BHR);
+    int i = paramInt - this.afbN - 1;
+    com.tencent.mm.ui.contact.a.c localc = new com.tencent.mm.ui.contact.a.c(paramInt);
+    localc.rpp = ((com.tencent.mm.plugin.fts.a.a.o)this.Hwr.get(i));
+    localc.afey = gZe();
+    localc.mwk = true;
+    localc.Huq = (i + 1);
+    localc.iW(localc.rpp.type, localc.rpp.subtype);
     AppMethodBeat.o(102885);
     return localc;
   }
@@ -423,71 +456,71 @@ public class u
     AppMethodBeat.i(102873);
     clearTask();
     this.query = paramString;
-    this.XtF.clear();
+    this.affj.clear();
     int j = paramArrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = paramArrayOfInt[i];
-      this.XtF.add(Integer.valueOf(k));
+      this.affj.add(Integer.valueOf(k));
       i += 1;
     }
     Log.i("MicroMsg.MMSearchContactAdapter", "doSearch: query=%s", new Object[] { this.query });
-    hVg();
+    jyU();
     AppMethodBeat.o(102873);
   }
   
-  public final boolean awN(int paramInt)
+  public final boolean aDu(int paramInt)
   {
     boolean bool = true;
     AppMethodBeat.i(102887);
-    paramInt -= this.XsW.getContentLV().getHeaderViewsCount();
-    if (paramInt == this.XtA) {
-      if (this.Xtz)
+    paramInt -= this.afex.getContentLV().getHeaderViewsCount();
+    if (paramInt == this.affe) {
+      if (this.affd)
       {
-        paramInt = this.XsW.getContentLV().getSelectedItemPosition();
-        this.Xtz = false;
-        q(this.query, true, false);
-        this.XsW.getContentLV().setSelection(paramInt);
+        paramInt = this.afex.getContentLV().getSelectedItemPosition();
+        this.affd = false;
+        u(this.query, true, false);
+        this.afex.getContentLV().setSelection(paramInt);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(102887);
       return bool;
-      this.Xtz = true;
-      q(this.query, true, false);
-      this.XsW.getContentLV().setSelection(this.XtA);
+      this.affd = true;
+      u(this.query, true, false);
+      this.afex.getContentLV().setSelection(this.affe);
       continue;
-      if (paramInt == this.XtC)
+      if (paramInt == this.affg)
       {
-        if (this.XtB)
+        if (this.afff)
         {
-          paramInt = this.XsW.getContentLV().getSelectedItemPosition();
-          this.XtB = false;
-          q(this.query, true, false);
-          this.XsW.getContentLV().setSelection(paramInt);
+          paramInt = this.afex.getContentLV().getSelectedItemPosition();
+          this.afff = false;
+          u(this.query, true, false);
+          this.afex.getContentLV().setSelection(paramInt);
         }
         else
         {
-          this.XtB = true;
-          q(this.query, true, false);
-          this.XsW.getContentLV().setSelection(this.XtC);
+          this.afff = true;
+          u(this.query, true, false);
+          this.afex.getContentLV().setSelection(this.affg);
         }
       }
       else
       {
-        com.tencent.mm.ui.contact.a.a locala = awM(paramInt);
-        if ((locala != null) && (locala.jWq) && (this.Xtw != 2147483647))
+        com.tencent.mm.ui.contact.a.a locala = aDt(paramInt);
+        if ((locala != null) && (locala.mwk) && (this.affa != 2147483647))
         {
-          if (locala.position == this.Xtw)
+          if (locala.position == this.affa)
           {
-            ae.awO(1);
+            aj.aDv(1);
             bool = false;
           }
           else
           {
-            ae.awO(0);
+            aj.aDv(0);
           }
         }
         else {
@@ -497,13 +530,20 @@ public class u
     }
   }
   
-  protected boolean c(com.tencent.mm.ui.contact.a.a parama)
+  public final void clearData()
+  {
+    AppMethodBeat.i(102877);
+    aNi();
+    AppMethodBeat.o(102877);
+  }
+  
+  protected boolean d(com.tencent.mm.ui.contact.a.a parama)
   {
     int j = parama.position;
-    int k = this.Xtx;
-    int m = this.Xty;
-    int n = this.Xqk;
-    int i1 = this.Xql;
+    int k = this.affb;
+    int m = this.affc;
+    int n = this.afbN;
+    int i1 = this.afbO;
     int i = 0;
     while (i < 4)
     {
@@ -515,18 +555,11 @@ public class u
     return false;
   }
   
-  public final void clearData()
-  {
-    AppMethodBeat.i(102877);
-    ata();
-    AppMethodBeat.o(102877);
-  }
-  
-  public void dE(String paramString, boolean paramBoolean)
+  public void eo(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(102872);
-    if (this.XsV != null) {
-      this.XsV.g(paramString, getCount(), paramBoolean);
+    if (this.afew != null) {
+      this.afew.h(paramString, getCount(), paramBoolean);
     }
     AppMethodBeat.o(102872);
   }
@@ -536,17 +569,8 @@ public class u
     AppMethodBeat.i(102886);
     super.finish();
     Log.i("MicroMsg.MMSearchContactAdapter", "finish!");
-    ata();
+    aNi();
     AppMethodBeat.o(102886);
-  }
-  
-  protected com.tencent.mm.ui.contact.a.a gJ(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(102884);
-    com.tencent.mm.ui.contact.a.j localj = new com.tencent.mm.ui.contact.a.j(paramInt2);
-    localj.header = this.XsW.getActivity().getResources().getString(paramInt1);
-    AppMethodBeat.o(102884);
-    return localj;
   }
   
   public int getCount()
@@ -554,10 +578,19 @@ public class u
     return this.count;
   }
   
-  protected void kE(List<m> paramList)
+  protected com.tencent.mm.ui.contact.a.a hM(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(102884);
+    com.tencent.mm.ui.contact.a.j localj = new com.tencent.mm.ui.contact.a.j(paramInt2);
+    localj.header = this.afex.getActivity().getResources().getString(paramInt1);
+    AppMethodBeat.o(102884);
+    return localj;
+  }
+  
+  protected void nV(List<com.tencent.mm.plugin.fts.a.a.o> paramList)
   {
     AppMethodBeat.i(102880);
-    if (this.Xtt == null)
+    if (this.afeX == null)
     {
       AppMethodBeat.o(102880);
       return;
@@ -565,15 +598,15 @@ public class u
     int i = paramList.size() - 1;
     if (i >= 0)
     {
-      m localm = (m)paramList.get(i);
-      if (!this.Xtt.contains(localm.BHS))
+      com.tencent.mm.plugin.fts.a.a.o localo = (com.tencent.mm.plugin.fts.a.a.o)paramList.get(i);
+      if (!this.afeX.contains(localo.Hsz))
       {
-        j = localm.type;
+        j = localo.type;
         if ((j != 131072) && (j != 131075) && (j != 131076) && (j != 131081)) {
-          break label116;
+          break label117;
         }
       }
-      label116:
+      label117:
       for (int j = 1;; j = 0)
       {
         if (j == 0) {
@@ -586,104 +619,104 @@ public class u
     AppMethodBeat.o(102880);
   }
   
-  protected com.tencent.mm.ui.contact.a.a ye(int paramInt)
+  protected com.tencent.mm.ui.contact.a.a yk(int paramInt)
   {
     AppMethodBeat.i(102882);
     Object localObject;
-    if (paramInt == this.Xtw)
+    if (paramInt == this.affa)
     {
       localObject = new com.tencent.mm.ui.contact.a.h(paramInt);
-      ((com.tencent.mm.ui.contact.a.h)localObject).jWq = true;
+      ((com.tencent.mm.ui.contact.a.h)localObject).mwk = true;
     }
     for (;;)
     {
       if (localObject != null)
       {
         ((com.tencent.mm.ui.contact.a.a)localObject).query = this.query;
-        ((com.tencent.mm.ui.contact.a.a)localObject).BHY = this.BHY;
+        ((com.tencent.mm.ui.contact.a.a)localObject).FWt = this.FWt;
         ((com.tencent.mm.ui.contact.a.a)localObject).scene = getScene();
       }
       AppMethodBeat.o(102882);
       return localObject;
-      if (paramInt == this.Xtx)
+      if (paramInt == this.affb)
       {
-        localObject = gJ(a.h.fts_header_top_hits, paramInt);
+        localObject = hM(a.h.fts_header_top_hits, paramInt);
       }
-      else if (paramInt == this.Xty)
+      else if (paramInt == this.affc)
       {
-        localObject = gJ(a.h.fts_header_contact, paramInt);
+        localObject = hM(a.h.fts_header_contact, paramInt);
       }
-      else if (paramInt == this.Xqk)
+      else if (paramInt == this.afbN)
       {
-        localObject = gJ(a.h.fts_header_chatroom, paramInt);
+        localObject = hM(a.h.fts_header_chatroom, paramInt);
       }
-      else if (paramInt == this.Xql)
+      else if (paramInt == this.afbO)
       {
-        localObject = gJ(a.h.fts_header_biz, paramInt);
+        localObject = hM(a.h.fts_header_biz, paramInt);
       }
-      else if (paramInt == this.XtA)
+      else if (paramInt == this.affe)
       {
-        localObject = S(a.h.fts_header_contact, paramInt, this.Xtz);
+        localObject = W(a.h.fts_header_contact, paramInt, this.affd);
       }
-      else if (paramInt == this.XtC)
+      else if (paramInt == this.affg)
       {
-        localObject = S(a.h.fts_header_chatroom, paramInt, this.XtB);
+        localObject = W(a.h.fts_header_chatroom, paramInt, this.afff);
       }
       else
       {
         int i;
-        if (paramInt > this.Xql)
+        if (paramInt > this.afbO)
         {
-          i = paramInt - this.Xql - 1;
+          i = paramInt - this.afbO - 1;
           localObject = new f(paramInt);
-          ((f)localObject).olG = ((m)this.XtE.get(i));
-          ((com.tencent.mm.ui.contact.a.a)localObject).XsX = fJk();
-          ((f)localObject).jWq = true;
-          ((f)localObject).BJH = (i + 1);
-          ((f)localObject).hx(((f)localObject).olG.type, ((f)localObject).olG.BHR);
+          ((f)localObject).rpp = ((com.tencent.mm.plugin.fts.a.a.o)this.affi.get(i));
+          ((com.tencent.mm.ui.contact.a.a)localObject).afey = gZe();
+          ((f)localObject).mwk = true;
+          ((f)localObject).Huq = (i + 1);
+          ((f)localObject).iW(((f)localObject).rpp.type, ((f)localObject).rpp.subtype);
         }
-        else if (paramInt > this.Xqk)
+        else if (paramInt > this.afbN)
         {
-          localObject = NO(paramInt);
+          localObject = Py(paramInt);
         }
-        else if (paramInt > this.Xty)
+        else if (paramInt > this.affc)
         {
-          i = paramInt - this.Xty - 1;
+          i = paramInt - this.affc - 1;
           localObject = new f(paramInt);
-          ((f)localObject).olG = ((m)this.jbu.get(i));
-          ((com.tencent.mm.ui.contact.a.a)localObject).XsX = fJk();
-          ((f)localObject).jWq = true;
-          ((f)localObject).BJH = (i + 1);
-          ((f)localObject).hx(((f)localObject).olG.type, ((f)localObject).olG.BHR);
-          ((f)localObject).xUe = this.xUe;
+          ((f)localObject).rpp = ((com.tencent.mm.plugin.fts.a.a.o)this.lDu.get(i));
+          ((com.tencent.mm.ui.contact.a.a)localObject).afey = gZe();
+          ((f)localObject).mwk = true;
+          ((f)localObject).Huq = (i + 1);
+          ((f)localObject).iW(((f)localObject).rpp.type, ((f)localObject).rpp.subtype);
+          ((f)localObject).Bva = this.Bva;
         }
-        else if (paramInt > this.Xtx)
+        else if (paramInt > this.affb)
         {
-          i = paramInt - this.Xtx - 1;
-          m localm = (m)this.XtD.get(i);
-          if ((localm.type == 131072) || (localm.type == 131076) || (localm.type == 131081))
+          i = paramInt - this.affb - 1;
+          com.tencent.mm.plugin.fts.a.a.o localo = (com.tencent.mm.plugin.fts.a.a.o)this.affh.get(i);
+          if ((localo.type == 131072) || (localo.type == 131076) || (localo.type == 131081))
           {
             localObject = new f(paramInt);
-            ((f)localObject).olG = localm;
-            ((com.tencent.mm.ui.contact.a.a)localObject).XsX = fJk();
-            ((f)localObject).Xxv = true;
-            ((f)localObject).jWq = true;
-            ((f)localObject).BJH = (i + 1);
-            ((f)localObject).hx(((f)localObject).olG.type, ((f)localObject).olG.BHR);
+            ((f)localObject).rpp = localo;
+            ((com.tencent.mm.ui.contact.a.a)localObject).afey = gZe();
+            ((f)localObject).afjE = true;
+            ((f)localObject).mwk = true;
+            ((f)localObject).Huq = (i + 1);
+            ((f)localObject).iW(((f)localObject).rpp.type, ((f)localObject).rpp.subtype);
           }
-          else if (localm.type == 131075)
+          else if (localo.type == 131075)
           {
-            localObject = new c(paramInt);
-            ((c)localObject).olG = localm;
-            ((com.tencent.mm.ui.contact.a.a)localObject).XsX = fJk();
-            ((c)localObject).Xxv = true;
-            ((c)localObject).jWq = true;
-            ((c)localObject).BJH = (i + 1);
-            ((c)localObject).hx(((c)localObject).olG.type, ((c)localObject).olG.BHR);
+            localObject = new com.tencent.mm.ui.contact.a.c(paramInt);
+            ((com.tencent.mm.ui.contact.a.c)localObject).rpp = localo;
+            ((com.tencent.mm.ui.contact.a.a)localObject).afey = gZe();
+            ((com.tencent.mm.ui.contact.a.c)localObject).afjE = true;
+            ((com.tencent.mm.ui.contact.a.c)localObject).mwk = true;
+            ((com.tencent.mm.ui.contact.a.c)localObject).Huq = (i + 1);
+            ((com.tencent.mm.ui.contact.a.c)localObject).iW(((com.tencent.mm.ui.contact.a.c)localObject).rpp.type, ((com.tencent.mm.ui.contact.a.c)localObject).rpp.subtype);
           }
           else
           {
-            Log.e("MicroMsg.MMSearchContactAdapter", "createTopHitsDataItem return unkown type %d", new Object[] { Integer.valueOf(localm.type) });
+            Log.e("MicroMsg.MMSearchContactAdapter", "createTopHitsDataItem return unkown type %d", new Object[] { Integer.valueOf(localo.type) });
             localObject = null;
           }
         }

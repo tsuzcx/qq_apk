@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.logic.c;
-import com.tencent.mm.plugin.finder.storage.logic.c.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.storage.logic.d;
+import com.tencent.mm.plugin.finder.storage.logic.d.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/FinderObjectTransform;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataTransform;", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "()V", "transform", "src", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/FinderObjectTransform;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataTransform;", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "()V", "transform", "src", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
-  public static final j Ann;
+  public static final j FNf;
   
   static
   {
-    AppMethodBeat.i(239043);
-    Ann = new j();
-    AppMethodBeat.o(239043);
+    AppMethodBeat.i(339342);
+    FNf = new j();
+    AppMethodBeat.o(339342);
   }
   
-  public static bu p(FinderItem paramFinderItem)
+  public static cc t(FinderItem paramFinderItem)
   {
-    AppMethodBeat.i(239040);
-    p.k(paramFinderItem, "src");
-    c.a locala = c.AnK;
-    paramFinderItem = (bu)c.a.a(paramFinderItem);
-    AppMethodBeat.o(239040);
+    AppMethodBeat.i(339337);
+    s.u(paramFinderItem, "src");
+    d.a locala = d.FND;
+    paramFinderItem = (cc)d.a.a(paramFinderItem);
+    AppMethodBeat.o(339337);
     return paramFinderItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.j
  * JD-Core Version:    0.7.0.1
  */

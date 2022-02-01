@@ -1,87 +1,88 @@
 package com.tencent.mm.plugin.textstatus.b;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.p;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.textstatus.b.f;
-import com.tencent.mm.plugin.textstatus.g.e.b.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.textstatus.a.f;
+import com.tencent.mm.plugin.textstatus.h.f.c;
+import com.tencent.mm.plugin.textstatus.h.m;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/convert/SquareItemConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/textstatus/model/square/SquareItem;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "Companion", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/convert/SquareItemConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/textstatus/model/square/SquareItem;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "Companion", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends com.tencent.mm.view.recyclerview.e<com.tencent.mm.plugin.textstatus.g.d.e>
+  extends f<com.tencent.mm.plugin.textstatus.h.e.e>
 {
-  public static final a MAe;
+  public static final a TjP;
   
   static
   {
-    AppMethodBeat.i(233457);
-    MAe = new a((byte)0);
-    AppMethodBeat.o(233457);
+    AppMethodBeat.i(290271);
+    TjP = new a((byte)0);
+    AppMethodBeat.o(290271);
   }
   
-  public final void a(RecyclerView paramRecyclerView, com.tencent.mm.view.recyclerview.i parami, int paramInt)
+  private static final void a(com.tencent.mm.plugin.textstatus.h.e.e parame, View paramView)
   {
-    AppMethodBeat.i(233454);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    AppMethodBeat.o(233454);
+    AppMethodBeat.i(290262);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parame);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/textstatus/convert/SquareItemConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(parame, "$item");
+    paramView = parame.topicId;
+    parame = parame.Tly;
+    localObject = c.TnI;
+    parame = new m(paramView, parame, "hello", c.hHN(), 4);
+    com.tencent.mm.kernel.h.aZW().a(parame.getType(), (com.tencent.mm.am.h)new b());
+    com.tencent.mm.kernel.h.aZW().a((p)parame, 0);
+    a.a(new Object(), "com/tencent/mm/plugin/textstatus/convert/SquareItemConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(290262);
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
+  {
+    AppMethodBeat.i(290285);
+    kotlin.g.b.s.u(paramRecyclerView, "recyclerView");
+    kotlin.g.b.s.u(paramj, "holder");
+    AppMethodBeat.o(290285);
   }
   
   public final int getLayoutId()
   {
-    return b.f.Myk;
+    return a.f.TfN;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/convert/SquareItemConvert$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/convert/SquareItemConvert$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/textstatus/convert/SquareItemConvert$onBindViewHolder$1$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements com.tencent.mm.am.h
   {
-    b(com.tencent.mm.plugin.textstatus.g.d.e parame) {}
-    
-    public final void onClick(View paramView)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
     {
-      AppMethodBeat.i(237573);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      a.c("com/tencent/mm/plugin/textstatus/convert/SquareItemConvert$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      paramView = this.MAf.topicId;
-      localObject = this.MAf.MBU;
-      b.a locala = com.tencent.mm.plugin.textstatus.g.e.b.MDX;
-      paramView = new com.tencent.mm.plugin.textstatus.g.l(paramView, (String)localObject, "hello", com.tencent.mm.plugin.textstatus.g.e.b.gmd(), 4);
-      h.aGY().a(paramView.getType(), (com.tencent.mm.an.i)new com.tencent.mm.an.i()
+      AppMethodBeat.i(290227);
+      if ((paramp instanceof m))
       {
-        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
-        {
-          AppMethodBeat.i(237482);
-          if ((paramAnonymousq instanceof com.tencent.mm.plugin.textstatus.g.l))
-          {
-            h.aGY().b(((com.tencent.mm.plugin.textstatus.g.l)paramAnonymousq).getType(), (com.tencent.mm.an.i)this);
-            if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0)) {
-              Log.i("MicroMsg.TextStatus.SquareItemConvert", "onSceneEnd NetSceneTextStatusLike ok");
-            }
-          }
-          AppMethodBeat.o(237482);
+        com.tencent.mm.kernel.h.aZW().b(((m)paramp).getType(), (com.tencent.mm.am.h)this);
+        if ((paramInt1 == 0) && (paramInt2 == 0)) {
+          Log.i("MicroMsg.TextStatus.SquareItemConvert", "onSceneEnd NetSceneTextStatusLike ok");
         }
-      });
-      h.aGY().b((q)paramView);
-      a.a(this, "com/tencent/mm/plugin/textstatus/convert/SquareItemConvert$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(237573);
+      }
+      AppMethodBeat.o(290227);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.b.e
  * JD-Core Version:    0.7.0.1
  */

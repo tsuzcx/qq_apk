@@ -1,77 +1,69 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelsimple.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.k;
 
 public class LoginVoiceUI
-  extends LoginHistoryUI
+  extends BaseLoginVoiceUI
 {
-  protected final void bzr()
+  protected final void bXX()
   {
     int j = -1;
     AppMethodBeat.i(128253);
-    super.bzr();
-    bzs();
-    final com.tencent.mm.modelsimple.t localt = new com.tencent.mm.modelsimple.t(this.ndj.account, this.ndo, "", 0);
-    localt.WY(this.ndo);
+    super.bXX();
+    bXW();
+    u localu = new u(this.pZh.account, this.pZt, "", 0);
+    localu.OY(this.pZt);
     int i;
     String str;
-    if (this.ndo == null)
+    if (this.pZt == null)
     {
       i = -1;
-      str = Util.secPrint(this.ndo);
-      if (this.ndj.mUQ != null) {
+      str = Util.secPrint(this.pZt);
+      if (this.pZh.pRx != null) {
         break label175;
       }
     }
     for (;;)
     {
-      Log.d("MicroMsg.LoginVoiceUI", "summerauth mAuthPwd len:%d content[%s] logindata.rawPsw len:%d content[%s]", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), Util.secPrint(this.ndj.mUQ) });
+      Log.d("MicroMsg.LoginVoiceUI", "summerauth mAuthPwd len:%d content[%s] logindata.rawPsw len:%d content[%s]", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), Util.secPrint(this.pZh.pRx) });
       getString(r.j.app_tip);
-      this.iXX = com.tencent.mm.ui.base.h.a(this, getString(r.j.login_logining), true, new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(128251);
-          com.tencent.mm.kernel.h.aGY().a(localt);
-          LoginVoiceUI.this.bzt();
-          AppMethodBeat.o(128251);
-        }
-      });
-      com.tencent.mm.kernel.h.aGY().a(localt, 0);
+      this.lzP = k.a(this, getString(r.j.login_logining), true, new LoginVoiceUI.2(this, localu));
+      h.aZW().a(localu, 0);
       AppMethodBeat.o(128253);
       return;
-      i = this.ndo.length();
+      i = this.pZt.length();
       break;
       label175:
-      j = this.ndj.mUQ.length();
+      j = this.pZh.pRx.length();
     }
   }
   
-  public final boolean bzu()
+  public final boolean bXY()
   {
     return false;
   }
   
+  public int getLayoutId()
+  {
+    return r.g.login_voice_ui;
+  }
+  
   public void initView()
   {
-    AppMethodBeat.i(219080);
+    AppMethodBeat.i(305017);
     super.initView();
     if (getIntent() != null)
     {
@@ -79,18 +71,18 @@ public class LoginVoiceUI
       int j = getIntent().getIntExtra("key_errCode", 0);
       Object localObject = getIntent().getStringExtra("key_errMsg");
       Log.i("MicroMsg.LoginVoiceUI", "initView,errType %d,errCode %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-      if (a.ei(i, j))
+      if (a.fc(i, j))
       {
-        localObject = com.tencent.mm.h.a.Kb((String)localObject);
+        localObject = com.tencent.mm.broadcast.a.CH((String)localObject);
         if (localObject != null) {
-          ((com.tencent.mm.h.a)localObject).a(this, new DialogInterface.OnDismissListener()
+          ((com.tencent.mm.broadcast.a)localObject).a(this, new DialogInterface.OnDismissListener()
           {
             public final void onDismiss(DialogInterface paramAnonymousDialogInterface) {}
           });
         }
       }
     }
-    AppMethodBeat.o(219080);
+    AppMethodBeat.o(305017);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -98,38 +90,17 @@ public class LoginVoiceUI
     AppMethodBeat.i(128252);
     super.onCreate(paramBundle);
     super.setRequestedOrientation(1);
-    if (this.ned)
+    if (this.pZu)
     {
       AppMethodBeat.o(128252);
       return;
     }
     this.loginType = 1;
-    this.ndX.setVisibility(0);
-    this.ndG.setVisibility(0);
-    paramBundle = (LinearLayout.LayoutParams)this.ndF.getLayoutParams();
-    paramBundle.gravity = 1;
-    paramBundle.leftMargin = 0;
-    this.ndF.setLayoutParams(paramBundle);
+    this.pZc.setVisibility(0);
     findViewById(r.f.voice_btn_icon).setEnabled(false);
     ((TextView)findViewById(r.f.voice_login_btn)).setTextColor(getResources().getColorStateList(r.c.white_text_color_selector));
     ((TextView)findViewById(r.f.voice_login_btn)).setBackgroundResource(getResources().getColor(r.c.transparent));
-    this.ndG.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(128250);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/ui/LoginVoiceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        com.tencent.mm.plugin.report.service.h.IzE.a(11557, new Object[] { Integer.valueOf(2) });
-        paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("Kusername", LoginVoiceUI.this.ndT);
-        paramAnonymousView.putExtra("kscene_type", 1);
-        c.b(LoginVoiceUI.this.getContext(), "voiceprint", ".ui.VoiceLoginUI", paramAnonymousView, 1024);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginVoiceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(128250);
-      }
-    });
+    this.pZc.setOnClickListener(new LoginVoiceUI.1(this));
     AppMethodBeat.o(128252);
   }
   
@@ -141,7 +112,7 @@ public class LoginVoiceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginVoiceUI
  * JD-Core Version:    0.7.0.1
  */

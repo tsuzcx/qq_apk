@@ -24,7 +24,7 @@ public final class k
   }
   
   /* Error */
-  public final com.tencent.mm.protocal.protobuf.btr bxR(String paramString)
+  public final com.tencent.mm.protocal.protobuf.cik bzh(String paramString)
   {
     // Byte code:
     //   0: ldc 53
@@ -44,7 +44,7 @@ public final class k
     //   30: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   33: aload_1
     //   34: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: getstatic 81	com/tencent/mm/storage/emotion/k$a:VII	Lcom/tencent/mm/storage/emotion/k$a;
+    //   37: getstatic 81	com/tencent/mm/storage/emotion/k$a:admE	Lcom/tencent/mm/storage/emotion/k$a;
     //   40: getfield 85	com/tencent/mm/storage/emotion/k$a:value	I
     //   43: invokevirtual 88	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   46: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -80,9 +80,9 @@ public final class k
     //   97: ifeq +121 -> 218
     //   100: aload_1
     //   101: astore_2
-    //   102: new 110	com/tencent/mm/protocal/protobuf/btr
+    //   102: new 110	com/tencent/mm/protocal/protobuf/cik
     //   105: dup
-    //   106: invokespecial 111	com/tencent/mm/protocal/protobuf/btr:<init>	()V
+    //   106: invokespecial 111	com/tencent/mm/protocal/protobuf/cik:<init>	()V
     //   109: astore_3
     //   110: aload_1
     //   111: astore_2
@@ -90,7 +90,7 @@ public final class k
     //   113: aload_1
     //   114: iconst_0
     //   115: invokeinterface 115 2 0
-    //   120: invokevirtual 119	com/tencent/mm/protocal/protobuf/btr:parseFrom	([B)Lcom/tencent/mm/cd/a;
+    //   120: invokevirtual 119	com/tencent/mm/protocal/protobuf/cik:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   123: pop
     //   124: aload_3
     //   125: astore_2
@@ -173,7 +173,7 @@ public final class k
   }
   
   /* Error */
-  public final com.tencent.mm.protocal.protobuf.btp bxS(String paramString)
+  public final com.tencent.mm.protocal.protobuf.cii bzi(String paramString)
   {
     // Byte code:
     //   0: ldc 139
@@ -193,7 +193,7 @@ public final class k
     //   30: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   33: aload_1
     //   34: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: getstatic 144	com/tencent/mm/storage/emotion/k$a:VIK	Lcom/tencent/mm/storage/emotion/k$a;
+    //   37: getstatic 144	com/tencent/mm/storage/emotion/k$a:admG	Lcom/tencent/mm/storage/emotion/k$a;
     //   40: getfield 85	com/tencent/mm/storage/emotion/k$a:value	I
     //   43: invokevirtual 88	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   46: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -229,9 +229,9 @@ public final class k
     //   97: ifeq +121 -> 218
     //   100: aload_1
     //   101: astore_2
-    //   102: new 146	com/tencent/mm/protocal/protobuf/btp
+    //   102: new 146	com/tencent/mm/protocal/protobuf/cii
     //   105: dup
-    //   106: invokespecial 147	com/tencent/mm/protocal/protobuf/btp:<init>	()V
+    //   106: invokespecial 147	com/tencent/mm/protocal/protobuf/cii:<init>	()V
     //   109: astore_3
     //   110: aload_1
     //   111: astore_2
@@ -239,7 +239,7 @@ public final class k
     //   113: aload_1
     //   114: iconst_0
     //   115: invokeinterface 115 2 0
-    //   120: invokevirtual 148	com/tencent/mm/protocal/protobuf/btp:parseFrom	([B)Lcom/tencent/mm/cd/a;
+    //   120: invokevirtual 148	com/tencent/mm/protocal/protobuf/cii:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   123: pop
     //   124: aload_3
     //   125: astore_2
@@ -328,10 +328,10 @@ public final class k
     static
     {
       AppMethodBeat.i(105111);
-      VII = new a("DesignerSimpleInfo", 0, 0);
-      VIJ = new a("PersonalDesigner", 1, 1);
-      VIK = new a("DesignerEmojiList", 2, 2);
-      VIL = new a[] { VII, VIJ, VIK };
+      admE = new a("DesignerSimpleInfo", 0, 0);
+      admF = new a("PersonalDesigner", 1, 1);
+      admG = new a("DesignerEmojiList", 2, 2);
+      admH = new a[] { admE, admF, admG };
       AppMethodBeat.o(105111);
     }
     

@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.protocal.protobuf.ctf;
-import com.tencent.mm.protocal.protobuf.ctg;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.fbn;
-import com.tencent.mm.protocal.protobuf.jc;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.dkh;
+import com.tencent.mm.protocal.protobuf.dki;
+import com.tencent.mm.protocal.protobuf.fxy;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.protocal.protobuf.jy;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,107 +15,122 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "lyricsInfo", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "matrix", "Landroid/graphics/Matrix;", "(Ljava/util/List;Landroid/graphics/Matrix;)V", "musicDuration", "", "(Ljava/util/List;J)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "<set-?>", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getLyricsInfo", "()Ljava/util/ArrayList;", "getMusicDuration", "()J", "isValid", "", "limitLyrics", "", "duration", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toString", "", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "lyricsInfo", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "matrix", "Landroid/graphics/Matrix;", "(Ljava/util/List;Landroid/graphics/Matrix;)V", "musicDuration", "", "(Ljava/util/List;J)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "<set-?>", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getLyricsInfo", "()Ljava/util/ArrayList;", "getMusicDuration", "()J", "isValid", "", "limitLyrics", "", "duration", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toString", "", "Companion", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
   extends a
 {
-  public static final a Icz;
-  ArrayList<ctg> Icx;
-  long Icy;
+  public static final m.a NYT;
+  ArrayList<dki> NYU;
+  long NYV;
   
   static
   {
-    AppMethodBeat.i(226759);
-    Icz = new a((byte)0);
-    AppMethodBeat.o(226759);
+    AppMethodBeat.i(280303);
+    NYT = new m.a((byte)0);
+    AppMethodBeat.o(280303);
   }
   
-  public m(jc paramjc)
+  public m(jy paramjy)
   {
-    super(d.IbK);
-    AppMethodBeat.i(226758);
-    this.Icx = new ArrayList();
+    super(d.NYh);
+    AppMethodBeat.i(280294);
+    this.NYU = new ArrayList();
     try
     {
-      Object localObject = (com.tencent.mm.cd.a)new ctf();
-      paramjc = paramjc.ROY;
-      p.j(paramjc, "proto.itemData");
-      paramjc = paramjc.Tkb;
-      p.j(paramjc, "proto.itemData.buffer");
-      paramjc = paramjc.UH;
+      Object localObject = (com.tencent.mm.bx.a)new dkh();
+      paramjy = paramjy.YMl.aaxD.Op;
       try
       {
-        ((com.tencent.mm.cd.a)localObject).parseFrom(paramjc);
-        paramjc = (jc)localObject;
+        ((com.tencent.mm.bx.a)localObject).parseFrom(paramjy);
+        paramjy = (jy)localObject;
       }
-      catch (Exception paramjc)
+      catch (Exception paramjy)
       {
         for (;;)
         {
-          fbn localfbn;
-          Log.printDebugStack("safeParser", "", new Object[] { paramjc });
-          paramjc = null;
+          fxy localfxy;
+          Log.printDebugStack("safeParser", "", new Object[] { paramjy });
+          paramjy = null;
         }
-        AppMethodBeat.o(226758);
-        return;
       }
-      paramjc = (ctf)paramjc;
-      if (paramjc != null)
+      paramjy = (dkh)paramjy;
+      if (paramjy != null)
       {
-        this.Icx.clear();
-        this.Icx.addAll((Collection)paramjc.TBb);
-        localObject = this.aHZ;
-        localfbn = paramjc.Sdr;
-        p.j(localfbn, "it.matrix");
-        ((Matrix)localObject).setValues(a(localfbn));
-        this.Icy = paramjc.Icy;
+        this.NYU.clear();
+        this.NYU.addAll((Collection)paramjy.aaQp);
+        localObject = this.matrix;
+        localfxy = paramjy.Zbl;
+        s.s(localfxy, "it.matrix");
+        ((Matrix)localObject).setValues(a(localfxy));
+        this.NYV = paramjy.NYV;
         Log.i("MicroMsg.LyricsItem", toString());
-        AppMethodBeat.o(226758);
+        AppMethodBeat.o(280294);
         return;
       }
-      return;
     }
-    catch (IOException paramjc)
+    catch (IOException paramjy)
     {
-      Log.printErrStackTrace("MicroMsg.LyricsItem", (Throwable)paramjc, "LocationItem parse error", new Object[0]);
-      AppMethodBeat.o(226758);
+      Log.printErrStackTrace("MicroMsg.LyricsItem", (Throwable)paramjy, "LocationItem parse error", new Object[0]);
+      AppMethodBeat.o(280294);
     }
   }
   
-  public m(List<? extends ctg> paramList, long paramLong)
+  public m(List<? extends dki> paramList, long paramLong)
   {
     this(paramList, new Matrix());
-    AppMethodBeat.i(226753);
-    this.Icy = paramLong;
-    AppMethodBeat.o(226753);
+    AppMethodBeat.i(280287);
+    this.NYV = paramLong;
+    AppMethodBeat.o(280287);
   }
   
-  public m(List<? extends ctg> paramList, Matrix paramMatrix)
+  public m(List<? extends dki> paramList, Matrix paramMatrix)
   {
-    super(d.IbK);
-    AppMethodBeat.i(226751);
-    this.Icx = new ArrayList();
-    this.Icx.clear();
-    this.Icx.addAll((Collection)paramList);
-    this.aHZ.set(paramMatrix);
-    AppMethodBeat.o(226751);
+    super(d.NYh);
+    AppMethodBeat.i(280282);
+    this.NYU = new ArrayList();
+    this.NYU.clear();
+    this.NYU.addAll((Collection)paramList);
+    this.matrix.set(paramMatrix);
+    AppMethodBeat.o(280282);
   }
   
-  public final void PD(long paramLong)
+  public final com.tencent.mm.bx.a gKs()
   {
-    AppMethodBeat.i(226740);
+    AppMethodBeat.i(280310);
+    Object localObject = new dkh();
+    float[] arrayOfFloat = new float[9];
+    fxy localfxy = new fxy();
+    this.matrix.getValues(arrayOfFloat);
+    int i = 0;
+    while (i < 9)
+    {
+      float f = arrayOfFloat[i];
+      localfxy.aaib.add(Float.valueOf(f));
+      i += 1;
+    }
+    ((dkh)localObject).aaQp.addAll((Collection)this.NYU);
+    ((dkh)localObject).Zbl = localfxy;
+    ((dkh)localObject).NYV = this.NYV;
+    localObject = (com.tencent.mm.bx.a)localObject;
+    AppMethodBeat.o(280310);
+    return localObject;
+  }
+  
+  public final void tD(long paramLong)
+  {
+    AppMethodBeat.i(280319);
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = (Iterable)this.Icx;
+    Object localObject1 = (Iterable)this.NYU;
     Collection localCollection = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     label98:
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
-      if (((ctg)localObject2).startTime < paramLong) {}
+      if (((dki)localObject2).startTime < paramLong) {}
       for (int i = 1;; i = 0)
       {
         if (i == 0) {
@@ -126,47 +141,22 @@ public final class m
       }
     }
     localArrayList.addAll((Collection)localCollection);
-    this.Icx.clear();
-    this.Icx.addAll((Collection)localArrayList);
-    AppMethodBeat.o(226740);
-  }
-  
-  public final com.tencent.mm.cd.a fyG()
-  {
-    AppMethodBeat.i(226734);
-    Object localObject = new ctf();
-    float[] arrayOfFloat = new float[9];
-    fbn localfbn = new fbn();
-    this.aHZ.getValues(arrayOfFloat);
-    int i = 0;
-    while (i < 9)
-    {
-      float f = arrayOfFloat[i];
-      localfbn.SWx.add(Float.valueOf(f));
-      i += 1;
-    }
-    ((ctf)localObject).TBb.addAll((Collection)this.Icx);
-    ((ctf)localObject).Sdr = localfbn;
-    ((ctf)localObject).Icy = this.Icy;
-    localObject = (com.tencent.mm.cd.a)localObject;
-    AppMethodBeat.o(226734);
-    return localObject;
+    this.NYU.clear();
+    this.NYU.addAll((Collection)localArrayList);
+    AppMethodBeat.o(280319);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(226744);
-    String str = "[" + hashCode() + "]lyrics size:" + this.Icx.size();
-    AppMethodBeat.o(226744);
+    AppMethodBeat.i(280327);
+    String str = "[" + hashCode() + "]lyrics size:" + this.NYU.size();
+    AppMethodBeat.o(280327);
     return str;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItem$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.m
  * JD-Core Version:    0.7.0.1
  */

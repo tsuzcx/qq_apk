@@ -15,12 +15,12 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.live.view.LiveBottomSheetPanel;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bf;
+import kotlin.Metadata;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveShoppingPanel;", "Lcom/tencent/mm/live/view/LiveBottomSheetPanel;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "hide", "", "isLandscape", "", "onNestedFling", "target", "Landroid/view/View;", "velocityX", "", "velocityY", "consumed", "onStartNestedScroll", "child", "nestedScrollAxes", "show", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveShoppingPanel;", "Lcom/tencent/mm/live/view/LiveBottomSheetPanel;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "hide", "", "isLandscape", "", "onNestedFling", "target", "Landroid/view/View;", "velocityX", "", "velocityY", "consumed", "onStartNestedScroll", "child", "nestedScrollAxes", "show", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveShoppingPanel
   extends LiveBottomSheetPanel
 {
@@ -29,31 +29,27 @@ public final class FinderLiveShoppingPanel
   public FinderLiveShoppingPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(273712);
-    AppMethodBeat.o(273712);
+    AppMethodBeat.i(362031);
+    AppMethodBeat.o(362031);
   }
   
   public FinderLiveShoppingPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(273711);
+    AppMethodBeat.i(362023);
     this.TAG = "FinderLiveShoppingPanel";
-    AppMethodBeat.o(273711);
+    AppMethodBeat.o(362023);
   }
   
   private final boolean isLandscape()
   {
-    AppMethodBeat.i(273708);
-    Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = ((Context)localObject).getResources();
-    p.j(localObject, "context.resources");
-    if (((Resources)localObject).getConfiguration().orientation == 2)
+    AppMethodBeat.i(362038);
+    if (getContext().getResources().getConfiguration().orientation == 2)
     {
-      AppMethodBeat.o(273708);
+      AppMethodBeat.o(362038);
       return true;
     }
-    AppMethodBeat.o(273708);
+    AppMethodBeat.o(362038);
     return false;
   }
   
@@ -64,99 +60,93 @@ public final class FinderLiveShoppingPanel
   
   public final void hide()
   {
-    AppMethodBeat.i(273707);
-    Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = ((Context)localObject).getResources();
-    p.j(localObject, "context.resources");
-    int i = ((Resources)localObject).getConfiguration().orientation;
-    Log.i(this.TAG, "hide orientation:".concat(String.valueOf(i)));
+    AppMethodBeat.i(362057);
+    int i = getContext().getResources().getConfiguration().orientation;
+    Log.i(this.TAG, s.X("hide orientation:", Integer.valueOf(i)));
     if (i == 2)
     {
-      animate().translationX(ax.au(getContext()).y).setListener((Animator.AnimatorListener)new a(this)).start();
-      AppMethodBeat.o(273707);
+      animate().translationX(bf.bf(getContext()).y).setListener((Animator.AnimatorListener)new a(this)).start();
+      AppMethodBeat.o(362057);
       return;
     }
     super.hide();
-    AppMethodBeat.o(273707);
+    AppMethodBeat.o(362057);
   }
   
   public final boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    AppMethodBeat.i(273710);
+    AppMethodBeat.i(362070);
     if (!isLandscape())
     {
       paramBoolean = super.onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
-      AppMethodBeat.o(273710);
+      AppMethodBeat.o(362070);
       return paramBoolean;
     }
-    AppMethodBeat.o(273710);
+    AppMethodBeat.o(362070);
     return false;
   }
   
   public final boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
   {
-    AppMethodBeat.i(273709);
+    AppMethodBeat.i(362064);
     if (!isLandscape())
     {
       boolean bool = super.onStartNestedScroll(paramView1, paramView2, paramInt);
-      AppMethodBeat.o(273709);
+      AppMethodBeat.o(362064);
       return bool;
     }
-    AppMethodBeat.o(273709);
+    AppMethodBeat.o(362064);
     return false;
   }
   
   public final void show()
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(273706);
-    Object localObject1 = getContext();
-    p.j(localObject1, "context");
-    localObject1 = ((Context)localObject1).getResources();
-    p.j(localObject1, "context.resources");
-    int i = ((Resources)localObject1).getConfiguration().orientation;
-    Log.i(this.TAG, "show orientation:".concat(String.valueOf(i)));
+    AppMethodBeat.i(362052);
+    int i = getContext().getResources().getConfiguration().orientation;
+    Log.i(this.TAG, s.X("show orientation:", Integer.valueOf(i)));
     if (i == 2)
     {
-      localObject1 = getOnVisibilityListener();
-      if (localObject1 != null) {
-        ((b)localObject1).invoke(Boolean.TRUE);
+      Object localObject = getOnVisibilityListener();
+      if (localObject != null) {
+        ((b)localObject).invoke(Boolean.TRUE);
       }
       animate().setListener(null).translationX(0.0F).start();
-      Object localObject3 = getContext();
-      localObject1 = localObject3;
-      if (!(localObject3 instanceof Activity)) {
-        localObject1 = null;
+      localObject = getContext();
+      if ((localObject instanceof Activity))
+      {
+        localObject = (Activity)localObject;
+        if (localObject != null) {
+          break label112;
+        }
       }
-      localObject3 = (Activity)localObject1;
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = ((Activity)localObject3).getWindow();
+      label112:
+      for (localObject = null;; localObject = ((Activity)localObject).getWindow())
+      {
+        b((Window)localObject);
+        AppMethodBeat.o(362052);
+        return;
+        localObject = null;
+        break;
       }
-      b((Window)localObject1);
-      AppMethodBeat.o(273706);
-      return;
     }
     super.show();
-    AppMethodBeat.o(273706);
+    AppMethodBeat.o(362052);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/widget/FinderLiveShoppingPanel$hide$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/widget/FinderLiveShoppingPanel$hide$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     extends AnimatorListenerAdapter
   {
+    a(FinderLiveShoppingPanel paramFinderLiveShoppingPanel) {}
+    
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(275065);
-      paramAnimator = this.zrq.getOnVisibilityListener();
-      if (paramAnimator != null)
-      {
+      AppMethodBeat.i(361018);
+      paramAnimator = this.Eux.getOnVisibilityListener();
+      if (paramAnimator != null) {
         paramAnimator.invoke(Boolean.FALSE);
-        AppMethodBeat.o(275065);
-        return;
       }
-      AppMethodBeat.o(275065);
+      AppMethodBeat.o(361018);
     }
   }
 }

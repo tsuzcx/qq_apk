@@ -6,24 +6,24 @@ import oicq.wlogin_sdk.tools.util;
 public final class ad
   extends a
 {
-  public int abGY = 0;
+  public int ajIc = 0;
   
   public ad()
   {
-    this.abFM = 312;
+    this.ajGQ = 312;
   }
   
-  public final Boolean iUK()
+  public final Boolean kGl()
   {
     AppMethodBeat.i(88116);
-    if (this.abGw < 4)
+    if (this.ajHA < 4)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88116);
       return localBoolean;
     }
-    this.abGY = util.aq(this.abFG, this.abGv);
-    if (this.abGw < this.abGY * 10 + 4)
+    this.ajIc = util.ar(this.ajGK, this.ajHz);
+    if (this.ajHA < this.ajIc * 10 + 4)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88116);
@@ -34,20 +34,20 @@ public final class ad
     return localBoolean;
   }
   
-  public final int iUM()
+  public final int kGn()
   {
     AppMethodBeat.i(88117);
     int i = 0;
     for (;;)
     {
-      if (i >= this.abGY)
+      if (i >= this.ajIc)
       {
         AppMethodBeat.o(88117);
         return 0;
       }
-      if (util.ap(this.abFG, this.abGv + 4 + i * 10) == 266)
+      if (util.aq(this.ajGK, this.ajHz + 4 + i * 10) == 266)
       {
-        i = util.aq(this.abFG, i * 10 + (this.abGv + 4) + 2);
+        i = util.ar(this.ajGK, i * 10 + (this.ajHz + 4) + 2);
         AppMethodBeat.o(88117);
         return i;
       }
@@ -57,7 +57,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.ad
  * JD-Core Version:    0.7.0.1
  */

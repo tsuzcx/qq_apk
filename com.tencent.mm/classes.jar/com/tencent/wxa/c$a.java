@@ -3,76 +3,59 @@ package com.tencent.wxa;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wxa.c.a.a;
-import io.flutter.embedding.android.FlutterView.b;
-import io.flutter.embedding.android.e.a;
-import io.flutter.embedding.engine.d;
-import io.flutter.embedding.engine.plugins.a;
+import io.flutter.embedding.android.FlutterActivityLaunchConfigs.BackgroundMode;
+import io.flutter.embedding.android.FlutterView.RenderMode;
+import io.flutter.embedding.engine.FlutterShellArgs;
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import java.util.HashSet;
 
 public final class c$a
 {
-  public static final String cpb;
-  public String ZYN;
-  public String ZYO;
-  public FlutterView.b ZYP;
-  public d ZYQ;
-  private HashSet<b> ZYR;
-  public a.a ZYS;
-  public HashSet<a> ZYT;
-  public Context mAppContext;
+  public static final String DEFAULT_BACKGROUND_MODE;
+  public FlutterView.RenderMode aidA;
+  private HashSet<b> aidB;
+  public a.a aidC;
+  public HashSet<FlutterPlugin> aidD;
+  public Boolean aidE;
+  public Boolean aidF;
+  public Boolean aidG;
+  public Boolean aidH;
+  public String dartEntrypoint;
+  public FlutterShellArgs efF;
+  public String initialRoute;
+  private Context mAppContext;
   
   static
   {
-    AppMethodBeat.i(224765);
-    cpb = e.a.aaoG.name();
-    AppMethodBeat.o(224765);
+    AppMethodBeat.i(210503);
+    DEFAULT_BACKGROUND_MODE = FlutterActivityLaunchConfigs.BackgroundMode.opaque.name();
+    AppMethodBeat.o(210503);
   }
   
   public c$a(Context paramContext)
   {
-    AppMethodBeat.i(224757);
-    this.ZYN = "main";
-    this.ZYO = "/";
-    this.ZYP = FlutterView.b.aapx;
-    this.ZYQ = new d(new String[0]);
-    this.ZYR = new HashSet();
-    this.ZYT = new HashSet();
+    AppMethodBeat.i(210466);
+    this.dartEntrypoint = "main";
+    this.initialRoute = "/";
+    this.aidA = FlutterView.RenderMode.texture;
+    this.efF = new FlutterShellArgs(new String[0]);
+    this.aidB = new HashSet();
+    this.aidD = new HashSet();
+    this.aidE = Boolean.TRUE;
+    this.aidF = Boolean.FALSE;
+    this.aidG = Boolean.TRUE;
+    this.aidH = Boolean.FALSE;
     this.mAppContext = paramContext;
-    AppMethodBeat.o(224757);
+    AppMethodBeat.o(210466);
   }
   
   public final a a(b paramb)
   {
-    AppMethodBeat.i(224759);
-    if (!this.ZYR.contains(paramb)) {
-      this.ZYR.add(paramb);
+    AppMethodBeat.i(210509);
+    if (!this.aidB.contains(paramb)) {
+      this.aidB.add(paramb);
     }
-    AppMethodBeat.o(224759);
-    return this;
-  }
-  
-  public final a a(a.a parama)
-  {
-    this.ZYS = parama;
-    return this;
-  }
-  
-  public final a bEA(String paramString)
-  {
-    this.ZYN = paramString;
-    return this;
-  }
-  
-  public final a ivw()
-  {
-    return this;
-  }
-  
-  public final a k(HashSet<a> paramHashSet)
-  {
-    AppMethodBeat.i(224761);
-    this.ZYT.addAll(paramHashSet);
-    AppMethodBeat.o(224761);
+    AppMethodBeat.o(210509);
     return this;
   }
 }

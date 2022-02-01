@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="line"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:width="1.0dip" android:color="@color/FG_3" android:dashWidth="3.0dip" android:dashGap="2.0dip" />
-</shape>
+    <item android:state_pressed="true" android:color="@color/a8c" />
+    <item android:color="@color/a8b" />
+</selector>

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.gamelife.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -8,290 +7,325 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.game.report.c.a;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.game.api.c;
 import com.tencent.mm.plugin.gamelife.PluginGameLife;
+import com.tencent.mm.plugin.gamelife.d.a;
+import com.tencent.mm.plugin.gamelife.d.b;
+import com.tencent.mm.plugin.gamelife.d.c;
+import com.tencent.mm.plugin.gamelife.d.d;
 import com.tencent.mm.plugin.gamelife.d.e;
 import com.tencent.mm.plugin.gamelife.d.f;
-import com.tencent.mm.plugin.gamelife.e.e;
+import com.tencent.mm.plugin.gamelife.f.e;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.tools.w;
-import kotlin.g.b.p;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.tools.v;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider;", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider;", "delegate", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider$Delegate;", "(Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider$Delegate;)V", "onItemClickListener", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemClickListener;", "getOnItemClickListener", "()Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemClickListener;", "setOnItemClickListener", "(Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemClickListener;)V", "onLongClickListener", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemLongClickListener;", "getOnLongClickListener", "()Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemLongClickListener;", "setOnLongClickListener", "(Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemLongClickListener;)V", "bindHistoryConversation", "", "holder", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$ConversationViewHolder;", "item", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversation;", "pos", "", "onBindViewHolder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "reportConversationItem", "actionType", "", "plugin-gamelife_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider;", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider;", "delegate", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider$Delegate;", "(Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider$Delegate;)V", "onItemClickListener", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemClickListener;", "getOnItemClickListener", "()Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemClickListener;", "setOnItemClickListener", "(Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemClickListener;)V", "onLongClickListener", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemLongClickListener;", "getOnLongClickListener", "()Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemLongClickListener;", "setOnLongClickListener", "(Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$OnItemLongClickListener;)V", "bindHistoryConversation", "", "holder", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$ConversationViewHolder;", "item", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversation;", "pos", "", "onBindViewHolder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "reportConversationItem", "actionType", "", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends f
 {
-  b.c Dik;
-  b.d Dil;
+  b.c Jcb;
+  b.d Jcc;
   
   public d(f.a parama)
   {
     super(parama);
-    AppMethodBeat.i(204027);
-    AppMethodBeat.o(204027);
+    AppMethodBeat.i(267902);
+    AppMethodBeat.o(267902);
   }
   
-  public final b.b E(ViewGroup paramViewGroup)
+  private final void a(com.tencent.mm.plugin.gamelife.f.a parama, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(204025);
-    p.k(paramViewGroup, "parent");
-    paramViewGroup = ad.kS(paramViewGroup.getContext()).inflate(com.tencent.mm.plugin.gamelife.d.d.Dgg, paramViewGroup, false);
-    p.j(paramViewGroup, "MMLayoutInflater.getInfl…rmal_item, parent, false)");
-    paramViewGroup = new b.b(paramViewGroup);
-    AppMethodBeat.o(204025);
-    return paramViewGroup;
-  }
-  
-  @SuppressLint({"ResourceType"})
-  public final void a(final b.b paramb, final int paramInt)
-  {
-    AppMethodBeat.i(204026);
-    p.k(paramb, "holder");
-    Object localObject2 = paramb.amk;
-    p.j(localObject2, "holder.itemView");
-    final com.tencent.mm.plugin.gamelife.e.a locala = this.DiT.TY(paramInt);
-    paramb.ez(locala);
-    ((View)localObject2).setBackgroundResource(com.tencent.mm.plugin.gamelife.d.b.comm_list_item_selector);
-    ((TextView)((View)localObject2).findViewById(com.tencent.mm.plugin.gamelife.d.c.descTv)).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-    Object localObject1 = h.ae(n.class);
-    p.j(localObject1, "MMKernel.service(IMessengerStorage::class.java)");
-    localObject1 = ((n)localObject1).eSe().aOH(locala.field_sessionId);
-    Object localObject3;
-    if ((localObject1 != null) && (((ca)localObject1).getStatus() == 5))
+    AppMethodBeat.i(267917);
+    String str = null;
+    if (paramLong == 72L) {
+      str = "2";
+    }
+    Object localObject1;
+    int i;
+    long l1;
+    if (!parama.fIs())
     {
-      localObject1 = ((View)localObject2).getContext();
-      p.j(localObject1, "itemView.context");
-      localObject1 = ((Context)localObject1).getResources().getDrawable(d.e.msg_state_failed);
-      if (localObject1 != null)
+      Object localObject2 = ((com.tencent.mm.plugin.gamelife.a.b)h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu(parama.field_selfUserName);
+      if (localObject2 != null)
       {
-        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
-        ((TextView)((View)localObject2).findViewById(com.tencent.mm.plugin.gamelife.d.c.descTv)).setCompoundDrawablesWithIntrinsicBounds((Drawable)localObject1, null, null, null);
+        localObject1 = com.tencent.mm.game.report.c.mtx;
+        i = fIE().fIy();
+        localObject1 = parama.field_sessionId;
+        s.s(localObject1, "item.field_sessionId");
+        l1 = ((com.tencent.mm.plugin.gamelife.a.a)localObject2).fIh();
+        localObject2 = parama.field_selfUserName;
+        s.s(localObject2, "item.field_selfUserName");
+        Object localObject3 = parama.Jbs;
+        s.checkNotNull(localObject3);
+        long l2 = ((com.tencent.mm.plugin.gamelife.e.a)localObject3).field_accountType;
+        localObject3 = parama.field_talker;
+        s.s(localObject3, "item.field_talker");
+        long l3 = parama.fIr();
+        parama = com.tencent.mm.plugin.gamelife.j.a.JbN;
+        c.a.a(paramInt - 2 + 1, paramLong, i, (String)localObject1, l1, (String)localObject2, l2, (String)localObject3, l3, com.tencent.mm.plugin.gamelife.j.a.fIw(), str);
+        AppMethodBeat.o(267917);
       }
     }
     else
     {
-      TextView localTextView = (TextView)((View)localObject2).findViewById(com.tencent.mm.plugin.gamelife.d.c.descTv);
-      p.j(localTextView, "itemView.descTv");
+      localObject1 = com.tencent.mm.game.report.c.mtx;
+      i = fIE().fIy();
+      localObject1 = parama.field_sessionId;
+      s.s(localObject1, "item.field_sessionId");
+      l1 = parama.fIr();
+      parama = com.tencent.mm.plugin.gamelife.j.a.JbN;
+      c.a.a(paramInt - 2 + 1, paramLong, i, (String)localObject1, 0L, "", 0L, "", l1, com.tencent.mm.plugin.gamelife.j.a.fIw(), str);
+    }
+    AppMethodBeat.o(267917);
+  }
+  
+  private static final void a(com.tencent.mm.plugin.gamelife.f.a parama, d paramd, int paramInt, View paramView1, View paramView2)
+  {
+    AppMethodBeat.i(267953);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramd);
+    localb.sc(paramInt);
+    localb.cH(paramView1);
+    localb.cH(paramView2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "$item");
+    s.u(paramd, "this$0");
+    s.u(paramView1, "$this_apply");
+    if (parama.field_unReadCount != 2147483647)
+    {
+      parama.field_unReadCount = 2147483647;
+      ((PluginGameLife)h.az(PluginGameLife.class)).getConversationStorage().update(parama.systemRowid, (IAutoDBItem)parama, false);
+      ((PluginGameLife)h.az(PluginGameLife.class)).getConversationStorage().doNotify("single", 4, parama);
+    }
+    paramd.a(parama, 7L, paramInt);
+    ((com.tencent.mm.plugin.game.api.c)h.ax(com.tencent.mm.plugin.game.api.c.class)).hH(paramView1.getContext());
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(267953);
+  }
+  
+  private static final void a(d paramd, com.tencent.mm.plugin.gamelife.f.a parama, int paramInt, b.b paramb, View paramView1, View paramView2)
+  {
+    AppMethodBeat.i(267930);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramd);
+    localb.cH(parama);
+    localb.sc(paramInt);
+    localb.cH(paramb);
+    localb.cH(paramView1);
+    localb.cH(paramView2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramd, "this$0");
+    s.u(parama, "$item");
+    s.u(paramb, "$holder");
+    s.u(paramView1, "$this_apply");
+    paramd.a(parama, 2L, paramInt);
+    parama = (com.tencent.mm.plugin.gamelife.f.a)paramb.CSA;
+    paramd = paramd.Jcb;
+    if (paramd != null)
+    {
+      s.s(parama, "conversation");
+      paramd.a(paramView1, parama);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(267930);
+  }
+  
+  private static final boolean b(d paramd, com.tencent.mm.plugin.gamelife.f.a parama, int paramInt, b.b paramb, View paramView1, View paramView2)
+  {
+    AppMethodBeat.i(267941);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramd);
+    localb.cH(parama);
+    localb.sc(paramInt);
+    localb.cH(paramb);
+    localb.cH(paramView1);
+    localb.cH(paramView2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", localObject, localb.aYj());
+    s.u(paramd, "this$0");
+    s.u(parama, "$item");
+    s.u(paramb, "$holder");
+    s.u(paramView1, "$this_apply");
+    paramd.a(parama, 72L, paramInt);
+    parama = (com.tencent.mm.plugin.gamelife.f.a)paramb.CSA;
+    paramb = paramd.Jcc;
+    if (paramb != null)
+    {
+      s.s(parama, "conversation");
+      paramb.a(paramView1, paramInt, parama, paramd.fIE().fIy());
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+    AppMethodBeat.o(267941);
+    return true;
+  }
+  
+  private static final boolean c(d paramd, com.tencent.mm.plugin.gamelife.f.a parama, int paramInt, b.b paramb, View paramView1, View paramView2)
+  {
+    AppMethodBeat.i(267992);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramd);
+    localb.cH(parama);
+    localb.sc(paramInt);
+    localb.cH(paramb);
+    localb.cH(paramView1);
+    localb.cH(paramView2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", localObject, localb.aYj());
+    s.u(paramd, "this$0");
+    s.u(parama, "$item");
+    s.u(paramb, "$holder");
+    s.u(paramView1, "$this_apply");
+    paramd.a(parama, 72L, paramInt);
+    parama = (com.tencent.mm.plugin.gamelife.f.a)paramb.CSA;
+    paramb = paramd.Jcc;
+    if (paramb != null)
+    {
+      s.s(parama, "conversation");
+      paramb.a(paramView1, paramInt, parama, paramd.fIE().fIy());
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+    AppMethodBeat.o(267992);
+    return true;
+  }
+  
+  public final b.b O(ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(268033);
+    s.u(paramViewGroup, "parent");
+    paramViewGroup = af.mU(paramViewGroup.getContext()).inflate(d.d.Jab, paramViewGroup, false);
+    s.s(paramViewGroup, "getInflater(parent.conte…rmal_item, parent, false)");
+    paramViewGroup = new b.b(paramViewGroup);
+    AppMethodBeat.o(268033);
+    return paramViewGroup;
+  }
+  
+  public final void a(b.b paramb, int paramInt)
+  {
+    AppMethodBeat.i(268056);
+    s.u(paramb, "holder");
+    Object localObject2 = paramb.caK;
+    s.s(localObject2, "holder.itemView");
+    com.tencent.mm.plugin.gamelife.f.a locala = fIE().XT(paramInt);
+    paramb.CSA = locala;
+    ((View)localObject2).setBackgroundResource(d.b.comm_list_item_selector);
+    ((TextView)((View)localObject2).findViewById(d.c.descTv)).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+    Object localObject1 = ((n)h.ax(n.class)).gaZ().aLG(locala.field_sessionId);
+    Object localObject3;
+    if ((localObject1 != null) && (((fi)localObject1).field_status == 5))
+    {
+      localObject1 = ((View)localObject2).getContext().getResources().getDrawable(d.e.msg_state_failed);
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        ((TextView)((View)localObject2).findViewById(d.c.descTv)).setCompoundDrawablesWithIntrinsicBounds((Drawable)localObject1, null, null, null);
+      }
+    }
+    else
+    {
+      TextView localTextView = (TextView)((View)localObject2).findViewById(d.c.descTv);
       localObject1 = MMApplicationContext.getContext();
       if ((locala.field_digestFlag & 1L) > 0L)
       {
-        locala.field_digestPrefix = com.tencent.mm.ci.a.ba((Context)localObject1, d.f.Dgy);
+        locala.field_digestPrefix = com.tencent.mm.cd.a.bt((Context)localObject1, d.f.Jas);
         locala.field_digestFlag = 0L;
       }
       localObject3 = (CharSequence)locala.field_digestPrefix;
       if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
-        break label701;
+        break label594;
       }
       i = 1;
-      label272:
+      label230:
       if (i == 0) {
-        break label706;
+        break label599;
       }
-      localObject1 = com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject1, (CharSequence)locala.field_digest);
-      p.j(localObject1, "MMSpanManager.spanForSmiley(context, field_digest)");
+      localObject1 = p.b((Context)localObject1, (CharSequence)locala.field_digest);
+      s.s(localObject1, "spanForSmiley(context, field_digest)");
       localObject1 = (CharSequence)localObject1;
-      label306:
+      label264:
       localTextView.setText((CharSequence)localObject1);
-      localObject1 = (TextView)((View)localObject2).findViewById(com.tencent.mm.plugin.gamelife.d.c.timeTv);
-      p.j(localObject1, "itemView.timeTv");
-      ((TextView)localObject1).setText((CharSequence)String.valueOf(com.tencent.mm.pluginsdk.j.f.d(((View)localObject2).getContext(), locala.field_updateTime, true)));
-      localObject1 = (TextView)((View)localObject2).findViewById(com.tencent.mm.plugin.gamelife.d.c.tipNomalTv);
-      p.j(localObject1, "itemView.tipNomalTv");
-      ((TextView)localObject1).setVisibility(8);
-      localObject1 = (TextView)((View)localObject2).findViewById(com.tencent.mm.plugin.gamelife.d.c.tipCountTv);
-      p.j(localObject1, "itemView.tipCountTv");
+      ((TextView)((View)localObject2).findViewById(d.c.timeTv)).setText((CharSequence)String.valueOf(com.tencent.mm.pluginsdk.platformtools.f.d(((View)localObject2).getContext(), locala.field_updateTime, true)));
+      ((TextView)((View)localObject2).findViewById(d.c.tipNomalTv)).setVisibility(8);
+      localObject1 = (TextView)((View)localObject2).findViewById(d.c.tipCountTv);
       if (locala.field_unReadCount <= 0) {
-        break label792;
+        break label685;
       }
       i = 0;
-      label418:
+      label344:
       ((TextView)localObject1).setVisibility(i);
-      localTextView = (TextView)((View)localObject2).findViewById(com.tencent.mm.plugin.gamelife.d.c.tipCountTv);
-      p.j(localTextView, "itemView.tipCountTv");
+      localTextView = (TextView)((View)localObject2).findViewById(d.c.tipCountTv);
       if (locala.field_unReadCount <= 99) {
-        break label798;
+        break label691;
       }
       localObject1 = (CharSequence)"...";
-      label463:
+      label381:
       localTextView.setText((CharSequence)localObject1);
-      ((TextView)((View)localObject2).findViewById(com.tencent.mm.plugin.gamelife.d.c.tipCountTv)).setBackgroundResource(w.bj(((View)localObject2).getContext(), locala.field_unReadCount));
-      if (!locala.eAs()) {
-        break label819;
+      ((TextView)((View)localObject2).findViewById(d.c.tipCountTv)).setBackgroundResource(v.bC(((View)localObject2).getContext(), locala.field_unReadCount));
+      if (!locala.fIs()) {
+        break label712;
       }
-      localObject1 = paramb.amk;
-      localObject2 = (TextView)((View)localObject1).findViewById(com.tencent.mm.plugin.gamelife.d.c.tipCountTv);
-      p.j(localObject2, "tipCountTv");
-      ((TextView)localObject2).setVisibility(8);
-      localObject2 = (TextView)((View)localObject1).findViewById(com.tencent.mm.plugin.gamelife.d.c.tipNomalTv);
-      p.j(localObject2, "tipNomalTv");
+      localObject1 = paramb.caK;
+      ((TextView)((View)localObject1).findViewById(d.c.tipCountTv)).setVisibility(8);
+      localObject2 = (TextView)((View)localObject1).findViewById(d.c.tipNomalTv);
       if ((locala.field_unReadCount != 2147483647) && (locala.field_unReadCount != 0)) {
-        break label814;
+        break label707;
       }
     }
-    label792:
-    label798:
-    label814:
+    label685:
+    label691:
+    label707:
     for (int i = 8;; i = 0)
     {
       ((TextView)localObject2).setVisibility(i);
-      ((ImageView)((View)localObject1).findViewById(com.tencent.mm.plugin.gamelife.d.c.avatarIv)).setImageResource(com.tencent.mm.plugin.gamelife.d.b.DfD);
-      localObject2 = (TextView)((View)localObject1).findViewById(com.tencent.mm.plugin.gamelife.d.c.conversationName);
-      p.j(localObject2, "conversationName");
-      ((TextView)localObject2).setText((CharSequence)com.tencent.mm.ci.a.ba(((View)localObject1).getContext(), d.f.DgA));
-      ((View)localObject1).setOnClickListener((View.OnClickListener)new a((View)localObject1, this, locala, paramInt, paramb));
-      ((View)localObject1).setOnLongClickListener((View.OnLongClickListener)new b((View)localObject1, this, locala, paramInt, paramb));
-      AppMethodBeat.o(204026);
+      ((ImageView)((View)localObject1).findViewById(d.c.avatarIv)).setImageResource(d.b.IZy);
+      ((TextView)((View)localObject1).findViewById(d.c.conversationName)).setText((CharSequence)com.tencent.mm.cd.a.bt(((View)localObject1).getContext(), d.f.Jau));
+      ((View)localObject1).setOnClickListener(new d..ExternalSyntheticLambda0(locala, this, paramInt, (View)localObject1));
+      ((View)localObject1).setOnLongClickListener(new d..ExternalSyntheticLambda2(this, locala, paramInt, paramb, (View)localObject1));
+      AppMethodBeat.o(268056);
       return;
-      localObject1 = null;
+      ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
       break;
-      label701:
+      label594:
       i = 0;
-      break label272;
-      label706:
+      break label230;
+      label599:
       localObject3 = new SpannableStringBuilder((CharSequence)locala.field_digestPrefix);
-      ((SpannableStringBuilder)localObject3).setSpan(new ForegroundColorSpan(com.tencent.mm.ci.a.w((Context)localObject1, com.tencent.mm.plugin.gamelife.d.a.Red)), 0, ((SpannableStringBuilder)localObject3).length(), 33);
-      ((SpannableStringBuilder)localObject3).append((CharSequence)" ").append((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject1, (CharSequence)locala.field_digest));
+      ((SpannableStringBuilder)localObject3).setSpan(new ForegroundColorSpan(com.tencent.mm.cd.a.w((Context)localObject1, d.a.Red)), 0, ((SpannableStringBuilder)localObject3).length(), 33);
+      ((SpannableStringBuilder)localObject3).append((CharSequence)" ").append((CharSequence)p.b((Context)localObject1, (CharSequence)locala.field_digest));
       localObject1 = (CharSequence)localObject3;
-      break label306;
+      break label264;
       i = 8;
-      break label418;
+      break label344;
       localObject1 = (CharSequence)String.valueOf(locala.field_unReadCount);
-      break label463;
+      break label381;
     }
-    label819:
-    ((View)localObject2).setOnClickListener((View.OnClickListener)new c((View)localObject2, this, locala, paramInt, paramb));
-    ((View)localObject2).setOnLongClickListener((View.OnLongClickListener)new d((View)localObject2, this, locala, paramInt, paramb));
-    paramb = (TextView)((View)localObject2).findViewById(com.tencent.mm.plugin.gamelife.d.c.conversationName);
-    p.j(paramb, "conversationName");
-    paramb.setText(locala.xgc);
-    com.tencent.mm.ui.h.a.a.c((ImageView)((View)localObject2).findViewById(com.tencent.mm.plugin.gamelife.d.c.avatarIv), locala.field_sessionId);
-    AppMethodBeat.o(204026);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$bindHistoryConversation$1$1"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(View paramView, d paramd, com.tencent.mm.plugin.gamelife.e.a parama, int paramInt, b.b paramb) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(204098);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$bindHistoryConversation$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (locala.field_unReadCount != 2147483647)
-      {
-        locala.field_unReadCount = 2147483647;
-        ((PluginGameLife)h.ag(PluginGameLife.class)).getConversationStorage().update(locala.systemRowid, (IAutoDBItem)locala, false);
-        ((PluginGameLife)h.ag(PluginGameLife.class)).getConversationStorage().doNotify("single", 4, locala);
-      }
-      d.a(jdField_this, locala, 7L, paramInt);
-      ((c)h.ae(c.class)).go(this.xkv.getContext());
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$bindHistoryConversation$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(204098);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick", "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$bindHistoryConversation$1$2"})
-  static final class b
-    implements View.OnLongClickListener
-  {
-    b(View paramView, d paramd, com.tencent.mm.plugin.gamelife.e.a parama, int paramInt, b.b paramb) {}
-    
-    public final boolean onLongClick(View paramView)
-    {
-      AppMethodBeat.i(202694);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$bindHistoryConversation$$inlined$apply$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).aFi());
-      d.a(jdField_this, locala, 72L, paramInt);
-      paramView = (com.tencent.mm.plugin.gamelife.e.a)paramb.ihX();
-      localObject = jdField_this.Dil;
-      if (localObject != null)
-      {
-        View localView = this.xkv;
-        p.j(localView, "this");
-        int i = paramInt;
-        p.j(paramView, "conversation");
-        ((b.d)localObject).a(localView, i, paramView, jdField_this.DiT.eAx());
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$bindHistoryConversation$$inlined$apply$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-      AppMethodBeat.o(202694);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$onBindViewHolder$2$1"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(View paramView, d paramd, com.tencent.mm.plugin.gamelife.e.a parama, int paramInt, b.b paramb) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(203907);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$onBindViewHolder$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      d.a(jdField_this, locala, 2L, paramInt);
-      paramView = (com.tencent.mm.plugin.gamelife.e.a)paramb.ihX();
-      localObject = jdField_this.Dik;
-      if (localObject != null)
-      {
-        View localView = this.xkv;
-        p.j(paramView, "conversation");
-        ((b.c)localObject).a(localView, paramView);
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$onBindViewHolder$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(203907);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick", "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$onBindViewHolder$2$2"})
-  static final class d
-    implements View.OnLongClickListener
-  {
-    d(View paramView, d paramd, com.tencent.mm.plugin.gamelife.e.a parama, int paramInt, b.b paramb) {}
-    
-    public final boolean onLongClick(View paramView)
-    {
-      AppMethodBeat.i(204254);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$onBindViewHolder$$inlined$apply$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).aFi());
-      d.a(jdField_this, locala, 72L, paramInt);
-      paramView = (com.tencent.mm.plugin.gamelife.e.a)paramb.ihX();
-      localObject = jdField_this.Dil;
-      if (localObject != null)
-      {
-        View localView = this.xkv;
-        int i = paramInt;
-        p.j(paramView, "conversation");
-        ((b.d)localObject).a(localView, i, paramView, jdField_this.DiT.eAx());
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/gamelife/ui/GameLifeConversationNormalViewProvider$onBindViewHolder$$inlined$apply$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-      AppMethodBeat.o(204254);
-      return true;
-    }
+    label712:
+    ((View)localObject2).setOnClickListener(new d..ExternalSyntheticLambda1(this, locala, paramInt, paramb, (View)localObject2));
+    ((View)localObject2).setOnLongClickListener(new d..ExternalSyntheticLambda3(this, locala, paramInt, paramb, (View)localObject2));
+    ((TextView)((View)localObject2).findViewById(d.c.conversationName)).setText(locala.AFy);
+    com.tencent.mm.ui.i.a.a.g((ImageView)((View)localObject2).findViewById(d.c.avatarIv), locala.field_sessionId);
+    AppMethodBeat.o(268056);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.ui.d
  * JD-Core Version:    0.7.0.1
  */

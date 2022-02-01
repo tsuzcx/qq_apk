@@ -5,21 +5,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class c
   implements Comparable<c>
 {
-  String fxT;
+  String hCy;
   String nickname;
   float score;
   
   public final String toString()
   {
     AppMethodBeat.i(122426);
-    String str = String.format("chatroom[%s %s] score[%f]", new Object[] { this.fxT, this.nickname, Float.valueOf(this.score) });
+    String str = String.format("chatroom[%s %s] score[%f]", new Object[] { this.hCy, this.nickname, Float.valueOf(this.score) });
     AppMethodBeat.o(122426);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.c
  * JD-Core Version:    0.7.0.1
  */

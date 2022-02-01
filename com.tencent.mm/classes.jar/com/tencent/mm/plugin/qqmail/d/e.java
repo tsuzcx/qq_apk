@@ -1,111 +1,60 @@
 package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyy;
-import com.tencent.mm.protocal.protobuf.jh;
-import g.a.a.b;
-import java.util.LinkedList;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.qqmail.model.ay;
+import com.tencent.mm.plugin.qqmail.model.az;
 
 public final class e
-  extends dyy
+  extends p
+  implements m
 {
-  public String HlA;
-  public int HlD;
+  public long NlE;
+  private com.tencent.mm.am.h callback;
+  public c oDw;
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public e(long paramLong)
   {
-    AppMethodBeat.i(250523);
-    if (paramInt == 0)
-    {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(250523);
-        throw paramVarArgs;
-      }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
-      }
-      if (this.HlA != null) {
-        paramVarArgs.f(2, this.HlA);
-      }
-      paramVarArgs.aY(3, this.HlD);
-      AppMethodBeat.o(250523);
-      return 0;
-    }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label440;
-      }
-    }
-    label440:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
-    {
-      int i = paramInt;
-      if (this.HlA != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.HlA);
-      }
-      paramInt = g.a.a.b.b.a.bM(3, this.HlD);
-      AppMethodBeat.o(250523);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(250523);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(250523);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        e locale = (e)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(250523);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
-            }
-            locale.BaseResponse = localjh;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(250523);
-          return 0;
-        case 2: 
-          locale.HlA = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(250523);
-          return 0;
-        }
-        locale.HlD = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(250523);
-        return 0;
-      }
-      AppMethodBeat.o(250523);
-      return -1;
-    }
+    AppMethodBeat.i(266888);
+    this.NlE = paramLong;
+    c.a locala = new c.a();
+    locala.funcId = getType();
+    locala.uri = "/cgi-bin/xmmailbroker/mb_syncconact";
+    ay localay = new ay();
+    localay.Nlw = paramLong;
+    com.tencent.mm.kernel.h.baC();
+    localay.uin = b.getUin();
+    locala.otE = localay;
+    locala.otF = new az();
+    this.oDw = locala.bEF();
+    AppMethodBeat.o(266888);
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(266898);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
+    AppMethodBeat.o(266898);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 14418;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(266906);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(266906);
   }
 }
 

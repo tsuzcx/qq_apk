@@ -1,49 +1,24 @@
 package com.tencent.mm.plugin.appbrand.task;
 
+import com.tencent.luggage.sdk.processes.LuggageServiceType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/task/AppBrandUILifeCycleSpeedProfile;", "", "()V", "TAG", "", "onAppBrandUILifeCycle", "", "ui", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;", "lifecycle", "plugin-appbrand-integration_release"})
-public final class r
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/task/WrongServiceTypeException;", "Ljava/lang/IllegalStateException;", "Lkotlin/IllegalStateException;", "type", "Lcom/tencent/luggage/sdk/processes/LuggageServiceType;", "(Lcom/tencent/luggage/sdk/processes/LuggageServiceType;)V", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class r
+  extends IllegalStateException
 {
-  public static final r qRZ;
-  
-  static
+  public r(LuggageServiceType paramLuggageServiceType)
   {
-    AppMethodBeat.i(51067);
-    qRZ = new r();
-    AppMethodBeat.o(51067);
-  }
-  
-  public static void b(AppBrandUI paramAppBrandUI, String paramString)
-  {
-    AppMethodBeat.i(51066);
-    p.k(paramAppBrandUI, "ui");
-    p.k(paramString, "lifecycle");
-    try
-    {
-      if (p.h("finish", paramString))
-      {
-        com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandUILifeCycleSpeedProfile", "onAppBrandLifeCycle " + paramAppBrandUI.hashCode() + ' ' + paramAppBrandUI.getLocalClassName() + " finish, stack:" + android.util.Log.getStackTraceString(new Throwable()));
-        AppMethodBeat.o(51066);
-        return;
-      }
-      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandUILifeCycleSpeedProfile", "onAppBrandLifeCycle " + paramAppBrandUI.hashCode() + ' ' + paramAppBrandUI.getLocalClassName() + ' ' + paramString);
-      AppMethodBeat.o(51066);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandUILifeCycleSpeedProfile", "onAppBrandLifeCycle " + paramAppBrandUI.hashCode() + ' ' + paramAppBrandUI.getClass().getSimpleName() + ' ' + paramString);
-      AppMethodBeat.o(51066);
-    }
+    super(s.X("unexpected service type:", paramLuggageServiceType.name()));
+    AppMethodBeat.i(318539);
+    AppMethodBeat.o(318539);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.r
  * JD-Core Version:    0.7.0.1
  */

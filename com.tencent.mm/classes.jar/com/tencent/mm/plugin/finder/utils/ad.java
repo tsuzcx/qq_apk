@@ -1,543 +1,385 @@
 package com.tencent.mm.plugin.finder.utils;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.net.Uri.Builder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.storage.d;
-import com.tencent.mm.plugin.findersdk.a.ae;
-import com.tencent.mm.protocal.protobuf.cse;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.view.FinderBottomCustomDialogHelper;
+import com.tencent.mm.plugin.finder.view.FinderBottomCustomDialogHelper.Companion;
+import com.tencent.mm.plugin.findersdk.a.x;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
+import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.bys;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.String;Lcom.tencent.mm.protocal.protobuf.cse;>;
-import java.util.Iterator;
-import java.util.List;
-import kotlin.g.a.b;
-import kotlin.g.a.m;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.MMWizardActivity;
+import com.tencent.mm.ui.widget.a.g.a;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/FinderStyleUtil;", "", "()V", "AT", "", "getAT", "()Ljava/lang/String;", "FINDER", "getFINDER", "STYLE", "getSTYLE", "TAG", "TAG_AT_END", "TAG_AT_START", "TAG_CDATA", "TAG_FINDER_END", "TAG_FINDER_START", "TAG_STYLE_END", "TAG_STYLE_START", "TAG_TOPIC", "TAG_VALUE_COUNT", "TAG_VALUE_END", "TAG_VALUE_START", "TAG_VERSION", "TOPIC", "getTOPIC", "VALUE", "getVALUE", "VALUE_COUNT", "getVALUE_COUNT", "VERSION", "getVERSION", "version", "", "getVersion", "()I", "appendNormalValue", "", "xml", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "content", "count", "appendStyleAt", "atIndexs", "appendTopicValue", "appendVersionValue", "getDescXml", "curDesc", "atContactMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderAtContact;", "Lkotlin/collections/HashMap;", "handleAt", "desc", "Landroid/text/SpannableString;", "atContactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/utils/FinderAtUtil$AtStringInfo;", "onAtClick", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "username", "handleTopic", "feedId", "", "topicInfoList", "", "Lcom/tencent/mm/plugin/finder/utils/TopicStringInfo;", "onTopicClick", "Lkotlin/Function2;", "topic", "Lcom/tencent/mm/plugin/finder/utils/ClickExtra;", "clickExtra", "parseDefatultDesc", "defaultDesc", "parseXml", "atFinderContactList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "mentionedUserList", "Lcom/tencent/mm/protocal/protobuf/FinderMentionedUser;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/FinderPostPreCheckHelper;", "", "()V", "BINDER_PHONE_SCENE_CREATE_ACCDOUNT", "", "getBINDER_PHONE_SCENE_CREATE_ACCDOUNT", "()I", "BINDER_PHONE_SCENE_POST", "getBINDER_PHONE_SCENE_POST", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkHasBindPhone", "", "context", "Landroid/content/Context;", "prepareResp", "Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;", "formScene", "onGoBindPhoneListener", "Lkotlin/Function0;", "", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;Ljava/lang/Integer;Lkotlin/jvm/functions/Function0;)Z", "goToBindPhoneUI", "preCheck", "Landroid/app/Activity;", "resp", "onGoVertifyPage", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ad
 {
-  public static final String AFa = "finder";
-  public static final String AFb = "style";
-  public static final String AFc = "valuecount";
-  public static final String AFd = "topic";
-  public static final String AFe = "at";
-  private static final String AFf = "<finder>";
-  private static final String AFg = "</finder>";
-  private static final String AFh = "<style>";
-  private static final String AFi = "</style>";
-  private static final String AFj = "<at>";
-  private static final String AFk = "</at>";
-  private static final String AFl = "<![CDATA[%s]]>";
-  private static final String AFm = "<valuecount>%d</valuecount>";
-  private static final String AFn = "<value%d>";
-  private static final String AFo = "</value%d>";
-  private static final String AFp = "<topic>%s</topic>";
-  private static final String AFq = "<version>%d</version>";
-  public static final ad AFr;
-  public static final String TAG = "Finder.FinderStyleUtil";
-  public static final String VALUE = "value";
-  public static final String VERSION = "version";
-  private static final int version = 1;
+  public static final ad Ghf;
+  private static final int Ghg;
+  private static final int Ghh;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(284221);
-    AFr = new ad();
-    TAG = "Finder.FinderStyleUtil";
-    version = 1;
-    AFa = "finder";
-    AFb = "style";
-    AFc = "valuecount";
-    VALUE = "value";
-    AFd = "topic";
-    AFe = "at";
-    VERSION = "version";
-    AFf = "<" + AFa + '>';
-    AFg = "</" + AFa + '>';
-    AFh = "<" + AFb + '>';
-    AFi = "</" + AFb + '>';
-    AFj = "<" + AFe + '>';
-    AFk = "</" + AFe + '>';
-    AFl = "<![CDATA[%s]]>";
-    AFm = "<" + AFc + ">%d</" + AFc + '>';
-    AFn = "<" + VALUE + "%d>";
-    AFo = "</" + VALUE + "%d>";
-    AFp = "<" + AFd + ">%s</" + AFd + '>';
-    AFq = "<" + VERSION + ">%d</" + VERSION + '>';
-    AppMethodBeat.o(284221);
+    AppMethodBeat.i(333589);
+    Ghf = new ad();
+    TAG = "FinderPostPreCheckHelper";
+    Ghg = 1;
+    Ghh = 2;
+    AppMethodBeat.o(333589);
   }
   
-  public static SpannableString a(String paramString, SpannableString paramSpannableString, List<ax> paramList, final m<? super String, ? super c, x> paramm, final long paramLong)
+  private static final void a(Activity paramActivity, kotlin.g.a.a parama, DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(284220);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(333547);
+    s.u(paramActivity, "$context");
+    paramDialogInterface = a.GfO;
+    a.aK(paramActivity);
+    if (parama != null) {
+      parama.invoke();
+    }
+    AppMethodBeat.o(333547);
+  }
+  
+  private static final void a(Activity paramActivity, kotlin.g.a.a parama, boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(333538);
+    s.u(paramActivity, "$context");
+    paramString = a.GfO;
+    a.aK(paramActivity);
+    if (parama != null) {
+      parama.invoke();
+    }
+    AppMethodBeat.o(333538);
+  }
+  
+  private static final void a(kotlin.g.a.a parama, Context paramContext, DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(333583);
+    s.u(paramContext, "$context");
+    if (parama != null) {
+      parama.invoke();
+    }
+    hp(paramContext);
+    AppMethodBeat.o(333583);
+  }
+  
+  private static final void a(kotlin.g.a.a parama, Context paramContext, boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(333577);
+    s.u(paramContext, "$context");
+    if (parama != null) {
+      parama.invoke();
+    }
+    hp(paramContext);
+    AppMethodBeat.o(333577);
+  }
+  
+  public static boolean a(Activity paramActivity, bys parambys, kotlin.g.a.a<ah> parama)
+  {
+    Object localObject1 = null;
+    boolean bool2 = false;
+    AppMethodBeat.i(333491);
+    s.u(paramActivity, "context");
+    s.u(parambys, "resp");
+    Object localObject2 = com.tencent.mm.plugin.finder.storage.d.FAy;
+    if (((Number)com.tencent.mm.plugin.finder.storage.d.eWH().bmg()).intValue() == 1)
     {
-      paramString = ag.AFH;
-      paramString = paramSpannableString.toString();
-      p.j(paramString, "defaultDesc.toString()");
-      paramString = ((Iterable)ag.a(paramString, new ArrayList(), null)).iterator();
-      Object localObject;
-      int i;
-      while (paramString.hasNext())
+      Log.i(TAG, "ignore all pre check");
+      AppMethodBeat.o(333491);
+      return true;
+    }
+    int i = h.baE().ban().getInt(at.a.adaB, 0);
+    localObject2 = com.tencent.mm.plugin.finder.storage.d.FAy;
+    boolean bool1;
+    switch (((Number)com.tencent.mm.plugin.finder.storage.d.eWJ().bmg()).intValue())
+    {
+    default: 
+      if (!com.tencent.mm.ae.d.ee(i, 1))
       {
-        localObject = (ax)paramString.next();
-        int j = ((ax)localObject).start - 1;
-        i = j;
-        if (j < 0) {
-          i = 0;
+        bool1 = true;
+        boolean bool3 = fff();
+        localObject2 = av.GiL;
+        boolean bool4 = av.fgk();
+        localObject2 = parambys.ZEd;
+        if (localObject2 != null) {
+          break label306;
         }
-        paramList.add(new ax(i, ((ax)localObject).count + 1, "#" + ((ax)localObject).topic));
-      }
-      paramString = SpannableString.valueOf((CharSequence)new SpannableStringBuilder((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)paramSpannableString.toString())));
-      paramSpannableString = ((Iterable)paramList).iterator();
-      while (paramSpannableString.hasNext())
-      {
-        paramList = (ax)paramSpannableString.next();
-        localObject = paramList.topic;
-        if (localObject == null)
-        {
-          paramString = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(284220);
-          throw paramString;
+        label153:
+        Log.i(TAG, "[preCheck] hasRealName:" + bool1 + " , hasBindPhone:" + bool3 + " isForeignUser:" + bool4 + ", authType:" + localObject1);
+        if (bool1) {
+          break label340;
         }
-        localObject = ((String)localObject).substring(1);
-        p.j(localObject, "(this as java.lang.String).substring(startIndex)");
-        Context localContext = MMApplicationContext.getContext();
-        p.j(localContext, "MMApplicationContext.getContext()");
-        i = localContext.getResources().getColor(b.c.Link_80);
-        localContext = MMApplicationContext.getContext();
-        p.j(localContext, "MMApplicationContext.getContext()");
-        paramString.setSpan(new com.tencent.mm.plugin.finder.view.o((String)localObject, i, localContext.getResources().getColor(b.c.BW_0_Alpha_0_2), false, true, (b)new c(paramString, paramm, paramLong)), paramList.start, paramList.start + paramList.count, 17);
+        if (localObject1 != null) {
+          break label331;
+        }
+        label216:
+        if (localObject1 != null) {
+          break label360;
+        }
+        label221:
+        if (localObject1 != null) {
+          break label461;
+        }
+        label226:
+        bool1 = a((Context)paramActivity, parambys, Integer.valueOf(Ghh), parama);
       }
-      p.j(paramString, "ret");
-      AppMethodBeat.o(284220);
-      return paramString;
-    }
-    AppMethodBeat.o(284220);
-    return paramSpannableString;
-  }
-  
-  public static void a(final long paramLong, SpannableString paramSpannableString, List<ax> paramList, final m<? super String, ? super c, x> paramm)
-  {
-    AppMethodBeat.i(284217);
-    final aa.d locald = new aa.d();
-    Object localObject1 = h.ae(ae.class);
-    p.j(localObject1, "MMKernel.service(IFinder…enModeConfig::class.java)");
-    int i;
-    Object localObject2;
-    if (((ae)localObject1).dYT())
-    {
-      localObject1 = MMApplicationContext.getContext();
-      p.j(localObject1, "MMApplicationContext.getContext()");
-      i = ((Context)localObject1).getResources().getColor(b.c.FG_0);
-      locald.aaBA = i;
-      localObject1 = new aa.d();
-      localObject2 = h.ae(ae.class);
-      p.j(localObject2, "MMKernel.service(IFinder…enModeConfig::class.java)");
-      if (!((ae)localObject2).dYT()) {
-        break label238;
-      }
-      localObject2 = MMApplicationContext.getContext();
-      p.j(localObject2, "MMApplicationContext.getContext()");
-      i = ((Context)localObject2).getResources().getColor(b.c.transparent);
-      label141:
-      ((aa.d)localObject1).aaBA = i;
-      paramList = ((Iterable)paramList).iterator();
-    }
-    for (;;)
-    {
-      if (!paramList.hasNext()) {
-        break label357;
-      }
-      localObject2 = (ax)paramList.next();
-      Object localObject3 = ((ax)localObject2).topic;
-      if (localObject3 == null)
-      {
-        paramSpannableString = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(284217);
-        throw paramSpannableString;
-        localObject1 = MMApplicationContext.getContext();
-        p.j(localObject1, "MMApplicationContext.getContext()");
-        i = ((Context)localObject1).getResources().getColor(b.c.Link_80);
-        break;
-        label238:
-        localObject2 = MMApplicationContext.getContext();
-        p.j(localObject2, "MMApplicationContext.getContext()");
-        i = ((Context)localObject2).getResources().getColor(b.c.BW_0_Alpha_0_2);
-        break label141;
-      }
-      localObject3 = ((String)localObject3).substring(1);
-      p.j(localObject3, "(this as java.lang.String).substring(startIndex)");
-      localObject3 = new com.tencent.mm.plugin.finder.view.o((String)localObject3, locald.aaBA, ((aa.d)localObject1).aaBA, (b)new b(paramSpannableString, locald, (aa.d)localObject1, paramm, paramLong));
-      i = ((ax)localObject2).start;
-      int j = ((ax)localObject2).start;
-      paramSpannableString.setSpan(localObject3, i, ((ax)localObject2).count + j, 17);
-    }
-    label357:
-    AppMethodBeat.o(284217);
-  }
-  
-  public static void a(SpannableString paramSpannableString, ArrayList<e.a> paramArrayList, final b<? super String, x> paramb)
-  {
-    AppMethodBeat.i(284219);
-    final aa.d locald = new aa.d();
-    Object localObject1 = h.ae(ae.class);
-    p.j(localObject1, "MMKernel.service(IFinder…enModeConfig::class.java)");
-    int i;
-    Object localObject2;
-    label138:
-    label155:
-    e.a locala;
-    if (((ae)localObject1).dYT())
-    {
-      localObject1 = MMApplicationContext.getContext();
-      p.j(localObject1, "MMApplicationContext.getContext()");
-      i = ((Context)localObject1).getResources().getColor(b.c.FG_0);
-      locald.aaBA = i;
-      localObject1 = new aa.d();
-      localObject2 = h.ae(ae.class);
-      p.j(localObject2, "MMKernel.service(IFinder…enModeConfig::class.java)");
-      if (!((ae)localObject2).dYT()) {
-        break label272;
-      }
-      localObject2 = MMApplicationContext.getContext();
-      p.j(localObject2, "MMApplicationContext.getContext()");
-      i = ((Context)localObject2).getResources().getColor(b.c.transparent);
-      ((aa.d)localObject1).aaBA = i;
-      localObject2 = ((Iterable)paramArrayList).iterator();
-      if (!((Iterator)localObject2).hasNext()) {
-        break label300;
-      }
-      locala = (e.a)((Iterator)localObject2).next();
-      paramArrayList = locala.ACW;
-      if (paramArrayList != null) {
-        break label307;
-      }
-      paramArrayList = "";
-    }
-    label272:
-    label300:
-    label307:
-    for (;;)
-    {
-      paramSpannableString.setSpan(new com.tencent.mm.plugin.finder.view.o(paramArrayList, locald.aaBA, ((aa.d)localObject1).aaBA, (b)new a(paramSpannableString, locald, (aa.d)localObject1, paramb)), locala.start, locala.end, 17);
-      break label155;
-      localObject1 = MMApplicationContext.getContext();
-      p.j(localObject1, "MMApplicationContext.getContext()");
-      i = ((Context)localObject1).getResources().getColor(b.c.Link_80);
       break;
-      localObject2 = MMApplicationContext.getContext();
-      p.j(localObject2, "MMApplicationContext.getContext()");
-      i = ((Context)localObject2).getResources().getColor(b.c.BW_0_Alpha_0_2);
-      break label138;
-      AppMethodBeat.o(284219);
-      return;
     }
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(284216);
-    Object localObject = af.aaBG;
-    localObject = String.format(AFn, Arrays.copyOf(new Object[] { Integer.valueOf(paramInt) }, 1));
-    p.j(localObject, "java.lang.String.format(format, *args)");
-    paramStringBuilder.append((String)localObject);
-    localObject = af.aaBG;
-    paramString = String.format(AFl, Arrays.copyOf(new Object[] { paramString }, 1));
-    p.j(paramString, "java.lang.String.format(format, *args)");
-    paramStringBuilder.append(paramString);
-    paramString = af.aaBG;
-    paramString = String.format(AFo, Arrays.copyOf(new Object[] { Integer.valueOf(paramInt) }, 1));
-    p.j(paramString, "java.lang.String.format(format, *args)");
-    paramStringBuilder.append(paramString);
-    AppMethodBeat.o(284216);
-  }
-  
-  public static String d(String paramString, HashMap<String, cse> paramHashMap)
-  {
-    AppMethodBeat.i(284215);
-    p.k(paramString, "curDesc");
-    p.k(paramHashMap, "atContactMap");
-    if (Util.isNullOrNil(paramString))
+    for (;;)
     {
-      AppMethodBeat.o(284215);
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder("");
-    Object localObject2 = (List)new ArrayList();
-    Object localObject1 = new ArrayList();
-    Object localObject3 = d.AjH;
-    if (d.dTe())
-    {
-      localObject1 = e.ACV;
-      localObject1 = (ArrayList)e.a(paramString, paramHashMap, null).My;
-    }
-    paramHashMap = d.AjH;
-    if (d.dTd()) {
-      paramHashMap = ag.AFH;
-    }
-    for (paramHashMap = ag.a(paramString, (ArrayList)localObject1, null);; paramHashMap = (HashMap<String, cse>)localObject2)
-    {
-      localStringBuilder.append(AFf);
-      if ((paramHashMap.isEmpty()) && (((ArrayList)localObject1).isEmpty()))
+      Log.i(TAG, s.X("[preCheck] result:", Boolean.valueOf(bool1)));
+      AppMethodBeat.o(333491);
+      return bool1;
+      if (!com.tencent.mm.ae.d.ee(i, 1))
       {
-        paramHashMap = af.aaBG;
-        paramHashMap = String.format(AFm, Arrays.copyOf(new Object[] { Integer.valueOf(1) }, 1));
-        p.j(paramHashMap, "java.lang.String.format(format, *args)");
-        localStringBuilder.append(paramHashMap);
-        a(localStringBuilder, paramString, 0);
-        paramString = af.aaBG;
-        paramString = String.format(AFq, Arrays.copyOf(new Object[] { Integer.valueOf(version) }, 1));
-        p.j(paramString, "java.lang.String.format(format, *args)");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append(AFg);
-        Log.d(TAG, "xml:".concat(String.valueOf(localStringBuilder)));
-        paramString = localStringBuilder.toString();
-        p.j(paramString, "xml.toString()");
-        AppMethodBeat.o(284215);
-        return paramString;
+        bool1 = true;
+        break;
       }
-      int i = 0;
-      int j = 0;
-      localObject2 = "";
-      int k = 0;
-      label296:
-      int m;
-      int n;
-      label327:
-      int i1;
-      if (j < paramString.length()) {
-        if (!paramHashMap.isEmpty())
-        {
-          m = 0;
-          n = ((Collection)paramHashMap).size();
-          if (m >= n) {
-            break label1222;
-          }
-          localObject3 = (ax)paramHashMap.get(m);
-          i1 = ((ax)localObject3).start - 1;
-          if (i1 != j) {}
-        }
+      bool1 = false;
+      break;
+      bool1 = true;
+      break;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break;
+      label306:
+      localObject2 = ((FinderContact)localObject2).authInfo;
+      if (localObject2 == null) {
+        break label153;
       }
-      for (;;)
+      localObject1 = Integer.valueOf(((FinderAuthInfo)localObject2).authIconType);
+      break label153;
+      label331:
+      if (((Integer)localObject1).intValue() != 2) {
+        break label216;
+      }
+      label340:
+      bool1 = a((Context)paramActivity, parambys, Integer.valueOf(Ghh), parama);
+      continue;
+      label360:
+      if (((Integer)localObject1).intValue() != 1) {
+        break label221;
+      }
+      parambys = new g.a((Context)paramActivity);
+      parambys.bf((CharSequence)paramActivity.getString(e.h.finder_post_real_name_dialog_title));
+      parambys.bDE(paramActivity.getString(e.h.finder_post_real_name_dialog_content)).NF(true);
+      parambys.bDI(paramActivity.getString(e.h.finder_post_real_name_dialog_positive));
+      parambys.bDJ(paramActivity.getString(e.h.finder_create_account_bindphone_dialog_negative_btn));
+      parambys.b(new ad..ExternalSyntheticLambda5(paramActivity, parama));
+      parambys.show();
+      bool1 = bool2;
+      continue;
+      label461:
+      if (((Integer)localObject1).intValue() != 0) {
+        break label226;
+      }
+      parambys = new g.a((Context)paramActivity);
+      parambys.bf((CharSequence)paramActivity.getString(e.h.finder_post_real_name_dialog_title_v2)).bDE(paramActivity.getString(e.h.finder_post_real_name_dialog_content_v2)).bO(paramActivity.getString(e.h.finder_post_real_name_dialog_positive), paramActivity.getString(e.h.finder_post_real_name_dialog_positive_enterprise), paramActivity.getString(e.h.finder_create_account_bindphone_dialog_negative_btn));
+      parambys.b(new ad..ExternalSyntheticLambda0(paramActivity, parama), new ad..ExternalSyntheticLambda1(paramActivity, parama), ad..ExternalSyntheticLambda4.INSTANCE).show();
+      bool1 = bool2;
+    }
+  }
+  
+  private static boolean a(Context paramContext, bys parambys, Integer paramInteger, kotlin.g.a.a<ah> parama)
+  {
+    AppMethodBeat.i(333510);
+    s.u(paramContext, "context");
+    s.u(parambys, "prepareResp");
+    parambys = com.tencent.mm.plugin.finder.storage.d.FAy;
+    if (((Number)com.tencent.mm.plugin.finder.storage.d.eWH().bmg()).intValue() == 1)
+    {
+      Log.i(TAG, "ignore all pre check");
+      AppMethodBeat.o(333510);
+      return true;
+    }
+    Object localObject;
+    if (fff())
+    {
+      parambys = av.GiL;
+      if (av.fgk())
       {
-        Object localObject4;
-        if (localObject3 != null)
+        boolean bool = h.baE().ban().getBoolean(at.a.adbx, true);
+        if (bool)
         {
-          paramHashMap.remove(localObject3);
-          n = ((ax)localObject3).start - 1;
-          m = ((ax)localObject3).count + n + 1;
-          if (n >= k)
-          {
-            j = i;
-            if (n > k)
-            {
-              localObject3 = paramString.substring(k, n);
-              p.j(localObject3, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-              a(localStringBuilder, (String)localObject3, i);
-              j = i + 1;
-            }
-            localObject3 = new StringBuilder();
-            localObject4 = paramString.substring(n, m);
-            p.j(localObject4, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-            localObject3 = (String)localObject4 + "#";
-            localObject4 = af.aaBG;
-            localObject4 = String.format(AFn, Arrays.copyOf(new Object[] { Integer.valueOf(j) }, 1));
-            p.j(localObject4, "java.lang.String.format(format, *args)");
-            localStringBuilder.append((String)localObject4);
-            localObject4 = af.aaBG;
-            localObject4 = AFp;
-            af localaf = af.aaBG;
-            localObject3 = String.format(AFl, Arrays.copyOf(new Object[] { localObject3 }, 1));
-            p.j(localObject3, "java.lang.String.format(format, *args)");
-            localObject3 = String.format((String)localObject4, Arrays.copyOf(new Object[] { localObject3 }, 1));
-            p.j(localObject3, "java.lang.String.format(format, *args)");
-            localStringBuilder.append((String)localObject3);
-            localObject3 = af.aaBG;
-            localObject3 = String.format(AFo, Arrays.copyOf(new Object[] { Integer.valueOf(j) }, 1));
-            p.j(localObject3, "java.lang.String.format(format, *args)");
-            localStringBuilder.append((String)localObject3);
-            i = m;
-            k = m;
-            m = j + 1;
-            j = i;
-            i = m;
-            break label296;
-            if (i1 > j) {
-              break label1222;
-            }
-            m += 1;
-            break label327;
-          }
-          Log.e(TAG, "topicStart:" + n + ", startIndex:" + k);
+          parambys = FinderBottomCustomDialogHelper.Companion;
+          paramInteger = paramContext.getString(e.h.finder_create_account_dialog_title);
+          parama = paramContext.getString(e.h.finder_create_account_dialog_foreign_content);
+          localObject = paramContext.getString(e.h.finder_create_account_dialog_foreign_prositive_btn);
+          String str = paramContext.getString(e.h.finder_create_account_bindphone_dialog_negative_btn);
+          ad..ExternalSyntheticLambda3 localExternalSyntheticLambda3 = ad..ExternalSyntheticLambda3.INSTANCE;
+          s.s(parama, "getString(R.string.finde…t_dialog_foreign_content)");
+          FinderBottomCustomDialogHelper.Companion.showConfirmTextDialog$default(parambys, paramContext, null, 0, paramInteger, parama, (String)localObject, str, null, localExternalSyntheticLambda3, Boolean.FALSE, null, null, 3206, null);
         }
-        if (!((ArrayList)localObject1).isEmpty())
+        Log.i(TAG, "[checkHasBindPhone] show argee save phone");
+        if (!bool)
         {
-          m = 0;
-          n = ((Collection)localObject1).size();
-          label749:
-          if (m >= n) {
-            break label1216;
-          }
-          localObject3 = ((ArrayList)localObject1).get(m);
-          p.j(localObject3, "atContactList[atIndex]");
-          localObject3 = (e.a)localObject3;
-          i1 = ((e.a)localObject3).start;
-          if (i1 != j) {}
+          AppMethodBeat.o(333510);
+          return true;
         }
-        for (;;)
-        {
-          if (localObject3 != null)
-          {
-            ((ArrayList)localObject1).remove(localObject3);
-            n = ((e.a)localObject3).start;
-            m = ((e.a)localObject3).end;
-            if (n >= k)
-            {
-              if (n <= k) {
-                break label1213;
-              }
-              localObject3 = paramString.substring(k, n);
-              p.j(localObject3, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-              j = i + 1;
-              a(localStringBuilder, (String)localObject3, i);
-              i = j;
-            }
-          }
-          label1213:
-          for (;;)
-          {
-            localObject3 = new StringBuilder();
-            localObject4 = paramString.substring(n, m);
-            p.j(localObject4, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-            localObject3 = (String)localObject4 + " ";
-            n = i + 1;
-            a(localStringBuilder, (String)localObject3, i);
-            localObject2 = (String)localObject2 + String.valueOf(n - 1) + ",";
-            j = m;
-            k = m;
-            i = n;
-            break label296;
-            if (i1 > j) {
-              break label1216;
-            }
-            m += 1;
-            break label749;
-            Log.e(TAG, "topicStart:" + n + ", startIndex:" + k);
-            j += 1;
-            break label296;
-            j = i;
-            if (k < paramString.length())
-            {
-              paramString = paramString.substring(k, paramString.length());
-              p.j(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-              a(localStringBuilder, paramString, i);
-              j = i + 1;
-            }
-            if (!Util.isNullOrNil((String)localObject2))
-            {
-              localStringBuilder.append(AFh);
-              localStringBuilder.append(AFj);
-              i = ((String)localObject2).length();
-              if (localObject2 == null)
-              {
-                paramString = new t("null cannot be cast to non-null type java.lang.String");
-                AppMethodBeat.o(284215);
-                throw paramString;
-              }
-              paramString = ((String)localObject2).substring(0, i - 1);
-              p.j(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-              localStringBuilder.append(paramString);
-              localStringBuilder.append(AFk);
-              localStringBuilder.append(AFi);
-            }
-            paramString = af.aaBG;
-            paramString = String.format(AFm, Arrays.copyOf(new Object[] { Integer.valueOf(j) }, 1));
-            p.j(paramString, "java.lang.String.format(format, *args)");
-            p.j(localStringBuilder.append(paramString), "xml.append(String.format(TAG_VALUE_COUNT, count))");
-            break;
-          }
-          label1216:
-          localObject3 = null;
-        }
-        label1222:
-        localObject3 = null;
+        AppMethodBeat.o(333510);
+        return false;
       }
+      AppMethodBeat.o(333510);
+      return true;
     }
-  }
-  
-  public static String edH()
-  {
-    return AFa;
-  }
-  
-  public static String edI()
-  {
-    return AFc;
-  }
-  
-  public static String edJ()
-  {
-    return VALUE;
-  }
-  
-  public static String edK()
-  {
-    return AFd;
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "username", "", "invoke", "com/tencent/mm/plugin/finder/utils/FinderStyleUtil$handleAt$1$1"})
-  static final class a
-    extends q
-    implements b<String, x>
-  {
-    a(SpannableString paramSpannableString, aa.d paramd1, aa.d paramd2, b paramb)
+    int i = Ghg;
+    if (paramInteger == null)
     {
-      super();
+      i = Ghh;
+      if (paramInteger != null) {
+        break label372;
+      }
+      label223:
+      parambys = "";
+      label227:
+      s.s(parambys, "when (formScene) {\n     … else -> \"\"\n            }");
+      i = Ghg;
+      if (paramInteger != null) {
+        break label392;
+      }
+      label243:
+      i = Ghh;
+      if (paramInteger != null) {
+        break label412;
+      }
+      label252:
+      paramInteger = "";
+      label256:
+      s.s(paramInteger, "when (formScene) {\n     … else -> \"\"\n            }");
+      localObject = av.GiL;
+      if (!av.fgk()) {
+        break label432;
+      }
+      paramInteger = new g.a(paramContext);
+      paramInteger.bDE(parambys).NF(true);
+      paramInteger.bDI(paramContext.getString(e.h.finder_create_account_bindphone_dialog_positive_btn));
+      paramInteger.bDJ(paramContext.getString(e.h.finder_create_account_bindphone_dialog_negative_btn));
+      paramInteger.b(new ad..ExternalSyntheticLambda6(parama, paramContext));
+      paramInteger.show();
+      Log.i(TAG, "[checkHasBindPhone] isUserWxForeign true");
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(333510);
+      return false;
+      if (paramInteger.intValue() != i) {
+        break;
+      }
+      parambys = paramContext.getString(e.h.finder_create_account_need_bind_phone_tips);
+      break label227;
+      label372:
+      if (paramInteger.intValue() != i) {
+        break label223;
+      }
+      parambys = paramContext.getString(e.h.finder_create_account_need_bind_phone_tips_post);
+      break label227;
+      label392:
+      if (paramInteger.intValue() != i) {
+        break label243;
+      }
+      paramInteger = paramContext.getString(e.h.finder_create_account_dialog_title);
+      break label256;
+      label412:
+      if (paramInteger.intValue() != i) {
+        break label252;
+      }
+      paramInteger = paramContext.getString(e.h.finder_create_account_dialog_title_post);
+      break label256;
+      label432:
+      FinderBottomCustomDialogHelper.Companion.showConfirmTextDialog$default(FinderBottomCustomDialogHelper.Companion, paramContext, null, 0, paramInteger, parambys, paramContext.getString(e.h.finder_create_account_bindphone_dialog_positive_btn), paramContext.getString(e.h.finder_create_account_bindphone_dialog_negative_btn), null, new ad..ExternalSyntheticLambda2(parama, paramContext), Boolean.FALSE, null, null, 3206, null);
+      Log.i(TAG, "[checkHasBindPhone] isUserWxForeign false");
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "topic", "", "invoke", "com/tencent/mm/plugin/finder/utils/FinderStyleUtil$handleTopic$1$1"})
-  static final class b
-    extends q
-    implements b<String, x>
+  private static final void b(Activity paramActivity, kotlin.g.a.a parama, DialogInterface paramDialogInterface, int paramInt)
   {
-    b(SpannableString paramSpannableString, aa.d paramd1, aa.d paramd2, m paramm, long paramLong)
-    {
-      super();
+    AppMethodBeat.i(333557);
+    s.u(paramActivity, "$context");
+    paramDialogInterface = Uri.parse("pages/index/index.html").buildUpon();
+    s.s(paramDialogInterface, "parse(\"pages/index/index.html\").buildUpon()");
+    paramDialogInterface.appendQueryParameter("showdetail", "true");
+    paramDialogInterface.appendQueryParameter("to_auth_company", "true");
+    paramDialogInterface = paramDialogInterface.build() + "&username=" + z.bAW();
+    Object localObject = a.GfO;
+    localObject = (Context)paramActivity;
+    paramActivity = paramDialogInterface;
+    if (paramDialogInterface == null) {
+      paramActivity = "";
     }
+    a.C((Context)localObject, "gh_4ee148a6ecaa@app", paramActivity);
+    if (parama != null) {
+      parama.invoke();
+    }
+    AppMethodBeat.o(333557);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "topic", "", "invoke", "com/tencent/mm/plugin/finder/utils/FinderStyleUtil$parseDefatultDesc$2$1"})
-  static final class c
-    extends q
-    implements b<String, x>
+  private static boolean fff()
   {
-    c(SpannableString paramSpannableString, m paramm, long paramLong)
+    AppMethodBeat.i(333522);
+    Object localObject = com.tencent.mm.plugin.finder.storage.d.FAy;
+    boolean bool;
+    switch (((Number)com.tencent.mm.plugin.finder.storage.d.eWI().bmg()).intValue())
     {
-      super();
+    default: 
+      localObject = av.GiL;
+      bool = av.fgm();
+      AppMethodBeat.o(333522);
+      return bool;
+    case 0: 
+      localObject = av.GiL;
+      bool = av.fgm();
+      AppMethodBeat.o(333522);
+      return bool;
+    case 1: 
+      AppMethodBeat.o(333522);
+      return true;
     }
+    AppMethodBeat.o(333522);
+    return false;
+  }
+  
+  private static void hp(Context paramContext)
+  {
+    AppMethodBeat.i(333529);
+    Intent localIntent = new Intent();
+    localIntent.setClass(paramContext, BindMContactIntroUI.class);
+    MMWizardActivity.aQ(paramContext, localIntent);
+    AppMethodBeat.o(333529);
+  }
+  
+  private static final void y(DialogInterface paramDialogInterface, int paramInt) {}
+  
+  private static final void z(DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(333570);
+    paramDialogInterface = h.ax(x.class);
+    s.s(paramDialogInterface, "service(IFinderAgreeSavePhoneService::class.java)");
+    ((x)paramDialogInterface).r(Boolean.FALSE);
+    AppMethodBeat.o(333570);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.ad
  * JD-Core Version:    0.7.0.1
  */

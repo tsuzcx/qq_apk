@@ -1,194 +1,187 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.i;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.e;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.plugin.expt.hellhound.a.b.b.c;
-import com.tencent.mm.plugin.expt.hellhound.a.b.b.c.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.expt.hellhound.ext.b.b.c;
+import com.tencent.mm.plugin.expt.hellhound.ext.b.b.c.a;
 import com.tencent.mm.plugin.finder.nearby.f.a;
 import com.tencent.mm.plugin.finder.nearby.f.d;
 import com.tencent.mm.plugin.finder.nearby.f.e;
 import com.tencent.mm.plugin.finder.nearby.live.square.operation.FinderLiveOperationFragment;
+import com.tencent.mm.plugin.finder.nearby.report.g;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.ui.w;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.findersdk.a.by;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.component.l;
+import com.tencent.mm.ui.y;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveOperationUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "finderLiveFindPageFragment", "Lcom/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment;", "finishEvent", "", "isForceNightMode", "adapteNightMode", "", "finish", "getLayoutId", "", "getReportTag", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onNewIntent", "intent", "Landroid/content/Intent;", "onPause", "onResume", "showNearbyLiveSquareFragment", "Companion", "plugin-finder-nearby_release"})
-public final class FinderLiveOperationUI
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveOperationUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "finderLiveFindPageFragment", "Lcom/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment;", "finishEvent", "", "isForceNightMode", "adapteNightMode", "", "finish", "getLayoutId", "", "getReportTag", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onNewIntent", "intent", "Landroid/content/Intent;", "onPause", "onResume", "showNearbyLiveSquareFragment", "Companion", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class FinderLiveOperationUI
   extends MMFinderUI
 {
-  public static final a xPu;
-  private HashMap _$_findViewCache;
-  private final FinderLiveOperationFragment xPs;
-  private boolean xPt;
-  private boolean xnL;
+  public static final a Bpi;
+  private boolean ALp;
+  private final FinderLiveOperationFragment Bpj;
+  private boolean Bpk;
   
   static
   {
-    AppMethodBeat.i(203986);
-    xPu = new a((byte)0);
-    AppMethodBeat.o(203986);
+    AppMethodBeat.i(364587);
+    Bpi = new a((byte)0);
+    AppMethodBeat.o(364587);
   }
   
   public FinderLiveOperationUI()
   {
-    AppMethodBeat.i(203983);
-    this.xPs = new FinderLiveOperationFragment();
-    AppMethodBeat.o(203983);
+    AppMethodBeat.i(364570);
+    this.Bpj = new FinderLiveOperationFragment();
+    AppMethodBeat.o(364570);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  private static final void a(FinderLiveOperationUI paramFinderLiveOperationUI, View paramView)
   {
-    AppMethodBeat.i(203988);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(203988);
+    AppMethodBeat.i(364579);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderLiveOperationUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderLiveOperationUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveOperationUI, "this$0");
+    paramFinderLiveOperationUI.onBackPressed();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/feed/ui/FinderLiveOperationUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(364579);
   }
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(203987);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(203987);
-    return localView1;
-  }
+  public void _$_clearFindViewByIdCache() {}
   
-  public final String dvl()
+  public final String efe()
   {
     return "FinderLiveOperationUI";
   }
   
-  public final void finish()
+  public void finish()
   {
-    AppMethodBeat.i(203978);
-    this.xPt = true;
-    com.tencent.mm.plugin.finder.nearby.report.e locale = com.tencent.mm.plugin.finder.nearby.report.e.zJs;
-    com.tencent.mm.plugin.finder.nearby.report.e.dMB();
+    AppMethodBeat.i(364638);
+    this.Bpk = true;
+    g localg = g.ERj;
+    g.eGO();
     super.finish();
-    AppMethodBeat.o(203978);
+    AppMethodBeat.o(364638);
   }
   
-  public final int getLayoutId()
+  public int getLayoutId()
   {
-    if (this.xnL) {
-      return f.e.zDe;
+    if (this.ALp) {
+      return f.e.EGI;
     }
-    return f.e.zDd;
+    return f.e.EGH;
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public Set<Class<? extends UIComponent>> importUIComponents()
+  {
+    AppMethodBeat.i(364608);
+    Set localSet = ar.setOf(l.a(ai.cz(by.class)));
+    AppMethodBeat.o(364608);
+    return localSet;
+  }
+  
+  public void onCreate(Bundle paramBundle)
   {
     boolean bool = true;
-    AppMethodBeat.i(203977);
-    Object localObject;
+    AppMethodBeat.i(364628);
+    FinderLiveOperationFragment localFinderLiveOperationFragment;
     if (getIntent().getIntExtra("key_use_dark_style", 1) == 1)
     {
-      this.xnL = bool;
+      this.ALp = bool;
       super.onCreate(paramBundle);
       paramBundle = getSupportActionBar();
       if (paramBundle != null) {
         paramBundle.hide();
       }
-      if (this.xnL)
+      if (this.ALp)
       {
-        paramBundle = getController();
-        localObject = getContext();
-        p.j(localObject, "context");
-        paramBundle.setActionbarColor(((AppCompatActivity)localObject).getResources().getColor(f.a.Dark_0));
+        getController().setActionbarColor(getContext().getResources().getColor(f.a.Dark_0));
         setBackGroundColorResource(f.a.Dark_0);
       }
-      findViewById(f.d.zCT).setOnClickListener((View.OnClickListener)new FinderLiveOperationUI.b(this));
-      paramBundle = (TextView)findViewById(f.d.zCY);
-      float f = a.aZ((Context)getContext(), a.e.ActionBarTextSize);
-      paramBundle.setTextSize(0, a.km((Context)getContext()) * f);
+      findViewById(f.d.EFG).setOnClickListener(new FinderLiveOperationUI..ExternalSyntheticLambda0(this));
+      paramBundle = (TextView)findViewById(f.d.EFS);
+      float f = com.tencent.mm.cd.a.bs((Context)getContext(), a.e.ActionBarTextSize);
+      paramBundle.setTextSize(0, com.tencent.mm.cd.a.jO((Context)getContext()) * f);
       paramBundle = getIntent().getStringExtra("key_page_title");
-      if (!TextUtils.isEmpty((CharSequence)paramBundle))
-      {
-        localObject = findViewById(f.d.zCY);
-        p.j(localObject, "findViewById<TextView>(R.id.finder_live_title)");
-        ((TextView)localObject).setText((CharSequence)paramBundle);
+      if (!TextUtils.isEmpty((CharSequence)paramBundle)) {
+        ((TextView)findViewById(f.d.EFS)).setText((CharSequence)paramBundle);
       }
-      paramBundle = findViewById(f.d.searchEntrance);
-      p.j(paramBundle, "findViewById<View>(R.id.searchEntrance)");
-      paramBundle.setVisibility(4);
-      localObject = this.xPs;
+      findViewById(f.d.searchEntrance).setVisibility(4);
+      localFinderLiveOperationFragment = this.Bpj;
       paramBundle = getIntent();
-      if (paramBundle == null) {
-        break label300;
+      if (paramBundle != null) {
+        break label261;
       }
     }
-    label300:
-    for (paramBundle = paramBundle.getExtras();; paramBundle = null)
+    label261:
+    for (paramBundle = null;; paramBundle = paramBundle.getExtras())
     {
-      ((FinderLiveOperationFragment)localObject).setArguments(paramBundle);
-      getSupportFragmentManager().beginTransaction().a(f.d.fl_container, (Fragment)this.xPs).c((Fragment)this.xPs).ip();
-      this.xPt = false;
-      AppMethodBeat.o(203977);
+      localFinderLiveOperationFragment.setArguments(paramBundle);
+      getSupportFragmentManager().beginTransaction().a(f.d.EFU, (Fragment)this.Bpj).c((Fragment)this.Bpj).FX();
+      this.Bpk = false;
+      AppMethodBeat.o(364628);
       return;
       bool = false;
       break;
     }
   }
   
-  public final void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(203974);
+    AppMethodBeat.i(364615);
     super.onNewIntent(paramIntent);
-    FinderLiveOperationFragment localFinderLiveOperationFragment = this.xPs;
-    if (paramIntent != null) {}
-    for (paramIntent = paramIntent.getExtras();; paramIntent = null)
+    FinderLiveOperationFragment localFinderLiveOperationFragment = this.Bpj;
+    if (paramIntent == null) {}
+    for (paramIntent = null;; paramIntent = paramIntent.getExtras())
     {
       localFinderLiveOperationFragment.setArguments(paramIntent);
-      AppMethodBeat.o(203974);
+      AppMethodBeat.o(364615);
       return;
     }
   }
   
-  public final void onPause()
+  public void onPause()
   {
-    AppMethodBeat.i(203980);
+    AppMethodBeat.i(364650);
     super.onPause();
-    if (this.xPt)
+    if (this.Bpk)
     {
-      c.a locala = c.wkV;
-      c.nq(false);
+      c.a locala = c.zGj;
+      c.oQ(false);
     }
-    AppMethodBeat.o(203980);
+    AppMethodBeat.o(364650);
   }
   
-  public final void onResume()
+  public void onResume()
   {
-    AppMethodBeat.i(203979);
-    c.a locala = c.wkV;
-    c.nq(true);
+    AppMethodBeat.i(364643);
+    c.a locala = c.zGj;
+    c.oQ(true);
     super.onResume();
-    AppMethodBeat.o(203979);
+    AppMethodBeat.o(364643);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -197,7 +190,7 @@ public final class FinderLiveOperationUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveOperationUI$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveOperationUI$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

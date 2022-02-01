@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <script type="text/javascript">
     window.speedPoints = {
@@ -28,15 +27,15 @@
   <meta name="format-detection" content="telephone=no"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-  <link onerror="onStyleLoadError()" rel="stylesheet" type="text/css" href="dist/style.css?t=1611753969840"/>
+  <link onerror="onStyleLoadError()" rel="stylesheet" type="text/css" href="dist/style.css?t=1642409864614"/>
 </head>
 
 <body id="body" ontouchstart="">
 
 <div id="app" class="app" :class="platform">
-  <page-loading v-if="hasPageLoading" ref="pageLoading"></page-loading>
+  <page-loading ref="pageLoading"></page-loading>
 
-  <keep-alive :max="2">
+  <keep-alive :max="3">
     <router-view
       ref="view"
       :tag-id="tagId"
@@ -54,8 +53,8 @@
 </script>
 
 <script type="text/javascript">speedPoints.jsLoadStart = +new Date();</script>
-<script onerror="onScriptLoadError()" src="dist/build.js?t=1611753969840"></script>
+<script onerror="onScriptLoadError()" src="dist/build.js?t=1642409864614"></script>
 <script type="text/javascript">speedPoints.jsLoadEnd = +new Date();</script>
 </body>
-
 </html>
+

@@ -5,61 +5,61 @@ import android.net.Uri;
 import com.google.android.exoplayer2.h.a.e;
 import com.google.android.exoplayer2.h.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.a.g;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.k;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.l;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.m;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.a.d;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.c.a.d;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public class i
   implements f
 {
-  private static i pvq;
-  private boolean lsn;
-  public boolean pvr;
-  private boolean pvs;
-  private boolean pvt;
-  private k pvu;
+  private static i sAw;
+  private boolean ojM;
+  private k sAA;
+  public boolean sAx;
+  public boolean sAy;
+  public boolean sAz;
   
   public i()
   {
-    AppMethodBeat.i(228125);
-    this.lsn = false;
-    this.pvr = true;
-    this.pvs = false;
-    this.pvt = false;
-    this.pvu = new k()
+    AppMethodBeat.i(328231);
+    this.ojM = false;
+    this.sAx = true;
+    this.sAy = false;
+    this.sAz = false;
+    this.sAA = new k()
     {
-      public final void AT(int paramAnonymousInt)
+      public final void Bi(int paramAnonymousInt)
       {
-        AppMethodBeat.i(229313);
+        AppMethodBeat.i(328122);
         if (paramAnonymousInt < 0) {
           i.a(i.this);
         }
-        AppMethodBeat.o(229313);
+        AppMethodBeat.o(328122);
       }
       
-      public final void bVq()
+      public final void cvE()
       {
-        AppMethodBeat.i(229315);
+        AppMethodBeat.i(328124);
         i.a(i.this);
-        AppMethodBeat.o(229315);
+        AppMethodBeat.o(328124);
       }
     };
-    AppMethodBeat.o(228125);
+    AppMethodBeat.o(328231);
   }
   
-  private static String aiN(String paramString)
+  private static String abN(String paramString)
   {
-    AppMethodBeat.i(228132);
-    String str2 = b.aSL();
+    AppMethodBeat.i(328247);
+    String str2 = b.bmz();
     String str1 = str2;
     if (!str2.endsWith("/")) {
       str1 = str2 + "/";
@@ -67,117 +67,163 @@ public class i
     str1 = str1 + paramString + "/";
     try
     {
-      if (!u.bBD(str1))
+      if (!y.bDX(str1))
       {
         Log.w("MicroMsg.SameLayer.VideoCore", "mkdirs fail 1, maybe dir exist:%s", new Object[] { str1 });
-        if (!new q(str1).isDirectory())
+        if (!new u(str1).isDirectory())
         {
           Log.w("MicroMsg.SameLayer.VideoCore", "mkdirs fail 2, not dir:%s", new Object[] { str1 });
-          u.deleteFile(str1);
-          if (!u.bBD(str1))
-          {
-            Log.w("MicroMsg.SameLayer.VideoCore", "mkdirs fail 3, no space? dir:%s", new Object[] { str1 });
-            AppMethodBeat.o(228132);
+          y.deleteFile(str1);
+          if (!y.bDX(str1)) {
             return null;
           }
         }
       }
       Log.i("MicroMsg.SameLayer.VideoCore", "ensureDir %s:%s", new Object[] { paramString, str1 });
-      AppMethodBeat.o(228132);
+      AppMethodBeat.o(328247);
       return str1;
     }
-    catch (Throwable paramString)
+    finally
     {
       Log.e("MicroMsg.SameLayer.VideoCore", "mkdirs exception:%s", new Object[] { paramString });
-      AppMethodBeat.o(228132);
+      AppMethodBeat.o(328247);
     }
     return null;
   }
   
-  public static i bVn()
+  public static String abO(String paramString)
   {
-    AppMethodBeat.i(228128);
-    if (pvq == null) {}
+    AppMethodBeat.i(328253);
+    Object localObject = Uri.parse(paramString);
+    String str3 = ((Uri)localObject).toString();
+    String str1 = str3;
+    if (paramString != null)
+    {
+      str1 = str3;
+      paramString = str3;
+    }
     try
     {
-      if (pvq == null) {
-        pvq = new i();
+      if (((Uri)localObject).getHost().equals("mpvideo.qpic.cn"))
+      {
+        str1 = str3;
+        paramString = str3;
+        if (((Uri)localObject).getQueryParameter("vid") != null)
+        {
+          paramString = str3;
+          str1 = ((Uri)localObject).getPath();
+          paramString = str3;
+          String str4 = ((Uri)localObject).getQueryParameter("vid");
+          paramString = str3;
+          str3 = str1 + "_" + str4;
+          paramString = str3;
+          localObject = ((Uri)localObject).getQueryParameter("format_id");
+          str1 = str3;
+          if (localObject != null)
+          {
+            paramString = str3;
+            str1 = str3 + "_" + (String)localObject;
+          }
+          paramString = str1;
+          Log.i("MicroMsg.SameLayer.VideoCore", "[TRACE_VIDEO_PRELOAD] cachekey = %s", new Object[] { str1 });
+        }
       }
-      i locali = pvq;
-      AppMethodBeat.o(228128);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        String str2 = paramString;
+      }
+    }
+    AppMethodBeat.o(328253);
+    return str1;
+  }
+  
+  public static i cvD()
+  {
+    AppMethodBeat.i(328235);
+    if (sAw == null) {}
+    try
+    {
+      if (sAw == null) {
+        sAw = new i();
+      }
+      i locali = sAw;
+      AppMethodBeat.o(328235);
       return locali;
     }
     finally
     {
-      AppMethodBeat.o(228128);
+      AppMethodBeat.o(328235);
     }
   }
   
   public final void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.appbrand.jsapi.video.b.d.a parama, com.tencent.mm.plugin.appbrand.jsapi.video.b.c.f paramf)
   {
-    AppMethodBeat.i(228131);
-    if (this.lsn)
+    AppMethodBeat.i(328262);
+    if (this.ojM)
     {
-      Log.i("MicroMsg.SameLayer.VideoCore", "init already, current enableProxy:%s", new Object[] { Boolean.valueOf(this.pvr) });
-      AppMethodBeat.o(228131);
+      Log.i("MicroMsg.SameLayer.VideoCore", "init already, current enableProxy:%s", new Object[] { Boolean.valueOf(this.sAx) });
+      AppMethodBeat.o(328262);
       return;
     }
     Log.i("MicroMsg.SameLayer.VideoCore", "init, enableProxy:%s, enableHlsProxy:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
     long l = Util.nowMilliSecond();
-    this.lsn = true;
-    this.pvs = paramBoolean2;
-    this.pvr = paramBoolean1;
+    this.ojM = true;
+    this.sAy = paramBoolean2;
+    this.sAx = paramBoolean1;
     String str;
-    if (this.pvr)
+    if (this.sAx)
     {
-      str = aiN("wxvideocache");
+      str = abN("wxvideocache");
       if (Util.isNullOrNil(str))
       {
-        this.pvr = false;
+        this.sAx = false;
         Log.i("MicroMsg.SameLayer.VideoCore", "init, disableProxy for cache dir make fail");
-        parama.AT(-1);
+        parama.Bi(-1);
       }
     }
     else
     {
       Log.i("MicroMsg.SameLayer.VideoCore", "init, costTimeMs:%s", new Object[] { Long.valueOf(Util.nowMilliSecond() - l) });
-      AppMethodBeat.o(228131);
+      AppMethodBeat.o(328262);
       return;
     }
     com.tencent.mm.plugin.appbrand.jsapi.video.b.a.init(paramContext.getApplicationContext());
-    paramContext = com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt();
+    paramContext = com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH();
     if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {}
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      paramContext.dal = paramBoolean1;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvG = 1048576L;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvF = 536870912L;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvz = true;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvA = true;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvB = true;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvC = paramBoolean2;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvD = false;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvH = 3;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvI = new j();
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvK = new g();
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvJ = parama;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvL = paramf;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvu = this.pvu;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().cacheDir = str;
-      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().tmpDir = aiN("wxvideotmp");
+      paramContext.eYL = paramBoolean1;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAM = 1048576L;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAL = 536870912L;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAF = true;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAG = true;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAH = true;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAI = paramBoolean2;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAJ = false;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAN = 3;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAO = new j();
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAQ = new g();
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAP = parama;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAR = paramf;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAA = this.sAA;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().cacheDir = str;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().tmpDir = abN("wxvideotmp");
       l.init();
       break;
     }
   }
   
-  public final String aQ(String paramString)
+  public final String cd(String paramString)
   {
     int i = 1;
-    AppMethodBeat.i(228137);
-    if (!this.pvr)
+    AppMethodBeat.i(328274);
+    if (!this.sAx)
     {
-      paramString = d.bWK().aQ(paramString);
-      AppMethodBeat.o(228137);
+      paramString = d.cwX().cd(paramString);
+      AppMethodBeat.o(328274);
       return paramString;
     }
     if (!Util.isNullOrNil(paramString)) {
@@ -187,161 +233,100 @@ public class i
     }
     while (i != 0)
     {
-      AppMethodBeat.o(228137);
+      AppMethodBeat.o(328274);
       return paramString;
       label67:
       i = 0;
     }
     try
     {
-      String str = l.bVD().pwZ.a(paramString, true, true, "video/mp4", 90);
-      AppMethodBeat.o(228137);
+      String str = l.cvQ().sCf.a(paramString, true, true, "video/mp4", 90);
+      AppMethodBeat.o(328274);
       return str;
     }
     catch (Exception localException)
     {
-      h.a(6, "MicroMsg.SameLayer.VideoCore", "getProxyUrl exception", localException);
-      AppMethodBeat.o(228137);
+      h.b(6, "MicroMsg.SameLayer.VideoCore", "getProxyUrl exception", localException);
+      AppMethodBeat.o(328274);
     }
     return paramString;
   }
   
-  public final String aiO(String paramString)
+  public final g.a cvB()
   {
-    AppMethodBeat.i(228144);
-    Uri localUri = Uri.parse(paramString);
-    String str = localUri.toString();
-    localObject2 = str;
-    localObject1 = str;
-    try
+    AppMethodBeat.i(328266);
+    if (!this.sAx)
     {
-      if (this.pvt)
-      {
-        localObject2 = str;
-        if (paramString != null)
-        {
-          localObject2 = str;
-          localObject1 = str;
-          if (localUri.getHost().equals("mpvideo.qpic.cn"))
-          {
-            localObject2 = str;
-            localObject1 = str;
-            if (localUri.getQueryParameter("vid") != null)
-            {
-              localObject1 = str;
-              paramString = localUri.getPath();
-              localObject1 = str;
-              localObject2 = localUri.getQueryParameter("vid");
-              localObject1 = str;
-              localObject2 = paramString + "_" + (String)localObject2;
-              localObject1 = localObject2;
-              Log.i("MicroMsg.SameLayer.VideoCore", "[TRACE_VIDEO_PRELOAD] cachekey = %s", new Object[] { localObject2 });
-            }
-          }
-        }
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        localObject2 = localObject1;
-      }
-    }
-    AppMethodBeat.o(228144);
-    return localObject2;
-  }
-  
-  public final g.a bVl()
-  {
-    AppMethodBeat.i(228134);
-    if (!this.pvr)
-    {
-      e locale = d.bWK().pBM;
-      AppMethodBeat.o(228134);
+      e locale = d.cwX().sGZ;
+      AppMethodBeat.o(328266);
       return locale;
     }
-    AppMethodBeat.o(228134);
+    AppMethodBeat.o(328266);
     return null;
   }
   
-  public final g.a bVm()
+  public final g.a cvC()
   {
-    AppMethodBeat.i(228136);
-    if (!this.pvr)
+    AppMethodBeat.i(328270);
+    if (!this.sAx)
     {
-      locala = d.bWK().bVm();
-      AppMethodBeat.o(228136);
+      locala = d.cwX().cvC();
+      AppMethodBeat.o(328270);
       return locala;
     }
-    g.a locala = bVl();
-    AppMethodBeat.o(228136);
+    g.a locala = cvB();
+    AppMethodBeat.o(328270);
     return locala;
-  }
-  
-  public final boolean bVo()
-  {
-    return this.pvs;
-  }
-  
-  public final boolean bVp()
-  {
-    return this.pvr;
   }
   
   public final long f(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(228141);
-    if (!this.pvr)
+    AppMethodBeat.i(328283);
+    if (!this.sAx)
     {
-      paramLong1 = d.bWK().f(paramString, paramLong1, paramLong2);
-      AppMethodBeat.o(228141);
+      paramLong1 = d.cwX().f(paramString, paramLong1, paramLong2);
+      AppMethodBeat.o(328283);
       return paramLong1;
     }
     try
     {
-      paramLong1 = l.bVD().aiU(paramString);
-      AppMethodBeat.o(228141);
+      paramLong1 = l.cvQ().abT(paramString);
+      AppMethodBeat.o(328283);
       return paramLong1;
     }
     catch (Exception paramString)
     {
-      h.a(6, "MicroMsg.SameLayer.VideoCore", "getCachedBytes exception", paramString);
-      AppMethodBeat.o(228141);
+      h.b(6, "MicroMsg.SameLayer.VideoCore", "getCachedBytes exception", paramString);
+      AppMethodBeat.o(328283);
     }
     return 0L;
   }
   
-  public final void iG(boolean paramBoolean)
+  public final void q(String paramString, long paramLong1, long paramLong2)
   {
-    this.pvt = paramBoolean;
-  }
-  
-  public final void o(String paramString, long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(228139);
-    if (!this.pvr)
+    AppMethodBeat.i(328278);
+    if (!this.sAx)
     {
-      d.bWK().o(paramString, paramLong1, paramLong2);
-      AppMethodBeat.o(228139);
+      d.cwX().q(paramString, paramLong1, paramLong2);
+      AppMethodBeat.o(328278);
       return;
     }
     try
     {
-      l.bVD().U(paramString, paramLong2);
-      AppMethodBeat.o(228139);
+      l.cvQ().Z(paramString, paramLong2);
+      AppMethodBeat.o(328278);
       return;
     }
     catch (Exception paramString)
     {
-      h.a(6, "MicroMsg.SameLayer.VideoCore", "preload exception", paramString);
-      AppMethodBeat.o(228139);
+      h.b(6, "MicroMsg.SameLayer.VideoCore", "preload exception", paramString);
+      AppMethodBeat.o(328278);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.i
  * JD-Core Version:    0.7.0.1
  */

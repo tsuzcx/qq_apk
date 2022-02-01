@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.cast;
 
 public final class b$c
 {
-  public static final int btn_solid_green = 2131231435;
-  public static final int btn_solid_white = 2131231444;
+  public static final int btn_solid_green = 2131231321;
+  public static final int btn_solid_white = 2131231331;
 }
 
 

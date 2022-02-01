@@ -3,30 +3,30 @@ package com.google.android.material.tabs;
 import androidx.viewpager.widget.ViewPager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class TabLayout$h
+public class TabLayout$h
   implements a
 {
-  private final ViewPager bFl;
+  private final ViewPager dyl;
   
   public TabLayout$h(ViewPager paramViewPager)
   {
-    this.bFl = paramViewPager;
+    this.dyl = paramViewPager;
   }
   
-  public final void i(TabLayout.e parame)
+  public void i(TabLayout.e parame)
   {
-    AppMethodBeat.i(239856);
-    this.bFl.setCurrentItem(parame.position);
-    AppMethodBeat.o(239856);
+    AppMethodBeat.i(208940);
+    this.dyl.setCurrentItem(parame.position);
+    AppMethodBeat.o(208940);
   }
   
-  public final void j(TabLayout.e parame) {}
+  public void j(TabLayout.e parame) {}
   
   public final void k(TabLayout.e parame) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.material.tabs.TabLayout.h
  * JD-Core Version:    0.7.0.1
  */

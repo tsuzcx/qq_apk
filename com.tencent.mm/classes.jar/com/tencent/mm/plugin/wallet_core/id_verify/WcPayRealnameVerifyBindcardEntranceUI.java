@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet_core.id_verify;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -9,22 +8,22 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.wallet_core.e;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public class WcPayRealnameVerifyBindcardEntranceUI
   extends WalletBaseUI
 {
-  private Button OJZ;
-  private Button OKa;
-  private TextView mMA;
+  private Button VzL;
+  private Button VzM;
+  private TextView pJi;
   
   public int getLayoutId()
   {
@@ -34,35 +33,35 @@ public class WcPayRealnameVerifyBindcardEntranceUI
   public void initView()
   {
     AppMethodBeat.i(70072);
-    this.OJZ = ((Button)findViewById(a.f.wprb_bind_btn));
-    this.OKa = ((Button)findViewById(a.f.wprb_unbind_btn));
-    this.mMA = ((TextView)findViewById(a.f.wprv_desc_tv));
+    this.VzL = ((Button)findViewById(a.f.wprb_bind_btn));
+    this.VzM = ((Button)findViewById(a.f.wprb_unbind_btn));
+    this.pJi = ((TextView)findViewById(a.f.wprv_desc_tv));
     String str = getInput().getString("realname_verify_process_add_bank_word");
     if (!Util.isNullOrNil(str)) {
-      this.mMA.setText(str);
+      this.pJi.setText(str);
     }
-    this.OJZ.setOnClickListener(new View.OnClickListener()
+    this.VzL.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70069);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyBindcardEntranceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyBindcardEntranceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         WcPayRealnameVerifyBindcardEntranceUI.this.getInput().putBoolean("realname_verify_process_do_bind", true);
-        com.tencent.mm.wallet_core.a.l(WcPayRealnameVerifyBindcardEntranceUI.this.getContext(), WcPayRealnameVerifyBindcardEntranceUI.this.getInput());
+        com.tencent.mm.wallet_core.a.k(WcPayRealnameVerifyBindcardEntranceUI.this.getContext(), WcPayRealnameVerifyBindcardEntranceUI.this.getInput());
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyBindcardEntranceUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(70069);
       }
     });
-    this.OKa.setOnClickListener(new View.OnClickListener()
+    this.VzM.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70070);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyBindcardEntranceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyBindcardEntranceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         boolean bool = WcPayRealnameVerifyBindcardEntranceUI.this.getInput().getBoolean("realname_verify_process_need_face", false);
         Log.i("MicroMsg.WcPayRealnameVerifyBindcardEntranceUI", "need face : %s", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
@@ -74,7 +73,7 @@ public class WcPayRealnameVerifyBindcardEntranceUI
           AppMethodBeat.o(70070);
           return;
           WcPayRealnameVerifyBindcardEntranceUI.this.getInput().putBoolean("realname_verify_process_do_bind", false);
-          com.tencent.mm.wallet_core.a.l(WcPayRealnameVerifyBindcardEntranceUI.this.getContext(), WcPayRealnameVerifyBindcardEntranceUI.this.getInput());
+          com.tencent.mm.wallet_core.a.k(WcPayRealnameVerifyBindcardEntranceUI.this.getContext(), WcPayRealnameVerifyBindcardEntranceUI.this.getInput());
         }
       }
     });
@@ -112,7 +111,7 @@ public class WcPayRealnameVerifyBindcardEntranceUI
     AppMethodBeat.o(70071);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -125,7 +124,7 @@ public class WcPayRealnameVerifyBindcardEntranceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.WcPayRealnameVerifyBindcardEntranceUI
  * JD-Core Version:    0.7.0.1
  */

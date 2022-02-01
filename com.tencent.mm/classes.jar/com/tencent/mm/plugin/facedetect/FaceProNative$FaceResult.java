@@ -18,7 +18,7 @@ public class FaceProNative$FaceResult
     AppMethodBeat.i(103555);
     CREATOR = new Parcelable.Creator()
     {
-      public final FaceProNative.FaceResult createFromParcel(Parcel paramAnonymousParcel)
+      public FaceProNative.FaceResult createFromParcel(Parcel paramAnonymousParcel)
       {
         AppMethodBeat.i(103549);
         paramAnonymousParcel = new FaceProNative.FaceResult(paramAnonymousParcel);
@@ -26,7 +26,7 @@ public class FaceProNative$FaceResult
         return paramAnonymousParcel;
       }
       
-      public final FaceProNative.FaceResult[] newArray(int paramAnonymousInt)
+      public FaceProNative.FaceResult[] newArray(int paramAnonymousInt)
       {
         return new FaceProNative.FaceResult[paramAnonymousInt];
       }
@@ -85,7 +85,7 @@ public class FaceProNative$FaceResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.FaceProNative.FaceResult
  * JD-Core Version:    0.7.0.1
  */

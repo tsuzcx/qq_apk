@@ -1,461 +1,456 @@
 package com.tencent.mm.plugin.finder.live.util;
 
-import android.annotation.SuppressLint;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.live.model.ah;
-import com.tencent.mm.plugin.findersdk.d.a.a.b;
+import com.tencent.mm.plugin.finder.live.model.aj;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import java.nio.charset.Charset;
 import java.util.UUID;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager;", "", "()V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$IContinuousClickCallback;", "clickCnt", "", "comboBatchSize", "comboBatchTimeoutMs", "comboId", "continuousClickTimeThreshHold", "", "lastClickCnt", "lastTouchUpTime", "longClickInstantCallbackInterval", "longClickRunnable", "com/tencent/mm/plugin/finder/live/util/ContinuousClickManager$longClickRunnable$1", "Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$longClickRunnable$1;", "longClickTimeThreshHold", "longClickTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "onTouchUpOrCancelState", "", "registerView", "Landroid/view/View;", "state", "Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$State;", "timer", "touchListener", "Landroid/view/View$OnTouchListener;", "cancelLongClickState", "", "checkComboBatchSize", "checkIfContinuousClick", "view", "initialValue", "(Landroid/view/View;Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$IContinuousClickCallback;Ljava/lang/Integer;)V", "unRegisterView", "updateState", "newState", "IContinuousClickCallback", "Mode", "State", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager;", "", "()V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$IContinuousClickCallback;", "clickCnt", "", "comboBatchSize", "comboBatchTimeoutMs", "comboId", "continuousClickTimeThreshHold", "", "lastClickCnt", "lastTouchUpTime", "longClickInstantCallbackInterval", "longClickRunnable", "com/tencent/mm/plugin/finder/live/util/ContinuousClickManager$longClickRunnable$1", "Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$longClickRunnable$1;", "longClickTimeThreshHold", "longClickTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "onTouchUpOrCancelState", "", "registerView", "Landroid/view/View;", "state", "Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$State;", "timer", "touchListener", "Landroid/view/View$OnTouchListener;", "cancelLongClickState", "", "checkComboBatchSize", "checkIfContinuousClick", "view", "initialValue", "(Landroid/view/View;Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$IContinuousClickCallback;Ljava/lang/Integer;)V", "unRegisterView", "updateState", "newState", "IContinuousClickCallback", "Mode", "State", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
+  private final int CHg;
+  public final int CHh;
+  private final long DIF;
+  private final long DIG;
+  final long DIH;
+  public volatile b DII;
+  public volatile int DIJ;
+  public volatile int DIK;
+  public volatile long DIL;
+  volatile boolean DIM;
+  public a DIN;
+  public volatile View DIO;
+  public final View.OnTouchListener DIP;
+  private final d DIQ;
+  MTimerHandler DIR;
+  public volatile String Dbx;
   final String TAG;
   public MTimerHandler timer;
-  private final long yPZ;
-  final long yQa;
-  final long yQb;
-  public volatile b yQc;
-  public volatile int yQd;
-  public volatile int yQe;
-  public volatile long yQf;
-  volatile boolean yQg;
-  public a yQh;
-  public volatile View yQi;
-  @SuppressLint({"ClickableViewAccessibility"})
-  public final View.OnTouchListener yQj;
-  final c yQk;
-  MTimerHandler yQl;
-  private final int yhm;
-  public final int yhn;
-  public volatile String yru;
   
   public j()
   {
-    AppMethodBeat.i(287806);
+    AppMethodBeat.i(351335);
     this.TAG = "Finder.ContinuousClickManager";
-    this.yPZ = 3000L;
-    ah localah = ah.yhC;
-    if (ah.dzn() > 0)
+    this.DIF = 3000L;
+    aj localaj = aj.CGT;
+    if (aj.elu() > 0)
     {
-      localah = ah.yhC;
-      i = ah.dzn();
-      this.yhm = i;
-      localah = ah.yhC;
-      if (ah.dzo() <= 0) {
-        break label188;
+      localaj = aj.CGT;
+      i = aj.elu();
+      this.CHg = i;
+      localaj = aj.CGT;
+      if (aj.elv() <= 0) {
+        break label185;
       }
-      localah = ah.yhC;
+      localaj = aj.CGT;
     }
-    label188:
-    for (int i = ah.dzo();; i = 1000)
+    label185:
+    for (int i = aj.elv();; i = 1000)
     {
-      this.yhn = i;
-      this.yQa = 500L;
-      this.yQb = 200L;
-      this.yQc = b.yQm;
-      this.yru = "";
-      this.yQg = true;
-      this.yQj = ((View.OnTouchListener)new f(this));
-      this.yQk = new c(this);
-      this.timer = new MTimerHandler("ContinuousClickManager::Timer", (MTimerHandler.CallBack)new e(this), true);
-      this.yQl = new MTimerHandler("ContinuousClickManager::longClickTimer", (MTimerHandler.CallBack)new d(this), true);
-      AppMethodBeat.o(287806);
+      this.CHh = i;
+      this.DIG = 500L;
+      this.DIH = 200L;
+      this.DII = b.DIS;
+      this.Dbx = "";
+      this.DIM = true;
+      this.DIP = new j..ExternalSyntheticLambda0(this);
+      this.DIQ = new d(this);
+      this.timer = new MTimerHandler("ContinuousClickManager::Timer", (MTimerHandler.CallBack)new f(this), true);
+      this.DIR = new MTimerHandler("ContinuousClickManager::longClickTimer", (MTimerHandler.CallBack)new e(this), true);
+      AppMethodBeat.o(351335);
       return;
       i = 5;
       break;
     }
   }
   
-  private final void dEt()
+  private static final boolean a(j paramj, View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(287805);
-    int i = this.yQd - this.yQe;
-    if (i >= this.yhm)
+    Object localObject = null;
+    int i = 0;
+    AppMethodBeat.i(351400);
+    s.u(paramj, "this$0");
+    if (paramMotionEvent == null)
     {
-      Log.i(this.TAG, "checkComboBatchSize: clickCnt = " + this.yQd + ", lastClickCnt = " + this.yQe);
-      this.yQe = this.yQd;
-      a locala = this.yQh;
+      paramView = null;
+      if (paramView != null) {
+        break label142;
+      }
+      label26:
+      if (paramView != null) {
+        break label396;
+      }
+      label30:
+      if (paramView != null) {
+        break label412;
+      }
+      label34:
+      if (paramView != null) {
+        break label425;
+      }
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        Log.i(paramj.TAG, s.X("on ACTION_UP or ACTION_CANCEL: ", paramMotionEvent));
+        paramj.DIM = true;
+        paramj.DIL = System.currentTimeMillis();
+        if (paramj.timer.stopped())
+        {
+          Log.i(paramj.TAG, "single click start timer");
+          paramj.timer.startTimer(paramj.CHh);
+        }
+        paramj.eus();
+        paramj = paramj.DIN;
+        if (paramj != null)
+        {
+          s.s(paramMotionEvent, "event");
+          paramj.ac(paramMotionEvent);
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(351400);
+        return true;
+        paramView = Integer.valueOf(paramMotionEvent.getActionMasked());
+        break;
+        label142:
+        if (paramView.intValue() != 0) {
+          break label26;
+        }
+        paramj.DIM = false;
+        paramView = paramj.DII;
+        switch (c.$EnumSwitchMapping$0[paramView.ordinal()])
+        {
+        }
+        for (;;)
+        {
+          com.tencent.mm.ae.d.a(paramj.DIG, (Runnable)paramj.DIQ);
+          break;
+          if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.DEBUG))
+          {
+            paramView = com.tencent.d.a.a.a.a.a.ahiX;
+            if (1 == ((Number)com.tencent.d.a.a.a.a.a.jSq().bmg()).intValue())
+            {
+              paramView = z.bAM();
+              if (paramView == null) {
+                paramView = null;
+              }
+              for (;;)
+              {
+                paramj.Dbx = s.X(g.getMessageDigest(paramView), "_123456");
+                paramj.a(b.DIT);
+                break;
+                paramView = paramView.getBytes(kotlin.n.d.UTF_8);
+                s.s(paramView, "(this as java.lang.String).getBytes(charset)");
+              }
+            }
+          }
+          paramMotionEvent = new StringBuilder();
+          paramView = z.bAM();
+          if (paramView == null) {
+            paramView = localObject;
+          }
+          for (;;)
+          {
+            paramj.Dbx = (g.getMessageDigest(paramView) + '_' + UUID.randomUUID());
+            break;
+            paramView = paramView.getBytes(kotlin.n.d.UTF_8);
+            s.s(paramView, "(this as java.lang.String).getBytes(charset)");
+          }
+          if (paramj.eut()) {
+            paramj.a(b.DIU);
+          } else {
+            paramj.a(b.DIT);
+          }
+        }
+        label396:
+        if (paramView.intValue() != 2) {
+          break label30;
+        }
+        paramj.DIM = false;
+      }
+      label412:
+      if (paramView.intValue() != 1) {
+        break label34;
+      }
+      i = 1;
+      continue;
+      label425:
+      if (paramView.intValue() == 3) {
+        i = 1;
+      }
+    }
+  }
+  
+  private final void eus()
+  {
+    AppMethodBeat.i(351349);
+    com.tencent.mm.ae.d.H((Runnable)this.DIQ);
+    this.DIR.stopTimer();
+    Log.i(this.TAG, s.X("cancelLongClickState: longClickTimer.stopped = ", Boolean.valueOf(this.DIR.stopped())));
+    AppMethodBeat.o(351349);
+  }
+  
+  private final void euu()
+  {
+    AppMethodBeat.i(351365);
+    int i = this.DIJ - this.DIK;
+    if (i >= this.CHg)
+    {
+      Log.i(this.TAG, "checkComboBatchSize: clickCnt = " + this.DIJ + ", lastClickCnt = " + this.DIK);
+      this.DIK = this.DIJ;
+      a locala = this.DIN;
       if (locala != null)
       {
-        View localView = this.yQi;
-        j.a.a.a(locala, this.yQd, i, this.yQc, this.yru);
+        View localView = this.DIO;
+        j.a.a.a(locala, this.DIJ, i, this.DII, this.Dbx);
       }
       if (!this.timer.stopped())
       {
         this.timer.stopTimer();
-        this.timer.startTimer(this.yhn);
+        this.timer.startTimer(this.CHh);
       }
     }
-    AppMethodBeat.o(287805);
+    AppMethodBeat.o(351365);
   }
   
   final void a(b paramb)
   {
-    AppMethodBeat.i(287804);
-    Log.i(this.TAG, "updateState: newState = ".concat(String.valueOf(paramb)));
-    this.yQc = paramb;
-    switch (k.jLJ[paramb.ordinal()])
+    AppMethodBeat.i(351451);
+    Log.i(this.TAG, s.X("updateState: newState = ", paramb));
+    this.DII = paramb;
+    switch (c.$EnumSwitchMapping$0[paramb.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(287804);
+      AppMethodBeat.o(351451);
       return;
-      this.yQd = 0;
-      this.yQe = 0;
-      this.yru = "";
-      AppMethodBeat.o(287804);
+      this.DIJ = 0;
+      this.DIK = 0;
+      this.Dbx = "";
+      AppMethodBeat.o(351451);
       return;
-      this.yQd += 1;
-      a locala = this.yQh;
+      this.DIJ += 1;
+      a locala = this.DIN;
       View localView;
       if (locala != null)
       {
-        localView = this.yQi;
-        locala.a(this.yQd, paramb, this.yru, this.yQd - this.yQe);
+        localView = this.DIO;
+        locala.a(this.DIJ, paramb, this.Dbx, this.DIJ - this.DIK);
       }
-      dEt();
-      AppMethodBeat.o(287804);
+      euu();
+      AppMethodBeat.o(351451);
       return;
-      this.yQd += 1;
-      locala = this.yQh;
+      this.DIJ += 1;
+      locala = this.DIN;
       if (locala != null)
       {
-        localView = this.yQi;
-        locala.a(this.yQd, paramb, this.yru, this.yQd - this.yQe);
+        localView = this.DIO;
+        locala.a(this.DIJ, paramb, this.Dbx, this.DIJ - this.DIK);
       }
-      dEt();
+      euu();
     }
   }
   
-  final void dEs()
+  final boolean eut()
   {
-    AppMethodBeat.i(287802);
-    com.tencent.mm.ae.d.C((Runnable)this.yQk);
-    this.yQl.stopTimer();
-    Log.i(this.TAG, "cancelLongClickState: longClickTimer.stopped = " + this.yQl.stopped());
-    AppMethodBeat.o(287802);
+    AppMethodBeat.i(351460);
+    if ((!this.DIM) || (System.currentTimeMillis() - this.DIL < this.DIF))
+    {
+      AppMethodBeat.o(351460);
+      return true;
+    }
+    AppMethodBeat.o(351460);
+    return false;
   }
   
-  public final void ez(View paramView)
+  public final void gd(View paramView)
   {
-    AppMethodBeat.i(287801);
-    if (this.yQi == null)
+    AppMethodBeat.i(351436);
+    if (this.DIO == null)
     {
-      AppMethodBeat.o(287801);
+      AppMethodBeat.o(351436);
       return;
     }
-    Log.i(this.TAG, "unRegisterView view: ".concat(String.valueOf(paramView)));
+    Log.i(this.TAG, s.X("unRegisterView view: ", paramView));
     if (paramView != null) {
       paramView.setOnTouchListener(null);
     }
-    this.yQi = null;
+    this.DIO = null;
     this.timer.stopTimer();
-    dEs();
-    int i = this.yQd - this.yQe;
+    eus();
+    int i = this.DIJ - this.DIK;
     if (i > 0)
     {
-      paramView = this.yQh;
+      paramView = this.DIN;
       if (paramView != null)
       {
-        View localView = this.yQi;
-        paramView.a(this.yQd, i, this.yQc, this.yru, true);
+        View localView = this.DIO;
+        paramView.a(this.DIJ, i, this.DII, this.Dbx, true);
       }
     }
-    this.yQh = null;
-    a(b.yQm);
-    this.yQg = true;
-    AppMethodBeat.o(287801);
+    this.DIN = null;
+    a(b.DIS);
+    this.DIM = true;
+    AppMethodBeat.o(351436);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$IContinuousClickCallback;", "", "batchCallback", "", "view", "Landroid/view/View;", "clickCnt", "", "diffCnt", "state", "Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$State;", "comboId", "", "needCheckBalance", "instantCallback", "onActionUpOrCancel", "", "event", "Landroid/view/MotionEvent;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$IContinuousClickCallback;", "", "batchCallback", "", "view", "Landroid/view/View;", "clickCnt", "", "diffCnt", "state", "Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$State;", "comboId", "", "needCheckBalance", "instantCallback", "onActionUpOrCancel", "", "event", "Landroid/view/MotionEvent;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
     public abstract boolean a(int paramInt1, int paramInt2, j.b paramb, String paramString, boolean paramBoolean);
     
     public abstract boolean a(int paramInt1, j.b paramb, String paramString, int paramInt2);
     
-    public abstract void ab(MotionEvent paramMotionEvent);
+    public abstract void ac(MotionEvent paramMotionEvent);
     
-    @l(iBK={1, 1, 16})
+    @Metadata(k=3, mv={1, 5, 1}, xi=48)
     public static final class a {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$State;", "", "(Ljava/lang/String;I)V", "NORMAL", "SINGLE_CLICK", "CONTINUOUS_CLICKING", "LONG_CLICK", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/ContinuousClickManager$State;", "", "(Ljava/lang/String;I)V", "NORMAL", "SINGLE_CLICK", "CONTINUOUS_CLICKING", "LONG_CLICK", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum b
   {
     static
     {
-      AppMethodBeat.i(290237);
-      b localb1 = new b("NORMAL", 0);
-      yQm = localb1;
-      b localb2 = new b("SINGLE_CLICK", 1);
-      yQn = localb2;
-      b localb3 = new b("CONTINUOUS_CLICKING", 2);
-      yQo = localb3;
-      b localb4 = new b("LONG_CLICK", 3);
-      yQp = localb4;
-      yQq = new b[] { localb1, localb2, localb3, localb4 };
-      AppMethodBeat.o(290237);
+      AppMethodBeat.i(351325);
+      DIS = new b("NORMAL", 0);
+      DIT = new b("SINGLE_CLICK", 1);
+      DIU = new b("CONTINUOUS_CLICKING", 2);
+      DIV = new b("LONG_CLICK", 3);
+      DIW = new b[] { DIS, DIT, DIU, DIV };
+      AppMethodBeat.o(351325);
     }
     
     private b() {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/util/ContinuousClickManager$longClickRunnable$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder_release"})
-  public static final class c
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/util/ContinuousClickManager$longClickRunnable$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
     implements Runnable
   {
+    d(j paramj) {}
+    
     public final void run()
     {
-      AppMethodBeat.i(290136);
-      this.yQr.a(j.b.yQp);
-      if (this.yQr.timer.stopped())
+      AppMethodBeat.i(351273);
+      this.DIX.a(j.b.DIV);
+      if (this.DIX.timer.stopped())
       {
-        Log.i(this.yQr.TAG, "long click start timer");
-        this.yQr.timer.startTimer(this.yQr.yhn);
+        Log.i(this.DIX.TAG, "long click start timer");
+        this.DIX.timer.startTimer(this.DIX.CHh);
       }
-      if (this.yQr.yQl.stopped())
+      if (this.DIX.DIR.stopped())
       {
-        Log.i(this.yQr.TAG, "long click start longClickTimer");
-        this.yQr.yQl.startTimer(this.yQr.yQb);
+        Log.i(this.DIX.TAG, "long click start longClickTimer");
+        this.DIX.DIR.startTimer(this.DIX.DIH);
       }
-      AppMethodBeat.o(290136);
+      AppMethodBeat.o(351273);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/util/ContinuousClickManager$longClickTimer$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-finder_release"})
-  public static final class d
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/util/ContinuousClickManager$longClickTimer$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
     implements MTimerHandler.CallBack
   {
+    e(j paramj) {}
+    
     public final boolean onTimerExpired()
     {
-      AppMethodBeat.i(281670);
-      if (this.yQr.yQg)
+      AppMethodBeat.i(351278);
+      if (this.DIX.DIM)
       {
-        AppMethodBeat.o(281670);
+        AppMethodBeat.o(351278);
         return false;
       }
-      Log.i(this.yQr.TAG, "ContinuousClickManager longClickTimer callback: clickCnt = " + this.yQr.yQd + ", state = " + this.yQr.yQc.name() + ", lastClickCnt = " + this.yQr.yQe);
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this));
-      AppMethodBeat.o(281670);
+      Log.i(this.DIX.TAG, "ContinuousClickManager longClickTimer callback: clickCnt = " + this.DIX.DIJ + ", state = " + this.DIX.DII.name() + ", lastClickCnt = " + this.DIX.DIK);
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this.DIX));
+      AppMethodBeat.o(351278);
       return true;
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends q
-      implements kotlin.g.a.a<x>
+      extends u
+      implements kotlin.g.a.a<ah>
     {
-      a(j.d paramd)
+      a(j paramj)
       {
         super();
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/util/ContinuousClickManager$timer$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-finder_release"})
-  public static final class e
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/util/ContinuousClickManager$timer$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
     implements MTimerHandler.CallBack
-  {
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(272519);
-      Log.i(this.yQr.TAG, "ContinuousClickManager Timer callback: clickCnt = " + this.yQr.yQd + ", state = " + this.yQr.yQc.name() + ", lastClickCnt = " + this.yQr.yQe);
-      View localView;
-      if (this.yQr.yQe != this.yQr.yQd)
-      {
-        int i = this.yQr.yQd - this.yQr.yQe;
-        this.yQr.yQe = this.yQr.yQd;
-        if (i < 0)
-        {
-          this.yQr.a(j.b.yQm);
-          locala = this.yQr.yQh;
-          if (locala != null)
-          {
-            localView = this.yQr.yQi;
-            j.a.a.a(locala, this.yQr.yQd, 0, j.b.yQm, this.yQr.yru);
-          }
-          AppMethodBeat.o(272519);
-          return false;
-        }
-        locala = this.yQr.yQh;
-        if (locala != null)
-        {
-          localView = this.yQr.yQi;
-          j.a.a.a(locala, this.yQr.yQd, i, this.yQr.yQc, this.yQr.yru);
-        }
-      }
-      if (j.a(this.yQr))
-      {
-        AppMethodBeat.o(272519);
-        return true;
-      }
-      this.yQr.a(j.b.yQm);
-      j.a locala = this.yQr.yQh;
-      if (locala != null)
-      {
-        localView = this.yQr.yQi;
-        j.a.a.a(locala, this.yQr.yQd, 0, j.b.yQm, this.yQr.yru);
-      }
-      AppMethodBeat.o(272519);
-      return false;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class f
-    implements View.OnTouchListener
   {
     f(j paramj) {}
     
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+    public final boolean onTimerExpired()
     {
-      StringBuilder localStringBuilder = null;
-      AppMethodBeat.i(273888);
-      if (paramMotionEvent != null)
+      AppMethodBeat.i(351305);
+      Log.i(this.DIX.TAG, "ContinuousClickManager Timer callback: clickCnt = " + this.DIX.DIJ + ", state = " + this.DIX.DII.name() + ", lastClickCnt = " + this.DIX.DIK);
+      View localView;
+      if (this.DIX.DIK != this.DIX.DIJ)
       {
-        paramView = Integer.valueOf(paramMotionEvent.getActionMasked());
-        if (paramView != null) {
-          break label47;
-        }
-        label23:
-        if (paramView != null) {
-          break label398;
-        }
-        label27:
-        if (paramView != null) {
-          break label417;
-        }
-      }
-      label47:
-      label229:
-      while (paramView.intValue() != 1)
-      {
-        if (paramView != null) {
-          break label534;
-        }
-        for (;;)
+        int i = this.DIX.DIJ - this.DIX.DIK;
+        this.DIX.DIK = this.DIX.DIJ;
+        if (i < 0)
         {
-          AppMethodBeat.o(273888);
-          return true;
-          paramView = null;
-          break;
-          if (paramView.intValue() != 0) {
-            break label23;
-          }
-          this.yQr.yQg = false;
-          paramView = this.yQr.yQc;
-          switch (k.$EnumSwitchMapping$0[paramView.ordinal()])
+          this.DIX.a(j.b.DIS);
+          locala = this.DIX.DIN;
+          if (locala != null)
           {
+            localView = this.DIX.DIO;
+            j.a.a.a(locala, this.DIX.DIJ, 0, j.b.DIS, this.DIX.Dbx);
           }
-          for (;;)
-          {
-            com.tencent.mm.ae.d.a(this.yQr.yQa, (Runnable)this.yQr.yQk);
-            break;
-            Object localObject;
-            if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.DEBUG))
-            {
-              paramView = com.tencent.c.a.a.a.a.a.Zlt;
-              if (1 == ((Number)com.tencent.c.a.a.a.a.a.ilO().aSr()).intValue())
-              {
-                paramMotionEvent = this.yQr;
-                localStringBuilder = new StringBuilder();
-                paramView = z.bcZ();
-                if (paramView != null)
-                {
-                  localObject = kotlin.n.d.UTF_8;
-                  if (paramView == null)
-                  {
-                    paramView = new t("null cannot be cast to non-null type java.lang.String");
-                    AppMethodBeat.o(273888);
-                    throw paramView;
-                  }
-                  paramView = paramView.getBytes((Charset)localObject);
-                  p.j(paramView, "(this as java.lang.String).getBytes(charset)");
-                }
-              }
-            }
-            for (paramMotionEvent.yru = (g.getMessageDigest(paramView) + "_123456");; paramMotionEvent.yru = (g.getMessageDigest(paramView) + '_' + UUID.randomUUID()))
-            {
-              this.yQr.a(j.b.yQn);
-              break;
-              paramView = null;
-              break label229;
-              paramMotionEvent = this.yQr;
-              localObject = new StringBuilder();
-              String str = z.bcZ();
-              paramView = localStringBuilder;
-              if (str != null)
-              {
-                paramView = kotlin.n.d.UTF_8;
-                if (str == null)
-                {
-                  paramView = new t("null cannot be cast to non-null type java.lang.String");
-                  AppMethodBeat.o(273888);
-                  throw paramView;
-                }
-                paramView = str.getBytes(paramView);
-                p.j(paramView, "(this as java.lang.String).getBytes(charset)");
-              }
-            }
-            if (j.a(this.yQr)) {
-              this.yQr.a(j.b.yQo);
-            } else {
-              this.yQr.a(j.b.yQn);
-            }
-          }
-          if (paramView.intValue() != 2) {
-            break label27;
-          }
-          this.yQr.yQg = false;
+          AppMethodBeat.o(351305);
+          return false;
         }
-      }
-      for (;;)
-      {
-        label398:
-        label417:
-        Log.i(this.yQr.TAG, "on ACTION_UP or ACTION_CANCEL: ".concat(String.valueOf(paramMotionEvent)));
-        this.yQr.yQg = true;
-        this.yQr.yQf = System.currentTimeMillis();
-        if (this.yQr.timer.stopped())
+        locala = this.DIX.DIN;
+        if (locala != null)
         {
-          Log.i(this.yQr.TAG, "single click start timer");
-          this.yQr.timer.startTimer(this.yQr.yhn);
-        }
-        this.yQr.dEs();
-        paramView = this.yQr.yQh;
-        if (paramView == null) {
-          break;
-        }
-        paramView.ab(paramMotionEvent);
-        break;
-        label534:
-        if (paramView.intValue() != 3) {
-          break;
+          localView = this.DIX.DIO;
+          j.a.a.a(locala, this.DIX.DIJ, i, this.DIX.DII, this.DIX.Dbx);
         }
       }
+      if (this.DIX.eut())
+      {
+        AppMethodBeat.o(351305);
+        return true;
+      }
+      this.DIX.a(j.b.DIS);
+      j.a locala = this.DIX.DIN;
+      if (locala != null)
+      {
+        localView = this.DIX.DIO;
+        j.a.a.a(locala, this.DIX.DIJ, 0, j.b.DIS, this.DIX.Dbx);
+      }
+      AppMethodBeat.o(351305);
+      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.util.j
  * JD-Core Version:    0.7.0.1
  */

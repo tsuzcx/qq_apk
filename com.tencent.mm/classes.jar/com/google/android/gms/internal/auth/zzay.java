@@ -5,20 +5,12 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="DeleteRequestCreator")
-@SafeParcelable.Reserved({1000})
 public final class zzay
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzay> CREATOR;
-  @SafeParcelable.Field(getter="getCredential", id=1)
   private final Credential zzdq;
   
   static
@@ -28,8 +20,7 @@ public final class zzay
     AppMethodBeat.o(88384);
   }
   
-  @SafeParcelable.Constructor
-  public zzay(@SafeParcelable.Param(id=1) Credential paramCredential)
+  public zzay(Credential paramCredential)
   {
     this.zzdq = paramCredential;
   }
@@ -45,7 +36,7 @@ public final class zzay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.auth.zzay
  * JD-Core Version:    0.7.0.1
  */

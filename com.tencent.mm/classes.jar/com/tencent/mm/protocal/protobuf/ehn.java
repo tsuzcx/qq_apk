@@ -1,97 +1,109 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
 
 public final class ehn
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int Height;
-  public String MD5;
-  public String UeM;
-  public String UjI;
-  public int Width;
+  public String ZNU;
+  public String ablC;
+  public b abmJ;
+  public String image;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32452);
+    AppMethodBeat.i(258979);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MD5 != null) {
-        paramVarArgs.f(1, this.MD5);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.title != null) {
+        paramVarArgs.g(1, this.title);
       }
-      paramVarArgs.aY(2, this.Width);
-      paramVarArgs.aY(3, this.Height);
-      if (this.UeM != null) {
-        paramVarArgs.f(4, this.UeM);
+      if (this.image != null) {
+        paramVarArgs.g(2, this.image);
       }
-      if (this.UjI != null) {
-        paramVarArgs.f(5, this.UjI);
+      if (this.ZNU != null) {
+        paramVarArgs.g(3, this.ZNU);
       }
-      AppMethodBeat.o(32452);
+      if (this.abmJ != null) {
+        paramVarArgs.d(4, this.abmJ);
+      }
+      if (this.ablC != null) {
+        paramVarArgs.g(5, this.ablC);
+      }
+      AppMethodBeat.o(258979);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.MD5 == null) {
-        break label433;
+      if (this.title == null) {
+        break label450;
       }
     }
-    label433:
-    for (paramInt = g.a.a.b.b.a.g(1, this.MD5) + 0;; paramInt = 0)
+    label450:
+    for (int i = i.a.a.b.b.a.h(1, this.title) + 0;; i = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.Width) + g.a.a.b.b.a.bM(3, this.Height);
       paramInt = i;
-      if (this.UeM != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.UeM);
+      if (this.image != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.image);
       }
       i = paramInt;
-      if (this.UjI != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.UjI);
+      if (this.ZNU != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.ZNU);
       }
-      AppMethodBeat.o(32452);
+      paramInt = i;
+      if (this.abmJ != null) {
+        paramInt = i + i.a.a.b.b.a.c(4, this.abmJ);
+      }
+      i = paramInt;
+      if (this.ablC != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.ablC);
+      }
+      AppMethodBeat.o(258979);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(32452);
+        AppMethodBeat.o(258979);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         ehn localehn = (ehn)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32452);
+          AppMethodBeat.o(258979);
           return -1;
         case 1: 
-          localehn.MD5 = locala.abFh.readString();
-          AppMethodBeat.o(32452);
+          localehn.title = locala.ajGk.readString();
+          AppMethodBeat.o(258979);
           return 0;
         case 2: 
-          localehn.Width = locala.abFh.AK();
-          AppMethodBeat.o(32452);
+          localehn.image = locala.ajGk.readString();
+          AppMethodBeat.o(258979);
           return 0;
         case 3: 
-          localehn.Height = locala.abFh.AK();
-          AppMethodBeat.o(32452);
+          localehn.ZNU = locala.ajGk.readString();
+          AppMethodBeat.o(258979);
           return 0;
         case 4: 
-          localehn.UeM = locala.abFh.readString();
-          AppMethodBeat.o(32452);
+          localehn.abmJ = locala.ajGk.kFX();
+          AppMethodBeat.o(258979);
           return 0;
         }
-        localehn.UjI = locala.abFh.readString();
-        AppMethodBeat.o(32452);
+        localehn.ablC = locala.ajGk.readString();
+        AppMethodBeat.o(258979);
         return 0;
       }
-      AppMethodBeat.o(32452);
+      AppMethodBeat.o(258979);
       return -1;
     }
   }

@@ -8,68 +8,66 @@ import com.tencent.mm.plugin.story.c.a.b;
 import com.tencent.mm.plugin.story.c.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig$StoryProcessType;", "()V", "DEFAULT_VALUE", "TAG", "", "getTAG", "()Ljava/lang/String;", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "loadDebugConfig", "", "loadServerConfig", "update", "parse", "StoryProcessType", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig$StoryProcessType;", "()V", "DEFAULT_VALUE", "TAG", "", "getTAG", "()Ljava/lang/String;", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "loadDebugConfig", "", "loadServerConfig", "update", "parse", "StoryProcessType", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
   extends b<a>
 {
-  private static final a LFt;
-  public static final g LFu;
-  private static final String TAG = "MicroMsg.StoryProcessElementConfig";
+  public static final g Sjf;
+  private static final a Sjg;
+  private static final String TAG;
   
   static
   {
     AppMethodBeat.i(118617);
-    LFu = new g();
+    Sjf = new g();
     TAG = "MicroMsg.StoryProcessElementConfig";
-    LFt = a.LFw;
+    Sjg = a.Sji;
     AppMethodBeat.o(118617);
   }
   
-  public final void aTZ()
+  public final void boD()
   {
     AppMethodBeat.i(118616);
     Log.i(TAG, "loadDebugConfig false ");
-    Object localObject = MultiProcessMMKV.getMMKV(a.b.LEW.name()).getString(a.a.LEQ.name(), LFt.name());
-    if (localObject == null) {
-      p.iCn();
-    }
-    p.j(localObject, "mmkv.getString(getElemen…me, DEFAULT_VALUE.name)!!");
-    bS(a.valueOf((String)localObject));
-    int i = at("StoryBackgroundRemux", 0);
+    Object localObject = MultiProcessMMKV.getMMKV(a.b.SiH.name()).getString(a.a.SiB.name(), Sjg.name());
+    s.checkNotNull(localObject);
+    s.s(localObject, "mmkv.getString(getElemen…me, DEFAULT_VALUE.name)!!");
+    dm(a.valueOf((String)localObject));
+    int i = aC("StoryBackgroundRemux", 0);
     int j;
     if (i != 0)
     {
       if (i == 1)
       {
-        localObject = a.LFw;
-        bS(localObject);
+        localObject = a.Sji;
+        dm(localObject);
       }
     }
     else
     {
-      j = af.juP.jtt;
+      j = af.lYg.lWK;
       if (j != -1) {
         if (j != 1) {
-          break label170;
+          break label164;
         }
       }
     }
-    label170:
-    for (localObject = a.LFw;; localObject = a.LFv)
+    label164:
+    for (localObject = a.Sji;; localObject = a.Sjh)
     {
-      bS(localObject);
-      Log.i(TAG, "loadServerConfig : " + (a)aTX() + ", serverConfig:" + i + ", deviceConfig:" + j);
+      dm(localObject);
+      Log.i(TAG, "loadServerConfig : " + boB() + ", serverConfig:" + i + ", deviceConfig:" + j);
       AppMethodBeat.o(118616);
       return;
-      localObject = a.LFv;
+      localObject = a.Sjh;
       break;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig$StoryProcessType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "FORWARD", "BACKGROUND", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig$StoryProcessType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "FORWARD", "BACKGROUND", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum a
   {
     public final int value;
@@ -77,11 +75,9 @@ public final class g
     static
     {
       AppMethodBeat.i(118613);
-      a locala1 = new a("FORWARD", 0, 0);
-      LFv = locala1;
-      a locala2 = new a("BACKGROUND", 1, 1);
-      LFw = locala2;
-      LFx = new a[] { locala1, locala2 };
+      Sjh = new a("FORWARD", 0, 0);
+      Sji = new a("BACKGROUND", 1, 1);
+      Sjj = new a[] { Sjh, Sji };
       AppMethodBeat.o(118613);
     }
     

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/ek6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fbz" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="@dimen/ayz" android:layout_height="@dimen/ayy"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.live.core.view.LivePreviewView android:id="@id/ek7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/coa" />
-</com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+    <RelativeLayout android:background="@drawable/ca_" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:contentDescription="@null" android:importantForAccessibility="no">
+        <ImageView android:id="@id/lwu" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_horizontal" android:id="@id/lwv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" />
+</LinearLayout>

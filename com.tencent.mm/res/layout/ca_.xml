@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/a05"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i1" android:layout_marginRight="@dimen/i1" android:layout_marginBottom="@dimen/k" android:text="@string/it8" />
-    <ListView android:id="@id/hn5" android:background="@color/afz" android:paddingLeft="@dimen/i1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/a7t" android:dividerHeight="@dimen/bq" style="@style/np" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/ko4" android:background="@color/a76" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/ay9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/bv" android:layout_marginRight="@dimen/df" android:layout_marginBottom="@dimen/df" android:minHeight="@dimen/aum">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/ko5" android:layout_width="@dimen/aun" android:layout_height="@dimen/aun" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cd" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/m4" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ko7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:layout_gravity="bottom" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />
 </LinearLayout>

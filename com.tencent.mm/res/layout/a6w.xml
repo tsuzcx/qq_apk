@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.fav.ui.widget.FavCapacityPanel android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cx1" android:paddingTop="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cx0" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/csc" android:layout_weight="0.0" style="@style/jj" />
+        <View android:background="@color/qa" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="2.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="2.0dip" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cwz" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="4.0dip" />
+    <TextView android:ellipsize="end" android:id="@id/cvt" android:layout_width="wrap_content" android:layout_marginRight="10.0dip" android:maxWidth="200.0dip" android:text="{name}" style="@style/jj" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/cx5" android:background="@drawable/t4" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:visibility="gone" android:layout_height="16.0dip" android:layout_marginLeft="-6.0dip" android:layout_marginRight="10.0dip" style="@style/jj" />
+    <TextView android:gravity="center_vertical" android:id="@id/cwu" android:layout_width="0.0dip" android:text="{time}" android:layout_weight="1.0" style="@style/jj" />
+    <ImageView android:id="@id/cwr" android:visibility="gone" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@raw/fav_list_tag" android:contentDescription="@string/crk" />
+</LinearLayout>

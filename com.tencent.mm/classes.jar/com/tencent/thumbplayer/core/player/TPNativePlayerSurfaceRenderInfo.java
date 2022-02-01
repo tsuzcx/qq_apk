@@ -19,16 +19,16 @@ public class TPNativePlayerSurfaceRenderInfo
     
     public String toString()
     {
-      AppMethodBeat.i(223853);
+      AppMethodBeat.i(228240);
       String str = "width:" + this.width + ", height:" + this.height + ", cropLeft:" + this.cropLeft + ", cropRight:" + this.cropRight + ", cropTop:" + this.cropTop + ", cropBottom:" + this.cropBottom;
-      AppMethodBeat.o(223853);
+      AppMethodBeat.o(228240);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerSurfaceRenderInfo
  * JD-Core Version:    0.7.0.1
  */

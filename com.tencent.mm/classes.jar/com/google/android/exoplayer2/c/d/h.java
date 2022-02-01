@@ -7,10 +7,10 @@ import java.util.UUID;
 
 public final class h
 {
-  public static UUID p(byte[] paramArrayOfByte)
+  public static UUID v(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(92122);
-    paramArrayOfByte = q(paramArrayOfByte);
+    paramArrayOfByte = w(paramArrayOfByte);
     if (paramArrayOfByte == null)
     {
       AppMethodBeat.o(92122);
@@ -21,7 +21,7 @@ public final class h
     return paramArrayOfByte;
   }
   
-  private static Pair<UUID, byte[]> q(byte[] paramArrayOfByte)
+  private static Pair<UUID, byte[]> w(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(92123);
     paramArrayOfByte = new m(paramArrayOfByte);
@@ -31,17 +31,17 @@ public final class h
       return null;
     }
     paramArrayOfByte.setPosition(0);
-    if (paramArrayOfByte.readInt() != paramArrayOfByte.vg() + 4)
+    if (paramArrayOfByte.readInt() != paramArrayOfByte.UF() + 4)
     {
       AppMethodBeat.o(92123);
       return null;
     }
-    if (paramArrayOfByte.readInt() != a.aVf)
+    if (paramArrayOfByte.readInt() != a.cPb)
     {
       AppMethodBeat.o(92123);
       return null;
     }
-    int i = a.eq(paramArrayOfByte.readInt());
+    int i = a.hG(paramArrayOfByte.readInt());
     if (i > 1)
     {
       AppMethodBeat.o(92123);
@@ -49,10 +49,10 @@ public final class h
     }
     UUID localUUID = new UUID(paramArrayOfByte.readLong(), paramArrayOfByte.readLong());
     if (i == 1) {
-      paramArrayOfByte.fu(paramArrayOfByte.vo() * 16);
+      paramArrayOfByte.iH(paramArrayOfByte.UN() * 16);
     }
-    i = paramArrayOfByte.vo();
-    if (i != paramArrayOfByte.vg())
+    i = paramArrayOfByte.UN();
+    if (i != paramArrayOfByte.UF())
     {
       AppMethodBeat.o(92123);
       return null;

@@ -19,20 +19,20 @@ public class TbsReaderTokenAtom
   
   public int init(Object paramObject)
   {
-    AppMethodBeat.i(186886);
+    AppMethodBeat.i(219293);
     if (this.a != null)
     {
       int i = this.a.init(paramObject);
-      AppMethodBeat.o(186886);
+      AppMethodBeat.o(219293);
       return i;
     }
-    AppMethodBeat.o(186886);
+    AppMethodBeat.o(219293);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tbs.reader.external.TbsReaderTokenAtom
  * JD-Core Version:    0.7.0.1
  */

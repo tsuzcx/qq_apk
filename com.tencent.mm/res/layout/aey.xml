@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cvs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:paddingTop="@dimen/d0" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/cvv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/koq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kor" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_error" android:layout_centerHorizontal="true" app:iconColor="@color/am" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:gravity="center" android:id="@id/cvw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/kor" android:layout_centerHorizontal="true" />
-    </LinearLayout>
-    <RelativeLayout android:id="@id/cvu" android:background="@drawable/ad4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cvt" android:padding="@dimen/bt" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/icons_filled_close" android:layout_alignParentEnd="true" app:iconColor="@color/ag2" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/i23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dyx" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

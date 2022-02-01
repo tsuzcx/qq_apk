@@ -5,9 +5,9 @@ import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/mini/LiveMiniViewOutlineProvider;", "Landroid/view/ViewOutlineProvider;", "radius", "", "(F)V", "getRadius", "()F", "setRadius", "getOutline", "", "view", "Landroid/view/View;", "outline", "Landroid/graphics/Outline;", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/mini/LiveMiniViewOutlineProvider;", "Landroid/view/ViewOutlineProvider;", "radius", "", "(F)V", "getRadius", "()F", "setRadius", "getOutline", "", "view", "Landroid/view/View;", "outline", "Landroid/graphics/Outline;", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends ViewOutlineProvider
 {
@@ -20,19 +20,16 @@ public final class d
   
   public final void getOutline(View paramView, Outline paramOutline)
   {
-    AppMethodBeat.i(198697);
+    AppMethodBeat.i(247623);
     Rect localRect = new Rect();
     if (paramView != null) {
       paramView.getDrawingRect(localRect);
     }
     paramView = new Rect(0, 0, localRect.right - localRect.left + 0, localRect.bottom - localRect.top + 0);
-    if (paramOutline != null)
-    {
+    if (paramOutline != null) {
       paramOutline.setRoundRect(paramView, this.radius);
-      AppMethodBeat.o(198697);
-      return;
     }
-    AppMethodBeat.o(198697);
+    AppMethodBeat.o(247623);
   }
 }
 

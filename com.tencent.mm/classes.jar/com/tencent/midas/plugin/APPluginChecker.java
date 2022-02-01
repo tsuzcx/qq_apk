@@ -13,11 +13,11 @@ public class APPluginChecker
   
   private static boolean isAllPluginValid(File paramFile)
   {
-    AppMethodBeat.i(252648);
+    AppMethodBeat.i(217497);
     if (paramFile == null)
     {
       APLog.e("APPluginChecker", "Cannot check all plugin valid, pluginPath is null!");
-      AppMethodBeat.o(252648);
+      AppMethodBeat.o(217497);
       return false;
     }
     APLog.d("APPluginChecker", "Check all plugin valid, parameter ok!");
@@ -32,7 +32,7 @@ public class APPluginChecker
         if (!localFile.exists())
         {
           APLog.e("APPluginChecker", "Check all plugin valid, sign file is not found");
-          AppMethodBeat.o(252648);
+          AppMethodBeat.o(217497);
           return false;
         }
         APLog.d("APPluginChecker", "Check all plugin valid, sign file exist!");
@@ -70,17 +70,17 @@ public class APPluginChecker
       }
       catch (Exception paramFile)
       {
-        AppMethodBeat.o(252648);
+        AppMethodBeat.o(217497);
         return false;
       }
       if ((i != localHashMap.size()) || (i < 2))
       {
         APLog.e("APPluginChecker", "Check all plugin valid, all valid file num = " + i + ", but sign file size = " + localHashMap.size() + ", check fail!");
-        AppMethodBeat.o(252648);
+        AppMethodBeat.o(217497);
         return false;
       }
       APLog.d("APPluginChecker", "Check all plugin valid, all valid file num = " + i + ", sign file size = " + localHashMap.size() + ", check success!");
-      AppMethodBeat.o(252648);
+      AppMethodBeat.o(217497);
       return true;
       j += 1;
     }
@@ -88,16 +88,58 @@ public class APPluginChecker
   
   public static boolean isPluginValid(Context paramContext)
   {
-    AppMethodBeat.i(252647);
+    AppMethodBeat.i(217478);
     APLog.d("APPluginChecker", "Calling into isPluginValid " + java.lang.Thread.currentThread().getStackTrace()[3].toString());
     boolean bool = isAllPluginValid(APPluginConfig.getPluginPath(paramContext));
-    AppMethodBeat.o(252647);
+    AppMethodBeat.o(217478);
     return bool;
+  }
+  
+  public static boolean isPluginValid(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(217506);
+    if (TextUtils.isEmpty(paramString1))
+    {
+      APLog.e("APPluginChecker", "Cannot check plugin valid, pluginPath is null!");
+      AppMethodBeat.o(217506);
+      return false;
+    }
+    APLog.d("APPluginChecker", "Check plugin valid, parameter ok!");
+    try
+    {
+      Object localObject = new File(paramString1.substring(0, paramString1.lastIndexOf("/")));
+      File localFile = new File(((File)localObject).getCanonicalPath() + File.separator + APPluginConfig.SIGN_FILE_NAME);
+      if (!localFile.exists())
+      {
+        APLog.e("APPluginChecker", "Check plugin valid, sign file is not found");
+        AppMethodBeat.o(217506);
+        return false;
+      }
+      APLog.d("APPluginChecker", "Check plugin valid, sign file exist!");
+      localObject = new HashMap();
+      APPluginUtils.readSingInfo((HashMap)localObject, localFile);
+      paramString1 = new File(paramString1).getName();
+      APLog.d("APPluginChecker", "Check plugin valid, current check file = ".concat(String.valueOf(paramString1)));
+      if (paramString2.equals((String)((HashMap)localObject).get(paramString1.split("\\_")[0])))
+      {
+        APLog.d("APPluginChecker", "Check plugin valid, current check file = " + paramString1 + ", MD5 OK");
+        AppMethodBeat.o(217506);
+        return true;
+      }
+      APLog.d("APPluginChecker", "Check plugin valid, current check file = " + paramString1 + ", MD5 not OK");
+      AppMethodBeat.o(217506);
+      return false;
+    }
+    catch (Exception paramString1)
+    {
+      AppMethodBeat.o(217506);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginChecker
  * JD-Core Version:    0.7.0.1
  */

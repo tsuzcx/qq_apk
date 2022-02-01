@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class h
   extends d
 {
-  public a YBc;
+  public a agvz;
+  private String bjg;
   Looper mLooper;
-  private String mType;
   
   public h(Handler paramHandler, String paramString)
   {
@@ -21,8 +21,8 @@ public class h
   private h(Looper paramLooper, a parama, String paramString)
   {
     this.mLooper = paramLooper;
-    this.YBc = parama;
-    this.mType = paramString;
+    this.agvz = parama;
+    this.bjg = paramString;
   }
   
   public h(Looper paramLooper, String paramString)
@@ -42,7 +42,7 @@ public class h
   public void arrange(Runnable paramRunnable)
   {
     AppMethodBeat.i(74919);
-    this.YBc.post(paramRunnable);
+    this.agvz.post(paramRunnable);
     AppMethodBeat.o(74919);
   }
   
@@ -51,29 +51,29 @@ public class h
     AppMethodBeat.i(74920);
     if (paramLong >= 0L)
     {
-      this.YBc.c(paramRunnable, paramLong);
+      this.agvz.d(paramRunnable, paramLong);
       AppMethodBeat.o(74920);
       return;
     }
-    this.YBc.post(paramRunnable);
+    this.agvz.post(paramRunnable);
     AppMethodBeat.o(74920);
   }
   
   public void cancel()
   {
     AppMethodBeat.i(74918);
-    this.YBc.hC();
+    this.agvz.Fg();
     AppMethodBeat.o(74918);
   }
   
   public String getType()
   {
-    return this.mType;
+    return this.bjg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vending.h.h
  * JD-Core Version:    0.7.0.1
  */

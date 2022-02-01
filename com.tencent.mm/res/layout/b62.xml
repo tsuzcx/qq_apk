@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:orientation="vertical" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g5s" android:background="#ffebebeb" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="30.0dip">
-        <TextView android:textSize="@dimen/kc" android:textColor="@color/zh" android:ellipsize="end" android:gravity="left" android:id="@id/g5u" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/kc" android:textColor="@color/zh" android:ellipsize="end" android:gravity="right" android:id="@id/g5t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
-    </LinearLayout>
-    <LinearLayout android:gravity="top" android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/k" android:paddingRight="@dimen/hs" android:paddingBottom="@dimen/k" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/zj" android:ellipsize="end" android:gravity="left" android:id="@id/g5z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/zh" android:ellipsize="end" android:gravity="left" android:id="@id/g5x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:includeFontPadding="false" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/zi" android:ellipsize="end" android:gravity="left" android:id="@id/g5y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:includeFontPadding="false" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="18.0dip" android:textColor="@color/zj" android:ellipsize="end" android:gravity="right" android:id="@id/g5w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            <TextView android:textSize="18.0dip" android:textColor="@color/zg" android:ellipsize="end" android:gravity="right" android:id="@id/g5v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        </LinearLayout>
+<LinearLayout android:gravity="bottom|center" android:layout_gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_gravity="bottom|center" android:id="@id/lek" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d0">
+        <com.tencent.mm.plugin.voip.widget.VoipSmallIconButton android:layout_gravity="start|bottom|center" android:id="@id/ld2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" custom:iconRes="@drawable/c8d" custom:iconResPressed="@drawable/c8e" custom:iconTip="@string/kgy" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.voip.widget.VoIPControlIconLayout android:gravity="start" android:layout_gravity="center" android:id="@id/ld8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" custom:checkedIcon="@raw/icons_filled_mike" custom:checkedText="@string/kha" custom:iconBg="@drawable/b12" custom:uncheckedIcon="@raw/icons_filled_mike_off" custom:uncheckedText="@string/kh_" />
+        <FrameLayout android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/ld6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tencent.mm.plugin.voip.widget.VoIPControlIconLayout android:gravity="end" android:layout_gravity="center" android:id="@id/ldo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" custom:checkedIcon="@raw/icons_filled_volume_up" custom:checkedText="@string/kiu" custom:iconBg="@drawable/b12" custom:uncheckedIcon="@raw/icons_filled_volume_off" custom:uncheckedText="@string/kit" />
     </LinearLayout>
 </LinearLayout>

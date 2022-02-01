@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.EOFException;
@@ -143,35 +144,35 @@ public class TXCFLVDownloader
   
   private void apiError(String paramString)
   {
-    AppMethodBeat.i(243013);
+    AppMethodBeat.i(229684);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
     TXCLog.e("network.TXCFLVDownloader", "TXCFLVDownloader(" + hashCode() + ") " + str);
-    AppMethodBeat.o(243013);
+    AppMethodBeat.o(229684);
   }
   
   private void apiError(String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(243015);
+    AppMethodBeat.i(229688);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
     TXCLog.e("network.TXCFLVDownloader", "TXCFLVDownloader(" + hashCode() + ") " + str, paramThrowable);
-    AppMethodBeat.o(243015);
+    AppMethodBeat.o(229688);
   }
   
   private void apiLog(String paramString)
   {
-    AppMethodBeat.i(243012);
+    AppMethodBeat.i(229681);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
     TXCLog.i("network.TXCFLVDownloader", "TXCFLVDownloader (" + hashCode() + ") " + str);
-    AppMethodBeat.o(243012);
+    AppMethodBeat.o(229681);
   }
   
   private void connect()
@@ -259,9 +260,9 @@ public class TXCFLVDownloader
   
   private native int nativeGetVideoGop(long paramLong);
   
-  private native long nativeInitFlvHander(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2);
+  private native long nativeInitFlvHander(String paramString1, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, String paramString2, String paramString3);
   
-  private native long nativeInitFlvHanderByRef(long paramLong);
+  private native long nativeInitFlvHanderByRef(long paramLong, int paramInt, String paramString1, String paramString2);
   
   private native int nativeParseData(long paramLong, byte[] paramArrayOfByte, int paramInt);
   
@@ -269,26 +270,26 @@ public class TXCFLVDownloader
   
   private void onRecvFirstAudioData()
   {
-    AppMethodBeat.i(243009);
+    AppMethodBeat.i(229679);
     if (!this.mHasReceivedFirstAudio)
     {
       this.mHasReceivedFirstAudio = true;
       this.mStats.firstAudioTS = TXCTimeUtil.getTimeTick();
       apiLog("[FirstFramePath][Network][Audio] TXCFlvDownloader: recv first audio frame. instance:" + hashCode());
     }
-    AppMethodBeat.o(243009);
+    AppMethodBeat.o(229679);
   }
   
   private void onRecvFirstVideoData()
   {
-    AppMethodBeat.i(243007);
+    AppMethodBeat.i(229678);
     if (!this.mHasReceivedFirstVideo)
     {
       this.mHasReceivedFirstVideo = true;
       this.mStats.firstVideoTS = TXCTimeUtil.getTimeTick();
       apiLog("[FirstFramePath][Network][Video] TXCFlvDownloader: recv first video frame. instance:" + hashCode());
     }
-    AppMethodBeat.o(243007);
+    AppMethodBeat.o(229678);
   }
   
   private void postConnectMsg()
@@ -327,22 +328,23 @@ public class TXCFLVDownloader
     AppMethodBeat.o(15320);
   }
   
-  private void processMsgConnect()
+  private void processMsgConnect(e parame)
   {
-    AppMethodBeat.i(15314);
+    AppMethodBeat.i(229643);
     for (;;)
     {
+      TXCFLVDownloader localTXCFLVDownloader;
       try
       {
         connect();
         if (this.mFLVParser == 0L)
         {
           if (this.mRefFLVDownloader == null) {
-            break label358;
+            break label471;
           }
-          TXCFLVDownloader localTXCFLVDownloader = (TXCFLVDownloader)this.mRefFLVDownloader.get();
+          localTXCFLVDownloader = (TXCFLVDownloader)this.mRefFLVDownloader.get();
           if (localTXCFLVDownloader == null) {
-            break label322;
+            break label359;
           }
           if (localTXCFLVDownloader.mIsRunning)
           {
@@ -351,10 +353,13 @@ public class TXCFLVDownloader
             l = localTXCFLVDownloader.mFLVParser;
             this.mRefFLVDownloader = null;
             if (l == 0L) {
-              break label327;
+              break label381;
             }
             apiLog("[Network]init flv parser with reference parse:".concat(String.valueOf(l)));
-            this.mFLVParser = nativeInitFlvHanderByRef(l);
+            if ((parame == null) || (!TXCCommonUtil.equalURL(parame.a(), this.mPlayUrl))) {
+              break label364;
+            }
+            this.mFLVParser = nativeInitFlvHanderByRef(l, parame.b(), parame.c(), parame.d());
           }
         }
         else
@@ -362,56 +367,66 @@ public class TXCFLVDownloader
           if (this.mFlvHandler != null) {
             this.mFlvHandler.sendEmptyMessage(101);
           }
-          AppMethodBeat.o(15314);
+          AppMethodBeat.o(229643);
           return;
         }
       }
-      catch (SocketTimeoutException localSocketTimeoutException)
+      catch (SocketTimeoutException parame)
       {
         apiError("[Network]socket timeout, reconnect");
         this.mStats.errorCode = -1;
-        this.mStats.errorInfo = localSocketTimeoutException.toString();
+        this.mStats.errorInfo = parame.toString();
         postReconnectMsg();
-        AppMethodBeat.o(15314);
+        AppMethodBeat.o(229643);
         return;
       }
-      catch (FileNotFoundException localFileNotFoundException)
+      catch (FileNotFoundException parame)
       {
         apiError("[Network]file not found, reconnect");
         this.mStats.errorCode = -1;
-        this.mStats.errorInfo = localFileNotFoundException.toString();
+        this.mStats.errorInfo = parame.toString();
         postReconnectMsg();
-        AppMethodBeat.o(15314);
+        AppMethodBeat.o(229643);
         return;
       }
-      catch (Exception localException)
+      catch (Exception parame)
       {
         apiError("[Network]exception, reconnect");
         this.mStats.errorCode = -1;
-        this.mStats.errorInfo = localException.toString();
+        this.mStats.errorInfo = parame.toString();
         postReconnectMsg();
-        AppMethodBeat.o(15314);
+        AppMethodBeat.o(229643);
         return;
       }
-      catch (Error localError)
+      catch (Error parame)
       {
         apiError("[Network]error, reconnect");
         this.mStats.errorCode = -1;
-        this.mStats.errorInfo = localError.toString();
+        this.mStats.errorInfo = parame.toString();
         postReconnectMsg();
-        AppMethodBeat.o(15314);
+        AppMethodBeat.o(229643);
         return;
       }
-      apiError("[Network]old downloader:" + localError.hashCode() + " isn't running now. just create new parser.");
-      label322:
+      apiError("[Network]old downloader:" + localTXCFLVDownloader.hashCode() + " isn't running now. just create new parser.");
+      label359:
       long l = 0L;
       continue;
-      label327:
-      apiLog("[Network]init flv parser.");
-      this.mFLVParser = nativeInitFlvHander(this.mUserID, 0, this.mEnableMessage, this.mEnableMetaData);
+      label364:
+      this.mFLVParser = nativeInitFlvHanderByRef(l, 0, "", "");
       continue;
-      label358:
-      l = 0L;
+      label381:
+      apiLog("[Network]init flv parser.");
+      if ((parame != null) && (TXCCommonUtil.equalURL(parame.a(), this.mPlayUrl)))
+      {
+        this.mFLVParser = nativeInitFlvHander(this.mUserID, 0, this.mEnableMessage, this.mEnableMetaData, parame.b(), parame.c(), parame.d());
+      }
+      else
+      {
+        this.mFLVParser = nativeInitFlvHander(this.mUserID, 0, this.mEnableMessage, this.mEnableMetaData, 0, "", "");
+        continue;
+        label471:
+        l = 0L;
+      }
     }
   }
   
@@ -438,20 +453,20 @@ public class TXCFLVDownloader
     }
   }
   
-  private void processMsgReconnect()
+  private void processMsgReconnect(e parame)
   {
-    AppMethodBeat.i(15317);
+    AppMethodBeat.i(229652);
     if (this.mStopJitter)
     {
-      reconnect();
-      AppMethodBeat.o(15317);
+      reconnect(parame);
+      AppMethodBeat.o(229652);
       return;
     }
     apiLog("ignore processMsgReconnect when start multi stream switch".concat(String.valueOf(this)));
     if (this.mRestartListener != null) {
       this.mRestartListener.onOldStreamStop();
     }
-    AppMethodBeat.o(15317);
+    AppMethodBeat.o(229652);
   }
   
   private void processMsgRecvData()
@@ -557,9 +572,9 @@ public class TXCFLVDownloader
     AppMethodBeat.o(15315);
   }
   
-  private void reconnect()
+  private void reconnect(e parame)
   {
-    AppMethodBeat.i(15319);
+    AppMethodBeat.i(229659);
     processMsgDisConnect();
     String str = "ServerIp:" + this.mStats.serverIP + ",errCode:" + this.mStats.errorCode + ",errInfo:" + this.mStats.errorInfo;
     apiLog("reconnect:".concat(String.valueOf(str)));
@@ -567,19 +582,19 @@ public class TXCFLVDownloader
     {
       this.connectRetryTimes += 1;
       apiLog("[Network] start reconnect, times:" + this.connectRetryTimes + " limit:" + this.connectRetryLimit);
-      processMsgConnect();
+      processMsgConnect(parame);
       sendNotifyEvent(2103, str);
-      AppMethodBeat.o(15319);
+      AppMethodBeat.o(229659);
       return;
     }
     apiLog("[Network] reconnect fail. all times retried. limit:" + this.connectRetryLimit);
     sendNotifyEvent(-2301, str);
-    AppMethodBeat.o(15319);
+    AppMethodBeat.o(229659);
   }
   
-  private void startInternal()
+  private void startInternal(final e parame)
   {
-    AppMethodBeat.i(15318);
+    AppMethodBeat.i(229656);
     if (this.mFlvHandler == null)
     {
       HandlerThread localHandlerThread = new HandlerThread("FlvThread");
@@ -597,7 +612,7 @@ public class TXCFLVDownloader
           {
             AppMethodBeat.o(15468);
             return;
-            TXCFLVDownloader.access$000(TXCFLVDownloader.this);
+            TXCFLVDownloader.access$000(TXCFLVDownloader.this, parame);
             AppMethodBeat.o(15468);
             return;
             TXCFLVDownloader.access$100(TXCFLVDownloader.this);
@@ -606,7 +621,7 @@ public class TXCFLVDownloader
             TXCFLVDownloader.access$200(TXCFLVDownloader.this);
             AppMethodBeat.o(15468);
             return;
-            TXCFLVDownloader.access$300(TXCFLVDownloader.this);
+            TXCFLVDownloader.access$300(TXCFLVDownloader.this, parame);
             AppMethodBeat.o(15468);
             return;
             try
@@ -621,7 +636,7 @@ public class TXCFLVDownloader
       };
     }
     postConnectMsg();
-    AppMethodBeat.o(15318);
+    AppMethodBeat.o(229656);
   }
   
   public void PushAudioFrame(byte[] paramArrayOfByte, int paramInt1, long paramLong, int paramInt2)
@@ -727,26 +742,33 @@ public class TXCFLVDownloader
     this.mHandleDataInJava = paramBoolean;
   }
   
-  public void startDownload(Vector<e> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void startDownload(Vector<f> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     AppMethodBeat.i(15327);
+    startDownload(paramVector, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, null);
+    AppMethodBeat.o(15327);
+  }
+  
+  public void startDownload(Vector<f> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, e parame)
+  {
+    AppMethodBeat.i(229711);
     if (this.mIsRunning)
     {
-      AppMethodBeat.o(15327);
+      AppMethodBeat.o(229711);
       return;
     }
     if ((paramVector == null) || (paramVector.isEmpty()))
     {
-      AppMethodBeat.o(15327);
+      AppMethodBeat.o(229711);
       return;
     }
     this.mEnableMessage = paramBoolean3;
     this.mEnableMetaData = paramBoolean4;
     this.mIsRunning = true;
-    this.mPlayUrl = ((e)paramVector.get(0)).a;
+    this.mPlayUrl = ((f)paramVector.get(0)).a;
     apiLog("start pull with url " + this.mPlayUrl);
-    startInternal();
-    AppMethodBeat.o(15327);
+    startInternal(parame);
+    AppMethodBeat.o(229711);
   }
   
   public void stopDownload()
@@ -780,7 +802,7 @@ public class TXCFLVDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.TXCFLVDownloader
  * JD-Core Version:    0.7.0.1
  */

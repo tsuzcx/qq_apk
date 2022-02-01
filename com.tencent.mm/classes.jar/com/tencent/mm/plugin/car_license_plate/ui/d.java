@@ -1,451 +1,632 @@
 package com.tencent.mm.plugin.car_license_plate.ui;
 
+import android.app.Activity;
+import android.app.Instrumentation.ActivityResult;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import com.tencent.mm.plugin.car_license_plate.a.c;
+import com.tencent.mm.plugin.car_license_plate.a.e;
+import com.tencent.mm.plugin.car_license_plate.a.e.a;
+import com.tencent.mm.plugin.car_license_plate.api.entity.MMCarLicensePlateInfo;
+import com.tencent.mm.protocal.protobuf.cux;
+import com.tencent.mm.protocal.protobuf.fvh;
+import com.tencent.mm.protocal.protobuf.fvi;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.ResultKt;
+import kotlin.ah;
+import kotlin.d.b.a.k;
+import kotlin.g.a.m;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.ar;
+import kotlinx.coroutines.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract;", "", "CharViewContract", "CharViewType", "Companion", "plugin-car-license-plate_release"})
-public abstract interface d
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewPresenter;", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$Presenter;", "scene", "Lcom/tencent/mm/plugin/car_license_plate/cgi/CgiGetAllPlateNo$ReqScene;", "(Lcom/tencent/mm/plugin/car_license_plate/cgi/CgiGetAllPlateNo$ReqScene;)V", "_viewModel", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewModel;", "coroutineScope", "Lkotlinx/coroutines/CoroutineScope;", "getCoroutineScope", "()Lkotlinx/coroutines/CoroutineScope;", "<set-?>", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewCallback;", "viewCallback", "getViewCallback", "()Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewCallback;", "viewModel", "getViewModel", "()Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateListViewContract$ViewModel;", "deletePlateNo", "", "plateNo", "", "initForDefault", "initForModel", "model", "setViewCallback", "callback", "startEditUIForCreate", "startEditUIForUpdate", "syncDataFromServer", "Companion", "plugin-car-license-plate_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d
+  implements CarLicensePlateListViewContract.a
 {
-  public static final c sYh = c.sYD;
+  private static final d.a wdp;
+  private final e.a wbY;
+  CarLicensePlateListViewContract.b wdq;
+  private CarLicensePlateListViewContract.ViewModel wdr;
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewContract;", "", "keyboardId", "", "getKeyboardId", "()I", "keyboardLayout", "", "", "getKeyboardLayout", "()[Ljava/lang/CharSequence;", "legalChars", "getLegalChars", "()Ljava/lang/CharSequence;", "plugin-car-license-plate_release"})
-  public static abstract interface a
+  static
   {
-    public abstract int cFA();
-    
-    public abstract CharSequence cFy();
-    
-    public abstract CharSequence[] cFz();
+    AppMethodBeat.i(277726);
+    wdp = new d.a((byte)0);
+    AppMethodBeat.o(277726);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType;", "", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewContract;", "(Ljava/lang/String;I)V", "PROVINCE", "ORG", "LETTER", "LETTER_6", "LETTER_7_8", "Companion", "plugin-car-license-plate_release"})
-  public static abstract enum b
-    implements d.a
+  public d(e.a parama)
   {
-    public static final a sYo = new a((byte)0);
-    
-    static
+    AppMethodBeat.i(277695);
+    this.wbY = parama;
+    AppMethodBeat.o(277695);
+  }
+  
+  private final void dja()
+  {
+    AppMethodBeat.i(277708);
+    CarLicensePlateListViewContract.ViewModel.a locala = CarLicensePlateListViewContract.ViewModel.wdl;
+    if (!s.p(CarLicensePlateListViewContract.ViewModel.diZ(), cqq().wdm)) {}
+    for (final boolean bool = true;; bool = false)
     {
-      f localf = new f("PROVINCE");
-      sYi = localf;
-      e locale = new e("ORG");
-      sYj = locale;
-      b localb = new b("LETTER");
-      sYk = localb;
-      c localc = new c("LETTER_6");
-      sYl = localc;
-      d locald = new d("LETTER_7_8");
-      sYm = locald;
-      sYn = new b[] { localf, locale, localb, localc, locald };
+      j.a(wd(), null, null, (m)new e(this, bool, null), 3);
+      AppMethodBeat.o(277708);
+      return;
+    }
+  }
+  
+  private final aq wd()
+  {
+    AppMethodBeat.i(277701);
+    Object localObject = this.wdq;
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = ((CarLicensePlateListViewContract.b)localObject).wd())
+    {
+      localObject = ar.kBZ();
+      AppMethodBeat.o(277701);
+      return localObject;
+    }
+    AppMethodBeat.o(277701);
+    return localObject;
+  }
+  
+  public final void a(CarLicensePlateListViewContract.ViewModel paramViewModel)
+  {
+    AppMethodBeat.i(277749);
+    s.u(paramViewModel, "model");
+    this.wdr = paramViewModel;
+    paramViewModel = CarLicensePlateListViewContract.ViewModel.wdl;
+    if (!s.p(CarLicensePlateListViewContract.ViewModel.diZ(), cqq().wdm))
+    {
+      paramViewModel = this.wdq;
+      if (paramViewModel != null)
+      {
+        paramViewModel.a(cqq().wdm);
+        AppMethodBeat.o(277749);
+      }
+    }
+    else
+    {
+      dja();
+    }
+    AppMethodBeat.o(277749);
+  }
+  
+  public final void a(CarLicensePlateListViewContract.b paramb)
+  {
+    this.wdq = paramb;
+  }
+  
+  public final void ako(final String paramString)
+  {
+    AppMethodBeat.i(277765);
+    s.u(paramString, "plateNo");
+    Object localObject = this.wdq;
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = ((CarLicensePlateListViewContract.b)localObject).cqr())
+    {
+      Log.e("MicroMsg.CarLicensePlateListViewPresenter", "startEditUIForUpdate(plate:" + paramString + ") get NULL activity");
+      AppMethodBeat.o(277765);
+      return;
+    }
+    j.a(wd(), null, null, (m)new d((Activity)localObject, paramString, this, null), 3);
+    AppMethodBeat.o(277765);
+  }
+  
+  public final void akp(String paramString)
+  {
+    AppMethodBeat.i(277770);
+    s.u(paramString, "plateNo");
+    j.a(wd(), null, null, (m)new b(paramString, this, null), 3);
+    AppMethodBeat.o(277770);
+  }
+  
+  public final CarLicensePlateListViewContract.ViewModel cqq()
+  {
+    AppMethodBeat.i(277730);
+    CarLicensePlateListViewContract.ViewModel localViewModel = this.wdr;
+    if (localViewModel == null)
+    {
+      s.bIx("_viewModel");
+      AppMethodBeat.o(277730);
+      return null;
+    }
+    AppMethodBeat.o(277730);
+    return localViewModel;
+  }
+  
+  public final void diX()
+  {
+    AppMethodBeat.i(277740);
+    a(new CarLicensePlateListViewContract.ViewModel());
+    AppMethodBeat.o(277740);
+  }
+  
+  public final void diY()
+  {
+    AppMethodBeat.i(277755);
+    Object localObject = this.wdq;
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = ((CarLicensePlateListViewContract.b)localObject).cqr())
+    {
+      Log.e("MicroMsg.CarLicensePlateListViewPresenter", "startEditUIForCreate get NULL activity");
+      AppMethodBeat.o(277755);
+      return;
+    }
+    j.a(wd(), null, null, (m)new c((Activity)localObject, this, null), 3);
+    AppMethodBeat.o(277755);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends k
+    implements m<aq, kotlin.d.d<? super ah>, Object>
+  {
+    int label;
+    
+    b(String paramString, d paramd, kotlin.d.d<? super b> paramd1)
+    {
+      super(paramd1);
     }
     
-    private b() {}
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType$Companion;", "", "()V", "indexToType", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType;", "index", "", "plugin-car-license-plate_release"})
-    public static final class a
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      public static d.b HD(int paramInt)
+      AppMethodBeat.i(277668);
+      paramObject = (kotlin.d.d)new b(this.rGM, jdField_this, paramd);
+      AppMethodBeat.o(277668);
+      return paramObject;
+    }
+    
+    public final Object invokeSuspend(final Object paramObject)
+    {
+      AppMethodBeat.i(277662);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
+      kotlin.d.d locald;
+      switch (this.label)
       {
-        AppMethodBeat.i(187834);
-        if (paramInt < 0) {}
-        for (int i = 0;; i = 1)
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(277662);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = (kotlin.g.a.a)new u(jdField_this) {};
+        locald = (kotlin.d.d)this;
+        this.label = 1;
+        if (com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, locald) == locala)
         {
-          if (i != 0) {
-            break label49;
+          AppMethodBeat.o(277662);
+          return locala;
+        }
+      case 1: 
+        ResultKt.throwOnFailure(paramObject);
+      case 2: 
+      case 3: 
+        try
+        {
+          paramObject = new c(this.rGM);
+          locald = (kotlin.d.d)this;
+          this.label = 2;
+          paramObject = paramObject.U(locald);
+          if (paramObject != locala) {
+            break label158;
           }
-          localObject = (Throwable)new IllegalStateException("Check failed.".toString());
-          AppMethodBeat.o(187834);
-          throw ((Throwable)localObject);
-          if (8 <= paramInt) {
-            break;
+          AppMethodBeat.o(277662);
+          return locala;
+        }
+        catch (com.tencent.mm.plugin.car_license_plate.a.d paramObject)
+        {
+          label158:
+          while (paramObject.errCode == -17501) {}
+          paramObject = (kotlin.g.a.a)new u(jdField_this) {};
+          locald = (kotlin.d.d)this;
+          this.label = 3;
+          if (com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, locald) != locala) {
+            break label260;
           }
+          AppMethodBeat.o(277662);
+          return locala;
+          ResultKt.throwOnFailure(paramObject);
+          paramObject = ah.aiuX;
+          AppMethodBeat.o(277662);
+          return paramObject;
         }
-        label49:
-        if (paramInt == 0)
-        {
-          localObject = d.b.sYi;
-          AppMethodBeat.o(187834);
-          return localObject;
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = (kotlin.g.a.a)new u(jdField_this) {};
+        locald = (kotlin.d.d)this;
+        this.label = 4;
+        if (com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, locald) != locala) {
+          break label275;
         }
-        if (paramInt == 1)
+        AppMethodBeat.o(277662);
+        return locala;
+      }
+      label260:
+      ResultKt.throwOnFailure(paramObject);
+      label275:
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(277662);
+      return paramObject;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends k
+    implements m<aq, kotlin.d.d<? super ah>, Object>
+  {
+    int label;
+    
+    c(Activity paramActivity, d paramd, kotlin.d.d<? super c> paramd1)
+    {
+      super(paramd1);
+    }
+    
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
+    {
+      AppMethodBeat.i(277676);
+      paramObject = (kotlin.d.d)new c(this.rxb, jdField_this, paramd);
+      AppMethodBeat.o(277676);
+      return paramObject;
+    }
+    
+    public final Object invokeSuspend(final Object paramObject)
+    {
+      AppMethodBeat.i(277667);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
+      Object localObject;
+      int i;
+      switch (this.label)
+      {
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(277667);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = this.rxb;
+        localObject = new Intent((Context)this.rxb, CarLicensePlateEditUI.class);
+        kotlin.d.d locald = (kotlin.d.d)this;
+        this.label = 1;
+        localObject = com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, (Intent)localObject, locald);
+        paramObject = localObject;
+        if (localObject == locala)
         {
-          localObject = d.b.sYj;
-          AppMethodBeat.o(187834);
-          return localObject;
+          AppMethodBeat.o(277667);
+          return locala;
         }
-        if (2 > paramInt) {}
-        while (paramInt == 5)
+      case 1: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = (Instrumentation.ActivityResult)paramObject;
+        i = com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject);
+        paramObject = com.tencent.mm.plugin.car_license_plate.b.a.b(paramObject);
+        Log.i("MicroMsg.CarLicensePlateListViewPresenter", "startEditUIForCreate, get code:" + i + ", data:" + paramObject);
+        if ((-1 == i) && (paramObject != null))
         {
-          localObject = d.b.sYl;
-          AppMethodBeat.o(187834);
-          return localObject;
-          if (4 >= paramInt)
+          paramObject = paramObject.getStringExtra("RESULT_KEY_SUBMITTED_PLATE_TEXT");
+          localObject = (CharSequence)paramObject;
+          if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+            break label256;
+          }
+          i = 1;
+        }
+        break;
+      }
+      for (;;)
+      {
+        if (i == 0)
+        {
+          paramObject = (kotlin.g.a.a)new u(jdField_this) {};
+          localObject = (kotlin.d.d)this;
+          this.label = 2;
+          if (com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, (kotlin.d.d)localObject) == locala)
           {
-            localObject = d.b.sYk;
-            AppMethodBeat.o(187834);
-            return localObject;
+            AppMethodBeat.o(277667);
+            return locala;
+            paramObject = null;
+            break;
+            label256:
+            i = 0;
+            continue;
+            ResultKt.throwOnFailure(paramObject);
           }
         }
-        if (6 > paramInt) {}
-        while (7 < paramInt)
-        {
-          localObject = (Throwable)new IllegalStateException("Invalid index".toString());
-          AppMethodBeat.o(187834);
-          throw ((Throwable)localObject);
-        }
-        Object localObject = d.b.sYm;
-        AppMethodBeat.o(187834);
-        return localObject;
       }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType$LETTER;", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType;", "keyboardId", "", "getKeyboardId", "()I", "keyboardLayout", "", "", "getKeyboardLayout", "()[Ljava/lang/CharSequence;", "[Ljava/lang/CharSequence;", "legalChars", "getLegalChars", "()Ljava/lang/CharSequence;", "legalChars$delegate", "Lkotlin/Lazy;", "plugin-car-license-plate_release"})
-    static final class b
-      extends d.b
-    {
-      private final f sYp;
-      private final CharSequence[] sYq;
-      private final int sYr;
-      
-      b()
-      {
-        super(2, (byte)0);
-        AppMethodBeat.i(187472);
-        this.sYp = g.ar((a)a.sYs);
-        Object localObject = d.sYh;
-        this.sYq = d.c.cFB();
-        localObject = d.sYh;
-        this.sYr = d.c.cFC();
-        AppMethodBeat.o(187472);
-      }
-      
-      public final int cFA()
-      {
-        return this.sYr;
-      }
-      
-      public final CharSequence cFy()
-      {
-        AppMethodBeat.i(187470);
-        CharSequence localCharSequence = (CharSequence)this.sYp.getValue();
-        AppMethodBeat.o(187470);
-        return localCharSequence;
-      }
-      
-      public final CharSequence[] cFz()
-      {
-        return this.sYq;
-      }
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-      static final class a
-        extends q
-        implements a<String>
-      {
-        public static final a sYs;
-        
-        static
-        {
-          AppMethodBeat.i(186364);
-          sYs = new a();
-          AppMethodBeat.o(186364);
-        }
-        
-        a()
-        {
-          super();
-        }
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType$LETTER_6;", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType;", "keyboardId", "", "getKeyboardId", "()I", "keyboardLayout", "", "", "getKeyboardLayout", "()[Ljava/lang/CharSequence;", "[Ljava/lang/CharSequence;", "legalChars", "getLegalChars", "()Ljava/lang/CharSequence;", "plugin-car-license-plate_release"})
-    static final class c
-      extends d.b
-    {
-      private final CharSequence[] sYq;
-      private final int sYr;
-      private final CharSequence sYt;
-      
-      c()
-      {
-        super(3, (byte)0);
-        AppMethodBeat.i(186391);
-        this.sYt = d.b.sYk.cFy();
-        Object localObject = d.sYh;
-        this.sYq = d.c.cFB();
-        localObject = d.sYh;
-        this.sYr = d.c.cFC();
-        AppMethodBeat.o(186391);
-      }
-      
-      public final int cFA()
-      {
-        return this.sYr;
-      }
-      
-      public final CharSequence cFy()
-      {
-        return this.sYt;
-      }
-      
-      public final CharSequence[] cFz()
-      {
-        return this.sYq;
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType$LETTER_7_8;", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType;", "keyboardId", "", "getKeyboardId", "()I", "keyboardLayout", "", "", "getKeyboardLayout", "()[Ljava/lang/CharSequence;", "[Ljava/lang/CharSequence;", "legalChars", "getLegalChars", "()Ljava/lang/CharSequence;", "legalChars$delegate", "Lkotlin/Lazy;", "plugin-car-license-plate_release"})
-    static final class d
-      extends d.b
-    {
-      private final f sYp;
-      private final CharSequence[] sYq;
-      private final int sYr;
-      
-      d()
-      {
-        super(4, (byte)0);
-        AppMethodBeat.i(187590);
-        this.sYp = g.ar((a)a.sYu);
-        Object localObject = d.sYh;
-        this.sYq = d.c.cFB();
-        localObject = d.sYh;
-        this.sYr = d.c.cFC();
-        AppMethodBeat.o(187590);
-      }
-      
-      public final int cFA()
-      {
-        return this.sYr;
-      }
-      
-      public final CharSequence cFy()
-      {
-        AppMethodBeat.i(187586);
-        CharSequence localCharSequence = (CharSequence)this.sYp.getValue();
-        AppMethodBeat.o(187586);
-        return localCharSequence;
-      }
-      
-      public final CharSequence[] cFz()
-      {
-        return this.sYq;
-      }
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "kotlin.jvm.PlatformType", "invoke"})
-      static final class a
-        extends q
-        implements a<String>
-      {
-        public static final a sYu;
-        
-        static
-        {
-          AppMethodBeat.i(187076);
-          sYu = new a();
-          AppMethodBeat.o(187076);
-        }
-        
-        a()
-        {
-          super();
-        }
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType$ORG;", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType;", "keyboardId", "", "getKeyboardId", "()I", "keyboardLayout", "", "", "getKeyboardLayout", "()[Ljava/lang/CharSequence;", "[Ljava/lang/CharSequence;", "legalChars", "getLegalChars", "()Ljava/lang/CharSequence;", "legalChars$delegate", "Lkotlin/Lazy;", "plugin-car-license-plate_release"})
-    static final class e
-      extends d.b
-    {
-      private final f sYp;
-      private final CharSequence[] sYq;
-      private final int sYr;
-      
-      e()
-      {
-        super(1, (byte)0);
-        AppMethodBeat.i(187872);
-        this.sYp = g.ar((a)a.sYv);
-        Object localObject = d.sYh;
-        this.sYq = d.c.cFB();
-        localObject = d.sYh;
-        this.sYr = d.c.cFC();
-        AppMethodBeat.o(187872);
-      }
-      
-      public final int cFA()
-      {
-        return this.sYr;
-      }
-      
-      public final CharSequence cFy()
-      {
-        AppMethodBeat.i(187868);
-        CharSequence localCharSequence = (CharSequence)this.sYp.getValue();
-        AppMethodBeat.o(187868);
-        return localCharSequence;
-      }
-      
-      public final CharSequence[] cFz()
-      {
-        return this.sYq;
-      }
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-      static final class a
-        extends q
-        implements a<String>
-      {
-        public static final a sYv;
-        
-        static
-        {
-          AppMethodBeat.i(186421);
-          sYv = new a();
-          AppMethodBeat.o(186421);
-        }
-        
-        a()
-        {
-          super();
-        }
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType$PROVINCE;", "Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$CharViewType;", "keyboardId", "", "getKeyboardId", "()I", "keyboardId$delegate", "Lkotlin/Lazy;", "keyboardLayout", "", "", "getKeyboardLayout", "()[Ljava/lang/CharSequence;", "keyboardLayout$delegate", "legalChars", "getLegalChars", "()Ljava/lang/CharSequence;", "legalChars$delegate", "plugin-car-license-plate_release"})
-    static final class f
-      extends d.b
-    {
-      private final f sYp;
-      private final f sYw;
-      private final f sYx;
-      
-      f()
-      {
-        super(0, (byte)0);
-        AppMethodBeat.i(186534);
-        this.sYp = g.ar((a)c.sYA);
-        this.sYw = g.ar((a)b.sYz);
-        this.sYx = g.ar((a)new a(this));
-        AppMethodBeat.o(186534);
-      }
-      
-      public final int cFA()
-      {
-        AppMethodBeat.i(186532);
-        int i = ((Number)this.sYx.getValue()).intValue();
-        AppMethodBeat.o(186532);
-        return i;
-      }
-      
-      public final CharSequence cFy()
-      {
-        AppMethodBeat.i(186528);
-        CharSequence localCharSequence = (CharSequence)this.sYp.getValue();
-        AppMethodBeat.o(186528);
-        return localCharSequence;
-      }
-      
-      public final CharSequence[] cFz()
-      {
-        AppMethodBeat.i(186529);
-        CharSequence[] arrayOfCharSequence = (CharSequence[])this.sYw.getValue();
-        AppMethodBeat.o(186529);
-        return arrayOfCharSequence;
-      }
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-      static final class a
-        extends q
-        implements a<Integer>
-      {
-        a(d.b.f paramf)
-        {
-          super();
-        }
-      }
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "", "invoke", "()[Ljava/lang/CharSequence;"})
-      static final class b
-        extends q
-        implements a<CharSequence[]>
-      {
-        public static final b sYz;
-        
-        static
-        {
-          AppMethodBeat.i(186793);
-          sYz = new b();
-          AppMethodBeat.o(186793);
-        }
-        
-        b()
-        {
-          super();
-        }
-      }
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-      static final class c
-        extends q
-        implements a<String>
-      {
-        public static final c sYA;
-        
-        static
-        {
-          AppMethodBeat.i(186753);
-          sYA = new c();
-          AppMethodBeat.o(186753);
-        }
-        
-        c()
-        {
-          super();
-        }
-      }
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(277667);
+      return paramObject;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/ui/CarLicensePlateEditViewContract$Companion;", "", "()V", "DEFAULT_KEYBOARD_ID", "", "getDEFAULT_KEYBOARD_ID", "()I", "DEFAULT_KEYBOARD_LAYOUT", "", "", "getDEFAULT_KEYBOARD_LAYOUT", "()[Ljava/lang/CharSequence;", "[Ljava/lang/CharSequence;", "PLATE_TEXT_LENGTH_MAX", "PLATE_TEXT_LENGTH_MIN", "plugin-car-license-plate_release"})
-  public static final class c
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends k
+    implements m<aq, kotlin.d.d<? super ah>, Object>
   {
-    private static final CharSequence[] sYB;
-    private static final int sYC;
+    int label;
     
-    static
+    d(Activity paramActivity, String paramString, d paramd, kotlin.d.d<? super d> paramd1)
     {
-      AppMethodBeat.i(186461);
-      sYD = new c();
-      CharSequence[] arrayOfCharSequence = new CharSequence[5];
-      arrayOfCharSequence[0] = ((CharSequence)"1234567890");
-      arrayOfCharSequence[1] = ((CharSequence)"QWERTYUP");
-      arrayOfCharSequence[2] = ((CharSequence)"ASDFGHJKL");
-      arrayOfCharSequence[3] = ((CharSequence)"ZXCVBNM");
-      arrayOfCharSequence[4] = ((CharSequence)"港澳学挂");
-      sYB = arrayOfCharSequence;
-      sYC = arrayOfCharSequence.hashCode();
-      AppMethodBeat.o(186461);
+      super(paramd1);
     }
     
-    public static CharSequence[] cFB()
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      return sYB;
+      AppMethodBeat.i(277679);
+      paramObject = (kotlin.d.d)new d(this.rxb, paramString, jdField_this, paramd);
+      AppMethodBeat.o(277679);
+      return paramObject;
     }
     
-    public static int cFC()
+    public final Object invokeSuspend(final Object paramObject)
     {
-      return sYC;
+      AppMethodBeat.i(277669);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
+      Object localObject1;
+      int i;
+      switch (this.label)
+      {
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(277669);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = this.rxb;
+        localObject1 = new Intent((Context)this.rxb, CarLicensePlateEditUI.class);
+        ((Intent)localObject1).putExtra("INTENT_KEY_DEFAULT_PLATE_TEXT", paramString);
+        Object localObject2 = ah.aiuX;
+        localObject2 = (kotlin.d.d)this;
+        this.label = 1;
+        localObject1 = com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, (Intent)localObject1, (kotlin.d.d)localObject2);
+        paramObject = localObject1;
+        if (localObject1 == locala)
+        {
+          AppMethodBeat.o(277669);
+          return locala;
+        }
+      case 1: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = (Instrumentation.ActivityResult)paramObject;
+        i = com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject);
+        paramObject = com.tencent.mm.plugin.car_license_plate.b.a.b(paramObject);
+        Log.i("MicroMsg.CarLicensePlateListViewPresenter", "startEditUIForUpdate(plateNo:" + paramString + "), get code:" + i + ", data:" + paramObject);
+        if (-2 == i)
+        {
+          d.b(jdField_this);
+          paramObject = ah.aiuX;
+          AppMethodBeat.o(277669);
+          return paramObject;
+        }
+        if ((-1 == i) && (paramObject != null))
+        {
+          paramObject = paramObject.getStringExtra("RESULT_KEY_SUBMITTED_PLATE_TEXT");
+          localObject1 = (CharSequence)paramObject;
+          if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+            break label323;
+          }
+          i = 1;
+        }
+        break;
+      }
+      for (;;)
+      {
+        if ((i == 0) && (!s.p(paramObject, paramString)))
+        {
+          paramObject = (kotlin.g.a.a)new u(jdField_this) {};
+          localObject1 = (kotlin.d.d)this;
+          this.label = 2;
+          if (com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, (kotlin.d.d)localObject1) == locala)
+          {
+            AppMethodBeat.o(277669);
+            return locala;
+            paramObject = null;
+            break;
+            label323:
+            i = 0;
+            continue;
+            ResultKt.throwOnFailure(paramObject);
+          }
+        }
+      }
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(277669);
+      return paramObject;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends k
+    implements m<aq, kotlin.d.d<? super ah>, Object>
+  {
+    int label;
+    
+    e(d paramd, boolean paramBoolean, kotlin.d.d<? super e> paramd1)
+    {
+      super(paramd1);
+    }
+    
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
+    {
+      AppMethodBeat.i(277689);
+      paramObject = (kotlin.d.d)new e(this.wds, bool, paramd);
+      AppMethodBeat.o(277689);
+      return paramObject;
+    }
+    
+    public final Object invokeSuspend(final Object paramObject)
+    {
+      AppMethodBeat.i(277682);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
+      Object localObject1;
+      switch (this.label)
+      {
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(277682);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = (kotlin.g.a.a)new u(this.wds) {};
+        localObject1 = (kotlin.d.d)this;
+        this.label = 1;
+        if (com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, (kotlin.d.d)localObject1) == locala)
+        {
+          AppMethodBeat.o(277682);
+          return locala;
+        }
+      case 1: 
+        ResultKt.throwOnFailure(paramObject);
+      case 2: 
+      case 3: 
+        CarLicensePlateListViewContract.ViewModel localViewModel;
+        MMCarLicensePlateInfo localMMCarLicensePlateInfo;
+        for (;;)
+        {
+          try
+          {
+            paramObject = new e(this.wds.cqq().qIf, d.a(this.wds));
+            localObject1 = (kotlin.d.d)this;
+            this.label = 2;
+            paramObject = paramObject.U((kotlin.d.d)localObject1);
+            localObject1 = paramObject;
+            if (paramObject == locala)
+            {
+              AppMethodBeat.o(277682);
+              return locala;
+              ResultKt.throwOnFailure(paramObject);
+              localObject1 = paramObject;
+            }
+            paramObject = (cux)localObject1;
+            localObject1 = paramObject.aaAo;
+            if (localObject1 == null) {
+              break label439;
+            }
+            localObject1 = ((fvh)localObject1).abTE;
+            if (localObject1 == null) {
+              break label439;
+            }
+            if (!((Collection)localObject1).isEmpty())
+            {
+              i = 1;
+              if (i != 1) {
+                break label439;
+              }
+              i = 1;
+              if (i == 0) {
+                break label539;
+              }
+              localViewModel = this.wds.cqq();
+              localObject1 = MMCarLicensePlateInfo.wbJ;
+              paramObject = paramObject.aaAo;
+              s.checkNotNull(paramObject);
+              s.s(paramObject, "resp.plate_info!!");
+              s.u(paramObject, "pb");
+              localMMCarLicensePlateInfo = new MMCarLicensePlateInfo();
+              localObject1 = paramObject.abTE;
+              if (localObject1 == null) {
+                break;
+              }
+              localObject1 = ((Iterable)localObject1).iterator();
+              if (!((Iterator)localObject1).hasNext()) {
+                break;
+              }
+              Object localObject2 = (fvi)((Iterator)localObject1).next();
+              Object localObject3 = (CharSequence)((fvi)localObject2).Zqo;
+              if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
+                break label444;
+              }
+              i = 1;
+              if (i != 0) {
+                continue;
+              }
+              localObject3 = localMMCarLicensePlateInfo.wbK;
+              localObject2 = ((fvi)localObject2).Zqo;
+              s.checkNotNull(localObject2);
+              ((ArrayList)localObject3).add(localObject2);
+              continue;
+            }
+            i = 0;
+          }
+          catch (com.tencent.mm.plugin.car_license_plate.a.d paramObject)
+          {
+            paramObject = (kotlin.g.a.a)new a(this.wds, paramObject);
+            localObject1 = (kotlin.d.d)this;
+            this.label = 3;
+            if (com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, (kotlin.d.d)localObject1) == locala)
+            {
+              AppMethodBeat.o(277682);
+              return locala;
+              ResultKt.throwOnFailure(paramObject);
+            }
+            paramObject = ah.aiuX;
+            AppMethodBeat.o(277682);
+            return paramObject;
+          }
+          continue;
+          label439:
+          int i = 0;
+          continue;
+          label444:
+          i = 0;
+        }
+        paramObject = paramObject.abTF;
+        if (paramObject == null)
+        {
+          paramObject = null;
+          localObject1 = paramObject;
+          if (paramObject == null) {
+            localObject1 = "";
+          }
+          s.u(localObject1, "<set-?>");
+          localMMCarLicensePlateInfo.wbL = ((String)localObject1);
+        }
+        label539:
+        for (localViewModel.wdm = localMMCarLicensePlateInfo;; this.wds.cqq().wdm = new MMCarLicensePlateInfo())
+        {
+          paramObject = (kotlin.g.a.a)new u(this.wds) {};
+          localObject1 = (kotlin.d.d)this;
+          this.label = 4;
+          if (com.tencent.mm.plugin.car_license_plate.b.a.a(paramObject, (kotlin.d.d)localObject1) != locala) {
+            break label563;
+          }
+          AppMethodBeat.o(277682);
+          return locala;
+          paramObject = paramObject.Zqo;
+          break;
+        }
+      }
+      ResultKt.throwOnFailure(paramObject);
+      label563:
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(277682);
+      return paramObject;
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements kotlin.g.a.a<ah>
+    {
+      a(d paramd, com.tencent.mm.plugin.car_license_plate.a.d paramd1)
+      {
+        super();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.car_license_plate.ui.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.autofill;
 
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.style.URLSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.mm.plugin.appbrand.widget.dialog.b;
 
-public abstract class l
-  extends LinkMovementMethod
+public final class l
+  extends b
 {
-  public abstract void ahf(String paramString);
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  public l(Context paramContext)
   {
-    if (paramMotionEvent.getAction() != 1) {
-      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-    }
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    int k = paramTextView.getTotalPaddingLeft();
-    int m = paramTextView.getTotalPaddingTop();
-    int n = paramTextView.getScrollX();
-    int i1 = paramTextView.getScrollY();
-    paramTextView = paramTextView.getLayout();
-    i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
-    paramTextView = (URLSpan[])paramSpannable.getSpans(i, i, URLSpan.class);
-    if (paramTextView.length != 0) {
-      ahf(paramTextView[0].getURL());
-    }
-    return true;
+    super(paramContext);
+  }
+  
+  public final int getPosition()
+  {
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.autofill.l
  * JD-Core Version:    0.7.0.1
  */

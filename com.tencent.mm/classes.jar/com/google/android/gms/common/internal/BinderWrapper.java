@@ -4,10 +4,8 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.google.android.gms.common.annotation.KeepName;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepName
 public final class BinderWrapper
   implements Parcelable
 {
@@ -64,7 +62,7 @@ public final class BinderWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.BinderWrapper
  * JD-Core Version:    0.7.0.1
  */

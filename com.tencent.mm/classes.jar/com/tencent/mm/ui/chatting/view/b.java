@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.chatting.view;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -18,46 +17,46 @@ import android.view.WindowManager;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.j;
-import com.tencent.mm.ui.widget.a.e.b;
+import com.tencent.mm.ck.a.j;
+import com.tencent.mm.ui.widget.a.f.b;
 
 public final class b
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private boolean AUB;
-  public e.b XbB;
-  public boolean XbC;
-  public View lJ;
-  public ViewTreeObserver lS;
+  private boolean GwS;
+  public f.b aeLi;
+  public boolean aeLj;
   public Context mContext;
-  public View oFW;
-  public BottomSheetBehavior pMC;
-  public boolean pMD;
-  public int pME;
-  public boolean pMG;
-  public Dialog pMz;
+  public View mF;
+  public ViewTreeObserver mP;
+  public View rootView;
+  public Dialog sRs;
+  public BottomSheetBehavior sRv;
+  public boolean sRw;
+  public int sRx;
+  public boolean sRz;
   
   public b(Context paramContext, View paramView)
   {
     AppMethodBeat.i(185898);
-    this.pMD = false;
-    this.AUB = false;
-    this.XbC = false;
-    this.pMG = false;
-    this.oFW = paramView;
+    this.sRw = false;
+    this.GwS = false;
+    this.aeLj = false;
+    this.sRz = false;
+    this.rootView = paramView;
     this.mContext = paramContext;
     if ((this.mContext instanceof Activity)) {
-      this.lJ = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.mF = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
-    this.pMz = new a(this.mContext, a.j.BottomSheetDialog);
-    this.pMD = isLandscape();
-    if (this.pMz != null) {
-      this.pMz.setContentView(this.oFW);
+    this.sRs = new a(this.mContext, a.j.BottomSheetDialog);
+    this.sRw = isLandscape();
+    if (this.sRs != null) {
+      this.sRs.setContentView(this.rootView);
     }
-    this.pMC = BottomSheetBehavior.cg((View)this.oFW.getParent());
-    this.pMC.setState(3);
-    if (this.pMz != null) {
-      this.pMz.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.sRv = BottomSheetBehavior.cC((View)this.rootView.getParent());
+    this.sRv.setState(3);
+    if (this.sRs != null) {
+      this.sRs.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -83,7 +82,7 @@ public final class b
   private boolean isShowing()
   {
     AppMethodBeat.i(185903);
-    if ((this.pMz != null) && (this.pMz.isShowing()))
+    if ((this.sRs != null) && (this.sRs.isShowing()))
     {
       AppMethodBeat.o(185903);
       return true;
@@ -92,22 +91,21 @@ public final class b
     return false;
   }
   
-  public final void bYF()
+  public final void cyW()
   {
     AppMethodBeat.i(185901);
-    if (this.pMz != null)
+    if (this.sRs != null)
     {
-      if (this.pMC != null) {
-        this.pMC.bxz = true;
+      if (this.sRv != null) {
+        this.sRv.dqC = true;
       }
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.pMz.dismiss();
+        this.sRs.dismiss();
       }
     }
     AppMethodBeat.o(185901);
   }
   
-  @SuppressLint({"WrongConstant"})
   public final int getRotation()
   {
     AppMethodBeat.i(185900);
@@ -136,15 +134,15 @@ public final class b
     AppMethodBeat.i(185899);
     if (isShowing())
     {
-      View localView = this.lJ;
+      View localView = this.mF;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bYF();
+        cyW();
         AppMethodBeat.o(185899);
         return;
       }
-      if ((isShowing()) && ((this.pMD != isLandscape()) || (this.pME != getRotation()))) {
-        bYF();
+      if ((isShowing()) && ((this.sRw != isLandscape()) || (this.sRx != getRotation()))) {
+        cyW();
       }
     }
     AppMethodBeat.o(185899);

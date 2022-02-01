@@ -1,18 +1,19 @@
 package com.tencent.mm.plugin.websearch.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.w;
 
 final class a$4
-  implements s
+  implements w
 {
   a$4(a parama, String paramString) {}
   
-  public final boolean accept(q paramq)
+  public final boolean accept(u paramu)
   {
     AppMethodBeat.i(177342);
-    if (paramq.bOF().equals(this.PCk))
+    if (ah.v(paramu.jKT()).equals(this.WsP))
     {
       AppMethodBeat.o(177342);
       return false;

@@ -5,51 +5,50 @@ import android.graphics.Rect;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 import java.util.Arrays;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
 import kotlin.n.n;
-import kotlin.o;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/utils/MultiTaskUtil;", "", "()V", "POSITION_BUTTOM", "", "POSITION_CENTER", "POSITION_NONE", "POSITION_TOP", "TAG", "", "disableMultiTaskTypeInfos", "sCutOutHeight", "Ljava/lang/Integer;", "sHasCutout", "", "Ljava/lang/Boolean;", "checkPositionInView", "view", "Landroid/view/View;", "x", "y", "disableMultiTaskSnapMode", "type", "enableMultiTaskFullScreenMode", "getCutOutHeight", "context", "Landroid/content/Context;", "getMultiTaskSlideFractor", "", "getPositionInView", "getPositionInViewRect", "Landroid/graphics/Rect;", "getVisiablePositionInView", "Lkotlin/Pair;", "hasCutout", "runOnUI", "", "runnable", "Ljava/lang/Runnable;", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/utils/MultiTaskUtil;", "", "()V", "POSITION_BUTTOM", "", "POSITION_CENTER", "POSITION_NONE", "POSITION_TOP", "TAG", "", "disableMultiTaskTypeInfos", "sCutOutHeight", "Ljava/lang/Integer;", "sHasCutout", "", "Ljava/lang/Boolean;", "checkPositionInView", "view", "Landroid/view/View;", "x", "y", "disableMultiTaskSnapMode", "type", "enableMultiTaskFullScreenMode", "getCutOutHeight", "context", "Landroid/content/Context;", "getMultiTaskSlideFractor", "", "getPositionInView", "getPositionInViewRect", "Landroid/graphics/Rect;", "getVisiablePositionInView", "Lkotlin/Pair;", "hasCutout", "runOnUI", "", "runnable", "Ljava/lang/Runnable;", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  private static String FNA;
-  public static final c FNB;
-  private static Boolean saF;
-  private static Integer saG;
+  public static final c LIw;
+  private static String LIx;
+  private static Boolean vlW;
+  private static Integer vlX;
   
   static
   {
-    AppMethodBeat.i(247785);
-    FNB = new c();
-    AppMethodBeat.o(247785);
+    AppMethodBeat.i(303769);
+    LIw = new c();
+    AppMethodBeat.o(303769);
   }
   
-  public static boolean YO(int paramInt)
+  public static boolean ada(int paramInt)
   {
-    AppMethodBeat.i(247784);
+    AppMethodBeat.i(303763);
     if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE))
     {
-      AppMethodBeat.o(247784);
+      AppMethodBeat.o(303763);
       return false;
     }
-    if (FNA == null) {}
+    if (LIx == null) {}
     try
     {
-      FNA = ((b)h.ae(b.class)).a(b.a.waG, "");
-      Log.i("MicroMsg.MultiTaskUtil", "disableMultiTaskTypeInfo: %s", new Object[] { FNA });
-      String str = FNA;
-      if ((str != null) && (n.a((CharSequence)str, (CharSequence)String.valueOf(paramInt), false)))
+      LIx = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zuh, "");
+      Log.i("MicroMsg.MultiTaskUtil", "disableMultiTaskTypeInfo: %s", new Object[] { LIx });
+      String str = LIx;
+      if ((str != null) && (n.a((CharSequence)str, (CharSequence)s.X("", Integer.valueOf(paramInt)), false)))
       {
         Log.i("MicroMsg.MultiTaskUtil", "disableMultiTaskTypeInfo ture!!!");
-        AppMethodBeat.o(247784);
+        AppMethodBeat.o(303763);
         return true;
       }
     }
@@ -59,100 +58,82 @@ public final class c
       {
         Log.printErrStackTrace("MicroMsg.MultiTaskUtil", (Throwable)localException, "disableMultiTaskTypeInfo", new Object[0]);
       }
-      AppMethodBeat.o(247784);
+      AppMethodBeat.o(303763);
     }
     return false;
   }
   
-  public static final int aM(Context paramContext)
+  public static final int bw(Context paramContext)
   {
-    AppMethodBeat.i(247780);
-    if (!ar.aN(paramContext))
+    AppMethodBeat.i(303746);
+    if (!aw.bx(paramContext))
     {
-      AppMethodBeat.o(247780);
+      AppMethodBeat.o(303746);
       return 0;
     }
-    if (saG == null) {
-      saG = Integer.valueOf(aM(paramContext));
+    if (vlX == null) {
+      vlX = Integer.valueOf(bw(paramContext));
     }
-    paramContext = saG;
-    if (paramContext != null)
+    paramContext = vlX;
+    if (paramContext == null)
     {
-      int i = paramContext.intValue();
-      AppMethodBeat.o(247780);
-      return i;
+      AppMethodBeat.o(303746);
+      return 0;
     }
-    AppMethodBeat.o(247780);
-    return 0;
+    int i = paramContext.intValue();
+    AppMethodBeat.o(303746);
+    return i;
   }
   
-  public static final boolean eI(Context paramContext)
+  public static final boolean fD(Context paramContext)
   {
-    AppMethodBeat.i(247779);
-    if (saF == null) {
-      saF = Boolean.valueOf(ar.aN(paramContext));
+    AppMethodBeat.i(303740);
+    if (vlW == null) {
+      vlW = Boolean.valueOf(aw.bx(paramContext));
     }
-    paramContext = saF;
-    if (paramContext != null)
+    paramContext = vlW;
+    if (paramContext == null)
     {
-      boolean bool = paramContext.booleanValue();
-      AppMethodBeat.o(247779);
-      return bool;
+      AppMethodBeat.o(303740);
+      return false;
     }
-    AppMethodBeat.o(247779);
-    return false;
-  }
-  
-  public static final Rect fA(View paramView)
-  {
-    AppMethodBeat.i(247778);
-    if (paramView == null)
-    {
-      paramView = new Rect();
-      AppMethodBeat.o(247778);
-      return paramView;
-    }
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    int i = arrayOfInt[0];
-    int j = arrayOfInt[1];
-    paramView = new Rect(i, j, paramView.getWidth() + i, paramView.getHeight() + j);
-    AppMethodBeat.o(247778);
-    return paramView;
-  }
-  
-  public static boolean fcN()
-  {
-    AppMethodBeat.i(247781);
-    if (BuildInfo.IS_FLAVOR_RED)
-    {
-      AppMethodBeat.o(247781);
-      return true;
-    }
-    boolean bool = ((b)h.ae(b.class)).a(b.a.waF, true);
-    AppMethodBeat.o(247781);
+    boolean bool = paramContext.booleanValue();
+    AppMethodBeat.o(303740);
     return bool;
   }
   
-  public static float fcO()
+  public static boolean glQ()
   {
-    AppMethodBeat.i(247782);
+    AppMethodBeat.i(303754);
     if (BuildInfo.IS_FLAVOR_RED)
     {
-      AppMethodBeat.o(247782);
+      AppMethodBeat.o(303754);
+      return true;
+    }
+    boolean bool = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zug, true);
+    AppMethodBeat.o(303754);
+    return bool;
+  }
+  
+  public static float glR()
+  {
+    AppMethodBeat.i(303758);
+    if (BuildInfo.IS_FLAVOR_RED)
+    {
+      AppMethodBeat.o(303758);
       return 1.0F;
     }
-    float f = ((b)h.ae(b.class)).a(b.a.waI, 1.0F);
-    AppMethodBeat.o(247782);
+    float f = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zuj, 1.0F);
+    AppMethodBeat.o(303758);
     return f;
   }
   
-  public static String fy(View paramView)
+  public static String il(View paramView)
   {
-    AppMethodBeat.i(247776);
+    AppMethodBeat.i(303719);
     if (paramView == null)
     {
-      AppMethodBeat.o(247776);
+      AppMethodBeat.o(303719);
       return "";
     }
     Object localObject = new int[2];
@@ -160,20 +141,20 @@ public final class c
     int i = localObject[0];
     int j = localObject[1];
     paramView = new Rect(i, j, paramView.getWidth() + i, paramView.getHeight() + j);
-    localObject = af.aaBG;
+    localObject = am.aixg;
     paramView = String.format("%d,%d,%d,%d", Arrays.copyOf(new Object[] { Integer.valueOf(paramView.left), Integer.valueOf(paramView.top), Integer.valueOf(paramView.right), Integer.valueOf(paramView.bottom) }, 4));
-    p.j(paramView, "java.lang.String.format(format, *args)");
-    AppMethodBeat.o(247776);
+    s.s(paramView, "java.lang.String.format(format, *args)");
+    AppMethodBeat.o(303719);
     return paramView;
   }
   
-  public static o<String, Integer> fz(View paramView)
+  public static r<String, Integer> im(View paramView)
   {
-    AppMethodBeat.i(247777);
+    AppMethodBeat.i(303729);
     if (paramView == null)
     {
-      paramView = new o("", Integer.valueOf(0));
-      AppMethodBeat.o(247777);
+      paramView = new r("", Integer.valueOf(0));
+      AppMethodBeat.o(303729);
       return paramView;
     }
     Object localObject = new int[2];
@@ -198,11 +179,11 @@ public final class c
     for (;;)
     {
       paramView = new Rect(localRect.left + m, k, localRect.left + (m + n), j);
-      localObject = af.aaBG;
+      localObject = am.aixg;
       paramView = String.format("%d,%d,%d,%d", Arrays.copyOf(new Object[] { Integer.valueOf(paramView.left), Integer.valueOf(paramView.top), Integer.valueOf(paramView.right), Integer.valueOf(paramView.bottom) }, 4));
-      p.j(paramView, "java.lang.String.format(format, *args)");
-      paramView = new o(paramView, Integer.valueOf(i));
-      AppMethodBeat.o(247777);
+      s.s(paramView, "java.lang.String.format(format, *args)");
+      paramView = new r(paramView, Integer.valueOf(i));
+      AppMethodBeat.o(303729);
       return paramView;
       i = 1;
       k = k + i1 - i2;
@@ -212,12 +193,30 @@ public final class c
     }
   }
   
-  public static final boolean q(View paramView, int paramInt1, int paramInt2)
+  public static final Rect in(View paramView)
   {
-    AppMethodBeat.i(247775);
+    AppMethodBeat.i(303733);
     if (paramView == null)
     {
-      AppMethodBeat.o(247775);
+      paramView = new Rect();
+      AppMethodBeat.o(303733);
+      return paramView;
+    }
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    int i = arrayOfInt[0];
+    int j = arrayOfInt[1];
+    paramView = new Rect(i, j, paramView.getWidth() + i, paramView.getHeight() + j);
+    AppMethodBeat.o(303733);
+    return paramView;
+  }
+  
+  public static final boolean q(View paramView, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(303714);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(303714);
       return false;
     }
     int[] arrayOfInt = new int[2];
@@ -225,13 +224,13 @@ public final class c
     int i = arrayOfInt[0];
     int j = arrayOfInt[1];
     boolean bool = new Rect(i, j, paramView.getWidth() + i, paramView.getHeight() + j).contains(paramInt1, paramInt2);
-    AppMethodBeat.o(247775);
+    AppMethodBeat.o(303714);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.f.c
  * JD-Core Version:    0.7.0.1
  */

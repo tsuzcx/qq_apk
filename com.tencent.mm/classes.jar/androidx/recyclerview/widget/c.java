@@ -6,50 +6,50 @@ import java.util.concurrent.Executors;
 
 public final class c<T>
 {
-  final Executor acO;
-  public final Executor adS;
-  public final h.c<T> afK;
+  private final Executor bKN;
+  public final Executor bUq;
+  public final g.c<T> bUr;
   
-  c(Executor paramExecutor1, Executor paramExecutor2, h.c<T> paramc)
+  c(Executor paramExecutor1, Executor paramExecutor2, g.c<T> paramc)
   {
-    this.acO = paramExecutor1;
-    this.adS = paramExecutor2;
-    this.afK = paramc;
+    this.bKN = paramExecutor1;
+    this.bUq = paramExecutor2;
+    this.bUr = paramc;
   }
   
   public static final class a<T>
   {
-    private static final Object afL;
-    private static Executor afM;
-    private Executor acO;
-    private Executor adS;
-    private final h.c<T> afK;
+    private static final Object bUs;
+    private static Executor bUt;
+    private Executor bKN;
+    private Executor bUq;
+    private final g.c<T> bUr;
     
     static
     {
-      AppMethodBeat.i(260759);
-      afL = new Object();
-      afM = null;
-      AppMethodBeat.o(260759);
+      AppMethodBeat.i(195000);
+      bUs = new Object();
+      bUt = null;
+      AppMethodBeat.o(195000);
     }
     
-    public a(h.c<T> paramc)
+    public a(g.c<T> paramc)
     {
-      this.afK = paramc;
+      this.bUr = paramc;
     }
     
-    public final c<T> kh()
+    public final c<T> IS()
     {
-      AppMethodBeat.i(260755);
-      if (this.adS == null) {}
-      synchronized (afL)
+      AppMethodBeat.i(195009);
+      if (this.bUq == null) {}
+      synchronized (bUs)
       {
-        if (afM == null) {
-          afM = Executors.newFixedThreadPool(2);
+        if (bUt == null) {
+          bUt = Executors.newFixedThreadPool(2);
         }
-        this.adS = afM;
-        ??? = new c(this.acO, this.adS, this.afK);
-        AppMethodBeat.o(260755);
+        this.bUq = bUt;
+        ??? = new c(this.bKN, this.bUq, this.bUr);
+        AppMethodBeat.o(195009);
         return ???;
       }
     }
@@ -57,7 +57,7 @@ public final class c<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.recyclerview.widget.c
  * JD-Core Version:    0.7.0.1
  */

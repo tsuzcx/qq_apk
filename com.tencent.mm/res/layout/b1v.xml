@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.hld.keyboard.S9ExceptionSoundKeyboard android:orientation="vertical" android:id="@id/iwl" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="@dimen/adl"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/bf8" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ehh" android:paddingBottom="@dimen/cb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="20.0dip">
-            <RelativeLayout android:id="@id/el0" android:background="@drawable/adi" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginBottom="@dimen/bt">
-                <ImageView android:id="@id/ehi" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
-            </RelativeLayout>
-            <TextView android:textSize="14.0dip" android:textColor="@color/am" android:id="@id/ehf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:text="@string/egg" />
-        </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/cp">
+        <RelativeLayout android:id="@id/a32" android:layout_width="@dimen/d6" android:layout_height="@dimen/cv">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_back" android:layout_centerVertical="true" android:layout_marginStart="15.0dip" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/aec" android:textColor="@color/zs" android:id="@id/kpx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fpy" android:layout_centerInParent="true" />
     </RelativeLayout>
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv">
+        <RelativeLayout android:id="@id/jyv" android:background="@color/a07" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp">
+            <com.tencent.mm.plugin.hld.view.ImeCheckBox android:id="@id/jyu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="bottom|center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/agw" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/cv">
+        <Button android:textSize="@dimen/t" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/e9x" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/fpi" style="@style/og" />
+    </LinearLayout>
+</com.tencent.mm.plugin.hld.keyboard.S9ExceptionSoundKeyboard>

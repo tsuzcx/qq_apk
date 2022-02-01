@@ -2,30 +2,37 @@ package com.tencent.mm.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.bb;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.autogen.b.bd;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.ax.a.a;
+import com.tencent.mm.ax.e;
+import com.tencent.mm.ax.f;
+import com.tencent.mm.ax.g;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.openim.room.a.a;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.plugin.chatroom.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.protocal.protobuf.dl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.cc;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public final class u
 {
-  public static boolean Pg(String paramString)
+  public static boolean HZ(String paramString)
   {
     AppMethodBeat.i(184632);
     if (Util.isNullOrNil(paramString))
@@ -45,7 +52,7 @@ public final class u
       if (!paramString.hasNext()) {
         break;
       }
-    } while (ab.PM((String)paramString.next()));
+    } while (au.bwI((String)paramString.next()));
     for (boolean bool = false;; bool = true)
     {
       AppMethodBeat.o(184632);
@@ -53,10 +60,10 @@ public final class u
     }
   }
   
-  public static boolean Ph(String paramString)
+  public static boolean Ia(String paramString)
   {
     AppMethodBeat.i(101740);
-    if ((ab.PM(paramString)) || (as.bvK(paramString)))
+    if ((au.bwI(paramString)) || (au.bwO(paramString)))
     {
       AppMethodBeat.o(101740);
       return true;
@@ -68,16 +75,23 @@ public final class u
   public static void a(String paramString1, List<String> paramList, String paramString2, boolean paramBoolean, String paramString3)
   {
     AppMethodBeat.i(101737);
-    ca localca = new ca();
-    localca.Jm(paramString1);
-    localca.setType(10000);
-    localca.setCreateTime(System.currentTimeMillis());
-    localca.setStatus(4);
-    localca.pJ(2);
+    b(paramString1, paramList, paramString2, paramBoolean, paramString3);
+    AppMethodBeat.o(101737);
+  }
+  
+  private static void b(String paramString1, List<String> paramList, String paramString2, boolean paramBoolean, String paramString3)
+  {
+    AppMethodBeat.i(241870);
+    cc localcc = new cc();
+    localcc.BS(paramString1);
+    localcc.setType(10000);
+    localcc.setCreateTime(System.currentTimeMillis());
+    localcc.setStatus(4);
+    localcc.pI(2);
     paramString1 = new StringBuffer();
     if (paramList != null)
     {
-      String str1 = z.bcZ();
+      String str1 = z.bAM();
       String str2 = MMApplicationContext.getContext().getString(b.a.chatroom_sys_msg_invite_split);
       paramList = paramList.iterator();
       while (paramList.hasNext())
@@ -85,13 +99,13 @@ public final class u
         String str3 = (String)paramList.next();
         if (!str3.equals(str1))
         {
-          as localas = ((n)h.ae(n.class)).bbL().RG(str3);
-          if ((localas != null) && ((int)localas.jxt != 0))
+          au localau = ((n)h.ax(n.class)).bzA().JE(str3);
+          if ((localau != null) && ((int)localau.maN != 0))
           {
             if (paramBoolean) {
-              paramString1.append("<a href=\"" + paramString3 + str3 + "\">" + o(localas) + "</a>" + str2);
+              paramString1.append("<a href=\"" + paramString3 + str3 + "\">" + p(localau) + "</a>" + str2);
             } else {
-              paramString1.append(o(localas) + str2);
+              paramString1.append(p(localau) + str2);
             }
           }
           else if (paramBoolean) {
@@ -105,12 +119,12 @@ public final class u
         paramString1.deleteCharAt(paramString1.lastIndexOf(str2));
       }
     }
-    localca.setContent(paramString2.replace("%s", paramString1));
-    ((n)h.ae(n.class)).eSe().aM(localca);
-    AppMethodBeat.o(101737);
+    localcc.setContent(paramString2.replace("%s", paramString1));
+    ((n)h.ax(n.class)).gaZ().ba(localcc);
+    AppMethodBeat.o(241870);
   }
   
-  public static List<Boolean> ak(List<String> paramList)
+  public static List<Boolean> bR(List<String> paramList)
   {
     AppMethodBeat.i(101736);
     if (paramList == null)
@@ -127,7 +141,7 @@ public final class u
     while (paramList.hasNext())
     {
       str = (String)paramList.next();
-      if (!ab.Lj(str))
+      if (!au.bwE(str))
       {
         bool1 = false;
         localArrayList.add(Boolean.valueOf(bool1));
@@ -137,52 +151,57 @@ public final class u
         bool2 = false;
         boolean bool3 = false;
         long l3 = 0L;
-        Object localObject = ((n)h.ae(n.class)).bbR().bwx(str);
+        Object localObject = ((n)h.ax(n.class)).bzG().bxM(str);
         l2 = l3;
         if (localObject != null)
         {
           l1 = l3;
           bool1 = bool3;
-          if (((bb)localObject).field_lastSeq != 0L)
+          if (((bd)localObject).field_lastSeq != 0L)
           {
-            l1 = l3;
-            bool1 = bool3;
-            if (((n)h.ae(n.class)).eSe().aM(str, ((bb)localObject).field_lastSeq).field_msgId == 0L)
+            cc localcc = ((n)h.ax(n.class)).gaZ().aV(str, ((bd)localObject).field_lastSeq);
+            if (localcc != null)
             {
-              l1 = ((bb)localObject).field_lastSeq;
+              l1 = l3;
+              bool1 = bool3;
+              if (localcc.field_msgId != 0L) {}
+            }
+            else
+            {
+              l1 = ((bd)localObject).field_lastSeq;
               bool1 = true;
             }
           }
           l2 = l1;
           bool2 = bool1;
-          if (((bb)localObject).field_firstUnDeliverSeq != 0L)
+          if (((bd)localObject).field_firstUnDeliverSeq != 0L)
           {
-            ((az)localObject).EE(0L);
-            ((az)localObject).ED(0L);
-            ((n)h.ae(n.class)).bbR().a((az)localObject, str);
+            ((bb)localObject).gU(0L);
+            ((bb)localObject).gT(0L);
+            ((n)h.ax(n.class)).bzG().c((bb)localObject, str);
             Log.i("MicroMsg.ChatroomLogic", "summerbadcr deleteConv chatroomId update conv");
             bool2 = bool1;
             l2 = l1;
           }
         }
         if (bool2) {
-          break label399;
+          break label408;
         }
-        localObject = ((n)h.ae(n.class)).eSe().aPc(str);
-        if ((localObject == null) || (((et)localObject).field_msgId == 0L)) {
-          break label399;
+        localObject = ((n)h.ax(n.class)).gaZ().aMb(str);
+        if ((localObject == null) || (((fi)localObject).field_msgId == 0L)) {
+          break label408;
         }
       }
     }
-    label399:
+    label408:
     for (boolean bool1 = true;; bool1 = bool2)
     {
       l1 = l2;
       if (l2 == 0L) {
-        l1 = ((n)h.ae(n.class)).eSe().aPb(str);
+        l1 = ((n)h.ax(n.class)).gaZ().aMa(str);
       }
       if (l1 != 0L) {
-        ((n)h.ae(n.class)).bco().aI(str, l1);
+        ((n)h.ax(n.class)).bAd().aR(str, l1);
       }
       Log.i("MicroMsg.ChatroomLogic", "summerbadcr deleteConv chatroomId[%s], needClear[%b], lastMsgSeq[%d]", new Object[] { str, Boolean.valueOf(bool1), Long.valueOf(l1) });
       break;
@@ -191,25 +210,25 @@ public final class u
     }
   }
   
-  private static String o(as paramas)
+  private static String p(au paramau)
   {
     AppMethodBeat.i(101739);
-    if (a.U(paramas))
+    if (com.tencent.mm.openim.room.a.a.W(paramau))
     {
-      String str = a.V(paramas);
+      String str = com.tencent.mm.openim.room.a.a.X(paramau);
       if (str != null)
       {
-        paramas = paramas.ays() + str;
+        paramau = paramau.aSV() + str;
         AppMethodBeat.o(101739);
-        return paramas;
+        return paramau;
       }
-      paramas = paramas.ays();
+      paramau = paramau.aSV();
       AppMethodBeat.o(101739);
-      return paramas;
+      return paramau;
     }
-    paramas = paramas.ays();
+    paramau = paramau.aSV();
     AppMethodBeat.o(101739);
-    return paramas;
+    return paramau;
   }
 }
 

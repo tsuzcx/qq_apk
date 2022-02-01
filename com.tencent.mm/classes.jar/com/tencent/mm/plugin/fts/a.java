@@ -10,12 +10,12 @@ import java.util.Iterator;
 public final class a
   extends CursorWrapper
 {
-  private static HashSet<Cursor> BFj;
+  private static HashSet<Cursor> HpL;
   
   static
   {
     AppMethodBeat.i(52498);
-    BFj = new HashSet();
+    HpL = new HashSet();
     AppMethodBeat.o(52498);
   }
   
@@ -23,15 +23,15 @@ public final class a
   {
     super(paramCursor);
     AppMethodBeat.i(52495);
-    BFj.add(paramCursor);
-    Log.v("MicroMsg.FTS.FTSCursor", "add cursor %d", new Object[] { Integer.valueOf(paramCursor.hashCode()) });
+    HpL.add(paramCursor);
+    Log.i("MicroMsg.FTS.FTSCursor", "add cursor %d", new Object[] { Integer.valueOf(paramCursor.hashCode()) });
     AppMethodBeat.o(52495);
   }
   
-  public static final void eqx()
+  public static final void fxc()
   {
     AppMethodBeat.i(52497);
-    Iterator localIterator = BFj.iterator();
+    Iterator localIterator = HpL.iterator();
     for (;;)
     {
       Cursor localCursor;
@@ -48,7 +48,7 @@ public final class a
         label46:
         Log.e("MicroMsg.FTS.FTSCursor", "not close cursor!!! %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
         continue;
-        BFj.clear();
+        HpL.clear();
         AppMethodBeat.o(52497);
         return;
       }
@@ -64,14 +64,14 @@ public final class a
     AppMethodBeat.i(52496);
     super.close();
     Cursor localCursor = getWrappedCursor();
-    BFj.remove(localCursor);
-    Log.v("MicroMsg.FTS.FTSCursor", "remove cursor %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
+    HpL.remove(localCursor);
+    Log.i("MicroMsg.FTS.FTSCursor", "remove cursor %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
     AppMethodBeat.o(52496);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a
  * JD-Core Version:    0.7.0.1
  */

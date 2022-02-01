@@ -1,44 +1,39 @@
 package com.tencent.xweb;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.internal.IWebStorage;
-import com.tencent.xweb.internal.l;
-import com.tencent.xweb.internal.l.a;
-import org.xwalk.core.Log;
+import java.util.Map;
 
 public final class ab
 {
-  static ab aaaV = null;
-  public IWebStorage aaaU;
+  private WebResourceRequest aifm;
   
-  private ab()
+  public ab(WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(156798);
-    this.aaaU = null;
-    IWebStorage localIWebStorage = l.h(WebView.getCurWebType()).createWebviewStorage();
-    if (localIWebStorage == null)
-    {
-      Log.e("WebStorage", "create WebStorage failed webStg is null, cur core kind is " + WebView.getCurWebType());
-      AppMethodBeat.o(156798);
-      return;
-    }
-    this.aaaU = localIWebStorage;
-    AppMethodBeat.o(156798);
+    this.aifm = paramWebResourceRequest;
   }
   
-  public static ab iwG()
+  public final Bundle getBundle()
   {
-    try
+    AppMethodBeat.i(212498);
+    Object localObject;
+    if ((this.aifm != null) && (this.aifm.getRequestHeaders() != null) && (!this.aifm.isForMainFrame()) && (this.aifm.getRequestHeaders().containsKey("Accept")))
     {
-      AppMethodBeat.i(156797);
-      if (aaaV == null) {
-        aaaV = new ab();
-      }
-      ab localab = aaaV;
-      AppMethodBeat.o(156797);
-      return localab;
+      localObject = (String)this.aifm.getRequestHeaders().get("Accept");
+      if ((localObject == null) || (!((String)localObject).startsWith("text/html"))) {}
     }
-    finally {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("resourceType", 1);
+        AppMethodBeat.o(212498);
+        return localObject;
+      }
+      AppMethodBeat.o(212498);
+      return null;
+    }
   }
 }
 

@@ -1,59 +1,124 @@
 package com.tencent.mm.plugin.sns;
 
+import android.text.TextUtils;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.gk;
-import com.tencent.mm.f.a.gk.a;
-import com.tencent.mm.model.bv.a;
-import com.tencent.mm.plugin.sns.b.b;
-import com.tencent.mm.plugin.sns.b.j.a;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.ap.a;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.modelsns.n;
+import com.tencent.mm.modelstat.o;
+import com.tencent.mm.modelstat.o.a;
+import com.tencent.mm.plugin.sns.c.d;
+import com.tencent.mm.plugin.sns.c.l;
+import com.tencent.mm.pointers.PString;
+import com.tencent.mm.protocal.protobuf.fhn;
+import com.tencent.mm.protocal.protobuf.fho;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.cc;
 
 public final class c
-  extends IListener<gk>
+  implements l
 {
-  public c()
+  public final String a(String paramString, PString paramPString)
   {
-    AppMethodBeat.i(160631);
-    this.__eventId = gk.class.getName().hashCode();
-    AppMethodBeat.o(160631);
+    AppMethodBeat.i(94907);
+    paramString = o.a(paramString, paramPString);
+    AppMethodBeat.o(94907);
+    return paramString;
   }
   
-  private boolean a(final gk paramgk)
+  public final void a(String paramString, ad.b paramb, cc paramcc)
   {
-    AppMethodBeat.i(94887);
-    if (!(paramgk instanceof gk))
+    AppMethodBeat.i(94908);
+    if (paramcc.fxR())
     {
-      Log.f("MicroMsg.ExtStartSnsServerAndCallbackOnFpSetSizeEventListener", "mismatched event");
-      AppMethodBeat.o(94887);
-      return false;
-    }
-    ap.a locala = aj.fOy();
-    locala.a(paramgk.fCz.type, paramgk.fCz.username, new j.a()
-    {
-      public final void a(String paramAnonymousString1, String paramAnonymousString2, boolean paramAnonymousBoolean, int paramAnonymousInt, b paramAnonymousb) {}
-      
-      public final void a(String paramAnonymousString, boolean paramAnonymousBoolean, int paramAnonymousInt, b paramAnonymousb)
-      {
-        AppMethodBeat.i(94886);
-        if (paramgk.fCz != null) {
-          paramgk.fCz.fCD.a(null);
-        }
-        AppMethodBeat.o(94886);
+      paramcc = k.b.Hf(paramcc.field_content);
+      if ((paramcc != null) && (!Util.isNullOrNil(paramcc.iah))) {
+        paramb.q(paramString, paramcc.iah);
       }
-      
-      public final void b(String paramAnonymousString, boolean paramAnonymousBoolean, int paramAnonymousInt, b paramAnonymousb) {}
-    });
-    locala.a(1, paramgk.fCz.username, paramgk.fCz.fCB, paramgk.fCz.fCC);
-    AppMethodBeat.o(94887);
-    return true;
+    }
+    AppMethodBeat.o(94908);
+  }
+  
+  public final String at(cc paramcc)
+  {
+    AppMethodBeat.i(94910);
+    paramcc = o.at(paramcc);
+    AppMethodBeat.o(94910);
+    return paramcc;
+  }
+  
+  public final void b(String paramString, n paramn)
+  {
+    AppMethodBeat.i(94906);
+    o.b(paramString, paramn);
+    AppMethodBeat.o(94906);
+  }
+  
+  public final void bt(cc paramcc)
+  {
+    AppMethodBeat.i(94909);
+    String str = o.at(paramcc);
+    Object localObject;
+    fhn localfhn;
+    if (str != null)
+    {
+      localObject = Base64.decode(str, 0);
+      localfhn = new fhn();
+      try
+      {
+        localfhn.parseFrom((byte[])localObject);
+        localObject = localfhn.abIc;
+        if (localObject == null)
+        {
+          AppMethodBeat.o(94909);
+          return;
+        }
+      }
+      catch (Exception paramcc)
+      {
+        Log.printErrStackTrace("MicroMsg.SnsStatExtUtil", paramcc, "", new Object[0]);
+        AppMethodBeat.o(94909);
+        return;
+      }
+      if (!paramcc.field_talker.endsWith("@chatroom")) {
+        break label263;
+      }
+      localObject = o.a.oXx.value;
+      paramcc = paramcc.field_content;
+      if (TextUtils.isEmpty(paramcc)) {
+        break label301;
+      }
+      if (!com.tencent.mm.plugin.sns.ad.d.a.c.aWs(paramcc)) {
+        break label286;
+      }
+      paramcc = "2";
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene=" + (String)localObject + ", adCanvasType=" + paramcc + ", srcSnsId=" + localfhn.abIc.abIf + ", uxinfo=" + localfhn.abIc.Ywb + ", statExtStr=" + str);
+      ((d)h.ax(d.class)).b(13235, new Object[] { localObject, localfhn.abIc.abIf, localfhn.abIc.Ywb, "", "", paramcc });
+      AppMethodBeat.o(94909);
+      return;
+      label263:
+      localObject = o.a.oXw.value;
+      break;
+      label286:
+      if (paramcc.contains("isInteractiveCanvas")) {
+        paramcc = "1";
+      } else {
+        label301:
+        paramcc = "0";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.c
  * JD-Core Version:    0.7.0.1
  */

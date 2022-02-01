@@ -1,31 +1,29 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.autogen.b.ex;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/ViewStatus;", "", "(Ljava/lang/String;I)V", "NONE", "NOT_FULL_SCREEN", "FULL_SCREEN", "DISMISS", "luggage-wxa-app_release"})
-public enum p
+public final class p
+  extends ex
 {
+  public static final IAutoDBItem.MAutoDBInfo DB_INFO;
+  
   static
   {
-    AppMethodBeat.i(245359);
-    p localp1 = new p("NONE", 0);
-    roa = localp1;
-    p localp2 = new p("NOT_FULL_SCREEN", 1);
-    rob = localp2;
-    p localp3 = new p("FULL_SCREEN", 2);
-    roc = localp3;
-    p localp4 = new p("DISMISS", 3);
-    rod = localp4;
-    roe = new p[] { localp1, localp2, localp3, localp4 };
-    AppMethodBeat.o(245359);
+    AppMethodBeat.i(76410);
+    DB_INFO = ex.aJm();
+    AppMethodBeat.o(76410);
   }
   
-  private p() {}
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return DB_INFO;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.p
  * JD-Core Version:    0.7.0.1
  */

@@ -10,23 +10,23 @@ public final class j
     super(paramView, paramb);
   }
   
-  public final void Ah(boolean paramBoolean) {}
+  public final void FD(boolean paramBoolean) {}
   
   public final View getWowView()
   {
     return null;
   }
   
-  public final void gri() {}
+  public final void hOh() {}
   
-  public final f grj()
+  public final f hOi()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.j
  * JD-Core Version:    0.7.0.1
  */

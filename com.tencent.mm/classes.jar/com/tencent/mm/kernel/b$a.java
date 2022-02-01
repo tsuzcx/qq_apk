@@ -2,22 +2,22 @@ package com.tencent.mm.kernel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
- enum b$a
+public enum b$a
 {
   static
   {
-    AppMethodBeat.i(132007);
-    kbX = new a("NotReady", 0);
-    kbY = new a("AccountHasReady", 1);
-    kbZ = new a[] { kbX, kbY };
-    AppMethodBeat.o(132007);
+    AppMethodBeat.i(235224);
+    mCd = new a("WeiXin", 0);
+    mCe = new a("WeChat", 1);
+    mCf = new a[] { mCd, mCe };
+    AppMethodBeat.o(235224);
   }
   
   private b$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.kernel.b.a
  * JD-Core Version:    0.7.0.1
  */

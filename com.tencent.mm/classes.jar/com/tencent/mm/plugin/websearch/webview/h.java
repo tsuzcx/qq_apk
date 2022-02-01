@@ -1,128 +1,57 @@
 package com.tencent.mm.plugin.websearch.webview;
 
-import android.webkit.JavascriptInterface;
+import android.view.MotionEvent;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import org.json.JSONObject;
+import com.tencent.mm.ui.widget.MMWebView.b;
+import com.tencent.xweb.af;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchImageJSApi;", "T", "Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchJSApi;", "imageUIComponent", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;", "(Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;)V", "TAG", "", "getImageUIComponent", "getSearchAvatarList", "params", "getSearchImageList", "onSearchImageListReady", "", "ret", "", "data", "ui-websearch_release"})
-public class h<T>
-  extends b<T>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchCallbackClient;", "Lcom/tencent/xweb/WebViewCallbackClient;", "scrollListener", "Lcom/tencent/mm/ui/widget/MMWebView$MMScrollListener;", "webSearchWebView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "(Lcom/tencent/mm/ui/widget/MMWebView$MMScrollListener;Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;)V", "getScrollListener", "()Lcom/tencent/mm/ui/widget/MMWebView$MMScrollListener;", "getWebSearchWebView", "()Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "computeScroll", "", "view", "Landroid/view/View;", "dispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "varview2", "invalidate", "onContentHeightChanged", "height", "", "onInterceptTouchEvent", "onOverScrolled", "scrollX", "scrollY", "clampedX", "clampedY", "webContentView", "onScrollChanged", "var1", "var2", "var3", "var4", "var5", "onTouchEvent", "overScrollBy", "deltaX", "deltaY", "scrollRangeX", "scrollRangeY", "maxOverScrollX", "maxOverScrollY", "isTouchEvent", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class h
+  implements af
 {
-  private final String TAG;
+  private final MMWebView.b WrR;
+  private final WebSearchWebView WrS;
   
-  public h(c<T> paramc)
+  public h(MMWebView.b paramb, WebSearchWebView paramWebSearchWebView)
   {
-    AppMethodBeat.i(198317);
-    this.TAG = "MicroMsg.WebSearch.WebSearchImageJSApi";
-    this.PBs = ((d)paramc);
-    AppMethodBeat.o(198317);
+    AppMethodBeat.i(315223);
+    this.WrR = paramb;
+    this.WrS = paramWebSearchWebView;
+    AppMethodBeat.o(315223);
   }
   
-  private final c<T> gRD()
+  public final void Bv(int paramInt) {}
+  
+  public final void computeScroll(View paramView) {}
+  
+  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    d locald2 = this.PBs;
-    d locald1 = locald2;
-    if (!(locald2 instanceof c)) {
-      locald1 = null;
-    }
-    return (c)locald1;
+    return false;
   }
   
-  public final void cQ(int paramInt, String paramString)
+  public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    AppMethodBeat.i(198316);
-    p.k(paramString, "data");
-    Object localObject = new JSONObject();
-    try
-    {
-      ((JSONObject)localObject).put("ret", paramInt);
-      ((JSONObject)localObject).put("data", paramString);
-      label35:
-      paramString = this.PBs;
-      if (paramString != null)
-      {
-        paramString = paramString.esG();
-        if (paramString != null)
-        {
-          i locali = i.PBA;
-          localObject = ((JSONObject)localObject).toString();
-          p.j(localObject, "requestObj.toString()");
-          i.a(paramString, "onSearchImageListReady", (String)localObject);
-          AppMethodBeat.o(198316);
-          return;
-        }
-      }
-      AppMethodBeat.o(198316);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      break label35;
-    }
+    return false;
   }
   
-  @JavascriptInterface
-  public String getSearchAvatarList(String paramString)
+  public final void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView) {}
+  
+  public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
+  
+  public final boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    AppMethodBeat.i(198313);
-    try
-    {
-      paramString = new JSONObject(paramString).optString("data", "");
-      Object localObject = gRD();
-      if (localObject != null)
-      {
-        localObject = ((c)localObject).esH();
-        if (localObject != null)
-        {
-          p.j(paramString, "data");
-          ((g)localObject).bjc(paramString);
-        }
-      }
-      paramString = String.valueOf(gRB());
-      AppMethodBeat.o(198313);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString = String.valueOf(gRC());
-      AppMethodBeat.o(198313);
-    }
-    return paramString;
+    return false;
   }
   
-  @JavascriptInterface
-  public String getSearchImageList(String paramString)
+  public final boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
   {
-    AppMethodBeat.i(198312);
-    Log.i(this.TAG, "getSearchImageList ".concat(String.valueOf(paramString)));
-    try
-    {
-      paramString = new JSONObject(paramString);
-      int i = paramString.optInt("requestType", 0);
-      paramString = paramString.optString("data", "");
-      Object localObject = gRD();
-      if (localObject != null)
-      {
-        localObject = ((c)localObject).esH();
-        if (localObject != null)
-        {
-          p.j(paramString, "data");
-          ((g)localObject).cP(i, paramString);
-        }
-      }
-      paramString = String.valueOf(gRB());
-      AppMethodBeat.o(198312);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString = String.valueOf(gRC());
-      AppMethodBeat.o(198312);
-    }
-    return paramString;
+    AppMethodBeat.i(315232);
+    paramBoolean = this.WrR.S(paramInt1, paramInt2, paramInt3, paramInt5);
+    this.WrS.setHorizontalScrollPage(paramBoolean);
+    AppMethodBeat.o(315232);
+    return true;
   }
 }
 

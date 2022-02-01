@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:id="@id/e0w" android:paddingLeft="@dimen/d0" android:paddingRight="@dimen/d0" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.finder.live.view.FinderLiveInterceptTouchRelativeLayout android:layout_gravity="center_horizontal" android:id="@id/e0r" android:background="@drawable/yu" android:paddingLeft="@dimen/cd" android:paddingTop="14.0dip" android:paddingRight="@dimen/cd" android:paddingBottom="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <View android:id="@id/e0v" android:background="@drawable/yv" android:layout_width="@dimen/bv" android:layout_height="0.0dip" android:layout_alignTop="@id/e0u" android:layout_alignBottom="@id/e0u" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/g_" android:ellipsize="end" android:id="@id/e0u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:text="" android:lines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/e0v" />
+        <ScrollView android:id="@id/e0t" android:fadingEdge="vertical" android:fadingEdgeLength="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:layout_below="@id/e0u" android:requiresFadingEdge="vertical">
+            <TextView android:textSize="@dimen/hp" android:textStyle="bold" android:textColor="#e6000000" android:ellipsize="none" android:id="@id/e0s" android:scrollbars="none" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </ScrollView>
+    </com.tencent.mm.plugin.finder.live.view.FinderLiveInterceptTouchRelativeLayout>
+</FrameLayout>

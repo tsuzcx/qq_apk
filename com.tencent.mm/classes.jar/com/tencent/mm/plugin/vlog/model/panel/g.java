@@ -3,50 +3,50 @@ package com.tencent.mm.plugin.vlog.model.panel;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.b.ae;
-import com.tencent.mm.emoji.panel.a.s;
+import com.tencent.mm.emoji.c.b.ae;
+import com.tencent.mm.emoji.panel.a.n;
+import com.tencent.mm.emoji.panel.a.q;
 import com.tencent.mm.loader.a;
 import com.tencent.mm.plugin.vlog.a.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/panel/PagPanelItemViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/plugin/vlog/model/panel/PagPanelItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "icon", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/widget/ImageView;", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/panel/PagPanelItemViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/plugin/vlog/model/panel/PagPanelItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "icon", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/widget/ImageView;", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
-  extends s<e>
+  extends q<e>
 {
-  private final ImageView bwJ;
+  private final ImageView dpM;
   
-  public g(View paramView, com.tencent.mm.emoji.panel.a.p paramp)
+  public g(View paramView, n paramn)
   {
-    super(paramView, paramp);
-    AppMethodBeat.i(244279);
-    this.bwJ = ((ImageView)paramView.findViewById(a.f.editor_pag_item_icon));
-    AppMethodBeat.o(244279);
+    super(paramView, paramn);
+    AppMethodBeat.i(283655);
+    this.dpM = ((ImageView)paramView.findViewById(a.f.editor_pag_item_icon));
+    AppMethodBeat.o(283655);
   }
   
   public final void a(ae paramae)
   {
-    AppMethodBeat.i(244278);
-    kotlin.g.b.p.k(paramae, "item");
+    AppMethodBeat.i(283665);
+    s.u(paramae, "item");
     super.a(paramae);
-    paramae = (e)this.jMr;
+    paramae = (e)aVT();
     if (paramae != null)
     {
-      Log.i(b.aBy(), "onBind: " + paramae.name);
-      Object localObject = com.tencent.mm.loader.e.kMy;
-      paramae = com.tencent.mm.loader.e.aRs().Op(paramae.NoE);
-      localObject = this.bwJ;
-      kotlin.g.b.p.j(localObject, "icon");
-      paramae.c((ImageView)localObject);
-      AppMethodBeat.o(244278);
-      return;
+      Log.i(b.aUw(), s.X("onBind: ", paramae.name));
+      Object localObject = com.tencent.mm.loader.e.noo;
+      paramae = com.tencent.mm.loader.e.blh().GD(paramae.Ucg);
+      localObject = this.dpM;
+      s.s(localObject, "icon");
+      paramae.d((ImageView)localObject);
     }
-    AppMethodBeat.o(244278);
+    AppMethodBeat.o(283665);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.panel.g
  * JD-Core Version:    0.7.0.1
  */

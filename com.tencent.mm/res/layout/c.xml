@@ -2,7 +2,7 @@
 <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/a8j" />
-        <View android:id="@id/i3u" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginStart="52.0dip" />
+        <include layout="@layout/a7t" />
+        <View android:id="@id/jzz" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginStart="52.0dip" />
     </LinearLayout>
 </FrameLayout>

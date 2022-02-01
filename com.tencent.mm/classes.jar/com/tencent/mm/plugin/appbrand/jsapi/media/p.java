@@ -1,51 +1,59 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.luggage.b.a.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
-import java.io.InputStream;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
 
 public final class p
-  implements e
+  extends a
 {
-  public static final p pci;
+  public static final int CTRL_INDEX = 216;
+  public static final String NAME = "saveVideoToPhotosAlbum";
   
-  static
+  final boolean aaP(String paramString)
   {
-    AppMethodBeat.i(46601);
-    pci = new p();
-    AppMethodBeat.o(46601);
+    AppMethodBeat.i(139885);
+    boolean bool = Util.nullAsNil(paramString).toLowerCase().contains("video");
+    AppMethodBeat.o(139885);
+    return bool;
   }
   
-  public final Bitmap b(InputStream paramInputStream, BitmapFactory.Options paramOptions)
+  final String aaQ(String paramString)
   {
-    AppMethodBeat.i(46600);
-    paramInputStream = MMBitmapFactory.decodeStream(paramInputStream, null, paramOptions);
-    AppMethodBeat.o(46600);
-    return paramInputStream;
-  }
-  
-  public final Bitmap decodeFile(String paramString, BitmapFactory.Options paramOptions)
-  {
-    AppMethodBeat.i(46599);
-    paramString = MMBitmapFactory.decodeFile(paramString, paramOptions);
-    AppMethodBeat.o(46599);
+    AppMethodBeat.i(139886);
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "mp4";
+    }
+    paramString = AndroidMediaUtil.getExportImagePath(str);
+    AppMethodBeat.o(139886);
     return paramString;
   }
   
-  public final Bitmap decodeStream(InputStream paramInputStream)
+  final void aaR(final String paramString)
   {
-    AppMethodBeat.i(217397);
-    paramInputStream = BitmapUtil.decodeStream(paramInputStream);
-    AppMethodBeat.o(217397);
-    return paramInputStream;
+    AppMethodBeat.i(139887);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139884);
+        Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(a.g.video_file_saved, new Object[] { AndroidMediaUtil.getFriendlySdcardPath(paramString) }), 1).show();
+        AppMethodBeat.o(139884);
+      }
+    });
+    AppMethodBeat.o(139887);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.p
  * JD-Core Version:    0.7.0.1
  */

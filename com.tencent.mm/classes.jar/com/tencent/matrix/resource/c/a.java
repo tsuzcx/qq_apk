@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class a
 {
-  private final b dcP;
+  private final b fbr;
   final Context mContext;
   private final Handler mMainHandler;
   
@@ -30,13 +30,13 @@ public final class a
   private a(Context paramContext, b paramb, Handler paramHandler)
   {
     this.mContext = paramContext;
-    this.dcP = paramb;
+    this.fbr = paramb;
     this.mMainHandler = paramHandler;
   }
   
-  public final File db(boolean paramBoolean)
+  public final File dK(boolean paramBoolean)
   {
-    File localFile = this.dcP.XI();
+    File localFile = this.fbr.azo();
     if (localFile == null)
     {
       c.w("Matrix.AndroidHeapDumper", "hprof file is null.", new Object[0]);
@@ -74,10 +74,10 @@ public final class a
           {
             public final boolean queueIdle()
             {
-              com.tencent.matrix.resource.e.a.a locala = a.1.this.dcQ;
+              com.tencent.matrix.resource.e.a.a locala = a.1.this.fbs;
               Toast localToast = localToast;
-              locala.ddM.set(localToast);
-              locala.ddN.countDown();
+              locala.fcn.set(localToast);
+              locala.fco.countDown();
               return false;
             }
           });
@@ -91,7 +91,7 @@ public final class a
       try
       {
         Debug.dumpHprofData(localFile.getAbsolutePath());
-        if (((com.tencent.matrix.resource.e.a.a)localObject).ddN.getCount() > 0L) {
+        if (((com.tencent.matrix.resource.e.a.a)localObject).fco.getCount() > 0L) {
           throw new IllegalStateException("Call wait() and check its result");
         }
       }
@@ -100,7 +100,7 @@ public final class a
         c.printErrStackTrace("Matrix.AndroidHeapDumper", localException1, "failed to dump heap into file: %s.", new Object[] { localFile.getAbsolutePath() });
         return null;
       }
-      final Toast localToast = (Toast)localException1.ddM.get();
+      final Toast localToast = (Toast)localException1.fcn.get();
       this.mMainHandler.post(new Runnable()
       {
         public final void run()
@@ -129,7 +129,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.resource.c.a
  * JD-Core Version:    0.7.0.1
  */

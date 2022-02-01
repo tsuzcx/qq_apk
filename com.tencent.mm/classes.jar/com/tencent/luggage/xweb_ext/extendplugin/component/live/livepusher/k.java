@@ -1,12 +1,11 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher;
 
-import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IStickerApplyWorkaroundLogic;", "", "applySticker", "", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;", "stickerInfo", "", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo;", "luggage-xweb-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IStickerApplyLogic;", "", "applySticker", "", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;", "path", "", "luggage-xweb-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface k
 {
-  public abstract boolean a(m.c paramc, List<StickerItemInfo> paramList);
+  public abstract void a(o.c paramc, String paramString);
 }
 
 

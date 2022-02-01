@@ -19,36 +19,36 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.plugin.nfc.b.b
 {
-  private static a Gxk = null;
-  private Set<String> Gxl;
-  public d Gxm = null;
+  private static a Mtk = null;
+  private Set<String> Mtl;
+  public d Mtm = null;
   
   private boolean a(com.tencent.mm.plugin.nfc.b.a parama)
   {
     AppMethodBeat.i(26659);
-    if (this.Gxm == null)
+    if (this.Mtm == null)
     {
       Log.e("MicroMsg.ApduEngine", "[NFC]ApduEngine not ready !");
       parama = new IllegalStateException("ApduEngine not ready !");
       AppMethodBeat.o(26659);
       throw parama;
     }
-    if ((parama == null) || (parama.Gxg == null))
+    if ((parama == null) || (parama.Mtg == null))
     {
       Log.e("MicroMsg.ApduEngine", "[NFC]apdu is null !");
       parama = new IllegalArgumentException("apdu is null !");
       AppMethodBeat.o(26659);
       throw parama;
     }
-    Log.i("MicroMsg.ApduEngine", "[NFC][" + parama.name + "] do cmd : " + parama.Gxg.toString());
-    parama.Gxh = b(parama.Gxg);
-    if (parama.Gxh.fiY())
+    Log.i("MicroMsg.ApduEngine", "[NFC][" + parama.name + "] do cmd : " + parama.Mtg.toString());
+    parama.Mth = b(parama.Mtg);
+    if (parama.Mth.gtp())
     {
-      Log.i("MicroMsg.ApduEngine", "[NFC][" + parama.name + "] result==> OK : " + parama.Gxh.toString());
+      Log.i("MicroMsg.ApduEngine", "[NFC][" + parama.name + "] result==> OK : " + parama.Mth.toString());
       AppMethodBeat.o(26659);
       return true;
     }
-    Log.e("MicroMsg.ApduEngine", "[NFC][" + parama.name + "] result==> fail : " + parama.Gxh.toString());
+    Log.e("MicroMsg.ApduEngine", "[NFC][" + parama.name + "] result==> fail : " + parama.Mth.toString());
     AppMethodBeat.o(26659);
     return false;
   }
@@ -56,18 +56,18 @@ public final class a
   private com.tencent.mm.plugin.nfc.a.c b(com.tencent.mm.plugin.nfc.a.a parama)
   {
     AppMethodBeat.i(26660);
-    parama = this.Gxm.a(parama);
+    parama = this.Mtm.a(parama);
     AppMethodBeat.o(26660);
     return parama;
   }
   
-  public static a fja()
+  public static a gtq()
   {
     AppMethodBeat.i(26656);
-    if (Gxk == null) {
-      Gxk = new a();
+    if (Mtk == null) {
+      Mtk = new a();
     }
-    a locala = Gxk;
+    a locala = Mtk;
     AppMethodBeat.o(26656);
     return locala;
   }
@@ -77,7 +77,7 @@ public final class a
     AppMethodBeat.i(26658);
     parama = new com.tencent.mm.plugin.nfc.b.a(1, "def", parama);
     a(parama);
-    parama = parama.Gxh;
+    parama = parama.Mth;
     AppMethodBeat.o(26658);
     return parama;
   }
@@ -86,7 +86,7 @@ public final class a
   {
     AppMethodBeat.i(26657);
     super.a(paramTag);
-    this.Gxl = new HashSet();
+    this.Mtl = new HashSet();
     String[] arrayOfString = paramTag.getTechList();
     int j = arrayOfString.length;
     int i = 0;
@@ -94,17 +94,17 @@ public final class a
     {
       String str = arrayOfString[i];
       Log.d("MicroMsg.ApduEngine", "[NFC]tech : ".concat(String.valueOf(str)));
-      this.Gxl.add(str);
+      this.Mtl.add(str);
       i += 1;
     }
     try
     {
-      if ((this.Gxm != null) && (this.Gxm.isConnected())) {
-        this.Gxm.close();
+      if ((this.Mtm != null) && (this.Mtm.isConnected())) {
+        this.Mtm.close();
       }
-      if (this.Gxl.contains(IsoDep.class.getName()))
+      if (this.Mtl.contains(IsoDep.class.getName()))
       {
-        this.Gxm = new b(paramTag);
+        this.Mtm = new b(paramTag);
         AppMethodBeat.o(26657);
         return true;
       }
@@ -116,9 +116,9 @@ public final class a
         Log.printErrStackTrace("MicroMsg.ApduEngine", localIOException, "", new Object[0]);
         Log.e("MicroMsg.ApduEngine", localIOException.toString());
       }
-      if (this.Gxl.contains(NfcA.class.getName()))
+      if (this.Mtl.contains(NfcA.class.getName()))
       {
-        this.Gxm = new c(paramTag);
+        this.Mtm = new c(paramTag);
         AppMethodBeat.o(26657);
         return true;
       }
@@ -128,7 +128,7 @@ public final class a
     return false;
   }
   
-  public final boolean b(List<com.tencent.mm.plugin.nfc.b.a> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  public final boolean c(List<com.tencent.mm.plugin.nfc.b.a> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(26661);
     paramList = paramList.iterator();
@@ -153,7 +153,7 @@ public final class a
   public final String getInfo()
   {
     AppMethodBeat.i(26664);
-    if (fiZ() == null)
+    if (ctW() == null)
     {
       Log.w("MicroMsg.ApduEngine", "lo-nfc-getInfo: tag null");
       AppMethodBeat.o(26664);
@@ -161,8 +161,8 @@ public final class a
     }
     long l = Util.nowMilliSecond();
     JSONObject localJSONObject = new JSONObject();
-    Log.d("MicroMsg.ApduEngine", "lo-nfc-getInfo: mTechList = " + this.Gxl.size());
-    Iterator localIterator = this.Gxl.iterator();
+    Log.d("MicroMsg.ApduEngine", "lo-nfc-getInfo: mTechList = " + this.Mtl.size());
+    Iterator localIterator = this.Mtl.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -173,9 +173,9 @@ public final class a
         try
         {
           if (!str.equals(NfcA.class.getName())) {
-            break label252;
+            break label253;
           }
-          localObject2 = NfcA.get(fiZ());
+          localObject2 = NfcA.get(ctW());
           if (localObject2 == null)
           {
             Log.w("MicroMsg.ApduEngineNfcA", "lo-nfc-getInfoJsonObject: get nfcA null");
@@ -192,12 +192,12 @@ public final class a
         }
         localObject1 = new JSONObject();
         ((JSONObject)localObject1).put("atqa", com.tencent.mm.plugin.nfc.c.a.byteArrayToHexString(((NfcA)localObject2).getAtqa()));
-        ((JSONObject)localObject1).put("sak", com.tencent.mm.plugin.nfc.c.a.byteArrayToHexString(com.tencent.mm.plugin.nfc.c.a.c(((NfcA)localObject2).getSak())));
+        ((JSONObject)localObject1).put("sak", com.tencent.mm.plugin.nfc.c.a.byteArrayToHexString(com.tencent.mm.plugin.nfc.c.a.f(((NfcA)localObject2).getSak())));
       }
-      label252:
+      label253:
       if (((String)localObject1).equals(IsoDep.class.getName()))
       {
-        localObject2 = IsoDep.get(fiZ());
+        localObject2 = IsoDep.get(ctW());
         if (localObject2 == null)
         {
           Log.w("MicroMsg.ApduEngineIsoDep", "lo-nfc-getInfoJsonObject: get IsoDep null");
@@ -220,7 +220,7 @@ public final class a
     return localObject1;
   }
   
-  public final int hI(Context paramContext)
+  public final int jj(Context paramContext)
   {
     AppMethodBeat.i(26662);
     paramContext = NfcAdapter.getDefaultAdapter(paramContext);
@@ -235,16 +235,16 @@ public final class a
       AppMethodBeat.o(26662);
       return 1;
     }
-    if (this.Gxm == null)
+    if (this.Mtm == null)
     {
       AppMethodBeat.o(26662);
       return 4;
     }
     try
     {
-      if (this.Gxm != null)
+      if (this.Mtm != null)
       {
-        boolean bool = this.Gxm.isConnected();
+        boolean bool = this.Mtm.isConnected();
         if (bool)
         {
           AppMethodBeat.o(26662);
@@ -262,10 +262,10 @@ public final class a
     return 2;
   }
   
-  public final int hJ(Context paramContext)
+  public final int jk(Context paramContext)
   {
     AppMethodBeat.i(26663);
-    int i = hI(paramContext);
+    int i = jj(paramContext);
     if ((i != 3) && (i != 2))
     {
       AppMethodBeat.o(26663);
@@ -273,10 +273,9 @@ public final class a
     }
     try
     {
-      if (this.Gxm != null)
+      if ((this.Mtm != null) && (this.Mtm.cmB()))
       {
-        this.Gxm.cyb();
-        boolean bool = this.Gxm.isConnected();
+        boolean bool = this.Mtm.isConnected();
         if (bool)
         {
           AppMethodBeat.o(26663);

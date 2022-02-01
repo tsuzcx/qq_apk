@@ -1,16 +1,15 @@
 package com.tencent.mm.plugin.gamelive;
 
-import android.content.Context;
-import com.tencent.mm.kernel.c.a;
-
 public abstract interface d
-  extends a
+  extends com.tencent.mm.kernel.b.d
 {
-  public abstract void a(Context paramContext, String paramString, int paramInt, Boolean paramBoolean1, Boolean paramBoolean2, Long paramLong);
+  public abstract Boolean isGameLiving(String paramString, int paramInt);
+  
+  public abstract void setLiveInfoEvent(Boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelive.d
  * JD-Core Version:    0.7.0.1
  */

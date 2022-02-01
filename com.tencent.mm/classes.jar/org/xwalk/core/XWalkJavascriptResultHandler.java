@@ -1,7 +1,6 @@
 package org.xwalk.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
 
 public class XWalkJavascriptResultHandler
   implements XWalkJavascriptResult
@@ -10,10 +9,7 @@ public class XWalkJavascriptResultHandler
   private ReflectMethod cancelMethod;
   private ReflectMethod confirmMethod;
   private ReflectMethod confirmWithResultStringMethod;
-  private ArrayList<Object> constructorParams;
-  private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
-  private ReflectMethod postWrapperMethod;
   
   public XWalkJavascriptResultHandler(Object paramObject)
   {
@@ -24,6 +20,22 @@ public class XWalkJavascriptResultHandler
     this.bridge = paramObject;
     reflectionInit();
     AppMethodBeat.o(154761);
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154765);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154765);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.confirmMethod.init(this.bridge, null, "confirmSuper", new Class[0]);
+    this.confirmWithResultStringMethod.init(this.bridge, null, "confirmWithResultSuper", new Class[] { String.class });
+    this.cancelMethod.init(this.bridge, null, "cancelSuper", new Class[0]);
+    AppMethodBeat.o(154765);
   }
   
   public void cancel()
@@ -98,27 +110,10 @@ public class XWalkJavascriptResultHandler
   {
     return this.bridge;
   }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154765);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154765);
-      return;
-    }
-    this.confirmMethod.init(this.bridge, null, "confirmSuper", new Class[0]);
-    this.confirmWithResultStringMethod.init(this.bridge, null, "confirmWithResultSuper", new Class[] { String.class });
-    this.cancelMethod.init(this.bridge, null, "cancelSuper", new Class[0]);
-    AppMethodBeat.o(154765);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkJavascriptResultHandler
  * JD-Core Version:    0.7.0.1
  */

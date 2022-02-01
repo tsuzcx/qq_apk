@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.finder.view.FlowTextMixView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jyd" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@drawable/b1g" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/df"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/gsd" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="14.0dip" android:textColor="@color/ait" android:id="@id/gsc" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/cc3" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <View android:background="@color/ait" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/ait" android:id="@id/cbj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/khc" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <View android:background="@color/ait" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/ait" android:id="@id/kid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d68" />
-    </LinearLayout>
-</com.tencent.mm.plugin.finder.view.FlowTextMixView>
+    <ImageView android:id="@id/lae" android:background="@drawable/b1f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/ldz" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="10.0dip" android:src="@raw/icons_filled_call" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff07c160" android:gravity="center_horizontal" android:id="@id/le0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="00:00" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="12.0dip" android:textColor="#ff07c160" android:id="@id/le1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="00:00" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

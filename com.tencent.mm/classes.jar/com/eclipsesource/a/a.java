@@ -5,20 +5,20 @@ import java.io.IOException;
 
 public final class a
 {
-  public static final h aIY;
-  public static final h aIZ;
-  public static final h aJa;
+  public static final h cBJ;
+  public static final h cBK;
+  public static final h cBL;
   
   static
   {
     AppMethodBeat.i(74683);
-    aIY = new c("null");
-    aIZ = new c("true");
-    aJa = new c("false");
+    cBJ = new c("null");
+    cBK = new c("true");
+    cBL = new c("false");
     AppMethodBeat.o(74683);
   }
   
-  public static h N(float paramFloat)
+  public static h aO(float paramFloat)
   {
     AppMethodBeat.i(74678);
     if ((Float.isInfinite(paramFloat)) || (Float.isNaN(paramFloat)))
@@ -27,25 +27,33 @@ public final class a
       AppMethodBeat.o(74678);
       throw ((Throwable)localObject);
     }
-    Object localObject = new d(bc(Float.toString(paramFloat)));
+    Object localObject = new d(cp(Float.toString(paramFloat)));
     AppMethodBeat.o(74678);
     return localObject;
   }
   
-  public static h aJ(boolean paramBoolean)
+  public static h bH(long paramLong)
   {
-    if (paramBoolean) {
-      return aIZ;
-    }
-    return aJa;
+    AppMethodBeat.i(74677);
+    d locald = new d(Long.toString(paramLong, 10));
+    AppMethodBeat.o(74677);
+    return locald;
   }
   
-  public static h ba(String paramString)
+  public static h bs(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return cBK;
+    }
+    return cBL;
+  }
+  
+  public static h cn(String paramString)
   {
     AppMethodBeat.i(74680);
     if (paramString == null)
     {
-      paramString = aIY;
+      paramString = cBJ;
       AppMethodBeat.o(74680);
       return paramString;
     }
@@ -54,7 +62,7 @@ public final class a
     return paramString;
   }
   
-  public static h bb(String paramString)
+  public static h co(String paramString)
   {
     AppMethodBeat.i(74681);
     if (paramString == null)
@@ -67,13 +75,13 @@ public final class a
     try
     {
       paramString = new f(paramString);
-      paramString.qm();
-      paramString.ql();
-      localh = paramString.pX();
-      paramString.ql();
-      if (!paramString.qt())
+      paramString.Px();
+      paramString.Pw();
+      localh = paramString.Pi();
+      paramString.Pw();
+      if (!paramString.PE())
       {
-        paramString = paramString.bh("Unexpected character");
+        paramString = paramString.cu("Unexpected character");
         AppMethodBeat.o(74681);
         throw paramString;
       }
@@ -88,7 +96,7 @@ public final class a
     return localh;
   }
   
-  private static String bc(String paramString)
+  private static String cp(String paramString)
   {
     AppMethodBeat.i(74682);
     if (paramString.endsWith(".0"))
@@ -101,7 +109,15 @@ public final class a
     return paramString;
   }
   
-  public static h c(double paramDouble)
+  public static h he(int paramInt)
+  {
+    AppMethodBeat.i(74676);
+    d locald = new d(Integer.toString(paramInt, 10));
+    AppMethodBeat.o(74676);
+    return locald;
+  }
+  
+  public static h r(double paramDouble)
   {
     AppMethodBeat.i(74679);
     if ((Double.isInfinite(paramDouble)) || (Double.isNaN(paramDouble)))
@@ -110,30 +126,14 @@ public final class a
       AppMethodBeat.o(74679);
       throw ((Throwable)localObject);
     }
-    Object localObject = new d(bc(Double.toString(paramDouble)));
+    Object localObject = new d(cp(Double.toString(paramDouble)));
     AppMethodBeat.o(74679);
     return localObject;
-  }
-  
-  public static h dO(int paramInt)
-  {
-    AppMethodBeat.i(74676);
-    d locald = new d(Integer.toString(paramInt, 10));
-    AppMethodBeat.o(74676);
-    return locald;
-  }
-  
-  public static h u(long paramLong)
-  {
-    AppMethodBeat.i(74677);
-    d locald = new d(Long.toString(paramLong, 10));
-    AppMethodBeat.o(74677);
-    return locald;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.eclipsesource.a.a
  * JD-Core Version:    0.7.0.1
  */

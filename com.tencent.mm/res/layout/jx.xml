@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:importantForAccessibility="no"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/jj" />
+    <ViewStub android:id="@id/l9m" android:layout="@layout/kx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" />
+    <ViewStub android:id="@id/l96" android:layout="@layout/jo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" />
+    <ViewStub android:id="@id/l9g" android:layout="@layout/jt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" />
+    <ViewStub android:id="@id/l97" android:layout="@layout/jp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" />
+    <ViewStub android:id="@id/l99" android:layout="@layout/jq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/l9k" android:layout="@layout/jw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" />
+    <ViewStub android:id="@id/l9p" android:layout="@layout/jy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" />
+    <LinearLayout android:orientation="vertical" android:id="@id/abf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

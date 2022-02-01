@@ -1,107 +1,68 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.a;
-import kotlin.d.f;
-import kotlin.d.f.b;
-import kotlin.d.f.b.a;
-import kotlin.d.f.c;
-import kotlin.g.a.m;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.ResultKt;
+import kotlin.ah;
+import kotlin.d.b.a.e;
+import kotlin.d.d;
+import kotlin.g.a.b;
+import kotlinx.coroutines.internal.ab;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CoroutineId;", "Lkotlinx/coroutines/ThreadContextElement;", "", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "id", "", "(J)V", "getId", "()J", "component1", "copy", "equals", "", "other", "", "hashCode", "", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "toString", "updateThreadContext", "Key", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"recoverResult", "Lkotlin/Result;", "T", "state", "", "uCont", "Lkotlin/coroutines/Continuation;", "(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "toState", "onCancellation", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "caller", "Lkotlinx/coroutines/CancellableContinuation;", "(Ljava/lang/Object;Lkotlinx/coroutines/CancellableContinuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
 public final class ai
-  extends a
-  implements cu<String>
 {
-  public static final a abwy;
-  final long id;
-  
-  static
+  public static final <T> Object e(Object paramObject, d<? super T> paramd)
   {
-    AppMethodBeat.i(118241);
-    abwy = new a((byte)0);
-    AppMethodBeat.o(118241);
-  }
-  
-  public ai(long paramLong)
-  {
-    super((f.c)abwy);
-    AppMethodBeat.i(118240);
-    this.id = paramLong;
-    AppMethodBeat.o(118240);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (this != paramObject)
+    AppMethodBeat.i(188892);
+    if ((paramObject instanceof ae))
     {
-      if ((paramObject instanceof ai))
+      Object localObject = Result.Companion;
+      localObject = ((ae)paramObject).cause;
+      paramObject = localObject;
+      if (au.ajvP) {
+        if ((paramd instanceof e)) {
+          break label56;
+        }
+      }
+      label56:
+      for (paramObject = localObject;; paramObject = ab.a((Throwable)localObject, (e)paramd))
       {
-        paramObject = (ai)paramObject;
-        if (this.id != paramObject.id) {}
+        paramObject = Result.constructor-impl(ResultKt.createFailure(paramObject));
+        AppMethodBeat.o(188892);
+        return paramObject;
       }
     }
-    else {
-      return true;
+    paramd = Result.Companion;
+    paramObject = Result.constructor-impl(paramObject);
+    AppMethodBeat.o(188892);
+    return paramObject;
+  }
+  
+  public static final <T> Object e(Object paramObject, b<? super Throwable, ah> paramb)
+  {
+    AppMethodBeat.i(188887);
+    Throwable localThrowable = Result.exceptionOrNull-impl(paramObject);
+    if (localThrowable == null)
+    {
+      if (paramb != null)
+      {
+        paramObject = new af(paramObject, paramb);
+        AppMethodBeat.o(188887);
+        return paramObject;
+      }
+      AppMethodBeat.o(188887);
+      return paramObject;
     }
-    return false;
+    paramObject = new ae(localThrowable);
+    AppMethodBeat.o(188887);
+    return paramObject;
   }
-  
-  public final <R> R fold(R paramR, m<? super R, ? super f.b, ? extends R> paramm)
-  {
-    AppMethodBeat.i(118242);
-    paramR = f.b.a.a((f.b)this, paramR, paramm);
-    AppMethodBeat.o(118242);
-    return paramR;
-  }
-  
-  public final <E extends f.b> E get(f.c<E> paramc)
-  {
-    AppMethodBeat.i(118243);
-    paramc = f.b.a.a((f.b)this, paramc);
-    AppMethodBeat.o(118243);
-    return paramc;
-  }
-  
-  public final int hashCode()
-  {
-    long l = this.id;
-    return (int)(l ^ l >>> 32);
-  }
-  
-  public final f minusKey(f.c<?> paramc)
-  {
-    AppMethodBeat.i(118244);
-    paramc = f.b.a.b((f.b)this, paramc);
-    AppMethodBeat.o(118244);
-    return paramc;
-  }
-  
-  public final f plus(f paramf)
-  {
-    AppMethodBeat.i(118245);
-    paramf = f.b.a.a((f.b)this, paramf);
-    AppMethodBeat.o(118245);
-    return paramf;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118237);
-    String str = "CoroutineId(" + this.id + ')';
-    AppMethodBeat.o(118237);
-    return str;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CoroutineId$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/CoroutineId;", "()V", "kotlinx-coroutines-core"})
-  public static final class a
-    implements f.c<ai>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.ai
  * JD-Core Version:    0.7.0.1
  */

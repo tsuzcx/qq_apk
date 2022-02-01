@@ -8,44 +8,41 @@ import java.util.List;
 final class b
   implements d
 {
-  public static final b bmT;
-  private final List<com.google.android.exoplayer2.f.a> bkh;
+  public static final b dgO;
+  private final List<com.google.android.exoplayer2.f.a> deb;
   
   static
   {
     AppMethodBeat.i(92875);
-    bmT = new b();
+    dgO = new b();
     AppMethodBeat.o(92875);
   }
   
   private b()
   {
     AppMethodBeat.i(92872);
-    this.bkh = Collections.emptyList();
+    this.deb = Collections.emptyList();
     AppMethodBeat.o(92872);
   }
   
   public b(com.google.android.exoplayer2.f.a parama)
   {
     AppMethodBeat.i(92871);
-    this.bkh = Collections.singletonList(parama);
+    this.deb = Collections.singletonList(parama);
     AppMethodBeat.o(92871);
   }
   
-  public final int al(long paramLong)
+  public final int TD()
   {
-    if (paramLong < 0L) {
-      return 0;
-    }
-    return -1;
+    return 1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> am(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> cA(long paramLong)
   {
     AppMethodBeat.i(92874);
     if (paramLong >= 0L)
     {
-      localList = this.bkh;
+      localList = this.deb;
       AppMethodBeat.o(92874);
       return localList;
     }
@@ -54,7 +51,15 @@ final class b
     return localList;
   }
   
-  public final long eX(int paramInt)
+  public final int cz(long paramLong)
+  {
+    if (paramLong < 0L) {
+      return 0;
+    }
+    return -1;
+  }
+  
+  public final long in(int paramInt)
   {
     AppMethodBeat.i(92873);
     if (paramInt == 0) {}
@@ -64,11 +69,6 @@ final class b
       AppMethodBeat.o(92873);
       return 0L;
     }
-  }
-  
-  public final int ua()
-  {
-    return 1;
   }
 }
 

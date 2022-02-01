@@ -1,157 +1,116 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.view.MenuItem;
+import android.os.Bundle;
+import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.d;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.f.a.uw;
-import com.tencent.mm.f.a.uw.a;
-import com.tencent.mm.f.a.uz;
-import com.tencent.mm.ipcinvoker.s;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.plugin.webview.c.h;
-import com.tencent.mm.plugin.webview.c.i;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.n;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.widget.a.e.b;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import org.json.JSONObject;
 
 public class bk
-  extends bs<com.tencent.mm.plugin.webview.luggage.g>
+  extends bw<g>
 {
-  public final void a(final Context paramContext, final String paramString, final br.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(259491);
-    s.y(new Runnable()
+    AppMethodBeat.i(78625);
+    Log.i("MicroMsg.JsApiSetNavigationBarButtons", "invokeInOwn");
+    Object localObject1 = paramb.eiZ.eif.optString("left");
+    Object localObject2 = paramb.eiZ.eif.optString("right");
+    if ((Util.isNullOrNil((String)localObject1)) && (Util.isNullOrNil((String)localObject2)))
     {
-      /* Error */
-      public final void run()
-      {
-        // Byte code:
-        //   0: ldc 45
-        //   2: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: new 53	org/json/JSONObject
-        //   8: dup
-        //   9: aload_0
-        //   10: getfield 31	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1:osn	Ljava/lang/String;
-        //   13: invokespecial 56	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-        //   16: astore_3
-        //   17: aload_3
-        //   18: ldc 58
-        //   20: invokevirtual 62	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-        //   23: astore 4
-        //   25: ldc 64
-        //   27: astore_2
-        //   28: aload_2
-        //   29: astore_1
-        //   30: aload 4
-        //   32: ifnull +14 -> 46
-        //   35: aload 4
-        //   37: invokevirtual 68	org/json/JSONObject:toString	()Ljava/lang/String;
-        //   40: ldc 70
-        //   42: invokestatic 76	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-        //   45: astore_1
-        //   46: new 78	com/tencent/mm/ui/widget/a/e
-        //   49: dup
-        //   50: aload_0
-        //   51: getfield 35	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1:val$context	Landroid/content/Context;
-        //   54: iconst_0
-        //   55: iconst_0
-        //   56: invokespecial 81	com/tencent/mm/ui/widget/a/e:<init>	(Landroid/content/Context;IZ)V
-        //   59: astore_2
-        //   60: aload_2
-        //   61: new 13	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$1
-        //   64: dup
-        //   65: aload_0
-        //   66: invokespecial 84	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$1:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bk$1;)V
-        //   69: putfield 88	com/tencent/mm/ui/widget/a/e:ODT	Lcom/tencent/mm/ui/base/q$f;
-        //   72: aload_2
-        //   73: new 15	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$2
-        //   76: dup
-        //   77: aload_0
-        //   78: aload_3
-        //   79: aload_1
-        //   80: aload_2
-        //   81: invokespecial 91	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$2:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bk$1;Lorg/json/JSONObject;Ljava/lang/String;Lcom/tencent/mm/ui/widget/a/e;)V
-        //   84: putfield 95	com/tencent/mm/ui/widget/a/e:ODU	Lcom/tencent/mm/ui/base/q$g;
-        //   87: aload_2
-        //   88: new 17	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$3
-        //   91: dup
-        //   92: aload_0
-        //   93: aload_1
-        //   94: invokespecial 98	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1$3:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bk$1;Ljava/lang/String;)V
-        //   97: putfield 102	com/tencent/mm/ui/widget/a/e:XbB	Lcom/tencent/mm/ui/widget/a/e$b;
-        //   100: aload_2
-        //   101: invokevirtual 105	com/tencent/mm/ui/widget/a/e:eik	()V
-        //   104: ldc 45
-        //   106: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   109: return
-        //   110: astore_1
-        //   111: ldc 110
-        //   113: aload_1
-        //   114: ldc 64
-        //   116: iconst_0
-        //   117: anewarray 4	java/lang/Object
-        //   120: invokestatic 116	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   123: aload_0
-        //   124: getfield 33	com/tencent/mm/plugin/webview/luggage/jsapi/bk$1:CAJ	Lcom/tencent/mm/plugin/webview/luggage/jsapi/br$a;
-        //   127: aconst_null
-        //   128: aconst_null
-        //   129: invokevirtual 121	com/tencent/mm/plugin/webview/luggage/jsapi/br$a:i	(Ljava/lang/String;Lorg/json/JSONObject;)V
-        //   132: ldc 45
-        //   134: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   137: return
-        //   138: astore_1
-        //   139: aload_2
-        //   140: astore_1
-        //   141: goto -95 -> 46
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	144	0	this	1
-        //   29	65	1	localObject1	Object
-        //   110	4	1	localJSONException	org.json.JSONException
-        //   138	1	1	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
-        //   140	1	1	localObject2	Object
-        //   27	113	2	localObject3	Object
-        //   16	63	3	localJSONObject1	JSONObject
-        //   23	13	4	localJSONObject2	JSONObject
-        // Exception table:
-        //   from	to	target	type
-        //   5	17	110	org/json/JSONException
-        //   35	46	138	java/io/UnsupportedEncodingException
+      paramb.a("fail", null);
+      AppMethodBeat.o(78625);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    try
+    {
+      localObject3 = new JSONObject((String)localObject1);
+      str1 = aa.brW(((JSONObject)localObject3).optString("wxcolor", ""));
+      localObject1 = str1;
+      if (Util.isNullOrNil(str1)) {
+        localObject1 = ((JSONObject)localObject3).optString("color", "");
       }
-    });
-    AppMethodBeat.o(259491);
+      if (!Util.isNullOrNil((String)localObject1)) {
+        localBundle.putString("set_navigation_bar_buttons_left_text_color", (String)localObject1);
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        Object localObject3;
+        String str1;
+        boolean bool1;
+        String str2;
+        boolean bool2;
+        label276:
+        Log.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException1, "setNavigationBarButtons opt left ", new Object[0]);
+        continue;
+        label315:
+        localBundle.putBoolean("set_navigation_bar_buttons_hide_right_button", true);
+      }
+    }
+    try
+    {
+      localObject2 = new JSONObject((String)localObject2);
+      bool1 = ((JSONObject)localObject2).optBoolean("hidden", false);
+      localObject3 = ((JSONObject)localObject2).optString("text", "");
+      str2 = Util.nullAsNil(aa.brT(((JSONObject)localObject2).optString("iconData", "")));
+      str1 = aa.brW(((JSONObject)localObject2).optString("wxcolor", ""));
+      localObject1 = str1;
+      if (Util.isNullOrNil(str1)) {
+        localObject1 = ((JSONObject)localObject2).optString("color", "");
+      }
+      bool2 = ((JSONObject)localObject2).optBoolean("needClickEvent", false);
+      if (bool1) {
+        break label315;
+      }
+      localBundle.putString("set_navigation_bar_buttons_text", (String)localObject3);
+      localBundle.putString("set_navigation_bar_buttons_icon_data", str2);
+      localBundle.putString("set_navigation_bar_buttons_text_color", (String)localObject1);
+      localBundle.putBoolean("set_navigation_bar_buttons_need_click_event", bool2);
+    }
+    catch (Exception localException2)
+    {
+      Log.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException2, "setNavigationBarButtons opt right ", new Object[0]);
+      break label276;
+      n localn = ((g)paramb.eiY).iuf();
+      if (localn != null) {
+        break label374;
+      }
+      paramb.a("fail", null);
+      AppMethodBeat.o(78625);
+      return;
+      label374:
+      localn.setNavigationBarButtons(localBundle);
+      paramb.a("", null);
+      AppMethodBeat.o(78625);
+    }
+    if (localBundle.size() < 0)
+    {
+      paramb.a("fail", null);
+      AppMethodBeat.o(78625);
+      return;
+    }
   }
   
-  public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
-  
-  public final int cDj()
+  public final int dgI()
   {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "shareCustomContent";
+    return "setNavigationBarButtons";
   }
 }
 

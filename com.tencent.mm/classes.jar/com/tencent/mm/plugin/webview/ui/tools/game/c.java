@@ -4,42 +4,42 @@ import android.content.ComponentName;
 import android.net.Uri;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.f.g;
+import com.tencent.mm.plugin.webview.e.g;
 import com.tencent.mm.plugin.webview.model.al;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.plugin.webview.stub.e.a;
-import com.tencent.mm.plugin.webview.ui.tools.widget.k;
-import com.tencent.mm.plugin.webview.ui.tools.widget.k.a;
-import com.tencent.mm.plugin.webview.ui.tools.widget.k.c;
+import com.tencent.mm.plugin.webview.ui.tools.widget.n;
+import com.tencent.mm.plugin.webview.ui.tools.widget.n.a;
+import com.tencent.mm.plugin.webview.ui.tools.widget.n.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.MMWebView;
 
 public class c
-  extends k
+  extends n
 {
   public c(MMWebView paramMMWebView)
   {
     super(paramMMWebView, (byte)0);
     AppMethodBeat.i(80849);
-    this.Qxc = new a((byte)0);
+    this.XpW = new a((byte)0);
     AppMethodBeat.o(80849);
   }
   
-  public boolean bmE(String paramString)
+  public boolean bmi(String paramString)
   {
     AppMethodBeat.i(80850);
-    boolean bool = super.bmE(paramString);
+    boolean bool = super.bmi(paramString);
     AppMethodBeat.o(80850);
     return bool;
   }
   
-  public void hax()
+  public void iAK()
   {
     AppMethodBeat.i(80851);
     try
     {
-      this.Qnq.a(this.QwQ, true, null);
-      if (bnk(this.QwQ))
+      this.XfE.a(this.XpK, true, null);
+      if (bmR(this.XpK))
       {
         AppMethodBeat.o(80851);
         return;
@@ -51,64 +51,64 @@ public class c
       {
         Log.w("MicroMsg.GameFloatWebViewClient", "postBinded, jumpToActivity, ex = " + localException.getMessage());
       }
-      Uri localUri = Uri.parse(this.QwQ);
+      Uri localUri = Uri.parse(this.XpK);
       Object localObject = localUri;
       if (localUri.getScheme() == null)
       {
-        this.QwQ += "http://";
-        localObject = Uri.parse(this.QwQ);
+        this.XpK += "http://";
+        localObject = Uri.parse(this.XpK);
       }
       if (((Uri)localObject).getScheme().startsWith("http"))
       {
         Log.i("MicroMsg.GameFloatWebViewClient", "uri scheme not startwith http, scheme = " + ((Uri)localObject).getScheme());
-        if (this.QwW) {}
-        for (localObject = "";; localObject = this.QwQ)
+        if (this.XpQ) {}
+        for (localObject = "";; localObject = this.XpK)
         {
-          this.QwO = new k.a((String)localObject);
-          this.QwW = false;
-          if ((!this.QwK) && (!this.pIm.has(this.QwQ))) {
+          this.XpI = new n.a((String)localObject);
+          this.XpQ = false;
+          if ((!this.XpE) && (!this.sNd.has(this.XpK))) {
             break label299;
           }
-          if (al.bkB(this.QwQ)) {
+          if (al.bkm(this.XpK)) {
             break;
           }
-          Log.f("MicroMsg.GameFloatWebViewClient", "loadInitialUrl, canLoadUrl fail, url = " + this.QwQ);
-          bmF(this.QwQ);
+          Log.f("MicroMsg.GameFloatWebViewClient", "loadInitialUrl, canLoadUrl fail, url = " + this.XpK);
+          bmj(this.XpK);
           AppMethodBeat.o(80851);
           return;
         }
-        if (bmD(this.QwQ))
+        if (bmh(this.XpK))
         {
-          aJy(this.QwQ);
+          aGm(this.XpK);
           AppMethodBeat.o(80851);
           return;
         }
-        this.lxa.loadUrl(this.QwQ);
+        this.ooz.loadUrl(this.XpK);
         AppMethodBeat.o(80851);
         return;
         label299:
-        if (bmD(this.QwQ))
+        if (bmh(this.XpK))
         {
-          aJy(this.QwQ);
-          this.QwR = this.QwQ;
+          aGm(this.XpK);
+          this.XpL = this.XpK;
         }
-        ax(this.QwQ, false);
+        aJ(this.XpK, false);
         AppMethodBeat.o(80851);
         return;
       }
-      if (!al.bkB(this.QwQ))
+      if (!al.bkm(this.XpK))
       {
-        bmF(this.QwQ);
+        bmj(this.XpK);
         AppMethodBeat.o(80851);
         return;
       }
-      this.lxa.loadUrl(this.QwQ);
+      this.ooz.loadUrl(this.XpK);
       AppMethodBeat.o(80851);
     }
   }
   
   final class a
-    extends k.c
+    extends n.c
   {
     private a()
     {
@@ -127,11 +127,11 @@ public class c
       }
       try
       {
-        c.a(c.this, e.a.L(paramIBinder));
+        c.a(c.this, e.a.Q(paramIBinder));
         c.d(c.this).a(c.b(c.this), c.c(c.this).hashCode());
         c.e(c.this);
         c.a(c.this, c.f(c.this), c.g(c.this));
-        c.this.hax();
+        c.this.iAK();
         AppMethodBeat.o(80847);
         return;
       }

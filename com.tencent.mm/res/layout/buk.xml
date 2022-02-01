@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bf6" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:background="@drawable/p5" android:paddingLeft="@dimen/br" style="@style/mj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper android:id="@id/j6y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/imb" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/glr" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/a61" />
-    <ImageView android:id="@id/i59" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <TextView android:textSize="@dimen/kc" android:textColor="@color/ag2" android:gravity="center" android:id="@id/c4k" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:alpha="0.8" />
-    <View android:id="@id/hw6" android:background="@color/by" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/g9_" android:background="@drawable/anx" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="35.0dip" android:layout_centerInParent="true">
-        <ImageView android:id="@id/g9a" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="10.0dip" android:src="@raw/pause_video_icon" android:layout_centerVertical="true" />
-        <TextView android:textSize="12.0dip" android:textColor="@android:color/white" android:gravity="center" android:id="@id/g9b" android:layout_width="40.0dip" android:layout_height="17.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="已暂停" android:includeFontPadding="false" android:layout_toRightOf="@id/g9a" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:layout_alignParentBottom="true">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/hw8" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="10.0dip" android:src="@raw/icon_volume_off" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/hw7" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/icon_video_full_screen" android:scaleType="centerCrop" android:layout_toLeftOf="@id/hw8" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>
+    <ImageView android:id="@id/bqn" android:background="@raw/default_avatar" android:layout_width="@dimen/i" android:layout_height="@dimen/i" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/b7q" android:paddingRight="@dimen/cp" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/br" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:id="@id/c7j" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/m4" />
+        </LinearLayout>
+        <TextView android:id="@id/j1b" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/m6" />
+    </LinearLayout>
+</LinearLayout>

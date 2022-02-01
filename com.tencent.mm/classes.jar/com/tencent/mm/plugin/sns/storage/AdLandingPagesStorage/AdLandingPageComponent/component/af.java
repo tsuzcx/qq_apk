@@ -1,128 +1,125 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
-import android.text.TextUtils;
+import android.graphics.Paint;
+import android.util.TypedValue;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ag;
-import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import org.json.JSONObject;
-import org.xwalk.core.Log;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.k;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class af
-  extends m
-  implements View.OnClickListener
+  extends n
 {
-  private WeImageView KsZ;
-  private int Kta = 0;
-  private Context mContext;
-  private TextView rR;
+  private RelativeLayout QRi;
+  ImageView QRj;
+  TextView dyR;
   
-  public af(Context paramContext, ag paramag, ViewGroup paramViewGroup)
+  public af(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af paramaf, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramag, paramViewGroup);
-    this.mContext = paramContext;
+    super(paramContext, paramaf, paramViewGroup);
+    this.QOV = paramaf;
   }
   
-  public final boolean by(JSONObject paramJSONObject)
+  public final void Gs()
   {
-    AppMethodBeat.i(219228);
-    if (!super.by(paramJSONObject))
-    {
-      AppMethodBeat.o(219228);
-      return false;
-    }
-    try
-    {
-      paramJSONObject.put("clickCount", this.Kta);
-      AppMethodBeat.o(219228);
-      return true;
-    }
-    catch (Exception paramJSONObject)
-    {
-      Log.e("MicroMsg.Sns.AdLandingPageShareComponent", "setComponentKVReportData exp=" + paramJSONObject.toString());
-      AppMethodBeat.o(219228);
-    }
-    return false;
-  }
-  
-  protected final void fKe()
-  {
-    AppMethodBeat.i(219222);
-    ag localag = (ag)this.KqB;
-    this.rR.setText(localag.Kne);
-    if (!TextUtils.isEmpty(localag.KlM)) {
-      try
-      {
-        int i = Color.parseColor(localag.KlM);
-        this.rR.setTextColor(i);
-        this.KsZ.setIconColor(i);
-        AppMethodBeat.o(219222);
-        return;
-      }
-      catch (Exception localException)
-      {
-        Log.e("MicroMsg.Sns.AdLandingPageShareComponent", "parseColor exp=" + localException.toString());
-      }
-    }
-    AppMethodBeat.o(219222);
-  }
-  
-  protected final void fKi()
-  {
-    AppMethodBeat.i(219221);
-    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.KqB.paddingLeft, (int)this.KqB.paddingTop, (int)this.KqB.paddingRight, (int)this.KqB.paddingBottom);
-    }
-    this.contentView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(219221);
-  }
-  
-  public final void fKp()
-  {
-    AppMethodBeat.i(219224);
+    AppMethodBeat.i(96680);
     View localView = this.contentView;
-    this.rR = ((TextView)localView.findViewById(i.f.txt));
-    this.KsZ = ((WeImageView)localView.findViewById(i.f.icon));
-    localView.setOnClickListener(this);
-    AppMethodBeat.o(219224);
+    localView.setBackgroundColor(this.backgroundColor);
+    this.dyR = ((TextView)localView.findViewById(b.f.sns_ad_landingpage_processbar_label));
+    this.QRi = ((RelativeLayout)localView.findViewById(b.f.sns_ad_landingpage_processbar_bg));
+    this.QRj = ((ImageView)localView.findViewById(b.f.sns_ad_landingpage_processbar_front));
+    AppMethodBeat.o(96680);
   }
   
   protected final int getLayout()
   {
-    return i.g.sns_ad_native_landing_pages_item_share_comp;
+    return b.g.sns_ad_native_landing_pages_item_process_bar;
   }
   
-  public final void onClick(View paramView)
+  protected final void had()
   {
-    AppMethodBeat.i(219226);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageShareComponent", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.Kta += 1;
-    if ((this.mContext instanceof SnsAdNativeLandingPagesUI)) {
-      ((SnsAdNativeLandingPagesUI)this.mContext).fVf();
+    AppMethodBeat.i(96679);
+    this.dyR.setText(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af)this.QOV).label);
+    this.dyR.setTextSize(0, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af)this.QOV).fontSize);
+    if ((((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af)this.QOV).qWk != null) && (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af)this.QOV).qWk.length() > 0))
+    {
+      int i = Color.parseColor(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af)this.QOV).qWk);
+      this.QRi.setBackgroundColor(i);
     }
-    a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageShareComponent", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(219226);
+    k.b("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af)this.QOV).QLi, new g.a()
+    {
+      public final void aWn(String paramAnonymousString)
+      {
+        AppMethodBeat.i(96677);
+        try
+        {
+          paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString);
+          af.this.QRj.setImageBitmap(paramAnonymousString);
+          paramAnonymousString = af.this.dyR;
+          Paint localPaint = new Paint();
+          String str = paramAnonymousString.getText().toString();
+          localPaint.setTextSize(paramAnonymousString.getTextSize());
+          float f = localPaint.measureText(str, 0, str.length());
+          f = af.this.QOV.QKI - f - TypedValue.applyDimension(1, 3.0F, af.this.context.getResources().getDisplayMetrics());
+          int i = (int)(f - ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af)af.this.QOV).value * f);
+          paramAnonymousString = (RelativeLayout.LayoutParams)af.this.QRj.getLayoutParams();
+          paramAnonymousString.setMargins(paramAnonymousString.leftMargin, paramAnonymousString.topMargin, i, paramAnonymousString.leftMargin);
+          af.this.QRj.setLayoutParams(paramAnonymousString);
+          AppMethodBeat.o(96677);
+          return;
+        }
+        catch (Exception paramAnonymousString)
+        {
+          Log.e("MicroMsg.Sns.AdLandingPageProcessBarComponent", "%s" + Util.stackTraceToString(paramAnonymousString));
+          AppMethodBeat.o(96677);
+        }
+      }
+      
+      public final void gZM() {}
+      
+      public final void gZN() {}
+    });
+    AppMethodBeat.o(96679);
+  }
+  
+  public final void hao()
+  {
+    AppMethodBeat.i(96681);
+    super.hao();
+    AppMethodBeat.o(96681);
+  }
+  
+  public final void hap()
+  {
+    AppMethodBeat.i(96682);
+    super.hap();
+    AppMethodBeat.o(96682);
+  }
+  
+  public final void has()
+  {
+    AppMethodBeat.i(96678);
+    super.has();
+    AppMethodBeat.o(96678);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.af
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/iq8" android:background="@color/al2" android:paddingLeft="@dimen/i9" android:paddingRight="@dimen/i9" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.videocomposition.effect.EffectRenderView android:id="@id/kdj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iqh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <ImageView android:id="@id/iqb" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginEnd="@dimen/df" />
+        <com.tencent.mm.ui.widget.EllipsizeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="20.0dip">
+            <TextView android:textSize="@dimen/hn" android:textStyle="bold" android:textColor="@color/gg" android:ellipsize="end" android:id="@id/iqd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_centerVertical="true" android:layout_marginEnd="10.0dip" />
+            <TextView android:textSize="@dimen/hn" android:textColor="@color/a7b" android:id="@id/iq6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a7o" android:maxLines="1" android:layout_centerVertical="true" />
+        </com.tencent.mm.ui.widget.EllipsizeLayout>
+    </LinearLayout>
+    <TextView android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/a7b" android:id="@id/iq_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a8_" android:maxLines="2" />
+    <FrameLayout android:orientation="vertical" android:id="@id/iq9" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/cp">
+        <ImageView android:layout_gravity="top" android:layout_width="fill_parent" style="@style/i7" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/hvo" android:layout_width="fill_parent" android:layout_height="@dimen/d6">
+            <TextView android:textSize="@dimen/l" android:textColor="@color/a7b" android:id="@id/hvm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="15.0dip" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/xo" android:id="@id/hvn" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a89" android:layout_weight="1.0" android:layout_marginEnd="@dimen/cp" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="bottom" android:layout_width="fill_parent" style="@style/i7" />
+    </FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/aoi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/uo" android:layout_marginBottom="@dimen/um">
+            <Button android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/a7b" android:id="@id/iq7" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/a8h" android:layout_weight="1.0" style="@style/op" />
+            <View android:layout_width="18.0dip" android:layout_height="fill_parent" />
+            <Button android:textSize="@dimen/l" android:id="@id/iqe" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/a8g" android:layout_weight="1.0" style="@style/oh" />
+        </LinearLayout>
+        <Button android:layout_gravity="center_horizontal" android:id="@id/aoj" android:visibility="gone" android:layout_marginTop="@dimen/uo" android:layout_marginBottom="@dimen/um" android:text="@string/zq" style="@style/op" />
+    </FrameLayout>
+</LinearLayout>

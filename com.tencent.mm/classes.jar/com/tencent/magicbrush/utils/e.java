@@ -5,33 +5,33 @@ import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/utils/ScreenCanvasZIndex;", "", "()V", "array", "Ljava/util/HashMap;", "Landroid/view/View;", "", "Lkotlin/collections/HashMap;", "insertView", "viewGroup", "Landroid/view/ViewGroup;", "view", "zIndex", "removeIndex", "", "lib-magicbrush-nano_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/magicbrush/utils/ScreenCanvasZIndex;", "", "()V", "array", "Ljava/util/HashMap;", "Landroid/view/View;", "", "Lkotlin/collections/HashMap;", "insertView", "viewGroup", "Landroid/view/ViewGroup;", "view", "zIndex", "removeIndex", "", "lib-magicbrush-nano_release"}, k=1, mv={1, 1, 16})
 public final class e
 {
-  private final HashMap<View, Integer> cQm;
+  private final HashMap<View, Integer> eLq;
   
   public e()
   {
-    AppMethodBeat.i(206193);
-    this.cQm = new HashMap();
-    AppMethodBeat.o(206193);
+    AppMethodBeat.i(228770);
+    this.eLq = new HashMap();
+    AppMethodBeat.o(228770);
   }
   
   public final int a(ViewGroup paramViewGroup, View paramView, int paramInt)
   {
-    AppMethodBeat.i(206191);
-    p.k(paramViewGroup, "viewGroup");
-    p.k(paramView, "view");
-    Integer localInteger = (Integer)this.cQm.get(paramView);
+    AppMethodBeat.i(228776);
+    s.t(paramViewGroup, "viewGroup");
+    s.t(paramView, "view");
+    Integer localInteger = (Integer)this.eLq.get(paramView);
     int i;
     int j;
     int k;
     if (localInteger == null)
     {
-      ((Map)this.cQm).put(paramView, Integer.valueOf(paramInt));
+      ((Map)this.eLq).put(paramView, Integer.valueOf(paramInt));
       int m = paramViewGroup.getChildCount();
       i = 0;
       j = 0;
@@ -41,11 +41,11 @@ public final class e
         break label148;
       }
       paramView = paramViewGroup.getChildAt(i);
-      paramView = this.cQm.get(paramView);
+      paramView = this.eLq.get(paramView);
       if (paramView == null) {
-        p.iCn();
+        s.klw();
       }
-      p.j(paramView, "array[itView]!!");
+      s.r(paramView, "array[itView]!!");
       if (paramInt >= ((Number)paramView).intValue()) {
         break label168;
       }
@@ -61,24 +61,24 @@ public final class e
       if (localInteger.intValue() != paramInt) {
         break;
       }
-      AppMethodBeat.o(206191);
+      AppMethodBeat.o(228776);
       return -2;
       if (k != 0)
       {
-        AppMethodBeat.o(206191);
+        AppMethodBeat.o(228776);
         return j;
       }
-      AppMethodBeat.o(206191);
+      AppMethodBeat.o(228776);
       return -1;
     }
   }
   
-  public final void cz(View paramView)
+  public final void cT(View paramView)
   {
-    AppMethodBeat.i(206192);
-    p.k(paramView, "view");
-    this.cQm.remove(paramView);
-    AppMethodBeat.o(206192);
+    AppMethodBeat.i(228781);
+    s.t(paramView, "view");
+    this.eLq.remove(paramView);
+    AppMethodBeat.o(228781);
   }
 }
 

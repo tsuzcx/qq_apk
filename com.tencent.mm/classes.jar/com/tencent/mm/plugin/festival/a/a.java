@@ -5,17 +5,19 @@ import android.content.Context;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract a dmu();
+  public abstract boolean dTk();
   
-  public abstract void fp(Context paramContext);
+  public abstract a dTl();
+  
+  public abstract void gn(Context paramContext);
   
   public static final class a
   {
-    public boolean gZ;
+    public long Arc;
+    public int Ard;
+    public boolean hU;
     public int liveStatus;
     public String title;
-    public long wUt;
-    public int wUu;
   }
 }
 

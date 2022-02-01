@@ -6,23 +6,15 @@ import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.common.internal.Objects.ToStringHelper;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="FeatureCreator")
 public class Feature
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<Feature> CREATOR;
-  @SafeParcelable.Field(getter="getName", id=1)
   private final String name;
   @Deprecated
-  @SafeParcelable.Field(getter="getOldVersion", id=2)
   private final int zzaq;
-  @SafeParcelable.Field(defaultValue="-1", getter="getVersion", id=3)
   private final long zzar;
   
   static
@@ -32,8 +24,7 @@ public class Feature
     AppMethodBeat.o(4378);
   }
   
-  @SafeParcelable.Constructor
-  public Feature(@SafeParcelable.Param(id=1) String paramString, @SafeParcelable.Param(id=2) int paramInt, @SafeParcelable.Param(id=3) long paramLong)
+  public Feature(String paramString, int paramInt, long paramLong)
   {
     this.name = paramString;
     this.zzaq = paramInt;
@@ -107,7 +98,7 @@ public class Feature
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.Feature
  * JD-Core Version:    0.7.0.1
  */

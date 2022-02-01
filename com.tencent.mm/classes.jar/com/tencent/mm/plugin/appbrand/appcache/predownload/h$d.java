@@ -1,29 +1,24 @@
 package com.tencent.mm.plugin.appbrand.appcache.predownload;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vending.g.d.b;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "updatedList", "", "", "kotlin.jvm.PlatformType", "", "onTerminate"})
-final class h$d<T>
-  implements d.b<List<String>>
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+final class h$d
+  extends u
+  implements a<ah>
 {
-  public static final d nJz;
-  
-  static
+  h$d(List<String> paramList)
   {
-    AppMethodBeat.i(278613);
-    nJz = new d();
-    AppMethodBeat.o(278613);
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.h.d
  * JD-Core Version:    0.7.0.1
  */

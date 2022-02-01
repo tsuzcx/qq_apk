@@ -3,31 +3,32 @@ package com.tencent.mm.emoji.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.loader.d.i.a;
-import com.tencent.mm.emoji.loader.e;
+import com.tencent.mm.emoji.b.d.h.a;
+import com.tencent.mm.emoji.b.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import kotlin.l;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/view/CoverEmojiStatusView;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "emojiInfo", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setEmojiInfo", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "gameUseCover", "", "getGameUseCover", "()Z", "setGameUseCover", "(Z)V", "status", "getStatus", "()I", "setStatus", "(I)V", "statusListener", "Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$StatusListener;", "getStatusListener", "()Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$StatusListener;", "setStatusListener", "(Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$StatusListener;)V", "destroy", "", "onDetachedFromWindow", "onResult", "success", "reload", "setStatusNotify", "Companion", "StatusListener", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/view/CoverEmojiStatusView;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "emojiInfo", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setEmojiInfo", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "gameUseCover", "", "getGameUseCover", "()Z", "setGameUseCover", "(Z)V", "status", "getStatus", "()I", "setStatus", "(I)V", "statusListener", "Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$StatusListener;", "getStatusListener", "()Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$StatusListener;", "setStatusListener", "(Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$StatusListener;)V", "destroy", "", "onDetachedFromWindow", "onResult", "success", "reload", "setStatusNotify", "Companion", "StatusListener", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class CoverEmojiStatusView
   extends BaseEmojiView
-  implements i.a
+  implements h.a
 {
-  public static final a jPH;
-  private EmojiInfo jHh;
-  private CoverEmojiStatusView.b jPF;
-  boolean jPG = true;
+  public static final CoverEmojiStatusView.a mox;
+  private EmojiInfo mgK;
+  private CoverEmojiStatusView.b moy;
+  private boolean moz = true;
   private int status;
   
   static
   {
     AppMethodBeat.i(105793);
-    jPH = new a((byte)0);
+    mox = new CoverEmojiStatusView.a((byte)0);
     AppMethodBeat.o(105793);
   }
   
@@ -41,7 +42,67 @@ public class CoverEmojiStatusView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void ep(boolean paramBoolean)
+  private static final void a(CoverEmojiStatusView paramCoverEmojiStatusView)
+  {
+    AppMethodBeat.i(242518);
+    s.u(paramCoverEmojiStatusView, "this$0");
+    Object localObject = paramCoverEmojiStatusView.getEmojiInfo();
+    if (localObject != null)
+    {
+      Log.i("MicroMsg.CoverEmojiStatusView", s.X("reload: ", ((EmojiInfo)localObject).getMd5()));
+      if ((paramCoverEmojiStatusView.moz) && ((((EmojiInfo)localObject).field_catalog == EmojiGroupInfo.aklE) || (((EmojiInfo)localObject).field_catalog == EmojiInfo.aklL) || (((EmojiInfo)localObject).field_catalog == EmojiInfo.aklK)))
+      {
+        paramCoverEmojiStatusView.setStatusNotify(1);
+        paramCoverEmojiStatusView.setImageBitmap(((EmojiInfo)localObject).F(paramCoverEmojiStatusView.getContext(), 300));
+        AppMethodBeat.o(242518);
+        return;
+      }
+      if (paramCoverEmojiStatusView.getDrawable() == null) {
+        paramCoverEmojiStatusView.setStatusNotify(0);
+      }
+      e locale = e.mgl;
+      e.a((EmojiInfo)localObject, (BaseEmojiView)paramCoverEmojiStatusView, (h.a)paramCoverEmojiStatusView);
+      AppMethodBeat.o(242518);
+      return;
+    }
+    Log.i("MicroMsg.CoverEmojiStatusView", "reload: emojiInfo is null");
+    localObject = e.mgl;
+    e.cX((View)paramCoverEmojiStatusView);
+    AppMethodBeat.o(242518);
+  }
+  
+  public EmojiInfo getEmojiInfo()
+  {
+    return this.mgK;
+  }
+  
+  public final boolean getGameUseCover()
+  {
+    return this.moz;
+  }
+  
+  public final int getStatus()
+  {
+    return this.status;
+  }
+  
+  public final CoverEmojiStatusView.b getStatusListener()
+  {
+    return this.moy;
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    AppMethodBeat.i(105792);
+    Log.i("MicroMsg.CoverEmojiStatusView", s.X("destroy: ", this));
+    e locale = e.mgl;
+    e.cX((View)this);
+    this.moy = null;
+    super.onDetachedFromWindow();
+    AppMethodBeat.o(105792);
+  }
+  
+  public void onResult(boolean paramBoolean)
   {
     AppMethodBeat.i(105791);
     if (paramBoolean) {}
@@ -53,48 +114,17 @@ public class CoverEmojiStatusView
     }
   }
   
-  public EmojiInfo getEmojiInfo()
-  {
-    return this.jHh;
-  }
-  
-  public final boolean getGameUseCover()
-  {
-    return this.jPG;
-  }
-  
-  public final int getStatus()
-  {
-    return this.status;
-  }
-  
-  public final CoverEmojiStatusView.b getStatusListener()
-  {
-    return this.jPF;
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    AppMethodBeat.i(105792);
-    Log.i("MicroMsg.CoverEmojiStatusView", "destroy: ".concat(String.valueOf(this)));
-    e locale = e.jGI;
-    e.cD((View)this);
-    this.jPF = null;
-    super.onDetachedFromWindow();
-    AppMethodBeat.o(105792);
-  }
-  
   public void setEmojiInfo(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105789);
-    this.jHh = paramEmojiInfo;
-    h.ZvG.be((Runnable)new c(this));
+    this.mgK = paramEmojiInfo;
+    h.ahAA.bm(new CoverEmojiStatusView..ExternalSyntheticLambda0(this));
     AppMethodBeat.o(105789);
   }
   
   public final void setGameUseCover(boolean paramBoolean)
   {
-    this.jPG = paramBoolean;
+    this.moz = paramBoolean;
   }
   
   public final void setStatus(int paramInt)
@@ -104,65 +134,19 @@ public class CoverEmojiStatusView
   
   public final void setStatusListener(CoverEmojiStatusView.b paramb)
   {
-    this.jPF = paramb;
+    this.moy = paramb;
   }
   
   public final void setStatusNotify(int paramInt)
   {
     AppMethodBeat.i(105790);
     this.status = paramInt;
-    CoverEmojiStatusView.b localb = this.jPF;
-    if (localb != null)
-    {
-      localb.rH(paramInt);
-      AppMethodBeat.o(105790);
-      return;
-    }
     AppMethodBeat.o(105790);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$Companion;", "", "()V", "StatusFail", "", "StatusLoading", "StatusSuccess", "plugin-emojisdk_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(CoverEmojiStatusView paramCoverEmojiStatusView) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(105788);
-      CoverEmojiStatusView localCoverEmojiStatusView = this.jPI;
-      Object localObject = localCoverEmojiStatusView.getEmojiInfo();
-      if (localObject != null)
-      {
-        Log.i("MicroMsg.CoverEmojiStatusView", "reload: " + ((EmojiInfo)localObject).getMd5());
-        if ((localCoverEmojiStatusView.jPG) && ((((EmojiInfo)localObject).hBy() == EmojiGroupInfo.YCv) || (((EmojiInfo)localObject).hBy() == EmojiInfo.YCC) || (((EmojiInfo)localObject).hBy() == EmojiInfo.YCB)))
-        {
-          localCoverEmojiStatusView.setStatusNotify(1);
-          localCoverEmojiStatusView.setImageBitmap(((EmojiInfo)localObject).C(localCoverEmojiStatusView.getContext(), 300));
-          AppMethodBeat.o(105788);
-          return;
-        }
-        if (localCoverEmojiStatusView.getDrawable() == null) {
-          localCoverEmojiStatusView.setStatusNotify(0);
-        }
-        e locale = e.jGI;
-        e.a((EmojiInfo)localObject, (BaseEmojiView)localCoverEmojiStatusView, (i.a)localCoverEmojiStatusView);
-        AppMethodBeat.o(105788);
-        return;
-      }
-      Log.i("MicroMsg.CoverEmojiStatusView", "reload: emojiInfo is null");
-      localObject = e.jGI;
-      e.cD((View)localCoverEmojiStatusView);
-      AppMethodBeat.o(105788);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.view.CoverEmojiStatusView
  * JD-Core Version:    0.7.0.1
  */

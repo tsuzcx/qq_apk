@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.c;
 
-import com.tencent.mm.plugin.appbrand.jsapi.az;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
 
 public final class b$d
-  extends az
+  extends bc
 {
   private static final int CTRL_INDEX = 349;
   private static final String NAME = "onVideoError";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.c.b.d
  * JD-Core Version:    0.7.0.1
  */

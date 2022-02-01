@@ -13,7 +13,7 @@ import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.i;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMTextView;
@@ -22,16 +22,16 @@ import java.util.ArrayList;
 public final class b
   extends BaseAdapter
 {
-  ArrayList<String> Ees;
-  SparseArray<SpannableString> Eet;
+  ArrayList<String> JWd;
+  SparseArray<SpannableString> JWe;
   private Context mContext;
-  String mTX;
+  String pQF;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(26275);
-    this.Ees = new ArrayList();
-    this.Eet = new SparseArray();
+    this.JWd = new ArrayList();
+    this.JWe = new SparseArray();
     this.mContext = paramContext;
     AppMethodBeat.o(26275);
   }
@@ -39,12 +39,12 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(26276);
-    if (this.Ees == null)
+    if (this.JWd == null)
     {
       AppMethodBeat.o(26276);
       return 0;
     }
-    int i = this.Ees.size();
+    int i = this.JWd.size();
     AppMethodBeat.o(26276);
     return i;
   }
@@ -52,12 +52,12 @@ public final class b
   public final String getItem(int paramInt)
   {
     AppMethodBeat.i(26277);
-    if ((this.Ees == null) || (paramInt >= getCount()))
+    if ((this.JWd == null) || (paramInt >= getCount()))
     {
       AppMethodBeat.o(26277);
       return null;
     }
-    String str = (String)this.Ees.get(paramInt);
+    String str = (String)this.JWd.get(paramInt);
     AppMethodBeat.o(26277);
     return str;
   }
@@ -75,14 +75,14 @@ public final class b
     int i;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(R.i.efu, paramViewGroup, false);
-      paramViewGroup = new c(paramView);
+      paramView = LayoutInflater.from(this.mContext).inflate(R.i.gip, paramViewGroup, false);
+      paramViewGroup = new e(paramView);
       paramView.setTag(paramViewGroup);
-      localMMTextView = paramViewGroup.Efc;
+      localMMTextView = paramViewGroup.JXj;
       str = Util.nullAs(getItem(paramInt), "");
-      i = (int)paramViewGroup.Efc.getTextSize();
+      i = (int)paramViewGroup.JXj.getTextSize();
       paramInt = str.hashCode();
-      paramViewGroup = (SpannableString)this.Eet.get(paramInt);
+      paramViewGroup = (SpannableString)this.JWe.get(paramInt);
       if (paramViewGroup == null) {
         break label122;
       }
@@ -92,28 +92,28 @@ public final class b
       localMMTextView.setText(paramViewGroup);
       AppMethodBeat.o(26278);
       return paramView;
-      paramViewGroup = (c)paramView.getTag();
+      paramViewGroup = (e)paramView.getTag();
       break;
       label122:
-      paramViewGroup = new SpannableString(l.d(this.mContext, str, i));
-      i = str.indexOf(this.mTX);
+      paramViewGroup = new SpannableString(p.d(this.mContext, str, i));
+      i = str.indexOf(this.pQF);
       if (i == -1)
       {
         Log.w("MicroMsg.Label.ContactLabelSearchAdapter", "hight light %s error.", new Object[] { str });
       }
       else
       {
-        int j = this.mTX.length() + i;
+        int j = this.pQF.length() + i;
         paramViewGroup.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(R.e.wechat_green)), i, j, 33);
         paramViewGroup.setSpan(new StyleSpan(1), i, j, 33);
-        this.Eet.put(paramInt, paramViewGroup);
+        this.JWe.put(paramInt, paramViewGroup);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.b
  * JD-Core Version:    0.7.0.1
  */

@@ -14,48 +14,41 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import com.tencent.mm.live.api.LiveConfig;
-import com.tencent.mm.live.b.g;
-import com.tencent.mm.live.c.a;
-import com.tencent.mm.live.c.b;
-import com.tencent.mm.live.c.b.c;
+import com.tencent.mm.live.b.a;
+import com.tencent.mm.live.b.b;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.live.model.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import java.util.concurrent.CopyOnWriteArrayList;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/BaseLivePluginLayout;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/live/view/ILivePlugin;", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "Lcom/tencent/mm/live/model/ILiveSysMsgNotifier;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "parent", "Landroid/view/ViewGroup;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "pluginList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lkotlin/collections/ArrayList;", "getPluginList", "()Ljava/util/ArrayList;", "getCurrentOrientation", "", "getRelativeLayoutId", "initLogic", "", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "isFinished", "", "isLandscape", "keyboardChange", "show", "height", "mount", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onCallStateChanged", "state", "incomingNumber", "", "onRotationSwitchChange", "rotationEnable", "onSwipeBack", "pause", "registerPlugin", "plugin", "resume", "start", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stop", "unMount", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/view/BaseLivePluginLayout;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/live/view/ILivePlugin;", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "Lcom/tencent/mm/live/model/ILiveSysMsgNotifier;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "parent", "Landroid/view/ViewGroup;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "pluginList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "getPluginList", "()Ljava/util/concurrent/CopyOnWriteArrayList;", "getCurrentOrientation", "", "getPluginSize", "getRelativeLayoutId", "initLogic", "", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "isFinished", "", "isLandscape", "keyboardChange", "show", "height", "mount", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onCallStateChanged", "state", "incomingNumber", "", "onRotationSwitchChange", "rotationEnable", "onSwipeBack", "pause", "registerPlugin", "plugin", "resume", "start", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stop", "unMount", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class BaseLivePluginLayout
   extends RelativeLayout
-  implements g, b
+  implements b, g
 {
   private ViewGroup parent;
-  private final ArrayList<a> pluginList = new ArrayList();
+  private final CopyOnWriteArrayList<a> pluginList = new CopyOnWriteArrayList();
   
   public BaseLivePluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     paramContext = LayoutInflater.from(paramContext).inflate(getRelativeLayoutId(), (ViewGroup)this, true);
     if (paramContext == null) {
-      throw new t("null cannot be cast to non-null type android.view.ViewGroup");
+      throw new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
     }
     this.parent = ((ViewGroup)paramContext);
   }
   
   public int getCurrentOrientation()
   {
-    Object localObject = getContext();
-    if (localObject == null) {
-      throw new t("null cannot be cast to non-null type android.app.Activity");
+    Context localContext = getContext();
+    if (localContext == null) {
+      throw new NullPointerException("null cannot be cast to non-null type android.app.Activity");
     }
-    localObject = ((Activity)localObject).getWindow();
-    p.j(localObject, "(context as Activity).window");
-    localObject = ((Window)localObject).getWindowManager();
-    p.j(localObject, "(context as Activity).window.windowManager");
-    localObject = ((WindowManager)localObject).getDefaultDisplay();
-    p.j(localObject, "(context as Activity).wi…dowManager.defaultDisplay");
-    return ((Display)localObject).getRotation();
+    return ((Activity)localContext).getWindow().getWindowManager().getDefaultDisplay().getRotation();
   }
   
   protected final ViewGroup getParent()
@@ -63,9 +56,14 @@ public abstract class BaseLivePluginLayout
     return this.parent;
   }
   
-  public final ArrayList<a> getPluginList()
+  public final CopyOnWriteArrayList<a> getPluginList()
   {
     return this.pluginList;
+  }
+  
+  public int getPluginSize()
+  {
+    return this.pluginList.size();
   }
   
   public abstract int getRelativeLayoutId();
@@ -74,15 +72,12 @@ public abstract class BaseLivePluginLayout
   
   public boolean isLandscape()
   {
-    Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = ((Context)localObject).getResources();
-    p.j(localObject, "context.resources");
-    return ((Resources)localObject).getConfiguration().orientation == 2;
+    return getContext().getResources().getConfiguration().orientation == 2;
   }
   
   public boolean isLiving()
   {
+    s.u(this, "this");
     return true;
   }
   
@@ -104,8 +99,9 @@ public abstract class BaseLivePluginLayout
   
   public String name()
   {
+    s.u(this, "this");
     String str = getClass().getSimpleName();
-    p.j(str, "this.javaClass.simpleName");
+    s.s(str, "this.javaClass.simpleName");
     return str;
   }
   
@@ -125,7 +121,7 @@ public abstract class BaseLivePluginLayout
       a locala = (a)localIterator.next();
       if (locala.onBackPress())
       {
-        Log.i(name(), locala.name() + " handle back-press");
+        Log.i(name(), s.X(locala.name(), " handle back-press"));
         return true;
       }
     }
@@ -144,7 +140,7 @@ public abstract class BaseLivePluginLayout
       a locala = (a)localIterator.next();
       if (locala.onSwipeBack())
       {
-        Log.i(name(), locala.name() + " handle onSwipeBack");
+        Log.i(name(), s.X(locala.name(), " handle onSwipeBack"));
         return true;
       }
     }
@@ -163,8 +159,8 @@ public abstract class BaseLivePluginLayout
   {
     if (parama != null)
     {
-      Log.i(name(), "register plugin " + parama.name());
-      this.pluginList.add(parama);
+      Log.i(name(), s.X("register plugin ", parama.name()));
+      getPluginList().add(parama);
     }
   }
   
@@ -179,7 +175,7 @@ public abstract class BaseLivePluginLayout
   
   protected final void setParent(ViewGroup paramViewGroup)
   {
-    p.k(paramViewGroup, "<set-?>");
+    s.u(paramViewGroup, "<set-?>");
     this.parent = paramViewGroup;
   }
   
@@ -193,7 +189,7 @@ public abstract class BaseLivePluginLayout
   
   public void statusChange(b.c paramc, Bundle paramBundle)
   {
-    p.k(paramc, "status");
+    s.u(paramc, "status");
     Iterator localIterator = ((Iterable)this.pluginList).iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).statusChange(paramc, paramBundle);
@@ -204,7 +200,7 @@ public abstract class BaseLivePluginLayout
   {
     Iterator localIterator = ((Iterable)this.pluginList).iterator();
     while (localIterator.hasNext()) {
-      localIterator.next();
+      ((a)localIterator.next()).stop();
     }
   }
   

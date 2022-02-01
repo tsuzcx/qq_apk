@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dqx;
-import com.tencent.mm.protocal.protobuf.dqy;
+import com.tencent.mm.protocal.protobuf.ejs;
+import com.tencent.mm.protocal.protobuf.ejt;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.r;
+import com.tencent.mm.wallet_core.model.r;
 
 public final class k
   extends r
 {
-  public dqy DJK;
+  public ejt JAG;
   private final String TAG;
   
   public k(String paramString)
   {
     AppMethodBeat.i(64632);
     this.TAG = "MicroMsg.NetSceneQryHoneyPayCardDetail";
-    d.a locala = new d.a();
-    locala.lBU = new dqx();
-    locala.lBV = new dqy();
+    c.a locala = new c.a();
+    locala.otE = new ejs();
+    locala.otF = new ejt();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/mmpay-bin/qryhpcarddetail";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    ((dqx)d.b.b(this.rr.lBR)).TfK = paramString;
+    this.rr = locala.bEF();
+    ((ejs)c.b.b(this.rr.otB)).aatc = paramString;
     AppMethodBeat.o(64632);
   }
   
@@ -38,8 +38,8 @@ public final class k
   {
     AppMethodBeat.i(64633);
     Log.i("MicroMsg.NetSceneQryHoneyPayCardDetail", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.DJK = ((dqy)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneQryHoneyPayCardDetail", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.DJK.tqa), this.DJK.tqb });
+    this.JAG = ((ejt)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneQryHoneyPayCardDetail", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.JAG.wuz), this.JAG.wuA });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -48,11 +48,11 @@ public final class k
   
   public final void f(s params)
   {
-    AppMethodBeat.i(277793);
-    params = (dqy)d.c.b(((d)params).lBS);
-    this.YVy = params.tqa;
-    this.YVz = params.tqb;
-    AppMethodBeat.o(277793);
+    AppMethodBeat.i(267298);
+    params = (ejt)c.c.b(((c)params).otC);
+    this.agTs = params.wuz;
+    this.agTt = params.wuA;
+    AppMethodBeat.o(267298);
   }
   
   public final int getType()

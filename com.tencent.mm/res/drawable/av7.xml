@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:gravity="center|left|top" android:height="20.0dip" android:width="20.0dip" android:drawable="@raw/fireworks" android:left="20.0dip" android:top="6.0dip" />
+    <item android:gravity="center|right|top" android:height="20.0dip" android:width="20.0dip" android:drawable="@raw/fireworks" android:right="12.0dip" />
+    <item android:gravity="center|left|top" android:height="28.0dip" android:width="28.0dip" android:drawable="@raw/fireworks" android:left="16.0dip" android:top="81.0dip" />
+    <item android:gravity="center|right|top" android:height="22.0dip" android:width="22.0dip" android:drawable="@raw/fireworks" android:top="103.0dip" android:right="4.0dip" />
+</layer-list>

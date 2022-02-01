@@ -25,28 +25,28 @@ public class TXCSoundEffectPlayer
   static
   {
     AppMethodBeat.i(16342);
-    h.f();
+    h.d();
     AppMethodBeat.o(16342);
   }
   
   public TXCSoundEffectPlayer()
   {
-    AppMethodBeat.i(246035);
+    AppMethodBeat.i(230376);
     this.mShortEffectorIDList = new ArrayList();
-    AppMethodBeat.o(246035);
+    AppMethodBeat.o(230376);
   }
   
   private String checkIfAssetsFile(String paramString)
   {
-    AppMethodBeat.i(246049);
+    AppMethodBeat.i(230391);
     if ((TextUtils.isEmpty(paramString)) || (TXCCommonUtil.getAppContext() == null))
     {
-      AppMethodBeat.o(246049);
+      AppMethodBeat.o(230391);
       return paramString;
     }
     if (!paramString.startsWith("/assets/"))
     {
-      AppMethodBeat.o(246049);
+      AppMethodBeat.o(230391);
       return paramString;
     }
     String str3 = paramString.substring(8);
@@ -85,7 +85,7 @@ public class TXCSoundEffectPlayer
             d.a(TXCCommonUtil.getAppContext(), str3, paramString);
             str1 = paramString;
           }
-          AppMethodBeat.o(246049);
+          AppMethodBeat.o(230391);
           return str1;
         }
         catch (Exception localException3)
@@ -116,14 +116,14 @@ public class TXCSoundEffectPlayer
   
   private String getEffectCachePath()
   {
-    AppMethodBeat.i(246048);
+    AppMethodBeat.i(230379);
     if (TXCCommonUtil.getAppContext() == null)
     {
-      AppMethodBeat.o(246048);
+      AppMethodBeat.o(230379);
       return "";
     }
     String str = TXCCommonUtil.getAppContext().getCacheDir() + File.separator + "liteav_effect";
-    AppMethodBeat.o(246048);
+    AppMethodBeat.o(230379);
     return str;
   }
   
@@ -137,10 +137,10 @@ public class TXCSoundEffectPlayer
   
   public void clearCache()
   {
-    AppMethodBeat.i(246047);
+    AppMethodBeat.i(230454);
     if (TXCCommonUtil.getAppContext() == null)
     {
-      AppMethodBeat.o(246047);
+      AppMethodBeat.o(230454);
       return;
     }
     try
@@ -157,36 +157,36 @@ public class TXCSoundEffectPlayer
           i += 1;
         }
       }
-      AppMethodBeat.o(246047);
+      AppMethodBeat.o(230454);
       return;
     }
     catch (Exception localException)
     {
       TXCLog.w("AudioCenter:TXCSoundEffectPlayer", "clearCache error " + localException.toString());
-      AppMethodBeat.o(246047);
+      AppMethodBeat.o(230454);
     }
   }
   
   public void onComplete(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(246046);
+    AppMethodBeat.i(230447);
     TXCLog.i("AudioCenter:TXCSoundEffectPlayer", "onMusicPlayFinish -> effect id = ".concat(String.valueOf(paramInt1)));
     if ((mWeakSoundEffectListener != null) && (mWeakSoundEffectListener.get() != null)) {
       ((c)mWeakSoundEffectListener.get()).onEffectPlayFinish(paramInt1);
     }
-    AppMethodBeat.o(246046);
+    AppMethodBeat.o(230447);
   }
   
   public void onPlayProgress(int paramInt, long paramLong1, long paramLong2) {}
   
   public void onStart(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(246044);
+    AppMethodBeat.i(230444);
     TXCLog.i("AudioCenter:TXCSoundEffectPlayer", "onStart -> effect id = " + paramInt1 + ", errCode = " + paramInt2);
     if ((mWeakSoundEffectListener != null) && (mWeakSoundEffectListener.get() != null)) {
       ((c)mWeakSoundEffectListener.get()).onEffectPlayStart(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(246044);
+    AppMethodBeat.o(230444);
   }
   
   public void pauseEffectWithId(int paramInt)
@@ -223,7 +223,7 @@ public class TXCSoundEffectPlayer
   
   public void setEffectsVolume(float paramFloat)
   {
-    AppMethodBeat.i(246037);
+    AppMethodBeat.i(230417);
     TXCLog.i("AudioCenter:TXCSoundEffectPlayer", "setEffectsVolume -> volume = ".concat(String.valueOf(paramFloat)));
     Iterator localIterator = this.mShortEffectorIDList.iterator();
     while (localIterator.hasNext())
@@ -231,28 +231,28 @@ public class TXCSoundEffectPlayer
       int i = ((Integer)localIterator.next()).intValue();
       TXAudioEffectManagerImpl.getCacheInstance().setMusicVolume(i, (int)(100.0F * paramFloat));
     }
-    AppMethodBeat.o(246037);
+    AppMethodBeat.o(230417);
   }
   
   public void setSoundEffectListener(c paramc)
   {
-    AppMethodBeat.i(246042);
+    AppMethodBeat.i(230438);
     if (paramc == null)
     {
       mWeakSoundEffectListener = null;
-      AppMethodBeat.o(246042);
+      AppMethodBeat.o(230438);
       return;
     }
     mWeakSoundEffectListener = new WeakReference(paramc);
-    AppMethodBeat.o(246042);
+    AppMethodBeat.o(230438);
   }
   
   public void setVolumeOfEffect(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(246039);
+    AppMethodBeat.i(230422);
     TXCLog.i("AudioCenter:TXCSoundEffectPlayer", "setVolumeOfEffect -> effect id = " + paramInt + ", volume = " + paramFloat);
     TXAudioEffectManagerImpl.getCacheInstance().setMusicVolume(paramInt, (int)(100.0F * paramFloat));
-    AppMethodBeat.o(246039);
+    AppMethodBeat.o(230422);
   }
   
   public void stopAllEffect()
@@ -297,7 +297,7 @@ public class TXCSoundEffectPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCSoundEffectPlayer
  * JD-Core Version:    0.7.0.1
  */

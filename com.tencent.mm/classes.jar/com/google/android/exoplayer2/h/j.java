@@ -7,11 +7,11 @@ import java.util.Arrays;
 
 public final class j
 {
-  public final long aFL;
-  public final byte[] bor;
-  public final long bos;
+  public final long absoluteStreamPosition;
+  public final byte[] dih;
   public final int flags;
   public final String key;
+  public final long length;
   public final long position;
   public final Uri uri;
   
@@ -67,10 +67,10 @@ public final class j
     {
       a.checkArgument(bool);
       this.uri = paramUri;
-      this.bor = paramArrayOfByte;
-      this.bos = paramLong1;
+      this.dih = paramArrayOfByte;
+      this.absoluteStreamPosition = paramLong1;
       this.position = paramLong2;
-      this.aFL = paramLong3;
+      this.length = paramLong3;
       this.key = paramString;
       this.flags = paramInt;
       AppMethodBeat.o(93045);
@@ -82,34 +82,34 @@ public final class j
     }
   }
   
-  private j k(long paramLong1, long paramLong2)
+  private j G(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(93048);
-    if ((paramLong1 == 0L) && (this.aFL == paramLong2))
+    if ((paramLong1 == 0L) && (this.length == paramLong2))
     {
       AppMethodBeat.o(93048);
       return this;
     }
-    j localj = new j(this.uri, this.bor, this.bos + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
+    j localj = new j(this.uri, this.dih, this.absoluteStreamPosition + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
     AppMethodBeat.o(93048);
     return localj;
   }
   
-  public final j ao(long paramLong)
+  public final j cC(long paramLong)
   {
     long l = -1L;
     AppMethodBeat.i(93047);
-    if (this.aFL == -1L) {}
+    if (this.length == -1L) {}
     for (;;)
     {
-      j localj = k(paramLong, l);
+      j localj = G(paramLong, l);
       AppMethodBeat.o(93047);
       return localj;
-      l = this.aFL - paramLong;
+      l = this.length - paramLong;
     }
   }
   
-  public final boolean fp(int paramInt)
+  public final boolean isFlagSet(int paramInt)
   {
     return (this.flags & paramInt) == paramInt;
   }
@@ -117,14 +117,14 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(93046);
-    String str = "DataSpec[" + this.uri + ", " + Arrays.toString(this.bor) + ", " + this.bos + ", " + this.position + ", " + this.aFL + ", " + this.key + ", " + this.flags + "]";
+    String str = "DataSpec[" + this.uri + ", " + Arrays.toString(this.dih) + ", " + this.absoluteStreamPosition + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
     AppMethodBeat.o(93046);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.j
  * JD-Core Version:    0.7.0.1
  */

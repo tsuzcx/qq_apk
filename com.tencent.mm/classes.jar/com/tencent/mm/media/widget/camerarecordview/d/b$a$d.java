@@ -1,58 +1,60 @@
 package com.tencent.mm.media.widget.camerarecordview.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig$PreviewFormatItem;", "", "format", "", "(Ljava/lang/Integer;)V", "getFormat", "()Ljava/lang/Integer;", "setFormat", "Ljava/lang/Integer;", "component1", "copy", "(Ljava/lang/Integer;)Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig$PreviewFormatItem;", "equals", "", "other", "hashCode", "toString", "", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig$PreviewFormatItem;", "", "format", "", "(Ljava/lang/Integer;)V", "getFormat", "()Ljava/lang/Integer;", "setFormat", "Ljava/lang/Integer;", "component1", "copy", "(Ljava/lang/Integer;)Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig$PreviewFormatItem;", "equals", "", "other", "hashCode", "toString", "", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b$a$d
 {
-  public Integer lgp;
+  public Integer nKZ;
   
   private b$a$d(Integer paramInteger)
   {
-    this.lgp = paramInteger;
+    this.nKZ = paramInteger;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(258860);
-    if (this != paramObject)
+    AppMethodBeat.i(237702);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof d))
-      {
-        paramObject = (d)paramObject;
-        if (!p.h(this.lgp, paramObject.lgp)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(258860);
+      AppMethodBeat.o(237702);
       return true;
     }
-    AppMethodBeat.o(258860);
-    return false;
+    if (!(paramObject instanceof d))
+    {
+      AppMethodBeat.o(237702);
+      return false;
+    }
+    paramObject = (d)paramObject;
+    if (!s.p(this.nKZ, paramObject.nKZ))
+    {
+      AppMethodBeat.o(237702);
+      return false;
+    }
+    AppMethodBeat.o(237702);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(258857);
-    Integer localInteger = this.lgp;
-    if (localInteger != null)
+    AppMethodBeat.i(237697);
+    if (this.nKZ == null)
     {
-      int i = localInteger.hashCode();
-      AppMethodBeat.o(258857);
-      return i;
+      AppMethodBeat.o(237697);
+      return 0;
     }
-    AppMethodBeat.o(258857);
-    return 0;
+    int i = this.nKZ.hashCode();
+    AppMethodBeat.o(237697);
+    return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(258854);
-    String str = "PreviewFormatItem(format=" + this.lgp + ")";
-    AppMethodBeat.o(258854);
+    AppMethodBeat.i(237686);
+    String str = "PreviewFormatItem(format=" + this.nKZ + ')';
+    AppMethodBeat.o(237686);
     return str;
   }
 }

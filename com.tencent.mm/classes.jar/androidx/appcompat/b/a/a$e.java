@@ -7,26 +7,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a$e
   implements TimeInterpolator
 {
-  private int[] iM;
-  private int iN;
-  int iO;
+  private int[] jH;
+  private int jI;
+  int jJ;
   
   a$e(AnimationDrawable paramAnimationDrawable, boolean paramBoolean)
   {
-    AppMethodBeat.i(238658);
+    AppMethodBeat.i(199268);
     a(paramAnimationDrawable, paramBoolean);
-    AppMethodBeat.o(238658);
+    AppMethodBeat.o(199268);
   }
   
   private int a(AnimationDrawable paramAnimationDrawable, boolean paramBoolean)
   {
-    AppMethodBeat.i(238659);
+    AppMethodBeat.i(199274);
     int m = paramAnimationDrawable.getNumberOfFrames();
-    this.iN = m;
-    if ((this.iM == null) || (this.iM.length < m)) {
-      this.iM = new int[m];
+    this.jI = m;
+    if ((this.jH == null) || (this.jH.length < m)) {
+      this.jH = new int[m];
     }
-    int[] arrayOfInt = this.iM;
+    int[] arrayOfInt = this.jH;
     int i = 0;
     int j = 0;
     if (i < m)
@@ -41,16 +41,16 @@ final class a$e
         break;
       }
     }
-    this.iO = j;
-    AppMethodBeat.o(238659);
+    this.jJ = j;
+    AppMethodBeat.o(199274);
     return j;
   }
   
   public final float getInterpolation(float paramFloat)
   {
-    int j = (int)(this.iO * paramFloat + 0.5F);
-    int k = this.iN;
-    int[] arrayOfInt = this.iM;
+    int j = (int)(this.jJ * paramFloat + 0.5F);
+    int k = this.jI;
+    int[] arrayOfInt = this.jH;
     int i = 0;
     while ((i < k) && (j >= arrayOfInt[i]))
     {
@@ -58,14 +58,14 @@ final class a$e
       i += 1;
     }
     if (i < k) {}
-    for (paramFloat = j / this.iO;; paramFloat = 0.0F) {
+    for (paramFloat = j / this.jJ;; paramFloat = 0.0F) {
       return paramFloat + i / k;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.appcompat.b.a.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -10,81 +10,81 @@ import java.util.ArrayList;
 public final class g
   extends BaseAdapter
 {
-  private final boolean lA;
-  boolean lQ;
-  private final int lr;
   private final LayoutInflater mInflater;
-  private int mu;
-  public h mw;
+  boolean mN;
+  private final int mn;
+  private final boolean mw;
+  private int nt;
+  public h nv;
   
   public g(h paramh, LayoutInflater paramLayoutInflater, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(239309);
-    this.mu = -1;
-    this.lA = paramBoolean;
+    AppMethodBeat.i(200910);
+    this.nt = -1;
+    this.mw = paramBoolean;
     this.mInflater = paramLayoutInflater;
-    this.mw = paramh;
-    this.lr = paramInt;
-    bZ();
-    AppMethodBeat.o(239309);
+    this.nv = paramh;
+    this.mn = paramInt;
+    cS();
+    AppMethodBeat.o(200910);
   }
   
-  private void bZ()
+  private void cS()
   {
-    AppMethodBeat.i(239317);
-    j localj = this.mw.mT;
+    AppMethodBeat.i(200921);
+    j localj = this.nv.nR;
     if (localj != null)
     {
-      ArrayList localArrayList = this.mw.ck();
+      ArrayList localArrayList = this.nv.dd();
       int j = localArrayList.size();
       int i = 0;
       while (i < j)
       {
         if ((j)localArrayList.get(i) == localj)
         {
-          this.mu = i;
-          AppMethodBeat.o(239317);
+          this.nt = i;
+          AppMethodBeat.o(200921);
           return;
         }
         i += 1;
       }
     }
-    this.mu = -1;
-    AppMethodBeat.o(239317);
+    this.nt = -1;
+    AppMethodBeat.o(200921);
   }
   
-  public final j ai(int paramInt)
+  public final j ag(int paramInt)
   {
-    AppMethodBeat.i(239313);
-    if (this.lA) {}
-    for (Object localObject = this.mw.ck();; localObject = this.mw.ci())
+    AppMethodBeat.i(200943);
+    if (this.mw) {}
+    for (Object localObject = this.nv.dd();; localObject = this.nv.db())
     {
       int i = paramInt;
-      if (this.mu >= 0)
+      if (this.nt >= 0)
       {
         i = paramInt;
-        if (paramInt >= this.mu) {
+        if (paramInt >= this.nt) {
           i = paramInt + 1;
         }
       }
       localObject = (j)((ArrayList)localObject).get(i);
-      AppMethodBeat.o(239313);
+      AppMethodBeat.o(200943);
       return localObject;
     }
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(239310);
-    if (this.lA) {}
-    for (ArrayList localArrayList = this.mw.ck(); this.mu < 0; localArrayList = this.mw.ci())
+    AppMethodBeat.i(200934);
+    if (this.mw) {}
+    for (ArrayList localArrayList = this.nv.dd(); this.nt < 0; localArrayList = this.nv.db())
     {
       i = localArrayList.size();
-      AppMethodBeat.o(239310);
+      AppMethodBeat.o(200934);
       return i;
     }
     int i = localArrayList.size();
-    AppMethodBeat.o(239310);
+    AppMethodBeat.o(200934);
     return i - 1;
   }
   
@@ -95,19 +95,19 @@ public final class g
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(239315);
+    AppMethodBeat.i(200961);
     if (paramView == null) {
-      paramView = this.mInflater.inflate(this.lr, paramViewGroup, false);
+      paramView = this.mInflater.inflate(this.mn, paramViewGroup, false);
     }
     for (;;)
     {
-      int j = ai(paramInt).getGroupId();
+      int j = ag(paramInt).getGroupId();
       int i;
       if (paramInt - 1 >= 0)
       {
-        i = ai(paramInt - 1).getGroupId();
+        i = ag(paramInt - 1).getGroupId();
         paramViewGroup = (ListMenuItemView)paramView;
-        if ((!this.mw.cb()) || (j == i)) {
+        if ((!this.nv.cU()) || (j == i)) {
           break label127;
         }
       }
@@ -116,11 +116,11 @@ public final class g
       {
         paramViewGroup.setGroupDividerEnabled(bool);
         paramViewGroup = (p.a)paramView;
-        if (this.lQ) {
+        if (this.mN) {
           ((ListMenuItemView)paramView).setForceShowIcon(true);
         }
-        paramViewGroup.a(ai(paramInt));
-        AppMethodBeat.o(239315);
+        paramViewGroup.a(ag(paramInt));
+        AppMethodBeat.o(200961);
         return paramView;
         i = j;
         break;
@@ -130,15 +130,15 @@ public final class g
   
   public final void notifyDataSetChanged()
   {
-    AppMethodBeat.i(239320);
-    bZ();
+    AppMethodBeat.i(200969);
+    cS();
     super.notifyDataSetChanged();
-    AppMethodBeat.o(239320);
+    AppMethodBeat.o(200969);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.g
  * JD-Core Version:    0.7.0.1
  */

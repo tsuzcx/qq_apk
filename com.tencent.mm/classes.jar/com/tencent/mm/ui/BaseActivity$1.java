@@ -12,7 +12,7 @@ final class BaseActivity$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(159086);
-    this.VQZ.finish();
+    this.advh.finish();
     AppMethodBeat.o(159086);
     return true;
   }

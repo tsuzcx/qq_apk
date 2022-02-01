@@ -1,44 +1,35 @@
 package com.tencent.mm.plugin.finder.ui.fragment;
 
 import android.os.Bundle;
-import java.util.HashMap;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/MMFinderFragment;", "()V", "tabType", "", "(I)V", "title", "(II)V", "args", "Landroid/os/Bundle;", "getArgs", "()Landroid/os/Bundle;", "setArgs", "(Landroid/os/Bundle;)V", "getTabType", "()I", "setTabType", "getTitle", "setTitle", "onActionbarClick", "", "onActionbarDoubleClick", "onBackPressed", "", "onUserVisibleUnFocused", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/MMFinderFragment;", "()V", "tabType", "", "(I)V", "title", "(II)V", "args", "Landroid/os/Bundle;", "getArgs", "()Landroid/os/Bundle;", "setArgs", "(Landroid/os/Bundle;)V", "getTabType", "()I", "setTabType", "getTitle", "setTitle", "onActionbarClick", "", "onActionbarDoubleClick", "onBackPressed", "", "onUserVisibleUnFocused", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class FinderHomeTabFragment
   extends MMFinderFragment
 {
-  private HashMap _$_findViewCache;
-  public int fEH;
+  public Bundle EHy;
+  public int hJx;
   public int title;
-  public Bundle zDr;
   
   public FinderHomeTabFragment()
   {
     this.title = -1;
-    this.fEH = -1;
+    this.hJx = -1;
   }
   
   public FinderHomeTabFragment(int paramInt)
   {
     this.title = -1;
-    this.fEH = paramInt;
+    this.hJx = paramInt;
   }
   
   public FinderHomeTabFragment(int paramInt1, int paramInt2)
   {
     this.title = paramInt1;
-    this.fEH = paramInt2;
+    this.hJx = paramInt2;
   }
   
-  public void _$_clearFindViewByIdCache()
-  {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-  }
-  
-  public void dLu() {}
+  public void eEr() {}
   
   public boolean onBackPressed()
   {
@@ -48,7 +39,7 @@ public abstract class FinderHomeTabFragment
   public final void onUserVisibleUnFocused()
   {
     super.onUserVisibleUnFocused();
-    this.zDr = null;
+    this.EHy = null;
   }
 }
 

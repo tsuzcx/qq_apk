@@ -1,133 +1,150 @@
 package com.tencent.mm.plugin.finder.feed;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.f;
-import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.presenter.base.c.a;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.event.recyclerview.FinderRecyclerView;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.plugin.finder.ui.FinderShareFeedRelUI;
 import com.tencent.mm.plugin.finder.view.animation.e;
-import com.tencent.mm.plugin.finder.view.decoration.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import com.tencent.mm.view.j;
-import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
+import com.tencent.mm.view.k;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$Presenter;", "scene", "", "commentScene", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$Presenter;II)V", "myActionCallback", "Lcom/tencent/mm/view/IViewActionCallback;", "getMyActionCallback", "()Lcom/tencent/mm/view/IViewActionCallback;", "setMyActionCallback", "(Lcom/tencent/mm/view/IViewActionCallback;)V", "getEmptyView", "Landroid/view/View;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getViewActionCallback", "initRecyclerView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onItemChange", "changeItemCount", "onLoadInitDataError", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "onViewPrepared", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$Presenter;", "scene", "", "commentScene", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$Presenter;II)V", "myActionCallback", "Lcom/tencent/mm/view/IViewActionCallback;", "getMyActionCallback", "()Lcom/tencent/mm/view/IViewActionCallback;", "setMyActionCallback", "(Lcom/tencent/mm/view/IViewActionCallback;)V", "getEmptyView", "Landroid/view/View;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getViewActionCallback", "initRecyclerView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onItemChange", "changeItemCount", "onLoadInitDataError", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "onViewPrepared", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j$b
-  extends aa.b
+  extends ae.b
 {
-  private static final String TAG = "Finder.FinderFeedDetailRelUIContract.ViewCallback";
-  public static final a xxT;
-  private j xxS;
+  public static final a AVc;
+  private static final String TAG;
+  private k AVd;
   
   static
   {
-    AppMethodBeat.i(286755);
-    xxT = new a((byte)0);
+    AppMethodBeat.i(363089);
+    AVc = new a((byte)0);
     TAG = "Finder.FinderFeedDetailRelUIContract.ViewCallback";
-    AppMethodBeat.o(286755);
+    AppMethodBeat.o(363089);
   }
   
   public j$b(MMActivity paramMMActivity, j.a parama, int paramInt1, int paramInt2)
   {
-    super(paramMMActivity, (aa.a)parama, paramInt1, paramInt2);
-    AppMethodBeat.i(286754);
-    this.xxS = ((j)new b(this));
-    AppMethodBeat.o(286754);
+    super(paramMMActivity, (ae.a)parama, paramInt1, paramInt2);
+    AppMethodBeat.i(363079);
+    this.AVd = ((k)new b(this));
+    AppMethodBeat.o(363079);
   }
   
-  public final void Mw(int paramInt)
+  public final void ND(int paramInt)
   {
-    AppMethodBeat.i(286753);
-    super.Mw(paramInt);
-    MMActivity localMMActivity = this.iXq;
+    AppMethodBeat.i(363125);
+    super.ND(paramInt);
+    MMActivity localMMActivity = this.lzt;
     if ((localMMActivity instanceof FinderShareFeedRelUI)) {
-      ((FinderShareFeedRelUI)localMMActivity).ebh();
+      ((FinderShareFeedRelUI)localMMActivity).fbX();
     }
-    AppMethodBeat.o(286753);
+    AppMethodBeat.o(363125);
   }
   
-  public final void aa(ArrayList<bu> paramArrayList)
+  public final void af(ArrayList<cc> paramArrayList)
   {
-    AppMethodBeat.i(286750);
-    p.k(paramArrayList, "data");
-    super.aa(paramArrayList);
-    if (dsA())
+    AppMethodBeat.i(363105);
+    s.u(paramArrayList, "data");
+    super.af(paramArrayList);
+    paramArrayList = this.ATx;
+    Object localObject = af.mU((Context)this.lzt).inflate(e.f.hot_tab_load_more_footer, null);
+    s.s(localObject, "getInflater(context).inf…b_load_more_footer, null)");
+    paramArrayList.setLoadMoreFooter((View)localObject);
+    paramArrayList = this.lzt.findViewById(e.e.profile_recycler_view);
+    s.s(paramArrayList, "context.findViewById(R.id.profile_recycler_view)");
+    localObject = (RecyclerView)paramArrayList;
+    if (((localObject instanceof FinderRecyclerView)) && ((((FinderRecyclerView)localObject).getLayoutManager() instanceof LinearLayoutManager)))
     {
-      paramArrayList = this.xvJ;
-      View localView = ad.kS((Context)this.iXq).inflate(b.g.hot_tab_load_more_footer, null);
-      p.j(localView, "MMLayoutInflater.getInfl…b_load_more_footer, null)");
-      paramArrayList.setLoadMoreFooter(localView);
+      paramArrayList = (FinderRecyclerView)localObject;
+      localObject = ((FinderRecyclerView)localObject).getLayoutManager();
+      if (localObject == null)
+      {
+        paramArrayList = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
+        AppMethodBeat.o(363105);
+        throw paramArrayList;
+      }
+      paramArrayList.a((LinearLayoutManager)localObject);
     }
-    AppMethodBeat.o(286750);
+    AppMethodBeat.o(363105);
   }
   
-  public final void dsm()
+  public final void ebi()
   {
-    AppMethodBeat.i(286751);
-    Object localObject = this.xvJ.getRecyclerView();
+    AppMethodBeat.i(363117);
+    Object localObject = this.ATx.getRecyclerView();
     ((RecyclerView)localObject).setItemAnimator((RecyclerView.f)new e());
     ((RecyclerView)localObject).setHasFixedSize(true);
-    if (!dsA())
+    localObject = (CharSequence)this.lzt.getIntent().getStringExtra("FLOAT_BALL_KEY");
+    int i;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
     {
-      ((RecyclerView)localObject).b((RecyclerView.h)new b((Drawable)new ColorDrawable(((RecyclerView)localObject).getResources().getColor(b.c.BW_93)), (int)((RecyclerView)localObject).getResources().getDimension(b.d.feed_divider)));
-      ((RecyclerView)localObject).setItemViewCacheSize(4);
-    }
-    for (;;)
-    {
-      localObject = this.xvP;
-      if (localObject != null) {
-        break;
+      i = 1;
+      if (i != 0) {
+        break label108;
       }
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.FinderFeedDetailRelUIContract.Presenter");
-      AppMethodBeat.o(286751);
-      throw ((Throwable)localObject);
-      ((RecyclerView)localObject).setItemViewCacheSize(1);
+      localObject = this.ATv;
+      if (!(localObject instanceof j.a)) {
+        break label103;
+      }
     }
-    localObject = (j.a)localObject;
-    if (((j.a)localObject).xxO != null)
+    label103:
+    for (localObject = (j.a)localObject;; localObject = null)
+    {
+      if (localObject == null) {
+        break label182;
+      }
+      ((j.a)localObject).dUL();
+      AppMethodBeat.o(363117);
+      return;
+      i = 0;
+      break;
+    }
+    label108:
+    localObject = (j.a)this.ATv;
+    if (((j.a)localObject).AUZ != null)
     {
       Log.i(TAG, "cache exit!,show cache first");
-      ArrayList localArrayList = ((j.a)localObject).dta();
+      ArrayList localArrayList = ((j.a)localObject).ecc();
       if (localArrayList != null) {
         localArrayList.clear();
       }
-      localArrayList = ((j.a)localObject).dta();
+      localArrayList = ((j.a)localObject).ecc();
       if (localArrayList != null)
       {
-        localObject = ((j.a)localObject).xxO;
-        if (localObject == null) {
-          p.iCn();
-        }
+        localObject = ((j.a)localObject).AUZ;
+        s.checkNotNull(localObject);
         localArrayList.add(localObject);
       }
-      getAdapter().notifyDataSetChanged();
+      getAdapter().bZE.notifyChanged();
     }
-    super.dsm();
-    AppMethodBeat.o(286751);
+    super.ebi();
+    label182:
+    AppMethodBeat.o(363117);
   }
   
-  public final j dtb()
+  public final k ecd()
   {
-    return this.xxS;
+    return this.AVd;
   }
   
   public final View getEmptyView()
@@ -135,78 +152,72 @@ public final class j$b
     return null;
   }
   
-  public final RecyclerView.h getItemDecoration()
-  {
-    AppMethodBeat.i(286752);
-    RecyclerView.h localh = (RecyclerView.h)new b((Drawable)new ColorDrawable(c.a.a(this).getColor(b.c.BG_0)), 0);
-    AppMethodBeat.o(286752);
-    return localh;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$ViewCallback$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$ViewCallback$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$ViewCallback$myActionCallback$1", "Lcom/tencent/mm/view/IViewActionCallback;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "onPreFinishLoadMore", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMoreSmooth", "onPreFinishRefresh", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$ViewCallback$myActionCallback$1", "Lcom/tencent/mm/view/IViewActionCallback;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "onPreFinishLoadMore", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMoreSmooth", "onPreFinishRefresh", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements j
+    implements k
   {
-    b()
+    b(j.b paramb)
     {
-      this.xxU = localObject.xvJ;
+      AppMethodBeat.i(363788);
+      this.AVe = this.AVf.ATx;
+      AppMethodBeat.o(363788);
     }
     
     public final void onChanged() {}
     
     public final void onItemRangeChanged(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(286541);
-      this.xxV.xvJ.onItemRangeChanged(this.xxV.wnI + paramInt1, paramInt2);
-      AppMethodBeat.o(286541);
+      AppMethodBeat.i(363819);
+      this.AVf.ATx.onItemRangeChanged(this.AVf.zJM + paramInt1, paramInt2);
+      AppMethodBeat.o(363819);
     }
     
     public final void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
     {
-      AppMethodBeat.i(286542);
-      this.xxV.xvJ.onItemRangeChanged(this.xxV.wnI + paramInt1, paramInt2, paramObject);
-      AppMethodBeat.o(286542);
+      AppMethodBeat.i(363826);
+      this.AVf.ATx.onItemRangeChanged(this.AVf.zJM + paramInt1, paramInt2, paramObject);
+      AppMethodBeat.o(363826);
     }
     
     public final void onItemRangeInserted(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(286543);
-      this.xxV.xvJ.onItemRangeInserted(this.xxV.wnI + paramInt1, paramInt2);
-      AppMethodBeat.o(286543);
+      AppMethodBeat.i(363834);
+      this.AVf.ATx.onItemRangeInserted(this.AVf.zJM + paramInt1, paramInt2);
+      AppMethodBeat.o(363834);
     }
     
     public final void onItemRangeRemoved(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(286544);
-      this.xxV.xvJ.onItemRangeRemoved(this.xxV.wnI + paramInt1, paramInt2);
-      AppMethodBeat.o(286544);
+      AppMethodBeat.i(363843);
+      this.AVf.ATx.onItemRangeRemoved(this.AVf.zJM + paramInt1, paramInt2);
+      AppMethodBeat.o(363843);
     }
     
-    public final void onPreFinishLoadMore(RefreshLoadMoreLayout.c<Object> paramc)
+    public final void onPreFinishLoadMore(RefreshLoadMoreLayout.d<Object> paramd)
     {
-      AppMethodBeat.i(286545);
-      p.k(paramc, "reason");
-      this.xxU.onPreFinishLoadMore(paramc);
-      AppMethodBeat.o(286545);
+      AppMethodBeat.i(363792);
+      s.u(paramd, "reason");
+      this.AVe.onPreFinishLoadMore(paramd);
+      AppMethodBeat.o(363792);
     }
     
-    public final void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.c<Object> paramc)
+    public final void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.d<Object> paramd)
     {
-      AppMethodBeat.i(286546);
-      p.k(paramc, "reason");
-      this.xxU.onPreFinishLoadMoreSmooth(paramc);
-      AppMethodBeat.o(286546);
+      AppMethodBeat.i(363800);
+      s.u(paramd, "reason");
+      this.AVe.onPreFinishLoadMoreSmooth(paramd);
+      AppMethodBeat.o(363800);
     }
     
-    public final void onPreFinishRefresh(RefreshLoadMoreLayout.c<Object> paramc)
+    public final void onPreFinishRefresh(RefreshLoadMoreLayout.d<Object> paramd)
     {
-      AppMethodBeat.i(286547);
-      p.k(paramc, "reason");
-      this.xxU.onPreFinishRefresh(paramc);
-      AppMethodBeat.o(286547);
+      AppMethodBeat.i(363807);
+      s.u(paramd, "reason");
+      this.AVe.onPreFinishRefresh(paramd);
+      AppMethodBeat.o(363807);
     }
   }
 }

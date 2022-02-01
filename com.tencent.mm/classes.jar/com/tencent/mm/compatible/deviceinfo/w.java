@@ -14,56 +14,58 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class w
 {
-  private static final AtomicInteger jsY;
-  private static final AtomicInteger jsZ;
-  public Camera jta;
-  public volatile boolean jtb;
+  private static final AtomicInteger lWq;
+  private static final AtomicInteger lWr;
+  public Camera lWs;
+  public volatile boolean lWt;
+  public int zS;
   
   static
   {
     AppMethodBeat.i(155758);
-    jsY = new AtomicInteger(0);
-    jsZ = new AtomicInteger(0);
+    lWq = new AtomicInteger(0);
+    lWr = new AtomicInteger(0);
     AppMethodBeat.o(155758);
   }
   
   public w(Camera paramCamera)
   {
     AppMethodBeat.i(155744);
-    this.jtb = false;
-    this.jta = paramCamera;
+    this.zS = 1;
+    this.lWt = false;
+    this.lWs = paramCamera;
     if (paramCamera != null)
     {
-      jsY.incrementAndGet();
-      Log.printInfoStack("MicroMsg.MCamera", "init MCamera, initCount:%s, releaseCount:%s, isCameraRelease:%s", new Object[] { jsY, jsZ, Boolean.valueOf(this.jtb) });
-      if (jsY.get() - jsZ.get() > 1)
+      lWq.incrementAndGet();
+      Log.printInfoStack("MicroMsg.MCamera", "init MCamera, initCount:%s, releaseCount:%s, isCameraRelease:%s", new Object[] { lWq, lWr, Boolean.valueOf(this.lWt) });
+      if (lWq.get() - lWr.get() > 1)
       {
         Log.i("MicroMsg.MCamera", "MCamera leak, do report, current process:%s", new Object[] { MMApplicationContext.getProcessName() });
-        paramCamera = a.jnF;
-        a.v(650L, 61L);
+        paramCamera = a.lQN;
+        a.T(650L, 61L);
         if (!MMApplicationContext.isMMProcess()) {
-          break label154;
+          break label159;
         }
-        paramCamera = a.jnF;
-        a.v(650L, 62L);
+        paramCamera = a.lQN;
+        a.T(650L, 62L);
       }
       for (;;)
       {
-        jsY.set(0);
-        jsZ.set(0);
-        this.jtb = false;
+        lWq.set(0);
+        lWr.set(0);
+        this.lWt = false;
         AppMethodBeat.o(155744);
         return;
-        label154:
+        label159:
         if (MMApplicationContext.isToolsProcess())
         {
-          paramCamera = a.jnF;
-          a.v(650L, 63L);
+          paramCamera = a.lQN;
+          a.T(650L, 63L);
         }
         else if (MMApplicationContext.isAppBrandProcess())
         {
-          paramCamera = a.jnF;
-          a.v(650L, 64L);
+          paramCamera = a.lQN;
+          a.T(650L, 64L);
         }
       }
     }
@@ -71,25 +73,16 @@ public final class w
     AppMethodBeat.o(155744);
   }
   
-  public final void TL()
-  {
-    AppMethodBeat.i(155751);
-    if (this.jta != null) {
-      this.jta.stopPreview();
-    }
-    AppMethodBeat.o(155751);
-  }
-  
   public final void a(final Camera.AutoFocusCallback paramAutoFocusCallback)
   {
     AppMethodBeat.i(155752);
-    if (this.jta != null) {
-      this.jta.autoFocus(new Camera.AutoFocusCallback()
+    if (this.lWs != null) {
+      this.lWs.autoFocus(new Camera.AutoFocusCallback()
       {
         public final void onAutoFocus(boolean paramAnonymousBoolean, Camera paramAnonymousCamera)
         {
           AppMethodBeat.i(160384);
-          if (!w.this.jtb) {
+          if (!w.this.lWt) {
             paramAutoFocusCallback.onAutoFocus(paramAnonymousBoolean, paramAnonymousCamera);
           }
           AppMethodBeat.o(160384);
@@ -102,8 +95,8 @@ public final class w
   public final void a(Camera.PreviewCallback paramPreviewCallback)
   {
     AppMethodBeat.i(155755);
-    if (this.jta != null) {
-      this.jta.setPreviewCallback(paramPreviewCallback);
+    if (this.lWs != null) {
+      this.lWs.setPreviewCallback(paramPreviewCallback);
     }
     AppMethodBeat.o(155755);
   }
@@ -111,27 +104,27 @@ public final class w
   public final void a(SurfaceHolder paramSurfaceHolder)
   {
     AppMethodBeat.i(155747);
-    if (this.jta != null) {
-      this.jta.setPreviewDisplay(paramSurfaceHolder);
+    if (this.lWs != null) {
+      this.lWs.setPreviewDisplay(paramSurfaceHolder);
     }
     AppMethodBeat.o(155747);
   }
   
-  public final void aj(byte[] paramArrayOfByte)
+  public final void aPA()
   {
-    AppMethodBeat.i(155757);
-    if (this.jta != null) {
-      this.jta.addCallbackBuffer(paramArrayOfByte);
+    AppMethodBeat.i(155753);
+    if (this.lWs != null) {
+      this.lWs.cancelAutoFocus();
     }
-    AppMethodBeat.o(155757);
+    AppMethodBeat.o(155753);
   }
   
-  public final Camera.Parameters avd()
+  public final Camera.Parameters aPy()
   {
     AppMethodBeat.i(155745);
-    if (this.jta != null)
+    if (this.lWs != null)
     {
-      Camera.Parameters localParameters = this.jta.getParameters();
+      Camera.Parameters localParameters = this.lWs.getParameters();
       AppMethodBeat.o(155745);
       return localParameters;
     }
@@ -139,29 +132,38 @@ public final class w
     return null;
   }
   
-  public final void ave()
+  public final void aPz()
   {
     AppMethodBeat.i(155749);
-    if (this.jta != null) {
-      this.jta.startPreview();
+    if (this.lWs != null) {
+      this.lWs.startPreview();
     }
     AppMethodBeat.o(155749);
   }
   
-  public final void avf()
+  public final void aj(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(155753);
-    if (this.jta != null) {
-      this.jta.cancelAutoFocus();
+    AppMethodBeat.i(155757);
+    if (this.lWs != null) {
+      this.lWs.addCallbackBuffer(paramArrayOfByte);
     }
-    AppMethodBeat.o(155753);
+    AppMethodBeat.o(155757);
+  }
+  
+  public final void auq()
+  {
+    AppMethodBeat.i(155751);
+    if (this.lWs != null) {
+      this.lWs.stopPreview();
+    }
+    AppMethodBeat.o(155751);
   }
   
   public final void b(Camera.PreviewCallback paramPreviewCallback)
   {
     AppMethodBeat.i(155756);
-    if (this.jta != null) {
-      this.jta.setPreviewCallbackWithBuffer(paramPreviewCallback);
+    if (this.lWs != null) {
+      this.lWs.setPreviewCallbackWithBuffer(paramPreviewCallback);
     }
     AppMethodBeat.o(155756);
   }
@@ -169,8 +171,8 @@ public final class w
   public final void c(Camera.Parameters paramParameters)
   {
     AppMethodBeat.i(155746);
-    if (this.jta != null) {
-      this.jta.setParameters(paramParameters);
+    if (this.lWs != null) {
+      this.lWs.setParameters(paramParameters);
     }
     AppMethodBeat.o(155746);
   }
@@ -178,17 +180,17 @@ public final class w
   public final void f(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(155748);
-    if (this.jta != null) {
-      this.jta.setPreviewTexture(paramSurfaceTexture);
+    if (this.lWs != null) {
+      this.lWs.setPreviewTexture(paramSurfaceTexture);
     }
     AppMethodBeat.o(155748);
   }
   
-  public final void qO(int paramInt)
+  public final void qV(int paramInt)
   {
     AppMethodBeat.i(155750);
-    if (this.jta != null) {
-      this.jta.setDisplayOrientation(paramInt);
+    if (this.lWs != null) {
+      this.lWs.setDisplayOrientation(paramInt);
     }
     AppMethodBeat.o(155750);
   }
@@ -196,11 +198,11 @@ public final class w
   public final void release()
   {
     AppMethodBeat.i(155754);
-    if (this.jta != null) {
+    if (this.lWs != null) {
       try
       {
-        this.jtb = true;
-        this.jta.release();
+        this.lWt = true;
+        this.lWs.release();
         return;
       }
       catch (Exception localException)
@@ -210,8 +212,8 @@ public final class w
       }
       finally
       {
-        jsZ.incrementAndGet();
-        Log.printInfoStack("MicroMsg.MCamera", "release MCamera, initCount: %s, releaseCount: %s,isCameraRelease %s", new Object[] { jsY, jsZ, Boolean.valueOf(this.jtb) });
+        lWr.incrementAndGet();
+        Log.printInfoStack("MicroMsg.MCamera", "release MCamera, initCount: %s, releaseCount: %s,isCameraRelease %s", new Object[] { lWq, lWr, Boolean.valueOf(this.lWt) });
         AppMethodBeat.o(155754);
       }
     }
@@ -220,7 +222,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.w
  * JD-Core Version:    0.7.0.1
  */

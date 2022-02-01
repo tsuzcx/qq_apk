@@ -2,18 +2,21 @@ package com.tencent.neattextview.textview.layout;
 
 import android.text.TextPaint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.neattextview.textview.a.a;
 import java.util.ArrayList;
 
 public class NeatLayout
   extends c
 {
-  private int Zdk = 0;
+  private int ahbO = 0;
   
   static
   {
     AppMethodBeat.i(39759);
-    System.loadLibrary("linebreak");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("linebreak");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/neattextview/textview/layout/NeatLayout", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/neattextview/textview/layout/NeatLayout", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     AppMethodBeat.o(39759);
   }
   
@@ -26,14 +29,14 @@ public class NeatLayout
   
   public final void a(TextPaint paramTextPaint, float[] paramArrayOfFloat, float paramFloat, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(259889);
+    AppMethodBeat.i(210443);
     float f6 = Math.round(paramTextPaint.getTextSize() / 2.0F);
     if (paramBoolean) {}
     float[] arrayOfFloat1;
     boolean[] arrayOfBoolean;
     for (float f3 = paramTextPaint.getTextSize() / 6.0F;; f3 = 0.0F)
     {
-      i = this.Zcs.length();
+      i = this.ahaW.length();
       paramTextPaint = new int[i];
       arrayOfFloat1 = new float[i];
       arrayOfBoolean = new boolean[i];
@@ -44,8 +47,8 @@ public class NeatLayout
         i += 1;
       }
     }
-    int i3 = nComputeBreak(this.Zcs, this.Zcu, paramArrayOfFloat, paramFloat + f6, paramTextPaint, arrayOfFloat1, f3, arrayOfBoolean, a.Zcn, this.Zcx, a.Zcm, this.Zcw, this.ZcS);
-    this.Zdk = i3;
+    int i3 = nComputeBreak(this.ahaW, this.ahaY, paramArrayOfFloat, paramFloat + f6, paramTextPaint, arrayOfFloat1, f3, arrayOfBoolean, com.tencent.neattextview.textview.a.a.ahaR, this.ahbb, com.tencent.neattextview.textview.a.a.ahaQ, this.ahba, this.ahbw);
+    this.ahbO = i3;
     float f2 = 0.0F;
     int i = 0;
     float f5;
@@ -104,7 +107,7 @@ public class NeatLayout
           if (i2 - 1 >= 0)
           {
             j = n;
-            if (this.Zct[(i2 - 1)] == '\n') {
+            if (this.ahaX[(i2 - 1)] == '\n') {
               j = n - 1;
             }
           }
@@ -114,10 +117,10 @@ public class NeatLayout
             if (n < i2)
             {
               int i1 = j;
-              if (this.Zct[n] != '\n')
+              if (this.ahaX[n] != '\n')
               {
                 i1 = j;
-                if (this.Zcu[n] == 0.0F) {
+                if (this.ahaY[n] == 0.0F) {
                   i1 = j - 1;
                 }
               }
@@ -139,9 +142,9 @@ public class NeatLayout
       if (m != 0)
       {
         f5 = f1;
-        arrayOfChar = this.Zct;
-        arrayOfFloat2 = this.Zcu;
-        j = this.Zcz.size();
+        arrayOfChar = this.ahaX;
+        arrayOfFloat2 = this.ahaY;
+        j = this.ahbd.size();
         if (m == 0) {
           break label538;
         }
@@ -156,19 +159,19 @@ public class NeatLayout
         break label465;
         f1 = f2;
       }
-      AppMethodBeat.o(259889);
+      AppMethodBeat.o(210443);
       return;
     }
   }
   
-  public final int ikp()
+  public final int jQH()
   {
-    return this.Zdk;
+    return this.ahbO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.neattextview.textview.layout.NeatLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -26,48 +26,48 @@ import java.util.regex.Pattern;
 public final class f
 {
   private static final Pattern RANGE_HEADER_PATTERN;
-  public static HashMap<String, Map<String, String>> pyr;
-  private BufferedReader bjf;
+  public static HashMap<String, Map<String, String>> sDw;
+  private BufferedReader dcZ;
   private String logTag;
-  public String pxT;
-  private LinkedHashMap<String, String> pyn;
-  private LinkedHashMap<String, String> pyo;
-  private int[] pyp;
-  private ArrayList<String> pyq;
+  public String sCY;
+  private LinkedHashMap<String, String> sDs;
+  private LinkedHashMap<String, String> sDt;
+  private int[] sDu;
+  private ArrayList<String> sDv;
   
   static
   {
-    AppMethodBeat.i(229467);
+    AppMethodBeat.i(328473);
     RANGE_HEADER_PATTERN = Pattern.compile("[R,r]ange:\\s*bytes=(\\d*)\\s*-\\s*(\\d*)");
-    pyr = new HashMap();
-    AppMethodBeat.o(229467);
+    sDw = new HashMap();
+    AppMethodBeat.o(328473);
   }
   
   public f(InputStream paramInputStream, String paramString)
   {
-    AppMethodBeat.i(229407);
-    this.bjf = new BufferedReader(new InputStreamReader(paramInputStream));
-    this.pyn = new LinkedHashMap();
-    this.pyo = new LinkedHashMap();
-    this.pyp = new int[2];
-    this.pyq = new ArrayList();
+    AppMethodBeat.i(328374);
+    this.dcZ = new BufferedReader(new InputStreamReader(paramInputStream));
+    this.sDs = new LinkedHashMap();
+    this.sDt = new LinkedHashMap();
+    this.sDu = new int[2];
+    this.sDv = new ArrayList();
     this.logTag = (paramString + "HttpParser");
     try
     {
-      bVK();
-      AppMethodBeat.o(229407);
+      cvX();
+      AppMethodBeat.o(328374);
       return;
     }
     catch (IOException paramInputStream)
     {
-      h.log(6, this.logTag, "error parsing request " + h.i(paramInputStream));
-      AppMethodBeat.o(229407);
+      h.log(6, this.logTag, "error parsing request " + h.s(paramInputStream));
+      AppMethodBeat.o(328374);
     }
   }
   
-  private static String L(Map<String, String> paramMap)
+  private static String S(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(229444);
+    AppMethodBeat.i(328429);
     Object localObject = "";
     Iterator localIterator = paramMap.entrySet().iterator();
     for (paramMap = (Map<String, String>)localObject; localIterator.hasNext(); paramMap = paramMap + "\r\n")
@@ -81,13 +81,13 @@ public final class f
       }
       paramMap = (String)localObject + (String)localEntry.getValue();
     }
-    AppMethodBeat.o(229444);
+    AppMethodBeat.o(328429);
     return paramMap;
   }
   
-  public static String M(Map<String, List<String>> paramMap)
+  public static String T(Map<String, List<String>> paramMap)
   {
-    AppMethodBeat.i(229449);
+    AppMethodBeat.i(328437);
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     paramMap = paramMap.entrySet().iterator();
     if (paramMap.hasNext())
@@ -100,27 +100,27 @@ public final class f
       if (i < ((List)localObject).size())
       {
         if (str == null) {
-          break label112;
+          break label115;
         }
-        localLinkedHashMap.put(str.toLowerCase().trim(), ((List)localObject).get(i));
+        localLinkedHashMap.put(str.toLowerCase().trim(), (String)((List)localObject).get(i));
       }
       for (;;)
       {
         i += 1;
         break label70;
         break;
-        label112:
-        localLinkedHashMap.put(str, ((List)localObject).get(i));
+        label115:
+        localLinkedHashMap.put(str, (String)((List)localObject).get(i));
       }
     }
-    paramMap = L(localLinkedHashMap);
-    AppMethodBeat.o(229449);
+    paramMap = S(localLinkedHashMap);
+    AppMethodBeat.o(328437);
     return paramMap;
   }
   
   public static String a(long paramLong1, long paramLong2, long paramLong3, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(229463);
+    AppMethodBeat.i(328453);
     int i;
     int j;
     label27:
@@ -210,9 +210,9 @@ public final class f
       localObject1 = (String)localObject1 + String.format("X-Server: %s\r\n", new Object[] { "VideoProxy 1.4.1" });
       localObject1 = (String)localObject1 + "\r\n";
       if ((i == 0) && (j != 0) && (paramString.equalsIgnoreCase("video/mp4"))) {
-        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvJ.Hv(paramLong3);
+        com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAP.jL(paramLong3);
       }
-      AppMethodBeat.o(229463);
+      AppMethodBeat.o(328453);
       return localObject1;
       i = 0;
       break;
@@ -242,14 +242,14 @@ public final class f
     }
   }
   
-  public static Map<String, String> aiZ(String paramString)
+  public static Map<String, String> abY(String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(229440);
-    if ((!TextUtils.isEmpty(paramString)) && (pyr.containsKey(paramString)))
+    AppMethodBeat.i(328416);
+    if ((!TextUtils.isEmpty(paramString)) && (sDw.containsKey(paramString)))
     {
-      paramString = (Map)pyr.get(paramString);
-      AppMethodBeat.o(229440);
+      paramString = (Map)sDw.get(paramString);
+      AppMethodBeat.o(328416);
       return paramString;
     }
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
@@ -277,21 +277,21 @@ public final class f
       }
       catch (IOException paramString)
       {
-        h.log(5, "HttpParser", h.i(paramString));
+        h.log(5, "HttpParser", h.s(paramString));
       }
       for (;;)
       {
-        AppMethodBeat.o(229440);
+        AppMethodBeat.o(328416);
         return localLinkedHashMap;
-        pyr.put(paramString, localLinkedHashMap);
+        sDw.put(paramString, localLinkedHashMap);
       }
       i += 1;
     }
   }
   
-  public static long[] ajb(String paramString)
+  public static long[] aca(String paramString)
   {
-    AppMethodBeat.i(229464);
+    AppMethodBeat.i(328464);
     if (!TextUtils.isEmpty(paramString))
     {
       Object localObject = RANGE_HEADER_PATTERN.matcher(paramString);
@@ -310,13 +310,13 @@ public final class f
             try
             {
               long l2 = Long.parseLong((String)localObject);
-              AppMethodBeat.o(229464);
+              AppMethodBeat.o(328464);
               return new long[] { l1, l2 };
             }
             catch (NumberFormatException paramString)
             {
               long l1;
-              AppMethodBeat.o(229464);
+              AppMethodBeat.o(328464);
               return new long[] { l1, -2L };
             }
             paramString = paramString;
@@ -325,37 +325,37 @@ public final class f
         }
       }
     }
-    AppMethodBeat.o(229464);
+    AppMethodBeat.o(328464);
     return new long[] { -1L, -1L };
   }
   
-  private void bVK()
+  private void cvX()
   {
-    AppMethodBeat.i(229428);
+    AppMethodBeat.i(328394);
     String[] arrayOfString1 = null;
-    Object localObject = this.bjf.readLine();
+    Object localObject = this.dcZ.readLine();
     h.log(4, this.logTag, "parseRequest:".concat(String.valueOf(localObject)));
     if ((localObject == null) || (((String)localObject).length() == 0))
     {
       h.log(6, this.logTag, "initial is not valid");
-      AppMethodBeat.o(229428);
+      AppMethodBeat.o(328394);
       return;
     }
     if (Character.isWhitespace(((String)localObject).charAt(0)))
     {
       h.log(6, this.logTag, "character first char is whitespace");
-      AppMethodBeat.o(229428);
+      AppMethodBeat.o(328394);
       return;
     }
     String[] arrayOfString2 = ((String)localObject).split("\\s");
     if (arrayOfString2.length != 3)
     {
       h.log(6, this.logTag, "cmd.length is not 3");
-      AppMethodBeat.o(229428);
+      AppMethodBeat.o(328394);
       return;
     }
-    this.pyq.add(localObject);
-    this.pxT = arrayOfString2[0];
+    this.sDv.add(localObject);
+    this.sCY = arrayOfString2[0];
     if ((arrayOfString2[2].indexOf("HTTP/") == 0) && (arrayOfString2[2].indexOf('.') > 5))
     {
       localObject = arrayOfString2[2];
@@ -368,8 +368,8 @@ public final class f
       int i;
       try
       {
-        this.pyp[0] = Integer.parseInt(localObject[0]);
-        this.pyp[1] = Integer.parseInt(localObject[1]);
+        this.sDu[0] = Integer.parseInt(localObject[0]);
+        this.sDu[1] = Integer.parseInt(localObject[1]);
         if ((!arrayOfString2[0].equals("GET")) && (!arrayOfString2[0].equals("HEAD"))) {
           break label464;
         }
@@ -378,7 +378,7 @@ public final class f
           break label540;
         }
         localObject = arrayOfString2[1].substring(i + 1).split("&");
-        this.pyo = new LinkedHashMap();
+        this.sDt = new LinkedHashMap();
         i = 0;
         if (i >= localObject.length) {
           break label540;
@@ -386,7 +386,7 @@ public final class f
         arrayOfString1 = localObject[i].split("=");
         if (arrayOfString1.length == 2)
         {
-          this.pyo.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), URLDecoder.decode(arrayOfString1[1], "UTF-8"));
+          this.sDt.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), URLDecoder.decode(arrayOfString1[1], "UTF-8"));
           i += 1;
           continue;
           localObject = arrayOfString1;
@@ -402,12 +402,12 @@ public final class f
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        h.log(6, this.logTag, "error parsing request NumberFormatException:" + h.i(localNumberFormatException));
-        AppMethodBeat.o(229428);
+        h.log(6, this.logTag, "error parsing request NumberFormatException:" + h.s(localNumberFormatException));
+        AppMethodBeat.o(328394);
         return;
       }
       if ((arrayOfString1.length == 1) && (localNumberFormatException[i].indexOf('=') == localNumberFormatException[i].length() - 1)) {
-        this.pyo.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), "");
+        this.sDt.put(URLDecoder.decode(arrayOfString1[0], "UTF-8"), "");
       }
     }
     label464:
@@ -415,15 +415,15 @@ public final class f
       arrayOfString2[0].equals("CONNECT");
     }
     label540:
-    bVL();
-    AppMethodBeat.o(229428);
+    cvY();
+    AppMethodBeat.o(328394);
   }
   
-  private void bVL()
+  private void cvY()
   {
-    AppMethodBeat.i(229436);
+    AppMethodBeat.i(328404);
     StringBuilder localStringBuilder = new StringBuilder();
-    String str = this.bjf.readLine();
+    String str = this.dcZ.readLine();
     localStringBuilder.append(str).append("|");
     for (;;)
     {
@@ -432,48 +432,48 @@ public final class f
       {
         i = str.indexOf(':');
         if (i < 0) {
-          this.pyn = null;
+          this.sDs = null;
         }
       }
       else
       {
         h.log(4, this.logTag, "parseHeaders:" + localStringBuilder.toString());
-        AppMethodBeat.o(229436);
+        AppMethodBeat.o(328404);
         return;
       }
-      this.pyn.put(str.substring(0, i).toLowerCase().trim(), str.substring(i + 1).trim());
-      this.pyq.add(str);
-      str = this.bjf.readLine();
+      this.sDs.put(str.substring(0, i).toLowerCase().trim(), str.substring(i + 1).trim());
+      this.sDv.add(str);
+      str = this.dcZ.readLine();
       localStringBuilder.append(str).append("|");
     }
   }
   
-  public final String aja(String paramString)
+  public final String abZ(String paramString)
   {
-    AppMethodBeat.i(229454);
-    paramString = (String)this.pyo.get(paramString);
-    AppMethodBeat.o(229454);
+    AppMethodBeat.i(328487);
+    paramString = (String)this.sDt.get(paramString);
+    AppMethodBeat.o(328487);
     return paramString;
   }
   
-  public final String bVM()
+  public final String cvZ()
   {
-    AppMethodBeat.i(229451);
+    AppMethodBeat.i(328481);
     Object localObject = new StringBuilder();
-    Iterator localIterator = this.pyq.iterator();
+    Iterator localIterator = this.sDv.iterator();
     while (localIterator.hasNext())
     {
       ((StringBuilder)localObject).append((String)localIterator.next());
       ((StringBuilder)localObject).append("\n");
     }
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(229451);
+    AppMethodBeat.o(328481);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.f
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class s$1
   implements DialogInterface.OnCancelListener
 {
-  public s$1(f paramf) {}
+  public s$1(g paramg) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
@@ -15,7 +15,7 @@ public final class s$1
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
-    this.EAb.cancel();
+    this.KsP.cancel();
     AppMethodBeat.o(163568);
   }
 }

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import java.util.Objects;
 import org.json.JSONObject;
 
@@ -68,10 +68,10 @@ public class SetFontSizeActionArg
     return i;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145155);
-    super.i(paramParcel);
+    super.k(paramParcel);
     this.size = paramParcel.readInt();
     AppMethodBeat.o(145155);
   }
@@ -80,7 +80,7 @@ public class SetFontSizeActionArg
   {
     AppMethodBeat.i(145156);
     super.parse(paramJSONObject);
-    this.size = g.c(paramJSONObject.optJSONArray("data"), 0);
+    this.size = i.c(paramJSONObject.optJSONArray("data"), 0);
     AppMethodBeat.o(145156);
   }
   
@@ -94,7 +94,7 @@ public class SetFontSizeActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontSizeActionArg
  * JD-Core Version:    0.7.0.1
  */

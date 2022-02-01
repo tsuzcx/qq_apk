@@ -13,17 +13,17 @@ public final class h
     super(paramContext, paramf, paramj);
   }
   
-  public final void H(boolean paramBoolean)
+  public final void L(boolean paramBoolean)
   {
-    AppMethodBeat.i(238016);
-    super.H(paramBoolean);
-    ((androidx.appcompat.view.menu.h)this.nB).H(paramBoolean);
-    AppMethodBeat.o(238016);
+    AppMethodBeat.i(209265);
+    super.L(paramBoolean);
+    ((androidx.appcompat.view.menu.h)this.oA).L(paramBoolean);
+    AppMethodBeat.o(209265);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.internal.h
  * JD-Core Version:    0.7.0.1
  */

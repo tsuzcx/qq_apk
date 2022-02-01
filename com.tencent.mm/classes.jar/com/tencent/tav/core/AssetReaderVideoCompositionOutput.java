@@ -2,6 +2,7 @@ package com.tencent.tav.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tav.asset.AssetTrack;
+import com.tencent.tav.codec.IDecoderFactory;
 import com.tencent.tav.core.compositing.VideoCompositing;
 import com.tencent.tav.core.composition.VideoComposition;
 import com.tencent.tav.coremedia.CMSampleBuffer;
@@ -11,6 +12,7 @@ import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.IDecoderTrack;
 import com.tencent.tav.decoder.IDecoderTrack.SurfaceCreator;
 import com.tencent.tav.decoder.decodecache.CachedVideoDecoderTrack;
+import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.report.AverageTimeReporter;
 import java.util.Iterator;
 import java.util.List;
@@ -19,10 +21,11 @@ import java.util.Map;
 public class AssetReaderVideoCompositionOutput
   extends AssetReaderOutput
 {
+  public static final String TAG = "AssetReaderVideoCompositionOutput";
   private AssetExtension assetExtension;
-  private AssetReader assetReader;
   private IContextCreate contextCreate;
   private VideoCompositing customVideoCompositor;
+  private IDecoderFactory decoderFactory;
   private boolean decoderStarted;
   private int frameRate;
   private boolean readFirstFrame;
@@ -33,9 +36,9 @@ public class AssetReaderVideoCompositionOutput
   private Map<String, Object> videoSettings;
   private List<AssetTrack> videoTracks;
   
-  public AssetReaderVideoCompositionOutput(List<AssetTrack> paramList, Map<String, Object> paramMap, AssetExtension paramAssetExtension)
+  public AssetReaderVideoCompositionOutput(List<AssetTrack> paramList, Map<String, Object> paramMap, AssetExtension paramAssetExtension, IDecoderFactory paramIDecoderFactory)
   {
-    AppMethodBeat.i(188803);
+    AppMethodBeat.i(215103);
     this.customVideoCompositor = new VideoCompositor();
     this.frameRate = -1;
     this.decoderStarted = false;
@@ -48,12 +51,13 @@ public class AssetReaderVideoCompositionOutput
     if ((paramMap != null) && (paramMap.containsKey("frame-rate"))) {
       this.frameRate = ((Integer)paramMap.get("frame-rate")).intValue();
     }
-    AppMethodBeat.o(188803);
+    this.decoderFactory = paramIDecoderFactory;
+    AppMethodBeat.o(215103);
   }
   
   private void tryStartDecoder()
   {
-    AppMethodBeat.i(188804);
+    AppMethodBeat.i(215117);
     IDecoderTrack localIDecoderTrack;
     if (!this.decoderStarted)
     {
@@ -61,30 +65,35 @@ public class AssetReaderVideoCompositionOutput
       this.videoDecoderTrack.setFrameRate(this.frameRate);
       localIDecoderTrack = this.videoDecoderTrack;
       if (this.contextCreate != null) {
-        break label79;
+        break label76;
       }
     }
-    label79:
+    label76:
     for (Object localObject = null;; localObject = this.contextCreate.renderContext())
     {
       localIDecoderTrack.start((IDecoderTrack.SurfaceCreator)localObject);
-      this.videoDecoderTrack.seekTo(this.assetReader.getTimeRange().getStart(), false, true);
-      AppMethodBeat.o(188804);
+      this.videoDecoderTrack.seekTo(this.timeRange.getStart(), false, true);
+      AppMethodBeat.o(215117);
       return;
     }
   }
   
-  AverageTimeReporter getDecodePerformance()
+  public AverageTimeReporter getDecodePerformance()
   {
-    AppMethodBeat.i(188817);
+    AppMethodBeat.i(215288);
     if (this.videoDecoderTrack != null)
     {
       AverageTimeReporter localAverageTimeReporter = this.videoDecoderTrack.getDecodePerformance();
-      AppMethodBeat.o(188817);
+      AppMethodBeat.o(215288);
       return localAverageTimeReporter;
     }
-    AppMethodBeat.o(188817);
+    AppMethodBeat.o(215288);
     return null;
+  }
+  
+  public VideoCompositing getVideoCompositing()
+  {
+    return this.videoCompositing;
   }
   
   public VideoComposition getVideoComposition()
@@ -104,24 +113,24 @@ public class AssetReaderVideoCompositionOutput
   
   public void markConfigurationAsFinal() {}
   
-  public CMSampleBuffer nextSampleBuffer()
+  public CMSampleBuffer nextSampleBuffer(boolean paramBoolean)
   {
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(188806);
+        AppMethodBeat.i(215211);
         if (this.videoDecoderTrack == null) {
-          break label217;
+          break label225;
         }
         tryStartDecoder();
         CMSampleBuffer localCMSampleBuffer1;
         if (this.videoDecoderTrack == null)
         {
           localCMSampleBuffer1 = new CMSampleBuffer(CMSampleState.fromError(-100L));
-          if (localCMSampleBuffer1.getTime().smallThan(this.assetReader.getTimeRange().getStart()))
+          if (localCMSampleBuffer1.getTime().smallThan(this.timeRange.getStart()))
           {
-            AppMethodBeat.o(188806);
+            AppMethodBeat.o(215211);
             return localCMSampleBuffer1;
           }
         }
@@ -132,26 +141,30 @@ public class AssetReaderVideoCompositionOutput
             localCMSampleBuffer1 = this.videoDecoderTrack.readSample();
             continue;
           }
-          localCMSampleBuffer1 = this.videoDecoderTrack.readSample(this.assetReader.getTimeRange().getStart());
+          localCMSampleBuffer1 = this.videoDecoderTrack.readSample(this.timeRange.getStart());
           this.readFirstFrame = true;
           continue;
         }
-        if (!localObject.getTime().smallThan(this.assetReader.getTimeRange().getEnd())) {
-          break label195;
+        if (!localObject1.getTime().smallThan(this.timeRange.getEnd())) {
+          break label203;
         }
       }
       finally {}
-      this.videoDecoderTrack.asyncReadNextSample(localObject.getTime());
-      CMSampleBuffer localCMSampleBuffer2 = new CMSampleBuffer(localObject.getTime().sub(this.assetReader.getTimeRange().getStart()), localObject.getTextureInfo(), localObject.isNewFrame());
-      AppMethodBeat.o(188806);
+      if (paramBoolean) {
+        this.videoDecoderTrack.asyncReadNextSample(localObject1.getTime());
+      }
+      CMSampleBuffer localCMSampleBuffer2 = new CMSampleBuffer(localObject1.getTime().sub(this.timeRange.getStart()), localObject1.getTextureInfo(), localObject1.isNewFrame());
+      localCMSampleBuffer2.getState().performance = localObject1.getState().performance;
+      AppMethodBeat.o(215211);
+      Object localObject2 = localCMSampleBuffer2;
       continue;
-      label195:
-      localCMSampleBuffer2 = new CMSampleBuffer(CMSampleState.fromError(-1L));
-      AppMethodBeat.o(188806);
+      label203:
+      localObject2 = new CMSampleBuffer(CMSampleState.fromError(-1L));
+      AppMethodBeat.o(215211);
       continue;
-      label217:
-      localCMSampleBuffer2 = new CMSampleBuffer(CMSampleState.fromError(-100L));
-      AppMethodBeat.o(188806);
+      label225:
+      localObject2 = new CMSampleBuffer(CMSampleState.fromError(-100L));
+      AppMethodBeat.o(215211);
     }
   }
   
@@ -159,14 +172,28 @@ public class AssetReaderVideoCompositionOutput
   {
     try
     {
-      AppMethodBeat.i(188815);
+      AppMethodBeat.i(215264);
       if (this.videoDecoderTrack != null) {
         this.videoDecoderTrack.release();
       }
-      AppMethodBeat.o(188815);
+      if (this.videoCompositing != null)
+      {
+        this.videoCompositing.release();
+        this.videoCompositing = null;
+      }
+      AppMethodBeat.o(215264);
       return;
     }
     finally {}
+  }
+  
+  public void reset(CMTimeRange paramCMTimeRange)
+  {
+    AppMethodBeat.i(215254);
+    Logger.i("AssetReaderVideoCompositionOutput", "reset %s", new Object[] { paramCMTimeRange });
+    this.timeRange = paramCMTimeRange;
+    this.videoDecoderTrack.seekTo(this.timeRange.getStart(), false, true);
+    AppMethodBeat.o(215254);
   }
   
   public void resetForReadingTimeRanges(List<CMTimeRange> paramList) {}
@@ -186,47 +213,47 @@ public class AssetReaderVideoCompositionOutput
     this.revertMode = paramBoolean;
   }
   
-  void start(IContextCreate paramIContextCreate, AssetReader paramAssetReader)
+  public void start(IContextCreate paramIContextCreate, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(188811);
-    this.assetReader = paramAssetReader;
-    paramAssetReader = new VideoCompositionDecoderTrack(paramAssetReader.getAsset(), this.assetExtension, 1);
+    AppMethodBeat.i(215245);
+    super.start(paramIContextCreate, paramCMTimeRange);
+    paramCMTimeRange = new VideoCompositionDecoderTrack(this.assetExtension, 1, this.decoderFactory);
     int i = this.frameRate;
     Iterator localIterator = this.videoTracks.iterator();
     if (localIterator.hasNext())
     {
       AssetTrack localAssetTrack = (AssetTrack)localIterator.next();
       if ((localAssetTrack == null) || (!localAssetTrack.isEnabled())) {
-        break label202;
+        break label203;
       }
-      paramAssetReader.addTrack(localAssetTrack);
+      paramCMTimeRange.addTrack(localAssetTrack);
       if ((localAssetTrack.getNominalFrameRate() <= 0.0F) || (this.frameRate >= 0)) {
-        break label202;
+        break label203;
       }
       i = (int)Math.min(localAssetTrack.getNominalFrameRate(), i);
     }
-    label202:
+    label203:
     for (;;)
     {
       break;
       if (i > 0) {}
       for (;;)
       {
-        paramAssetReader.setVideoComposition(this.videoComposition);
-        paramAssetReader.setVideoCompositing(this.videoCompositing);
-        paramAssetReader.setFrameRate(i);
-        paramAssetReader.setFrameDuration(new CMTime(1L, i));
+        paramCMTimeRange.setVideoComposition(this.videoComposition);
+        paramCMTimeRange.setVideoCompositing(this.videoCompositing);
+        paramCMTimeRange.setFrameRate(i);
+        paramCMTimeRange.setFrameDuration(new CMTime(1L, i));
         this.contextCreate = paramIContextCreate;
         if (!this.revertMode) {
           break;
         }
-        this.videoDecoderTrack = new CachedVideoDecoderTrack(paramAssetReader, true);
-        AppMethodBeat.o(188811);
+        this.videoDecoderTrack = new CachedVideoDecoderTrack(paramCMTimeRange, true);
+        AppMethodBeat.o(215245);
         return;
         i = 30;
       }
-      this.videoDecoderTrack = paramAssetReader;
-      AppMethodBeat.o(188811);
+      this.videoDecoderTrack = paramCMTimeRange;
+      AppMethodBeat.o(215245);
       return;
     }
   }

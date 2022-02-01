@@ -10,34 +10,34 @@ import java.util.Map;
 
 public final class h
 {
-  public final d pQw;
-  private List<h> pQx;
-  public final String pQy;
+  public final d sUW;
+  public List<h> sUX;
+  public final String sUY;
   
   private h(d paramd, String paramString)
   {
-    this.pQw = paramd;
-    this.pQy = paramString;
+    this.sUW = paramd;
+    this.sUY = paramString;
   }
   
   public static void a(h paramh, b paramb)
   {
-    AppMethodBeat.i(208789);
+    AppMethodBeat.i(319526);
     if (paramh == null)
     {
-      AppMethodBeat.o(208789);
+      AppMethodBeat.o(319526);
       return;
     }
     if (paramb == null)
     {
-      AppMethodBeat.o(208789);
+      AppMethodBeat.o(319526);
       return;
     }
     paramb.a(paramh);
-    paramh = paramh.pQx;
+    paramh = paramh.sUX;
     if ((paramh == null) || (paramh.isEmpty()))
     {
-      AppMethodBeat.o(208789);
+      AppMethodBeat.o(319526);
       return;
     }
     int i = 0;
@@ -46,40 +46,40 @@ public final class h
       a((h)paramh.get(i), paramb);
       i += 1;
     }
-    AppMethodBeat.o(208789);
+    AppMethodBeat.o(319526);
   }
   
   private static boolean a(d paramd)
   {
-    AppMethodBeat.i(208791);
+    AppMethodBeat.i(319543);
     if ((paramd.getType() == 3) || (paramd.getType() == 2))
     {
-      AppMethodBeat.o(208791);
+      AppMethodBeat.o(319543);
       return true;
     }
-    AppMethodBeat.o(208791);
+    AppMethodBeat.o(319543);
     return false;
   }
   
   private void b(h paramh)
   {
-    AppMethodBeat.i(208788);
-    if (!a(this.pQw))
+    AppMethodBeat.i(319522);
+    if (!a(this.sUW))
     {
       Log.e("StepNode", "addChild but not a node group");
-      AppMethodBeat.o(208788);
+      AppMethodBeat.o(319522);
       return;
     }
-    if (this.pQx == null) {
-      this.pQx = new ArrayList();
+    if (this.sUX == null) {
+      this.sUX = new ArrayList();
     }
-    this.pQx.add(paramh);
-    AppMethodBeat.o(208788);
+    this.sUX.add(paramh);
+    AppMethodBeat.o(319522);
   }
   
-  public static h f(List<d> paramList, String paramString)
+  public static h h(List<d> paramList, String paramString)
   {
-    AppMethodBeat.i(208790);
+    AppMethodBeat.i(319539);
     h localh1 = new h(new a(), "");
     localh1.b(new h((d)paramList.get(0), ""));
     HashMap localHashMap = new HashMap();
@@ -87,10 +87,10 @@ public final class h
     if (i < paramList.size() - 1)
     {
       d locald = (d)paramList.get(i);
-      int j = locald.bZq();
+      int j = locald.czC();
       if (j <= 0)
       {
-        j = locald.bZp();
+        j = locald.czB();
         localObject = new h(locald, "");
         localh1.b((h)localObject);
         localHashMap.put(Integer.valueOf(j), localObject);
@@ -101,9 +101,9 @@ public final class h
         i += 1;
         break;
         localh2 = (h)localHashMap.get(Integer.valueOf(j));
-        if ((localh2 != null) && ((Util.isNullOrNil(locald.bZr())) || (Util.isNullOrNil(paramString)) || (paramString.equals(locald.bZr()))))
+        if ((localh2 != null) && ((Util.isNullOrNil(locald.czD())) || (Util.isNullOrNil(paramString)) || (paramString.equals(locald.czD()))))
         {
-          if (a(localh2.pQw)) {
+          if (a(localh2.sUW)) {
             break label250;
           }
           Log.e("StepNode", "addChild but not a node group");
@@ -112,27 +112,27 @@ public final class h
           if (!a(locald)) {
             break label368;
           }
-          localHashMap.put(Integer.valueOf(locald.bZp()), localObject);
+          localHashMap.put(Integer.valueOf(locald.czB()), localObject);
         }
       }
       label250:
-      if (localh2.pQx == null) {
-        localh2.pQx = new ArrayList();
+      if (localh2.sUX == null) {
+        localh2.sUX = new ArrayList();
       }
-      if (localh2.pQw.getType() == 3)
+      if (localh2.sUW.getType() == 3)
       {
         localObject = "-";
         label288:
-        if (Util.isNullOrNil(localh2.pQy)) {
+        if (Util.isNullOrNil(localh2.sUY)) {
           break label377;
         }
       }
       label368:
       label377:
-      for (Object localObject = String.format("%s%s%d", new Object[] { localh2.pQy, localObject, Integer.valueOf(localh2.pQx.size() + 1) });; localObject = String.format("%d", new Object[] { Integer.valueOf(localh2.pQx.size() + 1) }))
+      for (Object localObject = String.format("%s%s%d", new Object[] { localh2.sUY, localObject, Integer.valueOf(localh2.sUX.size() + 1) });; localObject = String.format("%d", new Object[] { Integer.valueOf(localh2.sUX.size() + 1) }))
       {
         localObject = new h(locald, (String)localObject);
-        localh2.pQx.add(localObject);
+        localh2.sUX.add(localObject);
         break label219;
         break;
         localObject = ".";
@@ -140,19 +140,14 @@ public final class h
       }
     }
     localh1.b(new h((d)paramList.get(paramList.size() - 1), ""));
-    AppMethodBeat.o(208790);
+    AppMethodBeat.o(319539);
     return localh1;
   }
   
-  public final List<h> bZs()
+  public final a czE()
   {
-    return this.pQx;
-  }
-  
-  public final a bZt()
-  {
-    if ((this.pQw instanceof a)) {
-      return (a)this.pQw;
+    if ((this.sUW instanceof a)) {
+      return (a)this.sUW;
     }
     return null;
   }
@@ -168,7 +163,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.base.h
  * JD-Core Version:    0.7.0.1
  */

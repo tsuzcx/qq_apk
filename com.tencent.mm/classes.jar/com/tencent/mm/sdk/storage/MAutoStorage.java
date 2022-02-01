@@ -165,6 +165,11 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
     return arrayOfString;
   }
   
+  public int delete(String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return this.db.delete(paramString1, paramString2, paramArrayOfString);
+  }
+  
   public boolean delete(long paramLong)
   {
     return deleteNotify(paramLong, true);
@@ -174,8 +179,8 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
   {
     boolean bool1 = false;
     boolean bool2 = false;
-    paramT = paramT.convertTo();
-    if ((paramT == null) || (paramT.size() <= 0)) {
+    ContentValues localContentValues = paramT.convertTo();
+    if ((localContentValues == null) || (localContentValues.size() <= 0)) {
       LOGE("delete failed, value.size <= 0");
     }
     do
@@ -187,24 +192,24 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
           break;
         }
         LOGD("delete with primary key");
-        if (this.db.delete(getTableName(), this.dbInfo.primaryKey + " = ?", new String[] { Util.nullAsNil(paramT.getAsString(this.dbInfo.primaryKey)) }) > 0) {
+        if (this.db.delete(getTableName(), this.dbInfo.primaryKey + " = ?", new String[] { Util.nullAsNil(localContentValues.getAsString(this.dbInfo.primaryKey)) }) > 0) {
           bool1 = true;
         }
         bool2 = bool1;
       } while (!bool1);
       bool2 = bool1;
     } while (!paramBoolean);
-    doNotify();
+    doNotify(localContentValues.getAsString(this.dbInfo.primaryKey), 5, paramT);
     return bool1;
-    StringBuilder localStringBuilder = checkKeysWithValues(paramT, paramVarArgs);
+    StringBuilder localStringBuilder = checkKeysWithValues(localContentValues, paramVarArgs);
     if (localStringBuilder == null)
     {
       LOGE("delete failed, check keys failed");
       return false;
     }
-    if ((this.db.delete(getTableName(), localStringBuilder.toString(), valuesFromKeys(paramVarArgs, paramT)) > 0) && (paramBoolean))
+    if ((this.db.delete(getTableName(), localStringBuilder.toString(), valuesFromKeys(paramVarArgs, localContentValues)) > 0) && (paramBoolean))
     {
-      doNotify(this.dbInfo.primaryKey);
+      doNotify(localContentValues.getAsString(this.dbInfo.primaryKey), 5, paramT);
       return true;
     }
     LOGE("delete failed");
@@ -223,7 +228,7 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
     for (;;)
     {
       if ((bool) && (paramBoolean)) {
-        doNotify();
+        doNotify("*", 5, null);
       }
       return bool;
       bool = false;
@@ -346,7 +351,7 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
     }
     localContentValues.put("rowid", Long.valueOf(paramT.systemRowid));
     if (paramBoolean) {
-      doNotify(localContentValues.getAsString(this.dbInfo.primaryKey));
+      doNotify(localContentValues.getAsString(this.dbInfo.primaryKey), 2, paramT);
     }
     return true;
   }
@@ -405,7 +410,7 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
     }
     if ((bool1) && (paramBoolean))
     {
-      doNotify(this.dbInfo.primaryKey);
+      doNotify(this.dbInfo.primaryKey, 4, paramT);
       return true;
     }
     if (!bool1) {
@@ -421,23 +426,23 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
   
   public boolean update(long paramLong, T paramT, boolean paramBoolean)
   {
-    paramT = paramT.convertTo();
+    ContentValues localContentValues = paramT.convertTo();
     boolean bool2;
-    if ((paramT == null) || (paramT.size() <= 0))
+    if ((localContentValues == null) || (localContentValues.size() <= 0))
     {
       LOGE("update failed, value.size <= 0");
       bool2 = false;
       return bool2;
     }
     Cursor localCursor = this.db.query(getTableName(), this.dbInfo.columns, "rowid = ?", new String[] { String.valueOf(paramLong) }, null, null, null);
-    if (IAutoDBItem.checkIOEqual(paramT, localCursor))
+    if (IAutoDBItem.checkIOEqual(localContentValues, localCursor))
     {
       localCursor.close();
       LOGD("no need replace , fields no change");
       return true;
     }
     localCursor.close();
-    if (this.db.update(getTableName(), paramT, "rowid = ?", new String[] { String.valueOf(paramLong) }) > 0) {}
+    if (this.db.update(getTableName(), localContentValues, "rowid = ?", new String[] { String.valueOf(paramLong) }) > 0) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       bool2 = bool1;
@@ -448,7 +453,7 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
       if (!paramBoolean) {
         break;
       }
-      doNotify();
+      doNotify("*", 3, paramT);
       return bool1;
     }
   }
@@ -462,8 +467,8 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
   {
     boolean bool1 = false;
     boolean bool2 = false;
-    paramT = paramT.convertTo();
-    if ((paramT == null) || (paramT.size() <= 0)) {
+    ContentValues localContentValues = paramT.convertTo();
+    if ((localContentValues == null) || (localContentValues.size() <= 0)) {
       LOGE("update failed, value.size <= 0");
     }
     do
@@ -475,30 +480,30 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
           break;
         }
         LOGD("update with primary key");
-        if (checkOld(paramT))
+        if (checkOld(localContentValues))
         {
           LOGD("no need replace , fields no change");
           return true;
         }
-        if (this.db.update(getTableName(), paramT, this.dbInfo.primaryKey + " = ?", new String[] { Util.nullAsNil(paramT.getAsString(this.dbInfo.primaryKey)) }) > 0) {
+        if (this.db.update(getTableName(), localContentValues, this.dbInfo.primaryKey + " = ?", new String[] { Util.nullAsNil(localContentValues.getAsString(this.dbInfo.primaryKey)) }) > 0) {
           bool1 = true;
         }
         bool2 = bool1;
       } while (!bool1);
       bool2 = bool1;
     } while (!paramBoolean);
-    doNotify();
+    doNotify(localContentValues.getAsString(this.dbInfo.primaryKey), 3, paramT);
     return bool1;
-    StringBuilder localStringBuilder = checkKeysWithValues(paramT, paramVarArgs);
+    StringBuilder localStringBuilder = checkKeysWithValues(localContentValues, paramVarArgs);
     if (localStringBuilder == null)
     {
       LOGE("update failed, check keys failed");
       return false;
     }
-    if (this.db.update(getTableName(), paramT, localStringBuilder.toString(), valuesFromKeys(paramVarArgs, paramT)) > 0)
+    if (this.db.update(getTableName(), localContentValues, localStringBuilder.toString(), valuesFromKeys(paramVarArgs, localContentValues)) > 0)
     {
       if (paramBoolean) {
-        doNotify(paramT.getAsString(this.dbInfo.primaryKey));
+        doNotify(localContentValues.getAsString(this.dbInfo.primaryKey), 3, paramT);
       }
       return true;
     }
@@ -508,7 +513,7 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.MAutoStorage
  * JD-Core Version:    0.7.0.1
  */

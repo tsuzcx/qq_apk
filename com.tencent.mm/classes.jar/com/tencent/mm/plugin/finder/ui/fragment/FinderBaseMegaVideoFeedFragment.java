@@ -1,43 +1,45 @@
 package com.tencent.mm.plugin.finder.ui.fragment;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.megavideo.ui.a.a;
 import com.tencent.mm.plugin.finder.megavideo.ui.a.b;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
+import com.tencent.mm.plugin.findersdk.a.bw;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
 import java.util.Set;
-import kotlin.f;
-import kotlin.g;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderBaseMegaVideoFeedFragment;", "M", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "V", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "getActivity", "()Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "activity$delegate", "Lkotlin/Lazy;", "getLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initOnCreate", "", "onBackPressed", "", "onDestroy", "onPause", "onResume", "onViewCreated", "view", "Landroid/view/View;", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
-public abstract class FinderBaseMegaVideoFeedFragment<M extends BaseFeedLoader<bu>, V extends a.b, P extends a.a>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderBaseMegaVideoFeedFragment;", "M", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "V", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "getActivity", "()Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "activity$delegate", "Lkotlin/Lazy;", "getLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initOnCreate", "", "onBackPressed", "", "onDestroy", "onPause", "onResume", "onViewCreated", "view", "Landroid/view/View;", "savedInstanceState", "Landroid/os/Bundle;", "updateTitle", "count", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class FinderBaseMegaVideoFeedFragment<M extends BaseFeedLoader<cc>, V extends a.b, P extends a.a>
   extends FinderHomeTabFragment
 {
-  private final f Ayb = g.ar((a)new a(this));
-  private HashMap _$_findViewCache;
+  private final j FXy = k.cm((a)new a(this));
   
-  public void _$_clearFindViewByIdCache()
+  public void Og(int paramInt)
   {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    if (((bw)h.ax(bw.class)).aBu()) {
+      fcO().setMMSubTitle(fcO().getResources().getString(e.h.finder_teen_mode_sub_tip));
     }
   }
   
-  public abstract P dJS();
+  public abstract P eIr();
   
-  public abstract V dNf();
+  public abstract V eIs();
   
-  public final MMFinderUI ebI()
+  public final MMFinderUI fcO()
   {
-    return (MMFinderUI)this.Ayb.getValue();
+    return (MMFinderUI)this.FXy.getValue();
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
@@ -49,42 +51,42 @@ public abstract class FinderBaseMegaVideoFeedFragment<M extends BaseFeedLoader<b
   
   public final boolean onBackPressed()
   {
-    dJS();
-    return false;
+    eIr();
+    return a.a.onBackPressed();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    dJS().onDetach();
+    eIr().onDetach();
   }
   
   public void onPause()
   {
     super.onPause();
-    dJS();
+    eIr();
   }
   
   public void onResume()
   {
     super.onResume();
-    dJS();
+    eIr();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    p.k(paramView, "view");
+    s.u(paramView, "view");
     super.onViewCreated(paramView, paramBundle);
     initOnCreate();
-    dJS().a(dNf());
+    eIr().a(eIs());
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "M", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "V", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "M", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "V", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$Presenter;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
+    extends u
     implements a<MMFinderUI>
   {
-    a(FinderBaseMegaVideoFeedFragment paramFinderBaseMegaVideoFeedFragment)
+    a(FinderBaseMegaVideoFeedFragment<M, V, P> paramFinderBaseMegaVideoFeedFragment)
     {
       super();
     }

@@ -1,35 +1,35 @@
 package com.tencent.mm.sticker.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.protocal.protobuf.bwz;
-import com.tencent.mm.protocal.protobuf.bxa;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
-import kotlin.l;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.cmc;
+import com.tencent.mm.protocal.protobuf.cmd;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/task/CgiGetLensInfo;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetLensInfoResponse;", "lensId", "", "(Ljava/lang/String;)V", "getLensId", "()Ljava/lang/String;", "plugin-sticker_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sticker/task/CgiGetLensInfo;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetLensInfoResponse;", "lensId", "", "(Ljava/lang/String;)V", "getLensId", "()Ljava/lang/String;", "plugin-sticker_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends c<bxa>
+  extends b<cmd>
 {
-  private final String uTz;
+  private final String ygo;
   
   public a(String paramString)
   {
     AppMethodBeat.i(105981);
-    this.uTz = paramString;
-    paramString = new bwz();
-    bxa localbxa = new bxa();
-    paramString.LensId = this.uTz;
-    localbxa.setBaseResponse(new jh());
-    localbxa.BaseResponse.Tef = new eaf();
-    d.a locala = new d.a();
-    locala.c((com.tencent.mm.cd.a)paramString);
-    locala.d((com.tencent.mm.cd.a)localbxa);
-    locala.TW("/cgi-bin/micromsg-bin/getlensinfo");
-    locala.vD(3903);
-    c(locala.bgN());
+    this.ygo = paramString;
+    paramString = new cmc();
+    cmd localcmd = new cmd();
+    paramString.LensId = this.ygo;
+    localcmd.setBaseResponse(new kd());
+    localcmd.BaseResponse.akjO = new etl();
+    c.a locala = new c.a();
+    locala.otE = ((com.tencent.mm.bx.a)paramString);
+    locala.otF = ((com.tencent.mm.bx.a)localcmd);
+    locala.uri = "/cgi-bin/micromsg-bin/getlensinfo";
+    locala.funcId = 3903;
+    c(locala.bEF());
     AppMethodBeat.o(105981);
   }
 }

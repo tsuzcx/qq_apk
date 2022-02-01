@@ -20,36 +20,36 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class f
 {
-  private final Object aFj;
-  final ExecutorService aFk;
-  private final Map<String, g> aFl;
-  final ServerSocket aFm;
-  private final Thread aFn;
-  private final c aFo;
+  private final Object cAV;
+  final ExecutorService cAW;
+  private final Map<String, g> cAX;
+  final ServerSocket cAY;
+  private final Thread cAZ;
+  private final c cBa;
   private final int port;
   
   private f(c paramc)
   {
     AppMethodBeat.i(183572);
-    this.aFj = new Object();
-    this.aFk = Executors.newFixedThreadPool(8);
-    this.aFl = new ConcurrentHashMap();
-    this.aFo = ((c)l.checkNotNull(paramc));
+    this.cAV = new Object();
+    this.cAW = Executors.newFixedThreadPool(8);
+    this.cAX = new ConcurrentHashMap();
+    this.cBa = ((c)l.checkNotNull(paramc));
     try
     {
-      this.aFm = new ServerSocket(0, 8, InetAddress.getByName("127.0.0.1"));
-      this.port = this.aFm.getLocalPort();
-      i.l("127.0.0.1", this.port);
+      this.cAY = new ServerSocket(0, 8, InetAddress.getByName("127.0.0.1"));
+      this.port = this.cAY.getLocalPort();
+      i.s("127.0.0.1", this.port);
       paramc = new CountDownLatch(1);
-      this.aFn = new Thread(new c(paramc));
-      this.aFn.start();
+      this.cAZ = new Thread(new c(paramc));
+      this.cAZ.start();
       paramc.await();
       AppMethodBeat.o(183572);
       return;
     }
     catch (InterruptedException paramc)
     {
-      this.aFk.shutdown();
+      this.cAW.shutdown();
       paramc = new IllegalStateException("Error starting local proxy server", paramc);
       AppMethodBeat.o(183572);
       throw paramc;
@@ -86,7 +86,7 @@ public final class f
     //   40: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: return
     //   44: astore_1
-    //   45: invokestatic 165	com/b/a/k:pn	()V
+    //   45: invokestatic 165	com/b/a/k:OU	()V
     //   48: goto -32 -> 16
     //   51: astore_1
     //   52: new 167	com/b/a/n
@@ -95,10 +95,10 @@ public final class f
     //   58: aload_1
     //   59: invokespecial 170	com/b/a/n:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   62: pop
-    //   63: invokestatic 173	com/b/a/k:pq	()V
+    //   63: invokestatic 173	com/b/a/k:OX	()V
     //   66: goto -50 -> 16
     //   69: astore_1
-    //   70: invokestatic 176	com/b/a/k:pp	()V
+    //   70: invokestatic 176	com/b/a/k:OW	()V
     //   73: goto -46 -> 27
     //   76: astore_0
     //   77: new 167	com/b/a/n
@@ -107,7 +107,7 @@ public final class f
     //   83: aload_0
     //   84: invokespecial 170	com/b/a/n:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   87: pop
-    //   88: invokestatic 173	com/b/a/k:pq	()V
+    //   88: invokestatic 173	com/b/a/k:OX	()V
     //   91: ldc 139
     //   93: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   96: return
@@ -125,25 +125,37 @@ public final class f
     //   27	38	76	java/io/IOException
   }
   
-  private File aR(String paramString)
+  private File ce(String paramString)
   {
     AppMethodBeat.i(183573);
-    paramString = new File(this.aFo.aEY, this.aFo.aEZ.aW(paramString));
+    paramString = new File(this.cBa.cAK, this.cBa.cAL.cj(paramString));
     AppMethodBeat.o(183573);
     return paramString;
   }
   
-  public final String aQ(String paramString)
+  final int OP()
   {
-    AppMethodBeat.i(186246);
-    if (aR(paramString).exists())
+    AppMethodBeat.i(183575);
+    synchronized (this.cAV)
     {
-      paramString = aR(paramString);
+      Iterator localIterator = this.cAX.values().iterator();
+      for (int i = 0; localIterator.hasNext(); i = ((g)localIterator.next()).cBe.get() + i) {}
+      AppMethodBeat.o(183575);
+      return i;
+    }
+  }
+  
+  public final String cd(String paramString)
+  {
+    AppMethodBeat.i(207405);
+    if (ce(paramString).exists())
+    {
+      paramString = ce(paramString);
       try
       {
-        this.aFo.aFa.q(paramString);
+        this.cBa.cAM.s(paramString);
         paramString = Uri.fromFile(paramString).toString();
-        AppMethodBeat.o(186246);
+        AppMethodBeat.o(207405);
         return paramString;
       }
       catch (IOException localIOException)
@@ -151,52 +163,40 @@ public final class f
         for (;;)
         {
           "Error touching file ".concat(String.valueOf(paramString));
-          k.pq();
+          k.OX();
         }
       }
     }
-    paramString = String.format(Locale.US, "http://%s:%d/%s", new Object[] { "127.0.0.1", Integer.valueOf(this.port), o.aT(paramString) });
-    AppMethodBeat.o(186246);
+    paramString = String.format(Locale.US, "http://%s:%d/%s", new Object[] { "127.0.0.1", Integer.valueOf(this.port), o.cg(paramString) });
+    AppMethodBeat.o(207405);
     return paramString;
   }
   
-  final g aS(String paramString)
+  final g cf(String paramString)
   {
     AppMethodBeat.i(183574);
-    synchronized (this.aFj)
+    synchronized (this.cAV)
     {
-      g localg2 = (g)this.aFl.get(paramString);
+      g localg2 = (g)this.cAX.get(paramString);
       g localg1 = localg2;
       if (localg2 == null)
       {
-        localg1 = new g(paramString, this.aFo);
-        this.aFl.put(paramString, localg1);
+        localg1 = new g(paramString, this.cBa);
+        this.cAX.put(paramString, localg1);
       }
       AppMethodBeat.o(183574);
       return localg1;
     }
   }
   
-  final int pi()
-  {
-    AppMethodBeat.i(183575);
-    synchronized (this.aFj)
-    {
-      Iterator localIterator = this.aFl.values().iterator();
-      for (int i = 0; localIterator.hasNext(); i = ((g)localIterator.next()).aFs.get() + i) {}
-      AppMethodBeat.o(183575);
-      return i;
-    }
-  }
-  
   final class b
     implements Runnable
   {
-    private final Socket aFp;
+    private final Socket cBb;
     
     public b(Socket paramSocket)
     {
-      this.aFp = paramSocket;
+      this.cBb = paramSocket;
     }
     
     /* Error */
@@ -206,35 +206,35 @@ public final class f
       //   0: ldc 31
       //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 17	com/b/a/f$b:aFq	Lcom/b/a/f;
+      //   6: getfield 17	com/b/a/f$b:cBc	Lcom/b/a/f;
       //   9: astore 11
       //   11: aload_0
-      //   12: getfield 22	com/b/a/f$b:aFp	Ljava/net/Socket;
+      //   12: getfield 22	com/b/a/f$b:cBb	Ljava/net/Socket;
       //   15: astore 12
       //   17: aload 12
       //   19: invokevirtual 43	java/net/Socket:getInputStream	()Ljava/io/InputStream;
-      //   22: invokestatic 49	com/b/a/d:e	(Ljava/io/InputStream;)Lcom/b/a/d;
+      //   22: invokestatic 49	com/b/a/d:o	(Ljava/io/InputStream;)Lcom/b/a/d;
       //   25: astore 14
       //   27: ldc 51
       //   29: aload 14
       //   31: invokestatic 57	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
       //   34: invokevirtual 61	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
       //   37: pop
-      //   38: invokestatic 66	com/b/a/k:pn	()V
+      //   38: invokestatic 66	com/b/a/k:OU	()V
       //   41: aload 11
       //   43: aload 14
       //   45: getfield 70	com/b/a/d:uri	Ljava/lang/String;
-      //   48: invokestatic 75	com/b/a/o:aU	(Ljava/lang/String;)Ljava/lang/String;
-      //   51: invokevirtual 79	com/b/a/f:aS	(Ljava/lang/String;)Lcom/b/a/g;
+      //   48: invokestatic 75	com/b/a/o:ch	(Ljava/lang/String;)Ljava/lang/String;
+      //   51: invokevirtual 79	com/b/a/f:cf	(Ljava/lang/String;)Lcom/b/a/g;
       //   54: astore 13
       //   56: aload 13
-      //   58: invokevirtual 84	com/b/a/g:pj	()V
+      //   58: invokevirtual 84	com/b/a/g:OQ	()V
       //   61: aload 13
-      //   63: getfield 88	com/b/a/g:aFs	Ljava/util/concurrent/atomic/AtomicInteger;
+      //   63: getfield 88	com/b/a/g:cBe	Ljava/util/concurrent/atomic/AtomicInteger;
       //   66: invokevirtual 94	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
       //   69: pop
       //   70: aload 13
-      //   72: getfield 98	com/b/a/g:aFt	Lcom/b/a/e;
+      //   72: getfield 98	com/b/a/g:cBf	Lcom/b/a/e;
       //   75: astore 15
       //   77: new 100	java/io/BufferedOutputStream
       //   80: dup
@@ -243,8 +243,8 @@ public final class f
       //   86: invokespecial 107	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
       //   89: astore 16
       //   91: aload 15
-      //   93: getfield 113	com/b/a/e:aFg	Lcom/b/a/h;
-      //   96: invokevirtual 119	com/b/a/h:pm	()Ljava/lang/String;
+      //   93: getfield 113	com/b/a/e:cAS	Lcom/b/a/h;
+      //   96: invokevirtual 119	com/b/a/h:OT	()Ljava/lang/String;
       //   99: astore 17
       //   101: aload 17
       //   103: invokestatic 125	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -252,26 +252,26 @@ public final class f
       //   109: iconst_1
       //   110: istore_1
       //   111: aload 15
-      //   113: getfield 129	com/b/a/e:aFh	Lcom/b/a/a/b;
+      //   113: getfield 129	com/b/a/e:cAT	Lcom/b/a/a/b;
       //   116: invokevirtual 135	com/b/a/a/b:isCompleted	()Z
       //   119: ifeq +339 -> 458
       //   122: aload 15
-      //   124: getfield 129	com/b/a/e:aFh	Lcom/b/a/a/b;
+      //   124: getfield 129	com/b/a/e:cAT	Lcom/b/a/a/b;
       //   127: invokevirtual 139	com/b/a/a/b:available	()J
       //   130: lstore 4
       //   132: goto +493 -> 625
       //   135: aload 14
-      //   137: getfield 143	com/b/a/d:aFf	Z
+      //   137: getfield 143	com/b/a/d:cAR	Z
       //   140: ifeq +507 -> 647
       //   143: lload 4
       //   145: aload 14
-      //   147: getfield 147	com/b/a/d:aFe	J
+      //   147: getfield 147	com/b/a/d:cAQ	J
       //   150: lsub
       //   151: lstore 6
       //   153: iload_2
       //   154: ifeq +500 -> 654
       //   157: aload 14
-      //   159: getfield 143	com/b/a/d:aFf	Z
+      //   159: getfield 143	com/b/a/d:cAR	Z
       //   162: ifeq +492 -> 654
       //   165: iconst_1
       //   166: istore_3
@@ -280,7 +280,7 @@ public final class f
       //   171: invokespecial 150	java/lang/StringBuilder:<init>	()V
       //   174: astore 18
       //   176: aload 14
-      //   178: getfield 143	com/b/a/d:aFf	Z
+      //   178: getfield 143	com/b/a/d:cAR	Z
       //   181: ifeq +478 -> 659
       //   184: ldc 152
       //   186: astore 10
@@ -314,7 +314,7 @@ public final class f
       //   244: dup
       //   245: iconst_0
       //   246: aload 14
-      //   248: getfield 147	com/b/a/d:aFe	J
+      //   248: getfield 147	com/b/a/d:cAQ	J
       //   251: invokestatic 165	java/lang/Long:valueOf	(J)Ljava/lang/Long;
       //   254: aastore
       //   255: dup
@@ -357,10 +357,10 @@ public final class f
       //   326: invokevirtual 184	java/lang/String:getBytes	(Ljava/lang/String;)[B
       //   329: invokevirtual 190	java/io/OutputStream:write	([B)V
       //   332: aload 14
-      //   334: getfield 147	com/b/a/d:aFe	J
+      //   334: getfield 147	com/b/a/d:cAQ	J
       //   337: lstore 4
       //   339: aload 15
-      //   341: getfield 113	com/b/a/e:aFg	Lcom/b/a/h;
+      //   341: getfield 113	com/b/a/e:cAS	Lcom/b/a/h;
       //   344: invokevirtual 193	com/b/a/h:length	()J
       //   347: lstore 6
       //   349: lload 6
@@ -370,16 +370,16 @@ public final class f
       //   356: iconst_1
       //   357: istore_1
       //   358: aload 15
-      //   360: getfield 129	com/b/a/e:aFh	Lcom/b/a/a/b;
+      //   360: getfield 129	com/b/a/e:cAT	Lcom/b/a/a/b;
       //   363: invokevirtual 139	com/b/a/a/b:available	()J
       //   366: lstore 8
       //   368: iload_1
       //   369: ifeq +268 -> 637
       //   372: aload 14
-      //   374: getfield 143	com/b/a/d:aFf	Z
+      //   374: getfield 143	com/b/a/d:cAR	Z
       //   377: ifeq +260 -> 637
       //   380: aload 14
-      //   382: getfield 147	com/b/a/d:aFe	J
+      //   382: getfield 147	com/b/a/d:cAQ	J
       //   385: l2f
       //   386: lload 8
       //   388: l2f
@@ -396,9 +396,9 @@ public final class f
       //   407: aload 15
       //   409: aload 16
       //   411: lload 4
-      //   413: invokevirtual 198	com/b/a/e:a	(Ljava/io/OutputStream;J)V
+      //   413: invokevirtual 197	com/b/a/e:b	(Ljava/io/OutputStream;J)V
       //   416: aload 13
-      //   418: invokevirtual 201	com/b/a/g:pk	()V
+      //   418: invokevirtual 200	com/b/a/g:OR	()V
       //   421: aload 12
       //   423: invokestatic 204	com/b/a/f:a	(Ljava/net/Socket;)V
       //   426: new 149	java/lang/StringBuilder
@@ -406,35 +406,35 @@ public final class f
       //   430: ldc 206
       //   432: invokespecial 209	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   435: aload 11
-      //   437: invokevirtual 212	com/b/a/f:pi	()I
+      //   437: invokevirtual 212	com/b/a/f:OP	()I
       //   440: invokevirtual 215	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
       //   443: pop
-      //   444: invokestatic 66	com/b/a/k:pn	()V
+      //   444: invokestatic 66	com/b/a/k:OU	()V
       //   447: ldc 31
-      //   449: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   449: invokestatic 217	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   452: return
       //   453: iconst_0
       //   454: istore_1
       //   455: goto -344 -> 111
       //   458: aload 15
-      //   460: getfield 113	com/b/a/e:aFg	Lcom/b/a/h;
+      //   460: getfield 113	com/b/a/e:cAS	Lcom/b/a/h;
       //   463: invokevirtual 193	com/b/a/h:length	()J
       //   466: lstore 4
       //   468: goto +157 -> 625
       //   471: aload 15
       //   473: aload 16
       //   475: lload 4
-      //   477: invokevirtual 220	com/b/a/e:b	(Ljava/io/OutputStream;J)V
+      //   477: invokevirtual 220	com/b/a/e:c	(Ljava/io/OutputStream;J)V
       //   480: goto -64 -> 416
       //   483: astore 10
       //   485: aload 13
-      //   487: invokevirtual 201	com/b/a/g:pk	()V
+      //   487: invokevirtual 200	com/b/a/g:OR	()V
       //   490: ldc 31
-      //   492: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   492: invokestatic 217	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   495: aload 10
       //   497: athrow
       //   498: astore 10
-      //   500: invokestatic 66	com/b/a/k:pn	()V
+      //   500: invokestatic 66	com/b/a/k:OU	()V
       //   503: aload 12
       //   505: invokestatic 204	com/b/a/f:a	(Ljava/net/Socket;)V
       //   508: new 149	java/lang/StringBuilder
@@ -442,12 +442,12 @@ public final class f
       //   512: ldc 206
       //   514: invokespecial 209	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   517: aload 11
-      //   519: invokevirtual 212	com/b/a/f:pi	()I
+      //   519: invokevirtual 212	com/b/a/f:OP	()I
       //   522: invokevirtual 215	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
       //   525: pop
-      //   526: invokestatic 66	com/b/a/k:pn	()V
+      //   526: invokestatic 66	com/b/a/k:OU	()V
       //   529: ldc 31
-      //   531: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   531: invokestatic 217	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   534: return
       //   535: astore 10
       //   537: new 28	com/b/a/n
@@ -456,7 +456,7 @@ public final class f
       //   543: aload 10
       //   545: invokespecial 225	com/b/a/n:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
       //   548: pop
-      //   549: invokestatic 228	com/b/a/k:pq	()V
+      //   549: invokestatic 228	com/b/a/k:OX	()V
       //   552: aload 12
       //   554: invokestatic 204	com/b/a/f:a	(Ljava/net/Socket;)V
       //   557: new 149	java/lang/StringBuilder
@@ -464,12 +464,12 @@ public final class f
       //   561: ldc 206
       //   563: invokespecial 209	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   566: aload 11
-      //   568: invokevirtual 212	com/b/a/f:pi	()I
+      //   568: invokevirtual 212	com/b/a/f:OP	()I
       //   571: invokevirtual 215	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
       //   574: pop
-      //   575: invokestatic 66	com/b/a/k:pn	()V
+      //   575: invokestatic 66	com/b/a/k:OU	()V
       //   578: ldc 31
-      //   580: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   580: invokestatic 217	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   583: return
       //   584: astore 10
       //   586: aload 12
@@ -479,12 +479,12 @@ public final class f
       //   595: ldc 206
       //   597: invokespecial 209	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   600: aload 11
-      //   602: invokevirtual 212	com/b/a/f:pi	()I
+      //   602: invokevirtual 212	com/b/a/f:OP	()I
       //   605: invokevirtual 215	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
       //   608: pop
-      //   609: invokestatic 66	com/b/a/k:pn	()V
+      //   609: invokestatic 66	com/b/a/k:OU	()V
       //   612: ldc 31
-      //   614: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   614: invokestatic 217	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   617: aload 10
       //   619: athrow
       //   620: astore 10
@@ -589,33 +589,33 @@ public final class f
   final class c
     implements Runnable
   {
-    private final CountDownLatch aFr;
+    private final CountDownLatch cBd;
     
     public c(CountDownLatch paramCountDownLatch)
     {
-      this.aFr = paramCountDownLatch;
+      this.cBd = paramCountDownLatch;
     }
     
     public final void run()
     {
       AppMethodBeat.i(183571);
-      this.aFr.countDown();
+      this.cBd.countDown();
       f localf = f.this;
       try
       {
         while (!Thread.currentThread().isInterrupted())
         {
-          Socket localSocket = localf.aFm.accept();
+          Socket localSocket = localf.cAY.accept();
           "Accept new socket ".concat(String.valueOf(localSocket));
-          k.pn();
-          localf.aFk.submit(new f.b(localf, localSocket));
+          k.OU();
+          localf.cAW.submit(new f.b(localf, localSocket));
         }
         AppMethodBeat.o(183571);
       }
       catch (IOException localIOException)
       {
         new n("Error during waiting connection", localIOException);
-        k.pq();
+        k.OX();
         AppMethodBeat.o(183571);
         return;
       }
@@ -624,7 +624,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.b.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class MimeTypeUtil
 {
@@ -30,8 +28,8 @@ public class MimeTypeUtil
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
-      localHashMap1.put(localPair.first, localPair.second);
-      localHashMap2.put(localPair.second, localPair.first);
+      localHashMap1.put((String)localPair.first, (String)localPair.second);
+      localHashMap2.put((String)localPair.second, (String)localPair.first);
     }
     MyMimeMapExtToMime = Collections.unmodifiableMap(localHashMap1);
     MyMimeMapMimeToExt = Collections.unmodifiableMap(localHashMap2);
@@ -91,20 +89,20 @@ public class MimeTypeUtil
   
   public static String getFileExtByFilePath(String paramString)
   {
-    AppMethodBeat.i(210064);
+    AppMethodBeat.i(243215);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(210064);
+      AppMethodBeat.o(243215);
       return null;
     }
     int i = paramString.lastIndexOf('.');
     if ((i < 0) || (i >= paramString.length() - 1))
     {
-      AppMethodBeat.o(210064);
+      AppMethodBeat.o(243215);
       return null;
     }
     paramString = paramString.substring(i + 1);
-    AppMethodBeat.o(210064);
+    AppMethodBeat.o(243215);
     return paramString;
   }
   
@@ -141,68 +139,10 @@ public class MimeTypeUtil
     AppMethodBeat.o(153469);
     return paramString;
   }
-  
-  public static final class ContentType
-  {
-    private static final String CHARSET_EQ = "charset=";
-    public static final String DEFAULT_CHARSET = "UTF-8";
-    private static final Pattern MIMETYPE_PATTERN;
-    public final String charset;
-    public final String mimeType;
-    
-    static
-    {
-      AppMethodBeat.i(153467);
-      MIMETYPE_PATTERN = Pattern.compile("([a-zA-Z*-.0-9]+/[a-zA-Z*-.0-9]+)");
-      AppMethodBeat.o(153467);
-    }
-    
-    private ContentType(String paramString1, String paramString2)
-    {
-      this.mimeType = paramString1;
-      this.charset = paramString2;
-    }
-    
-    public static ContentType obtain(String paramString)
-    {
-      String str = null;
-      AppMethodBeat.i(153466);
-      if (TextUtils.isEmpty(paramString))
-      {
-        AppMethodBeat.o(153466);
-        return null;
-      }
-      Object localObject = MIMETYPE_PATTERN.matcher(paramString);
-      if (!((Matcher)localObject).find())
-      {
-        AppMethodBeat.o(153466);
-        return null;
-      }
-      localObject = ((Matcher)localObject).group(0);
-      if (paramString.contains("charset=")) {
-        str = paramString.substring(paramString.indexOf("charset=") + 8).trim();
-      }
-      paramString = str;
-      if (TextUtils.isEmpty(str)) {
-        paramString = "UTF-8";
-      }
-      paramString = new ContentType((String)localObject, paramString);
-      AppMethodBeat.o(153466);
-      return paramString;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(153465);
-      String str = "ContentType{mimeType='" + this.mimeType + '\'' + ", charset='" + this.charset + '\'' + '}';
-      AppMethodBeat.o(153465);
-      return str;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.system.MimeTypeUtil
  * JD-Core Version:    0.7.0.1
  */

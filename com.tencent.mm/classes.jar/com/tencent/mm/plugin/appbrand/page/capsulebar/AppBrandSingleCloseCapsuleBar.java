@@ -1,293 +1,267 @@
 package com.tencent.mm.plugin.appbrand.page.capsulebar;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.TimeInterpolator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b;
-import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.modelappbrand.a.e;
-import com.tencent.mm.plugin.appbrand.au.c;
-import com.tencent.mm.plugin.appbrand.au.e;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.g;
-import com.tencent.mm.plugin.appbrand.widget.c.g.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.plugin.appbrand.ba.c;
+import com.tencent.mm.plugin.appbrand.ba.e;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.g;
+import com.tencent.mm.plugin.appbrand.ba.h;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import java.util.Collection;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/capsulebar/AppBrandSingleCloseCapsuleBar;", "Landroid/widget/FrameLayout;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBar;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "closeV", "Landroid/view/View;", "contentView", "iconIv", "Landroid/widget/ImageView;", "nameTv", "Landroid/widget/TextView;", "transparentAnimating", "", "blink", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarBlinkingPart$BlinkHandler;", "destroy", "", "isHeaderTransparent", "isTouchCloseButton", "rx", "", "ry", "setCloseBtnListener", "listener", "Landroid/view/View$OnClickListener;", "setHeaderAlpha", "percent", "setHomeButtonOnClickListener", "onClickListener", "setOptionButtonOnClickListener", "setStyleColor", "color", "setTitle", "name", "", "setWxaIconUrl", "url", "showHeader", "show", "animate", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/capsulebar/AppBrandSingleCloseCapsuleBar;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/BaseAppBrandSingleCloseCapsuleBar;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "forceLightMode", "", "(Landroid/content/Context;Z)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "closeV", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "contentView", "Landroid/view/View;", "iconIv", "Landroid/widget/ImageView;", "nameTv", "Landroid/widget/TextView;", "shareIv", "viewsNeedResponseAlphaAnimation", "", "currentAnimationViewAlpha", "", "getCloseButton", "getViewsNeedResponseAlphaAnimation", "getWxaIcon", "initView", "", "isForceLightMode", "isHeaderTransparent", "setCloseBtnListener", "listener", "Landroid/view/View$OnClickListener;", "setShareBtnListener", "setTitle", "name", "showShareButton", "show", "transformResource", "reId", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AppBrandSingleCloseCapsuleBar
-  extends FrameLayout
-  implements g
+  extends BaseAppBrandSingleCloseCapsuleBar
 {
-  public static final AppBrandSingleCloseCapsuleBar.a qxu;
+  private final String TAG;
   private View contentView;
-  private TextView jbF;
-  private ImageView jmf;
-  public View qxs;
-  private boolean qxt;
-  
-  static
-  {
-    AppMethodBeat.i(270721);
-    qxu = new AppBrandSingleCloseCapsuleBar.a((byte)0);
-    AppMethodBeat.o(270721);
-  }
-  
-  public AppBrandSingleCloseCapsuleBar(Context paramContext)
-  {
-    super(paramContext);
-    AppMethodBeat.i(270716);
-    paramContext = LayoutInflater.from(getContext()).inflate(au.g.appbrand_half_screen_capsule_bar_view, (ViewGroup)this).findViewById(au.f.root_container);
-    p.j(paramContext, "LayoutInflater.from(cont…ById(R.id.root_container)");
-    this.contentView = paramContext;
-    paramContext = findViewById(au.f.close);
-    p.j(paramContext, "findViewById(R.id.close)");
-    this.qxs = paramContext;
-    paramContext = findViewById(au.f.name);
-    p.j(paramContext, "findViewById(R.id.name)");
-    this.jbF = ((TextView)paramContext);
-    paramContext = findViewById(au.f.icon);
-    p.j(paramContext, "findViewById(R.id.icon)");
-    this.jmf = ((ImageView)paramContext);
-    AppMethodBeat.o(270716);
-  }
+  private TextView lDF;
+  private ImageView lPb;
+  private boolean qkq;
+  private WeImageView tCw;
+  private WeImageView tCx;
+  private List<? extends View> tCy;
   
   public AppBrandSingleCloseCapsuleBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(270718);
-    paramContext = LayoutInflater.from(getContext()).inflate(au.g.appbrand_half_screen_capsule_bar_view, (ViewGroup)this).findViewById(au.f.root_container);
-    p.j(paramContext, "LayoutInflater.from(cont…ById(R.id.root_container)");
+    AppMethodBeat.i(325325);
+    this.TAG = "MicroMsg.AppBrandSingleCloseCapsuleBar";
+    paramContext = LayoutInflater.from(getContext()).inflate(ba.g.appbrand_half_screen_capsule_bar_view, (ViewGroup)this).findViewById(ba.f.root_container);
+    s.s(paramContext, "from(context).inflate(R.…ById(R.id.root_container)");
     this.contentView = paramContext;
-    paramContext = findViewById(au.f.close);
-    p.j(paramContext, "findViewById(R.id.close)");
-    this.qxs = paramContext;
-    paramContext = findViewById(au.f.name);
-    p.j(paramContext, "findViewById(R.id.name)");
-    this.jbF = ((TextView)paramContext);
-    paramContext = findViewById(au.f.icon);
-    p.j(paramContext, "findViewById(R.id.icon)");
-    this.jmf = ((ImageView)paramContext);
-    AppMethodBeat.o(270718);
+    paramContext = findViewById(ba.f.close);
+    s.s(paramContext, "findViewById(R.id.close)");
+    this.tCw = ((WeImageView)paramContext);
+    paramContext = findViewById(ba.f.share);
+    s.s(paramContext, "findViewById(R.id.share)");
+    this.tCx = ((WeImageView)paramContext);
+    paramContext = findViewById(ba.f.name);
+    s.s(paramContext, "findViewById(R.id.name)");
+    this.lDF = ((TextView)paramContext);
+    paramContext = findViewById(ba.f.icon);
+    s.s(paramContext, "findViewById(R.id.icon)");
+    this.lPb = ((ImageView)paramContext);
+    this.tCy = p.listOf(new View[] { (View)this.tCx, (View)this.lDF, (View)this.lPb });
+    AppMethodBeat.o(325325);
   }
   
   public AppBrandSingleCloseCapsuleBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(270720);
-    paramContext = LayoutInflater.from(getContext()).inflate(au.g.appbrand_half_screen_capsule_bar_view, (ViewGroup)this).findViewById(au.f.root_container);
-    p.j(paramContext, "LayoutInflater.from(cont…ById(R.id.root_container)");
+    super(paramContext, paramAttributeSet, paramInt, (byte)0);
+    AppMethodBeat.i(325344);
+    this.TAG = "MicroMsg.AppBrandSingleCloseCapsuleBar";
+    paramContext = LayoutInflater.from(getContext()).inflate(ba.g.appbrand_half_screen_capsule_bar_view, (ViewGroup)this).findViewById(ba.f.root_container);
+    s.s(paramContext, "from(context).inflate(R.…ById(R.id.root_container)");
     this.contentView = paramContext;
-    paramContext = findViewById(au.f.close);
-    p.j(paramContext, "findViewById(R.id.close)");
-    this.qxs = paramContext;
-    paramContext = findViewById(au.f.name);
-    p.j(paramContext, "findViewById(R.id.name)");
-    this.jbF = ((TextView)paramContext);
-    paramContext = findViewById(au.f.icon);
-    p.j(paramContext, "findViewById(R.id.icon)");
-    this.jmf = ((ImageView)paramContext);
-    AppMethodBeat.o(270720);
+    paramContext = findViewById(ba.f.close);
+    s.s(paramContext, "findViewById(R.id.close)");
+    this.tCw = ((WeImageView)paramContext);
+    paramContext = findViewById(ba.f.share);
+    s.s(paramContext, "findViewById(R.id.share)");
+    this.tCx = ((WeImageView)paramContext);
+    paramContext = findViewById(ba.f.name);
+    s.s(paramContext, "findViewById(R.id.name)");
+    this.lDF = ((TextView)paramContext);
+    paramContext = findViewById(ba.f.icon);
+    s.s(paramContext, "findViewById(R.id.icon)");
+    this.lPb = ((ImageView)paramContext);
+    this.tCy = p.listOf(new View[] { (View)this.tCx, (View)this.lDF, (View)this.lPb });
+    AppMethodBeat.o(325344);
   }
   
-  public final void B(boolean paramBoolean1, boolean paramBoolean2)
+  public AppBrandSingleCloseCapsuleBar(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(270714);
-    if (this.qxt)
-    {
-      Log.i("MicroMsg.AppBrandSingleCloseCapsuleBar", "is animating, return");
-      AppMethodBeat.o(270714);
-      return;
-    }
-    Object localObject = getContext();
-    p.j(localObject, "context");
-    final int k = ((Context)localObject).getResources().getColor(au.c.app_brand_single_close_capsule_bar_bg);
-    int j;
+    super(paramContext);
+    AppMethodBeat.i(325337);
+    this.TAG = "MicroMsg.AppBrandSingleCloseCapsuleBar";
+    paramContext = LayoutInflater.from(getContext()).inflate(ba.g.appbrand_half_screen_capsule_bar_view, (ViewGroup)this).findViewById(ba.f.root_container);
+    s.s(paramContext, "from(context).inflate(R.…ById(R.id.root_container)");
+    this.contentView = paramContext;
+    paramContext = findViewById(ba.f.close);
+    s.s(paramContext, "findViewById(R.id.close)");
+    this.tCw = ((WeImageView)paramContext);
+    paramContext = findViewById(ba.f.share);
+    s.s(paramContext, "findViewById(R.id.share)");
+    this.tCx = ((WeImageView)paramContext);
+    paramContext = findViewById(ba.f.name);
+    s.s(paramContext, "findViewById(R.id.name)");
+    this.lDF = ((TextView)paramContext);
+    paramContext = findViewById(ba.f.icon);
+    s.s(paramContext, "findViewById(R.id.icon)");
+    this.lPb = ((ImageView)paramContext);
+    this.tCy = p.listOf(new View[] { (View)this.tCx, (View)this.lDF, (View)this.lPb });
+    this.qkq = paramBoolean;
+    this.contentView.setBackgroundColor(getContext().getResources().getColor(CO(ba.c.transparent)));
+    this.lDF.setTextColor(getContext().getResources().getColor(CO(ba.c.black_color)));
     int i;
-    if (paramBoolean1)
+    if (this.qkq)
     {
-      j = 255;
-      i = (int)(this.jmf.getAlpha() * 255.0F);
+      paramContext = this.tCw;
+      i = ba.h.app_brand_half_screenc_capsule_bar_close_light;
+      label255:
+      paramContext.setImageResource(i);
+      if (!this.qkq) {
+        break label312;
+      }
+      paramContext = this.tCx;
+      label272:
+      i = ba.e.app_brand_half_screenc_capsule_bar_share_light;
     }
     for (;;)
     {
-      Log.i("MicroMsg.AppBrandSingleCloseCapsuleBar", "iconIv.alpha=" + this.jmf.getAlpha());
-      if (((paramBoolean1) || (this.jmf.getAlpha() != 0.0F)) && ((!paramBoolean1) || (this.jmf.getAlpha() != 1.0F))) {
+      paramContext.setImageResource(i);
+      AppMethodBeat.o(325337);
+      return;
+      WeImageView localWeImageView = this.tCw;
+      paramContext = localWeImageView;
+      if (!aw.isDarkMode()) {
         break;
       }
-      Log.i("MicroMsg.AppBrandSingleCloseCapsuleBar", "status not change, return");
-      AppMethodBeat.o(270714);
-      return;
-      i = (int)(this.jmf.getAlpha() * 255.0F);
-      j = 0;
+      i = ba.h.app_brand_half_screen_capsule_bar_close_dark;
+      paramContext = localWeImageView;
+      break label255;
+      label312:
+      localWeImageView = this.tCx;
+      paramContext = localWeImageView;
+      if (!aw.isDarkMode()) {
+        break label272;
+      }
+      i = ba.e.app_brand_half_screenc_capsule_bar_share_dark;
+      paramContext = localWeImageView;
     }
-    if (!paramBoolean2)
-    {
-      this.jmf.setAlpha(j / 255);
-      this.jbF.setAlpha(j / 255);
-      i = Color.argb(j, Color.red(k), Color.green(k), Color.blue(k));
-      setBackgroundColor(i);
-      this.contentView.setBackgroundColor(i);
-      AppMethodBeat.o(270714);
-      return;
-    }
-    localObject = ValueAnimator.ofInt(new int[] { i, j });
-    if (localObject != null) {
-      ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new b(this, k));
-    }
-    if (localObject != null) {
-      ((ValueAnimator)localObject).setInterpolator((TimeInterpolator)new DecelerateInterpolator());
-    }
-    if (localObject != null) {
-      ((ValueAnimator)localObject).setDuration(300L);
-    }
-    if (localObject != null) {
-      ((ValueAnimator)localObject).addListener((Animator.AnimatorListener)new c(this));
-    }
-    if (localObject != null) {
-      ((ValueAnimator)localObject).start();
-    }
-    this.qxt = true;
-    AppMethodBeat.o(270714);
   }
   
-  public final boolean cfA()
+  public final int CO(int paramInt)
   {
-    AppMethodBeat.i(270713);
-    if ((this.contentView.getBackground() instanceof ColorDrawable))
+    int i = paramInt;
+    if (this.qkq)
     {
-      Object localObject = this.contentView.getBackground();
-      if (localObject == null)
-      {
-        localObject = new t("null cannot be cast to non-null type android.graphics.drawable.ColorDrawable");
-        AppMethodBeat.o(270713);
-        throw ((Throwable)localObject);
+      if (paramInt != ba.c.black_color) {
+        break label22;
       }
-      if (((ColorDrawable)localObject).getAlpha() == 0)
-      {
-        AppMethodBeat.o(270713);
-        return true;
-      }
-      AppMethodBeat.o(270713);
-      return false;
+      i = ba.c.BW_0;
     }
-    AppMethodBeat.o(270713);
+    label22:
+    do
+    {
+      return i;
+      i = paramInt;
+    } while (paramInt != ba.c.white);
+    return ba.c.White;
+  }
+  
+  public final boolean cGo()
+  {
+    AppMethodBeat.i(325389);
+    int i;
+    if (!((Collection)this.tCy).isEmpty()) {
+      i = 1;
+    }
+    while (i != 0) {
+      if (((View)this.tCy.get(0)).getAlpha() == 0.0F)
+      {
+        AppMethodBeat.o(325389);
+        return true;
+        i = 0;
+      }
+      else
+      {
+        AppMethodBeat.o(325389);
+        return false;
+      }
+    }
+    AppMethodBeat.o(325389);
     return false;
+  }
+  
+  public final float cGp()
+  {
+    AppMethodBeat.i(325393);
+    float f = this.lPb.getAlpha();
+    AppMethodBeat.o(325393);
+    return f;
+  }
+  
+  protected final View getCloseButton()
+  {
+    return (View)this.tCw;
+  }
+  
+  public final String getTAG()
+  {
+    return this.TAG;
+  }
+  
+  public final List<View> getViewsNeedResponseAlphaAnimation()
+  {
+    return this.tCy;
+  }
+  
+  protected final ImageView getWxaIcon()
+  {
+    return this.lPb;
+  }
+  
+  public final void kz(boolean paramBoolean)
+  {
+    AppMethodBeat.i(325381);
+    WeImageView localWeImageView = this.tCx;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localWeImageView.setVisibility(i);
+      AppMethodBeat.o(325381);
+      return;
+    }
   }
   
   public final void setCloseBtnListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(270710);
-    p.k(paramOnClickListener, "listener");
-    this.qxs.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(270710);
+    AppMethodBeat.i(325373);
+    this.tCw.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(325373);
   }
   
-  public final void setHeaderAlpha(float paramFloat)
+  public final void setShareBtnListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(270712);
-    Log.i("MicroMsg.AppBrandSingleCloseCapsuleBar", "setHeaderAlpha percent[" + paramFloat + ']');
-    paramFloat = 255.0F * paramFloat / 100.0F;
-    this.jmf.setAlpha(paramFloat / 255.0F);
-    this.jbF.setAlpha(paramFloat / 255.0F);
-    Context localContext = getContext();
-    p.j(localContext, "context");
-    int i = localContext.getResources().getColor(au.c.app_brand_single_close_capsule_bar_bg);
-    setBackgroundColor(Color.argb((int)paramFloat, Color.red(i), Color.green(i), Color.blue(i)));
-    this.contentView.setBackgroundColor(Color.argb((int)paramFloat, Color.red(i), Color.green(i), Color.blue(i)));
-    AppMethodBeat.o(270712);
+    AppMethodBeat.i(325386);
+    this.tCx.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(325386);
   }
-  
-  public final void setHomeButtonOnClickListener(View.OnClickListener paramOnClickListener) {}
-  
-  public final void setOptionButtonOnClickListener(View.OnClickListener paramOnClickListener) {}
-  
-  public final void setStyleColor(int paramInt) {}
   
   public final void setTitle(String paramString)
   {
-    AppMethodBeat.i(270709);
-    p.k(paramString, "name");
-    this.jbF.setText((CharSequence)paramString);
-    AppMethodBeat.o(270709);
-  }
-  
-  public final void setWxaIconUrl(String paramString)
-  {
-    AppMethodBeat.i(270708);
-    p.k(paramString, "url");
-    b.bhh().a(this.jmf, paramString, au.e.miniprogram_default_avatar, (b.h)new e());
-    AppMethodBeat.o(270708);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class b
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    b(AppBrandSingleCloseCapsuleBar paramAppBrandSingleCloseCapsuleBar, int paramInt) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(265892);
-      p.j(paramValueAnimator, "animation");
-      Object localObject = paramValueAnimator.getAnimatedValue();
-      if (localObject == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(265892);
-        throw paramValueAnimator;
-      }
-      int i = Color.argb(((Integer)localObject).intValue(), Color.red(k), Color.green(k), Color.blue(k));
-      Log.d("MicroMsg.AppBrandSingleCloseCapsuleBar", "[showHeader] setBg=" + Integer.toHexString(i));
-      this.qxv.setBackgroundColor(i);
-      AppBrandSingleCloseCapsuleBar.a(this.qxv).setBackgroundColor(i);
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(265892);
-        throw paramValueAnimator;
-      }
-      float f = ((Integer)paramValueAnimator).intValue() / 255;
-      AppBrandSingleCloseCapsuleBar.b(this.qxv).setAlpha(f);
-      AppBrandSingleCloseCapsuleBar.c(this.qxv).setAlpha(f);
-      AppMethodBeat.o(265892);
+    AppMethodBeat.i(325368);
+    TextView localTextView = this.lDF;
+    if (paramString == null) {
+      paramString = "";
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/page/capsulebar/AppBrandSingleCloseCapsuleBar$showHeader$2", "Lcom/tencent/mm/plugin/appbrand/widget/halfscreen/WxaHalfScreenGestureControllerImp$AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-appbrand-integration_release"})
-  public static final class c
-    extends g.a
-  {
-    public final void onAnimationEnd(Animator paramAnimator)
+    for (;;)
     {
-      AppMethodBeat.i(265800);
-      AppBrandSingleCloseCapsuleBar.d(this.qxv);
-      AppMethodBeat.o(265800);
+      localTextView.setText((CharSequence)paramString);
+      AppMethodBeat.o(325368);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandSingleCloseCapsuleBar
  * JD-Core Version:    0.7.0.1
  */

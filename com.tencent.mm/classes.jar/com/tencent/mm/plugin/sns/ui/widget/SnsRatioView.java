@@ -13,38 +13,38 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class SnsRatioView
   extends View
 {
-  public int Luo;
-  public int Lup;
-  public int Luq;
-  public int Lur;
-  public int Lus;
-  public int Lut;
-  private Path Luu;
-  private Path Luv;
-  public Paint Luw;
-  public Paint Lux;
-  public float[] Luy;
+  public int RXP;
+  public int RXQ;
+  public int RXR;
+  public int RXS;
+  public int RXT;
+  private Path RXU;
+  private Path RXV;
+  public Paint RXW;
+  public Paint RXX;
+  public float[] RXY;
+  public int mRadius;
   
   public SnsRatioView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(100559);
-    this.Lur = 70;
-    this.Lus = 10;
-    this.Lut = 0;
-    this.Luu = new Path();
-    this.Luv = new Path();
-    this.Luw = new Paint();
-    this.Lux = new Paint();
-    this.Luy = new float[8];
+    this.RXR = 70;
+    this.RXS = 10;
+    this.RXT = 0;
+    this.RXU = new Path();
+    this.RXV = new Path();
+    this.RXW = new Paint();
+    this.RXX = new Paint();
+    this.RXY = new float[8];
     AppMethodBeat.o(100559);
   }
   
-  public final void kj(int paramInt1, int paramInt2)
+  public final void lV(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100560);
-    this.Luw.setColor(paramInt1);
-    this.Lux.setColor(paramInt2);
+    this.RXW.setColor(paramInt1);
+    this.RXX.setColor(paramInt2);
     invalidate();
     AppMethodBeat.o(100560);
   }
@@ -54,25 +54,25 @@ public class SnsRatioView
     AppMethodBeat.i(100561);
     int i = getWidth();
     int j = getHeight();
-    int k = (int)(j / Math.tan(Math.toRadians(this.Lur)));
-    int m = Math.max((int)((i - k - this.Lus - this.Luq * 2) * this.Luo * 1.0F / 100.0F), this.Lut);
-    this.Luu.reset();
-    this.Luu.moveTo(0.0F, 0.0F);
-    this.Luu.lineTo(m + k, 0.0F);
-    this.Luu.lineTo(m, j);
-    this.Luu.lineTo(0.0F, j);
-    this.Luu.close();
-    this.Luv.reset();
-    this.Luv.moveTo(k + m + this.Lus, 0.0F);
-    this.Luv.lineTo(i, 0.0F);
-    this.Luv.lineTo(i, j);
-    this.Luv.lineTo(this.Lus + m, j);
-    this.Luv.close();
+    int k = (int)(j / Math.tan(Math.toRadians(this.RXR)));
+    int m = Math.max((int)((i - k - this.RXS - this.mRadius * 2) * this.RXP * 1.0F / 100.0F), this.RXT);
+    this.RXU.reset();
+    this.RXU.moveTo(0.0F, 0.0F);
+    this.RXU.lineTo(m + k, 0.0F);
+    this.RXU.lineTo(m, j);
+    this.RXU.lineTo(0.0F, j);
+    this.RXU.close();
+    this.RXV.reset();
+    this.RXV.moveTo(k + m + this.RXS, 0.0F);
+    this.RXV.lineTo(i, 0.0F);
+    this.RXV.lineTo(i, j);
+    this.RXV.lineTo(this.RXS + m, j);
+    this.RXV.close();
     Path localPath = new Path();
-    localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.Luy, Path.Direction.CW);
+    localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.RXY, Path.Direction.CW);
     paramCanvas.clipPath(localPath);
-    paramCanvas.drawPath(this.Luu, this.Luw);
-    paramCanvas.drawPath(this.Luv, this.Lux);
+    paramCanvas.drawPath(this.RXU, this.RXW);
+    paramCanvas.drawPath(this.RXV, this.RXX);
     AppMethodBeat.o(100561);
   }
   
@@ -88,7 +88,7 @@ public class SnsRatioView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsRatioView
  * JD-Core Version:    0.7.0.1
  */

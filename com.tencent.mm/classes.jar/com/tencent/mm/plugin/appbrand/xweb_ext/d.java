@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.appbrand.xweb_ext;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/WCExtendPluginClientProxyFactory;", "Lcom/tencent/luggage/xweb_ext/extendplugin/proxy/IExtendPluginClientProxyFactory;", "()V", "createClientProxy", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/WCExtendPluginClientProxy;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/WCExtendPluginClientProxyFactory;", "Lcom/tencent/luggage/xweb_ext/extendplugin/proxy/IExtendPluginClientProxyFactory;", "()V", "createClientProxy", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/WCExtendPluginClientProxy;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   implements com.tencent.luggage.xweb_ext.extendplugin.b.d
 {
-  public static final d rIe;
+  public static final d uTt;
   
   static
   {
-    AppMethodBeat.i(284603);
-    rIe = new d();
-    AppMethodBeat.o(284603);
+    AppMethodBeat.i(317043);
+    uTt = new d();
+    AppMethodBeat.o(317043);
   }
 }
 

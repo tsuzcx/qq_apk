@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:scrollbars="none" style="@style/rj"
+<RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj">
-        <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardBannerView android:id="@id/ila" android:background="@drawable/t_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
-        <LinearLayout android:orientation="vertical" android:id="@id/f5s" android:padding="@dimen/i1" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textStyle="bold" android:textColor="@color/a2x" android:layout_gravity="left" android:id="@id/f5t" android:paddingTop="@dimen/kb" android:paddingBottom="@dimen/kb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bv8" android:drawableLeft="@drawable/cm4" style="@style/mp" />
-            <com.tencent.mm.plugin.emoji.ui.widget.MMCopiableTextView android:textSize="@dimen/hc" android:textColor="@color/l4" android:id="@id/f5u" android:background="@drawable/b0w" android:paddingTop="@dimen/kb" android:paddingBottom="@dimen/kb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/l4" android:id="@id/f5r" android:paddingTop="@dimen/kb" android:paddingBottom="@dimen/kb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    <com.tencent.mm.pluginsdk.ui.emoji.StoreBannerEmojiView android:id="@id/ce6" android:background="#ffcacaca" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/he4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b_l" android:scaleType="centerInside" />
+</RelativeLayout>

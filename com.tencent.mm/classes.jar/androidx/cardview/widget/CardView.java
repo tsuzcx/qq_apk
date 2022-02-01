@@ -21,32 +21,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CardView
   extends FrameLayout
 {
-  private static final int[] yF;
-  private static final e yG;
-  private boolean yH;
-  private boolean yI;
-  int yJ;
-  int yK;
-  final Rect yL;
-  final Rect yM;
-  private final d yN;
+  private static final int[] QU;
+  private static final e QV;
+  private boolean QW;
+  private boolean QX;
+  int QY;
+  int QZ;
+  final Rect Ra;
+  final Rect Rb;
+  private final d Rc;
   
   static
   {
-    AppMethodBeat.i(188114);
-    yF = new int[] { 16842801 };
+    AppMethodBeat.i(192451);
+    QU = new int[] { 16842801 };
     if (Build.VERSION.SDK_INT >= 21) {
-      yG = new b();
+      QV = new b();
     }
     for (;;)
     {
-      yG.initStatic();
-      AppMethodBeat.o(188114);
+      QV.initStatic();
+      AppMethodBeat.o(192451);
       return;
       if (Build.VERSION.SDK_INT >= 17) {
-        yG = new a();
+        QV = new a();
       } else {
-        yG = new c();
+        QV = new c();
       }
     }
   }
@@ -59,66 +59,66 @@ public class CardView
   public CardView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(188027);
-    this.yL = new Rect();
-    this.yM = new Rect();
-    this.yN = new d()
+    AppMethodBeat.i(192413);
+    this.Ra = new Rect();
+    this.Rb = new Rect();
+    this.Rc = new d()
     {
-      private Drawable yO;
+      private Drawable Rd;
       
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
+      public final void A(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(188015);
-        CardView.this.yM.set(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4);
+        AppMethodBeat.i(192446);
+        if (paramAnonymousInt1 > CardView.this.QY) {
+          CardView.a(CardView.this, paramAnonymousInt1);
+        }
+        if (paramAnonymousInt2 > CardView.this.QZ) {
+          CardView.b(CardView.this, paramAnonymousInt2);
+        }
+        AppMethodBeat.o(192446);
+      }
+      
+      public final void e(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
+      {
+        AppMethodBeat.i(192438);
+        CardView.this.Rb.set(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4);
         CardView localCardView = CardView.this;
-        CardView.a(localCardView, localCardView.yL.left + paramAnonymousInt1, CardView.this.yL.top + paramAnonymousInt2, CardView.this.yL.right + paramAnonymousInt3, CardView.this.yL.bottom + paramAnonymousInt4);
-        AppMethodBeat.o(188015);
-      }
-      
-      public final Drawable eV()
-      {
-        return this.yO;
-      }
-      
-      public final View eW()
-      {
-        return CardView.this;
+        CardView.a(localCardView, localCardView.Ra.left + paramAnonymousInt1, CardView.this.Ra.top + paramAnonymousInt2, CardView.this.Ra.right + paramAnonymousInt3, CardView.this.Ra.bottom + paramAnonymousInt4);
+        AppMethodBeat.o(192438);
       }
       
       public final boolean getPreventCornerOverlap()
       {
-        AppMethodBeat.i(188013);
+        AppMethodBeat.i(192428);
         boolean bool = CardView.this.getPreventCornerOverlap();
-        AppMethodBeat.o(188013);
+        AppMethodBeat.o(192428);
         return bool;
       }
       
       public final boolean getUseCompatPadding()
       {
-        AppMethodBeat.i(188008);
+        AppMethodBeat.i(192419);
         boolean bool = CardView.this.getUseCompatPadding();
-        AppMethodBeat.o(188008);
+        AppMethodBeat.o(192419);
         return bool;
       }
       
-      public final void j(Drawable paramAnonymousDrawable)
+      public final void k(Drawable paramAnonymousDrawable)
       {
-        AppMethodBeat.i(188005);
-        this.yO = paramAnonymousDrawable;
+        AppMethodBeat.i(192412);
+        this.Rd = paramAnonymousDrawable;
         CardView.this.setBackgroundDrawable(paramAnonymousDrawable);
-        AppMethodBeat.o(188005);
+        AppMethodBeat.o(192412);
       }
       
-      public final void s(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final Drawable le()
       {
-        AppMethodBeat.i(188016);
-        if (paramAnonymousInt1 > CardView.this.yJ) {
-          CardView.a(CardView.this, paramAnonymousInt1);
-        }
-        if (paramAnonymousInt2 > CardView.this.yK) {
-          CardView.b(CardView.this, paramAnonymousInt2);
-        }
-        AppMethodBeat.o(188016);
+        return this.Rd;
+      }
+      
+      public final View lf()
+      {
+        return CardView.this;
       }
     };
     TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.e.CardView, paramInt, a.d.CardView);
@@ -128,25 +128,25 @@ public class CardView
       float f4 = localTypedArray.getDimension(a.e.CardView_cardCornerRadius, 0.0F);
       float f2 = localTypedArray.getDimension(a.e.CardView_cardElevation, 0.0F);
       float f3 = localTypedArray.getDimension(a.e.CardView_cardMaxElevation, 0.0F);
-      this.yH = localTypedArray.getBoolean(a.e.CardView_cardUseCompatPadding, false);
-      this.yI = localTypedArray.getBoolean(a.e.CardView_cardPreventCornerOverlap, true);
+      this.QW = localTypedArray.getBoolean(a.e.CardView_cardUseCompatPadding, false);
+      this.QX = localTypedArray.getBoolean(a.e.CardView_cardPreventCornerOverlap, true);
       paramInt = localTypedArray.getDimensionPixelSize(a.e.CardView_contentPadding, 0);
-      this.yL.left = localTypedArray.getDimensionPixelSize(a.e.CardView_contentPaddingLeft, paramInt);
-      this.yL.top = localTypedArray.getDimensionPixelSize(a.e.CardView_contentPaddingTop, paramInt);
-      this.yL.right = localTypedArray.getDimensionPixelSize(a.e.CardView_contentPaddingRight, paramInt);
-      this.yL.bottom = localTypedArray.getDimensionPixelSize(a.e.CardView_contentPaddingBottom, paramInt);
+      this.Ra.left = localTypedArray.getDimensionPixelSize(a.e.CardView_contentPaddingLeft, paramInt);
+      this.Ra.top = localTypedArray.getDimensionPixelSize(a.e.CardView_contentPaddingTop, paramInt);
+      this.Ra.right = localTypedArray.getDimensionPixelSize(a.e.CardView_contentPaddingRight, paramInt);
+      this.Ra.bottom = localTypedArray.getDimensionPixelSize(a.e.CardView_contentPaddingBottom, paramInt);
       float f1 = f3;
       if (f2 > f3) {
         f1 = f2;
       }
-      this.yJ = localTypedArray.getDimensionPixelSize(a.e.CardView_android_minWidth, 0);
-      this.yK = localTypedArray.getDimensionPixelSize(a.e.CardView_android_minHeight, 0);
+      this.QY = localTypedArray.getDimensionPixelSize(a.e.CardView_android_minWidth, 0);
+      this.QZ = localTypedArray.getDimensionPixelSize(a.e.CardView_android_minHeight, 0);
       localTypedArray.recycle();
-      yG.a(this.yN, paramContext, paramAttributeSet, f4, f2, f1);
-      AppMethodBeat.o(188027);
+      QV.a(this.Rc, paramContext, paramAttributeSet, f4, f2, f1);
+      AppMethodBeat.o(192413);
       return;
     }
-    paramAttributeSet = getContext().obtainStyledAttributes(yF);
+    paramAttributeSet = getContext().obtainStyledAttributes(QU);
     paramInt = paramAttributeSet.getColor(0, 0);
     paramAttributeSet.recycle();
     paramAttributeSet = new float[3];
@@ -161,70 +161,70 @@ public class CardView
   
   public ColorStateList getCardBackgroundColor()
   {
-    AppMethodBeat.i(188072);
-    ColorStateList localColorStateList = yG.i(this.yN);
-    AppMethodBeat.o(188072);
+    AppMethodBeat.i(192580);
+    ColorStateList localColorStateList = QV.i(this.Rc);
+    AppMethodBeat.o(192580);
     return localColorStateList;
   }
   
   public float getCardElevation()
   {
-    AppMethodBeat.i(188096);
-    float f = yG.e(this.yN);
-    AppMethodBeat.o(188096);
+    AppMethodBeat.i(192652);
+    float f = QV.e(this.Rc);
+    AppMethodBeat.o(192652);
     return f;
   }
   
   public int getContentPaddingBottom()
   {
-    return this.yL.bottom;
+    return this.Ra.bottom;
   }
   
   public int getContentPaddingLeft()
   {
-    return this.yL.left;
+    return this.Ra.left;
   }
   
   public int getContentPaddingRight()
   {
-    return this.yL.right;
+    return this.Ra.right;
   }
   
   public int getContentPaddingTop()
   {
-    return this.yL.top;
+    return this.Ra.top;
   }
   
   public float getMaxCardElevation()
   {
-    AppMethodBeat.i(188102);
-    float f = yG.a(this.yN);
-    AppMethodBeat.o(188102);
+    AppMethodBeat.i(192669);
+    float f = QV.a(this.Rc);
+    AppMethodBeat.o(192669);
     return f;
   }
   
   public boolean getPreventCornerOverlap()
   {
-    return this.yI;
+    return this.QX;
   }
   
   public float getRadius()
   {
-    AppMethodBeat.i(188084);
-    float f = yG.d(this.yN);
-    AppMethodBeat.o(188084);
+    AppMethodBeat.i(192626);
+    float f = QV.d(this.Rc);
+    AppMethodBeat.o(192626);
     return f;
   }
   
   public boolean getUseCompatPadding()
   {
-    return this.yH;
+    return this.QW;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(188044);
-    if (!(yG instanceof b))
+    AppMethodBeat.i(192513);
+    if (!(QV instanceof b))
     {
       int i = View.MeasureSpec.getMode(paramInt1);
       switch (i)
@@ -239,67 +239,67 @@ public class CardView
       for (;;)
       {
         super.onMeasure(paramInt1, paramInt2);
-        AppMethodBeat.o(188044);
+        AppMethodBeat.o(192513);
         return;
-        paramInt1 = View.MeasureSpec.makeMeasureSpec(Math.max((int)Math.ceil(yG.b(this.yN)), View.MeasureSpec.getSize(paramInt1)), i);
+        paramInt1 = View.MeasureSpec.makeMeasureSpec(Math.max((int)Math.ceil(QV.b(this.Rc)), View.MeasureSpec.getSize(paramInt1)), i);
         break;
-        paramInt2 = View.MeasureSpec.makeMeasureSpec(Math.max((int)Math.ceil(yG.c(this.yN)), View.MeasureSpec.getSize(paramInt2)), i);
+        paramInt2 = View.MeasureSpec.makeMeasureSpec(Math.max((int)Math.ceil(QV.c(this.Rc)), View.MeasureSpec.getSize(paramInt2)), i);
       }
     }
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(188044);
+    AppMethodBeat.o(192513);
   }
   
   public void setCardBackgroundColor(int paramInt)
   {
-    AppMethodBeat.i(188064);
-    yG.a(this.yN, ColorStateList.valueOf(paramInt));
-    AppMethodBeat.o(188064);
+    AppMethodBeat.i(192551);
+    QV.a(this.Rc, ColorStateList.valueOf(paramInt));
+    AppMethodBeat.o(192551);
   }
   
   public void setCardBackgroundColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(188067);
-    yG.a(this.yN, paramColorStateList);
-    AppMethodBeat.o(188067);
+    AppMethodBeat.i(192564);
+    QV.a(this.Rc, paramColorStateList);
+    AppMethodBeat.o(192564);
   }
   
   public void setCardElevation(float paramFloat)
   {
-    AppMethodBeat.i(188088);
-    yG.c(this.yN, paramFloat);
-    AppMethodBeat.o(188088);
+    AppMethodBeat.i(192642);
+    QV.c(this.Rc, paramFloat);
+    AppMethodBeat.o(192642);
   }
   
   public final void setContentPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(188038);
-    this.yL.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    yG.f(this.yN);
-    AppMethodBeat.o(188038);
+    AppMethodBeat.i(192500);
+    this.Ra.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    QV.f(this.Rc);
+    AppMethodBeat.o(192500);
   }
   
   public void setMaxCardElevation(float paramFloat)
   {
-    AppMethodBeat.i(188099);
-    yG.b(this.yN, paramFloat);
-    AppMethodBeat.o(188099);
+    AppMethodBeat.i(192660);
+    QV.b(this.Rc, paramFloat);
+    AppMethodBeat.o(192660);
   }
   
   public void setMinimumHeight(int paramInt)
   {
-    AppMethodBeat.i(188062);
-    this.yK = paramInt;
+    AppMethodBeat.i(192540);
+    this.QZ = paramInt;
     super.setMinimumHeight(paramInt);
-    AppMethodBeat.o(188062);
+    AppMethodBeat.o(192540);
   }
   
   public void setMinimumWidth(int paramInt)
   {
-    AppMethodBeat.i(188056);
-    this.yJ = paramInt;
+    AppMethodBeat.i(192526);
+    this.QY = paramInt;
     super.setMinimumWidth(paramInt);
-    AppMethodBeat.o(188056);
+    AppMethodBeat.o(192526);
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
@@ -308,31 +308,31 @@ public class CardView
   
   public void setPreventCornerOverlap(boolean paramBoolean)
   {
-    AppMethodBeat.i(188106);
-    if (paramBoolean != this.yI)
+    AppMethodBeat.i(192689);
+    if (paramBoolean != this.QX)
     {
-      this.yI = paramBoolean;
-      yG.h(this.yN);
+      this.QX = paramBoolean;
+      QV.h(this.Rc);
     }
-    AppMethodBeat.o(188106);
+    AppMethodBeat.o(192689);
   }
   
   public void setRadius(float paramFloat)
   {
-    AppMethodBeat.i(188082);
-    yG.a(this.yN, paramFloat);
-    AppMethodBeat.o(188082);
+    AppMethodBeat.i(192616);
+    QV.a(this.Rc, paramFloat);
+    AppMethodBeat.o(192616);
   }
   
   public void setUseCompatPadding(boolean paramBoolean)
   {
-    AppMethodBeat.i(188031);
-    if (this.yH != paramBoolean)
+    AppMethodBeat.i(192487);
+    if (this.QW != paramBoolean)
     {
-      this.yH = paramBoolean;
-      yG.g(this.yN);
+      this.QW = paramBoolean;
+      QV.g(this.Rc);
     }
-    AppMethodBeat.o(188031);
+    AppMethodBeat.o(192487);
   }
 }
 

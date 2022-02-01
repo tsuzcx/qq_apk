@@ -1,18 +1,20 @@
 package com.tencent.mm.app;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.qm;
+import com.tencent.mm.autogen.a.rz;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 
-final class WeChatSplashStartup$1
-  extends IListener<qm>
+class WeChatSplashStartup$1
+  extends IListener<rz>
 {
-  WeChatSplashStartup$1(WeChatSplashStartup paramWeChatSplashStartup)
+  WeChatSplashStartup$1(WeChatSplashStartup paramWeChatSplashStartup, q paramq)
   {
-    AppMethodBeat.i(161817);
-    this.__eventId = qm.class.getName().hashCode();
-    AppMethodBeat.o(161817);
+    super(paramq);
+    AppMethodBeat.i(239214);
+    this.__eventId = rz.class.getName().hashCode();
+    AppMethodBeat.o(239214);
   }
 }
 

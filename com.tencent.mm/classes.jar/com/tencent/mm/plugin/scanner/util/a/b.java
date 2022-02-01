@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.scanner.util.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressStrategy;", "Lcom/tencent/mm/plugin/scanner/util/compress/ScanImageCompressStrategy;", "Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressRequest;", "()V", "computeSampleSize", "", "request", "width", "height", "isSizeValid", "", "name", "", "onTransform", "Landroid/graphics/Bitmap;", "bitmap", "Companion", "scan-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressStrategy;", "Lcom/tencent/mm/plugin/scanner/util/compress/ScanImageCompressStrategy;", "Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressRequest;", "()V", "computeSampleSize", "", "request", "width", "height", "isSizeValid", "", "name", "", "onTransform", "Landroid/graphics/Bitmap;", "bitmap", "Companion", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements i<a>
 {
-  public static final a Jab;
+  public static final a PjT;
   
   static
   {
-    AppMethodBeat.i(193559);
-    Jab = new a((byte)0);
-    AppMethodBeat.o(193559);
+    AppMethodBeat.i(314155);
+    PjT = new a((byte)0);
+    AppMethodBeat.o(314155);
   }
   
-  public final boolean jo(int paramInt1, int paramInt2)
+  public final boolean kW(int paramInt1, int paramInt2)
   {
     return true;
   }
@@ -26,7 +26,7 @@ public final class b
     return "MicroMsg.AiImageCompressStrategy";
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressStrategy$Companion;", "", "()V", "TAG", "", "scan-sdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressStrategy$Companion;", "", "()V", "TAG", "", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

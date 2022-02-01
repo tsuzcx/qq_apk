@@ -1,6 +1,5 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,13 +7,13 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.i;
+import com.tencent.mm.ck.a.i;
 
 public abstract class SearchBarUI
   extends BaseActivity
-  implements al.a
+  implements ap.a
 {
-  al Wec;
+  ap adJF;
   
   public void onClickBackBtn(View paramView)
   {
@@ -24,17 +23,17 @@ public abstract class SearchBarUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    a(BaseActivity.c.VRs, new MenuItem.OnMenuItemClickListener()
+    a(BaseActivity.c.advA, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(159098);
         paramAnonymousMenuItem = SearchBarUI.this;
         paramAnonymousMenuItem.removeAllOptionMenu();
-        paramAnonymousMenuItem.Wec = new al(paramAnonymousMenuItem);
-        paramAnonymousMenuItem.Wec.setSearchViewListener(paramAnonymousMenuItem);
-        paramAnonymousMenuItem.Wec.setHint(paramAnonymousMenuItem.getResources().getString(a.i.ui_search));
-        paramAnonymousMenuItem.getSupportActionBar().setCustomView(paramAnonymousMenuItem.Wec);
+        paramAnonymousMenuItem.adJF = new ap(paramAnonymousMenuItem);
+        paramAnonymousMenuItem.adJF.setSearchViewListener(paramAnonymousMenuItem);
+        paramAnonymousMenuItem.adJF.setHint(paramAnonymousMenuItem.getResources().getString(a.i.ui_search));
+        paramAnonymousMenuItem.getSupportActionBar().setCustomView(paramAnonymousMenuItem.adJF);
         SearchBarUI.showVKB(paramAnonymousMenuItem);
         AppMethodBeat.o(159098);
         return false;
@@ -60,7 +59,7 @@ public abstract class SearchBarUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.SearchBarUI
  * JD-Core Version:    0.7.0.1
  */

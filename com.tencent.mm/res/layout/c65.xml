@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:id="@id/jag" android:background="@color/a7m" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/l3q" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:hint="step" android:digits="\ 0123456789" android:inputType="numberDecimal" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hls" android:layout_width="180.0dip" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="@string/a17" style="@style/og" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hmh" android:layout_width="180.0dip" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="@string/jma" style="@style/og" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/epi" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="ExtApiGetSportConfig" style="@style/og" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hrl" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="ExtApiPassiveUpdate" style="@style/og" />
+</LinearLayout>

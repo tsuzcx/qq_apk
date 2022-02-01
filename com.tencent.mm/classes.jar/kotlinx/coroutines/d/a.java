@@ -10,118 +10,113 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.concurrent.atomic.AtomicLongFieldUpdater;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 import java.util.concurrent.locks.LockSupport;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 import kotlin.j.c;
-import kotlin.x;
-import kotlinx.coroutines.ap;
-import kotlinx.coroutines.internal.v;
+import kotlinx.coroutines.au;
+import kotlinx.coroutines.internal.ac;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/scheduling/CoroutineScheduler;", "", "corePoolSize", "maxPoolSize", "", "idleWorkerKeepAliveNs", "", "schedulerName", "<init>", "(IIJLjava/lang/String;)V", "Lkotlinx/coroutines/scheduling/Task;", "task", "", "addToGlobalQueue", "(Lkotlinx/coroutines/scheduling/Task;)Z", "state", "availableCpuPermits", "(J)I", "blockingTasks", "", "close", "()V", "createNewWorker", "()I", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "block", "Lkotlinx/coroutines/scheduling/TaskContext;", "taskContext", "createTask$kotlinx_coroutines_core", "(Ljava/lang/Runnable;Lkotlinx/coroutines/scheduling/TaskContext;)Lkotlinx/coroutines/scheduling/Task;", "createTask", "createdWorkers", "Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;", "currentWorker", "()Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;", "decrementBlockingTasks", "decrementCreatedWorkers", "tailDispatch", "dispatch", "(Ljava/lang/Runnable;Lkotlinx/coroutines/scheduling/TaskContext;Z)V", "command", "execute", "(Ljava/lang/Runnable;)V", "incrementBlockingTasks", "()J", "incrementCreatedWorkers", "worker", "parkedWorkersStackNextIndex", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;)I", "parkedWorkersStackPop", "parkedWorkersStackPush$kotlinx_coroutines_core", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;)Z", "parkedWorkersStackPush", "oldIndex", "newIndex", "parkedWorkersStackTopUpdate$kotlinx_coroutines_core", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;II)V", "parkedWorkersStackTopUpdate", "releaseCpuPermit", "runSafely", "(Lkotlinx/coroutines/scheduling/Task;)V", "timeout", "shutdown", "(J)V", "skipUnpark", "signalBlockingWork", "(Z)V", "signalCpuWork$kotlinx_coroutines_core", "signalCpuWork", "toString", "()Ljava/lang/String;", "tryAcquireCpuPermit", "()Z", "tryCreateWorker", "(J)Z", "tryUnpark", "submitToLocalQueue", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;Lkotlinx/coroutines/scheduling/Task;Z)Lkotlinx/coroutines/scheduling/Task;", "getAvailableCpuPermits", "I", "getCreatedWorkers", "Lkotlinx/coroutines/scheduling/GlobalQueue;", "globalBlockingQueue", "Lkotlinx/coroutines/scheduling/GlobalQueue;", "globalCpuQueue", "J", "isTerminated", "Ljava/lang/String;", "Ljava/util/concurrent/atomic/AtomicReferenceArray;", "workers", "Ljava/util/concurrent/atomic/AtomicReferenceArray;", "Companion", "Worker", "WorkerState", "kotlinx-coroutines-core", "Ljava/util/concurrent/Executor;", "Ljava/io/Closeable;"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/scheduling/CoroutineScheduler;", "", "corePoolSize", "maxPoolSize", "", "idleWorkerKeepAliveNs", "", "schedulerName", "<init>", "(IIJLjava/lang/String;)V", "Lkotlinx/coroutines/scheduling/Task;", "task", "", "addToGlobalQueue", "(Lkotlinx/coroutines/scheduling/Task;)Z", "state", "availableCpuPermits", "(J)I", "blockingTasks", "", "close", "()V", "createNewWorker", "()I", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "block", "Lkotlinx/coroutines/scheduling/TaskContext;", "taskContext", "createTask", "(Ljava/lang/Runnable;Lkotlinx/coroutines/scheduling/TaskContext;)Lkotlinx/coroutines/scheduling/Task;", "createdWorkers", "Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;", "currentWorker", "()Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;", "decrementBlockingTasks", "decrementCreatedWorkers", "tailDispatch", "dispatch", "(Ljava/lang/Runnable;Lkotlinx/coroutines/scheduling/TaskContext;Z)V", "command", "execute", "(Ljava/lang/Runnable;)V", "incrementBlockingTasks", "()J", "incrementCreatedWorkers", "worker", "parkedWorkersStackNextIndex", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;)I", "parkedWorkersStackPop", "parkedWorkersStackPush", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;)Z", "oldIndex", "newIndex", "parkedWorkersStackTopUpdate", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;II)V", "releaseCpuPermit", "runSafely", "(Lkotlinx/coroutines/scheduling/Task;)V", "timeout", "shutdown", "(J)V", "skipUnpark", "signalBlockingWork", "(Z)V", "signalCpuWork", "toString", "()Ljava/lang/String;", "tryAcquireCpuPermit", "()Z", "tryCreateWorker", "(J)Z", "tryUnpark", "submitToLocalQueue", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;Lkotlinx/coroutines/scheduling/Task;Z)Lkotlinx/coroutines/scheduling/Task;", "getAvailableCpuPermits", "I", "getCreatedWorkers", "Lkotlinx/coroutines/scheduling/GlobalQueue;", "globalBlockingQueue", "Lkotlinx/coroutines/scheduling/GlobalQueue;", "globalCpuQueue", "J", "isTerminated", "Ljava/lang/String;", "Ljava/util/concurrent/atomic/AtomicReferenceArray;", "workers", "Ljava/util/concurrent/atomic/AtomicReferenceArray;", "Companion", "Worker", "WorkerState", "kotlinx-coroutines-core", "Ljava/util/concurrent/Executor;", "Ljava/io/Closeable;"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   implements Closeable, Executor
 {
-  static final AtomicLongFieldUpdater abzN;
-  static final AtomicLongFieldUpdater abzP;
-  private static final AtomicIntegerFieldUpdater abzQ;
-  public static final v abzT;
-  public static final a.a abzU;
-  public final int ZwT;
-  volatile int _isTerminated;
-  public final e abzL;
-  public final e abzM;
-  public final AtomicReferenceArray<b> abzO;
-  public final long abzR;
-  public final String abzS;
-  volatile long controlState;
-  public final int foy;
-  volatile long parkedWorkersStack;
+  public static final a.a ajBc;
+  public static final ac ajBl;
+  public final int ahBX;
+  public final long ajBd;
+  public final String ajBe;
+  public final d ajBf;
+  public final d ajBg;
+  public final AtomicReferenceArray<c> ajBi;
+  public final int hsI;
   
   static
   {
     AppMethodBeat.i(118011);
-    abzU = new a.a((byte)0);
-    abzT = new v("NOT_IN_STACK");
-    abzN = AtomicLongFieldUpdater.newUpdater(a.class, "parkedWorkersStack");
-    abzP = AtomicLongFieldUpdater.newUpdater(a.class, "controlState");
-    abzQ = AtomicIntegerFieldUpdater.newUpdater(a.class, "_isTerminated");
+    ajBc = new a.a((byte)0);
+    ajBl = new ac("NOT_IN_STACK");
+    ajBh = AtomicLongFieldUpdater.newUpdater(a.class, "parkedWorkersStack");
+    ajBj = AtomicLongFieldUpdater.newUpdater(a.class, "controlState");
+    ajBk = AtomicIntegerFieldUpdater.newUpdater(a.class, "_isTerminated");
     AppMethodBeat.o(118011);
   }
   
   public a(int paramInt1, int paramInt2, long paramLong, String paramString)
   {
     AppMethodBeat.i(118005);
-    this.foy = paramInt1;
-    this.ZwT = paramInt2;
-    this.abzR = paramLong;
-    this.abzS = paramString;
-    if (this.foy > 0) {}
+    this.hsI = paramInt1;
+    this.ahBX = paramInt2;
+    this.ajBd = paramLong;
+    this.ajBe = paramString;
+    if (this.hsI > 0) {}
     for (paramInt1 = 1; paramInt1 == 0; paramInt1 = 0)
     {
-      paramString = (Throwable)new IllegalArgumentException(("Core pool size " + this.foy + " should be at least 1").toString());
+      paramString = (Throwable)new IllegalArgumentException(("Core pool size " + this.hsI + " should be at least 1").toString());
       AppMethodBeat.o(118005);
       throw paramString;
     }
-    if (this.ZwT >= this.foy) {}
+    if (this.ahBX >= this.hsI) {}
     for (paramInt1 = 1; paramInt1 == 0; paramInt1 = 0)
     {
-      paramString = (Throwable)new IllegalArgumentException(("Max pool size " + this.ZwT + " should be greater than or equals to core pool size " + this.foy).toString());
+      paramString = (Throwable)new IllegalArgumentException(("Max pool size " + this.ahBX + " should be greater than or equals to core pool size " + this.hsI).toString());
       AppMethodBeat.o(118005);
       throw paramString;
     }
-    if (this.ZwT <= 2097150) {}
+    if (this.ahBX <= 2097150) {}
     for (paramInt1 = 1; paramInt1 == 0; paramInt1 = 0)
     {
-      paramString = (Throwable)new IllegalArgumentException(("Max pool size " + this.ZwT + " should not exceed maximal supported number of threads 2097150").toString());
+      paramString = (Throwable)new IllegalArgumentException(("Max pool size " + this.ahBX + " should not exceed maximal supported number of threads 2097150").toString());
       AppMethodBeat.o(118005);
       throw paramString;
     }
-    if (this.abzR > 0L) {}
+    if (this.ajBd > 0L) {}
     for (paramInt1 = i; paramInt1 == 0; paramInt1 = 0)
     {
-      paramString = (Throwable)new IllegalArgumentException(("Idle worker keep alive time " + this.abzR + " must be positive").toString());
+      paramString = (Throwable)new IllegalArgumentException(("Idle worker keep alive time " + this.ajBd + " must be positive").toString());
       AppMethodBeat.o(118005);
       throw paramString;
     }
-    this.abzL = new e();
-    this.abzM = new e();
+    this.ajBf = new d();
+    this.ajBg = new d();
     this.parkedWorkersStack = 0L;
-    this.abzO = new AtomicReferenceArray(this.ZwT + 1);
-    this.controlState = (this.foy << 42);
+    this.ajBi = new AtomicReferenceArray(this.ahBX + 1);
+    this.controlState = (this.hsI << 42);
     this._isTerminated = 0;
     AppMethodBeat.o(118005);
   }
   
-  private final boolean XF(long paramLong)
+  private final boolean BR(long paramLong)
   {
-    AppMethodBeat.i(204681);
-    if (kotlin.k.i.ov((int)(0x1FFFFF & paramLong) - (int)((0xFFE00000 & paramLong) >> 21), 0) < this.foy)
+    AppMethodBeat.i(189495);
+    if (kotlin.k.k.qu((int)(0x1FFFFF & paramLong) - (int)((0xFFE00000 & paramLong) >> 21), 0) < this.hsI)
     {
-      int i = iTe();
-      if ((i == 1) && (this.foy > 1)) {
-        iTe();
+      int i = kEw();
+      if ((i == 1) && (this.hsI > 1)) {
+        kEw();
       }
       if (i > 0)
       {
-        AppMethodBeat.o(204681);
+        AppMethodBeat.o(189495);
         return true;
       }
     }
-    AppMethodBeat.o(204681);
+    AppMethodBeat.o(189495);
     return false;
   }
   
-  private static int a(b paramb)
+  private static int a(c paramc)
   {
-    for (paramb = paramb.nextParkedWorker;; paramb = paramb.nextParkedWorker)
+    for (paramc = paramc.nextParkedWorker;; paramc = paramc.nextParkedWorker)
     {
-      if (paramb == abzT) {
+      if (paramc == ajBl) {
         return -1;
       }
-      if (paramb == null) {
+      if (paramc == null) {
         return 0;
       }
-      paramb = (b)paramb;
-      int i = paramb.indexInArray;
+      paramc = (c)paramc;
+      int i = paramc.indexInArray;
       if (i != 0) {
         return i;
       }
@@ -130,18 +125,18 @@ public final class a
   
   public static i a(Runnable paramRunnable, j paramj)
   {
-    AppMethodBeat.i(117999);
-    long l = l.abAv.nanoTime();
+    AppMethodBeat.i(189486);
+    long l = l.ajBM.nanoTime();
     if ((paramRunnable instanceof i))
     {
-      ((i)paramRunnable).abAq = l;
-      ((i)paramRunnable).abAr = paramj;
+      ((i)paramRunnable).ajBH = l;
+      ((i)paramRunnable).ajBI = paramj;
       paramRunnable = (i)paramRunnable;
-      AppMethodBeat.o(117999);
+      AppMethodBeat.o(189486);
       return paramRunnable;
     }
     paramRunnable = (i)new k(paramRunnable, l, paramj);
-    AppMethodBeat.o(117999);
+    AppMethodBeat.o(189486);
     return paramRunnable;
   }
   
@@ -151,62 +146,66 @@ public final class a
     try
     {
       parami.run();
-      return;
-    }
-    catch (Throwable parami)
-    {
-      Thread localThread = Thread.currentThread();
-      localThread.getUncaughtExceptionHandler().uncaughtException(localThread, parami);
+      AppMethodBeat.o(118004);
       return;
     }
     finally
     {
-      AppMethodBeat.o(118004);
+      try
+      {
+        Thread localThread = Thread.currentThread();
+        localThread.getUncaughtExceptionHandler().uncaughtException(localThread, parami);
+        return;
+      }
+      finally
+      {
+        AppMethodBeat.o(118004);
+      }
     }
   }
   
-  private final b iTb()
+  private final c kEt()
   {
     AppMethodBeat.i(117994);
     long l;
     int i;
-    b localb;
+    c localc;
     do
     {
       l = this.parkedWorkersStack;
       i = (int)(0x1FFFFF & l);
-      localb = (b)this.abzO.get(i);
-      if (localb == null)
+      localc = (c)this.ajBi.get(i);
+      if (localc == null)
       {
         AppMethodBeat.o(117994);
         return null;
       }
-      i = a(localb);
-    } while ((i < 0) || (!abzN.compareAndSet(this, l, 0xFFE00000 & 2097152L + l | i)));
-    localb.nextParkedWorker = abzT;
+      i = a(localc);
+    } while ((i < 0) || (!ajBh.compareAndSet(this, l, 0xFFE00000 & 2097152L + l | i)));
+    localc.nextParkedWorker = ajBl;
     AppMethodBeat.o(117994);
-    return localb;
+    return localc;
   }
   
-  private final boolean iTd()
+  private final boolean kEv()
   {
     AppMethodBeat.i(118001);
-    b localb;
+    c localc;
     do
     {
-      localb = iTb();
-      if (localb == null)
+      localc = kEt();
+      if (localc == null)
       {
         AppMethodBeat.o(118001);
         return false;
       }
-    } while (!b.abzX.compareAndSet(localb, -1, 0));
-    LockSupport.unpark((Thread)localb);
+    } while (!c.ajBo.compareAndSet(localc, -1, 0));
+    LockSupport.unpark((Thread)localc);
     AppMethodBeat.o(118001);
     return true;
   }
   
-  private final int iTe()
+  private final int kEw()
   {
     int j = 0;
     AppMethodBeat.i(118002);
@@ -214,7 +213,7 @@ public final class a
     int m;
     for (;;)
     {
-      synchronized (this.abzO)
+      synchronized (this.ajBi)
       {
         i = this._isTerminated;
         if (i != 0)
@@ -224,21 +223,21 @@ public final class a
         }
         long l = this.controlState;
         i = (int)(l & 0x1FFFFF);
-        k = kotlin.k.i.ov(i - (int)((l & 0xFFE00000) >> 21), 0);
-        m = this.foy;
+        k = kotlin.k.k.qu(i - (int)((l & 0xFFE00000) >> 21), 0);
+        m = this.hsI;
         if (k >= m)
         {
           AppMethodBeat.o(118002);
           return 0;
         }
-        m = this.ZwT;
+        m = this.ahBX;
         if (i >= m)
         {
           AppMethodBeat.o(118002);
           return 0;
         }
         m = (int)(this.controlState & 0x1FFFFF) + 1;
-        if ((m > 0) && (this.abzO.get(m) == null))
+        if ((m > 0) && (this.ajBi.get(m) == null))
         {
           i = 1;
           if (i != 0) {
@@ -251,10 +250,10 @@ public final class a
       }
       i = 0;
     }
-    Object localObject2 = new b(m);
-    this.abzO.set(m, localObject2);
+    Object localObject2 = new c(m);
+    this.ajBi.set(m, localObject2);
     int i = j;
-    if (m == (int)(abzP.incrementAndGet(this) & 0x1FFFFF)) {
+    if (m == (int)(ajBj.incrementAndGet(this) & 0x1FFFFF)) {
       i = 1;
     }
     if (i == 0)
@@ -263,31 +262,22 @@ public final class a
       AppMethodBeat.o(118002);
       throw ((Throwable)localObject2);
     }
-    ((b)localObject2).start();
+    ((c)localObject2).start();
     AppMethodBeat.o(118002);
     return k + 1;
   }
   
-  private final b iTf()
+  private final c kEx()
   {
-    AppMethodBeat.i(204691);
-    Thread localThread = Thread.currentThread();
-    Object localObject = localThread;
-    if (!(localThread instanceof b)) {
-      localObject = null;
-    }
-    localObject = (b)localObject;
-    if (localObject != null)
+    AppMethodBeat.i(189535);
+    Object localObject = Thread.currentThread();
+    if ((localObject instanceof c)) {}
+    for (localObject = (c)localObject; (localObject != null) && (s.p(((c)localObject).ajBt, this)); localObject = null)
     {
-      if (p.h(((b)localObject).abAc, (a)this))
-      {
-        AppMethodBeat.o(204691);
-        return localObject;
-      }
-      AppMethodBeat.o(204691);
-      return null;
+      AppMethodBeat.o(189535);
+      return localObject;
     }
-    AppMethodBeat.o(204691);
+    AppMethodBeat.o(189535);
     return null;
   }
   
@@ -296,54 +286,54 @@ public final class a
     int j = 1;
     AppMethodBeat.i(117997);
     paramj = a(paramRunnable, paramj);
-    b localb = iTf();
+    c localc = kEx();
     int i;
-    if (localb == null)
+    if (localc == null)
     {
       paramRunnable = paramj;
       if (paramRunnable == null) {
-        break label193;
+        break label177;
       }
-      if (paramRunnable.abAr.iTl() != 1) {
-        break label174;
+      if (paramRunnable.ajBI.kEC() != 1) {
+        break label158;
       }
       i = 1;
       label48:
       if (i == 0) {
-        break label180;
+        break label164;
       }
     }
-    label174:
-    label180:
-    for (boolean bool = this.abzM.gy(paramRunnable);; bool = this.abzL.gy(paramRunnable))
+    label158:
+    label164:
+    for (boolean bool = this.ajBg.jl(paramRunnable);; bool = this.ajBf.jl(paramRunnable))
     {
       if (bool) {
-        break label193;
+        break label177;
       }
-      paramRunnable = (Throwable)new RejectedExecutionException(this.abzS + " was terminated");
+      paramRunnable = new RejectedExecutionException(s.X(this.ajBe, " was terminated"));
       AppMethodBeat.o(117997);
       throw paramRunnable;
-      if (localb.abzW == c.abAh)
+      if (localc.ajBn == d.ajBy)
       {
         paramRunnable = paramj;
         break;
       }
-      if ((paramj.abAr.iTl() == 0) && (localb.abzW == c.abAe))
+      if ((paramj.ajBI.kEC() == 0) && (localc.ajBn == d.ajBv))
       {
         paramRunnable = paramj;
         break;
       }
-      localb.abAb = true;
-      paramRunnable = localb.abzV.a(paramj, paramBoolean);
+      localc.ajBs = true;
+      paramRunnable = localc.ajBm.a(paramj, paramBoolean);
       break;
       i = 0;
       break label48;
     }
-    label193:
-    if ((paramBoolean) && (localb != null)) {
+    label177:
+    if ((paramBoolean) && (localc != null)) {
       i = j;
     }
-    while (paramj.abAr.iTl() == 0) {
+    while (paramj.ajBI.kEC() == 0) {
       if (i != 0)
       {
         AppMethodBeat.o(117997);
@@ -352,33 +342,33 @@ public final class a
       }
       else
       {
-        iTc();
+        kEu();
         AppMethodBeat.o(117997);
         return;
       }
     }
-    long l = abzP.addAndGet(this, 2097152L);
-    if ((i == 0) && (!iTd()) && (!XF(l))) {
-      iTd();
+    long l = ajBj.addAndGet(this, 2097152L);
+    if ((i == 0) && (!kEv()) && (!BR(l))) {
+      kEv();
     }
     AppMethodBeat.o(117997);
   }
   
-  public final void a(b paramb, int paramInt1, int paramInt2)
+  public final void a(c paramc, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(204677);
+    AppMethodBeat.i(189563);
     for (;;)
     {
       long l = this.parkedWorkersStack;
       int i = (int)(0x1FFFFF & l);
       if (i == paramInt1) {
         if (paramInt2 == 0) {
-          i = a(paramb);
+          i = a(paramc);
         }
       }
-      while ((i >= 0) && (abzN.compareAndSet(this, l, 2097152L + l & 0xFFE00000 | i)))
+      while ((i >= 0) && (ajBh.compareAndSet(this, l, 2097152L + l & 0xFFE00000 | i)))
       {
-        AppMethodBeat.o(204677);
+        AppMethodBeat.o(189563);
         return;
         i = paramInt2;
       }
@@ -387,345 +377,416 @@ public final class a
   
   public final void close()
   {
-    int k = 1;
     AppMethodBeat.i(117996);
-    if (abzQ.compareAndSet(this, 0, 1))
+    c localc;
+    if (ajBk.compareAndSet(this, 0, 1)) {
+      localc = kEx();
+    }
+    for (;;)
     {
-      b localb = iTf();
-      for (;;)
+      int k;
+      int i;
+      Object localObject3;
+      synchronized (this.ajBi)
       {
-        int m;
-        synchronized (this.abzO)
+        long l = this.controlState;
+        k = (int)(l & 0x1FFFFF);
+        if (k <= 0) {
+          break label193;
+        }
+        i = 1;
+        ??? = this.ajBi.get(i);
+        s.checkNotNull(???);
+        ??? = (c)???;
+        if (??? == localc) {
+          break label188;
+        }
+        if (((c)???).isAlive())
         {
-          long l = this.controlState;
-          m = (int)(l & 0x1FFFFF);
-          if (m <= 0) {
-            break;
-          }
-          i = 1;
-          ??? = this.abzO.get(i);
-          if (??? == null) {
-            p.iCn();
-          }
-          ??? = (b)???;
-          if (??? == localb) {
-            break label198;
-          }
-          if (((b)???).isAlive())
-          {
-            LockSupport.unpark((Thread)???);
-            ((b)???).join(10000L);
-          }
+          LockSupport.unpark((Thread)???);
+          ((c)???).join(10000L);
         }
-        if (localObject3 == c.abAh) {}
-        for (int j = 1; j == 0; j = 0)
-        {
-          ??? = (Throwable)new AssertionError();
-          AppMethodBeat.o(117996);
-          throw ((Throwable)???);
-        }
-        ((b)???).abzV.a(this.abzM);
-        label198:
-        if (i == m) {
-          break;
-        }
-        i += 1;
       }
-      this.abzM.close();
-      this.abzL.close();
-      if (localb != null)
+      if (localObject3 == d.ajBy) {}
+      for (int j = 1; j == 0; j = 0)
       {
-        localObject3 = localb.JH(true);
-        ??? = localObject3;
-        if (localObject3 != null) {}
-      }
-      else
-      {
-        ??? = (i)this.abzL.iSD();
-      }
-      Object localObject3 = ???;
-      if (??? == null) {
-        localObject3 = (i)this.abzM.iSD();
-      }
-      if (localObject3 == null)
-      {
-        if (localb != null) {
-          localb.a(c.abAh);
-        }
-        if (!ap.iRg()) {
-          break label364;
-        }
-        if ((int)((this.controlState & 0x0) >> 42) != this.foy) {
-          break label359;
-        }
-      }
-      label359:
-      for (int i = k;; i = 0)
-      {
-        if (i != 0) {
-          break label364;
-        }
-        ??? = (Throwable)new AssertionError();
+        ??? = new AssertionError();
         AppMethodBeat.o(117996);
         throw ((Throwable)???);
-        a((i)localObject3);
-        break;
       }
-      label364:
-      this.parkedWorkersStack = 0L;
-      this.controlState = 0L;
+      ((c)???).ajBm.a(this.ajBg);
+      label188:
+      if (i == k)
+      {
+        label193:
+        this.ajBg.close();
+        this.ajBf.close();
+        if (localc == null) {}
+        for (localObject3 = null;; localObject3 = localc.PL(true))
+        {
+          ??? = localObject3;
+          if (localObject3 == null)
+          {
+            localObject3 = (i)this.ajBf.kkV();
+            ??? = localObject3;
+            if (localObject3 == null)
+            {
+              ??? = (i)this.ajBg.kkV();
+              if (??? == null) {
+                break label281;
+              }
+            }
+          }
+          a((i)???);
+          break;
+        }
+        if (localc != null) {
+          localc.a(d.ajBy);
+        }
+        if (au.ASSERTIONS_ENABLED)
+        {
+          if ((int)((this.controlState & 0x0) >> 42) == this.hsI) {}
+          for (i = 1; i == 0; i = 0)
+          {
+            ??? = new AssertionError();
+            AppMethodBeat.o(117996);
+            throw ((Throwable)???);
+          }
+        }
+        this.parkedWorkersStack = 0L;
+        this.controlState = 0L;
+        AppMethodBeat.o(117996);
+        return;
+      }
+      label281:
+      i += 1;
     }
-    AppMethodBeat.o(117996);
   }
   
   public final void execute(Runnable paramRunnable)
   {
     AppMethodBeat.i(117995);
-    a(this, paramRunnable);
+    a(this, paramRunnable, null, false, 6);
     AppMethodBeat.o(117995);
   }
   
-  public final void iTc()
+  public final void kEu()
   {
-    AppMethodBeat.i(204680);
-    if (iTd())
+    AppMethodBeat.i(189589);
+    if (kEv())
     {
-      AppMethodBeat.o(204680);
+      AppMethodBeat.o(189589);
       return;
     }
     if (a(this))
     {
-      AppMethodBeat.o(204680);
+      AppMethodBeat.o(189589);
       return;
     }
-    iTd();
-    AppMethodBeat.o(204680);
+    kEv();
+    AppMethodBeat.o(189589);
   }
   
   public final String toString()
   {
+    int i6 = 1;
     AppMethodBeat.i(118003);
     Object localObject1 = new ArrayList();
-    int i3 = this.abzO.length();
-    int k = 1;
-    int i = 0;
-    int j = 0;
-    int i1 = 0;
-    int n = 0;
-    int m = 0;
-    if (k < i3)
+    int i8 = this.ajBi.length();
+    int i5;
+    int i4;
+    int i3;
+    int i2;
+    int i1;
+    int i7;
+    Object localObject2;
+    int i;
+    int j;
+    int k;
+    int m;
+    int n;
+    if (1 < i8)
     {
-      Object localObject2 = (b)this.abzO.get(k);
-      if (localObject2 == null) {}
-      for (;;)
+      i5 = 0;
+      i4 = 0;
+      i3 = 0;
+      i2 = 0;
+      i1 = 0;
+      i7 = i6 + 1;
+      localObject2 = (c)this.ajBi.get(i6);
+      i = i5;
+      j = i4;
+      k = i3;
+      m = i2;
+      n = i1;
+      if (localObject2 != null)
       {
-        k += 1;
-        break;
-        int i4 = ((b)localObject2).abzV.iTn();
-        localObject2 = ((b)localObject2).abzW;
-        switch (b.$EnumSwitchMapping$0[localObject2.ordinal()])
-        {
-        default: 
-        case 1: 
-        case 2: 
-        case 3: 
-        case 4: 
-          int i2;
-          do
-          {
-            break;
-            m += 1;
-            break;
-            n += 1;
-            ((Collection)localObject1).add(String.valueOf(i4) + "b");
-            break;
-            i1 += 1;
-            ((Collection)localObject1).add(String.valueOf(i4) + "c");
-            break;
-            i2 = j + 1;
-            j = i2;
-          } while (i4 <= 0);
-          ((Collection)localObject1).add(String.valueOf(i4) + "d");
-          j = i2;
+        i6 = ((c)localObject2).ajBm.kEF();
+        localObject2 = ((c)localObject2).ajBn;
+      }
+      switch (b.$EnumSwitchMapping$0[localObject2.ordinal()])
+      {
+      default: 
+        n = i1;
+        m = i2;
+        k = i3;
+        j = i4;
+        i = i5;
+        label169:
+        if (i7 < i8) {
           break;
-        case 5: 
-          i += 1;
         }
       }
     }
-    long l = this.controlState;
-    localObject1 = this.abzS + '@' + Integer.toHexString(System.identityHashCode(this)) + '[' + "Pool Size {core = " + this.foy + ", max = " + this.ZwT + "}, Worker States {CPU = " + i1 + ", blocking = " + n + ", parked = " + m + ", dormant = " + j + ", terminated = " + i + "}, running workers queues = " + localObject1 + ", global CPU queue size = " + this.abzL.getSize() + ", global blocking queue size = " + this.abzM.getSize() + ", Control State {created workers= " + (int)(0x1FFFFF & l) + ", blocking tasks = " + (int)((0xFFE00000 & l) >> 21) + ", CPUs acquired = " + (this.foy - (int)((0x0 & l) >> 42)) + "}]";
-    AppMethodBeat.o(118003);
-    return localObject1;
+    for (;;)
+    {
+      long l = this.controlState;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.ajBe).append('@').append(Integer.toHexString(System.identityHashCode(this))).append("[Pool Size {core = ").append(this.hsI).append(", max = ").append(this.ahBX).append("}, Worker States {CPU = ").append(k).append(", blocking = ").append(m).append(", parked = ").append(n).append(", dormant = ").append(j).append(", terminated = ").append(i).append("}, running workers queues = ").append(localObject1).append(", global CPU queue size = ").append(this.ajBf.getSize()).append(", global blocking queue size = ").append(this.ajBg.getSize());
+      ((StringBuilder)localObject2).append(", Control State {created workers= ").append((int)(0x1FFFFF & l)).append(", blocking tasks = ").append((int)((0xFFE00000 & l) >> 21)).append(", CPUs acquired = ").append(this.hsI - (int)((0x0 & l) >> 42)).append("}]");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      AppMethodBeat.o(118003);
+      return localObject1;
+      n = i1 + 1;
+      i = i5;
+      j = i4;
+      k = i3;
+      m = i2;
+      break label169;
+      m = i2 + 1;
+      ((Collection)localObject1).add(i6 + 'b');
+      i = i5;
+      j = i4;
+      k = i3;
+      n = i1;
+      break label169;
+      k = i3 + 1;
+      ((Collection)localObject1).add(i6 + 'c');
+      i = i5;
+      j = i4;
+      m = i2;
+      n = i1;
+      break label169;
+      i4 += 1;
+      i = i5;
+      j = i4;
+      k = i3;
+      m = i2;
+      n = i1;
+      if (i6 <= 0) {
+        break label169;
+      }
+      ((Collection)localObject1).add(i6 + 'd');
+      i = i5;
+      j = i4;
+      k = i3;
+      m = i2;
+      n = i1;
+      break label169;
+      i = i5 + 1;
+      j = i4;
+      k = i3;
+      m = i2;
+      n = i1;
+      break label169;
+      i6 = i7;
+      i5 = i;
+      i4 = j;
+      i3 = k;
+      i2 = m;
+      i1 = n;
+      break;
+      i = 0;
+      j = 0;
+      k = 0;
+      m = 0;
+      n = 0;
+    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;", "", "index", "<init>", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler;I)V", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler;)V", "taskMode", "", "afterTask", "(I)V", "beforeTask", "Lkotlinx/coroutines/scheduling/Task;", "task", "executeTask", "(Lkotlinx/coroutines/scheduling/Task;)V", "", "scanLocalQueue", "findAnyTask", "(Z)Lkotlinx/coroutines/scheduling/Task;", "findTask", "mode", "idleReset", "inStack", "()Z", "upperBound", "nextInt$kotlinx_coroutines_core", "(I)I", "nextInt", "park", "()V", "pollGlobalQueues", "()Lkotlinx/coroutines/scheduling/Task;", "run", "runWorker", "tryAcquireCpuPermit", "tryPark", "Lkotlinx/coroutines/scheduling/CoroutineScheduler$WorkerState;", "newState", "tryReleaseCpu$kotlinx_coroutines_core", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler$WorkerState;)Z", "tryReleaseCpu", "blockingOnly", "trySteal", "tryTerminateWorker", "indexInArray", "I", "getIndexInArray", "()I", "setIndexInArray", "Lkotlinx/coroutines/scheduling/WorkQueue;", "localQueue", "Lkotlinx/coroutines/scheduling/WorkQueue;", "mayHaveLocalTasks", "Z", "", "minDelayUntilStealableTaskNs", "J", "", "nextParkedWorker", "Ljava/lang/Object;", "getNextParkedWorker", "()Ljava/lang/Object;", "setNextParkedWorker", "(Ljava/lang/Object;)V", "rngState", "Lkotlinx/coroutines/scheduling/CoroutineScheduler;", "getScheduler", "()Lkotlinx/coroutines/scheduling/CoroutineScheduler;", "scheduler", "state", "Lkotlinx/coroutines/scheduling/CoroutineScheduler$WorkerState;", "terminationDeadline", "kotlinx-coroutines-core", "Ljava/lang/Thread;"})
-  public final class b
+  @Metadata(d1={""}, d2={"Lkotlinx/coroutines/scheduling/CoroutineScheduler$Worker;", "", "index", "<init>", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler;I)V", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler;)V", "taskMode", "", "afterTask", "(I)V", "beforeTask", "Lkotlinx/coroutines/scheduling/Task;", "task", "executeTask", "(Lkotlinx/coroutines/scheduling/Task;)V", "", "scanLocalQueue", "findAnyTask", "(Z)Lkotlinx/coroutines/scheduling/Task;", "findTask", "mode", "idleReset", "inStack", "()Z", "upperBound", "nextInt", "(I)I", "park", "()V", "pollGlobalQueues", "()Lkotlinx/coroutines/scheduling/Task;", "run", "runWorker", "tryAcquireCpuPermit", "tryPark", "Lkotlinx/coroutines/scheduling/CoroutineScheduler$WorkerState;", "newState", "tryReleaseCpu", "(Lkotlinx/coroutines/scheduling/CoroutineScheduler$WorkerState;)Z", "blockingOnly", "trySteal", "tryTerminateWorker", "indexInArray", "I", "getIndexInArray", "()I", "setIndexInArray", "Lkotlinx/coroutines/scheduling/WorkQueue;", "localQueue", "Lkotlinx/coroutines/scheduling/WorkQueue;", "mayHaveLocalTasks", "Z", "", "minDelayUntilStealableTaskNs", "J", "", "nextParkedWorker", "Ljava/lang/Object;", "getNextParkedWorker", "()Ljava/lang/Object;", "setNextParkedWorker", "(Ljava/lang/Object;)V", "rngState", "Lkotlinx/coroutines/scheduling/CoroutineScheduler;", "getScheduler", "()Lkotlinx/coroutines/scheduling/CoroutineScheduler;", "scheduler", "state", "Lkotlinx/coroutines/scheduling/CoroutineScheduler$WorkerState;", "terminationDeadline", "kotlinx-coroutines-core", "Ljava/lang/Thread;"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class c
     extends Thread
   {
-    static final AtomicIntegerFieldUpdater abzX;
-    private int abAa;
-    public boolean abAb;
-    public final n abzV;
-    public a.c abzW;
-    private long abzY;
-    private long abzZ;
+    public final m ajBm;
+    public a.d ajBn;
+    private long ajBp;
+    private long ajBq;
+    private int ajBr;
+    public boolean ajBs;
     volatile int indexInArray;
     volatile Object nextParkedWorker;
-    volatile int workerCtl;
     
     static
     {
       AppMethodBeat.i(118028);
-      abzX = AtomicIntegerFieldUpdater.newUpdater(b.class, "workerCtl");
+      ajBo = AtomicIntegerFieldUpdater.newUpdater(c.class, "workerCtl");
       AppMethodBeat.o(118028);
     }
     
-    private b()
+    private c()
     {
       AppMethodBeat.i(118026);
       setDaemon(true);
-      this.abzV = new n();
-      this.abzW = a.c.abAg;
+      this.ajBm = new m();
+      this.ajBn = a.d.ajBx;
       this.workerCtl = 0;
-      this.nextParkedWorker = a.abzT;
-      this$1 = c.aaBL;
-      this.abAa = c.iCt().zD();
+      this.nextParkedWorker = a.ajBl;
+      this$1 = c.aixl;
+      this.ajBr = c.klI().Zo();
       AppMethodBeat.o(118026);
     }
     
-    public b()
+    public c()
     {
       this();
       AppMethodBeat.i(118027);
       int i;
-      aFU(i);
+      aMH(i);
       AppMethodBeat.o(118027);
     }
     
-    private final i JI(boolean paramBoolean)
+    private final i PM(boolean paramBoolean)
     {
-      AppMethodBeat.i(204743);
+      AppMethodBeat.i(189483);
       if (paramBoolean)
       {
-        if (aFV(this.abAc.foy * 2) == 0) {}
+        if (Pa(a.this.hsI * 2) == 0) {}
         for (int i = 1; i != 0; i = 0)
         {
-          locali = iTj();
+          locali = kEB();
           if (locali == null) {
             break;
           }
-          AppMethodBeat.o(204743);
+          AppMethodBeat.o(189483);
           return locali;
         }
-        locali = this.abzV.iTo();
+        locali = this.ajBm.kEG();
         if (locali != null)
         {
-          AppMethodBeat.o(204743);
+          AppMethodBeat.o(189483);
           return locali;
         }
         if (i == 0)
         {
-          locali = iTj();
+          locali = kEB();
           if (locali != null)
           {
-            AppMethodBeat.o(204743);
+            AppMethodBeat.o(189483);
             return locali;
           }
         }
       }
       else
       {
-        locali = iTj();
+        locali = kEB();
         if (locali != null)
         {
-          AppMethodBeat.o(204743);
+          AppMethodBeat.o(189483);
           return locali;
         }
       }
-      i locali = JJ(false);
-      AppMethodBeat.o(204743);
+      i locali = PN(false);
+      AppMethodBeat.o(189483);
       return locali;
     }
     
-    private final i JJ(boolean paramBoolean)
+    private final i PN(boolean paramBoolean)
     {
-      AppMethodBeat.i(204745);
-      Object localObject;
-      if (ap.iRg())
+      AppMethodBeat.i(189502);
+      if (au.ASSERTIONS_ENABLED)
       {
-        if (this.abzV.iTn() == 0) {}
+        if (this.ajBm.kEF() == 0) {}
         for (i = 1; i == 0; i = 0)
         {
-          localObject = (Throwable)new AssertionError();
-          AppMethodBeat.o(204745);
+          localObject = new AssertionError();
+          AppMethodBeat.o(189502);
           throw ((Throwable)localObject);
         }
       }
-      int m = a.b(this.abAc);
+      int m = (int)(a.this.controlState & 0x1FFFFF);
       if (m < 2)
       {
-        AppMethodBeat.o(204745);
+        AppMethodBeat.o(189502);
         return null;
       }
-      int i = aFV(m);
+      int i = Pa(m);
       long l1 = 9223372036854775807L;
+      Object localObject = a.this;
       int j = 0;
       if (j < m)
       {
         i += 1;
         if (i <= m) {
-          break label301;
+          break label314;
         }
         i = 1;
       }
-      label301:
+      label314:
       for (;;)
       {
-        localObject = (b)this.abAc.abzO.get(i);
-        if ((localObject != null) && (localObject != (b)this))
+        c localc = (c)((a)localObject).ajBi.get(i);
+        long l3 = l1;
+        if (localc != null)
         {
-          if (ap.iRg())
+          l3 = l1;
+          if (localc != this)
           {
-            if (this.abzV.iTn() == 0) {}
-            for (int k = 1; k == 0; k = 0)
+            if (au.ASSERTIONS_ENABLED)
             {
-              localObject = (Throwable)new AssertionError();
-              AppMethodBeat.o(204745);
-              throw ((Throwable)localObject);
+              if (this.ajBm.kEF() == 0) {}
+              for (int k = 1; k == 0; k = 0)
+              {
+                localObject = new AssertionError();
+                AppMethodBeat.o(189502);
+                throw ((Throwable)localObject);
+              }
+            }
+            if (paramBoolean) {}
+            for (long l2 = this.ajBm.b(localc.ajBm); l2 == -1L; l2 = this.ajBm.a(localc.ajBm))
+            {
+              localObject = this.ajBm.kEG();
+              AppMethodBeat.o(189502);
+              return localObject;
+            }
+            l3 = l1;
+            if (l2 > 0L) {
+              l3 = Math.min(l1, l2);
             }
           }
-          if (paramBoolean) {}
-          for (long l2 = this.abzV.b(((b)localObject).abzV); l2 == -1L; l2 = this.abzV.a(((b)localObject).abzV))
-          {
-            localObject = this.abzV.iTo();
-            AppMethodBeat.o(204745);
-            return localObject;
-          }
-          if (l2 > 0L) {
-            l1 = Math.min(l1, l2);
-          }
         }
+        j += 1;
+        l1 = l3;
+        break;
+        if (l1 != 9223372036854775807L) {}
         for (;;)
         {
-          j += 1;
-          break;
-          if (l1 != 9223372036854775807L) {}
-          for (;;)
-          {
-            this.abzZ = l1;
-            AppMethodBeat.o(204745);
-            return null;
-            l1 = 0L;
-          }
+          this.ajBq = l1;
+          AppMethodBeat.o(189502);
+          return null;
+          l1 = 0L;
         }
       }
     }
     
-    private void aFU(int paramInt)
+    private int Pa(int paramInt)
+    {
+      int i = this.ajBr;
+      i ^= i << 13;
+      i ^= i >> 17;
+      i ^= i << 5;
+      this.ajBr = i;
+      int j = paramInt - 1;
+      if ((j & paramInt) == 0) {
+        return i & j;
+      }
+      return (i & 0x7FFFFFFF) % paramInt;
+    }
+    
+    private void aMH(int paramInt)
     {
       AppMethodBeat.i(118015);
-      StringBuilder localStringBuilder = new StringBuilder().append(this.abAc.abzS).append("-worker-");
+      StringBuilder localStringBuilder = new StringBuilder().append(a.this.ajBe).append("-worker-");
       if (paramInt == 0) {}
       for (String str = "TERMINATED";; str = String.valueOf(paramInt))
       {
@@ -736,29 +797,46 @@ public final class a
       }
     }
     
-    private int aFV(int paramInt)
+    private final boolean kEA()
     {
-      int i = this.abAa;
-      i ^= i << 13;
-      i ^= i >> 17;
-      i ^= i << 5;
-      this.abAa = i;
-      int j = paramInt - 1;
-      if ((j & paramInt) == 0) {
-        return i & j;
-      }
-      return (i & 0x7FFFFFFF) % paramInt;
+      return this.nextParkedWorker != a.ajBl;
     }
     
-    private final boolean iTg()
+    private final i kEB()
+    {
+      AppMethodBeat.i(189491);
+      if (Pa(2) == 0)
+      {
+        locali = (i)a.this.ajBf.kkV();
+        if (locali != null)
+        {
+          AppMethodBeat.o(189491);
+          return locali;
+        }
+        locali = (i)a.this.ajBg.kkV();
+        AppMethodBeat.o(189491);
+        return locali;
+      }
+      i locali = (i)a.this.ajBg.kkV();
+      if (locali != null)
+      {
+        AppMethodBeat.o(189491);
+        return locali;
+      }
+      locali = (i)a.this.ajBf.kkV();
+      AppMethodBeat.o(189491);
+      return locali;
+    }
+    
+    private final boolean kEy()
     {
       AppMethodBeat.i(118017);
-      if (this.abzW == a.c.abAd)
+      if (this.ajBn == a.d.ajBu)
       {
         AppMethodBeat.o(118017);
         return true;
       }
-      a locala = this.abAc;
+      a locala = a.this;
       long l = locala.controlState;
       if ((int)((0x0 & l) >> 42) == 0) {}
       for (int i = 0;; i = 1)
@@ -766,10 +844,10 @@ public final class a
         if (i == 0) {
           break label91;
         }
-        this.abzW = a.c.abAd;
+        this.ajBn = a.d.ajBu;
         AppMethodBeat.o(118017);
         return true;
-        if (!a.abzP.compareAndSet(locala, l, l - 4398046511104L)) {
+        if (!a.ajBj.compareAndSet(locala, l, l - 4398046511104L)) {
           break;
         }
       }
@@ -778,176 +856,141 @@ public final class a
       return false;
     }
     
-    private final void iTh()
+    private final void kEz()
     {
-      AppMethodBeat.i(204741);
+      AppMethodBeat.i(189466);
+      Object localObject1;
       int j;
       int i;
-      if (!iTi())
+      if (!kEA())
       {
-        ??? = this.abAc;
-        if (this.nextParkedWorker == a.abzT)
+        localObject1 = a.this;
+        if (this.nextParkedWorker == a.ajBl)
         {
           long l;
           int k;
           do
           {
-            l = ((a)???).parkedWorkersStack;
+            l = ((a)localObject1).parkedWorkersStack;
             j = (int)(0x1FFFFF & l);
             k = this.indexInArray;
-            if (ap.iRg())
+            if (au.ASSERTIONS_ENABLED)
             {
               if (k != 0) {}
               for (i = 1; i == 0; i = 0)
               {
-                ??? = (Throwable)new AssertionError();
-                AppMethodBeat.o(204741);
-                throw ((Throwable)???);
+                localObject1 = new AssertionError();
+                AppMethodBeat.o(189466);
+                throw ((Throwable)localObject1);
               }
             }
-            this.nextParkedWorker = ((a)???).abzO.get(j);
-          } while (!a.abzN.compareAndSet(???, l, k | 2097152L + l & 0xFFE00000));
+            this.nextParkedWorker = ((a)localObject1).ajBi.get(j);
+          } while (!a.ajBh.compareAndSet(localObject1, l, k | 2097152L + l & 0xFFE00000));
         }
-        AppMethodBeat.o(204741);
+        AppMethodBeat.o(189466);
         return;
       }
-      if (ap.iRg())
+      if (au.ASSERTIONS_ENABLED)
       {
-        if (this.abzV.iTn() == 0) {}
+        if (this.ajBm.kEF() == 0) {}
         for (i = 1; i == 0; i = 0)
         {
-          ??? = (Throwable)new AssertionError();
-          AppMethodBeat.o(204741);
-          throw ((Throwable)???);
+          localObject1 = new AssertionError();
+          AppMethodBeat.o(189466);
+          throw ((Throwable)localObject1);
         }
       }
       this.workerCtl = -1;
-      while ((iTi()) && (this.abAc._isTerminated == 0) && (this.abzW != a.c.abAh))
+      while ((kEA()) && (this.workerCtl == -1) && (a.this._isTerminated == 0) && (this.ajBn != a.d.ajBy))
       {
-        a(a.c.abAf);
+        a(a.d.ajBw);
         Thread.interrupted();
-        if (this.abzY == 0L) {
-          this.abzY = (System.nanoTime() + this.abAc.abzR);
+        if (this.ajBp == 0L) {
+          this.ajBp = (System.nanoTime() + a.this.ajBd);
         }
-        LockSupport.parkNanos(this.abAc.abzR);
-        if (System.nanoTime() - this.abzY >= 0L)
+        LockSupport.parkNanos(a.this.ajBd);
+        if (System.nanoTime() - this.ajBp >= 0L)
         {
-          this.abzY = 0L;
-          synchronized (this.abAc.abzO)
+          this.ajBp = 0L;
+          localObject1 = a.this.ajBi;
+          Object localObject2 = a.this;
+          try
           {
-            i = this.abAc._isTerminated;
-            if (i == 0)
+            i = ((a)localObject2)._isTerminated;
+            if (i != 0) {}
+            i = (int)(((a)localObject2).controlState & 0x1FFFFF);
+            j = ((a)localObject2).hsI;
+            if (i <= j) {}
+            boolean bool = ajBo.compareAndSet(this, -1, 1);
+            if (!bool) {}
+            i = this.indexInArray;
+            aMH(0);
+            ((a)localObject2).a(this, i, 0);
+            j = (int)(a.ajBj.getAndDecrement(localObject2) & 0x1FFFFF);
+            if (j != i)
             {
-              i = a.b(this.abAc);
-              j = this.abAc.foy;
-              if (i > j)
-              {
-                boolean bool = abzX.compareAndSet(this, -1, 1);
-                if (bool)
-                {
-                  i = this.indexInArray;
-                  aFU(0);
-                  this.abAc.a(this, i, 0);
-                  Object localObject2 = this.abAc;
-                  j = (int)(a.abzP.getAndDecrement(localObject2) & 0x1FFFFF);
-                  if (j != i)
-                  {
-                    localObject2 = this.abAc.abzO.get(j);
-                    if (localObject2 == null) {
-                      p.iCn();
-                    }
-                    localObject2 = (b)localObject2;
-                    this.abAc.abzO.set(i, localObject2);
-                    ((b)localObject2).aFU(i);
-                    this.abAc.a((b)localObject2, j, i);
-                  }
-                  this.abAc.abzO.set(j, null);
-                  localObject2 = x.aazN;
-                  this.abzW = a.c.abAh;
-                }
-              }
+              Object localObject4 = ((a)localObject2).ajBi.get(j);
+              s.checkNotNull(localObject4);
+              localObject4 = (c)localObject4;
+              ((a)localObject2).ajBi.set(i, localObject4);
+              ((c)localObject4).aMH(i);
+              ((a)localObject2).a((c)localObject4, j, i);
             }
+            ((a)localObject2).ajBi.set(j, null);
+            localObject2 = ah.aiuX;
+            this.ajBn = a.d.ajBy;
+          }
+          finally
+          {
+            AppMethodBeat.o(189466);
           }
         }
       }
-      AppMethodBeat.o(204741);
+      AppMethodBeat.o(189466);
     }
     
-    private final boolean iTi()
+    public final i PL(boolean paramBoolean)
     {
-      return this.nextParkedWorker != a.abzT;
-    }
-    
-    private final i iTj()
-    {
-      AppMethodBeat.i(204744);
-      if (aFV(2) == 0)
+      AppMethodBeat.i(189533);
+      i locali;
+      if (kEy())
       {
-        locali = (i)this.abAc.abzL.iSD();
-        if (locali != null)
-        {
-          AppMethodBeat.o(204744);
-          return locali;
-        }
-        locali = (i)this.abAc.abzM.iSD();
-        AppMethodBeat.o(204744);
+        locali = PM(paramBoolean);
+        AppMethodBeat.o(189533);
         return locali;
-      }
-      i locali = (i)this.abAc.abzM.iSD();
-      if (locali != null)
-      {
-        AppMethodBeat.o(204744);
-        return locali;
-      }
-      locali = (i)this.abAc.abzL.iSD();
-      AppMethodBeat.o(204744);
-      return locali;
-    }
-    
-    public final i JH(boolean paramBoolean)
-    {
-      AppMethodBeat.i(204742);
-      Object localObject1;
-      if (iTg())
-      {
-        localObject1 = JI(paramBoolean);
-        AppMethodBeat.o(204742);
-        return localObject1;
       }
       if (paramBoolean)
       {
-        localObject2 = this.abzV.iTo();
-        localObject1 = localObject2;
-        if (localObject2 != null) {}
+        locali = this.ajBm.kEG();
+        if (locali == null) {}
       }
-      else
+      while (locali == null)
       {
-        localObject1 = (i)this.abAc.abzM.iSD();
+        locali = PN(true);
+        AppMethodBeat.o(189533);
+        return locali;
+        locali = (i)a.this.ajBg.kkV();
       }
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = JJ(true);
-      }
-      AppMethodBeat.o(204742);
-      return localObject2;
+      AppMethodBeat.o(189533);
+      return locali;
     }
     
-    public final boolean a(a.c paramc)
+    public final boolean a(a.d paramd)
     {
-      AppMethodBeat.i(118018);
-      a.c localc = this.abzW;
-      if (localc == a.c.abAd) {}
+      AppMethodBeat.i(189516);
+      a.d locald = this.ajBn;
+      if (locald == a.d.ajBu) {}
       for (boolean bool = true;; bool = false)
       {
         if (bool)
         {
-          a locala = this.abAc;
-          a.abzP.addAndGet(locala, 4398046511104L);
+          a locala = a.this;
+          a.ajBj.addAndGet(locala, 4398046511104L);
         }
-        if (localc != paramc) {
-          this.abzW = paramc;
+        if (locald != paramd) {
+          this.ajBn = paramd;
         }
-        AppMethodBeat.o(118018);
+        AppMethodBeat.o(189516);
         return bool;
       }
     }
@@ -956,58 +999,58 @@ public final class a
     {
       AppMethodBeat.i(118019);
       int i = 0;
-      while ((this.abAc._isTerminated == 0) && (this.abzW != a.c.abAh))
+      while ((a.this._isTerminated == 0) && (this.ajBn != a.d.ajBy))
       {
-        Object localObject = JH(this.abAb);
+        Object localObject = PL(this.ajBs);
         if (localObject != null)
         {
-          this.abzZ = 0L;
-          int j = ((i)localObject).abAr.iTl();
-          this.abzY = 0L;
-          if (this.abzW == a.c.abAf)
+          this.ajBq = 0L;
+          int j = ((i)localObject).ajBI.kEC();
+          this.ajBp = 0L;
+          if (this.ajBn == a.d.ajBw)
           {
-            if (ap.iRg())
+            if (au.ASSERTIONS_ENABLED)
             {
               if (j == 1) {}
               for (i = 1; i == 0; i = 0)
               {
-                localObject = (Throwable)new AssertionError();
+                localObject = new AssertionError();
                 AppMethodBeat.o(118019);
                 throw ((Throwable)localObject);
               }
             }
-            this.abzW = a.c.abAe;
+            this.ajBn = a.d.ajBv;
           }
-          if ((j != 0) && (a(a.c.abAe))) {
-            this.abAc.iTc();
+          if ((j != 0) && (a(a.d.ajBv))) {
+            a.this.kEu();
           }
           a.a((i)localObject);
           if (j != 0)
           {
-            localObject = this.abAc;
-            a.abzP.addAndGet(localObject, -2097152L);
-            localObject = this.abzW;
-            if (localObject != a.c.abAh)
+            localObject = a.this;
+            a.ajBj.addAndGet(localObject, -2097152L);
+            localObject = this.ajBn;
+            if (localObject != a.d.ajBy)
             {
-              if (ap.iRg())
+              if (au.ASSERTIONS_ENABLED)
               {
-                if (localObject == a.c.abAe) {}
+                if (localObject == a.d.ajBv) {}
                 for (i = 1; i == 0; i = 0)
                 {
-                  localObject = (Throwable)new AssertionError();
+                  localObject = new AssertionError();
                   AppMethodBeat.o(118019);
                   throw ((Throwable)localObject);
                 }
               }
-              this.abzW = a.c.abAg;
+              this.ajBn = a.d.ajBx;
             }
           }
           i = 0;
         }
         else
         {
-          this.abAb = false;
-          if (this.abzZ != 0L)
+          this.ajBs = false;
+          if (this.ajBq != 0L)
           {
             if (i == 0)
             {
@@ -1015,49 +1058,44 @@ public final class a
             }
             else
             {
-              a(a.c.abAf);
+              a(a.d.ajBw);
               Thread.interrupted();
-              LockSupport.parkNanos(this.abzZ);
-              this.abzZ = 0L;
+              LockSupport.parkNanos(this.ajBq);
+              this.ajBq = 0L;
               i = 0;
             }
           }
           else {
-            iTh();
+            kEz();
           }
         }
       }
-      a(a.c.abAh);
+      a(a.d.ajBy);
       AppMethodBeat.o(118019);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/scheduling/CoroutineScheduler$WorkerState;", "", "(Ljava/lang/String;I)V", "CPU_ACQUIRED", "BLOCKING", "PARKING", "DORMANT", "TERMINATED", "kotlinx-coroutines-core"})
-  public static enum c
+  @Metadata(d1={""}, d2={"Lkotlinx/coroutines/scheduling/CoroutineScheduler$WorkerState;", "", "(Ljava/lang/String;I)V", "CPU_ACQUIRED", "BLOCKING", "PARKING", "DORMANT", "TERMINATED", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum d
   {
     static
     {
       AppMethodBeat.i(118012);
-      c localc1 = new c("CPU_ACQUIRED", 0);
-      abAd = localc1;
-      c localc2 = new c("BLOCKING", 1);
-      abAe = localc2;
-      c localc3 = new c("PARKING", 2);
-      abAf = localc3;
-      c localc4 = new c("DORMANT", 3);
-      abAg = localc4;
-      c localc5 = new c("TERMINATED", 4);
-      abAh = localc5;
-      abAi = new c[] { localc1, localc2, localc3, localc4, localc5 };
+      ajBu = new d("CPU_ACQUIRED", 0);
+      ajBv = new d("BLOCKING", 1);
+      ajBw = new d("PARKING", 2);
+      ajBx = new d("DORMANT", 3);
+      ajBy = new d("TERMINATED", 4);
+      ajBz = new d[] { ajBu, ajBv, ajBw, ajBx, ajBy };
       AppMethodBeat.o(118012);
     }
     
-    private c() {}
+    private d() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/om">
-        <LinearLayout style="@style/lz">
-            <TextView android:id="@id/hlu" android:text="@string/ae7" style="@style/no" />
-            <View style="@style/nj" />
-            <LinearLayout android:orientation="horizontal" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" style="@style/lz">
-                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/bgn" android:background="@drawable/ai6" android:layout_width="wrap_content" android:layout_height="50.0dip">
-                    <TextView android:textSize="15.0dip" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/bgk" android:layout_width="48.0dip" android:layout_height="wrap_content" android:singleLine="true" />
-                    <TextView android:textSize="8.0dip" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/bgp" android:layout_width="48.0dip" android:layout_height="wrap_content" android:text="@string/bj_" android:singleLine="true" />
-                </LinearLayout>
-                <com.tencent.mm.plugin.account.sdk.ImeEditText android:id="@id/a47" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="10.0dip" android:hint="@string/afj" android:inputType="phone" style="@style/nn" />
-            </LinearLayout>
-            <Button android:id="@id/a4g" android:visibility="gone" android:text="@string/afc" style="@style/p5" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/j6c" style="@style/j4">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/f2i" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/ep" />
+        <TextView android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/kn3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ek" android:text="{tip}" style="@style/ma" />
+    </LinearLayout>
+</RelativeLayout>

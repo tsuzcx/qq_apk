@@ -3,19 +3,19 @@ package com.tencent.mm.pluginsdk.ui.applet;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.e;
 
 final class o$11
   implements DialogInterface.OnClickListener
 {
-  o$11(d paramd, y.a parama) {}
+  o$11(e parame, y.a parama) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(31354);
-    this.shK.dismiss();
-    if (this.shM != null) {
-      this.shM.a(false, null, 0);
+    this.vtL.dismiss();
+    if (this.vtN != null) {
+      this.vtN.onDialogClick(false, null, 0);
     }
     AppMethodBeat.o(31354);
   }

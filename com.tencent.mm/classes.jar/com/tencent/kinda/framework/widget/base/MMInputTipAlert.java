@@ -10,7 +10,7 @@ import com.tencent.kinda.gen.VoidStringCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.ui.view.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.h.b;
+import com.tencent.mm.ui.base.k.b;
 
 public class MMInputTipAlert
   implements KInputTipAlert
@@ -28,7 +28,7 @@ public class MMInputTipAlert
       AppMethodBeat.o(18991);
       return;
     }
-    a.a(localContext, paramString1, paramString2, paramString3, 100, new h.b()new DialogInterface.OnClickListener
+    a.a(localContext, paramString1, paramString2, paramString3, 100, new k.b()new DialogInterface.OnClickListener
     {
       public boolean onFinish(CharSequence paramAnonymousCharSequence)
       {
@@ -53,7 +53,7 @@ public class MMInputTipAlert
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMInputTipAlert
  * JD-Core Version:    0.7.0.1
  */

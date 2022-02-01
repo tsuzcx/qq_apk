@@ -2,10 +2,9 @@ package com.tencent.mm.ipcinvoker.wx_extension;
 
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
@@ -15,34 +14,34 @@ public final class a
   public final void a(Object paramObject, Parcel paramParcel)
   {
     AppMethodBeat.i(146403);
-    paramObject = (d)paramObject;
-    com.tencent.mm.ipcinvoker.extension.c.a(d.b.b(paramObject.lBR), paramParcel);
+    paramObject = (com.tencent.mm.am.c)paramObject;
+    com.tencent.mm.ipcinvoker.extension.c.a(c.b.b(paramObject.otB), paramParcel);
     if (MMApplicationContext.isMMProcess()) {
-      com.tencent.mm.ipcinvoker.extension.c.a(d.c.b(paramObject.lBS), paramParcel);
+      com.tencent.mm.ipcinvoker.extension.c.a(c.c.b(paramObject.otC), paramParcel);
     }
     for (;;)
     {
       paramParcel.writeString(paramObject.getUri());
       paramParcel.writeInt(paramObject.getType());
-      paramParcel.writeInt(d.b.a(paramObject.lBR));
-      paramParcel.writeInt(d.c.a(paramObject.lBS));
+      paramParcel.writeInt(c.b.a(paramObject.otB));
+      paramParcel.writeInt(c.c.a(paramObject.otC));
       paramParcel.writeInt(paramObject.getTimeOut());
       AppMethodBeat.o(146403);
       return;
-      paramParcel.writeString(d.c.b(paramObject.lBS).getClass().getName());
+      paramParcel.writeString(c.c.b(paramObject.otC).getClass().getName());
     }
   }
   
-  public final boolean bp(Object paramObject)
+  public final boolean cJ(Object paramObject)
   {
-    return paramObject instanceof d;
+    return paramObject instanceof com.tencent.mm.am.c;
   }
   
-  public final Object d(Parcel paramParcel)
+  public final Object f(Parcel paramParcel)
   {
     AppMethodBeat.i(146404);
-    d.a locala1 = new d.a();
-    locala1.lBU = ((com.tencent.mm.cd.a)com.tencent.mm.ipcinvoker.extension.c.a(c.class.getName(), paramParcel));
+    c.a locala1 = new c.a();
+    locala1.otE = ((com.tencent.mm.bx.a)com.tencent.mm.ipcinvoker.extension.c.a(c.class.getName(), paramParcel));
     String str;
     if (MMApplicationContext.isMMProcess()) {
       str = paramParcel.readString();
@@ -51,28 +50,28 @@ public final class a
     {
       try
       {
-        locala1.lBV = ((com.tencent.mm.cd.a)Class.forName(str).newInstance());
+        locala1.otF = ((com.tencent.mm.bx.a)Class.forName(str).newInstance());
         locala1.uri = paramParcel.readString();
         locala1.funcId = paramParcel.readInt();
-        locala1.lBW = paramParcel.readInt();
+        locala1.otG = paramParcel.readInt();
         locala1.respCmdId = paramParcel.readInt();
         locala1.timeout = paramParcel.readInt();
-        paramParcel = locala1.bgN();
+        paramParcel = locala1.bEF();
         AppMethodBeat.o(146404);
         return paramParcel;
       }
       catch (Exception localException)
       {
         Log.e("MicroMsg.XIPC.CommReqRespTransfer", "readFromParcel, mm process initiate resp e = %s", new Object[] { localException });
-        locala1.lBV = new com.tencent.mm.cd.a();
+        locala1.otF = new com.tencent.mm.bx.a();
         continue;
       }
-      com.tencent.mm.cd.a locala = (com.tencent.mm.cd.a)com.tencent.mm.ipcinvoker.extension.c.a(c.class.getName(), paramParcel);
+      com.tencent.mm.bx.a locala = (com.tencent.mm.bx.a)com.tencent.mm.ipcinvoker.extension.c.a(c.class.getName(), paramParcel);
       Object localObject = locala;
       if (locala == null) {
-        localObject = new com.tencent.mm.cd.a();
+        localObject = new com.tencent.mm.bx.a();
       }
-      locala1.lBV = ((com.tencent.mm.cd.a)localObject);
+      locala1.otF = ((com.tencent.mm.bx.a)localObject);
     }
   }
 }

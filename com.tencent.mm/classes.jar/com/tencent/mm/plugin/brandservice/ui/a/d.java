@@ -18,7 +18,7 @@ public final class d
   
   public final int getPriority()
   {
-    return 96;
+    return 101;
   }
   
   public final int getType()
@@ -28,7 +28,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,109 +1,90 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aq.e;
-import com.tencent.mm.modelsimple.ab;
-import com.tencent.mm.modelvideo.ac.a;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.w;
-import com.tencent.mm.modelvideo.y;
-import com.tencent.mm.n.f;
-import com.tencent.mm.plugin.thumbplayer.g.b.b;
-import com.tencent.mm.protocal.protobuf.cuv;
-import com.tencent.mm.protocal.protobuf.eor;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.g.a;
+import com.tencent.mm.k.f;
+import com.tencent.mm.k.i;
+import com.tencent.mm.modelcdntran.j;
+import com.tencent.mm.modelcontrol.e;
+import com.tencent.mm.modelsimple.ac;
+import com.tencent.mm.modelvideo.aa;
+import com.tencent.mm.modelvideo.ab;
+import com.tencent.mm.modelvideo.ae;
+import com.tencent.mm.modelvideo.ag.a;
+import com.tencent.mm.modelvideo.z;
+import com.tencent.mm.plugin.thumbplayer.downloader.h.a;
+import com.tencent.mm.plugin.thumbplayer.f.b;
+import com.tencent.mm.plugin.thumbplayer.f.b.b;
+import com.tencent.mm.protocal.protobuf.dmb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.vfs.y;
 import java.util.Collection;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.k;
 import kotlin.n.n;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/gallery/C2CVideoDownloadTask;", "Lcom/tencent/mm/plugin/thumbplayer/downloader/VideoDownloadTask;", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "videoInfo", "Lcom/tencent/mm/modelvideo/VideoInfo;", "reporter", "Lcom/tencent/mm/plugin/thumbplayer/reporter/LegacyPlayerReporter;", "onGotTask", "Lkotlin/Function1;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "", "(Lcom/tencent/mm/storage/MsgInfo;Lcom/tencent/mm/modelvideo/VideoInfo;Lcom/tencent/mm/plugin/thumbplayer/reporter/LegacyPlayerReporter;Lkotlin/jvm/functions/Function1;)V", "downloadSec", "", "filename", "", "getFilename", "()Ljava/lang/String;", "length", "", "getLength", "()J", "mediaId", "getMediaId", "minRemainPercent", "getMinRemainPercent", "()I", "setMinRemainPercent", "(I)V", "minStreamSize", "preloadSec", "savedPath", "getSavedPath", "task", "buildReportData", "", "()[Ljava/lang/Integer;", "createMpVideoDownloadTask", "createTask", "findFile", "finishRemaining", "isFinished", "", "refresh", "start", "stop", "Companion", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/gallery/C2COriginVideoDownloadTask;", "Lcom/tencent/mm/plugin/thumbplayer/downloader/VideoDownloadTask;", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "videoInfo", "Lcom/tencent/mm/modelvideo/VideoInfo;", "reporter", "Lcom/tencent/mm/plugin/thumbplayer/reporter/LegacyPlayerReporter;", "parseInfo", "Lcom/tencent/mm/modelvideo/VideoParseInfo;", "(Lcom/tencent/mm/storage/MsgInfo;Lcom/tencent/mm/modelvideo/VideoInfo;Lcom/tencent/mm/plugin/thumbplayer/reporter/LegacyPlayerReporter;Lcom/tencent/mm/modelvideo/VideoParseInfo;)V", "downloadSec", "", "filename", "", "getFilename", "()Ljava/lang/String;", "length", "", "getLength", "()J", "localMsgId", "getLocalMsgId", "()Ljava/lang/Long;", "mediaId", "getMediaId", "minRemainPercent", "getMinRemainPercent", "()I", "setMinRemainPercent", "(I)V", "minStreamSize", "originVideoInfo", "preloadSec", "savedPath", "getSavedPath", "task", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "buildReportData", "", "()[Ljava/lang/Integer;", "createMpVideoDownloadTask", "createOriginVideoInfo", "originFileName", "createOriginVideoTask", "createTask", "findFile", "finishRemaining", "", "isFinished", "", "refresh", "start", "stop", "Companion", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  implements com.tencent.mm.plugin.thumbplayer.c.h
+  implements com.tencent.mm.plugin.thumbplayer.downloader.h
 {
-  public static final c.a WQQ;
-  private w LrH;
-  private int LrI;
-  private final com.tencent.mm.plugin.thumbplayer.g.b LrJ;
-  private com.tencent.mm.i.h WQN;
-  private int WQO;
-  private final kotlin.g.a.b<com.tencent.mm.i.h, kotlin.x> WQP;
-  private final ca fvt;
-  private int mfN;
-  private int mfO;
+  public static final c.a aeAj;
+  private final b RUM;
+  private int RUO;
+  private z aeAk;
+  private final ae aeAl;
+  private com.tencent.mm.g.h aeAm;
+  private z aeAn;
+  private int aeAo;
+  private final cc hzO;
+  private int oYJ;
+  private int oYK;
   
   static
   {
-    AppMethodBeat.i(268405);
-    WQQ = new c.a((byte)0);
-    AppMethodBeat.o(268405);
+    AppMethodBeat.i(254490);
+    aeAj = new c.a((byte)0);
+    AppMethodBeat.o(254490);
   }
   
-  public c(ca paramca, w paramw, com.tencent.mm.plugin.thumbplayer.g.b paramb, kotlin.g.a.b<? super com.tencent.mm.i.h, kotlin.x> paramb1)
+  public c(cc paramcc, z paramz, b paramb, ae paramae)
   {
-    AppMethodBeat.i(268404);
-    this.fvt = paramca;
-    this.LrH = paramw;
-    this.LrJ = paramb;
-    this.WQP = paramb1;
-    paramca = null;
-    if (y.brb())
-    {
-      Log.i("MicroMsg.C2CVideoDownloadTask", "create c2c online task: filename=" + this.fvt.apK());
-      s.bqC();
-      paramca = e.VB(this.fvt.apK());
-    }
-    paramw = paramca;
-    if (paramca == null)
-    {
-      paramw = paramca;
-      if (this.fvt.dlS())
-      {
-        paramw = new com.tencent.mm.i.h();
-        paramw.taskName = "task_OnlineVideoUIHelper";
-        paramw.field_mediaId = com.tencent.mm.aq.c.a("downvideo", this.LrH.getCreateTime(), this.LrH.bqM(), this.LrH.getFileName());
-        paramw.url = this.LrH.mhZ.lor;
-        paramw.iVd = 1;
-        paramw.iUX = 7;
-        paramw.concurrentCount = 4;
-        paramw.filename = this.LrH.getFileName();
-        s.bqB();
-        paramw.field_fullpath = com.tencent.mm.modelvideo.x.XT(this.LrH.getFileName());
-        paramw.iVc = this.LrH.blF();
-      }
-    }
-    this.WQN = paramw;
-    paramca = com.tencent.mm.n.h.axc().getValue("AndroidOnlineVideoArgs");
-    paramw = (CharSequence)paramca;
-    if ((paramw == null) || (paramw.length() == 0)) {
+    AppMethodBeat.i(254473);
+    this.hzO = paramcc;
+    this.aeAk = paramz;
+    this.RUM = paramb;
+    this.aeAl = paramae;
+    paramcc = i.aRC().getValue("AndroidOnlineVideoArgs");
+    paramz = (CharSequence)paramcc;
+    if ((paramz == null) || (paramz.length() == 0)) {
       i = 1;
     }
     while (i == 0)
     {
-      Log.i("MicroMsg.C2CVideoDownloadTask", "online video config : ".concat(String.valueOf(paramca)));
-      paramca = (CharSequence)paramca;
-      paramca = ((Collection)new k(";").u(paramca, 0)).toArray(new String[0]);
-      if (paramca == null)
+      Log.i("MicroMsg.C2COriginVideoDownloadTask", s.X("online video config : ", paramcc));
+      s.s(paramcc, "config");
+      paramcc = (CharSequence)paramcc;
+      paramcc = ((Collection)new k(";").o(paramcc, 0)).toArray(new String[0]);
+      if (paramcc == null)
       {
-        paramca = new t("null cannot be cast to non-null type kotlin.Array<T>");
-        AppMethodBeat.o(268404);
-        throw paramca;
+        paramcc = new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
+        AppMethodBeat.o(254473);
+        throw paramcc;
         i = 0;
       }
       else
       {
-        paramca = (String[])paramca;
-        if (paramca.length >= 4)
+        paramcc = (String[])paramcc;
+        if (paramcc.length >= 4)
         {
-          this.mfN = Util.getInt(paramca[0], 5);
-          this.mfO = Util.getInt(paramca[1], 1);
-          this.LrI = Util.getInt(paramca[2], 75);
-          this.WQO = (Util.getInt(paramca[3], 1) * 1048576);
+          this.oYJ = Util.getInt(paramcc[0], 5);
+          this.oYK = Util.getInt(paramcc[1], 1);
+          this.RUO = Util.getInt(paramcc[2], 75);
+          this.aeAo = (Util.getInt(paramcc[3], 1) * 1048576);
         }
       }
     }
@@ -111,53 +92,84 @@ public final class c
     {
       if (i == 0)
       {
-        this.mfN = 5;
-        this.mfO = 1;
-        this.LrI = 75;
-        this.WQO = 1048576;
+        this.oYJ = 5;
+        this.oYK = 1;
+        this.RUO = 75;
+        this.aeAo = 1048576;
       }
-      Log.i("MicroMsg.C2CVideoDownloadTask", "parseConfig preload[%d] downloadSec[%d], needFinish[%d], minStreamSize[%d]", new Object[] { Integer.valueOf(this.mfN), Integer.valueOf(this.mfO), Integer.valueOf(this.LrI), Integer.valueOf(this.WQO) });
-      AppMethodBeat.o(268404);
+      Log.i("MicroMsg.C2COriginVideoDownloadTask", "parseConfig preload[%d] downloadSec[%d], needFinish[%d], minStreamSize[%d]", new Object[] { Integer.valueOf(this.oYJ), Integer.valueOf(this.oYK), Integer.valueOf(this.RUO), Integer.valueOf(this.aeAo) });
+      AppMethodBeat.o(254473);
       return;
     }
   }
   
-  private final String hRA()
+  private final z bBg(String paramString)
   {
-    AppMethodBeat.i(268403);
+    AppMethodBeat.i(254479);
+    if (paramString != null)
+    {
+      this.aeAk.PP(paramString);
+      z localz = new z();
+      localz.hVQ = this.aeAk.bOs();
+      localz.paV = this.aeAk.bOq();
+      localz.createTime = this.hzO.getCreateTime();
+      localz.hTh = this.aeAk.hTh;
+      localz.pbc = this.aeAk.pbc;
+      localz.osy = this.aeAl.pbT;
+      localz.omT = this.aeAk.omT;
+      localz.pbf = 0;
+      localz.fileName = paramString;
+      localz.pba = Util.nowSecond();
+      localz.pbd = 0;
+      localz.pbi = 1;
+      localz.status = 111;
+      AppMethodBeat.o(254479);
+      return localz;
+    }
+    AppMethodBeat.o(254479);
+    return null;
+  }
+  
+  private final String juX()
+  {
+    AppMethodBeat.i(254485);
+    if (Util.isNullOrNil(this.aeAk.oYk))
+    {
+      AppMethodBeat.o(254485);
+      return null;
+    }
     Object localObject1;
-    if (this.LrH.bqP() == -1) {
-      if (!u.agG(this.LrH.bqN()))
+    if (this.aeAk.pbi == -1) {
+      if (!y.ZC(this.aeAk.bOt()))
       {
-        s.bqB();
-        localObject1 = com.tencent.mm.modelvideo.x.XT(this.fvt.apK());
+        com.tencent.mm.modelvideo.v.bOh();
+        localObject1 = aa.PX(this.aeAk.oYk);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(268403);
+      AppMethodBeat.o(254485);
       return localObject1;
-      localObject1 = this.LrH.bqN();
+      localObject1 = this.aeAk.bOt();
       continue;
-      s.bqB();
-      String str = com.tencent.mm.modelvideo.x.XT(this.fvt.apK());
-      if ((this.fvt.apA() == 1) && (this.LrH.bqU() != null) && (this.LrH.bqU().TCA)) {}
+      com.tencent.mm.modelvideo.v.bOh();
+      String str = aa.PX(this.aeAk.oYk);
+      if ((this.hzO.field_isSend == 1) && (this.aeAk.pbl != null) && (this.aeAk.pbl.aaSg)) {}
       try
       {
-        Object localObject2 = u.bBT(str);
+        Object localObject2 = y.bEo(str);
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
-        p.j(localObject1, "VFSFileOp.getParentAbsolutePath(path) ?: \"\"");
         localObject2 = localObject1;
-        if (!n.pu((String)localObject1, "/")) {
-          localObject2 = (String)localObject1 + "/";
+        if (!n.rs((String)localObject1, "/")) {
+          localObject2 = s.X((String)localObject1, "/");
         }
-        localObject1 = u.bBW(str);
-        localObject1 = (String)localObject2 + (String)localObject1 + "_hd.mp4";
-        boolean bool = u.agG((String)localObject1);
-        Log.i("MicroMsg.C2CVideoDownloadTask", "local capture video, hdFilePath: " + (String)localObject1 + ", exist: " + bool);
+        localObject1 = y.bEq(str);
+        localObject1 = (String)localObject2 + localObject1 + "_hd.mp4";
+        boolean bool = y.ZC((String)localObject1);
+        Log.i("MicroMsg.C2COriginVideoDownloadTask", "local capture video, hdFilePath: " + (String)localObject1 + ", exist: " + bool);
         if (bool) {
           continue;
         }
@@ -166,154 +178,281 @@ public final class c
       {
         for (;;)
         {
-          Log.e("MicroMsg.C2CVideoDownloadTask", "try to get hd filePath error: " + localException.getMessage());
+          Log.e("MicroMsg.C2COriginVideoDownloadTask", s.X("try to get hd filePath error: ", localException.getMessage()));
         }
       }
       localObject1 = str;
     }
   }
   
-  public final void bfU()
+  public final long RU()
   {
-    AppMethodBeat.i(268402);
-    w localw = y.Yk(eRe());
-    if (localw != null)
+    AppMethodBeat.i(254508);
+    Object localObject = this.aeAm;
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = Long.valueOf(((com.tencent.mm.g.h)localObject).lxh))
     {
-      this.LrH = localw;
-      AppMethodBeat.o(268402);
-      return;
+      l = this.aeAk.omT;
+      AppMethodBeat.o(254508);
+      return l;
     }
-    AppMethodBeat.o(268402);
+    long l = ((Long)localObject).longValue();
+    AppMethodBeat.o(254508);
+    return l;
   }
   
-  public final String eRe()
+  public final void bDL()
   {
-    com.tencent.mm.i.h localh = this.WQN;
-    if (localh != null) {
-      return localh.filename;
+    AppMethodBeat.i(254549);
+    z localz = ab.Qo(fZN());
+    if (localz != null) {
+      this.aeAn = localz;
     }
-    return null;
+    AppMethodBeat.o(254549);
   }
   
-  public final String fZd()
+  public final String fZN()
   {
-    AppMethodBeat.i(268396);
-    String str = hRA();
-    AppMethodBeat.o(268396);
-    return str;
-  }
-  
-  public final int fZe()
-  {
-    return this.LrI;
-  }
-  
-  public final void fZf()
-  {
-    AppMethodBeat.i(268400);
-    Log.i("MicroMsg.C2CVideoDownloadTask", "finishRemaining()");
-    Object localObject = this.WQN;
-    if (localObject != null) {}
-    for (localObject = ((com.tencent.mm.i.h)localObject).filename;; localObject = null)
-    {
-      y.aR((String)localObject, 2);
-      AppMethodBeat.o(268400);
-      return;
+    com.tencent.mm.g.h localh = this.aeAm;
+    if (localh == null) {
+      return null;
     }
+    return localh.filename;
   }
   
   public final String getMediaId()
   {
-    com.tencent.mm.i.h localh = this.WQN;
-    if (localh != null) {
-      return localh.field_mediaId;
+    com.tencent.mm.g.h localh = this.aeAm;
+    if (localh == null) {
+      return null;
     }
+    return localh.field_mediaId;
+  }
+  
+  public final String hso()
+  {
+    AppMethodBeat.i(254498);
+    String str = juX();
+    AppMethodBeat.o(254498);
+    return str;
+  }
+  
+  public final Long hsp()
+  {
+    AppMethodBeat.i(254514);
+    long l = this.hzO.field_msgId;
+    AppMethodBeat.o(254514);
+    return Long.valueOf(l);
+  }
+  
+  public final int hsq()
+  {
+    return this.RUO;
+  }
+  
+  public final h.a hsr()
+  {
+    AppMethodBeat.i(254559);
+    s.u(this, "this");
+    AppMethodBeat.o(254559);
     return null;
+  }
+  
+  public final void hst()
+  {
+    AppMethodBeat.i(254541);
+    Log.i("MicroMsg.C2COriginVideoDownloadTask", "finishRemaining()");
+    Object localObject = this.aeAm;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((com.tencent.mm.g.h)localObject).filename)
+    {
+      ab.bf((String)localObject, 2);
+      AppMethodBeat.o(254541);
+      return;
+    }
+  }
+  
+  public final boolean isDownloading()
+  {
+    AppMethodBeat.i(254553);
+    s.u(this, "this");
+    AppMethodBeat.o(254553);
+    return true;
   }
   
   public final boolean isFinished()
   {
-    AppMethodBeat.i(268401);
-    if ((this.LrH.bqS()) || (this.LrH.getStatus() == 123))
-    {
-      AppMethodBeat.o(268401);
-      return true;
+    boolean bool2 = false;
+    AppMethodBeat.i(254545);
+    z localz = this.aeAn;
+    boolean bool1 = bool2;
+    if (localz != null) {
+      if (!localz.bOx())
+      {
+        bool1 = bool2;
+        if (localz.status != 123) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
     }
-    AppMethodBeat.o(268401);
-    return false;
-  }
-  
-  public final long sr()
-  {
-    AppMethodBeat.i(268397);
-    com.tencent.mm.i.h localh = this.WQN;
-    if (localh != null)
-    {
-      l = localh.iVc;
-      AppMethodBeat.o(268397);
-      return l;
-    }
-    long l = this.LrH.bfj();
-    AppMethodBeat.o(268397);
-    return l;
+    AppMethodBeat.o(254545);
+    return bool1;
   }
   
   public final boolean start()
   {
-    AppMethodBeat.i(268398);
-    Log.i("MicroMsg.C2CVideoDownloadTask", "start task: path=" + hRA());
-    if ((this.fvt.apA() == 1) && (!this.fvt.dlS()))
+    com.tencent.mm.g.h localh = null;
+    AppMethodBeat.i(254531);
+    Log.i("MicroMsg.C2COriginVideoDownloadTask", s.X("start task: path=", juX()));
+    if ((this.hzO.field_isSend == 1) && (!this.hzO.dSI()))
     {
-      AppMethodBeat.o(268398);
+      AppMethodBeat.o(254531);
       return false;
     }
-    if (this.WQN == null)
+    Object localObject1 = this.aeAk.oYk;
+    boolean bool;
+    if (!Util.isNullOrNil((String)localObject1))
     {
-      AppMethodBeat.o(268398);
-      return false;
+      com.tencent.mm.modelvideo.v.bOh();
+      bool = y.ZC(aa.PX((String)localObject1));
+      localObject1 = ab.Qo((String)localObject1);
+      if ((bool) && (localObject1 != null) && (((z)localObject1).status == 199)) {
+        Log.i("MicroMsg.C2COriginVideoDownloadTask", "origin file had been downloaded, return");
+      }
     }
-    Object localObject = this.WQN;
-    if (localObject != null) {
-      this.WQP.invoke(localObject);
-    }
-    localObject = (CharSequence)getMediaId();
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    label794:
+    label795:
+    for (;;)
     {
-      AppMethodBeat.o(268398);
-      return false;
+      this.aeAm = localh;
+      String str;
+      Object localObject2;
+      if (this.aeAm == null)
+      {
+        AppMethodBeat.o(254531);
+        return false;
+        str = this.aeAk.oYk;
+        if (Util.isNullOrNil(str))
+        {
+          localObject2 = s.X(this.aeAk.getFileName(), "origin");
+          localObject1 = bBg((String)localObject2);
+          if (localObject1 == null)
+          {
+            Log.d("MicroMsg.C2COriginVideoDownloadTask", s.X("create info Error fileName:", localObject2));
+            continue;
+          }
+          if (!com.tencent.mm.modelvideo.v.bOh().b((z)localObject1))
+          {
+            Log.d("MicroMsg.C2COriginVideoDownloadTask", s.X("Insert Error fileName:", ((z)localObject1).getFileName()));
+            continue;
+          }
+          ab.f(this.aeAk);
+        }
+      }
+      for (;;)
+      {
+        if (localObject1 == null) {
+          break label795;
+        }
+        this.aeAn = ((z)localObject1);
+        localh = new com.tencent.mm.g.h();
+        localh.taskName = "task_NetSceneDownloadVideo";
+        localh.field_mediaId = com.tencent.mm.modelcdntran.h.a("downvideo", ((z)localObject1).createTime, this.aeAk.bOs(), ((z)localObject1).getFileName());
+        localh.filename = ((z)localObject1).getFileName();
+        localh.lxg = this.aeAl.pbP;
+        localh.lxh = this.aeAl.pbT;
+        localh.lxi = 0;
+        localh.hQQ = this.aeAk.bOq();
+        localh.lxj = this.aeAk.bOs();
+        if (au.bwG(this.aeAk.bOs()))
+        {
+          i = com.tencent.mm.model.v.getMembersCountByChatRoomName(this.aeAk.bOs());
+          label382:
+          localh.hQS = i;
+          com.tencent.mm.modelvideo.v.bOh();
+          localh.field_fullpath = aa.PX(((z)localObject1).getFileName());
+          localh.field_fileType = a.MediaType_VIDEO;
+          localh.field_totalLen = ((z)localObject1).osy;
+          localh.field_aesKey = this.aeAl.pbS;
+          localh.field_fileId = this.aeAl.pbQ;
+          localh.field_priority = a.lvZ;
+          if (!au.bwG(this.aeAk.bOs())) {
+            break label628;
+          }
+        }
+        label628:
+        for (int i = 1;; i = 0)
+        {
+          localh.field_chattype = i;
+          localh.lxk = 1;
+          localh.field_autostart = false;
+          localh.lwM = 0;
+          localh.lwN = 0;
+          localh.lxm = this.hzO.getCreateTime();
+          localh.hTh = this.hzO.field_msgSvrId;
+          localh.lxn = 0;
+          localh.field_requestVideoFormat = e.a(0, (z)localObject1);
+          ((z)localObject1).clientId = localh.field_mediaId;
+          break;
+          localObject2 = ab.Qo(str);
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = bBg(str);
+          }
+          if (com.tencent.mm.modelvideo.v.bOh().c((z)localObject1)) {
+            break label794;
+          }
+          if (localObject1 == null) {}
+          for (localObject1 = null;; localObject1 = ((z)localObject1).getFileName())
+          {
+            Log.d("MicroMsg.C2COriginVideoDownloadTask", s.X("update Error fileName:", localObject1));
+            break;
+          }
+          i = 0;
+          break label382;
+        }
+        localObject1 = (CharSequence)getMediaId();
+        if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+        for (i = 1; i != 0; i = 0)
+        {
+          AppMethodBeat.o(254531);
+          return false;
+        }
+        long l = this.aeAk.osy;
+        if (l < 0L)
+        {
+          Log.i("MicroMsg.C2COriginVideoDownloadTask", "video size[" + l + "] less than config size[0], do not stream video");
+          ab.b(this.aeAk, 9);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(354L, 17L, 1L, false);
+          AppMethodBeat.o(254531);
+          return false;
+        }
+        ac.am(this.hzO);
+        bool = com.tencent.mm.modelvideo.v.bOm().bOJ();
+        com.tencent.mm.modelvideo.v.bOi().a(this.aeAm, bool);
+        ab.b(this.aeAk, 1);
+        AppMethodBeat.o(254531);
+        return true;
+      }
     }
-    long l = this.LrH.blF();
-    if (l < 0L)
-    {
-      Log.i("MicroMsg.C2CVideoDownloadTask", "video size[" + l + "] less than config size[0], do not stream video");
-      y.b(this.LrH, 9);
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(354L, 17L, 1L, false);
-      AppMethodBeat.o(268398);
-      return false;
-    }
-    ab.ah(this.fvt);
-    boolean bool = s.bqG().brd();
-    s.bqC().a(this.WQN, bool);
-    y.b(this.LrH, 1);
-    AppMethodBeat.o(268398);
-    return true;
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(268399);
-    Log.i("MicroMsg.C2CVideoDownloadTask", "stop()");
-    e locale = s.bqC();
+    AppMethodBeat.i(254537);
+    Log.i("MicroMsg.C2COriginVideoDownloadTask", "stop()");
+    j localj = com.tencent.mm.modelvideo.v.bOi();
     String str = getMediaId();
-    b.b localb = this.LrJ.goP();
-    locale.l(str, new Integer[] { Integer.valueOf(localb.EFk), Integer.valueOf(localb.MTC), Integer.valueOf(localb.MTD), Integer.valueOf(localb.MTA), Integer.valueOf(localb.MTE), Integer.valueOf(localb.MTF), Integer.valueOf(localb.errorCode) });
-    AppMethodBeat.o(268399);
+    b.b localb = this.RUM.hLI();
+    localj.l(str, new Integer[] { Integer.valueOf(localb.Kyp), Integer.valueOf(localb.TGg), Integer.valueOf(localb.TGh), Integer.valueOf(localb.Gpp), Integer.valueOf(localb.TGi), Integer.valueOf(localb.TGj), Integer.valueOf(localb.errorCode) });
+    AppMethodBeat.o(254537);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.c
  * JD-Core Version:    0.7.0.1
  */

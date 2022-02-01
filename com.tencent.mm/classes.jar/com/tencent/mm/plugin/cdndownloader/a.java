@@ -10,12 +10,7 @@ import java.util.HashMap;
 public final class a
   implements com.tencent.mm.kernel.api.bucket.a, d, com.tencent.mm.plugin.cdndownloader.b.a
 {
-  private c tLd;
-  
-  public final c cMo()
-  {
-    return this.tLd;
-  }
+  private c wOs;
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
   {
@@ -32,12 +27,17 @@ public final class a
     return localHashMap;
   }
   
+  public final c dpS()
+  {
+    return this.wOs;
+  }
+  
   public final void onDataBaseClosed(h paramh1, h paramh2) {}
   
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(120692);
-    this.tLd = new c(paramh1);
+    this.wOs = new c(paramh1);
     AppMethodBeat.o(120692);
   }
 }

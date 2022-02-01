@@ -9,8 +9,9 @@ public enum NetMethod
     AppMethodBeat.i(172927);
     POST = new NetMethod("POST", 0);
     GET = new NetMethod("GET", 1);
-    URL = new NetMethod("URL", 2);
-    $VALUES = new NetMethod[] { POST, GET, URL };
+    PUT = new NetMethod("PUT", 2);
+    URL = new NetMethod("URL", 3);
+    $VALUES = new NetMethod[] { POST, GET, PUT, URL };
     AppMethodBeat.o(172927);
   }
   
@@ -18,7 +19,7 @@ public enum NetMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.map.tools.net.NetMethod
  * JD-Core Version:    0.7.0.1
  */

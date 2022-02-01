@@ -18,7 +18,7 @@ public class KindaModalManagerImpl
   public void addModalView(IUIModal paramIUIModal)
   {
     AppMethodBeat.i(18642);
-    Log.i("MicroMsg.KindaModalManagerImpl", "kinda call addModalView, modal: ".concat(String.valueOf(paramIUIModal)));
+    Log.i("MicroMsg.KindaModalManagerImpl", "kinda call addModalView, modal: %s, %s", new Object[] { paramIUIModal.getReportUrl(), Integer.valueOf(paramIUIModal.hashCode()) });
     ActivityController.startNewUIModal(paramIUIModal);
     AppMethodBeat.o(18642);
   }
@@ -46,24 +46,24 @@ public class KindaModalManagerImpl
   
   public void removeModalViewImpl(IUIModal paramIUIModal, final VoidCallback paramVoidCallback)
   {
-    AppMethodBeat.i(264406);
-    Log.i("MicroMsg.KindaModalManagerImpl", "kinda call reremoveModalView, modal: ".concat(String.valueOf(paramIUIModal)));
+    AppMethodBeat.i(226664);
+    Log.i("MicroMsg.KindaModalManagerImpl", "kinda call reremoveModalView, modal: %s, %s", new Object[] { paramIUIModal.getReportUrl(), Integer.valueOf(paramIUIModal.hashCode()) });
     ActivityController.remove(paramIUIModal);
     MMHandlerThread.postToMainThread(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(262784);
+        AppMethodBeat.i(226668);
         paramVoidCallback.call();
-        AppMethodBeat.o(262784);
+        AppMethodBeat.o(226668);
       }
     });
-    AppMethodBeat.o(264406);
+    AppMethodBeat.o(226664);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaModalManagerImpl
  * JD-Core Version:    0.7.0.1
  */

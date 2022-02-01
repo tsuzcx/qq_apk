@@ -1,16 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.c;
+import com.tencent.mm.am.c.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.protocal.protobuf.FinderUserPageResponse;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class c
-  extends com.tencent.mm.plugin.appbrand.jsapi.c<v>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<y>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "fetchFinderProfileFeed";

@@ -1,63 +1,57 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cve;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.protocal.protobuf.bzc;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/StreamMarkReadStat;", "", "feedId", "", "isRead", "", "timestamp", "stat", "Lcom/tencent/mm/protocal/protobuf/MarkReadStat;", "(JZJLcom/tencent/mm/protocal/protobuf/MarkReadStat;)V", "getFeedId", "()J", "()Z", "setRead", "(Z)V", "getStat", "()Lcom/tencent/mm/protocal/protobuf/MarkReadStat;", "setStat", "(Lcom/tencent/mm/protocal/protobuf/MarkReadStat;)V", "getTimestamp", "compareTo", "", "other", "component1", "component2", "component3", "component4", "copy", "equals", "", "hashCode", "toString", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderShopFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "productInfo", "Lcom/tencent/mm/protocal/protobuf/FinderWindowProductInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderWindowProductInfo;)V", "getProductInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderWindowProductInfo;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bw
-  implements Comparable<bw>
+  implements cc
 {
-  final long feedId;
-  private final long timestamp;
-  boolean zBw;
-  cve zBx;
+  public final bzc DOS;
   
-  private bw(long paramLong1, long paramLong2)
+  public bw(bzc parambzc)
   {
-    this.feedId = paramLong1;
-    this.zBw = false;
-    this.timestamp = paramLong2;
-    this.zBx = null;
+    AppMethodBeat.i(331913);
+    this.DOS = parambzc;
+    AppMethodBeat.o(331913);
   }
   
-  public final boolean equals(Object paramObject)
+  public final int a(k paramk)
   {
-    AppMethodBeat.i(278283);
-    if (this != paramObject)
+    AppMethodBeat.i(331958);
+    s.u(paramk, "obj");
+    if ((paramk instanceof bw)) {}
+    for (paramk = (bw)paramk; (paramk != null) && (paramk.DOS.DVk == this.DOS.DVk); paramk = null)
     {
-      if ((paramObject instanceof bw))
-      {
-        paramObject = (bw)paramObject;
-        if ((this.feedId != paramObject.feedId) || (this.zBw != paramObject.zBw) || (this.timestamp != paramObject.timestamp) || (!p.h(this.zBx, paramObject.zBx))) {}
-      }
+      AppMethodBeat.o(331958);
+      return 0;
     }
-    else
-    {
-      AppMethodBeat.o(278283);
-      return true;
-    }
-    AppMethodBeat.o(278283);
-    return false;
+    AppMethodBeat.o(331958);
+    return -1;
   }
   
-  public final int hashCode()
+  public final long bZA()
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    AppMethodBeat.i(331924);
+    long l = hashCode();
+    AppMethodBeat.o(331924);
+    return l;
   }
   
-  public final String toString()
+  public final int bZB()
   {
-    AppMethodBeat.i(278281);
-    String str = "StreamMarkReadStat(feedId=" + this.feedId + ", isRead=" + this.zBw + ", timestamp=" + this.timestamp + ", stat=" + this.zBx + ")";
-    AppMethodBeat.o(278281);
-    return str;
+    AppMethodBeat.i(331936);
+    int i = bw.class.hashCode();
+    AppMethodBeat.o(331936);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.bw
  * JD-Core Version:    0.7.0.1
  */

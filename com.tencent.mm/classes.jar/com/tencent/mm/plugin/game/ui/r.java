@@ -16,15 +16,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.d.b;
 import com.tencent.mm.plugin.game.d.e;
 import com.tencent.mm.plugin.game.d.e.a.a;
-import com.tencent.mm.plugin.game.g.b;
-import com.tencent.mm.plugin.game.g.c;
-import com.tencent.mm.plugin.game.g.d;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.h;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.bnn;
-import com.tencent.mm.protocal.protobuf.bno;
+import com.tencent.mm.plugin.game.h.b;
+import com.tencent.mm.plugin.game.h.c;
+import com.tencent.mm.plugin.game.h.d;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
+import com.tencent.mm.plugin.game.h.h;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.protocal.protobuf.cbk;
+import com.tencent.mm.protocal.protobuf.cbl;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,45 +34,45 @@ import java.util.List;
 public final class r
   extends BaseAdapter
 {
-  int CKZ;
-  int CXD;
-  boolean CZV;
-  int CZW;
-  int CZX;
-  int CZY;
-  int CZZ;
-  private int Daa;
-  boolean Dab;
-  boolean Dac;
-  private ArrayList<d> Dad;
+  int IFh;
+  int IRT;
+  boolean IUl;
+  int IUm;
+  int IUn;
+  int IUo;
+  int IUp;
+  private int IUq;
+  boolean IUr;
+  boolean IUs;
+  private ArrayList<d> IUt;
   Context context;
-  boolean fwi;
-  ArrayList<b> jFL;
+  boolean hAE;
+  ArrayList<b> mfy;
   
   public r(Context paramContext)
   {
     AppMethodBeat.i(42373);
-    this.fwi = false;
-    this.CZV = false;
-    this.CXD = 0;
-    this.CZW = 0;
-    this.CZX = 0;
-    this.CZY = 0;
-    this.CZZ = 0;
-    this.CKZ = 0;
-    this.Dab = false;
-    this.Dac = false;
+    this.hAE = false;
+    this.IUl = false;
+    this.IRT = 0;
+    this.IUm = 0;
+    this.IUn = 0;
+    this.IUo = 0;
+    this.IUp = 0;
+    this.IFh = 0;
+    this.IUr = false;
+    this.IUs = false;
     this.context = paramContext;
-    this.jFL = null;
-    this.Daa = paramContext.getResources().getColor(g.b.CgK);
+    this.mfy = null;
+    this.IUq = paramContext.getResources().getColor(h.b.HST);
     AppMethodBeat.o(42373);
   }
   
-  private String aKp(String paramString)
+  private String aHf(String paramString)
   {
     AppMethodBeat.i(42378);
-    if (this.Dad == null) {
-      this.Dad = new ArrayList();
+    if (this.IUt == null) {
+      this.IUt = new ArrayList();
     }
     for (;;)
     {
@@ -88,9 +88,9 @@ public final class r
         }
         locald.end = i;
         paramString.delete(i, i + 5);
-        this.Dad.add(locald);
+        this.IUt.add(locald);
       }
-      this.Dad.clear();
+      this.IUt.clear();
     }
     paramString = paramString.toString();
     AppMethodBeat.o(42378);
@@ -102,13 +102,13 @@ public final class r
     AppMethodBeat.i(42379);
     if (!Util.isNullOrNil(paramString))
     {
-      paramString = new SpannableString(aKp(paramString));
-      Iterator localIterator = this.Dad.iterator();
+      paramString = new SpannableString(aHf(paramString));
+      Iterator localIterator = this.IUt.iterator();
       while (localIterator.hasNext())
       {
         d locald = (d)localIterator.next();
         if (locald.start < locald.end) {
-          paramString.setSpan(new ForegroundColorSpan(this.Daa), locald.start, locald.end, 33);
+          paramString.setSpan(new ForegroundColorSpan(this.IUq), locald.start, locald.end, 33);
         }
       }
       paramTextView.setText(paramString);
@@ -123,12 +123,12 @@ public final class r
   public final int getCount()
   {
     AppMethodBeat.i(42374);
-    if (this.jFL == null)
+    if (this.mfy == null)
     {
       AppMethodBeat.o(42374);
       return 0;
     }
-    int i = this.jFL.size();
+    int i = this.mfy.size();
     AppMethodBeat.o(42374);
     return i;
   }
@@ -136,7 +136,7 @@ public final class r
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(42375);
-    Object localObject = this.jFL.get(paramInt);
+    Object localObject = this.mfy.get(paramInt);
     AppMethodBeat.o(42375);
     return localObject;
   }
@@ -170,26 +170,26 @@ public final class r
       default: 
         paramInt = 0;
         localObject2 = View.inflate(paramView, paramInt, null);
-        ((a)localObject1).contentView = ((View)localObject2).findViewById(g.e.CjB);
-        ((a)localObject1).bFS = ((ImageView)((View)localObject2).findViewById(g.e.CjE));
-        ((a)localObject1).Dah = ((TextView)((View)localObject2).findViewById(g.e.CjF));
-        ((a)localObject1).Dai = ((TextView)((View)localObject2).findViewById(g.e.Cjz));
-        ((a)localObject1).zQG = ((TextView)((View)localObject2).findViewById(g.e.CjC));
-        ((a)localObject1).Daj = ((TextView)((View)localObject2).findViewById(g.e.CjG));
-        ((a)localObject1).Dak = ((View)localObject2).findViewById(g.e.CjD);
-        ((a)localObject1).Dal = ((TextView)((View)localObject2).findViewById(g.e.ClI));
-        ((a)localObject1).Dam = ((TextView)((View)localObject2).findViewById(g.e.ChC));
+        ((a)localObject1).contentView = ((View)localObject2).findViewById(h.e.HVJ);
+        ((a)localObject1).dyS = ((ImageView)((View)localObject2).findViewById(h.e.HVM));
+        ((a)localObject1).ukP = ((TextView)((View)localObject2).findViewById(h.e.HVN));
+        ((a)localObject1).IUx = ((TextView)((View)localObject2).findViewById(h.e.HVH));
+        ((a)localObject1).FcR = ((TextView)((View)localObject2).findViewById(h.e.HVK));
+        ((a)localObject1).IUy = ((TextView)((View)localObject2).findViewById(h.e.HVO));
+        ((a)localObject1).IUz = ((View)localObject2).findViewById(h.e.HVL);
+        ((a)localObject1).IUA = ((TextView)((View)localObject2).findViewById(h.e.HXQ));
+        ((a)localObject1).IUB = ((TextView)((View)localObject2).findViewById(h.e.HTK));
         ((View)localObject2).setTag(localObject1);
         paramViewGroup = (ViewGroup)localObject1;
         paramView = (View)localObject2;
-        if (((a)localObject1).Dah != null)
+        if (((a)localObject1).ukP != null)
         {
           paramViewGroup = (ViewGroup)localObject1;
           paramView = (View)localObject2;
-          if (((a)localObject1).zQG != null)
+          if (((a)localObject1).FcR != null)
           {
-            paramView = ((a)localObject1).Dah;
-            paramViewGroup = ((a)localObject1).zQG;
+            paramView = ((a)localObject1).ukP;
+            paramViewGroup = ((a)localObject1).FcR;
             paramView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
             {
               public final void onGlobalLayout()
@@ -228,76 +228,76 @@ public final class r
     {
       AppMethodBeat.o(42377);
       return paramView;
-      paramInt = g.f.CnZ;
+      paramInt = h.f.Iah;
       break;
-      paramInt = g.f.Cog;
+      paramInt = h.f.Iao;
       break;
-      paramInt = g.f.Cof;
+      paramInt = h.f.Ian;
       break;
-      paramInt = g.f.Cob;
+      paramInt = h.f.Iaj;
       break;
-      paramInt = g.f.Coc;
+      paramInt = h.f.Iak;
       break;
-      paramInt = g.f.Coe;
+      paramInt = h.f.Iam;
       break;
       paramViewGroup = (a)paramView.getTag();
       break label298;
       if (!Util.isNullOrNil(localb.iconUrl))
       {
         localObject1 = new e.a.a();
-        ((e.a.a)localObject1).lRB = false;
-        ((e.a.a)localObject1).lRD = false;
-        e.eAa().a(paramViewGroup.bFS, localb.iconUrl, ((e.a.a)localObject1).eAb());
+        ((e.a.a)localObject1).oKn = false;
+        ((e.a.a)localObject1).oKp = false;
+        e.fIb().a(paramViewGroup.dyS, localb.iconUrl, ((e.a.a)localObject1).fIc());
       }
-      e(paramViewGroup.Dah, localb.name);
-      e(paramViewGroup.Dai, localb.Dan);
-      e(paramViewGroup.zQG, localb.remark);
+      e(paramViewGroup.ukP, localb.name);
+      e(paramViewGroup.IUx, localb.brief);
+      e(paramViewGroup.FcR, localb.remark);
       break label344;
       if (!Util.isNullOrNil(localb.iconUrl))
       {
         localObject1 = new e.a.a();
-        ((e.a.a)localObject1).lRB = false;
-        ((e.a.a)localObject1).lRD = false;
-        ((e.a.a)localObject1).Dea = true;
-        e.eAa().a(paramViewGroup.bFS, localb.iconUrl, ((e.a.a)localObject1).eAb());
-        paramViewGroup.bFS.setVisibility(0);
+        ((e.a.a)localObject1).oKn = false;
+        ((e.a.a)localObject1).oKp = false;
+        ((e.a.a)localObject1).IYr = true;
+        e.fIb().a(paramViewGroup.dyS, localb.iconUrl, ((e.a.a)localObject1).fIc());
+        paramViewGroup.dyS.setVisibility(0);
         label608:
-        e(paramViewGroup.Dah, localb.name);
-        e(paramViewGroup.zQG, localb.remark);
+        e(paramViewGroup.ukP, localb.name);
+        e(paramViewGroup.FcR, localb.remark);
         if (Util.isNullOrNil(localb.sourceName)) {
           break label728;
         }
-        paramViewGroup.Dal.setText(l.c(this.context, localb.sourceName));
-        paramViewGroup.Dal.setVisibility(0);
+        paramViewGroup.IUA.setText(p.b(this.context, localb.sourceName));
+        paramViewGroup.IUA.setVisibility(0);
       }
       for (;;)
       {
         if (localb.createTime <= 0L) {
           break label740;
         }
-        paramViewGroup.Dam.setText(b.p(this.context, localb.createTime * 1000L));
-        paramViewGroup.Dam.setVisibility(0);
+        paramViewGroup.IUB.setText(b.r(this.context, localb.createTime * 1000L));
+        paramViewGroup.IUB.setVisibility(0);
         break;
-        paramViewGroup.bFS.setVisibility(8);
+        paramViewGroup.dyS.setVisibility(8);
         break label608;
         label728:
-        paramViewGroup.Dal.setVisibility(8);
+        paramViewGroup.IUA.setVisibility(8);
       }
       label740:
-      paramViewGroup.Dam.setVisibility(8);
+      paramViewGroup.IUB.setVisibility(8);
       break label344;
       if (!Util.isNullOrNil(localb.iconUrl))
       {
         localObject1 = new e.a.a();
-        ((e.a.a)localObject1).lRB = false;
-        ((e.a.a)localObject1).lRD = false;
-        e.eAa().a(paramViewGroup.bFS, localb.iconUrl, ((e.a.a)localObject1).eAb());
+        ((e.a.a)localObject1).oKn = false;
+        ((e.a.a)localObject1).oKp = false;
+        e.fIb().a(paramViewGroup.dyS, localb.iconUrl, ((e.a.a)localObject1).fIc());
       }
-      e(paramViewGroup.Dah, localb.name);
-      e(paramViewGroup.Dai, localb.Dan);
-      e(paramViewGroup.zQG, localb.remark);
-      localObject1 = paramViewGroup.Daj;
-      localObject2 = localb.Daq;
+      e(paramViewGroup.ukP, localb.name);
+      e(paramViewGroup.IUx, localb.brief);
+      e(paramViewGroup.FcR, localb.remark);
+      localObject1 = paramViewGroup.IUy;
+      localObject2 = localb.IUE;
       StringBuilder localStringBuilder = new StringBuilder();
       if (!Util.isNullOrNil((List)localObject2))
       {
@@ -315,25 +315,25 @@ public final class r
       }
       ((TextView)localObject1).setVisibility(8);
       break label344;
-      paramViewGroup.zQG.setText(localb.name);
+      paramViewGroup.FcR.setText(localb.name);
       break label344;
-      paramViewGroup.bFS.setImageResource(g.h.search_more_button_icon);
-      paramViewGroup.Dah.setText(localb.name);
+      paramViewGroup.dyS.setImageResource(h.h.search_more_button_icon);
+      paramViewGroup.ukP.setText(localb.name);
       break label344;
-      if (localb.Dau) {
-        paramViewGroup.contentView.setBackgroundResource(g.d.comm_list_item_selector_no_divider);
+      if (localb.IUI) {
+        paramViewGroup.contentView.setBackgroundResource(h.d.comm_list_item_selector_no_divider);
       }
       for (;;)
       {
-        paramInt = this.context.getResources().getDimensionPixelSize(g.c.Chc);
+        paramInt = this.context.getResources().getDimensionPixelSize(h.c.HTl);
         paramViewGroup.contentView.setPadding(0, paramInt, 0, paramInt);
         break;
-        paramViewGroup.contentView.setBackgroundResource(g.d.comm_list_item_selector);
+        paramViewGroup.contentView.setBackgroundResource(h.d.comm_list_item_selector);
       }
-      if (localb.Dat) {
-        paramViewGroup.Dak.setVisibility(8);
+      if (localb.IUH) {
+        paramViewGroup.IUz.setVisibility(8);
       } else {
-        paramViewGroup.Dak.setVisibility(0);
+        paramViewGroup.IUz.setVisibility(0);
       }
     }
   }
@@ -345,70 +345,70 @@ public final class r
   
   public final void reset()
   {
-    this.CKZ = 0;
-    this.Dab = false;
+    this.IFh = 0;
+    this.IUr = false;
   }
   
   static final class a
   {
-    TextView Dah;
-    TextView Dai;
-    TextView Daj;
-    View Dak;
-    TextView Dal;
-    TextView Dam;
-    ImageView bFS;
+    TextView FcR;
+    TextView IUA;
+    TextView IUB;
+    TextView IUx;
+    TextView IUy;
+    View IUz;
     public View contentView;
-    TextView zQG;
+    ImageView dyS;
+    TextView ukP;
   }
   
   public static final class b
   {
-    public String Dan;
-    public bno Dao;
-    public String Dap;
-    public LinkedList<String> Daq;
-    public int Dar;
-    public int Das;
-    public boolean Dat = false;
-    public boolean Dau = false;
-    public r.c Dav;
+    public cbl IUC;
+    public String IUD;
+    public LinkedList<String> IUE;
+    public int IUF;
+    public int IUG;
+    public boolean IUH = false;
+    public boolean IUI = false;
+    public r.c IUJ;
     public int actionType;
     public String appId;
+    public String brief;
     public long createTime;
-    public String fwe;
+    public String hAB;
     public String iconUrl;
     public String name;
     public String remark;
     public String sourceName;
     public int type;
     
-    public static b a(bnn parambnn)
+    public static b a(cbk paramcbk)
     {
       AppMethodBeat.i(42371);
       b localb = new b();
       localb.type = 2;
-      localb.name = parambnn.fwr;
-      localb.remark = parambnn.CMB;
-      localb.iconUrl = parambnn.ThumbUrl;
-      localb.Dap = parambnn.SYm;
-      localb.Dar = parambnn.SYG;
-      localb.Das = parambnn.SYH;
-      localb.appId = parambnn.lVG;
-      localb.sourceName = parambnn.CQz;
-      localb.createTime = parambnn.ChC;
-      localb.Dav = new r.c(parambnn.SYm, (byte)0);
+      localb.name = paramcbk.hAP;
+      localb.remark = paramcbk.IGG;
+      localb.iconUrl = paramcbk.ThumbUrl;
+      localb.IUD = paramcbk.aako;
+      localb.IUF = paramcbk.aakI;
+      localb.IUG = paramcbk.aakJ;
+      localb.appId = paramcbk.oOI;
+      localb.sourceName = paramcbk.IKJ;
+      localb.createTime = paramcbk.HTK;
+      localb.IUJ = new r.c(paramcbk.aako, (byte)0);
       AppMethodBeat.o(42371);
       return localb;
     }
     
-    public static b bx(int paramInt, String paramString)
+    public static b cd(int paramInt, String paramString)
     {
       AppMethodBeat.i(42370);
       b localb = new b();
       localb.type = paramInt;
       localb.name = paramString;
-      localb.Dav = new r.c();
+      localb.IUJ = new r.c();
       AppMethodBeat.o(42370);
       return localb;
     }
@@ -416,13 +416,13 @@ public final class r
   
   public static final class c
   {
-    int Dar;
-    int Das;
-    String Daw;
+    int IUF;
+    int IUG;
+    String IUK;
     public int actionType;
     String appId;
-    int fSl;
     String h5Url;
+    int hYi;
     int position;
     int type;
     
@@ -464,7 +464,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.r
  * JD-Core Version:    0.7.0.1
  */

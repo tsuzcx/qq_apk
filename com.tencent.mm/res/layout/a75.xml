@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/p_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/lkr" android:background="@drawable/ay4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/hf0" android:background="@color/p_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/oy" android:dividerHeight="@dimen/ec" style="@style/np" />
-    <include android:id="@id/ccl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/a7r" />
-    <TextView android:textColor="@color/l4" android:gravity="center_horizontal" android:id="@id/he0" android:background="@color/afz" android:paddingTop="@dimen/hw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cac" />
-    <include layout="@layout/a73" />
+    <ImageView android:id="@id/hlz" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/av9" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <Button android:id="@id/cx8" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" android:text="@string/a2j" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/or" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:gravity="center_vertical" android:id="@id/cx9" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/cpc" android:layout_toLeftOf="@id/cx8" android:layout_toRightOf="@id/hlz" android:layout_centerVertical="true" />
 </RelativeLayout>

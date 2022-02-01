@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Bundle;
-import com.tencent.mm.an.q;
-import com.tencent.mm.protocal.protobuf.ezc;
+import com.tencent.mm.am.p;
+import com.tencent.mm.protocal.protobuf.fvd;
 import java.util.LinkedList;
 
 public abstract class a
-  extends q
+  extends p
 {
-  protected String CeE;
-  protected int PxG;
-  protected Bundle PxH;
-  protected String fPt;
+  protected String HQI;
+  protected int Sc;
+  protected int WnM;
+  protected Bundle WnN;
+  protected String hVo;
   protected int mScene;
-  protected int zP;
   
-  public final void anc(int paramInt)
+  public final void asT(int paramInt)
   {
-    this.PxG = paramInt;
+    this.WnM = paramInt;
   }
   
-  public void bV(LinkedList<ezc> paramLinkedList) {}
-  
-  public final void biI(String paramString)
+  public final void biq(String paramString)
   {
-    this.fPt = paramString;
+    this.hVo = paramString;
   }
   
-  public final int gQm()
-  {
-    return this.PxG;
-  }
-  
-  public final boolean gQn()
-  {
-    return this.zP == 0;
-  }
-  
-  public final Bundle gQo()
-  {
-    return this.PxH;
-  }
-  
-  public abstract String gQp();
-  
-  public abstract int gQq();
-  
-  public final String gQr()
-  {
-    return this.fPt;
-  }
+  public void cg(LinkedList<fvd> paramLinkedList) {}
   
   public final String getKeyword()
   {
-    return this.CeE;
+    return this.HQI;
+  }
+  
+  public final int ipD()
+  {
+    return this.WnM;
+  }
+  
+  public final boolean ipE()
+  {
+    return this.Sc == 0;
+  }
+  
+  public final Bundle ipF()
+  {
+    return this.WnN;
+  }
+  
+  public abstract String ipG();
+  
+  public abstract int ipH();
+  
+  public final String ipI()
+  {
+    return this.hVo;
   }
 }
 

@@ -1,171 +1,50 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.o;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.n.h;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.am.n;
+import com.tencent.mm.protocal.j.c;
+import com.tencent.mm.protocal.j.d;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.m.a;
-import com.tencent.mm.protocal.m.b;
-import com.tencent.mm.protocal.protobuf.lj;
-import com.tencent.mm.sdk.crash.CrashReportFactory;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
 
 public final class f
-  extends q
-  implements com.tencent.mm.network.m
+  extends n
 {
-  private i callback;
-  private s lCW;
+  private static int oSc = 3941;
+  private final l.e ovc;
+  private final l.d req;
   
-  private f(boolean paramBoolean)
+  public f()
   {
-    AppMethodBeat.i(20601);
-    this.lCW = new a();
-    m.a locala = (m.a)this.lCW.getReqObj();
-    locala.netType = com.tencent.mm.protocal.m.getNetType(MMApplicationContext.getContext());
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      locala.RBw = i;
-      AppMethodBeat.o(20601);
-      return;
-    }
+    AppMethodBeat.i(134153);
+    this.req = new j.c();
+    this.ovc = new j.d();
+    AppMethodBeat.o(134153);
   }
   
-  private static boolean boe()
+  public final l.d getReqObjImp()
   {
-    AppMethodBeat.i(20600);
-    int i;
-    boolean bool;
-    if (ac.mGu != -1)
-    {
-      i = ac.mGu;
-      bool = CrashReportFactory.foreground;
-      Log.i("MicroMsg.NetSceneBgFg", "somr DynamicConfig checkBit:%d TestMuteRoomEnable:%d muteRoomDisable:%d fg:%b", new Object[] { Integer.valueOf(1), Integer.valueOf(ac.mGu), Integer.valueOf(i), Boolean.valueOf(bool) });
-      if ((i & 0x1) == 0) {
-        break label112;
-      }
-      bool = true;
-    }
-    label112:
-    for (;;)
-    {
-      for (;;)
-      {
-        AppMethodBeat.o(20600);
-        return bool;
-        try
-        {
-          i = Util.getInt(h.axc().getValue("MuteRoomDisable"), 0);
-        }
-        catch (Exception localException)
-        {
-          Log.printErrStackTrace("MicroMsg.NetSceneBgFg", localException, "", new Object[0]);
-          i = 0;
-        }
-      }
-      break;
-    }
+    return this.req;
   }
   
-  public static void gv(boolean paramBoolean)
+  public final l.e getRespObj()
   {
-    AppMethodBeat.i(20599);
-    Log.i("MicroMsg.NetSceneBgFg", "summerbgfg setBgFgForMuteRoom isFg[%s], accHasReady[%s] stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bh.aHB()), Util.getStack() });
-    if (!bh.aHB())
-    {
-      AppMethodBeat.o(20599);
-      return;
-    }
-    if ((bh.aGY() == null) || (bh.aGY().lCD == null) || (bh.aGY().lCD.biw() == null))
-    {
-      Log.i("MicroMsg.NetSceneBgFg", "summerbgfg setBgFgForMuteRoom push not rready");
-      AppMethodBeat.o(20599);
-      return;
-    }
-    bh.aGY().lCD.biw().setForeground(paramBoolean);
-    if (paramBoolean)
-    {
-      bh.aGY().a(new f(true), 0);
-      AppMethodBeat.o(20599);
-      return;
-    }
-    f localf = new f(boe());
-    bh.aGY().a(localf, 0);
-    AppMethodBeat.o(20599);
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(20602);
-    this.callback = parami;
-    int i = dispatch(paramg, this.lCW, this);
-    AppMethodBeat.o(20602);
-    return i;
+    return this.ovc;
   }
   
   public final int getType()
   {
-    return 0;
+    return oSc;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final String getUri()
   {
-    AppMethodBeat.i(20603);
-    Log.d("MicroMsg.NetSceneBgFg", " ret[%d]", new Object[] { Integer.valueOf(((m.b)params.getRespObj()).RBx.fwx) });
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(20603);
-  }
-  
-  public static final class a
-    extends o
-  {
-    private final m.a lYW;
-    private final m.b lYX;
-    
-    public a()
-    {
-      AppMethodBeat.i(20598);
-      this.lYW = new m.a();
-      this.lYX = new m.b();
-      AppMethodBeat.o(20598);
-    }
-    
-    public final l.d getReqObjImp()
-    {
-      return this.lYW;
-    }
-    
-    public final l.e getRespObj()
-    {
-      return this.lYX;
-    }
-    
-    public final int getType()
-    {
-      return 0;
-    }
-    
-    public final String getUri()
-    {
-      return null;
-    }
+    return "/cgi-bin/micromsg-bin/disasterauth";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.f
  * JD-Core Version:    0.7.0.1
  */

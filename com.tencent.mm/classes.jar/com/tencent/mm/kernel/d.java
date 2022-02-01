@@ -12,33 +12,33 @@ import junit.framework.Assert;
 
 public final class d
 {
-  private final ConcurrentHashMap<Class<? extends com.tencent.mm.kernel.b.a>, f> kcl;
-  private final ArrayList<f> kcm;
-  private final ConcurrentHashMap<Class<? extends f>, ArrayList<Class<? extends com.tencent.mm.kernel.b.a>>> kcn;
-  private final ConcurrentHashMap<Class<? extends com.tencent.mm.kernel.b.a>, Class<? extends f>> kco;
-  public com.tencent.mm.kernel.a.a.a<Class<? extends f>> kcp;
-  private com.tencent.mm.kernel.c.d kcq;
-  protected a kcr;
-  public Class<? extends com.tencent.mm.kernel.b.a> kcs;
-  private com.tencent.mm.kernel.a.a kct;
+  public Class<? extends com.tencent.mm.kernel.b.a> mCA;
+  private com.tencent.mm.kernel.a.a mCB;
+  private final ConcurrentHashMap<Class<? extends com.tencent.mm.kernel.b.a>, f> mCt;
+  private final ArrayList<f> mCu;
+  private final ConcurrentHashMap<Class<? extends f>, ArrayList<Class<? extends com.tencent.mm.kernel.b.a>>> mCv;
+  private final ConcurrentHashMap<Class<? extends com.tencent.mm.kernel.b.a>, Class<? extends f>> mCw;
+  public com.tencent.mm.kernel.a.a.a<Class<? extends f>> mCx;
+  private com.tencent.mm.kernel.c.d mCy;
+  protected a mCz;
   
   public d()
   {
     AppMethodBeat.i(158284);
-    this.kcl = new ConcurrentHashMap();
-    this.kcm = new ArrayList();
-    this.kcn = new ConcurrentHashMap();
-    this.kco = new ConcurrentHashMap();
-    this.kcp = new com.tencent.mm.kernel.a.a.a();
-    this.kcq = new com.tencent.mm.kernel.c.d();
-    this.kcs = null;
-    this.kcq.a(new com.tencent.mm.kernel.c.d.a()
+    this.mCt = new ConcurrentHashMap();
+    this.mCu = new ArrayList();
+    this.mCv = new ConcurrentHashMap();
+    this.mCw = new ConcurrentHashMap();
+    this.mCx = new com.tencent.mm.kernel.a.a.a();
+    this.mCy = new com.tencent.mm.kernel.c.d();
+    this.mCA = null;
+    this.mCy.a(new com.tencent.mm.kernel.c.d.a()
     {
       public final void a(Class<? extends com.tencent.mm.kernel.c.a> paramAnonymousClass, com.tencent.mm.kernel.c.a paramAnonymousa)
       {
         AppMethodBeat.i(158283);
-        if (d.this.kcr != null) {
-          d.this.kcr.c(paramAnonymousa);
+        if (d.this.mCz != null) {
+          d.this.mCz.c(paramAnonymousa);
         }
         AppMethodBeat.o(158283);
       }
@@ -46,8 +46,8 @@ public final class d
       public final void a(Class<? extends com.tencent.mm.kernel.c.a> paramAnonymousClass, c paramAnonymousc)
       {
         AppMethodBeat.i(158281);
-        if (((paramAnonymousc instanceof com.tencent.mm.kernel.c.e)) && (d.this.kcr != null)) {
-          d.this.kcr.a(paramAnonymousc.aIH());
+        if (((paramAnonymousc instanceof com.tencent.mm.kernel.c.e)) && (d.this.mCz != null)) {
+          d.this.mCz.a(paramAnonymousc.bbD());
         }
         AppMethodBeat.o(158281);
       }
@@ -55,8 +55,8 @@ public final class d
       public final void b(Class<? extends com.tencent.mm.kernel.c.a> paramAnonymousClass, c paramAnonymousc)
       {
         AppMethodBeat.i(158282);
-        if (((paramAnonymousc instanceof com.tencent.mm.kernel.c.e)) && (d.this.kcr != null)) {
-          d.this.kcr.b(paramAnonymousc.aIH());
+        if (((paramAnonymousc instanceof com.tencent.mm.kernel.c.e)) && (d.this.mCz != null)) {
+          d.this.mCz.b(paramAnonymousc.bbD());
         }
         AppMethodBeat.o(158282);
       }
@@ -71,10 +71,10 @@ public final class d
       try
       {
         AppMethodBeat.i(158289);
-        if (ad(paramf.getClass()))
+        if (aw(paramf.getClass()))
         {
           l.w("MMSkeleton.CorePlugins", "Plugin %s has been installed.", new Object[] { paramf.getClass() });
-          paramf = (f)ah(paramf.getClass());
+          paramf = (f)aA(paramf.getClass());
           AppMethodBeat.o(158289);
           return paramf;
         }
@@ -82,14 +82,14 @@ public final class d
         String[] arrayOfString = paramf.ofProcesses();
         if ((arrayOfString != null) && (arrayOfString.length > 0))
         {
-          com.tencent.mm.kernel.b.g localg = i.aHL().aHD().aHf();
+          com.tencent.mm.kernel.b.g localg = i.baI().baB().bad();
           int j = arrayOfString.length;
           int i = 0;
           boolean bool1 = false;
           boolean bool2 = bool1;
           if (i < j)
           {
-            bool1 = localg.MY(arrayOfString[i]);
+            bool1 = localg.FH(arrayOfString[i]);
             bool2 = bool1;
             if (!bool1)
             {
@@ -106,23 +106,23 @@ public final class d
         }
       }
       finally {}
-      this.kcl.put(paramf.getClass(), paramf);
-      this.kcm.add(paramf);
+      this.mCt.put(paramf.getClass(), paramf);
+      this.mCu.add(paramf);
       paramf.invokeInstalled();
-      if (this.kcr != null) {
-        this.kcr.b(paramf);
+      if (this.mCz != null) {
+        this.mCz.b(paramf);
       }
       AppMethodBeat.o(158289);
     }
   }
   
-  private <T extends com.tencent.mm.kernel.b.a> T ah(Class<T> paramClass)
+  private <T extends com.tencent.mm.kernel.b.a> T aA(Class<T> paramClass)
   {
     try
     {
       AppMethodBeat.i(158296);
       Assert.assertNotNull(paramClass);
-      paramClass = (com.tencent.mm.kernel.b.a)this.kcl.get(paramClass);
+      paramClass = (com.tencent.mm.kernel.b.a)this.mCt.get(paramClass);
       AppMethodBeat.o(158296);
       return paramClass;
     }
@@ -134,7 +134,7 @@ public final class d
   }
   
   /* Error */
-  private boolean ai(Class<? extends com.tencent.mm.kernel.b.a> paramClass)
+  private boolean aB(Class<? extends com.tencent.mm.kernel.b.a> paramClass)
   {
     // Byte code:
     //   0: iconst_0
@@ -147,7 +147,7 @@ public final class d
     //   10: invokestatic 110	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
     //   13: aload_0
     //   14: aload_1
-    //   15: invokevirtual 88	com/tencent/mm/kernel/d:ad	(Ljava/lang/Class;)Z
+    //   15: invokevirtual 88	com/tencent/mm/kernel/d:aw	(Ljava/lang/Class;)Z
     //   18: ifne +42 -> 60
     //   21: ldc 90
     //   23: new 189	java/lang/StringBuilder
@@ -219,222 +219,7 @@ public final class d
     finally {}
   }
   
-  public final f MO(String paramString)
-  {
-    try
-    {
-      AppMethodBeat.i(158287);
-      paramString = z(paramString, false);
-      AppMethodBeat.o(158287);
-      return paramString;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public final <T extends com.tencent.mm.kernel.c.a, N extends T> void a(Class<T> paramClass, c<N> paramc)
-  {
-    AppMethodBeat.i(158293);
-    this.kcq.c(paramClass, paramc);
-    AppMethodBeat.o(158293);
-  }
-  
-  public final void aHd()
-  {
-    try
-    {
-      AppMethodBeat.i(158299);
-      Iterator localIterator = this.kcm.iterator();
-      while (localIterator.hasNext())
-      {
-        f localf = (f)localIterator.next();
-        if (!localf.isDependencyMade()) {
-          localf.invokeDependency();
-        }
-      }
-      AppMethodBeat.o(158299);
-    }
-    finally {}
-  }
-  
-  public final List<f> aHe()
-  {
-    try
-    {
-      ArrayList localArrayList = this.kcm;
-      return localArrayList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final f ac(Class<? extends f> paramClass)
-  {
-    try
-    {
-      AppMethodBeat.i(158285);
-      paramClass = b(paramClass, false);
-      AppMethodBeat.o(158285);
-      return paramClass;
-    }
-    finally
-    {
-      paramClass = finally;
-      throw paramClass;
-    }
-  }
-  
-  public final boolean ad(Class<? extends com.tencent.mm.kernel.b.a> paramClass)
-  {
-    try
-    {
-      AppMethodBeat.i(158290);
-      boolean bool = this.kcl.containsKey(paramClass);
-      AppMethodBeat.o(158290);
-      return bool;
-    }
-    finally
-    {
-      paramClass = finally;
-      throw paramClass;
-    }
-  }
-  
-  public final <T extends com.tencent.mm.kernel.c.a> T ae(Class<T> paramClass)
-  {
-    AppMethodBeat.i(158292);
-    com.tencent.mm.kernel.c.a locala = this.kcq.ao(paramClass);
-    int i;
-    if (locala == null) {
-      if (paramClass != null)
-      {
-        Object localObject = (com.tencent.mm.kernel.b.e)paramClass.getAnnotation(com.tencent.mm.kernel.b.e.class);
-        if ((localObject != null) && (((com.tencent.mm.kernel.b.e)localObject).gf() != null))
-        {
-          localObject = ag(((com.tencent.mm.kernel.b.e)localObject).gf());
-          if ((localObject != null) && (!g.bx(localObject)))
-          {
-            i = 1;
-            if (i == 0) {
-              break label158;
-            }
-            l.i("MMSkeleton.CorePlugins", "Try load OwnerPlugin for service(%s)...", new Object[] { paramClass });
-            locala = this.kcq.ao(paramClass);
-          }
-        }
-      }
-    }
-    label158:
-    for (;;)
-    {
-      if (locala != null)
-      {
-        AppMethodBeat.o(158292);
-        return locala;
-        i = 0;
-        break;
-        i = 0;
-        break;
-      }
-      i.aHL().aHD().aHf();
-      l.aHM();
-      paramClass = (com.tencent.mm.kernel.c.a)g.aj(paramClass);
-      AppMethodBeat.o(158292);
-      return paramClass;
-    }
-  }
-  
-  public final void af(Class<? extends com.tencent.mm.kernel.c.a> paramClass)
-  {
-    AppMethodBeat.i(158294);
-    this.kcq.af(paramClass);
-    AppMethodBeat.o(158294);
-  }
-  
-  public final <T extends com.tencent.mm.kernel.b.a> T ag(Class<T> paramClass)
-  {
-    for (;;)
-    {
-      com.tencent.mm.kernel.b.a locala;
-      try
-      {
-        AppMethodBeat.i(158295);
-        locala = ah(paramClass);
-        if (this.kcr != null) {
-          this.kcr.c((f)locala);
-        }
-        if (locala == null)
-        {
-          paramClass = (com.tencent.mm.kernel.b.a)g.aj(paramClass);
-          AppMethodBeat.o(158295);
-          return paramClass;
-        }
-      }
-      finally {}
-      paramClass = locala;
-    }
-  }
-  
-  public final void f(Class<? extends f> paramClass, Class<? extends com.tencent.mm.kernel.b.a> paramClass1)
-  {
-    try
-    {
-      AppMethodBeat.i(158291);
-      Assert.assertNotNull(paramClass);
-      Assert.assertNotNull(paramClass1);
-      f localf = (f)this.kcl.get(paramClass);
-      Assert.assertNotNull(localf);
-      ArrayList localArrayList2 = (ArrayList)this.kcn.get(paramClass);
-      ArrayList localArrayList1 = localArrayList2;
-      if (localArrayList2 == null)
-      {
-        localArrayList1 = new ArrayList();
-        this.kcn.put(paramClass, localArrayList1);
-      }
-      this.kco.put(paramClass1, paramClass);
-      localArrayList1.add(paramClass1);
-      this.kcl.put(paramClass1, localf);
-      AppMethodBeat.o(158291);
-      return;
-    }
-    finally {}
-  }
-  
-  public final void g(Class<? extends f> paramClass, Class<? extends com.tencent.mm.kernel.b.a> paramClass1)
-  {
-    AppMethodBeat.i(158298);
-    Assert.assertNotNull(paramClass);
-    Assert.assertNotNull(paramClass1);
-    if (!ai(paramClass1))
-    {
-      paramClass = String.format("depends plugin %s not install, plugin %s will not add in to dependency tree", new Object[] { paramClass1.getName(), paramClass.getName() });
-      l.e("MMSkeleton.CorePlugins", paramClass, new Object[0]);
-      paramClass = new IllegalAccessError(paramClass);
-      AppMethodBeat.o(158298);
-      throw paramClass;
-    }
-    Object localObject = paramClass1;
-    if (this.kco.containsKey(paramClass1)) {
-      localObject = (Class)this.kco.get(paramClass1);
-    }
-    this.kcp.s(paramClass, localObject);
-    if (this.kct == null) {
-      this.kct = i.aHL().aHD().aHf().kct;
-    }
-    paramClass = (f)ah(paramClass);
-    paramClass1 = (f)ah((Class)localObject);
-    this.kct.kdG.a(com.tencent.mm.kernel.b.b.class, paramClass, paramClass1);
-    this.kct.kdG.a(com.tencent.mm.kernel.a.c.b.class, paramClass, paramClass1);
-    AppMethodBeat.o(158298);
-  }
-  
-  public final f z(String paramString, boolean paramBoolean)
+  public final f B(String paramString, boolean paramBoolean)
   {
     for (;;)
     {
@@ -459,13 +244,228 @@ public final class d
       catch (ClassNotFoundException localClassNotFoundException)
       {
         l.e("MMSkeleton.CorePlugins", "plugin %s not found.", new Object[] { paramString });
-        i.aHL().aHD().aHf();
-        l.aHM();
+        i.baI().baB().bad();
+        l.baJ();
         continue;
       }
       paramString = null;
       AppMethodBeat.o(158288);
     }
+  }
+  
+  public final f Fx(String paramString)
+  {
+    try
+    {
+      AppMethodBeat.i(158287);
+      paramString = B(paramString, false);
+      AppMethodBeat.o(158287);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public final <T extends com.tencent.mm.kernel.c.a, N extends T> void a(Class<T> paramClass, c<N> paramc)
+  {
+    AppMethodBeat.i(158293);
+    this.mCy.c(paramClass, paramc);
+    AppMethodBeat.o(158293);
+  }
+  
+  public final f av(Class<? extends f> paramClass)
+  {
+    try
+    {
+      AppMethodBeat.i(158285);
+      paramClass = b(paramClass, false);
+      AppMethodBeat.o(158285);
+      return paramClass;
+    }
+    finally
+    {
+      paramClass = finally;
+      throw paramClass;
+    }
+  }
+  
+  public final boolean aw(Class<? extends com.tencent.mm.kernel.b.a> paramClass)
+  {
+    try
+    {
+      AppMethodBeat.i(158290);
+      boolean bool = this.mCt.containsKey(paramClass);
+      AppMethodBeat.o(158290);
+      return bool;
+    }
+    finally
+    {
+      paramClass = finally;
+      throw paramClass;
+    }
+  }
+  
+  public final <T extends com.tencent.mm.kernel.c.a> T ax(Class<T> paramClass)
+  {
+    AppMethodBeat.i(158292);
+    com.tencent.mm.kernel.c.a locala = this.mCy.aH(paramClass);
+    int i;
+    if (locala == null) {
+      if (paramClass != null)
+      {
+        Object localObject = (com.tencent.mm.kernel.b.e)paramClass.getAnnotation(com.tencent.mm.kernel.b.e.class);
+        if ((localObject != null) && (((com.tencent.mm.kernel.b.e)localObject).Dr() != null))
+        {
+          localObject = az(((com.tencent.mm.kernel.b.e)localObject).Dr());
+          if ((localObject != null) && (!g.cR(localObject)))
+          {
+            i = 1;
+            if (i == 0) {
+              break label158;
+            }
+            l.i("MMSkeleton.CorePlugins", "Try load OwnerPlugin for service(%s)...", new Object[] { paramClass });
+            locala = this.mCy.aH(paramClass);
+          }
+        }
+      }
+    }
+    label158:
+    for (;;)
+    {
+      if (locala != null)
+      {
+        AppMethodBeat.o(158292);
+        return locala;
+        i = 0;
+        break;
+        i = 0;
+        break;
+      }
+      i.baI().baB().bad();
+      l.baJ();
+      paramClass = (com.tencent.mm.kernel.c.a)g.aC(paramClass);
+      AppMethodBeat.o(158292);
+      return paramClass;
+    }
+  }
+  
+  public final void ay(Class<? extends com.tencent.mm.kernel.c.a> paramClass)
+  {
+    AppMethodBeat.i(158294);
+    this.mCy.ay(paramClass);
+    AppMethodBeat.o(158294);
+  }
+  
+  public final <T extends com.tencent.mm.kernel.b.a> T az(Class<T> paramClass)
+  {
+    for (;;)
+    {
+      com.tencent.mm.kernel.b.a locala;
+      try
+      {
+        AppMethodBeat.i(158295);
+        locala = aA(paramClass);
+        if (this.mCz != null) {
+          this.mCz.c((f)locala);
+        }
+        if (locala == null)
+        {
+          paramClass = (com.tencent.mm.kernel.b.a)g.aC(paramClass);
+          AppMethodBeat.o(158295);
+          return paramClass;
+        }
+      }
+      finally {}
+      paramClass = locala;
+    }
+  }
+  
+  public final void bab()
+  {
+    try
+    {
+      AppMethodBeat.i(158299);
+      Iterator localIterator = this.mCu.iterator();
+      while (localIterator.hasNext())
+      {
+        f localf = (f)localIterator.next();
+        if (!localf.isDependencyMade()) {
+          localf.invokeDependency();
+        }
+      }
+      AppMethodBeat.o(158299);
+    }
+    finally {}
+  }
+  
+  public final List<f> bac()
+  {
+    try
+    {
+      ArrayList localArrayList = this.mCu;
+      return localArrayList;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void f(Class<? extends f> paramClass, Class<? extends com.tencent.mm.kernel.b.a> paramClass1)
+  {
+    try
+    {
+      AppMethodBeat.i(158291);
+      Assert.assertNotNull(paramClass);
+      Assert.assertNotNull(paramClass1);
+      f localf = (f)this.mCt.get(paramClass);
+      Assert.assertNotNull(localf);
+      ArrayList localArrayList2 = (ArrayList)this.mCv.get(paramClass);
+      ArrayList localArrayList1 = localArrayList2;
+      if (localArrayList2 == null)
+      {
+        localArrayList1 = new ArrayList();
+        this.mCv.put(paramClass, localArrayList1);
+      }
+      this.mCw.put(paramClass1, paramClass);
+      localArrayList1.add(paramClass1);
+      this.mCt.put(paramClass1, localf);
+      AppMethodBeat.o(158291);
+      return;
+    }
+    finally {}
+  }
+  
+  public final void g(Class<? extends f> paramClass, Class<? extends com.tencent.mm.kernel.b.a> paramClass1)
+  {
+    AppMethodBeat.i(158298);
+    Assert.assertNotNull(paramClass);
+    Assert.assertNotNull(paramClass1);
+    if (!aB(paramClass1))
+    {
+      paramClass = String.format("depends plugin %s not install, plugin %s will not add in to dependency tree", new Object[] { paramClass1.getName(), paramClass.getName() });
+      l.e("MMSkeleton.CorePlugins", paramClass, new Object[0]);
+      paramClass = new IllegalAccessError(paramClass);
+      AppMethodBeat.o(158298);
+      throw paramClass;
+    }
+    Object localObject = paramClass1;
+    if (this.mCw.containsKey(paramClass1)) {
+      localObject = (Class)this.mCw.get(paramClass1);
+    }
+    this.mCx.D(paramClass, localObject);
+    if (this.mCB == null) {
+      this.mCB = i.baI().baB().bad().mCB;
+    }
+    paramClass = (f)aA(paramClass);
+    paramClass1 = (f)aA((Class)localObject);
+    this.mCB.mDQ.a(com.tencent.mm.kernel.b.b.class, paramClass, paramClass1);
+    this.mCB.mDQ.a(com.tencent.mm.kernel.a.c.b.class, paramClass, paramClass1);
+    AppMethodBeat.o(158298);
   }
   
   public static abstract interface a
@@ -483,7 +483,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.kernel.d
  * JD-Core Version:    0.7.0.1
  */

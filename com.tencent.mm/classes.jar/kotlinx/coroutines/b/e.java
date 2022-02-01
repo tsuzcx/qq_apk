@@ -1,41 +1,58 @@
 package kotlinx.coroutines.b;
 
-import kotlin.l;
-import kotlinx.coroutines.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.d.a.a;
+import kotlin.d.d;
+import kotlin.d.f;
+import kotlin.g.a.m;
+import kotlinx.coroutines.a.g;
+import kotlinx.coroutines.a.v;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"asFlow", "Lkotlinx/coroutines/flow/Flow;", "T", "Lkotlinx/coroutines/channels/BroadcastChannel;", "broadcastIn", "scope", "Lkotlinx/coroutines/CoroutineScope;", "start", "Lkotlinx/coroutines/CoroutineStart;", "consumeAsFlow", "Lkotlinx/coroutines/channels/ReceiveChannel;", "emitAll", "", "Lkotlinx/coroutines/flow/FlowCollector;", "channel", "(Lkotlinx/coroutines/flow/FlowCollector;Lkotlinx/coroutines/channels/ReceiveChannel;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "emitAllImpl", "consume", "", "emitAllImpl$FlowKt__ChannelsKt", "(Lkotlinx/coroutines/flow/FlowCollector;Lkotlinx/coroutines/channels/ReceiveChannel;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "produceIn", "receiveAsFlow", "kotlinx-coroutines-core"})
-public final class e
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/flow/ChannelFlowBuilder;", "T", "Lkotlinx/coroutines/flow/internal/ChannelFlow;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/channels/ProducerScope;", "Lkotlin/coroutines/Continuation;", "", "", "Lkotlin/ExtensionFunctionType;", "context", "Lkotlin/coroutines/CoroutineContext;", "capacity", "", "onBufferOverflow", "Lkotlinx/coroutines/channels/BufferOverflow;", "(Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/CoroutineContext;ILkotlinx/coroutines/channels/BufferOverflow;)V", "Lkotlin/jvm/functions/Function2;", "collectTo", "scope", "(Lkotlinx/coroutines/channels/ProducerScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "create", "toString", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+class e<T>
+  extends kotlinx.coroutines.b.a.e<T>
 {
-  public static final <T> b<T> a(f<T> arg0) {}
+  private final m<v<? super T>, d<? super ah>, Object> aoK;
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlinx/coroutines/flow/internal/SafeCollector_commonKt$unsafeFlow$1", "Lkotlinx/coroutines/flow/Flow;", "collect", "", "collector", "Lkotlinx/coroutines/flow/FlowCollector;", "(Lkotlinx/coroutines/flow/FlowCollector;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
-  public static final class a
-    implements b<T>
+  public e(m<? super v<? super T>, ? super d<? super ah>, ? extends Object> paramm, f paramf, int paramInt, g paramg)
   {
-    public a(f arg1) {}
-    
-    public final Object a(c arg1, kotlin.d.d arg2) {}
+    super(paramf, paramInt, paramg);
+    this.aoK = paramm;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"emitAllImpl", "", "T", "Lkotlinx/coroutines/flow/FlowCollector;", "channel", "Lkotlinx/coroutines/channels/ReceiveChannel;", "consume", "", "continuation", "Lkotlin/coroutines/Continuation;", ""})
-  static final class b
-    extends kotlin.d.b.a.d
+  public Object a(v<? super T> paramv, d<? super ah> paramd)
   {
-    Object L$0;
-    int label;
-    Object oDA;
-    Object pGq;
-    Object pGr;
-    boolean pdt;
-    
-    b(kotlin.d.d arg1) {}
-    
-    public final Object invokeSuspend(Object arg1) {}
+    AppMethodBeat.i(189126);
+    paramd = this.aoK.invoke(paramv, paramd);
+    paramv = paramd;
+    if (paramd != a.aiwj) {
+      paramv = ah.aiuX;
+    }
+    AppMethodBeat.o(189126);
+    return paramv;
+  }
+  
+  public kotlinx.coroutines.b.a.e<T> a(f paramf, int paramInt, g paramg)
+  {
+    AppMethodBeat.i(189116);
+    paramf = (kotlinx.coroutines.b.a.e)new e(this.aoK, paramf, paramInt, paramg);
+    AppMethodBeat.o(189116);
+    return paramf;
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(189135);
+    String str = "block[" + this.aoK + "] -> " + super.toString();
+    AppMethodBeat.o(189135);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.b.e
  * JD-Core Version:    0.7.0.1
  */

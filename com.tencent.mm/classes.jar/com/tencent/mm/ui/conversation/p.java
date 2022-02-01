@@ -1,301 +1,645 @@
 package com.tencent.mm.ui.conversation;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
+import android.database.AbstractCursor;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.DataSetObserver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.l;
-import com.tencent.mm.modelsimple.l;
-import com.tencent.mm.n.f;
-import com.tencent.mm.pluginsdk.g;
-import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import java.util.Map;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 
 public final class p
+  extends AbstractCursor
 {
-  private static com.tencent.mm.ui.widget.a.d XEg = null;
+  private a[] afqT;
+  private int afqU;
+  private int afqV;
+  int afqW;
+  LinkedList<c> afqX;
+  private final b afqY;
+  private Cursor gw;
+  private DataSetObserver mObserver;
+  private int yAJ;
   
-  private static void O(final Context paramContext, boolean paramBoolean)
+  public p(p.e parame, a... paramVarArgs)
   {
-    AppMethodBeat.i(38716);
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("show_rating_preferences", 0);
-    final boolean bool = localSharedPreferences.getBoolean("show_rating_again", false);
-    final int i = localSharedPreferences.getInt("show_rating_wait_days", 0);
-    final int j = localSharedPreferences.getInt("show_rating_first_second_time", 0);
-    String str1;
-    String str2;
-    Object localObject2;
-    if (paramBoolean)
+    AppMethodBeat.i(256880);
+    this.mObserver = new DataSetObserver()
     {
-      str1 = paramContext.getString(R.l.show_rating_dialog_wording);
-      localObject1 = paramContext.getString(R.l.show_rating_dialog_button_yes);
-      str2 = paramContext.getString(R.l.show_rating_dialog_button_no);
-      localObject2 = localObject1;
-    }
-    for (Object localObject1 = str2;; localObject1 = paramContext.getString(R.l.show_rating_dialog_again_button_no))
+      public final void onChanged()
+      {
+        AppMethodBeat.i(256980);
+        p.a(p.this);
+        p.this.jAP();
+        AppMethodBeat.o(256980);
+      }
+      
+      public final void onInvalidated()
+      {
+        AppMethodBeat.i(256983);
+        p.b(p.this);
+        p.this.jAP();
+        AppMethodBeat.o(256983);
+      }
+    };
+    this.yAJ = -1;
+    this.afqU = p.e.afrm.op;
+    this.afqV = 100;
+    this.afqW = -1;
+    this.afqX = new LinkedList();
+    this.afqY = new b();
+    this.afqU = parame.op;
+    if (paramVarArgs.length < 2) {}
+    for (this.afqT = paramVarArgs;; this.afqT = new a[] { paramVarArgs[0], paramVarArgs[1] })
     {
-      XEg = com.tencent.mm.ui.base.h.a(paramContext, false, str1, "", (String)localObject2, (String)localObject1, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.gw = this.afqT[0].jAN();
+      while (i < this.afqT.length)
       {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(38711);
-          this.XEh.edit().putInt("show_rating_flag", 4).commit();
-          Object localObject2 = "market://details?id=" + MMApplicationContext.getPackageName();
-          Object localObject1 = new Intent("android.intent.action.VIEW");
-          ((Intent)localObject1).setData(Uri.parse((String)localObject2));
-          localObject2 = paramContext;
-          localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/ui/conversation/RatingDialogHelper$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
-          com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/ui/conversation/RatingDialogHelper$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          Log.d("MicroMsg.MainUI.RatingDialogHelper", "[oneliang]start market intent");
-          if (paramAnonymousDialogInterface != null) {
-            paramAnonymousDialogInterface.dismiss();
-          }
-          this.XEh.edit().putBoolean("show_rating_again", false).commit();
-          p.hWL();
-          if (bool)
-          {
-            com.tencent.mm.plugin.report.service.h.IzE.a(11216, new Object[] { Integer.valueOf(5), Integer.valueOf(j), Integer.valueOf(i) });
-            AppMethodBeat.o(38711);
-            return;
-          }
-          com.tencent.mm.plugin.report.service.h.IzE.a(11216, new Object[] { Integer.valueOf(4), Integer.valueOf(j), Integer.valueOf(i) });
-          AppMethodBeat.o(38711);
+        if (aDK(i) != null) {
+          aDK(i).registerDataSetObserver(this.mObserver);
         }
-      }, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(38712);
-          this.XEh.edit().putInt("show_rating_flag", 4).commit();
-          if (bool)
-          {
-            this.XEh.edit().putBoolean("show_rating_again", false).commit();
-            com.tencent.mm.plugin.report.service.h.IzE.a(11216, new Object[] { Integer.valueOf(3), Integer.valueOf(j), Integer.valueOf(i) });
-          }
-          for (;;)
-          {
-            if (paramAnonymousDialogInterface != null) {
-              paramAnonymousDialogInterface.dismiss();
-            }
-            p.hWL();
-            AppMethodBeat.o(38712);
-            return;
-            Log.d("MicroMsg.MainUI.RatingDialogHelper", "[oneliang]need to show rating dialog again.");
-            this.XEh.edit().putBoolean("show_rating_again", true).commit();
-            com.tencent.mm.plugin.report.service.h.IzE.a(11216, new Object[] { Integer.valueOf(6), Integer.valueOf(j), Integer.valueOf(i) });
-          }
-        }
-      });
-      AppMethodBeat.o(38716);
-      return;
-      str1 = paramContext.getString(R.l.show_rating_dialog_again_wording);
-      localObject2 = paramContext.getString(R.l.show_rating_dialog_again_button_yes);
+        i += 1;
+      }
     }
+    AppMethodBeat.o(256880);
   }
   
-  public static void hWK()
+  private p(a... paramVarArgs)
   {
-    AppMethodBeat.i(38718);
-    if (XEg != null)
-    {
-      XEg.dismiss();
-      XEg = null;
-    }
-    AppMethodBeat.o(38718);
+    this(p.e.afrm, paramVarArgs);
   }
   
-  public static void lp(final Context paramContext)
+  private boolean aDH(int paramInt)
   {
-    AppMethodBeat.i(38715);
-    if (!ChannelUtil.isGPVersion())
+    AppMethodBeat.i(256886);
+    try
     {
-      AppMethodBeat.o(38715);
-      return;
+      b.a(this.afqY);
+      this.gw = this.afqT[0].jAN();
+      boolean bool = this.gw.moveToPosition(paramInt);
+      AppMethodBeat.o(256886);
+      return bool;
     }
-    Object localObject = com.tencent.mm.n.h.axc().getValue("NewShowRating");
-    if (Util.isNullOrNil((String)localObject))
+    finally
     {
-      AppMethodBeat.o(38715);
-      return;
+      Log.w("MergeSortCursorWrapper", "onMoveOneCursorOnly fail:" + localObject.getMessage());
+      AppMethodBeat.o(256886);
     }
-    Map localMap = XmlParser.parseXml((String)localObject, "ShowRatingNode", "utf-8");
-    int m;
-    label104:
-    int n;
-    if ((localMap == null) || (localMap.get(".ShowRatingNode.MinVer") == null))
+    return false;
+  }
+  
+  private boolean aDI(int paramInt)
+  {
+    AppMethodBeat.i(256901);
+    int i = this.afqW;
+    int j = this.afqW;
+    int k = this.afqX.size();
+    if ((i <= paramInt) && (paramInt < j + k)) {
+      b.a(this.afqY);
+    }
+    Object localObject1;
+    for (;;)
     {
-      localObject = "0";
-      m = Integer.decode((String)localObject).intValue();
-      if ((localMap != null) && (localMap.get(".ShowRatingNode.MaxVer") != null)) {
-        break label183;
+      localObject1 = aDJ(paramInt);
+      if (localObject1 != null) {
+        break;
       }
-      localObject = "0";
-      n = Integer.decode((String)localObject).intValue();
-      if ((localMap != null) && (localMap.get(".ShowRatingNode.WaitDays") != null)) {
-        break label200;
-      }
-    }
-    int k;
-    label183:
-    label200:
-    for (localObject = "0";; localObject = (String)localMap.get(".ShowRatingNode.WaitDays"))
-    {
-      k = Integer.decode((String)localObject).intValue();
-      if ((m <= com.tencent.mm.protocal.d.RAD) && (com.tencent.mm.protocal.d.RAD <= n)) {
-        break label217;
-      }
-      AppMethodBeat.o(38715);
-      return;
-      localObject = (String)localMap.get(".ShowRatingNode.MinVer");
-      break;
-      localObject = (String)localMap.get(".ShowRatingNode.MaxVer");
-      break label104;
-    }
-    label217:
-    localObject = paramContext.getSharedPreferences("show_rating_preferences", 0);
-    int j = ((SharedPreferences)localObject).getInt("show_rating_flag", 0);
-    int i1 = ((SharedPreferences)localObject).getInt("show_rating_version", 0);
-    long l1 = ((SharedPreferences)localObject).getLong("show_rating_timestamp", 0L);
-    boolean bool = ((SharedPreferences)localObject).getBoolean("show_rating_again", false);
-    long l2;
-    if (k == 0)
-    {
-      i = 7;
-      l2 = i * 86400000L;
-      if ((i1 == 0) || (m > i1) || (i1 > n)) {
-        break label616;
-      }
-    }
-    label616:
-    for (int i = 0;; i = 1)
-    {
-      if (i != 0)
+      AppMethodBeat.o(256901);
+      return false;
+      localObject1 = this.afqY;
+      ((b)localObject1).afre += 1L;
+      a locala1 = this.afqT[0];
+      a locala2 = this.afqT[1];
+      d locald;
+      LinkedList localLinkedList;
+      int m;
+      if (paramInt <= 0)
       {
-        ((SharedPreferences)localObject).edit().putInt("show_rating_version", com.tencent.mm.protocal.d.RAD).commit();
-        ((SharedPreferences)localObject).edit().putInt("show_rating_flag", 0).commit();
+        i = this.afqV;
+        j = Math.min(i * 2, getCount());
+        k = i;
+        if (j < i * 2) {
+          k = j;
+        }
         j = 0;
-        l1 = System.currentTimeMillis();
-        ((SharedPreferences)localObject).edit().putLong("show_rating_timestamp", l1).commit();
-        ((SharedPreferences)localObject).edit().putBoolean("show_rating_again", false).commit();
-        ((SharedPreferences)localObject).edit().putInt("show_rating_wait_days", k).commit();
-        ((SharedPreferences)localObject).edit().putInt("show_rating_first_second_time", (int)(System.currentTimeMillis() / 1000L)).commit();
-        Log.i("MicroMsg.MainUI.RatingDialogHelper", "[oneliang]current clientVersion=%s,has rating clientVersion=%s,dynamic config showRatting min version=%s,max version:%s,waitDaysMillis:%s", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.RAD), Integer.valueOf(i1), Integer.valueOf(m), Integer.valueOf(n), Long.valueOf(l2) });
-      }
-      if ((m > com.tencent.mm.protocal.d.RAD) || (com.tencent.mm.protocal.d.RAD > n) || (j != 0) || (l1 == 0L) || (System.currentTimeMillis() < l1 + l2)) {
-        break label621;
-      }
-      Log.i("MicroMsg.MainUI.RatingDialogHelper", "[oneliang]show enjoy app dialog.");
-      XEg = com.tencent.mm.ui.base.h.a(paramContext, false, paramContext.getString(R.l.show_rating_enjoy_dialog_wording), "", paramContext.getString(R.l.show_rating_button_yes), paramContext.getString(R.l.show_rating_button_no), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(38709);
-          this.XEh.edit().putInt("show_rating_flag", 1).commit();
-          if (paramAnonymousDialogInterface != null) {
-            paramAnonymousDialogInterface.dismiss();
-          }
-          p.hWL();
-          p.lr(paramContext);
-          Log.d("MicroMsg.MainUI.RatingDialogHelper", "[oneliang]show rating dialog from enjoy app dialog.");
-          AppMethodBeat.o(38709);
+        i = 0;
+        locald = locala1.aDL(0);
+        localObject1 = locala2.aDL(0);
+        localLinkedList = new LinkedList();
+        m = 0;
+        label163:
+        if ((m >= k) || ((d.afrj == locald) && (d.afrj == localObject1))) {
+          break label405;
         }
-      }, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(38710);
-          this.XEh.edit().putInt("show_rating_flag", 2).commit();
-          if (paramAnonymousDialogInterface != null) {
-            paramAnonymousDialogInterface.dismiss();
-          }
-          p.hWL();
-          p.ls(paramContext);
-          Log.d("MicroMsg.MainUI.RatingDialogHelper", "[oneliang]show feedback dialog.");
-          AppMethodBeat.o(38710);
+        if (d.afrj != locald) {
+          break label254;
         }
-      });
-      AppMethodBeat.o(38715);
-      return;
-      i = k;
-      break;
+        localLinkedList.add(new c(1, i, (d)localObject1));
+        i += 1;
+        localObject1 = locala2.aDL(i);
+      }
+      label373:
+      for (;;)
+      {
+        m += 1;
+        break label163;
+        i = (this.afqV - 1 + paramInt) / this.afqV * this.afqV;
+        break;
+        label254:
+        if (d.afrj == localObject1)
+        {
+          localLinkedList.add(new c(0, j, locald));
+          j += 1;
+          locald = locala1.aDL(j);
+        }
+        else
+        {
+          b localb = this.afqY;
+          localb.afrf += 1L;
+          if (this.afqU * locald.a((d)localObject1) <= 0) {}
+          for (int n = 1;; n = 0)
+          {
+            if (n == 0) {
+              break label373;
+            }
+            localLinkedList.add(new c(0, j, locald));
+            j += 1;
+            locald = locala1.aDL(j);
+            break;
+          }
+          localLinkedList.add(new c(1, i, (d)localObject1));
+          i += 1;
+          localObject1 = locala2.aDL(i);
+        }
+      }
+      label405:
+      if (localLinkedList.size() != k) {
+        Log.w("MergeSortCursorWrapper", "fillWindow K=%d, N=%d (%d), iterator=[%d, %d]", new Object[] { Integer.valueOf(0), Integer.valueOf(localLinkedList.size()), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) });
+      }
+      this.afqW = 0;
+      this.afqX = localLinkedList;
     }
-    label621:
-    if ((bool) && (l1 != 0L) && (System.currentTimeMillis() >= l1 + l2 + 345600000L))
+    try
     {
-      Log.i("MicroMsg.MainUI.RatingDialogHelper", "[oneliang]show rating dialog again.");
-      O(paramContext, false);
-      ((SharedPreferences)localObject).edit().putInt("show_rating_flag", 3).commit();
-      AppMethodBeat.o(38715);
-      return;
+      this.gw = this.afqT[localObject1.afrg].jAN();
+      boolean bool = this.gw.moveToPosition(((c)localObject1).afrh);
+      AppMethodBeat.o(256901);
+      return bool;
     }
-    if (j == 1)
+    finally
     {
-      O(paramContext, true);
-      AppMethodBeat.o(38715);
-      return;
+      Log.w("MergeSortCursorWrapper", "onMoveTwoCursorMixed fail:" + localObject2.getMessage());
+      AppMethodBeat.o(256901);
     }
-    if (j == 2)
-    {
-      lq(paramContext);
-      AppMethodBeat.o(38715);
-      return;
-    }
-    if (j == 3) {
-      O(paramContext, false);
-    }
-    AppMethodBeat.o(38715);
+    return false;
   }
   
-  private static void lq(final Context paramContext)
+  private c aDJ(int paramInt)
   {
-    AppMethodBeat.i(38717);
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("show_rating_preferences", 0);
-    final int i = localSharedPreferences.getInt("show_rating_wait_days", 0);
-    final int j = localSharedPreferences.getInt("show_rating_first_second_time", 0);
-    XEg = com.tencent.mm.ui.base.h.a(paramContext, false, paramContext.getString(R.l.show_rating_feedback_dialog_wording), "", paramContext.getString(R.l.show_rating_feedback_dialog_button_yes), paramContext.getString(R.l.show_rating_feedback_dialog_button_no), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    AppMethodBeat.i(256904);
+    try
     {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(38713);
-        this.XEh.edit().putInt("show_rating_flag", 4).commit();
-        if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.dismiss();
-        }
-        g.a(paramContext, l.boo(), new byte[0], "weixin://dl/feedback");
-        p.hWL();
-        com.tencent.mm.plugin.report.service.h.IzE.a(11216, new Object[] { Integer.valueOf(2), Integer.valueOf(j), Integer.valueOf(i) });
-        AppMethodBeat.o(38713);
-      }
-    }, new DialogInterface.OnClickListener()
+      int i = this.afqW;
+      c localc = (c)this.afqX.get(paramInt - i);
+      AppMethodBeat.o(256904);
+      return localc;
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      Log.w("MergeSortCursorWrapper", "locateElement fail:" + localIndexOutOfBoundsException.getMessage());
+      AppMethodBeat.o(256904);
+    }
+    return null;
+  }
+  
+  private Cursor aDK(int paramInt)
+  {
+    AppMethodBeat.i(256910);
+    Cursor localCursor = this.afqT[paramInt].jAN();
+    AppMethodBeat.o(256910);
+    return localCursor;
+  }
+  
+  public static p jAO()
+  {
+    AppMethodBeat.i(256869);
+    p localp = new p(new a[] { new a()
+    {
+      protected final p.d d(Cursor paramAnonymousCursor, int paramAnonymousInt)
       {
-        AppMethodBeat.i(38714);
-        this.XEh.edit().putInt("show_rating_flag", 4).commit();
-        if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.dismiss();
-        }
-        p.hWL();
-        com.tencent.mm.plugin.report.service.h.IzE.a(11216, new Object[] { Integer.valueOf(1), Integer.valueOf(j), Integer.valueOf(i) });
-        AppMethodBeat.o(38714);
+        AppMethodBeat.i(257044);
+        paramAnonymousCursor = new p.d(paramAnonymousInt);
+        AppMethodBeat.o(257044);
+        return paramAnonymousCursor;
       }
-    });
-    AppMethodBeat.o(38717);
+      
+      public final Cursor jAN()
+      {
+        return null;
+      }
+    } });
+    AppMethodBeat.o(256869);
+    return localp;
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(256993);
+    int j = this.afqT.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (aDK(i) != null) {
+        aDK(i).close();
+      }
+      i += 1;
+    }
+    super.close();
+    AppMethodBeat.o(256993);
+  }
+  
+  public final void deactivate()
+  {
+    AppMethodBeat.i(256990);
+    int j = this.afqT.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (aDK(i) != null) {
+        aDK(i).deactivate();
+      }
+      i += 1;
+    }
+    super.deactivate();
+    AppMethodBeat.o(256990);
+  }
+  
+  public final byte[] getBlob(int paramInt)
+  {
+    AppMethodBeat.i(256981);
+    byte[] arrayOfByte = jAQ().getBlob(paramInt);
+    AppMethodBeat.o(256981);
+    return arrayOfByte;
+  }
+  
+  public final String[] getColumnNames()
+  {
+    AppMethodBeat.i(256984);
+    if (this.gw != null)
+    {
+      String[] arrayOfString = jAQ().getColumnNames();
+      AppMethodBeat.o(256984);
+      return arrayOfString;
+    }
+    AppMethodBeat.o(256984);
+    return new String[0];
+  }
+  
+  public final int getCount()
+  {
+    AppMethodBeat.i(256925);
+    int m = this.afqT.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
+    {
+      k = j;
+      if (aDK(i) != null) {
+        k = j + aDK(i).getCount();
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(256925);
+    return j;
+  }
+  
+  public final double getDouble(int paramInt)
+  {
+    AppMethodBeat.i(256968);
+    double d = jAQ().getDouble(paramInt);
+    AppMethodBeat.o(256968);
+    return d;
+  }
+  
+  public final float getFloat(int paramInt)
+  {
+    AppMethodBeat.i(256962);
+    float f = jAQ().getFloat(paramInt);
+    AppMethodBeat.o(256962);
+    return f;
+  }
+  
+  public final int getInt(int paramInt)
+  {
+    AppMethodBeat.i(256952);
+    paramInt = jAQ().getInt(paramInt);
+    AppMethodBeat.o(256952);
+    return paramInt;
+  }
+  
+  public final long getLong(int paramInt)
+  {
+    AppMethodBeat.i(256957);
+    long l = jAQ().getLong(paramInt);
+    AppMethodBeat.o(256957);
+    return l;
+  }
+  
+  public final short getShort(int paramInt)
+  {
+    AppMethodBeat.i(256944);
+    short s = jAQ().getShort(paramInt);
+    AppMethodBeat.o(256944);
+    return s;
+  }
+  
+  public final String getString(int paramInt)
+  {
+    AppMethodBeat.i(256941);
+    String str = jAQ().getString(paramInt);
+    AppMethodBeat.o(256941);
+    return str;
+  }
+  
+  public final int getType(int paramInt)
+  {
+    AppMethodBeat.i(256973);
+    paramInt = jAQ().getType(paramInt);
+    AppMethodBeat.o(256973);
+    return paramInt;
+  }
+  
+  public final boolean isNull(int paramInt)
+  {
+    AppMethodBeat.i(256976);
+    boolean bool = jAQ().isNull(paramInt);
+    AppMethodBeat.o(256976);
+    return bool;
+  }
+  
+  public final void jAP()
+  {
+    AppMethodBeat.i(256933);
+    if (this.afqW != -1) {
+      b.b(this.afqY);
+    }
+    this.afqW = -1;
+    this.afqX = new LinkedList();
+    AppMethodBeat.o(256933);
+  }
+  
+  final Cursor jAQ()
+  {
+    AppMethodBeat.i(257014);
+    if ((this.gw == null) || (this.gw.isClosed())) {
+      onMove(-1, this.yAJ);
+    }
+    Cursor localCursor = this.gw;
+    AppMethodBeat.o(257014);
+    return localCursor;
+  }
+  
+  public final boolean onMove(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(256930);
+    b localb = this.afqY;
+    localb.afrb += 1L;
+    this.yAJ = paramInt2;
+    if (this.afqT.length < 2)
+    {
+      bool = aDH(paramInt2);
+      AppMethodBeat.o(256930);
+      return bool;
+    }
+    boolean bool = aDI(paramInt2);
+    AppMethodBeat.o(256930);
+    return bool;
+  }
+  
+  public final void registerContentObserver(ContentObserver paramContentObserver)
+  {
+    AppMethodBeat.i(257000);
+    int j = this.afqT.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (aDK(i) != null) {
+        aDK(i).registerContentObserver(paramContentObserver);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(257000);
+  }
+  
+  public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    AppMethodBeat.i(257007);
+    int j = this.afqT.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (aDK(i) != null) {
+        aDK(i).registerDataSetObserver(paramDataSetObserver);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(257007);
+  }
+  
+  public final boolean requery()
+  {
+    AppMethodBeat.i(257013);
+    int j = this.afqT.length;
+    int i = 0;
+    while (i < j)
+    {
+      if ((aDK(i) != null) && (!aDK(i).requery()))
+      {
+        AppMethodBeat.o(257013);
+        return false;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(257013);
+    return true;
+  }
+  
+  public final void unregisterContentObserver(ContentObserver paramContentObserver)
+  {
+    AppMethodBeat.i(257004);
+    int j = this.afqT.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (aDK(i) != null) {
+        aDK(i).unregisterContentObserver(paramContentObserver);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(257004);
+  }
+  
+  public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    AppMethodBeat.i(257009);
+    int j = this.afqT.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (aDK(i) != null) {
+        aDK(i).unregisterDataSetObserver(paramDataSetObserver);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(257009);
+  }
+  
+  public static abstract class a
+  {
+    private final LinkedHashMap<String, Integer> afra = new LinkedHashMap();
+    
+    public final p.d aDL(int paramInt)
+    {
+      Object localObject1 = jAN();
+      if (localObject1 == null) {
+        return new p.d(paramInt);
+      }
+      if (paramInt < 0) {}
+      try
+      {
+        return p.d.afrj;
+      }
+      finally {}
+      ((Cursor)localObject1).moveToPosition(paramInt);
+      localObject1 = d((Cursor)localObject1, paramInt);
+      return localObject1;
+      return p.d.afrj;
+    }
+    
+    protected final int b(Cursor paramCursor, String paramString)
+    {
+      Integer localInteger = (Integer)this.afra.get(paramString);
+      if (localInteger != null) {
+        return localInteger.intValue();
+      }
+      paramCursor = paramCursor.getColumnNames();
+      int i = 0;
+      while (i < paramCursor.length)
+      {
+        if (paramString.equals(paramCursor[i]))
+        {
+          this.afra.put(paramString, Integer.valueOf(i));
+          return i;
+        }
+        i += 1;
+      }
+      this.afra.put(paramString, Integer.valueOf(-1));
+      return -1;
+    }
+    
+    protected abstract p.d d(Cursor paramCursor, int paramInt);
+    
+    protected abstract Cursor jAN();
+  }
+  
+  public static final class b
+  {
+    long afrb = 0L;
+    private long afrc = 0L;
+    private long afrd = 0L;
+    long afre = 0L;
+    long afrf = 0L;
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(256768);
+      try
+      {
+        String str = String.format("total=%d, hit=%d [%.2f%%], reset,fill=%d, %d [%.2f%%], compare=%d [%.2f%%]", new Object[] { Long.valueOf(this.afrb), Long.valueOf(this.afrc), Float.valueOf((float)this.afrc * 100.0F / (float)this.afrb), Long.valueOf(this.afrd), Long.valueOf(this.afre), Float.valueOf((float)this.afrd * 100.0F / (float)this.afre), Long.valueOf(this.afrf), Float.valueOf((float)this.afrf * 100.0F / (float)this.afrb) });
+        AppMethodBeat.o(256768);
+        return str;
+      }
+      finally
+      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("total=").append(this.afrb).append("hit=").append(this.afrc).append("clearWindow=").append(this.afrd).append("fillWindow=").append(this.afre).append("compare=").append(this.afrf);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        AppMethodBeat.o(256768);
+        return localObject2;
+      }
+    }
+  }
+  
+  public static final class c
+  {
+    public final int afrg;
+    public final int afrh;
+    public final p.d afri;
+    
+    public c(int paramInt1, int paramInt2, p.d paramd)
+    {
+      this.afrg = paramInt1;
+      this.afrh = paramInt2;
+      this.afri = paramd;
+    }
+  }
+  
+  public static final class d
+    implements Comparable<d>
+  {
+    public static final d afrj;
+    public long afrk = 0L;
+    public int afrl = 0;
+    
+    static
+    {
+      AppMethodBeat.i(256767);
+      afrj = new d(0L);
+      AppMethodBeat.o(256767);
+    }
+    
+    public d() {}
+    
+    public d(long paramLong)
+    {
+      this.afrk = paramLong;
+      this.afrl = 0;
+    }
+    
+    public final int a(d paramd)
+    {
+      if (this == paramd) {}
+      long l;
+      do
+      {
+        do
+        {
+          return 0;
+          if ((paramd == null) || (afrj == paramd)) {
+            return 1;
+          }
+        } while ((this.afrl == paramd.afrl) && (this.afrk == paramd.afrk));
+        if (this.afrl != paramd.afrl) {
+          return this.afrl - paramd.afrl;
+        }
+        l = this.afrk - paramd.afrk;
+        if (l < 0L) {
+          return -1;
+        }
+      } while (l == 0L);
+      return 1;
+    }
+    
+    public final int hashCode()
+    {
+      return this.afrl << 31 | (int)this.afrk;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.p
  * JD-Core Version:    0.7.0.1
  */

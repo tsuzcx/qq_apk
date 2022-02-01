@@ -1,18 +1,22 @@
 package com.tencent.mm.plugin.appbrand.message;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.b.e;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.z;
+import com.tencent.mm.am.z.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.message.c.d;
+import com.tencent.mm.message.c.e;
+import com.tencent.mm.modelappbrand.m;
 import com.tencent.mm.modelappbrand.m.a;
-import com.tencent.mm.protocal.protobuf.ceb;
-import com.tencent.mm.protocal.protobuf.cec;
-import com.tencent.mm.protocal.protobuf.ehu;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.protocal.protobuf.cud;
+import com.tencent.mm.protocal.protobuf.cue;
+import com.tencent.mm.protocal.protobuf.fbu;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -27,23 +31,23 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class g
-  implements com.tencent.mm.modelappbrand.m
+  implements m
 {
-  private static Map<String, Object> qhe;
-  private static Map<String, List<a>> qhf;
+  private static Map<String, Object> tlP;
+  private static Map<String, List<a>> tlQ;
   
   static
   {
     AppMethodBeat.i(47740);
-    qhe = new HashMap();
-    qhf = new HashMap();
+    tlP = new HashMap();
+    tlQ = new HashMap();
     AppMethodBeat.o(47740);
   }
   
-  public final com.tencent.mm.aj.b.d SJ(String paramString)
+  public final d KL(String paramString)
   {
     AppMethodBeat.i(47733);
-    e locale = com.tencent.mm.plugin.appbrand.app.m.bFM();
+    e locale = n.cfj();
     if (locale == null)
     {
       Log.e("MicroMsg.WxaUpdateableMsgService", "wxaUpdateableMsgStorage is null");
@@ -57,9 +61,9 @@ public final class g
       return null;
     }
     int i = paramString.hashCode();
-    com.tencent.mm.aj.b.d locald2 = new com.tencent.mm.aj.b.d();
+    d locald2 = new d();
     locald2.field_shareKeyHash = i;
-    com.tencent.mm.aj.b.d locald1 = locald2;
+    d locald1 = locald2;
     if (!locale.get(locald2, new String[] { "shareKeyHash" }))
     {
       Log.e("MicroMsg.WxaUpdateableMsgStorage", "WxaUpdateableMsg is null");
@@ -76,7 +80,7 @@ public final class g
     return locald1;
   }
   
-  public final void SK(String paramString)
+  public final void KM(String paramString)
   {
     for (;;)
     {
@@ -84,7 +88,7 @@ public final class g
       {
         AppMethodBeat.i(47737);
         Log.i("MicroMsg.WxaUpdateableMsgService", "removeOnUpdatbleMsgInfoChange token:%s", new Object[] { paramString });
-        Object localObject = (List)qhf.get(paramString);
+        Object localObject = (List)tlQ.get(paramString);
         if (localObject == null)
         {
           Log.w("MicroMsg.WxaUpdateableMsgService", "[removeOnUpdatbleMsgInfoChange]getUpdatableMsgWorkers is null, err");
@@ -95,12 +99,12 @@ public final class g
         if (((Iterator)localObject).hasNext())
         {
           a locala = (a)((Iterator)localObject).next();
-          b localb = b.qhi;
-          Log.d("MicroMsg.WxaUpdateableMsgService", "[removeWorker]getUpdatableMsgWorkerList size:%d", new Object[] { Integer.valueOf(localb.qhj.size()) });
-          localb.qhj.remove(Integer.valueOf(locala.cwU.hashCode()));
+          b localb = b.tlT;
+          Log.d("MicroMsg.WxaUpdateableMsgService", "[removeWorker]getUpdatableMsgWorkerList size:%d", new Object[] { Integer.valueOf(localb.tlU.size()) });
+          localb.tlU.remove(Integer.valueOf(locala.eoU.hashCode()));
           continue;
         }
-        qhf.remove(paramString);
+        tlQ.remove(paramString);
       }
       finally {}
       AppMethodBeat.o(47737);
@@ -120,40 +124,40 @@ public final class g
           AppMethodBeat.o(47736);
           return;
         }
-        List localList = (List)qhf.get(paramString1);
+        List localList = (List)tlQ.get(paramString1);
         Object localObject = localList;
         if (localList == null)
         {
           Log.i("MicroMsg.WxaUpdateableMsgService", "addOnUpdatbleMsgInfoChange token:%s", new Object[] { paramString1 });
           localObject = new ArrayList();
-          qhf.put(paramString1, localObject);
+          tlQ.put(paramString1, localObject);
         }
         Log.i("MicroMsg.WxaUpdateableMsgService", "addOnUpdatbleMsgInfoChange shareKeyHash:%d", new Object[] { Integer.valueOf(paramString3.hashCode()) });
         Log.d("MicroMsg.WxaUpdateableMsgService", "addOnUpdatbleMsgInfoChange shareKey:%s", new Object[] { paramString3 });
         paramString1 = new a((byte)0);
         paramString1.appId = paramString2;
-        paramString1.cwU = paramString3;
-        paramString1.qhg = paramInt;
-        paramString1.qhh = parama;
-        if ((Util.isNullOrNil(paramString1.appId)) || (Util.isNullOrNil(paramString1.cwU)))
+        paramString1.eoU = paramString3;
+        paramString1.tlR = paramInt;
+        paramString1.tlS = parama;
+        if ((Util.isNullOrNil(paramString1.appId)) || (Util.isNullOrNil(paramString1.eoU)))
         {
           Log.w("MicroMsg.WxaUpdateableMsgService", "appId or shareKey is null, return");
           ((List)localObject).add(paramString1);
           AppMethodBeat.o(47736);
           continue;
         }
-        paramString2 = b.qhi;
+        paramString2 = b.tlT;
       }
       finally {}
-      Log.d("MicroMsg.WxaUpdateableMsgService", "[addWorker]getUpdatableMsgWorkerList size:%d", new Object[] { Integer.valueOf(paramString2.qhj.size()) });
-      paramString2.qhj.put(Integer.valueOf(paramString1.cwU.hashCode()), paramString1);
+      Log.d("MicroMsg.WxaUpdateableMsgService", "[addWorker]getUpdatableMsgWorkerList size:%d", new Object[] { Integer.valueOf(paramString2.tlU.size()) });
+      paramString2.tlU.put(Integer.valueOf(paramString1.eoU.hashCode()), paramString1);
     }
   }
   
   public final boolean a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(47735);
-    e locale = com.tencent.mm.plugin.appbrand.app.m.bFM();
+    e locale = n.cfj();
     if (locale == null)
     {
       Log.e("MicroMsg.WxaUpdateableMsgService", "wxaUpdateableMsgStorage is null, err");
@@ -171,7 +175,7 @@ public final class g
       Log.d("MicroMsg.WxaUpdateableMsgService", "shareKey:%s, shareKeyHash:%d, content:%s contentColor:%s isOk:%b", new Object[] { paramString1, Integer.valueOf(paramString1.hashCode()), paramString2, paramString3, Boolean.valueOf(bool) });
       AppMethodBeat.o(47735);
       return bool;
-      com.tencent.mm.aj.b.d locald = new com.tencent.mm.aj.b.d();
+      d locald = new d();
       locald.field_shareKeyHash = paramString1.hashCode();
       bool = locale.get(locald, new String[0]);
       locald.field_updatePeroid = paramInt1;
@@ -186,10 +190,10 @@ public final class g
     }
   }
   
-  public final boolean aG(String paramString, int paramInt)
+  public final boolean aR(String paramString, int paramInt)
   {
     AppMethodBeat.i(47734);
-    e locale = com.tencent.mm.plugin.appbrand.app.m.bFM();
+    e locale = n.cfj();
     if (locale == null)
     {
       Log.e("MicroMsg.WxaUpdateableMsgService", "wxaUpdateableMsgStorage is null, err");
@@ -206,11 +210,11 @@ public final class g
     {
       Log.d("MicroMsg.WxaUpdateableMsgService", "shareKey:%s, shareKeyHash:%d, btnState:%d isOk:%b", new Object[] { paramString, Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt), Boolean.valueOf(bool) });
       if (bool) {
-        qhe.get(paramString);
+        tlP.get(paramString);
       }
       AppMethodBeat.o(47734);
       return bool;
-      com.tencent.mm.aj.b.d locald = new com.tencent.mm.aj.b.d();
+      d locald = new d();
       locald.field_shareKeyHash = paramString.hashCode();
       bool = locale.get(locald, new String[0]);
       locald.field_btnState = paramInt;
@@ -222,31 +226,31 @@ public final class g
     }
   }
   
-  public final void bgV()
+  public final void bEM()
   {
     AppMethodBeat.i(47738);
     Log.i("MicroMsg.WxaUpdateableMsgService", "startUpdatbleMsgInfoChange");
-    b.qhi.start();
+    b.tlT.start();
     AppMethodBeat.o(47738);
   }
   
-  public final void bgW()
+  public final void bEN()
   {
     AppMethodBeat.i(47739);
     Log.i("MicroMsg.WxaUpdateableMsgService", "stopOnUpdatbleMsgInfoChange");
-    b.qhi.stop();
+    b.tlT.stop();
     AppMethodBeat.o(47739);
   }
   
   static final class a
   {
     public String appId;
-    public String cwU;
+    public String eoU;
     public long lastUpdateTime;
-    public int qhg;
-    public m.a qhh;
+    public int tlR;
+    public m.a tlS;
     
-    private long cbC()
+    private long cBV()
     {
       AppMethodBeat.i(47719);
       long l = System.currentTimeMillis() - this.lastUpdateTime;
@@ -255,17 +259,17 @@ public final class g
       return l;
     }
     
-    public final boolean cbB()
+    public final boolean cBU()
     {
       AppMethodBeat.i(47718);
-      if (this.qhg < 0)
+      if (this.tlR < 0)
       {
         AppMethodBeat.o(47718);
         return false;
       }
-      if (this.qhg == 0)
+      if (this.tlR == 0)
       {
-        if (cbC() > 10000L)
+        if (cBV() > 10000L)
         {
           AppMethodBeat.o(47718);
           return true;
@@ -273,7 +277,7 @@ public final class g
         AppMethodBeat.o(47718);
         return false;
       }
-      if (cbC() > this.qhg * 1000L)
+      if (cBV() > this.tlR * 1000L)
       {
         AppMethodBeat.o(47718);
         return true;
@@ -285,24 +289,24 @@ public final class g
   
   public static enum b
   {
-    private AtomicBoolean fpU;
-    Map<Integer, g.a> qhj;
-    private Runnable qhk;
+    private AtomicBoolean hud;
+    Map<Integer, g.a> tlU;
+    private Runnable tlV;
     
     static
     {
       AppMethodBeat.i(47732);
-      qhi = new b("INSTANCE");
-      qhl = new b[] { qhi };
+      tlT = new b("INSTANCE");
+      tlW = new b[] { tlT };
       AppMethodBeat.o(47732);
     }
     
     private b()
     {
       AppMethodBeat.i(47724);
-      this.qhj = new ConcurrentHashMap();
-      this.fpU = new AtomicBoolean(true);
-      this.qhk = new Runnable()
+      this.tlU = new ConcurrentHashMap();
+      this.hud = new AtomicBoolean(true);
+      this.tlV = new Runnable()
       {
         public final void run()
         {
@@ -312,11 +316,11 @@ public final class g
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (g.a)((Iterator)localObject1).next();
-            if (((g.a)localObject2).cbB())
+            if (((g.a)localObject2).cBU())
             {
-              localObject3 = new ehu();
-              ((ehu)localObject3).UjS = ((g.a)localObject2).cwU;
-              ((ehu)localObject3).appid = ((g.a)localObject2).appId;
+              localObject3 = new fbu();
+              ((fbu)localObject3).abBw = ((g.a)localObject2).eoU;
+              ((fbu)localObject3).appid = ((g.a)localObject2).appId;
               localLinkedList.add(localObject3);
             }
           }
@@ -324,35 +328,35 @@ public final class g
           if (localLinkedList.size() <= 0)
           {
             Log.d("MicroMsg.WxaUpdateableMsgService", "shareKeyInfoList is null, return");
-            ((g.b)localObject1).cbD();
+            ((g.b)localObject1).cBW();
             AppMethodBeat.o(47720);
             return;
           }
           Log.d("MicroMsg.WxaUpdateableMsgService", "getUpdateableMsg shareKeyInfoList.size:%d", new Object[] { Integer.valueOf(localLinkedList.size()) });
-          Object localObject2 = new d.a();
-          ((d.a)localObject2).funcId = 2954;
-          ((d.a)localObject2).uri = "/cgi-bin/mmbiz-bin/wxabusiness/getupdatablemsginfo";
-          Object localObject3 = new ceb();
-          ((ceb)localObject3).TlH = localLinkedList;
-          ((d.a)localObject2).lBU = ((a)localObject3);
-          ((d.a)localObject2).lBV = new cec();
-          aa.a(((d.a)localObject2).bgN(), new g.b.2((g.b)localObject1));
+          Object localObject2 = new c.a();
+          ((c.a)localObject2).funcId = 2954;
+          ((c.a)localObject2).uri = "/cgi-bin/mmbiz-bin/wxabusiness/getupdatablemsginfo";
+          Object localObject3 = new cud();
+          ((cud)localObject3).aazD = localLinkedList;
+          ((c.a)localObject2).otE = ((a)localObject3);
+          ((c.a)localObject2).otF = new cue();
+          z.a(((c.a)localObject2).bEF(), new g.b.2((g.b)localObject1));
           AppMethodBeat.o(47720);
         }
       };
       AppMethodBeat.o(47724);
     }
     
-    final void cbD()
+    final void cBW()
     {
       boolean bool1 = false;
       boolean bool2 = true;
       try
       {
         AppMethodBeat.i(47727);
-        h.aHJ();
-        MMHandlerThread.removeRunnable(this.qhk);
-        if (this.fpU.get())
+        h.baH();
+        MMHandlerThread.removeRunnable(this.tlV);
+        if (this.hud.get())
         {
           Log.d("MicroMsg.WxaUpdateableMsgService", "isPause, not sendUpdatableMsgRequest");
           AppMethodBeat.o(47727);
@@ -360,7 +364,7 @@ public final class g
         for (;;)
         {
           return;
-          if (this.qhj.size() > 0) {
+          if (this.tlU.size() > 0) {
             break;
           }
           Log.d("MicroMsg.WxaUpdateableMsgService", "sGetUpdatableMsgWorkerMap is empty, not sendUpdatableMsgRequest");
@@ -370,13 +374,13 @@ public final class g
       }
       finally {}
       long l;
-      Iterator localIterator = this.qhj.values().iterator();
+      Iterator localIterator = this.tlU.values().iterator();
       label101:
       g.a locala;
       if (localIterator.hasNext())
       {
         locala = (g.a)localIterator.next();
-        if (locala.cbB())
+        if (locala.cBU())
         {
           l = 0L;
           bool1 = bool2;
@@ -389,14 +393,14 @@ public final class g
         {
           AppMethodBeat.o(47727);
           break;
-          if (locala.qhg < 0) {
+          if (locala.tlR < 0) {
             break label101;
           }
-          l = Math.min(locala.qhg, l);
+          l = Math.min(locala.tlR, l);
           bool1 = true;
           break label101;
         }
-        h.aHJ().postToWorkerDelayed(this.qhk, l * 1000L);
+        h.baH().postToWorkerDelayed(this.tlV, l * 1000L);
         AppMethodBeat.o(47727);
         break;
       }
@@ -407,8 +411,8 @@ public final class g
       try
       {
         AppMethodBeat.i(47725);
-        this.fpU.set(false);
-        cbD();
+        this.hud.set(false);
+        cBW();
         AppMethodBeat.o(47725);
         return;
       }
@@ -424,7 +428,7 @@ public final class g
       try
       {
         AppMethodBeat.i(47726);
-        this.fpU.set(true);
+        this.hud.set(true);
         AppMethodBeat.o(47726);
         return;
       }

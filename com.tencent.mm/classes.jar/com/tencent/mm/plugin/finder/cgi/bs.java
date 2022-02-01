@@ -1,128 +1,133 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.avi;
-import com.tencent.mm.protocal.protobuf.avj;
+import com.tencent.mm.plugin.findersdk.a.cl;
+import com.tencent.mm.protocal.protobuf.atz;
+import com.tencent.mm.protocal.protobuf.avx;
+import com.tencent.mm.protocal.protobuf.avy;
+import com.tencent.mm.protocal.protobuf.bkk;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetMentionedFeed;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "username", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "displayOption", "", "(Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;I)V", "TAG", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "objectList", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getObjectList", "()Ljava/util/List;", "setObjectList", "(Ljava/util/List;)V", "pullType", "getPullType", "()I", "setPullType", "(I)V", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getUsername", "()Ljava/lang/String;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getContinueFlag", "getFeedList", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "getMentionTotalCount", "getRespLastBuffer", "getTotalCount", "", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneCreateLiveNotice;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "Lcom/tencent/mm/plugin/findersdk/api/INetSceneCreateLiveNotice;", "userName", "", "noticeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "opType", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLiveNoticeResponse;", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bs
-  extends com.tencent.mm.plugin.findersdk.b.g
+  extends com.tencent.mm.plugin.findersdk.b.h
+  implements cl
 {
-  private final String TAG;
-  private i callback;
-  public int pullType;
-  public d rr;
-  private final String username;
+  public static final a ABI;
+  private com.tencent.mm.am.h callback;
+  private c rr;
   
-  public bs(String paramString, b paramb, int paramInt)
+  static
   {
-    AppMethodBeat.i(291526);
-    this.username = paramString;
-    this.TAG = "Finder.NetSceneFinderGetMentionedFeed";
-    paramString = new d.a();
-    paramString.vD(getType());
-    avi localavi = new avi();
-    localavi.RLN = this.username;
-    localavi.SDI = paramb;
-    localavi.SHG = paramInt;
-    ao localao = ao.xcj;
-    localavi.RLM = ao.dnO();
-    paramString.c((a)localavi);
-    paramString.vD(getType());
-    paramString.d((a)new avj());
-    paramString.TW("/cgi-bin/micromsg-bin/findergetmentionedlist");
-    paramString = paramString.bgN();
-    p.j(paramString, "builder.buildInstance()");
-    this.rr = paramString;
-    Log.i(this.TAG, "NetSceneFinderGetMentionedFeed init: " + this.username + " lastBuffer:" + paramb);
-    AppMethodBeat.o(291526);
+    AppMethodBeat.i(336420);
+    ABI = new a((byte)0);
+    AppMethodBeat.o(336420);
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
+  public bs(String paramString, bkk parambkk, int paramInt, bui parambui)
   {
-    AppMethodBeat.i(291523);
-    Log.i(this.TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      params = this.TAG;
-      StringBuilder localStringBuilder = new StringBuilder("friendUsername ").append(this.username).append(' ');
-      am localam = am.xch;
-      Log.i(params, am.dY(dor()));
-    }
-    if (this.callback != null)
-    {
-      params = this.callback;
-      if (params == null) {
-        p.iCn();
+    super(parambui);
+    AppMethodBeat.i(336415);
+    c.a locala = new c.a();
+    locala.uri = "/cgi-bin/micromsg-bin/findercreatelivenotice";
+    locala.funcId = getType();
+    avx localavx = new avx();
+    localavx.finderUsername = paramString;
+    localavx.liveNoticeInfo = parambkk;
+    localavx.hYl = paramInt;
+    Object localObject = bi.ABn;
+    localavx.ZEc = bi.a(parambui);
+    localObject = localavx.ZEc;
+    if (localObject != null) {
+      if (parambui != null) {
+        break label219;
       }
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
     }
-    AppMethodBeat.o(291523);
+    label219:
+    for (int i = 0;; i = parambui.hLK)
+    {
+      ((atz)localObject).scene = i;
+      parambui = new avy();
+      locala.otE = ((a)localavx);
+      locala.otF = ((a)parambui);
+      parambui = locala.bEF();
+      kotlin.g.b.s.s(parambui, "builder.buildInstance()");
+      this.rr = parambui;
+      Log.i("Finder.NetSceneCreateLiveNotice", "NetSceneCreateLiveNotice init userName:" + paramString + ", startTime:" + parambkk.startTime + " ,opType:" + paramInt + ' ');
+      AppMethodBeat.o(336415);
+      return;
+    }
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params)
   {
-    AppMethodBeat.i(291522);
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.rr, (m)this);
-    AppMethodBeat.o(291522);
-    return i;
+    AppMethodBeat.i(336439);
+    Log.i("Finder.NetSceneCreateLiveNotice", "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    params = this.callback;
+    if (params != null) {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (p)this);
+    }
+    AppMethodBeat.o(336439);
   }
   
-  public final List<FinderObject> dor()
+  public final avy dVD()
   {
-    AppMethodBeat.i(291524);
-    Object localObject = this.rr.bhY();
+    AppMethodBeat.i(336445);
+    c localc = this.rr;
+    Object localObject = localc;
+    if (localc == null)
+    {
+      kotlin.g.b.s.bIx("rr");
+      localObject = null;
+    }
+    localObject = c.c.b(((c)localObject).otC);
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetMentionedListResponse");
-      AppMethodBeat.o(291524);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderCreateLiveNoticeResponse");
+      AppMethodBeat.o(336445);
       throw ((Throwable)localObject);
     }
-    localObject = ((avj)localObject).object;
-    p.j(localObject, "(rr.responseProtoBuf as …nedListResponse).`object`");
-    localObject = (List)localObject;
-    AppMethodBeat.o(291524);
+    localObject = (avy)localObject;
+    AppMethodBeat.o(336445);
     return localObject;
   }
   
-  public final int dos()
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(291525);
-    Object localObject = this.rr.bhY();
-    if (localObject == null)
+    AppMethodBeat.i(336425);
+    this.callback = paramh;
+    c localc = this.rr;
+    paramh = localc;
+    if (localc == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetMentionedListResponse");
-      AppMethodBeat.o(291525);
-      throw ((Throwable)localObject);
+      kotlin.g.b.s.bIx("rr");
+      paramh = null;
     }
-    int i = ((avj)localObject).SHH;
-    AppMethodBeat.o(291525);
+    int i = dispatch(paramg, (com.tencent.mm.network.s)paramh, (m)this);
+    AppMethodBeat.o(336425);
     return i;
   }
   
   public final int getType()
   {
-    return 3810;
+    return 6653;
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneCreateLiveNotice$Companion;", "", "()V", "TAG", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.bs
  * JD-Core Version:    0.7.0.1
  */

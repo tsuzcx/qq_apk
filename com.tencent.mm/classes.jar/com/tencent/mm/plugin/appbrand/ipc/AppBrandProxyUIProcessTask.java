@@ -1,79 +1,130 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
+import androidx.lifecycle.j;
+import androidx.lifecycle.p;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.br.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
+import java.lang.reflect.Constructor;
 
 public abstract class AppBrandProxyUIProcessTask
   implements MMActivity.a
 {
-  public d orj;
+  private e mProxyUI;
   
-  protected abstract void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest);
-  
-  public final void b(final ProcessResult paramProcessResult)
+  final void attach(e parame)
   {
-    paramProcessResult = new Runnable()
+    this.mProxyUI = parame;
+    if ((this instanceof p)) {
+      getActivityContext().getLifecycle().addObserver((p)this);
+    }
+  }
+  
+  public final void finishProcess(final AppBrandProxyUIProcessTask.ProcessResult paramProcessResult)
+  {
+    runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(45412);
-        if (AppBrandProxyUIProcessTask.a(AppBrandProxyUIProcessTask.this) == null)
+        if (AppBrandProxyUIProcessTask.this.mProxyUI == null)
         {
           AppMethodBeat.o(45412);
           return;
         }
-        AppBrandProxyUIProcessTask.a(AppBrandProxyUIProcessTask.this).b(paramProcessResult);
+        AppBrandProxyUIProcessTask.this.mProxyUI.finishProcess(paramProcessResult);
         AppMethodBeat.o(45412);
       }
-    };
-    if (this.orj == null) {
-      return;
-    }
-    this.orj.runOnUiThread(paramProcessResult);
+    });
   }
   
-  public final MMActivity bPf()
+  public final MMActivity getActivityContext()
   {
-    return this.orj.bPf();
+    return this.mProxyUI.getActivityContext();
   }
   
-  public final boolean bPg()
+  public AppBrandTaskProxyUI getAppBrandTaskProxyUI()
   {
-    if (this.orj == null) {
-      return true;
-    }
-    return this.orj.bPg();
-  }
-  
-  public final AppBrandTaskProxyUI bPl()
-  {
-    if ((this.orj instanceof AppBrandTaskProxyUI)) {
-      return (AppBrandTaskProxyUI)this.orj;
+    if ((this.mProxyUI instanceof AppBrandTaskProxyUI)) {
+      return (AppBrandTaskProxyUI)this.mProxyUI;
     }
     return null;
   }
   
-  protected void bPm() {}
-  
-  public void d(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  protected void u(int[] paramArrayOfInt) {}
-  
-  public static class DefaultProcessResult
-    extends AppBrandProxyUIProcessTask.ProcessResult
+  public final String getString(int paramInt)
   {
-    public static final Parcelable.Creator<DefaultProcessResult> CREATOR;
+    return MMApplicationContext.getResources().getString(paramInt);
+  }
+  
+  protected abstract void handleRequest(ProcessRequest paramProcessRequest);
+  
+  public final boolean isProcessTerminated()
+  {
+    if (this.mProxyUI == null) {
+      return true;
+    }
+    return this.mProxyUI.isProcessTerminated();
+  }
+  
+  public void mmOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  protected boolean onInterceptFinishActivityAction()
+  {
+    return false;
+  }
+  
+  protected void onProcessInterrupted() {}
+  
+  protected void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  protected final void runOnUiThread(Runnable paramRunnable)
+  {
+    if (this.mProxyUI == null) {
+      return;
+    }
+    this.mProxyUI.runOnUiThread(paramRunnable);
+  }
+  
+  public final void sendResult(AppBrandProxyUIProcessTask.ProcessResult paramProcessResult)
+  {
+    if (this.mProxyUI != null) {
+      this.mProxyUI.sendResult(paramProcessResult);
+    }
+  }
+  
+  protected final void startActivity(String paramString1, String paramString2)
+  {
+    c.ai(getActivityContext(), paramString1, paramString2);
+  }
+  
+  public final void startActivityForResult(Intent paramIntent, int paramInt)
+  {
+    getActivityContext().mmSetOnActivityResultCallback(this);
+    getActivityContext().startActivityForResult(paramIntent, paramInt);
+  }
+  
+  public final void startActivityForResult(String paramString1, String paramString2, Intent paramIntent, int paramInt)
+  {
+    getActivityContext().mmSetOnActivityResultCallback(this);
+    c.b(getActivityContext(), paramString1, paramString2, paramIntent, paramInt);
+  }
+  
+  public static abstract class ProcessRequest
+    implements Parcelable
+  {
+    public ProcessRequest() {}
     
-    static
+    public ProcessRequest(Parcel paramParcel)
     {
-      AppMethodBeat.i(276974);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(276974);
+      readParcel(paramParcel);
     }
     
     public int describeContents()
@@ -81,32 +132,68 @@ public abstract class AppBrandProxyUIProcessTask
       return 0;
     }
     
-    protected final void k(Parcel paramParcel) {}
+    protected int getStartActivityRequestCode()
+    {
+      return -1;
+    }
+    
+    protected abstract Class<? extends AppBrandProxyUIProcessTask> getTaskClass();
+    
+    protected String getUIAlias()
+    {
+      return null;
+    }
+    
+    protected boolean needParams()
+    {
+      return true;
+    }
+    
+    protected boolean oneShotForeground()
+    {
+      return false;
+    }
+    
+    protected void readParcel(Parcel paramParcel) {}
+    
+    protected boolean useLandscape()
+    {
+      return false;
+    }
     
     public void writeToParcel(Parcel paramParcel, int paramInt) {}
   }
   
-  public static abstract class ProcessResult
-    implements Parcelable
+  static final class a
   {
-    public ProcessResult() {}
-    
-    public ProcessResult(Parcel paramParcel)
+    static <_Model extends AppBrandProxyUIProcessTask> _Model ZE(String paramString)
     {
-      k(paramParcel);
+      AppMethodBeat.i(45413);
+      try
+      {
+        Object localObject = Class.forName(paramString).getDeclaredConstructor(new Class[0]);
+        ((Constructor)localObject).setAccessible(true);
+        localObject = (AppBrandProxyUIProcessTask)((Constructor)localObject).newInstance(new Object[0]);
+        AppMethodBeat.o(45413);
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.AppBrand.IpcProxyUIModelFactory", "create mode object using className(%s), exp = %s", new Object[] { paramString, Util.stackTraceToString(localException) });
+        AppMethodBeat.o(45413);
+      }
+      return null;
     }
-    
-    protected abstract void k(Parcel paramParcel);
   }
   
   public static abstract interface b<R extends AppBrandProxyUIProcessTask.ProcessResult>
   {
-    public abstract void a(R paramR);
+    public abstract void onReceiveResult(R paramR);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask
  * JD-Core Version:    0.7.0.1
  */

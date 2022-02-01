@@ -7,39 +7,35 @@ import java.lang.reflect.Method;
 
 final class c
 {
-  static final int axO;
-  private static final Method axP;
+  static final int ctD;
+  private static final Method ctE;
   
   static
   {
-    AppMethodBeat.i(201719);
+    AppMethodBeat.i(207760);
     try
     {
-      axO = ((Integer)Canvas.class.getField("MATRIX_SAVE_FLAG").get(null)).intValue();
-      axP = Canvas.class.getMethod("save", new Class[] { Integer.TYPE });
-      AppMethodBeat.o(201719);
+      ctD = ((Integer)Canvas.class.getField("MATRIX_SAVE_FLAG").get(null)).intValue();
+      ctE = Canvas.class.getMethod("save", new Class[] { Integer.TYPE });
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(201719);
-      throw localThrowable;
+      AppMethodBeat.o(207760);
     }
   }
   
-  static void c(Canvas paramCanvas, int paramInt)
+  static void d(Canvas paramCanvas, int paramInt)
   {
-    AppMethodBeat.i(201716);
+    AppMethodBeat.i(207754);
     try
     {
-      axP.invoke(paramCanvas, new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(201716);
+      ctE.invoke(paramCanvas, new Object[] { Integer.valueOf(paramInt) });
       return;
     }
-    catch (Throwable paramCanvas)
+    finally
     {
-      AppMethodBeat.o(201716);
-      throw paramCanvas;
+      AppMethodBeat.o(207754);
     }
   }
 }

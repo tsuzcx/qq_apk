@@ -8,7 +8,7 @@ import java.util.List;
 public final class c
   implements AutoCloseable
 {
-  public NativeInterpreterWrapper abMs;
+  public NativeInterpreterWrapper ajZm;
   
   public c(ByteBuffer paramByteBuffer)
   {
@@ -17,25 +17,25 @@ public final class c
   
   private c(ByteBuffer paramByteBuffer, byte paramByte)
   {
-    AppMethodBeat.i(239985);
-    this.abMs = new NativeInterpreterWrapper(paramByteBuffer);
-    AppMethodBeat.o(239985);
+    AppMethodBeat.i(187247);
+    this.ajZm = new NativeInterpreterWrapper(paramByteBuffer);
+    AppMethodBeat.o(187247);
   }
   
   public final void close()
   {
-    AppMethodBeat.i(239987);
-    if (this.abMs != null)
+    AppMethodBeat.i(187254);
+    if (this.ajZm != null)
     {
-      this.abMs.close();
-      this.abMs = null;
+      this.ajZm.close();
+      this.ajZm = null;
     }
-    AppMethodBeat.o(239987);
+    AppMethodBeat.o(187254);
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(239989);
+    AppMethodBeat.i(187262);
     try
     {
       close();
@@ -44,44 +44,44 @@ public final class c
     finally
     {
       super.finalize();
-      AppMethodBeat.o(239989);
+      AppMethodBeat.o(187262);
     }
   }
   
-  public final void isP()
+  public final void kcl()
   {
-    AppMethodBeat.i(239990);
-    if (this.abMs == null)
+    AppMethodBeat.i(187267);
+    if (this.ajZm == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Internal error: The Interpreter has already been closed.");
-      AppMethodBeat.o(239990);
+      AppMethodBeat.o(187267);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(239990);
+    AppMethodBeat.o(187267);
   }
   
   public static final class a
   {
-    final List<b> aaLF;
-    int abMt;
-    Boolean abMu;
-    Boolean abMv;
-    Boolean abMw;
-    Boolean abMx;
-    Boolean abMy;
+    final List<b> aiIp;
+    Boolean ajZn;
+    Boolean ajZo;
+    Boolean ajZp;
+    Boolean ajZq;
+    Boolean ajZr;
+    int numThreads;
     
     public a()
     {
-      AppMethodBeat.i(239126);
-      this.abMt = -1;
-      this.aaLF = new ArrayList();
-      AppMethodBeat.o(239126);
+      AppMethodBeat.i(187237);
+      this.numThreads = -1;
+      this.aiIp = new ArrayList();
+      AppMethodBeat.o(187237);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.tensorflow.lite.c
  * JD-Core Version:    0.7.0.1
  */

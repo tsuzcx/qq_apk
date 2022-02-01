@@ -1,62 +1,66 @@
 package com.tencent.mm.ui.chatting.i;
 
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.protocal.protobuf.flr;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.chatting.d.ag;
-import com.tencent.mm.ui.chatting.d.ah;
-import java.util.HashMap;
+import com.tencent.mm.storage.cc;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/report/ChatTagSearchSpanClickReportFlow;", "", "()V", "Companion", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public HashMap<Class<? extends ag>, ag> WYH;
-  private com.tencent.mm.ui.chatting.e.a fgR;
+  private static final String TAG;
+  public static final a aeJh;
   
-  public a(com.tencent.mm.ui.chatting.e.a parama)
+  static
   {
-    AppMethodBeat.i(36433);
-    this.WYH = new HashMap();
-    this.fgR = parama;
-    AppMethodBeat.o(36433);
+    AppMethodBeat.i(253976);
+    aeJh = new a((byte)0);
+    TAG = "MicroMsg.Chatting.ChatTagSearchSpanClickReportFlow";
+    AppMethodBeat.o(253976);
   }
   
-  public final void a(Class<? extends ag> paramClass, ag paramag)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/report/ChatTagSearchSpanClickReportFlow$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "bindDataToWidget", "", "widget", "Landroid/view/View;", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "isGroupChat", "", "userName", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    AppMethodBeat.i(36435);
-    if (this.WYH.put(paramClass, paramag) != null) {
-      Log.w("MicroMsg.ChattingComponentManager", "[register] %s has register", new Object[] { paramClass });
-    }
-    if ((paramag instanceof ah))
+    public static void a(View paramView, cc paramcc, boolean paramBoolean, String paramString)
     {
-      long l1 = System.currentTimeMillis();
-      ((ah)paramag).a(this.fgR);
-      long l2 = System.currentTimeMillis();
-      Log.i("MicroMsg.ChattingComponentManager", "[install] listener:%s cost:%sms", new Object[] { paramag.getClass().getName(), Long.valueOf(l2 - l1) });
+      AppMethodBeat.i(253991);
+      s.u(paramcc, "msg");
+      Log.i(a.access$getTAG$cp(), s.X("bindDataToWidget widget:", paramView));
+      flr localflr;
+      if (paramView != null)
+      {
+        localflr = new flr();
+        localflr.YKq = paramcc.field_msgSvrId;
+        if (!paramBoolean) {
+          break label108;
+        }
+      }
+      label108:
+      for (int i = 2;; i = 1)
+      {
+        localflr.abMf = i;
+        if (paramBoolean) {
+          paramString = paramcc.field_talker;
+        }
+        localflr.abMg = paramString;
+        localflr.YKn = paramcc.getCreateTime();
+        localflr.abMh = 0;
+        paramcc = com.tencent.mm.plugin.secdata.ui.a.PlI;
+        com.tencent.mm.plugin.secdata.ui.a.a.a(paramView, (com.tencent.mm.bx.a)localflr);
+        AppMethodBeat.o(253991);
+        return;
+      }
     }
-    AppMethodBeat.o(36435);
-  }
-  
-  public final <T extends ag, V extends Class<T>> T bC(V paramV)
-  {
-    AppMethodBeat.i(36434);
-    if (!paramV.isInterface())
-    {
-      paramV = new RuntimeException("[get] " + paramV + " is not a interface!");
-      AppMethodBeat.o(36434);
-      throw paramV;
-    }
-    if (this.WYH.containsKey(paramV))
-    {
-      paramV = (ag)this.WYH.get(paramV);
-      AppMethodBeat.o(36434);
-      return paramV;
-    }
-    AppMethodBeat.o(36434);
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.i.a
  * JD-Core Version:    0.7.0.1
  */

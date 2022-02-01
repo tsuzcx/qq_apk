@@ -12,8 +12,8 @@ final class SettingsPersonalInfoUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(74303);
-    this.JiU.hideVKB();
-    this.JiU.finish();
+    this.Pvn.hideVKB();
+    this.Pvn.finish();
     AppMethodBeat.o(74303);
     return true;
   }

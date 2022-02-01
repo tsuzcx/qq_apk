@@ -25,71 +25,71 @@ public class MarkerManager
   
   public MarkerManager(TencentMap paramTencentMap)
   {
-    AppMethodBeat.i(246926);
+    AppMethodBeat.i(217635);
     this.b = new HashMap();
     this.c = new HashMap();
     this.a = paramTencentMap;
-    AppMethodBeat.o(246926);
+    AppMethodBeat.o(217635);
   }
   
   public Collection a()
   {
-    AppMethodBeat.i(246927);
+    AppMethodBeat.i(217656);
     Collection localCollection = new Collection();
-    AppMethodBeat.o(246927);
+    AppMethodBeat.o(217656);
     return localCollection;
   }
   
   public boolean a(Marker paramMarker)
   {
-    AppMethodBeat.i(246931);
+    AppMethodBeat.i(217686);
     Collection localCollection = (Collection)this.c.get(paramMarker);
     if ((localCollection != null) && (localCollection.a(paramMarker)))
     {
-      AppMethodBeat.o(246931);
+      AppMethodBeat.o(217686);
       return true;
     }
-    AppMethodBeat.o(246931);
+    AppMethodBeat.o(217686);
     return false;
   }
   
   public View getInfoWindow(Marker paramMarker)
   {
-    AppMethodBeat.i(246928);
+    AppMethodBeat.i(217665);
     Collection localCollection = (Collection)this.c.get(paramMarker);
     if ((localCollection != null) && (Collection.a(localCollection) != null))
     {
       paramMarker = Collection.a(localCollection).getInfoWindow(paramMarker);
-      AppMethodBeat.o(246928);
+      AppMethodBeat.o(217665);
       return paramMarker;
     }
-    AppMethodBeat.o(246928);
+    AppMethodBeat.o(217665);
     return null;
   }
   
   public void onInfoWindowClick(Marker paramMarker)
   {
-    AppMethodBeat.i(246929);
+    AppMethodBeat.i(217677);
     Collection localCollection = (Collection)this.c.get(paramMarker);
     if ((localCollection != null) && (Collection.b(localCollection) != null)) {
       Collection.b(localCollection).onInfoWindowClick(paramMarker);
     }
-    AppMethodBeat.o(246929);
+    AppMethodBeat.o(217677);
   }
   
   public void onInfoWindowDettached(Marker paramMarker, View paramView) {}
   
   public boolean onMarkerClick(Marker paramMarker)
   {
-    AppMethodBeat.i(246930);
+    AppMethodBeat.i(217683);
     Collection localCollection = (Collection)this.c.get(paramMarker);
     if ((localCollection != null) && (Collection.c(localCollection) != null))
     {
       boolean bool = Collection.c(localCollection).onMarkerClick(paramMarker);
-      AppMethodBeat.o(246930);
+      AppMethodBeat.o(217683);
       return bool;
     }
-    AppMethodBeat.o(246930);
+    AppMethodBeat.o(217683);
     return false;
   }
   
@@ -102,24 +102,24 @@ public class MarkerManager
     
     public Collection()
     {
-      AppMethodBeat.i(247331);
+      AppMethodBeat.i(217623);
       this.b = new HashSet();
-      AppMethodBeat.o(247331);
+      AppMethodBeat.o(217623);
     }
     
     public Marker a(MarkerOptions paramMarkerOptions)
     {
-      AppMethodBeat.i(247333);
+      AppMethodBeat.i(217641);
       paramMarkerOptions = MarkerManager.a(MarkerManager.this).addMarker(paramMarkerOptions);
       this.b.add(paramMarkerOptions);
       MarkerManager.b(MarkerManager.this).put(paramMarkerOptions, this);
-      AppMethodBeat.o(247333);
+      AppMethodBeat.o(217641);
       return paramMarkerOptions;
     }
     
     public void a()
     {
-      AppMethodBeat.i(247336);
+      AppMethodBeat.i(217661);
       Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
@@ -128,7 +128,7 @@ public class MarkerManager
         MarkerManager.b(MarkerManager.this).remove(localMarker);
       }
       this.b.clear();
-      AppMethodBeat.o(247336);
+      AppMethodBeat.o(217661);
     }
     
     public void a(TencentMap.InfoWindowAdapter paramInfoWindowAdapter)
@@ -148,30 +148,30 @@ public class MarkerManager
     
     public boolean a(Marker paramMarker)
     {
-      AppMethodBeat.i(247335);
+      AppMethodBeat.i(217652);
       if (this.b.remove(paramMarker))
       {
         MarkerManager.b(MarkerManager.this).remove(paramMarker);
         paramMarker.remove();
-        AppMethodBeat.o(247335);
+        AppMethodBeat.o(217652);
         return true;
       }
-      AppMethodBeat.o(247335);
+      AppMethodBeat.o(217652);
       return false;
     }
     
     public Collection<Marker> getMarkers()
     {
-      AppMethodBeat.i(247338);
+      AppMethodBeat.i(217669);
       Collection localCollection = Collections.unmodifiableCollection(this.b);
-      AppMethodBeat.o(247338);
+      AppMethodBeat.o(217669);
       return localCollection;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.MarkerManager
  * JD-Core Version:    0.7.0.1
  */

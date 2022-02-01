@@ -1,82 +1,81 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class eez
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<dnq> ufO;
-  
-  public eez()
-  {
-    AppMethodBeat.i(153297);
-    this.ufO = new LinkedList();
-    AppMethodBeat.o(153297);
-  }
+  public String IGU;
+  public int vgN;
+  public int vhJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(153298);
+    AppMethodBeat.i(259733);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.ufO);
-      AppMethodBeat.o(153298);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.a.c(1, 8, this.ufO);
-      AppMethodBeat.o(153298);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.ufO.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.IGU != null) {
+        paramVarArgs.g(1, this.IGU);
       }
-      AppMethodBeat.o(153298);
+      paramVarArgs.bS(2, this.vgN);
+      paramVarArgs.bS(3, this.vhJ);
+      AppMethodBeat.o(259733);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.IGU == null) {
+        break label302;
+      }
+    }
+    label302:
+    for (paramInt = i.a.a.b.b.a.h(1, this.IGU) + 0;; paramInt = 0)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
-      eez localeez = (eez)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      int i = i.a.a.b.b.a.cJ(2, this.vgN);
+      int j = i.a.a.b.b.a.cJ(3, this.vhJ);
+      AppMethodBeat.o(259733);
+      return paramInt + i + j;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(153298);
-        return -1;
-      }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        dnq localdnq = new dnq();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localdnq.parseFrom((byte[])localObject);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
-        localeez.ufO.add(localdnq);
-        paramInt += 1;
+        AppMethodBeat.o(259733);
+        return 0;
       }
-      AppMethodBeat.o(153298);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        eez localeez = (eez)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(259733);
+          return -1;
+        case 1: 
+          localeez.IGU = locala.ajGk.readString();
+          AppMethodBeat.o(259733);
+          return 0;
+        case 2: 
+          localeez.vgN = locala.ajGk.aar();
+          AppMethodBeat.o(259733);
+          return 0;
+        }
+        localeez.vhJ = locala.ajGk.aar();
+        AppMethodBeat.o(259733);
+        return 0;
+      }
+      AppMethodBeat.o(259733);
+      return -1;
     }
-    AppMethodBeat.o(153298);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.eez
  * JD-Core Version:    0.7.0.1
  */

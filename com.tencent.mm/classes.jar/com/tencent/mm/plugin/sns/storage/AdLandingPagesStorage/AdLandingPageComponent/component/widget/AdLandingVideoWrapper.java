@@ -13,6 +13,7 @@ import com.tencent.mm.modelvideo.AdLandingMMVideoView;
 import com.tencent.mm.modelvideo.FullScreenMMVideoView;
 import com.tencent.mm.modelvideo.MMVideoView;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.k;
 import com.tencent.mm.pluginsdk.ui.CommonVideoView;
 import com.tencent.mm.pluginsdk.ui.i;
 import com.tencent.mm.pluginsdk.ui.i.a;
@@ -26,26 +27,27 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.thumbplayer.api.ITPPlayer;
 
 public class AdLandingVideoWrapper
   extends RelativeLayout
   implements d.a, i, i.a, i.b, i.c
 {
-  private boolean AJP;
-  private i.e HKU;
-  private i Kuv;
-  private a Kuw;
-  public MTimerHandler Kux;
-  private boolean bjq;
-  private boolean fEF;
-  private boolean lhf;
+  private boolean Flq;
+  private i.e NHS;
+  private i QTf;
+  private AdLandingVideoWrapper.a QTg;
+  public MTimerHandler QTh;
+  private boolean ddk;
+  private boolean hJv;
   private Context mContext;
-  private float pvh;
-  private int pvi;
-  private com.tencent.mm.pluginsdk.ui.h sUd;
-  private i.b sUh;
-  private d sUi;
+  private boolean nLP;
+  private float sAn;
+  private int sAo;
   private String url;
+  private com.tencent.mm.pluginsdk.ui.h vZr;
+  private i.b vZv;
+  private d vZw;
   
   public AdLandingVideoWrapper(Context paramContext)
   {
@@ -61,11 +63,11 @@ public class AdLandingVideoWrapper
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(96831);
-    this.HKU = i.e.RcG;
-    this.lhf = false;
-    this.pvh = -1.0F;
-    this.AJP = false;
-    this.Kux = new MTimerHandler(new MTimerHandler.CallBack()
+    this.NHS = i.e.XYM;
+    this.nLP = false;
+    this.sAn = -1.0F;
+    this.Flq = false;
+    this.QTh = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -76,18 +78,18 @@ public class AdLandingVideoWrapper
           return false;
         }
         if ((AdLandingVideoWrapper.b(AdLandingVideoWrapper.this) != null) && (AdLandingVideoWrapper.a(AdLandingVideoWrapper.this).isPlaying())) {
-          AdLandingVideoWrapper.b(AdLandingVideoWrapper.this).AS(AdLandingVideoWrapper.a(AdLandingVideoWrapper.this).getCurrPosSec());
+          AdLandingVideoWrapper.b(AdLandingVideoWrapper.this).Bh(AdLandingVideoWrapper.a(AdLandingVideoWrapper.this).getCurrPosSec());
         }
         AppMethodBeat.o(96830);
         return true;
       }
     }, true);
     this.mContext = paramContext;
-    this.sUi = d.bcs();
+    this.vZw = new d();
     AppMethodBeat.o(96831);
   }
   
-  private i exM()
+  private i fFI()
   {
     AppMethodBeat.i(96833);
     CommonVideoView localCommonVideoView = new CommonVideoView(this.mContext);
@@ -97,14 +99,14 @@ public class AdLandingVideoWrapper
     return localCommonVideoView;
   }
   
-  private i exN()
+  private i fFJ()
   {
     AppMethodBeat.i(96834);
     AdLandingMMVideoView localAdLandingMMVideoView = new AdLandingMMVideoView(this.mContext);
     localAdLandingMMVideoView.setReporter(this);
     localAdLandingMMVideoView.setIMMVideoViewCallback(this);
     localAdLandingMMVideoView.setIMMDownloadFinish(this);
-    String str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.fSq();
+    String str = k.hkC();
     FilePathGenerator.checkMkdir(str);
     localAdLandingMMVideoView.setRootPath(str);
     localAdLandingMMVideoView.setIOnlineVideoProxy(new a());
@@ -112,56 +114,175 @@ public class AdLandingVideoWrapper
     return localAdLandingMMVideoView;
   }
   
-  private boolean exP()
+  private boolean fFL()
   {
-    return (this.bjq) || (this.fEF);
+    return (this.ddk) || (this.hJv);
   }
   
-  private i fRH()
+  private i hjM()
   {
-    AppMethodBeat.i(194447);
+    AppMethodBeat.i(307264);
     try
     {
       FullScreenMMVideoView localFullScreenMMVideoView1 = new FullScreenMMVideoView(this.mContext);
       localFullScreenMMVideoView1.setReporter(this);
       localFullScreenMMVideoView1.setIMMVideoViewCallback(this);
       localFullScreenMMVideoView1.setIMMDownloadFinish(this);
-      String str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.fSq();
+      String str = k.hkC();
       FilePathGenerator.checkMkdir(str);
       localFullScreenMMVideoView1.setRootPath(str);
       localFullScreenMMVideoView1.setIOnlineVideoProxy(new a());
-      AppMethodBeat.o(194447);
+      AppMethodBeat.o(307264);
       return localFullScreenMMVideoView1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      Log.e("MicroMsg.AdLandingVideoWrapper", localThrowable.toString());
+      Log.e("MicroMsg.AdLandingVideoWrapper", localObject.toString());
       FullScreenMMVideoView localFullScreenMMVideoView2 = new FullScreenMMVideoView(this.mContext);
-      AppMethodBeat.o(194447);
+      AppMethodBeat.o(307264);
       return localFullScreenMMVideoView2;
     }
   }
   
-  public final void EW(long paramLong)
-  {
-    AppMethodBeat.i(96869);
-    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(600L, paramLong, 1L, false);
-    AppMethodBeat.o(96869);
-  }
-  
-  public final void KP(String paramString)
+  public final void Du(String paramString)
   {
     AppMethodBeat.i(96870);
-    com.tencent.mm.plugin.report.service.h.IzE.kvStat(14349, paramString);
+    com.tencent.mm.plugin.report.service.h.OAn.kvStat(14349, paramString);
     AppMethodBeat.o(96870);
   }
   
-  public final boolean a(double paramDouble, boolean paramBoolean)
+  public final boolean G(double paramDouble)
+  {
+    AppMethodBeat.i(96839);
+    if (this.QTf != null)
+    {
+      boolean bool = this.QTf.G(paramDouble);
+      AppMethodBeat.o(96839);
+      return bool;
+    }
+    AppMethodBeat.o(96839);
+    return false;
+  }
+  
+  public final void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    j = 1;
+    i = 1;
+    AppMethodBeat.i(96832);
+    this.sAo = paramInt;
+    this.ddk = paramBoolean;
+    PString localPString = new PString();
+    localPString.value = paramString;
+    if ((!Util.isNullOrNil(localPString.value)) && (localPString.value.indexOf("file://") == 0))
+    {
+      localPString.value = localPString.value.substring(7);
+      paramBoolean = true;
+      this.hJv = paramBoolean;
+      this.url = localPString.value;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.QTf != null) {
+          continue;
+        }
+        if (!fFL()) {
+          continue;
+        }
+        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use common video view !", new Object[] { Integer.valueOf(hashCode()) });
+        this.QTf = fFI();
+        paramInt = i;
+      }
+      finally
+      {
+        paramInt = 0;
+        Log.e("MicroMsg.AdLandingVideoWrapper", paramString.toString());
+        continue;
+        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use mm video view !", new Object[] { Integer.valueOf(hashCode()) });
+        this.QTf = fFJ();
+        paramInt = i;
+        continue;
+        if (!fFL()) {
+          continue;
+        }
+        if (!(this.QTf instanceof MMVideoView)) {
+          continue;
+        }
+        this.QTf.stop();
+        this.QTf.eLM();
+        removeView((View)this.QTf);
+        try
+        {
+          Log.i("MicroMsg.AdLandingVideoWrapper", "%d use common video view !", new Object[] { Integer.valueOf(hashCode()) });
+          this.QTf = fFI();
+          paramInt = i;
+          continue;
+        }
+        finally
+        {
+          paramInt = j;
+        }
+        continue;
+        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use last common video view !", new Object[] { Integer.valueOf(hashCode()) });
+        this.QTf.stop();
+        paramInt = 0;
+        continue;
+        if (!(this.QTf instanceof CommonVideoView)) {
+          continue;
+        }
+        if (!this.Flq) {
+          continue;
+        }
+        this.QTf.stop();
+        this.QTf.eLM();
+        removeView((View)this.QTf);
+        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use full screen mm video view !", new Object[] { Integer.valueOf(hashCode()) });
+        this.QTf = hjM();
+        paramInt = i;
+        continue;
+        this.QTf.stop();
+        this.QTf.eLM();
+        removeView((View)this.QTf);
+        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use mm video view !", new Object[] { Integer.valueOf(hashCode()) });
+        this.QTf = fFJ();
+        paramInt = i;
+        continue;
+        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use last mm video view !", new Object[] { Integer.valueOf(hashCode()) });
+        this.QTf.stop();
+        paramInt = 0;
+        continue;
+      }
+      setScaleType(this.NHS);
+      bM(this.sAn);
+      setMute(this.nLP);
+      if (paramInt != 0)
+      {
+        setVideoFooterView(this.vZr);
+        paramString = new RelativeLayout.LayoutParams(-1, -2);
+        paramString.addRule(13);
+        addView((View)this.QTf, paramString);
+      }
+      this.QTf.b(this.ddk, this.url, this.sAo);
+      AppMethodBeat.o(96832);
+      return;
+      paramBoolean = false;
+      break;
+      if (!this.Flq) {
+        continue;
+      }
+      Log.i("MicroMsg.AdLandingVideoWrapper", "%d use full screen mm video  view !", new Object[] { Integer.valueOf(hashCode()) });
+      this.QTf = hjM();
+      paramInt = i;
+    }
+  }
+  
+  public final boolean b(double paramDouble, boolean paramBoolean)
   {
     AppMethodBeat.i(96840);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
-      paramBoolean = this.Kuv.a(paramDouble, paramBoolean);
+      paramBoolean = this.QTf.b(paramDouble, paramBoolean);
       AppMethodBeat.o(96840);
       return paramBoolean;
     }
@@ -169,7 +290,15 @@ public class AdLandingVideoWrapper
     return false;
   }
   
-  public final boolean aO(float paramFloat)
+  public final void bAi() {}
+  
+  public final void bAj() {}
+  
+  public final void bAk() {}
+  
+  public final void bAl() {}
+  
+  public final boolean bM(float paramFloat)
   {
     AppMethodBeat.i(96858);
     if (paramFloat <= 0.0F)
@@ -177,10 +306,10 @@ public class AdLandingVideoWrapper
       AppMethodBeat.o(96858);
       return false;
     }
-    this.pvh = paramFloat;
-    if (this.Kuv != null)
+    this.sAn = paramFloat;
+    if (this.QTf != null)
     {
-      boolean bool = this.Kuv.aO(this.pvh);
+      boolean bool = this.QTf.bM(this.sAn);
       AppMethodBeat.o(96858);
       return bool;
     }
@@ -188,242 +317,114 @@ public class AdLandingVideoWrapper
     return false;
   }
   
-  public final void aR(String paramString, boolean paramBoolean)
+  public final void bd(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(96859);
     Log.i("MicroMsg.AdLandingVideoWrapper", "%d onDownloadFinish path [%s] isPlayNow [%b]", new Object[] { Integer.valueOf(hashCode()), paramString, Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(96859);
   }
   
-  public final void bcu() {}
-  
-  public final void bcv() {}
-  
-  public final void bcw() {}
-  
-  public final void bcx() {}
-  
-  public final void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public final void d(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(96860);
     Log.w("MicroMsg.AdLandingVideoWrapper", "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.sUh != null) {
-      this.sUh.c(paramString1, paramString2, paramString3, paramInt1, paramInt2);
+    if (this.vZv != null) {
+      this.vZv.d(paramString1, paramString2, paramString3, paramInt1, paramInt2);
     }
-    com.tencent.mm.plugin.report.service.h.IzE.el(955, 36);
+    com.tencent.mm.plugin.report.service.h.OAn.kJ(955, 36);
     AppMethodBeat.o(96860);
   }
   
-  public final void c(boolean paramBoolean, String paramString, int paramInt)
-  {
-    j = 1;
-    i = 1;
-    AppMethodBeat.i(96832);
-    this.pvi = paramInt;
-    this.bjq = paramBoolean;
-    PString localPString = new PString();
-    localPString.value = paramString;
-    if ((!Util.isNullOrNil(localPString.value)) && (localPString.value.indexOf("file://") == 0))
-    {
-      localPString.value = localPString.value.substring(7);
-      paramBoolean = true;
-      this.fEF = paramBoolean;
-      this.url = localPString.value;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.Kuv != null) {
-          continue;
-        }
-        if (!exP()) {
-          continue;
-        }
-        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use common video view !", new Object[] { Integer.valueOf(hashCode()) });
-        this.Kuv = exM();
-        paramInt = i;
-      }
-      catch (Throwable paramString)
-      {
-        paramInt = 0;
-        Log.e("MicroMsg.AdLandingVideoWrapper", paramString.toString());
-        continue;
-        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use mm video view !", new Object[] { Integer.valueOf(hashCode()) });
-        this.Kuv = exN();
-        paramInt = i;
-        continue;
-        if (!exP()) {
-          continue;
-        }
-        if (!(this.Kuv instanceof MMVideoView)) {
-          continue;
-        }
-        this.Kuv.stop();
-        this.Kuv.egX();
-        removeView((View)this.Kuv);
-        try
-        {
-          Log.i("MicroMsg.AdLandingVideoWrapper", "%d use common video view !", new Object[] { Integer.valueOf(hashCode()) });
-          this.Kuv = exM();
-          paramInt = i;
-        }
-        catch (Throwable paramString)
-        {
-          paramInt = j;
-        }
-        continue;
-        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use last common video view !", new Object[] { Integer.valueOf(hashCode()) });
-        this.Kuv.stop();
-        paramInt = 0;
-        continue;
-        if (!(this.Kuv instanceof CommonVideoView)) {
-          continue;
-        }
-        if (!this.AJP) {
-          continue;
-        }
-        this.Kuv.stop();
-        this.Kuv.egX();
-        removeView((View)this.Kuv);
-        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use full screen mm video view !", new Object[] { Integer.valueOf(hashCode()) });
-        this.Kuv = fRH();
-        paramInt = i;
-        continue;
-        this.Kuv.stop();
-        this.Kuv.egX();
-        removeView((View)this.Kuv);
-        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use mm video view !", new Object[] { Integer.valueOf(hashCode()) });
-        this.Kuv = exN();
-        paramInt = i;
-        continue;
-        Log.i("MicroMsg.AdLandingVideoWrapper", "%d use last mm video view !", new Object[] { Integer.valueOf(hashCode()) });
-        this.Kuv.stop();
-        paramInt = 0;
-        continue;
-      }
-      setScaleType(this.HKU);
-      aO(this.pvh);
-      setMute(this.lhf);
-      if (paramInt != 0)
-      {
-        setVideoFooterView(this.sUd);
-        paramString = new RelativeLayout.LayoutParams(-1, -2);
-        paramString.addRule(13);
-        addView((View)this.Kuv, paramString);
-      }
-      this.Kuv.c(this.bjq, this.url, this.pvi);
-      AppMethodBeat.o(96832);
-      return;
-      paramBoolean = false;
-      break;
-      if (!this.AJP) {
-        continue;
-      }
-      Log.i("MicroMsg.AdLandingVideoWrapper", "%d use full screen mm video  view !", new Object[] { Integer.valueOf(hashCode()) });
-      this.Kuv = fRH();
-      paramInt = i;
-    }
-  }
-  
-  public final void d(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public final void e(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(96863);
     Log.i("MicroMsg.AdLandingVideoWrapper", "%d onGetVideoSize[%d %d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.sUh != null) {
-      this.sUh.d(paramString1, paramString2, paramInt1, paramInt2);
+    if (this.vZv != null) {
+      this.vZv.e(paramString1, paramString2, paramInt1, paramInt2);
     }
     AppMethodBeat.o(96863);
   }
   
-  public final void dS(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(96861);
-    Log.i("MicroMsg.AdLandingVideoWrapper", "%d onPrepared", new Object[] { Integer.valueOf(hashCode()) });
-    if (this.sUh != null) {
-      this.sUh.dS(paramString1, paramString2);
-    }
-    AppMethodBeat.o(96861);
-  }
-  
-  public final void dT(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(96862);
-    Log.i("MicroMsg.AdLandingVideoWrapper", "%d onVideoEnded", new Object[] { Integer.valueOf(hashCode()) });
-    if (this.sUh != null) {
-      this.sUh.dT(paramString1, paramString2);
-    }
-    com.tencent.mm.plugin.report.service.h.IzE.el(955, 35);
-    AppMethodBeat.o(96862);
-  }
-  
-  public final void dU(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(96864);
-    Log.d("MicroMsg.AdLandingVideoWrapper", "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
-    setKeepScreenOn(false);
-    this.sUi.fZ(false);
-    if (this.sUh != null) {
-      this.sUh.dU(paramString1, paramString2);
-    }
-    AppMethodBeat.o(96864);
-  }
-  
-  public final void dV(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(96865);
-    Log.d("MicroMsg.AdLandingVideoWrapper", "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
-    setKeepScreenOn(true);
-    this.sUi.a(this);
-    if (this.sUh != null) {
-      this.sUh.dV(paramString1, paramString2);
-    }
-    AppMethodBeat.o(96865);
-  }
-  
-  public final void dW(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(96866);
-    if (this.sUh != null) {
-      this.sUh.dW(paramString1, paramString2);
-    }
-    AppMethodBeat.o(96866);
-  }
-  
-  public final void dX(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(96867);
-    if (this.sUh != null) {
-      this.sUh.dX(paramString1, paramString2);
-    }
-    AppMethodBeat.o(96867);
-  }
-  
-  public final void egX()
+  public final void eLM()
   {
     AppMethodBeat.i(96837);
-    if (this.Kuv != null) {
-      this.Kuv.egX();
+    if (this.QTf != null) {
+      this.QTf.eLM();
     }
     AppMethodBeat.o(96837);
   }
   
-  public final void fC(String paramString1, String paramString2) {}
-  
-  public final void fRI()
+  public final void el(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(96835);
-    this.Kux.stopTimer();
-    this.Kux.startTimer(1000L);
-    AppMethodBeat.o(96835);
+    AppMethodBeat.i(96861);
+    Log.i("MicroMsg.AdLandingVideoWrapper", "%d onPrepared", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.vZv != null) {
+      this.vZv.el(paramString1, paramString2);
+    }
+    AppMethodBeat.o(96861);
   }
+  
+  public final void em(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(96862);
+    Log.i("MicroMsg.AdLandingVideoWrapper", "%d onVideoEnded", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.vZv != null) {
+      this.vZv.em(paramString1, paramString2);
+    }
+    com.tencent.mm.plugin.report.service.h.OAn.kJ(955, 35);
+    AppMethodBeat.o(96862);
+  }
+  
+  public final void en(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(96864);
+    Log.d("MicroMsg.AdLandingVideoWrapper", "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
+    setKeepScreenOn(false);
+    this.vZw.gR(false);
+    if (this.vZv != null) {
+      this.vZv.en(paramString1, paramString2);
+    }
+    AppMethodBeat.o(96864);
+  }
+  
+  public final void eo(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(96865);
+    Log.d("MicroMsg.AdLandingVideoWrapper", "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
+    setKeepScreenOn(true);
+    this.vZw.a(this);
+    if (this.vZv != null) {
+      this.vZv.eo(paramString1, paramString2);
+    }
+    AppMethodBeat.o(96865);
+  }
+  
+  public final void ep(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(96866);
+    if (this.vZv != null) {
+      this.vZv.ep(paramString1, paramString2);
+    }
+    AppMethodBeat.o(96866);
+  }
+  
+  public final void eq(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(96867);
+    if (this.vZv != null) {
+      this.vZv.eq(paramString1, paramString2);
+    }
+    AppMethodBeat.o(96867);
+  }
+  
+  public final void gE(String paramString1, String paramString2) {}
   
   public int getCacheTimeSec()
   {
     AppMethodBeat.i(96846);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
-      int i = this.Kuv.getCacheTimeSec();
+      int i = this.QTf.getCacheTimeSec();
       AppMethodBeat.o(96846);
       return i;
     }
@@ -434,9 +435,9 @@ public class AdLandingVideoWrapper
   public int getCurrPosMs()
   {
     AppMethodBeat.i(96844);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
-      int i = this.Kuv.getCurrPosMs();
+      int i = this.QTf.getCurrPosMs();
       AppMethodBeat.o(96844);
       return i;
     }
@@ -447,9 +448,9 @@ public class AdLandingVideoWrapper
   public int getCurrPosSec()
   {
     AppMethodBeat.i(96845);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
-      int i = this.Kuv.getCurrPosSec();
+      int i = this.QTf.getCurrPosSec();
       AppMethodBeat.o(96845);
       return i;
     }
@@ -461,15 +462,15 @@ public class AdLandingVideoWrapper
   {
     AppMethodBeat.i(176282);
     View localView;
-    if ((this.Kuv instanceof AdLandingMMVideoView))
+    if ((this.QTf instanceof AdLandingMMVideoView))
     {
-      localView = ((AdLandingMMVideoView)this.Kuv).getInnerVideoView();
+      localView = ((AdLandingMMVideoView)this.QTf).getInnerVideoView();
       AppMethodBeat.o(176282);
       return localView;
     }
-    if ((this.Kuv instanceof MMVideoView))
+    if ((this.QTf instanceof MMVideoView))
     {
-      localView = ((MMVideoView)this.Kuv).getInnerVideoView();
+      localView = ((MMVideoView)this.QTf).getInnerVideoView();
       AppMethodBeat.o(176282);
       return localView;
     }
@@ -480,9 +481,9 @@ public class AdLandingVideoWrapper
   public int getPlayerType()
   {
     AppMethodBeat.i(96838);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
-      int i = this.Kuv.getPlayerType();
+      int i = this.QTf.getPlayerType();
       AppMethodBeat.o(96838);
       return i;
     }
@@ -493,23 +494,38 @@ public class AdLandingVideoWrapper
   public int getVideoDurationSec()
   {
     AppMethodBeat.i(96843);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
-      i = this.Kuv.getVideoDurationSec();
+      i = this.QTf.getVideoDurationSec();
       AppMethodBeat.o(96843);
       return i;
     }
-    int i = this.pvi;
+    int i = this.sAo;
     AppMethodBeat.o(96843);
     return i;
+  }
+  
+  public final void hjN()
+  {
+    AppMethodBeat.i(96835);
+    this.QTh.stopTimer();
+    this.QTh.startTimer(1000L);
+    AppMethodBeat.o(96835);
+  }
+  
+  public final void hp(long paramLong)
+  {
+    AppMethodBeat.i(96869);
+    com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(600L, paramLong, 1L, false);
+    AppMethodBeat.o(96869);
   }
   
   public final boolean isLive()
   {
     AppMethodBeat.i(96848);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
-      boolean bool = this.Kuv.isLive();
+      boolean bool = this.QTf.isLive();
       AppMethodBeat.o(96848);
       return bool;
     }
@@ -520,9 +536,9 @@ public class AdLandingVideoWrapper
   public final boolean isPlaying()
   {
     AppMethodBeat.i(96847);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
-      boolean bool = this.Kuv.isPlaying();
+      boolean bool = this.QTf.isPlaying();
       AppMethodBeat.o(96847);
       return bool;
     }
@@ -530,13 +546,15 @@ public class AdLandingVideoWrapper
     return false;
   }
   
+  public final void onSeekComplete(ITPPlayer paramITPPlayer) {}
+  
   public final void onUIDestroy()
   {
     AppMethodBeat.i(96856);
-    if (this.Kuv != null) {
-      this.Kuv.onUIDestroy();
+    if (this.QTf != null) {
+      this.QTf.onUIDestroy();
     }
-    this.sUi.fZ(false);
+    this.vZw.gR(false);
     setKeepScreenOn(false);
     AppMethodBeat.o(96856);
   }
@@ -544,10 +562,10 @@ public class AdLandingVideoWrapper
   public final void onUIPause()
   {
     AppMethodBeat.i(96855);
-    if (this.Kuv != null) {
-      this.Kuv.onUIPause();
+    if (this.QTf != null) {
+      this.QTf.onUIPause();
     }
-    this.sUi.fZ(false);
+    this.vZw.gR(false);
     setKeepScreenOn(false);
     AppMethodBeat.o(96855);
   }
@@ -555,33 +573,20 @@ public class AdLandingVideoWrapper
   public final void onUIResume()
   {
     AppMethodBeat.i(96854);
-    if (this.Kuv != null) {
-      this.Kuv.onUIResume();
+    if (this.QTf != null) {
+      this.QTf.onUIResume();
     }
     AppMethodBeat.o(96854);
-  }
-  
-  public final boolean p(double paramDouble)
-  {
-    AppMethodBeat.i(96839);
-    if (this.Kuv != null)
-    {
-      boolean bool = this.Kuv.p(paramDouble);
-      AppMethodBeat.o(96839);
-      return bool;
-    }
-    AppMethodBeat.o(96839);
-    return false;
   }
   
   public final boolean pause()
   {
     AppMethodBeat.i(96852);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
       setKeepScreenOn(false);
-      this.sUi.fZ(false);
-      boolean bool = this.Kuv.pause();
+      this.vZw.gR(false);
+      boolean bool = this.QTf.pause();
       AppMethodBeat.o(96852);
       return bool;
     }
@@ -592,8 +597,8 @@ public class AdLandingVideoWrapper
   public void setCover(Bitmap paramBitmap)
   {
     AppMethodBeat.i(96849);
-    if (this.Kuv != null) {
-      this.Kuv.setCover(paramBitmap);
+    if (this.QTf != null) {
+      this.QTf.setCover(paramBitmap);
     }
     AppMethodBeat.o(96849);
   }
@@ -601,27 +606,27 @@ public class AdLandingVideoWrapper
   public void setFullDirection(int paramInt)
   {
     AppMethodBeat.i(96842);
-    if (this.Kuv != null) {
-      this.Kuv.setFullDirection(paramInt);
+    if (this.QTf != null) {
+      this.QTf.setFullDirection(paramInt);
     }
     AppMethodBeat.o(96842);
   }
   
   public void setFullScreen(boolean paramBoolean)
   {
-    this.AJP = paramBoolean;
+    this.Flq = paramBoolean;
   }
   
   public void setIMMVideoViewCallback(i.b paramb)
   {
-    this.sUh = paramb;
+    this.vZv = paramb;
   }
   
   public void setIsShowBasicControls(boolean paramBoolean)
   {
     AppMethodBeat.i(96841);
-    if (this.Kuv != null) {
-      this.Kuv.setIsShowBasicControls(paramBoolean);
+    if (this.QTf != null) {
+      this.QTf.setIsShowBasicControls(paramBoolean);
     }
     AppMethodBeat.o(96841);
   }
@@ -636,65 +641,65 @@ public class AdLandingVideoWrapper
   
   public void setLoop(boolean paramBoolean)
   {
-    AppMethodBeat.i(194495);
+    AppMethodBeat.i(307302);
     try
     {
-      if (this.Kuv != null) {
-        this.Kuv.setLoop(paramBoolean);
+      if (this.QTf != null) {
+        this.QTf.setLoop(paramBoolean);
       }
-      AppMethodBeat.o(194495);
+      AppMethodBeat.o(307302);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      Log.e("MicroMsg.AdLandingVideoWrapper", localThrowable.toString());
-      AppMethodBeat.o(194495);
+      Log.e("MicroMsg.AdLandingVideoWrapper", localObject.toString());
+      AppMethodBeat.o(307302);
     }
   }
   
   public void setLoopCompletionCallback(i.d paramd)
   {
-    AppMethodBeat.i(194497);
+    AppMethodBeat.i(307305);
     try
     {
-      if (this.Kuv != null) {
-        this.Kuv.setLoopCompletionCallback(paramd);
+      if (this.QTf != null) {
+        this.QTf.setLoopCompletionCallback(paramd);
       }
-      AppMethodBeat.o(194497);
+      AppMethodBeat.o(307305);
       return;
     }
-    catch (Throwable paramd)
+    finally
     {
       Log.e("MicroMsg.AdLandingVideoWrapper", paramd.toString());
-      AppMethodBeat.o(194497);
+      AppMethodBeat.o(307305);
     }
   }
   
   public void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(96853);
-    this.lhf = paramBoolean;
-    if (this.Kuv != null) {
-      this.Kuv.setMute(this.lhf);
+    this.nLP = paramBoolean;
+    if (this.QTf != null) {
+      this.QTf.setMute(this.nLP);
     }
     AppMethodBeat.o(96853);
   }
   
   public void setNeedPause(boolean paramBoolean)
   {
-    AppMethodBeat.i(194523);
-    if ((this.Kuv instanceof AdLandingMMVideoView)) {
-      ((AdLandingMMVideoView)this.Kuv).setNeedPause(paramBoolean);
+    AppMethodBeat.i(307388);
+    if ((this.QTf instanceof AdLandingMMVideoView)) {
+      ((AdLandingMMVideoView)this.QTf).setNeedPause(paramBoolean);
     }
-    AppMethodBeat.o(194523);
+    AppMethodBeat.o(307388);
   }
   
   public void setScaleType(i.e parame)
   {
     AppMethodBeat.i(96857);
-    this.HKU = parame;
-    if (this.Kuv != null) {
-      this.Kuv.setScaleType(this.HKU);
+    this.NHS = parame;
+    if (this.QTf != null) {
+      this.QTf.setScaleType(this.NHS);
     }
     AppMethodBeat.o(96857);
   }
@@ -702,26 +707,26 @@ public class AdLandingVideoWrapper
   public void setVideoFooterView(com.tencent.mm.pluginsdk.ui.h paramh)
   {
     AppMethodBeat.i(96836);
-    this.sUd = paramh;
-    if (this.Kuv != null) {
-      this.Kuv.setVideoFooterView(this.sUd);
+    this.vZr = paramh;
+    if (this.QTf != null) {
+      this.QTf.setVideoFooterView(this.vZr);
     }
     AppMethodBeat.o(96836);
   }
   
-  public void setVideoPlayCallback(a parama)
+  public void setVideoPlayCallback(AdLandingVideoWrapper.a parama)
   {
-    this.Kuw = parama;
+    this.QTg = parama;
   }
   
   public final void start()
   {
     AppMethodBeat.i(96850);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
-      this.Kuv.start();
+      this.QTf.start();
       setKeepScreenOn(true);
-      this.sUi.a(this);
+      this.vZw.a(this);
     }
     AppMethodBeat.o(96850);
   }
@@ -729,23 +734,18 @@ public class AdLandingVideoWrapper
   public final void stop()
   {
     AppMethodBeat.i(96851);
-    if (this.Kuv != null)
+    if (this.QTf != null)
     {
-      this.Kuv.stop();
-      this.sUi.fZ(false);
+      this.QTf.stop();
+      this.vZw.gR(false);
       setKeepScreenOn(false);
     }
     AppMethodBeat.o(96851);
   }
-  
-  public static abstract interface a
-  {
-    public abstract void AS(int paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper
  * JD-Core Version:    0.7.0.1
  */

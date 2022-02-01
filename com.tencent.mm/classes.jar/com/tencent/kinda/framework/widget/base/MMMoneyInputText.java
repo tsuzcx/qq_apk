@@ -1,7 +1,10 @@
 package com.tencent.kinda.framework.widget.base;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -13,7 +16,7 @@ import com.tencent.kinda.gen.KMoneyInputText;
 import com.tencent.kinda.gen.KMoneyInputTextOnTextChangedCallback;
 import com.tencent.kinda.gen.KMoneyInputTextOnkeyBoardVisibleAnchorCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.ui.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 public class MMMoneyInputText
@@ -35,12 +38,51 @@ public class MMMoneyInputText
     this.titleTv = ((TextView)this.contentView.findViewById(R.id.wallet_title));
     this.contentTv = ((TenpaySecureEditText)this.contentView.findViewById(R.id.wallet_content));
     this.contentTv.setBackgroundResource(R.drawable.mm_trans);
-    this.contentTv.setOnClickListener(new MMMoneyInputText.1(this, paramContext));
-    this.contentTv.addTextChangedListener(new MMMoneyInputText.2(this));
+    this.contentTv.setOnClickListener(new View.OnClickListener()
+    {
+      private byte _hellAccFlag_;
+      
+      public void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(19286);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/kinda/framework/widget/base/MMMoneyInputText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if ((paramContext instanceof BaseFrActivity)) {
+          ((BaseFrActivity)paramContext).hideTenpayKB();
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/kinda/framework/widget/base/MMMoneyInputText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(19286);
+      }
+    });
+    this.contentTv.addTextChangedListener(new TextWatcher()
+    {
+      public void afterTextChanged(Editable paramAnonymousEditable)
+      {
+        AppMethodBeat.i(19287);
+        if (paramAnonymousEditable.toString().startsWith(".")) {
+          paramAnonymousEditable.insert(0, "0");
+        }
+        String str = paramAnonymousEditable.toString();
+        int i = str.indexOf(".");
+        int j = str.length();
+        if ((i >= 0) && (j - i > 2)) {
+          paramAnonymousEditable.delete(i + 3, j);
+        }
+        if (MMMoneyInputText.this.textChangedCallback != null) {
+          MMMoneyInputText.this.textChangedCallback.onTextChanged(paramAnonymousEditable.toString());
+        }
+        AppMethodBeat.o(19287);
+      }
+      
+      public void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+      
+      public void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+    });
     if ((paramContext instanceof BaseFrActivity))
     {
       ((BaseFrActivity)paramContext).setEditFocusListener(this.contentView, 2, false);
-      ((BaseFrActivity)paramContext).setTenpayKBStateListener(new a()
+      ((BaseFrActivity)paramContext).setTenpayKBStateListener(new com.tencent.mm.wallet_core.ui.a()
       {
         public void onVisibleStateChange(boolean paramAnonymousBoolean)
         {
@@ -158,7 +200,7 @@ public class MMMoneyInputText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMMoneyInputText
  * JD-Core Version:    0.7.0.1
  */

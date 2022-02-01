@@ -1,134 +1,123 @@
 package com.tencent.mm.plugin.finder.feed;
 
+import android.content.Context;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.c;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.FinderItem.a;
-import com.tencent.mm.plugin.finder.storage.w;
-import com.tencent.mm.plugin.finder.storage.x;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bem;
-import com.tencent.mm.protocal.protobuf.ben;
-import com.tencent.mm.protocal.protobuf.bfl;
-import com.tencent.mm.protocal.protobuf.biv;
-import kotlin.f;
-import kotlin.l;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.findersdk.a.ap;
+import com.tencent.mm.plugin.g;
+import com.tencent.mm.plugin.g.a;
+import com.tencent.mm.protocal.protobuf.aub;
+import com.tencent.mm.protocal.protobuf.bcc;
+import com.tencent.mm.protocal.protobuf.bks;
+import com.tencent.mm.protocal.protobuf.bqy;
+import com.tencent.mm.protocal.protobuf.brr;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.UIComponent;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderMixFeedLogic;", "", "()V", "finderFeedToMixFeed", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "finderObjectToMixFeed", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "lbsToMixFeed", "lbsSection", "Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;", "localToMixFeed", "localPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "pack", "mixItemPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixItemPb;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderLiveFeedUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderLiveFeedUIC;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "TAG", "", "liveInfos", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/protocal/protobuf/FinderObjectAsyncLoadInfo;", "Lkotlin/collections/HashMap;", "getJoinLiveTips", "Lcom/tencent/mm/protocal/protobuf/FinderJoinLiveTips;", "objectId", "onCleared", "", "tryFetchPreloadInfo", "nonceId", "liveId", "context", "Landroid/content/Context;", "updateLiveInfo", "liveInfo", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ab
+  extends UIComponent
+  implements ap
 {
-  public static final ab xzy;
+  private final HashMap<Long, bqy> AWI;
+  private final String TAG;
   
-  static
+  public ab(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(290093);
-    xzy = new ab();
-    AppMethodBeat.o(290093);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(363156);
+    this.TAG = "FinderLiveFeedUIC";
+    this.AWI = new HashMap();
+    AppMethodBeat.o(363156);
   }
   
-  public static c a(bfl parambfl)
+  public final void a(final long paramLong1, String paramString, long paramLong2, Context paramContext)
   {
-    AppMethodBeat.i(290091);
-    kotlin.g.b.p.k(parambfl, "lbsSection");
-    Object localObject1 = new bem();
-    Object localObject2 = w.Ama;
-    ((bem)localObject1).dataType = w.dYN();
-    ((bem)localObject1).Alq = parambfl;
-    localObject2 = new w((bem)localObject1);
-    int i = ((w)localObject2).AlW.dataType;
-    parambfl = w.Ama;
-    if (i == w.dYN())
+    AppMethodBeat.i(363193);
+    Log.i(this.TAG, "tryFetchPreloadInfo objectId:" + paramLong1 + " nonceId:" + paramString + " context:" + paramContext);
+    Object localObject;
+    if (nw(paramLong1) == null)
     {
-      localObject1 = ((w)localObject2).AlW.Alq;
-      parambfl = (bfl)localObject1;
-      if (localObject1 == null) {
-        parambfl = new bfl();
+      ArrayList localArrayList = new ArrayList();
+      brr localbrr = new brr();
+      localbrr.object_id = paramLong1;
+      if (paramString != null) {
+        break label207;
       }
-      parambfl = new com.tencent.mm.plugin.finder.storage.p(parambfl);
-      ((w)localObject2).AlT = parambfl;
-      ((w)localObject2).AlU = null;
-      ((w)localObject2).zzV = null;
-      ((w)localObject2).viewType = (parambfl.dYG().MqM + 1000);
-      long l = ((Number)parambfl.xzz.getValue()).longValue();
-      parambfl = ((w)localObject2).AlT;
-      if (parambfl != null)
-      {
-        i = parambfl.hashCode();
-        ((w)localObject2).AlV = (i + l);
+      localObject = "";
+      localbrr.object_nonce_id = ((String)localObject);
+      localbrr.mMJ = paramLong2;
+      localObject = ah.aiuX;
+      localArrayList.add(localbrr);
+      localObject = h.ax(g.class);
+      s.s(localObject, "service(IFinderCommonLiveService::class.java)");
+      localObject = d.b((com.tencent.mm.vending.g.c)g.a.a((g)localObject, (List)localArrayList, 3, 0, null, null, 60).bFJ(), (kotlin.g.a.b)new a(this, paramLong1, paramString));
+      if (!(paramContext instanceof MMActivity)) {
+        break label213;
       }
     }
-    for (;;)
+    label207:
+    label213:
+    for (paramString = (MMActivity)paramContext;; paramString = null)
     {
-      parambfl = new c((w)localObject2);
-      AppMethodBeat.o(290091);
-      return parambfl;
-      i = 0;
+      if (paramString != null) {
+        ((com.tencent.mm.vending.g.c)localObject).b((com.tencent.mm.vending.e.b)paramString);
+      }
+      AppMethodBeat.o(363193);
+      return;
+      localObject = paramString;
       break;
-      parambfl = w.Ama;
-      if (i == w.dYO())
-      {
-        ((w)localObject2).AlT = null;
-        parambfl = FinderItem.Companion;
-        localObject1 = ((w)localObject2).AlW.xcx;
-        parambfl = (bfl)localObject1;
-        if (localObject1 == null) {
-          parambfl = new FinderObject();
-        }
-        parambfl = FinderItem.a.b(parambfl, 0);
-        ((w)localObject2).AlU = parambfl;
-        ((w)localObject2).zzV = null;
-        ((w)localObject2).viewType = parambfl.getMediaType();
-        ((w)localObject2).AlV = parambfl.getId();
-      }
-      else
-      {
-        parambfl = w.Ama;
-        if (i == w.dYP())
-        {
-          ((w)localObject2).AlT = null;
-          ((w)localObject2).AlU = null;
-          localObject1 = ((w)localObject2).AlW.SPD;
-          parambfl = (bfl)localObject1;
-          if (localObject1 == null) {
-            parambfl = new ben();
-          }
-          parambfl = new x(parambfl);
-          ((w)localObject2).zzV = parambfl;
-          ((w)localObject2).viewType = parambfl.Amb.SPE;
-          ((w)localObject2).AlV = parambfl.getId();
-        }
-        else
-        {
-          ((w)localObject2).AlT = null;
-          ((w)localObject2).AlU = null;
-          ((w)localObject2).zzV = null;
-          ((w)localObject2).viewType = 10000;
-          ((w)localObject2).AlV = -1L;
-        }
-      }
     }
   }
   
-  public static c n(BaseFinderFeed paramBaseFinderFeed)
+  public final bcc nw(long paramLong)
   {
-    AppMethodBeat.i(290092);
-    kotlin.g.b.p.k(paramBaseFinderFeed, "feed");
-    Object localObject1 = new bem();
-    Object localObject2 = w.Ama;
-    ((bem)localObject1).dataType = w.dYO();
-    ((bem)localObject1).xcx = paramBaseFinderFeed.feedObject.getFeedObject();
-    localObject1 = new w((bem)localObject1);
-    ((w)localObject1).AlT = null;
-    localObject2 = paramBaseFinderFeed.feedObject;
-    ((w)localObject1).AlU = ((FinderItem)localObject2);
-    ((w)localObject1).zzV = null;
-    ((w)localObject1).viewType = ((FinderItem)localObject2).getMediaType();
-    ((w)localObject1).AlV = ((FinderItem)localObject2).getId();
-    localObject1 = new c((w)localObject1);
-    ((c)localObject1).zzW = paramBaseFinderFeed;
-    AppMethodBeat.o(290092);
-    return localObject1;
+    AppMethodBeat.i(363180);
+    Object localObject = (bqy)this.AWI.get(Long.valueOf(paramLong));
+    if (localObject == null)
+    {
+      AppMethodBeat.o(363180);
+      return null;
+    }
+    localObject = ((bqy)localObject).ZYX;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(363180);
+      return null;
+    }
+    localObject = ((bks)localObject).ZMQ;
+    AppMethodBeat.o(363180);
+    return localObject;
+  }
+  
+  public final void onCleared()
+  {
+    AppMethodBeat.i(363172);
+    super.onCleared();
+    this.AWI.clear();
+    AppMethodBeat.o(363172);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderBatchGetObjectAsyncLoadInfoResponse;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.b<b.a<aub>, ah>
+  {
+    a(ab paramab, long paramLong, String paramString)
+    {
+      super();
+    }
   }
 }
 

@@ -14,6 +14,7 @@ import java.util.Map;
 
 public class XWalkUIClient
 {
+  private static final String TAG = "XWalkUIClient";
   private LazyReflectMethod OnGetSampleStringXWalkViewInternalMapCallbackMethod;
   private Object bridge;
   private ArrayList<Object> constructorParams;
@@ -147,6 +148,100 @@ public class XWalkUIClient
     paramLoadStatus = this.enumLoadStatusClassValueOfMethod.invoke(new Object[] { paramLoadStatus.toString() });
     AppMethodBeat.o(154964);
     return paramLoadStatus;
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154998);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154998);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    int j = this.constructorTypes.size();
+    Object localObject1 = new Class[j + 1];
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject2 = this.constructorTypes.get(i);
+      if ((localObject2 instanceof String))
+      {
+        localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
+        this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
+      }
+      label135:
+      do
+      {
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (!(localObject2 instanceof Class)) {
+            break label135;
+          }
+          localObject1[i] = ((Class)localObject2);
+        }
+      } while ($assertionsDisabled);
+      localObject1 = new AssertionError();
+      AppMethodBeat.o(154998);
+      throw ((Throwable)localObject1);
+    }
+    localObject1[j] = Object.class;
+    this.constructorParams.add(this);
+    localObject1 = new ReflectConstructor(this.coreWrapper.getBridgeClass("XWalkUIClientBridge"), (Class[])localObject1);
+    try
+    {
+      this.bridge = ((ReflectConstructor)localObject1).newInstance(this.constructorParams.toArray());
+      if (this.postWrapperMethod != null) {
+        this.postWrapperMethod.invoke(new Object[0]);
+      }
+      this.enumJavascriptMessageTypeClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$JavascriptMessageTypeInternal"), "valueOf", new Class[] { String.class });
+      this.enumConsoleMessageTypeClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$ConsoleMessageType"), "valueOf", new Class[] { String.class });
+      this.enumInitiateByClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$InitiateByInternal"), "valueOf", new Class[] { String.class });
+      this.enumLoadStatusClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$LoadStatusInternal"), "valueOf", new Class[] { String.class });
+      this.onCreateWindowRequestedXWalkViewInternalInitiateByInternalValueCallbackMethod.init(this.bridge, null, "onCreateWindowRequestedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkUIClientInternal$InitiateByInternal"), ValueCallback.class });
+      this.onDidChangeThemeColorXWalkViewInternalStringMessageMethod.init(this.bridge, null, "onDidChangeThemeColorSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Integer.TYPE });
+      this.onIconAvailableXWalkViewInternalStringMessageMethod.init(this.bridge, null, "onIconAvailableSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, Message.class });
+      this.onReceivedIconXWalkViewInternalStringBitmapMethod.init(this.bridge, null, "onReceivedIconSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, Bitmap.class });
+      this.onRequestFocusXWalkViewInternalMethod.init(this.bridge, null, "onRequestFocusSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge") });
+      this.onJavascriptCloseWindowXWalkViewInternalMethod.init(this.bridge, null, "onJavascriptCloseWindowSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge") });
+      this.onJavascriptModalDialogXWalkViewInternalJavascriptMessageTypeInternalStringStringStringXWalkJavascriptResultInternalMethod.init(this.bridge, null, "onJavascriptModalDialogSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkUIClientInternal$JavascriptMessageTypeInternal"), String.class, String.class, String.class, this.coreWrapper.getBridgeClass("XWalkJavascriptResultHandlerBridge") });
+      this.onFullscreenToggledXWalkViewInternalbooleanMethod.init(this.bridge, null, "onFullscreenToggledSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Boolean.TYPE });
+      this.openFileChooserXWalkViewInternalValueCallbackStringStringMethod.init(this.bridge, null, "openFileChooserSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), ValueCallback.class, String.class, String.class });
+      this.onShowFileChooserXWalkViewInternalValueCallbackStringStringMethod.init(this.bridge, null, "onShowFileChooser", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), ValueCallback.class, WebChromeClient.FileChooserParams.class });
+      this.onScaleChangedXWalkViewInternalfloatfloatMethod.init(this.bridge, null, "onScaleChangedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Float.TYPE, Float.TYPE });
+      this.shouldOverrideKeyEventXWalkViewInternalKeyEventMethod.init(this.bridge, null, "shouldOverrideKeyEventSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), KeyEvent.class });
+      this.onUnhandledKeyEventXWalkViewInternalKeyEventMethod.init(this.bridge, null, "onUnhandledKeyEventSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), KeyEvent.class });
+      this.onConsoleMessageXWalkViewInternalStringintStringConsoleMessageTypeMethod.init(this.bridge, null, "onConsoleMessageSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, Integer.TYPE, String.class, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$ConsoleMessageType") });
+      this.onReceivedTitleXWalkViewInternalStringMethod.init(this.bridge, null, "onReceivedTitleSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
+      this.onPageLoadStartedXWalkViewInternalStringMethod.init(this.bridge, null, "onPageLoadStartedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
+      this.onPageLoadStoppedXWalkViewInternalStringLoadStatusInternalMethod.init(this.bridge, null, "onPageLoadStoppedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$LoadStatusInternal") });
+      this.onPageCommitVisibleXWalkViewInternalStringMethod.init(this.bridge, null, "onPageCommitVisibleSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
+      this.onJsAlertXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod.init(this.bridge, null, "onJsAlertSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, String.class, this.coreWrapper.getBridgeClass("XWalkJavascriptResultHandlerBridge") });
+      this.onJsConfirmXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod.init(this.bridge, null, "onJsConfirmSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, String.class, this.coreWrapper.getBridgeClass("XWalkJavascriptResultHandlerBridge") });
+      this.onJsPromptXWalkViewInternalStringStringStringXWalkJavascriptResultInternalMethod.init(this.bridge, null, "onJsPromptSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, String.class, String.class, this.coreWrapper.getBridgeClass("XWalkJavascriptResultHandlerBridge") });
+      this.onShowCustomViewViewCustomViewCallbackInternalMethod.init(this.bridge, null, "onShowCustomViewSuper", new Class[] { View.class, this.coreWrapper.getBridgeClass("CustomViewCallbackHandlerBridge") });
+      this.onShowCustomViewViewintCustomViewCallbackInternalMethod.init(this.bridge, null, "onShowCustomViewSuper", new Class[] { View.class, Integer.TYPE, this.coreWrapper.getBridgeClass("CustomViewCallbackHandlerBridge") });
+      this.onHideCustomViewMethod.init(this.bridge, null, "onHideCustomViewSuper", new Class[0]);
+      this.onGeolocationPermissionsShowPromptStringXWalkGeolocationPermissionsCallbackInternalMethod.init(this.bridge, null, "onGeolocationPermissionsShowPromptSuper", new Class[] { String.class, this.coreWrapper.getBridgeClass("XWalkGeolocationPermissionsCallbackHandlerBridge") });
+      this.onGeolocationPermissionsHidePromptMethod.init(this.bridge, null, "onGeolocationPermissionsHidePromptSuper", new Class[0]);
+      this.getVideoLoadingProgressViewMethod.init(this.bridge, null, "getVideoLoadingProgressView", new Class[0]);
+      this.onSelectInfoChangedXWalkViewInternallongStringStringStringCallbackMethod.init(this.bridge, null, "onSelectInfoChanged", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Long.TYPE, String.class, String.class, String.class });
+      this.isSearchableMethod.init(this.bridge, null, "isSearchable", new Class[0]);
+      this.onShowSosMethod.init(this.bridge, null, "onShowSos", new Class[0]);
+      this.onSearchWordXWalkViewInternalStringStringStringCallbackMethod.init(this.bridge, null, "onSearchWord", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, String.class, String.class });
+      this.onGetTranslateStringXWalkViewInternalMapCallbackMethod.init(this.bridge, null, "onGetTranslateString", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Map.class });
+      this.OnGetSampleStringXWalkViewInternalMapCallbackMethod.init(this.bridge, null, "OnGetSampleString", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Map.class });
+      AppMethodBeat.o(154998);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      Log.e("XWalkUIClient", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
+      AppMethodBeat.o(154998);
+    }
   }
   
   public boolean OnGetSampleString(XWalkView paramXWalkView, Map<String, String> paramMap)
@@ -614,9 +709,9 @@ public class XWalkUIClient
   
   public void onPermissionRequest(PermissionRequest paramPermissionRequest)
   {
-    AppMethodBeat.i(206765);
+    AppMethodBeat.i(187687);
     paramPermissionRequest.deny();
-    AppMethodBeat.o(206765);
+    AppMethodBeat.o(187687);
   }
   
   public void onPermissionRequestCanceled(PermissionRequest paramPermissionRequest) {}
@@ -801,11 +896,11 @@ public class XWalkUIClient
   
   public boolean onShowFileChooser(XWalkView paramXWalkView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    AppMethodBeat.i(206755);
+    AppMethodBeat.i(187604);
     try
     {
       boolean bool = ((Boolean)this.onShowFileChooserXWalkViewInternalValueCallbackStringStringMethod.invoke(new Object[] { paramXWalkView.getBridge(), paramValueCallback, paramFileChooserParams })).booleanValue();
-      AppMethodBeat.o(206755);
+      AppMethodBeat.o(187604);
       return bool;
     }
     catch (UnsupportedOperationException paramXWalkView)
@@ -813,11 +908,11 @@ public class XWalkUIClient
       if (this.coreWrapper == null)
       {
         paramXWalkView = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(206755);
+        AppMethodBeat.o(187604);
         throw paramXWalkView;
       }
       XWalkCoreWrapper.handleRuntimeError(paramXWalkView);
-      AppMethodBeat.o(206755);
+      AppMethodBeat.o(187604);
     }
     return false;
   }
@@ -889,100 +984,6 @@ public class XWalkUIClient
     }
   }
   
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154998);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154998);
-      return;
-    }
-    int j = this.constructorTypes.size();
-    Object localObject1 = new Class[j + 1];
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject2 = this.constructorTypes.get(i);
-      if ((localObject2 instanceof String))
-      {
-        localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
-        this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
-      }
-      label139:
-      do
-      {
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (!(localObject2 instanceof Class)) {
-            break label139;
-          }
-          localObject1[i] = ((Class)localObject2);
-        }
-      } while ($assertionsDisabled);
-      localObject1 = new AssertionError();
-      AppMethodBeat.o(154998);
-      throw ((Throwable)localObject1);
-    }
-    localObject1[j] = Object.class;
-    this.constructorParams.add(this);
-    localObject1 = new ReflectConstructor(this.coreWrapper.getBridgeClass("XWalkUIClientBridge"), (Class[])localObject1);
-    try
-    {
-      this.bridge = ((ReflectConstructor)localObject1).newInstance(this.constructorParams.toArray());
-      if (this.postWrapperMethod != null) {
-        this.postWrapperMethod.invoke(new Object[0]);
-      }
-      this.enumJavascriptMessageTypeClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$JavascriptMessageTypeInternal"), "valueOf", new Class[] { String.class });
-      this.enumConsoleMessageTypeClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$ConsoleMessageType"), "valueOf", new Class[] { String.class });
-      this.enumInitiateByClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$InitiateByInternal"), "valueOf", new Class[] { String.class });
-      this.enumLoadStatusClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$LoadStatusInternal"), "valueOf", new Class[] { String.class });
-      this.onCreateWindowRequestedXWalkViewInternalInitiateByInternalValueCallbackMethod.init(this.bridge, null, "onCreateWindowRequestedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkUIClientInternal$InitiateByInternal"), ValueCallback.class });
-      this.onDidChangeThemeColorXWalkViewInternalStringMessageMethod.init(this.bridge, null, "onDidChangeThemeColorSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Integer.TYPE });
-      this.onIconAvailableXWalkViewInternalStringMessageMethod.init(this.bridge, null, "onIconAvailableSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, Message.class });
-      this.onReceivedIconXWalkViewInternalStringBitmapMethod.init(this.bridge, null, "onReceivedIconSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, Bitmap.class });
-      this.onRequestFocusXWalkViewInternalMethod.init(this.bridge, null, "onRequestFocusSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge") });
-      this.onJavascriptCloseWindowXWalkViewInternalMethod.init(this.bridge, null, "onJavascriptCloseWindowSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge") });
-      this.onJavascriptModalDialogXWalkViewInternalJavascriptMessageTypeInternalStringStringStringXWalkJavascriptResultInternalMethod.init(this.bridge, null, "onJavascriptModalDialogSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkUIClientInternal$JavascriptMessageTypeInternal"), String.class, String.class, String.class, this.coreWrapper.getBridgeClass("XWalkJavascriptResultHandlerBridge") });
-      this.onFullscreenToggledXWalkViewInternalbooleanMethod.init(this.bridge, null, "onFullscreenToggledSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Boolean.TYPE });
-      this.openFileChooserXWalkViewInternalValueCallbackStringStringMethod.init(this.bridge, null, "openFileChooserSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), ValueCallback.class, String.class, String.class });
-      this.onShowFileChooserXWalkViewInternalValueCallbackStringStringMethod.init(this.bridge, null, "onShowFileChooser", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), ValueCallback.class, WebChromeClient.FileChooserParams.class });
-      this.onScaleChangedXWalkViewInternalfloatfloatMethod.init(this.bridge, null, "onScaleChangedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Float.TYPE, Float.TYPE });
-      this.shouldOverrideKeyEventXWalkViewInternalKeyEventMethod.init(this.bridge, null, "shouldOverrideKeyEventSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), KeyEvent.class });
-      this.onUnhandledKeyEventXWalkViewInternalKeyEventMethod.init(this.bridge, null, "onUnhandledKeyEventSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), KeyEvent.class });
-      this.onConsoleMessageXWalkViewInternalStringintStringConsoleMessageTypeMethod.init(this.bridge, null, "onConsoleMessageSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, Integer.TYPE, String.class, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$ConsoleMessageType") });
-      this.onReceivedTitleXWalkViewInternalStringMethod.init(this.bridge, null, "onReceivedTitleSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
-      this.onPageLoadStartedXWalkViewInternalStringMethod.init(this.bridge, null, "onPageLoadStartedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
-      this.onPageLoadStoppedXWalkViewInternalStringLoadStatusInternalMethod.init(this.bridge, null, "onPageLoadStoppedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, this.coreWrapper.getBridgeClass("XWalkUIClientInternal$LoadStatusInternal") });
-      this.onPageCommitVisibleXWalkViewInternalStringMethod.init(this.bridge, null, "onPageCommitVisibleSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
-      this.onJsAlertXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod.init(this.bridge, null, "onJsAlertSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, String.class, this.coreWrapper.getBridgeClass("XWalkJavascriptResultHandlerBridge") });
-      this.onJsConfirmXWalkViewInternalStringStringXWalkJavascriptResultInternalMethod.init(this.bridge, null, "onJsConfirmSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, String.class, this.coreWrapper.getBridgeClass("XWalkJavascriptResultHandlerBridge") });
-      this.onJsPromptXWalkViewInternalStringStringStringXWalkJavascriptResultInternalMethod.init(this.bridge, null, "onJsPromptSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, String.class, String.class, this.coreWrapper.getBridgeClass("XWalkJavascriptResultHandlerBridge") });
-      this.onShowCustomViewViewCustomViewCallbackInternalMethod.init(this.bridge, null, "onShowCustomViewSuper", new Class[] { View.class, this.coreWrapper.getBridgeClass("CustomViewCallbackHandlerBridge") });
-      this.onShowCustomViewViewintCustomViewCallbackInternalMethod.init(this.bridge, null, "onShowCustomViewSuper", new Class[] { View.class, Integer.TYPE, this.coreWrapper.getBridgeClass("CustomViewCallbackHandlerBridge") });
-      this.onHideCustomViewMethod.init(this.bridge, null, "onHideCustomViewSuper", new Class[0]);
-      this.onGeolocationPermissionsShowPromptStringXWalkGeolocationPermissionsCallbackInternalMethod.init(this.bridge, null, "onGeolocationPermissionsShowPromptSuper", new Class[] { String.class, this.coreWrapper.getBridgeClass("XWalkGeolocationPermissionsCallbackHandlerBridge") });
-      this.onGeolocationPermissionsHidePromptMethod.init(this.bridge, null, "onGeolocationPermissionsHidePromptSuper", new Class[0]);
-      this.getVideoLoadingProgressViewMethod.init(this.bridge, null, "getVideoLoadingProgressView", new Class[0]);
-      this.onSelectInfoChangedXWalkViewInternallongStringStringStringCallbackMethod.init(this.bridge, null, "onSelectInfoChanged", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Long.TYPE, String.class, String.class, String.class });
-      this.isSearchableMethod.init(this.bridge, null, "isSearchable", new Class[0]);
-      this.onShowSosMethod.init(this.bridge, null, "onShowSos", new Class[0]);
-      this.onSearchWordXWalkViewInternalStringStringStringCallbackMethod.init(this.bridge, null, "onSearchWord", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, String.class, String.class });
-      this.onGetTranslateStringXWalkViewInternalMapCallbackMethod.init(this.bridge, null, "onGetTranslateString", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Map.class });
-      this.OnGetSampleStringXWalkViewInternalMapCallbackMethod.init(this.bridge, null, "OnGetSampleString", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Map.class });
-      AppMethodBeat.o(154998);
-      return;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      AppMethodBeat.o(154998);
-    }
-  }
-  
   public boolean shouldDiscardCurrentPage()
   {
     return false;
@@ -1030,7 +1031,7 @@ public class XWalkUIClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkUIClient
  * JD-Core Version:    0.7.0.1
  */

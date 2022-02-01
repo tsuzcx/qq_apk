@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.nearby.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -28,49 +27,46 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.autogen.a.np;
+import com.tencent.mm.autogen.a.xc;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.cache.MCacheItem;
-import com.tencent.mm.f.a.mj;
-import com.tencent.mm.f.a.vm;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.kernel.k;
 import com.tencent.mm.model.az.a;
 import com.tencent.mm.model.az.c;
-import com.tencent.mm.plugin.account.friend.a.l.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.account.friend.model.i.a;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.appbrand.service.t;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.nearby.b.c;
 import com.tencent.mm.plugin.nearby.b.d;
 import com.tencent.mm.plugin.nearby.b.e;
 import com.tencent.mm.plugin.nearby.b.f;
 import com.tencent.mm.plugin.nearby.b.g;
+import com.tencent.mm.plugin.report.service.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.aez;
-import com.tencent.mm.protocal.protobuf.cqe;
-import com.tencent.mm.protocal.protobuf.elj;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.protocal.protobuf.ahl;
+import com.tencent.mm.protocal.protobuf.dgy;
+import com.tencent.mm.protocal.protobuf.ffs;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.SmoothScrollFactory;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.bz;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.base.w;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -79,107 +75,107 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@k
+@com.tencent.mm.kernel.k
 public class NearbyFriendsUI
   extends MMActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private com.tencent.mm.plugin.nearby.a.c GsS;
-  private c Gtd;
-  private com.tencent.mm.plugin.nearby.a.c Gte;
-  private com.tencent.mm.plugin.nearby.a.d Gtf;
-  private boolean Gtg;
-  private String[] Gth;
-  private BindMobileOrQQHeaderView Gti;
-  private View Gtj;
-  private b Gtk;
-  private com.tencent.mm.modelgeo.d iQC;
-  private com.tencent.mm.modelgeo.b.a iQJ;
-  private IListener iQL;
-  boolean kUn;
-  private ListView mYU;
-  private s tipDialog;
-  private List<cqe> wtq;
-  private boolean zHA;
-  private int zHB;
-  private int zHD;
-  private boolean zHE;
-  private boolean zHF;
-  private int zHG;
-  private boolean zHI;
-  private Map<String, a> zHm;
-  private ViewGroup zHv;
-  private View zHx;
-  private View zHy;
+  private Map<String, a> EOP;
+  private ViewGroup EOX;
+  private View EOZ;
+  private View EPa;
+  private boolean EPc;
+  private int EPd;
+  private int EPf;
+  private boolean EPg;
+  private boolean EPh;
+  private int EPi;
+  private boolean EPk;
+  private com.tencent.mm.plugin.nearby.model.c MoS;
+  private c Mpd;
+  private com.tencent.mm.plugin.nearby.model.c Mpe;
+  private com.tencent.mm.plugin.nearby.model.d Mpf;
+  private boolean Mpg;
+  private String[] Mph;
+  private BindMobileOrQQHeaderView Mpi;
+  private View Mpj;
+  private b Mpk;
+  private com.tencent.mm.modelgeo.b.a lsF;
+  private IListener lsH;
+  private com.tencent.mm.modelgeo.d lsy;
+  boolean nzW;
+  private ListView pVC;
+  private w tipDialog;
+  private List<dgy> zPw;
   
   public NearbyFriendsUI()
   {
     AppMethodBeat.i(89866);
     this.tipDialog = null;
-    this.wtq = new LinkedList();
-    this.zHm = new HashMap();
-    this.Gtg = false;
-    this.zHD = 1;
-    this.zHA = false;
-    this.zHE = false;
-    this.zHF = false;
-    this.zHG = 0;
-    this.zHx = null;
-    this.iQL = new IListener() {};
-    this.kUn = false;
-    this.iQJ = new com.tencent.mm.modelgeo.b.a()
+    this.zPw = new LinkedList();
+    this.EOP = new HashMap();
+    this.Mpg = false;
+    this.EPf = 1;
+    this.EPc = false;
+    this.EPg = false;
+    this.EPh = false;
+    this.EPi = 0;
+    this.EOZ = null;
+    this.lsH = new IListener(com.tencent.mm.app.f.hfK) {};
+    this.nzW = false;
+    this.lsF = new com.tencent.mm.modelgeo.b.a()
     {
-      public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
+      public final boolean onGetLocation(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2, double paramAnonymousDouble3)
       {
-        AppMethodBeat.i(89846);
+        AppMethodBeat.i(262793);
         if (NearbyFriendsUI.d(NearbyFriendsUI.this))
         {
-          AppMethodBeat.o(89846);
+          AppMethodBeat.o(262793);
           return false;
         }
         NearbyFriendsUI.e(NearbyFriendsUI.this);
-        if (NearbyFriendsUI.this.kUn)
+        if (NearbyFriendsUI.this.nzW)
         {
           if (NearbyFriendsUI.f(NearbyFriendsUI.this) != null)
           {
             NearbyFriendsUI.f(NearbyFriendsUI.this).dismiss();
             NearbyFriendsUI.a(NearbyFriendsUI.this, null);
           }
-          com.tencent.mm.plugin.report.service.g.adc(11);
-          AppMethodBeat.o(89846);
+          com.tencent.mm.plugin.report.service.g.ahy(11);
+          AppMethodBeat.o(262793);
           return false;
         }
         if (paramAnonymousBoolean)
         {
           if (NearbyFriendsUI.f(NearbyFriendsUI.this) != null) {
-            NearbyFriendsUI.f(NearbyFriendsUI.this).setMessage(NearbyFriendsUI.this.getString(b.g.nearby_friend_finding));
+            NearbyFriendsUI.f(NearbyFriendsUI.this).setMessage(NearbyFriendsUI.this.getString(b.g.Moo));
           }
           NearbyFriendsUI.a(NearbyFriendsUI.this, new NearbyFriendsUI.b(NearbyFriendsUI.this, paramAnonymousFloat2, paramAnonymousFloat1, (int)paramAnonymousDouble2));
-          NearbyFriendsUI.a(NearbyFriendsUI.this, new com.tencent.mm.plugin.nearby.a.c(NearbyFriendsUI.g(NearbyFriendsUI.this), NearbyFriendsUI.h(NearbyFriendsUI.this).lLs, NearbyFriendsUI.h(NearbyFriendsUI.this).lLr, NearbyFriendsUI.h(NearbyFriendsUI.this).zHu, paramAnonymousInt, "", ""));
-          com.tencent.mm.kernel.h.aGY().a(NearbyFriendsUI.b(NearbyFriendsUI.this), 0);
+          NearbyFriendsUI.a(NearbyFriendsUI.this, new com.tencent.mm.plugin.nearby.model.c(NearbyFriendsUI.g(NearbyFriendsUI.this), NearbyFriendsUI.h(NearbyFriendsUI.this).oDU, NearbyFriendsUI.h(NearbyFriendsUI.this).oDT, NearbyFriendsUI.h(NearbyFriendsUI.this).EOW, paramAnonymousInt, "", ""));
+          com.tencent.mm.kernel.h.aZW().a(NearbyFriendsUI.b(NearbyFriendsUI.this), 0);
         }
         for (;;)
         {
-          AppMethodBeat.o(89846);
+          AppMethodBeat.o(262793);
           return false;
-          com.tencent.mm.plugin.report.service.g.adc(11);
+          com.tencent.mm.plugin.report.service.g.ahy(11);
           if (NearbyFriendsUI.f(NearbyFriendsUI.this) != null)
           {
             NearbyFriendsUI.f(NearbyFriendsUI.this).dismiss();
             NearbyFriendsUI.a(NearbyFriendsUI.this, null);
           }
-          NearbyFriendsUI.this.findViewById(b.c.nearby_friend_locate_failed).setVisibility(0);
+          NearbyFriendsUI.this.findViewById(b.c.EGi).setVisibility(0);
           NearbyFriendsUI.i(NearbyFriendsUI.this).setVisibility(8);
           NearbyFriendsUI.j(NearbyFriendsUI.this);
-          if ((!NearbyFriendsUI.k(NearbyFriendsUI.this)) && (!com.tencent.mm.modelgeo.d.blr()))
+          if ((!NearbyFriendsUI.k(NearbyFriendsUI.this)) && (!com.tencent.mm.modelgeo.d.bJm()))
           {
             NearbyFriendsUI.l(NearbyFriendsUI.this);
-            com.tencent.mm.ui.base.h.a(NearbyFriendsUI.this, NearbyFriendsUI.this.getString(b.g.gps_disable_tip), NearbyFriendsUI.this.getString(b.g.app_tip), NearbyFriendsUI.this.getString(b.g.jump_to_settings), NearbyFriendsUI.this.getString(b.g.app_cancel), false, new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.k.a(NearbyFriendsUI.this, NearbyFriendsUI.this.getString(b.g.gps_disable_tip), NearbyFriendsUI.this.getString(b.g.app_tip), NearbyFriendsUI.this.getString(b.g.jump_to_settings), NearbyFriendsUI.this.getString(b.g.app_cancel), false, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
                 AppMethodBeat.i(89845);
-                com.tencent.mm.modelgeo.d.cW(NearbyFriendsUI.this);
+                com.tencent.mm.modelgeo.d.dP(NearbyFriendsUI.this);
                 AppMethodBeat.o(89845);
               }
             }, null);
@@ -190,29 +186,29 @@ public class NearbyFriendsUI
     AppMethodBeat.o(89866);
   }
   
-  private void dMj()
+  private void eGj()
   {
     int j = 0;
     AppMethodBeat.i(89877);
     Object localObject1 = new LinkedList();
     int i = 0;
-    while (i < this.wtq.size())
+    while (i < this.zPw.size())
     {
-      if (!d.Ox(((cqe)this.wtq.get(i)).mVy)) {
-        ((List)localObject1).add(this.wtq.get(i));
+      if (!d.QS(((dgy)this.zPw.get(i)).pSf)) {
+        ((List)localObject1).add((dgy)this.zPw.get(i));
       }
       i += 1;
     }
-    this.wtq.clear();
-    this.wtq = ((List)localObject1);
+    this.zPw.clear();
+    this.zPw = ((List)localObject1);
     Log.i("MicroMsg.NearbyFriend", "insertPoiItemList()");
-    label130:
+    label133:
     Object localObject2;
     List localList;
-    if (!this.wtq.isEmpty())
+    if (!this.zPw.isEmpty())
     {
       i = 1;
-      localObject1 = this.zHm.keySet().iterator();
+      localObject1 = this.EOP.keySet().iterator();
       do
       {
         do
@@ -222,90 +218,40 @@ public class NearbyFriendsUI
           }
           localObject2 = (String)((Iterator)localObject1).next();
         } while (i == 0);
-        localObject2 = (a)this.zHm.get(localObject2);
-      } while ((((a)localObject2).rED) || ((((a)localObject2).zHo > 0) && (((a)localObject2).zHr >= ((a)localObject2).zHo)) || (((a)localObject2).tzm >= ((a)localObject2).zHp));
-      localList = this.wtq;
-      if ((((a)localObject2).pos >= 0) && (((a)localObject2).pos <= this.wtq.size())) {
-        break label303;
+        localObject2 = (a)this.EOP.get(localObject2);
+      } while ((((a)localObject2).uPP) || ((((a)localObject2).EOR > 0) && (((a)localObject2).EOU >= ((a)localObject2).EOR)) || (((a)localObject2).wDI >= ((a)localObject2).EOS));
+      localList = this.zPw;
+      if ((((a)localObject2).pos >= 0) && (((a)localObject2).pos <= this.zPw.size())) {
+        break label306;
       }
     }
-    label303:
-    for (int k = this.wtq.size();; k = ((a)localObject2).pos + j)
+    label306:
+    for (int k = this.zPw.size();; k = ((a)localObject2).pos + j)
     {
-      localList.add(k, d.h(((a)localObject2).id, ((a)localObject2).icon, ((a)localObject2).name, ((a)localObject2).desc, ((a)localObject2).zHq));
+      localList.add(k, d.h(((a)localObject2).id, ((a)localObject2).icon, ((a)localObject2).name, ((a)localObject2).desc, ((a)localObject2).EOT));
       j += 1;
-      break label130;
+      break label133;
       i = 0;
       break;
     }
     AppMethodBeat.o(89877);
   }
   
-  private void fiA()
-  {
-    AppMethodBeat.i(89871);
-    com.tencent.mm.plugin.nearby.a.mIG.bW(this);
-    AppMethodBeat.o(89871);
-  }
-  
-  private void fiz()
-  {
-    AppMethodBeat.i(89869);
-    View localView;
-    Object localObject;
-    int i;
-    if (com.tencent.mm.bw.a.hft())
-    {
-      if (this.zHx != null)
-      {
-        this.mYU.removeHeaderView(this.zHx);
-        this.zHx = null;
-      }
-      localView = View.inflate(this, b.d.nearby_goto_sayhi_btn, null);
-      localObject = (TextView)localView.findViewById(b.c.say_hi_count);
-      com.tencent.mm.kernel.h.aHE().aGH();
-      i = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSb().cHo();
-      if (i != 0) {
-        break label124;
-      }
-      localView.setVisibility(8);
-      localView = null;
-    }
-    for (;;)
-    {
-      this.zHx = localView;
-      if (this.zHx != null) {
-        this.mYU.addHeaderView(this.zHx);
-      }
-      AppMethodBeat.o(89869);
-      return;
-      label124:
-      localView.setVisibility(0);
-      ((TextView)localObject).setText(getResources().getQuantityString(b.e.say_hi_count_text_quantity, i, new Object[] { Integer.valueOf(i) }));
-      localObject = (ImageView)localView.findViewById(b.c.match_dlg_img);
-      bx localbx = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSb().eSm();
-      if (localbx != null) {
-        a.b.c((ImageView)localObject, localbx.field_sayhiuser);
-      }
-      localView.setOnClickListener(new NearbyFriendsUI.9(this));
-    }
-  }
-  
   private void getData()
   {
     AppMethodBeat.i(89868);
-    this.zHF = false;
+    this.EPh = false;
     AppCompatActivity localAppCompatActivity = getContext();
     getString(b.g.app_tip);
-    this.tipDialog = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(b.g.nearby_friend_locating), true, new DialogInterface.OnCancelListener()
+    this.tipDialog = com.tencent.mm.ui.base.k.a(localAppCompatActivity, getString(b.g.nearby_friend_locating), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(89844);
-        NearbyFriendsUI.this.kUn = true;
-        com.tencent.mm.plugin.report.service.g.adc(11);
+        NearbyFriendsUI.this.nzW = true;
+        com.tencent.mm.plugin.report.service.g.ahy(11);
         if (NearbyFriendsUI.b(NearbyFriendsUI.this) != null) {
-          com.tencent.mm.kernel.h.aGY().a(NearbyFriendsUI.b(NearbyFriendsUI.this));
+          com.tencent.mm.kernel.h.aZW().a(NearbyFriendsUI.b(NearbyFriendsUI.this));
         }
         Log.i("MicroMsg.NearbyFriend", "[MonsterzDai]  [loading cancel] cancel in loading");
         if (!NearbyFriendsUI.c(NearbyFriendsUI.this))
@@ -316,69 +262,138 @@ public class NearbyFriendsUI
         AppMethodBeat.o(89844);
       }
     });
-    this.kUn = false;
-    if (this.iQC != null) {
-      this.iQC.a(this.iQJ, true);
+    this.nzW = false;
+    if (this.lsy != null)
+    {
+      this.lsy.a(this.lsF, true, false);
+      l.kK(22, 10);
     }
     AppMethodBeat.o(89868);
   }
   
+  private void gsQ()
+  {
+    AppMethodBeat.i(89869);
+    View localView;
+    Object localObject;
+    int i;
+    if (com.tencent.mm.bp.a.iGn())
+    {
+      if (this.EOZ != null)
+      {
+        this.pVC.removeHeaderView(this.EOZ);
+        this.EOZ = null;
+      }
+      localView = View.inflate(this, b.d.EGK, null);
+      localObject = (TextView)localView.findViewById(b.c.say_hi_count);
+      com.tencent.mm.kernel.h.baC().aZJ();
+      i = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaW().dkF();
+      if (i != 0) {
+        break label124;
+      }
+      localView.setVisibility(8);
+      localView = null;
+    }
+    for (;;)
+    {
+      this.EOZ = localView;
+      if (this.EOZ != null) {
+        this.pVC.addHeaderView(this.EOZ);
+      }
+      AppMethodBeat.o(89869);
+      return;
+      label124:
+      localView.setVisibility(0);
+      ((TextView)localObject).setText(getResources().getQuantityString(b.e.say_hi_count_text_quantity, i, new Object[] { Integer.valueOf(i) }));
+      localObject = (ImageView)localView.findViewById(b.c.match_dlg_img);
+      bz localbz = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaW().gbh();
+      if (localbz != null) {
+        a.b.g((ImageView)localObject, localbz.field_sayhiuser);
+      }
+      localView.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(89847);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          NearbyFriendsUI.i(NearbyFriendsUI.this).removeHeaderView(NearbyFriendsUI.m(NearbyFriendsUI.this));
+          NearbyFriendsUI.n(NearbyFriendsUI.this);
+          paramAnonymousView = new Intent(NearbyFriendsUI.this, NearbySayHiListUI.class);
+          paramAnonymousView.putExtra("k_say_hi_type", 2);
+          paramAnonymousView.putExtra("show_clear_header", true);
+          NearbyFriendsUI.this.startActivityForResult(paramAnonymousView, 2009);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(89847);
+        }
+      });
+    }
+  }
+  
+  private void gsR()
+  {
+    AppMethodBeat.i(89871);
+    com.tencent.mm.plugin.nearby.a.pFn.cI(this);
+    AppMethodBeat.o(89871);
+  }
+  
   public int getLayoutId()
   {
-    return b.d.nearby_friend;
+    return b.d.Mof;
   }
   
   public void initView()
   {
     AppMethodBeat.i(89870);
-    this.mYU = ((ListView)findViewById(b.c.nearby_friend_lv));
-    this.Gtd = new c(this);
-    Object localObject = this.mYU;
-    if (this.zHv == null)
+    this.pVC = ((ListView)findViewById(b.c.fPh));
+    this.Mpd = new c(this);
+    Object localObject = this.pVC;
+    if (this.EOX == null)
     {
-      this.zHv = new LinearLayout(this);
-      this.zHv.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      ((LinearLayout)this.zHv).setGravity(17);
+      this.EOX = new LinearLayout(this);
+      this.EOX.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+      ((LinearLayout)this.EOX).setGravity(17);
     }
-    this.zHA = true;
-    ((ListView)localObject).addHeaderView(this.zHv);
-    localObject = com.tencent.mm.n.h.axc().getValue("LBSShowBindPhone");
+    this.EPc = true;
+    ((ListView)localObject).addHeaderView(this.EOX);
+    localObject = com.tencent.mm.k.i.aRC().getValue("LBSShowBindPhone");
     if ((localObject != null) && (((String)localObject).length() > 0)) {}
     try
     {
-      this.zHB = Integer.valueOf((String)localObject).intValue();
-      localObject = (String)com.tencent.mm.kernel.h.aHG().aHp().b(6, null);
+      this.EPd = Integer.valueOf((String)localObject).intValue();
+      localObject = (String)com.tencent.mm.kernel.h.baE().ban().d(6, null);
       if ((localObject != null) && (((String)localObject).length() > 0)) {
-        this.zHB = 0;
+        this.EPd = 0;
       }
-      this.zHG = 0;
-      if (com.tencent.mm.model.a.g.bga().Sk("3") != null)
+      this.EPi = 0;
+      if (com.tencent.mm.model.a.g.bDR().Km("3") != null)
       {
-        localObject = com.tencent.mm.model.a.g.bga().Sk("3").value;
-        locala = com.tencent.mm.plugin.account.friend.a.l.byi();
+        localObject = com.tencent.mm.model.a.g.bDR().Km("3").value;
+        locala = com.tencent.mm.plugin.account.friend.model.i.bWW();
         if (((String)localObject).equals("0")) {
-          this.zHG = 0;
+          this.EPi = 0;
         }
       }
       else
       {
-        if (((this.zHB > 0) || (this.zHG > 0)) && (this.zHG != 1))
+        if (((this.EPd > 0) || (this.EPi > 0)) && (this.EPi != 1))
         {
-          this.Gti = new BindMobileOrQQHeaderView(this);
-          this.mYU.addHeaderView(this.Gti);
+          this.Mpi = new BindMobileOrQQHeaderView(this);
+          this.pVC.addHeaderView(this.Mpi);
         }
-        this.mYU.setAdapter(this.Gtd);
-        this.mYU.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        this.pVC.setAdapter(this.Mpd);
+        this.pVC.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
           public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
             AppMethodBeat.i(89848);
             Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousAdapterView);
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).sg(paramAnonymousInt);
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).Fs(paramAnonymousLong);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousAdapterView);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).sc(paramAnonymousInt);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).hB(paramAnonymousLong);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
             if (NearbyFriendsUI.o(NearbyFriendsUI.this) <= 0)
             {
               i = paramAnonymousInt;
@@ -389,7 +404,7 @@ public class NearbyFriendsUI
               i = paramAnonymousInt - 1;
             }
             paramAnonymousInt = i;
-            if (com.tencent.mm.bw.a.hft())
+            if (com.tencent.mm.bp.a.iGn())
             {
               paramAnonymousInt = i;
               if (NearbyFriendsUI.m(NearbyFriendsUI.this) != null) {
@@ -406,16 +421,16 @@ public class NearbyFriendsUI
               AppMethodBeat.o(89848);
               return;
             }
-            paramAnonymousAdapterView = (cqe)NearbyFriendsUI.r(NearbyFriendsUI.this).get(i);
-            if (NearbyFriendsUI.d.Ox(paramAnonymousAdapterView.mVy))
+            paramAnonymousAdapterView = (dgy)NearbyFriendsUI.r(NearbyFriendsUI.this).get(i);
+            if (NearbyFriendsUI.d.QS(paramAnonymousAdapterView.pSf))
             {
               paramAnonymousAdapterView = (NearbyFriendsUI.a)NearbyFriendsUI.s(NearbyFriendsUI.this).get(paramAnonymousAdapterView.UserName);
-              paramAnonymousAdapterView.zHs |= 0x1;
+              paramAnonymousAdapterView.EOV |= 0x1;
               if (paramAnonymousAdapterView.jump_type == 1)
               {
                 paramAnonymousView = new AppBrandStatObject();
                 paramAnonymousView.scene = 1134;
-                ((r)com.tencent.mm.kernel.h.ae(r.class)).a(NearbyFriendsUI.this, paramAnonymousAdapterView.zHq, "", 0, 0, "", paramAnonymousView);
+                ((t)com.tencent.mm.kernel.h.ax(t.class)).a(NearbyFriendsUI.this, paramAnonymousAdapterView.EOT, "", 0, 0, "", paramAnonymousView);
               }
               for (;;)
               {
@@ -425,34 +440,35 @@ public class NearbyFriendsUI
                 if (paramAnonymousAdapterView.jump_type == 2)
                 {
                   paramAnonymousView = new Intent();
-                  paramAnonymousView.putExtra("rawUrl", paramAnonymousAdapterView.zHq);
+                  paramAnonymousView.putExtra("rawUrl", paramAnonymousAdapterView.EOT);
                   paramAnonymousView.putExtra("geta8key_scene", 25);
                   paramAnonymousView.putExtra("stastic_scene", 12);
-                  com.tencent.mm.by.c.b(NearbyFriendsUI.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+                  com.tencent.mm.br.c.b(NearbyFriendsUI.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
                 }
               }
             }
             paramAnonymousView = paramAnonymousAdapterView.UserName;
-            as localas = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(paramAnonymousView);
-            if (com.tencent.mm.contact.d.rk(localas.field_type))
+            au localau = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().JE(paramAnonymousView);
+            if (com.tencent.mm.contact.d.rs(localau.field_type))
             {
               localObject = new Intent();
               ((Intent)localObject).putExtra("Contact_User", paramAnonymousView);
               ((Intent)localObject).putExtra("Contact_Scene", 18);
               ((Intent)localObject).putExtra("Sns_from_Scene", 18);
-              ((Intent)localObject).putExtra("lbs_ticket", paramAnonymousAdapterView.Tav);
+              ((Intent)localObject).putExtra("lbs_ticket", paramAnonymousAdapterView.aant);
               ((Intent)localObject).putExtra("Contact_IsLbsGotoChatting", true);
               if ((paramAnonymousView != null) && (paramAnonymousView.length() > 0))
               {
-                if (localas.hxX()) {
-                  com.tencent.mm.plugin.report.service.h.IzE.kvStat(10298, paramAnonymousView + ",18");
+                if (localau.iZC()) {
+                  com.tencent.mm.plugin.report.service.h.OAn.kvStat(10298, paramAnonymousView + ",18");
                 }
-                paramAnonymousAdapterView = new vm();
-                paramAnonymousAdapterView.fUF.intent = ((Intent)localObject);
-                paramAnonymousAdapterView.fUF.username = paramAnonymousView;
-                EventCenter.instance.publish(paramAnonymousAdapterView);
+                paramAnonymousAdapterView = new xc();
+                paramAnonymousAdapterView.iaC.intent = ((Intent)localObject);
+                paramAnonymousAdapterView.iaC.username = paramAnonymousView;
+                paramAnonymousAdapterView.publish();
                 ((Intent)localObject).putExtra("CONTACT_INFO_UI_SOURCE", 5);
-                com.tencent.mm.plugin.nearby.a.mIG.c((Intent)localObject, NearbyFriendsUI.this);
+                ((Intent)localObject).putExtra("CONTACT_INFO_UI_SUB_SOURCE", 501);
+                com.tencent.mm.plugin.nearby.a.pFn.c((Intent)localObject, NearbyFriendsUI.this);
               }
             }
             for (;;)
@@ -462,41 +478,42 @@ public class NearbyFriendsUI
               return;
               paramAnonymousView = new Intent();
               paramAnonymousView.putExtra("Contact_User", paramAnonymousAdapterView.UserName);
-              paramAnonymousView.putExtra("Contact_Alias", paramAnonymousAdapterView.mVD);
-              paramAnonymousView.putExtra("Contact_Nick", paramAnonymousAdapterView.rWI);
-              paramAnonymousView.putExtra("Contact_Distance", paramAnonymousAdapterView.TxE);
-              paramAnonymousView.putExtra("Contact_Signature", paramAnonymousAdapterView.mVB);
-              paramAnonymousView.putExtra("Contact_RegionCode", RegionCodeDecoder.bl(paramAnonymousAdapterView.mVH, paramAnonymousAdapterView.mVz, paramAnonymousAdapterView.mVA));
-              paramAnonymousView.putExtra("Contact_Sex", paramAnonymousAdapterView.mVy);
+              paramAnonymousView.putExtra("Contact_Alias", paramAnonymousAdapterView.pSk);
+              paramAnonymousView.putExtra("Contact_Nick", paramAnonymousAdapterView.vhX);
+              paramAnonymousView.putExtra("Contact_Distance", paramAnonymousAdapterView.aaMl);
+              paramAnonymousView.putExtra("Contact_Signature", paramAnonymousAdapterView.pSi);
+              paramAnonymousView.putExtra("Contact_RegionCode", RegionCodeDecoder.bI(paramAnonymousAdapterView.pSo, paramAnonymousAdapterView.pSg, paramAnonymousAdapterView.pSh));
+              paramAnonymousView.putExtra("Contact_Sex", paramAnonymousAdapterView.pSf);
               paramAnonymousView.putExtra("Contact_IsLBSFriend", true);
               paramAnonymousView.putExtra("Contact_Scene", 18);
-              paramAnonymousView.putExtra("Contact_VUser_Info", paramAnonymousAdapterView.TxG);
-              paramAnonymousView.putExtra("Contact_VUser_Info_Flag", paramAnonymousAdapterView.TxF);
-              paramAnonymousView.putExtra("Contact_KWeibo_flag", paramAnonymousAdapterView.TxJ);
-              paramAnonymousView.putExtra("Contact_KWeibo", paramAnonymousAdapterView.TxH);
-              paramAnonymousView.putExtra("Contact_KWeiboNick", paramAnonymousAdapterView.TxI);
-              paramAnonymousView.putExtra("Contact_KSnsIFlag", paramAnonymousAdapterView.TxL.mVJ);
-              paramAnonymousView.putExtra("Contact_KSnsBgId", paramAnonymousAdapterView.TxL.mVL);
-              paramAnonymousView.putExtra("Contact_KSnsBgUrl", paramAnonymousAdapterView.TxL.mVK);
-              paramAnonymousView.putExtra("lbs_ticket", paramAnonymousAdapterView.Tav);
+              paramAnonymousView.putExtra("Contact_VUser_Info", paramAnonymousAdapterView.aaMn);
+              paramAnonymousView.putExtra("Contact_VUser_Info_Flag", paramAnonymousAdapterView.aaMm);
+              paramAnonymousView.putExtra("Contact_KWeibo_flag", paramAnonymousAdapterView.aaMq);
+              paramAnonymousView.putExtra("Contact_KWeibo", paramAnonymousAdapterView.aaMo);
+              paramAnonymousView.putExtra("Contact_KWeiboNick", paramAnonymousAdapterView.aaMp);
+              paramAnonymousView.putExtra("Contact_KSnsIFlag", paramAnonymousAdapterView.aaMs.pSq);
+              paramAnonymousView.putExtra("Contact_KSnsBgId", paramAnonymousAdapterView.aaMs.pSs);
+              paramAnonymousView.putExtra("Contact_KSnsBgUrl", paramAnonymousAdapterView.aaMs.pSr);
+              paramAnonymousView.putExtra("lbs_ticket", paramAnonymousAdapterView.aant);
               paramAnonymousView.putExtra("Contact_IsLbsGotoChatting", true);
-              if (paramAnonymousAdapterView.mVI != null)
+              if (paramAnonymousAdapterView.pSp != null)
               {
                 localObject = new com.tencent.mm.api.c();
-                ((com.tencent.mm.api.c)localObject).field_brandList = paramAnonymousAdapterView.mVI;
-                ((com.tencent.mm.api.c)localObject).field_brandFlag = paramAnonymousAdapterView.TxM.mVM;
-                ((com.tencent.mm.api.c)localObject).field_brandIconURL = paramAnonymousAdapterView.TxM.mVP;
-                ((com.tencent.mm.api.c)localObject).field_extInfo = paramAnonymousAdapterView.TxM.mVN;
-                ((com.tencent.mm.api.c)localObject).field_brandInfo = paramAnonymousAdapterView.TxM.mVO;
+                ((com.tencent.mm.api.c)localObject).field_brandList = paramAnonymousAdapterView.pSp;
+                ((com.tencent.mm.api.c)localObject).field_brandFlag = paramAnonymousAdapterView.aaMt.pSt;
+                ((com.tencent.mm.api.c)localObject).field_brandIconURL = paramAnonymousAdapterView.aaMt.pSw;
+                ((com.tencent.mm.api.c)localObject).field_extInfo = paramAnonymousAdapterView.aaMt.pSu;
+                ((com.tencent.mm.api.c)localObject).field_brandInfo = paramAnonymousAdapterView.aaMt.pSv;
                 paramAnonymousView.putExtra("KBrandInfo_item", new MCacheItem((IAutoDBItem)localObject));
               }
               paramAnonymousView.putExtra("Sns_from_Scene", 18);
               paramAnonymousView.putExtra("CONTACT_INFO_UI_SOURCE", 5);
-              com.tencent.mm.plugin.nearby.a.mIG.c(paramAnonymousView, NearbyFriendsUI.this);
+              paramAnonymousView.putExtra("CONTACT_INFO_UI_SUB_SOURCE", 501);
+              com.tencent.mm.plugin.nearby.a.pFn.c(paramAnonymousView, NearbyFriendsUI.this);
             }
           }
         });
-        this.mYU.setOnTouchListener(new View.OnTouchListener()
+        this.pVC.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
@@ -504,8 +521,8 @@ public class NearbyFriendsUI
             if (NearbyFriendsUI.t(NearbyFriendsUI.this) != null)
             {
               paramAnonymousView = NearbyFriendsUI.t(NearbyFriendsUI.this);
-              if (paramAnonymousView.mVX != null) {
-                paramAnonymousView.mVX.B(paramAnonymousMotionEvent);
+              if (paramAnonymousView.pSE != null) {
+                paramAnonymousView.pSE.B(paramAnonymousMotionEvent);
               }
             }
             AppMethodBeat.o(89849);
@@ -522,14 +539,31 @@ public class NearbyFriendsUI
             return true;
           }
         });
-        setToTop(new NearbyFriendsUI.13(this));
+        setToTop(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(89851);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+            paramAnonymousView = NearbyFriendsUI.i(NearbyFriendsUI.this);
+            paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousView);
+            localObject = new Object();
+            com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aYi(), "com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$8", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+            BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)paramAnonymousView.sb(0));
+            com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$8", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(89851);
+          }
+        });
         addIconOptionMenu(0, b.f.icons_outlined_more, new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
             AppMethodBeat.i(89855);
-            paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(NearbyFriendsUI.this, 1, false);
-            paramAnonymousMenuItem.ODU = new q.g()
+            paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.f(NearbyFriendsUI.this, 1, false);
+            paramAnonymousMenuItem.GAC = new u.i()
             {
               public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
               {
@@ -543,19 +577,19 @@ public class NearbyFriendsUI
                   return;
                   NearbyFriendsUI.a(NearbyFriendsUI.this, 4);
                   NearbyFriendsUI.u(NearbyFriendsUI.this);
-                  com.tencent.mm.kernel.h.aHG().aHp().i(16386, Integer.valueOf(NearbyFriendsUI.g(NearbyFriendsUI.this)));
+                  com.tencent.mm.kernel.h.baE().ban().B(16386, Integer.valueOf(NearbyFriendsUI.g(NearbyFriendsUI.this)));
                   NearbyFriendsUI.v(NearbyFriendsUI.this);
                   AppMethodBeat.o(89853);
                   return;
                   NearbyFriendsUI.a(NearbyFriendsUI.this, 3);
                   NearbyFriendsUI.u(NearbyFriendsUI.this);
-                  com.tencent.mm.kernel.h.aHG().aHp().i(16386, Integer.valueOf(NearbyFriendsUI.g(NearbyFriendsUI.this)));
+                  com.tencent.mm.kernel.h.baE().ban().B(16386, Integer.valueOf(NearbyFriendsUI.g(NearbyFriendsUI.this)));
                   NearbyFriendsUI.v(NearbyFriendsUI.this);
                   AppMethodBeat.o(89853);
                   return;
                   NearbyFriendsUI.a(NearbyFriendsUI.this, 1);
                   NearbyFriendsUI.u(NearbyFriendsUI.this);
-                  com.tencent.mm.kernel.h.aHG().aHp().i(16386, Integer.valueOf(NearbyFriendsUI.g(NearbyFriendsUI.this)));
+                  com.tencent.mm.kernel.h.baE().ban().B(16386, Integer.valueOf(NearbyFriendsUI.g(NearbyFriendsUI.this)));
                   NearbyFriendsUI.v(NearbyFriendsUI.this);
                   AppMethodBeat.o(89853);
                   return;
@@ -564,37 +598,37 @@ public class NearbyFriendsUI
                   NearbyFriendsUI.this.startActivityForResult(paramAnonymous2MenuItem, 2009);
                   AppMethodBeat.o(89853);
                   return;
-                  NearbyFriendsUI.b(NearbyFriendsUI.this, new com.tencent.mm.plugin.nearby.a.c(2, 0.0F, 0.0F, 0, 0, "", ""));
-                  com.tencent.mm.kernel.h.aGY().a(NearbyFriendsUI.w(NearbyFriendsUI.this), 0);
+                  NearbyFriendsUI.b(NearbyFriendsUI.this, new com.tencent.mm.plugin.nearby.model.c(2, 0.0F, 0.0F, 0, 0, "", ""));
+                  com.tencent.mm.kernel.h.aZW().a(NearbyFriendsUI.w(NearbyFriendsUI.this), 0);
                   paramAnonymous2MenuItem = NearbyFriendsUI.this;
                   AppCompatActivity localAppCompatActivity = NearbyFriendsUI.this.getContext();
                   NearbyFriendsUI.this.getString(b.g.app_tip);
-                  NearbyFriendsUI.a(paramAnonymous2MenuItem, com.tencent.mm.ui.base.h.a(localAppCompatActivity, NearbyFriendsUI.this.getString(b.g.nearby_friend_clearing_location), true, new DialogInterface.OnCancelListener()
+                  NearbyFriendsUI.a(paramAnonymous2MenuItem, com.tencent.mm.ui.base.k.a(localAppCompatActivity, NearbyFriendsUI.this.getString(b.g.Mon), true, new DialogInterface.OnCancelListener()
                   {
                     public final void onCancel(DialogInterface paramAnonymous3DialogInterface)
                     {
                       AppMethodBeat.i(89852);
-                      com.tencent.mm.kernel.h.aGY().a(NearbyFriendsUI.w(NearbyFriendsUI.this));
+                      com.tencent.mm.kernel.h.aZW().a(NearbyFriendsUI.w(NearbyFriendsUI.this));
                       AppMethodBeat.o(89852);
                     }
                   }));
                 }
               }
             };
-            paramAnonymousMenuItem.ODT = new q.f()
+            paramAnonymousMenuItem.Vtg = new u.g()
             {
-              public final void onCreateMMMenu(o paramAnonymous2o)
+              public final void onCreateMMMenu(com.tencent.mm.ui.base.s paramAnonymous2s)
               {
                 AppMethodBeat.i(89854);
-                paramAnonymous2o.mn(-1, b.g.nearby_friend_location_findmm);
-                paramAnonymous2o.mn(-1, b.g.nearby_friend_location_findgg);
-                paramAnonymous2o.mn(-1, b.g.nearby_friend_location_findall);
-                paramAnonymous2o.mn(-1, b.g.say_hi_list_lbs_title);
-                paramAnonymous2o.mn(-1, b.g.nearby_friend_clear_location_exit);
+                paramAnonymous2s.oh(-1, b.g.Mor);
+                paramAnonymous2s.oh(-1, b.g.Moq);
+                paramAnonymous2s.oh(-1, b.g.Mop);
+                paramAnonymous2s.oh(-1, b.g.say_hi_list_lbs_title);
+                paramAnonymous2s.oh(-1, b.g.Mol);
                 AppMethodBeat.o(89854);
               }
             };
-            paramAnonymousMenuItem.eik();
+            paramAnonymousMenuItem.dDn();
             AppMethodBeat.o(89855);
             return true;
           }
@@ -607,21 +641,21 @@ public class NearbyFriendsUI
     {
       for (;;)
       {
-        l.a locala;
-        this.zHB = 0;
+        i.a locala;
+        this.EPd = 0;
         continue;
         if (localException.equals("2"))
         {
-          if (locala == l.a.mWl)
+          if (locala == i.a.pSR)
           {
-            this.zHG = 2;
-            com.tencent.mm.model.a.f.So("3");
+            this.EPi = 2;
+            com.tencent.mm.model.a.f.Kq("3");
           }
         }
-        else if ((localException.equals("1")) && (locala == l.a.mWi))
+        else if ((localException.equals("1")) && (locala == i.a.pSO))
         {
-          this.zHG = 2;
-          com.tencent.mm.model.a.f.So("3");
+          this.EPi = 2;
+          com.tencent.mm.model.a.f.Kq("3");
         }
       }
     }
@@ -640,7 +674,7 @@ public class NearbyFriendsUI
       return;
       if (paramInt2 == -1)
       {
-        this.Gtg = false;
+        this.Mpg = false;
         getData();
         AppMethodBeat.o(89872);
         return;
@@ -654,29 +688,29 @@ public class NearbyFriendsUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(89867);
-    com.tencent.mm.plugin.report.service.g.ada(11);
+    com.tencent.mm.plugin.report.service.g.ahw(11);
     super.onCreate(paramBundle);
     setMMTitle(b.g.nearby_friend_title);
-    com.tencent.mm.kernel.h.aGY().a(148, this);
-    com.tencent.mm.kernel.h.aGY().a(376, this);
-    com.tencent.mm.kernel.h.aGY().a(1087, this);
-    this.iQC = com.tencent.mm.modelgeo.d.blq();
+    com.tencent.mm.kernel.h.aZW().a(148, this);
+    com.tencent.mm.kernel.h.aZW().a(376, this);
+    com.tencent.mm.kernel.h.aZW().a(1087, this);
+    this.lsy = com.tencent.mm.modelgeo.d.bJl();
     initView();
-    this.Gth = new String[] { getResources().getString(b.g.nearby_friend_location_findmm), getResources().getString(b.g.nearby_friend_location_findgg), getResources().getString(b.g.nearby_friend_location_findall), getResources().getString(b.g.say_hi_list_lbs_title) };
-    this.zHD = Util.nullAs((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(16386, null), 1);
+    this.Mph = new String[] { getResources().getString(b.g.Mor), getResources().getString(b.g.Moq), getResources().getString(b.g.Mop), getResources().getString(b.g.say_hi_list_lbs_title) };
+    this.EPf = Util.nullAs((Integer)com.tencent.mm.kernel.h.baE().ban().d(16386, null), 1);
     Object localObject1;
     int j;
     int i;
     label232:
     Object localObject2;
-    if (this.zHD == 3)
+    if (this.EPf == 3)
     {
       setTitleLogo(0, b.f.ic_sex_male);
       getData();
       if (!LocaleUtil.isSimplifiedChineseAppLang()) {
         break label797;
       }
-      localObject1 = XmlParser.parseXml(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vGV, ""), "lbsads", null);
+      localObject1 = XmlParser.parseXml(((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.yWO, ""), "lbsads", null);
       if (localObject1 == null) {
         break label797;
       }
@@ -700,27 +734,27 @@ public class NearbyFriendsUI
       localObject2 = new a((byte)0);
       ((a)localObject2).id = ((String)((Map)localObject1).get(paramBundle + ".$id"));
       ((a)localObject2).pos = Util.getInt((String)((Map)localObject1).get(paramBundle + ".$pos"), 0);
-      ((a)localObject2).zHo = Util.getInt((String)((Map)localObject1).get(paramBundle + ".$close_times"), 0);
-      ((a)localObject2).zHp = Util.getInt((String)((Map)localObject1).get(paramBundle + ".$show_times"), 2147483647);
+      ((a)localObject2).EOR = Util.getInt((String)((Map)localObject1).get(paramBundle + ".$close_times"), 0);
+      ((a)localObject2).EOS = Util.getInt((String)((Map)localObject1).get(paramBundle + ".$show_times"), 2147483647);
       ((a)localObject2).name = ((String)((Map)localObject1).get(paramBundle + ".name"));
       ((a)localObject2).desc = ((String)((Map)localObject1).get(paramBundle + ".desc"));
       ((a)localObject2).icon = ((String)((Map)localObject1).get(paramBundle + ".icon"));
       ((a)localObject2).jump_type = Util.getInt((String)((Map)localObject1).get(paramBundle + ".jump.$type"), 0);
-      ((a)localObject2).zHq = ((String)((Map)localObject1).get(paramBundle + ".jump"));
-      this.zHm.put(((a)localObject2).id, localObject2);
+      ((a)localObject2).EOT = ((String)((Map)localObject1).get(paramBundle + ".jump"));
+      this.EOP.put(((a)localObject2).id, localObject2);
       i += 1;
       break label232;
-      if (this.zHD == 4)
+      if (this.EPf == 4)
       {
         setTitleLogo(0, b.f.ic_sex_female);
         break;
       }
       setTitleLogo(0, 0);
-      this.zHD = 1;
+      this.EPf = 1;
       break;
     }
     label675:
-    paramBundle = com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vxu, null);
+    paramBundle = com.tencent.mm.kernel.h.baE().ban().get(at.a.acZg, null);
     if (paramBundle == null) {}
     for (paramBundle = "";; paramBundle = (String)paramBundle)
     {
@@ -732,11 +766,11 @@ public class NearbyFriendsUI
         localObject1 = paramBundle[i].split(":");
         if (localObject1.length == 3)
         {
-          localObject2 = (a)this.zHm.get(localObject1[0]);
+          localObject2 = (a)this.EOP.get(localObject1[0]);
           if (localObject2 != null)
           {
-            ((a)localObject2).zHr = Util.getInt(localObject1[1], 0);
-            ((a)localObject2).tzm = Util.getInt(localObject1[2], 0);
+            ((a)localObject2).EOU = Util.getInt(localObject1[1], 0);
+            ((a)localObject2).wDI = Util.getInt(localObject1[2], 0);
           }
         }
         i += 1;
@@ -749,44 +783,44 @@ public class NearbyFriendsUI
   public void onDestroy()
   {
     AppMethodBeat.i(89875);
-    if (this.zHG > 0) {
-      com.tencent.mm.model.a.f.Sp("3");
+    if (this.EPi > 0) {
+      com.tencent.mm.model.a.f.Kr("3");
     }
-    com.tencent.mm.plugin.report.service.g.adc(11);
-    com.tencent.mm.kernel.h.aGY().b(148, this);
-    com.tencent.mm.kernel.h.aGY().b(376, this);
-    com.tencent.mm.kernel.h.aGY().b(1087, this);
+    com.tencent.mm.plugin.report.service.g.ahy(11);
+    com.tencent.mm.kernel.h.aZW().b(148, this);
+    com.tencent.mm.kernel.h.aZW().b(376, this);
+    com.tencent.mm.kernel.h.aZW().b(1087, this);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
-    if (this.iQC != null) {
-      this.iQC.b(this.iQJ);
+    if (this.lsy != null) {
+      this.lsy.a(this.lsF);
     }
-    com.tencent.mm.am.q.bhR().cancel();
+    com.tencent.mm.modelavatar.q.bFG().cancel();
     Object localObject;
-    if (this.Gtd != null)
+    if (this.Mpd != null)
     {
-      localObject = this.Gtd;
-      if (((c)localObject).mVX != null)
+      localObject = this.Mpd;
+      if (((c)localObject).pSE != null)
       {
-        ((c)localObject).mVX.detach();
-        ((c)localObject).mVX = null;
+        ((c)localObject).pSE.detach();
+        ((c)localObject).pSE = null;
       }
     }
-    if (this.wtq.size() > 0)
+    if (this.zPw.size() > 0)
     {
-      Iterator localIterator = this.zHm.values().iterator();
+      Iterator localIterator = this.EOP.values().iterator();
       localObject = "";
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
-        localObject = new StringBuilder().append((String)localObject).append("|").append(locala.id).append(":").append(locala.zHr).append(":");
-        int i = locala.tzm + 1;
-        locala.tzm = i;
+        localObject = new StringBuilder().append((String)localObject).append("|").append(locala.id).append(":").append(locala.EOU).append(":");
+        int i = locala.wDI + 1;
+        locala.wDI = i;
         localObject = i;
-        com.tencent.mm.plugin.report.service.h.IzE.a(17431, new Object[] { locala.id, Integer.valueOf(locala.zHs + 1) });
+        com.tencent.mm.plugin.report.service.h.OAn.b(17431, new Object[] { locala.id, Integer.valueOf(locala.EOV + 1) });
       }
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vxu, localObject);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acZg, localObject);
     }
     super.onDestroy();
     AppMethodBeat.o(89875);
@@ -796,10 +830,10 @@ public class NearbyFriendsUI
   {
     AppMethodBeat.i(89873);
     super.onPause();
-    if (this.iQC != null) {
-      this.iQC.b(this.iQJ);
+    if (this.lsy != null) {
+      this.lsy.a(this.lsF);
     }
-    EventCenter.instance.removeListener(this.iQL);
+    this.lsH.dead();
     AppMethodBeat.o(89873);
   }
   
@@ -807,20 +841,22 @@ public class NearbyFriendsUI
   {
     AppMethodBeat.i(89874);
     super.onResume();
-    if (this.iQC != null) {
-      this.iQC.a(this.iQJ, true);
+    if (this.lsy != null)
+    {
+      this.lsy.a(this.lsF, true, false);
+      l.kK(22, 10);
     }
-    fiz();
-    this.Gtd.notifyDataSetChanged();
-    com.tencent.mm.kernel.h.aHE().aGH();
-    if (((n)com.tencent.mm.kernel.h.ae(n.class)).eSb().cHo() == 0) {
-      this.mYU.removeHeaderView(this.zHy);
+    gsQ();
+    this.Mpd.notifyDataSetChanged();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (((n)com.tencent.mm.kernel.h.ax(n.class)).gaW().dkF() == 0) {
+      this.pVC.removeHeaderView(this.EPa);
     }
-    EventCenter.instance.addListener(this.iQL);
+    this.lsH.alive();
     AppMethodBeat.o(89874);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(89876);
     if (this.tipDialog != null)
@@ -831,32 +867,32 @@ public class NearbyFriendsUI
     label319:
     label452:
     Object localObject;
-    if (paramq.getType() == 148)
+    if (paramp.getType() == 148)
     {
       if (this.tipDialog != null)
       {
         this.tipDialog.dismiss();
         this.tipDialog = null;
       }
-      int i = ((com.tencent.mm.plugin.nearby.a.c)paramq).ZB();
-      if ((this.Gte == null) && ((i == 1) || (i == 3) || (i == 4)))
+      int i = ((com.tencent.mm.plugin.nearby.model.c)paramp).bIO();
+      if ((this.Mpe == null) && ((i == 1) || (i == 3) || (i == 4)))
       {
         AppMethodBeat.o(89876);
         return;
       }
-      if (((i == 1) || (i == 3) || (i == 4)) && (this.Gtg))
+      if (((i == 1) || (i == 3) || (i == 4)) && (this.Mpg))
       {
         Log.v("MicroMsg.NearbyFriend", "onSceneEnd data already requested, code=%d", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(89876);
         return;
       }
-      if ((this.GsS == null) && (i == 2))
+      if ((this.MoS == null) && (i == 2))
       {
         AppMethodBeat.o(89876);
         return;
       }
       Log.i("MicroMsg.NearbyFriend", "onSceneEnd: errType=%d, errCode=%d, errMsg=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-      if (paramq.getType() != 148)
+      if (paramp.getType() != 148)
       {
         AppMethodBeat.o(89876);
         return;
@@ -865,26 +901,26 @@ public class NearbyFriendsUI
       {
         if ((i == 1) || (i == 3) || (i == 4))
         {
-          this.wtq = ((com.tencent.mm.plugin.nearby.a.c)paramq).fiw();
-          if ((this.wtq == null) || (this.wtq.size() == 0))
+          this.zPw = ((com.tencent.mm.plugin.nearby.model.c)paramp).gsN();
+          if ((this.zPw == null) || (this.zPw.size() == 0))
           {
-            findViewById(b.c.nearby_friend_not_found).setVisibility(0);
-            this.mYU.setVisibility(8);
-            fiA();
-            com.tencent.mm.plugin.report.service.g.adc(11);
-            if (this.zHD != 3) {
+            findViewById(b.c.fPi).setVisibility(0);
+            this.pVC.setVisibility(8);
+            gsR();
+            com.tencent.mm.plugin.report.service.g.ahy(11);
+            if (this.EPf != 3) {
               break label766;
             }
             setTitleLogo(0, b.f.ic_sex_male);
-            this.Gtg = true;
-            this.Gte = null;
+            this.Mpg = true;
+            this.Mpe = null;
           }
         }
         else
         {
-          if (((com.tencent.mm.plugin.nearby.a.c)paramq).ZB() == 2)
+          if (((com.tencent.mm.plugin.nearby.model.c)paramp).bIO() == 2)
           {
-            com.tencent.mm.ui.base.h.d(getContext(), getString(b.g.nearby_friend_clear_location_ok), "", new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.k.d(getContext(), getString(b.g.EHm), "", new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
@@ -893,126 +929,126 @@ public class NearbyFriendsUI
                 AppMethodBeat.o(89843);
               }
             });
-            this.GsS = null;
+            this.MoS = null;
           }
-          if (!((com.tencent.mm.plugin.nearby.a.c)paramq).fiu()) {
+          if (!((com.tencent.mm.plugin.nearby.model.c)paramp).gsL()) {
             break label810;
           }
-          paramString = getString(b.g.nearby_lbsroom_name);
-          paramInt1 = ((com.tencent.mm.plugin.nearby.a.c)paramq).fiv();
-          if (this.zHv != null)
+          paramString = getString(b.g.EHq);
+          paramInt1 = ((com.tencent.mm.plugin.nearby.model.c)paramp).gsM();
+          if (this.EOX != null)
           {
-            if (this.Gtj != null) {
+            if (this.Mpj != null) {
               break label799;
             }
-            this.Gtj = View.inflate(this, b.d.nearby_group_header_item, null);
-            this.zHv.addView(this.Gtj);
-            this.Gtj.setOnClickListener(new NearbyFriendsUI.2(this));
-            ((TextView)this.Gtj.findViewById(b.c.nearby_group_title)).setText(paramString);
+            this.Mpj = View.inflate(this, b.d.EGL, null);
+            this.EOX.addView(this.Mpj);
+            this.Mpj.setOnClickListener(new NearbyFriendsUI.2(this));
+            ((TextView)this.Mpj.findViewById(b.c.EGl)).setText(paramString);
             if (paramInt1 != 0) {
-              ((TextView)this.Gtj.findViewById(b.c.nearby_group_member_count)).setText(String.format(getResources().getQuantityString(b.e.nearby_lbsroom_member_count, paramInt1, new Object[] { Integer.valueOf(paramInt1) }), new Object[0]));
+              ((TextView)this.Mpj.findViewById(b.c.EGk)).setText(String.format(getResources().getQuantityString(b.e.EHj, paramInt1, new Object[] { Integer.valueOf(paramInt1) }), new Object[0]));
             }
           }
         }
         for (;;)
         {
-          this.zHE = true;
+          this.EPg = true;
           AppMethodBeat.o(89876);
           return;
           paramString = new LinkedList();
-          localObject = this.wtq.iterator();
+          localObject = this.zPw.iterator();
           paramInt1 = 0;
           while (((Iterator)localObject).hasNext())
           {
-            cqe localcqe = (cqe)((Iterator)localObject).next();
-            if (((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwd(localcqe.UserName))
+            dgy localdgy = (dgy)((Iterator)localObject).next();
+            if (((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().bxr(localdgy.UserName))
             {
-              paramString.add(paramInt1, localcqe);
+              paramString.add(paramInt1, localdgy);
               paramInt1 += 1;
             }
-            else if ((!Util.isNullOrNil(localcqe.UserName)) && (!Util.isNullOrNil(localcqe.TxE)))
+            else if ((!Util.isNullOrNil(localdgy.UserName)) && (!Util.isNullOrNil(localdgy.aaMl)))
             {
-              paramString.add(localcqe);
+              paramString.add(localdgy);
             }
           }
-          this.wtq.clear();
-          this.wtq = paramString;
-          if ((this.wtq == null) || (this.wtq.size() == 0))
+          this.zPw.clear();
+          this.zPw = paramString;
+          if ((this.zPw == null) || (this.zPw.size() == 0))
           {
-            findViewById(b.c.nearby_friend_not_found).setVisibility(0);
-            this.mYU.setVisibility(8);
+            findViewById(b.c.fPi).setVisibility(0);
+            this.pVC.setVisibility(8);
             break;
           }
-          findViewById(b.c.nearby_friend_not_found).setVisibility(8);
-          dMj();
-          this.Gtd.notifyDataSetChanged();
-          if (this.Gtd.getCount() > 0) {
-            this.mYU.setSelection(0);
+          findViewById(b.c.fPi).setVisibility(8);
+          eGj();
+          this.Mpd.notifyDataSetChanged();
+          if (this.Mpd.getCount() > 0) {
+            this.pVC.setSelection(0);
           }
-          this.mYU.post(new Runnable()
+          this.pVC.post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(89842);
-              com.tencent.mm.plugin.report.service.g.adb(11);
+              com.tencent.mm.plugin.report.service.g.ahx(11);
               AppMethodBeat.o(89842);
             }
           });
           break;
           label766:
-          if (this.zHD == 4)
+          if (this.EPf == 4)
           {
             setTitleLogo(0, b.f.ic_sex_female);
             break label319;
           }
           setTitleLogo(0, 0);
-          this.zHD = 1;
+          this.EPf = 1;
           break label319;
           label799:
-          this.Gtj.setVisibility(0);
+          this.Mpj.setVisibility(0);
           break label452;
           label810:
-          if ((this.Gtj != null) && (this.zHv != null)) {
-            this.Gtj.setVisibility(8);
+          if ((this.Mpj != null) && (this.EOX != null)) {
+            this.Mpj.setVisibility(8);
           }
         }
       }
       if ((i == 1) || (i == 3) || (i == 4))
       {
-        localObject = (TextView)findViewById(b.c.nearby_friend_not_found);
+        localObject = (TextView)findViewById(b.c.fPi);
         ((TextView)localObject).setVisibility(0);
-        fiA();
+        gsR();
         if ((paramString == null) || (paramString.length() <= 0)) {
           break label1164;
         }
       }
     }
     label1164:
-    for (paramString = com.tencent.mm.h.a.Kb(paramString);; paramString = null)
+    for (paramString = com.tencent.mm.broadcast.a.CH(paramString);; paramString = null)
     {
       if ((paramString != null) && (paramString.desc != null) && (paramString.desc.length() > 0)) {
         ((TextView)localObject).setText(paramString.desc);
       }
       for (;;)
       {
-        this.mYU.setVisibility(8);
-        this.Gte = null;
-        if (((com.tencent.mm.plugin.nearby.a.c)paramq).ZB() == 2)
+        this.pVC.setVisibility(8);
+        this.Mpe = null;
+        if (((com.tencent.mm.plugin.nearby.model.c)paramp).bIO() == 2)
         {
-          Toast.makeText(this, b.g.nearby_friend_clear_location_failed, 1).show();
-          this.GsS = null;
+          Toast.makeText(this, b.g.EHl, 1).show();
+          this.MoS = null;
         }
         AppMethodBeat.o(89876);
         return;
         if (paramInt2 == -2001) {
-          ((TextView)localObject).setText(getString(b.g.nearby_friend_expose));
+          ((TextView)localObject).setText(getString(b.g.EHn));
         } else {
-          ((TextView)localObject).setText(getString(b.g.nearby_friend_get_friend_fail));
+          ((TextView)localObject).setText(getString(b.g.EHo));
         }
       }
-      if (paramq.getType() == 376)
+      if (paramp.getType() == 376)
       {
-        if (((com.tencent.mm.plugin.nearby.a.d)paramq).ZB() != 1)
+        if (((com.tencent.mm.plugin.nearby.model.d)paramp).bIO() != 1)
         {
           AppMethodBeat.o(89876);
           return;
@@ -1022,17 +1058,17 @@ public class NearbyFriendsUI
           this.tipDialog.dismiss();
           this.tipDialog = null;
         }
-        if ((paramInt1 == 0) && (paramInt2 == 0) && (((com.tencent.mm.plugin.nearby.a.d)paramq).mye != null))
+        if ((paramInt1 == 0) && (paramInt2 == 0) && (((com.tencent.mm.plugin.nearby.model.d)paramp).pss != null))
         {
-          paramString = ((com.tencent.mm.plugin.nearby.a.d)paramq).mye;
-          com.tencent.mm.plugin.nearby.a.b.jo(paramString, ((com.tencent.mm.plugin.nearby.a.d)paramq).GsA);
-          paramq = new Intent();
-          paramq.putExtra("Chat_User", paramString);
-          com.tencent.mm.plugin.nearby.a.mIG.e(paramq, this);
+          paramString = ((com.tencent.mm.plugin.nearby.model.d)paramp).pss;
+          com.tencent.mm.plugin.nearby.model.b.kF(paramString, ((com.tencent.mm.plugin.nearby.model.d)paramp).MoA);
+          paramp = new Intent();
+          paramp.putExtra("Chat_User", paramString);
+          com.tencent.mm.plugin.nearby.a.pFn.e(paramp, this);
           AppMethodBeat.o(89876);
           return;
         }
-        com.tencent.mm.ui.base.h.a(getContext(), b.g.nearby_lbsroom_join_failed, b.g.app_tip, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.k.a(getContext(), b.g.EHp, b.g.app_tip, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
@@ -1050,32 +1086,32 @@ public class NearbyFriendsUI
   
   static final class a
   {
+    int EOR;
+    int EOS;
+    String EOT;
+    int EOU;
+    int EOV = -1;
     String desc;
     String icon;
     String id;
     int jump_type;
     String name;
     int pos;
-    boolean rED = false;
-    int tzm;
-    int zHo;
-    int zHp;
-    String zHq;
-    int zHr;
-    int zHs = -1;
+    boolean uPP = false;
+    int wDI;
   }
   
   final class b
   {
-    public float lLr;
-    public float lLs;
-    public int zHu;
+    public int EOW;
+    public float oDT;
+    public float oDU;
     
     public b(float paramFloat1, float paramFloat2, int paramInt)
     {
-      this.lLr = paramFloat1;
-      this.lLs = paramFloat2;
-      this.zHu = paramInt;
+      this.oDT = paramFloat1;
+      this.oDU = paramFloat2;
+      this.EOW = paramInt;
     }
   }
   
@@ -1083,33 +1119,33 @@ public class NearbyFriendsUI
     extends BaseAdapter
   {
     private final Context context;
-    com.tencent.mm.ui.applet.b mVX;
-    private com.tencent.mm.ui.applet.b.b mVY;
+    com.tencent.mm.ui.applet.b pSE;
+    private com.tencent.mm.ui.applet.b.b pSF;
     
     public c(Context paramContext)
     {
       AppMethodBeat.i(89860);
-      this.mVX = new com.tencent.mm.ui.applet.b(new com.tencent.mm.ui.applet.b.a()
+      this.pSE = new com.tencent.mm.ui.applet.b(new com.tencent.mm.ui.applet.b.a()
       {
-        public final Bitmap aaG(String paramAnonymousString)
+        public final Bitmap getHeadImg(String paramAnonymousString)
         {
           AppMethodBeat.i(89856);
-          paramAnonymousString = com.tencent.mm.am.d.a(paramAnonymousString, false, -1, null);
+          paramAnonymousString = com.tencent.mm.modelavatar.d.a(paramAnonymousString, false, -1, null);
           AppMethodBeat.o(89856);
           return paramAnonymousString;
         }
       });
-      this.mVY = null;
+      this.pSF = null;
       this.context = paramContext;
       AppMethodBeat.o(89860);
     }
     
-    public final cqe Ow(int paramInt)
+    public final dgy QR(int paramInt)
     {
       AppMethodBeat.i(89863);
-      cqe localcqe = (cqe)NearbyFriendsUI.r(NearbyFriendsUI.this).get(paramInt);
+      dgy localdgy = (dgy)NearbyFriendsUI.r(NearbyFriendsUI.this).get(paramInt);
       AppMethodBeat.o(89863);
-      return localcqe;
+      return localdgy;
     }
     
     public final int getCount()
@@ -1128,10 +1164,10 @@ public class NearbyFriendsUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(89862);
-      if (this.mVY == null) {
-        this.mVY = new com.tencent.mm.ui.applet.b.b()
+      if (this.pSF == null) {
+        this.pSF = new com.tencent.mm.ui.applet.b.b()
         {
-          public final int byf()
+          public final int bWT()
           {
             AppMethodBeat.i(89858);
             int i = NearbyFriendsUI.c.this.getCount();
@@ -1139,7 +1175,7 @@ public class NearbyFriendsUI
             return i;
           }
           
-          public final String yk(int paramAnonymousInt)
+          public final String yq(int paramAnonymousInt)
           {
             AppMethodBeat.i(89857);
             if ((paramAnonymousInt < 0) || (paramAnonymousInt >= NearbyFriendsUI.c.this.getCount()))
@@ -1148,20 +1184,20 @@ public class NearbyFriendsUI
               AppMethodBeat.o(89857);
               return null;
             }
-            Object localObject = NearbyFriendsUI.c.this.Ow(paramAnonymousInt);
+            Object localObject = NearbyFriendsUI.c.this.QR(paramAnonymousInt);
             if (localObject == null)
             {
               AppMethodBeat.o(89857);
               return null;
             }
-            localObject = ((cqe)localObject).UserName;
+            localObject = ((dgy)localObject).UserName;
             AppMethodBeat.o(89857);
             return localObject;
           }
         };
       }
-      if (this.mVX != null) {
-        this.mVX.a(paramInt, this.mVY);
+      if (this.pSE != null) {
+        this.pSE.a(paramInt, this.pSF);
       }
       Object localObject1;
       label381:
@@ -1169,81 +1205,81 @@ public class NearbyFriendsUI
       if (paramView == null)
       {
         paramViewGroup = new NearbyFriendsUI.e();
-        paramView = View.inflate(this.context, b.d.nearby_friend_item, null);
-        paramViewGroup.mUr = ((TextView)paramView.findViewById(b.c.nearby_friend_name));
-        paramViewGroup.zHV = ((TextView)paramView.findViewById(b.c.nearby_friend_sign));
-        paramViewGroup.zHU = ((TextView)paramView.findViewById(b.c.nearby_friend_distance));
-        paramViewGroup.mWb = ((ImageView)paramView.findViewById(b.c.nearby_friend_avatar_iv));
-        paramViewGroup.mWc = ((TextView)paramView.findViewById(b.c.nearby_friend_is_friend));
-        paramViewGroup.zHW = ((ImageView)paramView.findViewById(b.c.nearby_friend_vuserinfo));
-        paramViewGroup.zHX = ((ImageView)paramView.findViewById(b.c.nearby_friend_sns));
-        paramViewGroup.zIa = ((ImageView)paramView.findViewById(b.c.nearby_friend_ad_icon_1));
-        paramViewGroup.zIb = ((ImageView)paramView.findViewById(b.c.nearby_friend_ad_icon_2));
-        paramViewGroup.zIc = ((ImageView)paramView.findViewById(b.c.nearby_friend_ad_icon_3));
-        paramViewGroup.kHA = ((ImageView)paramView.findViewById(b.c.close_btn));
-        localObject1 = paramViewGroup.zHX.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject1).height = com.tencent.mm.ci.a.aY(this.context, com.tencent.mm.plugin.nearby.b.b.NormalPadding);
-        ((ViewGroup.LayoutParams)localObject1).width = com.tencent.mm.ci.a.aY(this.context, com.tencent.mm.plugin.nearby.b.b.NormalPadding);
-        paramViewGroup.zHX.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        paramViewGroup.zHZ = ((ImageView)paramView.findViewById(b.c.nearby_friend_sex));
+        paramView = View.inflate(this.context, b.d.Moh, null);
+        paramViewGroup.pQZ = ((TextView)paramView.findViewById(b.c.nearby_friend_name));
+        paramViewGroup.EPw = ((TextView)paramView.findViewById(b.c.fPk));
+        paramViewGroup.EPv = ((TextView)paramView.findViewById(b.c.fPf));
+        paramViewGroup.avatar = ((ImageView)paramView.findViewById(b.c.nearby_friend_avatar_iv));
+        paramViewGroup.pSI = ((TextView)paramView.findViewById(b.c.fPg));
+        paramViewGroup.EPx = ((ImageView)paramView.findViewById(b.c.fPl));
+        paramViewGroup.EPy = ((ImageView)paramView.findViewById(b.c.EGj));
+        paramViewGroup.EPA = ((ImageView)paramView.findViewById(b.c.EGf));
+        paramViewGroup.EPB = ((ImageView)paramView.findViewById(b.c.EGg));
+        paramViewGroup.EPC = ((ImageView)paramView.findViewById(b.c.EGh));
+        paramViewGroup.nkq = ((ImageView)paramView.findViewById(b.c.close_btn));
+        localObject1 = paramViewGroup.EPy.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject1).height = com.tencent.mm.cd.a.br(this.context, com.tencent.mm.plugin.nearby.b.b.NormalPadding);
+        ((ViewGroup.LayoutParams)localObject1).width = com.tencent.mm.cd.a.br(this.context, com.tencent.mm.plugin.nearby.b.b.NormalPadding);
+        paramViewGroup.EPy.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        paramViewGroup.DSo = ((ImageView)paramView.findViewById(b.c.fPj));
         paramView.setTag(paramViewGroup);
-        localObject1 = (cqe)NearbyFriendsUI.r(NearbyFriendsUI.this).get(paramInt);
-        paramViewGroup.mUr.setText(com.tencent.mm.pluginsdk.ui.span.l.b(this.context, ((cqe)localObject1).rWI, paramViewGroup.mUr.getTextSize()));
+        localObject1 = (dgy)NearbyFriendsUI.r(NearbyFriendsUI.this).get(paramInt);
+        paramViewGroup.pQZ.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this.context, ((dgy)localObject1).vhX, paramViewGroup.pQZ.getTextSize()));
         if (NearbyFriendsUI.g(NearbyFriendsUI.this) != 1) {
           break label875;
         }
-        switch (((cqe)localObject1).mVy)
+        switch (((dgy)localObject1).pSf)
         {
         default: 
-          paramViewGroup.zHZ.setVisibility(8);
-          if (((cqe)localObject1).TxF != 0)
+          paramViewGroup.DSo.setVisibility(8);
+          if (((dgy)localObject1).aaMm != 0)
           {
-            paramViewGroup.zHW.setVisibility(0);
-            localObject2 = BackwardSupportUtil.BitmapFactory.decodeFile(az.a.ltt.uS(((cqe)localObject1).TxF), 2.0F);
-            paramViewGroup.zHW.setImageBitmap((Bitmap)localObject2);
-            paramViewGroup.zHZ.setVisibility(8);
+            paramViewGroup.EPx.setVisibility(0);
+            localObject2 = BackwardSupportUtil.BitmapFactory.decodeFile(az.a.okR.vd(((dgy)localObject1).aaMm), 2.0F);
+            paramViewGroup.EPx.setImageBitmap((Bitmap)localObject2);
+            paramViewGroup.DSo.setVisibility(8);
             label434:
-            paramViewGroup.zHU.setText(((cqe)localObject1).TxE);
-            paramViewGroup.zIa.setVisibility(8);
-            paramViewGroup.zIb.setVisibility(8);
-            paramViewGroup.zIc.setVisibility(8);
-            paramViewGroup.kHA.setVisibility(8);
-            if ((localObject1 instanceof com.tencent.mm.plugin.nearby.a.a))
+            paramViewGroup.EPv.setText(((dgy)localObject1).aaMl);
+            paramViewGroup.EPA.setVisibility(8);
+            paramViewGroup.EPB.setVisibility(8);
+            paramViewGroup.EPC.setVisibility(8);
+            paramViewGroup.nkq.setVisibility(8);
+            if ((localObject1 instanceof com.tencent.mm.plugin.nearby.model.a))
             {
-              localObject2 = ((com.tencent.mm.plugin.nearby.a.a)localObject1).Gsx;
+              localObject2 = ((com.tencent.mm.plugin.nearby.model.a)localObject1).Mox;
               if ((localObject2 == null) || (((LinkedList)localObject2).size() != 1)) {
                 break label899;
               }
-              paramViewGroup.zIa.setVisibility(0);
-              NearbyFriendsUI.t(paramViewGroup.zIa, (String)((LinkedList)localObject2).get(0));
+              paramViewGroup.EPA.setVisibility(0);
+              NearbyFriendsUI.u(paramViewGroup.EPA, (String)((LinkedList)localObject2).get(0));
               label538:
-              localObject2 = (NearbyFriendsUI.a)NearbyFriendsUI.s(NearbyFriendsUI.this).get(((cqe)localObject1).UserName);
+              localObject2 = (NearbyFriendsUI.a)NearbyFriendsUI.s(NearbyFriendsUI.this).get(((dgy)localObject1).UserName);
               if (localObject2 != null)
               {
-                if (((NearbyFriendsUI.a)localObject2).zHs != -1) {
+                if (((NearbyFriendsUI.a)localObject2).EOV != -1) {
                   break label1053;
                 }
                 paramInt = 0;
                 label576:
-                ((NearbyFriendsUI.a)localObject2).zHs = paramInt;
-                if (((NearbyFriendsUI.a)localObject2).zHo > 0) {
-                  paramViewGroup.kHA.setVisibility(0);
+                ((NearbyFriendsUI.a)localObject2).EOV = paramInt;
+                if (((NearbyFriendsUI.a)localObject2).EOR > 0) {
+                  paramViewGroup.nkq.setVisibility(0);
                 }
               }
-              paramViewGroup.kHA.setOnClickListener(new View.OnClickListener()
+              paramViewGroup.nkq.setOnClickListener(new View.OnClickListener()
               {
                 public final void onClick(View paramAnonymousView)
                 {
                   AppMethodBeat.i(89859);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                  localb.bn(paramAnonymousView);
-                  com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$NearbyFriendAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-                  paramAnonymousView = (NearbyFriendsUI.a)NearbyFriendsUI.s(NearbyFriendsUI.this).get(this.Gtr.UserName);
+                  localb.cH(paramAnonymousView);
+                  com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsUI$NearbyFriendAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+                  paramAnonymousView = (NearbyFriendsUI.a)NearbyFriendsUI.s(NearbyFriendsUI.this).get(this.Mpr.UserName);
                   if (paramAnonymousView != null)
                   {
-                    paramAnonymousView.zHr += 1;
-                    paramAnonymousView.rED = true;
-                    paramAnonymousView.zHs |= 0x2;
+                    paramAnonymousView.EOU += 1;
+                    paramAnonymousView.uPP = true;
+                    paramAnonymousView.EOV |= 0x2;
                   }
                   NearbyFriendsUI.z(NearbyFriendsUI.this);
                   NearbyFriendsUI.c.this.notifyDataSetChanged();
@@ -1252,31 +1288,31 @@ public class NearbyFriendsUI
                 }
               });
             }
-            if ((((cqe)localObject1).mVB != null) && (!((cqe)localObject1).mVB.trim().equals(""))) {
+            if ((((dgy)localObject1).pSi != null) && (!((dgy)localObject1).pSi.trim().equals(""))) {
               break label1062;
             }
-            paramViewGroup.zHV.setVisibility(8);
+            paramViewGroup.EPw.setVisibility(8);
             label649:
-            if ((((cqe)localObject1).TxL == null) || ((((cqe)localObject1).TxL.mVJ & 0x1) <= 0)) {
+            if ((((dgy)localObject1).aaMs == null) || ((((dgy)localObject1).aaMs.pSq & 0x1) <= 0)) {
               break label1099;
             }
-            paramViewGroup.zHX.setVisibility(0);
+            paramViewGroup.EPy.setVisibility(0);
             label678:
-            if (!NearbyFriendsUI.d.Ox(((cqe)localObject1).mVy)) {
+            if (!NearbyFriendsUI.d.QS(((dgy)localObject1).pSf)) {
               break label1111;
             }
-            paramViewGroup.mWb.setImageBitmap(null);
-            localObject2 = new c.a();
-            ((c.a)localObject2).prefixPath = com.tencent.mm.plugin.image.d.bbW();
-            ((c.a)localObject2).lRD = true;
-            ((c.a)localObject2).kOl = true;
-            localObject2 = ((c.a)localObject2).bmL();
-            com.tencent.mm.ay.q.bml().a(((cqe)localObject1).SjJ, paramViewGroup.mWb, (com.tencent.mm.ay.a.a.c)localObject2);
-            if (Util.isNullOrNil(((cqe)localObject1).mVD)) {
+            paramViewGroup.avatar.setImageBitmap(null);
+            localObject2 = new com.tencent.mm.modelimage.loader.a.c.a();
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject2).prefixPath = com.tencent.mm.plugin.image.d.bzL();
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject2).oKp = true;
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject2).nqa = true;
+            localObject2 = ((com.tencent.mm.modelimage.loader.a.c.a)localObject2).bKx();
+            r.bKe().a(((dgy)localObject1).ZhP, paramViewGroup.avatar, (com.tencent.mm.modelimage.loader.a.c)localObject2);
+            if (Util.isNullOrNil(((dgy)localObject1).pSk)) {
               break label1299;
             }
-            paramViewGroup.mWc.setText(((cqe)localObject1).mVD);
-            paramViewGroup.mWc.setVisibility(0);
+            paramViewGroup.pSI.setText(((dgy)localObject1).pSk);
+            paramViewGroup.pSI.setVisibility(0);
           }
           break;
         }
@@ -1287,74 +1323,74 @@ public class NearbyFriendsUI
         return paramView;
         paramViewGroup = (NearbyFriendsUI.e)paramView.getTag();
         break;
-        paramViewGroup.zHZ.setVisibility(0);
-        paramViewGroup.zHZ.setImageResource(b.f.ic_sex_male);
-        paramViewGroup.zHZ.setContentDescription(this.context.getString(b.g.male_Imgbtn));
+        paramViewGroup.DSo.setVisibility(0);
+        paramViewGroup.DSo.setImageResource(b.f.ic_sex_male);
+        paramViewGroup.DSo.setContentDescription(this.context.getString(b.g.male_Imgbtn));
         break label381;
-        paramViewGroup.zHZ.setVisibility(0);
-        paramViewGroup.zHZ.setImageResource(b.f.ic_sex_female);
-        paramViewGroup.zHZ.setContentDescription(this.context.getString(b.g.female_Imgbtn));
+        paramViewGroup.DSo.setVisibility(0);
+        paramViewGroup.DSo.setImageResource(b.f.ic_sex_female);
+        paramViewGroup.DSo.setContentDescription(this.context.getString(b.g.female_Imgbtn));
         break label381;
         label875:
-        paramViewGroup.zHZ.setVisibility(8);
+        paramViewGroup.DSo.setVisibility(8);
         break label381;
-        paramViewGroup.zHW.setVisibility(8);
+        paramViewGroup.EPx.setVisibility(8);
         break label434;
         label899:
         if ((localObject2 != null) && (((LinkedList)localObject2).size() == 2))
         {
-          paramViewGroup.zIa.setVisibility(0);
-          paramViewGroup.zIb.setVisibility(0);
-          NearbyFriendsUI.t(paramViewGroup.zIa, (String)((LinkedList)localObject2).get(0));
-          NearbyFriendsUI.t(paramViewGroup.zIb, (String)((LinkedList)localObject2).get(1));
+          paramViewGroup.EPA.setVisibility(0);
+          paramViewGroup.EPB.setVisibility(0);
+          NearbyFriendsUI.u(paramViewGroup.EPA, (String)((LinkedList)localObject2).get(0));
+          NearbyFriendsUI.u(paramViewGroup.EPB, (String)((LinkedList)localObject2).get(1));
           break label538;
         }
         if ((localObject2 == null) || (((LinkedList)localObject2).size() < 3)) {
           break label538;
         }
-        paramViewGroup.zIa.setVisibility(0);
-        paramViewGroup.zIb.setVisibility(0);
-        paramViewGroup.zIc.setVisibility(0);
-        NearbyFriendsUI.t(paramViewGroup.zIa, (String)((LinkedList)localObject2).get(0));
-        NearbyFriendsUI.t(paramViewGroup.zIb, (String)((LinkedList)localObject2).get(1));
-        NearbyFriendsUI.t(paramViewGroup.zIc, (String)((LinkedList)localObject2).get(2));
+        paramViewGroup.EPA.setVisibility(0);
+        paramViewGroup.EPB.setVisibility(0);
+        paramViewGroup.EPC.setVisibility(0);
+        NearbyFriendsUI.u(paramViewGroup.EPA, (String)((LinkedList)localObject2).get(0));
+        NearbyFriendsUI.u(paramViewGroup.EPB, (String)((LinkedList)localObject2).get(1));
+        NearbyFriendsUI.u(paramViewGroup.EPC, (String)((LinkedList)localObject2).get(2));
         break label538;
         label1053:
-        paramInt = ((NearbyFriendsUI.a)localObject2).zHs;
+        paramInt = ((NearbyFriendsUI.a)localObject2).EOV;
         break label576;
         label1062:
-        paramViewGroup.zHV.setVisibility(0);
-        paramViewGroup.zHV.setText(com.tencent.mm.pluginsdk.ui.span.l.b(this.context, ((cqe)localObject1).mVB, paramViewGroup.zHV.getTextSize()));
+        paramViewGroup.EPw.setVisibility(0);
+        paramViewGroup.EPw.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this.context, ((dgy)localObject1).pSi, paramViewGroup.EPw.getTextSize()));
         break label649;
         label1099:
-        paramViewGroup.zHX.setVisibility(8);
+        paramViewGroup.EPy.setVisibility(8);
         break label678;
         label1111:
-        a.b.c(paramViewGroup.mWb, ((cqe)localObject1).UserName);
-        if (((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwd(((cqe)localObject1).UserName))
+        a.b.g(paramViewGroup.avatar, ((dgy)localObject1).UserName);
+        if (((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().bxr(((dgy)localObject1).UserName))
         {
-          paramViewGroup.mWc.setVisibility(0);
-          if (as.asD(((cqe)localObject1).TxF))
+          paramViewGroup.pSI.setVisibility(0);
+          if (au.ayS(((dgy)localObject1).aaMm))
           {
-            paramViewGroup.mWc.setText(NearbyFriendsUI.this.getString(b.g.nearby_friend_followed));
+            paramViewGroup.pSI.setText(NearbyFriendsUI.this.getString(b.g.gOo));
           }
           else
           {
-            as localas = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwg(((cqe)localObject1).UserName);
+            au localau = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().bxu(((dgy)localObject1).UserName);
             Context localContext;
-            if (localas != null)
+            if (localau != null)
             {
-              localObject2 = paramViewGroup.mUr;
+              localObject2 = paramViewGroup.pQZ;
               localContext = this.context;
-              if (!Util.isNullOrNil(localas.ays())) {
+              if (!Util.isNullOrNil(localau.aSV())) {
                 break label1289;
               }
             }
             label1289:
-            for (localObject1 = ((cqe)localObject1).rWI;; localObject1 = localas.ays())
+            for (localObject1 = ((dgy)localObject1).vhX;; localObject1 = localau.aSV())
             {
-              ((TextView)localObject2).setText(com.tencent.mm.pluginsdk.ui.span.l.b(localContext, (CharSequence)localObject1, paramViewGroup.mUr.getTextSize()));
-              paramViewGroup.mWc.setText(NearbyFriendsUI.this.getString(b.g.nearby_friend_is_contact));
+              ((TextView)localObject2).setText(com.tencent.mm.pluginsdk.ui.span.p.b(localContext, (CharSequence)localObject1, paramViewGroup.pQZ.getTextSize()));
+              paramViewGroup.pSI.setText(NearbyFriendsUI.this.getString(b.g.nearby_friend_is_contact));
               break;
             }
           }
@@ -1362,7 +1398,7 @@ public class NearbyFriendsUI
         else
         {
           label1299:
-          paramViewGroup.mWc.setVisibility(8);
+          paramViewGroup.pSI.setVisibility(8);
         }
       }
     }
@@ -1370,23 +1406,23 @@ public class NearbyFriendsUI
   
   static final class d
   {
-    public static int zHS = 10000;
+    public static int EPu = 10000;
     
-    public static boolean Ox(int paramInt)
+    public static boolean QS(int paramInt)
     {
-      return paramInt == zHS;
+      return paramInt == EPu;
     }
     
-    public static cqe h(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+    public static dgy h(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
     {
       AppMethodBeat.i(89865);
-      com.tencent.mm.plugin.nearby.a.a locala = new com.tencent.mm.plugin.nearby.a.a();
-      locala.mVy = zHS;
+      com.tencent.mm.plugin.nearby.model.a locala = new com.tencent.mm.plugin.nearby.model.a();
+      locala.pSf = EPu;
       locala.UserName = paramString1;
-      locala.SjJ = paramString2;
-      locala.TxE = paramString4;
-      locala.rWI = paramString3;
-      locala.mVz = paramString5;
+      locala.ZhP = paramString2;
+      locala.aaMl = paramString4;
+      locala.vhX = paramString3;
+      locala.pSg = paramString5;
       AppMethodBeat.o(89865);
       return locala;
     }
@@ -1394,23 +1430,23 @@ public class NearbyFriendsUI
   
   static final class e
   {
-    ImageView kHA;
-    TextView mUr;
-    ImageView mWb;
-    TextView mWc;
-    TextView zHU;
-    TextView zHV;
-    ImageView zHW;
-    ImageView zHX;
-    ImageView zHZ;
-    ImageView zIa;
-    ImageView zIb;
-    ImageView zIc;
+    ImageView DSo;
+    ImageView EPA;
+    ImageView EPB;
+    ImageView EPC;
+    TextView EPv;
+    TextView EPw;
+    ImageView EPx;
+    ImageView EPy;
+    ImageView avatar;
+    ImageView nkq;
+    TextView pQZ;
+    TextView pSI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.NearbyFriendsUI
  * JD-Core Version:    0.7.0.1
  */

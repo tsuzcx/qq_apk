@@ -4,85 +4,122 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dhz
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public dhy TPf;
-  public String key;
+  public int YYp;
+  public int aaMX;
+  public int vgN;
+  public LinkedList<cxr> vgO;
+  
+  public dhz()
+  {
+    AppMethodBeat.i(155429);
+    this.vgO = new LinkedList();
+    AppMethodBeat.o(155429);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(253352);
+    AppMethodBeat.i(155430);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.key != null) {
-        paramVarArgs.f(1, this.key);
-      }
-      if (this.TPf != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(2, this.TPf.computeSize());
-        this.TPf.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(253352);
+      paramVarArgs.bS(2, this.vgN);
+      paramVarArgs.e(3, 8, this.vgO);
+      paramVarArgs.bS(4, this.YYp);
+      paramVarArgs.bS(5, this.aaMX);
+      AppMethodBeat.o(155430);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.key == null) {
-        break label348;
+      if (this.BaseRequest == null) {
+        break label542;
       }
     }
-    label348:
-    for (paramInt = g.a.a.b.b.a.g(1, this.key) + 0;; paramInt = 0)
+    label542:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.TPf != null) {
-        i = paramInt + g.a.a.a.oD(2, this.TPf.computeSize());
-      }
-      AppMethodBeat.o(253352);
-      return i;
+      int i = i.a.a.b.b.a.cJ(2, this.vgN);
+      int j = i.a.a.a.c(3, 8, this.vgO);
+      int k = i.a.a.b.b.a.cJ(4, this.YYp);
+      int m = i.a.a.b.b.a.cJ(5, this.aaMX);
+      AppMethodBeat.o(155430);
+      return paramInt + i + j + k + m;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.vgO.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(253352);
+        AppMethodBeat.o(155430);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         dhz localdhz = (dhz)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(253352);
+          AppMethodBeat.o(155430);
           return -1;
         case 1: 
-          localdhz.key = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(253352);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdhz.BaseRequest = ((kc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(155430);
+          return 0;
+        case 2: 
+          localdhz.vgN = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(155430);
+          return 0;
+        case 3: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new cxr();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((cxr)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdhz.vgO.add(localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(155430);
+          return 0;
+        case 4: 
+          localdhz.YYp = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(155430);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          dhy localdhy = new dhy();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localdhy.parseFrom((byte[])localObject);
-          }
-          localdhz.TPf = localdhy;
-          paramInt += 1;
-        }
-        AppMethodBeat.o(253352);
+        localdhz.aaMX = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(155430);
         return 0;
       }
-      AppMethodBeat.o(253352);
+      AppMethodBeat.o(155430);
       return -1;
     }
   }

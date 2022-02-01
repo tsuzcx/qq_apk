@@ -112,7 +112,7 @@ public class NetworkMonitorReceiver
       AppMethodBeat.o(102020);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       this.isRegisterReceiver = false;
       Log.printErrStackTrace("NetworkMonitorReceiver", localThrowable, "", new Object[0]);
@@ -153,7 +153,7 @@ public class NetworkMonitorReceiver
       AppMethodBeat.o(102021);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("NetworkMonitorReceiver", localThrowable, "", new Object[0]);
       AppMethodBeat.o(102021);
@@ -167,7 +167,7 @@ public class NetworkMonitorReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.NetworkMonitorReceiver
  * JD-Core Version:    0.7.0.1
  */

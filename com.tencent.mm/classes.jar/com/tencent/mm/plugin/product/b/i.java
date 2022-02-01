@@ -1,106 +1,74 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ahw;
-import com.tencent.mm.protocal.protobuf.caq;
-import com.tencent.mm.protocal.protobuf.car;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedList;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public final class i
-  extends q
-  implements m
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<ahw> GTt;
-  private com.tencent.mm.an.i callback;
-  public String mUrl;
-  private d rr;
+  public String name;
+  public String value;
   
-  public i(String paramString1, String paramString2)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(66897);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new caq();
-    ((d.a)localObject).lBV = new car();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getproductdiscount";
-    ((d.a)localObject).funcId = 579;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (caq)d.b.b(this.rr.lBR);
-    ((caq)localObject).Sdn = paramString1;
-    this.mUrl = paramString2;
-    ((caq)localObject).Url = paramString2;
-    AppMethodBeat.o(66897);
-  }
-  
-  public final int doScene(g paramg, com.tencent.mm.an.i parami)
-  {
-    AppMethodBeat.i(66899);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(66899);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 579;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(66898);
-    paramArrayOfByte = (car)d.c.b(((d)params).lBS);
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.RPr == 0))
+    AppMethodBeat.i(91275);
+    if (paramInt == 0)
     {
-      Log.d("MicroMsg.NetSceneMallGetProductDiscount", "resp.ProductInfo " + paramArrayOfByte.TiV);
-      try
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.name != null) {
+        paramVarArgs.g(1, this.name);
+      }
+      if (this.value != null) {
+        paramVarArgs.g(2, this.value);
+      }
+      AppMethodBeat.o(91275);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.name == null) {
+        break label270;
+      }
+    }
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.name) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.value != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.value);
+      }
+      AppMethodBeat.o(91275);
+      return i;
+      if (paramInt == 2)
       {
-        params = new JSONObject(paramArrayOfByte.TiV).optJSONArray("discount_list");
-        if (params != null)
-        {
-          this.GTt = new LinkedList();
-          int i = params.length();
-          paramInt1 = 0;
-          while (paramInt1 < i)
-          {
-            JSONObject localJSONObject = params.getJSONObject(paramInt1);
-            ahw localahw = new ahw();
-            localahw.fwr = localJSONObject.getString("title");
-            localahw.SaG = localJSONObject.getInt("fee");
-            this.GTt.add(localahw);
-            paramInt1 += 1;
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
           }
         }
-        paramInt1 = paramInt3;
+        AppMethodBeat.o(91275);
+        return 0;
       }
-      catch (Exception params) {}
-    }
-    params = paramString;
-    if (paramInt3 == 0)
-    {
-      paramInt1 = paramInt3;
-      params = paramString;
-      if (paramArrayOfByte.RPr != 0)
+      if (paramInt == 3)
       {
-        paramInt1 = paramArrayOfByte.RPr;
-        params = paramArrayOfByte.RPs;
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        i locali = (i)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(91275);
+          return -1;
+        case 1: 
+          locali.name = locala.ajGk.readString();
+          AppMethodBeat.o(91275);
+          return 0;
+        }
+        locali.value = locala.ajGk.readString();
+        AppMethodBeat.o(91275);
+        return 0;
       }
+      AppMethodBeat.o(91275);
+      return -1;
     }
-    Log.d("MicroMsg.NetSceneMallGetProductDiscount", "errCode " + paramInt1 + ", errMsg " + params);
-    this.callback.onSceneEnd(paramInt2, paramInt1, params, this);
-    AppMethodBeat.o(66898);
   }
 }
 

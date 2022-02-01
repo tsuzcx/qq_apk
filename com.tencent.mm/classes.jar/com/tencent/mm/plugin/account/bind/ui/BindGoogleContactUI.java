@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -13,29 +12,29 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.webkit.ConsoleMessage;
 import android.widget.TextView;
-import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.account.bind.a.e;
 import com.tencent.mm.plugin.account.bind.a.f;
 import com.tencent.mm.plugin.account.bind.a.i;
-import com.tencent.mm.plugin.account.friend.a.m;
-import com.tencent.mm.plugin.account.friend.a.x.a;
-import com.tencent.mm.pluginsdk.ui.tools.ab;
+import com.tencent.mm.plugin.account.friend.model.j;
+import com.tencent.mm.plugin.account.friend.model.u;
+import com.tencent.mm.plugin.account.friend.model.u.a;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.aa;
 import com.tencent.xweb.ad;
-import com.tencent.xweb.c;
-import com.tencent.xweb.d;
+import com.tencent.xweb.ag;
+import com.tencent.xweb.ao;
+import com.tencent.xweb.z;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -53,53 +52,52 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.JSEXECUTECHECK})
 public class BindGoogleContactUI
   extends MMActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private boolean kUn = false;
-  private MMWebView lxa;
-  private boolean mQX = false;
-  String mQZ;
-  private ProgressDialog mRa;
-  private int mRc;
-  private TextView mRh;
-  private boolean mRi = false;
-  private String mRj;
-  String mRk;
-  String mRl;
-  private com.tencent.mm.plugin.account.friend.a.x mRm;
-  private boolean mRn = false;
+  private boolean nzW = false;
+  private MMWebView ooz;
+  private boolean pNE = false;
+  String pNG;
+  private ProgressDialog pNH;
+  private int pNJ;
+  private TextView pNO;
+  private boolean pNP = false;
+  private String pNQ;
+  String pNR;
+  String pNS;
+  private u pNT;
+  private boolean pNU = false;
   
-  private void bxm()
+  private void bWb()
   {
     AppMethodBeat.i(109799);
-    this.lxa.setVisibility(8);
+    this.ooz.setVisibility(8);
     AppMethodBeat.o(109799);
   }
   
-  private void bxn()
+  private void bWc()
   {
     AppMethodBeat.i(109800);
-    this.mRh.setVisibility(4);
-    this.lxa.setVisibility(0);
+    this.pNO.setVisibility(4);
+    this.ooz.setVisibility(0);
     AppMethodBeat.o(109800);
   }
   
-  private void bxo()
+  private void bWd()
   {
     AppMethodBeat.i(109801);
     startActivityForResult(new Intent("com.tencent.mm.gms.ACTION_CHOOSE_ACCOUNT"), 1003);
     AppMethodBeat.o(109801);
   }
   
-  private void bxp()
+  private void bWe()
   {
     AppMethodBeat.i(109802);
-    bxs();
-    this.lxa.getSettings().setJavaScriptEnabled(true);
-    this.lxa.setWebViewClient(new ad()
+    showLoadingDialog();
+    this.ooz.getSettings().setJavaScriptEnabled(true);
+    this.ooz.setWebViewClient(new ag()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
@@ -139,7 +137,7 @@ public class BindGoogleContactUI
               if (BindGoogleContactUI.a(BindGoogleContactUI.this) != null) {
                 BindGoogleContactUI.a(BindGoogleContactUI.this).setVisibility(4);
               }
-              ab.b(BindGoogleContactUI.a(BindGoogleContactUI.this), "weixin://private/googlegetcode", "document.getElementById('code').value");
+              aa.b(BindGoogleContactUI.a(BindGoogleContactUI.this), "weixin://private/googlegetcode", "document.getElementById('code').value");
               AppMethodBeat.o(109774);
               return;
             }
@@ -151,7 +149,7 @@ public class BindGoogleContactUI
         AppMethodBeat.o(109774);
       }
     });
-    this.lxa.setWebChromeClient(new com.tencent.xweb.x()
+    this.ooz.setWebChromeClient(new z()
     {
       public final boolean onConsoleMessage(ConsoleMessage paramAnonymousConsoleMessage)
       {
@@ -159,7 +157,7 @@ public class BindGoogleContactUI
         if (paramAnonymousConsoleMessage != null) {}
         for (String str = paramAnonymousConsoleMessage.message();; str = null)
         {
-          str = ab.bsd(str);
+          str = aa.brU(str);
           if (!str.toLowerCase().startsWith("weixin://private/googlegetcode")) {
             break;
           }
@@ -172,17 +170,17 @@ public class BindGoogleContactUI
         return bool;
       }
     });
-    this.lxa.loadUrl(m.bys());
+    this.ooz.loadUrl(j.bXf());
     AppMethodBeat.o(109802);
   }
   
-  private void bxr()
+  private void bWg()
   {
     AppMethodBeat.i(109806);
     try
     {
-      d.my(this);
-      c.ivX().removeAllCookie();
+      ao.oQ(this);
+      ao.removeAllCookie();
       AppMethodBeat.o(109806);
       return;
     }
@@ -193,20 +191,20 @@ public class BindGoogleContactUI
     }
   }
   
-  private void bxs()
+  private void showLoadingDialog()
   {
     AppMethodBeat.i(109807);
-    if ((this.mRa == null) || (!this.mRa.isShowing()))
+    if ((this.pNH == null) || (!this.pNH.isShowing()))
     {
       getString(a.i.app_tip);
-      this.mRa = com.tencent.mm.ui.base.h.a(this, getString(a.i.app_waiting), true, new DialogInterface.OnCancelListener()
+      this.pNH = k.a(this, getString(a.i.app_waiting), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(109781);
           BindGoogleContactUI.f(BindGoogleContactUI.this);
           if (BindGoogleContactUI.g(BindGoogleContactUI.this) != null) {
-            com.tencent.mm.kernel.h.aGY().a(BindGoogleContactUI.g(BindGoogleContactUI.this));
+            com.tencent.mm.kernel.h.aZW().a(BindGoogleContactUI.g(BindGoogleContactUI.this));
           }
           AppMethodBeat.o(109781);
         }
@@ -218,61 +216,61 @@ public class BindGoogleContactUI
   private void updateView()
   {
     AppMethodBeat.i(109793);
-    if (this.mQX)
+    if (this.pNE)
     {
-      bxm();
-      bxs();
-      bxo();
+      bWb();
+      showLoadingDialog();
+      bWd();
       AppMethodBeat.o(109793);
       return;
     }
-    bxn();
-    bxp();
+    bWc();
+    bWe();
     AppMethodBeat.o(109793);
   }
   
-  private void yg(int paramInt)
+  private void ym(int paramInt)
   {
     AppMethodBeat.i(109803);
-    this.mRm = new com.tencent.mm.plugin.account.friend.a.x(x.a.mWD, this.mQZ, paramInt);
-    com.tencent.mm.kernel.h.aGY().a(this.mRm, 0);
-    Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "doScene mAppToken:%s, mWebToke:%s", new Object[] { this.mRj, this.mRk });
+    this.pNT = new u(u.a.pTj, this.pNG, paramInt);
+    com.tencent.mm.kernel.h.aZW().a(this.pNT, 0);
+    Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "doScene mAppToken:%s, mWebToke:%s", new Object[] { this.pNQ, this.pNR });
     AppMethodBeat.o(109803);
   }
   
-  final void aX(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(109804);
-    this.mQZ = paramString;
-    yg(paramInt);
-    AppMethodBeat.o(109804);
-  }
-  
-  final void bxq()
+  final void bWf()
   {
     AppMethodBeat.i(109805);
-    if (this.lxa != null) {
-      this.lxa.setVisibility(4);
+    if (this.ooz != null) {
+      this.ooz.setVisibility(4);
     }
-    if (this.mRh != null) {
-      this.mRh.setVisibility(0);
+    if (this.pNO != null) {
+      this.pNO.setVisibility(0);
     }
     if (!NetStatusUtil.isConnected(this)) {}
     for (String str = getString(a.i.gcontact_network_error_msg);; str = getString(a.i.gcontact_default_error_msg))
     {
-      this.mRh.setText(str);
+      this.pNO.setText(str);
       AppMethodBeat.o(109805);
       return;
     }
   }
   
-  final void bxt()
+  final void bWh()
   {
     AppMethodBeat.i(109808);
-    if ((this.mRa != null) && (this.mRa.isShowing())) {
-      this.mRa.dismiss();
+    if ((this.pNH != null) && (this.pNH.isShowing())) {
+      this.pNH.dismiss();
     }
     AppMethodBeat.o(109808);
+  }
+  
+  final void bn(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(109804);
+    this.pNG = paramString;
+    ym(paramInt);
+    AppMethodBeat.o(109804);
   }
   
   public int getLayoutId()
@@ -294,8 +292,8 @@ public class BindGoogleContactUI
         return true;
       }
     });
-    this.lxa = MMWebView.a.s(this, a.e.gcontact_webview);
-    this.mRh = ((TextView)findViewById(a.e.empty));
+    this.ooz = MMWebView.a.u(this, a.e.gcontact_webview);
+    this.pNO = ((TextView)findViewById(a.e.empty));
     AppMethodBeat.o(109796);
   }
   
@@ -312,7 +310,7 @@ public class BindGoogleContactUI
       {
         AppMethodBeat.o(109797);
         return;
-        this.mQX = paramIntent.getBooleanExtra("gpservices", false);
+        this.pNE = paramIntent.getBooleanExtra("gpservices", false);
         updateView();
         AppMethodBeat.o(109797);
         return;
@@ -320,47 +318,47 @@ public class BindGoogleContactUI
         Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "errorCode:%d ", new Object[] { Integer.valueOf(paramInt1) });
         if (paramInt1 == 0)
         {
-          this.mQZ = paramIntent.getStringExtra("account");
-          if (this.kUn)
+          this.pNG = paramIntent.getStringExtra("account");
+          if (this.nzW)
           {
-            bxt();
+            bWh();
             AppMethodBeat.o(109797);
             return;
           }
           Log.d("MicroMsg.GoogleContact.BindGoogleContactUI", "startAcitivtyForGetToken");
           paramIntent = new Intent("com.tencent.mm.gms.ACTION_GET_TOKEN");
-          paramIntent.putExtra("gmail", this.mQZ);
+          paramIntent.putExtra("gmail", this.pNG);
           paramIntent.putExtra("scope", "oauth2:https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds");
           startActivityForResult(paramIntent, 1004);
           AppMethodBeat.o(109797);
           return;
         }
-        bxt();
-        bxq();
+        bWh();
+        bWf();
         AppMethodBeat.o(109797);
         return;
         paramInt1 = paramIntent.getIntExtra("error_code", -1);
         Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "errorCode:%d errorMsg:%s", new Object[] { Integer.valueOf(paramInt1), paramIntent.getStringExtra("error_msg") });
         if (paramInt1 == 0)
         {
-          this.mRj = paramIntent.getStringExtra("token");
-          yg(com.tencent.mm.plugin.account.friend.a.x.mWw);
+          this.pNQ = paramIntent.getStringExtra("token");
+          ym(u.pTc);
           AppMethodBeat.o(109797);
           return;
         }
-        bxt();
-        bxq();
+        bWh();
+        bWf();
       }
     }
     if (paramInt1 == 1005)
     {
-      this.mQX = paramIntent.getBooleanExtra("gpservices", false);
+      this.pNE = paramIntent.getBooleanExtra("gpservices", false);
       updateView();
       AppMethodBeat.o(109797);
       return;
     }
-    bxt();
-    bxq();
+    bWh();
+    bWf();
     AppMethodBeat.o(109797);
   }
   
@@ -368,12 +366,12 @@ public class BindGoogleContactUI
   {
     AppMethodBeat.i(109792);
     super.onCreate(paramBundle);
-    this.mRc = getIntent().getIntExtra("enter_scene", 0);
-    this.mRn = getIntent().getBooleanExtra("KEnterFromBanner", false);
-    this.mQX = m.dz(this);
-    this.mQZ = ((String)com.tencent.mm.kernel.h.aHG().aHp().b(208903, null));
+    this.pNJ = getIntent().getIntExtra("enter_scene", 0);
+    this.pNU = getIntent().getBooleanExtra("KEnterFromBanner", false);
+    this.pNE = j.eq(this);
+    this.pNG = ((String)com.tencent.mm.kernel.h.baE().ban().d(208903, null));
     initView();
-    if (this.mQX)
+    if (this.pNE)
     {
       startActivityForResult(new Intent("com.tencent.mm.gms.CHECK_GP_SERVICES"), 1005);
       AppMethodBeat.o(109792);
@@ -387,7 +385,7 @@ public class BindGoogleContactUI
   {
     AppMethodBeat.i(109795);
     super.onPause();
-    com.tencent.mm.kernel.h.aGY().b(487, this);
+    com.tencent.mm.kernel.h.aZW().b(487, this);
     AppMethodBeat.o(109795);
   }
   
@@ -395,61 +393,61 @@ public class BindGoogleContactUI
   {
     AppMethodBeat.i(109794);
     super.onResume();
-    com.tencent.mm.kernel.h.aGY().a(487, this);
-    this.mRi = ((Boolean)com.tencent.mm.kernel.h.aHG().aHp().b(208905, Boolean.FALSE)).booleanValue();
-    if (this.mRi)
+    com.tencent.mm.kernel.h.aZW().a(487, this);
+    this.pNP = ((Boolean)com.tencent.mm.kernel.h.baE().ban().d(208905, Boolean.FALSE)).booleanValue();
+    if (this.pNP)
     {
-      bxr();
-      this.mRi = false;
-      com.tencent.mm.kernel.h.aHG().aHp().i(208905, Boolean.FALSE);
+      bWg();
+      this.pNP = false;
+      com.tencent.mm.kernel.h.baE().ban().B(208905, Boolean.FALSE);
     }
     AppMethodBeat.o(109794);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(109798);
-    paramq = paramString;
+    paramp = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      paramq = "";
+      paramp = "";
     }
-    Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "[onSceneEnd] errType:%d,errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramq });
-    bxt();
+    Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "[onSceneEnd] errType:%d,errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramp });
+    bWh();
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (this.mQX)
+      if (this.pNE)
       {
-        com.tencent.mm.kernel.h.aHG().aHp().i(208903, this.mQZ);
-        com.tencent.mm.kernel.h.aHG().aHp().i(208901, this.mRj);
+        com.tencent.mm.kernel.h.baE().ban().B(208903, this.pNG);
+        com.tencent.mm.kernel.h.baE().ban().B(208901, this.pNQ);
       }
       for (;;)
       {
-        com.tencent.mm.kernel.h.aHG().aHp().hxT();
+        com.tencent.mm.kernel.h.baE().ban().iZy();
         paramString = new Intent(this, GoogleFriendUI.class);
-        paramString.putExtra("enter_scene", this.mRc);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramString);
-        com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aFh(), "com/tencent/mm/plugin/account/bind/ui/BindGoogleContactUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramString.sf(0));
+        paramString.putExtra("enter_scene", this.pNJ);
+        paramString = new com.tencent.mm.hellhoundlib.b.a().cG(paramString);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aYi(), "com/tencent/mm/plugin/account/bind/ui/BindGoogleContactUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/account/bind/ui/BindGoogleContactUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         finish();
-        if (this.mRn) {
-          com.tencent.mm.plugin.report.service.h.IzE.a(11002, new Object[] { Integer.valueOf(6), Integer.valueOf(6) });
+        if (this.pNU) {
+          com.tencent.mm.plugin.report.service.h.OAn.b(11002, new Object[] { Integer.valueOf(6), Integer.valueOf(6) });
         }
         AppMethodBeat.o(109798);
         return;
-        com.tencent.mm.kernel.h.aHG().aHp().i(208903, this.mQZ);
-        com.tencent.mm.kernel.h.aHG().aHp().i(208902, this.mRk);
-        com.tencent.mm.kernel.h.aHG().aHp().i(208904, this.mRl);
+        com.tencent.mm.kernel.h.baE().ban().B(208903, this.pNG);
+        com.tencent.mm.kernel.h.baE().ban().B(208902, this.pNR);
+        com.tencent.mm.kernel.h.baE().ban().B(208904, this.pNS);
       }
     }
-    if (paramInt2 == com.tencent.mm.plugin.account.friend.a.x.mWy)
+    if (paramInt2 == u.pTe)
     {
-      com.tencent.mm.ui.base.h.a(this, getString(a.i.gcontact_msg_account_has_binded), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      k.a(this, getString(a.i.gcontact_msg_account_has_binded), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(109779);
-          BindGoogleContactUI.a(BindGoogleContactUI.this, com.tencent.mm.plugin.account.friend.a.x.mWx);
+          BindGoogleContactUI.a(BindGoogleContactUI.this, u.pTd);
           AppMethodBeat.o(109779);
         }
       }, new DialogInterface.OnClickListener()
@@ -465,7 +463,7 @@ public class BindGoogleContactUI
       AppMethodBeat.o(109798);
       return;
     }
-    bxq();
+    bWf();
     AppMethodBeat.o(109798);
   }
   
@@ -478,16 +476,16 @@ public class BindGoogleContactUI
   final class a
     extends AsyncTask<Void, Void, Void>
   {
-    private String mRq;
-    private String mRr;
-    private boolean mRs;
+    private String pNX;
+    private String pNY;
+    private boolean pNZ;
     
     public a(String paramString)
     {
-      this.mRq = paramString;
+      this.pNX = paramString;
     }
     
-    private static String aao(String paramString)
+    private static String SI(String paramString)
     {
       AppMethodBeat.i(109784);
       Object localObject = "";
@@ -531,15 +529,15 @@ public class BindGoogleContactUI
       }
     }
     
-    private Void bxu()
+    private Void bWi()
     {
       AppMethodBeat.i(109783);
       Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "doInBackground");
       try
       {
-        this.mRr = new JSONObject(aao(this.mRq)).optString("email");
-        if (!TextUtils.isEmpty(this.mRr)) {
-          this.mRs = true;
+        this.pNY = new JSONObject(SI(this.pNX)).optString("email");
+        if (!TextUtils.isEmpty(this.pNY)) {
+          this.pNZ = true;
         }
         AppMethodBeat.o(109783);
         return null;
@@ -586,7 +584,7 @@ public class BindGoogleContactUI
       AppMethodBeat.i(109782);
       super.onPreExecute();
       Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "onPreExecute");
-      this.mRs = false;
+      this.pNZ = false;
       AppMethodBeat.o(109782);
     }
   }
@@ -595,16 +593,16 @@ public class BindGoogleContactUI
     extends AsyncTask<Void, Void, Void>
   {
     private boolean isSuccess;
-    private String mRq;
-    private String mRt;
-    private String mRu;
+    private String pNX;
+    private String pOa;
+    private String pOb;
     
     public b(String paramString)
     {
-      this.mRt = paramString;
+      this.pOa = paramString;
     }
     
-    private static String aap(String paramString)
+    private static String SJ(String paramString)
     {
       AppMethodBeat.i(109789);
       Object localObject1 = "";
@@ -622,7 +620,7 @@ public class BindGoogleContactUI
       ((List)localObject2).add(new BasicNameValuePair("client_secret", "wcFhvo-s7wNcmQ9Zjr00H06u"));
       ((List)localObject2).add(new BasicNameValuePair("redirect_uri", "urn:ietf:wg:oauth:2.0:oob"));
       ((List)localObject2).add(new BasicNameValuePair("grant_type", "authorization_code"));
-      paramString = m.aW((List)localObject2);
+      paramString = j.cB((List)localObject2);
       Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "QueryString:%s", new Object[] { paramString });
       localHttpURLConnection.setRequestProperty("Content-length", String.valueOf(paramString.getBytes().length));
       localObject2 = new BufferedWriter(new OutputStreamWriter(localHttpURLConnection.getOutputStream(), "UTF-8"));
@@ -664,17 +662,17 @@ public class BindGoogleContactUI
       }
     }
     
-    private Void bxu()
+    private Void bWi()
     {
       AppMethodBeat.i(109788);
       try
       {
-        String str = aap(this.mRt);
-        this.mRq = new JSONObject(str).optString("access_token");
-        this.mRu = new JSONObject(str).optString("refresh_token");
+        String str = SJ(this.pOa);
+        this.pNX = new JSONObject(str).optString("access_token");
+        this.pOb = new JSONObject(str).optString("refresh_token");
         Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "response:%s", new Object[] { str });
-        Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "mAccessToken:%s", new Object[] { this.mRq });
-        Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "mRefreshToken:%s", new Object[] { this.mRu });
+        Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "mAccessToken:%s", new Object[] { this.pNX });
+        Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "mRefreshToken:%s", new Object[] { this.pOb });
         this.isSuccess = true;
         AppMethodBeat.o(109788);
         return null;
@@ -714,8 +712,8 @@ public class BindGoogleContactUI
       AppMethodBeat.i(109787);
       super.onPreExecute();
       Log.i("MicroMsg.GoogleContact.BindGoogleContactUI", "onPreExecute");
-      this.mRq = "";
-      this.mRu = "";
+      this.pNX = "";
+      this.pOb = "";
       this.isSuccess = false;
       AppMethodBeat.o(109787);
     }

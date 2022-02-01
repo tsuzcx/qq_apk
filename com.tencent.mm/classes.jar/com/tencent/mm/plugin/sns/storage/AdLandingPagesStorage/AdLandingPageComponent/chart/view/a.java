@@ -10,12 +10,12 @@ import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComp
 public final class a
   extends View
 {
-  private c KoC;
+  private c QMJ;
   
   public a(Context paramContext, c paramc)
   {
     super(paramContext);
-    this.KoC = paramc;
+    this.QMJ = paramc;
   }
   
   public final void onDraw(Canvas paramCanvas)
@@ -27,10 +27,10 @@ public final class a
     int j = (int)(Math.min(k, i) / 2.0F * 0.8D);
     i = (int)(i / 2.0F);
     k = (int)(k / 2.0F);
-    Bitmap localBitmap = this.KoC.Kol;
+    Bitmap localBitmap = this.QMJ.QMs;
     if (localBitmap != null)
     {
-      j = (int)(j * 2 + this.KoC.Kom * 2.0F);
+      j = (int)(j * 2 + this.QMJ.QMt * 2.0F);
       int m = localBitmap.getWidth() * j / localBitmap.getHeight();
       paramCanvas.drawBitmap(Bitmap.createScaledBitmap(localBitmap, m, j, false), i - (m >>> 1), k - (j >>> 1), null);
     }

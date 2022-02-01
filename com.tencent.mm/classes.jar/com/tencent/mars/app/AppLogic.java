@@ -38,7 +38,7 @@ public class AppLogic
     return callBack.getCurLanguage();
   }
   
-  private static DeviceInfo getDeviceType()
+  private static AppLogic.DeviceInfo getDeviceType()
   {
     if (callBack == null) {
       return null;
@@ -65,18 +65,6 @@ public class AppLogic
     }
   }
   
-  public static class DeviceInfo
-  {
-    public String devicename = "";
-    public String devicetype = "";
-    
-    public DeviceInfo(String paramString1, String paramString2)
-    {
-      this.devicename = paramString1;
-      this.devicetype = paramString2;
-    }
-  }
-  
   public static abstract interface ICallBack
   {
     public abstract AppLogic.AccountInfo getAccountInfo();
@@ -92,7 +80,7 @@ public class AppLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.app.AppLogic
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,116 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/ScanRetryManager;", "", "()V", "canRetryReopenCamera", "", "canRetryUsingTexture", "enterTimestamp", "", "exitTimestamp", "isRetry", "isScanSuccess", "isUpdated", "mRetryType", "", "mTextureScaledFactor", "", "mTimeout", "mTimeoutFactor", "maxTimeout", "minTimeout", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "onPreviewFrameCalled", "stayTime", "canRetry", "retryType", "cancelRetryType", "", "checkAndResetTimeout", "enterScanUI", "exitScanUI", "getMMKVKey", "", "getRetryType", "getSavedTimeout", "getTextureScaleFactor", "getTimeout", "init", "initMMKV", "saveTimeout", "timeout", "setIsRetry", "setOnPreviewFrameCalled", "setScanSuccess", "updateTimeout", "time", "Companion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  implements SensorEventListener
 {
-  public static final j IZt;
-  public Sensor IZp;
-  public float[] IZq;
-  public int IZr;
-  private long IZs;
-  public SensorManager mSensorManager;
+  public static final j.a PiU;
+  public long AxK;
+  public boolean PbY;
+  public long PiV;
+  public long PiW;
+  public float PiX;
+  public boolean PiY;
+  public int PiZ;
+  public boolean Pja;
+  public boolean Pjb;
+  public float Pjc;
+  public long Pjd;
+  public boolean Pje;
+  private MultiProcessMMKV eMf;
+  public long hTS;
+  public long mTimeout;
+  public boolean vBn;
   
   static
   {
-    AppMethodBeat.i(52061);
-    IZt = new j();
-    AppMethodBeat.o(52061);
+    AppMethodBeat.i(161061);
+    PiU = new j.a((byte)0);
+    AppMethodBeat.o(161061);
   }
   
-  private j()
+  public j()
   {
-    AppMethodBeat.i(52059);
-    this.IZq = new float[3];
-    this.mSensorManager = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
-    this.IZp = this.mSensorManager.getDefaultSensor(1);
-    AppMethodBeat.o(52059);
-  }
-  
-  public final long fEU()
-  {
-    if (this.IZr >= 5) {
-      return this.IZs;
-    }
-    return 0L;
-  }
-  
-  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public final void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    AppMethodBeat.i(52060);
-    if (paramSensorEvent.sensor.getType() == 1)
+    AppMethodBeat.i(161060);
+    this.PiV = 3000L;
+    this.PiW = 1000L;
+    this.PiX = 2.0F;
+    this.Pjc = 0.8F;
+    h.baC();
+    this.eMf = MultiProcessMMKV.getSingleMMKV(s.X(b.aZs(), "_scan_code_retry"));
+    MultiProcessMMKV localMultiProcessMMKV = this.eMf;
+    long l;
+    if (localMultiProcessMMKV == null)
     {
-      paramSensorEvent = paramSensorEvent.values;
-      Log.d("MicroMsg.ScanStableDetector", "x:%f,y:%f,z:%f", new Object[] { Float.valueOf(paramSensorEvent[0]), Float.valueOf(paramSensorEvent[1]), Float.valueOf(paramSensorEvent[2]) });
-      if ((this.IZq[0] == 0.0F) && (this.IZq[1] == 0.0F) && (this.IZq[2] == 0.0F))
-      {
-        this.IZq[0] = paramSensorEvent[0];
-        this.IZq[1] = paramSensorEvent[1];
-        this.IZq[2] = paramSensorEvent[2];
-        AppMethodBeat.o(52060);
-        return;
+      l = 3000L;
+      this.mTimeout = l;
+      this.PiZ = 1;
+      this.PiV = 3000L;
+      this.PiW = 1000L;
+      this.PiX = 2.0F;
+      this.mTimeout = Math.max(this.PiW, this.mTimeout);
+      this.mTimeout = Math.min(this.PiV, this.mTimeout);
+      this.Pjc = 0.8F;
+      this.Pjc = Math.min(1.0F, this.Pjc);
+      if (this.PiZ != 1) {
+        break label293;
       }
-      if ((Math.abs(paramSensorEvent[0] - this.IZq[0]) <= 0.7F) && (Math.abs(paramSensorEvent[1] - this.IZq[1]) <= 0.7F) && (Math.abs(paramSensorEvent[2] - this.IZq[2]) <= 0.7F)) {
-        break label227;
-      }
-      Log.d("MicroMsg.ScanStableDetector", "scan unstable");
-      this.IZr = 0;
+      this.Pja = true;
+      this.Pjb = false;
     }
     for (;;)
     {
-      this.IZq[0] = paramSensorEvent[0];
-      this.IZq[1] = paramSensorEvent[1];
-      this.IZq[2] = paramSensorEvent[2];
-      AppMethodBeat.o(52060);
+      Log.i("MicroMsg.ScanRetryManager", "alvinluo init retryType: %d, maxTimeout: %d, minTimeout: %d, timeout: %d, timeoutFactor config: %d, factor: %f, textureScaleFactor: %d, factor: %f, canRetry: %b, %b", new Object[] { Integer.valueOf(this.PiZ), Long.valueOf(this.PiV), Long.valueOf(this.PiW), Long.valueOf(this.mTimeout), Integer.valueOf(200), Float.valueOf(this.PiX), Integer.valueOf(80), Float.valueOf(this.Pjc), Boolean.valueOf(this.Pja), Boolean.valueOf(this.Pjb) });
+      AppMethodBeat.o(161060);
       return;
-      label227:
-      if (this.IZr == 0) {
-        this.IZs = System.currentTimeMillis();
-      }
-      this.IZr += 1;
-      if (this.IZr >= 5) {
-        Log.d("MicroMsg.ScanStableDetector", "scan stable");
+      l = localMultiProcessMMKV.getLong("scan_code_retry_timeout", 3000L);
+      break;
+      label293:
+      if (this.PiZ == 2)
+      {
+        this.Pja = false;
+        this.Pjb = true;
       }
     }
+  }
+  
+  public final boolean aiF(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 1: 
+      return this.Pja;
+    }
+    return this.Pjb;
+  }
+  
+  public final void uc(long paramLong)
+  {
+    AppMethodBeat.i(161059);
+    Log.i("MicroMsg.ScanRetryManager", "alvinluo saveTimeout %d", new Object[] { Long.valueOf(paramLong) });
+    MultiProcessMMKV localMultiProcessMMKV = this.eMf;
+    if (localMultiProcessMMKV != null) {
+      localMultiProcessMMKV.putLong("scan_code_retry_timeout", paramLong);
+    }
+    localMultiProcessMMKV = this.eMf;
+    if (localMultiProcessMMKV != null) {
+      localMultiProcessMMKV.apply();
+    }
+    AppMethodBeat.o(161059);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.j
  * JD-Core Version:    0.7.0.1
  */

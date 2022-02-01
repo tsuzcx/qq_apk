@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.nearlife.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -14,8 +13,8 @@ import com.tencent.mm.R.i;
 public class NearPoiHeader
   extends LinearLayout
 {
-  private ImageView EPO;
-  private TextView kEs;
+  private ImageView KKl;
+  private TextView descTv;
   
   public NearPoiHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,7 +24,6 @@ public class NearPoiHeader
     AppMethodBeat.o(26622);
   }
   
-  @TargetApi(11)
   public NearPoiHeader(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
@@ -37,16 +35,16 @@ public class NearPoiHeader
   private void init(Context paramContext)
   {
     AppMethodBeat.i(26623);
-    paramContext = View.inflate(paramContext, R.i.ejm, this);
-    this.EPO = ((ImageView)paramContext.findViewById(R.h.location_icon));
-    this.kEs = ((TextView)paramContext.findViewById(R.h.dLh));
+    paramContext = View.inflate(paramContext, R.i.gmn, this);
+    this.KKl = ((ImageView)paramContext.findViewById(R.h.location_icon));
+    this.descTv = ((TextView)paramContext.findViewById(R.h.fMM));
     AppMethodBeat.o(26623);
   }
   
   public void setText(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(26624);
-    this.kEs.setText(paramCharSequence);
+    this.descTv.setText(paramCharSequence);
     AppMethodBeat.o(26624);
   }
 }

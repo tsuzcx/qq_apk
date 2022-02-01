@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.gallery.picker.view.TouchCoordinatorLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i5_" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.google.android.material.appbar.AppBarLayout android:orientation="vertical" android:id="@id/sn" android:background="@color/BW_0_Alpha_0_5" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_behavior="@string/a0d">
-        <com.tencent.mm.plugin.gallery.picker.view.MMMediaCropLayout android:layout_gravity="center" android:id="@id/ggh" android:background="@color/BW_0_Alpha_0_5" android:layout_width="fill_parent" android:layout_height="450.0dip" android:minHeight="120.0dip" android:elevation="8.0dip" app:layout_scrollFlags="c6i|hci|htw">
-            <ImageView android:layout_gravity="end|bottom|center" android:id="@id/fni" android:background="@drawable/atc" android:padding="7.0dip" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginBottom="@dimen/c5" android:src="@raw/multi_selected_item" android:layout_marginEnd="@dimen/c5" />
-        </com.tencent.mm.plugin.gallery.picker.view.MMMediaCropLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/d7s" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:elevation="8.0dip">
-            <TextView android:textSize="@dimen/t" android:textColor="@color/fr" android:gravity="center" android:id="@id/d7q" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/dli" />
-            <ImageView android:id="@id/uq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_down" android:layout_marginStart="@dimen/c5" />
-        </LinearLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/dcu" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a0e" />
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/d7k" android:background="@color/a2h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a0e" />
-</com.tencent.mm.plugin.gallery.picker.view.TouchCoordinatorLayout>
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/e5q" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_weight="1.0" android:paddingStart="@dimen/bv" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:id="@id/i5a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/djv" android:includeFontPadding="false" android:layout_marginStart="@dimen/bv" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_arrow" android:layout_marginStart="@dimen/bv" app:iconColor="@color/FG_1" />
+</LinearLayout>

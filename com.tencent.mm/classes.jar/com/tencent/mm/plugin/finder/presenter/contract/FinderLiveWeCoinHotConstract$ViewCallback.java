@@ -2,9 +2,7 @@ package com.tencent.mm.plugin.finder.presenter.contract;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.RelativeLayout;
@@ -15,228 +13,313 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.b.f;
 import com.tencent.mm.plugin.finder.feed.model.FinderLiveWecoinHotLoader;
-import com.tencent.mm.plugin.finder.live.report.k;
-import com.tencent.mm.plugin.finder.live.report.s.e;
-import com.tencent.mm.plugin.finder.live.report.s.k;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.report.j;
+import com.tencent.mm.plugin.finder.live.report.q.g;
+import com.tencent.mm.plugin.finder.live.report.q.m;
+import com.tencent.mm.plugin.finder.live.widget.am;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$Presenter;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$Presenter;)V", "emptyTv", "Landroid/widget/TextView;", "getEmptyTv", "()Landroid/widget/TextView;", "setEmptyTv", "(Landroid/widget/TextView;)V", "loadingView", "Landroid/view/View;", "getLoadingView", "()Landroid/view/View;", "setLoadingView", "(Landroid/view/View;)V", "profileWidget", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveMemebrProfileWidget;", "getProfileWidget", "()Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveMemebrProfileWidget;", "setProfileWidget", "(Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveMemebrProfileWidget;)V", "titleAmountTv", "getTitleAmountTv", "setTitleAmountTv", "titleGroup", "Landroid/widget/RelativeLayout;", "getTitleGroup", "()Landroid/widget/RelativeLayout;", "setTitleGroup", "(Landroid/widget/RelativeLayout;)V", "titleIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getTitleIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setTitleIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "titleTv", "getTitleTv", "setTitleTv", "topActionTv", "getTopActionTv", "setTopActionTv", "topBackBtn", "getTopBackBtn", "setTopBackBtn", "topGroup", "getTopGroup", "setTopGroup", "topTitleTv", "getTopTitleTv", "setTopTitleTv", "wecoinRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getWecoinRecyclerView", "()Landroidx/recyclerview/widget/RecyclerView;", "setWecoinRecyclerView", "(Landroidx/recyclerview/widget/RecyclerView;)V", "getActivity", "getPresenter", "initView", "", "showContentView", "wecoinHotResp", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader$LiveWecoinHotResponse;", "showEmptyView", "showProgress", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$Presenter;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$Presenter;)V", "emptyTv", "Landroid/widget/TextView;", "getEmptyTv", "()Landroid/widget/TextView;", "setEmptyTv", "(Landroid/widget/TextView;)V", "loadingView", "Landroid/view/View;", "getLoadingView", "()Landroid/view/View;", "setLoadingView", "(Landroid/view/View;)V", "profileWidget", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveMemebrProfileWidget;", "getProfileWidget", "()Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveMemebrProfileWidget;", "setProfileWidget", "(Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveMemebrProfileWidget;)V", "titleAmountTv", "getTitleAmountTv", "setTitleAmountTv", "titleGroup", "Landroid/widget/RelativeLayout;", "getTitleGroup", "()Landroid/widget/RelativeLayout;", "setTitleGroup", "(Landroid/widget/RelativeLayout;)V", "titleIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getTitleIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setTitleIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "titleTv", "getTitleTv", "setTitleTv", "topActionTv", "getTopActionTv", "setTopActionTv", "topBackBtn", "getTopBackBtn", "setTopBackBtn", "topGroup", "getTopGroup", "setTopGroup", "wecoinRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getWecoinRecyclerView", "()Landroidx/recyclerview/widget/RecyclerView;", "setWecoinRecyclerView", "(Landroidx/recyclerview/widget/RecyclerView;)V", "getActivity", "getPresenter", "initView", "", "showContentView", "wecoinHotResp", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader$LiveWecoinHotResponse;", "showEmptyView", "showProgress", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveWeCoinHotConstract$ViewCallback
   implements com.tencent.mm.plugin.finder.presenter.base.c<FinderLiveWeCoinHotConstract.Presenter>
 {
+  final FinderLiveWeCoinHotConstract.Presenter CAW;
+  am Dhc;
+  public WeImageView EFn;
+  public RecyclerView EYS;
+  public RelativeLayout EYT;
+  public TextView EYU;
+  public RelativeLayout EYo;
+  public View EYp;
+  public TextView EYq;
   final MMActivity activity;
-  public TextView jkI;
-  public View kGT;
+  public TextView lNm;
+  public View njN;
   public TextView titleTv;
-  final FinderLiveWeCoinHotConstract.Presenter ycJ;
-  com.tencent.mm.plugin.finder.live.widget.x ywo;
-  public WeImageView zCw;
-  public RecyclerView zOe;
-  public RelativeLayout zOf;
-  public TextView zOg;
-  public View zOh;
-  public TextView zOi;
-  public RelativeLayout zOj;
-  public TextView zOk;
   
   public FinderLiveWeCoinHotConstract$ViewCallback(MMActivity paramMMActivity, FinderLiveWeCoinHotConstract.Presenter paramPresenter)
   {
-    AppMethodBeat.i(225776);
+    AppMethodBeat.i(343807);
     this.activity = paramMMActivity;
-    this.ycJ = paramPresenter;
-    AppMethodBeat.o(225776);
+    this.CAW = paramPresenter;
+    AppMethodBeat.o(343807);
+  }
+  
+  private static final void a(ViewCallback paramViewCallback, View paramView)
+  {
+    AppMethodBeat.i(343815);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramViewCallback);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramViewCallback, "this$0");
+    localObject = new Intent();
+    if (s.p(paramViewCallback.CAW.EYk.BhB, Boolean.TRUE)) {}
+    for (paramView = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=support/we-coin/protocol/index#/base-protocol/v2";; paramView = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=support/we-coin/protocol/index")
+    {
+      ((Intent)localObject).putExtra("rawUrl", paramView);
+      com.tencent.mm.br.c.b((Context)paramViewCallback.activity, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(343815);
+      return;
+    }
+  }
+  
+  private static final void b(ViewCallback paramViewCallback, View paramView)
+  {
+    AppMethodBeat.i(343825);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramViewCallback);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramViewCallback, "this$0");
+    paramViewCallback.activity.finish();
+    paramViewCallback = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    if (com.tencent.mm.plugin.finder.live.utils.a.bUx())
+    {
+      paramViewCallback = j.Dob;
+      j.a(q.g.Dsn, String.valueOf(q.m.Dtm.action));
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(343825);
+  }
+  
+  private static final void c(ViewCallback paramViewCallback, View paramView)
+  {
+    AppMethodBeat.i(343834);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramViewCallback);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    s.u(paramViewCallback, "this$0");
+    paramView = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    if (com.tencent.mm.plugin.finder.live.utils.a.bUx())
+    {
+      paramView = j.Dob;
+      j.a(q.g.Dsn, String.valueOf(q.m.Dtl.action));
+    }
+    localObject1 = (com.tencent.mm.plugin.wallet.wecoin.a.d)h.ax(com.tencent.mm.plugin.wallet.wecoin.a.d.class);
+    localObject2 = (Context)paramViewCallback.activity;
+    paramView = ((com.tencent.mm.plugin.expt.b.d)h.ax(com.tencent.mm.plugin.expt.b.d.class)).dHQ();
+    paramViewCallback = paramView;
+    if (paramView == null) {
+      paramViewCallback = "";
+    }
+    ((com.tencent.mm.plugin.wallet.wecoin.a.d)localObject1).cj((Context)localObject2, paramViewCallback);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(343834);
+  }
+  
+  public final RecyclerView eIh()
+  {
+    AppMethodBeat.i(343856);
+    RecyclerView localRecyclerView = this.EYS;
+    if (localRecyclerView != null)
+    {
+      AppMethodBeat.o(343856);
+      return localRecyclerView;
+    }
+    s.bIx("wecoinRecyclerView");
+    AppMethodBeat.o(343856);
+    return null;
+  }
+  
+  public final RelativeLayout eIi()
+  {
+    AppMethodBeat.i(343863);
+    RelativeLayout localRelativeLayout = this.EYT;
+    if (localRelativeLayout != null)
+    {
+      AppMethodBeat.o(343863);
+      return localRelativeLayout;
+    }
+    s.bIx("titleGroup");
+    AppMethodBeat.o(343863);
+    return null;
+  }
+  
+  public final TextView eIj()
+  {
+    AppMethodBeat.i(343866);
+    TextView localTextView = this.EYU;
+    if (localTextView != null)
+    {
+      AppMethodBeat.o(343866);
+      return localTextView;
+    }
+    s.bIx("titleAmountTv");
+    AppMethodBeat.o(343866);
+    return null;
+  }
+  
+  public final TextView eIk()
+  {
+    AppMethodBeat.i(343872);
+    TextView localTextView = this.lNm;
+    if (localTextView != null)
+    {
+      AppMethodBeat.o(343872);
+      return localTextView;
+    }
+    s.bIx("emptyTv");
+    AppMethodBeat.o(343872);
+    return null;
+  }
+  
+  public final View getLoadingView()
+  {
+    AppMethodBeat.i(343879);
+    View localView = this.njN;
+    if (localView != null)
+    {
+      AppMethodBeat.o(343879);
+      return localView;
+    }
+    s.bIx("loadingView");
+    AppMethodBeat.o(343879);
+    return null;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(225774);
-    Object localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_top_group);
-    p.j(localObject, "activity.findViewById(R.…ive_wecoin_hot_top_group)");
-    this.zOf = ((RelativeLayout)localObject);
-    localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_top_title_tv);
-    p.j(localObject, "activity.findViewById(R.…_wecoin_hot_top_title_tv)");
-    this.zOg = ((TextView)localObject);
-    localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_top_back_icon);
-    p.j(localObject, "activity.findViewById(R.…wecoin_hot_top_back_icon)");
-    this.zOh = ((View)localObject);
-    localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_top_action_tv);
-    p.j(localObject, "activity.findViewById(R.…wecoin_hot_top_action_tv)");
-    this.zOi = ((TextView)localObject);
-    localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_title_group);
-    p.j(localObject, "activity.findViewById(R.…e_wecoin_hot_title_group)");
-    this.zOj = ((RelativeLayout)localObject);
-    localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_title_tv);
-    p.j(localObject, "activity.findViewById(R.…live_wecoin_hot_title_tv)");
-    this.titleTv = ((TextView)localObject);
-    localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_title_icon);
-    p.j(localObject, "activity.findViewById(R.…ve_wecoin_hot_title_icon)");
-    this.zCw = ((WeImageView)localObject);
-    localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_title_amount_tv);
-    p.j(localObject, "activity.findViewById(R.…coin_hot_title_amount_tv)");
-    this.zOk = ((TextView)localObject);
-    localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_empty_tip);
-    p.j(localObject, "activity.findViewById(R.…ive_wecoin_hot_empty_tip)");
-    this.jkI = ((TextView)localObject);
-    localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_loading);
-    p.j(localObject, "activity.findViewById(R.…_live_wecoin_hot_loading)");
-    this.kGT = ((View)localObject);
-    localObject = this.activity.findViewById(b.f.finder_live_wecoin_hot_list);
-    p.j(localObject, "activity.findViewById(R.…der_live_wecoin_hot_list)");
-    this.zOe = ((RecyclerView)localObject);
-    localObject = this.zOe;
-    if (localObject == null) {
-      p.bGy("wecoinRecyclerView");
-    }
-    ((RecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
-    localObject = this.zOe;
-    if (localObject == null) {
-      p.bGy("wecoinRecyclerView");
-    }
-    ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.ycJ.getAdapter());
-    localObject = this.zOg;
-    if (localObject == null) {
-      p.bGy("topTitleTv");
-    }
-    ar.a((Paint)((TextView)localObject).getPaint(), 0.8F);
-    localObject = this.zOj;
-    if (localObject == null) {
-      p.bGy("titleGroup");
-    }
-    ((RelativeLayout)localObject).setVisibility(8);
-    localObject = this.zOe;
-    if (localObject == null) {
-      p.bGy("wecoinRecyclerView");
-    }
-    ((RecyclerView)localObject).setVisibility(8);
-    localObject = this.jkI;
-    if (localObject == null) {
-      p.bGy("emptyTv");
-    }
-    ((TextView)localObject).setVisibility(8);
-    localObject = this.kGT;
-    if (localObject == null) {
-      p.bGy("loadingView");
-    }
-    ((View)localObject).setVisibility(8);
-    localObject = this.zCw;
-    if (localObject == null) {
-      p.bGy("titleIv");
-    }
-    ((WeImageView)localObject).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    Object localObject2 = null;
+    AppMethodBeat.i(343889);
+    Object localObject1 = this.activity.findViewById(p.e.BUo);
+    s.s(localObject1, "activity.findViewById(R.…ive_wecoin_hot_top_group)");
+    localObject1 = (RelativeLayout)localObject1;
+    s.u(localObject1, "<set-?>");
+    this.EYo = ((RelativeLayout)localObject1);
+    localObject1 = this.activity.findViewById(p.e.BUn);
+    s.s(localObject1, "activity.findViewById(R.…wecoin_hot_top_back_icon)");
+    s.u(localObject1, "<set-?>");
+    this.EYp = ((View)localObject1);
+    localObject1 = this.activity.findViewById(p.e.BUm);
+    s.s(localObject1, "activity.findViewById(R.…wecoin_hot_top_action_tv)");
+    localObject1 = (TextView)localObject1;
+    s.u(localObject1, "<set-?>");
+    this.EYq = ((TextView)localObject1);
+    localObject1 = this.activity.findViewById(p.e.BUj);
+    s.s(localObject1, "activity.findViewById(R.…e_wecoin_hot_title_group)");
+    localObject1 = (RelativeLayout)localObject1;
+    s.u(localObject1, "<set-?>");
+    this.EYT = ((RelativeLayout)localObject1);
+    localObject1 = this.activity.findViewById(p.e.BUl);
+    s.s(localObject1, "activity.findViewById(R.…live_wecoin_hot_title_tv)");
+    localObject1 = (TextView)localObject1;
+    s.u(localObject1, "<set-?>");
+    this.titleTv = ((TextView)localObject1);
+    localObject1 = this.activity.findViewById(p.e.BUk);
+    s.s(localObject1, "activity.findViewById(R.…ve_wecoin_hot_title_icon)");
+    localObject1 = (WeImageView)localObject1;
+    s.u(localObject1, "<set-?>");
+    this.EFn = ((WeImageView)localObject1);
+    localObject1 = this.activity.findViewById(p.e.BUi);
+    s.s(localObject1, "activity.findViewById(R.…coin_hot_title_amount_tv)");
+    localObject1 = (TextView)localObject1;
+    s.u(localObject1, "<set-?>");
+    this.EYU = ((TextView)localObject1);
+    localObject1 = this.activity.findViewById(p.e.BTZ);
+    s.s(localObject1, "activity.findViewById(R.…ive_wecoin_hot_empty_tip)");
+    localObject1 = (TextView)localObject1;
+    s.u(localObject1, "<set-?>");
+    this.lNm = ((TextView)localObject1);
+    localObject1 = this.activity.findViewById(p.e.BUg);
+    s.s(localObject1, "activity.findViewById(R.…_live_wecoin_hot_loading)");
+    s.u(localObject1, "<set-?>");
+    this.njN = ((View)localObject1);
+    localObject1 = this.activity.findViewById(p.e.BUf);
+    s.s(localObject1, "activity.findViewById(R.…der_live_wecoin_hot_list)");
+    localObject1 = (RecyclerView)localObject1;
+    s.u(localObject1, "<set-?>");
+    this.EYS = ((RecyclerView)localObject1);
+    eIh().setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+    eIh().setAdapter((RecyclerView.a)this.CAW.getAdapter());
+    eIi().setVisibility(8);
+    eIh().setVisibility(8);
+    eIk().setVisibility(8);
+    getLoadingView().setVisibility(8);
+    localObject1 = this.EFn;
+    if (localObject1 != null)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(230465);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("rawUrl", "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=support/we-coin/protocol/index");
-        com.tencent.mm.by.c.b((Context)this.zOm.activity, "webview", ".ui.tools.WebViewUI", paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(230465);
+      ((WeImageView)localObject1).setOnClickListener(new FinderLiveWeCoinHotConstract.ViewCallback..ExternalSyntheticLambda2(this));
+      localObject1 = this.EYo;
+      if (localObject1 == null) {
+        break label487;
       }
-    });
-    localObject = this.zOf;
-    if (localObject == null) {
-      p.bGy("topGroup");
     }
-    localObject = ((RelativeLayout)localObject).getLayoutParams();
-    if (localObject == null)
+    for (;;)
     {
-      localObject = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(225774);
-      throw ((Throwable)localObject);
-    }
-    localObject = (ViewGroup.MarginLayoutParams)localObject;
-    int i = ((ViewGroup.MarginLayoutParams)localObject).topMargin;
-    ((ViewGroup.MarginLayoutParams)localObject).topMargin = (ax.getStatusBarHeight((Context)this.activity) + i);
-    localObject = this.zOh;
-    if (localObject == null) {
-      p.bGy("topBackBtn");
-    }
-    ((View)localObject).setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(273050);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        FinderLiveWeCoinHotConstract.ViewCallback.b(this.zOm).finish();
-        paramAnonymousView = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-        if (com.tencent.mm.plugin.finder.live.utils.a.dEy())
-        {
-          paramAnonymousView = k.yBj;
-          k.a(s.e.yEP, String.valueOf(s.k.yFI.action));
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(273050);
+      localObject1 = ((RelativeLayout)localObject1).getLayoutParams();
+      if (localObject1 != null) {
+        break label498;
       }
-    });
-    localObject = this.zOi;
-    if (localObject == null) {
-      p.bGy("topActionTv");
+      localObject1 = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+      AppMethodBeat.o(343889);
+      throw ((Throwable)localObject1);
+      s.bIx("titleIv");
+      localObject1 = null;
+      break;
+      label487:
+      s.bIx("topGroup");
+      localObject1 = null;
     }
-    ((TextView)localObject).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    label498:
+    localObject1 = (ViewGroup.MarginLayoutParams)localObject1;
+    int i = ((ViewGroup.MarginLayoutParams)localObject1).topMargin;
+    ((ViewGroup.MarginLayoutParams)localObject1).topMargin = (bf.getStatusBarHeight((Context)this.activity) + i);
+    localObject1 = this.EYp;
+    if (localObject1 != null)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(287272);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        paramAnonymousView = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-        if (com.tencent.mm.plugin.finder.live.utils.a.dEy())
-        {
-          paramAnonymousView = k.yBj;
-          k.a(s.e.yEP, String.valueOf(s.k.yFH.action));
-        }
-        com.tencent.mm.plugin.wallet.wecoin.a.c localc = (com.tencent.mm.plugin.wallet.wecoin.a.c)h.ae(com.tencent.mm.plugin.wallet.wecoin.a.c.class);
-        Context localContext = (Context)FinderLiveWeCoinHotConstract.ViewCallback.b(this.zOm);
-        paramAnonymousView = h.ae(com.tencent.mm.plugin.expt.b.c.class);
-        p.j(paramAnonymousView, "MMKernel.service(IHellBizService::class.java)");
-        localObject = ((com.tencent.mm.plugin.expt.b.c)paramAnonymousView).dbu();
-        paramAnonymousView = (View)localObject;
-        if (localObject == null) {
-          paramAnonymousView = "";
-        }
-        localc.bY(localContext, paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract$ViewCallback$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(287272);
+      ((View)localObject1).setOnClickListener(new FinderLiveWeCoinHotConstract.ViewCallback..ExternalSyntheticLambda0(this));
+      localObject1 = this.EYq;
+      if (localObject1 == null) {
+        break label611;
       }
-    });
-    localObject = this.activity.findViewById(b.f.finder_live_members_profile_ui_root);
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(225774);
-      throw ((Throwable)localObject);
     }
-    this.ywo = new com.tencent.mm.plugin.finder.live.widget.x((ViewGroup)localObject);
-    localObject = this.ywo;
-    if (localObject != null)
+    for (;;)
     {
-      ((com.tencent.mm.plugin.finder.live.widget.x)localObject).dIu();
-      ((com.tencent.mm.plugin.finder.live.widget.x)localObject).zoV = ((kotlin.g.a.a)new q((com.tencent.mm.plugin.finder.live.widget.x)localObject) {});
-      ((com.tencent.mm.plugin.finder.live.widget.x)localObject).zoW = ((kotlin.g.a.b)new q((com.tencent.mm.plugin.finder.live.widget.x)localObject) {});
+      ((TextView)localObject1).setOnClickListener(new FinderLiveWeCoinHotConstract.ViewCallback..ExternalSyntheticLambda1(this));
+      localObject1 = this.activity.findViewById(p.e.BOp);
+      if (localObject1 != null) {
+        break label622;
+      }
+      localObject1 = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(343889);
+      throw ((Throwable)localObject1);
+      s.bIx("topBackBtn");
+      localObject1 = null;
+      break;
+      label611:
+      s.bIx("topActionTv");
+      localObject1 = localObject2;
     }
-    this.ycJ.zOb.requestRefresh();
-    AppMethodBeat.o(225774);
+    label622:
+    this.Dhc = new am((ViewGroup)localObject1);
+    localObject1 = this.Dhc;
+    if (localObject1 != null)
+    {
+      ((am)localObject1).eBc();
+      ((am)localObject1).ErB = ((kotlin.g.a.a)new u((am)localObject1) {});
+      ((am)localObject1).ErC = ((kotlin.g.a.b)new u((am)localObject1) {});
+    }
+    this.CAW.EYk.requestRefresh();
+    AppMethodBeat.o(343889);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.presenter.contract.FinderLiveWeCoinHotConstract.ViewCallback
  * JD-Core Version:    0.7.0.1
  */

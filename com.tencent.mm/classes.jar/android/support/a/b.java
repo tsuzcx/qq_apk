@@ -11,11 +11,11 @@ import android.os.Parcelable.Creator;
 public abstract interface b
   extends IInterface
 {
-  public abstract boolean R();
-  
-  public abstract Bundle S();
-  
   public abstract boolean a(a parama);
+  
+  public abstract boolean aJ();
+  
+  public abstract Bundle aK();
   
   public abstract boolean b(a parama);
   
@@ -59,7 +59,7 @@ public abstract interface b
       case 2: 
         paramParcel1.enforceInterface("android.support.customtabs.ICustomTabsService");
         paramParcel1.readLong();
-        bool = R();
+        bool = aJ();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -101,7 +101,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {
           Bundle.CREATOR.createFromParcel(paramParcel1);
         }
-        paramParcel1 = S();
+        paramParcel1 = aK();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {

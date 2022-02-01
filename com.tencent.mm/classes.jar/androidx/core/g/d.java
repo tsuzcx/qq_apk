@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  private final a MH;
+  private final a bsK;
   
   public d(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
@@ -18,22 +18,22 @@ public final class d
   
   private d(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, byte paramByte)
   {
-    AppMethodBeat.i(251435);
+    AppMethodBeat.i(195717);
     if (Build.VERSION.SDK_INT > 17)
     {
-      this.MH = new c(paramContext, paramOnGestureListener);
-      AppMethodBeat.o(251435);
+      this.bsK = new c(paramContext, paramOnGestureListener);
+      AppMethodBeat.o(195717);
       return;
     }
-    this.MH = new d.b(paramContext, paramOnGestureListener);
-    AppMethodBeat.o(251435);
+    this.bsK = new d.b(paramContext, paramOnGestureListener);
+    AppMethodBeat.o(195717);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(251436);
-    boolean bool = this.MH.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(251436);
+    AppMethodBeat.i(195725);
+    boolean bool = this.bsK.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(195725);
     return bool;
   }
   
@@ -45,23 +45,23 @@ public final class d
   static final class c
     implements d.a
   {
-    private final GestureDetector Nf;
+    private final GestureDetector bth;
     
     c(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
     {
-      AppMethodBeat.i(251430);
-      this.Nf = new GestureDetector(paramContext, paramOnGestureListener, null);
-      AppMethodBeat.o(251430);
+      AppMethodBeat.i(195664);
+      this.bth = new GestureDetector(paramContext, paramOnGestureListener, null);
+      AppMethodBeat.o(195664);
     }
     
     public final boolean onTouchEvent(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(251432);
-      GestureDetector localGestureDetector = this.Nf;
-      paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, paramMotionEvent.aFh(), "androidx/core/view/GestureDetectorCompat$GestureDetectorCompatImplJellybeanMr2", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-      boolean bool = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.sf(0)), "androidx/core/view/GestureDetectorCompat$GestureDetectorCompatImplJellybeanMr2", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(251432);
+      AppMethodBeat.i(195672);
+      GestureDetector localGestureDetector = this.bth;
+      paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().cG(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, paramMotionEvent.aYi(), "androidx/core/view/GestureDetectorCompat$GestureDetectorCompatImplJellybeanMr2", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      boolean bool = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.sb(0)), "androidx/core/view/GestureDetectorCompat$GestureDetectorCompatImplJellybeanMr2", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      AppMethodBeat.o(195672);
       return bool;
     }
   }

@@ -10,7 +10,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class b
   implements d
 {
-  private IsoDep Gxn;
+  private IsoDep Mtn;
   
   public b(Tag paramTag)
   {
@@ -22,32 +22,32 @@ public final class b
       AppMethodBeat.o(26665);
       throw paramTag;
     }
-    this.Gxn = IsoDep.get(paramTag);
+    this.Mtn = IsoDep.get(paramTag);
     AppMethodBeat.o(26665);
   }
   
   public final c a(a parama)
   {
     AppMethodBeat.i(26670);
-    if (this.Gxn == null)
+    if (this.Mtn == null)
     {
       Log.e("MicroMsg.ApduEngineIsoDep", "[NFC]IsoDep is null");
       parama = new IllegalStateException("IsoDep is null");
       AppMethodBeat.o(26670);
       throw parama;
     }
-    cyb();
+    cmB();
     Object localObject = null;
     a locala = parama;
     parama = (a)localObject;
     c localc;
     for (;;)
     {
-      localc = new c(this.Gxn.transceive(locala.getBytes()));
+      localc = new c(this.Mtn.transceive(locala.getBytes()));
       localObject = parama;
-      if (localc.GwX.length != 0)
+      if (localc.MsX.length != 0)
       {
-        if (localc.GwX.length - 2 <= 0) {
+        if (localc.MsX.length - 2 <= 0) {
           localObject = localc;
         }
       }
@@ -57,10 +57,10 @@ public final class b
         AppMethodBeat.o(26670);
         return localObject;
       }
-      if (localc.fiW() != 108) {
+      if (localc.gtn() != 108) {
         break;
       }
-      locala.aau(localc.fiX());
+      locala.aeN(localc.gto());
     }
     if (parama == null) {
       parama = localc;
@@ -68,10 +68,10 @@ public final class b
     for (;;)
     {
       localObject = parama;
-      if (localc.fiW() != 97) {
+      if (localc.gtn() != 97) {
         break label92;
       }
-      locala = new a((byte[])com.tencent.mm.plugin.nfc.a.b.Gxf.clone());
+      locala = new a((byte[])com.tencent.mm.plugin.nfc.a.b.Mtf.clone());
       break;
       parama.a(localc);
     }
@@ -80,27 +80,27 @@ public final class b
   public final void close()
   {
     AppMethodBeat.i(26667);
-    if (this.Gxn.isConnected()) {
-      this.Gxn.close();
+    if (this.Mtn.isConnected()) {
+      this.Mtn.close();
     }
     AppMethodBeat.o(26667);
   }
   
-  public final boolean cyb()
+  public final boolean cmB()
   {
     AppMethodBeat.i(26666);
-    if (!this.Gxn.isConnected()) {
-      this.Gxn.connect();
+    if (!this.Mtn.isConnected()) {
+      this.Mtn.connect();
     }
     AppMethodBeat.o(26666);
     return true;
   }
   
-  public final boolean fjb()
+  public final boolean gtr()
   {
     AppMethodBeat.i(26669);
     close();
-    cyb();
+    cmB();
     AppMethodBeat.o(26669);
     return true;
   }
@@ -108,7 +108,7 @@ public final class b
   public final boolean isConnected()
   {
     AppMethodBeat.i(26668);
-    boolean bool = this.Gxn.isConnected();
+    boolean bool = this.Mtn.isConnected();
     AppMethodBeat.o(26668);
     return bool;
   }

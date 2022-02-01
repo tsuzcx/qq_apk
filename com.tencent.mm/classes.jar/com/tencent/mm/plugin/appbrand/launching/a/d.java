@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.appbrand.launching.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ak.a;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.c.a;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cw.f;
-import com.tencent.mm.f.b.a.pt;
-import com.tencent.mm.f.b.a.pt.b;
-import com.tencent.mm.plugin.appbrand.launching.aw;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.autogen.mmdata.rpt.tm;
+import com.tencent.mm.autogen.mmdata.rpt.tm.b;
+import com.tencent.mm.plugin.appbrand.launching.ay;
 import com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.protocal.protobuf.ack;
-import com.tencent.mm.protocal.protobuf.fop;
-import com.tencent.mm.protocal.protobuf.foq;
-import com.tencent.mm.protocal.protobuf.for;
+import com.tencent.mm.protocal.protobuf.aeo;
+import com.tencent.mm.protocal.protobuf.glq;
+import com.tencent.mm.protocal.protobuf.glr;
+import com.tencent.mm.protocal.protobuf.gls;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -24,60 +24,60 @@ import java.util.List;
 import java.util.Objects;
 
 public final class d
-  extends c<foq>
+  extends b<glr>
 {
   final String appId;
-  final int cBU;
-  final String cwP;
-  public volatile boolean pWG;
-  public volatile HashMap<String, AppRuntimeApiPermissionBundle> pYm;
-  private final aw pYo;
-  private final pt pYp;
-  final com.tencent.mm.an.d rr;
+  final String eoP;
+  final int euz;
+  final c rr;
+  public volatile boolean tbv;
+  public volatile HashMap<String, AppRuntimeApiPermissionBundle> tdd;
+  private final ay tdf;
+  private final tm tdg;
   
-  public d(String paramString1, int paramInt, List<g> paramList, boolean paramBoolean, String paramString2, QualitySession paramQualitySession, aw paramaw, ack paramack)
+  public d(String paramString1, int paramInt, List<g> paramList, boolean paramBoolean, String paramString2, QualitySession paramQualitySession, ay paramay, aeo paramaeo)
   {
-    AppMethodBeat.i(275089);
-    this.pWG = false;
-    this.pYm = new HashMap();
+    AppMethodBeat.i(321110);
+    this.tbv = false;
+    this.tdd = new HashMap();
     this.appId = paramString1;
-    this.cBU = paramInt;
-    this.cwP = paramString2;
-    this.pYo = paramaw;
-    this.pYp = com.tencent.mm.plugin.appbrand.report.quality.g.e(paramQualitySession);
-    Object localObject = this.pYp;
+    this.euz = paramInt;
+    this.eoP = paramString2;
+    this.tdf = paramay;
+    this.tdg = com.tencent.mm.plugin.appbrand.report.quality.f.f(paramQualitySession);
+    Object localObject = this.tdg;
     if (paramBoolean) {}
-    for (paramaw = pt.b.hhH;; paramaw = pt.b.hhI)
+    for (paramay = tm.b.jDz;; paramay = tm.b.jDA)
     {
-      ((pt)localObject).hhC = paramaw;
-      this.pYp.gHC = com.tencent.mm.plugin.appbrand.report.quality.g.getNetworkType();
-      paramaw = new fop();
+      ((tm)localObject).jDu = paramay;
+      this.tdg.iVU = com.tencent.mm.plugin.appbrand.report.quality.f.getNetworkType();
+      paramay = new glq();
       localObject = paramList.iterator();
       while (((Iterator)localObject).hasNext())
       {
         g localg = (g)((Iterator)localObject).next();
-        for localfor = new for();
-        localfor.appid = localg.appId;
-        localfor.ufE = localg.appType;
-        paramaw.ULx.add(localfor);
+        gls localgls = new gls();
+        localgls.appid = localg.appId;
+        localgls.xlL = localg.appType;
+        paramay.acfK.add(localgls);
       }
     }
-    paramaw.RPD = ((ack)Objects.requireNonNull(paramack));
-    localObject = new d.a();
-    ((d.a)localObject).funcId = 3827;
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaattr/wxajsapiinfo";
-    ((d.a)localObject).lBU = paramaw;
-    ((d.a)localObject).lBV = new foq();
-    paramaw = ((d.a)localObject).bgN();
-    this.rr = paramaw;
-    c(paramaw);
-    Log.i("MicroMsg.AppBrand.CgiWxaJsApiInfo", "<init> appId:%s, versionType:%d, appIdList:%s, sync:%b, sessionId:%s, instanceId:%s, source:%s", new Object[] { paramString1, Integer.valueOf(paramInt), bM(paramList), Boolean.valueOf(paramBoolean), paramString2, paramQualitySession.cBH, a.a(paramack) });
-    AppMethodBeat.o(275089);
+    paramay.YMR = ((aeo)Objects.requireNonNull(paramaeo));
+    localObject = new c.a();
+    ((c.a)localObject).funcId = 3827;
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaattr/wxajsapiinfo";
+    ((c.a)localObject).otE = paramay;
+    ((c.a)localObject).otF = new glr();
+    paramay = ((c.a)localObject).bEF();
+    this.rr = paramay;
+    c(paramay);
+    Log.i("MicroMsg.AppBrand.CgiWxaJsApiInfo", "<init> appId:%s, versionType:%d, appIdList:%s, sync:%b, sessionId:%s, instanceId:%s, source:%s", new Object[] { paramString1, Integer.valueOf(paramInt), dy(paramList), Boolean.valueOf(paramBoolean), paramString2, paramQualitySession.eup, a.b(paramaeo) });
+    AppMethodBeat.o(321110);
   }
   
-  private static String bM(List<g> paramList)
+  private static String dy(List<g> paramList)
   {
-    AppMethodBeat.i(275090);
+    AppMethodBeat.i(321118);
     StringBuilder localStringBuilder = new StringBuilder("[");
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -87,19 +87,19 @@ public final class d
     }
     localStringBuilder.append("]");
     paramList = localStringBuilder.toString();
-    AppMethodBeat.o(275090);
+    AppMethodBeat.o(321118);
     return paramList;
   }
   
-  public final f<c.a<foq>> bhW()
+  public final com.tencent.mm.cp.f<b.a<glr>> bFJ()
   {
     try
     {
-      AppMethodBeat.i(275092);
+      AppMethodBeat.i(321135);
       long l = Util.nowMilliSecond();
-      this.pYp.CZ(l);
-      f localf = super.bhW();
-      AppMethodBeat.o(275092);
+      this.tdg.gs(l);
+      com.tencent.mm.cp.f localf = super.bFJ();
+      AppMethodBeat.o(321135);
       return localf;
     }
     finally
@@ -111,7 +111,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.a.d
  * JD-Core Version:    0.7.0.1
  */

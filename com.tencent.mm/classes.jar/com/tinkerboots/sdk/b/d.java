@@ -5,38 +5,38 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
+import com.tencent.tinker.lib.f.a;
 import java.util.HashSet;
 
 public final class d
 {
-  private static String aamG;
-  private static HashSet<String> aamH;
+  private static String aiss;
+  private static HashSet<String> aist;
   
   static
   {
     AppMethodBeat.i(3466);
-    aamH = new HashSet();
+    aist = new HashSet();
     AppMethodBeat.o(3466);
   }
   
-  public static String iAa()
+  public static String kkv()
   {
-    if (aamG == null) {
+    if (aiss == null) {
       return "";
     }
-    return aamG;
+    return aiss;
   }
   
-  public static boolean iAb()
+  public static boolean kkw()
   {
     AppMethodBeat.i(3465);
-    if (aamG == null)
+    if (aiss == null)
     {
       AppMethodBeat.o(3465);
       return false;
     }
-    boolean bool = aamH.contains(aamG);
+    boolean bool = aist.contains(aiss);
     AppMethodBeat.o(3465);
     return bool;
   }
@@ -61,7 +61,7 @@ public final class d
           if (paramAnonymousIntent == null) {}
           for (paramAnonymousIntent = "";; paramAnonymousIntent = paramAnonymousIntent.getAction())
           {
-            ShareTinkerLog.v("Tinker.TinkerUtils", "ScreenReceiver action [%s] ", new Object[] { paramAnonymousIntent });
+            a.i("Tinker.TinkerUtils", "ScreenReceiver action [%s] ", new Object[] { paramAnonymousIntent });
             if ("android.intent.action.SCREEN_OFF".equals(paramAnonymousIntent))
             {
               paramAnonymousContext.unregisterReceiver(this);
@@ -80,7 +80,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tinkerboots.sdk.b.d
  * JD-Core Version:    0.7.0.1
  */

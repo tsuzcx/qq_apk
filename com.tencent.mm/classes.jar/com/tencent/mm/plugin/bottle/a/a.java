@@ -4,36 +4,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  int beC;
-  private int cUP;
+  int cYv;
   String content;
   long createtime;
-  int lME;
-  int lvr;
-  String lvt;
-  String lvu;
+  private int eQp;
   int msgType;
-  String smZ;
-  String sna;
-  int snb;
-  int snc;
+  int oFl;
+  int omO;
+  String omQ;
+  String omR;
+  String vyX;
+  String vyY;
+  int vyZ;
+  int vza;
   
   public a()
   {
     AppMethodBeat.i(22643);
-    this.cUP = -1;
-    this.smZ = "";
-    this.beC = 0;
-    this.sna = "";
-    this.snb = 0;
+    this.eQp = -1;
+    this.vyX = "";
+    this.cYv = 0;
+    this.vyY = "";
+    this.vyZ = 0;
     this.msgType = 0;
-    this.snc = 0;
+    this.vza = 0;
     this.content = "";
     this.createtime = 0L;
-    this.lvr = 0;
-    this.lME = 0;
-    this.lvt = "";
-    this.lvu = "";
+    this.omO = 0;
+    this.oFl = 0;
+    this.omQ = "";
+    this.omR = "";
     AppMethodBeat.o(22643);
   }
   

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.SpannableString;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -9,53 +10,52 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
-import com.tencent.mm.am.f;
-import com.tencent.mm.am.f.a;
-import com.tencent.mm.am.q;
-import com.tencent.mm.ao.g;
+import com.tencent.mm.an.g;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.model.ab;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.plugin.brandservice.b.e;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.plugin.brandservice.model.e;
 import com.tencent.mm.pluginsdk.ui.ProfileHdHeadImg;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 import junit.framework.Assert;
 
 public class BizInfoHeaderPreference
   extends Preference
-  implements f.a, MStorageEx.IOnStorageChange
+  implements AvatarStorage.a, MStorageEx.IOnStorageChange
 {
-  private TextView DKE;
-  private ImageView GXf;
-  private ImageView GXg;
-  private View GXh;
-  private String GXi;
-  private com.tencent.mm.api.c GXj;
-  private com.tencent.mm.plugin.profile.ui.b.a GXk;
-  private com.tencent.mm.plugin.profile.ui.b.b GXl;
-  private as contact;
-  private MMActivity iXq;
-  private boolean vkO;
-  private TextView vsF;
+  private TextView JBA;
+  private ImageView MVc;
+  private ImageView MVd;
+  private View MVe;
+  private String MVf;
+  private com.tencent.mm.api.c MVg;
+  private com.tencent.mm.plugin.profile.ui.c.a MVh;
+  private com.tencent.mm.plugin.profile.ui.c.b MVi;
+  private au contact;
+  private MMActivity lzt;
+  private TextView yEQ;
+  private boolean yxr;
   
   public BizInfoHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(26927);
-    this.vkO = false;
-    this.GXk = new com.tencent.mm.plugin.profile.ui.b.a(this);
-    this.GXl = new com.tencent.mm.plugin.profile.ui.b.b(this);
-    this.iXq = ((MMActivity)paramContext);
-    this.vkO = false;
+    this.yxr = false;
+    this.MVh = new com.tencent.mm.plugin.profile.ui.c.a(this);
+    this.MVi = new com.tencent.mm.plugin.profile.ui.c.b(this);
+    this.lzt = ((MMActivity)paramContext);
+    this.yxr = false;
     AppMethodBeat.o(26927);
   }
   
@@ -63,106 +63,107 @@ public class BizInfoHeaderPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(26928);
-    this.vkO = false;
-    this.GXk = new com.tencent.mm.plugin.profile.ui.b.a(this);
-    this.GXl = new com.tencent.mm.plugin.profile.ui.b.b(this);
-    this.iXq = ((MMActivity)paramContext);
-    this.vkO = false;
+    this.yxr = false;
+    this.MVh = new com.tencent.mm.plugin.profile.ui.c.a(this);
+    this.MVi = new com.tencent.mm.plugin.profile.ui.c.b(this);
+    this.lzt = ((MMActivity)paramContext);
+    this.yxr = false;
     AppMethodBeat.o(26928);
   }
   
-  private boolean Zd()
+  private boolean aAV()
   {
     AppMethodBeat.i(26935);
-    if (this.GXj == null)
+    if (this.MVg == null)
     {
       AppMethodBeat.o(26935);
       return true;
     }
-    boolean bool = this.GXj.Zd();
+    boolean bool = this.MVg.aAV();
     AppMethodBeat.o(26935);
     return bool;
   }
   
-  private boolean fpT()
+  private boolean gBh()
   {
-    return (this.vkO) && (this.contact != null);
+    return (this.yxr) && (this.contact != null);
   }
   
   private void initView()
   {
     AppMethodBeat.i(26930);
-    if (!fpT())
+    if (!gBh())
     {
-      Log.w("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.vkO + "contact = " + this.contact);
+      Log.w("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.yxr + "contact = " + this.contact);
       AppMethodBeat.o(26930);
       return;
     }
-    this.vsF.setText(l.b(this.iXq, Util.nullAsNil(this.contact.ayr()) + " ", this.vsF.getTextSize()));
-    if (this.GXj == null) {
-      this.GXj = g.gu(this.contact.field_username);
+    Object localObject = p.b(this.lzt, Util.nullAsNil(this.contact.aSU()) + " ", this.yEQ.getTextSize());
+    this.yEQ.setText(com.tencent.mm.plugin.profile.c.a(this.lzt, this.contact.field_username, (SpannableString)localObject));
+    if (this.MVg == null) {
+      this.MVg = g.hU(this.contact.field_username);
     }
-    if (this.GXj != null) {
-      this.GXi = this.GXj.field_brandIconURL;
+    if (this.MVg != null) {
+      this.MVf = this.MVg.field_brandIconURL;
     }
-    e.a(this.GXf, this.contact, this.GXi, false);
-    this.GXf.setTag(this.contact.field_username);
-    this.GXh.setOnClickListener(new View.OnClickListener()
+    e.a(this.MVc, this.contact, this.MVf, false);
+    this.MVc.setTag(this.contact.field_username);
+    this.MVe.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(26926);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
         localObject = BizInfoHeaderPreference.a(BizInfoHeaderPreference.this).field_username;
         paramAnonymousView = new Intent(BizInfoHeaderPreference.b(BizInfoHeaderPreference.this), ProfileHdHeadImg.class);
         paramAnonymousView.putExtra("username", (String)localObject);
         paramAnonymousView.putExtra("brand_icon_url", BizInfoHeaderPreference.c(BizInfoHeaderPreference.this));
         localObject = BizInfoHeaderPreference.b(BizInfoHeaderPreference.this);
-        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aFh(), "com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ((MMActivity)localObject).startActivity((Intent)paramAnonymousView.sf(0));
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aYi(), "com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ((MMActivity)localObject).startActivity((Intent)paramAnonymousView.sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/BizInfoHeaderPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(26926);
       }
     });
-    if ((d.rk(this.contact.field_type)) && (Zd())) {
-      if (!Util.isNullOrNil(this.contact.apf()))
+    if ((d.rs(this.contact.field_type)) && (aAV())) {
+      if (!Util.isNullOrNil(this.contact.aJs()))
       {
-        this.DKE.setVisibility(0);
-        this.DKE.setText(com.tencent.mm.plugin.profile.c.bE(this.mContext, this.contact.field_username) + com.tencent.mm.plugin.profile.c.jG(this.contact.field_username, this.contact.apf()));
+        this.JBA.setVisibility(0);
+        this.JBA.setText(com.tencent.mm.plugin.profile.c.bG(this.mContext, this.contact.field_username) + com.tencent.mm.plugin.profile.c.la(this.contact.field_username, this.contact.aJs()));
       }
     }
-    while (this.contact.ayh())
+    while (this.contact.aSK())
     {
-      this.GXg.setVisibility(0);
+      this.MVd.setVisibility(0);
       AppMethodBeat.o(26930);
       return;
-      if ((!as.bvU(this.contact.field_username)) && (!ab.Qk(this.contact.field_username)))
+      if ((!au.bxb(this.contact.field_username)) && (!au.bxa(this.contact.field_username)))
       {
-        String str = Util.nullAsNil(this.contact.ayt());
-        this.DKE.setText(com.tencent.mm.plugin.profile.c.bE(this.mContext, this.contact.field_username) + com.tencent.mm.plugin.profile.c.jG(this.contact.field_username, str));
-        this.DKE.setVisibility(0);
+        localObject = Util.nullAsNil(this.contact.aSW());
+        this.JBA.setText(com.tencent.mm.plugin.profile.c.bG(this.mContext, this.contact.field_username) + com.tencent.mm.plugin.profile.c.la(this.contact.field_username, (String)localObject));
+        this.JBA.setVisibility(0);
       }
       else
       {
-        this.DKE.setVisibility(8);
+        this.JBA.setVisibility(8);
         continue;
-        this.DKE.setVisibility(8);
+        this.JBA.setVisibility(8);
       }
     }
-    this.GXg.setVisibility(8);
+    this.MVd.setVisibility(8);
     AppMethodBeat.o(26930);
   }
   
-  public final void TM(String paramString)
+  public final void LM(String paramString)
   {
     AppMethodBeat.i(26933);
-    if (!fpT())
+    if (!gBh())
     {
-      Log.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.vkO + "contact = " + this.contact);
+      Log.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.yxr + "contact = " + this.contact);
       AppMethodBeat.o(26933);
       return;
     }
@@ -178,17 +179,17 @@ public class BizInfoHeaderPreference
     AppMethodBeat.o(26933);
   }
   
-  public final void a(as paramas, String paramString, com.tencent.mm.api.c paramc)
+  public final void a(au paramau, String paramString, com.tencent.mm.api.c paramc)
   {
     AppMethodBeat.i(26931);
-    this.GXi = paramString;
-    this.GXj = paramc;
+    this.MVf = paramString;
+    this.MVg = paramc;
     onDetach();
-    bh.beI();
-    com.tencent.mm.model.c.bbL().add(this.GXl);
-    q.bhz().d(this.GXk);
-    this.contact = paramas;
-    if (Util.nullAsNil(paramas.field_username).length() > 0) {}
+    bh.bCz();
+    com.tencent.mm.model.c.bzA().add(this.MVi);
+    q.bFp().d(this.MVh);
+    this.contact = paramau;
+    if (Util.nullAsNil(paramau.field_username).length() > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("initView: contact username is null", bool);
@@ -202,12 +203,12 @@ public class BizInfoHeaderPreference
   {
     AppMethodBeat.i(26929);
     Log.d("MicroMsg.BizInfoHeaderPreference", "onBindView");
-    this.vsF = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
-    this.DKE = ((TextView)paramView.findViewById(R.h.dBG));
-    this.GXg = ((ImageView)paramView.findViewById(R.h.dtl));
-    this.GXf = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
-    this.GXh = paramView.findViewById(R.h.dAL);
-    this.vkO = true;
+    this.yEQ = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
+    this.JBA = ((TextView)paramView.findViewById(R.h.fCU));
+    this.MVd = ((ImageView)paramView.findViewById(R.h.ftA));
+    this.MVc = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
+    this.MVe = paramView.findViewById(R.h.fBL);
+    this.yxr = true;
     initView();
     super.onBindView(paramView);
     AppMethodBeat.o(26929);
@@ -216,9 +217,9 @@ public class BizInfoHeaderPreference
   public final void onDetach()
   {
     AppMethodBeat.i(26932);
-    bh.beI();
-    com.tencent.mm.model.c.bbL().remove(this.GXl);
-    q.bhz().e(this.GXk);
+    bh.bCz();
+    com.tencent.mm.model.c.bzA().remove(this.MVi);
+    q.bFp().e(this.MVh);
     AppMethodBeat.o(26932);
   }
   
@@ -231,9 +232,9 @@ public class BizInfoHeaderPreference
       AppMethodBeat.o(26934);
       return;
     }
-    if (!fpT())
+    if (!gBh())
     {
-      Log.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.vkO + "contact = " + this.contact);
+      Log.e("MicroMsg.BizInfoHeaderPreference", "initView : bindView = " + this.yxr + "contact = " + this.contact);
       AppMethodBeat.o(26934);
       return;
     }
@@ -245,15 +246,15 @@ public class BizInfoHeaderPreference
     }
     if ((this.contact != null) && (this.contact.field_username.equals(paramMStorageEx)))
     {
-      bh.beI();
-      this.contact = com.tencent.mm.model.c.bbL().RG(paramMStorageEx);
+      bh.bCz();
+      this.contact = com.tencent.mm.model.c.bzA().JE(paramMStorageEx);
     }
     AppMethodBeat.o(26934);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.BizInfoHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

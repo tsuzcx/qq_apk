@@ -1,55 +1,59 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.ab;
+import com.tencent.mm.plugin.finder.feed.af;
 import com.tencent.mm.plugin.finder.model.c;
-import com.tencent.mm.protocal.protobuf.asm;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.axb;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/LbsSectionOp;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataOp;", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "()V", "extract", "data", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "isTargetDataType", "", "dataType", "", "targetDataType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/LbsSectionOp;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataOp;", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "()V", "extract", "data", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "isTargetDataType", "", "dataType", "", "targetDataType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
 {
-  public static final m Any;
+  public static final m FNo;
   
   static
   {
-    AppMethodBeat.i(289772);
-    Any = new m();
-    AppMethodBeat.o(289772);
+    AppMethodBeat.i(339347);
+    FNo = new m();
+    AppMethodBeat.o(339347);
   }
   
-  public static c b(asm paramasm)
+  public static c b(axb paramaxb)
   {
     int i = 1;
-    AppMethodBeat.i(289771);
-    p.k(paramasm, "data");
-    if (paramasm.dataType == 1) {}
+    AppMethodBeat.i(339344);
+    s.u(paramaxb, "data");
+    if (paramaxb.dataType == 1) {}
     while (i != 0)
     {
-      paramasm = paramasm.SFR;
-      if (paramasm != null)
+      paramaxb = paramaxb.ZIq;
+      if (paramaxb == null)
       {
-        ab localab = ab.xzy;
-        p.j(paramasm, "it");
-        paramasm = ab.a(paramasm);
-        AppMethodBeat.o(289771);
-        return paramasm;
+        AppMethodBeat.o(339344);
+        return null;
         i = 0;
       }
       else
       {
-        AppMethodBeat.o(289771);
-        return null;
+        af localaf = af.AWY;
+        paramaxb = af.a(paramaxb);
+        AppMethodBeat.o(339344);
+        return paramaxb;
       }
     }
-    AppMethodBeat.o(289771);
+    AppMethodBeat.o(339344);
     return null;
+  }
+  
+  public static int fac()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.m
  * JD-Core Version:    0.7.0.1
  */

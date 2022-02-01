@@ -1,293 +1,209 @@
 package com.tencent.mm.plugin.music.model.a;
 
-import android.content.ContentValues;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.f;
-import com.tencent.mm.bb.j;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.type.IPCBoolean;
-import com.tencent.mm.ipcinvoker.type.IPCInteger;
-import com.tencent.mm.ipcinvoker.type.IPCLong;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest;
-import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamResponse;
-import com.tencent.mm.plugin.music.model.a.a.a.a;
-import com.tencent.mm.plugin.music.model.a.a.a.b;
-import com.tencent.mm.plugin.music.model.a.a.a.c;
-import com.tencent.mm.plugin.music.model.a.a.a.d;
-import com.tencent.mm.plugin.music.model.a.a.a.e;
-import com.tencent.mm.plugin.music.model.a.a.a.f;
-import com.tencent.mm.plugin.music.model.a.a.a.g;
-import com.tencent.mm.plugin.music.model.a.a.a.h;
-import com.tencent.mm.plugin.music.model.a.a.a.i;
-import com.tencent.mm.plugin.music.model.a.a.a.j;
-import com.tencent.mm.plugin.music.model.a.a.a.k;
-import com.tencent.mm.plugin.music.model.a.a.a.l;
-import com.tencent.mm.plugin.music.model.o;
+import com.tencent.mm.aw.j;
+import com.tencent.mm.plugin.music.cache.e;
+import com.tencent.mm.plugin.music.cache.h;
+import com.tencent.mm.plugin.music.h.b;
+import com.tencent.mm.plugin.music.model.e.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.platformtools.LruCache;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.vfs.u;
 
 public final class c
-  implements com.tencent.mm.plugin.music.cache.c
 {
-  public final void OD(long paramLong)
+  private static LruCache<String, String> LMP;
+  private static LruCache<String, Long> LMQ;
+  
+  static
   {
-    AppMethodBeat.i(63053);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCLong(paramLong), a.g.class);
-    AppMethodBeat.o(63053);
+    AppMethodBeat.i(63047);
+    LMP = new LruCache(20);
+    LMQ = new LruCache(20);
+    AppMethodBeat.o(63047);
   }
   
-  public final void a(String paramString, com.tencent.mm.plugin.music.c.a parama)
+  public static String aOx(String paramString)
   {
-    AppMethodBeat.i(63062);
-    paramString = com.tencent.mm.plugin.music.model.a.a.b.aSj(paramString);
-    Object localObject = o.feW();
-    long l = parama.FPT;
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("wifiDownloadedLength", Long.valueOf(l));
-    Log.i("MicroMsg.Music.MusicStorage", "update raw=%d musicId=%s wifiDownloadedLength=%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.music.model.e.b)localObject).db.update("Music", localContentValues, "musicId=?", new String[] { paramString })), paramString, Long.valueOf(l) });
-    localObject = (com.tencent.mm.plugin.music.model.e.a)((com.tencent.mm.plugin.music.model.e.b)localObject).FSN.get(paramString);
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.music.model.e.a)localObject).field_wifiDownloadedLength = l;
-    }
-    localObject = o.feW();
-    int i = parama.FPU;
-    localContentValues = new ContentValues();
-    localContentValues.put("wifiEndFlag", Integer.valueOf(i));
-    Log.i("MicroMsg.Music.MusicStorage", "update raw=%d musicId=%s wifiEndFlag=%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.music.model.e.b)localObject).db.update("Music", localContentValues, "musicId=?", new String[] { paramString })), paramString, Integer.valueOf(i) });
-    localObject = (com.tencent.mm.plugin.music.model.e.a)((com.tencent.mm.plugin.music.model.e.b)localObject).FSN.get(paramString);
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.music.model.e.a)localObject).field_wifiEndFlag = i;
-    }
-    localObject = o.feW();
-    l = parama.FPV;
-    localContentValues = new ContentValues();
-    localContentValues.put("songWifiFileLength", Long.valueOf(l));
-    Log.i("MicroMsg.Music.MusicStorage", "update raw=%d musicId=%s songWifiFileLength=%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.music.model.e.b)localObject).db.update("Music", localContentValues, "musicId=?", new String[] { paramString })), paramString, Long.valueOf(l) });
-    localObject = (com.tencent.mm.plugin.music.model.e.a)((com.tencent.mm.plugin.music.model.e.b)localObject).FSN.get(paramString);
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.music.model.e.a)localObject).field_songWifiFileLength = l;
-    }
-    localObject = o.feW();
-    l = parama.FPR;
-    localContentValues = new ContentValues();
-    localContentValues.put("downloadedLength", Long.valueOf(l));
-    Log.i("MicroMsg.Music.MusicStorage", "update raw=%d musicId=%s downloadedLength=%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.music.model.e.b)localObject).db.update("Music", localContentValues, "musicId=?", new String[] { paramString })), paramString, Long.valueOf(l) });
-    localObject = (com.tencent.mm.plugin.music.model.e.a)((com.tencent.mm.plugin.music.model.e.b)localObject).FSN.get(paramString);
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.music.model.e.a)localObject).field_downloadedLength = l;
-    }
-    localObject = o.feW();
-    i = parama.endFlag;
-    localContentValues = new ContentValues();
-    localContentValues.put("endFlag", Integer.valueOf(i));
-    Log.i("MicroMsg.Music.MusicStorage", "update raw=%d musicId=%s endFlag=%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.music.model.e.b)localObject).db.update("Music", localContentValues, "musicId=?", new String[] { paramString })), paramString, Integer.valueOf(i) });
-    localObject = (com.tencent.mm.plugin.music.model.e.a)((com.tencent.mm.plugin.music.model.e.b)localObject).FSN.get(paramString);
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.music.model.e.a)localObject).field_endFlag = i;
-    }
-    localObject = o.feW();
-    l = parama.FPS;
-    parama = new ContentValues();
-    parama.put("songFileLength", Long.valueOf(l));
-    Log.i("MicroMsg.Music.MusicStorage", "update raw=%d musicId=%s songFileLength=%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.music.model.e.b)localObject).db.update("Music", parama, "musicId=?", new String[] { paramString })), paramString, Long.valueOf(l) });
-    paramString = (com.tencent.mm.plugin.music.model.e.a)((com.tencent.mm.plugin.music.model.e.b)localObject).FSN.get(paramString);
-    if (paramString != null) {
-      paramString.field_songFileLength = l;
-    }
-    AppMethodBeat.o(63062);
-  }
-  
-  public final String aRF(String paramString)
-  {
-    AppMethodBeat.i(63051);
-    paramString = b.aRF(paramString);
-    AppMethodBeat.o(63051);
-    return paramString;
-  }
-  
-  public final j aRG(String paramString)
-  {
-    AppMethodBeat.i(63054);
-    paramString = (IPCAudioParamResponse)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.e.class);
-    if (paramString != null)
+    AppMethodBeat.i(63046);
+    String str = ajV(paramString);
+    if ((!TextUtils.isEmpty(str)) && (!str.equalsIgnoreCase(paramString)))
     {
-      j localj = new j();
-      localj.fMd = paramString.fMd;
-      localj.musicUrl = paramString.musicUrl;
-      localj.fileName = paramString.fileName;
-      localj.lWb = paramString.lWb;
-      localj.lWc = paramString.lWc;
-      localj.lWa = paramString.lWa;
-      localj.lWd = paramString.lWd;
-      AppMethodBeat.o(63054);
-      return localj;
+      Log.i("MicroMsg.Music.MusicUrlParser", "use temp shake music url to play:%s", new Object[] { str });
+      AppMethodBeat.o(63046);
+      return str;
     }
-    AppMethodBeat.o(63054);
-    return null;
-  }
-  
-  public final String aRH(String paramString)
-  {
-    AppMethodBeat.i(63055);
-    IPCString localIPCString = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.k.class);
-    if (localIPCString == null)
+    if (aPb(paramString))
     {
-      paramString = com.tencent.mm.plugin.music.h.b.aSt(paramString);
-      AppMethodBeat.o(63055);
+      paramString = aPc(str);
+      Log.i("MicroMsg.Music.MusicUrlParser", "play url :%s", new Object[] { paramString });
+      AppMethodBeat.o(63046);
       return paramString;
     }
-    paramString = localIPCString.value;
-    AppMethodBeat.o(63055);
-    return paramString;
+    AppMethodBeat.o(63046);
+    return "";
   }
   
-  public final void aRI(String paramString)
+  public static boolean aPb(String paramString)
   {
-    AppMethodBeat.i(63056);
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.a.class);
-    AppMethodBeat.o(63056);
-  }
-  
-  public final String aRJ(String paramString)
-  {
-    AppMethodBeat.i(63060);
-    paramString = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.d.class);
-    if (paramString == null)
+    AppMethodBeat.i(63044);
+    if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(63060);
-      return null;
-    }
-    paramString = paramString.value;
-    AppMethodBeat.o(63060);
-    return paramString;
-  }
-  
-  public final com.tencent.mm.plugin.music.c.a aRK(String paramString)
-  {
-    AppMethodBeat.i(63061);
-    paramString = com.tencent.mm.plugin.music.model.a.a.b.aSj(paramString);
-    paramString = o.feW().aSm(paramString);
-    com.tencent.mm.plugin.music.c.a locala = new com.tencent.mm.plugin.music.c.a();
-    if (paramString != null)
-    {
-      locala.FPT = paramString.field_wifiDownloadedLength;
-      locala.FPV = paramString.field_songWifiFileLength;
-      locala.FPU = paramString.field_wifiEndFlag;
-      locala.FPR = paramString.field_downloadedLength;
-      locala.FPS = paramString.field_songFileLength;
-      locala.endFlag = paramString.field_endFlag;
-      locala.mimeType = paramString.field_mimetype;
-    }
-    AppMethodBeat.o(63061);
-    return locala;
-  }
-  
-  public final boolean fdQ()
-  {
-    AppMethodBeat.i(63048);
-    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, null, a.i.class);
-    if (localIPCBoolean == null)
-    {
-      AppMethodBeat.o(63048);
+      AppMethodBeat.o(63044);
       return false;
     }
-    boolean bool = localIPCBoolean.value;
-    AppMethodBeat.o(63048);
-    return bool;
-  }
-  
-  public final int fdR()
-  {
-    AppMethodBeat.i(63049);
-    IPCInteger localIPCInteger = (IPCInteger)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCInteger(3), a.f.class);
-    if (localIPCInteger == null)
+    if (paramString.contains("wxshakemusic"))
     {
-      AppMethodBeat.o(63049);
-      return 3;
+      AppMethodBeat.o(63044);
+      return true;
     }
-    int i = localIPCInteger.value;
-    AppMethodBeat.o(63049);
-    return i;
+    AppMethodBeat.o(63044);
+    return false;
   }
   
-  public final long fdS()
+  public static String aPc(String paramString)
   {
-    AppMethodBeat.i(63052);
-    IPCLong localIPCLong = (IPCLong)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, null, a.c.class);
-    if (localIPCLong == null)
+    AppMethodBeat.i(63045);
+    if (aPb(paramString))
     {
-      AppMethodBeat.o(63052);
-      return 0L;
+      int i = paramString.lastIndexOf("wxshakemusic");
+      if (i > 1)
+      {
+        paramString = paramString.substring(0, i - 1);
+        AppMethodBeat.o(63045);
+        return paramString;
+      }
+      AppMethodBeat.o(63045);
+      return paramString;
     }
-    long l = localIPCLong.value;
-    AppMethodBeat.o(63052);
-    return l;
+    AppMethodBeat.o(63045);
+    return paramString;
   }
   
-  public final void ft(String paramString, int paramInt)
+  public static String ajV(String paramString)
   {
-    AppMethodBeat.i(63058);
-    IPCAudioParamRequest localIPCAudioParamRequest = new IPCAudioParamRequest();
-    localIPCAudioParamRequest.fMd = paramString;
-    localIPCAudioParamRequest.FPQ = paramInt;
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, localIPCAudioParamRequest, a.l.class);
-    AppMethodBeat.o(63058);
-  }
-  
-  public final String getAccPath()
-  {
-    AppMethodBeat.i(63050);
-    Object localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, null, a.b.class);
-    if (localObject == null)
+    AppMethodBeat.i(63042);
+    if ((!TextUtils.isEmpty(paramString)) && (LMP.check(paramString))) {}
+    for (String str = (String)LMP.get(paramString); str == null; str = null)
     {
-      AppMethodBeat.o(63050);
-      return null;
+      AppMethodBeat.o(63042);
+      return paramString;
     }
-    localObject = ((IPCString)localObject).value;
-    AppMethodBeat.o(63050);
-    return localObject;
+    AppMethodBeat.o(63042);
+    return str;
   }
   
-  public final void je(String paramString1, String paramString2)
+  public static boolean d(a parama)
   {
-    AppMethodBeat.i(63059);
-    IPCAudioParamRequest localIPCAudioParamRequest = new IPCAudioParamRequest();
-    localIPCAudioParamRequest.fMd = paramString1;
-    localIPCAudioParamRequest.mimeType = paramString2;
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, localIPCAudioParamRequest, a.h.class);
-    AppMethodBeat.o(63059);
-  }
-  
-  public final void jf(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(63063);
-    paramString1 = com.tencent.mm.plugin.music.model.a.a.b.aSj(paramString1);
-    com.tencent.mm.plugin.music.model.e.b localb = o.feW();
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("mimetype", paramString2);
-    localb.db.update("Music", localContentValues, "musicId=?", new String[] { paramString1 });
-    paramString1 = (com.tencent.mm.plugin.music.model.e.a)localb.FSN.get(paramString1);
-    if (paramString1 != null) {
-      paramString1.field_mimetype = paramString2;
+    AppMethodBeat.i(63043);
+    if ((parama == null) || (TextUtils.isEmpty(parama.playUrl)))
+    {
+      AppMethodBeat.o(63043);
+      return false;
     }
-    AppMethodBeat.o(63063);
+    if (!aPb(parama.playUrl))
+    {
+      AppMethodBeat.o(63043);
+      return false;
+    }
+    if (com.tencent.mm.plugin.music.h.c.adO(parama.field_musicType))
+    {
+      if ((parama == null) || (TextUtils.isEmpty(parama.playUrl)))
+      {
+        i = 0;
+        if ((i == 0) || (!h.aON(parama.playUrl))) {
+          break label139;
+        }
+      }
+      label139:
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label238;
+        }
+        Log.i("MicroMsg.Music.MusicUrlParser", "qq music pieceFile cache is valid");
+        AppMethodBeat.o(63043);
+        return false;
+        j localj = e.aOy(b.aPn(parama.playUrl));
+        if ((localj != null) && (localj.oPe == 1))
+        {
+          i = 1;
+          break;
+        }
+        i = 0;
+        break;
+      }
+    }
+    boolean bool = NetStatusUtil.isWifi(MMApplicationContext.getContext());
+    if (bool) {
+      if (parama.field_wifiEndFlag == 1)
+      {
+        i = 1;
+        if ((i == 0) || (!new u(b.cy(parama.field_musicId, bool)).jKS())) {
+          break label233;
+        }
+      }
+    }
+    label233:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label238;
+      }
+      Log.i("MicroMsg.Music.MusicUrlParser", "music cache is valid");
+      AppMethodBeat.o(63043);
+      return false;
+      i = 0;
+      break;
+      if (parama.field_endFlag == 1)
+      {
+        i = 1;
+        break;
+      }
+      i = 0;
+      break;
+    }
+    label238:
+    if (!LMP.check(parama.playUrl))
+    {
+      AppMethodBeat.o(63043);
+      return true;
+    }
+    long l = 0L;
+    if (LMQ.check(parama.playUrl)) {
+      l = ((Long)LMQ.get(parama.playUrl)).longValue();
+    }
+    if (System.currentTimeMillis() - l > 86400000L)
+    {
+      LMP.remove(parama.playUrl);
+      LMQ.remove(parama.playUrl);
+      Log.i("MicroMsg.Music.MusicUrlParser", "shake music url in cache is timeout");
+      AppMethodBeat.o(63043);
+      return true;
+    }
+    AppMethodBeat.o(63043);
+    return false;
   }
   
-  public final void x(String paramString, byte[] paramArrayOfByte)
+  public static void kz(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(63057);
-    IPCAudioParamRequest localIPCAudioParamRequest = new IPCAudioParamRequest();
-    localIPCAudioParamRequest.fMd = paramString;
-    localIPCAudioParamRequest.lWa = paramArrayOfByte;
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, localIPCAudioParamRequest, a.j.class);
-    AppMethodBeat.o(63057);
+    AppMethodBeat.i(63041);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      AppMethodBeat.o(63041);
+      return;
+    }
+    LMP.put(paramString1, paramString2);
+    LMQ.put(paramString1, Long.valueOf(System.currentTimeMillis()));
+    AppMethodBeat.o(63041);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.c
  * JD-Core Version:    0.7.0.1
  */

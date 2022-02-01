@@ -5,97 +5,67 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.view.View;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.e;
-import androidx.fragment.app.i;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.a;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.plugin.finder.live.fragment.FinderLiveAnchorFragment;
 import com.tencent.mm.plugin.finder.live.model.FinderLiveBundle;
-import com.tencent.mm.plugin.finder.live.report.m;
+import com.tencent.mm.plugin.finder.live.model.aj;
+import com.tencent.mm.plugin.finder.live.p.a;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.report.k;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.ui.component.UIComponentFragment;
-import java.util.HashMap;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@a(32)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveAnchorSecondaryDeviceUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "fragment", "Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;", "getFragment", "()Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;", "setFragment", "(Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;)V", "lastOrientation", "", "swipeBack", "", "getSwipeBack", "()Z", "setSwipeBack", "(Z)V", "commitFragment", "", "finish", "getLayoutId", "getReportTag", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "onSwipeBack", "resetFragment", "plugin-finder-live_release"})
-public final class FinderLiveAnchorSecondaryDeviceUI
+@com.tencent.mm.ui.base.a(32)
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveAnchorSecondaryDeviceUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "fragment", "Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;", "getFragment", "()Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;", "setFragment", "(Lcom/tencent/mm/plugin/finder/live/fragment/FinderLiveAnchorFragment;)V", "lastOrientation", "", "swipeBack", "", "getSwipeBack", "()Z", "setSwipeBack", "(Z)V", "commitFragment", "", "finish", "getLayoutId", "getReportTag", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "onSwipeBack", "resetFragment", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class FinderLiveAnchorSecondaryDeviceUI
   extends MMFinderUI
 {
+  private boolean BoA;
+  private FinderLiveAnchorFragment BoB;
   private final String TAG = "FinderLiveAnchorSecondaryDeviceUI";
-  private HashMap _$_findViewCache;
   private int lastOrientation = -1;
-  private boolean xOB;
-  private FinderLiveAnchorFragment xOC;
   
-  private final void dvk()
+  private final void efd()
   {
-    AppMethodBeat.i(233773);
-    this.xOC = new FinderLiveAnchorFragment();
-    FinderLiveAnchorFragment localFinderLiveAnchorFragment = this.xOC;
+    AppMethodBeat.i(364442);
+    this.BoB = new FinderLiveAnchorFragment();
+    FinderLiveAnchorFragment localFinderLiveAnchorFragment = this.BoB;
     if (localFinderLiveAnchorFragment != null) {
-      localFinderLiveAnchorFragment.yda = true;
+      localFinderLiveAnchorFragment.CDr = true;
     }
-    localFinderLiveAnchorFragment = this.xOC;
+    localFinderLiveAnchorFragment = this.BoB;
     if (localFinderLiveAnchorFragment != null)
     {
-      i locali = getSupportFragmentManager().beginTransaction();
-      p.j(locali, "supportFragmentManager.beginTransaction()");
-      locali.b(b.f.fragment_container, (Fragment)localFinderLiveAnchorFragment);
-      locali.iq();
-      AppMethodBeat.o(233773);
-      return;
+      r localr = getSupportFragmentManager().beginTransaction();
+      s.s(localr, "supportFragmentManager.beginTransaction()");
+      localr.b(p.e.fragment_container, (Fragment)localFinderLiveAnchorFragment);
+      localr.FY();
     }
-    AppMethodBeat.o(233773);
+    AppMethodBeat.o(364442);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(233776);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(233776);
-  }
+  public void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(233774);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(233774);
-    return localView1;
-  }
-  
-  public final String dvl()
+  public final String efe()
   {
     return this.TAG;
   }
   
-  public final void finish()
+  public void finish()
   {
-    AppMethodBeat.i(233771);
-    Object localObject = this.xOC;
+    AppMethodBeat.i(364591);
+    Object localObject = this.BoB;
     if (localObject != null)
     {
       localObject = ((Iterable)((UIComponentFragment)localObject).uiComponents).iterator();
@@ -104,96 +74,106 @@ public final class FinderLiveAnchorSecondaryDeviceUI
       }
     }
     super.finish();
-    overridePendingTransition(b.a.anim_not_change, b.a.sight_slide_bottom_out);
-    AppMethodBeat.o(233771);
+    overridePendingTransition(p.a.anim_not_change, p.a.sight_slide_bottom_out);
+    AppMethodBeat.o(364591);
   }
   
-  public final int getLayoutId()
+  public int getLayoutId()
   {
-    return b.g.finder_live_visitor_fragment_ui;
+    return p.f.CfY;
   }
   
-  public final void onConfigurationChanged(Configuration paramConfiguration)
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(233766);
-    p.k(paramConfiguration, "newConfig");
+    AppMethodBeat.i(364559);
+    s.u(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
     Log.i(this.TAG, "[onConfigurationChanged] lastOrientation：" + this.lastOrientation + ",newConfig.orientation:" + paramConfiguration.orientation);
+    Intent localIntent;
     if (this.lastOrientation != paramConfiguration.orientation)
     {
       this.lastOrientation = paramConfiguration.orientation;
-      Intent localIntent = getIntent();
-      Parcelable localParcelable2 = getIntent().getParcelableExtra("KEY_PARAMS_CONFIG");
-      Parcelable localParcelable1 = localParcelable2;
-      if (!(localParcelable2 instanceof FinderLiveBundle)) {
-        localParcelable1 = null;
+      localIntent = getIntent();
+      localObject = getIntent().getParcelableExtra("KEY_PARAMS_CONFIG");
+      if (!(localObject instanceof FinderLiveBundle)) {
+        break label150;
       }
-      localIntent.putExtra("KEY_PARAMS_CONFIG", (Parcelable)localParcelable1);
-      getIntent().putExtra("KEY_PARAMS_RESET_LIVE", true);
-      dvk();
-      m.yCt.O(true, paramConfiguration.orientation);
     }
-    LocaleUtil.initLanguage(MMApplicationContext.getContext());
-    AppMethodBeat.o(233766);
+    label150:
+    for (Object localObject = (FinderLiveBundle)localObject;; localObject = null)
+    {
+      localIntent.putExtra("KEY_PARAMS_CONFIG", (Parcelable)localObject);
+      getIntent().putExtra("KEY_PARAMS_RESET_LIVE", true);
+      efd();
+      k.Doi.N(true, paramConfiguration.orientation);
+      LocaleUtil.initLanguage(MMApplicationContext.getContext());
+      AppMethodBeat.o(364559);
+      return;
+    }
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(233758);
+    AppMethodBeat.i(364466);
     supportRequestWindowFeature(1);
+    Object localObject = aj.CGT;
+    localObject = aj.elk();
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.finder.live.view.a)localObject).checkFinishWhenDiffTask((Activity)this);
+    }
     super.onCreate(paramBundle);
     getIntent().putExtra("KEY_PARAMS_RESET_LIVE", false);
-    dvk();
+    efd();
     Log.i(this.TAG, "[onCreate]");
-    AppMethodBeat.o(233758);
+    AppMethodBeat.o(364466);
   }
   
-  public final void onDestroy()
+  public void onDestroy()
   {
-    AppMethodBeat.i(233765);
+    AppMethodBeat.i(364539);
     super.onDestroy();
     Log.i(this.TAG, "[onDestroy]");
-    AppMethodBeat.o(233765);
+    AppMethodBeat.o(364539);
   }
   
-  public final void onPause()
+  public void onPause()
   {
-    AppMethodBeat.i(233762);
+    AppMethodBeat.i(364506);
     super.onPause();
     Log.i(this.TAG, "[onPause]");
-    AppMethodBeat.o(233762);
+    AppMethodBeat.o(364506);
   }
   
-  public final void onResume()
+  public void onResume()
   {
-    AppMethodBeat.i(233760);
+    AppMethodBeat.i(364488);
     super.onResume();
     Log.i(this.TAG, "[onResume]");
-    AppMethodBeat.o(233760);
+    AppMethodBeat.o(364488);
   }
   
-  public final void onStart()
+  public void onStart()
   {
-    AppMethodBeat.i(233759);
+    AppMethodBeat.i(364478);
     super.onStart();
     Log.i(this.TAG, "[onStart]");
-    AppMethodBeat.o(233759);
+    AppMethodBeat.o(364478);
   }
   
-  public final void onStop()
+  public void onStop()
   {
-    AppMethodBeat.i(233763);
+    AppMethodBeat.i(364522);
     super.onStop();
     Log.i(this.TAG, "[onStop]");
-    AppMethodBeat.o(233763);
+    AppMethodBeat.o(364522);
   }
   
-  public final void onSwipeBack()
+  public void onSwipeBack()
   {
-    AppMethodBeat.i(233768);
+    AppMethodBeat.i(364574);
     super.onSwipeBack();
-    this.xOB = true;
-    AppMethodBeat.o(233768);
+    this.BoA = true;
+    AppMethodBeat.o(364574);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -204,7 +184,7 @@ public final class FinderLiveAnchorSecondaryDeviceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorSecondaryDeviceUI
  * JD-Core Version:    0.7.0.1
  */

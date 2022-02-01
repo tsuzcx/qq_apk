@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.bb;
+import com.tencent.mm.autogen.b.bd;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bb;
 
 public final class a
 {
-  public static long a(az paramaz, int paramInt, long paramLong)
+  public static long a(bb parambb, int paramInt, long paramLong)
   {
     AppMethodBeat.i(43075);
-    if (paramaz == null)
+    if (parambb == null)
     {
       AppMethodBeat.o(43075);
       return 0L;
@@ -21,35 +21,35 @@ public final class a
       switch (paramInt)
       {
       default: 
-        paramLong = a(paramaz, paramLong);
+        paramLong = a(parambb, paramLong);
         AppMethodBeat.o(43075);
         return paramLong;
         paramLong = Util.nowMilliSecond();
       }
     }
-    paramLong = a(paramaz, paramLong);
+    paramLong = a(parambb, paramLong);
     AppMethodBeat.o(43075);
     return paramLong | 0x0;
-    paramLong = a(paramaz, paramLong);
+    paramLong = a(parambb, paramLong);
     AppMethodBeat.o(43075);
     return paramLong & 0xFFFFFFFF;
-    paramLong = a(paramaz, paramLong);
+    paramLong = a(parambb, paramLong);
     AppMethodBeat.o(43075);
     return paramLong & 0x0;
-    paramLong = a(paramaz, paramLong);
+    paramLong = a(parambb, paramLong);
     AppMethodBeat.o(43075);
     return paramLong | 0x0;
-    paramLong = a(paramaz, paramLong);
+    paramLong = a(parambb, paramLong);
     AppMethodBeat.o(43075);
     return paramLong & 0xFFFFFFFF;
-    paramLong = a(paramaz, paramLong);
+    paramLong = a(parambb, paramLong);
     AppMethodBeat.o(43075);
     return paramLong & 0x0;
   }
   
-  public static long a(az paramaz, long paramLong)
+  public static long a(bb parambb, long paramLong)
   {
-    return paramaz.field_flag & 0x0 | 0xFFFFFFFF & paramLong;
+    return parambb.field_flag & 0x0 | 0xFFFFFFFF & paramLong;
   }
 }
 

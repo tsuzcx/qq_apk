@@ -7,18 +7,18 @@ import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.cl;
+import com.tencent.mm.storage.co;
 
 final class c$a
   implements m<IPCVoid, IPCString>
 {
-  private static IPCString cbj()
+  private static IPCString cBD()
   {
     AppMethodBeat.i(146141);
     try
     {
       Log.i("MicroMsg.Record.AppBrandRecordClientService", "ipc updateDeviceInfo");
-      IPCString localIPCString1 = new IPCString(h.aHG().aHq().hAK());
+      IPCString localIPCString1 = new IPCString(h.baE().bao().jcN());
       AppMethodBeat.o(146141);
       return localIPCString1;
     }
@@ -33,7 +33,7 @@ final class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,78 +11,78 @@ import java.util.Map;
 public final class r
   implements e
 {
-  private String pvQ;
-  private final e pwK;
-  private final d pwL;
-  private boolean pwM;
-  private boolean pwN;
+  private String sAW;
+  private final e sBQ;
+  private final d sBR;
+  private boolean sBS;
+  private boolean sBT;
   
   public r(e parame, d paramd)
   {
-    AppMethodBeat.i(229330);
-    this.pvQ = "";
-    this.pwK = ((e)a.checkNotNull(parame));
-    this.pwL = ((d)a.checkNotNull(paramd));
-    AppMethodBeat.o(229330);
+    AppMethodBeat.i(328544);
+    this.sAW = "";
+    this.sBQ = ((e)a.checkNotNull(parame));
+    this.sBR = ((d)a.checkNotNull(paramd));
+    AppMethodBeat.o(328544);
   }
   
   private String getLogTag()
   {
-    AppMethodBeat.i(229349);
-    String str = this.pvQ + "TeeDataSource";
-    AppMethodBeat.o(229349);
+    AppMethodBeat.i(328550);
+    String str = this.sAW + "TeeDataSource";
+    AppMethodBeat.o(328550);
     return str;
   }
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(229335);
-    long l3 = this.pwK.a(paramg);
+    AppMethodBeat.i(328563);
+    long l3 = this.sBQ.a(paramg);
     long l1 = -1L;
-    c localc = c.pwO;
+    c localc = c.sBU;
     long l2;
     Object localObject;
-    if ((this.pwK instanceof l))
+    if ((this.sBQ instanceof l))
     {
-      l2 = this.pwK.getTotalLength();
-      localObject = (List)((l)this.pwK).getResponseHeaders().get("Content-Type");
+      l2 = this.sBQ.getTotalLength();
+      localObject = (List)((l)this.sBQ).getResponseHeaders().get("Content-Type");
       l1 = l2;
       if (localObject != null)
       {
         l1 = l2;
         if (!((List)localObject).isEmpty()) {
-          localc = c.aiX((String)((List)localObject).get(0));
+          localc = c.abW((String)((List)localObject).get(0));
         }
       }
     }
     for (;;)
     {
       localObject = paramg;
-      if (paramg.aFL == -1L)
+      if (paramg.length == -1L)
       {
         localObject = paramg;
         if (l3 != -1L) {
-          localObject = new g(paramg.uri, paramg.bos, paramg.position, l3, paramg.key, paramg.flags, paramg.uuid, paramg.priority);
+          localObject = new g(paramg.uri, paramg.absoluteStreamPosition, paramg.position, l3, paramg.key, paramg.flags, paramg.uuid, paramg.priority);
         }
       }
-      this.pwM = false;
+      this.sBS = false;
       if (l2 != -1L) {}
       for (;;)
       {
         try
         {
-          this.pwL.a((g)localObject, l2, localc);
-          this.pwN = true;
-          AppMethodBeat.o(229335);
+          this.sBR.a((g)localObject, l2, localc);
+          this.sBT = true;
+          AppMethodBeat.o(328563);
           return l3;
         }
         catch (b.a paramg)
         {
-          this.pwM = true;
-          h.a(5, getLogTag(), "error open dataSink " + paramg.toString(), paramg);
+          this.sBS = true;
+          h.b(5, getLogTag(), "error open dataSink " + paramg.toString(), paramg);
           continue;
         }
-        this.pwM = true;
+        this.sBS = true;
       }
       l2 = l1;
     }
@@ -90,104 +90,104 @@ public final class r
   
   public final long available()
   {
-    AppMethodBeat.i(229339);
-    long l = this.pwK.available();
-    AppMethodBeat.o(229339);
+    AppMethodBeat.i(328575);
+    long l = this.sBQ.available();
+    AppMethodBeat.o(328575);
     return l;
-  }
-  
-  public final c bVy()
-  {
-    AppMethodBeat.i(229346);
-    c localc = this.pwK.bVy();
-    AppMethodBeat.o(229346);
-    return localc;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(229345);
+    AppMethodBeat.i(328581);
     try
     {
-      this.pwK.close();
+      this.sBQ.close();
       try
       {
-        if (this.pwN) {
-          this.pwL.close();
+        if (this.sBT) {
+          this.sBR.close();
         }
-        AppMethodBeat.o(229345);
+        AppMethodBeat.o(328581);
         return;
       }
       catch (b.a locala1)
       {
-        h.a(5, getLogTag(), "error close dataSink " + locala1.toString(), locala1);
-        AppMethodBeat.o(229345);
+        h.b(5, getLogTag(), "error close dataSink " + locala1.toString(), locala1);
+        AppMethodBeat.o(328581);
         return;
       }
       try
       {
-        if (this.pwN) {
-          this.pwL.close();
+        if (this.sBT) {
+          this.sBR.close();
         }
-        AppMethodBeat.o(229345);
+        AppMethodBeat.o(328581);
         throw localObject;
       }
       catch (b.a locala2)
       {
         for (;;)
         {
-          h.a(5, getLogTag(), "error close dataSink " + locala2.toString(), locala2);
+          h.b(5, getLogTag(), "error close dataSink " + locala2.toString(), locala2);
         }
       }
     }
     finally {}
   }
   
+  public final c cvM()
+  {
+    AppMethodBeat.i(328588);
+    c localc = this.sBQ.cvM();
+    AppMethodBeat.o(328588);
+    return localc;
+  }
+  
   public final long getTotalLength()
   {
-    AppMethodBeat.i(229347);
-    long l = this.pwK.getTotalLength();
-    AppMethodBeat.o(229347);
+    AppMethodBeat.i(328593);
+    long l = this.sBQ.getTotalLength();
+    AppMethodBeat.o(328593);
     return l;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(229337);
-    paramInt2 = this.pwK.read(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.i(328568);
+    paramInt2 = this.sBQ.read(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt2 > 0) {
-      if (this.pwM)
+      if (this.sBS)
       {
-        AppMethodBeat.o(229337);
+        AppMethodBeat.o(328568);
         return paramInt2;
       }
     }
     try
     {
-      if (this.pwN) {
-        this.pwL.write(paramArrayOfByte, paramInt1, paramInt2);
+      if (this.sBT) {
+        this.sBR.write(paramArrayOfByte, paramInt1, paramInt2);
       }
-      AppMethodBeat.o(229337);
+      AppMethodBeat.o(328568);
       return paramInt2;
     }
     catch (b.a paramArrayOfByte)
     {
       for (;;)
       {
-        this.pwM = true;
-        h.a(5, getLogTag(), "error write dataSink " + paramArrayOfByte.toString(), paramArrayOfByte);
+        this.sBS = true;
+        h.b(5, getLogTag(), "error write dataSink " + paramArrayOfByte.toString(), paramArrayOfByte);
       }
     }
   }
   
   public final void setLogTag(String paramString)
   {
-    this.pvQ = paramString;
+    this.sAW = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.b.r
  * JD-Core Version:    0.7.0.1
  */

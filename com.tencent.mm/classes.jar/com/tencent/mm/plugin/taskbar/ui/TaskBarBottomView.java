@@ -11,103 +11,103 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.taskbar.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/ui/TaskBarBottomView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "drawColor", "leftArcRectF", "Landroid/graphics/RectF;", "mContext", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "radii", "", "radius", "", "rightArcRectF", "computeRadius", "", "dp", "init", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setDrawColor", "color", "setTopRoundRadius", "topRadius", "Companion", "plugin-taskbar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/taskbar/ui/TaskBarBottomView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "drawColor", "leftArcRectF", "Landroid/graphics/RectF;", "mContext", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "radii", "", "radius", "", "rightArcRectF", "computeRadius", "", "dp", "init", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setDrawColor", "color", "setTopRoundRadius", "topRadius", "Companion", "plugin-taskbar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TaskBarBottomView
   extends View
 {
-  public static final a MoE;
-  private int MoA;
-  private float[] MoB;
-  private RectF MoC;
-  private RectF MoD;
-  private Path auD;
+  public static final TaskBarBottomView.a SRU;
+  private int SRV;
+  private RectF SRW;
+  private RectF SRX;
+  private float[] avP;
+  private Path cja;
   private Context mContext;
   private Paint mPaint;
   private float radius;
   
   static
   {
-    AppMethodBeat.i(214971);
-    MoE = new a((byte)0);
-    AppMethodBeat.o(214971);
+    AppMethodBeat.i(264084);
+    SRU = new TaskBarBottomView.a((byte)0);
+    AppMethodBeat.o(264084);
   }
   
   public TaskBarBottomView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(214965);
+    AppMethodBeat.i(264059);
     this.mPaint = new Paint();
-    this.auD = new Path();
-    this.MoB = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-    this.MoC = new RectF();
-    this.MoD = new RectF();
+    this.cja = new Path();
+    this.avP = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+    this.SRW = new RectF();
+    this.SRX = new RectF();
     init(paramContext);
-    AppMethodBeat.o(214965);
+    AppMethodBeat.o(264059);
   }
   
   public TaskBarBottomView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(214969);
+    AppMethodBeat.i(264066);
     this.mPaint = new Paint();
-    this.auD = new Path();
-    this.MoB = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-    this.MoC = new RectF();
-    this.MoD = new RectF();
+    this.cja = new Path();
+    this.avP = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+    this.SRW = new RectF();
+    this.SRX = new RectF();
     init(paramContext);
-    AppMethodBeat.o(214969);
+    AppMethodBeat.o(264066);
   }
   
-  private final void aiT(int paramInt)
+  private final void anV(int paramInt)
   {
-    AppMethodBeat.i(214959);
+    AppMethodBeat.i(264078);
     this.radius = a.fromDPToPix(getContext(), paramInt);
-    this.MoB[0] = this.radius;
-    this.MoB[1] = this.radius;
-    this.MoB[2] = this.radius;
-    this.MoB[3] = this.radius;
+    this.avP[0] = this.radius;
+    this.avP[1] = this.radius;
+    this.avP[2] = this.radius;
+    this.avP[3] = this.radius;
     Log.i("Mp.AppBrandDesktopBottomView", "alvinluo computeRadius radius: %f", new Object[] { Float.valueOf(this.radius) });
-    AppMethodBeat.o(214959);
+    AppMethodBeat.o(264078);
   }
   
   private final void init(Context paramContext)
   {
-    AppMethodBeat.i(214957);
+    AppMethodBeat.i(264072);
     this.mContext = paramContext;
-    this.MoA = getResources().getColor(d.a.app_brand_desktop_bottom_action_bar_color);
-    aiT(8);
-    AppMethodBeat.o(214957);
+    this.SRV = getResources().getColor(d.a.app_brand_desktop_bottom_action_bar_color);
+    anV(8);
+    AppMethodBeat.o(264072);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(214964);
+    AppMethodBeat.i(264109);
     super.onDraw(paramCanvas);
-    this.mPaint.setColor(this.MoA);
+    this.mPaint.setColor(this.SRV);
     this.mPaint.setStyle(Paint.Style.FILL);
-    if (d.qX(20))
+    if (d.rd(20))
     {
-      this.auD.addRoundRect(getLeft(), getTop(), getRight(), getBottom(), this.MoB, Path.Direction.CCW);
+      this.cja.addRoundRect(getLeft(), getTop(), getRight(), getBottom(), this.avP, Path.Direction.CCW);
       if (paramCanvas != null) {
-        paramCanvas.drawPath(this.auD, this.mPaint);
+        paramCanvas.drawPath(this.cja, this.mPaint);
       }
-      this.auD.reset();
-      AppMethodBeat.o(214964);
+      this.cja.reset();
+      AppMethodBeat.o(264109);
       return;
     }
-    this.MoC.set(getLeft(), getTop(), getLeft() + this.radius * 2.0F, getTop() + this.radius * 2.0F);
-    this.MoD.set(getRight() - this.radius * 2.0F, getTop(), getRight(), getTop() + this.radius * 2.0F);
+    this.SRW.set(getLeft(), getTop(), getLeft() + this.radius * 2.0F, getTop() + this.radius * 2.0F);
+    this.SRX.set(getRight() - this.radius * 2.0F, getTop(), getRight(), getTop() + this.radius * 2.0F);
     if (paramCanvas != null) {
-      paramCanvas.drawArc(this.MoC, 180.0F, 90.0F, true, this.mPaint);
+      paramCanvas.drawArc(this.SRW, 180.0F, 90.0F, true, this.mPaint);
     }
     if (paramCanvas != null) {
-      paramCanvas.drawArc(this.MoD, 270.0F, 90.0F, true, this.mPaint);
+      paramCanvas.drawArc(this.SRX, 270.0F, 90.0F, true, this.mPaint);
     }
     float f1;
     if (paramCanvas != null)
@@ -120,29 +120,24 @@ public final class TaskBarBottomView
       f1 = getLeft();
       float f2 = getTop();
       paramCanvas.drawRect(f1, this.radius + f2, getRight(), getBottom(), this.mPaint);
-      AppMethodBeat.o(214964);
-      return;
     }
-    AppMethodBeat.o(214964);
+    AppMethodBeat.o(264109);
   }
   
   public final void setDrawColor(int paramInt)
   {
-    AppMethodBeat.i(214962);
-    this.MoA = paramInt;
+    AppMethodBeat.i(264101);
+    this.SRV = paramInt;
     invalidate();
-    AppMethodBeat.o(214962);
+    AppMethodBeat.o(264101);
   }
   
   public final void setTopRoundRadius(int paramInt)
   {
-    AppMethodBeat.i(214960);
-    aiT(paramInt);
-    AppMethodBeat.o(214960);
+    AppMethodBeat.i(264093);
+    anV(paramInt);
+    AppMethodBeat.o(264093);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/ui/TaskBarBottomView$Companion;", "", "()V", "DEFAULT_RADIUS_IN_DP", "", "TAG", "", "plugin-taskbar_release"})
-  public static final class a {}
 }
 
 

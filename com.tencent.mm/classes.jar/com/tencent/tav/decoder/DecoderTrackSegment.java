@@ -17,26 +17,26 @@ public class DecoderTrackSegment
   public DecoderTrackSegment(long paramLong)
   {
     this(new CMTimeRange(CMTime.CMTimeZero, new CMTime((float)paramLong / 1000.0F)), null);
-    AppMethodBeat.i(190516);
-    AppMethodBeat.o(190516);
+    AppMethodBeat.i(216074);
+    AppMethodBeat.o(216074);
   }
   
   public DecoderTrackSegment(AssetTrack paramAssetTrack, AssetTrackSegment paramAssetTrackSegment)
   {
     this(paramAssetTrackSegment.getTimeMapping().getSource().clone(), DecoderAssetTrack.create(paramAssetTrack, paramAssetTrackSegment));
-    AppMethodBeat.i(190521);
+    AppMethodBeat.i(216093);
     setScaledDuration(paramAssetTrackSegment.getScaleDuration());
-    AppMethodBeat.o(190521);
+    AppMethodBeat.o(216093);
   }
   
   public DecoderTrackSegment(CMTimeRange paramCMTimeRange, DecoderAssetTrack paramDecoderAssetTrack)
   {
-    AppMethodBeat.i(190518);
+    AppMethodBeat.i(216083);
     this.videoAsset = paramDecoderAssetTrack;
     this.timeRange = paramCMTimeRange;
     this.scaledDuration = paramCMTimeRange.getDuration();
     this.decoderStartTime = CMTime.CMTimeZero;
-    AppMethodBeat.o(190518);
+    AppMethodBeat.o(216083);
   }
   
   public CMTime getDecoderStartTime()

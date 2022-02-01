@@ -6,12 +6,12 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletVerifyCodeUI;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.wallet_core.e;
 
 public class l
-  extends d
+  extends e
 {
-  public final d a(Activity paramActivity, Bundle paramBundle)
+  public final e a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(66272);
     b(paramActivity, WalletVerifyCodeUI.class, paramBundle);
@@ -33,9 +33,9 @@ public class l
     AppMethodBeat.i(66274);
     paramBundle = new Intent(paramActivity, WalletOfflineCoinPurseUI.class);
     paramBundle.addFlags(67108864);
-    paramBundle = new com.tencent.mm.hellhoundlib.b.a().bm(paramBundle);
-    com.tencent.mm.hellhoundlib.a.a.b(paramActivity, paramBundle.aFh(), "com/tencent/mm/plugin/offline/VerifyProcess", "end", "(Landroid/app/Activity;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramBundle.sf(0));
+    paramBundle = new com.tencent.mm.hellhoundlib.b.a().cG(paramBundle);
+    com.tencent.mm.hellhoundlib.a.a.b(paramActivity, paramBundle.aYi(), "com/tencent/mm/plugin/offline/VerifyProcess", "end", "(Landroid/app/Activity;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramBundle.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramActivity, "com/tencent/mm/plugin/offline/VerifyProcess", "end", "(Landroid/app/Activity;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(66274);
   }
@@ -45,12 +45,12 @@ public class l
     return false;
   }
   
-  public final String epb()
+  public final String fud()
   {
     return "VerifyProcess";
   }
   
-  public final void h(Activity paramActivity, int paramInt) {}
+  public final void i(Activity paramActivity, int paramInt) {}
 }
 
 

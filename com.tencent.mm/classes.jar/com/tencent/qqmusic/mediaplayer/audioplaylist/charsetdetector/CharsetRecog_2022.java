@@ -75,7 +75,10 @@ abstract class CharsetRecog_2022
     CharsetRecog_2022CN()
     {
       AppMethodBeat.i(76617);
-      this.escapeSequences = new byte[][] { { 27, 36, 41, 65 }, { 27, 36, 41, 71 }, { 27, 36, 42, 72 }, { 27, 36, 41, 69 }, { 27, 36, 43, 73 }, { 27, 36, 43, 74 }, { 27, 36, 43, 75 }, { 27, 36, 43, 76 }, { 27, 36, 43, 77 }, { 27, 78 }, { 27, 79 } };
+      byte[] arrayOfByte1 = { 27, 36, 41, 69 };
+      byte[] arrayOfByte2 = { 27, 36, 43, 74 };
+      byte[] arrayOfByte3 = { 27, 78 };
+      this.escapeSequences = new byte[][] { { 27, 36, 41, 65 }, { 27, 36, 41, 71 }, { 27, 36, 42, 72 }, arrayOfByte1, { 27, 36, 43, 73 }, arrayOfByte2, { 27, 36, 43, 75 }, { 27, 36, 43, 76 }, { 27, 36, 43, 77 }, arrayOfByte3, { 27, 79 } };
       AppMethodBeat.o(76617);
     }
     
@@ -108,16 +111,13 @@ abstract class CharsetRecog_2022
     {
       AppMethodBeat.i(76646);
       byte[] arrayOfByte1 = { 27, 36, 40, 67 };
-      byte[] arrayOfByte2 = { 27, 36, 40, 68 };
-      byte[] arrayOfByte3 = { 27, 36, 64 };
-      byte[] arrayOfByte4 = { 27, 36, 65 };
-      byte[] arrayOfByte5 = { 27, 36, 66 };
-      byte[] arrayOfByte6 = { 27, 38, 64 };
-      byte[] arrayOfByte7 = { 27, 40, 66 };
-      byte[] arrayOfByte8 = { 27, 40, 72 };
-      byte[] arrayOfByte9 = { 27, 40, 73 };
-      byte[] arrayOfByte10 = { 27, 46, 65 };
-      this.escapeSequences = new byte[][] { arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5, arrayOfByte6, arrayOfByte7, arrayOfByte8, arrayOfByte9, { 27, 40, 74 }, arrayOfByte10, { 27, 46, 70 } };
+      byte[] arrayOfByte2 = { 27, 36, 64 };
+      byte[] arrayOfByte3 = { 27, 36, 66 };
+      byte[] arrayOfByte4 = { 27, 40, 72 };
+      byte[] arrayOfByte5 = { 27, 40, 74 };
+      byte[] arrayOfByte6 = { 27, 46, 65 };
+      byte[] arrayOfByte7 = { 27, 46, 70 };
+      this.escapeSequences = new byte[][] { arrayOfByte1, { 27, 36, 40, 68 }, arrayOfByte2, { 27, 36, 65 }, arrayOfByte3, { 27, 38, 64 }, { 27, 40, 66 }, arrayOfByte4, { 27, 40, 73 }, arrayOfByte5, arrayOfByte6, arrayOfByte7 };
       AppMethodBeat.o(76646);
     }
     
@@ -163,7 +163,7 @@ abstract class CharsetRecog_2022
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetRecog_2022
  * JD-Core Version:    0.7.0.1
  */

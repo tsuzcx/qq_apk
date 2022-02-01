@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.transmit;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,7 +7,7 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.e;
 import com.tencent.mm.kernel.k;
-import com.tencent.mm.plugin.appbrand.ui.x;
+import com.tencent.mm.plugin.appbrand.ui.ae;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.a;
@@ -22,18 +21,18 @@ public class SelectConversationDirectSelectUI
   {
     AppMethodBeat.i(169902);
     super.onCreate(paramBundle);
-    this.XXU = true;
+    this.afOy = true;
     paramBundle = getIntent().getStringExtra("Select_Conv_User");
     if (!Util.isNullOrNil(paramBundle))
     {
       Log.d("MicroMsg.SelectConversationDirectSelectUI", "hy: request direct select username");
       setContentViewVisibility(8);
       overridePendingTransition(0, 0);
-      x.e(getWindow());
-      x.d(getWindow(), false);
+      ae.g(getWindow());
+      ae.c(getWindow(), false);
       getWindow().setBackgroundDrawable(new ColorDrawable(0));
       setBackGroundColorResource(R.e.green_text_color);
-      aWT(paramBundle);
+      aUj(paramBundle);
       AppMethodBeat.o(169902);
       return;
     }

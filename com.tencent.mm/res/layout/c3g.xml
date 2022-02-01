@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingLeft="@dimen/br" android:layout_height="@dimen/iq" style="@style/nr"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/x1" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:src="@raw/default_avatar" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/b9w" android:paddingRight="@dimen/cb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cb" android:layout_weight="1.0">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:id="@id/fzg" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/mp" />
-            <TextView android:textColor="@color/ww" android:gravity="right" android:id="@id/j0l" android:layout_width="wrap_content" android:minWidth="65.0dip" style="@style/mn" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
-            <ImageView android:id="@id/i4v" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <TextView android:ellipsize="end" android:id="@id/e7t" android:paddingRight="20.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/mo" />
-            <TextView android:textSize="10.0dip" android:gravity="center" android:id="@id/iot" android:background="@drawable/bp7" android:visibility="invisible" style="@style/mn" />
-        </LinearLayout>
-    </LinearLayout>
+    <RelativeLayout android:id="@id/jta" android:background="@drawable/btj" android:layout_width="160.0dip" android:layout_height="160.0dip">
+        <com.tencent.mm.emoji.view.EmojiStatusView android:id="@id/jtb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="20.0dip" android:scaleType="centerInside" android:layout_centerInParent="true" />
+    </RelativeLayout>
 </LinearLayout>

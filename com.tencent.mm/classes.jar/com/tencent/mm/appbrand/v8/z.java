@@ -12,56 +12,56 @@ import java.util.concurrent.BlockingDeque;
 class z
   implements c
 {
-  private static final ThreadLocal<z> fil;
-  private boolean arU;
-  private k fid;
-  private final Thread fka;
-  private final l<Runnable> fkb;
-  private z.a fkc;
-  private volatile boolean fkd;
-  private final boolean fke;
-  private c.a fkf;
-  private Queue<Runnable> fkg;
-  private Queue<Runnable> fkh;
-  private boolean fki;
-  private int fkj;
+  private static final ThreadLocal<z> hmy;
+  private boolean cgD;
+  private k hmq;
+  private final Thread hon;
+  private final l<Runnable> hoo;
+  private z.a hop;
+  private volatile boolean hoq;
+  private final boolean hor;
+  private c.a hos;
+  private Queue<Runnable> hot;
+  private Queue<Runnable> hou;
+  private boolean hov;
+  private int how;
   
   static
   {
     AppMethodBeat.i(144143);
-    fil = new ThreadLocal();
+    hmy = new ThreadLocal();
     AppMethodBeat.o(144143);
   }
   
   z(boolean paramBoolean)
   {
-    AppMethodBeat.i(262803);
-    l.a locala = l.fix;
-    this.fkb = new l((Queue)new LinkedList());
-    this.fkc = z.a.fkk;
-    this.fid = new k();
-    this.fkg = new LinkedList();
-    this.fkh = new LinkedList();
-    this.fki = false;
-    this.fkj = -1;
-    this.fka = Thread.currentThread();
-    this.fke = paramBoolean;
+    AppMethodBeat.i(238631);
+    l.a locala = l.hmH;
+    this.hoo = new l((Queue)new LinkedList());
+    this.hop = z.a.hox;
+    this.hmq = new k();
+    this.hot = new LinkedList();
+    this.hou = new LinkedList();
+    this.hov = false;
+    this.how = -1;
+    this.hon = Thread.currentThread();
+    this.hor = paramBoolean;
     Log.i("MicroMsg.V8JSRuntimeLooper", "V8JSRuntimeLooper <init> ignoreRemainingTaskWhenLoopEnd?%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(262803);
+    AppMethodBeat.o(238631);
   }
   
-  private int acw()
+  private int aEw()
   {
-    AppMethodBeat.i(262814);
-    synchronized (this.fkb)
+    AppMethodBeat.i(238634);
+    synchronized (this.hoo)
     {
-      int i = this.fkb.size();
-      AppMethodBeat.o(262814);
+      int i = this.hoo.size();
+      AppMethodBeat.o(238634);
       return i;
     }
   }
   
-  private void u(Runnable paramRunnable)
+  private void y(Runnable paramRunnable)
   {
     AppMethodBeat.i(144142);
     try
@@ -72,8 +72,8 @@ class z
     }
     catch (V8ScriptException paramRunnable)
     {
-      if (this.fkf != null) {
-        this.fkf.b(paramRunnable);
+      if (this.hos != null) {
+        this.hos.b(paramRunnable);
       }
       if (paramRunnable.getCause() != null) {
         Log.e("MicroMsg.V8JSRuntimeLooper", "runTask V8ScriptException: %s, %s", new Object[] { paramRunnable, paramRunnable.getCause() });
@@ -95,23 +95,15 @@ class z
     }
   }
   
-  public final String OG()
-  {
-    AppMethodBeat.i(185106);
-    String str = (String)this.fid.fiu.peek();
-    AppMethodBeat.o(185106);
-    return str;
-  }
-  
   public final void a(c.a parama)
   {
-    this.fkf = parama;
+    this.hos = parama;
   }
   
-  public final boolean abY()
+  public final boolean aDX()
   {
     AppMethodBeat.i(144133);
-    if (Thread.currentThread().getId() == this.fka.getId())
+    if (Thread.currentThread().getId() == this.hon.getId())
     {
       AppMethodBeat.o(144133);
       return true;
@@ -120,187 +112,261 @@ class z
     return false;
   }
   
-  public final void acb()
+  public final void aEa()
   {
     AppMethodBeat.i(144132);
     Log.i("MicroMsg.V8JSRuntimeLooper", "loop start %d", new Object[] { Integer.valueOf(hashCode()) });
-    while (!this.fkd)
+    while (!this.hoq)
     {
-      boolean bool1;
-      synchronized (this.fkb)
+      for (;;)
       {
-        bool1 = isPaused();
-        if ((!bool1) || (this.fkb.acl()))
+        synchronized (this.hoo)
         {
-          boolean bool2 = acf();
-          if (!bool2) {
-            break label151;
+          if (!isPaused())
+          {
+            boolean bool = aEe();
+            if (!bool) {
+              break label136;
+            }
           }
         }
+        try
+        {
+          this.hoo.wait();
+          if (z.a.hoy == this.hop) {
+            Log.i("MicroMsg.V8JSRuntimeLooper", "loop notify by reason:%s, instance:%d", new Object[] { this.hop, Integer.valueOf(hashCode()) });
+          }
+          this.hop = z.a.hox;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          Log.i("MicroMsg.V8JSRuntimeLooper", "wait interrupted ; loop end");
+          this.hon.interrupt();
+        }
       }
-      label151:
-      this.fkg.clear();
-      this.fkb.a(this.fkg, bool1);
-      acg();
+      localObject1 = finally;
+      AppMethodBeat.o(144132);
+      throw localObject1;
+      label136:
+      this.hot.clear();
+      this.hoo.a(this.hot, this.cgD);
+      aEf();
     }
-    aci();
-    synchronized (this.fkb)
+    aEh();
+    synchronized (this.hoo)
     {
-      this.fkb.clear();
+      this.hoo.clear();
       AppMethodBeat.o(144132);
       return;
     }
   }
   
-  protected boolean acf()
+  protected boolean aEe()
   {
     AppMethodBeat.i(144139);
-    boolean bool = this.fkb.isEmpty();
+    boolean bool = this.hoo.isEmpty();
     AppMethodBeat.o(144139);
     return bool;
   }
   
-  protected void acg()
+  protected void aEf()
   {
     AppMethodBeat.i(144141);
-    this.fkj = -1;
-    this.fki = false;
-    Iterator localIterator = this.fkg.iterator();
+    this.how = -1;
+    this.hov = false;
+    Iterator localIterator = this.hot.iterator();
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
       Runnable localRunnable = (Runnable)localIterator.next();
-      if ((this.fke) && (this.fkd))
+      if ((this.hor) && (this.hoq))
       {
         Log.i("MicroMsg.V8JSRuntimeLooper", "LoopTask break for mLooperEnd");
         AppMethodBeat.o(144141);
         return;
       }
-      this.fkj += 1;
-      u(localRunnable);
-      if (this.fid.enable) {
-        this.fid.fiu.pollFirst();
+      this.how += 1;
+      y(localRunnable);
+      if (this.hmq.enable) {
+        this.hmq.hmG.pollFirst();
       }
-    } while (!this.fki);
+    } while (!this.hov);
     AppMethodBeat.o(144141);
   }
   
-  protected void ach()
+  protected void aEg()
   {
-    AppMethodBeat.i(262827);
-    Iterator localIterator = this.fkh.iterator();
+    AppMethodBeat.i(238696);
+    Iterator localIterator = this.hou.iterator();
     while (localIterator.hasNext())
     {
       Runnable localRunnable = (Runnable)localIterator.next();
-      if ((this.fke) && (this.fkd))
+      if ((this.hor) && (this.hoq))
       {
         Log.i("MicroMsg.V8JSRuntimeLooper", "LoopTask break for mLooperEnd");
-        AppMethodBeat.o(262827);
+        AppMethodBeat.o(238696);
         return;
       }
-      u(localRunnable);
-      if (this.fid.enable) {
-        this.fid.fiu.pollFirst();
+      y(localRunnable);
+      if (this.hmq.enable) {
+        this.hmq.hmG.pollFirst();
       }
     }
-    AppMethodBeat.o(262827);
+    AppMethodBeat.o(238696);
   }
   
-  protected void aci()
+  protected void aEh()
   {
     AppMethodBeat.i(144140);
     Log.i("MicroMsg.V8JSRuntimeLooper", "loop end");
     AppMethodBeat.o(144140);
   }
   
-  protected void acj() {}
+  protected void aEi() {}
   
-  protected void ack() {}
+  protected void aEj() {}
+  
+  public final String aoO()
+  {
+    AppMethodBeat.i(185106);
+    String str = (String)this.hmq.hmG.peek();
+    AppMethodBeat.o(185106);
+    return str;
+  }
   
   public final void b(Runnable paramRunnable, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(262812);
+    AppMethodBeat.i(238653);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(262812);
+      AppMethodBeat.o(238653);
       return;
     }
     if (paramLong != 0L)
     {
       paramRunnable = new IllegalStateException("V8JSRuntimeLooper#scheduleDelayed not support.");
-      AppMethodBeat.o(262812);
+      AppMethodBeat.o(238653);
       throw paramRunnable;
     }
-    if (this.fkd)
+    if (this.hoq)
     {
       Log.i("MicroMsg.V8JSRuntimeLooper", "scheduleDelayed but looper end");
-      AppMethodBeat.o(262812);
+      AppMethodBeat.o(238653);
       return;
     }
-    boolean bool = isPaused();
-    synchronized (this.fkb)
+    synchronized (this.hoo)
     {
-      this.fkb.c(paramRunnable, paramBoolean);
-      if ((paramBoolean) || (!bool)) {
-        this.fkb.notify();
+      this.hoo.d(paramRunnable, paramBoolean);
+      if (!isPaused()) {
+        this.hoo.notify();
       }
-      if ((paramBoolean) && (bool)) {
-        Log.i("MicroMsg.V8JSRuntimeLooper", "scheduleDelayed: important task in pause state. queue.size:[%d]", new Object[] { Integer.valueOf(acw()) });
+      if ((paramBoolean) && (this.cgD)) {
+        Log.i("MicroMsg.V8JSRuntimeLooper", "scheduleDelayed: important task in pause state. queue.size:[%d]", new Object[] { Integer.valueOf(aEw()) });
       }
-      acj();
-      AppMethodBeat.o(262812);
+      aEi();
+      AppMethodBeat.o(238653);
       return;
     }
   }
   
   public final boolean doInnerLoopTask()
   {
-    AppMethodBeat.i(262829);
-    if (this.fkd)
+    AppMethodBeat.i(238703);
+    if (this.hoq)
     {
-      this.fki = true;
-      AppMethodBeat.o(262829);
+      this.hov = true;
+      AppMethodBeat.o(238703);
       return true;
     }
-    boolean bool1;
-    synchronized (this.fkb)
+    for (;;)
     {
-      bool1 = isPaused();
-      if ((!bool1) || (this.fkb.acl()))
+      synchronized (this.hoo)
       {
-        boolean bool2 = acf();
-        if (!bool2) {
-          break label145;
+        if (!isPaused())
+        {
+          boolean bool = aEe();
+          if (!bool) {
+            break label130;
+          }
         }
       }
+      try
+      {
+        this.hoo.wait();
+        if (z.a.hoy == this.hop) {
+          Log.i("MicroMsg.V8JSRuntimeLooper", "loop notify by reason:%s, instance:%d", new Object[] { this.hop, Integer.valueOf(hashCode()) });
+        }
+        this.hop = z.a.hox;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        Log.i("MicroMsg.V8JSRuntimeLooper", "wait interrupted ; loop end");
+        this.hon.interrupt();
+      }
     }
-    label145:
-    this.fkh.clear();
-    this.fkb.a(this.fkh, bool1);
-    ach();
-    AppMethodBeat.o(262829);
+    localObject = finally;
+    AppMethodBeat.o(238703);
+    throw localObject;
+    label130:
+    this.hou.clear();
+    this.hoo.a(this.hou, this.cgD);
+    aEg();
+    AppMethodBeat.o(238703);
     return false;
   }
   
-  public final void dp(boolean paramBoolean)
+  public final void eb(boolean paramBoolean)
   {
-    this.fid.enable = paramBoolean;
+    this.hmq.enable = paramBoolean;
   }
   
+  /* Error */
   protected final boolean isPaused()
   {
-    try
-    {
-      boolean bool = this.arU;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_2
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: aload_0
+    //   5: getfield 213	com/tencent/mm/appbrand/v8/z:cgD	Z
+    //   8: ifeq +30 -> 38
+    //   11: aload_0
+    //   12: getfield 72	com/tencent/mm/appbrand/v8/z:hoo	Lcom/tencent/mm/appbrand/v8/l;
+    //   15: getfield 304	com/tencent/mm/appbrand/v8/l:hmJ	I
+    //   18: istore_1
+    //   19: iload_1
+    //   20: iflt +13 -> 33
+    //   23: iconst_1
+    //   24: istore_1
+    //   25: iload_1
+    //   26: ifne +12 -> 38
+    //   29: aload_0
+    //   30: monitorexit
+    //   31: iload_2
+    //   32: ireturn
+    //   33: iconst_0
+    //   34: istore_1
+    //   35: goto -10 -> 25
+    //   38: iconst_0
+    //   39: istore_2
+    //   40: goto -11 -> 29
+    //   43: astore_3
+    //   44: aload_0
+    //   45: monitorexit
+    //   46: aload_3
+    //   47: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	48	0	this	z
+    //   18	17	1	i	int
+    //   1	39	2	bool	boolean
+    //   43	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   4	19	43	finally
   }
   
   protected void onResume() {}
@@ -308,10 +374,10 @@ class z
   public final void pause()
   {
     AppMethodBeat.i(144136);
-    Log.i("MicroMsg.V8JSRuntimeLooper", "pause instance:%d queue.size:%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(acw()) });
+    Log.i("MicroMsg.V8JSRuntimeLooper", "pause instance:%d queue.size:%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(aEw()) });
     try
     {
-      this.arU = true;
+      this.cgD = true;
       return;
     }
     finally
@@ -324,9 +390,9 @@ class z
   {
     AppMethodBeat.i(144138);
     Log.i("MicroMsg.V8JSRuntimeLooper", "quit %d", new Object[] { Integer.valueOf(hashCode()) });
-    ack();
-    this.fkd = true;
-    this.fka.interrupt();
+    aEj();
+    this.hoq = true;
+    this.hon.interrupt();
     AppMethodBeat.o(144138);
   }
   
@@ -343,36 +409,36 @@ class z
     //   15: dup
     //   16: iconst_0
     //   17: aload_0
-    //   18: invokevirtual 194	java/lang/Object:hashCode	()I
-    //   21: invokestatic 199	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   18: invokevirtual 179	java/lang/Object:hashCode	()I
+    //   21: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   24: aastore
     //   25: dup
     //   26: iconst_1
     //   27: aload_0
-    //   28: invokespecial 295	com/tencent/mm/appbrand/v8/z:acw	()I
-    //   31: invokestatic 199	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   28: invokespecial 294	com/tencent/mm/appbrand/v8/z:aEw	()I
+    //   31: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   34: aastore
     //   35: invokestatic 115	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   38: aload_0
     //   39: monitorenter
     //   40: aload_0
     //   41: iconst_0
-    //   42: putfield 304	com/tencent/mm/appbrand/v8/z:arU	Z
+    //   42: putfield 213	com/tencent/mm/appbrand/v8/z:cgD	Z
     //   45: aload_0
     //   46: monitorexit
     //   47: aload_0
     //   48: invokevirtual 321	com/tencent/mm/appbrand/v8/z:onResume	()V
     //   51: aload_0
-    //   52: getfield 72	com/tencent/mm/appbrand/v8/z:fkb	Lcom/tencent/mm/appbrand/v8/l;
+    //   52: getfield 72	com/tencent/mm/appbrand/v8/z:hoo	Lcom/tencent/mm/appbrand/v8/l;
     //   55: astore_1
     //   56: aload_1
     //   57: monitorenter
     //   58: aload_0
-    //   59: getstatic 216	com/tencent/mm/appbrand/v8/z$a:fkl	Lcom/tencent/mm/appbrand/v8/z$a;
-    //   62: putfield 77	com/tencent/mm/appbrand/v8/z:fkc	Lcom/tencent/mm/appbrand/v8/z$a;
+    //   59: getstatic 198	com/tencent/mm/appbrand/v8/z$a:hoy	Lcom/tencent/mm/appbrand/v8/z$a;
+    //   62: putfield 77	com/tencent/mm/appbrand/v8/z:hop	Lcom/tencent/mm/appbrand/v8/z$a;
     //   65: aload_0
-    //   66: getfield 72	com/tencent/mm/appbrand/v8/z:fkb	Lcom/tencent/mm/appbrand/v8/l;
-    //   69: invokevirtual 291	java/lang/Object:notify	()V
+    //   66: getfield 72	com/tencent/mm/appbrand/v8/z:hoo	Lcom/tencent/mm/appbrand/v8/l;
+    //   69: invokevirtual 290	java/lang/Object:notify	()V
     //   72: aload_1
     //   73: monitorexit
     //   74: ldc_w 317
@@ -405,75 +471,74 @@ class z
   
   public final void resumeLoopTasks()
   {
-    AppMethodBeat.i(262831);
-    Iterator localIterator = this.fkg.iterator();
+    AppMethodBeat.i(238710);
+    Iterator localIterator = this.hot.iterator();
     int i = -1;
     Runnable localRunnable;
     if (localIterator.hasNext())
     {
       localRunnable = (Runnable)localIterator.next();
-      if ((!this.fke) || (!this.fkd)) {
-        break label72;
+      if ((!this.hor) || (!this.hoq)) {
+        break label71;
       }
       Log.i("MicroMsg.V8JSRuntimeLooper", "LoopTask break for mLooperEnd");
     }
     for (;;)
     {
-      this.fki = true;
-      AppMethodBeat.o(262831);
+      this.hov = true;
+      AppMethodBeat.o(238710);
       return;
-      label72:
+      label71:
       int j = i + 1;
       i = j;
-      if (j <= this.fkj) {
+      if (j <= this.how) {
         break;
       }
-      this.fkj = j;
-      u(localRunnable);
-      if (this.fid.enable) {
-        this.fid.fiu.pollFirst();
+      this.how = j;
+      y(localRunnable);
+      if (this.hmq.enable) {
+        this.hmq.hmG.pollFirst();
       }
       i = j;
-      if (!this.fki) {
+      if (!this.hov) {
         break;
       }
     }
   }
   
-  public final void t(Runnable paramRunnable)
+  public final void x(Runnable paramRunnable)
   {
-    AppMethodBeat.i(262811);
+    AppMethodBeat.i(238649);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(262811);
+      AppMethodBeat.o(238649);
       return;
     }
-    if (this.fkd)
+    if (this.hoq)
     {
       Log.i("MicroMsg.V8JSRuntimeLooper", "schedule but looper end");
-      AppMethodBeat.o(262811);
+      AppMethodBeat.o(238649);
       return;
     }
-    if (Thread.currentThread().getId() == this.fka.getId())
+    if (Thread.currentThread().getId() == this.hon.getId())
     {
-      u(paramRunnable);
-      if (this.fid.enable) {
-        this.fid.fiu.remove(null);
+      y(paramRunnable);
+      if (this.hmq.enable) {
+        this.hmq.hmG.remove(null);
       }
     }
     for (;;)
     {
-      acj();
-      AppMethodBeat.o(262811);
+      aEi();
+      AppMethodBeat.o(238649);
       return;
-      boolean bool = isPaused();
-      synchronized (this.fkb)
+      synchronized (this.hoo)
       {
-        this.fkb.c(paramRunnable, false);
-        if (!bool)
+        this.hoo.d(paramRunnable, false);
+        if (!isPaused())
         {
-          this.fkc = z.a.fkm;
-          this.fkb.notify();
+          this.hop = z.a.hoz;
+          this.hoo.notify();
         }
       }
     }

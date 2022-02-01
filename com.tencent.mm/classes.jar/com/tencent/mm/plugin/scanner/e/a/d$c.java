@@ -1,17 +1,26 @@
 package com.tencent.mm.plugin.scanner.e.a;
 
-import com.tencent.mm.plugin.scanner.api.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "request", "Lcom/tencent/mm/plugin/scanner/image/uploader/AiImageUploader$AiImageUploadRequestWrapper;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/scanner/image/uploader/AiImageUploader$AiImageUploadRequestWrapper;"}, k=3, mv={1, 5, 1}, xi=48)
 final class d$c
-  extends q
-  implements b<c.a, x>
+  extends u
+  implements b<c.a, ah>
 {
-  d$c(f paramf)
+  public static final c OQM;
+  
+  static
+  {
+    AppMethodBeat.i(313594);
+    OQM = new c();
+    AppMethodBeat.o(313594);
+  }
+  
+  d$c()
   {
     super(1);
   }

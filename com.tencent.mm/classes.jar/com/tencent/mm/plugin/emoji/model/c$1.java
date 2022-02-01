@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.b.b;
-import com.tencent.mm.plugin.emoji.e.f;
+import com.tencent.mm.plugin.emoji.c.b;
+import com.tencent.mm.plugin.emoji.mgr.f;
 import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.storage.bf;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bl;
 
 final class c$1
   implements b
 {
   c$1(c paramc) {}
   
-  public final bf getEmojiDescMgr()
+  public final bh getEmojiDescMgr()
   {
     AppMethodBeat.i(108543);
-    bf localbf = p.getEmojiDescMgr();
+    bh localbh = s.getEmojiDescMgr();
     AppMethodBeat.o(108543);
-    return localbf;
+    return localbh;
   }
   
   public final d getEmojiMgr()
   {
     AppMethodBeat.i(108541);
-    f localf = p.cUO();
+    f localf = s.dAl();
     AppMethodBeat.o(108541);
     return localf;
   }
   
-  public final bj getEmojiStorageMgr()
+  public final bl getEmojiStorageMgr()
   {
     AppMethodBeat.i(108542);
-    bj localbj = p.getEmojiStorageMgr();
+    bl localbl = s.getEmojiStorageMgr();
     AppMethodBeat.o(108542);
-    return localbj;
+    return localbl;
   }
 }
 

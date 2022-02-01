@@ -1,21 +1,40 @@
 package androidx.d.a;
 
-public abstract class c<T>
+import android.content.Context;
+import android.database.Cursor;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public abstract class c
+  extends a
 {
-  final String Th;
+  private int bxp;
+  private int bxq;
+  private LayoutInflater mInflater;
   
-  public c(String paramString)
+  @Deprecated
+  public c(Context paramContext, int paramInt)
   {
-    this.Th = paramString;
+    super(paramContext);
+    this.bxq = paramInt;
+    this.bxp = paramInt;
+    this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
   }
   
-  public abstract float F(T paramT);
+  public final View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  {
+    return this.mInflater.inflate(this.bxq, paramViewGroup, false);
+  }
   
-  public abstract void a(T paramT, float paramFloat);
+  public View newView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  {
+    return this.mInflater.inflate(this.bxp, paramViewGroup, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.d.a.c
  * JD-Core Version:    0.7.0.1
  */

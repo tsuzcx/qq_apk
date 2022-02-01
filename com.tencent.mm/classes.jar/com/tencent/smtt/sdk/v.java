@@ -31,15 +31,15 @@ class v
   public v(Context paramContext)
   {
     super(paramContext.getApplicationContext());
-    AppMethodBeat.i(195666);
+    AppMethodBeat.i(219400);
     this.d = null;
     this.d = paramContext;
-    AppMethodBeat.o(195666);
+    AppMethodBeat.o(219400);
   }
   
   private void b(Bundle paramBundle, Object paramObject)
   {
-    AppMethodBeat.i(195673);
+    AppMethodBeat.i(219404);
     a();
     if (b()) {
       paramBundle.putInt("callMode", paramBundle.getInt("callMode"));
@@ -61,12 +61,12 @@ class v
         paramObject.addFlags(268435456);
         paramBundle = getContext().getApplicationContext();
         paramObject.setPackage(paramBundle.getPackageName());
-        paramObject = new com.tencent.mm.hellhoundlib.b.a().bm(paramObject);
-        com.tencent.mm.hellhoundlib.a.a.b(paramBundle, paramObject.aFh(), "com/tencent/smtt/sdk/v", "b", "(Landroid/os/Bundle;Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramBundle.startActivity((Intent)paramObject.sf(0));
+        paramObject = new com.tencent.mm.hellhoundlib.b.a().cG(paramObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramBundle, paramObject.aYi(), "com/tencent/smtt/sdk/v", "b", "(Landroid/os/Bundle;Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramBundle.startActivity((Intent)paramObject.sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramBundle, "com/tencent/smtt/sdk/v", "b", "(Landroid/os/Bundle;Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
-      AppMethodBeat.o(195673);
+      AppMethodBeat.o(219404);
       return;
     }
   }
@@ -74,7 +74,7 @@ class v
   void a()
   {
     DexLoader localDexLoader = null;
-    AppMethodBeat.i(195675);
+    AppMethodBeat.i(219409);
     setBackgroundColor(-16777216);
     if (this.b == null)
     {
@@ -90,12 +90,12 @@ class v
     if ((this.b != null) && (this.a == null)) {
       this.a = this.b.a(getContext().getApplicationContext());
     }
-    AppMethodBeat.o(195675);
+    AppMethodBeat.o(219409);
   }
   
   public void a(Activity paramActivity)
   {
-    AppMethodBeat.i(195680);
+    AppMethodBeat.i(219418);
     if ((!b()) && (this.c != null))
     {
       if (this.c.getParent() == null)
@@ -116,12 +116,12 @@ class v
         this.c.start();
       }
     }
-    AppMethodBeat.o(195680);
+    AppMethodBeat.o(219418);
   }
   
   void a(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(195684);
+    AppMethodBeat.i(219421);
     if ((paramInt == 3) && (!b()) && (this.c != null)) {
       this.c.pause();
     }
@@ -142,14 +142,14 @@ class v
     if (b()) {
       this.b.a(this.a, paramActivity, paramInt);
     }
-    AppMethodBeat.o(195684);
+    AppMethodBeat.o(219421);
   }
   
   void a(Bundle paramBundle, Object paramObject)
   {
-    AppMethodBeat.i(195668);
+    AppMethodBeat.i(219406);
     b(paramBundle, paramObject);
-    AppMethodBeat.o(195668);
+    AppMethodBeat.o(219406);
   }
   
   public boolean b()
@@ -159,16 +159,16 @@ class v
   
   public void c()
   {
-    AppMethodBeat.i(195695);
+    AppMethodBeat.i(219433);
     if (b()) {
       this.b.a(this.a);
     }
-    AppMethodBeat.o(195695);
+    AppMethodBeat.o(219433);
   }
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(195692);
+    AppMethodBeat.i(219427);
     try
     {
       if ((this.d instanceof Activity))
@@ -186,24 +186,23 @@ class v
         Object localObject = new Intent("android.intent.action.VIEW");
         ((Intent)localObject).addFlags(268435456);
         ((Intent)localObject).setDataAndType(Uri.parse(this.e), "video/*");
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(paramMediaPlayer, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/smtt/sdk/v", "onError", "(Landroid/media/MediaPlayer;II)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramMediaPlayer.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramMediaPlayer, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/smtt/sdk/v", "onError", "(Landroid/media/MediaPlayer;II)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramMediaPlayer.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramMediaPlayer, "com/tencent/smtt/sdk/v", "onError", "(Landroid/media/MediaPlayer;II)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
-      AppMethodBeat.o(195692);
       return true;
     }
-    catch (Throwable paramMediaPlayer)
+    finally
     {
-      AppMethodBeat.o(195692);
+      AppMethodBeat.o(219427);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.v
  * JD-Core Version:    0.7.0.1
  */

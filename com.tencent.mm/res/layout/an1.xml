@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/rs" android:paddingLeft="@dimen/ir" android:layout_width="fill_parent" android:layout_height="48.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ka" android:textColor="@color/Link" android:id="@id/fl3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{more}" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/fjt" android:padding="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@raw/arrows_down" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/arl" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/fal" android:paddingLeft="@dimen/cp" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/a27" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/b__" />
+            <androidx.constraintlayout.widget.ConstraintLayout android:paddingLeft="@dimen/cd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <LinearLayout android:orientation="horizontal" android:id="@id/h_d" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+                    <TextView android:textSize="@dimen/hn" android:textColor="@color/gb" android:ellipsize="end" android:id="@id/hga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="400.0px" android:text="" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@id/d79" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginStart="@dimen/bv" />
+                    <TextView android:textSize="12.0dip" android:textColor="@color/Orange" android:gravity="center" android:id="@id/a0t" android:background="@drawable/vx" android:paddingLeft="@dimen/bv" android:paddingRight="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d3y" android:layout_marginStart="@dimen/bv" />
+                </LinearLayout>
+                <TextView android:textSize="@dimen/hn" android:textColor="@color/gb" android:ellipsize="end" android:id="@id/h1k" android:paddingLeft="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="提到了你" android:singleLine="true" app:layout_constraintLeft_toRightOf="@id/h_d" app:layout_constraintTop_toTopOf="hr_" />
+                <TextView android:textSize="12.0dip" android:id="@id/kl9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/df" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/h1k" style="@style/i4" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/kkj" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:scaleType="centerCrop" app:roundHeight="1.0dip" app:roundWidth="1.0dip" />
+                <TextView android:textSize="@dimen/m_" android:gravity="center" android:id="@id/kig" android:visibility="gone" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" />
+            </FrameLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/fob" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" android:src="@drawable/a8f" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/fa" android:gravity="bottom|center" android:id="@id/a84" android:background="@color/aav" android:paddingBottom="@dimen/cp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:text="@string/ecx" style="@style/i4" />
+</LinearLayout>

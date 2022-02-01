@@ -1,10 +1,16 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
-import android.os.Bundle;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.z;
 
 public abstract interface d
 {
-  public abstract boolean h(int paramInt, Bundle paramBundle);
+  public abstract z a(MMWebView paramMMWebView, e parame);
+  
+  public static final class a
+  {
+    public static d Xpu;
+  }
 }
 
 

@@ -3,66 +3,58 @@ package kotlin.l.b.a.b.j.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import kotlin.a.v;
-import kotlin.g.a.m;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.n;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l.b.a.b.b.ad;
-import kotlin.l.b.a.b.b.ag;
-import kotlin.l.b.a.b.b.av;
-import kotlin.l.b.a.b.b.e;
+import kotlin.ak;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.b.ah;
+import kotlin.l.b.a.b.b.ao;
+import kotlin.l.b.a.b.b.bd;
+import kotlin.l.b.a.b.b.i;
 import kotlin.l.b.a.b.b.l;
-import kotlin.l.b.a.b.b.w;
-import kotlin.l.b.a.b.b.y;
 import kotlin.l.b.a.b.f.f;
-import kotlin.l.b.a.b.j.f.j.a;
-import kotlin.l.b.a.b.m.a.i.a;
-import kotlin.l.b.a.b.m.a.r;
-import kotlin.l.b.a.b.m.aj;
-import kotlin.l.b.a.b.m.at;
+import kotlin.l.b.a.b.m.a.g.a;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.b.a.b.m.ax;
 import kotlin.l.b.a.b.o.b.a;
 import kotlin.l.b.a.b.o.b.b;
-import kotlin.t;
-import kotlin.x;
-import kotlin.z;
+import kotlin.m.k;
 
 public final class a
 {
-  private static final f ablp;
+  private static final f ajjV;
   
   static
   {
     AppMethodBeat.i(60159);
-    f localf = f.bHb("value");
-    p.j(localf, "Name.identifier(\"value\")");
-    ablp = localf;
+    f localf = f.bJe("value");
+    s.s(localf, "identifier(\"value\")");
+    ajjV = localf;
     AppMethodBeat.o(60159);
   }
   
-  public static final e B(e parame)
+  public static final kotlin.l.b.a.b.b.e C(kotlin.l.b.a.b.b.e parame)
   {
     AppMethodBeat.i(60147);
-    p.k(parame, "$this$getSuperClassNotAny");
-    parame = parame.iET().iOU().iGk().iterator();
+    s.u(parame, "<this>");
+    parame = parame.koj().kzm().kpG().iterator();
     while (parame.hasNext())
     {
-      Object localObject = (kotlin.l.b.a.b.m.ab)parame.next();
-      if (!kotlin.l.b.a.b.a.g.z((kotlin.l.b.a.b.m.ab)localObject))
+      Object localObject = (ad)parame.next();
+      if (!kotlin.l.b.a.b.a.h.s((ad)localObject))
       {
-        localObject = ((kotlin.l.b.a.b.m.ab)localObject).iOU().iEf();
-        if (kotlin.l.b.a.b.j.c.B((l)localObject))
+        localObject = ((ad)localObject).kzm().knA();
+        if (kotlin.l.b.a.b.j.d.B((l)localObject))
         {
           if (localObject == null)
           {
-            parame = new t("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
+            parame = new NullPointerException("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
             AppMethodBeat.o(60147);
             throw parame;
           }
-          parame = (e)localObject;
+          parame = (kotlin.l.b.a.b.b.e)localObject;
           AppMethodBeat.o(60147);
           return parame;
         }
@@ -72,46 +64,21 @@ public final class a
     return null;
   }
   
-  public static final Collection<e> C(e parame)
-  {
-    AppMethodBeat.i(60154);
-    p.k(parame, "sealedClass");
-    if (parame.iDO() != w.aaKj)
-    {
-      parame = (Collection)v.aaAd;
-      AppMethodBeat.o(60154);
-      return parame;
-    }
-    final LinkedHashSet localLinkedHashSet = new LinkedHashSet();
-    a locala = new a(parame, localLinkedHashSet);
-    l locall = parame.iDJ();
-    p.j(locall, "sealedClass.containingDeclaration");
-    if ((locall instanceof kotlin.l.b.a.b.b.ab)) {
-      locala.a(((kotlin.l.b.a.b.b.ab)locall).iEC(), false);
-    }
-    parame = parame.iFa();
-    p.j(parame, "sealedClass.unsubstitutedInnerClassesScope");
-    locala.a(parame, true);
-    parame = (Collection)localLinkedHashSet;
-    AppMethodBeat.o(60154);
-    return parame;
-  }
-  
-  public static final y F(l paraml)
+  public static final ae F(l paraml)
   {
     AppMethodBeat.i(60144);
-    p.k(paraml, "$this$module");
-    paraml = kotlin.l.b.a.b.j.c.s(paraml);
-    p.j(paraml, "DescriptorUtils.getContainingModule(this)");
+    s.u(paraml, "<this>");
+    paraml = kotlin.l.b.a.b.j.d.s(paraml);
+    s.s(paraml, "getContainingModule(this)");
     AppMethodBeat.o(60144);
     return paraml;
   }
   
-  public static final kotlin.l.b.a.b.a.g G(l paraml)
+  public static final kotlin.l.b.a.b.a.h G(l paraml)
   {
     AppMethodBeat.i(60148);
-    p.k(paraml, "$this$builtIns");
-    paraml = F(paraml).iFv();
+    s.u(paraml, "<this>");
+    paraml = F(paraml).koV();
     AppMethodBeat.o(60148);
     return paraml;
   }
@@ -119,13 +86,13 @@ public final class a
   public static final kotlin.m.h<l> H(l paraml)
   {
     AppMethodBeat.i(60150);
-    p.k(paraml, "$this$parents");
-    p.k(paraml, "$this$parentsWithSelf");
-    paraml = kotlin.m.i.b(paraml, (kotlin.g.a.b)f.ablw);
-    p.k(paraml, "$this$drop");
+    s.u(paraml, "<this>");
+    s.u(paraml, "<this>");
+    paraml = k.b(paraml, (kotlin.g.a.b)e.ajka);
+    s.u(paraml, "$this$drop");
     if ((paraml instanceof kotlin.m.c))
     {
-      paraml = ((kotlin.m.c)paraml).iQu();
+      paraml = ((kotlin.m.c)paraml).kBi();
       AppMethodBeat.o(60150);
       return paraml;
     }
@@ -134,120 +101,116 @@ public final class a
     return paraml;
   }
   
-  public static final kotlin.l.b.a.b.f.b I(l paraml)
+  public static final kotlin.l.b.a.b.f.c I(l paraml)
   {
     AppMethodBeat.i(60152);
-    p.k(paraml, "$this$fqNameOrNull");
+    s.u(paraml, "<this>");
     paraml = q(paraml);
-    if (paraml.iNC()) {}
-    while (paraml != null)
+    if (paraml.kxW()) {}
+    while (paraml == null)
     {
-      paraml = paraml.iND();
       AppMethodBeat.o(60152);
-      return paraml;
+      return null;
       paraml = null;
     }
+    paraml = paraml.kxX();
     AppMethodBeat.o(60152);
+    return paraml;
+  }
+  
+  public static final kotlin.l.b.a.b.b.e b(ae paramae, kotlin.l.b.a.b.f.c paramc, kotlin.l.b.a.b.c.a.b paramb)
+  {
+    AppMethodBeat.i(60145);
+    s.u(paramae, "<this>");
+    s.u(paramc, "topLevelClassFqName");
+    s.u(paramb, "location");
+    if (!paramc.isRoot()) {}
+    for (int i = 1; (ak.aiuY) && (i == 0); i = 0)
+    {
+      paramae = (Throwable)new AssertionError("Assertion failed");
+      AppMethodBeat.o(60145);
+      throw paramae;
+    }
+    kotlin.l.b.a.b.f.c localc = paramc.kxS();
+    s.s(localc, "topLevelClassFqName.parent()");
+    paramae = paramae.e(localc).knP();
+    paramc = paramc.kxT();
+    s.s(paramc, "topLevelClassFqName.shortName()");
+    paramae = paramae.c(paramc, paramb);
+    if ((paramae instanceof kotlin.l.b.a.b.b.e))
+    {
+      paramae = (kotlin.l.b.a.b.b.e)paramae;
+      AppMethodBeat.o(60145);
+      return paramae;
+    }
+    AppMethodBeat.o(60145);
     return null;
   }
   
-  public static final e b(y paramy, kotlin.l.b.a.b.f.b paramb, kotlin.l.b.a.b.c.a.a parama)
-  {
-    AppMethodBeat.i(60145);
-    p.k(paramy, "$this$resolveTopLevelClass");
-    p.k(paramb, "topLevelClassFqName");
-    p.k(parama, "location");
-    if (!paramb.isRoot()) {}
-    for (int i = 1; (z.aazO) && (i == 0); i = 0)
-    {
-      paramy = (Throwable)new AssertionError("Assertion failed");
-      AppMethodBeat.o(60145);
-      throw paramy;
-    }
-    kotlin.l.b.a.b.f.b localb = paramb.iNz();
-    p.j(localb, "topLevelClassFqName.parent()");
-    paramy = paramy.e(localb).iEC();
-    paramb = paramb.iNA();
-    p.j(paramb, "topLevelClassFqName.shortName()");
-    paramb = paramy.c(paramb, parama);
-    paramy = paramb;
-    if (!(paramb instanceof e)) {
-      paramy = null;
-    }
-    paramy = (e)paramy;
-    AppMethodBeat.o(60145);
-    return paramy;
-  }
-  
-  public static final boolean b(av paramav)
+  public static final boolean b(bd parambd)
   {
     AppMethodBeat.i(60149);
-    p.k(paramav, "$this$declaresOrInheritsDefaultValue");
-    paramav = kotlin.l.b.a.b.o.b.a((Collection)kotlin.a.j.listOf(paramav), (b.b)b.abls, (kotlin.g.a.b)c.ablt);
-    p.j(paramav, "DFS.ifAny(\n        listO…eclaresDefaultValue\n    )");
-    boolean bool = paramav.booleanValue();
+    s.u(parambd, "<this>");
+    parambd = kotlin.l.b.a.b.o.b.a((Collection)kotlin.a.p.listOf(parambd), (b.b)a.ajjW, (kotlin.g.a.b)b.ajjX);
+    s.s(parambd, "ifAny(\n        listOf(th…eclaresDefaultValue\n    )");
+    boolean bool = parambd.booleanValue();
     AppMethodBeat.o(60149);
     return bool;
   }
   
-  public static final kotlin.l.b.a.b.f.a c(kotlin.l.b.a.b.b.h paramh)
+  public static final kotlin.l.b.a.b.f.b d(kotlin.l.b.a.b.b.h paramh)
   {
     AppMethodBeat.i(60146);
     if (paramh != null)
     {
-      Object localObject = paramh.iDJ();
+      Object localObject = paramh.knp();
       if (localObject != null)
       {
-        if ((localObject instanceof kotlin.l.b.a.b.b.ab))
+        if ((localObject instanceof ah))
         {
-          paramh = new kotlin.l.b.a.b.f.a(((kotlin.l.b.a.b.b.ab)localObject).iFy(), paramh.iEU());
+          paramh = new kotlin.l.b.a.b.f.b(((ah)localObject).koY(), paramh.kok());
           AppMethodBeat.o(60146);
           return paramh;
         }
-        if ((localObject instanceof kotlin.l.b.a.b.b.i))
+        if ((localObject instanceof i))
         {
-          localObject = c((kotlin.l.b.a.b.b.h)localObject);
+          localObject = d((kotlin.l.b.a.b.b.h)localObject);
           if (localObject != null)
           {
-            paramh = ((kotlin.l.b.a.b.f.a)localObject).o(paramh.iEU());
+            paramh = ((kotlin.l.b.a.b.f.b)localObject).p(paramh.kok());
             AppMethodBeat.o(60146);
             return paramh;
           }
         }
-        AppMethodBeat.o(60146);
-        return null;
       }
     }
     AppMethodBeat.o(60146);
     return null;
   }
   
-  public static final kotlin.l.b.a.b.m.a.i d(y paramy)
+  public static final kotlin.l.b.a.b.m.a.g e(ae paramae)
   {
     AppMethodBeat.i(60157);
-    p.k(paramy, "$this$getKotlinTypeRefiner");
-    paramy = (r)paramy.a(kotlin.l.b.a.b.m.a.j.iQd());
-    if (paramy != null)
+    s.u(paramae, "<this>");
+    paramae = (kotlin.l.b.a.b.m.a.p)paramae.a(kotlin.l.b.a.b.m.a.h.kAS());
+    if (paramae == null) {}
+    for (paramae = null; paramae == null; paramae = (kotlin.l.b.a.b.m.a.g)paramae.value)
     {
-      kotlin.l.b.a.b.m.a.i locali = (kotlin.l.b.a.b.m.a.i)paramy.value;
-      paramy = locali;
-      if (locali != null) {}
-    }
-    else
-    {
-      paramy = (kotlin.l.b.a.b.m.a.i)i.a.abrE;
+      paramae = (kotlin.l.b.a.b.m.a.g)g.a.ajra;
+      AppMethodBeat.o(60157);
+      return paramae;
     }
     AppMethodBeat.o(60157);
-    return paramy;
+    return paramae;
   }
   
-  public static final boolean e(y paramy)
+  public static final boolean f(ae paramae)
   {
     AppMethodBeat.i(60158);
-    p.k(paramy, "$this$isTypeRefinementEnabled");
-    paramy = (r)paramy.a(kotlin.l.b.a.b.m.a.j.iQd());
-    if (paramy != null) {}
-    for (paramy = (kotlin.l.b.a.b.m.a.i)paramy.value; paramy != null; paramy = null)
+    s.u(paramae, "<this>");
+    paramae = (kotlin.l.b.a.b.m.a.p)paramae.a(kotlin.l.b.a.b.m.a.h.kAS());
+    if (paramae == null) {}
+    for (paramae = null; paramae != null; paramae = (kotlin.l.b.a.b.m.a.g)paramae.value)
     {
       AppMethodBeat.o(60158);
       return true;
@@ -256,45 +219,46 @@ public final class a
     return false;
   }
   
-  public static final e l(kotlin.l.b.a.b.b.a.c paramc)
+  public static final kotlin.l.b.a.b.b.e j(kotlin.l.b.a.b.b.a.c paramc)
   {
     AppMethodBeat.i(60155);
-    p.k(paramc, "$this$annotationClass");
-    kotlin.l.b.a.b.b.h localh = paramc.iFN().iOU().iEf();
-    paramc = localh;
-    if (!(localh instanceof e)) {
-      paramc = null;
+    s.u(paramc, "<this>");
+    paramc = paramc.koG().kzm().knA();
+    if ((paramc instanceof kotlin.l.b.a.b.b.e))
+    {
+      paramc = (kotlin.l.b.a.b.b.e)paramc;
+      AppMethodBeat.o(60155);
+      return paramc;
     }
-    paramc = (e)paramc;
     AppMethodBeat.o(60155);
-    return paramc;
+    return null;
   }
   
-  public static final kotlin.l.b.a.b.j.b.g<?> m(kotlin.l.b.a.b.b.a.c paramc)
+  public static final kotlin.l.b.a.b.j.b.g<?> k(kotlin.l.b.a.b.b.a.c paramc)
   {
     AppMethodBeat.i(60156);
-    p.k(paramc, "$this$firstArgument");
-    paramc = (kotlin.l.b.a.b.j.b.g)kotlin.a.j.f((Iterable)paramc.iGd().values());
+    s.u(paramc, "<this>");
+    paramc = (kotlin.l.b.a.b.j.b.g)kotlin.a.p.f((Iterable)paramc.kpA().values());
     AppMethodBeat.o(60156);
     return paramc;
   }
   
-  public static final kotlin.l.b.a.b.f.b o(l paraml)
+  public static final kotlin.l.b.a.b.f.c o(l paraml)
   {
     AppMethodBeat.i(60143);
-    p.k(paraml, "$this$fqNameSafe");
-    paraml = kotlin.l.b.a.b.j.c.o(paraml);
-    p.j(paraml, "DescriptorUtils.getFqNameSafe(this)");
+    s.u(paraml, "<this>");
+    paraml = kotlin.l.b.a.b.j.d.o(paraml);
+    s.s(paraml, "getFqNameSafe(this)");
     AppMethodBeat.o(60143);
     return paraml;
   }
   
-  public static final kotlin.l.b.a.b.f.c q(l paraml)
+  public static final kotlin.l.b.a.b.f.d q(l paraml)
   {
     AppMethodBeat.i(60142);
-    p.k(paraml, "$this$fqNameUnsafe");
-    paraml = kotlin.l.b.a.b.j.c.n(paraml);
-    p.j(paraml, "DescriptorUtils.getFqName(this)");
+    s.u(paraml, "<this>");
+    paraml = kotlin.l.b.a.b.j.d.n(paraml);
+    s.s(paraml, "getFqName(this)");
     AppMethodBeat.o(60142);
     return paraml;
   }
@@ -302,11 +266,11 @@ public final class a
   public static final kotlin.l.b.a.b.b.b v(kotlin.l.b.a.b.b.b paramb)
   {
     AppMethodBeat.i(60151);
-    p.k(paramb, "$this$propertyIfAccessor");
-    if ((paramb instanceof ag))
+    s.u(paramb, "<this>");
+    if ((paramb instanceof ao))
     {
-      paramb = ((ag)paramb).iFB();
-      p.j(paramb, "correspondingProperty");
+      paramb = ((ao)paramb).kpb();
+      s.s(paramb, "correspondingProperty");
       paramb = (kotlin.l.b.a.b.b.b)paramb;
       AppMethodBeat.o(60151);
       return paramb;
@@ -315,78 +279,43 @@ public final class a
     return paramb;
   }
   
-  static final class a
-    extends q
-    implements m<kotlin.l.b.a.b.j.f.h, Boolean, x>
+  static final class a<N>
+    implements b.b
   {
-    a(e parame, LinkedHashSet paramLinkedHashSet)
-    {
-      super();
-    }
-    
-    public final void a(kotlin.l.b.a.b.j.f.h paramh, boolean paramBoolean)
-    {
-      AppMethodBeat.i(60131);
-      p.k(paramh, "scope");
-      paramh = j.a.a(paramh, kotlin.l.b.a.b.j.f.d.abml, null, 2).iterator();
-      while (paramh.hasNext())
-      {
-        Object localObject = (l)paramh.next();
-        if ((localObject instanceof e))
-        {
-          if (kotlin.l.b.a.b.j.c.b((e)localObject, this.ablq)) {
-            localLinkedHashSet.add(localObject);
-          }
-          if (paramBoolean)
-          {
-            a locala = (a)this;
-            localObject = ((e)localObject).iFa();
-            p.j(localObject, "descriptor.unsubstitutedInnerClassesScope");
-            locala.a((kotlin.l.b.a.b.j.f.h)localObject, paramBoolean);
-          }
-        }
-      }
-      AppMethodBeat.o(60131);
-    }
-  }
-  
-  static final class b<N>
-    implements b.b<N>
-  {
-    public static final b abls;
+    public static final a<N> ajjW;
     
     static
     {
       AppMethodBeat.i(60133);
-      abls = new b();
+      ajjW = new a();
       AppMethodBeat.o(60133);
     }
   }
   
-  static final class d<N>
-    implements b.b<N>
+  static final class c<N>
+    implements b.b
   {}
   
-  public static final class e
+  public static final class d
     extends b.a<kotlin.l.b.a.b.b.b, kotlin.l.b.a.b.b.b>
   {
-    e(aa.f paramf, kotlin.g.a.b paramb) {}
+    d(ah.f<kotlin.l.b.a.b.b.b> paramf, kotlin.g.a.b<? super kotlin.l.b.a.b.b.b, Boolean> paramb) {}
   }
   
-  static final class f
-    extends q
+  static final class e
+    extends u
     implements kotlin.g.a.b<l, l>
   {
-    public static final f ablw;
+    public static final e ajka;
     
     static
     {
       AppMethodBeat.i(60141);
-      ablw = new f();
+      ajka = new e();
       AppMethodBeat.o(60141);
     }
     
-    f()
+    e()
     {
       super();
     }
@@ -394,7 +323,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.d.a
  * JD-Core Version:    0.7.0.1
  */

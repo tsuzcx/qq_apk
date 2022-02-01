@@ -1,109 +1,69 @@
 package com.tencent.matrix.report;
 
-import com.tencent.matrix.resource.b.a.b;
-import com.tencent.matrix.resource.c;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
-import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import org.json.JSONException;
+import com.tencent.matrix.e.a.a;
+import com.tencent.mm.autogen.mmdata.rpt.nt;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class m
-  implements k.d
 {
-  private final double dav = Math.random();
+  private static boolean eYU = true;
   
-  private static void a(JSONObject paramJSONObject, int paramInt)
+  public static void g(String paramString, JSONObject paramJSONObject)
   {
-    com.tencent.mm.plugin.report.service.h.IzE.a(18573, new Object[] { paramJSONObject.getString("activity"), paramJSONObject.getString("leak_detail"), paramJSONObject.getString("cost_millis"), Integer.valueOf(paramInt), Integer.valueOf(0), BuildInfo.BUILD_TAG, BuildInfo.REV });
-  }
-  
-  public final void a(k.b paramb)
-  {
-    if (!(paramb.daa instanceof c))
-    {
-      com.tencent.mm.sdk.platformtools.Log.e("Matrix.ResourcePluginReporter", "reporter not match plugin");
-      return;
+    int i;
+    if (paramString.endsWith("SnsTimeLineUI")) {
+      if (eYU)
+      {
+        eYU = false;
+        i = 0;
+      }
     }
-    int j;
-    String str;
+    while (i == 0)
+    {
+      Log.d("MatrixSnsReporter", "onSnsFPS ignore.");
+      return;
+      i = 1;
+      continue;
+      eYU = true;
+      i = 0;
+    }
     try
     {
-      j = paramb.type;
-      paramb = paramb.cZZ;
-      str = paramb.getString("dump_mode");
-      com.tencent.mm.sdk.platformtools.Log.i("Matrix.ResourcePluginReporter", "issueType = %s", new Object[] { Integer.valueOf(j) });
-      com.tencent.mm.sdk.platformtools.Log.i("Matrix.ResourcePluginReporter", "content = %s", new Object[] { paramb.toString() });
-      if (!a.b.dcL.name().equals(str)) {
-        break label192;
-      }
-      switch (j)
-      {
-      case 0: 
-        com.tencent.mm.sdk.platformtools.Log.i("Matrix.ResourcePluginReporter", "LEAK_FOUND");
-        a(paramb, 7);
-        return;
-      }
+      double d1 = paramJSONObject.getDouble("fps");
+      i = ((a.a)paramJSONObject.get("machine")).value;
+      paramString = paramJSONObject.getJSONObject("dropLevel");
+      int j = paramString.getInt("DROPPED_BEST");
+      int k = paramString.getInt("DROPPED_NORMAL");
+      int m = paramString.getInt("DROPPED_MIDDLE");
+      int n = paramString.getInt("DROPPED_HIGH");
+      int i1 = paramString.getInt("DROPPED_FROZEN");
+      int i2 = k + m + n + i1;
+      float f1 = 1.0F * k / i2;
+      float f2 = 14.0F * m / i2;
+      float f3 = 25.0F * n / i2;
+      double d2 = 60.0F * i1 / i2 + (f1 + f2 + f3);
+      paramString = new nt();
+      paramString.jfS = ((int)(d1 * 100.0D));
+      paramString.jfT = i;
+      paramString.jfU = j;
+      paramString.jfV = k;
+      paramString.jfW = m;
+      paramString.jfX = n;
+      paramString.jfY = i1;
+      paramString.jfZ = ((int)(100.0D * d2));
+      paramString.bMH();
+      return;
     }
-    catch (JSONException paramb)
+    catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("Matrix.ResourcePluginReporter", paramb, "", new Object[0]);
-      if (BuildInfo.DEBUG) {
-        break label155;
-      }
-    }
-    if (WeChatEnvironment.hasDebugger())
-    {
-      label155:
-      throw new RuntimeException("Matrix report error -- yves", paramb);
-      com.tencent.mm.sdk.platformtools.Log.i("Matrix.ResourcePluginReporter", "ERR_FILE_NOT_FOUND");
-      a(paramb, 1);
-      return;
-      com.tencent.mm.sdk.platformtools.Log.i("Matrix.ResourcePluginReporter", "ERR_ANALYSE_OOM");
-      a(paramb, 3);
-      return;
-      label192:
-      if (a.b.dcI.name().equals(str))
-      {
-        if ((((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vxs, true)) && (this.dav < 1.0D / ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vxt, 10))) {
-          break label367;
-        }
-        if (!WeChatEnvironment.hasDebugger()) {
-          break label372;
-        }
-        break label367;
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        if (j != 0) {
-          break;
-        }
-        a(paramb, 8);
-        return;
-      }
-      if ((!a.b.dcK.name().equals(str)) || (j != 0)) {
-        break;
-      }
-      a(paramb, 10);
-      return;
-      com.tencent.mm.plugin.report.service.h.IzE.a(18573, new Object[] { "", android.util.Log.getStackTraceString(paramb), Integer.valueOf(0), Integer.valueOf(9), Integer.valueOf(0), BuildInfo.BUILD_TAG, BuildInfo.REV });
-      return;
-      return;
-      label367:
-      int i = 1;
-      continue;
-      label372:
-      i = 0;
+      Log.printErrStackTrace("MatrixSnsReporter", paramString, "data:%s", new Object[] { paramJSONObject.toString() });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.report.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,14 @@
 package androidx.lifecycle;
 
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.METHOD})
-public @interface t
+@Deprecated
+public abstract interface t
+  extends q
 {
-  h.a jl();
+  public abstract s Hj();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.lifecycle.t
  * JD-Core Version:    0.7.0.1
  */

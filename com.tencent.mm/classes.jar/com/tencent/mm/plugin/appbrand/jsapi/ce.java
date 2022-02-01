@@ -1,26 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
 import android.content.Intent;
-import com.tencent.luggage.k.f.c;
-import com.tencent.luggage.sdk.h.a;
+import com.tencent.luggage.l.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class ce
-  extends c<j>
+  extends c<com.tencent.mm.plugin.appbrand.service.c>
 {
-  public static final int CTRL_INDEX = 619;
-  public static final String NAME = "openWCPayLQTDepositPlanAdd";
-  final int owq;
-  
-  public ce()
-  {
-    AppMethodBeat.i(174763);
-    this.owq = a.aI(this);
-    AppMethodBeat.o(174763);
-  }
+  public static final int CTRL_INDEX = 192;
+  public static final String NAME = "openSetting";
 }
 
 

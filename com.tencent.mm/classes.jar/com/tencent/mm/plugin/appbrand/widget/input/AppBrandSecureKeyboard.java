@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.luggage.wxa.b.a.c;
 import com.tencent.luggage.wxa.b.a.d;
 import com.tencent.luggage.wxa.b.a.e;
@@ -25,42 +25,42 @@ class AppBrandSecureKeyboard
     super(paramContext, paramAttributeSet);
   }
   
-  public final void bAy()
+  public final void bZo()
   {
-    AppMethodBeat.i(214177);
-    Button localButton = (Button)findViewById(getId("tenpay_keyboard_0"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
-    localButton = (Button)findViewById(getId("tenpay_keyboard_1"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
-    localButton = (Button)findViewById(getId("tenpay_keyboard_2"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
-    localButton = (Button)findViewById(getId("tenpay_keyboard_3"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
-    localButton = (Button)findViewById(getId("tenpay_keyboard_4"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
-    localButton = (Button)findViewById(getId("tenpay_keyboard_5"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
-    localButton = (Button)findViewById(getId("tenpay_keyboard_6"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
-    localButton = (Button)findViewById(getId("tenpay_keyboard_7"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
-    localButton = (Button)findViewById(getId("tenpay_keyboard_8"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
-    localButton = (Button)findViewById(getId("tenpay_keyboard_9"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
-    localButton = (Button)findViewById(getId("tenpay_keyboard_x"));
-    localButton.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
-    localButton.setBackgroundResource(a.d.tenpay_keybtn_bottom_new_force_light);
+    AppMethodBeat.i(324543);
+    TextView localTextView = (TextView)findViewById(getId("tenpay_keyboard_0"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
+    localTextView = (TextView)findViewById(getId("tenpay_keyboard_1"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
+    localTextView = (TextView)findViewById(getId("tenpay_keyboard_2"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
+    localTextView = (TextView)findViewById(getId("tenpay_keyboard_3"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
+    localTextView = (TextView)findViewById(getId("tenpay_keyboard_4"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
+    localTextView = (TextView)findViewById(getId("tenpay_keyboard_5"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
+    localTextView = (TextView)findViewById(getId("tenpay_keyboard_6"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
+    localTextView = (TextView)findViewById(getId("tenpay_keyboard_7"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
+    localTextView = (TextView)findViewById(getId("tenpay_keyboard_8"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
+    localTextView = (TextView)findViewById(getId("tenpay_keyboard_9"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_new_force_light);
+    localTextView = (TextView)findViewById(getId("tenpay_keyboard_x"));
+    localTextView.setTextColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
+    localTextView.setBackgroundResource(a.d.tenpay_keybtn_bottom_new_force_light);
     findViewById(getId("tenpay_keyboard_d")).setBackgroundResource(a.d.tenpay_keybtn_bottom_new_force_light);
     ((WeImageView)findViewById(getId("tenpay_keyboard_d_inner"))).setIconColor(getResources().getColor(a.c.UN_BW_0_Alpha_0_9));
     findViewById(a.e.root_view).setBackgroundResource(a.c.BW_BG_100);
@@ -76,12 +76,12 @@ class AppBrandSecureKeyboard
     findViewById(a.e.divider10).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
     findViewById(a.e.divider11).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
     findViewById(a.e.divider12).setBackgroundResource(a.c.UN_BW_0_Alpha_0_1);
-    AppMethodBeat.o(214177);
+    AppMethodBeat.o(324543);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.AppBrandSecureKeyboard
  * JD-Core Version:    0.7.0.1
  */

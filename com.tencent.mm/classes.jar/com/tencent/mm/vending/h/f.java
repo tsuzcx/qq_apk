@@ -5,14 +5,14 @@ import com.tencent.mm.vending.c.a;
 
 public class f
 {
-  private volatile d YAl;
-  private volatile a YAw;
+  private volatile d aguJ;
+  private volatile a aguU;
   
   public f(d paramd, a parama)
   {
     AppMethodBeat.i(74921);
     c(paramd);
-    this.YAw = parama;
+    this.aguU = parama;
     AppMethodBeat.o(74921);
   }
   
@@ -26,19 +26,19 @@ public class f
       try
       {
         AppMethodBeat.i(177493);
-        locald = this.YAl;
+        locald = this.aguJ;
         if (!(parama instanceof e)) {
           break label179;
         }
         e locale = (e)parama;
-        if ("Vending.ANY".equals(locale.aqj())) {
+        if ("Vending.ANY".equals(locale.aKh())) {
           break label179;
         }
-        locald = g.bBx(locale.aqj());
+        locald = g.bDR(locale.aKh());
         if (locald == null)
         {
-          if (this.YAw != null) {
-            this.YAw.interrupt();
+          if (this.aguU != null) {
+            this.aguU.interrupt();
           }
           AppMethodBeat.o(177493);
           return;
@@ -49,21 +49,21 @@ public class f
           {
             AppMethodBeat.i(74923);
             if (f.a(f.this) != null) {
-              f.a(f.this).ieL();
+              f.a(f.this).jJS();
             }
             try
             {
               Object localObject = parama.call(paramObject);
               if (f.a(f.this) != null) {
-                f.a(f.this).es(localObject);
+                f.a(f.this).gQ(localObject);
               }
               AppMethodBeat.o(74923);
               return;
             }
             catch (ClassCastException localClassCastException)
             {
-              this.YAH.initCause(localClassCastException);
-              RuntimeException localRuntimeException = this.YAH;
+              this.agve.initCause(localClassCastException);
+              RuntimeException localRuntimeException = this.agve;
               AppMethodBeat.o(74923);
               throw localRuntimeException;
             }
@@ -92,7 +92,7 @@ public class f
   {
     try
     {
-      this.YAl = paramd;
+      this.aguJ = paramd;
       return;
     }
     finally
@@ -104,16 +104,16 @@ public class f
   
   public static abstract interface a
   {
-    public abstract void es(Object paramObject);
-    
-    public abstract void ieL();
+    public abstract void gQ(Object paramObject);
     
     public abstract void interrupt();
+    
+    public abstract void jJS();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vending.h.f
  * JD-Core Version:    0.7.0.1
  */

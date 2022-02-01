@@ -1,137 +1,185 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.q.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.pluginsdk.e.d;
-import com.tencent.mm.protocal.protobuf.pp;
-import com.tencent.mm.protocal.protobuf.pq;
+import com.tencent.mm.protocal.protobuf.GoodsObject;
+import com.tencent.mm.protocal.protobuf.eug;
+import com.tencent.mm.protocal.protobuf.euh;
+import com.tencent.mm.protocal.protobuf.eui;
+import com.tencent.mm.protocal.protobuf.nl;
+import com.tencent.mm.protocal.protobuf.nm;
+import com.tencent.mm.protocal.protobuf.nq;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/model/NetSceneAiScanImageV2;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "imageData", "", "imageWidth", "", "imageHeight", "mode", "scanType", "sessionId", "", "scanProductInfo", "Lcom/tencent/mm/plugin/scanner/model/ScanProductInfo;", "adInfo", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageAdInfo;", "jsApiInfo", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageJsapiInfo;", "location", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageLocation;", "([BIIIIJLcom/tencent/mm/plugin/scanner/model/ScanProductInfo;Lcom/tencent/mm/protocal/protobuf/BizAiScanImageAdInfo;Lcom/tencent/mm/protocal/protobuf/BizAiScanImageJsapiInfo;Lcom/tencent/mm/protocal/protobuf/BizAiScanImageLocation;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "requestLocation", "requestTrackIdList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "session", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getLocation", "getRequestTrackIdList", "", "getResp", "Lcom/tencent/mm/protocal/protobuf/ScanV2UploadResponse;", "getSession", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "Companion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
-  extends q
+  extends com.tencent.mm.am.p
   implements m
 {
-  public boolean IKS;
-  private i callback;
-  private String fPQ;
-  private int fys;
-  public int fyt;
-  public d rr;
+  public static final l.a ORD;
+  private nq ORE;
+  public ArrayList<Integer> ORF;
+  private h callback;
+  public long hBk;
+  private final c rr;
   
-  public l(int paramInt1, String paramString, int paramInt2)
+  static
   {
-    AppMethodBeat.i(51626);
-    this.fPQ = "";
-    this.IKS = false;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new pp();
-    ((d.a)localObject).lBV = new pq();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanbarcode";
-    ((d.a)localObject).funcId = 1061;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (pp)d.b.b(this.rr.lBR);
-    this.fys = paramInt1;
-    ((pp)localObject).rWu = paramInt1;
-    ((pp)localObject).RXW = paramString;
-    ((pp)localObject).CPw = ado(0);
-    ((pp)localObject).mode = 2;
-    this.fyt = paramInt2;
-    Log.d("MicroMsg.scanner.NetSceneScanBarcode", "NetSceneScanBarcode, codeType: %s, barcode: %s, codeVersion: %s, mode: %d, entryScene: %d, scene: %d", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(((pp)localObject).CPw) });
-    AppMethodBeat.o(51626);
+    AppMethodBeat.i(314392);
+    ORD = new l.a((byte)0);
+    AppMethodBeat.o(314392);
   }
   
-  public l(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
+  public l(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, ScanProductInfo paramScanProductInfo)
   {
-    AppMethodBeat.i(218926);
-    this.fPQ = "";
-    this.IKS = false;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new pp();
-    ((d.a)localObject).lBV = new pq();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanbarcode";
-    ((d.a)localObject).funcId = 1061;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (pp)d.b.b(this.rr.lBR);
-    this.fys = e.d.boV(paramString1);
-    ((pp)localObject).rWu = this.fys;
-    ((pp)localObject).RXW = paramString2;
-    ((pp)localObject).CPw = ado(paramInt3);
-    ((pp)localObject).mode = paramInt2;
-    this.fyt = paramInt1;
-    this.fPQ = paramString1;
-    Log.d("MicroMsg.scanner.NetSceneScanBarcode", "NetSceneScanBarcode, codeType: %s, barcode: %s, codeName: %s, codeVersion: %s, mode: %d, entryScene: %d, scene: %d", new Object[] { Integer.valueOf(this.fys), paramString2, paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(((pp)localObject).CPw) });
-    AppMethodBeat.o(218926);
-  }
-  
-  private static int ado(int paramInt)
-  {
-    switch (paramInt)
+    AppMethodBeat.i(314380);
+    this.ORF = new ArrayList();
+    this.hBk = paramLong;
+    this.ORE = null;
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).otE = ((a)new euh());
+    ((c.a)localObject1).otF = ((a)new eui());
+    ((c.a)localObject1).uri = "/cgi-bin/mmbiz-bin/mmbizscan_v2_upload";
+    ((c.a)localObject1).funcId = 5105;
+    ((c.a)localObject1).otG = 0;
+    ((c.a)localObject1).respCmdId = 0;
+    ((c.a)localObject1).timeout = ac.gRg();
+    localObject1 = ((c.a)localObject1).bEF();
+    kotlin.g.b.s.s(localObject1, "builder.buildInstance()");
+    this.rr = ((c)localObject1);
+    localObject1 = c.b.b(this.rr.otB);
+    if (localObject1 == null)
     {
-    default: 
-      return 0;
-    case 1: 
-    case 2: 
-    case 5: 
-      return 1;
-    case 3: 
-      return 2;
+      paramArrayOfByte = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ScanV2UploadRequest");
+      AppMethodBeat.o(314380);
+      throw paramArrayOfByte;
     }
-    return 3;
+    localObject1 = (euh)localObject1;
+    ((euh)localObject1).mode = paramInt3;
+    ((euh)localObject1).aaxM = paramLong;
+    ((euh)localObject1).YPS = (System.currentTimeMillis() / 1000L);
+    ((euh)localObject1).abxi = paramInt4;
+    ((euh)localObject1).abxj = false;
+    LinkedList localLinkedList = ((euh)localObject1).msn;
+    eug localeug = new eug();
+    localeug.YPG = b.cX(paramArrayOfByte);
+    Object localObject2 = localeug.YPw;
+    nl localnl = new nl();
+    this.ORF.add(Integer.valueOf(paramScanProductInfo.getId()));
+    localnl.YPp = paramScanProductInfo.getId();
+    Object localObject3 = new GoodsObject();
+    ((GoodsObject)localObject3).relative_minx = 0.0F;
+    ((GoodsObject)localObject3).relative_miny = 0.0F;
+    ((GoodsObject)localObject3).relative_maxx = paramInt1;
+    ((GoodsObject)localObject3).relative_maxy = paramInt2;
+    ah localah = ah.aiuX;
+    localnl.YPq = ((GoodsObject)localObject3);
+    localnl.YPr = paramScanProductInfo.getProb();
+    localObject3 = ah.aiuX;
+    ((LinkedList)localObject2).add(localnl);
+    localObject2 = ah.aiuX;
+    localLinkedList.add(localeug);
+    ((euh)localObject1).YPQ = null;
+    ((euh)localObject1).YPR = null;
+    ((euh)localObject1).ORh = null;
+    Log.i("MicroMsg.NetSceneAiScanImageV2", "alvinluo NetSceneAiScanImageV2 imageSize: " + paramArrayOfByte.length + ", mode; " + paramInt3 + ", prob: " + paramScanProductInfo.getProb() + ", trackId: " + paramScanProductInfo.getId() + ", isPreload: " + ((euh)localObject1).abxj + ", sessionId: " + paramLong + ", mode: " + ((euh)localObject1).mode + ", imageWidth: " + paramInt1 + ", imageHeight: " + paramInt2 + ", send_srv_time: " + ((euh)localObject1).YPS);
+    AppMethodBeat.o(314380);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(51628);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(51628);
+    AppMethodBeat.i(314414);
+    kotlin.g.b.s.u(paramg, "dispatcher");
+    kotlin.g.b.s.u(paramh, "callback");
+    this.callback = paramh;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.rr, (m)this);
+    AppMethodBeat.o(314414);
     return i;
+  }
+  
+  public final eui gQT()
+  {
+    AppMethodBeat.i(314423);
+    if (c.c.b(this.rr.otC) != null)
+    {
+      Object localObject = c.c.b(this.rr.otC);
+      if (localObject == null)
+      {
+        localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ScanV2UploadResponse");
+        AppMethodBeat.o(314423);
+        throw ((Throwable)localObject);
+      }
+      localObject = (eui)localObject;
+      AppMethodBeat.o(314423);
+      return localObject;
+    }
+    AppMethodBeat.o(314423);
+    return null;
   }
   
   public final int getType()
   {
-    return 1061;
+    return 5105;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(51630);
-    Log.d("MicroMsg.scanner.NetSceneScanBarcode", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(51630);
-  }
-  
-  public final q.b securityVerificationChecked(s params)
-  {
-    AppMethodBeat.i(51629);
-    params = (pp)d.b.b(((d)params).lBR);
-    if ((params.rWu < 0) || (params.RXW == null) || (params.RXW.length() <= 0))
-    {
-      Log.e("MicroMsg.scanner.NetSceneScanBarcode", "securityVerificationChecked failed, Type = " + params.rWu + ", Barcode = %s" + params.RXW);
-      params = q.b.lCy;
-      AppMethodBeat.o(51629);
-      return params;
+    AppMethodBeat.i(314404);
+    Log.i("MicroMsg.NetSceneAiScanImageV2", "onGYNetEnd errType: " + paramInt2 + ", errCode: " + paramInt3 + ", errMsg: " + paramString + ", type: " + getType());
+    params = this.callback;
+    if (params != null) {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.am.p)this);
     }
-    params = q.b.lCx;
-    AppMethodBeat.o(51629);
-    return params;
+    paramString = gQT();
+    if (paramString != null)
+    {
+      paramString = paramString.abxk;
+      kotlin.g.b.s.s(paramString, "resp.mark_results");
+      paramString = (nm)kotlin.a.p.oL((List)paramString);
+      if (paramString != null) {
+        break label157;
+      }
+      paramString = null;
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.NetSceneAiScanImageV2", kotlin.g.b.s.X("onGYNetEnd reqKey: ", paramString));
+      AppMethodBeat.o(314404);
+      return;
+      label157:
+      paramString = paramString.YPw;
+      if (paramString == null)
+      {
+        paramString = null;
+      }
+      else
+      {
+        paramString = (nl)kotlin.a.p.oL((List)paramString);
+        if (paramString == null) {
+          paramString = null;
+        } else {
+          paramString = paramString.hMy;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.l
  * JD-Core Version:    0.7.0.1
  */

@@ -10,22 +10,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/MinusScreenGridLayoutManager;", "Landroidx/recyclerview/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "orientation", "reverseLayout", "", "(Landroid/content/Context;IIZ)V", "mMultiTaskRecycleView", "Landroidx/recyclerview/widget/RecyclerView;", "mPreTransY", "", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "reflectMarkItemDecorInsetsDirty", "requestSimpleAnimationsInNextLayout", "scrollToPosition", "position", "scrollToPositionWithOffset", "offset", "scrollVerticallyBy", "dy", "setMultiTaskRecyclerView", "recyclerView", "smoothScrollToPosition", "Companion", "ui-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/MinusScreenGridLayoutManager;", "Landroidx/recyclerview/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "orientation", "reverseLayout", "", "(Landroid/content/Context;IIZ)V", "mMultiTaskRecycleView", "Landroidx/recyclerview/widget/RecyclerView;", "mPreTransY", "", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "reflectMarkItemDecorInsetsDirty", "requestSimpleAnimationsInNextLayout", "scrollToPosition", "position", "scrollToPositionWithOffset", "offset", "scrollVerticallyBy", "dy", "setMultiTaskRecyclerView", "recyclerView", "smoothScrollToPosition", "Companion", "ui-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class MinusScreenGridLayoutManager
   extends GridLayoutManager
 {
-  public static final a FKr;
-  public RecyclerView FKp;
-  private float FKq;
+  public static final MinusScreenGridLayoutManager.a LFE;
+  public RecyclerView LFF;
+  private float LFG;
   
   static
   {
-    AppMethodBeat.i(197553);
-    FKr = new a((byte)0);
-    AppMethodBeat.o(197553);
+    AppMethodBeat.i(304494);
+    LFE = new MinusScreenGridLayoutManager.a((byte)0);
+    AppMethodBeat.o(304494);
   }
   
   public MinusScreenGridLayoutManager(Context paramContext, int paramInt)
@@ -33,107 +32,119 @@ public class MinusScreenGridLayoutManager
     super(paramInt);
   }
   
-  public final void au(int paramInt1, int paramInt2)
+  public final void bo(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(197551);
-    super.au(paramInt1, paramInt2);
-    AppMethodBeat.o(197551);
+    AppMethodBeat.i(304523);
+    super.bo(paramInt1, paramInt2);
+    AppMethodBeat.o(304523);
   }
   
   public void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(197543);
+    AppMethodBeat.i(304502);
     try
     {
       super.onLayoutChildren(paramn, params);
-      AppMethodBeat.o(197543);
+      AppMethodBeat.o(304502);
       return;
     }
     catch (IndexOutOfBoundsException paramn)
     {
       Log.printErrStackTrace("MicroMsg.MultiTask.MinusScreenGridLayoutManager", (Throwable)paramn, "", new Object[0]);
-      AppMethodBeat.o(197543);
+      AppMethodBeat.o(304502);
     }
   }
   
   public void requestSimpleAnimationsInNextLayout()
   {
-    AppMethodBeat.i(197552);
+    AppMethodBeat.i(304531);
     super.requestSimpleAnimationsInNextLayout();
     try
     {
-      Method localMethod = RecyclerView.class.getDeclaredMethod("lB", new Class[0]);
-      p.j(localMethod, "RecyclerView::class.java…arkItemDecorInsetsDirty\")");
+      Method localMethod = RecyclerView.class.getDeclaredMethod("Kl", new Class[0]);
       localMethod.setAccessible(true);
       Object localObject = RecyclerView.LayoutManager.class.getDeclaredField("mRecyclerView");
-      p.j(localObject, "RecyclerView.LayoutManag…redField(\"mRecyclerView\")");
       ((Field)localObject).setAccessible(true);
       localObject = ((Field)localObject).get(this);
       if (localObject != null)
       {
         localMethod.invoke(localObject, new Object[0]);
         Log.i("MicroMsg.MultiTask.MinusScreenGridLayoutManager", "markItemDecorInsetsDirty");
-        AppMethodBeat.o(197552);
+        AppMethodBeat.o(304531);
         return;
       }
-      AppMethodBeat.o(197552);
-      return;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.MultiTask.MinusScreenGridLayoutManager", (Throwable)localException, "", new Object[0]);
-      AppMethodBeat.o(197552);
+      AppMethodBeat.o(304531);
     }
   }
   
   public void scrollToPosition(int paramInt)
   {
-    AppMethodBeat.i(197550);
+    AppMethodBeat.i(304517);
     super.scrollToPosition(paramInt);
-    AppMethodBeat.o(197550);
+    AppMethodBeat.o(304517);
   }
   
   public int scrollVerticallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(197547);
-    RecyclerView localRecyclerView = this.FKp;
-    if (localRecyclerView != null) {}
-    for (float f = localRecyclerView.getTranslationY(); (f != 0.0F) && (this.FKq * f >= 0.0F); f = 0.0F)
+    int j = 0;
+    AppMethodBeat.i(304508);
+    RecyclerView localRecyclerView = this.LFF;
+    float f;
+    if (localRecyclerView == null)
     {
-      this.FKq = f;
-      Log.d("MicroMsg.MultiTask.MinusScreenGridLayoutManager", "currentTransY: " + f + ", preTransY: " + this.FKq);
-      AppMethodBeat.o(197547);
-      return 0;
+      f = 0.0F;
+      if (f != 0.0F) {
+        break label106;
+      }
     }
+    label106:
+    for (int i = 1;; i = 0)
+    {
+      if ((i != 0) || (this.LFG * f < 0.0F)) {
+        break label112;
+      }
+      this.LFG = f;
+      Log.d("MicroMsg.MultiTask.MinusScreenGridLayoutManager", "currentTransY: " + f + ", preTransY: " + this.LFG);
+      AppMethodBeat.o(304508);
+      return 0;
+      f = localRecyclerView.getTranslationY();
+      break;
+    }
+    label112:
+    i = j;
     if (f == 0.0F) {
-      this.FKq = 0.0F;
+      i = 1;
+    }
+    if (i != 0) {
+      this.LFG = 0.0F;
     }
     for (;;)
     {
-      Log.d("MicroMsg.MultiTask.MinusScreenGridLayoutManager", "currentTransY: " + f + ", preTransY: " + this.FKq);
+      Log.d("MicroMsg.MultiTask.MinusScreenGridLayoutManager", "currentTransY: " + f + ", preTransY: " + this.LFG);
       paramInt = super.scrollVerticallyBy(paramInt, paramn, params);
-      AppMethodBeat.o(197547);
+      AppMethodBeat.o(304508);
       return paramInt;
-      if (this.FKq * f < 0.0F)
+      if (this.LFG * f < 0.0F)
       {
-        localRecyclerView = this.FKp;
+        localRecyclerView = this.LFF;
         if (localRecyclerView != null) {
           localRecyclerView.setTranslationY(0.0F);
         }
-        this.FKq = f;
+        this.LFG = f;
       }
     }
   }
   
   public void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(197548);
+    AppMethodBeat.i(304512);
     super.smoothScrollToPosition(paramRecyclerView, params, paramInt);
-    AppMethodBeat.o(197548);
+    AppMethodBeat.o(304512);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/MinusScreenGridLayoutManager$Companion;", "", "()V", "TAG", "", "ui-multitask_release"})
-  public static final class a {}
 }
 
 

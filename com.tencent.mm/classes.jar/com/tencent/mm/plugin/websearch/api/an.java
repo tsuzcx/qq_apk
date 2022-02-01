@@ -1,78 +1,145 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.au.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.z;
+import com.tencent.mm.protocal.protobuf.dre;
+import com.tencent.mm.protocal.protobuf.drf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 
-public class an
+public final class an
 {
-  private static volatile an Pzq;
-  private HashMap<Integer, ao> Pzp;
+  public static drf Wpx;
   
-  private an()
+  public static void biA(String paramString)
   {
-    AppMethodBeat.i(117734);
-    this.Pzp = new HashMap();
-    AppMethodBeat.o(117734);
-  }
-  
-  public static an gQU()
-  {
-    AppMethodBeat.i(117735);
-    if (Pzq == null) {}
-    try
+    AppMethodBeat.i(117732);
+    if (b.OE((String)h.baE().ban().d(274436, null)))
     {
-      if (Pzq == null) {
-        Pzq = new an();
-      }
-      an localan = Pzq;
-      AppMethodBeat.o(117735);
-      return localan;
-    }
-    finally
-    {
-      AppMethodBeat.o(117735);
-    }
-  }
-  
-  public final void A(final String paramString, final int paramInt, final boolean paramBoolean)
-  {
-    AppMethodBeat.i(184555);
-    Log.i("MicroMsg.WebSearch.WebSearchPreloadExport", "preloadWebView %s %s %s %s", new Object[] { MMApplicationContext.getProcessName(), paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    if (MMApplicationContext.isToolsMpProcess())
-    {
-      Log.i("MicroMsg.WebSearch.WebSearchPreloadExport", "current preload mgr size %s", new Object[] { Integer.valueOf(this.Pzp.size()) });
-      if (paramBoolean) {
-        this.Pzp.remove(Integer.valueOf(paramInt));
-      }
-      if (!this.Pzp.containsKey(Integer.valueOf(paramInt)))
-      {
-        ao localao = new ao(paramInt);
-        localao.biT(paramString);
-        this.Pzp.put(Integer.valueOf(paramInt), localao);
-        AppMethodBeat.o(184555);
-        return;
-      }
-      ((ao)this.Pzp.get(Integer.valueOf(paramInt))).biT(paramString);
-      AppMethodBeat.o(184555);
+      AppMethodBeat.o(117732);
       return;
     }
-    if (MMApplicationContext.isMainProcess()) {
-      h.ZvG.be(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(117733);
-          Log.i("MicroMsg.WebSearch.WebSearchPreloadExport", "sending broadcast");
-          an.b("com.tencent.mm.intent.ACTION_PRELOAD_SEARCH", paramString, paramInt, paramBoolean);
-          AppMethodBeat.o(117733);
-        }
-      });
+    if (!ab.IS(paramString))
+    {
+      AppMethodBeat.o(117732);
+      return;
     }
-    AppMethodBeat.o(184555);
+    if (Wpx == null) {
+      iqf();
+    }
+    long l1 = System.currentTimeMillis();
+    Object localObject1 = null;
+    int i = 0;
+    Object localObject2;
+    if (i < Wpx.vgO.size())
+    {
+      localObject2 = (dre)Wpx.vgO.get(i);
+      long l2 = (l1 - ((dre)localObject2).aaXe) / 86400000L;
+      ((dre)localObject2).aaXd *= Math.pow(0.98D, l2);
+      ((dre)localObject2).aaXe = (l2 * 86400000L + ((dre)localObject2).aaXe);
+      Log.d("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "after update: %.2f %d %s", new Object[] { Double.valueOf(((dre)localObject2).aaXd), Long.valueOf(((dre)localObject2).aaXe), ((dre)localObject2).Username });
+      if (!((dre)localObject2).Username.equals(paramString)) {
+        break label479;
+      }
+      localObject1 = localObject2;
+    }
+    label479:
+    for (;;)
+    {
+      i += 1;
+      break;
+      if (localObject1 == null)
+      {
+        localObject1 = new dre();
+        ((dre)localObject1).aaXd = 1.0D;
+        ((dre)localObject1).aaXe = l1;
+        ((dre)localObject1).Username = paramString;
+        Wpx.vgO.add(localObject1);
+        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "add new use %s", new Object[] { paramString });
+      }
+      for (;;)
+      {
+        Collections.sort(Wpx.vgO, new Comparator() {});
+        i = Wpx.vgO.size() - 1;
+        while ((i < Wpx.vgO.size()) && (Wpx.vgO.size() > 8))
+        {
+          if (((dre)Wpx.vgO.get(i)).aaXd < 0.5D) {
+            Wpx.vgO.remove(i);
+          }
+          i += 1;
+        }
+        ((dre)localObject1).aaXd += 1.0D;
+        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "update use %s %.2f", new Object[] { paramString, Double.valueOf(((dre)localObject1).aaXd) });
+      }
+      paramString = MMApplicationContext.getContext().getSharedPreferences("fts_recent_biz_sp", 0);
+      try
+      {
+        localObject1 = cwe();
+        localObject2 = Base64.encodeToString(Wpx.toByteArray(), 0);
+        paramString.edit().putString((String)localObject1, (String)localObject2).commit();
+        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "useBiz pbListString %s", new Object[] { localObject2 });
+        AppMethodBeat.o(117732);
+        return;
+      }
+      catch (IOException paramString)
+      {
+        AppMethodBeat.o(117732);
+        return;
+      }
+    }
+  }
+  
+  public static String cwe()
+  {
+    AppMethodBeat.i(117731);
+    String str = "key_pb_most_search_biz_list" + z.bAM();
+    AppMethodBeat.o(117731);
+    return str;
+  }
+  
+  public static drf iqf()
+  {
+    AppMethodBeat.i(117730);
+    Object localObject;
+    if (Wpx == null)
+    {
+      localObject = cwe();
+      Wpx = new drf();
+    }
+    try
+    {
+      localObject = MMApplicationContext.getContext().getSharedPreferences("fts_recent_biz_sp", 0).getString((String)localObject, "");
+      if (!Util.isNullOrNil((String)localObject))
+      {
+        localObject = Base64.decode(((String)localObject).getBytes(), 0);
+        Wpx.parseFrom((byte[])localObject);
+      }
+      label67:
+      if (b.OE((String)h.baE().ban().d(274436, null))) {
+        Wpx.vgO.clear();
+      }
+      localObject = Wpx;
+      AppMethodBeat.o(117730);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      break label67;
+    }
   }
 }
 

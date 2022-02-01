@@ -1,179 +1,138 @@
 package com.tencent.mm.plugin.subapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
-import com.tencent.mm.an.h.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.g;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.dl;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.storage.aq;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Queue;
-import java.util.Set;
 
 public final class b
-  implements h, i
+  implements g, h
 {
-  private Queue<a> MdG = null;
-  private boolean MdH = false;
+  private Queue<b.a> SEW = null;
+  private boolean SEX = false;
   
-  private void ghD()
+  private void hAW()
   {
     AppMethodBeat.i(28921);
-    if (this.MdH)
+    if (this.SEX)
     {
       AppMethodBeat.o(28921);
       return;
     }
-    if (this.MdG.size() == 0)
+    if (this.SEW.size() == 0)
     {
       AppMethodBeat.o(28921);
       return;
     }
-    Object localObject = (a)this.MdG.peek();
-    if (((a)localObject).MdI.size() == 0)
+    Object localObject = (b.a)this.SEW.peek();
+    if (((b.a)localObject).SEY.size() == 0)
     {
-      this.MdG.poll();
-      bh.beI();
-      c.aHp().i(8193, ((a)localObject).mMG);
-      bh.beI();
-      c.aHp().i(8449, Long.valueOf(Util.nowSecond()));
+      this.SEW.poll();
+      bh.bCz();
+      c.ban().B(8193, ((b.a)localObject).pJo);
+      bh.bCz();
+      c.ban().B(8449, Long.valueOf(Util.nowSecond()));
       AppMethodBeat.o(28921);
       return;
     }
-    localObject = (String)((a)localObject).MdI.peek();
+    localObject = (String)((b.a)localObject).SEY.peek();
     if ((localObject == null) || (((String)localObject).length() <= 0))
     {
       AppMethodBeat.o(28921);
       return;
     }
-    this.MdH = true;
+    this.SEX = true;
     localObject = new a((String)localObject);
-    bh.aGY().a(141, this);
-    bh.aGY().a((q)localObject, 0);
+    bh.aZW().a(141, this);
+    bh.aZW().a((p)localObject, 0);
     AppMethodBeat.o(28921);
   }
   
-  public final h.b b(h.a parama)
+  public final g.b b(g.a parama)
   {
     AppMethodBeat.i(28920);
-    parama = z.a(parama.jQG.RIF);
-    if (this.MdG == null) {
-      this.MdG = new LinkedList();
+    parama = w.a(parama.mpN.YFG);
+    if (this.SEW == null) {
+      this.SEW = new LinkedList();
     }
-    parama = new a(parama);
-    if (parama.mMG != null)
+    parama = new b.a(parama);
+    if (parama.pJo != null)
     {
-      this.MdG.offer(parama);
-      ghD();
+      this.SEW.offer(parama);
+      hAW();
     }
     AppMethodBeat.o(28920);
     return null;
   }
   
-  public final void b(h.c paramc) {}
+  public final void b(g.c paramc) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(28922);
-    if (paramq.getType() != 141)
+    if (paramp.getType() != 141)
     {
-      this.MdH = false;
+      this.SEX = false;
       AppMethodBeat.o(28922);
       return;
     }
-    bh.aGY().b(141, this);
-    paramString = ((a)paramq).url;
-    paramq = (a)this.MdG.peek();
-    if ((paramq == null) || (paramq.MdI.size() == 0))
+    bh.aZW().b(141, this);
+    paramString = ((a)paramp).url;
+    paramp = (b.a)this.SEW.peek();
+    if ((paramp == null) || (paramp.SEY.size() == 0))
     {
       Log.e("MicroMsg.PushMessageExtension", "getDoSceneQueue failed ! reset queue!");
-      this.MdG = new LinkedList();
-      this.MdH = false;
+      this.SEW = new LinkedList();
+      this.SEX = false;
       AppMethodBeat.o(28922);
       return;
     }
-    if (paramq.MdI.size() == 0)
+    if (paramp.SEY.size() == 0)
     {
       Log.e("MicroMsg.PushMessageExtension", "get imgQueue failed ! ignore this message");
-      this.MdG.poll();
-      this.MdH = false;
+      this.SEW.poll();
+      this.SEX = false;
       AppMethodBeat.o(28922);
       return;
     }
-    if (!((String)paramq.MdI.peek()).equals(paramString))
+    if (!((String)paramp.SEY.peek()).equals(paramString))
     {
       Log.e("MicroMsg.PushMessageExtension", "check img url failed ! ignore this message");
-      this.MdG.poll();
-      this.MdH = false;
+      this.SEW.poll();
+      this.SEX = false;
       AppMethodBeat.o(28922);
       return;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
       Log.e("MicroMsg.PushMessageExtension", "down failed [" + paramInt1 + "," + paramInt2 + "] ignore this message : img:[" + paramString + "] ");
-      this.MdG.poll();
-      this.MdH = false;
+      this.SEW.poll();
+      this.SEX = false;
       AppMethodBeat.o(28922);
       return;
     }
-    paramq.MdI.poll();
-    this.MdH = false;
-    ghD();
+    paramp.SEY.poll();
+    this.SEX = false;
+    hAW();
     AppMethodBeat.o(28922);
-  }
-  
-  static final class a
-  {
-    public Queue<String> MdI;
-    public String mMG;
-    
-    a(String paramString)
-    {
-      AppMethodBeat.i(28919);
-      this.mMG = paramString;
-      this.MdI = new LinkedList();
-      Log.d("MicroMsg.PushMessageExtension", "DoSceneStruct:".concat(String.valueOf(paramString)));
-      paramString = com.tencent.mm.pluginsdk.l.a.a.cy(MMApplicationContext.getContext(), paramString);
-      if ((paramString == null) || (paramString.size() <= 0))
-      {
-        Log.e("MicroMsg.PushMessageExtension", "Parse Message Failed !");
-        AppMethodBeat.o(28919);
-        return;
-      }
-      int i = 0;
-      while (i < paramString.size())
-      {
-        Object localObject = ((com.tencent.mm.pluginsdk.l.a.a)paramString.get(i)).Rbc;
-        if (localObject != null)
-        {
-          localObject = ((Map)localObject).entrySet().iterator();
-          while (((Iterator)localObject).hasNext()) {
-            this.MdI.offer(((Map.Entry)((Iterator)localObject).next()).getValue());
-          }
-        }
-        i += 1;
-      }
-      AppMethodBeat.o(28919);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.c.b
  * JD-Core Version:    0.7.0.1
  */

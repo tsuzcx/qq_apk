@@ -32,7 +32,7 @@ public class TPMediaCodecAudioDecoder
   
   void configCodec(b paramb)
   {
-    AppMethodBeat.i(223488);
+    AppMethodBeat.i(227492);
     TPNativeLog.printLog(2, "TPMediaCodecAudioDecoder", "configCodec: ");
     MediaFormat localMediaFormat = MediaFormat.createAudioFormat(this.mMimeType, this.mSampleRate, this.mChannelCount);
     if (this.mCsd0Data != null) {
@@ -44,7 +44,7 @@ public class TPMediaCodecAudioDecoder
       localMediaFormat.setInteger("is-adts", 1);
     }
     paramb.a(localMediaFormat, null, this.mMediaCrypto);
-    AppMethodBeat.o(223488);
+    AppMethodBeat.o(227492);
   }
   
   String getLogTag()
@@ -59,14 +59,14 @@ public class TPMediaCodecAudioDecoder
   
   public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(223483);
+    AppMethodBeat.i(227469);
     TPNativeLog.printLog(2, "TPMediaCodecAudioDecoder", "initDecoder, mimeType:" + paramString + " sampleRate:" + paramInt1 + " channelCount:" + paramInt2 + " drmType:" + paramInt3 + " audioFormat:" + paramInt4);
     this.mMimeType = paramString;
     this.mSampleRate = paramInt1;
     this.mChannelCount = paramInt2;
     this.mDrmType = paramInt3;
     this.mAudioFormat = paramInt4;
-    AppMethodBeat.o(223483);
+    AppMethodBeat.o(227469);
     return true;
   }
   
@@ -80,15 +80,15 @@ public class TPMediaCodecAudioDecoder
   void processOutputBuffer(b paramb, int paramInt, MediaCodec.BufferInfo paramBufferInfo, TPFrameInfo paramTPFrameInfo)
   {
     byte[] arrayOfByte = null;
-    AppMethodBeat.i(223502);
+    AppMethodBeat.i(227522);
     paramTPFrameInfo.sampleRate = this.mSampleRate;
     paramTPFrameInfo.channelCount = this.mChannelCount;
     paramTPFrameInfo.format = this.mAudioFormat;
     if (Build.VERSION.SDK_INT >= 21)
     {
-      if (paramb.ZNW != null)
+      if (paramb.ahSX != null)
       {
-        localObject = paramb.ZNW.isY();
+        localObject = paramb.ahSX.kcs();
         if (localObject == null) {}
       }
       for (localObject = ((MediaCodec)localObject).getOutputBuffer(paramInt);; localObject = null)
@@ -105,13 +105,13 @@ public class TPMediaCodecAudioDecoder
           paramTPFrameInfo.errCode = 2;
         }
         paramb.releaseOutputBuffer(paramInt, false);
-        AppMethodBeat.o(223502);
+        AppMethodBeat.o(227522);
         return;
       }
     }
-    if (paramb.ZNW != null)
+    if (paramb.ahSX != null)
     {
-      localObject = paramb.ZNW.isY();
+      localObject = paramb.ahSX.kcs();
       if (localObject == null) {}
     }
     for (Object localObject = ((MediaCodec)localObject).getOutputBuffers();; localObject = null)
@@ -123,10 +123,10 @@ public class TPMediaCodecAudioDecoder
   
   void processOutputConfigData(b paramb, int paramInt, MediaCodec.BufferInfo paramBufferInfo, TPFrameInfo paramTPFrameInfo)
   {
-    AppMethodBeat.i(223490);
+    AppMethodBeat.i(227500);
     paramb.releaseOutputBuffer(paramInt, false);
     paramTPFrameInfo.errCode = 1;
-    AppMethodBeat.o(223490);
+    AppMethodBeat.o(227500);
   }
   
   /* Error */
@@ -240,55 +240,55 @@ public class TPMediaCodecAudioDecoder
   
   public int setOperateRate(float paramFloat)
   {
-    AppMethodBeat.i(223507);
+    AppMethodBeat.i(227571);
     int i = super.setOperateRate(paramFloat);
-    AppMethodBeat.o(223507);
+    AppMethodBeat.o(227571);
     return i;
   }
   
   public boolean setParamBool(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(223503);
+    AppMethodBeat.i(227546);
     if (paramInt == 2)
     {
       this.mIsAdts = paramBoolean;
-      AppMethodBeat.o(223503);
+      AppMethodBeat.o(227546);
       return true;
     }
     if (paramInt == 3)
     {
       this.mEnableAudioPassThrough = paramBoolean;
       TPNativeLog.printLog(2, getLogTag(), "setParamBool mEnableAudioPassThrough:" + this.mEnableAudioPassThrough);
-      AppMethodBeat.o(223503);
+      AppMethodBeat.o(227546);
       return true;
     }
     paramBoolean = super.setParamBool(paramInt, paramBoolean);
-    AppMethodBeat.o(223503);
+    AppMethodBeat.o(227546);
     return paramBoolean;
   }
   
   public boolean setParamBytes(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(223505);
+    AppMethodBeat.i(227556);
     if (paramInt == 200) {
       this.mCsd0Data = paramArrayOfByte;
     }
     boolean bool = super.setParamBytes(paramInt, paramArrayOfByte);
-    AppMethodBeat.o(223505);
+    AppMethodBeat.o(227556);
     return bool;
   }
   
   public boolean setParamObject(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(223506);
+    AppMethodBeat.i(227564);
     if (paramInt == 300)
     {
       this.mMediaCrypto = ((MediaCrypto)paramObject);
-      AppMethodBeat.o(223506);
+      AppMethodBeat.o(227564);
       return true;
     }
     boolean bool = super.setParamObject(paramInt, paramObject);
-    AppMethodBeat.o(223506);
+    AppMethodBeat.o(227564);
     return bool;
   }
 }

@@ -20,17 +20,17 @@ public final class a
     if (paramBoolean)
     {
       j = 3;
-      if ((com.tencent.mm.plugin.audio.c.a.crn().crh()) || (com.tencent.mm.plugin.audio.c.a.cro())) {
+      if ((com.tencent.mm.plugin.audio.c.a.cTW().cTQ()) || (com.tencent.mm.plugin.audio.c.a.cTX())) {
         j = 3;
       }
       i = j;
-      if (af.juI.jnK)
+      if (af.lXZ.lQS)
       {
-        af.juI.Y();
-        if ((!paramBoolean) || (af.juI.jor < 0)) {
+        af.lXZ.aQ();
+        if ((!paramBoolean) || (af.lXZ.lRz < 0)) {
           break label239;
         }
-        i = af.juI.jor;
+        i = af.lXZ.lRz;
       }
       j = AudioTrack.getMinBufferSize(paramInt1, paramInt2, 2);
       Log.i("AudioDeviceFactory", "speakerOn: %b, type: %d, sampleRate: %d, channelConfig: %d, PlayBufSize: %d, bufTimes: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(paramInt3) });
@@ -62,10 +62,10 @@ public final class a
         break label73;
       }
       i = j;
-      if (af.juI.jos < 0) {
+      if (af.lXZ.lRA < 0) {
         break label73;
       }
-      i = af.juI.jos;
+      i = af.lXZ.lRA;
       break label73;
       i = 0;
       break label183;

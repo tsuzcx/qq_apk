@@ -1,51 +1,51 @@
 package kotlin.l.b.a.b.b.c;
 
-import kotlin.l.b.a.b.b.an;
+import kotlin.l.b.a.b.b.av;
 import kotlin.l.b.a.b.b.l;
 import kotlin.l.b.a.b.f.f;
-import kotlin.l.b.a.b.l.j;
+import kotlin.l.b.a.b.l.m;
 
 public abstract class g
   extends a
 {
-  private final an aaLe;
-  private final l aaNi;
-  private final boolean aaNj;
+  private final av aiHP;
+  private final l aiJT;
+  private final boolean aiJU;
   
-  protected g(j paramj, l paraml, f paramf, an paraman)
+  protected g(m paramm, l paraml, f paramf, av paramav)
   {
-    super(paramj, paramf);
-    this.aaNi = paraml;
-    this.aaLe = paraman;
-    this.aaNj = false;
+    super(paramm, paramf);
+    this.aiJT = paraml;
+    this.aiHP = paramav;
+    this.aiJU = false;
   }
   
-  public final l iDJ()
+  public boolean knk()
   {
-    l locall = this.aaNi;
+    return this.aiJU;
+  }
+  
+  public final av knm()
+  {
+    av localav = this.aiHP;
+    if (localav == null) {
+      aKu(5);
+    }
+    return localav;
+  }
+  
+  public final l knp()
+  {
+    l locall = this.aiJT;
     if (locall == null) {
-      aDG(4);
+      aKu(4);
     }
     return locall;
-  }
-  
-  public boolean iDX()
-  {
-    return this.aaNj;
-  }
-  
-  public final an iDZ()
-  {
-    an localan = this.aaLe;
-    if (localan == null) {
-      aDG(5);
-    }
-    return localan;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.g
  * JD-Core Version:    0.7.0.1
  */

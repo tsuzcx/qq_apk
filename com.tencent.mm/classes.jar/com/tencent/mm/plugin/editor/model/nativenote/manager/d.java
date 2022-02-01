@@ -14,81 +14,81 @@ import com.tencent.mm.plugin.editor.d.f;
 
 public final class d
 {
-  public View mParentView;
-  public PopupWindow usB;
-  public a usC;
+  public PopupWindow xyX;
+  public View xyY;
+  public a xyZ;
   
   public d(Context paramContext, View paramView)
   {
     AppMethodBeat.i(181765);
-    this.mParentView = paramView;
-    paramContext = LayoutInflater.from(paramContext).inflate(d.f.upP, null);
+    this.xyY = paramView;
+    paramContext = LayoutInflater.from(paramContext).inflate(d.f.xwm, null);
     paramContext.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-    this.usB = new PopupWindow(paramContext, -2, -2, false);
-    this.usB.setClippingEnabled(false);
-    paramContext.findViewById(d.e.eba).setOnClickListener(new View.OnClickListener()
+    this.xyX = new PopupWindow(paramContext, -2, -2, false);
+    this.xyX.setClippingEnabled(false);
+    paramContext.findViewById(d.e.gdE).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181761);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        d.this.usB.dismiss();
-        d.this.mParentView.setVisibility(8);
-        if (d.this.usC != null) {
-          d.this.usC.cRq();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        d.this.xyX.dismiss();
+        d.this.xyY.setVisibility(8);
+        if (d.this.xyZ != null) {
+          d.this.xyZ.dvJ();
         }
         a.a(this, "com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(181761);
       }
     });
-    paramContext.findViewById(d.e.eaX).setOnClickListener(new View.OnClickListener()
+    paramContext.findViewById(d.e.gdB).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181762);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        d.this.usB.dismiss();
-        d.this.mParentView.setVisibility(8);
-        if (d.this.usC != null) {
-          d.this.usC.cRr();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        d.this.xyX.dismiss();
+        d.this.xyY.setVisibility(8);
+        if (d.this.xyZ != null) {
+          d.this.xyZ.dvK();
         }
         a.a(this, "com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(181762);
       }
     });
-    paramContext.findViewById(d.e.eaZ).setOnClickListener(new View.OnClickListener()
+    paramContext.findViewById(d.e.gdD).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181763);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        d.this.usB.dismiss();
-        d.this.mParentView.setVisibility(8);
-        if (d.this.usC != null) {
-          d.this.usC.cRs();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        d.this.xyX.dismiss();
+        d.this.xyY.setVisibility(8);
+        if (d.this.xyZ != null) {
+          d.this.xyZ.dvL();
         }
         a.a(this, "com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(181763);
       }
     });
-    paramContext.findViewById(d.e.ebh).setOnClickListener(new View.OnClickListener()
+    paramContext.findViewById(d.e.gdL).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181764);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        d.this.usB.dismiss();
-        d.this.mParentView.setVisibility(8);
-        if (d.this.usC != null) {
-          d.this.usC.cRt();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        d.this.xyX.dismiss();
+        d.this.xyY.setVisibility(8);
+        if (d.this.xyZ != null) {
+          d.this.xyZ.dvM();
         }
         a.a(this, "com/tencent/mm/plugin/editor/model/nativenote/manager/EditorOperateWindow$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(181764);
@@ -99,18 +99,18 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void cRq();
+    public abstract void dvJ();
     
-    public abstract void cRr();
+    public abstract void dvK();
     
-    public abstract void cRs();
+    public abstract void dvL();
     
-    public abstract void cRt();
+    public abstract void dvM();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.manager.d
  * JD-Core Version:    0.7.0.1
  */

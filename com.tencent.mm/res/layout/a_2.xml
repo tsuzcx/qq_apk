@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.view.TouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/f6f" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <androidx.recyclerview.widget.RecyclerView android:id="@id/gy2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            </com.tencent.mm.view.RefreshLoadMoreLayout>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/g01" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:text="@string/d8e" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/epl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
-            <ProgressBar android:background="@color/ac_" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:indeterminateDrawable="@drawable/apb" />
-        </LinearLayout>
-        <ListView android:id="@id/dpq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ListView android:id="@id/kj_" android:background="@color/BW_93" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </RelativeLayout>
-</com.tencent.mm.view.TouchableLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="center_horizontal" android:id="@id/hgw" android:background="@color/c" android:paddingTop="@dimen/ic" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/xh" />
+        <ListView android:id="@id/fpj" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/na" />
+        <com.tencent.mm.ui.base.sortview.SortViewScrollBar android:layout_gravity="center|right" android:id="@id/jyg" android:layout_width="@dimen/e" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

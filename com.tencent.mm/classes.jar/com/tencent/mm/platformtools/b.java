@@ -2,103 +2,102 @@ package com.tencent.mm.platformtools;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.am.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class b
 {
-  private m mDE;
-  private n mDF;
-  private o mDG;
-  private k mDH;
-  private l mDI;
-  private j mDJ;
+  private k pAk;
+  private l pAl;
+  private m pAm;
+  private i pAn;
+  private j pAo;
+  private h pAp;
   
   private static void a(c paramc)
   {
     AppMethodBeat.i(127674);
     if (paramc != null)
     {
-      Iterator localIterator = paramc.mDK.iterator();
+      Iterator localIterator = paramc.pAq.iterator();
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        h.aGY().b(localInteger.intValue(), paramc);
+        com.tencent.mm.kernel.h.aZW().b(localInteger.intValue(), paramc);
       }
       paramc.activity = null;
     }
     AppMethodBeat.o(127674);
   }
   
-  public final boolean a(Activity paramActivity, ad paramad)
+  public final boolean a(Activity paramActivity, aa paramaa)
   {
     AppMethodBeat.i(127673);
-    if ((paramad.type == 0) || (paramad.action == 0))
+    if ((paramaa.type == 0) || (paramaa.action == 0))
     {
       AppMethodBeat.o(127673);
       return false;
     }
-    switch (paramad.type)
+    switch (paramaa.type)
     {
     default: 
       Log.e("MicroMsg.BaseErrorHelper", "Unkown error type");
       AppMethodBeat.o(127673);
       return false;
     case 1: 
-      if (this.mDE == null) {
-        this.mDE = new m(paramActivity);
+      if (this.pAk == null) {
+        this.pAk = new k(paramActivity);
       }
-      this.mDE.a(paramad);
+      this.pAk.a(paramaa);
     }
     for (;;)
     {
       AppMethodBeat.o(127673);
       return true;
-      if (this.mDF == null) {
-        this.mDF = new n(paramActivity);
+      if (this.pAl == null) {
+        this.pAl = new l(paramActivity);
       }
-      this.mDF.a(paramad);
+      this.pAl.a(paramaa);
       continue;
-      if (this.mDG == null) {
-        this.mDG = new o(paramActivity);
+      if (this.pAm == null) {
+        this.pAm = new m(paramActivity);
       }
-      this.mDG.a(paramad);
+      this.pAm.a(paramaa);
       continue;
-      if (this.mDH == null) {
-        this.mDH = new k(paramActivity);
+      if (this.pAn == null) {
+        this.pAn = new i(paramActivity);
       }
-      this.mDH.a(paramad);
+      this.pAn.a(paramaa);
       continue;
-      if (this.mDI == null) {
-        this.mDI = new l(paramActivity);
+      if (this.pAo == null) {
+        this.pAo = new j(paramActivity);
       }
-      this.mDI.a(paramad);
+      this.pAo.a(paramaa);
       continue;
-      if (this.mDJ == null) {
-        this.mDJ = new j(paramActivity);
+      if (this.pAp == null) {
+        this.pAp = new h(paramActivity);
       }
-      this.mDJ.a(paramad);
+      this.pAp.a(paramaa);
     }
   }
   
   public final void close()
   {
     AppMethodBeat.i(127675);
-    a(this.mDE);
-    a(this.mDF);
-    a(this.mDG);
-    a(this.mDH);
-    a(this.mDI);
-    a(this.mDJ);
+    a(this.pAk);
+    a(this.pAl);
+    a(this.pAm);
+    a(this.pAn);
+    a(this.pAo);
+    a(this.pAp);
     AppMethodBeat.o(127675);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.b
  * JD-Core Version:    0.7.0.1
  */

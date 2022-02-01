@@ -7,7 +7,7 @@ public class TXCTimeUtil
   static
   {
     AppMethodBeat.i(14727);
-    h.f();
+    h.d();
     AppMethodBeat.o(14727);
   }
   
@@ -62,7 +62,7 @@ public class TXCTimeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.util.TXCTimeUtil
  * JD-Core Version:    0.7.0.1
  */

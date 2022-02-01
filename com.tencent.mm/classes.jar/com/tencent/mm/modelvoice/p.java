@@ -3,12 +3,12 @@ package com.tencent.mm.modelvoice;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 
 public final class p
 {
-  public String mhK;
-  public boolean mhL;
+  public String paV;
+  public boolean paW;
   public long time;
   
   public p(String paramString)
@@ -23,17 +23,17 @@ public final class p
           str = paramString.substring(0, paramString.length() - 1);
         }
         paramString = str.split(":");
-        if ((paramString.length == 4) && (as.PY(paramString[0])))
+        if ((paramString.length == 4) && (au.bwS(paramString[0])))
         {
           i = 1;
           if (paramString.length > i) {
-            this.mhK = paramString[i];
+            this.paV = paramString[i];
           }
           if (paramString.length > i + 1) {
             this.time = Util.getLong(paramString[(i + 1)], 0L);
           }
           if (paramString.length > i + 2) {
-            this.mhL = paramString[(i + 2)].equals("1");
+            this.paW = paramString[(i + 2)].equals("1");
           }
           AppMethodBeat.o(130092);
           return;
@@ -41,10 +41,10 @@ public final class p
       }
       catch (Exception paramString)
       {
-        if (this.mhK == null) {
-          this.mhK = "";
+        if (this.paV == null) {
+          this.paV = "";
         }
-        this.mhL = false;
+        this.paW = false;
         this.time = 0L;
         Log.e("MicroMsg.VoiceContent", "VoiceContent parse failed.");
         AppMethodBeat.o(130092);
@@ -67,20 +67,20 @@ public final class p
     }
   }
   
-  public final String bqK()
+  public final String bOq()
   {
-    return this.mhK;
+    return this.paV;
   }
   
-  public final String brC()
+  public final String bPi()
   {
-    AppMethodBeat.i(196550);
-    Object localObject = new StringBuilder().append(this.mhK).append(":").append(this.time).append(":");
-    if (this.mhL) {}
+    AppMethodBeat.i(234442);
+    Object localObject = new StringBuilder().append(this.paV).append(":").append(this.time).append(":");
+    if (this.paW) {}
     for (int i = 1;; i = 0)
     {
-      localObject = i + "\n";
-      AppMethodBeat.o(196550);
+      localObject = i + ":\n";
+      AppMethodBeat.o(234442);
       return localObject;
     }
   }

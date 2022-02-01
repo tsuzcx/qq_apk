@@ -4,21 +4,17 @@ import android.content.IntentFilter;
 import com.google.android.gms.common.api.internal.ListenerHolder;
 import com.google.android.gms.common.data.DataHolder;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.wearable.CapabilityApi.CapabilityListener;
 import com.google.android.gms.wearable.ChannelApi.ChannelListener;
 import com.google.android.gms.wearable.DataApi.DataListener;
 import com.google.android.gms.wearable.MessageApi.MessageListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
-import javax.annotation.Nullable;
 
-@VisibleForTesting
 public final class zzhk<T>
   extends zzen
 {
   private final IntentFilter[] zzba;
-  @Nullable
   private final String zzbb;
   private ListenerHolder<Object> zzfj;
   private ListenerHolder<Object> zzfk;
@@ -29,7 +25,7 @@ public final class zzhk<T>
   private ListenerHolder<ChannelApi.ChannelListener> zzfp;
   private ListenerHolder<CapabilityApi.CapabilityListener> zzfq;
   
-  private zzhk(IntentFilter[] paramArrayOfIntentFilter, @Nullable String paramString)
+  private zzhk(IntentFilter[] paramArrayOfIntentFilter, String paramString)
   {
     AppMethodBeat.i(101406);
     this.zzba = ((IntentFilter[])Preconditions.checkNotNull(paramArrayOfIntentFilter));
@@ -168,7 +164,6 @@ public final class zzhk<T>
     return this.zzba;
   }
   
-  @Nullable
   public final String zzf()
   {
     return this.zzbb;
@@ -176,7 +171,7 @@ public final class zzhk<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzhk
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,6 @@ import com.google.android.gms.common.internal.Asserts;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.wearable.internal.DataItemAssetParcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.security.SecureRandom;
@@ -29,9 +23,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-@SafeParcelable.Class(creator="PutDataRequestCreator")
-@SafeParcelable.Reserved({1})
-@VisibleForTesting
 public class PutDataRequest
   extends AbstractSafeParcelable
 {
@@ -39,13 +30,9 @@ public class PutDataRequest
   public static final String WEAR_URI_SCHEME = "wear";
   private static final long zzt;
   private static final Random zzu;
-  @SafeParcelable.Field(getter="getData", id=5)
   private byte[] data;
-  @SafeParcelable.Field(getter="getUri", id=2)
   private final Uri uri;
-  @SafeParcelable.Field(getter="getAssetsInternal", id=4)
   private final Bundle zzv;
-  @SafeParcelable.Field(getter="getSyncDeadline", id=6)
   private long zzw;
   
   static
@@ -64,8 +51,7 @@ public class PutDataRequest
     AppMethodBeat.o(100857);
   }
   
-  @SafeParcelable.Constructor
-  PutDataRequest(@SafeParcelable.Param(id=2) Uri paramUri, @SafeParcelable.Param(id=4) Bundle paramBundle, @SafeParcelable.Param(id=5) byte[] paramArrayOfByte, @SafeParcelable.Param(id=6) long paramLong)
+  PutDataRequest(Uri paramUri, Bundle paramBundle, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(100856);
     this.uri = paramUri;
@@ -161,7 +147,6 @@ public class PutDataRequest
     return paramUri;
   }
   
-  @VisibleForTesting
   public Asset getAsset(String paramString)
   {
     AppMethodBeat.i(100865);
@@ -186,7 +171,6 @@ public class PutDataRequest
     return localObject;
   }
   
-  @VisibleForTesting
   public byte[] getData()
   {
     return this.data;
@@ -302,7 +286,7 @@ public class PutDataRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.PutDataRequest
  * JD-Core Version:    0.7.0.1
  */

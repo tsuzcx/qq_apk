@@ -1,42 +1,43 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.protocal.protobuf.egq;
-import com.tencent.mm.protocal.protobuf.egr;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.cxb;
+import com.tencent.mm.protocal.protobuf.cxc;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/modelappbrand/CgiSetNotifyConfig;", "", "()V", "Companion", "plugin-compat_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/modelappbrand/CgiGetNotifyConfig;", "", "()V", "Companion", "plugin-compat_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final a lyr;
+  public static final a opR;
   
   static
   {
-    AppMethodBeat.i(207459);
-    lyr = new a((byte)0);
-    AppMethodBeat.o(207459);
+    AppMethodBeat.i(233810);
+    opR = new a((byte)0);
+    AppMethodBeat.o(233810);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/modelappbrand/CgiSetNotifyConfig$Companion;", "", "()V", "buildInstance", "Lcom/tencent/mm/modelbase/CommReqResp;", "req", "Lcom/tencent/mm/protocal/protobuf/SetWxaMsgConfigRequest;", "plugin-compat_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/modelappbrand/CgiGetNotifyConfig$Companion;", "", "()V", "buildInstance", "Lcom/tencent/mm/modelbase/CommReqResp;", "plugin-compat_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static com.tencent.mm.an.d a(egq paramegq)
+    public static c bEF()
     {
-      AppMethodBeat.i(207491);
-      p.k(paramegq, "req");
-      com.tencent.mm.an.d.a locala = new com.tencent.mm.an.d.a();
-      locala.d((a)new egr());
-      locala.TW("/cgi-bin/mmbiz-bin/wxaapp/setwxamsgconfig");
-      locala.vD(3872);
-      locala.vF(0);
-      locala.vG(0);
-      locala.c((a)paramegq);
-      paramegq = locala.bgN();
-      p.j(paramegq, "builder.buildInstance()");
-      AppMethodBeat.o(207491);
-      return paramegq;
+      AppMethodBeat.i(233807);
+      Object localObject = new c.a();
+      ((c.a)localObject).otE = ((a)new cxb());
+      ((c.a)localObject).otF = ((a)new cxc());
+      ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/getwxamsgconfig";
+      ((c.a)localObject).funcId = 357;
+      ((c.a)localObject).otG = 0;
+      ((c.a)localObject).respCmdId = 0;
+      localObject = ((c.a)localObject).bEF();
+      s.s(localObject, "builder.buildInstance()");
+      AppMethodBeat.o(233807);
+      return localObject;
     }
   }
 }

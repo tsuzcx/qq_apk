@@ -1,41 +1,6 @@
-package com.tencent.mm.plugin.finder.upload.postui;
-
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.finder.view.FinderChooseNewsView;
-import com.tencent.mm.ui.MMActivity;
-import kotlin.l;
-
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/upload/postui/FinderSetNewsFeedWidget;", "Lcom/tencent/mm/plugin/finder/upload/postui/IFinderPostWidget;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "newsView", "Lcom/tencent/mm/plugin/finder/view/FinderChooseNewsView;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/view/FinderChooseNewsView;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "getNewsView", "()Lcom/tencent/mm/plugin/finder/view/FinderChooseNewsView;", "canPost", "", "isChecked", "onCreate", "", "intent", "Landroid/content/Intent;", "postData", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "shouldInterceptBackPress", "plugin-finder_release"})
-public final class e
-{
-  public final FinderChooseNewsView ACG;
-  public final MMActivity activity;
-  
-  public e(MMActivity paramMMActivity, FinderChooseNewsView paramFinderChooseNewsView)
-  {
-    AppMethodBeat.i(284843);
-    this.activity = paramMMActivity;
-    this.ACG = paramFinderChooseNewsView;
-    AppMethodBeat.o(284843);
-  }
-  
-  public final boolean isChecked()
-  {
-    AppMethodBeat.i(284842);
-    aj localaj = aj.AGc;
-    if ((aj.eee()) && (this.ACG.isChecked()))
-    {
-      AppMethodBeat.o(284842);
-      return true;
-    }
-    AppMethodBeat.o(284842);
-    return false;
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.upload.postui.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="36.0dip" android:layout_height="wrap_content">
-        <TextView android:textSize="16.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:gravity="center" android:id="@id/c5t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="999+" android:singleLine="true" style="@style/oc" />
-        <ImageView android:id="@id/c5s" android:scaleType="center" android:layout_below="@id/c5t" style="@style/i_" />
-        <ProgressBar android:id="@id/c5w" android:indeterminateDrawable="@drawable/ape" style="@style/i_" />
-    </RelativeLayout>
-</merge>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingBottom="@dimen/cd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/wy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/wz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:text="50" android:maxLines="1" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/x0" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:text="个" android:maxLines="1" android:layout_weight="1.0" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/wx" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_album" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/x3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:maxWidth="@dimen/cg" android:maxLines="1" />
+</LinearLayout>

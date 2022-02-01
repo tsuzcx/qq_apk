@@ -20,7 +20,7 @@ public abstract class BaseDrawActionArg
   @Deprecated
   public BaseDrawActionArg(Parcel paramParcel, byte paramByte)
   {
-    i(paramParcel);
+    k(paramParcel);
   }
   
   public boolean a(d paramd, Canvas paramCanvas)
@@ -28,7 +28,7 @@ public abstract class BaseDrawActionArg
     return false;
   }
   
-  public boolean bKz()
+  public boolean cjZ()
   {
     return false;
   }
@@ -54,7 +54,7 @@ public abstract class BaseDrawActionArg
   }
   
   @Deprecated
-  public void i(Parcel paramParcel)
+  public void k(Parcel paramParcel)
   {
     this.method = paramParcel.readString();
   }
@@ -78,7 +78,7 @@ public abstract class BaseDrawActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg
  * JD-Core Version:    0.7.0.1
  */

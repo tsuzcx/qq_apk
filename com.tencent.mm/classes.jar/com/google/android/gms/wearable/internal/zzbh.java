@@ -6,7 +6,6 @@ import com.google.android.gms.wearable.Channel.GetOutputStreamResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.io.OutputStream;
-import javax.annotation.Nullable;
 
 final class zzbh
   implements Channel.GetOutputStreamResult
@@ -14,7 +13,7 @@ final class zzbh
   private final OutputStream zzcu;
   private final Status zzp;
   
-  zzbh(Status paramStatus, @Nullable OutputStream paramOutputStream)
+  zzbh(Status paramStatus, OutputStream paramOutputStream)
   {
     AppMethodBeat.i(101055);
     this.zzp = ((Status)Preconditions.checkNotNull(paramStatus));
@@ -22,7 +21,6 @@ final class zzbh
     AppMethodBeat.o(101055);
   }
   
-  @Nullable
   public final OutputStream getOutputStream()
   {
     return this.zzcu;
@@ -50,7 +48,7 @@ final class zzbh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzbh
  * JD-Core Version:    0.7.0.1
  */

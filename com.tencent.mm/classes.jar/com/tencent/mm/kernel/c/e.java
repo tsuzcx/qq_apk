@@ -5,39 +5,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e<T extends a>
   implements b, c<T>
 {
-  private T kfD;
+  private T mGb;
   
   public e(T paramT)
   {
-    this.kfD = paramT;
+    this.mGb = paramT;
   }
   
-  public final void aIF()
+  public final void bbB()
   {
     AppMethodBeat.i(157490);
-    if ((this.kfD instanceof b)) {
-      ((b)this.kfD).aIF();
+    if ((this.mGb instanceof b)) {
+      ((b)this.mGb).bbB();
     }
     AppMethodBeat.o(157490);
   }
   
-  public final void aIG()
+  public final void bbC()
   {
     AppMethodBeat.i(157491);
-    if ((this.kfD instanceof b)) {
-      ((b)this.kfD).aIG();
+    if ((this.mGb instanceof b)) {
+      ((b)this.mGb).bbC();
     }
     AppMethodBeat.o(157491);
   }
   
-  public final T aIH()
+  public final T bbD()
   {
-    return this.kfD;
+    return this.mGb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.kernel.c.e
  * JD-Core Version:    0.7.0.1
  */

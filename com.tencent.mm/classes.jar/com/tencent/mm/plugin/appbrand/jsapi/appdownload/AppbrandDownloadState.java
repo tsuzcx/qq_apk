@@ -13,10 +13,10 @@ public class AppbrandDownloadState
 {
   public static final Parcelable.Creator<AppbrandDownloadState> CREATOR;
   public String appId;
-  public long fuD;
-  public long oyu;
-  public float oyv;
-  public long progress;
+  public long hQO;
+  public long hyV;
+  public long rCm;
+  public float rCn;
   public String state;
   
   static
@@ -32,26 +32,26 @@ public class AppbrandDownloadState
   {
     AppMethodBeat.i(45723);
     this.state = paramParcel.readString();
-    this.fuD = paramParcel.readLong();
+    this.hyV = paramParcel.readLong();
     this.appId = paramParcel.readString();
-    this.progress = paramParcel.readLong();
-    this.oyu = paramParcel.readLong();
-    this.oyv = paramParcel.readFloat();
+    this.hQO = paramParcel.readLong();
+    this.rCm = paramParcel.readLong();
+    this.rCn = paramParcel.readFloat();
     AppMethodBeat.o(45723);
   }
   
-  public final JSONObject bPW()
+  public final JSONObject cqc()
   {
     AppMethodBeat.i(45724);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("state", this.state);
-      localJSONObject.put("downloadId", this.fuD);
+      localJSONObject.put("downloadId", this.hyV);
       localJSONObject.put("appId", this.appId);
-      localJSONObject.put("progress", this.progress);
-      localJSONObject.put("taskSize", this.oyu);
-      localJSONObject.put("progressFloat", this.oyv);
+      localJSONObject.put("progress", this.hQO);
+      localJSONObject.put("taskSize", this.rCm);
+      localJSONObject.put("progressFloat", this.rCn);
       AppMethodBeat.o(45724);
       return localJSONObject;
     }
@@ -73,11 +73,11 @@ public class AppbrandDownloadState
   {
     AppMethodBeat.i(45722);
     paramParcel.writeString(this.state);
-    paramParcel.writeLong(this.fuD);
+    paramParcel.writeLong(this.hyV);
     paramParcel.writeString(this.appId);
-    paramParcel.writeLong(this.progress);
-    paramParcel.writeLong(this.oyu);
-    paramParcel.writeFloat(this.oyv);
+    paramParcel.writeLong(this.hQO);
+    paramParcel.writeLong(this.rCm);
+    paramParcel.writeFloat(this.rCn);
     AppMethodBeat.o(45722);
   }
 }

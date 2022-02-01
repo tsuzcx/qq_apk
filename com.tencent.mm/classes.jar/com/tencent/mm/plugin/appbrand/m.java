@@ -1,125 +1,163 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.api.f;
+import com.tencent.mm.ipcinvoker.o;
 import com.tencent.mm.plugin.appbrand.api.f.a;
-import com.tencent.mm.plugin.appbrand.api.f.b;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.launching.t;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.task.d;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.threadpool.i;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/AppBrandPreRenderColdStartService;", "", "()V", "TAG", "", "start", "", "bundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "callback", "Lcom/tencent/mm/plugin/appbrand/api/PreRenderColdStartResultCallback;", "startInternal", "requestId", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/AppBrandPreRenderColdStartService;", "", "()V", "TAG", "", "bindRemoteService", "", "loaderId", "", "configWC", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "remoteProcessName", "callback", "Lcom/tencent/mm/plugin/appbrand/api/PreRenderColdStartResultCallback;", "start", "bundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "startInternal", "requestId", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
 {
-  public static final m ntn;
+  public static final m qrR;
   
   static
   {
-    AppMethodBeat.i(279056);
-    ntn = new m();
-    AppMethodBeat.o(279056);
+    AppMethodBeat.i(316825);
+    qrR = new m();
+    AppMethodBeat.o(316825);
   }
   
-  public static void a(com.tencent.mm.plugin.appbrand.api.g paramg, f paramf)
+  private static final void a(BindRemoteServiceData paramBindRemoteServiceData, com.tencent.mm.ipcinvoker.f paramf)
   {
-    AppMethodBeat.i(279055);
-    p.k(paramg, "bundle");
-    int j = paramg.hashCode();
-    final long l = Util.currentTicks();
-    Log.i("MicroMsg.AppBrandPreRenderColdStartService", "start with id:" + j + " username:" + paramg.username + " appId:" + paramg.appId + " versionType:" + paramg.cBU + " path:" + paramg.nBq + " scene:" + paramg.scene);
-    com.tencent.mm.plugin.report.service.h.IzE.el(1519, 0);
-    paramf = (f)new a(j, l, paramf);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vBa, 1) <= 0)
+    AppMethodBeat.i(316816);
+    if (paramBindRemoteServiceData == null)
     {
-      f.a.a(paramf, -8);
-      AppMethodBeat.o(279055);
+      if (paramf != null) {
+        paramf.onCallback(new BindRemoteServiceResult(-4));
+      }
+      AppMethodBeat.o(316816);
       return;
     }
-    try
-    {
-      Object localObject = t.pUE;
-      t.a(paramg);
-      localObject = t.pUE;
-      localObject = t.b(paramg);
-      CharSequence localCharSequence = (CharSequence)paramg.appId;
-      if ((localCharSequence == null) || (localCharSequence.length() == 0))
-      {
-        i = 1;
-        if (i != 0) {
-          break label313;
-        }
-        paramg = paramg.appId;
-        paramg = com.tencent.mm.plugin.appbrand.report.quality.g.c((LaunchParcel)localObject, paramg);
-        ((LaunchParcel)localObject).cxe = com.tencent.luggage.sdk.launching.b.cBf;
-        ((LaunchParcel)localObject).pZk = Util.nowMilliSecond();
-        com.tencent.e.h.ZvG.bg((Runnable)new an(j, (LaunchParcel)localObject, paramg, paramf));
-        AppMethodBeat.o(279055);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE))
-        {
-          paramg = (Throwable)localException;
-          AppMethodBeat.o(279055);
-          throw paramg;
-        }
-        f.a.a(paramf, -1);
-        continue;
-        int i = 0;
-        continue;
-        label313:
-        paramg = com.tencent.mm.plugin.appbrand.launching.e.h.a(localException);
-      }
-    }
+    i locali = com.tencent.threadpool.h.ahAA;
+    s.s(paramBindRemoteServiceData, "data");
+    locali.bk((Runnable)new bb(paramBindRemoteServiceData, (com.tencent.mm.plugin.appbrand.api.f)new a(paramf)));
+    AppMethodBeat.o(316816);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/AppBrandPreRenderColdStartService$start$1", "Lcom/tencent/mm/plugin/appbrand/api/PreRenderColdStartResultCallback;", "onError", "", "errCode", "", "errMsg", "", "onSuccess", "plugin-appbrand-integration_release"})
-  public static final class a
-    implements f
+  public static void a(com.tencent.mm.plugin.appbrand.api.g paramg, final com.tencent.mm.plugin.appbrand.api.f paramf)
   {
-    a(int paramInt, long paramLong, f paramf) {}
+    AppMethodBeat.i(316811);
+    s.u(paramg, "bundle");
+    int i = paramg.hashCode();
+    long l = Util.currentTicks();
+    Log.i("MicroMsg.AppBrandPreRenderColdStartService", "start with id:" + i + " username:" + paramg.username + " appId:" + paramg.appId + " versionType:" + paramg.euz + " path:" + paramg.qAF + " scene:" + paramg.scene);
+    com.tencent.mm.plugin.report.service.h.OAn.kJ(1519, 0);
+    paramf = (com.tencent.mm.plugin.appbrand.api.f)new m.d(i, l, paramf);
+    if (((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.yOT, 1) <= 0)
+    {
+      f.a.a(paramf, -8);
+      AppMethodBeat.o(316811);
+      return;
+    }
+    new com.tencent.mm.plugin.appbrand.launching.precondition.j(i, paramg, (q)new e(i, paramf), paramf).start();
+    AppMethodBeat.o(316811);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/AppBrandPreRenderColdStartService$bindRemoteService$1$2", "Lcom/tencent/mm/plugin/appbrand/api/PreRenderColdStartResultCallback;", "onError", "", "errCode", "", "errMsg", "", "onSuccess", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements com.tencent.mm.plugin.appbrand.api.f
+  {
+    a(com.tencent.mm.ipcinvoker.f<BindRemoteServiceResult> paramf) {}
     
     public final void onError(int paramInt, String paramString)
     {
-      AppMethodBeat.i(271574);
-      Object localObject = new StringBuilder("onError, requestId:").append(this.nto).append(", errCode:");
-      f.b localb = f.b.nBp;
-      Log.e("MicroMsg.AppBrandPreRenderColdStartService", f.b.yX(paramInt) + ", errMsg:" + paramString + ", cost:" + Util.ticksToNow(l));
-      localObject = this.ntq;
-      if (localObject != null) {
-        ((f)localObject).onError(paramInt, paramString);
+      AppMethodBeat.i(317200);
+      com.tencent.mm.ipcinvoker.f localf = this.mht;
+      if (localf != null) {
+        localf.onCallback(new BindRemoteServiceResult(paramInt, paramString));
       }
-      paramString = com.tencent.mm.plugin.report.service.h.IzE;
-      localObject = at.nyS;
-      paramString.el(1519, at.yO(paramInt));
-      AppMethodBeat.o(271574);
+      AppMethodBeat.o(317200);
     }
     
     public final void onSuccess()
     {
-      AppMethodBeat.i(271573);
-      Log.i("MicroMsg.AppBrandPreRenderColdStartService", "onSuccess, requestId:" + this.nto + ", cost:" + Util.ticksToNow(l));
-      f localf = this.ntq;
+      AppMethodBeat.i(317192);
+      com.tencent.mm.ipcinvoker.f localf = this.mht;
       if (localf != null) {
-        localf.onSuccess();
+        localf.onCallback(new BindRemoteServiceResult(0));
       }
-      com.tencent.mm.plugin.report.service.h.IzE.el(1519, 1);
-      AppMethodBeat.o(271573);
+      AppMethodBeat.o(317192);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/AppBrandPreRenderColdStartService$bindRemoteService$2", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallbackEx;", "Lcom/tencent/mm/plugin/appbrand/BindRemoteServiceResult;", "onBridgeNotFound", "", "onCallback", "data", "onCaughtInvokeException", "e", "Ljava/lang/Exception;", "Lkotlin/Exception;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements com.tencent.mm.ipcinvoker.g<BindRemoteServiceResult>
+  {
+    b(int paramInt, com.tencent.mm.plugin.appbrand.api.f paramf, AtomicBoolean paramAtomicBoolean, String paramString, m.c paramc) {}
+    
+    public final void aYr()
+    {
+      AppMethodBeat.i(317039);
+      Log.e("MicroMsg.AppBrandPreRenderColdStartService", s.X("bindRemoteService onBridgeNotFound, id:", Integer.valueOf(this.qrS)));
+      com.tencent.mm.plugin.appbrand.api.f localf = this.qrT;
+      if (localf != null) {
+        f.a.a(localf, -4);
+      }
+      AppMethodBeat.o(317039);
+    }
+    
+    public final void h(Exception paramException)
+    {
+      AppMethodBeat.i(317042);
+      Log.e("MicroMsg.AppBrandPreRenderColdStartService", "bindRemoteService onCaughtInvokeException, id:" + this.qrS + ", exception:" + paramException);
+      paramException = this.qrT;
+      if (paramException != null) {
+        f.a.a(paramException, -4);
+      }
+      AppMethodBeat.o(317042);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/AppBrandPreRenderColdStartService$bindRemoteService$onRemoteProcessDiedListener$1", "Lcom/tencent/mm/ipcinvoker/IRemoteProcDied;", "onDied", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements o
+  {
+    c(String paramString, int paramInt, AtomicBoolean paramAtomicBoolean, com.tencent.mm.plugin.appbrand.api.f paramf) {}
+    
+    public final void onDied()
+    {
+      AppMethodBeat.i(317013);
+      Log.e("MicroMsg.AppBrandPreRenderColdStartService", "bindRemoteService onRemoteProcessDied(" + this.qrV + "), id:" + this.qrS);
+      if (!this.qrU.getAndSet(true))
+      {
+        com.tencent.mm.plugin.appbrand.api.f localf = this.qrT;
+        if (localf != null) {
+          f.a.a(localf, -5);
+        }
+      }
+      com.tencent.mm.ipcinvoker.j.a(this.qrV, (o)this);
+      AppMethodBeat.o(317013);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "process", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandMiniProgramProcess;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements q<AppBrandInitConfigWC, AppBrandStatObject, d, ah>
+  {
+    e(int paramInt, com.tencent.mm.plugin.appbrand.api.f paramf)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m
  * JD-Core Version:    0.7.0.1
  */

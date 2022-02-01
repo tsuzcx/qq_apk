@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ad.timeline.a.c;
 
 import android.view.View;
 import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.plugin.sns.ad.f.l;
+import com.tencent.mm.plugin.sns.ad.g.l;
 import com.tencent.mm.plugin.sns.ad.timeline.a.c;
 import com.tencent.mm.plugin.sns.ad.timeline.a.d;
 import com.tencent.mm.plugin.sns.data.m;
@@ -15,8 +15,6 @@ public abstract class a
 {
   public final boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, d paramd)
   {
-    int j = 1;
-    int i = 1;
     if (paramSnsInfo == null) {
       return false;
     }
@@ -29,20 +27,20 @@ public abstract class a
       boolean bool;
       try
       {
-        bool = a(paramView, paramInt, paramSnsInfo, (ADXml)localObject);
+        bool = a(paramView, paramInt, paramSnsInfo, (ADXml)localObject, paramd);
         if (!bool) {
-          break label190;
+          break label188;
         }
         if (paramd == null)
         {
           paramView = null;
           if (paramView == null) {
-            break label190;
+            break label188;
           }
           t.a(paramView);
-          break label190;
+          break label188;
         }
-        localObject = (l)paramd.y("snsAdStatistic", null);
+        localObject = (l)paramd.K("snsAdStatistic", null);
         if (localObject == null)
         {
           paramView = null;
@@ -50,41 +48,42 @@ public abstract class a
         }
         if (paramd.containsKey("flipStatus"))
         {
-          j = ((Integer)paramd.y("flipStatus", Integer.valueOf(0))).intValue();
+          int j = ((Integer)paramd.K("flipStatus", Integer.valueOf(0))).intValue();
           if (paramInt != 0) {
-            break label193;
+            break label191;
           }
-          paramView = new SnsAdClick(paramInt, i, paramSnsInfo.field_snsId, eCp(), j, (byte)0);
+          i = 1;
+          paramView = new SnsAdClick(paramInt, i, paramSnsInfo.field_snsId, fKt(), j, (byte)0);
           m.a(paramView, (l)localObject, paramSnsInfo, 22);
           continue;
         }
         if (paramInt == 0)
         {
-          i = j;
-          paramView = new SnsAdClick(paramInt, i, paramSnsInfo.field_snsId, 22, eCp());
+          i = 1;
+          paramView = new SnsAdClick(paramInt, i, paramSnsInfo.field_snsId, 22, fKt());
           continue;
         }
         i = 2;
       }
-      catch (Throwable paramView)
+      finally
       {
         return false;
       }
       continue;
-      label190:
+      label188:
       return bool;
-      label193:
-      i = 2;
+      label191:
+      int i = 2;
     }
   }
   
-  protected abstract boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, ADXml paramADXml);
+  protected abstract boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, ADXml paramADXml, d paramd);
   
-  protected abstract int eCp();
+  protected abstract int fKt();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.a.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,80 +2,84 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiOpenStoreEmoticonDetailPage;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "controlByte", "", "getControlByte", "()I", "funcName", "", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiOpenStoreEmoticonDetailPage;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "controlByte", "", "getControlByte", "()I", "funcName", "", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
   extends a
 {
-  private static final int IIl = 415;
-  public static final g Qqd;
-  private static final String fXz = "openStoreEmoticonDetailPage";
+  private static final int OOk;
+  public static final g Xiq;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(216862);
-    Qqd = new g();
-    IIl = 415;
-    fXz = "openStoreEmoticonDetailPage";
-    AppMethodBeat.o(216862);
+    AppMethodBeat.i(297446);
+    Xiq = new g();
+    OOk = 415;
+    idA = "openStoreEmoticonDetailPage";
+    AppMethodBeat.o(297446);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(216860);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    Object localObject2 = paramn.params.get("productId");
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof String)) {
-      localObject1 = null;
-    }
-    localObject1 = (String)localObject1;
-    localObject2 = (CharSequence)localObject1;
+    AppMethodBeat.i(297458);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    Object localObject1 = paramp.params.get("productId");
+    Object localObject2;
     int i;
-    if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0))
+    if ((localObject1 instanceof String))
     {
-      i = 1;
-      if (i == 0) {
-        break label138;
+      localObject1 = (String)localObject1;
+      localObject2 = (CharSequence)localObject1;
+      if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+        break label117;
       }
-      paramf = paramf.PNo;
-      paramn = paramn.POu;
-      localObject1 = new StringBuilder();
-      localObject2 = f.Qqb;
-      paramf.h(paramn, f.fXz + ":fail empty productId", null);
+      i = 1;
+      label69:
+      if (i == 0) {
+        break label122;
+      }
+      paramh = paramh.WDy;
+      paramp = paramp.WEH;
+      localObject1 = f.Xip;
+      paramh.doCallback(paramp, s.X(f.idA, ":fail empty productId"), null);
     }
     for (;;)
     {
-      AppMethodBeat.o(216860);
+      AppMethodBeat.o(297458);
       return true;
-      i = 0;
+      localObject1 = null;
       break;
-      label138:
+      label117:
+      i = 0;
+      break label69;
+      label122:
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("extra_id", (String)localObject1);
       ((Intent)localObject2).putExtra("preceding_scence", 12);
       ((Intent)localObject2).putExtra("download_entrance_scene", 12);
-      c.b(paramf.context, "emoji", ".ui.EmojiStoreDetailUI", (Intent)localObject2);
-      paramf.PNo.h(paramn.POu, fXz + ":ok", null);
+      c.b(paramh.context, "emoji", ".ui.EmojiStoreDetailUI", (Intent)localObject2);
+      paramh.WDy.doCallback(paramp.WEH, s.X(idA, ":ok"), null);
     }
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
-    return IIl;
+    return OOk;
   }
 }
 

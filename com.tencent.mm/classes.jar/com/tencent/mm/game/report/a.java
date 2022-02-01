@@ -1,34 +1,32 @@
 package com.tencent.mm.game.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class a
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private static a jTe;
+  private static a mtw;
   
   private a()
   {
     AppMethodBeat.i(175991);
-    h.aGY().a(1223, this);
+    com.tencent.mm.kernel.h.aZW().a(1223, this);
     AppMethodBeat.o(175991);
   }
   
-  public static a aEx()
+  public static a aXB()
   {
     AppMethodBeat.i(175990);
-    if (jTe == null) {}
+    if (mtw == null) {}
     try
     {
-      if (jTe == null) {
-        jTe = new a();
+      if (mtw == null) {
+        mtw = new a();
       }
-      a locala = jTe;
+      a locala = mtw;
       AppMethodBeat.o(175990);
       return locala;
     }
@@ -43,11 +41,11 @@ public class a
     AppMethodBeat.i(175993);
     Log.i("MicroMsg.GameMsgReportService", "appId = %s, opType = %d, opStatus = %d, extInfo = %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString3 });
     paramString1 = new e(paramString1, paramInt1, paramInt2, paramString2, paramString3);
-    h.aGY().a(paramString1, 0);
+    com.tencent.mm.kernel.h.aZW().a(paramString1, 0);
     AppMethodBeat.o(175993);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(175992);
     Log.i("MicroMsg.GameMsgReportService", "onSceneEnd, errType : %d, errCode : %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });

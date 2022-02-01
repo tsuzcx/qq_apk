@@ -15,7 +15,7 @@ import com.qq.taf.jce.JceStruct;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.pluginsdk.model.app.r;
+import com.tencent.mm.pluginsdk.model.app.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
@@ -119,8 +119,8 @@ public class TMOpenSDKToMsdkManager
       {
         AppMethodBeat.i(102169);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (TMOpenSDKToMsdkManager.this.mAuthorizedInfo == null)
         {
           a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -143,8 +143,8 @@ public class TMOpenSDKToMsdkManager
       {
         AppMethodBeat.i(102170);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (TMOpenSDKToMsdkManager.this.dialog.isShowing())
         {
           TMOpenSDKToMsdkManager.this.dialog.dismiss();
@@ -185,8 +185,8 @@ public class TMOpenSDKToMsdkManager
       {
         AppMethodBeat.i(102171);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (TMOpenSDKToMsdkManager.this.mContext == null)
         {
           a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -226,71 +226,7 @@ public class TMOpenSDKToMsdkManager
         }
       }
     };
-    this.mDownloadSDKListener = new ITMAssistantDownloadSDKClientListener()
-    {
-      public void OnDownloadSDKTaskProgressChanged(TMAssistantDownloadSDKClient paramAnonymousTMAssistantDownloadSDKClient, String paramAnonymousString, long paramAnonymousLong1, long paramAnonymousLong2)
-      {
-        AppMethodBeat.i(102176);
-        paramAnonymousTMAssistantDownloadSDKClient = new Message();
-        paramAnonymousTMAssistantDownloadSDKClient.what = 1;
-        paramAnonymousString = new Bundle();
-        paramAnonymousString.putLong("receiveDataLen", paramAnonymousLong1);
-        paramAnonymousString.putLong("totalDataLen", paramAnonymousLong2);
-        paramAnonymousTMAssistantDownloadSDKClient.setData(paramAnonymousString);
-        TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage(paramAnonymousTMAssistantDownloadSDKClient);
-        AppMethodBeat.o(102176);
-      }
-      
-      public void OnDownloadSDKTaskStateChanged(final TMAssistantDownloadSDKClient paramAnonymousTMAssistantDownloadSDKClient, final String paramAnonymousString1, int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString2, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
-      {
-        AppMethodBeat.i(102175);
-        TMLog.i("OpensdkToMsdkManager", "OnDownloadSDKTaskStateChanged client:" + paramAnonymousTMAssistantDownloadSDKClient + " | state:" + paramAnonymousInt1 + " | errorcode:" + paramAnonymousInt2 + " | errorMsg:" + paramAnonymousString2);
-        if ((paramAnonymousTMAssistantDownloadSDKClient == null) || (TextUtils.isEmpty(paramAnonymousString1)))
-        {
-          AppMethodBeat.o(102175);
-          return;
-        }
-        if (4 == paramAnonymousInt1)
-        {
-          TMOpenSDKToMsdkManager.this.mSubMessageHandler.post(new Runnable()
-          {
-            public void run()
-            {
-              AppMethodBeat.i(102174);
-              try
-              {
-                String str = paramAnonymousTMAssistantDownloadSDKClient.getDownloadTaskState(paramAnonymousString1).mSavePath;
-                if (!TextUtils.isEmpty(str))
-                {
-                  Message localMessage = new Message();
-                  localMessage.what = 0;
-                  localMessage.obj = str;
-                  TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage(localMessage);
-                }
-                AppMethodBeat.o(102174);
-                return;
-              }
-              catch (Exception localException)
-              {
-                Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
-                AppMethodBeat.o(102174);
-              }
-            }
-          });
-          AppMethodBeat.o(102175);
-          return;
-        }
-        if (5 == paramAnonymousInt1)
-        {
-          paramAnonymousTMAssistantDownloadSDKClient = new Message();
-          paramAnonymousTMAssistantDownloadSDKClient.what = 3;
-          TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage(paramAnonymousTMAssistantDownloadSDKClient);
-        }
-        AppMethodBeat.o(102175);
-      }
-      
-      public void OnDwonloadSDKServiceInvalid(TMAssistantDownloadSDKClient paramAnonymousTMAssistantDownloadSDKClient) {}
-    };
+    this.mDownloadSDKListener = new TMOpenSDKToMsdkManager.9(this);
     this.mContext = paramContext;
     AppMethodBeat.o(102177);
   }
@@ -509,7 +445,7 @@ public class TMOpenSDKToMsdkManager
       AppMethodBeat.o(102192);
       return;
     }
-    r.b(this.mContext, paramString, null, false);
+    v.b(this.mContext, paramString, null, false);
     AppMethodBeat.o(102192);
   }
   
@@ -774,7 +710,7 @@ public class TMOpenSDKToMsdkManager
     }
   }
   
-  protected void pauseDownloadTask(final String paramString)
+  protected void pauseDownloadTask(String paramString)
   {
     AppMethodBeat.i(102198);
     if (TextUtils.isEmpty(paramString))
@@ -787,31 +723,7 @@ public class TMOpenSDKToMsdkManager
       AppMethodBeat.o(102198);
       return;
     }
-    this.mSubMessageHandler.post(new Runnable()
-    {
-      public void run()
-      {
-        AppMethodBeat.i(102173);
-        TMAssistantDownloadSDKClient localTMAssistantDownloadSDKClient = TMOpenSDKToMsdkManager.this.getClient();
-        try
-        {
-          if (localTMAssistantDownloadSDKClient.getDownloadTaskState(paramString) != null)
-          {
-            localTMAssistantDownloadSDKClient.pauseDownloadTask(paramString);
-            AppMethodBeat.o(102173);
-            return;
-          }
-          TMLog.i("OpensdkToMsdkManager", "getDownloadTaskState taskinfo is null!");
-          AppMethodBeat.o(102173);
-          return;
-        }
-        catch (Exception localException)
-        {
-          Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
-          AppMethodBeat.o(102173);
-        }
-      }
-    });
+    this.mSubMessageHandler.post(new TMOpenSDKToMsdkManager.8(this, paramString));
     AppMethodBeat.o(102198);
   }
   
@@ -1042,7 +954,7 @@ public class TMOpenSDKToMsdkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKToMsdkManager
  * JD-Core Version:    0.7.0.1
  */

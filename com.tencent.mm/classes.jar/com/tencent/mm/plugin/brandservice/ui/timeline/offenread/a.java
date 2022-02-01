@@ -1,454 +1,754 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
-import androidx.recyclerview.widget.RecyclerView.h;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.RotateAnimation;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.ab;
+import com.tencent.mm.plugin.brandservice.d.i;
 import com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI;
-import com.tencent.mm.pluginsdk.model.b.b;
-import com.tencent.mm.protocal.protobuf.oc;
-import com.tencent.mm.protocal.protobuf.oe;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.model.c;
+import com.tencent.mm.protocal.protobuf.pi;
+import com.tencent.mm.protocal.protobuf.pn;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import kotlin.ResultKt;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.d.f;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.k.i;
-import kotlin.l;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 import kotlin.n.n;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.br;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bg;
+import kotlinx.coroutines.bu;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizFinderLiveBar;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/IBizTimeLineHotView;", "context", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI;", "hotView", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotView;", "rootView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI;Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotView;Landroid/view/View;)V", "barContainer", "getBarContainer", "()Landroid/view/View;", "barContainer$delegate", "Lkotlin/Lazy;", "getContext", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI;", "hotList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotViewInfo;", "getHotList", "()Ljava/util/concurrent/CopyOnWriteArrayList;", "setHotList", "(Ljava/util/concurrent/CopyOnWriteArrayList;)V", "getHotView", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotView;", "listView", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotListView;", "getListView", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotListView;", "listView$delegate", "getRootView", "getBizFinderLives", "", "hideVideoTitle", "notifyDataChange", "onDestroy", "onLiveStopStatusChange", "bizUserName", "", "exportId", "scene", "", "onOrientationChange", "onPause", "onResume", "reportShow", "setOftenReadTitlePaddingLeft", "left", "", "setVideoTitlePaddingLeft", "Companion", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizFinderLiveBar;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/IBizTimeLineHotView;", "context", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI;", "hotView", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotView;", "rootView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI;Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotView;Landroid/view/View;)V", "barContainer", "getBarContainer", "()Landroid/view/View;", "barContainer$delegate", "Lkotlin/Lazy;", "getContext", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineUI;", "hotList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotViewInfo;", "getHotList", "()Ljava/util/concurrent/CopyOnWriteArrayList;", "setHotList", "(Ljava/util/concurrent/CopyOnWriteArrayList;)V", "getHotView", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotView;", "initListEmpty", "", "getInitListEmpty", "()Z", "setInitListEmpty", "(Z)V", "isClickTitleLayout", "setClickTitleLayout", "isExpand", "", "()I", "setExpand", "(I)V", "listView", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotListView;", "getListView", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotListView;", "listView$delegate", "rightArrow", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getRightArrow", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "rightArrow$delegate", "getRootView", "titleCountTv", "Landroid/widget/TextView;", "getTitleCountTv", "()Landroid/widget/TextView;", "titleCountTv$delegate", "titleLayout", "Landroid/widget/LinearLayout;", "getTitleLayout", "()Landroid/widget/LinearLayout;", "titleLayout$delegate", "titleTv", "getTitleTv", "titleTv$delegate", "doCollapseLiveBarAnimation", "", "doExpandLiveBarAnimation", "doItemAlphaAnimation", "expand", "doRightArrowAnimation", "view", "from", "", "to", "fromAlpha", "toAlpha", "hideVideoTitle", "initFinderLivesBar", "initList", "list", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/BizFinderLiveInfo;", "fromType", "isLiveBarVisible", "marginLeftAnimation", "notifyDataChange", "onDestroy", "onLiveBarClick", "bizUserName", "", "onLiveStopStatusChange", "exportId", "scene", "onOrientationChange", "onPause", "onResume", "reportShow", "setLeftMargin", "marginLeft", "setOftenReadTitlePaddingLeft", "left", "setVideoTitlePaddingLeft", "sortList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "showFinderLiveRedDot", "titleAlphaAnimation", "Companion", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   implements k
 {
-  private static MTimerHandler sIK;
-  private static boolean sIL;
-  public static final a sIM;
-  final View oFW;
-  private final kotlin.f sIF;
-  private final kotlin.f sIG;
-  CopyOnWriteArrayList<d> sIH;
-  private final BizTimeLineUI sII;
-  private final BizTimeLineHotView sIJ;
+  public static final a.a vOf;
+  private static boolean vOr;
+  private static final int vOs;
+  private static final float vOt;
+  private int nVf;
+  final View rootView;
+  private final BizTimeLineUI vOg;
+  private final BizTimeLineHotView vOh;
+  private final kotlin.j vOi;
+  private final kotlin.j vOj;
+  private final kotlin.j vOk;
+  private final kotlin.j vOl;
+  private final kotlin.j vOm;
+  private final kotlin.j vOn;
+  CopyOnWriteArrayList<e> vOo;
+  private boolean vOp;
+  private boolean vOq;
   
   static
   {
-    AppMethodBeat.i(258957);
-    sIM = new a((byte)0);
-    AppMethodBeat.o(258957);
+    AppMethodBeat.i(302399);
+    vOf = new a.a((byte)0);
+    vOs = 2;
+    if (aw.isDarkMode()) {}
+    for (float f = 0.9F;; f = 0.8F)
+    {
+      vOt = f;
+      AppMethodBeat.o(302399);
+      return;
+    }
   }
   
   public a(BizTimeLineUI paramBizTimeLineUI, BizTimeLineHotView paramBizTimeLineHotView, View paramView)
   {
-    AppMethodBeat.i(258954);
-    this.sII = paramBizTimeLineUI;
-    this.sIJ = paramBizTimeLineHotView;
-    this.oFW = paramView;
-    this.sIF = kotlin.g.ar((kotlin.g.a.a)new c(this));
-    this.sIG = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    this.sIH = new CopyOnWriteArrayList();
-    cBb().a((Context)this.sII, (List)new ArrayList(), this.sIJ.getReadReport(), (k)this, true);
-    paramBizTimeLineUI = cBb();
-    paramBizTimeLineHotView = this.sIJ.getDecoration();
-    if (paramBizTimeLineHotView == null) {
-      p.iCn();
-    }
-    paramBizTimeLineUI.b((RecyclerView.h)paramBizTimeLineHotView);
-    AppMethodBeat.o(258954);
+    AppMethodBeat.i(302276);
+    this.vOg = paramBizTimeLineUI;
+    this.vOh = paramBizTimeLineHotView;
+    this.rootView = paramView;
+    this.vOi = kotlin.k.cm((kotlin.g.a.a)new d(this));
+    this.vOj = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.vOk = kotlin.k.cm((kotlin.g.a.a)new e(this));
+    this.vOl = kotlin.k.cm((kotlin.g.a.a)new h(this));
+    this.vOm = kotlin.k.cm((kotlin.g.a.a)new f(this));
+    this.vOn = kotlin.k.cm((kotlin.g.a.a)new g(this));
+    this.vOo = new CopyOnWriteArrayList();
+    this.vOp = true;
+    this.nVf = -1;
+    deg().a((Context)this.vOg, (List)new ArrayList(), this.vOh.getReadReport(), (k)this, true);
+    AppMethodBeat.o(302276);
   }
   
-  public static void onPause()
+  private static final int a(boolean paramBoolean, e parame1, e parame2)
   {
-    AppMethodBeat.i(258944);
-    if (sIK != null)
+    AppMethodBeat.i(302381);
+    if (paramBoolean)
     {
-      Log.d("MicroMsg.BizFinderLiveBar", "stopCheckLiveBar");
-      MTimerHandler localMTimerHandler = sIK;
-      if (localMTimerHandler != null) {
-        localMTimerHandler.stopTimer();
+      localc = c.XPt;
+      if (s.p(c.iHj(), parame1.YIf))
+      {
+        AppMethodBeat.o(302381);
+        return -1;
       }
-      sIK = null;
     }
-    AppMethodBeat.o(258944);
+    if (paramBoolean)
+    {
+      localc = c.XPt;
+      if (s.p(c.iHj(), parame2.YIf))
+      {
+        AppMethodBeat.o(302381);
+        return 1;
+      }
+    }
+    c localc = c.XPt;
+    parame1.nXh = c.oZ(parame1.YIf, parame1.YSM);
+    localc = c.XPt;
+    parame2.nXh = c.oZ(parame2.YIf, parame2.YSM);
+    if (parame1.nXh != parame2.nXh)
+    {
+      if (parame1.nXh)
+      {
+        AppMethodBeat.o(302381);
+        return 1;
+      }
+      AppMethodBeat.o(302381);
+      return -1;
+    }
+    AppMethodBeat.o(302381);
+    return 0;
   }
   
-  public final void J(String paramString1, String paramString2, int paramInt)
+  private static final void a(View paramView, ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(258952);
-    if (paramString1 == null)
+    AppMethodBeat.i(302376);
+    s.u(paramView, "$view");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
     {
-      AppMethodBeat.o(258952);
+      paramView = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(302376);
+      throw paramView;
+    }
+    paramView.setAlpha(((Float)paramValueAnimator).floatValue());
+    AppMethodBeat.o(302376);
+  }
+  
+  private static final void a(a parama, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(302362);
+    s.u(parama, "this$0");
+    com.tencent.mm.plugin.bizui.a.a locala = com.tencent.mm.plugin.bizui.a.a.vtB;
+    parama = (View)parama.deg();
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
+    {
+      parama = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+      AppMethodBeat.o(302362);
+      throw parama;
+    }
+    com.tencent.mm.plugin.bizui.a.a.Z(parama, ((Integer)paramValueAnimator).intValue());
+    AppMethodBeat.o(302362);
+  }
+  
+  private static final void a(a parama, View paramView, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(302368);
+    s.u(parama, "this$0");
+    s.u(paramView, "$view");
+    parama = paramValueAnimator.getAnimatedValue();
+    if (parama == null)
+    {
+      parama = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+      AppMethodBeat.o(302368);
+      throw parama;
+    }
+    ae(paramView, ((Integer)parama).intValue());
+    AppMethodBeat.o(302368);
+  }
+  
+  private static final void a(a parama, List<? extends pi> paramList)
+  {
+    AppMethodBeat.i(302348);
+    parama.nVf = 0;
+    parama.dei().setRotation(0.0F);
+    parama.deh().setVisibility(0);
+    parama = c.XPt;
+    c.xY(81L);
+    h.OAn.b(23692, new Object[] { Integer.valueOf(1), Integer.valueOf(ad.getSessionId()), Integer.valueOf(paramList.size()), Integer.valueOf(1) });
+    AppMethodBeat.o(302348);
+  }
+  
+  private static final void a(a parama, List<? extends pi> paramList, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(302344);
+    parama.nVf = 1;
+    Object localObject2 = (Iterable)paramList;
+    Object localObject1 = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      pi localpi = (pi)((Iterator)localObject2).next();
+      e locale = new e();
+      locale.YIf = localpi.YIf;
+      locale.YSM = localpi.YSM;
+      locale.wrl = localpi.wrl;
+      locale.YSN = localpi.YSN;
+      locale.title = localpi.title;
+      locale.vPS = localpi.nUM;
+      if (paramInt == 1)
+      {
+        c localc = c.XPt;
+        c.a(localpi);
+      }
+      ((Collection)localObject1).add(locale);
+    }
+    localObject2 = (List)localObject1;
+    localObject1 = new ArrayList();
+    ((ArrayList)localObject1).addAll((Collection)localObject2);
+    d((ArrayList)localObject1, paramBoolean);
+    localObject2 = parama.vOo;
+    if (localObject2 != null) {
+      ((CopyOnWriteArrayList)localObject2).clear();
+    }
+    localObject2 = parama.vOo;
+    if (localObject2 != null) {
+      ((CopyOnWriteArrayList)localObject2).addAll((Collection)localObject1);
+    }
+    parama.deg().setVisibility(0);
+    localObject1 = (Collection)parama.vOo;
+    if ((localObject1 == null) || (((Collection)localObject1).isEmpty())) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      parama.deh().setVisibility(8);
+      if ((paramInt != 1) || (parama.vOp)) {
+        break label458;
+      }
+      parama = c.XPt;
+      c.xY(77L);
+      Log.i("MicroMsg.BizFinderLiveBar", "doGetBizFinderLives refresh list on empty size");
+      AppMethodBeat.o(302344);
       return;
     }
-    if (sIL)
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(258952);
-      return;
+      parama.vOp = false;
+      localObject1 = c.XPt;
+      c.xY(76L);
     }
-    paramString2 = (CharSequence)paramString2;
-    if ((paramString2 == null) || (n.ba(paramString2))) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        paramString2 = b.b.QUa;
-        if (paramInt != b.b.hgA())
-        {
-          paramString2 = b.b.QUa;
-          if (paramInt != b.b.hgz()) {
-            break;
-          }
-        }
-      }
-      AppMethodBeat.o(258952);
-      return;
-    }
-    paramString2 = this.sIH;
-    if (paramString2 != null)
-    {
-      Iterator localIterator = ((Iterable)paramString2).iterator();
-      while (localIterator.hasNext())
-      {
-        paramString2 = localIterator.next();
-        if (p.h(((d)paramString2).RKL, paramString1))
-        {
-          paramString1 = paramString2;
-          paramString1 = (d)paramString1;
-          if (paramString1 == null) {
-            break label257;
-          }
-          paramString2 = this.sIH;
-          if (paramString2 != null) {
-            paramString2.remove(paramString1);
-          }
-          paramString1 = (Collection)this.sIH;
-          if ((paramString1 != null) && (!paramString1.isEmpty())) {
-            break label218;
-          }
-          paramInt = 1;
-          label186:
-          if (paramInt == 0) {
-            break label223;
-          }
-          cBc().setVisibility(8);
-        }
-      }
-      for (;;)
-      {
-        Log.i("MicroMsg.BizFinderLiveBar", "refreshData on live stop  for live bar");
-        AppMethodBeat.o(258952);
-        return;
-        paramString1 = null;
-        break;
-        label218:
-        paramInt = 0;
-        break label186;
-        label223:
-        paramString1 = cBb();
-        if (paramString1 != null) {
-          paramString1.b((List)this.sIH, false);
-        }
-        paramString1 = com.tencent.mm.pluginsdk.model.b.QTJ;
-        com.tencent.mm.pluginsdk.model.b.TM(11L);
-      }
-    }
-    label257:
-    AppMethodBeat.o(258952);
+    h.OAn.b(23692, new Object[] { Integer.valueOf(1), Integer.valueOf(ad.getSessionId()), Integer.valueOf(paramList.size()), Integer.valueOf(2) });
+    parama.deh().setVisibility(0);
+    parama.deg().f((List)parama.vOo, false);
+    Log.d("MicroMsg.BizFinderLiveBar", "doGetBizFinderLives refresh data size=" + parama.vOo.size() + ", fromType=" + paramInt);
+    label458:
+    AppMethodBeat.o(302344);
   }
   
-  public final BizTimeLineHotListView cBb()
+  private static final void a(a parama, List paramList, boolean paramBoolean, int paramInt, View paramView)
   {
-    AppMethodBeat.i(258941);
-    BizTimeLineHotListView localBizTimeLineHotListView = (BizTimeLineHotListView)this.sIF.getValue();
-    AppMethodBeat.o(258941);
-    return localBizTimeLineHotListView;
+    AppMethodBeat.i(302359);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parama);
+    localb.cH(paramList);
+    localb.fv(paramBoolean);
+    localb.sc(paramInt);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizFinderLiveBar", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    s.u(paramList, "$validList");
+    parama.vOh.getReadReport().vQd = true;
+    parama.vOq = true;
+    paramView = c.XPt;
+    long l;
+    int i;
+    if (parama.nVf == 1)
+    {
+      l = 83L;
+      c.xY(l);
+      if (parama.nVf != 1) {
+        break label300;
+      }
+      i = 2;
+      label141:
+      h.OAn.b(23692, new Object[] { Integer.valueOf(2), Integer.valueOf(ad.getSessionId()), Integer.valueOf(paramList.size()), Integer.valueOf(i) });
+      if (parama.nVf != 0) {
+        break label306;
+      }
+      a(parama, paramList, paramBoolean, paramInt);
+      parama.del();
+      parama.t((View)parama.dej(), 0, 0 - parama.dej().getMeasuredWidth());
+      parama.az(0.9F, 0.3F);
+      c((View)parama.dei(), 0.0F, 180.0F, vOt, 0.5F);
+      parama.mW(true);
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizFinderLiveBar", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(302359);
+      return;
+      l = 82L;
+      break;
+      label300:
+      i = 1;
+      break label141;
+      label306:
+      a(parama, paramList);
+      parama.t((View)parama.dej(), 0 - parama.dej().getMeasuredWidth(), 0);
+      parama.az(0.3F, 0.9F);
+      c((View)parama.dei(), 180.0F, 0.0F, 0.5F, vOt);
+      parama.mW(false);
+    }
   }
   
-  public final View cBc()
+  private static void ae(View paramView, int paramInt)
   {
-    AppMethodBeat.i(258942);
-    View localView = (View)this.sIG.getValue();
-    AppMethodBeat.o(258942);
+    AppMethodBeat.i(302328);
+    if (paramView == null)
+    {
+      localObject = null;
+      if (!(localObject instanceof RelativeLayout.LayoutParams)) {
+        break label60;
+      }
+    }
+    label60:
+    for (Object localObject = (RelativeLayout.LayoutParams)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        ((RelativeLayout.LayoutParams)localObject).leftMargin = paramInt;
+        if (paramView != null) {
+          paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+      }
+      AppMethodBeat.o(302328);
+      return;
+      localObject = paramView.getLayoutParams();
+      break;
+    }
+  }
+  
+  private final void az(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(302316);
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 });
+    localValueAnimator.setDuration(300L);
+    localValueAnimator.addUpdateListener(new a..ExternalSyntheticLambda2(this));
+    localValueAnimator.start();
+    AppMethodBeat.o(302316);
+  }
+  
+  private static final void b(a parama, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(302374);
+    s.u(parama, "this$0");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
+    {
+      parama = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(302374);
+      throw parama;
+    }
+    float f = ((Float)paramValueAnimator).floatValue();
+    parama.getTitleTv().setAlpha(f);
+    parama.dej().setAlpha(f);
+    AppMethodBeat.o(302374);
+  }
+  
+  private static void c(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    AppMethodBeat.i(302323);
+    Object localObject = new RotateAnimation(paramFloat1, paramFloat2, 1, 0.5F, 1, 0.5F);
+    ((RotateAnimation)localObject).setDuration(300L);
+    ((RotateAnimation)localObject).setFillAfter(true);
+    paramView.startAnimation((Animation)localObject);
+    localObject = ValueAnimator.ofFloat(new float[] { paramFloat3, paramFloat4 });
+    ((ValueAnimator)localObject).setDuration(300L);
+    ((ValueAnimator)localObject).addUpdateListener(new a..ExternalSyntheticLambda0(paramView));
+    ((ValueAnimator)localObject).start();
+    AppMethodBeat.o(302323);
+  }
+  
+  private static void d(ArrayList<e> paramArrayList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(302334);
+    if (((Collection)paramArrayList).isEmpty()) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(302334);
+      return;
+    }
+    p.a((List)paramArrayList, new a..ExternalSyntheticLambda5(paramBoolean));
+    Iterator localIterator = ((Iterable)paramArrayList).iterator();
+    e locale;
+    for (paramArrayList = null; localIterator.hasNext(); paramArrayList = locale)
+    {
+      locale = (e)localIterator.next();
+      locale.vPR = false;
+      if ((paramArrayList != null) && (!paramArrayList.nXh) && (locale.nXh))
+      {
+        locale.vPR = true;
+        paramArrayList.vPR = true;
+      }
+    }
+    AppMethodBeat.o(302334);
+  }
+  
+  private View deh()
+  {
+    AppMethodBeat.i(302281);
+    View localView = (View)this.vOj.getValue();
+    AppMethodBeat.o(302281);
     return localView;
   }
   
-  public final void cBd()
+  private WeImageView dei()
   {
-    AppMethodBeat.i(258947);
-    if (cBc().getVisibility() == 0)
-    {
-      localObject = (Collection)this.sIH;
-      if ((localObject != null) && (!((Collection)localObject).isEmpty())) {
-        break label50;
-      }
-    }
-    label50:
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(258947);
-      return;
-    }
-    Object localObject = cBb();
-    if (localObject != null)
-    {
-      ((BizTimeLineHotListView)localObject).cBd();
-      AppMethodBeat.o(258947);
-      return;
-    }
-    AppMethodBeat.o(258947);
+    AppMethodBeat.i(302286);
+    WeImageView localWeImageView = (WeImageView)this.vOk.getValue();
+    AppMethodBeat.o(302286);
+    return localWeImageView;
   }
   
-  public final void cBe() {}
+  private TextView dej()
+  {
+    AppMethodBeat.i(302295);
+    TextView localTextView = (TextView)this.vOm.getValue();
+    AppMethodBeat.o(302295);
+    return localTextView;
+  }
   
-  public final void cBf() {}
+  private TextView getTitleTv()
+  {
+    AppMethodBeat.i(302290);
+    TextView localTextView = (TextView)this.vOl.getValue();
+    AppMethodBeat.o(302290);
+    return localTextView;
+  }
+  
+  private final void mW(boolean paramBoolean)
+  {
+    AppMethodBeat.i(302303);
+    AlphaAnimation localAlphaAnimation;
+    int i;
+    if (paramBoolean)
+    {
+      localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+      localAlphaAnimation.setDuration(200L);
+      localAlphaAnimation.setStartOffset(100L);
+      deg().startAnimation((Animation)localAlphaAnimation);
+      i = BizTimeLineHotListView.fM((Context)this.vOg);
+      if (!paramBoolean) {
+        break label139;
+      }
+    }
+    label139:
+    for (ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, i });; localValueAnimator = ValueAnimator.ofInt(new int[] { i, 0 }))
+    {
+      localValueAnimator.setDuration(300L);
+      localValueAnimator.addUpdateListener(new a..ExternalSyntheticLambda1(this));
+      localAlphaAnimation.setAnimationListener((Animation.AnimationListener)new c(paramBoolean, this));
+      localValueAnimator.start();
+      AppMethodBeat.o(302303);
+      return;
+      localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+      break;
+    }
+  }
+  
+  private final void t(View paramView, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(302312);
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt1, paramInt2 });
+    localValueAnimator.setDuration(300L);
+    localValueAnimator.addUpdateListener(new a..ExternalSyntheticLambda3(this, paramView));
+    localValueAnimator.start();
+    AppMethodBeat.o(302312);
+  }
+  
+  public final void Q(String paramString1, String paramString2, int paramInt) {}
+  
+  public final void ajd(String paramString)
+  {
+    AppMethodBeat.i(302488);
+    this.vOh.ajd(paramString);
+    AppMethodBeat.o(302488);
+  }
+  
+  public final void c(LinkedList<pi> paramLinkedList, int paramInt)
+  {
+    AppMethodBeat.i(302465);
+    s.u(paramLinkedList, "list");
+    label91:
+    boolean bool;
+    if (this.vOg.getIntent().getIntExtra("Main_BizFinderLiveRedDotType", 0) == 1)
+    {
+      localObject1 = c.XPt;
+      localObject1 = (CharSequence)c.iHj();
+      if ((localObject1 == null) || (n.bp((CharSequence)localObject1)))
+      {
+        i = 1;
+        if (i != 0) {
+          break label285;
+        }
+        localObject1 = c.XPt;
+        localObject1 = (CharSequence)c.iHk();
+        if ((localObject1 != null) && (!n.bp((CharSequence)localObject1))) {
+          break label280;
+        }
+        i = 1;
+        if (i != 0) {
+          break label285;
+        }
+        bool = true;
+        label98:
+        if (bool)
+        {
+          localObject1 = c.XPt;
+          c.co(paramLinkedList);
+        }
+        localObject1 = (Iterable)paramLinkedList;
+        paramLinkedList = (Collection)new ArrayList();
+        localObject1 = ((Iterable)localObject1).iterator();
+      }
+    }
+    label138:
+    label280:
+    label408:
+    for (;;)
+    {
+      if (!((Iterator)localObject1).hasNext()) {
+        break label410;
+      }
+      Object localObject2 = ((Iterator)localObject1).next();
+      pi localpi = (pi)localObject2;
+      Object localObject3 = c.XPt;
+      s.u(localpi, "info");
+      if (ab.IR(localpi.YIf))
+      {
+        localObject3 = (CharSequence)localpi.YSM;
+        if ((localObject3 == null) || (n.bp((CharSequence)localObject3)))
+        {
+          i = 1;
+          label213:
+          if (i == 0) {
+            break label296;
+          }
+        }
+      }
+      else
+      {
+        Log.i("MicroMsg.BizFinderLiveLogic", "canShowLiveBarItem return " + localpi.YIf + ' ' + localpi.YSM);
+        i = 0;
+      }
+      for (;;)
+      {
+        if (i == 0) {
+          break label408;
+        }
+        paramLinkedList.add(localObject2);
+        break label138;
+        i = 0;
+        break;
+        i = 0;
+        break label91;
+        label285:
+        bool = false;
+        break label98;
+        i = 0;
+        break label213;
+        label296:
+        if ((!c.iHg()) && (!s.p(localpi.YIf, c.XPK)))
+        {
+          localObject3 = localpi.YIf;
+          s.s(localObject3, "info.bizusername");
+          i = c.im((String)localObject3, c.iHl());
+          if ((i >= c.iHc()) && (!c.oZ(localpi.YIf, localpi.YSM)))
+          {
+            Log.i("MicroMsg.BizFinderLiveLogic", "canShowLiveBarItem " + localpi.YIf + " hasShowTimes = " + i);
+            i = 0;
+            continue;
+          }
+        }
+        i = 1;
+      }
+    }
+    label410:
+    paramLinkedList = p.c((Iterable)paramLinkedList, 30);
+    dej().setText((CharSequence)s.X(" ", this.vOg.getResources().getString(d.i.biz_time_line_finder_live_title_fold, new Object[] { Integer.valueOf(paramLinkedList.size()) })));
+    ((LinearLayout)this.vOn.getValue()).setOnClickListener(new a..ExternalSyntheticLambda4(this, paramLinkedList, bool, paramInt));
+    Object localObject1 = (Collection)paramLinkedList;
+    if ((localObject1 == null) || (((Collection)localObject1).isEmpty())) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      if ((!this.vOq) || (this.nVf != 0))
+      {
+        if ((this.vOq) || (bool)) {
+          break;
+        }
+        localObject1 = c.XPt;
+        if (!c.ms(paramLinkedList)) {
+          break;
+        }
+      }
+      getTitleTv().setAlpha(0.9F);
+      dej().setAlpha(0.9F);
+      dei().setRotation(0.0F);
+      dei().setAlpha(vOt);
+      deg().setVisibility(8);
+      ae((View)dej(), 0);
+      a(this, paramLinkedList);
+      AppMethodBeat.o(302465);
+      return;
+    }
+    getTitleTv().setAlpha(0.3F);
+    dej().setAlpha(0.3F);
+    dei().setRotation(180.0F);
+    dei().setAlpha(0.5F);
+    ae((View)dej(), 0 - com.tencent.mm.cd.a.fromDPToPix((Context)this.vOg, 200));
+    a(this, paramLinkedList, bool, paramInt);
+    AppMethodBeat.o(302465);
+  }
+  
+  public final BizTimeLineHotListView deg()
+  {
+    AppMethodBeat.i(302432);
+    BizTimeLineHotListView localBizTimeLineHotListView = (BizTimeLineHotListView)this.vOi.getValue();
+    AppMethodBeat.o(302432);
+    return localBizTimeLineHotListView;
+  }
+  
+  public final void dek()
+  {
+    AppMethodBeat.i(302438);
+    Object localObject1 = new WeakReference(this);
+    kotlinx.coroutines.j.a((aq)bu.ajwo, (f)bg.kCi(), null, (m)new a.a.a((WeakReference)localObject1, null), 2);
+    localObject1 = c.XPt;
+    localObject1 = c.iHe();
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject2 = (Collection)((pn)localObject1).YSX;
+      if ((localObject2 != null) && (!((Collection)localObject2).isEmpty())) {
+        break label198;
+      }
+    }
+    label198:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        localObject2 = c.XPt;
+        long l = c.iHd();
+        localObject2 = c.XPt;
+        i = vOs;
+        i = kotlin.k.k.qu(c.atj().decodeInt(s.X("bar_list_keep_data_interval-", Integer.valueOf(i)), 0), 60);
+        if (System.currentTimeMillis() - l < i * 1000)
+        {
+          Log.i("MicroMsg.BizFinderLiveBar", "initFinderLivesBar use cache");
+          localObject2 = c.XPt;
+          c.xY(75L);
+          localObject1 = ((pn)localObject1).YSX;
+          s.s(localObject1, "resp.live_info");
+          c((LinkedList)localObject1, 0);
+        }
+      }
+      AppMethodBeat.o(302438);
+      return;
+    }
+  }
+  
+  public final void del()
+  {
+    AppMethodBeat.i(302443);
+    label100:
+    label109:
+    label112:
+    for (;;)
+    {
+      try
+      {
+        if ((this.nVf == 1) && (deh().getVisibility() == 0))
+        {
+          localObject = (Collection)this.vOo;
+          if (localObject == null) {
+            break label100;
+          }
+          if (!((Collection)localObject).isEmpty()) {
+            break label109;
+          }
+          break label100;
+        }
+        AppMethodBeat.o(302443);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        Log.printErrStackTrace("MicroMsg.BizFinderLiveBar", (Throwable)localException, "reportShow", new Object[0]);
+        AppMethodBeat.o(302443);
+        return;
+      }
+      localObject = deg();
+      if (localObject != null)
+      {
+        ((BizTimeLineHotListView)localObject).del();
+        AppMethodBeat.o(302443);
+        return;
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label112;
+        }
+        break;
+      }
+    }
+  }
+  
+  public final boolean dem()
+  {
+    AppMethodBeat.i(302450);
+    if (deh().getVisibility() == 0)
+    {
+      AppMethodBeat.o(302450);
+      return true;
+    }
+    AppMethodBeat.o(302450);
+    return false;
+  }
+  
+  public final void den() {}
+  
+  public final void deo() {}
   
   public final void setOftenReadTitlePaddingLeft(float paramFloat) {}
   
   public final void setVideoTitlePaddingLeft(float paramFloat) {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizFinderLiveBar$Companion;", "", "()V", "TAG", "", "checkLiveBarTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "isUpdatingLiveBar", "", "doGetBizFinderLives", "", "liveBar", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizFinderLiveBar;", "startCheckLiveBar", "stopCheckLiveBar", "plugin-brandservice_release"})
-  public static final class a
-  {
-    static void a(a parama)
-    {
-      AppMethodBeat.i(266143);
-      parama = new WeakReference(parama);
-      kotlinx.coroutines.g.b((ak)br.abxo, (kotlin.d.f)bc.iRs(), (m)new a(parama, null), 2);
-      AppMethodBeat.o(266143);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-    static final class a
-      extends kotlin.d.b.a.j
-      implements m<ak, kotlin.d.d<? super x>, Object>
-    {
-      Object L$0;
-      int label;
-      private ak p$;
-      
-      a(WeakReference paramWeakReference, kotlin.d.d paramd)
-      {
-        super(paramd);
-      }
-      
-      public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
-      {
-        AppMethodBeat.i(264755);
-        p.k(paramd, "completion");
-        paramd = new a(this.sAJ, paramd);
-        paramd.p$ = ((ak)paramObject);
-        AppMethodBeat.o(264755);
-        return paramd;
-      }
-      
-      public final Object invoke(Object paramObject1, Object paramObject2)
-      {
-        AppMethodBeat.i(264756);
-        paramObject1 = ((a)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-        AppMethodBeat.o(264756);
-        return paramObject1;
-      }
-      
-      public final Object invokeSuspend(final Object paramObject)
-      {
-        AppMethodBeat.i(264754);
-        Object localObject2 = kotlin.d.a.a.aaAA;
-        int i;
-        switch (this.label)
-        {
-        default: 
-          paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-          AppMethodBeat.o(264754);
-          throw paramObject;
-        case 0: 
-          ResultKt.throwOnFailure(paramObject);
-          paramObject = this.p$;
-          if (a.cBg())
-          {
-            paramObject = x.aazN;
-            AppMethodBeat.o(264754);
-            return paramObject;
-          }
-          a.lD(true);
-          localObject1 = com.tencent.mm.pluginsdk.model.b.QTJ;
-          com.tencent.mm.pluginsdk.model.b.bcJ().encode("bar_list_last_refresh_time", System.currentTimeMillis());
-          localObject1 = com.tencent.mm.pluginsdk.model.b.QTJ;
-          localObject1 = b.b.QUa;
-          i = b.b.hgA();
-          this.L$0 = paramObject;
-          this.label = 1;
-          localObject1 = com.tencent.mm.pluginsdk.model.b.a(i, null, this);
-          paramObject = localObject1;
-          if (localObject1 == localObject2)
-          {
-            AppMethodBeat.o(264754);
-            return localObject2;
-          }
-          break;
-        case 1: 
-          ResultKt.throwOnFailure(paramObject);
-        }
-        paramObject = (oe)paramObject;
-        if (paramObject != null)
-        {
-          localObject1 = com.tencent.mm.pluginsdk.model.b.QTJ;
-          com.tencent.mm.pluginsdk.model.b.bcJ().encode("bar_list_refresh_interval", paramObject.RVv);
-        }
-        for (;;)
-        {
-          Log.d("MicroMsg.BizFinderLiveBar", "doGetBizFinderLives");
-          a.lD(false);
-          if (paramObject != null)
-          {
-            paramObject = paramObject.RVu;
-            if (paramObject != null) {
-              break;
-            }
-          }
-          paramObject = x.aazN;
-          AppMethodBeat.o(264754);
-          return paramObject;
-          paramObject = null;
-        }
-        Object localObject1 = (Iterable)paramObject;
-        paramObject = (Collection)new ArrayList();
-        localObject1 = ((Iterable)localObject1).iterator();
-        Object localObject3;
-        Object localObject4;
-        label297:
-        label356:
-        label359:
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = ((Iterator)localObject1).next();
-          localObject3 = (oc)localObject2;
-          if (ab.Ql(((oc)localObject3).RKL))
-          {
-            localObject4 = (CharSequence)((oc)localObject3).RVp;
-            if ((localObject4 == null) || (n.ba((CharSequence)localObject4)))
-            {
-              i = 1;
-              if ((i != 0) || (g.apE(((oc)localObject3).RKL))) {
-                break label356;
-              }
-              localObject4 = com.tencent.mm.pluginsdk.model.b.QTJ;
-              if (com.tencent.mm.pluginsdk.model.b.nd(((oc)localObject3).RKL, ((oc)localObject3).RVp)) {
-                break label356;
-              }
-            }
-          }
-          for (i = 1;; i = 0)
-          {
-            if (i == 0) {
-              break label359;
-            }
-            paramObject.add(localObject2);
-            break;
-            i = 0;
-            break label297;
-          }
-        }
-        localObject1 = (Iterable)paramObject;
-        paramObject = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
-        localObject1 = ((Iterable)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (oc)((Iterator)localObject1).next();
-          localObject3 = new d();
-          ((d)localObject3).RKL = ((oc)localObject2).RKL;
-          ((d)localObject3).RVp = ((oc)localObject2).RVp;
-          ((d)localObject3).tmL = ((oc)localObject2).tmL;
-          ((d)localObject3).RVq = ((oc)localObject2).RVq;
-          ((d)localObject3).title = ((oc)localObject2).title;
-          localObject4 = com.tencent.mm.pluginsdk.model.b.QTJ;
-          com.tencent.mm.pluginsdk.model.b.a((oc)localObject2);
-          paramObject.add(localObject3);
-        }
-        paramObject = (List)paramObject;
-        localObject1 = (a)this.sAJ.get();
-        if (localObject1 != null)
-        {
-          localObject1 = ((a)localObject1).sIH;
-          if (localObject1 != null) {
-            ((CopyOnWriteArrayList)localObject1).clear();
-          }
-        }
-        localObject1 = (a)this.sAJ.get();
-        if (localObject1 != null)
-        {
-          localObject1 = ((a)localObject1).sIH;
-          if (localObject1 != null) {
-            ((CopyOnWriteArrayList)localObject1).addAll((Collection)kotlin.a.j.c((Iterable)paramObject, b.sJR));
-          }
-        }
-        localObject1 = (a)this.sAJ.get();
-        if (localObject1 != null) {
-          com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a((a)localObject1, paramObject));
-        }
-        paramObject = x.aazN;
-        AppMethodBeat.o(264754);
-        return paramObject;
-      }
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizFinderLiveBar$Companion$doGetBizFinderLives$1$1$1"})
-      static final class a
-        extends q
-        implements kotlin.g.a.a<x>
-      {
-        a(a parama, List paramList)
-        {
-          super();
-        }
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
-    public static final class b
-      implements MTimerHandler.CallBack
-    {
-      public b(WeakReference paramWeakReference) {}
-      
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(263769);
-        a locala = (a)this.svK.get();
-        if (locala != null)
-        {
-          Object localObject = com.tencent.mm.pluginsdk.model.b.QTJ;
-          int i = i.ov(com.tencent.mm.pluginsdk.model.b.bcJ().decodeInt("bar_list_refresh_interval", 0), 5);
-          localObject = com.tencent.mm.pluginsdk.model.b.QTJ;
-          long l = com.tencent.mm.pluginsdk.model.b.bcJ().decodeLong("bar_list_last_refresh_time", 0L);
-          Log.d("MicroMsg.BizFinderLiveBar", "checkLiveBarUpdate");
-          if (System.currentTimeMillis() - l > i * 1000)
-          {
-            localObject = a.sIM;
-            p.j(locala, "it");
-            a.a.a(locala);
-          }
-        }
-        AppMethodBeat.o(263769);
-        return true;
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<View>
   {
     b(a parama)
@@ -457,12 +757,76 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotListView;", "invoke"})
-  static final class c
-    extends q
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizFinderLiveBar$doItemAlphaAnimation$2", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements Animation.AnimationListener
+  {
+    c(boolean paramBoolean, a parama) {}
+    
+    public final void onAnimationEnd(Animation paramAnimation)
+    {
+      AppMethodBeat.i(302395);
+      if (!this.vOw) {
+        jdField_this.deg().setVisibility(8);
+      }
+      AppMethodBeat.o(302395);
+    }
+    
+    public final void onAnimationRepeat(Animation paramAnimation) {}
+    
+    public final void onAnimationStart(Animation paramAnimation) {}
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotListView;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
     implements kotlin.g.a.a<BizTimeLineHotListView>
   {
-    c(a parama)
+    d(a parama)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<WeImageView>
+  {
+    e(a parama)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends u
+    implements kotlin.g.a.a<TextView>
+  {
+    f(a parama)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.a<LinearLayout>
+  {
+    g(a parama)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class h
+    extends u
+    implements kotlin.g.a.a<TextView>
+  {
+    h(a parama)
     {
       super();
     }
@@ -470,7 +834,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.a
  * JD-Core Version:    0.7.0.1
  */

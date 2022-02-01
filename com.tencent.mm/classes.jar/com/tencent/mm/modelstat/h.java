@@ -1,54 +1,53 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bv;
-import com.tencent.mm.protocal.protobuf.bw;
-import com.tencent.mm.protocal.protobuf.ce;
+import com.tencent.mm.protocal.protobuf.cf;
+import com.tencent.mm.protocal.protobuf.cg;
+import com.tencent.mm.protocal.protobuf.co;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class h
-  extends q
+  extends p
   implements m
 {
-  private i jQg;
-  private final d rr;
+  private com.tencent.mm.am.h mAY;
+  private final c rr;
   
   public h(int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(94871);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new bv();
-    ((d.a)localObject).lBV = new bw();
-    ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/ad/addatareport";
-    ((d.a)localObject).funcId = 1295;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (bv)d.b.b(this.rr.lBR);
-    ce localce = new ce();
-    localce.RHQ = paramInt1;
-    localce.RHR = new b(paramString.getBytes());
-    localce.Crz = paramInt2;
-    ((bv)localObject).RHr.add(localce);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cf();
+    ((c.a)localObject).otF = new cg();
+    ((c.a)localObject).uri = "/cgi-bin/mmoc-bin/ad/addatareport";
+    ((c.a)localObject).funcId = 1295;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cf)c.b.b(this.rr.otB);
+    co localco = new co();
+    localco.YET = paramInt1;
+    localco.YEU = new b(paramString.getBytes());
+    localco.IdF = paramInt2;
+    ((cf)localObject).YEu.add(localco);
     Log.i("MicroMsg.NetSceneAdDataReport", "init logId:%d, logStr:%s", new Object[] { Integer.valueOf(paramInt1), paramString });
     AppMethodBeat.o(94871);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(94873);
-    this.jQg = parami;
+    this.mAY = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(94873);
     return i;
@@ -62,9 +61,9 @@ public final class h
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(94872);
-    params = (bw)d.c.b(this.rr.lBS);
+    params = (cg)c.c.b(this.rr.otC);
     Log.i("MicroMsg.NetSceneAdDataReport", "onGYNetEnd, errType = %d, errCode = %d, ret=%d, msg=%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(params.ret), params.msg });
-    this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(94872);
   }
 }

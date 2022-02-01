@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class WebResourceResponse
 {
-  public boolean aaaT = false;
+  public boolean aifn = false;
   public String mEncoding;
   public InputStream mInputStream;
   public String mMimeType;
@@ -21,7 +21,7 @@ public class WebResourceResponse
     this.mStatusCode = paramInt;
     this.mReasonPhrase = paramString3;
     this.mResponseHeaders = paramMap;
-    this.aaaT = true;
+    this.aifn = true;
     AppMethodBeat.o(156796);
   }
   
@@ -30,32 +30,7 @@ public class WebResourceResponse
     this.mMimeType = paramString1;
     this.mEncoding = paramString2;
     this.mInputStream = paramInputStream;
-    this.aaaT = false;
-  }
-  
-  public final String getMimeType()
-  {
-    return this.mMimeType;
-  }
-  
-  public final String getReasonPhrase()
-  {
-    return this.mReasonPhrase;
-  }
-  
-  public final Map<String, String> getResponseHeaders()
-  {
-    return this.mResponseHeaders;
-  }
-  
-  public final int getStatusCode()
-  {
-    return this.mStatusCode;
-  }
-  
-  public final void setResponseHeaders(Map<String, String> paramMap)
-  {
-    this.mResponseHeaders = paramMap;
+    this.aifn = false;
   }
 }
 

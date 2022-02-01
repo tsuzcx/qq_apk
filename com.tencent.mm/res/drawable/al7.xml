@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<ripple android:color="@color/cx"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false">
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/a1" />
-            <solid android:color="@color/a1" />
-        </shape>
+    <item android:id="@android:id/mask">
+        <inset android:insetLeft="@dimen/a04" android:insetRight="@dimen/a04" android:insetTop="@dimen/a05" android:insetBottom="@dimen/a05"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <shape android:shape="rectangle">
+                <corners android:radius="@dimen/a08" />
+                <solid android:color="@android:color/white" />
+                <padding android:left="@dimen/a06" android:top="@dimen/a07" android:right="@dimen/a06" android:bottom="@dimen/a07" />
+            </shape>
+        </inset>
     </item>
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/a1" />
-            <solid android:color="#ffd39758" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/a1" />
-            <solid android:color="@color/a2" />
-        </shape>
-    </item>
-</selector>
+</ripple>

@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape>
-            <corners android:radius="4.0dip" />
-            <solid android:color="#25ffffff" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#4cffffff" />
         </shape>
     </item>
-    <item android:id="@android:id/progress">
-        <clip>
-            <shape>
-                <solid android:color="@color/am" />
-            </shape>
-        </clip>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/ahb" />
+        </shape>
     </item>
-</layer-list>
+</selector>

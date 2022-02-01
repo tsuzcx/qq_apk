@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.hld.f;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/utils/ImeFaultData;", "", "faultType", "", "index", "(II)V", "getFaultType", "()I", "getIndex", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/utils/ImeFaultData;", "", "faultType", "", "index", "(II)V", "getFaultType", "()I", "getIndex", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  final int DGH;
+  final int Jye;
   final int index;
   
   public a(int paramInt1, int paramInt2)
   {
-    this.DGH = paramInt1;
+    this.Jye = paramInt1;
     this.index = paramInt2;
   }
 }

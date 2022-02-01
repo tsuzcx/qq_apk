@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView android:id="@id/hcs" android:background="@color/or" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/mj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j3">
-        <RelativeLayout android:layout_gravity="center" android:id="@id/b3o" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView android:id="@id/j6y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-            <ImageView android:id="@id/j6m" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
-            <ViewStub android:id="@id/hru" android:layout="@layout/bst" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <ImageView android:id="@id/i59" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-            <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/j62" android:visibility="gone" android:layout_width="@dimen/ag2" android:layout_height="@dimen/ag2" android:layout_centerInParent="true" />
-        </RelativeLayout>
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a70" />
+    <ImageView android:id="@id/efg" android:padding="3.0dip" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="10.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:id="@id/gw9" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/m4" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0dip" android:textColor="@color/m4" android:id="@id/gw_" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cx1" style="@style/m4" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/gw" android:id="@id/gwc" android:paddingLeft="10.0dip" android:paddingTop="5.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cx9" style="@style/m4" />
+        </LinearLayout>
     </LinearLayout>
-</com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <Button android:id="@id/gw3" android:layout_width="70.0dip" android:text="@string/f29" style="@style/or" />
+        <Button android:id="@id/gw5" android:layout_width="70.0dip" android:text="@string/f2a" style="@style/or" />
+        <TextView android:id="@id/gw2" android:background="@drawable/bft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.0dip" />
+    </LinearLayout>
+</LinearLayout>

@@ -6,15 +6,15 @@ import java.util.List;
 
 final class e
 {
-  List<b> jXu;
-  c jXv;
   List<d> listeners;
+  List<b> mxo;
+  c mxp;
   
   e()
   {
     AppMethodBeat.i(177079);
     this.listeners = new ArrayList();
-    this.jXu = new ArrayList();
+    this.mxo = new ArrayList();
     AppMethodBeat.o(177079);
   }
 }

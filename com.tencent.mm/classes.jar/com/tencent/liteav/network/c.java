@@ -60,14 +60,14 @@ class c
   
   private String a(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(244424);
+    AppMethodBeat.i(229599);
     StringBuffer localStringBuffer = new StringBuffer("");
     try
     {
       paramString1 = b(paramString1, paramInt, paramString2);
       if (paramString1 == null)
       {
-        AppMethodBeat.o(244424);
+        AppMethodBeat.o(229599);
         return "";
       }
       paramString1 = new BufferedReader(new InputStreamReader(paramString1));
@@ -85,7 +85,7 @@ class c
     {
       TXCLog.e("TXCIntelligentRoute", "get json string from url failed.", paramString1);
       paramString1 = localStringBuffer.toString();
-      AppMethodBeat.o(244424);
+      AppMethodBeat.o(229599);
     }
   }
   
@@ -134,7 +134,7 @@ class c
           ((ArrayList)localObject).add(locala);
           break label338;
         }
-        if ((com.tencent.liteav.basic.d.c.a().a("Network", "EnableRouteOptimize") == 1L) && (i.a().c()))
+        if ((com.tencent.liteav.basic.d.c.a().a("Network", "EnableRouteOptimize") == 1L) && (k.a().c()))
         {
           paramString = a((ArrayList)localObject, true);
           localObject = paramString;
@@ -164,13 +164,13 @@ class c
       l1 = com.tencent.liteav.basic.d.c.a().a("Network", "RouteSamplingMaxCount");
       if (l1 >= 1L)
       {
-        l2 = i.a().a("51451748-d8f2-4629-9071-db2983aa7251");
+        l2 = k.a().a("51451748-d8f2-4629-9071-db2983aa7251");
         if (l2 <= l1)
         {
           paramString = a((ArrayList)localObject, false);
           localObject = paramString;
           paramString = (String)localObject;
-          i.a().a("51451748-d8f2-4629-9071-db2983aa7251", l2 + 1L);
+          k.a().a("51451748-d8f2-4629-9071-db2983aa7251", l2 + 1L);
           paramString = (String)localObject;
           a((ArrayList)localObject);
           AppMethodBeat.o(15390);
@@ -270,7 +270,7 @@ class c
   
   private InputStream b(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(244425);
+    AppMethodBeat.i(229603);
     paramString2 = new URL(paramString2).openConnection();
     for (;;)
     {
@@ -304,7 +304,7 @@ class c
         continue;
       }
       paramString1 = paramString2.getInputStream();
-      AppMethodBeat.o(244425);
+      AppMethodBeat.o(229603);
       return paramString1;
       if (paramInt != 2) {
         continue;
@@ -354,9 +354,9 @@ class c
   
   private boolean d(String paramString)
   {
-    AppMethodBeat.i(244430);
+    AppMethodBeat.i(229621);
     boolean bool = Pattern.compile("[0-9]*").matcher(paramString).matches();
-    AppMethodBeat.o(244430);
+    AppMethodBeat.o(229621);
     return bool;
   }
   
@@ -442,7 +442,7 @@ class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.c
  * JD-Core Version:    0.7.0.1
  */

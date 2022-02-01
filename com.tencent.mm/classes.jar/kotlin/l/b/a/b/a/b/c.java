@@ -10,302 +10,275 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.a.a.b.c;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.a.g.a;
-import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.b.l;
+import kotlin.a.p;
+import kotlin.ak;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.a.i;
+import kotlin.l.b.a.b.a.k;
+import kotlin.l.b.a.b.a.k.a;
 import kotlin.l.b.a.b.f.b;
+import kotlin.l.b.a.b.f.d;
 import kotlin.l.b.a.b.f.f;
 import kotlin.l.b.a.b.f.h;
 import kotlin.n.n;
-import kotlin.t;
-import kotlin.z;
 
 public final class c
 {
-  private static final String aaIH;
-  private static final String aaII;
-  private static final String aaIJ;
-  private static final String aaIK;
-  private static final kotlin.l.b.a.b.f.a aaIL;
-  private static final b aaIM;
-  private static final kotlin.l.b.a.b.f.a aaIN;
-  private static final HashMap<kotlin.l.b.a.b.f.c, kotlin.l.b.a.b.f.a> aaIO;
-  private static final HashMap<kotlin.l.b.a.b.f.c, kotlin.l.b.a.b.f.a> aaIP;
-  private static final HashMap<kotlin.l.b.a.b.f.c, b> aaIQ;
-  static final HashMap<kotlin.l.b.a.b.f.c, b> aaIR;
-  private static final List<c.a> aaIS;
-  public static final c aaIT;
+  public static final c aiEX;
+  private static final String aiEY;
+  private static final String aiEZ;
+  private static final String aiFa;
+  private static final String aiFb;
+  private static final b aiFc;
+  private static final kotlin.l.b.a.b.f.c aiFd;
+  private static final b aiFe;
+  private static final b aiFf;
+  private static final b aiFg;
+  private static final HashMap<d, b> aiFh;
+  private static final HashMap<d, b> aiFi;
+  private static final HashMap<d, kotlin.l.b.a.b.f.c> aiFj;
+  private static final HashMap<d, kotlin.l.b.a.b.f.c> aiFk;
+  private static final List<c.a> aiFl;
   
   static
   {
+    int j = 0;
     AppMethodBeat.i(56767);
-    c localc = new c();
-    aaIT = localc;
-    aaIH = b.c.aaIu.aaIz.toString() + "." + b.c.aaIu.aaIA;
-    aaII = b.c.aaIw.aaIz.toString() + "." + b.c.aaIw.aaIA;
-    aaIJ = b.c.aaIv.aaIz.toString() + "." + b.c.aaIv.aaIA;
-    aaIK = b.c.aaIx.aaIz.toString() + "." + b.c.aaIx.aaIA;
-    Object localObject1 = kotlin.l.b.a.b.f.a.p(new b("kotlin.jvm.functions.FunctionN"));
-    p.j(localObject1, "ClassId.topLevel(FqName(…vm.functions.FunctionN\"))");
-    aaIL = (kotlin.l.b.a.b.f.a)localObject1;
-    localObject1 = ((kotlin.l.b.a.b.f.a)localObject1).iNx();
-    p.j(localObject1, "FUNCTION_N_CLASS_ID.asSingleFqName()");
-    aaIM = (b)localObject1;
-    localObject1 = kotlin.l.b.a.b.f.a.p(new b("kotlin.reflect.KFunction"));
-    p.j(localObject1, "ClassId.topLevel(FqName(…tlin.reflect.KFunction\"))");
-    aaIN = (kotlin.l.b.a.b.f.a)localObject1;
-    aaIO = new HashMap();
-    aaIP = new HashMap();
-    aaIQ = new HashMap();
-    aaIR = new HashMap();
-    localObject1 = kotlin.l.b.a.b.f.a.p(g.aaFI.aaGy);
-    p.j(localObject1, "ClassId.topLevel(FQ_NAMES.iterable)");
-    Object localObject2 = g.aaFI.aaGG;
-    p.j(localObject2, "FQ_NAMES.mutableIterable");
-    Object localObject3 = ((kotlin.l.b.a.b.f.a)localObject1).iNs();
-    Object localObject4 = ((kotlin.l.b.a.b.f.a)localObject1).iNs();
-    p.j(localObject4, "kotlinReadOnly.packageFqName");
-    localObject2 = new kotlin.l.b.a.b.f.a((b)localObject3, kotlin.l.b.a.b.f.d.b((b)localObject2, (b)localObject4), false);
-    localObject1 = new c.a(localc.bT(Iterable.class), (kotlin.l.b.a.b.f.a)localObject1, (kotlin.l.b.a.b.f.a)localObject2);
-    localObject2 = kotlin.l.b.a.b.f.a.p(g.aaFI.aaGx);
-    p.j(localObject2, "ClassId.topLevel(FQ_NAMES.iterator)");
-    localObject3 = g.aaFI.aaGF;
-    p.j(localObject3, "FQ_NAMES.mutableIterator");
-    localObject4 = ((kotlin.l.b.a.b.f.a)localObject2).iNs();
-    Object localObject5 = ((kotlin.l.b.a.b.f.a)localObject2).iNs();
-    p.j(localObject5, "kotlinReadOnly.packageFqName");
-    localObject3 = new kotlin.l.b.a.b.f.a((b)localObject4, kotlin.l.b.a.b.f.d.b((b)localObject3, (b)localObject5), false);
-    localObject2 = new c.a(localc.bT(Iterator.class), (kotlin.l.b.a.b.f.a)localObject2, (kotlin.l.b.a.b.f.a)localObject3);
-    localObject3 = kotlin.l.b.a.b.f.a.p(g.aaFI.aaGz);
-    p.j(localObject3, "ClassId.topLevel(FQ_NAMES.collection)");
-    localObject4 = g.aaFI.aaGH;
-    p.j(localObject4, "FQ_NAMES.mutableCollection");
-    localObject5 = ((kotlin.l.b.a.b.f.a)localObject3).iNs();
-    Object localObject6 = ((kotlin.l.b.a.b.f.a)localObject3).iNs();
-    p.j(localObject6, "kotlinReadOnly.packageFqName");
-    localObject4 = new kotlin.l.b.a.b.f.a((b)localObject5, kotlin.l.b.a.b.f.d.b((b)localObject4, (b)localObject6), false);
-    localObject3 = new c.a(localc.bT(Collection.class), (kotlin.l.b.a.b.f.a)localObject3, (kotlin.l.b.a.b.f.a)localObject4);
-    localObject4 = kotlin.l.b.a.b.f.a.p(g.aaFI.aaGA);
-    p.j(localObject4, "ClassId.topLevel(FQ_NAMES.list)");
-    localObject5 = g.aaFI.aaGI;
-    p.j(localObject5, "FQ_NAMES.mutableList");
-    localObject6 = ((kotlin.l.b.a.b.f.a)localObject4).iNs();
-    Object localObject7 = ((kotlin.l.b.a.b.f.a)localObject4).iNs();
-    p.j(localObject7, "kotlinReadOnly.packageFqName");
-    localObject5 = new kotlin.l.b.a.b.f.a((b)localObject6, kotlin.l.b.a.b.f.d.b((b)localObject5, (b)localObject7), false);
-    localObject4 = new c.a(localc.bT(List.class), (kotlin.l.b.a.b.f.a)localObject4, (kotlin.l.b.a.b.f.a)localObject5);
-    localObject5 = kotlin.l.b.a.b.f.a.p(g.aaFI.aaGC);
-    p.j(localObject5, "ClassId.topLevel(FQ_NAMES.set)");
-    localObject6 = g.aaFI.aaGK;
-    p.j(localObject6, "FQ_NAMES.mutableSet");
-    localObject7 = ((kotlin.l.b.a.b.f.a)localObject5).iNs();
-    Object localObject8 = ((kotlin.l.b.a.b.f.a)localObject5).iNs();
-    p.j(localObject8, "kotlinReadOnly.packageFqName");
-    localObject6 = new kotlin.l.b.a.b.f.a((b)localObject7, kotlin.l.b.a.b.f.d.b((b)localObject6, (b)localObject8), false);
-    localObject5 = new c.a(localc.bT(Set.class), (kotlin.l.b.a.b.f.a)localObject5, (kotlin.l.b.a.b.f.a)localObject6);
-    localObject6 = kotlin.l.b.a.b.f.a.p(g.aaFI.aaGB);
-    p.j(localObject6, "ClassId.topLevel(FQ_NAMES.listIterator)");
-    localObject7 = g.aaFI.aaGJ;
-    p.j(localObject7, "FQ_NAMES.mutableListIterator");
-    localObject8 = ((kotlin.l.b.a.b.f.a)localObject6).iNs();
-    Object localObject9 = ((kotlin.l.b.a.b.f.a)localObject6).iNs();
-    p.j(localObject9, "kotlinReadOnly.packageFqName");
-    localObject7 = new kotlin.l.b.a.b.f.a((b)localObject8, kotlin.l.b.a.b.f.d.b((b)localObject7, (b)localObject9), false);
-    localObject6 = new c.a(localc.bT(ListIterator.class), (kotlin.l.b.a.b.f.a)localObject6, (kotlin.l.b.a.b.f.a)localObject7);
-    localObject7 = kotlin.l.b.a.b.f.a.p(g.aaFI.aaGD);
-    p.j(localObject7, "ClassId.topLevel(FQ_NAMES.map)");
-    localObject8 = g.aaFI.aaGL;
-    p.j(localObject8, "FQ_NAMES.mutableMap");
-    localObject9 = ((kotlin.l.b.a.b.f.a)localObject7).iNs();
-    b localb1 = ((kotlin.l.b.a.b.f.a)localObject7).iNs();
-    p.j(localb1, "kotlinReadOnly.packageFqName");
-    localObject8 = new kotlin.l.b.a.b.f.a((b)localObject9, kotlin.l.b.a.b.f.d.b((b)localObject8, localb1), false);
-    localObject7 = new c.a(localc.bT(Map.class), (kotlin.l.b.a.b.f.a)localObject7, (kotlin.l.b.a.b.f.a)localObject8);
-    localObject8 = kotlin.l.b.a.b.f.a.p(g.aaFI.aaGD).o(g.aaFI.aaGE.iNA());
-    p.j(localObject8, "ClassId.topLevel(FQ_NAME…MES.mapEntry.shortName())");
-    localObject9 = g.aaFI.aaGM;
-    p.j(localObject9, "FQ_NAMES.mutableMapEntry");
-    localb1 = ((kotlin.l.b.a.b.f.a)localObject8).iNs();
-    b localb2 = ((kotlin.l.b.a.b.f.a)localObject8).iNs();
-    p.j(localb2, "kotlinReadOnly.packageFqName");
-    localObject9 = new kotlin.l.b.a.b.f.a(localb1, kotlin.l.b.a.b.f.d.b((b)localObject9, localb2), false);
-    aaIS = j.listOf(new c.a[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, new c.a(localc.bT(Map.Entry.class), (kotlin.l.b.a.b.f.a)localObject8, (kotlin.l.b.a.b.f.a)localObject9) });
-    localObject1 = g.aaFI.aaFM;
-    p.j(localObject1, "FQ_NAMES.any");
-    localc.a(Object.class, (kotlin.l.b.a.b.f.c)localObject1);
-    localObject1 = g.aaFI.aaFS;
-    p.j(localObject1, "FQ_NAMES.string");
-    localc.a(String.class, (kotlin.l.b.a.b.f.c)localObject1);
-    localObject1 = g.aaFI.aaFR;
-    p.j(localObject1, "FQ_NAMES.charSequence");
-    localc.a(CharSequence.class, (kotlin.l.b.a.b.f.c)localObject1);
-    localObject1 = g.aaFI.aaGf;
-    p.j(localObject1, "FQ_NAMES.throwable");
-    localc.a(Throwable.class, (b)localObject1);
-    localObject1 = g.aaFI.aaFO;
-    p.j(localObject1, "FQ_NAMES.cloneable");
-    localc.a(Cloneable.class, (kotlin.l.b.a.b.f.c)localObject1);
-    localObject1 = g.aaFI.aaGc;
-    p.j(localObject1, "FQ_NAMES.number");
-    localc.a(Number.class, (kotlin.l.b.a.b.f.c)localObject1);
-    localObject1 = g.aaFI.aaGg;
-    p.j(localObject1, "FQ_NAMES.comparable");
-    localc.a(Comparable.class, (b)localObject1);
-    localObject1 = g.aaFI.aaGd;
-    p.j(localObject1, "FQ_NAMES._enum");
-    localc.a(Enum.class, (kotlin.l.b.a.b.f.c)localObject1);
-    localObject1 = g.aaFI.aaGo;
-    p.j(localObject1, "FQ_NAMES.annotation");
-    localc.a(Annotation.class, (b)localObject1);
-    localObject1 = aaIS.iterator();
+    aiEX = new c();
+    aiEY = kotlin.l.b.a.b.a.a.c.aiEM.aiEI.toString() + '.' + kotlin.l.b.a.b.a.a.c.aiEM.aiEJ;
+    aiEZ = kotlin.l.b.a.b.a.a.c.aiEO.aiEI.toString() + '.' + kotlin.l.b.a.b.a.a.c.aiEO.aiEJ;
+    aiFa = kotlin.l.b.a.b.a.a.c.aiEN.aiEI.toString() + '.' + kotlin.l.b.a.b.a.a.c.aiEN.aiEJ;
+    aiFb = kotlin.l.b.a.b.a.a.c.aiEP.aiEI.toString() + '.' + kotlin.l.b.a.b.a.a.c.aiEP.aiEJ;
+    Object localObject1 = b.s(new kotlin.l.b.a.b.f.c("kotlin.jvm.functions.FunctionN"));
+    s.s(localObject1, "topLevel(FqName(\"kotlin.jvm.functions.FunctionN\"))");
+    aiFc = (b)localObject1;
+    localObject1 = ((b)localObject1).kxQ();
+    s.s(localObject1, "FUNCTION_N_CLASS_ID.asSingleFqName()");
+    aiFd = (kotlin.l.b.a.b.f.c)localObject1;
+    localObject1 = b.s(new kotlin.l.b.a.b.f.c("kotlin.reflect.KFunction"));
+    s.s(localObject1, "topLevel(FqName(\"kotlin.reflect.KFunction\"))");
+    aiFe = (b)localObject1;
+    localObject1 = b.s(new kotlin.l.b.a.b.f.c("kotlin.reflect.KClass"));
+    s.s(localObject1, "topLevel(FqName(\"kotlin.reflect.KClass\"))");
+    aiFf = (b)localObject1;
+    aiFg = aiEX.cF(Class.class);
+    aiFh = new HashMap();
+    aiFi = new HashMap();
+    aiFj = new HashMap();
+    aiFk = new HashMap();
+    localObject1 = aiEX;
+    Object localObject2 = b.s(k.a.aiDl);
+    s.s(localObject2, "topLevel(FqNames.iterable)");
+    Object localObject3 = k.a.aiDt;
+    Object localObject4 = ((b)localObject2).kxL();
+    Object localObject5 = ((b)localObject2).kxL();
+    s.s(localObject5, "kotlinReadOnly.packageFqName");
+    localObject3 = new b((kotlin.l.b.a.b.f.c)localObject4, kotlin.l.b.a.b.f.e.b((kotlin.l.b.a.b.f.c)localObject3, (kotlin.l.b.a.b.f.c)localObject5), false);
+    localObject1 = new c.a(((c)localObject1).cF(Iterable.class), (b)localObject2, (b)localObject3);
+    localObject2 = aiEX;
+    localObject3 = b.s(k.a.aiDk);
+    s.s(localObject3, "topLevel(FqNames.iterator)");
+    localObject4 = k.a.aiDs;
+    localObject5 = ((b)localObject3).kxL();
+    Object localObject6 = ((b)localObject3).kxL();
+    s.s(localObject6, "kotlinReadOnly.packageFqName");
+    localObject4 = new b((kotlin.l.b.a.b.f.c)localObject5, kotlin.l.b.a.b.f.e.b((kotlin.l.b.a.b.f.c)localObject4, (kotlin.l.b.a.b.f.c)localObject6), false);
+    localObject2 = new c.a(((c)localObject2).cF(Iterator.class), (b)localObject3, (b)localObject4);
+    localObject3 = aiEX;
+    localObject4 = b.s(k.a.aiDm);
+    s.s(localObject4, "topLevel(FqNames.collection)");
+    localObject5 = k.a.aiDu;
+    localObject6 = ((b)localObject4).kxL();
+    Object localObject7 = ((b)localObject4).kxL();
+    s.s(localObject7, "kotlinReadOnly.packageFqName");
+    localObject5 = new b((kotlin.l.b.a.b.f.c)localObject6, kotlin.l.b.a.b.f.e.b((kotlin.l.b.a.b.f.c)localObject5, (kotlin.l.b.a.b.f.c)localObject7), false);
+    localObject3 = new c.a(((c)localObject3).cF(Collection.class), (b)localObject4, (b)localObject5);
+    localObject4 = aiEX;
+    localObject5 = b.s(k.a.aiDn);
+    s.s(localObject5, "topLevel(FqNames.list)");
+    localObject6 = k.a.aiDv;
+    localObject7 = ((b)localObject5).kxL();
+    Object localObject8 = ((b)localObject5).kxL();
+    s.s(localObject8, "kotlinReadOnly.packageFqName");
+    localObject6 = new b((kotlin.l.b.a.b.f.c)localObject7, kotlin.l.b.a.b.f.e.b((kotlin.l.b.a.b.f.c)localObject6, (kotlin.l.b.a.b.f.c)localObject8), false);
+    localObject4 = new c.a(((c)localObject4).cF(List.class), (b)localObject5, (b)localObject6);
+    localObject5 = aiEX;
+    localObject6 = b.s(k.a.aiDp);
+    s.s(localObject6, "topLevel(FqNames.set)");
+    localObject7 = k.a.aiDx;
+    localObject8 = ((b)localObject6).kxL();
+    Object localObject9 = ((b)localObject6).kxL();
+    s.s(localObject9, "kotlinReadOnly.packageFqName");
+    localObject7 = new b((kotlin.l.b.a.b.f.c)localObject8, kotlin.l.b.a.b.f.e.b((kotlin.l.b.a.b.f.c)localObject7, (kotlin.l.b.a.b.f.c)localObject9), false);
+    localObject5 = new c.a(((c)localObject5).cF(Set.class), (b)localObject6, (b)localObject7);
+    localObject6 = aiEX;
+    localObject7 = b.s(k.a.aiDo);
+    s.s(localObject7, "topLevel(FqNames.listIterator)");
+    localObject8 = k.a.aiDw;
+    localObject9 = ((b)localObject7).kxL();
+    Object localObject10 = ((b)localObject7).kxL();
+    s.s(localObject10, "kotlinReadOnly.packageFqName");
+    localObject8 = new b((kotlin.l.b.a.b.f.c)localObject9, kotlin.l.b.a.b.f.e.b((kotlin.l.b.a.b.f.c)localObject8, (kotlin.l.b.a.b.f.c)localObject10), false);
+    localObject6 = new c.a(((c)localObject6).cF(ListIterator.class), (b)localObject7, (b)localObject8);
+    localObject7 = aiEX;
+    localObject8 = b.s(k.a.aiDq);
+    s.s(localObject8, "topLevel(FqNames.map)");
+    localObject9 = k.a.aiDy;
+    localObject10 = ((b)localObject8).kxL();
+    kotlin.l.b.a.b.f.c localc1 = ((b)localObject8).kxL();
+    s.s(localc1, "kotlinReadOnly.packageFqName");
+    localObject9 = new b((kotlin.l.b.a.b.f.c)localObject10, kotlin.l.b.a.b.f.e.b((kotlin.l.b.a.b.f.c)localObject9, localc1), false);
+    localObject7 = new c.a(((c)localObject7).cF(Map.class), (b)localObject8, (b)localObject9);
+    localObject8 = aiEX;
+    localObject9 = b.s(k.a.aiDq).p(k.a.aiDr.kxT());
+    s.s(localObject9, "topLevel(FqNames.map).cr…mes.mapEntry.shortName())");
+    localObject10 = k.a.aiDz;
+    localc1 = ((b)localObject9).kxL();
+    kotlin.l.b.a.b.f.c localc2 = ((b)localObject9).kxL();
+    s.s(localc2, "kotlinReadOnly.packageFqName");
+    localObject10 = new b(localc1, kotlin.l.b.a.b.f.e.b((kotlin.l.b.a.b.f.c)localObject10, localc2), false);
+    aiFl = p.listOf(new c.a[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, new c.a(((c)localObject8).cF(Map.Entry.class), (b)localObject9, (b)localObject10) });
+    aiEX.a(Object.class, k.a.aiCy);
+    aiEX.a(String.class, k.a.aiCE);
+    aiEX.a(CharSequence.class, k.a.aiCD);
+    aiEX.a(Throwable.class, k.a.aiCR);
+    aiEX.a(Cloneable.class, k.a.aiCA);
+    aiEX.a(Number.class, k.a.aiCO);
+    aiEX.a(Comparable.class, k.a.aiCS);
+    aiEX.a(Enum.class, k.a.aiCP);
+    aiEX.a(Annotation.class, k.a.aiDb);
+    localObject1 = aiFl.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (c.a)((Iterator)localObject1).next();
-      localObject3 = ((c.a)localObject2).aaIU;
-      localObject4 = ((c.a)localObject2).aaIV;
-      localObject2 = ((c.a)localObject2).aaIW;
-      a((kotlin.l.b.a.b.f.a)localObject3, (kotlin.l.b.a.b.f.a)localObject4);
-      localObject5 = ((kotlin.l.b.a.b.f.a)localObject2).iNx();
-      p.j(localObject5, "mutableClassId.asSingleFqName()");
-      a((b)localObject5, (kotlin.l.b.a.b.f.a)localObject3);
-      localObject4 = ((kotlin.l.b.a.b.f.a)localObject4).iNx();
-      p.j(localObject4, "readOnlyClassId.asSingleFqName()");
-      localObject3 = ((kotlin.l.b.a.b.f.a)localObject2).iNx();
-      p.j(localObject3, "mutableClassId.asSingleFqName()");
-      localObject5 = (Map)aaIQ;
-      localObject2 = ((kotlin.l.b.a.b.f.a)localObject2).iNx().iNy();
-      p.j(localObject2, "mutableClassId.asSingleFqName().toUnsafe()");
+      localObject3 = ((c.a)localObject2).aiFm;
+      localObject4 = ((c.a)localObject2).aiFn;
+      localObject2 = ((c.a)localObject2).aiFo;
+      a((b)localObject3, (b)localObject4);
+      localObject5 = ((b)localObject2).kxQ();
+      s.s(localObject5, "mutableClassId.asSingleFqName()");
+      a((kotlin.l.b.a.b.f.c)localObject5, (b)localObject3);
+      localObject4 = ((b)localObject4).kxQ();
+      s.s(localObject4, "readOnlyClassId.asSingleFqName()");
+      localObject3 = ((b)localObject2).kxQ();
+      s.s(localObject3, "mutableClassId.asSingleFqName()");
+      localObject5 = (Map)aiFj;
+      localObject2 = ((b)localObject2).kxQ().kxR();
+      s.s(localObject2, "mutableClassId.asSingleFqName().toUnsafe()");
       ((Map)localObject5).put(localObject2, localObject4);
-      localObject2 = (Map)aaIR;
-      localObject4 = ((b)localObject4).iNy();
-      p.j(localObject4, "readOnlyFqName.toUnsafe()");
+      localObject2 = (Map)aiFk;
+      localObject4 = ((kotlin.l.b.a.b.f.c)localObject4).kxR();
+      s.s(localObject4, "readOnlyFqName.toUnsafe()");
       ((Map)localObject2).put(localObject4, localObject3);
     }
-    localObject1 = kotlin.l.b.a.b.j.e.d.values();
-    int j = localObject1.length;
+    localObject1 = kotlin.l.b.a.b.j.e.e.values();
+    int k = localObject1.length;
     int i = 0;
-    while (i < j)
+    while (i < k)
     {
       localObject3 = localObject1[i];
-      localObject2 = kotlin.l.b.a.b.f.a.p(((kotlin.l.b.a.b.j.e.d)localObject3).iPb());
-      p.j(localObject2, "ClassId.topLevel(jvmType.wrapperFqName)");
-      localObject3 = kotlin.l.b.a.b.f.a.p(g.c(((kotlin.l.b.a.b.j.e.d)localObject3).iOZ()));
-      p.j(localObject3, "ClassId.topLevel(KotlinB…e(jvmType.primitiveType))");
-      a((kotlin.l.b.a.b.f.a)localObject2, (kotlin.l.b.a.b.f.a)localObject3);
       i += 1;
+      localObject2 = b.s(((kotlin.l.b.a.b.j.e.e)localObject3).kzu());
+      s.s(localObject2, "topLevel(jvmType.wrapperFqName)");
+      localObject3 = ((kotlin.l.b.a.b.j.e.e)localObject3).kzs();
+      s.s(localObject3, "jvmType.primitiveType");
+      localObject3 = b.s(k.c((i)localObject3));
+      s.s(localObject3, "topLevel(StandardNames.g…e(jvmType.primitiveType))");
+      a((b)localObject2, (b)localObject3);
     }
-    localObject1 = kotlin.l.b.a.b.a.c.aaFt;
-    localObject1 = kotlin.l.b.a.b.a.c.iDm().iterator();
+    localObject1 = kotlin.l.b.a.b.a.c.aiBl;
+    localObject1 = kotlin.l.b.a.b.a.c.kmG().iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject3 = (kotlin.l.b.a.b.f.a)((Iterator)localObject1).next();
-      localObject2 = kotlin.l.b.a.b.f.a.p(new b("kotlin.jvm.internal." + ((kotlin.l.b.a.b.f.a)localObject3).iNu().qu() + "CompanionObject"));
-      p.j(localObject2, "ClassId.topLevel(FqName(…g() + \"CompanionObject\"))");
-      localObject3 = ((kotlin.l.b.a.b.f.a)localObject3).o(h.abfS);
-      p.j(localObject3, "classId.createNestedClas…AME_FOR_COMPANION_OBJECT)");
-      a((kotlin.l.b.a.b.f.a)localObject2, (kotlin.l.b.a.b.f.a)localObject3);
+      localObject3 = (b)((Iterator)localObject1).next();
+      localObject2 = b.s(new kotlin.l.b.a.b.f.c("kotlin.jvm.internal." + ((b)localObject3).kxN().PF() + "CompanionObject"));
+      s.s(localObject2, "topLevel(FqName(\"kotlin.…g() + \"CompanionObject\"))");
+      localObject3 = ((b)localObject3).p(h.ajeL);
+      s.s(localObject3, "classId.createNestedClas…AME_FOR_COMPANION_OBJECT)");
+      a((b)localObject2, (b)localObject3);
     }
-    i = 0;
-    while (i < 23)
+    for (i = 0;; i = k)
     {
-      localObject1 = kotlin.l.b.a.b.f.a.p(new b("kotlin.jvm.functions.Function".concat(String.valueOf(i))));
-      p.j(localObject1, "ClassId.topLevel(FqName(…m.functions.Function$i\"))");
-      localObject2 = g.aDI(i);
-      p.j(localObject2, "KotlinBuiltIns.getFunctionClassId(i)");
-      a((kotlin.l.b.a.b.f.a)localObject1, (kotlin.l.b.a.b.f.a)localObject2);
-      a(new b(aaII + i), aaIN);
-      i += 1;
+      k = i + 1;
+      localObject1 = b.s(new kotlin.l.b.a.b.f.c(s.X("kotlin.jvm.functions.Function", Integer.valueOf(i))));
+      s.s(localObject1, "topLevel(FqName(\"kotlin.…m.functions.Function$i\"))");
+      a((b)localObject1, k.aKx(i));
+      a(new kotlin.l.b.a.b.f.c(s.X(aiEZ, Integer.valueOf(i))), aiFe);
+      if (k >= 23) {
+        for (i = j;; i = j)
+        {
+          j = i + 1;
+          localObject1 = kotlin.l.b.a.b.a.a.c.aiEP;
+          a(new kotlin.l.b.a.b.f.c(s.X(((kotlin.l.b.a.b.a.a.c)localObject1).aiEI.toString() + '.' + ((kotlin.l.b.a.b.a.a.c)localObject1).aiEJ, Integer.valueOf(i))), aiFe);
+          if (j >= 22)
+          {
+            localObject1 = k.a.aiCz.kxX();
+            s.s(localObject1, "nothing.toSafe()");
+            a((kotlin.l.b.a.b.f.c)localObject1, aiEX.cF(Void.class));
+            AppMethodBeat.o(56767);
+            return;
+          }
+        }
+      }
     }
-    i = 0;
-    while (i < 22)
-    {
-      localObject1 = b.c.aaIx;
-      localObject1 = ((b.c)localObject1).aaIz.toString() + "." + ((b.c)localObject1).aaIA;
-      a(new b((String)localObject1 + i), aaIN);
-      i += 1;
-    }
-    localObject1 = g.aaFI.aaFN.iND();
-    p.j(localObject1, "FQ_NAMES.nothing.toSafe()");
-    a((b)localObject1, localc.bT(Void.class));
-    AppMethodBeat.o(56767);
-  }
-  
-  private static e a(e parame, Map<kotlin.l.b.a.b.f.c, b> paramMap, String paramString)
-  {
-    AppMethodBeat.i(56766);
-    paramMap = (b)paramMap.get(kotlin.l.b.a.b.j.c.n((l)parame));
-    if (paramMap == null)
-    {
-      parame = (Throwable)new IllegalArgumentException("Given class " + parame + " is not a " + paramString + " collection");
-      AppMethodBeat.o(56766);
-      throw parame;
-    }
-    parame = kotlin.l.b.a.b.j.d.a.G((l)parame).a(paramMap);
-    p.j(parame, "descriptor.builtIns.getB…Name(oppositeClassFqName)");
-    AppMethodBeat.o(56766);
-    return parame;
-  }
-  
-  private final void a(Class<?> paramClass, b paramb)
-  {
-    AppMethodBeat.i(56759);
-    paramClass = bT(paramClass);
-    paramb = kotlin.l.b.a.b.f.a.p(paramb);
-    p.j(paramb, "ClassId.topLevel(kotlinFqName)");
-    a(paramClass, paramb);
-    AppMethodBeat.o(56759);
   }
   
   private final void a(Class<?> paramClass, kotlin.l.b.a.b.f.c paramc)
   {
-    AppMethodBeat.i(56758);
-    paramc = paramc.iND();
-    p.j(paramc, "kotlinFqName.toSafe()");
+    AppMethodBeat.i(56759);
+    paramClass = cF(paramClass);
+    paramc = b.s(paramc);
+    s.s(paramc, "topLevel(kotlinFqName)");
     a(paramClass, paramc);
+    AppMethodBeat.o(56759);
+  }
+  
+  private final void a(Class<?> paramClass, d paramd)
+  {
+    AppMethodBeat.i(56758);
+    paramd = paramd.kxX();
+    s.s(paramd, "kotlinFqName.toSafe()");
+    a(paramClass, paramd);
     AppMethodBeat.o(56758);
   }
   
-  private static void a(kotlin.l.b.a.b.f.a parama1, kotlin.l.b.a.b.f.a parama2)
+  private static void a(b paramb1, b paramb2)
   {
     AppMethodBeat.i(56757);
-    Map localMap = (Map)aaIO;
-    kotlin.l.b.a.b.f.c localc = parama1.iNx().iNy();
-    p.j(localc, "javaClassId.asSingleFqName().toUnsafe()");
-    localMap.put(localc, parama2);
-    parama2 = parama2.iNx();
-    p.j(parama2, "kotlinClassId.asSingleFqName()");
-    a(parama2, parama1);
+    Map localMap = (Map)aiFh;
+    d locald = paramb1.kxQ().kxR();
+    s.s(locald, "javaClassId.asSingleFqName().toUnsafe()");
+    localMap.put(locald, paramb2);
+    paramb2 = paramb2.kxQ();
+    s.s(paramb2, "kotlinClassId.asSingleFqName()");
+    a(paramb2, paramb1);
     AppMethodBeat.o(56757);
   }
   
-  private static void a(b paramb, kotlin.l.b.a.b.f.a parama)
+  private static void a(kotlin.l.b.a.b.f.c paramc, b paramb)
   {
     AppMethodBeat.i(56760);
-    Map localMap = (Map)aaIP;
-    paramb = paramb.iNy();
-    p.j(paramb, "kotlinFqNameUnsafe.toUnsafe()");
-    localMap.put(paramb, parama);
+    Map localMap = (Map)aiFi;
+    paramc = paramc.kxR();
+    s.s(paramc, "kotlinFqNameUnsafe.toUnsafe()");
+    localMap.put(paramc, paramb);
     AppMethodBeat.o(56760);
   }
   
-  private static boolean a(kotlin.l.b.a.b.f.c paramc, String paramString)
+  private static boolean a(d paramd, String paramString)
   {
     AppMethodBeat.i(56756);
-    paramc = paramc.qu();
-    p.j(paramc, "kotlinFqName.asString()");
-    paramc = n.bz(paramc, paramString, "");
+    paramd = paramd.PF();
+    s.s(paramd, "kotlinFqName.asString()");
+    paramd = n.bY(paramd, paramString, "");
     int i;
-    if (((CharSequence)paramc).length() > 0) {
+    if (((CharSequence)paramd).length() > 0) {
       i = 1;
     }
-    while ((i != 0) && (!n.bf((CharSequence)paramc)))
+    while ((i != 0) && (!n.bu((CharSequence)paramd)))
     {
-      paramc = n.bHC(paramc);
-      if ((paramc != null) && (paramc.intValue() >= 23))
+      paramd = n.bJF(paramd);
+      if ((paramd != null) && (paramd.intValue() >= 23))
       {
         AppMethodBeat.o(56756);
         return true;
@@ -321,137 +294,131 @@ public final class c
     return false;
   }
   
-  private final kotlin.l.b.a.b.f.a bT(Class<?> paramClass)
+  public static b c(kotlin.l.b.a.b.f.c paramc)
+  {
+    AppMethodBeat.i(56753);
+    s.u(paramc, "fqName");
+    paramc = (b)aiFh.get(paramc.kxR());
+    AppMethodBeat.o(56753);
+    return paramc;
+  }
+  
+  public static b c(d paramd)
+  {
+    AppMethodBeat.i(56755);
+    s.u(paramd, "kotlinFqName");
+    if (a(paramd, aiEY))
+    {
+      paramd = aiFc;
+      AppMethodBeat.o(56755);
+      return paramd;
+    }
+    if (a(paramd, aiFa))
+    {
+      paramd = aiFc;
+      AppMethodBeat.o(56755);
+      return paramd;
+    }
+    if (a(paramd, aiEZ))
+    {
+      paramd = aiFe;
+      AppMethodBeat.o(56755);
+      return paramd;
+    }
+    if (a(paramd, aiFb))
+    {
+      paramd = aiFe;
+      AppMethodBeat.o(56755);
+      return paramd;
+    }
+    paramd = (b)aiFi.get(paramd);
+    AppMethodBeat.o(56755);
+    return paramd;
+  }
+  
+  private final b cF(Class<?> paramClass)
   {
     AppMethodBeat.i(56765);
     if ((!paramClass.isPrimitive()) && (!paramClass.isArray())) {}
-    for (int i = 1; (z.aazO) && (i == 0); i = 0)
+    for (int i = 1; (ak.aiuY) && (i == 0); i = 0)
     {
-      paramClass = (Throwable)new AssertionError("Invalid class: ".concat(String.valueOf(paramClass)));
+      paramClass = (Throwable)new AssertionError(s.X("Invalid class: ", paramClass));
       AppMethodBeat.o(56765);
       throw paramClass;
     }
     Class localClass = paramClass.getDeclaringClass();
     if (localClass == null)
     {
-      paramClass = kotlin.l.b.a.b.f.a.p(new b(paramClass.getCanonicalName()));
-      p.j(paramClass, "ClassId.topLevel(FqName(clazz.canonicalName))");
+      paramClass = b.s(new kotlin.l.b.a.b.f.c(paramClass.getCanonicalName()));
+      s.s(paramClass, "topLevel(FqName(clazz.canonicalName))");
       AppMethodBeat.o(56765);
       return paramClass;
     }
-    paramClass = bT(localClass).o(f.bHb(paramClass.getSimpleName()));
-    p.j(paramClass, "classId(outer).createNes…tifier(clazz.simpleName))");
+    paramClass = cF(localClass).p(f.bJe(paramClass.getSimpleName()));
+    s.s(paramClass, "classId(outer).createNes…tifier(clazz.simpleName))");
     AppMethodBeat.o(56765);
     return paramClass;
   }
   
-  public static kotlin.l.b.a.b.f.a c(b paramb)
+  public static kotlin.l.b.a.b.f.c d(d paramd)
   {
-    AppMethodBeat.i(56753);
-    p.k(paramb, "fqName");
-    paramb = (kotlin.l.b.a.b.f.a)aaIO.get(paramb.iNy());
-    AppMethodBeat.o(56753);
-    return paramb;
+    AppMethodBeat.i(191499);
+    paramd = (kotlin.l.b.a.b.f.c)((Map)aiFj).get(paramd);
+    AppMethodBeat.o(191499);
+    return paramd;
   }
   
-  public static kotlin.l.b.a.b.f.a c(kotlin.l.b.a.b.f.c paramc)
+  public static kotlin.l.b.a.b.f.c e(d paramd)
   {
-    AppMethodBeat.i(56755);
-    p.k(paramc, "kotlinFqName");
-    if (a(paramc, aaIH))
-    {
-      paramc = aaIL;
-      AppMethodBeat.o(56755);
-      return paramc;
-    }
-    if (a(paramc, aaIJ))
-    {
-      paramc = aaIL;
-      AppMethodBeat.o(56755);
-      return paramc;
-    }
-    if (a(paramc, aaII))
-    {
-      paramc = aaIN;
-      AppMethodBeat.o(56755);
-      return paramc;
-    }
-    if (a(paramc, aaIK))
-    {
-      paramc = aaIN;
-      AppMethodBeat.o(56755);
-      return paramc;
-    }
-    paramc = (kotlin.l.b.a.b.f.a)aaIP.get(paramc);
-    AppMethodBeat.o(56755);
-    return paramc;
+    AppMethodBeat.i(191503);
+    paramd = (kotlin.l.b.a.b.f.c)((Map)aiFk).get(paramd);
+    AppMethodBeat.o(191503);
+    return paramd;
   }
   
-  public static boolean h(e parame)
+  public static boolean f(d paramd)
   {
-    AppMethodBeat.i(56761);
-    p.k(parame, "mutable");
-    parame = kotlin.l.b.a.b.j.c.n((l)parame);
-    Map localMap = (Map)aaIQ;
+    AppMethodBeat.i(191505);
+    Map localMap = (Map)aiFj;
     if (localMap == null)
     {
-      parame = new t("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
-      AppMethodBeat.o(56761);
-      throw parame;
+      paramd = new NullPointerException("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
+      AppMethodBeat.o(191505);
+      throw paramd;
     }
-    boolean bool = localMap.containsKey(parame);
-    AppMethodBeat.o(56761);
+    boolean bool = localMap.containsKey(paramd);
+    AppMethodBeat.o(191505);
     return bool;
   }
   
-  public static boolean i(e parame)
+  public static boolean g(d paramd)
   {
-    AppMethodBeat.i(56762);
-    p.k(parame, "readOnly");
-    parame = kotlin.l.b.a.b.j.c.n((l)parame);
-    Map localMap = (Map)aaIR;
+    AppMethodBeat.i(191509);
+    Map localMap = (Map)aiFk;
     if (localMap == null)
     {
-      parame = new t("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
-      AppMethodBeat.o(56762);
-      throw parame;
+      paramd = new NullPointerException("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
+      AppMethodBeat.o(191509);
+      throw paramd;
     }
-    boolean bool = localMap.containsKey(parame);
-    AppMethodBeat.o(56762);
+    boolean bool = localMap.containsKey(paramd);
+    AppMethodBeat.o(191509);
     return bool;
   }
   
-  public static b iEn()
+  public static kotlin.l.b.a.b.f.c knF()
   {
-    return aaIM;
+    return aiFd;
   }
   
-  public static List<c.a> iEo()
+  public static List<c.a> knG()
   {
-    return aaIS;
-  }
-  
-  public static e j(e parame)
-  {
-    AppMethodBeat.i(56763);
-    p.k(parame, "mutable");
-    parame = a(parame, (Map)aaIQ, "mutable");
-    AppMethodBeat.o(56763);
-    return parame;
-  }
-  
-  public static e k(e parame)
-  {
-    AppMethodBeat.i(56764);
-    p.k(parame, "readOnly");
-    parame = a(parame, (Map)aaIR, "read-only");
-    AppMethodBeat.o(56764);
-    return parame;
+    return aiFl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.a.b.c
  * JD-Core Version:    0.7.0.1
  */

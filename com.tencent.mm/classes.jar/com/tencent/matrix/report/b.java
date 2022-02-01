@@ -4,20 +4,20 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.b.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.f.a;
+import com.tencent.threadpool.i;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
-  implements k.d
+  implements l.d
 {
-  private static long cZH;
+  private static long eYl;
   
   static
   {
@@ -25,16 +25,16 @@ public final class b
     {
       public final void run()
       {
-        b.bq(Process.myTid());
+        b.dL(Process.myTid());
       }
     });
   }
   
-  public final void a(k.b paramb)
+  public final void a(l.b paramb)
   {
     Object localObject2 = paramb.tag;
     Object localObject1 = paramb.key;
-    final JSONObject localJSONObject1 = paramb.cZZ;
+    final JSONObject localJSONObject1 = paramb.eYz;
     long l5 = SystemClock.uptimeMillis();
     if (((String)localObject2).equals("Trace")) {}
     long l1;
@@ -49,24 +49,24 @@ public final class b
     int k;
     try
     {
-      if ((!paramb.tag.equalsIgnoreCase("Trace_EvilMethod")) || (!localJSONObject1.getString("detail").equalsIgnoreCase(a.a.deX.toString()))) {
+      if ((!paramb.tag.equalsIgnoreCase("Trace_EvilMethod")) || (!localJSONObject1.getString("detail").equalsIgnoreCase(a.a.fdW.toString()))) {
         break label616;
       }
       paramb = localJSONObject1.getString("cost");
       l1 = Util.safeParseLong((String)localObject1);
       l6 = Util.safeParseLong(paramb);
-      if (!com.tencent.mm.kernel.h.aHB()) {
+      if (!com.tencent.mm.kernel.h.baz()) {
         break label616;
       }
-      paramb = com.tencent.mm.kernel.h.aHG().kcF;
-      if ((paramb == null) || (paramb.hBY() == null)) {
+      paramb = com.tencent.mm.kernel.h.baE().mCN;
+      if ((paramb == null) || (paramb.jee() == null)) {
         break label735;
       }
-      paramb.hBY();
-      localObject2 = com.tencent.mm.storagebase.f.hBR();
+      paramb.jee();
+      localObject2 = com.tencent.mm.storagebase.f.jdX();
       long l7 = ((f.a)localObject2).time;
-      Log.i("MicroMsg.AnrReportListener", "[happen] threadStatus:%s sql:%s time:%s db:%s", new Object[] { Integer.valueOf(((f.a)localObject2).status), ((f.a)localObject2).sql, Long.valueOf(l7), ((f.a)localObject2).GSi });
-      if (((f.a)localObject2).GSi == null) {
+      Log.i("MicroMsg.AnrReportListener", "[happen] threadStatus:%s sql:%s time:%s db:%s", new Object[] { Integer.valueOf(((f.a)localObject2).status), ((f.a)localObject2).sql, Long.valueOf(l7), ((f.a)localObject2).MPM });
+      if (((f.a)localObject2).MPM == null) {
         break label697;
       }
       l2 = SystemClock.uptimeMillis();
@@ -75,7 +75,7 @@ public final class b
       l2 = 0L;
       l1 = 0L;
       localObject1 = new JSONObject();
-      paramb = ((f.a)localObject2).GSi.dumpJSON(false);
+      paramb = ((f.a)localObject2).MPM.dumpJSON(false);
       Log.i("MicroMsg.AnrReportListener", "[happen] db raw json:%s", new Object[] { paramb });
       JSONArray localJSONArray1 = paramb.getJSONArray("availableNonPrimary");
       i = 0;
@@ -93,7 +93,7 @@ public final class b
       localJSONArray2.put(localJSONObject2);
       localJSONObject2.put("start", l7);
       localJSONObject2.put("duration", Math.min(l6, l8 + l6 - l7));
-      localJSONObject2.put("tid", cZH);
+      localJSONObject2.put("tid", eYl);
       Log.i("MicroMsg.AnrReportListener", "[happen] add executing:%s", new Object[] { localJSONObject2 });
     }
     catch (JSONException paramb)
@@ -140,7 +140,7 @@ public final class b
         l3 = l1;
         l4 = l2;
         k = j;
-        if (cZH == l10)
+        if (eYl == l10)
         {
           l4 = l2 + l9;
           l3 = l1;
@@ -159,7 +159,7 @@ public final class b
       {
         ((JSONObject)localObject1).put("detail", paramb);
         localJSONObject1.put("dbInfo", localObject1);
-        com.tencent.e.h.ZvG.be(new Runnable()
+        com.tencent.threadpool.h.ahAA.bm(new Runnable()
         {
           public final void run()
           {
@@ -196,7 +196,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.report.b
  * JD-Core Version:    0.7.0.1
  */

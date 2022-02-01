@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import kotlin.l;
-
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnVideoOrientationChanged;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "dispatch", "", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "viewId", "", "orientation", "Lcom/tencent/mm/plugin/appbrand/utils/OrientationListenerHelper$Orientation;", "parseOrientation", "", "luggage-wxa-app_release"})
-public abstract class w
-  extends r
-{}
+public final class w
+  extends s
+{
+  private static final int CTRL_INDEX = -2;
+  private static final String NAME = "onMemoryWarningReceive";
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.w
  * JD-Core Version:    0.7.0.1
  */

@@ -8,22 +8,22 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b$b
 {
-  public static final int BLP;
-  public static final int BLQ;
-  public static final int BLR;
+  public static final int HwL;
+  public static final int HwM;
+  public static final int HwN;
   
   static
   {
     AppMethodBeat.i(111811);
-    BLP = MMApplicationContext.getContext().getResources().getColor(o.a.Brand_90);
-    BLQ = Color.parseColor("#661AAD19");
-    BLR = Color.parseColor("#801AAD19");
+    HwL = MMApplicationContext.getContext().getResources().getColor(p.a.Brand_90);
+    HwM = Color.parseColor("#661AAD19");
+    HwN = Color.parseColor("#801AAD19");
     AppMethodBeat.o(111811);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.b.b
  * JD-Core Version:    0.7.0.1
  */

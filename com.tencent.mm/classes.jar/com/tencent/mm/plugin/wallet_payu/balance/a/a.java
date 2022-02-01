@@ -6,17 +6,17 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public final class a
-  extends com.tencent.mm.wallet_core.e.a.a
+  extends com.tencent.mm.wallet_core.d.a.a
 {
-  public String fwv;
-  public double fwy;
-  public String fyc;
+  public String hAT;
+  public double hAW;
+  public String hCH;
   
   public a(double paramDouble, String paramString)
   {
     AppMethodBeat.i(71961);
-    this.fwy = paramDouble;
-    this.fyc = paramString;
+    this.hAW = paramDouble;
+    this.hCH = paramString;
     HashMap localHashMap = new HashMap();
     localHashMap.put("total_fee", Math.round(100.0D * paramDouble));
     localHashMap.put("fee_type", paramString);
@@ -24,7 +24,7 @@ public final class a
     AppMethodBeat.o(71961);
   }
   
-  public final int gIA()
+  public final int ihO()
   {
     return 20;
   }
@@ -32,13 +32,13 @@ public final class a
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(71962);
-    this.fwv = paramJSONObject.optString("prepayid");
+    this.hAT = paramJSONObject.optString("prepayid");
     AppMethodBeat.o(71962);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.balance.a.a
  * JD-Core Version:    0.7.0.1
  */

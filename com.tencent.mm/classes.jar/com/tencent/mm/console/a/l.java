@@ -6,8 +6,8 @@ import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.pluginsdk.cmd.b;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class l
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -77,37 +77,37 @@ public final class l
         break;
       }
     }
-    com.tencent.mm.by.c.ad(paramContext, "wallet", ".pwd.ui.WalletUniversalPayOrderUI");
+    com.tencent.mm.br.c.ai(paramContext, "wallet", ".pwd.ui.WalletUniversalPayOrderUI");
     AppMethodBeat.o(20191);
     return true;
-    h.aHG().aHp().set(ar.a.Vty, Integer.valueOf(1));
+    h.baE().ban().set(at.a.acVd, Integer.valueOf(1));
     AppMethodBeat.o(20191);
     return true;
-    com.tencent.mm.aa.c.aFn().b(ar.a.Vtk, true);
+    com.tencent.mm.aa.c.aYo().b(at.a.acUP, true);
     AppMethodBeat.o(20191);
     return true;
     if (paramArrayOfString.length >= 3)
     {
       i = Util.getInt(paramArrayOfString[2], 0);
-      h.aHG().aHp().set(ar.a.VtF, Integer.valueOf(i));
+      h.baE().ban().set(at.a.acVk, Integer.valueOf(i));
     }
     AppMethodBeat.o(20191);
     return true;
-    ((com.tencent.mm.plugin.wxpay.a.a)h.ag(com.tencent.mm.plugin.wxpay.a.a.class)).doRedPacketPreviewLoading(paramContext, "");
+    ((com.tencent.mm.plugin.wxpay.a.a)h.az(com.tencent.mm.plugin.wxpay.a.a.class)).doRedPacketPreviewLoading(paramContext, "");
     AppMethodBeat.o(20191);
     return true;
-    h.aHG().aHp().set(ar.a.VtO, Integer.valueOf(0));
-    h.aHG().aHp().set(ar.a.VtP, Integer.valueOf(0));
+    h.baE().ban().set(at.a.acVt, Integer.valueOf(0));
+    h.baE().ban().set(at.a.acVu, Integer.valueOf(0));
     AppMethodBeat.o(20191);
     return true;
-    ((com.tencent.mm.pluginsdk.wallet.a)h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).startUiTest();
+    ((com.tencent.mm.pluginsdk.wallet.a)h.ax(com.tencent.mm.pluginsdk.wallet.a.class)).startUiTest();
     AppMethodBeat.o(20191);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.console.a.l
  * JD-Core Version:    0.7.0.1
  */

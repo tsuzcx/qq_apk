@@ -2,62 +2,62 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.card.d.f;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.protobuf.eml;
-import com.tencent.mm.protocal.protobuf.jw;
-import com.tencent.mm.protocal.protobuf.jx;
-import com.tencent.mm.protocal.protobuf.vc;
+import com.tencent.mm.plugin.card.c.f;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.protocal.protobuf.fhj;
+import com.tencent.mm.protocal.protobuf.ks;
+import com.tencent.mm.protocal.protobuf.kt;
+import com.tencent.mm.protocal.protobuf.wt;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class t
-  extends q
+  extends p
   implements m
 {
-  private i callback;
+  private h callback;
   public String cardId;
-  private final d rr;
-  public LinkedList<CardInfo> tqf;
+  private final c rr;
+  public LinkedList<CardInfo> wuE;
   
-  public t(LinkedList<vc> paramLinkedList, eml parameml, int paramInt)
+  public t(LinkedList<wt> paramLinkedList, fhj paramfhj, int paramInt)
   {
-    this(paramLinkedList, parameml, paramInt, "");
+    this(paramLinkedList, paramfhj, paramInt, "");
   }
   
-  public t(LinkedList<vc> paramLinkedList, eml parameml, int paramInt, String paramString)
+  public t(LinkedList<wt> paramLinkedList, fhj paramfhj, int paramInt, String paramString)
   {
     AppMethodBeat.i(112815);
-    this.tqf = new LinkedList();
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new jw();
-    ((d.a)localObject).lBV = new jx();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/batchgetcarditembytpinfo";
-    ((d.a)localObject).funcId = 1099;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (jw)d.b.b(this.rr.lBR);
-    ((jw)localObject).lpz = paramLinkedList;
-    ((jw)localObject).REA = parameml;
-    ((jw)localObject).fUN = paramInt;
+    this.wuE = new LinkedList();
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ks();
+    ((c.a)localObject).otF = new kt();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/batchgetcarditembytpinfo";
+    ((c.a)localObject).funcId = 1099;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ks)c.b.b(this.rr.otB);
+    ((ks)localObject).nUC = paramLinkedList;
+    ((ks)localObject).YBf = paramfhj;
+    ((ks)localObject).iaK = paramInt;
     this.cardId = paramString;
     AppMethodBeat.o(112815);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(112816);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(112816);
     return i;
@@ -79,7 +79,7 @@ public final class t
       AppMethodBeat.o(112817);
       return;
     }
-    params = ((jx)d.c.b(this.rr.lBS)).tpZ;
+    params = ((kt)c.c.b(this.rr.otC)).wuy;
     if (TextUtils.isEmpty(params))
     {
       Log.e("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd fail, resp json_ret is null");
@@ -87,11 +87,11 @@ public final class t
       AppMethodBeat.o(112817);
       return;
     }
-    params = f.arK(params);
+    params = f.alo(params);
     if (params != null)
     {
-      l.cLg();
-      this.tqf.addAll(params);
+      l.doO();
+      this.wuE.addAll(params);
     }
     this.callback.onSceneEnd(0, 0, paramString, this);
     AppMethodBeat.o(112817);
@@ -99,7 +99,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.t
  * JD-Core Version:    0.7.0.1
  */

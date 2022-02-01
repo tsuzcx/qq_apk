@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
 import com.tencent.mm.plugin.ipcall.a.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.u.i;
 
 final class IPCallUserProfileUI$7
-  implements q.g
+  implements u.i
 {
   IPCallUserProfileUI$7(IPCallUserProfileUI paramIPCallUserProfileUI, TextView paramTextView) {}
   
@@ -19,9 +19,9 @@ final class IPCallUserProfileUI$7
     AppMethodBeat.i(26000);
     if (paramInt == 0)
     {
-      h.IzE.a(12766, new Object[] { Integer.valueOf(4) });
-      c.aML(this.DZk.getText().toString());
-      Toast.makeText(this.DZi, R.l.eIU, 0).show();
+      h.OAn.b(12766, new Object[] { Integer.valueOf(4) });
+      c.aJF(this.JQs.getText().toString());
+      Toast.makeText(this.JQq, R.l.gKB, 0).show();
     }
     AppMethodBeat.o(26000);
   }

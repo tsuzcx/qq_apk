@@ -1,6 +1,5 @@
 package com.tencent.soter.core.a;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.hardware.fingerprint.FingerprintManager;
 import android.hardware.fingerprint.FingerprintManager.AuthenticationCallback;
@@ -15,7 +14,6 @@ import javax.crypto.Cipher;
 import javax.crypto.Mac;
 
 @Deprecated
-@SuppressLint({"NewApi"})
 final class b
 {
   static int checkSelfPermission(Context paramContext, String paramString)
@@ -125,11 +123,11 @@ final class b
   
   public static final class b
   {
-    b.c ZrT;
+    b.c ahwH;
     
     public b(b.c paramc)
     {
-      this.ZrT = paramc;
+      this.ahwH = paramc;
     }
   }
   
@@ -163,7 +161,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.soter.core.a.b
  * JD-Core Version:    0.7.0.1
  */

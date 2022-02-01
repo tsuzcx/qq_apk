@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ffffc300" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.kidswatch.ui.login.KidsWatchHeadComponent android:id="@id/dnl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ProgressBar android:id="@id/ghk" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:indeterminateDrawable="@drawable/b9u" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <View android:background="#ffefeff4" android:layout_width="2.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/iq" />
+    <TextView android:textSize="@dimen/m_" android:textStyle="bold" android:textColor="@color/x1" android:ellipsize="end" android:id="@id/enz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/x1" android:ellipsize="end" android:id="@id/eo0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.0" />
+</LinearLayout>

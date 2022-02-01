@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ui.widget.SnsAdSphereAnimView android:id="@id/hwc" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:orientation="horizontal" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/by" android:layout_centerInParent="true" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ProgressBar android:id="@id/iuy" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" style="@style/a85" />
+        <TextView android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在加载..." android:layout_marginStart="16.0dip" android:layout_toEndOf="@id/iuy" />
+    </RelativeLayout>
+</RelativeLayout>

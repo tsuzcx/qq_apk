@@ -1,6 +1,5 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -9,17 +8,15 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Images.Thumbnails;
 import android.view.KeyEvent;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -33,6 +30,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.g;
@@ -41,365 +40,883 @@ import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
 import com.tencent.mm.ah.a.j;
-import com.tencent.mm.f.b.a.kb;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.memory.a.a.a.d;
-import com.tencent.mm.plugin.fav.a.ag;
+import com.tencent.mm.autogen.mmdata.rpt.ms;
+import com.tencent.mm.opensdk.modelmsg.WXFileObject;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.plugin.fav.a.ad;
+import com.tencent.mm.plugin.gallery.b.e;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.plugin.gallery.model.e;
-import com.tencent.mm.plugin.gallery.model.i.c;
-import com.tencent.mm.plugin.gallery.model.o;
-import com.tencent.mm.plugin.multitalk.model.ad;
+import com.tencent.mm.plugin.gallery.model.l.c;
+import com.tencent.mm.plugin.gallery.model.q;
+import com.tencent.mm.plugin.multitalk.e.g;
+import com.tencent.mm.plugin.multitalk.model.ac;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
 import com.tencent.mm.pluginsdk.ui.pin.PinnedHeaderRecyclerView;
-import com.tencent.mm.pluginsdk.ui.tools.a.a.a.a.d;
-import com.tencent.mm.pluginsdk.ui.tools.a.a.b.a.b;
-import com.tencent.mm.pluginsdk.ui.tools.a.a.b.a.g;
+import com.tencent.mm.pluginsdk.ui.tools.b.a.b.a.b;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.chatting.am;
-import com.tencent.mm.ui.report.MMSecDataActivity;
-import com.tencent.mm.ui.tools.t.b;
-import com.tencent.mm.ui.w.b;
-import com.tencent.mm.ui.widget.AlbumChooserView.a;
-import com.tencent.mm.util.c;
-import com.tencent.mm.vfs.u;
-import com.tencent.mm.vfs.z;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.chatting.ao;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.tools.r;
+import com.tencent.mm.ui.tools.s.c;
+import com.tencent.mm.ui.y.b;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.List<Lcom.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.j;>;
 import java.util.Set;
 import java.util.Vector;
-import kotlin.g;
+import kotlin.Metadata;
+import kotlin.j;
 import kotlin.n.n;
 
 @com.tencent.mm.ui.base.a(19)
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "Lcom/tencent/mm/ui/report/MMSecDataActivity;", "()V", "adapter", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;", "albumUIC", "Lcom/tencent/mm/pluginsdk/ui/tools/fs/album/uic/AlbumFileUIC;", "getAlbumUIC", "()Lcom/tencent/mm/pluginsdk/ui/tools/fs/album/uic/AlbumFileUIC;", "albumUIC$delegate", "Lkotlin/Lazy;", "dropdownItemName", "", "dropdownListItem", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView$DropdownListItem;", "dropdownListView", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView;", "emptyView", "Landroid/widget/TextView;", "exitMultiTalkListener", "Lcom/tencent/mm/sdk/event/IListener;", "isFirstTextChanged", "", "isSearching", "listView", "Landroid/widget/ListView;", "mIsToScreenProfile", "onItemClickListener", "Landroid/widget/AdapterView$OnItemClickListener;", "reportHelper", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorReportHelper;", "scene", "", "screenProfileReadyUI", "Lcom/tencent/mm/ui/chatting/ScreenProfileReadyUI;", "searchMask", "Landroid/view/View;", "searchViewHelper", "Lcom/tencent/mm/ui/tools/SearchViewControlKeyBoardShowHelper;", "toUserName", "doSendFile", "", "finish", "getForceOrientation", "getLayoutId", "getSelectedCount", "goToScreenProfile", "name", "path", "ext", "gotoAppAttachDownloadUI", "msgId", "", "gotoUnDownloadFavDetail", "favLocalId", "favDataId", "initDropdownListTitle", "isActionbarCenterLayoutMode", "isListAtBottom", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBack", "cancel", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onPause", "openFile", "recoverDropdownTitle", "resetItem", "item", "screenProfileByFinderLive", "screenProfileByMultiTalk", "setDropdownListClickListener", "updateDropdownListTitle", "title", "updateState", "ChattingFileSource", "Companion", "FavFileSource", "FileDataSource", "FileSelectorAdapter", "FileSelectorReportHelper", "FileType", "FromType", "ListFavFileItem", "ListFileItem", "ListFolderItem", "ListItem", "ListTimeItem", "SdcardFileSource", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "Lcom/tencent/mm/plugin/secdata/ui/MMSecDataActivity;", "()V", "adapter", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;", "albumUIC", "Lcom/tencent/mm/pluginsdk/ui/tools/fs/album/uic/AlbumFileUIC;", "getAlbumUIC", "()Lcom/tencent/mm/pluginsdk/ui/tools/fs/album/uic/AlbumFileUIC;", "albumUIC$delegate", "Lkotlin/Lazy;", "dropdownItemName", "", "dropdownListItem", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView$DropdownListItem;", "dropdownListView", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView;", "emptyView", "Landroid/widget/TextView;", "exitMultiTalkListener", "Lcom/tencent/mm/sdk/event/IListener;", "isFirstTextChanged", "", "isSearching", "listView", "Landroid/widget/ListView;", "mIsToScreenProfile", "onItemClickListener", "Landroid/widget/AdapterView$OnItemClickListener;", "reportHelper", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorReportHelper;", "scene", "", "screenProfileReadyUI", "Lcom/tencent/mm/ui/chatting/ScreenProfileReadyUI;", "searchMask", "Landroid/view/View;", "searchViewHelper", "Lcom/tencent/mm/ui/tools/SearchViewControlKeyBoardShowHelper;", "toUserName", "doSendFile", "", "finish", "getForceOrientation", "getLayoutId", "getSelectedCount", "goToScreenProfile", "name", "path", "ext", "gotoAppAttachDownloadUI", "msgId", "", "gotoUnDownloadFavDetail", "favLocalId", "favDataId", "initDropdownListTitle", "isActionbarCenterLayoutMode", "isListAtBottom", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBack", "cancel", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onPause", "openFile", "recoverDropdownTitle", "resetItem", "item", "screenProfileByFinderLive", "screenProfileByMultiTalk", "setDropdownListClickListener", "superImportUIComponents", "set", "Ljava/util/HashSet;", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lkotlin/collections/HashSet;", "updateDropdownListTitle", "title", "updateState", "ChattingFileSource", "Companion", "FavFileSource", "FileDataSource", "FileSelectorAdapter", "FileSelectorReportHelper", "FileType", "FromType", "ListFavFileItem", "ListFileItem", "ListFolderItem", "ListItem", "ListTimeItem", "SdcardFileSource", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FileSelectorUI
   extends MMSecDataActivity
 {
-  public static final FileSelectorUI.b Rvv;
-  private final kotlin.f Rvk;
-  private e Rvl;
-  private com.tencent.mm.ui.tools.s Rvm;
-  private View Rvn;
-  private String Rvo;
-  private DropdownListView Rvp;
-  private DropdownListView.c Rvq;
-  private boolean Rvr;
-  private f Rvs;
-  private am Rvt;
-  private boolean Rvu;
-  private String fCl;
-  private TextView kGU;
-  private ListView niO;
-  private final IListener<?> qeo;
+  public static final FileSelectorUI.b YrG;
+  private final j YrH;
+  private e YrI;
+  private r YrJ;
+  private View YrK;
+  private String YrL;
+  private DropdownListView YrM;
+  private DropdownListView.c YrN;
+  private boolean YrO;
+  private f YrP;
+  private ao YrQ;
+  private boolean YrR;
+  private String hHa;
+  private TextView njO;
+  private ListView qgc;
   private int scene;
-  private boolean sxF;
-  private final AdapterView.OnItemClickListener syv;
+  private final IListener<?> tjd;
+  private boolean vDm;
+  private final AdapterView.OnItemClickListener vEc;
   
   static
   {
-    AppMethodBeat.i(280778);
-    Rvv = new FileSelectorUI.b((byte)0);
-    AppMethodBeat.o(280778);
+    AppMethodBeat.i(245757);
+    YrG = new FileSelectorUI.b((byte)0);
+    AppMethodBeat.o(245757);
   }
   
   public FileSelectorUI()
   {
-    AppMethodBeat.i(280776);
-    this.Rvk = g.ar((kotlin.g.a.a)new FileSelectorUI.o(this));
-    this.qeo = ((IListener)new FileSelectorUI.p(this));
-    this.Rvr = true;
-    this.Rvs = new f();
-    this.syv = ((AdapterView.OnItemClickListener)new z(this));
-    AppMethodBeat.o(280776);
+    AppMethodBeat.i(245602);
+    this.YrH = kotlin.k.cm((kotlin.g.a.a)new p(this));
+    this.tjd = ((IListener)new FileSelectorUI.exitMultiTalkListener.1(this, com.tencent.mm.app.f.hfK));
+    this.YrO = true;
+    this.YrP = new f();
+    this.vEc = new FileSelectorUI..ExternalSyntheticLambda9(this);
+    AppMethodBeat.o(245602);
   }
   
-  private final void Ev(boolean paramBoolean)
+  private final void Kh(boolean paramBoolean)
   {
-    AppMethodBeat.i(280773);
-    Object localObject = this.Rvp;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("dropdownListView");
+    Object localObject2 = null;
+    AppMethodBeat.i(245629);
+    if (this.YrM == null) {
+      kotlin.g.b.s.bIx("dropdownListView");
     }
-    if (localObject != null)
+    Object localObject3 = this.YrM;
+    Object localObject1 = localObject3;
+    if (localObject3 == null)
     {
-      localObject = this.Rvp;
-      if (localObject == null) {
-        kotlin.g.b.p.bGy("dropdownListView");
-      }
-      if (localObject == null) {
-        break label157;
-      }
+      kotlin.g.b.s.bIx("dropdownListView");
+      localObject1 = null;
     }
-    label157:
-    for (localObject = Boolean.valueOf(((DropdownListView)localObject).tFX);; localObject = null)
+    if (((DropdownListView)localObject1).wJw)
     {
-      if (((Boolean)localObject).booleanValue())
+      localObject3 = this.YrM;
+      localObject1 = localObject3;
+      if (localObject3 == null)
       {
-        localObject = this.Rvp;
-        if (localObject == null) {
-          kotlin.g.b.p.bGy("dropdownListView");
+        kotlin.g.b.s.bIx("dropdownListView");
+        localObject1 = null;
+      }
+      ((DropdownListView)localObject1).fBC();
+      playActionBarOperationAreaAnim();
+    }
+    if (!paramBoolean)
+    {
+      localObject3 = this.YrI;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = null;
+      }
+      if (((e)localObject1).iOi() != null)
+      {
+        localObject3 = this.YrI;
+        localObject1 = localObject3;
+        if (localObject3 == null)
+        {
+          kotlin.g.b.s.bIx("adapter");
+          localObject1 = null;
         }
-        if (localObject != null) {
-          ((DropdownListView)localObject).euH();
+        ((e)localObject1).iOh();
+        localObject1 = this.YrI;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("adapter");
+          localObject1 = localObject2;
         }
-        playActionBarOperationAreaAnim();
+        for (;;)
+        {
+          ((e)localObject1).notifyDataSetChanged();
+          AppMethodBeat.o(245629);
+          return;
+        }
       }
-      if (paramBoolean) {
-        break;
-      }
-      localObject = this.Rvl;
-      if (localObject == null) {
-        kotlin.g.b.p.bGy("adapter");
-      }
-      if (((e)localObject).hnq() == null) {
-        break;
-      }
-      localObject = this.Rvl;
-      if (localObject == null) {
-        kotlin.g.b.p.bGy("adapter");
-      }
-      ((e)localObject).hnp();
-      localObject = this.Rvl;
-      if (localObject == null) {
-        kotlin.g.b.p.bGy("adapter");
-      }
-      ((e)localObject).notifyDataSetChanged();
-      AppMethodBeat.o(280773);
-      return;
     }
     setResult(-2);
     if (paramBoolean) {
       setResult(0);
     }
     finish();
-    AppMethodBeat.o(280773);
+    AppMethodBeat.o(245629);
   }
   
-  private final void bh(String paramString1, String paramString2, String paramString3)
+  private static final void a(FileSelectorUI paramFileSelectorUI)
   {
-    AppMethodBeat.i(280754);
-    switch (this.scene)
+    Object localObject = null;
+    AppMethodBeat.i(245677);
+    kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+    Log.i("MicroMsg.FileSelectorUI", "onAlbumChooserViewClick.");
+    paramFileSelectorUI.YrN = null;
+    paramFileSelectorUI.playActionBarOperationAreaAnim();
+    paramFileSelectorUI = paramFileSelectorUI.YrM;
+    if (paramFileSelectorUI == null)
     {
-    default: 
-      AppMethodBeat.o(280754);
-      return;
-    case 3: 
-      com.tencent.mm.plugin.multitalk.model.q localq = ad.eYc();
-      kotlin.g.b.p.j(localq, "SubCoreMultiTalk.getMultiTalkManager()");
-      if (localq.eWf())
-      {
-        setMMTitle(paramString1);
-        hideActionBarOperationArea();
-        removeSearchMenu();
-        setBackBtn((MenuItem.OnMenuItemClickListener)new ac(this), a.j.actionbar_icon_dark_back);
-        this.Rvu = true;
-        paramString1 = this.Rvp;
-        if (paramString1 == null) {
-          kotlin.g.b.p.bGy("dropdownListView");
-        }
-        if (paramString1 != null) {
-          paramString1.setVisibility(4);
-        }
-        paramString1 = u.n(paramString2, false);
-        if (paramString1 != null) {
-          break label444;
-        }
-        paramString1 = "";
-      }
-      break;
+      kotlin.g.b.s.bIx("dropdownListView");
+      paramFileSelectorUI = localObject;
     }
-    label444:
     for (;;)
     {
-      kotlin.g.b.p.j(paramString1, "VFSFileOp.exportExternalPath(path, false) ?: \"\"");
-      if (Util.isNullOrNil(paramString1)) {
-        Log.e("MicroMsg.FileSelectorUI", "goToScreenProfile, exportExternalPath is null");
-      }
-      paramString2 = getContext();
-      kotlin.g.b.p.j(paramString2, "context");
-      this.Rvt = new am((Context)paramString2, paramString1, paramString3);
-      paramString1 = this.Rvt;
-      if (paramString1 != null) {
-        paramString1.hNz();
-      }
-      paramString1 = getContentView();
-      if (paramString1 == null)
-      {
-        paramString1 = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(280754);
-        throw paramString1;
-      }
-      ((ViewGroup)paramString1).addView((View)this.Rvt);
-      setRequestedOrientation(4);
-      AppMethodBeat.o(280754);
+      paramFileSelectorUI.fBC();
+      AppMethodBeat.o(245677);
       return;
+    }
+  }
+  
+  private static final void a(FileSelectorUI paramFileSelectorUI, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(245674);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramFileSelectorUI);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramAdapterView);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).sc(paramInt);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).hB(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+    paramView = paramFileSelectorUI.YrI;
+    paramAdapterView = paramView;
+    if (paramView == null)
+    {
+      kotlin.g.b.s.bIx("adapter");
+      paramAdapterView = null;
+    }
+    localObject1 = paramAdapterView.axf(paramInt);
+    if (paramFileSelectorUI.YrR)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+      AppMethodBeat.o(245674);
+      return;
+    }
+    paramAdapterView = ((FileSelectorUI.l)localObject1).YsE;
+    switch (o.$EnumSwitchMapping$0[paramAdapterView.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+      AppMethodBeat.o(245674);
+      return;
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+      AppMethodBeat.o(245674);
+      return;
+      paramFileSelectorUI.YrP.Ysj.jcg = 1L;
+      try
+      {
+        paramAdapterView = (FileSelectorUI.k)localObject1;
+        if (paramAdapterView.YsD) {
+          paramFileSelectorUI.pr(paramAdapterView.filePath, paramAdapterView.iOm().toString());
+        }
+      }
+      catch (Exception paramFileSelectorUI)
+      {
+        Log.e("MicroMsg.FileSelectorUI", kotlin.g.b.s.X("error:", paramFileSelectorUI.getMessage()));
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+        AppMethodBeat.o(245674);
+        return;
+      }
+      if (Util.isNullOrNil(paramAdapterView.filePath))
+      {
+        Log.e("MicroMsg.FileSelectorUI", "can not open sub path because current path not exist");
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+        AppMethodBeat.o(245674);
+        return;
+      }
+      localObject1 = paramAdapterView.filePath;
+      if (localObject1 != null)
+      {
+        paramView = paramFileSelectorUI.YrI;
+        paramAdapterView = paramView;
+        if (paramView == null)
+        {
+          kotlin.g.b.s.bIx("adapter");
+          paramAdapterView = null;
+        }
+        kotlin.g.b.s.u(localObject1, "path");
+        if (paramAdapterView.Ysd == h.Yss)
+        {
+          paramAdapterView.Ysc.ag(new com.tencent.mm.vfs.u((String)localObject1));
+          paramView = paramAdapterView.YrS.YrI;
+          paramAdapterView = paramView;
+          if (paramView == null)
+          {
+            kotlin.g.b.s.bIx("adapter");
+            paramAdapterView = null;
+          }
+          paramAdapterView.dSD();
+        }
+      }
+      paramAdapterView = paramFileSelectorUI.YrI;
+      paramFileSelectorUI = paramAdapterView;
+      if (paramAdapterView == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramFileSelectorUI = null;
+      }
+      paramFileSelectorUI.notifyDataSetChanged();
+      continue;
+      paramFileSelectorUI.YrP.Ysj.jcg = 1L;
+      localObject2 = ((FileSelectorUI.j)localObject1).filePath;
+      paramInt = n.g(((FileSelectorUI.j)localObject1).iOm(), ".") + 1;
+      if (paramInt >= ((FileSelectorUI.j)localObject1).iOm().length())
+      {
+        Log.i("MicroMsg.FileSelectorUI", "open file error : file path error");
+        aa.dc((Context)paramFileSelectorUI, paramFileSelectorUI.getResources().getString(R.l.gUq));
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+        AppMethodBeat.o(245674);
+        return;
+      }
+      paramAdapterView = ((FileSelectorUI.j)localObject1).iOm();
+      Object localObject3 = paramAdapterView.subSequence(paramInt, paramAdapterView.length()).toString();
+      if ((3 == paramFileSelectorUI.scene) && (!((FileSelectorUI.j)localObject1).YsB))
+      {
+        h localh = h.Ysq;
+        paramView = paramFileSelectorUI.YrI;
+        paramAdapterView = paramView;
+        if (paramView == null)
+        {
+          kotlin.g.b.s.bIx("adapter");
+          paramAdapterView = null;
+        }
+        if (localh == paramAdapterView.Ysd)
+        {
+          if ((n.T((String)localObject3, "ppt", true)) || (n.T((String)localObject3, "pdf", true)) || (n.T((String)localObject3, "doc", true)) || (n.T((String)localObject3, "docx", true)) || (n.T((String)localObject3, "pptx", true)))
+          {
+            paramLong = ((FileSelectorUI.j)localObject1).msgId;
+            if (!com.tencent.mm.kernel.h.baE().isSDCardAvailable()) {
+              aa.j((Context)paramFileSelectorUI.getContext(), null);
+            }
+          }
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+            AppMethodBeat.o(245674);
+            return;
+            paramAdapterView = new Intent();
+            paramAdapterView.putExtra("scene", paramFileSelectorUI.scene);
+            paramAdapterView.setClassName((Context)paramFileSelectorUI, "com.tencent.mm.ui.chatting.AppAttachDownloadUI");
+            paramAdapterView.putExtra("app_msg_id", paramLong);
+            paramFileSelectorUI.startActivityForResult(paramAdapterView, 4);
+            continue;
+            aa.dc((Context)paramFileSelectorUI, paramFileSelectorUI.getResources().getString(R.l.gUr));
+          }
+        }
+      }
+      localObject3 = h.Ysr;
+      paramView = paramFileSelectorUI.YrI;
+      paramAdapterView = paramView;
+      if (paramView == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramAdapterView = null;
+      }
+      if ((localObject3 == paramAdapterView.Ysd) && (!com.tencent.mm.vfs.y.ZC(((FileSelectorUI.j)localObject1).filePath)))
+      {
+        paramAdapterView = (FileSelectorUI.l)localObject1;
+        paramLong = ((FileSelectorUI.i)paramAdapterView).localId;
+        paramAdapterView = ((FileSelectorUI.i)paramAdapterView).iOk();
+        paramView = new Intent();
+        paramView.putExtra("key_detail_info_id", paramLong);
+        paramView.putExtra("key_detail_data_id", paramAdapterView);
+        paramView.putExtra("show_share", true);
+        com.tencent.mm.plugin.fav.a.b.b((Context)paramFileSelectorUI.getContext(), ".ui.detail.FavoriteFileDetailUI", paramView);
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+        AppMethodBeat.o(245674);
+        return;
+      }
+      paramFileSelectorUI.pr((String)localObject2, ((FileSelectorUI.j)localObject1).iOm().toString());
+    }
+  }
+  
+  private static final boolean a(FileSelectorUI paramFileSelectorUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(245636);
+    kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+    Log.i("MicroMsg.FileSelectorUI", "backBtn");
+    paramFileSelectorUI.Kh(true);
+    AppMethodBeat.o(245636);
+    return false;
+  }
+  
+  private static final boolean a(FileSelectorUI paramFileSelectorUI, View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(245651);
+    kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+    paramFileSelectorUI.hideVKB();
+    AppMethodBeat.o(245651);
+    return false;
+  }
+  
+  private static final boolean b(FileSelectorUI paramFileSelectorUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(245643);
+    kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+    Object localObject3 = (List)new ArrayList();
+    Object localObject4 = (List)new ArrayList();
+    Object localObject1 = paramFileSelectorUI.YrI;
+    paramMenuItem = (MenuItem)localObject1;
+    if (localObject1 == null)
+    {
+      kotlin.g.b.s.bIx("adapter");
+      paramMenuItem = null;
+    }
+    paramMenuItem = paramMenuItem.YrZ.iterator();
+    Object localObject5;
+    while (paramMenuItem.hasNext())
+    {
+      localObject1 = (FileSelectorUI.j)paramMenuItem.next();
+      if (((FileSelectorUI.j)localObject1).iOn() == h.Ysr)
+      {
+        localObject5 = paramFileSelectorUI.YrP.Ysj;
+        ((ms)localObject5).jci += 1L;
+        ((List)localObject4).add(localObject1);
+      }
+      else
+      {
+        ((List)localObject3).add(localObject1);
+        if (((FileSelectorUI.j)localObject1).iOn() == h.Ysq)
+        {
+          localObject1 = paramFileSelectorUI.YrP.Ysj;
+          ((ms)localObject1).jch += 1L;
+        }
+        else if (((FileSelectorUI.j)localObject1).iOn() == h.Yss)
+        {
+          localObject1 = paramFileSelectorUI.YrP.Ysj;
+          ((ms)localObject1).jcj += 1L;
+        }
+      }
+    }
+    if (((List)localObject4).size() > 0)
+    {
+      paramMenuItem = ((List)localObject4).iterator();
+      while (paramMenuItem.hasNext())
+      {
+        localObject4 = (FileSelectorUI.j)paramMenuItem.next();
+        Object localObject6;
+        try
+        {
+          localObject6 = (FileSelectorUI.i)localObject4;
+          localObject1 = ((FileSelectorUI.j)localObject6).filePath;
+          if ((!Util.isNullOrNil(((FileSelectorUI.i)localObject4).Ysw)) && (((FileSelectorUI.j)localObject4).YsA == 0)) {
+            break label372;
+          }
+          if (((FileSelectorUI.j)localObject4).YsA != 2) {
+            break label348;
+          }
+          int i = ((com.tencent.mm.plugin.fav.a.ah)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.fav.a.ah.class)).getFavSizeLimitInMB(true, 8);
+          com.tencent.mm.ui.base.k.cZ((Context)paramFileSelectorUI.getContext(), paramFileSelectorUI.getContext().getString(R.l.favorite_detail_illegal_trans_big_file_format, new Object[] { Integer.valueOf(i) }));
+        }
+        catch (ClassCastException localClassCastException)
+        {
+          Log.e("MicroMsg.FileSelectorUI", localClassCastException.getMessage());
+        }
+        continue;
+        label348:
+        com.tencent.mm.ui.base.k.cZ((Context)paramFileSelectorUI.getContext(), paramFileSelectorUI.getContext().getString(R.l.favorite_detail_illegal_trans_file));
+        continue;
+        label372:
+        if ((localClassCastException == null) || (!((FileSelectorUI.j)localObject4).YsB))
+        {
+          Log.e("MicroMsg.FileSelectorUI", "path:" + localClassCastException + ", download:" + ((FileSelectorUI.j)localObject4).YsB);
+          com.tencent.mm.ui.base.k.cZ((Context)paramFileSelectorUI.getContext(), paramFileSelectorUI.getString(R.l.Fav_NotDownload_CannotForward));
+        }
+        else
+        {
+          localObject4 = paramFileSelectorUI.hHa;
+          localObject5 = ((FileSelectorUI.i)localObject6).Ysv;
+          String str = ((FileSelectorUI.i)localObject6).desc;
+          localObject6 = ((FileSelectorUI.i)localObject6).iOk();
+          WXFileObject localWXFileObject = new WXFileObject();
+          localWXFileObject.setFilePath(localClassCastException);
+          localObject2 = new WXMediaMessage();
+          ((WXMediaMessage)localObject2).mediaObject = localWXFileObject;
+          ((WXMediaMessage)localObject2).title = ((String)localObject5);
+          ((WXMediaMessage)localObject2).description = str;
+          ((WXMediaMessage)localObject2).thumbData = Util.readFromFile(com.tencent.mm.plugin.fav.a.b.Ew((String)localObject6));
+          ((ad)com.tencent.mm.kernel.h.ax(ad.class)).a((WXMediaMessage)localObject2, "", "", (String)localObject4);
+        }
+      }
+    }
+    paramMenuItem = (List)new ArrayList();
+    Object localObject2 = paramFileSelectorUI.iNU();
+    if (localObject2 != null)
+    {
+      localObject2 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject2).iOR();
+      if (localObject2 != null)
+      {
+        localObject2 = ((ArrayList)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject4 = (String)((Iterator)localObject2).next();
+          kotlin.g.b.s.s(localObject4, "item");
+          paramMenuItem.add(localObject4);
+          localObject4 = paramFileSelectorUI.YrP.Ysj;
+          ((ms)localObject4).jco += 1L;
+        }
+      }
+    }
+    if (((List)localObject3).size() > 0)
+    {
+      localObject2 = ((List)localObject3).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (FileSelectorUI.j)((Iterator)localObject2).next();
+        localObject4 = ((FileSelectorUI.j)localObject3).filePath;
+        if (localObject4 == null) {
+          Log.e("MicroMsg.FileSelectorUI", kotlin.g.b.s.X("get path fail, msgInfo:", ((FileSelectorUI.j)localObject3).iOm()));
+        } else {
+          paramMenuItem.add(localObject4);
+        }
+      }
+    }
+    localObject2 = new Intent();
+    ((Intent)localObject2).putStringArrayListExtra("selected_file_lst", (ArrayList)paramMenuItem);
+    ((Intent)localObject2).putExtra("GalleryUI_ToUser", paramFileSelectorUI.hHa);
+    paramFileSelectorUI.setResult(-1, (Intent)localObject2);
+    paramFileSelectorUI.YrP.Ysj.jcb = 1L;
+    paramFileSelectorUI.finish();
+    AppMethodBeat.o(245643);
+    return true;
+  }
+  
+  private final void bB(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(245607);
+    switch (this.scene)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(245607);
+      return;
+      bC(paramString1, paramString2, paramString3);
+      AppMethodBeat.o(245607);
+      return;
+      bD(paramString1, paramString2, paramString3);
+    }
+  }
+  
+  private final void bC(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(245609);
+    if (ac.ggS().geW())
+    {
       setMMTitle(paramString1);
       hideActionBarOperationArea();
       removeSearchMenu();
-      setBackBtn((MenuItem.OnMenuItemClickListener)new ab(this), a.j.actionbar_icon_dark_back);
-      this.Rvu = true;
-      paramString1 = this.Rvp;
-      if (paramString1 == null) {
-        kotlin.g.b.p.bGy("dropdownListView");
+      setBackBtn(new FileSelectorUI..ExternalSyntheticLambda2(this), a.j.actionbar_icon_dark_back);
+      this.YrR = true;
+      DropdownListView localDropdownListView = this.YrM;
+      paramString1 = localDropdownListView;
+      if (localDropdownListView == null)
+      {
+        kotlin.g.b.s.bIx("dropdownListView");
+        paramString1 = null;
       }
-      if (paramString1 != null) {
-        paramString1.setVisibility(4);
-      }
-      paramString1 = u.n(paramString2, false);
+      paramString1.setVisibility(4);
+      paramString1 = com.tencent.mm.vfs.y.n(paramString2, false);
       if (paramString1 == null) {
         paramString1 = "";
       }
       for (;;)
       {
-        kotlin.g.b.p.j(paramString1, "VFSFileOp.exportExternalPath(path, false) ?: \"\"");
         if (Util.isNullOrNil(paramString1)) {
           Log.e("MicroMsg.FileSelectorUI", "goToScreenProfile, exportExternalPath is null");
         }
         paramString2 = getContext();
-        kotlin.g.b.p.j(paramString2, "context");
-        this.Rvt = new am((Context)paramString2, paramString1, paramString3, 4);
-        paramString1 = this.Rvt;
-        if (paramString1 == null) {
-          kotlin.g.b.p.iCn();
+        kotlin.g.b.s.s(paramString2, "context");
+        this.YrQ = new ao((Context)paramString2, paramString1, paramString3);
+        paramString1 = this.YrQ;
+        if (paramString1 != null) {
+          paramString1.jqf();
         }
-        paramString1.hNz();
         paramString1 = getContentView();
-        if (paramString1 == null)
-        {
-          paramString1 = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(280754);
-          throw paramString1;
+        if (paramString1 != null) {
+          break;
         }
-        ((ViewGroup)paramString1).addView((View)this.Rvt);
-        break;
+        paramString1 = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(245609);
+        throw paramString1;
       }
+      ((ViewGroup)paramString1).addView((View)this.YrQ);
+      setRequestedOrientation(4);
     }
+    AppMethodBeat.o(245609);
   }
   
-  private final void dFf()
+  private final void bD(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(280775);
-    Object localObject = this.Rvl;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("adapter");
-    }
-    int j = ((e)localObject).RvE.size();
-    localObject = hne();
-    if (localObject != null)
+    AppMethodBeat.i(245613);
+    setMMTitle(paramString1);
+    hideActionBarOperationArea();
+    removeSearchMenu();
+    setBackBtn(new FileSelectorUI..ExternalSyntheticLambda1(this), a.j.actionbar_icon_dark_back);
+    this.YrR = true;
+    DropdownListView localDropdownListView = this.YrM;
+    paramString1 = localDropdownListView;
+    if (localDropdownListView == null)
     {
-      localObject = ((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject).hoa();
-      if (localObject == null) {}
+      kotlin.g.b.s.bIx("dropdownListView");
+      paramString1 = null;
     }
-    for (int i = ((Integer)localObject).intValue();; i = 0)
+    paramString1.setVisibility(4);
+    paramString1 = com.tencent.mm.vfs.y.n(paramString2, false);
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    for (;;)
+    {
+      if (Util.isNullOrNil(paramString1)) {
+        Log.e("MicroMsg.FileSelectorUI", "goToScreenProfile, exportExternalPath is null");
+      }
+      paramString2 = getContext();
+      kotlin.g.b.s.s(paramString2, "context");
+      this.YrQ = new ao((Context)paramString2, paramString1, paramString3, 4);
+      paramString1 = this.YrQ;
+      kotlin.g.b.s.checkNotNull(paramString1);
+      paramString1.jqf();
+      paramString1 = getContentView();
+      if (paramString1 != null) {
+        break;
+      }
+      paramString1 = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(245613);
+      throw paramString1;
+    }
+    ((ViewGroup)paramString1).addView((View)this.YrQ);
+    AppMethodBeat.o(245613);
+  }
+  
+  private static final boolean c(FileSelectorUI paramFileSelectorUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(245659);
+    kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+    Log.i("MicroMsg.FileSelectorUI", "backBtn");
+    paramFileSelectorUI.Kh(true);
+    AppMethodBeat.o(245659);
+    return false;
+  }
+  
+  private static final boolean d(FileSelectorUI paramFileSelectorUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(245664);
+    kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+    Log.i("MicroMsg.FileSelectorUI", "backBtn");
+    paramMenuItem = ac.ggS();
+    com.tencent.threadpool.h.ahAA.bFQ("delayChecking");
+    paramMenuItem.LoS = null;
+    paramMenuItem.LoT.t(null);
+    paramMenuItem = paramFileSelectorUI.YrQ;
+    if (paramMenuItem != null) {
+      paramMenuItem.release();
+    }
+    paramMenuItem = paramFileSelectorUI.YrQ;
+    if (paramMenuItem != null) {
+      paramMenuItem.removeAllViews();
+    }
+    paramMenuItem = paramFileSelectorUI.getContentView();
+    if (paramMenuItem == null)
+    {
+      paramFileSelectorUI = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(245664);
+      throw paramFileSelectorUI;
+    }
+    ((ViewGroup)paramMenuItem).removeView((View)paramFileSelectorUI.YrQ);
+    paramFileSelectorUI.setBackBtn(new FileSelectorUI..ExternalSyntheticLambda4(paramFileSelectorUI), R.k.actionbar_quit_webview_icon);
+    DropdownListView localDropdownListView = paramFileSelectorUI.YrM;
+    paramMenuItem = localDropdownListView;
+    if (localDropdownListView == null)
+    {
+      kotlin.g.b.s.bIx("dropdownListView");
+      paramMenuItem = null;
+    }
+    paramMenuItem.setVisibility(0);
+    paramFileSelectorUI.iNY();
+    paramFileSelectorUI.iNX();
+    paramFileSelectorUI.setRequestedOrientation(1);
+    paramFileSelectorUI.addSearchMenu(true, (com.tencent.mm.ui.tools.s)paramFileSelectorUI.YrJ);
+    paramFileSelectorUI.YrR = false;
+    paramFileSelectorUI = g.LAS;
+    g.gjg();
+    AppMethodBeat.o(245664);
+    return false;
+  }
+  
+  private static final boolean e(FileSelectorUI paramFileSelectorUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(245665);
+    kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+    Log.i("MicroMsg.FileSelectorUI", "backBtn");
+    paramFileSelectorUI.Kh(true);
+    AppMethodBeat.o(245665);
+    return false;
+  }
+  
+  private final void evt()
+  {
+    AppMethodBeat.i(245633);
+    e locale = this.YrI;
+    Object localObject = locale;
+    if (locale == null)
+    {
+      kotlin.g.b.s.bIx("adapter");
+      localObject = null;
+    }
+    int j = ((e)localObject).YrZ.size();
+    localObject = iNU();
+    int i;
+    if (localObject == null) {
+      i = 0;
+    }
+    for (;;)
     {
       i += j;
       if (3 == this.scene) {
-        break label150;
+        break label158;
       }
       if (i <= 0) {
         break;
       }
-      updateOptionMenuText(1, getString(R.l.app_send).toString() + "(" + i + "/9)");
+      updateOptionMenuText(1, getString(R.l.app_send) + '(' + i + "/9)");
       enableOptionMenu(1, true);
-      AppMethodBeat.o(280775);
+      AppMethodBeat.o(245633);
       return;
+      localObject = ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject).iOS();
+      if (localObject == null) {
+        i = 0;
+      } else {
+        i = ((Integer)localObject).intValue();
+      }
     }
     updateOptionMenuText(1, getString(R.l.app_send));
     enableOptionMenu(1, false);
-    label150:
-    AppMethodBeat.o(280775);
+    label158:
+    AppMethodBeat.o(245633);
   }
   
-  private final com.tencent.mm.pluginsdk.ui.tools.a.a.b.a hne()
+  private static final boolean f(FileSelectorUI paramFileSelectorUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(280750);
-    com.tencent.mm.pluginsdk.ui.tools.a.a.b.a locala = (com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)this.Rvk.getValue();
-    AppMethodBeat.o(280750);
+    AppMethodBeat.i(245669);
+    kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+    Log.i("MicroMsg.FileSelectorUI", "backBtn");
+    paramMenuItem = paramFileSelectorUI.YrQ;
+    if (paramMenuItem != null) {
+      paramMenuItem.removeAllViews();
+    }
+    paramMenuItem = paramFileSelectorUI.getContentView();
+    if (paramMenuItem == null)
+    {
+      paramFileSelectorUI = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(245669);
+      throw paramFileSelectorUI;
+    }
+    ((ViewGroup)paramMenuItem).removeView((View)paramFileSelectorUI.YrQ);
+    paramFileSelectorUI.setBackBtn(new FileSelectorUI..ExternalSyntheticLambda6(paramFileSelectorUI), R.k.actionbar_quit_webview_icon);
+    DropdownListView localDropdownListView = paramFileSelectorUI.YrM;
+    paramMenuItem = localDropdownListView;
+    if (localDropdownListView == null)
+    {
+      kotlin.g.b.s.bIx("dropdownListView");
+      paramMenuItem = null;
+    }
+    paramMenuItem.setVisibility(0);
+    paramFileSelectorUI.iNY();
+    paramFileSelectorUI.iNW();
+    paramFileSelectorUI.addSearchMenu(true, (com.tencent.mm.ui.tools.s)paramFileSelectorUI.YrJ);
+    paramFileSelectorUI.YrR = false;
+    paramFileSelectorUI = g.LAS;
+    g.gjg();
+    AppMethodBeat.o(245669);
+    return false;
+  }
+  
+  private static final boolean g(FileSelectorUI paramFileSelectorUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(245681);
+    kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+    Log.i("MicroMsg.FileSelectorUI", "onKeyDown, go back");
+    paramFileSelectorUI.Kh(true);
+    AppMethodBeat.o(245681);
+    return false;
+  }
+  
+  private final com.tencent.mm.pluginsdk.ui.tools.b.a.b.a iNU()
+  {
+    AppMethodBeat.i(245603);
+    com.tencent.mm.pluginsdk.ui.tools.b.a.b.a locala = (com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)this.YrH.getValue();
+    AppMethodBeat.o(245603);
     return locala;
   }
   
-  private final void hng()
+  private final void iNW()
   {
-    AppMethodBeat.i(280760);
+    AppMethodBeat.i(245618);
     initActionBarOperationArea();
-    String str = getString(R.l.eEG);
+    String str = getString(R.l.gHz);
     int i = R.e.FG_0;
-    initActionBarOperationAreaTxt(str, i, i, R.g.dny, R.g.dnx);
-    AppMethodBeat.o(280760);
+    initActionBarOperationAreaTxt(str, i, i, R.g.fnM, R.g.fnL);
+    AppMethodBeat.o(245618);
   }
   
-  private final void hnh()
+  private final void iNX()
   {
-    AppMethodBeat.i(280761);
+    AppMethodBeat.i(245622);
     initActionBarOperationArea();
-    String str = this.Rvo;
-    if (Util.isNullOrNil(this.Rvo)) {
-      str = getString(R.l.eEG);
+    String str = this.YrL;
+    if (Util.isNullOrNil(this.YrL)) {
+      str = getString(R.l.gHz);
     }
     if (str != null)
     {
       int i = R.e.FG_0;
-      initActionBarOperationAreaTxt(str, i, i, R.g.dny, R.g.dnx);
+      initActionBarOperationAreaTxt(str, i, i, R.g.fnM, R.g.fnL);
     }
-    AppMethodBeat.o(280761);
+    AppMethodBeat.o(245622);
   }
   
-  private final void hni()
+  private final void iNY()
   {
-    AppMethodBeat.i(280763);
-    setActionBarOperationAreaClickListener((AlbumChooserView.a)new ad(this));
-    AppMethodBeat.o(280763);
+    AppMethodBeat.i(245625);
+    setActionBarOperationAreaClickListener(new FileSelectorUI..ExternalSyntheticLambda10(this));
+    AppMethodBeat.o(245625);
+  }
+  
+  private static final void kR(View paramView)
+  {
+    AppMethodBeat.i(245655);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(245655);
+  }
+  
+  private final void pr(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(245604);
+    if (Util.isNullOrNil(paramString1))
+    {
+      Log.e("MicroMsg.FileSelectorUI", "open file but file not exist");
+      AppMethodBeat.o(245604);
+      return;
+    }
+    String str = com.tencent.mm.vfs.y.alV(paramString1);
+    if ((3 == this.scene) || (4 == this.scene))
+    {
+      if ((n.T(str, "ppt", true)) || (n.T(str, "pdf", true)) || (n.T(str, "doc", true)) || (n.T(str, "docx", true)) || (n.T(str, "pptx", true)))
+      {
+        if (paramString1 != null)
+        {
+          kotlin.g.b.s.s(str, "ext");
+          bB(paramString2, paramString1, str);
+          AppMethodBeat.o(245604);
+        }
+      }
+      else
+      {
+        aa.dc((Context)this, getResources().getString(R.l.gUr));
+        AppMethodBeat.o(245604);
+      }
+    }
+    else {
+      a.b((Activity)this, paramString1, str, 1);
+    }
+    AppMethodBeat.o(245604);
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(280758);
+    AppMethodBeat.i(245828);
     super.finish();
-    Object localObject1 = this.Rvl;
-    if (localObject1 == null) {
-      kotlin.g.b.p.bGy("adapter");
+    Object localObject2 = this.YrI;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("adapter");
+      localObject1 = null;
     }
-    ((e)localObject1).RvF.hnj();
-    localObject1 = this.Rvs;
-    Object localObject2 = ((f)localObject1).RvO;
+    ((e)localObject1).Ysa.iNZ();
+    localObject1 = this.YrP;
+    localObject2 = ((f)localObject1).Ysj;
     Object localObject3 = new StringBuffer();
-    Object localObject4 = (Iterable)((f)localObject1).RvP;
+    Object localObject4 = (Iterable)((f)localObject1).Ysk;
     int i = 0;
     localObject4 = ((Iterable)localObject4).iterator();
     while (((Iterator)localObject4).hasNext())
     {
       Object localObject5 = ((Iterator)localObject4).next();
       if (i < 0) {
-        kotlin.a.j.iBO();
+        kotlin.a.p.kkW();
       }
       ((StringBuffer)localObject3).append((String)localObject5);
-      if (i < ((f)localObject1).RvP.size() - 1) {
+      if (i < ((f)localObject1).Ysk.size() - 1) {
         ((StringBuffer)localObject3).append("|");
       }
       i += 1;
     }
     localObject3 = ((StringBuffer)localObject3).toString();
-    kotlin.g.b.p.j(localObject3, "sb.toString()");
-    ((kb)localObject2).AZ((String)localObject3);
-    ((f)localObject1).RvO.bpa();
-    localObject2 = c.Yyz;
-    c.a((com.tencent.mm.plugin.report.a)((f)localObject1).RvO);
-    AppMethodBeat.o(280758);
+    kotlin.g.b.s.s(localObject3, "sb.toString()");
+    ((ms)localObject2).jcm = ((ms)localObject2).F("searchKeyword", (String)localObject3, true);
+    ((f)localObject1).Ysj.bMH();
+    localObject2 = com.tencent.mm.util.c.agsX;
+    com.tencent.mm.util.c.a((com.tencent.mm.plugin.report.a)((f)localObject1).Ysj);
+    AppMethodBeat.o(245828);
   }
   
   public final int getForceOrientation()
   {
-    if (!this.Rvu) {
+    if (!this.YrR) {
       return 1;
     }
     return 4;
@@ -407,18 +924,21 @@ public final class FileSelectorUI
   
   public final int getLayoutId()
   {
-    return R.i.ehc;
+    return R.i.gjY;
   }
   
-  public final int hnf()
+  public final int iNV()
   {
-    AppMethodBeat.i(280753);
-    e locale = this.Rvl;
-    if (locale == null) {
-      kotlin.g.b.p.bGy("adapter");
+    AppMethodBeat.i(245809);
+    e locale2 = this.YrI;
+    e locale1 = locale2;
+    if (locale2 == null)
+    {
+      kotlin.g.b.s.bIx("adapter");
+      locale1 = null;
     }
-    int i = locale.RvE.size();
-    AppMethodBeat.o(280753);
+    int i = locale1.YrZ.size();
+    AppMethodBeat.o(245809);
     return i;
   }
   
@@ -429,511 +949,525 @@ public final class FileSelectorUI
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(280771);
-    Object localObject1 = hne();
+    AppMethodBeat.i(245851);
+    Object localObject1 = iNU();
     int i;
-    if (((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject1).RyK != null)
+    if (((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject1).Yvi != null)
     {
-      localObject1 = ((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject1).RyK;
+      localObject1 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject1).Yvi;
       if ((localObject1 != null) && (((PinnedHeaderRecyclerView)localObject1).getVisibility() == 0))
       {
         i = 1;
         if (i == 0) {
-          break label749;
+          break label736;
         }
-        localObject1 = hne();
-        switch (paramInt2)
-        {
-        }
+        localObject1 = iNU();
       }
     }
     Object localObject2;
     Object localObject3;
-    for (;;)
+    Object localObject4;
+    switch (paramInt2)
     {
-      AppMethodBeat.o(280771);
-      return;
-      i = 0;
-      break;
-      i = 0;
-      break;
-      if (paramIntent != null)
+    case -1: 
+    default: 
+    case 0: 
+      do
       {
-        localObject2 = paramIntent.getStringArrayListExtra("preview_image_list");
-        if (localObject2 != null) {}
-        Object localObject4;
-        for (paramIntent = Integer.valueOf(((ArrayList)localObject2).size());; paramIntent = Integer.valueOf(0))
+        AppMethodBeat.o(245851);
+        return;
+        i = 0;
+        break;
+        i = 0;
+        break;
+      } while (paramIntent == null);
+      paramIntent = paramIntent.getStringArrayListExtra("preview_image_list");
+      if (paramIntent == null) {}
+      for (paramInt1 = 0;; paramInt1 = paramIntent.size())
+      {
+        Log.i("FS.AlbumFileUIC", "paths size: %d.", new Object[] { Integer.valueOf(paramInt1) });
+        if ((paramIntent == null) || (((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject1).Yvj == null)) {
+          break;
+        }
+        localObject2 = new androidx.b.b();
+        paramInt1 = 0;
+        for (;;)
         {
-          Log.i("FS.AlbumFileUIC", "paths size: %d.", new Object[] { paramIntent });
-          if ((localObject2 == null) || (((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject1).RyL == null)) {
+          localObject3 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject1).Yvj;
+          kotlin.g.b.s.checkNotNull(localObject3);
+          if (paramInt1 >= ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).HLB.size()) {
             break;
           }
-          paramIntent = new androidx.b.b();
-          paramInt1 = 0;
-          for (;;)
-          {
-            localObject3 = ((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject1).RyL;
-            if (localObject3 == null) {
-              kotlin.g.b.p.iCn();
-            }
-            if (paramInt1 >= ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).BZH.size()) {
-              break;
-            }
-            localObject3 = ((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject1).RyL;
-            if (localObject3 == null) {
-              kotlin.g.b.p.iCn();
-            }
-            localObject3 = ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).BZH.get(paramInt1);
-            kotlin.g.b.p.j(localObject3, "adapter!!.selectedMediaItems[i]");
-            localObject3 = (GalleryItem.MediaItem)localObject3;
-            localObject4 = ((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject1).RyL;
-            if (localObject4 == null) {
-              kotlin.g.b.p.iCn();
-            }
-            paramInt2 = ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject4).Gfp.indexOf(localObject3);
-            if (paramInt2 != -1) {
-              paramIntent.add(Integer.valueOf(paramInt2));
-            }
-            paramInt1 += 1;
+          localObject3 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject1).Yvj;
+          kotlin.g.b.s.checkNotNull(localObject3);
+          localObject3 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).HLB.get(paramInt1);
+          kotlin.g.b.s.s(localObject3, "adapter!!.selectedMediaItems[i]");
+          localObject3 = (GalleryItem.MediaItem)localObject3;
+          localObject4 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject1).Yvj;
+          kotlin.g.b.s.checkNotNull(localObject4);
+          paramInt2 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject4).MaJ.indexOf(localObject3);
+          if (paramInt2 != -1) {
+            ((androidx.b.b)localObject2).add(Integer.valueOf(paramInt2));
           }
+          paramInt1 += 1;
         }
-        localObject3 = ((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject1).RyL;
-        if (localObject3 != null)
+      }
+      localObject3 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject1).Yvj;
+      if (localObject3 != null)
+      {
+        kotlin.g.b.s.u(paramIntent, "selectedPaths");
+        Log.d("MicroMsg.AlbumAdapter", "before set selected paths, selected[%s].", new Object[] { ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).HLB });
+        ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).HLB.clear();
+        localObject4 = paramIntent.iterator();
+        while (((Iterator)localObject4).hasNext())
         {
-          kotlin.g.b.p.k(localObject2, "selectedPaths");
-          Log.d("MicroMsg.AlbumAdapter", "before set selected paths, selected[%s].", new Object[] { ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).BZH });
-          ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).BZH.clear();
-          localObject4 = ((ArrayList)localObject2).iterator();
-          while (((Iterator)localObject4).hasNext())
+          Object localObject5 = ((Iterator)localObject4).next();
+          kotlin.g.b.s.s(localObject5, "selectedPaths");
+          localObject5 = (String)localObject5;
+          Object localObject6 = GalleryItem.MediaItem.a(0, 0L, (String)localObject5, "", "");
+          kotlin.g.b.s.s(localObject6, "createFromType(0, 0, selectPath, \"\", \"\")");
+          if (e.fAp() != null)
           {
-            Object localObject5 = (String)((Iterator)localObject4).next();
-            Object localObject6 = GalleryItem.MediaItem.a(0, 0L, (String)localObject5, "", "");
-            kotlin.g.b.p.j(localObject6, "GalleryItem.MediaItem.cr…0, 0, selectPath, \"\", \"\")");
-            if (e.etn() != null)
+            paramInt1 = e.fAp().indexOf(localObject6);
+            if (paramInt1 >= 0)
             {
-              paramInt1 = e.etn().indexOf(localObject6);
-              if (paramInt1 >= 0)
-              {
-                localObject5 = e.etn().get(paramInt1);
-                kotlin.g.b.p.j(localObject5, "GalleryCore.getPreviewItems()[index]");
-                localObject5 = (GalleryItem.MediaItem)localObject5;
-                ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).BZH.add(localObject5);
-              }
-              else
-              {
-                Log.d("MicroMsg.AlbumAdapter", "media item no exist on preview items.");
-                if (localObject5 == null)
-                {
-                  paramIntent = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-                  AppMethodBeat.o(280771);
-                  throw paramIntent;
-                }
-                localObject6 = ((String)localObject5).toLowerCase();
-                kotlin.g.b.p.j(localObject6, "(this as java.lang.String).toLowerCase()");
-                if (n.pu((String)localObject6, "mp4")) {
-                  ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).BZH.add(GalleryItem.MediaItem.a(2, 0L, (String)localObject5, "", ""));
-                } else {
-                  ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).BZH.add(GalleryItem.MediaItem.a(1, 0L, (String)localObject5, "", ""));
-                }
+              localObject5 = e.fAp().get(paramInt1);
+              kotlin.g.b.s.s(localObject5, "GalleryCore.getPreviewItems()[index]");
+              localObject5 = (GalleryItem.MediaItem)localObject5;
+              ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).HLB.add(localObject5);
+            }
+            else
+            {
+              Log.d("MicroMsg.AlbumAdapter", "media item no exist on preview items.");
+              localObject6 = ((String)localObject5).toLowerCase();
+              kotlin.g.b.s.s(localObject6, "(this as java.lang.String).toLowerCase()");
+              if (n.rs((String)localObject6, "mp4")) {
+                ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).HLB.add(GalleryItem.MediaItem.a(2, 0L, (String)localObject5, "", ""));
+              } else {
+                ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).HLB.add(GalleryItem.MediaItem.a(1, 0L, (String)localObject5, "", ""));
               }
             }
           }
-          Log.d("MicroMsg.AlbumAdapter", "after set selected paths, selected[%s].", new Object[] { ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).BZH });
         }
-        localObject3 = ((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject1).RyL;
-        if (localObject3 != null)
+        Log.d("MicroMsg.AlbumAdapter", "after set selected paths, selected[%s].", new Object[] { ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).HLB });
+      }
+      localObject3 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject1).Yvj;
+      if (localObject3 != null)
+      {
+        kotlin.g.b.s.u(localObject2, "notifiedItems");
+        paramInt1 = 0;
+        i = ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).HLB.size() - 1;
+        if (i < 0) {
+          break;
+        }
+      }
+      break;
+    }
+    for (;;)
+    {
+      paramInt2 = paramInt1 + 1;
+      localObject4 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).HLB.get(paramInt1);
+      kotlin.g.b.s.s(localObject4, "mSelectMediaItems[i]");
+      localObject4 = (GalleryItem.MediaItem)localObject4;
+      paramInt1 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).MaJ.indexOf(localObject4);
+      if (paramInt1 != -1) {
+        ((androidx.b.b)localObject2).add(Integer.valueOf(paramInt1));
+      }
+      if (paramInt2 > i)
+      {
+        localObject2 = ((androidx.b.b)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          kotlin.g.b.p.k(paramIntent, "notifiedItems");
-          paramInt1 = 0;
-          paramInt2 = ((Collection)((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).BZH).size();
-          while (paramInt1 < paramInt2)
-          {
-            localObject4 = ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).BZH.get(paramInt1);
-            kotlin.g.b.p.j(localObject4, "mSelectMediaItems[i]");
-            localObject4 = (GalleryItem.MediaItem)localObject4;
-            i = ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).Gfp.indexOf(localObject4);
-            if (i != -1) {
-              paramIntent.add(Integer.valueOf(i));
-            }
-            paramInt1 += 1;
-          }
-          paramIntent = paramIntent.iterator();
-          while (paramIntent.hasNext()) {
-            ((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject3).cL(((Number)paramIntent.next()).intValue());
-          }
+          localObject4 = ((Iterator)localObject2).next();
+          kotlin.g.b.s.s(localObject4, "notifiedItems");
+          ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject3).fV(((Number)localObject4).intValue());
         }
-        ((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject1).Ta(((ArrayList)localObject2).size());
-        AppMethodBeat.o(280771);
+        ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject1).WH(paramIntent.size());
+        AppMethodBeat.o(245851);
         return;
         Log.e("FS.AlbumFileUIC", "WTF!!!");
-        ((com.tencent.mm.pluginsdk.ui.tools.a.a.b.a)localObject1).RyP.finish();
-      }
-    }
-    label749:
-    if ((paramInt1 == 4) && (paramIntent != null))
-    {
-      localObject1 = paramIntent.getStringExtra("filePath");
-      localObject2 = paramIntent.getStringExtra("fileName");
-      localObject3 = paramIntent.getStringExtra("fileExt");
-      if ((n.L((String)localObject3, "ppt", true)) || (n.L((String)localObject3, "pdf", true)) || (n.L((String)localObject3, "doc", true)) || (n.L((String)localObject3, "docx", true)) || (n.L((String)localObject3, "pptx", true)))
-      {
-        if ((localObject2 != null) && (localObject1 != null) && (localObject3 != null))
+        ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject1).Yvh.finish();
+        break;
+        label736:
+        if ((paramInt1 == 4) && (paramIntent != null))
         {
-          bh((String)localObject2, (String)localObject1, (String)localObject3);
-          AppMethodBeat.o(280771);
+          localObject1 = paramIntent.getStringExtra("filePath");
+          localObject2 = paramIntent.getStringExtra("fileName");
+          localObject3 = paramIntent.getStringExtra("fileExt");
+          if ((n.T((String)localObject3, "ppt", true)) || (n.T((String)localObject3, "pdf", true)) || (n.T((String)localObject3, "doc", true)) || (n.T((String)localObject3, "docx", true)) || (n.T((String)localObject3, "pptx", true)))
+          {
+            if ((localObject2 != null) && (localObject1 != null) && (localObject3 != null))
+            {
+              bB((String)localObject2, (String)localObject1, (String)localObject3);
+              AppMethodBeat.o(245851);
+            }
+          }
+          else
+          {
+            if (paramIntent.getBooleanExtra("resLoadFailed", false))
+            {
+              aa.dc((Context)this, getResources().getString(R.l.gHD));
+              AppMethodBeat.o(245851);
+              return;
+            }
+            aa.dc((Context)this, getResources().getString(R.l.gUr));
+            AppMethodBeat.o(245851);
+          }
         }
-      }
-      else
-      {
-        if (paramIntent.getBooleanExtra("resLoadFailed", false))
+        else if (((paramInt1 != 0) || (paramInt2 != -1)) && (paramInt1 == 2))
         {
-          com.tencent.mm.ui.base.w.cS((Context)this, getResources().getString(R.l.eEK));
-          AppMethodBeat.o(280771);
-          return;
+          a.a((Activity)this, paramInt1, paramInt2, paramIntent, true, R.l.download_no_match_msg, R.l.download_no_match_title, 1);
+          aa.makeText((Context)this, R.l.file_explorer_cannot_open_file, 0).show();
         }
-        com.tencent.mm.ui.base.w.cS((Context)this, getResources().getString(R.l.eRL));
-        AppMethodBeat.o(280771);
+        AppMethodBeat.o(245851);
+        return;
       }
+      paramInt1 = paramInt2;
     }
-    else if (((paramInt1 != 0) || (paramInt2 != -1)) && (paramInt1 == 2))
-    {
-      a.a((Activity)this, paramInt1, paramInt2, paramIntent, true, R.l.download_no_match_msg, R.l.download_no_match_title, 1);
-      com.tencent.mm.ui.base.w.makeText((Context)this, R.l.file_explorer_cannot_open_file, 0).show();
-    }
-    AppMethodBeat.o(280771);
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(280755);
-    kotlin.g.b.p.k(paramConfiguration, "newConfig");
+    AppMethodBeat.i(245817);
+    kotlin.g.b.s.u(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
-    if ((this.Rvu) && (this.Rvt != null))
+    if ((this.YrR) && (this.YrQ != null))
     {
-      paramConfiguration = this.Rvt;
+      paramConfiguration = this.YrQ;
       if (paramConfiguration != null)
       {
-        paramConfiguration.hNy();
-        paramConfiguration.hNx();
-        AppMethodBeat.o(280755);
-        return;
+        paramConfiguration.jqe();
+        paramConfiguration.jqd();
       }
     }
-    AppMethodBeat.o(280755);
+    AppMethodBeat.o(245817);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(280752);
+    Object localObject2 = null;
+    AppMethodBeat.i(245807);
     super.onCreate(paramBundle);
     long l = System.currentTimeMillis();
-    this.fCl = getIntent().getStringExtra("TO_USER");
+    this.hHa = getIntent().getStringExtra("TO_USER");
     this.scene = getIntent().getIntExtra("scene", 0);
-    hni();
-    setBackBtn((MenuItem.OnMenuItemClickListener)new q(this), R.k.actionbar_quit_webview_icon);
-    if ((3 != this.scene) && (4 != this.scene)) {
-      addTextOptionMenu(1, getString(R.l.app_send), (MenuItem.OnMenuItemClickListener)new r(this), null, w.b.Wao);
-    }
-    for (;;)
+    iNY();
+    setBackBtn(new FileSelectorUI..ExternalSyntheticLambda3(this), R.k.actionbar_quit_webview_icon);
+    if ((3 != this.scene) && (4 != this.scene))
     {
-      hng();
-      paramBundle = findViewById(R.h.dFn);
-      kotlin.g.b.p.j(paramBundle, "findViewById(R.id.dropdown_list_view)");
-      this.Rvp = ((DropdownListView)paramBundle);
-      paramBundle = getString(R.l.eEG);
-      kotlin.g.b.p.j(paramBundle, "getString(R.string.file_explorer_title_chatting)");
+      addTextOptionMenu(1, getString(R.l.app_send), new FileSelectorUI..ExternalSyntheticLambda0(this), null, y.b.adEJ);
+      iNW();
+      this.YrM = ((DropdownListView)findViewById(R.h.fGr));
+      paramBundle = getString(R.l.gHz);
+      kotlin.g.b.s.s(paramBundle, "getString(R.string.file_explorer_title_chatting)");
       paramBundle = new DropdownListView.c(paramBundle, R.k.icons_outlined_copy, R.e.FG_0, 1);
-      localObject = getString(R.l.eEH);
-      kotlin.g.b.p.j(localObject, "getString(R.string.file_explorer_title_fav)");
-      localObject = new DropdownListView.c((String)localObject, R.k.icons_outlined_favorites, R.e.FG_0, 2);
-      str1 = getString(R.l.eEI);
-      kotlin.g.b.p.j(str1, "getString(R.string.file_explorer_title_local)");
-      paramBundle = kotlin.a.j.ag(new DropdownListView.c[] { paramBundle, localObject, new DropdownListView.c(str1, R.k.icons_outlined_folder, R.e.FG_0, 3) });
+      Object localObject1 = getString(R.l.gHA);
+      kotlin.g.b.s.s(localObject1, "getString(R.string.file_explorer_title_fav)");
+      localObject1 = new DropdownListView.c((String)localObject1, R.k.icons_outlined_favorites, R.e.FG_0, 2);
+      Object localObject3 = getString(R.l.gHB);
+      kotlin.g.b.s.s(localObject3, "getString(R.string.file_explorer_title_local)");
+      localObject3 = kotlin.a.p.al(new DropdownListView.c[] { paramBundle, localObject1, new DropdownListView.c((String)localObject3, R.k.icons_outlined_folder, R.e.FG_0, 3) });
       if (3 != this.scene)
       {
-        localObject = getString(R.l.eEF);
-        kotlin.g.b.p.j(localObject, "getString(R.string.file_explorer_title_album)");
-        paramBundle.add(new DropdownListView.c((String)localObject, R.k.icons_outlined_album, R.e.FG_0, 4));
+        paramBundle = getString(R.l.gHy);
+        kotlin.g.b.s.s(paramBundle, "getString(R.string.file_explorer_title_album)");
+        ((ArrayList)localObject3).add(new DropdownListView.c(paramBundle, R.k.icons_outlined_album, R.e.FG_0, 4));
       }
-      localObject = this.Rvp;
-      if (localObject == null) {
-        kotlin.g.b.p.bGy("dropdownListView");
+      localObject1 = this.YrM;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("dropdownListView");
+        paramBundle = null;
       }
-      ((DropdownListView)localObject).setItems((List)paramBundle);
-      paramBundle = this.Rvp;
-      if (paramBundle == null) {
-        kotlin.g.b.p.bGy("dropdownListView");
-      }
-      paramBundle.setListener((DropdownListView.d)new s(this));
-      paramBundle = this.Rvp;
-      if (paramBundle == null) {
-        kotlin.g.b.p.bGy("dropdownListView");
-      }
-      paramBundle.setOnItemStateChanged((DropdownListView.e)new t());
-      this.Rvl = new e();
-      paramBundle = findViewById(R.h.dGM);
+      paramBundle.setItems((List)localObject3);
+      paramBundle = this.YrM;
       if (paramBundle != null) {
+        break label1122;
+      }
+      kotlin.g.b.s.bIx("dropdownListView");
+      paramBundle = null;
+      label336:
+      paramBundle.setListener((DropdownListView.d)new r(this));
+      paramBundle = this.YrM;
+      if (paramBundle != null) {
+        break label1125;
+      }
+      kotlin.g.b.s.bIx("dropdownListView");
+      paramBundle = null;
+      label368:
+      paramBundle.setOnItemStateChanged((DropdownListView.f)new s());
+      this.YrI = new e();
+      this.qgc = ((ListView)findViewById(R.h.fHT));
+      localObject1 = this.YrI;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramBundle = null;
+      }
+      paramBundle.a(h.Ysq);
+      paramBundle = this.qgc;
+      if (paramBundle != null) {
+        break label1128;
+      }
+      kotlin.g.b.s.bIx("listView");
+      paramBundle = null;
+      label454:
+      localObject3 = this.YrI;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = null;
+      }
+      paramBundle.setAdapter((ListAdapter)localObject1);
+      localObject1 = this.qgc;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("listView");
+        paramBundle = null;
+      }
+      paramBundle.setOnTouchListener(new FileSelectorUI..ExternalSyntheticLambda8(this));
+      localObject1 = this.qgc;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("listView");
+        paramBundle = null;
+      }
+      paramBundle.setOnItemClickListener(this.vEc);
+      paramBundle = this.qgc;
+      if (paramBundle != null) {
+        break label1131;
+      }
+      kotlin.g.b.s.bIx("listView");
+      paramBundle = null;
+      label568:
+      paramBundle.setOnScrollListener((AbsListView.OnScrollListener)new t(this));
+      this.njO = ((TextView)findViewById(R.h.fHO));
+      paramBundle = this.njO;
+      if (paramBundle != null) {
+        paramBundle.setVisibility(8);
+      }
+      paramBundle = this.qgc;
+      if (paramBundle != null) {
+        break label1134;
+      }
+      kotlin.g.b.s.bIx("listView");
+      paramBundle = null;
+      label629:
+      paramBundle.setEmptyView((View)this.njO);
+      paramBundle = iNU();
+      Log.i("FS.AlbumFileUIC", "onCreate, %s.", new Object[] { paramBundle });
+      localObject1 = (Activity)paramBundle.Yvh;
+      paramBundle.Yvh.getString(R.l.permission_tips_title);
+      localObject3 = paramBundle.Yvh.getString(R.l.gallery_permission_msg);
+      paramBundle.HMP = com.tencent.mm.pluginsdk.permission.b.a((Activity)localObject1, new String[] { "android.permission.READ_EXTERNAL_STORAGE" }, 145, (String)localObject3);
+      Log.i("FS.AlbumFileUIC", "checkPermission checkMediaStorage[%b]", new Object[] { Boolean.valueOf(paramBundle.HMP) });
+      paramBundle.HMG = System.currentTimeMillis();
+      com.tencent.mm.pluginsdk.ui.tools.b.a.b.a.start = System.currentTimeMillis();
+      paramBundle.hQQ = paramBundle.Yvh.getIntent().getStringExtra("GalleryUI_FromUser");
+      paramBundle.toUser = paramBundle.Yvh.getIntent().getStringExtra("GalleryUI_ToUser");
+      paramBundle.lzP = ((ProgressDialog)w.a((Context)paramBundle.Yvh, (CharSequence)paramBundle.Yvh.getString(R.l.app_waiting), false));
+      paramBundle.Yvk = a.b.Yvn;
+      e.fAn().sfB = paramBundle.mpb;
+      e.fAn().setQueryType(paramBundle.HMO);
+      Log.i("FS.AlbumFileUIC", "query source: " + paramBundle.mpb + ", queryType: " + paramBundle.HMO);
+      paramBundle.initView();
+      if (paramBundle.HMP) {
+        paramBundle.fBr();
+      }
+      e.fAv();
+      iNU().setVisibility(8);
+      iNU().Yvl = ((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a.d)new u(this));
+      this.YrK = findViewById(R.h.fVz);
+      paramBundle = this.YrK;
+      if (paramBundle != null) {
+        paramBundle.setVisibility(8);
+      }
+      paramBundle = this.YrK;
+      if (paramBundle != null) {
+        paramBundle.setOnClickListener(FileSelectorUI..ExternalSyntheticLambda7.INSTANCE);
+      }
+      this.YrJ = new r();
+      paramBundle = this.YrJ;
+      if (paramBundle != null) {
+        paramBundle.afKz = ((s.c)new v(this));
+      }
+      addSearchMenu(true, (com.tencent.mm.ui.tools.s)this.YrJ);
+      evt();
+      Log.i("MicroMsg.FileSelectorUI", kotlin.g.b.s.X("onCreate, cost:", Long.valueOf(System.currentTimeMillis() - l)));
+      paramBundle = this.YrM;
+      if (paramBundle != null) {
+        break label1137;
+      }
+      kotlin.g.b.s.bIx("dropdownListView");
+      paramBundle = localObject2;
+    }
+    label1122:
+    label1125:
+    label1128:
+    label1131:
+    label1134:
+    label1137:
+    for (;;)
+    {
+      paramBundle.setFolderAlbumDialogDismiss((DropdownListView.e)new q(this));
+      com.tencent.mm.ui.a.v((TextView)findViewById(b.e.album_chooser_txt), com.tencent.mm.ck.a.d.ActionBarTextSize);
+      AppMethodBeat.o(245807);
+      return;
+      if (EventCenter.instance.hadListened(this.tjd)) {
         break;
       }
-      paramBundle = new kotlin.t("null cannot be cast to non-null type android.widget.ListView");
-      AppMethodBeat.o(280752);
-      throw paramBundle;
-      if (!EventCenter.instance.hadListened(this.qeo)) {
-        EventCenter.instance.addListener(this.qeo);
-      }
+      this.tjd.alive();
+      break;
+      break label336;
+      break label368;
+      break label454;
+      break label568;
+      break label629;
     }
-    this.niO = ((ListView)paramBundle);
-    paramBundle = this.Rvl;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("adapter");
-    }
-    paramBundle.a(h.RvV);
-    paramBundle = this.niO;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("listView");
-    }
-    Object localObject = this.Rvl;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("adapter");
-    }
-    paramBundle.setAdapter((ListAdapter)localObject);
-    paramBundle = this.niO;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("listView");
-    }
-    paramBundle.setOnTouchListener((View.OnTouchListener)new u(this));
-    paramBundle = this.niO;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("listView");
-    }
-    paramBundle.setOnItemClickListener(this.syv);
-    paramBundle = this.niO;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("listView");
-    }
-    paramBundle.setOnScrollListener((AbsListView.OnScrollListener)new v(this));
-    this.kGU = ((TextView)findViewById(R.h.dGH));
-    paramBundle = this.kGU;
-    if (paramBundle != null) {
-      paramBundle.setVisibility(8);
-    }
-    paramBundle = this.niO;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("listView");
-    }
-    if (paramBundle != null) {
-      paramBundle.setEmptyView((View)this.kGU);
-    }
-    paramBundle = hne();
-    Log.i("FS.AlbumFileUIC", "onCreate, %s.", new Object[] { paramBundle });
-    localObject = (Activity)paramBundle.RyP;
-    String str1 = paramBundle.RyP.getString(R.l.permission_tips_title);
-    String str2 = paramBundle.RyP.getString(R.l.gallery_permission_msg);
-    paramBundle.CaN = com.tencent.mm.pluginsdk.permission.b.a((Activity)localObject, new String[] { "android.permission.READ_EXTERNAL_STORAGE" }, 145, str1, str2);
-    Log.i("FS.AlbumFileUIC", "checkPermission checkMediaStorage[%b]", new Object[] { Boolean.valueOf(paramBundle.CaN) });
-    paramBundle.CaE = System.currentTimeMillis();
-    com.tencent.mm.pluginsdk.ui.tools.a.a.b.a.start = System.currentTimeMillis();
-    paramBundle.fLi = paramBundle.RyP.getIntent().getStringExtra("GalleryUI_FromUser");
-    paramBundle.toUser = paramBundle.RyP.getIntent().getStringExtra("GalleryUI_ToUser");
-    paramBundle.iXX = ((ProgressDialog)com.tencent.mm.ui.base.s.a((Context)paramBundle.RyP, (CharSequence)paramBundle.RyP.getString(R.l.app_waiting), false));
-    paramBundle.RyM = a.b.RyR;
-    localObject = e.etl();
-    kotlin.g.b.p.j(localObject, "GalleryCore.getMediaQueryService()");
-    ((o)localObject).SU(paramBundle.jQj);
-    localObject = e.etl();
-    kotlin.g.b.p.j(localObject, "GalleryCore.getMediaQueryService()");
-    ((o)localObject).setQueryType(paramBundle.CaM);
-    Log.i("FS.AlbumFileUIC", "query source: " + paramBundle.jQj + ", queryType: " + paramBundle.CaM);
-    paramBundle.initView();
-    if (paramBundle.CaN)
-    {
-      com.tencent.mm.memory.a.a.b.c(com.tencent.mm.memory.a.a.b.ljk).bbn();
-      com.tencent.mm.plugin.gallery.a.esQ().setScene(paramBundle.jQj);
-      Log.i("FS.AlbumFileUIC", "start queryMediaInAlbums %s", new Object[] { paramBundle });
-      e.etl().a((i.c)paramBundle);
-      paramBundle.CaP = com.tencent.mm.pluginsdk.ui.tools.a.a.b.a.hob();
-      e.etl().ax("", paramBundle.CaP);
-      localObject = paramBundle.RyK;
-      if (localObject != null) {
-        ((PinnedHeaderRecyclerView)localObject).postDelayed((Runnable)new a.g(paramBundle), 300L);
-      }
-      paramBundle = com.tencent.mm.plugin.gallery.model.p.BVL;
-      com.tencent.mm.plugin.gallery.model.p.etV().a((com.tencent.mm.plugin.gallery.model.j)new com.tencent.mm.plugin.gallery.model.l());
-      paramBundle = com.tencent.mm.plugin.gallery.model.p.BVL;
-      com.tencent.mm.plugin.gallery.model.p.etV().a((com.tencent.mm.plugin.gallery.model.j)new com.tencent.mm.plugin.gallery.model.q());
-    }
-    e.ett();
-    hne().setVisibility(8);
-    hne().RyN = ((a.d)new w(this));
-    this.Rvn = findViewById(R.h.dTr);
-    paramBundle = this.Rvn;
-    if (paramBundle != null) {
-      paramBundle.setVisibility(8);
-    }
-    paramBundle = this.Rvn;
-    if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)FileSelectorUI.x.Rws);
-    }
-    this.Rvm = new com.tencent.mm.ui.tools.s();
-    paramBundle = this.Rvm;
-    if (paramBundle != null) {
-      paramBundle.a((t.b)new y(this));
-    }
-    addSearchMenu(true, (com.tencent.mm.ui.tools.t)this.Rvm);
-    dFf();
-    Log.i("MicroMsg.FileSelectorUI", "onCreate, cost:" + (System.currentTimeMillis() - l));
-    AppMethodBeat.o(280752);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(280765);
+    AppMethodBeat.i(245831);
     super.onDestroy();
-    Object localObject = hne();
-    if (localObject != null) {
-      e.etl().b((i.c)localObject);
-    }
-    EventCenter.instance.removeListener(this.qeo);
-    localObject = this.Rvm;
+    Object localObject = iNU();
     if (localObject != null)
     {
-      ((com.tencent.mm.ui.tools.s)localObject).hVb();
-      AppMethodBeat.o(280765);
-      return;
+      e.fAn().b((l.c)localObject);
+      e.fAw();
     }
-    AppMethodBeat.o(280765);
+    this.tjd.dead();
+    localObject = this.YrJ;
+    if (localObject != null) {
+      ((r)localObject).jyO();
+    }
+    AppMethodBeat.o(245831);
   }
   
   public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(280767);
-    kotlin.g.b.p.k(paramKeyEvent, "event");
-    if (paramInt == 4)
+    DropdownListView localDropdownListView = null;
+    AppMethodBeat.i(245837);
+    kotlin.g.b.s.u(paramKeyEvent, "event");
+    switch (paramInt)
     {
+    default: 
+      boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+      AppMethodBeat.o(245837);
+      return bool;
+    case 4: 
       Log.i("MicroMsg.FileSelectorUI", "onKeyDown back");
-      if (this.Rvu)
+      if (this.YrR)
       {
-        paramKeyEvent = this.Rvt;
+        paramKeyEvent = this.YrQ;
         if (paramKeyEvent != null) {
           paramKeyEvent.release();
         }
-        paramKeyEvent = this.Rvt;
+        paramKeyEvent = this.YrQ;
         if (paramKeyEvent != null) {
           paramKeyEvent.removeAllViews();
         }
         paramKeyEvent = getContentView();
         if (paramKeyEvent == null)
         {
-          paramKeyEvent = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(280767);
+          paramKeyEvent = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+          AppMethodBeat.o(245837);
           throw paramKeyEvent;
         }
-        ((ViewGroup)paramKeyEvent).removeView((View)this.Rvt);
-        setBackBtn((MenuItem.OnMenuItemClickListener)new aa(this), R.k.actionbar_quit_webview_icon);
-        paramKeyEvent = this.Rvp;
-        if (paramKeyEvent == null) {
-          kotlin.g.b.p.bGy("dropdownListView");
+        ((ViewGroup)paramKeyEvent).removeView((View)this.YrQ);
+        setBackBtn(new FileSelectorUI..ExternalSyntheticLambda5(this), R.k.actionbar_quit_webview_icon);
+        localDropdownListView = this.YrM;
+        paramKeyEvent = localDropdownListView;
+        if (localDropdownListView == null)
+        {
+          kotlin.g.b.s.bIx("dropdownListView");
+          paramKeyEvent = null;
         }
-        if (paramKeyEvent != null) {
-          paramKeyEvent.setVisibility(0);
-        }
-        hni();
-        hnh();
+        paramKeyEvent.setVisibility(0);
+        iNY();
+        iNX();
         setRequestedOrientation(1);
-        addSearchMenu(true, (com.tencent.mm.ui.tools.t)this.Rvm);
-        paramKeyEvent = com.tencent.mm.plugin.multitalk.d.f.FEQ;
-        com.tencent.mm.plugin.multitalk.d.f.fab();
-        this.Rvu = false;
+        addSearchMenu(true, (com.tencent.mm.ui.tools.s)this.YrJ);
+        paramKeyEvent = g.LAS;
+        g.gjg();
+        this.YrR = false;
       }
       for (;;)
       {
-        AppMethodBeat.o(280767);
+        AppMethodBeat.o(245837);
         return true;
-        Ev(false);
+        Kh(false);
       }
     }
-    if (paramInt == 82)
+    if (this.YrM == null) {
+      kotlin.g.b.s.bIx("dropdownListView");
+    }
+    paramKeyEvent = this.YrM;
+    if (paramKeyEvent == null)
     {
-      paramKeyEvent = this.Rvp;
-      if (paramKeyEvent == null) {
-        kotlin.g.b.p.bGy("dropdownListView");
-      }
-      if (paramKeyEvent != null)
-      {
-        paramKeyEvent = this.Rvp;
-        if (paramKeyEvent == null) {
-          kotlin.g.b.p.bGy("dropdownListView");
-        }
-        if (paramKeyEvent != null) {
-          paramKeyEvent.euH();
-        }
-      }
-      AppMethodBeat.o(280767);
+      kotlin.g.b.s.bIx("dropdownListView");
+      paramKeyEvent = localDropdownListView;
+    }
+    for (;;)
+    {
+      paramKeyEvent.fBC();
+      AppMethodBeat.o(245837);
       return true;
     }
-    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(280767);
-    return bool;
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(280756);
+    FrameLayout localFrameLayout = null;
+    AppMethodBeat.i(245823);
     super.onPause();
     if ((!isFinishing()) && (!isDestroyed()))
     {
-      Object localObject = this.Rvp;
-      if (localObject == null) {
-        kotlin.g.b.p.bGy("dropdownListView");
+      if (this.YrM == null) {
+        kotlin.g.b.s.bIx("dropdownListView");
       }
-      if (localObject != null)
+      DropdownListView localDropdownListView = this.YrM;
+      Object localObject = localDropdownListView;
+      if (localDropdownListView == null)
       {
-        localObject = this.Rvp;
-        if (localObject == null) {
-          kotlin.g.b.p.bGy("dropdownListView");
-        }
-        if (localObject != null) {
-          localObject = Boolean.valueOf(((DropdownListView)localObject).tFX);
-        }
-        while (((Boolean)localObject).booleanValue())
+        kotlin.g.b.s.bIx("dropdownListView");
+        localObject = null;
+      }
+      if (((DropdownListView)localObject).wJw)
+      {
+        localObject = this.YrM;
+        if (localObject == null)
         {
-          localObject = this.Rvp;
-          if (localObject == null) {
-            kotlin.g.b.p.bGy("dropdownListView");
-          }
-          if (localObject != null) {
-            if (!((DropdownListView)localObject).tFX)
-            {
-              Log.w("MicroMsg.DropdownListView", "want to close, but it was closed");
-              AppMethodBeat.o(280756);
-              return;
-              localObject = null;
-            }
-            else
-            {
-              if (((DropdownListView)localObject).Ccr)
-              {
-                Log.d("MicroMsg.DropdownListView", "want to close, but it is in animation");
-                AppMethodBeat.o(280756);
-                return;
-              }
-              FrameLayout localFrameLayout = ((DropdownListView)localObject).Ccn;
-              if (localFrameLayout == null) {
-                kotlin.g.b.p.iCn();
-              }
-              localFrameLayout.setVisibility(8);
-              ((DropdownListView)localObject).tFX = false;
-              if ((((DropdownListView)localObject).RuH != null) && (((DropdownListView)localObject).RuH == null)) {
-                kotlin.g.b.p.iCn();
-              }
-              AppMethodBeat.o(280756);
-              return;
-            }
-          }
+          kotlin.g.b.s.bIx("dropdownListView");
+          localObject = localFrameLayout;
+        }
+        while (!((DropdownListView)localObject).wJw)
+        {
+          Log.w("MicroMsg.DropdownListView", "want to close, but it was closed");
+          AppMethodBeat.o(245823);
+          return;
+        }
+        if (((DropdownListView)localObject).HOt)
+        {
+          Log.d("MicroMsg.DropdownListView", "want to close, but it is in animation");
+          AppMethodBeat.o(245823);
+          return;
+        }
+        localFrameLayout = ((DropdownListView)localObject).HOp;
+        kotlin.g.b.s.checkNotNull(localFrameLayout);
+        localFrameLayout.setVisibility(8);
+        ((DropdownListView)localObject).wJw = false;
+        if (((DropdownListView)localObject).Yrd != null) {
+          kotlin.g.b.s.checkNotNull(((DropdownListView)localObject).Yrd);
         }
       }
     }
-    AppMethodBeat.o(280756);
+    AppMethodBeat.o(245823);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -942,604 +1476,573 @@ public final class FileSelectorUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class aa
-    implements MenuItem.OnMenuItemClickListener
+  public final void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
   {
-    aa(FileSelectorUI paramFileSelectorUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(266177);
-      Log.i("MicroMsg.FileSelectorUI", "onKeyDown, go back");
-      FileSelectorUI.h(this.Rvw);
-      AppMethodBeat.o(266177);
-      return false;
-    }
+    AppMethodBeat.i(245795);
+    kotlin.g.b.s.u(paramHashSet, "set");
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(com.tencent.mm.pluginsdk.ui.tools.a.a.class);
+    AppMethodBeat.o(245795);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class ab
-    implements MenuItem.OnMenuItemClickListener
-  {
-    ab(FileSelectorUI paramFileSelectorUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(214029);
-      Log.i("MicroMsg.FileSelectorUI", "backBtn");
-      paramMenuItem = FileSelectorUI.s(this.Rvw);
-      if (paramMenuItem != null) {
-        paramMenuItem.removeAllViews();
-      }
-      paramMenuItem = FileSelectorUI.t(this.Rvw);
-      if (paramMenuItem == null)
-      {
-        paramMenuItem = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(214029);
-        throw paramMenuItem;
-      }
-      ((ViewGroup)paramMenuItem).removeView((View)FileSelectorUI.s(this.Rvw));
-      this.Rvw.setBackBtn((MenuItem.OnMenuItemClickListener)new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(283248);
-          Log.i("MicroMsg.FileSelectorUI", "backBtn");
-          FileSelectorUI.h(this.Rwu.Rvw);
-          AppMethodBeat.o(283248);
-          return false;
-        }
-      }, R.k.actionbar_quit_webview_icon);
-      paramMenuItem = FileSelectorUI.m(this.Rvw);
-      if (paramMenuItem != null) {
-        paramMenuItem.setVisibility(0);
-      }
-      FileSelectorUI.u(this.Rvw);
-      FileSelectorUI.y(this.Rvw);
-      this.Rvw.addSearchMenu(true, (com.tencent.mm.ui.tools.t)FileSelectorUI.g(this.Rvw));
-      FileSelectorUI.x(this.Rvw);
-      paramMenuItem = com.tencent.mm.plugin.multitalk.d.f.FEQ;
-      com.tencent.mm.plugin.multitalk.d.f.fab();
-      AppMethodBeat.o(214029);
-      return false;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class ac
-    implements MenuItem.OnMenuItemClickListener
-  {
-    ac(FileSelectorUI paramFileSelectorUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(289486);
-      Log.i("MicroMsg.FileSelectorUI", "backBtn");
-      ad.eYc().release();
-      paramMenuItem = FileSelectorUI.s(this.Rvw);
-      if (paramMenuItem != null) {
-        paramMenuItem.release();
-      }
-      paramMenuItem = FileSelectorUI.s(this.Rvw);
-      if (paramMenuItem != null) {
-        paramMenuItem.removeAllViews();
-      }
-      paramMenuItem = FileSelectorUI.t(this.Rvw);
-      if (paramMenuItem == null)
-      {
-        paramMenuItem = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(289486);
-        throw paramMenuItem;
-      }
-      ((ViewGroup)paramMenuItem).removeView((View)FileSelectorUI.s(this.Rvw));
-      this.Rvw.setBackBtn((MenuItem.OnMenuItemClickListener)new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(290076);
-          Log.i("MicroMsg.FileSelectorUI", "backBtn");
-          FileSelectorUI.h(this.Rwv.Rvw);
-          AppMethodBeat.o(290076);
-          return false;
-        }
-      }, R.k.actionbar_quit_webview_icon);
-      paramMenuItem = FileSelectorUI.m(this.Rvw);
-      if (paramMenuItem != null) {
-        paramMenuItem.setVisibility(0);
-      }
-      FileSelectorUI.u(this.Rvw);
-      FileSelectorUI.v(this.Rvw);
-      this.Rvw.setRequestedOrientation(1);
-      this.Rvw.addSearchMenu(true, (com.tencent.mm.ui.tools.t)FileSelectorUI.g(this.Rvw));
-      FileSelectorUI.x(this.Rvw);
-      paramMenuItem = com.tencent.mm.plugin.multitalk.d.f.FEQ;
-      com.tencent.mm.plugin.multitalk.d.f.fab();
-      AppMethodBeat.o(289486);
-      return false;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onAlbumChooserViewClick"})
-  static final class ad
-    implements AlbumChooserView.a
-  {
-    ad(FileSelectorUI paramFileSelectorUI) {}
-    
-    public final void euC()
-    {
-      AppMethodBeat.i(276899);
-      Log.i("MicroMsg.FileSelectorUI", "onAlbumChooserViewClick.");
-      FileSelectorUI.a(this.Rvw, null);
-      this.Rvw.playActionBarOperationAreaAnim();
-      DropdownListView localDropdownListView = FileSelectorUI.m(this.Rvw);
-      if (localDropdownListView != null)
-      {
-        localDropdownListView.euH();
-        AppMethodBeat.o(276899);
-        return;
-      }
-      AppMethodBeat.o(276899);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;", "Landroid/widget/BaseAdapter;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;)V", "FILE_TYPE_COUNT", "", "TAG", "", "chattingFileSource", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ChattingFileSource;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "favFileSource", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FavFileSource;", "fileList", "", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListItem;", "fromType", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FromType;", "sdcardFileSource", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource;", "selectedFileLst", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFileItem;", "getSelectedFileLst", "()Ljava/util/List;", "finish", "", "getCount", "getDataSourceFrom", "getIconSrc", "name", "getItem", "position", "getItemId", "", "getItemViewType", "getListItemFromData", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getParentPath", "Lcom/tencent/mm/vfs/VFSFile;", "getThumbnail", "Landroid/graphics/Bitmap;", "path", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "getViewTypeCount", "isAudio", "", "fileName", "isCompressFile", "isDoc", "isFromSDCard", "isHtml", "isImg", "isInit", "isKeynote", "isNumber", "isPages", "isPdf", "isPpt", "isTxt", "isVideo", "isXls", "loadData", "onBottomLoadMore", "onInit", "onLoadMoreCompleted", "onSelectorWrapperClicked", "v", "search", "content", "setDataSourceFrom", "setParentPath", "setPath", "FileViewHolder", "FolderViewHolder", "TimeViewHolder", "app_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;", "Landroid/widget/BaseAdapter;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;)V", "FILE_TYPE_COUNT", "", "TAG", "", "chattingFileSource", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ChattingFileSource;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "favFileSource", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FavFileSource;", "fileList", "", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListItem;", "fromType", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FromType;", "sdcardFileSource", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource;", "selectedFileLst", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFileItem;", "getSelectedFileLst", "()Ljava/util/List;", "checkIsContain", "", "item", "finish", "", "getCount", "getDataSourceFrom", "getIconSrc", "name", "getItem", "position", "getItemId", "", "getItemViewType", "getListItemFromData", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getParentPath", "Lcom/tencent/mm/vfs/VFSFile;", "getThumbnail", "Landroid/graphics/Bitmap;", "path", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "getViewTypeCount", "isAudio", "fileName", "isCompressFile", "isDoc", "isFromSDCard", "isHtml", "isImg", "isInit", "isKeynote", "isNumber", "isOfd", "isPages", "isPdf", "isPpt", "isTxt", "isVideo", "isXls", "loadData", "onBottomLoadMore", "onInit", "onLoadMoreCompleted", "onSelectorWrapperClicked", "v", "search", "content", "setDataSourceFrom", "setParentPath", "setPath", "FileViewHolder", "FolderViewHolder", "TimeViewHolder", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class e
     extends BaseAdapter
   {
-    private List<FileSelectorUI.l> RvB;
-    private final int RvD;
-    final List<FileSelectorUI.j> RvE;
-    final FileSelectorUI.a RvF;
-    final FileSelectorUI.c RvG;
-    final FileSelectorUI.n RvH;
-    FileSelectorUI.h RvI;
     private final String TAG;
+    private List<FileSelectorUI.l> YrW;
+    private final int YrY;
+    final List<FileSelectorUI.j> YrZ;
+    final FileSelectorUI.a Ysa;
+    final FileSelectorUI.c Ysb;
+    final FileSelectorUI.n Ysc;
+    FileSelectorUI.h Ysd;
     
     public e()
     {
-      AppMethodBeat.i(281967);
+      AppMethodBeat.i(245764);
       this.TAG = "MicroMsg.FileSelectorAdapter";
-      this.RvD = 4;
-      List localList = Collections.synchronizedList((List)new ArrayList());
-      kotlin.g.b.p.j(localList, "Collections.synchronized…st(ArrayList<ListItem>())");
-      this.RvB = localList;
-      localList = Collections.synchronizedList((List)new ArrayList());
-      kotlin.g.b.p.j(localList, "Collections.synchronized…rrayList<ListFileItem>())");
-      this.RvE = localList;
-      this.RvF = new FileSelectorUI.a(this$1, this);
-      this.RvG = new FileSelectorUI.c(this$1, this);
-      this.RvH = new FileSelectorUI.n(this$1, this);
-      this.RvI = FileSelectorUI.h.RvV;
-      AppMethodBeat.o(281967);
+      this.YrY = 4;
+      this$1 = Collections.synchronizedList((List)new ArrayList());
+      kotlin.g.b.s.s(this$1, "synchronizedList(ArrayList<ListItem>())");
+      this.YrW = this$1;
+      this$1 = Collections.synchronizedList((List)new ArrayList());
+      kotlin.g.b.s.s(this$1, "synchronizedList(ArrayList<ListFileItem>())");
+      this.YrZ = this$1;
+      this.Ysa = new FileSelectorUI.a(this.YrS, this);
+      this.Ysb = new FileSelectorUI.c(this.YrS, this);
+      this.Ysc = new FileSelectorUI.n(this.YrS, this);
+      this.Ysd = FileSelectorUI.h.Ysq;
+      AppMethodBeat.o(245764);
+    }
+    
+    private static final void a(e parame, View paramView)
+    {
+      AppMethodBeat.i(245848);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(parame);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      kotlin.g.b.s.u(parame, "this$0");
+      kotlin.g.b.s.s(paramView, "v");
+      parame.kS(paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(245848);
+    }
+    
+    private final boolean a(FileSelectorUI.j paramj)
+    {
+      AppMethodBeat.i(245788);
+      Iterator localIterator = ((Iterable)this.YrZ).iterator();
+      while (localIterator.hasNext())
+      {
+        FileSelectorUI.j localj = (FileSelectorUI.j)localIterator.next();
+        if (localj.YsE == FileSelectorUI.g.Yso)
+        {
+          if ((paramj.YsE == FileSelectorUI.g.Yso) && ((paramj instanceof FileSelectorUI.k)) && (((FileSelectorUI.k)paramj).YsD))
+          {
+            int i;
+            if (paramj.createTime == localj.createTime)
+            {
+              i = 1;
+              label94:
+              if (paramj.Ysz != localj.Ysz) {
+                break label148;
+              }
+            }
+            label148:
+            for (int j = 1;; j = 0)
+            {
+              boolean bool = kotlin.g.b.s.p(paramj.filePath, localj.filePath);
+              if ((j == 0) || (i == 0) || (!bool)) {
+                break;
+              }
+              AppMethodBeat.o(245788);
+              return true;
+              i = 0;
+              break label94;
+            }
+          }
+        }
+        else if ((localj.iOm() == paramj.iOm()) && (localj.createTime == paramj.createTime) && (localj.msgId == paramj.msgId))
+        {
+          AppMethodBeat.o(245788);
+          return true;
+        }
+      }
+      AppMethodBeat.o(245788);
+      return false;
+    }
+    
+    private static final void b(e parame, View paramView)
+    {
+      AppMethodBeat.i(245853);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(parame);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      kotlin.g.b.s.u(parame, "this$0");
+      kotlin.g.b.s.s(paramView, "v");
+      parame.kS(paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(245853);
     }
     
     private final boolean b(FileSelectorUI.h paramh)
     {
-      AppMethodBeat.i(281936);
-      switch (f.jLJ[paramh.ordinal()])
+      AppMethodBeat.i(245768);
+      switch (d.$EnumSwitchMapping$0[paramh.ordinal()])
       {
       default: 
-        AppMethodBeat.o(281936);
+        AppMethodBeat.o(245768);
         return true;
       case 1: 
-        bool = this.RvF.hasInit;
-        AppMethodBeat.o(281936);
+        bool = this.Ysa.hasInit;
+        AppMethodBeat.o(245768);
         return bool;
       case 2: 
-        bool = this.RvG.hasInit;
-        AppMethodBeat.o(281936);
+        bool = this.Ysb.hasInit;
+        AppMethodBeat.o(245768);
         return bool;
       }
-      boolean bool = this.RvH.hasInit;
-      AppMethodBeat.o(281936);
+      boolean bool = this.Ysc.hasInit;
+      AppMethodBeat.o(245768);
       return bool;
     }
     
-    private static boolean bI(String paramString)
+    private static int brA(String paramString)
     {
-      AppMethodBeat.i(281953);
-      paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
+      AppMethodBeat.i(245791);
       if (paramString == null)
       {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281953);
+        paramString = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(245791);
         throw paramString;
       }
       paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      if ((n.pu(paramString, ".mp3")) || (n.pu(paramString, ".wma")))
-      {
-        AppMethodBeat.o(281953);
-        return true;
-      }
-      AppMethodBeat.o(281953);
-      return false;
-    }
-    
-    private static boolean bJ(String paramString)
-    {
-      AppMethodBeat.i(281954);
-      kotlin.g.b.p.k(paramString, "fileName");
-      paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281954);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      if ((n.pu(paramString, ".mp4")) || (n.pu(paramString, ".rm")))
-      {
-        AppMethodBeat.o(281954);
-        return true;
-      }
-      AppMethodBeat.o(281954);
-      return false;
-    }
-    
-    private static int brL(String paramString)
-    {
-      AppMethodBeat.i(281951);
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281951);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      if (brO(paramString))
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      if (brD(paramString))
       {
         i = R.k.app_attach_file_icon_word;
-        AppMethodBeat.o(281951);
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (brB(paramString))
+      {
+        i = R.g.app_attach_file_icon_pic;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (brI(paramString))
+      {
+        i = R.k.app_attach_file_icon_rar;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (brJ(paramString))
+      {
+        i = R.k.app_attach_file_icon_txt;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (brE(paramString))
+      {
+        i = R.k.app_attach_file_icon_pdf;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (brF(paramString))
+      {
+        i = R.k.app_attach_file_icon_ppt;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (brG(paramString))
+      {
+        i = R.k.app_attach_file_icon_excel;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (df(paramString))
+      {
+        i = R.k.app_attach_file_icon_music;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (isVideo(paramString))
+      {
+        i = R.k.app_attach_file_icon_video;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (eL(paramString))
+      {
+        i = R.k.app_attach_file_icon_webpage;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (brK(paramString))
+      {
+        i = R.k.app_attach_file_icon_keynote;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (brL(paramString))
+      {
+        i = R.k.app_attach_file_icon_number;
+        AppMethodBeat.o(245791);
+        return i;
+      }
+      if (brN(paramString))
+      {
+        i = R.k.app_attach_file_icon_ofd;
+        AppMethodBeat.o(245791);
         return i;
       }
       if (brM(paramString))
       {
-        i = R.g.app_attach_file_icon_pic;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (brT(paramString))
-      {
-        i = R.k.app_attach_file_icon_rar;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (brU(paramString))
-      {
-        i = R.k.app_attach_file_icon_txt;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (brP(paramString))
-      {
-        i = R.k.app_attach_file_icon_pdf;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (brQ(paramString))
-      {
-        i = R.k.app_attach_file_icon_ppt;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (brR(paramString))
-      {
-        i = R.k.app_attach_file_icon_excel;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (bI(paramString))
-      {
-        i = R.k.app_attach_file_icon_music;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (bJ(paramString))
-      {
-        i = R.k.app_attach_file_icon_video;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (dA(paramString))
-      {
-        i = R.k.app_attach_file_icon_webpage;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (brV(paramString))
-      {
-        i = R.k.app_attach_file_icon_keynote;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (brW(paramString))
-      {
-        i = R.k.app_attach_file_icon_number;
-        AppMethodBeat.o(281951);
-        return i;
-      }
-      if (brX(paramString))
-      {
         i = R.k.app_attach_file_icon_page;
-        AppMethodBeat.o(281951);
+        AppMethodBeat.o(245791);
         return i;
       }
       int i = R.k.app_attach_file_icon_unknow;
-      AppMethodBeat.o(281951);
+      AppMethodBeat.o(245791);
       return i;
+    }
+    
+    private static boolean brB(String paramString)
+    {
+      AppMethodBeat.i(245794);
+      kotlin.g.b.s.u(paramString, "fileName");
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      if ((Build.VERSION.SDK_INT >= 28) && (n.rs(paramString, ".heic")))
+      {
+        AppMethodBeat.o(245794);
+        return true;
+      }
+      if ((n.rs(paramString, ".bmp")) || (n.rs(paramString, ".png")) || (n.rs(paramString, ".jpg")) || (n.rs(paramString, ".jpeg")) || (n.rs(paramString, ".gif")))
+      {
+        AppMethodBeat.o(245794);
+        return true;
+      }
+      AppMethodBeat.o(245794);
+      return false;
+    }
+    
+    private static boolean brD(String paramString)
+    {
+      AppMethodBeat.i(245805);
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      if ((n.rs(paramString, ".doc")) || (n.rs(paramString, ".docx")) || (n.rs(paramString, "wps")))
+      {
+        AppMethodBeat.o(245805);
+        return true;
+      }
+      AppMethodBeat.o(245805);
+      return false;
+    }
+    
+    private static boolean brE(String paramString)
+    {
+      AppMethodBeat.i(245808);
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      boolean bool = n.rs(paramString, ".pdf");
+      AppMethodBeat.o(245808);
+      return bool;
+    }
+    
+    private static boolean brF(String paramString)
+    {
+      AppMethodBeat.i(245812);
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      if ((n.rs(paramString, ".ppt")) || (n.rs(paramString, ".pptx")))
+      {
+        AppMethodBeat.o(245812);
+        return true;
+      }
+      AppMethodBeat.o(245812);
+      return false;
+    }
+    
+    private static boolean brG(String paramString)
+    {
+      AppMethodBeat.i(245820);
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      if ((n.rs(paramString, ".xls")) || (n.rs(paramString, ".xlsx")))
+      {
+        AppMethodBeat.o(245820);
+        return true;
+      }
+      AppMethodBeat.o(245820);
+      return false;
+    }
+    
+    private static boolean brI(String paramString)
+    {
+      AppMethodBeat.i(245803);
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      if ((n.rs(paramString, ".rar")) || (n.rs(paramString, ".zip")) || (n.rs(paramString, ".7z")) || (n.rs(paramString, "tar")) || (n.rs(paramString, ".iso")))
+      {
+        AppMethodBeat.o(245803);
+        return true;
+      }
+      AppMethodBeat.o(245803);
+      return false;
+    }
+    
+    private static boolean brJ(String paramString)
+    {
+      AppMethodBeat.i(245825);
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      if ((n.rs(paramString, ".txt")) || (n.rs(paramString, ".rtf")))
+      {
+        AppMethodBeat.o(245825);
+        return true;
+      }
+      AppMethodBeat.o(245825);
+      return false;
+    }
+    
+    private static boolean brK(String paramString)
+    {
+      AppMethodBeat.i(245829);
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      boolean bool = n.rs(paramString, ".key");
+      AppMethodBeat.o(245829);
+      return bool;
+    }
+    
+    private static boolean brL(String paramString)
+    {
+      AppMethodBeat.i(245835);
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      boolean bool = n.rs(paramString, ".number");
+      AppMethodBeat.o(245835);
+      return bool;
     }
     
     private static boolean brM(String paramString)
     {
-      AppMethodBeat.i(281952);
-      kotlin.g.b.p.k(paramString, "fileName");
+      AppMethodBeat.i(245839);
       paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281952);
-        throw paramString;
-      }
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
       paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      if ((Build.VERSION.SDK_INT >= 28) && (n.pu(paramString, ".heic")))
-      {
-        AppMethodBeat.o(281952);
-        return true;
-      }
-      if ((n.pu(paramString, ".bmp")) || (n.pu(paramString, ".png")) || (n.pu(paramString, ".jpg")) || (n.pu(paramString, ".jpeg")) || (n.pu(paramString, ".gif")))
-      {
-        AppMethodBeat.o(281952);
-        return true;
-      }
-      AppMethodBeat.o(281952);
-      return false;
-    }
-    
-    private static boolean brO(String paramString)
-    {
-      AppMethodBeat.i(281956);
-      paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281956);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      if ((n.pu(paramString, ".doc")) || (n.pu(paramString, ".docx")) || (n.pu(paramString, "wps")))
-      {
-        AppMethodBeat.o(281956);
-        return true;
-      }
-      AppMethodBeat.o(281956);
-      return false;
-    }
-    
-    private static boolean brP(String paramString)
-    {
-      AppMethodBeat.i(281957);
-      paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281957);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      boolean bool = n.pu(paramString, ".pdf");
-      AppMethodBeat.o(281957);
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      boolean bool = n.rs(paramString, ".pages");
+      AppMethodBeat.o(245839);
       return bool;
     }
     
-    private static boolean brQ(String paramString)
+    private static boolean brN(String paramString)
     {
-      AppMethodBeat.i(281958);
+      AppMethodBeat.i(245842);
       paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281958);
-        throw paramString;
-      }
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
       paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      if ((n.pu(paramString, ".ppt")) || (n.pu(paramString, ".pptx")))
-      {
-        AppMethodBeat.o(281958);
-        return true;
-      }
-      AppMethodBeat.o(281958);
-      return false;
-    }
-    
-    private static boolean brR(String paramString)
-    {
-      AppMethodBeat.i(281960);
-      paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281960);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      if ((n.pu(paramString, ".xls")) || (n.pu(paramString, ".xlsx")))
-      {
-        AppMethodBeat.o(281960);
-        return true;
-      }
-      AppMethodBeat.o(281960);
-      return false;
-    }
-    
-    private static boolean brT(String paramString)
-    {
-      AppMethodBeat.i(281955);
-      paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281955);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      if ((n.pu(paramString, ".rar")) || (n.pu(paramString, ".zip")) || (n.pu(paramString, ".7z")) || (n.pu(paramString, "tar")) || (n.pu(paramString, ".iso")))
-      {
-        AppMethodBeat.o(281955);
-        return true;
-      }
-      AppMethodBeat.o(281955);
-      return false;
-    }
-    
-    private static boolean brU(String paramString)
-    {
-      AppMethodBeat.i(281962);
-      paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281962);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      if ((n.pu(paramString, ".txt")) || (n.pu(paramString, ".rtf")))
-      {
-        AppMethodBeat.o(281962);
-        return true;
-      }
-      AppMethodBeat.o(281962);
-      return false;
-    }
-    
-    private static boolean brV(String paramString)
-    {
-      AppMethodBeat.i(281963);
-      paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281963);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      boolean bool = n.pu(paramString, ".key");
-      AppMethodBeat.o(281963);
-      return bool;
-    }
-    
-    private static boolean brW(String paramString)
-    {
-      AppMethodBeat.i(281965);
-      paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281965);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      boolean bool = n.pu(paramString, ".number");
-      AppMethodBeat.o(281965);
-      return bool;
-    }
-    
-    private static boolean brX(String paramString)
-    {
-      AppMethodBeat.i(281966);
-      paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281966);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      boolean bool = n.pu(paramString, ".pages");
-      AppMethodBeat.o(281966);
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      boolean bool = n.rs(paramString, ".ofd");
+      AppMethodBeat.o(245842);
       return bool;
     }
     
     private final void c(FileSelectorUI.h paramh)
     {
-      AppMethodBeat.i(281939);
-      switch (f.yBk[paramh.ordinal()])
+      AppMethodBeat.i(245770);
+      switch (d.$EnumSwitchMapping$0[paramh.ordinal()])
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(281939);
+        AppMethodBeat.o(245770);
         return;
-        this.RvF.hnn();
-        AppMethodBeat.o(281939);
+        this.Ysa.iOd();
+        AppMethodBeat.o(245770);
         return;
-        this.RvG.hnn();
-        AppMethodBeat.o(281939);
+        this.Ysb.iOd();
+        AppMethodBeat.o(245770);
         return;
-        this.RvH.hnn();
+        this.Ysc.iOd();
       }
     }
     
-    private static boolean dA(String paramString)
+    private static boolean df(String paramString)
     {
-      AppMethodBeat.i(281964);
+      AppMethodBeat.i(245797);
       paramString = Util.nullAsNil(paramString);
-      kotlin.g.b.p.j(paramString, "Util.nullAsNil(fileName)");
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(281964);
-        throw paramString;
-      }
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
       paramString = paramString.toLowerCase();
-      kotlin.g.b.p.j(paramString, "(this as java.lang.String).toLowerCase()");
-      boolean bool = n.pu(paramString, ".html");
-      AppMethodBeat.o(281964);
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      if ((n.rs(paramString, ".mp3")) || (n.rs(paramString, ".wma")))
+      {
+        AppMethodBeat.o(245797);
+        return true;
+      }
+      AppMethodBeat.o(245797);
+      return false;
+    }
+    
+    private static boolean eL(String paramString)
+    {
+      AppMethodBeat.i(245830);
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      boolean bool = n.rs(paramString, ".html");
+      AppMethodBeat.o(245830);
       return bool;
     }
     
-    private final boolean hnr()
+    private final boolean iOj()
     {
-      return FileSelectorUI.h.RvX == this.RvI;
+      return FileSelectorUI.h.Yss == this.Ysd;
     }
     
-    private final ArrayList<FileSelectorUI.l> jp(List<FileSelectorUI.j> paramList)
+    private static boolean isVideo(String paramString)
     {
-      AppMethodBeat.i(281942);
+      AppMethodBeat.i(245799);
+      kotlin.g.b.s.u(paramString, "fileName");
+      paramString = Util.nullAsNil(paramString);
+      kotlin.g.b.s.s(paramString, "nullAsNil(fileName)");
+      paramString = paramString.toLowerCase();
+      kotlin.g.b.s.s(paramString, "(this as java.lang.String).toLowerCase()");
+      if ((n.rs(paramString, ".mp4")) || (n.rs(paramString, ".rm")))
+      {
+        AppMethodBeat.o(245799);
+        return true;
+      }
+      AppMethodBeat.o(245799);
+      return false;
+    }
+    
+    private final void kS(View paramView)
+    {
+      AppMethodBeat.i(245783);
+      Object localObject1 = paramView.getTag();
+      if (localObject1 == null)
+      {
+        paramView = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(245783);
+        throw paramView;
+      }
+      int i = ((Integer)localObject1).intValue();
+      if (i < 5) {}
+      for (int j = 1;; j = 0)
+      {
+        localObject1 = axf(i);
+        paramView = paramView.findViewById(R.h.fLF);
+        if (paramView != null) {
+          break;
+        }
+        paramView = new NullPointerException("null cannot be cast to non-null type android.widget.CheckBox");
+        AppMethodBeat.o(245783);
+        throw paramView;
+      }
+      paramView = (CheckBox)paramView;
+      if (a((FileSelectorUI.j)localObject1))
+      {
+        this.YrZ.remove(localObject1);
+        if (j != 0)
+        {
+          localObject1 = FileSelectorUI.g(this.YrS).Ysj;
+          ((ms)localObject1).jck -= 1L;
+          paramView.setChecked(false);
+        }
+      }
+      for (;;)
+      {
+        FileSelectorUI.b(this.YrS);
+        this.YrS.hideVKB();
+        paramView = FileSelectorUI.f(this.YrS);
+        if (paramView != null) {
+          paramView.afKs = false;
+        }
+        AppMethodBeat.o(245783);
+        return;
+        localObject1 = FileSelectorUI.g(this.YrS).Ysj;
+        ((ms)localObject1).jcl -= 1L;
+        break;
+        Object localObject2 = FileSelectorUI.e(this.YrS);
+        if (localObject2 == null) {
+          i = 0;
+        }
+        while (i + this.YrZ.size() >= 9)
+        {
+          aa.makeText((Context)this.YrS.getContext(), (CharSequence)this.YrS.getString(R.l.gHN, new Object[] { Integer.valueOf(9) }), 0).show();
+          paramView.setChecked(false);
+          AppMethodBeat.o(245783);
+          return;
+          localObject2 = ((com.tencent.mm.pluginsdk.ui.tools.b.a.b.a)localObject2).iOS();
+          if (localObject2 == null) {
+            i = 0;
+          } else {
+            i = ((Integer)localObject2).intValue();
+          }
+        }
+        long l = com.tencent.mm.k.c.aRk();
+        if (((FileSelectorUI.j)localObject1).Ysz >= l)
+        {
+          aa.makeText((Context)this.YrS.getContext(), (CharSequence)this.YrS.getString(R.l.gHM, new Object[] { Util.getSizeKB(l) }), 0).show();
+          paramView.setChecked(false);
+          AppMethodBeat.o(245783);
+          return;
+        }
+        paramView.setChecked(true);
+        this.YrZ.add(localObject1);
+        if (j != 0)
+        {
+          paramView = FileSelectorUI.g(this.YrS).Ysj;
+          paramView.jck += 1L;
+        }
+        else
+        {
+          paramView = FileSelectorUI.g(this.YrS).Ysj;
+          paramView.jcl += 1L;
+        }
+      }
+    }
+    
+    private final ArrayList<FileSelectorUI.l> mA(List<FileSelectorUI.j> paramList)
+    {
+      AppMethodBeat.i(245777);
       ArrayList localArrayList = new ArrayList();
       Object localObject1 = "";
-      Iterator localIterator = ((Iterable)paramList).iterator();
+      Iterator localIterator = paramList.iterator();
       paramList = (List<FileSelectorUI.j>)localObject1;
       while (localIterator.hasNext())
       {
         FileSelectorUI.j localj = (FileSelectorUI.j)localIterator.next();
         Object localObject2;
-        if ((localj == null) || (FileSelectorUI.g.RvQ == localj.Rwj))
+        if ((localj == null) || (FileSelectorUI.g.Ysl == localj.YsE))
         {
           localObject2 = this.TAG;
           if (localj == null) {}
@@ -1550,19 +2053,19 @@ public final class FileSelectorUI
           }
         }
         localObject1 = paramList;
-        if (FileSelectorUI.g.RvT != localj.Rwj)
+        if (FileSelectorUI.g.Yso != localj.YsE)
         {
           localObject1 = paramList;
-          if ((kotlin.g.b.p.h(paramList, localj.title) ^ true))
+          if (!kotlin.g.b.s.p(paramList, localj.title))
           {
-            localObject2 = new FileSelectorUI.m(this.Rvw);
+            localObject2 = new FileSelectorUI.m(this.YrS);
             ((FileSelectorUI.l)localObject2).title = localj.title;
             localObject1 = ((FileSelectorUI.l)localObject2).title;
             paramList = (List<FileSelectorUI.j>)localObject1;
             if (localObject1 == null) {
               paramList = "";
             }
-            ((FileSelectorUI.m)localObject2).a(FileSelectorUI.g.RvR);
+            ((FileSelectorUI.m)localObject2).a(FileSelectorUI.g.Ysm);
             localArrayList.add(localObject2);
             localObject1 = paramList;
           }
@@ -1570,62 +2073,62 @@ public final class FileSelectorUI
         localArrayList.add(localj);
         paramList = (List<FileSelectorUI.j>)localObject1;
       }
-      AppMethodBeat.o(281942);
+      AppMethodBeat.o(245777);
       return localArrayList;
     }
     
-    public final void KG(String paramString)
+    public final void Dm(String paramString)
     {
-      AppMethodBeat.i(281935);
-      kotlin.g.b.p.k(paramString, "content");
-      FileSelectorUI.h localh = this.RvI;
-      switch (f.$EnumSwitchMapping$0[localh.ordinal()])
+      AppMethodBeat.i(245864);
+      kotlin.g.b.s.u(paramString, "content");
+      FileSelectorUI.h localh = this.Ysd;
+      switch (d.$EnumSwitchMapping$0[localh.ordinal()])
       {
       default: 
         paramString = (List)new ArrayList();
       }
       for (;;)
       {
-        this.RvB = paramString;
+        this.YrW = paramString;
         notifyDataSetChanged();
-        AppMethodBeat.o(281935);
+        AppMethodBeat.o(245864);
         return;
-        paramString = (List)jp(this.RvF.brS(paramString));
+        paramString = (List)mA(this.Ysa.brH(paramString));
         continue;
-        paramString = (List)jp(this.RvG.brS(paramString));
+        paramString = (List)mA(this.Ysb.brH(paramString));
         continue;
-        paramString = (List)jp(this.RvH.brS(paramString));
+        paramString = (List)mA(this.Ysc.brH(paramString));
       }
     }
     
     public final void a(FileSelectorUI.h paramh)
     {
-      AppMethodBeat.i(281934);
-      kotlin.g.b.p.k(paramh, "fromType");
+      AppMethodBeat.i(245861);
+      kotlin.g.b.s.u(paramh, "fromType");
       if (!b(paramh)) {
         c(paramh);
       }
-      this.RvI = paramh;
-      dlN();
-      AppMethodBeat.o(281934);
+      this.Ysd = paramh;
+      dSD();
+      AppMethodBeat.o(245861);
     }
     
-    public final FileSelectorUI.l aqZ(int paramInt)
+    public final FileSelectorUI.l axf(int paramInt)
     {
-      AppMethodBeat.i(281945);
-      FileSelectorUI.l locall = (FileSelectorUI.l)this.RvB.get(paramInt);
-      AppMethodBeat.o(281945);
+      AppMethodBeat.i(245886);
+      FileSelectorUI.l locall = (FileSelectorUI.l)this.YrW.get(paramInt);
+      AppMethodBeat.o(245886);
       return locall;
     }
     
-    final void dlN()
+    final void dSD()
     {
-      AppMethodBeat.i(281938);
-      Object localObject = this.RvI;
-      switch (f.tKM[localObject.ordinal()])
+      AppMethodBeat.i(245868);
+      Object localObject = this.Ysd;
+      switch (d.$EnumSwitchMapping$0[localObject.ordinal()])
       {
       default: 
-        localObject = FileSelectorUI.b(this.Rvw);
+        localObject = FileSelectorUI.q(this.YrS);
         if (localObject != null) {
           ((TextView)localObject).setText((CharSequence)"");
         }
@@ -1633,36 +2136,34 @@ public final class FileSelectorUI
       }
       for (;;)
       {
-        this.RvB = ((List)localObject);
+        this.YrW = ((List)localObject);
         notifyDataSetChanged();
-        if ((this.RvB.size() > 0) || (FileSelectorUI.h.RvY == this.RvI)) {
-          break;
+        if ((this.YrW.size() <= 0) && (FileSelectorUI.h.Yst != this.Ysd))
+        {
+          localObject = FileSelectorUI.q(this.YrS);
+          if (localObject != null) {
+            ((TextView)localObject).setText((CharSequence)this.YrS.getString(R.l.gHt));
+          }
+          localObject = FileSelectorUI.q(this.YrS);
+          if (localObject != null) {
+            ((TextView)localObject).setVisibility(0);
+          }
         }
-        localObject = FileSelectorUI.b(this.Rvw);
-        if (localObject != null) {
-          ((TextView)localObject).setText((CharSequence)this.Rvw.getString(R.l.eEA));
-        }
-        localObject = FileSelectorUI.b(this.Rvw);
-        if (localObject == null) {
-          break;
-        }
-        ((TextView)localObject).setVisibility(0);
-        AppMethodBeat.o(281938);
+        AppMethodBeat.o(245868);
         return;
-        localObject = (List)jp(this.RvF.RvB);
+        localObject = (List)mA(this.Ysa.YrW);
         continue;
-        localObject = (List)jp(this.RvG.RvB);
+        localObject = (List)mA(this.Ysb.YrW);
         continue;
-        localObject = (List)jp(this.RvH.RvB);
+        localObject = (List)mA(this.Ysc.YrW);
       }
-      AppMethodBeat.o(281938);
     }
     
     public final int getCount()
     {
-      AppMethodBeat.i(281944);
-      int i = this.RvB.size();
-      AppMethodBeat.o(281944);
+      AppMethodBeat.i(245883);
+      int i = this.YrW.size();
+      AppMethodBeat.o(245883);
       return i;
     }
     
@@ -1673,172 +2174,149 @@ public final class FileSelectorUI
     
     public final int getItemViewType(int paramInt)
     {
-      AppMethodBeat.i(281943);
-      paramInt = aqZ(paramInt).Rwj.ordinal();
-      AppMethodBeat.o(281943);
+      AppMethodBeat.i(245881);
+      paramInt = axf(paramInt).YsE.ordinal();
+      AppMethodBeat.o(245881);
       return paramInt;
     }
     
-    @SuppressLint({"ResourceType"})
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(281948);
-      kotlin.g.b.p.k(paramViewGroup, "parent");
-      FileSelectorUI.l locall = aqZ(paramInt);
-      Object localObject1 = locall.Rwj;
-      switch (f.yBm[localObject1.ordinal()])
+      AppMethodBeat.i(245895);
+      kotlin.g.b.s.u(paramViewGroup, "parent");
+      locall = axf(paramInt);
+      localObject1 = locall.YsE;
+      switch (d.avl[localObject1.ordinal()])
       {
       default: 
         Log.f(this.TAG, "impossible path, Fuck felixzhou!");
-        if (paramView == null) {
-          kotlin.g.b.p.iCn();
-        }
-        AppMethodBeat.o(281948);
+        kotlin.g.b.s.checkNotNull(paramView);
+        AppMethodBeat.o(245895);
         return paramView;
       case 1: 
         if (paramView == null)
         {
-          paramView = View.inflate(paramViewGroup.getContext(), R.i.ehb, null);
-          paramViewGroup = new c();
+          paramView = View.inflate(paramViewGroup.getContext(), R.i.gjX, null);
+          paramViewGroup = new FileSelectorUI.e.c(this);
           localObject1 = paramView.findViewById(R.h.item_title);
           if (localObject1 == null)
           {
-            paramView = new kotlin.t("null cannot be cast to non-null type android.widget.TextView");
-            AppMethodBeat.o(281948);
+            paramView = new NullPointerException("null cannot be cast to non-null type android.widget.TextView");
+            AppMethodBeat.o(245895);
             throw paramView;
           }
-          paramViewGroup.mNb = ((TextView)localObject1);
-          kotlin.g.b.p.j(paramView, "convertView");
+          paramViewGroup.pJJ = ((TextView)localObject1);
           paramView.setTag(paramViewGroup);
         }
         for (;;)
         {
-          paramViewGroup = paramViewGroup.mNb;
+          paramViewGroup = paramViewGroup.pJJ;
           if (paramViewGroup != null) {
             paramViewGroup.setText((CharSequence)locall.title);
           }
-          AppMethodBeat.o(281948);
+          kotlin.g.b.s.checkNotNull(paramView);
+          AppMethodBeat.o(245895);
           return paramView;
           paramViewGroup = paramView.getTag();
           if (paramViewGroup == null)
           {
-            paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.FileSelectorAdapter.TimeViewHolder");
-            AppMethodBeat.o(281948);
+            paramView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.FileSelectorAdapter.TimeViewHolder");
+            AppMethodBeat.o(245895);
             throw paramView;
           }
-          paramViewGroup = (c)paramViewGroup;
+          paramViewGroup = (FileSelectorUI.e.c)paramViewGroup;
         }
       case 2: 
         if (paramView == null)
         {
-          localObject1 = View.inflate(paramViewGroup.getContext(), R.i.eha, null);
+          localObject1 = View.inflate(paramViewGroup.getContext(), R.i.gjW, null);
           paramViewGroup = new a();
-          paramView = ((View)localObject1).findViewById(R.h.dKl);
+          paramView = ((View)localObject1).findViewById(R.h.fLG);
           if (paramView == null)
           {
-            paramView = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout");
-            AppMethodBeat.o(281948);
+            paramView = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout");
+            AppMethodBeat.o(245895);
             throw paramView;
           }
-          paramViewGroup.RvJ = ((FrameLayout)paramView);
-          paramView = paramViewGroup.RvJ;
-          if (paramView != null) {}
-          for (paramView = paramView.findViewById(R.h.dKk); paramView == null; paramView = null)
+          paramViewGroup.Yse = ((FrameLayout)paramView);
+          paramView = paramViewGroup.Yse;
+          if (paramView == null) {}
+          for (paramView = null; paramView == null; paramView = paramView.findViewById(R.h.fLF))
           {
-            paramView = new kotlin.t("null cannot be cast to non-null type android.widget.CheckBox");
-            AppMethodBeat.o(281948);
+            paramView = new NullPointerException("null cannot be cast to non-null type android.widget.CheckBox");
+            AppMethodBeat.o(245895);
             throw paramView;
           }
-          paramViewGroup.RvK = ((CheckBox)paramView);
+          paramViewGroup.Ysf = ((CheckBox)paramView);
           paramView = ((View)localObject1).findViewById(R.h.item_icon);
           if (paramView == null)
           {
-            paramView = new kotlin.t("null cannot be cast to non-null type android.widget.ImageView");
-            AppMethodBeat.o(281948);
+            paramView = new NullPointerException("null cannot be cast to non-null type android.widget.ImageView");
+            AppMethodBeat.o(245895);
             throw paramView;
           }
-          paramViewGroup.qps = ((ImageView)paramView);
+          paramViewGroup.ttT = ((ImageView)paramView);
           paramView = ((View)localObject1).findViewById(R.h.item_title);
           if (paramView == null)
           {
-            paramView = new kotlin.t("null cannot be cast to non-null type android.widget.TextView");
-            AppMethodBeat.o(281948);
+            paramView = new NullPointerException("null cannot be cast to non-null type android.widget.TextView");
+            AppMethodBeat.o(245895);
             throw paramView;
           }
-          paramViewGroup.mNb = ((TextView)paramView);
-          paramView = ((View)localObject1).findViewById(R.h.dKn);
+          paramViewGroup.pJJ = ((TextView)paramView);
+          paramView = ((View)localObject1).findViewById(R.h.fLI);
           if (paramView == null)
           {
-            paramView = new kotlin.t("null cannot be cast to non-null type android.widget.TextView");
-            AppMethodBeat.o(281948);
+            paramView = new NullPointerException("null cannot be cast to non-null type android.widget.TextView");
+            AppMethodBeat.o(245895);
             throw paramView;
           }
-          paramViewGroup.HpD = ((TextView)paramView);
-          paramView = ((View)localObject1).findViewById(R.h.dKp);
+          paramViewGroup.Nnr = ((TextView)paramView);
+          paramView = ((View)localObject1).findViewById(R.h.fLK);
           if (paramView == null)
           {
-            paramView = new kotlin.t("null cannot be cast to non-null type android.widget.TextView");
-            AppMethodBeat.o(281948);
+            paramView = new NullPointerException("null cannot be cast to non-null type android.widget.TextView");
+            AppMethodBeat.o(245895);
             throw paramView;
           }
           paramViewGroup.timeTV = ((TextView)paramView);
-          paramView = ((View)localObject1).findViewById(R.h.dKg);
+          paramView = ((View)localObject1).findViewById(R.h.fLB);
           if (paramView == null)
           {
-            paramView = new kotlin.t("null cannot be cast to non-null type android.widget.TextView");
-            AppMethodBeat.o(281948);
+            paramView = new NullPointerException("null cannot be cast to non-null type android.widget.TextView");
+            AppMethodBeat.o(245895);
             throw paramView;
           }
-          paramViewGroup.RvL = ((TextView)paramView);
-          paramViewGroup.RvM = ((View)localObject1).findViewById(R.h.dKj);
+          paramViewGroup.Ysg = ((TextView)paramView);
+          paramViewGroup.Ysh = ((View)localObject1).findViewById(R.h.fLE);
           if (getCount() - 1 == paramInt)
           {
-            paramView = paramViewGroup.RvM;
+            paramView = paramViewGroup.Ysh;
             if (paramView != null) {
               paramView.setVisibility(4);
             }
           }
-          paramView = paramViewGroup.RvJ;
+          paramView = paramViewGroup.Yse;
           if (paramView != null) {
-            paramView.setOnClickListener((View.OnClickListener)new d(this));
+            paramView.setOnClickListener(new FileSelectorUI.e..ExternalSyntheticLambda0(this));
           }
-          kotlin.g.b.p.j(localObject1, "convertView");
           ((View)localObject1).setTag(paramViewGroup);
           paramView = (View)localObject1;
-        }
-        for (;;)
-        {
-          localObject1 = paramViewGroup.mNb;
-          if (localObject1 == null) {
-            break label712;
+          localObject1 = paramViewGroup.pJJ;
+          if (localObject1 != null) {
+            ((TextView)localObject1).setText(((FileSelectorUI.j)locall).iOm());
           }
-          if (locall != null) {
-            break;
+          if ((3 != FileSelectorUI.p(this.YrS)) && (4 != FileSelectorUI.p(this.YrS))) {
+            break label1013;
           }
-          paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.ListFileItem");
-          AppMethodBeat.o(281948);
-          throw paramView;
-          paramViewGroup = paramView.getTag();
-          if (paramViewGroup == null)
-          {
-            paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.FileSelectorAdapter.FileViewHolder");
-            AppMethodBeat.o(281948);
-            throw paramView;
-          }
-          paramViewGroup = (a)paramViewGroup;
-        }
-        ((TextView)localObject1).setText(((FileSelectorUI.j)locall).hnu());
-        label712:
-        if ((3 == FileSelectorUI.a(this.Rvw)) || (4 == FileSelectorUI.a(this.Rvw)))
-        {
-          localObject1 = paramViewGroup.RvJ;
+          localObject1 = paramViewGroup.Yse;
           if (localObject1 != null) {
             ((FrameLayout)localObject1).setVisibility(4);
           }
         }
         for (;;)
         {
-          localObject1 = paramViewGroup.HpD;
+          localObject1 = paramViewGroup.Nnr;
           if (localObject1 != null) {
             ((TextView)localObject1).setVisibility(0);
           }
@@ -1846,645 +2324,635 @@ public final class FileSelectorUI
           if (localObject1 != null) {
             ((TextView)localObject1).setVisibility(0);
           }
-          localObject1 = paramViewGroup.mNb;
-          if (localObject1 == null) {
-            break label853;
+          localObject1 = paramViewGroup.pJJ;
+          if (localObject1 != null) {
+            ((TextView)localObject1).setText(((FileSelectorUI.j)locall).iOm());
           }
-          if (locall != null) {
-            break;
+          localObject1 = paramViewGroup.Nnr;
+          if (localObject1 != null) {
+            ((TextView)localObject1).setText((CharSequence)Util.getSizeKB(((FileSelectorUI.j)locall).Ysz));
           }
-          paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.ListFileItem");
-          AppMethodBeat.o(281948);
-          throw paramView;
-          localObject1 = paramViewGroup.RvJ;
+          if (((FileSelectorUI.j)locall).YsA == 2)
+          {
+            localObject1 = paramViewGroup.Nnr;
+            if (localObject1 != null) {
+              ((TextView)localObject1).setText((CharSequence)(">" + ((com.tencent.mm.plugin.fav.a.ah)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.fav.a.ah.class)).getFileSizeLimitInMB(true) + "MB"));
+            }
+          }
+          localObject1 = paramViewGroup.timeTV;
+          if (localObject1 != null) {
+            ((TextView)localObject1).setText(com.tencent.mm.pluginsdk.platformtools.f.d((Context)this.YrS.getContext(), ((FileSelectorUI.j)locall).createTime, true));
+          }
+          localObject1 = paramViewGroup.ttT;
+          if (localObject1 != null) {
+            ((ImageView)localObject1).setImageResource(brA(((FileSelectorUI.j)locall).iOm().toString()));
+          }
+          localObject1 = paramViewGroup.Ysg;
+          if (localObject1 != null) {
+            ((TextView)localObject1).setText(((FileSelectorUI.j)locall).Ysx);
+          }
+          localObject1 = paramViewGroup.Ysf;
+          if (localObject1 != null) {
+            ((CheckBox)localObject1).setChecked(a((FileSelectorUI.j)locall));
+          }
+          paramViewGroup = paramViewGroup.Yse;
+          if (paramViewGroup != null) {
+            paramViewGroup.setTag(Integer.valueOf(paramInt));
+          }
+          kotlin.g.b.s.checkNotNull(paramView);
+          AppMethodBeat.o(245895);
+          return paramView;
+          paramViewGroup = paramView.getTag();
+          if (paramViewGroup == null)
+          {
+            paramView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.FileSelectorAdapter.FileViewHolder");
+            AppMethodBeat.o(245895);
+            throw paramView;
+          }
+          paramViewGroup = (a)paramViewGroup;
+          break;
+          label1013:
+          localObject1 = paramViewGroup.Yse;
           if (localObject1 != null) {
             ((FrameLayout)localObject1).setVisibility(0);
           }
         }
-        ((TextView)localObject1).setText(((FileSelectorUI.j)locall).hnu());
-        label853:
-        localObject1 = paramViewGroup.HpD;
-        if (localObject1 != null) {
-          ((TextView)localObject1).setText((CharSequence)Util.getSizeKB(((FileSelectorUI.j)locall).Rwe));
-        }
-        if (((FileSelectorUI.j)locall).Rwf == 2)
-        {
-          localObject1 = paramViewGroup.HpD;
-          if (localObject1 != null) {
-            ((TextView)localObject1).setText((CharSequence)(">" + ((ag)h.ag(ag.class)).getFileSizeLimitInMB(true) + "MB"));
-          }
-        }
-        localObject1 = paramViewGroup.timeTV;
-        if (localObject1 != null) {
-          ((TextView)localObject1).setText(com.tencent.mm.pluginsdk.j.f.d((Context)this.Rvw.getContext(), ((FileSelectorUI.j)locall).createTime, true));
-        }
-        localObject1 = paramViewGroup.qps;
-        if (localObject1 != null) {
-          ((ImageView)localObject1).setImageResource(brL(((FileSelectorUI.j)locall).hnu().toString()));
-        }
-        localObject1 = paramViewGroup.RvL;
-        if (localObject1 != null) {
-          ((TextView)localObject1).setText(((FileSelectorUI.j)locall).Rwc);
-        }
-        localObject1 = paramViewGroup.RvK;
-        if (localObject1 != null) {
-          ((CheckBox)localObject1).setChecked(this.RvE.contains(locall));
-        }
-        paramViewGroup = paramViewGroup.RvJ;
-        if (paramViewGroup != null) {
-          paramViewGroup.setTag(Integer.valueOf(paramInt));
-        }
-        AppMethodBeat.o(281948);
-        return paramView;
       }
       if (paramView == null)
       {
-        paramViewGroup = View.inflate(paramViewGroup.getContext(), R.i.ehg, null);
-        localObject1 = new b();
-        ((b)localObject1).RvJ = ((FrameLayout)paramViewGroup.findViewById(R.h.dKl));
-        paramView = ((b)localObject1).RvJ;
-        if (paramView != null) {}
-        for (paramView = paramView.findViewById(R.h.dKk); paramView == null; paramView = null)
+        localObject1 = View.inflate(paramViewGroup.getContext(), R.i.gkb, null);
+        paramViewGroup = new b();
+        paramViewGroup.Yse = ((FrameLayout)((View)localObject1).findViewById(R.h.fLG));
+        paramView = paramViewGroup.Yse;
+        if (paramView == null) {}
+        for (paramView = null; paramView == null; paramView = paramView.findViewById(R.h.fLF))
         {
-          paramView = new kotlin.t("null cannot be cast to non-null type android.widget.CheckBox");
-          AppMethodBeat.o(281948);
+          paramView = new NullPointerException("null cannot be cast to non-null type android.widget.CheckBox");
+          AppMethodBeat.o(245895);
           throw paramView;
         }
-        ((b)localObject1).RvK = ((CheckBox)paramView);
-        ((b)localObject1).qps = ((ImageView)paramViewGroup.findViewById(R.h.item_icon));
-        ((b)localObject1).mNb = ((TextView)paramViewGroup.findViewById(R.h.item_title));
-        ((b)localObject1).HpD = ((TextView)paramViewGroup.findViewById(R.h.dKn));
-        ((b)localObject1).timeTV = ((TextView)paramViewGroup.findViewById(R.h.dKp));
-        paramView = ((b)localObject1).RvJ;
+        paramViewGroup.Ysf = ((CheckBox)paramView);
+        paramViewGroup.ttT = ((ImageView)((View)localObject1).findViewById(R.h.item_icon));
+        paramViewGroup.pJJ = ((TextView)((View)localObject1).findViewById(R.h.item_title));
+        paramViewGroup.Nnr = ((TextView)((View)localObject1).findViewById(R.h.fLI));
+        paramViewGroup.timeTV = ((TextView)((View)localObject1).findViewById(R.h.fLK));
+        paramView = paramViewGroup.Yse;
         if (paramView != null) {
-          paramView.setOnClickListener((View.OnClickListener)new e(this));
+          paramView.setOnClickListener(new FileSelectorUI.e..ExternalSyntheticLambda1(this));
         }
-        kotlin.g.b.p.j(paramViewGroup, "convertView");
-        paramViewGroup.setTag(localObject1);
-        if (locall != null) {
-          break label1399;
+        ((View)localObject1).setTag(paramViewGroup);
+        paramView = (View)localObject1;
+      }
+      try
+      {
+        localObject2 = (FileSelectorUI.k)locall;
+        localObject3 = paramViewGroup.pJJ;
+        if (localObject3 == null) {
+          break label1941;
         }
-        try
+        if (localObject2 != null) {
+          break label1466;
+        }
+        localObject1 = null;
+        label1243:
+        ((TextView)localObject3).setText((CharSequence)localObject1);
+      }
+      catch (Exception paramViewGroup)
+      {
+        for (;;)
         {
-          paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.ListFolderItem");
-          AppMethodBeat.o(281948);
-          throw paramView;
-        }
-        catch (Exception paramView)
-        {
-          Log.e(this.TAG, paramView.getMessage(), new Object[] { "item is ListFileItem:" + (locall instanceof FileSelectorUI.j) });
+          Object localObject2;
+          Object localObject3;
+          label1253:
+          Log.e(this.TAG, paramViewGroup.getMessage(), new Object[] { kotlin.g.b.s.X("item is ListFileItem:", Boolean.valueOf(locall instanceof FileSelectorUI.j)) });
+          label1466:
+          continue;
+          localObject1 = paramViewGroup.Yse;
+          if (localObject1 != null)
+          {
+            ((FrameLayout)localObject1).setVisibility(0);
+            continue;
+            localObject2 = ((e)localObject1).YrS.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id" }, "_data=?", new String[] { localObject2 }, null);
+            if (localObject2 != null)
+            {
+              if (((Cursor)localObject2).moveToFirst())
+              {
+                int i = ((Cursor)localObject2).getInt(((Cursor)localObject2).getColumnIndex("_id"));
+                ((Cursor)localObject2).close();
+                localObject1 = MediaStore.Images.Thumbnails.getThumbnail(((e)localObject1).YrS.getContentResolver(), i, 3, null);
+                continue;
+              }
+              ((Cursor)localObject2).close();
+              break label1952;
+              localObject1 = paramViewGroup.ttT;
+              if (localObject1 == null) {
+                continue;
+              }
+              ((ImageView)localObject1).setImageResource(brA(localObject3.toString()));
+              continue;
+              localObject1 = paramViewGroup.ttT;
+              if (localObject1 == null) {
+                continue;
+              }
+              ((ImageView)localObject1).setImageResource(brA(localObject3.toString()));
+              continue;
+              if (localObject2 != null) {
+                continue;
+              }
+              localObject1 = null;
+              continue;
+            }
+            localObject1 = null;
+          }
         }
       }
-      label1399:
-      FileSelectorUI.k localk;
-      Object localObject2;
+      if (!((Boolean)localObject1).booleanValue())
+      {
+        localObject1 = paramViewGroup.ttT;
+        if (localObject1 != null) {
+          ((ImageView)localObject1).setImageResource(R.k.app_attach_file_icon_folders);
+        }
+        localObject1 = paramViewGroup.Yse;
+        if (localObject1 != null) {
+          ((FrameLayout)localObject1).setVisibility(4);
+        }
+        localObject1 = paramViewGroup.Nnr;
+        if (localObject1 != null) {
+          ((TextView)localObject1).setVisibility(0);
+        }
+        localObject1 = paramViewGroup.timeTV;
+        if (localObject1 != null) {
+          ((TextView)localObject1).setVisibility(8);
+        }
+        localObject1 = paramViewGroup.Nnr;
+        if (localObject1 != null) {
+          ((TextView)localObject1).setText((CharSequence)this.YrS.getString(R.l.gHs, new Object[] { Integer.valueOf(((FileSelectorUI.k)localObject2).YsC) }));
+        }
+      }
       for (;;)
       {
-        AppMethodBeat.o(281948);
-        return paramViewGroup;
+        localObject1 = paramViewGroup.Ysf;
+        if (localObject1 != null) {
+          ((CheckBox)localObject1).setChecked(a((FileSelectorUI.j)locall));
+        }
+        paramViewGroup = paramViewGroup.Yse;
+        if (paramViewGroup != null) {
+          paramViewGroup.setTag(Integer.valueOf(paramInt));
+        }
+        kotlin.g.b.s.checkNotNull(paramView);
+        AppMethodBeat.o(245895);
+        return paramView;
         paramViewGroup = paramView.getTag();
         if (paramViewGroup == null)
         {
-          paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.FileSelectorAdapter.FolderViewHolder");
-          AppMethodBeat.o(281948);
+          paramView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.FileSelectorAdapter.FolderViewHolder");
+          AppMethodBeat.o(245895);
           throw paramView;
         }
-        localObject1 = (b)paramViewGroup;
-        paramViewGroup = paramView;
+        paramViewGroup = (b)paramViewGroup;
         break;
-        localk = (FileSelectorUI.k)locall;
-        localObject2 = ((b)localObject1).mNb;
-        if (localObject2 != null)
-        {
-          if (localk == null) {
-            break label1991;
-          }
-          paramView = localk.hnu();
-          ((TextView)localObject2).setText(paramView);
+        localObject1 = ((FileSelectorUI.k)localObject2).iOm();
+        break label1243;
+        localObject1 = Boolean.valueOf(((FileSelectorUI.k)localObject2).YsD);
+        break label1253;
+        if ((3 != FileSelectorUI.p(this.YrS)) && (4 != FileSelectorUI.p(this.YrS))) {
+          break label1756;
         }
-        if (localk == null) {
-          break label1996;
+        localObject1 = paramViewGroup.Yse;
+        if (localObject1 != null) {
+          ((FrameLayout)localObject1).setVisibility(4);
         }
-        paramView = Boolean.valueOf(localk.Rwi);
-        label1449:
-        if (paramView.booleanValue()) {
-          break label1607;
+        localObject1 = paramViewGroup.Nnr;
+        if (localObject1 != null) {
+          ((TextView)localObject1).setVisibility(0);
         }
-        paramView = ((b)localObject1).qps;
-        if (paramView != null) {
-          paramView.setImageResource(R.k.app_attach_file_icon_folders);
+        localObject1 = paramViewGroup.timeTV;
+        if (localObject1 != null) {
+          ((TextView)localObject1).setVisibility(0);
         }
-        paramView = ((b)localObject1).RvJ;
-        if (paramView != null) {
-          paramView.setVisibility(4);
+        localObject1 = paramViewGroup.Nnr;
+        if (localObject1 != null) {
+          ((TextView)localObject1).setText((CharSequence)Util.getSizeKB(((FileSelectorUI.j)localObject2).Ysz));
         }
-        paramView = ((b)localObject1).HpD;
-        if (paramView != null) {
-          paramView.setVisibility(0);
+        localObject1 = paramViewGroup.timeTV;
+        if (localObject1 != null) {
+          ((TextView)localObject1).setText(com.tencent.mm.pluginsdk.platformtools.f.d((Context)this.YrS.getContext(), ((FileSelectorUI.j)localObject2).createTime, true));
         }
-        paramView = ((b)localObject1).timeTV;
-        if (paramView != null) {
-          paramView.setVisibility(8);
+        localObject3 = ((FileSelectorUI.k)localObject2).iOm();
+        if (!brB(localObject3.toString())) {
+          break label1914;
         }
-        paramView = ((b)localObject1).HpD;
-        if (paramView != null) {
-          paramView.setText((CharSequence)this.Rvw.getString(R.l.eEz, new Object[] { Integer.valueOf(localk.Rwh) }));
+        localObject1 = FileSelectorUI.h(this.YrS);
+        if (localObject1 != null) {
+          break label1958;
         }
-        label1561:
-        paramView = ((b)localObject1).RvK;
-        if (paramView != null) {
-          paramView.setChecked(this.RvE.contains(localk));
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = null;
+        localObject2 = ((FileSelectorUI.j)localObject2).filePath;
+        if (!Util.isNullOrNil((String)localObject2)) {
+          break label1776;
         }
-        paramView = ((b)localObject1).RvJ;
-        if (paramView != null) {
-          paramView.setTag(Integer.valueOf(paramInt));
+        Log.e(((e)localObject1).TAG, "getThumbnail fail, path not exist");
+        break label1952;
+        if (localObject1 == null) {
+          break label1887;
         }
-      }
-      label1607:
-      label1644:
-      Object localObject3;
-      if ((3 == FileSelectorUI.a(this.Rvw)) || (4 == FileSelectorUI.a(this.Rvw)))
-      {
-        paramView = ((b)localObject1).RvJ;
-        if (paramView != null) {
-          paramView.setVisibility(4);
+        localObject2 = paramViewGroup.ttT;
+        if (localObject2 != null) {
+          ((ImageView)localObject2).setImageBitmap((Bitmap)localObject1);
         }
-        paramView = ((b)localObject1).HpD;
-        if (paramView != null) {
-          paramView.setVisibility(0);
-        }
-        paramView = ((b)localObject1).timeTV;
-        if (paramView != null) {
-          paramView.setVisibility(0);
-        }
-        paramView = ((b)localObject1).HpD;
-        if (paramView != null) {
-          paramView.setText((CharSequence)Util.getSizeKB(localk.Rwe));
-        }
-        paramView = ((b)localObject1).timeTV;
-        if (paramView != null) {
-          paramView.setText(com.tencent.mm.pluginsdk.j.f.d((Context)this.Rvw.getContext(), localk.createTime, true));
-        }
-        localObject2 = localk.hnu();
-        if (!brM(localObject2.toString())) {
-          break label1966;
-        }
-        paramView = FileSelectorUI.c(this.Rvw);
-        if (paramView == null) {
-          break label2006;
-        }
-        localObject3 = localk.filePath;
-        if (!Util.isNullOrNil((String)localObject3)) {
-          break label1833;
-        }
-        Log.e(paramView.TAG, "getThumbnail fail, path not exist");
-        break label2001;
-      }
-      for (;;)
-      {
-        if (paramView != null)
-        {
-          localObject2 = ((b)localObject1).qps;
-          if (localObject2 == null) {
-            break label1561;
-          }
-          ((ImageView)localObject2).setImageBitmap(paramView);
-          break label1561;
-          paramView = ((b)localObject1).RvJ;
-          if (paramView == null) {
-            break label1644;
-          }
-          paramView.setVisibility(0);
-          break label1644;
-          label1833:
-          localObject3 = paramView.Rvw.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id" }, "_data=?", new String[] { localObject3 }, null);
-          if (localObject3 == null) {
-            break label2001;
-          }
-          if (((Cursor)localObject3).moveToFirst())
-          {
-            int i = ((Cursor)localObject3).getInt(((Cursor)localObject3).getColumnIndex("_id"));
-            ((Cursor)localObject3).close();
-            paramView = MediaStore.Images.Thumbnails.getThumbnail(paramView.Rvw.getContentResolver(), i, 3, null);
-            continue;
-          }
-          ((Cursor)localObject3).close();
-          break label2001;
-        }
-        paramView = ((b)localObject1).qps;
-        if (paramView == null) {
-          break label1561;
-        }
-        paramView.setImageResource(brL(localObject2.toString()));
-        break label1561;
-        label1966:
-        paramView = ((b)localObject1).qps;
-        if (paramView == null) {
-          break label1561;
-        }
-        paramView.setImageResource(brL(localObject2.toString()));
-        break label1561;
-        label1991:
-        paramView = null;
-        break;
-        label1996:
-        paramView = null;
-        break label1449;
-        label2001:
-        paramView = null;
-        continue;
-        label2006:
-        paramView = null;
       }
     }
     
     public final int getViewTypeCount()
     {
-      return this.RvD;
+      return this.YrY;
     }
     
-    public final void hnp()
+    public final void iOh()
     {
-      AppMethodBeat.i(281940);
-      if (this.RvI != FileSelectorUI.h.RvX)
+      AppMethodBeat.i(245871);
+      if (this.Ysd != FileSelectorUI.h.Yss)
       {
-        AppMethodBeat.o(281940);
+        AppMethodBeat.o(245871);
         return;
       }
-      com.tencent.mm.vfs.q localq = this.RvH.hnx();
-      if (localq != null)
+      Object localObject1 = this.Ysc.iOp();
+      if (localObject1 != null)
       {
-        this.RvH.ad(localq);
-        FileSelectorUI.c(this.Rvw).dlN();
-        AppMethodBeat.o(281940);
-        return;
+        Object localObject2 = this.YrS;
+        this.Ysc.ag((com.tencent.mm.vfs.u)localObject1);
+        localObject2 = FileSelectorUI.h((FileSelectorUI)localObject2);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          kotlin.g.b.s.bIx("adapter");
+          localObject1 = null;
+        }
+        ((e)localObject1).dSD();
       }
-      AppMethodBeat.o(281940);
+      AppMethodBeat.o(245871);
     }
     
-    public final com.tencent.mm.vfs.q hnq()
+    public final com.tencent.mm.vfs.u iOi()
     {
-      AppMethodBeat.i(281941);
-      if (!hnr())
+      AppMethodBeat.i(245875);
+      if (!iOj())
       {
-        AppMethodBeat.o(281941);
+        AppMethodBeat.o(245875);
         return null;
       }
-      com.tencent.mm.vfs.q localq = this.RvH.hnx();
-      AppMethodBeat.o(281941);
-      return localq;
+      com.tencent.mm.vfs.u localu = this.Ysc.iOp();
+      AppMethodBeat.o(245875);
+      return localu;
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter$FileViewHolder;", "", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;)V", "fromTV", "Landroid/widget/TextView;", "getFromTV", "()Landroid/widget/TextView;", "setFromTV", "(Landroid/widget/TextView;)V", "iconIV", "Landroid/widget/ImageView;", "getIconIV", "()Landroid/widget/ImageView;", "setIconIV", "(Landroid/widget/ImageView;)V", "lineV", "Landroid/view/View;", "getLineV", "()Landroid/view/View;", "setLineV", "(Landroid/view/View;)V", "selectorCB", "Landroid/widget/CheckBox;", "getSelectorCB", "()Landroid/widget/CheckBox;", "setSelectorCB", "(Landroid/widget/CheckBox;)V", "selectorWrapper", "Landroid/widget/FrameLayout;", "getSelectorWrapper", "()Landroid/widget/FrameLayout;", "setSelectorWrapper", "(Landroid/widget/FrameLayout;)V", "sizeTV", "getSizeTV", "setSizeTV", "timeTV", "getTimeTV", "setTimeTV", "titleTV", "getTitleTV", "setTitleTV", "app_release"})
+    @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter$FileViewHolder;", "", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;)V", "fromTV", "Landroid/widget/TextView;", "getFromTV", "()Landroid/widget/TextView;", "setFromTV", "(Landroid/widget/TextView;)V", "iconIV", "Landroid/widget/ImageView;", "getIconIV", "()Landroid/widget/ImageView;", "setIconIV", "(Landroid/widget/ImageView;)V", "lineV", "Landroid/view/View;", "getLineV", "()Landroid/view/View;", "setLineV", "(Landroid/view/View;)V", "selectorCB", "Landroid/widget/CheckBox;", "getSelectorCB", "()Landroid/widget/CheckBox;", "setSelectorCB", "(Landroid/widget/CheckBox;)V", "selectorWrapper", "Landroid/widget/FrameLayout;", "getSelectorWrapper", "()Landroid/widget/FrameLayout;", "setSelectorWrapper", "(Landroid/widget/FrameLayout;)V", "sizeTV", "getSizeTV", "setSizeTV", "timeTV", "getTimeTV", "setTimeTV", "titleTV", "getTitleTV", "setTitleTV", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
     final class a
     {
-      TextView HpD;
-      FrameLayout RvJ;
-      CheckBox RvK;
-      TextView RvL;
-      View RvM;
-      TextView mNb;
-      ImageView qps;
+      TextView Nnr;
+      FrameLayout Yse;
+      CheckBox Ysf;
+      TextView Ysg;
+      View Ysh;
+      TextView pJJ;
       TextView timeTV;
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter$FolderViewHolder;", "", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;)V", "iconIV", "Landroid/widget/ImageView;", "getIconIV", "()Landroid/widget/ImageView;", "setIconIV", "(Landroid/widget/ImageView;)V", "selectorCB", "Landroid/widget/CheckBox;", "getSelectorCB", "()Landroid/widget/CheckBox;", "setSelectorCB", "(Landroid/widget/CheckBox;)V", "selectorWrapper", "Landroid/widget/FrameLayout;", "getSelectorWrapper", "()Landroid/widget/FrameLayout;", "setSelectorWrapper", "(Landroid/widget/FrameLayout;)V", "sizeTV", "Landroid/widget/TextView;", "getSizeTV", "()Landroid/widget/TextView;", "setSizeTV", "(Landroid/widget/TextView;)V", "timeTV", "getTimeTV", "setTimeTV", "titleTV", "getTitleTV", "setTitleTV", "app_release"})
-    final class b
-    {
-      TextView HpD;
-      FrameLayout RvJ;
-      CheckBox RvK;
-      TextView mNb;
-      ImageView qps;
-      TextView timeTV;
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter$TimeViewHolder;", "", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;)V", "titleTV", "Landroid/widget/TextView;", "getTitleTV", "()Landroid/widget/TextView;", "setTitleTV", "(Landroid/widget/TextView;)V", "app_release"})
-    final class c
-    {
-      TextView mNb;
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class d
-      implements View.OnClickListener
-    {
-      d(FileSelectorUI.e parame) {}
+      ImageView ttT;
       
-      public final void onClick(View paramView)
+      public a()
       {
-        AppMethodBeat.i(249467);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        localObject = this.RvN;
-        kotlin.g.b.p.j(paramView, "v");
-        FileSelectorUI.e.a((FileSelectorUI.e)localObject, paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(249467);
+        AppMethodBeat.i(245608);
+        AppMethodBeat.o(245608);
       }
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class e
-      implements View.OnClickListener
+    @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter$FolderViewHolder;", "", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;)V", "iconIV", "Landroid/widget/ImageView;", "getIconIV", "()Landroid/widget/ImageView;", "setIconIV", "(Landroid/widget/ImageView;)V", "selectorCB", "Landroid/widget/CheckBox;", "getSelectorCB", "()Landroid/widget/CheckBox;", "setSelectorCB", "(Landroid/widget/CheckBox;)V", "selectorWrapper", "Landroid/widget/FrameLayout;", "getSelectorWrapper", "()Landroid/widget/FrameLayout;", "setSelectorWrapper", "(Landroid/widget/FrameLayout;)V", "sizeTV", "Landroid/widget/TextView;", "getSizeTV", "()Landroid/widget/TextView;", "setSizeTV", "(Landroid/widget/TextView;)V", "timeTV", "getTimeTV", "setTimeTV", "titleTV", "getTitleTV", "setTitleTV", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+    final class b
     {
-      e(FileSelectorUI.e parame) {}
+      TextView Nnr;
+      FrameLayout Yse;
+      CheckBox Ysf;
+      TextView pJJ;
+      TextView timeTV;
+      ImageView ttT;
       
-      public final void onClick(View paramView)
+      public b()
       {
-        AppMethodBeat.i(199487);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter$getView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        localObject = this.RvN;
-        kotlin.g.b.p.j(paramView, "v");
-        FileSelectorUI.e.a((FileSelectorUI.e)localObject, paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter$getView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(199487);
+        AppMethodBeat.i(245570);
+        AppMethodBeat.o(245570);
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorReportHelper;", "", "()V", "keywordGroup", "Ljava/util/Vector;", "", "getKeywordGroup", "()Ljava/util/Vector;", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/SendFileInWidgetStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/SendFileInWidgetStruct;", "composeKeywords", "doReport", "", "onSwitch", "from", "", "app_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorReportHelper;", "", "()V", "keywordGroup", "Ljava/util/Vector;", "", "getKeywordGroup", "()Ljava/util/Vector;", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/SendFileInWidgetStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/SendFileInWidgetStruct;", "composeKeywords", "doReport", "", "onSwitch", "from", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class f
   {
-    final kb RvO;
-    final Vector<String> RvP;
+    final ms Ysj;
+    final Vector<String> Ysk;
     
     public f()
     {
-      AppMethodBeat.i(264706);
-      this.RvO = new kb();
-      this.RvP = new Vector();
-      AppMethodBeat.o(264706);
+      AppMethodBeat.i(245750);
+      this.Ysj = new ms();
+      this.Ysk = new Vector();
+      AppMethodBeat.o(245750);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileType;", "", "(Ljava/lang/String;I)V", "TYPE_INVALID", "TYPE_TIME", "TYPE_FILE", "TYPE_FOLDER", "app_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileType;", "", "(Ljava/lang/String;I)V", "TYPE_INVALID", "TYPE_TIME", "TYPE_FILE", "TYPE_FOLDER", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum g
   {
     static
     {
-      AppMethodBeat.i(278295);
-      g localg1 = new g("TYPE_INVALID", 0);
-      RvQ = localg1;
-      g localg2 = new g("TYPE_TIME", 1);
-      RvR = localg2;
-      g localg3 = new g("TYPE_FILE", 2);
-      RvS = localg3;
-      g localg4 = new g("TYPE_FOLDER", 3);
-      RvT = localg4;
-      RvU = new g[] { localg1, localg2, localg3, localg4 };
-      AppMethodBeat.o(278295);
+      AppMethodBeat.i(245752);
+      Ysl = new g("TYPE_INVALID", 0);
+      Ysm = new g("TYPE_TIME", 1);
+      Ysn = new g("TYPE_FILE", 2);
+      Yso = new g("TYPE_FOLDER", 3);
+      Ysp = new g[] { Ysl, Ysm, Ysn, Yso };
+      AppMethodBeat.o(245752);
     }
     
     private g() {}
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FromType;", "", "(Ljava/lang/String;I)V", "FROM_CHATTING", "FROM_FAV", "FROM_SDCARD", "FROM_ALBUM", "app_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FromType;", "", "(Ljava/lang/String;I)V", "FROM_CHATTING", "FROM_FAV", "FROM_SDCARD", "FROM_ALBUM", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum h
   {
     static
     {
-      AppMethodBeat.i(292046);
-      h localh1 = new h("FROM_CHATTING", 0);
-      RvV = localh1;
-      h localh2 = new h("FROM_FAV", 1);
-      RvW = localh2;
-      h localh3 = new h("FROM_SDCARD", 2);
-      RvX = localh3;
-      h localh4 = new h("FROM_ALBUM", 3);
-      RvY = localh4;
-      RvZ = new h[] { localh1, localh2, localh3, localh4 };
-      AppMethodBeat.o(292046);
+      AppMethodBeat.i(245755);
+      Ysq = new h("FROM_CHATTING", 0);
+      Ysr = new h("FROM_FAV", 1);
+      Yss = new h("FROM_SDCARD", 2);
+      Yst = new h("FROM_ALBUM", 3);
+      Ysu = new h[] { Ysq, Ysr, Yss, Yst };
+      AppMethodBeat.o(245755);
     }
     
     private h() {}
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileDataSource;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "adapter", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;)V", "curFile", "Lcom/tencent/mm/vfs/VFSFile;", "filterDir", "", "rootPath", "subFiles", "", "[Lcom/tencent/mm/vfs/VFSFile;", "createTargetList", "", "deduplicateFolders", "files", "([Lcom/tencent/mm/vfs/VFSFile;)[Lcom/tencent/mm/vfs/VFSFile;", "getParent", "initASync", "loadMoreAsync", "setPath", "setRoot", "root", "sort", "([Lcom/tencent/mm/vfs/VFSFile;)V", "FileSort", "app_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileDataSource;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "adapter", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$FileSelectorAdapter;)V", "curFile", "Lcom/tencent/mm/vfs/VFSFile;", "filterDir", "", "rootPath", "subFiles", "", "[Lcom/tencent/mm/vfs/VFSFile;", "createTargetList", "", "deduplicateFolders", "files", "([Lcom/tencent/mm/vfs/VFSFile;)[Lcom/tencent/mm/vfs/VFSFile;", "getParent", "initASync", "loadMoreAsync", "setPath", "setRoot", "root", "sort", "([Lcom/tencent/mm/vfs/VFSFile;)V", "FileSort", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class n
     extends FileSelectorUI.d
   {
-    private com.tencent.mm.vfs.q Rvc;
-    private com.tencent.mm.vfs.q[] Rvd;
-    private com.tencent.mm.vfs.q Rwl;
-    boolean Rwm;
+    private com.tencent.mm.vfs.u Yry;
+    private com.tencent.mm.vfs.u[] Yrz;
+    private com.tencent.mm.vfs.u YsG;
+    private boolean YsH;
     
     public n()
     {
       super(localObject);
-      AppMethodBeat.i(200779);
-      this.Rvd = new com.tencent.mm.vfs.q[0];
-      AppMethodBeat.o(200779);
+      AppMethodBeat.i(245672);
+      this.Yrz = new com.tencent.mm.vfs.u[0];
+      AppMethodBeat.o(245672);
     }
     
-    private final void a(com.tencent.mm.vfs.q[] paramArrayOfq)
+    private static final int a(a parama1, a parama2)
     {
-      AppMethodBeat.i(200776);
-      if (paramArrayOfq != null) {
-        if (paramArrayOfq.length != 0) {
+      AppMethodBeat.i(245694);
+      int i = parama1.YsI.compareTo(parama2.YsI);
+      AppMethodBeat.o(245694);
+      return i;
+    }
+    
+    private final void a(com.tencent.mm.vfs.u[] paramArrayOfu)
+    {
+      AppMethodBeat.i(245684);
+      if (paramArrayOfu != null) {
+        if (paramArrayOfu.length != 0) {
           break label26;
         }
       }
       label26:
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(200776);
+        AppMethodBeat.o(245684);
         return;
       }
       Object localObject2 = (List)new ArrayList();
       Object localObject1 = (List)new ArrayList();
-      int j = paramArrayOfq.length;
-      i = 0;
-      if (i < j)
+      Iterator localIterator = kotlin.g.b.c.ao(paramArrayOfu);
+      while (localIterator.hasNext())
       {
-        Object localObject3 = paramArrayOfq[i];
-        a locala;
+        Object localObject3 = (com.tencent.mm.vfs.u)localIterator.next();
         if (localObject3 != null)
         {
-          locala = new a();
-          locala.file = ((com.tencent.mm.vfs.q)localObject3);
-          locala.time = ((com.tencent.mm.vfs.q)localObject3).lastModified();
-          if (!((com.tencent.mm.vfs.q)localObject3).isDirectory()) {
-            break label194;
-          }
-          localObject3 = com.tencent.mm.platformtools.f.ZJ(((com.tencent.mm.vfs.q)localObject3).getName());
-          kotlin.g.b.p.j(localObject3, "CnToSpell.getFullSpell(file.name)");
-          if (localObject3 == null)
+          a locala = new a();
+          locala.file = ((com.tencent.mm.vfs.u)localObject3);
+          locala.time = ((com.tencent.mm.vfs.u)localObject3).lastModified();
+          if (((com.tencent.mm.vfs.u)localObject3).isDirectory())
           {
-            paramArrayOfq = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-            AppMethodBeat.o(200776);
-            throw paramArrayOfq;
+            localObject3 = com.tencent.mm.platformtools.f.RZ(((com.tencent.mm.vfs.u)localObject3).getName());
+            kotlin.g.b.s.s(localObject3, "getFullSpell(file.name)");
+            localObject3 = ((String)localObject3).toUpperCase();
+            kotlin.g.b.s.s(localObject3, "(this as java.lang.String).toUpperCase()");
+            kotlin.g.b.s.u(localObject3, "<set-?>");
+            locala.YsI = ((String)localObject3);
+            ((List)localObject2).add(locala);
           }
-          localObject3 = ((String)localObject3).toUpperCase();
-          kotlin.g.b.p.j(localObject3, "(this as java.lang.String).toUpperCase()");
-          kotlin.g.b.p.k(localObject3, "<set-?>");
-          locala.Rwn = ((String)localObject3);
-          ((List)localObject2).add(locala);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label194:
-          ((List)localObject1).add(locala);
+          else
+          {
+            ((List)localObject1).add(locala);
+          }
         }
       }
-      kotlin.a.j.a((List)localObject2, (Comparator)d.Rwq);
-      Collections.sort((List)localObject1, (Comparator)e.Rwr);
+      kotlin.a.p.a((List)localObject2, FileSelectorUI.n..ExternalSyntheticLambda2.INSTANCE);
+      Collections.sort((List)localObject1, FileSelectorUI.n..ExternalSyntheticLambda3.INSTANCE);
       localObject2 = ((List)localObject2).iterator();
       i = 0;
       while (((Iterator)localObject2).hasNext())
       {
-        paramArrayOfq[i] = ((a)((Iterator)localObject2).next()).file;
+        paramArrayOfu[i] = ((a)((Iterator)localObject2).next()).file;
         i += 1;
       }
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        paramArrayOfq[i] = ((a)((Iterator)localObject1).next()).file;
+        paramArrayOfu[i] = ((a)((Iterator)localObject1).next()).file;
         i += 1;
       }
-      AppMethodBeat.o(200776);
+      AppMethodBeat.o(245684);
     }
     
-    private final void ac(com.tencent.mm.vfs.q paramq)
+    private static final boolean a(n paramn, com.tencent.mm.vfs.u paramu)
     {
-      this.Rwl = paramq;
-      this.Rwm = false;
-    }
-    
-    private final void hnw()
-    {
-      AppMethodBeat.i(200771);
-      com.tencent.mm.vfs.q[] arrayOfq = this.Rvd;
-      if (arrayOfq != null)
+      AppMethodBeat.i(245689);
+      kotlin.g.b.s.u(paramn, "this$0");
+      kotlin.g.b.s.u(paramu, "pathname");
+      if (paramu.isHidden())
       {
-        int k = arrayOfq.length;
-        int i = 0;
-        while (i < k)
+        AppMethodBeat.o(245689);
+        return false;
+      }
+      if ((!paramn.YsH) || (!paramu.isDirectory()))
+      {
+        AppMethodBeat.o(245689);
+        return true;
+      }
+      AppMethodBeat.o(245689);
+      return false;
+    }
+    
+    private final void af(com.tencent.mm.vfs.u paramu)
+    {
+      this.YsG = paramu;
+      this.YsH = false;
+    }
+    
+    private static final int b(a parama1, a parama2)
+    {
+      if (parama1.time == parama2.time) {
+        return 0;
+      }
+      if (parama1.time > parama2.time) {
+        return -1;
+      }
+      return 1;
+    }
+    
+    private static final boolean h(com.tencent.mm.vfs.u paramu, String paramString)
+    {
+      AppMethodBeat.i(245693);
+      kotlin.g.b.s.u(paramString, "filename");
+      if (!n.U(paramString, ".", false))
+      {
+        AppMethodBeat.o(245693);
+        return true;
+      }
+      AppMethodBeat.o(245693);
+      return false;
+    }
+    
+    private final void iOo()
+    {
+      AppMethodBeat.i(245676);
+      com.tencent.mm.vfs.u[] arrayOfu = this.Yrz;
+      FileSelectorUI localFileSelectorUI;
+      int k;
+      int i;
+      if (arrayOfu != null)
+      {
+        localFileSelectorUI = FileSelectorUI.this;
+        k = arrayOfu.length;
+        i = 0;
+      }
+      for (;;)
+      {
+        if (i < k)
         {
-          Object localObject = arrayOfq[i];
-          String str1;
+          Object localObject = arrayOfu[i];
+          i += 1;
           if (localObject != null)
           {
-            str1 = ((com.tencent.mm.vfs.q)localObject).bOF();
-            kotlin.g.b.p.j(str1, "vFile.absolutePath");
-            if (Util.isNullOrNil(str1)) {
+            String str1 = com.tencent.mm.vfs.ah.v(((com.tencent.mm.vfs.u)localObject).jKT());
+            kotlin.g.b.s.s(str1, "vFile.absolutePath");
+            if (Util.isNullOrNil(str1))
+            {
               Log.e("MicroMsg.FileSelectorUI", "createTargetList, folder filePath is null, filter!!");
             }
-          }
-          else
-          {
-            i += 1;
-            continue;
-          }
-          FileSelectorUI.k localk = new FileSelectorUI.k(FileSelectorUI.this);
-          localk.a(FileSelectorUI.g.RvT);
-          localk.d(FileSelectorUI.h.RvX);
-          boolean bool;
-          label114:
-          int j;
-          if (!((com.tencent.mm.vfs.q)localObject).isDirectory())
-          {
-            bool = true;
-            localk.Rwi = bool;
-            String str2 = ((com.tencent.mm.vfs.q)localObject).getName();
-            kotlin.g.b.p.j(str2, "vFile.name");
-            localk.aA((CharSequence)str2);
-            localk.filePath = str1;
-            if (!((com.tencent.mm.vfs.q)localObject).isDirectory()) {
-              break label214;
-            }
-            localObject = ((com.tencent.mm.vfs.q)localObject).a((z)FileSelectorUI.n.b.Rwp);
-            if (localObject != null) {
-              break label207;
-            }
-            j = 0;
-            label180:
-            localk.Rwh = j;
-          }
-          for (;;)
-          {
-            this.RvB.add(localk);
-            break;
-            bool = false;
-            break label114;
-            label207:
-            j = localObject.length;
-            break label180;
-            label214:
-            if (((com.tencent.mm.vfs.q)localObject).ifH())
+            else
             {
-              localk.Rwe = ((com.tencent.mm.vfs.q)localObject).length();
-              localk.createTime = ((com.tencent.mm.vfs.q)localObject).lastModified();
+              FileSelectorUI.k localk = new FileSelectorUI.k(localFileSelectorUI);
+              localk.a(FileSelectorUI.g.Yso);
+              localk.d(FileSelectorUI.h.Yss);
+              boolean bool;
+              label123:
+              int j;
+              if (!((com.tencent.mm.vfs.u)localObject).isDirectory())
+              {
+                bool = true;
+                localk.YsD = bool;
+                String str2 = ((com.tencent.mm.vfs.u)localObject).getName();
+                kotlin.g.b.s.s(str2, "vFile.name");
+                localk.aO((CharSequence)str2);
+                localk.filePath = str1;
+                if (!((com.tencent.mm.vfs.u)localObject).isDirectory()) {
+                  break label221;
+                }
+                localObject = ((com.tencent.mm.vfs.u)localObject).a(FileSelectorUI.n..ExternalSyntheticLambda0.INSTANCE);
+                if (localObject != null) {
+                  break label214;
+                }
+                j = 0;
+                label187:
+                localk.YsC = j;
+              }
+              for (;;)
+              {
+                this.YrW.add(localk);
+                break;
+                bool = false;
+                break label123;
+                label214:
+                j = localObject.length;
+                break label187;
+                label221:
+                if (((com.tencent.mm.vfs.u)localObject).jKV())
+                {
+                  localk.Ysz = ((com.tencent.mm.vfs.u)localObject).length();
+                  localk.createTime = ((com.tencent.mm.vfs.u)localObject).lastModified();
+                }
+              }
             }
           }
         }
-        AppMethodBeat.o(200771);
-        return;
+        else
+        {
+          AppMethodBeat.o(245676);
+          return;
+        }
       }
-      AppMethodBeat.o(200771);
     }
     
-    public final void ad(com.tencent.mm.vfs.q paramq)
+    public final void ag(com.tencent.mm.vfs.u paramu)
     {
       Set localSet = null;
-      AppMethodBeat.i(200762);
-      kotlin.g.b.p.k(paramq, "curFile");
-      this.Rvc = paramq;
-      paramq = this.Rvc;
-      if (paramq == null) {
-        kotlin.g.b.p.bGy("curFile");
+      AppMethodBeat.i(245715);
+      kotlin.g.b.s.u(paramu, "curFile");
+      this.Yry = paramu;
+      if (this.Yry == null) {
+        kotlin.g.b.s.bIx("curFile");
       }
-      label101:
-      Object localObject1;
-      int i;
-      if (paramq != null)
+      Object localObject1 = this.Yry;
+      paramu = (com.tencent.mm.vfs.u)localObject1;
+      if (localObject1 == null)
       {
-        paramq = this.Rvc;
-        if (paramq == null) {
-          kotlin.g.b.p.bGy("curFile");
-        }
-        if (paramq == null) {
-          break label212;
-        }
-        paramq = Boolean.valueOf(paramq.ifC());
-        if (paramq.booleanValue())
+        kotlin.g.b.s.bIx("curFile");
+        paramu = null;
+      }
+      int i;
+      if (paramu.jKQ())
+      {
+        localObject1 = this.Yry;
+        paramu = (com.tencent.mm.vfs.u)localObject1;
+        if (localObject1 == null)
         {
-          paramq = this.Rvc;
-          if (paramq == null) {
-            kotlin.g.b.p.bGy("curFile");
+          kotlin.g.b.s.bIx("curFile");
+          paramu = null;
+        }
+        if (paramu.isDirectory())
+        {
+          paramu = this.Yry;
+          if (paramu != null) {
+            break label183;
           }
-          if (paramq == null) {
-            break label217;
-          }
-          paramq = Boolean.valueOf(paramq.isDirectory());
-          if (paramq.booleanValue())
-          {
-            localObject1 = this.Rvc;
-            if (localObject1 == null) {
-              kotlin.g.b.p.bGy("curFile");
-            }
-            paramq = localSet;
-            if (localObject1 != null) {
-              paramq = ((com.tencent.mm.vfs.q)localObject1).a((com.tencent.mm.vfs.s)new c(this));
-            }
-            this.Rvd = paramq;
-            paramq = this.Rvd;
-            if (paramq != null) {
-              if (paramq != null)
-              {
-                if (paramq.length != 0) {
-                  break label222;
-                }
-                i = 1;
-                label175:
-                if (i == 0) {
-                  break label227;
-                }
+          kotlin.g.b.s.bIx("curFile");
+          paramu = localSet;
+          this.Yrz = paramu.a(new FileSelectorUI.n..ExternalSyntheticLambda1(this));
+          paramu = this.Yrz;
+          if (paramu != null) {
+            if (paramu != null)
+            {
+              if (paramu.length != 0) {
+                break label186;
+              }
+              i = 1;
+              label146:
+              if (i == 0) {
+                break label191;
               }
             }
           }
@@ -2492,616 +2960,507 @@ public final class FileSelectorUI
       }
       for (;;)
       {
-        this.Rvd = paramq;
-        a(this.Rvd);
-        this.RvB.clear();
-        hnw();
-        AppMethodBeat.o(200762);
+        this.Yrz = paramu;
+        a(this.Yrz);
+        this.YrW.clear();
+        iOo();
+        AppMethodBeat.o(245715);
         return;
-        label212:
-        paramq = null;
+        label183:
         break;
-        label217:
-        paramq = null;
-        break label101;
-        label222:
+        label186:
         i = 0;
-        break label175;
-        label227:
+        break label146;
+        label191:
         localSet = (Set)new HashSet();
         localObject1 = (List)new ArrayList();
-        int j = paramq.length;
+        int k = paramu.length;
         i = 0;
-        if (i < j)
+        while (i < k)
         {
-          Object localObject2 = paramq[i];
-          if (localObject2 != null)
-          {
-            if (localObject2.isDirectory()) {
-              break label296;
-            }
-            ((List)localObject1).add(localObject2);
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            label296:
-            String str = localObject2.bOF();
-            kotlin.g.b.p.j(str, "file.absolutePath");
-            if (!localSet.contains(str))
+          Object localObject2 = paramu[i];
+          int j = i + 1;
+          i = j;
+          if (localObject2 != null) {
+            if (!localObject2.isDirectory())
             {
-              str = localObject2.bOF();
-              kotlin.g.b.p.j(str, "file.absolutePath");
-              localSet.add(str);
               ((List)localObject1).add(localObject2);
+              i = j;
+            }
+            else
+            {
+              String str = com.tencent.mm.vfs.ah.v(localObject2.jKT());
+              kotlin.g.b.s.s(str, "file.absolutePath");
+              i = j;
+              if (!localSet.contains(str))
+              {
+                str = com.tencent.mm.vfs.ah.v(localObject2.jKT());
+                kotlin.g.b.s.s(str, "file.absolutePath");
+                localSet.add(str);
+                ((List)localObject1).add(localObject2);
+                i = j;
+              }
             }
           }
         }
-        paramq = ((Collection)localObject1).toArray(new com.tencent.mm.vfs.q[0]);
-        if (paramq == null)
+        paramu = ((Collection)localObject1).toArray(new com.tencent.mm.vfs.u[0]);
+        if (paramu == null)
         {
-          paramq = new kotlin.t("null cannot be cast to non-null type kotlin.Array<T>");
-          AppMethodBeat.o(200762);
-          throw paramq;
+          paramu = new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
+          AppMethodBeat.o(245715);
+          throw paramu;
         }
-        paramq = (com.tencent.mm.vfs.q[])paramq;
+        paramu = (com.tencent.mm.vfs.u[])paramu;
       }
     }
     
-    public final void hnn()
+    public final void iOd()
     {
-      AppMethodBeat.i(200777);
-      ac(new com.tencent.mm.vfs.q(com.tencent.mm.loader.j.b.aSG()));
-      ad(new com.tencent.mm.vfs.q(com.tencent.mm.loader.j.b.aSG()));
-      AppMethodBeat.o(200777);
+      AppMethodBeat.i(245730);
+      af(new com.tencent.mm.vfs.u(com.tencent.mm.loader.i.b.bmu()));
+      ag(new com.tencent.mm.vfs.u(com.tencent.mm.loader.i.b.bmu()));
+      AppMethodBeat.o(245730);
     }
     
-    public final com.tencent.mm.vfs.q hnx()
+    public final com.tencent.mm.vfs.u iOp()
     {
-      AppMethodBeat.i(200773);
-      com.tencent.mm.vfs.q localq = this.Rvc;
-      if (localq == null) {
-        kotlin.g.b.p.bGy("curFile");
-      }
-      int i = localq.hashCode();
-      localq = this.Rwl;
-      if (localq == null) {
-        kotlin.g.b.p.bGy("rootPath");
-      }
-      if (i == localq.hashCode())
+      Object localObject2 = null;
+      AppMethodBeat.i(245724);
+      com.tencent.mm.vfs.u localu = this.Yry;
+      Object localObject1 = localu;
+      if (localu == null)
       {
-        AppMethodBeat.o(200773);
+        kotlin.g.b.s.bIx("curFile");
+        localObject1 = null;
+      }
+      int i = ((com.tencent.mm.vfs.u)localObject1).hashCode();
+      localu = this.YsG;
+      localObject1 = localu;
+      if (localu == null)
+      {
+        kotlin.g.b.s.bIx("rootPath");
+        localObject1 = null;
+      }
+      if (i == ((com.tencent.mm.vfs.u)localObject1).hashCode())
+      {
+        AppMethodBeat.o(245724);
         return null;
       }
-      localq = this.Rvc;
-      if (localq == null) {
-        kotlin.g.b.p.bGy("curFile");
-      }
-      if (localq != null)
+      localObject1 = this.Yry;
+      if (localObject1 == null)
       {
-        localq = localq.ifB();
-        AppMethodBeat.o(200773);
-        return localq;
+        kotlin.g.b.s.bIx("curFile");
+        localObject1 = localObject2;
       }
-      AppMethodBeat.o(200773);
-      return null;
+      for (;;)
+      {
+        localObject1 = ((com.tencent.mm.vfs.u)localObject1).jKP();
+        AppMethodBeat.o(245724);
+        return localObject1;
+      }
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource$FileSort;", "", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource;)V", "file", "Lcom/tencent/mm/vfs/VFSFile;", "getFile", "()Lcom/tencent/mm/vfs/VFSFile;", "setFile", "(Lcom/tencent/mm/vfs/VFSFile;)V", "spell", "", "getSpell", "()Ljava/lang/String;", "setSpell", "(Ljava/lang/String;)V", "time", "", "getTime", "()J", "setTime", "(J)V", "app_release"})
+    @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource$FileSort;", "", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource;)V", "file", "Lcom/tencent/mm/vfs/VFSFile;", "getFile", "()Lcom/tencent/mm/vfs/VFSFile;", "setFile", "(Lcom/tencent/mm/vfs/VFSFile;)V", "spell", "", "getSpell", "()Ljava/lang/String;", "setSpell", "(Ljava/lang/String;)V", "time", "", "getTime", "()J", "setTime", "(J)V", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
     final class a
     {
-      String Rwn = "";
-      com.tencent.mm.vfs.q file;
+      String YsI;
+      com.tencent.mm.vfs.u file;
       long time;
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "pathname", "Lcom/tencent/mm/vfs/VFSFile;", "accept"})
-    static final class c
-      implements com.tencent.mm.vfs.s
-    {
-      c(FileSelectorUI.n paramn) {}
       
-      public final boolean accept(com.tencent.mm.vfs.q paramq)
+      public a()
       {
-        AppMethodBeat.i(289503);
-        kotlin.g.b.p.k(paramq, "pathname");
-        if (paramq.isHidden())
-        {
-          AppMethodBeat.o(289503);
-          return false;
-        }
-        if ((!this.Rwo.Rwm) || (!paramq.isDirectory()))
-        {
-          AppMethodBeat.o(289503);
-          return true;
-        }
-        AppMethodBeat.o(289503);
-        return false;
-      }
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "f1", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource$FileSort;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "kotlin.jvm.PlatformType", "f2", "compare"})
-    static final class d<T>
-      implements Comparator<FileSelectorUI.n.a>
-    {
-      public static final d Rwq;
-      
-      static
-      {
-        AppMethodBeat.i(288323);
-        Rwq = new d();
-        AppMethodBeat.o(288323);
-      }
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "f1", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource$FileSort;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$SdcardFileSource;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "kotlin.jvm.PlatformType", "f2", "compare"})
-    static final class e<T>
-      implements Comparator<FileSelectorUI.n.a>
-    {
-      public static final e Rwr;
-      
-      static
-      {
-        AppMethodBeat.i(284508);
-        Rwr = new e();
-        AppMethodBeat.o(284508);
+        AppMethodBeat.i(245756);
+        this.YsI = "";
+        AppMethodBeat.o(245756);
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class q
-    implements MenuItem.OnMenuItemClickListener
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/pluginsdk/ui/tools/fs/album/uic/AlbumFileUIC;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class p
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<com.tencent.mm.pluginsdk.ui.tools.b.a.b.a>
+  {
+    p(FileSelectorUI paramFileSelectorUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$10", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView$OnFolderAlbumDialogDismiss;", "onChooseAlbumDialogDismiss", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class q
+    implements DropdownListView.e
   {
     q(FileSelectorUI paramFileSelectorUI) {}
     
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    public final void fBy()
     {
-      AppMethodBeat.i(285442);
-      Log.i("MicroMsg.FileSelectorUI", "backBtn");
-      FileSelectorUI.h(this.Rvw);
-      AppMethodBeat.o(285442);
-      return false;
+      AppMethodBeat.i(245658);
+      FileSelectorUI.a(this.YrS, null);
+      this.YrS.playActionBarOperationAreaAnim();
+      AppMethodBeat.o(245658);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class r
-    implements MenuItem.OnMenuItemClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$3", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView$IOnListItemSelected;", "selected", "", "item", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView$DropdownListItem;", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class r
+    implements DropdownListView.d
   {
     r(FileSelectorUI paramFileSelectorUI) {}
     
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(279562);
-      FileSelectorUI.i(this.Rvw);
-      AppMethodBeat.o(279562);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$3", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView$IOnListItemSelected;", "selected", "", "item", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView$DropdownListItem;", "app_release"})
-  public static final class s
-    implements DropdownListView.d
-  {
     public final void a(DropdownListView.c paramc)
     {
-      AppMethodBeat.i(283444);
-      FileSelectorUI.f(this.Rvw);
-      FileSelectorUI.a(this.Rvw, paramc);
-      if ((paramc == null) || (kotlin.g.b.p.h(Util.nullAs(FileSelectorUI.k(this.Rvw), ""), paramc.name))) {
+      Object localObject2 = null;
+      AppMethodBeat.i(245667);
+      FileSelectorUI.b(this.YrS);
+      FileSelectorUI.a(this.YrS, paramc);
+      if ((paramc == null) || (kotlin.g.b.s.p(Util.nullAs(FileSelectorUI.c(this.YrS), ""), paramc.name)))
+      {
         Log.w("MicroMsg.FileSelectorUI", "want to reset item, item is " + paramc + " or no need load data when same load");
+        paramc = FileSelectorUI.i(this.YrS);
+        if (paramc != null) {
+          FileSelectorUI.b(this.YrS, paramc);
+        }
+        paramc = FileSelectorUI.j(this.YrS);
+        if (paramc != null) {
+          break label532;
+        }
+        kotlin.g.b.s.bIx("dropdownListView");
+        paramc = localObject2;
       }
+      label532:
       for (;;)
       {
-        paramc = FileSelectorUI.j(this.Rvw);
-        if (paramc != null) {
-          FileSelectorUI.b(this.Rvw, paramc);
-        }
-        FileSelectorUI.m(this.Rvw).euH();
-        AppMethodBeat.o(283444);
+        paramc.fBC();
+        AppMethodBeat.o(245667);
         return;
-        Object localObject = FileSelectorUI.l(this.Rvw);
-        if (localObject != null) {
-          ((ListView)localObject).setVisibility(0);
+        ListView localListView = FileSelectorUI.d(this.YrS);
+        Object localObject1 = localListView;
+        if (localListView == null)
+        {
+          kotlin.g.b.s.bIx("listView");
+          localObject1 = null;
         }
-        FileSelectorUI.e(this.Rvw).setVisibility(8);
-        this.Rvw.addSearchMenu(true, (com.tencent.mm.ui.tools.t)FileSelectorUI.g(this.Rvw));
-        localObject = FileSelectorUI.d(this.Rvw);
+        ((ListView)localObject1).setVisibility(0);
+        FileSelectorUI.e(this.YrS).setVisibility(8);
+        this.YrS.addSearchMenu(true, (com.tencent.mm.ui.tools.s)FileSelectorUI.f(this.YrS));
+        localObject1 = FileSelectorUI.g(this.YrS);
         switch (paramc.type)
         {
         }
+        int i;
         for (;;)
         {
-          switch (paramc.type)
-          {
-          default: 
-            break;
-          case 1: 
-            paramc = FileSelectorUI.c(this.Rvw);
-            if (paramc == null) {
-              break;
-            }
-            paramc.a(FileSelectorUI.h.RvV);
-            break;
-            localObject = ((FileSelectorUI.f)localObject).RvO;
-            ((kb)localObject).uE(((kb)localObject).amj() + 1L);
-            continue;
-            localObject = ((FileSelectorUI.f)localObject).RvO;
-            ((kb)localObject).uF(((kb)localObject).amk() + 1L);
-            continue;
-            localObject = ((FileSelectorUI.f)localObject).RvO;
-            ((kb)localObject).uG(((kb)localObject).aml() + 1L);
-            continue;
-            localObject = ((FileSelectorUI.f)localObject).RvO;
-            ((kb)localObject).uM(((kb)localObject).amt() + 1L);
+          i = paramc.type;
+          if (i != 1) {
+            break label341;
           }
-        }
-        paramc = FileSelectorUI.c(this.Rvw);
-        if (paramc != null)
-        {
-          paramc.a(FileSelectorUI.h.RvW);
+          localObject1 = FileSelectorUI.h(this.YrS);
+          paramc = (DropdownListView.c)localObject1;
+          if (localObject1 == null)
+          {
+            kotlin.g.b.s.bIx("adapter");
+            paramc = null;
+          }
+          paramc.a(FileSelectorUI.h.Ysq);
+          break;
+          localObject1 = ((FileSelectorUI.f)localObject1).Ysj;
+          ((ms)localObject1).jcc += 1L;
           continue;
-          paramc = FileSelectorUI.c(this.Rvw);
-          if (paramc != null)
-          {
-            paramc.a(FileSelectorUI.h.RvX);
-            continue;
-            paramc = FileSelectorUI.c(this.Rvw);
-            if (paramc != null) {
-              paramc.a(FileSelectorUI.h.RvY);
-            }
-            this.Rvw.removeSearchMenu();
-            paramc = FileSelectorUI.l(this.Rvw);
-            if (paramc != null) {
-              paramc.setVisibility(8);
-            }
-            paramc = FileSelectorUI.e(this.Rvw);
-            if (paramc != null) {
-              paramc.setVisibility(0);
-            }
-            paramc = FileSelectorUI.e(this.Rvw);
-            if (paramc != null)
-            {
-              localObject = paramc.RyL;
-              if (localObject != null) {
-                paramc.Ta(((com.tencent.mm.pluginsdk.ui.tools.a.a.a.a)localObject).BZH.size());
-              }
-            }
-          }
+          localObject1 = ((FileSelectorUI.f)localObject1).Ysj;
+          ((ms)localObject1).jcd += 1L;
+          continue;
+          localObject1 = ((FileSelectorUI.f)localObject1).Ysj;
+          ((ms)localObject1).jce += 1L;
+          continue;
+          localObject1 = ((FileSelectorUI.f)localObject1).Ysj;
+          ((ms)localObject1).jcn += 1L;
         }
+        label341:
+        if (i == 2)
+        {
+          localObject1 = FileSelectorUI.h(this.YrS);
+          paramc = (DropdownListView.c)localObject1;
+          if (localObject1 == null)
+          {
+            kotlin.g.b.s.bIx("adapter");
+            paramc = null;
+          }
+          paramc.a(FileSelectorUI.h.Ysr);
+          break;
+        }
+        if (i == 3)
+        {
+          localObject1 = FileSelectorUI.h(this.YrS);
+          paramc = (DropdownListView.c)localObject1;
+          if (localObject1 == null)
+          {
+            kotlin.g.b.s.bIx("adapter");
+            paramc = null;
+          }
+          paramc.a(FileSelectorUI.h.Yss);
+          break;
+        }
+        if (i != 4) {
+          break;
+        }
+        localObject1 = FileSelectorUI.h(this.YrS);
+        paramc = (DropdownListView.c)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("adapter");
+          paramc = null;
+        }
+        paramc.a(FileSelectorUI.h.Yst);
+        this.YrS.removeSearchMenu();
+        localObject1 = FileSelectorUI.d(this.YrS);
+        paramc = (DropdownListView.c)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("listView");
+          paramc = null;
+        }
+        paramc.setVisibility(8);
+        paramc = FileSelectorUI.e(this.YrS);
+        if (paramc != null) {
+          paramc.setVisibility(0);
+        }
+        paramc = FileSelectorUI.e(this.YrS);
+        if (paramc == null) {
+          break;
+        }
+        localObject1 = paramc.Yvj;
+        if (localObject1 == null) {
+          break;
+        }
+        paramc.WH(((com.tencent.mm.pluginsdk.ui.tools.b.a.a.a)localObject1).HLB.size());
+        break;
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$4", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView$OnItemStateChanged;", "onItemStateChanged", "", "expanded", "", "app_release"})
-  public static final class t
-    implements DropdownListView.e
+  @Metadata(d1={""}, d2={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$4", "Lcom/tencent/mm/pluginsdk/ui/tools/DropdownListView$OnItemStateChanged;", "onItemStateChanged", "", "expanded", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class s
+    implements DropdownListView.f
   {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class u
-    implements View.OnTouchListener
-  {
-    u(FileSelectorUI paramFileSelectorUI) {}
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(254658);
-      this.Rvw.hideVKB();
-      AppMethodBeat.o(254658);
-      return false;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$6", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "app_release"})
-  public static final class v
+  @Metadata(d1={""}, d2={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$6", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class t
     implements AbsListView.OnScrollListener
   {
+    t(FileSelectorUI paramFileSelectorUI) {}
+    
     public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(276805);
-      kotlin.g.b.p.k(paramAbsListView, "view");
-      AppMethodBeat.o(276805);
+      AppMethodBeat.i(245652);
+      kotlin.g.b.s.u(paramAbsListView, "view");
+      AppMethodBeat.o(245652);
     }
     
     public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
     {
-      AppMethodBeat.i(276804);
-      kotlin.g.b.p.k(paramAbsListView, "view");
-      if (FileSelectorUI.n(this.Rvw))
+      AppMethodBeat.i(245645);
+      kotlin.g.b.s.u(paramAbsListView, "view");
+      if (FileSelectorUI.k(this.YrS))
       {
         Log.i("MicroMsg.FileSelectorUI", "search mode, not load data");
-        AppMethodBeat.o(276804);
+        AppMethodBeat.o(245645);
         return;
       }
-      if ((paramInt == 0) && (FileSelectorUI.o(this.Rvw)))
+      if ((paramInt == 0) && (FileSelectorUI.l(this.YrS)))
       {
         Log.i("MicroMsg.FileSelectorUI", "will load data when it at bottom");
-        paramAbsListView = FileSelectorUI.c(this.Rvw);
-        FileSelectorUI.h localh = paramAbsListView.RvI;
-        switch (f.yBl[localh.ordinal()])
+        Object localObject = FileSelectorUI.h(this.YrS);
+        paramAbsListView = (AbsListView)localObject;
+        if (localObject == null)
+        {
+          kotlin.g.b.s.bIx("adapter");
+          paramAbsListView = null;
+        }
+        localObject = paramAbsListView.Ysd;
+        switch (FileSelectorUI.e.d.$EnumSwitchMapping$0[localObject.ordinal()])
         {
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(276804);
+        AppMethodBeat.o(245645);
         return;
-        paramAbsListView.RvF.hnm();
-        AppMethodBeat.o(276804);
+        paramAbsListView.Ysa.iOe();
+        AppMethodBeat.o(245645);
         return;
-        paramAbsListView.RvG.hnm();
+        paramAbsListView.Ysb.iOe();
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$7", "Lcom/tencent/mm/pluginsdk/ui/tools/fs/album/adapter/AlbumFileAdapter$OnItemClickListener;", "onItemClick", "", "position", "", "itemView", "Landroid/view/View;", "itemViewType", "onItemSelect", "isChecked", "", "app_release"})
-  public static final class w
-    implements a.d
+  @Metadata(d1={""}, d2={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$7", "Lcom/tencent/mm/pluginsdk/ui/tools/fs/album/adapter/AlbumFileAdapter$OnItemClickListener;", "onItemClick", "", "position", "", "itemView", "Landroid/view/View;", "itemViewType", "onItemSelect", "isChecked", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class u
+    implements com.tencent.mm.pluginsdk.ui.tools.b.a.a.a.d
   {
+    u(FileSelectorUI paramFileSelectorUI) {}
+    
     public final void a(int paramInt1, View paramView, int paramInt2)
     {
-      AppMethodBeat.i(200720);
-      FileSelectorUI.d(this.Rvw).RvO.amn();
-      AppMethodBeat.o(200720);
+      AppMethodBeat.i(245657);
+      FileSelectorUI.g(this.YrS).Ysj.jcg = 1L;
+      AppMethodBeat.o(245657);
     }
     
-    public final void bN(int paramInt, boolean paramBoolean)
+    public final void cv(int paramInt, boolean paramBoolean)
     {
-      AppMethodBeat.i(200724);
+      AppMethodBeat.i(245663);
       if (paramInt < 5) {
         paramInt = 1;
       }
       while (paramBoolean) {
         if (paramInt != 0)
         {
-          localkb = FileSelectorUI.d(this.Rvw).RvO;
-          localkb.uK(localkb.amr() + 1L);
-          AppMethodBeat.o(200724);
+          localms = FileSelectorUI.g(this.YrS).Ysj;
+          localms.jck += 1L;
+          AppMethodBeat.o(245663);
           return;
           paramInt = 0;
         }
         else
         {
-          localkb = FileSelectorUI.d(this.Rvw).RvO;
-          localkb.uL(localkb.ams() + 1L);
-          AppMethodBeat.o(200724);
+          localms = FileSelectorUI.g(this.YrS).Ysj;
+          localms.jcl += 1L;
+          AppMethodBeat.o(245663);
           return;
         }
       }
       if (paramInt != 0)
       {
-        localkb = FileSelectorUI.d(this.Rvw).RvO;
-        localkb.uK(localkb.amr() - 1L);
-        AppMethodBeat.o(200724);
+        localms = FileSelectorUI.g(this.YrS).Ysj;
+        localms.jck -= 1L;
+        AppMethodBeat.o(245663);
         return;
       }
-      kb localkb = FileSelectorUI.d(this.Rvw).RvO;
-      localkb.uL(localkb.ams() - 1L);
-      AppMethodBeat.o(200724);
+      ms localms = FileSelectorUI.g(this.YrS).Ysj;
+      localms.jcl -= 1L;
+      AppMethodBeat.o(245663);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$9", "Lcom/tencent/mm/ui/tools/SearchViewHelper$ISearchListener;", "onClickClearText", "", "onEnterSearch", "onQuitSearch", "onSearchChange", "searchText", "", "onSearchEditTextReady", "onSearchKeyDown", "", "app_release"})
-  public static final class y
-    implements t.b
+  @Metadata(d1={""}, d2={"com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onCreate$9", "Lcom/tencent/mm/ui/tools/SearchViewHelper$ISearchListener;", "onClickClearText", "", "onEnterSearch", "onQuitSearch", "onSearchChange", "searchText", "", "onSearchEditTextReady", "onSearchKeyDown", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class v
+    implements s.c
   {
-    public final boolean aat(String paramString)
+    v(FileSelectorUI paramFileSelectorUI) {}
+    
+    private static final void r(FileSelectorUI paramFileSelectorUI)
     {
-      AppMethodBeat.i(288045);
-      kotlin.g.b.p.k(paramString, "searchText");
-      AppMethodBeat.o(288045);
+      AppMethodBeat.i(245680);
+      kotlin.g.b.s.u(paramFileSelectorUI, "this$0");
+      if (FileSelectorUI.h(paramFileSelectorUI) == null) {
+        kotlin.g.b.s.bIx("adapter");
+      }
+      FileSelectorUI.e locale = FileSelectorUI.h(paramFileSelectorUI);
+      paramFileSelectorUI = locale;
+      if (locale == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramFileSelectorUI = null;
+      }
+      paramFileSelectorUI.Dm("");
+      AppMethodBeat.o(245680);
+    }
+    
+    public final boolean SN(String paramString)
+    {
+      AppMethodBeat.i(245692);
+      kotlin.g.b.s.u(paramString, "searchText");
+      AppMethodBeat.o(245692);
       return false;
     }
     
-    public final void aau(String paramString)
+    public final void SO(String paramString)
     {
-      AppMethodBeat.i(288044);
-      kotlin.g.b.p.k(paramString, "searchText");
-      if (!FileSelectorUI.p(this.Rvw))
+      AppMethodBeat.i(245688);
+      kotlin.g.b.s.u(paramString, "searchText");
+      if (!FileSelectorUI.m(this.YrS))
       {
-        View localView = FileSelectorUI.r(this.Rvw);
-        if (localView != null) {
-          localView.setVisibility(8);
-        }
-      }
-      FileSelectorUI.c(this.Rvw).KG(paramString);
-      FileSelectorUI.d(this.Rvw).RvP.add(paramString);
-      FileSelectorUI.q(this.Rvw);
-      AppMethodBeat.o(288044);
-    }
-    
-    public final void bxH()
-    {
-      AppMethodBeat.i(288046);
-      FileSelectorUI.a(this.Rvw, false);
-      Log.d("MicroMsg.FileSelectorUI", "onQuitSearch()");
-      MMHandlerThread.postToMainThread((Runnable)new a(this));
-      this.Rvw.getController().supportInvalidateOptionsMenu();
-      View localView = FileSelectorUI.r(this.Rvw);
-      if (localView != null)
-      {
-        localView.setVisibility(8);
-        AppMethodBeat.o(288046);
-        return;
-      }
-      AppMethodBeat.o(288046);
-    }
-    
-    public final void bxI()
-    {
-      AppMethodBeat.i(288047);
-      if (FileSelectorUI.m(this.Rvw).tFX)
-      {
-        localObject = FileSelectorUI.m(this.Rvw);
+        localObject = FileSelectorUI.n(this.YrS);
         if (localObject != null) {
-          ((DropdownListView)localObject).euH();
+          ((View)localObject).setVisibility(8);
         }
       }
-      FileSelectorUI.a(this.Rvw, true);
-      Object localObject = FileSelectorUI.r(this.Rvw);
-      if (localObject != null) {
-        ((View)localObject).setVisibility(0);
+      FileSelectorUI.e locale = FileSelectorUI.h(this.YrS);
+      Object localObject = locale;
+      if (locale == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject = null;
       }
-      localObject = FileSelectorUI.g(this.Rvw);
-      if (localObject != null) {
-        ((com.tencent.mm.ui.tools.s)localObject).Hd(true);
-      }
-      FileSelectorUI.d(this.Rvw).RvO.amm();
-      Log.i("MicroMsg.FileSelectorUI", "enter search");
-      AppMethodBeat.o(288047);
+      ((FileSelectorUI.e)localObject).Dm(paramString);
+      FileSelectorUI.g(this.YrS).Ysk.add(paramString);
+      FileSelectorUI.o(this.YrS);
+      AppMethodBeat.o(245688);
     }
     
-    public final void bxJ() {}
-    
-    public final void bxK() {}
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
+    public final void bWw()
     {
-      a(FileSelectorUI.y paramy) {}
-      
-      public final void run()
+      AppMethodBeat.i(245696);
+      FileSelectorUI.a(this.YrS, false);
+      Log.d("MicroMsg.FileSelectorUI", "onQuitSearch()");
+      MMHandlerThread.postToMainThread(new FileSelectorUI.v..ExternalSyntheticLambda0(this.YrS));
+      this.YrS.getController().supportInvalidateOptionsMenu();
+      View localView = FileSelectorUI.n(this.YrS);
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+      AppMethodBeat.o(245696);
+    }
+    
+    public final void bWx()
+    {
+      Object localObject2 = null;
+      AppMethodBeat.i(245702);
+      DropdownListView localDropdownListView = FileSelectorUI.j(this.YrS);
+      Object localObject1 = localDropdownListView;
+      if (localDropdownListView == null)
       {
-        AppMethodBeat.i(273257);
-        if (FileSelectorUI.c(this.Rwt.Rvw) != null) {
-          FileSelectorUI.c(this.Rwt.Rvw).KG("");
+        kotlin.g.b.s.bIx("dropdownListView");
+        localObject1 = null;
+      }
+      if (((DropdownListView)localObject1).wJw)
+      {
+        localObject1 = FileSelectorUI.j(this.YrS);
+        if (localObject1 != null) {
+          break label127;
         }
-        AppMethodBeat.o(273257);
+        kotlin.g.b.s.bIx("dropdownListView");
+        localObject1 = localObject2;
       }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "position", "", "<anonymous parameter 3>", "", "onItemClick"})
-  static final class z
-    implements AdapterView.OnItemClickListener
-  {
-    z(FileSelectorUI paramFileSelectorUI) {}
-    
-    public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-    {
-      AppMethodBeat.i(219279);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAdapterView);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).sg(paramInt);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).Fs(paramLong);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onItemClickListener$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      paramAdapterView = FileSelectorUI.c(this.Rvw);
-      if (paramAdapterView != null) {}
-      for (paramAdapterView = paramAdapterView.aqZ(paramInt); FileSelectorUI.w(this.Rvw); paramAdapterView = null)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onItemClickListener$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-        AppMethodBeat.o(219279);
-        return;
-      }
-      paramView = paramAdapterView.Rwj;
-      switch (g.$EnumSwitchMapping$0[paramView.ordinal()])
-      {
-      }
+      label127:
       for (;;)
       {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onItemClickListener$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-        AppMethodBeat.o(219279);
+        ((DropdownListView)localObject1).fBC();
+        FileSelectorUI.a(this.YrS, true);
+        localObject1 = FileSelectorUI.n(this.YrS);
+        if (localObject1 != null) {
+          ((View)localObject1).setVisibility(0);
+        }
+        localObject1 = FileSelectorUI.f(this.YrS);
+        if (localObject1 != null) {
+          ((r)localObject1).afKs = true;
+        }
+        FileSelectorUI.g(this.YrS).Ysj.jcf = 1L;
+        Log.i("MicroMsg.FileSelectorUI", "enter search");
+        AppMethodBeat.o(245702);
         return;
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onItemClickListener$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-        AppMethodBeat.o(219279);
-        return;
-        FileSelectorUI.d(this.Rvw).RvO.amn();
-        if (paramAdapterView == null) {
-          try
-          {
-            paramAdapterView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.ListFolderItem");
-            AppMethodBeat.o(219279);
-            throw paramAdapterView;
-          }
-          catch (Exception paramAdapterView)
-          {
-            Log.e("MicroMsg.FileSelectorUI", "error:" + paramAdapterView.getMessage());
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onItemClickListener$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(219279);
-            return;
-          }
-        }
-        paramAdapterView = (FileSelectorUI.k)paramAdapterView;
-        if (paramAdapterView.Rwi)
-        {
-          FileSelectorUI.a(this.Rvw, paramAdapterView.filePath, paramAdapterView.hnu().toString());
-        }
-        else
-        {
-          if (Util.isNullOrNil(paramAdapterView.filePath))
-          {
-            Log.e("MicroMsg.FileSelectorUI", "can not open sub path because current path not exist");
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onItemClickListener$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(219279);
-            return;
-          }
-          paramAdapterView = paramAdapterView.filePath;
-          if (paramAdapterView != null)
-          {
-            paramView = FileSelectorUI.c(this.Rvw);
-            kotlin.g.b.p.k(paramAdapterView, "path");
-            if (paramView.RvI == FileSelectorUI.h.RvX)
-            {
-              paramView.RvH.ad(new com.tencent.mm.vfs.q(paramAdapterView));
-              FileSelectorUI.c(paramView.Rvw).dlN();
-            }
-          }
-          FileSelectorUI.c(this.Rvw).notifyDataSetChanged();
-          continue;
-          FileSelectorUI.d(this.Rvw).RvO.amn();
-          if (paramAdapterView == null)
-          {
-            paramAdapterView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.ListFileItem");
-            AppMethodBeat.o(219279);
-            throw paramAdapterView;
-          }
-          paramView = ((FileSelectorUI.j)paramAdapterView).filePath;
-          paramInt = n.g(((FileSelectorUI.j)paramAdapterView).hnu(), ".") + 1;
-          if (paramInt >= ((FileSelectorUI.j)paramAdapterView).hnu().length())
-          {
-            Log.i("MicroMsg.FileSelectorUI", "open file error : file path error");
-            com.tencent.mm.ui.base.w.cS((Context)this.Rvw, this.Rvw.getResources().getString(R.l.eRK));
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onItemClickListener$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(219279);
-            return;
-          }
-          localObject = ((FileSelectorUI.j)paramAdapterView).hnu();
-          localObject = ((CharSequence)localObject).subSequence(paramInt, ((CharSequence)localObject).length()).toString();
-          if ((3 == FileSelectorUI.a(this.Rvw)) && (!((FileSelectorUI.j)paramAdapterView).Rwg) && (FileSelectorUI.h.RvV == FileSelectorUI.c(this.Rvw).RvI))
-          {
-            if ((n.L((String)localObject, "ppt", true)) || (n.L((String)localObject, "pdf", true)) || (n.L((String)localObject, "doc", true)) || (n.L((String)localObject, "docx", true)) || (n.L((String)localObject, "pptx", true))) {
-              FileSelectorUI.a(this.Rvw, ((FileSelectorUI.j)paramAdapterView).msgId);
-            }
-            for (;;)
-            {
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onItemClickListener$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-              AppMethodBeat.o(219279);
-              return;
-              com.tencent.mm.ui.base.w.cS((Context)this.Rvw, this.Rvw.getResources().getString(R.l.eRL));
-            }
-          }
-          if ((FileSelectorUI.h.RvW == FileSelectorUI.c(this.Rvw).RvI) && (!u.agG(((FileSelectorUI.j)paramAdapterView).filePath)))
-          {
-            paramAdapterView = (FileSelectorUI.l)paramAdapterView;
-            FileSelectorUI.a(this.Rvw, ((FileSelectorUI.i)paramAdapterView).localId, ((FileSelectorUI.i)paramAdapterView).hns());
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$onItemClickListener$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(219279);
-            return;
-          }
-          FileSelectorUI.a(this.Rvw, paramView, ((FileSelectorUI.j)paramAdapterView).hnu().toString());
-        }
       }
     }
+    
+    public final void bWy() {}
+    
+    public final void bWz() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI
  * JD-Core Version:    0.7.0.1
  */

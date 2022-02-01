@@ -24,51 +24,51 @@ public class TPPlayerDecoderCapability
   
   public static boolean addVCodecBlacklist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange)
   {
-    AppMethodBeat.i(222989);
+    AppMethodBeat.i(227750);
     try
     {
       boolean bool = _addVCodecBlacklist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
-      AppMethodBeat.o(222989);
+      AppMethodBeat.o(227750);
       return bool;
     }
-    catch (Throwable paramTPVCodecPropertyRange)
+    finally
     {
       TPNativeLog.printLog(4, paramTPVCodecPropertyRange.getMessage());
-      AppMethodBeat.o(222989);
+      AppMethodBeat.o(227750);
     }
     return false;
   }
   
   public static boolean addVCodecWhitelist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange)
   {
-    AppMethodBeat.i(222990);
+    AppMethodBeat.i(227754);
     try
     {
       boolean bool = _addVCodecWhitelist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
-      AppMethodBeat.o(222990);
+      AppMethodBeat.o(227754);
       return bool;
     }
-    catch (Throwable paramTPVCodecPropertyRange)
+    finally
     {
       TPNativeLog.printLog(4, paramTPVCodecPropertyRange.getMessage());
-      AppMethodBeat.o(222990);
+      AppMethodBeat.o(227754);
     }
     return false;
   }
   
   public static HashMap<Integer, TPCodecCapability.TPVCodecMaxCapability> getVCodecDecoderMaxCapabilityMap(int paramInt)
   {
-    AppMethodBeat.i(222985);
+    AppMethodBeat.i(227743);
     try
     {
       HashMap localHashMap = _getDecoderMaxCapabilityMap(paramInt);
-      AppMethodBeat.o(222985);
+      AppMethodBeat.o(227743);
       return localHashMap;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(222985);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(227743);
     }
     return null;
   }
@@ -77,9 +77,9 @@ public class TPPlayerDecoderCapability
   {
     try
     {
-      AppMethodBeat.i(222982);
+      AppMethodBeat.i(227720);
       TPCodecUtils.init(paramContext, paramBoolean);
-      AppMethodBeat.o(222982);
+      AppMethodBeat.o(227720);
       return;
     }
     finally
@@ -94,57 +94,33 @@ public class TPPlayerDecoderCapability
     return true;
   }
   
-  public static boolean isBlackListForHdr10(String paramString)
-  {
-    AppMethodBeat.i(223000);
-    boolean bool = TPCodecUtils.isBlackListForHdr10(paramString);
-    AppMethodBeat.o(223000);
-    return bool;
-  }
-  
-  public static boolean isBlackListForHdr10Enhance(String paramString)
-  {
-    AppMethodBeat.i(223006);
-    boolean bool = TPCodecUtils.isBlackListForHdr10Enhance(paramString);
-    AppMethodBeat.o(223006);
-    return bool;
-  }
-  
-  public static boolean isBlackListForVidHdr10Enhance(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(223002);
-    boolean bool = TPCodecUtils.isBlackListForVidHdr10Enhance(paramString1, paramString2);
-    AppMethodBeat.o(223002);
-    return bool;
-  }
-  
   public static boolean isDDPlusSupported()
   {
-    AppMethodBeat.i(222998);
+    AppMethodBeat.i(227773);
     boolean bool = TPCodecUtils.isHwDDPlusSupported();
-    AppMethodBeat.o(222998);
+    AppMethodBeat.o(227773);
     return bool;
   }
   
   public static boolean isDolbyDSSupported()
   {
-    AppMethodBeat.i(222996);
+    AppMethodBeat.i(227768);
     boolean bool = TPCodecUtils.isHwDolbyDSSupported();
-    AppMethodBeat.o(222996);
+    AppMethodBeat.o(227768);
     return bool;
   }
   
   public static boolean isHDRsupport(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(222999);
+    AppMethodBeat.i(227779);
     boolean bool = TPCodecUtils.isHDRsupport(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(222999);
+    AppMethodBeat.o(227779);
     return bool;
   }
   
   public static boolean isVCodecCapabilitySupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    AppMethodBeat.i(222995);
+    AppMethodBeat.i(227761);
     if (102 == paramInt1)
     {
       String str = "";
@@ -153,46 +129,30 @@ public class TPPlayerDecoderCapability
       }
       while (TPCodecUtils.isInMediaCodecWhiteList(str, paramInt3, paramInt4))
       {
-        AppMethodBeat.o(222995);
+        AppMethodBeat.o(227761);
         return true;
         str = "video/avc";
         continue;
         str = "video/hevc";
       }
-      if (TPCodecUtils.isBlackListForHardwareDec(str))
+      if ((TPCodecUtils.isBlackListModel()) || (TPCodecUtils.isBlackListType(str)))
       {
-        AppMethodBeat.o(222995);
+        AppMethodBeat.o(227761);
         return false;
       }
     }
     try
     {
       boolean bool = _isVCodecCapabilitySupport(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
-      AppMethodBeat.o(222995);
+      AppMethodBeat.o(227761);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(222995);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(227761);
     }
     return false;
-  }
-  
-  public static boolean isWhiteListForHdr10(String paramString)
-  {
-    AppMethodBeat.i(223004);
-    boolean bool = TPCodecUtils.isWhiteListForHdr10(paramString);
-    AppMethodBeat.o(223004);
-    return bool;
-  }
-  
-  public static boolean isWhiteListForHdr10Enhance(String paramString)
-  {
-    AppMethodBeat.i(223007);
-    boolean bool = TPCodecUtils.isWhiteListForHdr10Enhance(paramString);
-    AppMethodBeat.o(223007);
-    return bool;
   }
   
   public static boolean probeACodecMaxCapability()
@@ -202,7 +162,7 @@ public class TPPlayerDecoderCapability
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPPlayerDecoderCapability
  * JD-Core Version:    0.7.0.1
  */

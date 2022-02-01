@@ -1,6 +1,5 @@
 package com.tencent.tinker.loader;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import com.tencent.tinker.loader.app.TinkerApplication;
 import com.tencent.tinker.loader.shareutil.ShareArkHotDiffPatchInfo;
@@ -88,7 +87,6 @@ public class TinkerArkHotLoader
     }
   }
   
-  @TargetApi(14)
   public static boolean loadTinkerArkHot(TinkerApplication paramTinkerApplication, String paramString, Intent paramIntent)
   {
     if (arkHotApkInfo.isEmpty())
@@ -112,7 +110,7 @@ public class TinkerArkHotLoader
       SystemClassLoaderAdder.installApk(paramTinkerApplication, localArrayList);
       return true;
     }
-    catch (Throwable paramTinkerApplication)
+    finally
     {
       ShareTinkerLog.e("Tinker.TinkerArkHotLoader", "install dexes failed", new Object[0]);
       paramIntent.putExtra("intent_patch_exception", paramTinkerApplication);
@@ -126,7 +124,7 @@ public class TinkerArkHotLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.TinkerArkHotLoader
  * JD-Core Version:    0.7.0.1
  */

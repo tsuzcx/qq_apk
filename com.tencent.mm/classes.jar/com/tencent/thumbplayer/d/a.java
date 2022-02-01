@@ -5,56 +5,57 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.thumbplayer.core.config.TPPlayerCoreConfig;
 import com.tencent.thumbplayer.utils.g;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class a
 {
-  private static String ZBJ = "";
-  private static String ZBK;
-  private static String ZBL;
-  private static int ZBM = -1;
-  private static String ZBN;
-  private static boolean ZBO;
-  private static String ZBP = "";
-  private static int ZBQ = 0;
-  private static String ZBR = "";
-  private static boolean ZBS = true;
-  private static int ZBT = -1;
-  public static String ZBU = "";
-  public static String ZBV = "";
-  private static String ZBW = "";
-  private static String ZBX = "\\.";
-  private static long ZBY = -1L;
+  private static String ahGM = "";
+  private static String ahGN;
+  private static String ahGO;
+  private static int ahGP = -1;
+  private static String ahGQ;
+  private static boolean ahGR;
+  private static String ahGS = "";
+  private static int ahGT = 0;
+  private static String ahGU = "";
+  private static boolean ahGV = true;
+  private static int ahGW = -1;
+  public static String ahGX = "";
+  public static String ahGY = "";
+  private static String ahGZ = "";
+  private static String ahHa = "\\.";
+  private static long ahHb = -1L;
   private static String appVersion = "";
   private static String appVersionName;
   
-  public static void Iu(boolean paramBoolean)
+  public static void Ow(boolean paramBoolean)
   {
-    ZBS = paramBoolean;
+    ahGV = paramBoolean;
   }
   
-  public static void Iv(boolean paramBoolean)
+  public static void Ox(boolean paramBoolean)
   {
-    ZBO = paramBoolean;
+    ahGR = paramBoolean;
   }
   
-  public static void aBa(int paramInt)
+  public static void aHN(int paramInt)
   {
-    ZBQ = paramInt;
+    ahGT = paramInt;
   }
   
-  public static void bDs(String paramString)
+  public static void bFZ(String paramString)
   {
-    AppMethodBeat.i(220247);
+    AppMethodBeat.i(226929);
     if (TextUtils.isEmpty(paramString))
     {
       g.w("TPPlayerConfig", "parseHostConfig, config is null.");
-      AppMethodBeat.o(220247);
+      AppMethodBeat.o(226929);
       return;
     }
-    ZBW = paramString;
+    ahGZ = paramString;
     g.i("TPPlayerConfig", "parseHostConfig:".concat(String.valueOf(paramString)));
     try
     {
@@ -63,49 +64,49 @@ public final class a
       {
         paramString = paramString.getJSONObject("player_host_config");
         if (paramString.has("beacon_policy_host")) {
-          ZBU = paramString.getString("beacon_policy_host");
+          ahGX = paramString.getString("beacon_policy_host");
         }
         if (paramString.has("beacon_log_host")) {
-          ZBV = paramString.getString("beacon_log_host");
+          ahGY = paramString.getString("beacon_log_host");
         }
       }
-      AppMethodBeat.o(220247);
+      AppMethodBeat.o(226929);
       return;
     }
-    catch (Throwable paramString)
+    finally
     {
       g.w("TPPlayerConfig", "parseHostConfig exception: " + paramString.toString());
-      AppMethodBeat.o(220247);
+      AppMethodBeat.o(226929);
     }
   }
   
-  public static void bDt(String paramString)
+  public static void bGa(String paramString)
   {
-    ZBN = paramString;
+    ahGQ = paramString;
   }
   
-  public static void bDu(String paramString)
+  public static void bGb(String paramString)
   {
-    ZBP = paramString;
+    ahGS = paramString;
   }
   
-  public static void bDv(String paramString)
+  public static void bGc(String paramString)
   {
-    ZBR = paramString;
+    ahGU = paramString;
   }
   
   public static String getAppVersionName(Context paramContext)
   {
-    AppMethodBeat.i(220262);
+    AppMethodBeat.i(227011);
     if (!TextUtils.isEmpty(appVersionName))
     {
       paramContext = appVersionName;
-      AppMethodBeat.o(220262);
+      AppMethodBeat.o(227011);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(220262);
+      AppMethodBeat.o(227011);
       return "";
     }
     try
@@ -116,51 +117,50 @@ public final class a
       if (str == null) {
         paramContext = "";
       }
-      AppMethodBeat.o(220262);
       return paramContext;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(220262);
+      AppMethodBeat.o(227011);
     }
     return "";
   }
   
   public static String getGuid()
   {
-    return ZBJ;
+    return ahGM;
   }
   
   public static int getPlatform()
   {
-    return ZBT;
+    return ahGW;
   }
   
-  public static boolean iqK()
+  public static boolean kag()
   {
-    return ZBS;
+    return ahGV;
   }
   
-  public static String iqL()
+  public static String kah()
   {
-    return ZBK;
+    return ahGN;
   }
   
-  public static String iqM()
+  public static String kai()
   {
-    return ZBL;
+    return ahGO;
   }
   
-  public static String iqN()
+  public static String kaj()
   {
-    AppMethodBeat.i(220254);
+    AppMethodBeat.i(226960);
     Object localObject = new JSONObject();
-    if (!TextUtils.isEmpty(ZBW)) {}
+    if (!TextUtils.isEmpty(ahGZ)) {}
     try
     {
-      ((JSONObject)localObject).put("host_config", new JSONObject(ZBW));
+      ((JSONObject)localObject).put("host_config", new JSONObject(ahGZ));
       localObject = ((JSONObject)localObject).toString();
-      AppMethodBeat.o(220254);
+      AppMethodBeat.o(226960);
       return localObject;
     }
     catch (JSONException localJSONException)
@@ -172,90 +172,97 @@ public final class a
     }
   }
   
-  public static String iqO()
+  public static String kak()
   {
-    return ZBN;
+    return ahGQ;
   }
   
-  public static String iqP()
+  public static String kal()
   {
-    return ZBP;
+    return ahGS;
   }
   
-  public static int iqQ()
+  public static int kam()
   {
-    return ZBQ;
+    return ahGT;
   }
   
-  public static String iqR()
+  public static String kan()
   {
-    return ZBR;
+    return ahGU;
   }
   
-  public static boolean iqS()
+  public static boolean kao()
   {
-    return ZBO;
+    return ahGR;
   }
   
-  public static int iqT()
+  public static int kap()
   {
-    if ((ZBM == -1) && (ZBT != -1)) {
-      return ZBT;
+    if ((ahGP == -1) && (ahGW != -1)) {
+      return ahGW;
     }
-    return ZBM;
+    return ahGP;
   }
   
-  public static long mg(Context paramContext)
+  public static long ot(Context paramContext)
   {
-    AppMethodBeat.i(220263);
+    AppMethodBeat.i(227017);
     long l;
-    if (-1L != ZBY)
+    if (-1L != ahHb)
     {
-      l = ZBY;
-      AppMethodBeat.o(220263);
+      l = ahHb;
+      AppMethodBeat.o(227017);
       return l;
     }
     try
     {
       l = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).getLongVersionCode();
-      ZBY = l;
-      AppMethodBeat.o(220263);
+      ahHb = l;
+      AppMethodBeat.o(227017);
       return l;
     }
-    catch (Throwable paramContext)
+    finally
     {
       g.e("TPPlayerConfig", "getLongVersionCode less api 28");
-      l = ZBY;
-      AppMethodBeat.o(220263);
+      l = ahHb;
+      AppMethodBeat.o(227017);
     }
     return l;
   }
   
   public static void setDebugEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(220248);
+    AppMethodBeat.i(226932);
     g.setDebugEnable(paramBoolean);
-    AppMethodBeat.o(220248);
+    AppMethodBeat.o(226932);
   }
   
   public static void setGuid(String paramString)
   {
-    ZBJ = paramString;
+    ahGM = paramString;
   }
   
   public static void setPlatform(int paramInt)
   {
-    ZBT = paramInt;
+    ahGW = paramInt;
   }
   
   public static void setProxyServiceType(int paramInt)
   {
-    ZBM = paramInt;
+    ahGP = paramInt;
+  }
+  
+  public static void setVideoMediaCodecStuckCheck(boolean paramBoolean)
+  {
+    AppMethodBeat.i(227021);
+    TPPlayerCoreConfig.setVideoMediaCodecStuckCheck(paramBoolean);
+    AppMethodBeat.o(227021);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.d.a
  * JD-Core Version:    0.7.0.1
  */

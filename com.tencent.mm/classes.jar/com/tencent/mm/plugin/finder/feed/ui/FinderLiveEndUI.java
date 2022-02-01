@@ -1,204 +1,220 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.live.p.b;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.g;
+import com.tencent.mm.plugin.finder.live.p.h;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
+import com.tencent.mm.plugin.webview.luggage.c.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.x;
+import com.tencent.xweb.z;
 import java.io.IOException;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "mCurCountDown", "", "mCurUrl", "mOkBtn", "Landroid/widget/Button;", "mUrlLicense", "mUrlStandard", "mmWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "timerThread", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "webChromeClient", "com/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$webChromeClient$1", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$webChromeClient$1;", "getLayoutId", "initLayout", "", "licenseCountDown", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "showLicense", "url", "Companion", "plugin-finder-live_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "mCurCountDown", "", "mCurUrl", "mOkBtn", "Landroid/widget/Button;", "mUrlLicense", "mUrlStandard", "mmWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "timerThread", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "webChromeClient", "com/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$webChromeClient$1", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$webChromeClient$1;", "getLayoutId", "initLayout", "", "licenseCountDown", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "showLicense", "url", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveEndUI
   extends MMFinderUI
 {
-  public static final a xPj;
+  public static final FinderLiveEndUI.a BoV;
+  private MMWebView Aft;
+  private Button BoW;
+  private String BoX;
+  private String BoY;
+  private String BoZ;
+  private int Bpa;
+  private final c Bpb;
   private final String TAG;
-  private HashMap _$_findViewCache;
-  private MTimerHandler kKL;
-  private MMWebView wIY;
-  private Button xPd;
-  private String xPe;
-  private String xPf;
-  private String xPg;
-  private int xPh;
-  private final e xPi;
+  private MTimerHandler nmZ;
   
   static
   {
-    AppMethodBeat.i(233477);
-    xPj = new a((byte)0);
-    AppMethodBeat.o(233477);
+    AppMethodBeat.i(365866);
+    BoV = new FinderLiveEndUI.a((byte)0);
+    AppMethodBeat.o(365866);
   }
   
   public FinderLiveEndUI()
   {
-    AppMethodBeat.i(233475);
+    AppMethodBeat.i(365797);
     this.TAG = "FinderLiveEndUI";
-    this.xPg = this.xPe;
-    this.xPh = 5;
-    this.xPi = new e(this);
-    this.kKL = new MTimerHandler(Looper.getMainLooper(), (MTimerHandler.CallBack)new d(this), true);
-    AppMethodBeat.o(233475);
+    this.BoZ = this.BoX;
+    this.Bpa = 5;
+    this.Bpb = new c(this);
+    this.nmZ = new MTimerHandler(Looper.getMainLooper(), (MTimerHandler.CallBack)new b(this), true);
+    AppMethodBeat.o(365797);
   }
   
-  private final void aBL(String paramString)
+  private static final void a(FinderLiveEndUI paramFinderLiveEndUI, View paramView)
   {
-    AppMethodBeat.i(233471);
+    AppMethodBeat.i(365834);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramFinderLiveEndUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveEndUI, "this$0");
+    if (n.T(paramFinderLiveEndUI.BoZ, paramFinderLiveEndUI.BoX, false))
+    {
+      paramFinderLiveEndUI.setMMTitle(paramFinderLiveEndUI.getResources().getString(p.h.CqH));
+      localObject = paramFinderLiveEndUI.BoY;
+      paramView = (View)localObject;
+      if (localObject == null) {
+        paramView = "";
+      }
+      paramFinderLiveEndUI.awc(paramView);
+      paramView = paramFinderLiveEndUI.BoW;
+      if (paramView != null) {
+        paramView.setText((CharSequence)paramFinderLiveEndUI.getResources().getString(p.h.CqE, new Object[] { Integer.valueOf(5) }));
+      }
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(365834);
+      return;
+      if (n.T(paramFinderLiveEndUI.BoZ, paramFinderLiveEndUI.BoY, false)) {
+        paramFinderLiveEndUI.setResult(-1);
+      }
+      paramFinderLiveEndUI.finish();
+    }
+  }
+  
+  private static final boolean a(FinderLiveEndUI paramFinderLiveEndUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(365823);
+    s.u(paramFinderLiveEndUI, "this$0");
+    paramFinderLiveEndUI.finish();
+    AppMethodBeat.o(365823);
+    return true;
+  }
+  
+  private final void awc(String paramString)
+  {
+    AppMethodBeat.i(365806);
     try
     {
-      this.xPg = paramString;
-      MMWebView localMMWebView = this.wIY;
+      this.BoZ = paramString;
+      MMWebView localMMWebView = this.Aft;
       if (localMMWebView != null) {
         localMMWebView.loadUrl(paramString);
       }
-      dvo();
-      AppMethodBeat.o(233471);
+      efi();
+      AppMethodBeat.o(365806);
       return;
     }
     catch (IOException paramString)
     {
       Log.e(this.TAG, paramString.getMessage());
-      AppMethodBeat.o(233471);
+      AppMethodBeat.o(365806);
     }
   }
   
-  private final void dvo()
+  private final void efi()
   {
-    AppMethodBeat.i(233472);
-    Button localButton = this.xPd;
+    AppMethodBeat.i(365815);
+    Button localButton = this.BoW;
     if (localButton != null) {
       localButton.setEnabled(false);
     }
-    this.kKL.stopTimer();
-    this.xPh = 5;
-    localButton = this.xPd;
+    this.nmZ.stopTimer();
+    this.Bpa = 5;
+    localButton = this.BoW;
     if (localButton != null) {
-      localButton.setText((CharSequence)getResources().getString(b.j.finder_live_post_precheck_license_next_countdown_tips, new Object[] { Integer.valueOf(this.xPh) }));
+      localButton.setText((CharSequence)getResources().getString(p.h.CqI, new Object[] { Integer.valueOf(this.Bpa) }));
     }
-    this.kKL.startTimer(1000L);
-    AppMethodBeat.o(233472);
+    this.nmZ.startTimer(1000L);
+    AppMethodBeat.o(365815);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(233485);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(233485);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(233483);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(233483);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_post_precheck_license_ui;
+    return p.f.Cfi;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(233468);
+    AppMethodBeat.i(365896);
     super.onCreate(paramBundle);
-    this.xPe = getIntent().getStringExtra("KEY_PATH_LICENSE");
-    this.xPf = getIntent().getStringExtra("KEY_PATH_STANDARD");
-    paramBundle = (CharSequence)this.xPe;
+    this.BoX = getIntent().getStringExtra("KEY_PATH_LICENSE");
+    this.BoY = getIntent().getStringExtra("KEY_PATH_STANDARD");
+    paramBundle = (CharSequence)this.BoX;
     if ((paramBundle == null) || (paramBundle.length() == 0))
     {
       i = 1;
       if (i == 0)
       {
-        paramBundle = (CharSequence)this.xPf;
+        paramBundle = (CharSequence)this.BoY;
         if ((paramBundle != null) && (paramBundle.length() != 0)) {
-          break label130;
+          break label133;
         }
       }
     }
-    label130:
+    label133:
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        break label135;
+        break label138;
       }
       Log.e(this.TAG, "mUrl is empty!!!");
-      paramBundle = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      com.tencent.mm.plugin.finder.live.utils.a.aC((Context)this, "url为空");
+      paramBundle = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      com.tencent.mm.plugin.finder.live.utils.a.aD((Context)this, "url为空");
       finish();
-      AppMethodBeat.o(233468);
+      AppMethodBeat.o(365896);
       return;
       i = 0;
       break;
     }
-    label135:
-    setMMTitle(getResources().getString(b.j.finder_live_post_precheck_license_finder_live));
+    label138:
+    setMMTitle(getResources().getString(p.h.CqG));
     hideActionbarLine();
-    setActionbarColor(getResources().getColor(b.c.white));
-    setBackGroundColorResource(b.c.white);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new b(this), b.i.actionbar_icon_dark_back);
-    this.wIY = MMWebView.a.a((Context)this, getContentView(), b.f.webview);
-    paramBundle = this.wIY;
+    setActionbarColor(getResources().getColor(p.b.white));
+    setBackGroundColorResource(p.b.white);
+    setBackBtn(new FinderLiveEndUI..ExternalSyntheticLambda0(this), p.g.actionbar_icon_dark_back);
+    this.Aft = MMWebView.a.b((Context)this, getContentView(), p.e.webview);
+    paramBundle = this.Aft;
     if (paramBundle != null) {
-      paramBundle.setWebChromeClient((x)this.xPi);
+      paramBundle.setWebChromeClient((z)this.Bpb);
     }
-    this.xPd = ((Button)findViewById(b.f.license_ok_btn));
-    paramBundle = this.xPd;
+    this.BoW = ((Button)findViewById(p.e.BVX));
+    paramBundle = this.BoW;
     if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)new c(this));
+      paramBundle.setOnClickListener(new FinderLiveEndUI..ExternalSyntheticLambda1(this));
     }
-    String str = this.xPe;
+    String str = this.BoX;
     paramBundle = str;
     if (str == null) {
       paramBundle = "";
     }
-    aBL(paramBundle);
-    AppMethodBeat.o(233468);
+    awc(paramBundle);
+    AppMethodBeat.o(365896);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(233469);
+    AppMethodBeat.i(365904);
     super.onDestroy();
-    this.kKL.stopTimer();
-    AppMethodBeat.o(233469);
+    this.nmZ.stopTimer();
+    AppMethodBeat.o(365904);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -207,136 +223,82 @@ public final class FinderLiveEndUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$Companion;", "", "()V", "CONUNT_DOWN_INTERVAL", "", "CONUNT_DOWN_THRESHOLD", "", "KEY_PATH_LICENSE", "", "KEY_PATH_STANDARD", "plugin-finder-live_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class b
-    implements MenuItem.OnMenuItemClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$timerThread$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements MTimerHandler.CallBack
   {
     b(FinderLiveEndUI paramFinderLiveEndUI) {}
     
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(233283);
-      this.xPk.finish();
-      AppMethodBeat.o(233283);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(FinderLiveEndUI paramFinderLiveEndUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(232799);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$initLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      if (n.L(FinderLiveEndUI.a(this.xPk), FinderLiveEndUI.b(this.xPk), false))
-      {
-        this.xPk.setMMTitle(this.xPk.getResources().getString(b.j.finder_live_post_precheck_license_live_standard));
-        FinderLiveEndUI localFinderLiveEndUI = this.xPk;
-        localObject = FinderLiveEndUI.c(this.xPk);
-        paramView = (View)localObject;
-        if (localObject == null) {
-          paramView = "";
-        }
-        FinderLiveEndUI.a(localFinderLiveEndUI, paramView);
-        paramView = FinderLiveEndUI.d(this.xPk);
-        if (paramView != null) {
-          paramView.setText((CharSequence)this.xPk.getResources().getString(b.j.finder_live_post_precheck_license_done_countdown_tips, new Object[] { Integer.valueOf(5) }));
-        }
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$initLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(232799);
-        return;
-        if (n.L(FinderLiveEndUI.a(this.xPk), FinderLiveEndUI.c(this.xPk), false)) {
-          this.xPk.setResult(-1);
-        }
-        this.xPk.finish();
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$timerThread$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-finder-live_release"})
-  public static final class d
-    implements MTimerHandler.CallBack
-  {
     public final boolean onTimerExpired()
     {
-      AppMethodBeat.i(233926);
-      Object localObject = this.xPk;
-      FinderLiveEndUI.a((FinderLiveEndUI)localObject, FinderLiveEndUI.f((FinderLiveEndUI)localObject) - 1);
-      Button localButton = FinderLiveEndUI.d(this.xPk);
+      AppMethodBeat.i(365751);
+      Object localObject = this.Bpc;
+      FinderLiveEndUI.a((FinderLiveEndUI)localObject, FinderLiveEndUI.c((FinderLiveEndUI)localObject) - 1);
+      Button localButton = FinderLiveEndUI.d(this.Bpc);
       if (localButton != null)
       {
-        if (!n.L(FinderLiveEndUI.a(this.xPk), FinderLiveEndUI.b(this.xPk), false)) {
+        if (!n.T(FinderLiveEndUI.b(this.Bpc), FinderLiveEndUI.e(this.Bpc), false)) {
           break label155;
         }
-        if (FinderLiveEndUI.f(this.xPk) > 0) {
+        if (FinderLiveEndUI.c(this.Bpc) > 0) {
           break label121;
         }
       }
       label121:
-      for (localObject = this.xPk.getResources().getString(b.j.finder_live_post_precheck_license_next_tips);; localObject = this.xPk.getResources().getString(b.j.finder_live_post_precheck_license_next_countdown_tips, new Object[] { Integer.valueOf(FinderLiveEndUI.f(this.xPk)) }))
+      for (localObject = this.Bpc.getResources().getString(p.h.CqJ);; localObject = this.Bpc.getResources().getString(p.h.CqI, new Object[] { Integer.valueOf(FinderLiveEndUI.c(this.Bpc)) }))
       {
         localObject = (CharSequence)localObject;
         localButton.setText((CharSequence)localObject);
-        if (FinderLiveEndUI.f(this.xPk) > 0) {
+        if (FinderLiveEndUI.c(this.Bpc) > 0) {
           break;
         }
-        localObject = FinderLiveEndUI.d(this.xPk);
+        localObject = FinderLiveEndUI.d(this.Bpc);
         if (localObject != null) {
           ((Button)localObject).setEnabled(true);
         }
-        AppMethodBeat.o(233926);
+        AppMethodBeat.o(365751);
         return false;
       }
       label155:
-      if (FinderLiveEndUI.f(this.xPk) <= 0) {}
-      for (localObject = this.xPk.getResources().getString(b.j.finder_live_post_precheck_license_done_tips);; localObject = this.xPk.getResources().getString(b.j.finder_live_post_precheck_license_done_countdown_tips, new Object[] { Integer.valueOf(FinderLiveEndUI.f(this.xPk)) }))
+      if (FinderLiveEndUI.c(this.Bpc) <= 0) {}
+      for (localObject = this.Bpc.getResources().getString(p.h.CqF);; localObject = this.Bpc.getResources().getString(p.h.CqE, new Object[] { Integer.valueOf(FinderLiveEndUI.c(this.Bpc)) }))
       {
         localObject = (CharSequence)localObject;
         break;
       }
-      AppMethodBeat.o(233926);
+      AppMethodBeat.o(365751);
       return true;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$webChromeClient$1", "Lcom/tencent/xweb/WebChromeClient;", "onReceivedTitle", "", "view", "Lcom/tencent/xweb/WebView;", "title", "", "plugin-finder-live_release"})
-  public static final class e
-    extends x
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/ui/FinderLiveEndUI$webChromeClient$1", "Lcom/tencent/xweb/WebChromeClient;", "onReceivedTitle", "", "view", "Lcom/tencent/xweb/WebView;", "title", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    extends z
   {
+    c(FinderLiveEndUI paramFinderLiveEndUI) {}
+    
     public final void d(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(232825);
+      AppMethodBeat.i(365761);
       super.d(paramWebView, paramString);
-      Log.i(FinderLiveEndUI.e(this.xPk), "onReceivedTitle title:".concat(String.valueOf(paramString)));
+      Log.i(FinderLiveEndUI.a(this.Bpc), s.X("onReceivedTitle title:", paramString));
       paramWebView = (CharSequence)paramString;
       if ((paramWebView == null) || (paramWebView.length() == 0)) {}
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(232825);
+        AppMethodBeat.o(365761);
         return;
       }
-      if (((p.h(FinderLiveEndUI.a(this.xPk), paramString) ^ true)) && (!com.tencent.mm.plugin.webview.e.b.ane(paramString)) && (!n.M(paramString, "about:blank", false))) {
-        this.xPk.setMMTitle(paramString);
+      if ((!s.p(FinderLiveEndUI.b(this.Bpc), paramString)) && (!c.agu(paramString)) && (!n.U(paramString, "about:blank", false))) {
+        this.Bpc.setMMTitle(paramString);
       }
-      AppMethodBeat.o(232825);
+      AppMethodBeat.o(365761);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderLiveEndUI
  * JD-Core Version:    0.7.0.1
  */

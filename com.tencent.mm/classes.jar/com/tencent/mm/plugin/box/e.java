@@ -4,18 +4,18 @@ public final class e
 {
   public static final class a
   {
-    public static final int webview_container = 2131311033;
+    public static final int webview_container = 2131313176;
   }
   
   public static final class b
   {
-    public static final int box_dialog = 2131493322;
+    public static final int box_dialog = 2131493305;
   }
   
   public static final class c
   {
-    public static final int BottomToTopSlowAnimation = 2131820793;
-    public static final int BoxDialog = 2131820794;
+    public static final int BottomToTopSlowAnimation = 2131820796;
+    public static final int BoxDialog = 2131820797;
   }
 }
 

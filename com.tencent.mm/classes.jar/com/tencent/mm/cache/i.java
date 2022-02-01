@@ -1,7 +1,6 @@
 package com.tencent.mm.cache;
 
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.util.SparseArray;
@@ -12,8 +11,7 @@ import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.vfs.u;
-import java.io.IOException;
+import com.tencent.mm.vfs.y;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -23,96 +21,57 @@ import java.util.Stack;
 public final class i
   implements f<e>
 {
-  private Stack<e> iTF;
-  private Stack<e> iTG;
-  public int iTI;
-  private SparseArray<String> iTP;
-  private HashMap<String, Bitmap> iTQ;
+  private Stack<e> lvL;
+  private Stack<e> lvM;
+  public int lvO;
+  private SparseArray<String> lvU;
+  private HashMap<String, Bitmap> lvV;
   
-  public final void a(Canvas paramCanvas, boolean paramBoolean)
+  public final void B(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(9232);
-    if (!paramBoolean) {
-      if ((this.iTF == null) || (this.iTF.size() <= 0)) {
-        break label64;
-      }
-    }
-    label64:
-    for (e locale = (e)this.iTF.peek();; locale = null)
+    AppMethodBeat.i(9234);
+    paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+    String str1 = com.tencent.mm.cl.a.bDM(com.tencent.mm.e.a.hoL.toString());
+    Log.i("MicroMsg.MosaicCache", "[saveCacheToLocal] path:%s size:%s", new Object[] { str1, Integer.valueOf(aR(true)) });
+    String str2 = (String)this.lvU.get(aR(true));
+    if (!Util.isNullOrNil(str2))
     {
-      if ((locale != null) && (locale.fmg == e.a.kat)) {
-        locale.draw(paramCanvas);
-      }
-      AppMethodBeat.o(9232);
-      return;
+      y.deleteFile(str2);
+      this.lvU.remove(aR(true));
     }
+    this.lvU.put(aR(true), str1);
+    this.lvV.put(str1, paramBitmap);
+    ThreadPool.postAtFront(new i.1(this, paramBitmap, str1), "[saveCacheToLocal] mosaic path:".concat(String.valueOf(str1)));
+    AppMethodBeat.o(9234);
   }
   
   public final void a(e parame)
   {
     AppMethodBeat.i(9236);
-    if (this.iTF != null) {
-      this.iTF.push(parame);
+    if (this.lvL != null) {
+      this.lvL.push(parame);
     }
     AppMethodBeat.o(9236);
   }
   
-  public final void acG()
+  public final void aEG()
   {
-    this.iTI += 1;
+    this.lvO += 1;
   }
   
-  public final int ai(boolean paramBoolean)
-  {
-    AppMethodBeat.i(9237);
-    int i;
-    if (paramBoolean)
-    {
-      if (this.iTF != null)
-      {
-        i = this.iTF.size();
-        AppMethodBeat.o(9237);
-        return i;
-      }
-      AppMethodBeat.o(9237);
-      return 0;
-    }
-    if (this.iTG != null)
-    {
-      i = this.iTG.size();
-      AppMethodBeat.o(9237);
-      return i;
-    }
-    AppMethodBeat.o(9237);
-    return 0;
-  }
-  
-  public final void arB()
-  {
-    AppMethodBeat.i(9231);
-    Log.i("MicroMsg.MosaicCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.iTF.size()) });
-    this.iTF.clear();
-    if (this.iTG != null)
-    {
-      Log.i("MicroMsg.MosaicCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.iTG.size()) });
-      this.iTF.addAll(this.iTG);
-    }
-    AppMethodBeat.o(9231);
-  }
-  
-  public final Bitmap arJ()
+  public final Bitmap aLF()
   {
     AppMethodBeat.i(9235);
-    String str = (String)this.iTP.get(ai(true));
+    String str = (String)this.lvU.get(aR(true));
     if (Util.isNullOrNil(str))
     {
       Log.w("MicroMsg.MosaicCache", "[getCacheFromLocal] path is null");
       AppMethodBeat.o(9235);
       return null;
     }
-    Log.i("MicroMsg.MosaicCache", "[getCacheFromLocal] path:%s size:%s", new Object[] { str, Integer.valueOf(ai(true)) });
-    if (this.iTQ.containsKey(str)) {}
-    for (Bitmap localBitmap1 = (Bitmap)this.iTQ.get(str);; localBitmap1 = null)
+    Log.i("MicroMsg.MosaicCache", "[getCacheFromLocal] path:%s size:%s", new Object[] { str, Integer.valueOf(aR(true)) });
+    if (this.lvV.containsKey(str)) {}
+    for (Bitmap localBitmap1 = (Bitmap)this.lvV.get(str);; localBitmap1 = null)
     {
       Bitmap localBitmap2;
       if (localBitmap1 != null)
@@ -140,33 +99,90 @@ public final class i
     }
   }
   
-  public final void clear()
+  public final void aLx()
   {
-    AppMethodBeat.i(259887);
-    if (this.iTF != null) {
-      this.iTF.clear();
+    AppMethodBeat.i(9231);
+    Log.i("MicroMsg.MosaicCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.lvL.size()) });
+    this.lvL.clear();
+    if (this.lvM != null)
+    {
+      Log.i("MicroMsg.MosaicCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.lvM.size()) });
+      this.lvL.addAll(this.lvM);
     }
-    AppMethodBeat.o(259887);
+    AppMethodBeat.o(9231);
   }
   
-  public final void dL(boolean paramBoolean)
+  public final int aR(boolean paramBoolean)
+  {
+    AppMethodBeat.i(9237);
+    int i;
+    if (paramBoolean)
+    {
+      if (this.lvL != null)
+      {
+        i = this.lvL.size();
+        AppMethodBeat.o(9237);
+        return i;
+      }
+      AppMethodBeat.o(9237);
+      return 0;
+    }
+    if (this.lvM != null)
+    {
+      i = this.lvM.size();
+      AppMethodBeat.o(9237);
+      return i;
+    }
+    AppMethodBeat.o(9237);
+    return 0;
+  }
+  
+  public final void b(Canvas paramCanvas, boolean paramBoolean)
+  {
+    AppMethodBeat.i(9232);
+    if (!paramBoolean) {
+      if ((this.lvL == null) || (this.lvL.size() <= 0)) {
+        break label64;
+      }
+    }
+    label64:
+    for (e locale = (e)this.lvL.peek();; locale = null)
+    {
+      if ((locale != null) && (locale.hqt == e.a.mAw)) {
+        locale.draw(paramCanvas);
+      }
+      AppMethodBeat.o(9232);
+      return;
+    }
+  }
+  
+  public final void clear()
+  {
+    AppMethodBeat.i(232085);
+    if (this.lvL != null) {
+      this.lvL.clear();
+    }
+    AppMethodBeat.o(232085);
+  }
+  
+  public final void ex(boolean paramBoolean)
   {
     AppMethodBeat.i(9230);
-    Log.i("MicroMsg.MosaicCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.iTF.size()) });
-    if (this.iTG != null) {
-      this.iTG.clear();
+    Log.i("MicroMsg.MosaicCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.lvL.size()) });
+    if (this.lvM != null) {
+      this.lvM.clear();
     }
-    this.iTG = ((Stack)this.iTF.clone());
+    this.lvM = ((Stack)this.lvL.clone());
     if (paramBoolean) {
-      this.iTF.clear();
+      this.lvL.clear();
     }
     AppMethodBeat.o(9230);
   }
   
-  public final void f(Canvas paramCanvas)
+  public final void i(Canvas paramCanvas)
   {
     AppMethodBeat.i(9233);
-    Bitmap localBitmap = arJ();
+    Bitmap localBitmap = aLF();
     if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
     }
@@ -177,33 +193,33 @@ public final class i
   {
     AppMethodBeat.i(9228);
     Log.i("MicroMsg.MosaicCache", "[onCreate]");
-    this.iTF = new Stack();
-    this.iTP = new SparseArray();
-    this.iTQ = new HashMap();
+    this.lvL = new Stack();
+    this.lvU = new SparseArray();
+    this.lvV = new HashMap();
     AppMethodBeat.o(9228);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(9229);
-    if (this.iTF != null)
+    if (this.lvL != null)
     {
-      localIterator = this.iTF.iterator();
+      localIterator = this.lvL.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.iTF.clear();
+      this.lvL.clear();
     }
-    if (this.iTG != null)
+    if (this.lvM != null)
     {
-      localIterator = this.iTG.iterator();
+      localIterator = this.lvM.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.iTG.clear();
+      this.lvM.clear();
     }
-    this.iTP.clear();
-    Iterator localIterator = this.iTQ.entrySet().iterator();
+    this.lvU.clear();
+    Iterator localIterator = this.lvV.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Bitmap localBitmap = (Bitmap)((Map.Entry)localIterator.next()).getValue();
@@ -213,48 +229,13 @@ public final class i
         localBitmap.recycle();
       }
     }
-    this.iTQ.clear();
+    this.lvV.clear();
     AppMethodBeat.o(9229);
-  }
-  
-  public final void p(final Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(9234);
-    paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
-    final String str1 = com.tencent.mm.cs.a.bBs(com.tencent.mm.e.a.fky.toString());
-    Log.i("MicroMsg.MosaicCache", "[saveCacheToLocal] path:%s size:%s", new Object[] { str1, Integer.valueOf(ai(true)) });
-    String str2 = (String)this.iTP.get(ai(true));
-    if (!Util.isNullOrNil(str2))
-    {
-      u.deleteFile(str2);
-      this.iTP.remove(ai(true));
-    }
-    this.iTP.put(ai(true), str1);
-    this.iTQ.put(str1, paramBitmap);
-    ThreadPool.postAtFront(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(9227);
-        try
-        {
-          BitmapUtil.saveBitmapToImage(paramBitmap, 50, Bitmap.CompressFormat.PNG, str1, true);
-          AppMethodBeat.o(9227);
-          return;
-        }
-        catch (IOException localIOException)
-        {
-          Log.printErrStackTrace("MicroMsg.MosaicCache", localIOException, "", new Object[0]);
-          AppMethodBeat.o(9227);
-        }
-      }
-    }, "[saveCacheToLocal] mosaic path:".concat(String.valueOf(str1)));
-    AppMethodBeat.o(9234);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.cache.i
  * JD-Core Version:    0.7.0.1
  */

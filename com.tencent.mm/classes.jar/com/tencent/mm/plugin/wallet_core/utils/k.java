@@ -1,559 +1,246 @@
 package com.tencent.mm.plugin.wallet_core.utils;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.style.StrikethroughSpan;
-import android.text.style.UnderlineSpan;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.TextView;
-import com.tencent.kinda.gen.ITransmitKvData;
-import com.tencent.kinda.gen.UseCaseCallback;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.api.i;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.wallet_core.ui.r;
-import com.tencent.mm.plugin.wallet_core.ui.r.a;
-import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.protocal.protobuf.aim;
-import com.tencent.mm.protocal.protobuf.clc;
-import com.tencent.mm.protocal.protobuf.cvd;
-import com.tencent.mm.protocal.protobuf.dbv;
-import com.tencent.mm.protocal.protobuf.dhr;
-import com.tencent.mm.protocal.protobuf.eaa;
-import com.tencent.mm.protocal.protobuf.ere;
-import com.tencent.mm.protocal.protobuf.erh;
-import com.tencent.mm.protocal.protobuf.erw;
-import com.tencent.mm.protocal.protobuf.fbr;
-import com.tencent.mm.protocal.protobuf.sb;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.widget.MMSwitchBtn.a;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.plugin.wallet_core.d.c;
+import com.tencent.mm.plugin.wallet_core.d.d;
+import com.tencent.mm.plugin.wallet_core.model.Bankcard;
+import com.tencent.mm.plugin.wallet_core.model.BankcardScene;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import junit.framework.Assert;
 
 public final class k
 {
-  private static CharSequence a(final Context paramContext, final ere paramere, a parama)
+  public static boolean X(List<Bankcard> paramList, int paramInt)
   {
-    AppMethodBeat.i(71666);
-    SpannableString localSpannableString = new SpannableString(paramere.text);
-    int i = 1;
-    int j = 1;
-    long l2;
-    long l1;
-    if (ar.isDarkMode()) {
-      if (paramere.Utr == null)
-      {
-        l2 = -1L;
-        paramere.Utr = new aim();
-        if ((paramere.Utp == Long.parseLong("ff000000", 16)) || (paramere.Utp == 0L))
-        {
-          l2 = Long.parseLong("CCFFFFFF", 16);
-          l1 = l2;
-          i = j;
-          if (l2 == -1L)
-          {
-            l2 = ((com.tencent.mm.pluginsdk.wallet.a)h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).getColorByMode(paramere.Utr.Stf, paramere.Utr.Stg);
-            l1 = l2;
-            i = j;
-            if (l2 == -1L)
-            {
-              l1 = ar.iV((int)paramere.Utp);
-              i = 0;
-            }
-          }
-          label159:
-          j = (int)l1;
-          label164:
-          if ((i == 0) || ((0xFF000000 & l1) != 0L)) {
-            break label512;
-          }
-        }
-      }
-    }
-    label512:
-    for (i = (int)(l1 | 0xFF000000);; i = j)
+    AppMethodBeat.i(71636);
+    if (paramList == null)
     {
-      Object localObject = new WcPayTextApppearanceSpan(com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramere.size), ColorStateList.valueOf(i));
-      localSpannableString.setSpan(localObject, 0, localSpannableString.length(), 17);
-      if (!Util.isNullOrNil(paramere.IbE)) {
-        ((WcPayTextApppearanceSpan)localObject).PhE = g.cV(paramContext, paramere.IbE);
-      }
-      if ((paramere != null) && (paramere.Uts > 0)) {
-        ((WcPayTextApppearanceSpan)localObject).PhF = paramere.Uts;
-      }
-      localObject = null;
-      if (paramere.Utq == 1) {
-        localObject = new StrikethroughSpan();
-      }
-      for (;;)
-      {
-        if (localObject != null) {
-          localSpannableString.setSpan(localObject, 0, localSpannableString.length(), 17);
-        }
-        if ((paramere.RGh != null) && (paramere.RGh.type != 0))
-        {
-          paramere = paramere.RGh;
-          Log.i("MicroMsg.WcPayViewEngineRender", "route type: %s", new Object[] { Integer.valueOf(paramere.type) });
-          localSpannableString.setSpan(new r(7, new r.a()
-          {
-            public final void ed(View paramAnonymousView)
-            {
-              AppMethodBeat.i(71651);
-              if (this.PhG != null)
-              {
-                k.a(paramContext, paramere, null);
-                this.PhG.a(paramere);
-                AppMethodBeat.o(71651);
-                return;
-              }
-              k.a(paramContext, paramere, null);
-              AppMethodBeat.o(71651);
-            }
-          }), 0, localSpannableString.length(), 17);
-        }
-        AppMethodBeat.o(71666);
-        return localSpannableString;
-        if (paramere.Utp == Long.parseLong("78000000", 16))
-        {
-          l2 = Long.parseLong("80FFFFFF", 16);
-          break;
-        }
-        paramere.Utr.Stf = paramere.Utp;
-        paramere.Utr.Stg = -1L;
-        break;
-        l1 = ((com.tencent.mm.pluginsdk.wallet.a)h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).getColorByMode(paramere.Utr.Stf, paramere.Utr.Stg);
-        i = j;
-        break label159;
-        l1 = paramere.Utp;
-        j = (int)l1;
-        break label164;
-        if (paramere.Utq == 2) {
-          localObject = new UnderlineSpan();
-        }
-      }
-    }
-  }
-  
-  public static CharSequence a(Context paramContext, erh paramerh, a parama)
-  {
-    AppMethodBeat.i(71665);
-    if ((paramerh == null) || (paramerh.Uty == null) || (paramerh.Uty.isEmpty()))
-    {
-      AppMethodBeat.o(71665);
-      return "";
-    }
-    int j = paramerh.Uty.size();
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    int i = 0;
-    while (i < j)
-    {
-      localSpannableStringBuilder.append(a(paramContext, (ere)paramerh.Uty.get(i), parama));
-      i += 1;
-    }
-    AppMethodBeat.o(71665);
-    return localSpannableStringBuilder;
-  }
-  
-  public static String a(Context paramContext, erh paramerh)
-  {
-    AppMethodBeat.i(71671);
-    paramContext = a(paramContext, paramerh, null).toString();
-    AppMethodBeat.o(71671);
-    return paramContext;
-  }
-  
-  public static void a(Context paramContext, eaa parameaa, Bundle paramBundle)
-  {
-    AppMethodBeat.i(293344);
-    a(paramContext, parameaa, paramBundle, null, null);
-    AppMethodBeat.o(293344);
-  }
-  
-  public static void a(Context paramContext, eaa parameaa, Bundle paramBundle, i parami, k.b paramb)
-  {
-    int i = 1000;
-    AppMethodBeat.i(293345);
-    if (parameaa == null)
-    {
-      AppMethodBeat.o(293345);
-      return;
-    }
-    Log.i("MicroMsg.WcPayViewEngineRender", "route info type: %s, uri: %s", new Object[] { Integer.valueOf(parameaa.type), parameaa.url });
-    if (parameaa.type == 1)
-    {
-      g.o(paramContext, parameaa.url, true);
-      AppMethodBeat.o(293345);
-      return;
-    }
-    if (parameaa.type == 2)
-    {
-      if (parameaa.Ufp == null)
-      {
-        Log.e("MicroMsg.WcPayViewEngineRender", "tiny app uri is null");
-        AppMethodBeat.o(293345);
-        return;
-      }
-      if (paramBundle != null) {
-        i = paramBundle.getInt("key_tiny_app_scene", 1000);
-      }
-      if (parami != null)
-      {
-        g.a(parameaa.Ufp.username, parameaa.Ufp.path, parameaa.Ufp.version, i, parami);
-        AppMethodBeat.o(293345);
-        return;
-      }
-      g.v(parameaa.Ufp.username, parameaa.Ufp.path, parameaa.Ufp.version, i);
-      AppMethodBeat.o(293345);
-      return;
-    }
-    if (parameaa.type != 3) {
-      if (parameaa.type == 4)
-      {
-        if (parameaa.url.equals("balance"))
-        {
-          c.f(paramContext, "wallet", ".balance.ui.WalletBalanceManagerUI", 65281);
-          AppMethodBeat.o(293345);
-          return;
-        }
-        if (parameaa.url.equals("bankCard"))
-        {
-          parameaa = new Intent();
-          parameaa.putExtra("intent_finish_self", true);
-          c.b(paramContext, "wallet", ".bind.ui.WalletBankcardManageUI", parameaa, 65281);
-          AppMethodBeat.o(293345);
-          return;
-        }
-        if (parameaa.url.equals("qmfCard"))
-        {
-          c.b(paramContext, "honey_pay", ".ui.HoneyPayMainUI", new Intent(), 65283);
-          AppMethodBeat.o(293345);
-          return;
-        }
-        if (parameaa.url.equals("paySecurity"))
-        {
-          parameaa = new Intent();
-          parameaa.putExtra("wallet_lock_jsapi_scene", 1);
-          c.b(paramContext, "wallet", ".pwd.ui.WalletSecuritySettingUI", parameaa, 65282);
-          AppMethodBeat.o(293345);
-          return;
-        }
-        if (parameaa.url.equals("lqt"))
-        {
-          parameaa = new Intent();
-          parameaa.putExtra("key_account_type", 1);
-          c.b(paramContext, "wallet", ".balance.ui.lqt.WalletLqtDetailUI", parameaa, 65286);
-          AppMethodBeat.o(293345);
-          return;
-        }
-        if (parameaa.url.equals("realname"))
-        {
-          parameaa = new Bundle();
-          parameaa.putInt("real_name_verify_mode", 0);
-          parameaa.putInt("entry_scene", 0);
-          if (paramBundle != null) {
-            parameaa.putAll(paramBundle);
-          }
-          Assert.assertTrue("context must be activity", paramContext instanceof Activity);
-          com.tencent.mm.wallet_core.a.a((Activity)paramContext, com.tencent.mm.plugin.wallet_core.id_verify.a.class, parameaa);
-          AppMethodBeat.o(293345);
-          return;
-        }
-        if (parameaa.url.equals("paySettingsUseCase"))
-        {
-          paramContext = ITransmitKvData.create();
-          parameaa = new StringBuilder();
-          h.aHE();
-          paramContext.putString("modifyPwd.sessionId", com.tencent.mm.kernel.b.aGq() + "_" + g.ijw());
-          paramContext.putBool("resetPwd.bResetPwdFromPayManage", true);
-          paramContext.putInt("resetPwd.realnameScene", 0);
-          paramContext.putInt("resetPwd.payScene", 0);
-          ((com.tencent.mm.pluginsdk.wallet.a)h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).startUseCase("paySettingsUseCase", paramContext, new UseCaseCallback()
-          {
-            public final void call(ITransmitKvData paramAnonymousITransmitKvData)
-            {
-              AppMethodBeat.i(293282);
-              if ((paramAnonymousITransmitKvData != null) && (paramAnonymousITransmitKvData.getInt("pay.settings.refreshentrance") == 1))
-              {
-                paramAnonymousITransmitKvData = new Bundle();
-                paramAnonymousITransmitKvData.putInt("callbackEventType", 1);
-                this.Odh.bu(paramAnonymousITransmitKvData);
-              }
-              AppMethodBeat.o(293282);
-            }
-          });
-          AppMethodBeat.o(293345);
-        }
-      }
-      else if (parameaa.type == 5)
-      {
-        if (parameaa.url.equals("wxpay://lqp/balanceQuotaState"))
-        {
-          c.b(paramContext, "wallet_ecard", ".ui.WalletECardLogoutUI", new Intent());
-          AppMethodBeat.o(293345);
-        }
-      }
-      else if (parameaa.type == 13)
-      {
-        if (parameaa.Uft != null) {
-          AppMethodBeat.o(293345);
-        }
-      }
-      else
-      {
-        Log.w("MicroMsg.WcPayViewEngineRender", "can't handle type: %s, uri: %s", new Object[] { Integer.valueOf(parameaa.type), parameaa.url });
-      }
-    }
-    AppMethodBeat.o(293345);
-  }
-  
-  public static void a(View paramView, ViewGroup.MarginLayoutParams paramMarginLayoutParams, fbr paramfbr)
-  {
-    AppMethodBeat.i(71668);
-    if (paramfbr == null)
-    {
-      AppMethodBeat.o(71668);
-      return;
-    }
-    a(paramMarginLayoutParams, paramfbr.UBO);
-    a(paramView, paramfbr.Ufm);
-    AppMethodBeat.o(71668);
-  }
-  
-  public static void a(View paramView, dhr paramdhr)
-  {
-    AppMethodBeat.i(71669);
-    if (paramdhr == null)
-    {
-      AppMethodBeat.o(71669);
-      return;
-    }
-    int i = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramdhr.top);
-    int j = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramdhr.bottom);
-    paramView.setPadding(com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramdhr.left), i, com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramdhr.right), j);
-    AppMethodBeat.o(71669);
-  }
-  
-  private static void a(ViewGroup.MarginLayoutParams paramMarginLayoutParams, cvd paramcvd)
-  {
-    AppMethodBeat.i(71670);
-    if (paramcvd == null)
-    {
-      AppMethodBeat.o(71670);
-      return;
-    }
-    paramMarginLayoutParams.topMargin = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramcvd.top);
-    paramMarginLayoutParams.bottomMargin = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramcvd.bottom);
-    paramMarginLayoutParams.leftMargin = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramcvd.left);
-    paramMarginLayoutParams.rightMargin = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramcvd.right);
-    AppMethodBeat.o(71670);
-  }
-  
-  public static void a(TextView paramTextView, erh paramerh, a parama)
-  {
-    AppMethodBeat.i(71660);
-    if (a(paramerh))
-    {
-      paramTextView.setClickable(true);
-      paramTextView.setOnTouchListener(new o(paramTextView.getContext()));
-    }
-    paramTextView.setText(a(paramTextView.getContext(), paramerh, parama));
-    AppMethodBeat.o(71660);
-  }
-  
-  public static void a(CdnImageView paramCdnImageView, clc paramclc)
-  {
-    AppMethodBeat.i(71662);
-    a(paramCdnImageView, paramclc, -1, 0, 0, true);
-    AppMethodBeat.o(71662);
-  }
-  
-  public static void a(CdnImageView paramCdnImageView, clc paramclc, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    AppMethodBeat.i(71664);
-    paramCdnImageView.setUseSdcardCache(paramBoolean);
-    int j = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramclc.width);
-    int i = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramclc.height);
-    if (paramInt2 > 0) {}
-    for (;;)
-    {
-      if (paramInt3 > 0) {}
-      for (;;)
-      {
-        ViewGroup.LayoutParams localLayoutParams = paramCdnImageView.getLayoutParams();
-        if ((localLayoutParams != null) && (paramInt2 > 0) && (paramInt3 > 0))
-        {
-          localLayoutParams.width = paramInt2;
-          localLayoutParams.height = paramInt3;
-        }
-        if ((ar.isDarkMode()) && (!Util.isNullOrNil(paramclc.TsG)))
-        {
-          paramCdnImageView.w(paramclc.TsG, paramInt2, paramInt3, paramInt1);
-          AppMethodBeat.o(71664);
-          return;
-        }
-        paramCdnImageView.w(paramclc.url, paramInt2, paramInt3, paramInt1);
-        AppMethodBeat.o(71664);
-        return;
-        paramInt3 = i;
-      }
-      paramInt2 = j;
-    }
-  }
-  
-  public static void a(CdnImageView paramCdnImageView, clc paramclc, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(71663);
-    a(paramCdnImageView, paramclc, paramInt, 0, 0, paramBoolean);
-    AppMethodBeat.o(71663);
-  }
-  
-  private static boolean a(erh paramerh)
-  {
-    AppMethodBeat.i(71661);
-    if ((paramerh.Uty == null) || (paramerh.Uty.isEmpty()))
-    {
-      AppMethodBeat.o(71661);
+      AppMethodBeat.o(71636);
       return false;
     }
-    paramerh = paramerh.Uty.iterator();
-    while (paramerh.hasNext()) {
-      if (((ere)paramerh.next()).RGh != null)
+    ArrayList localArrayList;
+    if ((paramInt == 8) || (paramInt == 12) || (paramInt == 26))
+    {
+      localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        AppMethodBeat.o(71661);
-        return true;
+        BankcardScene localBankcardScene = m((Bankcard)paramList.next());
+        localBankcardScene.field_scene = paramInt;
+        localArrayList.add(localBankcardScene);
       }
     }
-    AppMethodBeat.o(71661);
-    return false;
-  }
-  
-  public static int argbColor(long paramLong)
-  {
-    AppMethodBeat.i(162280);
-    int i = Color.argb((int)(paramLong >> 24 & 0xFF), (int)(paramLong >> 16 & 0xFF), (int)(paramLong >> 8 & 0xFF), (int)(0xFF & paramLong));
-    AppMethodBeat.o(162280);
-    return i;
-  }
-  
-  public static int cW(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(162279);
-    aim localaim = new aim();
-    if (paramString == null)
+    for (boolean bool = u.iiA().lZ(localArrayList);; bool = u.iiz().lZ(paramList))
     {
-      AppMethodBeat.o(162279);
-      return 0;
+      AppMethodBeat.o(71636);
+      return bool;
     }
-    int i;
-    if (!ar.isDarkMode())
+  }
+  
+  public static boolean a(Bankcard paramBankcard, int paramInt)
+  {
+    AppMethodBeat.i(71637);
+    if (paramBankcard == null)
     {
-      i = Color.parseColor(paramString);
-      AppMethodBeat.o(162279);
-      return i;
+      AppMethodBeat.o(71637);
+      return false;
+    }
+    if ((paramInt == 8) || (paramInt == 12) || (paramInt == 26))
+    {
+      paramBankcard = m(paramBankcard);
+      paramBankcard.field_scene = paramInt;
+    }
+    for (boolean bool = u.iiA().a(paramBankcard);; bool = u.iiz().i(paramBankcard))
+    {
+      AppMethodBeat.o(71637);
+      return bool;
+    }
+  }
+  
+  public static boolean asA(int paramInt)
+  {
+    AppMethodBeat.i(71638);
+    if ((paramInt == 8) || (paramInt == 12) || (paramInt == 26)) {}
+    for (boolean bool = u.iiA().asp(paramInt);; bool = u.iiz().bwy())
+    {
+      AppMethodBeat.o(71638);
+      return bool;
+    }
+  }
+  
+  public static ArrayList<Bankcard> asB(int paramInt)
+  {
+    AppMethodBeat.i(301426);
+    Object localObject1 = u.iiA();
+    Object localObject2 = "select * from WalletBankcardScene where (cardType <= 7 OR cardType & " + BankcardScene.VDi + " != 0 OR cardType & " + BankcardScene.VDh + " != 0) and scene=" + paramInt;
+    localObject2 = ((c)localObject1).db.rawQuery((String)localObject2, null, 2);
+    if (localObject2 == null)
+    {
+      localObject1 = null;
+      if (localObject1 == null)
+      {
+        AppMethodBeat.o(301426);
+        return null;
+      }
+    }
+    else
+    {
+      if (!((Cursor)localObject2).moveToFirst()) {
+        break label181;
+      }
+      localObject1 = new ArrayList();
+      do
+      {
+        BankcardScene localBankcardScene = new BankcardScene();
+        localBankcardScene.convertFrom((Cursor)localObject2);
+        ((ArrayList)localObject1).add(localBankcardScene);
+      } while (((Cursor)localObject2).moveToNext());
     }
     for (;;)
     {
-      try
-      {
-        if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vFr, 1) == 0)
-        {
-          i = Color.parseColor(paramString);
-          AppMethodBeat.o(162279);
-          return i;
-        }
-        if (paramString.startsWith("#"))
-        {
-          String str1 = paramString.substring(1);
-          long l = Long.parseLong(str1, 16);
-          if (paramBoolean)
-          {
-            if ((l == Long.parseLong("ff000000", 16)) || (l == 0L))
-            {
-              l = Long.parseLong("CCFFFFFF", 16);
-              if (l != -1L)
-              {
-                i = argbColor(l);
-                AppMethodBeat.o(162279);
-                return i;
-              }
-            }
-            else
-            {
-              if (l == Long.parseLong("78000000", 16))
-              {
-                l = Long.parseLong("80FFFFFF", 16);
-                continue;
-              }
-              if ((l == Long.parseLong("909090", 16)) || (l == Long.parseLong("ff909090", 16)))
-              {
-                l = Long.parseLong("4DFFFFFF", 16);
-                continue;
-              }
-              localaim.Stf = l;
-              localaim.Stg = -1L;
-              l = -1L;
-              continue;
-            }
-          }
-          else
-          {
-            localaim.Stf = l;
-            localaim.Stg = -1L;
-            l = -1L;
-            continue;
-          }
-          l = ((com.tencent.mm.pluginsdk.wallet.a)h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).getColorByMode(localaim.Stf, localaim.Stg);
-          if (l != -1L)
-          {
-            i = argbColor(l);
-            AppMethodBeat.o(162279);
-            return i;
-          }
-          i = ar.iV(Color.parseColor(paramString));
-          AppMethodBeat.o(162279);
-          return i;
-        }
+      ((Cursor)localObject2).close();
+      break;
+      localObject2 = new ArrayList();
+      localObject1 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((ArrayList)localObject2).add(b((BankcardScene)((Iterator)localObject1).next()));
       }
-      catch (Exception localException)
-      {
-        i = Color.parseColor(paramString);
-        AppMethodBeat.o(162279);
-        return i;
-      }
-      String str2 = paramString;
+      AppMethodBeat.o(301426);
+      return localObject2;
+      label181:
+      localObject1 = null;
     }
   }
   
-  public static abstract interface a
+  public static ArrayList<Bankcard> asC(int paramInt)
   {
-    public abstract void a(eaa paramVarArgs);
+    AppMethodBeat.i(301431);
+    Object localObject = u.iiA().aso(paramInt);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(301431);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(b((BankcardScene)((Iterator)localObject).next()));
+    }
+    AppMethodBeat.o(301431);
+    return localArrayList;
+  }
+  
+  private static Bankcard b(BankcardScene paramBankcardScene)
+  {
+    AppMethodBeat.i(301438);
+    Bankcard localBankcard = new Bankcard(paramBankcardScene.VDj, paramBankcardScene.VDk, paramBankcardScene.VCE, paramBankcardScene.VDl, paramBankcardScene.VDm, paramBankcardScene.VDn, paramBankcardScene.VDo, paramBankcardScene.VDp, paramBankcardScene.VDq, paramBankcardScene.VDr, paramBankcardScene.VDs, paramBankcardScene.VDt, paramBankcardScene.VDu, paramBankcardScene.VDv, paramBankcardScene.VDw, paramBankcardScene.VCC, paramBankcardScene.VDx, paramBankcardScene.hIt, paramBankcardScene.VDy, paramBankcardScene.VDz, paramBankcardScene.VDA, paramBankcardScene.VDB, paramBankcardScene.VDC, paramBankcardScene.VDD, paramBankcardScene.VDE, paramBankcardScene.VDF, paramBankcardScene.VDG, paramBankcardScene.VDH, paramBankcardScene.VDI, paramBankcardScene.VDJ, paramBankcardScene.VDK, paramBankcardScene.VDL, paramBankcardScene.VDM, paramBankcardScene.VcU, paramBankcardScene.VcV);
+    localBankcard.field_bindSerial = paramBankcardScene.field_bindSerial;
+    localBankcard.field_defaultCardState = paramBankcardScene.field_defaultCardState;
+    localBankcard.field_cardType = paramBankcardScene.field_cardType;
+    localBankcard.field_bankcardState = paramBankcardScene.field_bankcardState;
+    localBankcard.field_forbidWord = paramBankcardScene.field_forbidWord;
+    localBankcard.field_bankName = paramBankcardScene.field_bankName;
+    localBankcard.field_bankcardType = paramBankcardScene.field_bankcardType;
+    localBankcard.field_bankcardTypeName = paramBankcardScene.field_bankcardTypeName;
+    localBankcard.field_bankcardTag = paramBankcardScene.field_bankcardTag;
+    localBankcard.field_bankcardTail = paramBankcardScene.field_bankcardTail;
+    localBankcard.field_supportTag = paramBankcardScene.field_supportTag;
+    localBankcard.field_mobile = paramBankcardScene.field_mobile;
+    localBankcard.field_trueName = paramBankcardScene.field_trueName;
+    localBankcard.field_desc = paramBankcardScene.field_desc;
+    localBankcard.field_bankPhone = paramBankcardScene.field_bankPhone;
+    localBankcard.field_bizUsername = paramBankcardScene.field_bizUsername;
+    localBankcard.field_onceQuotaKind = paramBankcardScene.field_onceQuotaKind;
+    localBankcard.field_onceQuotaVirtual = paramBankcardScene.field_onceQuotaVirtual;
+    localBankcard.field_dayQuotaKind = paramBankcardScene.field_dayQuotaKind;
+    localBankcard.field_dayQuotaVirtual = paramBankcardScene.field_dayQuotaVirtual;
+    localBankcard.field_fetchArriveTime = paramBankcardScene.field_fetchArriveTime;
+    localBankcard.field_fetchArriveTimeWording = paramBankcardScene.field_fetchArriveTimeWording;
+    localBankcard.field_repay_url = paramBankcardScene.field_repay_url;
+    localBankcard.field_wxcreditState = paramBankcardScene.field_wxcreditState;
+    localBankcard.field_bankcardClientType = paramBankcardScene.field_bankcardClientType;
+    localBankcard.field_ext_msg = paramBankcardScene.field_ext_msg;
+    localBankcard.field_support_micropay = paramBankcardScene.field_support_micropay;
+    localBankcard.field_arrive_type = paramBankcardScene.field_arrive_type;
+    localBankcard.field_avail_save_wording = paramBankcardScene.field_avail_save_wording;
+    localBankcard.field_fetch_charge_rate = paramBankcardScene.field_fetch_charge_rate;
+    localBankcard.field_full_fetch_charge_fee = paramBankcardScene.field_full_fetch_charge_fee;
+    localBankcard.field_fetch_charge_info = paramBankcardScene.field_fetch_charge_info;
+    localBankcard.field_tips = paramBankcardScene.field_tips;
+    localBankcard.field_forbid_title = paramBankcardScene.field_forbid_title;
+    localBankcard.field_forbid_url = paramBankcardScene.field_forbid_url;
+    localBankcard.field_no_micro_word = paramBankcardScene.field_no_micro_word;
+    localBankcard.field_card_bottom_wording = paramBankcardScene.field_card_bottom_wording;
+    localBankcard.field_support_lqt_turn_in = paramBankcardScene.field_support_lqt_turn_in;
+    localBankcard.field_support_lqt_turn_out = paramBankcardScene.field_support_lqt_turn_out;
+    localBankcard.field_is_hightlight_pre_arrive_time_wording = paramBankcardScene.field_is_hightlight_pre_arrive_time_wording;
+    localBankcard.field_card_state_name = paramBankcardScene.field_card_state_name;
+    localBankcard.field_prompt_info_prompt_text = paramBankcardScene.field_prompt_info_prompt_text;
+    localBankcard.field_prompt_info_jump_text = paramBankcardScene.field_prompt_info_jump_text;
+    localBankcard.field_prompt_info_jump_url = paramBankcardScene.field_prompt_info_jump_url;
+    AppMethodBeat.o(301438);
+    return localBankcard;
+  }
+  
+  private static BankcardScene m(Bankcard paramBankcard)
+  {
+    AppMethodBeat.i(71640);
+    BankcardScene localBankcardScene = new BankcardScene(paramBankcard.VDj, paramBankcard.VDk, paramBankcard.VCE, paramBankcard.VDl, paramBankcard.VDm, paramBankcard.VDn, paramBankcard.VDo, paramBankcard.VDp, paramBankcard.VDq, paramBankcard.VDr, paramBankcard.VDs, paramBankcard.VDt, paramBankcard.VDu, paramBankcard.VDv, paramBankcard.VDw, paramBankcard.VCC, paramBankcard.VDx, paramBankcard.hIt, paramBankcard.VDy, paramBankcard.VDz, paramBankcard.VDA, paramBankcard.VDB, paramBankcard.VDC, paramBankcard.VDD, paramBankcard.VDE, paramBankcard.VDF, paramBankcard.VDG, paramBankcard.VDH, paramBankcard.VDI, paramBankcard.VDJ, paramBankcard.VDK, paramBankcard.VDL, paramBankcard.VDM, paramBankcard.VcU, paramBankcard.VcV);
+    localBankcardScene.field_bindSerial = paramBankcard.field_bindSerial;
+    localBankcardScene.field_defaultCardState = paramBankcard.field_defaultCardState;
+    localBankcardScene.field_cardType = paramBankcard.field_cardType;
+    localBankcardScene.field_bankcardState = paramBankcard.field_bankcardState;
+    localBankcardScene.field_forbidWord = paramBankcard.field_forbidWord;
+    localBankcardScene.field_bankName = paramBankcard.field_bankName;
+    localBankcardScene.field_bankcardType = paramBankcard.field_bankcardType;
+    localBankcardScene.field_bankcardTypeName = paramBankcard.field_bankcardTypeName;
+    localBankcardScene.field_bankcardTag = paramBankcard.field_bankcardTag;
+    localBankcardScene.field_bankcardTail = paramBankcard.field_bankcardTail;
+    localBankcardScene.field_supportTag = paramBankcard.field_supportTag;
+    localBankcardScene.field_mobile = paramBankcard.field_mobile;
+    localBankcardScene.field_trueName = paramBankcard.field_trueName;
+    localBankcardScene.field_desc = paramBankcard.field_desc;
+    localBankcardScene.field_bankPhone = paramBankcard.field_bankPhone;
+    localBankcardScene.field_bizUsername = paramBankcard.field_bizUsername;
+    localBankcardScene.field_onceQuotaKind = paramBankcard.field_onceQuotaKind;
+    localBankcardScene.field_onceQuotaVirtual = paramBankcard.field_onceQuotaVirtual;
+    localBankcardScene.field_dayQuotaKind = paramBankcard.field_dayQuotaKind;
+    localBankcardScene.field_dayQuotaVirtual = paramBankcard.field_dayQuotaVirtual;
+    localBankcardScene.field_fetchArriveTime = paramBankcard.field_fetchArriveTime;
+    localBankcardScene.field_fetchArriveTimeWording = paramBankcard.field_fetchArriveTimeWording;
+    localBankcardScene.field_repay_url = paramBankcard.field_repay_url;
+    localBankcardScene.field_wxcreditState = paramBankcard.field_wxcreditState;
+    localBankcardScene.field_bankcardClientType = paramBankcard.field_bankcardClientType;
+    localBankcardScene.field_ext_msg = paramBankcard.field_ext_msg;
+    localBankcardScene.field_support_micropay = paramBankcard.field_support_micropay;
+    localBankcardScene.field_arrive_type = paramBankcard.field_arrive_type;
+    localBankcardScene.field_avail_save_wording = paramBankcard.field_avail_save_wording;
+    localBankcardScene.field_fetch_charge_rate = paramBankcard.field_fetch_charge_rate;
+    localBankcardScene.field_full_fetch_charge_fee = paramBankcard.field_full_fetch_charge_fee;
+    localBankcardScene.field_fetch_charge_info = paramBankcard.field_fetch_charge_info;
+    localBankcardScene.field_tips = paramBankcard.field_tips;
+    localBankcardScene.field_forbid_title = paramBankcard.field_forbid_title;
+    localBankcardScene.field_forbid_url = paramBankcard.field_forbid_url;
+    localBankcardScene.field_no_micro_word = paramBankcard.field_no_micro_word;
+    localBankcardScene.field_card_bottom_wording = paramBankcard.field_card_bottom_wording;
+    localBankcardScene.field_support_lqt_turn_in = paramBankcard.field_support_lqt_turn_in;
+    localBankcardScene.field_support_lqt_turn_out = paramBankcard.field_support_lqt_turn_out;
+    localBankcardScene.field_is_hightlight_pre_arrive_time_wording = paramBankcard.field_is_hightlight_pre_arrive_time_wording;
+    localBankcardScene.field_card_state_name = paramBankcard.field_card_state_name;
+    localBankcardScene.field_prompt_info_prompt_text = paramBankcard.field_prompt_info_prompt_text;
+    localBankcardScene.field_prompt_info_jump_text = paramBankcard.field_prompt_info_jump_text;
+    localBankcardScene.field_prompt_info_jump_url = paramBankcard.field_prompt_info_jump_url;
+    AppMethodBeat.o(71640);
+    return localBankcardScene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.k
  * JD-Core Version:    0.7.0.1
  */

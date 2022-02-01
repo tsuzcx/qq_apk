@@ -27,15 +27,15 @@ public final class c
       if (localObject == null) {
         break label191;
       }
-      i = ((g)localObject).md();
-      if ((i != paramb.gqE()) && (paramb.gqC().NaM))
+      i = ((g)localObject).KJ();
+      if ((i != paramb.hND()) && (paramb.hNB().TNv))
       {
-        paramb.gqC().stopPlay();
+        paramb.hNB().stopPlay();
         if (localObject != null) {
-          paramb.gqy().j(((g)localObject).MWs);
+          paramb.hNx().j(((g)localObject).TIW);
         }
       }
-      paramb.gqv();
+      paramb.hNu();
       j = 0;
       label103:
       if (j >= localRecyclerView.getChildCount()) {
@@ -44,13 +44,13 @@ public final class c
       localObject = localRecyclerView.getChildAt(j);
       if (((View)localObject).getTag() != null)
       {
-        localObject = (g)paramb.getRecyclerView().aQ((View)localObject);
-        if (((g)localObject).md() != i) {
+        localObject = (g)paramb.getRecyclerView().bj((View)localObject);
+        if (((g)localObject).KJ() != i) {
           break label196;
         }
-        ((g)localObject).gqu();
-        if (!paramb.gqC().NaM) {
-          ((g)localObject).NbK.gqU();
+        ((g)localObject).hNt();
+        if (!paramb.hNB().TNv) {
+          ((g)localObject).TOt.hNS();
         }
       }
     }
@@ -64,7 +64,7 @@ public final class c
       i = -1;
       break;
       label196:
-      ((g)localObject).NbK.gqV();
+      ((g)localObject).TOt.hNT();
     }
     label207:
     AppMethodBeat.o(126245);
@@ -75,31 +75,31 @@ public final class c
     AppMethodBeat.i(126246);
     h localh = c(paramb);
     if ((localh != null) && ((localh instanceof g))) {
-      if (!paramb.gqC().NaM)
+      if (!paramb.hNB().TNv)
       {
-        if (!paramb.gqx().isConnected()) {
+        if (!paramb.hNw().isConnected()) {
           break label89;
         }
-        paramb.a(localh.MWs);
-        localh.Ah(true);
+        paramb.a(localh.TIW);
+        localh.FD(true);
       }
     }
     for (;;)
     {
-      localh.gqu();
-      paramb.ajB(localh.gqw());
-      paramb.gqy().grC();
+      localh.hNt();
+      paramb.aoU(localh.hNv());
+      paramb.hNx().hOC();
       AppMethodBeat.o(126246);
       return;
       label89:
-      localh.grj().gqY();
-      paramb.gqC().stopPlay();
+      localh.hOi().hNW();
+      paramb.hNB().stopPlay();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package kotlin.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.ah;
+import kotlin.g.b.s;
 
 public abstract class k
-  extends g<x>
+  extends g<ah>
 {
-  public static final a abld = new a((byte)0);
+  public static final a ajjJ = new a((byte)0);
   
   public k()
   {
-    super(x.aazN);
+    super(ah.aiuX);
   }
   
   public static final class a
   {
-    public static k bHk(String paramString)
+    public static k bJo(String paramString)
     {
       AppMethodBeat.i(60066);
-      p.k(paramString, "message");
+      s.u(paramString, "message");
       paramString = (k)new k.b(paramString);
       AppMethodBeat.o(60066);
       return paramString;
@@ -46,7 +46,7 @@ public abstract class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.k
  * JD-Core Version:    0.7.0.1
  */

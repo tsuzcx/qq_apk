@@ -1,37 +1,50 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.Context;
 import android.content.Intent;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.ad;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public final class j
-  extends ad
+final class j
+  extends e
 {
-  private Context context;
-  
-  public j(Context paramContext)
+  public j(WalletCheckPwdNewUI paramWalletCheckPwdNewUI)
   {
-    this.context = paramContext;
+    super(paramWalletCheckPwdNewUI);
   }
   
-  public final boolean a(WebView paramWebView, String paramString)
+  public final void aQI(String paramString)
   {
-    AppMethodBeat.i(70681);
-    paramWebView = new Intent();
-    paramWebView.putExtra("rawUrl", paramString);
-    Log.d("MicroMsg.ProtoColWebViewClient", "raw url: %s", new Object[] { paramWebView.getStringExtra("rawUrl") });
-    c.b(this.context, "webview", ".ui.tools.WebViewUI", paramWebView);
-    AppMethodBeat.o(70681);
-    return true;
+    AppMethodBeat.i(70680);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("encrypt_pwd", paramString);
+    this.VLr.setResult(-1, localIntent);
+    this.VLr.finish();
+    AppMethodBeat.o(70680);
+  }
+  
+  public final boolean gwr()
+  {
+    return false;
+  }
+  
+  public final void onCreate()
+  {
+    AppMethodBeat.i(70679);
+    String str = this.VLr.getIntent().getStringExtra("title");
+    if (!Util.isNullOrNil(str)) {
+      this.VLr.Vju.setText(str);
+    }
+    str = this.VLr.getIntent().getStringExtra("subtitle");
+    if (!Util.isNullOrNil(str)) {
+      this.VLr.Vjv.setText(str);
+    }
+    AppMethodBeat.o(70679);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.j
  * JD-Core Version:    0.7.0.1
  */

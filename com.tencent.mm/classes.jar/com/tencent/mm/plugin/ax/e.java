@@ -1,29 +1,22 @@
 package com.tencent.mm.plugin.ax;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"getManifestId", "", "host", "getPrefetcherId", "appId", "webview-sdk_release"})
-public final class e
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webjsapi/WxAdAPIContext;", "Lcom/tencent/mm/plugin/webjsapi/JSAPIContext;", "deleteAd", "", "msgId", "", "forceDelete", "", "getAdContext", "from", "", "getInfo", "", "key", "replaceAdData", "data", "setAdExposeParams", "exposureRatio", "exposureTme", "setAdInsertType", "type", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface e
+  extends b
 {
-  public static final String biE(String paramString)
-  {
-    AppMethodBeat.i(205294);
-    p.k(paramString, "host");
-    paramString = "_manifest_" + paramString.hashCode();
-    AppMethodBeat.o(205294);
-    return paramString;
-  }
+  public abstract void deleteAd(String paramString, boolean paramBoolean);
   
-  public static final String biF(String paramString)
-  {
-    AppMethodBeat.i(205295);
-    p.k(paramString, "appId");
-    paramString = "_prefetcher_".concat(String.valueOf(paramString));
-    AppMethodBeat.o(205295);
-    return paramString;
-  }
+  public abstract String getAdContext(int paramInt);
+  
+  public abstract Object getInfo(String paramString);
+  
+  public abstract void replaceAdData(String paramString);
+  
+  public abstract void setAdExposeParams(int paramInt1, int paramInt2);
+  
+  public abstract void setAdInsertType(int paramInt);
 }
 
 

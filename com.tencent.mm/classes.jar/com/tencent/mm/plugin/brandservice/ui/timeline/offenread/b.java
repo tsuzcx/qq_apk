@@ -1,149 +1,176 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.brandservice.d.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.br;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.protocal.protobuf.pi;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotListViewUtil;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "ab_BizHeaderCanJump2Profile", "", "getAb_BizHeaderCanJump2Profile", "()Z", "ab_OftenReadCanJump2Profile", "getAb_OftenReadCanJump2Profile", "getFinderLiveInfoList", "", "Lcom/tencent/mm/protocal/protobuf/BizFinderLiveInfo;", "list", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineHotViewInfo;", "updateFinderGreenDotState", "", "info", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static float rpl;
-  private static int rpm;
-  public static final int sJR;
+  private static final String TAG;
+  public static final b vPq;
+  private static final boolean vPr;
+  private static final boolean vPs;
   
   static
   {
-    AppMethodBeat.i(257276);
-    if (WeChatEnvironment.hasDebugger()) {}
-    for (int i = 20;; i = 12)
+    boolean bool2 = true;
+    AppMethodBeat.i(302278);
+    vPq = new b();
+    TAG = "BizTimeLineHotListViewUtil";
+    if (((c)h.ax(c.class)).a(c.a.zwW, 0) == 1)
     {
-      sJR = i;
-      rpl = 4.5F;
-      rpm = 4;
-      AppMethodBeat.o(257276);
+      bool1 = true;
+      vPr = bool1;
+      if (((c)h.ax(c.class)).a(c.a.zwV, 0) != 1) {
+        break label87;
+      }
+    }
+    label87:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      vPs = bool1;
+      AppMethodBeat.o(302278);
       return;
+      bool1 = false;
+      break;
     }
   }
   
-  private static int c(Context paramContext, float paramFloat)
+  public static boolean dew()
   {
-    AppMethodBeat.i(6130);
-    if (paramContext == null)
+    return vPr;
+  }
+  
+  public static boolean dex()
+  {
+    return vPs;
+  }
+  
+  public static void e(e parame)
+  {
+    AppMethodBeat.i(302272);
+    s.u(parame, "info");
+    long l1 = MultiProcessMMKV.getMMKV("BizTimeLineHotList_UserClick_FinderMsgTimeStamp").decodeLong(parame.YIf);
+    long l2 = parame.vPU;
+    long l3 = br.bCJ() - l2;
+    if ((!vPr) || (!vPs)) {}
+    label51:
+    label250:
+    for (;;)
     {
-      AppMethodBeat.o(6130);
-      return 0;
+      boolean bool = false;
+      parame.vPT = bool;
+      if ((parame.vPQ) && (!parame.vPT)) {
+        parame.vPV = 1;
+      }
+      for (;;)
+      {
+        if (parame.vPT) {
+          Log.i(TAG, "info.finderUnreadDotShow = true, username = " + parame.YIf + ", time = " + parame.vPU + ", jumpType = " + parame.vPV);
+        }
+        AppMethodBeat.o(302272);
+        return;
+        if ((l2 == 0L) || ((l3 >= 0L) && (l3 > com.tencent.mm.plugin.brandservice.ui.b.b.dhO()))) {
+          break;
+        }
+        if (l2 <= l1) {
+          break label250;
+        }
+        bool = true;
+        break label51;
+        if ((!parame.vPQ) && (parame.vPT)) {
+          parame.vPV = 2;
+        } else if ((parame.vPQ) && (parame.vPT))
+        {
+          if (parame.uWw < parame.vPU) {
+            parame.vPV = 2;
+          } else {
+            parame.vPV = 1;
+          }
+        }
+        else {
+          parame.vPV = 0;
+        }
+      }
     }
-    int k = ex(paramContext);
-    int m = eR(paramContext);
-    int j = (int)(2.0F * (m - k * paramFloat) / (Math.floor(paramFloat) * 2.0D + 1.0D));
-    int i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    Log.i("MicroMsg.BizTimeLineHotViewConfig", "alvinluo getItemPadding itemWidth: %d, itemPadding: %d, viewWidth: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m) });
-    AppMethodBeat.o(6130);
-    return i;
   }
   
-  public static int eQ(Context paramContext)
+  public static List<pi> ev(List<? extends e> paramList)
   {
-    AppMethodBeat.i(6128);
-    int i = c(paramContext, rpl);
-    AppMethodBeat.o(6128);
-    return i;
-  }
-  
-  private static int eR(Context paramContext)
-  {
-    AppMethodBeat.i(6129);
-    com.tencent.mm.plugin.bizui.a.a locala = com.tencent.mm.plugin.bizui.a.a.shG;
-    int i = com.tencent.mm.plugin.bizui.a.a.eO(paramContext);
-    AppMethodBeat.o(6129);
-    return i;
-  }
-  
-  public static int eS(Context paramContext)
-  {
-    AppMethodBeat.i(257275);
-    if (paramContext == null)
+    AppMethodBeat.i(302261);
+    if (paramList == null)
     {
-      AppMethodBeat.o(257275);
-      return 0;
+      AppMethodBeat.o(302261);
+      return null;
     }
-    int i = (int)(eR(paramContext) * 2 / (Math.floor(rpl) * 2.0D + 1.0D));
-    AppMethodBeat.o(257275);
-    return i;
-  }
-  
-  public static int eT(Context paramContext)
-  {
-    AppMethodBeat.i(6131);
-    int i = (int)(com.tencent.mm.ci.a.aZ(paramContext, d.c.spi) * ez(paramContext));
-    AppMethodBeat.o(6131);
-    return i;
-  }
-  
-  public static int ex(Context paramContext)
-  {
-    AppMethodBeat.i(6127);
-    if (paramContext == null)
+    Object localObject1 = (Iterable)paramList;
+    paramList = (Collection)new ArrayList();
+    localObject1 = ((Iterable)localObject1).iterator();
+    Object localObject2;
+    Object localObject3;
+    label94:
+    label120:
+    label123:
+    while (((Iterator)localObject1).hasNext())
     {
-      AppMethodBeat.o(6127);
-      return 0;
+      localObject2 = ((Iterator)localObject1).next();
+      localObject3 = (e)localObject2;
+      if (((e)localObject3).YSN == 0)
+      {
+        localObject3 = (CharSequence)((e)localObject3).YSM;
+        if ((localObject3 == null) || (n.bp((CharSequence)localObject3)))
+        {
+          i = 1;
+          if (i != 0) {
+            break label120;
+          }
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label123;
+        }
+        paramList.add(localObject2);
+        break;
+        i = 0;
+        break label94;
+      }
     }
-    int i = (int)(com.tencent.mm.ci.a.aZ(paramContext, d.c.spj) * ez(paramContext));
-    Log.d("MicroMsg.BizTimeLineHotViewConfig", "alvinluo itemWidth: %d", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(6127);
-    return i;
-  }
-  
-  private static float ez(Context paramContext)
-  {
-    AppMethodBeat.i(6132);
-    float f2 = com.tencent.mm.ci.a.ez(paramContext);
-    float f1;
-    if ((f2 != com.tencent.mm.ci.a.kf(paramContext)) && (f2 != com.tencent.mm.ci.a.kg(paramContext)))
+    localObject1 = (Iterable)paramList;
+    paramList = (Collection)new ArrayList(p.a((Iterable)localObject1, 10));
+    localObject1 = ((Iterable)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      f1 = f2;
-      if (f2 != com.tencent.mm.ci.a.kh(paramContext)) {}
+      localObject2 = (e)((Iterator)localObject1).next();
+      localObject3 = new pi();
+      ((pi)localObject3).YIf = ((e)localObject2).YIf;
+      ((pi)localObject3).YSM = ((e)localObject2).YSM;
+      ((pi)localObject3).YSN = ((e)localObject2).YSN;
+      paramList.add(localObject3);
     }
-    else
-    {
-      f1 = com.tencent.mm.ci.a.ke(paramContext);
-    }
-    AppMethodBeat.o(6132);
-    return f1;
-  }
-  
-  public static int getCompletelyCountPerPage()
-  {
-    return rpm;
-  }
-  
-  public static float getShowCountPerPage()
-  {
-    return rpl;
-  }
-  
-  public static void init(Context paramContext)
-  {
-    AppMethodBeat.i(6126);
-    if (c(paramContext, 4.5F) <= com.tencent.mm.ci.a.fromDPToPix(paramContext, 8))
-    {
-      rpl = 3.5F;
-      rpm = 3;
-      AppMethodBeat.o(6126);
-      return;
-    }
-    rpl = 4.5F;
-    rpm = 4;
-    AppMethodBeat.o(6126);
+    paramList = (List)paramList;
+    AppMethodBeat.o(302261);
+    return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.b
  * JD-Core Version:    0.7.0.1
  */

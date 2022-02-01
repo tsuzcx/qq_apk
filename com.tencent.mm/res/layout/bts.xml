@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/hty" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMEditText android:gravity="top" android:id="@id/lvj" android:layout_width="fill_parent" android:layout_height="@dimen/cm" android:hint="xml" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/lvk" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="xmlToJson" style="@style/og" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/feq" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="jsonToXml" style="@style/og" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/gvu" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="MMXmlParser" style="@style/og" />
+</LinearLayout>

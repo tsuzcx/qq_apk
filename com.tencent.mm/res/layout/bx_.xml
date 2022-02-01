@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:background="@color/a8u" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:paddingLeft="12.0dip" android:paddingTop="13.0dip" android:paddingRight="12.0dip" android:paddingBottom="13.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center_vertical" android:id="@id/i15" android:background="@color/a8u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <com.tencent.mm.plugin.sns.ui.SnsTranslateResultView android:id="@id/i1c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </ScrollView>
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j6g" android:background="@drawable/b47" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/m2" android:layout_marginRight="@dimen/cd" android:layout_marginBottom="@dimen/m2">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j7g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bv" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/j7" android:textColor="@color/a7b" android:textColorHint="@color/xn" android:gravity="center_vertical" android:id="@id/j_l" android:background="@null" android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/g" android:minHeight="@dimen/hx" android:hint="@string/a2o" android:singleLine="true" android:editable="false" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a8b" />
+    </LinearLayout>
+    <ListView android:id="@id/kq2" android:background="@color/al2" style="@style/na" />
+    <TextView android:id="@id/cj1" style="@style/m3" />
 </LinearLayout>

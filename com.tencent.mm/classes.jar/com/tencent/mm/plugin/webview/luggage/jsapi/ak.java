@@ -1,76 +1,44 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
+import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import org.json.JSONException;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import org.json.JSONObject;
 
 public class ak
-  extends br
+  extends bv<s>
 {
-  public final void a(Context paramContext, String paramString, br.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(final b.a parama)
   {
-    AppMethodBeat.i(78586);
-    try
+    AppMethodBeat.i(78579);
+    parama = parama.eiZ.eif;
+    h.ahAA.bm(new Runnable()
     {
-      paramString = new JSONObject(paramString);
-      paramString = paramString.optString("username");
-      if (Util.isNullOrNil(paramString))
+      public final void run()
       {
-        parama.i("param_err", null);
-        AppMethodBeat.o(78586);
-        return;
+        AppMethodBeat.i(296013);
+        Log.i("MicroMsg.JsApiLog", "jslog : " + parama.optString("msg"));
+        AppMethodBeat.o(296013);
       }
-    }
-    catch (JSONException paramContext)
-    {
-      Log.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
-      parama.i("fail", null);
-      AppMethodBeat.o(78586);
-      return;
-    }
-    Object localObject = ((n)h.ae(n.class)).bbL().RG(paramString);
-    if ((localObject == null) || (!((as)localObject).hxX()))
-    {
-      parama.i("not biz username", null);
-      AppMethodBeat.o(78586);
-      return;
-    }
-    if (!d.rk(((ax)localObject).field_type))
-    {
-      parama.i("open_biz_chat", null);
-      AppMethodBeat.o(78586);
-      return;
-    }
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("Chat_User", paramString);
-    ((Intent)localObject).putExtra("finish_direct", true);
-    c.f(paramContext, ".ui.chatting.ChattingUI", (Intent)localObject);
-    parama.i(null, null);
-    AppMethodBeat.o(78586);
+    });
+    AppMethodBeat.o(78579);
   }
   
-  public final void b(b.a parama) {}
-  
-  public final int cDj()
+  public final int dgI()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "openBizChat";
+    return "log";
   }
 }
 

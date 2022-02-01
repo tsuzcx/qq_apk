@@ -1,108 +1,80 @@
 package androidx.fragment.app;
 
-import android.os.Parcelable;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import androidx.viewpager.widget.a;
+import androidx.core.content.a;
+import androidx.core.f.f;
+import java.io.PrintWriter;
 
-public abstract class g
-  extends a
+public abstract class g<E>
+  extends d
 {
-  private i mCurTransaction = null;
-  private Fragment mCurrentPrimaryItem = null;
-  private final e mFragmentManager;
+  private final int bCJ;
+  final Activity mActivity;
+  final Context mContext;
+  final FragmentManager mFragmentManager = new FragmentManagerImpl();
+  final Handler mHandler;
   
-  public g(e parame)
+  private g(Activity paramActivity, Context paramContext, Handler paramHandler)
   {
-    this.mFragmentManager = parame;
+    this.mActivity = paramActivity;
+    this.mContext = ((Context)f.checkNotNull(paramContext, "context == null"));
+    this.mHandler = ((Handler)f.checkNotNull(paramHandler, "handler == null"));
+    this.bCJ = 0;
   }
   
-  private static String c(int paramInt, long paramLong)
+  g(FragmentActivity paramFragmentActivity)
   {
-    return "android:switcher:" + paramInt + ":" + paramLong;
+    this(paramFragmentActivity, paramFragmentActivity, new Handler());
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public boolean Gg()
   {
-    if (this.mCurTransaction == null) {
-      this.mCurTransaction = this.mFragmentManager.beginTransaction();
+    return true;
+  }
+  
+  public LayoutInflater Gh()
+  {
+    return LayoutInflater.from(this.mContext);
+  }
+  
+  public void Gi() {}
+  
+  public abstract E Gj();
+  
+  public final void a(Intent paramIntent, int paramInt, Bundle paramBundle)
+  {
+    if (paramInt != -1) {
+      throw new IllegalStateException("Starting activity with a requestCode requires a FragmentActivity host");
     }
-    this.mCurTransaction.d((Fragment)paramObject);
+    a.a(this.mContext, paramIntent, paramBundle);
   }
   
-  public void finishUpdate(ViewGroup paramViewGroup)
+  public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
+  
+  public boolean aF(String paramString)
   {
-    if (this.mCurTransaction != null)
-    {
-      this.mCurTransaction.ir();
-      this.mCurTransaction = null;
-    }
+    return false;
   }
   
-  public abstract Fragment getItem(int paramInt);
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.mCurTransaction == null) {
-      this.mCurTransaction = this.mFragmentManager.beginTransaction();
-    }
-    long l = paramInt;
-    Object localObject = c(paramViewGroup.getId(), l);
-    localObject = this.mFragmentManager.findFragmentByTag((String)localObject);
-    if (localObject != null) {
-      this.mCurTransaction.e((Fragment)localObject);
-    }
-    for (paramViewGroup = (ViewGroup)localObject;; paramViewGroup = (ViewGroup)localObject)
-    {
-      if (paramViewGroup != this.mCurrentPrimaryItem)
-      {
-        paramViewGroup.setMenuVisibility(false);
-        paramViewGroup.setUserVisibleHint(false);
-      }
-      return paramViewGroup;
-      localObject = getItem(paramInt);
-      this.mCurTransaction.a(paramViewGroup.getId(), (Fragment)localObject, c(paramViewGroup.getId(), l));
-    }
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return ((Fragment)paramObject).getView() == paramView;
-  }
-  
-  public void restoreState(Parcelable paramParcelable, ClassLoader paramClassLoader) {}
-  
-  public Parcelable saveState()
+  public View onFindViewById(int paramInt)
   {
     return null;
   }
   
-  public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public boolean onHasView()
   {
-    paramViewGroup = (Fragment)paramObject;
-    if (paramViewGroup != this.mCurrentPrimaryItem)
-    {
-      if (this.mCurrentPrimaryItem != null)
-      {
-        this.mCurrentPrimaryItem.setMenuVisibility(false);
-        this.mCurrentPrimaryItem.setUserVisibleHint(false);
-      }
-      paramViewGroup.setMenuVisibility(true);
-      paramViewGroup.setUserVisibleHint(true);
-      this.mCurrentPrimaryItem = paramViewGroup;
-    }
-  }
-  
-  public void startUpdate(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup.getId() == -1) {
-      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.fragment.app.g
  * JD-Core Version:    0.7.0.1
  */

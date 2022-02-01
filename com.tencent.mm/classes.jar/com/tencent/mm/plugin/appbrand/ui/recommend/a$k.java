@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dud;
+import com.tencent.mm.protocal.protobuf.enb;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 1>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 1>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class a$k
-  extends q
-  implements m<dud, Integer, x>
+  extends u
+  implements m<enb, Integer, ah>
 {
-  public static final k rgH;
+  public static final k uoH;
   
   static
   {
     AppMethodBeat.i(51327);
-    rgH = new k();
+    uoH = new k();
     AppMethodBeat.o(51327);
   }
   
@@ -28,7 +28,7 @@ final class a$k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.a.k
  * JD-Core Version:    0.7.0.1
  */

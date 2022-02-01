@@ -2,7 +2,7 @@ package com.tencent.mm.storage.emotion;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.buj;
+import com.tencent.mm.protocal.protobuf.goi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -28,7 +28,7 @@ public final class o
     this.db = paramISQLiteDatabase;
   }
   
-  public final buj bxU(String paramString)
+  public final goi bzk(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(105119);
@@ -47,7 +47,7 @@ public final class o
     }
     try
     {
-      paramString = new buj();
+      paramString = new goi();
       paramString.parseFrom(localCursor.getBlob(0));
       if (localCursor != null) {
         localCursor.close();
@@ -67,7 +67,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.o
  * JD-Core Version:    0.7.0.1
  */

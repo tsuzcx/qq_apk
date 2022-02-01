@@ -11,47 +11,62 @@ import junit.framework.Assert;
 
 public class a<T>
 {
-  protected final ConcurrentHashMap<T, a<T>> ket;
+  protected final ConcurrentHashMap<T, a<T>> mED;
   
   public a()
   {
     AppMethodBeat.i(158345);
-    this.ket = new ConcurrentHashMap();
+    this.mED = new ConcurrentHashMap();
     AppMethodBeat.o(158345);
   }
   
-  private static void bG(T paramT)
+  private static void cZ(T paramT)
   {
     AppMethodBeat.i(158349);
     Assert.assertNotNull("Found a null object, maybe your component isn't installedor registered.", paramT);
-    Assert.assertFalse("Found a dummy object, maybe your component isn't installed or registered.", g.bx(paramT));
+    Assert.assertFalse("Found a dummy object, maybe your component isn't installed or registered.", g.cR(paramT));
     AppMethodBeat.o(158349);
   }
   
-  protected a<T> bD(T paramT)
+  public final void D(T paramT1, T paramT2)
+  {
+    AppMethodBeat.i(158350);
+    cZ(paramT1);
+    cZ(paramT2);
+    if (paramT1 == paramT2)
+    {
+      cW(paramT1).bbe();
+      AppMethodBeat.o(158350);
+      return;
+    }
+    cW(paramT1).a(cW(paramT2));
+    AppMethodBeat.o(158350);
+  }
+  
+  protected a<T> cW(T paramT)
   {
     AppMethodBeat.i(158346);
-    if (!this.ket.containsKey(paramT)) {
-      this.ket.putIfAbsent(paramT, new a(paramT));
+    if (!this.mED.containsKey(paramT)) {
+      this.mED.putIfAbsent(paramT, new a(paramT));
     }
-    paramT = (a)this.ket.get(paramT);
+    paramT = (a)this.mED.get(paramT);
     AppMethodBeat.o(158346);
     return paramT;
   }
   
-  public final a<T> bE(T paramT)
+  public final a<T> cX(T paramT)
   {
     AppMethodBeat.i(158347);
-    paramT = (a)this.ket.get(paramT);
+    paramT = (a)this.mED.get(paramT);
     AppMethodBeat.o(158347);
     return paramT;
   }
   
-  public final boolean bF(T paramT)
+  public final boolean cY(T paramT)
   {
     AppMethodBeat.i(158348);
-    paramT = (a)this.ket.get(paramT);
-    if ((paramT != null) && ((paramT.aIi()) || (paramT.aIk())))
+    paramT = (a)this.mED.get(paramT);
+    if ((paramT != null) && ((paramT.bbd()) || (paramT.bbf())))
     {
       AppMethodBeat.o(158348);
       return true;
@@ -63,43 +78,28 @@ public class a<T>
   public void reset(boolean paramBoolean)
   {
     AppMethodBeat.i(158351);
-    Iterator localIterator = this.ket.entrySet().iterator();
+    Iterator localIterator = this.mED.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).kex = false;
+      ((a)((Map.Entry)localIterator.next()).getValue()).mEH = false;
     }
     AppMethodBeat.o(158351);
   }
   
-  public final void s(T paramT1, T paramT2)
-  {
-    AppMethodBeat.i(158350);
-    bG(paramT1);
-    bG(paramT2);
-    if (paramT1 == paramT2)
-    {
-      bD(paramT1).aIj();
-      AppMethodBeat.o(158350);
-      return;
-    }
-    bD(paramT1).a(bD(paramT2));
-    AppMethodBeat.o(158350);
-  }
-  
   public static class a<T>
   {
-    private HashSet<a> keu;
-    private HashSet<a> kev;
-    public T kew;
-    public volatile boolean kex;
-    private boolean kez;
+    private HashSet<a> mEE;
+    private HashSet<a> mEF;
+    public T mEG;
+    public volatile boolean mEH;
+    private boolean mEI;
     
     protected a(T paramT)
     {
       AppMethodBeat.i(176013);
-      this.kex = false;
-      this.kez = true;
+      this.mEH = false;
+      this.mEI = true;
       Assert.assertNotNull("Subject should not be null!", paramT);
-      this.kew = paramT;
+      this.mEG = paramT;
       AppMethodBeat.o(176013);
     }
     
@@ -108,11 +108,11 @@ public class a<T>
       try
       {
         AppMethodBeat.i(158341);
-        this.kez = false;
-        if (this.keu == null) {
-          this.keu = new HashSet(4);
+        this.mEI = false;
+        if (this.mEE == null) {
+          this.mEE = new HashSet(4);
         }
-        this.keu.add(parama);
+        this.mEE.add(parama);
         AppMethodBeat.o(158341);
         return;
       }
@@ -124,10 +124,10 @@ public class a<T>
       try
       {
         AppMethodBeat.i(158342);
-        if (this.kev == null) {
-          this.kev = new HashSet(4);
+        if (this.mEF == null) {
+          this.mEF = new HashSet(4);
         }
-        this.kev.add(parama);
+        this.mEF.add(parama);
         AppMethodBeat.o(158342);
         return;
       }
@@ -143,7 +143,7 @@ public class a<T>
     }
     
     /* Error */
-    public final HashSet<a> aIf()
+    public final HashSet<a> bba()
     {
       // Byte code:
       //   0: aload_0
@@ -151,7 +151,7 @@ public class a<T>
       //   2: ldc 75
       //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 67	com/tencent/mm/kernel/a/a/a$a:kev	Ljava/util/HashSet;
+      //   8: getfield 67	com/tencent/mm/kernel/a/a/a$a:mEF	Ljava/util/HashSet;
       //   11: ifnonnull +14 -> 25
       //   14: aconst_null
       //   15: astore_1
@@ -164,7 +164,7 @@ public class a<T>
       //   25: new 57	java/util/HashSet
       //   28: dup
       //   29: aload_0
-      //   30: getfield 67	com/tencent/mm/kernel/a/a/a$a:kev	Ljava/util/HashSet;
+      //   30: getfield 67	com/tencent/mm/kernel/a/a/a$a:mEF	Ljava/util/HashSet;
       //   33: invokespecial 78	java/util/HashSet:<init>	(Ljava/util/Collection;)V
       //   36: astore_1
       //   37: ldc 75
@@ -188,7 +188,7 @@ public class a<T>
     }
     
     /* Error */
-    public final HashSet<a> aIg()
+    public final HashSet<a> bbb()
     {
       // Byte code:
       //   0: aload_0
@@ -196,7 +196,7 @@ public class a<T>
       //   2: ldc 81
       //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:keu	Ljava/util/HashSet;
+      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:mEE	Ljava/util/HashSet;
       //   11: ifnonnull +14 -> 25
       //   14: aconst_null
       //   15: astore_1
@@ -209,7 +209,7 @@ public class a<T>
       //   25: new 57	java/util/HashSet
       //   28: dup
       //   29: aload_0
-      //   30: getfield 55	com/tencent/mm/kernel/a/a/a$a:keu	Ljava/util/HashSet;
+      //   30: getfield 55	com/tencent/mm/kernel/a/a/a$a:mEE	Ljava/util/HashSet;
       //   33: invokespecial 78	java/util/HashSet:<init>	(Ljava/util/Collection;)V
       //   36: astore_1
       //   37: ldc 81
@@ -233,7 +233,7 @@ public class a<T>
     }
     
     /* Error */
-    public final int aIh()
+    public final int bbc()
     {
       // Byte code:
       //   0: aload_0
@@ -241,7 +241,7 @@ public class a<T>
       //   2: ldc 84
       //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:keu	Ljava/util/HashSet;
+      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:mEE	Ljava/util/HashSet;
       //   11: ifnonnull +14 -> 25
       //   14: iconst_0
       //   15: istore_1
@@ -252,7 +252,7 @@ public class a<T>
       //   23: iload_1
       //   24: ireturn
       //   25: aload_0
-      //   26: getfield 55	com/tencent/mm/kernel/a/a/a$a:keu	Ljava/util/HashSet;
+      //   26: getfield 55	com/tencent/mm/kernel/a/a/a$a:mEE	Ljava/util/HashSet;
       //   29: invokevirtual 87	java/util/HashSet:size	()I
       //   32: istore_1
       //   33: ldc 84
@@ -275,11 +275,11 @@ public class a<T>
       //   25	38	41	finally
     }
     
-    public final boolean aIi()
+    public final boolean bbd()
     {
       try
       {
-        boolean bool = this.kez;
+        boolean bool = this.mEI;
         return bool;
       }
       finally
@@ -289,13 +289,13 @@ public class a<T>
       }
     }
     
-    public final void aIj()
+    public final void bbe()
     {
       try
       {
         AppMethodBeat.i(158337);
-        if ((this.keu == null) || (this.keu.size() == 0)) {
-          this.kez = true;
+        if ((this.mEE == null) || (this.mEE.size() == 0)) {
+          this.mEI = true;
         }
         AppMethodBeat.o(158337);
         return;
@@ -304,7 +304,7 @@ public class a<T>
     }
     
     /* Error */
-    public final boolean aIk()
+    public final boolean bbf()
     {
       // Byte code:
       //   0: aload_0
@@ -312,10 +312,10 @@ public class a<T>
       //   2: ldc 93
       //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:keu	Ljava/util/HashSet;
+      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:mEE	Ljava/util/HashSet;
       //   11: ifnull +24 -> 35
       //   14: aload_0
-      //   15: getfield 55	com/tencent/mm/kernel/a/a/a$a:keu	Ljava/util/HashSet;
+      //   15: getfield 55	com/tencent/mm/kernel/a/a/a$a:mEE	Ljava/util/HashSet;
       //   18: invokevirtual 87	java/util/HashSet:size	()I
       //   21: ifle +14 -> 35
       //   24: iconst_1
@@ -353,11 +353,11 @@ public class a<T>
       AppMethodBeat.i(158344);
       if ((paramObject instanceof a))
       {
-        bool = this.kew.equals(((a)paramObject).kew);
+        bool = this.mEG.equals(((a)paramObject).mEG);
         AppMethodBeat.o(158344);
         return bool;
       }
-      boolean bool = this.kew.equals(paramObject);
+      boolean bool = this.mEG.equals(paramObject);
       AppMethodBeat.o(158344);
       return bool;
     }
@@ -365,7 +365,7 @@ public class a<T>
     public int hashCode()
     {
       AppMethodBeat.i(158343);
-      int i = this.kew.hashCode();
+      int i = this.mEG.hashCode();
       AppMethodBeat.o(158343);
       return i;
     }
@@ -373,7 +373,7 @@ public class a<T>
     public String toString()
     {
       AppMethodBeat.i(158339);
-      String str = "Ref-" + this.kew.toString();
+      String str = "Ref-" + this.mEG.toString();
       AppMethodBeat.o(158339);
       return str;
     }
@@ -381,7 +381,7 @@ public class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.kernel.a.a.a
  * JD-Core Version:    0.7.0.1
  */

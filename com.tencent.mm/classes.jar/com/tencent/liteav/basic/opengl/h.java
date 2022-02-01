@@ -24,7 +24,7 @@ public class h
   
   public h()
   {
-    AppMethodBeat.i(236988);
+    AppMethodBeat.i(230180);
     this.b = null;
     this.c = null;
     this.e = null;
@@ -34,12 +34,12 @@ public class h
     this.h = 0L;
     this.i = 0L;
     this.j = new float[16];
-    AppMethodBeat.o(236988);
+    AppMethodBeat.o(230180);
   }
   
   private void a(int paramInt)
   {
-    AppMethodBeat.i(237013);
+    AppMethodBeat.i(230209);
     try
     {
       if (this.c != null) {
@@ -49,13 +49,13 @@ public class h
     }
     finally
     {
-      AppMethodBeat.o(237013);
+      AppMethodBeat.o(230209);
     }
   }
   
   private void a(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(237012);
+    AppMethodBeat.i(230200);
     try
     {
       if (this.c != null) {
@@ -65,13 +65,13 @@ public class h
     }
     finally
     {
-      AppMethodBeat.o(237012);
+      AppMethodBeat.o(230200);
     }
   }
   
   private void a(int paramInt, Runnable paramRunnable)
   {
-    AppMethodBeat.i(237014);
+    AppMethodBeat.i(230216);
     try
     {
       if (this.c != null)
@@ -85,13 +85,13 @@ public class h
     }
     finally
     {
-      AppMethodBeat.o(237014);
+      AppMethodBeat.o(230216);
     }
   }
   
   private void b()
   {
-    AppMethodBeat.i(237010);
+    AppMethodBeat.i(230187);
     f();
     try
     {
@@ -103,18 +103,18 @@ public class h
       this.c.b = 720;
       TXCLog.w("TXGLSurfaceTextureThread", "create gl thread " + this.b.getName());
       a(100);
-      AppMethodBeat.o(237010);
+      AppMethodBeat.o(230187);
       return;
     }
     finally
     {
-      AppMethodBeat.o(237010);
+      AppMethodBeat.o(230187);
     }
   }
   
   private void f()
   {
-    AppMethodBeat.i(237011);
+    AppMethodBeat.i(230194);
     try
     {
       if (this.c != null)
@@ -128,13 +128,13 @@ public class h
     }
     finally
     {
-      AppMethodBeat.o(237011);
+      AppMethodBeat.o(230194);
     }
   }
   
   private void g()
   {
-    AppMethodBeat.i(237015);
+    AppMethodBeat.i(230223);
     TXCLog.w("TXGLSurfaceTextureThread", "destroy surface texture ");
     o localo = this.d;
     if (localo != null) {
@@ -152,19 +152,19 @@ public class h
       GLES20.glDeleteTextures(1, this.e, 0);
       this.e = null;
     }
-    AppMethodBeat.o(237015);
+    AppMethodBeat.o(230223);
   }
   
   private void h()
   {
-    AppMethodBeat.i(237016);
+    AppMethodBeat.i(230228);
     TXCLog.w("TXGLSurfaceTextureThread", "init surface texture ");
     this.e = new int[1];
     this.e[0] = TXCOpenGlUtils.b();
     if (this.e[0] <= 0)
     {
       this.e = null;
-      AppMethodBeat.o(237016);
+      AppMethodBeat.o(230228);
       return;
     }
     this.f = new SurfaceTexture(this.e[0]);
@@ -173,42 +173,42 @@ public class h
     {
       public void onFrameAvailable(SurfaceTexture paramAnonymousSurfaceTexture)
       {
-        AppMethodBeat.i(236550);
+        AppMethodBeat.i(230318);
         h.a(h.this, 103, new Runnable()
         {
           public void run()
           {
-            AppMethodBeat.i(237528);
+            AppMethodBeat.i(230211);
             h.a(h.this, true);
             h.a(h.this, 102);
-            AppMethodBeat.o(237528);
+            AppMethodBeat.o(230211);
           }
         });
         paramAnonymousSurfaceTexture.setOnFrameAvailableListener(null);
-        AppMethodBeat.o(236550);
+        AppMethodBeat.o(230318);
       }
     });
     o localo = this.d;
     if (localo != null) {
       localo.a(this.f);
     }
-    AppMethodBeat.o(237016);
+    AppMethodBeat.o(230228);
   }
   
   private boolean i()
   {
-    AppMethodBeat.i(237017);
+    AppMethodBeat.i(230236);
     if (!this.g)
     {
       this.h = 0L;
       this.i = System.nanoTime();
-      AppMethodBeat.o(237017);
+      AppMethodBeat.o(230236);
       return false;
     }
     long l = System.nanoTime();
     if (l < this.i + this.h * 1000L * 1000L * 1000L / this.a)
     {
-      AppMethodBeat.o(237017);
+      AppMethodBeat.o(230236);
       return false;
     }
     if (this.i == 0L) {
@@ -217,7 +217,7 @@ public class h
     for (;;)
     {
       this.h += 1L;
-      AppMethodBeat.o(237017);
+      AppMethodBeat.o(230236);
       return true;
       if (l > this.i + 1000000000L)
       {
@@ -229,24 +229,24 @@ public class h
   
   public void a()
   {
-    AppMethodBeat.i(236991);
+    AppMethodBeat.i(230269);
     f();
-    AppMethodBeat.o(236991);
+    AppMethodBeat.o(230269);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(236989);
+    AppMethodBeat.i(230260);
     this.a = paramInt;
     b();
-    AppMethodBeat.o(236989);
+    AppMethodBeat.o(230260);
   }
   
   public void a(int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2) {}
   
   public void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(236997);
+    AppMethodBeat.i(230297);
     try
     {
       if (this.c != null) {
@@ -256,13 +256,13 @@ public class h
     }
     finally
     {
-      AppMethodBeat.o(236997);
+      AppMethodBeat.o(230297);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    AppMethodBeat.i(236998);
+    AppMethodBeat.i(230304);
     try
     {
       if (this.c != null) {
@@ -289,51 +289,51 @@ public class h
     }
     finally
     {
-      AppMethodBeat.o(236998);
+      AppMethodBeat.o(230304);
     }
     this.f.setOnFrameAvailableListener(new SurfaceTexture.OnFrameAvailableListener()
     {
       public void onFrameAvailable(SurfaceTexture paramAnonymousSurfaceTexture)
       {
-        AppMethodBeat.i(237497);
+        AppMethodBeat.i(230335);
         h.a(h.this, 103, new Runnable()
         {
           public void run()
           {
-            AppMethodBeat.i(236176);
+            AppMethodBeat.i(230290);
             h.a(h.this, true);
             h.a(h.this, 102);
-            AppMethodBeat.o(236176);
+            AppMethodBeat.o(230290);
           }
         });
         paramAnonymousSurfaceTexture.setOnFrameAvailableListener(null);
-        AppMethodBeat.o(237497);
+        AppMethodBeat.o(230335);
       }
     });
-    AppMethodBeat.o(236998);
+    AppMethodBeat.o(230304);
   }
   
   public void a(byte[] paramArrayOfByte) {}
   
   public void c()
   {
-    AppMethodBeat.i(237004);
+    AppMethodBeat.i(230333);
     h();
-    AppMethodBeat.o(237004);
+    AppMethodBeat.o(230333);
   }
   
   public void d()
   {
-    AppMethodBeat.i(237007);
+    AppMethodBeat.i(230343);
     a(102, 5L);
     if (!i())
     {
-      AppMethodBeat.o(237007);
+      AppMethodBeat.o(230343);
       return;
     }
     if ((this.f == null) || (this.e == null))
     {
-      AppMethodBeat.o(237007);
+      AppMethodBeat.o(230343);
       return;
     }
     try
@@ -344,7 +344,7 @@ public class h
       if (localo != null) {
         localo.a(this.e[0], this.j);
       }
-      AppMethodBeat.o(237007);
+      AppMethodBeat.o(230343);
       return;
     }
     catch (Exception localException)
@@ -358,9 +358,9 @@ public class h
   
   public void e()
   {
-    AppMethodBeat.i(237009);
+    AppMethodBeat.i(230348);
     g();
-    AppMethodBeat.o(237009);
+    AppMethodBeat.o(230348);
   }
   
   /* Error */
@@ -421,7 +421,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.opengl.h
  * JD-Core Version:    0.7.0.1
  */

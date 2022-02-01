@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.internal.ApiExceptionMapper;
 import com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl;
 import com.google.android.gms.common.api.internal.BasePendingResult;
@@ -32,7 +31,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.Collections;
 
-@KeepForSdk
 public class GoogleApi<O extends Api.ApiOptions>
 {
   private final Api<O> mApi;
@@ -45,7 +43,6 @@ public class GoogleApi<O extends Api.ApiOptions>
   private final StatusExceptionMapper zzcp;
   protected final GoogleApiManager zzcq;
   
-  @KeepForSdk
   public GoogleApi(Activity paramActivity, Api<O> paramApi, O paramO, Settings paramSettings)
   {
     AppMethodBeat.i(11001);
@@ -67,7 +64,6 @@ public class GoogleApi<O extends Api.ApiOptions>
   }
   
   @Deprecated
-  @KeepForSdk
   public GoogleApi(Activity paramActivity, Api<O> paramApi, O paramO, StatusExceptionMapper paramStatusExceptionMapper)
   {
     this(paramActivity, paramApi, paramO, new GoogleApi.Settings.Builder().setMapper(paramStatusExceptionMapper).setLooper(paramActivity.getMainLooper()).build());
@@ -75,7 +71,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     AppMethodBeat.o(11003);
   }
   
-  @KeepForSdk
   protected GoogleApi(Context paramContext, Api<O> paramApi, Looper paramLooper)
   {
     AppMethodBeat.i(10999);
@@ -95,7 +90,6 @@ public class GoogleApi<O extends Api.ApiOptions>
   }
   
   @Deprecated
-  @KeepForSdk
   public GoogleApi(Context paramContext, Api<O> paramApi, O paramO, Looper paramLooper, StatusExceptionMapper paramStatusExceptionMapper)
   {
     this(paramContext, paramApi, paramO, new GoogleApi.Settings.Builder().setLooper(paramLooper).setMapper(paramStatusExceptionMapper).build());
@@ -103,7 +97,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     AppMethodBeat.o(11000);
   }
   
-  @KeepForSdk
   public GoogleApi(Context paramContext, Api<O> paramApi, O paramO, Settings paramSettings)
   {
     AppMethodBeat.i(11002);
@@ -124,7 +117,6 @@ public class GoogleApi<O extends Api.ApiOptions>
   }
   
   @Deprecated
-  @KeepForSdk
   public GoogleApi(Context paramContext, Api<O> paramApi, O paramO, StatusExceptionMapper paramStatusExceptionMapper)
   {
     this(paramContext, paramApi, paramO, new GoogleApi.Settings.Builder().setMapper(paramStatusExceptionMapper).build());
@@ -151,13 +143,11 @@ public class GoogleApi<O extends Api.ApiOptions>
     return paramTaskApiCall;
   }
   
-  @KeepForSdk
   public GoogleApiClient asGoogleApiClient()
   {
     return this.zzco;
   }
   
-  @KeepForSdk
   protected ClientSettings.Builder createClientSettingsBuilder()
   {
     AppMethodBeat.i(11018);
@@ -194,7 +184,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     }
   }
   
-  @KeepForSdk
   protected Task<Boolean> disconnectService()
   {
     AppMethodBeat.i(11016);
@@ -203,7 +192,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     return localTask;
   }
   
-  @KeepForSdk
   public <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T doBestEffortWrite(T paramT)
   {
     AppMethodBeat.i(11011);
@@ -212,7 +200,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     return paramT;
   }
   
-  @KeepForSdk
   public <TResult, A extends Api.AnyClient> Task<TResult> doBestEffortWrite(TaskApiCall<A, TResult> paramTaskApiCall)
   {
     AppMethodBeat.i(11012);
@@ -221,7 +208,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     return paramTaskApiCall;
   }
   
-  @KeepForSdk
   public <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T doRead(T paramT)
   {
     AppMethodBeat.i(11007);
@@ -230,7 +216,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     return paramT;
   }
   
-  @KeepForSdk
   public <TResult, A extends Api.AnyClient> Task<TResult> doRead(TaskApiCall<A, TResult> paramTaskApiCall)
   {
     AppMethodBeat.i(11008);
@@ -239,7 +224,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     return paramTaskApiCall;
   }
   
-  @KeepForSdk
   public <A extends Api.AnyClient, T extends RegisterListenerMethod<A, ?>, U extends UnregisterListenerMethod<A, ?>> Task<Void> doRegisterEventListener(T paramT, U paramU)
   {
     AppMethodBeat.i(11013);
@@ -253,7 +237,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     return paramT;
   }
   
-  @KeepForSdk
   public Task<Boolean> doUnregisterEventListener(ListenerHolder.ListenerKey<?> paramListenerKey)
   {
     AppMethodBeat.i(11014);
@@ -263,7 +246,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     return paramListenerKey;
   }
   
-  @KeepForSdk
   public <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T doWrite(T paramT)
   {
     AppMethodBeat.i(11009);
@@ -272,7 +254,6 @@ public class GoogleApi<O extends Api.ApiOptions>
     return paramT;
   }
   
-  @KeepForSdk
   public <TResult, A extends Api.AnyClient> Task<TResult> doWrite(TaskApiCall<A, TResult> paramTaskApiCall)
   {
     AppMethodBeat.i(11010);
@@ -286,13 +267,11 @@ public class GoogleApi<O extends Api.ApiOptions>
     return this.mApi;
   }
   
-  @KeepForSdk
   public O getApiOptions()
   {
     return this.zzcl;
   }
   
-  @KeepForSdk
   public Context getApplicationContext()
   {
     return this.mContext;
@@ -303,13 +282,11 @@ public class GoogleApi<O extends Api.ApiOptions>
     return this.mId;
   }
   
-  @KeepForSdk
   public Looper getLooper()
   {
     return this.zzcn;
   }
   
-  @KeepForSdk
   public <L> ListenerHolder<L> registerListener(L paramL, String paramString)
   {
     AppMethodBeat.i(11015);
@@ -340,10 +317,8 @@ public class GoogleApi<O extends Api.ApiOptions>
     return this.zzcm;
   }
   
-  @KeepForSdk
   public static class Settings
   {
-    @KeepForSdk
     public static final Settings DEFAULT_SETTINGS;
     public final StatusExceptionMapper zzcr;
     public final Looper zzcs;
@@ -355,20 +330,17 @@ public class GoogleApi<O extends Api.ApiOptions>
       AppMethodBeat.o(10998);
     }
     
-    @KeepForSdk
     private Settings(StatusExceptionMapper paramStatusExceptionMapper, Account paramAccount, Looper paramLooper)
     {
       this.zzcr = paramStatusExceptionMapper;
       this.zzcs = paramLooper;
     }
     
-    @KeepForSdk
     public static class Builder
     {
       private Looper zzcn;
       private StatusExceptionMapper zzcp;
       
-      @KeepForSdk
       public GoogleApi.Settings build()
       {
         AppMethodBeat.i(10997);
@@ -383,7 +355,6 @@ public class GoogleApi<O extends Api.ApiOptions>
         return localSettings;
       }
       
-      @KeepForSdk
       public Builder setLooper(Looper paramLooper)
       {
         AppMethodBeat.i(10996);
@@ -393,7 +364,6 @@ public class GoogleApi<O extends Api.ApiOptions>
         return this;
       }
       
-      @KeepForSdk
       public Builder setMapper(StatusExceptionMapper paramStatusExceptionMapper)
       {
         AppMethodBeat.i(10995);
@@ -407,7 +377,7 @@ public class GoogleApi<O extends Api.ApiOptions>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.GoogleApi
  * JD-Core Version:    0.7.0.1
  */

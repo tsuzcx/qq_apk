@@ -1,38 +1,27 @@
 package com.tencent.mm.plugin.box.webview;
 
-import android.annotation.TargetApi;
 import android.webkit.JavascriptInterface;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.xw;
+import com.tencent.mm.autogen.a.zp;
 import com.tencent.mm.plugin.box.c.b;
 import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import org.json.JSONObject;
 
 public class d
 {
-  b som;
+  b vAk;
   
   public d(b paramb)
   {
-    this.som = paramb;
+    this.vAk = paramb;
   }
   
-  @JavascriptInterface
-  public void closePage()
-  {
-    AppMethodBeat.i(76362);
-    Log.i("MicroMsg.Box.BoxWebViewJSApi", "closePage");
-    this.som.dismiss();
-    AppMethodBeat.o(76362);
-  }
-  
-  public final void g(String paramString1, int paramInt, final String paramString2, String paramString3)
+  public final void c(String paramString1, int paramInt, final String paramString2, String paramString3)
   {
     AppMethodBeat.i(76363);
     Log.i("MicroMsg.Box.BoxWebViewJSApi", "onDataReady %s %s %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
@@ -44,12 +33,11 @@ public class d
       paramString2.put("data", paramString3);
       MMHandlerThread.postToMainThread(new Runnable()
       {
-        @TargetApi(7)
         public final void run()
         {
           AppMethodBeat.i(76356);
           Object localObject = paramString2.toString();
-          b localb = d.this.som;
+          b localb = d.this.vAk;
           try
           {
             boolean bool = Util.isNullOrNil("requestCompleted");
@@ -64,7 +52,7 @@ public class d
             {
               Log.i("MicroMsg.Box.BoxJsEventNotifier", "notifyJsEvent %s %s", new Object[] { "requestCompleted", localObject });
               localObject = String.format("javascript:boxJSApi['%s'] && boxJSApi.%s(%s)", new Object[] { "requestCompleted", "requestCompleted", str });
-              localb.cyu().evaluateJavascript((String)localObject, null);
+              localb.dbl().evaluateJavascript((String)localObject, null);
               AppMethodBeat.o(76356);
               return;
             }
@@ -84,6 +72,15 @@ public class d
     {
       AppMethodBeat.o(76363);
     }
+  }
+  
+  @JavascriptInterface
+  public void closePage()
+  {
+    AppMethodBeat.i(76362);
+    Log.i("MicroMsg.Box.BoxWebViewJSApi", "closePage");
+    this.vAk.dismiss();
+    AppMethodBeat.o(76362);
   }
   
   @JavascriptInterface
@@ -113,11 +110,13 @@ public class d
       paramString = new JSONObject(paramString);
       String str1 = paramString.optString("userName", "");
       String str2 = paramString.optString("relativeURL", "");
-      xw localxw = new xw();
-      localxw.fWN.userName = str1;
-      localxw.fWN.fWP = str2;
-      localxw.fWN.scene = paramString.optInt("scene", 1000);
-      EventCenter.instance.publish(localxw);
+      String str3 = paramString.optString("sceneNote", "");
+      zp localzp = new zp();
+      localzp.icM.userName = str1;
+      localzp.icM.icO = str2;
+      localzp.icM.scene = paramString.optInt("scene", 1000);
+      localzp.icM.hzx = str3;
+      localzp.publish();
       AppMethodBeat.o(76359);
       return;
     }
@@ -137,7 +136,7 @@ public class d
       paramString = new JSONObject(paramString);
       int i = paramString.optInt("logid", 0);
       paramString = paramString.optString("msg", "");
-      f.Iyx.kvStat(i, paramString);
+      f.Ozc.kvStat(i, paramString);
       AppMethodBeat.o(76360);
       return;
     }
@@ -157,7 +156,7 @@ public class d
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("requestId", "");
       localObject = ((JSONObject)localObject).optString("data", "");
-      this.som.cyv().fq(paramString, (String)localObject);
+      this.vAk.dbm().fH(paramString, (String)localObject);
       AppMethodBeat.o(76357);
       return;
     }
@@ -172,7 +171,7 @@ public class d
   {
     AppMethodBeat.i(76358);
     Log.i("MicroMsg.Box.BoxWebViewJSApi", "webviewUIReady");
-    h.ZvG.bc(new Runnable()
+    h.ahAA.bk(new Runnable()
     {
       public final void run()
       {

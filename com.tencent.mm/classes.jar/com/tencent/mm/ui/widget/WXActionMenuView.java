@@ -20,29 +20,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.e;
 import com.tencent.mm.ah.a.g;
 import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.k;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.tools.t.a;
+import com.tencent.mm.ui.tools.s.a;
 import java.lang.reflect.Field;
 
 public class WXActionMenuView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private int XMM;
-  private TextView Yee;
-  private ImageView Yef;
-  private View Yeg;
-  private MenuItem Yeh;
-  private b Yei;
-  private a Yej;
+  private int afCZ;
+  private TextView afVX;
+  private ImageView afVY;
+  private View afVZ;
+  private MenuItem afWa;
+  private b afWb;
+  private a afWc;
   private CharSequence cZ;
-  private Drawable eK;
-  private int ll;
+  private Drawable fM;
   private Activity mActivity;
   private Context mContext;
   private float mDensity;
+  private int mh;
   
   public WXActionMenuView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -52,33 +53,34 @@ public class WXActionMenuView
   private WXActionMenuView(Context paramContext, AttributeSet paramAttributeSet, byte paramByte)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(192452);
-    this.Yee = null;
-    this.Yef = null;
+    AppMethodBeat.i(251745);
+    this.afVX = null;
+    this.afVY = null;
     paramAttributeSet = paramContext.getResources();
     this.mContext = paramContext;
     this.mDensity = paramAttributeSet.getDisplayMetrics().density;
-    this.ll = ((int)(32.0F * this.mDensity + 0.5F));
+    this.mh = ((int)(32.0F * this.mDensity + 0.5F));
     paramAttributeSet = (Activity)paramContext;
     Resources localResources = paramContext.getResources();
     if (paramContext.getResources().getConfiguration().orientation == 2)
     {
       paramByte = 1;
       if (paramByte == 0) {
-        break label217;
+        break label227;
       }
     }
-    label217:
+    label227:
     for (paramByte = a.e.DefaultActionbarHeightLand;; paramByte = a.e.DefaultActionbarHeightPort)
     {
-      this.XMM = com.tencent.mm.compatible.util.a.c(paramAttributeSet, (int)localResources.getDimension(paramByte));
-      Log.i("MicroMsg.WXActionMenuView", "mMaxIconSize : %s, mDefaultNormalActionbarHeight: %s.", new Object[] { Integer.valueOf(this.ll), Integer.valueOf(this.XMM) });
+      this.afCZ = com.tencent.mm.compatible.util.a.c(paramAttributeSet, (int)localResources.getDimension(paramByte));
+      Log.i("MicroMsg.WXActionMenuView", "mMaxIconSize : %s, mDefaultNormalActionbarHeight: %s.", new Object[] { Integer.valueOf(this.mh), Integer.valueOf(this.afCZ) });
       setOnClickListener(this);
-      this.Yeg = LayoutInflater.from(this.mContext).inflate(a.h.actionbar_custom_menu_item_new, this);
-      this.Yeg.setLayoutParams(new ViewGroup.LayoutParams(-2, -1));
-      this.Yee = ((TextView)findViewById(a.g.menu_desc));
-      this.Yef = ((ImageView)findViewById(a.g.menu_icon));
-      AppMethodBeat.o(192452);
+      this.afVZ = LayoutInflater.from(this.mContext).inflate(a.h.actionbar_custom_menu_item_new, this);
+      this.afVZ.setLayoutParams(new ViewGroup.LayoutParams(-2, -1));
+      this.afVX = ((TextView)findViewById(a.g.menu_desc));
+      this.afVY = ((ImageView)findViewById(a.g.menu_icon));
+      com.tencent.mm.ui.a.v(this.afVX, a.e.ActionBarTextSize);
+      AppMethodBeat.o(251745);
       return;
       paramByte = 0;
       break;
@@ -92,7 +94,7 @@ public class WXActionMenuView
   
   public static View a(Activity paramActivity, MenuItem paramMenuItem, a parama, b paramb)
   {
-    AppMethodBeat.i(192488);
+    AppMethodBeat.i(251753);
     if (paramMenuItem.getActionView() != null)
     {
       Log.i("MicroMsg.WXActionMenuView", "makeMMActionMenuView : getActionView.");
@@ -100,39 +102,39 @@ public class WXActionMenuView
         ((ViewGroup)paramMenuItem.getActionView().getParent()).removeView(paramMenuItem.getActionView());
       }
       paramActivity = paramMenuItem.getActionView();
-      AppMethodBeat.o(192488);
+      AppMethodBeat.o(251753);
       return paramActivity;
     }
     Log.i("MicroMsg.WXActionMenuView", "makeMMActionMenuView : icon.");
     View localView = LayoutInflater.from(paramActivity).inflate(a.h.actionbar_custom_menu, null);
     ((WXActionMenuView)localView.findViewById(a.g.action_menu_view_root)).b(paramActivity, paramMenuItem, parama, paramb);
     localView.setTag(paramMenuItem);
-    AppMethodBeat.o(192488);
+    AppMethodBeat.o(251753);
     return localView;
   }
   
   /* Error */
-  public static View a(final Activity paramActivity, final MenuItem paramMenuItem, a parama, final b paramb, final com.tencent.mm.ui.w paramw)
+  public static View a(final Activity paramActivity, final MenuItem paramMenuItem, a parama, final b paramb, final com.tencent.mm.ui.y paramy)
   {
     // Byte code:
-    //   0: ldc 230
+    //   0: ldc 239
     //   2: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokevirtual 234	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   9: ldc 236
-    //   11: invokevirtual 242	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   6: invokevirtual 243	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   9: ldc 245
+    //   11: invokevirtual 251	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   14: astore 10
     //   16: aload 10
     //   18: iconst_1
-    //   19: invokevirtual 248	java/lang/reflect/Field:setAccessible	(Z)V
+    //   19: invokevirtual 257	java/lang/reflect/Field:setAccessible	(Z)V
     //   22: aload 10
     //   24: aload_1
-    //   25: invokevirtual 252	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   25: invokevirtual 261	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   28: checkcast 122	java/lang/Integer
-    //   31: invokevirtual 256	java/lang/Integer:intValue	()I
+    //   31: invokevirtual 265	java/lang/Integer:intValue	()I
     //   34: istore 5
     //   36: ldc 116
-    //   38: ldc_w 258
+    //   38: ldc_w 267
     //   41: iconst_1
     //   42: anewarray 120	java/lang/Object
     //   45: dup
@@ -142,19 +144,19 @@ public class WXActionMenuView
     //   52: aastore
     //   53: invokestatic 131	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   56: aload 4
-    //   58: getfield 264	com/tencent/mm/ui/w:jjS	Lcom/tencent/mm/ui/tools/t;
+    //   58: getfield 273	com/tencent/mm/ui/y:lMw	Lcom/tencent/mm/ui/tools/s;
     //   61: astore 10
     //   63: aload 10
-    //   65: getfield 270	com/tencent/mm/ui/tools/t:XUv	Lcom/tencent/mm/ui/tools/t$a;
+    //   65: getfield 279	com/tencent/mm/ui/tools/s:afKK	Lcom/tencent/mm/ui/tools/s$a;
     //   68: astore 4
     //   70: aload 10
-    //   72: getfield 274	com/tencent/mm/ui/tools/t:XUf	Z
+    //   72: getfield 283	com/tencent/mm/ui/tools/s:afKt	Z
     //   75: istore 7
     //   77: aload 10
-    //   79: getfield 277	com/tencent/mm/ui/tools/t:XUg	Z
+    //   79: getfield 286	com/tencent/mm/ui/tools/s:afKu	Z
     //   82: istore 8
     //   84: aload_1
-    //   85: invokeinterface 281 1 0
+    //   85: invokeinterface 290 1 0
     //   90: istore 9
     //   92: iload 5
     //   94: bipush 8
@@ -164,7 +166,7 @@ public class WXActionMenuView
     //   102: iconst_1
     //   103: istore 6
     //   105: ldc 116
-    //   107: ldc_w 283
+    //   107: ldc_w 292
     //   110: iconst_4
     //   111: anewarray 120	java/lang/Object
     //   114: dup
@@ -174,30 +176,30 @@ public class WXActionMenuView
     //   119: dup
     //   120: iconst_1
     //   121: iload 8
-    //   123: invokestatic 288	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   123: invokestatic 297	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   126: aastore
     //   127: dup
     //   128: iconst_2
     //   129: iload 9
-    //   131: invokestatic 288	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   131: invokestatic 297	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   134: aastore
     //   135: dup
     //   136: iconst_3
     //   137: iload 6
-    //   139: invokestatic 288	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   139: invokestatic 297	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   142: aastore
     //   143: invokestatic 131	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   146: iload 8
     //   148: ifne +96 -> 244
     //   151: aload_0
     //   152: invokestatic 141	android/view/LayoutInflater:from	(Landroid/content/Context;)Landroid/view/LayoutInflater;
-    //   155: getstatic 215	com/tencent/mm/ah/a$h:actionbar_custom_menu	I
+    //   155: getstatic 224	com/tencent/mm/ah/a$h:actionbar_custom_menu	I
     //   158: aconst_null
     //   159: invokevirtual 150	android/view/LayoutInflater:inflate	(ILandroid/view/ViewGroup;)Landroid/view/View;
     //   162: astore 10
     //   164: aload 10
-    //   166: getstatic 218	com/tencent/mm/ah/a$g:action_menu_view_root	I
-    //   169: invokevirtual 219	android/view/View:findViewById	(I)Landroid/view/View;
+    //   166: getstatic 227	com/tencent/mm/ah/a$g:action_menu_view_root	I
+    //   169: invokevirtual 228	android/view/View:findViewById	(I)Landroid/view/View;
     //   172: checkcast 2	com/tencent/mm/ui/widget/WXActionMenuView
     //   175: astore 11
     //   177: aload 11
@@ -205,7 +207,7 @@ public class WXActionMenuView
     //   180: aload_1
     //   181: aload_2
     //   182: aload_3
-    //   183: invokespecial 222	com/tencent/mm/ui/widget/WXActionMenuView:b	(Landroid/app/Activity;Landroid/view/MenuItem;Lcom/tencent/mm/ui/widget/WXActionMenuView$a;Lcom/tencent/mm/ui/widget/WXActionMenuView$b;)V
+    //   183: invokespecial 231	com/tencent/mm/ui/widget/WXActionMenuView:b	(Landroid/app/Activity;Landroid/view/MenuItem;Lcom/tencent/mm/ui/widget/WXActionMenuView$a;Lcom/tencent/mm/ui/widget/WXActionMenuView$b;)V
     //   186: aload 11
     //   188: new 8	com/tencent/mm/ui/widget/WXActionMenuView$1
     //   191: dup
@@ -214,62 +216,62 @@ public class WXActionMenuView
     //   196: aload_3
     //   197: aload_0
     //   198: aload_1
-    //   199: invokespecial 291	com/tencent/mm/ui/widget/WXActionMenuView$1:<init>	(ZLcom/tencent/mm/ui/tools/t$a;Lcom/tencent/mm/ui/widget/WXActionMenuView$b;Landroid/app/Activity;Landroid/view/MenuItem;)V
+    //   199: invokespecial 300	com/tencent/mm/ui/widget/WXActionMenuView$1:<init>	(ZLcom/tencent/mm/ui/tools/s$a;Lcom/tencent/mm/ui/widget/WXActionMenuView$b;Landroid/app/Activity;Landroid/view/MenuItem;)V
     //   202: invokevirtual 135	com/tencent/mm/ui/widget/WXActionMenuView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   205: aload 10
-    //   207: getstatic 294	com/tencent/mm/ah/a$g:menu_search	I
+    //   207: getstatic 303	com/tencent/mm/ah/a$g:menu_search	I
     //   210: aload_1
-    //   211: invokevirtual 297	android/view/View:setTag	(ILjava/lang/Object;)V
+    //   211: invokevirtual 306	android/view/View:setTag	(ILjava/lang/Object;)V
     //   214: aload_1
-    //   215: invokeinterface 301 1 0
+    //   215: invokeinterface 310 1 0
     //   220: ifnonnull +10 -> 230
     //   223: aload 10
     //   225: bipush 8
-    //   227: invokevirtual 304	android/view/View:setVisibility	(I)V
-    //   230: ldc 230
-    //   232: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   227: invokevirtual 313	android/view/View:setVisibility	(I)V
+    //   230: ldc 239
+    //   232: invokestatic 191	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   235: aload 10
     //   237: areturn
     //   238: iconst_0
     //   239: istore 6
     //   241: goto -136 -> 105
     //   244: aload_1
-    //   245: invokeinterface 195 1 0
+    //   245: invokeinterface 204 1 0
     //   250: ifnull +74 -> 324
     //   253: ldc 116
-    //   255: ldc_w 306
-    //   258: invokestatic 200	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   255: ldc_w 315
+    //   258: invokestatic 209	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   261: aload_1
-    //   262: invokeinterface 195 1 0
-    //   267: invokevirtual 204	android/view/View:getParent	()Landroid/view/ViewParent;
-    //   270: instanceof 206
+    //   262: invokeinterface 204 1 0
+    //   267: invokevirtual 213	android/view/View:getParent	()Landroid/view/ViewParent;
+    //   270: instanceof 215
     //   273: ifeq +24 -> 297
     //   276: aload_1
-    //   277: invokeinterface 195 1 0
-    //   282: invokevirtual 204	android/view/View:getParent	()Landroid/view/ViewParent;
-    //   285: checkcast 206	android/view/ViewGroup
+    //   277: invokeinterface 204 1 0
+    //   282: invokevirtual 213	android/view/View:getParent	()Landroid/view/ViewParent;
+    //   285: checkcast 215	android/view/ViewGroup
     //   288: aload_1
-    //   289: invokeinterface 195 1 0
-    //   294: invokevirtual 210	android/view/ViewGroup:removeView	(Landroid/view/View;)V
+    //   289: invokeinterface 204 1 0
+    //   294: invokevirtual 219	android/view/ViewGroup:removeView	(Landroid/view/View;)V
     //   297: aload_1
-    //   298: invokeinterface 195 1 0
-    //   303: getstatic 294	com/tencent/mm/ah/a$g:menu_search	I
+    //   298: invokeinterface 204 1 0
+    //   303: getstatic 303	com/tencent/mm/ah/a$g:menu_search	I
     //   306: aload_1
-    //   307: invokevirtual 297	android/view/View:setTag	(ILjava/lang/Object;)V
+    //   307: invokevirtual 306	android/view/View:setTag	(ILjava/lang/Object;)V
     //   310: aload_1
-    //   311: invokeinterface 195 1 0
+    //   311: invokeinterface 204 1 0
     //   316: astore_0
-    //   317: ldc 230
-    //   319: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   317: ldc 239
+    //   319: invokestatic 191	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   322: aload_0
     //   323: areturn
     //   324: new 159	android/view/View
     //   327: dup
     //   328: aload_0
-    //   329: invokespecial 309	android/view/View:<init>	(Landroid/content/Context;)V
+    //   329: invokespecial 318	android/view/View:<init>	(Landroid/content/Context;)V
     //   332: astore_0
-    //   333: ldc 230
-    //   335: invokestatic 182	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   333: ldc 239
+    //   335: invokestatic 191	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   338: aload_0
     //   339: areturn
     //   340: astore 10
@@ -284,7 +286,7 @@ public class WXActionMenuView
     //   0	353	1	paramMenuItem	MenuItem
     //   0	353	2	parama	a
     //   0	353	3	paramb	b
-    //   0	353	4	paramw	com.tencent.mm.ui.w
+    //   0	353	4	paramy	com.tencent.mm.ui.y
     //   34	310	5	i	int
     //   103	137	6	bool1	boolean
     //   75	118	7	bool2	boolean
@@ -302,25 +304,25 @@ public class WXActionMenuView
   
   private void b(Activity paramActivity, MenuItem paramMenuItem, a parama, b paramb)
   {
-    AppMethodBeat.i(192511);
+    AppMethodBeat.i(251762);
     this.mActivity = paramActivity;
-    this.Yei = paramb;
-    this.Yej = parama;
+    this.afWb = paramb;
+    this.afWc = parama;
     Log.i("MicroMsg.WXActionMenuView", "buildMMActionMenuView, menuCustomParam: %s.", new Object[] { parama });
-    j(paramMenuItem);
-    iac();
-    AppMethodBeat.o(192511);
+    m(paramMenuItem);
+    jFj();
+    AppMethodBeat.o(251762);
   }
   
   private int getShowAsAction()
   {
-    AppMethodBeat.i(192498);
+    AppMethodBeat.i(251757);
     try
     {
-      Field localField = this.Yeh.getClass().getDeclaredField("mShowAsAction");
+      Field localField = this.afWa.getClass().getDeclaredField("mShowAsAction");
       localField.setAccessible(true);
-      i = ((Integer)localField.get(this.Yeh)).intValue();
-      AppMethodBeat.o(192498);
+      i = ((Integer)localField.get(this.afWa)).intValue();
+      AppMethodBeat.o(251757);
       return i;
     }
     catch (Exception localException)
@@ -332,119 +334,119 @@ public class WXActionMenuView
     }
   }
   
-  private void iac()
+  private void jFj()
   {
-    AppMethodBeat.i(192507);
-    if (this.Yeh == null)
+    AppMethodBeat.i(251761);
+    if (this.afWa == null)
     {
       Log.i("MicroMsg.WXActionMenuView", "adapterMenuShowAsAction, mItemData is null");
-      AppMethodBeat.o(192507);
+      AppMethodBeat.o(251761);
       return;
     }
-    if (this.Yeg != null) {
-      this.Yeg.setVisibility(0);
+    if (this.afVZ != null) {
+      this.afVZ.setVisibility(0);
     }
     int i = getShowAsAction();
     Log.i("MicroMsg.WXActionMenuView", "adapterMenuShowAsAction, showAsAction: %s.", new Object[] { Integer.valueOf(i) });
     if (((i & 0x2) == 2) || ((i & 0x1) == 1) || ((i & 0x8) == 8))
     {
-      if ((this.Yeh.getIcon() != null) && (this.Yef != null))
+      if ((this.afWa.getIcon() != null) && (this.afVY != null))
       {
-        this.Yef.setVisibility(0);
-        if (this.Yee != null) {
-          this.Yee.setVisibility(8);
+        this.afVY.setVisibility(0);
+        if (this.afVX != null) {
+          this.afVX.setVisibility(8);
         }
         Log.i("MicroMsg.WXActionMenuView", "adapterMenuShowAsAction is menuTitle gone, menuIcon show.");
-        AppMethodBeat.o(192507);
+        AppMethodBeat.o(251761);
         return;
       }
-      if ((this.Yeh.getTitle() != null) && (this.Yee != null))
+      if ((this.afWa.getTitle() != null) && (this.afVX != null))
       {
-        this.Yee.setVisibility(0);
-        if (this.Yef != null) {
-          this.Yef.setVisibility(8);
+        this.afVX.setVisibility(0);
+        if (this.afVY != null) {
+          this.afVY.setVisibility(8);
         }
         Log.i("MicroMsg.WXActionMenuView", "adapterMenuShowAsAction is menuTitle show, menuIcon gone.");
-        AppMethodBeat.o(192507);
+        AppMethodBeat.o(251761);
         return;
       }
-      if (this.Yef != null) {
-        this.Yef.setVisibility(8);
+      if (this.afVY != null) {
+        this.afVY.setVisibility(8);
       }
-      if (this.Yee != null) {
-        this.Yee.setVisibility(8);
+      if (this.afVX != null) {
+        this.afVX.setVisibility(8);
       }
-      if (this.Yeg != null) {
-        this.Yeg.setVisibility(8);
+      if (this.afVZ != null) {
+        this.afVZ.setVisibility(8);
       }
       Log.i("MicroMsg.WXActionMenuView", "adapterMenuShowAsAction is all gone");
-      AppMethodBeat.o(192507);
+      AppMethodBeat.o(251761);
       return;
     }
     if (((i & 0x4) == 4) || ((i & 0x0) == 0))
     {
-      if (this.Yef != null) {
-        this.Yef.setVisibility(8);
+      if (this.afVY != null) {
+        this.afVY.setVisibility(8);
       }
-      if ((this.Yeh.getTitle() != null) && (this.Yee != null))
+      if ((this.afWa.getTitle() != null) && (this.afVX != null))
       {
-        this.Yee.setVisibility(0);
-        if (this.Yef != null) {
-          this.Yef.setVisibility(8);
+        this.afVX.setVisibility(0);
+        if (this.afVY != null) {
+          this.afVY.setVisibility(8);
         }
       }
       Log.i("MicroMsg.WXActionMenuView", "adapterMenuShowAsAction is menuTitle show, menuIcon gone.");
-      AppMethodBeat.o(192507);
+      AppMethodBeat.o(251761);
       return;
     }
-    if ((this.Yeh.getIcon() != null) && (this.Yef != null))
+    if ((this.afWa.getIcon() != null) && (this.afVY != null))
     {
-      this.Yef.setVisibility(0);
-      if (this.Yee != null) {
-        this.Yee.setVisibility(8);
+      this.afVY.setVisibility(0);
+      if (this.afVX != null) {
+        this.afVX.setVisibility(8);
       }
       Log.i("MicroMsg.WXActionMenuView", "adapterMenuShowAsAction is menuTitle gone, menuIcon show.");
-      AppMethodBeat.o(192507);
+      AppMethodBeat.o(251761);
       return;
     }
-    if ((this.Yeh.getTitle() != null) && (this.Yee != null))
+    if ((this.afWa.getTitle() != null) && (this.afVX != null))
     {
-      this.Yee.setVisibility(0);
-      if (this.Yef != null) {
-        this.Yef.setVisibility(8);
+      this.afVX.setVisibility(0);
+      if (this.afVY != null) {
+        this.afVY.setVisibility(8);
       }
       Log.i("MicroMsg.WXActionMenuView", "adapterMenuShowAsAction is menuTitle show, menuIcon gone.");
-      AppMethodBeat.o(192507);
+      AppMethodBeat.o(251761);
       return;
     }
-    if (this.Yef != null) {
-      this.Yef.setVisibility(8);
+    if (this.afVY != null) {
+      this.afVY.setVisibility(8);
     }
-    if (this.Yee != null) {
-      this.Yee.setVisibility(8);
+    if (this.afVX != null) {
+      this.afVX.setVisibility(8);
     }
-    if (this.Yeg != null) {
-      this.Yeg.setVisibility(8);
+    if (this.afVZ != null) {
+      this.afVZ.setVisibility(8);
     }
     Log.i("MicroMsg.WXActionMenuView", "adapterMenuShowAsAction is all gone");
-    AppMethodBeat.o(192507);
+    AppMethodBeat.o(251761);
   }
   
-  private void j(MenuItem paramMenuItem)
+  private void m(MenuItem paramMenuItem)
   {
     int i = 0;
-    AppMethodBeat.i(192464);
+    AppMethodBeat.i(251749);
     Log.i("MicroMsg.WXActionMenuView", "initialize : itemData: %s.", new Object[] { paramMenuItem });
-    this.Yeh = paramMenuItem;
-    this.ll = ((int)(this.Yej.Yep * this.mDensity + 0.5F));
-    setMenuBackgroundColor(this.Yej.backgroundColor);
-    setMenuBackgroundDrawble(this.Yej.backgroundDrawable);
-    setMenuTitleTextColor(this.Yej.Yen);
-    setMenuTitleTextSize(this.Yej.Yeo);
-    int j = this.Yej.Yet;
-    int k = this.Yej.Yeu;
-    if ((this.Yeg != null) && (j > 0) && (k > 0)) {
-      this.Yef.setLayoutParams(new ViewGroup.LayoutParams(j, k));
+    this.afWa = paramMenuItem;
+    this.mh = ((int)(this.afWc.afWi * this.mDensity + 0.5F));
+    setMenuBackgroundColor(this.afWc.backgroundColor);
+    setMenuBackgroundDrawble(this.afWc.backgroundDrawable);
+    setMenuTitleTextColor(this.afWc.afWg);
+    setMenuTitleTextSize(this.afWc.afWh);
+    int j = this.afWc.afWm;
+    int k = this.afWc.afWn;
+    if ((this.afVZ != null) && (j > 0) && (k > 0)) {
+      this.afVY.setLayoutParams(new ViewGroup.LayoutParams(j, k));
     }
     setIcon(paramMenuItem.getIcon());
     setTitle(paramMenuItem.getTitle());
@@ -455,7 +457,7 @@ public class WXActionMenuView
       setVisibility(i);
       setEnabled(paramMenuItem.isEnabled());
       paramMenuItem.hasSubMenu();
-      AppMethodBeat.o(192464);
+      AppMethodBeat.o(251749);
       return;
       i = 8;
     }
@@ -463,39 +465,39 @@ public class WXActionMenuView
   
   private void setMenuBackgroundColor(int paramInt)
   {
-    AppMethodBeat.i(192468);
-    if (this.Yeg != null) {
-      this.Yeg.setBackgroundColor(paramInt);
+    AppMethodBeat.i(251750);
+    if (this.afVZ != null) {
+      this.afVZ.setBackgroundColor(paramInt);
     }
-    AppMethodBeat.o(192468);
+    AppMethodBeat.o(251750);
   }
   
   private void setMenuBackgroundDrawble(Drawable paramDrawable)
   {
-    AppMethodBeat.i(192469);
-    if ((this.Yeg != null) && (paramDrawable != null)) {
-      this.Yeg.setBackgroundDrawable(paramDrawable);
+    AppMethodBeat.i(251751);
+    if ((this.afVZ != null) && (paramDrawable != null)) {
+      this.afVZ.setBackgroundDrawable(paramDrawable);
     }
-    AppMethodBeat.o(192469);
+    AppMethodBeat.o(251751);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(192455);
+    AppMethodBeat.i(251763);
     b localb = new b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/WXActionMenuView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if ((paramView == this.Yeg) && (this.Yei != null)) {
-      this.Yei.b(this.mActivity, this.Yeh);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/WXActionMenuView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if ((paramView == this.afVZ) && (this.afWb != null)) {
+      this.afWb.b(this.mActivity, this.afWa);
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/WXActionMenuView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(192455);
+    AppMethodBeat.o(251763);
   }
   
   public void setIcon(Drawable paramDrawable)
   {
-    AppMethodBeat.i(192473);
-    this.eK = paramDrawable;
+    AppMethodBeat.i(251768);
+    this.fM = paramDrawable;
     if (paramDrawable != null)
     {
       int m = paramDrawable.getIntrinsicWidth();
@@ -503,127 +505,126 @@ public class WXActionMenuView
       int j = k;
       int i = m;
       float f;
-      if (m > this.ll)
+      if (m > this.mh)
       {
-        f = this.ll / m;
-        i = this.ll;
+        f = this.mh / m;
+        i = this.mh;
         j = (int)(k * f);
       }
       m = j;
       k = i;
-      if (j > this.ll)
+      if (j > this.mh)
       {
-        f = this.ll / j;
-        m = this.ll;
+        f = this.mh / j;
+        m = this.mh;
         k = (int)(i * f);
       }
       paramDrawable.setBounds(0, 0, k, m);
     }
     setMenuIcon(paramDrawable);
-    AppMethodBeat.o(192473);
+    AppMethodBeat.o(251768);
   }
   
   public void setMenuIcon(Drawable paramDrawable)
   {
-    AppMethodBeat.i(192483);
-    if (this.Yef != null)
-    {
-      this.Yef.setImageDrawable(paramDrawable);
-      if (!Util.isNullOrNil(this.cZ)) {
-        this.Yef.setContentDescription(this.cZ);
-      }
+    AppMethodBeat.i(251781);
+    if (this.afVY != null) {
+      this.afVY.setImageDrawable(paramDrawable);
     }
-    AppMethodBeat.o(192483);
+    AppMethodBeat.o(251781);
   }
   
   public void setMenuTitleText(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(192481);
-    if (this.Yee != null)
+    AppMethodBeat.i(251779);
+    if (this.afVX != null)
     {
-      this.Yee.setText(paramCharSequence);
-      this.Yee.setContentDescription(paramCharSequence);
+      this.afVX.setText(paramCharSequence);
+      this.afVX.setContentDescription(paramCharSequence);
     }
-    AppMethodBeat.o(192481);
+    if ((!Util.isNullOrNil(paramCharSequence)) && (!Util.isNullOrNil(paramCharSequence.toString())) && (!paramCharSequence.toString().contains(getContext().getResources().getString(a.k.common_btn)))) {
+      this.afVY.setContentDescription(paramCharSequence + getContext().getResources().getString(a.k.common_btn));
+    }
+    AppMethodBeat.o(251779);
   }
   
   public void setMenuTitleTextColor(int paramInt)
   {
-    AppMethodBeat.i(192479);
-    if ((this.Yee != null) && (paramInt > 0)) {
-      this.Yee.setTextColor(paramInt);
+    AppMethodBeat.i(251775);
+    if ((this.afVX != null) && (paramInt > 0)) {
+      this.afVX.setTextColor(paramInt);
     }
-    AppMethodBeat.o(192479);
+    AppMethodBeat.o(251775);
   }
   
   public void setMenuTitleTextSize(float paramFloat)
   {
-    AppMethodBeat.i(192475);
-    if ((this.Yee != null) && (paramFloat > 0.0F)) {
-      this.Yee.setTextSize(paramFloat);
+    AppMethodBeat.i(251772);
+    if ((this.afVX != null) && (paramFloat > 0.0F)) {
+      this.afVX.setTextSize(paramFloat);
     }
-    AppMethodBeat.o(192475);
+    AppMethodBeat.o(251772);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(192474);
+    AppMethodBeat.i(251770);
     this.cZ = paramCharSequence;
     setMenuTitleText(this.cZ);
-    AppMethodBeat.o(192474);
+    AppMethodBeat.o(251770);
   }
   
   public static final class a
   {
-    public int VQW;
-    public int Yen = -1;
-    public float Yeo = -1.0F;
-    public int Yep = 32;
-    public int Yeq = 4;
-    public boolean Yer = true;
-    public boolean Yes = false;
-    public int Yet = -1;
-    public int Yeu = -1;
-    public String Yev = "";
-    public Drawable Yew;
+    public int adve;
+    public int afWg = -1;
+    public float afWh = -1.0F;
+    public int afWi = 32;
+    public int afWj = 4;
+    public boolean afWk = true;
+    public boolean afWl = false;
+    public int afWm = -1;
+    public int afWn = -1;
+    public String afWo = "";
+    public Drawable afWp;
     public int backgroundColor;
     public Drawable backgroundDrawable;
-    boolean rED = false;
+    boolean uPP = false;
     
     public final String toString()
     {
-      AppMethodBeat.i(193012);
-      String str = "MenuCustomParam{menuTextColor=" + this.Yen + ", menuTextSize=" + this.Yeo + ", maxIconSize=" + this.Yep + ", maxMenuSize=" + this.Yeq + ", needTitleCenterMode=" + this.Yer + ", useOrginalSysMode=" + this.Yes + ", normalActionbarHeight=" + this.VQW + ", previewIconWidth=" + this.Yet + ", previewIconHeight=" + this.Yeu + ", menuText='" + this.Yev + '\'' + ", iconDrawabled=" + this.Yew + ", hide=" + this.rED + ", backgroundColor=" + this.backgroundColor + ", backgroundDrawable=" + this.backgroundDrawable + '}';
-      AppMethodBeat.o(193012);
+      AppMethodBeat.i(251630);
+      String str = "MenuCustomParam{menuTextColor=" + this.afWg + ", menuTextSize=" + this.afWh + ", maxIconSize=" + this.afWi + ", maxMenuSize=" + this.afWj + ", needTitleCenterMode=" + this.afWk + ", useOrginalSysMode=" + this.afWl + ", normalActionbarHeight=" + this.adve + ", previewIconWidth=" + this.afWm + ", previewIconHeight=" + this.afWn + ", menuText='" + this.afWo + '\'' + ", iconDrawabled=" + this.afWp + ", hide=" + this.uPP + ", backgroundColor=" + this.backgroundColor + ", backgroundDrawable=" + this.backgroundDrawable + '}';
+      AppMethodBeat.o(251630);
       return str;
     }
     
     public static final class a
     {
-      public static WXActionMenuView.a Yex;
+      public static WXActionMenuView.a afWq;
       
       public a()
       {
-        AppMethodBeat.i(222037);
-        Yex = new WXActionMenuView.a();
-        AppMethodBeat.o(222037);
+        AppMethodBeat.i(251525);
+        afWq = new WXActionMenuView.a();
+        AppMethodBeat.o(251525);
       }
       
-      public final a Hq(boolean paramBoolean)
+      public final a Nm(boolean paramBoolean)
       {
-        Yex.Yer = paramBoolean;
+        afWq.afWk = paramBoolean;
         return this;
       }
       
-      public final a Hr(boolean paramBoolean)
+      public final a Nn(boolean paramBoolean)
       {
-        Yex.Yes = paramBoolean;
+        afWq.afWl = paramBoolean;
         return this;
       }
       
-      public final a axF(int paramInt)
+      public final a aEo(int paramInt)
       {
-        Yex.VQW = paramInt;
+        afWq.adve = paramInt;
         return this;
       }
     }
@@ -636,7 +637,7 @@ public class WXActionMenuView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.WXActionMenuView
  * JD-Core Version:    0.7.0.1
  */

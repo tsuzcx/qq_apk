@@ -10,12 +10,12 @@ import java.lang.reflect.Method;
 
 final class h
 {
-  static Method aqN;
-  static boolean aqO;
+  static Method cfw;
+  static boolean cfx;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     androidx.transition.h
  * JD-Core Version:    0.7.0.1
  */

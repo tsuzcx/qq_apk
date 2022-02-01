@@ -7,9 +7,9 @@ import com.tencent.mm.picker.base.a.b;
 public class c
   implements b<Integer>
 {
-  private int mAX;
-  private int mAY;
-  private a mAZ;
+  private int pxH;
+  private int pxI;
+  private a pxJ;
   
   public c(int paramInt1, int paramInt2)
   {
@@ -28,49 +28,49 @@ public class c
   private void a(int paramInt1, int paramInt2, a parama)
   {
     AppMethodBeat.i(175290);
-    this.mAZ = parama;
-    if (this.mAZ == null) {
-      this.mAZ = new a();
+    this.pxJ = parama;
+    if (this.pxJ == null) {
+      this.pxJ = new a();
     }
-    this.mAX = paramInt1;
-    this.mAY = paramInt2;
+    this.pxH = paramInt1;
+    this.pxI = paramInt2;
     AppMethodBeat.o(175290);
   }
   
   public int getItemsCount()
   {
-    return this.mAY - this.mAX + 1;
+    return this.pxI - this.pxH + 1;
   }
   
   public int getMaxValue()
   {
-    return this.mAY;
+    return this.pxI;
   }
   
   public int getMinValue()
   {
-    return this.mAX;
+    return this.pxH;
   }
   
-  public String xI(int paramInt)
+  public String xN(int paramInt)
   {
     AppMethodBeat.i(175293);
-    Object localObject = xJ(paramInt);
+    Object localObject = xO(paramInt);
     if (localObject == null) {}
     for (localObject = "";; localObject = ((Integer)localObject).toString())
     {
-      localObject = this.mAZ.ZH((String)localObject);
+      localObject = this.pxJ.RX((String)localObject);
       AppMethodBeat.o(175293);
       return localObject;
     }
   }
   
-  public Integer xJ(int paramInt)
+  public Integer xO(int paramInt)
   {
     AppMethodBeat.i(175292);
     if ((paramInt >= 0) && (paramInt < getItemsCount()))
     {
-      int i = this.mAX;
+      int i = this.pxH;
       AppMethodBeat.o(175292);
       return Integer.valueOf(i + paramInt);
     }
@@ -83,7 +83,7 @@ public class c
   {
     a() {}
     
-    public final String ZH(String paramString)
+    public final String RX(String paramString)
     {
       return paramString;
     }
@@ -91,7 +91,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.picker.a.c
  * JD-Core Version:    0.7.0.1
  */

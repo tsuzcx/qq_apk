@@ -1,67 +1,39 @@
 package com.tencent.mm.plugin.fts.a.a;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.storage.sql.Column;
+import com.tencent.mm.sdk.storage.sql.SingleTable;
 
-public abstract class a
-  implements Comparable<a>
+public final class a
 {
-  public long BHK = 0L;
-  public long BHL = 0L;
-  public List<a> BHM;
-  public Object BHN;
-  public boolean mCancelled = false;
-  public int mPriority = 2147483647;
+  public static final Column Hsp;
+  public static final Column Hsq;
+  public static final Column Hsr;
+  public static final Column ROWID;
+  public static final Column SUBTYPE;
+  public static final SingleTable TABLE;
+  public static final Column TYPE;
+  public static final Column jIz;
+  public static final Column kkd;
   
-  public abstract boolean aEv();
-  
-  protected final void aHR(String paramString)
+  static
   {
-    if (this.BHM == null) {
-      this.BHM = new ArrayList();
-    }
-    a locala = new a();
-    locala.BHO = paramString;
-    locala.timestamp = System.currentTimeMillis();
-    this.BHM.add(locala);
-  }
-  
-  public String bOl()
-  {
-    return "";
-  }
-  
-  public int getId()
-  {
-    return -1;
-  }
-  
-  public String getName()
-  {
-    return "";
-  }
-  
-  public int getPriority()
-  {
-    return this.mPriority;
-  }
-  
-  public boolean isCancelled()
-  {
-    return this.mCancelled;
-  }
-  
-  public final class a
-  {
-    public String BHO;
-    public long timestamp;
-    
-    public a() {}
+    AppMethodBeat.i(265529);
+    TABLE = new SingleTable("FTS5MetaChatroomMember");
+    ROWID = new Column("rowid", "long", TABLE.getName(), "");
+    Hsp = new Column("docid", "int", TABLE.getName(), "");
+    TYPE = new Column("type", "int", TABLE.getName(), "");
+    SUBTYPE = new Column("subtype", "int", TABLE.getName(), "");
+    Hsq = new Column("entity_id", "long", TABLE.getName(), "");
+    Hsr = new Column("aux_index", "string", TABLE.getName(), "");
+    kkd = new Column("timestamp", "long", TABLE.getName(), "");
+    jIz = new Column("status", "int", TABLE.getName(), "");
+    AppMethodBeat.o(265529);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.a
  * JD-Core Version:    0.7.0.1
  */

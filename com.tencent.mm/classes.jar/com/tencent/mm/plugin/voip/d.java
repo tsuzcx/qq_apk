@@ -1,23 +1,17 @@
 package com.tencent.mm.plugin.voip;
 
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.n.a;
 
 public final class d
-  implements n
 {
-  public static m mIG;
-  public static l mIH;
-  
-  public final void a(l paraml)
+  public static boolean kw(Context paramContext)
   {
-    mIH = paraml;
-  }
-  
-  public final void a(m paramm)
-  {
-    mIG = paramm;
+    AppMethodBeat.i(369824);
+    boolean bool = a.p(paramContext, true);
+    AppMethodBeat.o(369824);
+    return bool;
   }
 }
 

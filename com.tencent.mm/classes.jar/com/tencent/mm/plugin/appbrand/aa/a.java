@@ -1,70 +1,55 @@
 package com.tencent.mm.plugin.appbrand.aa;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.autogen.b.bd;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.service.f;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.by.a;
 
 public final class a
+  implements by.a
 {
-  private final Map<String, List<Object>> pew;
-  
-  private a()
+  public final void a(bb parambb, by paramby)
   {
-    AppMethodBeat.i(140790);
-    this.pew = new HashMap();
-    AppMethodBeat.o(140790);
-  }
-  
-  private void amS(String paramString)
-  {
-    AppMethodBeat.i(242980);
-    paramString = (List)this.pew.get(paramString);
-    if (paramString == null)
+    AppMethodBeat.i(48310);
+    if ((parambb != null) && (!Util.isNullOrNil(parambb.field_username)))
     {
-      AppMethodBeat.o(242980);
-      return;
+      paramby = parambb.field_username;
+      au localau = ((n)h.ax(n.class)).bzA().JE(paramby);
+      if ((localau == null) || ((int)localau.maN == 0))
+      {
+        Log.e("MicroMsg.AppBrandConversionExtension", "contact is null or contactId is 0 for %s", new Object[] { paramby });
+        AppMethodBeat.o(48310);
+        return;
+      }
+      if ((au.Hh(paramby)) && (!au.bwc(paramby)))
+      {
+        Log.i("MicroMsg.AppBrandConversionExtension", "this conversation is a app brand contact!");
+        parambb.BH("appbrandcustomerservicemsg");
+        ((f)h.ax(f.class)).e(parambb);
+        AppMethodBeat.o(48310);
+        return;
+      }
+      if (au.bwy(paramby))
+      {
+        Log.i("MicroMsg.AppBrandConversionExtension", "appBrandSuperConv is created");
+        parambb.BH(null);
+      }
     }
-    int i = 0;
-    while (i < paramString.size())
-    {
-      paramString.get(i);
-      i += 1;
-    }
-    AppMethodBeat.o(242980);
-  }
-  
-  public final void L(String paramString1, final String paramString2, final String paramString3)
-  {
-    AppMethodBeat.i(140792);
-    new Object() {};
-    amS(paramString1);
-    AppMethodBeat.o(140792);
-  }
-  
-  public final void a(String paramString1, final String paramString2, final b.b paramb)
-  {
-    AppMethodBeat.i(140791);
-    new Object() {};
-    amS(paramString1);
-    AppMethodBeat.o(140791);
-  }
-  
-  static final class a
-  {
-    private static final a qQB;
-    
-    static
-    {
-      AppMethodBeat.i(140789);
-      qQB = new a((byte)0);
-      AppMethodBeat.o(140789);
-    }
+    AppMethodBeat.o(48310);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.a
  * JD-Core Version:    0.7.0.1
  */

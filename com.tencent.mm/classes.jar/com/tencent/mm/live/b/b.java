@@ -1,93 +1,237 @@
 package com.tencent.mm.live.b;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/ApplyLiveMicInfo;", "", "liveId", "", "micId", "", "uid", "roomId", "sdkUid", "(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getLiveId", "()J", "getMicId", "()Ljava/lang/String;", "getRoomId", "getSdkUid", "getUid", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-logic_release"})
-public final class b
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/plugin/ILiveStatus;", "", "getLiveRole", "", "getPluginSize", "isLiving", "", "registerPlugin", "", "plugin", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "Companion", "LiveStatus", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface b
 {
-  public final String ktE;
-  public final String ktM;
-  public final String ktN;
-  public final long liveId;
-  public final String roomId;
+  public static final b.a nca = b.a.ncb;
   
-  public b(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    this.liveId = paramLong;
-    this.ktE = paramString1;
-    this.ktM = paramString2;
-    this.roomId = paramString3;
-    this.ktN = paramString4;
-  }
+  public abstract int getLiveRole();
   
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(197488);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof b))
-      {
-        paramObject = (b)paramObject;
-        if ((this.liveId != paramObject.liveId) || (!p.h(this.ktE, paramObject.ktE)) || (!p.h(this.ktM, paramObject.ktM)) || (!p.h(this.roomId, paramObject.roomId)) || (!p.h(this.ktN, paramObject.ktN))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(197488);
-      return true;
-    }
-    AppMethodBeat.o(197488);
-    return false;
-  }
+  public abstract boolean isLiving();
   
-  public final int hashCode()
-  {
-    int m = 0;
-    AppMethodBeat.i(197484);
-    long l = this.liveId;
-    int n = (int)(l ^ l >>> 32);
-    String str = this.ktE;
-    int i;
-    int j;
-    if (str != null)
-    {
-      i = str.hashCode();
-      str = this.ktM;
-      if (str == null) {
-        break label128;
-      }
-      j = str.hashCode();
-      label59:
-      str = this.roomId;
-      if (str == null) {
-        break label133;
-      }
-    }
-    label128:
-    label133:
-    for (int k = str.hashCode();; k = 0)
-    {
-      str = this.ktN;
-      if (str != null) {
-        m = str.hashCode();
-      }
-      AppMethodBeat.o(197484);
-      return (k + (j + (i + n * 31) * 31) * 31) * 31 + m;
-      i = 0;
-      break;
-      j = 0;
-      break label59;
-    }
-  }
+  public abstract void registerPlugin(a parama);
   
-  public final String toString()
+  public abstract void statusChange(c paramc, Bundle paramBundle);
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "", "(Ljava/lang/String;I)V", "UNKNOWN", "START_LIVE_VERIFY", "LIVE_VERIFY_SUCCESS", "START_FACE_VERIFY", "LIVE_FACE_VERIFY_NEED_BIND_BANKCARD", "BEFORE_LIVE", "READY", "START_LIVE", "CLOSE_LIVE", "QUIT_LIVE", "SWITCH_CAMERA", "SHARE_LIVE", "LIVE_START_MIC_CGI", "LIVE_START_MIC_SDK", "LIVE_START_MIC_OTHER", "LIVE_START_MIC_PERMISSION_CLSOE", "LIVE_STOP_MIC", "LIVE_STOP_MIC_CGI", "LIVE_STOP_MIC_OTHER", "SHOW_MEMBERS_LIST", "HIDE_MEMBERS_LIST", "MINI_WINDOW", "MAXI_WINDOW", "MINI_WINDOW_PERMISSION", "MINI_WINDOW_REFUSE", "MINI_WINDOW_DISMISS", "MINI_WINDOW_CANCEL", "LIVE_HAS_FINISHED", "LIVE_CHANGE_FINISHED", "DEBUG_ENTER", "RENDERING", "HIDE_SHARE_LIST", "POST_LIKE", "POST_MSG", "POST_BOX_MSG", "CLICK_FOLLOW", "REWARD", "SHOW_FOLLOW", "EXPOSE_LIVE", "ENTERING_COMMENT", "LIVE_STATUS_KICK_MEMBER", "LIVE_STATUS_EXPOSE_MEMBER", "LIVE_STATUS_SWITCH_VIDEO_MIC", "LIVE_STATUS_SWITCH_AUDIO_MIC", "LIVE_STATUS_VIDEO_MIC", "LIVE_STATUS_CLOSE_MEMBER_PROFILE", "LIVE_STATUS_OPEN_MEMBER_PROFILE", "LIVE_STATUS_VISITOR_KICKED", "LIVE_STATUS_VISITOR_PRIVATE_PERMISSION", "LIVE_STATUS_VISITOR_OVERLOAD_LIMITED", "LIVE_STATUS_RECONNECT", "LIVE_STATUS_DISCONNECT", "LIVE_STATUS_CONNECT_SUCC", "LIVE_STATUS_ANCHOR_EXCEPTION", "LIVE_START_LIVE_FAILED", "LIVE_START_LIVE_SUCCESS", "LIVE_READY_CANCEL_COUNTER", "LIVE_STATUS_ANCHOR_RECOVERY", "LIVE_STATUS_EXCEPTION", "LIVE_STATUS_JOIN_LIVE", "LIVE_STATUS_CREATE_LIVE", "LIVE_STATUS_FIRST_I_FRAME", "VISITOR_NOT_BIND_MOBILE", "LIVE_HAPPEN_VOIP_EVENT", "LIVE_ORIENTATION_CHANGE", "LIVE_STATUS_COMMENT_LAYOUT_UPDATE", "LIVE_STATUS_RESOLUTION", "LIVE_MIRROR_ACTION_EVENT", "LIVE_EVENT_SHOW_GIFT_PANEL", "LIVE_EVENT_HIDE_GIFT_PANEL", "LIVE_EVENT_SHOW_FULL_SCREEN_GIFT", "LIVE_EVENT_HIDE_FULL_SCREEN_GIFT", "LIVE_EVENT_GIFT_UPDATE_WECOIN", "LIVE_EVENT_GIFT_SHOW_SEND_BTN", "LIVE_EVENT_GIFT_HIDE_SEND_BTN", "LIVE_EVENT_ANCHOR_STATUS_EXCEPTION", "LIVE_EVENT_ANCHOR_STATUS_RECOVERY", "FINDER_LIVE_MEMBERS_LOADING", "FINDER_LIVE_MEMBERS_AUTO_REFRESH", "FINDER_LIVE_SHOPPING_LIST_SHOW", "FINDER_LIVE_SHOPPING_LIST_HIDE", "FINDER_LIVE_SHOPPING_REFRESH", "FINDER_LIVE_SHOPPING_SHOW_CAN_USE_COUPON_ITEM_LIST", "FINDER_LIVE_SHOPPING_LIST_UPDATE", "FINDER_LIVE_SHOPPING_UPDATE_PROMOTING_COUPON", "FINDER_LIVE_ANCHOR_MUSIC_SHOW", "FINDER_LIVE_ANCHOR_MUSIC_HIDE", "FINDER_LIVE_ANCHOR_PROMOTE_SHOW", "FINDER_LIVE_ANCHOR_PROMOTE_HIDE", "FINDER_LIVE_ANCHOR_MUSIC_PLAY", "FINDER_LIVE_ANCHOR_SEARCH_MUSIC_SHOW", "FINDER_LIVE_ANCHOR_SEARCH_MUSIC_HIDE", "FINDER_LIVE_PROMTE_ADD", "FINDER_LIVE_PROMTE_REPLACE", "FINDER_LIVE_PROMTE_DEL", "FINDER_LIVE_COMMENT_MOVE", "FINDER_LIVE_FACE_VERIFY", "FINDER_LIVE_FORCE_QUIT", "FINDER_LIVE_UPDATE_LIVE_MSG", "FINDER_LIVE_UPDATE_GAME_TEAM_CONDITION_MSG", "FINDER_LIVE_AUTO_INPUT_COMMENT", "FINDER_LIVE_COMMENT_REAL_NAME", "FINDER_LIVE_COMMENT_BACKOFF", "FINDER_LIVE_CLEAR_SCREEN", "FINDER_LIVE_IDLE", "FINDER_LIVE_MORE_ACTION_SHOW", "FINDER_LIVE_MORE_ACTION_HIDE", "FINDER_LIVE_STATISTC_EVENT", "FINDER_LIVE_TOP_COMMENNT", "FINDER_LIVE_SHOW_CAMERA_OPT_SHEET", "FINDER_LIVE_HIDE_CAMERA_OPT_SHEET", "FINDER_LIVE_CREATE_ERROR_PAGE", "FINDER_LIVE_CREATE_LOTTERY_SUCCESS", "FINDER_LIVE_CANCEL_LOTTERY_SUCCESS", "FINDER_LIVE_LOTTERY_BUBBLE_SHOW", "FINDER_LIVE_LOTTERY_BUBBLE_HIDE", "FINDER_LIVE_LOTTERY_CARD_SHOW", "FINDER_LIVE_LOTTERY_CARD_HIDE", "FINDER_LIVE_LOTTERY_UPDATE", "FINDER_LIVE_LOTTERY_UPDATE_COUNTDOWN", "FINDER_LIVE_LOTTERY_REQUEST_ATTEND_LOTTERY", "FINDER_LIVE_LIKE_SHAKE", "FINDER_LIVE_LIKE_ENTER_APPLAUD", "FINDER_LIVE_ANCHOR_CAN_APPLAUD", "FINDER_LIVE_SHOW_ALERT_DIALOG", "FINDER_LIVE_POST_HL_LIKE", "FINDER_LIVE_LINK_MIC_VISITOR_REQUEST", "FINDER_LIVE_LINK_MIC_SHOW_APPLY_LIST", "FINDER_LIVE_LINK_MIC_HIDE_APPLY_LIST", "FINDER_LIVE_LINK_MIC_ANCHOR_ACCEPT", "FINDER_LIVE_LINK_MIC_HANGUP_LINK", "FINDER_LIVE_LINK_MIC_ADD_BOTTOM_BAR", "FINDER_LIVE_LINK_MIC_REMOVE_BOTTOM_BAR", "FINDER_LIVE_LINK_MIC_ANCHOR_SETTING", "FINDER_LIVE_LINK_MIC_SHOW_APPLY_LICENSE", "FINDER_LIVE_LINK_MIC_HIDE_APPLY_LICENSE", "FINDER_LIVE_LINK_MIC_CHECKED", "FINDER_LIVE_LINK_MIC_APPLY_PK", "FINDER_LIVE_LINK_MIC_ACCEPT_PK", "FINDER_LIVE_LINK_MIC_RANDOM_PK", "FINDER_LIVE_RECEIVE_LUCKY_MONEY", "FINDER_LIVE_SHOW_BOTTOM_TIP_PANEL", "FINDER_LIVE_JOIN_LIVE_SUCCESS", "FINDER_LIVE_CAST_SCREEN_SHOW", "FINDER_LIVE_CAST_SCREEN_HIDE", "FINDER_LIVE_PLAYER_SETTING_SHOW", "FINDER_LIVE_MODE_SWITCH", "FINDER_LIVE_MODE_SWITCH_COUNT_DOWN", "FINDER_LIVE_SHOW_MUSIC_PANEL", "FINDER_LIVE_RESTORE_POST_UI", "FINDER_LIVE_MUTE_MIC", "FINDER_LIVE_ANCHOR_PAUSE", "FINDER_LIVE_ANCHOR_PAUSE_RECOVERY", "FINDER_LIVE_ANCHOR_PAUSE_RECOVERY_SHOW", "FINDER_LIVE_BATTLE_RECEIVE_APPLY", "FINDER_LIVE_BATTLE_START", "FINDER_LIVE_BATTLE_END", "FINDER_LIVE_BATTLE_CLOSE", "FINDER_LIVE_LIKE_SWITCH", "FINDER_LIVE_LINK_MIC_APPLY_BATTLE", "FINDER_LIVE_LINK_MIC_ACCEPT_BATTLE", "FINDER_LIVE_LINK_MIC_CANCEL_BATTLE", "FINGER_LIVE_NOTIFY_POST_MSG_RESULT", "FINDER_LIVE_SHOW_GAME_JOIN_GUIDE", "FINDER_LIVE_HIDE_GAME_JOIN_GUIDE", "FINDER_LIVE_SHOW_FOLLOW_GUIDE", "FINDER_LIVE_CLOSE_LIVE_FROM_FOLLOW_GUIDE", "FINDER_LIVE_ANCHOR_VERIFICATION_START", "FINDER_LIVE_ANCHOR_VERIFICATION_END", "FINDER_LIVE_ANCHOR_VERIFICATION_RECOVERY", "FINDER_LIVE_TRIGGER_SHOW_FOLLOW_BTN", "FINDER_LIVE_CLOSE_PROMOTE_BANNER", "FINDER_LIVE_SHOW_DESC_EDIT", "FINDER_LIVE_SET_FAST_COMMENT", "FINDER_LIVE_CLOSE_SWITCH_SUCCESS", "FINDER_LIVE_CLOSE_SWITCH_FAIL", "FINDER_LIVE_PRELOAD_LIVE", "FINDER_LIVE_ANCHOR_FANS_CLUB", "FINDER_LIVE_ALLOWANCE_BUBBLE_PAY_SUCCESS", "FINDER_LIVE_ALLOWANCE_BUBBLE_OPEN_SUCCESS", "FINDER_LIVE_ALLOWANCE_BUBBLE_OPEN_FAILED", "FINDER_LIVE_ALLOWANCE_BUBBLE_OPEN_GUIDE", "FINDER_LIVE_CHARGE_PAY_SUCESS", "FINDER_LIVE_CHARGE_FREE_TIME_OVER", "FINDER_LIVE_TRANSMIT_TO_CHAT_GROUP", "FINDER_LIVE_TRANSMIT_TO_CHAT_GROUP_RESPONSE", "FINDER_LIVE_INIT_OLYMPICS_INFO", "FINDER_LIVE_INIT_OLYMPICS_SPORT_INFO", "FINDER_LIVE_CLEAR_OLYMPIC_SCREEN", "FINDER_LIVE_RECOVER_OLYMPIC_SCREEN", "FINDER_LIVE_SAVE_OLYMPIC_IMAGE", "FINDER_LIVE_OLYMPICS_DANMU_CLICK", "FINDER_LIVE_OLYMPICS_SWITCH_MIN", "FINDER_LIVE_OLYMPICS_SWITCH_NORMAL", "FINDER_LIVE_OLYMPICS_BGM", "FINDER_LIVE_OLYMPICS_VIDEO", "FINDER_LIVE_OLYMPICS_CLOSE_SHOULD_SHOW_GUIDE", "FINDER_LIVE_OLYMPICS_SET_WX_STATE", "FINDER_LIVE_OLYMPICS_CERT_INTERCEP_BUBBLE", "FINDER_LIVE_OLYMPICS_CERT_SHOW_BUBBLE", "FINDER_LIVE_OLYMPICS_CERT_HIDE_BUBBLE", "FINDER_LIVE_INIT_BOX_INFO", "FINDER_LIVE_UPDATE_BOX_INFO", "FINDER_LIVE_SWITCH_BOX", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum c
   {
-    AppMethodBeat.i(197481);
-    String str = "ApplyLiveMicInfo(liveId=" + this.liveId + ", micId=" + this.ktE + ", uid=" + this.ktM + ", roomId=" + this.roomId + ", sdkUid=" + this.ktN + ")";
-    AppMethodBeat.o(197481);
-    return str;
+    static
+    {
+      AppMethodBeat.i(247386);
+      ncc = new c("UNKNOWN", 0);
+      ncd = new c("START_LIVE_VERIFY", 1);
+      nce = new c("LIVE_VERIFY_SUCCESS", 2);
+      ncf = new c("START_FACE_VERIFY", 3);
+      ncg = new c("LIVE_FACE_VERIFY_NEED_BIND_BANKCARD", 4);
+      nch = new c("BEFORE_LIVE", 5);
+      nci = new c("READY", 6);
+      ncj = new c("START_LIVE", 7);
+      nck = new c("CLOSE_LIVE", 8);
+      ncl = new c("QUIT_LIVE", 9);
+      ncm = new c("SWITCH_CAMERA", 10);
+      ncn = new c("SHARE_LIVE", 11);
+      nco = new c("LIVE_START_MIC_CGI", 12);
+      ncp = new c("LIVE_START_MIC_SDK", 13);
+      ncq = new c("LIVE_START_MIC_OTHER", 14);
+      ncr = new c("LIVE_START_MIC_PERMISSION_CLSOE", 15);
+      ncs = new c("LIVE_STOP_MIC", 16);
+      nct = new c("LIVE_STOP_MIC_CGI", 17);
+      ncu = new c("LIVE_STOP_MIC_OTHER", 18);
+      ncv = new c("SHOW_MEMBERS_LIST", 19);
+      ncw = new c("HIDE_MEMBERS_LIST", 20);
+      ncx = new c("MINI_WINDOW", 21);
+      ncy = new c("MAXI_WINDOW", 22);
+      ncz = new c("MINI_WINDOW_PERMISSION", 23);
+      ncA = new c("MINI_WINDOW_REFUSE", 24);
+      ncB = new c("MINI_WINDOW_DISMISS", 25);
+      ncC = new c("MINI_WINDOW_CANCEL", 26);
+      ncD = new c("LIVE_HAS_FINISHED", 27);
+      ncE = new c("LIVE_CHANGE_FINISHED", 28);
+      ncF = new c("DEBUG_ENTER", 29);
+      ncG = new c("RENDERING", 30);
+      ncH = new c("HIDE_SHARE_LIST", 31);
+      ncI = new c("POST_LIKE", 32);
+      ncJ = new c("POST_MSG", 33);
+      qMb = new c("POST_BOX_MSG", 34);
+      ncK = new c("CLICK_FOLLOW", 35);
+      ncL = new c("REWARD", 36);
+      ncM = new c("SHOW_FOLLOW", 37);
+      ncN = new c("EXPOSE_LIVE", 38);
+      ncO = new c("ENTERING_COMMENT", 39);
+      ncP = new c("LIVE_STATUS_KICK_MEMBER", 40);
+      ncQ = new c("LIVE_STATUS_EXPOSE_MEMBER", 41);
+      ncR = new c("LIVE_STATUS_SWITCH_VIDEO_MIC", 42);
+      ncS = new c("LIVE_STATUS_SWITCH_AUDIO_MIC", 43);
+      ncT = new c("LIVE_STATUS_VIDEO_MIC", 44);
+      ncU = new c("LIVE_STATUS_CLOSE_MEMBER_PROFILE", 45);
+      ncV = new c("LIVE_STATUS_OPEN_MEMBER_PROFILE", 46);
+      ncW = new c("LIVE_STATUS_VISITOR_KICKED", 47);
+      ncX = new c("LIVE_STATUS_VISITOR_PRIVATE_PERMISSION", 48);
+      qMc = new c("LIVE_STATUS_VISITOR_OVERLOAD_LIMITED", 49);
+      ncY = new c("LIVE_STATUS_RECONNECT", 50);
+      ncZ = new c("LIVE_STATUS_DISCONNECT", 51);
+      nda = new c("LIVE_STATUS_CONNECT_SUCC", 52);
+      ndb = new c("LIVE_STATUS_ANCHOR_EXCEPTION", 53);
+      ndc = new c("LIVE_START_LIVE_FAILED", 54);
+      ndd = new c("LIVE_START_LIVE_SUCCESS", 55);
+      nde = new c("LIVE_READY_CANCEL_COUNTER", 56);
+      ndf = new c("LIVE_STATUS_ANCHOR_RECOVERY", 57);
+      ndg = new c("LIVE_STATUS_EXCEPTION", 58);
+      ndh = new c("LIVE_STATUS_JOIN_LIVE", 59);
+      ndi = new c("LIVE_STATUS_CREATE_LIVE", 60);
+      ndj = new c("LIVE_STATUS_FIRST_I_FRAME", 61);
+      ndk = new c("VISITOR_NOT_BIND_MOBILE", 62);
+      ndl = new c("LIVE_HAPPEN_VOIP_EVENT", 63);
+      ndm = new c("LIVE_ORIENTATION_CHANGE", 64);
+      ndn = new c("LIVE_STATUS_COMMENT_LAYOUT_UPDATE", 65);
+      ndo = new c("LIVE_STATUS_RESOLUTION", 66);
+      ndp = new c("LIVE_MIRROR_ACTION_EVENT", 67);
+      ndq = new c("LIVE_EVENT_SHOW_GIFT_PANEL", 68);
+      ndr = new c("LIVE_EVENT_HIDE_GIFT_PANEL", 69);
+      nds = new c("LIVE_EVENT_SHOW_FULL_SCREEN_GIFT", 70);
+      ndt = new c("LIVE_EVENT_HIDE_FULL_SCREEN_GIFT", 71);
+      ndu = new c("LIVE_EVENT_GIFT_UPDATE_WECOIN", 72);
+      ndv = new c("LIVE_EVENT_GIFT_SHOW_SEND_BTN", 73);
+      ndw = new c("LIVE_EVENT_GIFT_HIDE_SEND_BTN", 74);
+      ndx = new c("LIVE_EVENT_ANCHOR_STATUS_EXCEPTION", 75);
+      ndy = new c("LIVE_EVENT_ANCHOR_STATUS_RECOVERY", 76);
+      ndz = new c("FINDER_LIVE_MEMBERS_LOADING", 77);
+      ndA = new c("FINDER_LIVE_MEMBERS_AUTO_REFRESH", 78);
+      ndB = new c("FINDER_LIVE_SHOPPING_LIST_SHOW", 79);
+      ndC = new c("FINDER_LIVE_SHOPPING_LIST_HIDE", 80);
+      ndD = new c("FINDER_LIVE_SHOPPING_REFRESH", 81);
+      ndE = new c("FINDER_LIVE_SHOPPING_SHOW_CAN_USE_COUPON_ITEM_LIST", 82);
+      ndF = new c("FINDER_LIVE_SHOPPING_LIST_UPDATE", 83);
+      ndG = new c("FINDER_LIVE_SHOPPING_UPDATE_PROMOTING_COUPON", 84);
+      ndH = new c("FINDER_LIVE_ANCHOR_MUSIC_SHOW", 85);
+      ndI = new c("FINDER_LIVE_ANCHOR_MUSIC_HIDE", 86);
+      ndJ = new c("FINDER_LIVE_ANCHOR_PROMOTE_SHOW", 87);
+      ndK = new c("FINDER_LIVE_ANCHOR_PROMOTE_HIDE", 88);
+      ndL = new c("FINDER_LIVE_ANCHOR_MUSIC_PLAY", 89);
+      ndM = new c("FINDER_LIVE_ANCHOR_SEARCH_MUSIC_SHOW", 90);
+      ndN = new c("FINDER_LIVE_ANCHOR_SEARCH_MUSIC_HIDE", 91);
+      ndO = new c("FINDER_LIVE_PROMTE_ADD", 92);
+      ndP = new c("FINDER_LIVE_PROMTE_REPLACE", 93);
+      ndQ = new c("FINDER_LIVE_PROMTE_DEL", 94);
+      ndR = new c("FINDER_LIVE_COMMENT_MOVE", 95);
+      ndS = new c("FINDER_LIVE_FACE_VERIFY", 96);
+      ndT = new c("FINDER_LIVE_FORCE_QUIT", 97);
+      ndU = new c("FINDER_LIVE_UPDATE_LIVE_MSG", 98);
+      ndV = new c("FINDER_LIVE_UPDATE_GAME_TEAM_CONDITION_MSG", 99);
+      ndW = new c("FINDER_LIVE_AUTO_INPUT_COMMENT", 100);
+      ndX = new c("FINDER_LIVE_COMMENT_REAL_NAME", 101);
+      ndY = new c("FINDER_LIVE_COMMENT_BACKOFF", 102);
+      ndZ = new c("FINDER_LIVE_CLEAR_SCREEN", 103);
+      nea = new c("FINDER_LIVE_IDLE", 104);
+      neb = new c("FINDER_LIVE_MORE_ACTION_SHOW", 105);
+      nec = new c("FINDER_LIVE_MORE_ACTION_HIDE", 106);
+      ned = new c("FINDER_LIVE_STATISTC_EVENT", 107);
+      nee = new c("FINDER_LIVE_TOP_COMMENNT", 108);
+      nef = new c("FINDER_LIVE_SHOW_CAMERA_OPT_SHEET", 109);
+      neg = new c("FINDER_LIVE_HIDE_CAMERA_OPT_SHEET", 110);
+      neh = new c("FINDER_LIVE_CREATE_ERROR_PAGE", 111);
+      nei = new c("FINDER_LIVE_CREATE_LOTTERY_SUCCESS", 112);
+      nej = new c("FINDER_LIVE_CANCEL_LOTTERY_SUCCESS", 113);
+      nek = new c("FINDER_LIVE_LOTTERY_BUBBLE_SHOW", 114);
+      nel = new c("FINDER_LIVE_LOTTERY_BUBBLE_HIDE", 115);
+      nem = new c("FINDER_LIVE_LOTTERY_CARD_SHOW", 116);
+      nen = new c("FINDER_LIVE_LOTTERY_CARD_HIDE", 117);
+      neo = new c("FINDER_LIVE_LOTTERY_UPDATE", 118);
+      nep = new c("FINDER_LIVE_LOTTERY_UPDATE_COUNTDOWN", 119);
+      neq = new c("FINDER_LIVE_LOTTERY_REQUEST_ATTEND_LOTTERY", 120);
+      ner = new c("FINDER_LIVE_LIKE_SHAKE", 121);
+      nes = new c("FINDER_LIVE_LIKE_ENTER_APPLAUD", 122);
+      neu = new c("FINDER_LIVE_ANCHOR_CAN_APPLAUD", 123);
+      nev = new c("FINDER_LIVE_SHOW_ALERT_DIALOG", 124);
+      new = new c("FINDER_LIVE_POST_HL_LIKE", 125);
+      nex = new c("FINDER_LIVE_LINK_MIC_VISITOR_REQUEST", 126);
+      ney = new c("FINDER_LIVE_LINK_MIC_SHOW_APPLY_LIST", 127);
+      nez = new c("FINDER_LIVE_LINK_MIC_HIDE_APPLY_LIST", 128);
+      neA = new c("FINDER_LIVE_LINK_MIC_ANCHOR_ACCEPT", 129);
+      neB = new c("FINDER_LIVE_LINK_MIC_HANGUP_LINK", 130);
+      neC = new c("FINDER_LIVE_LINK_MIC_ADD_BOTTOM_BAR", 131);
+      neD = new c("FINDER_LIVE_LINK_MIC_REMOVE_BOTTOM_BAR", 132);
+      neE = new c("FINDER_LIVE_LINK_MIC_ANCHOR_SETTING", 133);
+      neF = new c("FINDER_LIVE_LINK_MIC_SHOW_APPLY_LICENSE", 134);
+      neG = new c("FINDER_LIVE_LINK_MIC_HIDE_APPLY_LICENSE", 135);
+      neH = new c("FINDER_LIVE_LINK_MIC_CHECKED", 136);
+      neI = new c("FINDER_LIVE_LINK_MIC_APPLY_PK", 137);
+      neJ = new c("FINDER_LIVE_LINK_MIC_ACCEPT_PK", 138);
+      neK = new c("FINDER_LIVE_LINK_MIC_RANDOM_PK", 139);
+      neL = new c("FINDER_LIVE_RECEIVE_LUCKY_MONEY", 140);
+      neM = new c("FINDER_LIVE_SHOW_BOTTOM_TIP_PANEL", 141);
+      neN = new c("FINDER_LIVE_JOIN_LIVE_SUCCESS", 142);
+      neO = new c("FINDER_LIVE_CAST_SCREEN_SHOW", 143);
+      neP = new c("FINDER_LIVE_CAST_SCREEN_HIDE", 144);
+      neQ = new c("FINDER_LIVE_PLAYER_SETTING_SHOW", 145);
+      neR = new c("FINDER_LIVE_MODE_SWITCH", 146);
+      neS = new c("FINDER_LIVE_MODE_SWITCH_COUNT_DOWN", 147);
+      neT = new c("FINDER_LIVE_SHOW_MUSIC_PANEL", 148);
+      neU = new c("FINDER_LIVE_RESTORE_POST_UI", 149);
+      neV = new c("FINDER_LIVE_MUTE_MIC", 150);
+      neW = new c("FINDER_LIVE_ANCHOR_PAUSE", 151);
+      neX = new c("FINDER_LIVE_ANCHOR_PAUSE_RECOVERY", 152);
+      neY = new c("FINDER_LIVE_ANCHOR_PAUSE_RECOVERY_SHOW", 153);
+      neZ = new c("FINDER_LIVE_BATTLE_RECEIVE_APPLY", 154);
+      nfa = new c("FINDER_LIVE_BATTLE_START", 155);
+      nfb = new c("FINDER_LIVE_BATTLE_END", 156);
+      nfc = new c("FINDER_LIVE_BATTLE_CLOSE", 157);
+      nfd = new c("FINDER_LIVE_LIKE_SWITCH", 158);
+      nfe = new c("FINDER_LIVE_LINK_MIC_APPLY_BATTLE", 159);
+      nff = new c("FINDER_LIVE_LINK_MIC_ACCEPT_BATTLE", 160);
+      nfg = new c("FINDER_LIVE_LINK_MIC_CANCEL_BATTLE", 161);
+      nfh = new c("FINGER_LIVE_NOTIFY_POST_MSG_RESULT", 162);
+      nfi = new c("FINDER_LIVE_SHOW_GAME_JOIN_GUIDE", 163);
+      nfj = new c("FINDER_LIVE_HIDE_GAME_JOIN_GUIDE", 164);
+      nfk = new c("FINDER_LIVE_SHOW_FOLLOW_GUIDE", 165);
+      nfl = new c("FINDER_LIVE_CLOSE_LIVE_FROM_FOLLOW_GUIDE", 166);
+      nfm = new c("FINDER_LIVE_ANCHOR_VERIFICATION_START", 167);
+      nfn = new c("FINDER_LIVE_ANCHOR_VERIFICATION_END", 168);
+      nfo = new c("FINDER_LIVE_ANCHOR_VERIFICATION_RECOVERY", 169);
+      nfp = new c("FINDER_LIVE_TRIGGER_SHOW_FOLLOW_BTN", 170);
+      nfq = new c("FINDER_LIVE_CLOSE_PROMOTE_BANNER", 171);
+      nfr = new c("FINDER_LIVE_SHOW_DESC_EDIT", 172);
+      nfs = new c("FINDER_LIVE_SET_FAST_COMMENT", 173);
+      nft = new c("FINDER_LIVE_CLOSE_SWITCH_SUCCESS", 174);
+      nfu = new c("FINDER_LIVE_CLOSE_SWITCH_FAIL", 175);
+      nfv = new c("FINDER_LIVE_PRELOAD_LIVE", 176);
+      nfw = new c("FINDER_LIVE_ANCHOR_FANS_CLUB", 177);
+      nfx = new c("FINDER_LIVE_ALLOWANCE_BUBBLE_PAY_SUCCESS", 178);
+      nfy = new c("FINDER_LIVE_ALLOWANCE_BUBBLE_OPEN_SUCCESS", 179);
+      nfz = new c("FINDER_LIVE_ALLOWANCE_BUBBLE_OPEN_FAILED", 180);
+      nfA = new c("FINDER_LIVE_ALLOWANCE_BUBBLE_OPEN_GUIDE", 181);
+      nfB = new c("FINDER_LIVE_CHARGE_PAY_SUCESS", 182);
+      nfC = new c("FINDER_LIVE_CHARGE_FREE_TIME_OVER", 183);
+      qMd = new c("FINDER_LIVE_TRANSMIT_TO_CHAT_GROUP", 184);
+      qMe = new c("FINDER_LIVE_TRANSMIT_TO_CHAT_GROUP_RESPONSE", 185);
+      nfD = new c("FINDER_LIVE_INIT_OLYMPICS_INFO", 186);
+      nfE = new c("FINDER_LIVE_INIT_OLYMPICS_SPORT_INFO", 187);
+      nfF = new c("FINDER_LIVE_CLEAR_OLYMPIC_SCREEN", 188);
+      nfG = new c("FINDER_LIVE_RECOVER_OLYMPIC_SCREEN", 189);
+      nfH = new c("FINDER_LIVE_SAVE_OLYMPIC_IMAGE", 190);
+      nfI = new c("FINDER_LIVE_OLYMPICS_DANMU_CLICK", 191);
+      nfJ = new c("FINDER_LIVE_OLYMPICS_SWITCH_MIN", 192);
+      nfK = new c("FINDER_LIVE_OLYMPICS_SWITCH_NORMAL", 193);
+      nfL = new c("FINDER_LIVE_OLYMPICS_BGM", 194);
+      nfM = new c("FINDER_LIVE_OLYMPICS_VIDEO", 195);
+      nfN = new c("FINDER_LIVE_OLYMPICS_CLOSE_SHOULD_SHOW_GUIDE", 196);
+      nfO = new c("FINDER_LIVE_OLYMPICS_SET_WX_STATE", 197);
+      nfP = new c("FINDER_LIVE_OLYMPICS_CERT_INTERCEP_BUBBLE", 198);
+      nfQ = new c("FINDER_LIVE_OLYMPICS_CERT_SHOW_BUBBLE", 199);
+      nfR = new c("FINDER_LIVE_OLYMPICS_CERT_HIDE_BUBBLE", 200);
+      qMf = new c("FINDER_LIVE_INIT_BOX_INFO", 201);
+      qMl = new c("FINDER_LIVE_UPDATE_BOX_INFO", 202);
+      qMm = new c("FINDER_LIVE_SWITCH_BOX", 203);
+      nfS = new c[] { ncc, ncd, nce, ncf, ncg, nch, nci, ncj, nck, ncl, ncm, ncn, nco, ncp, ncq, ncr, ncs, nct, ncu, ncv, ncw, ncx, ncy, ncz, ncA, ncB, ncC, ncD, ncE, ncF, ncG, ncH, ncI, ncJ, qMb, ncK, ncL, ncM, ncN, ncO, ncP, ncQ, ncR, ncS, ncT, ncU, ncV, ncW, ncX, qMc, ncY, ncZ, nda, ndb, ndc, ndd, nde, ndf, ndg, ndh, ndi, ndj, ndk, ndl, ndm, ndn, ndo, ndp, ndq, ndr, nds, ndt, ndu, ndv, ndw, ndx, ndy, ndz, ndA, ndB, ndC, ndD, ndE, ndF, ndG, ndH, ndI, ndJ, ndK, ndL, ndM, ndN, ndO, ndP, ndQ, ndR, ndS, ndT, ndU, ndV, ndW, ndX, ndY, ndZ, nea, neb, nec, ned, nee, nef, neg, neh, nei, nej, nek, nel, nem, nen, neo, nep, neq, ner, nes, neu, nev, new, nex, ney, nez, neA, neB, neC, neD, neE, neF, neG, neH, neI, neJ, neK, neL, neM, neN, neO, neP, neQ, neR, neS, neT, neU, neV, neW, neX, neY, neZ, nfa, nfb, nfc, nfd, nfe, nff, nfg, nfh, nfi, nfj, nfk, nfl, nfm, nfn, nfo, nfp, nfq, nfr, nfs, nft, nfu, nfv, nfw, nfx, nfy, nfz, nfA, nfB, nfC, qMd, qMe, nfD, nfE, nfF, nfG, nfH, nfI, nfJ, nfK, nfL, nfM, nfN, nfO, nfP, nfQ, nfR, qMf, qMl, qMm };
+      AppMethodBeat.o(247386);
+    }
+    
+    private c() {}
   }
 }
 

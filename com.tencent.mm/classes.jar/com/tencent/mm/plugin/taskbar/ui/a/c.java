@@ -9,34 +9,50 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class c
 {
-  private static boolean Mqw;
-  private static boolean Mqx;
-  private static boolean Mqy;
+  private static boolean Pix;
+  private static boolean STJ;
+  private static boolean STK;
   private static SharedPreferences sp;
   
   static
   {
-    AppMethodBeat.i(214361);
+    AppMethodBeat.i(264197);
     sp = MMApplicationContext.getDefaultPreference();
-    Mqw = false;
-    Mqx = false;
-    Mqy = true;
-    AppMethodBeat.o(214361);
+    Pix = false;
+    STJ = false;
+    STK = true;
+    AppMethodBeat.o(264197);
   }
   
-  public static boolean aAA()
+  public static void aTs()
   {
-    return Mqx;
+    AppMethodBeat.i(264142);
+    Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markWillCrash");
+    if (sp == null) {
+      sp = MMApplicationContext.getDefaultPreference();
+    }
+    if (sp != null)
+    {
+      e.Fg(false);
+      sp.edit().putBoolean("dynamic_bg_will_crash", true).apply();
+    }
+    Pix = true;
+    AppMethodBeat.o(264142);
   }
   
-  public static boolean aAB()
+  public static boolean aTv()
   {
-    return Mqy;
+    return STJ;
   }
   
-  public static void aAC()
+  public static boolean aTw()
   {
-    AppMethodBeat.i(214359);
+    return STK;
+  }
+  
+  public static void aTx()
+  {
+    AppMethodBeat.i(264172);
     if (sp == null) {
       sp = MMApplicationContext.getDefaultPreference();
     }
@@ -46,68 +62,52 @@ public final class c
       Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markDrawStartPoint current: %d", new Object[] { Integer.valueOf(i) });
       if (i > 2)
       {
-        e.zP(false);
+        e.Fg(false);
         sp.edit().putBoolean("dynamic_bg_will_crash", true).apply();
       }
       sp.edit().putInt("dynamic_bg_draw_start_point_count", i + 1).apply();
     }
-    AppMethodBeat.o(214359);
+    AppMethodBeat.o(264172);
   }
   
-  public static void aAD()
+  public static void aTy()
   {
-    AppMethodBeat.i(214360);
+    AppMethodBeat.i(264180);
     Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markDrawEndPoint");
     sp.edit().putInt("dynamic_bg_draw_start_point_count", 0).apply();
     sp.edit().putBoolean("dynamic_bg_will_crash", false).apply();
-    e.zP(true);
-    Mqy = false;
-    AppMethodBeat.o(214360);
+    e.Fg(true);
+    STK = false;
+    AppMethodBeat.o(264180);
   }
   
-  public static void aAx()
+  public static boolean hDZ()
   {
-    AppMethodBeat.i(214356);
-    Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markWillCrash");
-    if (sp == null) {
-      sp = MMApplicationContext.getDefaultPreference();
-    }
-    if (sp != null)
-    {
-      e.zP(false);
-      sp.edit().putBoolean("dynamic_bg_will_crash", true).apply();
-    }
-    Mqw = true;
-    AppMethodBeat.o(214356);
-  }
-  
-  public static boolean gjZ()
-  {
-    AppMethodBeat.i(214352);
+    AppMethodBeat.i(264120);
     if (sp != null)
     {
       int i = sp.getInt("dynamic_bg_init_start_point_count", 0);
       int j = sp.getInt("dynamic_bg_draw_start_point_count", 0);
       boolean bool = sp.getBoolean("dynamic_bg_init_crash", false);
-      Mqx = bool;
+      STJ = bool;
       if ((bool) || (i >= 2) || (j >= 2))
       {
-        Mqw = true;
+        Pix = true;
         sp.edit().putBoolean("dynamic_bg_will_crash", true).apply();
-        AppMethodBeat.o(214352);
+        AppMethodBeat.o(264120);
         return true;
       }
-      Mqw = false;
-      AppMethodBeat.o(214352);
+      Pix = false;
+      AppMethodBeat.o(264120);
       return false;
     }
-    AppMethodBeat.o(214352);
+    AppMethodBeat.o(264120);
     return false;
   }
   
-  public static void gka()
+  public static void hEa()
   {
-    AppMethodBeat.i(214354);
+    AppMethodBeat.i(264124);
     if (sp != null)
     {
       SharedPreferences.Editor localEditor = sp.edit();
@@ -120,29 +120,29 @@ public final class c
         localEditor.apply();
       }
     }
-    Mqx = false;
-    Mqw = false;
-    AppMethodBeat.o(214354);
+    STJ = false;
+    Pix = false;
+    AppMethodBeat.o(264124);
   }
   
-  public static void gkb()
+  public static void hEb()
   {
-    AppMethodBeat.i(214355);
+    AppMethodBeat.i(264134);
     Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markInitCrash");
-    e.zP(false);
+    e.Fg(false);
     if (sp == null) {
       sp = MMApplicationContext.getDefaultPreference();
     }
     if (sp != null) {
       sp.edit().putBoolean("dynamic_bg_init_crash", true).apply();
     }
-    Mqx = true;
-    AppMethodBeat.o(214355);
+    STJ = true;
+    AppMethodBeat.o(264134);
   }
   
-  public static void gkc()
+  public static void hEc()
   {
-    AppMethodBeat.i(214357);
+    AppMethodBeat.i(264161);
     if (sp == null) {
       sp = MMApplicationContext.getDefaultPreference();
     }
@@ -152,35 +152,35 @@ public final class c
       Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markInitStartPoint current: %d", new Object[] { Integer.valueOf(i) });
       if (i > 2)
       {
-        e.zP(false);
+        e.Fg(false);
         sp.edit().putBoolean("dynamic_bg_will_crash", true).apply();
       }
       sp.edit().putInt("dynamic_bg_init_start_point_count", i + 1).apply();
     }
-    AppMethodBeat.o(214357);
+    AppMethodBeat.o(264161);
   }
   
-  public static void gkd()
+  public static void hEd()
   {
-    AppMethodBeat.i(214358);
+    AppMethodBeat.i(264167);
     Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markInitEndPoint");
     sp.edit().putInt("dynamic_bg_init_start_point_count", 0).apply();
     sp.edit().putBoolean("dynamic_bg_will_crash", false).apply();
     sp.edit().putBoolean("dynamic_bg_init_crash", false).apply();
-    Mqw = false;
-    Mqx = false;
-    e.zP(true);
-    AppMethodBeat.o(214358);
+    Pix = false;
+    STJ = false;
+    e.Fg(true);
+    AppMethodBeat.o(264167);
   }
   
-  public static boolean gke()
+  public static boolean hEe()
   {
-    return Mqw;
+    return Pix;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.a.c
  * JD-Core Version:    0.7.0.1
  */

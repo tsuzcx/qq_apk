@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import android.content.Context;
-import androidx.annotation.Keep;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.sdk.platformtools.FilePathGenerator;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.system.MimeTypeUtil;
 import com.tencent.mm.vending.j.a;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
-import org.apache.commons.a.c;
+import org.apache.commons.b.c;
 
 @Deprecated
 public final class AppBrandLocalMediaObjectManager
 {
-  private static String rrA;
-  private static final Collection<a> rrC;
-  private static final AppBrandLocalMediaObject rrD;
+  private static final AppBrandLocalMediaObject uBB;
+  private static String uBx;
+  private static final Collection<a> uBz;
   
   static
   {
     AppMethodBeat.i(134321);
-    Object localObject2 = b.aSL();
+    Object localObject2 = b.bmz();
     Object localObject1 = localObject2;
     if (!((String)localObject2).endsWith("/")) {
       localObject1 = (String)localObject2 + "/";
     }
-    rrA = (String)localObject1 + "wxafiles/";
-    localObject2 = q.Q(MMApplicationContext.getContext().getExternalCacheDir());
+    uBx = (String)localObject1 + "wxafiles/";
+    localObject2 = u.V(MMApplicationContext.getContext().getExternalCacheDir());
     localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = q.Q(MMApplicationContext.getContext().getCacheDir());
+      localObject1 = u.V(MMApplicationContext.getContext().getCacheDir());
     }
-    SZ(((q)localObject1).bOF());
+    Lb(ah.v(((u)localObject1).jKT()));
     localObject1 = new LinkedList();
     ((Collection)localObject1).add(new b((byte)0));
-    rrC = Collections.unmodifiableCollection((Collection)localObject1);
-    rrD = new AppBrandLocalMediaObject()
+    uBz = Collections.unmodifiableCollection((Collection)localObject1);
+    uBB = new AppBrandLocalMediaObject()
     {
-      public final String toString()
+      public String toString()
       {
         return "AppBrandLocalMediaObject::Nil";
       }
@@ -55,15 +55,85 @@ public final class AppBrandLocalMediaObjectManager
     AppMethodBeat.o(134321);
   }
   
-  public static void SZ(String paramString)
+  public static void Lb(String paramString)
   {
     AppMethodBeat.i(175562);
     String str = paramString;
     if (!paramString.endsWith("/")) {
       str = paramString + "/";
     }
-    rrA = str + "wxafiles/";
+    uBx = str + "wxafiles/";
     AppMethodBeat.o(175562);
+  }
+  
+  public static long Wa(String paramString)
+  {
+    long l = 0L;
+    AppMethodBeat.i(134309);
+    paramString = new u(Wd(paramString));
+    if ((!paramString.jKS()) || (!paramString.isDirectory())) {}
+    for (paramString = null; (paramString == null) || (paramString.length <= 0); paramString = paramString.a(new AppBrandLocalMediaObjectManager.2()))
+    {
+      AppMethodBeat.o(134309);
+      return 0L;
+    }
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      l += paramString[i].length();
+      i += 1;
+    }
+    AppMethodBeat.o(134309);
+    return l;
+  }
+  
+  public static long Wb(String paramString)
+  {
+    long l = 0L;
+    AppMethodBeat.i(134310);
+    paramString = new u(Wd(paramString));
+    if ((!paramString.jKS()) || (!paramString.isDirectory())) {}
+    for (paramString = null; (paramString == null) || (paramString.length <= 0); paramString = paramString.a(new AppBrandLocalMediaObjectManager.1()))
+    {
+      AppMethodBeat.o(134310);
+      return 0L;
+    }
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      l += paramString[i].length();
+      i += 1;
+    }
+    AppMethodBeat.o(134310);
+    return l;
+  }
+  
+  private static String Wc(String paramString)
+  {
+    AppMethodBeat.i(323259);
+    paramString = uBx + paramString + "/";
+    AppMethodBeat.o(323259);
+    return paramString;
+  }
+  
+  private static String Wd(String paramString)
+  {
+    AppMethodBeat.i(134315);
+    paramString = Wc(paramString);
+    FilePathGenerator.checkMkdir(paramString);
+    try
+    {
+      new u(paramString, ".nomedia").jKZ();
+      label29:
+      AppMethodBeat.o(134315);
+      return paramString;
+    }
+    catch (Exception localException)
+    {
+      break label29;
+    }
   }
   
   private static <T extends AppBrandLocalMediaObject> T a(String paramString1, String paramString2, Class<T> paramClass, String paramString3, boolean paramBoolean)
@@ -74,20 +144,20 @@ public final class AppBrandLocalMediaObjectManager
       AppMethodBeat.o(134312);
       return null;
     }
-    if (!u.agG(paramString2))
+    if (!y.ZC(paramString2))
     {
       AppMethodBeat.o(134312);
       return null;
     }
-    Object localObject1 = c.bIf(paramString2);
+    Object localObject1 = c.bKZ(paramString2);
     Object localObject2;
     if (Util.isNullOrNil((String)localObject1))
     {
-      Iterator localIterator = rrC.iterator();
+      Iterator localIterator = uBz.iterator();
       localObject1 = null;
       while (localIterator.hasNext())
       {
-        localObject2 = ((a)localIterator.next()).D(paramString1, paramString2, paramString3);
+        localObject2 = ((a)localIterator.next()).G(paramString1, paramString2, paramString3);
         localObject1 = localObject2;
         if (localObject2 != null) {
           localObject1 = localObject2;
@@ -113,10 +183,10 @@ public final class AppBrandLocalMediaObjectManager
     {
       label167:
       localObject2 = (AppBrandLocalMediaObject)paramClass.newInstance();
-      ((AppBrandLocalMediaObject)localObject2).fCM = ((String)((a)localObject1).get(0));
+      ((AppBrandLocalMediaObject)localObject2).hHB = ((String)((a)localObject1).get(0));
       ((AppBrandLocalMediaObject)localObject2).mimeType = MimeTypeUtil.getMimeTypeByFileExt(paramString3);
-      ((AppBrandLocalMediaObject)localObject2).lwh = ((String)((a)localObject1).get(1));
-      if (Util.isNullOrNil(((AppBrandLocalMediaObject)localObject2).lwh))
+      ((AppBrandLocalMediaObject)localObject2).onG = ((String)((a)localObject1).get(1));
+      if (Util.isNullOrNil(((AppBrandLocalMediaObject)localObject2).onG))
       {
         Log.e("MicroMsg.AppBrand.LocalMediaObjectManager", "attachCast appId %s, Null Or Nil fileFullPath");
         AppMethodBeat.o(134312);
@@ -126,17 +196,17 @@ public final class AppBrandLocalMediaObjectManager
       if (Util.isNullOrNil(paramString3)) {
         paramClass = "unknown";
       }
-      ((AppBrandLocalMediaObject)localObject2).jmx = Util.nullAs((String)((a)localObject1).get(3), paramClass);
-      paramClass = ((AppBrandLocalMediaObject)localObject2).lwh;
-      if ((paramBoolean) && (u.oo(paramString2, paramClass))) {
+      ((AppBrandLocalMediaObject)localObject2).lPJ = Util.nullAs((String)((a)localObject1).get(3), paramClass);
+      paramClass = ((AppBrandLocalMediaObject)localObject2).onG;
+      if ((paramBoolean) && (y.qn(paramString2, paramClass))) {
         i = 1;
       }
       while (i != 0)
       {
-        paramString2 = new q(((AppBrandLocalMediaObject)localObject2).lwh);
-        ((AppBrandLocalMediaObject)localObject2).mHi = paramString2.length();
-        ((AppBrandLocalMediaObject)localObject2).nMj = paramString2.lastModified();
-        paramClass = (s)e.L(s.class);
+        paramString2 = new u(((AppBrandLocalMediaObject)localObject2).onG);
+        ((AppBrandLocalMediaObject)localObject2).fileLength = paramString2.length();
+        ((AppBrandLocalMediaObject)localObject2).qMk = paramString2.lastModified();
+        paramClass = (x)e.U(x.class);
         if (paramClass != null) {
           paramClass.b(paramString1, paramString2);
         }
@@ -144,7 +214,7 @@ public final class AppBrandLocalMediaObjectManager
         return localObject2;
         if (!paramBoolean)
         {
-          long l = u.on(paramString2, paramClass);
+          long l = y.O(paramString2, paramClass, false);
           if (l >= 0L)
           {
             i = 1;
@@ -162,32 +232,6 @@ public final class AppBrandLocalMediaObjectManager
     }
   }
   
-  private static String adB(String paramString)
-  {
-    AppMethodBeat.i(225374);
-    paramString = rrA + paramString + "/";
-    AppMethodBeat.o(225374);
-    return paramString;
-  }
-  
-  private static String adC(String paramString)
-  {
-    AppMethodBeat.i(134315);
-    paramString = adB(paramString);
-    FilePathGenerator.checkMkdir(paramString);
-    try
-    {
-      new q(paramString, ".nomedia").ifM();
-      label31:
-      AppMethodBeat.o(134315);
-      return paramString;
-    }
-    catch (Exception localException)
-    {
-      break label31;
-    }
-  }
-  
   public static AppBrandLocalMediaObject b(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(134314);
@@ -196,56 +240,12 @@ public final class AppBrandLocalMediaObjectManager
     return paramString1;
   }
   
-  public static String bIr()
+  public static String cPU()
   {
-    return rrA;
+    return uBx;
   }
   
-  public static long ble(String paramString)
-  {
-    long l = 0L;
-    AppMethodBeat.i(134309);
-    paramString = new q(adC(paramString));
-    if ((!paramString.ifE()) || (!paramString.isDirectory())) {}
-    for (paramString = null; (paramString == null) || (paramString.length <= 0); paramString = paramString.a(new AppBrandLocalMediaObjectManager.2()))
-    {
-      AppMethodBeat.o(134309);
-      return 0L;
-    }
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      l += paramString[i].length();
-      i += 1;
-    }
-    AppMethodBeat.o(134309);
-    return l;
-  }
-  
-  public static long blf(String paramString)
-  {
-    long l = 0L;
-    AppMethodBeat.i(134310);
-    paramString = new q(adC(paramString));
-    if ((!paramString.ifE()) || (!paramString.isDirectory())) {}
-    for (paramString = null; (paramString == null) || (paramString.length <= 0); paramString = paramString.a(new AppBrandLocalMediaObjectManager.1()))
-    {
-      AppMethodBeat.o(134310);
-      return 0L;
-    }
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      l += paramString[i].length();
-      i += 1;
-    }
-    AppMethodBeat.o(134310);
-    return l;
-  }
-  
-  public static AppBrandLocalVideoObject cE(String paramString1, String paramString2)
+  public static AppBrandLocalVideoObject cW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(134311);
     paramString1 = (AppBrandLocalVideoObject)a(paramString1, paramString2, AppBrandLocalVideoObject.class, "mp4", false);
@@ -254,7 +254,7 @@ public final class AppBrandLocalMediaObjectManager
   }
   
   @Deprecated
-  public static AppBrandLocalMediaObject cF(String paramString1, String paramString2)
+  public static AppBrandLocalMediaObject cY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(134316);
     if ((Util.isNullOrNil(paramString2)) || (!paramString2.startsWith("wxfile://")) || (Util.isNullOrNil(paramString1)))
@@ -264,19 +264,19 @@ public final class AppBrandLocalMediaObjectManager
       return null;
     }
     String str = paramString2.substring(9);
-    Iterator localIterator = rrC.iterator();
+    Iterator localIterator = uBz.iterator();
     paramString2 = null;
     if (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      paramString2 = locala.cI(paramString1, str);
+      paramString2 = locala.cZ(paramString1, str);
       if (paramString2 != null) {
         Log.i("MicroMsg.AppBrand.LocalMediaObjectManager", "getItemByLocalId, handled by %s, result = %s", new Object[] { locala.toString(), paramString2 });
       }
     }
     for (;;)
     {
-      if (rrD == paramString2)
+      if (uBB == paramString2)
       {
         AppMethodBeat.o(134316);
         return null;
@@ -289,17 +289,16 @@ public final class AppBrandLocalMediaObjectManager
   
   public static void clear(String paramString)
   {
-    AppMethodBeat.i(225345);
+    AppMethodBeat.i(323236);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(225345);
+      AppMethodBeat.o(323236);
       return;
     }
-    u.deleteDir(adB(paramString));
-    AppMethodBeat.o(225345);
+    y.ew(Wc(paramString), true);
+    AppMethodBeat.o(323236);
   }
   
-  @Keep
   public static String genMediaFilePath(String paramString1, String paramString2)
   {
     AppMethodBeat.i(134308);
@@ -308,12 +307,12 @@ public final class AppBrandLocalMediaObjectManager
       AppMethodBeat.o(134308);
       return null;
     }
-    paramString1 = adC(paramString1) + paramString2;
+    paramString1 = Wd(paramString1) + paramString2;
     AppMethodBeat.o(134308);
     return paramString1;
   }
   
-  public static AppBrandLocalMediaObject h(String paramString1, String paramString2, boolean paramBoolean)
+  public static AppBrandLocalMediaObject m(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(134313);
     paramString1 = b(paramString1, paramString2, null, paramBoolean);
@@ -323,16 +322,16 @@ public final class AppBrandLocalMediaObjectManager
   
   static abstract interface a
   {
-    public abstract a D(String paramString1, String paramString2, String paramString3);
+    public abstract a G(String paramString1, String paramString2, String paramString3);
     
-    public abstract AppBrandLocalMediaObject cI(String paramString1, String paramString2);
+    public abstract AppBrandLocalMediaObject cZ(String paramString1, String paramString2);
   }
   
   static final class b
     implements AppBrandLocalMediaObjectManager.a
   {
     /* Error */
-    public final a D(String paramString1, String paramString2, String paramString3)
+    public final a G(String paramString1, String paramString2, String paramString3)
     {
       // Byte code:
       //   0: ldc 21
@@ -345,7 +344,7 @@ public final class AppBrandLocalMediaObjectManager
       //   15: invokestatic 37	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:access$500	()Ljava/lang/String;
       //   18: astore 6
       //   20: aload_2
-      //   21: invokestatic 41	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:blg	(Ljava/lang/String;)J
+      //   21: invokestatic 41	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:We	(Ljava/lang/String;)J
       //   24: lstore 4
       //   26: getstatic 47	java/util/Locale:US	Ljava/util/Locale;
       //   29: ldc 49
@@ -364,7 +363,7 @@ public final class AppBrandLocalMediaObjectManager
       //   51: astore_2
       //   52: aload_2
       //   53: aload_1
-      //   54: invokestatic 65	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:cH	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      //   54: invokestatic 65	com/tencent/mm/plugin/appbrand/appstorage/AppBrandLocalMediaObjectManager:hL	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
       //   57: astore_2
       //   58: aload_2
       //   59: invokestatic 33	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
@@ -446,7 +445,7 @@ public final class AppBrandLocalMediaObjectManager
       //   201: aload_1
       //   202: aload_2
       //   203: aload 6
-      //   205: invokestatic 128	com/tencent/mm/vending/j/a:h	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/tencent/mm/vending/j/d;
+      //   205: invokestatic 128	com/tencent/mm/vending/j/a:g	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/tencent/mm/vending/j/d;
       //   208: astore_1
       //   209: ldc 21
       //   211: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -472,7 +471,7 @@ public final class AppBrandLocalMediaObjectManager
       //   52	58	98	java/lang/Exception
     }
     
-    public final AppBrandLocalMediaObject cI(String paramString1, String paramString2)
+    public final AppBrandLocalMediaObject cZ(String paramString1, String paramString2)
     {
       Object localObject1 = null;
       AppMethodBeat.i(134306);
@@ -481,7 +480,7 @@ public final class AppBrandLocalMediaObjectManager
         AppMethodBeat.o(134306);
         return null;
       }
-      String str3 = c.bIf(paramString2);
+      String str3 = c.bKZ(paramString2);
       String str2 = paramString2.replaceFirst("store_", "").replaceFirst("tmp_", "");
       String str1 = str2;
       if (!Util.isNullOrNil(str3)) {
@@ -489,13 +488,13 @@ public final class AppBrandLocalMediaObjectManager
       }
       if (Util.isNullOrNil(str1))
       {
-        paramString1 = AppBrandLocalMediaObjectManager.bIx();
+        paramString1 = AppBrandLocalMediaObjectManager.cQG();
         AppMethodBeat.o(134306);
         return paramString1;
       }
       try
       {
-        str2 = AppBrandLocalMediaObjectManager.cG(str1, paramString1);
+        str2 = AppBrandLocalMediaObjectManager.cX(str1, paramString1);
         localObject1 = str2;
       }
       catch (Exception localException)
@@ -508,7 +507,7 @@ public final class AppBrandLocalMediaObjectManager
         if ((localObject2 != null) && (localObject2.length == 2)) {
           break label194;
         }
-        paramString1 = AppBrandLocalMediaObjectManager.bIx();
+        paramString1 = AppBrandLocalMediaObjectManager.cQG();
         AppMethodBeat.o(134306);
         return paramString1;
         label194:
@@ -525,17 +524,17 @@ public final class AppBrandLocalMediaObjectManager
           if (((String)localObject2).equalsIgnoreCase(str3)) {
             break;
           }
-          paramString1 = AppBrandLocalMediaObjectManager.bIx();
+          paramString1 = AppBrandLocalMediaObjectManager.cQG();
           AppMethodBeat.o(134306);
           return paramString1;
         }
         try
         {
-          long l2 = AppBrandLocalMediaObjectManager.blg(str1);
+          long l2 = AppBrandLocalMediaObjectManager.We(str1);
           if (l1 != l2)
           {
             Log.e("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, exactCRC32(%d) != fileCRC32(%d), localId(%s), appId(%s)", new Object[] { Long.valueOf(l2), Long.valueOf(l1), paramString2, paramString1 });
-            paramString1 = AppBrandLocalMediaObjectManager.bIx();
+            paramString1 = AppBrandLocalMediaObjectManager.cQG();
             AppMethodBeat.o(134306);
             return paramString1;
           }
@@ -543,24 +542,24 @@ public final class AppBrandLocalMediaObjectManager
         catch (IOException paramString1)
         {
           Log.e("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, getCRC exp = %s", new Object[] { Util.stackTraceToString(paramString1) });
-          paramString1 = AppBrandLocalMediaObjectManager.bIx();
+          paramString1 = AppBrandLocalMediaObjectManager.cQG();
           AppMethodBeat.o(134306);
           return paramString1;
         }
         paramString1 = new AppBrandLocalMediaObject();
-        paramString1.fCM = "wxfile://".concat(String.valueOf(paramString2));
-        paramString1.lwh = str1;
+        paramString1.hHB = "wxfile://".concat(String.valueOf(paramString2));
+        paramString1.onG = str1;
         paramString1.mimeType = MimeTypeUtil.getMimeTypeByFileExt((String)localObject2);
-        paramString1.nMi = ((String)localObject1).equalsIgnoreCase("store_");
-        paramString2 = new q(paramString1.lwh);
-        paramString1.nMj = paramString2.lastModified();
-        paramString1.mHi = paramString2.length();
+        paramString1.qMj = ((String)localObject1).equalsIgnoreCase("store_");
+        paramString2 = new u(paramString1.onG);
+        paramString1.qMk = paramString2.lastModified();
+        paramString1.fileLength = paramString2.length();
         AppMethodBeat.o(134306);
       }
       if (Util.isNullOrNil((String)localObject1))
       {
         Log.d("MicroMsg.AppBrand.LocalMediaObjectManager.V2Handler", "retrieveMediaObject, get empty decrypted string");
-        paramString1 = AppBrandLocalMediaObjectManager.bIx();
+        paramString1 = AppBrandLocalMediaObjectManager.cQG();
         AppMethodBeat.o(134306);
         return paramString1;
       }
@@ -575,7 +574,7 @@ public final class AppBrandLocalMediaObjectManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager
  * JD-Core Version:    0.7.0.1
  */

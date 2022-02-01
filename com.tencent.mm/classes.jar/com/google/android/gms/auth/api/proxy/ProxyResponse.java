@@ -4,14 +4,8 @@ import android.app.PendingIntent;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.gms.common.annotation.KeepForSdkWithMembers;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.HashMap;
@@ -20,24 +14,16 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@KeepForSdkWithMembers
-@SafeParcelable.Class(creator="ProxyResponseCreator")
 public class ProxyResponse
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<ProxyResponse> CREATOR;
   public static final int STATUS_CODE_NO_CONNECTION = -1;
-  @SafeParcelable.Field(id=5)
   public final byte[] body;
-  @SafeParcelable.Field(id=1)
   public final int googlePlayServicesStatusCode;
-  @SafeParcelable.Field(id=2)
   public final PendingIntent recoveryAction;
-  @SafeParcelable.Field(id=3)
   public final int statusCode;
-  @SafeParcelable.VersionField(id=1000)
   private final int versionCode;
-  @SafeParcelable.Field(id=4)
   private final Bundle zzdw;
   
   static
@@ -47,8 +33,7 @@ public class ProxyResponse
     AppMethodBeat.o(10708);
   }
   
-  @SafeParcelable.Constructor
-  ProxyResponse(@SafeParcelable.Param(id=1000) int paramInt1, @SafeParcelable.Param(id=1) int paramInt2, @SafeParcelable.Param(id=2) PendingIntent paramPendingIntent, @SafeParcelable.Param(id=3) int paramInt3, @SafeParcelable.Param(id=4) Bundle paramBundle, @SafeParcelable.Param(id=5) byte[] paramArrayOfByte)
+  ProxyResponse(int paramInt1, int paramInt2, PendingIntent paramPendingIntent, int paramInt3, Bundle paramBundle, byte[] paramArrayOfByte)
   {
     this.versionCode = paramInt1;
     this.googlePlayServicesStatusCode = paramInt2;
@@ -138,7 +123,7 @@ public class ProxyResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.proxy.ProxyResponse
  * JD-Core Version:    0.7.0.1
  */

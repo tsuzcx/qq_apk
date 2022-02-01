@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/h8v" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/jkp" android:background="@drawable/b6d" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingRight="6.0dip" android:paddingBottom="6.0dip" style="@style/mq">
-        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/a2x" android:layout_gravity="bottom" android:id="@id/jkq" android:background="@drawable/ca2" android:layout_width="0.0dip" android:layout_marginTop="8.0dip" android:maxHeight="@dimen/ae" android:minHeight="@dimen/ag" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/b4t" style="@style/mb" />
-            <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/jkv" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/of" android:contentDescription="@string/auf" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/jku" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginStart="6.0dip">
-            <Button android:textColor="#1a000000" android:id="@id/jkt" android:background="@drawable/asp" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:layout_width="wrap_content" android:layout_height="@dimen/aj" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/al" android:text="@string/b2d" />
-            <Button android:textColor="@color/ag5" android:id="@id/jks" android:background="@drawable/k7" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/aj" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/al" android:text="@string/b2d" />
-        </LinearLayout>
-    </LinearLayout>
+    <ImageView android:id="@id/f3g" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="15.0dip" android:textColor="#ff888888" android:gravity="center_horizontal" android:id="@id/khu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:includeFontPadding="false" />
 </LinearLayout>

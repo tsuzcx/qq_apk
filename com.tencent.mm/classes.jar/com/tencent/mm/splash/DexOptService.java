@@ -12,18 +12,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class DexOptService
   extends Service
 {
-  private Handler UZd;
-  private volatile boolean UZe;
-  private Handler UZf;
-  private volatile Throwable UZg;
+  private Handler acAv;
+  private volatile boolean acAw;
+  private Handler acAx;
+  private volatile Throwable acAy;
   private HandlerThread mHandlerThread;
   
   public DexOptService()
   {
     AppMethodBeat.i(40608);
     this.mHandlerThread = new HandlerThread("DexOpt-Thread");
-    this.UZe = false;
-    this.UZf = new Handler()
+    this.acAw = false;
+    this.acAx = new Handler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -36,30 +36,30 @@ public class DexOptService
     AppMethodBeat.o(40608);
   }
   
-  private boolean huf()
+  private boolean iVJ()
   {
     AppMethodBeat.i(40610);
     i.g("WxSplash.DexOptService", "doDexOpt start", new Object[0]);
     try
     {
-      b localb = i.UZp;
+      b localb = i.acAH;
       getApplicationContext();
-      bool = true;
+      bool = localb.aDq();
+      i.g("WxSplash.DexOptService", "schedule to quit", new Object[0]);
+      this.acAx.removeCallbacksAndMessages(null);
+      this.acAx.sendEmptyMessageDelayed(0, 120000L);
+      i.g("WxSplash.DexOptService", "doDexOpt done, result %s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(40610);
+      return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
-        this.UZg = localThrowable;
+        this.acAy = localObject;
         boolean bool = false;
       }
     }
-    i.g("WxSplash.DexOptService", "schedule to quit", new Object[0]);
-    this.UZf.removeCallbacksAndMessages(null);
-    this.UZf.sendEmptyMessageDelayed(0, 120000L);
-    i.g("WxSplash.DexOptService", "doDexOpt done, result %s", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(40610);
-    return bool;
   }
   
   public IBinder onBind(Intent paramIntent)
@@ -76,7 +76,7 @@ public class DexOptService
     i.g("WxSplash.DexOptService", "onCreate", new Object[0]);
     super.onCreate();
     this.mHandlerThread.start();
-    this.UZd = new Handler(this.mHandlerThread.getLooper())
+    this.acAv = new Handler(this.mHandlerThread.getLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -93,7 +93,7 @@ public class DexOptService
         }
         for (;;)
         {
-          DexOptService.aaq();
+          DexOptService.aBU();
           DexOptService.a(DexOptService.this, false);
           AppMethodBeat.o(40607);
           return;
@@ -116,7 +116,7 @@ public class DexOptService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(40611);
-    this.UZd.sendEmptyMessage(0);
+    this.acAv.sendEmptyMessage(0);
     i.g("WxSplash.DexOptService", "onStartCommand", new Object[0]);
     paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
     AppMethodBeat.o(40611);
@@ -125,7 +125,7 @@ public class DexOptService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.splash.DexOptService
  * JD-Core Version:    0.7.0.1
  */

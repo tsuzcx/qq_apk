@@ -13,11 +13,11 @@ import com.tencent.mm.R.i;
 public class NearLifeErrorContent
   extends FrameLayout
 {
-  private View GvA;
-  private TextView Gvz;
+  private TextView Mry;
+  private View Mrz;
   private View contentView;
-  private ListView kJh;
   private Context mContext;
+  private ListView nlI;
   
   public NearLifeErrorContent(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,13 +40,13 @@ public class NearLifeErrorContent
   private void init()
   {
     AppMethodBeat.i(26618);
-    this.contentView = View.inflate(this.mContext, R.i.ejo, this);
-    this.Gvz = ((TextView)this.contentView.findViewById(R.h.dNk));
-    this.GvA = this.contentView.findViewById(R.h.dNl);
+    this.contentView = View.inflate(this.mContext, R.i.gmp, this);
+    this.Mry = ((TextView)this.contentView.findViewById(R.h.fPe));
+    this.Mrz = this.contentView.findViewById(R.h.fPm);
     AppMethodBeat.o(26618);
   }
   
-  public final void aaj(int paramInt)
+  public final void aeC(int paramInt)
   {
     AppMethodBeat.i(26619);
     switch (paramInt)
@@ -56,30 +56,30 @@ public class NearLifeErrorContent
     {
       AppMethodBeat.o(26619);
       return;
-      this.Gvz.setVisibility(8);
-      this.GvA.setVisibility(8);
-      this.kJh.setVisibility(0);
+      this.Mry.setVisibility(8);
+      this.Mrz.setVisibility(8);
+      this.nlI.setVisibility(0);
       AppMethodBeat.o(26619);
       return;
-      this.Gvz.setVisibility(0);
-      this.GvA.setVisibility(8);
-      this.kJh.setVisibility(8);
+      this.Mry.setVisibility(0);
+      this.Mrz.setVisibility(8);
+      this.nlI.setVisibility(8);
       AppMethodBeat.o(26619);
       return;
-      this.Gvz.setVisibility(8);
-      this.GvA.setVisibility(0);
-      this.kJh.setVisibility(8);
+      this.Mry.setVisibility(8);
+      this.Mrz.setVisibility(0);
+      this.nlI.setVisibility(8);
     }
   }
   
   public void setListView(ListView paramListView)
   {
-    this.kJh = paramListView;
+    this.nlI = paramListView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.NearLifeErrorContent
  * JD-Core Version:    0.7.0.1
  */

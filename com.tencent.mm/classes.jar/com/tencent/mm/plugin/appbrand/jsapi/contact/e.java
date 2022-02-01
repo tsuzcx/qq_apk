@@ -2,28 +2,29 @@ package com.tencent.mm.plugin.appbrand.jsapi.contact;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.luggage.k.f;
-import com.tencent.luggage.k.f.c;
-import com.tencent.luggage.k.l;
+import com.tencent.luggage.l.e.c;
+import com.tencent.luggage.l.m;
 import com.tencent.luggage.sdk.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.ac;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.config.WxaExposedParams.a;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.config.g;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.share.x;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.page.ah;
-import com.tencent.mm.plugin.appbrand.t;
-import com.tencent.mm.protocal.protobuf.cdj;
-import com.tencent.mm.protocal.protobuf.cdk;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.protocal.protobuf.csz;
+import com.tencent.mm.protocal.protobuf.cta;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -37,26 +38,26 @@ public final class e
   public static final int CTRL_INDEX = 145;
   public static final String NAME = "enterContact";
   private String businessId;
-  private String oOB;
-  String oOK;
-  String oOL;
-  String oOM;
-  boolean oON;
-  String oOO;
-  boolean oOP;
-  final int oOQ;
+  String rSA;
+  boolean rSB;
+  String rSC;
+  boolean rSD;
+  final int rSE;
+  private String rSr;
+  String rSy;
+  String rSz;
   
   public e()
   {
     AppMethodBeat.i(174783);
-    this.oOQ = a.aI(this);
+    this.rSE = a.ce(this);
     AppMethodBeat.o(174783);
   }
   
   private void a(final ah paramah, final AppBrandSysConfigWC paramAppBrandSysConfigWC, final a parama)
   {
     AppMethodBeat.i(46263);
-    String str = paramah.getRuntime().bDy().username;
+    String str = paramah.getRuntime().getInitConfig().username;
     if ((paramAppBrandSysConfigWC == null) || (Util.isNullOrNil(str)))
     {
       Log.e("MicroMsg.JsApiEnterContact", "doCgiAndEnterChatting username is null, err");
@@ -66,39 +67,39 @@ public final class e
       AppMethodBeat.o(46263);
       return;
     }
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new cdj();
-    ((d.a)localObject).lBV = new cdk();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxausrevent/getsubbusinessinfo";
-    ((d.a)localObject).funcId = 1303;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    localObject = ((d.a)localObject).bgN();
-    cdj localcdj = (cdj)d.b.b(((d)localObject).lBR);
-    localcdj.username = str;
-    localcdj.Tlg = this.businessId;
-    IPCRunCgi.a((d)localObject, new IPCRunCgi.a()
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new csz();
+    ((c.a)localObject).otF = new cta();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxausrevent/getsubbusinessinfo";
+    ((c.a)localObject).funcId = 1303;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    localObject = ((c.a)localObject).bEF();
+    csz localcsz = (csz)c.b.b(((com.tencent.mm.am.c)localObject).otB);
+    localcsz.username = str;
+    localcsz.aayQ = this.businessId;
+    IPCRunCgi.a((com.tencent.mm.am.c)localObject, new IPCRunCgi.a()
     {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, d paramAnonymousd)
+      public final void callback(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc)
       {
         AppMethodBeat.i(46257);
-        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (d.c.b(paramAnonymousd.lBS) == null))
+        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (c.c.b(paramAnonymousc.otC) == null))
         {
-          Log.e("MicroMsg.JsApiEnterContact", "getsubbusinessinfo cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, d.c.b(paramAnonymousd.lBS) });
+          Log.e("MicroMsg.JsApiEnterContact", "getsubbusinessinfo cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, c.c.b(paramAnonymousc.otC) });
           if (parama != null) {
             parama.a(false, "fail:cgi fail", null);
           }
           AppMethodBeat.o(46257);
           return;
         }
-        paramAnonymousString = (cdk)d.c.b(paramAnonymousd.lBS);
-        Log.i("MicroMsg.JsApiEnterContact", "getsubbusinessinfo success, subBusinessUsername:%s", new Object[] { paramAnonymousString.Tlh });
+        paramAnonymousString = (cta)c.c.b(paramAnonymousc.otC);
+        Log.i("MicroMsg.JsApiEnterContact", "getsubbusinessinfo success, subBusinessUsername:%s", new Object[] { paramAnonymousString.aayR });
         MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(46256);
-            e.this.a(e.2.this.otx, e.2.this.oOT, paramAnonymousString.Tlh, e.2.this.oOS);
+            e.this.a(e.2.this.rxl, e.2.this.rSH, paramAnonymousString.aayR, e.2.this.rSG);
             AppMethodBeat.o(46256);
           }
         });
@@ -108,7 +109,7 @@ public final class e
     AppMethodBeat.o(46263);
   }
   
-  private void a(ah paramah, final com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject, final int paramInt)
+  private void a(ah paramah, final f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46261);
     a(paramah, paramJSONObject, new a()
@@ -125,17 +126,17 @@ public final class e
           if (paramAnonymousIntent != null)
           {
             paramAnonymousString = Util.nullAs(paramAnonymousIntent.getStringExtra("keyOutPagePath"), "");
-            str = l.eo(paramAnonymousString);
-            paramAnonymousString = l.ep(paramAnonymousString);
+            str = m.fL(paramAnonymousString);
+            paramAnonymousString = m.fM(paramAnonymousString);
           }
           localHashMap.put("path", str);
           localHashMap.put("query", paramAnonymousString);
           Log.i("MicroMsg.JsApiEnterContact", "onBackFromContact path:%s, query:%s", new Object[] { str, paramAnonymousString.toString() });
-          parame.j(paramInt, e.this.m("ok", localHashMap));
+          paramf.callback(paramInt, e.this.m("ok", localHashMap));
           AppMethodBeat.o(46255);
           return;
         }
-        parame.j(paramInt, e.this.h(paramAnonymousString, null));
+        paramf.callback(paramInt, e.this.ZP(paramAnonymousString));
         AppMethodBeat.o(46255);
       }
     });
@@ -152,7 +153,7 @@ public final class e
       AppMethodBeat.o(46262);
       return;
     }
-    AppBrandSysConfigWC localAppBrandSysConfigWC = paramah.getRuntime().bDx();
+    AppBrandSysConfigWC localAppBrandSysConfigWC = paramah.getRuntime().ccM();
     if (localAppBrandSysConfigWC == null)
     {
       Log.i("MicroMsg.JsApiEnterContact", "enterChatting fail, config is null");
@@ -160,19 +161,29 @@ public final class e
       AppMethodBeat.o(46262);
       return;
     }
-    this.oOB = paramJSONObject.optString("sessionFrom");
-    if (this.oOB.length() > 1024)
+    this.rSr = paramJSONObject.optString("sessionFrom");
+    if (this.rSr.length() > 1024)
     {
-      this.oOB = this.oOB.substring(0, 1024);
+      this.rSr = this.rSr.substring(0, 1024);
       Log.i("MicroMsg.JsApiEnterContact", "sessionFrom length is large than 1024!");
     }
     this.businessId = paramJSONObject.optString("businessId");
-    this.oOK = paramJSONObject.optString("sendMessageTitle");
-    this.oOL = paramJSONObject.optString("sendMessagePath");
-    this.oOM = paramJSONObject.optString("sendMessageImg");
-    this.oON = paramJSONObject.optBoolean("showMessageCard", false);
-    this.oOP = com.tencent.mm.plugin.appbrand.jsapi.share.z.aiC(this.oOM);
-    this.oOO = com.tencent.mm.plugin.appbrand.jsapi.share.z.a(paramah, this.oOM, true);
+    this.rSy = paramJSONObject.optString("sendMessageTitle");
+    if (Util.isNullOrNil(this.rSy)) {
+      this.rSy = paramah.coY();
+    }
+    this.rSz = paramJSONObject.optString("sendMessagePath");
+    if (Util.isNullOrNil(this.rSz))
+    {
+      this.rSz = paramah.cEE();
+      if (this.rSz.length() > 1024) {
+        this.rSz = this.rSz.substring(0, 1024);
+      }
+    }
+    this.rSA = paramJSONObject.optString("sendMessageImg");
+    this.rSB = paramJSONObject.optBoolean("showMessageCard", false);
+    this.rSD = x.abC(this.rSA);
+    this.rSC = x.a(paramah, this.rSA, true);
     if (Util.isNullOrNil(this.businessId))
     {
       Log.i("MicroMsg.JsApiEnterContact", "businessId is empty, enter to chatting");
@@ -185,7 +196,7 @@ public final class e
     AppMethodBeat.o(46262);
   }
   
-  private static String dx(String paramString1, String paramString2)
+  private static String dQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(46265);
     if (!Util.isNullOrNil(paramString2))
@@ -203,7 +214,7 @@ public final class e
     return "";
   }
   
-  private static String dy(String paramString1, String paramString2)
+  private static String dR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(46266);
     if (!Util.isNullOrNil(paramString2))
@@ -226,38 +237,38 @@ public final class e
     AppMethodBeat.i(46267);
     String str = "";
     if (paramad != null) {
-      str = paramad.oxe;
+      str = paramad.cgR();
     }
     Log.d("MicroMsg.JsApiEnterContact", "getCurrentPageId %s", new Object[] { str });
     AppMethodBeat.o(46267);
     return str;
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(46260);
-    if ((parame instanceof com.tencent.mm.plugin.appbrand.service.c))
+    if ((paramf instanceof com.tencent.mm.plugin.appbrand.service.c))
     {
-      parame = (com.tencent.mm.plugin.appbrand.service.c)parame;
-      ah localah = parame.bDv();
+      paramf = (com.tencent.mm.plugin.appbrand.service.c)paramf;
+      ah localah = paramf.ccK();
       if (localah == null)
       {
         Log.i("MicroMsg.JsApiEnterContact", "enterChatting fail, pageView is null");
-        parame.j(paramInt, h("fail:current page do not exist", null));
+        paramf.callback(paramInt, ZP("fail:current page do not exist"));
         AppMethodBeat.o(46260);
         return;
       }
-      a(localah, parame, paramJSONObject, paramInt);
+      a(localah, paramf, paramJSONObject, paramInt);
       AppMethodBeat.o(46260);
       return;
     }
-    if ((parame instanceof ad))
+    if ((paramf instanceof ad))
     {
-      a((ah)parame, parame, paramJSONObject, paramInt);
+      a((ah)paramf, paramf, paramJSONObject, paramInt);
       AppMethodBeat.o(46260);
       return;
     }
-    parame.j(paramInt, h("fail:internal error invalid js component", null));
+    paramf.callback(paramInt, ZP("fail:internal error invalid js component"));
     AppMethodBeat.o(46260);
   }
   
@@ -265,22 +276,22 @@ public final class e
   {
     AppMethodBeat.i(46264);
     final JsApiChattingTask localJsApiChattingTask = new JsApiChattingTask();
-    String str = paramah.getRuntime().bDy().username;
+    String str = paramah.getRuntime().getInitConfig().username;
     final WxaExposedParams.a locala = new WxaExposedParams.a();
     locala.appId = paramah.getAppId();
     locala.username = str;
-    locala.nickname = paramAppBrandSysConfigWC.fzM;
-    locala.iconUrl = paramAppBrandSysConfigWC.mnM;
-    locala.nHY = paramAppBrandSysConfigWC.nYR.nHY;
-    locala.pkgVersion = paramAppBrandSysConfigWC.nYR.pkgVersion;
-    locala.obW = paramAppBrandSysConfigWC.nYR.md5;
+    locala.nickname = paramAppBrandSysConfigWC.hEy;
+    locala.iconUrl = paramAppBrandSysConfigWC.phA;
+    locala.qHO = paramAppBrandSysConfigWC.qYY.qHO;
+    locala.pkgVersion = paramAppBrandSysConfigWC.qYY.pkgVersion;
+    locala.rcM = paramAppBrandSysConfigWC.qYY.md5;
     locala.from = 5;
-    locala.pageId = e(paramah);
-    locala.obX = com.tencent.mm.plugin.appbrand.z.aca(paramah.getAppId());
-    localJsApiChattingTask.username = dy(str, paramString);
-    localJsApiChattingTask.nickname = dx(paramAppBrandSysConfigWC.fzM, paramString);
-    localJsApiChattingTask.oOB = this.oOB;
-    localJsApiChattingTask.otv = new Runnable()
+    locala.hUf = e(paramah);
+    locala.rcN = ac.UC(paramah.getAppId());
+    localJsApiChattingTask.username = dR(str, paramString);
+    localJsApiChattingTask.nickname = dQ(paramAppBrandSysConfigWC.hEy, paramString);
+    localJsApiChattingTask.rSr = this.rSr;
+    localJsApiChattingTask.rxj = new Runnable()
     {
       public final void run()
       {
@@ -290,24 +301,26 @@ public final class e
         localIntent.setFlags(67108864);
         localIntent.putExtra("Chat_User", localJsApiChattingTask.username);
         localIntent.putExtra("app_brand_chatting_from_scene", 2);
-        localIntent.putExtra("app_brand_chatting_expose_params", locala.bLN());
-        localIntent.putExtra("key_temp_session_from", localJsApiChattingTask.oOB);
+        localIntent.putExtra("app_brand_chatting_expose_params", locala.cll());
+        localIntent.putExtra("key_temp_session_from", localJsApiChattingTask.rSr);
         localIntent.putExtra("finish_direct", true);
-        localIntent.putExtra("key_need_send_video", false);
-        if (e.this.oON)
-        {
-          localIntent.putExtra("sendMessageTitle", e.this.oOK);
-          localIntent.putExtra("sendMessagePath", e.this.oOL);
-          localIntent.putExtra("sendMessageImg", e.this.oOM);
-          localIntent.putExtra("sendMessageLocalImg", com.tencent.mm.plugin.appbrand.jsapi.share.z.aiD(e.this.oOO));
-          localIntent.putExtra("needDelThumb", e.this.oOP);
+        Object localObject = g.qWE;
+        if (!g.ckz()) {
+          localIntent.putExtra("key_need_send_video", false);
         }
-        localIntent.putExtra("showMessageCard", e.this.oON);
-        if (paramah.getRuntime().bDl()) {}
-        Object localObject;
+        if (e.this.rSB)
+        {
+          localIntent.putExtra("sendMessageTitle", e.this.rSy);
+          localIntent.putExtra("sendMessagePath", e.this.rSz);
+          localIntent.putExtra("sendMessageImg", e.this.rSA);
+          localIntent.putExtra("sendMessageLocalImg", x.abD(e.this.rSC));
+          localIntent.putExtra("needDelThumb", e.this.rSD);
+        }
+        localIntent.putExtra("showMessageCard", e.this.rSB);
+        if (paramah.getRuntime().ccB()) {}
         for (int i = 2;; i = 1)
         {
-          localObject = paramah.qoI;
+          localObject = paramah.cEE();
           String str = paramah.getAppId();
           Log.i("MicroMsg.JsApiEnterContact", "doEnterChatting, scene: %d, sceneNote: %s, fromAppId: %s", new Object[] { Integer.valueOf(i), localObject, str });
           localIntent.putExtra("app_brand_chatting_from_scene_new", i);
@@ -324,17 +337,17 @@ public final class e
           AppMethodBeat.o(46259);
           return;
         }
-        f.aI((Context)localObject).b(new f.c()
+        com.tencent.luggage.l.e.bt((Context)localObject).b(new e.c()
         {
-          public final boolean c(int paramAnonymous2Int1, int paramAnonymous2Int2, Intent paramAnonymous2Intent)
+          public final boolean onResult(int paramAnonymous2Int1, int paramAnonymous2Int2, Intent paramAnonymous2Intent)
           {
             AppMethodBeat.i(174782);
-            if (paramAnonymous2Int1 == e.this.oOQ)
+            if (paramAnonymous2Int1 == e.this.rSE)
             {
-              if (e.3.this.oOS != null) {
-                e.3.this.oOS.a(true, "ok", paramAnonymous2Intent);
+              if (e.3.this.rSG != null) {
+                e.3.this.rSG.a(true, "ok", paramAnonymous2Intent);
               }
-              e.3.this.oOW.bPk();
+              e.3.this.rSK.cpx();
               AppMethodBeat.o(174782);
               return true;
             }
@@ -342,11 +355,11 @@ public final class e
             return false;
           }
         });
-        com.tencent.mm.by.c.d((Context)localObject, ".ui.chatting.AppBrandServiceChattingUI", localIntent, e.this.oOQ);
+        com.tencent.mm.br.c.d((Context)localObject, ".ui.chatting.AppBrandServiceChattingUI", localIntent, e.this.rSE);
         AppMethodBeat.o(46259);
       }
     };
-    localJsApiChattingTask.bsM();
+    localJsApiChattingTask.bQt();
     AppMethodBeat.o(46264);
   }
   
@@ -357,7 +370,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.e
  * JD-Core Version:    0.7.0.1
  */

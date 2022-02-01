@@ -2,9 +2,9 @@ package kotlin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
-import kotlin.g.b.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/Result;", "T", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "value", "", "constructor-impl", "(Ljava/lang/Object;)Ljava/lang/Object;", "isFailure", "", "isFailure-impl", "(Ljava/lang/Object;)Z", "isSuccess", "isSuccess-impl", "value$annotations", "()V", "equals", "other", "exceptionOrNull", "", "exceptionOrNull-impl", "(Ljava/lang/Object;)Ljava/lang/Throwable;", "getOrNull", "getOrNull-impl", "hashCode", "", "toString", "", "toString-impl", "(Ljava/lang/Object;)Ljava/lang/String;", "Companion", "Failure", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/Result;", "T", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "value", "", "constructor-impl", "(Ljava/lang/Object;)Ljava/lang/Object;", "isFailure", "", "isFailure-impl", "(Ljava/lang/Object;)Z", "isSuccess", "isSuccess-impl", "getValue$annotations", "()V", "equals", "other", "equals-impl", "(Ljava/lang/Object;Ljava/lang/Object;)Z", "exceptionOrNull", "", "exceptionOrNull-impl", "(Ljava/lang/Object;)Ljava/lang/Throwable;", "getOrNull", "getOrNull-impl", "hashCode", "", "hashCode-impl", "(Ljava/lang/Object;)I", "toString", "", "toString-impl", "(Ljava/lang/Object;)Ljava/lang/String;", "Companion", "Failure", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public final class Result<T>
   implements Serializable
 {
@@ -25,25 +25,25 @@ public final class Result<T>
   
   public static boolean equals-impl(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(217470);
-    if (((paramObject2 instanceof Result)) && (p.h(paramObject1, ((Result)paramObject2).unbox-impl())))
+    AppMethodBeat.i(190812);
+    if (((paramObject2 instanceof Result)) && (s.p(paramObject1, ((Result)paramObject2).unbox-impl())))
     {
-      AppMethodBeat.o(217470);
+      AppMethodBeat.o(190812);
       return true;
     }
-    AppMethodBeat.o(217470);
+    AppMethodBeat.o(190812);
     return false;
   }
   
   public static final boolean equals-impl0(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(217471);
-    if (p.h(paramObject1, paramObject2))
+    AppMethodBeat.i(190819);
+    if (s.p(paramObject1, paramObject2))
     {
-      AppMethodBeat.o(217471);
+      AppMethodBeat.o(190819);
       return true;
     }
-    AppMethodBeat.o(217471);
+    AppMethodBeat.o(190819);
     return false;
   }
   
@@ -57,26 +57,26 @@ public final class Result<T>
   
   private static final T getOrNull-impl(Object paramObject)
   {
-    AppMethodBeat.i(217466);
+    AppMethodBeat.i(190774);
     if (isFailure-impl(paramObject))
     {
-      AppMethodBeat.o(217466);
+      AppMethodBeat.o(190774);
       return null;
     }
-    AppMethodBeat.o(217466);
+    AppMethodBeat.o(190774);
     return paramObject;
   }
   
   public static int hashCode-impl(Object paramObject)
   {
-    AppMethodBeat.i(217469);
+    AppMethodBeat.i(190805);
     if (paramObject != null)
     {
       int i = paramObject.hashCode();
-      AppMethodBeat.o(217469);
+      AppMethodBeat.o(190805);
       return i;
     }
-    AppMethodBeat.o(217469);
+    AppMethodBeat.o(190805);
     return 0;
   }
   
@@ -92,15 +92,15 @@ public final class Result<T>
   
   public static String toString-impl(Object paramObject)
   {
-    AppMethodBeat.i(217467);
+    AppMethodBeat.i(190786);
     if ((paramObject instanceof Failure))
     {
       paramObject = paramObject.toString();
-      AppMethodBeat.o(217467);
+      AppMethodBeat.o(190786);
       return paramObject;
     }
     paramObject = "Success(" + paramObject + ')';
-    AppMethodBeat.o(217467);
+    AppMethodBeat.o(190786);
     return paramObject;
   }
   
@@ -128,27 +128,27 @@ public final class Result<T>
     return str;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/Result$Companion;", "", "()V", "failure", "Lkotlin/Result;", "T", "exception", "", "(Ljava/lang/Throwable;)Ljava/lang/Object;", "success", "value", "(Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"})
+  @Metadata(d1={""}, d2={"Lkotlin/Result$Companion;", "", "()V", "failure", "Lkotlin/Result;", "T", "exception", "", "(Ljava/lang/Throwable;)Ljava/lang/Object;", "success", "value", "(Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
   public static final class Companion
   {
     private final <T> Object failure(Throwable paramThrowable)
     {
-      AppMethodBeat.i(219340);
+      AppMethodBeat.i(190824);
       paramThrowable = Result.constructor-impl(ResultKt.createFailure(paramThrowable));
-      AppMethodBeat.o(219340);
+      AppMethodBeat.o(190824);
       return paramThrowable;
     }
     
     private final <T> Object success(T paramT)
     {
-      AppMethodBeat.i(219339);
+      AppMethodBeat.i(190817);
       paramT = Result.constructor-impl(paramT);
-      AppMethodBeat.o(219339);
+      AppMethodBeat.o(190817);
       return paramT;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/Result$Failure;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "exception", "", "(Ljava/lang/Throwable;)V", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
+  @Metadata(d1={""}, d2={"Lkotlin/Result$Failure;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "exception", "", "(Ljava/lang/Throwable;)V", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
   public static final class Failure
     implements Serializable
   {
@@ -164,7 +164,7 @@ public final class Result<T>
     public final boolean equals(Object paramObject)
     {
       AppMethodBeat.i(129285);
-      if (((paramObject instanceof Failure)) && (p.h(this.exception, ((Failure)paramObject).exception)))
+      if (((paramObject instanceof Failure)) && (s.p(this.exception, ((Failure)paramObject).exception)))
       {
         AppMethodBeat.o(129285);
         return true;

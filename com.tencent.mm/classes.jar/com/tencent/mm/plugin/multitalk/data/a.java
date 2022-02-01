@@ -3,47 +3,70 @@ package com.tencent.mm.plugin.multitalk.data;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/data/MultitalkAvatarViewData;", "", "member", "Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;", "listener", "Landroid/view/View$OnClickListener;", "index", "", "isRenderVideo", "", "nickName", "", "(Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;Landroid/view/View$OnClickListener;IZLjava/lang/String;)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/data/MultitalkAvatarViewData;", "", "member", "Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;", "listener", "Landroid/view/View$OnClickListener;", "index", "", "isRenderVideo", "", "nickName", "", "(Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;Landroid/view/View$OnClickListener;IZLjava/lang/String;)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public MultiTalkGroupMember Fmr;
-  public View.OnClickListener Fms;
-  public boolean Fmt;
+  public MultiTalkGroupMember Liv;
+  public boolean Liw;
   public int index;
   public String nickName;
+  public View.OnClickListener tyA;
   
   public a(MultiTalkGroupMember paramMultiTalkGroupMember, View.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(198198);
-    this.Fmr = paramMultiTalkGroupMember;
-    this.Fms = paramOnClickListener;
+    AppMethodBeat.i(284589);
+    this.Liv = paramMultiTalkGroupMember;
+    this.tyA = paramOnClickListener;
     this.index = paramInt;
-    this.Fmt = paramBoolean;
+    this.Liw = paramBoolean;
     this.nickName = paramString;
-    AppMethodBeat.o(198198);
+    AppMethodBeat.o(284589);
   }
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(178953);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((!p.h(this.Fmr, paramObject.Fmr)) || (!p.h(this.Fms, paramObject.Fms)) || (this.index != paramObject.index) || (this.Fmt != paramObject.Fmt) || (!p.h(this.nickName, paramObject.nickName))) {}
-      }
-    }
-    else
+    if (this == paramObject)
     {
       AppMethodBeat.o(178953);
       return true;
     }
+    if (!(paramObject instanceof a))
+    {
+      AppMethodBeat.o(178953);
+      return false;
+    }
+    paramObject = (a)paramObject;
+    if (!s.p(this.Liv, paramObject.Liv))
+    {
+      AppMethodBeat.o(178953);
+      return false;
+    }
+    if (!s.p(this.tyA, paramObject.tyA))
+    {
+      AppMethodBeat.o(178953);
+      return false;
+    }
+    if (this.index != paramObject.index)
+    {
+      AppMethodBeat.o(178953);
+      return false;
+    }
+    if (this.Liw != paramObject.Liw)
+    {
+      AppMethodBeat.o(178953);
+      return false;
+    }
+    if (!s.p(this.nickName, paramObject.nickName))
+    {
+      AppMethodBeat.o(178953);
+      return false;
+    }
     AppMethodBeat.o(178953);
-    return false;
+    return true;
   }
   
   public final int hashCode()
@@ -54,14 +77,14 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(178951);
-    String str = "MultitalkAvatarViewData(member=" + this.Fmr + ", listener=" + this.Fms + ", index=" + this.index + ", isRenderVideo=" + this.Fmt + ", nickName=" + this.nickName + ")";
+    String str = "MultitalkAvatarViewData(member=" + this.Liv + ", listener=" + this.tyA + ", index=" + this.index + ", isRenderVideo=" + this.Liw + ", nickName=" + this.nickName + ')';
     AppMethodBeat.o(178951);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.data.a
  * JD-Core Version:    0.7.0.1
  */

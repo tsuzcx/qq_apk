@@ -1,101 +1,100 @@
 package com.tencent.mm.plugin.emoji.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.o.a;
-import com.tencent.mm.f.a.bn;
-import com.tencent.mm.f.a.bs;
-import com.tencent.mm.f.a.dm;
-import com.tencent.mm.f.a.do;
-import com.tencent.mm.f.a.kz;
-import com.tencent.mm.f.a.rl;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.emoji.c.a;
-import com.tencent.mm.plugin.emoji.c.c;
-import com.tencent.mm.plugin.emoji.c.d;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ciy;
+import com.tencent.mm.protocal.protobuf.hn;
+import com.tencent.mm.protocal.protobuf.ho;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.text.DecimalFormat;
 
 public final class b
+  extends p
+  implements m
 {
-  public static o.a appForegroundListener;
-  public final IListener checkLanguageChangeIListener;
-  public a uCg;
-  public com.tencent.mm.plugin.emoji.c.b uCh;
-  public d uCi;
-  public c uCj;
-  public IListener uCk;
-  public IListener uCl;
-  public IListener uCm;
-  public IListener uCn;
-  public IListener uCo;
-  public IListener uCp;
-  public IListener uCq;
-  public IListener uCr;
-  public IListener uCs;
+  public static int xNU = 6;
+  public static int xNV = 7;
+  public static int xNW = 10;
+  private h mAY;
+  private final c rr;
+  private String xNX;
+  private ciy xNY;
   
-  static
+  public b(String paramString, ciy paramciy)
   {
-    AppMethodBeat.i(108411);
-    appForegroundListener = new o.a()
-    {
-      public final void onAppBackground(String paramAnonymousString)
-      {
-        AppMethodBeat.i(108403);
-        if ((h.aHB()) && (h.aHE().kbT))
-        {
-          h.aHE();
-          if (!com.tencent.mm.kernel.b.aGE())
-          {
-            paramAnonymousString = new do();
-            paramAnonymousString.fzf.state = 0;
-            EventCenter.instance.publish(paramAnonymousString);
-          }
-        }
-        AppMethodBeat.o(108403);
-      }
-      
-      public final void onAppForeground(String paramAnonymousString)
-      {
-        AppMethodBeat.i(108402);
-        if ((h.aHB()) && (h.aHE().kbT))
-        {
-          h.aHE();
-          if (!com.tencent.mm.kernel.b.aGE())
-          {
-            paramAnonymousString = new do();
-            paramAnonymousString.fzf.state = 1;
-            EventCenter.instance.publish(paramAnonymousString);
-          }
-        }
-        AppMethodBeat.o(108402);
-      }
-    };
-    AppMethodBeat.o(108411);
+    AppMethodBeat.i(108668);
+    c.a locala = new c.a();
+    locala.otE = new hn();
+    locala.otF = new ho();
+    locala.uri = "/cgi-bin/micromsg-bin/mmaskforreward";
+    locala.funcId = 830;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    this.xNX = paramString;
+    this.xNY = paramciy;
+    AppMethodBeat.o(108668);
   }
   
-  public b()
+  public final ho dAx()
   {
-    AppMethodBeat.i(108410);
-    this.uCg = new a();
-    this.uCh = new com.tencent.mm.plugin.emoji.c.b();
-    this.uCi = new d();
-    this.uCj = new c();
-    this.uCk = new b.1(this);
-    this.uCl = new b.4(this);
-    this.uCm = new IListener() {};
-    this.uCn = new b.7(this);
-    this.uCo = new IListener() {};
-    this.checkLanguageChangeIListener = new IListener() {};
-    this.uCp = new IListener() {};
-    this.uCq = new b.11(this);
-    this.uCr = new IListener() {};
-    this.uCs = new IListener() {};
-    AppMethodBeat.o(108410);
+    AppMethodBeat.i(269834);
+    ho localho = (ho)c.c.b(this.rr.otC);
+    AppMethodBeat.o(269834);
+    return localho;
+  }
+  
+  public final int doScene(g paramg, h paramh)
+  {
+    AppMethodBeat.i(108670);
+    this.mAY = paramh;
+    paramh = (hn)c.b.b(this.rr.otB);
+    paramh.ProductID = this.xNX;
+    ciy localciy = new ciy();
+    localciy.ILD = this.xNY.ILD;
+    localciy.crp = this.xNY.crp;
+    try
+    {
+      localciy.akkx = new DecimalFormat("0.00").format(Float.valueOf(this.xNY.akkx));
+      paramh.YIT = localciy;
+      int i = dispatch(paramg, this.rr, this);
+      AppMethodBeat.o(108670);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.emoji.NetSceneAskForReward", localException, "format error %s", new Object[] { this.xNY.akkx });
+        localciy.akkx = "0.00";
+      }
+    }
+  }
+  
+  public final int getType()
+  {
+    return 830;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(108669);
+    Log.d("MicroMsg.emoji.NetSceneAskForReward", "onGYNetEnd ErrType:%d, errCode:%d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(108669);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.b
  * JD-Core Version:    0.7.0.1
  */

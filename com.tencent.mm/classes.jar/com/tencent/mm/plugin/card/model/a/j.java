@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.card.model.a;
 
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "_Resp", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "Lcom/tencent/mm/modelbase/Cgi;", "()V", "setRR", "", "request", "Lcom/tencent/mm/protocal/protobuf/RequestProtoBuf;", "response", "funcId", "", "uri", "", "plugin-card_release"})
-public abstract class j<_Resp extends dyy>
-  extends c<_Resp>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "_Resp", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "Lcom/tencent/mm/modelbase/Cgi;", "()V", "setRR", "", "request", "Lcom/tencent/mm/protocal/protobuf/RequestProtoBuf;", "response", "funcId", "", "uri", "", "plugin-card_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class j<_Resp extends esc>
+  extends b<_Resp>
 {
-  public final void a(dyl paramdyl, dyy paramdyy, int paramInt, String paramString)
+  public final void a(erp paramerp, esc paramesc, int paramInt, String paramString)
   {
-    p.k(paramdyl, "request");
-    p.k(paramdyy, "response");
-    p.k(paramString, "uri");
-    d.a locala = new d.a();
-    locala.c((a)paramdyl);
-    locala.d((a)paramdyy);
-    locala.vD(paramInt);
-    locala.TW(paramString);
-    locala.vF(0);
-    locala.vG(0);
-    c(locala.bgN());
+    s.u(paramerp, "request");
+    s.u(paramesc, "response");
+    s.u(paramString, "uri");
+    c.a locala = new c.a();
+    locala.otE = ((a)paramerp);
+    locala.otF = ((a)paramesc);
+    locala.funcId = paramInt;
+    locala.uri = paramString;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    c(locala.bEF());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.a.j
  * JD-Core Version:    0.7.0.1
  */

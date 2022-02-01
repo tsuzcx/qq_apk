@@ -1,87 +1,34 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.Window;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.j.a;
-import com.tencent.mm.j.a.a;
-import com.tencent.mm.j.a.a.a;
-import com.tencent.mm.j.a.b;
-import com.tencent.mm.j.a.d;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.chatting.a;
+import com.tencent.mm.chatting.a.a;
+import com.tencent.mm.chatting.a.a.a;
+import com.tencent.mm.chatting.a.b;
+import com.tencent.mm.chatting.a.d;
 import com.tencent.mm.ui.MMActivity;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/ReadyChattingCompatUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/chatting/IChattingCompat$IChattingActionListener;", "Lcom/tencent/mm/chatting/IChattingCompat$IChattingFragmentFinish;", "()V", "chattingCompat", "Lcom/tencent/mm/chatting/IChattingCompat;", "getChattingCompat", "()Lcom/tencent/mm/chatting/IChattingCompat;", "setChattingCompat", "(Lcom/tencent/mm/chatting/IChattingCompat;)V", "dispatchKeyEvent", "", "event", "Landroid/view/KeyEvent;", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onChattingFinishBegin", "onChattingFinishEnd", "onChattingUIEnter", "onChattingUIExit", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "source", "onCreateAfter", "onDestroy", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/ReadyChattingCompatUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/chatting/IChattingCompat$IChattingActionListener;", "Lcom/tencent/mm/chatting/IChattingCompat$IChattingFragmentFinish;", "()V", "chattingCompat", "Lcom/tencent/mm/chatting/IChattingCompat;", "getChattingCompat", "()Lcom/tencent/mm/chatting/IChattingCompat;", "setChattingCompat", "(Lcom/tencent/mm/chatting/IChattingCompat;)V", "dispatchKeyEvent", "", "event", "Landroid/view/KeyEvent;", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onChattingFinishBegin", "onChattingFinishEnd", "onChattingUIEnter", "onChattingUIExit", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "source", "onCreateAfter", "onDestroy", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class ReadyChattingCompatUI
   extends MMFinderUI
   implements a.b, a.d
 {
-  public static final ReadyChattingCompatUI.a Axa = new ReadyChattingCompatUI.a((byte)0);
-  public a AwZ;
-  private HashMap _$_findViewCache;
+  public static final ReadyChattingCompatUI.a FVM = new ReadyChattingCompatUI.a((byte)0);
+  private a lPI;
   
-  public void _$_clearFindViewByIdCache()
-  {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-  }
-  
-  public View _$_findCachedViewById(int paramInt)
-  {
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    return localView1;
-  }
-  
-  public void a(Bundle paramBundle, int paramInt)
-  {
-    getWindow().setSoftInputMode(50);
-  }
-  
-  public final void atA() {}
-  
-  public final void atB()
-  {
-    a locala = this.AwZ;
-    if (locala != null) {
-      locala.atu();
-    }
-  }
-  
-  public void atw() {}
-  
-  public void aty()
-  {
-    Log.i("MicroMsg.ReadyChattingCompatUI", "[onChattingUIEnter] ...");
-  }
-  
-  public boolean atz()
-  {
-    Log.i("MicroMsg.ReadyChattingCompatUI", "[onChattingUIExit] ...");
-    return true;
-  }
+  public void _$_clearFindViewByIdCache() {}
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    a locala = this.AwZ;
-    if ((locala != null) && (locala.dispatchKeyEvent(paramKeyEvent) == true)) {
+    a locala = this.lPI;
+    if ((locala != null) && (locala.dispatchKeyEvent(paramKeyEvent) == true)) {}
+    for (int i = 1; i != 0; i = 0) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -90,7 +37,7 @@ public abstract class ReadyChattingCompatUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    a locala = this.AwZ;
+    a locala = this.lPI;
     if (locala != null) {
       locala.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
@@ -98,26 +45,25 @@ public abstract class ReadyChattingCompatUI
   
   public final void onCreate(Bundle paramBundle)
   {
-    Object localObject = a.a.jmw;
-    if (localObject != null) {}
-    for (localObject = ((a.a.a)localObject).a((MMActivity)this);; localObject = null)
+    Object localObject = a.a.lPG;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((a.a.a)localObject).a((MMActivity)this))
     {
-      this.AwZ = ((a)localObject);
-      localObject = this.AwZ;
+      this.lPI = ((a)localObject);
+      localObject = this.lPI;
       if (localObject != null) {
         ((a)localObject).a((a.b)this);
       }
-      localObject = this.AwZ;
+      localObject = this.lPI;
       if (localObject != null) {
-        ((a)localObject).atv();
+        ((a)localObject).aNS();
       }
       super.onCreate(paramBundle);
-      a(paramBundle, 0);
-      paramBundle = this.AwZ;
+      getWindow().setSoftInputMode(50);
+      paramBundle = this.lPI;
       if (paramBundle != null) {
-        paramBundle.atw();
+        paramBundle.aNT();
       }
-      atw();
       return;
     }
   }
@@ -125,11 +71,11 @@ public abstract class ReadyChattingCompatUI
   public void onDestroy()
   {
     super.onDestroy();
-    a locala = this.AwZ;
+    a locala = this.lPI;
     if (locala != null) {
       locala.b((a.b)this);
     }
-    locala = this.AwZ;
+    locala = this.lPI;
     if (locala != null) {
       locala.onDestroy();
     }
@@ -138,7 +84,7 @@ public abstract class ReadyChattingCompatUI
   public void onPause()
   {
     super.onPause();
-    a locala = this.AwZ;
+    a locala = this.lPI;
     if (locala != null) {
       locala.onPause();
     }
@@ -146,10 +92,10 @@ public abstract class ReadyChattingCompatUI
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
+    s.u(paramArrayOfString, "permissions");
+    s.u(paramArrayOfInt, "grantResults");
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    a locala = this.AwZ;
+    a locala = this.lPI;
     if (locala != null) {
       locala.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
@@ -158,7 +104,7 @@ public abstract class ReadyChattingCompatUI
   public void onResume()
   {
     super.onResume();
-    a locala = this.AwZ;
+    a locala = this.lPI;
     if (locala != null) {
       locala.onResume();
     }
@@ -172,7 +118,7 @@ public abstract class ReadyChattingCompatUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.ReadyChattingCompatUI
  * JD-Core Version:    0.7.0.1
  */

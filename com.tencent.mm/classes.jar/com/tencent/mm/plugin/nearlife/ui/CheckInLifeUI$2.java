@@ -15,16 +15,16 @@ final class CheckInLifeUI$2
   {
     AppMethodBeat.i(26578);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/nearlife/ui/CheckInLifeUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    CheckInLifeUI.a(this.Gve, paramView, true);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/nearlife/ui/CheckInLifeUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    CheckInLifeUI.a(this.Mrd, paramView, true);
     a.a(this, "com/tencent/mm/plugin/nearlife/ui/CheckInLifeUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(26578);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI.2
  * JD-Core Version:    0.7.0.1
  */

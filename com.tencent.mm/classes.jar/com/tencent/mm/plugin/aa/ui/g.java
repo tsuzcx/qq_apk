@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.plugin.chatroom.a.b;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.f;
@@ -21,8 +21,8 @@ public final class g
   extends u
 {
   private String chatroomName;
-  private Cursor mNt;
-  private String[] mNu;
+  private Cursor pKb;
+  private String[] pKc;
   private String query;
   
   public g(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
@@ -30,9 +30,9 @@ public final class g
     super(paramMMBaseSelectContactUI, null, true, 0);
     AppMethodBeat.i(63562);
     this.chatroomName = paramString;
-    paramMMBaseSelectContactUI = ((b)h.ae(b.class)).bbV().RA(this.chatroomName);
+    paramMMBaseSelectContactUI = ((b)h.ax(b.class)).bzK().Jy(this.chatroomName);
     if (paramMMBaseSelectContactUI != null) {
-      this.mNu = Util.listToStrings(paramMMBaseSelectContactUI);
+      this.pKc = Util.listToStrings(paramMMBaseSelectContactUI);
     }
     AppMethodBeat.o(63562);
   }
@@ -43,18 +43,18 @@ public final class g
     Log.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
     clearCache();
     this.query = paramString;
-    if (this.mNt != null)
+    if (this.pKb != null)
     {
-      this.mNt.close();
-      this.mNt = null;
+      this.pKb.close();
+      this.pKb = null;
     }
-    if ((!Util.isNullOrNil(this.query)) && (this.mNu != null))
+    if ((!Util.isNullOrNil(this.query)) && (this.pKc != null))
     {
-      h.aHH();
-      this.mNt = ((n)h.ae(n.class)).bbL().a(this.mNu, "@all.chatroom", this.query, new LinkedList(), null);
+      h.baF();
+      this.pKb = ((n)h.ax(n.class)).bzA().a(this.pKc, "@all.chatroom", this.query, new LinkedList(), null);
     }
     notifyDataSetChanged();
-    dE(paramString, true);
+    eo(paramString, true);
     AppMethodBeat.o(63563);
   }
   
@@ -62,10 +62,10 @@ public final class g
   {
     AppMethodBeat.i(63565);
     super.finish();
-    if (this.mNt != null)
+    if (this.pKb != null)
     {
-      this.mNt.close();
-      this.mNt = null;
+      this.pKb.close();
+      this.pKb = null;
     }
     AppMethodBeat.o(63565);
   }
@@ -73,32 +73,32 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(63566);
-    if (this.mNt == null)
+    if (this.pKb == null)
     {
       AppMethodBeat.o(63566);
       return 0;
     }
-    int i = this.mNt.getCount();
+    int i = this.pKb.getCount();
     AppMethodBeat.o(63566);
     return i;
   }
   
-  public final a ye(int paramInt)
+  public final a yk(int paramInt)
   {
     AppMethodBeat.i(63564);
     Object localObject = null;
-    if (this.mNt.moveToPosition(paramInt))
+    if (this.pKb.moveToPosition(paramInt))
     {
-      as localas = new as();
-      localas.convertFrom(this.mNt);
+      au localau = new au();
+      localau.convertFrom(this.pKb);
       f localf = new f(paramInt);
-      localf.contact = localas;
-      localf.XsX = true;
-      localf.Xxu = true;
+      localf.contact = localau;
+      localf.afey = true;
+      localf.afjB = true;
       localObject = localf;
-      if (as.bvK(localas.field_username))
+      if (au.bwO(localau.field_username))
       {
-        localf.Xxt = true;
+        localf.JXr = true;
         localObject = localf;
       }
     }

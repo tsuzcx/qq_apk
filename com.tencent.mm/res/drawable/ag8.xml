@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@color/ac_" />
-    <item android:state_pressed="true" android:drawable="@drawable/c9z" />
-    <item android:drawable="@color/ac_" />
-</selector>
+    <gradient android:startColor="#4d000000" android:endColor="#00000000" android:angle="270.0" />
+</shape>

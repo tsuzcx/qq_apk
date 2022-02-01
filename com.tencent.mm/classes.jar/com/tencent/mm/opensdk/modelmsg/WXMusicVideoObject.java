@@ -22,20 +22,21 @@ public class WXMusicVideoObject
   public String musicGenre;
   public String musicOperationUrl;
   public String musicUrl;
+  public WXMusicVipInfo musicVipInfo;
   public String singerName;
   public String songLyric;
   
   private int getFileSize(String paramString)
   {
-    AppMethodBeat.i(255093);
+    AppMethodBeat.i(243013);
     int i = b.a(paramString);
-    AppMethodBeat.o(255093);
+    AppMethodBeat.o(243013);
     return i;
   }
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(255100);
+    AppMethodBeat.i(243030);
     if ((!b.b(this.musicUrl)) && (this.musicUrl.length() <= 10240))
     {
       if ((!b.b(this.musicDataUrl)) && (this.musicDataUrl.length() <= 10240))
@@ -45,58 +46,58 @@ public class WXMusicVideoObject
           if ((!b.b(this.songLyric)) && (this.songLyric.length() > 32768))
           {
             Log.e("MicroMsg.SDK.WXMusicVideoObject", "songLyric.length exceeds the limit");
-            AppMethodBeat.o(255100);
+            AppMethodBeat.o(243030);
             return false;
           }
           if ((!b.b(this.hdAlbumThumbFilePath)) && (this.hdAlbumThumbFilePath.length() > 1024))
           {
             Log.e("MicroMsg.SDK.WXMusicVideoObject", "hdAlbumThumbFilePath.length exceeds the limit");
-            AppMethodBeat.o(255100);
+            AppMethodBeat.o(243030);
             return false;
           }
           if ((!b.b(this.hdAlbumThumbFilePath)) && (getFileSize(this.hdAlbumThumbFilePath) > 10485760))
           {
             Log.e("MicroMsg.SDK.WXMusicVideoObject", "hdAlbumThumbFilePath file length exceeds the limit");
-            AppMethodBeat.o(255100);
+            AppMethodBeat.o(243030);
             return false;
           }
           if ((!b.b(this.musicGenre)) && (this.musicGenre.length() > 1024))
           {
             Log.e("MicroMsg.SDK.WXMusicVideoObject", "musicGenre.length exceeds the limit");
-            AppMethodBeat.o(255100);
+            AppMethodBeat.o(243030);
             return false;
           }
           if ((!b.b(this.identification)) && (this.identification.length() > 1024))
           {
             Log.e("MicroMsg.SDK.WXMusicVideoObject", "identification.length exceeds the limit");
-            AppMethodBeat.o(255100);
+            AppMethodBeat.o(243030);
             return false;
           }
           if ((!b.b(this.musicOperationUrl)) && (this.musicOperationUrl.length() > 10240))
           {
             Log.e("MicroMsg.SDK.WXMusicVideoObject", "musicOperationUrl.length exceeds the limit");
-            AppMethodBeat.o(255100);
+            AppMethodBeat.o(243030);
             return false;
           }
-          AppMethodBeat.o(255100);
+          AppMethodBeat.o(243030);
           return true;
         }
         Log.e("MicroMsg.SDK.WXMusicVideoObject", "singerName.length exceeds the limit");
-        AppMethodBeat.o(255100);
+        AppMethodBeat.o(243030);
         return false;
       }
       Log.e("MicroMsg.SDK.WXMusicVideoObject", "musicDataUrl.length exceeds the limit");
-      AppMethodBeat.o(255100);
+      AppMethodBeat.o(243030);
       return false;
     }
     Log.e("MicroMsg.SDK.WXMusicVideoObject", "musicUrl.length exceeds the limit");
-    AppMethodBeat.o(255100);
+    AppMethodBeat.o(243030);
     return false;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(255094);
+    AppMethodBeat.i(243018);
     paramBundle.putString("_wxmusicvideoobject_musicUrl", this.musicUrl);
     paramBundle.putString("_wxmusicvideoobject_musicDataUrl", this.musicDataUrl);
     paramBundle.putString("_wxmusicvideoobject_singerName", this.singerName);
@@ -108,7 +109,13 @@ public class WXMusicVideoObject
     paramBundle.putString("_wxmusicvideoobject_identification", this.identification);
     paramBundle.putInt("_wxmusicvideoobject_duration", this.duration);
     paramBundle.putString("_wxmusicvideoobject_musicOperationUrl", this.musicOperationUrl);
-    AppMethodBeat.o(255094);
+    WXMusicVipInfo localWXMusicVipInfo = this.musicVipInfo;
+    if (localWXMusicVipInfo != null)
+    {
+      paramBundle.putString("_wxmusicvideoobject_musicVipInfo", localWXMusicVipInfo.getClass().getName());
+      this.musicVipInfo.serialize(paramBundle);
+    }
+    AppMethodBeat.o(243018);
   }
   
   public int type()
@@ -118,7 +125,7 @@ public class WXMusicVideoObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(255096);
+    AppMethodBeat.i(243022);
     this.musicUrl = paramBundle.getString("_wxmusicvideoobject_musicUrl");
     this.musicDataUrl = paramBundle.getString("_wxmusicvideoobject_musicDataUrl");
     this.singerName = paramBundle.getString("_wxmusicvideoobject_singerName");
@@ -130,12 +137,27 @@ public class WXMusicVideoObject
     this.identification = paramBundle.getString("_wxmusicvideoobject_identification");
     this.duration = paramBundle.getInt("_wxmusicvideoobject_duration", 0);
     this.musicOperationUrl = paramBundle.getString("_wxmusicvideoobject_musicOperationUrl");
-    AppMethodBeat.o(255096);
+    String str = paramBundle.getString("_wxmusicvideoobject_musicVipInfo");
+    if (str != null) {
+      try
+      {
+        WXMusicVipInfo localWXMusicVipInfo = (WXMusicVipInfo)Class.forName(str).newInstance();
+        this.musicVipInfo = localWXMusicVipInfo;
+        localWXMusicVipInfo.unserialize(paramBundle);
+        AppMethodBeat.o(243022);
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        Log.e("MicroMsg.SDK.WXMusicVideoObject", "get WXSceneDataObject from bundle failed: unknown vipInfoObjectStr " + str + ", ex = " + paramBundle.getMessage());
+      }
+    }
+    AppMethodBeat.o(243022);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMusicVideoObject
  * JD-Core Version:    0.7.0.1
  */

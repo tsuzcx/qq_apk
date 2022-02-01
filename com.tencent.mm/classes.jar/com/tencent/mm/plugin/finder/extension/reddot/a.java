@@ -1,275 +1,195 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
-import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.protocal.protobuf.bhw;
-import com.tencent.mm.protocal.protobuf.bkn;
+import com.tencent.mm.autogen.a.eg;
+import com.tencent.mm.autogen.a.gh;
+import com.tencent.mm.autogen.a.nk;
+import com.tencent.mm.autogen.a.su;
+import com.tencent.mm.autogen.mmdata.rpt.de;
+import com.tencent.mm.autogen.mmdata.rpt.df;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.protocal.protobuf.btw;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
-import kotlin.g.b.q;
-import kotlin.x;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import org.json.JSONObject;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderMsgRedDotHandler;", "", "manager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "lastUpdateWxMessageSessionId", "", "getLastUpdateWxMessageSessionId", "()Ljava/lang/String;", "setLastUpdateWxMessageSessionId", "(Ljava/lang/String;)V", "addFinderHelloMessageRedDot", "", "addFinderMessageRedDot", "addWxMessageRedDot", "checkMsgRedDot", "clearAllFinderMsgRedDot", "clearAllWxMsgRedDot", "clearWxMsgBubbleRedDot", "getFinderMessageTotalCount", "", "count", "isEnableMessageEntrance", "", "sendClearFinderMsgRedDotPath", "sendClearWxMsgBubbleRedDotPath", "sendClearWxMsgRedDotPath", "sendInsertFinderMsgRedDot", "sendInsertHelloMsgRedDot", "sendInsertWxMsgRedDot", "sendUpdateFinderMsgRedDot", "sendUpdateWxMsgRedDot", "updateFinderMessageRedDot", "updateWxMessageRedDot", "Companion", "plugin-finder_release"})
 public final class a
 {
-  public static final a xsr;
-  public final MMHandler handler;
-  public String xsp;
-  private final f xsq;
+  df APA;
+  p APB;
+  int APC;
+  int APD;
+  String APF;
+  boolean APG;
+  long APH;
+  int APJ;
+  int APK;
+  IListener<su> APL;
+  private de APz;
+  int m;
+  int n;
+  int o;
+  int p;
+  double q;
+  IListener<gh> qlY;
+  IListener<eg> qnK;
+  IListener<nk> qnf;
+  int z;
   
-  static
+  protected a()
   {
-    AppMethodBeat.i(223167);
-    xsr = new a((byte)0);
-    AppMethodBeat.o(223167);
+    AppMethodBeat.i(366748);
+    this.APz = new de();
+    this.APA = new df();
+    this.APC = 0;
+    this.APD = 0;
+    this.APF = "";
+    this.APG = false;
+    this.qnK = new FinderDynamicTimeHelper.1(this, com.tencent.mm.app.f.hfK);
+    this.APL = new FinderDynamicTimeHelper.2(this, com.tencent.mm.app.f.hfK);
+    this.qnf = new FinderDynamicTimeHelper.3(this, com.tencent.mm.app.f.hfK);
+    this.qlY = new FinderDynamicTimeHelper.4(this, com.tencent.mm.app.f.hfK);
+    this.APH = h.baE().ban().a(at.a.adbE, 0L);
+    this.APC = h.baE().ban().getInt(at.a.adbF, 0);
+    this.APD = h.baE().ban().getInt(at.a.adbG, 0);
+    Log.i("MicroMsg.FinderDynamicTimeHelper", "load  redDotDynamicTime[%d] dropRedDotCount[%d] deepReadCount[%d]", new Object[] { Long.valueOf(this.APH), Integer.valueOf(this.APC), Integer.valueOf(this.APD) });
+    AppMethodBeat.o(366748);
   }
   
-  public a(f paramf)
+  static void showDebugToast(String paramString)
   {
-    AppMethodBeat.i(223166);
-    this.xsq = paramf;
-    this.xsp = "";
-    paramf = new MMHandler("FinderMsgRedDotHandler", (MMHandler.Callback)new i(this));
-    paramf.setLogging(false);
-    this.handler = paramf;
-    AppMethodBeat.o(223166);
+    AppMethodBeat.i(366754);
+    Log.i("MicroMsg.FinderDynamicTimeHelper", "show debug [%s]", new Object[] { paramString });
+    AppMethodBeat.o(366754);
   }
   
-  public final void dqs()
+  public final boolean a(long paramLong, int paramInt, btw parambtw)
   {
-    AppMethodBeat.i(223158);
-    this.handler.removeMessages(8);
-    this.handler.sendEmptyMessage(8);
-    AppMethodBeat.o(223158);
-  }
-  
-  public final void dqt()
-  {
-    AppMethodBeat.i(223160);
-    this.handler.removeMessages(7);
-    this.handler.sendEmptyMessage(7);
-    AppMethodBeat.o(223160);
-  }
-  
-  public final void dqu()
-  {
-    AppMethodBeat.i(223161);
-    this.handler.removeMessages(1);
-    this.handler.sendEmptyMessage(1);
-    AppMethodBeat.o(223161);
-  }
-  
-  public final void dqv()
-  {
-    AppMethodBeat.i(223163);
-    this.handler.removeMessages(3);
-    this.handler.sendEmptyMessage(3);
-    AppMethodBeat.o(223163);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderMsgRedDotHandler$Companion;", "", "()V", "MSG_CLEAR_ALL_FINDER_MSG", "", "MSG_CLEAR_ALL_WX_MSG", "MSG_CLEAR_WX_MSG_BUBBLE", "MSG_INSERT_GREET", "MSG_INSERT_NORMAL", "MSG_INSERT_WX_NORMAL", "MSG_UPDATE_NORMAL", "MSG_UPDATE_WX_NORMAL", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    b(a parama)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    c(a parama, int paramInt1, int paramInt2)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    d(a parama, int paramInt)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class e
-    implements Runnable
-  {
-    public e(a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(291290);
-      long l = System.currentTimeMillis();
-      int k = ((PluginFinder)com.tencent.mm.kernel.h.ag(PluginFinder.class)).getConversationStorage().gV(2, 2);
-      int m = ((PluginFinder)com.tencent.mm.kernel.h.ag(PluginFinder.class)).getConversationStorage().gV(2, 1);
-      Object localObject1 = a.a(this.xss).aBf("finder_private_msg_entrance");
-      int i;
-      Object localObject2;
-      if ((localObject1 != null) && (((l)localObject1).field_ctrInfo.type == 1007))
+    AppMethodBeat.i(366778);
+    long l;
+    boolean bool;
+    label90:
+    Object localObject;
+    if (!this.APG) {
+      switch (paramInt)
       {
-        if (m <= 0)
+      case 11: 
+      case 12: 
+      case 15: 
+      case 16: 
+      default: 
+        l = q.ASF.eaB();
+        if (paramLong <= l)
         {
-          com.tencent.mm.plugin.report.service.h.IzE.a(20492, new Object[] { Long.valueOf(2L), Long.valueOf(1L), Long.valueOf(l) });
-          com.tencent.mm.plugin.report.service.h.IzE.p(1473L, 2L, 1L);
-        }
-        i = 1;
-        localObject2 = new StringBuilder("[checkMsgRedDot] token=").append(l).append(" cost=").append(System.currentTimeMillis() - l).append("ms, [normalUnReadCount:redDotCount]=[").append(k).append(':').append(i).append("] greetUnReadCount=").append(m).append(" ctrlType=[");
-        if (localObject1 == null) {
-          break label349;
-        }
-      }
-      label349:
-      for (localObject1 = Integer.valueOf(((l)localObject1).field_ctrInfo.type);; localObject1 = null)
-      {
-        Log.i("Finder.MsgRedDotHandler", localObject1 + ']');
-        AppMethodBeat.o(291290);
-        return;
-        if ((localObject1 != null) && (((l)localObject1).field_ctrInfo.type == 1006))
-        {
-          localObject2 = ((l)localObject1).aBy("finder_private_msg_entrance");
-          if (localObject2 != null) {}
-          for (int j = ((bkn)localObject2).count;; j = 0)
+          bool = true;
+          if ((this.APG) && (parambtw != null))
           {
-            i = j;
-            if (j == k) {
-              break;
+            localObject = this.APz;
+            ((de)localObject).ikf = ((de)localObject).F("TipsId", parambtw.ZYN, true);
+            ((de)localObject).iyT = parambtw.type;
+            parambtw = q.ASF;
+            parambtw = ((de)localObject).eE(q.eaP());
+            parambtw.ijY = cn.bDw();
+            if (!bool) {
+              break label354;
             }
-            com.tencent.mm.plugin.report.service.h.IzE.a(20492, new Object[] { Long.valueOf(1L), Long.valueOf(1L), Long.valueOf(l) });
-            com.tencent.mm.plugin.report.service.h.IzE.p(1473L, 1L, 1L);
-            i = j;
-            break;
           }
         }
-        i = 0;
         break;
       }
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class f
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    f(a parama)
+    label354:
+    for (paramInt = 1;; paramInt = 2)
     {
-      super();
+      parambtw.ilm = paramInt;
+      parambtw.iyV = (l / 1000L);
+      parambtw.iyY = this.APD;
+      parambtw.iyX = this.APC;
+      parambtw.iyW = paramLong;
+      parambtw.iyZ = parambtw.F("ConfigJson", this.APF.replaceAll(",", ";"), true);
+      parambtw.bMH();
+      showDebugToast(this.APz.aIF());
+      AppMethodBeat.o(366778);
+      return bool;
+      l = q.ASF.eaz();
+      break;
+      l = q.ASF.eaB();
+      break;
+      l = q.ASF.eaD();
+      break;
+      l = q.ASF.eaC();
+      break;
+      l = q.ASF.eaE();
+      break;
+      l = q.ASF.eaF();
+      break;
+      l = this.APH;
+      localObject = q.ASF;
+      l = l * 1000L / q.ebb();
+      break;
+      bool = false;
+      break label90;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class g
-    extends q
-    implements kotlin.g.a.a<x>
+  final void bZN()
   {
-    g(a parama)
+    AppMethodBeat.i(366763);
+    this.APG = false;
+    this.APF = ((c)h.ax(c.class)).a(c.a.zrA, "");
+    if ((!Util.isNullOrNil(this.APF)) && (!"-1".equals(this.APF))) {}
+    try
     {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class h
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    h(a parama)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
-  static final class i
-    implements MMHandler.Callback
-  {
-    i(a parama) {}
-    
-    public final boolean handleMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(267857);
-      Log.i("Finder.MsgRedDotHandler", "[Callback] What=" + paramMessage.what);
-      switch (paramMessage.what)
+      JSONObject localJSONObject = new JSONObject(this.APF);
+      this.APJ = localJSONObject.optInt("dropY", 1800);
+      this.APK = localJSONObject.optInt("deepY", 1800);
+      this.p = localJSONObject.optInt("p", 7200);
+      this.z = localJSONObject.optInt("z", 2);
+      this.o = localJSONObject.optInt("o", 40);
+      this.m = localJSONObject.optInt("m", 86400);
+      this.n = localJSONObject.optInt("n", 1800);
+      this.q = localJSONObject.optDouble("q", 1.100000023841858D);
+      this.APG = true;
+      if (this.APH <= 0L)
       {
+        this.APH = this.p;
+        this.APD = 0;
       }
-      for (;;)
+      for (this.APC = 0;; this.APC = 0)
       {
-        AppMethodBeat.o(267857);
-        return true;
-        if (a.dqw())
-        {
-          a.b(this.xss);
-          continue;
-          if (a.dqw())
-          {
-            a.c(this.xss);
-            continue;
-            if (a.dqw())
-            {
-              a.d(this.xss);
-              continue;
-              if (a.dqw())
-              {
-                a.e(this.xss);
-                continue;
-                if (a.dqw())
-                {
-                  a.f(this.xss);
-                  continue;
-                  a.g(this.xss);
-                  continue;
-                  a.h(this.xss);
-                  continue;
-                  a.i(this.xss);
-                }
-              }
-            }
-          }
-        }
+        label211:
+        sz();
+        Log.i("MicroMsg.FinderDynamicTimeHelper", "resetControl config[%s] needDynamicTime[%b] redDotDynamicTime[%d] dropRedDotCount[%d] deepReadCount[%d]", new Object[] { this.APF, Boolean.valueOf(this.APG), Long.valueOf(this.APH), Integer.valueOf(this.APC), Integer.valueOf(this.APD) });
+        AppMethodBeat.o(366763);
+        return;
+        this.APH = 0L;
+        this.APD = 0;
       }
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class j
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    j(a parama, int paramInt1, int paramInt2)
+    catch (Exception localException)
     {
-      super();
+      break label211;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class k
-    extends q
-    implements kotlin.g.a.a<x>
+  final void sz()
   {
-    k(a parama, int paramInt)
-    {
-      super();
-    }
+    AppMethodBeat.i(366756);
+    h.baE().ban().set(at.a.adbE, Long.valueOf(this.APH));
+    h.baE().ban().set(at.a.adbF, Integer.valueOf(this.APC));
+    h.baE().ban().set(at.a.adbG, Integer.valueOf(this.APD));
+    AppMethodBeat.o(366756);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.reddot.a
  * JD-Core Version:    0.7.0.1
  */

@@ -15,59 +15,64 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.m;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.s;
 import com.tencent.liteapp.storage.WxaLiteAppInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ext.ui.SwipeBackActivity;
 import com.tencent.mm.ext.ui.SwipeBackLayout;
 import com.tencent.mm.plugin.lite.LiteAppCenter.PageInfo;
+import com.tencent.wxa.b.b;
 import com.tencent.wxa.c;
 import com.tencent.wxa.ui.a.a;
+import io.flutter.Log;
 import io.flutter.embedding.android.DrawableSplashScreen;
-import io.flutter.embedding.android.FlutterView.b;
-import io.flutter.embedding.android.FlutterView.c;
-import io.flutter.embedding.android.e.a;
-import io.flutter.embedding.android.j;
+import io.flutter.embedding.android.FlutterActivityLaunchConfigs.BackgroundMode;
+import io.flutter.embedding.android.FlutterView.RenderMode;
+import io.flutter.embedding.android.FlutterView.TransparencyMode;
+import io.flutter.embedding.android.SplashScreen;
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.plugin.platform.PlatformPlugin;
 import io.flutter.view.FlutterMain;
 import java.util.Map;
 
 public class WxaLiteAppBaseUI
   extends SwipeBackActivity
-  implements com.tencent.wxa.b.b, a.a
+  implements b, a.a
 {
-  public static final String cpb;
-  protected String cpc;
-  protected com.tencent.wxa.ui.a cpd;
-  protected WxaLiteAppInfo cpe;
-  protected boolean cpf = false;
-  protected LiteAppCenter.PageInfo cpn;
+  public static final String DEFAULT_BACKGROUND_MODE;
+  protected String egQ;
+  protected com.tencent.wxa.ui.a egR;
+  protected WxaLiteAppInfo egS;
+  protected boolean egT = false;
+  protected boolean egU = false;
+  protected LiteAppCenter.PageInfo egW;
   protected View mContentView;
   
   static
   {
-    AppMethodBeat.i(258677);
-    cpb = e.a.aaoG.name();
-    AppMethodBeat.o(258677);
+    AppMethodBeat.i(219129);
+    DEFAULT_BACKGROUND_MODE = FlutterActivityLaunchConfigs.BackgroundMode.opaque.name();
+    AppMethodBeat.o(219129);
   }
   
-  private e.a Ns()
+  private FlutterActivityLaunchConfigs.BackgroundMode getBackgroundMode()
   {
-    AppMethodBeat.i(258633);
+    AppMethodBeat.i(219123);
     if (getIntent().hasExtra("background_mode"))
     {
-      locala = e.a.valueOf(getIntent().getStringExtra("background_mode"));
-      AppMethodBeat.o(258633);
-      return locala;
+      localBackgroundMode = FlutterActivityLaunchConfigs.BackgroundMode.valueOf(getIntent().getStringExtra("background_mode"));
+      AppMethodBeat.o(219123);
+      return localBackgroundMode;
     }
-    e.a locala = e.a.aaoG;
-    AppMethodBeat.o(258633);
-    return locala;
+    FlutterActivityLaunchConfigs.BackgroundMode localBackgroundMode = FlutterActivityLaunchConfigs.BackgroundMode.opaque;
+    AppMethodBeat.o(219123);
+    return localBackgroundMode;
   }
   
-  private Drawable Nt()
+  private Drawable getSplashScreenFromManifest()
   {
-    AppMethodBeat.i(258632);
+    AppMethodBeat.i(219111);
     for (;;)
     {
       try
@@ -82,177 +87,207 @@ public class WxaLiteAppBaseUI
           if (Build.VERSION.SDK_INT > 21)
           {
             localObject1 = getResources().getDrawable(((Integer)localObject1).intValue(), getTheme());
-            AppMethodBeat.o(258632);
+            AppMethodBeat.o(219111);
             return localObject1;
           }
           localObject1 = getResources().getDrawable(((Integer)localObject1).intValue());
-          AppMethodBeat.o(258632);
+          AppMethodBeat.o(219111);
           return localObject1;
         }
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        AppMethodBeat.o(258632);
+        AppMethodBeat.o(219111);
         return null;
       }
-      AppMethodBeat.o(258632);
+      AppMethodBeat.o(219111);
       return null;
       label106:
       Object localObject2 = null;
     }
   }
   
-  public final FlutterView.b NA()
+  public final void anL()
   {
-    AppMethodBeat.i(258666);
-    if (Ns() == e.a.aaoG)
-    {
-      localb = FlutterView.b.aapw;
-      AppMethodBeat.o(258666);
-      return localb;
-    }
-    FlutterView.b localb = FlutterView.b.aapx;
-    AppMethodBeat.o(258666);
-    return localb;
-  }
-  
-  public final FlutterView.c NB()
-  {
-    AppMethodBeat.i(258667);
-    if (this.cpf)
-    {
-      localc = FlutterView.c.aapB;
-      AppMethodBeat.o(258667);
-      return localc;
-    }
-    if (Ns() == e.a.aaoG)
-    {
-      localc = FlutterView.c.aapA;
-      AppMethodBeat.o(258667);
-      return localc;
-    }
-    FlutterView.c localc = FlutterView.c.aapB;
-    AppMethodBeat.o(258667);
-    return localc;
-  }
-  
-  public final j NC()
-  {
-    AppMethodBeat.i(258631);
-    Object localObject = Nt();
-    if (localObject != null)
-    {
-      localObject = new DrawableSplashScreen((Drawable)localObject);
-      AppMethodBeat.o(258631);
-      return localObject;
-    }
-    AppMethodBeat.o(258631);
-    return null;
-  }
-  
-  public final io.flutter.embedding.engine.a ND()
-  {
-    AppMethodBeat.i(258668);
-    io.flutter.embedding.engine.a locala = c.ivt().ZYJ;
-    AppMethodBeat.o(258668);
-    return locala;
-  }
-  
-  public String NE()
-  {
-    AppMethodBeat.i(258670);
-    if ((getIntent().hasExtra("activityId")) && (!TextUtils.isEmpty(getIntent().getStringExtra("activityId"))))
-    {
-      str = getIntent().getStringExtra("activityId");
-      AppMethodBeat.o(258670);
-      return str;
-    }
-    if (TextUtils.isEmpty(this.cpc)) {
-      this.cpc = String.format("%d-%d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(hashCode()) });
-    }
-    String str = this.cpc;
-    AppMethodBeat.o(258670);
-    return str;
-  }
-  
-  public String NF()
-  {
-    AppMethodBeat.i(258671);
-    if (getIntent().hasExtra("name"))
-    {
-      String str = getIntent().getStringExtra("name");
-      AppMethodBeat.o(258671);
-      return str;
-    }
-    AppMethodBeat.o(258671);
-    return "";
-  }
-  
-  public Map NG()
-  {
-    AppMethodBeat.i(258672);
-    if ((getIntent().hasExtra("params")) && ((getIntent().getSerializableExtra("params") instanceof com.tencent.wxa.d.a)))
-    {
-      Map localMap = ((com.tencent.wxa.d.a)getIntent().getSerializableExtra("params")).map;
-      if (this.cpf) {
-        localMap.put("transparent", Boolean.valueOf(this.cpf));
-      }
-      AppMethodBeat.o(258672);
-      return localMap;
-    }
-    AppMethodBeat.o(258672);
-    return null;
-  }
-  
-  protected View NI()
-  {
-    AppMethodBeat.i(258628);
-    LinearLayout localLinearLayout = new LinearLayout(getContext());
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.addView(this.cpd.ivC(), new LinearLayout.LayoutParams(-1, -1));
-    AppMethodBeat.o(258628);
-    return localLinearLayout;
-  }
-  
-  public final void NJ()
-  {
-    AppMethodBeat.i(258675);
-    if (getIntent().hasExtra("pageInfo")) {
-      this.cpn = ((LiteAppCenter.PageInfo)getIntent().getParcelableExtra("pageInfo"));
-    }
-    AppMethodBeat.o(258675);
-  }
-  
-  public final void Nu()
-  {
-    AppMethodBeat.i(258673);
+    AppMethodBeat.i(219241);
     if (getIntent().hasExtra("LiteApp")) {
-      this.cpe = ((WxaLiteAppInfo)getIntent().getParcelableExtra("LiteApp"));
+      this.egS = ((WxaLiteAppInfo)getIntent().getParcelableExtra("LiteApp"));
     }
-    AppMethodBeat.o(258673);
+    AppMethodBeat.o(219241);
   }
   
-  public final com.tencent.wxa.b.b Nv()
+  public final b anM()
   {
     return this;
   }
   
-  public final String Nw()
+  public final FlutterView.RenderMode anN()
   {
-    AppMethodBeat.i(258659);
-    String str = getIntent().getStringExtra("cached_engine_id");
-    AppMethodBeat.o(258659);
+    AppMethodBeat.i(219219);
+    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.opaque)
+    {
+      localRenderMode = FlutterView.RenderMode.surface;
+      AppMethodBeat.o(219219);
+      return localRenderMode;
+    }
+    FlutterView.RenderMode localRenderMode = FlutterView.RenderMode.texture;
+    AppMethodBeat.o(219219);
+    return localRenderMode;
+  }
+  
+  public final FlutterView.TransparencyMode anO()
+  {
+    AppMethodBeat.i(219221);
+    if (this.egT)
+    {
+      localTransparencyMode = FlutterView.TransparencyMode.transparent;
+      AppMethodBeat.o(219221);
+      return localTransparencyMode;
+    }
+    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.opaque)
+    {
+      localTransparencyMode = FlutterView.TransparencyMode.opaque;
+      AppMethodBeat.o(219221);
+      return localTransparencyMode;
+    }
+    FlutterView.TransparencyMode localTransparencyMode = FlutterView.TransparencyMode.transparent;
+    AppMethodBeat.o(219221);
+    return localTransparencyMode;
+  }
+  
+  public String anP()
+  {
+    AppMethodBeat.i(219234);
+    if ((getIntent().hasExtra("activityId")) && (!TextUtils.isEmpty(getIntent().getStringExtra("activityId"))))
+    {
+      str = getIntent().getStringExtra("activityId");
+      AppMethodBeat.o(219234);
+      return str;
+    }
+    if (TextUtils.isEmpty(this.egQ)) {
+      this.egQ = String.format("%d-%d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(hashCode()) });
+    }
+    String str = this.egQ;
+    AppMethodBeat.o(219234);
     return str;
   }
   
-  public final String Nx()
+  public String anQ()
   {
-    AppMethodBeat.i(258661);
+    AppMethodBeat.i(219236);
+    if (getIntent().hasExtra("name"))
+    {
+      String str = getIntent().getStringExtra("name");
+      AppMethodBeat.o(219236);
+      return str;
+    }
+    AppMethodBeat.o(219236);
+    return "";
+  }
+  
+  public Map anR()
+  {
+    AppMethodBeat.i(219239);
+    if ((getIntent().hasExtra("params")) && ((getIntent().getSerializableExtra("params") instanceof com.tencent.wxa.d.a)))
+    {
+      Map localMap = ((com.tencent.wxa.d.a)getIntent().getSerializableExtra("params")).map;
+      if (this.egT) {
+        localMap.put("transparent", Boolean.valueOf(this.egT));
+      }
+      AppMethodBeat.o(219239);
+      return localMap;
+    }
+    AppMethodBeat.o(219239);
+    return null;
+  }
+  
+  protected View anT()
+  {
+    AppMethodBeat.i(219135);
+    LinearLayout localLinearLayout = new LinearLayout(getContext());
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.addView(this.egR.keV(), new LinearLayout.LayoutParams(-1, -1));
+    AppMethodBeat.o(219135);
+    return localLinearLayout;
+  }
+  
+  public final void anU()
+  {
+    AppMethodBeat.i(219243);
+    if (getIntent().hasExtra("pageInfo")) {
+      this.egW = ((LiteAppCenter.PageInfo)getIntent().getParcelableExtra("pageInfo"));
+    }
+    AppMethodBeat.o(219243);
+  }
+  
+  public final void cG(boolean paramBoolean)
+  {
+    AppMethodBeat.i(219245);
+    SwipeBackLayout localSwipeBackLayout = aXf();
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localSwipeBackLayout.setEnableGesture(paramBoolean);
+      AppMethodBeat.o(219245);
+      return;
+    }
+  }
+  
+  public void cleanUpFlutterEngine(FlutterEngine paramFlutterEngine) {}
+  
+  public void configureFlutterEngine(FlutterEngine paramFlutterEngine) {}
+  
+  public final void f(Boolean paramBoolean)
+  {
+    AppMethodBeat.i(219191);
+    this.egR.qf(paramBoolean.booleanValue());
+    AppMethodBeat.o(219191);
+  }
+  
+  public final Activity getActivity()
+  {
+    return this;
+  }
+  
+  public final String getAppBundlePath()
+  {
+    AppMethodBeat.i(219214);
+    if ((getApplicationInfo().flags & 0x2) != 0) {}
+    for (int i = 1; (i != 0) && ("android.intent.action.RUN".equals(getIntent().getAction())); i = 0)
+    {
+      str = getIntent().getDataString();
+      if (str == null) {
+        break;
+      }
+      AppMethodBeat.o(219214);
+      return str;
+    }
+    String str = FlutterMain.findAppBundlePath();
+    AppMethodBeat.o(219214);
+    return str;
+  }
+  
+  public final String getCachedEngineId()
+  {
+    AppMethodBeat.i(219206);
+    String str = getIntent().getStringExtra("cached_engine_id");
+    AppMethodBeat.o(219206);
+    return str;
+  }
+  
+  public Context getContext()
+  {
+    return this;
+  }
+  
+  public final String getDartEntrypointFunctionName()
+  {
+    AppMethodBeat.i(219210);
     Object localObject1;
     if (getIntent().hasExtra("dart_entrypoint"))
     {
       localObject1 = getIntent().getStringExtra("dart_entrypoint");
-      AppMethodBeat.o(258661);
+      AppMethodBeat.o(219210);
       return localObject1;
     }
     for (;;)
@@ -266,47 +301,34 @@ public class WxaLiteAppBaseUI
           if (localObject1 == null) {
             break;
           }
-          AppMethodBeat.o(258661);
+          AppMethodBeat.o(219210);
           return localObject1;
         }
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        AppMethodBeat.o(258661);
+        AppMethodBeat.o(219210);
         return "main";
       }
       Object localObject2 = null;
     }
-    AppMethodBeat.o(258661);
+    AppMethodBeat.o(219210);
     return "main";
   }
   
-  public final String Ny()
+  public final FlutterEngine getFlutterEngine()
   {
-    AppMethodBeat.i(258663);
-    if ((getApplicationInfo().flags & 0x2) != 0) {}
-    for (int i = 1; (i != 0) && ("android.intent.action.RUN".equals(getIntent().getAction())); i = 0)
-    {
-      str = getIntent().getDataString();
-      if (str == null) {
-        break;
-      }
-      AppMethodBeat.o(258663);
-      return str;
-    }
-    String str = FlutterMain.findAppBundlePath();
-    AppMethodBeat.o(258663);
-    return str;
+    return this.egR.flutterEngine;
   }
   
-  public final String Nz()
+  public final String getInitialRoute()
   {
-    AppMethodBeat.i(258664);
+    AppMethodBeat.i(219217);
     Object localObject1;
     if (getIntent().hasExtra("initial_route"))
     {
       localObject1 = getIntent().getStringExtra("initial_route");
-      AppMethodBeat.o(258664);
+      AppMethodBeat.o(219217);
       return localObject1;
     }
     for (;;)
@@ -320,85 +342,38 @@ public class WxaLiteAppBaseUI
           if (localObject1 == null) {
             break;
           }
-          AppMethodBeat.o(258664);
+          AppMethodBeat.o(219217);
           return localObject1;
         }
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        AppMethodBeat.o(258664);
+        AppMethodBeat.o(219217);
         return "/";
       }
       Object localObject2 = null;
     }
-    AppMethodBeat.o(258664);
+    AppMethodBeat.o(219217);
     return "/";
-  }
-  
-  public final io.flutter.plugin.platform.b a(Activity paramActivity, io.flutter.embedding.engine.a parama)
-  {
-    AppMethodBeat.i(258669);
-    if (paramActivity != null)
-    {
-      paramActivity = new io.flutter.plugin.platform.b(this, parama.aaqd);
-      AppMethodBeat.o(258669);
-      return paramActivity;
-    }
-    AppMethodBeat.o(258669);
-    return null;
-  }
-  
-  public final void a(io.flutter.embedding.engine.a parama) {}
-  
-  public final void b(io.flutter.embedding.engine.a parama) {}
-  
-  public final void bZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(258676);
-    SwipeBackLayout localSwipeBackLayout = aEb();
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localSwipeBackLayout.setEnableGesture(paramBoolean);
-      AppMethodBeat.o(258676);
-      return;
-    }
-  }
-  
-  public final void c(Boolean paramBoolean)
-  {
-    AppMethodBeat.i(258646);
-    this.cpd.oC(paramBoolean.booleanValue());
-    AppMethodBeat.o(258646);
-  }
-  
-  public final Activity getActivity()
-  {
-    return this;
-  }
-  
-  public Context getContext()
-  {
-    return this;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(258640);
-    this.cpd.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(258640);
+    AppMethodBeat.i(219182);
+    this.egR.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(219182);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(258644);
-    this.cpd.oC(true);
-    AppMethodBeat.o(258644);
+    AppMethodBeat.i(219187);
+    this.egR.qf(true);
+    AppMethodBeat.o(219187);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(258630);
+    AppMethodBeat.i(219146);
     for (;;)
     {
       try
@@ -407,125 +382,113 @@ public class WxaLiteAppBaseUI
         if (localActivityInfo.metaData == null) {
           continue;
         }
-        i = localActivityInfo.metaData.getInt("io.flutter.embedding.android.NormalTheme", -1);
+        int i = localActivityInfo.metaData.getInt("io.flutter.embedding.android.NormalTheme", -1);
         if (i != -1) {
           setTheme(i);
         }
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        io.flutter.b.iAh();
+        Log.e("FlutterActivity", "Could not read meta-data for FlutterActivity. Using the launch theme as normal theme.");
         continue;
-        int i = 0;
-        continue;
-        c.ivt().init();
-        ((m)getLifecycle()).a(h.a.ON_CREATE);
-        this.cpd = new com.tencent.wxa.ui.a(this);
-        this.cpd.ivA();
-        this.mContentView = NI();
-        setContentView(this.mContentView);
-        AppMethodBeat.o(258630);
       }
       super.onCreate(paramBundle);
-      if (c.ivt().ZYI == null) {
-        continue;
-      }
-      i = 1;
-      if (i != 0) {
-        continue;
-      }
-      com.tencent.liteapp.b.b.e("WxaLiteAp.WxaLiteAppBaseUI", "wxa router has no init.", new Object[0]);
-      finish();
-      AppMethodBeat.o(258630);
+      c.keQ().init();
+      ((s)getLifecycle()).a(j.a.ON_CREATE);
+      this.egR = new com.tencent.wxa.ui.a(this);
+      this.egR.keU();
+      this.mContentView = anT();
+      setContentView(this.mContentView);
+      AppMethodBeat.o(219146);
       return;
-      io.flutter.b.iAe();
+      Log.d("FlutterActivity", "Using the launch theme as normal theme.");
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(258639);
+    AppMethodBeat.i(219179);
     super.onDestroy();
-    if (this.cpd != null)
+    if (this.egR != null)
     {
-      this.cpd.onDestroyView();
-      this.cpd.onDetach();
-      ((m)getLifecycle()).a(h.a.ON_DESTROY);
+      this.egR.onDestroyView();
+      this.egR.onDetach();
+      ((s)getLifecycle()).a(j.a.ON_DESTROY);
     }
-    AppMethodBeat.o(258639);
+    AppMethodBeat.o(219179);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(258642);
+    AppMethodBeat.i(219185);
     super.onNewIntent(paramIntent);
-    this.cpd.onNewIntent(paramIntent);
-    AppMethodBeat.o(258642);
+    this.egR.onNewIntent(paramIntent);
+    AppMethodBeat.o(219185);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(258637);
+    AppMethodBeat.i(219172);
     super.onPause();
-    this.cpd.onPause();
-    ((m)getLifecycle()).a(h.a.ON_PAUSE);
-    AppMethodBeat.o(258637);
+    this.egR.onPause();
+    ((s)getLifecycle()).a(j.a.ON_PAUSE);
+    AppMethodBeat.o(219172);
   }
   
   public void onPostResume()
   {
-    AppMethodBeat.i(258636);
+    AppMethodBeat.i(219169);
     super.onPostResume();
-    this.cpd.onPostResume();
-    AppMethodBeat.o(258636);
+    this.egR.onPostResume();
+    AppMethodBeat.o(219169);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(258650);
-    this.cpd.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(258650);
+    AppMethodBeat.i(219193);
+    this.egR.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(219193);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(258635);
+    AppMethodBeat.i(219166);
     super.onResume();
-    ((m)getLifecycle()).a(h.a.ON_RESUME);
-    this.cpd.onResume();
-    AppMethodBeat.o(258635);
+    ((s)getLifecycle()).a(j.a.ON_RESUME);
+    this.egR.onResume();
+    AppMethodBeat.o(219166);
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(258634);
+    AppMethodBeat.i(219161);
     super.onStart();
-    ((m)getLifecycle()).a(h.a.ON_START);
-    this.cpd.onStart();
-    AppMethodBeat.o(258634);
+    ((s)getLifecycle()).a(j.a.ON_START);
+    this.egR.onStart();
+    AppMethodBeat.o(219161);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(258638);
+    AppMethodBeat.i(219176);
     super.onStop();
-    this.cpd.onStop();
-    ((m)getLifecycle()).a(h.a.ON_STOP);
-    AppMethodBeat.o(258638);
+    this.egR.onStop();
+    ((s)getLifecycle()).a(j.a.ON_STOP);
+    AppMethodBeat.o(219176);
   }
   
   public void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(258656);
-    this.cpd.onTrimMemory(paramInt);
-    AppMethodBeat.o(258656);
+    AppMethodBeat.i(219198);
+    this.egR.onTrimMemory(paramInt);
+    AppMethodBeat.o(219198);
   }
   
   protected void onUserLeaveHint()
   {
-    AppMethodBeat.i(258652);
-    this.cpd.onUserLeaveHint();
-    AppMethodBeat.o(258652);
+    AppMethodBeat.i(219196);
+    this.egR.onUserLeaveHint();
+    AppMethodBeat.o(219196);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -533,10 +496,45 @@ public class WxaLiteAppBaseUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public FlutterEngine provideFlutterEngine(Context paramContext)
+  {
+    AppMethodBeat.i(219226);
+    paramContext = c.keQ().OM(this.egU);
+    AppMethodBeat.o(219226);
+    return paramContext;
+  }
+  
+  public final PlatformPlugin providePlatformPlugin(Activity paramActivity, FlutterEngine paramFlutterEngine)
+  {
+    AppMethodBeat.i(219229);
+    if (paramActivity != null)
+    {
+      paramActivity = new PlatformPlugin(this, paramFlutterEngine.getPlatformChannel());
+      AppMethodBeat.o(219229);
+      return paramActivity;
+    }
+    AppMethodBeat.o(219229);
+    return null;
+  }
+  
+  public SplashScreen provideSplashScreen()
+  {
+    AppMethodBeat.i(219155);
+    Object localObject = getSplashScreenFromManifest();
+    if (localObject != null)
+    {
+      localObject = new DrawableSplashScreen((Drawable)localObject);
+      AppMethodBeat.o(219155);
+      return localObject;
+    }
+    AppMethodBeat.o(219155);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.liteapp.ui.WxaLiteAppBaseUI
  * JD-Core Version:    0.7.0.1
  */

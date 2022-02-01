@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/gyb" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/hd" android:textStyle="bold" android:textColor="@color/fo" android:gravity="center" android:id="@id/c9n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cs" />
-    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/cn" android:layout_below="@id/c9n" android:layout_centerHorizontal="true">
-        <ImageView android:id="@id/c9l" android:layout_width="@dimen/bw" android:layout_height="@dimen/bw" android:layout_centerInParent="true" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/c9m" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_centerInParent="true" app:iconColor="@color/afz" />
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/cqg" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/p9" android:gravity="center" android:id="@id/bxp" android:background="@drawable/sj" android:layout_width="@dimen/a5z" android:layout_height="@dimen/a5z" />
     </RelativeLayout>
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/Link" android:id="@id/c9i" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ce" android:text="@string/c5c" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <Button android:textStyle="bold" android:id="@id/c9j" android:layout_marginBottom="@dimen/bx" android:text="测试动画" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/p3" />
-    <Button android:textStyle="bold" android:id="@id/c9k" android:layout_marginBottom="@dimen/c6" android:text="测试动画" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/oz" />
-</RelativeLayout>
+    <RelativeLayout android:id="@id/cql" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <View android:background="@color/p9" android:layout_width="97.0dip" android:layout_height="1.0dip" />
+        <View android:id="@id/cqm" android:background="@android:color/white" android:visibility="gone" android:layout_width="97.0dip" android:layout_height="1.0dip" />
+    </RelativeLayout>
+</LinearLayout>

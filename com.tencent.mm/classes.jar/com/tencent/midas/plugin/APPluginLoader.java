@@ -16,19 +16,19 @@ public class APPluginLoader
   
   static
   {
-    AppMethodBeat.i(252435);
+    AppMethodBeat.i(217486);
     sClassLoaderMap = new HashMap();
     parentClassLoader = null;
-    AppMethodBeat.o(252435);
+    AppMethodBeat.o(217486);
   }
   
   public static ClassLoader getClassLoader(String paramString1, String paramString2)
   {
     try
     {
-      AppMethodBeat.i(252425);
+      AppMethodBeat.i(217448);
       paramString1 = (ClassLoader)sClassLoaderMap.get(paramString1 + "_" + paramString2);
-      AppMethodBeat.o(252425);
+      AppMethodBeat.o(217448);
       return paramString1;
     }
     finally
@@ -42,10 +42,10 @@ public class APPluginLoader
   {
     try
     {
-      AppMethodBeat.i(252426);
+      AppMethodBeat.i(217454);
       paramContext = getOrCreateClassLoaderByPath(paramContext, paramString, APPluginInstallerAndUpdater.getInstallPath(paramContext, paramString).getCanonicalPath());
       APLog.d("APPluginStatic", "getClassLoader getOrCreateClassLoader midasClassLoader: " + paramContext.hashCode());
-      AppMethodBeat.o(252426);
+      AppMethodBeat.o(217454);
       return paramContext;
     }
     finally
@@ -61,17 +61,32 @@ public class APPluginLoader
     {
       try
       {
-        AppMethodBeat.i(252429);
+        AppMethodBeat.i(217470);
         String str2 = APPluginUtils.getMD5FromPath(paramString2);
         String str1 = paramString1 + "_" + str2;
         paramString1 = (DexClassLoader)sClassLoaderMap.get(str1);
         APLog.d("APPluginStatic", "getOrCreateClassLoader apkFilePath: " + paramString2 + ", MD5: " + str2 + ", key: " + str1 + ", dexClassLoader: " + paramString1);
         if (paramString1 != null)
         {
-          AppMethodBeat.o(252429);
+          AppMethodBeat.o(217470);
           paramContext = paramString1;
           return paramContext;
         }
+        try
+        {
+          if (APPluginChecker.isPluginValid(paramString2, str2)) {
+            continue;
+          }
+          APLog.e("APPluginStatic", "getOrCreateClassLoader isPluginValid false");
+          AppMethodBeat.o(217470);
+          paramContext = null;
+        }
+        catch (Exception paramContext)
+        {
+          AppMethodBeat.o(217470);
+          paramContext = null;
+        }
+        continue;
         paramString1 = APPluginConfig.getOptimizedDexPath(paramContext).getCanonicalPath();
         long l = System.currentTimeMillis();
         APPluginUtils.extractLibs(paramString2, APPluginConfig.getLibPath(paramContext).getCanonicalPath());
@@ -82,7 +97,7 @@ public class APPluginLoader
           paramContext = new DexClassLoader(paramString2, paramString1, str2, parentClassLoader);
           APLog.d("APPluginStatic", "getOrCreateClassLoader new DexClassLoader cache: " + paramString1 + " libDir: " + str2);
           sClassLoaderMap.put(str1, paramContext);
-          AppMethodBeat.o(252429);
+          AppMethodBeat.o(217470);
         }
         else
         {
@@ -99,14 +114,14 @@ public class APPluginLoader
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 174
+    //   3: ldc 187
     //   5: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: ldc 176
+    //   8: ldc 189
     //   10: astore 4
-    //   12: ldc 176
+    //   12: ldc 189
     //   14: astore 5
     //   16: aload_0
-    //   17: invokestatic 179	com/tencent/midas/plugin/APPluginConfig:getPluginPath	(Landroid/content/Context;)Ljava/io/File;
+    //   17: invokestatic 192	com/tencent/midas/plugin/APPluginConfig:getPluginPath	(Landroid/content/Context;)Ljava/io/File;
     //   20: astore 6
     //   22: aload 5
     //   24: astore_3
@@ -115,7 +130,7 @@ public class APPluginLoader
     //   28: aload 6
     //   30: ifnull +50 -> 80
     //   33: aload 6
-    //   35: invokevirtual 183	java/io/File:listFiles	()[Ljava/io/File;
+    //   35: invokevirtual 196	java/io/File:listFiles	()[Ljava/io/File;
     //   38: astore 6
     //   40: iconst_0
     //   41: istore_1
@@ -132,27 +147,27 @@ public class APPluginLoader
     //   58: aaload
     //   59: astore_3
     //   60: aload_3
-    //   61: invokevirtual 186	java/io/File:getName	()Ljava/lang/String;
-    //   64: ldc 188
-    //   66: invokevirtual 194	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   61: invokevirtual 199	java/io/File:getName	()Ljava/lang/String;
+    //   64: ldc 201
+    //   66: invokevirtual 207	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   69: ifeq +41 -> 110
-    //   72: ldc 188
+    //   72: ldc 201
     //   74: astore_2
     //   75: aload_3
     //   76: invokevirtual 68	java/io/File:getCanonicalPath	()Ljava/lang/String;
     //   79: astore_3
     //   80: aload_2
-    //   81: invokestatic 200	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   81: invokestatic 213	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   84: ifne +17 -> 101
     //   87: aload_3
-    //   88: invokestatic 200	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   88: invokestatic 213	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   91: ifne +10 -> 101
     //   94: aload_0
     //   95: aload_2
     //   96: aload_3
     //   97: invokestatic 72	com/tencent/midas/plugin/APPluginLoader:getOrCreateClassLoaderByPath	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ldalvik/system/DexClassLoader;
     //   100: pop
-    //   101: ldc 174
+    //   101: ldc 187
     //   103: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   106: ldc 2
     //   108: monitorexit
@@ -190,9 +205,9 @@ public class APPluginLoader
   
   static void release()
   {
-    AppMethodBeat.i(252427);
+    AppMethodBeat.i(217461);
     sClassLoaderMap.clear();
-    AppMethodBeat.o(252427);
+    AppMethodBeat.o(217461);
   }
   
   public static void setParentClassLoader(DexClassLoader paramDexClassLoader)
@@ -202,7 +217,7 @@ public class APPluginLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -8,26 +8,26 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public f rZC;
-  private e rZD;
+  public f vkT;
+  private e vkU;
   
   public b(f paramf, e parame)
   {
-    this.rZC = paramf;
-    this.rZD = parame;
+    this.vkT = paramf;
+    this.vkU = parame;
   }
   
   public final void stop()
   {
     AppMethodBeat.i(106281);
     Log.i("MicroMsg.FloatBallFadeInController", "stop FloatIndicatorController");
-    this.rZC.a(null);
+    this.vkT.a(null);
     AppMethodBeat.o(106281);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.ui.b
  * JD-Core Version:    0.7.0.1
  */

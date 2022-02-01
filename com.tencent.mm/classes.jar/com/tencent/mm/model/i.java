@@ -1,24 +1,26 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.a.k;
-import com.tencent.mm.ao.af;
+import com.tencent.mm.an.a.k;
+import com.tencent.mm.an.a.l;
+import com.tencent.mm.an.af;
+import com.tencent.mm.api.m;
 
 public final class i
-  implements com.tencent.mm.api.l
+  implements m
 {
-  public final k gm(String paramString)
+  public final k hM(String paramString)
   {
     AppMethodBeat.i(123954);
-    paramString = af.bjz().gm(paramString);
+    paramString = af.bHj().hM(paramString);
     AppMethodBeat.o(123954);
     return paramString;
   }
   
-  public final String gn(String paramString)
+  public final String hN(String paramString)
   {
     AppMethodBeat.i(123955);
-    paramString = af.bjz().gn(paramString);
+    paramString = af.bHj().hN(paramString);
     AppMethodBeat.o(123955);
     return paramString;
   }

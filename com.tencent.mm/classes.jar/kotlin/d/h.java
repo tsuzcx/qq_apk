@@ -2,47 +2,47 @@ package kotlin.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import kotlin.Metadata;
 import kotlin.Result.Failure;
 import kotlin.d.a.a;
 import kotlin.d.b.a.e;
-import kotlin.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/coroutines/SafeContinuation;", "T", "Lkotlin/coroutines/Continuation;", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "delegate", "(Lkotlin/coroutines/Continuation;)V", "initialResult", "", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "result", "getOrThrow", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "resumeWith", "", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "Companion", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/coroutines/SafeContinuation;", "T", "Lkotlin/coroutines/Continuation;", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "delegate", "(Lkotlin/coroutines/Continuation;)V", "initialResult", "", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "result", "getOrThrow", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "resumeWith", "", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "Companion", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public final class h<T>
   implements e, d<T>
 {
-  private static final AtomicReferenceFieldUpdater<h<?>, Object> aaAy;
   @Deprecated
-  public static final h.a aaAz;
-  private final d<T> aaAx;
+  private static final AtomicReferenceFieldUpdater<h<?>, Object> aiwh;
+  private static final a aiwi;
+  private final d<T> aiwg;
   private volatile Object result;
   
   static
   {
     AppMethodBeat.i(129640);
-    aaAz = new h.a((byte)0);
-    aaAy = AtomicReferenceFieldUpdater.newUpdater(h.class, Object.class, "result");
+    aiwi = new a((byte)0);
+    aiwh = AtomicReferenceFieldUpdater.newUpdater(h.class, Object.class, "result");
     AppMethodBeat.o(129640);
   }
   
   public h(d<? super T> paramd)
   {
-    this(paramd, a.aaAB);
+    this(paramd, a.aiwk);
     AppMethodBeat.i(129639);
     AppMethodBeat.o(129639);
   }
   
-  private h(d<? super T> paramd, Object paramObject)
+  public h(d<? super T> paramd, Object paramObject)
   {
     AppMethodBeat.i(129638);
-    this.aaAx = paramd;
+    this.aiwg = paramd;
     this.result = paramObject;
     AppMethodBeat.o(129638);
   }
   
   public final e getCallerFrame()
   {
-    d locald2 = this.aaAx;
+    d locald2 = this.aiwg;
     d locald1 = locald2;
     if (!(locald2 instanceof e)) {
       locald1 = null;
@@ -53,7 +53,7 @@ public final class h<T>
   public final f getContext()
   {
     AppMethodBeat.i(129634);
-    f localf = this.aaAx.getContext();
+    f localf = this.aiwg.getContext();
     AppMethodBeat.o(129634);
     return localf;
   }
@@ -63,24 +63,24 @@ public final class h<T>
     return null;
   }
   
-  public final Object iBS()
+  public final Object kli()
   {
     AppMethodBeat.i(129636);
     Object localObject2 = this.result;
     Object localObject1 = localObject2;
-    if (localObject2 == a.aaAB)
+    if (localObject2 == a.aiwk)
     {
-      if (aaAy.compareAndSet(this, a.aaAB, a.aaAA))
+      if (aiwh.compareAndSet(this, a.aiwk, a.aiwj))
       {
-        localObject1 = a.aaAA;
+        localObject1 = a.aiwj;
         AppMethodBeat.o(129636);
         return localObject1;
       }
       localObject1 = this.result;
     }
-    if (localObject1 == a.aaAC)
+    if (localObject1 == a.aiwl)
     {
-      localObject1 = a.aaAA;
+      localObject1 = a.aiwj;
       AppMethodBeat.o(129636);
       return localObject1;
     }
@@ -103,17 +103,17 @@ public final class h<T>
       do
       {
         localObject = this.result;
-        if (localObject != a.aaAB) {
+        if (localObject != a.aiwk) {
           break;
         }
-      } while (!aaAy.compareAndSet(this, a.aaAB, paramObject));
+      } while (!aiwh.compareAndSet(this, a.aiwk, paramObject));
       AppMethodBeat.o(129635);
       return;
-      if (localObject != a.aaAA) {
+      if (localObject != a.aiwj) {
         break;
       }
-    } while (!aaAy.compareAndSet(this, a.aaAA, a.aaAC));
-    this.aaAx.resumeWith(paramObject);
+    } while (!aiwh.compareAndSet(this, a.aiwj, a.aiwl));
+    this.aiwg.resumeWith(paramObject);
     AppMethodBeat.o(129635);
     return;
     paramObject = (Throwable)new IllegalStateException("Already resumed");
@@ -124,14 +124,17 @@ public final class h<T>
   public final String toString()
   {
     AppMethodBeat.i(129637);
-    String str = "SafeContinuation for " + this.aaAx;
+    String str = "SafeContinuation for " + this.aiwg;
     AppMethodBeat.o(129637);
     return str;
   }
+  
+  @Metadata(d1={""}, d2={"Lkotlin/coroutines/SafeContinuation$Companion;", "", "()V", "RESULT", "Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;", "Lkotlin/coroutines/SafeContinuation;", "kotlin.jvm.PlatformType", "getRESULT$annotations", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.d.h
  * JD-Core Version:    0.7.0.1
  */

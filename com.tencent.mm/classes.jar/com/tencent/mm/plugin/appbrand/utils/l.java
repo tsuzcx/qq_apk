@@ -1,130 +1,158 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.os.Looper;
-import android.os.Message;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.r;
-import com.tencent.mm.sdk.statemachine.StateMachine;
-import java.util.LinkedList;
-import java.util.Queue;
+import com.tencent.mm.plugin.appbrand.af.o;
+import com.tencent.mm.plugin.appbrand.af.o.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashSet;
+import java.util.Set;
 
-public abstract class l<Task>
-  extends StateMachine
+public final class l
 {
-  private final Queue<Task> cRj = new LinkedList();
-  private final l<Task>.b riA = new b((byte)0);
-  private final l<Task>.a riB = new a((byte)0);
-  private final String riC;
+  private static final char[] INVALID;
+  private static final String[] VALID;
+  private static final Set<Object> uqG;
   
-  protected l(String paramString, Looper paramLooper)
+  static
   {
-    super(paramString, paramLooper);
-    this.riC = paramString;
-    addState(this.riA);
-    addState(this.riB);
-    setInitialState(this.riA);
-    start();
+    AppMethodBeat.i(135362);
+    uqG = new HashSet();
+    INVALID = new char[] { 60, 62, 34, 39, 38, 32, 39 };
+    VALID = new String[] { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "&nbsp;", "&#39;" };
+    AppMethodBeat.o(135362);
   }
   
-  protected abstract boolean bQj();
-  
-  protected abstract void cE(Task paramTask);
-  
-  public final void cR(Task paramTask)
+  public static String agD(String paramString)
   {
-    if (bQj()) {
-      return;
-    }
-    synchronized (this.cRj)
+    AppMethodBeat.i(135356);
+    StringBuffer localStringBuffer = new StringBuffer();
+    int m = paramString.length();
+    int i = 0;
+    while (i < m)
     {
-      this.cRj.offer(paramTask);
-      sendMessage(1);
-      return;
-    }
-  }
-  
-  protected final int cmg()
-  {
-    return this.cRj.size();
-  }
-  
-  public void onQuitting()
-  {
-    super.onQuitting();
-    synchronized (this.cRj)
-    {
-      this.cRj.clear();
-      return;
-    }
-  }
-  
-  final class a
-    extends r
-  {
-    private a() {}
-    
-    public final String getName()
-    {
-      AppMethodBeat.i(107819);
-      String str = l.b(l.this) + "|StateExecuting";
-      AppMethodBeat.o(107819);
-      return str;
-    }
-    
-    public final boolean processMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(107818);
-      if (2 == paramMessage.what)
+      int j = 0;
+      while (j < INVALID.length)
       {
-        l.a(l.this, l.a(l.this));
-        AppMethodBeat.o(107818);
-        return true;
+        String str = VALID[j];
+        int k = 0;
+        while ((k < str.length()) && (i + k < m) && (str.charAt(k) == paramString.charAt(i + k))) {
+          k += 1;
+        }
+        if (k == str.length()) {
+          break;
+        }
+        j += 1;
       }
-      boolean bool = super.processMessage(paramMessage);
-      AppMethodBeat.o(107818);
-      return bool;
+      if (j != INVALID.length)
+      {
+        localStringBuffer.append(INVALID[j]);
+        i = VALID[j].length() + i;
+      }
+      else
+      {
+        localStringBuffer.append(paramString.charAt(i));
+        i += 1;
+      }
     }
+    paramString = localStringBuffer.toString();
+    AppMethodBeat.o(135356);
+    return paramString;
   }
   
-  final class b
-    extends r
+  public static String agE(String paramString)
   {
-    private b() {}
-    
-    public final void enter()
+    AppMethodBeat.i(135357);
+    if (paramString == null)
     {
-      AppMethodBeat.i(107820);
-      super.enter();
-      l.c(l.this);
-      AppMethodBeat.o(107820);
+      AppMethodBeat.o(135357);
+      return null;
     }
-    
-    public final String getName()
+    paramString = paramString.replace(' ', '\n').replace(' ', '\n');
+    AppMethodBeat.o(135357);
+    return paramString;
+  }
+  
+  public static void cM(Object paramObject)
+  {
+    AppMethodBeat.i(135353);
+    uqG.remove(paramObject);
+    AppMethodBeat.o(135353);
+  }
+  
+  @Deprecated
+  public static void cNl()
+  {
+    AppMethodBeat.i(135354);
+    o.cNl();
+    AppMethodBeat.o(135354);
+  }
+  
+  @Deprecated
+  public static o.a cNm()
+  {
+    AppMethodBeat.i(317312);
+    o.a locala = o.cNm();
+    AppMethodBeat.o(317312);
+    return locala;
+  }
+  
+  public static String e(ComponentName paramComponentName)
+  {
+    AppMethodBeat.i(135358);
+    if (paramComponentName == null)
     {
-      AppMethodBeat.i(107822);
-      String str = l.b(l.this) + "|StateIdle";
-      AppMethodBeat.o(107822);
-      return str;
+      AppMethodBeat.o(135358);
+      return "[UNKNOWN]";
     }
-    
-    public final boolean processMessage(Message paramMessage)
+    PackageManager localPackageManager = MMApplicationContext.getContext().getPackageManager();
+    if (localPackageManager == null)
     {
-      AppMethodBeat.i(107821);
-      if ((1 == paramMessage.what) || (2 == paramMessage.what))
+      AppMethodBeat.o(135358);
+      return "[UNKNOWN]";
+    }
+    try
+    {
+      paramComponentName = localPackageManager.getActivityInfo(paramComponentName, 128);
+      if (paramComponentName != null)
       {
-        l.c(l.this);
-        AppMethodBeat.o(107821);
-        return true;
+        paramComponentName = paramComponentName.taskAffinity;
+        AppMethodBeat.o(135358);
+        return paramComponentName;
       }
-      boolean bool = super.processMessage(paramMessage);
-      AppMethodBeat.o(107821);
-      return bool;
     }
+    catch (Exception paramComponentName)
+    {
+      Log.e("MicroMsg.AppBrandUtil", "getActivityTaskAffinity e = %s", new Object[] { paramComponentName });
+      AppMethodBeat.o(135358);
+    }
+    return "[UNKNOWN]";
+  }
+  
+  public static <T> T em(T paramT)
+  {
+    AppMethodBeat.i(135352);
+    uqG.add(paramT);
+    AppMethodBeat.o(135352);
+    return paramT;
+  }
+  
+  public static String getMMString(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(135351);
+    paramVarArgs = MMApplicationContext.getResources().getString(paramInt, paramVarArgs);
+    AppMethodBeat.o(135351);
+    return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.l
  * JD-Core Version:    0.7.0.1
  */

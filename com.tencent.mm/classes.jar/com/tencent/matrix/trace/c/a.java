@@ -16,20 +16,29 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class a
 {
-  private static long dfC = 0L;
-  private static long dfD = 0L;
-  public static AppMethodBeat.a dfE = new AppMethodBeat.a();
-  public static AppMethodBeat.a dfF = new AppMethodBeat.a();
-  public static int dfG = -2147483648;
-  private static boolean dfH = false;
+  private static long feR = 0L;
+  private static long feS = 0L;
+  public static AppMethodBeat.a feT = new AppMethodBeat.a();
+  public static AppMethodBeat.a feU = new AppMethodBeat.a();
+  public static int feV = -2147483648;
+  private static boolean feW = false;
   private static final HashSet<b> listeners = new HashSet();
   
-  public static void Yb()
+  public static void a(b paramb)
+  {
+    synchronized (listeners)
+    {
+      listeners.add(paramb);
+      return;
+    }
+  }
+  
+  public static void azM()
   {
     try
     {
-      dfC = SystemClock.uptimeMillis();
-      dfF = AppMethodBeat.getInstance().maskIndex("ApplicationCreateBeginMethodIndex");
+      feR = SystemClock.uptimeMillis();
+      feU = AppMethodBeat.getInstance().maskIndex("ApplicationCreateBeginMethodIndex");
       Object localObject1 = Class.forName("android.app.ActivityThread");
       Object localObject2 = ((Class)localObject1).getDeclaredField("sCurrentActivityThread");
       ((Field)localObject2).setAccessible(true);
@@ -44,7 +53,7 @@ public final class a
         ((Field)localObject2).setAccessible(true);
         ((Field)localObject2).set(localObject1, new a((Handler.Callback)((Field)localObject2).get(localObject1)));
       }
-      c.i("Matrix.ActivityThreadHacker", "hook system handler completed. start:%s SDK_INT:%s", new Object[] { Long.valueOf(dfC), Integer.valueOf(Build.VERSION.SDK_INT) });
+      c.i("Matrix.ActivityThreadHacker", "hook system handler completed. start:%s SDK_INT:%s", new Object[] { Long.valueOf(feR), Integer.valueOf(Build.VERSION.SDK_INT) });
       return;
     }
     catch (Exception localException)
@@ -53,41 +62,32 @@ public final class a
     }
   }
   
-  public static long Yc()
+  public static long azN()
   {
-    return dfD - dfC;
+    return feS - feR;
   }
   
-  public static long Yd()
+  public static long azO()
   {
-    return dfC;
+    return feR;
   }
   
-  public static boolean Ye()
+  public static boolean azP()
   {
-    return dfH;
-  }
-  
-  public static void a(b paramb)
-  {
-    synchronized (listeners)
-    {
-      listeners.add(paramb);
-      return;
-    }
+    return feW;
   }
   
   static final class a
     implements Handler.Callback
   {
-    private static boolean dfI = false;
-    private static int dfJ = 2147483647;
-    private final Handler.Callback dfK;
+    private static boolean feX = false;
+    private static int feY = 2147483647;
+    private final Handler.Callback feZ;
     private Method method = null;
     
     a(Handler.Callback paramCallback)
     {
-      this.dfK = paramCallback;
+      this.feZ = paramCallback;
     }
     
     private boolean g(Message paramMessage)
@@ -121,8 +121,8 @@ public final class a
     
     public final boolean handleMessage(Message paramMessage)
     {
-      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 25) && ((paramMessage.what == 115) || (paramMessage.what == 116) || (paramMessage.what == 103) || (paramMessage.what == 104) || (paramMessage.what == 137))) {
-        c.i("Matrix.ActivityThreadHacker", "[Matrix.fix.sp.apply] start to fix msg.waht=" + paramMessage.what, new Object[0]);
+      if ((com.tencent.matrix.trace.a.a.azD().fdA) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 25) && ((paramMessage.what == 115) || (paramMessage.what == 116) || (paramMessage.what == 103) || (paramMessage.what == 104) || (paramMessage.what == 137))) {
+        c.i("Matrix.ActivityThreadHacker", "Fix SP ANR is enabled", new Object[0]);
       }
       try
       {
@@ -131,73 +131,73 @@ public final class a
         {
           localField.setAccessible(true);
           ((ConcurrentLinkedQueue)localField.get(null)).clear();
-          c.i("Matrix.ActivityThreadHacker", "[Matrix.fix.sp.apply] sPendingWorkFinishers.clear successful", new Object[0]);
+          c.i("Matrix.ActivityThreadHacker", "Fix SP ANR sPendingWorkFinishers.clear successful", new Object[0]);
         }
       }
       catch (ClassNotFoundException localClassNotFoundException)
       {
         for (;;)
         {
-          c.e("Matrix.ActivityThreadHacker", "[Matrix.fix.sp.apply] ClassNotFoundException = " + localClassNotFoundException.getMessage(), new Object[0]);
+          c.e("Matrix.ActivityThreadHacker", "Fix SP ANR ClassNotFoundException = " + localClassNotFoundException.getMessage(), new Object[0]);
         }
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
         for (;;)
         {
-          c.e("Matrix.ActivityThreadHacker", "[Matrix.fix.sp.apply] IllegalAccessException =" + localIllegalAccessException.getMessage(), new Object[0]);
+          c.e("Matrix.ActivityThreadHacker", "Fix SP ANR IllegalAccessException =" + localIllegalAccessException.getMessage(), new Object[0]);
         }
       }
       catch (NoSuchFieldException localNoSuchFieldException)
       {
         for (;;)
         {
-          c.e("Matrix.ActivityThreadHacker", "[Matrix.fix.sp.apply] NoSuchFieldException = " + localNoSuchFieldException.getMessage(), new Object[0]);
+          c.e("Matrix.ActivityThreadHacker", "Fix SP ANR NoSuchFieldException = " + localNoSuchFieldException.getMessage(), new Object[0]);
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          c.e("Matrix.ActivityThreadHacker", "[Matrix.fix.sp.apply] Exception = " + localException.getMessage(), new Object[0]);
+          c.e("Matrix.ActivityThreadHacker", "Fix SP ANR Exception = " + localException.getMessage(), new Object[0]);
         }
       }
       if (!AppMethodBeat.isRealTrace()) {
-        return (this.dfK != null) && (this.dfK.handleMessage(paramMessage));
+        return (this.feZ != null) && (this.feZ.handleMessage(paramMessage));
       }
       boolean bool = g(paramMessage);
-      if (dfJ > 0)
+      if (feY > 0)
       {
         c.i("Matrix.ActivityThreadHacker", "[handleMessage] msg.what:%s begin:%s isLaunchActivity:%s SDK_INT=%s", new Object[] { Integer.valueOf(paramMessage.what), Long.valueOf(SystemClock.uptimeMillis()), Boolean.valueOf(bool), Integer.valueOf(Build.VERSION.SDK_INT) });
-        dfJ -= 1;
+        feY -= 1;
       }
-      if ((!dfI) && ((bool) || (paramMessage.what == 114) || (paramMessage.what == 113)))
+      if ((!feX) && ((bool) || (paramMessage.what == 114) || (paramMessage.what == 113)))
       {
-        a.bq(SystemClock.uptimeMillis());
-        a.dfG = paramMessage.what;
-        dfI = true;
+        a.dL(SystemClock.uptimeMillis());
+        a.feV = paramMessage.what;
+        feX = true;
         a.access$102(bool);
         c.i("Matrix.ActivityThreadHacker", "application create end, sApplicationCreateScene:%d, isLaunchActivity:%s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(bool) });
-        synchronized (a.Yf())
+        synchronized (a.azQ())
         {
-          Iterator localIterator = a.Yf().iterator();
+          Iterator localIterator = a.azQ().iterator();
           if (localIterator.hasNext()) {
-            ((a.b)localIterator.next()).Yg();
+            ((a.b)localIterator.next()).azR();
           }
         }
       }
-      return (this.dfK != null) && (this.dfK.handleMessage(paramMessage));
+      return (this.feZ != null) && (this.feZ.handleMessage(paramMessage));
     }
   }
   
   public static abstract interface b
   {
-    public abstract void Yg();
+    public abstract void azR();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.trace.c.a
  * JD-Core Version:    0.7.0.1
  */

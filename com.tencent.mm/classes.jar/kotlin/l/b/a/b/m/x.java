@@ -1,92 +1,61 @@
 package kotlin.l.b.a.b.m;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.a.g;
+import java.util.List;
 import kotlin.l.b.a.b.i.c;
-import kotlin.t;
+import kotlin.l.b.a.b.i.f;
+import kotlin.l.b.a.b.j.g.h;
 
-public final class x
-  extends v
-  implements bd
+public abstract class x
+  extends bk
+  implements kotlin.l.b.a.b.m.c.g
 {
-  private final ab abqA;
-  private final v abqz;
+  public final al ajpE;
+  public final al ajpF;
   
-  public x(v paramv, ab paramab)
+  public x(al paramal1, al paramal2)
   {
-    super(paramv.abqv, paramv.abqw);
-    AppMethodBeat.i(60746);
-    this.abqz = paramv;
-    this.abqA = paramab;
-    AppMethodBeat.o(60746);
+    super((byte)0);
+    this.ajpE = paramal1;
+    this.ajpF = paramal2;
   }
   
-  private x k(kotlin.l.b.a.b.m.a.i parami)
+  public abstract String a(c paramc, f paramf);
+  
+  public final List<az> klR()
   {
-    AppMethodBeat.i(60743);
-    p.k(parami, "kotlinTypeRefiner");
-    ab localab = parami.aK((ab)this.abqz);
-    if (localab == null)
-    {
-      parami = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.FlexibleType");
-      AppMethodBeat.o(60743);
-      throw parami;
-    }
-    parami = new x((v)localab, parami.aK(this.abqA));
-    AppMethodBeat.o(60743);
-    return parami;
+    return ksx().klR();
   }
   
-  public final bg Jm(boolean paramBoolean)
+  public h knP()
   {
-    AppMethodBeat.i(60740);
-    bg localbg = be.b(this.abqz.Jm(paramBoolean), (ab)this.abqA.iPX().Jm(paramBoolean));
-    AppMethodBeat.o(60740);
-    return localbg;
+    return ksx().knP();
   }
   
-  public final String a(c paramc, kotlin.l.b.a.b.i.i parami)
+  public kotlin.l.b.a.b.b.a.g knl()
   {
-    AppMethodBeat.i(60741);
-    p.k(paramc, "renderer");
-    p.k(parami, "options");
-    if (parami.iOn())
-    {
-      paramc = paramc.b(this.abqA);
-      AppMethodBeat.o(60741);
-      return paramc;
-    }
-    paramc = this.abqz.a(paramc, parami);
-    AppMethodBeat.o(60741);
-    return paramc;
+    return ksx().knl();
   }
   
-  public final bg b(g paramg)
+  public boolean ksB()
   {
-    AppMethodBeat.i(60739);
-    p.k(paramg, "newAnnotations");
-    paramg = be.b(this.abqz.b(paramg), this.abqA);
-    AppMethodBeat.o(60739);
-    return paramg;
+    return ksx().ksB();
   }
   
-  public final aj iIq()
+  public abstract al ksx();
+  
+  public final ax kzm()
   {
-    AppMethodBeat.i(60742);
-    aj localaj = this.abqz.iIq();
-    AppMethodBeat.o(60742);
-    return localaj;
+    return ksx().kzm();
   }
   
-  public final ab iPV()
+  public String toString()
   {
-    return this.abqA;
+    return c.ajgB.b((ad)this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.x
  * JD-Core Version:    0.7.0.1
  */

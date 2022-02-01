@@ -5,36 +5,57 @@ import com.tencent.mm.plugin.report.f;
 
 public final class b
 {
-  public static int PAk = 17;
-  public static int ffF = 811;
-  public static int zYW = 1;
-  public static int zYX = 2;
-  public static int zYY = 3;
-  public static int zYZ = 4;
-  public static int zZa = 5;
-  public static int zZb = 6;
-  public static int zZc = 7;
-  public static int zZd = 8;
-  public static int zZe = 9;
-  public static int zZf = 10;
-  public static int zZg = 11;
-  public static int zZh = 12;
-  public static int zZi = 13;
-  public static int zZj = 14;
-  public static int zZk = 15;
-  public static int zZl = 16;
-  public static int zZm = 255;
+  public static int FtQ;
+  public static int FtR;
+  public static int FtS;
+  public static int FtT;
+  public static int FtU;
+  public static int FtV;
+  public static int FtW;
+  public static int FtX;
+  public static int FtY;
+  public static int FtZ;
+  public static int Fua;
+  public static int Fub;
+  public static int Fuc;
+  public static int Fud;
+  public static int Fue;
+  public static int Fuf;
+  public static int Fug = 255;
+  public static int Wqz;
+  public static int hjP = 811;
   
-  public static void rE(int paramInt)
+  static
+  {
+    FtQ = 1;
+    FtR = 2;
+    FtS = 3;
+    FtT = 4;
+    FtU = 5;
+    FtV = 6;
+    FtW = 7;
+    FtX = 8;
+    FtY = 9;
+    FtZ = 10;
+    Fua = 11;
+    Fub = 12;
+    Fuc = 13;
+    Fud = 14;
+    Fue = 15;
+    Fuf = 16;
+    Wqz = 17;
+  }
+  
+  public static void rG(int paramInt)
   {
     AppMethodBeat.i(117835);
-    f.Iyx.idkeyStat(ffF, paramInt, 1L, false);
+    f.Ozc.idkeyStat(hjP, paramInt, 1L, false);
     AppMethodBeat.o(117835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -10,84 +10,73 @@ import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.keyboard.selfdraw.KeyboardView;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/LargeChineseSwitchDrawer;", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/DrawMethod;", "keyboard", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "(Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;)V", "yinPaint", "Landroid/graphics/Paint;", "yinPercentX", "", "yinPercentY", "yinText", "", "yinTextSize", "", "zhongPaint", "zhongPercentX", "zhongPercentY", "zhongText", "zhongTextSize", "drawButton", "", "canvas", "Landroid/graphics/Canvas;", "button", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "getType", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/LargeChineseSwitchDrawer;", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/DrawMethod;", "keyboard", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "(Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;)V", "yinPaint", "Landroid/graphics/Paint;", "yinPercentX", "", "yinPercentY", "yinText", "", "yinTextSize", "", "zhongPaint", "zhongPercentX", "zhongPercentY", "zhongText", "zhongTextSize", "drawButton", "", "canvas", "Landroid/graphics/Canvas;", "button", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "getType", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   extends b
 {
-  private final int DAI;
-  private final int DAJ;
-  private final double DAK;
-  private final double DAL;
-  private final double DAM;
-  private final double DAN;
-  private final String DAO;
-  private final String DAP;
-  private final Paint DAQ;
-  private final Paint DAR;
+  private final int JtI;
+  private final int JtJ;
+  private final double JtK;
+  private final double JtL;
+  private final double JtM;
+  private final double JtN;
+  private final String JtO;
+  private final String JtP;
+  private final Paint JtQ;
+  private final Paint JtR;
   
   public f(KeyboardView paramKeyboardView)
   {
     super(paramKeyboardView);
-    AppMethodBeat.i(210277);
-    this.DAI = 18;
-    this.DAJ = 14;
-    this.DAK = 0.3289D;
-    this.DAL = 0.6033D;
-    this.DAM = 0.6828D;
-    this.DAN = 0.7257D;
-    this.DAO = "中";
-    this.DAP = "/英";
+    AppMethodBeat.i(313069);
+    this.JtI = 18;
+    this.JtJ = 14;
+    this.JtK = 0.3289D;
+    this.JtL = 0.6033D;
+    this.JtM = 0.6828D;
+    this.JtN = 0.7257D;
+    this.JtO = "中";
+    this.JtP = "/英";
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
     localPaint.setTextAlign(Paint.Align.CENTER);
-    Object localObject = paramKeyboardView.getContext();
-    p.j(localObject, "keyboard.context");
-    localPaint.setColor(((Context)localObject).getResources().getColor(a.c.black_text_color));
-    float f = this.DAI;
-    localObject = paramKeyboardView.getContext();
-    p.j(localObject, "keyboard.context");
-    localObject = ((Context)localObject).getResources();
-    p.j(localObject, "keyboard.context.resources");
-    localPaint.setTextSize(f * ((Resources)localObject).getDisplayMetrics().scaledDensity);
-    this.DAQ = localPaint;
+    localPaint.setColor(paramKeyboardView.getContext().getResources().getColor(a.c.black_text_color));
+    localPaint.setTextSize(this.JtI * paramKeyboardView.getContext().getResources().getDisplayMetrics().scaledDensity);
+    ah localah = ah.aiuX;
+    this.JtQ = localPaint;
     localPaint = new Paint();
     localPaint.setAntiAlias(true);
     localPaint.setTextAlign(Paint.Align.CENTER);
-    localObject = paramKeyboardView.getContext();
-    p.j(localObject, "keyboard.context");
-    localPaint.setColor(((Context)localObject).getResources().getColor(a.c.grey_text_color));
-    f = this.DAJ;
-    paramKeyboardView = paramKeyboardView.getContext();
-    p.j(paramKeyboardView, "keyboard.context");
-    paramKeyboardView = paramKeyboardView.getResources();
-    p.j(paramKeyboardView, "keyboard.context.resources");
-    localPaint.setTextSize(f * paramKeyboardView.getDisplayMetrics().scaledDensity);
-    this.DAR = localPaint;
-    AppMethodBeat.o(210277);
+    localPaint.setColor(paramKeyboardView.getContext().getResources().getColor(a.c.grey_text_color));
+    localPaint.setTextSize(this.JtJ * paramKeyboardView.getContext().getResources().getDisplayMetrics().scaledDensity);
+    paramKeyboardView = ah.aiuX;
+    this.JtR = localPaint;
+    AppMethodBeat.o(313069);
   }
   
   public final void a(Canvas paramCanvas, com.tencent.mm.plugin.hld.keyboard.selfdraw.b paramb)
   {
-    AppMethodBeat.i(210273);
-    p.k(paramCanvas, "canvas");
-    p.k(paramb, "button");
+    AppMethodBeat.i(313080);
+    s.u(paramCanvas, "canvas");
+    s.u(paramb, "button");
     b(paramCanvas, paramb);
-    double d1 = paramb.DzD.left;
-    double d2 = paramb.DzD.width();
-    double d3 = this.DAK;
-    double d4 = paramb.DzD.top;
-    double d5 = paramb.DzD.height();
-    double d6 = this.DAL;
-    paramCanvas.drawText(this.DAO, (float)(d1 + d2 * d3), (float)(d4 + d5 * d6), this.DAQ);
-    int i = paramb.DzD.left;
-    int j = (int)(paramb.DzD.width() * this.DAM);
-    int k = paramb.DzD.top;
-    int m = (int)(paramb.DzD.height() * this.DAN);
-    paramCanvas.drawText(this.DAP, i + j, k + m, this.DAR);
-    AppMethodBeat.o(210273);
+    double d1 = paramb.JsG.left;
+    double d2 = paramb.JsG.width();
+    double d3 = this.JtK;
+    double d4 = paramb.JsG.top;
+    double d5 = paramb.JsG.height();
+    double d6 = this.JtL;
+    paramCanvas.drawText(this.JtO, (float)(d1 + d2 * d3), (float)(d4 + d5 * d6), this.JtQ);
+    int i = paramb.JsG.left;
+    int j = (int)(paramb.JsG.width() * this.JtM);
+    int k = paramb.JsG.top;
+    int m = (int)(paramb.JsG.height() * this.JtN);
+    paramCanvas.drawText(this.JtP, i + j, k + m, this.JtR);
+    AppMethodBeat.o(313080);
   }
   
   public final String getType()

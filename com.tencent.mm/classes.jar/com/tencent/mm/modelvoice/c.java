@@ -1,10 +1,10 @@
 package com.tencent.mm.modelvoice;
 
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 
 public abstract interface c
 {
-  public abstract void ap(ca paramca);
+  public abstract void av(cc paramcc);
 }
 
 

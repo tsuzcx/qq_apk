@@ -8,7 +8,7 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract boolean Bk(int paramInt);
+    public abstract boolean Bx(int paramInt);
   }
 }
 

@@ -1,30 +1,20 @@
 package com.tencent.mm.plugin.sns.ad.widget.shakead;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorSet;
-import android.animation.AnimatorSet.Builder;
-import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.d.p.a;
-import com.tencent.mm.plugin.sns.ad.i.c;
-import com.tencent.mm.plugin.sns.ad.landingpage.component.b.b.a.a;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.sns.ad.adxml.d.a;
+import com.tencent.mm.plugin.sns.ad.landingpage.helper.anim.b;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ao;
-import com.tencent.mm.ui.widget.MMRoundCornerImageView;
-import com.tencent.mm.vfs.u;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ar;
+import com.tencent.mm.vfs.y;
 import org.libpag.PAGFile;
 import org.libpag.PAGView;
 import org.libpag.PAGView.PAGViewListener;
@@ -33,275 +23,316 @@ import org.xwalk.core.Log;
 public class ShakeCardAnimView
   extends FrameLayout
 {
-  private final String JNA;
-  private int JNB;
-  public int JNC;
-  public PAGView JND;
-  public int JNE;
-  public View JNF;
-  public View JNG;
-  private ArrayList<View> JNH;
-  public com.tencent.mm.plugin.sns.ad.landingpage.component.b.b.a JNI;
-  public a JNJ;
-  private final String OdJ;
+  private a Qij;
+  private final String Qiq;
+  private final String Qir;
+  private PAGView Qis;
+  private d.a Qit;
+  public CardAnimView Qiu;
+  public GLCardAnimView Qiv;
+  public boolean Qiw;
+  public boolean Qix;
   private final String TAG;
-  public Context mContext;
+  private Context mContext;
   
   public ShakeCardAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(270485);
+    AppMethodBeat.i(310543);
     this.TAG = "ShakeCardAnimView";
-    this.JNA = "assets://sns/sns_ad_shake_landing_page_anim.pag";
-    this.OdJ = "assets://sns/sns_ad_shake_landing_page_anim_low.pag";
-    this.JNH = new ArrayList();
+    this.Qiq = "assets://sns/sns_ad_shake_landing_page_anim_low.pag";
+    this.Qir = "assets://sns/sns_ad_shake_landing_page_anim_low.pag";
+    this.Qiw = false;
+    this.Qix = false;
     this.mContext = paramContext;
-    this.JNB = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 32);
-    this.JNC = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 54);
-    this.JNE = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 72);
-    hZ(this.mContext);
-    this.JND = new PAGView(this.mContext);
-    addView(this.JND, new FrameLayout.LayoutParams(-1, -1));
-    this.JND.addListener(new PAGView.PAGViewListener()
+    this.Qiw = hdt();
+    paramContext = this.mContext;
+    if (this.Qiw)
     {
-      public final void onAnimationCancel(PAGView paramAnonymousPAGView) {}
-      
-      public final void onAnimationEnd(PAGView paramAnonymousPAGView)
+      this.Qiv = new GLCardAnimView(paramContext);
+      addView(this.Qiv, new FrameLayout.LayoutParams(-1, -1));
+      com.tencent.mm.plugin.report.service.h.OAn.kJ(1572, 15);
+    }
+    for (;;)
+    {
+      this.Qis = new PAGView(this.mContext);
+      this.Qis.addListener(new PAGView.PAGViewListener()
       {
-        AppMethodBeat.i(253604);
-        ShakeCardAnimView.this.setVisibility(8);
-        AppMethodBeat.o(253604);
-      }
-      
-      public final void onAnimationRepeat(PAGView paramAnonymousPAGView) {}
-      
-      public final void onAnimationStart(PAGView paramAnonymousPAGView) {}
-    });
-    AppMethodBeat.o(270485);
+        public final void onAnimationCancel(PAGView paramAnonymousPAGView) {}
+        
+        public final void onAnimationEnd(PAGView paramAnonymousPAGView)
+        {
+          AppMethodBeat.i(310579);
+          Log.i("ShakeCardAnimView", "PagView onAnimationEnd");
+          ShakeCardAnimView.a(ShakeCardAnimView.this, false);
+          if (ShakeCardAnimView.a(ShakeCardAnimView.this) != null) {
+            ShakeCardAnimView.a(ShakeCardAnimView.this).haU();
+          }
+          ShakeCardAnimView.b(ShakeCardAnimView.this).removeListener(this);
+          ShakeCardAnimView.b(ShakeCardAnimView.this).stop();
+          ShakeCardAnimView.this.removeView(ShakeCardAnimView.b(ShakeCardAnimView.this));
+          AppMethodBeat.o(310579);
+        }
+        
+        public final void onAnimationRepeat(PAGView paramAnonymousPAGView) {}
+        
+        public final void onAnimationStart(PAGView paramAnonymousPAGView)
+        {
+          AppMethodBeat.i(310564);
+          ShakeCardAnimView.a(ShakeCardAnimView.this, true);
+          AppMethodBeat.o(310564);
+        }
+      });
+      addView(this.Qis, new FrameLayout.LayoutParams(-1, -1));
+      AppMethodBeat.o(310543);
+      return;
+      this.Qiu = new CardAnimView(paramContext);
+      addView(this.Qiu, new FrameLayout.LayoutParams(-1, -1));
+    }
   }
   
-  public static ArrayList<b.a.a> bc(ArrayList<b.a.a> paramArrayList)
+  private static boolean hdt()
   {
-    AppMethodBeat.i(270488);
-    ArrayList localArrayList = new ArrayList();
+    AppMethodBeat.i(310553);
     try
     {
-      localArrayList.add(paramArrayList.get(3));
-      localArrayList.add(paramArrayList.get(1));
-      localArrayList.add(paramArrayList.get(0));
-      localArrayList.add(paramArrayList.get(2));
-      localArrayList.add(paramArrayList.get(4));
-      label63:
-      AppMethodBeat.o(270488);
-      return localArrayList;
-    }
-    catch (Exception paramArrayList)
-    {
-      break label63;
-    }
-  }
-  
-  private boolean gEC()
-  {
-    AppMethodBeat.i(293254);
-    try
-    {
-      int[] arrayOfInt = ao.ib(this.mContext);
-      Log.i("ShakeCardAnimView", "w=" + arrayOfInt[0] + ", h=" + arrayOfInt[1]);
-      int i = arrayOfInt[0];
-      if ((arrayOfInt[1] * i <= 921600) || (gEu()))
-      {
-        Log.i("ShakeCardAnimView", "isLowPerformanceDevice, ret=true");
-        com.tencent.mm.plugin.report.service.h.IzE.el(1572, 9);
-        AppMethodBeat.o(293254);
-        return true;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("ShakeCardAnimView", "isForceLocalLowPag, exp=" + localThrowable.toString());
-      Log.i("ShakeCardAnimView", "isLowPerformanceDevice, ret=false");
-      AppMethodBeat.o(293254);
-    }
-    return false;
-  }
-  
-  private static boolean gEu()
-  {
-    AppMethodBeat.i(293253);
-    try
-    {
-      String str1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.GWA, "");
-      String str2 = Build.MODEL;
-      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (str1.toLowerCase().contains(str2.toLowerCase()))) {}
+      int i = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.yIv, 0);
+      if (i > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        Log.i("ShakeCardAnimView", "isInBlackList, blackList=" + str1 + ", curDev=" + str2 + ", ret=" + bool);
-        AppMethodBeat.o(293253);
+        Log.i("ShakeCardAnimView", "isUseGLCardView, exptValue=".concat(String.valueOf(i)));
+        AppMethodBeat.o(310553);
         return bool;
       }
       return false;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      Log.e("ShakeCardAnimView", "isInBlackList, exp=" + localThrowable.toString());
-      AppMethodBeat.o(293253);
+      Log.e("ShakeCardAnimView", "isUseGLCardView, exp=" + localObject.toString());
+      AppMethodBeat.o(310553);
     }
   }
   
-  private void hZ(Context paramContext)
+  private static boolean hdu()
   {
-    AppMethodBeat.i(270486);
-    int j = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 1.2F);
-    int i = 0;
-    while (i < 5)
+    AppMethodBeat.i(310559);
+    try
     {
-      MMRoundCornerImageView localMMRoundCornerImageView = new MMRoundCornerImageView(paramContext);
-      localMMRoundCornerImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      localMMRoundCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(this.JNB, this.JNC));
-      localMMRoundCornerImageView.setRadius(j);
-      addView(localMMRoundCornerImageView);
-      this.JNH.add(localMMRoundCornerImageView);
-      i += 1;
-    }
-    AppMethodBeat.o(270486);
-  }
-  
-  public final void bb(ArrayList<b.a.a> paramArrayList)
-  {
-    AppMethodBeat.i(270487);
-    int i = 0;
-    for (;;)
-    {
-      if (i < 5)
+      String str1 = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.yIr, "");
+      String str2 = q.aPo();
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (str1.toLowerCase().contains(str2.toLowerCase()))) {}
+      for (boolean bool = true;; bool = false)
       {
-        ImageView localImageView = (ImageView)this.JNH.get(i);
-        b.a.a locala = (b.a.a)paramArrayList.get(i);
-        if (!TextUtils.isEmpty(locala.lmL)) {}
-        try
-        {
-          localImageView.setImageDrawable(new ColorDrawable(Color.parseColor(locala.lmL)));
-          if (!TextUtils.isEmpty(locala.xei)) {
-            c.a(locala.xei, localImageView, 0.0F);
-          }
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            Log.e("ShakeCardAnimView", "loadCardImg err=" + localException.toString() + ", value=" + locala.lmL);
-          }
-        }
+        Log.i("ShakeCardAnimView", "isInBlackList, blackList=" + str1 + ", curDev=" + str2 + ", ret=" + bool);
+        AppMethodBeat.o(310559);
+        return bool;
+      }
+      return false;
+    }
+    finally
+    {
+      Log.e("ShakeCardAnimView", "isInBlackList, exp=" + localObject.toString());
+      AppMethodBeat.o(310559);
+    }
+  }
+  
+  private boolean hdv()
+  {
+    AppMethodBeat.i(310565);
+    try
+    {
+      int[] arrayOfInt = ar.jR(this.mContext);
+      Log.i("ShakeCardAnimView", "w=" + arrayOfInt[0] + ", h=" + arrayOfInt[1]);
+      int i = arrayOfInt[0];
+      if ((arrayOfInt[1] * i <= 921600) || (hdu()))
+      {
+        Log.i("ShakeCardAnimView", "isLowPerformanceDevice, ret=true");
+        com.tencent.mm.plugin.report.service.h.OAn.kJ(1572, 9);
+        AppMethodBeat.o(310565);
+        return true;
       }
     }
-    AppMethodBeat.o(270487);
+    finally
+    {
+      Log.e("ShakeCardAnimView", "isForceLocalLowPag, exp=" + localObject.toString());
+      Log.i("ShakeCardAnimView", "isLowPerformanceDevice, ret=false");
+      AppMethodBeat.o(310565);
+    }
+    return false;
   }
   
-  public final void fMv()
+  public final void a(d.a parama)
   {
-    AppMethodBeat.i(270490);
-    if (this.JND == null)
+    AppMethodBeat.i(310596);
+    if (parama == null)
     {
-      AppMethodBeat.o(270490);
+      Log.e("ShakeCardAnimView", "initData, ShakeCardInfo==null");
+      AppMethodBeat.o(310596);
       return;
     }
-    this.JND.post(new Runnable()
+    Log.i("ShakeCardAnimView", "initData");
+    this.Qit = parama;
+    if (this.Qiw) {
+      this.Qiv.a(parama);
+    }
+    for (;;)
+    {
+      lR(this.Qit.PMq, this.Qit.PMr);
+      AppMethodBeat.o(310596);
+      return;
+      this.Qiu.a(parama);
+    }
+  }
+  
+  public final void eow()
+  {
+    AppMethodBeat.i(310613);
+    Log.i("ShakeCardAnimView", "resetAnim");
+    if (this.Qiw)
+    {
+      this.Qiv.eow();
+      AppMethodBeat.o(310613);
+      return;
+    }
+    this.Qiu.eow();
+    AppMethodBeat.o(310613);
+  }
+  
+  public final void hds()
+  {
+    AppMethodBeat.i(310618);
+    Log.i("ShakeCardAnimView", "startCardAnim");
+    if (this.Qiw)
+    {
+      this.Qiv.hds();
+      AppMethodBeat.o(310618);
+      return;
+    }
+    this.Qiu.hds();
+    AppMethodBeat.o(310618);
+  }
+  
+  public final void hdw()
+  {
+    AppMethodBeat.i(310607);
+    Log.i("ShakeCardAnimView", "startPAGAnim");
+    if (this.Qis == null)
+    {
+      AppMethodBeat.o(310607);
+      return;
+    }
+    this.Qis.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(252517);
+        AppMethodBeat.i(310573);
         try
         {
-          ShakeCardAnimView.c(ShakeCardAnimView.this).play();
-          AppMethodBeat.o(252517);
+          ShakeCardAnimView.b(ShakeCardAnimView.this).play();
+          AppMethodBeat.o(310573);
           return;
         }
-        catch (Throwable localThrowable)
+        finally
         {
-          Log.e("ShakeCardAnimView", "startPAGAnim, exp=" + localThrowable.toString());
-          AppMethodBeat.o(252517);
+          Log.e("ShakeCardAnimView", "startPAGAnim, exp=" + localObject.toString());
+          AppMethodBeat.o(310573);
         }
       }
     });
-    AppMethodBeat.o(270490);
+    AppMethodBeat.o(310607);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void lR(final String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(270489);
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    paramInt2 = getWidth();
-    paramInt1 = getHeight();
-    if ((paramInt2 <= 0) || (paramInt1 <= 0))
+    AppMethodBeat.i(310603);
+    if (this.Qis == null)
     {
-      AppMethodBeat.o(270489);
+      Log.e("ShakeCardAnimView", "initPagAnimViewData, mPAGAnimView==null");
+      AppMethodBeat.o(310603);
       return;
     }
-    paramInt1 = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 80);
-    paramInt4 = paramInt2 / 2 - this.JNB / 2;
-    paramInt2 = -(this.JNE + this.JNC);
-    paramInt3 = -this.JNE;
-    getChildAt(2).layout(paramInt4, paramInt2, this.JNB + paramInt4, paramInt3);
-    int i = paramInt4 - (this.JNB + paramInt1);
-    getChildAt(1).layout(i, paramInt2, this.JNB + i, paramInt3);
-    i = paramInt4 - (this.JNB + paramInt1) * 2;
-    getChildAt(0).layout(i, paramInt2, this.JNB + i, paramInt3);
-    i = this.JNB + paramInt1 + paramInt4;
-    getChildAt(3).layout(i, paramInt2, this.JNB + i, paramInt3);
-    paramInt1 = paramInt4 + (paramInt1 + this.JNB) * 2;
-    getChildAt(4).layout(paramInt1, paramInt2, this.JNB + paramInt1, paramInt3);
-    AppMethodBeat.o(270489);
+    this.Qis.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(310571);
+        for (;;)
+        {
+          try
+          {
+            if (ShakeCardAnimView.c(ShakeCardAnimView.this))
+            {
+              ShakeCardAnimView.b(ShakeCardAnimView.this).setPath("assets://sns/sns_ad_shake_landing_page_anim_low.pag");
+              Log.i("ShakeCardAnimView", "initPagAnimViewData, force use local low file");
+              ShakeCardAnimView.b(ShakeCardAnimView.this).setScaleMode(3);
+              ShakeCardAnimView.b(ShakeCardAnimView.this).setRepeatCount(1);
+              AppMethodBeat.o(310571);
+              return;
+            }
+            Object localObject1 = b.lN(paramString1, paramString2);
+            if (!TextUtils.isEmpty((CharSequence)localObject1))
+            {
+              localObject1 = PAGFile.Load(y.bi((String)localObject1, 0, -1));
+              ShakeCardAnimView.b(ShakeCardAnimView.this).setFile((PAGFile)localObject1);
+              Log.i("ShakeCardAnimView", "initPagAnimViewData, use sever file");
+              continue;
+            }
+            AdLandingPagesProxy.getInstance().downloadPagFile(paramString1);
+          }
+          finally
+          {
+            Log.e("ShakeCardAnimView", "initPagAnimViewData , exp=" + localObject2.toString());
+            AppMethodBeat.o(310571);
+            return;
+          }
+          ShakeCardAnimView.b(ShakeCardAnimView.this).setPath("assets://sns/sns_ad_shake_landing_page_anim_low.pag");
+          Log.i("ShakeCardAnimView", "initPagAnimViewData, use local file");
+        }
+      }
+    });
+    AppMethodBeat.o(310603);
   }
   
   public void setAnimCardView(View paramView)
   {
-    AppMethodBeat.i(270494);
-    StringBuilder localStringBuilder = new StringBuilder("setAnimCardView, target=null?");
-    if (paramView == null) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(310628);
+    Log.i("ShakeCardAnimView", "setAnimCardView");
+    if (this.Qiw)
     {
-      Log.i("ShakeCardAnimView", bool);
-      this.JNF = paramView;
-      AppMethodBeat.o(270494);
+      this.Qiv.setAnimCardView(paramView);
+      AppMethodBeat.o(310628);
       return;
     }
+    this.Qiu.setAnimCardView(paramView);
+    AppMethodBeat.o(310628);
   }
   
   public void setOnCardAnimListener(a parama)
   {
-    this.JNJ = parama;
-  }
-  
-  public final void w(View paramView, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(270492);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { 0.0F, getHeight() / 2 + this.JNC / 2 + this.JNE });
-    localObjectAnimator1.setDuration(500L);
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { 1.0F, 3.0F });
-    localObjectAnimator2.setDuration(500L);
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { 1.0F, 3.0F });
-    localObjectAnimator3.setDuration(500L);
-    paramView = ObjectAnimator.ofFloat(paramView, "translationX", new float[] { 0.0F, paramInt2 });
-    paramView.setDuration(500L);
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3 });
-    localAnimatorSet.play(paramView).after(localObjectAnimator1);
-    localAnimatorSet.setStartDelay(paramInt1);
-    localAnimatorSet.start();
-    AppMethodBeat.o(270492);
+    AppMethodBeat.i(310635);
+    this.Qij = parama;
+    if (this.Qiw)
+    {
+      this.Qiv.setOnCardAnimListener(parama);
+      AppMethodBeat.o(310635);
+      return;
+    }
+    this.Qiu.setOnCardAnimListener(parama);
+    AppMethodBeat.o(310635);
   }
   
   public static abstract interface a
   {
-    public abstract void fKF();
+    public abstract void haT();
     
-    public abstract void fKG();
+    public abstract void haU();
+    
+    public abstract void haV();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.shakead.ShakeCardAnimView
  * JD-Core Version:    0.7.0.1
  */

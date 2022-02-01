@@ -16,8 +16,8 @@ import java.util.ArrayList;
 public class ContactLabelPreference
   extends Preference
 {
-  private MMSingelLinePanel GXV;
-  private ArrayList<String> GXW;
+  private MMSingelLinePanel MVY;
+  private ArrayList<String> MVZ;
   private String title;
   private TextView titleTv;
   
@@ -30,7 +30,7 @@ public class ContactLabelPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27012);
-    this.GXW = new ArrayList();
+    this.MVZ = new ArrayList();
     setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(27012);
   }
@@ -39,15 +39,15 @@ public class ContactLabelPreference
   {
     AppMethodBeat.i(27014);
     this.titleTv = ((TextView)paramView.findViewById(R.h.title));
-    this.GXV = ((MMSingelLinePanel)paramView.findViewById(R.h.contact_label_panel));
-    this.GXV.setSingleLine(true);
-    this.GXV.hKc();
-    this.GXV.FR(false);
+    this.MVY = ((MMSingelLinePanel)paramView.findViewById(R.h.contact_label_panel));
+    this.MVY.setSingleLine(true);
+    this.MVY.jmI();
+    this.MVY.LD(false);
     if (this.titleTv != null) {
       this.titleTv.setText(this.title);
     }
-    if ((this.GXV != null) && (this.GXW != null) && (this.GXW.size() > 0)) {
-      this.GXV.a(this.GXW, this.GXW);
+    if ((this.MVY != null) && (this.MVZ != null) && (this.MVZ.size() > 0)) {
+      this.MVY.a(this.MVZ, this.MVZ);
     }
     super.onBindView(paramView);
     AppMethodBeat.o(27014);
@@ -60,7 +60,7 @@ public class ContactLabelPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.eiT, localViewGroup);
+    localLayoutInflater.inflate(R.i.glT, localViewGroup);
     AppMethodBeat.o(27013);
     return paramViewGroup;
   }

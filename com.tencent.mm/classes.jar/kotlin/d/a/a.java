@@ -1,21 +1,21 @@
 package kotlin.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/coroutines/intrinsics/CoroutineSingletons;", "", "(Ljava/lang/String;I)V", "COROUTINE_SUSPENDED", "UNDECIDED", "RESUMED", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/coroutines/intrinsics/CoroutineSingletons;", "", "(Ljava/lang/String;I)V", "COROUTINE_SUSPENDED", "UNDECIDED", "RESUMED", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public enum a
 {
   static
   {
     AppMethodBeat.i(129595);
     a locala1 = new a("COROUTINE_SUSPENDED", 0);
-    aaAA = locala1;
+    aiwj = locala1;
     a locala2 = new a("UNDECIDED", 1);
-    aaAB = locala2;
+    aiwk = locala2;
     a locala3 = new a("RESUMED", 2);
-    aaAC = locala3;
-    aaAD = new a[] { locala1, locala2, locala3 };
+    aiwl = locala3;
+    aiwm = new a[] { locala1, locala2, locala3 };
     AppMethodBeat.o(129595);
   }
   

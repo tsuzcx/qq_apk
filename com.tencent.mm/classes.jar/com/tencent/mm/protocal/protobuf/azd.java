@@ -1,60 +1,161 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
-public class azd
-  extends com.tencent.mm.cd.a
+public final class azd
+  extends esc
 {
-  public String zfA;
+  public int BeA;
+  public com.tencent.mm.bx.b ZEQ;
+  public LinkedList<FinderObject> object;
+  public btc preloadInfo;
+  
+  public azd()
+  {
+    AppMethodBeat.i(168983);
+    this.object = new LinkedList();
+    AppMethodBeat.o(168983);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(199597);
+    AppMethodBeat.i(168984);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.zfA != null) {
-        paramVarArgs.f(1, this.zfA);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new i.a.a.b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(168984);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(199597);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      paramVarArgs.e(2, 8, this.object);
+      if (this.ZEQ != null) {
+        paramVarArgs.d(3, this.ZEQ);
+      }
+      paramVarArgs.bS(4, this.BeA);
+      if (this.preloadInfo != null)
+      {
+        paramVarArgs.qD(5, this.preloadInfo.computeSize());
+        this.preloadInfo.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(168984);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.zfA == null) {
-        break label213;
+      if (this.BaseResponse == null) {
+        break label688;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.g(1, this.zfA) + 0;; paramInt = 0)
+    label688:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(199597);
+      int i = paramInt + i.a.a.a.c(2, 8, this.object);
+      paramInt = i;
+      if (this.ZEQ != null) {
+        paramInt = i + i.a.a.b.b.a.c(3, this.ZEQ);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(4, this.BeA);
+      paramInt = i;
+      if (this.preloadInfo != null) {
+        paramInt = i + i.a.a.a.qC(5, this.preloadInfo.computeSize());
+      }
+      AppMethodBeat.o(168984);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.object.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(199597);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new i.a.a.b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(168984);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(168984);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         azd localazd = (azd)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(199597);
+          AppMethodBeat.o(168984);
           return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kd();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kd)localObject2).parseFrom((byte[])localObject1);
+            }
+            localazd.BaseResponse = ((kd)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(168984);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new FinderObject();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((FinderObject)localObject2).parseFrom((byte[])localObject1);
+            }
+            localazd.object.add(localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(168984);
+          return 0;
+        case 3: 
+          localazd.ZEQ = ((i.a.a.a.a)localObject1).ajGk.kFX();
+          AppMethodBeat.o(168984);
+          return 0;
+        case 4: 
+          localazd.BeA = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(168984);
+          return 0;
         }
-        localazd.zfA = locala.abFh.readString();
-        AppMethodBeat.o(199597);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new btc();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((btc)localObject2).parseFrom((byte[])localObject1);
+          }
+          localazd.preloadInfo = ((btc)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(168984);
         return 0;
       }
-      AppMethodBeat.o(199597);
+      AppMethodBeat.o(168984);
       return -1;
     }
   }

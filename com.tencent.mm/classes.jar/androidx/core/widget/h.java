@@ -1,42 +1,106 @@
 package androidx.core.widget;
 
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.OverScroller;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.PopupWindow;
+import androidx.core.g.e;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-@Deprecated
 public final class h
 {
-  public OverScroller Qi;
+  private static Method bwT;
+  private static boolean bwU;
+  private static Field bwV;
+  private static boolean bwW;
   
-  private h(Context paramContext, Interpolator paramInterpolator)
+  public static void a(PopupWindow paramPopupWindow, int paramInt)
   {
-    AppMethodBeat.i(253105);
-    if (paramInterpolator != null) {}
-    for (paramContext = new OverScroller(paramContext, paramInterpolator);; paramContext = new OverScroller(paramContext))
+    AppMethodBeat.i(195388);
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      this.Qi = paramContext;
-      AppMethodBeat.o(253105);
+      paramPopupWindow.setWindowLayoutType(paramInt);
+      AppMethodBeat.o(195388);
       return;
+    }
+    if (!bwU) {}
+    try
+    {
+      Method localMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
+      bwT = localMethod;
+      localMethod.setAccessible(true);
+      label57:
+      bwU = true;
+      if (bwT != null) {
+        try
+        {
+          bwT.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
+          AppMethodBeat.o(195388);
+          return;
+        }
+        catch (Exception paramPopupWindow) {}
+      }
+      AppMethodBeat.o(195388);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label57;
     }
   }
   
-  @Deprecated
-  public static h a(Context paramContext, Interpolator paramInterpolator)
+  public static void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(253103);
-    paramContext = new h(paramContext, paramInterpolator);
-    AppMethodBeat.o(253103);
-    return paramContext;
+    AppMethodBeat.i(195364);
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      paramPopupWindow.showAsDropDown(paramView, paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(195364);
+      return;
+    }
+    int i = paramInt1;
+    if ((e.ay(paramInt3, z.U(paramView)) & 0x7) == 5) {
+      i = paramInt1 - (paramPopupWindow.getWidth() - paramView.getWidth());
+    }
+    paramPopupWindow.showAsDropDown(paramView, i, paramInt2);
+    AppMethodBeat.o(195364);
   }
   
-  @Deprecated
-  public final void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public static void a(PopupWindow paramPopupWindow, boolean paramBoolean)
   {
-    AppMethodBeat.i(253107);
-    this.Qi.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
-    AppMethodBeat.o(253107);
+    AppMethodBeat.i(195377);
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      paramPopupWindow.setOverlapAnchor(paramBoolean);
+      AppMethodBeat.o(195377);
+      return;
+    }
+    if ((Build.VERSION.SDK_INT < 21) || (!bwW)) {}
+    try
+    {
+      Field localField = PopupWindow.class.getDeclaredField("mOverlapAnchor");
+      bwV = localField;
+      localField.setAccessible(true);
+      label55:
+      bwW = true;
+      if (bwV != null) {
+        try
+        {
+          bwV.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
+          AppMethodBeat.o(195377);
+          return;
+        }
+        catch (IllegalAccessException paramPopupWindow) {}
+      }
+      AppMethodBeat.o(195377);
+      return;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      break label55;
+    }
   }
 }
 

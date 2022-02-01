@@ -1,256 +1,218 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ah;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.wifi.WifiConfiguration;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ah.a.f;
-import com.tencent.mm.plugin.appbrand.jsapi.az;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.k;
-import com.tencent.mm.plugin.appbrand.k.c;
-import com.tencent.mm.plugin.appbrand.widget.dialog.l;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.vfs.y;
+import java.util.ArrayList;
 
 public final class a
-  extends c
 {
-  public static final int CTRL_INDEX = 316;
-  public static final String NAME = "connectWifi";
-  
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject, final int paramInt)
+  public static String[] a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    AppMethodBeat.i(144686);
-    if (!d.pIH)
+    AppMethodBeat.i(325940);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayOfString1.length)
     {
-      Log.e("MicroMsg.JsApiConnectWifi", "not invoke startWifi");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(12000));
-      parame.j(paramInt, m("fail:not invoke startWifi", paramJSONObject));
-      AppMethodBeat.o(144686);
-      return;
-    }
-    if ((paramJSONObject == null) || (!paramJSONObject.has("SSID")))
-    {
-      Log.e("MicroMsg.JsApiConnectWifi", "params is invalid");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(12010));
-      parame.j(paramInt, m("fail:invalid data", paramJSONObject));
-      AppMethodBeat.o(144686);
-      return;
-    }
-    Object localObject1 = parame.getContext();
-    if (localObject1 == null)
-    {
-      Log.e("MicroMsg.JsApiConnectWifi", "mContext is null, invoke fail!");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(12010));
-      parame.j(paramInt, m("fail:context is null", paramJSONObject));
-      AppMethodBeat.o(144686);
-      return;
-    }
-    f.eb((Context)localObject1);
-    if (!com.tencent.mm.plugin.appbrand.jsapi.ah.a.a.d.bYf())
-    {
-      Log.e("MicroMsg.JsApiConnectWifi", "wifi is disable");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(12005));
-      parame.j(paramInt, m("fail:wifi is disable", paramJSONObject));
-      AppMethodBeat.o(144686);
-      return;
-    }
-    if (parame.getAppState() != com.tencent.mm.plugin.appbrand.a.b.nKP)
-    {
-      Log.e("MicroMsg.JsApiConnectWifi", "current state :%s isn't foreground", new Object[] { parame.getAppState() });
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(12011));
-      parame.j(paramInt, m("fail:weapp in background", paramJSONObject));
-      AppMethodBeat.o(144686);
-      return;
-    }
-    if (paramJSONObject.optBoolean("maunal", false))
-    {
-      localObject2 = new Intent("android.settings.WIFI_SETTINGS");
-      if (Util.isIntentAvailable((Context)localObject1, (Intent)localObject2))
-      {
-        Log.i("MicroMsg.JsApiConnectWifi", "use manual");
-        paramJSONObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject2);
-        com.tencent.mm.hellhoundlib.a.a.b(localObject1, paramJSONObject.aFh(), "com/tencent/mm/plugin/appbrand/jsapi/wifi/JsApiConnectWifi", "invoke", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;Lorg/json/JSONObject;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ((Context)localObject1).startActivity((Intent)paramJSONObject.sf(0));
-        com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/appbrand/jsapi/wifi/JsApiConnectWifi", "invoke", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;Lorg/json/JSONObject;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramJSONObject = new HashMap();
-        paramJSONObject.put("errCode", Integer.valueOf(0));
-        parame.j(paramInt, m("ok", paramJSONObject));
-        AppMethodBeat.o(144686);
-        return;
+      if ((paramArrayOfString1[i] != null) && (paramArrayOfString2[i] != null) && (!paramArrayOfString1[i].equals(paramArrayOfString2[i]))) {
+        localArrayList.add(paramArrayOfString1[i]);
       }
-      Log.w("MicroMsg.JsApiConnectWifi", "jump2SysWifiSettingsIntent is unavailable");
+      i += 1;
     }
-    Object localObject2 = (com.tencent.luggage.c.a.a)com.tencent.luggage.a.e.K(com.tencent.luggage.c.a.a.class);
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(144682);
-        parame.getDialogContainer().a(this.pIz);
-        AppMethodBeat.o(144682);
-      }
-    });
-    f.a(new com.tencent.mm.plugin.appbrand.jsapi.ah.a.b()
-    {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(198314);
-        f.a(null);
-        MMHandlerThread.postToMainThread(new a.2.1(this));
-        if (paramAnonymousString3.equals("ok"))
-        {
-          Object localObject = f.bXR();
-          paramAnonymousString3 = (String)localObject;
-          if (localObject == null)
-          {
-            Log.i("MicroMsg.JsApiConnectWifi", "[IConnectWiFiCallback] currentWiFi is null, use WifiConfiguration");
-            paramAnonymousString3 = com.tencent.mm.plugin.appbrand.jsapi.ah.a.a.d.bYa();
-            if (paramAnonymousString3 == null) {
-              break label194;
-            }
-            localObject = paramAnonymousString3.iterator();
-            do
-            {
-              if (!((Iterator)localObject).hasNext()) {
-                break;
-              }
-              paramAnonymousString3 = (WifiConfiguration)((Iterator)localObject).next();
-            } while (!Objects.equals(paramAnonymousString3.BSSID, paramAnonymousString2));
-          }
-          for (;;)
-          {
-            if (paramAnonymousString3 == null) {
-              Log.w("MicroMsg.JsApiConnectWifi", "[IConnectWiFiCallback] curWifiConfig is null");
-            }
-            if (paramAnonymousString3 != null) {
-              break;
-            }
-            paramAnonymousString3 = null;
-            Log.i("MicroMsg.JsApiConnectWifi", "[IConnectWiFiCallback]currentWifi:%s", new Object[] { paramAnonymousString3 });
-            if (paramAnonymousString3 != null) {
-              break label269;
-            }
-            Log.e("MicroMsg.JsApiConnectWifi", "[IConnectWiFiCallback]currentWIfi is null");
-            paramAnonymousString1 = new HashMap();
-            paramAnonymousString2 = a.a(this.pIC, paramAnonymousString1, "fail:can't gain current wifi", paramAnonymousBoolean);
-            parame.j(paramInt, a.this.m(paramAnonymousString2, paramAnonymousString1));
-            AppMethodBeat.o(198314);
-            return;
-            paramAnonymousString3 = null;
-            continue;
-            label194:
-            paramAnonymousString3 = null;
-          }
-          localObject = new com.tencent.mm.plugin.appbrand.jsapi.ah.a.d();
-          ((com.tencent.mm.plugin.appbrand.jsapi.ah.a.d)localObject).pIL = Util.nullAs(paramAnonymousString1, "");
-          ((com.tencent.mm.plugin.appbrand.jsapi.ah.a.d)localObject).pIM = Util.nullAs(paramAnonymousString2, "");
-          if (2 == com.tencent.mm.plugin.appbrand.jsapi.ah.a.a.e.e(paramAnonymousString3)) {}
-          for (boolean bool = true;; bool = false)
-          {
-            ((com.tencent.mm.plugin.appbrand.jsapi.ah.a.d)localObject).pIO = bool;
-            ((com.tencent.mm.plugin.appbrand.jsapi.ah.a.d)localObject).pIN = com.tencent.mm.plugin.appbrand.jsapi.ah.a.a.e.ajF(paramAnonymousString2);
-            paramAnonymousString3 = (String)localObject;
-            break;
-          }
-          try
-          {
-            label269:
-            paramAnonymousString1 = new HashMap();
-            paramAnonymousString1.put("wifi", paramAnonymousString3.toJSONObject());
-            paramAnonymousString1.put("errCode", Integer.valueOf(0));
-            parame.j(paramInt, a.this.m("ok", paramAnonymousString1));
-            AppMethodBeat.o(198314);
-            return;
-          }
-          catch (JSONException paramAnonymousString1)
-          {
-            Log.e("MicroMsg.JsApiConnectWifi", "IConnectWiFiCallback is error");
-            Log.printErrStackTrace("MicroMsg.JsApiConnectWifi", paramAnonymousString1, "", new Object[0]);
-            paramAnonymousString1 = new HashMap();
-            paramAnonymousString1.put("errCode", Integer.valueOf(12010));
-            parame.j(paramInt, a.this.m("fail:parse json err", paramAnonymousString1));
-            AppMethodBeat.o(198314);
-            return;
-          }
-        }
-        paramAnonymousString1 = new HashMap();
-        if (paramAnonymousString3.equals("duplicated request")) {
-          paramAnonymousString1.put("errCode", Integer.valueOf(12004));
-        }
-        for (;;)
-        {
-          Log.e("MicroMsg.JsApiConnectWifi", "[IConnectWiFiCallback]errCode:%d, errMsg:%s", new Object[] { paramAnonymousString1.get("errCode"), paramAnonymousString3 });
-          parame.j(paramInt, a.this.m("fail:".concat(String.valueOf(paramAnonymousString3)), paramAnonymousString1));
-          AppMethodBeat.o(198314);
-          return;
-          if (paramAnonymousString3.equals("password error")) {
-            paramAnonymousString1.put("errCode", Integer.valueOf(12002));
-          } else if (paramAnonymousString3.equals("wifi config may be expired")) {
-            paramAnonymousString1.put("errCode", Integer.valueOf(12013));
-          } else if (paramAnonymousString3.equals("fail to connect wifi:time out")) {
-            paramAnonymousString1.put("errCode", Integer.valueOf(12003));
-          } else {
-            paramAnonymousString3 = a.a(this.pIC, paramAnonymousString1, paramAnonymousString3, paramAnonymousBoolean);
-          }
-        }
-      }
-    });
-    localObject1 = new k.c()
-    {
-      public final void onDestroy()
-      {
-        AppMethodBeat.i(144685);
-        Log.d("MicroMsg.JsApiConnectWifi", "remove listener");
-        f.a(null);
-        k.b(parame.getAppId(), this);
-        AppMethodBeat.o(144685);
-      }
-    };
-    k.a(parame.getAppId(), (k.c)localObject1);
-    localObject1 = paramJSONObject.optString("SSID");
-    localObject2 = paramJSONObject.optString("BSSID");
-    String str = paramJSONObject.optString("password");
-    long l = paramJSONObject.optLong("timeout", -1L);
-    boolean bool = paramJSONObject.optBoolean("forceNewApi", false);
-    if (((String)localObject1).equals(""))
-    {
-      Log.e("MicroMsg.JsApiConnectWifi", "params is invalid");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("errCode", Integer.valueOf(12008));
-      parame.j(paramInt, m("fail:invalid data", paramJSONObject));
-      AppMethodBeat.o(144686);
-      return;
-    }
-    Log.i("MicroMsg.JsApiConnectWifi", "ssid:%s, bSsid:%s timeoutMs: %d, forceNewApi: %b is connecting", new Object[] { localObject1, localObject2, Long.valueOf(l), Boolean.valueOf(bool) });
-    f.a((String)localObject1, (String)localObject2, str, l, bool);
-    AppMethodBeat.o(144686);
+    paramArrayOfString1 = (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    AppMethodBeat.o(325940);
+    return paramArrayOfString1;
   }
   
-  public static final class a
-    extends az
+  private static String acq(String paramString)
   {
-    private static final int CTRL_INDEX = 322;
-    private static final String NAME = "onWifiConnected";
+    AppMethodBeat.i(325944);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(325944);
+      return "";
+    }
+    paramString = acs(acr(paramString));
+    AppMethodBeat.o(325944);
+    return paramString;
+  }
+  
+  private static String acr(String paramString)
+  {
+    AppMethodBeat.i(325945);
+    paramString = paramString.substring(paramString.indexOf("base64,") + 7).trim();
+    AppMethodBeat.o(325945);
+    return paramString;
+  }
+  
+  /* Error */
+  private static String acs(String paramString)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: ldc 79
+    //   4: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: iconst_0
+    //   9: invokestatic 85	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   12: astore_1
+    //   13: aload_1
+    //   14: ifnull +8 -> 22
+    //   17: aload_1
+    //   18: arraylength
+    //   19: ifne +29 -> 48
+    //   22: ldc 79
+    //   24: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: ldc 53
+    //   29: areturn
+    //   30: astore_1
+    //   31: ldc 53
+    //   33: aload_1
+    //   34: ldc 87
+    //   36: iconst_0
+    //   37: anewarray 4	java/lang/Object
+    //   40: invokestatic 93	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   43: aconst_null
+    //   44: astore_1
+    //   45: goto -32 -> 13
+    //   48: new 95	java/lang/StringBuilder
+    //   51: dup
+    //   52: ldc 97
+    //   54: invokespecial 100	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   57: invokestatic 106	java/lang/System:currentTimeMillis	()J
+    //   60: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   63: ldc 112
+    //   65: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: aload_0
+    //   69: invokevirtual 118	java/lang/String:hashCode	()I
+    //   72: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: astore_0
+    //   79: new 126	com/tencent/mm/vfs/u
+    //   82: dup
+    //   83: invokestatic 132	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   86: invokevirtual 138	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   89: aload_0
+    //   90: invokespecial 141	com/tencent/mm/vfs/u:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   93: astore_3
+    //   94: aload_3
+    //   95: invokestatic 147	com/tencent/mm/vfs/y:ap	(Lcom/tencent/mm/vfs/u;)Ljava/io/OutputStream;
+    //   98: astore_0
+    //   99: aload_0
+    //   100: astore_2
+    //   101: aload_0
+    //   102: aload_1
+    //   103: invokevirtual 153	java/io/OutputStream:write	([B)V
+    //   106: aload_0
+    //   107: ifnull +7 -> 114
+    //   110: aload_0
+    //   111: invokevirtual 156	java/io/OutputStream:close	()V
+    //   114: aload_3
+    //   115: invokevirtual 160	com/tencent/mm/vfs/u:jKT	()Landroid/net/Uri;
+    //   118: invokestatic 166	com/tencent/mm/vfs/ah:v	(Landroid/net/Uri;)Ljava/lang/String;
+    //   121: astore_0
+    //   122: ldc 79
+    //   124: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   127: aload_0
+    //   128: areturn
+    //   129: astore_0
+    //   130: aconst_null
+    //   131: astore_0
+    //   132: aload_0
+    //   133: ifnull +7 -> 140
+    //   136: aload_0
+    //   137: invokevirtual 156	java/io/OutputStream:close	()V
+    //   140: ldc 79
+    //   142: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: ldc 53
+    //   147: areturn
+    //   148: astore_0
+    //   149: aload_2
+    //   150: ifnull +7 -> 157
+    //   153: aload_2
+    //   154: invokevirtual 156	java/io/OutputStream:close	()V
+    //   157: ldc 79
+    //   159: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: aload_0
+    //   163: athrow
+    //   164: astore_0
+    //   165: goto -51 -> 114
+    //   168: astore_0
+    //   169: goto -29 -> 140
+    //   172: astore_1
+    //   173: goto -16 -> 157
+    //   176: astore_1
+    //   177: goto -45 -> 132
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	180	0	paramString	String
+    //   12	6	1	arrayOfByte1	byte[]
+    //   30	4	1	localException1	Exception
+    //   44	59	1	arrayOfByte2	byte[]
+    //   172	1	1	localIOException	java.io.IOException
+    //   176	1	1	localException2	Exception
+    //   1	153	2	str	String
+    //   93	22	3	localu	com.tencent.mm.vfs.u
+    // Exception table:
+    //   from	to	target	type
+    //   7	13	30	java/lang/Exception
+    //   94	99	129	java/lang/Exception
+    //   94	99	148	finally
+    //   101	106	148	finally
+    //   110	114	164	java/io/IOException
+    //   136	140	168	java/io/IOException
+    //   153	157	172	java/io/IOException
+    //   101	106	176	java/lang/Exception
+  }
+  
+  public static String[] p(String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(325937);
+    String[] arrayOfString = new String[paramArrayOfString.length];
+    int i = 0;
+    if (i < paramArrayOfString.length)
+    {
+      if ((paramArrayOfString[i] != null) && (paramArrayOfString[i].startsWith("data:image/"))) {
+        arrayOfString[i] = acq(paramArrayOfString[i]);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        arrayOfString[i] = paramArrayOfString[i];
+      }
+    }
+    AppMethodBeat.o(325937);
+    return arrayOfString;
+  }
+  
+  public static void q(String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(325942);
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramArrayOfString.length) {}
+      try
+      {
+        y.deleteFile(paramArrayOfString[i]);
+        label20:
+        i += 1;
+        continue;
+        AppMethodBeat.o(325942);
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label20;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ah.a
  * JD-Core Version:    0.7.0.1
  */

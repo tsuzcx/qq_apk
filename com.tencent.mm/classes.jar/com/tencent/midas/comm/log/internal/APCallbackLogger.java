@@ -13,7 +13,7 @@ public class APCallbackLogger
   public static boolean init(String paramString)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(253973);
+    AppMethodBeat.i(217214);
     bool1 = bool2;
     if (!TextUtils.isEmpty(paramString)) {}
     try
@@ -30,13 +30,13 @@ public class APCallbackLogger
         bool1 = false;
       }
     }
-    AppMethodBeat.o(253973);
+    AppMethodBeat.o(217214);
     return bool1;
   }
   
   public static void log(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253975);
+    AppMethodBeat.i(217234);
     int i = 0;
     try
     {
@@ -71,13 +71,13 @@ public class APCallbackLogger
           break;
         }
       }
-      AppMethodBeat.o(253975);
+      AppMethodBeat.o(217234);
       return;
     }
-    catch (Throwable paramString1)
+    finally
     {
       String.format(Locale.CHINA, "print log error: <%s>%s", new Object[] { paramString1.getClass().getName(), paramString1.getMessage() });
-      AppMethodBeat.o(253975);
+      AppMethodBeat.o(217234);
     }
   }
   

@@ -4,117 +4,117 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.protocal.protobuf.cxq;
-import com.tencent.mm.protocal.protobuf.dli;
-import com.tencent.mm.protocal.protobuf.dqr;
-import com.tencent.mm.protocal.protobuf.dqs;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.protocal.protobuf.dov;
+import com.tencent.mm.protocal.protobuf.edt;
+import com.tencent.mm.protocal.protobuf.ejm;
+import com.tencent.mm.protocal.protobuf.ejn;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.z;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class CgiLqtPlanOrderList
-  extends c<dqs>
+  extends z<ejn>
 {
   public CgiLqtPlanOrderList(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(68445);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dqr();
-    ((d.a)localObject).lBV = new dqs();
-    ((d.a)localObject).funcId = 1916;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/qryautoplanorderlist";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    localObject = ((d.a)localObject).bgN();
-    dqr localdqr = (dqr)d.b.b(((d)localObject).lBR);
-    localdqr.TXm = paramInt1;
-    localdqr.offset = paramInt2;
-    localdqr.TXn = paramInt3;
-    c((d)localObject);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ejm();
+    ((c.a)localObject).otF = new ejn();
+    ((c.a)localObject).funcId = 1916;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/qryautoplanorderlist";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    localObject = ((c.a)localObject).bEF();
+    ejm localejm = (ejm)c.b.b(((c)localObject).otB);
+    localejm.aboe = paramInt1;
+    localejm.offset = paramInt2;
+    localejm.dJg = paramInt3;
+    c((c)localObject);
     Log.i("MicroMsg.CgiLqtPlanOrderList", "CgiLqtPlanOrderList Req：plan_id: %s, offset: %s, limit: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(68445);
   }
   
-  public static PlanItemParcel a(dli paramdli)
+  public static PlanItemParcel a(edt paramedt)
   {
     AppMethodBeat.i(68446);
-    if (paramdli == null)
+    if (paramedt == null)
     {
       AppMethodBeat.o(68446);
       return null;
     }
     PlanItemParcel localPlanItemParcel = new PlanItemParcel();
-    localPlanItemParcel.Olc = paramdli.Olc;
-    localPlanItemParcel.gbJ = paramdli.gbJ;
-    localPlanItemParcel.day = paramdli.day;
-    localPlanItemParcel.IfQ = paramdli.IfQ;
-    localPlanItemParcel.DNV = paramdli.DNV;
-    localPlanItemParcel.fvP = paramdli.fvP;
-    localPlanItemParcel.GHy = paramdli.GHy;
-    localPlanItemParcel.state = paramdli.state;
-    localPlanItemParcel.Old = paramdli.Old;
-    if (paramdli.TSu != null)
+    localPlanItemParcel.UZF = paramedt.UZF;
+    localPlanItemParcel.ihV = paramedt.ihV;
+    localPlanItemParcel.day = paramedt.day;
+    localPlanItemParcel.Ocp = paramedt.Ocp;
+    localPlanItemParcel.JFk = paramedt.JFk;
+    localPlanItemParcel.hAk = paramedt.hAk;
+    localPlanItemParcel.MEp = paramedt.MEp;
+    localPlanItemParcel.state = paramedt.state;
+    localPlanItemParcel.UZG = paramedt.UZG;
+    if (paramedt.abiT != null)
     {
-      localPlanItemParcel.Olf = new MngPlanItemParcel();
-      localPlanItemParcel.Olf.OkO = paramdli.TSu.OkO;
-      localPlanItemParcel.Olf.OkP = paramdli.TSu.OkP;
-      paramdli = paramdli.TSu.TFZ.iterator();
-      while (paramdli.hasNext())
+      localPlanItemParcel.UZI = new MngPlanItemParcel();
+      localPlanItemParcel.UZI.UZr = paramedt.abiT.UZr;
+      localPlanItemParcel.UZI.UZs = paramedt.abiT.UZs;
+      paramedt = paramedt.abiT.aaVF.iterator();
+      while (paramedt.hasNext())
       {
-        Integer localInteger = (Integer)paramdli.next();
-        localPlanItemParcel.Olf.OkQ.add(localInteger);
+        Integer localInteger = (Integer)paramedt.next();
+        localPlanItemParcel.UZI.UZt.add(localInteger);
       }
     }
     AppMethodBeat.o(68446);
     return localPlanItemParcel;
   }
   
-  public static dli a(PlanItemParcel paramPlanItemParcel)
+  public static edt a(PlanItemParcel paramPlanItemParcel)
   {
-    AppMethodBeat.i(201474);
+    AppMethodBeat.i(316206);
     if (paramPlanItemParcel == null)
     {
-      AppMethodBeat.o(201474);
+      AppMethodBeat.o(316206);
       return null;
     }
-    dli localdli = new dli();
-    localdli.Olc = paramPlanItemParcel.Olc;
-    localdli.gbJ = paramPlanItemParcel.gbJ;
-    localdli.day = paramPlanItemParcel.day;
-    localdli.IfQ = paramPlanItemParcel.IfQ;
-    localdli.DNV = paramPlanItemParcel.DNV;
-    localdli.fvP = paramPlanItemParcel.fvP;
-    localdli.GHy = paramPlanItemParcel.GHy;
-    localdli.state = paramPlanItemParcel.state;
-    localdli.Old = paramPlanItemParcel.Old;
-    if (paramPlanItemParcel.Olf != null)
+    edt localedt = new edt();
+    localedt.UZF = paramPlanItemParcel.UZF;
+    localedt.ihV = paramPlanItemParcel.ihV;
+    localedt.day = paramPlanItemParcel.day;
+    localedt.Ocp = paramPlanItemParcel.Ocp;
+    localedt.JFk = paramPlanItemParcel.JFk;
+    localedt.hAk = paramPlanItemParcel.hAk;
+    localedt.MEp = paramPlanItemParcel.MEp;
+    localedt.state = paramPlanItemParcel.state;
+    localedt.UZG = paramPlanItemParcel.UZG;
+    if (paramPlanItemParcel.UZI != null)
     {
-      localdli.TSu = new cxq();
-      localdli.TSu.OkO = paramPlanItemParcel.Olf.OkO;
-      localdli.TSu.OkP = paramPlanItemParcel.Olf.OkP;
-      paramPlanItemParcel = paramPlanItemParcel.Olf.OkQ.iterator();
+      localedt.abiT = new dov();
+      localedt.abiT.UZr = paramPlanItemParcel.UZI.UZr;
+      localedt.abiT.UZs = paramPlanItemParcel.UZI.UZs;
+      paramPlanItemParcel = paramPlanItemParcel.UZI.UZt.iterator();
       while (paramPlanItemParcel.hasNext())
       {
         Integer localInteger = (Integer)paramPlanItemParcel.next();
-        localdli.TSu.TFZ.add(localInteger);
+        localedt.abiT.aaVF.add(localInteger);
       }
     }
-    AppMethodBeat.o(201474);
-    return localdli;
+    AppMethodBeat.o(316206);
+    return localedt;
   }
   
   static class MngPlanItemParcel
     implements Parcelable
   {
     public static final Parcelable.Creator<MngPlanItemParcel> CREATOR;
-    public boolean OkO;
-    public String OkP;
-    public ArrayList<Integer> OkQ;
+    public boolean UZr;
+    public String UZs;
+    public ArrayList<Integer> UZt;
     
     static
     {
@@ -126,21 +126,21 @@ public final class CgiLqtPlanOrderList
     public MngPlanItemParcel()
     {
       AppMethodBeat.i(68438);
-      this.OkQ = new ArrayList();
+      this.UZt = new ArrayList();
       AppMethodBeat.o(68438);
     }
     
     protected MngPlanItemParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(68439);
-      this.OkQ = new ArrayList();
+      this.UZt = new ArrayList();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.OkO = bool;
-        this.OkP = paramParcel.readString();
-        this.OkQ = new ArrayList();
-        paramParcel.readList(this.OkQ, Integer.class.getClassLoader());
+        this.UZr = bool;
+        this.UZs = paramParcel.readString();
+        this.UZt = new ArrayList();
+        paramParcel.readList(this.UZt, Integer.class.getClassLoader());
         AppMethodBeat.o(68439);
         return;
       }
@@ -154,12 +154,12 @@ public final class CgiLqtPlanOrderList
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(68437);
-      if (this.OkO) {}
+      if (this.UZr) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeString(this.OkP);
-        paramParcel.writeList(this.OkQ);
+        paramParcel.writeString(this.UZs);
+        paramParcel.writeList(this.UZt);
         AppMethodBeat.o(68437);
         return;
       }
@@ -170,15 +170,15 @@ public final class CgiLqtPlanOrderList
     implements Parcelable
   {
     public static final Parcelable.Creator<PlanItemParcel> CREATOR;
-    public String DNV;
-    public String GHy;
-    public String IfQ;
-    public int Olc;
-    public String Old;
-    public CgiLqtPlanOrderList.MngPlanItemParcel Olf;
+    public String JFk;
+    public String MEp;
+    public String Ocp;
+    public int UZF;
+    public String UZG;
+    public CgiLqtPlanOrderList.MngPlanItemParcel UZI;
     public int day;
-    public String fvP;
-    public long gbJ;
+    public String hAk;
+    public long ihV;
     public int state;
     
     static
@@ -194,15 +194,15 @@ public final class CgiLqtPlanOrderList
     {
       AppMethodBeat.i(68443);
       this.day = paramParcel.readInt();
-      this.gbJ = paramParcel.readLong();
-      this.fvP = paramParcel.readString();
-      this.GHy = paramParcel.readString();
-      this.Olf = ((CgiLqtPlanOrderList.MngPlanItemParcel)paramParcel.readParcelable(CgiLqtPlanOrderList.MngPlanItemParcel.class.getClassLoader()));
-      this.Olc = paramParcel.readInt();
+      this.ihV = paramParcel.readLong();
+      this.hAk = paramParcel.readString();
+      this.MEp = paramParcel.readString();
+      this.UZI = ((CgiLqtPlanOrderList.MngPlanItemParcel)paramParcel.readParcelable(CgiLqtPlanOrderList.MngPlanItemParcel.class.getClassLoader()));
+      this.UZF = paramParcel.readInt();
       this.state = paramParcel.readInt();
-      this.DNV = paramParcel.readString();
-      this.IfQ = paramParcel.readString();
-      this.Old = paramParcel.readString();
+      this.JFk = paramParcel.readString();
+      this.Ocp = paramParcel.readString();
+      this.UZG = paramParcel.readString();
       AppMethodBeat.o(68443);
     }
     
@@ -215,22 +215,22 @@ public final class CgiLqtPlanOrderList
     {
       AppMethodBeat.i(68442);
       paramParcel.writeInt(this.day);
-      paramParcel.writeLong(this.gbJ);
-      paramParcel.writeString(this.fvP);
-      paramParcel.writeString(this.GHy);
-      paramParcel.writeParcelable(this.Olf, paramInt);
-      paramParcel.writeInt(this.Olc);
+      paramParcel.writeLong(this.ihV);
+      paramParcel.writeString(this.hAk);
+      paramParcel.writeString(this.MEp);
+      paramParcel.writeParcelable(this.UZI, paramInt);
+      paramParcel.writeInt(this.UZF);
       paramParcel.writeInt(this.state);
-      paramParcel.writeString(this.DNV);
-      paramParcel.writeString(this.IfQ);
-      paramParcel.writeString(this.Old);
+      paramParcel.writeString(this.JFk);
+      paramParcel.writeString(this.Ocp);
+      paramParcel.writeString(this.UZG);
       AppMethodBeat.o(68442);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.CgiLqtPlanOrderList
  * JD-Core Version:    0.7.0.1
  */

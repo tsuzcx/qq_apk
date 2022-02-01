@@ -5,28 +5,21 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
-@SafeParcelable.Class(creator="CredentialPickerConfigCreator")
 public final class CredentialPickerConfig
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<CredentialPickerConfig> CREATOR;
-  @SafeParcelable.Field(getter="shouldShowCancelButton", id=2)
   private final boolean mShowCancelButton;
-  @SafeParcelable.Field(getter="shouldShowAddAccountButton", id=1)
   private final boolean zzcq;
   @Deprecated
-  @SafeParcelable.Field(getter="isForNewAccount", id=3)
   private final boolean zzcr;
-  @SafeParcelable.Field(getter="getPromptInternalId", id=4)
   private final int zzcs;
-  @SafeParcelable.Field(id=1000)
   private final int zzy;
   
   static
@@ -36,8 +29,7 @@ public final class CredentialPickerConfig
     AppMethodBeat.o(88214);
   }
   
-  @SafeParcelable.Constructor
-  CredentialPickerConfig(@SafeParcelable.Param(id=1000) int paramInt1, @SafeParcelable.Param(id=1) boolean paramBoolean1, @SafeParcelable.Param(id=2) boolean paramBoolean2, @SafeParcelable.Param(id=3) boolean paramBoolean3, @SafeParcelable.Param(id=4) int paramInt2)
+  CredentialPickerConfig(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt2)
   {
     AppMethodBeat.i(88211);
     this.zzy = paramInt1;
@@ -143,10 +135,18 @@ public final class CredentialPickerConfig
       return this;
     }
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface Prompt
+  {
+    public static final int CONTINUE = 1;
+    public static final int SIGN_IN = 2;
+    public static final int SIGN_UP = 3;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.credentials.CredentialPickerConfig
  * JD-Core Version:    0.7.0.1
  */

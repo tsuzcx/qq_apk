@@ -7,11 +7,11 @@ import com.google.android.exoplayer2.source.n;
 public abstract class a
   implements r, s
 {
-  private t aLc;
-  private n aLd;
-  private long aLe;
-  private boolean aLf;
-  private boolean aLg;
+  private t cEZ;
+  private n cFa;
+  private long cFb;
+  private boolean cFc;
+  private boolean cFd;
   private int index;
   private int state;
   private final int trackType;
@@ -19,38 +19,95 @@ public abstract class a
   public a(int paramInt)
   {
     this.trackType = paramInt;
-    this.aLf = true;
+    this.cFc = true;
+  }
+  
+  public final s Qm()
+  {
+    return this;
+  }
+  
+  public i Qn()
+  {
+    return null;
+  }
+  
+  public final n Qo()
+  {
+    return this.cFa;
+  }
+  
+  public final boolean Qp()
+  {
+    return this.cFc;
+  }
+  
+  public final void Qq()
+  {
+    this.cFd = true;
+  }
+  
+  public final boolean Qr()
+  {
+    return this.cFd;
+  }
+  
+  public final void Qs()
+  {
+    this.cFa.ST();
+  }
+  
+  public int Qt()
+  {
+    return 0;
+  }
+  
+  protected void Qu() {}
+  
+  protected void Qv() {}
+  
+  protected void Qw() {}
+  
+  protected final t Qx()
+  {
+    return this.cEZ;
+  }
+  
+  protected final boolean Qy()
+  {
+    if (this.cFc) {
+      return this.cFd;
+    }
+    return this.cFa.isReady();
   }
   
   protected final int a(k paramk, e parame, boolean paramBoolean)
   {
-    int i = this.aLd.b(paramk, parame, paramBoolean);
+    int i = this.cFa.b(paramk, parame, paramBoolean);
     if (i == -4)
     {
-      if (parame.rV())
+      if (parame.Ry())
       {
-        this.aLf = true;
-        if (this.aLg) {
+        this.cFc = true;
+        if (this.cFd) {
           return -4;
         }
         return -3;
       }
-      parame.timeUs += this.aLe;
+      parame.timeUs += this.cFb;
     }
     for (;;)
     {
       return i;
       if (i == -5)
       {
-        parame = paramk.aNg;
-        if (parame.aNc != 9223372036854775807L) {
-          paramk.aNg = parame.G(parame.aNc + this.aLe);
+        parame = paramk.cHc;
+        if (parame.cGY != 9223372036854775807L) {
+          paramk.cHc = parame.bU(parame.cGY + this.cFb);
         }
       }
     }
   }
-  
-  protected void a(long paramLong, boolean paramBoolean) {}
   
   public final void a(t paramt, Format[] paramArrayOfFormat, n paramn, long paramLong1, boolean paramBoolean, long paramLong2)
   {
@@ -58,11 +115,11 @@ public abstract class a
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
-      this.aLc = paramt;
+      this.cEZ = paramt;
       this.state = 1;
-      aL(paramBoolean);
+      bu(paramBoolean);
       a(paramArrayOfFormat, paramn, paramLong2);
-      a(paramLong1, paramBoolean);
+      f(paramLong1, paramBoolean);
       return;
     }
   }
@@ -71,19 +128,31 @@ public abstract class a
   
   public final void a(Format[] paramArrayOfFormat, n paramn, long paramLong)
   {
-    if (!this.aLg) {}
+    if (!this.cFd) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
-      this.aLd = paramn;
-      this.aLf = false;
-      this.aLe = paramLong;
+      this.cFa = paramn;
+      this.cFc = false;
+      this.cFb = paramLong;
       a(paramArrayOfFormat, paramLong);
       return;
     }
   }
   
-  protected void aL(boolean paramBoolean) {}
+  public final void bK(long paramLong)
+  {
+    this.cFd = false;
+    this.cFc = false;
+    f(paramLong, false);
+  }
+  
+  protected final void bL(long paramLong)
+  {
+    this.cFa.cp(paramLong - this.cFb);
+  }
+  
+  protected void bu(boolean paramBoolean) {}
   
   public final void disable()
   {
@@ -93,15 +162,15 @@ public abstract class a
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
       this.state = 0;
-      this.aLd = null;
-      this.aLg = false;
-      qU();
+      this.cFa = null;
+      this.cFd = false;
+      Qw();
       return;
       bool = false;
     }
   }
   
-  public void e(int paramInt, Object paramObject) {}
+  protected void f(long paramLong, boolean paramBoolean) {}
   
   protected final int getIndex()
   {
@@ -118,65 +187,6 @@ public abstract class a
     return this.trackType;
   }
   
-  public final s qK()
-  {
-    return this;
-  }
-  
-  public i qL()
-  {
-    return null;
-  }
-  
-  public final n qM()
-  {
-    return this.aLd;
-  }
-  
-  public final boolean qN()
-  {
-    return this.aLf;
-  }
-  
-  public final void qO()
-  {
-    this.aLg = true;
-  }
-  
-  public final boolean qP()
-  {
-    return this.aLg;
-  }
-  
-  public final void qQ()
-  {
-    this.aLd.tq();
-  }
-  
-  public int qR()
-  {
-    return 0;
-  }
-  
-  protected void qS() {}
-  
-  protected void qT() {}
-  
-  protected void qU() {}
-  
-  protected final t qV()
-  {
-    return this.aLc;
-  }
-  
-  protected final boolean qW()
-  {
-    if (this.aLf) {
-      return this.aLg;
-    }
-    return this.aLd.isReady();
-  }
-  
   public final void setIndex(int paramInt)
   {
     this.index = paramInt;
@@ -190,7 +200,7 @@ public abstract class a
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
       this.state = 2;
-      qS();
+      Qu();
       return;
       bool = false;
     }
@@ -203,22 +213,12 @@ public abstract class a
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
       this.state = 1;
-      qT();
+      Qv();
       return;
     }
   }
   
-  public final void w(long paramLong)
-  {
-    this.aLg = false;
-    this.aLf = false;
-    a(paramLong, false);
-  }
-  
-  protected final void x(long paramLong)
-  {
-    this.aLd.ab(paramLong - this.aLe);
-  }
+  public void u(int paramInt, Object paramObject) {}
 }
 
 

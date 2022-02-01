@@ -7,7 +7,6 @@ import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
@@ -15,14 +14,14 @@ import java.util.WeakHashMap;
 
 public final class c
 {
-  private static final Map<View, Class<? extends IEvent>> Gzn;
-  private static final Map<View, Boolean> Gzo;
+  private static final Map<View, Class<? extends IEvent>> Mvv;
+  private static final Map<View, Boolean> Mvw;
   
   static
   {
     AppMethodBeat.i(149088);
-    Gzn = new WeakHashMap();
-    Gzo = new WeakHashMap();
+    Mvv = new WeakHashMap();
+    Mvw = new WeakHashMap();
     AppMethodBeat.o(149088);
   }
   
@@ -44,8 +43,8 @@ public final class c
     Object localObject2 = i.b(paramView, "getListenerInfo", null, new Object[0]);
     if (localObject2 != null)
     {
-      ??? = (View.OnTouchListener)i.g(localObject2, "mOnTouchListener");
-      localObject2 = (View.OnClickListener)i.g(localObject2, "mOnClickListener");
+      ??? = (View.OnTouchListener)i.n(localObject2, "mOnTouchListener");
+      localObject2 = (View.OnClickListener)i.n(localObject2, "mOnClickListener");
     }
     for (;;)
     {
@@ -57,11 +56,11 @@ public final class c
         if (localObject2 == null) {
           paramView.setOnClickListener(new a(null));
         }
-        synchronized (Gzn)
+        synchronized (Mvv)
         {
           do
           {
-            Gzn.put(paramView, paramClass);
+            Mvv.put(paramView, paramClass);
             AppMethodBeat.o(149087);
             return;
             if ((??? instanceof b)) {
@@ -79,25 +78,25 @@ public final class c
   static final class a
     implements View.OnClickListener
   {
-    private final View.OnClickListener Gzp;
+    private final View.OnClickListener Mvx;
     
     a(View.OnClickListener paramOnClickListener)
     {
-      this.Gzp = paramOnClickListener;
+      this.Mvx = paramOnClickListener;
     }
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(149085);
       ??? = new b();
-      ((b)???).bn(paramView);
-      a.c("com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)???).aFi());
-      synchronized (c.Gzn)
+      ((b)???).cH(paramView);
+      a.c("com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)???).aYj());
+      synchronized (c.aYC())
       {
-        if (!c.Gzn.containsKey(paramView))
+        if (!c.aYC().containsKey(paramView))
         {
-          if (this.Gzp != null) {
-            this.Gzp.onClick(paramView);
+          if (this.Mvx != null) {
+            this.Mvx.onClick(paramView);
           }
           a.a(this, "com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(149085);
@@ -106,33 +105,30 @@ public final class c
       }
       for (;;)
       {
-        synchronized (c.avo())
+        synchronized (c.aCw())
         {
           for (;;)
           {
-            if (!c.avo().containsKey(paramView))
+            if (!c.aCw().containsKey(paramView))
             {
-              Class localClass = (Class)c.Gzn.get(paramView);
+              Class localClass = (Class)c.aYC().get(paramView);
               if (localClass != null) {}
               try
               {
-                EventCenter.instance.publish((IEvent)localClass.newInstance());
+                ((IEvent)localClass.newInstance()).publish();
                 break;
                 paramView = finally;
                 AppMethodBeat.o(149085);
                 throw paramView;
               }
-              catch (Throwable localThrowable)
+              finally
               {
-                for (;;)
-                {
-                  Log.printErrStackTrace("MicroMsg.CBCH", localThrowable, "failure to instantiate event class: " + localClass.getName(), new Object[0]);
-                }
+                Log.printErrStackTrace("MicroMsg.CBCH", localThrowable, "failure to instantiate event class: " + localClass.getName(), new Object[0]);
               }
             }
           }
         }
-        c.avo().remove(paramView);
+        c.aCw().remove(paramView);
       }
     }
   }
@@ -140,11 +136,11 @@ public final class c
   static final class b
     implements View.OnTouchListener
   {
-    private final View.OnTouchListener Gzq;
+    private final View.OnTouchListener Mvy;
     
     b(View.OnTouchListener paramOnTouchListener)
     {
-      this.Gzq = paramOnTouchListener;
+      this.Mvy = paramOnTouchListener;
     }
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -152,21 +148,21 @@ public final class c
       AppMethodBeat.i(149086);
       for (;;)
       {
-        synchronized (c.Gzn)
+        synchronized (c.aYC())
         {
-          if (!c.Gzn.containsKey(paramView))
+          if (!c.aYC().containsKey(paramView))
           {
-            if (this.Gzq == null) {
+            if (this.Mvy == null) {
               break;
             }
-            boolean bool = this.Gzq.onTouch(paramView, paramMotionEvent);
+            boolean bool = this.Mvy.onTouch(paramView, paramMotionEvent);
             AppMethodBeat.o(149086);
             return bool;
           }
         }
-        synchronized (c.avo())
+        synchronized (c.aCw())
         {
-          c.avo().put(paramView, Boolean.TRUE);
+          c.aCw().put(paramView, Boolean.TRUE);
           continue;
           paramView = finally;
           AppMethodBeat.o(149086);

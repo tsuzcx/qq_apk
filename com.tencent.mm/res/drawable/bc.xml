@@ -1,27 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/a0" />
-            <solid android:color="@color/gp" />
-            <stroke android:width="@dimen/a2" android:color="@color/gs" />
-        </shape>
-    </item>
-    <item android:id="@android:id/secondaryProgress">
-        <clip>
-            <shape android:shape="rectangle">
-                <solid android:color="@color/go" />
-                <corners android:radius="@dimen/a0" />
-            </shape>
-        </clip>
-    </item>
-    <item android:id="@android:id/progress">
-        <clip>
-            <shape android:shape="rectangle">
-                <solid android:color="@color/go" />
-                <corners android:radius="@dimen/a0" />
-            </shape>
-        </clip>
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@raw/ipcall_actionbar_quit_icon_pressed" />//压下效果图片 <item android:state_enabled="true" android:drawable="@raw/ipcall_actionbar_quit_icon" />//未按压作图片 </selector>

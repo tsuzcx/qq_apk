@@ -12,7 +12,7 @@ final class TVInfoUI$3
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(28581);
-    TVInfoUI.a(this.Jrj);
+    TVInfoUI.a(this.PEH);
     AppMethodBeat.o(28581);
     return true;
   }

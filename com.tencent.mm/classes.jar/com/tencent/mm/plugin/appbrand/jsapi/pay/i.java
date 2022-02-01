@@ -1,107 +1,109 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import android.content.Intent;
-import com.tencent.d.f.h;
-import com.tencent.luggage.k.f.c;
+import com.tencent.e.f.h;
+import com.tencent.luggage.l.e.c;
 import com.tencent.luggage.sdk.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.f.f.a;
+import com.tencent.mm.ui.f.g.a;
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.m;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.p;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/JsApiRequestFaceToFacePayment;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "REQUEST_FACE_TO_FACE_PAYMENT_RESULT_CODE", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/JsApiRequestFaceToFacePayment;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "REQUEST_FACE_TO_FACE_PAYMENT_RESULT_CODE", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
   extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
   public static final int CTRL_INDEX = 820;
   public static final String NAME = "requestFacetoFacePayment";
-  public static final i.a pku;
-  private final int pkt;
+  public static final a spu;
+  private final int spv;
   
   static
   {
-    AppMethodBeat.i(284421);
-    pku = new i.a((byte)0);
-    AppMethodBeat.o(284421);
+    AppMethodBeat.i(327842);
+    spu = new a((byte)0);
+    AppMethodBeat.o(327842);
   }
   
   public i()
   {
-    AppMethodBeat.i(284419);
-    this.pkt = a.aI(this);
-    AppMethodBeat.o(284419);
+    AppMethodBeat.i(327836);
+    this.spv = a.ce(this);
+    AppMethodBeat.o(327836);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/jsapi/pay/JsApiRequestFaceToFacePayment$invoke$3", "Lcom/tencent/luggage/util/LuggageActivityHelper$ActivityResultInterceptCallback;", "onResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/pay/JsApiRequestFaceToFacePayment$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/pay/JsApiRequestFaceToFacePayment$invoke$3", "Lcom/tencent/luggage/util/LuggageActivityHelper$ActivityResultInterceptCallback;", "onResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements f.c
+    implements e.c
   {
-    b(WeakReference paramWeakReference, int paramInt) {}
+    b(i parami, WeakReference<com.tencent.mm.plugin.appbrand.service.c> paramWeakReference, int paramInt) {}
     
-    public final boolean c(int paramInt1, int paramInt2, Intent paramIntent)
+    public final boolean onResult(int paramInt1, int paramInt2, Intent paramIntent)
     {
       paramInt2 = 0;
-      AppMethodBeat.i(283259);
-      if (i.a(this.pkv) != paramInt1)
+      AppMethodBeat.i(327831);
+      if (i.a(this.spw) != paramInt1)
       {
-        AppMethodBeat.o(283259);
+        AppMethodBeat.o(327831);
         return false;
       }
-      com.tencent.mm.plugin.appbrand.service.c localc = (com.tencent.mm.plugin.appbrand.service.c)this.pkw.get();
+      com.tencent.mm.plugin.appbrand.service.c localc = (com.tencent.mm.plugin.appbrand.service.c)this.spx.get();
       if (localc == null)
       {
-        AppMethodBeat.o(283259);
+        AppMethodBeat.o(327831);
         return true;
       }
-      p.j(localc, "envRef.get() ?: return true");
-      if (paramIntent != null)
+      Object localObject1;
+      label56:
+      Object localObject2;
+      if (paramIntent == null)
       {
-        localObject2 = paramIntent.getSerializableExtra("key_result_pay_result");
-        localObject1 = localObject2;
-        if (localObject2 != null) {}
-      }
-      else
-      {
-        localObject1 = (Serializable)f.f.a.VSb;
-      }
-      if (localObject1 == null)
-      {
-        paramIntent = new t("null cannot be cast to non-null type com.tencent.mm.ui.ConstantsUI.F2FAppBrandRemittanceUI.RESULT_TYPE");
-        AppMethodBeat.o(283259);
-        throw paramIntent;
-      }
-      Object localObject2 = (f.f.a)localObject1;
-      if (paramIntent != null)
-      {
-        localObject1 = paramIntent.getStringExtra("key_result_error_msg");
-        paramIntent = (Intent)localObject1;
-        if (localObject1 != null) {}
-      }
-      else
-      {
+        localObject1 = null;
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = (Serializable)f.g.a.adwj;
+        }
+        localObject2 = (f.g.a)localObject2;
+        if (paramIntent != null) {
+          break label186;
+        }
         paramIntent = "";
       }
-      new StringBuilder("[onResult] result=").append(localObject2).append(", errorMsg").append(paramIntent);
-      h.ioq();
-      int i = this.otk;
-      Object localObject1 = this.pkv;
-      switch (j.$EnumSwitchMapping$0[localObject2.ordinal()])
-      {
-      default: 
-        paramIntent = new m();
-        AppMethodBeat.o(283259);
-        throw paramIntent;
-      case 1: 
-        paramIntent = "ok";
-      }
+      int i;
       for (;;)
       {
-        localc.j(i, ((i)localObject1).agS(paramIntent));
-        AppMethodBeat.o(283259);
+        new StringBuilder("[onResult] result=").append(localObject2).append(", errorMsg").append(paramIntent);
+        h.jXD();
+        i = this.rxe;
+        localObject1 = this.spw;
+        switch (j.a.$EnumSwitchMapping$0[localObject2.ordinal()])
+        {
+        default: 
+          paramIntent = new p();
+          AppMethodBeat.o(327831);
+          throw paramIntent;
+          localObject1 = paramIntent.getSerializableExtra("key_result_pay_result");
+          break label56;
+          label186:
+          localObject1 = paramIntent.getStringExtra("key_result_error_msg");
+          paramIntent = (Intent)localObject1;
+          if (localObject1 == null) {
+            paramIntent = "";
+          }
+          break;
+        }
+      }
+      paramIntent = "ok";
+      for (;;)
+      {
+        localc.callback(i, ((i)localObject1).ZP(paramIntent));
+        AppMethodBeat.o(327831);
         return true;
         paramInt1 = paramInt2;
         if (((CharSequence)paramIntent).length() == 0) {
@@ -113,7 +115,7 @@ public final class i
         }
         else
         {
-          paramIntent = "fail:".concat(String.valueOf(paramIntent));
+          paramIntent = s.X("fail:", paramIntent);
           continue;
           paramIntent = "cancel";
         }
@@ -123,7 +125,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.pay.i
  * JD-Core Version:    0.7.0.1
  */

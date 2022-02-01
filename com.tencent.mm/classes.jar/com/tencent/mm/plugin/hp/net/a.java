@@ -1,64 +1,64 @@
 package com.tencent.mm.plugin.hp.net;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dhf;
-import com.tencent.mm.protocal.protobuf.dhg;
-import com.tencent.mm.protocal.protobuf.dhh;
+import com.tencent.mm.protocal.protobuf.dzo;
+import com.tencent.mm.protocal.protobuf.dzp;
+import com.tencent.mm.protocal.protobuf.dzq;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public class a
-  extends q
+  extends p
   implements m
 {
-  protected String DMR;
-  protected String DMS;
-  protected LinkedList<dhf> DMT;
-  protected int DMU;
-  protected i callback;
+  protected String JEf;
+  protected String JEg;
+  protected LinkedList<dzo> JEh;
+  protected int JEi;
+  protected h callback;
   protected int mScene;
-  protected final d rr;
-  protected LinkedList<dhg> tqd;
+  protected final c rr;
   protected String type;
+  protected LinkedList<dzp> wuC;
   
   public a()
   {
     AppMethodBeat.i(117444);
-    this.DMT = new LinkedList();
-    this.tqd = new LinkedList();
-    this.DMU = 0;
+    this.JEh = new LinkedList();
+    this.wuC = new LinkedList();
+    this.JEi = 0;
     this.mScene = 0;
-    d.a locala = new d.a();
-    locala.lBU = new dhg();
-    locala.lBV = new dhh();
+    c.a locala = new c.a();
+    locala.otE = new dzp();
+    locala.otF = new dzq();
     locala.uri = "/cgi-bin/micromsg-bin/prconfig";
     locala.funcId = 3899;
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
+    this.rr = locala.bEF();
     AppMethodBeat.o(117444);
   }
   
-  public int doScene(g paramg, i parami)
+  public int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(117445);
-    this.callback = parami;
-    parami = (dhg)d.b.b(this.rr.lBR);
-    parami.TOo = this.DMR;
-    parami.GIL = this.DMS;
-    parami.TOp = this.DMT;
-    parami.type = this.type;
-    parami.PgO = this.tqd;
-    parami.TOq = this.DMU;
-    parami.TOr = this.mScene;
+    this.callback = paramh;
+    paramh = (dzp)c.b.b(this.rr.otB);
+    paramh.abeK = this.JEf;
+    paramh.ycW = this.JEg;
+    paramh.abeL = this.JEh;
+    paramh.type = this.type;
+    paramh.VXB = this.wuC;
+    paramh.abeM = this.JEi;
+    paramh.abeN = this.mScene;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(117445);
     return i;

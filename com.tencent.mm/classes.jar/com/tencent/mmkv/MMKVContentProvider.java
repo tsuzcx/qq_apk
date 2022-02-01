@@ -18,9 +18,9 @@ import java.util.List;
 public class MMKVContentProvider
   extends ContentProvider
 {
-  private static Uri Zbd;
+  private static Uri agZK;
   
-  protected static String bm(Context paramContext, int paramInt)
+  protected static String bF(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(13531);
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
@@ -42,12 +42,12 @@ public class MMKVContentProvider
     return "";
   }
   
-  protected static Uri lR(Context paramContext)
+  protected static Uri nW(Context paramContext)
   {
     AppMethodBeat.i(13528);
-    if (Zbd != null)
+    if (agZK != null)
     {
-      paramContext = Zbd;
+      paramContext = agZK;
       AppMethodBeat.o(13528);
       return paramContext;
     }
@@ -63,7 +63,7 @@ public class MMKVContentProvider
       return null;
     }
     paramContext = Uri.parse("content://".concat(String.valueOf(paramContext)));
-    Zbd = paramContext;
+    agZK = paramContext;
     AppMethodBeat.o(13528);
     return paramContext;
   }
@@ -101,9 +101,9 @@ public class MMKVContentProvider
       int i = paramBundle.getInt("KEY_SIZE");
       int j = paramBundle.getInt("KEY_MODE");
       paramString1 = paramBundle.getString("KEY_CRYPT");
-      paramBundle = MMKV.mmkvWithAshmemID(getContext(), paramString2, i, j, paramString1);
-      if (paramBundle != null)
+      try
       {
+        paramBundle = MMKV.mmkvWithAshmemID(getContext(), paramString2, i, j, paramString1);
         paramString1 = new ParcelableMMKV(paramBundle);
         new StringBuilder().append(paramString2).append(" fd = ").append(paramBundle.ashmemFD()).append(", meta fd = ").append(paramBundle.ashmemMetaFD());
         paramString2 = new Bundle();
@@ -111,8 +111,12 @@ public class MMKVContentProvider
         AppMethodBeat.o(13532);
         return paramString2;
       }
-      AppMethodBeat.o(13532);
-      return null;
+      catch (Exception paramString1)
+      {
+        paramString1.getMessage();
+        AppMethodBeat.o(13532);
+        return null;
+      }
     }
     AppMethodBeat.o(13532);
     return null;
@@ -154,8 +158,8 @@ public class MMKVContentProvider
       AppMethodBeat.o(13530);
       return false;
     }
-    if (Zbd == null) {
-      Zbd = Uri.parse("content://".concat(String.valueOf(localObject)));
+    if (agZK == null) {
+      agZK = Uri.parse("content://".concat(String.valueOf(localObject)));
     }
     AppMethodBeat.o(13530);
     return true;
@@ -179,7 +183,7 @@ public class MMKVContentProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mmkv.MMKVContentProvider
  * JD-Core Version:    0.7.0.1
  */

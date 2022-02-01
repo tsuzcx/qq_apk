@@ -8,41 +8,41 @@ public final class j
 {
   public final int d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(228689);
+    AppMethodBeat.i(328158);
     Log.d("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
-    AppMethodBeat.o(228689);
+    AppMethodBeat.o(328158);
     return 1;
   }
   
   public final int e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(228694);
+    AppMethodBeat.i(328167);
     Log.e("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
-    AppMethodBeat.o(228694);
+    AppMethodBeat.o(328167);
     return 1;
   }
   
   public final int i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(228690);
+    AppMethodBeat.i(328160);
     Log.i("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
-    AppMethodBeat.o(228690);
+    AppMethodBeat.o(328160);
     return 1;
   }
   
   public final int v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(228686);
+    AppMethodBeat.i(328152);
     Log.v("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
-    AppMethodBeat.o(228686);
+    AppMethodBeat.o(328152);
     return 1;
   }
   
   public final int w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(228693);
+    AppMethodBeat.i(328163);
     Log.w("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
-    AppMethodBeat.o(228693);
+    AppMethodBeat.o(328163);
     return 1;
   }
 }

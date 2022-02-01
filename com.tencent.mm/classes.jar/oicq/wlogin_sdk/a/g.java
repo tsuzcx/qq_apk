@@ -6,41 +6,41 @@ import oicq.wlogin_sdk.tools.util;
 public final class g
   extends a
 {
-  public int abGG = 0;
-  public int abGH = 0;
-  public int abGI = 0;
-  public int abGJ = 0;
+  public int ajHK = 0;
+  public int ajHL = 0;
+  public int ajHM = 0;
+  public int ajHN = 0;
   
   public g()
   {
-    this.abFM = 261;
+    this.ajGQ = 261;
   }
   
-  public final Boolean iUK()
+  public final Boolean kGl()
   {
     AppMethodBeat.i(88108);
-    if (this.abGw < 2)
+    if (this.ajHA < 2)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.abGH = util.ap(this.abFG, this.abGv);
-    if (this.abGw < this.abGH + 2 + 2)
+    this.ajHL = util.aq(this.ajGK, this.ajHz);
+    if (this.ajHA < this.ajHL + 2 + 2)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.abGG = util.ap(this.abFG, this.abGv + 2 + this.abGH);
-    if (this.abGw < this.abGH + 2 + 2 + this.abGG)
+    this.ajHK = util.aq(this.ajGK, this.ajHz + 2 + this.ajHL);
+    if (this.ajHA < this.ajHL + 2 + 2 + this.ajHK)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.abGJ = (this.abGv + 2);
-    this.abGI = (this.abGH + 2 + 2 + this.abGv);
+    this.ajHN = (this.ajHz + 2);
+    this.ajHM = (this.ajHL + 2 + 2 + this.ajHz);
     Boolean localBoolean = Boolean.TRUE;
     AppMethodBeat.o(88108);
     return localBoolean;
@@ -48,7 +48,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.g
  * JD-Core Version:    0.7.0.1
  */

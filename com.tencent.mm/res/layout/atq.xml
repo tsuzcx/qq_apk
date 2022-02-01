@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/ux" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/j6c" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="middle" android:id="@id/evn" android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{header}" android:singleLine="true" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/Link_100" android:gravity="bottom|center" android:id="@id/m2d" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:paddingBottom="@dimen/m2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/a07" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/hqu" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <View android:background="@color/a" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+    <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/ej" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -7,11 +7,11 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface p
   extends a
 {
+  public abstract String B(Context paramContext, String paramString);
+  
   public abstract boolean a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener);
   
-  public abstract boolean hh(String paramString);
-  
-  public abstract String x(Context paramContext, String paramString);
+  public abstract boolean iI(String paramString);
 }
 
 

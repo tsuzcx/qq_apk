@@ -9,7 +9,7 @@ public class ElfCheckRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<ElfCheckRequest> CREATOR;
-  public long FNJ;
+  public long LIF;
   
   static
   {
@@ -20,14 +20,14 @@ public class ElfCheckRequest
   
   public ElfCheckRequest()
   {
-    this.FNJ = 0L;
+    this.LIF = 0L;
   }
   
   protected ElfCheckRequest(Parcel paramParcel)
   {
     AppMethodBeat.i(124976);
-    this.FNJ = 0L;
-    this.FNJ = paramParcel.readLong();
+    this.LIF = 0L;
+    this.LIF = paramParcel.readLong();
     AppMethodBeat.o(124976);
   }
   
@@ -39,7 +39,7 @@ public class ElfCheckRequest
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(124975);
-    paramParcel.writeLong(this.FNJ);
+    paramParcel.writeLong(this.LIF);
     AppMethodBeat.o(124975);
   }
 }

@@ -1,25 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.rtmp.ITXLiveBaseListener;
 import com.tencent.rtmp.TXLiveBase;
 
 public final class l
 {
-  private static boolean jxV = false;
-  private static boolean oVO;
+  private static boolean rPg = BuildInfo.ENABLE_LIVE_SDK_DEBUG;
+  private static boolean sbm;
   
-  public static void bSv()
+  public static void csC()
   {
     AppMethodBeat.i(145902);
-    if (oVO)
+    if (sbm)
     {
       AppMethodBeat.o(145902);
       return;
     }
     TXLiveBase.setLogLevel(1);
-    TXLiveBase.setConsoleEnabled(jxV);
+    TXLiveBase.setConsoleEnabled(rPg);
     TXLiveBase.setListener(new ITXLiveBaseListener()
     {
       public final void OnLog(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
@@ -56,13 +57,13 @@ public final class l
         AppMethodBeat.o(145901);
       }
     });
-    oVO = true;
+    sbm = true;
     AppMethodBeat.o(145902);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.l
  * JD-Core Version:    0.7.0.1
  */

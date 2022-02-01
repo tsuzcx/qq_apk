@@ -11,30 +11,30 @@ public class PluginMultiMediaReport
 {
   public void configure(g paramg)
   {
-    AppMethodBeat.i(187527);
+    AppMethodBeat.i(262713);
     new e();
-    AppMethodBeat.o(187527);
+    AppMethodBeat.o(262713);
   }
   
   public void dependency()
   {
-    AppMethodBeat.i(187525);
+    AppMethodBeat.i(262710);
     dependsOn(d.class);
-    AppMethodBeat.o(187525);
+    AppMethodBeat.o(262710);
   }
   
   public void execute(g paramg) {}
   
   public void installed()
   {
-    AppMethodBeat.i(187523);
+    AppMethodBeat.i(262707);
     alias(b.class);
-    AppMethodBeat.o(187523);
+    AppMethodBeat.o(262707);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multimediareport.PluginMultiMediaReport
  * JD-Core Version:    0.7.0.1
  */

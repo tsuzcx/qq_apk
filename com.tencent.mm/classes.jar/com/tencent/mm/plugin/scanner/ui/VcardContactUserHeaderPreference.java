@@ -14,12 +14,12 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class VcardContactUserHeaderPreference
   extends Preference
 {
-  String IMW;
-  private TextView IUA;
-  private TextView IUB;
-  private TextView IUC;
-  private ImageView IUy;
-  private TextView IUz;
+  String OTZ;
+  private ImageView Pdq;
+  private TextView Pdr;
+  private TextView Pds;
+  private TextView Pdt;
+  private TextView Pdu;
   private final Context context;
   String fullName;
   String nickName;
@@ -42,35 +42,35 @@ public class VcardContactUserHeaderPreference
     AppMethodBeat.i(52014);
     super.onBindView(paramView);
     Log.e("MicroMsg.scanner.VcardContactUserHeaderPreference", "onbindview");
-    this.IUy = ((ImageView)paramView.findViewById(l.f.IDN));
-    this.IUz = ((TextView)paramView.findViewById(l.f.IDO));
+    this.Pdq = ((ImageView)paramView.findViewById(l.f.OJP));
+    this.Pdr = ((TextView)paramView.findViewById(l.f.OJQ));
     if (this.fullName != null) {
-      this.IUz.setText(this.fullName);
+      this.Pdr.setText(this.fullName);
     }
-    this.IUA = ((TextView)paramView.findViewById(l.f.IDP));
+    this.Pds = ((TextView)paramView.findViewById(l.f.OJR));
     if (this.nickName != null)
     {
-      this.IUA.setText(this.context.getString(l.i.IFC, new Object[] { this.nickName }));
-      this.IUA.setVisibility(0);
+      this.Pds.setText(this.context.getString(l.i.OLL, new Object[] { this.nickName }));
+      this.Pds.setVisibility(0);
     }
-    this.IUB = ((TextView)paramView.findViewById(l.f.IDQ));
-    if (this.IMW != null)
+    this.Pdt = ((TextView)paramView.findViewById(l.f.OJS));
+    if (this.OTZ != null)
     {
-      this.IUB.setText(this.context.getString(l.i.IFE, new Object[] { this.IMW }));
-      this.IUB.setVisibility(0);
+      this.Pdt.setText(this.context.getString(l.i.OLN, new Object[] { this.OTZ }));
+      this.Pdt.setVisibility(0);
     }
-    this.IUC = ((TextView)paramView.findViewById(l.f.IDR));
+    this.Pdu = ((TextView)paramView.findViewById(l.f.OJT));
     if (this.title != null)
     {
-      this.IUC.setText(this.context.getString(l.i.IFF, new Object[] { this.title }));
-      this.IUC.setVisibility(0);
+      this.Pdu.setText(this.context.getString(l.i.OLO, new Object[] { this.title }));
+      this.Pdu.setVisibility(0);
     }
     AppMethodBeat.o(52014);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.VcardContactUserHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

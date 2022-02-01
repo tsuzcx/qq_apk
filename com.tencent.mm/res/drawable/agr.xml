@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/afz" />
-            <corners android:bottomLeftRadius="8.0dip" android:bottomRightRadius="8.0dip" />
-        </shape>
-    </item>
+    <item android:state_checked="true" android:drawable="@raw/checkbox_selected_orange" />
+    <item android:drawable="@drawable/o4" />
 </selector>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/kpd" android:paddingLeft="@dimen/cv" android:layout_width="fill_parent" android:layout_height="@dimen/bb" android:layout_weight="1.0" style="@style/mk">
+        <LinearLayout android:gravity="center|left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/m4">
+            <TextView android:ellipsize="end" android:id="@android:id/title" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/m4" />
+        </LinearLayout>
+        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/m4" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/k14" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/d0" android:src="@raw/icons_outlined_done" android:contentDescription="@string/fxp" app:iconColor="@color/Brand" />
+    </LinearLayout>
+    <View android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+</LinearLayout>

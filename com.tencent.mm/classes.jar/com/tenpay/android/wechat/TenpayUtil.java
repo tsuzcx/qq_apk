@@ -23,14 +23,13 @@ public class TenpayUtil
         if (localObject.getName().equals(paramString))
         {
           i = localObject.getInt(null);
-          AppMethodBeat.o(73260);
           return i;
         }
         i += 1;
       }
       return 0;
     }
-    catch (Throwable paramContext)
+    finally
     {
       AppMethodBeat.o(73260);
     }
@@ -57,7 +56,7 @@ public class TenpayUtil
       }
       AppMethodBeat.o(73259);
     }
-    catch (Throwable paramContext)
+    finally
     {
       AppMethodBeat.o(73259);
       return null;
@@ -207,7 +206,7 @@ public class TenpayUtil
       AppMethodBeat.o(73256);
       return null;
     }
-    paramArrayOfByte1 = new Encrypt().sm4BCDDecryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
+    paramArrayOfByte1 = new Encrypt().sm4DecryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
     AppMethodBeat.o(73256);
     return paramArrayOfByte1;
   }
@@ -220,14 +219,14 @@ public class TenpayUtil
       AppMethodBeat.o(73255);
       return null;
     }
-    paramArrayOfByte1 = new Encrypt().sm4BCDEncryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
+    paramArrayOfByte1 = new Encrypt().sm4EncryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
     AppMethodBeat.o(73255);
     return paramArrayOfByte1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpayUtil
  * JD-Core Version:    0.7.0.1
  */

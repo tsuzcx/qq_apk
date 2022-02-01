@@ -1,39 +1,40 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cwx;
+import com.tencent.mm.plugin.findersdk.a.q;
+import com.tencent.mm.protocal.protobuf.doc;
 import java.util.Map;
 
 public final class h
   implements k
 {
-  public cwx mbk;
+  public doc oUe;
   
   public h()
   {
-    AppMethodBeat.i(260818);
-    this.mbk = new cwx();
-    AppMethodBeat.o(260818);
+    AppMethodBeat.i(233238);
+    this.oUe = new doc();
+    AppMethodBeat.o(233238);
   }
   
-  public final String boV()
+  public final String bMC()
   {
-    AppMethodBeat.i(260820);
-    String str = com.tencent.mm.plugin.findersdk.a.k.a(this.mbk);
-    AppMethodBeat.o(260820);
+    AppMethodBeat.i(233243);
+    String str = q.b(this.oUe);
+    AppMethodBeat.o(233243);
     return str;
   }
   
   public final void i(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(260821);
-    this.mbk = com.tencent.mm.plugin.findersdk.a.k.x(paramString, paramMap);
-    AppMethodBeat.o(260821);
+    AppMethodBeat.i(233249);
+    this.oUe = q.E(paramString, paramMap);
+    AppMethodBeat.o(233249);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelsns.h
  * JD-Core Version:    0.7.0.1
  */

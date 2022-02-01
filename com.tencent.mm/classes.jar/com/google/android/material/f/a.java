@@ -1,6 +1,5 @@
 package com.google.android.material.f;
 
-import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build.VERSION;
@@ -10,97 +9,96 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static final int[] bDA;
-  private static final int[] bDB;
-  private static final int[] bDC;
-  private static final int[] bDD;
-  private static final int[] bDE;
-  public static final boolean bDy;
-  private static final int[] bDz;
-  private static final int[] wq;
-  private static final int[] ws;
-  private static final int[] wt;
+  private static final int[] dwA;
+  private static final int[] dwB;
+  private static final int[] dwC;
+  private static final int[] dwD;
+  private static final int[] dwE;
+  private static final int[] dwF;
+  public static final boolean dwz;
+  private static final int[] xm;
+  private static final int[] xo;
+  private static final int[] xp;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21) {}
     for (boolean bool = true;; bool = false)
     {
-      bDy = bool;
-      ws = new int[] { 16842919 };
-      bDz = new int[] { 16843623, 16842908 };
-      wq = new int[] { 16842908 };
-      bDA = new int[] { 16843623 };
-      bDB = new int[] { 16842913, 16842919 };
-      bDC = new int[] { 16842913, 16843623, 16842908 };
-      bDD = new int[] { 16842913, 16842908 };
-      bDE = new int[] { 16842913, 16843623 };
-      wt = new int[] { 16842913 };
+      dwz = bool;
+      xo = new int[] { 16842919 };
+      dwA = new int[] { 16843623, 16842908 };
+      xm = new int[] { 16842908 };
+      dwB = new int[] { 16843623 };
+      dwC = new int[] { 16842913, 16842919 };
+      dwD = new int[] { 16842913, 16843623, 16842908 };
+      dwE = new int[] { 16842913, 16842908 };
+      dwF = new int[] { 16842913, 16843623 };
+      xp = new int[] { 16842913 };
       return;
     }
   }
   
   private static int a(ColorStateList paramColorStateList, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(238778);
+    AppMethodBeat.i(208916);
     if (paramColorStateList != null) {}
-    for (int i = paramColorStateList.getColorForState(paramArrayOfInt, paramColorStateList.getDefaultColor()); bDy; i = 0)
+    for (int i = paramColorStateList.getColorForState(paramArrayOfInt, paramColorStateList.getDefaultColor()); dwz; i = 0)
     {
-      i = gb(i);
-      AppMethodBeat.o(238778);
+      i = jq(i);
+      AppMethodBeat.o(208916);
       return i;
     }
-    AppMethodBeat.o(238778);
+    AppMethodBeat.o(208916);
     return i;
   }
   
   public static ColorStateList g(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(238774);
-    if (bDy)
+    AppMethodBeat.i(208913);
+    if (dwz)
     {
-      arrayOfInt1 = wt;
-      i = a(paramColorStateList, bDB);
+      arrayOfInt1 = xp;
+      i = a(paramColorStateList, dwC);
       arrayOfInt2 = StateSet.NOTHING;
-      j = a(paramColorStateList, ws);
+      j = a(paramColorStateList, xo);
       paramColorStateList = new ColorStateList(new int[][] { arrayOfInt1, arrayOfInt2 }, new int[] { i, j });
-      AppMethodBeat.o(238774);
+      AppMethodBeat.o(208913);
       return paramColorStateList;
     }
-    int[] arrayOfInt1 = bDB;
-    int i = a(paramColorStateList, bDB);
-    int[] arrayOfInt2 = bDC;
-    int j = a(paramColorStateList, bDC);
-    int[] arrayOfInt3 = bDD;
-    int k = a(paramColorStateList, bDD);
-    int[] arrayOfInt4 = bDE;
-    int m = a(paramColorStateList, bDE);
-    int[] arrayOfInt5 = wt;
-    int[] arrayOfInt6 = ws;
-    int n = a(paramColorStateList, ws);
-    int[] arrayOfInt7 = bDz;
-    int i1 = a(paramColorStateList, bDz);
-    int[] arrayOfInt8 = wq;
-    int i2 = a(paramColorStateList, wq);
-    int[] arrayOfInt9 = bDA;
-    int i3 = a(paramColorStateList, bDA);
+    int[] arrayOfInt1 = dwC;
+    int i = a(paramColorStateList, dwC);
+    int[] arrayOfInt2 = dwD;
+    int j = a(paramColorStateList, dwD);
+    int[] arrayOfInt3 = dwE;
+    int k = a(paramColorStateList, dwE);
+    int[] arrayOfInt4 = dwF;
+    int m = a(paramColorStateList, dwF);
+    int[] arrayOfInt5 = xp;
+    int[] arrayOfInt6 = xo;
+    int n = a(paramColorStateList, xo);
+    int[] arrayOfInt7 = dwA;
+    int i1 = a(paramColorStateList, dwA);
+    int[] arrayOfInt8 = xm;
+    int i2 = a(paramColorStateList, xm);
+    int[] arrayOfInt9 = dwB;
+    int i3 = a(paramColorStateList, dwB);
     paramColorStateList = new ColorStateList(new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, StateSet.NOTHING }, new int[] { i, j, k, m, 0, n, i1, i2, i3, 0 });
-    AppMethodBeat.o(238774);
+    AppMethodBeat.o(208913);
     return paramColorStateList;
   }
   
-  @TargetApi(21)
-  private static int gb(int paramInt)
+  private static int jq(int paramInt)
   {
-    AppMethodBeat.i(238781);
-    paramInt = b.C(paramInt, Math.min(Color.alpha(paramInt) * 2, 255));
-    AppMethodBeat.o(238781);
+    AppMethodBeat.i(208917);
+    paramInt = b.ax(paramInt, Math.min(Color.alpha(paramInt) * 2, 255));
+    AppMethodBeat.o(208917);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.f.a
  * JD-Core Version:    0.7.0.1
  */

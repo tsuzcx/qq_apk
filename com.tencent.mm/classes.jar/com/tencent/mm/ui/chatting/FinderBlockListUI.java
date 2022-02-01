@@ -1,107 +1,133 @@
 package com.tencent.mm.ui.chatting;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.dc;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.g;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.presenter.contract.FinderBlockListContract.BlockListPresenter;
 import com.tencent.mm.plugin.finder.presenter.contract.FinderBlockListContract.BlockListViewCallback;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.plugin.finder.report.s;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.ab;
-import com.tencent.mm.plugin.finder.storage.ac;
+import com.tencent.mm.plugin.finder.storage.ae;
+import com.tencent.mm.plugin.finder.storage.af;
+import com.tencent.mm.plugin.finder.storage.ar;
 import com.tencent.mm.plugin.finder.storage.c;
 import com.tencent.mm.plugin.finder.storage.d;
-import com.tencent.mm.plugin.findersdk.d.a.a.b;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.amd;
-import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.ScreenShotUtil;
 import com.tencent.mm.sdk.platformtools.ScreenShotUtil.ScreenShotCallback;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.ui.contact.w;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import kotlin.a.j;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/FinderBlockListUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "config", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "needChangeOrientation", "", "getNeedChangeOrientation", "()Z", "setNeedChangeOrientation", "(Z)V", "presenter", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderBlockListContract$BlockListPresenter;", "screenShotCallback", "com/tencent/mm/ui/chatting/FinderBlockListUI$screenShotCallback$1", "Lcom/tencent/mm/ui/chatting/FinderBlockListUI$screenShotCallback$1;", "type", "", "unInitTask", "Ljava/lang/Runnable;", "viewCallback", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderBlockListContract$BlockListViewCallback;", "finish", "", "getCommentScene", "getLayoutId", "getReportType", "initView", "initializeUIC", "uiComponents", "Ljava/util/HashSet;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "setRequestedOrientation", "requestedOrientation", "Companion", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/FinderBlockListUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "config", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "needChangeOrientation", "", "getNeedChangeOrientation", "()Z", "setNeedChangeOrientation", "(Z)V", "presenter", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderBlockListContract$BlockListPresenter;", "screenShotCallback", "com/tencent/mm/ui/chatting/FinderBlockListUI$screenShotCallback$1", "Lcom/tencent/mm/ui/chatting/FinderBlockListUI$screenShotCallback$1;", "type", "", "unInitTask", "Ljava/lang/Runnable;", "viewCallback", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderBlockListContract$BlockListViewCallback;", "finish", "", "getCommentScene", "getLayoutId", "getReportType", "initView", "initializeUIC", "uiComponents", "Ljava/util/HashSet;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "setRequestedOrientation", "requestedOrientation", "Companion", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderBlockListUI
   extends MMActivity
 {
-  private static final int Aow = 1;
-  private static final int Aox = 20;
-  private static final int Aoy = 1;
-  public static final a WDx;
-  private boolean AwU;
+  private static final int FOM;
+  private static final int FON;
+  private static final int FOO;
+  public static final FinderBlockListUI.a aekX;
+  private Runnable CxA;
+  private ar ECo;
+  private FinderBlockListContract.BlockListViewCallback EXw;
+  private FinderBlockListContract.BlockListPresenter EXy;
+  private boolean FVH;
   private final String TAG;
-  private final d WDw;
+  private final FinderBlockListUI.b aekY;
   private int type;
-  private Runnable xZq;
-  private com.tencent.mm.plugin.finder.storage.aj zAg;
-  private FinderBlockListContract.BlockListViewCallback zME;
-  private FinderBlockListContract.BlockListPresenter zMG;
   
   static
   {
-    AppMethodBeat.i(222177);
-    WDx = new a((byte)0);
-    Aow = 1;
-    Aox = 20;
-    Aoy = 1;
-    AppMethodBeat.o(222177);
+    AppMethodBeat.i(254234);
+    aekX = new FinderBlockListUI.a((byte)0);
+    FOM = 1;
+    FON = 20;
+    FOO = 1;
+    AppMethodBeat.o(254234);
   }
   
   public FinderBlockListUI()
   {
-    AppMethodBeat.i(222175);
+    AppMethodBeat.i(254224);
     this.TAG = "Finder.FinderBlockListUI";
-    this.WDw = new d(this);
-    AppMethodBeat.o(222175);
+    this.aekY = new FinderBlockListUI.b(this);
+    AppMethodBeat.o(254224);
+  }
+  
+  private static final boolean a(FinderBlockListUI paramFinderBlockListUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(254227);
+    s.u(paramFinderBlockListUI, "this$0");
+    paramFinderBlockListUI.finish();
+    AppMethodBeat.o(254227);
+    return true;
+  }
+  
+  private static final boolean b(FinderBlockListUI paramFinderBlockListUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(254230);
+    s.u(paramFinderBlockListUI, "this$0");
+    Log.i(paramFinderBlockListUI.TAG, "doCallSelectContactUIForMultiRetransmit");
+    paramMenuItem = new Intent();
+    paramMenuItem.setClassName((Context)paramFinderBlockListUI, "com.tencent.mm.ui.contact.SelectContactUI");
+    paramMenuItem.putExtra("list_type", 1);
+    paramMenuItem.putExtra("titile", paramFinderBlockListUI.getString(e.h.finder_mod_block_select_user));
+    paramMenuItem.putExtra("list_attr", w.affp);
+    Object localObject1 = paramFinderBlockListUI.EXy;
+    s.checkNotNull(localObject1);
+    Object localObject2 = (Iterable)((FinderBlockListContract.BlockListPresenter)localObject1).pUj;
+    localObject1 = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((Collection)localObject1).add(((com.tencent.mm.plugin.finder.model.p)((Iterator)localObject2).next()).contact.username);
+    }
+    paramMenuItem.putExtra("always_select_contact", Util.listToString((List)localObject1, ","));
+    paramMenuItem.putExtra("block_contact", z.bAM());
+    paramMenuItem.putExtra("max_limit_num", FON);
+    paramMenuItem.putExtra("Forbid_SelectChatRoom", true);
+    paramMenuItem.putExtra("show_too_many_member", false);
+    paramFinderBlockListUI.getContext().startActivityForResult(paramMenuItem, FOO);
+    AppMethodBeat.o(254230);
+    return true;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(222165);
+    AppMethodBeat.i(254266);
     super.finish();
     Log.i(this.TAG, "finish " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId() + ", " + isPaused());
-    AppMethodBeat.o(222165);
+    AppMethodBeat.o(254266);
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_block_list_layout;
+    return e.f.finder_block_list_layout;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(222136);
+    AppMethodBeat.i(254252);
     this.type = getIntent().getIntExtra("BLOCK_LIST_TYPE", 0);
     Object localObject1;
     switch (this.type)
@@ -111,78 +137,69 @@ public final class FinderBlockListUI
     }
     for (;;)
     {
-      this.zAg = ((com.tencent.mm.plugin.finder.storage.aj)localObject1);
-      if (this.zAg == null) {
+      this.ECo = ((ar)localObject1);
+      if (this.ECo == null) {
         finish();
       }
-      localObject1 = this.zAg;
-      if (localObject1 == null) {
-        kotlin.g.b.p.iCn();
-      }
-      setMMTitle(((com.tencent.mm.plugin.finder.storage.aj)localObject1).dRw());
-      setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-      localObject1 = this.zAg;
-      if (localObject1 == null) {
-        kotlin.g.b.p.iCn();
-      }
-      this.zMG = new FinderBlockListContract.BlockListPresenter((com.tencent.mm.plugin.finder.storage.aj)localObject1);
+      localObject1 = this.ECo;
+      s.checkNotNull(localObject1);
+      setMMTitle(((ar)localObject1).ePJ());
+      setBackBtn(new FinderBlockListUI..ExternalSyntheticLambda1(this));
+      localObject1 = this.ECo;
+      s.checkNotNull(localObject1);
+      this.EXy = new FinderBlockListContract.BlockListPresenter((ar)localObject1);
       localObject1 = (MMActivity)this;
       Object localObject2 = getContentView();
-      kotlin.g.b.p.j(localObject2, "contentView");
-      FinderBlockListContract.BlockListPresenter localBlockListPresenter = this.zMG;
-      if (localBlockListPresenter == null) {
-        kotlin.g.b.p.iCn();
-      }
+      s.s(localObject2, "contentView");
+      FinderBlockListContract.BlockListPresenter localBlockListPresenter = this.EXy;
+      s.checkNotNull(localBlockListPresenter);
       localObject1 = new FinderBlockListContract.BlockListViewCallback((MMActivity)localObject1, (View)localObject2, localBlockListPresenter);
-      localObject2 = this.zMG;
-      if (localObject2 == null) {
-        kotlin.g.b.p.iCn();
-      }
+      localObject2 = this.EXy;
+      s.checkNotNull(localObject2);
       ((FinderBlockListContract.BlockListPresenter)localObject2).a((FinderBlockListContract.BlockListViewCallback)localObject1);
       ((FinderBlockListContract.BlockListViewCallback)localObject1).initView();
-      this.zME = ((FinderBlockListContract.BlockListViewCallback)localObject1);
-      localObject1 = this.zAg;
-      if (localObject1 == null) {
-        kotlin.g.b.p.iCn();
+      localObject2 = ah.aiuX;
+      this.EXw = ((FinderBlockListContract.BlockListViewCallback)localObject1);
+      localObject1 = this.ECo;
+      s.checkNotNull(localObject1);
+      if (((ar)localObject1).ePK()) {
+        addIconOptionMenu(0, e.g.icons_outlined_add_friends, new FinderBlockListUI..ExternalSyntheticLambda0(this));
       }
-      if (((com.tencent.mm.plugin.finder.storage.aj)localObject1).dRz()) {
-        addIconOptionMenu(0, b.i.icons_outlined_add_friends, (MenuItem.OnMenuItemClickListener)new c(this));
-      }
-      AppMethodBeat.o(222136);
+      AppMethodBeat.o(254252);
       return;
-      localObject1 = (com.tencent.mm.plugin.finder.storage.aj)new c();
+      localObject1 = (ar)new c();
       continue;
-      localObject1 = (com.tencent.mm.plugin.finder.storage.aj)new ab();
+      localObject1 = (ar)new ae();
       continue;
-      localObject1 = (com.tencent.mm.plugin.finder.storage.aj)new ac();
+      localObject1 = (ar)new af();
     }
   }
   
   public final void initializeUIC(HashSet<UIComponent> paramHashSet)
   {
-    AppMethodBeat.i(222107);
-    kotlin.g.b.p.k(paramHashSet, "uiComponents");
+    AppMethodBeat.i(254243);
+    s.u(paramHashSet, "uiComponents");
     super.initializeUIC(paramHashSet);
-    com.tencent.mm.ui.component.g localg = com.tencent.mm.ui.component.g.Xox;
-    paramHashSet.add(com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class));
-    localg = com.tencent.mm.ui.component.g.Xox;
-    paramHashSet.add(com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(com.tencent.mm.plugin.secdata.ui.a.class));
-    AppMethodBeat.o(222107);
+    k localk = k.aeZF;
+    paramHashSet.add(k.d((AppCompatActivity)this).q(as.class));
+    localk = k.aeZF;
+    paramHashSet.add(k.d((AppCompatActivity)this).q(com.tencent.mm.plugin.secdata.ui.a.class));
+    AppMethodBeat.o(254243);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(222145);
+    AppMethodBeat.i(254256);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == Aoy)
+    if (paramInt1 == FOO)
     {
-      if (paramIntent != null) {}
-      for (paramIntent = paramIntent.getStringExtra("Select_Contact");; paramIntent = null)
+      if (paramIntent == null) {}
+      for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("Select_Contact"))
       {
         paramIntent = Util.stringToList(paramIntent, ",");
-        kotlin.g.b.p.j(paramIntent, "nameList");
+        s.s(paramIntent, "nameList");
         localObject = (Iterable)paramIntent;
-        paramIntent = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+        paramIntent = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject, 10));
         localObject = ((Iterable)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
@@ -193,95 +210,86 @@ public final class FinderBlockListUI
         }
       }
       paramIntent = (List)paramIntent;
-      Object localObject = this.zMG;
-      if (localObject != null)
-      {
-        ((FinderBlockListContract.BlockListPresenter)localObject).eF(paramIntent);
-        AppMethodBeat.o(222145);
-        return;
+      Object localObject = this.EXy;
+      if (localObject != null) {
+        ((FinderBlockListContract.BlockListPresenter)localObject).hn(paramIntent);
       }
     }
-    AppMethodBeat.o(222145);
+    AppMethodBeat.o(254256);
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(222162);
-    kotlin.g.b.p.k(paramConfiguration, "newConfig");
+    AppMethodBeat.i(254265);
+    s.u(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
-    AppMethodBeat.o(222162);
+    AppMethodBeat.o(254265);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(222116);
+    AppMethodBeat.i(254249);
     super.onCreate(paramBundle);
     Log.i(this.TAG, "onCreate " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId() + '}');
     initView();
-    AppMethodBeat.o(222116);
+    AppMethodBeat.o(254249);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(222156);
+    AppMethodBeat.i(254261);
     super.onDestroy();
-    FinderBlockListContract.BlockListPresenter localBlockListPresenter = this.zMG;
-    if (localBlockListPresenter != null)
-    {
+    FinderBlockListContract.BlockListPresenter localBlockListPresenter = this.EXy;
+    if (localBlockListPresenter != null) {
       localBlockListPresenter.onDetach();
-      AppMethodBeat.o(222156);
-      return;
     }
-    AppMethodBeat.o(222156);
+    AppMethodBeat.o(254261);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(222154);
+    AppMethodBeat.i(254258);
     super.onPause();
-    Log.i(this.TAG, "onPause " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId() + ", " + this.xZq);
-    Object localObject = d.AjH;
-    if (((Number)d.dUR().aSr()).intValue() == 1)
+    Log.i(this.TAG, "onPause " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId() + ", " + this.CxA);
+    Object localObject = d.FAy;
+    if (((Number)d.eTq().bmg()).intValue() == 1)
     {
       Log.i(this.TAG, "REPORT_WHEN_SCREEN_SHOT remove");
       ScreenShotUtil.setScreenShotCallback((Context)this, null);
     }
-    localObject = this.xZq;
+    localObject = this.CxA;
     if (localObject != null) {
       ((Runnable)localObject).run();
     }
-    this.xZq = null;
-    AppMethodBeat.o(222154);
+    this.CxA = null;
+    AppMethodBeat.o(254258);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(222174);
+    AppMethodBeat.i(254270);
     super.onResume();
     Log.i(this.TAG, "onResume " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId());
-    Object localObject = d.AjH;
-    if (((Boolean)d.dUy().aSr()).booleanValue())
+    Object localObject = d.FAy;
+    if (((Boolean)d.eSX().bmg()).booleanValue())
     {
       localObject = new Intent((Context)this, Class.forName("com.tencent.testcrash"));
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/chatting/FinderBlockListUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/chatting/FinderBlockListUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/chatting/FinderBlockListUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
-    localObject = d.AjH;
-    if (((Number)d.dUR().aSr()).intValue() == 1)
+    localObject = d.FAy;
+    if (((Number)d.eTq().bmg()).intValue() == 1)
     {
       Log.i(this.TAG, "REPORT_WHEN_SCREEN_SHOT register");
-      ScreenShotUtil.setScreenShotCallback((Context)this, (ScreenShotUtil.ScreenShotCallback)this.WDw);
+      ScreenShotUtil.setScreenShotCallback((Context)this, (ScreenShotUtil.ScreenShotCallback)this.aekY);
     }
-    localObject = this.zMG;
-    if (localObject != null)
-    {
-      ((FinderBlockListContract.BlockListPresenter)localObject).ata();
-      AppMethodBeat.o(222174);
-      return;
+    localObject = this.EXy;
+    if (localObject != null) {
+      ((FinderBlockListContract.BlockListPresenter)localObject).aNi();
     }
-    AppMethodBeat.o(222174);
+    AppMethodBeat.o(254270);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -290,144 +298,22 @@ public final class FinderBlockListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @SuppressLint({"SourceLockedOrientationActivity"})
   public final void setRequestedOrientation(int paramInt)
   {
-    AppMethodBeat.i(222160);
-    if (!this.AwU)
+    AppMethodBeat.i(254264);
+    if (!this.FVH)
     {
       super.setRequestedOrientation(1);
-      AppMethodBeat.o(222160);
+      AppMethodBeat.o(254264);
       return;
     }
     super.setRequestedOrientation(paramInt);
-    AppMethodBeat.o(222160);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/FinderBlockListUI$Companion;", "", "()V", "MAX_MULTI_SELECTED_USER", "", "getMAX_MULTI_SELECTED_USER", "()I", "MENU_ID_ADD_USER", "getMENU_ID_ADD_USER", "REQUEST_CODE_MULTI_ADDR", "getREQUEST_CODE_MULTI_ADDR", "app_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class b
-    implements MenuItem.OnMenuItemClickListener
-  {
-    b(FinderBlockListUI paramFinderBlockListUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(287959);
-      this.WDy.finish();
-      AppMethodBeat.o(287959);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class c
-    implements MenuItem.OnMenuItemClickListener
-  {
-    c(FinderBlockListUI paramFinderBlockListUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(275512);
-      Log.i(FinderBlockListUI.a(this.WDy), "doCallSelectContactUIForMultiRetransmit");
-      paramMenuItem = new Intent();
-      paramMenuItem.setClassName((Context)this.WDy, "com.tencent.mm.ui.contact.SelectContactUI");
-      paramMenuItem.putExtra("list_type", 1);
-      paramMenuItem.putExtra("titile", this.WDy.getString(b.j.finder_mod_block_select_user));
-      paramMenuItem.putExtra("list_attr", w.XtL);
-      Object localObject1 = FinderBlockListUI.b(this.WDy);
-      if (localObject1 == null) {
-        kotlin.g.b.p.iCn();
-      }
-      Object localObject2 = (Iterable)((FinderBlockListContract.BlockListPresenter)localObject1).mXB;
-      localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
-      localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((Collection)localObject1).add(((com.tencent.mm.plugin.finder.model.p)((Iterator)localObject2).next()).contact.username);
-      }
-      paramMenuItem.putExtra("always_select_contact", Util.listToString((List)localObject1, ","));
-      paramMenuItem.putExtra("block_contact", z.bcZ());
-      localObject1 = FinderBlockListUI.WDx;
-      paramMenuItem.putExtra("max_limit_num", FinderBlockListUI.dZO());
-      paramMenuItem.putExtra("Forbid_SelectChatRoom", true);
-      paramMenuItem.putExtra("show_too_many_member", false);
-      localObject1 = this.WDy.getContext();
-      localObject2 = FinderBlockListUI.WDx;
-      ((AppCompatActivity)localObject1).startActivityForResult(paramMenuItem, FinderBlockListUI.dZP());
-      AppMethodBeat.o(275512);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/chatting/FinderBlockListUI$screenShotCallback$1", "Lcom/tencent/mm/sdk/platformtools/ScreenShotUtil$ScreenShotCallback;", "onScreenShot", "", "path", "", "dateAdded", "", "app_release"})
-  public static final class d
-    implements ScreenShotUtil.ScreenShotCallback
-  {
-    public final void onScreenShot(String paramString, long paramLong)
-    {
-      AppMethodBeat.i(279003);
-      for (;;)
-      {
-        try
-        {
-          paramString = com.tencent.mm.ui.component.g.Xox;
-          com.tencent.mm.plugin.finder.report.g localg = com.tencent.mm.plugin.finder.viewmodel.component.aj.c((com.tencent.mm.plugin.finder.viewmodel.component.aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)this.WDy).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class));
-          if (!(localg instanceof s)) {
-            break label263;
-          }
-          LinkedList localLinkedList = new LinkedList();
-          Iterator localIterator = ((Map)((s)localg).zWQ).entrySet().iterator();
-          if (localIterator.hasNext())
-          {
-            paramString = (Map.Entry)localIterator.next();
-            amd localamd = new amd();
-            localamd.xbk = ((com.tencent.mm.plugin.finder.report.t)paramString.getValue()).feedId;
-            paramString = ((com.tencent.mm.plugin.finder.report.t)paramString.getValue()).xpY;
-            if (paramString == null) {
-              break label281;
-            }
-            String str = paramString.getUserName();
-            paramString = str;
-            if (str == null) {
-              break label281;
-            }
-            localamd.finderUsername = paramString;
-            paramString = n.zWF;
-            str = n.N(localamd.xbk, localg.xbu.xkX);
-            paramString = str;
-            if (str == null) {
-              paramString = "";
-            }
-            localamd.sessionBuffer = paramString;
-            localLinkedList.add(localamd);
-            continue;
-          }
-          paramString = new dc((List)localLinkedList);
-        }
-        catch (Throwable paramString)
-        {
-          Log.printErrStackTrace(FinderBlockListUI.a(this.WDy), paramString, "onScreenShot", new Object[0]);
-          AppMethodBeat.o(279003);
-          return;
-        }
-        h.aGY().b((q)paramString);
-        AppMethodBeat.o(279003);
-        return;
-        label263:
-        Log.i(FinderBlockListUI.a(this.WDy), "onScreenShot: not FinderSingleFeedFlowReporter");
-        AppMethodBeat.o(279003);
-        return;
-        label281:
-        paramString = "";
-      }
-    }
+    AppMethodBeat.o(254264);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.FinderBlockListUI
  * JD-Core Version:    0.7.0.1
  */

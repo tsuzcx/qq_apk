@@ -1,23 +1,21 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.chj;
-import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/GiftItem;", "kotlin.jvm.PlatformType", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/live/model/FinderBannerJumpInfo;"}, k=3, mv={1, 5, 1}, xi=48)
 final class bq$e
-  extends q
-  implements b<chj, Boolean>
+  extends u
+  implements kotlin.g.a.b<com.tencent.mm.plugin.finder.live.model.b, Boolean>
 {
-  public static final e yuN;
+  public static final e DhV;
   
   static
   {
-    AppMethodBeat.i(287890);
-    yuN = new e();
-    AppMethodBeat.o(287890);
+    AppMethodBeat.i(353769);
+    DhV = new e();
+    AppMethodBeat.o(353769);
   }
   
   bq$e()

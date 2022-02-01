@@ -1,7 +1,6 @@
 package com.tencent.matrix.hook;
 
 import android.text.TextUtils;
-import androidx.annotation.Keep;
 import com.tencent.matrix.e.c;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -9,17 +8,91 @@ import java.util.Set;
 
 public class HookManager
 {
-  public static final HookManager cYg = new HookManager();
-  private final Set<a> cYi = new HashSet();
-  private volatile boolean cYj = false;
-  public b cYk = null;
-  private volatile boolean dql = false;
+  public static final HookManager eUL = new HookManager();
+  private volatile boolean eUM = false;
+  private byte[] eUN = new byte[0];
+  private final Set<a> eUO = new HashSet();
+  private volatile boolean eUP = false;
+  public b eUQ = null;
   
-  private native void doFinalInitializeNative();
+  private void axK()
+  {
+    a locala;
+    for (;;)
+    {
+      synchronized (this.eUO)
+      {
+        Iterator localIterator1 = this.eUO.iterator();
+        if (!localIterator1.hasNext()) {
+          break;
+        }
+        locala = (a)localIterator1.next();
+        String str = locala.axH();
+        boolean bool = TextUtils.isEmpty(str);
+        if (bool) {
+          continue;
+        }
+        try
+        {
+          if (this.eUQ != null)
+          {
+            this.eUQ.loadLibrary(str);
+            continue;
+          }
+        }
+        finally
+        {
+          c.printErrStackTrace("Matrix.HookManager", localThrowable, "", new Object[0]);
+          c.e("Matrix.HookManager", "Fail to load native library for %s, skip next steps.", new Object[] { locala.getClass().getName() });
+          locala.eUE = a.a.eUH;
+        }
+      }
+      com.tencent.mm.hellhoundlib.b.a locala1 = new com.tencent.mm.hellhoundlib.b.a().cG(localThrowable);
+      Object localObject2 = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject2, locala1.aYi(), "com/tencent/matrix/hook/HookManager", "commitHooksLocked", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)locala1.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/matrix/hook/HookManager", "commitHooksLocked", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    }
+    Iterator localIterator2 = this.eUO.iterator();
+    while (localIterator2.hasNext())
+    {
+      locala = (a)localIterator2.next();
+      if (locala.eUE != a.a.eUF)
+      {
+        c.e("Matrix.HookManager", "%s has failed steps before, skip calling onConfigure on it.", new Object[] { locala.getClass().getName() });
+      }
+      else if (!locala.axI())
+      {
+        c.e("Matrix.HookManager", "Fail to configure %s, skip next steps", new Object[] { locala.getClass().getName() });
+        locala.eUE = a.a.eUI;
+      }
+    }
+    localIterator2 = this.eUO.iterator();
+    while (localIterator2.hasNext())
+    {
+      locala = (a)localIterator2.next();
+      if (locala.eUE != a.a.eUF)
+      {
+        c.e("Matrix.HookManager", "%s has failed steps before, skip calling onHook on it.", new Object[] { locala.getClass().getName() });
+      }
+      else if (locala.dy(this.eUP))
+      {
+        c.i("Matrix.HookManager", "%s is committed successfully.", new Object[] { locala.getClass().getName() });
+        locala.eUE = a.a.eUG;
+      }
+      else
+      {
+        c.e("Matrix.HookManager", "Fail to do hook in %s.", new Object[] { locala.getClass().getName() });
+        locala.eUE = a.a.eUJ;
+      }
+    }
+    this.eUO.clear();
+  }
   
-  private native boolean doPreHookInitializeNative();
+  private native void doFinalInitializeNative(boolean paramBoolean);
   
-  @Keep
+  private native boolean doPreHookInitializeNative(boolean paramBoolean);
+  
   public static String getStack()
   {
     StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
@@ -40,97 +113,64 @@ public class HookManager
     return localStringBuilder.toString();
   }
   
-  public final void WL()
-  {
-    if (this.cYi.isEmpty()) {}
-    label182:
-    do
-    {
-      return;
-      if (!this.dql) {
-        try
-        {
-          if (this.cYk != null) {
-            this.cYk.loadLibrary("matrix-hookcommon");
-          }
-          while (!doPreHookInitializeNative())
-          {
-            throw new a("Fail to do hook common pre-hook initialize.");
-            System.loadLibrary("matrix-hookcommon");
-          }
-          localIterator = this.cYi.iterator();
-        }
-        catch (Throwable localThrowable1)
-        {
-          c.printErrStackTrace("Matrix.HookManager", localThrowable1, "", new Object[0]);
-          return;
-        }
-      }
-      a locala;
-      while (localIterator.hasNext())
-      {
-        locala = (a)localIterator.next();
-        String str = locala.WJ();
-        if (!TextUtils.isEmpty(str))
-        {
-          try
-          {
-            if (this.cYk == null) {
-              break label182;
-            }
-            this.cYk.loadLibrary(str);
-          }
-          catch (Throwable localThrowable2)
-          {
-            c.printErrStackTrace("Matrix.HookManager", localThrowable2, "", new Object[0]);
-            c.e("Matrix.HookManager", "Fail to load native library for %s, skip next steps.", new Object[] { locala.getClass().getName() });
-            locala.cXZ = a.a.cYc;
-          }
-          continue;
-          System.loadLibrary(localThrowable2);
-        }
-      }
-      Iterator localIterator = this.cYi.iterator();
-      while (localIterator.hasNext())
-      {
-        locala = (a)localIterator.next();
-        if (locala.cXZ != a.a.cYa) {
-          c.e("Matrix.HookManager", "%s has failed steps before, skip calling onConfigure on it.", new Object[] { locala.getClass().getName() });
-        } else {
-          locala.WK();
-        }
-      }
-      localIterator = this.cYi.iterator();
-      while (localIterator.hasNext())
-      {
-        locala = (a)localIterator.next();
-        if (locala.cXZ != a.a.cYa)
-        {
-          c.e("Matrix.HookManager", "%s has failed steps before, skip calling onHook on it.", new Object[] { locala.getClass().getName() });
-        }
-        else if (locala.cR(this.cYj))
-        {
-          c.i("Matrix.HookManager", "%s is committed successfully.", new Object[] { locala.getClass().getName() });
-          locala.cXZ = a.a.cYb;
-        }
-        else
-        {
-          c.e("Matrix.HookManager", "Fail to do hook in %s.", new Object[] { locala.getClass().getName() });
-          locala.cXZ = a.a.cYe;
-        }
-      }
-      this.cYi.clear();
-    } while (this.dql);
-    doFinalInitializeNative();
-    this.dql = true;
-  }
-  
   public final HookManager a(a parama)
   {
-    if ((parama != null) && (parama.cXZ != a.a.cYb)) {
-      this.cYi.add(parama);
+    if ((parama != null) && (parama.eUE != a.a.eUG)) {}
+    synchronized (this.eUO)
+    {
+      this.eUO.add(parama);
+      return this;
     }
-    return this;
+  }
+  
+  public final void axJ()
+  {
+    synchronized (this.eUN)
+    {
+      synchronized (this.eUO)
+      {
+        if (this.eUO.isEmpty()) {
+          return;
+        }
+        boolean bool = this.eUM;
+        if (bool) {
+          break label203;
+        }
+      }
+    }
+    try
+    {
+      if (this.eUQ != null) {
+        this.eUQ.loadLibrary("matrix-hookcommon");
+      }
+      while (!doPreHookInitializeNative(this.eUP))
+      {
+        throw new a("Fail to do hook common pre-hook initialize.");
+        localObject1 = finally;
+        throw localObject1;
+        localObject2 = finally;
+        throw localObject2;
+        com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("matrix-hookcommon");
+        Object localObject3 = new Object();
+        com.tencent.mm.hellhoundlib.a.a.b(localObject3, locala.aYi(), "com/tencent/matrix/hook/HookManager", "commitHooks", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+        System.loadLibrary((String)locala.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject3, "com/tencent/matrix/hook/HookManager", "commitHooks", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      }
+      axK();
+    }
+    finally
+    {
+      c.printErrStackTrace("Matrix.HookManager", localThrowable, "", new Object[0]);
+      return;
+    }
+    doFinalInitializeNative(this.eUP);
+    this.eUM = true;
+    for (;;)
+    {
+      return;
+      label203:
+      axK();
+    }
   }
   
   public static final class a
@@ -149,7 +189,7 @@ public class HookManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.hook.HookManager
  * JD-Core Version:    0.7.0.1
  */

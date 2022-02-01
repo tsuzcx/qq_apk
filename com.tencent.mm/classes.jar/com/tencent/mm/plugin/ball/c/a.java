@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.ball.c;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/ball/api/IFloatBallReportService;", "Lcom/tencent/mm/kernel/service/IService;", "markExitPage", "", "pageType", "", "hasFloatBall", "", "isSupportMessageBall", "markWechatForeground", "foreground", "onEnterChattingFromNotification", "timestamp", "", "addMessageBallResult", "PageType", "api-ball_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/ball/api/IFloatBallReportService;", "Lcom/tencent/mm/kernel/service/IService;", "markExitPage", "", "pageType", "", "hasFloatBall", "", "isSupportMessageBall", "markWechatForeground", "foreground", "onEnterChattingFromNotification", "timestamp", "", "addMessageBallResult", "PageType", "api-ball_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
   public abstract void f(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void kU(boolean paramBoolean);
+  public abstract void mh(boolean paramBoolean);
   
-  public abstract void o(long paramLong, int paramInt);
+  public abstract void x(long paramLong, int paramInt);
 }
 
 

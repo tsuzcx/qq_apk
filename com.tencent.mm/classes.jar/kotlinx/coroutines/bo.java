@@ -1,130 +1,37 @@
 package kotlinx.coroutines;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-import kotlin.d.f;
-import kotlin.g.a.b;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.internal.d;
+import java.util.concurrent.locks.LockSupport;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/ExecutorCoroutineDispatcherBase;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "Lkotlinx/coroutines/Delay;", "()V", "removesFutureOnCancellation", "", "close", "", "dispatch", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "equals", "other", "", "hashCode", "", "initFutureCancellation", "initFutureCancellation$kotlinx_coroutines_core", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "", "scheduleBlock", "Ljava/util/concurrent/ScheduledFuture;", "time", "unit", "Ljava/util/concurrent/TimeUnit;", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "toString", "", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/EventLoopImplPlatform;", "Lkotlinx/coroutines/EventLoop;", "()V", "thread", "Ljava/lang/Thread;", "getThread", "()Ljava/lang/Thread;", "reschedule", "", "now", "", "delayedTask", "Lkotlinx/coroutines/EventLoopImplBase$DelayedTask;", "unpark", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class bo
-  extends bn
-  implements av
+  extends bm
 {
-  private boolean abxn;
-  
-  private final ScheduledFuture<?> a(Runnable paramRunnable, long paramLong, TimeUnit paramTimeUnit)
+  protected final void Co()
   {
-    try
+    Thread localThread = getThread();
+    if ((Thread.currentThread() != localThread) && (c.ajvf == null)) {
+      LockSupport.unpark(localThread);
+    }
+  }
+  
+  protected final void c(long paramLong, bn.c paramc)
+  {
+    if (au.ASSERTIONS_ENABLED)
     {
-      Executor localExecutor = getExecutor();
-      Object localObject = localExecutor;
-      if (!(localExecutor instanceof ScheduledExecutorService)) {
-        localObject = null;
+      if (this != aw.ajvR) {}
+      for (int i = 1; i == 0; i = 0) {
+        throw new AssertionError();
       }
-      localObject = (ScheduledExecutorService)localObject;
-      if (localObject != null)
-      {
-        paramRunnable = ((ScheduledExecutorService)localObject).schedule(paramRunnable, paramLong, paramTimeUnit);
-        return paramRunnable;
-      }
-      return null;
     }
-    catch (RejectedExecutionException paramRunnable) {}
-    return null;
+    aw.ajvR.a(paramLong, paramc);
   }
   
-  public final void a(long paramLong, m<? super x> paramm)
-  {
-    if (this.abxn) {}
-    for (ScheduledFuture localScheduledFuture = a((Runnable)new cq((af)this, paramm), paramLong, TimeUnit.MILLISECONDS); localScheduledFuture != null; localScheduledFuture = null)
-    {
-      paramm.am((b)new j((Future)localScheduledFuture));
-      return;
-    }
-    ar.abwJ.a(paramLong, paramm);
-  }
-  
-  public final void a(f paramf, Runnable paramRunnable)
-  {
-    for (;;)
-    {
-      try
-      {
-        Executor localExecutor = getExecutor();
-        paramf = cx.abxP;
-        if (paramf != null)
-        {
-          Runnable localRunnable = paramf.iSa();
-          paramf = localRunnable;
-          if (localRunnable != null)
-          {
-            localExecutor.execute(paramf);
-            return;
-          }
-        }
-      }
-      catch (RejectedExecutionException paramf)
-      {
-        ar.abwJ.bl(paramRunnable);
-        return;
-      }
-      paramf = paramRunnable;
-    }
-  }
-  
-  public void close()
-  {
-    Executor localExecutor = getExecutor();
-    Object localObject = localExecutor;
-    if (!(localExecutor instanceof ExecutorService)) {
-      localObject = null;
-    }
-    localObject = (ExecutorService)localObject;
-    if (localObject != null) {
-      ((ExecutorService)localObject).shutdown();
-    }
-  }
-  
-  public final be d(long paramLong, Runnable paramRunnable)
-  {
-    if (this.abxn) {}
-    for (ScheduledFuture localScheduledFuture = a(paramRunnable, paramLong, TimeUnit.MILLISECONDS); localScheduledFuture != null; localScheduledFuture = null) {
-      return (be)new bd((Future)localScheduledFuture);
-    }
-    return ar.abwJ.d(paramLong, paramRunnable);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof bo)) && (((bo)paramObject).getExecutor() == getExecutor());
-  }
-  
-  public int hashCode()
-  {
-    return System.identityHashCode(getExecutor());
-  }
-  
-  public final void iRE()
-  {
-    this.abxn = d.b(getExecutor());
-  }
-  
-  public String toString()
-  {
-    return getExecutor().toString();
-  }
+  protected abstract Thread getThread();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bo
  * JD-Core Version:    0.7.0.1
  */

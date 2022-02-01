@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/z" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/ki0" android:background="@color/z" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:background="@drawable/c0q" android:paddingLeft="@dimen/ahz" android:paddingRight="@dimen/ahz" android:layout_width="fill_parent" android:layout_height="@dimen/ai1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/gg2" android:visibility="gone" android:layout_width="@dimen/ay5" android:layout_height="@dimen/ay5" android:layout_marginRight="3.0dip" android:src="@drawable/c0g" android:scaleType="centerInside" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/gg4" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gjs" android:singleLine="true" />
+    <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="16.0dip" android:gravity="center|right" android:id="@id/gex" android:background="@null" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center_vertical" android:id="@id/gbz" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/geu" android:singleLine="true" />
 </LinearLayout>

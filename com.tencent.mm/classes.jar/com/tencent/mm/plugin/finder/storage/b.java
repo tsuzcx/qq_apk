@@ -1,87 +1,81 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.ad;
-import com.tencent.mm.plugin.finder.convert.ai;
-import com.tencent.mm.plugin.finder.convert.cb;
+import com.tencent.mm.plugin.finder.convert.ae;
+import com.tencent.mm.plugin.finder.convert.bz;
+import com.tencent.mm.plugin.finder.convert.z;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.viewmodel.atfeed.a;
-import com.tencent.mm.view.recyclerview.e;
 import com.tencent.mm.view.recyclerview.f;
-import kotlin.l;
+import com.tencent.mm.view.recyclerview.g;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderAtFeedManagerLayoutConfig;", "Lcom/tencent/mm/plugin/finder/storage/FinderProfileGridLayoutConfig;", "spanCount", "", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "isSelfFlag", "", "username", "", "atFeedState", "Lcom/tencent/mm/plugin/finder/viewmodel/atfeed/AtFeedState;", "(ILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;ZLjava/lang/String;Lcom/tencent/mm/plugin/finder/viewmodel/atfeed/AtFeedState;)V", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderAtFeedManagerLayoutConfig;", "Lcom/tencent/mm/plugin/finder/storage/FinderProfileGridLayoutConfig;", "spanCount", "", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "isSelfFlag", "", "username", "", "atFeedState", "Lcom/tencent/mm/plugin/finder/viewmodel/atfeed/AtFeedState;", "(ILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;ZLjava/lang/String;Lcom/tencent/mm/plugin/finder/viewmodel/atfeed/AtFeedState;)V", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends ae
+  extends ai
 {
-  private final BaseFinderFeedLoader AdQ;
+  final boolean ALI;
+  final a ALJ;
+  private final BaseFinderFeedLoader FAr;
   private final int spanCount;
   final String username;
-  final boolean xnY;
-  final a xnZ;
   
   public b(BaseFinderFeedLoader paramBaseFinderFeedLoader, boolean paramBoolean, String paramString, a parama)
   {
     super(paramBaseFinderFeedLoader, paramBoolean, paramString);
-    AppMethodBeat.i(287701);
+    AppMethodBeat.i(339179);
     this.spanCount = 3;
-    this.AdQ = paramBaseFinderFeedLoader;
-    this.xnY = paramBoolean;
+    this.FAr = paramBaseFinderFeedLoader;
+    this.ALI = paramBoolean;
     this.username = paramString;
-    this.xnZ = parama;
-    AppMethodBeat.o(287701);
+    this.ALJ = parama;
+    AppMethodBeat.o(339179);
   }
   
-  public final f O(final kotlin.g.a.b<? super Integer, ? extends e<?>> paramb)
+  public final g au(final kotlin.g.a.b<? super Integer, ? extends f<?>> paramb)
   {
-    AppMethodBeat.i(287700);
-    paramb = (f)new a(this, paramb);
-    AppMethodBeat.o(287700);
+    AppMethodBeat.i(339186);
+    paramb = (g)new a(this, paramb);
+    AppMethodBeat.o(339186);
     return paramb;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderAtFeedManagerLayoutConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/storage/FinderAtFeedManagerLayoutConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements f
+    implements g
   {
-    a(kotlin.g.a.b paramb) {}
+    a(b paramb, kotlin.g.a.b<? super Integer, ? extends f<?>> paramb1) {}
     
-    public final e<?> yx(int paramInt)
+    public final f<?> yF(int paramInt)
     {
-      AppMethodBeat.i(265848);
+      AppMethodBeat.i(338941);
       switch (paramInt)
       {
       default: 
         localObject = paramb;
-        if (localObject != null)
-        {
-          e locale = (e)((kotlin.g.a.b)localObject).invoke(Integer.valueOf(paramInt));
-          localObject = locale;
-          if (locale != null) {}
+        if (localObject != null) {
+          break;
         }
-        else
-        {
-          localObject = b.Qk(paramInt);
-        }
-        AppMethodBeat.o(265848);
+      }
+      for (Object localObject = null; localObject == null; localObject = (f)((kotlin.g.a.b)localObject).invoke(Integer.valueOf(paramInt)))
+      {
+        localObject = b.Ts(paramInt);
+        AppMethodBeat.o(338941);
         return localObject;
-      case 4: 
-      case 3002: 
-        localObject = (e)new cb(this.AdR.xnX, this.AdR.username, this.AdR.xnY, this.AdR.xnZ);
-        AppMethodBeat.o(265848);
+        localObject = (f)new bz(this.FAs.ALH, this.FAs.username, this.FAs.ALI, this.FAs.ALJ);
+        AppMethodBeat.o(338941);
         return localObject;
-      case 2: 
-      case 3001: 
-        localObject = (e)new cb(this.AdR.xnX, this.AdR.username, this.AdR.xnY, this.AdR.xnZ);
-        AppMethodBeat.o(265848);
+        localObject = (f)new bz(this.FAs.ALH, this.FAs.username, this.FAs.ALI, this.FAs.ALJ);
+        AppMethodBeat.o(338941);
         return localObject;
-      case -3: 
-        localObject = (e)new ai();
-        AppMethodBeat.o(265848);
+        localObject = (f)new ae();
+        AppMethodBeat.o(338941);
+        return localObject;
+        localObject = (f)new z();
+        AppMethodBeat.o(338941);
         return localObject;
       }
-      Object localObject = (e)new ad();
-      AppMethodBeat.o(265848);
+      AppMethodBeat.o(338941);
       return localObject;
     }
   }

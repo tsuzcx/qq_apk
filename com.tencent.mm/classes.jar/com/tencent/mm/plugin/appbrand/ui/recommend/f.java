@@ -8,18 +8,18 @@ import com.tencent.mm.sdk.platformtools.BitmapUtil;
 public final class f
   implements b.h
 {
-  public static final f rgU;
-  public int lBk = 0;
-  public int rgT = 0;
+  public static final f uoQ;
+  public int osT = 0;
+  public int uoP = 0;
   
   static
   {
     AppMethodBeat.i(49296);
-    rgU = new f();
+    uoQ = new f();
     AppMethodBeat.o(49296);
   }
   
-  public final Bitmap H(Bitmap paramBitmap)
+  public final Bitmap P(Bitmap paramBitmap)
   {
     AppMethodBeat.i(49295);
     if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
@@ -31,13 +31,13 @@ public final class f
     float f1;
     if (paramBitmap.getWidth() == paramBitmap.getHeight())
     {
-      f2 = this.rgT;
+      f2 = this.uoP;
       f1 = f2;
-      if (this.lBk > 0)
+      if (this.osT > 0)
       {
         f1 = f2;
-        if (this.rgT > 0) {
-          f1 = this.rgT * paramBitmap.getWidth() / this.lBk;
+        if (this.uoP > 0) {
+          f1 = this.uoP * paramBitmap.getWidth() / this.osT;
         }
       }
     }
@@ -51,13 +51,13 @@ public final class f
         i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
       }
       paramBitmap = BitmapUtil.getCenterCropBitmap(paramBitmap, i, i, true);
-      f2 = this.rgT;
+      f2 = this.uoP;
       f1 = f2;
-      if (this.lBk > 0)
+      if (this.osT > 0)
       {
         f1 = f2;
-        if (this.rgT > 0) {
-          f1 = this.rgT * paramBitmap.getWidth() / this.lBk;
+        if (this.uoP > 0) {
+          f1 = this.uoP * paramBitmap.getWidth() / this.osT;
         }
       }
     }
@@ -70,7 +70,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.f
  * JD-Core Version:    0.7.0.1
  */

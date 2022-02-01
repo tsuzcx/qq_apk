@@ -11,15 +11,15 @@ public abstract interface b
   
   public abstract void b(int paramInt, b.a parama);
   
-  public abstract void giW();
+  public abstract void hCW();
   
-  public abstract boolean giX();
+  public abstract boolean hCX();
   
-  public abstract View io(Context paramContext);
+  public abstract View ke(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.api.b
  * JD-Core Version:    0.7.0.1
  */

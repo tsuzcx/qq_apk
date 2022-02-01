@@ -6,16 +6,18 @@ import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.aa;
+import com.tencent.mm.api.ab;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.y;
-import com.tencent.mm.plugin.webcanvas.m;
+import com.tencent.mm.plugin.webcanvas.k;
+import com.tencent.mm.plugin.webview.core.i;
+import com.tencent.mm.plugin.webview.jsapi.b;
 import com.tencent.mm.plugin.webview.ui.tools.floatball.d;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.ab;
+import com.tencent.mm.vfs.af;
 import com.tencent.xweb.WebView.PreInitCallback;
-import com.tencent.xweb.downloader.WXFileDownloaderBridge;
+import com.tencent.xweb.ao;
 
 public class PluginWebView
   extends com.tencent.mm.kernel.b.f
@@ -23,7 +25,7 @@ public class PluginWebView
   private void abi64WebViewCompat(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(77810);
-    SharedPreferences localSharedPreferences = paramg.Zw.getSharedPreferences("abi64_webview_compat_sp", 0);
+    SharedPreferences localSharedPreferences = paramg.bGP.getSharedPreferences("abi64_webview_compat_sp", 0);
     int j = localSharedPreferences.getInt("last_is_32bit_wechat", 0);
     if (BuildInfo.IS_ARM64) {
       i = 2;
@@ -39,7 +41,7 @@ public class PluginWebView
       else
       {
         j = 0;
-        boolean bool = com.tencent.mm.plugin.webview.k.a.je(paramg.Zw);
+        boolean bool = com.tencent.mm.plugin.webview.k.a.le(paramg.bGP);
         Log.i("MicroMsg.PluginWebView", "result %s", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
           localSharedPreferences.edit().putInt("last_is_32bit_wechat", i).commit();
@@ -52,18 +54,18 @@ public class PluginWebView
     label179:
     for (final int i = 8;; i = 9)
     {
-      if (paramg.aIE()) {
-        h.aHH().a(new com.tencent.mm.kernel.api.g()
+      if (paramg.bbA()) {
+        h.baF().a(new com.tencent.mm.kernel.api.g()
         {
-          public final void abB()
+          public final void aDv()
           {
-            AppMethodBeat.i(265091);
-            h.aHH().b(this);
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(661L, i, 1L, false);
-            AppMethodBeat.o(265091);
+            AppMethodBeat.i(294628);
+            h.baF().b(this);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(661L, i, 1L, false);
+            AppMethodBeat.o(294628);
           }
           
-          public final void dn(boolean paramAnonymousBoolean) {}
+          public final void dZ(boolean paramAnonymousBoolean) {}
         });
       }
       AppMethodBeat.o(77810);
@@ -86,9 +88,9 @@ public class PluginWebView
     {
       public final void run()
       {
-        AppMethodBeat.i(267885);
-        com.tencent.mm.xwebutil.c.a(this.PDG);
-        AppMethodBeat.o(267885);
+        AppMethodBeat.i(294568);
+        com.tencent.mm.xwebutil.c.a(PluginWebView.this);
+        AppMethodBeat.o(294568);
       }
     };
     if (Looper.myLooper() == Looper.getMainLooper())
@@ -104,13 +106,15 @@ public class PluginWebView
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(77813);
-    if ((paramg.aIE()) || (paramg.MY(":tools")) || (paramg.MY(":toolsmp"))) {
-      pin(new y(com.tencent.mm.plugin.webview.modeltools.f.class));
+    if ((paramg.bbA()) || (paramg.FH(":tools")) || (paramg.FH(":toolsmp"))) {
+      pin(new y(com.tencent.mm.plugin.webview.modeltools.g.class));
     }
-    if (paramg.aIE())
+    if (paramg.bbA())
     {
-      ab.a("CDNTemp", "CDNTemp", 259200000L, 69);
-      ab.a("vproxy", "vproxy", 604800000L, 69);
+      af.a("CDNTemp", "CDNTemp", 259200000L, 69);
+      af.a("vproxy", "vproxy", 604800000L, 69);
+      af.b("WebCanvasPkg", "WebCanvasPkg", 134217728L, 7776000000L, 518);
+      af.b("WebPrefetcherPkg", "WebPrefetcherPkg", 134217728L, 7776000000L, 518);
     }
     AppMethodBeat.o(77813);
   }
@@ -119,57 +123,59 @@ public class PluginWebView
   {
     AppMethodBeat.i(77811);
     Object localObject;
-    if (paramg.aIE())
+    if (paramg.bbA())
     {
       abi64WebViewCompat(paramg);
-      localObject = m.PuL;
-      m.gPv();
-      localObject = m.PuL;
-      m.CF(false);
-      localObject = d.Qkh;
-      d.gUX();
+      localObject = k.WkZ;
+      k.hBK();
+      localObject = k.WkZ;
+      k.Ik(false);
+      localObject = d.XbW;
+      d.iuI();
     }
-    if ((paramg.aIE()) || (paramg.MY(":tools")) || (paramg.MY(":toolsmp")))
+    if ((paramg.bbA()) || (paramg.FH(":tools")) || (paramg.FH(":toolsmp")))
     {
-      com.tencent.mm.plugin.webview.l.g.OO();
-      com.tencent.mm.plugin.webview.core.g.OO();
-      localObject = com.tencent.mm.plugin.webview.d.a.PNm;
-      com.tencent.mm.plugin.webview.d.a.gTJ();
+      com.tencent.mm.plugin.webview.l.f.aoW();
+      i.aoW();
+      localObject = b.WDu;
+      b.its();
+      localObject = com.tencent.mm.plugin.webview.ui.tools.newjsapi.webprefetcher.a.Xoe;
+      com.tencent.mm.plugin.webview.ui.tools.newjsapi.webprefetcher.a.its();
       Log.i("MicroMsg.PluginWebView", "init DefaultJsApiPool");
-      h.b(aa.class, new p());
+      h.b(ab.class, new p());
     }
-    if (paramg.MY(":tools"))
+    if (paramg.FH(":tools"))
     {
-      WXFileDownloaderBridge.a(com.tencent.mm.plugin.cdndownloader.i.a.cME());
+      ao.a(com.tencent.mm.plugin.cdndownloader.i.a.dqi());
       preInitWebViewSafeDuringMMKernelStage(null);
     }
     for (;;)
     {
-      if ((paramg.MY(":tools")) || (paramg.MY(":toolsmp"))) {
-        com.tencent.mm.plugin.ac.a.p(paramg.Zw);
+      if ((paramg.FH(":tools")) || (paramg.FH(":toolsmp"))) {
+        com.tencent.mm.plugin.ad.a.p(paramg.bGP);
       }
       AppMethodBeat.o(77811);
       return;
-      if (paramg.MY(":toolsmp"))
+      if (paramg.FH(":toolsmp"))
       {
-        WXFileDownloaderBridge.a(com.tencent.mm.plugin.cdndownloader.i.a.cME());
+        ao.a(com.tencent.mm.plugin.cdndownloader.i.a.dqi());
         preInitWebViewSafeDuringMMKernelStage(new WebView.PreInitCallback()
         {
-          public final void bEj()
+          public final void aDm()
           {
-            AppMethodBeat.i(268007);
+            AppMethodBeat.i(294559);
             Log.i("MPToolsMinifiedBootStep", "onCoreInitFailed");
-            AppMethodBeat.o(268007);
+            AppMethodBeat.o(294559);
           }
           
           public final void onCoreInitFinished()
           {
-            AppMethodBeat.i(268005);
+            AppMethodBeat.i(294555);
             Log.i("MPToolsMinifiedBootStep", "onCoreInitFinished");
-            if (((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).Gw(20)) {
-              ((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).cyD();
+            if (((com.tencent.mm.plugin.brandservice.api.c)h.ax(com.tencent.mm.plugin.brandservice.api.c.class)).GV(20)) {
+              ((com.tencent.mm.plugin.brandservice.api.c)h.ax(com.tencent.mm.plugin.brandservice.api.c.class)).dbA();
             }
-            AppMethodBeat.o(268005);
+            AppMethodBeat.o(294555);
           }
         });
       }

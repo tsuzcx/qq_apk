@@ -5,22 +5,22 @@ import android.graphics.PorterDuff.Mode;
 
 final class aa
 {
-  public ColorStateList jE;
-  public PorterDuff.Mode jF;
-  public boolean jG;
-  public boolean jH;
+  public PorterDuff.Mode kA;
+  public boolean kB;
+  public boolean kC;
+  public ColorStateList kz;
   
   final void clear()
   {
-    this.jE = null;
-    this.jG = false;
-    this.jF = null;
-    this.jH = false;
+    this.kz = null;
+    this.kB = false;
+    this.kA = null;
+    this.kC = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.aa
  * JD-Core Version:    0.7.0.1
  */

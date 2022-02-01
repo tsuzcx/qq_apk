@@ -2,193 +2,256 @@ package kotlin.l.b.a.b.d.a.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
-import kotlin.a.x;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.g.b.z;
+import kotlin.a.ad;
+import kotlin.a.k;
+import kotlin.a.p;
+import kotlin.g.b.af;
+import kotlin.g.b.ag;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 import kotlin.l.b.a.b.b.ah;
-import kotlin.l.b.a.b.b.am;
-import kotlin.l.b.a.b.b.l;
+import kotlin.l.b.a.b.b.ap;
+import kotlin.l.b.a.b.b.au;
+import kotlin.l.b.a.b.d.a.c.c;
 import kotlin.l.b.a.b.d.a.e.t;
-import kotlin.l.n;
+import kotlin.l.b.a.b.f.f;
+import kotlin.l.b.a.b.j.g.j;
+import kotlin.l.b.a.b.l.m;
+import kotlin.l.e;
+import kotlin.l.o;
 
 public final class d
-  implements kotlin.l.b.a.b.j.f.h
+  implements kotlin.l.b.a.b.j.g.h
 {
-  final j aaUG;
-  private final kotlin.l.b.a.b.l.f aaUH;
-  private final h aaUI;
-  private final kotlin.l.b.a.b.d.a.c.h aaUh;
+  private final h aiSH;
+  final i aiSI;
+  private final kotlin.l.b.a.b.l.h aiSJ;
+  private final kotlin.l.b.a.b.d.a.c.h aiSh;
   
   static
   {
     AppMethodBeat.i(57783);
-    cMt = new n[] { (n)kotlin.g.b.ab.a(new z(kotlin.g.b.ab.bO(d.class), "kotlinScopes", "getKotlinScopes()Ljava/util/List;")) };
+    aYe = new o[] { (o)ai.a((af)new ag((e)ai.cz(d.class), "kotlinScopes", "getKotlinScopes()[Lorg/jetbrains/kotlin/resolve/scopes/MemberScope;")) };
     AppMethodBeat.o(57783);
   }
   
   public d(kotlin.l.b.a.b.d.a.c.h paramh, t paramt, h paramh1)
   {
     AppMethodBeat.i(57792);
-    this.aaUh = paramh;
-    this.aaUI = paramh1;
-    this.aaUG = new j(this.aaUh, paramt, this.aaUI);
-    this.aaUH = this.aaUh.aaUp.aaFH.av((kotlin.g.a.a)new a(this));
+    this.aiSh = paramh;
+    this.aiSH = paramh1;
+    this.aiSI = new i(this.aiSh, paramt, this.aiSH);
+    this.aiSJ = this.aiSh.aiSp.aiBu.cq((kotlin.g.a.a)new a(this));
     AppMethodBeat.o(57792);
   }
   
-  private void d(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
+  private final kotlin.l.b.a.b.j.g.h[] ksn()
   {
-    AppMethodBeat.i(57791);
-    p.k(paramf, "name");
-    p.k(parama, "location");
-    kotlin.l.b.a.b.c.a.a(this.aaUh.aaUp.aaTV, parama, (kotlin.l.b.a.b.b.ab)this.aaUI, paramf);
-    AppMethodBeat.o(57791);
+    AppMethodBeat.i(192162);
+    kotlin.l.b.a.b.j.g.h[] arrayOfh = (kotlin.l.b.a.b.j.g.h[])kotlin.l.b.a.b.l.l.a(this.aiSJ, aYe[0]);
+    AppMethodBeat.o(192162);
+    return arrayOfh;
   }
   
-  private final List<kotlin.l.b.a.b.j.f.h> iIf()
-  {
-    AppMethodBeat.i(57784);
-    List localList = (List)kotlin.l.b.a.b.l.i.a(this.aaUH, cMt[0]);
-    AppMethodBeat.o(57784);
-    return localList;
-  }
-  
-  public final Collection<ah> a(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
+  public final Collection<ap> a(f paramf, kotlin.l.b.a.b.c.a.b paramb)
   {
     AppMethodBeat.i(57786);
-    p.k(paramf, "name");
-    p.k(parama, "location");
-    d(paramf, parama);
-    Object localObject1 = this.aaUG;
-    Object localObject2 = iIf();
-    localObject1 = ((kotlin.l.b.a.b.j.f.h)localObject1).a(paramf, parama);
-    localObject2 = ((List)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      localObject1 = kotlin.l.b.a.b.n.b.a.a((Collection)localObject1, ((kotlin.l.b.a.b.j.f.h)((Iterator)localObject2).next()).a(paramf, parama));
-    }
-    if (localObject1 == null) {}
-    for (paramf = (Collection)x.aaAf;; paramf = (kotlin.l.b.a.b.f.f)localObject1)
+    s.u(paramf, "name");
+    s.u(paramb, "location");
+    d(paramf, paramb);
+    Object localObject = this.aiSI;
+    kotlin.l.b.a.b.j.g.h[] arrayOfh = ksn();
+    localObject = ((kotlin.l.b.a.b.j.g.h)localObject).a(paramf, paramb);
+    int i = 0;
+    int j = arrayOfh.length;
+    while (i < j)
     {
+      kotlin.l.b.a.b.j.g.h localh = arrayOfh[i];
+      i += 1;
+      localObject = kotlin.l.b.a.b.n.b.a.a((Collection)localObject, localh.a(paramf, paramb));
+    }
+    if (localObject == null)
+    {
+      paramf = (Collection)ad.aivA;
       AppMethodBeat.o(57786);
       return paramf;
     }
-  }
-  
-  public final Collection<l> a(kotlin.l.b.a.b.j.f.d paramd, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, Boolean> paramb)
-  {
-    AppMethodBeat.i(57788);
-    p.k(paramd, "kindFilter");
-    p.k(paramb, "nameFilter");
-    Object localObject1 = this.aaUG;
-    Object localObject2 = iIf();
-    localObject1 = ((kotlin.l.b.a.b.j.f.h)localObject1).a(paramd, paramb);
-    localObject2 = ((List)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      localObject1 = kotlin.l.b.a.b.n.b.a.a((Collection)localObject1, ((kotlin.l.b.a.b.j.f.h)((Iterator)localObject2).next()).a(paramd, paramb));
-    }
-    if (localObject1 == null) {}
-    for (paramd = (Collection)x.aaAf;; paramd = (kotlin.l.b.a.b.j.f.d)localObject1)
-    {
-      AppMethodBeat.o(57788);
-      return paramd;
-    }
-  }
-  
-  public final Collection<am> b(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
-  {
-    AppMethodBeat.i(57787);
-    p.k(paramf, "name");
-    p.k(parama, "location");
-    d(paramf, parama);
-    Object localObject1 = this.aaUG;
-    Object localObject2 = iIf();
-    localObject1 = ((kotlin.l.b.a.b.j.f.h)localObject1).b(paramf, parama);
-    localObject2 = ((List)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      localObject1 = kotlin.l.b.a.b.n.b.a.a((Collection)localObject1, ((kotlin.l.b.a.b.j.f.h)((Iterator)localObject2).next()).b(paramf, parama));
-    }
-    if (localObject1 == null) {}
-    for (paramf = (Collection)x.aaAf;; paramf = (kotlin.l.b.a.b.f.f)localObject1)
-    {
-      AppMethodBeat.o(57787);
-      return paramf;
-    }
-  }
-  
-  public final kotlin.l.b.a.b.b.h c(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
-  {
-    AppMethodBeat.i(57785);
-    p.k(paramf, "name");
-    p.k(parama, "location");
-    d(paramf, parama);
-    Object localObject = this.aaUG.e(paramf, parama);
-    if (localObject != null)
-    {
-      paramf = (kotlin.l.b.a.b.b.h)localObject;
-      AppMethodBeat.o(57785);
-      return paramf;
-    }
-    Iterator localIterator = iIf().iterator();
-    localObject = null;
-    while (localIterator.hasNext())
-    {
-      kotlin.l.b.a.b.b.h localh = ((kotlin.l.b.a.b.j.f.h)localIterator.next()).c(paramf, parama);
-      if (localh != null) {
-        if (((localh instanceof kotlin.l.b.a.b.b.i)) && (((kotlin.l.b.a.b.b.i)localh).iDV()))
-        {
-          if (localObject == null) {
-            localObject = localh;
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(57785);
-          return localh;
-        }
-      }
-    }
-    AppMethodBeat.o(57785);
+    AppMethodBeat.o(57786);
     return localObject;
   }
   
-  public final Set<kotlin.l.b.a.b.f.f> iGp()
+  public final Collection<kotlin.l.b.a.b.b.l> a(kotlin.l.b.a.b.j.g.d paramd, kotlin.g.a.b<? super f, Boolean> paramb)
   {
-    AppMethodBeat.i(57789);
-    Object localObject2 = (Iterable)iIf();
-    Object localObject1 = (Collection)new LinkedHashSet();
-    localObject2 = ((Iterable)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      kotlin.a.j.a((Collection)localObject1, (Iterable)((kotlin.l.b.a.b.j.f.h)((Iterator)localObject2).next()).iGp());
+    AppMethodBeat.i(57788);
+    s.u(paramd, "kindFilter");
+    s.u(paramb, "nameFilter");
+    Object localObject = this.aiSI;
+    kotlin.l.b.a.b.j.g.h[] arrayOfh = ksn();
+    localObject = ((kotlin.l.b.a.b.j.g.h)localObject).a(paramd, paramb);
+    int i = 0;
+    int j = arrayOfh.length;
+    while (i < j)
+    {
+      kotlin.l.b.a.b.j.g.h localh = arrayOfh[i];
+      i += 1;
+      localObject = kotlin.l.b.a.b.n.b.a.a((Collection)localObject, localh.a(paramd, paramb));
     }
-    ((Set)localObject1).addAll((Collection)this.aaUG.iGp());
-    localObject1 = (Set)localObject1;
-    AppMethodBeat.o(57789);
-    return localObject1;
+    if (localObject == null)
+    {
+      paramd = (Collection)ad.aivA;
+      AppMethodBeat.o(57788);
+      return paramd;
+    }
+    AppMethodBeat.o(57788);
+    return localObject;
   }
   
-  public final Set<kotlin.l.b.a.b.f.f> iGq()
+  public final Collection<au> b(f paramf, kotlin.l.b.a.b.c.a.b paramb)
+  {
+    AppMethodBeat.i(57787);
+    s.u(paramf, "name");
+    s.u(paramb, "location");
+    d(paramf, paramb);
+    Object localObject = this.aiSI;
+    kotlin.l.b.a.b.j.g.h[] arrayOfh = ksn();
+    localObject = ((kotlin.l.b.a.b.j.g.h)localObject).b(paramf, paramb);
+    int i = 0;
+    int j = arrayOfh.length;
+    while (i < j)
+    {
+      kotlin.l.b.a.b.j.g.h localh = arrayOfh[i];
+      i += 1;
+      localObject = kotlin.l.b.a.b.n.b.a.a((Collection)localObject, localh.b(paramf, paramb));
+    }
+    if (localObject == null)
+    {
+      paramf = (Collection)ad.aivA;
+      AppMethodBeat.o(57787);
+      return paramf;
+    }
+    AppMethodBeat.o(57787);
+    return localObject;
+  }
+  
+  public final kotlin.l.b.a.b.b.h c(f paramf, kotlin.l.b.a.b.c.a.b paramb)
+  {
+    AppMethodBeat.i(57785);
+    s.u(paramf, "name");
+    s.u(paramb, "location");
+    d(paramf, paramb);
+    Object localObject1 = this.aiSI.e(paramf, paramb);
+    if (localObject1 != null)
+    {
+      paramf = (kotlin.l.b.a.b.b.h)localObject1;
+      AppMethodBeat.o(57785);
+      return paramf;
+    }
+    kotlin.l.b.a.b.j.g.h[] arrayOfh = ksn();
+    localObject1 = null;
+    int i = 0;
+    int j = arrayOfh.length;
+    for (;;)
+    {
+      if (i < j)
+      {
+        Object localObject2 = arrayOfh[i];
+        i += 1;
+        localObject2 = ((kotlin.l.b.a.b.j.g.h)localObject2).c(paramf, paramb);
+        if (localObject2 != null) {
+          if (((localObject2 instanceof kotlin.l.b.a.b.b.i)) && (((kotlin.l.b.a.b.b.i)localObject2).kni()))
+          {
+            if (localObject1 == null) {
+              localObject1 = localObject2;
+            }
+          }
+          else
+          {
+            AppMethodBeat.o(57785);
+            return localObject2;
+          }
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(57785);
+        return localObject1;
+      }
+    }
+  }
+  
+  public final void d(f paramf, kotlin.l.b.a.b.c.a.b paramb)
+  {
+    AppMethodBeat.i(57791);
+    s.u(paramf, "name");
+    s.u(paramb, "location");
+    kotlin.l.b.a.b.c.a.a(this.aiSh.aiSp.aiRV, paramb, (ah)this.aiSH, paramf);
+    AppMethodBeat.o(57791);
+  }
+  
+  public final Set<f> kpL()
+  {
+    AppMethodBeat.i(57789);
+    Object localObject = ksn();
+    Collection localCollection = (Collection)new LinkedHashSet();
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      p.a(localCollection, (Iterable)localObject[i].kpL());
+      i += 1;
+    }
+    ((Set)localCollection).addAll((Collection)this.aiSI.kpL());
+    localObject = (Set)localCollection;
+    AppMethodBeat.o(57789);
+    return localObject;
+  }
+  
+  public final Set<f> kpM()
+  {
+    AppMethodBeat.i(192172);
+    Set localSet = j.H(k.ai(ksn()));
+    if (localSet == null)
+    {
+      AppMethodBeat.o(192172);
+      return null;
+    }
+    localSet.addAll((Collection)this.aiSI.kpM());
+    AppMethodBeat.o(192172);
+    return localSet;
+  }
+  
+  public final Set<f> kpN()
   {
     AppMethodBeat.i(57790);
-    Object localObject2 = (Iterable)iIf();
-    Object localObject1 = (Collection)new LinkedHashSet();
-    localObject2 = ((Iterable)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      kotlin.a.j.a((Collection)localObject1, (Iterable)((kotlin.l.b.a.b.j.f.h)((Iterator)localObject2).next()).iGq());
+    Object localObject = ksn();
+    Collection localCollection = (Collection)new LinkedHashSet();
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      p.a(localCollection, (Iterable)localObject[i].kpN());
+      i += 1;
     }
-    ((Set)localObject1).addAll((Collection)this.aaUG.iGq());
-    localObject1 = (Set)localObject1;
+    ((Set)localCollection).addAll((Collection)this.aiSI.kpN());
+    localObject = (Set)localCollection;
     AppMethodBeat.o(57790);
-    return localObject1;
+    return localObject;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(192175);
+    String str = s.X("scope for ", this.aiSH);
+    AppMethodBeat.o(192175);
+    return str;
   }
   
   static final class a
-    extends q
-    implements kotlin.g.a.a<List<? extends kotlin.l.b.a.b.j.f.h>>
+    extends u
+    implements kotlin.g.a.a<kotlin.l.b.a.b.j.g.h[]>
   {
     a(d paramd)
     {
@@ -198,7 +261,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.a.d
  * JD-Core Version:    0.7.0.1
  */

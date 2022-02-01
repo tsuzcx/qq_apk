@@ -4,64 +4,64 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.live.model.an;
+import com.tencent.mm.plugin.finder.live.model.ap;
 import com.tencent.mm.plugin.finder.live.model.context.a;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.protocal.protobuf.bbx;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.f;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.bls;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/component/LuckyMoneyResultReceiev;", "Landroid/os/ResultReceiver;", "presenter", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLuckyMoneyBubblePresenter;", "handler", "Landroid/os/Handler;", "(Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLuckyMoneyBubblePresenter;Landroid/os/Handler;)V", "rLuckyMoneyShowInfo", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLuckyMoneyBubblePresenter$LuckyMoneyShowInfo;", "getRLuckyMoneyShowInfo", "()Ljava/lang/ref/WeakReference;", "setRLuckyMoneyShowInfo", "(Ljava/lang/ref/WeakReference;)V", "rPresenter", "getRPresenter", "setRPresenter", "onReceiveResult", "", "resultCode", "", "resultData", "Landroid/os/Bundle;", "setLuckyMoneyShowInfo", "info", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/component/LuckyMoneyResultReceiev;", "Landroid/os/ResultReceiver;", "presenter", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLuckyMoneyBubblePresenter;", "handler", "Landroid/os/Handler;", "(Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLuckyMoneyBubblePresenter;Landroid/os/Handler;)V", "rLuckyMoneyShowInfo", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLuckyMoneyBubblePresenter$LuckyMoneyShowInfo;", "getRLuckyMoneyShowInfo", "()Ljava/lang/ref/WeakReference;", "setRLuckyMoneyShowInfo", "(Ljava/lang/ref/WeakReference;)V", "rPresenter", "getRPresenter", "setRPresenter", "onReceiveResult", "", "resultCode", "", "resultData", "Landroid/os/Bundle;", "setLuckyMoneyShowInfo", "info", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class LuckyMoneyResultReceiev
   extends ResultReceiver
 {
-  private WeakReference<u> ycR;
-  WeakReference<u.b> ycS;
+  private WeakReference<aj> CBi;
+  WeakReference<aj.b> CBj;
   
-  public LuckyMoneyResultReceiev(u paramu, Handler paramHandler)
+  public LuckyMoneyResultReceiev(aj paramaj, Handler paramHandler)
   {
     super(paramHandler);
-    AppMethodBeat.i(238181);
-    this.ycR = new WeakReference(paramu);
-    AppMethodBeat.o(238181);
+    AppMethodBeat.i(352829);
+    this.CBi = new WeakReference(paramaj);
+    AppMethodBeat.o(352829);
   }
   
   protected final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(238179);
+    AppMethodBeat.i(352840);
     super.onReceiveResult(paramInt, paramBundle);
-    u localu = (u)this.ycR.get();
-    paramBundle = this.ycS;
-    if (paramBundle != null) {}
-    for (paramBundle = (u.b)paramBundle.get();; paramBundle = null)
+    aj localaj = (aj)this.CBi.get();
+    paramBundle = this.CBj;
+    if (paramBundle == null) {}
+    for (paramBundle = null;; paramBundle = (aj.b)paramBundle.get())
     {
-      Log.i("Finder.FinderLiveLuckyMoneyBubblePresenter", "openLuckyMoney presenter:" + localu + ",LuckyMoneyShowInfo:" + paramBundle + ", result:" + paramInt);
-      if ((localu != null) && (paramBundle != null)) {
+      Log.i("Finder.FinderLiveLuckyMoneyBubblePresenter", "openLuckyMoney presenter:" + localaj + ",LuckyMoneyShowInfo:" + paramBundle + ", result:" + paramInt);
+      if ((localaj != null) && (paramBundle != null)) {
         break;
       }
-      AppMethodBeat.o(238179);
+      AppMethodBeat.o(352840);
       return;
     }
-    an localan = localu.ybM;
-    a locala = localu.xYp;
+    ap localap = localaj.CzZ;
+    a locala = localaj.CvU;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(238179);
+      AppMethodBeat.o(352840);
       return;
-      if (localan != null) {
-        localan.a(((c)locala.business(c.class)).liveInfo.liveId, ((c)locala.business(c.class)).xbk, ((c)locala.business(c.class)).nonceId, ((c)locala.business(c.class)).kvN, paramBundle.ybR.SKs);
+      if (localap != null) {
+        localap.a(((f)locala.business(f.class)).liveInfo.liveId, ((f)locala.business(f.class)).hKN, ((f)locala.business(f.class)).nonceId, ((f)locala.business(f.class)).mZp, paramBundle.CAe.ZOX);
       }
-      localu.a(paramBundle);
-      AppMethodBeat.o(238179);
+      localaj.a(paramBundle);
+      AppMethodBeat.o(352840);
       return;
-      AppMethodBeat.o(238179);
+      AppMethodBeat.o(352840);
       return;
-      localu.a(paramBundle);
+      localaj.a(paramBundle);
     }
   }
 }

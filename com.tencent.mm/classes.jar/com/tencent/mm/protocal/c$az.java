@@ -5,7 +5,7 @@ public final class c$az
 {
   public c$az()
   {
-    super("currentMpInfoShow", "currentMpInfoShow", 346, false);
+    super("currentMpInfoHide", "currentMpInfoHide", 347, false);
   }
 }
 

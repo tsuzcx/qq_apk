@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bry;
-import com.tencent.mm.protocal.protobuf.brz;
+import com.tencent.mm.protocal.protobuf.cgr;
+import com.tencent.mm.protocal.protobuf.cgs;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class ac
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d rr;
-  public LinkedList<String> tmH;
-  public int tmJ;
-  public int tmK;
-  public int tmL;
+  private h callback;
+  private final c rr;
+  public LinkedList<String> wrh;
+  public int wrj;
+  public int wrk;
+  public int wrl;
   
   public ac(String paramString)
   {
     AppMethodBeat.i(112843);
-    d.a locala = new d.a();
-    locala.lBU = new bry();
-    locala.lBV = new brz();
+    c.a locala = new c.a();
+    locala.otE = new cgr();
+    locala.otF = new cgs();
     locala.uri = "/cgi-bin/micromsg-bin/getcardserial";
     locala.funcId = 577;
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    ((bry)d.b.b(this.rr.lBR)).fUL = paramString;
+    this.rr = locala.bEF();
+    ((cgr)c.b.b(this.rr.otB)).iaI = paramString;
     AppMethodBeat.o(112843);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(112844);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(112844);
     return i;
@@ -61,15 +61,15 @@ public final class ac
     Log.i("MicroMsg.NetSceneGetCardSerial", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (brz)d.c.b(this.rr.lBS);
-      this.tmH = params.tmH;
-      this.tmJ = params.tmJ;
-      this.tmK = params.tmK;
-      this.tmL = params.tmL;
+      params = (cgs)c.c.b(this.rr.otC);
+      this.wrh = params.wrh;
+      this.wrj = params.wrj;
+      this.wrk = params.wrk;
+      this.wrl = params.wrl;
     }
-    Log.i("MicroMsg.NetSceneGetCardSerial", "onGYNetEnd, resp request_time = %d, request_count = %d, refresh_interval = %d,", new Object[] { Integer.valueOf(this.tmJ), Integer.valueOf(this.tmK), Integer.valueOf(this.tmL) });
-    if (this.tmH != null) {
-      Log.i("MicroMsg.NetSceneGetCardSerial", "onGYNetEnd, resp codes size is " + this.tmH.size());
+    Log.i("MicroMsg.NetSceneGetCardSerial", "onGYNetEnd, resp request_time = %d, request_count = %d, refresh_interval = %d,", new Object[] { Integer.valueOf(this.wrj), Integer.valueOf(this.wrk), Integer.valueOf(this.wrl) });
+    if (this.wrh != null) {
+      Log.i("MicroMsg.NetSceneGetCardSerial", "onGYNetEnd, resp codes size is " + this.wrh.size());
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112845);

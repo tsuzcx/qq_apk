@@ -7,106 +7,102 @@ import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/loading/PendingIntentPoster;", "", "()V", "TAG", "", "index", "", "pendingIntents", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/loading/PendingIntentTask;", "add", "task", "execPendingIntent", "", "intentKey", "getPendingIntentAndRemoveAtomic", "peek", "updateCtx", "", "ctx", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/loading/PendingIntentPoster;", "", "()V", "TAG", "", "index", "", "pendingIntents", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/loading/PendingIntentTask;", "add", "task", "execPendingIntent", "", "intentKey", "getPendingIntentAndRemoveAtomic", "peek", "updateCtx", "", "ctx", "Landroid/content/Context;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
   private static int index;
-  private static final SparseArray<e> qam;
-  public static final c qan;
+  public static final c tfr;
+  private static final SparseArray<e> tfs;
   
   static
   {
     AppMethodBeat.i(50838);
-    qan = new c();
-    qam = new SparseArray();
+    tfr = new c();
+    tfs = new SparseArray();
     AppMethodBeat.o(50838);
   }
   
-  public final e BP(int paramInt)
+  public final e Ce(int paramInt)
   {
-    AppMethodBeat.i(273320);
+    AppMethodBeat.i(317025);
     try
     {
-      e locale = (e)qam.get(paramInt);
+      e locale = (e)tfs.get(paramInt);
       return locale;
     }
     finally
     {
-      AppMethodBeat.o(273320);
+      AppMethodBeat.o(317025);
     }
   }
   
   /* Error */
-  public final e BQ(int paramInt)
+  public final e Cf(int paramInt)
   {
     // Byte code:
-    //   0: ldc 68
-    //   2: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 71
+    //   2: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: monitorenter
-    //   7: getstatic 52	com/tencent/mm/plugin/appbrand/loading/c:qam	Landroid/util/SparseArray;
+    //   7: getstatic 55	com/tencent/mm/plugin/appbrand/loading/c:tfs	Landroid/util/SparseArray;
     //   10: iload_1
-    //   11: invokevirtual 64	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   14: checkcast 66	com/tencent/mm/plugin/appbrand/loading/e
+    //   11: invokevirtual 67	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   14: checkcast 69	com/tencent/mm/plugin/appbrand/loading/e
     //   17: astore_2
     //   18: aload_2
     //   19: ifnonnull +33 -> 52
-    //   22: ldc 70
-    //   24: ldc 72
+    //   22: ldc 73
+    //   24: ldc 75
     //   26: iload_1
-    //   27: invokestatic 78	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   30: invokevirtual 82	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   33: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   36: getstatic 52	com/tencent/mm/plugin/appbrand/loading/c:qam	Landroid/util/SparseArray;
+    //   27: invokestatic 81	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   30: invokestatic 87	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    //   33: invokestatic 92	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   36: getstatic 55	com/tencent/mm/plugin/appbrand/loading/c:tfs	Landroid/util/SparseArray;
     //   39: iload_1
-    //   40: invokevirtual 90	android/util/SparseArray:remove	(I)V
+    //   40: invokevirtual 95	android/util/SparseArray:remove	(I)V
     //   43: aload_0
     //   44: monitorexit
-    //   45: ldc 68
-    //   47: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: ldc 71
+    //   47: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: aload_2
     //   51: areturn
-    //   52: ldc 70
-    //   54: new 92	java/lang/StringBuilder
-    //   57: dup
-    //   58: ldc 94
-    //   60: invokespecial 97	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   63: aload_2
-    //   64: getfield 101	com/tencent/mm/plugin/appbrand/loading/e:nyg	Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;
-    //   67: getfield 107	com/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC:fzM	Ljava/lang/String;
-    //   70: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   79: goto -43 -> 36
-    //   82: astore_2
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: ldc 68
-    //   87: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   90: aload_2
-    //   91: athrow
+    //   52: ldc 73
+    //   54: ldc 97
+    //   56: aload_2
+    //   57: getfield 101	com/tencent/mm/plugin/appbrand/loading/e:initConfig	Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;
+    //   60: getfield 107	com/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC:hEy	Ljava/lang/String;
+    //   63: invokestatic 87	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    //   66: invokestatic 92	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   69: goto -33 -> 36
+    //   72: astore_2
+    //   73: aload_0
+    //   74: monitorexit
+    //   75: ldc 71
+    //   77: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: aload_2
+    //   81: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	92	0	this	c
-    //   0	92	1	paramInt	int
-    //   17	47	2	locale	e
-    //   82	9	2	localObject	Object
+    //   0	82	0	this	c
+    //   0	82	1	paramInt	int
+    //   17	40	2	locale	e
+    //   72	9	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   7	18	82	finally
-    //   22	36	82	finally
-    //   36	43	82	finally
-    //   52	79	82	finally
+    //   7	18	72	finally
+    //   22	36	72	finally
+    //   36	43	72	finally
+    //   52	69	72	finally
   }
   
-  public final boolean BR(int paramInt)
+  public final boolean Cg(int paramInt)
   {
     AppMethodBeat.i(50837);
-    Object localObject = BQ(paramInt);
+    Object localObject = Cf(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(50837);
@@ -114,10 +110,10 @@ public final class c
     }
     Context localContext = ((e)localObject).ctx;
     Intent localIntent = ((e)localObject).intent;
-    Log.i("MicroMsg.AppBrand.PendingIntentPoster", "execPendingIntent: ctx = " + ((e)localObject).ctx);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/appbrand/loading/PendingIntentPoster", "execPendingIntent", "(I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    Log.i("MicroMsg.AppBrand.PendingIntentPoster", s.X("execPendingIntent: ctx = ", ((e)localObject).ctx));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/appbrand/loading/PendingIntentPoster", "execPendingIntent", "(I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/mm/plugin/appbrand/loading/PendingIntentPoster", "execPendingIntent", "(I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     if ((localContext instanceof Activity)) {
       ((Activity)localContext).overridePendingTransition(0, 0);
@@ -129,10 +125,10 @@ public final class c
   public final int a(e parame)
   {
     AppMethodBeat.i(50834);
-    p.k(parame, "task");
+    s.u(parame, "task");
     try
     {
-      SparseArray localSparseArray = qam;
+      SparseArray localSparseArray = tfs;
       int i = index + 1;
       index = i;
       localSparseArray.append(i, parame);
@@ -146,21 +142,21 @@ public final class c
     }
   }
   
-  public final void b(int paramInt, Context paramContext)
+  public final void d(int paramInt, Context paramContext)
   {
     AppMethodBeat.i(50836);
-    p.k(paramContext, "ctx");
+    s.u(paramContext, "ctx");
     try
     {
-      e locale = (e)qam.get(paramInt);
+      e locale = (e)tfs.get(paramInt);
       if (locale == null)
       {
-        Log.i("MicroMsg.AppBrand.PendingIntentPoster", "updateCtx: get a null task by intentKey = ".concat(String.valueOf(paramInt)));
+        Log.i("MicroMsg.AppBrand.PendingIntentPoster", s.X("updateCtx: get a null task by intentKey = ", Integer.valueOf(paramInt)));
         return;
       }
-      p.k(paramContext, "<set-?>");
+      s.u(paramContext, "<set-?>");
       locale.ctx = paramContext;
-      paramContext = x.aazN;
+      paramContext = ah.aiuX;
       return;
     }
     finally
@@ -171,7 +167,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.loading.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ed2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.refreshLayout.WxRefreshLayout android:id="@id/ijl" android:layout_width="fill_parent" android:layout_height="fill_parent" app:disableContentWhenLoad="false" app:disableContentWhenRefresh="false" app:dragRate="0.6" app:enableAutoLoadMore="true" app:enableFooterFollowWhenNoMoreData="true" app:enableFooterMoveContent="true" app:enableHeaderMoveContent="true" app:enableLoadMore="true" app:enableLoadMoreWhenContentNotFull="false" app:enableNestedScrolling="true" app:enableOverScrollBounce="true" app:enableOverScrollDrag="true" app:enablePureScrollMode="false" app:enableRefresh="true" app:enableScrollContentWhenLoaded="true" app:enableScrollContentWhenRefreshed="true" app:footerHeight="@dimen/d6" app:footerMaxDragRate="5.0" app:footerTriggerRate="1.0" app:headerHeight="@dimen/bx" app:headerMaxDragRate="5.0" app:headerTriggerRate="1.0" app:reboundDuration="300">
+        <com.tencent.mm.plugin.repairer.ui.demo.refresh.view.DemoHeader android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/iiv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+        <com.tencent.mm.plugin.repairer.ui.demo.refresh.view.DemoFooter android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.view.refreshLayout.WxRefreshLayout>
 </LinearLayout>

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/jf4" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:id="@id/ji9" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:id="@id/jef" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/a05">
-            <TextView android:id="@id/jem" android:text="@string/i93" style="@style/a0h" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/jf2" wallet:contentHint="@string/ic9" wallet:titleText="@string/i96" style="@style/ha" />
-            <Button android:id="@id/fz0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i1" android:layout_marginTop="30.0dip" android:layout_marginRight="@dimen/i1" android:text="@string/x5" style="@style/a0u" />
-        </LinearLayout>
-    </ScrollView>
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c21" />
+<LinearLayout android:gravity="top" android:layout_gravity="center" android:orientation="vertical" android:id="@id/kii" android:background="@color/ci" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.view.PhotoEditText android:textSize="@dimen/a2z" android:textColor="@android:color/white" android:gravity="top" android:id="@id/kih" android:background="@null" android:paddingLeft="@dimen/a2x" android:paddingTop="50.0dip" android:paddingRight="@dimen/a2x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:height="800.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/agw" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Switch android:id="@id/a8q" android:background="@drawable/l8" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="20.0dip" android:thumb="@android:color/transparent" android:track="@android:color/transparent" />
+        <com.tencent.mm.view.footer.SelectColorBar android:gravity="top" android:id="@id/j9t" android:layout_width="fill_parent" android:layout_height="@dimen/zn" />
+    </LinearLayout>
 </LinearLayout>

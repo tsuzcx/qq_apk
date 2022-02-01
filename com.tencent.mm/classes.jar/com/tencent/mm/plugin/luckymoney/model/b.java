@@ -1,26 +1,25 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.adm;
-import com.tencent.mm.protocal.protobuf.adn;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.protocal.protobuf.afu;
+import com.tencent.mm.protocal.protobuf.afv;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class b
-  extends c<adn>
+  extends z<afv>
 {
   public b(String paramString)
   {
     AppMethodBeat.i(65161);
-    adm localadm = new adm();
-    localadm.SpP = paramString;
-    paramString = new d.a();
-    paramString.lBU = localadm;
-    paramString.lBV = new adn();
+    afu localafu = new afu();
+    localafu.ZoK = paramString;
+    paramString = new com.tencent.mm.am.c.a();
+    paramString.otE = localafu;
+    paramString.otF = new afv();
     int i;
-    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUS, 1) == 1)
+    if (((c)h.ax(c.class)).a(com.tencent.mm.plugin.expt.b.c.a.znw, 1) == 1)
     {
       i = 1;
       if (i == 0) {
@@ -30,7 +29,7 @@ public final class b
     }
     for (paramString.uri = "/cgi-bin/micromsg-bin/confirmshowsourcenew";; paramString.uri = "/cgi-bin/mmpay-bin/ftfhb/confirmshowsource")
     {
-      c(paramString.bgN());
+      c(paramString.bEF());
       AppMethodBeat.o(65161);
       return;
       i = 0;

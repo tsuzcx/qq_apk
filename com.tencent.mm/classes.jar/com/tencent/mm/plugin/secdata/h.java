@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.secdata;
 
 import android.content.Intent;
-import com.tencent.mm.cd.a;
-import kotlin.l;
+import com.tencent.mm.bx.a;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/secdata/ISecData;", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "", "check", "", "intent", "Landroid/content/Intent;", "getTransformData", "()Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getType", "", "reuse", "plugin-sec-data_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/secdata/ISecData;", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "", "check", "", "intent", "Landroid/content/Intent;", "getTransformData", "()Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getType", "", "reuse", "plugin-sec-data_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface h<T extends a>
 {
-  public abstract boolean aR(Intent paramIntent);
+  public abstract boolean bp(Intent paramIntent);
   
-  public abstract T fFn();
+  public abstract T gUv();
   
-  public abstract boolean fFo();
+  public abstract boolean gUw();
   
   public abstract int getType();
 }

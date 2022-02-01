@@ -2,27 +2,28 @@ package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.findersdk.a.ad;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.protocal.protobuf.bjg;
+import com.tencent.mm.plugin.findersdk.a.bv;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.findersdk.a.q;
+import com.tencent.mm.protocal.protobuf.bvn;
 
 public final class b
   implements k
 {
-  public bjg mbf;
+  public bvn oTZ;
   
   public b()
   {
-    AppMethodBeat.i(260299);
-    this.mbf = new bjg();
-    AppMethodBeat.o(260299);
+    AppMethodBeat.i(233228);
+    this.oTZ = new bvn();
+    AppMethodBeat.o(233228);
   }
   
-  public final String boV()
+  public final String bMC()
   {
-    AppMethodBeat.i(260300);
-    String str = com.tencent.mm.plugin.findersdk.a.k.bf(((ak)h.ag(ak.class)).getFinderSwitchApi().edS(), com.tencent.mm.plugin.findersdk.a.k.b(this.mbf));
-    AppMethodBeat.o(260300);
+    AppMethodBeat.i(233231);
+    String str = q.bJ(((cn)h.az(cn.class)).getFinderSwitchApi().ffJ(), q.a(this.oTZ));
+    AppMethodBeat.o(233231);
     return str;
   }
 }

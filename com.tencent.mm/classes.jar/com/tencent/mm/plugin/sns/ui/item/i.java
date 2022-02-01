@@ -1,149 +1,112 @@
 package com.tencent.mm.plugin.sns.ui.item;
 
-import android.content.Context;
-import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
+import androidx.constraintlayout.widget.Guideline;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.ui.AsyncTextView;
-import com.tencent.mm.plugin.sns.ui.PhotosContent;
-import com.tencent.mm.plugin.sns.ui.TagImageView;
-import com.tencent.mm.plugin.sns.ui.be;
-import com.tencent.mm.plugin.sns.ui.bg;
-import com.tencent.mm.plugin.sns.ui.bm;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelsns.o;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 import com.tencent.mm.plugin.sns.ui.bn;
-import com.tencent.mm.plugin.sns.ui.d.c;
-import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.plugin.sns.ui.bo;
+import com.tencent.mm.plugin.sns.ui.bv;
+import com.tencent.mm.plugin.sns.ui.listener.c;
+import com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.cvu;
-import com.tencent.mm.protocal.protobuf.ekr;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.bp;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.protocal.protobuf.agh;
+import com.tencent.mm.protocal.protobuf.dob;
+import com.tencent.mm.protocal.protobuf.doc;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.widget.b.a;
+import java.util.LinkedList;
 
 public final class i
   extends BaseTimeLineItem
 {
-  private int KPj = 103;
-  
-  public final void a(ViewStub paramViewStub, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
+  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bo parambo, TimeLineObject paramTimeLineObject, int paramInt2, bn parambn)
   {
-    AppMethodBeat.i(199267);
-    paramBaseViewHolder.Lld.setImageResource(i.e.lucky_friendactivity_comment_icon);
-    paramBaseViewHolder.LkL.setTextColor(paramBaseViewHolder.LkL.getContext().getResources().getColor(i.c.red_text_color));
-    if (paramBaseViewHolder.LkR != null)
+    AppMethodBeat.i(308998);
+    Object localObject;
+    if ((paramTimeLineObject != null) && (paramTimeLineObject.ContentObj != null) && (paramTimeLineObject.ContentObj.Zpy != null))
     {
-      paramBaseViewHolder.LkR.setLayoutResource(i.g.sns_hb_reward_item);
-      if (!paramBaseViewHolder.LkS) {
-        paramBaseViewHolder.Lll = ((PhotosContent)paramBaseViewHolder.LkR.inflate());
+      paramBaseViewHolder = (a)paramBaseViewHolder;
+      localObject = paramTimeLineObject.ContentObj.Zpy;
+      if (!Util.isNullOrNil(((doc)localObject).mediaList))
+      {
+        localObject = (dob)((doc)localObject).mediaList.get(0);
+        if (localObject != null)
+        {
+          paramBaseViewHolder.RcO.setVisibility(0);
+          paramBaseViewHolder.RMC.setVisibility(8);
+          paramBaseViewHolder.RMB.setGuidelineEnd(0);
+          Pair localPair = o.a((int)((dob)localObject).width, (int)((dob)localObject).height, paramBaseViewHolder.RMo.getContext(), false);
+          paramInt1 = ((Integer)localPair.first).intValue();
+          paramInt2 = ((Integer)localPair.second).intValue();
+          paramBaseViewHolder.RMo.getLayoutParams().width = paramInt1;
+          paramBaseViewHolder.RMo.getLayoutParams().height = paramInt2;
+          paramBaseViewHolder.RMo.requestLayout();
+          if (TextUtils.isEmpty(((dob)localObject).coverUrl)) {
+            break label275;
+          }
+          ((cn)h.az(cn.class)).loadImage(((dob)localObject).coverUrl, paramBaseViewHolder.AlJ);
+        }
       }
     }
-    for (paramBaseViewHolder.LkS = true;; paramBaseViewHolder.LkS = true)
+    for (;;)
     {
-      Log.i("MiroMsg.HBRewardTimeLineItem", "viewtype " + this.viewType);
-      paramViewStub = (TagImageView)paramBaseViewHolder.Lll.findViewById(bg.KUt[0]);
-      paramBaseViewHolder.Lll.a(paramViewStub);
-      paramViewStub.setOnClickListener(this.Kee.Kdz.KEA);
-      AppMethodBeat.o(199267);
+      paramBaseViewHolder.RMo.setTag(paramTimeLineObject);
+      paramBaseViewHolder.RMo.setOnClickListener(parambn.RoS.RFr);
+      parambn.hpB().c(paramBaseViewHolder.RMo, parambn.QBf.RQq, parambn.QBf.RPU);
+      a(parambo, 1);
+      AppMethodBeat.o(308998);
       return;
-      paramBaseViewHolder.Lll = ((PhotosContent)paramBaseViewHolder.convertView.findViewById(i.f.hb_content_rl));
+      label275:
+      ((cn)h.az(cn.class)).loadImage(((dob)localObject).thumbUrl, paramBaseViewHolder.AlJ);
     }
   }
   
-  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bn parambn, TimeLineObject paramTimeLineObject, int paramInt2, bm parambm)
+  public final void d(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    AppMethodBeat.i(100086);
-    Object localObject = parambn.KDB;
-    if (paramBaseViewHolder.LlP != null)
+    AppMethodBeat.i(308992);
+    paramBaseViewHolder = (a)paramBaseViewHolder;
+    if ((paramBaseViewHolder.RKG != null) && (paramBaseViewHolder.RKG.getParent() != null))
     {
-      if ((!parambn.LbC) || (paramBaseViewHolder.snsobj.SnsRedEnvelops == null) || (paramBaseViewHolder.snsobj.SnsRedEnvelops.Umy <= 0)) {
-        break label248;
+      paramBaseViewHolder.RKG.setLayoutResource(b.g.sns_finder_media_item);
+      if (!paramBaseViewHolder.RMn) {
+        paramBaseViewHolder.RMo = paramBaseViewHolder.RKG.inflate();
       }
-      paramBaseViewHolder.LlP.setBackgroundResource(i.e.friendactivity_comment_detail_list_golden_myself);
     }
-    int i;
-    boolean bool;
-    for (;;)
+    for (paramBaseViewHolder.RMn = true;; paramBaseViewHolder.RMn = true)
     {
-      TagImageView localTagImageView = paramBaseViewHolder.Lll.agW(0);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(localTagImageView);
-      be localbe = new be();
-      localbe.fCM = ((String)localObject);
-      localbe.index = 0;
-      localbe.KRL = localArrayList;
-      localbe.KOn = this.KOn;
-      if (localTagImageView != null) {
-        localTagImageView.setTag(localbe);
-      }
-      localObject = parambn.Lcd;
-      paramBaseViewHolder.postInfo = ((cvu)localObject);
-      if (localObject == null) {
-        break label468;
-      }
-      if (!z.bcZ().equals(paramTimeLineObject.UserName)) {
-        break;
-      }
-      paramBaseViewHolder.Lll.setVisibility(0);
-      parambm = parambm.KOW;
-      paramBaseViewHolder = paramBaseViewHolder.Lll;
-      parambn = parambn.KDB;
-      i = this.mActivity.hashCode();
-      bool = this.KOn;
-      localObject = bp.hzh();
-      ((bp)localObject).time = paramTimeLineObject.CreateTime;
-      parambm.a(paramBaseViewHolder, paramTimeLineObject, parambn, i, paramInt2, paramInt1, bool, (bp)localObject, true);
-      AppMethodBeat.o(100086);
+      paramBaseViewHolder.RcO = ((ImageView)paramBaseViewHolder.RMo.findViewById(b.f.sns_finder_media_status_icon));
+      paramBaseViewHolder.RMC = ((ImageIndicatorView)paramBaseViewHolder.RMo.findViewById(b.f.sns_finder_media_image_count_indicator));
+      paramBaseViewHolder.AlJ = ((ImageView)paramBaseViewHolder.RMo.findViewById(b.f.sns_finder_media_thumb));
+      paramBaseViewHolder.RMB = ((Guideline)paramBaseViewHolder.RMo.findViewById(b.f.sns_finder_media_image_count_indicator_guide_line));
+      AppMethodBeat.o(308992);
       return;
-      label248:
-      paramBaseViewHolder.LlP.setBackgroundResource(i.e.friendactivity_comment_detail_list_golden_arror);
+      paramBaseViewHolder.RMo = paramBaseViewHolder.convertView.findViewById(b.f.sns_finder_media_content_rl);
     }
-    if (parambn.LbF)
-    {
-      paramBaseViewHolder.Lll.setVisibility(0);
-      parambm = parambm.KOW;
-      paramBaseViewHolder = paramBaseViewHolder.Lll;
-      parambn = parambn.KDB;
-      i = this.mActivity.hashCode();
-      bool = this.KOn;
-      localObject = bp.hzh();
-      ((bp)localObject).time = paramTimeLineObject.CreateTime;
-      parambm.a(paramBaseViewHolder, paramTimeLineObject, parambn, i, paramInt2, paramInt1, bool, (bp)localObject, false);
-      AppMethodBeat.o(100086);
-      return;
-    }
-    if (((cvu)localObject).gbp == 0)
-    {
-      paramBaseViewHolder.Lll.setVisibility(0);
-      parambm = parambm.KOW;
-      paramBaseViewHolder = paramBaseViewHolder.Lll;
-      parambn = parambn.KDB;
-      i = this.mActivity.hashCode();
-      bool = this.KOn;
-      localObject = bp.hzh();
-      ((bp)localObject).time = paramTimeLineObject.CreateTime;
-      parambm.a(paramBaseViewHolder, paramTimeLineObject, parambn, i, paramInt2, paramInt1, bool, (bp)localObject, true);
-      AppMethodBeat.o(100086);
-      return;
-    }
-    Log.e("MiroMsg.HBRewardTimeLineItem", "mediaPostInfo.hbStatus is " + ((cvu)localObject).gbp);
-    AppMethodBeat.o(100086);
-    return;
-    label468:
-    Log.e("MiroMsg.HBRewardTimeLineItem", "mediaPostInfo is null " + parambn.KDB);
-    AppMethodBeat.o(100086);
+  }
+  
+  public static class a
+    extends BaseTimeLineItem.BaseViewHolder
+  {
+    ImageView AlJ;
+    Guideline RMB;
+    ImageIndicatorView RMC;
+    boolean RMn = false;
+    View RMo;
+    ImageView RcO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.item.i
  * JD-Core Version:    0.7.0.1
  */

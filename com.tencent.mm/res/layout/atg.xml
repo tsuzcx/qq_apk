@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/ux" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.GetHdHeadImageGalleryView android:id="@id/dci" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
-</LinearLayout>
+    <View android:id="@id/hqu" android:background="@color/aav" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="14.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/j6c" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="@dimen/ej" android:layout_below="@id/hqu" android:layout_alignParentBottom="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/a1s" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/lp" />
+        <TextView android:textSize="@dimen/l" android:textColor="@color/gg" android:ellipsize="middle" android:layout_gravity="center_vertical" android:id="@id/euk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{header}" android:singleLine="true" />
+        <TextView android:textSize="@dimen/l" android:textColor="@color/gg" android:ellipsize="middle" android:layout_gravity="center_vertical" android:id="@id/f79" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=">" android:singleLine="true" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/a1u" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/lp" />
+        <TextView android:textSize="@dimen/l" android:textColor="@color/gg" android:ellipsize="middle" android:layout_gravity="center_vertical" android:id="@id/eul" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{header}" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,112 +1,145 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.f;
-import com.tencent.mm.plugin.messenger.foundation.a.a.f.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.sdk.storage.MStorageEvent;
 
-public final class br
-  extends MAutoStorage<bq>
-  implements f
+public class br
 {
-  public static final String[] SQL_CREATE;
-  private final MStorageEvent<f.a, bq> Vep;
-  private ISQLiteDatabase db;
+  public static final br adjV;
+  public static final br adjW;
+  public static final br adjX;
+  public static final br adjY;
+  public static final br adjZ;
+  public static final br adka;
+  public static final br adkb;
+  public static final br adkc;
+  public static final br adkd;
+  public static final br adke;
+  public static final br adkf;
+  public static final br adkg;
+  public static final br adkh;
+  public String tag = "";
+  public int time = 0;
   
   static
   {
-    AppMethodBeat.i(188028);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(bq.info, "FriendUser") };
-    AppMethodBeat.o(188028);
+    AppMethodBeat.i(133298);
+    adjV = new br("timeline");
+    adjW = new br("album_friend");
+    adjX = new br("album_self");
+    adjY = new br("album_stranger");
+    adjZ = new br("profile_friend");
+    adka = new br("profile_stranger");
+    adkb = new br("comment");
+    adkc = new br("comment_detail");
+    adkd = new br("other");
+    adke = new br("snssight");
+    adkf = new br("fts");
+    adkg = new br("storysight");
+    adkh = new br("storyalbum");
+    AppMethodBeat.o(133298);
   }
   
-  public br(ISQLiteDatabase paramISQLiteDatabase)
+  public br(String paramString)
   {
-    super(paramISQLiteDatabase, bq.info, "FriendUser", null);
-    AppMethodBeat.i(188009);
-    this.Vep = new MStorageEvent() {};
-    this.db = paramISQLiteDatabase;
-    AppMethodBeat.o(188009);
+    this.tag = paramString;
   }
   
-  private void b(bq parambq)
+  public static br a(br parambr, int paramInt)
   {
-    AppMethodBeat.i(187998);
-    if (this.Vep.event(parambq)) {
-      this.Vep.doNotify();
-    }
-    AppMethodBeat.o(187998);
+    AppMethodBeat.i(133295);
+    parambr = new br(parambr.tag);
+    parambr.time = paramInt;
+    AppMethodBeat.o(133295);
+    return parambr;
   }
   
-  public final void a(f.a parama)
+  public static br jbh()
   {
-    AppMethodBeat.i(188001);
-    this.Vep.add(parama, null);
-    AppMethodBeat.o(188001);
+    AppMethodBeat.i(133288);
+    br localbr = new br("timeline");
+    AppMethodBeat.o(133288);
+    return localbr;
   }
   
-  public final bq aOy(String paramString)
+  public static br jbi()
   {
-    AppMethodBeat.i(188010);
-    if ((paramString == null) || (paramString.length() <= 0))
+    AppMethodBeat.i(133289);
+    br localbr = new br("album_friend");
+    AppMethodBeat.o(133289);
+    return localbr;
+  }
+  
+  public static br jbj()
+  {
+    AppMethodBeat.i(133290);
+    br localbr = new br("album_self");
+    AppMethodBeat.o(133290);
+    return localbr;
+  }
+  
+  public static br jbk()
+  {
+    AppMethodBeat.i(133291);
+    br localbr = new br("album_stranger");
+    AppMethodBeat.o(133291);
+    return localbr;
+  }
+  
+  public static br jbl()
+  {
+    AppMethodBeat.i(133292);
+    br localbr = new br("comment_detail");
+    AppMethodBeat.o(133292);
+    return localbr;
+  }
+  
+  public static br jbm()
+  {
+    AppMethodBeat.i(133293);
+    br localbr = new br("snssight");
+    AppMethodBeat.o(133293);
+    return localbr;
+  }
+  
+  public static br jbn()
+  {
+    AppMethodBeat.i(133294);
+    br localbr = new br("storysight");
+    AppMethodBeat.o(133294);
+    return localbr;
+  }
+  
+  public final br ayX(int paramInt)
+  {
+    this.time = paramInt;
+    return this;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(133296);
+    if ((paramObject instanceof br))
     {
-      AppMethodBeat.o(188010);
-      return null;
+      bool = ((br)paramObject).tag.equals(this.tag);
+      AppMethodBeat.o(133296);
+      return bool;
     }
-    bq localbq = new bq();
-    paramString = this.db.query("FriendUser", null, "encryptUsername = ?", new String[] { paramString }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localbq.convertFrom(paramString);
-    }
-    paramString.close();
-    AppMethodBeat.o(188010);
-    return localbq;
+    boolean bool = super.equals(paramObject);
+    AppMethodBeat.o(133296);
+    return bool;
   }
   
-  public final void b(f.a parama)
+  public String toString()
   {
-    AppMethodBeat.i(188002);
-    this.Vep.remove(parama);
-    AppMethodBeat.o(188002);
-  }
-  
-  public final int eSk()
-  {
-    AppMethodBeat.i(188012);
-    Object localObject = String.format("select count(rowid) from %s", new Object[] { "FriendUser" });
-    localObject = this.db.rawQuery((String)localObject, null);
-    if ((localObject != null) && (((Cursor)localObject).moveToFirst()))
-    {
-      int i = ((Cursor)localObject).getInt(0);
-      ((Cursor)localObject).close();
-      Log.i("MicroMsg.FriendUserStorage", "#recordCnts#, count:".concat(String.valueOf(i)));
-      AppMethodBeat.o(188012);
-      return i;
-    }
-    AppMethodBeat.o(188012);
-    return 0;
-  }
-  
-  public final int eSl()
-  {
-    AppMethodBeat.i(188014);
-    long l = System.currentTimeMillis();
-    int i = this.db.delete("FriendUser", "(modifyTime< ?)", new String[] { String.valueOf(l - 604800000L) });
-    if (i > 0) {
-      doNotify();
-    }
-    Log.i("MicroMsg.FriendUserStorage", "#Clear Records#, result:".concat(String.valueOf(i)));
-    AppMethodBeat.o(188014);
-    return i;
+    AppMethodBeat.i(133297);
+    String str = this.tag + "@" + this.time;
+    AppMethodBeat.o(133297);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.br
  * JD-Core Version:    0.7.0.1
  */

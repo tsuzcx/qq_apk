@@ -1,53 +1,38 @@
 package kotlin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
+import kotlin.Metadata;
+import kotlin.g.b.a.a;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"INT_MAX_POWER_OF_TWO", "", "checkBuilderCapacity", "", "capacity", "mapCapacity", "expectedSize", "mapOf", "", "K", "V", "pair", "Lkotlin/Pair;", "sortedMapOf", "Ljava/util/SortedMap;", "", "pairs", "", "([Lkotlin/Pair;)Ljava/util/SortedMap;", "getOrPut", "Ljava/util/concurrent/ConcurrentMap;", "key", "defaultValue", "Lkotlin/Function0;", "(Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "toProperties", "Ljava/util/Properties;", "", "toSingletonMap", "toSingletonMapOrSelf", "toSortedMap", "comparator", "Ljava/util/Comparator;", "kotlin-stdlib"}, iBN=1)
-public class ag
-  extends af
+@Metadata(d1={""}, d2={"Lkotlin/collections/IndexingIterator;", "T", "", "Lkotlin/collections/IndexedValue;", "iterator", "(Ljava/util/Iterator;)V", "index", "", "hasNext", "", "next", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public final class ag<T>
+  implements Iterator<ae<? extends T>>, a
 {
-  public static final int aDD(int paramInt)
+  private final Iterator<T> atq;
+  private int index;
+  
+  public ag(Iterator<? extends T> paramIterator)
   {
-    if (paramInt < 0) {
-      return paramInt;
-    }
-    if (paramInt < 3) {
-      return paramInt + 1;
-    }
-    if (paramInt < 1073741824) {
-      return (int)(paramInt / 0.75F + 1.0F);
-    }
-    return 2147483647;
+    AppMethodBeat.i(129029);
+    this.atq = paramIterator;
+    AppMethodBeat.o(129029);
   }
   
-  public static final <K, V> Map<K, V> cz(Map<? extends K, ? extends V> paramMap)
+  public final boolean hasNext()
   {
-    AppMethodBeat.i(129009);
-    p.k(paramMap, "$this$toSingletonMap");
-    paramMap = (Map.Entry)paramMap.entrySet().iterator().next();
-    paramMap = Collections.singletonMap(paramMap.getKey(), paramMap.getValue());
-    p.j(paramMap, "java.util.Collections.singletonMap(key, value)");
-    p.j(paramMap, "with(entries.iterator().…ingletonMap(key, value) }");
-    AppMethodBeat.o(129009);
-    return paramMap;
+    AppMethodBeat.i(129027);
+    boolean bool = this.atq.hasNext();
+    AppMethodBeat.o(129027);
+    return bool;
   }
   
-  public static final <K, V> Map<K, V> d(o<? extends K, ? extends V> paramo)
+  public final void remove()
   {
-    AppMethodBeat.i(129008);
-    p.k(paramo, "pair");
-    paramo = Collections.singletonMap(paramo.Mx, paramo.My);
-    p.j(paramo, "java.util.Collections.si…(pair.first, pair.second)");
-    AppMethodBeat.o(129008);
-    return paramo;
+    AppMethodBeat.i(129030);
+    UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Operation is not supported for read-only collection");
+    AppMethodBeat.o(129030);
+    throw localUnsupportedOperationException;
   }
 }
 

@@ -1,68 +1,67 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.e.j.a;
-import com.tencent.e.j.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.threadpool.j.a;
+import com.tencent.threadpool.j.d;
 
 public abstract class EmojiBaseActivity
   extends MMActivity
 {
-  private a uII;
-  b uIJ;
+  private a xRy;
+  b xRz;
   
-  public final void cVS()
+  public final void dBx()
   {
-    if (this.uIJ != null) {
-      this.uIJ.removeMessages(131074);
+    if (this.xRz != null) {
+      this.xRz.removeMessages(131074);
     }
   }
   
-  public final void fZ(int paramInt1, int paramInt2)
+  public final void gS(int paramInt1, int paramInt2)
   {
-    if (this.uIJ != null) {
-      this.uIJ.sendEmptyMessageDelayed(paramInt1, paramInt2);
+    if (this.xRz != null) {
+      this.xRz.sendEmptyMessageDelayed(paramInt1, paramInt2);
     }
   }
-  
-  public abstract void j(Message paramMessage);
   
   public abstract void k(Message paramMessage);
   
-  public final void l(Message paramMessage)
-  {
-    if (this.uIJ != null) {
-      this.uIJ.sendMessage(paramMessage);
-    }
-  }
+  public abstract void l(Message paramMessage);
   
   public final void m(Message paramMessage)
   {
-    if (this.uII != null) {
-      this.uII.sendMessage(paramMessage);
+    if (this.xRz != null) {
+      this.xRz.sendMessage(paramMessage);
+    }
+  }
+  
+  public final void n(Message paramMessage)
+  {
+    if (this.xRy != null) {
+      this.xRy.sendMessage(paramMessage);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.uII = new a(a.bDn("EmojiBaseActivity_handlerThread"));
-    this.uIJ = new b(getMainLooper());
+    this.xRy = new a(a.bFV("EmojiBaseActivity_handlerThread"));
+    this.xRz = new b(getMainLooper());
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if ((this.uII != null) && (this.uII.getLooper() != null)) {
-      this.uII.getSerial().Zxu.quit();
+    if ((this.xRy != null) && (this.xRy.getLooper() != null)) {
+      this.xRy.getSerial().ahCy.quit();
     }
-    this.uII = null;
-    this.uIJ = null;
+    this.xRy = null;
+    this.xRz = null;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -83,7 +82,7 @@ public abstract class EmojiBaseActivity
     {
       AppMethodBeat.i(108857);
       super.handleMessage(paramMessage);
-      EmojiBaseActivity.this.j(paramMessage);
+      EmojiBaseActivity.this.k(paramMessage);
       AppMethodBeat.o(108857);
     }
   }
@@ -100,7 +99,7 @@ public abstract class EmojiBaseActivity
     {
       AppMethodBeat.i(108858);
       super.handleMessage(paramMessage);
-      EmojiBaseActivity.this.k(paramMessage);
+      EmojiBaseActivity.this.l(paramMessage);
       AppMethodBeat.o(108858);
     }
   }

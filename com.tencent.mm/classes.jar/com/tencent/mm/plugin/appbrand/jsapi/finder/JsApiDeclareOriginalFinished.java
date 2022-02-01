@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.appbrand.jsapi.finder;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.plugin.finder.cgi.cr;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.plugin.finder.cgi.dt;
 
 public final class JsApiDeclareOriginalFinished
-  extends c<v>
+  extends c<y>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "declareOriginalFinished";
@@ -24,28 +24,28 @@ public final class JsApiDeclareOriginalFinished
     
     static
     {
-      AppMethodBeat.i(279603);
+      AppMethodBeat.i(326617);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(279603);
+      AppMethodBeat.o(326617);
     }
     
     public RefreshFinderUserpageTask() {}
     
     public RefreshFinderUserpageTask(Parcel paramParcel)
     {
-      AppMethodBeat.i(279601);
-      f(paramParcel);
-      AppMethodBeat.o(279601);
+      AppMethodBeat.i(326616);
+      h(paramParcel);
+      AppMethodBeat.o(326616);
     }
     
-    public final void RW()
+    public final void asn()
     {
-      AppMethodBeat.i(279602);
-      cr localcr = new cr(z.bdh(), 0L, null, 0, null, 0, 0L);
-      localcr.xer = true;
-      h.aGY().a(localcr, 0);
-      bPt();
-      AppMethodBeat.o(279602);
+      AppMethodBeat.i(326620);
+      dt localdt = new dt(z.bAW(), 0L, null, 0, null, 0, 0L, false, "", 0L, Integer.valueOf(0), Long.valueOf(0L), "");
+      localdt.ADC = true;
+      h.aZW().a(localdt, 0);
+      cpA();
+      AppMethodBeat.o(326620);
     }
   }
 }

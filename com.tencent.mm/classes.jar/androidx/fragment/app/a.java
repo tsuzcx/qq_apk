@@ -1,173 +1,186 @@
 package androidx.fragment.app;
 
-import androidx.core.f.c;
+import androidx.lifecycle.j.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.PrintWriter;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 final class a
-  extends i
-  implements FragmentManagerImpl.h, e.a
+  extends r
+  implements FragmentManager.a, FragmentManager.f
 {
-  final FragmentManagerImpl UN;
-  ArrayList<a> UO;
-  int UQ;
-  int UR;
-  int US;
-  int UT;
-  int UU;
-  int UV;
-  boolean UW;
-  boolean UX;
-  boolean UY;
-  int UZ;
-  CharSequence Va;
-  int Vb;
-  CharSequence Vc;
-  ArrayList<String> Vd;
-  ArrayList<String> Ve;
-  boolean Vf;
-  ArrayList<Runnable> Vg;
+  final FragmentManager bBd;
+  boolean bBe;
   int mIndex;
-  String mName;
   
-  public a(FragmentManagerImpl paramFragmentManagerImpl)
+  a(FragmentManager paramFragmentManager) {}
+  
+  static boolean a(r.a parama)
   {
-    AppMethodBeat.i(211833);
-    this.UO = new ArrayList();
-    this.UX = true;
-    this.mIndex = -1;
-    this.Vf = false;
-    this.UN = paramFragmentManagerImpl;
-    AppMethodBeat.o(211833);
+    AppMethodBeat.i(193612);
+    parama = parama.bDv;
+    if ((parama != null) && (parama.mAdded) && (parama.mView != null) && (!parama.mDetached) && (!parama.mHidden) && (parama.isPostponed()))
+    {
+      AppMethodBeat.o(193612);
+      return true;
+    }
+    AppMethodBeat.o(193612);
+    return false;
   }
   
-  private void a(int paramInt1, Fragment paramFragment, String paramString, int paramInt2)
+  private int aP(boolean paramBoolean)
   {
-    AppMethodBeat.i(211839);
-    Class localClass = paramFragment.getClass();
-    int i = localClass.getModifiers();
-    if ((localClass.isAnonymousClass()) || (!Modifier.isPublic(i)) || ((localClass.isMemberClass()) && (!Modifier.isStatic(i))))
-    {
-      paramFragment = new IllegalStateException("Fragment " + localClass.getCanonicalName() + " must be a public static class to be  properly recreated from instance state.");
-      AppMethodBeat.o(211839);
-      throw paramFragment;
-    }
-    paramFragment.mFragmentManager = this.UN;
-    if (paramString != null)
-    {
-      if ((paramFragment.mTag != null) && (!paramString.equals(paramFragment.mTag)))
-      {
-        paramFragment = new IllegalStateException("Can't change tag of fragment " + paramFragment + ": was " + paramFragment.mTag + " now " + paramString);
-        AppMethodBeat.o(211839);
-        throw paramFragment;
-      }
-      paramFragment.mTag = paramString;
-    }
-    if (paramInt1 != 0)
-    {
-      if (paramInt1 == -1)
-      {
-        paramFragment = new IllegalArgumentException("Can't add fragment " + paramFragment + " with tag " + paramString + " to container view with no id");
-        AppMethodBeat.o(211839);
-        throw paramFragment;
-      }
-      if ((paramFragment.mFragmentId != 0) && (paramFragment.mFragmentId != paramInt1))
-      {
-        paramFragment = new IllegalStateException("Can't change container ID of fragment " + paramFragment + ": was " + paramFragment.mFragmentId + " now " + paramInt1);
-        AppMethodBeat.o(211839);
-        throw paramFragment;
-      }
-      paramFragment.mFragmentId = paramInt1;
-      paramFragment.mContainerId = paramInt1;
-    }
-    a(new a(paramInt2, paramFragment));
-    AppMethodBeat.o(211839);
-  }
-  
-  private int ag(boolean paramBoolean)
-  {
-    AppMethodBeat.i(211872);
+    AppMethodBeat.i(193600);
     Object localObject;
-    if (this.UY)
+    if (this.bBe)
     {
       localObject = new IllegalStateException("commit already called");
-      AppMethodBeat.o(211872);
+      AppMethodBeat.o(193600);
       throw ((Throwable)localObject);
     }
-    if (FragmentManagerImpl.DEBUG)
+    if (FragmentManager.isLoggingEnabled(2))
     {
       new StringBuilder("Commit: ").append(this);
-      localObject = new PrintWriter(new c("FragmentManager"));
+      localObject = new PrintWriter(new w("FragmentManager"));
       a("  ", (PrintWriter)localObject);
       ((PrintWriter)localObject).close();
     }
-    this.UY = true;
-    if (this.UW) {}
-    for (this.mIndex = this.UN.allocBackStackIndex(this);; this.mIndex = -1)
+    this.bBe = true;
+    if (this.bDG) {}
+    for (this.mIndex = this.bBd.allocBackStackIndex();; this.mIndex = -1)
     {
-      this.UN.enqueueAction(this, paramBoolean);
+      this.bBd.enqueueAction(this, paramBoolean);
       int i = this.mIndex;
-      AppMethodBeat.o(211872);
+      AppMethodBeat.o(193600);
       return i;
     }
   }
   
-  static boolean b(a parama)
+  public final void FV()
   {
-    AppMethodBeat.i(211888);
-    parama = parama.fragment;
-    if ((parama != null) && (parama.mAdded) && (parama.mView != null) && (!parama.mDetached) && (!parama.mHidden) && (parama.isPostponed()))
+    AppMethodBeat.i(193698);
+    if (this.bDI != null)
     {
-      AppMethodBeat.o(211888);
-      return true;
+      int i = 0;
+      while (i < this.bDI.size())
+      {
+        ((Runnable)this.bDI.get(i)).run();
+        i += 1;
+      }
+      this.bDI = null;
     }
-    AppMethodBeat.o(211888);
-    return false;
+    AppMethodBeat.o(193698);
   }
   
-  private i il()
+  public final int FW()
   {
-    AppMethodBeat.i(211861);
-    if (this.UW)
-    {
-      IllegalStateException localIllegalStateException = new IllegalStateException("This transaction is already being added to the back stack");
-      AppMethodBeat.o(211861);
-      throw localIllegalStateException;
-    }
-    this.UX = false;
-    AppMethodBeat.o(211861);
-    return this;
+    AppMethodBeat.i(193703);
+    int i = aP(false);
+    AppMethodBeat.o(193703);
+    return i;
   }
   
-  public final i O(int paramInt1, int paramInt2)
+  public final int FX()
   {
-    this.UQ = paramInt1;
-    this.UR = paramInt2;
-    this.US = 0;
-    this.UT = 0;
-    return this;
+    AppMethodBeat.i(193708);
+    int i = aP(true);
+    AppMethodBeat.o(193708);
+    return i;
+  }
+  
+  public final void FY()
+  {
+    AppMethodBeat.i(193715);
+    GC();
+    this.bBd.execSingleAction(this, false);
+    AppMethodBeat.o(193715);
+  }
+  
+  public final void FZ()
+  {
+    AppMethodBeat.i(193721);
+    GC();
+    this.bBd.execSingleAction(this, true);
+    AppMethodBeat.o(193721);
+  }
+  
+  final void Ga()
+  {
+    AppMethodBeat.i(193760);
+    int j = this.bDF.size();
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject = (r.a)this.bDF.get(i);
+      Fragment localFragment = ((r.a)localObject).bDv;
+      if (localFragment != null)
+      {
+        localFragment.setPopDirection(false);
+        localFragment.setAnimations(((r.a)localObject).bCa, ((r.a)localObject).bCb, ((r.a)localObject).bCc, ((r.a)localObject).bCd);
+        localFragment.setNextTransition(this.bBj);
+        localFragment.setSharedElementNames(this.bBo, this.bBp);
+      }
+      switch (((r.a)localObject).bDJ)
+      {
+      case 2: 
+      default: 
+        localObject = new IllegalArgumentException("Unknown cmd: " + ((r.a)localObject).bDJ);
+        AppMethodBeat.o(193760);
+        throw ((Throwable)localObject);
+      case 1: 
+        this.bBd.setExitAnimationOrder(localFragment, false);
+        this.bBd.addFragment(localFragment);
+      }
+      for (;;)
+      {
+        if ((!this.bBq) && (((r.a)localObject).bDJ != 1) && (localFragment != null) && (!FragmentManager.USE_STATE_MANAGER)) {
+          this.bBd.moveFragmentToExpectedState(localFragment);
+        }
+        i += 1;
+        break;
+        this.bBd.removeFragment(localFragment);
+        continue;
+        this.bBd.hideFragment(localFragment);
+        continue;
+        this.bBd.setExitAnimationOrder(localFragment, false);
+        this.bBd.showFragment(localFragment);
+        continue;
+        this.bBd.detachFragment(localFragment);
+        continue;
+        this.bBd.setExitAnimationOrder(localFragment, false);
+        this.bBd.attachFragment(localFragment);
+        continue;
+        this.bBd.setPrimaryNavigationFragment(localFragment);
+        continue;
+        this.bBd.setPrimaryNavigationFragment(null);
+        continue;
+        this.bBd.setMaxLifecycle(localFragment, ((r.a)localObject).bDL);
+      }
+    }
+    if ((!this.bBq) && (!FragmentManager.USE_STATE_MANAGER)) {
+      this.bBd.moveToState(this.bBd.mCurState, true);
+    }
+    AppMethodBeat.o(193760);
   }
   
   final Fragment a(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
   {
-    AppMethodBeat.i(211884);
+    AppMethodBeat.i(193781);
     int j = 0;
     Fragment localFragment1 = paramFragment;
-    a locala;
+    r.a locala;
     int i;
     Fragment localFragment2;
     int m;
     int k;
     label226:
     Fragment localFragment3;
-    if (j < this.UO.size())
+    if (j < this.bDF.size())
     {
-      locala = (a)this.UO.get(j);
+      locala = (r.a)this.bDF.get(j);
       i = j;
       paramFragment = localFragment1;
-      switch (locala.Vh)
+      switch (locala.bDJ)
       {
       default: 
         paramFragment = localFragment1;
@@ -183,22 +196,22 @@ final class a
           j = i + 1;
           localFragment1 = paramFragment;
           break;
-          paramArrayList.add(locala.fragment);
+          paramArrayList.add(locala.bDv);
           i = j;
           paramFragment = localFragment1;
           continue;
-          paramArrayList.remove(locala.fragment);
+          paramArrayList.remove(locala.bDv);
           i = j;
           paramFragment = localFragment1;
-          if (locala.fragment == localFragment1)
+          if (locala.bDv == localFragment1)
           {
-            this.UO.add(j, new a(9, locala.fragment));
+            this.bDF.add(j, new r.a(9, locala.bDv));
             i = j + 1;
             paramFragment = null;
           }
         }
       case 2: 
-        localFragment2 = locala.fragment;
+        localFragment2 = locala.bDv;
         int n = localFragment2.mContainerId;
         m = 0;
         k = paramArrayList.size() - 1;
@@ -209,7 +222,7 @@ final class a
         {
           localFragment3 = (Fragment)paramArrayList.get(k);
           if (localFragment3.mContainerId != n) {
-            break label464;
+            break label465;
           }
           if (localFragment3 == localFragment2) {
             j = 1;
@@ -218,7 +231,7 @@ final class a
         break;
       }
     }
-    label464:
+    label465:
     for (;;)
     {
       k -= 1;
@@ -227,106 +240,111 @@ final class a
       localFragment1 = paramFragment;
       if (localFragment3 == paramFragment)
       {
-        this.UO.add(i, new a(9, localFragment3));
+        this.bDF.add(i, new r.a(9, localFragment3));
         m = i + 1;
         localFragment1 = null;
       }
-      paramFragment = new a(3, localFragment3);
-      paramFragment.Vi = locala.Vi;
-      paramFragment.Vk = locala.Vk;
-      paramFragment.Vj = locala.Vj;
-      paramFragment.Vl = locala.Vl;
-      this.UO.add(m, paramFragment);
+      paramFragment = new r.a(3, localFragment3);
+      paramFragment.bCa = locala.bCa;
+      paramFragment.bCc = locala.bCc;
+      paramFragment.bCb = locala.bCb;
+      paramFragment.bCd = locala.bCd;
+      this.bDF.add(m, paramFragment);
       paramArrayList.remove(localFragment3);
       i = m + 1;
       paramFragment = localFragment1;
       continue;
       if (j != 0)
       {
-        this.UO.remove(i);
+        this.bDF.remove(i);
         i -= 1;
         break;
       }
-      locala.Vh = 1;
+      locala.bDJ = 1;
       paramArrayList.add(localFragment2);
       break;
-      this.UO.add(j, new a(9, localFragment1));
+      this.bDF.add(j, new r.a(9, localFragment1));
       i = j + 1;
-      paramFragment = locala.fragment;
+      paramFragment = locala.bDv;
       break;
-      AppMethodBeat.o(211884);
+      AppMethodBeat.o(193781);
       return localFragment1;
     }
   }
   
-  public final i a(int paramInt, Fragment paramFragment)
+  public final r a(Fragment paramFragment)
   {
-    AppMethodBeat.i(211837);
-    a(paramInt, paramFragment, null, 1);
-    AppMethodBeat.o(211837);
-    return this;
-  }
-  
-  public final i a(int paramInt, Fragment paramFragment, String paramString)
-  {
-    AppMethodBeat.i(211838);
-    a(paramInt, paramFragment, paramString, 1);
-    AppMethodBeat.o(211838);
-    return this;
-  }
-  
-  public final i a(Fragment paramFragment)
-  {
-    AppMethodBeat.i(211846);
-    a(new a(3, paramFragment));
-    AppMethodBeat.o(211846);
-    return this;
-  }
-  
-  public final i a(Fragment paramFragment, String paramString)
-  {
-    AppMethodBeat.i(211835);
-    a(0, paramFragment, paramString, 1);
-    AppMethodBeat.o(211835);
-    return this;
-  }
-  
-  final void a(Fragment.c paramc)
-  {
-    AppMethodBeat.i(211887);
-    int i = 0;
-    while (i < this.UO.size())
+    AppMethodBeat.i(193659);
+    if ((paramFragment.mFragmentManager != null) && (paramFragment.mFragmentManager != this.bBd))
     {
-      a locala = (a)this.UO.get(i);
-      if (b(locala)) {
-        locala.fragment.setOnStartEnterTransitionListener(paramc);
+      paramFragment = new IllegalStateException("Cannot remove Fragment attached to a different FragmentManager. Fragment " + paramFragment.toString() + " is already attached to a FragmentManager.");
+      AppMethodBeat.o(193659);
+      throw paramFragment;
+    }
+    paramFragment = super.a(paramFragment);
+    AppMethodBeat.o(193659);
+    return paramFragment;
+  }
+  
+  public final r a(Fragment paramFragment, j.b paramb)
+  {
+    AppMethodBeat.i(193682);
+    if (paramFragment.mFragmentManager != this.bBd)
+    {
+      paramFragment = new IllegalArgumentException("Cannot setMaxLifecycle for Fragment not attached to FragmentManager " + this.bBd);
+      AppMethodBeat.o(193682);
+      throw paramFragment;
+    }
+    if ((paramb == j.b.bHh) && (paramFragment.mState >= 0))
+    {
+      paramFragment = new IllegalArgumentException("Cannot set maximum Lifecycle to " + paramb + " after the Fragment has been created");
+      AppMethodBeat.o(193682);
+      throw paramFragment;
+    }
+    if (paramb == j.b.bHg)
+    {
+      paramFragment = new IllegalArgumentException("Cannot set maximum Lifecycle to " + paramb + ". Use remove() to remove the fragment from the FragmentManager and trigger its destruction.");
+      AppMethodBeat.o(193682);
+      throw paramFragment;
+    }
+    paramFragment = super.a(paramFragment, paramb);
+    AppMethodBeat.o(193682);
+    return paramFragment;
+  }
+  
+  final void a(int paramInt1, Fragment paramFragment, String paramString, int paramInt2)
+  {
+    AppMethodBeat.i(193650);
+    super.a(paramInt1, paramFragment, paramString, paramInt2);
+    paramFragment.mFragmentManager = this.bBd;
+    AppMethodBeat.o(193650);
+  }
+  
+  final void a(Fragment.d paramd)
+  {
+    AppMethodBeat.i(193797);
+    int i = 0;
+    while (i < this.bDF.size())
+    {
+      r.a locala = (r.a)this.bDF.get(i);
+      if (a(locala)) {
+        locala.bDv.setOnStartEnterTransitionListener(paramd);
       }
       i += 1;
     }
-    AppMethodBeat.o(211887);
-  }
-  
-  final void a(a parama)
-  {
-    AppMethodBeat.i(211834);
-    this.UO.add(parama);
-    parama.Vi = this.UQ;
-    parama.Vj = this.UR;
-    parama.Vk = this.US;
-    parama.Vl = this.UT;
-    AppMethodBeat.o(211834);
+    AppMethodBeat.o(193797);
   }
   
   public final void a(String paramString, PrintWriter paramPrintWriter)
   {
-    AppMethodBeat.i(211829);
+    AppMethodBeat.i(193634);
     a(paramString, paramPrintWriter, true);
-    AppMethodBeat.o(211829);
+    AppMethodBeat.o(193634);
   }
   
   public final void a(String paramString, PrintWriter paramPrintWriter, boolean paramBoolean)
   {
-    AppMethodBeat.i(211832);
+    AppMethodBeat.i(193644);
     if (paramBoolean)
     {
       paramPrintWriter.print(paramString);
@@ -335,63 +353,60 @@ final class a
       paramPrintWriter.print(" mIndex=");
       paramPrintWriter.print(this.mIndex);
       paramPrintWriter.print(" mCommitted=");
-      paramPrintWriter.println(this.UY);
-      if (this.UU != 0)
+      paramPrintWriter.println(this.bBe);
+      if (this.bBj != 0)
       {
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("mTransition=#");
-        paramPrintWriter.print(Integer.toHexString(this.UU));
-        paramPrintWriter.print(" mTransitionStyle=#");
-        paramPrintWriter.println(Integer.toHexString(this.UV));
+        paramPrintWriter.print(Integer.toHexString(this.bBj));
       }
-      if ((this.UQ != 0) || (this.UR != 0))
+      if ((this.bCa != 0) || (this.bCb != 0))
       {
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("mEnterAnim=#");
-        paramPrintWriter.print(Integer.toHexString(this.UQ));
+        paramPrintWriter.print(Integer.toHexString(this.bCa));
         paramPrintWriter.print(" mExitAnim=#");
-        paramPrintWriter.println(Integer.toHexString(this.UR));
+        paramPrintWriter.println(Integer.toHexString(this.bCb));
       }
-      if ((this.US != 0) || (this.UT != 0))
+      if ((this.bCc != 0) || (this.bCd != 0))
       {
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("mPopEnterAnim=#");
-        paramPrintWriter.print(Integer.toHexString(this.US));
+        paramPrintWriter.print(Integer.toHexString(this.bCc));
         paramPrintWriter.print(" mPopExitAnim=#");
-        paramPrintWriter.println(Integer.toHexString(this.UT));
+        paramPrintWriter.println(Integer.toHexString(this.bCd));
       }
-      if ((this.UZ != 0) || (this.Va != null))
+      if ((this.bBk != 0) || (this.bBl != null))
       {
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("mBreadCrumbTitleRes=#");
-        paramPrintWriter.print(Integer.toHexString(this.UZ));
+        paramPrintWriter.print(Integer.toHexString(this.bBk));
         paramPrintWriter.print(" mBreadCrumbTitleText=");
-        paramPrintWriter.println(this.Va);
+        paramPrintWriter.println(this.bBl);
       }
-      if ((this.Vb != 0) || (this.Vc != null))
+      if ((this.bBm != 0) || (this.bBn != null))
       {
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("mBreadCrumbShortTitleRes=#");
-        paramPrintWriter.print(Integer.toHexString(this.Vb));
+        paramPrintWriter.print(Integer.toHexString(this.bBm));
         paramPrintWriter.print(" mBreadCrumbShortTitleText=");
-        paramPrintWriter.println(this.Vc);
+        paramPrintWriter.println(this.bBn);
       }
     }
-    if (!this.UO.isEmpty())
+    if (!this.bDF.isEmpty())
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.println("Operations:");
-      new StringBuilder().append(paramString).append("    ");
-      int j = this.UO.size();
+      int j = this.bDF.size();
       int i = 0;
       if (i < j)
       {
-        a locala = (a)this.UO.get(i);
+        r.a locala = (r.a)this.bDF.get(i);
         String str;
-        switch (locala.Vh)
+        switch (locala.bDJ)
         {
         default: 
-          str = "cmd=" + locala.Vh;
+          str = "cmd=" + locala.bDJ;
         }
         for (;;)
         {
@@ -401,24 +416,24 @@ final class a
           paramPrintWriter.print(": ");
           paramPrintWriter.print(str);
           paramPrintWriter.print(" ");
-          paramPrintWriter.println(locala.fragment);
+          paramPrintWriter.println(locala.bDv);
           if (paramBoolean)
           {
-            if ((locala.Vi != 0) || (locala.Vj != 0))
+            if ((locala.bCa != 0) || (locala.bCb != 0))
             {
               paramPrintWriter.print(paramString);
               paramPrintWriter.print("enterAnim=#");
-              paramPrintWriter.print(Integer.toHexString(locala.Vi));
+              paramPrintWriter.print(Integer.toHexString(locala.bCa));
               paramPrintWriter.print(" exitAnim=#");
-              paramPrintWriter.println(Integer.toHexString(locala.Vj));
+              paramPrintWriter.println(Integer.toHexString(locala.bCb));
             }
-            if ((locala.Vk != 0) || (locala.Vl != 0))
+            if ((locala.bCc != 0) || (locala.bCd != 0))
             {
               paramPrintWriter.print(paramString);
               paramPrintWriter.print("popEnterAnim=#");
-              paramPrintWriter.print(Integer.toHexString(locala.Vk));
+              paramPrintWriter.print(Integer.toHexString(locala.bCc));
               paramPrintWriter.print(" popExitAnim=#");
-              paramPrintWriter.println(Integer.toHexString(locala.Vl));
+              paramPrintWriter.println(Integer.toHexString(locala.bCd));
             }
           }
           i += 1;
@@ -442,30 +457,176 @@ final class a
           str = "SET_PRIMARY_NAV";
           continue;
           str = "UNSET_PRIMARY_NAV";
+          continue;
+          str = "OP_SET_MAX_LIFECYCLE";
         }
       }
     }
-    AppMethodBeat.o(211832);
+    AppMethodBeat.o(193644);
   }
   
-  final boolean a(ArrayList<a> paramArrayList, int paramInt1, int paramInt2)
+  public final boolean a(ArrayList<a> paramArrayList, ArrayList<Boolean> paramArrayList1)
   {
-    AppMethodBeat.i(211876);
+    AppMethodBeat.i(193729);
+    if (FragmentManager.isLoggingEnabled(2)) {
+      new StringBuilder("Run: ").append(this);
+    }
+    paramArrayList.add(this);
+    paramArrayList1.add(Boolean.FALSE);
+    if (this.bDG) {
+      this.bBd.addBackStackState(this);
+    }
+    AppMethodBeat.o(193729);
+    return true;
+  }
+  
+  final void aQ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(193769);
+    int i = this.bDF.size() - 1;
+    if (i >= 0)
+    {
+      Object localObject = (r.a)this.bDF.get(i);
+      Fragment localFragment = ((r.a)localObject).bDv;
+      if (localFragment != null)
+      {
+        localFragment.setPopDirection(true);
+        localFragment.setAnimations(((r.a)localObject).bCa, ((r.a)localObject).bCb, ((r.a)localObject).bCc, ((r.a)localObject).bCd);
+        localFragment.setNextTransition(FragmentManager.reverseTransit(this.bBj));
+        localFragment.setSharedElementNames(this.bBp, this.bBo);
+      }
+      switch (((r.a)localObject).bDJ)
+      {
+      case 2: 
+      default: 
+        localObject = new IllegalArgumentException("Unknown cmd: " + ((r.a)localObject).bDJ);
+        AppMethodBeat.o(193769);
+        throw ((Throwable)localObject);
+      case 1: 
+        this.bBd.setExitAnimationOrder(localFragment, true);
+        this.bBd.removeFragment(localFragment);
+      }
+      for (;;)
+      {
+        if ((!this.bBq) && (((r.a)localObject).bDJ != 3) && (localFragment != null) && (!FragmentManager.USE_STATE_MANAGER)) {
+          this.bBd.moveFragmentToExpectedState(localFragment);
+        }
+        i -= 1;
+        break;
+        this.bBd.addFragment(localFragment);
+        continue;
+        this.bBd.showFragment(localFragment);
+        continue;
+        this.bBd.setExitAnimationOrder(localFragment, true);
+        this.bBd.hideFragment(localFragment);
+        continue;
+        this.bBd.attachFragment(localFragment);
+        continue;
+        this.bBd.setExitAnimationOrder(localFragment, true);
+        this.bBd.detachFragment(localFragment);
+        continue;
+        this.bBd.setPrimaryNavigationFragment(null);
+        continue;
+        this.bBd.setPrimaryNavigationFragment(localFragment);
+        continue;
+        this.bBd.setMaxLifecycle(localFragment, ((r.a)localObject).bDK);
+      }
+    }
+    if ((!this.bBq) && (paramBoolean) && (!FragmentManager.USE_STATE_MANAGER)) {
+      this.bBd.moveToState(this.bBd.mCurState, true);
+    }
+    AppMethodBeat.o(193769);
+  }
+  
+  final Fragment b(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
+  {
+    AppMethodBeat.i(193788);
+    int i = this.bDF.size() - 1;
+    if (i >= 0)
+    {
+      r.a locala = (r.a)this.bDF.get(i);
+      switch (locala.bDJ)
+      {
+      }
+      for (;;)
+      {
+        i -= 1;
+        break;
+        paramArrayList.remove(locala.bDv);
+        continue;
+        paramArrayList.add(locala.bDv);
+        continue;
+        paramFragment = locala.bDv;
+        continue;
+        paramFragment = null;
+        continue;
+        locala.bDL = locala.bDK;
+      }
+    }
+    AppMethodBeat.o(193788);
+    return paramFragment;
+  }
+  
+  public final r b(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193664);
+    if ((paramFragment.mFragmentManager != null) && (paramFragment.mFragmentManager != this.bBd))
+    {
+      paramFragment = new IllegalStateException("Cannot hide Fragment attached to a different FragmentManager. Fragment " + paramFragment.toString() + " is already attached to a FragmentManager.");
+      AppMethodBeat.o(193664);
+      throw paramFragment;
+    }
+    paramFragment = super.b(paramFragment);
+    AppMethodBeat.o(193664);
+    return paramFragment;
+  }
+  
+  public final r c(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193669);
+    if ((paramFragment.mFragmentManager != null) && (paramFragment.mFragmentManager != this.bBd))
+    {
+      paramFragment = new IllegalStateException("Cannot show Fragment attached to a different FragmentManager. Fragment " + paramFragment.toString() + " is already attached to a FragmentManager.");
+      AppMethodBeat.o(193669);
+      throw paramFragment;
+    }
+    paramFragment = super.c(paramFragment);
+    AppMethodBeat.o(193669);
+    return paramFragment;
+  }
+  
+  public final r d(Fragment paramFragment)
+  {
+    AppMethodBeat.i(193675);
+    if ((paramFragment.mFragmentManager != null) && (paramFragment.mFragmentManager != this.bBd))
+    {
+      paramFragment = new IllegalStateException("Cannot detach Fragment attached to a different FragmentManager. Fragment " + paramFragment.toString() + " is already attached to a FragmentManager.");
+      AppMethodBeat.o(193675);
+      throw paramFragment;
+    }
+    paramFragment = super.d(paramFragment);
+    AppMethodBeat.o(193675);
+    return paramFragment;
+  }
+  
+  final boolean d(ArrayList<a> paramArrayList, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(193750);
     if (paramInt2 == paramInt1)
     {
-      AppMethodBeat.o(211876);
+      AppMethodBeat.o(193750);
       return false;
     }
-    int i1 = this.UO.size();
+    int i1 = this.bDF.size();
     int j = -1;
     int k = 0;
     int i;
     if (k < i1)
     {
-      Object localObject = (a)this.UO.get(k);
-      if (((a)localObject).fragment != null)
+      Object localObject = (r.a)this.bDF.get(k);
+      if (((r.a)localObject).bDv != null)
       {
-        i = ((a)localObject).fragment.mContainerId;
+        i = ((r.a)localObject).bDv.mContainerId;
         if ((i == 0) || (i == j)) {
           break label224;
         }
@@ -477,21 +638,21 @@ final class a
           break label203;
         }
         localObject = (a)paramArrayList.get(j);
-        int i2 = ((a)localObject).UO.size();
+        int i2 = ((a)localObject).bDF.size();
         int m = 0;
         for (;;)
         {
           if (m >= i2) {
             break label194;
           }
-          a locala = (a)((a)localObject).UO.get(m);
-          if (locala.fragment != null) {}
-          for (int n = locala.fragment.mContainerId;; n = 0)
+          r.a locala = (r.a)((a)localObject).bDF.get(m);
+          if (locala.bDv != null) {}
+          for (int n = locala.bDv.mContainerId;; n = 0)
           {
             if (n != i) {
               break label185;
             }
-            AppMethodBeat.o(211876);
+            AppMethodBeat.o(193750);
             return true;
             i = 0;
             break;
@@ -509,335 +670,70 @@ final class a
       k += 1;
       j = i;
       break;
-      AppMethodBeat.o(211876);
+      AppMethodBeat.o(193750);
       return false;
       label224:
       i = j;
     }
   }
   
-  public final boolean a(ArrayList<a> paramArrayList, ArrayList<Boolean> paramArrayList1)
+  final void eS(int paramInt)
   {
-    AppMethodBeat.i(211873);
-    if (FragmentManagerImpl.DEBUG) {
-      new StringBuilder("Run: ").append(this);
-    }
-    paramArrayList.add(this);
-    paramArrayList1.add(Boolean.FALSE);
-    if (this.UW) {
-      this.UN.addBackStackState(this);
-    }
-    AppMethodBeat.o(211873);
-    return true;
-  }
-  
-  final void ah(boolean paramBoolean)
-  {
-    AppMethodBeat.i(211882);
-    int i = this.UO.size() - 1;
-    if (i >= 0)
+    AppMethodBeat.i(193690);
+    if (!this.bDG)
     {
-      Object localObject = (a)this.UO.get(i);
-      Fragment localFragment = ((a)localObject).fragment;
-      if (localFragment != null) {
-        localFragment.setNextTransition(FragmentManagerImpl.reverseTransit(this.UU), this.UV);
-      }
-      switch (((a)localObject).Vh)
-      {
-      case 2: 
-      default: 
-        localObject = new IllegalArgumentException("Unknown cmd: " + ((a)localObject).Vh);
-        AppMethodBeat.o(211882);
-        throw ((Throwable)localObject);
-      case 1: 
-        localFragment.setNextAnim(((a)localObject).Vl);
-        this.UN.removeFragment(localFragment);
-      }
-      for (;;)
-      {
-        if ((!this.Vf) && (((a)localObject).Vh != 3) && (localFragment != null)) {
-          this.UN.moveFragmentToExpectedState(localFragment);
-        }
-        i -= 1;
-        break;
-        localFragment.setNextAnim(((a)localObject).Vk);
-        this.UN.addFragment(localFragment, false);
-        continue;
-        localFragment.setNextAnim(((a)localObject).Vk);
-        this.UN.showFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(((a)localObject).Vl);
-        this.UN.hideFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(((a)localObject).Vk);
-        this.UN.attachFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(((a)localObject).Vl);
-        this.UN.detachFragment(localFragment);
-        continue;
-        this.UN.setPrimaryNavigationFragment(null);
-        continue;
-        this.UN.setPrimaryNavigationFragment(localFragment);
-      }
-    }
-    if ((!this.Vf) && (paramBoolean)) {
-      this.UN.moveToState(this.UN.mCurState, true);
-    }
-    AppMethodBeat.o(211882);
-  }
-  
-  final Fragment b(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
-  {
-    AppMethodBeat.i(211885);
-    int i = 0;
-    Fragment localFragment = paramFragment;
-    if (i < this.UO.size())
-    {
-      a locala = (a)this.UO.get(i);
-      paramFragment = localFragment;
-      switch (locala.Vh)
-      {
-      default: 
-        paramFragment = localFragment;
-      }
-      for (;;)
-      {
-        i += 1;
-        localFragment = paramFragment;
-        break;
-        paramArrayList.remove(locala.fragment);
-        paramFragment = localFragment;
-        continue;
-        paramArrayList.add(locala.fragment);
-        paramFragment = localFragment;
-        continue;
-        paramFragment = locala.fragment;
-        continue;
-        paramFragment = null;
-      }
-    }
-    AppMethodBeat.o(211885);
-    return localFragment;
-  }
-  
-  public final i b(int paramInt, Fragment paramFragment)
-  {
-    AppMethodBeat.i(211842);
-    if (paramInt == 0)
-    {
-      paramFragment = new IllegalArgumentException("Must use non-zero containerViewId");
-      AppMethodBeat.o(211842);
-      throw paramFragment;
-    }
-    a(paramInt, paramFragment, null, 2);
-    AppMethodBeat.o(211842);
-    return this;
-  }
-  
-  public final i b(Fragment paramFragment)
-  {
-    AppMethodBeat.i(211847);
-    a(new a(4, paramFragment));
-    AppMethodBeat.o(211847);
-    return this;
-  }
-  
-  final void bX(int paramInt)
-  {
-    AppMethodBeat.i(211862);
-    if (!this.UW)
-    {
-      AppMethodBeat.o(211862);
+      AppMethodBeat.o(193690);
       return;
     }
-    if (FragmentManagerImpl.DEBUG) {
+    if (FragmentManager.isLoggingEnabled(2)) {
       new StringBuilder("Bump nesting in ").append(this).append(" by ").append(paramInt);
     }
-    int j = this.UO.size();
+    int j = this.bDF.size();
     int i = 0;
     while (i < j)
     {
-      a locala = (a)this.UO.get(i);
-      if (locala.fragment != null)
+      r.a locala = (r.a)this.bDF.get(i);
+      if (locala.bDv != null)
       {
-        Fragment localFragment = locala.fragment;
+        Fragment localFragment = locala.bDv;
         localFragment.mBackStackNesting += paramInt;
-        if (FragmentManagerImpl.DEBUG) {
-          new StringBuilder("Bump nesting of ").append(locala.fragment).append(" to ").append(locala.fragment.mBackStackNesting);
+        if (FragmentManager.isLoggingEnabled(2)) {
+          new StringBuilder("Bump nesting of ").append(locala.bDv).append(" to ").append(locala.bDv.mBackStackNesting);
         }
       }
       i += 1;
     }
-    AppMethodBeat.o(211862);
+    AppMethodBeat.o(193690);
   }
   
-  final boolean bY(int paramInt)
+  final boolean eT(int paramInt)
   {
-    AppMethodBeat.i(211875);
-    int k = this.UO.size();
+    AppMethodBeat.i(193737);
+    int k = this.bDF.size();
     int i = 0;
     while (i < k)
     {
-      a locala = (a)this.UO.get(i);
-      if (locala.fragment != null) {}
-      for (int j = locala.fragment.mContainerId; (j != 0) && (j == paramInt); j = 0)
+      r.a locala = (r.a)this.bDF.get(i);
+      if (locala.bDv != null) {}
+      for (int j = locala.bDv.mContainerId; (j != 0) && (j == paramInt); j = 0)
       {
-        AppMethodBeat.o(211875);
+        AppMethodBeat.o(193737);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(211875);
+    AppMethodBeat.o(193737);
     return false;
   }
   
-  public final i c(Fragment paramFragment)
+  public final String getName()
   {
-    AppMethodBeat.i(211850);
-    a(new a(5, paramFragment));
-    AppMethodBeat.o(211850);
-    return this;
-  }
-  
-  public final i d(Fragment paramFragment)
-  {
-    AppMethodBeat.i(211853);
-    a(new a(6, paramFragment));
-    AppMethodBeat.o(211853);
-    return this;
-  }
-  
-  public final i e(Fragment paramFragment)
-  {
-    AppMethodBeat.i(211856);
-    a(new a(7, paramFragment));
-    AppMethodBeat.o(211856);
-    return this;
-  }
-  
-  public final i ik()
-  {
-    AppMethodBeat.i(211859);
-    if (!this.UX)
-    {
-      IllegalStateException localIllegalStateException = new IllegalStateException("This FragmentTransaction is not allowed to be added to the back stack.");
-      AppMethodBeat.o(211859);
-      throw localIllegalStateException;
-    }
-    this.UW = true;
-    this.mName = null;
-    AppMethodBeat.o(211859);
-    return this;
-  }
-  
-  public final void im()
-  {
-    AppMethodBeat.i(211864);
-    if (this.Vg != null)
-    {
-      int j = this.Vg.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((Runnable)this.Vg.get(i)).run();
-        i += 1;
-      }
-      this.Vg = null;
-    }
-    AppMethodBeat.o(211864);
-  }
-  
-  public final int in()
-  {
-    AppMethodBeat.i(211865);
-    int i = ag(false);
-    AppMethodBeat.o(211865);
-    return i;
-  }
-  
-  public final int ip()
-  {
-    AppMethodBeat.i(211867);
-    int i = ag(true);
-    AppMethodBeat.o(211867);
-    return i;
-  }
-  
-  public final void iq()
-  {
-    AppMethodBeat.i(211868);
-    il();
-    this.UN.execSingleAction(this, false);
-    AppMethodBeat.o(211868);
-  }
-  
-  public final void ir()
-  {
-    AppMethodBeat.i(211870);
-    il();
-    this.UN.execSingleAction(this, true);
-    AppMethodBeat.o(211870);
-  }
-  
-  final void is()
-  {
-    AppMethodBeat.i(211879);
-    int j = this.UO.size();
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject = (a)this.UO.get(i);
-      Fragment localFragment = ((a)localObject).fragment;
-      if (localFragment != null) {
-        localFragment.setNextTransition(this.UU, this.UV);
-      }
-      switch (((a)localObject).Vh)
-      {
-      case 2: 
-      default: 
-        localObject = new IllegalArgumentException("Unknown cmd: " + ((a)localObject).Vh);
-        AppMethodBeat.o(211879);
-        throw ((Throwable)localObject);
-      case 1: 
-        localFragment.setNextAnim(((a)localObject).Vi);
-        this.UN.addFragment(localFragment, false);
-      }
-      for (;;)
-      {
-        if ((!this.Vf) && (((a)localObject).Vh != 1) && (localFragment != null)) {
-          this.UN.moveFragmentToExpectedState(localFragment);
-        }
-        i += 1;
-        break;
-        localFragment.setNextAnim(((a)localObject).Vj);
-        this.UN.removeFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(((a)localObject).Vj);
-        this.UN.hideFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(((a)localObject).Vi);
-        this.UN.showFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(((a)localObject).Vj);
-        this.UN.detachFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(((a)localObject).Vi);
-        this.UN.attachFragment(localFragment);
-        continue;
-        this.UN.setPrimaryNavigationFragment(localFragment);
-        continue;
-        this.UN.setPrimaryNavigationFragment(null);
-      }
-    }
-    if (!this.Vf) {
-      this.UN.moveToState(this.UN.mCurState, true);
-    }
-    AppMethodBeat.o(211879);
+    return this.mName;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(211828);
+    AppMethodBeat.i(193622);
     Object localObject = new StringBuilder(128);
     ((StringBuilder)localObject).append("BackStackEntry{");
     ((StringBuilder)localObject).append(Integer.toHexString(System.identityHashCode(this)));
@@ -853,31 +749,13 @@ final class a
     }
     ((StringBuilder)localObject).append("}");
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(211828);
+    AppMethodBeat.o(193622);
     return localObject;
-  }
-  
-  static final class a
-  {
-    int Vh;
-    int Vi;
-    int Vj;
-    int Vk;
-    int Vl;
-    Fragment fragment;
-    
-    a() {}
-    
-    a(int paramInt, Fragment paramFragment)
-    {
-      this.Vh = paramInt;
-      this.fragment = paramFragment;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.fragment.app.a
  * JD-Core Version:    0.7.0.1
  */

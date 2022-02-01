@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface d
   extends IInterface
 {
-  public abstract Bundle getData();
+  public abstract Bundle fqx();
   
   public abstract int getErrCode();
   
@@ -29,9 +29,9 @@ public abstract interface d
       attachInterface(this, "com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
     }
     
-    public static d gWX()
+    public static d iwT()
     {
-      return a.Qab;
+      return a.WRm;
     }
     
     public IBinder asBinder()
@@ -74,7 +74,7 @@ public abstract interface d
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-      paramParcel1 = getData();
+      paramParcel1 = fqx();
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -89,7 +89,7 @@ public abstract interface d
     static final class a
       implements d
     {
-      public static d Qab;
+      public static d WRm;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -103,7 +103,7 @@ public abstract interface d
       }
       
       /* Error */
-      public final Bundle getData()
+      public final Bundle fqx()
       {
         // Byte code:
         //   0: ldc 26
@@ -123,9 +123,9 @@ public abstract interface d
         //   26: iconst_0
         //   27: invokeinterface 50 5 0
         //   32: ifne +33 -> 65
-        //   35: invokestatic 54	com/tencent/mm/plugin/webview/stub/d$a:gWX	()Lcom/tencent/mm/plugin/webview/stub/d;
+        //   35: invokestatic 54	com/tencent/mm/plugin/webview/stub/d$a:iwT	()Lcom/tencent/mm/plugin/webview/stub/d;
         //   38: ifnull +27 -> 65
-        //   41: invokestatic 54	com/tencent/mm/plugin/webview/stub/d$a:gWX	()Lcom/tencent/mm/plugin/webview/stub/d;
+        //   41: invokestatic 54	com/tencent/mm/plugin/webview/stub/d$a:iwT	()Lcom/tencent/mm/plugin/webview/stub/d;
         //   44: invokeinterface 56 1 0
         //   49: astore_1
         //   50: aload_3
@@ -187,9 +187,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (d.a.gWX() != null))
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (d.a.iwT() != null))
           {
-            i = d.a.gWX().getErrCode();
+            i = d.a.iwT().getErrCode();
             return i;
           }
           localParcel2.readException();
@@ -212,9 +212,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (d.a.gWX() != null))
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (d.a.iwT() != null))
           {
-            str = d.a.gWX().getErrMsg();
+            str = d.a.iwT().getErrMsg();
             return str;
           }
           localParcel2.readException();
@@ -237,9 +237,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (d.a.gWX() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (d.a.iwT() != null))
           {
-            i = d.a.gWX().getErrType();
+            i = d.a.iwT().getErrType();
             return i;
           }
           localParcel2.readException();
@@ -262,9 +262,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (d.a.gWX() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (d.a.iwT() != null))
           {
-            i = d.a.gWX().getType();
+            i = d.a.iwT().getType();
             return i;
           }
           localParcel2.readException();

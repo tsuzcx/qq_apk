@@ -13,7 +13,7 @@ public class PluginWxPayApi
   public void configure(g paramg)
   {
     AppMethodBeat.i(106597);
-    paramg.aIE();
+    paramg.bbA();
     AppMethodBeat.o(106597);
   }
   
@@ -22,7 +22,7 @@ public class PluginWxPayApi
   public void execute(g paramg)
   {
     AppMethodBeat.i(106598);
-    if (paramg.aIE()) {
+    if (paramg.bbA()) {
       h.b(b.class, new com.tencent.mm.plugin.x.a());
     }
     AppMethodBeat.o(106598);

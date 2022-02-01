@@ -5,37 +5,23 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import androidx.b.b;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Indicator;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.google.android.gms.common.server.response.FastJsonResponse.Field;
 import com.google.android.gms.internal.auth.zzbs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Set;
 
-@SafeParcelable.Class(creator="AuthenticatorTransferInfoCreator")
 public class zzw
   extends zzbs
 {
   public static final Parcelable.Creator<zzw> CREATOR;
   private static final HashMap<String, FastJsonResponse.Field<?, ?>> zzbk;
-  @SafeParcelable.Indicator
   private final Set<Integer> zzbl;
-  @SafeParcelable.Field(getter="getAccountType", id=2)
   private String zzbx;
-  @SafeParcelable.Field(getter="getStatus", id=3)
   private int zzby;
-  @SafeParcelable.Field(getter="getTransferBytes", id=4)
   private byte[] zzbz;
-  @SafeParcelable.Field(getter="getPendingIntent", id=5)
   private PendingIntent zzca;
-  @SafeParcelable.Field(getter="getDeviceMetaData", id=6)
   private DeviceMetaData zzcb;
-  @SafeParcelable.VersionField(id=1)
   private final int zzy;
   
   static
@@ -58,8 +44,7 @@ public class zzw
     AppMethodBeat.o(10683);
   }
   
-  @SafeParcelable.Constructor
-  zzw(@SafeParcelable.Indicator Set<Integer> paramSet, @SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) int paramInt2, @SafeParcelable.Param(id=4) byte[] paramArrayOfByte, @SafeParcelable.Param(id=5) PendingIntent paramPendingIntent, @SafeParcelable.Param(id=6) DeviceMetaData paramDeviceMetaData)
+  zzw(Set<Integer> paramSet, int paramInt1, String paramString, int paramInt2, byte[] paramArrayOfByte, PendingIntent paramPendingIntent, DeviceMetaData paramDeviceMetaData)
   {
     this.zzbl = paramSet;
     this.zzy = paramInt1;
@@ -184,7 +169,7 @@ public class zzw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.accounttransfer.zzw
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.m.a;
+import com.tencent.mm.am.l.a;
 import com.tencent.mm.audio.b.j;
 import com.tencent.mm.audio.b.j.a;
 import com.tencent.mm.compatible.util.b;
@@ -18,40 +18,40 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class k
 {
-  private static k QGX = null;
-  public com.tencent.mm.plugin.wenote.model.b.a QGY;
-  public l QGZ;
+  private static k XAv = null;
+  public com.tencent.mm.plugin.wenote.model.b.a XAw;
+  public l XAx;
   public long duration;
-  public b mlj;
   public String path;
-  public int urA;
-  private final MMHandler urD;
-  public final MTimerHandler urE;
-  public final MMHandler urf;
-  public boolean urq;
-  public long urr;
-  public boolean urs;
-  public long urt;
-  private Toast uru;
-  public j urv;
-  public m urw;
-  public String urx;
-  public TextView urz;
+  public b peV;
+  public final MMHandler xxC;
+  public boolean xxL;
+  public long xxM;
+  public boolean xxN;
+  public long xxO;
+  private Toast xxP;
+  public j xxQ;
+  public m xxR;
+  public String xxS;
+  public TextView xxU;
+  public int xxV;
+  private final MMHandler xxY;
+  public final MTimerHandler xxZ;
   
   private k()
   {
     AppMethodBeat.i(30362);
-    this.urt = -1L;
-    this.urx = "";
+    this.xxO = -1L;
+    this.xxS = "";
     this.path = "";
-    this.urA = 0;
-    this.QGZ = null;
-    this.urD = new MMHandler()
+    this.xxV = 0;
+    this.XAx = null;
+    this.xxY = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -61,22 +61,22 @@ public final class k
         AppMethodBeat.o(30359);
       }
     };
-    this.urf = new MMHandler()
+    this.xxC = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(30360);
-        if (k.c(k.this).use.booleanValue())
+        if (k.c(k.this).xyA.booleanValue())
         {
-          k.d(k.this).cRN();
-          k.c(k.this).use = Boolean.FALSE;
+          k.d(k.this).dwg();
+          k.c(k.this).xyA = Boolean.FALSE;
         }
-        k.c(k.this).urW = ((int)com.tencent.mm.bn.a.GW(k.e(k.this)));
+        k.c(k.this).xyr = ((int)com.tencent.mm.bf.a.jh(k.e(k.this)));
         sendEmptyMessageDelayed(4096, 250L);
         AppMethodBeat.o(30360);
       }
     };
-    this.urE = new MTimerHandler(new MTimerHandler.CallBack()
+    this.xxZ = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -102,7 +102,7 @@ public final class k
           k.h(k.this);
           k.i(k.this);
           if (k.d(k.this) != null) {
-            k.d(k.this).cRM();
+            k.d(k.this).dwf();
           }
           AppMethodBeat.o(30361);
           return false;
@@ -113,122 +113,122 @@ public final class k
         return true;
       }
     }, true);
-    this.mlj = new b(MMApplicationContext.getContext());
+    this.peV = new b(MMApplicationContext.getContext());
     AppMethodBeat.o(30362);
   }
   
-  private void cRH()
+  public static void destroy()
+  {
+    XAv = null;
+  }
+  
+  private void dwa()
   {
     AppMethodBeat.i(30367);
-    if (!this.urq)
+    if (!this.xxL)
     {
       AppMethodBeat.o(30367);
       return;
     }
-    this.urf.removeMessages(4096);
+    this.xxC.removeMessages(4096);
     stopRecord();
     this.duration = getDuration();
     if (this.duration < 800L) {}
     for (int i = 1;; i = 0)
     {
-      this.urE.stopTimer();
+      this.xxZ.stopTimer();
       if (i != 0)
       {
-        cRJ();
-        cRI();
+        dwc();
+        dwb();
       }
-      this.urq = false;
+      this.xxL = false;
       AppMethodBeat.o(30367);
       return;
     }
   }
   
-  private void cRI()
+  private void dwb()
   {
     AppMethodBeat.i(30368);
-    this.urD.sendEmptyMessageDelayed(0, 500L);
+    this.xxY.sendEmptyMessageDelayed(0, 500L);
     AppMethodBeat.o(30368);
   }
   
-  private void cRJ()
+  private void dwc()
   {
     AppMethodBeat.i(30370);
-    q localq = new q(this.path);
-    if (localq.ifE()) {
-      localq.cFq();
+    u localu = new u(this.path);
+    if (localu.jKS()) {
+      localu.diJ();
     }
     AppMethodBeat.o(30370);
-  }
-  
-  public static void destroy()
-  {
-    QGX = null;
   }
   
   private long getDuration()
   {
     AppMethodBeat.i(30369);
-    if (this.urr == 0L)
+    if (this.xxM == 0L)
     {
       AppMethodBeat.o(30369);
       return 0L;
     }
-    long l = Util.ticksToNow(this.urr);
+    long l = Util.ticksToNow(this.xxM);
     AppMethodBeat.o(30369);
     return l;
   }
   
-  public static k hdr()
+  public static k iDY()
   {
     AppMethodBeat.i(30363);
-    if (QGX == null) {
-      QGX = new k();
+    if (XAv == null) {
+      XAv = new k();
     }
-    k localk = QGX;
+    k localk = XAv;
     AppMethodBeat.o(30363);
     return localk;
   }
   
-  public static k hds()
+  public static k iDZ()
   {
-    return QGX;
+    return XAv;
   }
   
   private void stopRecord()
   {
     AppMethodBeat.i(30366);
-    if (this.urx.equals("speex")) {
-      this.urw.aeJ();
+    if (this.xxS.equals("speex")) {
+      this.xxR.aGH();
     }
     for (;;)
     {
-      if (this.mlj != null) {
-        this.mlj.avz();
+      if (this.peV != null) {
+        this.peV.aPS();
       }
       AppMethodBeat.o(30366);
       return;
-      this.urv.aeJ();
+      this.xxQ.aGH();
     }
   }
   
-  public final void cRF()
+  public final void dvY()
   {
     AppMethodBeat.i(30364);
-    if (!this.urq)
+    if (!this.xxL)
     {
       AppMethodBeat.o(30364);
       return;
     }
-    if (!this.urs) {
-      cRH();
+    if (!this.xxN) {
+      dwa();
     }
     AppMethodBeat.o(30364);
   }
   
-  public final String cRG()
+  public final String dvZ()
   {
     AppMethodBeat.i(30365);
-    if (u.agG(this.path))
+    if (y.ZC(this.path))
     {
       String str = this.path;
       AppMethodBeat.o(30365);
@@ -240,7 +240,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.k
  * JD-Core Version:    0.7.0.1
  */

@@ -8,25 +8,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.boots.a.g;
-import com.tencent.mm.plugin.lite.b.e;
+import com.tencent.mm.plugin.lite.api.b;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.base.w;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.ui.base.aa;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/lite/ui/WxaLiteAppAutoTestUI;", "Landroid/app/Activity;", "()V", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "luggage-lite-app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/lite/ui/WxaLiteAppAutoTestUI;", "Landroid/app/Activity;", "()V", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "luggage-lite-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class WxaLiteAppAutoTestUI
   extends HellActivity
 {
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(233744);
+    AppMethodBeat.i(271439);
     super.onCreate(paramBundle);
     paramBundle = new g();
     paramBundle.appId = "wxalitefebbc33b53466af81dcbca5fef1c6c4f";
-    paramBundle.smT = "http://dldir1.qq.com/weixin/liteappconfig/wxalitefebbc33b53466af81dcbca5fef1c6c4f_1f3b93b7b7a029ac684f5f9c83e27b39_d3198365b4b049dd9a197bc611be001e.zip";
-    e.Egt.a(paramBundle, "debug", (com.tencent.mm.plugin.lite.launch.a)new a(this));
-    AppMethodBeat.o(233744);
+    paramBundle.mOI = "http://dldir1.qq.com/weixin/liteappconfig/wxalitefebbc33b53466af81dcbca5fef1c6c4f_1f3b93b7b7a029ac684f5f9c83e27b39_d3198365b4b049dd9a197bc611be001e.zip";
+    com.tencent.mm.plugin.lite.logic.c.KaN.a(paramBundle, "debug", (b)new a(this));
+    AppMethodBeat.o(271439);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -35,27 +35,29 @@ public final class WxaLiteAppAutoTestUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/lite/ui/WxaLiteAppAutoTestUI$onCreate$1", "Lcom/tencent/mm/plugin/lite/launch/ILiteAppInfoCallback;", "fail", "", "success", "info", "Lcom/tencent/liteapp/storage/WxaLiteAppInfo;", "luggage-lite-app_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/lite/ui/WxaLiteAppAutoTestUI$onCreate$1", "Lcom/tencent/mm/plugin/lite/api/ILiteAppInfoCallback;", "fail", "", "success", "info", "Lcom/tencent/liteapp/storage/WxaLiteAppInfo;", "luggage-lite-app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements com.tencent.mm.plugin.lite.launch.a
+    implements b
   {
-    public final void a(WxaLiteAppInfo paramWxaLiteAppInfo)
+    a(WxaLiteAppAutoTestUI paramWxaLiteAppAutoTestUI) {}
+    
+    public final void b(WxaLiteAppInfo paramWxaLiteAppInfo)
     {
-      AppMethodBeat.i(234284);
-      p.k(paramWxaLiteAppInfo, "info");
+      AppMethodBeat.i(271408);
+      s.u(paramWxaLiteAppInfo, "info");
       Bundle localBundle = new Bundle();
       localBundle.putString("appId", paramWxaLiteAppInfo.appId);
-      ((com.tencent.mm.plugin.lite.a.a)h.ae(com.tencent.mm.plugin.lite.a.a.class)).a(MMApplicationContext.getContext(), localBundle, false, null);
-      this.Eha.finish();
-      AppMethodBeat.o(234284);
+      ((com.tencent.mm.plugin.lite.api.c)h.ax(com.tencent.mm.plugin.lite.api.c.class)).a(MMApplicationContext.getContext(), localBundle, false, true, null);
+      this.KbC.finish();
+      AppMethodBeat.o(271408);
     }
     
-    public final void ewD()
+    public final void csy()
     {
-      AppMethodBeat.i(234286);
-      w.makeText(MMApplicationContext.getContext(), (CharSequence)"下载失败", 0).show();
-      this.Eha.finish();
-      AppMethodBeat.o(234286);
+      AppMethodBeat.i(271416);
+      aa.makeText(MMApplicationContext.getContext(), (CharSequence)"下载失败", 0).show();
+      this.KbC.finish();
+      AppMethodBeat.o(271416);
     }
   }
 }

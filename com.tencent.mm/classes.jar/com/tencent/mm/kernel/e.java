@@ -4,18 +4,18 @@ import com.tencent.mm.kernel.b.g;
 
 public final class e<_Profile extends g>
 {
-  private _Profile kcv;
+  private _Profile mCD;
   
   public e(_Profile param_Profile)
   {
-    this.kcv = param_Profile;
+    this.mCD = param_Profile;
   }
   
-  public final _Profile aHf()
+  public final _Profile bad()
   {
     try
     {
-      g localg = this.kcv;
+      g localg = this.mCD;
       return localg;
     }
     finally

@@ -8,7 +8,6 @@ import android.os.Build.VERSION;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.u;
-import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -18,184 +17,154 @@ import java.util.Arrays;
 
 public final class j
 {
-  private static final int[] iQA = { 160, 170, 180 };
-  private static final int[] iQB = { 200, 210, 220 };
-  private static long iQf = -1L;
-  private static final int[] iQg = { 20, 30, 40 };
-  private static final int[] iQh = { 21, 31, 41 };
-  private static final int[] iQi = { 22, 32, 42 };
-  private static final int[] iQj = { 23, 33, 43 };
-  private static final int[] iQk = { 24, 34, 44 };
-  private static final int[] iQl = { 25, 35, 45 };
-  private static final int[] iQm = { 26, 36, 46 };
-  private static final int[] iQn = { 27, 37, 47 };
-  private static final int[] iQo = { 28, 38, 48 };
-  private static final int[] iQp = { 29, 39, 49 };
-  private static final int[] iQq = { 100, 110, 120 };
-  private static final int[] iQr = { 101, 111, 121 };
-  private static final int[] iQs = { 102, 112, 122 };
-  private static final int[] iQt = { 103, 113, 123 };
-  private static final int[] iQu = { 104, 114, 124 };
-  private static final int[] iQv = { 105, 115, 125 };
-  private static final int[] iQw = { 106, 116, 126 };
-  private static final int[] iQx = { 107, 117, 127 };
-  private static final int[] iQy = { 108, 118, 128 };
-  private static final int[] iQz = { 109, 119, 129 };
+  private static long lsa = -1L;
+  private static final int[] lsb = { 20, 30, 40 };
+  private static final int[] lsc = { 21, 31, 41 };
+  private static final int[] lsd = { 22, 32, 42 };
+  private static final int[] lse = { 23, 33, 43 };
+  private static final int[] lsg = { 24, 34, 44 };
+  private static final int[] lsh = { 25, 35, 45 };
+  private static final int[] lsi = { 26, 36, 46 };
+  private static final int[] lsj = { 27, 37, 47 };
+  private static final int[] lsk = { 28, 38, 48 };
+  private static final int[] lsl = { 29, 39, 49 };
+  private static final int[] lsm = { 100, 110, 120 };
+  private static final int[] lsn = { 101, 111, 121 };
+  private static final int[] lso = { 102, 112, 122 };
+  private static final int[] lsp = { 103, 113, 123 };
+  private static final int[] lsq = { 104, 114, 124 };
+  private static final int[] lsr = { 105, 115, 125 };
+  private static final int[] lss = { 106, 116, 126 };
+  private static final int[] lst = { 107, 117, 127 };
+  private static final int[] lsu = { 108, 118, 128 };
+  private static final int[] lsv = { 109, 119, 129 };
+  private static final int[] lsw = { 160, 170, 180 };
+  private static final int[] lsx = { 200, 210, 220 };
   
   /* Error */
-  private static int aqJ()
+  private static int aKH()
   {
     // Byte code:
     //   0: sipush 19887
-    //   3: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 92	java/io/BufferedReader
+    //   3: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 90	java/io/BufferedReader
     //   9: dup
-    //   10: new 94	java/io/InputStreamReader
+    //   10: new 92	java/io/InputStreamReader
     //   13: dup
-    //   14: ldc 96
-    //   16: invokestatic 102	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   19: ldc 104
-    //   21: invokespecial 108	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   24: invokespecial 111	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   27: astore_2
-    //   28: aload_2
-    //   29: astore_1
-    //   30: aload_2
-    //   31: invokevirtual 115	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   34: astore_3
-    //   35: aload_3
-    //   36: ifnull +122 -> 158
-    //   39: aload_2
-    //   40: astore_1
-    //   41: aload_3
-    //   42: invokestatic 121	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   45: ifne -17 -> 28
-    //   48: aload_2
-    //   49: astore_1
-    //   50: aload_3
-    //   51: invokestatic 121	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   54: ifeq +31 -> 85
-    //   57: ldc 123
-    //   59: astore_3
-    //   60: aload_2
-    //   61: astore_1
-    //   62: aload_3
-    //   63: ldc 125
-    //   65: invokevirtual 131	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   68: istore_0
-    //   69: iload_0
-    //   70: ifeq +52 -> 122
-    //   73: aload_2
-    //   74: invokestatic 135	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   77: sipush 19887
-    //   80: invokestatic 138	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   83: iconst_0
-    //   84: ireturn
-    //   85: aload_2
-    //   86: astore_1
-    //   87: aload_3
-    //   88: ldc 140
-    //   90: ldc 123
-    //   92: invokevirtual 144	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   95: invokevirtual 147	java/lang/String:trim	()Ljava/lang/String;
+    //   14: ldc 94
+    //   16: invokestatic 100	com/tencent/mm/vfs/y:Lh	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   19: ldc 102
+    //   21: invokespecial 106	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   24: invokespecial 109	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   27: astore_3
+    //   28: aload_3
+    //   29: invokevirtual 113	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   32: astore_1
+    //   33: aload_1
+    //   34: ifnull +110 -> 144
+    //   37: aload_1
+    //   38: invokestatic 119	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   41: ifne -13 -> 28
+    //   44: aload_1
+    //   45: invokestatic 119	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   48: ifeq +29 -> 77
+    //   51: ldc 121
+    //   53: astore_1
+    //   54: aload_1
+    //   55: ldc 123
+    //   57: invokevirtual 129	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   60: istore_0
+    //   61: iload_0
+    //   62: ifeq +50 -> 112
+    //   65: aload_3
+    //   66: invokestatic 133	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   69: sipush 19887
+    //   72: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: iconst_0
+    //   76: ireturn
+    //   77: aload_1
+    //   78: ldc 138
+    //   80: ldc 121
+    //   82: invokevirtual 142	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   85: invokevirtual 145	java/lang/String:trim	()Ljava/lang/String;
+    //   88: ldc 147
+    //   90: ldc 121
+    //   92: invokevirtual 142	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   95: invokevirtual 145	java/lang/String:trim	()Ljava/lang/String;
     //   98: ldc 149
-    //   100: ldc 123
-    //   102: invokevirtual 144	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   105: invokevirtual 147	java/lang/String:trim	()Ljava/lang/String;
-    //   108: ldc 151
-    //   110: ldc 123
-    //   112: invokevirtual 144	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   115: invokevirtual 147	java/lang/String:trim	()Ljava/lang/String;
-    //   118: astore_3
-    //   119: goto -59 -> 60
-    //   122: aload_2
-    //   123: astore_1
-    //   124: aload_3
-    //   125: ldc 153
-    //   127: invokevirtual 131	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   130: ifne +16 -> 146
-    //   133: aload_2
-    //   134: astore_1
-    //   135: aload_3
-    //   136: ldc 155
-    //   138: invokevirtual 131	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   141: istore_0
-    //   142: iload_0
-    //   143: ifeq -115 -> 28
-    //   146: aload_2
-    //   147: invokestatic 135	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   150: sipush 19887
-    //   153: invokestatic 138	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   156: iconst_1
-    //   157: ireturn
-    //   158: aload_2
-    //   159: invokestatic 135	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   162: sipush 19887
-    //   165: invokestatic 138	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   168: iconst_2
-    //   169: ireturn
-    //   170: astore_3
-    //   171: aconst_null
-    //   172: astore_2
-    //   173: aload_2
-    //   174: astore_1
-    //   175: ldc 157
-    //   177: aload_3
-    //   178: ldc 159
-    //   180: iconst_0
-    //   181: anewarray 4	java/lang/Object
-    //   184: invokestatic 165	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   187: aload_2
-    //   188: invokestatic 135	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   191: sipush 19887
-    //   194: invokestatic 138	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   197: iconst_m1
-    //   198: ireturn
-    //   199: astore_2
-    //   200: aconst_null
-    //   201: astore_1
-    //   202: aload_1
-    //   203: invokestatic 135	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   206: sipush 19887
-    //   209: invokestatic 138	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   212: aload_2
-    //   213: athrow
-    //   214: astore_2
-    //   215: goto -13 -> 202
-    //   218: astore_3
-    //   219: goto -46 -> 173
+    //   100: ldc 121
+    //   102: invokevirtual 142	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   105: invokevirtual 145	java/lang/String:trim	()Ljava/lang/String;
+    //   108: astore_1
+    //   109: goto -55 -> 54
+    //   112: aload_1
+    //   113: ldc 151
+    //   115: invokevirtual 129	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   118: ifne +14 -> 132
+    //   121: aload_1
+    //   122: ldc 153
+    //   124: invokevirtual 129	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   127: istore_0
+    //   128: iload_0
+    //   129: ifeq -101 -> 28
+    //   132: aload_3
+    //   133: invokestatic 133	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   136: sipush 19887
+    //   139: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   142: iconst_1
+    //   143: ireturn
+    //   144: aload_3
+    //   145: invokestatic 133	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   148: sipush 19887
+    //   151: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   154: iconst_2
+    //   155: ireturn
+    //   156: astore_2
+    //   157: aconst_null
+    //   158: astore_1
+    //   159: ldc 155
+    //   161: aload_2
+    //   162: ldc 157
+    //   164: iconst_0
+    //   165: anewarray 4	java/lang/Object
+    //   168: invokestatic 163	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   171: aload_1
+    //   172: invokestatic 133	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   175: sipush 19887
+    //   178: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   181: iconst_m1
+    //   182: ireturn
+    //   183: astore_2
+    //   184: aload_1
+    //   185: invokestatic 133	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   188: sipush 19887
+    //   191: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   194: aload_2
+    //   195: athrow
+    //   196: astore_2
+    //   197: aload_3
+    //   198: astore_1
+    //   199: goto -40 -> 159
     // Local variable table:
     //   start	length	slot	name	signature
-    //   68	75	0	bool	boolean
-    //   29	174	1	localBufferedReader1	java.io.BufferedReader
-    //   27	161	2	localBufferedReader2	java.io.BufferedReader
-    //   199	14	2	localObject1	Object
-    //   214	1	2	localObject2	Object
-    //   34	102	3	str	String
-    //   170	8	3	localThrowable1	java.lang.Throwable
-    //   218	1	3	localThrowable2	java.lang.Throwable
+    //   60	69	0	bool	boolean
+    //   32	167	1	localObject1	Object
+    //   156	6	2	localThrowable	java.lang.Throwable
+    //   183	12	2	localObject2	Object
+    //   196	1	2	localObject3	Object
+    //   27	171	3	localBufferedReader	java.io.BufferedReader
     // Exception table:
     //   from	to	target	type
-    //   6	28	170	java/lang/Throwable
-    //   6	28	199	finally
-    //   30	35	214	finally
-    //   41	48	214	finally
-    //   50	57	214	finally
-    //   62	69	214	finally
-    //   87	119	214	finally
-    //   124	133	214	finally
-    //   135	142	214	finally
-    //   175	187	214	finally
-    //   30	35	218	java/lang/Throwable
-    //   41	48	218	java/lang/Throwable
-    //   50	57	218	java/lang/Throwable
-    //   62	69	218	java/lang/Throwable
-    //   87	119	218	java/lang/Throwable
-    //   124	133	218	java/lang/Throwable
-    //   135	142	218	java/lang/Throwable
+    //   6	28	156	finally
+    //   159	171	183	finally
+    //   28	33	196	finally
+    //   37	51	196	finally
+    //   54	61	196	finally
+    //   77	109	196	finally
+    //   112	128	196	finally
   }
   
-  private static boolean g(ArrayList<IDKey> paramArrayList)
+  private static boolean j(ArrayList<IDKey> paramArrayList)
   {
     int i4 = 1;
     AppMethodBeat.i(19888);
@@ -307,7 +276,7 @@ public final class j
     if (n != 0) {
       paramArrayList.add(new IDKey(661, 16, 1));
     }
-    paramArrayList = f.Iyx;
+    paramArrayList = f.Ozc;
     if (bool1)
     {
       i2 = 1;
@@ -348,7 +317,7 @@ public final class j
     label593:
     for (n = i4;; n = 0)
     {
-      paramArrayList.a(18459, new Object[] { Integer.valueOf(i2), Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(n) });
+      paramArrayList.b(18459, new Object[] { Integer.valueOf(i2), Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(n) });
       AppMethodBeat.o(19888);
       return bool1;
       i2 = 0;
@@ -369,270 +338,265 @@ public final class j
   public static void run()
   {
     AppMethodBeat.i(19889);
-    if (d.qW(21))
-    {
-      AppMethodBeat.o(19889);
-      return;
-    }
-    if (iQf < 0L) {
-      iQf = MMApplicationContext.getContext().getSharedPreferences("eabi_report", 0).getLong("last_report", -1L);
+    if (lsa < 0L) {
+      lsa = MMApplicationContext.getContext().getSharedPreferences("eabi_report", 0).getLong("last_report", -1L);
     }
     boolean bool1;
     Object localObject;
     int i;
     ArrayList localArrayList;
-    label219:
-    label511:
+    label204:
+    label373:
     String str;
-    if ((iQf < 0L) || (System.currentTimeMillis() - iQf > 86400000L))
+    if ((lsa < 0L) || (System.currentTimeMillis() - lsa > 86400000L))
     {
-      bool1 = u.avb();
+      bool1 = u.aPw();
       localObject = new ArrayList();
       ((ArrayList)localObject).add(new IDKey(1726, 0, 1));
       if (bool1) {
         ((ArrayList)localObject).add(new IDKey(1726, 1, 1));
       }
-      f.Iyx.b((ArrayList)localObject, false);
+      f.Ozc.b((ArrayList)localObject, false);
       if (Build.SUPPORTED_64_BIT_ABIS.length <= 0) {
-        break label828;
+        break label813;
       }
       i = 1;
       Log.i("MicroMsg.PostTaskReportEABISupport", "current device support eabi: %s, %s", new Object[] { Arrays.toString(Build.SUPPORTED_32_BIT_ABIS), Arrays.toString(Build.SUPPORTED_64_BIT_ABIS) });
       localArrayList = new ArrayList();
       localArrayList.add(new IDKey(661, 3, 1));
       if (i == 0) {
-        break label833;
+        break label818;
       }
       localArrayList.add(new IDKey(661, 4, 1));
-      bool1 = g(localArrayList);
+      bool1 = j(localArrayList);
       if (!bool1) {
-        break label854;
+        break label839;
       }
       localArrayList.add(new IDKey(661, 64, 1));
       if (Build.VERSION.SDK_INT - 21 < 10) {
         localArrayList.add(new IDKey(661, Build.VERSION.SDK_INT - 21 + 90, 1));
       }
-      label285:
+      label270:
       Log.i("MicroMsg.PostTaskReportEABISupport", "supportArm64_v8a : %s", new Object[] { Boolean.valueOf(bool1) });
       localArrayList.add(new IDKey(661, 50, 1));
       localArrayList.add(new IDKey(661, 240, 1));
       if (!BuildInfo.IS_ARM64) {
-        break label913;
+        break label898;
       }
       localArrayList.add(new IDKey(661, 52, 1));
       localArrayList.add(new IDKey(661, 242, 1));
-      label388:
       boolean bool2 = "arm64-v8a".equalsIgnoreCase(Build.CPU_ABI);
       if (((!BuildInfo.IS_ARM64) || (!bool2)) && ((BuildInfo.IS_ARM64) || (bool2))) {
-        break label955;
+        break label940;
       }
       localArrayList.add(new IDKey(661, 53, 1));
-      label436:
+      label421:
       Log.i("MicroMsg.PostTaskReportEABISupport", "IS_ARM64: %s, isRuntime64 : %s", new Object[] { Boolean.valueOf(BuildInfo.IS_ARM64), Boolean.valueOf(bool2) });
-      i = aqJ();
+      i = aKH();
       Log.i("MicroMsg.PostTaskReportEABISupport", "supportArm64FromCpuInfo : %s", new Object[] { Integer.valueOf(i) });
       if (i != -1) {
-        break label977;
+        break label962;
       }
       localArrayList.add(new IDKey(661, 63, 1));
+      label496:
       if (((!bool1) || (i != 1)) && ((bool1) || (i != 0))) {
-        break label1057;
+        break label1042;
       }
       localArrayList.add(new IDKey(661, 66, 1));
-      label547:
+      label532:
       str = Build.BRAND.toLowerCase();
       if ((!str.contains("xiaomi")) && (!str.contains("redmi"))) {
-        break label1118;
+        break label1103;
       }
-      localObject = iQk;
-      label581:
+      localObject = lsg;
+      label566:
       localArrayList.add(new IDKey(661, localObject[0], 1));
       if (!bool1) {
-        break label1286;
+        break label1271;
       }
       localArrayList.add(new IDKey(661, localObject[1], 1));
-      label625:
+      label610:
       bool1 = BuildInfo.IS_ARM64;
       str = Build.BRAND.toLowerCase();
       if ((!str.contains("xiaomi")) && (!str.contains("redmi"))) {
-        break label1309;
+        break label1294;
       }
-      localObject = iQu;
-      label663:
+      localObject = lsq;
+      label648:
       localArrayList.add(new IDKey(661, localObject[0], 1));
       if (!bool1) {
-        break label1484;
+        break label1469;
       }
       localArrayList.add(new IDKey(661, localObject[2], 1));
-      label707:
+      label692:
       bool1 = BuildInfo.IS_ARM64;
       i = Build.VERSION.SDK_INT - 21;
       if (i >= 10) {
-        break label1534;
+        break label1519;
       }
-      localArrayList.add(new IDKey(661, iQA[0] + i, 1));
+      localArrayList.add(new IDKey(661, lsw[0] + i, 1));
       if (!bool1) {
-        break label1507;
+        break label1492;
       }
-      localArrayList.add(new IDKey(661, i + iQA[2], 1));
+      localArrayList.add(new IDKey(661, i + lsw[2], 1));
     }
     for (;;)
     {
-      f.Iyx.b(localArrayList, false);
-      iQf = System.currentTimeMillis();
-      MMApplicationContext.getContext().getSharedPreferences("eabi_report", 0).edit().putLong("last_report", iQf).commit();
+      f.Ozc.b(localArrayList, false);
+      lsa = System.currentTimeMillis();
+      MMApplicationContext.getContext().getSharedPreferences("eabi_report", 0).edit().putLong("last_report", lsa).commit();
       AppMethodBeat.o(19889);
       return;
-      label828:
+      label813:
       i = 0;
       break;
-      label833:
+      label818:
       localArrayList.add(new IDKey(661, 5, 1));
-      break label219;
-      label854:
+      break label204;
+      label839:
       localArrayList.add(new IDKey(661, 65, 1));
       if (Build.VERSION.SDK_INT - 21 >= 10) {
-        break label285;
+        break label270;
       }
       localArrayList.add(new IDKey(661, Build.VERSION.SDK_INT - 21 + 80, 1));
-      break label285;
-      label913:
+      break label270;
+      label898:
       localArrayList.add(new IDKey(661, 51, 1));
       localArrayList.add(new IDKey(661, 241, 1));
-      break label388;
-      label955:
+      break label373;
+      label940:
       localArrayList.add(new IDKey(661, 54, 1));
-      break label436;
-      label977:
+      break label421;
+      label962:
       if (i == 0)
       {
         localArrayList.add(new IDKey(661, 61, 1));
-        break label511;
+        break label496;
       }
       if (i == 1)
       {
         localArrayList.add(new IDKey(661, 60, 1));
-        break label511;
+        break label496;
       }
       if (i != 2) {
-        break label511;
+        break label496;
       }
       localArrayList.add(new IDKey(661, 62, 1));
-      break label511;
-      label1057:
+      break label496;
+      label1042:
       if (((bool1) && (i == 0)) || ((!bool1) && (i == 1)))
       {
         localArrayList.add(new IDKey(661, 67, 1));
-        break label547;
+        break label532;
       }
       localArrayList.add(new IDKey(661, 68, 1));
-      break label547;
-      label1118:
+      break label532;
+      label1103:
       if (str.contains("huawei"))
       {
-        localObject = iQg;
-        break label581;
+        localObject = lsb;
+        break label566;
       }
       if (str.contains("honor"))
       {
-        localObject = iQh;
-        break label581;
+        localObject = lsc;
+        break label566;
       }
       if (str.contains("vivo"))
       {
-        localObject = iQi;
-        break label581;
+        localObject = lsd;
+        break label566;
       }
       if (str.contains("oppo"))
       {
-        localObject = iQj;
-        break label581;
+        localObject = lse;
+        break label566;
       }
       if (str.contains("samsung"))
       {
-        localObject = iQl;
-        break label581;
+        localObject = lsh;
+        break label566;
       }
       if (str.contains("meizu"))
       {
-        localObject = iQm;
-        break label581;
+        localObject = lsi;
+        break label566;
       }
       if (str.contains("gionee"))
       {
-        localObject = iQn;
-        break label581;
+        localObject = lsj;
+        break label566;
       }
       if (str.contains("oneplus"))
       {
-        localObject = iQo;
-        break label581;
+        localObject = lsk;
+        break label566;
       }
-      localObject = iQp;
+      localObject = lsl;
       Log.i("MicroMsg.PostTaskReportEABISupport", "factoryKeys : %s", new Object[] { str });
-      break label581;
-      label1286:
+      break label566;
+      label1271:
       localArrayList.add(new IDKey(661, localObject[2], 1));
-      break label625;
-      label1309:
+      break label610;
+      label1294:
       if (str.contains("huawei"))
       {
-        localObject = iQq;
-        break label663;
+        localObject = lsm;
+        break label648;
       }
       if (str.contains("honor"))
       {
-        localObject = iQr;
-        break label663;
+        localObject = lsn;
+        break label648;
       }
       if (str.contains("vivo"))
       {
-        localObject = iQs;
-        break label663;
+        localObject = lso;
+        break label648;
       }
       if (str.contains("oppo"))
       {
-        localObject = iQt;
-        break label663;
+        localObject = lsp;
+        break label648;
       }
       if (str.contains("samsung"))
       {
-        localObject = iQv;
-        break label663;
+        localObject = lsr;
+        break label648;
       }
       if (str.contains("meizu"))
       {
-        localObject = iQw;
-        break label663;
+        localObject = lss;
+        break label648;
       }
       if (str.contains("gionee"))
       {
-        localObject = iQx;
-        break label663;
+        localObject = lst;
+        break label648;
       }
       if (str.contains("oneplus"))
       {
-        localObject = iQy;
-        break label663;
+        localObject = lsu;
+        break label648;
       }
-      localObject = iQz;
+      localObject = lsv;
       Log.i("MicroMsg.PostTaskReportEABISupport", "wechatKeys : %s %s", new Object[] { str, Boolean.valueOf(bool1) });
-      break label663;
-      label1484:
+      break label648;
+      label1469:
       localArrayList.add(new IDKey(661, localObject[1], 1));
-      break label707;
-      label1507:
-      localArrayList.add(new IDKey(661, i + iQA[1], 1));
+      break label692;
+      label1492:
+      localArrayList.add(new IDKey(661, i + lsw[1], 1));
       continue;
-      label1534:
+      label1519:
       if ((i >= 10) && (i < 20))
       {
         i -= 10;
-        localArrayList.add(new IDKey(661, iQB[0] + i, 1));
+        localArrayList.add(new IDKey(661, lsx[0] + i, 1));
         if (bool1) {
-          localArrayList.add(new IDKey(661, i + iQB[2], 1));
+          localArrayList.add(new IDKey(661, i + lsx[2], 1));
         } else {
-          localArrayList.add(new IDKey(661, i + iQB[1], 1));
+          localArrayList.add(new IDKey(661, i + lsx[1], 1));
         }
       }
       else

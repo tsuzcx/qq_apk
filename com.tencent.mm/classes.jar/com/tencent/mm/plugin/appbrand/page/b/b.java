@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.page.b;
 
-import com.tencent.mm.plugin.appbrand.t;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.w;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageNavigateBackSilentInterceptorWC;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/BaseAppBrandPageNavigateBackSilentInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "()V", "onIntercepted", "", "runtime", "scene", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageNavigateBackSilentInterceptorWC;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/BaseAppBrandPageNavigateBackSilentInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "()V", "onIntercepted", "", "runtime", "scene", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends d<t>
+  extends d<w>
 {}
 
 

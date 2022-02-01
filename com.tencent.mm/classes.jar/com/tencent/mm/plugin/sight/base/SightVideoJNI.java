@@ -4,16 +4,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.view.Surface;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.i;
 import java.io.File;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
@@ -37,91 +35,139 @@ public class SightVideoJNI
   
   public static native void NV21ToYUV420XXAndScaleRotate(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, boolean paramBoolean1, boolean paramBoolean2);
   
-  public static void addReportMetadata(String paramString, int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  public static native int addAudioPtsArray(long[] paramArrayOfLong);
+  
+  public static void addReportArrayMetadata(String paramString, int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(133635);
-    int j = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vuM, 1);
-    Log.i("MicroMsg.SightVideoJNI", "ABA: Adaptive Bitrate RemuxOutput: %s, abaSwitch: [%d] ,qpSwitch [%d] androidflag[%d]", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(j) });
-    byte[] arrayOfByte;
+    AppMethodBeat.i(292136);
     if ((paramInt1 == 1) || (paramInt1 == 2))
     {
-      arrayOfByte = new byte[4];
-      byte[] tmp78_76 = arrayOfByte;
-      tmp78_76[0] = 1;
-      byte[] tmp83_78 = tmp78_76;
-      tmp83_78[1] = 0;
-      byte[] tmp88_83 = tmp83_78;
-      tmp88_83[2] = 0;
-      byte[] tmp93_88 = tmp88_83;
-      tmp93_88[3] = 0;
-      tmp93_88;
-      int i = 0;
-      paramInt1 = 0;
-      if (paramArrayOfInt != null)
-      {
+      byte[] arrayOfByte = new byte[4];
+      byte[] tmp22_20 = arrayOfByte;
+      tmp22_20[0] = 1;
+      byte[] tmp27_22 = tmp22_20;
+      tmp27_22[1] = 0;
+      byte[] tmp32_27 = tmp27_22;
+      tmp32_27[2] = 0;
+      byte[] tmp37_32 = tmp32_27;
+      tmp37_32[3] = 0;
+      tmp37_32;
+      if (paramArrayOfInt != null) {
         arrayOfByte[2] = ((byte)paramArrayOfInt[3]);
-        i = paramArrayOfInt[3];
-        paramInt1 = paramArrayOfInt[4];
       }
-      if (j == 1)
+      arrayOfByte[3] = 68;
+      String str1;
+      String str2;
+      if ((paramArrayOfInt != null) && (paramArrayOfInt[3] > 0))
       {
-        arrayOfByte[3] = 66;
-        Log.i("MicroMsg.SightVideoJNI", "ABA: Adaptive Bitrate RemuxOutput: %s  [%d]", new Object[] { paramString, Integer.valueOf(i) });
-        if (i <= 0) {
-          break label320;
+        str1 = "br11";
+        if ((paramArrayOfInt == null) || (paramArrayOfInt[35] <= 0)) {
+          break label202;
         }
-        tagMP4CprtChpl(paramString, "AdaptiveBitrateUP", arrayOfByte, true);
-        label174:
-        optimizeMP4VFS(paramString);
+        str2 = "dr1";
+        label90:
+        if ((paramArrayOfInt == null) || (paramArrayOfInt[20] != 1)) {
+          break label209;
+        }
+        paramArrayOfInt = "1";
       }
-    }
-    else if ((paramInt2 == 1) || (paramInt2 == 2))
-    {
-      arrayOfByte = new byte[4];
-      byte[] tmp196_194 = arrayOfByte;
-      tmp196_194[0] = 0;
-      byte[] tmp201_196 = tmp196_194;
-      tmp201_196[1] = 1;
-      byte[] tmp206_201 = tmp201_196;
-      tmp206_201[2] = 0;
-      byte[] tmp211_206 = tmp206_201;
-      tmp211_206[3] = 0;
-      tmp211_206;
-      arrayOfByte[2] = ((byte)paramArrayOfInt[3]);
-      if (j != 1) {
-        break label348;
-      }
-      arrayOfByte[3] = 66;
-      label237:
-      Log.i("MicroMsg.SightVideoJNI", "ABA: Adaptive Bitrate(QP) RemuxOutput: %s  [%d]", new Object[] { paramString, Integer.valueOf(paramArrayOfInt[3]) });
-      if (paramArrayOfInt[3] <= 0) {
-        break label357;
-      }
-      Log.i("MicroMsg.SightVideoJNI", "ABA: Adaptive Bitrate Write Atom: %s  [%d]", new Object[] { paramString, Integer.valueOf(paramArrayOfInt[3]) });
-      tagMP4CprtChpl(paramString, "AdaptiveBitrateUP", arrayOfByte, true);
-    }
-    for (;;)
-    {
-      optimizeMP4VFS(paramString);
-      AppMethodBeat.o(133635);
-      return;
-      arrayOfByte[3] = 68;
-      break;
-      label320:
-      if (paramInt1 > 0)
+      for (;;)
       {
-        tagMP4CprtChpl(paramString, "AdaptiveBitrateDown", arrayOfByte, true);
-        break label174;
+        paramArrayOfInt = "wxmmca" + str1 + str2 + paramArrayOfInt + "00";
+        Log.i("MicroMsg.SightVideoJNI", "ABA: array method add the metadata filename: [%s] cprt [%s]", new Object[] { paramString, paramArrayOfInt });
+        tagMP4CprtChpl(paramString, paramArrayOfInt, arrayOfByte, true);
+        optimizeMP4VFS(paramString);
+        AppMethodBeat.o(292136);
+        return;
+        if ((paramArrayOfInt != null) && (paramArrayOfInt[4] > 0))
+        {
+          str1 = "br22";
+          break;
+        }
+        str1 = "br00";
+        break;
+        label202:
+        str2 = "dr0";
+        break label90;
+        label209:
+        if ((paramArrayOfInt != null) && (paramArrayOfInt[20] == 2)) {
+          paramArrayOfInt = "2";
+        } else {
+          paramArrayOfInt = "0";
+        }
       }
-      tagMP4CprtChpl(paramString, "AdaptiveBitrateUP", arrayOfByte, false);
-      break label174;
-      label348:
-      arrayOfByte[3] = 68;
-      break label237;
-      label357:
-      tagMP4CprtChpl(paramString, "AdaptiveBitrateUP", arrayOfByte, false);
     }
+    Log.i("MicroMsg.SightVideoJNI", "ABA: array method aba switch is closed");
+    AppMethodBeat.o(292136);
   }
+  
+  public static void addReportMetadata(String paramString, ABAPrams paramABAPrams, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(292124);
+    if ((paramInt1 == 1) || (paramInt1 == 2))
+    {
+      byte[] arrayOfByte = new byte[4];
+      byte[] tmp22_20 = arrayOfByte;
+      tmp22_20[0] = 1;
+      byte[] tmp27_22 = tmp22_20;
+      tmp27_22[1] = 0;
+      byte[] tmp32_27 = tmp27_22;
+      tmp32_27[2] = 0;
+      byte[] tmp37_32 = tmp32_27;
+      tmp37_32[3] = 0;
+      tmp37_32;
+      if (paramABAPrams != null) {
+        arrayOfByte[2] = ((byte)paramABAPrams.bitrateAdaptiveUP);
+      }
+      arrayOfByte[3] = 68;
+      String str1;
+      String str2;
+      if ((paramABAPrams != null) && (paramABAPrams.bitrateAdaptiveUP > 0))
+      {
+        str1 = "br11";
+        if ((paramABAPrams == null) || (paramABAPrams.skipVideoCompress <= 0)) {
+          break label205;
+        }
+        str2 = "dr1";
+        label92:
+        if ((paramABAPrams == null) || (paramABAPrams.isEnableHEVC != 1)) {
+          break label212;
+        }
+        paramABAPrams = "1";
+      }
+      for (;;)
+      {
+        paramABAPrams = "wxmmca" + str1 + str2 + paramABAPrams + "00";
+        Log.i("MicroMsg.SightVideoJNI", "ABA: add the metadata filename: [%s] cprt [%s]", new Object[] { paramString, paramABAPrams });
+        tagMP4CprtChpl(paramString, paramABAPrams, arrayOfByte, true);
+        optimizeMP4VFS(paramString);
+        AppMethodBeat.o(292124);
+        return;
+        if ((paramABAPrams != null) && (paramABAPrams.bitrateAdaptiveDown > 0))
+        {
+          str1 = "br22";
+          break;
+        }
+        str1 = "br00";
+        break;
+        label205:
+        str2 = "dr0";
+        break label92;
+        label212:
+        if ((paramABAPrams != null) && (paramABAPrams.isEnableHEVC == 2)) {
+          paramABAPrams = "2";
+        } else {
+          paramABAPrams = "0";
+        }
+      }
+    }
+    Log.i("MicroMsg.SightVideoJNI", "ABA: aba switch is closed");
+    AppMethodBeat.o(292124);
+  }
+  
+  public static native int addVideoDtsArray(long[] paramArrayOfLong, float paramFloat);
+  
+  public static native int addVideoPtsArray(long[] paramArrayOfLong, float paramFloat);
   
   public static native void blendYuvFrame(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2);
   
@@ -147,9 +193,17 @@ public class SightVideoJNI
   
   public static native int freeObj(int paramInt);
   
+  public static native byte[] getAACADTSHeaderData(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4);
+  
   public static native int[] getBlurThumbData(int paramInt);
   
   public static native int[] getBlurThumbDataFromBmp(Bitmap paramBitmap);
+  
+  public static native long[] getEncodeDtsArray(int paramInt);
+  
+  public static native long[] getEncodePtsArray(int paramInt);
+  
+  public static native String getH264FilePath(int paramInt);
   
   public static native int getHeight(int paramInt);
   
@@ -258,7 +312,7 @@ public class SightVideoJNI
   public static String getSimpleMp4InfoVFS(String paramString)
   {
     AppMethodBeat.i(133624);
-    boolean bool = com.tencent.mm.modelcontrol.c.bkl();
+    boolean bool = com.tencent.mm.modelcontrol.c.bIc();
     paramString = getSimpleMp4Info(q.n(paramString, false), bool);
     AppMethodBeat.o(133624);
     return paramString;
@@ -266,10 +320,10 @@ public class SightVideoJNI
   
   public static String getSimpleMp4InfoVFS(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(213846);
-    paramBoolean = com.tencent.mm.modelcontrol.c.bkl();
+    AppMethodBeat.i(292025);
+    paramBoolean = com.tencent.mm.modelcontrol.c.bIc();
     paramString = getSimpleMp4Info(q.n(paramString, false), paramBoolean);
-    AppMethodBeat.o(213846);
+    AppMethodBeat.o(292025);
     return paramString;
   }
   
@@ -280,6 +334,8 @@ public class SightVideoJNI
   public static native int getVideoHeight(int paramInt);
   
   public static native String getVideoInfo(int paramInt);
+  
+  public static native String getVideoMetaData(String paramString);
   
   public static native double getVideoPlayTime(int paramInt);
   
@@ -300,7 +356,7 @@ public class SightVideoJNI
     AppMethodBeat.i(133611);
     synchronized (MMSightLock)
     {
-      paramInt1 = initDataBufferForMMSight(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramFloat1, paramInt6, paramInt7, paramInt8, paramInt9, paramFloat2, paramBoolean1, paramBoolean2, paramInt10, paramBoolean3, c.fIw(), c.av(paramBoolean2, false), true, false);
+      paramInt1 = initDataBufferForMMSight(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramFloat1, paramInt6, paramInt7, paramInt8, paramInt9, paramFloat2, paramBoolean1, paramBoolean2, paramInt10, paramBoolean3, c.gYp(), c.aO(paramBoolean2, false), true, false);
       AppMethodBeat.o(133611);
       return paramInt1;
     }
@@ -308,11 +364,11 @@ public class SightVideoJNI
   
   public static int initDataBufferForMMSightLock(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat1, int paramInt6, int paramInt7, int paramInt8, int paramInt9, float paramFloat2, boolean paramBoolean1, boolean paramBoolean2, int paramInt10, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    AppMethodBeat.i(213783);
+    AppMethodBeat.i(291945);
     synchronized (MMSightLock)
     {
-      paramInt1 = initDataBufferForMMSight(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramFloat1, paramInt6, paramInt7, paramInt8, paramInt9, paramFloat2, paramBoolean1, paramBoolean2, paramInt10, paramBoolean3, c.fIw(), paramBoolean5, true, paramBoolean4);
-      AppMethodBeat.o(213783);
+      paramInt1 = initDataBufferForMMSight(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramFloat1, paramInt6, paramInt7, paramInt8, paramInt9, paramFloat2, paramBoolean1, paramBoolean2, paramInt10, paramBoolean3, c.gYp(), paramBoolean5, true, paramBoolean4);
+      AppMethodBeat.o(291945);
       return paramInt1;
     }
   }
@@ -322,7 +378,7 @@ public class SightVideoJNI
   public static int initDataBufferForRemux(boolean paramBoolean)
   {
     AppMethodBeat.i(133612);
-    int i = initDataBufferForRemux(c.fIw(), c.av(false, paramBoolean), true, paramBoolean);
+    int i = initDataBufferForRemux(c.gYp(), c.aO(false, paramBoolean), true, paramBoolean);
     AppMethodBeat.o(133612);
     return i;
   }
@@ -333,18 +389,18 @@ public class SightVideoJNI
   
   public static int initSoftEncodeDataBufferLock(int paramInt1, int paramInt2, int paramInt3, float paramFloat, boolean paramBoolean1, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean2)
   {
-    AppMethodBeat.i(213787);
+    AppMethodBeat.i(291949);
     int i;
     if (paramBoolean1) {
       i = 5;
     }
     for (;;)
     {
-      boolean bool = d.JrG;
+      boolean bool = d.PFi;
       synchronized (MMSightLock)
       {
-        paramInt1 = initSoftEncodeDataBuffer(paramInt1, paramInt2, paramInt3, paramFloat, paramBoolean1, i, 8, 2, 23.0F, bool, paramInt4, paramInt5, paramInt6, paramBoolean2, c.fIw());
-        AppMethodBeat.o(213787);
+        paramInt1 = initSoftEncodeDataBuffer(paramInt1, paramInt2, paramInt3, paramFloat, paramBoolean1, i, 8, 2, 23.0F, bool, paramInt4, paramInt5, paramInt6, paramBoolean2, c.gYp());
+        AppMethodBeat.o(291949);
         return paramInt1;
         i = 1;
       }
@@ -353,18 +409,18 @@ public class SightVideoJNI
   
   public static int initSoftEncodeDataBufferLock(int paramInt1, int paramInt2, int paramInt3, float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(213790);
+    AppMethodBeat.i(291951);
     int i;
     if (paramBoolean1) {
       i = 5;
     }
     for (;;)
     {
-      boolean bool = d.JrG;
+      boolean bool = d.PFi;
       synchronized (MMSightLock)
       {
-        paramInt1 = initSoftEncodeDataBuffer(paramInt1, paramInt2, paramInt3, paramFloat, paramBoolean1, i, 8, 2, 23.0F, bool, -1, -1, -1, paramBoolean2, c.fIw());
-        AppMethodBeat.o(213790);
+        paramInt1 = initSoftEncodeDataBuffer(paramInt1, paramInt2, paramInt3, paramFloat, paramBoolean1, i, 8, 2, 23.0F, bool, -1, -1, -1, paramBoolean2, c.gYp());
+        AppMethodBeat.o(291951);
         return paramInt1;
         i = 1;
       }
@@ -373,11 +429,11 @@ public class SightVideoJNI
   
   public static int initSoftEncodeDataBufferLock(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, float paramFloat1, int paramInt4, int paramInt5, int paramInt6, float paramFloat2, boolean paramBoolean2, int paramInt7, int paramInt8, int paramInt9, boolean paramBoolean3)
   {
-    AppMethodBeat.i(213793);
+    AppMethodBeat.i(291953);
     synchronized (MMSightLock)
     {
-      paramInt1 = initSoftEncodeDataBuffer(paramInt1, paramInt2, paramInt3, paramFloat1, paramBoolean1, paramInt4, paramInt5, paramInt6, paramFloat2, paramBoolean2, paramInt7, paramInt8, paramInt9, paramBoolean3, c.fIw());
-      AppMethodBeat.o(213793);
+      paramInt1 = initSoftEncodeDataBuffer(paramInt1, paramInt2, paramInt3, paramFloat1, paramBoolean1, paramInt4, paramInt5, paramInt6, paramFloat2, paramBoolean2, paramInt7, paramInt8, paramInt9, paramBoolean3, c.gYp());
+      AppMethodBeat.o(291953);
       return paramInt1;
     }
   }
@@ -410,84 +466,84 @@ public class SightVideoJNI
   
   public static int muxingLock(int paramInt1, String paramString, int paramInt2, int paramInt3, float paramFloat, int paramInt4, int paramInt5, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(213828);
-    paramInt1 = muxingLock(paramInt1, null, paramInt2, 1024, 2, paramInt3, 0L, paramString, paramFloat, paramInt4, paramInt5, d.JrF, 8, 2, 23.0F, null, 0, false, paramBoolean1, false, false, paramBoolean2);
-    AppMethodBeat.o(213828);
+    AppMethodBeat.i(292004);
+    paramInt1 = muxingLock(paramInt1, null, paramInt2, 1024, 2, paramInt3, 0L, paramString, paramFloat, paramInt4, paramInt5, d.PFh, 8, 2, 23.0F, null, 0, false, paramBoolean1, false, false, paramBoolean2);
+    AppMethodBeat.o(292004);
     return paramInt1;
   }
   
   public static int muxingLock(int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, String paramString2, float paramFloat1, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, float paramFloat2, byte[] paramArrayOfByte, int paramInt11, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    AppMethodBeat.i(213834);
+    AppMethodBeat.i(292009);
     for (;;)
     {
       synchronized (MMSightLock)
       {
         long l = Util.currentTicks();
-        paramInt1 = muxing(paramInt1, q.n(paramString1, false), paramInt2, paramInt3, paramInt4, paramInt5, paramLong, q.n(paramString2, true), paramFloat1, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10, paramFloat2, paramArrayOfByte, paramInt11, paramBoolean1, paramBoolean2, paramBoolean5, c.fIv());
-        c.av(0L, 1L);
+        paramInt1 = muxing(paramInt1, q.n(paramString1, false), paramInt2, paramInt3, paramInt4, paramInt5, paramLong, q.n(paramString2, true), paramFloat1, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10, paramFloat2, paramArrayOfByte, paramInt11, paramBoolean1, paramBoolean2, paramBoolean5, c.gYo());
+        c.bf(0L, 1L);
         if (paramInt1 < 0)
         {
-          c.av(2L, 1L);
+          c.bf(2L, 1L);
           paramLong = Util.ticksToNow(l);
-          c.av(3L, paramLong);
+          c.bf(3L, paramLong);
           Log.i("MicroMsg.WechatSight.PacketMuxerController", "WechatSight reportMuxingResult retVal: %d", new Object[] { Integer.valueOf(paramInt1) });
         }
         switch (paramInt1)
         {
         case 10001: 
-          AppMethodBeat.o(213834);
+          AppMethodBeat.o(292009);
           return paramInt1;
-          c.av(1L, 1L);
+          c.bf(1L, 1L);
         }
       }
-      c.av(15L, 1L);
-      c.av(16L, 1L);
-      c.av(18L, paramLong);
+      c.bf(15L, 1L);
+      c.bf(16L, 1L);
+      c.bf(18L, paramLong);
       continue;
-      c.av(15L, 1L);
-      c.av(17L, 1L);
-      c.av(18L, paramLong);
+      c.bf(15L, 1L);
+      c.bf(17L, 1L);
+      c.bf(18L, paramLong);
       continue;
-      c.av(20L, 1L);
-      c.av(21L, 1L);
-      c.av(23L, paramLong);
+      c.bf(20L, 1L);
+      c.bf(21L, 1L);
+      c.bf(23L, paramLong);
       continue;
-      c.av(20L, 1L);
-      c.av(22L, 1L);
-      c.av(23L, paramLong);
+      c.bf(20L, 1L);
+      c.bf(22L, 1L);
+      c.bf(23L, paramLong);
       continue;
-      c.av(25L, 1L);
-      c.av(26L, 1L);
-      c.av(28L, paramLong);
+      c.bf(25L, 1L);
+      c.bf(26L, 1L);
+      c.bf(28L, paramLong);
       continue;
-      c.av(25L, 1L);
-      c.av(27L, 1L);
-      c.av(28L, paramLong);
+      c.bf(25L, 1L);
+      c.bf(27L, 1L);
+      c.bf(28L, paramLong);
       continue;
-      c.av(30L, 1L);
-      c.av(31L, 1L);
-      c.av(33L, paramLong);
+      c.bf(30L, 1L);
+      c.bf(31L, 1L);
+      c.bf(33L, paramLong);
       continue;
-      c.av(30L, 1L);
-      c.av(32L, 1L);
-      c.av(33L, paramLong);
+      c.bf(30L, 1L);
+      c.bf(32L, 1L);
+      c.bf(33L, paramLong);
       continue;
-      c.av(35L, 1L);
-      c.av(36L, 1L);
-      c.av(38L, paramLong);
+      c.bf(35L, 1L);
+      c.bf(36L, 1L);
+      c.bf(38L, paramLong);
       continue;
-      c.av(35L, 1L);
-      c.av(37L, 1L);
-      c.av(38L, paramLong);
+      c.bf(35L, 1L);
+      c.bf(37L, 1L);
+      c.bf(38L, paramLong);
       continue;
-      c.av(40L, 1L);
-      c.av(41L, 1L);
-      c.av(43L, paramLong);
+      c.bf(40L, 1L);
+      c.bf(41L, 1L);
+      c.bf(43L, paramLong);
       continue;
-      c.av(40L, 1L);
-      c.av(42L, 1L);
-      c.av(43L, paramLong);
+      c.bf(40L, 1L);
+      c.bf(42L, 1L);
+      c.bf(43L, paramLong);
     }
   }
   
@@ -507,29 +563,44 @@ public class SightVideoJNI
   
   public static boolean optimizeMP4VFS(String paramString)
   {
-    AppMethodBeat.i(213860);
+    AppMethodBeat.i(292146);
     paramString = q.n(paramString, true);
     String str = paramString + ".tmp";
     boolean bool = optimizeMP4(paramString, str);
     Log.d("MicroMsg.SightVideoJNI", "optimizeMP4VFS result:%s", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
-      u.oo(str, paramString);
+      y.qn(str, paramString);
       if ((Build.VERSION.SDK_INT >= 30) && (!paramString.contains("/" + MMApplicationContext.getContext().getPackageName())) && (!new File(new File(paramString).getParent(), ".nomedia").exists())) {
-        com.tencent.e.h.ZvG.o(new SightVideoJNI.1(paramString), 800L);
+        com.tencent.threadpool.h.ahAA.p(new SightVideoJNI.1(paramString), 800L);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(213860);
+      AppMethodBeat.o(292146);
       return bool;
       Log.e("MicroMsg.SightVideoJNI", "optimizeMP4VFS error");
-      u.deleteFile(str);
-      com.tencent.mm.plugin.report.service.h.IzE.p(986L, 147L, 1L);
+      y.deleteFile(str);
+      com.tencent.mm.plugin.report.service.h.OAn.p(986L, 147L, 1L);
     }
   }
   
   public static native void paddingYuvData16(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3);
+  
+  public static native int parallelMuxing(String[] paramArrayOfString, String paramString1, String paramString2, long paramLong, float paramFloat, boolean paramBoolean);
+  
+  public static int parallelMuxingLock(String[] paramArrayOfString, String paramString1, String paramString2, long paramLong, float paramFloat, boolean paramBoolean)
+  {
+    AppMethodBeat.i(292189);
+    synchronized (MMSightLock)
+    {
+      int i = parallelMuxing(paramArrayOfString, paramString1, paramString2, paramLong, paramFloat, paramBoolean);
+      AppMethodBeat.o(292189);
+      return i;
+    }
+  }
+  
+  public static native int parallelRelease();
   
   public static native void registerALL();
   
@@ -575,26 +646,26 @@ public class SightVideoJNI
   public static int remuxingVFS(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, float paramFloat1, float paramFloat2, byte[] paramArrayOfByte, int paramInt7, boolean paramBoolean, int paramInt8, int paramInt9)
   {
     AppMethodBeat.i(133623);
-    boolean bool = c.fIu();
-    paramInt1 = remuxing(q.n(paramString1, false), q.n(paramString2, true), paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramFloat1, paramFloat2, paramArrayOfByte, paramInt7, paramBoolean, paramInt8, paramInt9, c.fIw(), bool);
+    boolean bool = c.gYn();
+    paramInt1 = remuxing(q.n(paramString1, false), q.n(paramString2, true), paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramFloat1, paramFloat2, paramArrayOfByte, paramInt7, paramBoolean, paramInt8, paramInt9, c.gYp(), bool);
     if (bool)
     {
-      c.av(82L, 1L);
+      c.bf(82L, 1L);
       if (paramInt1 < 0) {
-        c.av(81L, 1L);
+        c.bf(81L, 1L);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(133623);
       return paramInt1;
-      c.av(80L, 1L);
+      c.bf(80L, 1L);
       continue;
-      c.av(85L, 1L);
+      c.bf(85L, 1L);
       if (paramInt1 < 0) {
-        c.av(84L, 1L);
+        c.bf(84L, 1L);
       } else {
-        c.av(83L, 1L);
+        c.bf(83L, 1L);
       }
     }
   }
@@ -604,7 +675,7 @@ public class SightVideoJNI
     AppMethodBeat.i(176224);
     try
     {
-      f.Iyx.idkeyStat(paramLong1, paramLong2, paramLong3, false);
+      f.Ozc.idkeyStat(paramLong1, paramLong2, paramLong3, false);
       Log.d("MicroMsg.SightVideoJNI", "reportIDKey jni called: %d, %d, %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
       AppMethodBeat.o(176224);
       return;
@@ -621,6 +692,10 @@ public class SightVideoJNI
   public static native int seekStream(double paramDouble, int paramInt);
   
   public static native int seekStreamWithFlag(double paramDouble, int paramInt1, int paramInt2);
+  
+  public static native void setEnableVCodecEncode(int paramInt);
+  
+  public static native void setI420Format(int paramInt, boolean paramBoolean);
   
   public static native void setRotateForBufId(int paramInt1, int paramInt2);
   
@@ -748,11 +823,11 @@ public class SightVideoJNI
   
   public static void writeDtsDataLock(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(213820);
+    AppMethodBeat.i(291994);
     synchronized (MMSightLock)
     {
       writeDtsData(paramInt, paramLong);
-      AppMethodBeat.o(213820);
+      AppMethodBeat.o(291994);
       return;
     }
   }

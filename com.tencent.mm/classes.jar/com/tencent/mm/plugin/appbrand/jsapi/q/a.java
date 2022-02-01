@@ -1,56 +1,20 @@
 package com.tencent.mm.plugin.appbrand.jsapi.q;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
-import com.tencent.mm.plugin.appbrand.page.x;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashMap;
-import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
+import com.tencent.mm.plugin.appbrand.permission.c;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/AppBrandOnNavigateBackInterceptEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/NavigateBackInterceptionConstant;", "()V", "Companion", "luggage-wxa-app-jsapi_release"})
 public final class a
-  extends r
+  extends s
 {
-  private static final int CTRL_INDEX = 881;
-  private static final String NAME = "onNavigateBackIntercept";
-  public static final a pir;
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "onReceiveMsgChannel";
   
-  static
+  public a()
   {
-    AppMethodBeat.i(209118);
-    pir = new a((byte)0);
-    AppMethodBeat.o(209118);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/AppBrandOnNavigateBackInterceptEvent$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "dispatch", "", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "type", "luggage-wxa-app-jsapi_release"})
-  public static final class a
-  {
-    public static void a(AppBrandRuntime paramAppBrandRuntime, int paramInt)
-    {
-      AppMethodBeat.i(209150);
-      p.k(paramAppBrandRuntime, "rt");
-      a locala = new a((byte)0);
-      Log.i("AppBrandOnNavigateBackInterceptEvent", "[dispatch] type=".concat(String.valueOf(paramInt)));
-      HashMap localHashMap = new HashMap(1);
-      ((Map)localHashMap).put("type", Integer.valueOf(paramInt));
-      locala.D((Map)localHashMap).i((e)paramAppBrandRuntime.QW()).bPO();
-      paramAppBrandRuntime = paramAppBrandRuntime.bBX();
-      if (paramAppBrandRuntime != null)
-      {
-        paramAppBrandRuntime = paramAppBrandRuntime.getPageView();
-        if (paramAppBrandRuntime != null)
-        {
-          locala.D((Map)localHashMap).i((e)paramAppBrandRuntime).bPO();
-          AppMethodBeat.o(209150);
-          return;
-        }
-      }
-      AppMethodBeat.o(209150);
-    }
+    AppMethodBeat.i(325943);
+    c.afo("onReceiveMsgChannel");
+    AppMethodBeat.o(325943);
   }
 }
 

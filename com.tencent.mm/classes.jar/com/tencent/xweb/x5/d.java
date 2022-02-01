@@ -1,81 +1,25 @@
 package com.tencent.xweb.x5;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
-import org.xwalk.core.Log;
 
 public final class d
-  implements CookieInternal.ICookieManagerInternal
 {
-  CookieManager aagi;
-  
-  public d()
+  public static com.tencent.xweb.WebResourceResponse a(com.tencent.smtt.export.external.interfaces.WebResourceResponse paramWebResourceResponse)
   {
-    AppMethodBeat.i(153834);
-    this.aagi = CookieManager.getInstance();
-    AppMethodBeat.o(153834);
-  }
-  
-  public final void f(com.tencent.xweb.WebView paramWebView)
-  {
-    AppMethodBeat.i(153836);
-    if (paramWebView == null)
+    AppMethodBeat.i(153858);
+    if (paramWebResourceResponse == null)
     {
-      Log.e("X5CookieManagerWrapper", "setAcceptThirdPartyCookies: the webview is null");
-      AppMethodBeat.o(153836);
-      return;
+      AppMethodBeat.o(153858);
+      return null;
     }
-    paramWebView = paramWebView.getWebViewUI();
-    if (!(paramWebView instanceof com.tencent.smtt.sdk.WebView))
-    {
-      Log.e("X5CookieManagerWrapper", "setAcceptThirdPartyCookies: the webview is not x5 webview");
-      AppMethodBeat.o(153836);
-      return;
-    }
-    this.aagi.setAcceptThirdPartyCookies((com.tencent.smtt.sdk.WebView)paramWebView, true);
-    AppMethodBeat.o(153836);
-  }
-  
-  public final String getCookie(String paramString)
-  {
-    AppMethodBeat.i(153838);
-    paramString = this.aagi.getCookie(paramString);
-    AppMethodBeat.o(153838);
-    return paramString;
-  }
-  
-  public final void ivY()
-  {
-    AppMethodBeat.i(153835);
-    this.aagi.setAcceptCookie(true);
-    AppMethodBeat.o(153835);
-  }
-  
-  public final void removeAllCookie()
-  {
-    AppMethodBeat.i(153837);
-    this.aagi.removeAllCookie();
-    AppMethodBeat.o(153837);
-  }
-  
-  public final void removeSessionCookie()
-  {
-    AppMethodBeat.i(153840);
-    this.aagi.removeSessionCookie();
-    AppMethodBeat.o(153840);
-  }
-  
-  public final void setCookie(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(153839);
-    this.aagi.setCookie(paramString1, paramString2);
-    AppMethodBeat.o(153839);
+    paramWebResourceResponse = new com.tencent.xweb.WebResourceResponse(paramWebResourceResponse.getMimeType(), paramWebResourceResponse.getEncoding(), paramWebResourceResponse.getStatusCode(), paramWebResourceResponse.getReasonPhrase(), paramWebResourceResponse.getResponseHeaders(), paramWebResourceResponse.getData());
+    AppMethodBeat.o(153858);
+    return paramWebResourceResponse;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.x5.d
  * JD-Core Version:    0.7.0.1
  */

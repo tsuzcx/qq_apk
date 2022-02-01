@@ -9,7 +9,7 @@ import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f.b;
 import com.tencent.mm.b.h;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.plugin.report.f;
 import com.tencent.mmkv.MMKV;
 import com.tencent.mmkv.e;
@@ -21,6 +21,10 @@ public class MultiProcessMMKV
 {
   private static final String DEFAULT_MULTI_NAME = "MULTIPROCESSMMKV_MULTI_DEFAULT";
   private static final String DEFAULT_SINGLE_NAME = "MULTIPROCESSMMKV_SINGLE_DEFAULT";
+  private static final int ERROR_KV = 24632;
+  private static final int ERROR_KV_KEY_CRC_FAILED = 1;
+  private static final int ERROR_KV_KEY_FILE_TOO_BIG = 3;
+  private static final int ERROR_KV_KEY_LEN_FAILED = 2;
   private static final int IDKEY_MMKV = 941;
   private static final int KVID_MMKV = 18378;
   private static final int MAX_LRU_MAP_SIZE = 125;
@@ -40,8 +44,9 @@ public class MultiProcessMMKV
     AppMethodBeat.i(156304);
     mmkvCache = new ArrayMap();
     MMKV.class.getClassLoader();
-    j.KW("mmkv");
+    k.DA("mmkv");
     MMKV.initialize(MMApplicationContext.getContext());
+    MMKV.disableProcessModeChecker();
     MMKV.registerHandler(new MultiProcessMMKV.1());
     int i = MMKV.defaultMMKV(2, null).decodeInt("mFdLimit", -1);
     if ((i <= 1024) && (i > 0)) {}
@@ -52,9 +57,9 @@ public class MultiProcessMMKV
       if (stingyMode) {
         mmkvLruCache = new h(125, new f.b()
         {
-          public final void preRemoveCallback(String paramAnonymousString, MultiProcessMMKV paramAnonymousMultiProcessMMKV1, MultiProcessMMKV paramAnonymousMultiProcessMMKV2)
+          public void preRemoveCallback(String paramAnonymousString, MultiProcessMMKV paramAnonymousMultiProcessMMKV1, MultiProcessMMKV paramAnonymousMultiProcessMMKV2)
           {
-            AppMethodBeat.i(263499);
+            AppMethodBeat.i(243677);
             if (paramAnonymousMultiProcessMMKV2 == null)
             {
               Log.i("MicroMsg.MultiProcessMMKV", "preRemoveCallback newValue == null");
@@ -72,10 +77,10 @@ public class MultiProcessMMKV
               }
               finally
               {
-                AppMethodBeat.o(263499);
+                AppMethodBeat.o(243677);
               }
             }
-            AppMethodBeat.o(263499);
+            AppMethodBeat.o(243677);
           }
         });
       }
@@ -98,26 +103,26 @@ public class MultiProcessMMKV
   
   private int ashmemFD()
   {
-    AppMethodBeat.i(263493);
+    AppMethodBeat.i(244037);
     int i = this.mmkv.ashmemFD();
-    AppMethodBeat.o(263493);
+    AppMethodBeat.o(244037);
     return i;
   }
   
   private int ashmemMetaFD()
   {
-    AppMethodBeat.i(263494);
+    AppMethodBeat.i(244043);
     int i = this.mmkv.ashmemMetaFD();
-    AppMethodBeat.o(263494);
+    AppMethodBeat.o(244043);
     return i;
   }
   
   private void checkReopen(String paramString)
   {
-    AppMethodBeat.i(263496);
+    AppMethodBeat.i(244057);
     if ((!stingyMode) || (mmkvLruCache == null))
     {
-      AppMethodBeat.o(263496);
+      AppMethodBeat.o(244057);
       return;
     }
     mmkvLruCache.checkAndUpTime(paramString);
@@ -131,40 +136,40 @@ public class MultiProcessMMKV
       }
       finally
       {
-        AppMethodBeat.o(263496);
+        AppMethodBeat.o(244057);
       }
     }
-    AppMethodBeat.o(263496);
+    AppMethodBeat.o(244057);
   }
   
   private void close()
   {
-    AppMethodBeat.i(263485);
+    AppMethodBeat.i(244025);
     this.mmkv.close();
-    AppMethodBeat.o(263485);
+    AppMethodBeat.o(244025);
   }
   
   public static MultiProcessMMKV.NativeBuffer createNativeBuffer(int paramInt)
   {
-    AppMethodBeat.i(263471);
+    AppMethodBeat.i(244011);
     Object localObject = MMKV.createNativeBuffer(paramInt);
     localObject = new MultiProcessMMKV.NativeBuffer(((e)localObject).pointer, ((e)localObject).size);
-    AppMethodBeat.o(263471);
+    AppMethodBeat.o(244011);
     return localObject;
   }
   
   public static void destroyNativeBuffer(MultiProcessMMKV.NativeBuffer paramNativeBuffer)
   {
-    AppMethodBeat.i(263472);
+    AppMethodBeat.i(244018);
     MMKV.destroyNativeBuffer(new e(paramNativeBuffer.pointer, paramNativeBuffer.size));
-    AppMethodBeat.o(263472);
+    AppMethodBeat.o(244018);
   }
   
   private static void ensureSoLoaded()
   {
     AppMethodBeat.i(156303);
     MMKV.class.getClassLoader();
-    j.KW("mmkv");
+    k.DA("mmkv");
     AppMethodBeat.o(156303);
   }
   
@@ -175,7 +180,7 @@ public class MultiProcessMMKV
   
   private static MMKV getCoreMMKV(String paramString, int paramInt)
   {
-    AppMethodBeat.i(263463);
+    AppMethodBeat.i(243984);
     try
     {
       MMKV localMMKV = MMKV.mmkvWithID(paramString, paramInt);
@@ -186,7 +191,7 @@ public class MultiProcessMMKV
       for (;;)
       {
         Log.e("MicroMsg.MultiProcessMMKV", "getCoreMMKV mode error name : %s ,mode : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
-        f.Iyx.idkeyStat(941L, 150L, 1L, true);
+        f.Ozc.idkeyStat(941L, 150L, 1L, true);
         if (paramInt == 2) {
           paramString = MMKV.mmkvWithID(paramString, 1);
         } else {
@@ -194,31 +199,31 @@ public class MultiProcessMMKV
         }
       }
     }
-    AppMethodBeat.o(263463);
+    AppMethodBeat.o(243984);
     return paramString;
   }
   
   public static MultiProcessMMKV getCryptMMKV(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(263452);
+    AppMethodBeat.i(243904);
     paramString1 = getCryptMMKVReal(paramString1, 2, paramString2);
-    AppMethodBeat.o(263452);
+    AppMethodBeat.o(243904);
     return paramString1;
   }
   
   public static MultiProcessMMKV getCryptMMKVReal(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(263455);
+    AppMethodBeat.i(243913);
     paramString1 = new MultiProcessMMKV(paramString1, paramInt, MMKV.mmkvWithID(paramString1, paramInt, paramString2));
-    AppMethodBeat.o(263455);
+    AppMethodBeat.o(243913);
     return paramString1;
   }
   
   public static MultiProcessMMKV getDefault()
   {
-    AppMethodBeat.i(263457);
+    AppMethodBeat.i(243927);
     MultiProcessMMKV localMultiProcessMMKV = getMMKV("MULTIPROCESSMMKV_MULTI_DEFAULT", 2, MMKV.defaultMMKV(2, null));
-    AppMethodBeat.o(263457);
+    AppMethodBeat.o(243927);
     return localMultiProcessMMKV;
   }
   
@@ -252,18 +257,26 @@ public class MultiProcessMMKV
     return paramString;
   }
   
+  public static MultiProcessMMKV getMMKV(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(243917);
+    paramString1 = new MultiProcessMMKV(paramString1, paramInt, MMKV.mmkvWithID(paramString1, paramInt, paramString2, paramString3));
+    AppMethodBeat.o(243917);
+    return paramString1;
+  }
+  
   private static MultiProcessMMKV getMMKVReal(String paramString, int paramInt, MMKV paramMMKV)
   {
     AppMethodBeat.i(156260);
     MultiProcessMMKV localMultiProcessMMKV;
-    label238:
+    label287:
     for (;;)
     {
       try
       {
         if ((stingyMode) && (mmkvLruCache != null))
         {
-          localMultiProcessMMKV = (MultiProcessMMKV)mmkvLruCache.aX(paramString);
+          localMultiProcessMMKV = (MultiProcessMMKV)mmkvLruCache.ct(paramString);
           if (localMultiProcessMMKV != null) {
             break;
           }
@@ -277,14 +290,17 @@ public class MultiProcessMMKV
               reportTotalSize(l, paramString);
               if (l > 5242880L)
               {
-                f.Iyx.idkeyStat(941L, 100L, 1L, true);
+                f.Ozc.idkeyStat(941L, 100L, 1L, true);
                 Log.i("MicroMsg.MultiProcessMMKV", "start to trim, before size : %d", new Object[] { Long.valueOf(l) });
                 paramMMKV.trim();
                 Log.i("MicroMsg.MultiProcessMMKV", "trim is over, after size : %d", new Object[] { Long.valueOf(paramMMKV.totalSize()) });
+                if (l > 52428800L) {
+                  f.Ozc.b(24632, new Object[] { paramString, Integer.valueOf(3), Long.valueOf(l), Long.valueOf(paramMMKV.totalSize()) });
+                }
               }
             }
             if ((!stingyMode) || (mmkvLruCache == null)) {
-              break label238;
+              break label287;
             }
             mmkvLruCache.put(paramString, paramMMKV);
             return paramMMKV;
@@ -310,17 +326,17 @@ public class MultiProcessMMKV
   
   public static MultiProcessMMKV getMMKVWithAshmemFD(Context paramContext, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    AppMethodBeat.i(263458);
+    AppMethodBeat.i(243945);
     paramContext = getMMKV(paramString1, paramInt2, MMKV.mmkvWithAshmemID(paramContext, paramString1, paramInt1, paramInt2, paramString2));
-    AppMethodBeat.o(263458);
+    AppMethodBeat.o(243945);
     return paramContext;
   }
   
   public static MultiProcessMMKV getMMKVWithAshmemFD(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    AppMethodBeat.i(263459);
+    AppMethodBeat.i(243950);
     paramString1 = getMMKV(paramString1, -1, MMKV.mmkvWithAshmemFD(paramString1, paramInt1, paramInt2, paramString2));
-    AppMethodBeat.o(263459);
+    AppMethodBeat.o(243950);
     return paramString1;
   }
   
@@ -353,17 +369,17 @@ public class MultiProcessMMKV
   
   private static MultiProcessMMKV getPerservedMMKV()
   {
-    AppMethodBeat.i(263464);
+    AppMethodBeat.i(243990);
     MultiProcessMMKV localMultiProcessMMKV = getMMKVReal("MULTIPROCESSMMKV_PERSERVED_NAME", 2, null);
-    AppMethodBeat.o(263464);
+    AppMethodBeat.o(243990);
     return localMultiProcessMMKV;
   }
   
   public static MultiProcessMMKV getSingleCryptMMKV(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(263454);
+    AppMethodBeat.i(243907);
     paramString1 = getCryptMMKVReal(paramString1, 1, paramString2);
-    AppMethodBeat.o(263454);
+    AppMethodBeat.o(243907);
     return paramString1;
   }
   
@@ -387,13 +403,13 @@ public class MultiProcessMMKV
   
   private boolean isClosed()
   {
-    AppMethodBeat.i(263495);
+    AppMethodBeat.i(244052);
     if (mmapID() == null)
     {
-      AppMethodBeat.o(263495);
+      AppMethodBeat.o(244052);
       return true;
     }
-    AppMethodBeat.o(263495);
+    AppMethodBeat.o(244052);
     return false;
   }
   
@@ -412,29 +428,29 @@ public class MultiProcessMMKV
   
   private String mmapID()
   {
-    AppMethodBeat.i(263492);
+    AppMethodBeat.i(244031);
     String str = this.mmkv.mmapID();
-    AppMethodBeat.o(263492);
+    AppMethodBeat.o(244031);
     return str;
   }
   
   private static void reportTotalSize(long paramLong, String paramString)
   {
-    AppMethodBeat.i(263466);
+    AppMethodBeat.i(244005);
     if (paramLong <= 5242880L) {
-      f.Iyx.idkeyStat(941L, 10L, 1L, true);
+      f.Ozc.idkeyStat(941L, 10L, 1L, true);
     }
     for (;;)
     {
-      f.Iyx.a(18378, new Object[] { paramString, Long.valueOf(paramLong) });
-      AppMethodBeat.o(263466);
+      f.Ozc.b(18378, new Object[] { paramString, Long.valueOf(paramLong) });
+      AppMethodBeat.o(244005);
       return;
       if (paramLong <= 10485760L) {
-        f.Iyx.idkeyStat(941L, 11L, 1L, true);
+        f.Ozc.idkeyStat(941L, 11L, 1L, true);
       } else if (paramLong <= 104857600L) {
-        f.Iyx.idkeyStat(941L, 12L, 1L, true);
+        f.Ozc.idkeyStat(941L, 12L, 1L, true);
       } else {
-        f.Iyx.idkeyStat(941L, 13L, 1L, true);
+        f.Ozc.idkeyStat(941L, 13L, 1L, true);
       }
     }
   }
@@ -465,7 +481,7 @@ public class MultiProcessMMKV
         return 0;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -481,10 +497,10 @@ public class MultiProcessMMKV
   
   public static int transport2MMKVByForce(SharedPreferences paramSharedPreferences, MultiProcessMMKV paramMultiProcessMMKV)
   {
-    AppMethodBeat.i(263448);
-    f.Iyx.idkeyStat(941L, 2L, 1L, true);
+    AppMethodBeat.i(243875);
+    f.Ozc.idkeyStat(941L, 2L, 1L, true);
     int i = paramMultiProcessMMKV.importFromSharedPreferences(paramSharedPreferences);
-    AppMethodBeat.o(263448);
+    AppMethodBeat.o(243875);
     return i;
   }
   
@@ -498,7 +514,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156286);
       return arrayOfString1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -520,7 +536,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156301);
       return this;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -540,7 +556,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156284);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       ensureSoLoaded();
       this.mmkv.clearAll();
@@ -550,10 +566,10 @@ public class MultiProcessMMKV
   
   public void clearMemoryCache()
   {
-    AppMethodBeat.i(263486);
+    AppMethodBeat.i(244242);
     checkReopen(getName());
     this.mmkv.clearMemoryCache();
-    AppMethodBeat.o(263486);
+    AppMethodBeat.o(244242);
   }
   
   public boolean commit()
@@ -571,7 +587,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156293);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -592,19 +608,19 @@ public class MultiProcessMMKV
   
   public long count()
   {
-    AppMethodBeat.i(263484);
+    AppMethodBeat.i(244238);
     checkReopen(getName());
     long l = this.mmkv.count();
-    AppMethodBeat.o(263484);
+    AppMethodBeat.o(244238);
     return l;
   }
   
   public boolean decodeBool(String paramString)
   {
-    AppMethodBeat.i(263478);
+    AppMethodBeat.i(244204);
     checkReopen(getName());
     boolean bool = this.mmkv.decodeBool(paramString);
-    AppMethodBeat.o(263478);
+    AppMethodBeat.o(244204);
     return bool;
   }
   
@@ -628,37 +644,37 @@ public class MultiProcessMMKV
   
   public double decodeDouble(String paramString)
   {
-    AppMethodBeat.i(263476);
+    AppMethodBeat.i(244196);
     checkReopen(getName());
     double d = this.mmkv.decodeDouble(paramString);
-    AppMethodBeat.o(263476);
+    AppMethodBeat.o(244196);
     return d;
   }
   
   public double decodeDouble(String paramString, double paramDouble)
   {
-    AppMethodBeat.i(263477);
+    AppMethodBeat.i(244201);
     checkReopen(getName());
     paramDouble = this.mmkv.decodeDouble(paramString, paramDouble);
-    AppMethodBeat.o(263477);
+    AppMethodBeat.o(244201);
     return paramDouble;
   }
   
   public float decodeFloat(String paramString)
   {
-    AppMethodBeat.i(263474);
+    AppMethodBeat.i(244189);
     checkReopen(getName());
     float f = this.mmkv.decodeFloat(paramString);
-    AppMethodBeat.o(263474);
+    AppMethodBeat.o(244189);
     return f;
   }
   
   public float decodeFloat(String paramString, float paramFloat)
   {
-    AppMethodBeat.i(263475);
+    AppMethodBeat.i(244193);
     checkReopen(getName());
     paramFloat = this.mmkv.decodeFloat(paramString, paramFloat);
-    AppMethodBeat.o(263475);
+    AppMethodBeat.o(244193);
     return paramFloat;
   }
   
@@ -709,10 +725,10 @@ public class MultiProcessMMKV
   
   public <T extends Parcelable> T decodeParcelable(String paramString, Class<T> paramClass, T paramT)
   {
-    AppMethodBeat.i(263482);
+    AppMethodBeat.i(244221);
     checkReopen(getName());
     paramString = this.mmkv.decodeParcelable(paramString, paramClass, paramT);
-    AppMethodBeat.o(263482);
+    AppMethodBeat.o(244221);
     return paramString;
   }
   
@@ -725,7 +741,7 @@ public class MultiProcessMMKV
       String str = this.mmkv.decodeString(paramString);
       paramString = str;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -748,10 +764,10 @@ public class MultiProcessMMKV
   
   public Set<String> decodeStringSet(String paramString)
   {
-    AppMethodBeat.i(263479);
+    AppMethodBeat.i(244210);
     checkReopen(getName());
     paramString = this.mmkv.decodeStringSet(paramString);
-    AppMethodBeat.o(263479);
+    AppMethodBeat.o(244210);
     return paramString;
   }
   
@@ -771,27 +787,27 @@ public class MultiProcessMMKV
   
   public boolean encode(String paramString, double paramDouble)
   {
-    AppMethodBeat.i(263470);
+    AppMethodBeat.i(244132);
     if (!isLegal(paramString, Double.valueOf(paramDouble)))
     {
-      AppMethodBeat.o(263470);
+      AppMethodBeat.o(244132);
       return false;
     }
     boolean bool = this.mmkv.encode(paramString, paramDouble);
-    AppMethodBeat.o(263470);
+    AppMethodBeat.o(244132);
     return bool;
   }
   
   public boolean encode(String paramString, float paramFloat)
   {
-    AppMethodBeat.i(263469);
+    AppMethodBeat.i(244125);
     if (!isLegal(paramString, Float.valueOf(paramFloat)))
     {
-      AppMethodBeat.o(263469);
+      AppMethodBeat.o(244125);
       return false;
     }
     boolean bool = this.mmkv.encode(paramString, paramFloat);
-    AppMethodBeat.o(263469);
+    AppMethodBeat.o(244125);
     return bool;
   }
   
@@ -873,7 +889,7 @@ public class MultiProcessMMKV
       boolean bool = this.mmkv.encode(paramString, paramBoolean);
       paramBoolean = bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -924,7 +940,7 @@ public class MultiProcessMMKV
       boolean bool = this.mmkv.getBoolean(paramString, paramBoolean);
       paramBoolean = bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -945,7 +961,7 @@ public class MultiProcessMMKV
       float f = this.mmkv.getFloat(paramString, paramFloat);
       paramFloat = f;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -966,7 +982,7 @@ public class MultiProcessMMKV
       int i = this.mmkv.getInt(paramString, paramInt);
       paramInt = i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -987,7 +1003,7 @@ public class MultiProcessMMKV
       long l = this.mmkv.getLong(paramString, paramLong);
       paramLong = l;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1008,7 +1024,7 @@ public class MultiProcessMMKV
       String str = this.mmkv.getString(paramString1, paramString2);
       paramString1 = str;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1029,7 +1045,7 @@ public class MultiProcessMMKV
       Set localSet = this.mmkv.getStringSet(paramString, paramSet);
       paramString = localSet;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1043,9 +1059,9 @@ public class MultiProcessMMKV
   
   public int getValueActualSize(String paramString)
   {
-    AppMethodBeat.i(263467);
+    AppMethodBeat.i(244090);
     int i = this.mmkv.getValueActualSize(paramString);
-    AppMethodBeat.o(263467);
+    AppMethodBeat.o(244090);
     return i;
   }
   
@@ -1059,7 +1075,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156269);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1084,7 +1100,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156299);
       return this;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1109,7 +1125,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156298);
       return this;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1134,7 +1150,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156296);
       return this;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1159,7 +1175,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156297);
       return this;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1184,7 +1200,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156294);
       return this;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1209,7 +1225,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156295);
       return this;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1231,7 +1247,7 @@ public class MultiProcessMMKV
       AppMethodBeat.o(156300);
       return this;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -1251,10 +1267,10 @@ public class MultiProcessMMKV
   
   public void removeValuesForKeys(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(263483);
+    AppMethodBeat.i(244228);
     checkReopen(getName());
     this.mmkv.removeValuesForKeys(paramArrayOfString);
-    AppMethodBeat.o(263483);
+    AppMethodBeat.o(244228);
   }
   
   public long totalSize()
@@ -1268,27 +1284,27 @@ public class MultiProcessMMKV
   
   public void trim()
   {
-    AppMethodBeat.i(263487);
+    AppMethodBeat.i(244247);
     checkReopen(getName());
     this.mmkv.trim();
-    AppMethodBeat.o(263487);
+    AppMethodBeat.o(244247);
   }
   
   public void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
   
   public int writeValueToNativeBuffer(String paramString, MultiProcessMMKV.NativeBuffer paramNativeBuffer)
   {
-    AppMethodBeat.i(263473);
+    AppMethodBeat.i(244161);
     checkReopen(getName());
     paramNativeBuffer = new e(paramNativeBuffer.pointer, paramNativeBuffer.size);
     int i = this.mmkv.writeValueToNativeBuffer(paramString, paramNativeBuffer);
-    AppMethodBeat.o(263473);
+    AppMethodBeat.o(244161);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MultiProcessMMKV
  * JD-Core Version:    0.7.0.1
  */

@@ -205,13 +205,13 @@ public final class LocaleUtil
   
   public static String getLanguageName(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(249166);
+    AppMethodBeat.i(243744);
     String[] arrayOfString1 = paramContext.getResources().getStringArray(paramInt1);
     String str = loadApplicationLanguageSettings(paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), paramContext);
     if (str == null)
     {
       paramContext = paramContext.getString(paramInt2);
-      AppMethodBeat.o(249166);
+      AppMethodBeat.o(243744);
       return paramContext;
     }
     String[] arrayOfString2 = LocaleGen.LOCALES;
@@ -223,14 +223,14 @@ public final class LocaleUtil
       if (arrayOfString2[i].equals(str))
       {
         paramContext = arrayOfString1[paramInt1];
-        AppMethodBeat.o(249166);
+        AppMethodBeat.o(243744);
         return paramContext;
       }
       i += 1;
       paramInt1 += 1;
     }
     paramContext = paramContext.getString(paramInt2);
-    AppMethodBeat.o(249166);
+    AppMethodBeat.o(243744);
     return paramContext;
   }
   
@@ -266,30 +266,30 @@ public final class LocaleUtil
   
   public static boolean isChineseSysLang()
   {
-    AppMethodBeat.i(249154);
+    AppMethodBeat.i(243691);
     if ((Locale.getDefault().equals(Locale.CHINA)) || (Locale.getDefault().equals(Locale.TAIWAN)) || (Locale.getDefault().toString().startsWith(Locale.CHINESE.toString())))
     {
-      AppMethodBeat.o(249154);
+      AppMethodBeat.o(243691);
       return true;
     }
-    AppMethodBeat.o(249154);
+    AppMethodBeat.o(243691);
     return false;
   }
   
   public static boolean isLanguageSupported(String paramString)
   {
-    AppMethodBeat.i(249153);
+    AppMethodBeat.i(243680);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(249153);
+      AppMethodBeat.o(243680);
       return false;
     }
     if ((paramString.equalsIgnoreCase("zh_TW")) || (paramString.equalsIgnoreCase("zh_HK")) || (paramString.equalsIgnoreCase("zh_CN")) || (paramString.equalsIgnoreCase("en")) || (paramString.equalsIgnoreCase("th")) || (paramString.equals("id")) || (paramString.equals("in")) || (paramString.equals("vi")) || (paramString.equalsIgnoreCase("pt")) || (paramString.equalsIgnoreCase("es")) || (paramString.equalsIgnoreCase("ru")) || (paramString.equalsIgnoreCase("ar")) || (paramString.equalsIgnoreCase("ja")) || (paramString.equalsIgnoreCase("it")) || (paramString.equalsIgnoreCase("ko")) || (paramString.equalsIgnoreCase("ms")) || (paramString.equalsIgnoreCase("tr")) || (paramString.equalsIgnoreCase("de")) || (paramString.equalsIgnoreCase("fr")) || (paramString.equalsIgnoreCase("my")) || (paramString.equalsIgnoreCase("lo")))
     {
-      AppMethodBeat.o(249153);
+      AppMethodBeat.o(243680);
       return true;
     }
-    AppMethodBeat.o(249153);
+    AppMethodBeat.o(243680);
     return false;
   }
   
@@ -319,57 +319,57 @@ public final class LocaleUtil
   
   public static String loadApplicationLanguage(SharedPreferences paramSharedPreferences, Context paramContext)
   {
-    AppMethodBeat.i(249162);
+    AppMethodBeat.i(243726);
     paramSharedPreferences = Util.nullAsNil(paramSharedPreferences.getString("language_key", null));
     if ((paramSharedPreferences.length() > 0) && (!paramSharedPreferences.equals("language_default")))
     {
       SystemProperty.setProperty("language_key", paramSharedPreferences);
-      AppMethodBeat.o(249162);
+      AppMethodBeat.o(243726);
       return paramSharedPreferences;
     }
     paramSharedPreferences = filterLanguage("en");
     SystemProperty.setProperty("language_key", paramSharedPreferences);
-    AppMethodBeat.o(249162);
+    AppMethodBeat.o(243726);
     return paramSharedPreferences;
   }
   
   public static String loadApplicationLanguageSettings(SharedPreferences paramSharedPreferences, Context paramContext)
   {
-    AppMethodBeat.i(249163);
+    AppMethodBeat.i(243731);
     paramSharedPreferences = Util.nullAsNil(paramSharedPreferences.getString("language_key", null));
     if (!Util.isNullOrNil(paramSharedPreferences))
     {
-      AppMethodBeat.o(249163);
+      AppMethodBeat.o(243731);
       return paramSharedPreferences;
     }
-    AppMethodBeat.o(249163);
+    AppMethodBeat.o(243731);
     return "language_default";
   }
   
   public static void loadCurrentSystemLocale()
   {
-    AppMethodBeat.i(249159);
+    AppMethodBeat.i(243712);
     if (Build.VERSION.SDK_INT < 24) {}
     for (sysDefaultLocale = Locale.getDefault();; sysDefaultLocale = LocaleList.getDefault().get(0))
     {
       Locale.setDefault(sysDefaultLocale);
-      AppMethodBeat.o(249159);
+      AppMethodBeat.o(243712);
       return;
     }
   }
   
   public static void saveApplicationLanguage(SharedPreferences paramSharedPreferences, Context paramContext, String paramString)
   {
-    AppMethodBeat.i(249164);
+    AppMethodBeat.i(243737);
     if (paramSharedPreferences.edit().putString("language_key", paramString).commit())
     {
       SystemProperty.setProperty("language_key", paramString);
       Log.w("MicroMsg.LocaleUtil", "save application lang as:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(249164);
+      AppMethodBeat.o(243737);
       return;
     }
     Log.e("MicroMsg.LocaleUtil", "saving application lang failed");
-    AppMethodBeat.o(249164);
+    AppMethodBeat.o(243737);
   }
   
   public static Locale transLanguageToLocale(String paramString)
@@ -455,7 +455,7 @@ public final class LocaleUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.LocaleUtil
  * JD-Core Version:    0.7.0.1
  */

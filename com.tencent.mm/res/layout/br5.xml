@@ -1,30 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#fff0eff4" android:paddingTop="@dimen/hs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/sc"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/r" android:layout_marginTop="@dimen/ir" android:layout_marginRight="@dimen/r" android:layout_marginBottom="@dimen/ir">
-        <Button android:id="@id/h5i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j6_" style="@style/oz" />
-        <Button android:id="@id/g4_" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ir" android:text="@string/j6j" style="@style/ov" />
+    <ImageView style="@style/sd" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/br0" /> //暂时注掉 <include layout="@layout/br6" />
+        <TextView android:textColor="@color/xo" android:gravity="center|left" android:id="@id/cjh" android:text="@string/cqq" android:drawableLeft="@raw/chatfrom_voice_playing_new" android:drawablePadding="20.0dip" style="@style/sk" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/sg" />
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/c3l" android:paddingBottom="@dimen/g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" style="@style/mz">
-        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:text="@string/j6l" android:layout_weight="1.0" />
-            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/c3k" android:layout_width="@dimen/kj" android:layout_height="@dimen/kg" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/j6q" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/e5d" android:paddingBottom="@dimen/g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" style="@style/mz">
-        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:text="@string/j6n" android:layout_weight="1.0" />
-            <Button android:id="@id/e5c" android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="@dimen/kg" style="@style/p1" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/j6q" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/bv2" android:paddingBottom="@dimen/g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" style="@style/mz">
-        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:text="@string/j6c" android:layout_weight="1.0" />
-            <Button android:id="@id/bv1" android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="@dimen/kg" style="@style/p1" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/j6q" />
-    </LinearLayout>
-    <Button android:id="@id/b49" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/r" android:layout_marginTop="@dimen/hw" android:layout_marginRight="@dimen/r" android:layout_marginBottom="@dimen/ir" android:text="@string/j5q" style="@style/oy" />
 </LinearLayout>

@@ -1,8 +1,8 @@
 package kotlin.l.b.a.b.j.b;
 
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.y;
-import kotlin.l.b.a.b.m.ab;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.m.ad;
 
 public abstract class g<T>
 {
@@ -13,30 +13,36 @@ public abstract class g<T>
     this.value = paramT;
   }
   
-  public abstract ab b(y paramy);
+  public abstract ad c(ae paramae);
   
   public boolean equals(Object paramObject)
   {
     Object localObject1 = null;
     Object localObject2;
-    if ((g)this != paramObject)
+    if (this != paramObject)
     {
       localObject2 = getValue();
-      if ((paramObject instanceof g)) {
-        break label55;
+      if (!(paramObject instanceof g)) {
+        break label40;
       }
-      paramObject = null;
+      paramObject = (g)paramObject;
+      if (paramObject != null) {
+        break label45;
+      }
     }
-    label55:
-    for (;;)
+    label40:
+    label45:
+    for (paramObject = localObject1;; paramObject = paramObject.getValue())
     {
-      g localg = (g)paramObject;
-      paramObject = localObject1;
-      if (localg != null) {
-        paramObject = localg.getValue();
+      if (!s.p(localObject2, paramObject)) {
+        break label53;
       }
-      return p.h(localObject2, paramObject);
+      return true;
+      paramObject = null;
+      break;
     }
+    label53:
+    return false;
   }
   
   public T getValue()
@@ -47,10 +53,10 @@ public abstract class g<T>
   public int hashCode()
   {
     Object localObject = getValue();
-    if (localObject != null) {
-      return localObject.hashCode();
+    if (localObject == null) {
+      return 0;
     }
-    return 0;
+    return localObject.hashCode();
   }
   
   public String toString()
@@ -60,7 +66,7 @@ public abstract class g<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.g
  * JD-Core Version:    0.7.0.1
  */

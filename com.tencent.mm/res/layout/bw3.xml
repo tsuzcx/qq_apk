@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/hyi" android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.listview.AnimatedExpandableListView android:id="@id/hyh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:cacheColorHint="@color/ac_" android:groupIndicator="@null" android:divider="@null" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center" android:layout_gravity="center" android:id="@id/cig" android:padding="@dimen/i6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/xh" style="MMFontPreferenceLarge" />
+    <ListView android:textColor="@color/a4u" android:id="@id/is5" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ahb" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
 </LinearLayout>

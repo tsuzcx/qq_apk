@@ -1,78 +1,38 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.e.b.g;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.loader.r;
-import com.tencent.mm.plugin.finder.loader.t;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.loader.y;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout.b;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.view.recyclerview.i;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.model.by;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderVideoFoldedConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFoldedConvert;", "controller", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "(Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;)V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderTopicFilterConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderTopicInfoFeed;", "()V", "TAG", "", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class cu
-  extends ao
+  extends f<by>
 {
-  public cu(FinderFoldedScrollLayout.b paramb)
+  private final String TAG = "Finder.FinderTopicFilterConvert";
+  
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
   {
-    super(paramb, b.g.finder_folded_media_item);
-    AppMethodBeat.i(290393);
-    AppMethodBeat.o(290393);
+    AppMethodBeat.i(349900);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    paramRecyclerView = (TextView)paramj.UH(e.e.topic_tv);
+    if (paramRecyclerView != null) {
+      paramRecyclerView.setTextSize(1, 12.0F * a.getScaleSize(paramj.context));
+    }
+    AppMethodBeat.o(349900);
   }
   
-  public final void a(i parami, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  public final int getLayoutId()
   {
-    AppMethodBeat.i(290391);
-    p.k(parami, "holder");
-    p.k(paramBaseFinderFeed, "item");
-    super.a(parami, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-    paramList = (csg)j.lo((List)paramBaseFinderFeed.feedObject.getMediaList());
-    paramBaseFinderFeed = (ImageView)parami.RD(b.f.thumb_iv);
-    if (Util.isNullOrNil(paramList.coverUrl))
-    {
-      parami = new r(paramList, u.Alz, null, null, 12);
-      paramList = t.ztT;
-      paramList = t.dJe();
-      localt = t.ztT;
-      paramList = paramList.a(parami, t.a(t.a.ztU));
-      parami = com.tencent.mm.plugin.finder.storage.d.AjH;
-      if (((Number)com.tencent.mm.plugin.finder.storage.d.dUT().aSr()).intValue() > 0) {}
-      for (parami = new com.tencent.mm.loader.e.d(null, new g(paramBaseFinderFeed), 1);; parami = null)
-      {
-        parami = paramList.a((com.tencent.mm.loader.f.d)parami);
-        p.j(paramBaseFinderFeed, "thumbIv");
-        parami.c(paramBaseFinderFeed);
-        AppMethodBeat.o(290391);
-        return;
-      }
-    }
-    parami = new y(paramList, u.Aly);
-    paramList = t.ztT;
-    paramList = t.dJe();
-    t localt = t.ztT;
-    paramList = paramList.a(parami, t.a(t.a.ztU));
-    parami = com.tencent.mm.plugin.finder.storage.d.AjH;
-    if (((Number)com.tencent.mm.plugin.finder.storage.d.dUT().aSr()).intValue() > 0) {}
-    for (parami = new com.tencent.mm.loader.e.d(null, new g(paramBaseFinderFeed), 1);; parami = null)
-    {
-      parami = paramList.a((com.tencent.mm.loader.f.d)parami);
-      p.j(paramBaseFinderFeed, "thumbIv");
-      parami.c(paramBaseFinderFeed);
-      AppMethodBeat.o(290391);
-      return;
-    }
+    return e.f.finder_topic_filter_item;
   }
 }
 

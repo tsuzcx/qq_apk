@@ -1,40 +1,19 @@
 package com.tencent.mm.emoji.panel.a;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.GridLayoutManager.b;
-import androidx.recyclerview.widget.RecyclerView.a;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.emoji.c.b.m;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/adapter/PanelSpanSizeLookup;", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "layoutManager", "Landroidx/recyclerview/widget/GridLayoutManager;", "(Landroidx/recyclerview/widget/RecyclerView$Adapter;Landroidx/recyclerview/widget/GridLayoutManager;)V", "getSpanSize", "", "position", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/panel/adapter/SearchEmojiBottomViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EntranceItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class r
-  extends GridLayoutManager.b
+  extends q<m>
 {
-  private final GridLayoutManager jLZ;
-  private final RecyclerView.a<?> jMq;
-  
-  public r(RecyclerView.a<?> parama, GridLayoutManager paramGridLayoutManager)
+  public r(View paramView, n paramn)
   {
-    AppMethodBeat.i(227884);
-    this.jMq = parama;
-    this.jLZ = paramGridLayoutManager;
-    AppMethodBeat.o(227884);
-  }
-  
-  public final int cx(int paramInt)
-  {
-    AppMethodBeat.i(105675);
-    switch (this.jMq.getItemViewType(paramInt))
-    {
-    case 3: 
-    case 6: 
-    default: 
-      AppMethodBeat.o(105675);
-      return 1;
-    }
-    paramInt = this.jLZ.ku();
-    AppMethodBeat.o(105675);
-    return paramInt;
+    super(paramView, paramn);
+    AppMethodBeat.i(242407);
+    AppMethodBeat.o(242407);
   }
 }
 

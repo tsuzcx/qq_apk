@@ -6,24 +6,24 @@ import java.util.List;
 
 final class a
 {
-  int UTH;
-  final a UTI;
-  final List<b> vjj;
+  final List<b> BI;
+  int acoR;
+  final a acoS;
   
   a(b paramb)
   {
     AppMethodBeat.i(176025);
-    this.vjj = new ArrayList();
-    this.UTH = 0;
-    this.UTI = new a();
-    this.vjj.add(paramb);
+    this.BI = new ArrayList();
+    this.acoR = 0;
+    this.acoS = new a();
+    this.BI.add(paramb);
     AppMethodBeat.o(176025);
   }
   
   public final a a(b paramb)
   {
     AppMethodBeat.i(176024);
-    this.vjj.add(paramb);
+    this.BI.add(paramb);
     AppMethodBeat.o(176024);
     return this;
   }
@@ -32,14 +32,14 @@ final class a
   {
     public a() {}
     
-    public final void hsB()
+    public final void iSG()
     {
       AppMethodBeat.i(176023);
-      synchronized (a.this.vjj)
+      synchronized (a.this.BI)
       {
-        a.b localb = (a.b)a.this.vjj.get(a.this.UTH);
+        a.b localb = (a.b)a.this.BI.get(a.this.acoR);
         a locala = a.this;
-        locala.UTH += 1;
+        locala.acoR += 1;
         localb.a(this);
         AppMethodBeat.o(176023);
         return;
@@ -54,7 +54,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.a
  * JD-Core Version:    0.7.0.1
  */

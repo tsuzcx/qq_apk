@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/kq2" android:background="@color/UN_BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/a8" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/k5y" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c5" android:src="@raw/icons_filled_back2" android:layout_marginStart="@dimen/cb" app:iconColor="@color/BW_100_Alpha_0_8" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/k5y" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce" layout="@layout/ckw" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:layout_below="@id/knw" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce">
-        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/knz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </com.tencent.mm.view.RefreshLoadMoreLayout>
-    </FrameLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/kr_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:layout_below="@id/knw" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/ci">
-        <TextView android:textSize="@dimen/c5" android:textColor="@color/BW_100_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jws" />
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/ksn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <ImageView android:id="@id/lxd" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/cag" android:layout_centerVertical="true" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lre" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/lxi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip">
+        <com.tencent.mm.ui.base.MMFlipper android:gravity="center" android:layout_gravity="center" android:id="@id/lxk" android:layout_width="fill_parent" android:layout_height="204.0dip" />
+        <com.tencent.mm.ui.base.MMDotView android:gravity="center" android:orientation="horizontal" android:id="@id/lxj" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
     </LinearLayout>
-    <ProgressBar android:id="@id/kny" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a61" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/knu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jwr" android:layout_centerInParent="true" />
-</RelativeLayout>
+</LinearLayout>

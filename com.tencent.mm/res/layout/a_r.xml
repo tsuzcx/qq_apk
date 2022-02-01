@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/BW_97" android:padding="@dimen/ct" android:layout_width="@dimen/a57" android:layout_height="@dimen/a57"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0dip" android:textColor="@color/fm" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/cc1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{text}" android:maxLines="4" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/ctb" android:paddingTop="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk">
+        <ImageView android:id="@id/a27" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@drawable/b__" />
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/fae" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_toRightOf="@id/a27" android:layout_centerVertical="true">
+            <TextView android:ellipsize="end" android:id="@id/hga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/x_" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/da" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <TextView android:textColor="@color/BW_0_Alpha_0_3" android:gravity="center" android:id="@id/a84" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:text="@string/d83" />
+</LinearLayout>

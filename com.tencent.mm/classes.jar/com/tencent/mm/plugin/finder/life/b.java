@@ -1,34 +1,36 @@
 package com.tencent.mm.plugin.finder.life;
 
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.q;
+import androidx.lifecycle.z;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "Landroidx/lifecycle/LifecycleObserver;", "onCreate", "", "var1", "Landroidx/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "Landroidx/lifecycle/LifecycleObserver;", "onCreate", "", "var1", "Landroidx/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface b
-  extends k
+  extends p
 {
-  @t(jl=h.a.ON_CREATE)
-  public abstract void onCreate(androidx.lifecycle.l paraml);
+  @z(Ho=j.a.ON_CREATE)
+  public abstract void onCreate(q paramq);
   
-  @t(jl=h.a.ON_DESTROY)
-  public abstract void onDestroy(androidx.lifecycle.l paraml);
+  @z(Ho=j.a.ON_DESTROY)
+  public abstract void onDestroy(q paramq);
   
-  @t(jl=h.a.ON_PAUSE)
-  public abstract void onPause(androidx.lifecycle.l paraml);
+  @z(Ho=j.a.ON_PAUSE)
+  public abstract void onPause(q paramq);
   
-  @t(jl=h.a.ON_RESUME)
-  public abstract void onResume(androidx.lifecycle.l paraml);
+  @z(Ho=j.a.ON_RESUME)
+  public abstract void onResume(q paramq);
   
-  @t(jl=h.a.ON_START)
-  public abstract void onStart(androidx.lifecycle.l paraml);
+  @z(Ho=j.a.ON_START)
+  public abstract void onStart(q paramq);
   
-  @t(jl=h.a.ON_STOP)
-  public abstract void onStop(androidx.lifecycle.l paraml);
+  @z(Ho=j.a.ON_STOP)
+  public abstract void onStop(q paramq);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.life.b
  * JD-Core Version:    0.7.0.1
  */

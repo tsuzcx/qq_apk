@@ -1,48 +1,49 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bum;
-import com.tencent.mm.protocal.protobuf.bun;
+import com.tencent.mm.protocal.protobuf.cjk;
+import com.tencent.mm.protocal.protobuf.cjl;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
-  extends q
+  extends p
   implements m
 {
-  private com.tencent.mm.an.i jQg;
-  final d mdu;
+  private h mAY;
+  final c oWn;
   
   public i(b paramb)
   {
     AppMethodBeat.i(151081);
-    d.a locala = new d.a();
-    bum localbum = new bum();
-    localbum.TeC = 0;
-    localbum.TeD = paramb;
-    locala.lBU = localbum;
-    locala.lBV = new bun();
+    c.a locala = new c.a();
+    cjk localcjk = new cjk();
+    localcjk.XKk = 0;
+    localcjk.aarX = paramb;
+    locala.otE = localcjk;
+    locala.otF = new cjl();
     locala.uri = "/cgi-bin/mmbiz-bin/geteventsampleconf";
     locala.funcId = 1126;
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.mdu = locala.bgN();
+    this.oWn = locala.bEF();
     AppMethodBeat.o(151081);
   }
   
-  public final int doScene(g paramg, com.tencent.mm.an.i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(151082);
     Log.i("MicroMsg.NetSceneUpdateEventConfig", "start update event config");
     setHasCallbackToQueue(true);
-    this.jQg = parami;
-    int i = dispatch(paramg, this.mdu, this);
+    this.mAY = paramh;
+    int i = dispatch(paramg, this.oWn, this);
     AppMethodBeat.o(151082);
     return i;
   }
@@ -56,7 +57,7 @@ public final class i
   {
     AppMethodBeat.i(151083);
     Log.i("MicroMsg.NetSceneUpdateEventConfig", "onGYNetEnd errType: %d, errCode: %d, errMsg %s, IReqResp %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, params.toString() });
-    this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151083);
   }
 }

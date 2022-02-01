@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/ce" android:paddingRight="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/h_" android:textColor="@color/FG_0" android:gravity="center_vertical" android:id="@id/jrw" android:layout_width="fill_parent" android:layout_height="@dimen/cr" android:text="@string/dbn" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/FG_0" android:id="@id/jrv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="@string/dbl" />
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:layout_marginBottom="@dimen/ci">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/Brand" android:gravity="center" android:id="@id/jrx" android:background="@drawable/xp" android:layout_width="120.0dip" android:layout_height="@dimen/cl" android:text="@string/sz" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/afz" android:gravity="center" android:id="@id/jru" android:background="@drawable/xj" android:layout_width="120.0dip" android:layout_height="@dimen/cl" android:layout_marginLeft="@dimen/cb" android:text="@string/dbk" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:id="@id/e1r" android:layout_width="@dimen/a7t" android:layout_height="@dimen/d6" android:paddingStart="@dimen/cd"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:background="@drawable/a2q" android:layout_width="@dimen/d4" android:layout_height="@dimen/cv" android:layout_centerVertical="true">
+        <ImageView android:id="@id/e1q" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@drawable/bja" android:layout_centerVertical="true" android:layout_marginStart="@dimen/a6w" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_arrow" android:layout_centerVertical="true" android:layout_marginStart="@dimen/a6u" android:layout_marginEnd="@dimen/a6w" android:layout_toEndOf="@id/e1q" app:iconColor="@color/BW_100_Alpha_0_5" />
+    </RelativeLayout>
+</RelativeLayout>

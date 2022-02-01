@@ -2,15 +2,13 @@ package com.tencent.liteapp.ui;
 
 public abstract interface a
 {
-  public abstract void Np();
+  public abstract void anI();
   
-  public abstract void Nq();
+  public abstract void anJ();
   
-  public abstract void Nr();
+  public abstract void anK();
   
   public abstract void hideKeyboard();
-  
-  public abstract void iD(int paramInt);
   
   public abstract void navigateBack(boolean paramBoolean);
 }

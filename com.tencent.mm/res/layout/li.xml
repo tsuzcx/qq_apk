@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/gj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/ct" android:layout_marginRight="@dimen/c5" android:minHeight="@dimen/cr">
-        <ProgressBar android:layout_gravity="center" android:id="@id/glh" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+        <TextView android:gravity="center_vertical" android:id="@id/l3z" android:layout_width="80.0dip" android:layout_height="fill_parent" android:text="@string/aiz" />
+        <SeekBar android:id="@id/l3y" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+        <TextView android:gravity="center_vertical" android:id="@id/l41" android:layout_width="80.0dip" android:layout_height="fill_parent" android:text="@string/aj4" />
+        <SeekBar android:id="@id/l40" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+        <TextView android:gravity="center_vertical" android:id="@id/l43" android:layout_width="80.0dip" android:layout_height="fill_parent" android:text="@string/k9m" />
+        <SeekBar android:id="@id/l42" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
     </LinearLayout>
 </LinearLayout>

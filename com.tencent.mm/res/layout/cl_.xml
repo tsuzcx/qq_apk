@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fad" android:descendantFocusability="blocksDescendants" android:layout_width="@dimen/az2" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="@dimen/dc" android:layout_height="@dimen/dc">
+        <ImageView android:id="@id/m2r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <TextView android:textStyle="bold" android:textColor="@color/al6" android:id="@id/fbo" android:background="@drawable/aku" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/g" android:text="@string/a11" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/fam" android:paddingLeft="@dimen/m2" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/m2" android:visibility="gone" android:layout_width="@dimen/by" android:layout_height="wrap_content" android:max="100" android:progress="0" android:layout_below="@id/m2r" style="@style/lz" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/ce" android:ellipsize="end" android:gravity="bottom" android:layout_gravity="center" android:id="@id/fbk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:singleLine="true" />
+</LinearLayout>

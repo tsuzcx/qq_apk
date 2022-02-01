@@ -9,12 +9,12 @@ import javax.crypto.spec.IvParameterSpec;
 
 public final class l
 {
-  private static final byte[] pyv = { 18, 52, 86, 120, -112, -85, -51, -17 };
-  private static String pyw = null;
+  private static final byte[] sDA = { 18, 52, 86, 120, -112, -85, -51, -17 };
+  private static String sDB = null;
   
-  public static String G(String paramString1, String paramString2, String paramString3)
+  public static String K(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(227268);
+    AppMethodBeat.i(328378);
     Object localObject2 = null;
     Object localObject1 = localObject2;
     int i;
@@ -30,9 +30,9 @@ public final class l
         break;
       }
     }
-    for (localObject1 = localObject2;; localObject1 = ed(paramString2, paramString3))
+    for (localObject1 = localObject2;; localObject1 = ew(paramString2, paramString3))
     {
-      AppMethodBeat.o(227268);
+      AppMethodBeat.o(328378);
       return localObject1;
       if (!paramString1.equals("des")) {
         break;
@@ -42,9 +42,9 @@ public final class l
     }
   }
   
-  public static String H(String paramString1, String paramString2, String paramString3)
+  public static String L(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(227274);
+    AppMethodBeat.i(328387);
     Object localObject2 = null;
     Object localObject1 = localObject2;
     int i;
@@ -60,9 +60,9 @@ public final class l
         break;
       }
     }
-    for (localObject1 = localObject2;; localObject1 = ee(paramString2, paramString3))
+    for (localObject1 = localObject2;; localObject1 = ex(paramString2, paramString3))
     {
-      AppMethodBeat.o(227274);
+      AppMethodBeat.o(328387);
       return localObject1;
       if (!paramString1.equals("des")) {
         break;
@@ -72,24 +72,24 @@ public final class l
     }
   }
   
-  public static String bVQ()
+  public static String cwd()
   {
     try
     {
-      AppMethodBeat.i(227291);
-      if (pyw == null) {
-        pyw = bVR();
+      AppMethodBeat.i(328422);
+      if (sDB == null) {
+        sDB = cwe();
       }
-      String str = pyw;
-      AppMethodBeat.o(227291);
+      String str = sDB;
+      AppMethodBeat.o(328422);
       return str;
     }
     finally {}
   }
   
-  private static String bVR()
+  private static String cwe()
   {
-    AppMethodBeat.i(227294);
+    AppMethodBeat.i(328431);
     try
     {
       Object localObject2 = SecureRandom.getInstance("SHA1PRNG");
@@ -104,28 +104,28 @@ public final class l
         i += 1;
       }
       localObject1 = ((StringBuffer)localObject2).toString();
-      AppMethodBeat.o(227294);
+      AppMethodBeat.o(328431);
       return localObject1;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(227294);
+      AppMethodBeat.o(328431);
     }
     return null;
   }
   
-  private static String ed(String paramString1, String paramString2)
+  private static String ew(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(227281);
+    AppMethodBeat.i(328399);
     if ((paramString1 == null) || (paramString1.length() < 8))
     {
       paramString1 = new Exception("secret key is not available");
-      AppMethodBeat.o(227281);
+      AppMethodBeat.o(328399);
       throw paramString1;
     }
     if ((paramString2 == null) || (paramString2.isEmpty()))
     {
-      AppMethodBeat.o(227281);
+      AppMethodBeat.o(328399);
       return null;
     }
     try
@@ -135,33 +135,33 @@ public final class l
       paramString1 = new DESKeySpec(paramString1.getBytes());
       paramString1 = SecretKeyFactory.getInstance("DES").generateSecret(paramString1);
       Cipher localCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
-      localCipher.init(1, paramString1, new IvParameterSpec(pyv));
+      localCipher.init(1, paramString1, new IvParameterSpec(sDA));
       paramString1 = b.encode(localCipher.doFinal(paramString2.getBytes()));
       h.log(3, "SecretUtils", "end encode milles time = " + (System.currentTimeMillis() - l));
-      AppMethodBeat.o(227281);
+      AppMethodBeat.o(328399);
       return paramString1;
     }
     catch (Exception paramString1)
     {
-      h.log(6, "SecretUtils", "encode des error" + h.i(paramString1));
-      AppMethodBeat.o(227281);
+      h.log(6, "SecretUtils", "encode des error" + h.s(paramString1));
+      AppMethodBeat.o(328399);
       throw paramString1;
     }
   }
   
-  private static String ee(String paramString1, String paramString2)
+  private static String ex(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(227290);
+    AppMethodBeat.i(328414);
     if ((paramString1 == null) || (paramString1.length() < 8))
     {
       paramString1 = new Exception("secret key is not available");
-      AppMethodBeat.o(227290);
+      AppMethodBeat.o(328414);
       throw paramString1;
     }
     paramString2 = b.decode(paramString2);
-    if (paramString2.length == 0)
+    if ((paramString2 == null) || (paramString2.length == 0))
     {
-      AppMethodBeat.o(227290);
+      AppMethodBeat.o(328414);
       return null;
     }
     try
@@ -171,23 +171,23 @@ public final class l
       paramString1 = new DESKeySpec(paramString1.getBytes());
       paramString1 = SecretKeyFactory.getInstance("DES").generateSecret(paramString1);
       Cipher localCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
-      localCipher.init(2, paramString1, new IvParameterSpec(pyv));
+      localCipher.init(2, paramString1, new IvParameterSpec(sDA));
       paramString1 = new String(localCipher.doFinal(paramString2));
       h.log(3, "SecretUtils", "end decode milles time = " + (System.currentTimeMillis() - l));
-      AppMethodBeat.o(227290);
+      AppMethodBeat.o(328414);
       return paramString1;
     }
     catch (Exception paramString1)
     {
-      h.log(6, "SecretUtils", "decode des error" + h.i(paramString1));
-      AppMethodBeat.o(227290);
+      h.log(6, "SecretUtils", "decode des error" + h.s(paramString1));
+      AppMethodBeat.o(328414);
       throw paramString1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.l
  * JD-Core Version:    0.7.0.1
  */

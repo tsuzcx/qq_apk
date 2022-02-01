@@ -1,38 +1,57 @@
 package com.tencent.mm.plugin.finder.view;
 
-import com.tencent.mm.f.a.ig;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.bfw;
-import com.tencent.mm.sdk.event.IListener;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import android.content.Context;
+import android.view.View;
+import android.view.Window;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.a.b;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderExposeChangedEventListener;", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FinderExposeInfoChangeEvent;", "()V", "tag", "", "getTag", "()Ljava/lang/String;", "setTag", "(Ljava/lang/String;)V", "callback", "", "event", "getFeedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedId", "", "notifyAdapter", "", "exposeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderObjectExposeInfo;", "plugin-finder_release"})
-public abstract class g
-  extends IListener<ig>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderCustomSheetDialog;", "Lcom/tencent/mm/ui/widget/dialog/CustomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "shouldWindowCloseOnTouchOutside", "", "show", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class g
+  extends b
 {
-  public abstract FinderItem KQ(long paramLong);
-  
-  public abstract void a(long paramLong, bfw parambfw);
-  
-  public abstract String getTag();
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<x>
+  public g(Context paramContext)
   {
-    a(g paramg, ig paramig)
+    super(paramContext);
+    AppMethodBeat.i(344606);
+    AppMethodBeat.o(344606);
+  }
+  
+  public final boolean fku()
+  {
+    return true;
+  }
+  
+  public final void show()
+  {
+    AppMethodBeat.i(344614);
+    if (isLandscape())
     {
-      super();
+      localObject = getWindow();
+      if (localObject != null) {
+        ((Window)localObject).setFlags(1024, 1024);
+      }
+      localObject = getWindow();
+      if (localObject != null) {
+        break label62;
+      }
+    }
+    label62:
+    for (Object localObject = null;; localObject = ((Window)localObject).getDecorView())
+    {
+      if (localObject != null) {
+        ((View)localObject).setSystemUiVisibility(6);
+      }
+      super.show();
+      AppMethodBeat.o(344614);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.g
  * JD-Core Version:    0.7.0.1
  */

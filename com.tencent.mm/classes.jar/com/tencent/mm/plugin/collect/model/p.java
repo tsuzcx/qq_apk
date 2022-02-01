@@ -1,82 +1,60 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.wh;
-import com.tencent.mm.protocal.protobuf.wi;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.tenpay.model.m;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class p
-  extends q
-  implements m
+  extends m
 {
-  private final String TAG;
-  private i callback;
-  public String fyd;
-  private d rr;
-  public wi tVB;
+  public int hHX;
+  public int type;
+  public String wXX;
+  public long wYy;
+  public int wYz;
   
-  public p(int paramInt, b paramb, String paramString)
+  public p(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(63835);
-    this.TAG = "MicroMsg.NetSceneMDRcvVoice";
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new wh();
-    ((d.a)localObject).lBV = new wi();
-    ((d.a)localObject).funcId = 1317;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/getmdrcvvoice";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (wh)d.b.b(this.rr.lBR);
-    ((wh)localObject).amount = paramInt;
-    ((wh)localObject).Scm = 0;
-    ((wh)localObject).tVM = paramString;
-    ((wh)localObject).Sip = null;
-    ((wh)localObject).Siq = paramb;
-    this.fyd = paramString;
-    Log.i("MicroMsg.NetSceneMDRcvVoice", "amount: %d, outtradeno: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    AppMethodBeat.o(63835);
+    AppMethodBeat.i(63841);
+    this.wXX = paramString;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("bill_id", paramString);
+    localHashMap.put("type", String.valueOf(paramInt));
+    localHashMap.put("from_timestamp", String.valueOf(paramLong));
+    setRequestData(localHashMap);
+    AppMethodBeat.o(63841);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int getFuncId()
   {
-    AppMethodBeat.i(63836);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(63836);
-    return i;
+    return 1964;
   }
   
-  public final int getType()
+  public final int getTenpayCgicmd()
   {
-    return 1317;
+    return 0;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final String getUri()
   {
-    AppMethodBeat.i(63837);
-    Log.i("MicroMsg.NetSceneMDRcvVoice", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.tVB = ((wi)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneMDRcvVoice", "ret_code: %d, ret_msg: %s，voice_type: %d", new Object[] { Integer.valueOf(this.tVB.fwx), this.tVB.tVo, Integer.valueOf(this.tVB.Scm) });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    AppMethodBeat.o(63837);
+    return "/cgi-bin/mmpay-bin/f2frmrcvdrcd";
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(63842);
+    this.wYz = paramJSONObject.optInt("total_num", 0);
+    this.hHX = paramJSONObject.optInt("total_amt", 0);
+    this.type = paramJSONObject.optInt("type", 0);
+    this.wYy = paramJSONObject.optLong("from_timestamp", 0L);
+    AppMethodBeat.o(63842);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.p
  * JD-Core Version:    0.7.0.1
  */

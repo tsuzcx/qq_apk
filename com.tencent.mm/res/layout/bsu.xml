@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/b3o" android:background="@color/afz" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView android:id="@id/dup" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
-    <ViewStub android:id="@id/hru" android:layout="@layout/bst" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/i59" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/gl7" android:visibility="gone" android:layout_width="@dimen/ag2" android:layout_height="@dimen/ag2" android:layout_centerInParent="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Button android:layout_gravity="center_horizontal" android:id="@id/f88" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="插入一条数据" style="@style/oh" />
+    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b8d" app:refreshLayout="@layout/ca6">
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/hq8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cp" />
+    </com.tencent.mm.view.RefreshLoadMoreLayout>
+</LinearLayout>

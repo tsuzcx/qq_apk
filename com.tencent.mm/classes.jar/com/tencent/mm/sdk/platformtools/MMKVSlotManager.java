@@ -1,10 +1,10 @@
 package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "Lcom/tencent/mm/sdk/platformtools/BaseSlotManager;", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "slotRecorder", "slotSeconds", "", "(Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;J)V", "clearSlot", "", "slotId", "slot", "containsKey", "", "key", "", "decodeBool", "default", "decodeBytes", "", "decodeInt", "", "decodeLong", "decodeProtoBuffer", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "(Ljava/lang/String;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "decodeString", "getSlotByKey", "kotlin.jvm.PlatformType", "slotKey", "remarkSlot", "verifySlot", "libcompatible_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "Lcom/tencent/mm/sdk/platformtools/BaseSlotManager;", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "slotRecorder", "slotSeconds", "", "(Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;J)V", "clearSlot", "", "slotId", "slot", "containsKey", "", "key", "", "decodeBool", "default", "decodeBytes", "", "decodeInt", "", "decodeLong", "decodeProtoBuffer", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "(Ljava/lang/String;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "decodeString", "getSlotByKey", "kotlin.jvm.PlatformType", "slotKey", "remarkSlot", "verifySlot", "libcompatible_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class MMKVSlotManager
   extends BaseSlotManager<MultiProcessMMKV>
 {
@@ -20,134 +20,132 @@ public class MMKVSlotManager
   
   protected void clearSlot(long paramLong, MultiProcessMMKV paramMultiProcessMMKV)
   {
-    AppMethodBeat.i(263265);
-    p.k(paramMultiProcessMMKV, "slot");
+    AppMethodBeat.i(243716);
+    s.u(paramMultiProcessMMKV, "slot");
     if (paramMultiProcessMMKV.count() > 0L) {
       paramMultiProcessMMKV.clear();
     }
-    AppMethodBeat.o(263265);
+    AppMethodBeat.o(243716);
   }
   
   protected boolean containsKey(MultiProcessMMKV paramMultiProcessMMKV, String paramString)
   {
-    AppMethodBeat.i(263275);
-    p.k(paramMultiProcessMMKV, "slot");
-    p.k(paramString, "key");
+    AppMethodBeat.i(243727);
+    s.u(paramMultiProcessMMKV, "slot");
+    s.u(paramString, "key");
     boolean bool = paramMultiProcessMMKV.containsKey(paramString);
-    AppMethodBeat.o(263275);
+    AppMethodBeat.o(243727);
     return bool;
   }
   
   public final boolean containsKey(String paramString)
   {
-    AppMethodBeat.i(263287);
-    p.k(paramString, "key");
+    AppMethodBeat.i(243750);
+    s.u(paramString, "key");
     MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)findSlot(paramString);
-    if (localMultiProcessMMKV != null)
+    if (localMultiProcessMMKV == null)
     {
-      boolean bool = localMultiProcessMMKV.containsKey(paramString);
-      AppMethodBeat.o(263287);
-      return bool;
+      AppMethodBeat.o(243750);
+      return false;
     }
-    AppMethodBeat.o(263287);
-    return false;
+    boolean bool = localMultiProcessMMKV.containsKey(paramString);
+    AppMethodBeat.o(243750);
+    return bool;
   }
   
   public final boolean decodeBool(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(263285);
-    p.k(paramString, "key");
+    AppMethodBeat.i(243747);
+    s.u(paramString, "key");
     MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)findSlot(paramString);
-    if (localMultiProcessMMKV != null)
+    if (localMultiProcessMMKV == null)
     {
-      paramBoolean = localMultiProcessMMKV.decodeBool(paramString, paramBoolean);
-      AppMethodBeat.o(263285);
+      AppMethodBeat.o(243747);
       return paramBoolean;
     }
-    AppMethodBeat.o(263285);
+    paramBoolean = localMultiProcessMMKV.decodeBool(paramString, paramBoolean);
+    AppMethodBeat.o(243747);
     return paramBoolean;
   }
   
   public final byte[] decodeBytes(String paramString)
   {
-    AppMethodBeat.i(263284);
-    p.k(paramString, "key");
+    AppMethodBeat.i(243745);
+    s.u(paramString, "key");
     MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)findSlot(paramString);
-    if (localMultiProcessMMKV != null)
+    if (localMultiProcessMMKV == null)
     {
-      paramString = localMultiProcessMMKV.decodeBytes(paramString);
-      AppMethodBeat.o(263284);
-      return paramString;
+      AppMethodBeat.o(243745);
+      return null;
     }
-    AppMethodBeat.o(263284);
-    return null;
+    paramString = localMultiProcessMMKV.decodeBytes(paramString);
+    AppMethodBeat.o(243745);
+    return paramString;
   }
   
   public final int decodeInt(String paramString, int paramInt)
   {
-    AppMethodBeat.i(263278);
-    p.k(paramString, "key");
+    AppMethodBeat.i(243733);
+    s.u(paramString, "key");
     MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)findSlot(paramString);
-    if (localMultiProcessMMKV != null)
+    if (localMultiProcessMMKV == null)
     {
-      paramInt = localMultiProcessMMKV.decodeInt(paramString, paramInt);
-      AppMethodBeat.o(263278);
+      AppMethodBeat.o(243733);
       return paramInt;
     }
-    AppMethodBeat.o(263278);
+    paramInt = localMultiProcessMMKV.decodeInt(paramString, paramInt);
+    AppMethodBeat.o(243733);
     return paramInt;
   }
   
   public final long decodeLong(String paramString, long paramLong)
   {
-    AppMethodBeat.i(263280);
-    p.k(paramString, "key");
+    AppMethodBeat.i(243740);
+    s.u(paramString, "key");
     MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)findSlot(paramString);
-    if (localMultiProcessMMKV != null)
+    if (localMultiProcessMMKV == null)
     {
-      paramLong = localMultiProcessMMKV.decodeLong(paramString);
-      AppMethodBeat.o(263280);
+      AppMethodBeat.o(243740);
       return paramLong;
     }
-    AppMethodBeat.o(263280);
+    paramLong = localMultiProcessMMKV.decodeLong(paramString);
+    AppMethodBeat.o(243740);
     return paramLong;
   }
   
   public final String decodeString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(263282);
-    p.k(paramString1, "key");
+    AppMethodBeat.i(243741);
+    s.u(paramString1, "key");
     MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)findSlot(paramString1);
-    String str = paramString2;
-    if (localMultiProcessMMKV != null)
+    if (localMultiProcessMMKV == null)
     {
-      str = localMultiProcessMMKV.decodeString(paramString1, paramString2);
-      if (str != null) {
-        break label49;
-      }
-      str = paramString2;
+      AppMethodBeat.o(243741);
+      return paramString2;
     }
-    label49:
-    for (;;)
+    paramString1 = localMultiProcessMMKV.decodeString(paramString1, paramString2);
+    if (paramString1 == null)
     {
-      AppMethodBeat.o(263282);
-      return str;
+      AppMethodBeat.o(243741);
+      return paramString2;
     }
+    AppMethodBeat.o(243741);
+    return paramString1;
   }
   
   protected MultiProcessMMKV getSlotByKey(String paramString, long paramLong)
   {
-    AppMethodBeat.i(263270);
-    p.k(paramString, "slotKey");
+    AppMethodBeat.i(243724);
+    s.u(paramString, "slotKey");
     paramString = MultiProcessMMKV.getMMKV(paramString, 2);
-    AppMethodBeat.o(263270);
+    AppMethodBeat.o(243724);
     return paramString;
   }
   
   protected void remarkSlot(String paramString, long paramLong)
   {
     AppMethodBeat.i(156392);
-    p.k(paramString, "slotKey");
+    s.u(paramString, "slotKey");
     this.slotRecorder.putLong(paramString, paramLong);
     AppMethodBeat.o(156392);
   }
@@ -155,7 +153,7 @@ public class MMKVSlotManager
   protected boolean verifySlot(String paramString, long paramLong)
   {
     AppMethodBeat.i(156393);
-    p.k(paramString, "slotKey");
+    s.u(paramString, "slotKey");
     if (this.slotRecorder.getLong(paramString, 0L) == paramLong)
     {
       AppMethodBeat.o(156393);

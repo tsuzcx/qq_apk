@@ -1,106 +1,68 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.bx.b;
 
 public final class apt
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
-  public String SCJ;
-  public long SCK;
-  public String session_id;
+  public b ZwY;
+  public int ZwZ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(231129);
+    AppMethodBeat.i(259345);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZwY != null) {
+        paramVarArgs.d(1, this.ZwY);
       }
-      if (this.SCJ != null) {
-        paramVarArgs.f(2, this.SCJ);
-      }
-      paramVarArgs.bm(3, this.SCK);
-      if (this.session_id != null) {
-        paramVarArgs.f(4, this.session_id);
-      }
-      AppMethodBeat.o(231129);
+      paramVarArgs.bS(2, this.ZwZ);
+      AppMethodBeat.o(259345);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label452;
+      if (this.ZwY == null) {
+        break label254;
       }
     }
-    label452:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label254:
+    for (paramInt = i.a.a.b.b.a.c(1, this.ZwY) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.SCJ != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.SCJ);
-      }
-      i += g.a.a.b.b.a.p(3, this.SCK);
-      paramInt = i;
-      if (this.session_id != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.session_id);
-      }
-      AppMethodBeat.o(231129);
-      return paramInt;
+      int i = i.a.a.b.b.a.cJ(2, this.ZwZ);
+      AppMethodBeat.o(259345);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(231129);
+        AppMethodBeat.o(259345);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         apt localapt = (apt)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(231129);
+          AppMethodBeat.o(259345);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
-            }
-            localapt.BaseResponse = localjh;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(231129);
-          return 0;
-        case 2: 
-          localapt.SCJ = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(231129);
-          return 0;
-        case 3: 
-          localapt.SCK = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(231129);
+          localapt.ZwY = locala.ajGk.kFX();
+          AppMethodBeat.o(259345);
           return 0;
         }
-        localapt.session_id = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(231129);
+        localapt.ZwZ = locala.ajGk.aar();
+        AppMethodBeat.o(259345);
         return 0;
       }
-      AppMethodBeat.o(231129);
+      AppMethodBeat.o(259345);
       return -1;
     }
   }

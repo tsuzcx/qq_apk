@@ -1,32 +1,32 @@
 package kotlinx.coroutines.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/scheduling/NanoTimeSource;", "Lkotlinx/coroutines/scheduling/TimeSource;", "()V", "nanoTime", "", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/scheduling/NonBlockingContext;", "Lkotlinx/coroutines/scheduling/TaskContext;", "()V", "taskMode", "", "getTaskMode", "()I", "afterTask", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
-  extends m
+  implements j
 {
-  public static final g abAo;
+  public static final g ajBG;
+  private static final int lxb = 0;
   
   static
   {
-    AppMethodBeat.i(118030);
-    abAo = new g();
-    AppMethodBeat.o(118030);
+    AppMethodBeat.i(117993);
+    ajBG = new g();
+    AppMethodBeat.o(117993);
   }
   
-  public final long nanoTime()
+  public final int kEC()
   {
-    AppMethodBeat.i(118029);
-    long l = System.nanoTime();
-    AppMethodBeat.o(118029);
-    return l;
+    return lxb;
   }
+  
+  public final void kED() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.d.g
  * JD-Core Version:    0.7.0.1
  */

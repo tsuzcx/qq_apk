@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.hld.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.a.j;
 import com.tencent.mm.plugin.hld.a.m;
@@ -12,69 +10,153 @@ import com.tencent.mm.plugin.hld.b.e.a;
 import com.tencent.mm.plugin.hld.f.i;
 import com.tencent.mm.plugin.hld.keyboard.c;
 import com.tencent.mm.plugin.hld.model.b;
-import com.tencent.mm.plugin.hld.model.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SelectPreference;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.y.b;
 import java.util.ArrayList;
 import java.util.List;
-import kotlin.g;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldKeyboardSettingUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "oriKeyVoiceChecked", "", "Ljava/lang/Boolean;", "oriTNineChecked", "prefKeySound", "Lcom/tencent/mm/ui/base/preference/CheckBoxPreference;", "getPrefKeySound", "()Lcom/tencent/mm/ui/base/preference/CheckBoxPreference;", "prefKeySound$delegate", "Lkotlin/Lazy;", "prefS1ChineseT9", "Lcom/tencent/mm/ui/base/preference/SelectPreference;", "getPrefS1ChineseT9", "()Lcom/tencent/mm/ui/base/preference/SelectPreference;", "prefS1ChineseT9$delegate", "prefS2ChineseQwerty", "getPrefS2ChineseQwerty", "prefS2ChineseQwerty$delegate", "getResourceId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "onPreferenceTreeClick", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "updateStatus", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/ui/HldKeyboardSettingUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "oriKeyVoiceChecked", "", "Ljava/lang/Boolean;", "oriTNineChecked", "prefKeySound", "Lcom/tencent/mm/ui/base/preference/CheckBoxPreference;", "getPrefKeySound", "()Lcom/tencent/mm/ui/base/preference/CheckBoxPreference;", "prefKeySound$delegate", "Lkotlin/Lazy;", "prefS1ChineseT9", "Lcom/tencent/mm/ui/base/preference/SelectPreference;", "getPrefS1ChineseT9", "()Lcom/tencent/mm/ui/base/preference/SelectPreference;", "prefS1ChineseT9$delegate", "prefS2ChineseQwerty", "getPrefS2ChineseQwerty", "prefS2ChineseQwerty$delegate", "getResourceId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "onPreferenceTreeClick", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "updateStatus", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class HldKeyboardSettingUI
   extends MMPreference
 {
-  public static final a DGj;
-  private final kotlin.f DGg;
-  private final kotlin.f DGh;
-  private final kotlin.f DGi;
-  private Boolean DyE;
-  private Boolean DyF;
+  public static final HldKeyboardSettingUI.a JxH;
+  private Boolean JrJ;
+  private Boolean JrK;
+  private final j JxI;
+  private final j JxJ;
+  private final j JxK;
   
   static
   {
-    AppMethodBeat.i(216594);
-    DGj = new a((byte)0);
-    AppMethodBeat.o(216594);
+    AppMethodBeat.i(312310);
+    JxH = new HldKeyboardSettingUI.a((byte)0);
+    AppMethodBeat.o(312310);
   }
   
   public HldKeyboardSettingUI()
   {
-    AppMethodBeat.i(216593);
-    this.DGg = g.ar((a)new e(this));
-    this.DGh = g.ar((a)new f(this));
-    this.DGi = g.ar((a)new d(this));
-    AppMethodBeat.o(216593);
+    AppMethodBeat.i(312259);
+    this.JxI = kotlin.k.cm((a)new c(this));
+    this.JxJ = kotlin.k.cm((a)new d(this));
+    this.JxK = kotlin.k.cm((a)new b(this));
+    AppMethodBeat.o(312259);
   }
   
-  private final SelectPreference eFD()
+  private static final boolean a(HldKeyboardSettingUI paramHldKeyboardSettingUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(216579);
-    SelectPreference localSelectPreference = (SelectPreference)this.DGg.getValue();
-    AppMethodBeat.o(216579);
+    AppMethodBeat.i(312287);
+    s.u(paramHldKeyboardSettingUI, "this$0");
+    paramHldKeyboardSettingUI.finish();
+    AppMethodBeat.o(312287);
+    return true;
+  }
+  
+  private static final boolean b(HldKeyboardSettingUI paramHldKeyboardSettingUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(312302);
+    s.u(paramHldKeyboardSettingUI, "this$0");
+    boolean bool1 = paramHldKeyboardSettingUI.fNx().isSelected;
+    ArrayList localArrayList = new ArrayList();
+    label84:
+    boolean bool2;
+    if (!s.p(paramHldKeyboardSettingUI.JrK, Boolean.valueOf(bool1)))
+    {
+      if (bool1)
+      {
+        paramMenuItem = b.Jul;
+        localArrayList.add(paramMenuItem);
+        if (!bool1) {
+          break label230;
+        }
+        paramMenuItem = com.tencent.mm.plugin.hld.model.k.JvH;
+        com.tencent.mm.plugin.hld.model.k.aL(1, 3, 0);
+        paramMenuItem = i.JyA;
+        i.YH(c.Jrp.ordinal());
+      }
+    }
+    else
+    {
+      bool2 = paramHldKeyboardSettingUI.fNz().isChecked();
+      if (!s.p(paramHldKeyboardSettingUI.JrJ, Boolean.valueOf(bool2)))
+      {
+        if (!bool2) {
+          break label256;
+        }
+        paramMenuItem = b.Jun;
+        label114:
+        localArrayList.add(paramMenuItem);
+        paramMenuItem = i.JyA;
+        i.xp(bool2);
+        if (!bool2) {
+          break label263;
+        }
+        paramMenuItem = com.tencent.mm.plugin.hld.model.k.JvH;
+        com.tencent.mm.plugin.hld.model.k.aL(4, 3, 0);
+      }
+      label143:
+      if (!localArrayList.isEmpty()) {
+        break label276;
+      }
+      Log.i("WxIme.HldSettingUI", "operation is null");
+    }
+    for (;;)
+    {
+      Log.i("WxIme.HldSettingUI", "oriTNineChecked:" + paramHldKeyboardSettingUI.JrK + " newTNineChecked:" + bool1 + ", oriKeyVoiceChecked:" + paramHldKeyboardSettingUI.JrJ + " newKeyVoiceChecked:" + bool2);
+      paramHldKeyboardSettingUI.finish();
+      AppMethodBeat.o(312302);
+      return true;
+      paramMenuItem = b.Jum;
+      break;
+      label230:
+      paramMenuItem = com.tencent.mm.plugin.hld.model.k.JvH;
+      com.tencent.mm.plugin.hld.model.k.aL(2, 3, 0);
+      paramMenuItem = i.JyA;
+      i.YH(c.Jrq.ordinal());
+      break label84;
+      label256:
+      paramMenuItem = b.Juo;
+      break label114;
+      label263:
+      paramMenuItem = com.tencent.mm.plugin.hld.model.k.JvH;
+      com.tencent.mm.plugin.hld.model.k.aL(5, 3, 0);
+      break label143;
+      label276:
+      paramMenuItem = e.JoK;
+      e.a.iy((List)localArrayList);
+    }
+  }
+  
+  private final SelectPreference fNx()
+  {
+    AppMethodBeat.i(312266);
+    SelectPreference localSelectPreference = (SelectPreference)this.JxI.getValue();
+    AppMethodBeat.o(312266);
     return localSelectPreference;
   }
   
-  private final SelectPreference eFE()
+  private final SelectPreference fNy()
   {
-    AppMethodBeat.i(216581);
-    SelectPreference localSelectPreference = (SelectPreference)this.DGh.getValue();
-    AppMethodBeat.o(216581);
+    AppMethodBeat.i(312273);
+    SelectPreference localSelectPreference = (SelectPreference)this.JxJ.getValue();
+    AppMethodBeat.o(312273);
     return localSelectPreference;
   }
   
-  private final CheckBoxPreference eFF()
+  private final CheckBoxPreference fNz()
   {
-    AppMethodBeat.i(216583);
-    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.DGi.getValue();
-    AppMethodBeat.o(216583);
+    AppMethodBeat.i(312281);
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.JxK.getValue();
+    AppMethodBeat.o(312281);
     return localCheckBoxPreference;
   }
   
@@ -85,74 +167,66 @@ public final class HldKeyboardSettingUI
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(216586);
-    Object localObject = k.DDb;
-    k.NW(System.currentTimeMillis());
+    AppMethodBeat.i(312341);
+    Object localObject = com.tencent.mm.plugin.hld.model.k.JvH;
+    com.tencent.mm.plugin.hld.model.k.rO(System.currentTimeMillis());
     super.onCreate(paramBundle);
     setMMTitle(a.j.contact_info_wxime_keyboard);
-    paramBundle = new StringBuilder("imeSetting:");
-    localObject = i.DHq;
-    Log.i("WxIme.HldSettingUI", i.eGG());
-    paramBundle = i.DHq;
-    if (i.eEm() == c.Dyl.ordinal())
-    {
-      eFD().setSelected(true);
-      eFE().setSelected(false);
+    paramBundle = i.JyA;
+    Log.i("WxIme.HldSettingUI", s.X("imeSetting:", Integer.valueOf(i.fOs())));
+    paramBundle = i.JyA;
+    if (i.fMo() == c.Jrp.ordinal()) {
+      fNx().isSelected = true;
     }
-    for (;;)
+    for (fNy().isSelected = false;; fNy().isSelected = true)
     {
-      paramBundle = i.DHq;
-      this.DyE = Boolean.valueOf(i.eGD());
-      paramBundle = eFF();
-      localObject = i.DHq;
-      paramBundle.setChecked(i.eGD());
-      setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-      addTextOptionMenu(0, getString(a.j.app_finish), (MenuItem.OnMenuItemClickListener)new c(this), null, w.b.Wao);
-      paramBundle = k.DDb;
-      k.ap(0, 3, 0);
-      AppMethodBeat.o(216586);
+      paramBundle = i.JyA;
+      this.JrJ = Boolean.valueOf(i.fOp());
+      paramBundle = fNz();
+      localObject = i.JyA;
+      paramBundle.setChecked(i.fOp());
+      setBackBtn(new HldKeyboardSettingUI..ExternalSyntheticLambda0(this));
+      addTextOptionMenu(0, getString(a.j.app_finish), new HldKeyboardSettingUI..ExternalSyntheticLambda1(this), null, y.b.adEJ);
+      paramBundle = com.tencent.mm.plugin.hld.model.k.JvH;
+      com.tencent.mm.plugin.hld.model.k.aL(0, 3, 0);
+      AppMethodBeat.o(312341);
       return;
-      c.Dym.ordinal();
-      eFD().setSelected(false);
-      eFE().setSelected(true);
+      c.Jrq.ordinal();
+      fNx().isSelected = false;
     }
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(216588);
+    AppMethodBeat.i(312347);
     super.onPause();
-    AppMethodBeat.o(216588);
+    AppMethodBeat.o(312347);
   }
   
-  public final boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public final boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(216591);
-    p.k(paramf, "screen");
-    p.k(paramPreference, "pref");
-    paramPreference = paramPreference.getKey();
+    AppMethodBeat.i(312354);
+    s.u(paramf, "screen");
+    s.u(paramPreference, "pref");
+    paramPreference = paramPreference.mKey;
     paramf = paramPreference;
     if (paramPreference == null) {
       paramf = "";
     }
-    switch (paramf.hashCode())
+    if (s.p(paramf, "settings_wxime_s1_chinese_t9"))
     {
+      fNx().isSelected = true;
+      fNy().isSelected = false;
     }
     for (;;)
     {
       getPreferenceScreen().notifyDataSetChanged();
-      AppMethodBeat.o(216591);
+      AppMethodBeat.o(312354);
       return true;
-      if (paramf.equals("settings_wxime_s1_chinese_t9"))
+      if (s.p(paramf, "settings_wxime_s2_chinese_qwerty"))
       {
-        eFD().setSelected(true);
-        eFE().setSelected(false);
-        continue;
-        if (paramf.equals("settings_wxime_s2_chinese_qwerty"))
-        {
-          eFD().setSelected(false);
-          eFE().setSelected(true);
-        }
+        fNx().isSelected = false;
+        fNy().isSelected = true;
       }
     }
   }
@@ -163,133 +237,34 @@ public final class HldKeyboardSettingUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldKeyboardSettingUI$Companion;", "", "()V", "KEY_ENABLE_KEY_SOUND", "", "KEY_S1_CHINESE_T9", "KEY_S2_CHINESE_QWERTY", "TAG", "plugin-hld_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/base/preference/CheckBoxPreference;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements MenuItem.OnMenuItemClickListener
-  {
-    b(HldKeyboardSettingUI paramHldKeyboardSettingUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(209414);
-      this.DGk.finish();
-      AppMethodBeat.o(209414);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class c
-    implements MenuItem.OnMenuItemClickListener
-  {
-    c(HldKeyboardSettingUI paramHldKeyboardSettingUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(211037);
-      boolean bool1 = HldKeyboardSettingUI.a(this.DGk).getSelected();
-      ArrayList localArrayList = new ArrayList();
-      label86:
-      boolean bool2;
-      if ((p.h(HldKeyboardSettingUI.b(this.DGk), Boolean.valueOf(bool1)) ^ true))
-      {
-        if (bool1)
-        {
-          paramMenuItem = b.DBm;
-          localArrayList.add(paramMenuItem);
-          if (!bool1) {
-            break label249;
-          }
-          paramMenuItem = k.DDb;
-          k.ap(1, 3, 0);
-          paramMenuItem = i.DHq;
-          i.UJ(c.Dyl.ordinal());
-        }
-      }
-      else
-      {
-        bool2 = HldKeyboardSettingUI.c(this.DGk).isChecked();
-        if ((p.h(HldKeyboardSettingUI.d(this.DGk), Boolean.valueOf(bool2)) ^ true))
-        {
-          if (!bool2) {
-            break label275;
-          }
-          paramMenuItem = b.DBo;
-          label124:
-          localArrayList.add(paramMenuItem);
-          paramMenuItem = i.DHq;
-          i.te(bool2);
-          if (!bool2) {
-            break label282;
-          }
-          paramMenuItem = k.DDb;
-          k.ap(4, 3, 0);
-        }
-        label153:
-        if (!localArrayList.isEmpty()) {
-          break label295;
-        }
-        Log.i("WxIme.HldSettingUI", "operation is null");
-      }
-      for (;;)
-      {
-        Log.i("WxIme.HldSettingUI", "oriTNineChecked:" + HldKeyboardSettingUI.b(this.DGk) + " newTNineChecked:" + bool1 + ", oriKeyVoiceChecked:" + HldKeyboardSettingUI.d(this.DGk) + " newKeyVoiceChecked:" + bool2);
-        this.DGk.finish();
-        AppMethodBeat.o(211037);
-        return true;
-        paramMenuItem = b.DBn;
-        break;
-        label249:
-        paramMenuItem = k.DDb;
-        k.ap(2, 3, 0);
-        paramMenuItem = i.DHq;
-        i.UJ(c.Dym.ordinal());
-        break label86;
-        label275:
-        paramMenuItem = b.DBp;
-        break label124;
-        label282:
-        paramMenuItem = k.DDb;
-        k.ap(5, 3, 0);
-        break label153;
-        label295:
-        paramMenuItem = e.Dvq;
-        e.a.fB((List)localArrayList);
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/base/preference/CheckBoxPreference;", "invoke"})
-  static final class d
-    extends q
+    extends u
     implements a<CheckBoxPreference>
   {
+    b(HldKeyboardSettingUI paramHldKeyboardSettingUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/base/preference/SelectPreference;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements a<SelectPreference>
+  {
+    c(HldKeyboardSettingUI paramHldKeyboardSettingUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/base/preference/SelectPreference;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements a<SelectPreference>
+  {
     d(HldKeyboardSettingUI paramHldKeyboardSettingUI)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/base/preference/SelectPreference;", "invoke"})
-  static final class e
-    extends q
-    implements a<SelectPreference>
-  {
-    e(HldKeyboardSettingUI paramHldKeyboardSettingUI)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/base/preference/SelectPreference;", "invoke"})
-  static final class f
-    extends q
-    implements a<SelectPreference>
-  {
-    f(HldKeyboardSettingUI paramHldKeyboardSettingUI)
     {
       super();
     }

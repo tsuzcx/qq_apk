@@ -12,20 +12,20 @@ public class ToolsProcessIPCService
   extends BaseIPCService
 {
   public static final String PROCESS_NAME;
-  static int jZI;
-  private static a jZJ;
+  static int mzM;
+  private static a mzN;
   
   static
   {
-    AppMethodBeat.i(205336);
+    AppMethodBeat.i(235725);
     PROCESS_NAME = MMApplicationContext.getPackageName() + ":tools";
-    jZI = 0;
-    AppMethodBeat.o(205336);
+    mzM = 0;
+    AppMethodBeat.o(235725);
   }
   
   public static void a(a parama)
   {
-    jZJ = parama;
+    mzN = parama;
   }
   
   public static <T extends d<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(InputType paramInputType, Class<T> paramClass)
@@ -33,7 +33,7 @@ public class ToolsProcessIPCService
     AppMethodBeat.i(146441);
     boolean bool2 = j.a(PROCESS_NAME, paramInputType, paramClass, null);
     boolean bool1 = bool2;
-    if (!aFM()) {
+    if (!aYM()) {
       if ((!j.a(ToolsMpProcessIPCService.PROCESS_NAME, paramInputType, paramClass, null)) || (!bool2)) {
         break label48;
       }
@@ -59,7 +59,7 @@ public class ToolsProcessIPCService
     for (;;)
     {
       boolean bool2 = bool1;
-      if (!aFM())
+      if (!aYM())
       {
         bool2 = bool1;
         if (MMApplicationContext.isProcessExist(MMApplicationContext.getPackageName() + ":toolsmp")) {
@@ -89,26 +89,26 @@ public class ToolsProcessIPCService
     return bool;
   }
   
-  public static boolean aFM()
+  public static boolean aYM()
   {
     AppMethodBeat.i(146439);
     boolean bool;
-    if (jZI == 0)
+    if (mzM == 0)
     {
-      a locala = jZJ;
+      a locala = mzN;
       if (locala == null) {
         break label47;
       }
-      bool = locala.aFM();
+      bool = locala.aYM();
       if (!bool) {
         break label52;
       }
     }
     label47:
     label52:
-    for (jZI = 1;; jZI = -1)
+    for (mzM = 1;; mzM = -1)
     {
-      if (jZI <= 0) {
+      if (mzM <= 0) {
         break label59;
       }
       AppMethodBeat.o(146439);
@@ -128,7 +128,7 @@ public class ToolsProcessIPCService
   
   public static abstract interface a
   {
-    public abstract boolean aFM();
+    public abstract boolean aYM();
   }
 }
 

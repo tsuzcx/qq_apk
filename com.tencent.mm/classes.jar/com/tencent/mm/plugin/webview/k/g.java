@@ -1,60 +1,90 @@
 package com.tencent.mm.plugin.webview.k;
 
-import android.content.Intent;
+import androidx.lifecycle.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.FileProviderHelper;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.g.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelcdntran.h;
+import com.tencent.mm.modelcdntran.k;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class g
 {
-  public static Intent bkR(String paramString)
+  private g.a XsK;
+  Map<String, String> XsL;
+  public x<String> XsM;
+  public b XsN;
+  String appId;
+  public String svg;
+  
+  public g()
   {
-    AppMethodBeat.i(205996);
-    Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-    paramString = getFilePath(paramString);
-    localIntent.putExtra("output", FileProviderHelper.getUriForFile(MMApplicationContext.getContext(), new q(paramString)));
-    AppMethodBeat.o(205996);
-    return localIntent;
+    AppMethodBeat.i(82376);
+    this.XsK = new g.a(this, (byte)0);
+    this.XsL = new HashMap();
+    this.XsM = new x();
+    this.XsN = b.XsP;
+    AppMethodBeat.o(82376);
   }
   
-  public static Intent gVS()
+  private void oE(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(205997);
-    Intent localIntent = new Intent("android.media.action.VIDEO_CAPTURE");
-    AppMethodBeat.o(205997);
-    return localIntent;
-  }
-  
-  public static Intent gVT()
-  {
-    AppMethodBeat.i(205998);
-    Intent localIntent = new Intent("android.provider.MediaStore.RECORD_SOUND");
-    AppMethodBeat.o(205998);
-    return localIntent;
-  }
-  
-  public static String getFilePath(String paramString)
-  {
-    AppMethodBeat.i(205994);
-    Object localObject = new q(b.aSX());
-    if (!((q)localObject).ifL()) {
-      Log.i("MicroMsg.WebJSSDKUtil", "mkdirs failed.File is exist = " + ((q)localObject).ifE());
+    AppMethodBeat.i(82378);
+    com.tencent.mm.g.g localg = new com.tencent.mm.g.g();
+    localg.taskName = "task_VestImgUploadEngine";
+    localg.lwL = this.XsK;
+    localg.field_mediaId = paramString2;
+    localg.field_fullpath = paramString1;
+    localg.field_fileType = a.lwl;
+    localg.field_priority = a.lvY;
+    localg.field_needStorage = true;
+    localg.field_isStreamMedia = false;
+    localg.field_appType = 200;
+    localg.field_bzScene = 2;
+    if (!k.bHW().g(localg))
+    {
+      Log.e("MicroMsg.VestImgUploadEngine", "hy: cdntra addSendTask failed. clientid:%s", new Object[] { paramString2 });
+      this.XsN = b.XsS;
     }
-    if (!((q)localObject).ifE()) {
-      Log.e("MicroMsg.WebJSSDKUtil", "camera storage path do not exist.(%s)", new Object[] { b.aSX() });
+    AppMethodBeat.o(82378);
+  }
+  
+  public final void oD(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(82377);
+    this.appId = paramString2;
+    this.svg = paramString1;
+    this.XsN = b.XsQ;
+    long l = System.currentTimeMillis();
+    paramString2 = h.a("vestacountavatar", l, z.bBF().field_username, String.valueOf(l));
+    this.XsL.put(Util.nullAsNil(paramString2), paramString1);
+    oE(paramString1, paramString2);
+    AppMethodBeat.o(82377);
+  }
+  
+  public static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(82375);
+      XsP = new b("NONE", 0);
+      XsQ = new b("LOADING", 1);
+      XsR = new b("SUCCESS", 2);
+      XsS = new b("FAIL", 3);
+      XsT = new b[] { XsP, XsQ, XsR, XsS };
+      AppMethodBeat.o(82375);
     }
-    localObject = ((q)localObject).bOF() + "/" + paramString + ".jpg";
-    Log.i("MicroMsg.WebJSSDKUtil", "get file path from capture file name : %s == %s", new Object[] { paramString, localObject });
-    AppMethodBeat.o(205994);
-    return localObject;
+    
+    private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.k.g
  * JD-Core Version:    0.7.0.1
  */

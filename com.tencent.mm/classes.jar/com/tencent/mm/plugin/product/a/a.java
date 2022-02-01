@@ -1,64 +1,62 @@
 package com.tencent.mm.plugin.product.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.be;
 import com.tencent.mm.model.y;
-import com.tencent.mm.plugin.product.b.c;
-import com.tencent.mm.plugin.product.b.d;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.product.model.MallProductListener;
+import com.tencent.mm.plugin.product.model.c;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
   implements be
 {
-  private c GSR;
-  private d GSS;
-  private com.tencent.mm.plugin.product.b.a GST;
+  private com.tencent.mm.plugin.product.model.b MQv;
+  private c MQw;
+  private MallProductListener MQx;
   
   public a()
   {
     AppMethodBeat.i(66847);
-    this.GSR = null;
-    this.GSS = null;
-    this.GST = new com.tencent.mm.plugin.product.b.a();
+    this.MQv = null;
+    this.MQw = null;
+    this.MQx = new MallProductListener();
     AppMethodBeat.o(66847);
   }
   
-  public static a foU()
+  public static a gzY()
   {
     AppMethodBeat.i(66848);
-    a locala = (a)y.as(a.class);
+    a locala = (a)y.aL(a.class);
     AppMethodBeat.o(66848);
     return locala;
   }
   
-  public static c foV()
+  public static com.tencent.mm.plugin.product.model.b gzZ()
   {
     AppMethodBeat.i(66851);
-    h.aHE().aGH();
-    if (foU().GSR == null) {
-      foU().GSR = new c();
+    h.baC().aZJ();
+    if (gzY().MQv == null) {
+      gzY().MQv = new com.tencent.mm.plugin.product.model.b();
     }
-    c localc = foU().GSR;
+    com.tencent.mm.plugin.product.model.b localb = gzY().MQv;
     AppMethodBeat.o(66851);
-    return localc;
+    return localb;
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public final d foW()
+  public final c gAa()
   {
     AppMethodBeat.i(66852);
-    h.aHE().aGH();
-    if (this.GSS == null) {
-      this.GSS = new d();
+    h.baC().aZJ();
+    if (this.MQw == null) {
+      this.MQw = new c();
     }
-    d locald = this.GSS;
+    c localc = this.MQw;
     AppMethodBeat.o(66852);
-    return locald;
+    return localc;
   }
   
   public HashMap<Integer, h.b> getBaseDBFactories()
@@ -69,15 +67,15 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(66849);
-    this.GSR = null;
-    EventCenter.instance.addListener(this.GST);
+    this.MQv = null;
+    this.MQx.alive();
     AppMethodBeat.o(66849);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(66850);
-    EventCenter.instance.removeListener(this.GST);
+    this.MQx.dead();
     AppMethodBeat.o(66850);
   }
   
@@ -85,7 +83,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.a.a
  * JD-Core Version:    0.7.0.1
  */

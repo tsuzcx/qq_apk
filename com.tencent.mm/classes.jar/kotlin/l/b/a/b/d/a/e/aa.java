@@ -1,25 +1,19 @@
 package kotlin.l.b.a.b.d.a.e;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.l.b.a.b.f.f;
 
-public enum aa
+public abstract interface aa
+  extends d
 {
-  static
-  {
-    AppMethodBeat.i(58008);
-    aa localaa1 = new aa("SOURCE", 0);
-    aaWx = localaa1;
-    aa localaa2 = new aa("BINARY", 1);
-    aaWy = localaa2;
-    aaWz = new aa[] { localaa1, localaa2 };
-    AppMethodBeat.o(58008);
-  }
+  public abstract boolean klP();
   
-  private aa() {}
+  public abstract f kok();
+  
+  public abstract w krd();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.e.aa
  * JD-Core Version:    0.7.0.1
  */

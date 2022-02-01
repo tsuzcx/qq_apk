@@ -11,7 +11,7 @@ public class a
 {
   public static void a(String paramString, ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(219873);
+    AppMethodBeat.i(229337);
     StatusBucket localStatusBucket = TXCAudioEngine.getInstance().getStatus(1);
     TXCStatus.a(paramString, 14003, Integer.valueOf(localStatusBucket.getIntStatus("18446744073709551615", 10001)));
     TXCStatus.a(paramString, 8005, Integer.valueOf(localStatusBucket.getIntStatus("18446744073709551615", 10002)));
@@ -22,7 +22,7 @@ public class a
     TXCStatus.a(paramString, 18029, Integer.valueOf(localStatusBucket.getIntStatus("18446744073709551615", 10006)));
     if (paramArrayList == null)
     {
-      AppMethodBeat.o(219873);
+      AppMethodBeat.o(229337);
       return;
     }
     paramString = paramArrayList.iterator();
@@ -107,12 +107,12 @@ public class a
         break label247;
       }
     }
-    AppMethodBeat.o(219873);
+    AppMethodBeat.o(229337);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.a
  * JD-Core Version:    0.7.0.1
  */

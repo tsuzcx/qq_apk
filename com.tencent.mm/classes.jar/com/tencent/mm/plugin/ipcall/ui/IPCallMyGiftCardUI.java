@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -16,27 +15,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.by.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.br.c;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.ipcall.model.e.d;
-import com.tencent.mm.protocal.protobuf.cfp;
+import com.tencent.mm.protocal.protobuf.cvs;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 import java.util.LinkedList;
 
 public class IPCallMyGiftCardUI
   extends MMActivity
-  implements i
+  implements h
 {
-  private IPCallMyGiftCardUI.a DWD;
-  private d DWE;
-  private View Xd;
+  private IPCallMyGiftCardUI.a JNM;
+  private d JNN;
+  private View bEx;
   private ListView mListView;
-  private ProgressDialog mRa;
+  private ProgressDialog pNH;
   
   public int getForceOrientation()
   {
@@ -45,7 +44,7 @@ public class IPCallMyGiftCardUI
   
   public int getLayoutId()
   {
-    return R.i.eid;
+    return R.i.gkY;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -54,8 +53,8 @@ public class IPCallMyGiftCardUI
   {
     AppMethodBeat.i(25835);
     super.onCreate(paramBundle);
-    bh.aGY().a(288, this);
-    setMMTitle(R.l.eJI);
+    bh.aZW().a(288, this);
+    setMMTitle(R.l.gLp);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -66,26 +65,26 @@ public class IPCallMyGiftCardUI
         return true;
       }
     });
-    addTextOptionMenu(0, getContext().getString(R.l.eJH), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getContext().getString(R.l.gLo), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(25829);
         paramAnonymousMenuItem = new Intent();
-        paramAnonymousMenuItem.putExtra("rawUrl", IPCallMyGiftCardUI.this.getString(R.l.eII));
+        paramAnonymousMenuItem.putExtra("rawUrl", IPCallMyGiftCardUI.this.getString(R.l.gKp));
         paramAnonymousMenuItem.putExtra("showShare", false);
         c.b(IPCallMyGiftCardUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousMenuItem);
         AppMethodBeat.o(25829);
         return true;
       }
     });
-    this.Xd = findViewById(R.h.dKe);
-    this.mListView = ((ListView)findViewById(R.h.dKf));
-    this.DWD = new IPCallMyGiftCardUI.a(this);
-    this.mListView.setAdapter(this.DWD);
+    this.bEx = findViewById(R.h.fLy);
+    this.mListView = ((ListView)findViewById(R.h.fLz));
+    this.JNM = new IPCallMyGiftCardUI.a(this);
+    this.mListView.setAdapter(this.JNM);
     paramBundle = getContext();
     getString(R.l.app_tip);
-    this.mRa = h.a(paramBundle, getString(R.l.eIQ), true, new DialogInterface.OnCancelListener()
+    this.pNH = k.a(paramBundle, getString(R.l.gKx), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -93,7 +92,7 @@ public class IPCallMyGiftCardUI
         try
         {
           if (IPCallMyGiftCardUI.a(IPCallMyGiftCardUI.this) != null) {
-            bh.aGY().a(IPCallMyGiftCardUI.a(IPCallMyGiftCardUI.this));
+            bh.aZW().a(IPCallMyGiftCardUI.a(IPCallMyGiftCardUI.this));
           }
           IPCallMyGiftCardUI.this.finish();
           AppMethodBeat.o(25830);
@@ -106,8 +105,8 @@ public class IPCallMyGiftCardUI
         }
       }
     });
-    this.DWE = new d();
-    bh.aGY().a(this.DWE, 0);
+    this.JNN = new d();
+    bh.aZW().a(this.JNN, 0);
     AppMethodBeat.o(25835);
   }
   
@@ -115,7 +114,7 @@ public class IPCallMyGiftCardUI
   {
     AppMethodBeat.i(25837);
     super.onDestroy();
-    bh.aGY().b(288, this);
+    bh.aZW().b(288, this);
     AppMethodBeat.o(25837);
   }
   
@@ -126,32 +125,32 @@ public class IPCallMyGiftCardUI
     AppMethodBeat.o(25836);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(25838);
     Log.i("MicroMsg.IPCallMyGiftCardUI", "onSceneEnd>errCode:%d,onSceneEnd>errMsg:%s", new Object[] { Integer.valueOf(paramInt2), paramString });
-    if ((paramq instanceof d))
+    if ((paramp instanceof d))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((d)paramq).DRw;
-        if ((this.mRa != null) && (this.mRa.isShowing())) {
-          this.mRa.dismiss();
+        paramString = ((d)paramp).JIG;
+        if ((this.pNH != null) && (this.pNH.isShowing())) {
+          this.pNH.dismiss();
         }
-        this.DWD.ctq = paramString.TmU;
-        this.DWD.DWH = paramString;
-        this.DWD.notifyDataSetChanged();
-        if (paramString.TmU.size() == 0) {
-          this.Xd.setVisibility(0);
+        this.JNM.ell = paramString.aaBa;
+        this.JNM.JNQ = paramString;
+        this.JNM.notifyDataSetChanged();
+        if (paramString.aaBa.size() == 0) {
+          this.bEx.setVisibility(0);
         }
         AppMethodBeat.o(25838);
         return;
       }
-      if ((this.mRa != null) && (this.mRa.isShowing())) {
-        this.mRa.dismiss();
+      if ((this.pNH != null) && (this.pNH.isShowing())) {
+        this.pNH.dismiss();
       }
-      this.Xd.setVisibility(0);
-      Toast.makeText(getContext(), getString(R.l.eIN), 0).show();
+      this.bEx.setVisibility(0);
+      Toast.makeText(getContext(), getString(R.l.gKu), 0).show();
     }
     AppMethodBeat.o(25838);
   }

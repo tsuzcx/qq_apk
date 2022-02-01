@@ -18,13 +18,13 @@ import com.tencent.kinda.gen.FontStyle;
 import com.tencent.kinda.gen.KLabelView;
 import com.tencent.kinda.gen.TextAlign;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.pluginsdk.ui.span.o;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.pluginsdk.ui.span.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.wallet_core.ui.i;
 
 public class MMKLabelView
   extends MMKView<TextView>
@@ -61,7 +61,7 @@ public class MMKLabelView
     {
       if (i != -1)
       {
-        String str = g.azI(i);
+        String str = i.aGy(i);
         try
         {
           ((TextView)getView()).setTypeface(Typeface.createFromAsset(MMApplicationContext.getContext().getAssets(), str));
@@ -118,7 +118,7 @@ public class MMKLabelView
       }
       if (this.fontStyle == FontStyle.MEDIUM)
       {
-        ar.a(((TextView)getView()).getPaint(), 0.8F);
+        aw.a(((TextView)getView()).getPaint(), 0.8F);
         AppMethodBeat.o(19064);
         return;
       }
@@ -134,7 +134,7 @@ public class MMKLabelView
   {
     AppMethodBeat.i(19065);
     TextView localTextView = new TextView(paramContext);
-    localTextView.setOnTouchListener(new o());
+    localTextView.setOnTouchListener(new s());
     localTextView.setGravity(19);
     if (ColorUtil.ifCompatKindaDarkModeDefaultColor())
     {
@@ -163,6 +163,11 @@ public class MMKLabelView
   public FontStyle getFontStyle()
   {
     return this.fontStyle;
+  }
+  
+  public float getLineSpacingFactor()
+  {
+    return 0.0F;
   }
   
   public int getLines()
@@ -211,7 +216,7 @@ public class MMKLabelView
   public float getTextSize()
   {
     AppMethodBeat.i(19072);
-    float f = a.H(MMApplicationContext.getContext(), (int)((TextView)getView()).getTextSize());
+    float f = a.K(MMApplicationContext.getContext(), (int)((TextView)getView()).getTextSize());
     AppMethodBeat.o(19072);
     return f;
   }
@@ -255,6 +260,8 @@ public class MMKLabelView
     AppMethodBeat.o(19066);
   }
   
+  public void setLineSpacingFactor(float paramFloat) {}
+  
   public void setLines(int paramInt)
   {
     AppMethodBeat.i(19067);
@@ -282,7 +289,7 @@ public class MMKLabelView
     AppMethodBeat.i(19069);
     if (paramString != null)
     {
-      ((TextView)getView()).setText(l.b(MMApplicationContext.getContext(), paramString, ((TextView)getView()).getTextSize()));
+      ((TextView)getView()).setText(p.b(MMApplicationContext.getContext(), paramString, ((TextView)getView()).getTextSize()));
       notifyChanged();
     }
     AppMethodBeat.o(19069);
@@ -310,7 +317,7 @@ public class MMKLabelView
       ((TextView)getView()).setGravity(17);
       AppMethodBeat.o(19076);
       return;
-      ((TextView)getView()).setGravity(i | 0x5);
+      ((TextView)getView()).setGravity(5);
     }
   }
   
@@ -338,17 +345,24 @@ public class MMKLabelView
   public void setTextSize(float paramFloat)
   {
     AppMethodBeat.i(19071);
-    if (paramFloat > 0.0F)
-    {
-      ((TextView)getView()).setTextSize(0, MMKViewUtil.dpToPx(MMApplicationContext.getContext(), paramFloat));
-      notifyChanged();
+    if (paramFloat > 0.0F) {
+      if (!getSupportDynamicSize()) {
+        break label51;
+      }
     }
-    AppMethodBeat.o(19071);
+    label51:
+    for (float f = MMKViewUtil.getScaleSize(MMApplicationContext.getContext());; f = 1.0F)
+    {
+      ((TextView)getView()).setTextSize(1, f * paramFloat);
+      notifyChanged();
+      AppMethodBeat.o(19071);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKLabelView
  * JD-Core Version:    0.7.0.1
  */

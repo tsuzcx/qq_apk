@@ -1,25 +1,22 @@
 package com.tencent.mm.chatroom.b;
 
 import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.ui.base.w;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class a$k
-  implements IPCRunCgi.a
+  extends u
+  implements a<ah>
 {
-  a$k(aa.f paramf, Context paramContext) {}
-  
-  public final void a(final int paramInt1, final int paramInt2, String paramString, final com.tencent.mm.an.d paramd)
+  a$k(ah.f<w> paramf, c paramc, int paramInt1, int paramInt2, Context paramContext)
   {
-    AppMethodBeat.i(187062);
-    com.tencent.mm.ae.d.uiThread((a)new q(paramd) {});
-    AppMethodBeat.o(187062);
+    super(0);
   }
 }
 

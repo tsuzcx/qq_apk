@@ -1,14 +1,14 @@
 package com.tencent.mm.audio.e;
 
-import com.tencent.e.i.e;
-import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.threadpool.i.e;
+import com.tencent.threadpool.i.h;
 import java.util.concurrent.Future;
 
 final class d$a
   implements e, h
 {
-  public final void a(Future<?> paramFuture)
+  public final void c(Future<?> paramFuture)
   {
     throw null;
   }

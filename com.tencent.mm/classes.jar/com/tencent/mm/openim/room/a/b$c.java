@@ -1,26 +1,26 @@
 package com.tencent.mm.openim.room.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dfe;
-import com.tencent.mm.protocal.protobuf.dff;
-import com.tencent.mm.protocal.protobuf.xn;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.protocal.protobuf.dxg;
+import com.tencent.mm.protocal.protobuf.dxh;
+import com.tencent.mm.protocal.protobuf.zh;
+import com.tencent.mm.storage.au;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b$c
 {
-  public static as a(as paramas, dfe paramdfe)
+  public static au a(au paramau, dxg paramdxg)
   {
     AppMethodBeat.i(151322);
-    paramas.setUsername(paramdfe.userName);
-    paramas.setNickname(paramdfe.nickName);
+    paramau.setUsername(paramdxg.userName);
+    paramau.setNickname(paramdxg.nickName);
     AppMethodBeat.o(151322);
-    return paramas;
+    return paramau;
   }
   
-  public static LinkedList<xn> aL(List<dff> paramList)
+  public static LinkedList<zh> cq(List<dxh> paramList)
   {
     AppMethodBeat.i(151323);
     LinkedList localLinkedList = new LinkedList();
@@ -32,16 +32,16 @@ public final class b$c
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      dff localdff = (dff)paramList.next();
-      xn localxn = new xn();
-      localxn.UserName = localdff.userName;
-      localxn.rWI = localdff.nickName;
-      localxn.SjH = localdff.jmB;
-      localxn.SjI = localdff.Srd;
-      localxn.SjJ = localdff.Sre;
-      localxn.SjK = localdff.TMV;
-      localxn.SjL = localdff.TMX;
-      localLinkedList.add(localxn);
+      dxh localdxh = (dxh)paramList.next();
+      zh localzh = new zh();
+      localzh.UserName = localdxh.userName;
+      localzh.vhX = localdxh.nickName;
+      localzh.ZhN = localdxh.displayName;
+      localzh.ZhO = localdxh.Zqf;
+      localzh.ZhP = localdxh.Zqg;
+      localzh.ZhQ = localdxh.abdm;
+      localzh.ZhR = localdxh.abdo;
+      localLinkedList.add(localzh);
     }
     AppMethodBeat.o(151323);
     return localLinkedList;
@@ -49,7 +49,7 @@ public final class b$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.openim.room.a.b.c
  * JD-Core Version:    0.7.0.1
  */

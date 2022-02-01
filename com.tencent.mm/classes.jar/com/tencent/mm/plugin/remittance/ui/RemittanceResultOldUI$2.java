@@ -12,13 +12,13 @@ final class RemittanceResultOldUI$2
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(68305);
-    RemittanceResultOldUI.b(this.Ivy);
+    RemittanceResultOldUI.b(this.Ota);
     AppMethodBeat.o(68305);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceResultOldUI.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.findersdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/ConstantsFinderUI$FinderLiveMiniProProxyUI;", "", "()V", "ACTIVITY_PURPOSE", "", "getACTIVITY_PURPOSE", "()Ljava/lang/String;", "DEFAULT", "", "getDEFAULT", "()I", "FINISH_AND_MOVE_BACK", "getFINISH_AND_MOVE_BACK", "FINISH_WITH_CLEAR_TOP", "getFINISH_WITH_CLEAR_TOP", "LUANCH_KEY", "getLUANCH_KEY", "LUANCH_MINI_PROGRAM", "getLUANCH_MINI_PROGRAM", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/ConstantsFinderUI$FinderLiveMiniProProxyUI;", "", "()V", "ACTIVITY_PURPOSE", "", "getACTIVITY_PURPOSE", "()Ljava/lang/String;", "DEFAULT", "", "getDEFAULT", "()I", "FINISH_AND_MOVE_BACK", "getFINISH_AND_MOVE_BACK", "FINISH_WITH_CLEAR_TOP", "getFINISH_WITH_CLEAR_TOP", "LUANCH_KEY", "getLUANCH_KEY", "LUANCH_MINI_PROGRAM", "getLUANCH_MINI_PROGRAM", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$b
 {
-  private static final String BuK = "ACTIVITY_PURPOSE";
-  private static final String BuL = "LUANCH_KEY";
-  private static final int BuM = 1;
-  private static final int BuN = 2;
-  private static final int BuO = 3;
-  public static final b BuP;
   private static final int DEFAULT = 0;
+  private static final String HbA;
+  private static final String HbB;
+  private static final int HbC;
+  private static final int HbD;
+  private static final int HbE;
+  public static final b Hbz;
   
   static
   {
-    AppMethodBeat.i(209852);
-    BuP = new b();
-    BuK = "ACTIVITY_PURPOSE";
-    BuL = "LUANCH_KEY";
-    BuM = 1;
-    BuN = 2;
-    BuO = 3;
-    AppMethodBeat.o(209852);
+    AppMethodBeat.i(273712);
+    Hbz = new b();
+    HbA = "ACTIVITY_PURPOSE";
+    HbB = "LUANCH_KEY";
+    HbC = 1;
+    HbD = 2;
+    HbE = 3;
+    AppMethodBeat.o(273712);
   }
   
-  public static String emQ()
+  public static String fqZ()
   {
-    return BuK;
+    return HbA;
   }
   
-  public static String emR()
+  public static String fra()
   {
-    return BuL;
+    return HbB;
   }
   
-  public static int emS()
+  public static int frb()
   {
     return DEFAULT;
   }
   
-  public static int emT()
+  public static int frc()
   {
-    return BuM;
+    return HbC;
   }
   
-  public static int emU()
+  public static int frd()
   {
-    return BuN;
+    return HbD;
   }
   
-  public static int emV()
+  public static int fre()
   {
-    return BuO;
+    return HbE;
   }
 }
 

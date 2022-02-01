@@ -9,17 +9,27 @@ public abstract interface f
   
   public abstract void a(MMBackgroundRunningOperationParcel paramMMBackgroundRunningOperationParcel);
   
-  public abstract void a(f.a parama);
+  public abstract void a(a parama);
   
-  public abstract void a(f.b paramb);
+  public abstract void a(b paramb);
   
-  public abstract void b(f.a parama);
+  public abstract void b(a parama);
   
-  public abstract void b(f.b paramb);
+  public abstract void b(b paramb);
+  
+  public static abstract interface a
+  {
+    public abstract void onBackgroundRunningOperationReceived(MMBackgroundRunningOperationParcel paramMMBackgroundRunningOperationParcel);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void b(AppBrandBackgroundRunningOperationParcel paramAppBrandBackgroundRunningOperationParcel);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.f
  * JD-Core Version:    0.7.0.1
  */

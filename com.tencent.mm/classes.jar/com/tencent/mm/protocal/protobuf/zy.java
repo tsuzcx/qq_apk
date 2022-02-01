@@ -4,86 +4,165 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class zy
-  extends dyl
+  extends erp
 {
-  public int Hly;
+  public String IMg;
+  public String IMh;
+  public String IcZ;
+  public String Ida;
+  public int YIE;
+  public long YKr;
+  public String YKs;
+  public String ZaN;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(155398);
+    AppMethodBeat.i(32157);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.Hly);
-      AppMethodBeat.o(155398);
+      if (this.IMh != null) {
+        paramVarArgs.g(2, this.IMh);
+      }
+      if (this.IMg != null) {
+        paramVarArgs.g(3, this.IMg);
+      }
+      paramVarArgs.bv(4, this.YKr);
+      if (this.ZaN != null) {
+        paramVarArgs.g(5, this.ZaN);
+      }
+      if (this.Ida != null) {
+        paramVarArgs.g(6, this.Ida);
+      }
+      paramVarArgs.bS(7, this.YIE);
+      if (this.YKs != null) {
+        paramVarArgs.g(8, this.YKs);
+      }
+      if (this.IcZ != null) {
+        paramVarArgs.g(9, this.IcZ);
+      }
+      AppMethodBeat.o(32157);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label332;
+        break label755;
       }
     }
-    label332:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label755:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.Hly);
-      AppMethodBeat.o(155398);
-      return paramInt + i;
+      paramInt = i;
+      if (this.IMh != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.IMh);
+      }
+      i = paramInt;
+      if (this.IMg != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.IMg);
+      }
+      i += i.a.a.b.b.a.q(4, this.YKr);
+      paramInt = i;
+      if (this.ZaN != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.ZaN);
+      }
+      i = paramInt;
+      if (this.Ida != null) {
+        i = paramInt + i.a.a.b.b.a.h(6, this.Ida);
+      }
+      i += i.a.a.b.b.a.cJ(7, this.YIE);
+      paramInt = i;
+      if (this.YKs != null) {
+        paramInt = i + i.a.a.b.b.a.h(8, this.YKs);
+      }
+      i = paramInt;
+      if (this.IcZ != null) {
+        i = paramInt + i.a.a.b.b.a.h(9, this.IcZ);
+      }
+      AppMethodBeat.o(32157);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(155398);
+        AppMethodBeat.o(32157);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         zy localzy = (zy)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(155398);
+          AppMethodBeat.o(32157);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localzy.BaseRequest = localjg;
+            localzy.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(155398);
+          AppMethodBeat.o(32157);
+          return 0;
+        case 2: 
+          localzy.IMh = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(32157);
+          return 0;
+        case 3: 
+          localzy.IMg = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(32157);
+          return 0;
+        case 4: 
+          localzy.YKr = ((i.a.a.a.a)localObject).ajGk.aaw();
+          AppMethodBeat.o(32157);
+          return 0;
+        case 5: 
+          localzy.ZaN = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(32157);
+          return 0;
+        case 6: 
+          localzy.Ida = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(32157);
+          return 0;
+        case 7: 
+          localzy.YIE = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(32157);
+          return 0;
+        case 8: 
+          localzy.YKs = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(32157);
           return 0;
         }
-        localzy.Hly = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(155398);
+        localzy.IcZ = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(32157);
         return 0;
       }
-      AppMethodBeat.o(155398);
+      AppMethodBeat.o(32157);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.zy
  * JD-Core Version:    0.7.0.1
  */

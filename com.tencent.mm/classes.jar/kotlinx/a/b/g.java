@@ -1,33 +1,68 @@
 package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.c;
-import kotlin.l;
-import kotlinx.a.a.e;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.g.b.a.a;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/internal/BooleanArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/BooleanArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "", "builder", "checkIndex", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"elementDescriptors", "", "Lkotlinx/serialization/descriptors/SerialDescriptor;", "getElementDescriptors", "(Lkotlinx/serialization/descriptors/SerialDescriptor;)Ljava/lang/Iterable;", "elementNames", "", "getElementNames", "kotlinx-serialization-runtime"}, k=2, mv={1, 4, 0})
 public final class g
-  extends ax<Boolean, boolean[], f>
 {
-  public static final g abBv;
-  
-  static
+  public static final Iterable<e> a(e parame)
   {
-    AppMethodBeat.i(254542);
-    abBv = new g();
-    AppMethodBeat.o(254542);
+    AppMethodBeat.i(188427);
+    s.u(parame, "$this$elementDescriptors");
+    parame = (Iterable)new a(parame);
+    AppMethodBeat.o(188427);
+    return parame;
   }
   
-  private g()
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"kotlin/collections/CollectionsKt__IterablesKt$Iterable$1", "", "iterator", "", "kotlin-stdlib"}, k=1, mv={1, 4, 0})
+  public static final class a
+    implements Iterable<e>, a
   {
-    super(e.a(c.aaAU));
-    AppMethodBeat.i(254541);
-    AppMethodBeat.o(254541);
+    public a(e parame) {}
+    
+    public final Iterator<e> iterator()
+    {
+      AppMethodBeat.i(188464);
+      Iterator localIterator = (Iterator)new a(this);
+      AppMethodBeat.o(188464);
+      return localIterator;
+    }
+    
+    @Metadata(bv={1, 0, 3}, d1={""}, d2={"kotlinx/serialization/descriptors/SerialDescriptorKt$elementDescriptors$1$1", "", "Lkotlinx/serialization/descriptors/SerialDescriptor;", "elementsLeft", "", "hasNext", "", "next", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
+    public static final class a
+      implements Iterator<e>, a
+    {
+      private int ajDe;
+      
+      a(g.a parama)
+      {
+        AppMethodBeat.i(188458);
+        this.ajDe = this.ajDf.ajDd.kFb();
+        AppMethodBeat.o(188458);
+      }
+      
+      public final boolean hasNext()
+      {
+        return this.ajDe > 0;
+      }
+      
+      public final void remove()
+      {
+        AppMethodBeat.i(188484);
+        UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Operation is not supported for read-only collection");
+        AppMethodBeat.o(188484);
+        throw localUnsupportedOperationException;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlinx.a.b.g
  * JD-Core Version:    0.7.0.1
  */

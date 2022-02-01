@@ -53,7 +53,7 @@ public class MediaCodecFactory
         AppMethodBeat.o(114216);
         return paramAudioType;
       }
-      catch (Throwable paramAudioType)
+      finally
       {
         Logger.e("MediaCodecFactory", "createDecoderByType error", paramAudioType);
       }
@@ -87,7 +87,7 @@ public class MediaCodecFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.MediaCodecFactory
  * JD-Core Version:    0.7.0.1
  */

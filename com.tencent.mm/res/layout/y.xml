@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="152.0dip"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/f52" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/eo" android:textColor="@color/FG_2" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cf8" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cm" android:text="@string/da5" />
-    <include android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bu" layout="@layout/ak6" />
-</FrameLayout>
+    <RelativeLayout android:id="@id/f4k" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:id="@id/f3g" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
+    </RelativeLayout>
+</LinearLayout>

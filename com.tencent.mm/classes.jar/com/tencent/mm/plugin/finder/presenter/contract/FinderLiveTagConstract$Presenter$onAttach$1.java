@@ -1,39 +1,43 @@
 package com.tencent.mm.plugin.finder.presenter.contract;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.aw;
+import com.tencent.mm.plugin.finder.convert.as;
 import com.tencent.mm.plugin.finder.live.model.context.a;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.b;
-import com.tencent.mm.protocal.protobuf.bda;
-import com.tencent.mm.view.recyclerview.e;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.protocal.protobuf.bno;
 import com.tencent.mm.view.recyclerview.f;
-import kotlin.l;
+import com.tencent.mm.view.recyclerview.g;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/presenter/contract/FinderLiveTagConstract$Presenter$onAttach$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/presenter/contract/FinderLiveTagConstract$Presenter$onAttach$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveTagConstract$Presenter$onAttach$1
-  implements f
+  implements g
 {
-  public final e<?> yx(int paramInt)
+  public final f<?> yF(int paramInt)
   {
-    AppMethodBeat.i(243559);
-    Object localObject = a.ykr;
-    localObject = a.dAc();
-    if (localObject != null)
-    {
-      localObject = (b)((a)localObject).business(b.class);
-      if (localObject == null) {}
+    AppMethodBeat.i(343682);
+    Object localObject = a.CMm;
+    localObject = a.emY();
+    if (localObject == null) {
+      localObject = null;
     }
-    for (localObject = ((b)localObject).yeG;; localObject = null)
+    for (;;)
     {
-      localObject = (e)new aw((bda)localObject);
-      AppMethodBeat.o(243559);
+      localObject = (f)new as((bno)localObject);
+      AppMethodBeat.o(343682);
       return localObject;
+      localObject = (e)((a)localObject).business(e.class);
+      if (localObject == null) {
+        localObject = null;
+      } else {
+        localObject = ((e)localObject).CFe;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.presenter.contract.FinderLiveTagConstract.Presenter.onAttach.1
  * JD-Core Version:    0.7.0.1
  */

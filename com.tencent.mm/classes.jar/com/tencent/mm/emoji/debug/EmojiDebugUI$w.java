@@ -1,16 +1,26 @@
 package com.tencent.mm.emoji.debug;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class EmojiDebugUI$w
-  extends q
-  implements a<x>
+  extends u
+  implements a<ah>
 {
-  EmojiDebugUI$w(EmojiDebugUI paramEmojiDebugUI)
+  public static final w meU;
+  
+  static
+  {
+    AppMethodBeat.i(242253);
+    meU = new w();
+    AppMethodBeat.o(242253);
+  }
+  
+  EmojiDebugUI$w()
   {
     super(0);
   }

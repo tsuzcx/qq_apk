@@ -1,78 +1,103 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.content.Intent;
-import android.os.Build.VERSION;
-import com.tencent.luggage.sdk.processes.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.appbrand.task.g;
-import com.tencent.mm.plugin.appbrand.task.i;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
-public class at
-  implements y, MMActivity.a
+public final class at
+  extends MAutoStorage<as>
 {
-  public final int requestCode;
+  public static final String[] nVW;
   
-  protected at()
+  static
   {
-    AppMethodBeat.i(47308);
-    this.requestCode = (at.class.hashCode() & 0xFFFF);
-    AppMethodBeat.o(47308);
+    AppMethodBeat.i(320709);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(as.DB_INFO, "PluginDevLaunchInfo") };
+    AppMethodBeat.o(320709);
   }
   
-  public void NR() {}
-  
-  public final boolean bZy()
+  public at(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return true;
+    super(paramISQLiteDatabase, as.DB_INFO, "PluginDevLaunchInfo", as.INDEX_CREATE);
   }
   
-  public void cad() {}
-  
-  public void cae()
+  public final long eN(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(47309);
-    if (d.qV(17)) {
-      NR();
+    AppMethodBeat.i(320721);
+    if (Util.isNullOrNil(paramString1))
+    {
+      Log.e("PluginDevLaunchInfoStorage", "getDevKey appId null");
+      AppMethodBeat.o(320721);
+      return 0L;
     }
-    AppMethodBeat.o(47309);
+    as localas = new as();
+    localas.field_appId = paramString1;
+    localas.field_versionDesc = paramString2;
+    if (super.get(localas, as.qDJ))
+    {
+      Log.i("PluginDevLaunchInfoStorage", "getDevKey appId:%s,versionDesc:%s success devKey:%d", new Object[] { paramString1, paramString2, Long.valueOf(localas.field_devKey) });
+      long l = localas.field_devKey;
+      AppMethodBeat.o(320721);
+      return l;
+    }
+    Log.i("PluginDevLaunchInfoStorage", "getDevKey appId:%s,versionDesc:%s fail", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.o(320721);
+    return 0L;
   }
   
-  public final void d(int paramInt1, int paramInt2, Intent paramIntent)
+  public final boolean eO(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(47310);
-    if (this.requestCode != paramInt1)
+    AppMethodBeat.i(320727);
+    if (Util.isNullOrNil(paramString1))
     {
-      AppMethodBeat.o(47310);
-      return;
+      AppMethodBeat.o(320727);
+      return false;
     }
-    if (paramInt2 == -1)
+    as localas = new as();
+    localas.field_appId = paramString1;
+    localas.field_versionDesc = paramString2;
+    if (super.delete(localas, as.qDJ))
     {
-      Log.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download ok");
-      g.cjb().b(b.cBi);
-      NR();
-      AppMethodBeat.o(47310);
-      return;
+      AppMethodBeat.o(320727);
+      return true;
     }
-    if (paramInt2 == 2)
+    AppMethodBeat.o(320727);
+    return false;
+  }
+  
+  public final boolean j(String paramString1, String paramString2, long paramLong)
+  {
+    AppMethodBeat.i(320718);
+    if (Util.isNullOrNil(paramString1))
     {
-      Log.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs cancel loading, download in background");
-      cad();
-      AppMethodBeat.o(47310);
-      return;
+      AppMethodBeat.o(320718);
+      return false;
     }
-    Log.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download unknown error, resultCode = %d, apiLevel = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(Build.VERSION.SDK_INT) });
-    h.IzE.idkeyStat(366L, 8L, 1L, false);
-    cae();
-    AppMethodBeat.o(47310);
+    as localas = new as();
+    localas.field_appId = paramString1;
+    localas.field_versionDesc = paramString2;
+    localas.field_devKey = paramLong;
+    boolean bool;
+    if (super.get(localas, as.qDJ))
+    {
+      localas.field_devKey = paramLong;
+      bool = super.update(localas, new String[0]);
+      Log.i("PluginDevLaunchInfoStorage", "setPluginInfo update appId:%s,versionDesc:%s,devUin:%d ret:%b", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), Boolean.valueOf(bool) });
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(320718);
+      return bool;
+      bool = super.insert(localas);
+      Log.i("PluginDevLaunchInfoStorage", "setPluginInfo insert appId:%s,versionDesc:%s,devUin:%d ret:%b", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), Boolean.valueOf(bool) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.at
  * JD-Core Version:    0.7.0.1
  */

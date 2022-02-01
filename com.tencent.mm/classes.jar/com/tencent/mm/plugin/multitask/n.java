@@ -5,9 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/getMultiTaskItemPosition;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "()V", "TAG", "", "invoke", "data", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/getMultiTaskItemPosition;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "()V", "TAG", "", "invoke", "data", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
   implements m<Bundle, IPCString>
 {
@@ -15,10 +15,10 @@ public final class n
   
   public n()
   {
-    AppMethodBeat.i(247950);
+    AppMethodBeat.i(303881);
     this.TAG = "MicroMsg.MultiTask.getMultiTaskItemPosition";
     Log.i(this.TAG, "create multiTaskItemPosition");
-    AppMethodBeat.o(247950);
+    AppMethodBeat.o(303881);
   }
 }
 

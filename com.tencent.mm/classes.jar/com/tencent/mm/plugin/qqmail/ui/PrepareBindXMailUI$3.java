@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.protocal.GeneralControlWrapper;
@@ -17,17 +17,17 @@ final class PrepareBindXMailUI$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(250020);
+    AppMethodBeat.i(266968);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     paramView = new Intent();
-    paramView.putExtra("rawUrl", PrepareBindXMailUI.d(this.Hrj));
-    paramView.putExtra("hardcode_jspermission", JsapiPermissionWrapper.RBc);
-    paramView.putExtra("hardcode_general_ctrl", GeneralControlWrapper.RAX);
-    c.b(this.Hrj, "webview", ".ui.tools.WebViewUI", paramView, 293);
+    paramView.putExtra("rawUrl", PrepareBindXMailUI.d(this.NoW));
+    paramView.putExtra("hardcode_jspermission", JsapiPermissionWrapper.YxF);
+    paramView.putExtra("hardcode_general_ctrl", GeneralControlWrapper.YxA);
+    c.b(this.NoW, "webview", ".ui.tools.WebViewUI", paramView, 293);
     a.a(this, "com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(250020);
+    AppMethodBeat.o(266968);
   }
 }
 

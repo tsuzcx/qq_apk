@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/agf" android:layout_width="@dimen/alv" android:layout_height="@dimen/alv" android:scaleType="centerCrop" />
-    <TextView android:textSize="@dimen/als" android:textColor="@color/ab8" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ijq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/alw" />
-</LinearLayout>
+    <com.tencent.mm.plugin.game.ui.GameFeedModuleTitle android:paddingLeft="@dimen/gm" android:paddingTop="@dimen/gm" android:paddingRight="@dimen/gm" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/gw" android:textStyle="bold" android:textColor="@color/w3" android:id="@id/ekm" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </com.tencent.mm.plugin.game.ui.GameFeedModuleTitle>
+</FrameLayout>

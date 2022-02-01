@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.appbrand.appcache;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ak.a;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.c.a;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
 import com.tencent.mm.b.p;
-import com.tencent.mm.cw.f;
-import com.tencent.mm.plugin.appbrand.config.t;
-import com.tencent.mm.protocal.protobuf.ack;
-import com.tencent.mm.protocal.protobuf.btu;
-import com.tencent.mm.protocal.protobuf.csp;
-import com.tencent.mm.protocal.protobuf.dyi;
-import com.tencent.mm.protocal.protobuf.kc;
-import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.cp.f;
+import com.tencent.mm.plugin.appbrand.config.w;
+import com.tencent.mm.protocal.protobuf.aeo;
+import com.tencent.mm.protocal.protobuf.cip;
+import com.tencent.mm.protocal.protobuf.djr;
+import com.tencent.mm.protocal.protobuf.erm;
+import com.tencent.mm.protocal.protobuf.ky;
+import com.tencent.mm.protocal.protobuf.kz;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -25,86 +25,86 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class h
-  extends c<kd>
+  extends b<kz>
 {
-  final d rr;
+  final c rr;
   
-  public h(kc paramkc)
+  public h(ky paramky)
   {
-    this(paramkc, "/cgi-bin/mmbiz-bin/wxaapp/batchgetwxadownloadurl");
+    this(paramky, "/cgi-bin/mmbiz-bin/wxaapp/batchgetwxadownloadurl");
   }
   
-  private h(kc paramkc, String paramString)
+  private h(ky paramky, String paramString)
   {
     AppMethodBeat.i(174705);
-    d.a locala = new d.a();
+    c.a locala = new c.a();
     locala.funcId = 1713;
     locala.uri = paramString;
-    locala.lBU = paramkc;
-    locala.lBV = new kd();
-    if ((paramkc.RPD == null) || (paramkc.RPD.fOu == 0))
+    locala.otE = paramky;
+    locala.otF = new kz();
+    if ((paramky.YMR == null) || (paramky.YMR.hUn == 0))
     {
-      paramString = paramkc.RPC.iterator();
+      paramString = paramky.YMQ.iterator();
       while (paramString.hasNext())
       {
-        Object localObject = (btu)paramString.next();
-        localObject = (Integer)t.oaj.get(((btu)localObject).TdO.appid);
+        Object localObject = (cip)paramString.next();
+        localObject = (Integer)w.raN.get(((cip)localObject).aard.appid);
         if ((localObject != null) && (((Integer)localObject).intValue() > 0))
         {
-          if (paramkc.RPD == null)
+          if (paramky.YMR == null)
           {
-            paramkc.RPD = new ack();
-            paramkc.RPD.SnY = false;
-            paramkc.RPD.SnZ = 1;
+            paramky.YMR = new aeo();
+            paramky.YMR.ZmA = false;
+            paramky.YMR.ZmB = 1;
           }
-          paramkc.RPD.fOu = ((Integer)localObject).intValue();
+          paramky.YMR.hUn = ((Integer)localObject).intValue();
         }
       }
     }
-    paramkc = locala.bgN();
-    this.rr = paramkc;
-    c(paramkc);
+    paramky = locala.bEF();
+    this.rr = paramky;
+    c(paramky);
     AppMethodBeat.o(174705);
   }
   
-  public final f<c.a<kd>> bhW()
+  public final f<b.a<kz>> bFJ()
   {
-    AppMethodBeat.i(268698);
-    Object localObject3 = (kc)d.b.b(this.rr.lBR);
-    int i = ((kc)localObject3).scene;
-    Object localObject1 = a.a((ack)Objects.requireNonNull(((kc)localObject3).RPD));
-    Object localObject4 = ((kc)localObject3).RPC;
+    AppMethodBeat.i(320303);
+    Object localObject3 = (ky)c.b.b(this.rr.otB);
+    int i = ((ky)localObject3).scene;
+    Object localObject1 = a.b((aeo)Objects.requireNonNull(((ky)localObject3).YMR));
+    Object localObject4 = ((ky)localObject3).YMQ;
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("[");
     localObject4 = ((List)localObject4).iterator();
     if (((Iterator)localObject4).hasNext())
     {
-      btu localbtu = (btu)((Iterator)localObject4).next();
+      cip localcip = (cip)((Iterator)localObject4).next();
       ((StringBuilder)localObject3).append("{");
-      if (!TextUtils.isEmpty(localbtu.TdO.appid)) {
-        ((StringBuilder)localObject3).append("appId:").append(localbtu.TdO.appid);
+      if (!TextUtils.isEmpty(localcip.aard.appid)) {
+        ((StringBuilder)localObject3).append("appId:").append(localcip.aard.appid);
       }
       for (;;)
       {
-        ((StringBuilder)localObject3).append(", module:").append(localbtu.TdO.TnI);
-        ((StringBuilder)localObject3).append(", package_type:").append(localbtu.TdO.TnG);
-        ((StringBuilder)localObject3).append(", version_type:").append(localbtu.TdO.RYL);
-        if ((j.a.vB(localbtu.TdO.RYL)) && (localbtu.TdT != 0)) {
-          ((StringBuilder)localObject3).append(", dev_uin:").append(p.getString(localbtu.TdT));
+        ((StringBuilder)localObject3).append(", module:").append(localcip.aard.aazm);
+        ((StringBuilder)localObject3).append(", package_type:").append(localcip.aard.aazp);
+        ((StringBuilder)localObject3).append(", version_type:").append(localcip.aard.Tqb);
+        if ((k.a.vK(localcip.aard.Tqb)) && (localcip.aari != 0)) {
+          ((StringBuilder)localObject3).append(", dev_uin:").append(p.getString(localcip.aari));
         }
-        if (localbtu.RYM > 0) {
-          ((StringBuilder)localObject3).append(", version:").append(localbtu.RYM);
+        if (localcip.YWM > 0) {
+          ((StringBuilder)localObject3).append(", version:").append(localcip.YWM);
         }
-        if ((localbtu.TdP != null) && (localbtu.TdP.RYM > 0)) {
-          ((StringBuilder)localObject3).append(", local_version:").append(localbtu.TdP.RYM);
+        if ((localcip.aare != null) && (localcip.aare.YWM > 0)) {
+          ((StringBuilder)localObject3).append(", local_version:").append(localcip.aare.YWM);
         }
-        if (localbtu.TdS) {
+        if (localcip.aarh) {
           ((StringBuilder)localObject3).append(", need_zstd:true");
         }
         ((StringBuilder)localObject3).append("},");
         break;
-        if (!TextUtils.isEmpty(localbtu.TdO.username)) {
-          ((StringBuilder)localObject3).append("username:").append(localbtu.TdO.username);
+        if (!TextUtils.isEmpty(localcip.aard.username)) {
+          ((StringBuilder)localObject3).append("username:").append(localcip.aard.username);
         }
       }
     }
@@ -112,18 +112,18 @@ public final class h
     Log.i("MicroMsg.AppBrand.CgiBatchGetPkgDownloadInfo", "run(), scene:%d, source:%s, req_list:%s", new Object[] { Integer.valueOf(i), localObject1, ((StringBuilder)localObject3).toString() });
     try
     {
-      localObject1 = super.bhW();
+      localObject1 = super.bFJ();
       return localObject1;
     }
     finally
     {
-      AppMethodBeat.o(268698);
+      AppMethodBeat.o(320303);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.h
  * JD-Core Version:    0.7.0.1
  */

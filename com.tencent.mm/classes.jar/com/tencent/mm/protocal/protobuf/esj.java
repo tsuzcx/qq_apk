@@ -1,81 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class esj
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public int aNf = 0;
-  public String activityName = "";
-  public long timestamp = 0L;
+  public String abvZ;
+  public String abwa;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122553);
+    AppMethodBeat.i(138186);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.activityName != null) {
-        paramVarArgs.f(1, this.activityName);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.aNf);
-      paramVarArgs.bm(3, this.timestamp);
-      AppMethodBeat.o(122553);
+      if (this.abvZ != null) {
+        paramVarArgs.g(2, this.abvZ);
+      }
+      if (this.abwa != null) {
+        paramVarArgs.g(3, this.abwa);
+      }
+      AppMethodBeat.o(138186);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.activityName == null) {
-        break label306;
+      if (this.BaseRequest == null) {
+        break label404;
       }
     }
-    label306:
-    for (paramInt = g.a.a.b.b.a.g(1, this.activityName) + 0;; paramInt = 0)
+    label404:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.aNf);
-      int j = g.a.a.b.b.a.p(3, this.timestamp);
-      AppMethodBeat.o(122553);
-      return paramInt + i + j;
+      paramInt = i;
+      if (this.abvZ != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.abvZ);
+      }
+      i = paramInt;
+      if (this.abwa != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.abwa);
+      }
+      AppMethodBeat.o(138186);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(122553);
+        AppMethodBeat.o(138186);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         esj localesj = (esj)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(122553);
+          AppMethodBeat.o(138186);
           return -1;
         case 1: 
-          localesj.activityName = locala.abFh.readString();
-          AppMethodBeat.o(122553);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localesj.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(138186);
           return 0;
         case 2: 
-          localesj.aNf = locala.abFh.AK();
-          AppMethodBeat.o(122553);
+          localesj.abvZ = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(138186);
           return 0;
         }
-        localesj.timestamp = locala.abFh.AN();
-        AppMethodBeat.o(122553);
+        localesj.abwa = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(138186);
         return 0;
       }
-      AppMethodBeat.o(122553);
+      AppMethodBeat.o(138186);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.esj
  * JD-Core Version:    0.7.0.1
  */

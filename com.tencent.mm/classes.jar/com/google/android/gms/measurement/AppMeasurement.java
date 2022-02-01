@@ -2,12 +2,9 @@ package com.google.android.gms.measurement;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Keep;
 import androidx.b.a;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.internal.GoogleServices;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.internal.measurement.zzdu;
 import com.google.android.gms.internal.measurement.zzfg;
 import com.google.android.gms.internal.measurement.zzfi;
@@ -27,12 +24,9 @@ import java.util.List;
 import java.util.Map;
 
 @Deprecated
-@Keep
 public class AppMeasurement
 {
-  @KeepForSdk
   public static final String CRASH_ORIGIN = "crash";
-  @KeepForSdk
   public static final String FCM_ORIGIN = "fcm";
   private final zzgl zzacw;
   
@@ -45,7 +39,6 @@ public class AppMeasurement
   }
   
   @Deprecated
-  @Keep
   public static AppMeasurement getInstance(Context paramContext)
   {
     AppMethodBeat.i(2303);
@@ -54,7 +47,6 @@ public class AppMeasurement
     return paramContext;
   }
   
-  @Keep
   public void beginAdUnitExposure(String paramString)
   {
     AppMethodBeat.i(2322);
@@ -62,8 +54,6 @@ public class AppMeasurement
     AppMethodBeat.o(2322);
   }
   
-  @Keep
-  @KeepForSdk
   public void clearConditionalUserProperty(String paramString1, String paramString2, Bundle paramBundle)
   {
     AppMethodBeat.i(2326);
@@ -71,8 +61,6 @@ public class AppMeasurement
     AppMethodBeat.o(2326);
   }
   
-  @Keep
-  @VisibleForTesting
   protected void clearConditionalUserPropertyAs(String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
     AppMethodBeat.i(2327);
@@ -80,7 +68,6 @@ public class AppMeasurement
     AppMethodBeat.o(2327);
   }
   
-  @Keep
   public void endAdUnitExposure(String paramString)
   {
     AppMethodBeat.i(2323);
@@ -88,7 +75,6 @@ public class AppMeasurement
     AppMethodBeat.o(2323);
   }
   
-  @Keep
   public long generateEventId()
   {
     AppMethodBeat.i(2321);
@@ -97,7 +83,6 @@ public class AppMeasurement
     return l;
   }
   
-  @Keep
   public String getAppInstanceId()
   {
     AppMethodBeat.i(2319);
@@ -106,7 +91,6 @@ public class AppMeasurement
     return str;
   }
   
-  @KeepForSdk
   public Boolean getBoolean()
   {
     AppMethodBeat.i(2333);
@@ -115,8 +99,6 @@ public class AppMeasurement
     return localBoolean;
   }
   
-  @Keep
-  @KeepForSdk
   public List<ConditionalUserProperty> getConditionalUserProperties(String paramString1, String paramString2)
   {
     AppMethodBeat.i(2330);
@@ -125,8 +107,6 @@ public class AppMeasurement
     return paramString1;
   }
   
-  @Keep
-  @VisibleForTesting
   protected List<ConditionalUserProperty> getConditionalUserPropertiesAs(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(2331);
@@ -135,7 +115,6 @@ public class AppMeasurement
     return paramString1;
   }
   
-  @Keep
   public String getCurrentScreenClass()
   {
     AppMethodBeat.i(2318);
@@ -150,7 +129,6 @@ public class AppMeasurement
     return null;
   }
   
-  @Keep
   public String getCurrentScreenName()
   {
     AppMethodBeat.i(2317);
@@ -165,7 +143,6 @@ public class AppMeasurement
     return null;
   }
   
-  @KeepForSdk
   public Double getDouble()
   {
     AppMethodBeat.i(2337);
@@ -174,7 +151,6 @@ public class AppMeasurement
     return localDouble;
   }
   
-  @Keep
   public String getGmpAppId()
   {
     AppMethodBeat.i(2320);
@@ -192,7 +168,6 @@ public class AppMeasurement
     return null;
   }
   
-  @KeepForSdk
   public Integer getInteger()
   {
     AppMethodBeat.i(2336);
@@ -201,7 +176,6 @@ public class AppMeasurement
     return localInteger;
   }
   
-  @KeepForSdk
   public Long getLong()
   {
     AppMethodBeat.i(2335);
@@ -210,8 +184,6 @@ public class AppMeasurement
     return localLong;
   }
   
-  @Keep
-  @KeepForSdk
   public int getMaxUserProperties(String paramString)
   {
     AppMethodBeat.i(2332);
@@ -221,7 +193,6 @@ public class AppMeasurement
     return 25;
   }
   
-  @KeepForSdk
   public String getString()
   {
     AppMethodBeat.i(2334);
@@ -230,8 +201,6 @@ public class AppMeasurement
     return str;
   }
   
-  @Keep
-  @VisibleForTesting
   protected Map<String, Object> getUserProperties(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(2328);
@@ -240,7 +209,6 @@ public class AppMeasurement
     return paramString1;
   }
   
-  @KeepForSdk
   public Map<String, Object> getUserProperties(boolean paramBoolean)
   {
     AppMethodBeat.i(2313);
@@ -256,8 +224,6 @@ public class AppMeasurement
     return locala;
   }
   
-  @Keep
-  @VisibleForTesting
   protected Map<String, Object> getUserPropertiesAs(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(2329);
@@ -277,7 +243,6 @@ public class AppMeasurement
     AppMethodBeat.o(2304);
   }
   
-  @Keep
   public void logEventInternal(String paramString1, String paramString2, Bundle paramBundle)
   {
     AppMethodBeat.i(2310);
@@ -289,7 +254,6 @@ public class AppMeasurement
     AppMethodBeat.o(2310);
   }
   
-  @KeepForSdk
   public void logEventInternalNoInterceptor(String paramString1, String paramString2, Bundle paramBundle, long paramLong)
   {
     AppMethodBeat.i(2311);
@@ -304,7 +268,6 @@ public class AppMeasurement
     }
   }
   
-  @KeepForSdk
   public void registerOnMeasurementEventListener(OnEventListener paramOnEventListener)
   {
     AppMethodBeat.i(2315);
@@ -312,8 +275,6 @@ public class AppMeasurement
     AppMethodBeat.o(2315);
   }
   
-  @Keep
-  @KeepForSdk
   public void setConditionalUserProperty(ConditionalUserProperty paramConditionalUserProperty)
   {
     AppMethodBeat.i(2324);
@@ -321,8 +282,6 @@ public class AppMeasurement
     AppMethodBeat.o(2324);
   }
   
-  @Keep
-  @VisibleForTesting
   protected void setConditionalUserPropertyAs(ConditionalUserProperty paramConditionalUserProperty)
   {
     AppMethodBeat.i(2325);
@@ -330,7 +289,6 @@ public class AppMeasurement
     AppMethodBeat.o(2325);
   }
   
-  @KeepForSdk
   public void setEventInterceptor(EventInterceptor paramEventInterceptor)
   {
     AppMethodBeat.i(2314);
@@ -380,7 +338,6 @@ public class AppMeasurement
     AppMethodBeat.o(2305);
   }
   
-  @KeepForSdk
   public void setUserPropertyInternal(String paramString1, String paramString2, Object paramObject)
   {
     AppMethodBeat.i(2312);
@@ -388,7 +345,6 @@ public class AppMeasurement
     AppMethodBeat.o(2312);
   }
   
-  @KeepForSdk
   public void unregisterOnMeasurementEventListener(OnEventListener paramOnEventListener)
   {
     AppMethodBeat.i(2316);
@@ -396,50 +352,23 @@ public class AppMeasurement
     AppMethodBeat.o(2316);
   }
   
-  @KeepForSdk
   public static class ConditionalUserProperty
   {
-    @Keep
-    @KeepForSdk
     public boolean mActive;
-    @Keep
-    @KeepForSdk
     public String mAppId;
-    @Keep
-    @KeepForSdk
     public long mCreationTimestamp;
-    @Keep
     public String mExpiredEventName;
-    @Keep
     public Bundle mExpiredEventParams;
-    @Keep
-    @KeepForSdk
     public String mName;
-    @Keep
-    @KeepForSdk
     public String mOrigin;
-    @Keep
-    @KeepForSdk
     public long mTimeToLive;
-    @Keep
     public String mTimedOutEventName;
-    @Keep
     public Bundle mTimedOutEventParams;
-    @Keep
-    @KeepForSdk
     public String mTriggerEventName;
-    @Keep
-    @KeepForSdk
     public long mTriggerTimeout;
-    @Keep
     public String mTriggeredEventName;
-    @Keep
     public Bundle mTriggeredEventParams;
-    @Keep
-    @KeepForSdk
     public long mTriggeredTimestamp;
-    @Keep
-    @KeepForSdk
     public Object mValue;
     
     public ConditionalUserProperty() {}
@@ -480,13 +409,10 @@ public class AppMeasurement
     }
   }
   
-  @KeepForSdk
   public static final class Event
     extends FirebaseAnalytics.a
   {
-    @KeepForSdk
     public static final String AD_REWARD = "_ar";
-    @KeepForSdk
     public static final String APP_EXCEPTION = "_ae";
     public static final String[] zzacx = { "app_clear_data", "app_exception", "app_remove", "app_upgrade", "app_install", "app_update", "firebase_campaign", "error", "first_open", "first_visit", "in_app_purchase", "notification_dismiss", "notification_foreground", "notification_open", "notification_receive", "os_update", "session_start", "user_engagement", "ad_exposure", "adunit_exposure", "ad_query", "ad_activeview", "ad_impression", "ad_click", "ad_reward", "screen_view", "ga_extra_parameter" };
     public static final String[] zzacy = { "_cd", "_ae", "_ui", "_ug", "_in", "_au", "_cmp", "_err", "_f", "_v", "_iap", "_nd", "_nf", "_no", "_nr", "_ou", "_s", "_e", "_xa", "_xu", "_aq", "_aa", "_ai", "_ac", "_ar", "_vs", "_ep" };
@@ -500,29 +426,21 @@ public class AppMeasurement
     }
   }
   
-  @KeepForSdk
   public static abstract interface EventInterceptor
   {
-    @KeepForSdk
     public abstract void interceptEvent(String paramString1, String paramString2, Bundle paramBundle, long paramLong);
   }
   
-  @KeepForSdk
   public static abstract interface OnEventListener
   {
-    @KeepForSdk
     public abstract void onEvent(String paramString1, String paramString2, Bundle paramBundle, long paramLong);
   }
   
-  @KeepForSdk
   public static final class Param
     extends FirebaseAnalytics.b
   {
-    @KeepForSdk
     public static final String FATAL = "fatal";
-    @KeepForSdk
     public static final String TIMESTAMP = "timestamp";
-    @KeepForSdk
     public static final String TYPE = "type";
     public static final String[] zzacz = { "firebase_conversion", "engagement_time_msec", "exposure_time", "ad_event_id", "ad_unit_id", "firebase_error", "firebase_error_value", "firebase_error_length", "firebase_event_origin", "firebase_screen", "firebase_screen_class", "firebase_screen_id", "firebase_previous_screen", "firebase_previous_class", "firebase_previous_id", "message_device_time", "message_id", "message_name", "message_time", "previous_app_version", "previous_os_version", "topic", "update_with_analytics", "previous_first_open_count", "system_app", "system_app_update", "previous_install_count", "ga_event_id", "ga_extra_params_ct", "ga_group_name", "ga_list_length", "ga_index", "ga_event_name", "campaign_info_source", "deferred_analytics_collection" };
     public static final String[] zzada = { "_c", "_et", "_xt", "_aeid", "_ai", "_err", "_ev", "_el", "_o", "_sn", "_sc", "_si", "_pn", "_pc", "_pi", "_ndt", "_nmid", "_nmn", "_nmt", "_pv", "_po", "_nt", "_uwa", "_pfo", "_sys", "_sysu", "_pin", "_eid", "_epc", "_gn", "_ll", "_i", "_en", "_cis", "_dac" };
@@ -536,11 +454,9 @@ public class AppMeasurement
     }
   }
   
-  @KeepForSdk
   public static final class UserProperty
     extends FirebaseAnalytics.c
   {
-    @KeepForSdk
     public static final String FIREBASE_LAST_NOTIFICATION = "_ln";
     public static final String[] zzadb = { "firebase_last_notification", "first_open_time", "first_visit_time", "last_deep_link_referrer", "user_id", "first_open_after_install", "lifetime_user_engagement" };
     public static final String[] zzadc = { "_ln", "_fot", "_fvt", "_ldl", "_id", "_fi", "_lte" };
@@ -556,7 +472,7 @@ public class AppMeasurement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.measurement.AppMeasurement
  * JD-Core Version:    0.7.0.1
  */

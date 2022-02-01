@@ -1,23 +1,23 @@
 package com.tencent.mm.emoji.debug;
 
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class EmojiDebugUI$ac
-  extends q
-  implements a<String>
+  extends u
+  implements a<ah>
 {
-  EmojiDebugUI$ac(MultiProcessMMKV paramMultiProcessMMKV)
+  EmojiDebugUI$ac(EmojiDebugUI paramEmojiDebugUI)
   {
     super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.debug.EmojiDebugUI.ac
  * JD-Core Version:    0.7.0.1
  */

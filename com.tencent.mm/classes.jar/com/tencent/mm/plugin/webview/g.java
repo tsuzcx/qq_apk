@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/WebTransEntryScene;", "", "(Ljava/lang/String;I)V", "Menu", "HelpBtn", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/WebTransEntryScene;", "", "(Ljava/lang/String;I)V", "Menu", "HelpBtn", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum g
 {
   static
   {
-    AppMethodBeat.i(221805);
-    g localg1 = new g("Menu", 0);
-    PEa = localg1;
-    g localg2 = new g("HelpBtn", 1);
-    PEb = localg2;
-    PEc = new g[] { localg1, localg2 };
-    AppMethodBeat.o(221805);
+    AppMethodBeat.i(295406);
+    WuD = new g("Menu", 0);
+    WuE = new g("HelpBtn", 1);
+    WuF = new g[] { WuD, WuE };
+    AppMethodBeat.o(295406);
   }
   
   private g() {}

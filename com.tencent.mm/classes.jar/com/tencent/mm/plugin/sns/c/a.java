@@ -1,26 +1,9 @@
 package com.tencent.mm.plugin.sns.c;
 
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-
-public final class a
-  implements n
+public abstract interface a
+  extends com.tencent.mm.kernel.c.a
 {
-  public static int JPj = 2147483647;
-  public static String JPk = "";
-  public static m mIG;
-  public static l mIH;
-  
-  public final void a(l paraml)
-  {
-    mIH = paraml;
-  }
-  
-  public final void a(m paramm)
-  {
-    mIG = paramm;
-  }
+  public abstract void y(int paramInt1, String paramString, int paramInt2);
 }
 
 

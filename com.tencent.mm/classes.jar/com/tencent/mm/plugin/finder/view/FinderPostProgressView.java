@@ -9,17 +9,17 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.d;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.c;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backColor", "", "getBackColor", "()I", "setBackColor", "(I)V", "foreColor", "getForeColor", "setForeColor", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "setPaint", "(Landroid/graphics/Paint;)V", "progress", "getProgress", "setProgress", "draw", "", "canvas", "Landroid/graphics/Canvas;", "init", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backColor", "", "getBackColor", "()I", "setBackColor", "(I)V", "foreColor", "getForeColor", "setForeColor", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "setPaint", "(Landroid/graphics/Paint;)V", "progress", "getProgress", "setProgress", "draw", "", "canvas", "Landroid/graphics/Canvas;", "init", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderPostProgressView
   extends View
 {
-  private int AZF;
-  private int AZG;
+  private int GBJ;
+  private int GBK;
   public Paint paint;
   private int progress;
   
@@ -27,24 +27,12 @@ public final class FinderPostProgressView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(168400);
-    this.paint = new Paint();
-    paramContext = this.paint;
-    if (paramContext == null) {
-      p.bGy("paint");
-    }
-    paramContext.setStyle(Paint.Style.STROKE);
-    paramContext = this.paint;
-    if (paramContext == null) {
-      p.bGy("paint");
-    }
-    paramContext.setStrokeWidth(getResources().getDimension(b.d.finder_0_25_A));
-    paramContext = this.paint;
-    if (paramContext == null) {
-      p.bGy("paint");
-    }
-    paramContext.setAntiAlias(true);
-    this.AZF = getResources().getColor(b.c.BW_0_Alpha_0_1);
-    this.AZG = getResources().getColor(b.c.Orange_100);
+    setPaint(new Paint());
+    getPaint().setStyle(Paint.Style.STROKE);
+    getPaint().setStrokeWidth(getResources().getDimension(e.c.finder_0_25_A));
+    getPaint().setAntiAlias(true);
+    this.GBJ = getResources().getColor(e.b.BW_0_Alpha_0_1);
+    this.GBK = getResources().getColor(e.b.Orange_100);
     AppMethodBeat.o(168400);
   }
   
@@ -53,77 +41,45 @@ public final class FinderPostProgressView
     AppMethodBeat.i(168399);
     super.draw(paramCanvas);
     int i = getWidth() / 2;
-    Object localObject = this.paint;
-    if (localObject == null) {
-      p.bGy("paint");
+    float f = getPaint().getStrokeWidth();
+    int j = (int)(i - f / 2.0F);
+    getPaint().setColor(this.GBJ);
+    getPaint().setAntiAlias(true);
+    getPaint().setStyle(Paint.Style.STROKE);
+    if (paramCanvas != null) {
+      paramCanvas.drawCircle(i, i, j, getPaint());
     }
-    float f1 = ((Paint)localObject).getStrokeWidth();
-    int j = (int)(i - f1 / 2.0F);
-    localObject = this.paint;
-    if (localObject == null) {
-      p.bGy("paint");
-    }
-    ((Paint)localObject).setColor(this.AZF);
-    localObject = this.paint;
-    if (localObject == null) {
-      p.bGy("paint");
-    }
-    ((Paint)localObject).setAntiAlias(true);
-    localObject = this.paint;
-    if (localObject == null) {
-      p.bGy("paint");
-    }
-    ((Paint)localObject).setStyle(Paint.Style.STROKE);
-    if (paramCanvas != null)
-    {
-      f1 = i;
-      float f2 = i;
-      float f3 = j;
-      localObject = this.paint;
-      if (localObject == null) {
-        p.bGy("paint");
-      }
-      paramCanvas.drawCircle(f1, f2, f3, (Paint)localObject);
-    }
-    localObject = this.paint;
-    if (localObject == null) {
-      p.bGy("paint");
-    }
-    ((Paint)localObject).setColor(this.AZG);
-    localObject = new RectF(i - j, i - j, i + j, i + j);
-    f1 = this.progress * 360 / 100.0F;
-    if (paramCanvas != null)
-    {
-      Paint localPaint = this.paint;
-      if (localPaint == null) {
-        p.bGy("paint");
-      }
-      paramCanvas.drawArc((RectF)localObject, -90.0F, f1, false, localPaint);
-      AppMethodBeat.o(168399);
-      return;
+    getPaint().setColor(this.GBK);
+    RectF localRectF = new RectF(i - j, i - j, i + j, i + j);
+    f = this.progress * 360 / 100.0F;
+    if (paramCanvas != null) {
+      paramCanvas.drawArc(localRectF, -90.0F, f, false, getPaint());
     }
     AppMethodBeat.o(168399);
   }
   
   public final int getBackColor()
   {
-    return this.AZF;
+    return this.GBJ;
   }
   
   public final int getForeColor()
   {
-    return this.AZG;
+    return this.GBK;
   }
   
   public final Paint getPaint()
   {
     AppMethodBeat.i(168397);
     Paint localPaint = this.paint;
-    if (localPaint == null) {
-      p.bGy("paint");
+    if (localPaint != null)
+    {
+      AppMethodBeat.o(168397);
+      return localPaint;
     }
+    s.bIx("paint");
     AppMethodBeat.o(168397);
-    return localPaint;
+    return null;
   }
   
   public final int getProgress()
@@ -133,18 +89,18 @@ public final class FinderPostProgressView
   
   public final void setBackColor(int paramInt)
   {
-    this.AZF = paramInt;
+    this.GBJ = paramInt;
   }
   
   public final void setForeColor(int paramInt)
   {
-    this.AZG = paramInt;
+    this.GBK = paramInt;
   }
   
   public final void setPaint(Paint paramPaint)
   {
     AppMethodBeat.i(168398);
-    p.k(paramPaint, "<set-?>");
+    s.u(paramPaint, "<set-?>");
     this.paint = paramPaint;
     AppMethodBeat.o(168398);
   }

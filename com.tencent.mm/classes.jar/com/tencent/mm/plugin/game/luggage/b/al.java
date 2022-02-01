@@ -1,72 +1,81 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.g.f;
-import com.tencent.mm.plugin.game.luggage.g.f.a;
-import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.plugin.game.luggage.page.GameWebPage;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bw;
+import com.tencent.mm.plugin.webview.ui.tools.game.d;
+import com.tencent.mm.plugin.webview.ui.tools.game.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class al
-  extends bs<i>
+  extends bw<GameWebPage>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
-  public final void b(b<i>.a paramb)
+  public final void b(b.a parama)
   {
-    AppMethodBeat.i(232287);
-    Log.i("MicroMsg.JsApiSetGameTab", "invokeInOwn");
-    JSONObject localJSONObject = paramb.crh.cqn;
-    if (localJSONObject == null)
+    AppMethodBeat.i(83087);
+    Object localObject = parama.eiZ.eif;
+    String str1 = ((JSONObject)localObject).optString("reportId");
+    boolean bool1;
+    if (((JSONObject)localObject).optInt("reportInstantly", 0) == 1)
     {
-      Log.e("MicroMsg.JsApiSetGameTab", "data is null");
-      paramb.a("null_data", null);
-      AppMethodBeat.o(232287);
-      return;
-    }
-    f localf = ((i)paramb.crg).CDb;
-    if (localf == null)
-    {
-      Log.e("MicroMsg.JsApiSetGameTab", "is not tab page");
-      paramb.a("not_tab", null);
-      AppMethodBeat.o(232287);
-      return;
-    }
-    int i;
-    if (localJSONObject.has("isShowTab"))
-    {
-      i = localJSONObject.optInt("isShowTab", -1);
-      Log.i("MicroMsg.JsApiSetGameTab", "isShowTab:%d", new Object[] { Integer.valueOf(i) });
-      if (localf.CCc != null) {
-        localf.CCc.Tt(i);
+      bool1 = true;
+      if (((JSONObject)localObject).optInt("reportTimeBegin", 0) != 1) {
+        break label102;
       }
     }
-    if (localJSONObject.has("isSwitchEnable"))
+    String str2;
+    label102:
+    for (boolean bool2 = true;; bool2 = false)
     {
-      i = localJSONObject.optInt("isSwitchEnable", -1);
-      Log.i("MicroMsg.JsApiSetGameTab", "isSwitchEnable:%d", new Object[] { Integer.valueOf(i) });
-      if (localf.CCc != null) {
-        localf.CCc.Tu(i);
+      str2 = ((JSONObject)localObject).optString("reportFormatData");
+      localObject = ((JSONObject)localObject).optString("reportTabsFormatData");
+      if (!Util.isNullOrNil(str1)) {
+        break label107;
       }
+      Log.e("MicroMsg.JsApiReportGamePageTime", "reportId is null or nil");
+      parama.a("invalid_reportId", null);
+      AppMethodBeat.o(83087);
+      return;
+      bool1 = false;
+      break;
     }
-    paramb.a("", null);
-    AppMethodBeat.o(232287);
+    label107:
+    if ((Util.isNullOrNil(str2)) && (Util.isNullOrNil((String)localObject)))
+    {
+      Log.e("MicroMsg.JsApiReportGamePageTime", "reportFormatData && reportTabsFormatData is null or nil");
+      parama.a("invalid_reportFormatData_reportTabsFormatData", null);
+      AppMethodBeat.o(83087);
+      return;
+    }
+    Log.i("MicroMsg.JsApiReportGamePageTime", "reportGamePageTime, reportId:%s, reportInstantly:%b, reportTimeBegin:%b, reportFormatData:(%s), reportTabsFormatData(%s)", new Object[] { str1, Boolean.valueOf(bool1), Boolean.valueOf(bool2), str2, localObject });
+    Bundle localBundle = new Bundle();
+    localBundle.putString("game_page_report_id", str1);
+    localBundle.putBoolean("game_page_report_instantly", bool1);
+    localBundle.putBoolean("game_page_report_time_begin", bool2);
+    localBundle.putString("game_page_report_format_data", str2);
+    localBundle.putString("game_page_report_tabs_format_data", (String)localObject);
+    ((GameWebPage)parama.eiY).IwT.XfS.bP(localBundle);
+    parama.a("", null);
+    AppMethodBeat.o(83087);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setGameTab";
+    return "reportGamePageTime";
   }
 }
 

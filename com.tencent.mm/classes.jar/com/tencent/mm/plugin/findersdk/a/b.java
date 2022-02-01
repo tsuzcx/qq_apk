@@ -1,67 +1,67 @@
 package com.tencent.mm.plugin.findersdk.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.f;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.i.d;
-import com.tencent.mm.protocal.protobuf.bcp;
+import com.tencent.mm.g.d;
+import com.tencent.mm.message.f;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.protocal.protobuf.bmr;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/api/AppMSgContentFinderLiveObject;", "Lcom/tencent/mm/message/AppContentPiece;", "()V", "shareObject", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "getShareObject", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "setShareObject", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;)V", "cloneContent", "makeContent", "", "sb", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "content", "Lcom/tencent/mm/message/AppMessage$Content;", "cdnAttachId", "", "cdnResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "thumbWidth", "", "thumbHeight", "parseContent", "values", "", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/AppMSgContentFinderLiveObject;", "Lcom/tencent/mm/message/AppContentPiece;", "()V", "shareObject", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "getShareObject", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "setShareObject", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;)V", "cloneContent", "makeContent", "", "sb", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "content", "Lcom/tencent/mm/message/AppMessage$Content;", "cdnAttachId", "", "cdnResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "thumbWidth", "", "thumbHeight", "parseContent", "values", "", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends f
 {
-  public bcp Bvb;
+  public bmr HbV;
   
   public b()
   {
-    AppMethodBeat.i(208882);
-    this.Bvb = new bcp();
-    AppMethodBeat.o(208882);
+    AppMethodBeat.i(273930);
+    this.HbV = new bmr();
+    AppMethodBeat.o(273930);
   }
   
   public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(208879);
-    p.k(paramStringBuilder, "sb");
-    paramStringBuilder.append(k.c(this.Bvb));
-    AppMethodBeat.o(208879);
+    AppMethodBeat.i(273953);
+    s.u(paramStringBuilder, "sb");
+    paramStringBuilder.append(q.c(this.HbV));
+    AppMethodBeat.o(273953);
   }
   
   public final void a(Map<String, String> paramMap, k.b paramb)
   {
-    AppMethodBeat.i(208881);
-    p.k(paramMap, "values");
-    p.k(paramb, "content");
-    paramMap = k.u(".msg.appmsg", paramMap);
-    p.j(paramMap, "FinderShareParser.parseF…ve(\".msg.appmsg\", values)");
-    this.Bvb = paramMap;
-    AppMethodBeat.o(208881);
+    AppMethodBeat.i(273960);
+    s.u(paramMap, "values");
+    s.u(paramb, "content");
+    paramMap = q.z(".msg.appmsg", paramMap);
+    s.s(paramMap, "parseFinderLive(\".msg.appmsg\", values)");
+    this.HbV = paramMap;
+    AppMethodBeat.o(273960);
   }
   
-  public final f aPj()
+  public final void b(bmr parambmr)
   {
-    AppMethodBeat.i(208878);
+    AppMethodBeat.i(273941);
+    s.u(parambmr, "<set-?>");
+    this.HbV = parambmr;
+    AppMethodBeat.o(273941);
+  }
+  
+  public final f biW()
+  {
+    AppMethodBeat.i(273948);
     Object localObject = new b();
-    ((b)localObject).Bvb = this.Bvb;
+    ((b)localObject).HbV = this.HbV;
     localObject = (f)localObject;
-    AppMethodBeat.o(208878);
+    AppMethodBeat.o(273948);
     return localObject;
   }
   
-  public final void b(bcp parambcp)
+  public final bmr frq()
   {
-    AppMethodBeat.i(208877);
-    p.k(parambcp, "<set-?>");
-    this.Bvb = parambcp;
-    AppMethodBeat.o(208877);
-  }
-  
-  public final bcp ene()
-  {
-    return this.Bvb;
+    return this.HbV;
   }
 }
 

@@ -1,131 +1,128 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
 import java.util.LinkedList;
 
 public final class aki
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public b SpV;
-  public b SpW;
-  public String SpX;
-  public String token;
+  public etg YCV;
+  public adv YZb;
+  public String title;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(215424);
+    AppMethodBeat.i(91435);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.type);
+      if (this.title != null) {
+        paramVarArgs.g(2, this.title);
+      }
+      if (this.YCV != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.qD(3, this.YCV.computeSize());
+        this.YCV.writeFields(paramVarArgs);
       }
-      if (this.SpV != null) {
-        paramVarArgs.c(2, this.SpV);
+      if (this.YZb != null)
+      {
+        paramVarArgs.qD(4, this.YZb.computeSize());
+        this.YZb.writeFields(paramVarArgs);
       }
-      if (this.SpW != null) {
-        paramVarArgs.c(3, this.SpW);
-      }
-      if (this.token != null) {
-        paramVarArgs.f(4, this.token);
-      }
-      if (this.SpX != null) {
-        paramVarArgs.f(101, this.SpX);
-      }
-      AppMethodBeat.o(215424);
+      AppMethodBeat.o(91435);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label548;
-      }
-    }
-    label548:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    int i;
+    if (paramInt == 1)
     {
+      i = i.a.a.b.b.a.cJ(1, this.type) + 0;
       paramInt = i;
-      if (this.SpV != null) {
-        paramInt = i + g.a.a.b.b.a.b(2, this.SpV);
+      if (this.title != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.title);
       }
       i = paramInt;
-      if (this.SpW != null) {
-        i = paramInt + g.a.a.b.b.a.b(3, this.SpW);
+      if (this.YCV != null) {
+        i = paramInt + i.a.a.a.qC(3, this.YCV.computeSize());
       }
       paramInt = i;
-      if (this.token != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.token);
+      if (this.YZb != null) {
+        paramInt = i + i.a.a.a.qC(4, this.YZb.computeSize());
       }
-      i = paramInt;
-      if (this.SpX != null) {
-        i = paramInt + g.a.a.b.b.a.g(101, this.SpX);
-      }
-      AppMethodBeat.o(215424);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(215424);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        aki localaki = (aki)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(215424);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localaki.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(215424);
-          return 0;
-        case 2: 
-          localaki.SpV = ((g.a.a.a.a)localObject).abFh.iUw();
-          AppMethodBeat.o(215424);
-          return 0;
-        case 3: 
-          localaki.SpW = ((g.a.a.a.a)localObject).abFh.iUw();
-          AppMethodBeat.o(215424);
-          return 0;
-        case 4: 
-          localaki.token = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(215424);
-          return 0;
-        }
-        localaki.SpX = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(215424);
-        return 0;
-      }
-      AppMethodBeat.o(215424);
-      return -1;
+      AppMethodBeat.o(91435);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(91435);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+      aki localaki = (aki)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(91435);
+        return -1;
+      case 1: 
+        localaki.type = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(91435);
+        return 0;
+      case 2: 
+        localaki.title = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(91435);
+        return 0;
+      case 3: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new etg();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((etg)localObject2).parseFrom((byte[])localObject1);
+          }
+          localaki.YCV = ((etg)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(91435);
+        return 0;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject1 = (byte[])paramVarArgs.get(paramInt);
+        localObject2 = new adv();
+        if ((localObject1 != null) && (localObject1.length > 0)) {
+          ((adv)localObject2).parseFrom((byte[])localObject1);
+        }
+        localaki.YZb = ((adv)localObject2);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(91435);
+      return 0;
+    }
+    AppMethodBeat.o(91435);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aki
  * JD-Core Version:    0.7.0.1
  */

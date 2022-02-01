@@ -7,59 +7,59 @@ import java.util.NoSuchElementException;
 final class d<T>
   implements Iterator<T>
 {
-  private final Iterator<? extends T> YFL;
-  private T YFN;
-  private boolean YFO;
-  private final c.a<T> YFP;
+  private final Iterator<? extends T> agBt;
+  private T agBv;
+  private boolean agBw;
+  private final c.a<T> agBx;
   
   d(Iterator<? extends T> paramIterator, c.a<T> parama)
   {
-    this.YFL = paramIterator;
-    this.YFP = parama;
+    this.agBt = paramIterator;
+    this.agBx = parama;
   }
   
   public final boolean hasNext()
   {
-    AppMethodBeat.i(237055);
-    if (this.YFO)
+    AppMethodBeat.i(238520);
+    if (this.agBw)
     {
-      AppMethodBeat.o(237055);
+      AppMethodBeat.o(238520);
       return true;
     }
-    while (this.YFL.hasNext())
+    while (this.agBt.hasNext())
     {
-      Object localObject = this.YFL.next();
-      if (!this.YFP.dr(localObject))
+      Object localObject = this.agBt.next();
+      if (!this.agBx.fB(localObject))
       {
-        this.YFN = localObject;
-        this.YFO = true;
-        AppMethodBeat.o(237055);
+        this.agBv = localObject;
+        this.agBw = true;
+        AppMethodBeat.o(238520);
         return true;
       }
     }
-    AppMethodBeat.o(237055);
+    AppMethodBeat.o(238520);
     return false;
   }
   
   public final T next()
   {
-    AppMethodBeat.i(237056);
-    if ((!this.YFO) && (!hasNext()))
+    AppMethodBeat.i(238531);
+    if ((!this.agBw) && (!hasNext()))
     {
       localObject = new NoSuchElementException();
-      AppMethodBeat.o(237056);
+      AppMethodBeat.o(238531);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.YFN;
-    this.YFN = null;
-    this.YFO = false;
-    AppMethodBeat.o(237056);
+    Object localObject = this.agBv;
+    this.agBv = null;
+    this.agBw = false;
+    AppMethodBeat.o(238531);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.a.d
  * JD-Core Version:    0.7.0.1
  */

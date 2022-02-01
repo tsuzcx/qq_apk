@@ -27,55 +27,55 @@ public class TAVCompositionBuilder
   
   public TAVCompositionBuilder(TAVComposition paramTAVComposition)
   {
-    AppMethodBeat.i(212104);
+    AppMethodBeat.i(218802);
     this.isVideoTracksMerge = true;
     this.isAudioTracksMerge = true;
     this.isReloadChannels = true;
     this.builderModel = new BuilderModel(paramTAVComposition);
-    AppMethodBeat.o(212104);
+    AppMethodBeat.o(218802);
   }
   
   private AudioMix<? extends AudioMixInputParameters> buildAudioMix()
   {
-    AppMethodBeat.i(212125);
+    AppMethodBeat.i(218826);
     Object localObject = new AudioParamsBuilder(this.builderModel).build();
     if (((List)localObject).size() == 0)
     {
-      AppMethodBeat.o(212125);
+      AppMethodBeat.o(218826);
       return null;
     }
     localObject = new MutableAudioMix((List)localObject);
-    AppMethodBeat.o(212125);
+    AppMethodBeat.o(218826);
     return localObject;
   }
   
   private Asset buildComposition()
   {
-    AppMethodBeat.i(212119);
+    AppMethodBeat.i(218806);
     if (this.isReloadChannels) {
       reloadChannels();
     }
     MutableComposition localMutableComposition = new CompositionBuilder(this.builderModel, this.isVideoTracksMerge, this.isAudioTracksMerge).build();
-    AppMethodBeat.o(212119);
+    AppMethodBeat.o(218806);
     return localMutableComposition;
   }
   
   private VideoComposition buildVideoComposition()
   {
-    AppMethodBeat.i(212123);
+    AppMethodBeat.i(218820);
     MutableVideoComposition localMutableVideoComposition = new MutableVideoComposition();
     localMutableVideoComposition.setFrameDuration(new CMTime(1L, 30));
     localMutableVideoComposition.setRenderSize(this.builderModel.getRenderSize());
     localMutableVideoComposition.setRenderLayoutMode(this.builderModel.getRenderLayoutMode());
     localMutableVideoComposition.setCustomVideoCompositorClass(TAVVideoCompositing.class);
     localMutableVideoComposition.setInstructions(new VideoInstructionsBuilder(this.builderModel).build());
-    AppMethodBeat.o(212123);
+    AppMethodBeat.o(218820);
     return localMutableVideoComposition;
   }
   
   private void reloadChannels()
   {
-    AppMethodBeat.i(212121);
+    AppMethodBeat.i(218813);
     Iterator localIterator = this.builderModel.getVideoChannels().iterator();
     while (localIterator.hasNext()) {
       CompositionUtils.reloadVideoStartTimeWithTransitionableVideo((List)localIterator.next());
@@ -86,19 +86,19 @@ public class TAVCompositionBuilder
       CompositionUtils.reloadAudioStartTimeWithTransitionableAudio((List)localIterator.next());
     }
     Logger.d("TAVCompositionBuilder", "buildComposition: reloadAudioChannels = " + this.builderModel.getAudioChannels());
-    AppMethodBeat.o(212121);
+    AppMethodBeat.o(218813);
   }
   
   public TAVSource buildSource()
   {
-    AppMethodBeat.i(212116);
+    AppMethodBeat.i(218847);
     Logger.i("TAVCompositionBuilder", "buildSource: begin, tavComposition = " + this.builderModel.getTavComposition());
     TAVSource localTAVSource = new TAVSource();
     localTAVSource.setAsset(buildComposition());
     localTAVSource.setVideoComposition(buildVideoComposition());
     localTAVSource.setAudioMix(buildAudioMix());
     Logger.i("TAVCompositionBuilder", "buildSource: end, return source = ".concat(String.valueOf(localTAVSource)));
-    AppMethodBeat.o(212116);
+    AppMethodBeat.o(218847);
     return localTAVSource;
   }
   

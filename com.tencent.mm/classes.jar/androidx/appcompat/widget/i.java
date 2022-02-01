@@ -20,31 +20,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class i
 {
-  private static final int[] mb = { 16843067, 16843068 };
-  private final ProgressBar qV;
-  Bitmap qW;
+  private static final int[] na = { 16843067, 16843068 };
+  private final ProgressBar rS;
+  Bitmap rT;
   
   i(ProgressBar paramProgressBar)
   {
-    this.qV = paramProgressBar;
+    this.rS = paramProgressBar;
   }
   
   private Drawable a(Drawable paramDrawable, boolean paramBoolean)
   {
     int j = 0;
-    AppMethodBeat.i(240936);
+    AppMethodBeat.i(200042);
     if ((paramDrawable instanceof f))
     {
-      localObject1 = ((f)paramDrawable).gD();
+      localObject1 = ((f)paramDrawable).DN();
       if (localObject1 != null)
       {
         localObject1 = a((Drawable)localObject1, paramBoolean);
-        ((f)paramDrawable).s((Drawable)localObject1);
+        ((f)paramDrawable).v((Drawable)localObject1);
       }
     }
     do
     {
-      AppMethodBeat.o(240936);
+      AppMethodBeat.o(200042);
       return paramDrawable;
       if ((paramDrawable instanceof LayerDrawable))
       {
@@ -71,14 +71,14 @@ class i
           ((LayerDrawable)localObject1).setId(i, paramDrawable.getId(i));
           i += 1;
         }
-        AppMethodBeat.o(240936);
+        AppMethodBeat.o(200042);
         return localObject1;
       }
     } while (!(paramDrawable instanceof BitmapDrawable));
     paramDrawable = (BitmapDrawable)paramDrawable;
     Object localObject2 = paramDrawable.getBitmap();
-    if (this.qW == null) {
-      this.qW = ((Bitmap)localObject2);
+    if (this.rT == null) {
+      this.rT = ((Bitmap)localObject2);
     }
     Object localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F }, null, null));
     localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
@@ -87,21 +87,21 @@ class i
     if (paramBoolean)
     {
       paramDrawable = new ClipDrawable((Drawable)localObject1, 3, 1);
-      AppMethodBeat.o(240936);
+      AppMethodBeat.o(200042);
       return paramDrawable;
     }
-    AppMethodBeat.o(240936);
+    AppMethodBeat.o(200042);
     return localObject1;
   }
   
   void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(240935);
-    ac localac = ac.a(this.qV.getContext(), paramAttributeSet, mb, paramInt, 0);
-    Object localObject = localac.aA(0);
+    AppMethodBeat.i(200062);
+    ac localac = ac.a(this.rS.getContext(), paramAttributeSet, na, paramInt, 0);
+    Object localObject = localac.ax(0);
     if (localObject != null)
     {
-      ProgressBar localProgressBar = this.qV;
+      ProgressBar localProgressBar = this.rS;
       paramAttributeSet = (AttributeSet)localObject;
       if ((localObject instanceof AnimationDrawable))
       {
@@ -121,17 +121,17 @@ class i
       }
       localProgressBar.setIndeterminateDrawable(paramAttributeSet);
     }
-    paramAttributeSet = localac.aA(1);
+    paramAttributeSet = localac.ax(1);
     if (paramAttributeSet != null) {
-      this.qV.setProgressDrawable(a(paramAttributeSet, false));
+      this.rS.setProgressDrawable(a(paramAttributeSet, false));
     }
-    localac.wA.recycle();
-    AppMethodBeat.o(240935);
+    localac.xv.recycle();
+    AppMethodBeat.o(200062);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.appcompat.widget.i
  * JD-Core Version:    0.7.0.1
  */

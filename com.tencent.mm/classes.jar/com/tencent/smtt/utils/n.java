@@ -3,48 +3,46 @@ package com.tencent.smtt.utils;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Looper;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.QbSdk;
 import java.io.File;
-import java.io.FileFilter;
 
 public class n
 {
   public static boolean a(Context paramContext)
   {
-    AppMethodBeat.i(200657);
+    AppMethodBeat.i(219348);
     boolean bool = true;
     if (Looper.getMainLooper() != Looper.myLooper()) {
       bool = b(paramContext);
     }
-    AppMethodBeat.o(200657);
+    AppMethodBeat.o(219348);
     return bool;
   }
   
   private static boolean a(File paramFile)
   {
-    AppMethodBeat.i(200663);
+    AppMethodBeat.i(219356);
     try
     {
       boolean bool = e.b(paramFile);
       if (!bool)
       {
-        AppMethodBeat.o(200663);
+        AppMethodBeat.o(219356);
         return true;
       }
     }
-    catch (Throwable paramFile)
+    finally
     {
       new StringBuilder("isOatFileBroken exception: ").append(paramFile);
-      AppMethodBeat.o(200663);
+      AppMethodBeat.o(219356);
     }
     return false;
   }
   
   public static boolean b(Context paramContext)
   {
-    AppMethodBeat.i(200662);
+    AppMethodBeat.i(219351);
     for (;;)
     {
       int i;
@@ -57,30 +55,16 @@ public class n
         }
         else
         {
-          AppMethodBeat.o(200662);
+          AppMethodBeat.o(219351);
           return true;
         }
         paramContext = c(paramContext);
         if (paramContext == null)
         {
-          AppMethodBeat.o(200662);
+          AppMethodBeat.o(219351);
           return true;
         }
-        paramContext = paramContext.listFiles(new FileFilter()
-        {
-          public final boolean accept(File paramAnonymousFile)
-          {
-            AppMethodBeat.i(199967);
-            paramAnonymousFile = paramAnonymousFile.getName();
-            if ((!TextUtils.isEmpty(paramAnonymousFile)) && (paramAnonymousFile.endsWith(".dex")))
-            {
-              AppMethodBeat.o(199967);
-              return true;
-            }
-            AppMethodBeat.o(199967);
-            return false;
-          }
-        });
+        paramContext = paramContext.listFiles(new n.1());
         int j = paramContext.length;
         i = 0;
         if (i < j)
@@ -93,16 +77,16 @@ public class n
           {
             TbsLog.w("TbsCheckUtils", localFile + " is invalid --> check failed!");
             localFile.delete();
-            AppMethodBeat.o(200662);
+            AppMethodBeat.o(219351);
             return false;
           }
           TbsLog.i("TbsCheckUtils", localFile + " #4 check success!");
         }
       }
-      catch (Throwable paramContext)
+      finally
       {
         TbsLog.i("TbsCheckUtils", "checkTbsValidity -->#5 check ok!");
-        AppMethodBeat.o(200662);
+        AppMethodBeat.o(219351);
         return true;
       }
       label174:
@@ -112,20 +96,20 @@ public class n
   
   private static File c(Context paramContext)
   {
-    AppMethodBeat.i(200655);
+    AppMethodBeat.i(219344);
     paramContext = new File(QbSdk.getTbsFolderDir(paramContext), "core_share");
     if ((!paramContext.isDirectory()) || (!paramContext.exists()))
     {
-      AppMethodBeat.o(200655);
+      AppMethodBeat.o(219344);
       return null;
     }
-    AppMethodBeat.o(200655);
+    AppMethodBeat.o(219344);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.utils.n
  * JD-Core Version:    0.7.0.1
  */

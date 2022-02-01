@@ -1,44 +1,109 @@
 package com.tencent.mm.plugin.finder.feed;
 
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
+import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
+import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.as;
+import com.tencent.mm.plugin.finder.utils.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.view.RefreshLoadMoreLayout;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
+import com.tencent.mm.view.recyclerview.i;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderFriendFoldedTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderFriendFoldedTimelineContract$Presenter;", "scene", "", "commentScene", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderFriendFoldedTimelineContract$Presenter;II)V", "getEmptyView", "Landroid/view/View;", "initRecyclerView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onLoadInitDataError", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderFriendLikeFeedUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "commentSafeMode", "", "(Lcom/tencent/mm/ui/MMActivity;IIZ)V", "TAG", "", "getActivity", "getDescStringID", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "getEmptyView", "Landroid/view/View;", "getHeaderView", "", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getTitleStringId", "onGridItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "position", "onItemDelete", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class r$b
-  extends aa.b
+  extends c.b
 {
-  public r$b(MMActivity paramMMActivity, r.a parama, int paramInt)
+  private final String TAG;
+  
+  public r$b(MMActivity paramMMActivity)
   {
-    super(paramMMActivity, (aa.a)parama, paramInt, 14);
-    AppMethodBeat.i(284128);
-    AppMethodBeat.o(284128);
+    super(paramMMActivity, 0, 0, true);
+    AppMethodBeat.i(362601);
+    this.TAG = "Finder.FinderFriendLikeFeedUIContract.ViewCallback";
+    AppMethodBeat.o(362601);
   }
   
-  public final void aa(ArrayList<bu> paramArrayList)
+  public final void a(RecyclerView.a<?> parama, View paramView, int paramInt)
   {
-    AppMethodBeat.i(284126);
-    p.k(paramArrayList, "data");
-    super.aa(paramArrayList);
-    paramArrayList = this.xvJ;
-    View localView = ad.kS((Context)this.iXq).inflate(b.g.load_more_footer, null);
-    p.j(localView, "MMLayoutInflater.getInfl…t.load_more_footer, null)");
-    paramArrayList.setLoadMoreFooter(localView);
-    AppMethodBeat.o(284126);
+    AppMethodBeat.i(362637);
+    s.u(parama, "adapter");
+    s.u(paramView, "view");
+    paramInt -= ((i)parama).agOb.size();
+    if ((paramInt >= 0) && (paramInt < ebL().ALH.getSize()))
+    {
+      parama = (cc)ebL().ALH.getDataListJustForAdapter().get(paramInt);
+      if (!(parama instanceof BaseFinderFeed))
+      {
+        AppMethodBeat.o(362637);
+        return;
+      }
+      Log.i(this.TAG, "onClick " + paramInt + " id:" + ((BaseFinderFeed)parama).feedObject.getId() + ", pos:" + paramInt);
+      parama = new Intent();
+      BaseFeedLoader.saveCache$default((BaseFeedLoader)ebL().ALH, parama, paramInt, null, 4, null);
+      a locala = a.GfO;
+      paramView = paramView.getContext();
+      s.s(paramView, "view.context");
+      a.al(paramView, parama);
+    }
+    AppMethodBeat.o(362637);
+  }
+  
+  public final String b(RefreshLoadMoreLayout.d<Object> paramd)
+  {
+    AppMethodBeat.i(362645);
+    s.u(paramd, "reason");
+    AppMethodBeat.o(362645);
+    return "";
+  }
+  
+  public final String c(RefreshLoadMoreLayout.d<Object> paramd)
+  {
+    AppMethodBeat.i(362651);
+    s.u(paramd, "reason");
+    AppMethodBeat.o(362651);
+    return "";
+  }
+  
+  public final void dUO() {}
+  
+  public final RecyclerView.LayoutManager fT(Context paramContext)
+  {
+    AppMethodBeat.i(362625);
+    s.u(paramContext, "context");
+    paramContext = dUN().fT(paramContext);
+    AppMethodBeat.o(362625);
+    return paramContext;
   }
   
   public final View getEmptyView()
   {
-    return null;
+    AppMethodBeat.i(362617);
+    View localView = this.lzt.findViewById(e.e.empty_view);
+    AppMethodBeat.o(362617);
+    return localView;
+  }
+  
+  public final RecyclerView.h getItemDecoration()
+  {
+    AppMethodBeat.i(362607);
+    RecyclerView.h localh = dUN().getItemDecoration();
+    AppMethodBeat.o(362607);
+    return localh;
   }
 }
 

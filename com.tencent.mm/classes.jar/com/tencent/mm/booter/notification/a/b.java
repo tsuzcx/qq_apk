@@ -4,16 +4,21 @@ import android.app.Notification;
 import android.content.Context;
 import android.media.AudioManager;
 import android.net.Uri;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.deviceinfo.k;
+import com.tencent.mm.k.h;
+import com.tencent.mm.sdk.platformtools.FileProviderHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.f.n;
+import com.tencent.mm.ui.f.o;
+import com.tencent.mm.vfs.u;
+import java.io.File;
 
 public final class b
 {
-  public int iSD = 0;
+  public int luA = 0;
   
   private int a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, Notification paramNotification)
   {
@@ -22,15 +27,17 @@ public final class b
     if (paramNotification == null) {
       localNotification = new Notification();
     }
-    Log.i("MicroMsg.NotificationDefaults", "begin initDefaults, isNeedSound: %B, isNeedShake: %B, n.defaults: %d, n.vibrate: %s, n.sound: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(localNotification.defaults), g.a(localNotification.vibrate), localNotification.sound });
+    Log.i("MicroMsg.NotificationDefaults", "begin initDefaults, isNeedSound: %B, isNeedShake: %B, n.defaults: %d, n.vibrate: %s, n.sound: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(localNotification.defaults), g.c(localNotification.vibrate), localNotification.sound });
     if (paramBoolean2) {
       localNotification.vibrate = Util.VIRBRATOR_PATTERN;
     }
+    String str;
     int i;
     if (paramBoolean1)
     {
-      paramNotification = com.tencent.mm.n.g.awq();
-      if (ck(paramContext))
+      paramNotification = h.aQP();
+      str = (String)paramNotification.second;
+      if (cW(paramContext))
       {
         localNotification.sound = null;
         i = 0;
@@ -38,22 +45,24 @@ public final class b
     }
     for (;;)
     {
-      Log.i("MicroMsg.NotificationDefaults", "end initDefaults, defaults: %d, n.vibrate: %s, n.sound: %s", new Object[] { Integer.valueOf(i), g.a(localNotification.vibrate), localNotification.sound });
-      this.iSD = i;
-      i = this.iSD;
+      Log.i("MicroMsg.NotificationDefaults", "end initDefaults, defaults: %d, n.vibrate: %s, n.sound: %s", new Object[] { Integer.valueOf(i), g.c(localNotification.vibrate), localNotification.sound });
+      this.luA = i;
+      i = this.luA;
       AppMethodBeat.o(20039);
       return i;
-      if ((paramNotification != null) && (paramNotification != f.n.jwm))
+      if ((str != null) && (str != f.o.lZE))
       {
-        localNotification.sound = Uri.parse(paramNotification);
-        i = 0;
+        if (((Boolean)paramNotification.first).booleanValue()) {}
+        for (paramContext = FileProviderHelper.getUriForFile(paramContext, u.V(new File((String)paramNotification.second)));; paramContext = Uri.parse(str))
+        {
+          localNotification.sound = paramContext;
+          i = 0;
+          break;
+        }
       }
-      else
-      {
-        i = 1;
-        continue;
-        i = 0;
-      }
+      i = 1;
+      continue;
+      i = 0;
     }
   }
   
@@ -61,91 +70,99 @@ public final class b
   {
     AppMethodBeat.i(20040);
     Log.i("MicroMsg.NotificationDefaults", "begin initDefaults, isNeedSound: %B, isNeedShake: %B, n.defaults: %d, n.vibrate: %s, n.sound: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramNotification.defaults), paramNotification.vibrate, paramNotification.sound });
-    int j = 0;
+    int i = 0;
     boolean bool4 = false;
     boolean bool3 = false;
     boolean bool1;
     if (paramBoolean1) {
-      if (ck(paramContext)) {
+      if (cW(paramContext)) {
         bool1 = true;
       }
     }
     for (;;)
     {
-      int i = j;
       if (paramBoolean2) {
-        i = j | 0x2;
-      }
-      String str = com.tencent.mm.n.g.awq();
-      if (Util.isNullOrNil(paramString)) {
-        Log.d("MicroMsg.NotificationDefaults", "msgContent is null");
-      }
-      boolean bool2;
-      if (af.juS.jqZ != 2)
-      {
-        bool2 = true;
-        label128:
-        if (!bool2) {
-          break label378;
-        }
-        if (!qn(i)) {
-          break label372;
-        }
-        i &= 0xFFFFFFFD;
-        Util.shake(paramContext, true);
-        paramBoolean1 = true;
-        label155:
-        if ((!qo(i)) || (bool1)) {
-          break label364;
-        }
-        i &= 0xFFFFFFFE;
-        f.a.ars().JV(str);
-        bool3 = true;
-        paramBoolean2 = paramBoolean1;
-        paramBoolean1 = bool3;
+        i |= 0x2;
       }
       for (;;)
       {
-        if (bool1)
+        Pair localPair = h.aQP();
+        String str = (String)localPair.second;
+        if (Util.isNullOrNil(paramString)) {
+          Log.d("MicroMsg.NotificationDefaults", "msgContent is null");
+        }
+        boolean bool2;
+        if (af.lYj.lUn != 2)
         {
-          i &= 0xFFFFFFFE;
-          f.a.ars().JV(str);
+          bool2 = true;
+          label134:
+          if (!bool2) {
+            break label448;
+          }
+          if (!qn(i)) {
+            break label442;
+          }
+          i &= 0xFFFFFFFD;
+          Util.shake(paramContext, true);
           paramBoolean1 = true;
+          label161:
+          if ((!qo(i)) || (bool1)) {
+            break label434;
+          }
+          i &= 0xFFFFFFFE;
+          f.a.aLo().s(str, ((Boolean)localPair.first).booleanValue());
+          bool3 = true;
+          paramBoolean2 = paramBoolean1;
+          paramBoolean1 = bool3;
         }
         for (;;)
         {
-          this.iSD = i;
-          Log.i("MicroMsg.NotificationDefaults", "end initDefaults, n.defaults: %d, n.vibrate: %s, n.sound: %s, soundUri: %s, headset&Play: %B, SrvDeviceInfo.mCommonInfo.mmnotify is Enable: %B, isMMShake: %B, isMMPlaySound: %B", new Object[] { Integer.valueOf(paramNotification.defaults), g.a(paramNotification.vibrate), paramNotification.sound, str, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1) });
-          i = this.iSD;
-          AppMethodBeat.o(20040);
-          return i;
-          j = 1;
-          bool1 = false;
-          break;
-          bool2 = false;
-          break label128;
-          if ((qo(i)) && (str != null))
+          if (bool1)
           {
             i &= 0xFFFFFFFE;
-            paramNotification.sound = Uri.parse(str);
+            f.a.aLo().s(str, ((Boolean)localPair.first).booleanValue());
+            paramBoolean1 = true;
           }
+          for (;;)
+          {
+            this.luA = i;
+            Log.i("MicroMsg.NotificationDefaults", "end initDefaults, n.defaults: %d, n.vibrate: %s, n.sound: %s, soundUri: %s, headset&Play: %B, SrvDeviceInfo.mCommonInfo.mmnotify is Enable: %B, isMMShake: %B, isMMPlaySound: %B", new Object[] { Integer.valueOf(paramNotification.defaults), g.c(paramNotification.vibrate), paramNotification.sound, str, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1) });
+            i = this.luA;
+            AppMethodBeat.o(20040);
+            return i;
+            i = 1;
+            bool1 = false;
+            break;
+            bool2 = false;
+            break label134;
+            if ((qo(i)) && (str != null))
+            {
+              i &= 0xFFFFFFFE;
+              if (((Boolean)localPair.first).booleanValue()) {}
+              for (paramContext = FileProviderHelper.getUriForFile(paramContext, u.V(new File((String)localPair.second)));; paramContext = Uri.parse(str))
+              {
+                paramNotification.sound = paramContext;
+                break;
+              }
+            }
+          }
+          label434:
+          paramBoolean2 = paramBoolean1;
+          paramBoolean1 = bool3;
+          continue;
+          label442:
+          paramBoolean1 = bool4;
+          break label161;
+          label448:
+          paramBoolean2 = false;
+          paramBoolean1 = bool3;
         }
-        label364:
-        paramBoolean2 = paramBoolean1;
-        paramBoolean1 = bool3;
-        continue;
-        label372:
-        paramBoolean1 = bool4;
-        break label155;
-        label378:
-        paramBoolean2 = false;
-        paramBoolean1 = bool3;
       }
       bool1 = false;
     }
   }
   
-  private static boolean ck(Context paramContext)
+  private static boolean cW(Context paramContext)
   {
     AppMethodBeat.i(20041);
     paramContext = (AudioManager)paramContext.getSystemService("audio");
@@ -172,7 +189,7 @@ public final class b
   public final int a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, Notification paramNotification, String paramString)
   {
     AppMethodBeat.i(20038);
-    if (com.tencent.mm.n.g.awf())
+    if (h.aQE())
     {
       i = a(paramContext, paramBoolean1, paramBoolean2, paramNotification);
       AppMethodBeat.o(20038);
@@ -185,7 +202,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.b
  * JD-Core Version:    0.7.0.1
  */

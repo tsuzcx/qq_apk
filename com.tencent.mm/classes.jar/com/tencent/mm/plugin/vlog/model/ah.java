@@ -1,82 +1,128 @@
 package com.tencent.mm.plugin.vlog.model;
 
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dbp;
-import com.tencent.mm.protocal.protobuf.fbs;
+import com.tencent.mm.protocal.protobuf.dtg;
+import com.tencent.mm.protocal.protobuf.fyd;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "", "respId", "", "materials", "", "Lcom/tencent/mm/plugin/vlog/model/Material;", "netMusicPath", "", "xEffectConfig", "Lcom/tencent/mm/protocal/protobuf/VlogResp;", "editItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "Lkotlin/collections/ArrayList;", "editData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "drawingRect", "", "validRect", "(JLjava/util/List;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/VlogResp;Ljava/util/ArrayList;Ljava/util/ArrayList;[F[F)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditData", "()Ljava/util/ArrayList;", "setEditData", "(Ljava/util/ArrayList;)V", "getEditItems", "setEditItems", "fid", "", "getFid", "()I", "getMaterials", "()Ljava/util/List;", "setMaterials", "(Ljava/util/List;)V", "getNetMusicPath", "()Ljava/lang/String;", "setNetMusicPath", "(Ljava/lang/String;)V", "getRespId", "()J", "setRespId", "(J)V", "sid", "getSid", "getValidRect", "setValidRect", "vid", "getVid", "getXEffectConfig", "()Lcom/tencent/mm/protocal/protobuf/VlogResp;", "setXEffectConfig", "(Lcom/tencent/mm/protocal/protobuf/VlogResp;)V", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "", "other", "getVideoDurationMs", "hashCode", "isValid", "toString", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "", "respId", "", "materials", "", "Lcom/tencent/mm/plugin/vlog/model/Material;", "netMusicPath", "", "xEffectConfig", "Lcom/tencent/mm/protocal/protobuf/VlogResp;", "editItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "Lkotlin/collections/ArrayList;", "editData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "drawingRect", "", "validRect", "(JLjava/util/List;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/VlogResp;Ljava/util/ArrayList;Ljava/util/ArrayList;[F[F)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditData", "()Ljava/util/ArrayList;", "setEditData", "(Ljava/util/ArrayList;)V", "getEditItems", "setEditItems", "fid", "", "getFid", "()I", "getMaterials", "()Ljava/util/List;", "setMaterials", "(Ljava/util/List;)V", "getNetMusicPath", "()Ljava/lang/String;", "setNetMusicPath", "(Ljava/lang/String;)V", "getRespId", "()J", "setRespId", "(J)V", "sid", "getSid", "getValidRect", "setValidRect", "vid", "getVid", "getXEffectConfig", "()Lcom/tencent/mm/protocal/protobuf/VlogResp;", "setXEffectConfig", "(Lcom/tencent/mm/protocal/protobuf/VlogResp;)V", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "", "other", "getVideoDurationMs", "hashCode", "isValid", "toString", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ah
 {
-  public static final a Nnz;
-  public float[] HHg;
-  public float[] HHh;
-  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> HJV;
-  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> HJW;
-  public long Nnv;
-  public List<? extends s> Nnw;
-  public String Nnx;
-  public fbs Nny;
+  public static final ah.a UaW;
+  public float[] NEA;
+  public float[] NEB;
+  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> NGU;
+  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> NGV;
+  public long UaX;
+  public List<? extends s> UaY;
+  public String UaZ;
+  public fyd Uba;
   
   static
   {
     AppMethodBeat.i(110947);
-    Nnz = new a((byte)0);
+    UaW = new ah.a((byte)0);
     AppMethodBeat.o(110947);
   }
   
-  private ah(long paramLong, List<? extends s> paramList, String paramString, fbs paramfbs, ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> paramArrayList, ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> paramArrayList1, float[] paramArrayOfFloat)
+  private ah(long paramLong, List<? extends s> paramList, String paramString, fyd paramfyd, ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> paramArrayList, ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> paramArrayList1, float[] paramArrayOfFloat)
   {
     AppMethodBeat.i(110945);
-    this.Nnv = paramLong;
-    this.Nnw = paramList;
-    this.Nnx = paramString;
-    this.Nny = paramfbs;
-    this.HJV = paramArrayList;
-    this.HJW = paramArrayList1;
-    this.HHg = paramArrayOfFloat;
-    this.HHh = null;
+    this.UaX = paramLong;
+    this.UaY = paramList;
+    this.UaZ = paramString;
+    this.Uba = paramfyd;
+    this.NGU = paramArrayList;
+    this.NGV = paramArrayList1;
+    this.NEA = paramArrayOfFloat;
+    this.NEB = null;
     AppMethodBeat.o(110945);
   }
   
-  public final void bh(ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> paramArrayList)
+  public final void A(float[] paramArrayOfFloat)
+  {
+    AppMethodBeat.i(110944);
+    kotlin.g.b.s.u(paramArrayOfFloat, "<set-?>");
+    this.NEA = paramArrayOfFloat;
+    AppMethodBeat.o(110944);
+  }
+  
+  public final void bI(ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> paramArrayList)
   {
     AppMethodBeat.i(110943);
-    p.k(paramArrayList, "<set-?>");
-    this.HJV = paramArrayList;
+    kotlin.g.b.s.u(paramArrayList, "<set-?>");
+    this.NGU = paramArrayList;
     AppMethodBeat.o(110943);
   }
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(110949);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof ah))
-      {
-        paramObject = (ah)paramObject;
-        if ((this.Nnv != paramObject.Nnv) || (!p.h(this.Nnw, paramObject.Nnw)) || (!p.h(this.Nnx, paramObject.Nnx)) || (!p.h(this.Nny, paramObject.Nny)) || (!p.h(this.HJV, paramObject.HJV)) || (!p.h(this.HJW, paramObject.HJW)) || (!p.h(this.HHg, paramObject.HHg)) || (!p.h(this.HHh, paramObject.HHh))) {}
-      }
-    }
-    else
+    if (this == paramObject)
     {
       AppMethodBeat.o(110949);
       return true;
     }
+    if (!(paramObject instanceof ah))
+    {
+      AppMethodBeat.o(110949);
+      return false;
+    }
+    paramObject = (ah)paramObject;
+    if (this.UaX != paramObject.UaX)
+    {
+      AppMethodBeat.o(110949);
+      return false;
+    }
+    if (!kotlin.g.b.s.p(this.UaY, paramObject.UaY))
+    {
+      AppMethodBeat.o(110949);
+      return false;
+    }
+    if (!kotlin.g.b.s.p(this.UaZ, paramObject.UaZ))
+    {
+      AppMethodBeat.o(110949);
+      return false;
+    }
+    if (!kotlin.g.b.s.p(this.Uba, paramObject.Uba))
+    {
+      AppMethodBeat.o(110949);
+      return false;
+    }
+    if (!kotlin.g.b.s.p(this.NGU, paramObject.NGU))
+    {
+      AppMethodBeat.o(110949);
+      return false;
+    }
+    if (!kotlin.g.b.s.p(this.NGV, paramObject.NGV))
+    {
+      AppMethodBeat.o(110949);
+      return false;
+    }
+    if (!kotlin.g.b.s.p(this.NEA, paramObject.NEA))
+    {
+      AppMethodBeat.o(110949);
+      return false;
+    }
+    if (!kotlin.g.b.s.p(this.NEB, paramObject.NEB))
+    {
+      AppMethodBeat.o(110949);
+      return false;
+    }
     AppMethodBeat.o(110949);
-    return false;
+    return true;
   }
   
   public final int getVideoDurationMs()
   {
     AppMethodBeat.i(110941);
     long l = 0L;
-    Iterator localIterator = ((Iterable)this.Nnw).iterator();
+    Iterator localIterator = ((Iterable)this.UaY).iterator();
     if (localIterator.hasNext())
     {
       s locals = (s)localIterator.next();
@@ -95,113 +141,50 @@ public final class ah
     }
   }
   
-  public final int gtG()
+  public final int hRj()
   {
-    return (int)this.Nny.UBQ.SZm;
+    return (int)this.Uba.abVZ.aame;
   }
   
-  public final int gtH()
+  public final int hRk()
   {
-    return (int)this.Nny.UBQ.SZn;
+    return (int)this.Uba.abVZ.aamf;
   }
   
-  public final int gtI()
+  public final int hRl()
   {
-    return (int)this.Nny.UBQ.RUQ;
+    return (int)this.Uba.abVZ.YSo;
   }
   
   public final int hashCode()
   {
-    int i2 = 0;
     AppMethodBeat.i(110948);
-    long l = this.Nnv;
-    int i3 = (int)(l ^ l >>> 32);
-    Object localObject = this.Nnw;
-    int i;
-    int j;
-    label59:
-    int k;
-    label76:
-    int m;
-    label94:
-    int n;
-    if (localObject != null)
+    int j = q.a..ExternalSyntheticBackport0.m(this.UaX);
+    int k = this.UaY.hashCode();
+    int m = this.UaZ.hashCode();
+    int n = this.Uba.hashCode();
+    int i1 = this.NGU.hashCode();
+    int i2 = this.NGV.hashCode();
+    int i3 = Arrays.hashCode(this.NEA);
+    if (this.NEB == null) {}
+    for (int i = 0;; i = Arrays.hashCode(this.NEB))
     {
-      i = localObject.hashCode();
-      localObject = this.Nnx;
-      if (localObject == null) {
-        break label200;
-      }
-      j = localObject.hashCode();
-      localObject = this.Nny;
-      if (localObject == null) {
-        break label205;
-      }
-      k = localObject.hashCode();
-      localObject = this.HJV;
-      if (localObject == null) {
-        break label210;
-      }
-      m = localObject.hashCode();
-      localObject = this.HJW;
-      if (localObject == null) {
-        break label216;
-      }
-      n = localObject.hashCode();
-      label112:
-      localObject = this.HHg;
-      if (localObject == null) {
-        break label222;
-      }
-    }
-    label200:
-    label205:
-    label210:
-    label216:
-    label222:
-    for (int i1 = Arrays.hashCode((float[])localObject);; i1 = 0)
-    {
-      localObject = this.HHh;
-      if (localObject != null) {
-        i2 = Arrays.hashCode((float[])localObject);
-      }
       AppMethodBeat.o(110948);
-      return (i1 + (n + (m + (k + (j + (i + i3 * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i2;
-      i = 0;
-      break;
-      j = 0;
-      break label59;
-      k = 0;
-      break label76;
-      m = 0;
-      break label94;
-      n = 0;
-      break label112;
+      return i + ((((((j * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31;
     }
-  }
-  
-  public final void q(float[] paramArrayOfFloat)
-  {
-    AppMethodBeat.i(110944);
-    p.k(paramArrayOfFloat, "<set-?>");
-    this.HHg = paramArrayOfFloat;
-    AppMethodBeat.o(110944);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(110942);
-    String str = "VLogScriptModel(respId=" + this.Nnv + ", materials=" + this.Nnw + ", netMusicPath='" + this.Nnx + "', xEffectConfig=" + this.Nny + ", editItems=" + this.HJV + ", editData=" + this.HJW + ", drawingRect=" + Arrays.toString(this.HHg) + ')';
+    String str = "VLogScriptModel(respId=" + this.UaX + ", materials=" + this.UaY + ", netMusicPath='" + this.UaZ + "', xEffectConfig=" + this.Uba + ", editItems=" + this.NGU + ", editData=" + this.NGV + ", drawingRect=" + Arrays.toString(this.NEA) + ')';
     AppMethodBeat.o(110942);
     return str;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel$Companion;", "", "()V", "default", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "plugin-vlog_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.ah
  * JD-Core Version:    0.7.0.1
  */

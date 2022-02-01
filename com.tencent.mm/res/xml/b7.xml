@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <IconPreference android:key="settings_avatar" android:layout="@layout/b8j" android:title="@string/k63" />
-    <IconPreference android:key="settings_qrcode" android:layout="@layout/b8j" android:title="@string/h19" />
-    <Preference android:key="settings_data" android:layout="@layout/b8j" android:title="@string/cl7" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="live_demo" android:layout="@layout/bdi" android:title="@string/g76" />
     <PreferenceSmallCategory />
-    <Preference android:key="settings_privacy" android:layout="@layout/b8j" android:title="@string/d5w" />
-    <Preference android:key="account_management" android:layout="@layout/b8j" android:title="@string/cgi" />
+    <Preference android:key="mlvb_live_room" android:layout="@layout/bdi" android:title="@string/gt3" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="settings_show_my_finder" android:summary="@string/d9y" android:title="@string/d9x" />
+    <Preference android:key="source_camera" android:layout="@layout/bdi" android:title="@string/jls" />
+    <PreferenceSmallCategory />
+    <Preference android:key="source_screen" android:layout="@layout/bdi" android:title="@string/jlt" />
+    <PreferenceSmallCategory />
+    <Preference android:key="live_view" android:layout="@layout/bdi" android:title="@string/gal" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.a;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.wallet_core.c.i;
 
 final class c$1
   extends a

@@ -72,7 +72,7 @@ public final class SignInButtonImpl
     case 2: 
       i = j;
     }
-    Drawable localDrawable = a.p(paramResources.getDrawable(i));
+    Drawable localDrawable = a.s(paramResources.getDrawable(i));
     a.a(localDrawable, paramResources.getColorStateList(R.color.common_google_signin_btn_tint));
     a.a(localDrawable, PorterDuff.Mode.SRC_ATOP);
     setBackgroundDrawable(localDrawable);
@@ -111,7 +111,7 @@ public final class SignInButtonImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.SignInButtonImpl
  * JD-Core Version:    0.7.0.1
  */

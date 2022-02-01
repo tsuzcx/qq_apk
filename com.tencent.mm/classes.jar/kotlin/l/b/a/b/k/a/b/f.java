@@ -1,15 +1,24 @@
 package kotlin.l.b.a.b.k.a.b;
 
-import kotlin.l.b.a.b.b.an;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface f
-  extends an
+public enum f
 {
-  public abstract String iIF();
+  static
+  {
+    AppMethodBeat.i(192358);
+    ajny = new f("STABLE", 0);
+    ajnz = new f("FIR_UNSTABLE", 1);
+    ajnA = new f("IR_UNSTABLE", 2);
+    ajnB = new f[] { ajny, ajnz, ajnA };
+    AppMethodBeat.o(192358);
+  }
+  
+  private f() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.MD5Util;
 
 public final class h
 {
-  public static String fcQ()
+  public static String glT()
   {
     AppMethodBeat.i(137015);
     String str = "audio" + MD5Util.getMD5String(new StringBuilder().append(System.nanoTime()).toString());

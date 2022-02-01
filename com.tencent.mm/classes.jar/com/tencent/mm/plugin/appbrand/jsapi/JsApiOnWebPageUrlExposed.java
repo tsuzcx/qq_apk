@@ -4,84 +4,74 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ad.i;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.brandservice.a.f.a;
+import com.tencent.mm.plugin.brandservice.api.h.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 import kotlin.n.n;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "WebPagePrefetchTask", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "WebPagePrefetchTask", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class JsApiOnWebPageUrlExposed
-  extends c<e>
+  extends c<f>
 {
   public static final int CTRL_INDEX = 865;
   public static final String NAME = "private_onWebPageUrlExposed";
-  public static final a ovZ;
+  public static final a rzt;
   
   static
   {
-    AppMethodBeat.i(277954);
-    ovZ = new a((byte)0);
-    AppMethodBeat.o(277954);
+    AppMethodBeat.i(325645);
+    rzt = new a((byte)0);
+    AppMethodBeat.o(325645);
   }
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(277953);
+    AppMethodBeat.i(325648);
     Log.d("MicroMsg.JsApiOnWebPageUrlExposed", "invoke");
-    String str;
-    if (paramJSONObject != null) {
-      str = paramJSONObject.optString("urlList");
-    }
-    while (Util.isNullOrNil(str))
+    if (paramJSONObject == null) {}
+    for (String str = null; Util.isNullOrNil(str); str = paramJSONObject.optString("urlList"))
     {
       Log.i("MicroMsg.JsApiOnWebPageUrlExposed", "fail:urlList is null");
-      if (parame != null)
-      {
-        parame.j(paramInt, agS("fail:urlList is null"));
-        AppMethodBeat.o(277953);
-        return;
-        str = null;
+      if (paramf != null) {
+        paramf.callback(paramInt, ZP("fail:urlList is null"));
       }
-      else
-      {
-        AppMethodBeat.o(277953);
-        return;
-      }
+      AppMethodBeat.o(325648);
+      return;
     }
-    if (paramJSONObject != null) {}
-    for (int i = paramJSONObject.optInt("bizType");; i = 0)
+    if (paramJSONObject == null) {}
+    for (int i = 0;; i = paramJSONObject.optInt("bizType"))
     {
-      new WebPagePrefetchTask((o)this, parame, paramInt, str, i).bsM();
-      AppMethodBeat.o(277953);
+      new WebPagePrefetchTask((p)this, paramf, paramInt, str, i).bQt();
+      AppMethodBeat.o(325648);
       return;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "callbackId", "", "urlListStr", "", "bizType", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;ILjava/lang/String;I)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "errMsg", "jsApi", "success", "", "describeContents", "doOnWebPageUrlExposed", "", "parseFromParcel", "in", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "callbackId", "", "urlListStr", "", "bizType", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;ILjava/lang/String;I)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "errMsg", "jsApi", "success", "", "describeContents", "doOnWebPageUrlExposed", "", "parseFromParcel", "in", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class WebPagePrefetchTask
     extends MainProcessTask
   {
     public static final a CREATOR;
     private String errMsg;
-    private int hDp;
-    private int okO;
-    private o okP;
-    private e okQ;
-    private String owa;
+    private int hyY;
+    private int ror;
+    private p ros;
+    private f rot;
+    private String rzu;
     private boolean success;
     
     static
     {
-      AppMethodBeat.i(279011);
+      AppMethodBeat.i(325525);
       CREATOR = new a((byte)0);
-      AppMethodBeat.o(279011);
+      AppMethodBeat.o(325525);
     }
     
     public WebPagePrefetchTask() {}
@@ -89,34 +79,34 @@ public final class JsApiOnWebPageUrlExposed
     public WebPagePrefetchTask(Parcel paramParcel)
     {
       this();
-      AppMethodBeat.i(279010);
-      this.owa = paramParcel.readString();
+      AppMethodBeat.i(325523);
+      this.rzu = paramParcel.readString();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
         this.success = bool;
-        this.hDp = paramParcel.readInt();
-        AppMethodBeat.o(279010);
+        this.hyY = paramParcel.readInt();
+        AppMethodBeat.o(325523);
         return;
         bool = false;
       }
     }
     
-    public WebPagePrefetchTask(o paramo, e parame, int paramInt1, String paramString, int paramInt2)
+    public WebPagePrefetchTask(p paramp, f paramf, int paramInt1, String paramString, int paramInt2)
     {
       this();
-      this.okP = paramo;
-      this.okQ = parame;
-      this.okO = paramInt1;
-      this.owa = paramString;
-      this.hDp = paramInt2;
+      this.ros = paramp;
+      this.rot = paramf;
+      this.ror = paramInt1;
+      this.rzu = paramString;
+      this.hyY = paramInt2;
     }
     
-    public final void RW()
+    public final void asn()
     {
-      AppMethodBeat.i(279006);
+      AppMethodBeat.i(325529);
       this.success = false;
-      if (Util.isNullOrNil(this.owa))
+      if (Util.isNullOrNil(this.rzu))
       {
         this.errMsg = "fail:urlList is null";
         Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", this.errMsg);
@@ -124,13 +114,13 @@ public final class JsApiOnWebPageUrlExposed
       com.tencent.mm.ad.f localf;
       for (;;)
       {
-        bPt();
-        AppMethodBeat.o(279006);
+        cpA();
+        AppMethodBeat.o(325529);
         return;
         ArrayList localArrayList = new ArrayList();
         try
         {
-          localf = new com.tencent.mm.ad.f(this.owa);
+          localf = new com.tencent.mm.ad.f(this.rzu);
           if (localf.length() > 0) {
             break;
           }
@@ -143,106 +133,124 @@ public final class JsApiOnWebPageUrlExposed
           Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", this.errMsg);
         }
       }
-      int j = localf.length();
-      int i = 0;
-      for (;;)
+      int k = localf.length();
+      if (k > 0) {}
+      int j;
+      for (int i = 0;; i = j)
       {
-        if (i < j)
+        j = i + 1;
+        Object localObject = localf.su(i);
+        String str1;
+        if (localObject != null)
         {
-          Object localObject = localf.sy(i);
-          String str = ((i)localObject).optString("url");
-          if ((str != null) && (n.ba((CharSequence)str) == true))
-          {
-            Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", "decode url is empty");
+          str1 = ((i)localObject).optString("url");
+          if ((str1 == null) || (n.bp((CharSequence)str1) != true)) {
+            break label213;
           }
-          else
+          i = 1;
+          label171:
+          if (i == 0) {
+            break label218;
+          }
+          Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", "decode url is empty");
+        }
+        for (;;)
+        {
+          if (j >= k)
           {
-            int k = ((i)localObject).optInt("bizScene");
-            localObject = ((i)localObject).optString("extInfo");
-            f.a locala = new f.a();
-            locala.url = str;
-            locala.extInfo = ((String)localObject);
-            locala.svv = 177;
-            locala.svw = k;
-            localException.add(locala);
+            if (localException.isEmpty())
+            {
+              this.errMsg = "fail:decode list is empty";
+              Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", this.errMsg);
+              break;
+              label213:
+              i = 0;
+              break label171;
+              label218:
+              i = ((i)localObject).optInt("bizScene");
+              String str2 = ((i)localObject).optString("extInfo");
+              h.a locala = new h.a();
+              locala.url = str1;
+              locala.extInfo = str2;
+              locala.vAZ = 177;
+              locala.vBa = i;
+              locala.vAY = ((i)localObject).optString("prefetchId", "");
+              localObject = ah.aiuX;
+              localException.add(locala);
+              continue;
+            }
+            Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", s.X("doOnWebPageUrlExposed  bizType:", Integer.valueOf(this.hyY)));
+            if (this.hyY == 1) {
+              ((com.tencent.mm.plugin.brandservice.api.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.h.class)).ej((List)localException);
+            }
+            for (;;)
+            {
+              this.errMsg = "ok";
+              this.success = true;
+              break;
+              ((com.tencent.mm.plugin.brandservice.api.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.h.class)).ei((List)localException);
+            }
           }
         }
-        else
-        {
-          if (localException.isEmpty())
-          {
-            this.errMsg = "fail:decode list is empty";
-            Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", this.errMsg);
-            break;
-          }
-          Log.i("MicroMsg.JsApiOnWebPageUrlExposed.WebPagePrefetchTask", "doOnWebPageUrlExposed  bizType:" + this.hDp);
-          if (this.hDp == 1) {
-            ((com.tencent.mm.plugin.brandservice.a.f)h.ae(com.tencent.mm.plugin.brandservice.a.f.class)).cr((List)localException);
-          }
-          for (;;)
-          {
-            this.errMsg = "ok";
-            this.success = true;
-            break;
-            ((com.tencent.mm.plugin.brandservice.a.f)h.ae(com.tencent.mm.plugin.brandservice.a.f.class)).cq((List)localException);
-          }
-        }
-        i += 1;
       }
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       String str2 = null;
       String str1 = null;
-      AppMethodBeat.i(279007);
-      super.bsK();
-      bPk();
+      AppMethodBeat.i(325533);
+      super.bQr();
+      cpx();
+      f localf;
       int i;
-      o localo;
+      p localp;
       if (this.success)
       {
-        locale = this.okQ;
-        if (locale != null)
+        localf = this.rot;
+        if (localf != null)
         {
-          i = this.okO;
-          localo = this.okP;
-          if (localo != null)
+          i = this.ror;
+          localp = this.ros;
+          if (localp == null) {}
+          for (;;)
           {
+            localf.callback(i, str1);
+            AppMethodBeat.o(325533);
+            return;
             str2 = this.errMsg;
             str1 = str2;
             if (str2 == null) {
               str1 = "ok";
             }
-            str1 = localo.agS(str1);
+            str1 = localp.ZP(str1);
           }
-          locale.j(i, str1);
-          AppMethodBeat.o(279007);
-          return;
         }
-        AppMethodBeat.o(279007);
-        return;
       }
-      e locale = this.okQ;
-      if (locale != null)
+      else
       {
-        i = this.okO;
-        localo = this.okP;
-        str1 = str2;
-        if (localo != null)
+        localf = this.rot;
+        if (localf != null)
         {
-          str2 = this.errMsg;
-          str1 = str2;
-          if (str2 == null) {
-            str1 = "fail";
+          i = this.ror;
+          localp = this.ros;
+          if (localp != null) {
+            break label134;
           }
-          str1 = localo.agS(str1);
         }
-        locale.j(i, str1);
-        AppMethodBeat.o(279007);
-        return;
       }
-      AppMethodBeat.o(279007);
+      for (str1 = str2;; str1 = localp.ZP(str1))
+      {
+        localf.callback(i, str1);
+        AppMethodBeat.o(325533);
+        return;
+        label134:
+        str2 = this.errMsg;
+        str1 = str2;
+        if (str2 == null) {
+          str1 = "fail";
+        }
+      }
     }
     
     public final int describeContents()
@@ -250,58 +258,65 @@ public final class JsApiOnWebPageUrlExposed
       return 0;
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       int i = 0;
-      AppMethodBeat.i(279008);
-      super.f(paramParcel);
+      AppMethodBeat.i(325536);
+      super.h(paramParcel);
       String str;
-      if (paramParcel != null)
+      boolean bool;
+      if (paramParcel == null)
       {
-        str = paramParcel.readString();
-        this.owa = str;
+        str = null;
+        this.rzu = str;
         if ((paramParcel == null) || (paramParcel.readInt() != 1)) {
-          break label73;
+          break label70;
         }
-      }
-      label73:
-      for (boolean bool = true;; bool = false)
-      {
+        bool = true;
+        label40:
         this.success = bool;
         if (paramParcel != null) {
-          i = paramParcel.readInt();
+          break label75;
         }
-        this.hDp = i;
-        AppMethodBeat.o(279008);
+      }
+      for (;;)
+      {
+        this.hyY = i;
+        AppMethodBeat.o(325536);
         return;
-        str = null;
+        str = paramParcel.readString();
         break;
+        label70:
+        bool = false;
+        break label40;
+        label75:
+        i = paramParcel.readInt();
       }
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(279009);
-      p.k(paramParcel, "parcel");
+      AppMethodBeat.i(325537);
+      s.u(paramParcel, "parcel");
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeString(this.owa);
+      paramParcel.writeString(this.rzu);
       if (this.success) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeInt(this.hDp);
-        AppMethodBeat.o(279009);
+        paramParcel.writeInt(this.hyY);
+        AppMethodBeat.o(325537);
         return;
       }
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "()V", "TAG", "", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "plugin-appbrand-integration_release"})
+    @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "()V", "TAG", "", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$WebPagePrefetchTask;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
       implements Parcelable.Creator<JsApiOnWebPageUrlExposed.WebPagePrefetchTask>
     {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$Companion;", "", "()V", "BIZ_TYPE_PREFETCH_WEB_PAGE", "", "BIZ_TYPE_PRELOAD_VIDEO", "CTRL_INDEX", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOnWebPageUrlExposed$Companion;", "", "()V", "BIZ_TYPE_PREFETCH_WEB_PAGE", "", "BIZ_TYPE_PRELOAD_VIDEO", "CTRL_INDEX", "NAME", "", "TAG", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

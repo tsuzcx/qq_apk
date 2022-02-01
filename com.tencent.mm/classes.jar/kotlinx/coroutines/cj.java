@@ -1,89 +1,58 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.t;
-import kotlinx.coroutines.internal.j;
+import kotlin.Metadata;
+import kotlinx.coroutines.internal.ac;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/NodeList;", "Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "Lkotlinx/coroutines/Incomplete;", "()V", "isActive", "", "()Z", "list", "getList", "()Lkotlinx/coroutines/NodeList;", "getString", "", "state", "toString", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"COMPLETING_ALREADY", "Lkotlinx/coroutines/internal/Symbol;", "getCOMPLETING_ALREADY$annotations", "()V", "COMPLETING_RETRY", "getCOMPLETING_RETRY$annotations", "COMPLETING_WAITING_CHILDREN", "getCOMPLETING_WAITING_CHILDREN$annotations", "EMPTY_ACTIVE", "Lkotlinx/coroutines/Empty;", "getEMPTY_ACTIVE$annotations", "EMPTY_NEW", "getEMPTY_NEW$annotations", "FALSE", "", "RETRY", "SEALED", "getSEALED$annotations", "TOO_LATE_TO_CANCEL", "getTOO_LATE_TO_CANCEL$annotations", "TRUE", "boxIncomplete", "", "unboxState", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
 public final class cj
-  extends j
-  implements bt
 {
-  public final String getString(String paramString)
+  private static final ac ajwD;
+  public static final ac ajwE;
+  private static final ac ajwF;
+  private static final ac ajwG;
+  private static final ac ajwH;
+  private static final bl ajwI;
+  private static final bl ajwJ;
+  
+  static
   {
-    AppMethodBeat.i(118248);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("List{");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("}[");
-    int i = 1;
-    j localj = (j)this;
-    paramString = localj.iSL();
-    if (paramString == null)
-    {
-      paramString = new t("null cannot be cast to non-null type kotlinx.coroutines.internal.Node /* = kotlinx.coroutines.internal.LockFreeLinkedListNode */");
-      AppMethodBeat.o(118248);
-      throw paramString;
-    }
-    paramString = (kotlinx.coroutines.internal.l)paramString;
-    if ((p.h(paramString, localj) ^ true))
-    {
-      int j = i;
-      cd localcd;
-      if ((paramString instanceof cd))
-      {
-        localcd = (cd)paramString;
-        if (i == 0) {
-          break label129;
-        }
-        i = 0;
-      }
-      for (;;)
-      {
-        localStringBuilder.append(localcd);
-        j = i;
-        paramString = paramString.iSM();
-        i = j;
-        break;
-        label129:
-        localStringBuilder.append(", ");
-      }
-    }
-    localStringBuilder.append("]");
-    paramString = localStringBuilder.toString();
-    p.j(paramString, "StringBuilder().apply(builderAction).toString()");
-    AppMethodBeat.o(118248);
-    return paramString;
+    AppMethodBeat.i(118155);
+    ajwD = new ac("COMPLETING_ALREADY");
+    ajwE = new ac("COMPLETING_WAITING_CHILDREN");
+    ajwF = new ac("COMPLETING_RETRY");
+    ajwG = new ac("TOO_LATE_TO_CANCEL");
+    ajwH = new ac("SEALED");
+    ajwI = new bl(false);
+    ajwJ = new bl(true);
+    AppMethodBeat.o(118155);
   }
   
-  public final cj iRt()
+  public static final Object iM(Object paramObject)
   {
-    return this;
-  }
-  
-  public final boolean isActive()
-  {
-    return true;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118249);
-    if (ap.getDEBUG())
+    AppMethodBeat.i(188798);
+    if ((paramObject instanceof bw))
     {
-      str = getString("Active");
-      AppMethodBeat.o(118249);
-      return str;
+      paramObject = new bx((bw)paramObject);
+      AppMethodBeat.o(188798);
+      return paramObject;
     }
-    String str = super.toString();
-    AppMethodBeat.o(118249);
-    return str;
+    AppMethodBeat.o(188798);
+    return paramObject;
+  }
+  
+  public static final Object iN(Object paramObject)
+  {
+    if ((paramObject instanceof bx)) {}
+    for (bx localbx = (bx)paramObject; localbx == null; localbx = null) {
+      return paramObject;
+    }
+    return localbx.ajwq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.cj
  * JD-Core Version:    0.7.0.1
  */

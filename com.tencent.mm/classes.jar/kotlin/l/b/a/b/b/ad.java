@@ -1,25 +1,26 @@
 package kotlin.l.b.a.b.b;
 
-import java.util.List;
-import kotlin.l.b.a.b.f.b;
-import kotlin.l.b.a.b.j.f.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface ad
-  extends l
+public final class ad<T>
 {
-  public abstract List<ab> getFragments();
+  private final String name;
   
-  public abstract h iEC();
+  public ad(String paramString)
+  {
+    AppMethodBeat.i(191802);
+    this.name = paramString;
+    AppMethodBeat.o(191802);
+  }
   
-  public abstract b iFy();
-  
-  public abstract y iFz();
-  
-  public abstract boolean isEmpty();
+  public final String toString()
+  {
+    return this.name;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlin.l.b.a.b.b.ad
  * JD-Core Version:    0.7.0.1
  */

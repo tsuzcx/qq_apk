@@ -4,97 +4,98 @@ import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
-import java.util.Collection;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewHolder;", "compositionList", "Ljava/util/ArrayList;", "", "listener", "Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewHolder$IFloatViewListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewHolder$IFloatViewListener;)V", "mListener", "selectItemPosition", "", "viewHolderList", "getItemCount", "getSelectItemText", "onBindViewHolder", "", "viewHolderLongClick", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "viewType", "selectItemByPosition", "updateDefaultSelectPosition", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewHolder;", "compositionList", "Ljava/util/ArrayList;", "", "listener", "Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewHolder$IFloatViewListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewHolder$IFloatViewListener;)V", "mListener", "selectItemPosition", "", "viewHolderList", "getItemCount", "getSelectItemText", "onBindViewHolder", "", "viewHolderLongClick", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "viewType", "selectItemByPosition", "updateDefaultSelectPosition", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends RecyclerView.a<e>
 {
-  public static final a Dxs;
-  private final ArrayList<e> AXn;
-  private final ArrayList<String> Dxf;
-  private final e.a Dxq;
-  int Dxr;
+  public static final d.a Jqv;
+  private final ArrayList<e> GyR;
+  private final ArrayList<String> Jql;
+  private final e.a Jqw;
+  int Jqx;
   
   static
   {
-    AppMethodBeat.i(210802);
-    Dxs = new a((byte)0);
-    AppMethodBeat.o(210802);
+    AppMethodBeat.i(312789);
+    Jqv = new d.a((byte)0);
+    AppMethodBeat.o(312789);
   }
   
   public d(ArrayList<String> paramArrayList, e.a parama)
   {
-    AppMethodBeat.i(210801);
-    this.Dxf = paramArrayList;
-    this.Dxq = parama;
-    this.AXn = new ArrayList(this.Dxf.size());
-    AppMethodBeat.o(210801);
+    AppMethodBeat.i(312785);
+    this.Jql = paramArrayList;
+    this.Jqw = parama;
+    this.GyR = new ArrayList(this.Jql.size());
+    AppMethodBeat.o(312785);
   }
   
-  public final void Us(int paramInt)
+  public final void Yp(int paramInt)
   {
-    AppMethodBeat.i(210800);
+    AppMethodBeat.i(312813);
+    label138:
     for (;;)
     {
       try
       {
-        this.Dxr = paramInt;
-        int j = ((Collection)this.AXn).size();
-        int i = 0;
+        this.Jqx = paramInt;
+        int k = this.GyR.size() - 1;
+        int j;
         Object localObject;
-        if (i < j)
+        if (k >= 0)
         {
-          localObject = (e)this.AXn.get(i);
+          i = 0;
+          j = i + 1;
+          localObject = (e)this.GyR.get(i);
           if (i == paramInt)
           {
             bool = true;
-            ((e)localObject).sF(bool);
-            i += 1;
+            ((e)localObject).wL(bool);
+            if (j <= k) {
+              break label138;
+            }
           }
         }
         else
         {
-          localObject = this.Dxq;
-          if (localObject != null)
-          {
-            ((e.a)localObject).notifyDataSetChanged();
-            AppMethodBeat.o(210800);
-            return;
+          localObject = this.Jqw;
+          if (localObject == null) {
+            continue;
           }
-          AppMethodBeat.o(210800);
+          ((e.a)localObject).notifyDataSetChanged();
+          AppMethodBeat.o(312813);
           return;
         }
+        boolean bool = false;
+        continue;
+        int i = j;
       }
       catch (Exception localException)
       {
         Log.e("WxIme.ImeLongClickFloatViewAdapter", "selectItemByPosition " + paramInt + ' ' + localException.getMessage());
-        AppMethodBeat.o(210800);
+        AppMethodBeat.o(312813);
         return;
       }
-      boolean bool = false;
     }
   }
   
-  public final String eDu()
+  public final String fLu()
   {
-    AppMethodBeat.i(210797);
-    String str = (String)this.Dxf.get(this.Dxr);
-    AppMethodBeat.o(210797);
+    AppMethodBeat.i(312802);
+    String str = (String)this.Jql.get(this.Jqx);
+    AppMethodBeat.o(312802);
     return str;
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(210795);
-    int i = this.Dxf.size();
-    AppMethodBeat.o(210795);
+    AppMethodBeat.i(312797);
+    int i = this.Jql.size();
+    AppMethodBeat.o(312797);
     return i;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/floatview/ImeLongClickFloatViewAdapter$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
 }
 
 

@@ -3,71 +3,71 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class v
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String ID;
-  public com.tencent.mm.cd.b rVk;
-  public int rWs;
-  public int rWt;
-  public int rWu;
-  public int rWv;
-  public int rWw;
+  public int crz;
+  public com.tencent.mm.bx.b vgA;
+  public String vgy;
+  public int vhI;
+  public int vhJ;
+  public int vhK;
+  public int vhL;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(22127);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.ID == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.vgy == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: ID");
+        paramVarArgs = new i.a.a.b("Not all required fields were included: ID");
         AppMethodBeat.o(22127);
         throw paramVarArgs;
       }
-      paramVarArgs.aY(1, this.rWs);
-      if (this.ID != null) {
-        paramVarArgs.f(2, this.ID);
+      paramVarArgs.bS(1, this.vhI);
+      if (this.vgy != null) {
+        paramVarArgs.g(2, this.vgy);
       }
-      if (this.rVk != null) {
-        paramVarArgs.c(3, this.rVk);
+      if (this.vgA != null) {
+        paramVarArgs.d(3, this.vgA);
       }
-      paramVarArgs.aY(4, this.rWt);
-      paramVarArgs.aY(5, this.rWu);
-      paramVarArgs.aY(6, this.rWv);
-      paramVarArgs.aY(7, this.rWw);
+      paramVarArgs.bS(4, this.crz);
+      paramVarArgs.bS(5, this.vhJ);
+      paramVarArgs.bS(6, this.vhK);
+      paramVarArgs.bS(7, this.vhL);
       AppMethodBeat.o(22127);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.rWs) + 0;
+      int i = i.a.a.b.b.a.cJ(1, this.vhI) + 0;
       paramInt = i;
-      if (this.ID != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.ID);
+      if (this.vgy != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.vgy);
       }
       i = paramInt;
-      if (this.rVk != null) {
-        i = paramInt + g.a.a.b.b.a.b(3, this.rVk);
+      if (this.vgA != null) {
+        i = paramInt + i.a.a.b.b.a.c(3, this.vgA);
       }
-      paramInt = g.a.a.b.b.a.bM(4, this.rWt);
-      int j = g.a.a.b.b.a.bM(5, this.rWu);
-      int k = g.a.a.b.b.a.bM(6, this.rWv);
-      int m = g.a.a.b.b.a.bM(7, this.rWw);
+      paramInt = i.a.a.b.b.a.cJ(4, this.crz);
+      int j = i.a.a.b.b.a.cJ(5, this.vhJ);
+      int k = i.a.a.b.b.a.cJ(6, this.vhK);
+      int m = i.a.a.b.b.a.cJ(7, this.vhL);
       AppMethodBeat.o(22127);
       return i + paramInt + j + k + m;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      if (this.ID == null)
+      if (this.vgy == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: ID");
+        paramVarArgs = new i.a.a.b("Not all required fields were included: ID");
         AppMethodBeat.o(22127);
         throw paramVarArgs;
       }
@@ -76,7 +76,7 @@ public final class v
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       v localv = (v)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -84,31 +84,31 @@ public final class v
         AppMethodBeat.o(22127);
         return -1;
       case 1: 
-        localv.rWs = locala.abFh.AK();
+        localv.vhI = locala.ajGk.aar();
         AppMethodBeat.o(22127);
         return 0;
       case 2: 
-        localv.ID = locala.abFh.readString();
+        localv.vgy = locala.ajGk.readString();
         AppMethodBeat.o(22127);
         return 0;
       case 3: 
-        localv.rVk = locala.abFh.iUw();
+        localv.vgA = locala.ajGk.kFX();
         AppMethodBeat.o(22127);
         return 0;
       case 4: 
-        localv.rWt = locala.abFh.AK();
+        localv.crz = locala.ajGk.aar();
         AppMethodBeat.o(22127);
         return 0;
       case 5: 
-        localv.rWu = locala.abFh.AK();
+        localv.vhJ = locala.ajGk.aar();
         AppMethodBeat.o(22127);
         return 0;
       case 6: 
-        localv.rWv = locala.abFh.AK();
+        localv.vhK = locala.ajGk.aar();
         AppMethodBeat.o(22127);
         return 0;
       }
-      localv.rWw = locala.abFh.AK();
+      localv.vhL = locala.ajGk.aar();
       AppMethodBeat.o(22127);
       return 0;
     }

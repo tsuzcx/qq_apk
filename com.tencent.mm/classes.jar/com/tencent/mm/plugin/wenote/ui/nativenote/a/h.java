@@ -7,29 +7,29 @@ import com.tencent.mm.R.i;
 
 public final class h
 {
-  public static final int QKm = R.i.ejD;
-  public static final int QKn = R.i.ejC;
-  public static final int uqr = R.i.ejG;
-  public static final int uqs = R.i.ejF;
-  public SparseArray<Integer> QKo;
+  public static final int XDL = R.i.gmE;
+  public static final int XDM = R.i.gmD;
+  public static final int xwO = R.i.gmH;
+  public static final int xwP = R.i.gmG;
+  public SparseArray<Integer> XDN;
   
   public h()
   {
     AppMethodBeat.i(30862);
-    this.QKo = new SparseArray();
-    this.QKo.put(1, Integer.valueOf(uqr));
-    this.QKo.put(2, Integer.valueOf(uqs));
-    this.QKo.put(4, Integer.valueOf(uqs));
-    this.QKo.put(3, Integer.valueOf(uqs));
-    this.QKo.put(5, Integer.valueOf(uqs));
-    this.QKo.put(6, Integer.valueOf(uqs));
-    this.QKo.put(0, Integer.valueOf(uqs));
-    this.QKo.put(-1, Integer.valueOf(uqs));
-    this.QKo.put(-3, Integer.valueOf(QKm));
-    this.QKo.put(-2, Integer.valueOf(uqs));
-    this.QKo.put(-4, Integer.valueOf(uqs));
-    this.QKo.put(20, Integer.valueOf(uqs));
-    this.QKo.put(30, Integer.valueOf(QKn));
+    this.XDN = new SparseArray();
+    this.XDN.put(1, Integer.valueOf(xwO));
+    this.XDN.put(2, Integer.valueOf(xwP));
+    this.XDN.put(4, Integer.valueOf(xwP));
+    this.XDN.put(3, Integer.valueOf(xwP));
+    this.XDN.put(5, Integer.valueOf(xwP));
+    this.XDN.put(6, Integer.valueOf(xwP));
+    this.XDN.put(0, Integer.valueOf(xwP));
+    this.XDN.put(-1, Integer.valueOf(xwP));
+    this.XDN.put(-3, Integer.valueOf(XDL));
+    this.XDN.put(-2, Integer.valueOf(xwP));
+    this.XDN.put(-4, Integer.valueOf(xwP));
+    this.XDN.put(20, Integer.valueOf(xwP));
+    this.XDN.put(30, Integer.valueOf(XDM));
     AppMethodBeat.o(30862);
   }
   
@@ -97,7 +97,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.h
  * JD-Core Version:    0.7.0.1
  */

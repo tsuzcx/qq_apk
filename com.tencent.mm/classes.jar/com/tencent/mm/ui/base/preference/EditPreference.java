@@ -12,17 +12,17 @@ import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.e;
 import com.tencent.mm.ah.a.k;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.widget.a.e;
 
 public class EditPreference
   extends Preference
 {
-  private Preference.a WqI;
-  a WqN;
-  private EditText bGw;
-  private d mUO;
+  private Preference.a adXX;
+  a adYc;
+  private EditText dzv;
+  private e pRv;
   String value;
   
   public EditPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -37,15 +37,15 @@ public class EditPreference
   
   public final void a(Preference.a parama)
   {
-    this.WqI = parama;
+    this.adXX = parama;
   }
   
-  public final void elK()
+  public final void fpM()
   {
     AppMethodBeat.i(142539);
     final EditText localEditText;
-    if (this.bGw != null) {
-      localEditText = this.bGw;
+    if (this.dzv != null) {
+      localEditText = this.dzv;
     }
     for (;;)
     {
@@ -62,7 +62,7 @@ public class EditPreference
       if (localEditText.getParent() != null) {
         ((ViewGroup)localEditText.getParent()).removeView(localEditText);
       }
-      this.mUO = h.a(this.mContext, getTitle().toString(), localEditText, a.ba(this.mContext, a.k.app_ok), a.ba(this.mContext, a.k.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.pRv = k.a(this.mContext, getTitle().toString(), localEditText, a.bt(this.mContext, a.k.app_ok), a.bt(this.mContext, a.k.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -72,7 +72,7 @@ public class EditPreference
           }
           EditPreference.this.value = localEditText.getText().toString();
           if (EditPreference.b(EditPreference.this) != null) {
-            EditPreference.b(EditPreference.this).hKF();
+            EditPreference.b(EditPreference.this).jnj();
           }
           if (EditPreference.c(EditPreference.this) != null) {
             EditPreference.c(EditPreference.this).a(EditPreference.this, EditPreference.d(EditPreference.this));
@@ -101,12 +101,12 @@ public class EditPreference
   
   public static abstract interface a
   {
-    public abstract void hKF();
+    public abstract void jnj();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.EditPreference
  * JD-Core Version:    0.7.0.1
  */

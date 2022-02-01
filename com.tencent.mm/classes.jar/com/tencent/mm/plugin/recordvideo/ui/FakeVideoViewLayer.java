@@ -14,34 +14,37 @@ import com.google.android.exoplayer2.g.a.a;
 import com.google.android.exoplayer2.g.f.a;
 import com.google.android.exoplayer2.g.h;
 import com.google.android.exoplayer2.h.d;
+import com.google.android.exoplayer2.h.l;
 import com.google.android.exoplayer2.i.x;
 import com.google.android.exoplayer2.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 import com.tencent.mm.plugin.recordvideo.b.h;
-import com.tencent.mm.plugin.recordvideo.e.e.a;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
 import com.tencent.mm.plugin.recordvideo.model.audio.k.a;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.n;
-import com.tencent.mm.protocal.protobuf.ajd;
+import com.tencent.mm.plugin.recordvideo.util.g.a;
+import com.tencent.mm.protocal.protobuf.ami;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "backgrounndSilent", "", "exoPlayer", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "fakeImageView", "Landroid/widget/ImageView;", "fakeMusicInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "fakeVideoInfo", "Lcom/tencent/mm/protocal/protobuf/EditorProtoData;", "loopingFrame", "startTime", "", "stopTime", "storyFrameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/StoryFrameRetriever;", "useFakeImage", "videoHeight", "", "videoPlaying", "videoRotation", "videoWidth", "checkFakeVideoMatchScreenRatio", "isBackgroundSilent", "pauseFakeLayer", "", "playAudio", "playFakeLayer", "mute", "requestLoopFakeFrame", "frameRetriever", "setFakeVideoInfo", "videoEditData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "stopFakeLayer", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "backgrounndSilent", "", "exoPlayer", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "fakeImageView", "Landroid/widget/ImageView;", "fakeMusicInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "fakeVideoInfo", "Lcom/tencent/mm/protocal/protobuf/EditorProtoData;", "loopingFrame", "startTime", "", "stopTime", "storyFrameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/StoryFrameRetriever;", "useFakeImage", "videoHeight", "", "videoPlaying", "videoRotation", "videoWidth", "checkFakeVideoMatchScreenRatio", "isBackgroundSilent", "pauseFakeLayer", "", "playAudio", "playFakeLayer", "mute", "requestLoopFakeFrame", "frameRetriever", "setFakeVideoInfo", "videoEditData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "stopFakeLayer", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FakeVideoViewLayer
   extends RelativeLayout
 {
-  private ajd HVf;
-  private v HVg;
-  private AudioCacheInfo HVh;
-  public boolean HVi;
-  private ImageView HVj;
-  private com.tencent.mm.plugin.recordvideo.ui.editor.b.g HVk;
-  private boolean HVl;
-  private boolean HVm;
-  private int HVn;
+  private ami NRV;
+  private v NRW;
+  private AudioCacheInfo NRX;
+  public boolean NRY;
+  private ImageView NRZ;
+  private com.tencent.mm.plugin.recordvideo.ui.editor.b.g NSa;
+  private boolean NSb;
+  private boolean NSc;
+  private int NSd;
   private final String TAG;
-  private long jWQ;
+  private long mwK;
   private long startTime;
   private int videoHeight;
   private int videoWidth;
@@ -62,59 +65,75 @@ public final class FakeVideoViewLayer
     AppMethodBeat.o(75865);
   }
   
-  private final void a(final com.tencent.mm.plugin.recordvideo.ui.editor.b.g paramg)
+  private static final void a(FakeVideoViewLayer paramFakeVideoViewLayer, com.tencent.mm.plugin.recordvideo.ui.editor.b.g paramg)
   {
-    AppMethodBeat.i(217370);
-    if (!this.HVl)
+    AppMethodBeat.i(279798);
+    s.u(paramFakeVideoViewLayer, "this$0");
+    s.u(paramg, "$frameRetriever");
+    paramFakeVideoViewLayer.a(paramg);
+    AppMethodBeat.o(279798);
+  }
+  
+  private final void a(com.tencent.mm.plugin.recordvideo.ui.editor.b.g paramg)
+  {
+    AppMethodBeat.i(279784);
+    if (!this.NSb)
     {
       Log.i(this.TAG, "requestLoopFakeFrame stop");
-      AppMethodBeat.o(217370);
+      AppMethodBeat.o(279784);
       return;
     }
-    if ((p.h(paramg, this.HVk) ^ true))
+    if (!s.p(paramg, this.NSa))
     {
       Log.i(this.TAG, "requestLoopFakeFrame frameRetriever not match");
-      AppMethodBeat.o(217370);
+      AppMethodBeat.o(279784);
       return;
     }
-    Object localObject = this.HVf;
-    if (((localObject != null) && (((ajd)localObject).lfl == true)) || (!this.HVm))
+    Object localObject = this.NRV;
+    if ((localObject != null) && (((ami)localObject).nJW == true)) {}
+    for (int i = 1; (i != 0) || (!this.NSc); i = 0)
     {
       Log.i(this.TAG, "requestLoopFakeFrame local capture video or not useFakeImage");
-      AppMethodBeat.o(217370);
+      AppMethodBeat.o(279784);
       return;
     }
-    com.tencent.mm.plugin.recordvideo.ui.editor.b.a locala = paramg.cYc();
-    ImageView localImageView = this.HVj;
+    com.tencent.mm.plugin.recordvideo.ui.editor.b.a locala = paramg.dEs();
+    ImageView localImageView = this.NRZ;
     long l;
-    label180:
-    int i;
     if (localImageView != null)
     {
-      if (locala != null)
+      if (locala == null)
       {
-        localObject = locala.bitmap;
+        localObject = null;
         localImageView.setImageBitmap((Bitmap)localObject);
       }
     }
     else
     {
-      localObject = this.HVj;
+      localObject = this.NRZ;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(0);
       }
-      if (locala == null) {
-        break label285;
-      }
-      localObject = Long.valueOf(locala.kST);
-      l = ((Number)localObject).longValue();
-      if (1L <= l) {
-        break label242;
-      }
-      i = 0;
-      label182:
-      if (i == 0) {
-        break label273;
+      if (locala != null)
+      {
+        localObject = Long.valueOf(locala.nyF);
+        l = ((Number)localObject).longValue();
+        if (1L > l) {
+          break label285;
+        }
+        if (l > 1000L) {
+          break label280;
+        }
+        i = 1;
+        label195:
+        if ((i == 0) || (!this.NSb) || (!s.p(paramg, this.NSa))) {
+          break label290;
+        }
+        i = 1;
+        label219:
+        if (i == 0) {
+          break label295;
+        }
       }
     }
     for (;;)
@@ -122,64 +141,57 @@ public final class FakeVideoViewLayer
       if (localObject != null)
       {
         l = ((Number)localObject).longValue();
-        localObject = this.HVj;
-        if (localObject != null)
-        {
-          ((ImageView)localObject).postDelayed((Runnable)new a(this, paramg), l);
-          AppMethodBeat.o(217370);
-          return;
-          localObject = null;
-          break;
-          label242:
-          if ((1000L < l) || (!this.HVl) || (!p.h(paramg, this.HVk))) {
-            break label180;
-          }
-          i = 1;
-          break label182;
-          label273:
-          localObject = null;
-          continue;
+        localObject = this.NRZ;
+        if (localObject != null) {
+          ((ImageView)localObject).postDelayed(new FakeVideoViewLayer..ExternalSyntheticLambda0(this, paramg), l);
         }
-        AppMethodBeat.o(217370);
-        return;
       }
+      AppMethodBeat.o(279784);
+      return;
+      localObject = locala.bitmap;
+      break;
+      label280:
+      i = 0;
+      break label195;
+      label285:
+      i = 0;
+      break label195;
+      label290:
+      i = 0;
+      break label219;
+      label295:
+      localObject = null;
     }
-    label285:
-    AppMethodBeat.o(217370);
   }
   
   private final void playAudio()
   {
     AppMethodBeat.i(75863);
-    Object localObject2 = new com.google.android.exoplayer2.g.c((f.a)new a.a((d)new com.google.android.exoplayer2.h.l()));
-    Object localObject1 = x.i(getContext(), getContext().getString(b.h.app_name));
-    this.HVg = com.google.android.exoplayer2.g.a(getContext(), (h)localObject2);
+    Object localObject2 = new com.google.android.exoplayer2.g.c((f.a)new a.a((d)new l()));
+    Object localObject1 = x.m(getContext(), getContext().getString(b.h.app_name));
+    this.NRW = com.google.android.exoplayer2.g.a(getContext(), (h)localObject2);
     try
     {
-      localObject2 = com.tencent.mm.plugin.recordvideo.model.audio.k.HMx;
-      localObject2 = this.HVh;
-      if (localObject2 == null) {
-        p.iCn();
-      }
-      p.j(localObject1, "userAgent");
-      localObject1 = new com.google.android.exoplayer2.source.e(k.a.a((AudioCacheInfo)localObject2, (String)localObject1), this.startTime, this.jWQ * 1000L);
-      localObject2 = this.HVg;
+      localObject2 = com.tencent.mm.plugin.recordvideo.model.audio.k.NJr;
+      localObject2 = this.NRX;
+      s.checkNotNull(localObject2);
+      s.s(localObject1, "userAgent");
+      localObject1 = new com.google.android.exoplayer2.source.e(k.a.a((AudioCacheInfo)localObject2, (String)localObject1), this.startTime, this.mwK * 1000L);
+      localObject2 = this.NRW;
       if (localObject2 != null) {
-        ((v)localObject2).aM(true);
+        ((v)localObject2).bv(true);
       }
-      localObject2 = this.HVg;
+      localObject2 = this.NRW;
       if (localObject2 != null) {
         ((v)localObject2).a((com.google.android.exoplayer2.source.k)localObject1);
       }
-      localObject1 = this.HVg;
+      localObject1 = this.NRW;
       if (localObject1 != null)
       {
-        ((v)localObject1).L(2);
+        ((v)localObject1).J(2);
         AppMethodBeat.o(75863);
         return;
       }
-      AppMethodBeat.o(75863);
-      return;
     }
     catch (Exception localException)
     {
@@ -188,135 +200,212 @@ public final class FakeVideoViewLayer
     }
   }
   
-  public final void fxT()
+  public final void Br(boolean paramBoolean)
+  {
+    AppMethodBeat.i(75860);
+    Object localObject2 = this.TAG;
+    Object localObject1 = this.NRV;
+    int i;
+    int k;
+    if (localObject1 == null)
+    {
+      localObject1 = null;
+      Log.i((String)localObject2, s.X("LogStory: playFakeLayer ", localObject1));
+      localObject1 = this.NRW;
+      if (localObject1 != null) {
+        ((v)localObject1).stop();
+      }
+      localObject1 = this.NRW;
+      if (localObject1 != null) {
+        ((v)localObject1).release();
+      }
+      if ((this.NRX != null) && (!paramBoolean)) {
+        playAudio();
+      }
+      i = 0;
+      k = getChildCount();
+      if (k <= 0) {}
+    }
+    for (;;)
+    {
+      int j = i + 1;
+      localObject1 = getChildAt(i);
+      if ((localObject1 instanceof MMAnimateView)) {
+        ((MMAnimateView)localObject1).resume();
+      }
+      for (;;)
+      {
+        if (j < k) {
+          break label290;
+        }
+        if (this.NSc)
+        {
+          localObject1 = this.NRV;
+          if (localObject1 != null)
+          {
+            localObject2 = this.NSa;
+            if (localObject2 != null) {
+              ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject2).destroy();
+            }
+            localObject2 = this.NRZ;
+            if (localObject2 != null) {
+              ((ImageView)localObject2).setImageBitmap(null);
+            }
+            localObject2 = com.tencent.mm.plugin.recordvideo.background.e.NDU;
+            localObject2 = getContext();
+            s.s(localObject2, "context");
+            this.NSa = com.tencent.mm.plugin.recordvideo.background.e.a((ami)localObject1, (Context)localObject2, this.videoWidth, this.videoHeight, this.NSd);
+            localObject1 = this.NSa;
+            if (localObject1 != null)
+            {
+              ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject1).start();
+              this.NSb = true;
+              a((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject1);
+            }
+          }
+        }
+        AppMethodBeat.o(75860);
+        return;
+        localObject1 = Long.valueOf(((ami)localObject1).timeStamp);
+        break;
+        if ((localObject1 instanceof n)) {
+          ((n)localObject1).resume();
+        }
+      }
+      label290:
+      i = j;
+    }
+  }
+  
+  public final void gJG()
   {
     AppMethodBeat.i(75861);
     String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("LogStory: pauseFakeLayer ");
-    Object localObject = this.HVf;
-    int i;
-    if (localObject != null)
+    Object localObject = this.NRV;
+    int k;
+    if (localObject == null)
     {
-      localObject = Long.valueOf(((ajd)localObject).timeStamp);
-      Log.i(str, localObject);
-      localObject = this.HVg;
-      if (localObject != null) {
-        ((v)localObject).aM(false);
-      }
-      int j = getChildCount();
-      i = 0;
-      label76:
-      if (i >= j) {
-        break label131;
-      }
-      localObject = getChildAt(i);
-      if (!(localObject instanceof MMAnimateView)) {
-        break label113;
-      }
-      ((MMAnimateView)localObject).pause();
-    }
-    for (;;)
-    {
-      i += 1;
-      break label76;
       localObject = null;
-      break;
-      label113:
-      if ((localObject instanceof n)) {
-        ((n)localObject).IcL = false;
+      Log.i(str, s.X("LogStory: pauseFakeLayer ", localObject));
+      localObject = this.NRW;
+      if (localObject != null) {
+        ((v)localObject).bv(false);
+      }
+      k = getChildCount();
+      if (k <= 0) {}
+    }
+    int j;
+    label200:
+    for (int i = 0;; i = j)
+    {
+      j = i + 1;
+      localObject = getChildAt(i);
+      if ((localObject instanceof MMAnimateView)) {
+        ((MMAnimateView)localObject).pause();
+      }
+      for (;;)
+      {
+        if (j < k) {
+          break label200;
+        }
+        this.NSb = false;
+        localObject = this.NRZ;
+        if (localObject != null) {
+          ((ImageView)localObject).setImageBitmap(null);
+        }
+        localObject = this.NRZ;
+        if (localObject != null) {
+          ((ImageView)localObject).setVisibility(8);
+        }
+        localObject = this.NSa;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject).destroy();
+        }
+        this.NSa = null;
+        AppMethodBeat.o(75861);
+        return;
+        localObject = Long.valueOf(((ami)localObject).timeStamp);
+        break;
+        if ((localObject instanceof n)) {
+          ((n)localObject).NZh = false;
+        }
       }
     }
-    label131:
-    this.HVl = false;
-    localObject = this.HVj;
-    if (localObject != null) {
-      ((ImageView)localObject).setImageBitmap(null);
-    }
-    localObject = this.HVj;
-    if (localObject != null) {
-      ((ImageView)localObject).setVisibility(8);
-    }
-    localObject = this.HVk;
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject).destroy();
-    }
-    this.HVk = null;
-    AppMethodBeat.o(75861);
   }
   
-  public final void fxU()
+  public final void gJH()
   {
     AppMethodBeat.i(75862);
     String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("LogStory: stopFakeLayer ");
-    Object localObject = this.HVf;
-    int i;
-    if (localObject != null)
+    Object localObject = this.NRV;
+    int k;
+    if (localObject == null)
     {
-      localObject = Long.valueOf(((ajd)localObject).timeStamp);
-      Log.i(str, localObject);
-      localObject = this.HVg;
+      localObject = null;
+      Log.i(str, s.X("LogStory: stopFakeLayer ", localObject));
+      localObject = this.NRW;
       if (localObject != null) {
         ((v)localObject).stop();
       }
-      localObject = this.HVg;
+      localObject = this.NRW;
       if (localObject != null) {
         ((v)localObject).release();
       }
-      this.HVg = null;
-      int j = getChildCount();
-      i = 0;
-      label93:
-      if (i >= j) {
-        break label148;
-      }
-      localObject = getChildAt(i);
-      if (!(localObject instanceof MMAnimateView)) {
-        break label130;
-      }
-      ((MMAnimateView)localObject).stop();
+      this.NRW = null;
+      k = getChildCount();
+      if (k <= 0) {}
     }
-    for (;;)
+    int j;
+    label220:
+    for (int i = 0;; i = j)
     {
-      i += 1;
-      break label93;
-      localObject = null;
-      break;
-      label130:
-      if ((localObject instanceof n)) {
-        ((n)localObject).IcL = false;
+      j = i + 1;
+      localObject = getChildAt(i);
+      if ((localObject instanceof MMAnimateView)) {
+        ((MMAnimateView)localObject).stop();
+      }
+      for (;;)
+      {
+        if (j < k) {
+          break label220;
+        }
+        this.NSb = false;
+        localObject = this.NRZ;
+        if (localObject != null) {
+          ((ImageView)localObject).setImageBitmap(null);
+        }
+        localObject = this.NRZ;
+        if (localObject != null) {
+          ((ImageView)localObject).setVisibility(8);
+        }
+        localObject = this.NSa;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject).destroy();
+        }
+        this.NSa = null;
+        AppMethodBeat.o(75862);
+        return;
+        localObject = Long.valueOf(((ami)localObject).timeStamp);
+        break;
+        if ((localObject instanceof n)) {
+          ((n)localObject).NZh = false;
+        }
       }
     }
-    label148:
-    this.HVl = false;
-    localObject = this.HVj;
-    if (localObject != null) {
-      ((ImageView)localObject).setImageBitmap(null);
-    }
-    localObject = this.HVj;
-    if (localObject != null) {
-      ((ImageView)localObject).setVisibility(8);
-    }
-    localObject = this.HVk;
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject).destroy();
-    }
-    this.HVk = null;
-    AppMethodBeat.o(75862);
   }
   
   public final void setFakeVideoInfo(com.tencent.mm.plugin.recordvideo.background.c paramc)
   {
     boolean bool3 = true;
     AppMethodBeat.i(75858);
-    p.k(paramc, "videoEditData");
-    Object localObject1 = (com.tencent.mm.cd.a)new ajd();
+    s.u(paramc, "videoEditData");
+    Object localObject1 = (com.tencent.mm.bx.a)new ami();
     Object localObject2 = paramc.field_baseItemData;
-    ajd localajd;
+    ami localami;
     try
     {
-      ((com.tencent.mm.cd.a)localObject1).parseFrom((byte[])localObject2);
-      localObject1 = (ajd)localObject1;
+      ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject2);
+      localObject1 = (ami)localObject1;
       if (localObject1 == null)
       {
         AppMethodBeat.o(75858);
@@ -328,212 +417,117 @@ public final class FakeVideoViewLayer
       for (;;)
       {
         Log.printDebugStack("safeParser", "", new Object[] { localException });
-        localajd = null;
+        localami = null;
       }
       this.videoWidth = paramc.field_targetWidth;
       this.videoHeight = paramc.field_targetHeight;
-      this.HVn = paramc.field_videoRotate;
-      Log.i(this.TAG, "LogStory: setFakeVideoInfo " + localajd.timeStamp);
-      this.HVf = localajd;
-      if (this.HVj != null) {
-        break label224;
+      this.NSd = paramc.field_videoRotate;
+      Log.i(this.TAG, s.X("LogStory: setFakeVideoInfo ", Long.valueOf(localami.timeStamp)));
+      this.NRV = localami;
+      if (this.NRZ != null) {
+        break label222;
       }
     }
     paramc = new ImageView(getContext());
-    if ((this.HVn == 90) || (this.HVn == 270))
+    if ((this.NSd == 90) || (this.NSd == 270))
     {
       int i = this.videoHeight;
       this.videoHeight = this.videoWidth;
       this.videoWidth = i;
     }
-    label224:
+    label222:
     boolean bool2;
     if (this.videoWidth > this.videoHeight)
     {
       paramc.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      this.HVj = paramc;
+      localObject2 = ah.aiuX;
+      this.NRZ = paramc;
       removeAllViews();
-      paramc = this.HVf;
+      paramc = this.NRV;
       if (paramc == null) {
-        break label511;
+        break label504;
       }
       paramc = paramc.videoPath;
       if (paramc == null) {
-        break label511;
+        break label504;
       }
-      localObject2 = com.tencent.mm.plugin.recordvideo.e.e.Ife;
-      paramc = com.tencent.mm.plugin.recordvideo.e.e.aWt(paramc);
+      localObject2 = com.tencent.mm.plugin.recordvideo.util.g.Obu;
+      paramc = com.tencent.mm.plugin.recordvideo.util.g.aTF(paramc);
       if (paramc == null) {
-        break label506;
+        break label504;
       }
-      bool1 = paramc.Iff;
-      label265:
-      if ((localajd.lfl) || (bool1)) {
-        break label516;
+      bool1 = paramc.Obv;
+      label263:
+      if ((localami.nJW) || (bool1)) {
+        break label509;
       }
       bool2 = true;
-      label280:
-      this.HVm = bool2;
-      Log.i(this.TAG, "useFakeImage:" + this.HVm + ", isCaptureVideo:" + localajd.lfl + ", matchScreenRatio:" + bool1);
-      if (!this.HVm) {
-        break label522;
+      label278:
+      this.NSc = bool2;
+      Log.i(this.TAG, "useFakeImage:" + this.NSc + ", isCaptureVideo:" + localami.nJW + ", matchScreenRatio:" + bool1);
+      if (!this.NSc) {
+        break label515;
       }
-      addView((View)this.HVj, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
-      paramc = this.HVj;
+      addView((View)this.NRZ, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
+      paramc = this.NRZ;
       if (paramc != null) {
         paramc.setVisibility(0);
       }
-      label381:
-      if (localajd.kXi == null) {
-        break label565;
+      label379:
+      if (localami.nBT == null) {
+        break label558;
       }
       paramc = new AudioCacheInfo();
-      paramc.HLC = localajd.HLC;
-      paramc.aGs = localajd.aGs;
-      paramc.cachePath = localajd.kXi;
-      paramc.musicUrl = localajd.musicUrl;
-      this.HVh = paramc;
-      label438:
+      paramc.NID = localami.NID;
+      paramc.cached = localami.cached;
+      paramc.cachePath = localami.nBT;
+      paramc.musicUrl = localami.musicUrl;
+      this.NRX = paramc;
+      label436:
       bool1 = bool3;
-      if (localajd.kRX != 0) {
-        if (localajd.kRX != 2) {
-          break label573;
+      if (localami.nxj != 0) {
+        if (localami.nxj != 2) {
+          break label566;
         }
       }
     }
-    label516:
-    label522:
-    label565:
-    label573:
+    label515:
+    label558:
+    label566:
     for (boolean bool1 = bool3;; bool1 = false)
     {
-      this.HVi = bool1;
-      this.startTime = localajd.startTime;
-      this.jWQ = localajd.endTime;
-      this.HVl = false;
+      this.NRY = bool1;
+      this.startTime = localami.startTime;
+      this.mwK = localami.endTime;
+      this.NSb = false;
       AppMethodBeat.o(75858);
       return;
       paramc.setScaleType(ImageView.ScaleType.CENTER_CROP);
       break;
-      label506:
+      label504:
       bool1 = false;
-      break label265;
-      label511:
-      bool1 = false;
-      break label265;
+      break label263;
+      label509:
       bool2 = false;
-      break label280;
-      paramc = com.tencent.mm.plugin.recordvideo.background.e.HGz;
+      break label278;
+      paramc = com.tencent.mm.plugin.recordvideo.background.e.NDU;
       paramc = getContext();
-      p.j(paramc, "context");
-      com.tencent.mm.plugin.recordvideo.background.e.a(localajd, paramc, (ViewGroup)this);
-      paramc = this.HVj;
+      s.s(paramc, "context");
+      com.tencent.mm.plugin.recordvideo.background.e.a(localami, paramc, (ViewGroup)this);
+      paramc = this.NRZ;
       if (paramc == null) {
-        break label381;
+        break label379;
       }
       paramc.setVisibility(8);
-      break label381;
-      this.HVh = null;
-      break label438;
-    }
-  }
-  
-  public final void wR(boolean paramBoolean)
-  {
-    AppMethodBeat.i(75860);
-    Object localObject2 = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("LogStory: playFakeLayer ");
-    Object localObject1 = this.HVf;
-    int i;
-    if (localObject1 != null)
-    {
-      localObject1 = Long.valueOf(((ajd)localObject1).timeStamp);
-      Log.i((String)localObject2, localObject1);
-      localObject1 = this.HVg;
-      if (localObject1 != null) {
-        ((v)localObject1).stop();
-      }
-      localObject1 = this.HVg;
-      if (localObject1 != null) {
-        ((v)localObject1).release();
-      }
-      if ((this.HVh != null) && (!paramBoolean)) {
-        playAudio();
-      }
-      int j = getChildCount();
-      i = 0;
-      label114:
-      if (i >= j) {
-        break label174;
-      }
-      localObject1 = getChildAt(i);
-      if (!(localObject1 instanceof MMAnimateView)) {
-        break label155;
-      }
-      ((MMAnimateView)localObject1).resume();
-    }
-    for (;;)
-    {
-      i += 1;
-      break label114;
-      localObject1 = null;
-      break;
-      label155:
-      if ((localObject1 instanceof n)) {
-        ((n)localObject1).resume();
-      }
-    }
-    label174:
-    if (this.HVm)
-    {
-      localObject1 = this.HVf;
-      if (localObject1 != null)
-      {
-        localObject2 = this.HVk;
-        if (localObject2 != null) {
-          ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject2).destroy();
-        }
-        localObject2 = this.HVj;
-        if (localObject2 != null) {
-          ((ImageView)localObject2).setImageBitmap(null);
-        }
-        localObject2 = com.tencent.mm.plugin.recordvideo.background.e.HGz;
-        localObject2 = getContext();
-        p.j(localObject2, "context");
-        this.HVk = com.tencent.mm.plugin.recordvideo.background.e.a((ajd)localObject1, (Context)localObject2, this.videoWidth, this.videoHeight, this.HVn);
-        localObject1 = this.HVk;
-        if (localObject1 != null)
-        {
-          ((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject1).start();
-          this.HVl = true;
-          a((com.tencent.mm.plugin.recordvideo.ui.editor.b.g)localObject1);
-          AppMethodBeat.o(75860);
-          return;
-        }
-        AppMethodBeat.o(75860);
-        return;
-      }
-    }
-    AppMethodBeat.o(75860);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer$requestLoopFakeFrame$2$1"})
-  static final class a
-    implements Runnable
-  {
-    a(FakeVideoViewLayer paramFakeVideoViewLayer, com.tencent.mm.plugin.recordvideo.ui.editor.b.g paramg) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(75857);
-      FakeVideoViewLayer.a(this.HVo, paramg);
-      AppMethodBeat.o(75857);
+      break label379;
+      this.NRX = null;
+      break label436;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.FakeVideoViewLayer
  * JD-Core Version:    0.7.0.1
  */

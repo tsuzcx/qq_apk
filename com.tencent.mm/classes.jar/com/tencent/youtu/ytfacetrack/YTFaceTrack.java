@@ -18,7 +18,7 @@ public class YTFaceTrack
   static
   {
     AppMethodBeat.i(73435);
-    Version = "2.3.3.6";
+    Version = "2.3.3.7";
     instance = null;
     nativeInit();
     AppMethodBeat.o(73435);
@@ -91,11 +91,11 @@ public class YTFaceTrack
   
   public static void nativeLog(int paramInt, String paramString)
   {
-    AppMethodBeat.i(243596);
+    AppMethodBeat.i(218048);
     if (loggerListener != null) {
       loggerListener.log("[YTFaceTrack.nativeLog]", paramString);
     }
-    AppMethodBeat.o(243596);
+    AppMethodBeat.o(218048);
   }
   
   public static void setLoggerListener(IYtLoggerListener paramIYtLoggerListener)
@@ -159,16 +159,6 @@ public class YTFaceTrack
     public float yaw;
   }
   
-  public static class FaceStatus3d
-  {
-    public float[] denseFaceModel;
-    public float[] expression;
-    public float pitch;
-    public float roll;
-    public float[] transform;
-    public float yaw;
-  }
-  
   public static abstract interface IYtLoggerListener
   {
     public abstract void log(String paramString1, String paramString2);
@@ -183,7 +173,7 @@ public class YTFaceTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.ytfacetrack.YTFaceTrack
  * JD-Core Version:    0.7.0.1
  */

@@ -1,110 +1,204 @@
 package com.tencent.mm.plugin.finder.live.view.adapter;
 
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.h;
-import com.tencent.mm.protocal.protobuf.aza;
+import com.tencent.mm.plugin.finder.live.p.c;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.protocal.protobuf.bgh;
+import com.tencent.mm.protocal.protobuf.bgx;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveLinkInviteAnchorAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveLinkInviteAnchorAdapter$AnchorLinkViewHolder;", "()V", "curPkUser", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveLinkMicUser;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "Lkotlin/collections/ArrayList;", "localApplyMicMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "onInviteAnchor", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "invitetUser", "", "getOnInviteAnchor", "()Lkotlin/jvm/functions/Function1;", "setOnInviteAnchor", "(Lkotlin/jvm/functions/Function1;)V", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "updateCurPkUser", "updateData", "data", "", "updateLocalApplyMicList", "AnchorLinkViewHolder", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$AbsFansListViewHolder;", "()V", "DEFAULT_MEMBER_NICKNAME_MAX_WIDTH", "", "getDEFAULT_MEMBER_NICKNAME_MAX_WIDTH", "()I", "setDEFAULT_MEMBER_NICKNAME_MAX_WIDTH", "(I)V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$FinderLiveContactInfo;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "setDataList", "(Ljava/util/ArrayList;)V", "itemClickListener", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "Lkotlin/ParameterName;", "name", "contact", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function1;", "setItemClickListener", "(Lkotlin/jvm/functions/Function1;)V", "memberCount", "getMemberCount", "setMemberCount", "bindFansItem", "holder", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$FansListViewHolder;", "position", "bindFansTitle", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$FansTitleViewHolder;", "getItemCount", "getItemViewType", "mergeMemberList", "fansMembers", "", "Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubMember;", "onBindViewHolder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "updateMemberList", "AbsFansListViewHolder", "Companion", "FansListViewHolder", "FansTitleViewHolder", "FinderLiveContactInfo", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
   extends RecyclerView.a<a>
 {
-  private final ArrayList<aza> mXB;
-  public HashMap<String, h> yXS;
-  public h yXT;
-  public kotlin.g.a.b<? super aza, x> yXU;
+  public static final b DQF;
+  private int DQG;
+  public int hQS;
+  public kotlin.g.a.b<? super bgh, ah> nod;
+  public ArrayList<e> pUj;
+  
+  static
+  {
+    AppMethodBeat.i(358690);
+    DQF = new b((byte)0);
+    AppMethodBeat.o(358690);
+  }
   
   public n()
   {
-    AppMethodBeat.i(287527);
-    this.mXB = new ArrayList();
-    this.yXS = new HashMap();
-    AppMethodBeat.o(287527);
+    AppMethodBeat.i(358670);
+    this.pUj = new ArrayList();
+    this.DQG = MMApplicationContext.getResources().getDimensionPixelOffset(p.c.Edge_24A);
+    AppMethodBeat.o(358670);
   }
   
-  public final void aa(List<? extends aza> paramList)
+  private static final void a(n paramn, bgh parambgh, View paramView)
   {
-    AppMethodBeat.i(287526);
-    p.k(paramList, "data");
-    this.mXB.clear();
-    this.mXB.addAll((Collection)paramList);
-    AppMethodBeat.o(287526);
+    AppMethodBeat.i(358681);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramn);
+    localb.cH(parambgh);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramn, "this$0");
+    paramn = paramn.nod;
+    if (paramn != null) {
+      paramn.invoke(parambgh);
+    }
+    a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358681);
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(287524);
-    int i = this.mXB.size();
-    AppMethodBeat.o(287524);
+    AppMethodBeat.i(358705);
+    int i = this.pUj.size();
+    AppMethodBeat.o(358705);
     return i;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveLinkInviteAnchorAdapter$AnchorLinkViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatar", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getAvatar", "()Landroid/widget/ImageView;", "descTv", "Landroid/widget/TextView;", "getDescTv", "()Landroid/widget/TextView;", "inviteBtn", "getInviteBtn", "nicknameTv", "getNicknameTv", "typeIcon", "getTypeIcon", "plugin-finder_release"})
-  public static final class a
+  public final int getItemViewType(int paramInt)
+  {
+    AppMethodBeat.i(358713);
+    paramInt = ((e)this.pUj.get(paramInt)).type;
+    AppMethodBeat.o(358713);
+    return paramInt;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$AbsFansListViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter;Landroid/view/View;)V", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public class a
     extends RecyclerView.v
   {
-    final TextView kEs;
-    final ImageView mWb;
-    final TextView xoK;
-    final ImageView yVT;
-    final TextView yXV;
-    
-    public a(View paramView)
+    public a()
     {
       super();
-      AppMethodBeat.i(277969);
-      this.mWb = ((ImageView)paramView.findViewById(b.f.finder_live_link_anchor_apply_item_avatar_icon));
-      this.xoK = ((TextView)paramView.findViewById(b.f.finder_live_link_anchor_apply_item_nickname_tv));
-      this.yVT = ((ImageView)paramView.findViewById(b.f.finder_live_link_anchor_apply_item_type_icon));
-      this.yXV = ((TextView)paramView.findViewById(b.f.finder_live_link_anchor_apply_item_action_btn));
-      this.kEs = ((TextView)paramView.findViewById(b.f.finder_live_link_apply_item_desc_tv));
-      AppMethodBeat.o(277969);
+      AppMethodBeat.i(358774);
+      AppMethodBeat.o(358774);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$Companion;", "", "()V", "TAG", "", "TYPE_FANS_ITEM", "", "TYPE_FANS_TITLE", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b {}
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$FansListViewHolder;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$AbsFansListViewHolder;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter;Landroid/view/View;)V", "closeValue", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getCloseValue", "()Landroid/widget/TextView;", "fansTag", "getFansTag", "finder", "Landroid/widget/ImageView;", "getFinder", "()Landroid/widget/ImageView;", "nickName", "getNickName", "rank", "getRank", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class c
+    extends n.a
   {
-    b(n paramn, int paramInt) {}
+    final TextView DQI;
+    final ImageView DQJ;
+    final TextView DQK;
+    final TextView DQL;
+    final TextView wBZ;
     
-    public final void onClick(View paramView)
+    public c()
     {
-      AppMethodBeat.i(267890);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      a.c("com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveLinkInviteAnchorAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      paramView = (aza)j.M((List)n.a(this.yXW), this.jEN);
-      if (paramView != null)
+      super(localObject);
+      AppMethodBeat.i(358799);
+      this.DQI = ((TextView)localObject.findViewById(p.e.Caf));
+      this.wBZ = ((TextView)localObject.findViewById(p.e.nickname));
+      this.DQJ = ((ImageView)localObject.findViewById(p.e.finder));
+      this.DQK = ((TextView)localObject.findViewById(p.e.BDQ));
+      this.DQL = ((TextView)localObject.findViewById(p.e.BCl));
+      this.DQI.setTextSize(1, 15.0F);
+      this.wBZ.setTextSize(1, 17.0F);
+      this.DQL.setTextSize(1, 17.0F);
+      AppMethodBeat.o(358799);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$FansTitleViewHolder;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$AbsFansListViewHolder;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter;Landroid/view/View;)V", "closeValueTips", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getCloseValueTips", "()Landroid/widget/TextView;", "setCloseValueTips", "(Landroid/widget/TextView;)V", "fansNum", "getFansNum", "setFansNum", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class d
+    extends n.a
+  {
+    TextView DQM;
+    private TextView DQN;
+    
+    public d()
+    {
+      super(localObject);
+      AppMethodBeat.i(358812);
+      this.DQM = ((TextView)localObject.findViewById(p.e.BDN));
+      this.DQN = ((TextView)localObject.findViewById(p.e.BCm));
+      AppMethodBeat.o(358812);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansListAdapter$FinderLiveContactInfo;", "", "contact", "Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubMember;", "type", "", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubMember;I)V", "getContact", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubMember;", "getType", "()I", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+  {
+    final bgx DQO;
+    final int type;
+    
+    public e(bgx parambgx, int paramInt)
+    {
+      this.DQO = parambgx;
+      this.type = paramInt;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(358840);
+      if (this == paramObject)
       {
-        localObject = this.yXW.yXU;
-        if (localObject != null) {
-          ((kotlin.g.a.b)localObject).invoke(paramView);
-        }
+        AppMethodBeat.o(358840);
+        return true;
       }
-      a.a(this, "com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveLinkInviteAnchorAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(267890);
+      if (!(paramObject instanceof e))
+      {
+        AppMethodBeat.o(358840);
+        return false;
+      }
+      paramObject = (e)paramObject;
+      if (!s.p(this.DQO, paramObject.DQO))
+      {
+        AppMethodBeat.o(358840);
+        return false;
+      }
+      if (this.type != paramObject.type)
+      {
+        AppMethodBeat.o(358840);
+        return false;
+      }
+      AppMethodBeat.o(358840);
+      return true;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(358832);
+      if (this.DQO == null) {}
+      for (int i = 0;; i = this.DQO.hashCode())
+      {
+        int j = this.type;
+        AppMethodBeat.o(358832);
+        return i * 31 + j;
+      }
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(358825);
+      String str = "FinderLiveContactInfo(contact=" + this.DQO + ", type=" + this.type + ')';
+      AppMethodBeat.o(358825);
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.adapter.n
  * JD-Core Version:    0.7.0.1
  */

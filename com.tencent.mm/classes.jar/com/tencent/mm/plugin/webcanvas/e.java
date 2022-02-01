@@ -1,17 +1,12 @@
 package com.tencent.mm.plugin.webcanvas;
 
-import android.webkit.ValueCallback;
-import kotlin.g.a.b;
-import kotlin.l;
-
-@l(iBK={1, 1, 16})
-final class e
-  implements ValueCallback
+public abstract interface e
 {
-  e(b paramb)
-  {
-    this.kMk = paramb;
-  }
+  public abstract void a(d paramd);
+  
+  public abstract void a(f paramf);
+  
+  public abstract void b(f paramf);
 }
 
 

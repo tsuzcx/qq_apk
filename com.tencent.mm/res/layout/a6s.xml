@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a4m" style="@style/rj"
+<FrameLayout android:id="@id/cvi" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jn"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/is" android:textColor="@color/rp" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/cai" android:paddingLeft="@dimen/ir" android:paddingTop="102.0dip" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/hs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ft2" android:layout_centerHorizontal="true" />
-    <com.tencent.mm.plugin.pwdgroup.ui.widget.MMCallBackScrollView android:id="@id/can" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/cad" android:layout_alignParentTop="true">
-        <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:paddingTop="70.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/rp" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/cah" android:paddingLeft="@dimen/ir" android:paddingTop="32.0dip" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/hs" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ft2" />
-            <com.tencent.mm.plugin.pwdgroup.ui.widget.MMPwdInputView android:layout_gravity="center_horizontal" android:id="@id/cag" android:paddingTop="@dimen/ir" android:paddingBottom="@dimen/ir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:inputType="number" />
-            <LinearLayout android:orientation="vertical" android:id="@id/ca_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="@dimen/is" android:textColor="@color/abf" android:gravity="center_horizontal" android:id="@id/cab" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-                <View android:background="@color/a7t" android:paddingBottom="@dimen/hw" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" />
-                <com.tencent.mm.ui.widget.MMScrollGridView android:id="@id/caa" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/ir" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ac_" android:horizontalSpacing="@dimen/k5" android:verticalSpacing="@dimen/ir" android:numColumns="4" />
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/f1" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jf">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/cv9" style="@style/jd" />
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ew">
+                    <TextView android:id="@id/cwv" android:text="{title}" style="@style/jk" />
+                    <TextView android:id="@id/cux" android:layout_marginTop="@dimen/f6" android:text="{detail}" style="@style/jh" />
+                </LinearLayout>
             </LinearLayout>
+            <include layout="@layout/a6w" />
+            <include layout="@layout/a6v" />
         </LinearLayout>
-    </com.tencent.mm.plugin.pwdgroup.ui.widget.MMCallBackScrollView>
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/can" android:layout_centerHorizontal="true">
-        <ProgressBar android:id="@id/cak" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a7s" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/cam" android:paddingLeft="@dimen/hv" android:paddingRight="@dimen/hv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <include layout="@layout/a6t" />
     </LinearLayout>
-    <com.tencent.mm.plugin.pwdgroup.ui.widget.MMKeyBoardView android:layout_gravity="center_horizontal" android:id="@id/caj" android:layout_width="fill_parent" android:layout_height="@dimen/a_e" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <LinearLayout android:orientation="vertical" android:id="@id/cad" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <View android:id="@id/cae" android:background="@color/a7t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <Button android:gravity="center" android:id="@id/cac" android:layout_margin="@dimen/hs" android:layout_marginBottom="@dimen/hv" android:text="@string/c86" style="@style/ou" />
-    </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

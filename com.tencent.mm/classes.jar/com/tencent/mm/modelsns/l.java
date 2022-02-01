@@ -3,7 +3,7 @@ package com.tencent.mm.modelsns;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.emm;
+import com.tencent.mm.protocal.protobuf.fhk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
@@ -13,67 +13,67 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class l
 {
-  private static boolean lYN;
-  private static AtomicInteger mbv;
-  public Object mbn;
-  public int mbo;
-  public int mbp;
-  public int mbq;
-  public StringBuffer mbr;
-  public StringBuffer mbs;
-  public StringBuffer mbt;
-  public StringBuffer mbu;
+  private static boolean oRS;
+  private static AtomicInteger oUq;
+  public Object oUh;
+  public int oUi;
+  public int oUj;
+  public int oUk;
+  public int oUl;
+  public StringBuffer oUm;
+  public StringBuffer oUn;
+  public StringBuffer oUo;
+  public StringBuffer oUp;
   public int opType;
-  public int page;
   public long timeStamp;
   
   static
   {
     AppMethodBeat.i(125679);
-    lYN = false;
-    mbv = new AtomicInteger(0);
+    oRS = false;
+    oUq = new AtomicInteger(0);
     AppMethodBeat.o(125679);
   }
   
   public l(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(125659);
-    this.mbn = null;
-    this.mbo = 1;
+    this.oUh = null;
+    this.oUi = 1;
     this.opType = 0;
-    this.mbr = new StringBuffer();
-    this.mbs = new StringBuffer();
-    this.mbt = new StringBuffer();
-    this.mbu = new StringBuffer();
+    this.oUm = new StringBuffer();
+    this.oUn = new StringBuffer();
+    this.oUo = new StringBuffer();
+    this.oUp = new StringBuffer();
     this.opType = paramInt1;
-    this.page = paramInt2;
-    if (!boW())
+    this.oUl = paramInt2;
+    if (!bMD())
     {
       AppMethodBeat.o(125659);
       return;
     }
     this.timeStamp = System.currentTimeMillis();
     if (NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
-      this.mbq = 4;
+      this.oUk = 4;
     }
     for (;;)
     {
-      this.mbp = mbv.incrementAndGet();
+      this.oUj = oUq.incrementAndGet();
       AppMethodBeat.o(125659);
       return;
       if (NetStatusUtil.is4G(MMApplicationContext.getContext())) {
-        this.mbq = 3;
+        this.oUk = 3;
       } else if (NetStatusUtil.is3G(MMApplicationContext.getContext())) {
-        this.mbq = 2;
+        this.oUk = 2;
       } else if (NetStatusUtil.is2G(MMApplicationContext.getContext())) {
-        this.mbq = 1;
+        this.oUk = 1;
       } else {
-        this.mbq = 0;
+        this.oUk = 0;
       }
     }
   }
   
-  public static l I(Bundle paramBundle)
+  public static l P(Bundle paramBundle)
   {
     AppMethodBeat.i(125674);
     paramBundle = paramBundle.getByteArray("intent_key_StatisticsOplog");
@@ -95,19 +95,19 @@ public final class l
       AppMethodBeat.o(125677);
       return null;
     }
-    emm localemm = new emm();
+    fhk localfhk = new fhk();
     try
     {
-      localemm.parseFrom(paramArrayOfByte);
-      paramArrayOfByte = new l(localemm.opType, localemm.page);
-      paramArrayOfByte.mbo = localemm.mbo;
-      paramArrayOfByte.timeStamp = localemm.timeStamp;
-      paramArrayOfByte.mbp = localemm.mbp;
-      paramArrayOfByte.mbq = localemm.mbq;
-      paramArrayOfByte.mbr = new StringBuffer(localemm.UoZ);
-      paramArrayOfByte.mbu = new StringBuffer(localemm.Upa);
-      paramArrayOfByte.mbs = new StringBuffer(localemm.Upb);
-      paramArrayOfByte.mbt = new StringBuffer(localemm.Upc);
+      localfhk.parseFrom(paramArrayOfByte);
+      paramArrayOfByte = new l(localfhk.opType, localfhk.oUl);
+      paramArrayOfByte.oUi = localfhk.oUi;
+      paramArrayOfByte.timeStamp = localfhk.timeStamp;
+      paramArrayOfByte.oUj = localfhk.oUj;
+      paramArrayOfByte.oUk = localfhk.oUk;
+      paramArrayOfByte.oUm = new StringBuffer(localfhk.abHX);
+      paramArrayOfByte.oUp = new StringBuffer(localfhk.abHY);
+      paramArrayOfByte.oUn = new StringBuffer(localfhk.abHZ);
+      paramArrayOfByte.oUo = new StringBuffer(localfhk.abIa);
       AppMethodBeat.o(125677);
       return paramArrayOfByte;
     }
@@ -119,7 +119,7 @@ public final class l
     return null;
   }
   
-  public static void boZ()
+  public static void bMG()
   {
     AppMethodBeat.i(125670);
     Log.i("MicroMsg.StatisticsOplog", "wait op");
@@ -156,7 +156,7 @@ public final class l
     return locall;
   }
   
-  public static l x(Intent paramIntent)
+  public static l y(Intent paramIntent)
   {
     AppMethodBeat.i(125675);
     paramIntent = c(paramIntent, "intent_key_StatisticsOplog");
@@ -164,71 +164,71 @@ public final class l
     return paramIntent;
   }
   
-  public final l Xf(String paramString)
+  public final l Ph(String paramString)
   {
     AppMethodBeat.i(125662);
-    if (!boW())
+    if (!bMD())
     {
       AppMethodBeat.o(125662);
       return this;
     }
-    if (this.mbr.length() == 0) {
+    if (this.oUm.length() == 0) {
       if (Util.isNullOrNil(paramString)) {
-        this.mbr.append(" ");
+        this.oUm.append(" ");
       }
     }
     for (;;)
     {
       AppMethodBeat.o(125662);
       return this;
-      this.mbr.append(paramString);
+      this.oUm.append(paramString);
       continue;
-      this.mbr.append("||".concat(String.valueOf(paramString)));
+      this.oUm.append("||".concat(String.valueOf(paramString)));
     }
   }
   
-  public final l Xg(String paramString)
+  public final l Pi(String paramString)
   {
     AppMethodBeat.i(125664);
-    if (!boW())
+    if (!bMD())
     {
       AppMethodBeat.o(125664);
       return this;
     }
-    if (this.mbs.length() == 0) {
-      this.mbs.append(paramString);
+    if (this.oUn.length() == 0) {
+      this.oUn.append(paramString);
     }
     for (;;)
     {
       AppMethodBeat.o(125664);
       return this;
-      this.mbs.append("||".concat(String.valueOf(paramString)));
+      this.oUn.append("||".concat(String.valueOf(paramString)));
     }
   }
   
-  public final l Xh(String paramString)
+  public final l Pj(String paramString)
   {
     AppMethodBeat.i(125667);
-    if (!boW())
+    if (!bMD())
     {
       AppMethodBeat.o(125667);
       return this;
     }
-    if (this.mbt.length() == 0) {
-      this.mbt.append(paramString);
+    if (this.oUo.length() == 0) {
+      this.oUo.append(paramString);
     }
     for (;;)
     {
       AppMethodBeat.o(125667);
       return this;
-      this.mbt.append("||".concat(String.valueOf(paramString)));
+      this.oUo.append("||".concat(String.valueOf(paramString)));
     }
   }
   
   public final void b(Intent paramIntent, String paramString)
   {
     AppMethodBeat.i(125673);
-    byte[] arrayOfByte = biB();
+    byte[] arrayOfByte = bGl();
     if (arrayOfByte == null)
     {
       AppMethodBeat.o(125673);
@@ -238,23 +238,23 @@ public final class l
     AppMethodBeat.o(125673);
   }
   
-  public final byte[] biB()
+  public final byte[] bGl()
   {
     AppMethodBeat.i(125672);
-    Object localObject = new emm();
-    ((emm)localObject).opType = this.opType;
-    ((emm)localObject).page = this.page;
-    ((emm)localObject).mbo = this.mbo;
-    ((emm)localObject).timeStamp = this.timeStamp;
-    ((emm)localObject).mbp = this.mbp;
-    ((emm)localObject).mbq = this.mbq;
-    ((emm)localObject).UoZ = this.mbr.toString();
-    ((emm)localObject).Upa = this.mbu.toString();
-    ((emm)localObject).Upb = this.mbs.toString();
-    ((emm)localObject).Upc = this.mbt.toString();
+    Object localObject = new fhk();
+    ((fhk)localObject).opType = this.opType;
+    ((fhk)localObject).oUl = this.oUl;
+    ((fhk)localObject).oUi = this.oUi;
+    ((fhk)localObject).timeStamp = this.timeStamp;
+    ((fhk)localObject).oUj = this.oUj;
+    ((fhk)localObject).oUk = this.oUk;
+    ((fhk)localObject).abHX = this.oUm.toString();
+    ((fhk)localObject).abHY = this.oUp.toString();
+    ((fhk)localObject).abHZ = this.oUn.toString();
+    ((fhk)localObject).abIa = this.oUo.toString();
     try
     {
-      localObject = ((emm)localObject).toByteArray();
+      localObject = ((fhk)localObject).toByteArray();
       AppMethodBeat.o(125672);
       return localObject;
     }
@@ -266,10 +266,10 @@ public final class l
     return null;
   }
   
-  public final boolean boW()
+  public final boolean bMD()
   {
     boolean bool2 = true;
-    int i = m.mbx;
+    int i = m.oUs;
     boolean bool1;
     if (i == 0) {
       bool1 = false;
@@ -328,26 +328,26 @@ public final class l
     return false;
   }
   
-  public final l boX()
+  public final l bME()
   {
     AppMethodBeat.i(125665);
-    this.mbs = new StringBuffer();
+    this.oUn = new StringBuffer();
     AppMethodBeat.o(125665);
     return this;
   }
   
-  public final l boY()
+  public final l bMF()
   {
     AppMethodBeat.i(125666);
-    this.mbr = new StringBuffer();
+    this.oUm = new StringBuffer();
     AppMethodBeat.o(125666);
     return this;
   }
   
-  public final boolean bpa()
+  public final boolean bMH()
   {
     AppMethodBeat.i(125671);
-    if (!boW())
+    if (!bMD())
     {
       AppMethodBeat.o(125671);
       return false;
@@ -365,13 +365,13 @@ public final class l
     return true;
   }
   
-  public final l gx(boolean paramBoolean)
+  public final l hm(boolean paramBoolean)
   {
     AppMethodBeat.i(125668);
     if (paramBoolean) {}
     for (Object localObject = "1";; localObject = "0")
     {
-      localObject = Xf((String)localObject);
+      localObject = Ph((String)localObject);
       AppMethodBeat.o(125668);
       return localObject;
     }
@@ -380,20 +380,20 @@ public final class l
   public final void update()
   {
     AppMethodBeat.i(125661);
-    if (!boW())
+    if (!bMD())
     {
       AppMethodBeat.o(125661);
       return;
     }
     this.timeStamp = System.currentTimeMillis();
-    this.mbp = mbv.incrementAndGet();
+    this.oUj = oUq.incrementAndGet();
     AppMethodBeat.o(125661);
   }
   
   public final boolean wQ(int paramInt)
   {
     AppMethodBeat.i(125660);
-    this.mbn = Integer.valueOf(paramInt);
+    this.oUh = Integer.valueOf(paramInt);
     AppMethodBeat.o(125660);
     return true;
   }
@@ -401,7 +401,7 @@ public final class l
   public final l wR(int paramInt)
   {
     AppMethodBeat.i(125663);
-    l locall = Xf(String.valueOf(paramInt));
+    l locall = Ph(String.valueOf(paramInt));
     AppMethodBeat.o(125663);
     return locall;
   }
@@ -409,25 +409,25 @@ public final class l
   public final l wS(int paramInt)
   {
     AppMethodBeat.i(125669);
-    if (!boW())
+    if (!bMD())
     {
       AppMethodBeat.o(125669);
       return this;
     }
-    if (this.mbs.length() == 0) {
-      this.mbs.append(paramInt);
+    if (this.oUn.length() == 0) {
+      this.oUn.append(paramInt);
     }
     for (;;)
     {
       AppMethodBeat.o(125669);
       return this;
-      this.mbs.append("||".concat(String.valueOf(paramInt)));
+      this.oUn.append("||".concat(String.valueOf(paramInt)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelsns.l
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ import com.tencent.mm.memory.a.b;
 import com.tencent.mm.plugin.game.d.e;
 import com.tencent.mm.plugin.game.d.e.a.a;
 import com.tencent.mm.plugin.game.d.e.b;
-import com.tencent.mm.plugin.game.g.e;
+import com.tencent.mm.plugin.game.h.e;
 import com.tencent.mm.plugin.game.model.s;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,35 +24,35 @@ import java.util.Set;
 public final class d
   extends RecyclerView
 {
-  private com.tencent.mm.b.f<String, Bitmap> CYN;
-  a DcT;
-  private f DcU;
-  private c DcV;
-  private Set<Integer> DcW;
-  private int jaR;
+  private com.tencent.mm.b.f<String, Bitmap> ITd;
+  a IXl;
+  private f IXm;
+  private c IXn;
+  private Set<Integer> IXo;
+  private int lCR;
   private Context mContext;
   
   public d(Context paramContext, int paramInt)
   {
     super(paramContext);
     AppMethodBeat.i(183887);
-    this.DcW = new HashSet();
+    this.IXo = new HashSet();
     this.mContext = paramContext;
-    this.jaR = paramInt;
-    this.CYN = new b(30, getClass());
-    this.DcU = new f(this.jaR, new f.b()
+    this.lCR = paramInt;
+    this.ITd = new b(30, getClass());
+    this.IXm = new f(this.lCR, new f.b()
     {
-      public final void ezQ()
+      public final void fHR()
       {
         AppMethodBeat.i(183882);
         d.a(d.this);
         AppMethodBeat.o(183882);
       }
     });
-    paramInt = ((com.tencent.mm.plugin.game.api.f)h.ae(com.tencent.mm.plugin.game.api.f.class)).evo().TJ(1);
-    this.DcT = new a(paramContext, ((com.tencent.mm.plugin.game.api.f)h.ae(com.tencent.mm.plugin.game.api.f.class)).evo().TG(1), paramInt);
+    paramInt = ((com.tencent.mm.plugin.game.api.f)h.ax(com.tencent.mm.plugin.game.api.f.class)).fCh().XD(1);
+    this.IXl = new a(paramContext, ((com.tencent.mm.plugin.game.api.f)h.ax(com.tencent.mm.plugin.game.api.f.class)).fCh().XA(1), paramInt);
     setLayoutManager(new LinearLayoutManager());
-    setAdapter(this.DcT);
+    setAdapter(this.IXl);
     AppMethodBeat.o(183887);
   }
   
@@ -60,9 +60,9 @@ public final class d
   {
     AppMethodBeat.i(183888);
     e.a.a locala = new e.a.a();
-    locala.lRB = false;
-    locala.Ded = paramFloat;
-    e.eAa().a(paramImageView, paramString, locala.eAb(), new e.b()
+    locala.oKn = false;
+    locala.IYu = paramFloat;
+    e.fIb().a(paramImageView, paramString, locala.fIc(), new e.b()
     {
       public final void a(View paramAnonymousView, Bitmap paramAnonymousBitmap)
       {
@@ -78,66 +78,66 @@ public final class d
   
   public final void setEmptyCallback(c paramc)
   {
-    this.DcV = paramc;
+    this.IXn = paramc;
   }
   
   final class a
     extends g<d.b>
   {
-    int fuP;
+    int hzj;
     
     public a(Context paramContext, Cursor paramCursor, int paramInt)
     {
       super(paramCursor);
-      this.fuP = paramInt;
+      this.hzj = paramInt;
     }
   }
   
   final class b
     extends RecyclerView.v
   {
-    ViewGroup DcY;
-    TextView DcZ;
-    TextView Dda;
-    ImageView Ddb;
-    TextView Ddc;
-    TextView Ddd;
-    View Dde;
-    View Ddf;
-    View Ddg;
-    ImageView jmf;
+    ViewGroup IXq;
+    TextView IXr;
+    TextView IXs;
+    ImageView IXt;
+    TextView IXu;
+    TextView IXv;
+    View IXw;
+    View IXx;
+    View IXy;
+    ImageView lPb;
+    TextView nicknameTv;
     TextView timeTv;
-    TextView xoK;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(183886);
-      this.DcY = ((ViewGroup)paramView.findViewById(g.e.CkS));
-      this.jmf = ((ImageView)paramView.findViewById(g.e.icon_iv));
-      this.xoK = ((TextView)paramView.findViewById(g.e.nickname_tv));
-      this.DcZ = ((TextView)paramView.findViewById(g.e.CkQ));
-      this.Dda = ((TextView)paramView.findViewById(g.e.Clv));
-      this.Ddb = ((ImageView)paramView.findViewById(g.e.Cls));
-      this.Ddc = ((TextView)paramView.findViewById(g.e.content_tv));
-      this.timeTv = ((TextView)paramView.findViewById(g.e.time_tv));
-      this.Ddd = ((TextView)paramView.findViewById(g.e.source_tv));
-      this.Dde = paramView.findViewById(g.e.CjZ);
-      this.Ddf = paramView.findViewById(g.e.Cli);
-      this.Ddg = paramView.findViewById(g.e.CkH);
-      this.DcY.setOnLongClickListener(d.e(d.this));
-      this.DcY.setOnClickListener(d.e(d.this));
-      this.jmf.setOnLongClickListener(d.e(d.this));
-      this.jmf.setOnClickListener(d.e(d.this));
-      this.xoK.setOnLongClickListener(d.e(d.this));
-      this.xoK.setOnClickListener(d.e(d.this));
+      this.IXq = ((ViewGroup)paramView.findViewById(h.e.HXa));
+      this.lPb = ((ImageView)paramView.findViewById(h.e.icon_iv));
+      this.nicknameTv = ((TextView)paramView.findViewById(h.e.nickname_tv));
+      this.IXr = ((TextView)paramView.findViewById(h.e.HWY));
+      this.IXs = ((TextView)paramView.findViewById(h.e.HXD));
+      this.IXt = ((ImageView)paramView.findViewById(h.e.HXA));
+      this.IXu = ((TextView)paramView.findViewById(h.e.content_tv));
+      this.timeTv = ((TextView)paramView.findViewById(h.e.time_tv));
+      this.IXv = ((TextView)paramView.findViewById(h.e.source_tv));
+      this.IXw = paramView.findViewById(h.e.HWh);
+      this.IXx = paramView.findViewById(h.e.HXq);
+      this.IXy = paramView.findViewById(h.e.HWP);
+      this.IXq.setOnLongClickListener(d.e(d.this));
+      this.IXq.setOnClickListener(d.e(d.this));
+      this.lPb.setOnLongClickListener(d.e(d.this));
+      this.lPb.setOnClickListener(d.e(d.this));
+      this.nicknameTv.setOnLongClickListener(d.e(d.this));
+      this.nicknameTv.setOnClickListener(d.e(d.this));
       AppMethodBeat.o(183886);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.d
  * JD-Core Version:    0.7.0.1
  */

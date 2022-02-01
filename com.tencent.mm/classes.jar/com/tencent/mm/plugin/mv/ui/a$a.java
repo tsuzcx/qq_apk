@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.mv.ui;
 import android.graphics.Bitmap;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.c.h;
-import com.tencent.mm.ay.a.d.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.modelimage.loader.b.h;
+import com.tencent.mm.modelimage.loader.c.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/MvLogic$loadAlphaAppIcon$1", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "onImageLoadFinish", "", "url", "", "view", "Landroid/view/View;", "imageData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onImageLoadStart", "onProcessBitmap", "Landroid/graphics/Bitmap;", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/MvLogic$loadAlphaAppIcon$1", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "onImageLoadFinish", "", "url", "", "view", "Landroid/view/View;", "imageData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onImageLoadStart", "onProcessBitmap", "Landroid/graphics/Bitmap;", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$a
   implements h
 {
@@ -17,29 +17,32 @@ public final class a$a
     return null;
   }
   
-  public final void b(String paramString, View paramView) {}
-  
   public final void b(String paramString, View paramView, b paramb)
   {
     paramView = null;
-    AppMethodBeat.i(230909);
-    p.k(paramString, "url");
-    if (paramb != null) {}
-    for (paramString = paramb.bitmap;; paramString = null)
+    AppMethodBeat.i(286407);
+    s.u(paramString, "url");
+    if (paramb == null)
     {
-      if (paramString != null)
-      {
-        paramString = paramView;
+      paramString = null;
+      if (paramString != null) {
         if (paramb != null) {
-          paramString = paramb.bitmap;
+          break label48;
         }
-        p.j(paramString, "imageData?.bitmap");
-        paramString.isRecycled();
       }
-      AppMethodBeat.o(230909);
+    }
+    label48:
+    for (paramString = paramView;; paramString = paramb.bitmap)
+    {
+      paramString.isRecycled();
+      AppMethodBeat.o(286407);
       return;
+      paramString = paramb.bitmap;
+      break;
     }
   }
+  
+  public final void c(String paramString, View paramView) {}
 }
 
 

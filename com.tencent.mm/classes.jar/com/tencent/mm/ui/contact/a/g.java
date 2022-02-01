@@ -3,83 +3,91 @@ package com.tencent.mm.ui.contact.a;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
+import com.tencent.mm.openim.api.e;
+import com.tencent.mm.plugin.fts.ui.o;
 import com.tencent.mm.plugin.messenger.a.b;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.selectcontact.a.c;
 import com.tencent.mm.plugin.selectcontact.a.e;
 import com.tencent.mm.plugin.selectcontact.a.f;
 import com.tencent.mm.plugin.selectcontact.a.g;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.aw;
 
 public class g
   extends a
 {
-  public CharSequence XxU;
-  public int XxV;
-  private b XxW;
-  a XxX;
-  public CharSequence mMY;
+  public CharSequence afkb;
+  public int afkc;
+  private b afkd;
+  a afke;
+  public CharSequence pJG;
   public String username;
   
   public g(int paramInt)
   {
     super(4, paramInt);
     AppMethodBeat.i(102952);
-    this.XxV = 0;
-    this.XxW = new b();
-    this.XxX = new a();
+    this.afkc = 0;
+    this.afkd = new b();
+    this.afke = new a();
     AppMethodBeat.o(102952);
   }
   
   public void a(Context paramContext, a.a parama)
   {
     AppMethodBeat.i(102953);
-    if ((this.XxV != 0) && (this.XxU != null))
+    if ((this.afkc != 0) && (this.afkb != null))
     {
       AppMethodBeat.o(102953);
       return;
     }
     if (this.contact == null)
     {
-      this.mMY = "";
+      this.pJG = "";
       this.username = "";
       AppMethodBeat.o(102953);
       return;
     }
-    this.mMY = l.d(paramContext, ((b)h.ae(b.class)).b(this.contact), com.tencent.mm.ci.a.aY(paramContext, a.c.NormalTextSize));
+    this.pJG = p.d(paramContext, ((b)h.ax(b.class)).b(this.contact), com.tencent.mm.cd.a.br(paramContext, a.c.NormalTextSize));
     this.username = this.contact.field_username;
     AppMethodBeat.o(102953);
   }
   
-  public a.b bwF()
+  public a.b bVv()
   {
-    return this.XxW;
+    return this.afkd;
   }
   
-  protected final a.a bwG()
+  protected final a.a bVw()
   {
-    return this.XxX;
+    return this.afke;
   }
   
   public final class a
     extends a.a
   {
-    public ImageView iZG;
-    public TextView iZH;
-    public CheckBox mNd;
-    public TextView mrM;
+    public View Wuc;
+    public LinearLayout afkf;
+    public LinearLayout afkg;
+    public ImageView lBC;
+    public TextView lBD;
+    public CheckBox pJL;
+    public TextView plr;
     
     public a()
     {
@@ -98,15 +106,19 @@ public class g
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(102950);
-      if (com.tencent.mm.ci.a.ko(paramContext)) {}
+      if (com.tencent.mm.cd.a.mp(paramContext)) {}
       for (paramContext = LayoutInflater.from(paramContext).inflate(a.f.select_ui_listcontactitem_large, paramViewGroup, false);; paramContext = LayoutInflater.from(paramContext).inflate(a.f.select_ui_listcontactitem, paramViewGroup, false))
       {
-        paramViewGroup = (g.a)g.this.XxX;
-        paramViewGroup.iZG = ((ImageView)paramContext.findViewById(a.e.avatar_iv));
-        paramViewGroup.iZH = ((TextView)paramContext.findViewById(a.e.title_tv));
-        paramViewGroup.mrM = ((TextView)paramContext.findViewById(a.e.desc_tv));
-        paramViewGroup.mrM.setVisibility(8);
-        paramViewGroup.mNd = ((CheckBox)paramContext.findViewById(a.e.select_cb));
+        paramViewGroup = (g.a)g.this.afke;
+        paramViewGroup.lBC = ((ImageView)paramContext.findViewById(a.e.avatar_iv));
+        paramViewGroup.lBD = ((TextView)paramContext.findViewById(a.e.title_tv));
+        paramViewGroup.plr = ((TextView)paramContext.findViewById(a.e.desc_tv));
+        paramViewGroup.plr.setVisibility(8);
+        paramViewGroup.pJL = ((CheckBox)paramContext.findViewById(a.e.select_cb));
+        paramViewGroup.afkf = ((LinearLayout)paramContext.findViewById(a.e.divider_container));
+        paramViewGroup.afkg = ((LinearLayout)paramContext.findViewById(a.e.select_item_content_layout));
+        paramViewGroup.Wuc = paramContext.findViewById(a.e.right_arrow);
+        paramViewGroup.lBC.setImportantForAccessibility(2);
         paramContext.setTag(paramViewGroup);
         AppMethodBeat.o(102950);
         return paramContext;
@@ -118,60 +130,94 @@ public class g
       AppMethodBeat.i(102951);
       parama1 = (g)parama1;
       parama = (g.a)parama;
-      parama.iZH.setCompoundDrawables(null, null, null, null);
-      if ((g.this.XxV != 0) && (g.this.XxU != null))
+      parama.lBD.setCompoundDrawables(null, null, null, null);
+      if ((g.this.afkc != 0) && (g.this.afkb != null))
       {
-        parama.iZG.setImageResource(g.this.XxV);
-        parama.iZH.setText(g.this.XxU);
+        parama.lBC.setImageResource(g.this.afkc);
+        parama.lBD.setText(g.this.afkb);
         AppMethodBeat.o(102951);
         return;
       }
-      com.tencent.mm.plugin.fts.ui.n.a(parama1.mMY, parama.iZH);
-      if (as.bvK(parama1.username))
+      o.a(parama1.pJG, parama.lBD);
+      Object localObject;
+      if (au.bwO(parama1.username))
       {
-        h.aHH();
-        as localas = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(parama1.username);
-        ((com.tencent.mm.openim.a.a)h.ae(com.tencent.mm.openim.a.a.class)).a(paramContext, parama.iZH, parama1.mMY, localas.field_openImAppid, localas.field_descWordingId, (int)parama.iZH.getTextSize());
+        h.baF();
+        localObject = ((n)h.ax(n.class)).bzA().JE(parama1.username);
+        ((e)h.ax(e.class)).a(paramContext, parama.lBD, parama1.pJG, ((az)localObject).field_openImAppid, ((az)localObject).field_descWordingId, (int)parama.lBD.getTextSize());
       }
-      com.tencent.mm.pluginsdk.ui.a.b.c(parama.iZG, parama1.username);
-      int i;
-      if (ab.PR(parama1.username))
+      com.tencent.mm.pluginsdk.ui.a.b.g(parama.lBC, parama1.username);
+      if (ab.IG(parama1.username))
       {
-        paramContext = paramContext.getResources().getDrawable(a.g.open_im_main_logo);
-        paramContext.setBounds(0, 0, paramContext.getIntrinsicWidth(), paramContext.getIntrinsicHeight());
-        parama.iZH.setCompoundDrawablesWithIntrinsicBounds(null, null, paramContext, null);
-        if (!g.this.XsX) {
-          break label336;
+        localObject = paramContext.getResources().getDrawable(a.g.open_im_main_logo);
+        ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
+        parama.lBD.setCompoundDrawablesWithIntrinsicBounds(null, null, (Drawable)localObject, null);
+        if (!au.bwz(parama1.username)) {
+          break label362;
         }
-        if (!paramBoolean1) {
-          break label316;
+        parama.Wuc.setVisibility(0);
+        label250:
+        if (!TextUtils.isEmpty(parama1.desc)) {
+          break label374;
         }
-        parama.mNd.setChecked(true);
-        parama.mNd.setEnabled(false);
-        paramContext = parama.mNd;
-        if (!ar.isDarkMode()) {
-          break label308;
+        parama.plr.setVisibility(8);
+        label269:
+        if (!g.this.afey) {
+          break label478;
         }
-        i = a.g.checkbox_selected_grey_dark;
-        label274:
-        paramContext.setBackgroundResource(i);
+        if (!au.bwz(parama1.username)) {
+          break label396;
+        }
+        parama.pJL.setVisibility(4);
       }
       for (;;)
       {
-        parama.mNd.setVisibility(0);
+        if (g.this.afjC) {
+          parama.afkf.setBackground(null);
+        }
+        if (!g.this.afjD) {
+          break label490;
+        }
+        parama.afkg.setBackgroundColor(paramContext.getResources().getColor(com.tencent.mm.plugin.selectcontact.a.b.BW_97));
         AppMethodBeat.o(102951);
         return;
-        parama.iZH.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        parama.lBD.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         break;
-        label308:
-        i = a.g.checkbox_selected_grey;
-        break label274;
-        label316:
-        parama.mNd.setChecked(paramBoolean2);
-        parama.mNd.setEnabled(true);
+        label362:
+        parama.Wuc.setVisibility(8);
+        break label250;
+        label374:
+        parama.plr.setVisibility(0);
+        parama.plr.setText(parama1.desc);
+        break label269;
+        label396:
+        int i;
+        if (paramBoolean1)
+        {
+          parama.pJL.setChecked(true);
+          parama.pJL.setEnabled(false);
+          parama1 = parama.pJL;
+          if (aw.isDarkMode())
+          {
+            i = a.g.checkbox_selected_grey_dark;
+            label433:
+            parama1.setBackgroundResource(i);
+          }
+        }
+        for (;;)
+        {
+          parama.pJL.setVisibility(0);
+          break;
+          i = a.g.checkbox_selected_grey;
+          break label433;
+          parama.pJL.setChecked(paramBoolean2);
+          parama.pJL.setEnabled(true);
+        }
+        label478:
+        parama.pJL.setVisibility(8);
       }
-      label336:
-      parama.mNd.setVisibility(8);
+      label490:
+      parama.afkg.setBackground(null);
       AppMethodBeat.o(102951);
     }
     
@@ -183,7 +229,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.g
  * JD-Core Version:    0.7.0.1
  */

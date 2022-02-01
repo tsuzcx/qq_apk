@@ -12,13 +12,13 @@ final class TopStoryFSVideoUI$13
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(126348);
-    this.NbZ.finish();
+    this.TOI.finish();
     AppMethodBeat.o(126348);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.TopStoryFSVideoUI.13
  * JD-Core Version:    0.7.0.1
  */

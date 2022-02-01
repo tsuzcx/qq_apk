@@ -1,113 +1,115 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.exdevice.g.a.k;
-import com.tencent.mm.protocal.protobuf.afb;
-import com.tencent.mm.protocal.protobuf.cdh;
-import com.tencent.mm.protocal.protobuf.cdi;
-import com.tencent.mm.ui.report.MMSecDataActivity;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
+import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.protocal.protobuf.csv;
+import com.tencent.mm.protocal.protobuf.csw;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import com.tencent.mm.view.recyclerview.e;
 import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.g;
 import java.util.ArrayList;
 import java.util.Iterator;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/exdevice/ui/SportHistoryUI;", "Lcom/tencent/mm/ui/report/MMSecDataActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/exdevice/ui/SportHistoryUI$HistoryItem;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "setDataList", "(Ljava/util/ArrayList;)V", "netSceneGetSportHistory", "Lcom/tencent/mm/plugin/exdevice/rank/model/NetSceneGetSportHistory;", "getNetSceneGetSportHistory", "()Lcom/tencent/mm/plugin/exdevice/rank/model/NetSceneGetSportHistory;", "setNetSceneGetSportHistory", "(Lcom/tencent/mm/plugin/exdevice/rank/model/NetSceneGetSportHistory;)V", "recycleView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecycleView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecycleView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "buildItemConverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "formatDay", "", "time", "", "getLayoutId", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "HistoryItem", "HistoryItemConvert", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/exdevice/ui/SportHistoryUI;", "Lcom/tencent/mm/plugin/secdata/ui/MMSecDataActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/exdevice/ui/SportHistoryUI$HistoryItem;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "setDataList", "(Ljava/util/ArrayList;)V", "netSceneGetSportHistory", "Lcom/tencent/mm/plugin/exdevice/rank/model/NetSceneGetSportHistory;", "getNetSceneGetSportHistory", "()Lcom/tencent/mm/plugin/exdevice/rank/model/NetSceneGetSportHistory;", "setNetSceneGetSportHistory", "(Lcom/tencent/mm/plugin/exdevice/rank/model/NetSceneGetSportHistory;)V", "recycleView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecycleView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecycleView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "buildItemConverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "formatDay", "", "time", "", "getLayoutId", "initSportRecordList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/SportRecord;", "record", "Lcom/tencent/mm/protocal/protobuf/DailySportRecord;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setFixedTextSize", "textView", "Landroid/widget/TextView;", "size", "", "HistoryItem", "HistoryItemConvert", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SportHistoryUI
   extends MMSecDataActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private ArrayList<a> mXB;
-  WxRecyclerView vnF;
-  private k vsp;
+  private ArrayList<a> pUj;
+  WxRecyclerView yAg;
+  private k yEE;
   
   public SportHistoryUI()
   {
-    AppMethodBeat.i(281163);
-    this.mXB = new ArrayList();
-    AppMethodBeat.o(281163);
+    AppMethodBeat.i(274781);
+    this.pUj = new ArrayList();
+    AppMethodBeat.o(274781);
+  }
+  
+  private static final boolean a(SportHistoryUI paramSportHistoryUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(274785);
+    kotlin.g.b.s.u(paramSportHistoryUI, "this$0");
+    paramSportHistoryUI.finish();
+    AppMethodBeat.o(274785);
+    return true;
   }
   
   public final int getLayoutId()
   {
-    return R.i.els;
+    return R.i.gox;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(281160);
+    AppMethodBeat.i(274803);
     super.onCreate(paramBundle);
-    setMMTitle(R.l.eEe);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this));
-    this.vnF = ((WxRecyclerView)findViewById(R.h.recycler_view));
-    paramBundle = this.vnF;
+    setMMTitle(R.l.gGU);
+    setBackBtn(new SportHistoryUI..ExternalSyntheticLambda0(this));
+    this.yAg = ((WxRecyclerView)findViewById(R.h.recycler_view));
+    paramBundle = this.yAg;
     if (paramBundle != null) {
       paramBundle.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(1, false));
     }
-    paramBundle = this.vnF;
+    paramBundle = this.yAg;
     if (paramBundle != null) {
-      paramBundle.setAdapter((RecyclerView.a)new WxRecyclerAdapter((f)new c(this), this.mXB));
+      paramBundle.setAdapter((RecyclerView.a)new WxRecyclerAdapter((g)new c(this), this.pUj));
     }
-    paramBundle = this.vnF;
+    paramBundle = this.yAg;
     if (paramBundle != null) {
-      paramBundle.b((RecyclerView.h)new e(this));
+      paramBundle.a((RecyclerView.h)new d(this));
     }
-    h.aGY().a(4835, (i)this);
-    paramBundle = new cdh();
+    com.tencent.mm.kernel.h.aZW().a(4835, (com.tencent.mm.am.h)this);
+    paramBundle = new csv();
     paramBundle.username = getIntent().getStringExtra("username");
-    this.vsp = new k(paramBundle);
-    h.aGY().b((q)this.vsp);
-    AppMethodBeat.o(281160);
+    this.yEE = new k(paramBundle);
+    com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)this.yEE, 0);
+    AppMethodBeat.o(274803);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(281161);
-    k localk = this.vsp;
+    AppMethodBeat.i(274805);
+    k localk = this.yEE;
     if (localk != null) {
-      h.aGY().a((q)localk);
+      com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)localk);
     }
-    h.aGY().b(4835, (i)this);
+    com.tencent.mm.kernel.h.aZW().b(4835, (com.tencent.mm.am.h)this);
     super.onDestroy();
-    AppMethodBeat.o(281161);
+    AppMethodBeat.o(274805);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(281162);
+    AppMethodBeat.i(274809);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = this.vsp;
+      paramString = this.yEE;
       if (paramString != null)
       {
-        paramString = paramString.viz;
+        paramString = paramString.yuz;
         if (paramString != null)
         {
-          paramString = paramString.Tlf;
+          paramString = paramString.aayN;
           if (paramString != null)
           {
             paramString = (Iterable)paramString;
@@ -115,34 +117,32 @@ public final class SportHistoryUI
             paramString = paramString.iterator();
             while (paramString.hasNext())
             {
-              paramq = paramString.next();
+              paramp = paramString.next();
               if (paramInt1 < 0) {
-                j.iBO();
+                kotlin.a.p.kkW();
               }
-              paramq = (afb)paramq;
-              ArrayList localArrayList = this.mXB;
+              paramp = (ahn)paramp;
+              ArrayList localArrayList = this.pUj;
               long l = paramInt1;
-              p.j(paramq, "dailySportRecord");
-              localArrayList.add(new a(l, paramq));
+              kotlin.g.b.s.s(paramp, "dailySportRecord");
+              localArrayList.add(new a(l, paramp));
               paramInt1 += 1;
             }
           }
         }
       }
-      paramString = this.vnF;
+      paramString = this.yAg;
       if (paramString != null)
       {
         paramString = paramString.getAdapter();
         if (paramString != null) {
-          paramString.notifyDataSetChanged();
+          paramString.bZE.notifyChanged();
         }
       }
     }
-    paramString = findViewById(R.h.loading_bar);
-    p.j(paramString, "findViewById<View>(R.id.loading_bar)");
-    paramString.setVisibility(8);
-    this.vsp = null;
-    AppMethodBeat.o(281162);
+    findViewById(R.h.loading_bar).setVisibility(8);
+    this.yEE = null;
+    AppMethodBeat.o(274809);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -151,89 +151,79 @@ public final class SportHistoryUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/exdevice/ui/SportHistoryUI$HistoryItem;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "id", "", "record", "Lcom/tencent/mm/protocal/protobuf/DailySportRecord;", "(Lcom/tencent/mm/plugin/exdevice/ui/SportHistoryUI;JLcom/tencent/mm/protocal/protobuf/DailySportRecord;)V", "getId", "()J", "getRecord", "()Lcom/tencent/mm/protocal/protobuf/DailySportRecord;", "getItemId", "getItemType", "", "app_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/exdevice/ui/SportHistoryUI$HistoryItem;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "id", "", "record", "Lcom/tencent/mm/protocal/protobuf/DailySportRecord;", "(Lcom/tencent/mm/plugin/exdevice/ui/SportHistoryUI;JLcom/tencent/mm/protocal/protobuf/DailySportRecord;)V", "getId", "()J", "getRecord", "()Lcom/tencent/mm/protocal/protobuf/DailySportRecord;", "getItemId", "getItemType", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class a
     implements com.tencent.mm.view.recyclerview.a
   {
     private final long id;
-    final afb vsq;
+    final ahn yEF;
     
-    public a(afb paramafb)
+    public a(ahn paramahn)
     {
-      AppMethodBeat.i(265380);
+      AppMethodBeat.i(274740);
       this.id = ???;
-      this.vsq = localObject;
-      AppMethodBeat.o(265380);
+      this.yEF = localObject;
+      AppMethodBeat.o(274740);
     }
     
-    public final int bAQ()
-    {
-      return 3;
-    }
-    
-    public final long mf()
+    public final long bZA()
     {
       return this.id;
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/exdevice/ui/SportHistoryUI$buildItemConverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "app_release"})
-  public static final class c
-    implements f
-  {
-    public final e<?> yx(int paramInt)
+    
+    public final int bZB()
     {
-      AppMethodBeat.i(278655);
-      e locale = (e)new SportHistoryUI.b(this.vsr);
-      AppMethodBeat.o(278655);
-      return locale;
+      return 5;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class d
-    implements MenuItem.OnMenuItemClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/exdevice/ui/SportHistoryUI$buildItemConverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements g
+  {
+    c(SportHistoryUI paramSportHistoryUI) {}
+    
+    public final f<?> yF(int paramInt)
+    {
+      AppMethodBeat.i(274742);
+      f localf = (f)new SportHistoryUI.b(this.yEG);
+      AppMethodBeat.o(274742);
+      return localf;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/exdevice/ui/SportHistoryUI$onCreate$2", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "itemPosition", "", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    extends RecyclerView.h
   {
     d(SportHistoryUI paramSportHistoryUI) {}
     
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(205968);
-      this.vsr.finish();
-      AppMethodBeat.o(205968);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/exdevice/ui/SportHistoryUI$onCreate$2", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "itemPosition", "", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "app_release"})
-  public static final class e
-    extends RecyclerView.h
-  {
     public final void a(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
     {
-      AppMethodBeat.i(252469);
-      p.k(paramRect, "outRect");
-      p.k(paramRecyclerView, "parent");
-      paramRecyclerView = this.vsr.vnF;
-      if (paramRecyclerView != null)
-      {
-        paramRecyclerView = paramRecyclerView.getAdapter();
-        if (paramRecyclerView == null) {}
-      }
-      for (int i = paramRecyclerView.getItemCount();; i = 1)
+      int i = 1;
+      AppMethodBeat.i(274745);
+      kotlin.g.b.s.u(paramRect, "outRect");
+      kotlin.g.b.s.u(paramRecyclerView, "parent");
+      paramRecyclerView = this.yEG.yAg;
+      if (paramRecyclerView == null) {}
+      for (;;)
       {
         if (paramInt == i - 1) {
-          paramRect.bottom = com.tencent.mm.ci.a.fromDPToPix((Context)this.vsr, 16);
+          paramRect.bottom = com.tencent.mm.cd.a.fromDPToPix((Context)this.yEG, 16);
         }
-        AppMethodBeat.o(252469);
+        AppMethodBeat.o(274745);
         return;
+        paramRecyclerView = paramRecyclerView.getAdapter();
+        if (paramRecyclerView != null) {
+          i = paramRecyclerView.getItemCount();
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.SportHistoryUI
  * JD-Core Version:    0.7.0.1
  */

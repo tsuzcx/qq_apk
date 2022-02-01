@@ -1,23 +1,23 @@
 package com.tencent.luggage.d;
 
 import android.content.Context;
-import com.tencent.luggage.k.f;
+import com.tencent.luggage.l.e;
 import com.tencent.luggage.webview.a;
 import java.util.LinkedList;
 
 public abstract class j
 {
-  abstract p Og();
+  abstract p aoo();
   
-  abstract Class<? extends a> Oh();
+  abstract Class<? extends a> aop();
   
-  public abstract LinkedList<h> On();
+  public abstract LinkedList<h> aov();
   
-  public abstract k Oo();
+  public abstract k aow();
   
-  abstract LinkedList<Class<? extends b>> Op();
+  abstract LinkedList<Class<? extends b>> aox();
   
-  public abstract f Oq();
+  public abstract e aoy();
   
   abstract Context getContext();
 }

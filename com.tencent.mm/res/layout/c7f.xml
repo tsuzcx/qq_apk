@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:id="@id/be9" android:background="@color/a2h" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/h3" android:paddingLeft="@dimen/ih" android:paddingTop="@dimen/ih" android:paddingRight="@dimen/ih" style="@style/d">
-        <TextView android:id="@id/dyz" android:background="@color/BW_93" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:visibility="gone" android:text="@string/gd" style="@style/e" />
-        <com.tencent.mm.ui.base.MaxListView android:id="@id/hmo" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:divider="#00000000" android:dividerHeight="0.0dip" android:choiceMode="singleChoice" />
-        <include android:id="@id/gh" android:visibility="gone" layout="@layout/c7e" />
-        <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:gravity="center|left" android:id="@id/dxn" android:background="@drawable/qa" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/iq" android:text="@string/g9" />
-    </LinearLayout>
-</ScrollView>
+    <FrameLayout android:id="@id/k77" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.story.ui.view.gallery.GalleryRecyclerView android:id="@id/k7q" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <View android:id="@id/k7j" android:background="@color/af_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0dip" android:textColor="#e6ffffff" android:gravity="center" android:id="@id/k93" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="160.0dip" android:text="@string/jre" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.plugin.story.ui.view.gallery.GalleryVerticalControlView android:id="@id/k78" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.story.ui.view.gallery.GalleryHolderView android:id="@id/k7f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

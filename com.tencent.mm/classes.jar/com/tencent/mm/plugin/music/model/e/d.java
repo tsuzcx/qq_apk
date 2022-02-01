@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public final class d
   extends MAutoStorage<c>
 {
-  public f<String, c> FSN;
+  public f<String, c> LNJ;
   public ISQLiteDatabase db;
   
   public d(ISQLiteDatabase paramISQLiteDatabase)
@@ -17,16 +17,16 @@ public final class d
     super(paramISQLiteDatabase, c.info, "PieceMusicInfo", null);
     AppMethodBeat.i(63179);
     this.db = paramISQLiteDatabase;
-    this.FSN = new com.tencent.mm.memory.a.c(20);
+    this.LNJ = new com.tencent.mm.memory.a.c(20);
     AppMethodBeat.o(63179);
   }
   
-  public final c aSn(String paramString)
+  public final c aPh(String paramString)
   {
     AppMethodBeat.i(63180);
-    if (this.FSN.get(paramString) != null)
+    if (this.LNJ.get(paramString) != null)
     {
-      paramString = (c)this.FSN.get(paramString);
+      paramString = (c)this.LNJ.get(paramString);
       AppMethodBeat.o(63180);
       return paramString;
     }
@@ -37,7 +37,7 @@ public final class d
       c localc = new c();
       localc.convertFrom((Cursor)localObject);
       ((Cursor)localObject).close();
-      this.FSN.put(paramString, localc);
+      this.LNJ.put(paramString, localc);
       AppMethodBeat.o(63180);
       return localc;
     }
@@ -50,7 +50,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.e.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,44 @@
 package com.tencent.mm.emoji.e;
 
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.au;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.emoji.c.m;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.iw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.vending.c.a;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"getAttrResId", "", "context", "Landroid/content/Context;", "attributeId", "Landroid/view/View;", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojisdk_release"})
 public final class e
+  extends d
 {
-  public static final void a(ImageView paramImageView, int paramInt1, int paramInt2)
+  public e(EmojiInfo paramEmojiInfo, boolean paramBoolean, d.a parama)
   {
-    AppMethodBeat.i(105783);
-    p.k(paramImageView, "$this$setSvgDrawable");
-    paramImageView.setImageDrawable(au.o(paramImageView.getContext(), paramInt1, paramInt2));
-    AppMethodBeat.o(105783);
+    super(paramEmojiInfo, paramBoolean, parama);
+    AppMethodBeat.i(104489);
+    new f(paramEmojiInfo, paramBoolean, new d.a()
+    {
+      public final void onResult(int paramAnonymousInt, String paramAnonymousString)
+      {
+        AppMethodBeat.i(104487);
+        if (paramAnonymousInt == 0)
+        {
+          e.a(e.this, paramAnonymousString);
+          AppMethodBeat.o(104487);
+          return;
+        }
+        e.this.rQ(paramAnonymousInt);
+        AppMethodBeat.o(104487);
+      }
+    });
+    AppMethodBeat.o(104489);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.e.e
  * JD-Core Version:    0.7.0.1
  */

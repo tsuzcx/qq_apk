@@ -3,162 +3,146 @@ package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 public final class d
 {
   /* Error */
-  public static com.tencent.mm.protocal.protobuf.fcr cA(int paramInt, java.lang.String paramString)
+  public static com.tencent.mm.protocal.protobuf.fzc dn(int paramInt, java.lang.String paramString)
   {
     // Byte code:
     //   0: sipush 29280
-    //   3: invokestatic 14	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 16	com/tencent/mm/protocal/protobuf/fcr
+    //   3: invokestatic 12	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 14	com/tencent/mm/protocal/protobuf/fzc
     //   9: dup
-    //   10: invokespecial 20	com/tencent/mm/protocal/protobuf/fcr:<init>	()V
-    //   13: astore 4
-    //   15: iload_0
-    //   16: tableswitch	default:+36 -> 52, 0:+69->85, 1:+99->115, 2:+36->52, 3:+36->52, 4:+129->145
-    //   53: iconst_1
+    //   10: invokespecial 18	com/tencent/mm/protocal/protobuf/fzc:<init>	()V
+    //   13: astore_3
+    //   14: iload_0
+    //   15: tableswitch	default:+33 -> 48, 0:+61->76, 1:+87->102, 2:+33->48, 3:+33->48, 4:+113->128
+    //   49: iconst_0
+    //   50: putfield 22	com/tencent/mm/protocal/protobuf/fzc:YIG	I
+    //   53: aload_3
     //   54: iconst_0
-    //   55: putfield 24	com/tencent/mm/protocal/protobuf/fcr:RLu	I
-    //   58: aload 4
-    //   60: iconst_0
-    //   61: putfield 27	com/tencent/mm/protocal/protobuf/fcr:RLv	I
-    //   64: aload 4
-    //   66: iconst_0
-    //   67: putfield 30	com/tencent/mm/protocal/protobuf/fcr:RLs	I
-    //   70: aload 4
-    //   72: iconst_0
-    //   73: putfield 33	com/tencent/mm/protocal/protobuf/fcr:RLt	I
-    //   76: sipush 29280
-    //   79: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   82: aload 4
-    //   84: areturn
-    //   85: aload 4
-    //   87: sipush 8000
-    //   90: putfield 24	com/tencent/mm/protocal/protobuf/fcr:RLu	I
-    //   93: aload 4
-    //   95: bipush 16
-    //   97: putfield 27	com/tencent/mm/protocal/protobuf/fcr:RLv	I
-    //   100: aload 4
-    //   102: iconst_5
-    //   103: putfield 30	com/tencent/mm/protocal/protobuf/fcr:RLs	I
-    //   106: aload 4
-    //   108: iconst_5
-    //   109: putfield 33	com/tencent/mm/protocal/protobuf/fcr:RLt	I
-    //   112: goto -36 -> 76
-    //   115: aload 4
-    //   117: sipush 16000
-    //   120: putfield 24	com/tencent/mm/protocal/protobuf/fcr:RLu	I
-    //   123: aload 4
-    //   125: bipush 16
-    //   127: putfield 27	com/tencent/mm/protocal/protobuf/fcr:RLv	I
-    //   130: aload 4
-    //   132: iconst_4
-    //   133: putfield 30	com/tencent/mm/protocal/protobuf/fcr:RLs	I
-    //   136: aload 4
-    //   138: iconst_4
-    //   139: putfield 33	com/tencent/mm/protocal/protobuf/fcr:RLt	I
-    //   142: goto -66 -> 76
-    //   145: aload 4
-    //   147: sipush 16000
-    //   150: putfield 24	com/tencent/mm/protocal/protobuf/fcr:RLu	I
-    //   153: aconst_null
-    //   154: astore_3
-    //   155: aconst_null
+    //   55: putfield 25	com/tencent/mm/protocal/protobuf/fzc:YIH	I
+    //   58: aload_3
+    //   59: iconst_0
+    //   60: putfield 28	com/tencent/mm/protocal/protobuf/fzc:YIE	I
+    //   63: aload_3
+    //   64: iconst_0
+    //   65: putfield 31	com/tencent/mm/protocal/protobuf/fzc:YIF	I
+    //   68: sipush 29280
+    //   71: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   74: aload_3
+    //   75: areturn
+    //   76: aload_3
+    //   77: sipush 8000
+    //   80: putfield 22	com/tencent/mm/protocal/protobuf/fzc:YIG	I
+    //   83: aload_3
+    //   84: bipush 16
+    //   86: putfield 25	com/tencent/mm/protocal/protobuf/fzc:YIH	I
+    //   89: aload_3
+    //   90: iconst_5
+    //   91: putfield 28	com/tencent/mm/protocal/protobuf/fzc:YIE	I
+    //   94: aload_3
+    //   95: iconst_5
+    //   96: putfield 31	com/tencent/mm/protocal/protobuf/fzc:YIF	I
+    //   99: goto -31 -> 68
+    //   102: aload_3
+    //   103: sipush 16000
+    //   106: putfield 22	com/tencent/mm/protocal/protobuf/fzc:YIG	I
+    //   109: aload_3
+    //   110: bipush 16
+    //   112: putfield 25	com/tencent/mm/protocal/protobuf/fzc:YIH	I
+    //   115: aload_3
+    //   116: iconst_4
+    //   117: putfield 28	com/tencent/mm/protocal/protobuf/fzc:YIE	I
+    //   120: aload_3
+    //   121: iconst_4
+    //   122: putfield 31	com/tencent/mm/protocal/protobuf/fzc:YIF	I
+    //   125: goto -57 -> 68
+    //   128: aload_3
+    //   129: sipush 16000
+    //   132: putfield 22	com/tencent/mm/protocal/protobuf/fzc:YIG	I
+    //   135: aconst_null
+    //   136: astore_2
+    //   137: aload_1
+    //   138: invokestatic 40	com/tencent/mm/modelvoice/s:QH	(Ljava/lang/String;)Lcom/tencent/mm/modelvoice/b;
+    //   141: astore_1
+    //   142: aload_1
+    //   143: ifnull +46 -> 189
+    //   146: aload_1
+    //   147: astore_2
+    //   148: aload_1
+    //   149: instanceof 42
+    //   152: ifeq +37 -> 189
+    //   155: aload_1
     //   156: astore_2
     //   157: aload_1
-    //   158: invokestatic 42	com/tencent/mm/modelvoice/s:YC	(Ljava/lang/String;)Lcom/tencent/mm/modelvoice/b;
-    //   161: astore_1
-    //   162: aload_1
-    //   163: ifnull +54 -> 217
-    //   166: aload_1
-    //   167: astore_2
-    //   168: aload_1
-    //   169: astore_3
-    //   170: aload_1
-    //   171: instanceof 44
-    //   174: ifeq +43 -> 217
-    //   177: aload_1
-    //   178: astore_2
-    //   179: aload_1
-    //   180: astore_3
-    //   181: aload_1
-    //   182: checkcast 44	com/tencent/mm/modelvoice/j
-    //   185: iconst_0
-    //   186: iconst_1
-    //   187: invokevirtual 48	com/tencent/mm/modelvoice/j:dY	(II)Lcom/tencent/mm/modelvoice/g;
-    //   190: getfield 54	com/tencent/mm/modelvoice/g:buf	[B
-    //   193: getstatic 60	com/tencent/mm/modelvoice/MediaRecorder:mjJ	J
-    //   196: invokestatic 64	com/tencent/mm/modelvoice/MediaRecorder:SilkGetEncSampleRate	([BJ)I
-    //   199: istore_0
-    //   200: iload_0
-    //   201: sipush 8000
-    //   204: if_icmplt +13 -> 217
-    //   207: aload_1
-    //   208: astore_2
-    //   209: aload_1
-    //   210: astore_3
-    //   211: aload 4
-    //   213: iload_0
-    //   214: putfield 24	com/tencent/mm/protocal/protobuf/fcr:RLu	I
-    //   217: aload_1
-    //   218: ifnull +9 -> 227
-    //   221: aload_1
-    //   222: invokeinterface 69 1 0
-    //   227: aload 4
-    //   229: bipush 16
-    //   231: putfield 27	com/tencent/mm/protocal/protobuf/fcr:RLv	I
-    //   234: aload 4
-    //   236: bipush 6
-    //   238: putfield 30	com/tencent/mm/protocal/protobuf/fcr:RLs	I
-    //   241: aload 4
-    //   243: bipush 6
-    //   245: putfield 33	com/tencent/mm/protocal/protobuf/fcr:RLt	I
-    //   248: goto -172 -> 76
+    //   158: checkcast 42	com/tencent/mm/modelvoice/j
+    //   161: iconst_0
+    //   162: iconst_1
+    //   163: invokevirtual 46	com/tencent/mm/modelvoice/j:eQ	(II)Lcom/tencent/mm/modelvoice/g;
+    //   166: astore 4
+    //   168: aload 4
+    //   170: ifnonnull +50 -> 220
+    //   173: iconst_m1
+    //   174: istore_0
+    //   175: iload_0
+    //   176: sipush 8000
+    //   179: if_icmplt +10 -> 189
+    //   182: aload_1
+    //   183: astore_2
+    //   184: aload_3
+    //   185: iload_0
+    //   186: putfield 22	com/tencent/mm/protocal/protobuf/fzc:YIG	I
+    //   189: aload_1
+    //   190: ifnull +9 -> 199
+    //   193: aload_1
+    //   194: invokeinterface 51 1 0
+    //   199: aload_3
+    //   200: bipush 16
+    //   202: putfield 25	com/tencent/mm/protocal/protobuf/fzc:YIH	I
+    //   205: aload_3
+    //   206: bipush 6
+    //   208: putfield 28	com/tencent/mm/protocal/protobuf/fzc:YIE	I
+    //   211: aload_3
+    //   212: bipush 6
+    //   214: putfield 31	com/tencent/mm/protocal/protobuf/fzc:YIF	I
+    //   217: goto -149 -> 68
+    //   220: aload_1
+    //   221: astore_2
+    //   222: aload 4
+    //   224: getfield 57	com/tencent/mm/modelvoice/g:buf	[B
+    //   227: getstatic 63	com/tencent/mm/modelvoice/MediaRecorder:pdg	J
+    //   230: invokestatic 67	com/tencent/mm/modelvoice/MediaRecorder:SilkGetEncSampleRate	([BJ)I
+    //   233: istore_0
+    //   234: goto -59 -> 175
+    //   237: astore_1
+    //   238: aload_2
+    //   239: ifnull -40 -> 199
+    //   242: aload_2
+    //   243: invokeinterface 51 1 0
+    //   248: goto -49 -> 199
     //   251: astore_1
-    //   252: aload_2
-    //   253: ifnull -26 -> 227
-    //   256: aload_2
-    //   257: invokeinterface 69 1 0
-    //   262: goto -35 -> 227
-    //   265: astore_1
-    //   266: goto -39 -> 227
-    //   269: astore_1
-    //   270: aload_3
-    //   271: ifnull +9 -> 280
-    //   274: aload_3
-    //   275: invokeinterface 69 1 0
-    //   280: sipush 29280
-    //   283: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   286: aload_1
-    //   287: athrow
-    //   288: astore_1
-    //   289: goto -62 -> 227
-    //   292: astore_2
-    //   293: goto -13 -> 280
+    //   252: goto -53 -> 199
+    //   255: astore_1
+    //   256: goto -57 -> 199
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	296	0	paramInt	int
-    //   0	296	1	paramString	java.lang.String
-    //   156	101	2	str1	java.lang.String
-    //   292	1	2	localThrowable	java.lang.Throwable
-    //   154	121	3	str2	java.lang.String
-    //   13	229	4	localfcr	com.tencent.mm.protocal.protobuf.fcr
+    //   0	259	0	paramInt	int
+    //   0	259	1	paramString	java.lang.String
+    //   136	107	2	str	java.lang.String
+    //   13	199	3	localfzc	com.tencent.mm.protocal.protobuf.fzc
+    //   166	57	4	localg	com.tencent.mm.modelvoice.g
     // Exception table:
     //   from	to	target	type
-    //   157	162	251	java/lang/Throwable
-    //   170	177	251	java/lang/Throwable
-    //   181	200	251	java/lang/Throwable
-    //   211	217	251	java/lang/Throwable
-    //   256	262	265	java/lang/Throwable
-    //   157	162	269	finally
-    //   170	177	269	finally
-    //   181	200	269	finally
-    //   211	217	269	finally
-    //   221	227	288	java/lang/Throwable
-    //   274	280	292	java/lang/Throwable
+    //   137	142	237	finally
+    //   148	155	237	finally
+    //   157	168	237	finally
+    //   184	189	237	finally
+    //   222	234	237	finally
+    //   242	248	251	finally
+    //   193	199	255	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.d
  * JD-Core Version:    0.7.0.1
  */

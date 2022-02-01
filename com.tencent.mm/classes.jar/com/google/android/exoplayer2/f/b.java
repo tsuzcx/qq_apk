@@ -14,16 +14,16 @@ public abstract class b
   {
     super(new h[2], new i[2]);
     this.name = paramString;
-    sb();
+    RE();
   }
   
   private f a(h paramh, i parami, boolean paramBoolean)
   {
     try
     {
-      Object localObject = paramh.aQU;
+      Object localObject = paramh.cKQ;
       localObject = b(((ByteBuffer)localObject).array(), ((ByteBuffer)localObject).limit(), paramBoolean);
-      parami.a(paramh.timeUs, (d)localObject, paramh.aNc);
+      parami.a(paramh.timeUs, (d)localObject, paramh.cGY);
       parami.flags &= 0x7FFFFFFF;
       return null;
     }
@@ -36,9 +36,9 @@ public abstract class b
     super.a(parami);
   }
   
-  public final void ak(long paramLong) {}
-  
   protected abstract d b(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
+  
+  public final void cy(long paramLong) {}
 }
 
 

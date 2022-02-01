@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ui.widget.SnsAdCardVideoEndView android:id="@id/hxr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/v4" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/jms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/db">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/deg" android:padding="@dimen/cp" android:layout_width="@dimen/d5" android:layout_height="@dimen/d_" android:layout_marginLeft="@dimen/df" android:src="@raw/icons_outlined_back" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:iconColor="@color/BW_100_Alpha_0_8" />
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/jmu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dc6" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/dnw" android:padding="@dimen/cp" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:layout_marginRight="@dimen/df" android:src="@raw/icons_outlined_help" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/BW_100_Alpha_0_3" />
+    </RelativeLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/d0">
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="32.0dip" android:textStyle="bold" android:textColor="@color/az" android:gravity="center|left" android:id="@id/bg6" android:background="@drawable/zv" android:paddingLeft="@dimen/d4" android:layout_width="fill_parent" android:layout_height="@dimen/db" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|left" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/cp" android:src="@raw/coin_icon" app:iconColor="@color/Brand_100" />
+    </FrameLayout>
+    <TextView android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/gpy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d6" android:layout_marginTop="@dimen/cd" />
+    <Button android:textStyle="bold" android:textColor="@drawable/xc" android:layout_gravity="center_horizontal" android:id="@id/anq" android:background="@drawable/ze" android:layout_marginTop="@dimen/d6" android:layout_marginBottom="@dimen/d0" android:text="@string/z9" style="@style/op" />
+</LinearLayout>

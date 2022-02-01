@@ -1,70 +1,76 @@
 package kotlin.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ae;
 import kotlin.l.b.a.b.b.e;
 import kotlin.l.b.a.b.b.l;
-import kotlin.l.b.a.b.b.y;
-import kotlin.l.b.a.b.f.a;
+import kotlin.l.b.a.b.b.w;
+import kotlin.l.b.a.b.f.b;
 import kotlin.l.b.a.b.f.f;
-import kotlin.l.b.a.b.j.c;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.l.b.a.b.m.u;
-import kotlin.o;
+import kotlin.l.b.a.b.j.d;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.r;
 
 public final class j
-  extends g<o<? extends a, ? extends f>>
+  extends g<r<? extends b, ? extends f>>
 {
-  private final a ablb;
-  public final f ablc;
+  private final b ajjH;
+  public final f ajjI;
   
-  public j(a parama, f paramf)
+  public j(b paramb, f paramf)
   {
-    super(kotlin.s.M(parama, paramf));
+    super(kotlin.v.Y(paramb, paramf));
     AppMethodBeat.i(60065);
-    this.ablb = parama;
-    this.ablc = paramf;
+    this.ajjH = paramb;
+    this.ajjI = paramf;
     AppMethodBeat.o(60065);
   }
   
-  public final ab b(y paramy)
+  public final ad c(ae paramae)
   {
     AppMethodBeat.i(60063);
-    p.k(paramy, "module");
-    paramy = kotlin.l.b.a.b.b.s.b(paramy, this.ablb);
-    if (paramy != null)
-    {
-      if (c.y((l)paramy)) {}
-      while (paramy != null)
-      {
-        paramy = paramy.iET();
-        if (paramy == null) {
-          break;
-        }
-        paramy = (ab)paramy;
-        AppMethodBeat.o(60063);
-        return paramy;
-        paramy = null;
-      }
+    s.u(paramae, "module");
+    paramae = w.b(paramae, this.ajjH);
+    if (paramae == null) {
+      paramae = null;
     }
-    paramy = u.bHp("Containing class for error-class based enum entry " + this.ablb + '.' + this.ablc);
-    p.j(paramy, "ErrorUtils.createErrorTy…mClassId.$enumEntryName\")");
-    paramy = (ab)paramy;
+    while (paramae == null)
+    {
+      paramae = kotlin.l.b.a.b.m.v.bJt("Containing class for error-class based enum entry " + this.ajjH + '.' + this.ajjI);
+      s.s(paramae, "createErrorType(\"Contain…mClassId.$enumEntryName\")");
+      paramae = (ad)paramae;
+      AppMethodBeat.o(60063);
+      return paramae;
+      if (d.y((l)paramae)) {}
+      for (;;)
+      {
+        if (paramae != null) {
+          break label107;
+        }
+        paramae = null;
+        break;
+        paramae = null;
+      }
+      label107:
+      paramae = paramae.koj();
+    }
+    paramae = (ad)paramae;
     AppMethodBeat.o(60063);
-    return paramy;
+    return paramae;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(60064);
-    String str = this.ablb.iNu() + '.' + this.ablc;
+    String str = this.ajjH.kxN() + '.' + this.ajjI;
     AppMethodBeat.o(60064);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.j
  * JD-Core Version:    0.7.0.1
  */

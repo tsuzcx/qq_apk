@@ -6,21 +6,21 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import com.tencent.e.i;
+import com.tencent.mm.b.c;
 import com.tencent.mm.b.g;
 import com.tencent.mm.b.p;
 import com.tencent.mm.b.s;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ConfigFile;
-import com.tencent.mm.storage.ar;
+import com.tencent.mm.storage.at;
+import com.tencent.threadpool.i;
 import java.io.File;
-import java.io.FilenameFilter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -29,33 +29,33 @@ import java.util.regex.Pattern;
 
 public final class a
 {
-  static final HashMap<String, Integer> jxE;
+  static final HashMap<String, Integer> maY;
   
   static
   {
     HashMap localHashMap = new HashMap(16);
-    jxE = localHashMap;
+    maY = localHashMap;
     localHashMap.put("exception", Integer.valueOf(10001));
-    jxE.put("anr", Integer.valueOf(10002));
-    jxE.put("handler", Integer.valueOf(10003));
-    jxE.put("sql", Integer.valueOf(10004));
-    jxE.put("permission", Integer.valueOf(10005));
-    jxE.put("main_thread_watch", Integer.valueOf(10006));
+    maY.put("anr", Integer.valueOf(10002));
+    maY.put("handler", Integer.valueOf(10003));
+    maY.put("sql", Integer.valueOf(10004));
+    maY.put("permission", Integer.valueOf(10005));
+    maY.put("main_thread_watch", Integer.valueOf(10006));
   }
   
-  private static int F(String paramString1, String paramString2, boolean paramBoolean)
+  private static int L(String paramString1, String paramString2, boolean paramBoolean)
   {
-    String str2 = ar.Vgb + "crash/" + paramString1 + "." + paramString2 + ".crashini";
+    String str2 = at.acHq + "crash/" + paramString1 + "." + paramString2 + ".crashini";
     long l1 = Util.nullAsNil(ConfigFile.getLongValue(str2, "count"));
     long l2 = Util.nullAsNil(ConfigFile.getLongValue(str2, "lasttime"));
     long l3 = Util.nowMilliSecond();
     if (paramBoolean) {}
-    for (String str1 = ar.Vgb + "crash/" + paramString1 + "." + paramString2 + ".preventcrashlog";; str1 = ar.Vgb + "crash/" + paramString1 + "." + paramString2 + ".crashlog")
+    for (String str1 = at.acHq + "crash/" + paramString1 + "." + paramString2 + ".preventcrashlog";; str1 = at.acHq + "crash/" + paramString1 + "." + paramString2 + ".crashlog")
     {
-      int i = d.bua(str1);
+      int i = d.btZ(str1);
       Log.d("MicroMsg.CrashUpload", "dkcrash count:" + l1 + " t:" + (l3 - l2) + " len:" + i);
       if (i < 5242880) {
-        bi(paramString1, paramString2, str1);
+        bE(paramString1, paramString2, str1);
       }
       d.deleteFile(str1);
       ConfigFile.saveValue(str2, "count", 0);
@@ -69,17 +69,17 @@ public final class a
     if ((paramError == null) || (Util.isNullOrNil(paramError.toString()))) {
       return -1;
     }
-    Object localObject = new File(ar.Vgb + "crash/");
+    Object localObject = new File(at.acHq + "crash/");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdir();
     }
-    localObject = ar.Vgb + "crash/" + paramString1 + "." + paramString2 + ".crashini";
+    localObject = at.acHq + "crash/" + paramString1 + "." + paramString2 + ".crashini";
     ConfigFile.saveValue((String)localObject, "count", Util.nullAsNil(ConfigFile.getLongValue((String)localObject, "count")) + 1L);
     if (Util.nullAsNil(ConfigFile.getLongValue((String)localObject, "lasttime")) == 0L) {
       ConfigFile.saveValue((String)localObject, "lasttime", Util.nowMilliSecond());
     }
     if (paramBoolean) {}
-    for (localObject = ar.Vgb + "crash/" + paramString1 + "." + paramString2 + ".preventcrashlog";; localObject = ar.Vgb + "crash/" + paramString1 + "." + paramString2 + ".crashlog")
+    for (localObject = at.acHq + "crash/" + paramString1 + "." + paramString2 + ".preventcrashlog";; localObject = at.acHq + "crash/" + paramString1 + "." + paramString2 + ".crashlog")
     {
       Log.d("MicroMsg.CrashUpload", "crash:[%s] len:[%d]", new Object[] { localObject, Integer.valueOf(paramError.toString().length()) });
       a(paramError);
@@ -87,16 +87,16 @@ public final class a
       if (!Util.isNullOrNil(paramString3)) {
         d.deleteFile(paramString3);
       }
-      return F(paramString1, paramString2, paramBoolean);
+      return L(paramString1, paramString2, paramBoolean);
     }
   }
   
   private static void a(ErrLog.Error paramError)
   {
-    if (!paramError.URA) {
+    if (!paramError.acmN) {
       return;
     }
-    Object localObject = new File(b.aSN());
+    Object localObject = new File(b.bmB());
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -118,7 +118,7 @@ public final class a
     }
     localObject = new Date();
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
-    localObject = b.aSN() + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
+    localObject = b.bmB() + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
     Log.i("MicroMsg.CrashUpload", "dealWithSdcardCrash %s", new Object[] { localObject });
     a((String)localObject, paramError);
   }
@@ -133,11 +133,11 @@ public final class a
       i = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0).getInt("default_uin", 0);
       localStringBuilder = new StringBuilder();
       if (i != 0) {
-        break label335;
+        break label353;
       }
-      localObject = q.dR(false);
+      localObject = q.eD(false);
       if (Util.isNullOrNil((String)localObject)) {
-        break label261;
+        break label279;
       }
       localStringBuilder.append("uin[" + (String)localObject + "] ");
     }
@@ -145,37 +145,44 @@ public final class a
     {
       localStringBuilder.append(Log.getSysInfo());
       localStringBuilder.append(" BRAND:[" + Build.BRAND + "] ");
-      localObject = q.auT();
-      localStringBuilder.append("c1[" + localObject[0] + "] ");
-      localStringBuilder.append("c2[" + localObject[1] + "] ");
+      localObject = q.aPn();
+      if (localObject != null)
+      {
+        if (localObject.length > 0) {
+          localStringBuilder.append("c1[" + localObject[0] + "] ");
+        }
+        if (localObject.length > 1) {
+          localStringBuilder.append("c2[" + localObject[1] + "] ");
+        }
+      }
       localStringBuilder.append("\n");
-      d.F(paramString, localStringBuilder.toString().getBytes());
-      if (d.bua(paramString) > 10485760) {
+      d.J(paramString, localStringBuilder.toString().getBytes());
+      if (d.btZ(paramString) > 10485760) {
         d.deleteFile(paramString);
       }
-      d.F(paramString, (paramError.toString() + "\n").getBytes());
+      d.J(paramString, (paramError.toString() + "\n").getBytes());
       return;
-      label261:
-      localObject = Build.DEVICE + Build.FINGERPRINT + Build.MANUFACTURER + Build.MODEL;
+      label279:
+      localObject = Build.DEVICE + Build.FINGERPRINT + Build.MANUFACTURER + q.aPo();
       localStringBuilder.append("uin[" + Integer.toString(((String)localObject).hashCode()) + "] ");
       continue;
-      label335:
+      label353:
       localStringBuilder.append("uin[" + p.getString(i) + "] ");
     }
   }
   
-  private static void bi(final String paramString1, final String paramString2, final String paramString3)
+  private static void bE(final String paramString1, final String paramString2, final String paramString3)
   {
-    byte[] arrayOfByte = d.bub(paramString3);
+    byte[] arrayOfByte = d.bua(paramString3);
     if (Util.isNullOrNil(arrayOfByte)) {
       return;
     }
     int i = arrayOfByte.length;
-    paramString3 = g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.RAD), Integer.valueOf(i) }).getBytes()).toLowerCase();
+    paramString3 = g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.Yxh), Integer.valueOf(i) }).getBytes()).toLowerCase();
     arrayOfByte = s.compress(arrayOfByte);
     final PByteArray localPByteArray = new PByteArray();
-    com.tencent.mm.b.c.a(localPByteArray, arrayOfByte, paramString3.getBytes());
-    com.tencent.e.h.ZvG.be(new com.tencent.e.i.h()
+    c.a(localPByteArray, arrayOfByte, paramString3.getBytes());
+    com.tencent.threadpool.h.ahAA.bm(new com.tencent.threadpool.i.h()
     {
       public final String getKey()
       {
@@ -185,20 +192,18 @@ public final class a
       public final void run()
       {
         Object localObject = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0);
-        StringBuilder localStringBuilder = new StringBuilder("http://");
-        String str = com.tencent.mm.network.c.kRi;
-        localObject = ((SharedPreferences)localObject).getString(str, str);
-        localObject = new StringBuilder().append((String)localObject).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(com.tencent.mm.protocal.d.RAD)).append("&devicetype=").append(com.tencent.mm.protocal.d.kQZ).append("&filelength=").append(this.Nee).append("&sum=").append(paramString3).append("&reporttype=1&NewReportType=").append(Util.nullAsNil((Integer)a.jxE.get(paramString2)));
+        localObject = "https://" + ((SharedPreferences)localObject).getString("support.weixin.qq.com", "support.weixin.qq.com");
+        localObject = new StringBuilder().append((String)localObject).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(com.tencent.mm.protocal.d.Yxh)).append("&devicetype=").append(com.tencent.mm.protocal.d.nsC).append("&filelength=").append(this.TQR).append("&sum=").append(paramString3).append("&reporttype=1&NewReportType=").append(Util.nullAsNil((Integer)a.maY.get(paramString2)));
         if ((paramString1 != null) && (!paramString1.equals(""))) {
           ((StringBuilder)localObject).append("&username=").append(paramString1);
         }
         Log.d("MicroMsg.CrashUpload", "dkcrash sb:" + ((StringBuilder)localObject).toString());
-        a.E(((StringBuilder)localObject).toString(), localPByteArray.value);
+        a.I(((StringBuilder)localObject).toString(), localPByteArray.value);
       }
     });
   }
   
-  public static String bt(Intent paramIntent)
+  public static String bW(Intent paramIntent)
   {
     if (paramIntent == null) {
       return "";
@@ -211,7 +216,7 @@ public final class a
         str1 = "exception";
       }
       paramIntent = paramIntent.getStringExtra("userName");
-      return ar.Vgb + "crashprevent/" + paramIntent + "." + str1 + "." + cm.bfC() + ".crashlog";
+      return at.acHq + "crashprevent/" + paramIntent + "." + str1 + "." + cn.bDu() + ".crashlog";
     }
     catch (Exception paramIntent)
     {
@@ -220,15 +225,15 @@ public final class a
     return "";
   }
   
-  public static int hrT()
+  public static int iRZ()
   {
-    int k = 1;
-    Object localObject = new File(ar.Vgb + "crash/");
-    int i;
+    int i = -1;
+    Object localObject = new File(at.acHq + "crash/");
+    int k;
     if (!((File)localObject).exists())
     {
       Log.w("MicroMsg.CrashUpload", "dkcrash checkUpload dir never create ?");
-      i = -1;
+      k = i;
     }
     String[] arrayOfString;
     Pattern localPattern;
@@ -236,27 +241,27 @@ public final class a
     int j;
     do
     {
-      return i;
-      if (((File)localObject).isFile())
+      do
       {
-        ((File)localObject).delete();
-        Log.w("MicroMsg.CrashUpload", "dkcrash is the fucking file ??");
-        return -1;
-      }
-      arrayOfString = ((File)localObject).list(new FilenameFilter()
-      {
-        public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
+        do
         {
-          return (paramAnonymousString.endsWith(".crashlog")) || (paramAnonymousString.endsWith(".preventcrashlog"));
-        }
-      });
-      if ((arrayOfString == null) || (arrayOfString.length == 0)) {
-        return -1;
-      }
+          return k;
+          if (((File)localObject).isFile())
+          {
+            ((File)localObject).delete();
+            Log.w("MicroMsg.CrashUpload", "dkcrash is the fucking file ??");
+            return -1;
+          }
+          arrayOfString = ((File)localObject).list(new a.1());
+          k = i;
+        } while (arrayOfString == null);
+        k = i;
+      } while (arrayOfString.length == 0);
       localPattern = Pattern.compile(".");
       m = arrayOfString.length;
       j = 0;
-      i = k;
+      i = 1;
+      k = i;
     } while (j >= m);
     String str1 = arrayOfString[j];
     localObject = localPattern.split(str1);
@@ -264,30 +269,34 @@ public final class a
     if ((localObject != null) && (localObject.length > 0))
     {
       str2 = localObject[0];
-      if (localObject.length < 2) {
-        break label198;
-      }
-      localObject = localObject[1];
-      label168:
-      if (!str1.endsWith(".preventcrashlog")) {
-        break label205;
+      if (localObject.length >= 2)
+      {
+        localObject = localObject[1];
+        label172:
+        if (!str1.endsWith(".preventcrashlog")) {
+          break label216;
+        }
       }
     }
-    label198:
-    label205:
+    label216:
     for (boolean bool = true;; bool = false)
     {
-      F(str2, (String)localObject, bool);
-      j += 1;
-      break;
-      localObject = "";
-      break label168;
+      if (L(str2, (String)localObject, bool) == 0) {
+        i = 0;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        localObject = "";
+        break label172;
+      }
     }
   }
   
-  public static int hrU()
+  public static int iSa()
   {
-    Object localObject1 = new File(ar.Vgb + "crashprevent/");
+    Object localObject1 = new File(at.acHq + "crashprevent/");
     int k;
     if (!((File)localObject1).exists())
     {
@@ -307,13 +316,7 @@ public final class a
         Log.w("MicroMsg.CrashUpload", "checkPreventUpload:crash is the fucking file ??");
         return -1;
       }
-      arrayOfString = ((File)localObject1).list(new FilenameFilter()
-      {
-        public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
-        {
-          return paramAnonymousString.endsWith(".crashlog");
-        }
-      });
+      arrayOfString = ((File)localObject1).list(new a.2());
       if ((arrayOfString == null) || (arrayOfString.length == 0)) {
         return -1;
       }
@@ -323,12 +326,12 @@ public final class a
       k = i;
     } while (j >= m);
     localObject1 = arrayOfString[j];
-    String str = ar.Vgb + "crashprevent/" + (String)localObject1;
+    String str = at.acHq + "crashprevent/" + (String)localObject1;
     do
     {
       try
       {
-        localObject1 = d.bub(str);
+        localObject1 = d.bua(str);
         if (Util.isNullOrNil((byte[])localObject1))
         {
           localObject1 = null;
@@ -345,25 +348,25 @@ public final class a
       {
         d.deleteFile(str);
         Log.e("MicroMsg.CrashUpload", "checkPreventUpload crashPreventPath:%s Exception:%s %s", new Object[] { str, localException.getClass().getSimpleName(), localException.getMessage() });
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1185L, 51L, 1L, true);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1185L, 51L, 1L, true);
         break;
       }
       Object localObject2 = ((ErrLog.PreventError)localObject1).processName;
       Log.i("MicroMsg.CrashSecondReport", "secondReportCrash() process:%s", new Object[] { localObject2 });
       if (Util.isEqual((String)localObject2, "mm")) {
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1185L, 21L, 1L, true);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1185L, 21L, 1L, true);
       }
       for (;;)
       {
         Log.i("MicroMsg.CrashUpload", "checkPreventUpload processName:%s crashPreventPath:%s", new Object[] { ((ErrLog.PreventError)localObject1).processName, str });
-        if (a(((ErrLog.PreventError)localObject1).username, ((ErrLog.PreventError)localObject1).tag, ((ErrLog.PreventError)localObject1).URB, str, true) == 0)
+        if (a(((ErrLog.PreventError)localObject1).username, ((ErrLog.PreventError)localObject1).tag, ((ErrLog.PreventError)localObject1).acmO, str, true) == 0)
         {
           i = 0;
           break;
           if (Util.isEqual((String)localObject2, "push")) {
-            com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1185L, 22L, 1L, true);
+            com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1185L, 22L, 1L, true);
           } else if (Util.isEqual((String)localObject2, "other")) {
-            com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1185L, 23L, 1L, true);
+            com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1185L, 23L, 1L, true);
           }
         }
         else
@@ -379,12 +382,12 @@ public final class a
     }
   }
   
-  public static void o(Intent paramIntent, String paramString)
+  public static void q(Intent paramIntent, String paramString)
   {
     if ((paramIntent == null) || (Util.isNullOrNil(paramString))) {
       return;
     }
-    Object localObject1 = new File(ar.Vgb + "crashprevent/");
+    Object localObject1 = new File(at.acHq + "crashprevent/");
     if (!((File)localObject1).exists()) {
       ((File)localObject1).mkdir();
     }
@@ -403,12 +406,12 @@ public final class a
       localObject1 = new ErrLog.PreventError((String)localObject2, (String)localObject1, paramIntent, str2);
       localObject2 = Parcel.obtain();
       ((Parcel)localObject2).writeParcelable((Parcelable)localObject1, 0);
-      d.F(paramString, ((Parcel)localObject2).marshall());
+      d.J(paramString, ((Parcel)localObject2).marshall());
       Log.i("MicroMsg.CrashUpload", "crashPreventPath:[%s] len:[%d]", new Object[] { paramString, Integer.valueOf(paramIntent.toString().length()) });
       if (MMApplicationContext.isMainProcess())
       {
         Log.i("MicroMsg.CrashSecondReport", "reportWritePreventCrashFile() process:mm");
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1185L, 31L, 1L, true);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1185L, 31L, 1L, true);
         return;
       }
     }
@@ -420,16 +423,16 @@ public final class a
     if (MMApplicationContext.isPushProcess())
     {
       Log.i("MicroMsg.CrashSecondReport", "reportWritePreventCrashFile() process:push");
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1185L, 32L, 1L, true);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1185L, 32L, 1L, true);
       return;
     }
     Log.i("MicroMsg.CrashSecondReport", "reportWritePreventCrashFile() process:other");
-    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1185L, 33L, 1L, true);
+    com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1185L, 33L, 1L, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.a
  * JD-Core Version:    0.7.0.1
  */

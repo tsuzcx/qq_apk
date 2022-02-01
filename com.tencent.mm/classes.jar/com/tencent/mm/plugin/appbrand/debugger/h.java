@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.appbrand.debugger;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.appbrand.service.t;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class h
   implements DebuggerShell.a
 {
-  public final void B(Intent paramIntent)
+  public final void D(Intent paramIntent)
   {
     AppMethodBeat.i(44950);
     String str1 = paramIntent.getStringExtra("username");
@@ -21,8 +21,8 @@ public final class h
     paramIntent = paramIntent.getStringExtra("sceneNote");
     AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
     localAppBrandStatObject.scene = j;
-    localAppBrandStatObject.fvd = paramIntent;
-    ((r)com.tencent.mm.kernel.h.ae(r.class)).a(MMApplicationContext.getContext(), str1, str2, i, 0, str3, localAppBrandStatObject);
+    localAppBrandStatObject.hzx = paramIntent;
+    ((t)com.tencent.mm.kernel.h.ax(t.class)).a(MMApplicationContext.getContext(), str1, str2, i, 0, str3, localAppBrandStatObject);
     AppMethodBeat.o(44950);
   }
   

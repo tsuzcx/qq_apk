@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background" android:drawable="@drawable/b7k" />
-    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/b7n" />
+    <item android:id="@android:id/background" android:drawable="@drawable/b5s" />
+    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/b5v" />
     <item android:id="@android:id/progress">
-        <bitmap android:src="@drawable/b7k" android:tileModeX="repeat" />
+        <bitmap android:src="@drawable/b5s" android:tileModeX="repeat" />
     </item>
 </layer-list>

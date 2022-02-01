@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="@dimen/ct" />
-    <TextView android:textSize="@dimen/t" android:textColor="@color/a2w" android:gravity="center" android:id="@id/a62" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/amn" />
-</LinearLayout>
+<FrameLayout android:id="@id/iix" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" app:layout_behavior="@string/a4l"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/lx" android:textColor="@color/xa" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/aam" android:paddingTop="@dimen/r" android:paddingBottom="@dimen/r" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="5" android:paddingStart="@dimen/jc" android:paddingEnd="@dimen/jc" />
+</FrameLayout>

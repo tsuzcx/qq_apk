@@ -1,83 +1,102 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class cv
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public int RIr;
-  public int RIs;
-  public int RIt;
-  public int RIu;
-  public int rWu;
+  public String fileid;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127429);
+    AppMethodBeat.i(152480);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.RIr);
-      paramVarArgs.aY(2, this.rWu);
-      paramVarArgs.aY(3, this.RIs);
-      paramVarArgs.aY(4, this.RIt);
-      paramVarArgs.aY(5, this.RIu);
-      AppMethodBeat.o(127429);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bM(1, this.RIr);
-      int i = g.a.a.b.b.a.bM(2, this.rWu);
-      int j = g.a.a.b.b.a.bM(3, this.RIs);
-      int k = g.a.a.b.b.a.bM(4, this.RIt);
-      int m = g.a.a.b.b.a.bM(5, this.RIu);
-      AppMethodBeat.o(127429);
-      return paramInt + 0 + i + j + k + m;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(127429);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      cv localcv = (cv)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
       {
-      default: 
-        AppMethodBeat.o(127429);
-        return -1;
-      case 1: 
-        localcv.RIr = locala.abFh.AK();
-        AppMethodBeat.o(127429);
-        return 0;
-      case 2: 
-        localcv.rWu = locala.abFh.AK();
-        AppMethodBeat.o(127429);
-        return 0;
-      case 3: 
-        localcv.RIs = locala.abFh.AK();
-        AppMethodBeat.o(127429);
-        return 0;
-      case 4: 
-        localcv.RIt = locala.abFh.AK();
-        AppMethodBeat.o(127429);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(152480);
+        throw paramVarArgs;
       }
-      localcv.RIu = locala.abFh.AK();
-      AppMethodBeat.o(127429);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      if (this.fileid != null) {
+        paramVarArgs.g(2, this.fileid);
+      }
+      AppMethodBeat.o(152480);
       return 0;
     }
-    AppMethodBeat.o(127429);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label392;
+      }
+    }
+    label392:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.fileid != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.fileid);
+      }
+      AppMethodBeat.o(152480);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(152480);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(152480);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        cv localcv = (cv)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(152480);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localcv.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(152480);
+          return 0;
+        }
+        localcv.fileid = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(152480);
+        return 0;
+      }
+      AppMethodBeat.o(152480);
+      return -1;
+    }
   }
 }
 

@@ -8,32 +8,32 @@ final class d$1
 {
   d$1(String paramString) {}
   
-  public final void bcu()
+  public final void bAi()
   {
-    AppMethodBeat.i(206501);
-    Log.i(this.lrg, "[audioHelperTool] gain");
-    AppMethodBeat.o(206501);
+    AppMethodBeat.i(241944);
+    Log.i(this.oiH, "[audioHelperTool] gain");
+    AppMethodBeat.o(241944);
   }
   
-  public final void bcv()
+  public final void bAj()
   {
-    AppMethodBeat.i(206503);
-    Log.i(this.lrg, "[audioHelperTool] loss");
-    AppMethodBeat.o(206503);
+    AppMethodBeat.i(241947);
+    Log.i(this.oiH, "[audioHelperTool] loss");
+    AppMethodBeat.o(241947);
   }
   
-  public final void bcw()
+  public final void bAk()
   {
-    AppMethodBeat.i(206505);
-    Log.i(this.lrg, "[audioHelperTool] lossTransient");
-    AppMethodBeat.o(206505);
+    AppMethodBeat.i(241949);
+    Log.i(this.oiH, "[audioHelperTool] lossTransient");
+    AppMethodBeat.o(241949);
   }
   
-  public final void bcx()
+  public final void bAl()
   {
-    AppMethodBeat.i(206506);
-    Log.i(this.lrg, "[audioHelperTool] lossTransientCanDuck");
-    AppMethodBeat.o(206506);
+    AppMethodBeat.i(241950);
+    Log.i(this.oiH, "[audioHelperTool] lossTransientCanDuck");
+    AppMethodBeat.o(241950);
   }
 }
 

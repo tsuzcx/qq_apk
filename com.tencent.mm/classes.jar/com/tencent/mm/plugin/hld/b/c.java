@@ -1,51 +1,53 @@
 package com.tencent.mm.plugin.hld.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.protocal.protobuf.bwf;
-import com.tencent.mm.protocal.protobuf.bwg;
-import com.tencent.mm.protocal.protobuf.clq;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.b;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.cli;
+import com.tencent.mm.protocal.protobuf.clj;
+import com.tencent.mm.protocal.protobuf.dby;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/cgi/CgiImeGetImeDictRaw;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetImeDictRawResp;", "rawDictType", "", "id", "", "(ILjava/lang/String;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/cgi/CgiImeGetImeDictRaw;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetImeDictRawResp;", "rawDictType", "", "id", "", "(ILjava/lang/String;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends com.tencent.mm.an.c<bwg>
+  extends b<clj>
 {
-  public static final a Dvm;
+  public static final a JoG;
   
   static
   {
-    AppMethodBeat.i(211642);
-    Dvm = new a((byte)0);
-    AppMethodBeat.o(211642);
+    AppMethodBeat.i(312087);
+    JoG = new a((byte)0);
+    AppMethodBeat.o(312087);
   }
   
   private c(int paramInt)
   {
-    AppMethodBeat.i(211640);
-    d.a locala = new d.a();
-    bwf localbwf = new bwf();
-    Object localObject = new clq();
-    ((clq)localObject).type = paramInt;
-    ((clq)localObject).TsZ = "";
-    localbwf.Tgb = ((clq)localObject);
-    localObject = new bwg();
-    ((bwg)localObject).setBaseResponse(new jh());
-    ((bwg)localObject).getBaseResponse().Tef = new eaf();
-    locala.c((a)localbwf);
-    locala.d((a)localObject);
-    locala.TW("/cgi-bin/mmsprime/getimedictraw");
-    locala.vD(5058);
-    c(locala.bgN());
+    AppMethodBeat.i(312071);
+    com.tencent.mm.am.c.a locala = new com.tencent.mm.am.c.a();
+    cli localcli = new cli();
+    Object localObject = new dby();
+    ((dby)localObject).type = paramInt;
+    ((dby)localObject).aaHk = "";
+    ah localah = ah.aiuX;
+    localcli.aatv = ((dby)localObject);
+    localObject = new clj();
+    ((clj)localObject).setBaseResponse(new kd());
+    ((clj)localObject).getBaseResponse().akjO = new etl();
+    locala.otE = ((a)localcli);
+    locala.otF = ((a)localObject);
+    locala.uri = "/cgi-bin/mmsprime/getimedictraw";
+    locala.funcId = 5058;
+    c(locala.bEF());
     Log.i("WxIme.CgiImeGetImeDictRaw", "rawDictType:" + paramInt + " rawDictId:" + null);
-    AppMethodBeat.o(211640);
+    AppMethodBeat.o(312071);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/cgi/CgiImeGetImeDictRaw$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/cgi/CgiImeGetImeDictRaw$Companion;", "", "()V", "TAG", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

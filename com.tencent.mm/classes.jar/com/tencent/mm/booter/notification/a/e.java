@@ -6,40 +6,39 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.text.format.Time;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.autogen.a.acn;
+import com.tencent.mm.autogen.a.acn.b;
+import com.tencent.mm.bq.a;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.f.a.aaq;
-import com.tencent.mm.f.a.aaq.b;
-import com.tencent.mm.n.b;
-import com.tencent.mm.n.g;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.k.b;
+import com.tencent.mm.k.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMEntryLock;
 import com.tencent.mm.sdk.vendor.MIUI;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class e
 {
-  private static final Set<String> iSF;
-  static final Time iSH;
-  public boolean iSG;
+  private static final Set<String> luC;
+  static final Time luE;
+  private boolean luD;
   
   static
   {
     AppMethodBeat.i(20055);
     HashSet localHashSet = new HashSet();
-    iSF = localHashSet;
+    luC = localHashSet;
     localHashSet.add("readerapp");
-    iSF.add("blogapp");
-    iSF.add("newsapp");
-    iSH = new Time();
+    luC.add("blogapp");
+    luC.add("newsapp");
+    luE = new Time();
     AppMethodBeat.o(20055);
   }
   
-  public static boolean JT(String paramString)
+  public static boolean CA(String paramString)
   {
     AppMethodBeat.i(20044);
     if (MMEntryLock.isLocked("keep_chatting_silent".concat(String.valueOf(paramString))))
@@ -53,11 +52,11 @@ public final class e
     return false;
   }
   
-  public static boolean JU(String paramString)
+  public static boolean CB(String paramString)
   {
     boolean bool1 = true;
     AppMethodBeat.i(20045);
-    boolean bool2 = iSF.contains(paramString);
+    boolean bool2 = luC.contains(paramString);
     if (!bool2) {}
     for (;;)
     {
@@ -68,12 +67,12 @@ public final class e
     }
   }
   
-  public static boolean a(String paramString, ca paramca)
+  public static boolean a(String paramString, cc paramcc)
   {
     boolean bool2 = true;
     AppMethodBeat.i(20049);
     boolean bool1;
-    if ((g.Lk(paramString)) && (!g.p(paramca)))
+    if ((h.DR(paramString)) && (!h.p(paramcc)))
     {
       bool1 = true;
       if (bool1) {
@@ -114,14 +113,14 @@ public final class e
     }
   }
   
-  public static boolean arm()
+  public static boolean aLi()
   {
     AppMethodBeat.i(20046);
-    iSH.setToNow();
-    int i = iSH.hour;
-    int j = iSH.minute;
+    luE.setToNow();
+    int i = luE.hour;
+    int j = luE.minute;
     MMApplicationContext.getContext();
-    if (!b.cL(i, j))
+    if (!b.dB(i, j))
     {
       Log.w("MicroMsg.Notification.Silent.Handle", "no shake & sound notification during background deactive time");
       AppMethodBeat.o(20046);
@@ -131,22 +130,22 @@ public final class e
     return false;
   }
   
-  public static boolean arn()
+  public static boolean aLj()
   {
     AppMethodBeat.i(20047);
-    boolean bool = g.awk();
+    boolean bool = h.aQL();
     Log.i("MicroMsg.Notification.Silent.Handle", "check is Sound Mode: %B", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(20047);
     return bool;
   }
   
-  public static boolean aro()
+  public static boolean aLk()
   {
     bool2 = false;
-    AppMethodBeat.i(292128);
+    AppMethodBeat.i(238932);
     bool1 = bool2;
     NotificationManager localNotificationManager;
-    if (d.qV(28))
+    if (d.rb(28))
     {
       bool1 = bool2;
       if (!MIUI.ifMIUI())
@@ -160,7 +159,7 @@ public final class e
     {
       try
       {
-        bool1 = localNotificationManager.getNotificationChannel(a.hfv()).canBypassDnd();
+        bool1 = localNotificationManager.getNotificationChannel(a.iGp()).canBypassDnd();
         if (bool1) {
           continue;
         }
@@ -172,22 +171,22 @@ public final class e
         bool1 = bool2;
         continue;
       }
-      AppMethodBeat.o(292128);
+      AppMethodBeat.o(238932);
       return bool1;
       bool1 = false;
     }
   }
   
-  public static boolean arp()
+  public static boolean aLl()
   {
     boolean bool2 = true;
     AppMethodBeat.i(20050);
     try
     {
-      aaq localaaq = new aaq();
-      localaaq.fZM.fDn = 2;
-      EventCenter.instance.publish(localaaq);
-      bool1 = localaaq.fZN.calling;
+      acn localacn = new acn();
+      localacn.ifU.hId = 2;
+      localacn.publish();
+      bool1 = localacn.ifV.calling;
       if (!bool1)
       {
         Log.d("MicroMsg.Notification.Silent.Handle", "check is Voip NOT Calling: %B", new Object[] { Boolean.valueOf(bool2) });
@@ -207,11 +206,11 @@ public final class e
     }
   }
   
-  public static boolean arq()
+  public static boolean aLm()
   {
     AppMethodBeat.i(20052);
-    boolean bool = g.awo();
-    int i = arr();
+    boolean bool = h.aQN();
+    int i = aLn();
     if (i == 0) {
       bool = false;
     }
@@ -220,7 +219,7 @@ public final class e
     return bool;
   }
   
-  public static int arr()
+  public static int aLn()
   {
     AppMethodBeat.i(20053);
     int i = ((AudioManager)MMApplicationContext.getContext().getSystemService("audio")).getRingerMode();
@@ -256,9 +255,9 @@ public final class e
   {
     AppMethodBeat.i(20051);
     boolean bool;
-    if (g.rc(paramInt)) {
-      if (g.Lf(paramString)) {
-        bool = g.axa();
+    if (h.rk(paramInt)) {
+      if (h.DM(paramString)) {
+        bool = h.aRA();
       }
     }
     for (;;)
@@ -266,17 +265,49 @@ public final class e
       Log.i("MicroMsg.Notification.Silent.Handle", "check is Voip Need Sound: %B", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(20051);
       return bool;
-      if (g.Lg(paramString)) {
-        bool = g.axb();
+      if (h.DN(paramString)) {
+        bool = h.aRB();
       } else {
         bool = true;
       }
     }
   }
+  
+  public final boolean c(boolean paramBoolean, long paramLong)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(238936);
+    this.luD = false;
+    if (MMEntryLock.isLocked("keep_app_silent"))
+    {
+      this.luD = true;
+      if (this.luD) {
+        break label112;
+      }
+    }
+    label112:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      Log.i("MicroMsg.Notification.Silent.Handle", "check Refresh Keep is NOT Silent: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+      paramBoolean = this.luD;
+      AppMethodBeat.o(238936);
+      return paramBoolean;
+      if (paramLong <= 0L)
+      {
+        this.luD = false;
+        break;
+      }
+      if ((System.currentTimeMillis() <= paramLong) || (System.currentTimeMillis() >= 5000L + paramLong)) {
+        break;
+      }
+      this.luD = paramBoolean;
+      break;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.e
  * JD-Core Version:    0.7.0.1
  */

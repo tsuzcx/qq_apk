@@ -9,102 +9,102 @@ import android.graphics.Point;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitask.ui.a.c;
 import com.tencent.mm.plugin.multitask.ui.e.b;
+import com.tencent.mm.plugin.multitask.ui.uic.c;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.aw;
-import com.tencent.mm.ui.ax;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.ui.bf;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/panel/MultiTaskContainerView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "END_POINT_SIZE", "", "MAX_DISTANCE", "MIN_DISTANCE", "POINT_MARGIN_TOP", "START_POINT_SIZE", "mFillPaint", "Landroid/graphics/Paint;", "mLeftPoint", "Landroid/graphics/Point;", "mRightPoint", "mSlideOffset", "mStrokePaint", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "getLoadingMode", "init", "updateLoadingMode", "mode", "updateSlideOffset", "slideOffset", "Companion", "ui-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/ui/panel/MultiTaskContainerView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "END_POINT_SIZE", "", "MAX_DISTANCE", "MIN_DISTANCE", "POINT_MARGIN_TOP", "START_POINT_SIZE", "mFillPaint", "Landroid/graphics/Paint;", "mLeftPoint", "Landroid/graphics/Point;", "mRightPoint", "mSlideOffset", "mStrokePaint", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "getLoadingMode", "init", "updateLoadingMode", "mode", "updateSlideOffset", "slideOffset", "Companion", "ui-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MultiTaskContainerView
   extends FrameLayout
 {
-  private static int FLC;
-  public static final MultiTaskContainerView.a FLD;
+  public static final MultiTaskContainerView.a LGA;
+  private static int LGI;
   private static int mState;
-  private float FLA;
-  private float FLB;
-  private Point FLv;
-  private Point FLw;
-  private float FLx;
-  private float FLy;
-  private int FLz;
-  private float anK;
-  private final Paint auG;
-  private final Paint auH;
+  private Point LGB;
+  private Point LGC;
+  private float LGD;
+  private float LGE;
+  private int LGF;
+  private float LGG;
+  private float LGH;
+  private float ccq;
+  private final Paint cjd;
+  private final Paint cje;
   
   static
   {
-    AppMethodBeat.i(197308);
-    FLD = new MultiTaskContainerView.a((byte)0);
-    AppMethodBeat.o(197308);
+    AppMethodBeat.i(304539);
+    LGA = new MultiTaskContainerView.a((byte)0);
+    AppMethodBeat.o(304539);
   }
   
   public MultiTaskContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(197302);
-    this.FLv = new Point();
-    this.FLw = new Point();
-    this.auG = new Paint();
-    this.auH = new Paint();
+    AppMethodBeat.i(304520);
+    this.LGB = new Point();
+    this.LGC = new Point();
+    this.cjd = new Paint();
+    this.cje = new Paint();
     init();
-    AppMethodBeat.o(197302);
+    AppMethodBeat.o(304520);
   }
   
   public MultiTaskContainerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(197307);
-    this.FLv = new Point();
-    this.FLw = new Point();
-    this.auG = new Paint();
-    this.auH = new Paint();
+    AppMethodBeat.i(304526);
+    this.LGB = new Point();
+    this.LGC = new Point();
+    this.cjd = new Paint();
+    this.cje = new Paint();
     init();
-    AppMethodBeat.o(197307);
+    AppMethodBeat.o(304526);
   }
   
   private final void init()
   {
-    AppMethodBeat.i(197253);
-    this.FLx = aw.fromDPToPix(getContext(), 4);
-    this.FLy = aw.fromDPToPix(getContext(), 8);
-    this.FLA = (aw.fromDPToPix(getContext(), 5) + this.FLy);
-    this.FLB = (aw.fromDPToPix(getContext(), 20) + this.FLy);
-    this.FLz = (aw.fromDPToPix(getContext(), 48) / 2 + ax.F(MMApplicationContext.getContext(), -1));
-    this.auG.setColor(getResources().getColor(e.b.FIw));
-    this.auG.setStyle(Paint.Style.STROKE);
-    this.auG.setStrokeWidth(aw.fromDPToPix(getContext(), 1));
-    this.auG.setFlags(1);
-    this.auH.setColor(getResources().getColor(e.b.FIw));
-    this.auH.setStyle(Paint.Style.FILL);
-    this.auH.setFlags(1);
-    AppMethodBeat.o(197253);
+    AppMethodBeat.i(304533);
+    this.LGD = bd.fromDPToPix(getContext(), 4);
+    this.LGE = bd.fromDPToPix(getContext(), 8);
+    this.LGG = (bd.fromDPToPix(getContext(), 5) + this.LGE);
+    this.LGH = (bd.fromDPToPix(getContext(), 20) + this.LGE);
+    this.LGF = (bd.fromDPToPix(getContext(), 48) / 2 + bf.I(MMApplicationContext.getContext(), -1));
+    this.cjd.setColor(getResources().getColor(e.b.LDG));
+    this.cjd.setStyle(Paint.Style.STROKE);
+    this.cjd.setStrokeWidth(bd.fromDPToPix(getContext(), 1));
+    this.cjd.setFlags(1);
+    this.cje.setColor(getResources().getColor(e.b.LDG));
+    this.cje.setStyle(Paint.Style.FILL);
+    this.cje.setFlags(1);
+    AppMethodBeat.o(304533);
   }
   
-  public final void Yl(int paramInt)
+  public final void acx(int paramInt)
   {
-    AppMethodBeat.i(197256);
-    FLC = paramInt;
+    AppMethodBeat.i(304550);
+    LGI = paramInt;
     invalidate();
-    AppMethodBeat.o(197256);
+    AppMethodBeat.o(304550);
   }
   
-  public final void bG(float paramFloat)
+  public final void cK(float paramFloat)
   {
-    AppMethodBeat.i(197254);
-    this.anK = paramFloat;
+    AppMethodBeat.i(304547);
+    this.ccq = paramFloat;
     invalidate();
-    AppMethodBeat.o(197254);
+    AppMethodBeat.o(304547);
   }
   
   protected final void dispatchDraw(Canvas paramCanvas)
   {
     int i = 0;
-    AppMethodBeat.i(197295);
-    p.k(paramCanvas, "canvas");
+    AppMethodBeat.i(304569);
+    s.u(paramCanvas, "canvas");
     super.dispatchDraw(paramCanvas);
     mState = 0;
     float f3;
@@ -114,16 +114,16 @@ public final class MultiTaskContainerView
     float f2;
     float f4;
     float f5;
-    if ((FLC == 1) || (FLC == 2))
+    if ((LGI == 1) || (LGI == 2))
     {
       paramCanvas.save();
-      f3 = this.FLx;
+      f3 = this.LGD;
       j = getWidth();
-      localObject = c.FNc;
-      f1 = (j - c.fcy()) * this.anK;
+      localObject = c.LHl;
+      f1 = (j - c.glB()) * this.ccq;
       j = getWidth();
-      localObject = c.FNc;
-      j = j - c.fcy() - (int)f1 / 2;
+      localObject = c.LHl;
+      j = j - c.glB() - (int)f1 / 2;
       f2 = getWidth() * 0.15F;
       f4 = getWidth() * 0.18F;
       f5 = getWidth() * 0.25F;
@@ -136,18 +136,18 @@ public final class MultiTaskContainerView
     }
     for (;;)
     {
-      this.FLv.y = this.FLz;
-      this.FLw.y = this.FLz;
-      this.FLv.x = (j - (int)this.FLA / 2);
-      this.FLw.x = ((int)this.FLA / 2 + j);
+      this.LGB.y = this.LGF;
+      this.LGC.y = this.LGF;
+      this.LGB.x = (j - (int)this.LGG / 2);
+      this.LGC.x = ((int)this.LGG / 2 + j);
       if (mState == 1)
       {
-        f2 = this.FLx;
+        f2 = this.LGD;
         label207:
-        if (FLC != 1) {
+        if (LGI != 1) {
           break label519;
         }
-        localObject = this.auG;
+        localObject = this.cjd;
         if (f1 >= 0.0F) {
           break label495;
         }
@@ -156,10 +156,10 @@ public final class MultiTaskContainerView
       for (;;)
       {
         ((Paint)localObject).setAlpha(i);
-        paramCanvas.drawCircle(this.FLv.x, this.FLv.y, f2 / 2.0F, this.auG);
-        paramCanvas.drawCircle(this.FLw.x, this.FLw.y, f2 / 2.0F, this.auG);
+        paramCanvas.drawCircle(this.LGB.x, this.LGB.y, f2 / 2.0F, this.cjd);
+        paramCanvas.drawCircle(this.LGC.x, this.LGC.y, f2 / 2.0F, this.cjd);
         paramCanvas.restore();
-        AppMethodBeat.o(197295);
+        AppMethodBeat.o(304569);
         return;
         label300:
         if ((f1 >= f2) && (f1 < f4))
@@ -185,16 +185,16 @@ public final class MultiTaskContainerView
         break;
         if (mState == 2)
         {
-          f2 = this.FLx;
+          f2 = this.LGD;
           break label207;
         }
         if (mState == 3)
         {
-          f3 = this.FLx + (this.FLy - this.FLx) * f2;
-          this.FLv.x = (j - (int)((this.FLA + (this.FLB - this.FLA) * f2) / 2.0F));
-          localObject = this.FLw;
-          f4 = this.FLA;
-          ((Point)localObject).x = ((int)((f2 * (this.FLB - this.FLA) + f4) / 2.0F) + j);
+          f3 = this.LGD + (this.LGE - this.LGD) * f2;
+          this.LGB.x = (j - (int)((this.LGG + (this.LGH - this.LGG) * f2) / 2.0F));
+          localObject = this.LGC;
+          f4 = this.LGG;
+          ((Point)localObject).x = ((int)((f2 * (this.LGH - this.LGG) + f4) / 2.0F) + j);
         }
         f2 = f3;
         break label207;
@@ -206,13 +206,13 @@ public final class MultiTaskContainerView
         }
       }
       label519:
-      localObject = this.auH;
+      localObject = this.cje;
       if (f1 < 0.0F) {}
       for (;;)
       {
         ((Paint)localObject).setAlpha(i);
-        paramCanvas.drawCircle(this.FLv.x, this.FLv.y, f2 / 2.0F, this.auH);
-        paramCanvas.drawCircle(this.FLw.x, this.FLw.y, f2 / 2.0F, this.auH);
+        paramCanvas.drawCircle(this.LGB.x, this.LGB.y, f2 / 2.0F, this.cje);
+        paramCanvas.drawCircle(this.LGC.x, this.LGC.y, f2 / 2.0F, this.cje);
         break;
         if (f1 > 1.0F) {
           i = 176;
@@ -228,12 +228,12 @@ public final class MultiTaskContainerView
   
   public final int getLoadingMode()
   {
-    return FLC;
+    return LGI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.panel.MultiTaskContainerView
  * JD-Core Version:    0.7.0.1
  */

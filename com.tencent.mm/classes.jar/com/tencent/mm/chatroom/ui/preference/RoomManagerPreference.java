@@ -6,10 +6,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.chatroom.ui.a.e;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,13 +17,13 @@ import java.util.List;
 public class RoomManagerPreference
   extends Preference
 {
-  private List<as> jaU;
+  private List<au> lCU;
   
   public RoomManagerPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(13014);
-    this.jaU = new LinkedList();
+    this.lCU = new LinkedList();
     AppMethodBeat.o(13014);
   }
   
@@ -31,7 +31,7 @@ public class RoomManagerPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13013);
-    this.jaU = new LinkedList();
+    this.lCU = new LinkedList();
     AppMethodBeat.o(13013);
   }
   
@@ -40,18 +40,18 @@ public class RoomManagerPreference
     AppMethodBeat.i(13015);
     super.onBindView(paramView);
     ((TextView)paramView.findViewById(a.e.title)).setText(getTitle());
-    ImageView localImageView1 = (ImageView)paramView.findViewById(a.e.jcK);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(a.e.jcL);
-    paramView = (ImageView)paramView.findViewById(a.e.jcM);
+    ImageView localImageView1 = (ImageView)paramView.findViewById(a.e.lEQ);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(a.e.lER);
+    paramView = (ImageView)paramView.findViewById(a.e.lES);
     localImageView1.setVisibility(4);
     localImageView2.setVisibility(4);
     paramView.setVisibility(4);
     int i = 0;
-    if (i < this.jaU.size())
+    if (i < this.lCU.size())
     {
       if (i == 0)
       {
-        a.b.a(localImageView1, ((as)this.jaU.get(0)).field_username, 0.15F, false);
+        a.b.a(localImageView1, ((au)this.lCU.get(0)).field_username, 0.15F, false);
         localImageView1.setVisibility(0);
       }
       for (;;)
@@ -60,13 +60,13 @@ public class RoomManagerPreference
         break;
         if (1 == i)
         {
-          a.b.a(localImageView2, ((as)this.jaU.get(1)).field_username, 0.15F, false);
+          a.b.a(localImageView2, ((au)this.lCU.get(1)).field_username, 0.15F, false);
           localImageView2.setVisibility(0);
         }
         else if (2 == i)
         {
           paramView.setVisibility(0);
-          a.b.a(paramView, ((as)this.jaU.get(2)).field_username, 0.15F, false);
+          a.b.a(paramView, ((au)this.lCU.get(2)).field_username, 0.15F, false);
         }
       }
     }

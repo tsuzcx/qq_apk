@@ -7,43 +7,43 @@ import java.util.NoSuchElementException;
 public final class a<E>
   implements Iterable<E>
 {
-  private static final a<Object> abuH;
-  public final E Mx;
-  public final a<E> abuI;
+  private static final a<Object> ajtM;
+  public final a<E> ajtN;
+  public final E bsC;
   public final int size;
   
   static
   {
     AppMethodBeat.i(61423);
-    abuH = new a();
+    ajtM = new a();
     AppMethodBeat.o(61423);
   }
   
   private a()
   {
     this.size = 0;
-    this.Mx = null;
-    this.abuI = null;
+    this.bsC = null;
+    this.ajtN = null;
   }
   
   private a(E paramE, a<E> parama)
   {
     AppMethodBeat.i(61415);
-    this.Mx = paramE;
-    this.abuI = parama;
+    this.bsC = paramE;
+    this.ajtN = parama;
     parama.size += 1;
     AppMethodBeat.o(61415);
   }
   
-  private Iterator<E> aFH(int paramInt)
+  private Iterator<E> aMu(int paramInt)
   {
     AppMethodBeat.i(61418);
-    a locala = new a(aFJ(paramInt));
+    a locala = new a(aMw(paramInt));
     AppMethodBeat.o(61418);
     return locala;
   }
   
-  private a<E> aFJ(int paramInt)
+  private a<E> aMw(int paramInt)
   {
     AppMethodBeat.i(61422);
     Object localObject = this;
@@ -60,34 +60,9 @@ public final class a<E>
         AppMethodBeat.o(61422);
         return localObject;
       }
-      localObject = ((a)localObject).abuI;
+      localObject = ((a)localObject).ajtN;
       paramInt -= 1;
     }
-  }
-  
-  private a<E> fR(Object paramObject)
-  {
-    AppMethodBeat.i(61420);
-    if (this.size == 0)
-    {
-      AppMethodBeat.o(61420);
-      return this;
-    }
-    if (this.Mx.equals(paramObject))
-    {
-      paramObject = this.abuI;
-      AppMethodBeat.o(61420);
-      return paramObject;
-    }
-    paramObject = this.abuI.fR(paramObject);
-    if (paramObject == this.abuI)
-    {
-      AppMethodBeat.o(61420);
-      return this;
-    }
-    paramObject = new a(this.Mx, paramObject);
-    AppMethodBeat.o(61420);
-    return paramObject;
   }
   
   private E get(int paramInt)
@@ -102,7 +77,7 @@ public final class a<E>
     }
     try
     {
-      localObject = aFH(paramInt).next();
+      localObject = aMu(paramInt).next();
       AppMethodBeat.o(61416);
       return localObject;
     }
@@ -114,20 +89,45 @@ public final class a<E>
     }
   }
   
-  public static <E> a<E> iQr()
+  private a<E> it(Object paramObject)
   {
-    return abuH;
+    AppMethodBeat.i(61420);
+    if (this.size == 0)
+    {
+      AppMethodBeat.o(61420);
+      return this;
+    }
+    if (this.bsC.equals(paramObject))
+    {
+      paramObject = this.ajtN;
+      AppMethodBeat.o(61420);
+      return paramObject;
+    }
+    paramObject = this.ajtN.it(paramObject);
+    if (paramObject == this.ajtN)
+    {
+      AppMethodBeat.o(61420);
+      return this;
+    }
+    paramObject = new a(this.bsC, paramObject);
+    AppMethodBeat.o(61420);
+    return paramObject;
   }
   
-  public final a<E> aFI(int paramInt)
+  public static <E> a<E> kBf()
+  {
+    return ajtM;
+  }
+  
+  public final a<E> aMv(int paramInt)
   {
     AppMethodBeat.i(61421);
-    a locala = fR(get(paramInt));
+    a locala = it(get(paramInt));
     AppMethodBeat.o(61421);
     return locala;
   }
   
-  public final a<E> fQ(E paramE)
+  public final a<E> is(E paramE)
   {
     AppMethodBeat.i(61419);
     paramE = new a(paramE, this);
@@ -138,7 +138,7 @@ public final class a<E>
   public final Iterator<E> iterator()
   {
     AppMethodBeat.i(61417);
-    Iterator localIterator = aFH(0);
+    Iterator localIterator = aMu(0);
     AppMethodBeat.o(61417);
     return localIterator;
   }
@@ -146,17 +146,17 @@ public final class a<E>
   static final class a<E>
     implements Iterator<E>
   {
-    private a<E> abuJ;
+    private a<E> ajtO;
     
     public a(a<E> parama)
     {
-      this.abuJ = parama;
+      this.ajtO = parama;
     }
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(61413);
-      if (a.a(this.abuJ) > 0)
+      if (a.a(this.ajtO) > 0)
       {
         AppMethodBeat.o(61413);
         return true;
@@ -167,8 +167,8 @@ public final class a<E>
     
     public final E next()
     {
-      Object localObject = this.abuJ.Mx;
-      this.abuJ = this.abuJ.abuI;
+      Object localObject = this.ajtO.bsC;
+      this.ajtO = this.ajtO.ajtN;
       return localObject;
     }
     
@@ -183,7 +183,7 @@ public final class a<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.c.a
  * JD-Core Version:    0.7.0.1
  */

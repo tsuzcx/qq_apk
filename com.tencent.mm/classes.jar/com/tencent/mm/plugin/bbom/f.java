@@ -14,7 +14,7 @@ public final class f
 {
   public f()
   {
-    super(com.tencent.mm.by.b.bsk("search"));
+    super(com.tencent.mm.br.b.bsb("search"));
     AppMethodBeat.i(22355);
     AppMethodBeat.o(22355);
   }
@@ -22,13 +22,13 @@ public final class f
   public final void parallelsDependency()
   {
     AppMethodBeat.i(22356);
-    a.a(this, c.class).bI(h.ag(n.class));
+    a.a(this, c.class).db(h.az(n.class));
     AppMethodBeat.o(22356);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.f
  * JD-Core Version:    0.7.0.1
  */

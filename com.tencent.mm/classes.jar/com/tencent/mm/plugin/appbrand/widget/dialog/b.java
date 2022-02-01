@@ -8,27 +8,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.e;
 
 public class b
-  extends d
-  implements j
+  extends e
+  implements n
 {
-  private boolean bxO;
-  private boolean bxP;
   private View contentView;
-  private l msa;
-  private DialogInterface.OnCancelListener nbU;
-  private DialogInterface.OnShowListener rrR;
-  private boolean rrT;
-  private DialogInterface.OnDismissListener rrn;
+  private boolean dqR;
+  private boolean dqS;
+  private r plF;
+  private DialogInterface.OnCancelListener qbI;
+  private DialogInterface.OnShowListener uBL;
+  private DialogInterface.OnDismissListener uBy;
+  private boolean uCf;
   
   public b(Context paramContext)
   {
     super(paramContext, (byte)0);
     AppMethodBeat.i(135470);
-    this.bxO = true;
-    this.rrT = false;
+    this.dqR = true;
+    this.uCf = false;
     setContentView(super.getContentView());
     setCanceledOnTouchOutside(false);
     AppMethodBeat.o(135470);
@@ -37,44 +37,54 @@ public class b
   public b(Context paramContext, byte paramByte)
   {
     super(paramContext, (byte)0);
-    this.bxO = true;
-    this.rrT = false;
+    this.dqR = true;
+    this.uCf = false;
   }
   
-  public final void a(l paraml)
+  public final void a(r paramr)
   {
     AppMethodBeat.i(135471);
-    if (this.rrR != null) {
-      this.rrR.onShow(this);
+    if (this.uBL != null) {
+      this.uBL.onShow(this);
     }
-    this.msa = paraml;
+    this.plF = paramr;
     AppMethodBeat.o(135471);
   }
   
-  public final boolean bsB()
+  public final boolean bQg()
   {
     return false;
   }
   
-  public final boolean bsC()
+  public final void bQh()
   {
-    return this.bxP;
+    AppMethodBeat.i(324691);
+    View localView = getContentView();
+    if (localView != null) {
+      com.tencent.mm.plugin.appbrand.widget.a.a.dQ(localView);
+    }
+    AppMethodBeat.o(324691);
+  }
+  
+  public final boolean bQi()
+  {
+    return this.dqS;
   }
   
   public void dismiss()
   {
     AppMethodBeat.i(135478);
-    if (this.rrT)
+    if (this.uCf)
     {
       AppMethodBeat.o(135478);
       return;
     }
-    this.rrT = true;
-    if (this.msa != null)
+    this.uCf = true;
+    if (this.plF != null)
     {
-      this.msa.b(this);
-      if (this.rrn != null) {
-        this.rrn.onDismiss(this);
+      this.plF.c(this);
+      if (this.uBy != null) {
+        this.uBy.onDismiss(this);
       }
     }
     AppMethodBeat.o(135478);
@@ -101,14 +111,14 @@ public class b
   
   public final boolean isCancelable()
   {
-    return this.bxO;
+    return this.dqR;
   }
   
   public final void onCancel()
   {
     AppMethodBeat.i(135477);
-    if (this.nbU != null) {
-      this.nbU.onCancel(this);
+    if (this.qbI != null) {
+      this.qbI.onCancel(this);
     }
     AppMethodBeat.o(135477);
   }
@@ -117,7 +127,7 @@ public class b
   {
     AppMethodBeat.i(135481);
     super.setCancelable(paramBoolean);
-    this.bxO = paramBoolean;
+    this.dqR = paramBoolean;
     AppMethodBeat.o(135481);
   }
   
@@ -125,7 +135,7 @@ public class b
   {
     AppMethodBeat.i(135480);
     super.setCanceledOnTouchOutside(paramBoolean);
-    this.bxP = paramBoolean;
+    this.dqS = paramBoolean;
     AppMethodBeat.o(135480);
   }
   
@@ -161,7 +171,7 @@ public class b
   {
     AppMethodBeat.i(135482);
     super.setOnCancelListener(paramOnCancelListener);
-    this.nbU = paramOnCancelListener;
+    this.qbI = paramOnCancelListener;
     AppMethodBeat.o(135482);
   }
   
@@ -169,7 +179,7 @@ public class b
   {
     AppMethodBeat.i(135479);
     super.setOnDismissListener(paramOnDismissListener);
-    this.rrn = paramOnDismissListener;
+    this.uBy = paramOnDismissListener;
     AppMethodBeat.o(135479);
   }
   
@@ -177,17 +187,17 @@ public class b
   {
     AppMethodBeat.i(135476);
     super.setOnShowListener(paramOnShowListener);
-    this.rrR = paramOnShowListener;
+    this.uBL = paramOnShowListener;
     AppMethodBeat.o(135476);
   }
   
   public void show() {}
   
-  public final void xu(int paramInt) {}
+  public final void xt(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,52 @@
 package com.tencent.mm.plugin.appbrand.jsapi.s;
 
-import android.view.View;
+import com.tencent.mm.plugin.appbrand.jsapi.base.a;
+import com.tencent.mm.plugin.appbrand.jsapi.base.h;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.e;
+import com.tencent.mm.plugin.appbrand.n.o;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
-public abstract interface c<T>
+public abstract class c
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<f>
+  implements h
 {
-  public abstract T currentValue();
+  private a sjA = new a();
   
-  public abstract View getView();
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  {
+    if (BuildInfo.DEBUG) {
+      throw new RuntimeException("Should call 3 params version!");
+    }
+    a(paramf, paramJSONObject, paramInt, paramf.getJsRuntime());
+  }
   
-  public abstract void onAttach(com.tencent.mm.plugin.appbrand.widget.picker.c paramc);
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt, o paramo)
+  {
+    String str = bQs();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(aUD(), str);
+    this.sjA.b(str, paramo);
+    paramf.callback(paramInt, a(a.e.rVt, localHashMap));
+    a(paramf, paramJSONObject, str);
+  }
   
-  public abstract void onDetach(com.tencent.mm.plugin.appbrand.widget.picker.c paramc);
+  public final boolean cpN()
+  {
+    return true;
+  }
   
-  public abstract void onHide(com.tencent.mm.plugin.appbrand.widget.picker.c paramc);
-  
-  public abstract void onShow(com.tencent.mm.plugin.appbrand.widget.picker.c paramc);
+  protected final a ctq()
+  {
+    return this.sjA;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.s.c
  * JD-Core Version:    0.7.0.1
  */

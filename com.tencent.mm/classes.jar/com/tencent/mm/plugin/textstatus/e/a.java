@@ -1,47 +1,48 @@
 package com.tencent.mm.plugin.textstatus.e;
 
-import android.widget.TextView;
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.textstatus.a.r;
-import com.tencent.mm.plugin.textstatus.proto.i;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.textstatus.a.k;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/logic/BaseDetailLoadLogic;", "Lcom/tencent/mm/plugin/textstatus/logic/BaseStatusLoadLogic;", "showParam", "Lcom/tencent/mm/plugin/textstatus/api/StatusShowParam;", "(Lcom/tencent/mm/plugin/textstatus/api/StatusShowParam;)V", "update", "", "username", "", "item", "Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;", "extraParam", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusCardShowExtraParam;", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/jump/TextStatusJumpManager;", "", "()V", "TAG", "", "doJumpDetail", "", "context", "Landroid/content/Context;", "sourceId", "customParts", "Lcom/tencent/mm/plugin/textstatus/api/IStatusCustomParts;", "jumpInfos", "", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "doJumpInner", "customRes", "doJumpSource", "extParam", "Landroid/os/Bundle;", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends c
 {
-  public a(r paramr)
+  public static final a Tlb;
+  
+  static
   {
-    super(paramr);
-    AppMethodBeat.i(235296);
-    AppMethodBeat.o(235296);
+    AppMethodBeat.i(289645);
+    Tlb = new a();
+    AppMethodBeat.o(289645);
   }
   
-  public final boolean b(String paramString, com.tencent.mm.plugin.textstatus.g.e.a parama, i parami)
+  public static boolean Q(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(235294);
-    p.k(paramString, "username");
-    boolean bool = super.b(paramString, parama, parami);
-    paramString = this.MCs;
-    if ((bool) && (paramString != null))
-    {
-      parama = glJ();
-      if (parama != null) {
-        parama.setText((CharSequence)com.tencent.mm.plugin.textstatus.k.c.gnz().d(paramString.glY()));
-      }
-      paramString = glJ();
-      if (paramString != null) {
-        paramString.setVisibility(0);
-      }
+    AppMethodBeat.i(369822);
+    s.u(paramContext, "context");
+    AppMethodBeat.o(369822);
+    return paramBoolean;
+  }
+  
+  public static boolean a(Context paramContext, k paramk, Bundle paramBundle)
+  {
+    AppMethodBeat.i(289638);
+    s.u(paramContext, "context");
+    boolean bool = false;
+    if (paramk != null) {
+      bool = paramk.g(paramContext, paramBundle);
     }
-    AppMethodBeat.o(235294);
+    s.u(paramContext, "context");
+    AppMethodBeat.o(289638);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CustomerScrollView
   extends ScrollView
 {
-  private float YWw;
-  private float YWx;
-  private float YWy;
-  private float YWz;
+  private float agUq;
+  private float agUr;
+  private float agUs;
+  private float agUt;
   
   public CustomerScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,25 +37,25 @@ public class CustomerScrollView
         boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
         AppMethodBeat.o(72898);
         return bool;
-        this.YWx = 0.0F;
-        this.YWw = 0.0F;
-        this.YWy = paramMotionEvent.getX();
-        this.YWz = paramMotionEvent.getY();
+        this.agUr = 0.0F;
+        this.agUq = 0.0F;
+        this.agUs = paramMotionEvent.getX();
+        this.agUt = paramMotionEvent.getY();
       }
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      this.YWw += Math.abs(f1 - this.YWy);
-      this.YWx += Math.abs(f2 - this.YWz);
-      this.YWy = f1;
-      this.YWz = f2;
-    } while (this.YWw <= this.YWx);
+      this.agUq += Math.abs(f1 - this.agUs);
+      this.agUr += Math.abs(f2 - this.agUt);
+      this.agUs = f1;
+      this.agUt = f2;
+    } while (this.agUq <= this.agUr);
     AppMethodBeat.o(72898);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.CustomerScrollView
  * JD-Core Version:    0.7.0.1
  */

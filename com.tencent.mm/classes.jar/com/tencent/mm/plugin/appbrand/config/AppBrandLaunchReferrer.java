@@ -14,20 +14,21 @@ public final class AppBrandLaunchReferrer
   public static final Parcelable.Creator<AppBrandLaunchReferrer> CREATOR;
   public String appId;
   public String businessType;
-  public String fMh;
-  public String fXg;
-  public int nYB;
-  public String nYC;
-  public String nYD;
-  public String nYE;
-  public String nYF;
+  public String hRR;
+  public String idf;
+  public int qYE;
+  public String qYF;
+  public String qYG;
+  public String qYH;
+  public String qYI;
+  public String qYJ;
   public int sourceType;
   public String url;
   
   static
   {
     AppMethodBeat.i(134798);
-    CREATOR = new AppBrandLaunchReferrer.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(134798);
   }
   
@@ -36,24 +37,25 @@ public final class AppBrandLaunchReferrer
   private AppBrandLaunchReferrer(Parcel paramParcel)
   {
     AppMethodBeat.i(134797);
-    j(paramParcel);
+    l(paramParcel);
     AppMethodBeat.o(134797);
   }
   
-  private void j(Parcel paramParcel)
+  private void l(Parcel paramParcel)
   {
     AppMethodBeat.i(134793);
-    this.nYB = paramParcel.readInt();
+    this.qYE = paramParcel.readInt();
     this.appId = paramParcel.readString();
-    this.fMh = paramParcel.readString();
-    this.nYC = paramParcel.readString();
+    this.hRR = paramParcel.readString();
+    this.qYF = paramParcel.readString();
     this.url = paramParcel.readString();
-    this.nYD = paramParcel.readString();
+    this.qYG = paramParcel.readString();
     this.sourceType = paramParcel.readInt();
     this.businessType = paramParcel.readString();
-    this.fXg = paramParcel.readString();
-    this.nYE = paramParcel.readString();
-    this.nYF = paramParcel.readString();
+    this.idf = paramParcel.readString();
+    this.qYH = paramParcel.readString();
+    this.qYI = paramParcel.readString();
+    this.qYJ = paramParcel.readString();
     AppMethodBeat.o(134793);
   }
   
@@ -69,34 +71,37 @@ public final class AppBrandLaunchReferrer
     localParcel.setDataPosition(0);
     paramAppBrandLaunchReferrer.writeToParcel(localParcel, 0);
     localParcel.setDataPosition(0);
-    j(localParcel);
+    l(localParcel);
     localParcel.recycle();
     AppMethodBeat.o(134795);
   }
   
-  public final JSONObject bLk()
+  public final JSONObject ckI()
   {
     AppMethodBeat.i(134796);
     JSONObject localJSONObject2;
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(this.fMh);
+      JSONObject localJSONObject1 = new JSONObject(this.hRR);
       localJSONObject2 = new JSONObject();
       try
       {
         localJSONObject2.put("appId", this.appId);
         localJSONObject2.put("extraData", localJSONObject1);
-        if (((this.nYB == 1) || (this.nYB == 3) || (this.nYB == 2)) && (!Util.isNullOrNil(this.nYC))) {
-          localJSONObject2.put("privateExtraData", new JSONObject(this.nYC));
+        if (((this.qYE == 1) || (this.qYE == 3) || (this.qYE == 2) || (this.qYE == 10)) && (!Util.isNullOrNil(this.qYF))) {
+          localJSONObject2.put("privateExtraData", new JSONObject(this.qYF));
         }
-        if ((this.nYB == 6) && (!Util.isNullOrNil(this.fXg))) {
-          localJSONObject2.put("messageExtraData", new JSONObject(this.fXg));
+        if ((this.qYE == 6) && (!Util.isNullOrNil(this.idf))) {
+          localJSONObject2.put("messageExtraData", new JSONObject(this.idf));
         }
-        if ((this.nYB == 7) && (!Util.isNullOrNil(this.nYE))) {
-          localJSONObject2.put("openapiInvokeData", new JSONObject(this.nYE));
+        if ((this.qYE == 7) && (!Util.isNullOrNil(this.qYH))) {
+          localJSONObject2.put("openapiInvokeData", new JSONObject(this.qYH));
         }
-        if ((this.nYB == 7) && (!Util.isNullOrNil(this.nYF))) {
-          localJSONObject2.put("transitiveData", new JSONObject(this.nYF));
+        if ((this.qYE == 7) && (!Util.isNullOrNil(this.qYI))) {
+          localJSONObject2.put("transitiveData", new JSONObject(this.qYI));
+        }
+        if ((this.qYE == 9) && (!Util.isNullOrNil(this.qYJ))) {
+          localJSONObject2.put("gameLiveInfo", new JSONObject(this.qYJ));
         }
       }
       catch (Exception localException2)
@@ -118,7 +123,7 @@ public final class AppBrandLaunchReferrer
     {
       for (;;)
       {
-        str = this.fMh;
+        str = this.hRR;
       }
     }
     return localJSONObject2;
@@ -132,7 +137,7 @@ public final class AppBrandLaunchReferrer
   public final String toString()
   {
     AppMethodBeat.i(134792);
-    String str = "AppBrandLaunchReferrer{launchScene=" + this.nYB + ", appId='" + this.appId + '\'' + ", extraData='" + this.fMh + '\'' + ", url='" + this.url + '\'' + ", agentId='" + this.nYD + '\'' + ", sourceType='" + this.sourceType + '\'' + ", businessType='" + this.businessType + '\'' + '}';
+    String str = "AppBrandLaunchReferrer{launchScene=" + this.qYE + ", appId='" + this.appId + '\'' + ", extraData='" + this.hRR + '\'' + ", url='" + this.url + '\'' + ", agentId='" + this.qYG + '\'' + ", sourceType='" + this.sourceType + '\'' + ", businessType='" + this.businessType + '\'' + '}';
     AppMethodBeat.o(134792);
     return str;
   }
@@ -140,23 +145,24 @@ public final class AppBrandLaunchReferrer
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134794);
-    paramParcel.writeInt(this.nYB);
+    paramParcel.writeInt(this.qYE);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.fMh);
-    paramParcel.writeString(this.nYC);
+    paramParcel.writeString(this.hRR);
+    paramParcel.writeString(this.qYF);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.nYD);
+    paramParcel.writeString(this.qYG);
     paramParcel.writeInt(this.sourceType);
     paramParcel.writeString(this.businessType);
-    paramParcel.writeString(this.fXg);
-    paramParcel.writeString(this.nYE);
-    paramParcel.writeString(this.nYF);
+    paramParcel.writeString(this.idf);
+    paramParcel.writeString(this.qYH);
+    paramParcel.writeString(this.qYI);
+    paramParcel.writeString(this.qYJ);
     AppMethodBeat.o(134794);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer
  * JD-Core Version:    0.7.0.1
  */

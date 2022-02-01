@@ -13,7 +13,7 @@ final class FaceDetectCameraView$2
   public final void run()
   {
     AppMethodBeat.i(104092);
-    int i = this.wBy - this.wBz;
+    int i = this.zXJ - this.zXK;
     Log.i("MicroMsg.FaceDetectCameraView", "alvinluo restHeight: %d", new Object[] { Integer.valueOf(i) });
     if (i <= 0)
     {
@@ -21,18 +21,18 @@ final class FaceDetectCameraView$2
       return;
     }
     i /= 2;
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.wBA, this.wBz);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(this.wBx.getLayoutParams());
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.zXL, this.zXK);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(this.zXI.getLayoutParams());
     localLayoutParams.setMargins(localMarginLayoutParams.leftMargin, i, localMarginLayoutParams.rightMargin, localMarginLayoutParams.height + i);
     Log.v("MicroMsg.FaceDetectCameraView", "alvinluo margin left: %d, right: %d, top: %d, bottom: %d", new Object[] { Integer.valueOf(localMarginLayoutParams.leftMargin), Integer.valueOf(localMarginLayoutParams.rightMargin), Integer.valueOf(i), Integer.valueOf(i + localMarginLayoutParams.height) });
-    this.wBx.setLayoutParams(localLayoutParams);
-    this.wBx.invalidate();
+    this.zXI.setLayoutParams(localLayoutParams);
+    this.zXI.invalidate();
     AppMethodBeat.o(104092);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceDetectCameraView.2
  * JD-Core Version:    0.7.0.1
  */

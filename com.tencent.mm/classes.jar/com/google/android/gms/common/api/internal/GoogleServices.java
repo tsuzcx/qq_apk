@@ -4,21 +4,16 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.google.android.gms.common.R.string;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.internal.MetadataValueReader;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.StringResourceValueReader;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.concurrent.GuardedBy;
 
 @Deprecated
-@KeepForSdk
 public final class GoogleServices
 {
   private static final Object sLock;
-  @GuardedBy("sLock")
   private static GoogleServices zzku;
   private final String zzkv;
   private final Status zzkw;
@@ -32,8 +27,6 @@ public final class GoogleServices
     AppMethodBeat.o(4501);
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   GoogleServices(Context paramContext)
   {
     AppMethodBeat.i(4492);
@@ -76,8 +69,6 @@ public final class GoogleServices
     AppMethodBeat.o(4492);
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   GoogleServices(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(4493);
@@ -93,7 +84,6 @@ public final class GoogleServices
     }
   }
   
-  @KeepForSdk
   private static GoogleServices checkInitialized(String paramString)
   {
     AppMethodBeat.i(4500);
@@ -111,8 +101,6 @@ public final class GoogleServices
     return paramString;
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   static void clearInstanceForTest()
   {
     synchronized (sLock)
@@ -122,7 +110,6 @@ public final class GoogleServices
     }
   }
   
-  @KeepForSdk
   public static String getGoogleAppId()
   {
     AppMethodBeat.i(4497);
@@ -131,7 +118,6 @@ public final class GoogleServices
     return str;
   }
   
-  @KeepForSdk
   public static Status initialize(Context paramContext)
   {
     AppMethodBeat.i(4496);
@@ -147,7 +133,6 @@ public final class GoogleServices
     }
   }
   
-  @KeepForSdk
   public static Status initialize(Context arg0, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(4494);
@@ -169,7 +154,6 @@ public final class GoogleServices
     }
   }
   
-  @KeepForSdk
   public static boolean isMeasurementEnabled()
   {
     AppMethodBeat.i(4498);
@@ -183,7 +167,6 @@ public final class GoogleServices
     return false;
   }
   
-  @KeepForSdk
   public static boolean isMeasurementExplicitlyDisabled()
   {
     AppMethodBeat.i(4499);
@@ -192,8 +175,6 @@ public final class GoogleServices
     return bool;
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   final Status checkGoogleAppId(String paramString)
   {
     AppMethodBeat.i(4495);
@@ -211,7 +192,7 @@ public final class GoogleServices
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.GoogleServices
  * JD-Core Version:    0.7.0.1
  */

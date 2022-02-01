@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.etl;
-import com.tencent.mm.protocal.protobuf.etm;
+import com.tencent.mm.protocal.protobuf.fow;
+import com.tencent.mm.protocal.protobuf.fox;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ad
-  extends q
+  extends p
   implements m
 {
-  private i jQg;
-  public final d rr;
+  private h mAY;
+  public final c rr;
   
   public ad(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78934);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new etl();
-    ((d.a)localObject).lBV = new etm();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/transid";
-    ((d.a)localObject).funcId = 1142;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (etl)d.b.b(this.rr.lBR);
-    ((etl)localObject).appid = paramString1;
-    ((etl)localObject).openid = paramString2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fow();
+    ((c.a)localObject).otF = new fox();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/transid";
+    ((c.a)localObject).funcId = 1142;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fow)c.b.b(this.rr.otB);
+    ((fow)localObject).appid = paramString1;
+    ((fow)localObject).openid = paramString2;
     AppMethodBeat.o(78934);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(78936);
     Log.i("MicroMsg.NetSceneSendAppMsgToSpecifiedContact", "doScene");
-    this.jQg = parami;
+    this.mAY = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(78936);
     return i;
@@ -56,7 +56,7 @@ public final class ad
   {
     AppMethodBeat.i(78935);
     Log.i("MicroMsg.NetSceneSendAppMsgToSpecifiedContact", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(78935);
   }
 }

@@ -15,31 +15,31 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class s
   extends o
 {
-  private WeakReference<m> fje = null;
+  private WeakReference<m> hnr = null;
   
-  protected final void a(final m paramm, V8Object paramV8Object)
+  protected final void b(final m paramm, V8Object paramV8Object)
   {
-    AppMethodBeat.i(262451);
+    AppMethodBeat.i(238640);
     if (paramm != null) {}
     for (int i = paramm.hashCode();; i = 0)
     {
       Log.i("MicroMsg.V8DirectApiSharedBufferLock", "hy: trigger setup worker %d", new Object[] { Integer.valueOf(i) });
-      this.fje = new WeakReference(paramm);
+      this.hnr = new WeakReference(paramm);
       paramV8Object.registerJavaMethod(new JavaCallback()
       {
         public final Object invoke(V8Object paramAnonymousV8Object, V8Array paramAnonymousV8Array)
         {
-          AppMethodBeat.i(262179);
+          AppMethodBeat.i(238566);
           if ((paramAnonymousV8Array.length() < 2) || (paramAnonymousV8Array.getType(0) != 1) || (paramAnonymousV8Array.getType(1) != 7))
           {
             Log.w("MicroMsg.V8DirectApiSharedBufferLock", "hy: v8 params error");
-            AppMethodBeat.o(262179);
+            AppMethodBeat.o(238566);
             return Integer.valueOf(-1);
           }
           int i = paramAnonymousV8Array.getInteger(0);
           paramAnonymousV8Object = (V8Function)paramAnonymousV8Array.getObject(1);
-          i = s.b.a(s.b.acp(), i, paramAnonymousV8Object, paramm);
-          AppMethodBeat.o(262179);
+          i = s.b.a(s.b.aEp(), i, paramAnonymousV8Object, paramm);
+          AppMethodBeat.o(238566);
           return Integer.valueOf(i);
         }
       }, "lockSharedNativeBuffer");
@@ -47,165 +47,165 @@ public class s
       {
         public final Object invoke(V8Object paramAnonymousV8Object, V8Array paramAnonymousV8Array)
         {
-          AppMethodBeat.i(262301);
+          AppMethodBeat.i(238558);
           if ((paramAnonymousV8Array.length() < 2) || (paramAnonymousV8Array.getType(0) != 1) || (paramAnonymousV8Array.getType(1) != 1))
           {
             Log.w("MicroMsg.V8DirectApiSharedBufferLock", "hy: v8 params error");
-            AppMethodBeat.o(262301);
+            AppMethodBeat.o(238558);
             return null;
           }
           int i = paramAnonymousV8Array.getInteger(0);
           int j = paramAnonymousV8Array.getInteger(1);
-          s.b.a(s.b.acp(), i, j);
-          AppMethodBeat.o(262301);
+          s.b.a(s.b.aEp(), i, j);
+          AppMethodBeat.o(238558);
           return null;
         }
       }, "unlockSharedNativeBuffer");
-      AppMethodBeat.o(262451);
+      AppMethodBeat.o(238640);
       return;
     }
   }
   
   final void cleanup()
   {
-    AppMethodBeat.i(262452);
-    if (this.fje != null) {
-      b.a(b.acp(), (m)this.fje.get());
+    AppMethodBeat.i(238645);
+    if (this.hnr != null) {
+      b.a(b.aEp(), (m)this.hnr.get());
     }
-    AppMethodBeat.o(262452);
+    AppMethodBeat.o(238645);
   }
   
   static final class a
   {
-    volatile m fjg;
-    volatile V8Function fjh;
-    volatile int kh;
+    volatile m hnt;
+    volatile V8Function hnu;
+    volatile int ld;
     
     public a(int paramInt, m paramm, V8Function paramV8Function)
     {
-      this.kh = paramInt;
-      this.fjg = paramm;
-      this.fjh = paramV8Function;
+      this.ld = paramInt;
+      this.hnt = paramm;
+      this.hnu = paramV8Function;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(262325);
-      String str = "LockItem{itemId=" + this.kh + '}';
-      AppMethodBeat.o(262325);
+      AppMethodBeat.i(238657);
+      String str = "LockItem{itemId=" + this.ld + '}';
+      AppMethodBeat.o(238657);
       return str;
     }
   }
   
   static class b
   {
-    private static b fjj;
-    private final ConcurrentHashMap<Integer, ConcurrentLinkedQueue<s.a>> fji;
-    private AtomicInteger fjk;
+    private static b hnw;
+    private final ConcurrentHashMap<Integer, ConcurrentLinkedQueue<s.a>> hnv;
+    private AtomicInteger hnx;
     
     static
     {
-      AppMethodBeat.i(262730);
+      AppMethodBeat.i(238734);
       if (!s.class.desiredAssertionStatus()) {}
       for (boolean bool = true;; bool = false)
       {
         $assertionsDisabled = bool;
-        fjj = null;
-        AppMethodBeat.o(262730);
+        hnw = null;
+        AppMethodBeat.o(238734);
         return;
       }
     }
     
     private b()
     {
-      AppMethodBeat.i(262708);
-      this.fjk = new AtomicInteger(0);
-      this.fji = new ConcurrentHashMap(100);
-      AppMethodBeat.o(262708);
+      AppMethodBeat.i(238666);
+      this.hnx = new AtomicInteger(0);
+      this.hnv = new ConcurrentHashMap(100);
+      AppMethodBeat.o(238666);
     }
     
     private int a(int paramInt, V8Function paramV8Function, m paramm)
     {
       boolean bool = true;
-      AppMethodBeat.i(262711);
+      AppMethodBeat.i(238674);
       ConcurrentLinkedQueue localConcurrentLinkedQueue;
-      synchronized (this.fji)
+      synchronized (this.hnv)
       {
-        if (!this.fji.containsKey(Integer.valueOf(paramInt))) {
+        if (!this.hnv.containsKey(Integer.valueOf(paramInt))) {
           break label162;
         }
-        localConcurrentLinkedQueue = (ConcurrentLinkedQueue)this.fji.get(Integer.valueOf(paramInt));
+        localConcurrentLinkedQueue = (ConcurrentLinkedQueue)this.hnv.get(Integer.valueOf(paramInt));
         if ((!$assertionsDisabled) && (localConcurrentLinkedQueue == null))
         {
           paramV8Function = new AssertionError();
-          AppMethodBeat.o(262711);
+          AppMethodBeat.o(238674);
           throw paramV8Function;
         }
       }
       bool = localConcurrentLinkedQueue.isEmpty();
       for (;;)
       {
-        paramInt = this.fjk.getAndIncrement();
+        paramInt = this.hnx.getAndIncrement();
         paramV8Function = new s.a(paramInt, paramm, paramV8Function);
         localConcurrentLinkedQueue.offer(paramV8Function);
         if (bool) {
-          a(paramV8Function.fjg, paramV8Function.fjh);
+          a(paramV8Function.hnt, paramV8Function.hnu);
         }
         Log.v("MicroMsg.V8DirectApiSharedBufferLock", "hy: request lock %d", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(262711);
+        AppMethodBeat.o(238674);
         return paramInt;
         label162:
         localConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-        this.fji.put(Integer.valueOf(paramInt), localConcurrentLinkedQueue);
+        this.hnv.put(Integer.valueOf(paramInt), localConcurrentLinkedQueue);
       }
     }
     
     private void a(final m paramm, final V8Function paramV8Function)
     {
-      AppMethodBeat.i(262713);
-      paramm.fiy.q(new Runnable()
+      AppMethodBeat.i(238680);
+      paramm.hmL.u(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(262436);
+          AppMethodBeat.i(238661);
           if (!paramV8Function.isReleased())
           {
             Log.d("MicroMsg.V8DirectApiSharedBufferLock", "hy: trigger task call");
-            paramV8Function.call(paramm.acm().getGlobalObject(), null);
+            paramV8Function.call(paramm.aEm().getGlobalObject(), null);
             paramV8Function.release();
-            AppMethodBeat.o(262436);
+            AppMethodBeat.o(238661);
             return;
           }
           Log.w("MicroMsg.V8DirectApiSharedBufferLock", "hy: called a released task");
-          AppMethodBeat.o(262436);
+          AppMethodBeat.o(238661);
         }
       });
-      AppMethodBeat.o(262713);
+      AppMethodBeat.o(238680);
     }
     
-    private static b aco()
+    private static b aEo()
     {
-      AppMethodBeat.i(262706);
-      if (fjj == null) {}
+      AppMethodBeat.i(238660);
+      if (hnw == null) {}
       try
       {
-        if (fjj == null) {
-          fjj = new b();
+        if (hnw == null) {
+          hnw = new b();
         }
-        b localb = fjj;
-        AppMethodBeat.o(262706);
+        b localb = hnw;
+        AppMethodBeat.o(238660);
         return localb;
       }
       finally
       {
-        AppMethodBeat.o(262706);
+        AppMethodBeat.o(238660);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.s
  * JD-Core Version:    0.7.0.1
  */

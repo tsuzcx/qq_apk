@@ -1,22 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|top" android:orientation="horizontal" android:background="@drawable/qa" android:paddingLeft="@dimen/i2" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.widget.SnsAvatarImageView android:layout_gravity="top" android:id="@id/hyy" android:layout_marginTop="10.0dip" android:layout_marginRight="2.0dip" style="@style/gn" />
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/b9w" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="2.0dip" android:layout_weight="1.0">
-            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a92" android:gravity="center|left|top" android:layout_gravity="center|left|top" android:id="@id/hz6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:lineSpacingExtra="0.0dip" />
-            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip">
-                <ImageView android:layout_gravity="center_vertical" android:id="@id/hz4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:id="@id/hz0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" />
-            </LinearLayout>
-            <com.tencent.mm.emoji.view.EmojiStatusView android:id="@id/hyz" android:visibility="gone" android:layout_width="47.0dip" android:layout_height="47.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:scaleType="centerInside" />
-            <TextView android:textSize="12.0dip" android:textColor="@color/a9v" android:layout_gravity="center_vertical" android:id="@id/hz7" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <ImageView android:layout_gravity="center" android:id="@id/i0a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@raw/sns_comment_silence" android:scaleType="center" />
-        <FrameLayout android:id="@id/hz5" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="13.0dip">
-            <com.tencent.mm.ui.MMImageView android:layout_gravity="top" android:id="@id/hz2" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" android:maxHeight="60.0dip" />
-            <ImageView android:layout_gravity="center" android:id="@id/i06" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/shortvideo_play_btn" />
-        </FrameLayout>
-        <TextView android:textSize="12.0dip" android:textColor="@color/a9v" android:gravity="center" android:layout_gravity="top" android:id="@id/hz8" android:background="@color/a93" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="13.0dip" android:maxHeight="60.0dip" android:text="" android:maxLines="3" />
-    </LinearLayout>
-</LinearLayout>
+<CheckedTextView android:textAppearance="?android:textAppearanceMedium" android:textColor="?a54" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@android:id/text1" android:paddingLeft="@dimen/pc" android:paddingRight="?je" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?ut" android:drawableLeft="?android:listChoiceIndicatorMultiple" android:drawablePadding="20.0dip" android:drawableStart="?android:listChoiceIndicatorMultiple" android:paddingStart="@dimen/pc" android:paddingEnd="?je"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

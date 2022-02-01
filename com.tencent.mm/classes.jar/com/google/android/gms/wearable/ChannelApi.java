@@ -4,7 +4,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
-import javax.annotation.Nullable;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 @Deprecated
 public abstract interface ChannelApi
@@ -34,17 +36,19 @@ public abstract interface ChannelApi
     public abstract void onOutputClosed(Channel paramChannel, int paramInt1, int paramInt2);
   }
   
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface CloseReason {}
+  
   @Deprecated
   public static abstract interface OpenChannelResult
     extends Result
   {
-    @Nullable
     public abstract Channel getChannel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.ChannelApi
  * JD-Core Version:    0.7.0.1
  */

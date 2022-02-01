@@ -30,6 +30,7 @@ public abstract interface TbsDownloadConfig$TbsConfigKey
   public static final String KEY_IS_OVERSEA = "is_oversea";
   public static final String KEY_LAST_CHECK = "last_check";
   public static final String KEY_LAST_DOWNLOAD_DECOUPLE_CORE = "last_download_decouple_core";
+  public static final String KEY_LAST_DOWNLOAD_STABLE_CORE_OTHER_CPU = "last_download_stable_core_other_cpu";
   public static final String KEY_LAST_REQUEST_SUCCESS = "last_request_success";
   public static final String KEY_LAST_THIRDAPP_SENDREQUEST_COREVERSION = "last_thirdapp_sendrequest_coreversion";
   public static final String KEY_NEEDDOWNLOAD = "tbs_needdownload";

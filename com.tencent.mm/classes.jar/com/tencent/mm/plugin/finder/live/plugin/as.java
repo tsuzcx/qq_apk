@@ -1,131 +1,46 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Point;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.i;
-import com.tencent.mm.plugin.finder.live.report.m;
-import com.tencent.mm.plugin.finder.live.report.s.bg;
-import com.tencent.mm.plugin.finder.live.view.FinderLiveCommentPostRealNamePanel;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ax;
-import com.tencent.mm.ui.widget.a.g;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
-
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveCommentRealNamePlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Lcom/tencent/mm/plugin/finder/live/view/FinderLiveCommentPostRealNamePanel;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Lcom/tencent/mm/plugin/finder/live/view/FinderLiveCommentPostRealNamePanel;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "realNamePanel", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "show", "realNameUrl", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "plugin-finder_release"})
 public final class as
-  extends d
 {
-  private final com.tencent.mm.live.c.b kCL;
-  private FinderLiveCommentPostRealNamePanel yps;
+  public static String CZA = "wx9e221f7828fa7482";
+  public static int CZB = 1;
+  public static int CZC = 2;
+  public static int CZD = 3;
+  public static int CZE = 4;
+  public static int CZF = 5;
+  public static int CZG = 6;
+  public static int CZH = 7;
+  public static int CZI = 8;
+  public static int CZJ = 9;
+  public static int CZK = 10;
+  public static int CZL = 11;
+  public static int CZM = 12;
+  public static int CZN = 13;
+  public static int CZO = 14;
+  public static int CZP = 15;
+  public static int CZQ = 16;
+  public static int CZR = 17;
+  public static int CZs;
+  public static int CZt;
+  public static int CZu;
+  public static int CZv;
+  public static int CZw;
+  public static int CZx;
+  public static int CZy;
+  public static int CZz;
+  public static int REPORT_ID = 1740;
+  public static String REPORT_TAG = "FinderLiveGameReporter";
   
-  public as(FinderLiveCommentPostRealNamePanel paramFinderLiveCommentPostRealNamePanel, com.tencent.mm.live.c.b paramb)
+  static
   {
-    super((ViewGroup)paramFinderLiveCommentPostRealNamePanel, paramb);
-    AppMethodBeat.i(284975);
-    this.kCL = paramb;
-    this.yps = paramFinderLiveCommentPostRealNamePanel;
-    AppMethodBeat.o(284975);
-  }
-  
-  public final void m(String paramString, kotlin.g.a.b<? super Boolean, x> paramb)
-  {
-    AppMethodBeat.i(284974);
-    p.k(paramString, "realNameUrl");
-    p.k(paramb, "callback");
-    this.yps.setDialogHeight(ax.au(MMApplicationContext.getContext()).y * 0.55D);
-    this.yps.setWebviewForwardCallback((kotlin.g.a.q)new a(this));
-    FinderLiveCommentPostRealNamePanel localFinderLiveCommentPostRealNamePanel = this.yps;
-    paramb = (kotlin.g.a.b)new as.b(paramb);
-    p.k(paramString, "verifyUrl");
-    p.k(paramb, "callback");
-    localFinderLiveCommentPostRealNamePanel.kwF = paramString;
-    localFinderLiveCommentPostRealNamePanel.yTE = paramb;
-    paramString = localFinderLiveCommentPostRealNamePanel.yTG;
-    if (paramString == null) {
-      p.bGy("bottomDialog");
-    }
-    paramString.eik();
-    m.yCt.a(s.bg.yLC);
-    AppMethodBeat.o(284974);
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(284973);
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    FinderLiveCommentPostRealNamePanel localFinderLiveCommentPostRealNamePanel = this.yps;
-    int j = 0;
-    int i = j;
-    if (paramInt1 == 10000) {
-      if (paramIntent == null) {
-        break label217;
-      }
-    }
-    label217:
-    for (paramIntent = paramIntent.getBundleExtra("result_data");; paramIntent = null)
-    {
-      i = j;
-      if (paramInt2 == -1)
-      {
-        i = j;
-        if (paramIntent != null)
-        {
-          String str = paramIntent.getString("go_next", "");
-          paramIntent = paramIntent.getString("result_json");
-          i = j;
-          if (!Util.isNullOrNil(paramIntent))
-          {
-            paramInt1 = new i(paramIntent).getInt("code");
-            Log.i("Finder.FinderMaxSizeLayout", "onActivityResult, nextStep:" + str + ", code:" + paramInt1);
-            i = j;
-            if (p.h(str, "roomlive_verify"))
-            {
-              i = j;
-              if (paramInt1 == 0)
-              {
-                paramIntent = localFinderLiveCommentPostRealNamePanel.yTE;
-                if (paramIntent != null) {
-                  paramIntent.invoke(Boolean.TRUE);
-                }
-                paramIntent = localFinderLiveCommentPostRealNamePanel.yTG;
-                if (paramIntent == null) {
-                  p.bGy("bottomDialog");
-                }
-                paramIntent.bYF();
-                i = 1;
-              }
-            }
-          }
-        }
-      }
-      if (i == 0) {
-        break;
-      }
-      m.yCt.a(s.bg.yLE);
-      AppMethodBeat.o(284973);
-      return;
-    }
-    m.yCt.a(s.bg.yLF);
-    AppMethodBeat.o(284973);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "requestCode", "", "invoke", "(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/Integer;)V"})
-  static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.q<Context, Intent, Integer, x>
-  {
-    a(as paramas)
-    {
-      super();
-    }
+    CZs = 0;
+    CZt = 1;
+    CZu = 10;
+    CZv = 5;
+    CZw = 15;
+    CZx = 11;
+    CZy = 3;
+    CZz = 23423;
   }
 }
 

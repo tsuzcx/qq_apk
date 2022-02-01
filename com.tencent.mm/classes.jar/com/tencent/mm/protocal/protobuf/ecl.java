@@ -1,79 +1,97 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ecl
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String Sas;
-  public String Uhc;
+  public LinkedList<eck> UeP;
+  public String title;
+  
+  public ecl()
+  {
+    AppMethodBeat.i(72543);
+    this.UeP = new LinkedList();
+    AppMethodBeat.o(72543);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117919);
+    AppMethodBeat.i(72544);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Sas != null) {
-        paramVarArgs.f(1, this.Sas);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.title != null) {
+        paramVarArgs.g(1, this.title);
       }
-      if (this.Uhc != null) {
-        paramVarArgs.f(2, this.Uhc);
-      }
-      AppMethodBeat.o(117919);
+      paramVarArgs.e(2, 8, this.UeP);
+      AppMethodBeat.o(72544);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Sas == null) {
-        break label274;
+      if (this.title == null) {
+        break label332;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.g(1, this.Sas) + 0;; paramInt = 0)
+    label332:
+    for (paramInt = i.a.a.b.b.a.h(1, this.title) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.Uhc != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.Uhc);
-      }
-      AppMethodBeat.o(117919);
-      return i;
+      int i = i.a.a.a.c(2, 8, this.UeP);
+      AppMethodBeat.o(72544);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.UeP.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(117919);
+        AppMethodBeat.o(72544);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ecl localecl = (ecl)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(117919);
+          AppMethodBeat.o(72544);
           return -1;
         case 1: 
-          localecl.Sas = locala.abFh.readString();
-          AppMethodBeat.o(117919);
+          localecl.title = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72544);
           return 0;
         }
-        localecl.Uhc = locala.abFh.readString();
-        AppMethodBeat.o(117919);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          eck localeck = new eck();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localeck.parseFrom((byte[])localObject);
+          }
+          localecl.UeP.add(localeck);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(72544);
         return 0;
       }
-      AppMethodBeat.o(117919);
+      AppMethodBeat.o(72544);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ecl
  * JD-Core Version:    0.7.0.1
  */

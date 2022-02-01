@@ -1,24 +1,29 @@
 package com.tencent.mm.bc;
 
-public final class f
-  extends a
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.fk;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+
+public class f
+  extends fk
 {
-  public String lWx;
-  public long lWy;
+  public static IAutoDBItem.MAutoDBInfo info;
   
-  public f()
+  static
   {
-    super(null, null);
+    AppMethodBeat.i(151162);
+    info = fk.aJm();
+    AppMethodBeat.o(151162);
   }
   
-  protected final boolean bcz()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return false;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bc.f
  * JD-Core Version:    0.7.0.1
  */

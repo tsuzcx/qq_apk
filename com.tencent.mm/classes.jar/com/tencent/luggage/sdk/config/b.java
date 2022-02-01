@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
-import com.tencent.mm.plugin.appbrand.config.ab;
+import com.tencent.mm.plugin.appbrand.config.ai;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
 import com.tencent.mm.sdk.storage.MStorageEventData;
@@ -15,24 +15,24 @@ import java.util.Map;
 public class b
   implements MStorage.IOnStorageChange
 {
-  public static b cwL;
-  private static String[] cwO = { "username", "appId", "versionInfo", "appInfo", "smallHeadURL", "nickname" };
-  private final Map<String, AppBrandInitConfigLU> cwM;
-  private final Map<String, String> cwN;
+  public static b eoL;
+  private static String[] eoO = { "username", "appId", "versionInfo", "appInfo", "smallHeadURL", "nickname" };
+  private final Map<String, AppBrandInitConfigLU> eoM;
+  private final Map<String, String> eoN;
   
   protected b()
   {
     AppMethodBeat.i(146685);
-    this.cwM = new a();
-    this.cwN = new a();
+    this.eoM = new a();
+    this.eoN = new a();
     AppMethodBeat.o(146685);
   }
   
-  public static b Qr()
+  public static b aqB()
   {
     try
     {
-      b localb = cwL;
+      b localb = eoL;
       return localb;
     }
     finally
@@ -42,7 +42,7 @@ public class b
     }
   }
   
-  private AppBrandInitConfigLU dS(String paramString)
+  private AppBrandInitConfigLU fc(String paramString)
   {
     AppMethodBeat.i(146688);
     if (Util.isNullOrNil(paramString))
@@ -51,22 +51,22 @@ public class b
       return null;
     }
     Object localObject2;
-    synchronized (this.cwN)
+    synchronized (this.eoN)
     {
-      localObject2 = (String)this.cwN.get(paramString);
+      localObject2 = (String)this.eoN.get(paramString);
       if (Util.isNullOrNil((String)localObject2))
       {
-        ab.bLM();
-        localObject2 = a(ab.e(String.format("%s=?", new Object[] { "username" }), new String[] { paramString }));
+        ai.clk();
+        localObject2 = a(ai.a(null, String.format("%s=?", new Object[] { "username" }), new String[] { paramString }));
         ??? = localObject2;
         if (localObject2 == null) {}
       }
     }
     for (;;)
     {
-      synchronized (this.cwN)
+      synchronized (this.eoN)
       {
-        this.cwN.put(paramString, ((AppBrandInitConfigLU)localObject2).appId);
+        this.eoN.put(paramString, ((AppBrandInitConfigLU)localObject2).appId);
         ??? = localObject2;
         AppMethodBeat.o(146688);
         return ???;
@@ -74,7 +74,7 @@ public class b
         AppMethodBeat.o(146688);
         throw paramString;
       }
-      ??? = dT((String)localObject2);
+      ??? = fd((String)localObject2);
     }
   }
   
@@ -82,7 +82,7 @@ public class b
   {
     try
     {
-      cwL = null;
+      eoL = null;
       return;
     }
     finally
@@ -101,64 +101,65 @@ public class b
       localAppBrandInitConfigLU = new AppBrandInitConfigLU();
       localAppBrandInitConfigLU.username = paramWxaAttributes.field_username;
       localAppBrandInitConfigLU.appId = paramWxaAttributes.field_appId;
-      localAppBrandInitConfigLU.fzM = paramWxaAttributes.field_nickname;
+      localAppBrandInitConfigLU.hEy = paramWxaAttributes.field_nickname;
       localAppBrandInitConfigLU.iconUrl = paramWxaAttributes.field_smallHeadURL;
-      if (paramWxaAttributes.bLF() == null) {
-        break label143;
+      if (paramWxaAttributes.cld() == null) {
+        break label154;
       }
-      localAppBrandInitConfigLU.cwR = paramWxaAttributes.bLF().serviceType;
-      localAppBrandInitConfigLU.originalFlag = paramWxaAttributes.bLF().originalFlag;
-      localAppBrandInitConfigLU.nXX = paramWxaAttributes.bLF().nXX;
-      if (paramWxaAttributes.bLH() == null) {
-        break label171;
+      localAppBrandInitConfigLU.appServiceType = paramWxaAttributes.cld().serviceType;
+      localAppBrandInitConfigLU.originalFlag = paramWxaAttributes.cld().originalFlag;
+      localAppBrandInitConfigLU.qXZ = paramWxaAttributes.cld().qXZ;
+      localAppBrandInitConfigLU.qYa = paramWxaAttributes.cld().qYa;
+      if (paramWxaAttributes.clf() == null) {
+        break label182;
       }
-      localAppBrandInitConfigLU.cwX = paramWxaAttributes.bLH().cwX;
-      localAppBrandInitConfigLU.appVersion = paramWxaAttributes.bLH().appVersion;
-      localAppBrandInitConfigLU.cwY = paramWxaAttributes.bLH();
+      localAppBrandInitConfigLU.eoZ = paramWxaAttributes.clf().eoZ;
+      localAppBrandInitConfigLU.appVersion = paramWxaAttributes.clf().appVersion;
+      localAppBrandInitConfigLU.epa = paramWxaAttributes.clf();
     }
     for (;;)
     {
-      localAppBrandInitConfigLU.cwZ = paramWxaAttributes.field_passThroughInfo;
+      localAppBrandInitConfigLU.epb = paramWxaAttributes.field_passThroughInfo;
       AppMethodBeat.o(146689);
       return localAppBrandInitConfigLU;
-      label143:
+      label154:
       com.tencent.mm.sdk.platformtools.Log.e("Luggage.WXA.AppBrandInitConfigHelper", "assembleConfig username[%s] appId[%s], NULL appInfo", new Object[] { paramWxaAttributes.field_username, paramWxaAttributes.field_appId });
       break;
-      label171:
+      label182:
       com.tencent.mm.sdk.platformtools.Log.e("Luggage.WXA.AppBrandInitConfigHelper", "assembleConfig username[%s] appId[%s], NULL versionInfo", new Object[] { paramWxaAttributes.field_username, paramWxaAttributes.field_appId });
     }
   }
   
   public final void a(String paramString, AppBrandInitConfigLU paramAppBrandInitConfigLU)
   {
-    AppMethodBeat.i(237518);
+    AppMethodBeat.i(220262);
     if ((paramAppBrandInitConfigLU == null) || (Util.isNullOrNil(paramAppBrandInitConfigLU.appId)))
     {
-      AppMethodBeat.o(237518);
+      AppMethodBeat.o(220262);
       return;
     }
     com.tencent.mm.sdk.platformtools.Log.i("Luggage.WXA.AppBrandInitConfigHelper", "stash username:%s, appId:%s, appVersion:%d, stack:%s", new Object[] { paramString, paramAppBrandInitConfigLU.appId, Integer.valueOf(paramAppBrandInitConfigLU.appVersion), android.util.Log.getStackTraceString(new Throwable()) });
-    synchronized (this.cwM)
+    synchronized (this.eoM)
     {
-      this.cwM.put(paramAppBrandInitConfigLU.appId, paramAppBrandInitConfigLU);
+      this.eoM.put(paramAppBrandInitConfigLU.appId, paramAppBrandInitConfigLU);
       if (Util.isNullOrNil(paramString)) {
         break label151;
       }
     }
-    synchronized (this.cwN)
+    synchronized (this.eoN)
     {
-      this.cwN.put(paramString, paramAppBrandInitConfigLU.appId);
-      AppMethodBeat.o(237518);
+      this.eoN.put(paramString, paramAppBrandInitConfigLU.appId);
+      AppMethodBeat.o(220262);
       return;
       paramString = finally;
-      AppMethodBeat.o(237518);
+      AppMethodBeat.o(220262);
       throw paramString;
     }
     label151:
-    AppMethodBeat.o(237518);
+    AppMethodBeat.o(220262);
   }
   
-  public AppBrandInitConfigLU dT(String paramString)
+  public AppBrandInitConfigLU fd(String paramString)
   {
     AppMethodBeat.i(146690);
     if (Util.isNullOrNil(paramString))
@@ -170,14 +171,14 @@ public class b
     for (;;)
     {
       AppBrandInitConfigLU localAppBrandInitConfigLU;
-      synchronized (this.cwM)
+      synchronized (this.eoM)
       {
-        localAppBrandInitConfigLU = (AppBrandInitConfigLU)this.cwM.remove(paramString);
+        localAppBrandInitConfigLU = (AppBrandInitConfigLU)this.eoM.remove(paramString);
         if (localAppBrandInitConfigLU != null) {
           break label128;
         }
-        ab.bLM();
-        localAppBrandInitConfigLU = a(ab.d(paramString, cwO));
+        ai.clk();
+        localAppBrandInitConfigLU = a(ai.e(paramString, eoO));
         if (localAppBrandInitConfigLU == null)
         {
           i = -1;
@@ -195,14 +196,14 @@ public class b
     }
   }
   
-  protected final void dU(String paramString)
+  protected final void fe(String paramString)
   {
-    AppMethodBeat.i(237517);
+    AppMethodBeat.i(220260);
     com.tencent.mm.sdk.platformtools.Log.i("Luggage.WXA.AppBrandInitConfigHelper", "clearByAppId %s", new Object[] { paramString });
-    synchronized (this.cwM)
+    synchronized (this.eoM)
     {
-      this.cwM.remove(paramString);
-      AppMethodBeat.o(237517);
+      this.eoM.remove(paramString);
+      AppMethodBeat.o(220260);
       return;
     }
   }
@@ -218,23 +219,23 @@ public class b
         if (!Util.isNullOrNil(paramMStorageEventData)) {
           try
           {
-            dS(paramMStorageEventData);
+            fc(paramMStorageEventData);
             AppMethodBeat.o(146686);
             return;
           }
           catch (RuntimeException localRuntimeException)
           {
             com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("Luggage.WXA.AppBrandInitConfigHelper", localRuntimeException, "onNotifyChange event[%s] username[%s]", new Object[] { ???, paramMStorageEventData });
-            synchronized (this.cwN)
+            synchronized (this.eoN)
             {
-              paramMStorageEventData = (String)this.cwN.remove(paramMStorageEventData);
+              paramMStorageEventData = (String)this.eoN.remove(paramMStorageEventData);
               if (TextUtils.isEmpty(paramMStorageEventData)) {
                 break label151;
               }
             }
-            synchronized (this.cwM)
+            synchronized (this.eoM)
             {
-              this.cwM.remove(paramMStorageEventData);
+              this.eoM.remove(paramMStorageEventData);
               AppMethodBeat.o(146686);
               return;
               paramMStorageEventData = finally;
@@ -249,9 +250,9 @@ public class b
       return;
     }
     if ("batch".equals(???)) {
-      synchronized (this.cwM)
+      synchronized (this.eoM)
       {
-        this.cwM.clear();
+        this.eoM.clear();
         AppMethodBeat.o(146686);
         return;
       }
@@ -261,7 +262,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.sdk.config.b
  * JD-Core Version:    0.7.0.1
  */

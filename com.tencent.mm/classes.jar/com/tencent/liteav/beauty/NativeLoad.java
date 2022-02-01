@@ -10,10 +10,10 @@ public class NativeLoad
   
   static
   {
-    AppMethodBeat.i(234841);
-    h.f();
+    AppMethodBeat.i(229778);
+    h.d();
     OnLoadBeauty();
-    AppMethodBeat.o(234841);
+    AppMethodBeat.o(229778);
   }
   
   private NativeLoad()
@@ -42,7 +42,7 @@ public class NativeLoad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.NativeLoad
  * JD-Core Version:    0.7.0.1
  */

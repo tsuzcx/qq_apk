@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class SplashActivity
   extends HellActivity
 {
-  private boolean UZH = false;
+  private boolean acAZ = false;
   
-  private void hus()
+  private void iVV()
   {
     AppMethodBeat.i(40662);
-    e locale = i.UZo;
+    e locale = i.acAG;
     new Runnable()
     {
       public final void run()
@@ -27,26 +27,26 @@ public class SplashActivity
         AppMethodBeat.o(40653);
       }
     };
-    if (locale.abA()) {
-      huu();
+    if (locale.aDw()) {
+      iVX();
     }
     AppMethodBeat.o(40662);
   }
   
-  private void huu()
+  private void iVX()
   {
     AppMethodBeat.i(40664);
-    if (this.UZH)
+    if (this.acAZ)
     {
       AppMethodBeat.o(40664);
       return;
     }
-    this.UZH = true;
+    this.acAZ = true;
     if (!isFinishing())
     {
       setResult(-100);
       int i = getIntent().getIntExtra("hashcode", 0);
-      Iterator localIterator = i.UZl.iterator();
+      Iterator localIterator = i.acAD.iterator();
       while (localIterator.hasNext())
       {
         j localj = (j)localIterator.next();
@@ -72,7 +72,7 @@ public class SplashActivity
         public final void run()
         {
           AppMethodBeat.i(40656);
-          i.UZo = null;
+          i.acAG = null;
           AppMethodBeat.o(40656);
         }
       }, 5000L);
@@ -82,12 +82,12 @@ public class SplashActivity
     }
   }
   
-  public final void hut()
+  public final void iVW()
   {
     AppMethodBeat.i(40663);
-    if (i.UZo != null)
+    if (i.acAG != null)
     {
-      if (!i.UZo.a(this, new Runnable()
+      if (!i.acAG.a(this, new Runnable()
       {
         public final void run()
         {
@@ -97,14 +97,14 @@ public class SplashActivity
         }
       }))
       {
-        hus();
+        iVV();
         AppMethodBeat.o(40663);
       }
     }
     else
     {
       i.g("WxSplash.SplashActivity", "permissions delegate is null, call splash finish directly.", new Object[0]);
-      huu();
+      iVX();
     }
     AppMethodBeat.o(40663);
   }
@@ -115,13 +115,13 @@ public class SplashActivity
     super.onCreate(paramBundle);
     i.a(this);
     i.g("WxSplash.SplashActivity", "onCreate", new Object[0]);
-    if (!i.huj())
+    if (!i.iVM())
     {
       i.g("WxSplash.SplashActivity", "no need splash, finish", new Object[0]);
-      hut();
+      iVW();
     }
-    if (i.UZx != null) {
-      i.UZx.q(this);
+    if (i.acAP != null) {
+      i.acAP.s(this);
     }
     AppMethodBeat.o(40657);
   }
@@ -146,8 +146,8 @@ public class SplashActivity
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(40661);
-    if (i.UZo != null) {
-      i.UZo.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    if (i.acAG != null) {
+      i.acAG.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
     }
     AppMethodBeat.o(40661);
   }
@@ -168,7 +168,7 @@ public class SplashActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.splash.SplashActivity
  * JD-Core Version:    0.7.0.1
  */

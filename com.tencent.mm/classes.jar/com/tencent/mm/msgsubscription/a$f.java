@@ -2,12 +2,12 @@ package com.tencent.mm.msgsubscription;
 
 public final class a$f
 {
-  public static final int biz_subscribe_msg_voice_template_accept = 2131758627;
-  public static final int biz_subscribe_msg_voice_template_accept_play_voice = 2131758628;
+  public static final int icons_outlined_bellring_close = 2131690908;
+  public static final int icons_outlined_bellring_shake = 2131690911;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.a.f
  * JD-Core Version:    0.7.0.1
  */

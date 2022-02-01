@@ -3,19 +3,18 @@ package com.tencent.mm.plugin.card.sharecard.model;
 import android.text.TextUtils;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.card.d.l;
+import com.tencent.mm.plugin.card.c.l;
 import com.tencent.mm.plugin.card.sharecard.a.b;
-import com.tencent.mm.protocal.protobuf.ccv;
-import com.tencent.mm.protocal.protobuf.ccw;
+import com.tencent.mm.protocal.protobuf.csh;
+import com.tencent.mm.protocal.protobuf.csi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.ArrayList;
@@ -23,36 +22,36 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class e
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d rr;
-  public LinkedList<String> tqd;
-  public LinkedList<String> tqe;
+  private com.tencent.mm.am.h callback;
+  private final c rr;
+  public LinkedList<String> wuC;
+  public LinkedList<String> wuD;
   
   public e(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(112966);
-    this.tqe = new LinkedList();
-    this.tqd = paramLinkedList;
-    d.a locala = new d.a();
-    locala.lBU = new ccv();
-    locala.lBV = new ccw();
+    this.wuD = new LinkedList();
+    this.wuC = paramLinkedList;
+    c.a locala = new c.a();
+    locala.otE = new csh();
+    locala.otF = new csi();
     locala.uri = "/cgi-bin/micromsg-bin/getsharecardlist";
     locala.funcId = 1132;
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    ((ccv)d.b.b(this.rr.lBR)).RPh = paramLinkedList;
+    this.rr = locala.bEF();
+    ((csh)c.b.b(this.rr.otB)).YMu = paramLinkedList;
     Log.i("MicroMsg.NetSceneGetShareCardList", "card_ids length is " + paramLinkedList.size());
     AppMethodBeat.o(112966);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(112968);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(112968);
     return i;
@@ -74,9 +73,9 @@ public final class e
       AppMethodBeat.o(112967);
       return;
     }
-    params = (ccw)d.c.b(this.rr.lBS);
-    Log.v("MicroMsg.NetSceneGetShareCardList", "json:" + params.tpZ);
-    params = params.tpZ;
+    params = (csi)c.c.b(this.rr.otC);
+    Log.v("MicroMsg.NetSceneGetShareCardList", "json:" + params.wuy);
+    params = params.wuy;
     if (TextUtils.isEmpty(params))
     {
       Log.e("MicroMsg.NetSceneGetShareCardList", "onGYNetEnd fail, resp json_ret is null");
@@ -85,14 +84,14 @@ public final class e
       return;
     }
     long l1 = System.currentTimeMillis();
-    params = com.tencent.mm.plugin.card.d.f.arJ(params);
+    params = com.tencent.mm.plugin.card.c.f.aln(params);
     if (params != null)
     {
-      if (this.tqd != null) {
-        this.tqe.addAll(this.tqd);
+      if (this.wuC != null) {
+        this.wuD.addAll(this.wuC);
       }
       long l2 = System.currentTimeMillis();
-      long l3 = com.tencent.mm.kernel.h.aHG().kcF.beginTransaction(Thread.currentThread().getId());
+      long l3 = com.tencent.mm.kernel.h.baE().mCN.beginTransaction(Thread.currentThread().getId());
       paramInt1 = 0;
       paramArrayOfByte = params.iterator();
       int i = 0;
@@ -104,25 +103,25 @@ public final class e
         if (!l.a((ShareCardInfo)localObject))
         {
           i += 1;
-          this.tqe.remove(((ShareCardInfo)localObject).field_card_id);
+          this.wuD.remove(((ShareCardInfo)localObject).field_card_id);
           paramInt1 = j;
         }
         else
         {
           Log.i("MicroMsg.NetSceneGetShareCardList", "onGYNetEnd update share card count");
-          b.al(MMApplicationContext.getContext(), ((ShareCardInfo)localObject).field_card_tp_id);
+          b.am(MMApplicationContext.getContext(), ((ShareCardInfo)localObject).field_card_tp_id);
           paramInt1 = j;
           if (((ShareCardInfo)localObject).field_status != 0)
           {
-            b.fG(((ShareCardInfo)localObject).field_card_id, ((ShareCardInfo)localObject).field_card_tp_id);
+            b.gf(((ShareCardInfo)localObject).field_card_id, ((ShareCardInfo)localObject).field_card_tp_id);
             paramInt1 = j;
           }
         }
       }
-      com.tencent.mm.kernel.h.aHG().kcF.endTransaction(l3);
+      com.tencent.mm.kernel.h.baE().mCN.endTransaction(l3);
       Log.i("MicroMsg.NetSceneGetShareCardList", "onGYNetEnd do transaction use time %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
       Log.e("MicroMsg.NetSceneGetShareCardList", "onGYNetEnd, deal CardObject %d fail of %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1) });
-      l.cLi();
+      l.doQ();
       if (params.size() > 0)
       {
         paramInt1 = (int)(System.currentTimeMillis() - l1);
@@ -147,7 +146,7 @@ public final class e
         paramArrayOfByte.add(localIDKey1);
         paramArrayOfByte.add(localIDKey2);
         paramArrayOfByte.add(localIDKey3);
-        com.tencent.mm.plugin.report.service.h.IzE.b(paramArrayOfByte, true);
+        com.tencent.mm.plugin.report.service.h.OAn.b(paramArrayOfByte, true);
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

@@ -1,35 +1,34 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.plugin.game.protobuf.bg;
-import com.tencent.mm.plugin.game.protobuf.bt;
-import com.tencent.mm.plugin.game.protobuf.w;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.game.protobuf.bh;
+import com.tencent.mm.plugin.game.protobuf.bu;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public final class ab
   extends x
 {
-  private bt CLi;
+  private bu IFp;
   
   public ab(a parama)
   {
     AppMethodBeat.i(41535);
     if (parama == null)
     {
-      this.CLi = new bt();
+      this.IFp = new bu();
       AppMethodBeat.o(41535);
       return;
     }
-    this.CLi = ((bt)parama);
+    this.IFp = ((bu)parama);
     AppMethodBeat.o(41535);
   }
   
   public ab(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41536);
-    this.CLi = new bt();
+    this.IFp = new bu();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41536);
@@ -37,7 +36,7 @@ public final class ab
     }
     try
     {
-      this.CLi.parseFrom(paramArrayOfByte);
+      this.IFp.parseFrom(paramArrayOfByte);
       AppMethodBeat.o(41536);
       return;
     }
@@ -48,25 +47,25 @@ public final class ab
     }
   }
   
-  public final w eyV()
+  public final com.tencent.mm.plugin.game.protobuf.x fGR()
   {
-    if (this.CLi != null) {
-      return this.CLi.CPY;
+    if (this.IFp != null) {
+      return this.IFp.IKi;
     }
     return null;
   }
   
-  public final bg eyW()
+  public final bh fGS()
   {
-    if (this.CLi != null) {
-      return this.CLi.CPZ;
+    if (this.IFp != null) {
+      return this.IFp.IKj;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ab
  * JD-Core Version:    0.7.0.1
  */

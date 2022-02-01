@@ -1,189 +1,129 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class fm
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public int RJZ;
-  public int RKB;
-  public int RKD;
-  public long RKE;
-  public int RKa;
-  public int RKb;
-  public long RKc;
-  public String content;
-  public int scene;
-  public String session_id;
-  public String title;
-  public int tpK;
-  public String url;
+  public int YGW;
+  public String appid;
+  public int position;
+  public String request_id;
+  public String tNT;
+  public String tNX;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(103199);
+    AppMethodBeat.i(50080);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.username != null) {
+        paramVarArgs.g(1, this.username);
       }
-      if (this.url != null) {
-        paramVarArgs.f(2, this.url);
+      if (this.request_id != null) {
+        paramVarArgs.g(2, this.request_id);
       }
-      if (this.content != null) {
-        paramVarArgs.f(4, this.content);
+      if (this.tNT != null) {
+        paramVarArgs.g(3, this.tNT);
       }
-      paramVarArgs.bm(5, this.RKE);
-      paramVarArgs.aY(6, this.tpK);
-      paramVarArgs.aY(7, this.RKB);
-      if (this.title != null) {
-        paramVarArgs.f(8, this.title);
+      if (this.appid != null) {
+        paramVarArgs.g(4, this.appid);
       }
-      paramVarArgs.aY(9, this.scene);
-      paramVarArgs.aY(10, this.RJZ);
-      paramVarArgs.aY(11, this.RKa);
-      paramVarArgs.aY(12, this.RKb);
-      if (this.session_id != null) {
-        paramVarArgs.f(13, this.session_id);
+      if (this.tNX != null) {
+        paramVarArgs.g(5, this.tNX);
       }
-      paramVarArgs.bm(14, this.RKc);
-      paramVarArgs.aY(15, this.RKD);
-      AppMethodBeat.o(103199);
+      paramVarArgs.bS(6, this.position);
+      paramVarArgs.bS(7, this.YGW);
+      AppMethodBeat.o(50080);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label940;
+      if (this.username == null) {
+        break label546;
       }
     }
-    label940:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label546:
+    for (int i = i.a.a.b.b.a.h(1, this.username) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.url != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.url);
+      if (this.request_id != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.request_id);
       }
       i = paramInt;
-      if (this.content != null) {
-        i = paramInt + g.a.a.b.b.a.g(4, this.content);
+      if (this.tNT != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.tNT);
       }
-      i = i + g.a.a.b.b.a.p(5, this.RKE) + g.a.a.b.b.a.bM(6, this.tpK) + g.a.a.b.b.a.bM(7, this.RKB);
       paramInt = i;
-      if (this.title != null) {
-        paramInt = i + g.a.a.b.b.a.g(8, this.title);
+      if (this.appid != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.appid);
       }
-      i = paramInt + g.a.a.b.b.a.bM(9, this.scene) + g.a.a.b.b.a.bM(10, this.RJZ) + g.a.a.b.b.a.bM(11, this.RKa) + g.a.a.b.b.a.bM(12, this.RKb);
-      paramInt = i;
-      if (this.session_id != null) {
-        paramInt = i + g.a.a.b.b.a.g(13, this.session_id);
+      i = paramInt;
+      if (this.tNX != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.tNX);
       }
-      i = g.a.a.b.b.a.p(14, this.RKc);
-      int j = g.a.a.b.b.a.bM(15, this.RKD);
-      AppMethodBeat.o(103199);
-      return paramInt + i + j;
+      paramInt = i.a.a.b.b.a.cJ(6, this.position);
+      int j = i.a.a.b.b.a.cJ(7, this.YGW);
+      AppMethodBeat.o(50080);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(103199);
+        AppMethodBeat.o(50080);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         fm localfm = (fm)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
-        case 3: 
         default: 
-          AppMethodBeat.o(103199);
+          AppMethodBeat.o(50080);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localfm.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(103199);
+          localfm.username = locala.ajGk.readString();
+          AppMethodBeat.o(50080);
           return 0;
         case 2: 
-          localfm.url = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(103199);
+          localfm.request_id = locala.ajGk.readString();
+          AppMethodBeat.o(50080);
+          return 0;
+        case 3: 
+          localfm.tNT = locala.ajGk.readString();
+          AppMethodBeat.o(50080);
           return 0;
         case 4: 
-          localfm.content = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(103199);
+          localfm.appid = locala.ajGk.readString();
+          AppMethodBeat.o(50080);
           return 0;
         case 5: 
-          localfm.RKE = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(103199);
+          localfm.tNX = locala.ajGk.readString();
+          AppMethodBeat.o(50080);
           return 0;
         case 6: 
-          localfm.tpK = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 7: 
-          localfm.RKB = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 8: 
-          localfm.title = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 9: 
-          localfm.scene = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 10: 
-          localfm.RJZ = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 11: 
-          localfm.RKa = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 12: 
-          localfm.RKb = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 13: 
-          localfm.session_id = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 14: 
-          localfm.RKc = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(103199);
+          localfm.position = locala.ajGk.aar();
+          AppMethodBeat.o(50080);
           return 0;
         }
-        localfm.RKD = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(103199);
+        localfm.YGW = locala.ajGk.aar();
+        AppMethodBeat.o(50080);
         return 0;
       }
-      AppMethodBeat.o(103199);
+      AppMethodBeat.o(50080);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fm
  * JD-Core Version:    0.7.0.1
  */

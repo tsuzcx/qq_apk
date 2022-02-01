@@ -1,172 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 import java.util.LinkedList;
 
 public final class adq
-  extends dyl
+  extends erp
 {
-  public String RMK;
-  public String SpT;
-  public String SpU;
-  public String lVG;
+  public String Vbl;
+  public String ZlW;
+  public int time_stamp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32172);
+    AppMethodBeat.i(72462);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SpT == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DeviceId");
-        AppMethodBeat.o(32172);
-        throw paramVarArgs;
-      }
-      if (this.RMK == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DeviceType");
-        AppMethodBeat.o(32172);
-        throw paramVarArgs;
-      }
-      if (this.SpU == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ClientInfo");
-        AppMethodBeat.o(32172);
-        throw paramVarArgs;
-      }
-      if (this.lVG == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: AppId");
-        AppMethodBeat.o(32172);
-        throw paramVarArgs;
-      }
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.SpT != null) {
-        paramVarArgs.f(2, this.SpT);
+      paramVarArgs.bS(2, this.time_stamp);
+      if (this.ZlW != null) {
+        paramVarArgs.g(3, this.ZlW);
       }
-      if (this.RMK != null) {
-        paramVarArgs.f(3, this.RMK);
+      if (this.Vbl != null) {
+        paramVarArgs.g(100, this.Vbl);
       }
-      if (this.SpU != null) {
-        paramVarArgs.f(4, this.SpU);
-      }
-      if (this.lVG != null) {
-        paramVarArgs.f(5, this.lVG);
-      }
-      AppMethodBeat.o(32172);
+      AppMethodBeat.o(72462);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label739;
+        break label464;
       }
     }
-    label739:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label464:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.time_stamp);
       paramInt = i;
-      if (this.SpT != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.SpT);
+      if (this.ZlW != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.ZlW);
       }
       i = paramInt;
-      if (this.RMK != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.RMK);
+      if (this.Vbl != null) {
+        i = paramInt + i.a.a.b.b.a.h(100, this.Vbl);
       }
-      paramInt = i;
-      if (this.SpU != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.SpU);
-      }
-      i = paramInt;
-      if (this.lVG != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.lVG);
-      }
-      AppMethodBeat.o(32172);
+      AppMethodBeat.o(72462);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.SpT == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: DeviceId");
-          AppMethodBeat.o(32172);
-          throw paramVarArgs;
-        }
-        if (this.RMK == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: DeviceType");
-          AppMethodBeat.o(32172);
-          throw paramVarArgs;
-        }
-        if (this.SpU == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: ClientInfo");
-          AppMethodBeat.o(32172);
-          throw paramVarArgs;
-        }
-        if (this.lVG == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: AppId");
-          AppMethodBeat.o(32172);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32172);
+        AppMethodBeat.o(72462);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         adq localadq = (adq)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32172);
+          AppMethodBeat.o(72462);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localadq.BaseRequest = localjg;
+            localadq.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(32172);
+          AppMethodBeat.o(72462);
           return 0;
         case 2: 
-          localadq.SpT = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(32172);
+          localadq.time_stamp = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(72462);
           return 0;
         case 3: 
-          localadq.RMK = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(32172);
-          return 0;
-        case 4: 
-          localadq.SpU = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(32172);
+          localadq.ZlW = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72462);
           return 0;
         }
-        localadq.lVG = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(32172);
+        localadq.Vbl = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(72462);
         return 0;
       }
-      AppMethodBeat.o(32172);
+      AppMethodBeat.o(72462);
       return -1;
     }
   }

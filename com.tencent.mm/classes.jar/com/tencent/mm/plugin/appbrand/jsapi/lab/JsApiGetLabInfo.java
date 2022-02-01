@@ -6,12 +6,9 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
@@ -22,13 +19,13 @@ public final class JsApiGetLabInfo
   public static final int CTRL_INDEX = 557;
   public static final String NAME = "getLabInfo";
   
-  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46365);
     if (paramJSONObject == null)
     {
       Log.e("MicroMsg.JsApiGetLabInfo", "fail:data is null");
-      parame.j(paramInt, h("fail:invalid data", null));
+      paramf.callback(paramInt, ZP("fail:invalid data"));
       AppMethodBeat.o(46365);
       return;
     }
@@ -36,11 +33,11 @@ public final class JsApiGetLabInfo
     if (Util.isNullOrNil(paramJSONObject))
     {
       Log.e("MicroMsg.JsApiGetLabInfo", "fail:labId is null");
-      parame.j(paramInt, h("fail:invalid data", null));
+      paramf.callback(paramInt, ZP("fail:invalid data"));
       AppMethodBeat.o(46365);
       return;
     }
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramJSONObject), a.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramJSONObject), a.class, new com.tencent.mm.ipcinvoker.f() {});
     AppMethodBeat.o(46365);
   }
   
@@ -49,7 +46,7 @@ public final class JsApiGetLabInfo
   {
     public static final Parcelable.Creator<GetLabInfoResult> CREATOR;
     private boolean enabled;
-    private boolean fYz;
+    private boolean ieB;
     
     static
     {
@@ -60,19 +57,19 @@ public final class JsApiGetLabInfo
     
     public GetLabInfoResult()
     {
-      this.fYz = false;
+      this.ieB = false;
       this.enabled = false;
     }
     
     protected GetLabInfoResult(Parcel paramParcel)
     {
       AppMethodBeat.i(46362);
-      this.fYz = false;
+      this.ieB = false;
       this.enabled = false;
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.fYz = bool1;
+        this.ieB = bool1;
         if (paramParcel.readByte() == 0) {
           break label60;
         }
@@ -97,7 +94,7 @@ public final class JsApiGetLabInfo
     {
       byte b2 = 1;
       AppMethodBeat.i(46361);
-      if (this.fYz)
+      if (this.ieB)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
@@ -123,7 +120,7 @@ public final class JsApiGetLabInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.lab.JsApiGetLabInfo
  * JD-Core Version:    0.7.0.1
  */

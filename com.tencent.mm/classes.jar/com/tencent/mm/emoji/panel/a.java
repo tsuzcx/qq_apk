@@ -6,22 +6,32 @@ import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/TouchToClick;", "Landroid/view/View$OnTouchListener;", "()V", "clickHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "clicked", "", "cancel", "", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/panel/TouchToClick;", "Landroid/view/View$OnTouchListener;", "()V", "clickHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "clicked", "", "cancel", "", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   implements View.OnTouchListener
 {
-  MTimerHandler jLu;
-  private boolean jLv;
+  MTimerHandler mkF;
+  private boolean mkG;
   
-  public final boolean onTouch(final View paramView, MotionEvent paramMotionEvent)
+  private static final boolean a(a parama, View paramView)
+  {
+    AppMethodBeat.i(242345);
+    s.u(parama, "this$0");
+    s.u(paramView, "$v");
+    parama.mkG = true;
+    boolean bool = paramView.performClick();
+    AppMethodBeat.o(242345);
+    return bool;
+  }
+  
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(105625);
-    p.k(paramView, "v");
-    p.k(paramMotionEvent, "event");
+    s.u(paramView, "v");
+    s.u(paramMotionEvent, "event");
     switch (paramMotionEvent.getActionMasked())
     {
     }
@@ -29,38 +39,22 @@ public final class a
     {
       AppMethodBeat.o(105625);
       return true;
-      this.jLv = false;
-      this.jLu = new MTimerHandler((MTimerHandler.CallBack)new a(this, paramView), true);
-      paramView = this.jLu;
+      this.mkG = false;
+      this.mkF = new MTimerHandler(new a..ExternalSyntheticLambda0(this, paramView), true);
+      paramView = this.mkF;
       if (paramView != null)
       {
         paramView.startTimer(ViewConfiguration.getKeyRepeatTimeout(), ViewConfiguration.getKeyRepeatDelay());
         continue;
-        MTimerHandler localMTimerHandler = this.jLu;
+        MTimerHandler localMTimerHandler = this.mkF;
         if (localMTimerHandler != null) {
           localMTimerHandler.stopTimer();
         }
-        this.jLu = null;
-        if ((!this.jLv) && (paramMotionEvent.getActionMasked() == 1)) {
+        this.mkF = null;
+        if ((!this.mkG) && (paramMotionEvent.getActionMasked() == 1)) {
           paramView.performClick();
         }
       }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
-  static final class a
-    implements MTimerHandler.CallBack
-  {
-    a(a parama, View paramView) {}
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(105624);
-      a.a(this.jLw);
-      boolean bool = paramView.performClick();
-      AppMethodBeat.o(105624);
-      return bool;
     }
   }
 }

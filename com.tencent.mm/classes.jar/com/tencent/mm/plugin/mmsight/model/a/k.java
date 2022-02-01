@@ -6,24 +6,24 @@ import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.mmsight.model.j;
 import com.tencent.mm.plugin.mmsight.model.o;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.at.a;
 
 public final class k
 {
-  private static k FbI;
-  public SightParams FbJ;
+  private static k KXr;
+  public SightParams KXs;
   
   static
   {
     AppMethodBeat.i(89505);
-    FbI = new k();
+    KXr = new k();
     AppMethodBeat.o(89505);
   }
   
-  public static boolean No()
+  public static boolean anH()
   {
     AppMethodBeat.i(89504);
-    if (CaptureMMProxy.getInstance().getInt(ar.a.VmY, 0) == 1)
+    if (CaptureMMProxy.getInstance().getInt(at.a.acOt, 0) == 1)
     {
       AppMethodBeat.o(89504);
       return true;
@@ -32,24 +32,24 @@ public final class k
     return false;
   }
   
-  public static k eTI()
+  public static k gcB()
   {
-    return FbI;
+    return KXr;
   }
   
-  public static int eTK()
+  public static int gcC()
   {
-    return j.EZX.videoBitrate;
+    return j.KVJ.videoBitrate;
   }
   
-  public static int eTL()
+  public static int gcD()
   {
-    return j.EZX.laT;
+    return j.KVJ.nFY;
   }
   
-  public static String eTM()
+  public static String gcE()
   {
-    switch (j.EZX.jth)
+    switch (j.KVJ.lWy)
     {
     default: 
       return "";
@@ -63,7 +63,7 @@ public final class k
   {
     AppMethodBeat.i(89503);
     Object localObject = null;
-    switch (j.EZX.jth)
+    switch (j.KVJ.lWy)
     {
     default: 
       paramVideoTransPara = localObject;
@@ -76,11 +76,6 @@ public final class k
       continue;
       paramVideoTransPara = new l(paramVideoTransPara);
     }
-  }
-  
-  public final SightParams eTJ()
-  {
-    return this.FbJ;
   }
 }
 

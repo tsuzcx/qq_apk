@@ -1,45 +1,46 @@
 package com.tencent.mm.plugin.finder.live.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.protocal.protobuf.axe;
-import com.tencent.mm.protocal.protobuf.ayc;
-import kotlin.l;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.protocal.protobuf.ber;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveLuckyMoneySendMsg;", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveBaseMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;)V", "getPayLoadContent", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveLuckyMoneyRecvMsg;", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveBaseMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;)V", "getPayLoadContent", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class y
-  extends g
+  extends h
 {
-  public y(axe paramaxe)
+  public y(bdm parambdm)
   {
-    super(paramaxe);
-    AppMethodBeat.i(276560);
-    AppMethodBeat.o(276560);
+    super(parambdm);
+    AppMethodBeat.i(359451);
+    AppMethodBeat.o(359451);
   }
   
-  public final Object dyn()
+  public final Object ekF()
   {
     byte[] arrayOfByte = null;
-    AppMethodBeat.i(276559);
-    switch (getType())
+    AppMethodBeat.i(359461);
+    if (this.CER.msg_type == 20020)
     {
-    default: 
-      AppMethodBeat.o(276559);
-      return null;
+      ber localber = new ber();
+      b localb = this.CER.ZNY;
+      if (localb == null) {}
+      for (;;)
+      {
+        localber.parseFrom(arrayOfByte);
+        AppMethodBeat.o(359461);
+        return localber;
+        arrayOfByte = localb.toByteArray();
+      }
     }
-    ayc localayc = new ayc();
-    b localb = dyj().SJE;
-    if (localb != null) {
-      arrayOfByte = localb.toByteArray();
-    }
-    localayc.parseFrom(arrayOfByte);
-    AppMethodBeat.o(276559);
-    return localayc;
+    AppMethodBeat.o(359461);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.y
  * JD-Core Version:    0.7.0.1
  */

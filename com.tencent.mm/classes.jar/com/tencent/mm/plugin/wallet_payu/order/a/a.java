@@ -1,56 +1,48 @@
 package com.tencent.mm.plugin.wallet_payu.order.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dki;
-import com.tencent.mm.protocal.protobuf.dkj;
+import com.tencent.mm.protocal.protobuf.ecs;
+import com.tencent.mm.protocal.protobuf.ect;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.w;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class a
   extends w
 {
-  private i callback;
-  public d rr;
+  private h callback;
+  public c rr;
   
   public a(int paramInt)
   {
     AppMethodBeat.i(72056);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dki();
-    ((d.a)localObject).lBV = new dkj();
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/payubatchuserroll";
-    ((d.a)localObject).funcId = 1519;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (dki)d.b.b(this.rr.lBR);
-    ((dki)localObject).CQf = 10;
-    ((dki)localObject).Sat = paramInt;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ecs();
+    ((c.a)localObject).otF = new ect();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/payubatchuserroll";
+    ((c.a)localObject).funcId = 1519;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ecs)c.b.b(this.rr.otB);
+    ((ecs)localObject).IKp = 10;
+    ((ecs)localObject).YYs = paramInt;
     Log.d("MicroMsg.NetScenePayUPayQueryUserRoll", "limit:10,offset:" + paramInt);
     AppMethodBeat.o(72056);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(72058);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(72058);
-    return i;
-  }
-  
-  public final int gNi()
-  {
-    AppMethodBeat.i(192890);
-    int i = ((dkj)d.c.b(this.rr.lBS)).TRK;
-    AppMethodBeat.o(192890);
     return i;
   }
   
@@ -59,13 +51,21 @@ public final class a
     return 1519;
   }
   
+  public final int imx()
+  {
+    AppMethodBeat.i(270829);
+    int i = ((ect)c.c.b(this.rr.otC)).abij;
+    AppMethodBeat.o(270829);
+    return i;
+  }
+  
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(72057);
     Log.w("MicroMsg.NetScenePayUPayQueryUserRoll", "errType = " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      Log.d("MicroMsg.NetScenePayUPayQueryUserRoll", "rr" + ((dkj)d.c.b(((d)params).lBS)).TRK);
+      Log.d("MicroMsg.NetScenePayUPayQueryUserRoll", "rr" + ((ect)c.c.b(((c)params).otC)).abij);
     }
     AppMethodBeat.o(72057);
   }

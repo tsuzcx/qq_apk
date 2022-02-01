@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.appbrand.platform.window;
 
 public abstract class b
 {
-  public void PS() {}
+  public void aqb() {}
   
-  public void bOO() {}
+  public void cpc() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.b
  * JD-Core Version:    0.7.0.1
  */

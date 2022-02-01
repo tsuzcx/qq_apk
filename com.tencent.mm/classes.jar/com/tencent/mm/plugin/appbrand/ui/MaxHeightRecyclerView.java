@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MaxHeightRecyclerView
   extends RecyclerView
 {
-  private int EK;
+  private int bkR;
   
   public MaxHeightRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,14 +23,14 @@ public class MaxHeightRecyclerView
   
   public int getMaxHeight()
   {
-    return this.EK;
+    return this.bkR;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(147711);
-    if (this.EK > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.EK, -2147483648);
+    if (this.bkR > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.bkR, -2147483648);
     }
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(147711);
@@ -39,7 +39,7 @@ public class MaxHeightRecyclerView
   public void setMaxHeight(int paramInt)
   {
     AppMethodBeat.i(147710);
-    this.EK = paramInt;
+    this.bkR = paramInt;
     invalidate();
     requestLayout();
     AppMethodBeat.o(147710);
@@ -47,7 +47,7 @@ public class MaxHeightRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.MaxHeightRecyclerView
  * JD-Core Version:    0.7.0.1
  */

@@ -15,24 +15,24 @@ public class WXEmojiObject
   
   public WXEmojiObject()
   {
-    AppMethodBeat.i(254563);
+    AppMethodBeat.i(242974);
     this.emojiData = null;
     this.emojiPath = null;
-    AppMethodBeat.o(254563);
+    AppMethodBeat.o(242974);
   }
   
   public WXEmojiObject(String paramString)
   {
-    AppMethodBeat.i(254568);
+    AppMethodBeat.i(242985);
     this.emojiPath = paramString;
-    AppMethodBeat.o(254568);
+    AppMethodBeat.o(242985);
   }
   
   public WXEmojiObject(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(254565);
+    AppMethodBeat.i(242979);
     this.emojiData = paramArrayOfByte;
-    AppMethodBeat.o(254565);
+    AppMethodBeat.o(242979);
   }
   
   private int getFileSize(String paramString)

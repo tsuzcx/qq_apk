@@ -12,7 +12,7 @@ public class DummyViewPager
   extends AdLandingViewPager
   implements Serializable
 {
-  protected int Kvj;
+  protected int QTT;
   
   public DummyViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,7 +26,7 @@ public class DummyViewPager
         AppMethodBeat.i(97056);
         super.onPageScrollStateChanged(paramAnonymousInt);
         if (paramAnonymousInt == 0) {
-          DummyViewPager.this.Kvj = DummyViewPager.this.getScrollX();
+          DummyViewPager.this.QTT = DummyViewPager.this.getScrollX();
         }
         AppMethodBeat.o(97056);
       }
@@ -36,7 +36,7 @@ public class DummyViewPager
   
   public int getBaseScrollX()
   {
-    return this.Kvj;
+    return this.QTT;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -46,12 +46,12 @@ public class DummyViewPager
   
   public void setBaseScrollX(int paramInt)
   {
-    this.Kvj = paramInt;
+    this.QTT = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.DummyViewPager
  * JD-Core Version:    0.7.0.1
  */

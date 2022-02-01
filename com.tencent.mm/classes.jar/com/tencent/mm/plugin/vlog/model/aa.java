@@ -1,19 +1,17 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "", "(Ljava/lang/String;I)V", "NONE", "FADE", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "", "(Ljava/lang/String;I)V", "NONE", "FADE", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum aa
 {
   static
   {
     AppMethodBeat.i(110931);
-    aa localaa1 = new aa("NONE", 0);
-    NmL = localaa1;
-    aa localaa2 = new aa("FADE", 1);
-    NmM = localaa2;
-    NmN = new aa[] { localaa1, localaa2 };
+    Uao = new aa("NONE", 0);
+    Uap = new aa("FADE", 1);
+    Uaq = new aa[] { Uao, Uap };
     AppMethodBeat.o(110931);
   }
   

@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
 {
-  private static int aG(Class paramClass)
+  private static int ba(Class paramClass)
   {
     AppMethodBeat.i(131529);
     if (!paramClass.isEnum())
@@ -26,7 +26,7 @@ public final class d
     return j;
   }
   
-  public static Integer cH(Object paramObject)
+  public static Integer ec(Object paramObject)
   {
     AppMethodBeat.i(131531);
     if (paramObject == null)
@@ -60,10 +60,10 @@ public final class d
     return null;
   }
   
-  public static <T extends Enum> T h(String paramString, Class<T> paramClass)
+  public static <T extends Enum> T l(String paramString, Class<T> paramClass)
   {
     AppMethodBeat.i(131530);
-    int i = aG(paramClass);
+    int i = ba(paramClass);
     if ((Util.isNullOrNil(paramString)) || (paramString.length() > i))
     {
       AppMethodBeat.o(131530);
@@ -90,7 +90,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.e.d
  * JD-Core Version:    0.7.0.1
  */

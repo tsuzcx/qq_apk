@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.account.security.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -50,12 +49,12 @@ public class BindSafeDeviceUI
       {
         AppMethodBeat.i(125541);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("bind_scene", 1);
         paramAnonymousView.setClass(BindSafeDeviceUI.this, BindMContactUI.class);
-        MMWizardActivity.aH(BindSafeDeviceUI.this, paramAnonymousView);
+        MMWizardActivity.aQ(BindSafeDeviceUI.this, paramAnonymousView);
         a.a(this, "com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(125541);
       }
@@ -79,7 +78,7 @@ public class BindSafeDeviceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.BindSafeDeviceUI
  * JD-Core Version:    0.7.0.1
  */

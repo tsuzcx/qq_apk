@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.sns.ad.timeline.video.online;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.f.l;
+import com.tencent.mm.plugin.sns.ad.g.l;
 import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
 import com.tencent.mm.plugin.sns.ui.OnlineVideoView;
@@ -14,22 +14,22 @@ import java.lang.ref.WeakReference;
 public final class a
   implements OnlineVideoView.c
 {
-  private Reference<OnlineVideoView> JLh;
-  private Reference<l> JLi;
-  private SnsInfo Jws;
-  private int txS;
+  private SnsInfo PJQ;
+  private Reference<OnlineVideoView> QcQ;
+  private Reference<l> QcR;
+  private int wCo;
   
   public a(SnsInfo paramSnsInfo, OnlineVideoView paramOnlineVideoView, l paraml, int paramInt)
   {
-    AppMethodBeat.i(209751);
-    this.Jws = paramSnsInfo;
-    this.JLh = new WeakReference(paramOnlineVideoView);
-    this.JLi = new WeakReference(paraml);
-    this.txS = paramInt;
-    AppMethodBeat.o(209751);
+    AppMethodBeat.i(310965);
+    this.PJQ = paramSnsInfo;
+    this.QcQ = new WeakReference(paramOnlineVideoView);
+    this.QcR = new WeakReference(paraml);
+    this.wCo = paramInt;
+    AppMethodBeat.o(310965);
   }
   
-  private static String aff(int paramInt)
+  private static String ajO(int paramInt)
   {
     switch (paramInt)
     {
@@ -42,12 +42,12 @@ public final class a
     return "base card time line item";
   }
   
-  public final void AS(int paramInt)
+  public final void Bh(int paramInt)
   {
-    AppMethodBeat.i(209755);
-    SnsInfo localSnsInfo = this.Jws;
-    l locall = (l)this.JLi.get();
-    OnlineVideoView localOnlineVideoView = (OnlineVideoView)this.JLh.get();
+    AppMethodBeat.i(310990);
+    SnsInfo localSnsInfo = this.PJQ;
+    l locall = (l)this.QcR.get();
+    OnlineVideoView localOnlineVideoView = (OnlineVideoView)this.QcQ.get();
     if ((localOnlineVideoView != null) && (localSnsInfo != null) && (locall != null))
     {
       long l1 = paramInt;
@@ -56,80 +56,80 @@ public final class a
       if ((localSnsInfo == null) || (locall == null))
       {
         Log.e("SnsAd.OnlineAdVideoCallback", "doOnNewPlayerPlaying is called , the holder or sns info is null");
-        AppMethodBeat.o(209755);
+        AppMethodBeat.o(310990);
         return;
       }
       long l3 = localSnsInfo.field_snsId;
       if (!localSnsInfo.isAd())
       {
-        Log.w("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerPlaying, the info is not Ad, snsId=" + t.Qu(l3));
-        AppMethodBeat.o(209755);
+        Log.w("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerPlaying, the info is not Ad, snsId=" + t.uA(l3));
+        AppMethodBeat.o(310990);
         return;
       }
-      locall.Qm(localSnsInfo.field_snsId);
-      locall.az(localSnsInfo.field_snsId, l1);
-      if (!locall.Qj(l3))
+      locall.ut(localSnsInfo.field_snsId);
+      locall.bj(localSnsInfo.field_snsId, l1);
+      if (!locall.uq(l3))
       {
         locall.c(l3, Util.currentTicks(), false);
-        locall.e(l3, (int)(l2 / 1000L), false);
-        locall.ay(l3, l3);
-        Log.d("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerPlaying, addPlay3s, snsId=" + t.Qu(l3));
+        locall.f(l3, (int)(l2 / 1000L), false);
+        locall.bi(l3, l3);
+        Log.d("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerPlaying, addPlay3s, snsId=" + t.uA(l3));
       }
     }
-    AppMethodBeat.o(209755);
+    AppMethodBeat.o(310990);
   }
   
   public final void onCompletion()
   {
-    AppMethodBeat.i(209753);
-    Log.d("SnsAd.OnlineAdVideoCallback", "online player onCompletion is called , the item is " + aff(this.txS));
-    SnsInfo localSnsInfo = this.Jws;
-    l locall = (l)this.JLi.get();
-    OnlineVideoView localOnlineVideoView = (OnlineVideoView)this.JLh.get();
+    AppMethodBeat.i(310982);
+    Log.d("SnsAd.OnlineAdVideoCallback", "online player onCompletion is called , the item is " + ajO(this.wCo));
+    SnsInfo localSnsInfo = this.PJQ;
+    l locall = (l)this.QcR.get();
+    OnlineVideoView localOnlineVideoView = (OnlineVideoView)this.QcQ.get();
     long l;
     if ((localSnsInfo != null) && (locall != null))
     {
       l = localSnsInfo.field_snsId;
-      Log.d("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerCompletion is called, snsId=" + t.Qu(l));
+      Log.d("SnsAd.OnlineAdVideoCallback", "doOnlinePlayerCompletion is called, snsId=" + t.uA(l));
       if (localSnsInfo.isAd()) {
         break label148;
       }
-      Log.e("SnsAd.OnlineAdVideoCallback", "online player completion, !isAd,  snsId=" + t.Qu(l));
+      Log.e("SnsAd.OnlineAdVideoCallback", "online player completion, !isAd,  snsId=" + t.uA(l));
     }
     for (;;)
     {
       if (localOnlineVideoView != null) {
-        localOnlineVideoView.bc(0, true);
+        localOnlineVideoView.bJ(0, true);
       }
-      AppMethodBeat.o(209753);
+      AppMethodBeat.o(310982);
       return;
       label148:
-      locall.I(l, false);
+      locall.S(l, false);
     }
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(209757);
+    AppMethodBeat.i(310995);
     Log.d("SnsAd.OnlineAdVideoCallback", "online player paused.");
-    l locall = (l)this.JLi.get();
-    SnsInfo localSnsInfo = this.Jws;
+    l locall = (l)this.QcR.get();
+    SnsInfo localSnsInfo = this.PJQ;
     if ((locall != null) && (localSnsInfo != null)) {
-      locall.Qn(localSnsInfo.field_snsId);
+      locall.uu(localSnsInfo.field_snsId);
     }
-    AppMethodBeat.o(209757);
+    AppMethodBeat.o(310995);
   }
   
   public final void onStart(int paramInt)
   {
-    AppMethodBeat.i(209752);
-    Log.d("SnsAd.OnlineAdVideoCallback", "online player onStart is called, durationSecond=" + paramInt + ", the item is " + aff(this.txS));
-    AppMethodBeat.o(209752);
+    AppMethodBeat.i(310973);
+    Log.d("SnsAd.OnlineAdVideoCallback", "online player onStart is called, durationSecond=" + paramInt + ", the item is " + ajO(this.wCo));
+    AppMethodBeat.o(310973);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.video.online.a
  * JD-Core Version:    0.7.0.1
  */

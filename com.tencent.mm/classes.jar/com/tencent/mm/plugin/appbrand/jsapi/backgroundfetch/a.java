@@ -1,31 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi.backgroundfetch;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
 import org.json.JSONObject;
 
 public final class a
-  extends c
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.jsapi.f>
 {
   public static final int CTRL_INDEX = 654;
   public static final String NAME = "getBackgroundFetchToken";
   
-  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46123);
-    paramJSONObject = parame.getAppId();
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramJSONObject), a.class, new f() {});
+    paramJSONObject = paramf.getAppId();
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramJSONObject), a.class, new com.tencent.mm.ipcinvoker.f() {});
     AppMethodBeat.o(46123);
   }
   
+  @com.tencent.mm.ipcinvoker.c.a
   static class a
-    implements d<IPCString, IPCString>
+    implements com.tencent.mm.ipcinvoker.c<IPCString, IPCString>
   {}
 }
 

@@ -9,282 +9,282 @@ import java.util.Queue;
 
 public final class d
 {
-  private Queue<Float> cLA;
-  private float cLB;
-  private int cLC;
-  private int cLD;
-  private boolean cLE;
-  private a cLF;
-  private a cLG;
-  private final MBRuntime cLt;
-  public SparseLongArray cLu;
-  private a cLv;
-  final b cLw;
-  private int cLx;
-  private int cLy;
-  private float cLz;
+  private final MBRuntime eGN;
+  public SparseLongArray eGO;
+  private a eGP;
+  final b eGQ;
+  private int eGR;
+  private int eGS;
+  private float eGT;
+  private Queue<Float> eGU;
+  private float eGV;
+  private int eGW;
+  private int eGX;
+  private boolean eGY;
+  private a eGZ;
+  private a eHa;
   Handler handler;
   private boolean hasInit;
   
   d(MBRuntime paramMBRuntime)
   {
     AppMethodBeat.i(139930);
-    this.cLu = new SparseLongArray();
-    this.cLv = new a((byte)0);
-    this.cLw = new b((byte)0);
-    this.cLA = new LinkedList();
-    this.cLF = new a();
-    this.cLG = new a();
-    this.cLt = paramMBRuntime;
+    this.eGO = new SparseLongArray();
+    this.eGP = new a((byte)0);
+    this.eGQ = new b((byte)0);
+    this.eGU = new LinkedList();
+    this.eGZ = new a();
+    this.eHa = new a();
+    this.eGN = paramMBRuntime;
     this.hasInit = false;
     AppMethodBeat.o(139930);
   }
   
-  public final float UA()
+  public final void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, boolean paramBoolean)
+  {
+    synchronized (this.eGN)
+    {
+      this.eGR = paramInt1;
+      this.eGT = paramFloat;
+      this.eGS = (paramInt1 * paramInt2);
+      this.eGX = paramInt3;
+      this.eGY = paramBoolean;
+      this.hasInit = true;
+      return;
+    }
+  }
+  
+  final void auY()
+  {
+    AppMethodBeat.i(139931);
+    if (this.handler != null)
+    {
+      this.handler.removeCallbacks(this.eGQ);
+      this.handler = null;
+    }
+    AppMethodBeat.o(139931);
+  }
+  
+  public final a auZ()
+  {
+    synchronized (this.eGN)
+    {
+      a locala = this.eGP;
+      return locala;
+    }
+  }
+  
+  public final a ava()
+  {
+    synchronized (this.eGN)
+    {
+      this.eHa.eHc = this.eGZ.eHc;
+      this.eHa.eHb = this.eGZ.eHb;
+      this.eHa.eHd = this.eGZ.eHd;
+      this.eHa.eHe = this.eGZ.eHe;
+      this.eHa.eGA = (this.eGZ.eGB / this.eGZ.eGC);
+      this.eGZ.eHc = 0;
+      this.eGZ.eHb = 0;
+      this.eGZ.eHd = 0;
+      this.eGZ.eHe = 0;
+      this.eGZ.eGB = 0;
+      this.eGZ.eGC = 0;
+      a locala = this.eHa;
+      return locala;
+    }
+  }
+  
+  public final int avb()
+  {
+    synchronized (this.eGN)
+    {
+      int i = this.eGZ.eHb;
+      return i;
+    }
+  }
+  
+  public final int avc()
+  {
+    synchronized (this.eGN)
+    {
+      int i = this.eGZ.eHc;
+      return i;
+    }
+  }
+  
+  public final float avd()
   {
     AppMethodBeat.i(139933);
-    synchronized (this.cLt)
+    synchronized (this.eGN)
     {
-      if (this.cLt.mNativeInst == 0L)
+      if (this.eGN.mNativeInst == 0L)
       {
         AppMethodBeat.o(139933);
         return -1.0F;
       }
-      float f = this.cLt.nativeGetCurrentFpsVariance(this.cLt.mNativeInst);
+      float f = this.eGN.nativeGetCurrentFpsVariance(this.eGN.mNativeInst);
       AppMethodBeat.o(139933);
       return f;
     }
   }
   
-  public final void UB()
+  public final void ave()
   {
     AppMethodBeat.i(139934);
-    synchronized (this.cLt)
+    synchronized (this.eGN)
     {
-      if (this.cLt.mNativeInst == 0L)
+      if (this.eGN.mNativeInst == 0L)
       {
         AppMethodBeat.o(139934);
         return;
       }
-      this.cLt.nativeSetEnableInspectFpsVariance(this.cLt.mNativeInst, true);
+      this.eGN.nativeSetEnableInspectFpsVariance(this.eGN.mNativeInst, true);
       AppMethodBeat.o(139934);
       return;
     }
   }
   
-  public final int UC()
+  public final int avf()
   {
     AppMethodBeat.i(139935);
-    synchronized (this.cLt)
+    synchronized (this.eGN)
     {
-      if (this.cLt.mNativeInst == 0L)
+      if (this.eGN.mNativeInst == 0L)
       {
         AppMethodBeat.o(139935);
         return -1;
       }
-      int i = this.cLt.nativeGetFrameCounter(this.cLt.mNativeInst);
+      int i = this.eGN.nativeGetFrameCounter(this.eGN.mNativeInst);
       AppMethodBeat.o(139935);
       return i;
     }
   }
   
-  public final int UD()
+  public final int avg()
   {
     AppMethodBeat.i(139936);
-    synchronized (this.cLt)
+    synchronized (this.eGN)
     {
-      if (this.cLt.mNativeInst == 0L)
+      if (this.eGN.mNativeInst == 0L)
       {
         AppMethodBeat.o(139936);
         return 0;
       }
-      int i = this.cLt.nativeGetDrawCalls(this.cLt.mNativeInst);
+      int i = this.eGN.nativeGetDrawCalls(this.eGN.mNativeInst);
       AppMethodBeat.o(139936);
       return i;
     }
   }
   
-  public final int UE()
+  public final int avh()
   {
     AppMethodBeat.i(139937);
-    synchronized (this.cLt)
+    synchronized (this.eGN)
     {
-      if (this.cLt.mNativeInst == 0L)
+      if (this.eGN.mNativeInst == 0L)
       {
         AppMethodBeat.o(139937);
         return 0;
       }
-      int i = this.cLt.nativeGetVertexes(this.cLt.mNativeInst);
+      int i = this.eGN.nativeGetVertexes(this.eGN.mNativeInst);
       AppMethodBeat.o(139937);
       return i;
     }
   }
   
-  public final int UF()
+  public final int avi()
   {
     AppMethodBeat.i(139938);
-    synchronized (this.cLt)
+    synchronized (this.eGN)
     {
-      if (this.cLt.mNativeInst == 0L)
+      if (this.eGN.mNativeInst == 0L)
       {
         AppMethodBeat.o(139938);
         return 0;
       }
-      int i = this.cLt.nativeGetTriangles(this.cLt.mNativeInst);
+      int i = this.eGN.nativeGetTriangles(this.eGN.mNativeInst);
       AppMethodBeat.o(139938);
       return i;
     }
   }
   
-  public final void UG()
+  public final void avj()
   {
     AppMethodBeat.i(139939);
-    synchronized (this.cLt)
+    synchronized (this.eGN)
     {
-      if (this.cLt.mNativeInst == 0L)
+      if (this.eGN.mNativeInst == 0L)
       {
         AppMethodBeat.o(139939);
         return;
       }
-      Object localObject1 = this.cLt.nativeGetCurrentFps(this.cLt.mNativeInst);
-      this.cLv.cLa = localObject1[0];
-      this.cLv.cLb = localObject1[1];
-      this.cLv.cLc = ((int)localObject1[2]);
-      this.cLv.cLd = ((int)localObject1[3]);
-      this.cLv.cLe = localObject1[4];
-      this.cLv.cLf = ((int)localObject1[5]);
-      this.cLv.cLg = ((int)localObject1[6]);
-      localObject1 = this.cLF;
-      ((a)localObject1).cLJ += this.cLv.cLc;
-      localObject1 = this.cLF;
-      ((a)localObject1).cLK += this.cLv.cLd;
-      localObject1 = this.cLF;
-      ((a)localObject1).cLf += this.cLv.cLf;
-      localObject1 = this.cLF;
-      ((a)localObject1).cLg += this.cLv.cLg;
+      Object localObject1 = this.eGN.nativeGetCurrentFps(this.eGN.mNativeInst);
+      this.eGP.eGw = localObject1[0];
+      this.eGP.eGx = localObject1[1];
+      this.eGP.eGy = ((int)localObject1[2]);
+      this.eGP.eGz = ((int)localObject1[3]);
+      this.eGP.eGA = localObject1[4];
+      this.eGP.eGB = ((int)localObject1[5]);
+      this.eGP.eGC = ((int)localObject1[6]);
+      localObject1 = this.eGZ;
+      ((a)localObject1).eHd += this.eGP.eGy;
+      localObject1 = this.eGZ;
+      ((a)localObject1).eHe += this.eGP.eGz;
+      localObject1 = this.eGZ;
+      ((a)localObject1).eGB += this.eGP.eGB;
+      localObject1 = this.eGZ;
+      ((a)localObject1).eGC += this.eGP.eGC;
       if (this.hasInit)
       {
-        this.cLC += 1;
-        if (this.cLC > this.cLD)
+        this.eGW += 1;
+        if (this.eGW > this.eGX)
         {
-          this.cLC = 1;
-          if (this.cLE)
+          this.eGW = 1;
+          if (this.eGY)
           {
-            this.cLF.cLI = 0;
-            this.cLF.cLH = 0;
+            this.eGZ.eHc = 0;
+            this.eGZ.eHb = 0;
           }
         }
-        if (this.cLv.cLa < this.cLz)
+        if (this.eGP.eGw < this.eGT)
         {
-          localObject1 = this.cLF;
-          ((a)localObject1).cLI += 1;
+          localObject1 = this.eGZ;
+          ((a)localObject1).eHc += 1;
         }
-        if ((this.cLA.size() >= this.cLx) && (this.cLx > 0))
+        if ((this.eGU.size() >= this.eGR) && (this.eGR > 0))
         {
-          if (this.cLv.cLa * this.cLx + this.cLy < this.cLB)
+          if (this.eGP.eGw * this.eGR + this.eGS < this.eGV)
           {
-            localObject1 = this.cLF;
-            ((a)localObject1).cLH += 1;
+            localObject1 = this.eGZ;
+            ((a)localObject1).eHb += 1;
           }
-          this.cLB -= ((Float)this.cLA.remove()).floatValue();
+          this.eGV -= ((Float)this.eGU.remove()).floatValue();
         }
-        this.cLA.add(Float.valueOf(this.cLv.cLa));
-        this.cLB += this.cLv.cLa;
+        this.eGU.add(Float.valueOf(this.eGP.eGw));
+        this.eGV += this.eGP.eGw;
       }
       AppMethodBeat.o(139939);
       return;
     }
   }
   
-  final void Uv()
-  {
-    AppMethodBeat.i(139931);
-    if (this.handler != null)
-    {
-      this.handler.removeCallbacks(this.cLw);
-      this.handler = null;
-    }
-    AppMethodBeat.o(139931);
-  }
-  
-  public final a Uw()
-  {
-    synchronized (this.cLt)
-    {
-      a locala = this.cLv;
-      return locala;
-    }
-  }
-  
-  public final a Ux()
-  {
-    synchronized (this.cLt)
-    {
-      this.cLG.cLI = this.cLF.cLI;
-      this.cLG.cLH = this.cLF.cLH;
-      this.cLG.cLJ = this.cLF.cLJ;
-      this.cLG.cLK = this.cLF.cLK;
-      this.cLG.cLe = (this.cLF.cLf / this.cLF.cLg);
-      this.cLF.cLI = 0;
-      this.cLF.cLH = 0;
-      this.cLF.cLJ = 0;
-      this.cLF.cLK = 0;
-      this.cLF.cLf = 0;
-      this.cLF.cLg = 0;
-      a locala = this.cLG;
-      return locala;
-    }
-  }
-  
-  public final int Uy()
-  {
-    synchronized (this.cLt)
-    {
-      int i = this.cLF.cLH;
-      return i;
-    }
-  }
-  
-  public final int Uz()
-  {
-    synchronized (this.cLt)
-    {
-      int i = this.cLF.cLI;
-      return i;
-    }
-  }
-  
-  public final void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, boolean paramBoolean)
-  {
-    synchronized (this.cLt)
-    {
-      this.cLx = paramInt1;
-      this.cLz = paramFloat;
-      this.cLy = (paramInt1 * paramInt2);
-      this.cLD = paramInt3;
-      this.cLE = paramBoolean;
-      this.hasInit = true;
-      return;
-    }
-  }
-  
-  public final float jl(int paramInt)
+  public final float mO(int paramInt)
   {
     AppMethodBeat.i(139932);
-    float f = (UC() - paramInt) * 1000.0F / (float)i.ticksToNow(this.cLu.get(paramInt));
+    float f = (avf() - paramInt) * 1000.0F / (float)i.ticksToNow(this.eGO.get(paramInt));
     AppMethodBeat.o(139932);
     return f;
   }
   
   public final class a
   {
-    public int cLH;
-    public int cLI;
-    public int cLJ;
-    public int cLK;
-    public float cLe;
-    int cLf;
-    int cLg;
+    public float eGA;
+    int eGB;
+    int eGC;
+    public int eHb;
+    public int eHc;
+    public int eHd;
+    public int eHe;
     
     public a() {}
   }
@@ -297,15 +297,18 @@ public final class d
     public final void run()
     {
       AppMethodBeat.i(139929);
-      d.this.UG();
-      d.this.handler.postDelayed(d.this.cLw, 1000L);
+      d.this.avj();
+      Handler localHandler = d.this.handler;
+      if (localHandler != null) {
+        localHandler.postDelayed(d.this.eGQ, 1000L);
+      }
       AppMethodBeat.o(139929);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.d
  * JD-Core Version:    0.7.0.1
  */

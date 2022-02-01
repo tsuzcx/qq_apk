@@ -3,9 +3,6 @@ package com.tencent.mm.plugin.webview.ui.tools.browser;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
@@ -13,527 +10,550 @@ import android.os.Parcelable;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController;", "", "uiModel", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/model/BrowserChooseUIModel;", "(Lcom/tencent/mm/plugin/webview/ui/tools/browser/model/BrowserChooseUIModel;)V", "browserChooseDialogClickListener", "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserChooseDialogClickListener$1", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserChooseDialogClickListener$1;", "browserSettingDialogClickListener", "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserSettingDialogClickListener$1", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserSettingDialogClickListener$1;", "defaultBrowserIndex", "", "mBrowserChooseDialog", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialog;", "mBrowserCount", "mBrowserList", "", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "mBrowserSettingDialog", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserSettingDialog;", "mSessionId", "", "cancelChooseDialog", "", "action", "cancelSettingDialog", "finishUI", "resultCode", "data", "Landroid/content/Intent;", "initBrowserList", "onCreate", "showBrowserChooseDialog", "showBrowserChooseDialogInner", "showSettingDialog", "switchToChooseDialog", "Companion", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController;", "", "uiModel", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/model/BrowserChooseUIModel;", "(Lcom/tencent/mm/plugin/webview/ui/tools/browser/model/BrowserChooseUIModel;)V", "browserChooseDialogClickListener", "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserChooseDialogClickListener$1", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserChooseDialogClickListener$1;", "browserSettingDialogClickListener", "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserSettingDialogClickListener$1", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserSettingDialogClickListener$1;", "defaultBrowserIndex", "", "mBrowserChooseDialog", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialog;", "mBrowserCount", "mBrowserList", "", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "mBrowserSettingDialog", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserSettingDialog;", "mSessionId", "", "cancelChooseDialog", "", "action", "cancelSettingDialog", "finishUI", "resultCode", "data", "Landroid/content/Intent;", "initBrowserList", "onCreate", "showBrowserChooseDialog", "showBrowserChooseDialogInner", "showSettingDialog", "switchToChooseDialog", "Companion", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a QiI;
-  final List<f> QiA;
-  int QiB;
-  int QiC;
-  private com.tencent.mm.plugin.webview.ui.tools.browser.view.b QiD;
-  private com.tencent.mm.plugin.webview.ui.tools.browser.view.c QiE;
-  private final b QiF;
-  private final c QiG;
-  final com.tencent.mm.plugin.webview.ui.tools.browser.model.a QiH;
+  public static final a XaE;
+  final com.tencent.mm.plugin.webview.ui.tools.browser.model.a XaF;
+  final List<f> XaG;
+  int XaH;
+  int XaI;
+  private com.tencent.mm.plugin.webview.ui.tools.browser.view.b XaJ;
+  private com.tencent.mm.plugin.webview.ui.tools.browser.view.c XaK;
+  private final b XaL;
+  private final c XaM;
   long mSessionId;
   
   static
   {
-    AppMethodBeat.i(255755);
-    QiI = new a((byte)0);
-    AppMethodBeat.o(255755);
+    AppMethodBeat.i(296652);
+    XaE = new a((byte)0);
+    AppMethodBeat.o(296652);
   }
   
   public a(com.tencent.mm.plugin.webview.ui.tools.browser.model.a parama)
   {
-    AppMethodBeat.i(255754);
-    this.QiH = parama;
-    this.QiA = ((List)new ArrayList());
-    this.QiC = -1;
-    this.QiF = new b(this);
-    this.QiG = new c(this);
-    AppMethodBeat.o(255754);
+    AppMethodBeat.i(296543);
+    this.XaF = parama;
+    this.XaG = ((List)new ArrayList());
+    this.XaI = -1;
+    this.XaL = new b(this);
+    this.XaM = new c(this);
+    AppMethodBeat.o(296543);
   }
   
-  final void gZG()
+  private static final void a(a parama)
   {
-    AppMethodBeat.i(255749);
-    Log.i("MicroMsg.BrowserChooseController", "alvinluo showBrowserChooseDialog");
-    com.tencent.mm.plugin.webview.ui.tools.browser.view.b localb = new com.tencent.mm.plugin.webview.ui.tools.browser.view.b(this.QiH.getUIContext());
-    localb.setOnKeyListener((DialogInterface.OnKeyListener)new d(localb, this));
-    localb.setOnCancelListener((DialogInterface.OnCancelListener)new e(this));
-    localb.Qjk = ((com.tencent.mm.plugin.webview.ui.tools.browser.listener.a)this.QiF);
-    List localList = this.QiA;
-    p.k(localList, "list");
-    localb.QiA = localList;
-    this.QiD = localb;
-    this.QiH.e((Dialog)this.QiD);
-    AppMethodBeat.o(255749);
+    AppMethodBeat.i(296593);
+    s.u(parama, "this$0");
+    parama.XaF.e((Dialog)parama.XaK);
+    c.B(parama.mSessionId, 1, parama.XaH);
+    AppMethodBeat.o(296593);
   }
   
-  final void r(int paramInt, Intent paramIntent)
+  private static final void a(a parama, DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(296573);
+    s.u(parama, "this$0");
+    parama.izJ();
+    c.B(parama.mSessionId, 5, parama.XaH);
+    AppMethodBeat.o(296573);
+  }
+  
+  private static final boolean a(com.tencent.mm.plugin.webview.ui.tools.browser.view.b paramb, a parama, DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(296605);
+    s.u(paramb, "$this_apply");
+    s.u(parama, "this$0");
+    StringBuilder localStringBuilder = new StringBuilder("alvinluo browserChooseDialog keyCode: ").append(paramInt).append(", event: ");
+    if (paramKeyEvent == null) {}
+    for (paramKeyEvent = null;; paramKeyEvent = Integer.valueOf(paramKeyEvent.getAction()))
+    {
+      Log.i("MicroMsg.BrowserChooseController", paramKeyEvent);
+      if (paramInt != 4) {
+        break;
+      }
+      paramb.setOnDismissListener(new a..ExternalSyntheticLambda3(parama));
+      if (paramDialogInterface != null) {
+        paramDialogInterface.dismiss();
+      }
+      AppMethodBeat.o(296605);
+      return true;
+    }
+    AppMethodBeat.o(296605);
+    return false;
+  }
+  
+  private static final boolean a(com.tencent.mm.plugin.webview.ui.tools.browser.view.c paramc, a parama, DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(296581);
+    s.u(paramc, "$this_apply");
+    s.u(parama, "this$0");
+    if (paramInt == 4)
+    {
+      paramc.setOnDismissListener(new a..ExternalSyntheticLambda2(parama));
+      if (paramDialogInterface != null) {
+        paramDialogInterface.dismiss();
+      }
+      AppMethodBeat.o(296581);
+      return true;
+    }
+    AppMethodBeat.o(296581);
+    return false;
+  }
+  
+  private final void auB(int paramInt)
+  {
+    AppMethodBeat.i(296557);
+    Intent localIntent = new Intent();
+    if (paramInt != 5) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localIntent.putExtra("show_webview_menu", bool);
+      ah localah = ah.aiuX;
+      u(0, localIntent);
+      c.A(this.mSessionId, paramInt, this.XaH);
+      AppMethodBeat.o(296557);
+      return;
+    }
+  }
+  
+  private static final void b(a parama)
+  {
+    AppMethodBeat.i(296616);
+    s.u(parama, "this$0");
+    parama.izI();
+    AppMethodBeat.o(296616);
+  }
+  
+  private static final void b(a parama, DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(296588);
+    s.u(parama, "this$0");
+    parama.u(0, null);
+    c.B(parama.mSessionId, 4, parama.XaH);
+    AppMethodBeat.o(296588);
+  }
+  
+  private static final void c(a parama, DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(296600);
+    s.u(parama, "this$0");
+    parama.auB(6);
+    AppMethodBeat.o(296600);
+  }
+  
+  private static final void d(a parama, DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(296610);
+    s.u(parama, "this$0");
+    parama.auB(5);
+    AppMethodBeat.o(296610);
+  }
+  
+  private final void izI()
+  {
+    AppMethodBeat.i(296550);
+    Log.i("MicroMsg.BrowserChooseController", "alvinluo showBrowserChooseDialog");
+    com.tencent.mm.plugin.webview.ui.tools.browser.view.b localb = new com.tencent.mm.plugin.webview.ui.tools.browser.view.b(this.XaF.getUIContext());
+    localb.setOnKeyListener(new a..ExternalSyntheticLambda4(localb, this));
+    localb.setOnCancelListener(new a..ExternalSyntheticLambda1(this));
+    localb.Xbh = ((com.tencent.mm.plugin.webview.ui.tools.browser.listener.a)this.XaL);
+    localb.setBrowserList(this.XaG);
+    ah localah = ah.aiuX;
+    this.XaJ = localb;
+    this.XaF.e((Dialog)this.XaJ);
+    AppMethodBeat.o(296550);
+  }
+  
+  private final void izJ()
+  {
+    AppMethodBeat.i(296566);
+    h.ahAA.o(new a..ExternalSyntheticLambda7(this), 100L);
+    AppMethodBeat.o(296566);
+  }
+  
+  public final void izH()
+  {
+    AppMethodBeat.i(296689);
+    izI();
+    c.A(this.mSessionId, 1, this.XaH);
+    AppMethodBeat.o(296689);
+  }
+  
+  final void u(int paramInt, Intent paramIntent)
   {
     boolean bool = false;
-    AppMethodBeat.i(255751);
+    AppMethodBeat.i(296693);
     if (paramIntent == null) {
       bool = true;
     }
     Log.i("MicroMsg.BrowserChooseController", "alvinluo finishUI resultCode: %d, data == null: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-    this.QiH.r(paramInt, paramIntent);
-    AppMethodBeat.o(255751);
+    this.XaF.u(paramInt, paramIntent);
+    AppMethodBeat.o(296693);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$Companion;", "", "()V", "SHOW_DIALOG_DELAY_MS", "", "TAG", "", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$Companion;", "", "()V", "SHOW_DIALOG_DELAY_MS", "", "TAG", "", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserChooseDialogClickListener$1", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserChooseDialogClickListener;", "onBrowserItemClick", "", "dialog", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "view", "Landroid/view/View;", "position", "", "browserItemInfo", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "onCloseClick", "onMoreClick", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserChooseDialogClickListener$1", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserChooseDialogClickListener;", "onBrowserItemClick", "", "dialog", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "view", "Landroid/view/View;", "position", "", "browserItemInfo", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "onCloseClick", "onMoreClick", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements com.tencent.mm.plugin.webview.ui.tools.browser.listener.a
   {
+    b(a parama) {}
+    
+    private static final void e(a parama, DialogInterface paramDialogInterface)
+    {
+      AppMethodBeat.i(296506);
+      s.u(parama, "this$0");
+      a.f(parama);
+      AppMethodBeat.o(296506);
+    }
+    
+    private static final void f(a parama, DialogInterface paramDialogInterface)
+    {
+      AppMethodBeat.i(296509);
+      s.u(parama, "this$0");
+      a.g(parama);
+      AppMethodBeat.o(296509);
+    }
+    
+    private static final void g(a parama, DialogInterface paramDialogInterface)
+    {
+      AppMethodBeat.i(296514);
+      s.u(parama, "this$0");
+      a.a(parama, null);
+      AppMethodBeat.o(296514);
+    }
+    
     public final void a(com.tencent.mm.plugin.webview.ui.tools.browser.view.a parama)
     {
-      AppMethodBeat.i(229850);
+      AppMethodBeat.i(296535);
       if (parama != null) {}
       for (int i = parama.hashCode();; i = 0)
       {
         Log.i("MicroMsg.BrowserChooseController", "alvinluo BrowserDialog onCloseClick dialog: %s", new Object[] { Integer.valueOf(i) });
         if (parama != null) {
-          parama.setOnDismissListener((DialogInterface.OnDismissListener)new b(this));
+          parama.setOnDismissListener(new a.b..ExternalSyntheticLambda0(this.XaN));
         }
-        if (parama == null) {
-          break;
+        if (parama != null) {
+          parama.dismiss();
         }
-        parama.dismiss();
-        AppMethodBeat.o(229850);
+        AppMethodBeat.o(296535);
         return;
       }
-      AppMethodBeat.o(229850);
     }
     
     public final void a(com.tencent.mm.plugin.webview.ui.tools.browser.view.a parama, int paramInt, f paramf)
     {
       Object localObject3 = null;
-      AppMethodBeat.i(229853);
+      AppMethodBeat.i(296551);
       int i;
       Object localObject1;
-      label52:
+      label25:
       Object localObject2;
+      label32:
+      label122:
+      long l;
       if (parama != null)
       {
         i = parama.hashCode();
-        if (paramf == null) {
-          break label238;
+        if (paramf != null) {
+          break label176;
         }
-        localObject1 = paramf.pN;
-        if (localObject1 == null) {
-          break label238;
+        localObject1 = null;
+        if (paramf != null) {
+          break label221;
         }
-        localObject1 = ((ResolveInfo)localObject1).activityInfo;
-        if (localObject1 == null) {
-          break label238;
-        }
-        localObject1 = ((ActivityInfo)localObject1).packageName;
-        if (paramf == null) {
-          break label244;
-        }
-        localObject2 = paramf.pN;
-        if (localObject2 == null) {
-          break label244;
-        }
-        localObject2 = ((ResolveInfo)localObject2).activityInfo;
-        if (localObject2 == null) {
-          break label244;
-        }
-        localObject2 = ((ActivityInfo)localObject2).name;
-        label86:
+        localObject2 = null;
         Log.i("MicroMsg.BrowserChooseController", "alvinluo BrowserDialog onBrowserItemClick dialog: %s, packageName: %s, targetActivity: %s", new Object[] { Integer.valueOf(i), localObject1, localObject2 });
         if (parama != null) {
-          parama.setOnDismissListener((DialogInterface.OnDismissListener)new a(this));
+          parama.setOnDismissListener(new a.b..ExternalSyntheticLambda1(this.XaN));
         }
         if (parama != null) {
           parama.dismiss();
         }
-        localObject1 = a.e(this.QiJ).getUIContext();
-        localObject2 = a.e(this.QiJ).gZH();
-        if (paramf == null) {
-          break label250;
+        localObject1 = a.e(this.XaN).getUIContext();
+        localObject2 = a.e(this.XaN).izK();
+        if (paramf != null) {
+          break label266;
+        }
+        parama = null;
+        b.a((Context)localObject1, (Intent)localObject2, parama);
+        l = a.c(this.XaN);
+        i = a.d(this.XaN);
+        if (paramf != null) {
+          break label274;
         }
       }
-      label238:
-      label244:
-      label250:
-      for (parama = paramf.pN;; parama = null)
+      label266:
+      label274:
+      for (parama = localObject3;; parama = paramf.qK)
       {
-        b.a((Context)localObject1, (Intent)localObject2, parama);
-        long l = a.b(this.QiJ);
-        i = a.c(this.QiJ);
-        parama = localObject3;
-        if (paramf != null) {
-          parama = paramf.pN;
-        }
         c.a(l, paramInt, i, parama);
-        AppMethodBeat.o(229853);
+        AppMethodBeat.o(296551);
         return;
         i = 0;
         break;
-        localObject1 = null;
-        break label52;
-        localObject2 = null;
-        break label86;
+        label176:
+        localObject1 = paramf.qK;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          break label25;
+        }
+        localObject1 = ((ResolveInfo)localObject1).activityInfo;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          break label25;
+        }
+        localObject1 = ((ActivityInfo)localObject1).packageName;
+        break label25;
+        label221:
+        localObject2 = paramf.qK;
+        if (localObject2 == null)
+        {
+          localObject2 = null;
+          break label32;
+        }
+        localObject2 = ((ResolveInfo)localObject2).activityInfo;
+        if (localObject2 == null)
+        {
+          localObject2 = null;
+          break label32;
+        }
+        localObject2 = ((ActivityInfo)localObject2).name;
+        break label32;
+        parama = paramf.qK;
+        break label122;
       }
     }
     
     public final void b(com.tencent.mm.plugin.webview.ui.tools.browser.view.a parama)
     {
-      AppMethodBeat.i(229851);
+      AppMethodBeat.i(296540);
       if (parama != null) {}
       for (int i = parama.hashCode();; i = 0)
       {
         Log.i("MicroMsg.BrowserChooseController", "alvinluo BrowserDialog onMoreClick dialog: %s", new Object[] { Integer.valueOf(i) });
         if (parama != null) {
-          parama.setOnDismissListener((DialogInterface.OnDismissListener)new c(this));
+          parama.setOnDismissListener(new a.b..ExternalSyntheticLambda2(this.XaN));
         }
         if (parama != null) {
           parama.dismiss();
         }
-        c.r(a.b(this.QiJ), 3, a.c(this.QiJ));
-        AppMethodBeat.o(229851);
+        c.A(a.c(this.XaN), 3, a.d(this.XaN));
+        AppMethodBeat.o(296540);
         return;
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
-    static final class a
-      implements DialogInterface.OnDismissListener
-    {
-      a(a.b paramb) {}
-      
-      public final void onDismiss(DialogInterface paramDialogInterface)
-      {
-        AppMethodBeat.i(266633);
-        a.a(this.QiK.QiJ, null);
-        AppMethodBeat.o(266633);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
-    static final class b
-      implements DialogInterface.OnDismissListener
-    {
-      b(a.b paramb) {}
-      
-      public final void onDismiss(DialogInterface paramDialogInterface)
-      {
-        AppMethodBeat.i(233508);
-        a.a(this.QiK.QiJ, 4);
-        AppMethodBeat.o(233508);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
-    static final class c
-      implements DialogInterface.OnDismissListener
-    {
-      c(a.b paramb) {}
-      
-      public final void onDismiss(DialogInterface paramDialogInterface)
-      {
-        AppMethodBeat.i(265932);
-        a.h(this.QiK.QiJ);
-        AppMethodBeat.o(265932);
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserSettingDialogClickListener$1", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserSettingDialogClickListener;", "selectedInfo", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "selectedPosition", "", "onBrowserItemClick", "", "dialog", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "view", "Landroid/view/View;", "position", "browserItemInfo", "onCancelClick", "onConfirmClick", "setSelectedBrowserInfo", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$browserSettingDialogClickListener$1", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserSettingDialogClickListener;", "selectedInfo", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "selectedPosition", "", "onBrowserItemClick", "", "dialog", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "view", "Landroid/view/View;", "position", "browserItemInfo", "onCancelClick", "onConfirmClick", "setSelectedBrowserInfo", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements com.tencent.mm.plugin.webview.ui.tools.browser.listener.c
   {
-    f QiL;
-    private int bFx = -1;
+    f XaO;
+    private int dyx = -1;
     
-    public final void a(com.tencent.mm.plugin.webview.ui.tools.browser.view.a parama, int paramInt, f paramf)
+    c(a parama) {}
+    
+    private static final void a(a parama, c paramc, DialogInterface paramDialogInterface)
     {
-      Object localObject3 = null;
-      AppMethodBeat.i(257111);
+      int j = 0;
+      AppMethodBeat.i(296505);
+      s.u(parama, "this$0");
+      s.u(paramc, "this$1");
+      paramDialogInterface = new Intent();
+      f localf = paramc.XaO;
       int i;
-      if (parama != null)
+      if ((localf != null) && (localf.itemType == 2))
       {
-        i = parama.hashCode();
-        if (paramf == null) {
-          break label165;
+        i = 1;
+        if (i == 0) {
+          break label82;
         }
-        parama = Integer.valueOf(paramf.fNO);
-        label30:
-        if (paramf == null) {
-          break label170;
-        }
-        localObject1 = paramf.pN;
-        if (localObject1 == null) {
-          break label170;
-        }
-        localObject1 = ((ResolveInfo)localObject1).activityInfo;
-        if (localObject1 == null) {
-          break label170;
-        }
+        paramDialogInterface.putExtra("browser_setting_result", 2);
       }
-      label165:
-      label170:
-      for (Object localObject1 = ((ActivityInfo)localObject1).packageName;; localObject1 = null)
+      label82:
+      do
       {
-        Object localObject2 = localObject3;
-        if (paramf != null)
-        {
-          Object localObject4 = paramf.pN;
-          localObject2 = localObject3;
-          if (localObject4 != null)
-          {
-            localObject4 = ((ResolveInfo)localObject4).activityInfo;
-            localObject2 = localObject3;
-            if (localObject4 != null) {
-              localObject2 = ((ActivityInfo)localObject4).name;
-            }
-          }
-        }
-        Log.i("MicroMsg.BrowserChooseController", "alvinluo BrowserSettingDialog onBrowserItemClick dialog: %s, itemType: %s, packageName: %s, targetActivity: %s", new Object[] { Integer.valueOf(i), parama, localObject1, localObject2 });
-        this.QiL = paramf;
-        this.bFx = paramInt;
-        AppMethodBeat.o(257111);
+        paramc = ah.aiuX;
+        a.a(parama, paramDialogInterface);
+        AppMethodBeat.o(296505);
         return;
         i = 0;
         break;
+        localf = paramc.XaO;
+        i = j;
+        if (localf != null)
+        {
+          i = j;
+          if (localf.itemType == 1) {
+            i = 1;
+          }
+        }
+      } while (i == 0);
+      paramDialogInterface.putExtra("browser_setting_result", 1);
+      paramc = paramc.XaO;
+      if (paramc == null) {}
+      for (paramc = null;; paramc = paramc.qK)
+      {
+        paramDialogInterface.putExtra("show_browser_resolve_info", (Parcelable)paramc);
+        paramDialogInterface.putExtra("show_browser_with_animation", true);
+        break;
+      }
+    }
+    
+    private static final void h(a parama, DialogInterface paramDialogInterface)
+    {
+      AppMethodBeat.i(296511);
+      s.u(parama, "this$0");
+      a.h(parama);
+      c.B(a.c(parama), 3, a.d(parama));
+      AppMethodBeat.o(296511);
+    }
+    
+    public final void a(com.tencent.mm.plugin.webview.ui.tools.browser.view.a parama, int paramInt, f paramf)
+    {
+      Object localObject2 = null;
+      AppMethodBeat.i(296530);
+      int i;
+      Integer localInteger;
+      label25:
+      label31:
+      Object localObject1;
+      if (parama != null)
+      {
+        i = parama.hashCode();
+        if (paramf != null) {
+          break label94;
+        }
+        localInteger = null;
+        if (paramf != null) {
+          break label106;
+        }
         parama = null;
-        break label30;
+        if (paramf != null) {
+          break label142;
+        }
+        localObject1 = localObject2;
+      }
+      for (;;)
+      {
+        Log.i("MicroMsg.BrowserChooseController", "alvinluo BrowserSettingDialog onBrowserItemClick dialog: %s, itemType: %s, packageName: %s, targetActivity: %s", new Object[] { Integer.valueOf(i), localInteger, parama, localObject1 });
+        this.XaO = paramf;
+        this.dyx = paramInt;
+        AppMethodBeat.o(296530);
+        return;
+        i = 0;
+        break;
+        label94:
+        localInteger = Integer.valueOf(paramf.itemType);
+        break label25;
+        label106:
+        parama = paramf.qK;
+        if (parama == null)
+        {
+          parama = null;
+          break label31;
+        }
+        parama = parama.activityInfo;
+        if (parama == null)
+        {
+          parama = null;
+          break label31;
+        }
+        parama = parama.packageName;
+        break label31;
+        label142:
+        Object localObject3 = paramf.qK;
+        localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject3 = ((ResolveInfo)localObject3).activityInfo;
+          localObject1 = localObject2;
+          if (localObject3 != null) {
+            localObject1 = ((ActivityInfo)localObject3).name;
+          }
+        }
       }
     }
     
     public final void c(com.tencent.mm.plugin.webview.ui.tools.browser.view.a parama)
     {
       Integer localInteger = null;
-      AppMethodBeat.i(257113);
-      Object localObject = this.QiL;
-      if (localObject != null)
+      AppMethodBeat.i(296537);
+      Object localObject = this.XaO;
+      f localf;
+      if (localObject == null)
       {
-        localObject = ((f)localObject).pN;
-        if (localObject != null)
-        {
-          localObject = ((ResolveInfo)localObject).activityInfo;
-          if (localObject == null) {}
+        localObject = null;
+        localf = this.XaO;
+        if (localf != null) {
+          break label104;
         }
       }
-      for (localObject = ((ActivityInfo)localObject).packageName;; localObject = null)
+      for (;;)
       {
-        f localf = this.QiL;
-        if (localf != null) {
-          localInteger = Integer.valueOf(localf.fNO);
-        }
         Log.i("MicroMsg.BrowserChooseController", "alvinluo BrowserSettingDialog onConfirmClick selected: %s, itemType: %s", new Object[] { localObject, localInteger });
-        if (this.QiL != null) {
-          break;
+        if (this.XaO != null) {
+          break label116;
         }
         Log.e("MicroMsg.BrowserChooseController", "alvinluo BrowserSettingDialog selectedInfo is null");
-        AppMethodBeat.o(257113);
+        AppMethodBeat.o(296537);
         return;
+        localObject = ((f)localObject).qK;
+        if (localObject == null)
+        {
+          localObject = null;
+          break;
+        }
+        localObject = ((ResolveInfo)localObject).activityInfo;
+        if (localObject == null)
+        {
+          localObject = null;
+          break;
+        }
+        localObject = ((ActivityInfo)localObject).packageName;
+        break;
+        label104:
+        localInteger = Integer.valueOf(localf.itemType);
       }
-      localObject = this.QiL;
-      if (localObject == null) {
-        p.iCn();
-      }
+      label116:
+      localObject = this.XaO;
+      s.checkNotNull(localObject);
       com.tencent.mm.plugin.webview.ui.tools.browser.storage.a.a((f)localObject);
       if (parama != null) {
-        parama.setOnDismissListener((DialogInterface.OnDismissListener)new b(this));
+        parama.setOnDismissListener(new a.c..ExternalSyntheticLambda1(this.XaN, this));
       }
       if (parama != null) {
         parama.dismiss();
       }
-      c.a(a.b(this.QiJ), this.QiL, a.c(this.QiJ), this.bFx);
-      AppMethodBeat.o(257113);
+      c.a(a.c(this.XaN), this.XaO, a.d(this.XaN), this.dyx);
+      AppMethodBeat.o(296537);
     }
     
     public final void d(com.tencent.mm.plugin.webview.ui.tools.browser.view.a parama)
     {
-      AppMethodBeat.i(257114);
+      AppMethodBeat.i(296542);
       Log.i("MicroMsg.BrowserChooseController", "alvinluo BrowserSettingDialog onCancelClick");
       if (parama != null) {
-        parama.setOnDismissListener((DialogInterface.OnDismissListener)new a(this));
+        parama.setOnDismissListener(new a.c..ExternalSyntheticLambda0(this.XaN));
       }
-      if (parama != null)
-      {
+      if (parama != null) {
         parama.dismiss();
-        AppMethodBeat.o(257114);
-        return;
       }
-      AppMethodBeat.o(257114);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
-    static final class a
-      implements DialogInterface.OnDismissListener
-    {
-      a(a.c paramc) {}
-      
-      public final void onDismiss(DialogInterface paramDialogInterface)
-      {
-        AppMethodBeat.i(265951);
-        a.a(this.QiM.QiJ);
-        c.s(a.b(this.QiM.QiJ), 3, a.c(this.QiM.QiJ));
-        AppMethodBeat.o(265951);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
-    static final class b
-      implements DialogInterface.OnDismissListener
-    {
-      b(a.c paramc) {}
-      
-      public final void onDismiss(DialogInterface paramDialogInterface)
-      {
-        AppMethodBeat.i(220715);
-        a locala = this.QiM.QiJ;
-        Intent localIntent = new Intent();
-        paramDialogInterface = a.c.a(this.QiM);
-        if ((paramDialogInterface != null) && (paramDialogInterface.fNO == 2)) {
-          p.j(localIntent.putExtra("browser_setting_result", 2), "putExtra(BrowserChooseUI…LT_UNSET_DEFAULT_BROWSER)");
-        }
-        do
-        {
-          a.a(locala, localIntent);
-          AppMethodBeat.o(220715);
-          return;
-          paramDialogInterface = a.c.a(this.QiM);
-        } while ((paramDialogInterface == null) || (paramDialogInterface.fNO != 1));
-        localIntent.putExtra("browser_setting_result", 1);
-        paramDialogInterface = a.c.a(this.QiM);
-        if (paramDialogInterface != null) {}
-        for (paramDialogInterface = paramDialogInterface.pN;; paramDialogInterface = null)
-        {
-          localIntent.putExtra("show_browser_resolve_info", (Parcelable)paramDialogInterface);
-          localIntent.putExtra("show_browser_with_animation", true);
-          break;
-        }
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "keyCode", "", "event", "Landroid/view/KeyEvent;", "onKey", "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$showBrowserChooseDialogInner$1$1"})
-  static final class d
-    implements DialogInterface.OnKeyListener
-  {
-    d(com.tencent.mm.plugin.webview.ui.tools.browser.view.b paramb, a parama) {}
-    
-    public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-    {
-      AppMethodBeat.i(255001);
-      StringBuilder localStringBuilder = new StringBuilder("alvinluo browserChooseDialog keyCode: ").append(paramInt).append(", event: ");
-      if (paramKeyEvent != null) {}
-      for (paramKeyEvent = Integer.valueOf(paramKeyEvent.getAction());; paramKeyEvent = null)
-      {
-        Log.i("MicroMsg.BrowserChooseController", paramKeyEvent);
-        if (paramInt != 4) {
-          break;
-        }
-        this.QiN.setOnDismissListener((DialogInterface.OnDismissListener)new DialogInterface.OnDismissListener()
-        {
-          public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
-          {
-            AppMethodBeat.i(215113);
-            a.a(this.QiO.QiJ, 6);
-            AppMethodBeat.o(215113);
-          }
-        });
-        if (paramDialogInterface != null) {
-          paramDialogInterface.dismiss();
-        }
-        AppMethodBeat.o(255001);
-        return true;
-      }
-      AppMethodBeat.o(255001);
-      return false;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel", "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$showBrowserChooseDialogInner$1$2"})
-  static final class e
-    implements DialogInterface.OnCancelListener
-  {
-    e(a parama) {}
-    
-    public final void onCancel(DialogInterface paramDialogInterface)
-    {
-      AppMethodBeat.i(220853);
-      a.a(this.QiJ, 5);
-      AppMethodBeat.o(220853);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "keyCode", "", "event", "Landroid/view/KeyEvent;", "onKey", "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$showSettingDialog$1$1"})
-  static final class f
-    implements DialogInterface.OnKeyListener
-  {
-    f(com.tencent.mm.plugin.webview.ui.tools.browser.view.c paramc, a parama) {}
-    
-    public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-    {
-      AppMethodBeat.i(220697);
-      if (paramInt == 4)
-      {
-        this.QiP.setOnDismissListener((DialogInterface.OnDismissListener)new DialogInterface.OnDismissListener()
-        {
-          public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
-          {
-            AppMethodBeat.i(249700);
-            a.a(this.QiQ.QiJ);
-            c.s(a.b(this.QiQ.QiJ), 5, a.c(this.QiQ.QiJ));
-            AppMethodBeat.o(249700);
-          }
-        });
-        if (paramDialogInterface != null) {
-          paramDialogInterface.dismiss();
-        }
-        AppMethodBeat.o(220697);
-        return true;
-      }
-      AppMethodBeat.o(220697);
-      return false;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel", "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseController$showSettingDialog$1$2"})
-  static final class g
-    implements DialogInterface.OnCancelListener
-  {
-    g(a parama) {}
-    
-    public final void onCancel(DialogInterface paramDialogInterface)
-    {
-      AppMethodBeat.i(260103);
-      a.d(this.QiJ);
-      AppMethodBeat.o(260103);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class h
-    implements Runnable
-  {
-    h(a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(250016);
-      a.e(this.QiJ).e((Dialog)a.f(this.QiJ));
-      c.s(a.b(this.QiJ), 1, a.c(this.QiJ));
-      AppMethodBeat.o(250016);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class i
-    implements Runnable
-  {
-    i(a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(268228);
-      a.g(this.QiJ);
-      AppMethodBeat.o(268228);
+      AppMethodBeat.o(296542);
     }
   }
 }

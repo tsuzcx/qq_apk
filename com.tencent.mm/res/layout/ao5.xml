@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dx" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/qa" android:paddingLeft="@dimen/dx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/dt5" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@raw/fts_websearch_relevant_icon" app:iconColor="@color/FG_2" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/be9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/uq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/e3" android:layout_marginRight="12.0dip" android:src="@raw/arrow_right" app:iconColor="@color/FG_2" />
-    </LinearLayout>
-</RelativeLayout>
+    <com.tencent.mm.plugin.finder.view.FinderPostFooter android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/d7x" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d_">
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d_">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ksk" android:visibility="gone" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/finder_outlined_tag" android:layout_marginStart="@dimen/cv" app:iconColor="@color/FG_0" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/z2" android:visibility="gone" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/finder_outline_at" android:layout_toRightOf="@id/ksk" android:layout_marginStart="@dimen/cp" app:iconColor="@color/FG_0" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/jnt" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_outlined_emoji" android:layout_alignParentRight="true" android:layout_marginEnd="@dimen/cv" app:iconColor="@color/FG_0" />
+        </RelativeLayout>
+    </com.tencent.mm.plugin.finder.view.FinderPostFooter>
+</merge>

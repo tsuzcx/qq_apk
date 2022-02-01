@@ -20,6 +20,8 @@ import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.smtt.sdk.i;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -159,142 +161,59 @@ public abstract class ChildProcessService
     ((SandboxContentChildProcessServiceDelegate)this.mDelegate).setService(this);
   }
   
-  /* Error */
   private void displayLazilyLoadedLibraries()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: iconst_0
-    //   3: istore_1
-    //   4: iload_1
-    //   5: aload_0
-    //   6: getfield 80	com/tencent/smtt/sandbox/ChildProcessService:mLazilyLoadedLibraryNames	[Ljava/lang/CharSequence;
-    //   9: arraylength
-    //   10: if_icmpge +123 -> 133
-    //   13: aload_0
-    //   14: getfield 80	com/tencent/smtt/sandbox/ChildProcessService:mLazilyLoadedLibraryNames	[Ljava/lang/CharSequence;
-    //   17: iload_1
-    //   18: aaload
-    //   19: astore 4
-    //   21: aload_0
-    //   22: getfield 78	com/tencent/smtt/sandbox/ChildProcessService:mLazilyLoadedLibraryFDs	[Landroid/os/ParcelFileDescriptor;
-    //   25: iload_1
-    //   26: aaload
-    //   27: astore 5
-    //   29: iconst_4
-    //   30: newarray byte
-    //   32: astore 6
-    //   34: new 148	java/io/FileInputStream
-    //   37: dup
-    //   38: aload 5
-    //   40: invokevirtual 154	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   43: invokespecial 157	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
-    //   46: astore_3
-    //   47: aload_3
-    //   48: aload 6
-    //   50: invokevirtual 163	java/io/InputStream:read	([B)I
-    //   53: pop
-    //   54: aload_3
-    //   55: invokevirtual 166	java/io/InputStream:close	()V
-    //   58: ldc 21
-    //   60: new 168	java/lang/StringBuilder
-    //   63: dup
-    //   64: ldc 170
-    //   66: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   69: aload 4
-    //   71: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   74: ldc 179
-    //   76: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: aload 5
-    //   81: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   84: ldc 184
-    //   86: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: aload 5
-    //   91: invokevirtual 188	android/os/ParcelFileDescriptor:getFd	()I
-    //   94: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   97: ldc 193
-    //   99: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: new 195	java/lang/String
-    //   105: dup
-    //   106: aload 6
-    //   108: invokespecial 198	java/lang/String:<init>	([B)V
-    //   111: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: invokevirtual 202	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: iconst_0
-    //   118: anewarray 69	java/lang/Object
-    //   121: invokestatic 208	com/tencent/smtt/sandbox/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   124: iload_1
-    //   125: iconst_1
-    //   126: iadd
-    //   127: istore_1
-    //   128: aload_3
-    //   129: astore_2
-    //   130: goto -126 -> 4
-    //   133: aload_2
-    //   134: ifnull +7 -> 141
-    //   137: aload_2
-    //   138: invokevirtual 166	java/io/InputStream:close	()V
-    //   141: return
-    //   142: astore_2
-    //   143: aload_3
-    //   144: ifnull -3 -> 141
-    //   147: aload_3
-    //   148: invokevirtual 166	java/io/InputStream:close	()V
-    //   151: return
-    //   152: astore_2
-    //   153: return
-    //   154: astore_2
-    //   155: aload_3
-    //   156: ifnull +7 -> 163
-    //   159: aload_3
-    //   160: invokevirtual 166	java/io/InputStream:close	()V
-    //   163: aload_2
-    //   164: athrow
-    //   165: astore_2
-    //   166: return
-    //   167: astore_3
-    //   168: goto -5 -> 163
-    //   171: astore_3
-    //   172: aload_2
-    //   173: astore 4
-    //   175: aload_3
-    //   176: astore_2
-    //   177: aload 4
-    //   179: astore_3
-    //   180: goto -25 -> 155
-    //   183: astore_3
-    //   184: aload_2
-    //   185: astore_3
-    //   186: goto -43 -> 143
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	189	0	this	ChildProcessService
-    //   3	125	1	i	int
-    //   1	137	2	localObject1	Object
-    //   142	1	2	localThrowable1	Throwable
-    //   152	1	2	localThrowable2	Throwable
-    //   154	10	2	localObject2	Object
-    //   165	8	2	localThrowable3	Throwable
-    //   176	9	2	localObject3	Object
-    //   46	114	3	localFileInputStream	java.io.FileInputStream
-    //   167	1	3	localThrowable4	Throwable
-    //   171	5	3	localObject4	Object
-    //   179	1	3	localObject5	Object
-    //   183	1	3	localThrowable5	Throwable
-    //   185	1	3	localObject6	Object
-    //   19	159	4	localObject7	Object
-    //   27	63	5	localParcelFileDescriptor	ParcelFileDescriptor
-    //   32	75	6	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   47	124	142	java/lang/Throwable
-    //   147	151	152	java/lang/Throwable
-    //   47	124	154	finally
-    //   137	141	165	java/lang/Throwable
-    //   159	163	167	java/lang/Throwable
-    //   4	47	171	finally
-    //   4	47	183	java/lang/Throwable
+    Object localObject1 = null;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        CharSequence localCharSequence;
+        ParcelFileDescriptor localParcelFileDescriptor;
+        byte[] arrayOfByte;
+        if (i < this.mLazilyLoadedLibraryNames.length)
+        {
+          localCharSequence = this.mLazilyLoadedLibraryNames[i];
+          localParcelFileDescriptor = this.mLazilyLoadedLibraryFDs[i];
+          arrayOfByte = new byte[4];
+          localFileInputStream = new FileInputStream(localParcelFileDescriptor.getFileDescriptor());
+        }
+        try
+        {
+          localFileInputStream.read(arrayOfByte);
+          localFileInputStream.close();
+          Log.i("ChildProcessService", "LazilyLoadedLibraries -- so_name: " + localCharSequence + ", so_fd: " + localParcelFileDescriptor + ", native_fd: " + localParcelFileDescriptor.getFd() + ", head: " + new String(arrayOfByte), new Object[0]);
+          i += 1;
+        }
+        finally
+        {
+          try
+          {
+            localObject1.close();
+          }
+          finally
+          {
+            return;
+          }
+          localObject2 = finally;
+        }
+        if ((localObject1 == null) || (localFileInputStream == null)) {
+          continue;
+        }
+      }
+      finally
+      {
+        FileInputStream localFileInputStream;
+        Object localObject6 = localObject4;
+        continue;
+      }
+      try
+      {
+        localFileInputStream.close();
+      }
+      finally {}
+    }
   }
   
   private ParcelFileDescriptor getLazilyLoadedLibrary(String paramString)
@@ -314,7 +233,7 @@ public abstract class ChildProcessService
       }
       return null;
     }
-    catch (Throwable paramString) {}
+    finally {}
     return null;
   }
   
@@ -413,7 +332,7 @@ public abstract class ChildProcessService
       i.a(paramString, getLazilyLoadedLibrary(paramString));
       return true;
     }
-    catch (Throwable paramString) {}
+    finally {}
     return false;
   }
   
@@ -510,8 +429,8 @@ public abstract class ChildProcessService
             Log.e("ChildProcessService", "@mMainThread loadNativeLibrary failed!", new Object[0]);
             ??? = c.a(-1, new com.tencent.mm.hellhoundlib.b.a());
             Object localObject3 = new Object();
-            com.tencent.mm.hellhoundlib.a.a.b(localObject3, ((com.tencent.mm.hellhoundlib.b.a)???).aFh(), "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-            System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).sf(0)).intValue());
+            com.tencent.mm.hellhoundlib.a.a.b(localObject3, ((com.tencent.mm.hellhoundlib.b.a)???).aYi(), "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+            System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).sb(0)).intValue());
             com.tencent.mm.hellhoundlib.a.a.c(localObject3, "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
             ChildProcessService.this.mDelegate.initCommandLine(ChildProcessService.this.mCommandLineParams);
           }
@@ -605,8 +524,8 @@ public abstract class ChildProcessService
     {
       ??? = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
       Object localObject2 = new Object();
-      com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)???).aFh(), "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-      System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).sf(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)???).aYi(), "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+      System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).sb(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
       return;
     }
@@ -629,7 +548,7 @@ public abstract class ChildProcessService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sandbox.ChildProcessService
  * JD-Core Version:    0.7.0.1
  */

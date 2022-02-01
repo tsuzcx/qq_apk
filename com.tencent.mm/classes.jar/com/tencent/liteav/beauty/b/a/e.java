@@ -1,9 +1,8 @@
 package com.tencent.liteav.beauty.b.a;
 
 import android.opengl.GLES20;
-import android.os.Build;
-import android.os.Build.VERSION;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.liteav.beauty.b.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -62,7 +61,7 @@ public class e
   public boolean a()
   {
     AppMethodBeat.i(14992);
-    if ((Build.BRAND.equals("samsung")) && (Build.MODEL.equals("GT-I9500")) && (Build.VERSION.RELEASE.equals("4.3")))
+    if ((TXCBuild.Brand().equals("samsung")) && (TXCBuild.Model().equals("GT-I9500")) && (TXCBuild.Version().equals("4.3")))
     {
       this.a = NativeLoad.nativeLoadGLProgram(15);
       if ((this.a == 0) || (!b())) {
@@ -92,16 +91,16 @@ public class e
   
   public void r()
   {
-    AppMethodBeat.i(233598);
+    AppMethodBeat.i(229770);
     this.r = GLES20.glGetUniformLocation(q(), "texelWidthOffset");
     this.s = GLES20.glGetUniformLocation(q(), "texelHeightOffset");
     this.t = GLES20.glGetUniformLocation(q(), "smoothDegree");
-    AppMethodBeat.o(233598);
+    AppMethodBeat.o(229770);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.e
  * JD-Core Version:    0.7.0.1
  */

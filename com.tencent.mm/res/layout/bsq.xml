@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="bottom" android:orientation="vertical" android:background="@color/a" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMTextureView android:layout_gravity="center" android:id="@id/iep" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <include layout="@layout/bsn" />
-</merge>
+    <ScrollView android:id="@id/fg1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <com.tencent.mm.ui.widget.InputPanelLinearLayout android:orientation="vertical" android:id="@id/fg0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cv" android:layout_marginRight="@dimen/cv">
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@color/d" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+                <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/t" android:textColor="@color/a7b" android:id="@id/fg4" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/d_" android:layout_marginRight="@dimen/cp" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@color/d" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+                <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/t" android:textColor="@color/a7b" android:id="@id/fg5" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/d_" android:layout_marginRight="@dimen/cp" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@color/d" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+                <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/t" android:textColor="@color/a7b" android:id="@id/fg6" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/d_" android:layout_marginRight="@dimen/cp" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@color/d" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+                <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/t" android:textColor="@color/a7b" android:id="@id/fg7" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/d_" android:layout_marginRight="@dimen/cp" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@color/d" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+                <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/t" android:textColor="@color/a7b" android:id="@id/fg8" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/d_" android:layout_marginRight="@dimen/cp" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@color/d" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/t" android:textColor="@color/a7b" android:id="@id/fg9" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/d_" android:layout_marginRight="@dimen/cp" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <Button android:enabled="false" android:layout_gravity="center_horizontal" android:id="@id/hls" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:layout_marginBottom="@dimen/d4" android:text="@string/z9" style="@style/oh" />
+        </com.tencent.mm.ui.widget.InputPanelLinearLayout>
+    </ScrollView>
+</LinearLayout>

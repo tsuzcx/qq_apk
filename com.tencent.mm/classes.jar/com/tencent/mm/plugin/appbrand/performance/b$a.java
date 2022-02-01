@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.performance;
 
 import android.os.HandlerThread;
-import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.threadpool.c.d;
 
 public enum b$a
 {
@@ -10,38 +10,38 @@ public enum b$a
   
   static
   {
-    AppMethodBeat.i(278976);
-    qyO = new a("INST");
-    qyP = new a[] { qyO };
-    AppMethodBeat.o(278976);
+    AppMethodBeat.i(317247);
+    tDJ = new a("INST");
+    tDK = new a[] { tDJ };
+    AppMethodBeat.o(317247);
   }
   
   private b$a() {}
   
-  public final HandlerThread cfU()
+  public final HandlerThread cGG()
   {
-    AppMethodBeat.i(278974);
+    AppMethodBeat.i(317248);
     if (this.mThread == null) {}
     try
     {
       if (this.mThread == null)
       {
-        this.mThread = d.bDk("MicroMsg.AppBrandPerformanceManager.DumpTraceThread");
+        this.mThread = d.jz("MicroMsg.AppBrandPerformanceManager.DumpTraceThread", 5);
         this.mThread.start();
       }
       HandlerThread localHandlerThread = this.mThread;
-      AppMethodBeat.o(278974);
+      AppMethodBeat.o(317248);
       return localHandlerThread;
     }
     finally
     {
-      AppMethodBeat.o(278974);
+      AppMethodBeat.o(317248);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.b.a
  * JD-Core Version:    0.7.0.1
  */

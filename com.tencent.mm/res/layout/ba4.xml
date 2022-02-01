@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout android:id="@id/eok" android:background="@null" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/ag2" android:gravity="center" android:id="@id/fgb" android:padding="4.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{text}" />
-    <LinearLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="@dimen/k5">
-        <TextView android:textSize="0.0dip" android:id="@id/fga" android:background="@color/afp" android:layout_width="wrap_content" android:layout_height="fill_parent" android:lines="0" />
-    </LinearLayout>
-</LinearLayout>
+    <FrameLayout android:id="@id/bqz" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <FrameLayout android:id="@id/lm7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter android:layout_gravity="bottom" android:id="@id/lmx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter android:layout_gravity="bottom" android:id="@id/j5i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:imeOptions="actionSearch" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/ijs" android:background="@color/al2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i" android:layout_marginBottom="@dimen/i" android:src="@raw/webview_refresh_icon" />
+                <TextView android:textSize="18.0sp" android:textColor="#ffdddddd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lgy" style="@style/qc" />
+            </LinearLayout>
+        </FrameLayout>
+        <com.tencent.mm.ui.base.MMFalseProgressBar android:layout_gravity="center|left|top" android:id="@id/lm8" android:layout_width="fill_parent" android:layout_height="3.0dip" android:progressDrawable="@drawable/ah9" android:minHeight="3.0dip" android:contentDescription="progressBar" />
+        <com.tencent.mm.plugin.webview.ui.tools.widget.MovingImageButton android:layout_gravity="center|right|top" android:id="@id/eh7" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:src="@raw/actionbar_more_landscape" />
+    </FrameLayout>
+</com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout>

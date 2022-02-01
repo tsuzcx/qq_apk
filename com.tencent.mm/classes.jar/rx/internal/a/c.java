@@ -5,39 +5,31 @@ import rx.e;
 
 public final class c<T>
 {
-  private static final c abNV;
-  private static final Object abNW;
-  private static final Object abNX;
+  private static final c akaO;
+  private static final Object akaP;
+  private static final Object akaQ;
   
   static
   {
     AppMethodBeat.i(90234);
-    abNV = new c();
-    abNW = new c.1();
-    abNX = new c.2();
+    akaO = new c();
+    akaP = new c.1();
+    akaQ = new c.2();
     AppMethodBeat.o(90234);
-  }
-  
-  public static Object T(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(90232);
-    paramThrowable = new c.a(paramThrowable);
-    AppMethodBeat.o(90232);
-    return paramThrowable;
   }
   
   public static boolean a(e<? super T> parame, Object paramObject)
   {
     AppMethodBeat.i(90233);
-    if (paramObject == abNW)
+    if (paramObject == akaP)
     {
-      parame.fUB();
+      parame.fvq();
       AppMethodBeat.o(90233);
       return true;
     }
-    if (paramObject == abNX)
+    if (paramObject == akaQ)
     {
-      parame.he(null);
+      parame.jV(null);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -45,11 +37,11 @@ public final class c<T>
     {
       if (paramObject.getClass() == c.a.class)
       {
-        parame.c(((c.a)paramObject).e);
+        parame.l(((c.a)paramObject).e);
         AppMethodBeat.o(90233);
         return true;
       }
-      parame.he(paramObject);
+      parame.jV(paramObject);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -58,37 +50,45 @@ public final class c<T>
     throw parame;
   }
   
+  public static Object ak(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(90232);
+    paramThrowable = new c.a(paramThrowable);
+    AppMethodBeat.o(90232);
+    return paramThrowable;
+  }
+  
   public static T getValue(Object paramObject)
   {
     Object localObject = paramObject;
-    if (paramObject == abNX) {
+    if (paramObject == akaQ) {
       localObject = null;
     }
     return localObject;
   }
   
-  public static Object hh(T paramT)
+  public static Object jY(T paramT)
   {
     Object localObject = paramT;
     if (paramT == null) {
-      localObject = abNX;
+      localObject = akaQ;
     }
     return localObject;
   }
   
-  public static <T> c<T> iVP()
+  public static <T> c<T> kKn()
   {
-    return abNV;
+    return akaO;
   }
   
-  public static Object iVQ()
+  public static Object kKo()
   {
-    return abNW;
+    return akaP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.internal.a.c
  * JD-Core Version:    0.7.0.1
  */

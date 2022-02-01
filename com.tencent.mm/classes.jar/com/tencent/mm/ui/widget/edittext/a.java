@@ -43,14 +43,14 @@ import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.v;
-import androidx.recyclerview.widget.i;
+import androidx.recyclerview.widget.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.i;
+import com.tencent.mm.ck.a.i;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.ui.av;
-import com.tencent.mm.ui.aw;
-import com.tencent.mm.ui.ay;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.bc;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.ui.bg;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -65,55 +65,55 @@ import java.util.Set;
 
 public class a
 {
-  boolean HjZ;
-  private View.OnLayoutChangeListener VWm;
-  private Spannable Yfs;
-  public e YkA;
-  private Menu Yku;
-  Map<Integer, CharSequence> Ykv;
-  int[] Ykw;
-  b YnM;
-  b YnN;
-  private f YnO;
-  g YnP;
-  private ViewTreeObserver.OnScrollChangedListener YnQ;
-  private View.OnAttachStateChangeListener YnR;
-  public View.OnLongClickListener YnS;
-  public View.OnTouchListener YnT;
-  public View.OnFocusChangeListener YnU;
-  public View.OnClickListener YnV;
-  private int YnW;
-  int YnX;
-  int YnY;
-  boolean YnZ;
-  int Yoa;
-  boolean Yob;
-  boolean Yoc;
-  int Yod;
-  int Yoe;
-  private a Yof;
-  boolean Yog;
-  private ActionMode.Callback Yoh;
-  int Yoi;
-  private final Runnable Yoj;
-  private ViewTreeObserver.OnPreDrawListener aqE;
-  boolean fYp;
+  boolean NhM;
+  private View.OnLayoutChangeListener adAI;
+  private Spannable afXs;
+  private Menu agct;
+  Map<Integer, CharSequence> agcu;
+  int[] agcv;
+  public e agcz;
+  b agfY;
+  b agfZ;
+  private f agga;
+  g aggb;
+  private ViewTreeObserver.OnScrollChangedListener aggc;
+  private View.OnAttachStateChangeListener aggd;
+  public View.OnLongClickListener agge;
+  public View.OnTouchListener aggf;
+  public View.OnFocusChangeListener aggg;
+  public View.OnClickListener aggh;
+  private int aggi;
+  int aggj;
+  int aggk;
+  boolean aggl;
+  int aggm;
+  boolean aggn;
+  boolean aggo;
+  int aggp;
+  int aggq;
+  private a aggr;
+  boolean aggs;
+  private ActionMode.Callback aggt;
+  int aggu;
+  private final Runnable aggv;
+  private ViewTreeObserver.OnPreDrawListener cfn;
+  boolean iep;
   Context mContext;
   private boolean mIsPause;
-  TextView rR;
-  int rxS;
-  private TextWatcher uY;
+  TextView sQ;
+  int uIW;
+  private TextWatcher vU;
   
   protected a(a parama)
   {
-    AppMethodBeat.i(251108);
-    this.YnP = new g();
-    this.fYp = true;
-    this.Yob = false;
-    this.Yoc = false;
-    this.Ykv = new HashMap();
-    this.Ykw = new int[2];
-    this.Yoh = new ActionMode.Callback()
+    AppMethodBeat.i(252039);
+    this.aggb = new g();
+    this.iep = true;
+    this.aggn = false;
+    this.aggo = false;
+    this.agcu = new HashMap();
+    this.agcv = new int[2];
+    this.aggt = new ActionMode.Callback()
     {
       public final boolean onActionItemClicked(ActionMode paramAnonymousActionMode, MenuItem paramAnonymousMenuItem)
       {
@@ -122,10 +122,10 @@ public class a
       
       public final boolean onCreateActionMode(ActionMode paramAnonymousActionMode, Menu paramAnonymousMenu)
       {
-        AppMethodBeat.i(250371);
-        av.d("SelectableEditTextHelper", "mDisableCallback", new Object[0]);
+        AppMethodBeat.i(251985);
+        bc.d("SelectableEditTextHelper", "mDisableCallback", new Object[0]);
         a.this.h(paramAnonymousMenu);
-        AppMethodBeat.o(250371);
+        AppMethodBeat.o(251985);
         return false;
       }
       
@@ -136,87 +136,87 @@ public class a
         return false;
       }
     };
-    this.Yoi = -1;
-    this.Yoj = new Runnable()
+    this.aggu = -1;
+    this.aggv = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(250083);
-        if (a.this.fYp)
+        AppMethodBeat.i(251991);
+        if (a.this.iep)
         {
-          AppMethodBeat.o(250083);
+          AppMethodBeat.o(251991);
           return;
         }
-        a.this.a(a.this.icI());
-        a.this.a(a.this.YnM);
-        a.this.a(a.this.YnN);
-        AppMethodBeat.o(250083);
+        a.this.a(a.this.jHU());
+        a.this.a(a.this.agfY);
+        a.this.a(a.this.agfZ);
+        AppMethodBeat.o(251991);
       }
     };
     this.mIsPause = false;
-    this.Yof = parama;
-    this.rR = parama.rR;
-    this.mContext = this.rR.getContext();
-    this.YnW = this.mContext.getResources().getColor(parama.YnW);
-    this.YnX = this.mContext.getResources().getColor(parama.YnX);
-    this.YnY = aw.fromDPToPix(this.mContext, (int)parama.Yol);
-    this.Yoa = com.tencent.mm.ui.widget.textview.b.iZ(this.rR);
-    this.HjZ = parama.HjZ;
-    if ((Build.VERSION.SDK_INT >= 29) && ((ay.isMIUI()) || (ay.hJb()))) {}
+    this.aggr = parama;
+    this.sQ = parama.sQ;
+    this.mContext = this.sQ.getContext();
+    this.aggi = this.mContext.getResources().getColor(parama.aggi);
+    this.aggj = this.mContext.getResources().getColor(parama.aggj);
+    this.aggk = bd.fromDPToPix(this.mContext, (int)parama.aggx);
+    this.aggm = com.tencent.mm.ui.widget.textview.b.mw(this.sQ);
+    this.NhM = parama.NhM;
+    if ((Build.VERSION.SDK_INT >= 29) && ((bg.isMIUI()) || (bg.jlr()))) {}
     for (boolean bool = true;; bool = false)
     {
-      this.Yog = bool;
-      av.i("SelectableEditTextHelper", "init %s,%s,%s", new Object[] { Boolean.valueOf(this.HjZ), this.Yof.EJk, Build.BRAND });
-      this.rR.setText(this.rR.getText(), TextView.BufferType.SPANNABLE);
-      this.Yfs = ((Spannable)this.rR.getText());
-      this.rR.setOnLongClickListener(new View.OnLongClickListener()
+      this.aggs = bool;
+      bc.i("SelectableEditTextHelper", "init %s,%s,%s", new Object[] { Boolean.valueOf(this.NhM), this.aggr.KCR, Build.BRAND });
+      this.sQ.setText(this.sQ.getText(), TextView.BufferType.SPANNABLE);
+      this.afXs = ((Spannable)this.sQ.getText());
+      this.sQ.setOnLongClickListener(new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(250563);
+          AppMethodBeat.i(251999);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-          if (a.this.YnS != null) {}
-          for (boolean bool = a.this.YnS.onLongClick(paramAnonymousView);; bool = false)
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+          if (a.this.agge != null) {}
+          for (boolean bool = a.this.agge.onLongClick(paramAnonymousView);; bool = false)
           {
-            if (a.this.HjZ)
+            if (a.this.NhM)
             {
-              av.i("SelectableEditTextHelper", "onLongClick:" + a.this.Yob, new Object[0]);
+              bc.i("SelectableEditTextHelper", "onLongClick:" + a.this.aggn, new Object[0]);
               paramAnonymousView = a.this;
               if ((!TextUtils.isEmpty(Build.BRAND)) && ("vivo".equals(Build.BRAND.toLowerCase())) && (Build.VERSION.SDK_INT < 23)) {
-                paramAnonymousView.rR.post(new a.2(paramAnonymousView));
+                paramAnonymousView.sQ.post(new a.2(paramAnonymousView));
               }
-              if (a.this.Yob)
+              if (a.this.aggn)
               {
                 com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-                AppMethodBeat.o(250563);
+                AppMethodBeat.o(251999);
                 return false;
               }
-              a.this.Yoc = true;
-              a.a(a.this, a.this.Yod, a.this.Yoe);
+              a.this.aggo = true;
+              a.a(a.this, a.this.aggp, a.this.aggq);
               com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-              AppMethodBeat.o(250563);
+              AppMethodBeat.o(251999);
               return true;
             }
             com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-            AppMethodBeat.o(250563);
+            AppMethodBeat.o(251999);
             return bool;
           }
         }
       });
-      this.rR.setOnTouchListener(new View.OnTouchListener()
+      this.sQ.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
-          AppMethodBeat.i(249533);
-          if (a.this.YnT != null) {}
-          for (boolean bool = a.this.YnT.onTouch(paramAnonymousView, paramAnonymousMotionEvent);; bool = false)
+          AppMethodBeat.i(251996);
+          if (a.this.aggf != null) {}
+          for (boolean bool = a.this.aggf.onTouch(paramAnonymousView, paramAnonymousMotionEvent);; bool = false)
           {
-            if (a.this.HjZ)
+            if (a.this.NhM)
             {
-              a.this.Yod = ((int)paramAnonymousMotionEvent.getX());
-              a.this.Yoe = ((int)paramAnonymousMotionEvent.getY());
+              a.this.aggp = ((int)paramAnonymousMotionEvent.getX());
+              a.this.aggq = ((int)paramAnonymousMotionEvent.getY());
               switch (paramAnonymousMotionEvent.getAction())
               {
               }
@@ -224,22 +224,22 @@ public class a
               {
                 for (;;)
                 {
-                  a.this.rxS = a.this.rR.getScrollY();
-                  AppMethodBeat.o(249533);
+                  a.this.uIW = a.this.sQ.getScrollY();
+                  AppMethodBeat.o(251996);
                   return false;
-                  a.this.Yoc = false;
-                  if (a.this.Yog)
+                  a.this.aggo = false;
+                  if (a.this.aggs)
                   {
-                    a.L(a.this.rR);
-                    a.this.Yog = false;
+                    a.O(a.this.sQ);
+                    a.this.aggs = false;
                   }
                   paramAnonymousView = a.this;
                   try
                   {
-                    av.d("SelectableEditTextHelper", "setInsertionDisabled", new Object[0]);
+                    bc.d("SelectableEditTextHelper", "setInsertionDisabled", new Object[0]);
                     paramAnonymousMotionEvent = TextView.class.getDeclaredField("mEditor");
                     paramAnonymousMotionEvent.setAccessible(true);
-                    paramAnonymousView = paramAnonymousMotionEvent.get(paramAnonymousView.rR);
+                    paramAnonymousView = paramAnonymousMotionEvent.get(paramAnonymousView.sQ);
                     paramAnonymousMotionEvent = Class.forName("android.widget.Editor");
                     Field localField = paramAnonymousMotionEvent.getDeclaredField("mInsertionControllerEnabled");
                     localField.setAccessible(true);
@@ -250,86 +250,86 @@ public class a
                   }
                   catch (Exception paramAnonymousView)
                   {
-                    av.e("SelectableEditTextHelper", "setInsertionDisabled error msg:%s", new Object[] { paramAnonymousView.getMessage() });
+                    bc.e("SelectableEditTextHelper", "setInsertionDisabled error msg:%s", new Object[] { paramAnonymousView.getMessage() });
                   }
                   continue;
-                  if ((ay.isMIUI()) && (a.this.Yoc))
+                  if ((bg.isMIUI()) && (a.this.aggo))
                   {
-                    AppMethodBeat.o(249533);
+                    AppMethodBeat.o(251996);
                     return true;
                   }
-                  if (a.this.rxS != a.this.rR.getScrollY())
+                  if (a.this.uIW != a.this.sQ.getScrollY())
                   {
-                    a.this.Yob = true;
-                    if ((!a.this.YnZ) && (!a.this.fYp))
+                    a.this.aggn = true;
+                    if ((!a.this.aggl) && (!a.this.iep))
                     {
-                      a.this.YnZ = true;
-                      a.this.b(a.this.icI());
-                      a.this.b(a.this.YnM);
-                      a.this.b(a.this.YnN);
+                      a.this.aggl = true;
+                      a.this.b(a.this.jHU());
+                      a.this.b(a.this.agfY);
+                      a.this.b(a.this.agfZ);
                     }
                   }
                 }
-              } while (!a.this.Yob);
-              a.this.Yob = false;
-              if (a.this.YnZ)
+              } while (!a.this.aggn);
+              a.this.aggn = false;
+              if (a.this.aggl)
               {
-                a.this.YnZ = false;
-                a.this.cpp().run();
+                a.this.aggl = false;
+                a.this.cRS().run();
               }
-              AppMethodBeat.o(249533);
+              AppMethodBeat.o(251996);
               return true;
             }
-            AppMethodBeat.o(249533);
+            AppMethodBeat.o(251996);
             return bool;
           }
         }
       });
-      this.rR.setOnClickListener(new View.OnClickListener()
+      this.sQ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(251048);
+          AppMethodBeat.i(252003);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          if (a.this.HjZ)
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          if (a.this.NhM)
           {
-            av.i("SelectableEditTextHelper", "onClick", new Object[0]);
-            a.this.HN(true);
+            bc.i("SelectableEditTextHelper", "onClick", new Object[0]);
+            a.this.NH(true);
           }
-          if (a.this.YnV != null) {
-            a.this.YnV.onClick(paramAnonymousView);
+          if (a.this.aggh != null) {
+            a.this.aggh.onClick(paramAnonymousView);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(251048);
+          AppMethodBeat.o(252003);
         }
       });
-      this.rR.setOnFocusChangeListener(new View.OnFocusChangeListener()
+      this.sQ.setOnFocusChangeListener(new View.OnFocusChangeListener()
       {
         public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(251385);
-          if (a.this.HjZ)
+          AppMethodBeat.i(251998);
+          if (a.this.NhM)
           {
-            av.d("SelectableEditTextHelper", "onFocusChange:".concat(String.valueOf(paramAnonymousBoolean)), new Object[0]);
+            bc.d("SelectableEditTextHelper", "onFocusChange:".concat(String.valueOf(paramAnonymousBoolean)), new Object[0]);
             if (!paramAnonymousBoolean) {
-              a.this.HN(false);
+              a.this.NH(false);
             }
           }
-          if (a.this.YnU != null) {
-            a.this.YnU.onFocusChange(paramAnonymousView, paramAnonymousBoolean);
+          if (a.this.aggg != null) {
+            a.this.aggg.onFocusChange(paramAnonymousView, paramAnonymousBoolean);
           }
-          AppMethodBeat.o(251385);
+          AppMethodBeat.o(251998);
         }
       });
-      if (this.HjZ)
+      if (this.NhM)
       {
-        this.rR.setCustomSelectionActionModeCallback(this.Yoh);
+        this.sQ.setCustomSelectionActionModeCallback(this.aggt);
         if (Build.VERSION.SDK_INT >= 23) {
-          this.rR.setCustomInsertionActionModeCallback(this.Yoh);
+          this.sQ.setCustomInsertionActionModeCallback(this.aggt);
         }
-        this.uY = new TextWatcher()
+        this.vU = new TextWatcher()
         {
           public final void afterTextChanged(Editable paramAnonymousEditable) {}
           
@@ -337,75 +337,75 @@ public class a
           
           public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
           {
-            AppMethodBeat.i(249750);
-            if (!a.this.fYp)
+            AppMethodBeat.i(252011);
+            if (!a.this.iep)
             {
-              a.this.cpn();
-              a.this.cpq();
+              a.this.cRQ();
+              a.this.cRT();
             }
-            a.this.rR.setCursorVisible(true);
-            a.this.Yoi = a.this.rR.getSelectionStart();
-            AppMethodBeat.o(249750);
+            a.this.sQ.setCursorVisible(true);
+            a.this.aggu = a.this.sQ.getSelectionStart();
+            AppMethodBeat.o(252011);
           }
         };
-        this.YnR = new View.OnAttachStateChangeListener()
+        this.aggd = new View.OnAttachStateChangeListener()
         {
           public final void onViewAttachedToWindow(View paramAnonymousView) {}
           
           public final void onViewDetachedFromWindow(View paramAnonymousView)
           {
-            AppMethodBeat.i(251153);
-            av.d("SelectableEditTextHelper", "onViewDetachedFromWindow:", new Object[0]);
+            AppMethodBeat.i(252006);
+            bc.d("SelectableEditTextHelper", "onViewDetachedFromWindow:", new Object[0]);
             a.this.destroy();
-            AppMethodBeat.o(251153);
+            AppMethodBeat.o(252006);
           }
         };
-        this.VWm = new View.OnLayoutChangeListener()
+        this.adAI = new View.OnLayoutChangeListener()
         {
           public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
           {
-            AppMethodBeat.i(249459);
-            if (a.this.fYp)
+            AppMethodBeat.i(252013);
+            if (a.this.iep)
             {
-              AppMethodBeat.o(249459);
+              AppMethodBeat.o(252013);
               return;
             }
             paramAnonymousView = new int[2];
-            paramAnonymousView[0] = a.this.Ykw[0];
-            paramAnonymousView[1] = a.this.Ykw[1];
-            a.this.rR.getLocationInWindow(a.this.Ykw);
-            av.d("SelectableEditTextHelper", "LayoutChangeFromWindow l:%d,t:%d,r:%d,b:%d,oldl:%d,oldt:%d,oldr:%d,oldb:%d,oldx:%d, newx:%d, oldy:%d, newy:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), Integer.valueOf(paramAnonymousInt4), Integer.valueOf(paramAnonymousInt5), Integer.valueOf(paramAnonymousInt6), Integer.valueOf(paramAnonymousInt7), Integer.valueOf(paramAnonymousInt8), Integer.valueOf(paramAnonymousView[0]), Integer.valueOf(a.this.Ykw[0]), Integer.valueOf(paramAnonymousView[1]), Integer.valueOf(a.this.Ykw[1]) });
-            if ((paramAnonymousInt2 != paramAnonymousInt6) || (paramAnonymousInt4 != paramAnonymousInt8) || (paramAnonymousView[1] != a.this.Ykw[1])) {
-              a.this.cpo();
+            paramAnonymousView[0] = a.this.agcv[0];
+            paramAnonymousView[1] = a.this.agcv[1];
+            a.this.sQ.getLocationInWindow(a.this.agcv);
+            bc.d("SelectableEditTextHelper", "LayoutChangeFromWindow l:%d,t:%d,r:%d,b:%d,oldl:%d,oldt:%d,oldr:%d,oldb:%d,oldx:%d, newx:%d, oldy:%d, newy:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), Integer.valueOf(paramAnonymousInt4), Integer.valueOf(paramAnonymousInt5), Integer.valueOf(paramAnonymousInt6), Integer.valueOf(paramAnonymousInt7), Integer.valueOf(paramAnonymousInt8), Integer.valueOf(paramAnonymousView[0]), Integer.valueOf(a.this.agcv[0]), Integer.valueOf(paramAnonymousView[1]), Integer.valueOf(a.this.agcv[1]) });
+            if ((paramAnonymousInt2 != paramAnonymousInt6) || (paramAnonymousInt4 != paramAnonymousInt8) || (paramAnonymousView[1] != a.this.agcv[1])) {
+              a.this.cRR();
             }
-            AppMethodBeat.o(249459);
+            AppMethodBeat.o(252013);
           }
         };
-        this.aqE = new ViewTreeObserver.OnPreDrawListener()
+        this.cfn = new ViewTreeObserver.OnPreDrawListener()
         {
           public final boolean onPreDraw()
           {
             return true;
           }
         };
-        this.YnQ = new ViewTreeObserver.OnScrollChangedListener()
+        this.aggc = new ViewTreeObserver.OnScrollChangedListener()
         {
           public final void onScrollChanged() {}
         };
-        this.rR.addTextChangedListener(this.uY);
-        this.rR.addOnAttachStateChangeListener(this.YnR);
-        this.rR.addOnLayoutChangeListener(this.VWm);
-        this.rR.getViewTreeObserver().addOnPreDrawListener(this.aqE);
-        this.rR.getViewTreeObserver().addOnScrollChangedListener(this.YnQ);
+        this.sQ.addTextChangedListener(this.vU);
+        this.sQ.addOnAttachStateChangeListener(this.aggd);
+        this.sQ.addOnLayoutChangeListener(this.adAI);
+        this.sQ.getViewTreeObserver().addOnPreDrawListener(this.cfn);
+        this.sQ.getViewTreeObserver().addOnScrollChangedListener(this.aggc);
       }
-      AppMethodBeat.o(251108);
+      AppMethodBeat.o(252039);
       return;
     }
   }
   
-  public static boolean L(TextView paramTextView)
+  public static boolean O(TextView paramTextView)
   {
-    AppMethodBeat.i(251135);
+    AppMethodBeat.i(252065);
     try
     {
       Object localObject = TextView.class.getDeclaredField("mEditor");
@@ -415,21 +415,21 @@ public class a
       localObject = (Method)Class.class.getDeclaredMethod("getDeclaredMethod", new Class[] { String.class, [Ljava.lang.Class.class }).invoke(localObject, new Object[] { "getEmailPopupWindow", null });
       ((Method)localObject).setAccessible(true);
       ((Method)localObject).invoke(paramTextView, new Object[0]);
-      av.i("SelectableEditTextHelper", "getEmailPopupWindow succ", new Object[0]);
-      AppMethodBeat.o(251135);
+      bc.i("SelectableEditTextHelper", "getEmailPopupWindow succ", new Object[0]);
+      AppMethodBeat.o(252065);
       return true;
     }
-    catch (Throwable paramTextView)
+    finally
     {
-      av.e("SelectableEditTextHelper", "getEmailPopupWindow err:%s", new Object[] { paramTextView.getMessage() });
-      AppMethodBeat.o(251135);
+      bc.e("SelectableEditTextHelper", "getEmailPopupWindow err:%s", new Object[] { paramTextView.getMessage() });
+      AppMethodBeat.o(252065);
     }
     return false;
   }
   
   private static boolean a(TextView paramTextView, Menu paramMenu)
   {
-    AppMethodBeat.i(251115);
+    AppMethodBeat.i(252056);
     try
     {
       Object localObject1 = TextView.class.getDeclaredField("mEditor");
@@ -437,7 +437,7 @@ public class a
       Object localObject3 = ((Field)localObject1).get(paramTextView);
       Class localClass2 = Class.forName("android.widget.Editor");
       Class localClass1 = Class.forName("android.widget.Editor$TextActionModeCallback");
-      Object localObject2 = paramTextView.getTag(com.tencent.mm.cr.a.f.text_view_callback);
+      Object localObject2 = paramTextView.getTag(com.tencent.mm.ck.a.f.text_view_callback);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -452,9 +452,7 @@ public class a
         localObject2 = localClass1.getDeclaredMethod("populateMenuWithItems", new Class[] { Menu.class });
         ((Method)localObject2).setAccessible(true);
         ((Method)localObject2).invoke(localObject1, new Object[] { paramMenu });
-        paramTextView.setTag(com.tencent.mm.cr.a.f.text_view_callback, localObject1);
-        av.i("SelectableEditTextHelper", "populateMenuItems succ", new Object[0]);
-        AppMethodBeat.o(251115);
+        paramTextView.setTag(com.tencent.mm.ck.a.f.text_view_callback, localObject1);
         return true;
         label178:
         localObject1 = localClass1.getDeclaredConstructor(new Class[] { localClass2, Boolean.TYPE });
@@ -462,134 +460,128 @@ public class a
       }
       return false;
     }
-    catch (Throwable paramTextView)
+    finally
     {
-      av.e("SelectableEditTextHelper", "populateMenuItems err", new Object[0]);
-      AppMethodBeat.o(251115);
+      bc.e("SelectableEditTextHelper", "populateMenuItems err", new Object[0]);
+      AppMethodBeat.o(252056);
     }
   }
   
-  private static boolean ibY()
+  private void jHT()
   {
-    AppMethodBeat.i(251116);
-    if (Build.VERSION.SDK_INT >= 28) {
-      try
-      {
-        Object localObject = Class.class.getDeclaredMethod("forName", new Class[] { String.class });
-        Method localMethod = Class.class.getDeclaredMethod("getDeclaredMethod", new Class[] { String.class, [Ljava.lang.Class.class });
-        Class localClass = (Class)((Method)localObject).invoke(null, new Object[] { "dalvik.system.VMRuntime" });
-        localObject = (Method)localMethod.invoke(localClass, new Object[] { "getRuntime", null });
-        localMethod = (Method)localMethod.invoke(localClass, new Object[] { "setHiddenApiExemptions", { [Ljava.lang.String.class } });
-        localObject = ((Method)localObject).invoke(null, new Object[0]);
-        if ((localObject == null) || (localMethod == null))
-        {
-          AppMethodBeat.o(251116);
-          return false;
-        }
-        try
-        {
-          localMethod.invoke(localObject, new Object[] { { "L" } });
-          AppMethodBeat.o(251116);
-          return true;
-        }
-        catch (Throwable localThrowable1)
-        {
-          AppMethodBeat.o(251116);
-          return false;
-        }
-        AppMethodBeat.o(251116);
-      }
-      catch (Throwable localThrowable2)
-      {
-        AppMethodBeat.o(251116);
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  private void icH()
-  {
-    AppMethodBeat.i(251110);
+    AppMethodBeat.i(252048);
     long l1 = System.currentTimeMillis();
     try
     {
       Object localObject = TextView.class.getDeclaredField("mTextSelectHandleRes");
       ((Field)localObject).setAccessible(true);
-      ((Field)localObject).set(this.rR, Integer.valueOf(com.tencent.mm.cr.a.e.trans_drawable));
-      boolean bool1 = ibY();
-      localObject = this.rR;
-      if (this.Yku == null) {
-        this.Yku = new o(this.mContext);
+      ((Field)localObject).set(this.sQ, Integer.valueOf(com.tencent.mm.ck.a.e.trans_drawable));
+      boolean bool1 = jHm();
+      localObject = this.sQ;
+      if (this.agct == null) {
+        this.agct = new s(this.mContext);
       }
-      this.Yku.clear();
-      ibY();
-      boolean bool2 = a((TextView)localObject, this.Yku);
-      h(this.Yku);
+      this.agct.clear();
+      jHm();
+      boolean bool2 = a((TextView)localObject, this.agct);
+      h(this.agct);
       long l2 = System.currentTimeMillis();
-      av.i("SelectableEditTextHelper", "startInsertionActionMode SDK_INT:%s, exemptRes:%s ,res:%s, duration:%s", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Long.valueOf(l2 - l1) });
-      AppMethodBeat.o(251110);
+      bc.i("SelectableEditTextHelper", "startInsertionActionMode SDK_INT:%s, exemptRes:%s ,res:%s, duration:%s", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Long.valueOf(l2 - l1) });
+      AppMethodBeat.o(252048);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        av.e("SelectableEditTextHelper", "disableSysHandle fail:", new Object[] { localException.getMessage() });
+        bc.e("SelectableEditTextHelper", "disableSysHandle fail:", new Object[] { localException.getMessage() });
       }
     }
   }
   
-  final void HN(boolean paramBoolean)
+  private static boolean jHm()
   {
-    AppMethodBeat.i(251119);
+    AppMethodBeat.i(252060);
+    if (Build.VERSION.SDK_INT >= 28) {
+      try
+      {
+        Object localObject3 = Class.class.getDeclaredMethod("forName", new Class[] { String.class });
+        Method localMethod = Class.class.getDeclaredMethod("getDeclaredMethod", new Class[] { String.class, [Ljava.lang.Class.class });
+        Class localClass = (Class)((Method)localObject3).invoke(null, new Object[] { "dalvik.system.VMRuntime" });
+        localObject3 = (Method)localMethod.invoke(localClass, new Object[] { "getRuntime", null });
+        localMethod = (Method)localMethod.invoke(localClass, new Object[] { "setHiddenApiExemptions", { [Ljava.lang.String.class } });
+        localObject3 = ((Method)localObject3).invoke(null, new Object[0]);
+        if ((localObject3 == null) || (localMethod == null))
+        {
+          AppMethodBeat.o(252060);
+          return false;
+        }
+        try
+        {
+          localMethod.invoke(localObject3, new Object[] { { "L" } });
+        }
+        finally {}
+        AppMethodBeat.o(252060);
+      }
+      finally
+      {
+        AppMethodBeat.o(252060);
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  final void NH(boolean paramBoolean)
+  {
+    AppMethodBeat.i(252088);
     if (this.mIsPause)
     {
-      AppMethodBeat.o(251119);
+      AppMethodBeat.o(252088);
       return;
     }
     if (!paramBoolean)
     {
-      cpo();
-      AppMethodBeat.o(251119);
+      cRR();
+      AppMethodBeat.o(252088);
       return;
     }
-    int i = this.rR.getSelectionStart();
-    if ((this.fYp) && (this.Yoi == i))
+    int i = this.sQ.getSelectionStart();
+    if ((this.iep) && (this.aggu == i))
     {
-      s(this.Yod, this.Yoe, false);
-      this.Yoi = i;
+      s(this.aggp, this.aggq, false);
+      this.aggu = i;
     }
     for (;;)
     {
-      this.rR.setCursorVisible(true);
-      this.Yoi = i;
-      AppMethodBeat.o(251119);
+      this.sQ.setCursorVisible(true);
+      this.aggu = i;
+      AppMethodBeat.o(252088);
       return;
-      cpo();
+      cRR();
     }
   }
   
   protected void a(b paramb)
   {
-    AppMethodBeat.i(251128);
+    AppMethodBeat.i(252139);
     if (paramb == null)
     {
-      AppMethodBeat.o(251128);
+      AppMethodBeat.o(252139);
       return;
     }
     try
     {
-      Layout localLayout = this.rR.getLayout();
+      Layout localLayout = this.sQ.getLayout();
       int j;
       int k;
       if (b.c(paramb))
       {
-        i = this.YnP.tH;
+        i = this.aggb.uG;
         j = (int)localLayout.getPrimaryHorizontal(i);
         k = localLayout.getLineBottom(localLayout.getLineForOffset(i));
-        paramb.Yok.rR.getLocationInWindow(paramb.Ykw);
-        if (!paramb.Yon) {
+        paramb.aggw.sQ.getLocationInWindow(paramb.agcv);
+        if (!paramb.aggA) {
           break label189;
         }
       }
@@ -598,26 +590,26 @@ public class a
       {
         int m = paramb.getExtraX();
         k += paramb.getExtraY();
-        if ((k >= paramb.Ykw[1]) && (k <= paramb.Ykw[1] + paramb.Yok.rR.getHeight() - paramb.Yok.rR.getPaddingBottom() + aw.fromDPToPix(paramb.Yok.mContext, 5))) {
-          paramb.mW(j - i + m, k);
+        if ((k >= paramb.agcv[1]) && (k <= paramb.agcv[1] + paramb.aggw.sQ.getHeight() - paramb.aggw.sQ.getPaddingBottom() + bd.fromDPToPix(paramb.aggw.mContext, 5))) {
+          paramb.oP(j - i + m, k);
         }
-        AppMethodBeat.o(251128);
+        AppMethodBeat.o(252139);
         return;
-        i = this.YnP.tI;
+        i = this.aggb.uH;
         break;
       }
       return;
     }
-    catch (Throwable paramb)
+    finally
     {
-      av.e("SelectableEditTextHelper", "show cursor err：%s", new Object[] { Log.getStackTraceString(paramb) });
-      AppMethodBeat.o(251128);
+      bc.e("SelectableEditTextHelper", "show cursor err：%s", new Object[] { Log.getStackTraceString(paramb) });
+      AppMethodBeat.o(252139);
     }
   }
   
   protected void a(f paramf)
   {
-    AppMethodBeat.i(251131);
+    AppMethodBeat.i(252198);
     if (paramf != null) {}
     int i;
     Object localObject1;
@@ -626,31 +618,31 @@ public class a
     {
       try
       {
-        i = paramf.Yok.rR.getText().length();
-        if ((i <= 0) || (paramf.Yok.YnP.tH != 0) || (paramf.Yok.YnP.tI != i)) {
+        i = paramf.aggw.sQ.getText().length();
+        if ((i <= 0) || (paramf.aggw.aggb.uG != 0) || (paramf.aggw.aggb.uH != i)) {
           break label151;
         }
         i = 1;
         localObject1 = new LinkedList();
-        localObject2 = paramf.Ykr.iterator();
+        localObject2 = paramf.agcq.iterator();
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
         localObject3 = (c)((Iterator)localObject2).next();
-        if ((((c)localObject3).Yoq & i) == 0) {
+        if ((((c)localObject3).aggD & i) == 0) {
           continue;
         }
         ((List)localObject1).add(localObject3);
         continue;
-        AppMethodBeat.o(251131);
+        AppMethodBeat.o(252198);
       }
-      catch (Throwable paramf)
+      finally
       {
-        av.e("SelectableEditTextHelper", "show oper err：%s", new Object[] { Log.getStackTraceString(paramf) });
+        bc.e("SelectableEditTextHelper", "show oper err：%s", new Object[] { Log.getStackTraceString(paramf) });
       }
       return;
       label151:
-      if (paramf.Yok.YnP.tH != paramf.Yok.YnP.tI) {
+      if (paramf.aggw.aggb.uG != paramf.aggw.aggb.uH) {
         break label1113;
       }
       if (i <= 0) {
@@ -658,8 +650,8 @@ public class a
       }
       i = 4;
     }
-    paramf.Yok.Ykv.clear();
-    Object localObject2 = paramf.Yok;
+    paramf.aggw.agcu.clear();
+    Object localObject2 = paramf.aggw;
     int j;
     label263:
     int i1;
@@ -670,55 +662,55 @@ public class a
     int i3;
     int i4;
     int i5;
-    if ((((a)localObject2).Yof.Ygq.size() > 0) && (Build.BRAND != null) && (((a)localObject2).Yof.Yom.contains(Build.BRAND.toLowerCase())) && (Build.VERSION.SDK_INT >= 23) && (((a)localObject2).HjZ))
+    if ((((a)localObject2).aggr.afYq.size() > 0) && (Build.BRAND != null) && (((a)localObject2).aggr.aggy.contains(Build.BRAND.toLowerCase())) && (Build.VERSION.SDK_INT >= 23) && (((a)localObject2).NhM))
     {
       j = 1;
       if (j != 0)
       {
-        av.i("SelectableEditTextHelper", "tryGetMenus", new Object[0]);
-        paramf.Yok.icH();
+        bc.i("SelectableEditTextHelper", "tryGetMenus", new Object[0]);
+        paramf.aggw.jHT();
       }
-      if (paramf.Yok.Ykv.size() > 0)
+      if (paramf.aggw.agcu.size() > 0)
       {
-        localObject2 = paramf.Yok.Ykv.entrySet().iterator();
+        localObject2 = paramf.aggw.agcu.entrySet().iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (Map.Entry)((Iterator)localObject2).next();
           ((List)localObject1).add(new c(((CharSequence)((Map.Entry)localObject3).getValue()).toString(), ((Integer)((Map.Entry)localObject3).getKey()).intValue()));
         }
       }
-      if (paramf.Yok.YkA != null) {
-        paramf.Yok.YkA.B((List)localObject1, i);
+      if (paramf.aggw.agcz != null) {
+        paramf.aggw.agcz.I((List)localObject1, i);
       }
-      paramf.Yos.uAd = ((List)localObject1);
-      paramf.Yos.alc.notifyChanged();
-      localObject1 = paramf.usB.getContentView();
+      paramf.aggF.xGG = ((List)localObject1);
+      paramf.aggF.bZE.notifyChanged();
+      localObject1 = paramf.xyX.getContentView();
       ((View)localObject1).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
       paramf.mWidth = ((View)localObject1).getMeasuredWidth();
       paramf.mHeight = ((View)localObject1).getMeasuredHeight();
-      paramf.Yok.rR.getLocationInWindow(paramf.Yok.Ykw);
-      localObject1 = paramf.Yok.rR.getLayout();
-      i1 = com.tencent.mm.ui.widget.textview.b.getScreenWidth(paramf.Yok.mContext);
-      m = aw.fromDPToPix(paramf.Yok.mContext, 10);
+      paramf.aggw.sQ.getLocationInWindow(paramf.aggw.agcv);
+      localObject1 = paramf.aggw.sQ.getLayout();
+      i1 = com.tencent.mm.ui.widget.textview.b.getScreenWidth(paramf.aggw.mContext);
+      m = bd.fromDPToPix(paramf.aggw.mContext, 10);
       i = i1 - m * 2;
       if (paramf.mWidth >= i) {
         paramf.mWidth = i;
       }
-      j = ((int)((Layout)localObject1).getPrimaryHorizontal(paramf.Yok.YnP.tH) + (int)((Layout)localObject1).getPrimaryHorizontal(paramf.Yok.YnP.tI)) / 2 + paramf.Yok.Ykw[0] - paramf.mWidth / 2 + paramf.Yok.rR.getPaddingLeft();
+      j = ((int)((Layout)localObject1).getPrimaryHorizontal(paramf.aggw.aggb.uG) + (int)((Layout)localObject1).getPrimaryHorizontal(paramf.aggw.aggb.uH)) / 2 + paramf.aggw.agcv[0] - paramf.mWidth / 2 + paramf.aggw.sQ.getPaddingLeft();
       i = j;
-      if (paramf.Yok.YnP.tH != paramf.Yok.YnP.tI)
+      if (paramf.aggw.aggb.uG != paramf.aggw.aggb.uH)
       {
         i = j;
-        if (((Layout)localObject1).getLineForOffset(paramf.Yok.YnP.tH) != ((Layout)localObject1).getLineForOffset(paramf.Yok.YnP.tI)) {
-          i = paramf.Yok.Ykw[0] + paramf.Yok.rR.getWidth() / 2 - paramf.mWidth / 2;
+        if (((Layout)localObject1).getLineForOffset(paramf.aggw.aggb.uG) != ((Layout)localObject1).getLineForOffset(paramf.aggw.aggb.uH)) {
+          i = paramf.aggw.agcv[0] + paramf.aggw.sQ.getWidth() / 2 - paramf.mWidth / 2;
         }
       }
-      k = ((Layout)localObject1).getLineTop(((Layout)localObject1).getLineForOffset(paramf.Yok.YnP.tH)) + paramf.Yok.Ykw[1] - paramf.mHeight + paramf.Yok.rR.getPaddingTop() - paramf.Yok.rR.getScrollY() - aw.fromDPToPix(paramf.Yok.mContext, 5);
-      n = paramf.Yok.Ykw[1] - paramf.mHeight - aw.fromDPToPix(paramf.Yok.mContext, 5);
-      i2 = paramf.Yok.Ykw[1];
-      i3 = paramf.Yok.rR.getHeight();
+      k = ((Layout)localObject1).getLineTop(((Layout)localObject1).getLineForOffset(paramf.aggw.aggb.uG)) + paramf.aggw.agcv[1] - paramf.mHeight + paramf.aggw.sQ.getPaddingTop() - paramf.aggw.sQ.getScrollY() - bd.fromDPToPix(paramf.aggw.mContext, 5);
+      n = paramf.aggw.agcv[1] - paramf.mHeight - bd.fromDPToPix(paramf.aggw.mContext, 5);
+      i2 = paramf.aggw.agcv[1];
+      i3 = paramf.aggw.sQ.getHeight();
       i4 = paramf.mHeight;
-      i5 = aw.fromDPToPix(paramf.Yok.mContext, 5);
+      i5 = bd.fromDPToPix(paramf.aggw.mContext, 5);
       if (i <= m)
       {
         j = m;
@@ -738,31 +730,31 @@ public class a
       label1097:
       for (;;)
       {
-        ((LinearLayout.LayoutParams)paramf.Yks.getLayoutParams()).leftMargin = (i - j);
+        ((LinearLayout.LayoutParams)paramf.agcr.getLayoutParams()).leftMargin = (i - j);
         if (Build.VERSION.SDK_INT >= 21) {
-          paramf.usB.setElevation(8.0F);
+          paramf.xyX.setElevation(8.0F);
         }
         localObject1 = paramf.mRecyclerView.getLayoutManager();
         if ((localObject1 instanceof LinearLayoutManager))
         {
           localObject1 = (LinearLayoutManager)localObject1;
           localObject2 = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-          com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$OperateWindow", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
-          ((LinearLayoutManager)localObject1).scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$OperateWindow", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
+          ((LinearLayoutManager)localObject1).scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/ui/widget/edittext/SelectableEditTextHelper$OperateWindow", "show", "()V", "Undefined", "scrollToPosition", "(I)V");
         }
-        paramf.usB.setWidth(paramf.mWidth);
+        paramf.xyX.setWidth(paramf.mWidth);
         try
         {
-          paramf.usB.showAtLocation(paramf.Yok.rR, 0, j, k);
-          AppMethodBeat.o(251131);
+          paramf.xyX.showAtLocation(paramf.aggw.sQ, 0, j, k);
+          AppMethodBeat.o(252198);
           return;
         }
         catch (Exception paramf)
         {
-          av.e("SelectableEditTextHelper", "oper error!:%s", new Object[] { paramf.getMessage() });
+          bc.e("SelectableEditTextHelper", "oper error!:%s", new Object[] { paramf.getMessage() });
         }
-        AppMethodBeat.o(251131);
+        AppMethodBeat.o(252198);
         return;
       }
       label1108:
@@ -786,388 +778,408 @@ public class a
   
   protected void b(b paramb)
   {
-    AppMethodBeat.i(251133);
+    AppMethodBeat.i(252209);
     if (paramb != null) {
-      paramb.mPopupWindow.dismiss();
+      paramb.aggz.dismiss();
     }
-    AppMethodBeat.o(251133);
+    AppMethodBeat.o(252209);
   }
   
   protected void b(f paramf)
   {
-    AppMethodBeat.i(251132);
+    AppMethodBeat.i(252203);
     if (paramf != null) {
-      paramf.usB.dismiss();
+      paramf.xyX.dismiss();
     }
-    AppMethodBeat.o(251132);
+    AppMethodBeat.o(252203);
   }
   
-  protected void cpn()
+  protected void cRQ()
   {
-    this.YnP.Yov = null;
+    this.aggb.aggI = null;
   }
   
-  public void cpo()
+  public void cRR()
   {
-    AppMethodBeat.i(251118);
-    cpn();
-    cpq();
-    Selection.setSelection(this.rR.getEditableText(), this.rR.getSelectionEnd());
-    this.rR.setCursorVisible(true);
-    AppMethodBeat.o(251118);
+    AppMethodBeat.i(252086);
+    cRQ();
+    cRT();
+    Selection.setSelection(this.sQ.getEditableText(), this.sQ.getSelectionEnd());
+    this.sQ.setCursorVisible(true);
+    AppMethodBeat.o(252086);
   }
   
-  protected Runnable cpp()
+  protected Runnable cRS()
   {
-    return this.Yoj;
+    return this.aggv;
   }
   
-  protected void cpq()
+  protected void cRT()
   {
-    AppMethodBeat.i(251122);
-    this.fYp = true;
-    b(this.YnM);
-    b(this.YnN);
-    b(this.YnO);
-    AppMethodBeat.o(251122);
+    AppMethodBeat.i(252094);
+    this.iep = true;
+    b(this.agfY);
+    b(this.agfZ);
+    b(this.agga);
+    AppMethodBeat.o(252094);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(251130);
-    this.rR.removeTextChangedListener(this.uY);
-    this.rR.removeOnAttachStateChangeListener(this.YnR);
-    this.rR.removeOnLayoutChangeListener(this.VWm);
-    this.rR.getViewTreeObserver().removeOnScrollChangedListener(this.YnQ);
-    this.rR.getViewTreeObserver().removeOnPreDrawListener(this.aqE);
-    cpn();
-    cpq();
-    this.YnM = null;
-    this.YnN = null;
-    this.YnO = null;
-    AppMethodBeat.o(251130);
+    AppMethodBeat.i(252160);
+    this.sQ.removeTextChangedListener(this.vU);
+    this.sQ.removeOnAttachStateChangeListener(this.aggd);
+    this.sQ.removeOnLayoutChangeListener(this.adAI);
+    this.sQ.getViewTreeObserver().removeOnScrollChangedListener(this.aggc);
+    this.sQ.getViewTreeObserver().removeOnPreDrawListener(this.cfn);
+    cRQ();
+    cRT();
+    this.agfY = null;
+    this.agfZ = null;
+    this.agga = null;
+    AppMethodBeat.o(252160);
   }
   
-  protected void fj(int paramInt1, int paramInt2)
+  protected void gc(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(251129);
+    AppMethodBeat.i(252152);
     if (paramInt1 != -1) {
-      this.YnP.tH = paramInt1;
+      this.aggb.uG = paramInt1;
     }
     if (paramInt2 != -1) {
-      this.YnP.tI = paramInt2;
+      this.aggb.uH = paramInt2;
     }
-    if (this.YnP.tH > this.YnP.tI)
+    if (this.aggb.uG > this.aggb.uH)
     {
-      paramInt2 = this.YnP.tH;
-      this.YnP.tH = this.YnP.tI;
-      this.YnP.tI = paramInt2;
+      paramInt2 = this.aggb.uG;
+      this.aggb.uG = this.aggb.uH;
+      this.aggb.uH = paramInt2;
     }
-    if (this.Yfs != null)
+    if (this.afXs != null)
     {
-      if (paramInt1 >= this.rR.getText().length())
+      if (paramInt1 >= this.sQ.getText().length())
       {
-        AppMethodBeat.o(251129);
+        AppMethodBeat.o(252152);
         return;
       }
-      this.YnP.Yov = this.Yfs.subSequence(this.YnP.tH, this.YnP.tI).toString();
-      this.rR.setHighlightColor(this.YnW);
-      Selection.setSelection(this.Yfs, this.YnP.tH, this.YnP.tI);
+      this.aggb.aggI = this.afXs.subSequence(this.aggb.uG, this.aggb.uH).toString();
+      this.sQ.setHighlightColor(this.aggi);
+      Selection.setSelection(this.afXs, this.aggb.uG, this.aggb.uH);
     }
-    AppMethodBeat.o(251129);
+    AppMethodBeat.o(252152);
   }
   
   final void h(Menu paramMenu)
   {
-    AppMethodBeat.i(251112);
-    if ((paramMenu != null) && (this.Yof.Ygq.size() > 0))
+    AppMethodBeat.i(252078);
+    if ((paramMenu != null) && (this.aggr.afYq.size() > 0))
     {
       int i = 0;
       while (i < paramMenu.size())
       {
         MenuItem localMenuItem = paramMenu.getItem(i);
-        av.d("SelectableEditTextHelper", "filterReuseMenus:%s", new Object[] { localMenuItem.getTitle() });
-        if (this.Yof.Ygq.contains(localMenuItem.getTitle()))
+        bc.d("SelectableEditTextHelper", "filterReuseMenus:%s", new Object[] { localMenuItem.getTitle() });
+        if (this.aggr.afYq.contains(localMenuItem.getTitle()))
         {
-          av.d("SelectableEditTextHelper", "reuse bingo:%s", new Object[] { localMenuItem.getTitle() });
-          this.Ykv.put(Integer.valueOf(localMenuItem.getItemId()), localMenuItem.getTitle());
+          bc.d("SelectableEditTextHelper", "reuse bingo:%s", new Object[] { localMenuItem.getTitle() });
+          this.agcu.put(Integer.valueOf(localMenuItem.getItemId()), localMenuItem.getTitle());
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(251112);
+    AppMethodBeat.o(252078);
   }
   
-  final f icI()
+  final f jHU()
   {
-    AppMethodBeat.i(251117);
-    if (this.YnO == null) {
-      this.YnO = new f(this.mContext);
+    AppMethodBeat.i(252083);
+    if (this.agga == null) {
+      this.agga = new f(this.mContext);
     }
-    f localf = this.YnO;
-    AppMethodBeat.o(251117);
+    f localf = this.agga;
+    AppMethodBeat.o(252083);
     return localf;
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(251123);
+    AppMethodBeat.i(252107);
     this.mIsPause = true;
-    cpo();
-    AppMethodBeat.o(251123);
+    cRR();
+    AppMethodBeat.o(252107);
   }
   
   public final void resume()
   {
-    AppMethodBeat.i(251124);
-    cpo();
+    AppMethodBeat.i(252116);
+    cRR();
     this.mIsPause = false;
-    AppMethodBeat.o(251124);
+    AppMethodBeat.o(252116);
   }
   
   protected void s(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     int i = 1;
-    AppMethodBeat.i(251126);
-    if ((this.rR.getLayout() == null) || (this.rR.getWidth() == 0))
+    AppMethodBeat.i(252127);
+    if ((this.sQ.getLayout() == null) || (this.sQ.getWidth() == 0))
     {
-      AppMethodBeat.o(251126);
+      AppMethodBeat.o(252127);
       return;
     }
-    if (this.YnM == null) {
-      this.YnM = new b(true);
+    if (this.agfY == null) {
+      this.agfY = new b(true);
     }
-    if (this.YnN == null) {
-      this.YnN = new b(false);
+    if (this.agfZ == null) {
+      this.agfZ = new b(false);
     }
-    paramInt1 = this.rR.getOffsetForPosition(paramInt1, paramInt2);
+    paramInt1 = this.sQ.getOffsetForPosition(paramInt1, paramInt2);
     if (!paramBoolean) {
-      paramInt1 = this.rR.getSelectionStart();
+      paramInt1 = this.sQ.getSelectionStart();
     }
     for (;;)
     {
-      if ((this.rR.getText() instanceof Spannable)) {
-        this.Yfs = ((Spannable)this.rR.getText());
+      if ((this.sQ.getText() instanceof Spannable)) {
+        this.afXs = ((Spannable)this.sQ.getText());
       }
-      if (this.Yfs != null) {
+      if (this.afXs != null) {
         break;
       }
-      AppMethodBeat.o(251126);
+      AppMethodBeat.o(252127);
       return;
     }
-    if ((paramInt1 < this.rR.getText().length()) && (paramBoolean))
+    if ((paramInt1 < this.sQ.getText().length()) && (paramBoolean))
     {
       paramInt2 = i;
       if (paramInt2 == 0) {
         break label226;
       }
-      this.rR.setCursorVisible(false);
+      this.sQ.setCursorVisible(false);
     }
     label226:
     for (i = paramInt1 + 1;; i = paramInt1)
     {
-      if ((this.fYp) || (this.YnP.tH != paramInt1) || (this.YnP.tI != i)) {
+      if ((this.iep) || (this.aggb.uG != paramInt1) || (this.aggb.uH != i)) {
         break label232;
       }
-      AppMethodBeat.o(251126);
+      AppMethodBeat.o(252127);
       return;
       paramInt2 = 0;
       break;
     }
     label232:
-    cpq();
-    cpn();
-    this.fYp = false;
-    fj(paramInt1, i);
+    cRT();
+    cRQ();
+    this.iep = false;
+    gc(paramInt1, i);
     if (paramInt2 != 0)
     {
-      a(this.YnM);
-      a(this.YnN);
+      a(this.agfY);
+      a(this.agfZ);
     }
-    a(icI());
-    AppMethodBeat.o(251126);
+    a(jHU());
+    AppMethodBeat.o(252127);
   }
   
   public static final class a
   {
-    public String EJk;
-    boolean HjZ;
-    public Set<String> Ygq;
-    int YnW;
-    int YnX;
-    float Yol;
-    public Set<String> Yom;
-    TextView rR;
+    public String KCR;
+    boolean NhM;
+    Set<String> afYq;
+    int aggi;
+    int aggj;
+    float aggx;
+    Set<String> aggy;
+    TextView sQ;
     
     public a(TextView paramTextView)
     {
-      AppMethodBeat.i(250257);
-      this.YnX = com.tencent.mm.cr.a.c.cursor_handle_color;
-      this.YnW = com.tencent.mm.cr.a.c.selected_blue;
-      this.Yol = 18.0F;
-      this.HjZ = true;
-      this.Ygq = new HashSet();
-      this.Yom = new HashSet();
-      this.rR = paramTextView;
-      AppMethodBeat.o(250257);
+      AppMethodBeat.i(252022);
+      this.aggj = com.tencent.mm.ck.a.c.cursor_handle_color;
+      this.aggi = com.tencent.mm.ck.a.c.selected_blue;
+      this.aggx = 18.0F;
+      this.NhM = true;
+      this.afYq = new HashSet();
+      this.aggy = new HashSet();
+      this.sQ = paramTextView;
+      AppMethodBeat.o(252022);
     }
     
-    public final a icJ()
+    public final a jHV()
     {
-      AppMethodBeat.i(250259);
+      AppMethodBeat.i(252038);
       a locala = new a(this);
-      AppMethodBeat.o(250259);
+      AppMethodBeat.o(252038);
       return locala;
+    }
+    
+    public final a oq(List<String> paramList)
+    {
+      AppMethodBeat.i(252030);
+      if (paramList != null) {
+        this.aggy.addAll(paramList);
+      }
+      AppMethodBeat.o(252030);
+      return this;
+    }
+    
+    public final a or(List<String> paramList)
+    {
+      AppMethodBeat.i(252034);
+      if (paramList != null) {
+        this.afYq.addAll(paramList);
+      }
+      AppMethodBeat.o(252034);
+      return this;
     }
   }
   
   public final class b
     extends View
   {
-    private int Dvd;
-    private int Dve;
-    private int[] Dvf;
-    int[] Ykw;
-    boolean Yon;
-    private int Yoo;
-    private int Yop;
-    private int clC;
+    private int JoA;
+    private int JoB;
+    private int[] JoC;
+    int[] agcv;
+    boolean aggA;
+    private int aggB;
+    private int aggC;
+    PopupWindow aggz;
+    private int ebX;
     private int mHeight;
     private Paint mPaint;
-    PopupWindow mPopupWindow;
     int mWidth;
-    private int uue;
+    private int xAB;
     
     public b(boolean paramBoolean)
     {
       super();
-      AppMethodBeat.i(251608);
-      this.uue = (a.this.YnY / 2);
-      this.mWidth = (this.uue * 2);
-      this.mHeight = (this.uue * 2);
-      this.clC = 25;
-      this.Dvf = new int[2];
-      this.Ykw = new int[2];
-      this.Yon = paramBoolean;
+      AppMethodBeat.i(252025);
+      this.xAB = (a.this.aggk / 2);
+      this.mWidth = (this.xAB * 2);
+      this.mHeight = (this.xAB * 2);
+      this.ebX = 25;
+      this.JoC = new int[2];
+      this.agcv = new int[2];
+      this.aggA = paramBoolean;
       this.mPaint = new Paint(1);
-      this.mPaint.setColor(a.this.YnX);
-      this.mPopupWindow = new PopupWindow(this);
-      this.mPopupWindow.setClippingEnabled(false);
-      this.mPopupWindow.setWidth(this.mWidth + this.clC * 2);
-      this.mPopupWindow.setHeight(this.mHeight + this.clC / 2);
+      this.mPaint.setColor(a.this.aggj);
+      this.aggz = new PopupWindow(this);
+      this.aggz.setClippingEnabled(false);
+      this.aggz.setWidth(this.mWidth + this.ebX * 2);
+      this.aggz.setHeight(this.mHeight + this.ebX / 2);
       invalidate();
-      AppMethodBeat.o(251608);
+      AppMethodBeat.o(252025);
     }
     
     private int a(int paramInt, Layout paramLayout)
     {
-      AppMethodBeat.i(251615);
+      AppMethodBeat.i(252043);
       paramInt = paramLayout.getLineBottom(paramLayout.getLineForOffset(paramInt));
       paramInt = getExtraY() + paramInt;
-      int i = this.Ykw[1] + a.this.rR.getHeight() - a.this.rR.getPaddingBottom();
+      int i = this.agcv[1] + a.this.sQ.getHeight() - a.this.sQ.getPaddingBottom();
       if (paramInt > i) {
         paramInt = i;
       }
       for (;;)
       {
         i = paramInt;
-        if (paramInt < this.Ykw[1]) {
-          i = this.Ykw[1];
+        if (paramInt < this.agcv[1]) {
+          i = this.agcv[1];
         }
-        AppMethodBeat.o(251615);
+        AppMethodBeat.o(252043);
         return i;
       }
     }
     
-    private void icK()
+    private void jHW()
     {
-      AppMethodBeat.i(251613);
-      if (!this.Yon) {}
+      AppMethodBeat.i(252031);
+      if (!this.aggA) {}
       for (boolean bool = true;; bool = false)
       {
-        this.Yon = bool;
+        this.aggA = bool;
         invalidate();
-        AppMethodBeat.o(251613);
+        AppMethodBeat.o(252031);
         return;
       }
     }
     
-    private void icL()
+    private void jHX()
     {
-      AppMethodBeat.i(251614);
-      a.this.rR.getLocationInWindow(this.Ykw);
-      Layout localLayout = a.this.rR.getLayout();
-      if (this.Yon)
+      AppMethodBeat.i(252037);
+      a.this.sQ.getLocationInWindow(this.agcv);
+      Layout localLayout = a.this.sQ.getLayout();
+      if (this.aggA)
       {
-        i = a(a.this.YnP.tH, localLayout);
-        mW((int)localLayout.getPrimaryHorizontal(a.this.YnP.tH) - this.mWidth + getExtraX(), i);
-        AppMethodBeat.o(251614);
+        i = a(a.this.aggb.uG, localLayout);
+        oP((int)localLayout.getPrimaryHorizontal(a.this.aggb.uG) - this.mWidth + getExtraX(), i);
+        AppMethodBeat.o(252037);
         return;
       }
-      int i = a(a.this.YnP.tI, localLayout);
-      mW((int)localLayout.getPrimaryHorizontal(a.this.YnP.tI) + getExtraX(), i);
-      AppMethodBeat.o(251614);
+      int i = a(a.this.aggb.uH, localLayout);
+      oP((int)localLayout.getPrimaryHorizontal(a.this.aggb.uH) + getExtraX(), i);
+      AppMethodBeat.o(252037);
     }
     
     public final int getExtraX()
     {
-      AppMethodBeat.i(251617);
-      int i = this.Ykw[0];
-      int j = this.clC;
-      int k = a.this.rR.getPaddingLeft();
-      AppMethodBeat.o(251617);
+      AppMethodBeat.i(252067);
+      int i = this.agcv[0];
+      int j = this.ebX;
+      int k = a.this.sQ.getPaddingLeft();
+      AppMethodBeat.o(252067);
       return i - j + k;
     }
     
     public final int getExtraY()
     {
-      AppMethodBeat.i(251618);
-      int i = this.Ykw[1];
-      int j = a.this.rR.getPaddingTop();
-      int k = a.this.rR.getScrollY();
-      AppMethodBeat.o(251618);
+      AppMethodBeat.i(252072);
+      int i = this.agcv[1];
+      int j = a.this.sQ.getPaddingTop();
+      int k = a.this.sQ.getScrollY();
+      AppMethodBeat.o(252072);
       return i + j - k;
     }
     
-    final void mW(int paramInt1, int paramInt2)
+    final void oP(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(251616);
+      AppMethodBeat.i(252062);
       try
       {
-        if (this.mPopupWindow.isShowing())
+        if (this.aggz.isShowing())
         {
-          this.mPopupWindow.update(paramInt1, paramInt2, -1, -1);
-          AppMethodBeat.o(251616);
+          this.aggz.update(paramInt1, paramInt2, -1, -1);
+          AppMethodBeat.o(252062);
           return;
         }
-        this.mPopupWindow.showAtLocation(a.this.rR, 0, paramInt1, paramInt2);
-        AppMethodBeat.o(251616);
+        this.aggz.showAtLocation(a.this.sQ, 0, paramInt1, paramInt2);
+        AppMethodBeat.o(252062);
         return;
       }
       catch (Exception localException)
       {
-        av.e("SelectableEditTextHelper", "cursor error!: %s.", new Object[] { localException.getMessage() });
-        AppMethodBeat.o(251616);
+        bc.e("SelectableEditTextHelper", "cursor error!: %s.", new Object[] { localException.getMessage() });
+        AppMethodBeat.o(252062);
       }
     }
     
     protected final void onDraw(Canvas paramCanvas)
     {
-      AppMethodBeat.i(251610);
-      paramCanvas.drawCircle(this.uue + this.clC, this.uue, this.uue, this.mPaint);
-      if (this.Yon)
+      AppMethodBeat.i(252052);
+      paramCanvas.drawCircle(this.xAB + this.ebX, this.xAB, this.xAB, this.mPaint);
+      if (this.aggA)
       {
-        paramCanvas.drawRect(this.uue + this.clC, 0.0F, this.uue * 2 + this.clC, this.uue, this.mPaint);
-        AppMethodBeat.o(251610);
+        paramCanvas.drawRect(this.xAB + this.ebX, 0.0F, this.xAB * 2 + this.ebX, this.xAB, this.mPaint);
+        AppMethodBeat.o(252052);
         return;
       }
-      paramCanvas.drawRect(this.clC, 0.0F, this.uue + this.clC, this.uue, this.mPaint);
-      AppMethodBeat.o(251610);
+      paramCanvas.drawRect(this.ebX, 0.0F, this.xAB + this.ebX, this.xAB, this.mPaint);
+      AppMethodBeat.o(252052);
     }
     
     public final boolean onTouchEvent(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(251612);
+      AppMethodBeat.i(252058);
       switch (paramMotionEvent.getAction())
       {
       default: 
@@ -1176,53 +1188,53 @@ public class a
       case 3: 
         for (;;)
         {
-          AppMethodBeat.o(251612);
+          AppMethodBeat.o(252058);
           return true;
-          this.Yoo = a.this.YnP.tH;
-          this.Yop = a.this.YnP.tI;
-          this.Dvd = ((int)paramMotionEvent.getX());
-          this.Dve = ((int)paramMotionEvent.getY());
-          a.this.rR.getLocationInWindow(this.Dvf);
+          this.aggB = a.this.aggb.uG;
+          this.aggC = a.this.aggb.uH;
+          this.JoA = ((int)paramMotionEvent.getX());
+          this.JoB = ((int)paramMotionEvent.getY());
+          a.this.sQ.getLocationInWindow(this.JoC);
           continue;
-          a.this.a(a.this.icI());
+          a.this.a(a.this.jHU());
         }
       }
-      a.this.b(a.this.icI());
+      a.this.b(a.this.jHU());
       int j = (int)paramMotionEvent.getRawX();
       int k = (int)paramMotionEvent.getRawY();
-      int m = this.Dvf[0];
-      int n = this.Dve;
+      int m = this.JoC[0];
+      int n = this.JoB;
       int i1 = this.mHeight;
-      int i2 = a.this.Yoa;
-      int i3 = a.this.rR.getScrollY();
-      a.this.rR.getLocationInWindow(this.Ykw);
+      int i2 = a.this.aggm;
+      int i3 = a.this.sQ.getScrollY();
+      a.this.sQ.getLocationInWindow(this.agcv);
       int i;
-      if (this.Yon)
+      if (this.aggA)
       {
-        i = a.this.YnP.tH;
+        i = a.this.aggb.uG;
         label227:
-        int i4 = this.Ykw[1];
-        j = com.tencent.mm.ui.widget.textview.b.i(a.this.rR, j - m, i3 + (n + k - i1 - i2) - i4, i);
+        int i4 = this.agcv[1];
+        j = com.tencent.mm.ui.widget.textview.b.h(a.this.sQ, j - m, i3 + (n + k - i1 - i2) - i4, i);
         if (j != i)
         {
-          a.this.cpn();
-          if (!this.Yon) {
+          a.this.cRQ();
+          if (!this.aggA) {
             break label393;
           }
-          if (j <= this.Yop) {
+          if (j <= this.aggC) {
             break label381;
           }
           paramMotionEvent = a.a(a.this, false);
-          icK();
-          paramMotionEvent.icK();
-          this.Yoo = this.Yop;
-          a.this.fj(this.Yop, j);
-          paramMotionEvent.icL();
+          jHW();
+          paramMotionEvent.jHW();
+          this.aggB = this.aggC;
+          a.this.gc(this.aggC, j);
+          paramMotionEvent.jHX();
           label336:
-          icL();
+          jHX();
         }
         paramMotionEvent = a.this;
-        if (this.Yon) {
+        if (this.aggA) {
           break label464;
         }
       }
@@ -1230,27 +1242,27 @@ public class a
       label464:
       for (boolean bool = true;; bool = false)
       {
-        a.a(paramMotionEvent, bool).icL();
+        a.a(paramMotionEvent, bool).jHX();
         break;
-        i = a.this.YnP.tI;
+        i = a.this.aggb.uH;
         break label227;
         label381:
-        a.this.fj(j, -1);
+        a.this.gc(j, -1);
         break label336;
-        if (j < this.Yoo)
+        if (j < this.aggB)
         {
           paramMotionEvent = a.a(a.this, true);
-          paramMotionEvent.icK();
-          icK();
-          this.Yop = this.Yoo;
-          a.this.fj(j, this.Yoo);
-          paramMotionEvent.icL();
+          paramMotionEvent.jHW();
+          jHW();
+          this.aggC = this.aggB;
+          a.this.gc(j, this.aggB);
+          paramMotionEvent.jHX();
         }
         for (;;)
         {
-          icL();
+          jHX();
           break;
-          a.this.fj(this.Yoo, j);
+          a.this.gc(this.aggB, j);
         }
       }
     }
@@ -1258,7 +1270,7 @@ public class a
   
   public static final class c
   {
-    public int Yoq;
+    public int aggD;
     public int id;
     public String name;
     
@@ -1266,82 +1278,82 @@ public class a
     {
       this.name = paramString;
       this.id = paramInt;
-      this.Yoq = 15;
+      this.aggD = 15;
     }
     
     public c(String paramString, int paramInt1, int paramInt2)
     {
       this.name = paramString;
       this.id = paramInt1;
-      this.Yoq = paramInt2;
+      this.aggD = paramInt2;
     }
   }
   
   public static final class d
     extends RecyclerView.a<a>
   {
-    private a.e YkA;
-    private a.g YnP;
-    public List<a.c> uAd;
+    private a.e agcz;
+    private a.g aggb;
+    public List<a.c> xGG;
     
     public d(List<a.c> paramList, a.e parame, a.g paramg)
     {
-      this.uAd = paramList;
-      this.YkA = parame;
-      this.YnP = paramg;
+      this.xGG = paramList;
+      this.agcz = parame;
+      this.aggb = paramg;
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(251061);
-      int i = this.uAd.size();
-      AppMethodBeat.o(251061);
+      AppMethodBeat.i(252044);
+      int i = this.xGG.size();
+      AppMethodBeat.o(252044);
       return i;
     }
     
     final class a
       extends RecyclerView.v
     {
-      TextView bFR;
+      TextView dyR;
       
       public a(View paramView)
       {
         super();
-        AppMethodBeat.i(252013);
-        this.bFR = ((TextView)paramView.findViewById(com.tencent.mm.cr.a.f.menu_item_tv));
-        this.bFR.setTextSize(1, 14.0F);
-        AppMethodBeat.o(252013);
+        AppMethodBeat.i(252010);
+        this.dyR = ((TextView)paramView.findViewById(com.tencent.mm.ck.a.f.menu_item_tv));
+        this.dyR.setTextSize(1, 14.0F);
+        AppMethodBeat.o(252010);
       }
     }
   }
   
   public static abstract interface e
   {
-    public abstract void B(List<a.c> paramList, int paramInt);
+    public abstract void I(List<a.c> paramList, int paramInt);
     
     public abstract void a(View paramView, a.c paramc, String paramString);
   }
   
   public final class f
   {
-    List<a.c> Ykr;
-    ImageView Yks;
-    a.d Yos;
+    List<a.c> agcq;
+    ImageView agcr;
+    a.d aggF;
     int mHeight;
     RecyclerView mRecyclerView;
     int mWidth;
-    PopupWindow usB;
+    PopupWindow xyX;
     
     public f(Context paramContext)
     {
-      AppMethodBeat.i(250693);
-      paramContext = LayoutInflater.from(paramContext).inflate(com.tencent.mm.cr.a.g.layout_operate_windows, null);
+      AppMethodBeat.i(252026);
+      paramContext = LayoutInflater.from(paramContext).inflate(com.tencent.mm.ck.a.g.layout_operate_windows, null);
       paramContext.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
       this.mWidth = paramContext.getMeasuredWidth();
       this.mHeight = paramContext.getMeasuredHeight();
-      this.usB = new PopupWindow(paramContext, -2, -2, false);
-      this.usB.setClippingEnabled(false);
-      this.mRecyclerView = ((RecyclerView)paramContext.findViewById(com.tencent.mm.cr.a.f.rv_list));
+      this.xyX = new PopupWindow(paramContext, -2, -2, false);
+      this.xyX.setClippingEnabled(false);
+      this.mRecyclerView = ((RecyclerView)paramContext.findViewById(com.tencent.mm.ck.a.f.rv_list));
       Object localObject = new LinearLayoutManager(0, false);
       this.mRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject);
       localObject = new LinkedList();
@@ -1350,37 +1362,37 @@ public class a
       ((List)localObject).add(new a.c(a.this.mContext.getResources().getString(17039363), 16908320, 9));
       ((List)localObject).add(new a.c(a.this.mContext.getResources().getString(17039361), 16908321, 9));
       ((List)localObject).add(new a.c(a.this.mContext.getResources().getString(17039371), 16908322));
-      this.Ykr = ((List)localObject);
-      this.Yos = new a.d(this.Ykr, new a.e()
+      this.agcq = ((List)localObject);
+      this.aggF = new a.d(this.agcq, new a.e()
       {
-        public final void B(List<a.c> paramAnonymousList, int paramAnonymousInt) {}
+        public final void I(List<a.c> paramAnonymousList, int paramAnonymousInt) {}
         
         public final void a(View paramAnonymousView, a.c paramAnonymousc, String paramAnonymousString)
         {
-          AppMethodBeat.i(249518);
+          AppMethodBeat.i(252046);
           a.f.a(a.f.this, paramAnonymousView, paramAnonymousc, paramAnonymousString);
-          AppMethodBeat.o(249518);
+          AppMethodBeat.o(252046);
         }
-      }, a.this.YnP);
-      this.mRecyclerView.setAdapter(this.Yos);
-      localObject = new i(a.this.mContext, 0);
-      ((i)localObject).t(new ColorDrawable(a.this.mContext.getResources().getColor(com.tencent.mm.cr.a.c.input_menu_divider)));
+      }, a.this.aggb);
+      this.mRecyclerView.setAdapter(this.aggF);
+      localObject = new h(a.this.mContext, 0);
+      ((h)localObject).w(new ColorDrawable(a.this.mContext.getResources().getColor(com.tencent.mm.ck.a.c.input_menu_divider)));
       this.mRecyclerView.a((RecyclerView.h)localObject);
-      this.Yks = ((ImageView)paramContext.findViewById(com.tencent.mm.cr.a.f.cursor_iv));
-      AppMethodBeat.o(250693);
+      this.agcr = ((ImageView)paramContext.findViewById(com.tencent.mm.ck.a.f.cursor_iv));
+      AppMethodBeat.o(252026);
     }
   }
   
   public static final class g
   {
-    public String Yov;
-    public int tH;
-    public int tI;
+    public String aggI;
+    public int uG;
+    public int uH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.edittext.a
  * JD-Core Version:    0.7.0.1
  */

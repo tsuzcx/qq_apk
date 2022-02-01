@@ -1,91 +1,77 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import org.json.JSONObject;
 
 public final class fdy
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int rVx;
-  public LinkedList<fdx> rVy;
+  public int abDC;
   
-  public fdy()
+  private JSONObject toJSON()
   {
-    AppMethodBeat.i(115871);
-    this.rVy = new LinkedList();
-    AppMethodBeat.o(115871);
+    AppMethodBeat.i(258610);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "MatchContactNum", Integer.valueOf(this.abDC), false);
+      label27:
+      AppMethodBeat.o(258610);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label27;
+    }
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115872);
+    AppMethodBeat.i(117929);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.rVx);
-      paramVarArgs.e(2, 8, this.rVy);
-      AppMethodBeat.o(115872);
+      ((i.a.a.c.a)paramVarArgs[0]).bS(1, this.abDC);
+      AppMethodBeat.o(117929);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bM(1, this.rVx);
-      i = g.a.a.a.c(2, 8, this.rVy);
-      AppMethodBeat.o(115872);
-      return paramInt + 0 + i;
+      paramInt = i.a.a.b.b.a.cJ(1, this.abDC);
+      AppMethodBeat.o(117929);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.rVy.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(115872);
+      AppMethodBeat.o(117929);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       fdy localfdy = (fdy)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(115872);
+        AppMethodBeat.o(117929);
         return -1;
-      case 1: 
-        localfdy.rVx = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(115872);
-        return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        fdx localfdx = new fdx();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localfdx.parseFrom((byte[])localObject);
-        }
-        localfdy.rVy.add(localfdx);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(115872);
+      localfdy.abDC = locala.ajGk.aar();
+      AppMethodBeat.o(117929);
       return 0;
     }
-    AppMethodBeat.o(115872);
+    AppMethodBeat.o(117929);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fdy
  * JD-Core Version:    0.7.0.1
  */

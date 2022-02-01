@@ -10,8 +10,8 @@ public class CreTypeRuleInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<CreTypeRuleInfo> CREATOR;
-  public int OOK;
-  public CreExtInfo OOL;
+  public int VEE;
+  public CreExtInfo VEF;
   
   static
   {
@@ -25,19 +25,19 @@ public class CreTypeRuleInfo
   protected CreTypeRuleInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70252);
-    this.OOK = paramParcel.readInt();
-    this.OOL = ((CreExtInfo)paramParcel.readParcelable(CreExtInfo.class.getClassLoader()));
+    this.VEE = paramParcel.readInt();
+    this.VEF = ((CreExtInfo)paramParcel.readParcelable(CreExtInfo.class.getClassLoader()));
     AppMethodBeat.o(70252);
   }
   
-  public static CreTypeRuleInfo bP(JSONObject paramJSONObject)
+  public static CreTypeRuleInfo ck(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70254);
     if (paramJSONObject != null)
     {
       CreTypeRuleInfo localCreTypeRuleInfo = new CreTypeRuleInfo();
-      localCreTypeRuleInfo.OOK = paramJSONObject.optInt("support_cre_type", 0);
-      localCreTypeRuleInfo.OOL = CreExtInfo.bO(paramJSONObject.optJSONObject("cre_need_info"));
+      localCreTypeRuleInfo.VEE = paramJSONObject.optInt("support_cre_type", 0);
+      localCreTypeRuleInfo.VEF = CreExtInfo.cj(paramJSONObject.optJSONObject("cre_need_info"));
       AppMethodBeat.o(70254);
       return localCreTypeRuleInfo;
     }
@@ -53,14 +53,14 @@ public class CreTypeRuleInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70253);
-    paramParcel.writeInt(this.OOK);
-    paramParcel.writeParcelable(this.OOL, paramInt);
+    paramParcel.writeInt(this.VEE);
+    paramParcel.writeParcelable(this.VEF, paramInt);
     AppMethodBeat.o(70253);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.CreTypeRuleInfo
  * JD-Core Version:    0.7.0.1
  */

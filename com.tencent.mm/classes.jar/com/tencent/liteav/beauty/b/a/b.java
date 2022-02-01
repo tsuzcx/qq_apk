@@ -21,11 +21,11 @@ public class b
   
   private void r()
   {
-    AppMethodBeat.i(233545);
+    AppMethodBeat.i(229761);
     this.s = GLES20.glGetUniformLocation(q(), "whiteDegree");
     this.r = GLES20.glGetUniformLocation(q(), "contrast");
     this.t = GLES20.glGetUniformLocation(q(), "ruddyDegree");
-    AppMethodBeat.o(233545);
+    AppMethodBeat.o(229761);
   }
   
   public void a(float paramFloat)
@@ -68,7 +68,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.b
  * JD-Core Version:    0.7.0.1
  */

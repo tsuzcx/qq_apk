@@ -24,12 +24,12 @@ public abstract interface a
       attachInterface(this, "com.tencent.mm.ipcinvoker.aidl.AIDL_IPCInvokeBridge");
     }
     
-    public static a aFA()
+    public static a aYz()
     {
-      return a.jZf;
+      return a.mzd;
     }
     
-    public static a n(IBinder paramIBinder)
+    public static a p(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -109,7 +109,7 @@ public abstract interface a
     static final class a
       implements a
     {
-      public static a jZf;
+      public static a mzd;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -137,10 +137,10 @@ public abstract interface a
               localIBinder = paramb.asBinder();
             }
             localParcel.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(1, localParcel, null, 1)) || (a.a.aFA() == null)) {
+            if ((this.mRemote.transact(1, localParcel, null, 1)) || (a.a.aYz() == null)) {
               break;
             }
-            a.a.aFA().a(paramBundle, paramString, paramb);
+            a.a.aYz().a(paramBundle, paramString, paramb);
             return;
             localParcel.writeInt(0);
           }
@@ -175,10 +175,10 @@ public abstract interface a
           for (;;)
           {
             localParcel1.writeString(paramString);
-            if ((this.mRemote.transact(2, localParcel1, localParcel2, 0)) || (a.a.aFA() == null)) {
+            if ((this.mRemote.transact(2, localParcel1, localParcel2, 0)) || (a.a.aYz() == null)) {
               break;
             }
-            paramBundle = a.a.aFA().e(paramBundle, paramString);
+            paramBundle = a.a.aYz().e(paramBundle, paramString);
             return paramBundle;
             localParcel1.writeInt(0);
           }

@@ -1,26 +1,16 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.kernel.b.e;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.api.c;
-import com.tencent.mm.sdk.storage.IStorage;
-import java.util.List;
+import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+import kotlin.Metadata;
 
-@e(gf=c.class)
-public abstract interface ah
-  extends a, IStorage
-{
-  public abstract boolean bB(String paramString, int paramInt);
-  
-  public abstract List<LocalUsageInfo> en(int paramInt1, int paramInt2);
-  
-  public abstract List<LocalUsageInfo> i(long paramLong, int paramInt);
-  
-  public abstract List<LocalUsageInfo> zh(int paramInt);
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appusage/IsCall;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppIdentity;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "data", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class ah
+  implements m<AppIdentity, IPCBoolean>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ah
  * JD-Core Version:    0.7.0.1
  */

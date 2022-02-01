@@ -7,17 +7,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   implements TypeEvaluator<Matrix>
 {
-  private final float[] buv;
-  private final float[] buw;
-  private final Matrix bux;
+  private final float[] dnA;
+  private final Matrix dnB;
+  private final float[] dnz;
   
   public g()
   {
-    AppMethodBeat.i(234225);
-    this.buv = new float[9];
-    this.buw = new float[9];
-    this.bux = new Matrix();
-    AppMethodBeat.o(234225);
+    AppMethodBeat.i(209245);
+    this.dnz = new float[9];
+    this.dnA = new float[9];
+    this.dnB = new Matrix();
+    AppMethodBeat.o(209245);
   }
 }
 

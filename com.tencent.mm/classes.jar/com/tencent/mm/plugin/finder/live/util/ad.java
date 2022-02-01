@@ -1,31 +1,28 @@
 package com.tencent.mm.plugin.finder.live.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import java.util.ArrayList;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/util/WidthStatisticsCache;", "", "()V", "realtimeCachePair", "Lcom/tencent/mm/plugin/finder/live/util/CachePair;", "getRealtimeCachePair", "()Lcom/tencent/mm/plugin/finder/live/util/CachePair;", "setRealtimeCachePair", "(Lcom/tencent/mm/plugin/finder/live/util/CachePair;)V", "getCache", "Lcom/tencent/mm/plugin/finder/live/util/StatisticsCache;", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/UplossStatisticsCache;", "", "()V", "UplossCachePair", "Lcom/tencent/mm/plugin/finder/live/util/CachePair;", "getUplossCachePair", "()Lcom/tencent/mm/plugin/finder/live/util/CachePair;", "setUplossCachePair", "(Lcom/tencent/mm/plugin/finder/live/util/CachePair;)V", "averageUplossCachePair", "Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;", "getAverageUplossCachePair", "()Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;", "setAverageUplossCachePair", "(Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;)V", "levelList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getLevelList", "()Ljava/util/ArrayList;", "setLevelList", "(Ljava/util/ArrayList;)V", "getCache", "Lcom/tencent/mm/plugin/finder/live/util/StatisticsCache;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ad
 {
-  private i yPA;
+  ArrayList<i> DIj;
+  i DJN;
+  e DJO;
   
   public ad()
   {
-    AppMethodBeat.i(261103);
-    this.yPA = new i("Width", 0, 6);
-    AppMethodBeat.o(261103);
-  }
-  
-  public final x dEo()
-  {
-    AppMethodBeat.i(261102);
-    x localx = new x(this.yPA, null, null);
-    AppMethodBeat.o(261102);
-    return localx;
+    AppMethodBeat.i(351247);
+    this.DJN = new i("Uploss", 0, 6);
+    this.DJO = new e("AverageUploss", 14);
+    this.DIj = new ArrayList();
+    AppMethodBeat.o(351247);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.util.ad
  * JD-Core Version:    0.7.0.1
  */

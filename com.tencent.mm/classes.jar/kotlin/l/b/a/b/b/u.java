@@ -1,20 +1,11 @@
 package kotlin.l.b.a.b.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-public final class u
-  extends IllegalStateException
-{
-  public u(String paramString)
-  {
-    super(paramString);
-    AppMethodBeat.i(56859);
-    AppMethodBeat.o(56859);
-  }
-}
+public abstract interface u
+  extends l
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.u
  * JD-Core Version:    0.7.0.1
  */

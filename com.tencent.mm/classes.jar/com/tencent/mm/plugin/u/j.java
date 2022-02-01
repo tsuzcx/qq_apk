@@ -9,18 +9,19 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.j.a;
 
 public final class j
   implements c
 {
-  Looper EXo;
-  MMHandler EXp;
-  HandlerThread EXq;
-  HandlerThread EXr;
-  com.tencent.e.j.a EXs;
-  public k EXt;
-  public d EXu;
-  private MMHandler.Callback EXv;
+  Looper KSZ;
+  MMHandler KTa;
+  HandlerThread KTb;
+  HandlerThread KTc;
+  a KTd;
+  public k KTe;
+  public d KTf;
+  private MMHandler.Callback KTg;
   
   public j(Looper paramLooper)
   {
@@ -36,8 +37,8 @@ public final class j
   
   public j(Looper paramLooper, int paramInt)
   {
-    AppMethodBeat.i(204830);
-    this.EXv = new MMHandler.Callback()
+    AppMethodBeat.i(260374);
+    this.KTg = new MMHandler.Callback()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
@@ -53,49 +54,49 @@ public final class j
           AppMethodBeat.o(133914);
           return false;
           Log.i("MicroMsg.VideoPlayer", "%s call prepared ", new Object[] { j.this.info() });
-          if (j.this.EXu != null)
+          if (j.this.KTf != null)
           {
-            j.this.EXu.qX();
+            j.this.KTf.Qz();
             continue;
             Log.i("MicroMsg.VideoPlayer", "%s call completion ", new Object[] { j.this.info() });
-            if (j.this.EXu != null)
+            if (j.this.KTf != null)
             {
-              j.this.EXu.onCompletion();
+              j.this.KTf.onCompletion();
               continue;
               Log.i("MicroMsg.VideoPlayer", "%s call seek completion ", new Object[] { j.this.info() });
-              if (j.this.EXu != null)
+              if (j.this.KTf != null)
               {
-                j.this.EXu.cYp();
+                j.this.KTf.dEH();
                 continue;
                 Log.i("MicroMsg.VideoPlayer", "%s call video size changed size [%d, %d] degrees[%d]", new Object[] { j.this.info(), Integer.valueOf(paramAnonymousMessage.arg1), Integer.valueOf(paramAnonymousMessage.arg2), Integer.valueOf(((Integer)paramAnonymousMessage.obj).intValue()) });
-                if (j.this.EXu != null)
+                if (j.this.KTf != null)
                 {
-                  j.this.EXu.ab(paramAnonymousMessage.arg1, paramAnonymousMessage.arg2, ((Integer)paramAnonymousMessage.obj).intValue());
+                  j.this.KTf.as(paramAnonymousMessage.arg1, paramAnonymousMessage.arg2, ((Integer)paramAnonymousMessage.obj).intValue());
                   continue;
                   Log.e("MicroMsg.VideoPlayer", "%s call play error [%d, %d]", new Object[] { j.this.info(), Integer.valueOf(paramAnonymousMessage.arg1), Integer.valueOf(paramAnonymousMessage.arg2) });
-                  if (j.this.EXu != null)
+                  if (j.this.KTf != null)
                   {
-                    j.this.EXu.onError(paramAnonymousMessage.arg1, paramAnonymousMessage.arg2);
+                    j.this.KTf.onError(paramAnonymousMessage.arg1, paramAnonymousMessage.arg2);
                     continue;
                     try
                     {
                       paramAnonymousMessage = j.this;
                       Log.i("MicroMsg.VideoPlayer", "%s clear now.", new Object[] { paramAnonymousMessage.info() });
-                      paramAnonymousMessage.EXs.quit();
-                      paramAnonymousMessage.EXq.quitSafely();
-                      if (paramAnonymousMessage.EXr != null) {
-                        paramAnonymousMessage.EXr.quitSafely();
+                      paramAnonymousMessage.KTd.quit();
+                      paramAnonymousMessage.KTb.quitSafely();
+                      if (paramAnonymousMessage.KTc != null) {
+                        paramAnonymousMessage.KTc.quitSafely();
                       }
-                      paramAnonymousMessage.EXp.removeMessages(1);
-                      paramAnonymousMessage.EXp.removeMessages(2);
-                      paramAnonymousMessage.EXp.removeMessages(3);
-                      paramAnonymousMessage.EXp.removeMessages(4);
-                      paramAnonymousMessage.EXp.removeMessages(5);
-                      paramAnonymousMessage.EXq = null;
-                      paramAnonymousMessage.EXp = null;
-                      paramAnonymousMessage.EXo = null;
-                      paramAnonymousMessage.EXu = null;
-                      paramAnonymousMessage.EXt = null;
+                      paramAnonymousMessage.KTa.removeMessages(1);
+                      paramAnonymousMessage.KTa.removeMessages(2);
+                      paramAnonymousMessage.KTa.removeMessages(3);
+                      paramAnonymousMessage.KTa.removeMessages(4);
+                      paramAnonymousMessage.KTa.removeMessages(5);
+                      paramAnonymousMessage.KTb = null;
+                      paramAnonymousMessage.KTa = null;
+                      paramAnonymousMessage.KSZ = null;
+                      paramAnonymousMessage.KTf = null;
+                      paramAnonymousMessage.KTe = null;
                     }
                     catch (Exception paramAnonymousMessage) {}
                   }
@@ -106,53 +107,48 @@ public final class j
         }
       }
     };
-    this.EXs = com.tencent.e.j.a.bDn("VideoPlayer:inner");
-    this.EXq = com.tencent.e.c.d.ik("VideoPlayer:video", 10);
-    this.EXq.start();
-    this.EXr = com.tencent.e.c.d.ik("VideoPlayer:audio", 10);
+    this.KTd = a.bFV("VideoPlayer:inner");
+    this.KTb = com.tencent.threadpool.c.d.jw("VideoPlayer:video", 10);
+    this.KTb.start();
+    this.KTc = com.tencent.threadpool.c.d.jw("VideoPlayer:audio", 10);
     Log.i("MicroMsg.VideoPlayer", "VideoPlayer init 4");
-    this.EXr.start();
-    this.EXo = paramLooper;
-    this.EXp = new MMHandler(this.EXo, this.EXv);
-    this.EXt = new k(this.EXp, this.EXs, this.EXq.getLooper(), this.EXr.getLooper(), false, paramInt);
-    AppMethodBeat.o(204830);
+    this.KTc.start();
+    this.KSZ = paramLooper;
+    this.KTa = new MMHandler(this.KSZ, this.KTg);
+    this.KTe = new k(this.KTa, this.KTd, this.KTb.getLooper(), this.KTc.getLooper(), false, paramInt);
+    AppMethodBeat.o(260374);
   }
   
-  public final void WQ(int paramInt)
+  public final void aaS(int paramInt)
   {
     AppMethodBeat.i(133925);
-    this.EXt.WQ(paramInt);
+    this.KTe.aaS(paramInt);
     AppMethodBeat.o(133925);
   }
   
-  public final void a(d paramd)
-  {
-    this.EXu = paramd;
-  }
-  
-  public final int eST()
+  public final int gbM()
   {
     AppMethodBeat.i(133929);
     int i;
     int j;
-    if (this.EXt != null)
+    if (this.KTe != null)
     {
-      k localk = this.EXt;
-      if (localk.EXa == null) {
+      k localk = this.KTe;
+      if (localk.KSM == null) {
         break label170;
       }
-      i = (int)(localk.EXa.EWR / 1000L);
-      j = (int)localk.EXa.EWQ;
+      i = (int)(localk.KSM.KSD / 1000L);
+      j = (int)localk.KSM.KSC;
       if (j == -1)
       {
         j = i;
-        if (i < localk.EXa.EWS / 1000L) {
-          j = (int)(localk.EXa.EWS / 1000L);
+        if (i < localk.KSM.KSE / 1000L) {
+          j = (int)(localk.KSM.KSE / 1000L);
         }
-        if (j != localk.EXF) {
-          Log.i("MicroMsg.VideoPlayerImpl", "%s get curr play ms %d time[%d %d]", new Object[] { localk.info(), Integer.valueOf(j), Long.valueOf(localk.EXa.EWR), Long.valueOf(localk.EXa.EWS) });
+        if (j != localk.KTr) {
+          Log.i("MicroMsg.VideoPlayerImpl", "%s get curr play ms %d time[%d %d]", new Object[] { localk.info(), Integer.valueOf(j), Long.valueOf(localk.KSM.KSD), Long.valueOf(localk.KSM.KSE) });
         }
-        localk.EXF = j;
+        localk.KTr = j;
       }
     }
     for (;;)
@@ -170,30 +166,15 @@ public final class j
   
   public final long getDurationMs()
   {
-    return this.EXt.durationMs;
-  }
-  
-  public final float getPlayRate()
-  {
-    float f2 = 1.0F;
-    float f1 = f2;
-    if (this.EXt != null)
-    {
-      k localk = this.EXt;
-      f1 = f2;
-      if (localk.EXC != null) {
-        f1 = localk.EXC.pvh;
-      }
-    }
-    return f1;
+    return this.KTe.durationMs;
   }
   
   public final String info()
   {
     AppMethodBeat.i(133931);
-    if (this.EXt != null)
+    if (this.KTe != null)
     {
-      String str = this.EXt.info();
+      String str = this.KTe.info();
       AppMethodBeat.o(133931);
       return str;
     }
@@ -204,9 +185,9 @@ public final class j
   public final boolean isPlaying()
   {
     AppMethodBeat.i(133930);
-    if (this.EXt != null)
+    if (this.KTe != null)
     {
-      boolean bool = e.WH(this.EXt.state);
+      boolean bool = e.aaJ(this.KTe.state);
       AppMethodBeat.o(133930);
       return bool;
     }
@@ -214,49 +195,37 @@ public final class j
     return false;
   }
   
-  public final void m(Surface paramSurface)
-  {
-    AppMethodBeat.i(133920);
-    if (paramSurface != null)
-    {
-      Object localObject = this.EXt;
-      Log.i("MicroMsg.VideoPlayerImpl", "%s change surface[%d] ", new Object[] { ((k)localObject).info(), Integer.valueOf(paramSurface.hashCode()) });
-      localObject = ((k)localObject).EXC;
-      Log.i("MicroMsg.VideoTrackDataSource", "%s set out put surface", new Object[] { ((l)localObject).info() });
-      ((l)localObject).surface = paramSurface;
-      if (com.tencent.mm.compatible.util.d.qV(23))
-      {
-        ((l)localObject).eSW();
-        AppMethodBeat.o(133920);
-        return;
-      }
-      ((l)localObject).eSX();
-    }
-    AppMethodBeat.o(133920);
-  }
-  
   public final void pause()
   {
     AppMethodBeat.i(133923);
     if (Log.getLogLevel() > 0) {
-      Log.d("MicroMsg.VideoPlayer", "%s pause state[%d] stack %s", new Object[] { info(), Integer.valueOf(this.EXt.state), Util.getStack() });
+      Log.d("MicroMsg.VideoPlayer", "%s pause state[%d] stack %s", new Object[] { info(), Integer.valueOf(this.KTe.state), Util.getStack() });
     }
-    if ((e.WM(this.EXt.state)) || (e.WJ(this.EXt.state)))
+    if ((e.aaO(this.KTe.state)) || (e.aaL(this.KTe.state)))
     {
       Log.w("MicroMsg.VideoPlayer", "%s it seek now, do not response pause event.", new Object[] { info() });
       AppMethodBeat.o(133923);
       return;
     }
-    this.EXt.pause();
+    this.KTe.pause();
     AppMethodBeat.o(133923);
   }
   
   public final boolean prepare()
   {
     AppMethodBeat.i(133921);
-    this.EXt.prepare();
+    this.KTe.prepare();
     AppMethodBeat.o(133921);
     return true;
+  }
+  
+  public final void r(Surface paramSurface)
+  {
+    AppMethodBeat.i(133920);
+    if (paramSurface != null) {
+      this.KTe.r(paramSurface);
+    }
+    AppMethodBeat.o(133920);
   }
   
   public final void release()
@@ -264,7 +233,7 @@ public final class j
     AppMethodBeat.i(133928);
     try
     {
-      this.EXt.release();
+      this.KTe.release();
       AppMethodBeat.o(133928);
       return;
     }
@@ -277,28 +246,22 @@ public final class j
   public final void seek(int paramInt)
   {
     AppMethodBeat.i(133924);
-    this.EXt.seek(paramInt);
+    this.KTe.seek(paramInt);
     AppMethodBeat.o(133924);
   }
   
   public final void setIOnlineCache(b paramb)
   {
-    if ((paramb != null) && (this.EXt != null)) {
-      this.EXt.EXC.EXe = paramb;
+    if ((paramb != null) && (this.KTe != null)) {
+      this.KTe.KTn.KSQ = paramb;
     }
   }
   
   public final void setIsOnlineVideoType(boolean paramBoolean)
   {
     AppMethodBeat.i(133918);
-    if (this.EXt != null)
-    {
-      k localk = this.EXt;
-      if (localk.EXa != null)
-      {
-        Log.i("MicroMsg.VideoPlayerImpl", "%s set is online video type [%b]", new Object[] { localk.info(), Boolean.valueOf(paramBoolean) });
-        localk.EXa.uXY = paramBoolean;
-      }
+    if (this.KTe != null) {
+      this.KTe.setIsOnlineVideoType(paramBoolean);
     }
     AppMethodBeat.o(133918);
   }
@@ -308,14 +271,8 @@ public final class j
     AppMethodBeat.i(133926);
     try
     {
-      if (this.EXt != null)
-      {
-        k localk = this.EXt;
-        if (localk.EXE != null)
-        {
-          Log.i("MicroMsg.VideoPlayerImpl", "%s play set mute[%b]", new Object[] { localk.info(), Boolean.valueOf(paramBoolean) });
-          localk.EXE.setMute(paramBoolean);
-        }
+      if (this.KTe != null) {
+        this.KTe.setMute(paramBoolean);
       }
       AppMethodBeat.o(133926);
       return;
@@ -329,13 +286,8 @@ public final class j
   public final void setNeedResetExtractor(boolean paramBoolean)
   {
     AppMethodBeat.i(133917);
-    if (this.EXt != null)
-    {
-      k localk = this.EXt;
-      Log.i("MicroMsg.VideoPlayerImpl", "%s setNeedResetExtractor [%b]", new Object[] { localk.info(), Boolean.valueOf(paramBoolean) });
-      if (localk.EXa != null) {
-        localk.EXa.uXX = paramBoolean;
-      }
+    if (this.KTe != null) {
+      this.KTe.setNeedResetExtractor(paramBoolean);
     }
     AppMethodBeat.o(133917);
   }
@@ -344,30 +296,15 @@ public final class j
   {
     AppMethodBeat.i(133916);
     Log.i("MicroMsg.VideoPlayer", "%s video player set path %s", new Object[] { info(), paramString });
-    this.EXt.setPath(paramString);
+    this.KTe.setPath(paramString);
     AppMethodBeat.o(133916);
-  }
-  
-  public final void setPlayRate(float paramFloat)
-  {
-    if (this.EXt != null)
-    {
-      Object localObject = this.EXt;
-      if (((k)localObject).EXC != null)
-      {
-        localObject = ((k)localObject).EXC;
-        if (paramFloat > 0.0F) {
-          ((l)localObject).pvh = paramFloat;
-        }
-      }
-    }
   }
   
   public final void setSurface(Surface paramSurface)
   {
     AppMethodBeat.i(133919);
     if (paramSurface != null) {
-      this.EXt.setSurface(paramSurface);
+      this.KTe.setSurface(paramSurface);
     }
     AppMethodBeat.o(133919);
   }
@@ -376,33 +313,35 @@ public final class j
   {
     AppMethodBeat.i(133922);
     if (Log.getLogLevel() > 0) {
-      Log.d("MicroMsg.VideoPlayer", "%s start state[%d] stack %s", new Object[] { info(), Integer.valueOf(this.EXt.state), Util.getStack() });
+      Log.d("MicroMsg.VideoPlayer", "%s start state[%d] stack %s", new Object[] { info(), Integer.valueOf(this.KTe.state), Util.getStack() });
     }
-    if ((e.WM(this.EXt.state)) || (e.WJ(this.EXt.state)))
+    if ((e.aaO(this.KTe.state)) || (e.aaL(this.KTe.state)))
     {
       Log.w("MicroMsg.VideoPlayer", "%s it seek now, do not response start event.", new Object[] { info() });
       AppMethodBeat.o(133922);
       return;
     }
-    this.EXt.start();
+    this.KTe.start();
     AppMethodBeat.o(133922);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(133927);
-    this.EXt.stop();
+    this.KTe.stop();
     AppMethodBeat.o(133927);
   }
   
-  public final void ud(boolean paramBoolean)
+  public final void yr(boolean paramBoolean)
   {
-    this.EXt.EXC.EXP = paramBoolean;
+    AppMethodBeat.i(260381);
+    this.KTe.yr(paramBoolean);
+    AppMethodBeat.o(260381);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.u.j
  * JD-Core Version:    0.7.0.1
  */

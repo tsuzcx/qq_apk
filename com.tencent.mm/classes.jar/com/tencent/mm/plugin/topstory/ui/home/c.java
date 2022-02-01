@@ -12,7 +12,7 @@ public final class c
     super(paramMMActivity, true);
   }
   
-  protected final boolean gqm()
+  protected final boolean hNk()
   {
     return false;
   }

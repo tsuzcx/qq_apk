@@ -1,82 +1,96 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dvb
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<dva> jmy;
-  
-  public dvb()
-  {
-    AppMethodBeat.i(207244);
-    this.jmy = new LinkedList();
-    AppMethodBeat.o(207244);
-  }
+  public String desc;
+  public int id;
+  public String nickname;
+  public String rHi;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(207245);
+    AppMethodBeat.i(152630);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.jmy);
-      AppMethodBeat.o(207245);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.id);
+      if (this.nickname != null) {
+        paramVarArgs.g(2, this.nickname);
+      }
+      if (this.rHi != null) {
+        paramVarArgs.g(3, this.rHi);
+      }
+      if (this.desc != null) {
+        paramVarArgs.g(4, this.desc);
+      }
+      AppMethodBeat.o(152630);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.a.c(1, 8, this.jmy);
-      AppMethodBeat.o(207245);
-      return paramInt + 0;
+      int i = i.a.a.b.b.a.cJ(1, this.id) + 0;
+      paramInt = i;
+      if (this.nickname != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.nickname);
+      }
+      i = paramInt;
+      if (this.rHi != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.rHi);
+      }
+      paramInt = i;
+      if (this.desc != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.desc);
+      }
+      AppMethodBeat.o(152630);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.jmy.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(207245);
+      AppMethodBeat.o(152630);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       dvb localdvb = (dvb)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(207245);
+        AppMethodBeat.o(152630);
         return -1;
+      case 1: 
+        localdvb.id = locala.ajGk.aar();
+        AppMethodBeat.o(152630);
+        return 0;
+      case 2: 
+        localdvb.nickname = locala.ajGk.readString();
+        AppMethodBeat.o(152630);
+        return 0;
+      case 3: 
+        localdvb.rHi = locala.ajGk.readString();
+        AppMethodBeat.o(152630);
+        return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        dva localdva = new dva();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localdva.parseFrom((byte[])localObject);
-        }
-        localdvb.jmy.add(localdva);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(207245);
+      localdvb.desc = locala.ajGk.readString();
+      AppMethodBeat.o(152630);
       return 0;
     }
-    AppMethodBeat.o(207245);
+    AppMethodBeat.o(152630);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dvb
  * JD-Core Version:    0.7.0.1
  */

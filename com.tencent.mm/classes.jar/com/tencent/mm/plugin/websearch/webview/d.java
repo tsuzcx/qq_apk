@@ -1,20 +1,36 @@
 package com.tencent.mm.plugin.websearch.webview;
 
-import android.content.Context;
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;", "T", "", "getActivityContext", "Landroid/content/Context;", "getDataContext", "()Ljava/lang/Object;", "getWebSearchData", "Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchData;", "getWebSearchJSApi", "Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchJSApi;", "getWebView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "ui-websearch_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;", "T", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;", "getWebSearchData", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchImageData;", "getWebSearchJSApi", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchImageJSApi;", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface d<T>
+  extends f<T>
 {
-  public abstract WebSearchWebView esG();
+  public abstract k<T> fyR();
   
-  public abstract b<T> esJ();
+  public abstract l<T> fyT();
   
-  public abstract a<T> esK();
-  
-  public abstract T esL();
-  
-  public abstract Context getActivityContext();
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static <T> void a(d<T> paramd)
+    {
+      AppMethodBeat.i(315296);
+      s.u(paramd, "this");
+      s.u((f)paramd, "this");
+      AppMethodBeat.o(315296);
+    }
+    
+    public static <T> void b(d<T> paramd)
+    {
+      AppMethodBeat.i(315299);
+      s.u(paramd, "this");
+      s.u((f)paramd, "this");
+      AppMethodBeat.o(315299);
+    }
+  }
 }
 
 

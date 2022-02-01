@@ -7,61 +7,61 @@ import java.util.Objects;
 
 public final class d
 {
-  private final b Ygi;
-  private final CustomTextView Yhe;
-  TextClassification Ykp;
+  private final b afYi;
+  private final CustomTextView afZe;
+  TextClassification agco;
   
   d(b paramb)
   {
-    AppMethodBeat.i(194428);
-    this.Ygi = ((b)Objects.requireNonNull(paramb));
-    this.Yhe = this.Ygi.Yhe;
-    AppMethodBeat.o(194428);
+    AppMethodBeat.i(252388);
+    this.afYi = ((b)Objects.requireNonNull(paramb));
+    this.afZe = this.afYi.afZe;
+    AppMethodBeat.o(252388);
   }
   
   private static CharSequence c(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(194432);
+    AppMethodBeat.i(252399);
     paramCustomTextView = paramCustomTextView.getText();
     if (paramCustomTextView != null)
     {
-      AppMethodBeat.o(194432);
+      AppMethodBeat.o(252399);
       return paramCustomTextView;
     }
-    AppMethodBeat.o(194432);
+    AppMethodBeat.o(252399);
     return "";
   }
   
-  final void ibT()
+  final void jHd()
   {
-    AppMethodBeat.i(194429);
-    c(this.Yhe);
-    this.Ykp = null;
-    if (this.Ygi.ibp())
+    AppMethodBeat.i(252405);
+    c(this.afZe);
+    this.agco = null;
+    if (this.afYi.jGz())
     {
-      b.n localn = this.Ygi.ibv();
-      if ((localn != null) && ((this.Yhe.ial()) || (this.Yhe.iaw()))) {
+      b.n localn = this.afYi.jGF();
+      if ((localn != null) && ((this.afZe.jFu()) || (this.afZe.jFD()))) {
         localn.show();
       }
     }
-    this.Ygi.YhI = false;
-    AppMethodBeat.o(194429);
+    this.afYi.afZI = false;
+    AppMethodBeat.o(252405);
   }
   
-  final void ibU()
+  final void jHe()
   {
-    AppMethodBeat.i(194431);
-    this.Ykp = null;
-    ActionMode localActionMode = this.Ygi.Yhk;
+    AppMethodBeat.i(252417);
+    this.agco = null;
+    ActionMode localActionMode = this.afYi.afZk;
     if (localActionMode != null) {
       localActionMode.invalidate();
     }
-    AppMethodBeat.o(194431);
+    AppMethodBeat.o(252417);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.edit.d
  * JD-Core Version:    0.7.0.1
  */

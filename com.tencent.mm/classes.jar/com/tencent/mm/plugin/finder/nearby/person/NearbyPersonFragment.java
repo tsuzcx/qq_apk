@@ -1,124 +1,96 @@
 package com.tencent.mm.plugin.finder.nearby.person;
 
-import android.content.Context;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment;
-import com.tencent.mm.plugin.finder.nearby.report.c;
+import com.tencent.mm.plugin.finder.nearby.report.d;
+import com.tencent.mm.plugin.finder.nearby.report.g;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.SmoothScrollFactory;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.widget.a.e.a;
-import com.tencent.mm.ui.widget.a.e.b;
-import java.util.HashMap;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/person/NearbyPersonFragment;", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "()V", "getClickTabId", "", "getCommentScene", "", "getPageName", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "onMenuClick", "onUserVisibleFocused", "onUserVisibleUnFocused", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/person/NearbyPersonFragment;", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "()V", "getClickTabId", "", "getCommentScene", "", "getPageName", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "isNeedSwitchTabOnResume", "", "onActionbarClick", "", "onActionbarDoubleClick", "onMenuClick", "onRequestPermissionsResult", "requestCode", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onUserVisibleFocused", "onUserVisibleUnFocused", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class NearbyPersonFragment
   extends AbsNearByFragment
 {
-  private HashMap _$_findViewCache;
-  
   public NearbyPersonFragment()
   {
-    super(b.j.nearby_tab_person, 1003);
+    super(e.h.nearby_tab_person, 1003);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  public final void eEp()
   {
-    AppMethodBeat.i(200945);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(200945);
-  }
-  
-  public final String akA()
-  {
-    return "77-1003";
-  }
-  
-  public final void dLs()
-  {
-    AppMethodBeat.i(200940);
-    super.dLs();
+    AppMethodBeat.i(339906);
+    super.eEp();
     if (getActivity() == null)
     {
       Log.w("MicroMsg.UIComponentFragment", "onMenuClick()");
-      AppMethodBeat.o(200940);
+      AppMethodBeat.o(339906);
       return;
     }
-    Object localObject = (b)component(b.class);
-    ((b)localObject).zHL = new com.tencent.mm.ui.widget.a.e((Context)((b)localObject).getActivity(), 1, false);
-    com.tencent.mm.ui.widget.a.e locale = ((b)localObject).zHL;
-    if (locale != null) {
-      locale.a((q.f)b.s.zIj);
-    }
-    locale = ((b)localObject).zHL;
-    if (locale != null) {
-      locale.a((q.g)new b.t((b)localObject));
-    }
-    locale = ((b)localObject).zHL;
-    if (locale != null) {
-      locale.a((e.a)b.u.zIk);
-    }
-    locale = ((b)localObject).zHL;
-    if (locale != null) {
-      locale.b((e.b)b.v.zIl);
-    }
-    localObject = ((b)localObject).zHL;
-    if (localObject != null) {
-      ((com.tencent.mm.ui.widget.a.e)localObject).eik();
-    }
-    localObject = c.zJb;
-    c.a("", 0L, "", "", "", 0L, 3L, 3L);
-    AppMethodBeat.o(200940);
+    ((b)component(b.class)).eGe();
+    d locald = d.EQT;
+    d.report(5L);
+    AppMethodBeat.o(339906);
   }
   
-  public final void dLt()
+  public final void eEq()
   {
-    AppMethodBeat.i(200935);
-    super.dLt();
+    AppMethodBeat.i(339897);
+    super.eEq();
     if (getActivity() == null)
     {
       Log.w("MicroMsg.UIComponentFragment", "onActionbarClick()");
-      AppMethodBeat.o(200935);
+      AppMethodBeat.o(339897);
       return;
     }
     component(b.class);
-    AppMethodBeat.o(200935);
+    AppMethodBeat.o(339897);
   }
   
-  public final void dLu()
+  public final void eEr()
   {
-    AppMethodBeat.i(200937);
-    super.dLu();
+    AppMethodBeat.i(339901);
+    super.eEr();
     if (getActivity() == null)
     {
       Log.w("MicroMsg.UIComponentFragment", "onActionbarDoubleClick()");
-      AppMethodBeat.o(200937);
+      AppMethodBeat.o(339901);
       return;
     }
-    Object localObject1 = ((b)component(b.class)).mYU;
-    localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
+    Object localObject1 = ((b)component(b.class)).pVC;
+    localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject1);
     Object localObject2 = new Object();
-    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/finder/nearby/person/NearbyPersonV1UIC", "onActionbarDoubleClick", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-    BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/plugin/finder/nearby/person/NearbyPersonV1UIC", "onActionbarDoubleClick", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/finder/nearby/person/NearbyPersonV1UIC", "onActionbarDoubleClick", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-    AppMethodBeat.o(200937);
+    AppMethodBeat.o(339901);
   }
   
-  public final String dLv()
+  public final boolean eEs()
+  {
+    return false;
+  }
+  
+  public final String eEt()
   {
     return "1003";
   }
   
-  public final int duR()
+  public final String eEw()
+  {
+    AppMethodBeat.i(339941);
+    String str = s.X("77-", "1003");
+    AppMethodBeat.o(339941);
+    return str;
+  }
+  
+  public final int edC()
   {
     return 0;
   }
@@ -130,28 +102,38 @@ public final class NearbyPersonFragment
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(200934);
-    Set localSet = ak.setOf(b.class);
-    AppMethodBeat.o(200934);
+    AppMethodBeat.i(339888);
+    Set localSet = ar.setOf(b.class);
+    AppMethodBeat.o(339888);
     return localSet;
+  }
+  
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(339951);
+    s.u(paramArrayOfString, "permissions");
+    s.u(paramArrayOfInt, "grantResults");
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    ((b)component(b.class)).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(339951);
   }
   
   public final void onUserVisibleFocused()
   {
-    AppMethodBeat.i(200941);
+    AppMethodBeat.i(339910);
     super.onUserVisibleFocused();
-    com.tencent.mm.plugin.finder.nearby.report.e locale = com.tencent.mm.plugin.finder.nearby.report.e.zJs;
-    com.tencent.mm.plugin.finder.nearby.report.e.d((AbsNearByFragment)this);
-    AppMethodBeat.o(200941);
+    g localg = g.ERj;
+    g.d((AbsNearByFragment)this);
+    AppMethodBeat.o(339910);
   }
   
   public final void onUserVisibleUnFocused()
   {
-    AppMethodBeat.i(200942);
+    AppMethodBeat.i(339917);
     super.onUserVisibleUnFocused();
-    com.tencent.mm.plugin.finder.nearby.report.e locale = com.tencent.mm.plugin.finder.nearby.report.e.zJs;
-    com.tencent.mm.plugin.finder.nearby.report.e.e((AbsNearByFragment)this);
-    AppMethodBeat.o(200942);
+    g localg = g.ERj;
+    g.e((AbsNearByFragment)this);
+    AppMethodBeat.o(339917);
   }
 }
 

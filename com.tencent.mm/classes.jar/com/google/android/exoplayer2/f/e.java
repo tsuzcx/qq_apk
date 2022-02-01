@@ -5,7 +5,7 @@ import com.google.android.exoplayer2.b.c;
 public abstract interface e
   extends c<h, i, f>
 {
-  public abstract void ak(long paramLong);
+  public abstract void cy(long paramLong);
 }
 
 

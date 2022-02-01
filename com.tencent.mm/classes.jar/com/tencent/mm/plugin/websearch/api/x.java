@@ -1,104 +1,75 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.audio.mix.h.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.fln;
-import com.tencent.mm.protocal.protobuf.flo;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.protocal.protobuf.ghf;
+import com.tencent.mm.protocal.protobuf.ghg;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class x
-  extends q
+  extends p
   implements m
 {
-  private v PxJ;
-  private fln PxP;
-  private flo PxQ;
-  private i callback;
-  private d lKU;
+  private h callback;
+  public String hOG;
+  public int hVk;
+  private long hlB;
+  private c rr;
   
-  public x(v paramv)
+  public x(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(211257);
-    this.PxJ = paramv;
-    paramv = new d.a();
-    paramv.funcId = 4858;
-    paramv.uri = "/cgi-bin/mmsearch-bin/mmtagsearch";
-    paramv.lBU = new fln();
-    paramv.lBV = new flo();
-    this.lKU = paramv.bgN();
-    this.PxP = ((fln)d.b.b(this.lKU.lBR));
-    this.PxP.SYn = this.PxJ.fwe;
-    this.PxP.Udh = this.PxJ.PxU;
-    this.PxP.Sap = this.PxJ.businessType;
-    this.PxP.TwK = ai.czn();
-    this.PxP.Sat = this.PxJ.offset;
-    this.PxP.UKl = ai.anh(6);
-    this.PxP.UgB = this.PxJ.PxV;
-    this.PxP.CPw = this.PxJ.scene;
-    this.PxP.Sas = this.PxJ.uMC;
-    this.PxP.Udl = this.PxJ.fPw;
-    this.PxP.UKm = this.PxJ.PxW;
-    this.PxP.UKo = this.PxJ.PxY;
-    this.PxP.UKn = this.PxJ.PxX;
-    this.PxP.UKp = this.PxJ.PxZ;
-    this.PxP.UIj = this.PxJ.Pye;
-    this.PxP.Pyd = this.PxJ.Pyd;
-    this.PxP.UKq = this.PxJ.Pyf;
-    this.PxP.vhq = this.PxJ.language;
-    this.PxP.UJX = this.PxJ.sessionId;
-    paramv = this.PxP;
-    if (ar.isDarkMode()) {}
-    for (int i = 1;; i = 0)
-    {
-      paramv.TQc = i;
-      this.PxP.TwL = ai.gQO();
-      AppMethodBeat.o(211257);
-      return;
-    }
+    AppMethodBeat.i(117624);
+    this.hVk = paramInt;
+    this.hlB = System.currentTimeMillis();
+    Object localObject = new c.a();
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).uri = "/cgi-bin/mmsearch-bin/searchwebquery";
+    ((c.a)localObject).otE = new ghf();
+    ((c.a)localObject).otF = new ghg();
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ghf)c.b.b(this.rr.otB);
+    ((ghf)localObject).acdr = paramString2;
+    ((ghf)localObject).hOG = paramString1;
+    this.hOG = paramString1;
+    AppMethodBeat.o(117624);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(211258);
-    this.callback = parami;
-    int i = dispatch(paramg, this.lKU, this);
-    AppMethodBeat.o(211258);
+    AppMethodBeat.i(117625);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(117625);
     return i;
-  }
-  
-  public final flo gQx()
-  {
-    return this.PxQ;
-  }
-  
-  public final v gQy()
-  {
-    return this.PxJ;
   }
   
   public final int getType()
   {
-    return 4858;
+    return 2975;
+  }
+  
+  public final ghg hMP()
+  {
+    AppMethodBeat.i(315366);
+    ghg localghg = (ghg)c.c.b(this.rr.otC);
+    AppMethodBeat.o(315366);
+    return localghg;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(211260);
-    b.i("MicroMsg.WebSearch.NetSceneTagSearch", "onGYNetEnd errType:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.PxQ = ((flo)d.c.b(this.lKU.lBS));
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    AppMethodBeat.o(211260);
+    AppMethodBeat.i(117626);
+    Log.i("MicroMsg.WebSearch.NetSceneSearchWebQuery", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.hlB) });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(117626);
   }
 }
 

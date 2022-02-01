@@ -6,7 +6,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.soter.core.a;
 import java.util.HashMap;
@@ -18,12 +18,12 @@ public final class JsApiLuggageCheckBioEnrollment
 {
   public static final int CTRL_INDEX = 344;
   public static final String NAME = "checkIsSoterEnrolledInDevice";
-  private static Context oGJ = null;
+  private static Context rJI = null;
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(159041);
-    oGJ = parame.getContext();
+    rJI = paramf.getContext();
     Log.i("MicroMsg.JsApiLuggageCheckBioEnrollment", "hy: subapp start do check is enrolled");
     paramJSONObject = paramJSONObject.optString("checkAuthMode");
     int i;
@@ -32,7 +32,7 @@ public final class JsApiLuggageCheckBioEnrollment
     }
     for (;;)
     {
-      new GetIsEnrolledTask(parame, paramInt, i, this);
+      new GetIsEnrolledTask(paramf, paramInt, i, this);
       AppMethodBeat.o(159041);
       throw null;
       if ("facial".equals(paramJSONObject))
@@ -55,11 +55,11 @@ public final class JsApiLuggageCheckBioEnrollment
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetIsEnrolledTask> CREATOR;
-    private int cqA;
-    private e nNw;
-    private int oGE;
-    private int oGF;
-    private JsApiLuggageCheckBioEnrollment oGK;
+    private int eit;
+    private f qNp;
+    private int rJD;
+    private int rJE;
+    private JsApiLuggageCheckBioEnrollment rJJ;
     
     static
     {
@@ -71,41 +71,41 @@ public final class JsApiLuggageCheckBioEnrollment
     protected GetIsEnrolledTask(Parcel paramParcel)
     {
       AppMethodBeat.i(159038);
-      this.nNw = null;
-      this.cqA = -1;
-      this.oGE = -1;
-      this.oGF = -1;
-      f(paramParcel);
+      this.qNp = null;
+      this.eit = -1;
+      this.rJD = -1;
+      this.rJE = -1;
+      h(paramParcel);
       AppMethodBeat.o(159038);
     }
     
-    public GetIsEnrolledTask(e parame, int paramInt1, int paramInt2, JsApiLuggageCheckBioEnrollment paramJsApiLuggageCheckBioEnrollment)
+    public GetIsEnrolledTask(f paramf, int paramInt1, int paramInt2, JsApiLuggageCheckBioEnrollment paramJsApiLuggageCheckBioEnrollment)
     {
-      this.nNw = null;
-      this.cqA = -1;
-      this.oGE = -1;
-      this.oGF = -1;
-      this.nNw = parame;
-      this.cqA = paramInt1;
-      this.oGK = paramJsApiLuggageCheckBioEnrollment;
-      this.oGE = paramInt2;
+      this.qNp = null;
+      this.eit = -1;
+      this.rJD = -1;
+      this.rJE = -1;
+      this.qNp = paramf;
+      this.eit = paramInt1;
+      this.rJJ = paramJsApiLuggageCheckBioEnrollment;
+      this.rJD = paramInt2;
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(159036);
-      Context localContext = JsApiLuggageCheckBioEnrollment.oGJ;
+      Context localContext = JsApiLuggageCheckBioEnrollment.rJI;
       int i;
-      if (this.oGE == 1) {
-        if (a.mb(localContext)) {
+      if (this.rJD == 1) {
+        if (a.oo(localContext)) {
           i = 1;
         }
       }
       for (;;)
       {
-        this.oGF = i;
-        Log.i("MicroMsg.GetIsEnrolledTask", "hy: enrollResult: %d", new Object[] { Integer.valueOf(this.oGF) });
-        bPt();
+        this.rJE = i;
+        Log.i("MicroMsg.GetIsEnrolledTask", "hy: enrollResult: %d", new Object[] { Integer.valueOf(this.rJE) });
+        cpA();
         AppMethodBeat.o(159036);
         return;
         i = 0;
@@ -114,31 +114,31 @@ public final class JsApiLuggageCheckBioEnrollment
       }
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       boolean bool = false;
       AppMethodBeat.i(159035);
-      super.bsK();
-      Log.d("MicroMsg.GetIsEnrolledTask", "hy: callback. enrollResult: %d", new Object[] { Integer.valueOf(this.oGF) });
+      super.bQr();
+      Log.d("MicroMsg.GetIsEnrolledTask", "hy: callback. enrollResult: %d", new Object[] { Integer.valueOf(this.rJE) });
       HashMap localHashMap = new HashMap(2);
-      if (this.oGF == 1) {
+      if (this.rJE == 1) {
         bool = true;
       }
       localHashMap.put("isEnrolled", Boolean.valueOf(bool));
-      if (this.oGF == 0) {
-        this.nNw.j(this.cqA, this.oGK.m("ok", localHashMap));
+      if (this.rJE == 0) {
+        this.qNp.callback(this.eit, this.rJJ.m("ok", localHashMap));
       }
       for (;;)
       {
-        bPk();
+        cpx();
         AppMethodBeat.o(159035);
         return;
-        if (this.oGF == -1) {
-          this.nNw.j(this.cqA, this.oGK.m("fail not support", localHashMap));
-        } else if (this.oGF == 1) {
-          this.nNw.j(this.cqA, this.oGK.m("ok", localHashMap));
+        if (this.rJE == -1) {
+          this.qNp.callback(this.eit, this.rJJ.m("fail not support", localHashMap));
+        } else if (this.rJE == 1) {
+          this.qNp.callback(this.eit, this.rJJ.m("ok", localHashMap));
         } else {
-          this.nNw.j(this.cqA, this.oGK.m("fail unknown error", localHashMap));
+          this.qNp.callback(this.eit, this.rJJ.m("fail unknown error", localHashMap));
         }
       }
     }
@@ -148,12 +148,12 @@ public final class JsApiLuggageCheckBioEnrollment
       return 0;
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(159039);
-      super.f(paramParcel);
-      this.oGF = paramParcel.readInt();
-      this.oGE = paramParcel.readInt();
+      super.h(paramParcel);
+      this.rJE = paramParcel.readInt();
+      this.rJD = paramParcel.readInt();
       AppMethodBeat.o(159039);
     }
     
@@ -161,8 +161,8 @@ public final class JsApiLuggageCheckBioEnrollment
     {
       AppMethodBeat.i(159037);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.oGF);
-      paramParcel.writeInt(this.oGE);
+      paramParcel.writeInt(this.rJE);
+      paramParcel.writeInt(this.rJD);
       AppMethodBeat.o(159037);
     }
   }

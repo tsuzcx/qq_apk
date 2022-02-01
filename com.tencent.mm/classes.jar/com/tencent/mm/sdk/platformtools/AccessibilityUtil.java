@@ -3,9 +3,9 @@ package com.tencent.mm.sdk.platformtools;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.Context;
 import android.view.accessibility.AccessibilityManager;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashSet;
@@ -19,7 +19,7 @@ public class AccessibilityUtil
   
   static
   {
-    AppMethodBeat.i(263311);
+    AppMethodBeat.i(244042);
     TAG = "AccessibilityUtil";
     HashSet localHashSet = new HashSet();
     spokenServiceBlackSet = localHashSet;
@@ -29,13 +29,21 @@ public class AccessibilityUtil
     spokenServiceBlackSet.add("com.huawei.recsys/.service.PortraitDaService");
     spokenServiceBlackSet.add("com.samsung.android.app.sreminder/.phone.shoppingassistant.ShoppingAssistantService");
     spokenServiceBlackSet.add("com.liuzh.quickly/.accservice.QuicklyAccService");
+    spokenServiceBlackSet.add("com.kugou.android.ringtone/.ringcommon.util.permission.accessibilitysuper.service.AccessibilitySuperService");
+    spokenServiceBlackSet.add("com.tencent.qqpinyin/.accessibility.EmotionHelperService");
+    spokenServiceBlackSet.add("com.samsung.android.bixbytouch/com.samsung.android.bixbytouch.library.shopping.ShoppingAccessibilityService");
+    spokenServiceBlackSet.add("org.autojs.autojs/com.stardust.autojs.core.accessibility.AccessibilityService");
     spokenServiceBlackSet.add("com.whatsbug.litiaotiao/.MyAccessibilityService");
-    AppMethodBeat.o(263311);
+    spokenServiceBlackSet.add("com.auto.greenskipad/com.auto.skip.service.NewTiaoGuoService");
+    spokenServiceBlackSet.add("com.hihonor.awareness/.server.pageanalysis.AccessibleInfoStuck");
+    spokenServiceBlackSet.add("com.coloros.colordirectservice/.ColorTextAccessibilityService");
+    spokenServiceBlackSet.add("com.huawei.contentsensor/.accessibility.ContentAccessibilityService");
+    AppMethodBeat.o(244042);
   }
   
   private static void printEnabledAccessibilityServiceInfo(AccessibilityManager paramAccessibilityManager)
   {
-    AppMethodBeat.i(263309);
+    AppMethodBeat.i(244027);
     Log.i(TAG, "printEnabledAccessibilityServiceInfo");
     try
     {
@@ -46,19 +54,19 @@ public class AccessibilityUtil
         AccessibilityServiceInfo localAccessibilityServiceInfo = (AccessibilityServiceInfo)paramAccessibilityManager.next();
         Log.i(TAG, "enabledAccessibilityServiceInfo : %s", new Object[] { localAccessibilityServiceInfo.toString() });
       }
-      AppMethodBeat.o(263309);
+      AppMethodBeat.o(244027);
     }
-    catch (Throwable paramAccessibilityManager)
+    finally
     {
       Log.e(TAG, "printEnabledAccessibilityServiceInfo error : %s", new Object[] { paramAccessibilityManager.getMessage() });
-      AppMethodBeat.o(263309);
+      AppMethodBeat.o(244027);
       return;
     }
   }
   
   private static void recoverAccessibilityEnable(AccessibilityManager paramAccessibilityManager, boolean paramBoolean)
   {
-    AppMethodBeat.i(263308);
+    AppMethodBeat.i(244019);
     for (;;)
     {
       try
@@ -71,16 +79,16 @@ public class AccessibilityUtil
         }
         i = 3;
       }
-      catch (Throwable paramAccessibilityManager)
+      finally
       {
         Method localMethod;
         Log.e(TAG, "recoverAccessibilityEnable error : %s", new Object[] { paramAccessibilityManager.getMessage() });
-        AppMethodBeat.o(263308);
+        AppMethodBeat.o(244019);
         return;
       }
       localMethod.invoke(paramAccessibilityManager, new Object[] { Integer.valueOf(j) });
       Log.i(TAG, "recoverAccessibilityEnable setStateLocked is invoked, flag = %d", new Object[] { Integer.valueOf(j) });
-      AppMethodBeat.o(263308);
+      AppMethodBeat.o(244019);
       return;
       label119:
       int i = 1;
@@ -93,7 +101,7 @@ public class AccessibilityUtil
   
   public static void smartDisableAccessibility()
   {
-    AppMethodBeat.i(263307);
+    AppMethodBeat.i(244010);
     for (;;)
     {
       try
@@ -101,61 +109,61 @@ public class AccessibilityUtil
         Log.i(TAG, "smartDisableAccessibility");
         AccessibilityManager localAccessibilityManager = (AccessibilityManager)MMApplicationContext.getContext().getSystemService("accessibility");
         boolean bool1 = localAccessibilityManager.isEnabled();
-        Object localObject = AccessibilityManager.class.getDeclaredField("mIsHighTextContrastEnabled");
-        ((Field)localObject).setAccessible(true);
-        boolean bool2 = ((Boolean)((Field)localObject).get(localAccessibilityManager)).booleanValue();
+        Object localObject2 = AccessibilityManager.class.getDeclaredField("mIsHighTextContrastEnabled");
+        ((Field)localObject2).setAccessible(true);
+        boolean bool2 = ((Boolean)((Field)localObject2).get(localAccessibilityManager)).booleanValue();
         if (!bool1) {
           recoverAccessibilityEnable(localAccessibilityManager, bool2);
         }
         if ((WeChatEnvironment.isCoolassistEnv()) || (BuildInfo.IS_FLAVOR_RED))
         {
           Log.i(TAG, "isCoolassistEnv or flavor red, return");
-          AppMethodBeat.o(263307);
+          AppMethodBeat.o(244010);
           return;
         }
-        localObject = localAccessibilityManager.getEnabledAccessibilityServiceList(1).iterator();
-        if (((Iterator)localObject).hasNext())
+        localObject2 = localAccessibilityManager.getEnabledAccessibilityServiceList(1).iterator();
+        if (((Iterator)localObject2).hasNext())
         {
-          AccessibilityServiceInfo localAccessibilityServiceInfo = (AccessibilityServiceInfo)((Iterator)localObject).next();
+          AccessibilityServiceInfo localAccessibilityServiceInfo = (AccessibilityServiceInfo)((Iterator)localObject2).next();
           if (spokenServiceBlackSet.contains(localAccessibilityServiceInfo.getId())) {
             continue;
           }
           Log.i(TAG, "has spoken service, return");
           printEnabledAccessibilityServiceInfo(localAccessibilityManager);
-          AppMethodBeat.o(263307);
+          AppMethodBeat.o(244010);
           return;
         }
         if (localAccessibilityManager.isTouchExplorationEnabled())
         {
           Log.i(TAG, "isTouchExplorationEnabled is true, return");
-          AppMethodBeat.o(263307);
+          AppMethodBeat.o(244010);
           return;
         }
         Log.i(TAG, "disableAccessibility");
-        localObject = AccessibilityManager.class.getDeclaredMethod("setStateLocked", new Class[] { Integer.TYPE });
-        ((Method)localObject).setAccessible(true);
+        localObject2 = AccessibilityManager.class.getDeclaredMethod("setStateLocked", new Class[] { Integer.TYPE });
+        ((Method)localObject2).setAccessible(true);
         if (bool2)
         {
           i = 4;
-          ((Method)localObject).invoke(localAccessibilityManager, new Object[] { Integer.valueOf(i) });
+          ((Method)localObject2).invoke(localAccessibilityManager, new Object[] { Integer.valueOf(i) });
           Log.i(TAG, "smartDisableAccessibility setStateLocked is invoked, flag = %d", new Object[] { Integer.valueOf(i) });
-          h.ZvG.be(new Runnable()
+          h.ahAA.bm(new Runnable()
           {
-            public final void run()
+            public void run()
             {
-              AppMethodBeat.i(263039);
-              AccessibilityUtil.access$000(this.val$accessibilityManager);
-              AppMethodBeat.o(263039);
+              AppMethodBeat.i(243822);
+              AccessibilityUtil.access$000(AccessibilityUtil.this);
+              AppMethodBeat.o(243822);
             }
           });
-          AppMethodBeat.o(263307);
+          AppMethodBeat.o(244010);
           return;
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        Log.w(TAG, "disableAccessibility exception -> " + localThrowable.getMessage());
-        AppMethodBeat.o(263307);
+        Log.w(TAG, "disableAccessibility exception -> " + localObject1.getMessage());
+        AppMethodBeat.o(244010);
         return;
       }
       int i = 0;

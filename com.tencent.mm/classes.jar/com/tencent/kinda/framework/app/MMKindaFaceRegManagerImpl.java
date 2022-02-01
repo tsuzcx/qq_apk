@@ -6,10 +6,9 @@ import com.tencent.kinda.gen.KindaFaceRegManager;
 import com.tencent.kinda.gen.VoidBoolStringI32StringCallback;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.tf;
+import com.tencent.mm.autogen.a.uu;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
 import com.tencent.mm.plugin.wallet_index.ui.WalletBrandUI;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class MMKindaFaceRegManagerImpl
@@ -20,53 +19,53 @@ public class MMKindaFaceRegManagerImpl
   
   public void startFaceImpl(int paramInt, String paramString1, String paramString2, VoidBoolStringI32StringCallback paramVoidBoolStringI32StringCallback, VoidCallback paramVoidCallback, String paramString3)
   {
-    AppMethodBeat.i(264897);
+    AppMethodBeat.i(226370);
     startFaceImpl(paramInt, paramString1, paramString2, paramVoidBoolStringI32StringCallback, paramVoidCallback, paramString3, "");
-    AppMethodBeat.o(264897);
+    AppMethodBeat.o(226370);
   }
   
   public void startFaceImpl(int paramInt, String paramString1, String paramString2, VoidBoolStringI32StringCallback paramVoidBoolStringI32StringCallback, VoidCallback paramVoidCallback, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(264899);
+    AppMethodBeat.i(226372);
     Object localObject = KindaContext.getTopOrUIPageFragmentActivity();
     if ((!(localObject instanceof UIPageFragmentActivity)) && (!(localObject instanceof WalletBrandUI)))
     {
       Log.e("MMKindaFaceRegManagerImpl", "startFaceImpl failed due to incompatible context(%s)", new Object[] { localObject.getClass().getName() });
-      AppMethodBeat.o(264899);
+      AppMethodBeat.o(226372);
       return;
     }
     Log.i("MMKindaFaceRegManagerImpl", "siScene:%s，strPackage：%s,strPackageSign:%s,otherVerifyTitle:%s，faceVerifyTitle：%s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2, paramString3, paramString4 });
     if ((localObject instanceof WalletBrandUI))
     {
       localObject = (WalletBrandUI)localObject;
-      ((WalletBrandUI)localObject).Pky = true;
-      ((WalletBrandUI)localObject).jSq = paramVoidBoolStringI32StringCallback;
-      ((WalletBrandUI)localObject).jSr = paramVoidCallback;
-      paramVoidBoolStringI32StringCallback = new tf();
-      paramVoidBoolStringI32StringCallback.fSA.fDf = ((Activity)localObject);
-      paramVoidBoolStringI32StringCallback.fSA.scene = paramInt;
-      paramVoidBoolStringI32StringCallback.fSA.packageName = paramString1;
-      paramVoidBoolStringI32StringCallback.fSA.fSC = paramString2;
-      paramVoidBoolStringI32StringCallback.fSA.fSD = paramString3;
-      paramVoidBoolStringI32StringCallback.fSA.fSF = paramString4;
-      paramVoidBoolStringI32StringCallback.fSA.requestCode = 4;
-      EventCenter.instance.publish(paramVoidBoolStringI32StringCallback);
-      AppMethodBeat.o(264899);
+      ((WalletBrandUI)localObject).WbB = true;
+      ((WalletBrandUI)localObject).msH = paramVoidBoolStringI32StringCallback;
+      ((WalletBrandUI)localObject).msI = paramVoidCallback;
+      paramVoidBoolStringI32StringCallback = new uu();
+      paramVoidBoolStringI32StringCallback.hYx.hHU = ((Activity)localObject);
+      paramVoidBoolStringI32StringCallback.hYx.scene = paramInt;
+      paramVoidBoolStringI32StringCallback.hYx.packageName = paramString1;
+      paramVoidBoolStringI32StringCallback.hYx.hYz = paramString2;
+      paramVoidBoolStringI32StringCallback.hYx.hYA = paramString3;
+      paramVoidBoolStringI32StringCallback.hYx.hYD = paramString4;
+      paramVoidBoolStringI32StringCallback.hYx.hPm = 4;
+      paramVoidBoolStringI32StringCallback.publish();
+      AppMethodBeat.o(226372);
       return;
     }
     localObject = (UIPageFragmentActivity)localObject;
-    ((UIPageFragmentActivity)localObject).jSq = paramVoidBoolStringI32StringCallback;
-    ((UIPageFragmentActivity)localObject).jSr = paramVoidCallback;
-    paramVoidBoolStringI32StringCallback = new tf();
-    paramVoidBoolStringI32StringCallback.fSA.fDf = ((Activity)localObject);
-    paramVoidBoolStringI32StringCallback.fSA.scene = paramInt;
-    paramVoidBoolStringI32StringCallback.fSA.packageName = paramString1;
-    paramVoidBoolStringI32StringCallback.fSA.fSC = paramString2;
-    paramVoidBoolStringI32StringCallback.fSA.fSD = paramString3;
-    paramVoidBoolStringI32StringCallback.fSA.fSF = paramString4;
-    paramVoidBoolStringI32StringCallback.fSA.requestCode = 4;
-    EventCenter.instance.publish(paramVoidBoolStringI32StringCallback);
-    AppMethodBeat.o(264899);
+    ((UIPageFragmentActivity)localObject).msH = paramVoidBoolStringI32StringCallback;
+    ((UIPageFragmentActivity)localObject).msI = paramVoidCallback;
+    paramVoidBoolStringI32StringCallback = new uu();
+    paramVoidBoolStringI32StringCallback.hYx.hHU = ((Activity)localObject);
+    paramVoidBoolStringI32StringCallback.hYx.scene = paramInt;
+    paramVoidBoolStringI32StringCallback.hYx.packageName = paramString1;
+    paramVoidBoolStringI32StringCallback.hYx.hYz = paramString2;
+    paramVoidBoolStringI32StringCallback.hYx.hYA = paramString3;
+    paramVoidBoolStringI32StringCallback.hYx.hYD = paramString4;
+    paramVoidBoolStringI32StringCallback.hYx.hPm = 4;
+    paramVoidBoolStringI32StringCallback.publish();
+    AppMethodBeat.o(226372);
   }
 }
 

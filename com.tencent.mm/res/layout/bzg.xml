@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.story.ui.view.UserGuideView android:id="@id/i7u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+    <com.tencent.mm.videocomposition.play.VideoCompositionPlayView android:id="@id/jog" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/ffa" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="54.0dip" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/cv" android:layout_alignParentStart="true" />
+    <include android:id="@id/ela" android:layout_width="fill_parent" android:layout_height="@dimen/d4" android:layout_marginBottom="46.0dip" android:layout_alignParentBottom="true" layout="@layout/st" />
+    <include android:id="@id/hjk" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginBottom="@dimen/df" android:layout_above="@id/ela" layout="@layout/bzd" />
+    <include android:id="@id/jie" android:layout_width="fill_parent" android:layout_height="@dimen/d4" android:layout_marginBottom="@dimen/df" android:layout_above="@id/hjk" layout="@layout/bze" />
+</merge>

@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import com.tencent.mm.kernel.c.a;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.azf;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/api/IFinderMessageSessionMuteSetting;", "Lcom/tencent/mm/kernel/service/IService;", "modifyMsgSessionMuteSetting", "", "ifOpen", "", "session", "", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/ICgiFinderLiveGetLastObjectCallback;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderGetLatestLiveObjectResponse;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface t
-  extends a
 {
-  public abstract void z(boolean paramBoolean, String paramString);
+  public abstract void a(int paramInt1, int paramInt2, azf paramazf);
 }
 
 

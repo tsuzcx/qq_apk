@@ -1,17 +1,31 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.Result.Companion;
+import kotlin.ah;
+import kotlin.d.d;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"SupervisorJob", "Lkotlinx/coroutines/CompletableJob;", "parent", "Lkotlinx/coroutines/Job;", "SupervisorJob0", "supervisorScope", "R", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public final class ct
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/ResumeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "continuation", "Lkotlin/coroutines/Continuation;", "", "(Lkotlin/coroutines/Continuation;)V", "invoke", "cause", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+final class ct
+  extends ch
 {
-  public static final w iRW()
+  private final d<ah> alw;
+  
+  public ct(d<? super ah> paramd)
   {
-    AppMethodBeat.i(204750);
-    w localw = (w)new cs(null);
-    AppMethodBeat.o(204750);
-    return localw;
+    this.alw = paramd;
+  }
+  
+  public final void N(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(188980);
+    paramThrowable = this.alw;
+    ah localah = ah.aiuX;
+    Result.Companion localCompanion = Result.Companion;
+    paramThrowable.resumeWith(Result.constructor-impl(localah));
+    AppMethodBeat.o(188980);
   }
 }
 

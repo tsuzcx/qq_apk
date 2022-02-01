@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
+import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.Display;
@@ -18,50 +19,55 @@ import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import androidx.core.content.a;
-import androidx.core.g.w;
-import com.tencent.luggage.k.j;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.platform.window.WxaWindowLayoutParams;
 import com.tencent.mm.plugin.appbrand.platform.window.c.a;
 import com.tencent.mm.plugin.appbrand.platform.window.c.c;
 import com.tencent.mm.plugin.appbrand.platform.window.d.b;
+import com.tencent.mm.plugin.appbrand.ui.ae;
+import com.tencent.mm.plugin.appbrand.utils.ac;
+import com.tencent.mm.plugin.appbrand.widget.e;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
-import com.tencent.mm.ui.as;
+import com.tencent.mm.ui.ay;
 import java.lang.reflect.Proxy;
+import java.util.Objects;
 
 public class o
   implements com.tencent.mm.plugin.appbrand.platform.window.c
 {
   public Context mContext;
-  private k qHG;
-  protected c qHH;
-  private WindowInsets qHI;
-  private final SparseArray<Rect> qHJ;
+  private k tMp;
+  protected c tMq;
+  private WindowInsets tMr;
+  private final SparseArray<Rect> tMs;
   
   public o()
   {
     AppMethodBeat.i(176759);
     this.mContext = new MutableContextWrapper(MMApplicationContext.getContext());
-    this.qHJ = new SparseArray(4);
+    this.tMs = new SparseArray(4);
     AppMethodBeat.o(176759);
   }
   
-  private WindowInsets chf()
+  private WindowInsets cIc()
   {
     AppMethodBeat.i(178639);
     Object localObject = AndroidContextUtil.castActivityOrNull(this.mContext);
     if (localObject != null)
     {
-      localObject = as.bu((Activity)localObject);
-      this.qHI = ((WindowInsets)localObject);
+      localObject = ay.bY((Activity)localObject);
+      this.tMr = ((WindowInsets)localObject);
       AppMethodBeat.o(178639);
       return localObject;
     }
-    if (this.qHI != null)
+    if (this.tMr != null)
     {
-      localObject = this.qHI;
+      localObject = this.tMr;
       AppMethodBeat.o(178639);
       return localObject;
     }
@@ -69,37 +75,17 @@ public class o
     return null;
   }
   
-  public final boolean RZ()
-  {
-    AppMethodBeat.i(178636);
-    AppMethodBeat.o(178636);
-    return false;
-  }
-  
-  public final boolean Sc()
-  {
-    return false;
-  }
-  
-  public final boolean Sd()
-  {
-    AppMethodBeat.i(176763);
-    boolean bool = com.tencent.mm.plugin.appbrand.utils.x.es(getContext());
-    AppMethodBeat.o(176763);
-    return bool;
-  }
-  
   public final com.tencent.mm.plugin.appbrand.platform.window.d a(d.b paramb)
   {
-    AppMethodBeat.i(244584);
+    AppMethodBeat.i(317583);
     paramb = new b(this, paramb);
-    AppMethodBeat.o(244584);
+    AppMethodBeat.o(317583);
     return paramb;
   }
   
   public void a(int paramInt, AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(244599);
+    AppMethodBeat.i(317635);
     if ((paramInt == 0) || (paramInt >> 24 != 0)) {}
     for (int i = 1;; i = 0)
     {
@@ -107,7 +93,7 @@ public class o
       if (paramAppBrandRuntime != null) {
         break;
       }
-      AppMethodBeat.o(244599);
+      AppMethodBeat.o(317635);
       return;
     }
     Window localWindow = paramAppBrandRuntime.getWindow();
@@ -115,7 +101,7 @@ public class o
     for (paramAppBrandRuntime = new ColorDrawable(0);; paramAppBrandRuntime = new ColorDrawable(paramInt))
     {
       localWindow.setBackgroundDrawable(paramAppBrandRuntime);
-      AppMethodBeat.o(244599);
+      AppMethodBeat.o(317635);
       return;
     }
   }
@@ -124,21 +110,48 @@ public class o
   
   public final void a(WxaWindowLayoutParams paramWxaWindowLayoutParams, AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(244597);
-    com.tencent.mm.plugin.appbrand.widget.d locald = paramAppBrandRuntime.ntC;
-    if ((locald instanceof com.tencent.mm.plugin.appbrand.widget.c))
+    AppMethodBeat.i(317630);
+    e locale = paramAppBrandRuntime.qsk;
+    if ((locale instanceof com.tencent.mm.plugin.appbrand.widget.c))
     {
-      ((com.tencent.mm.plugin.appbrand.widget.c)locald).setWxaLayoutParams(paramWxaWindowLayoutParams);
-      AppMethodBeat.o(244597);
+      ((com.tencent.mm.plugin.appbrand.widget.c)locale).setWxaLayoutParams(paramWxaWindowLayoutParams);
+      AppMethodBeat.o(317630);
       return;
     }
-    paramAppBrandRuntime.ntC.setLayoutParams(paramWxaWindowLayoutParams);
-    paramAppBrandRuntime.ntC.setScaleX(paramWxaWindowLayoutParams.scale);
-    paramAppBrandRuntime.ntC.setScaleY(paramWxaWindowLayoutParams.scale);
-    AppMethodBeat.o(244597);
+    paramAppBrandRuntime.qsk.setLayoutParams(paramWxaWindowLayoutParams);
+    paramAppBrandRuntime.qsk.setScaleX(paramWxaWindowLayoutParams.scale);
+    paramAppBrandRuntime.qsk.setScaleY(paramWxaWindowLayoutParams.scale);
+    AppMethodBeat.o(317630);
   }
   
-  public final void aD(Context paramContext)
+  public final boolean asq()
+  {
+    AppMethodBeat.i(178636);
+    AppMethodBeat.o(178636);
+    return false;
+  }
+  
+  public final boolean ast()
+  {
+    return false;
+  }
+  
+  public final boolean asu()
+  {
+    AppMethodBeat.i(176763);
+    boolean bool = ac.fo(getContext());
+    AppMethodBeat.o(176763);
+    return bool;
+  }
+  
+  public final void b(WindowManager.LayoutParams paramLayoutParams)
+  {
+    AppMethodBeat.i(176767);
+    a(paramLayoutParams);
+    AppMethodBeat.o(176767);
+  }
+  
+  public final void bm(Context paramContext)
   {
     AppMethodBeat.i(176760);
     if (this.mContext == paramContext)
@@ -146,7 +159,7 @@ public class o
       AppMethodBeat.o(176760);
       return;
     }
-    if (bCQ()) {
+    if (ccd()) {
       com.tencent.mm.sdk.platformtools.Log.i("Luggage.WXA.WindowAndroidActivityImpl", "resetContext, this:%s, new:%s, old:%s, stack:%s", new Object[] { getClass().getName(), paramContext, this.mContext, android.util.Log.getStackTraceString(new Throwable()) });
     }
     this.mContext = paramContext;
@@ -158,9 +171,9 @@ public class o
     }
     for (;;)
     {
-      this.qHG = paramContext;
-      che();
-      chf();
+      this.tMp = paramContext;
+      cIb();
+      cIc();
       AppMethodBeat.o(176760);
       return;
       if (Build.VERSION.SDK_INT >= 28) {
@@ -171,37 +184,7 @@ public class o
     }
   }
   
-  public final void b(WindowManager.LayoutParams paramLayoutParams)
-  {
-    AppMethodBeat.i(176767);
-    a(paramLayoutParams);
-    AppMethodBeat.o(176767);
-  }
-  
-  protected boolean bCQ()
-  {
-    return false;
-  }
-  
-  public boolean bCS()
-  {
-    return false;
-  }
-  
-  public final boolean bCZ()
-  {
-    AppMethodBeat.i(244583);
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      boolean bool = AndroidContextUtil.castActivityOrNull(this.mContext).isInMultiWindowMode();
-      AppMethodBeat.o(244583);
-      return bool;
-    }
-    AppMethodBeat.o(244583);
-    return false;
-  }
-  
-  public final WindowManager chd()
+  public final WindowManager cIa()
   {
     AppMethodBeat.i(177597);
     WindowManager localWindowManager = (WindowManager)a.a(this.mContext, WindowManager.class);
@@ -209,43 +192,66 @@ public class o
     return localWindowManager;
   }
   
-  public final c che()
+  public final c cIb()
   {
     AppMethodBeat.i(176765);
-    if ((this.qHH == null) || (((this.qHH instanceof d)) && (((d)this.qHH).activity != AndroidContextUtil.castActivityOrNull(this.mContext))))
+    if ((this.tMq == null) || (((this.tMq instanceof d)) && (((d)this.tMq).activity != AndroidContextUtil.castActivityOrNull(this.mContext))))
     {
-      if (this.qHH != null) {
-        this.qHH.release();
+      if (this.tMq != null) {
+        this.tMq.release();
       }
-      this.qHH = new d(this);
+      this.tMq = new d(this);
     }
-    c localc = this.qHH;
+    c localc = this.tMq;
     AppMethodBeat.o(176765);
     return localc;
+  }
+  
+  protected boolean ccd()
+  {
+    return false;
+  }
+  
+  public boolean ccf()
+  {
+    return false;
+  }
+  
+  public final boolean ccm()
+  {
+    AppMethodBeat.i(317572);
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      Activity localActivity = AndroidContextUtil.castActivityOrNull(this.mContext);
+      if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED)) {
+        Objects.requireNonNull(localActivity);
+      }
+      if ((localActivity != null) && (localActivity.isInMultiWindowMode()))
+      {
+        AppMethodBeat.o(317572);
+        return true;
+      }
+      AppMethodBeat.o(317572);
+      return false;
+    }
+    AppMethodBeat.o(317572);
+    return false;
   }
   
   public final void dispatchConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(176766);
     if (n.a(getContext().getResources().getConfiguration(), paramConfiguration)) {}
-    synchronized (this.qHJ)
+    synchronized (this.tMs)
     {
-      this.qHJ.clear();
+      this.tMs.clear();
       getContext().getResources().getConfiguration().updateFrom(paramConfiguration);
-      che().onConfigurationChanged(paramConfiguration);
-      this.qHG.c(paramConfiguration);
+      cIb().onConfigurationChanged(paramConfiguration);
+      this.tMp.e(paramConfiguration);
       onConfigurationChanged(paramConfiguration);
       AppMethodBeat.o(176766);
       return;
     }
-  }
-  
-  public final Activity getActivity()
-  {
-    AppMethodBeat.i(292946);
-    Activity localActivity = AndroidContextUtil.castActivityOrNull(this.mContext);
-    AppMethodBeat.o(292946);
-    return localActivity;
   }
   
   public final Context getContext()
@@ -256,79 +262,126 @@ public class o
   public Rect getSafeAreaInsets()
   {
     AppMethodBeat.i(176769);
-    Activity localActivity = AndroidContextUtil.castActivityOrNull(this.mContext);
-    if (localActivity == null)
-    {
-      com.tencent.mm.sdk.platformtools.Log.e("Luggage.WXA.WindowAndroidActivityImpl", "getSafeAreaInsets with NULL activity");
-      AppMethodBeat.o(176769);
-      return null;
-    }
-    if (localActivity.getWindow() == null)
-    {
-      com.tencent.mm.sdk.platformtools.Log.e("Luggage.WXA.WindowAndroidActivityImpl", "getSafeAreaInsets will NULL window");
-      AppMethodBeat.o(176769);
-      return null;
-    }
-    int k = localActivity.getWindowManager().getDefaultDisplay().getRotation();
+    long l1 = Util.currentTicks();
+    long l2;
+    boolean bool;
+    int k;
     int j;
     int i;
-    synchronized (this.qHJ)
+    try
     {
-      Rect localRect2 = (Rect)this.qHJ.get(k);
-      Object localObject1 = localRect2;
-      if (localRect2 == null)
+      Activity localActivity = AndroidContextUtil.castActivityOrNull(this.mContext);
+      if (localActivity == null)
       {
-        if (!w.ah(localActivity.getWindow().getDecorView())) {
-          break label188;
+        com.tencent.mm.sdk.platformtools.Log.e("Luggage.WXA.WindowAndroidActivityImpl", "getSafeAreaInsets with NULL activity");
+        l2 = Util.currentTicks();
+        if (Looper.getMainLooper() == Looper.myLooper()) {}
+        for (bool = true;; bool = false)
+        {
+          com.tencent.mm.sdk.platformtools.Log.i("Luggage.WXA.WindowAndroidActivityImpl", "getSafeAreaInsets forMainThread:%b, cost:%dms", new Object[] { Boolean.valueOf(bool), Long.valueOf(l2 - l1) });
+          AppMethodBeat.o(176769);
+          return null;
         }
-        localObject1 = localActivity.getWindow().getDecorView();
-        j = ((View)localObject1).getWidth();
       }
-      for (i = ((View)localObject1).getHeight(); !this.qHG.xJ(); i = getVDisplayMetrics().heightPixels)
+      if (localActivity.getWindow() == null)
       {
-        localObject1 = new Rect(0, 0, j, i);
-        this.qHJ.put(k, localObject1);
-        AppMethodBeat.o(176769);
-        return localObject1;
-        label188:
-        j = getVDisplayMetrics().widthPixels;
+        com.tencent.mm.sdk.platformtools.Log.e("Luggage.WXA.WindowAndroidActivityImpl", "getSafeAreaInsets will NULL window");
+        l2 = Util.currentTicks();
+        if (Looper.getMainLooper() == Looper.myLooper()) {}
+        for (bool = true;; bool = false)
+        {
+          com.tencent.mm.sdk.platformtools.Log.i("Luggage.WXA.WindowAndroidActivityImpl", "getSafeAreaInsets forMainThread:%b, cost:%dms", new Object[] { Boolean.valueOf(bool), Long.valueOf(l2 - l1) });
+          AppMethodBeat.o(176769);
+          return null;
+        }
       }
-      if (!this.qHG.xJ()) {
-        break label444;
-      }
-      if (Build.VERSION.SDK_INT < 28) {
-        break label315;
-      }
-      localObject1 = ((l)this.qHG).CF(k);
-      if (localObject1 == null) {
-        break label315;
-      }
-      localObject1 = ((WindowInsets)localObject1).getDisplayCutout();
-      if (localObject1 != null) {
+      k = localActivity.getWindowManager().getDefaultDisplay().getRotation();
+      synchronized (this.tMs)
+      {
+        Object localObject1 = (Rect)this.tMs.get(k);
+        if (localObject1 != null) {
+          break label688;
+        }
+        if (z.au(localActivity.getWindow().getDecorView()))
+        {
+          localObject1 = localActivity.getWindow().getDecorView();
+          j = ((View)localObject1).getWidth();
+        }
+        for (i = ((View)localObject1).getHeight(); !this.tMp.Xg(); i = getVDisplayMetrics().heightPixels)
+        {
+          localObject1 = new Rect(0, 0, j, i);
+          this.tMs.put(k, localObject1);
+          label285:
+          l2 = Util.currentTicks();
+          if (Looper.getMainLooper() != Looper.myLooper()) {
+            break label676;
+          }
+          bool = true;
+          label305:
+          com.tencent.mm.sdk.platformtools.Log.i("Luggage.WXA.WindowAndroidActivityImpl", "getSafeAreaInsets forMainThread:%b, cost:%dms", new Object[] { Boolean.valueOf(bool), Long.valueOf(l2 - l1) });
+          AppMethodBeat.o(176769);
+          return localObject1;
+          j = getVDisplayMetrics().widthPixels;
+        }
+        if (!this.tMp.Xg()) {
+          break label660;
+        }
+        if (Build.VERSION.SDK_INT < 28) {
+          break label531;
+        }
+        localObject1 = ((l)this.tMp).CW(k);
+        if (localObject1 == null) {
+          break label531;
+        }
+        localObject1 = ((WindowInsets)localObject1).getDisplayCutout();
+        if (localObject1 == null) {
+          break label523;
+        }
         localObject1 = new Rect(((DisplayCutout)localObject1).getSafeInsetLeft(), ((DisplayCutout)localObject1).getSafeInsetTop(), j - ((DisplayCutout)localObject1).getSafeInsetRight(), i - ((DisplayCutout)localObject1).getSafeInsetBottom());
       }
+      bool = true;
     }
+    finally
+    {
+      l2 = Util.currentTicks();
+      if (Looper.getMainLooper() != Looper.myLooper()) {
+        break label682;
+      }
+    }
+    label483:
+    com.tencent.mm.sdk.platformtools.Log.i("Luggage.WXA.WindowAndroidActivityImpl", "getSafeAreaInsets forMainThread:%b, cost:%dms", new Object[] { Boolean.valueOf(bool), Long.valueOf(l2 - l1) });
+    AppMethodBeat.o(176769);
+    throw localObject3;
+    label523:
     com.tencent.mm.sdk.platformtools.Log.e("Luggage.WXA.WindowAndroidActivityImpl", "getSafeAreaGuarded api28 NULL getDisplayCutout, fallback impl");
-    label315:
-    int m = this.qHG.chc();
+    label531:
+    int m = this.tMp.cHZ();
     switch (k)
     {
     }
     for (;;)
     {
-      Rect localRect1 = new Rect(0, 0, j, i);
+      Rect localRect = new Rect(0, 0, j, i);
       break;
-      localRect1 = new Rect(0, m, j, i);
+      localRect = new Rect(0, m, j, i);
       break;
-      localRect1 = new Rect(m, 0, j, i);
+      localRect = new Rect(m, 0, j, i);
       break;
-      localRect1 = new Rect(0, 0, j, i - m);
+      localRect = new Rect(0, 0, j, i - m);
       break;
-      localRect1 = new Rect(0, 0, j - m, i);
+      localRect = new Rect(0, 0, j - m, i);
       break;
-      label444:
-      localRect1 = new Rect(0, 0, j, i);
+      label660:
+      localRect = new Rect(0, 0, j, i);
       break;
+      label676:
+      bool = false;
+      break label305;
+      label682:
+      bool = false;
+      break label483;
+      label688:
+      break label285;
     }
   }
   
@@ -342,14 +395,14 @@ public class o
     AppMethodBeat.i(176768);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      Object localObject = chf();
+      Object localObject = cIc();
       if (localObject != null)
       {
         i = ((WindowInsets)localObject).getStableInsetTop();
         localObject = new c.c();
         ((c.c)localObject).height = i;
         if (AndroidContextUtil.castActivityOrNull(this.mContext) != null) {
-          if (!com.tencent.mm.plugin.appbrand.ui.x.eq(AndroidContextUtil.castActivityOrNull(this.mContext))) {
+          if (!ae.fm(AndroidContextUtil.castActivityOrNull(this.mContext))) {
             break label94;
           }
         }
@@ -360,7 +413,7 @@ public class o
         ((c.c)localObject).visibility = i;
         AppMethodBeat.o(176768);
         return localObject;
-        i = j.cEc.aO(getContext());
+        i = com.tencent.luggage.l.k.exm.by(getContext());
         break;
       }
     }
@@ -406,7 +459,7 @@ public class o
       com.tencent.mm.sdk.platformtools.Log.e("Luggage.WXA.WindowAndroidActivityImpl", "setWindowDescription try1 e=%s", new Object[] { localException });
       try
       {
-        AndroidContextUtil.castActivityOrNull(this.mContext).setTaskDescription(n.a(new c.a(parama.label, parama.qGu, -16777216)));
+        AndroidContextUtil.castActivityOrNull(this.mContext).setTaskDescription(n.a(new c.a(parama.label, parama.tLg, -16777216)));
         AppMethodBeat.o(176771);
         return;
       }
@@ -420,7 +473,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.a.o
  * JD-Core Version:    0.7.0.1
  */

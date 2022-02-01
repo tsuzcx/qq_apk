@@ -10,7 +10,7 @@ public final class e
   {
     super(paramInt1, paramInt2, paramInt3, 2, paramInt4, 1);
     AppMethodBeat.i(155555);
-    g.qD(hashCode());
+    g.qJ(hashCode());
     AppMethodBeat.o(155555);
   }
   
@@ -18,13 +18,13 @@ public final class e
   {
     AppMethodBeat.i(155556);
     super.release();
-    g.qE(hashCode());
+    g.qK(hashCode());
     AppMethodBeat.o(155556);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.b.e
  * JD-Core Version:    0.7.0.1
  */

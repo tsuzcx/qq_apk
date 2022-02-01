@@ -1,22 +1,20 @@
 package com.tencent.mm.plugin.hld.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/ImeRecommendationType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "Geography", "Interest", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/ImeRecommendationType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "Geography", "Interest", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum j
 {
   public final int value;
   
   static
   {
-    AppMethodBeat.i(209791);
-    j localj1 = new j("Geography", 0, 1);
-    DCV = localj1;
-    j localj2 = new j("Interest", 1, 2);
-    DCW = localj2;
-    DCX = new j[] { localj1, localj2 };
-    AppMethodBeat.o(209791);
+    AppMethodBeat.i(311889);
+    JvE = new j("Geography", 0, 1);
+    JvF = new j("Interest", 1, 2);
+    JvG = new j[] { JvE, JvF };
+    AppMethodBeat.o(311889);
   }
   
   private j(int paramInt)
@@ -26,7 +24,7 @@ public enum j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.hld.model.j
  * JD-Core Version:    0.7.0.1
  */

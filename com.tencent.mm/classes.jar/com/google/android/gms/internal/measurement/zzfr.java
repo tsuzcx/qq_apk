@@ -9,7 +9,6 @@ import android.util.Pair;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient.Info;
 import com.google.android.gms.common.util.Clock;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -18,7 +17,6 @@ import java.util.Locale;
 final class zzfr
   extends zzhh
 {
-  @VisibleForTesting
   static final Pair<String, Long> zzajs;
   private SharedPreferences zzabf;
   public zzfv zzajt;
@@ -314,7 +312,7 @@ final class zzfr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfr
  * JD-Core Version:    0.7.0.1
  */

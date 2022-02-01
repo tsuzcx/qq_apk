@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cqy;
-import com.tencent.mm.protocal.protobuf.cqz;
+import com.tencent.mm.protocal.protobuf.dht;
+import com.tencent.mm.protocal.protobuf.dhu;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
-  extends q
+  extends p
   implements com.tencent.mm.network.m
 {
-  private i callback;
-  public int fSo;
-  public String lnp;
-  private d rr;
-  public String vil;
+  private h callback;
+  public int hYl;
+  public String nSt;
+  private c rr;
+  public String yuk;
   
   public m(String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(23534);
     this.callback = null;
     this.rr = null;
-    this.vil = paramString3;
-    this.lnp = paramString2;
-    this.fSo = paramInt;
-    this.vil = paramString3;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new cqy();
-    ((d.a)localObject).lBV = new cqz();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/rank/addlike";
-    ((d.a)localObject).funcId = 1041;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (cqy)d.b.b(this.rr.lBR);
-    ((cqy)localObject).vpp = paramString2;
-    ((cqy)localObject).username = paramString1;
-    ((cqy)localObject).fSo = paramInt;
-    ((cqy)localObject).lmG = paramString3;
+    this.yuk = paramString3;
+    this.nSt = paramString2;
+    this.hYl = paramInt;
+    this.yuk = paramString3;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new dht();
+    ((c.a)localObject).otF = new dhu();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/rank/addlike";
+    ((c.a)localObject).funcId = 1041;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (dht)c.b.b(this.rr.otB);
+    ((dht)localObject).appusername = paramString2;
+    ((dht)localObject).username = paramString1;
+    ((dht)localObject).hYl = paramInt;
+    ((dht)localObject).nRL = paramString3;
     AppMethodBeat.o(23534);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(23535);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(23535);
     return i;

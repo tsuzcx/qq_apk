@@ -1,133 +1,196 @@
 package com.tencent.mm.plugin.mv.model.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.aqe;
-import com.tencent.mm.protocal.protobuf.aua;
-import com.tencent.mm.protocal.protobuf.aub;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.protocal.protobuf.bcr;
+import com.tencent.mm.protocal.protobuf.bcs;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.Metadata;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/netscene/NetSceneMusicMvGetFinderFavFeed;", "Lcom/tencent/mm/plugin/mv/model/netscene/BaseMvNetScene;", "finderUserName", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "(Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetFavListRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/FinderGetFavListResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getContinueFlag", "()Ljava/lang/Integer;", "getMegaVideoCount", "getResponse", "getTotalCount", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/netscene/NetSceneMusicMvFinderLike;", "Lcom/tencent/mm/plugin/mv/model/netscene/BaseMvNetScene;", "finderFeedId", "", "finderNonceId", "", "likeIt", "", "(JLjava/lang/String;Z)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "getFinderFeedId", "()J", "getFinderNonceId", "()Ljava/lang/String;", "likeId", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLikeRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/FinderLikeResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
   extends a
 {
-  public static final a Gdr;
-  private aua Gdp;
-  public aub Gdq;
-  private i callback;
-  private final d lKU;
+  private static long AyQ;
+  public static final a LYQ;
+  private long AyP;
+  private bcr AzE;
+  private final long LYR;
+  private final String LYS;
+  private bcs LYT;
+  private h callback;
+  private final c oDw;
   
   static
   {
-    AppMethodBeat.i(225367);
-    Gdr = new a((byte)0);
-    AppMethodBeat.o(225367);
+    AppMethodBeat.i(286275);
+    LYQ = new a((byte)0);
+    AppMethodBeat.o(286275);
   }
   
-  public g(String paramString, b paramb)
+  public g(long paramLong, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(225365);
-    Object localObject = new d.a();
-    ((d.a)localObject).vD(3966);
-    ((d.a)localObject).TW("/cgi-bin/micromsg-bin/findergetfavlist");
-    ((d.a)localObject).c((com.tencent.mm.cd.a)new aua());
-    ((d.a)localObject).d((com.tencent.mm.cd.a)new aub());
-    localObject = ((d.a)localObject).bgN();
-    p.j(localObject, "commReqRespBuilder.buildInstance()");
-    this.lKU = ((d)localObject);
-    localObject = this.lKU.bhX();
-    if (localObject == null)
+    AppMethodBeat.i(286268);
+    this.LYR = paramLong;
+    this.LYS = paramString;
+    this.AyP = cn.bDv();
+    paramString = new c.a();
+    paramString.funcId = 3710;
+    paramString.uri = "/cgi-bin/micromsg-bin/finderlike";
+    paramString.otE = ((com.tencent.mm.bx.a)new bcr());
+    paramString.otF = ((com.tencent.mm.bx.a)new bcs());
+    paramString = paramString.bEF();
+    kotlin.g.b.s.s(paramString, "commReqRespBuilder.buildInstance()");
+    this.oDw = paramString;
+    if (this.AyP < AyQ)
     {
-      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListRequest");
-      AppMethodBeat.o(225365);
+      paramLong = AyQ;
+      AyQ = 1L + paramLong;
+      this.AyP = paramLong;
+    }
+    AyQ = this.AyP;
+    paramString = c.b.b(this.oDw.otB);
+    if (paramString == null)
+    {
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderLikeRequest");
+      AppMethodBeat.o(286268);
       throw paramString;
     }
-    this.Gdp = ((aua)localObject);
-    localObject = this.Gdp;
-    if (localObject != null) {
-      ((aua)localObject).finderUsername = paramString;
-    }
-    paramString = this.Gdp;
+    this.AzE = ((bcr)paramString);
+    paramString = this.AzE;
     if (paramString != null) {
-      paramString.lastBuffer = paramb;
+      paramString.hKN = this.LYR;
     }
-    paramString = this.Gdp;
+    paramString = this.AzE;
     if (paramString != null) {
-      paramString.fEH = 0;
+      paramString.commentId = 0L;
     }
-    paramString = this.Gdp;
-    if (paramString != null)
+    paramString = this.AzE;
+    if (paramString != null) {
+      if (!paramBoolean) {
+        break label444;
+      }
+    }
+    label444:
+    for (int i = 3;; i = 4)
     {
-      paramb = new aqe();
-      paramb.scene = 93;
-      paramString.SDi = paramb;
-      AppMethodBeat.o(225365);
+      paramString.opType = i;
+      paramString = this.AzE;
+      if (paramString != null) {
+        paramString.AyP = this.AyP;
+      }
+      paramString = this.AzE;
+      if (paramString != null) {
+        paramString.ZNF = com.tencent.mm.model.z.bAW();
+      }
+      paramString = this.AzE;
+      if (paramString != null) {
+        paramString.scene = 91;
+      }
+      paramString = this.AzE;
+      if (paramString != null) {
+        paramString.objectNonceId = this.LYS;
+      }
+      paramString = this.AzE;
+      if (paramString != null) {
+        paramString.ZNF = "";
+      }
+      paramString = this.AzE;
+      if (paramString != null) {
+        paramString.Dom = 0;
+      }
+      paramString = this.AzE;
+      if (paramString != null) {
+        paramString.Eis = 0;
+      }
+      paramString = bi.ABn;
+      paramString = bi.dVu();
+      paramString.scene = 91;
+      paramString.ZEr = 1;
+      Object localObject = this.AzE;
+      if (localObject != null) {
+        ((bcr)localObject).CJv = paramString;
+      }
+      paramString = this.AzE;
+      if (paramString != null)
+      {
+        localObject = com.tencent.mm.plugin.finder.report.z.FrZ;
+        paramString.sessionBuffer = com.tencent.mm.plugin.finder.report.z.p(this.LYR, 91);
+      }
+      paramString = this.AzE;
+      if (paramString != null)
+      {
+        localObject = bi.ABn;
+        bi.a(paramString.CJv, kotlin.a.p.listOf(new r(Integer.valueOf(91), Long.valueOf(this.LYR))));
+      }
+      AppMethodBeat.o(286268);
       return;
     }
-    AppMethodBeat.o(225365);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
-    AppMethodBeat.i(225346);
-    p.k(paramg, "dispatcher");
-    p.k(parami, "callback");
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.lKU, (m)this);
-    AppMethodBeat.o(225346);
+    AppMethodBeat.i(286287);
+    kotlin.g.b.s.u(paramg, "dispatcher");
+    kotlin.g.b.s.u(paramh, "callback");
+    this.callback = paramh;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.oDw, (m)this);
+    AppMethodBeat.o(286287);
     return i;
   }
   
   public final int getType()
   {
-    return 3966;
+    return 3710;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(225353);
+    AppMethodBeat.i(286298);
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
-    Log.i("MicroMsg.Mv.NetSceneMusicMvGetFinderFavFeed", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.i("MicroMsg.Mv.NetSceneMusicMvMVFinderLike", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       params = this.callback;
-      if (params != null)
-      {
-        params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-        AppMethodBeat.o(225353);
-        return;
+      if (params != null) {
+        params.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.am.p)this);
       }
-      AppMethodBeat.o(225353);
+      AppMethodBeat.o(286298);
       return;
     }
-    params = this.lKU.bhY();
+    params = c.c.b(this.oDw.otC);
     if (params == null)
     {
-      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
-      AppMethodBeat.o(225353);
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderLikeResponse");
+      AppMethodBeat.o(286298);
       throw paramString;
     }
-    this.Gdq = ((aub)params);
+    this.LYT = ((bcs)params);
     params = this.callback;
-    if (params != null)
-    {
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(225353);
-      return;
+    if (params != null) {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.am.p)this);
     }
-    AppMethodBeat.o(225353);
+    params = com.tencent.mm.plugin.findersdk.d.a.Hdr;
+    com.tencent.mm.plugin.findersdk.d.a.B(paramInt2, paramInt3, paramString);
+    paramString = com.tencent.mm.plugin.findersdk.d.a.Hdr;
+    com.tencent.mm.plugin.findersdk.d.a.C(paramInt2, paramInt3, MMApplicationContext.getContext().getString(e.h.finder_like_failed_of_blacklist));
+    paramString = com.tencent.mm.plugin.findersdk.d.a.Hdr;
+    com.tencent.mm.plugin.findersdk.d.a.D(paramInt2, paramInt3, MMApplicationContext.getContext().getString(e.h.finder_like_failed_not_realname));
+    AppMethodBeat.o(286298);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/netscene/NetSceneMusicMvGetFinderFavFeed$Companion;", "", "()V", "TAG", "", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/netscene/NetSceneMusicMvFinderLike$Companion;", "", "()V", "GlobalLikeFeedId", "", "getGlobalLikeFeedId", "()J", "setGlobalLikeFeedId", "(J)V", "TAG", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

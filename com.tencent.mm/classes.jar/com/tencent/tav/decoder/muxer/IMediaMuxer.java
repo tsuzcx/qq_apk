@@ -4,6 +4,7 @@ import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
 import com.tencent.tav.core.ExportConfig;
 import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.coremedia.CMTimeRange;
 import java.nio.ByteBuffer;
 
 public abstract interface IMediaMuxer
@@ -12,9 +13,15 @@ public abstract interface IMediaMuxer
   
   public abstract int audioTrackIndex();
   
+  public abstract void clearResource();
+  
+  public abstract ExportConfig getExportConfig();
+  
   public abstract boolean ignoreHeader();
   
   public abstract boolean isMuxerStarted();
+  
+  public abstract void prepareParallelSegmentInfo(int paramInt, CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2);
   
   public abstract void release();
   
@@ -22,7 +29,7 @@ public abstract interface IMediaMuxer
   
   public abstract void start();
   
-  public abstract void stop();
+  public abstract boolean stop();
   
   public abstract int videoTrackIndex();
   

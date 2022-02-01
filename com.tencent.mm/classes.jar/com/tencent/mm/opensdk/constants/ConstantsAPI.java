@@ -11,10 +11,12 @@ public abstract interface ConstantsAPI
   public static final int COMMAND_ADD_CARD_TO_EX_CARD_PACKAGE = 9;
   public static final int COMMAND_CHOOSE_CARD_FROM_EX_CARD_PACKAGE = 16;
   public static final int COMMAND_CREATE_CHATROOM = 14;
+  public static final int COMMAND_FINDER_OPEN_EVENT = 41;
   public static final int COMMAND_FINDER_OPEN_FEED = 36;
   public static final int COMMAND_FINDER_OPEN_LIVE = 35;
   public static final int COMMAND_FINDER_OPEN_PROFILE = 34;
   public static final int COMMAND_FINDER_SHARE_VIDEO = 33;
+  public static final int COMMAND_FINDER_START_LIVE = 39;
   public static final int COMMAND_GETMESSAGE_FROM_WX = 3;
   public static final int COMMAND_HANDLE_SCAN_RESULT = 17;
   public static final int COMMAND_INVOICE_AUTH_INSERT = 20;
@@ -33,6 +35,8 @@ public abstract interface ConstantsAPI
   public static final int COMMAND_OPEN_BUSINESS_VIEW = 26;
   public static final int COMMAND_OPEN_BUSINESS_WEBVIEW = 25;
   public static final int COMMAND_OPEN_BUSI_LUCKY_MONEY = 13;
+  public static final int COMMAND_OPEN_CUSTOMER_SERVICE_CHAT = 37;
+  public static final int COMMAND_OPEN_QRCODE_PAY = 38;
   public static final int COMMAND_OPEN_RANK_LIST = 11;
   public static final int COMMAND_OPEN_WEBVIEW = 12;
   public static final int COMMAND_PAY_BY_WX = 5;
@@ -51,7 +55,7 @@ public abstract interface ConstantsAPI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.opensdk.constants.ConstantsAPI
  * JD-Core Version:    0.7.0.1
  */

@@ -59,11 +59,11 @@ public class TimeLogger
   
   public void reset()
   {
-    AppMethodBeat.i(189537);
+    AppMethodBeat.i(243476);
     this.mDisabled = false;
     if (this.mDisabled)
     {
-      AppMethodBeat.o(189537);
+      AppMethodBeat.o(243476);
       return;
     }
     if (this.mSplits == null)
@@ -74,7 +74,7 @@ public class TimeLogger
     for (;;)
     {
       addSplit(null);
-      AppMethodBeat.o(189537);
+      AppMethodBeat.o(243476);
       return;
       this.mSplits.clear();
       this.mSplitLabels.clear();
@@ -83,11 +83,11 @@ public class TimeLogger
   
   public void reset(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189531);
+    AppMethodBeat.i(243469);
     this.mTag = paramString1;
     this.mLabel = paramString2;
     reset();
-    AppMethodBeat.o(189531);
+    AppMethodBeat.o(243469);
   }
 }
 

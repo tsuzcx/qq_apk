@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/is" android:textColor="@color/FG_0" android:gravity="center_vertical" android:id="@id/d06" android:paddingLeft="@dimen/ce" android:layout_width="fill_parent" android:layout_height="@dimen/cs" android:text="@string/d_q" />
-    <ImageView android:id="@id/brt" android:layout_marginLeft="@dimen/ce" android:layout_marginRight="@dimen/ce" style="@style/hx" />
-    <include android:id="@id/d04" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/agw" />
-    <include android:id="@id/d05" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/agw" />
-</merge>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/bqz" android:layout_width="fill_parent" android:layout_height="@dimen/cv"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/m3" android:textStyle="bold" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gzb" android:paddingLeft="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="@dimen/d1" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/bv" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/UN_BW_0_Alpha_0_9" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j2" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginRight="@dimen/cp" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_add2" app:iconColor="@color/UN_BW_0_Alpha_0_9" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/UN_BW_0_Alpha_0_9" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/bv" android:text="@string/jv" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/go7" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginRight="@dimen/cp" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintRight_toLeftOf="@id/j2" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_manage" app:iconColor="@color/UN_BW_0_Alpha_0_9" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/UN_BW_0_Alpha_0_9" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/bv" android:text="@string/a07" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

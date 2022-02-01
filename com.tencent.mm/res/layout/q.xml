@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/ei2" android:background="@color/agp" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.finder.live.view.FinderLiveListHorizontalContainer android:orientation="vertical" android:id="@id/fva" android:background="@color/r1" android:paddingBottom="@dimen/cv" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/v9" android:id="@id/em2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/bt" />
-    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/ek3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/d8b" android:paddingLeft="@dimen/c5" android:paddingTop="@dimen/ce" android:paddingRight="@dimen/ct" android:paddingBottom="@dimen/c5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="15.0dip" android:textColor="@color/v9" android:id="@id/d8z" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/yf" android:id="@id/fz8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/cd" android:layout_marginBottom="@dimen/bv" />
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/fx3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/ed5" android:paddingLeft="@dimen/cd" android:paddingTop="@dimen/cv" android:paddingRight="@dimen/df" android:paddingBottom="@dimen/cd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="15.0dip" android:textColor="@color/yf" android:id="@id/edw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
-</LinearLayout>
+</com.tencent.mm.plugin.finder.live.view.FinderLiveListHorizontalContainer>

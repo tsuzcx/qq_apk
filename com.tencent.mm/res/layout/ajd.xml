@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.TouchMediaPreviewLayout android:orientation="vertical" android:id="@id/iub" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/gka" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </com.tencent.mm.view.RefreshLoadMoreLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</com.tencent.mm.ui.widget.TouchMediaPreviewLayout>
+    <include android:id="@id/dvy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ag6" />
+    <include android:id="@id/dwg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ajf" />
+    <ProgressBar android:id="@id/dnx" android:visibility="gone" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:indeterminateDrawable="@drawable/ang" android:layout_centerInParent="true" />
+</RelativeLayout>

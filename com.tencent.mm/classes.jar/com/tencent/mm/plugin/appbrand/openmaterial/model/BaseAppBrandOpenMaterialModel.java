@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.openmaterial.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.luggage.k.l;
+import com.tencent.luggage.l.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -14,40 +14,40 @@ public class BaseAppBrandOpenMaterialModel
 {
   public static final Parcelable.Creator<BaseAppBrandOpenMaterialModel> CREATOR;
   public final String appId;
-  public final int cBU;
-  public final String nBq;
+  public final int euz;
+  public final String qAF;
   
   static
   {
-    AppMethodBeat.i(192179);
+    AppMethodBeat.i(323618);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(192179);
+    AppMethodBeat.o(323618);
   }
   
   protected BaseAppBrandOpenMaterialModel(Parcel paramParcel)
   {
-    AppMethodBeat.i(192172);
+    AppMethodBeat.i(323601);
     this.appId = Util.nullAs(paramParcel.readString(), "");
-    this.cBU = paramParcel.readInt();
-    this.nBq = Util.nullAs(paramParcel.readString(), "");
-    AppMethodBeat.o(192172);
+    this.euz = paramParcel.readInt();
+    this.qAF = Util.nullAs(paramParcel.readString(), "");
+    AppMethodBeat.o(323601);
   }
   
   public BaseAppBrandOpenMaterialModel(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(192152);
+    AppMethodBeat.i(323587);
     this.appId = paramString1;
-    this.cBU = paramInt;
+    this.euz = paramInt;
     if (!Util.isNullOrNil(paramString2))
     {
-      paramString1 = l.eo(paramString2);
+      paramString1 = m.fL(paramString2);
       if (paramString1.endsWith(".html")) {}
     }
     for (paramString1 = paramString2.replace(paramString1, paramString1 + ".html");; paramString1 = paramString2)
     {
       Log.i("MicroMsg.AppBrand.BaseAppBrandOpenMaterialModel", "fixPath, path: %s, fixedPath: %s", new Object[] { paramString2, paramString1 });
-      this.nBq = paramString1;
-      AppMethodBeat.o(192152);
+      this.qAF = paramString1;
+      AppMethodBeat.o(323587);
       return;
     }
   }
@@ -59,55 +59,55 @@ public class BaseAppBrandOpenMaterialModel
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(192163);
+    AppMethodBeat.i(323644);
     if (this == paramObject)
     {
-      AppMethodBeat.o(192163);
+      AppMethodBeat.o(323644);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(192163);
+      AppMethodBeat.o(323644);
       return false;
     }
     paramObject = (BaseAppBrandOpenMaterialModel)paramObject;
-    if ((this.cBU == paramObject.cBU) && (this.appId.equals(paramObject.appId)) && (this.nBq.equals(paramObject.nBq)))
+    if ((this.euz == paramObject.euz) && (this.appId.equals(paramObject.appId)) && (this.qAF.equals(paramObject.qAF)))
     {
-      AppMethodBeat.o(192163);
+      AppMethodBeat.o(323644);
       return true;
     }
-    AppMethodBeat.o(192163);
+    AppMethodBeat.o(323644);
     return false;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(192171);
-    int i = Objects.hash(new Object[] { this.appId, Integer.valueOf(this.cBU), this.nBq });
-    AppMethodBeat.o(192171);
+    AppMethodBeat.i(323654);
+    int i = Objects.hash(new Object[] { this.appId, Integer.valueOf(this.euz), this.qAF });
+    AppMethodBeat.o(323654);
     return i;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(192156);
-    String str = "BaseAppBrandOpenMaterialModel{appId='" + this.appId + '\'' + ", versionType=" + this.cBU + ", enterPath='" + this.nBq + '\'' + '}';
-    AppMethodBeat.o(192156);
+    AppMethodBeat.i(323632);
+    String str = "BaseAppBrandOpenMaterialModel{appId='" + this.appId + '\'' + ", versionType=" + this.euz + ", enterPath='" + this.qAF + '\'' + '}';
+    AppMethodBeat.o(323632);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(192175);
+    AppMethodBeat.i(323672);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.cBU);
-    paramParcel.writeString(this.nBq);
-    AppMethodBeat.o(192175);
+    paramParcel.writeInt(this.euz);
+    paramParcel.writeString(this.qAF);
+    AppMethodBeat.o(323672);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.model.BaseAppBrandOpenMaterialModel
  * JD-Core Version:    0.7.0.1
  */

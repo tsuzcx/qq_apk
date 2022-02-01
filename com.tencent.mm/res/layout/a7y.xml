@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/p_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ih_" android:background="@color/p_" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
-    <ListView android:id="@id/hf0" android:background="@color/p_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/oy" android:dividerHeight="@dimen/ec" style="@style/np" />
-    <include android:id="@id/ccl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/a7r" />
-    <TextView android:textColor="@color/l4" android:gravity="center_horizontal" android:id="@id/he0" android:background="@color/afz" android:paddingTop="@dimen/hw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cac" />
-    <include layout="@layout/a73" />
-</RelativeLayout>
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/ih9" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ih7" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_link" android:layout_marginEnd="@dimen/df" app:iconColor="@color/m1" />
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/yf" android:ellipsize="end" android:id="@id/ih_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" />
+</LinearLayout>

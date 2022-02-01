@@ -1,43 +1,50 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.b;
-import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.m;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.a.a;
+import com.tencent.mm.ui.a.a.a;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aa
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
-  
-  public final void b(b<g>.a paramb)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    AppMethodBeat.i(78562);
-    Log.i("MicroMsg.JsApiHideOptionMenu", "invoke");
-    m localm = ((g)paramb.crg).gUx();
-    if (localm == null)
+    AppMethodBeat.i(296015);
+    Log.d("MicroMsg.JsApiGetUserConfig", "invokeInMM");
+    paramContext = new JSONObject();
+    try
     {
-      Log.e("MicroMsg.JsApiHideOptionMenu", "actionBar is null");
-      paramb.a("fail", null);
-      AppMethodBeat.o(78562);
+      boolean bool1 = a.a.jlv().jls();
+      boolean bool2 = com.tencent.mm.ce.b.iRp();
+      paramContext.put("isAccessibilityMode", bool1);
+      paramContext.put("isCareMode", bool2);
+      Log.i("MicroMsg.JsApiGetUserConfig", "isAccessibilityMode:%b, isCareMode:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      label78:
+      parama.j(null, paramContext);
+      AppMethodBeat.o(296015);
       return;
     }
-    localm.gUT();
-    paramb.a("", null);
-    AppMethodBeat.o(78562);
+    catch (JSONException paramString)
+    {
+      break label78;
+    }
   }
   
-  public final int cDj()
+  public final void b(com.tencent.luggage.d.b<g>.a paramb) {}
+  
+  public final int dgI()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "hideOptionMenu";
+    return "getUserConfig";
   }
 }
 

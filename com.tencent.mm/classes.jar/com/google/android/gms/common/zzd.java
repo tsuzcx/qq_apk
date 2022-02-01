@@ -1,9 +1,7 @@
 package com.google.android.gms.common;
 
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@VisibleForTesting
 final class zzd
 {
   static final GoogleCertificates.CertData[] zzbg;
@@ -17,7 +15,7 @@ final class zzd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.zzd
  * JD-Core Version:    0.7.0.1
  */

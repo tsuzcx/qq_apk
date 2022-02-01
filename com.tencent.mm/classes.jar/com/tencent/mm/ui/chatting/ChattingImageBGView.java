@@ -12,14 +12,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class ChattingImageBGView
   extends ImageView
 {
-  private int ryu;
-  private Bitmap tJN;
+  private int uJy;
+  private Bitmap wNk;
   
   public ChattingImageBGView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(34559);
-    this.ryu = 0;
+    this.uJy = 0;
     setScaleType(ImageView.ScaleType.CENTER_CROP);
     AppMethodBeat.o(34559);
   }
@@ -28,12 +28,12 @@ public class ChattingImageBGView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(34558);
-    this.ryu = 0;
+    this.uJy = 0;
     setScaleType(ImageView.ScaleType.CENTER_CROP);
     AppMethodBeat.o(34558);
   }
   
-  private void hMZ()
+  private void jpC()
   {
     AppMethodBeat.i(34562);
     post(new Runnable()
@@ -75,11 +75,11 @@ public class ChattingImageBGView
   {
     AppMethodBeat.i(34560);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramBoolean) && (this.ryu != paramInt3 - paramInt1))
+    if ((paramBoolean) && (this.uJy != paramInt3 - paramInt1))
     {
-      this.ryu = (paramInt3 - paramInt1);
+      this.uJy = (paramInt3 - paramInt1);
       Log.d("MicroMsg.ChattingImageBGView", "on layout changed, %d, %d, %d, %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-      hMZ();
+      jpC();
     }
     AppMethodBeat.o(34560);
   }
@@ -87,9 +87,9 @@ public class ChattingImageBGView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(34561);
-    this.tJN = paramBitmap;
+    this.wNk = paramBitmap;
     super.setImageBitmap(paramBitmap);
-    hMZ();
+    jpC();
     AppMethodBeat.o(34561);
   }
 }

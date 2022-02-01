@@ -2,14 +2,19 @@ package com.tencent.mars.xlog;
 
 import android.os.Debug;
 import android.os.Process;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.u;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class LogLogic
 {
+  private static ICallBack callBack = null;
+  
+  public static native void addLogRule(int paramInt, String paramString1, String paramString2);
+  
   public static String appendMemLog(String paramString)
   {
     return paramString;
@@ -70,24 +75,30 @@ public class LogLogic
   
   public static String getStringFromFile(String paramString)
   {
-    Object localObject1 = new q(paramString);
-    paramString = null;
+    paramString = new File(paramString);
+    BufferedInputStream localBufferedInputStream;
     try
     {
-      localObject1 = u.al((q)localObject1);
-      paramString = (String)localObject1;
-      String str = convertStreamToString((InputStream)localObject1);
-      if (localObject1 != null) {
-        ((InputStream)localObject1).close();
+      localBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString));
+      if (localBufferedInputStream == null) {
+        break label47;
       }
-      return str;
     }
     finally
     {
-      if (paramString != null) {
-        paramString.close();
+      try
+      {
+        paramString = convertStreamToString(localBufferedInputStream);
+        localBufferedInputStream.close();
+        return paramString;
       }
+      finally {}
+      paramString = finally;
+      localBufferedInputStream = null;
     }
+    localBufferedInputStream.close();
+    label47:
+    throw paramString;
   }
   
   public static String getVmSize()
@@ -135,13 +146,33 @@ public class LogLogic
     return localStringBuilder.toString();
   }
   
+  public static void hitLogRuleCallback(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  {
+    if (callBack == null) {
+      return;
+    }
+    callBack.hitLogRuleCallback(paramString1, paramString2, paramString3, paramInt, paramString4);
+  }
+  
   public static native void initIPxxLogInfo();
   
+  public static native void removeLogRule(String paramString);
+  
+  public static void setCallBack(ICallBack paramICallBack)
+  {
+    callBack = paramICallBack;
+  }
+  
   public static native void setIPxxLogML(int paramInt1, int paramInt2);
+  
+  public static abstract interface ICallBack
+  {
+    public abstract void hitLogRuleCallback(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.xlog.LogLogic
  * JD-Core Version:    0.7.0.1
  */

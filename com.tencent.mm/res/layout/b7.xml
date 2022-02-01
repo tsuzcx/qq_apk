@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<view android:id="@id/hht" android:scrollbars="vertical" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@null" android:divider="?s7" android:overScrollMode="ifContentScrolls" android:textAlignment="viewStart" app:paddingBottomNoButtons="@dimen/mq" app:paddingTopNoTitle="@dimen/mr" class="androidx.appcompat.app.AlertController$RecycleListView" style="@style/a32"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />
+<RelativeLayout android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/df" android:layout_width="@dimen/d6" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f1c" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:scaleType="center" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/kn8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:src="@drawable/azm" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

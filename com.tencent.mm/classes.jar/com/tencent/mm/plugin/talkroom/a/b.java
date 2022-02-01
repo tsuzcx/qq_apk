@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class b
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<a> Mjz;
+  public LinkedList<a> SMV;
   
   public b()
   {
     AppMethodBeat.i(29434);
-    this.Mjz = new LinkedList();
+    this.SMV = new LinkedList();
     AppMethodBeat.o(29434);
   }
   
@@ -20,24 +20,24 @@ public final class b
     AppMethodBeat.i(29435);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.Mjz);
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 8, this.SMV);
       AppMethodBeat.o(29435);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.a.c(1, 8, this.Mjz);
+      paramInt = i.a.a.a.c(1, 8, this.SMV);
       AppMethodBeat.o(29435);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.Mjz.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      this.SMV.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(29435);
@@ -45,7 +45,7 @@ public final class b
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       b localb = (b)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
@@ -54,7 +54,7 @@ public final class b
         AppMethodBeat.o(29435);
         return -1;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
       int i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
@@ -64,7 +64,7 @@ public final class b
         if ((localObject != null) && (localObject.length > 0)) {
           locala.parseFrom((byte[])localObject);
         }
-        localb.Mjz.add(locala);
+        localb.SMV.add(locala);
         paramInt += 1;
       }
       AppMethodBeat.o(29435);

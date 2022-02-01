@@ -1,9 +1,7 @@
 package com.tencent.mm.udp.libmmudp;
 
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@Keep
 public class UdpNative
 {
   public static int INIT_ERROR = -1002;
@@ -20,15 +18,14 @@ public class UdpNative
     REPEAT_INIT_ERROR = -1001;
   }
   
-  @Keep
   public UdpNative(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(187552);
+    AppMethodBeat.i(231899);
     this.mNativeInst = 0L;
     this.initCallBackFlag = false;
     new StringBuilder("UdpNative isolate_ptr:").append(paramLong1).append(",context_ptr:").append(paramLong2).append(",uvloop_ptr:").append(paramLong3);
     this.mNativeInst = initBindingUdp(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(187552);
+    AppMethodBeat.o(231899);
   }
   
   private native void destoryBindingUdp(long paramLong);
@@ -43,9 +40,10 @@ public class UdpNative
   
   private native void testBindingUdp2(long paramLong);
   
+  private native void testBindingUdp3(long paramLong);
+  
   private native void updateNativeInterface(long paramLong1, long paramLong2);
   
-  @Keep
   public int InitCallBack(final NativeCallBackInterface paramNativeCallBackInterface)
   {
     AppMethodBeat.i(62491);
@@ -59,7 +57,6 @@ public class UdpNative
     {
       i = initCallBack(this.mNativeInst, new NativeCallBackInterface()
       {
-        @Keep
         public void onCallBack(long paramAnonymousLong, String paramAnonymousString)
         {
           AppMethodBeat.i(62488);
@@ -82,7 +79,6 @@ public class UdpNative
     return i;
   }
   
-  @Keep
   public void destoryUdp()
   {
     AppMethodBeat.i(62490);
@@ -124,6 +120,18 @@ public class UdpNative
     AppMethodBeat.o(62494);
   }
   
+  public void testBind3()
+  {
+    AppMethodBeat.i(231914);
+    if (this.mNativeInst == -1L)
+    {
+      AppMethodBeat.o(231914);
+      return;
+    }
+    testBindingUdp3(this.mNativeInst);
+    AppMethodBeat.o(231914);
+  }
+  
   public void testServiceReceive(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(62495);
@@ -136,7 +144,6 @@ public class UdpNative
     AppMethodBeat.o(62495);
   }
   
-  @Keep
   public void update(long paramLong)
   {
     AppMethodBeat.i(62492);
@@ -149,16 +156,14 @@ public class UdpNative
     AppMethodBeat.o(62492);
   }
   
-  @Keep
   public static abstract interface NativeCallBackInterface
   {
-    @Keep
     public abstract void onCallBack(long paramLong, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.udp.libmmudp.UdpNative
  * JD-Core Version:    0.7.0.1
  */

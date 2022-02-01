@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/jik" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginLeft="12.0dip" android:scaleType="centerCrop" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/jik" android:layout_alignParentLeft="true">
+            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/jil" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:ellipsize="end" android:id="@id/jij" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="2" android:singleLine="false" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

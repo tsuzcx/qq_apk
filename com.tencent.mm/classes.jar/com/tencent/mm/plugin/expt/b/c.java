@@ -1,28 +1,34 @@
 package com.tencent.mm.plugin.expt.b;
 
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mm.kernel.c.a;
-import java.util.Map;
+import com.tencent.mm.util.b.a;
 
 public abstract interface c
   extends a
 {
-  public abstract void X(String paramString1, String paramString2, String paramString3);
+  public abstract void K(Context paramContext, Intent paramIntent);
   
-  public abstract void awc(String paramString);
+  public abstract void L(Context paramContext, Intent paramIntent);
   
-  public abstract String dbr();
+  public abstract float a(c.a parama, float paramFloat);
   
-  public abstract String dbs();
+  public abstract int a(c.a parama, int paramInt);
   
-  public abstract Map<String, Boolean> dbt();
+  public abstract int a(c.a parama, b.a parama1, int paramInt);
   
-  public abstract String dbu();
+  public abstract long a(c.a parama, long paramLong);
   
-  public abstract void gy(String paramString1, String paramString2);
+  public abstract String a(c.a parama, String paramString);
+  
+  public abstract boolean a(c.a parama, boolean paramBoolean);
+  
+  public abstract String aqb(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.b.c
  * JD-Core Version:    0.7.0.1
  */

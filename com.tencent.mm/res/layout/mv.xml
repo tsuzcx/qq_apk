@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/ak2" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/l4" android:ellipsize="end" android:gravity="left" android:id="@id/iww" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="10.0dip" android:minWidth="190.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_weight="1.0" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/l4" android:ellipsize="end" android:gravity="right" android:id="@id/iwv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip" android:minWidth="200.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_weight="1.0" />
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bbh" android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bbg" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="96.0dip" android:src="@raw/icon_ticket_empty" app:iconColor="@color/FG_2" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:id="@id/bbi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/ayh" />
 </LinearLayout>

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/do9" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:padding="@dimen/j6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/b9w" android:paddingTop="@dimen/ir" android:paddingBottom="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/bnk" android:layout_width="@dimen/a24" android:layout_height="@dimen/a24" android:src="@drawable/bca" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:id="@id/gi7" android:padding="@dimen/g" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/mp" />
-            <TextView android:id="@id/bnl" android:padding="@dimen/g" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/mo" />
+    <ImageView android:id="@id/cey" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/abs" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/cfq" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/ig" android:paddingBottom="@dimen/j6" android:layout_width="96.0dip" android:layout_height="96.0dip" android:src="@drawable/icon" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/ig" android:paddingRight="@dimen/j6" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/c" android:layout_gravity="left" android:id="@id/ci9" android:paddingBottom="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{小崽子ss剧场}" style="@style/ma" />
+            <TextView android:layout_gravity="left" android:id="@id/cie" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{小崽子ss剧场}" style="@style/m_" />
         </LinearLayout>
+        <FrameLayout android:layout_gravity="center_vertical" android:paddingLeft="@dimen/j6" android:layout_width="wrap_content" android:layout_height="32.0dip">
+            <Button android:id="@id/cff" android:layout_width="wrap_content" android:layout_height="32.0dip" android:maxWidth="100.0dip" android:text="@string/c8f" style="@style/oi" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/cfg" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="wrap_content" style="@style/lz" />
+        </FrameLayout>
     </LinearLayout>
-    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/h65" android:padding="@dimen/i2" android:paddingBottom="@dimen/ir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableLeft="@drawable/cm5" style="@style/mo" />
-</LinearLayout>
+</RelativeLayout>

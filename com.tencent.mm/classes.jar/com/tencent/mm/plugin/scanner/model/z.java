@@ -1,313 +1,210 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import android.graphics.Bitmap;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.scanner.api.ScanGoodsRequest;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.bf;
+import com.tencent.mm.autogen.a.bf.a;
+import com.tencent.mm.autogen.a.tm;
+import com.tencent.mm.autogen.a.tm.a;
+import com.tencent.mm.autogen.a.tn;
+import com.tencent.mm.autogen.a.to;
+import com.tencent.mm.autogen.a.to.a;
+import com.tencent.mm.pluginsdk.e.e;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.qbar.QbarNative.QBarPoint;
+import com.tencent.qbar.WxQbarNative.QBarReportMsg;
+import com.tencent.qbar.a.a;
+import com.tencent.qbar.c;
+import com.tencent.qbar.e;
+import com.tencent.qbar.e.b;
+import com.tencent.qbar.e.c;
+import com.tencent.qbar.e.d;
+import com.tencent.scanlib.b.b;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.a.m;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager;", "", "()V", "SCAN_RESOURCE_LOOP_TAG", "", "SCAN_RESOURCE_RELEASE_DELAY_MS", "", "TAG", "bitmapCache", "Ljava/util/concurrent/ConcurrentHashMap;", "Landroid/graphics/Bitmap;", "cachedRequest", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/scanner/api/ScanGoodsRequest;", "Lkotlin/collections/HashMap;", "callbackMap", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceLoadCallback;", "pendingReleaseRequestSet", "", "batchDecodeImage", "", "batchImageDecodeInfo", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager$BatchImageDecodeInfo;", "getBatchImageDecodeInfo", "requestId", "request", "getRequestKey", "getResource", "imagePath", "loadResource", "callback", "onCallback", "errCode", "", "errMsg", "releaseBitmap", "key", "releaseRequest", "requestKey", "releaseResource", "BatchImageDecodeInfo", "DecodeTask", "ErrCode", "ImageDecodeInfo", "Status", "plugin-scan_release"})
 public final class z
 {
-  public static final HashMap<Long, ScanGoodsRequest> ILD;
-  private static final ConcurrentHashMap<String, Bitmap> ILE;
-  public static final ConcurrentHashMap<String, Boolean> ILF;
-  public static final z ILG;
-  public static final HashMap<Long, y> jPb;
+  public IListener ORV;
+  public IListener ORW;
+  Map<Long, String> ORX;
+  e.b ORY;
   
-  static
+  public z()
   {
-    AppMethodBeat.i(223571);
-    ILG = new z();
-    jPb = new HashMap();
-    ILD = new HashMap();
-    ILE = new ConcurrentHashMap();
-    ILF = new ConcurrentHashMap();
-    AppMethodBeat.o(223571);
-  }
-  
-  public static long a(ScanGoodsRequest paramScanGoodsRequest, y paramy)
-  {
-    AppMethodBeat.i(223550);
-    if (paramScanGoodsRequest == null)
+    AppMethodBeat.i(51645);
+    this.ORV = new RecogQBarOfImageFileListener.1(this, f.hfK);
+    this.ORW = new RecogQBarOfImageFileListener.2(this, f.hfK);
+    this.ORX = new HashMap();
+    this.ORY = new e.b()
     {
-      AppMethodBeat.o(223550);
-      return -1L;
-    }
-    if (!paramScanGoodsRequest.isValid())
-    {
-      Log.e("MicroMsg.ScanGoodsResourceManager", "alvinluo prepare request not valid");
-      AppMethodBeat.o(223550);
-      return -1L;
-    }
-    final long l = System.currentTimeMillis();
-    Log.i("MicroMsg.ScanGoodsResourceManager", "alvinluo loadResource requestId: %d", new Object[] { Long.valueOf(l) });
-    ((Map)jPb).put(Long.valueOf(l), paramy);
-    ((Map)ILD).put(Long.valueOf(l), paramScanGoodsRequest);
-    h.ZvG.g((Runnable)new e(paramScanGoodsRequest, l), "ScanResourceTag");
-    AppMethodBeat.o(223550);
-    return l;
-  }
-  
-  public static Bitmap aXf(String paramString)
-  {
-    AppMethodBeat.i(223553);
-    CharSequence localCharSequence = (CharSequence)paramString;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(223553);
-      return null;
-    }
-    paramString = (Bitmap)ILE.get(paramString);
-    AppMethodBeat.o(223553);
-    return paramString;
-  }
-  
-  private static void aXg(String paramString)
-  {
-    AppMethodBeat.i(223559);
-    Bitmap localBitmap = (Bitmap)ILE.get(paramString);
-    if (localBitmap != null) {
-      localBitmap.recycle();
-    }
-    ILE.remove(paramString);
-    AppMethodBeat.o(223559);
-  }
-  
-  public static String c(ScanGoodsRequest paramScanGoodsRequest)
-  {
-    AppMethodBeat.i(223565);
-    af localaf = af.aaBG;
-    paramScanGoodsRequest = String.format("deco:%s,succ:%s,tips:%s", Arrays.copyOf(new Object[] { paramScanGoodsRequest.IGs, paramScanGoodsRequest.IGt, paramScanGoodsRequest.IGu }, 3));
-    p.j(paramScanGoodsRequest, "java.lang.String.format(format, *args)");
-    AppMethodBeat.o(223565);
-    return paramScanGoodsRequest;
-  }
-  
-  private static void f(long paramLong, int paramInt, String paramString)
-  {
-    AppMethodBeat.i(223557);
-    y localy = (y)jPb.get(Long.valueOf(paramLong));
-    if (localy != null) {
-      localy.cm(paramInt, paramString);
-    }
-    jPb.remove(Long.valueOf(paramLong));
-    AppMethodBeat.o(223557);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager$BatchImageDecodeInfo;", "", "requestId", "", "imageList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager$ImageDecodeInfo;", "Lkotlin/collections/ArrayList;", "(JLjava/util/ArrayList;)V", "errMsg", "", "getErrMsg", "()Ljava/lang/String;", "setErrMsg", "(Ljava/lang/String;)V", "getImageList", "()Ljava/util/ArrayList;", "getRequestId", "()J", "result", "", "getResult", "()I", "setResult", "(I)V", "status", "getStatus", "setStatus", "checkFinish", "", "checkResult", "fillErrMsg", "", "plugin-scan_release"})
-  static final class a
-  {
-    final ArrayList<z.c> HHJ;
-    String errMsg;
-    int result;
-    int status;
-    final long yjR;
-    
-    public a(long paramLong, ArrayList<z.c> paramArrayList)
-    {
-      AppMethodBeat.i(219060);
-      this.yjR = paramLong;
-      this.HHJ = paramArrayList;
-      this.result = -1;
-      this.errMsg = "";
-      AppMethodBeat.o(219060);
-    }
-    
-    public final void fDb()
-    {
-      String str;
-      if (this.result == 0) {
-        str = "ok";
-      }
-      for (;;)
+      public final void a(final long paramAnonymousLong, e.d paramAnonymousd)
       {
-        this.errMsg = str;
-        return;
-        if (this.result == 2) {
-          str = "image not exist";
-        } else if (this.result == 3) {
-          str = "decode fail";
-        } else {
-          str = "unknown error";
-        }
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager$DecodeTask;", "Ljava/lang/Runnable;", "info", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager$ImageDecodeInfo;", "callback", "Lkotlin/Function2;", "Landroid/graphics/Bitmap;", "", "(Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager$ImageDecodeInfo;Lkotlin/jvm/functions/Function2;)V", "getCallback", "()Lkotlin/jvm/functions/Function2;", "getInfo", "()Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager$ImageDecodeInfo;", "doDecodeImage", "finishDecode", "bitmap", "run", "startDecode", "plugin-scan_release"})
-  static final class b
-    implements Runnable
-  {
-    private final z.c ILH;
-    private final m<z.c, Bitmap, x> jHk;
-    
-    public b(z.c paramc, m<? super z.c, ? super Bitmap, x> paramm)
-    {
-      AppMethodBeat.i(221552);
-      this.ILH = paramc;
-      this.jHk = paramm;
-      AppMethodBeat.o(221552);
-    }
-    
-    private static Bitmap a(z.c paramc)
-    {
-      Integer localInteger = null;
-      AppMethodBeat.i(221550);
-      if (!u.agG(paramc.imagePath))
-      {
-        paramc.result = 2;
-        a(paramc, null);
-        AppMethodBeat.o(221550);
-        return null;
-      }
-      for (;;)
-      {
-        try
+        final List localList3 = null;
+        AppMethodBeat.i(314418);
+        final List localList1;
+        if (paramAnonymousd != null)
         {
-          localBitmap = BitmapUtil.decodeFile(paramc.imagePath);
-          if (localBitmap != null) {}
-          try
-          {
-            if (!localBitmap.isRecycled())
-            {
-              paramc.result = 0;
-              String str = paramc.imagePath;
-              int i = paramc.result;
-              if (localBitmap != null) {
-                localInteger = Integer.valueOf(localBitmap.getAllocationByteCount());
-              }
-              Log.d("MicroMsg.ScanGoodsResourceManager", "alvinluo decodeImage filePath: %s, decode result: %d, bitmap: %s", new Object[] { str, Integer.valueOf(i), localInteger });
-              a(paramc, localBitmap);
-              AppMethodBeat.o(221550);
-              return localBitmap;
-            }
-            paramc.result = 3;
-            continue;
-            Log.printErrStackTrace("MicroMsg.ScanGoodsResourceManager", (Throwable)localException1, "alvinluo decodeImage exception", new Object[0]);
+          localList1 = paramAnonymousd.OTq;
+          if (paramAnonymousd == null) {
+            break label69;
           }
-          catch (Exception localException1) {}
         }
-        catch (Exception localException2)
+        label69:
+        for (final List localList2 = paramAnonymousd.QHP;; localList2 = null)
         {
-          Bitmap localBitmap = null;
-          continue;
+          if (paramAnonymousd != null) {
+            localList3 = paramAnonymousd.ahrp;
+          }
+          MMHandlerThread.postToMainThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(51643);
+              Object localObject1;
+              if ((localList1 == null) || (localList1.isEmpty()))
+              {
+                Log.i("MicroMsg.RecogQBarOfImageFileListener", "%d scan file no result", new Object[] { Long.valueOf(paramAnonymousLong) });
+                if (z.this.ORX.containsKey(Long.valueOf(paramAnonymousLong)))
+                {
+                  localObject1 = new tn();
+                  ((tn)localObject1).hXh.filePath = ((String)z.this.ORX.get(Long.valueOf(paramAnonymousLong)));
+                  ((tn)localObject1).publish();
+                  z.this.ORX.remove(Long.valueOf(paramAnonymousLong));
+                  AppMethodBeat.o(51643);
+                }
+              }
+              else
+              {
+                Log.i("MicroMsg.RecogQBarOfImageFileListener", "%d scan file get %d results ", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(localList1.size()) });
+                localObject1 = new to();
+                if (z.this.ORX.containsKey(Long.valueOf(paramAnonymousLong)))
+                {
+                  ((to)localObject1).hXi.filePath = ((String)z.this.ORX.get(Long.valueOf(paramAnonymousLong)));
+                  if (localList3.ahrq != null)
+                  {
+                    ((to)localObject1).hXi.hXo = localList3.ahrq.x;
+                    ((to)localObject1).hXi.hXp = localList3.ahrq.y;
+                  }
+                  ((to)localObject1).hXi.hXg = localList3.hXg;
+                  ((to)localObject1).hXi.hXj = new ArrayList();
+                  ((to)localObject1).hXi.hXl = new ArrayList();
+                  ((to)localObject1).hXi.hXn = new ArrayList();
+                  ((to)localObject1).hXi.hXk = new ArrayList();
+                  ((to)localObject1).hXi.hXm = new ArrayList();
+                  ((to)localObject1).hXi.hXq = new ArrayList();
+                  ((to)localObject1).hXi.hXr = new ArrayList();
+                  Iterator localIterator = localList1.iterator();
+                  Object localObject2;
+                  while (localIterator.hasNext())
+                  {
+                    localObject2 = (a.a)localIterator.next();
+                    ((to)localObject1).hXi.hXj.add(((a.a)localObject2).data);
+                    ((to)localObject1).hXi.hXl.add(((a.a)localObject2).typeName);
+                    ((to)localObject1).hXi.hXn.add(Integer.valueOf(((a.a)localObject2).priorityLevel));
+                    ((to)localObject1).hXi.hXk.add(Integer.valueOf(e.e.boP(((a.a)localObject2).typeName)));
+                  }
+                  if ((localList2 != null) && (!localList2.isEmpty()))
+                  {
+                    localIterator = localList2.iterator();
+                    while (localIterator.hasNext())
+                    {
+                      localObject2 = (WxQbarNative.QBarReportMsg)localIterator.next();
+                      ((to)localObject1).hXi.hXm.add(Integer.valueOf(((WxQbarNative.QBarReportMsg)localObject2).qrcodeVersion));
+                    }
+                  }
+                  if ((this.OSd != null) && (!this.OSd.isEmpty()))
+                  {
+                    localIterator = this.OSd.iterator();
+                    while (localIterator.hasNext())
+                    {
+                      localObject2 = (QbarNative.QBarPoint)localIterator.next();
+                      if (localObject2 != null)
+                      {
+                        float f1 = Math.max(0.0F, (((QbarNative.QBarPoint)localObject2).x0 + ((QbarNative.QBarPoint)localObject2).x1 + ((QbarNative.QBarPoint)localObject2).x2 + ((QbarNative.QBarPoint)localObject2).x3) / 4.0F);
+                        float f2 = ((QbarNative.QBarPoint)localObject2).y0;
+                        float f3 = ((QbarNative.QBarPoint)localObject2).y1;
+                        float f4 = ((QbarNative.QBarPoint)localObject2).y2;
+                        f2 = Math.max(0.0F, (((QbarNative.QBarPoint)localObject2).y3 + (f2 + f3 + f4)) / 4.0F);
+                        ((to)localObject1).hXi.hXq.add(Float.valueOf(f1));
+                        ((to)localObject1).hXi.hXr.add(Float.valueOf(f2));
+                      }
+                    }
+                  }
+                  Log.i("MicroMsg.RecogQBarOfImageFileListener", "mFileScanCallback result:%d codeName:%d codeType:%d codeVersion:$d codePointCenterX:%d codePointCenterY:%d", new Object[] { Integer.valueOf(((to)localObject1).hXi.hXj.size()), Integer.valueOf(((to)localObject1).hXi.hXl.size()), Integer.valueOf(((to)localObject1).hXi.hXk.size()), Integer.valueOf(((to)localObject1).hXi.hXm.size()), Integer.valueOf(((to)localObject1).hXi.hXq.size()), Integer.valueOf(((to)localObject1).hXi.hXr.size()) });
+                  ((to)localObject1).publish();
+                  z.this.ORX.remove(Long.valueOf(paramAnonymousLong));
+                }
+              }
+              AppMethodBeat.o(51643);
+            }
+          });
+          AppMethodBeat.o(314418);
+          return;
+          localList1 = null;
+          break;
         }
-        paramc.result = 3;
       }
-    }
-    
-    private static void a(z.c paramc, Bitmap paramBitmap)
+    };
+    AppMethodBeat.o(51645);
+  }
+  
+  public final boolean h(IEvent arg1)
+  {
+    AppMethodBeat.i(51646);
+    if (??? == null)
     {
-      AppMethodBeat.i(221544);
-      paramc.status = 2;
-      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+      AppMethodBeat.o(51646);
+      return false;
+    }
+    Object localObject1;
+    if ((??? instanceof tm))
+    {
+      c.ahqI.reset();
+      c.ahqI.aGV(c.ahqC);
+      ??? = (tm)???;
+      this.ORX.put(Long.valueOf(???.hXd.hBk), ???.hXd.filePath);
+      localObject1 = new e.c();
+      ((e.c)localObject1).hXf = ???.hXd.hXf;
+      ((e.c)localObject1).hXg = ???.hXd.hXg;
+      e.jWN().a(MMApplicationContext.getContext(), ???.hXd.hBk, ???.hXd.filePath, ???.hXd.bitmap, this.ORY, new int[] { 0 }, (e.c)localObject1);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(51646);
+      return false;
+      if (!(??? instanceof bf)) {
+        continue;
+      }
+      c.ahqI.cIX();
+      localObject1 = (bf)???;
+      b localb = b.jXO();
+      long l = ((bf)localObject1).hBj.hBk;
+      synchronized (localb.GXz)
       {
-        z localz = z.ILG;
-        ((Map)z.fCZ()).put(paramc.imagePath, paramBitmap);
+        if (localb.ahrh.containsKey(Long.valueOf(l)))
+        {
+          String str = (String)localb.ahrh.get(Long.valueOf(l));
+          if (localb.ahrj.containsKey(str))
+          {
+            ((List)localb.ahrj.get(str)).remove(Long.valueOf(l));
+            if (((List)localb.ahrj.get(str)).isEmpty()) {
+              localb.ahrj.remove(str);
+            }
+          }
+          localb.ahrh.remove(Long.valueOf(l));
+          localb.ahri.remove(Long.valueOf(l));
+        }
+        this.ORX.remove(Long.valueOf(((bf)localObject1).hBj.hBk));
       }
-      Log.d("MicroMsg.ScanGoodsResourceManager", "alvinluo finishDecode image: %s, status: %d, result: %d", new Object[] { paramc.imagePath, Integer.valueOf(paramc.status), Integer.valueOf(paramc.result) });
-      AppMethodBeat.o(221544);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(221540);
-      Log.d("MicroMsg.ScanGoodsResourceManager", "alvinluo startDecode image: %s", new Object[] { this.ILH.imagePath });
-      this.ILH.status = 1;
-      this.jHk.invoke(this.ILH, a(this.ILH));
-      AppMethodBeat.o(221540);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager$ImageDecodeInfo;", "", "imagePath", "", "(Ljava/lang/String;)V", "getImagePath", "()Ljava/lang/String;", "result", "", "getResult", "()I", "setResult", "(I)V", "status", "getStatus", "setStatus", "plugin-scan_release"})
-  static final class c
-  {
-    final String imagePath;
-    int result;
-    int status;
-    
-    public c(String paramString)
-    {
-      AppMethodBeat.i(219900);
-      this.imagePath = paramString;
-      this.result = -1;
-      AppMethodBeat.o(219900);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "decodeInfo", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager$ImageDecodeInfo;", "bitmap", "Landroid/graphics/Bitmap;", "invoke", "com/tencent/mm/plugin/scanner/model/ScanGoodsResourceManager$batchDecodeImage$1$1"})
-  static final class d
-    extends q
-    implements m<z.c, Bitmap, x>
-  {
-    d(aa.a parama, z.a parama1)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class e
-    implements Runnable
-  {
-    e(ScanGoodsRequest paramScanGoodsRequest, long paramLong) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(219313);
-      Object localObject = z.ILG;
-      localObject = z.d(this.ILL);
-      z localz = z.ILG;
-      if (z.fDa().containsKey(localObject))
-      {
-        Log.i("MicroMsg.ScanGoodsResourceManager", "alvinluo loadResource set can not release");
-        localz = z.ILG;
-        ((Map)z.fDa()).put(localObject, Boolean.FALSE);
-      }
-      localObject = z.ILG;
-      localObject = z.a(l, this.ILL);
-      localz = z.ILG;
-      z.a((z.a)localObject);
-      AppMethodBeat.o(219313);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class f
-    implements Runnable
-  {
-    public f(String paramString, ScanGoodsRequest paramScanGoodsRequest) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(218050);
-      z localz = z.ILG;
-      if (p.h((Boolean)z.fDa().get(this.$key), Boolean.TRUE))
-      {
-        localz = z.ILG;
-        z.a(this.$key, this.ILL);
-        AppMethodBeat.o(218050);
-        return;
-      }
-      Log.d("MicroMsg.ScanGoodsResourceManager", "alvinluo releaseResource not need to release requestKey: %s", new Object[] { this.$key });
-      AppMethodBeat.o(218050);
     }
   }
 }

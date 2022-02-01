@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="144.0dip" android:layout_height="256.0dip" android:layout_marginRight="@dimen/ir"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fc1" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/fbu" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/bfw" />
-    </FrameLayout>
-</FrameLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/v7" android:layout_width="fill_parent" android:layout_height="379.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/cp" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/l0f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:text="@string/et3" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/cd" android:textStyle="bold" android:textColor="@color/FG_2" android:id="@id/l0d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/et2" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/l0f" />
+    <ImageView android:id="@id/l0e" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginTop="@dimen/cv" android:src="@drawable/ca2" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/l0d" />
+    <TextView android:textSize="@dimen/cp" android:textColor="@color/c" android:gravity="center" android:id="@id/l0c" android:background="@drawable/ii" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/d6" android:text="@string/et1" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/l0e" />
+</androidx.constraintlayout.widget.ConstraintLayout>

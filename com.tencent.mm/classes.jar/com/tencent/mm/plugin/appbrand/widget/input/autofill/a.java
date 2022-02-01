@@ -23,15 +23,15 @@ final class a
   implements g
 {
   private final LayoutInflater mInflater;
-  private b ryK;
-  h ryL;
-  private boolean ryM;
+  private b uJN;
+  h uJO;
+  private boolean uJP;
   
   a(Context paramContext, List<a.b> paramList)
   {
     super(paramContext, a.f.app_brand_input_autofill_item, paramList);
     AppMethodBeat.i(136615);
-    this.ryM = false;
+    this.uJP = false;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(136615);
   }
@@ -39,14 +39,14 @@ final class a
   public final void a(b paramb)
   {
     AppMethodBeat.i(136617);
-    this.ryK = paramb;
-    this.ryK.setOnDismissListener(new PopupWindow.OnDismissListener()
+    this.uJN = paramb;
+    this.uJN.setOnDismissListener(new PopupWindow.OnDismissListener()
     {
       public final void onDismiss()
       {
         AppMethodBeat.i(136612);
         if ((a.a(a.this) != null) && (!a.b(a.this))) {
-          a.a(a.this).a("", h.a.rzw);
+          a.a(a.this).a("", h.a.uKz);
         }
         AppMethodBeat.o(136612);
       }
@@ -54,11 +54,11 @@ final class a
     AppMethodBeat.o(136617);
   }
   
-  public final void cps()
+  public final void cRW()
   {
     AppMethodBeat.i(136618);
-    this.ryK.setOnDismissListener(null);
-    this.ryK = null;
+    this.uJN.setOnDismissListener(null);
+    this.uJN = null;
     AppMethodBeat.o(136618);
   }
   
@@ -87,16 +87,16 @@ final class a
     for (;;)
     {
       paramViewGroup = (a.b)getItem(paramInt);
-      paramView.ryR = paramViewGroup;
-      paramView.ryO.setText(paramViewGroup.title);
-      paramView.ryP.setText(paramViewGroup.content);
-      TextView localTextView = paramView.ryP;
+      paramView.uJU = paramViewGroup;
+      paramView.uJR.setText(paramViewGroup.title);
+      paramView.uJS.setText(paramViewGroup.content);
+      TextView localTextView = paramView.uJS;
       int i;
       if (Util.isNullOrNil(paramViewGroup.content))
       {
         i = 8;
         localTextView.setVisibility(i);
-        paramView = paramView.mND;
+        paramView = paramView.pKl;
         if (paramInt != getCount() - 1) {
           break label160;
         }
@@ -123,24 +123,24 @@ final class a
   final class a
     implements View.OnClickListener
   {
-    View amk;
-    View mND;
-    TextView ryO;
-    TextView ryP;
-    View ryQ;
-    a.b ryR;
+    View caK;
+    View pKl;
+    TextView uJR;
+    TextView uJS;
+    View uJT;
+    a.b uJU;
     
     a(View paramView)
     {
       AppMethodBeat.i(136613);
-      this.amk = paramView;
-      this.ryO = ((TextView)paramView.findViewById(a.e.title));
-      this.ryP = ((TextView)paramView.findViewById(a.e.content));
-      this.ryQ = paramView.findViewById(a.e.close);
-      this.mND = paramView.findViewById(a.e.divider);
+      this.caK = paramView;
+      this.uJR = ((TextView)paramView.findViewById(a.e.title));
+      this.uJS = ((TextView)paramView.findViewById(a.e.content));
+      this.uJT = paramView.findViewById(a.e.close);
+      this.pKl = paramView.findViewById(a.e.divider);
       paramView.setBackgroundResource(a.d.popup_menu_selector);
       paramView.setOnClickListener(this);
-      this.ryQ.setOnClickListener(this);
+      this.uJT.setOnClickListener(this);
       AppMethodBeat.o(136613);
     }
     
@@ -148,16 +148,16 @@ final class a
     {
       AppMethodBeat.i(136614);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillAdapter$AutoFillViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (this.ryR != null)
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillAdapter$AutoFillViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      if (this.uJU != null)
       {
         if (paramView.getId() != a.e.close) {
           break label112;
         }
-        a.this.remove(this.ryR);
+        a.this.remove(this.uJU);
         if (a.a(a.this) != null) {
-          a.a(a.this).a(this.ryR.id, h.a.rzx);
+          a.a(a.this).a(this.uJU.id, h.a.uKA);
         }
       }
       for (;;)
@@ -166,14 +166,14 @@ final class a
         AppMethodBeat.o(136614);
         return;
         label112:
-        if ((paramView == this.amk) && (a.a(a.this) != null))
+        if ((paramView == this.caK) && (a.a(a.this) != null))
         {
-          if (this.ryR != null) {
-            a.a(a.this).a(this.ryR.id, h.a.rzy);
+          if (this.uJU != null) {
+            a.a(a.this).a(this.uJU.id, h.a.uKB);
           }
           a.c(a.this);
           if (a.d(a.this) != null) {
-            a.d(a.this).ryS.getView().clearFocus();
+            a.d(a.this).uJV.getView().clearFocus();
           }
         }
       }
@@ -182,7 +182,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.a
  * JD-Core Version:    0.7.0.1
  */

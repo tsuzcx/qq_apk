@@ -1,50 +1,177 @@
 package com.tencent.xweb;
 
 import android.content.SharedPreferences;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.internal.a.b;
-import com.tencent.xweb.internal.l;
-import com.tencent.xweb.internal.l.a;
+import com.tencent.xweb.internal.WebViewWrapperFactory;
+import com.tencent.xweb.internal.WebViewWrapperFactory.IWebViewProvider;
+import com.tencent.xweb.internal.b.b;
+import com.tencent.xweb.internal.b.d;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 import org.xwalk.core.Log;
 import org.xwalk.core.XWalkEnvironment;
+import org.xwalk.core.XWalkSharedPreferenceUtil;
 
 public final class b
   extends a
 {
-  static b ZZC;
+  private static b aiel;
   
-  public static void a(com.tencent.xweb.internal.a.a[] paramArrayOfa, String paramString)
+  public static h.c bHo(String paramString)
   {
-    AppMethodBeat.i(156711);
-    ivR().b(paramArrayOfa, paramString, false);
-    AppMethodBeat.o(156711);
-  }
-  
-  public static String bEI(String paramString)
-  {
-    AppMethodBeat.i(156713);
-    String str2 = WebView.getCurStrModule();
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "tools";
+    AppMethodBeat.i(212378);
+    h.c localc = h.c.aiey;
+    if ((paramString == null) || (paramString.isEmpty()))
+    {
+      AppMethodBeat.o(212378);
+      return localc;
     }
-    paramString = oO(paramString, str1);
-    AppMethodBeat.o(156713);
-    return paramString;
-  }
-  
-  public static HashMap<String, String> bEP(String paramString)
-  {
-    int i = 0;
-    AppMethodBeat.i(196929);
     try
     {
-      paramString = oO("param_".concat(String.valueOf(paramString)), "tools");
+      paramString = h.c.valueOf(paramString);
+      AppMethodBeat.o(212378);
+      return paramString;
+    }
+    finally
+    {
+      for (;;)
+      {
+        paramString = h.c.aiey;
+      }
+    }
+  }
+  
+  public static h.a bHp(String paramString)
+  {
+    AppMethodBeat.i(212380);
+    h.a locala = h.a.aiet;
+    if ((paramString == null) || (paramString.isEmpty()))
+    {
+      AppMethodBeat.o(212380);
+      return locala;
+    }
+    try
+    {
+      paramString = h.a.valueOf(paramString);
+      AppMethodBeat.o(212380);
+      return paramString;
+    }
+    finally
+    {
+      for (;;)
+      {
+        paramString = h.a.aiet;
+      }
+    }
+  }
+  
+  public static b kfi()
+  {
+    try
+    {
+      AppMethodBeat.i(212374);
+      if (aiel == null)
+      {
+        localb = new b();
+        aiel = localb;
+        localb.kfb();
+      }
+      b localb = aiel;
+      AppMethodBeat.o(212374);
+      return localb;
+    }
+    finally {}
+  }
+  
+  public static void kfj()
+  {
+    try
+    {
+      AppMethodBeat.i(161632);
+      Log.i("CommandCfgPlugin", "resetCommandCfg, module: " + XWalkEnvironment.getModuleName());
+      aiel = null;
+      kfi();
+      AppMethodBeat.o(161632);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  static String kfn()
+  {
+    AppMethodBeat.i(212381);
+    if ("appbrand".equalsIgnoreCase(XWalkEnvironment.getSafeModuleName("tools")))
+    {
+      Log.i("CommandCfgPlugin", "getSafeModuleForFileReader, use module appbrand");
+      AppMethodBeat.o(212381);
+      return "appbrand";
+    }
+    Log.i("CommandCfgPlugin", "getSafeModuleForFileReader, use module tools");
+    AppMethodBeat.o(212381);
+    return "tools";
+  }
+  
+  protected final void b(b.b[] paramArrayOfb, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(212394);
+    if (paramString == null)
+    {
+      Log.i("CommandCfgPlugin", "applyCommandInternal, invalid configVersion");
+      AppMethodBeat.o(212394);
+      return;
+    }
+    Log.i("CommandCfgPlugin", "applyCommandInternal, configVersion:" + paramString + ", isRecheck:" + paramBoolean);
+    kfc();
+    HashMap localHashMap = new HashMap();
+    if ((paramArrayOfb == null) || (paramArrayOfb.length == 0))
+    {
+      Log.w("CommandCfgPlugin", "applyCommandInternal, empty new command configs");
+      an(paramString, localHashMap);
+      AppMethodBeat.o(212394);
+      return;
+    }
+    int i = 0;
+    if (i < paramArrayOfb.length)
+    {
+      Object localObject;
+      if ((paramArrayOfb[i] != null) && ((!paramBoolean) || (!bHd(paramArrayOfb[i].aiiR))) && (paramArrayOfb[i].aiiB.g(false, false, "CommandCfgPlugin")))
+      {
+        localObject = WebViewWrapperFactory.khn();
+        if (localObject == null) {
+          break label231;
+        }
+        localObject = (a.a)((WebViewWrapperFactory.IWebViewProvider)localObject).excute("STR_CMD_EXXCUTE_CMD_FROM_CONFIG", new Object[] { paramArrayOfb[i] });
+        if ((localObject == null) || (!((a.a)localObject).aiej)) {
+          break label231;
+        }
+        Log.i("CommandCfgPlugin", "applyCommandInternal, command(" + paramArrayOfb[i] + ") handled");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label231:
+        if ((paramArrayOfb[i].aiiS != null) && (paramArrayOfb[i].aiiT != null) && (!paramArrayOfb[i].aiiT.isEmpty()))
+        {
+          localObject = paramArrayOfb[i].aiiT.split(",");
+          a(paramArrayOfb[i], localHashMap, (String[])localObject);
+        }
+      }
+    }
+    an(paramString, localHashMap);
+    AppMethodBeat.o(212394);
+  }
+  
+  public final HashMap<String, String> bHn(String paramString)
+  {
+    int i = 0;
+    AppMethodBeat.i(212408);
+    try
+    {
+      paramString = qM("param_".concat(String.valueOf(paramString)), "tools");
       if (paramString != null)
       {
         boolean bool = paramString.isEmpty();
@@ -52,13 +179,13 @@ public final class b
       }
       else
       {
-        AppMethodBeat.o(196929);
+        AppMethodBeat.o(212408);
         return null;
       }
       paramString = paramString.split(",");
       if (paramString == null)
       {
-        AppMethodBeat.o(196929);
+        AppMethodBeat.o(212408);
         return null;
       }
       HashMap localHashMap = new HashMap();
@@ -75,140 +202,44 @@ public final class b
         }
         i += 1;
       }
-      AppMethodBeat.o(196929);
+      AppMethodBeat.o(212408);
       return localHashMap;
     }
-    catch (Exception paramString)
+    finally
     {
-      Log.e("CommandCfgPlugin", "getCmdPluginParam error: ", paramString);
-      AppMethodBeat.o(196929);
+      Log.e("CommandCfgPlugin", "getCmdPluginParam error:".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(212408);
     }
     return null;
   }
   
-  public static f.c bEQ(String paramString)
+  protected final String getLogTag()
   {
-    AppMethodBeat.i(196933);
-    paramString = oR(paramString, XWalkEnvironment.getSafeModuleForCommand("tools"));
-    AppMethodBeat.o(196933);
-    return paramString;
+    return "CommandCfgPlugin";
   }
   
-  public static f.c bER(String paramString)
+  public final SharedPreferences keZ()
   {
-    AppMethodBeat.i(196937);
-    f.c localc = f.c.ZZP;
-    if ((paramString == null) || (paramString.isEmpty()))
-    {
-      AppMethodBeat.o(196937);
-      return localc;
-    }
+    AppMethodBeat.i(212386);
+    SharedPreferences localSharedPreferences = XWalkSharedPreferenceUtil.getMMKVSharedPreferencesForCommandCfgPlugin();
+    AppMethodBeat.o(212386);
+    return localSharedPreferences;
+  }
+  
+  public final SharedPreferences kfa()
+  {
+    AppMethodBeat.i(212388);
+    SharedPreferences localSharedPreferences = XWalkSharedPreferenceUtil.getMMKVSharedPreferencesForCommandCfgPluginLatest();
+    AppMethodBeat.o(212388);
+    return localSharedPreferences;
+  }
+  
+  public final int kfk()
+  {
+    AppMethodBeat.i(212397);
     try
     {
-      paramString = f.c.valueOf(paramString);
-      AppMethodBeat.o(196937);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString = f.c.ZZP;
-      }
-    }
-  }
-  
-  public static f.a bES(String paramString)
-  {
-    AppMethodBeat.i(156715);
-    paramString = oS(paramString, ivW());
-    AppMethodBeat.o(156715);
-    return paramString;
-  }
-  
-  public static f.a bET(String paramString)
-  {
-    AppMethodBeat.i(156716);
-    f.a locala = f.a.ZZK;
-    if ((paramString == null) || (paramString.isEmpty()))
-    {
-      AppMethodBeat.o(156716);
-      return locala;
-    }
-    try
-    {
-      paramString = f.a.valueOf(paramString);
-      AppMethodBeat.o(156716);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString = f.a.ZZK;
-      }
-    }
-  }
-  
-  public static String getAbstractInfo()
-  {
-    AppMethodBeat.i(156709);
-    try
-    {
-      String str = ivR().ivN();
-      AppMethodBeat.o(156709);
-      return str;
-    }
-    catch (Exception localException)
-    {
-      Log.e("CommandCfgPlugin", "getAbstractInfo error ", localException);
-      AppMethodBeat.o(156709);
-    }
-    return "";
-  }
-  
-  private static b ivR()
-  {
-    try
-    {
-      AppMethodBeat.i(156707);
-      if (ZZC == null)
-      {
-        localb = new b();
-        ZZC = localb;
-        localb.ivM();
-      }
-      b localb = ZZC;
-      AppMethodBeat.o(156707);
-      return localb;
-    }
-    finally {}
-  }
-  
-  public static void ivS()
-  {
-    try
-    {
-      AppMethodBeat.i(161632);
-      Log.i("CommandCfgPlugin", "resetCommandCfgPlugin ");
-      ZZC = null;
-      ivR();
-      AppMethodBeat.o(161632);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static int ivT()
-  {
-    AppMethodBeat.i(196911);
-    try
-    {
-      String str = oO("setPluginConfigPeriod", "tools");
+      String str = qM("setPluginConfigPeriod", "tools");
       if (str != null)
       {
         boolean bool = str.isEmpty();
@@ -216,32 +247,32 @@ public final class b
       }
       else
       {
-        AppMethodBeat.o(196911);
+        AppMethodBeat.o(212397);
         return -1;
       }
       int i = Integer.parseInt(str);
       if (i < 30)
       {
-        AppMethodBeat.o(196911);
+        AppMethodBeat.o(212397);
         return -1;
       }
-      AppMethodBeat.o(196911);
+      AppMethodBeat.o(212397);
       return i * 60 * 1000;
     }
-    catch (Exception localException)
+    finally
     {
-      Log.e("CommandCfgPlugin", "getCmdPluginUpdatePeriod error: ", localException);
-      AppMethodBeat.o(196911);
+      Log.e("CommandCfgPlugin", "getCmdPluginUpdatePeriod error:".concat(String.valueOf(localObject)));
+      AppMethodBeat.o(212397);
     }
     return -1;
   }
   
-  public static boolean ivU()
+  public final boolean kfl()
   {
-    AppMethodBeat.i(196913);
+    AppMethodBeat.i(212399);
     try
     {
-      String str = oO("download_when_not_install", ivW());
+      String str = qM("download_when_not_install", kfn());
       if (str != null)
       {
         bool = str.isEmpty();
@@ -249,180 +280,68 @@ public final class b
       }
       else
       {
-        AppMethodBeat.o(196913);
+        AppMethodBeat.o(212399);
         return false;
       }
       boolean bool = Boolean.parseBoolean(str);
-      AppMethodBeat.o(196913);
+      AppMethodBeat.o(212399);
       return bool;
-    }
-    catch (Exception localException)
-    {
-      Log.e("CommandCfgPlugin", "canDownloadWhenNotInstall error: ", localException);
-      AppMethodBeat.o(196913);
-    }
-    return false;
-  }
-  
-  public static boolean ivV()
-  {
-    AppMethodBeat.i(196918);
-    try
-    {
-      String str = oO("download_when_x5_fail", ivW());
-      if (str != null)
-      {
-        bool = str.isEmpty();
-        if (!bool) {}
-      }
-      else
-      {
-        AppMethodBeat.o(196918);
-        return false;
-      }
-      boolean bool = Boolean.parseBoolean(str);
-      AppMethodBeat.o(196918);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      Log.e("CommandCfgPlugin", "canDownloadWhenX5Fail error: ", localException);
-      AppMethodBeat.o(196918);
-    }
-    return false;
-  }
-  
-  private static String ivW()
-  {
-    AppMethodBeat.i(196941);
-    if ("appbrand".equalsIgnoreCase(XWalkEnvironment.getSafeModuleForCommand("tools")))
-    {
-      Log.i("CommandCfgPlugin", "getSafeModuleForFileReader use module appbrand");
-      AppMethodBeat.o(196941);
-      return "appbrand";
-    }
-    Log.i("CommandCfgPlugin", "getSafeModuleForFileReader use module tools");
-    AppMethodBeat.o(196941);
-    return "tools";
-  }
-  
-  public static String oO(String paramString1, String paramString2)
-  {
-    try
-    {
-      AppMethodBeat.i(156714);
-      paramString1 = ivR().oQ(paramString1, paramString2);
-      AppMethodBeat.o(156714);
-      return paramString1;
     }
     finally
     {
-      paramString1 = finally;
-      throw paramString1;
+      Log.e("CommandCfgPlugin", "canDownloadWhenNotInstall error:".concat(String.valueOf(localObject)));
+      AppMethodBeat.o(212399);
     }
+    return false;
   }
   
-  public static f.c oR(String paramString1, String paramString2)
+  public final boolean kfm()
   {
-    AppMethodBeat.i(196931);
-    paramString1 = bER(oO("use_office_reader_" + paramString1.toLowerCase(), paramString2));
-    AppMethodBeat.o(196931);
+    AppMethodBeat.i(212401);
+    try
+    {
+      String str = qM("download_when_x5_fail", kfn());
+      if (str != null)
+      {
+        bool = str.isEmpty();
+        if (!bool) {}
+      }
+      else
+      {
+        AppMethodBeat.o(212401);
+        return false;
+      }
+      boolean bool = Boolean.parseBoolean(str);
+      AppMethodBeat.o(212401);
+      return bool;
+    }
+    finally
+    {
+      Log.e("CommandCfgPlugin", "canDownloadWhenX5Fail error:".concat(String.valueOf(localObject)));
+      AppMethodBeat.o(212401);
+    }
+    return false;
+  }
+  
+  public final h.c qO(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(212414);
+    paramString1 = bHo(qM("use_office_reader_" + paramString1.toLowerCase(), paramString2));
+    AppMethodBeat.o(212414);
     return paramString1;
   }
   
-  public static f.a oS(String paramString1, String paramString2)
+  public final h.a qP(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(196940);
-    paramString1 = bET(oO("fr_" + paramString1.toLowerCase(), paramString2));
-    AppMethodBeat.o(196940);
+    AppMethodBeat.i(212418);
+    paramString1 = bHp(qM("fr_" + paramString1.toLowerCase(), paramString2));
+    AppMethodBeat.o(212418);
     return paramString1;
-  }
-  
-  protected final void b(com.tencent.xweb.internal.a.a[] paramArrayOfa, String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(156712);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(156712);
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    if ((paramArrayOfa == null) || (paramArrayOfa.length == 0))
-    {
-      af(paramString, localHashMap);
-      AppMethodBeat.o(156712);
-      return;
-    }
-    int i = 0;
-    while (i < paramArrayOfa.length)
-    {
-      if ((paramArrayOfa[i] != null) && ((!paramBoolean) || (!bEJ(paramArrayOfa[i].aadP))) && (paramArrayOfa[i].aadO.ixf()))
-      {
-        Object localObject = (a.a)l.h(WebView.c.aabm).excute("STR_CMD_EXXCUTE_CMD_FROM_CONFIG", new Object[] { paramArrayOfa[i] });
-        if (((localObject == null) || (!((a.a)localObject).ZZA)) && (paramArrayOfa[i].aadQ != null) && (paramArrayOfa[i].aadR != null) && (!paramArrayOfa[i].aadR.isEmpty()))
-        {
-          localObject = paramArrayOfa[i].aadR.split(",");
-          a(paramArrayOfa[i], localHashMap, (String[])localObject);
-        }
-      }
-      i += 1;
-    }
-    af(paramString, localHashMap);
-    AppMethodBeat.o(156712);
-  }
-  
-  public final SharedPreferences ivL()
-  {
-    AppMethodBeat.i(156708);
-    SharedPreferences localSharedPreferences = XWalkEnvironment.getMMKVSharedPreferences("XWEB.CMDCFG.PLUGIN");
-    AppMethodBeat.o(156708);
-    return localSharedPreferences;
-  }
-  
-  public final String ivN()
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(156710);
-        StringBuilder localStringBuilder = new StringBuilder(512);
-        Object localObject1 = this.ZZy.keySet();
-        if (localObject1 == null)
-        {
-          localObject1 = "";
-          AppMethodBeat.o(156710);
-          return localObject1;
-        }
-        Iterator localIterator = ((Set)localObject1).iterator();
-        if (localIterator.hasNext())
-        {
-          String str3 = (String)localIterator.next();
-          if (TextUtils.isEmpty(str3)) {
-            continue;
-          }
-          String str2 = cy(bEB(str3));
-          localObject1 = str2;
-          if (str2 == null) {
-            localObject1 = "";
-          }
-          localStringBuilder.append(" ");
-          localStringBuilder.append(str3);
-          localStringBuilder.append(" : ");
-          localStringBuilder.append((String)localObject1);
-          localStringBuilder.append("\n");
-          continue;
-        }
-        String str1 = localStringBuilder.toString();
-      }
-      finally {}
-      AppMethodBeat.o(156710);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.b
  * JD-Core Version:    0.7.0.1
  */

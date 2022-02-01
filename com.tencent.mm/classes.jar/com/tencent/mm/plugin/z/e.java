@@ -1,83 +1,86 @@
 package com.tencent.mm.plugin.z;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.q.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.message.k.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.edg;
-import com.tencent.mm.protocal.protobuf.edh;
-import com.tencent.mm.protocal.protobuf.fa;
+import com.tencent.mm.protocal.protobuf.ewx;
+import com.tencent.mm.protocal.protobuf.ewy;
+import com.tencent.mm.protocal.protobuf.fu;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
-  extends q
+  extends p
   implements m
 {
-  private String FlA;
-  private String FlB;
-  private int Flz;
+  private int LhB;
+  private String LhC;
+  private String LhD;
   private String aeskey;
-  private i callback;
+  private h callback;
   private String fileId;
-  private String iRj;
-  private d rr;
+  private String hRv;
+  private String ltf;
+  private c rr;
   
-  public e(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5)
+  public e(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(26524);
+    AppMethodBeat.i(261802);
     this.fileId = paramString1;
     this.aeskey = paramString2;
-    this.Flz = paramInt;
-    this.iRj = paramString3;
-    this.FlA = paramString4;
-    this.FlB = paramString5;
-    paramString2 = new d.a();
-    paramString2.lBU = new edg();
-    paramString2.lBV = new edh();
+    this.LhB = paramInt;
+    this.ltf = paramString3;
+    this.LhC = paramString4;
+    this.LhD = paramString5;
+    this.hRv = paramString6;
+    paramString2 = new c.a();
+    paramString2.otE = new ewx();
+    paramString2.otF = new ewy();
     paramString2.uri = "/cgi-bin/micromsg-bin/sendappmsg";
     paramString2.funcId = 222;
-    paramString2.lBW = 107;
+    paramString2.otG = 107;
     paramString2.respCmdId = 1000000107;
-    this.rr = paramString2.bgN();
-    Log.i("MicroMsg.MsgSynchronizeSendAppMsgNetScene", "MsgSynchronizeSendAppMsgNetScene action[%s], messagaction[%s], fileId[%s], fileLen[%d], selfName[%s], stack[%s]", new Object[] { paramString4, this.FlA, paramString1, Integer.valueOf(paramInt), paramString3, Util.getStack() });
-    AppMethodBeat.o(26524);
+    this.rr = paramString2.bEF();
+    Log.i("MicroMsg.MsgSynchronizeSendAppMsgNetScene", "MsgSynchronizeSendAppMsgNetScene action[%s], messagaction[%s], fileId[%s], fileLen[%d], selfName[%s], stack[%s]", new Object[] { paramString4, this.LhC, paramString1, Integer.valueOf(paramInt), paramString3, Util.getStack() });
+    AppMethodBeat.o(261802);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(26525);
-    this.callback = parami;
-    parami = new k.b();
-    parami.title = "ChatSync";
-    parami.description = "ChatSync";
-    parami.type = 35;
-    parami.url = this.fileId;
-    parami.aesKey = this.aeskey;
-    parami.lmq = this.aeskey;
-    parami.llX = this.Flz;
-    parami.lmq = this.aeskey;
-    parami.fwp = 0;
-    parami.action = "phone";
-    parami.messageAction = this.FlA;
-    parami.extInfo = "supportAfterSleep,supportGetMore";
-    parami.content = this.FlB;
-    edg localedg = (edg)d.b.b(this.rr.lBR);
-    fa localfa = new fa();
-    localfa.CRR = this.iRj;
-    localfa.RJP = parami.sdkVer;
-    localfa.rWu = 35;
-    localfa.CRQ = this.iRj;
-    localfa.lpy = k.b.a(parami, null, null, 0, 0);
-    localfa.CreateTime = ((int)Util.nowSecond());
-    localedg.UhI = localfa;
+    this.callback = paramh;
+    paramh = new k.b();
+    paramh.title = "ChatSync";
+    paramh.description = "ChatSync";
+    paramh.type = 35;
+    paramh.url = this.fileId;
+    paramh.aesKey = this.aeskey;
+    paramh.nRv = this.aeskey;
+    paramh.nRd = this.LhB;
+    paramh.nRv = this.aeskey;
+    paramh.hAN = 0;
+    paramh.action = "phone";
+    paramh.messageAction = this.LhC;
+    paramh.extInfo = "supportAfterSleep,supportGetMore";
+    paramh.content = this.LhD;
+    paramh.hRv = this.hRv;
+    ewx localewx = (ewx)c.b.b(this.rr.otB);
+    fu localfu = new fu();
+    localfu.IMh = this.ltf;
+    localfu.YHj = paramh.sdkVer;
+    localfu.vhJ = 35;
+    localfu.IMg = this.ltf;
+    localfu.nUB = k.b.a(paramh, null, null, 0, 0);
+    localfu.CreateTime = ((int)Util.nowSecond());
+    localewx.abyY = localfu;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(26525);
     return i;
@@ -96,14 +99,14 @@ public final class e
     AppMethodBeat.o(26526);
   }
   
-  public final q.b securityVerificationChecked(s params)
+  public final p.b securityVerificationChecked(s params)
   {
-    return q.b.lCx;
+    return p.b.ouh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.z.e
  * JD-Core Version:    0.7.0.1
  */

@@ -3,75 +3,89 @@ package com.tencent.mm.plugin.scanner.box;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData;", "", "()V", "appMsgDataMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData$ScanBoxShareInfo;", "Lkotlin/collections/HashMap;", "clear", "", "getAppMsgData", "key", "putAppMsgData", "shareInfo", "ScanBoxShareInfo", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData;", "", "()V", "appMsgDataMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData$ScanBoxShareInfo;", "Lkotlin/collections/HashMap;", "clear", "", "getAppMsgData", "key", "putAppMsgData", "shareInfo", "ScanBoxShareInfo", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
 {
-  final HashMap<String, a> IHE;
+  final HashMap<String, a> ONI;
   
   public m()
   {
-    AppMethodBeat.i(218484);
-    this.IHE = new HashMap();
-    AppMethodBeat.o(218484);
+    AppMethodBeat.i(313724);
+    this.ONI = new HashMap();
+    AppMethodBeat.o(313724);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData$ScanBoxShareInfo;", "", "appMsg", "Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "imageUrl", "", "(Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;Ljava/lang/String;)V", "getAppMsg", "()Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "getImageUrl", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-scan_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData$ScanBoxShareInfo;", "", "appMsg", "Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "imageUrl", "", "(Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;Ljava/lang/String;)V", "getAppMsg", "()Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "getImageUrl", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    final WXMediaMessage IHF;
+    final WXMediaMessage ONJ;
     final String imageUrl;
     
     public a(WXMediaMessage paramWXMediaMessage, String paramString)
     {
-      this.IHF = paramWXMediaMessage;
+      this.ONJ = paramWXMediaMessage;
       this.imageUrl = paramString;
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(222637);
-      if (this != paramObject)
+      AppMethodBeat.i(313694);
+      if (this == paramObject)
       {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((!p.h(this.IHF, paramObject.IHF)) || (!p.h(this.imageUrl, paramObject.imageUrl))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(222637);
+        AppMethodBeat.o(313694);
         return true;
       }
-      AppMethodBeat.o(222637);
-      return false;
+      if (!(paramObject instanceof a))
+      {
+        AppMethodBeat.o(313694);
+        return false;
+      }
+      paramObject = (a)paramObject;
+      if (!s.p(this.ONJ, paramObject.ONJ))
+      {
+        AppMethodBeat.o(313694);
+        return false;
+      }
+      if (!s.p(this.imageUrl, paramObject.imageUrl))
+      {
+        AppMethodBeat.o(313694);
+        return false;
+      }
+      AppMethodBeat.o(313694);
+      return true;
     }
     
     public final int hashCode()
     {
       int j = 0;
-      AppMethodBeat.i(222635);
-      Object localObject = this.IHF;
-      if (localObject != null) {}
-      for (int i = localObject.hashCode();; i = 0)
+      AppMethodBeat.i(313688);
+      int i;
+      if (this.ONJ == null)
       {
-        localObject = this.imageUrl;
-        if (localObject != null) {
-          j = localObject.hashCode();
+        i = 0;
+        if (this.imageUrl != null) {
+          break label46;
         }
-        AppMethodBeat.o(222635);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(313688);
         return i * 31 + j;
+        i = this.ONJ.hashCode();
+        break;
+        label46:
+        j = this.imageUrl.hashCode();
       }
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(222632);
-      String str = "ScanBoxShareInfo(appMsg=" + this.IHF + ", imageUrl=" + this.imageUrl + ")";
-      AppMethodBeat.o(222632);
+      AppMethodBeat.i(313683);
+      String str = "ScanBoxShareInfo(appMsg=" + this.ONJ + ", imageUrl=" + this.imageUrl + ')';
+      AppMethodBeat.o(313683);
       return str;
     }
   }

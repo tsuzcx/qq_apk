@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="45.0dip">
-        <TextView android:textSize="@dimen/ft" android:textColor="@color/t0" android:id="@id/fkc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g_" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <ImageView android:layout_width="8.0dip" android:layout_height="12.0dip" android:layout_marginRight="@dimen/g_" android:src="@drawable/bf9" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <View android:background="@color/s8" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView>
-</FrameLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:id="@id/kob" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr" android:layout_marginBottom="@dimen/cp" android:text="@string/eph" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:id="@id/koc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="13.0dip" android:text="@string/eph" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/ch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+        <ImageView android:id="@id/a1p" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/b__" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:id="@id/hg0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/bv" />
+    </LinearLayout>
+    <View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

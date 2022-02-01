@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/heo" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb">
-        <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_5" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/ct" android:text="@string/bt2" android:layout_centerVertical="true" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:layout_marginRight="@dimen/cb" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" />
-    </LinearLayout>
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.emoji.panel.EmojiPanelRecyclerView android:id="@id/cgg" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/db" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+    <View android:id="@id/cgf" android:background="@drawable/emoji_panel_delete_btn" android:layout_width="@dimen/d_" android:layout_height="44.0dip" android:layout_marginBottom="20.0dip" android:layout_marginEnd="@dimen/df" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toStartOf="@id/cgo" app:layout_goneMarginEnd="@dimen/cd" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cge" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="@dimen/d_" android:layout_height="44.0dip" android:src="@raw/icons_outlined_emoji_del" android:scaleType="fitCenter" android:contentDescription="@string/x0" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp" app:layout_constraintBottom_toBottomOf="@id/cgf" app:layout_constraintEnd_toEndOf="@id/cgf" app:layout_constraintStart_toStartOf="@id/cgf" app:layout_constraintTop_toTopOf="@id/cgf" />
+    <Button android:id="@id/cgo" android:background="@drawable/emoji_panel_send_btn" android:layout_width="@dimen/d_" android:layout_height="44.0dip" android:text="@string/a2r" android:layout_marginEnd="@dimen/cd" app:layout_constraintBottom_toBottomOf="@id/cge" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="@id/cge" app:layout_goneMarginEnd="@dimen/bv" style="@style/oi" />
+</merge>

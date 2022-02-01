@@ -1,12 +1,32 @@
 package com.tencent.mm.plugin.appbrand.widget.c;
 
-import kotlin.l;
+import android.content.Context;
+import android.widget.ImageView;
 
-@l(iBK={1, 1, 16})
-public final class f {}
+class f
+  extends ImageView
+  implements com.tencent.mm.plugin.appbrand.jsapi.base.f
+{
+  private boolean tfE;
+  
+  public f(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public boolean cqz()
+  {
+    return this.tfE;
+  }
+  
+  public void setInterceptEvent(boolean paramBoolean)
+  {
+    this.tfE = paramBoolean;
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.c.f
  * JD-Core Version:    0.7.0.1
  */

@@ -4,13 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.gm;
+import com.tencent.mm.autogen.b.hg;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public class SmileyInfo
-  extends gm
+  extends hg
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyInfo> CREATOR;
@@ -19,53 +17,7 @@ public class SmileyInfo
   static
   {
     AppMethodBeat.i(105142);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[10];
-    localMAutoDBInfo.columns = new String[11];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "key";
-    localMAutoDBInfo.colsMap.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "key";
-    localMAutoDBInfo.columns[1] = "cnValue";
-    localMAutoDBInfo.colsMap.put("cnValue", "TEXT");
-    localStringBuilder.append(" cnValue TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "qqValue";
-    localMAutoDBInfo.colsMap.put("qqValue", "TEXT");
-    localStringBuilder.append(" qqValue TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "twValue";
-    localMAutoDBInfo.colsMap.put("twValue", "TEXT");
-    localStringBuilder.append(" twValue TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "enValue";
-    localMAutoDBInfo.colsMap.put("enValue", "TEXT");
-    localStringBuilder.append(" enValue TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "thValue";
-    localMAutoDBInfo.colsMap.put("thValue", "TEXT");
-    localStringBuilder.append(" thValue TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "fileName";
-    localMAutoDBInfo.colsMap.put("fileName", "TEXT");
-    localStringBuilder.append(" fileName TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[7] = "eggIndex";
-    localMAutoDBInfo.colsMap.put("eggIndex", "INTEGER default '-1' ");
-    localStringBuilder.append(" eggIndex INTEGER default '-1' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[8] = "position";
-    localMAutoDBInfo.colsMap.put("position", "INTEGER default '-1' ");
-    localStringBuilder.append(" position INTEGER default '-1' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[9] = "flag";
-    localMAutoDBInfo.colsMap.put("flag", "INTEGER");
-    localStringBuilder.append(" flag INTEGER");
-    localMAutoDBInfo.columns[10] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = aJm();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(105142);
   }
@@ -157,7 +109,7 @@ public class SmileyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.SmileyInfo
  * JD-Core Version:    0.7.0.1
  */

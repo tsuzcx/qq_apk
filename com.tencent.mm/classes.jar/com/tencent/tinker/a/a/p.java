@@ -6,27 +6,27 @@ import com.tencent.tinker.a.a.b.e;
 public final class p
   extends s.a.a<p>
 {
-  public int ZJj;
-  public int ZJk;
-  public int ZJl;
+  public int ahOk;
+  public int ahOl;
+  public int ahOm;
   
   public p(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramInt1);
-    this.ZJj = paramInt2;
-    this.ZJl = paramInt3;
-    this.ZJk = paramInt4;
+    this.ahOk = paramInt2;
+    this.ahOm = paramInt3;
+    this.ahOl = paramInt4;
   }
   
   private int b(p paramp)
   {
-    if (this.ZJj != paramp.ZJj) {
-      return c.nU(this.ZJj, paramp.ZJj);
+    if (this.ahOk != paramp.ahOk) {
+      return c.pR(this.ahOk, paramp.ahOk);
     }
-    if (this.ZJk != paramp.ZJk) {
-      return c.nU(this.ZJk, paramp.ZJk);
+    if (this.ahOl != paramp.ahOl) {
+      return c.pR(this.ahOl, paramp.ahOl);
     }
-    return c.nU(this.ZJl, paramp.ZJl);
+    return c.pR(this.ahOm, paramp.ahOm);
   }
   
   public final boolean equals(Object paramObject)
@@ -40,12 +40,12 @@ public final class p
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.ZJj), Integer.valueOf(this.ZJl), Integer.valueOf(this.ZJk) });
+    return e.hash(new Object[] { Integer.valueOf(this.ahOk), Integer.valueOf(this.ahOm), Integer.valueOf(this.ahOl) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.a.p
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="by" parent="@style/a80" />
-    <style name="c5" parent="@style/a81" />
-    <style name="a80" parent="@style/a7x">
-        <item name="j0">?android:dialogCornerRadius</item>
+    <style name="c0" parent="@style/a94" />
+    <style name="c7" parent="@style/a95" />
+    <style name="a94" parent="@style/a91">
+        <item name="ja">?android:dialogCornerRadius</item>
     </style>
-    <style name="a81" parent="@style/a7y">
-        <item name="j0">?android:dialogCornerRadius</item>
+    <style name="a95" parent="@style/a92">
+        <item name="ja">?android:dialogCornerRadius</item>
     </style>
 </resources>

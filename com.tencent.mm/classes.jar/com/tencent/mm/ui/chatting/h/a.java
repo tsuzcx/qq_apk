@@ -1,140 +1,121 @@
 package com.tencent.mm.ui.chatting.h;
 
-import android.os.Bundle;
-import android.util.SparseArray;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.modelsimple.x;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.m.b;
-import com.tencent.mm.ui.chatting.o.g;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.cc;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public final class a
-  implements c<ca>
+  extends com.tencent.mm.ax.a
 {
-  private SparseArray<ca> WYi;
-  private com.tencent.mm.ui.chatting.e.a fgR;
+  public String aeIo;
+  public long aeIp = 0L;
+  public String aeIq;
+  public int mType;
   
-  public a(com.tencent.mm.ui.chatting.e.a parama, SparseArray<ca> paramSparseArray)
+  public a(Map<String, String> paramMap, cc paramcc)
   {
-    this.fgR = parama;
-    this.WYi = paramSparseArray;
+    super(paramMap, paramcc);
   }
   
-  public final void a(final d.a parama, final g<ca> paramg, final d.d<ca> paramd, final d.b paramb)
+  public final boolean bAo()
   {
-    AppMethodBeat.i(36418);
-    Object localObject = b.WZI;
-    switch (com.tencent.mm.ui.chatting.m.b.1.WZK[paramd.WYy.ordinal()])
+    AppMethodBeat.i(36444);
+    if (this.values == null)
     {
+      Log.e("MicroMsg.InvokeMessageNewXmlMsg", "[parseXml] values == null ");
+      AppMethodBeat.o(36444);
+      return false;
     }
-    while (paramg == null)
+    StringBuilder localStringBuilder;
+    Iterator localIterator;
+    int i;
+    if (this.values.containsKey(".sysmsg.invokeMessage.preContent"))
     {
-      Log.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[load] null == source!");
-      paramb.next();
-      AppMethodBeat.o(36418);
-      return;
-      localObject = ((b)localObject).WZJ;
-      localObject[0] += 1;
-      continue;
-      localObject = ((b)localObject).WZJ;
-      localObject[1] += 1;
-      continue;
-      localObject = ((b)localObject).WZJ;
-      localObject[2] += 1;
-      continue;
-      if ((paramd.WYx != null) && (paramd.WYx.getInt("SCENE") == 1))
-      {
-        localObject = ((b)localObject).WZJ;
-        localObject[3] += 1;
-      }
-      else
-      {
-        localObject = ((b)localObject).WZJ;
-        localObject[4] += 1;
+      if ((this.hTm == null) || (this.hTm.getType() == 10002)) {
+        this.aeIo = ((String)this.values.get(".sysmsg.invokeMessage.preContent"));
       }
     }
-    paramg.a(new d.b()
+    else
     {
-      public final void next()
-      {
-        AppMethodBeat.i(36417);
-        paramg.ks(paramd.WYz);
-        paramg.close();
-        paramd.jlf = paramg.dpe();
-        paramd.WYA = paramd.WYz.size();
-        Log.i("MicroMsg.ChattingLoader.ChattingDataCallback", "action：" + parama + " addCount:" + paramd.WYA + " totalCount:" + paramd.jlf);
-        paramb.next();
-        AppMethodBeat.o(36417);
+      if (this.values.containsKey(".sysmsg.invokeMessage.msgSource")) {
+        this.aeIq = ((String)this.values.get(".sysmsg.invokeMessage.msgSource"));
       }
-    });
-    AppMethodBeat.o(36418);
-  }
-  
-  public final SparseArray<ca> kn(List<ca> paramList)
-  {
-    AppMethodBeat.i(36419);
-    Object localObject = paramList;
-    if (paramList == null)
-    {
-      localObject = new LinkedList();
-      Log.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[fillData] list is null!");
+      if (this.values.containsKey(".sysmsg.invokeMessage.timestamp")) {
+        this.aeIp = Util.safeParseLong((String)this.values.get(".sysmsg.invokeMessage.timestamp"));
+      }
+      if (this.values.containsKey(".sysmsg.invokeMessage.type")) {
+        this.mType = Util.safeParseInt((String)this.values.get(".sysmsg.invokeMessage.type"));
+      }
+      localStringBuilder = new StringBuilder();
+      localIterator = this.values.keySet().iterator();
+      i = 0;
     }
-    try
+    for (;;)
     {
-      if ((((List)localObject).size() > 0) && (this.fgR != null))
+      if (localIterator.hasNext())
       {
-        paramList = this.fgR.getTalkerUserName();
-        localca = (ca)((List)localObject).get(0);
-        if ((localca != null) && (!Util.isNullOrNil(paramList)) && (!Util.isNullOrNil(localca.field_talker)) && (!Util.isEqual(localca.field_talker, paramList)))
+        String str = (String)localIterator.next();
+        if (str.startsWith(".sysmsg.invokeMessage.text"))
         {
-          Log.i("MicroMsg.ChattingLoader.ChattingDataCallback", "talker not equal, chattingContextTalker:%s, msgInfoTalker:%s", new Object[] { localca.field_talker, paramList });
-          h.IzE.a(18264, new Object[] { localca.field_talker, paramList });
-          h.IzE.p(1151L, 0L, 1L);
-          paramList = this.WYi;
-          AppMethodBeat.o(36419);
-          return paramList;
-        }
-      }
-    }
-    catch (Throwable paramList)
-    {
-      ca localca;
-      Log.printErrStackTrace("MicroMsg.ChattingLoader.ChattingDataCallback", paramList, "fillData Exception", new Object[0]);
-      h.IzE.p(1151L, 1L, 1L);
-      this.WYi.clear();
-      paramList = ((List)localObject).iterator();
-      int i = 0;
-      while (paramList.hasNext())
-      {
-        localObject = this.WYi;
-        localca = (ca)paramList.next();
-        ((SparseArray)localObject).put(i, localca);
-        int j = i + 1;
-        i = j;
-        if (localca != null)
-        {
-          i = j;
-          if (localca.hwH())
+          if (localStringBuilder.length() > 0)
           {
-            i = j;
-            if (localca.field_content != null)
-            {
-              localca.setContent(localca.field_content.replaceAll("‮", ""));
-              i = j;
-            }
+            localStringBuilder.insert(0, (String)this.values.get(str));
+            continue;
+            this.aeIo = this.hTm.field_content;
+            break;
           }
+          localStringBuilder.append((String)this.values.get(str));
+          continue;
         }
+        if ((!str.startsWith(".sysmsg.invokeMessage.link.text")) || (Util.isNullOrNil((String)this.values.get(str)))) {
+          break label457;
+        }
+        str = (String)this.values.get(str);
+        localStringBuilder.append(str);
+        this.oPl.add(str);
+        i = str.length();
       }
-      paramList = this.WYi;
-      AppMethodBeat.o(36419);
     }
-    return paramList;
+    label457:
+    for (;;)
+    {
+      break;
+      this.oPm.addFirst(Integer.valueOf(localStringBuilder.length() - i));
+      this.oPn.add(Integer.valueOf(localStringBuilder.length()));
+      this.oPj = localStringBuilder.toString();
+      if ((cn.bDv() - this.aeIp >= 300000L) && (!Util.isNullOrNil(this.aeIo))) {
+        ThreadPool.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(36443);
+            a.this.hTm.setType(10002);
+            x.a(MMApplicationContext.getContext().getString(R.l.gzs), "", a.this.hTm, "");
+            bh.bCz();
+            c.bzD().a(a.this.hTm.field_msgId, a.this.hTm);
+            Log.i("MicroMsg.InvokeMessageNewXmlMsg", "checkExpired:%s", new Object[] { Long.valueOf(a.this.hTm.field_msgId) });
+            AppMethodBeat.o(36443);
+          }
+        }, "[checkExpired]");
+      }
+      AppMethodBeat.o(36444);
+      return true;
+    }
   }
 }
 

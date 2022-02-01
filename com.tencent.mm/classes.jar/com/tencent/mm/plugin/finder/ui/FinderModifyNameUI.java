@@ -7,17 +7,17 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Layout;
+import android.text.Selection;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnLayoutChangeListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,172 +26,463 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.finder.api.d;
 import com.tencent.mm.plugin.finder.api.d.a;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.ch;
-import com.tencent.mm.plugin.finder.utils.e;
-import com.tencent.mm.plugin.finder.view.o;
-import com.tencent.mm.plugin.findersdk.a.aj;
-import com.tencent.mm.plugin.findersdk.a.j;
-import com.tencent.mm.protocal.protobuf.bfc;
-import com.tencent.mm.protocal.protobuf.ble;
-import com.tencent.mm.protocal.protobuf.cse;
+import com.tencent.mm.plugin.finder.cgi.di;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.c;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.service.r;
+import com.tencent.mm.plugin.findersdk.a.ck;
+import com.tencent.mm.pluginsdk.ui.span.t;
+import com.tencent.mm.protocal.protobuf.bqe;
+import com.tencent.mm.protocal.protobuf.bys;
+import com.tencent.mm.protocal.protobuf.djg;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.tools.g;
-import com.tencent.mm.ui.tools.g.a;
-import com.tencent.mm.ui.w;
 import com.tencent.mm.ui.widget.InputPanelFrameLayout;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
-import java.util.HashMap;
+import com.tencent.mm.ui.y;
+import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.ah.f;
 import kotlin.n.n;
-import kotlin.x;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderModifyNameUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/widget/InputPanelHelper$OnInputPanelChange;", "Lcom/tencent/mm/ui/tools/legalchecker/InputTextBoundaryCheck$DoAfterCheck;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "REQUEST_CODE_SELECT_AT_CONTACT", "", "TAG", "", "edit", "Landroid/widget/EditText;", "editBottomSpace", "Landroid/view/View;", "editLimit", "Landroid/widget/TextView;", "edtContainer", "edtLayoutListener", "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1", "Lcom/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1;", "inputContainer", "inputPanel", "Lcom/tencent/mm/ui/widget/InputPanelFrameLayout;", "keyboardHeight", "modifyBtn", "Landroid/widget/Button;", "modifyCountDialogTips", "modifyCountDialogTipsPlaceholder", "modifyCountTip", "nicknameMaxLength", "progressDialog", "Landroid/app/ProgressDialog;", "scene", "scrollView", "Landroid/widget/ScrollView;", "selfContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "signatureMaxLength", "titleTv", "topErrorTip", "doPrepareUser", "", "doWhenLess", "text", "doWhenMore", "doWhenOK", "getLayoutId", "getMaxLength", "hideError", "initView", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onConfirmClick", "name", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onInputPanelChange", "isKeyboardShow", "", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refreshView", "setSpanTouch", "descTv", "Landroid/text/Spannable;", "showError", "errTip", "appname", "applink", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderModifyNameUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/widget/InputPanelHelper$OnInputPanelChange;", "Lcom/tencent/mm/ui/tools/legalchecker/InputTextBoundaryCheck$DoAfterCheck;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "REQUEST_CODE_SELECT_AT_CONTACT", "", "TAG", "", "edit", "Landroid/widget/EditText;", "editBottomSpace", "Landroid/view/View;", "editLimit", "Landroid/widget/TextView;", "edtContainer", "edtLayoutListener", "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1", "Lcom/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1;", "inputContainer", "inputPanel", "Lcom/tencent/mm/ui/widget/InputPanelFrameLayout;", "keyboardHeight", "modifyBtn", "Landroid/widget/Button;", "modifyCountDialogTips", "modifyCountDialogTipsPlaceholder", "modifyCountTip", "nicknameMaxLength", "progressDialog", "Landroid/app/ProgressDialog;", "scene", "scrollView", "Landroid/widget/ScrollView;", "selfContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "signatureMaxLength", "titleTv", "topErrorTip", "checkEmptyLine", "", "doPrepareUser", "", "doWhenLess", "text", "doWhenMore", "doWhenOK", "getLayoutId", "getMaxLength", "hideError", "initView", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onConfirmClick", "name", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onInputPanelChange", "isKeyboardShow", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refreshView", "setSpanTouch", "descTv", "Landroid/text/Spannable;", "showError", "errTip", "appname", "applink", "superImportUIComponents", "set", "Ljava/util/HashSet;", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lkotlin/collections/HashSet;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderModifyNameUI
   extends MMFinderUI
-  implements com.tencent.mm.an.i, aj<bfc>, com.tencent.mm.ui.tools.b.c.a, com.tencent.mm.ui.widget.c.a
+  implements com.tencent.mm.am.h, ck<bqe>, com.tencent.mm.ui.tools.b.c.a, com.tencent.mm.ui.widget.c.a
 {
-  private View Apm;
-  private InputPanelFrameLayout Apn;
-  private TextView Apo;
-  private ProgressDialog Apv;
-  private int Apz;
-  private EditText AsY;
-  private TextView AsZ;
-  private Button Ata;
-  private TextView Atb;
-  private String Atc;
-  private String Atd;
-  private com.tencent.mm.plugin.finder.api.i Ate;
-  private int Atf;
-  private final int Atg;
-  private final a Ath;
+  private View DXs;
+  private ProgressDialog FPA;
+  private int FPD;
+  private View FPq;
+  private InputPanelFrameLayout FPr;
+  private View FPs;
+  private TextView FPt;
+  private EditText FSo;
+  private TextView FSp;
+  private Button FSq;
+  private TextView FSr;
+  private String FSs;
+  private String FSt;
+  private com.tencent.mm.plugin.finder.api.m FSu;
+  private int FSv;
+  private final int FSw;
+  private final a FSx;
   private final String TAG;
-  private HashMap _$_findViewCache;
-  private ScrollView jbL;
-  private int pIk;
+  private ScrollView lDL;
+  private int sNb;
   private int scene;
   private TextView titleTv;
-  private View yOP;
-  private View ybx;
   
   public FinderModifyNameUI()
   {
     AppMethodBeat.i(167455);
     this.TAG = "Finder.FinderModifyNameUI";
-    this.Atc = "";
-    this.Atd = "$nickname$";
-    this.Apz = 20;
-    this.Atf = 400;
-    this.Atg = 20001;
-    this.Ath = new a(this);
+    this.FSs = "";
+    this.FSt = "$nickname$";
+    this.FPD = 20;
+    this.FSv = 400;
+    this.FSw = 20001;
+    this.FSx = new a(this);
     AppMethodBeat.o(167455);
   }
   
   private void a(TextView paramTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(289592);
-    p.k(paramTextView, "descTv");
-    p.k(paramSpannable, "text");
-    paramTextView.setOnTouchListener((View.OnTouchListener)new FinderModifyNameUI.f(this, paramSpannable, paramTextView));
-    AppMethodBeat.o(289592);
+    AppMethodBeat.i(347695);
+    kotlin.g.b.s.u(paramTextView, "descTv");
+    kotlin.g.b.s.u(paramSpannable, "text");
+    paramTextView.setOnTouchListener(new FinderModifyNameUI..ExternalSyntheticLambda2(paramSpannable, paramTextView, this));
+    AppMethodBeat.o(347695);
   }
   
-  private final void ag(String paramString1, final String paramString2, final String paramString3)
+  private static final void a(FinderModifyNameUI paramFinderModifyNameUI, View paramView)
   {
-    AppMethodBeat.i(289591);
-    Log.i(this.TAG, "showError ".concat(String.valueOf(paramString1)));
-    Object localObject = j.PATTERN.matcher((CharSequence)paramString1);
-    if (((Matcher)localObject).find())
+    com.tencent.mm.ui.widget.a.g.a locala = null;
+    AppMethodBeat.i(347712);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramFinderModifyNameUI);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderModifyNameUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    kotlin.g.b.s.u(paramFinderModifyNameUI, "this$0");
+    paramView = com.tencent.mm.plugin.findersdk.d.a.Hdr;
+    if (com.tencent.mm.plugin.findersdk.d.a.aDj("personalInfo"))
     {
-      String str1 = ((Matcher)localObject).group(1);
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (((Matcher)localObject).start(0) > 0)
-      {
-        i = ((Matcher)localObject).start(0);
-        if (paramString1 == null)
-        {
-          paramString1 = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(289591);
-          throw paramString1;
-        }
-        String str2 = paramString1.substring(0, i);
-        p.j(str2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        localStringBuilder.append(str2);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(347712);
+      return;
+    }
+    Log.i(paramFinderModifyNameUI.TAG, "doClick create contact btn");
+    localObject2 = new ah.f();
+    localObject1 = paramFinderModifyNameUI.FSo;
+    paramView = (View)localObject1;
+    if (localObject1 == null)
+    {
+      kotlin.g.b.s.bIx("edit");
+      paramView = null;
+    }
+    paramView = paramView.getText().toString();
+    if (paramView == null)
+    {
+      paramFinderModifyNameUI = new NullPointerException("null cannot be cast to non-null type kotlin.CharSequence");
+      AppMethodBeat.o(347712);
+      throw paramFinderModifyNameUI;
+    }
+    ((ah.f)localObject2).aqH = n.bq((CharSequence)paramView).toString();
+    localObject1 = ((ah.f)localObject2).aqH;
+    paramView = paramFinderModifyNameUI.FSu;
+    if (paramView == null)
+    {
+      paramView = locala;
+      if (kotlin.g.b.s.p(localObject1, paramView)) {
+        break label354;
       }
-      localStringBuilder.append(str1);
-      if (((Matcher)localObject).end(0) < paramString1.length())
-      {
-        i = ((Matcher)localObject).end(0);
-        j = paramString1.length();
-        if (paramString1 == null)
-        {
-          paramString1 = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(289591);
-          throw paramString1;
-        }
-        paramString1 = paramString1.substring(i, j);
-        p.j(paramString1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        localStringBuilder.append(paramString1);
+      if (paramFinderModifyNameUI.scene != 1) {
+        break label331;
       }
-      paramString1 = localStringBuilder.toString();
-      p.j(paramString1, "sb.toString()");
-      int i = ((Matcher)localObject).start(0);
-      int j = str1.length();
-      paramString1 = new SpannableString((CharSequence)paramString1);
-      p.j(str1, "content");
-      localObject = getContext();
-      p.j(localObject, "context");
-      int k = ((AppCompatActivity)localObject).getResources().getColor(b.c.Link);
-      localObject = getContext();
-      p.j(localObject, "context");
-      paramString1.setSpan(new o(str1, k, ((AppCompatActivity)localObject).getResources().getColor(b.c.Link_Alpha_0_6), (kotlin.g.a.b)new g(this, paramString2, paramString3)), i, i + j, 17);
-      paramString2 = this.Apo;
-      if (paramString2 == null) {
-        p.bGy("topErrorTip");
-      }
-      paramString2.setText((CharSequence)paramString1);
-      paramString2 = this.Apo;
-      if (paramString2 == null) {
-        p.bGy("topErrorTip");
-      }
-      a(paramString2, (Spannable)paramString1);
+      paramView = n.m(paramFinderModifyNameUI.FSs, paramFinderModifyNameUI.FSt, (String)((ah.f)localObject2).aqH, true);
+      locala = new com.tencent.mm.ui.widget.a.g.a((Context)paramFinderModifyNameUI);
+      locala.bDE(paramView).NF(true);
+      locala.bDI(paramFinderModifyNameUI.getString(e.h.finder_confirm_change_name));
+      locala.bDJ(paramFinderModifyNameUI.getString(e.h.finder_confirm_change_name_cancel));
+      locala.b(new FinderModifyNameUI..ExternalSyntheticLambda4(paramFinderModifyNameUI, (ah.f)localObject2));
+      locala.show();
     }
     for (;;)
     {
-      paramString1 = this.Apo;
-      if (paramString1 == null) {
-        p.bGy("topErrorTip");
-      }
-      paramString1.setVisibility(0);
-      AppMethodBeat.o(289591);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(347712);
       return;
-      paramString2 = this.Apo;
-      if (paramString2 == null) {
-        p.bGy("topErrorTip");
+      paramView = paramView.getNickname();
+      break;
+      label331:
+      if (paramFinderModifyNameUI.scene == 2)
+      {
+        paramFinderModifyNameUI.aBb((String)((ah.f)localObject2).aqH);
+        continue;
+        label354:
+        paramFinderModifyNameUI.finish();
+      }
+    }
+  }
+  
+  private static final void a(FinderModifyNameUI paramFinderModifyNameUI, ah.f paramf, boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(347701);
+    kotlin.g.b.s.u(paramFinderModifyNameUI, "this$0");
+    kotlin.g.b.s.u(paramf, "$name");
+    kotlin.g.b.s.u(paramString, "s");
+    paramFinderModifyNameUI.aBb((String)paramf.aqH);
+    AppMethodBeat.o(347701);
+  }
+  
+  private static final boolean a(Spannable paramSpannable, TextView paramTextView, FinderModifyNameUI paramFinderModifyNameUI, View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(347735);
+    kotlin.g.b.s.u(paramSpannable, "$text");
+    kotlin.g.b.s.u(paramTextView, "$descTv");
+    kotlin.g.b.s.u(paramFinderModifyNameUI, "this$0");
+    int j = paramMotionEvent.getAction();
+    if (paramView == null)
+    {
+      paramSpannable = new NullPointerException("null cannot be cast to non-null type android.widget.TextView");
+      AppMethodBeat.o(347735);
+      throw paramSpannable;
+    }
+    paramView = (TextView)paramView;
+    switch (j)
+    {
+    case 2: 
+    default: 
+      switch (j)
+      {
+      }
+      break;
+    }
+    for (;;)
+    {
+      boolean bool = false;
+      Log.i(paramFinderModifyNameUI.TAG, "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
+      AppMethodBeat.o(347735);
+      return bool;
+      Object localObject1 = (ClickableSpan[])paramSpannable.getSpans(0, paramSpannable.length(), ClickableSpan.class);
+      if (localObject1 == null) {
+        break;
+      }
+      int k = localObject1.length;
+      int i = 0;
+      while (i < k)
+      {
+        Object localObject2 = localObject1[i];
+        if ((localObject2 instanceof t))
+        {
+          ((t)localObject2).setIsPressed(false);
+          paramTextView.invalidate();
+        }
+        i += 1;
+      }
+      i = (int)paramMotionEvent.getX();
+      k = (int)paramMotionEvent.getY();
+      int m = paramView.getPaddingLeft();
+      int n = paramView.getPaddingTop();
+      int i1 = paramView.getScrollX();
+      int i2 = paramView.getScrollY();
+      localObject1 = paramView.getLayout();
+      i = ((Layout)localObject1).getOffsetForHorizontal(((Layout)localObject1).getLineForVertical(k - n + i2), i - m + i1);
+      localObject1 = (ClickableSpan[])paramSpannable.getSpans(i, i, ClickableSpan.class);
+      if (localObject1.length != 0)
+      {
+        localObject1 = localObject1[0];
+        switch (j)
+        {
+        }
+        for (;;)
+        {
+          bool = true;
+          break;
+          ((ClickableSpan)localObject1).onClick((View)paramView);
+          continue;
+          if ((localObject1 instanceof t))
+          {
+            ((t)localObject1).setIsPressed(true);
+            paramTextView.invalidate();
+          }
+          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject1), paramSpannable.getSpanEnd(localObject1));
+        }
+      }
+      Selection.removeSelection(paramSpannable);
+    }
+  }
+  
+  private static final boolean a(FinderModifyNameUI paramFinderModifyNameUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(347724);
+    kotlin.g.b.s.u(paramFinderModifyNameUI, "this$0");
+    paramFinderModifyNameUI.finish();
+    AppMethodBeat.o(347724);
+    return true;
+  }
+  
+  private static final boolean a(FinderModifyNameUI paramFinderModifyNameUI, View paramView, MotionEvent paramMotionEvent)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(347717);
+    kotlin.g.b.s.u(paramFinderModifyNameUI, "this$0");
+    EditText localEditText2 = paramFinderModifyNameUI.FSo;
+    EditText localEditText1 = localEditText2;
+    if (localEditText2 == null)
+    {
+      kotlin.g.b.s.bIx("edit");
+      localEditText1 = null;
+    }
+    if (kotlin.g.b.s.p(paramView, localEditText1)) {}
+    switch (paramMotionEvent.getActionMasked())
+    {
+    case 2: 
+    default: 
+      AppMethodBeat.o(347717);
+      return false;
+    case 0: 
+      paramFinderModifyNameUI = paramFinderModifyNameUI.lDL;
+      if (paramFinderModifyNameUI == null)
+      {
+        kotlin.g.b.s.bIx("scrollView");
+        paramFinderModifyNameUI = localObject1;
+      }
+      for (;;)
+      {
+        paramFinderModifyNameUI.requestDisallowInterceptTouchEvent(true);
+        break;
+      }
+    }
+    paramFinderModifyNameUI = paramFinderModifyNameUI.lDL;
+    if (paramFinderModifyNameUI == null)
+    {
+      kotlin.g.b.s.bIx("scrollView");
+      paramFinderModifyNameUI = localObject2;
+    }
+    for (;;)
+    {
+      paramFinderModifyNameUI.requestDisallowInterceptTouchEvent(false);
+      break;
+    }
+  }
+  
+  private final void aBb(String paramString)
+  {
+    AppMethodBeat.i(347663);
+    Object localObject = "";
+    switch (this.scene)
+    {
+    default: 
+      AppMethodBeat.o(347663);
+      return;
+    case 1: 
+      if (((CharSequence)paramString).length() == 0)
+      {
+        i = 1;
+        if (i == 0) {
+          break label127;
+        }
+        localObject = getString(e.h.finder_input_not_empty_tip, new Object[] { getString(e.h.finder_nickname) });
+        kotlin.g.b.s.s(localObject, "getString(R.string.finde….string.finder_nickname))");
+        label90:
+        if (((CharSequence)localObject).length() <= 0) {
+          break label213;
+        }
+      }
+      break;
+    }
+    label213:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label218;
+      }
+      am((String)localObject, null, null);
+      AppMethodBeat.o(347663);
+      return;
+      i = 0;
+      break;
+      label127:
+      if (g.bCx(paramString) <= this.FPD) {
+        break label90;
+      }
+      localObject = getString(e.h.finder_input_too_long_tip, new Object[] { getString(e.h.finder_nickname) });
+      kotlin.g.b.s.s(localObject, "getString(R.string.finde….string.finder_nickname))");
+      break label90;
+      if (g.bCx(paramString) <= this.FSv) {
+        break label90;
+      }
+      localObject = getString(e.h.finder_input_too_long_tip, new Object[] { getString(e.h.finder_signature) });
+      kotlin.g.b.s.s(localObject, "getString(R.string.finde…string.finder_signature))");
+      break label90;
+    }
+    label218:
+    switch (this.scene)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(347663);
+      return;
+      ((r)com.tencent.mm.kernel.h.ax(r.class)).d(paramString, (ck)this);
+      this.FPA = ((ProgressDialog)com.tencent.mm.ui.base.k.a((Context)this, getString(e.h.app_updating), false, null));
+      AppMethodBeat.o(347663);
+      return;
+      localObject = this.FSu;
+      if (localObject == null) {}
+      for (localObject = null; !kotlin.g.b.s.p(paramString, localObject); localObject = ((com.tencent.mm.plugin.finder.api.m)localObject).getSignature())
+      {
+        ((r)com.tencent.mm.kernel.h.ax(r.class)).e(paramString, (ck)this);
+        this.FPA = ((ProgressDialog)com.tencent.mm.ui.base.k.a((Context)this, getString(e.h.app_updating), false, null));
+        AppMethodBeat.o(347663);
+        return;
+      }
+      finish();
+    }
+  }
+  
+  private final void am(String paramString1, String paramString2, String paramString3)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(347688);
+    Log.i(this.TAG, kotlin.g.b.s.X("showError ", paramString1));
+    Object localObject2 = com.tencent.mm.plugin.findersdk.a.k.PATTERN.matcher((CharSequence)paramString1);
+    if (((Matcher)localObject2).find())
+    {
+      String str1 = ((Matcher)localObject2).group(1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (((Matcher)localObject2).start(0) > 0)
+      {
+        i = ((Matcher)localObject2).start(0);
+        if (paramString1 == null)
+        {
+          paramString1 = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(347688);
+          throw paramString1;
+        }
+        String str2 = paramString1.substring(0, i);
+        kotlin.g.b.s.s(str2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        localStringBuilder.append(str2);
+      }
+      localStringBuilder.append(str1);
+      if (((Matcher)localObject2).end(0) < paramString1.length())
+      {
+        i = ((Matcher)localObject2).end(0);
+        j = paramString1.length();
+        if (paramString1 == null)
+        {
+          paramString1 = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(347688);
+          throw paramString1;
+        }
+        paramString1 = paramString1.substring(i, j);
+        kotlin.g.b.s.s(paramString1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        localStringBuilder.append(paramString1);
+      }
+      paramString1 = localStringBuilder.toString();
+      kotlin.g.b.s.s(paramString1, "sb.toString()");
+      int i = ((Matcher)localObject2).start(0);
+      int j = str1.length();
+      localObject2 = new SpannableString((CharSequence)paramString1);
+      kotlin.g.b.s.s(str1, "content");
+      ((SpannableString)localObject2).setSpan(new com.tencent.mm.plugin.finder.view.q(str1, getContext().getResources().getColor(e.b.Link), getContext().getResources().getColor(e.b.Link_Alpha_0_6), (kotlin.g.a.b)new FinderModifyNameUI.e(this, paramString2, paramString3)), i, i + j, 17);
+      paramString1 = this.FPt;
+      if (paramString1 == null)
+      {
+        kotlin.g.b.s.bIx("topErrorTip");
+        paramString1 = null;
+        paramString1.setText((CharSequence)localObject2);
+        paramString2 = this.FPt;
+        paramString1 = paramString2;
+        if (paramString2 == null)
+        {
+          kotlin.g.b.s.bIx("topErrorTip");
+          paramString1 = null;
+        }
+        a(paramString1, (Spannable)localObject2);
+        label372:
+        paramString1 = this.FPt;
+        if (paramString1 != null) {
+          break label435;
+        }
+        kotlin.g.b.s.bIx("topErrorTip");
+        paramString1 = localObject1;
+      }
+    }
+    label435:
+    for (;;)
+    {
+      paramString1.setVisibility(0);
+      AppMethodBeat.o(347688);
+      return;
+      break;
+      paramString3 = this.FPt;
+      paramString2 = paramString3;
+      if (paramString3 == null)
+      {
+        kotlin.g.b.s.bIx("topErrorTip");
+        paramString2 = null;
       }
       paramString2.setText((CharSequence)paramString1);
+      break label372;
     }
   }
   
@@ -202,46 +493,52 @@ public final class FinderModifyNameUI
     default: 
       return 2147483647;
     case 1: 
-      return this.Apz;
+      return this.FPD;
     }
-    return this.Atf;
+    return this.FSv;
   }
   
   private final void refreshView()
   {
     boolean bool2 = true;
     AppMethodBeat.i(167445);
-    Object localObject = h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    int i = ((f)localObject).aHp().getInt(ar.a.Vzn, 0);
-    Log.i(this.TAG, "user extFlag ".concat(String.valueOf(i)));
+    int i = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.adbs, 0);
+    Log.i(this.TAG, kotlin.g.b.s.X("user extFlag ", Integer.valueOf(i)));
+    Object localObject;
     if (this.scene == 1)
     {
       if ((i & 0x2) == 0) {
-        break label132;
+        break label130;
       }
       i = 1;
-      localObject = this.AsY;
-      if (localObject == null) {
-        p.bGy("edit");
+      localObject = this.FSo;
+      if (localObject != null) {
+        break label135;
       }
+      kotlin.g.b.s.bIx("edit");
+      localObject = null;
+      label75:
       if (i != 0) {
-        break label137;
+        break label138;
       }
       bool1 = true;
-      label90:
+      label81:
       ((EditText)localObject).setEnabled(bool1);
-      localObject = this.Ata;
-      if (localObject == null) {
-        p.bGy("modifyBtn");
+      Button localButton = this.FSq;
+      localObject = localButton;
+      if (localButton == null)
+      {
+        kotlin.g.b.s.bIx("modifyBtn");
+        localObject = null;
       }
       if (i != 0) {
-        break label142;
+        break label143;
       }
     }
-    label132:
-    label137:
-    label142:
+    label130:
+    label135:
+    label138:
+    label143:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       ((Button)localObject).setEnabled(bool1);
@@ -249,373 +546,328 @@ public final class FinderModifyNameUI
       return;
       i = 0;
       break;
+      break label75;
       bool1 = false;
-      break label90;
+      break label81;
     }
   }
   
-  public final void _$_clearFindViewByIdCache()
+  public final void Tw(String paramString)
   {
-    AppMethodBeat.i(289595);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(289595);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(289594);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(289594);
-    return localView1;
-  }
-  
-  public final void abc(String paramString)
-  {
+    Object localObject = null;
     AppMethodBeat.i(167446);
-    int i = g.dq(getMaxLength(), paramString);
-    paramString = this.AsZ;
-    if (paramString == null) {
-      p.bGy("editLimit");
-    }
-    paramString.setText((CharSequence)String.valueOf(i));
-    paramString = this.AsZ;
-    if (paramString == null) {
-      p.bGy("editLimit");
-    }
-    paramString.setTextColor(getResources().getColor(b.c.BW_0_Alpha_0_3));
-    if (i <= kotlin.k.i.ov((int)(getMaxLength() * 0.1F), 1))
+    int i = g.ej(getMaxLength(), paramString);
+    paramString = this.FSp;
+    TextView localTextView;
+    if (paramString == null)
     {
-      paramString = this.AsZ;
-      if (paramString == null) {
-        p.bGy("editLimit");
+      kotlin.g.b.s.bIx("editLimit");
+      paramString = null;
+      paramString.setText((CharSequence)String.valueOf(i));
+      localTextView = this.FSp;
+      paramString = localTextView;
+      if (localTextView == null)
+      {
+        kotlin.g.b.s.bIx("editLimit");
+        paramString = null;
+      }
+      paramString.setTextColor(getResources().getColor(e.b.BW_0_Alpha_0_3));
+      if (i > kotlin.k.k.qu((int)(getMaxLength() * 0.1F), 1)) {
+        break label185;
+      }
+      localTextView = this.FSp;
+      paramString = localTextView;
+      if (localTextView == null)
+      {
+        kotlin.g.b.s.bIx("editLimit");
+        paramString = null;
       }
       paramString.setVisibility(0);
+      label126:
+      paramString = this.FPt;
+      if (paramString != null) {
+        break label215;
+      }
+      kotlin.g.b.s.bIx("topErrorTip");
+      paramString = null;
+      label143:
+      paramString.setText((CharSequence)"");
+      paramString = this.FPt;
+      if (paramString != null) {
+        break label218;
+      }
+      kotlin.g.b.s.bIx("topErrorTip");
+      paramString = localObject;
     }
+    label185:
+    label215:
+    label218:
     for (;;)
     {
-      paramString = this.Apo;
-      if (paramString == null) {
-        p.bGy("topErrorTip");
-      }
-      paramString.setText((CharSequence)"");
-      paramString = this.Apo;
-      if (paramString == null) {
-        p.bGy("topErrorTip");
-      }
       paramString.setVisibility(8);
       AppMethodBeat.o(167446);
       return;
-      paramString = this.AsZ;
-      if (paramString == null) {
-        p.bGy("editLimit");
+      break;
+      localTextView = this.FSp;
+      paramString = localTextView;
+      if (localTextView == null)
+      {
+        kotlin.g.b.s.bIx("editLimit");
+        paramString = null;
       }
       paramString.setVisibility(4);
+      break label126;
+      break label143;
     }
   }
   
-  public final void abd(String paramString)
+  public final void Tx(String paramString)
   {
-    AppMethodBeat.i(289590);
-    paramString = this.AsZ;
-    if (paramString == null) {
-      p.bGy("editLimit");
+    Object localObject = null;
+    AppMethodBeat.i(347850);
+    paramString = this.FSp;
+    if (paramString == null)
+    {
+      kotlin.g.b.s.bIx("editLimit");
+      paramString = null;
+      paramString.setText((CharSequence)String.valueOf(getMaxLength()));
+      paramString = this.FSp;
+      if (paramString != null) {
+        break label80;
+      }
+      kotlin.g.b.s.bIx("editLimit");
+      paramString = localObject;
     }
-    paramString.setText((CharSequence)String.valueOf(getMaxLength()));
-    paramString = this.AsZ;
-    if (paramString == null) {
-      p.bGy("editLimit");
+    label80:
+    for (;;)
+    {
+      paramString.setTextColor(getResources().getColor(e.b.BW_0_Alpha_0_3));
+      AppMethodBeat.o(347850);
+      return;
+      break;
     }
-    paramString.setTextColor(getResources().getColor(b.c.BW_0_Alpha_0_3));
-    AppMethodBeat.o(289590);
   }
   
-  public final void dN(String paramString)
+  public final void _$_clearFindViewByIdCache() {}
+  
+  public final void eY(String paramString)
   {
+    Object localObject = null;
     AppMethodBeat.i(167448);
-    paramString = this.AsZ;
-    if (paramString == null) {
-      p.bGy("editLimit");
+    paramString = this.FSp;
+    if (paramString == null)
+    {
+      kotlin.g.b.s.bIx("editLimit");
+      paramString = null;
+      paramString.setText((CharSequence)"0");
+      TextView localTextView = this.FSp;
+      paramString = localTextView;
+      if (localTextView == null)
+      {
+        kotlin.g.b.s.bIx("editLimit");
+        paramString = null;
+      }
+      paramString.setVisibility(0);
+      paramString = this.FSp;
+      if (paramString != null) {
+        break label100;
+      }
+      kotlin.g.b.s.bIx("editLimit");
+      paramString = localObject;
     }
-    paramString.setText((CharSequence)"0");
-    paramString = this.AsZ;
-    if (paramString == null) {
-      p.bGy("editLimit");
+    label100:
+    for (;;)
+    {
+      paramString.setTextColor(getResources().getColor(e.b.Red_100));
+      AppMethodBeat.o(167448);
+      return;
+      break;
     }
-    paramString.setVisibility(0);
-    paramString = this.AsZ;
-    if (paramString == null) {
-      p.bGy("editLimit");
-    }
-    paramString.setTextColor(getResources().getColor(b.c.Red_100));
-    AppMethodBeat.o(167448);
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_modify_name_ui;
-  }
-  
-  public final void h(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(167450);
-    this.pIk = paramInt;
-    if (paramBoolean)
-    {
-      localObject1 = this.TAG;
-      localObject2 = new StringBuilder("keyboardHeight ").append(paramInt).append(", inputContainer.height ");
-      View localView = this.ybx;
-      if (localView == null) {
-        p.bGy("inputContainer");
-      }
-      Log.i((String)localObject1, localView.getHeight());
-      localObject1 = this.yOP;
-      if (localObject1 == null) {
-        p.bGy("edtContainer");
-      }
-      ((View)localObject1).addOnLayoutChangeListener((View.OnLayoutChangeListener)this.Ath);
-      localObject1 = this.Ata;
-      if (localObject1 == null) {
-        p.bGy("modifyBtn");
-      }
-      localObject1 = ((Button)localObject1).getLayoutParams();
-      if (localObject1 == null)
-      {
-        localObject1 = new kotlin.t("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-        AppMethodBeat.o(167450);
-        throw ((Throwable)localObject1);
-      }
-      localObject1 = (LinearLayout.LayoutParams)localObject1;
-      ((LinearLayout.LayoutParams)localObject1).bottomMargin = 0;
-      localObject2 = this.Ata;
-      if (localObject2 == null) {
-        p.bGy("modifyBtn");
-      }
-      ((Button)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = this.ybx;
-      if (localObject1 == null) {
-        p.bGy("inputContainer");
-      }
-      localObject1 = ((View)localObject1).getLayoutParams();
-      if (localObject1 == null)
-      {
-        localObject1 = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-        AppMethodBeat.o(167450);
-        throw ((Throwable)localObject1);
-      }
-      localObject1 = (FrameLayout.LayoutParams)localObject1;
-      localObject2 = this.ybx;
-      if (localObject2 == null) {
-        p.bGy("inputContainer");
-      }
-      ((FrameLayout.LayoutParams)localObject1).height = (((View)localObject2).getHeight() - paramInt);
-      localObject2 = this.ybx;
-      if (localObject2 == null) {
-        p.bGy("inputContainer");
-      }
-      ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = this.ybx;
-      if (localObject1 == null) {
-        p.bGy("inputContainer");
-      }
-      ((View)localObject1).requestLayout();
-      AppMethodBeat.o(167450);
-      return;
-    }
-    Object localObject1 = this.yOP;
-    if (localObject1 == null) {
-      p.bGy("edtContainer");
-    }
-    ((View)localObject1).removeOnLayoutChangeListener((View.OnLayoutChangeListener)this.Ath);
-    localObject1 = this.Ata;
-    if (localObject1 == null) {
-      p.bGy("modifyBtn");
-    }
-    localObject1 = ((Button)localObject1).getLayoutParams();
-    if (localObject1 == null)
-    {
-      localObject1 = new kotlin.t("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-      AppMethodBeat.o(167450);
-      throw ((Throwable)localObject1);
-    }
-    localObject1 = (LinearLayout.LayoutParams)localObject1;
-    ((LinearLayout.LayoutParams)localObject1).bottomMargin = getResources().getDimensionPixelSize(b.d.Edge_12A);
-    Object localObject2 = this.Ata;
-    if (localObject2 == null) {
-      p.bGy("modifyBtn");
-    }
-    ((Button)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.ybx;
-    if (localObject1 == null) {
-      p.bGy("inputContainer");
-    }
-    localObject1 = ((View)localObject1).getLayoutParams();
-    if (localObject1 == null)
-    {
-      localObject1 = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-      AppMethodBeat.o(167450);
-      throw ((Throwable)localObject1);
-    }
-    localObject1 = (FrameLayout.LayoutParams)localObject1;
-    ((FrameLayout.LayoutParams)localObject1).height = -1;
-    localObject2 = this.ybx;
-    if (localObject2 == null) {
-      p.bGy("inputContainer");
-    }
-    ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.ybx;
-    if (localObject1 == null) {
-      p.bGy("inputContainer");
-    }
-    ((View)localObject1).requestLayout();
-    localObject1 = this.ybx;
-    if (localObject1 == null) {
-      p.bGy("inputContainer");
-    }
-    ((View)localObject1).scrollTo(0, 0);
-    AppMethodBeat.o(167450);
+    return e.f.finder_modify_name_ui;
   }
   
   public final void initView()
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
+    Object localObject3 = null;
     AppMethodBeat.i(167444);
     setMMTitle("");
-    setActionbarColor(getResources().getColor(b.c.white));
-    getController().q((Activity)this, getResources().getColor(b.c.white));
-    Object localObject3 = findViewById(b.f.finder_modify_name_container);
-    p.j(localObject3, "findViewById(R.id.finder_modify_name_container)");
-    this.yOP = ((View)localObject3);
-    localObject3 = findViewById(b.f.finder_input_container);
-    p.j(localObject3, "findViewById(R.id.finder_input_container)");
-    this.ybx = ((View)localObject3);
-    localObject3 = findViewById(b.f.finder_modify_title);
-    p.j(localObject3, "findViewById(R.id.finder_modify_title)");
-    this.titleTv = ((TextView)localObject3);
-    localObject3 = findViewById(b.f.finder_edit);
-    p.j(localObject3, "findViewById(R.id.finder_edit)");
-    this.AsY = ((EditText)localObject3);
-    localObject3 = findViewById(b.f.finder_edit_limit);
-    p.j(localObject3, "findViewById(R.id.finder_edit_limit)");
-    this.AsZ = ((TextView)localObject3);
-    localObject3 = findViewById(b.f.edt_bottom_space);
-    p.j(localObject3, "findViewById(R.id.edt_bottom_space)");
-    this.Apm = ((View)localObject3);
-    localObject3 = findViewById(b.f.finder_modify_btn);
-    p.j(localObject3, "findViewById(R.id.finder_modify_btn)");
-    this.Ata = ((Button)localObject3);
-    localObject3 = findViewById(b.f.modify_max_tip);
-    p.j(localObject3, "findViewById(R.id.modify_max_tip)");
-    this.Atb = ((TextView)localObject3);
-    localObject3 = findViewById(b.f.scroll_container);
-    p.j(localObject3, "findViewById(R.id.scroll_container)");
-    this.jbL = ((ScrollView)localObject3);
-    localObject3 = findViewById(b.f.input_panel);
-    p.j(localObject3, "findViewById(R.id.input_panel)");
-    this.Apn = ((InputPanelFrameLayout)localObject3);
-    localObject3 = findViewById(b.f.top_error_tip);
-    p.j(localObject3, "findViewById(R.id.top_error_tip)");
-    this.Apo = ((TextView)localObject3);
-    localObject3 = this.Ata;
-    if (localObject3 == null) {
-      p.bGy("modifyBtn");
-    }
-    ((Button)localObject3).setOnClickListener((View.OnClickListener)new b(this));
-    localObject3 = (TextWatcher)new e(this);
-    Object localObject4 = this.AsY;
-    if (localObject4 == null) {
-      p.bGy("edit");
-    }
-    ((EditText)localObject4).addTextChangedListener((TextWatcher)localObject3);
-    localObject3 = this.AsY;
-    if (localObject3 == null) {
-      p.bGy("edit");
-    }
-    ((EditText)localObject3).setOnTouchListener((View.OnTouchListener)new c(this));
-    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this));
-    localObject3 = this.Apn;
-    if (localObject3 == null) {
-      p.bGy("inputPanel");
-    }
-    ((InputPanelFrameLayout)localObject3).setExternalListener((com.tencent.mm.ui.widget.c.a)this);
-    switch (this.scene)
+    setActionbarColor(getResources().getColor(e.b.white));
+    getController().s((Activity)this, getResources().getColor(e.b.white));
+    Object localObject1 = findViewById(e.e.finder_modify_name_container);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.finder_modify_name_container)");
+    this.DXs = ((View)localObject1);
+    localObject1 = findViewById(e.e.finder_input_container);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.finder_input_container)");
+    this.FPs = ((View)localObject1);
+    localObject1 = findViewById(e.e.finder_modify_title);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.finder_modify_title)");
+    this.titleTv = ((TextView)localObject1);
+    localObject1 = findViewById(e.e.finder_edit);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.finder_edit)");
+    this.FSo = ((EditText)localObject1);
+    localObject1 = findViewById(e.e.finder_edit_limit);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.finder_edit_limit)");
+    this.FSp = ((TextView)localObject1);
+    localObject1 = findViewById(e.e.edt_bottom_space);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.edt_bottom_space)");
+    this.FPq = ((View)localObject1);
+    localObject1 = findViewById(e.e.finder_modify_btn);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.finder_modify_btn)");
+    this.FSq = ((Button)localObject1);
+    localObject1 = findViewById(e.e.modify_max_tip);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.modify_max_tip)");
+    this.FSr = ((TextView)localObject1);
+    localObject1 = findViewById(e.e.scroll_container);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.scroll_container)");
+    this.lDL = ((ScrollView)localObject1);
+    localObject1 = findViewById(e.e.input_panel);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.input_panel)");
+    this.FPr = ((InputPanelFrameLayout)localObject1);
+    localObject1 = findViewById(e.e.top_error_tip);
+    kotlin.g.b.s.s(localObject1, "findViewById(R.id.top_error_tip)");
+    this.FPt = ((TextView)localObject1);
+    Object localObject2 = this.FSq;
+    localObject1 = localObject2;
+    if (localObject2 == null)
     {
+      kotlin.g.b.s.bIx("modifyBtn");
+      localObject1 = null;
+    }
+    ((Button)localObject1).setOnClickListener(new FinderModifyNameUI..ExternalSyntheticLambda1(this));
+    Object localObject4 = (TextWatcher)new b(this);
+    localObject2 = this.FSo;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("edit");
+      localObject1 = null;
+    }
+    ((EditText)localObject1).addTextChangedListener((TextWatcher)localObject4);
+    localObject2 = this.FSo;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("edit");
+      localObject1 = null;
+    }
+    ((EditText)localObject1).setOnTouchListener(new FinderModifyNameUI..ExternalSyntheticLambda3(this));
+    setBackBtn(new FinderModifyNameUI..ExternalSyntheticLambda0(this));
+    localObject1 = this.FPr;
+    if (localObject1 == null)
+    {
+      kotlin.g.b.s.bIx("inputPanel");
+      localObject1 = null;
+      ((InputPanelFrameLayout)localObject1).setExternalListener((com.tencent.mm.ui.widget.c.a)this);
+      switch (this.scene)
+      {
+      default: 
+        refreshView();
+        localObject1 = this.FSo;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("edit");
+          localObject1 = localObject3;
+        }
+        break;
+      }
     }
     for (;;)
     {
-      refreshView();
-      localObject1 = this.AsY;
-      if (localObject1 == null) {
-        p.bGy("edit");
-      }
       ((EditText)localObject1).requestFocus();
       AppMethodBeat.o(167444);
       return;
-      localObject1 = this.AsY;
-      if (localObject1 == null) {
-        p.bGy("edit");
+      break;
+      localObject2 = this.FSo;
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("edit");
+        localObject1 = null;
       }
       ((EditText)localObject1).setMaxLines(2);
-      localObject3 = this.AsY;
-      if (localObject3 == null) {
-        p.bGy("edit");
+      localObject1 = this.FSo;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("edit");
+        localObject1 = null;
+        label533:
+        localObject4 = (Context)getContext();
+        localObject2 = this.FSu;
+        if (localObject2 != null) {
+          break label606;
+        }
+        localObject2 = null;
+        label553:
+        ((EditText)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.p.b((Context)localObject4, (CharSequence)localObject2));
+        localObject1 = this.titleTv;
+        if (localObject1 != null) {
+          break label614;
+        }
+        kotlin.g.b.s.bIx("titleTv");
+        localObject1 = null;
       }
-      localObject4 = (Context)getContext();
-      com.tencent.mm.plugin.finder.api.i locali = this.Ate;
-      localObject1 = localObject2;
-      if (locali != null) {
-        localObject1 = locali.getNickname();
+      label606:
+      label614:
+      for (;;)
+      {
+        ((TextView)localObject1).setText((CharSequence)getString(e.h.finder_modify_nickname_title));
+        break;
+        break label533;
+        localObject2 = ((com.tencent.mm.plugin.finder.api.m)localObject2).getNickname();
+        break label553;
       }
-      ((EditText)localObject3).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject4, (CharSequence)localObject1));
       localObject1 = this.titleTv;
-      if (localObject1 == null) {
-        p.bGy("titleTv");
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("titleTv");
+        localObject1 = null;
+        label634:
+        ((TextView)localObject1).setText((CharSequence)getString(e.h.finder_modify_signature_title));
+        localObject2 = this.FSo;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          kotlin.g.b.s.bIx("edit");
+          localObject1 = null;
+        }
+        ((EditText)localObject1).setMaxLines(5);
+        localObject1 = this.FSo;
+        if (localObject1 != null) {
+          break label731;
+        }
+        kotlin.g.b.s.bIx("edit");
+        localObject1 = null;
+        label689:
+        localObject4 = (Context)getContext();
+        localObject2 = this.FSu;
+        if (localObject2 != null) {
+          break label734;
+        }
       }
-      ((TextView)localObject1).setText((CharSequence)getString(b.j.finder_modify_nickname_title));
-      continue;
-      localObject2 = this.titleTv;
-      if (localObject2 == null) {
-        p.bGy("titleTv");
+      label731:
+      label734:
+      for (localObject2 = null;; localObject2 = ((com.tencent.mm.plugin.finder.api.m)localObject2).field_signature)
+      {
+        ((EditText)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.p.b((Context)localObject4, (CharSequence)localObject2));
+        break;
+        break label634;
+        break label689;
       }
-      ((TextView)localObject2).setText((CharSequence)getString(b.j.finder_modify_signature_title));
-      localObject2 = this.AsY;
-      if (localObject2 == null) {
-        p.bGy("edit");
-      }
-      ((EditText)localObject2).setMaxLines(5);
-      localObject2 = this.AsY;
-      if (localObject2 == null) {
-        p.bGy("edit");
-      }
-      localObject3 = (Context)getContext();
-      localObject4 = this.Ate;
-      if (localObject4 != null) {
-        localObject1 = ((com.tencent.mm.plugin.finder.api.i)localObject4).field_signature;
-      }
-      ((EditText)localObject2).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject3, (CharSequence)localObject1));
     }
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(289589);
+    Object localObject2 = null;
+    AppMethodBeat.i(347836);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    Object localObject1;
-    Object localObject2;
-    label264:
-    String str;
-    if (paramInt1 == this.Atg)
+    Object localObject3;
+    Object localObject4;
+    if (paramInt1 == this.FSw)
     {
       showVKB();
       if ((paramIntent != null) && (paramInt2 == -1))
@@ -627,140 +879,150 @@ public final class FinderModifyNameUI
         {
           try
           {
-            paramIntent = new cse();
+            paramIntent = new djg();
             paramIntent.parseFrom((byte[])localObject1);
-            if (paramIntent == null) {
-              break label633;
-            }
-            if (Util.isNullOrNil(paramIntent.nickname)) {
+            if ((paramIntent == null) || (Util.isNullOrNil(paramIntent.nickname))) {
               break label621;
             }
-            localObject1 = this.AsY;
-            if (localObject1 == null) {
-              p.bGy("edit");
+            localObject3 = this.FSo;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              kotlin.g.b.s.bIx("edit");
+              localObject1 = null;
             }
-            paramInt2 = ((EditText)localObject1).getSelectionEnd();
-            localObject1 = this.AsY;
-            if (localObject1 == null) {
-              p.bGy("edit");
+            paramInt1 = ((EditText)localObject1).getSelectionEnd();
+            localObject3 = this.FSo;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              kotlin.g.b.s.bIx("edit");
+              localObject1 = null;
             }
-            localObject2 = ((EditText)localObject1).getText().toString();
-            paramInt1 = paramInt2;
-            localObject1 = localObject2;
+            localObject3 = ((EditText)localObject1).getText().toString();
             if (this.scene != 2) {
-              break label409;
+              break label642;
             }
-            localObject1 = this.AsY;
-            if (localObject1 == null) {
-              p.bGy("edit");
+            localObject4 = this.FSo;
+            localObject1 = localObject4;
+            if (localObject4 == null)
+            {
+              kotlin.g.b.s.bIx("edit");
+              localObject1 = null;
             }
             i = ((EditText)localObject1).getSelectionEnd();
-            paramInt1 = paramInt2;
-            localObject1 = localObject2;
             if (i <= 0) {
-              break label409;
+              break label642;
             }
-            paramInt1 = i - 1;
             paramInt2 = 1;
+            paramInt1 = i - 1;
             if ((paramInt1 < 0) || (paramInt2 == 0)) {
               break;
             }
-            localObject1 = this.AsY;
-            if (localObject1 == null) {
-              p.bGy("edit");
+            localObject4 = this.FSo;
+            localObject1 = localObject4;
+            if (localObject4 == null)
+            {
+              kotlin.g.b.s.bIx("edit");
+              localObject1 = null;
             }
             if (((EditText)localObject1).getText().toString().charAt(paramInt1) != '@') {
-              break label264;
+              break label278;
             }
             paramInt1 -= 1;
             continue;
+            paramIntent = null;
           }
           catch (Exception paramIntent)
           {
             Log.e(this.TAG, "onActivityResult LocalFinderAtContact parseFrom:%s", new Object[] { paramIntent.getMessage() });
-            paramIntent = null;
-            continue;
           }
-          paramIntent = null;
           continue;
+          label278:
           paramInt2 = 0;
         }
         paramInt2 = paramInt1 + 1;
         paramInt1 = paramInt2;
-        if (paramInt2 > ((String)localObject2).length()) {
-          paramInt1 = ((String)localObject2).length();
+        if (paramInt2 > ((String)localObject3).length()) {
+          paramInt1 = ((String)localObject3).length();
         }
-        localObject1 = new StringBuilder();
-        if (localObject2 == null)
+        if (localObject3 == null)
         {
-          paramIntent = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(289589);
+          paramIntent = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(347836);
           throw paramIntent;
         }
-        str = ((String)localObject2).substring(0, paramInt1);
-        p.j(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        localObject1 = ((StringBuilder)localObject1).append(str);
-        paramInt2 = ((String)localObject2).length();
-        if (localObject2 == null)
+        localObject1 = ((String)localObject3).substring(0, paramInt1);
+        kotlin.g.b.s.s(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        paramInt2 = ((String)localObject3).length();
+        if (localObject3 == null)
         {
-          paramIntent = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(289589);
+          paramIntent = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(347836);
           throw paramIntent;
         }
-        localObject2 = ((String)localObject2).substring(i, paramInt2);
-        p.j(localObject2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        localObject1 = (String)localObject2;
-        label409:
-        if (paramInt1 <= ((String)localObject1).length()) {
-          break label640;
-        }
-        paramInt1 = ((String)localObject1).length();
+        localObject3 = ((String)localObject3).substring(i, paramInt2);
+        kotlin.g.b.s.s(localObject3, "(this as java.lang.Strin…ing(startIndex, endIndex)");
       }
     }
-    label640:
-    for (;;)
+    label642:
+    for (Object localObject1 = kotlin.g.b.s.X((String)localObject1, localObject3);; localObject1 = localObject3)
     {
-      localObject2 = new StringBuilder();
-      if (localObject1 == null)
-      {
-        paramIntent = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(289589);
-        throw paramIntent;
+      if (paramInt1 > ((String)localObject1).length()) {
+        paramInt1 = ((String)localObject1).length();
       }
-      str = ((String)localObject1).substring(0, paramInt1);
-      p.j(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      localObject2 = ((StringBuilder)localObject2).append(str).append('@').append(paramIntent.nickname).append(' ');
-      paramInt2 = ((String)localObject1).length();
-      if (localObject1 == null)
+      for (;;)
       {
-        paramIntent = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(289589);
-        throw paramIntent;
-      }
-      localObject1 = ((String)localObject1).substring(paramInt1, paramInt2);
-      p.j(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      localObject1 = (String)localObject1;
-      paramIntent = paramIntent.nickname;
-      if (paramIntent != null) {}
-      for (paramInt2 = paramIntent.length();; paramInt2 = 0)
-      {
-        paramIntent = this.AsY;
-        if (paramIntent == null) {
-          p.bGy("edit");
+        localObject3 = new StringBuilder();
+        if (localObject1 == null)
+        {
+          paramIntent = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(347836);
+          throw paramIntent;
         }
-        paramIntent.setText((CharSequence)localObject1);
-        paramIntent = this.AsY;
-        if (paramIntent == null) {
-          p.bGy("edit");
+        localObject4 = ((String)localObject1).substring(0, paramInt1);
+        kotlin.g.b.s.s(localObject4, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        localObject3 = ((StringBuilder)localObject3).append((String)localObject4).append('@').append(paramIntent.nickname).append(' ');
+        paramInt2 = ((String)localObject1).length();
+        if (localObject1 == null)
+        {
+          paramIntent = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(347836);
+          throw paramIntent;
         }
-        paramIntent.setSelection(paramInt2 + paramInt1 + 2);
+        localObject1 = ((String)localObject1).substring(paramInt1, paramInt2);
+        kotlin.g.b.s.s(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        localObject3 = (String)localObject1;
+        paramIntent = paramIntent.nickname;
+        if (paramIntent == null)
+        {
+          paramInt2 = 0;
+          localObject1 = this.FSo;
+          paramIntent = (Intent)localObject1;
+          if (localObject1 == null)
+          {
+            kotlin.g.b.s.bIx("edit");
+            paramIntent = null;
+          }
+          paramIntent.setText((CharSequence)localObject3);
+          paramIntent = this.FSo;
+          if (paramIntent != null) {
+            break label636;
+          }
+          kotlin.g.b.s.bIx("edit");
+          paramIntent = localObject2;
+        }
         label621:
-        AppMethodBeat.o(289589);
-        return;
+        label636:
+        for (;;)
+        {
+          paramIntent.setSelection(paramInt1 + paramInt2 + 2);
+          AppMethodBeat.o(347836);
+          return;
+          paramInt2 = paramIntent.length();
+          break;
+        }
       }
-      label633:
-      AppMethodBeat.o(289589);
-      return;
     }
   }
   
@@ -768,11 +1030,11 @@ public final class FinderModifyNameUI
   {
     AppMethodBeat.i(167443);
     super.onCreate(paramBundle);
-    paramBundle = d.wZQ;
-    this.Ate = d.a.aAK(z.bdh());
+    paramBundle = d.AwY;
+    this.FSu = d.a.auT(z.bAW());
     this.scene = getIntent().getIntExtra("key_scene", 0);
     initView();
-    h.aGY().a(3761, (com.tencent.mm.an.i)this);
+    com.tencent.mm.kernel.h.aZW().a(3761, (com.tencent.mm.am.h)this);
     AppMethodBeat.o(167443);
   }
   
@@ -780,90 +1042,277 @@ public final class FinderModifyNameUI
   {
     AppMethodBeat.i(167452);
     super.onDestroy();
-    h.aGY().b(3761, (com.tencent.mm.an.i)this);
+    com.tencent.mm.kernel.h.aZW().b(3761, (com.tencent.mm.am.h)this);
     AppMethodBeat.o(167452);
+  }
+  
+  public final void onInputPanelChange(boolean paramBoolean, int paramInt)
+  {
+    Object localObject3 = null;
+    Object localObject2 = null;
+    AppMethodBeat.i(167450);
+    this.sNb = paramInt;
+    if (paramBoolean)
+    {
+      localObject4 = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder("keyboardHeight ").append(paramInt).append(", inputContainer.height ");
+      localObject3 = this.FPs;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        kotlin.g.b.s.bIx("inputContainer");
+        localObject1 = null;
+      }
+      Log.i((String)localObject4, ((View)localObject1).getHeight());
+      localObject1 = this.DXs;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("edtContainer");
+        localObject1 = null;
+      }
+      for (;;)
+      {
+        ((View)localObject1).addOnLayoutChangeListener((View.OnLayoutChangeListener)this.FSx);
+        localObject3 = this.FSq;
+        localObject1 = localObject3;
+        if (localObject3 == null)
+        {
+          kotlin.g.b.s.bIx("modifyBtn");
+          localObject1 = null;
+        }
+        localObject1 = ((Button)localObject1).getLayoutParams();
+        if (localObject1 != null) {
+          break;
+        }
+        localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+        AppMethodBeat.o(167450);
+        throw ((Throwable)localObject1);
+      }
+      localObject4 = (LinearLayout.LayoutParams)localObject1;
+      ((LinearLayout.LayoutParams)localObject4).bottomMargin = 0;
+      localObject3 = this.FSq;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        kotlin.g.b.s.bIx("modifyBtn");
+        localObject1 = null;
+      }
+      ((Button)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+      localObject3 = this.FPs;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        kotlin.g.b.s.bIx("inputContainer");
+        localObject1 = null;
+      }
+      localObject1 = ((View)localObject1).getLayoutParams();
+      if (localObject1 == null)
+      {
+        localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+        AppMethodBeat.o(167450);
+        throw ((Throwable)localObject1);
+      }
+      localObject4 = (FrameLayout.LayoutParams)localObject1;
+      localObject3 = this.FPs;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        kotlin.g.b.s.bIx("inputContainer");
+        localObject1 = null;
+      }
+      ((FrameLayout.LayoutParams)localObject4).height = (((View)localObject1).getHeight() - paramInt);
+      localObject3 = this.FPs;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        kotlin.g.b.s.bIx("inputContainer");
+        localObject1 = null;
+      }
+      ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+      localObject1 = this.FPs;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("inputContainer");
+        localObject1 = localObject2;
+      }
+      for (;;)
+      {
+        ((View)localObject1).requestLayout();
+        AppMethodBeat.o(167450);
+        return;
+      }
+    }
+    Object localObject1 = this.DXs;
+    if (localObject1 == null)
+    {
+      kotlin.g.b.s.bIx("edtContainer");
+      localObject1 = null;
+    }
+    for (;;)
+    {
+      ((View)localObject1).removeOnLayoutChangeListener((View.OnLayoutChangeListener)this.FSx);
+      localObject2 = this.FSq;
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("modifyBtn");
+        localObject1 = null;
+      }
+      localObject1 = ((Button)localObject1).getLayoutParams();
+      if (localObject1 != null) {
+        break;
+      }
+      localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+      AppMethodBeat.o(167450);
+      throw ((Throwable)localObject1);
+    }
+    Object localObject4 = (LinearLayout.LayoutParams)localObject1;
+    ((LinearLayout.LayoutParams)localObject4).bottomMargin = getResources().getDimensionPixelSize(e.c.Edge_12A);
+    localObject2 = this.FSq;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("modifyBtn");
+      localObject1 = null;
+    }
+    ((Button)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+    localObject2 = this.FPs;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("inputContainer");
+      localObject1 = null;
+    }
+    localObject1 = ((View)localObject1).getLayoutParams();
+    if (localObject1 == null)
+    {
+      localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+      AppMethodBeat.o(167450);
+      throw ((Throwable)localObject1);
+    }
+    localObject4 = (FrameLayout.LayoutParams)localObject1;
+    ((FrameLayout.LayoutParams)localObject4).height = -1;
+    localObject2 = this.FPs;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("inputContainer");
+      localObject1 = null;
+    }
+    ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+    localObject2 = this.FPs;
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("inputContainer");
+      localObject1 = null;
+    }
+    ((View)localObject1).requestLayout();
+    localObject1 = this.FPs;
+    if (localObject1 == null)
+    {
+      kotlin.g.b.s.bIx("inputContainer");
+      localObject1 = localObject3;
+    }
+    for (;;)
+    {
+      ((View)localObject1).scrollTo(0, 0);
+      AppMethodBeat.o(167450);
+      return;
+    }
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(167451);
     super.onResume();
-    ch localch = new ch(2);
-    h.aGY().b((com.tencent.mm.an.q)localch);
+    di localdi = new di(2);
+    com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)localdi, 0);
     AppMethodBeat.o(167451);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     int i = 1;
+    Object localObject = null;
     AppMethodBeat.i(167453);
     Log.i(this.TAG, "onSceneEnd errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
-    if (paramq != null) {}
-    for (paramString = Integer.valueOf(paramq.getType()); paramString == null; paramString = null)
+    if (paramp == null) {}
+    for (paramString = null; paramString == null; paramString = Integer.valueOf(paramp.getType()))
     {
       AppMethodBeat.o(167453);
       return;
     }
-    ble localble;
+    bys localbys;
     if ((paramString.intValue() == 3761) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (paramq == null)
+      if (paramp == null)
       {
-        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderPrepareUser");
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderPrepareUser");
         AppMethodBeat.o(167453);
         throw paramString;
       }
-      localble = ((ch)paramq).dnR();
-      if (localble != null)
+      localbys = ((di)paramp).dVy();
+      if (localbys != null)
       {
-        paramString = localble.SVZ;
+        paramString = localbys.aahr;
         if (paramString != null)
         {
           if (this.scene != 1) {
-            break label290;
+            break label298;
           }
           paramInt1 = i;
           if (paramInt1 == 0) {
-            break label295;
+            break label303;
+          }
+          label168:
+          if (paramString != null)
+          {
+            paramString = this.FSr;
+            if (paramString != null) {
+              break label308;
+            }
+            kotlin.g.b.s.bIx("modifyCountTip");
+            paramString = null;
+            label189:
+            paramString.setText((CharSequence)((di)paramp).dVy().aahr);
+            paramString = this.FSr;
+            if (paramString != null) {
+              break label311;
+            }
+            kotlin.g.b.s.bIx("modifyCountTip");
+            paramString = localObject;
           }
         }
       }
     }
+    label298:
+    label303:
+    label308:
+    label311:
     for (;;)
     {
-      if (paramString != null)
-      {
-        paramString = this.Atb;
-        if (paramString == null) {
-          p.bGy("modifyCountTip");
-        }
-        paramString.setText((CharSequence)((ch)paramq).dnR().SVZ);
-        paramString = this.Atb;
-        if (paramString == null) {
-          p.bGy("modifyCountTip");
-        }
-        paramString.setVisibility(0);
+      paramString.setVisibility(0);
+      if (localbys.FPD > 0) {
+        this.FPD = localbys.FPD;
       }
-      if (localble.Apz > 0) {
-        this.Apz = localble.Apz;
+      if (localbys.FSv > 0) {
+        this.FSv = localbys.FSv;
       }
-      if (localble.Atf > 0) {
-        this.Atf = localble.Atf;
-      }
-      paramq = localble.SWp;
-      paramString = paramq;
-      if (paramq == null) {
+      paramp = localbys.aahH;
+      paramString = paramp;
+      if (paramp == null) {
         paramString = "";
       }
-      this.Atc = paramString;
+      this.FSs = paramString;
       refreshView();
       AppMethodBeat.o(167453);
       return;
-      label290:
       paramInt1 = 0;
       break;
-      label295:
       paramString = null;
+      break label168;
+      break label189;
     }
   }
   
@@ -873,171 +1322,114 @@ public final class FinderModifyNameUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "plugin-finder_release"})
+  public final void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    AppMethodBeat.i(347799);
+    kotlin.g.b.s.u(paramHashSet, "set");
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(com.tencent.mm.plugin.finder.accessibility.m.class);
+    AppMethodBeat.o(347799);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$edtLayoutListener$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements View.OnLayoutChangeListener
   {
+    a(FinderModifyNameUI paramFinderModifyNameUI) {}
+    
     public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
     {
+      View localView2 = null;
+      View localView1 = null;
       AppMethodBeat.i(167437);
       if (paramInt8 != paramInt4)
       {
-        paramInt1 = this.Ati.getResources().getDimensionPixelSize(b.d.Edge_A);
+        paramInt1 = this.FSy.getResources().getDimensionPixelSize(e.c.Edge_A);
         if (paramInt8 < paramInt4)
         {
-          if (FinderModifyNameUI.j(this.Ati).getHeight() < paramInt1)
+          localView2 = FinderModifyNameUI.f(this.FSy);
+          paramView = localView2;
+          if (localView2 == null)
           {
-            FinderModifyNameUI.j(this.Ati).scrollBy(0, paramInt4 - paramInt8);
-            AppMethodBeat.o(167437);
+            kotlin.g.b.s.bIx("inputContainer");
+            paramView = null;
+          }
+          if (paramView.getHeight() < paramInt1)
+          {
+            paramView = FinderModifyNameUI.f(this.FSy);
+            if (paramView == null)
+            {
+              kotlin.g.b.s.bIx("inputContainer");
+              paramView = localView1;
+            }
+            for (;;)
+            {
+              paramView.scrollBy(0, paramInt4 - paramInt8);
+              AppMethodBeat.o(167437);
+              return;
+            }
           }
         }
-        else if (FinderModifyNameUI.j(this.Ati).getScrollY() > 0) {
-          FinderModifyNameUI.j(this.Ati).scrollBy(0, paramInt4 - paramInt8);
+        else
+        {
+          localView1 = FinderModifyNameUI.f(this.FSy);
+          paramView = localView1;
+          if (localView1 == null)
+          {
+            kotlin.g.b.s.bIx("inputContainer");
+            paramView = null;
+          }
+          if (paramView.getScrollY() > 0)
+          {
+            paramView = FinderModifyNameUI.f(this.FSy);
+            if (paramView != null) {
+              break label177;
+            }
+            kotlin.g.b.s.bIx("inputContainer");
+            paramView = localView2;
+          }
         }
       }
-      AppMethodBeat.o(167437);
+      label177:
+      for (;;)
+      {
+        paramView.scrollBy(0, paramInt4 - paramInt8);
+        AppMethodBeat.o(167437);
+        return;
+      }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$textWatcher$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements TextWatcher
   {
     b(FinderModifyNameUI paramFinderModifyNameUI) {}
     
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(167438);
-      Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
-      paramView = com.tencent.mm.plugin.findersdk.c.a.Bwg;
-      if (com.tencent.mm.plugin.findersdk.c.a.aGS("personalInfo"))
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(167438);
-        return;
-      }
-      Log.i(FinderModifyNameUI.a(this.Ati), "doClick create contact btn");
-      localObject1 = new aa.f();
-      paramView = FinderModifyNameUI.b(this.Ati).getText().toString();
-      if (paramView == null)
-      {
-        paramView = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(167438);
-        throw paramView;
-      }
-      ((aa.f)localObject1).aaBC = n.bb((CharSequence)paramView).toString();
-      Object localObject2 = (String)((aa.f)localObject1).aaBC;
-      paramView = FinderModifyNameUI.c(this.Ati);
-      if (paramView != null)
-      {
-        paramView = paramView.getNickname();
-        if (!(p.h(localObject2, paramView) ^ true)) {
-          break label328;
-        }
-        if (FinderModifyNameUI.d(this.Ati) != 1) {
-          break label300;
-        }
-        paramView = n.l(FinderModifyNameUI.e(this.Ati), FinderModifyNameUI.f(this.Ati), (String)((aa.f)localObject1).aaBC, true);
-        localObject2 = new f.a(MMApplicationContext.getContext());
-        ((f.a)localObject2).bBl(paramView).HL(true);
-        ((f.a)localObject2).bBp(this.Ati.getString(b.j.finder_confirm_change_name));
-        ((f.a)localObject2).bBq(this.Ati.getString(b.j.finder_confirm_change_name_cancel));
-        ((f.a)localObject2).b((f.c)new f.c()
-        {
-          public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
-          {
-            AppMethodBeat.i(281015);
-            p.k(paramAnonymousString, "s");
-            FinderModifyNameUI.a(this.Atj.Ati, (String)this.Atk.aaBC);
-            AppMethodBeat.o(281015);
-          }
-        });
-        ((f.a)localObject2).show();
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(167438);
-        return;
-        paramView = null;
-        break;
-        label300:
-        if (FinderModifyNameUI.d(this.Ati) == 2)
-        {
-          FinderModifyNameUI.a(this.Ati, (String)((aa.f)localObject1).aaBC);
-          continue;
-          label328:
-          this.Ati.finish();
-        }
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class c
-    implements View.OnTouchListener
-  {
-    c(FinderModifyNameUI paramFinderModifyNameUI) {}
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(167439);
-      if (p.h(paramView, FinderModifyNameUI.b(this.Ati)))
-      {
-        p.j(paramMotionEvent, "event");
-        switch (paramMotionEvent.getActionMasked())
-        {
-        }
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(167439);
-        return false;
-        FinderModifyNameUI.i(this.Ati).requestDisallowInterceptTouchEvent(true);
-        continue;
-        FinderModifyNameUI.i(this.Ati).requestDisallowInterceptTouchEvent(false);
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class d
-    implements MenuItem.OnMenuItemClickListener
-  {
-    d(FinderModifyNameUI paramFinderModifyNameUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(167440);
-      this.Ati.finish();
-      AppMethodBeat.o(167440);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderModifyNameUI$initView$textWatcher$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-finder_release"})
-  public static final class e
-    implements TextWatcher
-  {
     public final void afterTextChanged(Editable paramEditable)
     {
       int i = 0;
       AppMethodBeat.i(167441);
-      c.i(FinderModifyNameUI.b(this.Ati)).mM(1, FinderModifyNameUI.g(this.Ati)).b(g.a.XSu).Hh(true).a((com.tencent.mm.ui.tools.b.c.a)this.Ati);
-      if ((FinderModifyNameUI.d(this.Ati) == 2) && (paramEditable != null))
+      EditText localEditText = FinderModifyNameUI.a(this.FSy);
+      Object localObject = localEditText;
+      if (localEditText == null)
       {
-        Object localObject = (ForegroundColorSpan[])paramEditable.getSpans(0, paramEditable.length(), ForegroundColorSpan.class);
-        p.j(localObject, "spans");
+        kotlin.g.b.s.bIx("edit");
+        localObject = null;
+      }
+      c.i((EditText)localObject).oF(1, FinderModifyNameUI.b(this.FSy)).b(com.tencent.mm.ui.tools.g.a.afII).Nc(true).a((com.tencent.mm.ui.tools.b.c.a)this.FSy);
+      if ((FinderModifyNameUI.c(this.FSy) == 2) && (paramEditable != null))
+      {
+        localObject = (ForegroundColorSpan[])paramEditable.getSpans(0, paramEditable.length(), ForegroundColorSpan.class);
+        kotlin.g.b.s.s(localObject, "spans");
         int j = localObject.length;
         while (i < j)
         {
           paramEditable.removeSpan(localObject[i]);
           i += 1;
         }
-        localObject = e.ACV;
-        e.a(paramEditable.toString(), (kotlin.g.a.q)new FinderModifyNameUI.e.a(paramEditable));
+        localObject = com.tencent.mm.plugin.finder.utils.h.Gga;
+        com.tencent.mm.plugin.finder.utils.h.a(paramEditable.toString(), (kotlin.g.a.q)new FinderModifyNameUI.b.a(paramEditable));
       }
       AppMethodBeat.o(167441);
     }
@@ -1046,43 +1438,40 @@ public final class FinderModifyNameUI
     
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(275984);
-      if ((FinderModifyNameUI.d(this.Ati) == 2) && (paramInt3 == 1))
-      {
-        if (paramCharSequence != null) {}
-        for (paramCharSequence = n.w(paramCharSequence, paramInt1); paramCharSequence == null; paramCharSequence = null)
+      AppMethodBeat.i(347430);
+      if ((FinderModifyNameUI.c(this.FSy) == 2) && (paramInt3 == 1)) {
+        if (paramCharSequence != null)
         {
-          AppMethodBeat.o(275984);
-          return;
+          paramCharSequence = n.q(paramCharSequence, paramInt1);
+          if (paramCharSequence != null) {
+            break label107;
+          }
         }
-        if (paramCharSequence.charValue() == '@')
+      }
+      for (paramInt1 = 0;; paramInt1 = 1)
+      {
+        if (paramInt1 != 0)
         {
-          Log.i(FinderModifyNameUI.a(this.Ati), "at auto goto");
+          Log.i(FinderModifyNameUI.d(this.FSy), "at auto goto");
           paramCharSequence = new Intent();
           paramCharSequence.putExtra("key_scene", 2);
           paramCharSequence.putExtra("KEY_ENTER_SCENE", 1);
-          com.tencent.mm.plugin.finder.utils.a locala = com.tencent.mm.plugin.finder.utils.a.ACH;
-          com.tencent.mm.plugin.finder.utils.a.c((MMActivity)this.Ati, paramCharSequence, FinderModifyNameUI.h(this.Ati));
+          com.tencent.mm.plugin.finder.utils.a locala = com.tencent.mm.plugin.finder.utils.a.GfO;
+          com.tencent.mm.plugin.finder.utils.a.b((MMActivity)this.FSy, paramCharSequence, FinderModifyNameUI.e(this.FSy));
+        }
+        AppMethodBeat.o(347430);
+        return;
+        label107:
+        if (paramCharSequence.charValue() != '@') {
+          break;
         }
       }
-      AppMethodBeat.o(275984);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
-  static final class g
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<String, x>
-  {
-    g(FinderModifyNameUI paramFinderModifyNameUI, String paramString1, String paramString2)
-    {
-      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderModifyNameUI
  * JD-Core Version:    0.7.0.1
  */

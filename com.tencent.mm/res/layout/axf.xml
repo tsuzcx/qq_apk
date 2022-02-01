@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:orientation="horizontal" android:background="@color/afz" android:paddingLeft="@dimen/aot" android:paddingTop="@dimen/ib" android:paddingRight="@dimen/aot" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0dip" android:textColor="@color/a2t" android:ellipsize="end" android:id="@id/e61" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxEms="8" android:singleLine="true" android:includeFontPadding="false" />
-    <TextView android:textSize="13.0dip" android:textColor="@color/a2x" android:gravity="left" android:id="@id/j2g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:singleLine="false" android:includeFontPadding="false" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/al2" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="@dimen/k">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/em5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/fay" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center_vertical" android:id="@id/em4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </LinearLayout>
 </LinearLayout>

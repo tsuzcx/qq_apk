@@ -5,10 +5,10 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 
 public final class JsApiFinderEndorsementFinished
-  extends c<v>
+  extends c<y>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "endorsementFinished";
@@ -29,7 +29,7 @@ public final class JsApiFinderEndorsementFinished
     private FinderUserPageTask(Parcel paramParcel)
     {
       AppMethodBeat.i(163940);
-      f(paramParcel);
+      h(paramParcel);
       AppMethodBeat.o(163940);
     }
     
@@ -38,13 +38,13 @@ public final class JsApiFinderEndorsementFinished
       this.username = paramString;
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(163943);
       AppMethodBeat.o(163943);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(163941);
       this.username = paramParcel.readString();

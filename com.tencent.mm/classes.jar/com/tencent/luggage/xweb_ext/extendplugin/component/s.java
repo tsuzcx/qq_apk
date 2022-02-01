@@ -2,15 +2,15 @@ package com.tencent.luggage.xweb_ext.extendplugin.component;
 
 public abstract interface s
 {
-  public abstract void Tk();
+  public abstract void atP();
   
-  public abstract void Tl();
+  public abstract void atQ();
   
-  public abstract void Tm();
+  public abstract void atR();
   
-  public abstract void cm(boolean paramBoolean);
+  public abstract void atS();
   
-  public abstract void onError();
+  public abstract void cS(boolean paramBoolean);
   
   public abstract void onPause();
   
@@ -18,7 +18,7 @@ public abstract interface s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.s
  * JD-Core Version:    0.7.0.1
  */

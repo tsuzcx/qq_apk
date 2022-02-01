@@ -1,31 +1,24 @@
 package kotlin.l.b.a.b.d.a.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.m.ab;
+import java.util.List;
 
-class k
+public final class k
 {
-  private final ab aaEm;
-  final int aaXj;
-  final boolean aaXk;
+  final r aiVq;
+  final List<r> aiVr;
   
-  public k(ab paramab, int paramInt, boolean paramBoolean)
+  public k(r paramr, List<r> paramList)
   {
-    AppMethodBeat.i(58077);
-    this.aaEm = paramab;
-    this.aaXj = paramInt;
-    this.aaXk = paramBoolean;
-    AppMethodBeat.o(58077);
-  }
-  
-  public ab iFN()
-  {
-    return this.aaEm;
+    AppMethodBeat.i(58075);
+    this.aiVq = paramr;
+    this.aiVr = paramList;
+    AppMethodBeat.o(58075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.f.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,19 @@
 package com.tencent.mm.chatroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.nu;
-import com.tencent.mm.f.a.nv;
-import com.tencent.mm.f.a.nw;
-import com.tencent.mm.f.a.nx;
-import com.tencent.mm.f.a.ob;
-import com.tencent.mm.f.a.yp;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.pc;
+import com.tencent.mm.autogen.a.pd;
+import com.tencent.mm.autogen.a.pe;
+import com.tencent.mm.autogen.a.pf;
+import com.tencent.mm.autogen.a.pj;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.be;
-import com.tencent.mm.model.ck;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.messenger.a.e;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.pluginsdk.d.c;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.pluginsdk.event.OnSceneEndProxy;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -22,76 +21,46 @@ import java.util.HashMap;
 public class b
   implements be
 {
-  private static com.tencent.mm.chatroom.c.a iVu;
-  private c<nu> iVo;
-  private c<nx> iVp;
-  private c<nw> iVq;
-  private c<ob> iVr;
-  private c<nv> iVs;
-  private IListener iVt;
+  private static com.tencent.mm.chatroom.c.a lxz;
+  private OnSceneEndProxy<pc> lxt;
+  private OnSceneEndProxy<pf> lxu;
+  private OnSceneEndProxy<pe> lxv;
+  private OnSceneEndProxy<pj> lxw;
+  private OnSceneEndProxy<pd> lxx;
+  private IListener lxy;
   
   public b()
   {
     AppMethodBeat.i(12431);
-    this.iVo = new c()
-    {
-      public final int arZ()
-      {
-        return 181;
-      }
-    };
-    this.iVp = new c()
-    {
-      public final int arZ()
-      {
-        return 551;
-      }
-    };
-    this.iVq = new c()
-    {
-      public final int arZ()
-      {
-        return 179;
-      }
-    };
-    this.iVr = new c()
-    {
-      public final int arZ()
-      {
-        return 700;
-      }
-    };
-    this.iVs = new c()
-    {
-      public final int arZ()
-      {
-        return 119;
-      }
-    };
-    this.iVt = new IListener() {};
+    this.lxt = new SubCoreChatroom.1(this);
+    this.lxu = new SubCoreChatroom.2(this);
+    this.lxv = new SubCoreChatroom.3(this);
+    this.lxw = new SubCoreChatroom.4(this);
+    this.lxx = new SubCoreChatroom.5(this);
+    this.lxy = new SubCoreChatroom.6(this, f.hfK);
     AppMethodBeat.o(12431);
   }
   
-  private static b arX()
+  private static b aLT()
   {
     AppMethodBeat.i(12432);
-    b localb = (b)y.as(b.class);
+    b localb = (b)y.aL(b.class);
     AppMethodBeat.o(12432);
     return localb;
   }
   
-  private static com.tencent.mm.chatroom.c.a arY()
+  private static com.tencent.mm.chatroom.c.a aLU()
   {
     AppMethodBeat.i(12433);
-    h.aHE().aGH();
-    arX();
-    if (iVu == null)
+    h.baC().aZJ();
+    aLT();
+    if (lxz == null)
     {
-      arX();
-      iVu = new com.tencent.mm.chatroom.c.a();
+      aLT();
+      lxz = new com.tencent.mm.chatroom.c.a();
     }
-    arX();
-    com.tencent.mm.chatroom.c.a locala = iVu;
+    aLT();
+    com.tencent.mm.chatroom.c.a locala = lxz;
     AppMethodBeat.o(12433);
     return locala;
   }
@@ -106,33 +75,33 @@ public class b
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(12434);
-    com.tencent.mm.roomsdk.a.b.a("@chatroom", new a());
-    EventCenter.instance.addListener(this.iVt);
-    EventCenter.instance.addListener(this.iVo);
-    EventCenter.instance.addListener(this.iVs);
-    EventCenter.instance.addListener(this.iVp);
-    EventCenter.instance.addListener(this.iVq);
-    EventCenter.instance.addListener(this.iVr);
-    com.tencent.mm.chatroom.c.a locala = arY();
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApplication", locala.iVX, true);
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApproval", locala.iVX, true);
-    ((e)h.ae(e.class)).a("link_admin_explain", locala);
+    com.tencent.mm.roomsdk.model.b.a("@chatroom", new a());
+    this.lxy.alive();
+    this.lxt.alive();
+    this.lxx.alive();
+    this.lxu.alive();
+    this.lxv.alive();
+    this.lxw.alive();
+    com.tencent.mm.chatroom.c.a locala = aLU();
+    ((v)h.az(v.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApplication", locala.lxU, true);
+    ((v)h.az(v.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApproval", locala.lxU, true);
+    ((e)h.ax(e.class)).a("link_admin_explain", locala);
     AppMethodBeat.o(12434);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(12435);
-    EventCenter.instance.removeListener(this.iVt);
-    EventCenter.instance.removeListener(this.iVo);
-    EventCenter.instance.removeListener(this.iVs);
-    EventCenter.instance.removeListener(this.iVp);
-    EventCenter.instance.removeListener(this.iVq);
-    EventCenter.instance.removeListener(this.iVr);
-    com.tencent.mm.chatroom.c.a locala = arY();
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApplication", locala.iVX, true);
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApproval", locala.iVX, true);
-    ((e)h.ae(e.class)).aOe("link_admin_explain");
+    this.lxy.dead();
+    this.lxt.dead();
+    this.lxx.dead();
+    this.lxu.dead();
+    this.lxv.dead();
+    this.lxw.dead();
+    com.tencent.mm.chatroom.c.a locala = aLU();
+    ((v)h.az(v.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApplication", locala.lxU, true);
+    ((v)h.az(v.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApproval", locala.lxU, true);
+    ((e)h.ax(e.class)).aLc("link_admin_explain");
     AppMethodBeat.o(12435);
   }
   
@@ -140,7 +109,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.b
  * JD-Core Version:    0.7.0.1
  */

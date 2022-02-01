@@ -11,7 +11,6 @@ import android.content.pm.ServiceInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import com.google.android.gms.common.stats.ConnectionTracker;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.common.wrappers.PackageManagerWrapper;
 import com.google.android.gms.common.wrappers.Wrappers;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -20,9 +19,7 @@ import java.util.List;
 public final class zzfx
 {
   private final zzgl zzacw;
-  @VisibleForTesting
   volatile zzr zzakw;
-  @VisibleForTesting
   private ServiceConnection zzakx;
   
   zzfx(zzgl paramzzgl)
@@ -30,7 +27,6 @@ public final class zzfx
     this.zzacw = paramzzgl;
   }
   
-  @VisibleForTesting
   private final boolean zzji()
   {
     AppMethodBeat.i(1498);
@@ -59,7 +55,6 @@ public final class zzfx
     return false;
   }
   
-  @VisibleForTesting
   final void zzc(Bundle paramBundle)
   {
     AppMethodBeat.i(1500);
@@ -193,7 +188,6 @@ public final class zzfx
     AppMethodBeat.o(1497);
   }
   
-  @VisibleForTesting
   final Bundle zzjj()
   {
     AppMethodBeat.i(1499);
@@ -228,7 +222,7 @@ public final class zzfx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfx
  * JD-Core Version:    0.7.0.1
  */

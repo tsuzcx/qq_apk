@@ -18,22 +18,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private Map<String, GameRegionPreference.a> CZS;
-  public boolean DdC;
-  public b DdD;
-  private Map<String, Boolean> DdE;
+  private Map<String, GameRegionPreference.a> IUi;
+  public boolean IXT;
+  public b IXU;
+  private Map<String, Boolean> IXV;
   
   private a()
   {
     AppMethodBeat.i(42483);
-    this.DdC = false;
-    this.DdD = new b();
-    this.DdE = new ConcurrentHashMap();
+    this.IXT = false;
+    this.IXU = new b();
+    this.IXV = new ConcurrentHashMap();
     AppMethodBeat.o(42483);
   }
   
   /* Error */
-  public final boolean aKr(String paramString)
+  public final boolean aHh(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -52,12 +52,12 @@ public final class a
     //   23: iload_2
     //   24: ireturn
     //   25: aload_0
-    //   26: getfield 40	com/tencent/mm/plugin/game/d/a:DdE	Ljava/util/Map;
+    //   26: getfield 40	com/tencent/mm/plugin/game/d/a:IXV	Ljava/util/Map;
     //   29: aload_1
     //   30: invokeinterface 60 2 0
     //   35: ifeq +22 -> 57
     //   38: aload_0
-    //   39: getfield 40	com/tencent/mm/plugin/game/d/a:DdE	Ljava/util/Map;
+    //   39: getfield 40	com/tencent/mm/plugin/game/d/a:IXV	Ljava/util/Map;
     //   42: aload_1
     //   43: invokeinterface 64 2 0
     //   48: checkcast 66	java/lang/Boolean
@@ -73,7 +73,7 @@ public final class a
     //   68: aastore
     //   69: invokestatic 79	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   72: aload_0
-    //   73: getfield 40	com/tencent/mm/plugin/game/d/a:DdE	Ljava/util/Map;
+    //   73: getfield 40	com/tencent/mm/plugin/game/d/a:IXV	Ljava/util/Map;
     //   76: aload_1
     //   77: getstatic 83	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
     //   80: invokeinterface 87 3 0
@@ -106,15 +106,15 @@ public final class a
     //   96	101	106	finally
   }
   
-  public final void aKs(String paramString)
+  public final void aHi(String paramString)
   {
     try
     {
       AppMethodBeat.i(42489);
-      if ((!Util.isNullOrNil(paramString)) && (this.DdE.containsKey(paramString)))
+      if ((!Util.isNullOrNil(paramString)) && (this.IXV.containsKey(paramString)))
       {
         Log.i("MicroMsg.GameCacheUtil", "download entrance image finish : %s", new Object[] { paramString });
-        this.DdE.remove(paramString);
+        this.IXV.remove(paramString);
       }
       AppMethodBeat.o(42489);
       return;
@@ -127,24 +127,24 @@ public final class a
     try
     {
       AppMethodBeat.i(42484);
-      if (this.CZS != null) {
-        this.CZS.clear();
+      if (this.IUi != null) {
+        this.IUi.clear();
       }
-      this.DdC = false;
+      this.IXT = false;
       AppMethodBeat.o(42484);
       return;
     }
     finally {}
   }
   
-  public final void ezT()
+  public final void fHU()
   {
     try
     {
       AppMethodBeat.i(42485);
-      if (this.CZS != null)
+      if (this.IUi != null)
       {
-        Iterator localIterator = this.CZS.values().iterator();
+        Iterator localIterator = this.IUi.values().iterator();
         while (localIterator.hasNext()) {
           ((GameRegionPreference.a)localIterator.next()).isSelected = false;
         }
@@ -154,7 +154,7 @@ public final class a
     finally {}
   }
   
-  public final void ezU()
+  public final void fHV()
   {
     Object localObject6;
     for (;;)
@@ -165,10 +165,10 @@ public final class a
       try
       {
         AppMethodBeat.i(42486);
-        if (this.CZS == null) {
-          this.CZS = new LinkedHashMap();
+        if (this.IUi == null) {
+          this.IUi = new LinkedHashMap();
         }
-        if (this.CZS.size() > 0) {
+        if (this.IUi.size() > 0) {
           break label423;
         }
         localObject6 = null;
@@ -228,13 +228,13 @@ public final class a
           }
         }
         locala = new GameRegionPreference.a();
-        locala.CZP = localIOException3[0];
-        locala.CZQ = localIOException3[1];
-        locala.CZR = localIOException3[2];
-        locala.hDn = localIOException3[3];
+        locala.IUf = localIOException3[0];
+        locala.IUg = localIOException3[1];
+        locala.IUh = localIOException3[2];
+        locala.kaj = localIOException3[3];
         locala.isSelected = false;
-        locala.lJx = false;
-        this.CZS.put(locala.hDn, locala);
+        locala.oBZ = false;
+        this.IUi.put(locala.kaj, locala);
         break label437;
       }
       try
@@ -266,14 +266,14 @@ public final class a
       String str2;
       label273:
       GameRegionPreference.a locala;
-      Object localObject5 = e.exZ();
-      localObject5 = (GameRegionPreference.a)this.CZS.get(localObject5);
+      Object localObject5 = e.fFV();
+      localObject5 = (GameRegionPreference.a)this.IUi.get(localObject5);
       if (localObject5 != null)
       {
-        ((GameRegionPreference.a)localObject5).CZP = e.eya();
-        ((GameRegionPreference.a)localObject5).CZQ = e.eyb();
-        ((GameRegionPreference.a)localObject5).CZR = e.eyc();
-        ((GameRegionPreference.a)localObject5).lJx = true;
+        ((GameRegionPreference.a)localObject5).IUf = e.fFW();
+        ((GameRegionPreference.a)localObject5).IUg = e.fFX();
+        ((GameRegionPreference.a)localObject5).IUh = e.fFY();
+        ((GameRegionPreference.a)localObject5).oBZ = true;
       }
       label423:
       AppMethodBeat.o(42486);
@@ -286,13 +286,13 @@ public final class a
     }
   }
   
-  public final Map<String, GameRegionPreference.a> ezV()
+  public final Map<String, GameRegionPreference.a> fHW()
   {
     try
     {
       AppMethodBeat.i(42487);
-      ezU();
-      Map localMap = this.CZS;
+      fHV();
+      Map localMap = this.IUi;
       AppMethodBeat.o(42487);
       return localMap;
     }
@@ -305,35 +305,35 @@ public final class a
   
   public static final class a
   {
-    private static a DdF;
+    private static a IXW;
     
     static
     {
       AppMethodBeat.i(42482);
-      DdF = new a((byte)0);
+      IXW = new a((byte)0);
       AppMethodBeat.o(42482);
     }
   }
   
   public static final class b
   {
-    public long DdG;
+    public long IXX;
     public long endTimeMs;
     public long startTimeMs;
-    public long wmw;
+    public long zIy;
     
-    public final void ezX()
+    public final void fHY()
     {
       this.startTimeMs = 0L;
       this.endTimeMs = 0L;
-      this.wmw = 0L;
-      this.DdG = 0L;
+      this.zIy = 0L;
+      this.IXX = 0L;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.a
  * JD-Core Version:    0.7.0.1
  */

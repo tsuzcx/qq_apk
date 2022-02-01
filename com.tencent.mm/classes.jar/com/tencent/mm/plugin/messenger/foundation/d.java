@@ -2,41 +2,44 @@ package com.tencent.mm.plugin.messenger.foundation;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
-import com.tencent.mm.an.h.d;
-import com.tencent.mm.as.a;
-import com.tencent.mm.az.b;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.bq;
+import com.tencent.mm.am.g;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.am.g.d;
+import com.tencent.mm.aq.a;
+import com.tencent.mm.au.b;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.br;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.model.bs;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.plugin.messenger.foundation.a.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.ae;
 import com.tencent.mm.plugin.messenger.foundation.a.af;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.protocal.protobuf.abu;
-import com.tencent.mm.protocal.protobuf.aft;
-import com.tencent.mm.protocal.protobuf.aga;
-import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.protocal.protobuf.aig;
+import com.tencent.mm.protocal.protobuf.ain;
+import com.tencent.mm.protocal.protobuf.dl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.util.b.a;
 import java.util.List;
 
 public final class d
-  implements com.tencent.mm.plugin.messenger.foundation.a.ab
+  implements ab
 {
-  private static boolean aOi(String paramString)
+  private static boolean aLh(String paramString)
   {
     AppMethodBeat.i(116878);
-    if ((com.tencent.mm.model.ab.Qq(paramString)) && (!b.isOverseasUser()))
+    if ((au.bvT(paramString)) && (!b.isOverseasUser()))
     {
       AppMethodBeat.o(116878);
       return true;
@@ -45,58 +48,58 @@ public final class d
     return false;
   }
   
-  public static h.b processAddMsg(h.a parama, ae paramae)
+  public static g.b processAddMsg(g.a parama, ae paramae)
   {
     AppMethodBeat.i(116877);
-    db localdb = parama.jQG;
-    if ((10008 == ac.mFM) && (ac.mFN != 0))
+    dl localdl = parama.mpN;
+    if ((10008 == com.tencent.mm.platformtools.z.pCm) && (com.tencent.mm.platformtools.z.pCn != 0))
     {
-      Log.i("MicroMsg.MessageSyncExtension", "dkmsgid  set svrmsgid %d -> %d", new Object[] { Long.valueOf(localdb.HlH), Integer.valueOf(ac.mFN) });
-      localdb.HlH = ac.mFN;
-      ac.mFN = 0;
+      Log.i("MicroMsg.MessageSyncExtension", "dkmsgid  set svrmsgid %d -> %d", new Object[] { Long.valueOf(localdl.Njv), Integer.valueOf(com.tencent.mm.platformtools.z.pCn) });
+      localdl.Njv = com.tencent.mm.platformtools.z.pCn;
+      com.tencent.mm.platformtools.z.pCn = 0;
     }
-    if (((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().Os(localdb.HlH))
+    if (((n)h.ax(n.class)).gaZ().sn(localdl.Njv))
     {
       Log.i("MicroMsg.MessageSyncExtension", "ignore, because reSync the deleted msg perhaps the IDC has change has swtiched");
       AppMethodBeat.o(116877);
       return null;
     }
-    String str = com.tencent.mm.platformtools.z.a(localdb.RID);
-    Object localObject = com.tencent.mm.platformtools.z.a(localdb.RIE);
-    if ((str.equals(com.tencent.mm.model.z.bcZ())) && (((String)localObject).equals("newsapp")) && (localdb.COi != 51))
+    String str = w.a(localdl.YFE);
+    Object localObject = w.a(localdl.YFF);
+    if ((str.equals(com.tencent.mm.model.z.bAM())) && (((String)localObject).equals("newsapp")) && (localdl.IIs != 51))
     {
-      Log.w("MicroMsg.MessageSyncExtension", "msgid:%d type:%d this fucking msg from mac weixin ,someone send msg to newsapp at mac weixin ,givp up.", new Object[] { Long.valueOf(localdb.HlH), Integer.valueOf(localdb.COi) });
+      Log.w("MicroMsg.MessageSyncExtension", "msgid:%d type:%d this fucking msg from mac weixin ,someone send msg to newsapp at mac weixin ,givp up.", new Object[] { Long.valueOf(localdl.Njv), Integer.valueOf(localdl.IIs) });
       AppMethodBeat.o(116877);
       return null;
     }
-    Log.i("MicroMsg.MessageSyncExtension", "dkAddMsg from:%s to:%s id:[%d,%d,%d] status:%d type:%d time:[%d %s] diff:%d imgstatus:%d imgbuf:%d src:%d push:%d content:%s", new Object[] { str, localObject, Long.valueOf(localdb.HlH), Integer.valueOf(localdb.HlE), Integer.valueOf(localdb.RIK), Integer.valueOf(localdb.rVU), Integer.valueOf(localdb.COi), Integer.valueOf(localdb.CreateTime), Util.formatUnixTime(localdb.CreateTime), Long.valueOf(Util.nowSecond() - localdb.CreateTime), Integer.valueOf(localdb.RIG), Integer.valueOf(com.tencent.mm.platformtools.z.a(localdb.RIH, new byte[0]).length), Integer.valueOf(Util.nullAsNil(localdb.RII).length()), Integer.valueOf(Util.nullAsNil(localdb.RIJ).length()), Util.secPrint(com.tencent.mm.platformtools.z.a(localdb.RIF, "")) });
-    Log.i("MicroMsg.MessageSyncExtension", "parseMsgSource  has been Deprecated  by dk. at 20151218 [%s] %s ", new Object[] { localdb.RII, "" });
-    af.k(localdb);
+    Log.i("MicroMsg.MessageSyncExtension", "dkAddMsg from:%s to:%s id:[%d,%d,%d] status:%d type:%d time:[%d %s] diff:%d imgstatus:%d imgbuf:%d src:%d push:%d content:%s", new Object[] { str, localObject, Long.valueOf(localdl.Njv), Integer.valueOf(localdl.Njs), Integer.valueOf(localdl.YFL), Integer.valueOf(localdl.vhk), Integer.valueOf(localdl.IIs), Integer.valueOf(localdl.CreateTime), Util.formatUnixTime(localdl.CreateTime), Long.valueOf(Util.nowSecond() - localdl.CreateTime), Integer.valueOf(localdl.YFH), Integer.valueOf(w.a(localdl.YFI, new byte[0]).length), Integer.valueOf(Util.nullAsNil(localdl.YFJ).length()), Integer.valueOf(Util.nullAsNil(localdl.YFK).length()), Util.secPrint(w.a(localdl.YFG, "")) });
+    Log.i("MicroMsg.MessageSyncExtension", "parseMsgSource  has been Deprecated  by dk. at 20151218 [%s] %s ", new Object[] { localdl.YFJ, "" });
+    af.k(localdl);
     if (str.equals("readerapp"))
     {
-      localdb.RID = com.tencent.mm.platformtools.z.ZW("newsapp");
-      localdb.COi = 12399999;
+      localdl.YFE = w.Sk("newsapp");
+      localdl.IIs = 12399999;
     }
-    if (((str.equals("blogapp")) || (str.equals("newsapp"))) && (localdb.COi != 10002)) {
-      localdb.COi = 12399999;
+    if (((str.equals("blogapp")) || (str.equals("newsapp"))) && (localdl.IIs != 10002)) {
+      localdl.IIs = 12399999;
     }
-    if (localdb.COi == 52) {
-      localdb.COi = 1000052;
+    if (localdl.IIs == 52) {
+      localdl.IIs = 1000052;
     }
-    if (localdb.COi == 53) {
-      localdb.COi = 1000053;
+    if (localdl.IIs == 53) {
+      localdl.IIs = 1000053;
     }
-    bq.c(parama);
+    br.c(parama);
     int i = 0;
-    h.b localb = null;
-    com.tencent.mm.an.h localh = h.d.cj(Integer.valueOf(localdb.COi));
-    localObject = localh;
-    if (localh == null) {
-      localObject = h.d.cj(str);
+    g.b localb = null;
+    g localg = g.d.dB(Integer.valueOf(localdl.IIs));
+    localObject = localg;
+    if (localg == null) {
+      localObject = g.d.dB(str);
     }
     if (localObject != null)
     {
-      localb = ((com.tencent.mm.an.h)localObject).b(parama);
+      localb = ((g)localObject).b(parama);
       if (localb != null) {
         break label692;
       }
@@ -104,32 +107,32 @@ public final class d
       if (localObject != null) {
         break label701;
       }
-      Log.w("MicroMsg.MessageSyncExtension", "summerbadcr extension declared but skipped msg, type=%d, svrId=%d, MsgSeq=%d, createTime=%d, addMsgInfo=%s", new Object[] { Integer.valueOf(localdb.COi), Long.valueOf(localdb.HlH), Integer.valueOf(localdb.RIK), Integer.valueOf(localdb.CreateTime), parama });
+      Log.w("MicroMsg.MessageSyncExtension", "summerbadcr extension declared but skipped msg, type=%d, svrId=%d, MsgSeq=%d, createTime=%d, addMsgInfo=%s", new Object[] { Integer.valueOf(localdl.IIs), Long.valueOf(localdl.Njv), Integer.valueOf(localdl.YFL), Integer.valueOf(localdl.CreateTime), parama });
     }
     for (;;)
     {
       i = 1;
-      af.b(5, localdb);
+      af.b(5, localdl);
       if (i == 0) {
-        Log.f("MicroMsg.MessageSyncExtension", "unknown add msg request, type=%d. drop now !!!", new Object[] { Integer.valueOf(localdb.COi) });
+        Log.f("MicroMsg.MessageSyncExtension", "unknown add msg request, type=%d. drop now !!!", new Object[] { Integer.valueOf(localdl.IIs) });
       }
       AppMethodBeat.o(116877);
       return localb;
       label692:
-      localObject = localb.fvt;
+      localObject = localb.hzO;
       break;
       label701:
-      if (!aOi(str))
+      if (!aLh(str))
       {
-        Log.d("MicroMsg.MessageSyncExtension", " msg , id =" + ((et)localObject).field_msgId + "  " + paramae);
-        if ((((et)localObject).field_msgId > 0L) && (paramae != null) && (localb.lCi)) {
-          paramae.a((ca)localObject, localdb);
+        Log.d("MicroMsg.MessageSyncExtension", " msg , id =" + ((fi)localObject).field_msgId + "  " + paramae);
+        if ((((fi)localObject).field_msgId > 0L) && (paramae != null) && (localb.otS)) {
+          paramae.a((cc)localObject, localdl);
         }
       }
     }
   }
   
-  public final void a(abu paramabu, byte[] paramArrayOfByte, boolean paramBoolean, ae paramae)
+  public final void a(adw paramadw, byte[] paramArrayOfByte, boolean paramBoolean, ae paramae)
   {
     AppMethodBeat.i(116876);
     long l1;
@@ -137,37 +140,41 @@ public final class d
     int n;
     int i;
     long l3;
-    label343:
+    label357:
     long l4;
     long l5;
     int k;
     int m;
     int j;
-    switch (paramabu.SnG)
+    switch (paramadw.Zmc)
     {
     case 6: 
     case 7: 
     default: 
-      AppMethodBeat.o(116876);
-      return;
     case 5: 
-      paramArrayOfByte = (db)new db().parseFrom(paramArrayOfByte);
+      do
+      {
+        AppMethodBeat.o(116876);
+        return;
+        paramadw = com.tencent.mm.util.i.agtt;
+      } while (com.tencent.mm.util.i.a(b.a.agqK, 0) != 0);
+      paramArrayOfByte = (dl)new dl().parseFrom(paramArrayOfByte);
       if (paramArrayOfByte != null)
       {
-        paramabu = new h.a(paramArrayOfByte, false, false, false);
-        processAddMsg(paramabu, paramae);
-        if (!paramabu.lCc)
+        paramadw = new g.a(paramArrayOfByte, false, false, false);
+        processAddMsg(paramadw, paramae);
+        if (!paramadw.otM)
         {
-          paramabu = br.beX();
-          paramae = com.tencent.mm.platformtools.z.a(paramArrayOfByte.RID);
-          l1 = paramArrayOfByte.HlH;
+          paramadw = bs.bCO();
+          paramae = w.a(paramArrayOfByte.YFE);
+          l1 = paramArrayOfByte.Njv;
           l2 = paramArrayOfByte.CreateTime * 1000L;
-          n = paramArrayOfByte.COi;
+          n = paramArrayOfByte.IIs;
           if (paramae != null)
           {
             try
             {
-              paramArrayOfByte = com.tencent.mm.model.z.bcZ();
+              paramArrayOfByte = com.tencent.mm.model.z.bAM();
               if (paramArrayOfByte != null)
               {
                 paramBoolean = paramArrayOfByte.equals(paramae);
@@ -177,10 +184,10 @@ public final class d
                   return;
                 }
               }
-              paramArrayOfByte = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(paramae);
+              paramArrayOfByte = ((n)h.ax(n.class)).bzA().JE(paramae);
               if (paramae.endsWith("@chatroom"))
               {
-                i = paramArrayOfByte.hDj;
+                i = paramArrayOfByte.kaf;
                 if (i == 0)
                 {
                   AppMethodBeat.o(116876);
@@ -190,77 +197,77 @@ public final class d
               }
               do
               {
-                l3 = cm.bfC();
+                l3 = cn.bDu();
                 if (l3 > 0L) {
-                  break label343;
+                  break label357;
                 }
                 Log.i("MicroMsg.MsgReporter", "current server time is 0l,then return");
                 AppMethodBeat.o(116876);
                 return;
-                if ((com.tencent.mm.model.ab.QS(paramae)) || (as.bvH(paramae)) || (as.bvJ(paramae)) || (com.tencent.mm.model.ab.QO(paramae)) || (as.PY(paramae))) {
+                if ((au.bww(paramae)) || (au.bwL(paramae)) || (au.bwN(paramae)) || (au.bws(paramae)) || (au.bwS(paramae))) {
                   break;
                 }
-                paramBoolean = paramArrayOfByte.hxX();
+                paramBoolean = paramArrayOfByte.iZC();
               } while (!paramBoolean);
               AppMethodBeat.o(116876);
               return;
             }
-            catch (Exception paramabu)
+            catch (Exception paramadw)
             {
-              Log.e("MicroMsg.MsgReporter", "something about contact has exception:%s", new Object[] { paramabu.getMessage() });
+              Log.e("MicroMsg.MsgReporter", "something about contact has exception:%s", new Object[] { paramadw.getMessage() });
               AppMethodBeat.o(116876);
               return;
             }
             l4 = System.currentTimeMillis();
             l5 = l3 - l2;
             Log.i("MicroMsg.MsgReporter", "current server time:%s, msg server time:%s, intervalTime:%s, username:%s, msg server id:%s,msg type:%s", new Object[] { Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l5), paramae, Long.valueOf(l1), Integer.valueOf(n) });
-            paramBoolean = a.GC(l2);
+            paramBoolean = a.iN(l2);
             if (paramBoolean)
             {
-              com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 100L, 1L, false);
+              com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 100L, 1L, false);
               k = 0;
               m = 0;
               if (!paramBoolean) {
-                break label712;
+                break label726;
               }
               j = m;
               i = k;
-              if (l3 - paramabu.luW[11] >= 86400000L)
+              if (l3 - paramadw.omt[11] >= 86400000L)
               {
-                com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 210L, 1L, false);
-                paramabu.luW[11] = l3;
+                com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 210L, 1L, false);
+                paramadw.omt[11] = l3;
                 i = 1;
                 j = m;
               }
-              label503:
-              k = br.luQ.length - 1;
-              label511:
+              label517:
+              k = bs.omn.length - 1;
+              label525:
               if (k < 0) {
-                break label2374;
+                break label2386;
               }
-              if (l5 < br.luQ[k]) {
-                break label863;
+              if (l5 < bs.omn[k]) {
+                break label877;
               }
               if (!paramBoolean) {
-                break label770;
+                break label784;
               }
-              com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, br.luR[k], 1L, false);
-              label550:
+              com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, bs.omo[k], 1L, false);
+              label564:
               if (!paramBoolean) {
-                break label791;
+                break label805;
               }
-              if (l3 - paramabu.luW[k] < 86400000L) {
-                break label2371;
+              if (l3 - paramadw.omt[k] < 86400000L) {
+                break label2383;
               }
-              com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, br.luT[k], 1L, false);
-              paramabu.luW[k] = l3;
+              com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, bs.omq[k], 1L, false);
+              paramadw.omt[k] = l3;
               i = 1;
-              label601:
+              label615:
               if (l5 < 2000L) {
-                break label2368;
+                break label2380;
               }
               if (!paramBoolean) {
-                break label841;
+                break label855;
               }
               a.b(k, l3, l4, l2, l5, l1, paramae, n);
             }
@@ -269,77 +276,77 @@ public final class d
       }
       break;
     }
-    label649:
-    label791:
-    label2368:
-    label2371:
-    label2374:
+    label647:
+    label663:
+    label805:
+    label2380:
+    label2383:
+    label2386:
     for (;;)
     {
-      label633:
       if (i != 0)
       {
         paramArrayOfByte = new StringBuilder();
         i = 0;
-        if (i < paramabu.luW.length)
+        if (i < paramadw.omt.length)
         {
-          if (Util.isEqual(i, paramabu.luW.length - 1)) {
-            paramArrayOfByte.append(paramabu.luW[i]);
+          if (Util.isEqual(i, paramadw.omt.length - 1)) {
+            paramArrayOfByte.append(paramadw.omt[i]);
           }
           for (;;)
           {
             i += 1;
-            break label649;
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 101L, 1L, false);
+            break label663;
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 101L, 1L, false);
             break;
+            label726:
             j = m;
             i = k;
-            if (l3 - paramabu.luX[11] < 86400000L) {
-              break label503;
+            if (l3 - paramadw.omu[11] < 86400000L) {
+              break label517;
             }
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 211L, 1L, false);
-            paramabu.luX[11] = l3;
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 211L, 1L, false);
+            paramadw.omu[11] = l3;
             j = 1;
             i = k;
-            break label503;
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, br.luS[k], 1L, false);
-            break label550;
-            if (l3 - paramabu.luX[k] < 86400000L) {
-              break label2371;
+            break label517;
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, bs.omp[k], 1L, false);
+            break label564;
+            if (l3 - paramadw.omu[k] < 86400000L) {
+              break label2383;
             }
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, br.luU[k], 1L, false);
-            paramabu.luX[k] = l3;
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, bs.omr[k], 1L, false);
+            paramadw.omu[k] = l3;
             j = 1;
-            break label601;
+            break label615;
+            label855:
             a.a(k, l3, l4, l2, l5, l1, paramae, n);
-            break label633;
+            break label647;
+            label877:
             k -= 1;
-            break label511;
-            paramArrayOfByte.append(paramabu.luW[i] + ",");
+            break label525;
+            paramArrayOfByte.append(paramadw.omt[i] + ",");
           }
         }
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VCO, paramArrayOfByte.toString());
+        h.baE().ban().set(at.a.adfI, paramArrayOfByte.toString());
       }
-      label712:
-      label841:
-      label863:
       if (j != 0)
       {
         paramArrayOfByte = new StringBuilder();
         i = 0;
-        if (i < paramabu.luX.length)
+        if (i < paramadw.omu.length)
         {
-          if (Util.isEqual(i, paramabu.luX.length - 1)) {
-            paramArrayOfByte.append(paramabu.luX[i]);
+          if (Util.isEqual(i, paramadw.omu.length - 1)) {
+            paramArrayOfByte.append(paramadw.omu[i]);
           }
           for (;;)
           {
             i += 1;
             break;
-            paramArrayOfByte.append(paramabu.luX[i] + ",");
+            paramArrayOfByte.append(paramadw.omu[i] + ",");
           }
         }
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VCP, paramArrayOfByte.toString());
+        h.baE().ban().set(at.a.adfJ, paramArrayOfByte.toString());
       }
       switch (n)
       {
@@ -347,7 +354,7 @@ public final class d
         if (paramBoolean)
         {
           j = 1;
-          label1095:
+          label1107:
           i = 0;
           switch (n)
           {
@@ -357,11 +364,11 @@ public final class d
       }
       for (;;)
       {
-        paramabu = "";
+        paramadw = "";
         try
         {
           paramArrayOfByte = Build.MANUFACTURER;
-          paramabu = paramArrayOfByte;
+          paramadw = paramArrayOfByte;
         }
         catch (Exception paramArrayOfByte)
         {
@@ -370,37 +377,37 @@ public final class d
             Log.e("MicroMsg.MsgReporter", "kvReport %s %s", new Object[] { paramArrayOfByte.getClass().getSimpleName(), paramArrayOfByte.getMessage() });
           }
         }
-        com.tencent.mm.plugin.report.f.Iyx.a(17828, new Object[] { Integer.valueOf(j), Long.valueOf(l5), Integer.valueOf(i), Long.valueOf(l1), paramabu });
+        com.tencent.mm.plugin.report.f.Ozc.b(17828, new Object[] { Integer.valueOf(j), Long.valueOf(l5), Integer.valueOf(i), Long.valueOf(l1), paramadw });
         AppMethodBeat.o(116876);
         return;
         if (l5 >= 60000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 113L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 113L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 118L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 118L, 1L, false);
           break;
         }
         if (l5 >= 30000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 112L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 112L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 117L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 117L, 1L, false);
           break;
         }
         if (l5 >= 10000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 111L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 111L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 116L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 116L, 1L, false);
           break;
         }
         if (l5 < 0L) {
@@ -408,39 +415,39 @@ public final class d
         }
         if (paramBoolean)
         {
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 110L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 110L, 1L, false);
           break;
         }
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 115L, 1L, false);
+        com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 115L, 1L, false);
         break;
         if (l5 >= 60000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 123L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 123L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 128L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 128L, 1L, false);
           break;
         }
         if (l5 >= 30000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 122L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 122L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 127L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 127L, 1L, false);
           break;
         }
         if (l5 >= 10000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 121L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 121L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 126L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 126L, 1L, false);
           break;
         }
         if (l5 < 0L) {
@@ -448,39 +455,39 @@ public final class d
         }
         if (paramBoolean)
         {
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 120L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 120L, 1L, false);
           break;
         }
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 125L, 1L, false);
+        com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 125L, 1L, false);
         break;
         if (l5 >= 60000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 133L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 133L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 138L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 138L, 1L, false);
           break;
         }
         if (l5 >= 30000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 132L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 132L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 137L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 137L, 1L, false);
           break;
         }
         if (l5 >= 10000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 131L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 131L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 136L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 136L, 1L, false);
           break;
         }
         if (l5 < 0L) {
@@ -488,39 +495,39 @@ public final class d
         }
         if (paramBoolean)
         {
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 130L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 130L, 1L, false);
           break;
         }
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 135L, 1L, false);
+        com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 135L, 1L, false);
         break;
         if (l5 >= 60000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 143L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 143L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 148L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 148L, 1L, false);
           break;
         }
         if (l5 >= 30000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 142L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 142L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 147L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 147L, 1L, false);
           break;
         }
         if (l5 >= 10000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 141L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 141L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 146L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 146L, 1L, false);
           break;
         }
         if (l5 < 0L) {
@@ -528,39 +535,39 @@ public final class d
         }
         if (paramBoolean)
         {
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 140L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 140L, 1L, false);
           break;
         }
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 145L, 1L, false);
+        com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 145L, 1L, false);
         break;
         if (l5 >= 60000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 153L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 153L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 158L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 158L, 1L, false);
           break;
         }
         if (l5 >= 30000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 152L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 152L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 157L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 157L, 1L, false);
           break;
         }
         if (l5 >= 10000L)
         {
           if (paramBoolean)
           {
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 151L, 1L, false);
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 151L, 1L, false);
             break;
           }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 156L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 156L, 1L, false);
           break;
         }
         if (l5 < 0L) {
@@ -568,13 +575,13 @@ public final class d
         }
         if (paramBoolean)
         {
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 150L, 1L, false);
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 150L, 1L, false);
           break;
         }
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(780L, 155L, 1L, false);
+        com.tencent.mm.plugin.report.f.Ozc.idkeyStat(780L, 155L, 1L, false);
         break;
         j = 2;
-        break label1095;
+        break label1107;
         i = 1;
         continue;
         i = 2;
@@ -591,21 +598,21 @@ public final class d
         continue;
         i = 8;
       }
-      paramabu = (aft)new aft().parseFrom(paramArrayOfByte);
-      bq.aC(com.tencent.mm.platformtools.z.a(paramabu.SrH), paramabu.SrK);
+      paramadw = (aig)new aig().parseFrom(paramArrayOfByte);
+      br.aO(w.a(paramadw.ZqL), paramadw.ZqO);
       AppMethodBeat.o(116876);
       return;
-      paramabu = (aga)new aga().parseFrom(paramArrayOfByte);
-      paramArrayOfByte = paramabu.SrN;
+      paramadw = (ain)new ain().parseFrom(paramArrayOfByte);
+      paramArrayOfByte = paramadw.ZqR;
       i = 0;
       while (i < paramArrayOfByte.size())
       {
-        bq.A(com.tencent.mm.platformtools.z.a(paramabu.SrH), ((Integer)paramArrayOfByte.get(i)).intValue());
+        br.E(w.a(paramadw.ZqL), ((Integer)paramArrayOfByte.get(i)).intValue());
         i += 1;
       }
       break;
       continue;
-      break label601;
+      break label615;
     }
   }
 }

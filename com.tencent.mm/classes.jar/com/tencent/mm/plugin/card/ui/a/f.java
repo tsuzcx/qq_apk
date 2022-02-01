@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.ua;
+import com.tencent.mm.protocal.protobuf.vr;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
@@ -14,18 +14,18 @@ public final class f
     super(paramMMActivity);
   }
   
-  public final boolean cKm()
+  public final boolean dnC()
   {
-    AppMethodBeat.i(252229);
-    boolean bool = cJq();
-    AppMethodBeat.o(252229);
+    AppMethodBeat.i(293803);
+    boolean bool = dmH();
+    AppMethodBeat.o(293803);
     return bool;
   }
   
-  public final boolean cKn()
+  public final boolean dnD()
   {
     AppMethodBeat.i(113648);
-    if ((this.tmU.cGn()) && (super.cKn()) && ((this.tmU.cGl()) || (!Util.isNullOrNil(this.tmU.cGt().code))))
+    if ((this.wru.djF()) && (super.dnD()) && ((this.wru.djD()) || (!Util.isNullOrNil(this.wru.djL().code))))
     {
       AppMethodBeat.o(113648);
       return true;
@@ -34,15 +34,15 @@ public final class f
     return false;
   }
   
-  public final boolean cKo()
+  public final boolean dnE()
   {
     return true;
   }
   
-  public final boolean cKr()
+  public final boolean dnH()
   {
     AppMethodBeat.i(113649);
-    if ((this.tmU.cGn()) && (super.cKr()))
+    if ((this.wru.djF()) && (super.dnH()))
     {
       AppMethodBeat.o(113649);
       return true;
@@ -53,7 +53,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.f
  * JD-Core Version:    0.7.0.1
  */

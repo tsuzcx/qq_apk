@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.downloader_app.a;
 public final class k
 {
   public static int UN_INSTALLED = 0;
-  public static int umA = 1;
+  public static int xsM = 1;
 }
 
 

@@ -26,7 +26,7 @@ public class APMpAns
   public APMpAns(APHttpHandle paramAPHttpHandle, IAPHttpAnsObserver paramIAPHttpAnsObserver, HashMap<String, APBaseHttpReq> paramHashMap, String paramString)
   {
     super(paramAPHttpHandle, paramIAPHttpAnsObserver, paramHashMap, paramString);
-    AppMethodBeat.i(253746);
+    AppMethodBeat.i(207459);
     this.rate = "";
     this.firstsave_present_count = "";
     this.beginTime = "";
@@ -36,7 +36,7 @@ public class APMpAns
     this.mpPresentList = new ArrayList();
     this.mpList = new ArrayList();
     this.mGoodsList = new ArrayList();
-    AppMethodBeat.o(253746);
+    AppMethodBeat.o(207459);
   }
   
   public String getBeginTime()
@@ -312,7 +312,7 @@ public class APMpAns
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.pay.network.model.APMpAns
  * JD-Core Version:    0.7.0.1
  */

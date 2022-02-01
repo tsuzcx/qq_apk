@@ -1,267 +1,447 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.brandservice.b.b;
-import com.tencent.mm.protocal.protobuf.mg;
-import com.tencent.mm.protocal.protobuf.my;
-import com.tencent.mm.protocal.protobuf.mz;
-import com.tencent.mm.protocal.protobuf.oo;
-import com.tencent.mm.protocal.protobuf.op;
-import com.tencent.mm.protocal.protobuf.pd;
-import com.tencent.mm.protocal.protobuf.pv;
-import com.tencent.mm.protocal.protobuf.pw;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.platformtools.ab;
+import com.tencent.mm.plugin.webview.jsapi.a.c;
+import com.tencent.mm.protocal.protobuf.ddl;
+import com.tencent.mm.protocal.protobuf.hv;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MD5Util;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.base.preference.CheckBoxPreference;
+import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/ProfileV2;", "", "()V", "TAG", "", "profileCachePath", "kotlin.jvm.PlatformType", "getProfileCachePath", "()Ljava/lang/String;", "clear", "", "userName", "get", "Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "indexOf", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/MessageInfo;", "list", "Lcom/tencent/mm/protocal/protobuf/BizMessageList;", "index", "", "processServiceInfoList", "", "Lcom/tencent/mm/protocal/protobuf/BizServiceMenuButton;", "menuInfo", "Lcom/tencent/mm/protocal/protobuf/BizServiceMenu;", "save", "resp", "sizeOf", "Lcom/tencent/mm/protocal/protobuf/BizMessage;", "updatePayStatus", "msgList", "pickAppMsg", "toFileName", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoSettingJsApiUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoSettingUI$OnPreferenceTreeClickListener;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "appId", "", "effectiveAuthScopeItemNum", "", "nickname", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "settingMainUI", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoSettingUI;", "getSettingMainUI", "()Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoSettingUI;", "settingMainUI$delegate", "Lkotlin/Lazy;", "username", "addJumpSecondManagePref", "", "resp", "Lcom/tencent/mm/protocal/protobuf/JSAPIGetAllUseUserInfoResponse;", "addScopeItems", "dismissProgressDlg", "handleModCgi", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "state", "hideIfNotContact", "onClick", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onFinished", "setEmptyTipsVisibility", "visible", "", "showProgressDlg", "isContainJSApiScope", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AuthScopeItem;", "targetScope", "Companion", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
+  extends UIComponent
+  implements NewBizInfoSettingUI.a
 {
-  public static final a Hes;
+  public static final a.a NbT;
+  private static ddl NbW;
+  private int NbU;
+  private final j NbV;
+  private String appId;
+  private String nickname;
+  private w psR;
+  private String username;
   
   static
   {
-    AppMethodBeat.i(39622);
-    Hes = new a();
-    AppMethodBeat.o(39622);
+    AppMethodBeat.i(305775);
+    NbT = new a.a((byte)0);
+    AppMethodBeat.o(305775);
   }
   
-  public static final List<pw> a(pv parampv)
+  public a(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(39617);
-    p.k(parampv, "menuInfo");
-    ArrayList localArrayList = new ArrayList();
-    parampv = parampv.RYf;
-    p.j(parampv, "menuInfo.button_list");
-    parampv = ((Iterable)parampv).iterator();
-    while (parampv.hasNext())
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(305724);
+    this.NbV = kotlin.k.cm((kotlin.g.a.a)new b(paramAppCompatActivity));
+    AppMethodBeat.o(305724);
+  }
+  
+  private static final void B(DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(305767);
+    try
     {
-      pw localpw = (pw)parampv.next();
-      switch (localpw.type)
+      paramDialogInterface.dismiss();
+      AppMethodBeat.o(305767);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      Log.e("NewBizInfoSettingJsApiUIC", "showProgressDlg onCancel exp: %s ", new Object[] { paramDialogInterface.getLocalizedMessage() });
+      AppMethodBeat.o(305767);
+    }
+  }
+  
+  private static final ah a(a parama, b.a parama1)
+  {
+    AppMethodBeat.i(305755);
+    s.u(parama, "this$0");
+    if (parama.getActivity().isFinishing())
+    {
+      Log.i("NewBizInfoSettingJsApiUIC", "activity.isFinishing");
+      parama = ah.aiuX;
+      AppMethodBeat.o(305755);
+      return parama;
+    }
+    Log.i("NewBizInfoSettingJsApiUIC", "checkUpdate: cgi result: " + parama1.errType + ", " + parama1.errCode);
+    if ((parama1.errType != 0) || (parama1.errCode != 0) || (parama1.ott == null))
+    {
+      if (parama1.ott == null) {}
+      for (boolean bool = true;; bool = false)
       {
-      case 1: 
-      case 3: 
-      case 4: 
-      default: 
-        break;
-      case 0: 
-        Object localObject1 = localpw.RYg;
-        p.j(localObject1, "button.sub_button_list");
-        Object localObject2 = (Iterable)localObject1;
-        localObject1 = (Collection)new ArrayList();
-        localObject2 = ((Iterable)localObject2).iterator();
-        if (((Iterator)localObject2).hasNext())
+        Log.i("NewBizInfoSettingJsApiUIC", s.X("it.resp == null? : ", Boolean.valueOf(bool)));
+        if (!d.rs(parama.gCs().contact.field_type)) {
+          parama.a(true, parama.gCs().screen);
+        }
+        parama = ah.aiuX;
+        AppMethodBeat.o(305755);
+        return parama;
+      }
+    }
+    if (ab.isNullOrNil(parama.appId)) {
+      parama.appId = ((ddl)parama1.ott).appid;
+    }
+    NbW = (ddl)parama1.ott;
+    parama.a((ddl)parama1.ott);
+    parama1 = (ddl)parama1.ott;
+    if (parama1 == null) {
+      Log.i("NewBizInfoSettingJsApiUIC", "resp == null");
+    }
+    for (;;)
+    {
+      parama1 = parama.gCs();
+      parama = (NewBizInfoSettingUI.a)parama;
+      parama1.Nca.add(parama);
+      parama = ah.aiuX;
+      AppMethodBeat.o(305755);
+      return parama;
+      if (parama1.aaJd.size() == 0)
+      {
+        Log.i("NewBizInfoSettingJsApiUIC", "privacy_scope_item_list.size == 0");
+      }
+      else
+      {
+        parama1 = new PreferenceSmallCategory((Context)parama.getContext());
+        parama.gCs().screen.c((Preference)parama1);
+        parama1 = new Preference((Context)parama.getContext());
+        parama1.setLayoutResource(R.i.mm_preference);
+        parama1.setTitle((CharSequence)parama.getResources().getString(R.l.gAS));
+        parama1.setKey("NewBizInfoAuthMainUI");
+        parama.gCs().screen.c(parama1);
+      }
+    }
+  }
+  
+  private static final ah a(ah.a parama, a parama1, Preference paramPreference, boolean paramBoolean, b.a parama2)
+  {
+    AppMethodBeat.i(305762);
+    s.u(parama, "$cgiHasReturned");
+    s.u(parama1, "this$0");
+    parama.aiwY = true;
+    parama1.ddd();
+    if (parama1.getActivity().isFinishing())
+    {
+      Log.i("NewBizInfoSettingJsApiUIC", "activity.isFinishing");
+      parama = ah.aiuX;
+      AppMethodBeat.o(305762);
+      return parama;
+    }
+    Log.i("NewBizInfoSettingJsApiUIC", "mode: cgi result: " + parama2.errType + ", " + parama2.errCode);
+    if ((parama2.errCode != 0) || (parama2.errType != 0))
+    {
+      com.tencent.mm.ui.base.aa.dc((Context)parama1.getContext(), parama1.getContext().getResources().getString(R.l.contact_info_biz_network_failed));
+      parama = (CheckBoxPreference)paramPreference;
+      if (paramBoolean) {
+        break label163;
+      }
+    }
+    label163:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      parama.Hy(paramBoolean);
+      parama = ah.aiuX;
+      AppMethodBeat.o(305762);
+      return parama;
+    }
+  }
+  
+  private final void a(ddl paramddl)
+  {
+    AppMethodBeat.i(305741);
+    if (paramddl == null)
+    {
+      Log.i("NewBizInfoSettingJsApiUIC", "resp == null");
+      AppMethodBeat.o(305741);
+      return;
+    }
+    Object localObject1 = paramddl.aaJc;
+    Log.i("NewBizInfoSettingJsApiUIC", s.X("scopeList.size = ", Integer.valueOf(((LinkedList)localObject1).size())));
+    Object localObject2 = ((LinkedList)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      if (((hv)((Iterator)localObject2).next()).state != 0) {
+        this.NbU += 1;
+      }
+    }
+    Log.i("NewBizInfoSettingJsApiUIC", s.X("effectiveAuthScopeItemNum = ", Integer.valueOf(this.NbU)));
+    if (this.NbU > 0)
+    {
+      int i = 0;
+      while (i < 4)
+      {
+        paramddl = new PreferenceSmallCategory((Context)getContext());
+        gCs().screen.c((Preference)paramddl);
+        i += 1;
+      }
+      paramddl = new Preference((Context)getContext());
+      paramddl.setLayoutResource(R.i.gii);
+      localObject2 = am.aixg;
+      localObject2 = getResources().getString(R.l.gAQ);
+      s.s(localObject2, "resources.getString(R.st…o_biz_jsapi_bizinfo_desc)");
+      localObject2 = String.format((String)localObject2, Arrays.copyOf(new Object[] { this.nickname }, 1));
+      s.s(localObject2, "java.lang.String.format(format, *args)");
+      paramddl.setTitle((CharSequence)localObject2);
+      gCs().screen.c(paramddl);
+      s.s(localObject1, "scopeList");
+      paramddl = ((Iterable)localObject1).iterator();
+      while (paramddl.hasNext())
+      {
+        localObject1 = (hv)paramddl.next();
+        if (((hv)localObject1).state != 0)
         {
-          Object localObject3 = ((Iterator)localObject2).next();
-          switch (((pw)localObject3).type)
+          localObject2 = new CheckBoxPreference((Context)getContext());
+          ((CheckBoxPreference)localObject2).setTitle((CharSequence)((hv)localObject1).desc);
+          if (((hv)localObject1).state == 1) {}
+          for (boolean bool = true;; bool = false)
           {
-          }
-          for (i = 0; i != 0; i = 1)
-          {
-            ((Collection)localObject1).add(localObject3);
+            ((CheckBoxPreference)localObject2).setChecked(bool);
+            ((CheckBoxPreference)localObject2).setKey(((hv)localObject1).scope);
+            ((Preference)localObject2).adZV = false;
+            gCs().screen.c((Preference)localObject2);
+            Log.i("NewBizInfoSettingJsApiUIC", "add preference: %s", new Object[] { ((hv)localObject1).desc });
             break;
           }
         }
-        localObject1 = (List)localObject1;
-        if (!((Collection)localObject1).isEmpty()) {}
-        for (int i = 1; i != 0; i = 0)
-        {
-          localObject2 = new pw();
-          ((pw)localObject2).parseFrom(localpw.toByteArray());
-          ((pw)localObject2).RYg.clear();
-          ((pw)localObject2).RYg.addAll((Collection)localObject1);
-          localArrayList.add(localObject2);
-          break;
-        }
-      case 2: 
-      case 5: 
-      case 6: 
-        localArrayList.add(localpw);
       }
+      a(false, gCs().screen);
+      AppMethodBeat.o(305741);
+      return;
     }
-    parampv = (List)localArrayList;
-    AppMethodBeat.o(39617);
-    return parampv;
+    if ((this.NbU == 0) && (paramddl.aaJd.size() == 0) && (!d.rs(gCs().contact.field_type))) {
+      a(true, gCs().screen);
+    }
+    AppMethodBeat.o(305741);
   }
   
-  public static void a(op paramop)
+  private static final void a(ah.a parama, a parama1)
   {
-    AppMethodBeat.i(169906);
-    if (paramop != null)
+    AppMethodBeat.i(305757);
+    s.u(parama, "$cgiHasReturned");
+    s.u(parama1, "this$0");
+    if ((!parama.aiwY) && (!parama1.getActivity().isFinishing()))
     {
-      paramop = paramop.RWC;
-      if (paramop != null)
+      parama1.ddd();
+      parama1.psR = com.tencent.mm.ui.base.k.a((Context)parama1.getContext(), parama1.getString(R.l.app_waiting), true, a..ExternalSyntheticLambda0.INSTANCE);
+    }
+    AppMethodBeat.o(305757);
+  }
+  
+  private final void a(boolean paramBoolean, com.tencent.mm.ui.base.preference.f paramf)
+  {
+    AppMethodBeat.i(305732);
+    if (paramBoolean)
+    {
+      Preference localPreference = new Preference((Context)getContext());
+      localPreference.adZV = false;
+      localPreference.setKey("preference_key_tip");
+      localPreference.setLayoutResource(R.i.app_brand_authorize_none);
+      Object localObject = am.aixg;
+      localObject = getContext().getResources().getString(R.l.gAR);
+      s.s(localObject, "context.resources.getStr…jsapi_bizinfo_no_any_use)");
+      localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { this.nickname }, 1));
+      s.s(localObject, "java.lang.String.format(format, *args)");
+      localPreference.setTitle((CharSequence)localObject);
+      if (paramf != null) {
+        paramf.bAk("preference_key_tip");
+      }
+      if (paramf != null) {
+        paramf.c(localPreference);
+      }
+      if (paramf != null)
       {
-        paramop = ((Iterable)paramop).iterator();
-        while (paramop.hasNext())
+        paramf.notifyDataSetChanged();
+        AppMethodBeat.o(305732);
+      }
+    }
+    else
+    {
+      if (paramf != null) {
+        paramf.bAk("preference_key_tip");
+      }
+      if (paramf != null) {
+        paramf.notifyDataSetChanged();
+      }
+    }
+    AppMethodBeat.o(305732);
+  }
+  
+  private final void ddd()
+  {
+    AppMethodBeat.i(305744);
+    if (this.psR == null)
+    {
+      AppMethodBeat.o(305744);
+      return;
+    }
+    w localw = this.psR;
+    if (localw != null) {
+      localw.dismiss();
+    }
+    this.psR = null;
+    AppMethodBeat.o(305744);
+  }
+  
+  private final NewBizInfoSettingUI gCs()
+  {
+    AppMethodBeat.i(305727);
+    NewBizInfoSettingUI localNewBizInfoSettingUI = (NewBizInfoSettingUI)this.NbV.getValue();
+    AppMethodBeat.o(305727);
+    return localNewBizInfoSettingUI;
+  }
+  
+  public final void a(Preference paramPreference)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(305822);
+    Object localObject1 = NbW;
+    int i;
+    if (localObject1 != null)
+    {
+      Object localObject3 = ((ddl)localObject1).aaJc;
+      if (localObject3 != null) {
+        if (paramPreference == null)
         {
-          Object localObject1 = (oo)paramop.next();
-          if (localObject1 != null)
-          {
-            localObject1 = ((oo)localObject1).RWB;
-            if (localObject1 != null)
-            {
-              localObject1 = ((mz)localObject1).RTM;
-              if (localObject1 != null)
-              {
-                localObject1 = ((Iterable)localObject1).iterator();
-                label79:
-                Object localObject2;
-                while (((Iterator)localObject1).hasNext())
-                {
-                  my localmy = (my)((Iterator)localObject1).next();
-                  if ((localmy != null) && (localmy.RTG == 1) && (!Util.isNullOrNil(localmy.RTk)))
-                  {
-                    localObject2 = b.svR;
-                    localObject2 = localmy.RTk;
-                    p.j(localObject2, "detail.ContentUrl");
-                    if (localmy.lpq != 1) {
-                      break label157;
-                    }
-                  }
-                }
-                label157:
-                for (boolean bool = true;; bool = false)
-                {
-                  b.aJ((String)localObject2, bool);
-                  break label79;
-                  break;
-                }
-              }
-            }
+          localObject1 = null;
+          localObject3 = ((Iterable)localObject3).iterator();
+          i = 0;
+          label52:
+          if (!((Iterator)localObject3).hasNext()) {
+            break label97;
           }
+          if (!((hv)((Iterator)localObject3).next()).scope.equals(localObject1)) {
+            break label342;
+          }
+          i = 1;
         }
-        AppMethodBeat.o(169906);
+      }
+    }
+    label150:
+    label155:
+    label342:
+    for (;;)
+    {
+      break label52;
+      localObject1 = paramPreference.mKey;
+      break;
+      label97:
+      if (i == 1)
+      {
+        i = 1;
+        if ((i == 0) || (!(paramPreference instanceof CheckBoxPreference))) {
+          break label243;
+        }
+        if (!((CheckBoxPreference)paramPreference).isChecked()) {
+          break label150;
+        }
+      }
+      for (i = 1;; i = 2)
+      {
+        if ((paramPreference != null) && ((paramPreference instanceof CheckBoxPreference))) {
+          break label155;
+        }
+        AppMethodBeat.o(305822);
+        return;
+        i = 0;
+        break;
+      }
+      localObject1 = new ah.a();
+      boolean bool = ((CheckBoxPreference)paramPreference).isChecked();
+      h.ahAA.o(new a..ExternalSyntheticLambda3((ah.a)localObject1, this), 800L);
+      new a.c(2, this.appId, "", ((CheckBoxPreference)paramPreference).mKey, i).bFJ().g(new a..ExternalSyntheticLambda2((ah.a)localObject1, this, paramPreference, bool));
+      AppMethodBeat.o(305822);
+      return;
+      label243:
+      if (paramPreference == null) {}
+      for (paramPreference = localObject2;; paramPreference = paramPreference.mKey)
+      {
+        if (n.T(paramPreference, "NewBizInfoAuthMainUI", false))
+        {
+          paramPreference = new Intent();
+          paramPreference.putExtra("Contact_User", this.username);
+          paramPreference.putExtra("Contact_Nick", this.nickname);
+          paramPreference.putExtra("key_add_contact_openim_appid", this.appId);
+          Log.i("NewBizInfoSettingJsApiUIC", "go to JSAPI Auth UI");
+          com.tencent.mm.br.c.g((Context)getContext(), "com.tencent.mm.plugin.profile.ui.newbizinfo.auth.NewBizInfoAuthMainUI", paramPreference);
+        }
+        AppMethodBeat.o(305822);
         return;
       }
     }
-    AppMethodBeat.o(169906);
   }
   
-  private static String aUV(String paramString)
+  public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(275999);
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = h.ae(com.tencent.mm.ao.q.class);
-    p.j(localObject, "MMKernel.service(IBizService::class.java)");
-    localObject = ((com.tencent.mm.ao.q)localObject).bjl();
-    if (!u.agG((String)localObject)) {
-      u.bBD((String)localObject);
+    AppMethodBeat.i(305808);
+    super.onCreate(paramBundle);
+    Log.i("NewBizInfoSettingJsApiUIC", "create");
+    if (!d.rs(gCs().contact.field_type)) {
+      gCs().screen.removeAll();
     }
-    paramString = (String)localObject + "profile_resp_" + MD5Util.getMD5String(paramString);
-    AppMethodBeat.o(275999);
-    return paramString;
+    if ((gCs().MVg != null) && (!ab.isNullOrNil(gCs().MVg.field_appId))) {
+      this.appId = gCs().MVg.field_appId;
+    }
+    this.username = getIntent().getStringExtra("Contact_User");
+    this.nickname = getIntent().getStringExtra("Contact_Nick");
+    if (this.nickname == null) {
+      this.nickname = com.tencent.mm.model.aa.getDisplayName(this.username);
+    }
+    new com.tencent.mm.plugin.webview.jsapi.a.b(this.username).bFJ().g(new a..ExternalSyntheticLambda1(this));
+    AppMethodBeat.o(305808);
   }
   
-  public static final pd aUW(String paramString)
+  public final void onFinished()
   {
-    AppMethodBeat.i(39619);
-    p.k(paramString, "userName");
-    pd localpd = new pd();
-    try
-    {
-      paramString = u.aY(aUV(paramString), 0, -1);
-      if (paramString != null) {
-        localpd.parseFrom(paramString);
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.ProfileV2", "readFromFile ex=" + paramString.getMessage());
-      }
-    }
-    AppMethodBeat.o(39619);
-    return localpd;
+    AppMethodBeat.i(305813);
+    super.onFinished();
+    Log.i("NewBizInfoSettingJsApiUIC", "finish");
+    NbW = null;
+    AppMethodBeat.o(305813);
   }
   
-  public static final void b(pd parampd)
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoSettingUI;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<NewBizInfoSettingUI>
   {
-    AppMethodBeat.i(39618);
-    p.k(parampd, "resp");
-    try
+    b(AppCompatActivity paramAppCompatActivity)
     {
-      Object localObject1 = parampd.RXs.UserName;
-      p.j(localObject1, "resp.AccountInfo.UserName");
-      localObject1 = new com.tencent.mm.vfs.q(aUV((String)localObject1));
-      if (((com.tencent.mm.vfs.q)localObject1).ifE()) {
-        ((com.tencent.mm.vfs.q)localObject1).cFq();
-      }
-      localObject1 = ((com.tencent.mm.vfs.q)localObject1).bOF();
-      Object localObject2 = parampd.RXu;
-      if (localObject2 != null)
-      {
-        localObject2 = ((op)localObject2).RWC;
-        if (localObject2 != null)
-        {
-          localObject2 = ((Iterable)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            Object localObject3 = (oo)((Iterator)localObject2).next();
-            if (localObject3 != null)
-            {
-              localObject3 = ((oo)localObject3).RWB;
-              if (localObject3 != null)
-              {
-                localObject3 = ((mz)localObject3).RTM;
-                if (localObject3 != null)
-                {
-                  localObject3 = ((Iterable)localObject3).iterator();
-                  while (((Iterator)localObject3).hasNext())
-                  {
-                    my localmy = (my)((Iterator)localObject3).next();
-                    if (localmy.RTF != null) {
-                      localmy.RTF = null;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      u.H((String)localObject1, parampd.toByteArray());
-    }
-    catch (Exception parampd)
-    {
-      AppMethodBeat.o(39618);
-      return;
-    }
-    AppMethodBeat.o(39618);
-  }
-  
-  public static final void clear(String paramString)
-  {
-    AppMethodBeat.i(276000);
-    p.k(paramString, "userName");
-    try
-    {
-      paramString = new com.tencent.mm.vfs.q(aUV(paramString));
-      if (paramString.ifE()) {
-        paramString.cFq();
-      }
-      AppMethodBeat.o(276000);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(276000);
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.a
  * JD-Core Version:    0.7.0.1
  */

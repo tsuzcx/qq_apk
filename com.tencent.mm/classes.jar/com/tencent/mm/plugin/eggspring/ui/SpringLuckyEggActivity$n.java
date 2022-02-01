@@ -1,51 +1,28 @@
 package com.tencent.mm.plugin.eggspring.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import androidx.lifecycle.r;
+import android.content.Intent;
+import android.os.Bundle;
+import androidx.lifecycle.af;
+import androidx.lifecycle.ah.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.eggspring.e;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.t.a.n;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewModel;"}, k=3, mv={1, 5, 1}, xi=48)
 final class SpringLuckyEggActivity$n
-  implements View.OnClickListener
+  extends u
+  implements a<c>
 {
-  SpringLuckyEggActivity$n(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
-  
-  public final void onClick(View paramView)
+  SpringLuckyEggActivity$n(SpringLuckyEggActivity paramSpringLuckyEggActivity)
   {
-    AppMethodBeat.i(249298);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$setupViews$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    Log.i("MicroMsg.SpringLuckyEggActivity", "clicked bottom title");
-    if (SpringLuckyEggActivity.b(this.uyj).uyK.getValue() == null)
-    {
-      a.a(this, "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$setupViews$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(249298);
-      return;
-    }
-    paramView = e.uxF;
-    paramView = (n)SpringLuckyEggActivity.b(this.uyj).uyM.getValue();
-    if (paramView != null) {}
-    for (long l = paramView.jEe;; l = 0L)
-    {
-      e.R(10, l);
-      SpringLuckyEggActivity.a(this.uyj, SpringLuckyEggActivity.b(this.uyj).uyK.getValue());
-      a.a(this, "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$setupViews$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(249298);
-      return;
-    }
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.ui.SpringLuckyEggActivity.n
  * JD-Core Version:    0.7.0.1
  */

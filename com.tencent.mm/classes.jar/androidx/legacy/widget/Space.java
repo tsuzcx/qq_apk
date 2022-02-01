@@ -1,6 +1,5 @@
 package androidx.legacy.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -28,16 +27,16 @@ public class Space
   public Space(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(186196);
+    AppMethodBeat.i(192922);
     if (getVisibility() == 0) {
       setVisibility(4);
     }
-    AppMethodBeat.o(186196);
+    AppMethodBeat.o(192922);
   }
   
-  private static int U(int paramInt1, int paramInt2)
+  private static int aP(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(186214);
+    AppMethodBeat.i(192951);
     int j = View.MeasureSpec.getMode(paramInt2);
     int i = View.MeasureSpec.getSize(paramInt2);
     paramInt2 = paramInt1;
@@ -48,7 +47,7 @@ public class Space
     }
     for (;;)
     {
-      AppMethodBeat.o(186214);
+      AppMethodBeat.o(192951);
       return paramInt2;
       paramInt2 = Math.min(paramInt1, i);
       continue;
@@ -57,20 +56,19 @@ public class Space
   }
   
   @Deprecated
-  @SuppressLint({"MissingSuperCall"})
   public void draw(Canvas paramCanvas) {}
   
   @Deprecated
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(186216);
-    setMeasuredDimension(U(getSuggestedMinimumWidth(), paramInt1), U(getSuggestedMinimumHeight(), paramInt2));
-    AppMethodBeat.o(186216);
+    AppMethodBeat.i(192970);
+    setMeasuredDimension(aP(getSuggestedMinimumWidth(), paramInt1), aP(getSuggestedMinimumHeight(), paramInt2));
+    AppMethodBeat.o(192970);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.legacy.widget.Space
  * JD-Core Version:    0.7.0.1
  */

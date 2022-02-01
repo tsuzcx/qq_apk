@@ -1,94 +1,23 @@
 package com.tencent.mm.plugin.fingerprint.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.fingerprint.b.a.i;
-import com.tencent.mm.plugin.fingerprint.d.a;
-import com.tencent.mm.plugin.soter.d.e;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.mm.am.p;
 
-public final class d
-  extends m
+public abstract interface d
 {
-  public d(int paramInt)
-  {
-    AppMethodBeat.i(64469);
-    HashMap localHashMap = new HashMap();
-    Object localObject = com.tencent.mm.plugin.soter.d.d.gai();
-    String str = ((e)localObject).Lwz;
-    localObject = ((e)localObject).ktM;
-    localHashMap.put("cpu_id", str);
-    localHashMap.put("uid", localObject);
-    localHashMap.put("soter_type", String.valueOf(paramInt));
-    setRequestData(localHashMap);
-    AppMethodBeat.o(64469);
-  }
+  public abstract void a(Context paramContext, b paramb);
   
-  public final int getFuncId()
-  {
-    return 1597;
-  }
+  public abstract void a(Context paramContext, b paramb, String paramString);
   
-  public final int getTenpayCgicmd()
-  {
-    return 116;
-  }
+  public abstract void a(b paramb, int paramInt);
   
-  public final String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/tenpay/closetouchpay";
-  }
+  public abstract void clear();
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(64471);
-    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
-    paramString = (a)com.tencent.mm.kernel.h.ae(a.class);
-    if (paramString.eon()) {
-      com.tencent.mm.plugin.report.service.h.IzE.a(13686, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    }
-    while ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramString.rD(false);
-      paramString.rE(false);
-      Log.e("MicroMsg.NetSceneTenpayCloseTouchPay", "hy: do close fingerprint cgi success!");
-      AppMethodBeat.o(64471);
-      return;
-      if (paramString.eoq()) {
-        com.tencent.mm.plugin.report.service.h.IzE.a(16994, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      }
-    }
-    Log.e("MicroMsg.NetSceneTenpayCloseTouchPay", "hy: do close fingerprint cgi failed!");
-    AppMethodBeat.o(64471);
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(64470);
-    if (paramInt == 0) {
-      if (paramJSONObject == null) {
-        break label64;
-      }
-    }
-    label64:
-    for (paramInt = paramJSONObject.optInt("clear_rsa_key_level", 0);; paramInt = 0)
-    {
-      ((i)com.tencent.mm.kernel.h.ae(i.class)).q(new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(64470);
-      return;
-      Log.e("MicroMsg.NetSceneTenpayCloseTouchPay", "do close fingerprint cgi failed!");
-      AppMethodBeat.o(64470);
-      return;
-    }
-  }
+  public abstract boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.c.d
  * JD-Core Version:    0.7.0.1
  */

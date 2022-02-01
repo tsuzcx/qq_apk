@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.view.TouchableLayout android:id="@id/kzv" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/hft" android:background="@drawable/asu" android:paddingLeft="@dimen/c5" android:paddingTop="@dimen/cb" android:paddingRight="@dimen/c5" android:paddingBottom="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/FG_0" android:id="@id/hg7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" />
-        </LinearLayout>
-        <FrameLayout android:id="@id/hg5" android:background="@drawable/ze" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginRight="@dimen/ct" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_arrow" app:iconColor="@color/BW_70" />
-        </FrameLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <RelativeLayout android:background="@color/BW_100" android:paddingLeft="@dimen/cj" android:paddingTop="@dimen/cb" android:paddingRight="@dimen/cj" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/hft">
-        <include android:id="@id/hfx" android:layout_width="@dimen/bu" android:layout_height="wrap_content" android:layout_alignParentLeft="true" layout="@layout/aci" />
-        <include android:id="@id/hfy" android:layout_width="@dimen/bu" android:layout_height="wrap_content" android:layout_centerHorizontal="true" layout="@layout/aci" />
-        <include android:id="@id/hfz" android:layout_width="@dimen/bu" android:layout_height="wrap_content" android:layout_alignParentRight="true" layout="@layout/aci" />
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/gl6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/iix" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/hgy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginTop="@dimen/ci" android:text="@string/eng" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/g3l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginTop="@dimen/ci">
+        <ProgressBar android:background="@color/ahb" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:indeterminateDrawable="@drawable/ang" />
+    </LinearLayout>
+    <ListView android:id="@id/ews" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:id="@id/ka4" android:background="@color/BW_93" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/ac4" />
+    <TextView android:textSize="@dimen/a78" android:textColor="@color/az" android:gravity="center" android:id="@id/j62" android:background="@drawable/aqo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d5" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/c2" android:layout_marginRight="@dimen/df" />
+</com.tencent.mm.view.TouchableLayout>

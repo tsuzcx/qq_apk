@@ -11,17 +11,17 @@ public class Plugin
 {
   public n createApplication()
   {
-    AppMethodBeat.i(279317);
+    AppMethodBeat.i(262323);
     a locala = new a();
-    AppMethodBeat.o(279317);
+    AppMethodBeat.o(262323);
     return locala;
   }
   
   public be createSubCore()
   {
-    AppMethodBeat.i(279318);
+    AppMethodBeat.i(262335);
     b localb = new b();
-    AppMethodBeat.o(279318);
+    AppMethodBeat.o(262335);
     return localb;
   }
   

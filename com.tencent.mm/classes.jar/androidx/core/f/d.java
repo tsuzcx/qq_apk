@@ -1,47 +1,78 @@
 package androidx.core.f;
 
-import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Arrays;
-import java.util.Objects;
 
-public final class d
+public class d<F, S>
 {
-  public static boolean equals(Object paramObject1, Object paramObject2)
+  public final F bsC;
+  public final S bsD;
+  
+  public d(F paramF, S paramS)
   {
-    AppMethodBeat.i(251315);
-    if (Build.VERSION.SDK_INT >= 19)
+    this.bsC = paramF;
+    this.bsD = paramS;
+  }
+  
+  public static <A, B> d<A, B> l(A paramA, B paramB)
+  {
+    AppMethodBeat.i(196022);
+    paramA = new d(paramA, paramB);
+    AppMethodBeat.o(196022);
+    return paramA;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(196030);
+    if (!(paramObject instanceof d))
     {
-      boolean bool = Objects.equals(paramObject1, paramObject2);
-      AppMethodBeat.o(251315);
-      return bool;
+      AppMethodBeat.o(196030);
+      return false;
     }
-    if ((paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2))))
+    paramObject = (d)paramObject;
+    if ((c.equals(paramObject.bsC, this.bsC)) && (c.equals(paramObject.bsD, this.bsD)))
     {
-      AppMethodBeat.o(251315);
+      AppMethodBeat.o(196030);
       return true;
     }
-    AppMethodBeat.o(251315);
+    AppMethodBeat.o(196030);
     return false;
   }
   
-  public static int hash(Object... paramVarArgs)
+  public int hashCode()
   {
-    AppMethodBeat.i(251317);
-    if (Build.VERSION.SDK_INT >= 19)
+    int j = 0;
+    AppMethodBeat.i(196037);
+    int i;
+    if (this.bsC == null)
     {
-      i = Objects.hash(paramVarArgs);
-      AppMethodBeat.o(251317);
-      return i;
+      i = 0;
+      if (this.bsD != null) {
+        break label43;
+      }
     }
-    int i = Arrays.hashCode(paramVarArgs);
-    AppMethodBeat.o(251317);
-    return i;
+    for (;;)
+    {
+      AppMethodBeat.o(196037);
+      return i ^ j;
+      i = this.bsC.hashCode();
+      break;
+      label43:
+      j = this.bsD.hashCode();
+    }
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(196046);
+    String str = "Pair{" + this.bsC + " " + this.bsD + "}";
+    AppMethodBeat.o(196046);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     androidx.core.f.d
  * JD-Core Version:    0.7.0.1
  */

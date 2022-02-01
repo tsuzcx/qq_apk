@@ -22,34 +22,34 @@ import com.tencent.mm.ui.widget.InsectFrameLayout;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.Metadata;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/drawer/RecyclerViewDrawer;", "Lcom/tencent/mm/ui/widget/InsectFrameLayout;", "Lcom/tencent/mm/view/drawer/RecyclerViewDrawerSquares$OnOpenDrawerListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "backgroundColorRes", "getBackgroundColorRes", "()I", "setBackgroundColorRes", "(I)V", "downY", "", "isClickBackground", "", "isEnableClickBackgroundToCloseDrawer", "()Z", "setEnableClickBackgroundToCloseDrawer", "(Z)V", "isIntercept", "setIntercept", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "keyboardHeightObserver", "getKeyboardHeightObserver", "()Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "setKeyboardHeightObserver", "(Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;)V", "lastY", "onOpenDrawerListener", "getOnOpenDrawerListener", "()Lcom/tencent/mm/view/drawer/RecyclerViewDrawerSquares$OnOpenDrawerListener;", "setOnOpenDrawerListener", "(Lcom/tencent/mm/view/drawer/RecyclerViewDrawerSquares$OnOpenDrawerListener;)V", "rect", "Landroid/graphics/Rect;", "scaledDoubleTapSlop", "squares", "Lcom/tencent/mm/view/drawer/RecyclerViewDrawerSquares;", "squaresBackgroundResource", "getSquaresBackgroundResource", "setSquaresBackgroundResource", "topOffset", "getTopOffset", "setTopOffset", "addIgnoreInterceptView", "", "view", "Landroid/view/View;", "canCloseDrawerWhenStop", "can", "closeDrawer", "isWithAnim", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "getCenterLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getFooterLayout", "Landroid/widget/FrameLayout;", "getHeaderLayout", "getLoadingLayout", "getRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "isDrawerOpen", "onDrawerDetach", "onDrawerOpen", "isOpen", "isBegin", "onDrawerTranslation", "percent", "openDrawer", "Companion", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/drawer/RecyclerViewDrawer;", "Lcom/tencent/mm/ui/widget/InsectFrameLayout;", "Lcom/tencent/mm/view/drawer/RecyclerViewDrawerSquares$OnOpenDrawerListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "backgroundColorRes", "getBackgroundColorRes", "()I", "setBackgroundColorRes", "(I)V", "downY", "", "isClickBackground", "", "isEnableClickBackgroundToCloseDrawer", "()Z", "setEnableClickBackgroundToCloseDrawer", "(Z)V", "isIntercept", "setIntercept", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "keyboardHeightObserver", "getKeyboardHeightObserver", "()Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "setKeyboardHeightObserver", "(Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;)V", "lastY", "onOpenDrawerListener", "getOnOpenDrawerListener", "()Lcom/tencent/mm/view/drawer/RecyclerViewDrawerSquares$OnOpenDrawerListener;", "setOnOpenDrawerListener", "(Lcom/tencent/mm/view/drawer/RecyclerViewDrawerSquares$OnOpenDrawerListener;)V", "rect", "Landroid/graphics/Rect;", "scaledDoubleTapSlop", "squares", "Lcom/tencent/mm/view/drawer/RecyclerViewDrawerSquares;", "squaresBackgroundResource", "getSquaresBackgroundResource", "setSquaresBackgroundResource", "topOffset", "getTopOffset", "setTopOffset", "addIgnoreInterceptView", "", "view", "Landroid/view/View;", "canCloseDrawerWhenStop", "can", "closeDrawer", "isWithAnim", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "getCenterLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getFooterLayout", "Landroid/widget/FrameLayout;", "getHeaderLayout", "getLoadingLayout", "getRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "isDrawerOpen", "onDrawerDetach", "onDrawerOpen", "isOpen", "isBegin", "onDrawerTranslation", "percent", "openDrawer", "Companion", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class RecyclerViewDrawer
   extends InsectFrameLayout
   implements RecyclerViewDrawerSquares.c
 {
-  public static final RecyclerViewDrawer.a YPC;
-  private int FLg;
-  private boolean YPA;
-  private boolean YPB;
-  private final RecyclerViewDrawerSquares YPt;
-  private boolean YPu;
-  private int YPv;
-  private int YPw;
-  private h YPx;
-  private final int YPy;
-  private RecyclerViewDrawerSquares.c YPz;
-  private float aCb;
-  private final Rect byG;
-  private float diu;
+  public static final a agLg;
+  private int LGn;
+  private final RecyclerViewDrawerSquares agLh;
+  private boolean agLi;
+  private int agLj;
+  private int agLk;
+  private h agLl;
+  private final int agLm;
+  private RecyclerViewDrawerSquares.c agLn;
+  private boolean agLo;
+  private float cxN;
+  private float fig;
+  private boolean hKw;
+  private final Rect rect;
   
   static
   {
     AppMethodBeat.i(164669);
-    YPC = new RecyclerViewDrawer.a((byte)0);
+    agLg = new a((byte)0);
     AppMethodBeat.o(164669);
   }
   
@@ -57,22 +57,20 @@ public class RecyclerViewDrawer
   {
     super(paramContext);
     AppMethodBeat.i(164666);
-    this.YPt = new RecyclerViewDrawerSquares(getContext());
-    this.YPu = true;
-    this.FLg = ((int)getResources().getDimension(a.e.Edge_25A));
-    this.YPv = a.d.UN_BW_0_Alpha_0_5;
-    this.YPw = a.d.white;
-    paramContext = ViewConfiguration.get(getContext());
-    p.j(paramContext, "ViewConfiguration.get(context)");
-    this.YPy = paramContext.getScaledTouchSlop();
-    setBackgroundResource(this.YPv);
+    this.agLh = new RecyclerViewDrawerSquares(getContext());
+    this.agLi = true;
+    this.LGn = ((int)getResources().getDimension(a.e.Edge_25A));
+    this.agLj = a.d.UN_BW_0_Alpha_0_5;
+    this.agLk = a.d.white;
+    this.agLm = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    setBackgroundResource(this.agLj);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    setPadding(0, this.FLg, 0, 0);
-    this.YPt.setBackgroundResource(this.YPw);
-    addView((View)this.YPt, (ViewGroup.LayoutParams)paramContext);
+    setPadding(0, this.LGn, 0, 0);
+    this.agLh.setBackgroundResource(this.agLk);
+    addView((View)this.agLh, (ViewGroup.LayoutParams)paramContext);
     setVisibility(8);
-    this.YPt.setOnOpenDrawerListener((RecyclerViewDrawerSquares.c)this);
-    this.byG = new Rect();
+    this.agLh.setOnOpenDrawerListener((RecyclerViewDrawerSquares.c)this);
+    this.rect = new Rect();
     AppMethodBeat.o(164666);
   }
   
@@ -80,22 +78,20 @@ public class RecyclerViewDrawer
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164667);
-    this.YPt = new RecyclerViewDrawerSquares(getContext());
-    this.YPu = true;
-    this.FLg = ((int)getResources().getDimension(a.e.Edge_25A));
-    this.YPv = a.d.UN_BW_0_Alpha_0_5;
-    this.YPw = a.d.white;
-    paramContext = ViewConfiguration.get(getContext());
-    p.j(paramContext, "ViewConfiguration.get(context)");
-    this.YPy = paramContext.getScaledTouchSlop();
-    setBackgroundResource(this.YPv);
+    this.agLh = new RecyclerViewDrawerSquares(getContext());
+    this.agLi = true;
+    this.LGn = ((int)getResources().getDimension(a.e.Edge_25A));
+    this.agLj = a.d.UN_BW_0_Alpha_0_5;
+    this.agLk = a.d.white;
+    this.agLm = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    setBackgroundResource(this.agLj);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    setPadding(0, this.FLg, 0, 0);
-    this.YPt.setBackgroundResource(this.YPw);
-    addView((View)this.YPt, (ViewGroup.LayoutParams)paramContext);
+    setPadding(0, this.LGn, 0, 0);
+    this.agLh.setBackgroundResource(this.agLk);
+    addView((View)this.agLh, (ViewGroup.LayoutParams)paramContext);
     setVisibility(8);
-    this.YPt.setOnOpenDrawerListener((RecyclerViewDrawerSquares.c)this);
-    this.byG = new Rect();
+    this.agLh.setOnOpenDrawerListener((RecyclerViewDrawerSquares.c)this);
+    this.rect = new Rect();
     AppMethodBeat.o(164667);
   }
   
@@ -103,33 +99,31 @@ public class RecyclerViewDrawer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164668);
-    this.YPt = new RecyclerViewDrawerSquares(getContext());
-    this.YPu = true;
-    this.FLg = ((int)getResources().getDimension(a.e.Edge_25A));
-    this.YPv = a.d.UN_BW_0_Alpha_0_5;
-    this.YPw = a.d.white;
-    paramContext = ViewConfiguration.get(getContext());
-    p.j(paramContext, "ViewConfiguration.get(context)");
-    this.YPy = paramContext.getScaledTouchSlop();
-    setBackgroundResource(this.YPv);
+    this.agLh = new RecyclerViewDrawerSquares(getContext());
+    this.agLi = true;
+    this.LGn = ((int)getResources().getDimension(a.e.Edge_25A));
+    this.agLj = a.d.UN_BW_0_Alpha_0_5;
+    this.agLk = a.d.white;
+    this.agLm = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    setBackgroundResource(this.agLj);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    setPadding(0, this.FLg, 0, 0);
-    this.YPt.setBackgroundResource(this.YPw);
-    addView((View)this.YPt, (ViewGroup.LayoutParams)paramContext);
+    setPadding(0, this.LGn, 0, 0);
+    this.agLh.setBackgroundResource(this.agLk);
+    addView((View)this.agLh, (ViewGroup.LayoutParams)paramContext);
     setVisibility(8);
-    this.YPt.setOnOpenDrawerListener((RecyclerViewDrawerSquares.c)this);
-    this.byG = new Rect();
+    this.agLh.setOnOpenDrawerListener((RecyclerViewDrawerSquares.c)this);
+    this.rect = new Rect();
     AppMethodBeat.o(164668);
   }
   
-  public final void Ig(boolean paramBoolean)
+  public final void Ob(boolean paramBoolean)
   {
     AppMethodBeat.i(164661);
-    this.YPt.Ig(paramBoolean);
+    this.agLh.Ob(paramBoolean);
     AppMethodBeat.o(164661);
   }
   
-  public final void aa(boolean paramBoolean1, boolean paramBoolean2)
+  public void ak(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(164663);
     new StringBuilder("[onDrawerOpen] isOpen=").append(paramBoolean1).append(" isBegin=").append(paramBoolean2);
@@ -138,11 +132,10 @@ public class RecyclerViewDrawer
     }
     for (;;)
     {
-      RecyclerViewDrawerSquares.c localc = this.YPz;
-      if (localc == null) {
-        break;
+      RecyclerViewDrawerSquares.c localc = this.agLn;
+      if (localc != null) {
+        localc.ak(paramBoolean1, paramBoolean2);
       }
-      localc.aa(paramBoolean1, paramBoolean2);
       AppMethodBeat.o(164663);
       return;
       if ((!paramBoolean2) && (!paramBoolean1))
@@ -151,81 +144,77 @@ public class RecyclerViewDrawer
         getCenterLayout().reset();
       }
     }
-    AppMethodBeat.o(164663);
   }
   
-  public final void bm(float paramFloat)
+  public final void bS(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(164664);
-    Object localObject = getBackground();
-    if (localObject != null) {
-      ((Drawable)localObject).setAlpha((int)(255.0F * (1.0F - paramFloat)));
-    }
-    localObject = this.YPz;
-    if (localObject != null)
-    {
-      ((RecyclerViewDrawerSquares.c)localObject).bm(paramFloat);
-      AppMethodBeat.o(164664);
-      return;
-    }
-    AppMethodBeat.o(164664);
-  }
-  
-  public final void bs(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(221329);
-    RecyclerViewDrawerSquares localRecyclerViewDrawerSquares = this.YPt;
-    Log.i("DrawerSquares", "[openDrawer] isOpening=" + localRecyclerViewDrawerSquares.Gar + ", canCloseDrawerWhenStop=" + paramBoolean2);
+    AppMethodBeat.i(235239);
+    RecyclerViewDrawerSquares localRecyclerViewDrawerSquares = this.agLh;
+    Log.i("DrawerSquares", "[openDrawer] isOpening=" + localRecyclerViewDrawerSquares.LWA + ", canCloseDrawerWhenStop=" + paramBoolean2);
     RecyclerViewDrawerSquares.c localc;
-    if (!localRecyclerViewDrawerSquares.Gar)
+    if (!localRecyclerViewDrawerSquares.LWA)
     {
       localRecyclerViewDrawerSquares.setCanCloseDrawerWhenStop(paramBoolean2);
-      localRecyclerViewDrawerSquares.jij.start();
-      localc = localRecyclerViewDrawerSquares.YPz;
+      localRecyclerViewDrawerSquares.lKz.start();
+      localc = localRecyclerViewDrawerSquares.agLn;
       if (localc != null) {
-        localc.aa(true, true);
+        localc.ak(true, true);
       }
-      localRecyclerViewDrawerSquares.Gar = true;
+      localRecyclerViewDrawerSquares.LWA = true;
       if (!paramBoolean1) {
         break label162;
       }
       if (localRecyclerViewDrawerSquares.getHeight() > 0.0F) {
         break label132;
       }
-      localRecyclerViewDrawerSquares.YPI = ((RecyclerViewDrawerSquares.b)new RecyclerViewDrawerSquares.i(localRecyclerViewDrawerSquares));
+      localRecyclerViewDrawerSquares.agLv = ((RecyclerViewDrawerSquares.b)new RecyclerViewDrawerSquares.f(localRecyclerViewDrawerSquares));
     }
     for (;;)
     {
       localRecyclerViewDrawerSquares.setVisibility(0);
-      AppMethodBeat.o(221329);
+      AppMethodBeat.o(235239);
       return;
       label132:
       localRecyclerViewDrawerSquares.setTranslationY(localRecyclerViewDrawerSquares.getHeight());
-      localRecyclerViewDrawerSquares.YPJ.invoke(new RecyclerViewDrawerSquares.j(localRecyclerViewDrawerSquares));
+      localRecyclerViewDrawerSquares.agLw.invoke(new RecyclerViewDrawerSquares.g(localRecyclerViewDrawerSquares));
       continue;
       label162:
       localRecyclerViewDrawerSquares.setTranslationY(0.0F);
-      localRecyclerViewDrawerSquares.Gar = false;
-      localc = localRecyclerViewDrawerSquares.YPz;
+      localRecyclerViewDrawerSquares.LWA = false;
+      localc = localRecyclerViewDrawerSquares.agLn;
       if (localc != null) {
-        localc.aa(true, false);
+        localc.ak(true, false);
       }
     }
+  }
+  
+  public final void cm(float paramFloat)
+  {
+    AppMethodBeat.i(164664);
+    Object localObject = getBackground();
+    if (localObject != null) {
+      ((Drawable)localObject).setAlpha((int)(255.0F * (1.0F - paramFloat)));
+    }
+    localObject = this.agLn;
+    if (localObject != null) {
+      ((RecyclerViewDrawerSquares.c)localObject).cm(paramFloat);
+    }
+    AppMethodBeat.o(164664);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164665);
-    p.k(paramMotionEvent, "event");
+    s.u(paramMotionEvent, "event");
     if (paramMotionEvent.getAction() == 0)
     {
-      this.byG.setEmpty();
-      this.YPt.getDrawerHeaderLayout().getGlobalVisibleRect(this.byG);
-      this.YPA = this.byG.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-      if (this.YPA)
+      this.rect.setEmpty();
+      this.agLh.getDrawerHeaderLayout().getGlobalVisibleRect(this.rect);
+      this.hKw = this.rect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+      if (this.hKw)
       {
         Rect localRect = new Rect();
-        Iterator localIterator = this.YPt.getIgnoreInterceptViewList().iterator();
+        Iterator localIterator = this.agLh.getIgnoreInterceptViewList().iterator();
         if (localIterator.hasNext())
         {
           ((View)localIterator.next()).getGlobalVisibleRect(localRect);
@@ -238,36 +227,36 @@ public class RecyclerViewDrawer
     label370:
     for (boolean bool = true;; bool = false)
     {
-      this.YPA = bool;
-      if (this.YPA) {
+      this.hKw = bool;
+      if (this.hKw) {
         break;
       }
-      this.aCb = paramMotionEvent.getY();
-      this.diu = this.aCb;
-      if ((!this.YPA) && (this.YPu))
+      this.cxN = paramMotionEvent.getY();
+      this.fig = this.cxN;
+      if ((!this.hKw) && (this.agLi))
       {
-        this.YPt.getGlobalVisibleRect(this.byG);
-        if (!this.byG.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) {
-          this.YPB = true;
+        this.agLh.getGlobalVisibleRect(this.rect);
+        if (!this.rect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) {
+          this.agLo = true;
         }
       }
-      if (this.YPA)
+      if (this.hKw)
       {
-        this.YPt.v((int)(this.aCb - paramMotionEvent.getY()), 0, true);
-        this.aCb = paramMotionEvent.getY();
+        this.agLh.v((int)(this.cxN - paramMotionEvent.getY()), 0, true);
+        this.cxN = paramMotionEvent.getY();
       }
       if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1))
       {
-        if (this.YPA) {
-          this.YPt.dtZ();
+        if (this.hKw) {
+          this.agLh.ecZ();
         }
-        this.YPA = false;
-        if ((this.YPB) && (this.YPu) && (paramMotionEvent.getAction() == 1) && (Math.abs(this.diu - paramMotionEvent.getY()) <= this.YPy)) {
-          RecyclerViewDrawerSquares.a(this.YPt);
+        this.hKw = false;
+        if ((this.agLo) && (this.agLi) && (paramMotionEvent.getAction() == 1) && (Math.abs(this.fig - paramMotionEvent.getY()) <= this.agLm)) {
+          RecyclerViewDrawerSquares.a(this.agLh);
         }
-        this.YPB = false;
+        this.agLo = false;
       }
-      if ((!this.YPA) && (!this.YPB) && (!super.dispatchTouchEvent(paramMotionEvent))) {
+      if ((!this.hKw) && (!this.agLo) && (!super.dispatchTouchEvent(paramMotionEvent))) {
         break label375;
       }
       AppMethodBeat.o(164665);
@@ -278,7 +267,17 @@ public class RecyclerViewDrawer
     return false;
   }
   
-  public final boolean eis()
+  public final void eIv()
+  {
+    AppMethodBeat.i(235248);
+    RecyclerViewDrawerSquares.c localc = this.agLn;
+    if (localc != null) {
+      localc.eIv();
+    }
+    AppMethodBeat.o(235248);
+  }
+  
+  public final boolean fkp()
   {
     AppMethodBeat.i(164662);
     if (getVisibility() == 0)
@@ -290,28 +289,15 @@ public class RecyclerViewDrawer
     return false;
   }
   
-  public final void ejF()
-  {
-    AppMethodBeat.i(221337);
-    RecyclerViewDrawerSquares.c localc = this.YPz;
-    if (localc != null)
-    {
-      localc.ejF();
-      AppMethodBeat.o(221337);
-      return;
-    }
-    AppMethodBeat.o(221337);
-  }
-  
   public final int getBackgroundColorRes()
   {
-    return this.YPv;
+    return this.agLj;
   }
   
   public final RefreshLoadMoreLayout getCenterLayout()
   {
     AppMethodBeat.i(164655);
-    RefreshLoadMoreLayout localRefreshLoadMoreLayout = this.YPt.getCenterLayout();
+    RefreshLoadMoreLayout localRefreshLoadMoreLayout = this.agLh.getCenterLayout();
     AppMethodBeat.o(164655);
     return localRefreshLoadMoreLayout;
   }
@@ -319,7 +305,7 @@ public class RecyclerViewDrawer
   public final FrameLayout getFooterLayout()
   {
     AppMethodBeat.i(164656);
-    FrameLayout localFrameLayout = this.YPt.getDrawerFooterLayout();
+    FrameLayout localFrameLayout = this.agLh.getDrawerFooterLayout();
     AppMethodBeat.o(164656);
     return localFrameLayout;
   }
@@ -327,119 +313,122 @@ public class RecyclerViewDrawer
   public final FrameLayout getHeaderLayout()
   {
     AppMethodBeat.i(164657);
-    FrameLayout localFrameLayout = this.YPt.getDrawerHeaderLayout();
+    FrameLayout localFrameLayout = this.agLh.getDrawerHeaderLayout();
     AppMethodBeat.o(164657);
     return localFrameLayout;
   }
   
   public final h getKeyboardHeightObserver()
   {
-    return this.YPx;
+    return this.agLl;
   }
   
   public final FrameLayout getLoadingLayout()
   {
     AppMethodBeat.i(164658);
-    FrameLayout localFrameLayout = this.YPt.getLoadingLayout();
+    FrameLayout localFrameLayout = this.agLh.getLoadingLayout();
     AppMethodBeat.o(164658);
     return localFrameLayout;
   }
   
   public final RecyclerViewDrawerSquares.c getOnOpenDrawerListener()
   {
-    return this.YPz;
+    return this.agLn;
   }
   
   public final RecyclerView getRecyclerView()
   {
-    AppMethodBeat.i(221314);
-    RecyclerView localRecyclerView = this.YPt.getCenterLayout().getRecyclerView();
-    AppMethodBeat.o(221314);
+    AppMethodBeat.i(235229);
+    RecyclerView localRecyclerView = this.agLh.getCenterLayout().getRecyclerView();
+    AppMethodBeat.o(235229);
     return localRecyclerView;
   }
   
   public final int getSquaresBackgroundResource()
   {
-    return this.YPw;
+    return this.agLk;
   }
   
   public final int getTopOffset()
   {
-    return this.FLg;
+    return this.LGn;
   }
   
-  public final void ihE()
+  public final void jMR()
   {
     AppMethodBeat.i(164660);
-    this.YPt.setCanCloseDrawerWhenStop(true);
+    this.agLh.setCanCloseDrawerWhenStop(true);
     AppMethodBeat.o(164660);
   }
   
-  protected final boolean ihF()
+  protected final boolean jMS()
   {
-    return this.YPA;
+    return this.hKw;
   }
   
-  public final void jc(View paramView)
+  public final void mA(View paramView)
   {
-    AppMethodBeat.i(221322);
-    p.k(paramView, "view");
-    if (!this.YPt.getIgnoreInterceptViewList().contains(paramView)) {
-      this.YPt.getIgnoreInterceptViewList().add(paramView);
+    AppMethodBeat.i(235236);
+    s.u(paramView, "view");
+    if (!this.agLh.getIgnoreInterceptViewList().contains(paramView)) {
+      this.agLh.getIgnoreInterceptViewList().add(paramView);
     }
-    AppMethodBeat.o(221322);
+    AppMethodBeat.o(235236);
   }
   
   public final void setBackgroundColorRes(int paramInt)
   {
     AppMethodBeat.i(164651);
-    this.YPv = paramInt;
+    this.agLj = paramInt;
     setBackgroundResource(paramInt);
     AppMethodBeat.o(164651);
   }
   
   public final void setEnableClickBackgroundToCloseDrawer(boolean paramBoolean)
   {
-    this.YPu = paramBoolean;
+    this.agLi = paramBoolean;
   }
   
   protected final void setIntercept(boolean paramBoolean)
   {
-    this.YPA = paramBoolean;
+    this.hKw = paramBoolean;
   }
   
   public final void setKeyboardHeightObserver(h paramh)
   {
     AppMethodBeat.i(164653);
-    this.YPx = paramh;
-    this.YPt.setKeyboardHeightObserver(this.YPx);
+    this.agLl = paramh;
+    this.agLh.setKeyboardHeightObserver(this.agLl);
     AppMethodBeat.o(164653);
   }
   
   public final void setOnOpenDrawerListener(RecyclerViewDrawerSquares.c paramc)
   {
-    this.YPz = paramc;
+    this.agLn = paramc;
   }
   
   public final void setSquaresBackgroundResource(int paramInt)
   {
     AppMethodBeat.i(164652);
-    this.YPw = paramInt;
-    this.YPt.setBackgroundResource(paramInt);
+    this.agLk = paramInt;
+    this.agLh.setBackgroundResource(paramInt);
     AppMethodBeat.o(164652);
   }
   
   public final void setTopOffset(int paramInt)
   {
     AppMethodBeat.i(164650);
-    this.FLg = paramInt;
-    setPadding(0, this.FLg, 0, 0);
+    this.LGn = paramInt;
+    setPadding(0, this.LGn, 0, 0);
     AppMethodBeat.o(164650);
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/view/drawer/RecyclerViewDrawer$Companion;", "", "()V", "TAG", "", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.view.drawer.RecyclerViewDrawer
  * JD-Core Version:    0.7.0.1
  */

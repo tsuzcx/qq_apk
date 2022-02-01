@@ -1,85 +1,58 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.TextView;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.e.f;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
+import com.tencent.mm.plugin.g;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMEditText;
-import java.util.HashMap;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderTestNumFormat;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "editText", "Lcom/tencent/mm/ui/widget/MMEditText;", "kotlin.jvm.PlatformType", "getEditText", "()Lcom/tencent/mm/ui/widget/MMEditText;", "editText$delegate", "Lkotlin/Lazy;", "result", "Landroid/widget/TextView;", "getResult", "()Landroid/widget/TextView;", "result$delegate", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderTestNumFormat;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "editText", "Lcom/tencent/mm/ui/widget/MMEditText;", "kotlin.jvm.PlatformType", "getEditText", "()Lcom/tencent/mm/ui/widget/MMEditText;", "editText$delegate", "Lkotlin/Lazy;", "result", "Landroid/widget/TextView;", "getResult", "()Landroid/widget/TextView;", "result$delegate", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderTestNumFormat
   extends MMFinderUI
 {
-  private HashMap _$_findViewCache;
-  private final f xSD;
-  private final f xSF;
+  private final j Bsi;
+  private final j Bsj;
   
   public FinderTestNumFormat()
   {
-    AppMethodBeat.i(275891);
-    this.xSD = g.ar((kotlin.g.a.a)new b(this));
-    this.xSF = g.ar((kotlin.g.a.a)new d(this));
-    AppMethodBeat.o(275891);
+    AppMethodBeat.i(364776);
+    this.Bsi = k.cm((a)new a(this));
+    this.Bsj = k.cm((a)new c(this));
+    AppMethodBeat.o(364776);
   }
   
   private final MMEditText getEditText()
   {
-    AppMethodBeat.i(293315);
-    MMEditText localMMEditText = (MMEditText)this.xSD.getValue();
-    AppMethodBeat.o(293315);
+    AppMethodBeat.i(364781);
+    MMEditText localMMEditText = (MMEditText)this.Bsi.getValue();
+    AppMethodBeat.o(364781);
     return localMMEditText;
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(275898);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(275898);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(275896);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(275896);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_number_test_layout;
+    return e.f.finder_live_number_test_layout;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(275889);
+    AppMethodBeat.i(364802);
     super.onCreate(paramBundle);
-    getEditText().addTextChangedListener((TextWatcher)new c(this));
-    AppMethodBeat.o(275889);
+    getEditText().addTextChangedListener((TextWatcher)new b(this));
+    AppMethodBeat.o(364802);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -88,32 +61,29 @@ public final class FinderTestNumFormat
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMEditText;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<MMEditText>
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMEditText;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements a<MMEditText>
   {
-    b(FinderTestNumFormat paramFinderTestNumFormat)
+    a(FinderTestNumFormat paramFinderTestNumFormat)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderTestNumFormat$onCreate$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "p0", "", "p1", "", "p2", "p3", "onTextChanged", "plugin-finder_release"})
-  public static final class c
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/ui/FinderTestNumFormat$onCreate$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "p0", "", "p1", "", "p2", "p3", "onTextChanged", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
     implements TextWatcher
   {
+    b(FinderTestNumFormat paramFinderTestNumFormat) {}
+    
     public final void afterTextChanged(Editable paramEditable)
     {
-      AppMethodBeat.i(293182);
-      paramEditable = FinderTestNumFormat.a(this.xSG);
-      p.j(paramEditable, "editText");
-      long l = Util.safeParseLong(Util.nullAsNil(paramEditable.getText().toString()));
-      paramEditable = FinderTestNumFormat.b(this.xSG);
-      p.j(paramEditable, "result");
-      com.tencent.mm.plugin.finder.live.utils.a locala = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      paramEditable.setText((CharSequence)com.tencent.mm.plugin.finder.live.utils.a.XU(l));
-      AppMethodBeat.o(293182);
+      AppMethodBeat.i(365069);
+      long l = Util.safeParseLong(Util.nullAsNil(FinderTestNumFormat.a(this.Bsk).getText().toString()));
+      FinderTestNumFormat.b(this.Bsk).setText((CharSequence)((g)h.ax(g.class)).jp(l));
+      AppMethodBeat.o(365069);
     }
     
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -121,12 +91,12 @@ public final class FinderTestNumFormat
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<TextView>
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements a<TextView>
   {
-    d(FinderTestNumFormat paramFinderTestNumFormat)
+    c(FinderTestNumFormat paramFinderTestNumFormat)
     {
       super();
     }
@@ -134,7 +104,7 @@ public final class FinderTestNumFormat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderTestNumFormat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="219.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/lyt" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.emoji.ui.v3.banner.EmojiStoreV3BannerView android:id="@id/lyv" android:layout_width="fill_parent" android:layout_height="@dimen/ci" />
+    </FrameLayout>
+</FrameLayout>

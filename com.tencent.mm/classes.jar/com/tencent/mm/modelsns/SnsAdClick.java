@@ -9,18 +9,18 @@ public class SnsAdClick
   implements Parcelable
 {
   public static final Parcelable.Creator<SnsAdClick> CREATOR;
-  public long fWg;
-  public int maU;
-  public int maV;
-  public int maW;
-  public int maX;
-  public int maY;
-  public long maZ;
-  public long mba;
-  public int mbb;
-  public long mbc;
-  public long mbd;
-  public int mbe;
+  public long ibq;
+  public int oTO;
+  public int oTP;
+  public int oTQ;
+  public int oTR;
+  public int oTS;
+  public long oTT;
+  public long oTU;
+  public int oTV;
+  public long oTW;
+  public long oTX;
+  public int oTY;
   public int source;
   public long startTime;
   
@@ -33,18 +33,18 @@ public class SnsAdClick
   
   public SnsAdClick()
   {
-    this.maU = 0;
-    this.maV = 0;
-    this.maW = 0;
+    this.oTO = 0;
+    this.oTP = 0;
+    this.oTQ = 0;
     this.startTime = 0L;
-    this.maX = 0;
-    this.maY = 0;
-    this.maZ = 0L;
-    this.mba = 0L;
-    this.mbb = 0;
-    this.mbc = 0L;
-    this.mbd = 0L;
-    this.mbe = 0;
+    this.oTR = 0;
+    this.oTS = 0;
+    this.oTT = 0L;
+    this.oTU = 0L;
+    this.oTV = 0;
+    this.oTW = 0L;
+    this.oTX = 0L;
+    this.oTY = 0;
   }
   
   public SnsAdClick(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4)
@@ -60,26 +60,26 @@ public class SnsAdClick
   private SnsAdClick(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(125653);
-    this.maU = 0;
-    this.maV = 0;
-    this.maW = 0;
+    this.oTO = 0;
+    this.oTP = 0;
+    this.oTQ = 0;
     this.startTime = 0L;
-    this.maX = 0;
-    this.maY = 0;
-    this.maZ = 0L;
-    this.mba = 0L;
-    this.mbb = 0;
-    this.mbc = 0L;
-    this.mbd = 0L;
-    this.mbe = 0;
+    this.oTR = 0;
+    this.oTS = 0;
+    this.oTT = 0L;
+    this.oTU = 0L;
+    this.oTV = 0;
+    this.oTW = 0L;
+    this.oTX = 0L;
+    this.oTY = 0;
     this.source = paramInt1;
-    this.maU = paramInt2;
-    this.fWg = paramLong;
-    this.maV = paramInt3;
-    this.maW = paramInt4;
-    this.maX = 0;
-    this.maY = 0;
-    this.mbb = paramInt5;
+    this.oTO = paramInt2;
+    this.ibq = paramLong;
+    this.oTP = paramInt3;
+    this.oTQ = paramInt4;
+    this.oTR = 0;
+    this.oTS = 0;
+    this.oTV = paramInt5;
     this.startTime = System.currentTimeMillis();
     AppMethodBeat.o(125653);
   }
@@ -98,23 +98,23 @@ public class SnsAdClick
   {
     AppMethodBeat.i(125654);
     paramParcel.writeInt(this.source);
-    paramParcel.writeInt(this.maU);
-    paramParcel.writeLong(this.fWg);
-    paramParcel.writeInt(this.maV);
-    paramParcel.writeInt(this.maW);
-    paramParcel.writeInt(this.maX);
-    paramParcel.writeInt(this.maY);
+    paramParcel.writeInt(this.oTO);
+    paramParcel.writeLong(this.ibq);
+    paramParcel.writeInt(this.oTP);
+    paramParcel.writeInt(this.oTQ);
+    paramParcel.writeInt(this.oTR);
+    paramParcel.writeInt(this.oTS);
     paramParcel.writeLong(this.startTime);
-    paramParcel.writeLong(this.mba);
-    paramParcel.writeLong(this.mbc);
-    paramParcel.writeLong(this.mbd);
-    paramParcel.writeInt(this.mbe);
+    paramParcel.writeLong(this.oTU);
+    paramParcel.writeLong(this.oTW);
+    paramParcel.writeLong(this.oTX);
+    paramParcel.writeInt(this.oTY);
     AppMethodBeat.o(125654);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelsns.SnsAdClick
  * JD-Core Version:    0.7.0.1
  */

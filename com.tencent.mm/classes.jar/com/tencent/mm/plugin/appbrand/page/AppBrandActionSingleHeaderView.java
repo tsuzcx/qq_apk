@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -15,8 +14,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppBrandActionSingleHeaderView
   extends LinearLayout
 {
-  private TextView bFR;
-  private ImageView fDJ;
+  private TextView dyR;
+  private ImageView hIz;
   
   public AppBrandActionSingleHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,7 +25,6 @@ public class AppBrandActionSingleHeaderView
     AppMethodBeat.o(134940);
   }
   
-  @TargetApi(11)
   public AppBrandActionSingleHeaderView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
@@ -39,47 +37,47 @@ public class AppBrandActionSingleHeaderView
   {
     AppMethodBeat.i(134942);
     ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(a.e.appbrand_action_single_header, this);
-    this.fDJ = ((ImageView)findViewById(a.d.appbrand_action_single_header_image));
-    this.bFR = ((TextView)findViewById(a.d.appbrand_action_single_header_text));
+    this.hIz = ((ImageView)findViewById(a.d.appbrand_action_single_header_image));
+    this.dyR = ((TextView)findViewById(a.d.appbrand_action_single_header_text));
     AppMethodBeat.o(134942);
   }
   
   public ImageView getImageView()
   {
-    return this.fDJ;
+    return this.hIz;
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(134944);
-    this.fDJ.setImageDrawable(paramDrawable);
+    this.hIz.setImageDrawable(paramDrawable);
     AppMethodBeat.o(134944);
   }
   
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(134943);
-    this.fDJ.setImageResource(paramInt);
+    this.hIz.setImageResource(paramInt);
     AppMethodBeat.o(134943);
   }
   
   public void setTextViewText(String paramString)
   {
     AppMethodBeat.i(134945);
-    this.bFR.setText(paramString);
+    this.dyR.setText(paramString);
     AppMethodBeat.o(134945);
   }
   
   public void setTextViewTextColor(int paramInt)
   {
     AppMethodBeat.i(134946);
-    this.bFR.setTextColor(paramInt);
+    this.dyR.setTextColor(paramInt);
     AppMethodBeat.o(134946);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.AppBrandActionSingleHeaderView
  * JD-Core Version:    0.7.0.1
  */

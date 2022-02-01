@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class KeyboardHeightProvider$3
-  implements k
+  implements p
 {
   KeyboardHeightProvider$3(ap paramap) {}
   
-  @t(jl=h.a.ON_PAUSE)
+  @z(Ho=j.a.ON_PAUSE)
   void onPaused()
   {
-    AppMethodBeat.i(229649);
-    this.rym.close();
-    AppMethodBeat.o(229649);
+    AppMethodBeat.i(324425);
+    this.uJq.close();
+    AppMethodBeat.o(324425);
   }
   
-  @t(jl=h.a.ON_RESUME)
+  @z(Ho=j.a.ON_RESUME)
   void onResumed()
   {
-    AppMethodBeat.i(229646);
-    this.rym.start();
-    AppMethodBeat.o(229646);
+    AppMethodBeat.i(324420);
+    this.uJq.start();
+    AppMethodBeat.o(324420);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.KeyboardHeightProvider.3
  * JD-Core Version:    0.7.0.1
  */

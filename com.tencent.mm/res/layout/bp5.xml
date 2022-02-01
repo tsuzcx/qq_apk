@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/kpd" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center" android:layout_gravity="center" android:id="@id/c2h" android:padding="@dimen/hs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/tx" style="MMFontPreferenceLarge" />
-    <ListView android:textColor="@color/a0i" android:id="@id/h5k" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+    <TextView android:gravity="center|left|top" android:id="@id/hv5" android:paddingTop="@dimen/cp" android:layout_width="@dimen/f9" android:layout_height="fill_parent" android:layout_marginRight="@dimen/ig" android:text="@string/bod" style="@style/nx" />
+    <LinearLayout android:orientation="vertical" android:id="@id/hv4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/a8f" android:showDividers="middle">
+        <include layout="@layout/bp8" />
+        <include layout="@layout/bp8" />
+        <include layout="@layout/bp8" />
+        <include layout="@layout/bp8" />
+        <include layout="@layout/bp8" />
+    </LinearLayout>
 </LinearLayout>

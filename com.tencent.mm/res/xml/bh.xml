@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="mail_receiver_info_name" android:layout="@layout/b8j" android:title="@string/eu_" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="mail_receiver_info_addr" android:layout="@layout/b8j" android:title="@string/eu9" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference android:key="contact_is_mute" android:title="@string/i7s" />
+    <CheckBoxPreference android:key="contact_info_subscribe_bizinfo" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bsk" />
+    <Preference android:layout="@layout/xk" android:title="@string/bla" />
     <PreferenceSmallCategory />
-    <Preference android:key="mail_compose_btn" android:layout="@layout/aw2" android:title="@string/fnc" />
+    <CheckBoxPreference android:key="contact_info_locate" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bny" />
+    <Preference android:key="contact_info_template_recv" android:layout="@layout/bdi" android:title="@string/bsm" />
+    <Preference android:key="contact_info_add_shortcut_btn" android:layout="@layout/bdi" android:title="@string/bjo" />
+    <Preference android:key="contact_info_clear_msg" android:layout="@layout/bdi" android:title="@string/bk6" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_subscribe_msg" android:layout="@layout/bdi" android:title="@string/bsl" />
 </PreferenceScreen>

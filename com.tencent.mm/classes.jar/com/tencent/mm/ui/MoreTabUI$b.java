@@ -1,14 +1,14 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 
 final class MoreTabUI$b
-  implements i
+  implements h
 {
   MoreTabUI$b(MoreTabUI paramMoreTabUI) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq) {}
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp) {}
 }
 
 

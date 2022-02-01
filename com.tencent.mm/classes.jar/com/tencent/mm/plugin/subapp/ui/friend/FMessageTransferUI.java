@@ -1,22 +1,21 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bl.d;
 import com.tencent.mm.kernel.k;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.model.bh;
+import com.tencent.mm.modelverify.d;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.MMActivity;
 
 @k
 public class FMessageTransferUI
   extends MMActivity
 {
-  private int ffE;
+  private int hjO;
   
   public int getLayoutId()
   {
@@ -31,12 +30,12 @@ public class FMessageTransferUI
     if (Util.isNullOrNil(paramBundle)) {
       finish();
     }
-    d.bqc().bwR(paramBundle);
-    d.bqc().hzf();
+    d.bNI().byk(paramBundle);
+    d.bNI().jbf();
     String str1 = getIntent().getAction();
     String str2 = "friend_message_accept_".concat(String.valueOf(paramBundle));
-    this.ffE = (0x7F000000 | 0x7FFFFFFF & paramBundle.hashCode());
-    bh.getNotification().cancel(this.ffE);
+    this.hjO = (0x7F000000 | 0x7FFFFFFF & paramBundle.hashCode());
+    bh.getNotification().cancel(this.hjO);
     if (str2.equals(str1)) {
       a.i(getContext(), paramBundle, true);
     }

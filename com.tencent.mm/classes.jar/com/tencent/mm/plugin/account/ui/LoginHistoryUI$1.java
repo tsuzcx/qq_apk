@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.account.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.mq;
+import com.tencent.mm.autogen.a.nx;
 import com.tencent.mm.sdk.event.IListener;
 
-final class LoginHistoryUI$1
-  extends IListener<mq>
+class LoginHistoryUI$1
+  extends IListener<nx>
 {
-  LoginHistoryUI$1(LoginHistoryUI paramLoginHistoryUI)
+  LoginHistoryUI$1(LoginHistoryUI paramLoginHistoryUI, q paramq)
   {
-    AppMethodBeat.i(161701);
-    this.__eventId = mq.class.getName().hashCode();
-    AppMethodBeat.o(161701);
+    super(paramq);
+    AppMethodBeat.i(304928);
+    this.__eventId = nx.class.getName().hashCode();
+    AppMethodBeat.o(304928);
   }
 }
 

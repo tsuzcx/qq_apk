@@ -1,77 +1,84 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class tk
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String Sdi;
-  public LinkedList<String> Sdj;
-  
-  public tk()
-  {
-    AppMethodBeat.i(72427);
-    this.Sdj = new LinkedList();
-    AppMethodBeat.o(72427);
-  }
+  public String icon;
+  public String title;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72428);
+    AppMethodBeat.i(32152);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Sdi != null) {
-        paramVarArgs.f(1, this.Sdi);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.url != null) {
+        paramVarArgs.g(1, this.url);
       }
-      paramVarArgs.e(2, 1, this.Sdj);
-      AppMethodBeat.o(72428);
+      if (this.title != null) {
+        paramVarArgs.g(2, this.title);
+      }
+      if (this.icon != null) {
+        paramVarArgs.g(3, this.icon);
+      }
+      AppMethodBeat.o(32152);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Sdi == null) {
-        break label274;
+      if (this.url == null) {
+        break label339;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.g(1, this.Sdi) + 0;; paramInt = 0)
+    label339:
+    for (int i = i.a.a.b.b.a.h(1, this.url) + 0;; i = 0)
     {
-      int i = g.a.a.a.c(2, 1, this.Sdj);
-      AppMethodBeat.o(72428);
-      return paramInt + i;
+      paramInt = i;
+      if (this.title != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.title);
+      }
+      i = paramInt;
+      if (this.icon != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.icon);
+      }
+      AppMethodBeat.o(32152);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.Sdj.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(72428);
+        AppMethodBeat.o(32152);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         tk localtk = (tk)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(72428);
+          AppMethodBeat.o(32152);
           return -1;
         case 1: 
-          localtk.Sdi = locala.abFh.readString();
-          AppMethodBeat.o(72428);
+          localtk.url = locala.ajGk.readString();
+          AppMethodBeat.o(32152);
+          return 0;
+        case 2: 
+          localtk.title = locala.ajGk.readString();
+          AppMethodBeat.o(32152);
           return 0;
         }
-        localtk.Sdj.add(locala.abFh.readString());
-        AppMethodBeat.o(72428);
+        localtk.icon = locala.ajGk.readString();
+        AppMethodBeat.o(32152);
         return 0;
       }
-      AppMethodBeat.o(72428);
+      AppMethodBeat.o(32152);
       return -1;
     }
   }

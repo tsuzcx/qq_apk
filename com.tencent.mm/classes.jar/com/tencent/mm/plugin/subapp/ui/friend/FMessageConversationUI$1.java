@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.v.a;
+import com.tencent.mm.ui.x.a;
 
 final class FMessageConversationUI$1
-  implements v.a
+  implements x.a
 {
   FMessageConversationUI$1(FMessageConversationUI paramFMessageConversationUI) {}
   
-  public final void bxN()
+  public final void bWC()
   {
     AppMethodBeat.i(29037);
-    FMessageConversationUI.a(this.MeO);
+    FMessageConversationUI.a(this.SGh);
     AppMethodBeat.o(29037);
   }
 }

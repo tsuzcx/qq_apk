@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bk0" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/wm" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/bca" android:scaleType="centerCrop" />
-        <TextView android:textSize="16.0dip" android:textColor="@color/a2x" android:id="@id/fzc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-    </LinearLayout>
-    <TextView android:textSize="24.0dip" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:maxLines="3" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/a2x" android:id="@id/imo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="30.0dip" android:text="2017-10-23 18:30" />
+    <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/kwr" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

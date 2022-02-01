@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/co_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct">
-        <TextView android:id="@id/co5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="skinSmooth" android:layout_marginEnd="@dimen/ct" />
-        <SeekBar android:id="@id/coa" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
-        <TextView android:id="@id/cof" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct">
-        <TextView android:id="@id/co6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="eyeMorph" android:layout_marginEnd="@dimen/ct" />
-        <SeekBar android:id="@id/cob" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
-        <TextView android:id="@id/cog" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct">
-        <TextView android:id="@id/co7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="faceMorph" android:layout_marginEnd="@dimen/ct" />
-        <SeekBar android:id="@id/coc" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
-        <TextView android:id="@id/coh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct">
-        <TextView android:id="@id/co8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="eyeBright" android:layout_marginEnd="@dimen/ct" />
-        <SeekBar android:id="@id/cod" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
-        <TextView android:id="@id/coi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct">
-        <TextView android:id="@id/co9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="skinBright" android:layout_marginEnd="@dimen/ct" />
-        <SeekBar android:id="@id/coe" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
-        <TextView android:id="@id/coj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct" />
-    </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/cik" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/hp" android:textStyle="bold" android:textColor="@android:color/white" android:id="@id/bxr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/hp" android:textColor="@android:color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" android:text="/" />
+    <TextView android:textSize="@dimen/hp" android:textStyle="bold" android:textColor="@color/yc" android:id="@id/kt_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 </LinearLayout>

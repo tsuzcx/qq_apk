@@ -29,7 +29,15 @@ public class TXCFocusIndicatorView
     AppMethodBeat.i(16938);
     this.mSize = 0;
     this.mFocusAreaStroke = 2;
-    this.mHideRunnable = new TXCFocusIndicatorView.1(this);
+    this.mHideRunnable = new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(16750);
+        TXCFocusIndicatorView.this.setVisibility(8);
+        AppMethodBeat.o(16750);
+      }
+    };
     init(null, 0);
     AppMethodBeat.o(16938);
   }
@@ -40,7 +48,15 @@ public class TXCFocusIndicatorView
     AppMethodBeat.i(16939);
     this.mSize = 0;
     this.mFocusAreaStroke = 2;
-    this.mHideRunnable = new TXCFocusIndicatorView.1(this);
+    this.mHideRunnable = new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(16750);
+        TXCFocusIndicatorView.this.setVisibility(8);
+        AppMethodBeat.o(16750);
+      }
+    };
     init(paramAttributeSet, 0);
     AppMethodBeat.o(16939);
   }
@@ -51,7 +67,15 @@ public class TXCFocusIndicatorView
     AppMethodBeat.i(16940);
     this.mSize = 0;
     this.mFocusAreaStroke = 2;
-    this.mHideRunnable = new TXCFocusIndicatorView.1(this);
+    this.mHideRunnable = new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(16750);
+        TXCFocusIndicatorView.this.setVisibility(8);
+        AppMethodBeat.o(16750);
+      }
+    };
     init(paramAttributeSet, paramInt);
     AppMethodBeat.o(16940);
   }

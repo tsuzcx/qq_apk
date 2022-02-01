@@ -1,25 +1,53 @@
 package com.tencent.mm.plugin.appbrand.y;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.teenmode.a.b;
-import com.tencent.mm.storage.c;
+import com.tencent.mm.plugin.appbrand.jsapi.x.b.a;
+import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  public static boolean ciz()
+  private static final Map<Integer, Object> mza;
+  
+  static
   {
-    AppMethodBeat.i(48237);
-    c localc = com.tencent.mm.model.c.d.bgB().Mu("100159");
-    if ((localc.isValid()) && ("1".equals(localc.hvz().get("isCloseWeappSearch")))) {}
-    for (int i = 1; (i == 0) && ((!((b)h.ae(b.class)).ZM()) || (((b)h.ae(b.class)).gks() == 1)); i = 0)
+    AppMethodBeat.i(48006);
+    mza = new HashMap();
+    AppMethodBeat.o(48006);
+  }
+  
+  public static void CY(int paramInt)
+  {
+    AppMethodBeat.i(48003);
+    if (!mza.containsKey(Integer.valueOf(paramInt)))
     {
-      AppMethodBeat.o(48237);
-      return true;
+      AppMethodBeat.o(48003);
+      return;
     }
-    AppMethodBeat.o(48237);
-    return false;
+    mza.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(48003);
+  }
+  
+  public static void cIf()
+  {
+    AppMethodBeat.i(48004);
+    mza.clear();
+    AppMethodBeat.o(48004);
+  }
+  
+  public static void cIg()
+  {
+    AppMethodBeat.i(48005);
+    com.tencent.mm.plugin.appbrand.jsapi.x.b.sqL = new b.a()
+    {
+      public final void AV(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(48002);
+        a.CY(paramAnonymousInt);
+        AppMethodBeat.o(48002);
+      }
+    };
+    AppMethodBeat.o(48005);
   }
 }
 

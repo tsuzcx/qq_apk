@@ -1,81 +1,77 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class axl
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String SJO;
-  public int SJP;
-  public String SKa;
+  public LinkedList<axv> KNn;
+  
+  public axl()
+  {
+    AppMethodBeat.i(168961);
+    this.KNn = new LinkedList();
+    AppMethodBeat.o(168961);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(230010);
+    AppMethodBeat.i(168962);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SKa != null) {
-        paramVarArgs.f(1, this.SKa);
-      }
-      if (this.SJO != null) {
-        paramVarArgs.f(101, this.SJO);
-      }
-      paramVarArgs.aY(102, this.SJP);
-      AppMethodBeat.o(230010);
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 8, this.KNn);
+      AppMethodBeat.o(168962);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.SKa == null) {
-        break label330;
-      }
-    }
-    label330:
-    for (paramInt = g.a.a.b.b.a.g(1, this.SKa) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.SJO != null) {
-        i = paramInt + g.a.a.b.b.a.g(101, this.SJO);
-      }
-      paramInt = g.a.a.b.b.a.bM(102, this.SJP);
-      AppMethodBeat.o(230010);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(230010);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        axl localaxl = (axl)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(230010);
-          return -1;
-        case 1: 
-          localaxl.SKa = locala.abFh.readString();
-          AppMethodBeat.o(230010);
-          return 0;
-        case 101: 
-          localaxl.SJO = locala.abFh.readString();
-          AppMethodBeat.o(230010);
-          return 0;
-        }
-        localaxl.SJP = locala.abFh.AK();
-        AppMethodBeat.o(230010);
-        return 0;
-      }
-      AppMethodBeat.o(230010);
-      return -1;
+      paramInt = i.a.a.a.c(1, 8, this.KNn);
+      AppMethodBeat.o(168962);
+      return paramInt + 0;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.KNn.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(168962);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      axl localaxl = (axl)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(168962);
+        return -1;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        axv localaxv = new axv();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localaxv.parseFrom((byte[])localObject);
+        }
+        localaxl.KNn.add(localaxv);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(168962);
+      return 0;
+    }
+    AppMethodBeat.o(168962);
+    return -1;
   }
 }
 

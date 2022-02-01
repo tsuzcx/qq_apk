@@ -10,16 +10,16 @@ import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public class g
-  extends br<s>
+  extends bv<s>
 {
-  public final void a(Context paramContext, String paramString, br.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
     AppMethodBeat.i(78524);
     Log.i("MicroMsg.JsApiCancelDownloadTask", "invokeInMM");
-    paramContext = c.agO(paramString);
+    paramContext = c.ZL(paramString);
     if (paramContext == null)
     {
-      parama.i("fail", null);
+      parama.j("fail", null);
       AppMethodBeat.o(78524);
       return;
     }
@@ -27,23 +27,23 @@ public class g
     if (l <= 0L)
     {
       Log.e("MicroMsg.JsApiCancelDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
-      parama.i("invalid_downloadid", null);
+      parama.j("invalid_downloadid", null);
       AppMethodBeat.o(78524);
       return;
     }
-    if (f.cPZ().Iw(l) > 0)
+    if (f.duv().kR(l) > 0)
     {
-      parama.i(null, null);
+      parama.j(null, null);
       AppMethodBeat.o(78524);
       return;
     }
-    parama.i("fail", null);
+    parama.j("fail", null);
     AppMethodBeat.o(78524);
   }
   
   public final void b(b<s>.a paramb) {}
   
-  public final int cDj()
+  public final int dgI()
   {
     return 1;
   }

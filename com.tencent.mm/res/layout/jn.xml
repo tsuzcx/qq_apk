@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/idq" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/bb">
-            <LinearLayout android:gravity="center_vertical" android:background="@drawable/ay2" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="@dimen/bb">
-                <TextView android:textSize="@dimen/is" android:textColor="@color/BW_0_Alpha_0_9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ahq" android:layout_weight="1.0" android:layout_centerVertical="true" />
-                <include android:id="@id/idn" layout="@layout/b8r" />
-            </LinearLayout>
-        </RelativeLayout>
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/idp" android:paddingTop="@dimen/hv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:text="@string/ahp" />
-        <com.tencent.mm.msgsubscription.ui.MaxRecyclerView android:id="@id/idm" android:background="@drawable/ay2" android:paddingTop="1.0px" android:paddingBottom="1.0px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:nestedScrollingEnabled="false" />
-    </LinearLayout>
-</ScrollView>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/jj" />
+    <com.tencent.mm.plugin.brandservice.ui.timeline.item.BizTLRecCardCanvasView android:id="@id/if1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/ang" />
+</LinearLayout>

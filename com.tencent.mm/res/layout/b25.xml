@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/k9m" android:background="@color/a19" android:layout_marginTop="@dimen/ae7" style="@style/i7" />
+    <RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/k9m">
+        <com.tencent.mm.plugin.hld.view.ImeEditText android:textSize="@dimen/ae3" android:textColor="@color/FG_0" android:gravity="center_vertical" android:id="@id/kzw" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ae7" android:layout_marginBottom="@dimen/ae1" android:maxLines="3" android:textCursorDrawable="@drawable/a8b" android:layout_marginStart="@dimen/ae2" android:layout_marginEnd="@dimen/ae2" />
+        <View android:id="@id/kzx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ae7" android:layout_alignBottom="@id/kzw" android:layout_marginStart="@dimen/ae2" android:layout_marginEnd="@dimen/ae2" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:id="@id/k9l" android:background="@drawable/aa6" android:layout_width="@dimen/ady" android:layout_height="@dimen/ady" android:layout_marginEnd="@dimen/adz" android:layout_alignParentEnd="true">
+        <ImageView android:id="@id/jhw" android:padding="@dimen/adm" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/ime_strike_back" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,32 +1,41 @@
 package com.tencent.matrix;
 
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.matrix.e.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class e$1
-  implements View.OnClickListener
+  implements c.a
 {
-  public final void onClick(View paramView)
+  e$1(e parame) {}
+  
+  public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/matrix/MatrixSettingUIHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-    Log.i("Matrix.UISettingHandler", "[onClick] FrameDecorator");
-    localObject = new Intent();
-    ((Intent)localObject).setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.matrix.MatrixSettingUI");
-    ((Intent)localObject).addFlags(67108864);
-    ((Intent)localObject).addFlags(268435456);
-    paramView = MMApplicationContext.getContext();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/matrix/MatrixSettingUIHandler$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
-    com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/matrix/MatrixSettingUIHandler$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/matrix/MatrixSettingUIHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    Log.d(paramString1, paramString2, paramVarArgs);
+  }
+  
+  public final void e(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    Log.e(paramString1, paramString2, paramVarArgs);
+  }
+  
+  public final void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    Log.i(paramString1, paramString2, paramVarArgs);
+  }
+  
+  public final void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    Log.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+  }
+  
+  public final void v(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    Log.v(paramString1, paramString2, paramVarArgs);
+  }
+  
+  public final void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    Log.w(paramString1, paramString2, paramVarArgs);
   }
 }
 

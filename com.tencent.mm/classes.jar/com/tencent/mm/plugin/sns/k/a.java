@@ -1,194 +1,264 @@
 package com.tencent.mm.plugin.sns.k;
 
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.m;
-import com.tencent.mm.plugin.sns.data.t;
-import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.plugin.sns.ui.SnsHeader;
-import com.tencent.mm.plugin.sns.ui.SnsLikesTextView;
-import com.tencent.mm.plugin.sns.ui.bm;
-import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.protocal.protobuf.cxu;
+import com.tencent.mm.protocal.protobuf.dmz;
+import com.tencent.mm.protocal.protobuf.dnb;
+import com.tencent.mm.protocal.protobuf.en;
+import com.tencent.mm.protocal.protobuf.hl;
+import com.tencent.mm.protocal.protobuf.hm;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
 
 public final class a
 {
-  public SnsHeader Kfp;
-  public boolean Kfq = false;
-  public ListView kJh;
-  public int mScreenHeight = 0;
-  public int mScreenWidth = 0;
-  
-  public final a b(bm parambm)
+  private static float Pk(String paramString)
   {
-    AppMethodBeat.i(96173);
-    int i = m.mbx;
-    if (i == 2)
+    float f1 = 0.0F;
+    AppMethodBeat.i(96144);
+    if (paramString == null)
     {
-      AppMethodBeat.o(96173);
-      return null;
+      AppMethodBeat.o(96144);
+      return 0.0F;
     }
-    if ((i == 4) && (!this.Kfq))
+    try
     {
-      AppMethodBeat.o(96173);
-      return null;
+      float f2 = Util.getFloat(paramString, 0.0F);
+      f1 = f2;
     }
-    long l = System.nanoTime();
-    a locala = new a();
-    locala.Kfr = System.currentTimeMillis();
-    locala.mScreenHeight = this.mScreenHeight;
-    locala.mScreenWidth = this.mScreenWidth;
-    int k = this.Kfp.getTop();
-    int j = this.Kfp.getHeight();
-    i = j;
-    if (k < 0) {
-      i = j + k;
-    }
-    locala.Kft = i;
-    j = this.kJh.getFirstVisiblePosition() - 1;
-    int m = this.kJh.getLastVisiblePosition() - 1;
-    locala.Kfs = j;
-    locala.lL = m;
-    int n = parambm.getCount();
-    boolean bool = false;
-    if (this.kJh.getChildAt(0) != null) {
-      bool = this.kJh.getChildAt(0) instanceof SnsHeader;
-    }
-    Log.v("MicroMsg.CaptureSnsHelper", "first last %s %s isHeaderExist %s", new Object[] { Integer.valueOf(j), Integer.valueOf(m), Boolean.valueOf(bool) });
-    if (bool)
+    catch (Exception localException)
     {
-      i = 1;
-      int i1 = this.kJh.getChildCount();
-      label232:
-      if (j > m) {
-        break label734;
-      }
-      k = i;
-      if (j < n)
+      for (;;)
       {
-        k = i;
-        if (j >= 0)
-        {
-          if (i < i1) {
-            break label304;
-          }
-          Log.e("MicroMsg.CaptureSnsHelper", "childPos biger than childCount %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(i1) });
-          k = i;
-        }
+        Log.e("MicroMsg.AlbumBgHelper", "parseFloat error ".concat(String.valueOf(paramString)));
       }
+    }
+    AppMethodBeat.o(96144);
+    return f1;
+  }
+  
+  private static String Pl(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    return str;
+  }
+  
+  private static en a(Map<String, String> paramMap, en paramen)
+  {
+    AppMethodBeat.i(96146);
+    hl localhl = new hl();
+    localhl.IGU = Pl((String)paramMap.get(".albumList.album.author.name"));
+    localhl.hAP = Pl((String)paramMap.get(".albumList.album.author.title"));
+    localhl.crB = Pl((String)paramMap.get(".albumList.album.author.description"));
+    localhl.YIQ = Pl((String)paramMap.get(".albumList.album.author.quote"));
+    localhl.YIR = aY(paramMap);
+    paramen.YGD = localhl;
+    AppMethodBeat.o(96146);
+    return paramen;
+  }
+  
+  private static hm aY(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(96147);
+    hm localhm = new hm();
+    dnb localdnb = ae(paramMap, ".albumList.album.author.icon.media");
+    String str1 = (String)paramMap.get(".albumList.album.author.icon.media.id");
+    String str2 = (String)paramMap.get(".albumList.album.author.icon.media.type");
+    String str3 = (String)paramMap.get(".albumList.album.author.icon.media.title");
+    String str4 = (String)paramMap.get(".albumList.album.author.icon.media.desc");
+    String str5 = (String)paramMap.get(".albumList.album.author.icon.media.url");
+    String str6 = (String)paramMap.get(".albumList.album.author.icon.media.private");
+    String str7 = (String)paramMap.get(".albumList.album.author.icon.media.thumb");
+    String str8 = (String)paramMap.get(".albumList.album.author.icon.media.url.$type");
+    paramMap = (String)paramMap.get(".albumList.album.author.icon.media.thumb.$type");
+    dmz localdmz = new dmz();
+    localdmz.Id = Pl(str1);
+    localdmz.vhJ = aZh(str2);
+    localdmz.hAP = Pl(str3);
+    localdmz.IGG = Pl(str4);
+    localdmz.Url = Pl(str5);
+    localdmz.aazR = aZh(str8);
+    localdmz.aaTl = Pl(str7);
+    localdmz.aaTm = aZh(paramMap);
+    localdmz.Privated = aZh(str6);
+    localdmz.aaTn = localdnb;
+    localhm.YIS = localdmz;
+    AppMethodBeat.o(96147);
+    return localhm;
+  }
+  
+  private static int aZh(String paramString)
+  {
+    int i = 0;
+    AppMethodBeat.i(96143);
+    try
+    {
+      int j = Util.getInt(paramString, 0);
+      i = j;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.AlbumBgHelper", "parserInt error ".concat(String.valueOf(paramString)));
+      }
+    }
+    AppMethodBeat.o(96143);
+    return i;
+  }
+  
+  public static en aZi(String paramString)
+  {
+    AppMethodBeat.i(96145);
+    Map localMap = XmlParser.parseXml(paramString, "albumList", null);
+    paramString = new en();
+    if (localMap != null)
+    {
+      paramString.IJD = Pl((String)localMap.get(".albumList.$lang"));
+      paramString = b(localMap, a(localMap, paramString));
     }
     for (;;)
     {
-      j += 1;
-      i = k;
-      break label232;
-      i = 0;
-      break;
-      label304:
-      if (locala.Kfu == null) {
-        locala.Kfu = new LinkedList();
-      }
-      b localb = new b();
-      locala.Kfu.add(localb);
-      Object localObject = this.kJh.getChildAt(i);
-      k = i + 1;
-      int i2;
-      int i3;
-      int i4;
-      if (localObject != null)
-      {
-        i = ((View)localObject).getTop();
-        i2 = ((View)localObject).getLeft();
-        i3 = ((View)localObject).getHeight();
-        i4 = ((View)localObject).getWidth();
-        SnsInfo localSnsInfo = parambm.agM(j);
-        localb.Kfz = t.w(localSnsInfo);
-        localb.Kfx = localSnsInfo.field_type;
-        localb.Kfy = localSnsInfo.isAd();
-        localb.Kfv = i;
-        localb.Kfw = i2;
-        localb.aIk = i3;
-        localb.aIj = i4;
-      }
-      if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof BaseTimeLineItem.BaseViewHolder)))
-      {
-        localObject = (BaseTimeLineItem.BaseViewHolder)((View)localObject).getTag();
-        if ((((BaseTimeLineItem.BaseViewHolder)localObject).Llo) && (((BaseTimeLineItem.BaseViewHolder)localObject).KAX != null))
-        {
-          i = ((BaseTimeLineItem.BaseViewHolder)localObject).KAX.getTop();
-          i2 = ((BaseTimeLineItem.BaseViewHolder)localObject).KAX.getLeft();
-          i3 = ((BaseTimeLineItem.BaseViewHolder)localObject).Llf.getHeight();
-          i4 = ((BaseTimeLineItem.BaseViewHolder)localObject).Llf.getWidth();
-          int i5 = ((BaseTimeLineItem.BaseViewHolder)localObject).Llh.getTop();
-          int i6 = ((BaseTimeLineItem.BaseViewHolder)localObject).Llh.getLeft();
-          int i7 = ((BaseTimeLineItem.BaseViewHolder)localObject).Llh.getHeight();
-          int i8 = ((BaseTimeLineItem.BaseViewHolder)localObject).Llh.getWidth();
-          Log.v("MicroMsg.CaptureSnsHelper", "holder position %s %s index %s", new Object[] { Integer.valueOf(((BaseTimeLineItem.BaseViewHolder)localObject).position), Integer.valueOf(j), Integer.valueOf(k) });
-          if (((BaseTimeLineItem.BaseViewHolder)localObject).snsobj.LikeCount != 0)
-          {
-            localb.KfB = ((BaseTimeLineItem.BaseViewHolder)localObject).snsobj.LikeCount;
-            localb.KfC = i;
-            localb.KfD = i2;
-            localb.KfE = i4;
-            localb.KfF = i3;
-          }
-          if (((BaseTimeLineItem.BaseViewHolder)localObject).snsobj.CommentCount != 0)
-          {
-            localb.KfA = ((BaseTimeLineItem.BaseViewHolder)localObject).snsobj.CommentCount;
-            localb.KfH = (i6 + i2);
-            localb.KfG = (i5 + i);
-            localb.KfI = i8;
-            localb.KfJ = i7;
-          }
-        }
-      }
+      AppMethodBeat.o(96145);
+      return paramString;
     }
-    label734:
-    Log.i("MicroMsg.CaptureSnsHelper", "end cap: " + (System.nanoTime() - l));
-    AppMethodBeat.o(96173);
-    return locala;
   }
   
-  public static final class a
+  private static dnb ae(Map<String, String> paramMap, String paramString)
   {
-    public long Kfr;
-    public int Kfs;
-    public int Kft;
-    public List<a.b> Kfu;
-    public int lL;
-    public int mScreenHeight;
-    public int mScreenWidth;
+    AppMethodBeat.i(96148);
+    String str2 = paramString + ".size.$width";
+    String str1 = paramString + ".size.$height";
+    Object localObject = paramString + ".size.$totalSize";
+    paramString = (String)paramMap.get(str2);
+    str1 = (String)paramMap.get(str1);
+    paramMap = (String)paramMap.get(localObject);
+    localObject = new dnb();
+    ((dnb)localObject).aaUc = 0.0F;
+    ((dnb)localObject).aaUb = 0.0F;
+    ((dnb)localObject).aaUd = 0.0F;
+    if (paramString != null) {
+      ((dnb)localObject).aaUb = Pk(paramString);
+    }
+    if (str1 != null) {
+      ((dnb)localObject).aaUc = Pk(str1);
+    }
+    if (paramMap != null) {
+      ((dnb)localObject).aaUd = Pk(paramMap);
+    }
+    AppMethodBeat.o(96148);
+    return localObject;
   }
   
-  public static final class b
+  private static LinkedList<dmz> af(Map<String, String> paramMap, String paramString)
   {
-    public int KfA;
-    public int KfB;
-    public int KfC;
-    public int KfD;
-    public int KfE;
-    public int KfF;
-    public int KfG;
-    public int KfH;
-    public int KfI;
-    public int KfJ;
-    public int Kfv;
-    public int Kfw;
-    public int Kfx;
-    public boolean Kfy;
-    public String Kfz;
-    public int aIj;
-    public int aIk;
+    AppMethodBeat.i(96150);
+    LinkedList localLinkedList = new LinkedList();
+    int i = 0;
+    String str9;
+    String str8;
+    String str7;
+    String str6;
+    String str5;
+    String str3;
+    String str2;
+    String str1;
+    String str4;
+    if (i != 0)
+    {
+      str9 = paramString + ".media" + i + ".id";
+      str8 = paramString + ".media" + i + ".type";
+      str7 = paramString + ".media" + i + ".title";
+      str6 = paramString + ".media" + i + ".desc";
+      str5 = paramString + ".media" + i + ".url";
+      str3 = paramString + ".media" + i + ".thumb";
+      str2 = paramString + ".media" + i + ".url.$type";
+      str1 = paramString + ".media" + i + ".thumb.$type";
+      str4 = paramString + ".media" + i + ".private";
+    }
+    for (Object localObject = paramString + ".media" + i;; localObject = paramString + ".media")
+    {
+      if ((str9 == null) || (str8 == null)) {
+        break label803;
+      }
+      localObject = ae(paramMap, (String)localObject);
+      str9 = (String)paramMap.get(str9);
+      str8 = (String)paramMap.get(str8);
+      str7 = (String)paramMap.get(str7);
+      str6 = (String)paramMap.get(str6);
+      str5 = (String)paramMap.get(str5);
+      str4 = (String)paramMap.get(str4);
+      str3 = (String)paramMap.get(str3);
+      str2 = (String)paramMap.get(str2);
+      str1 = (String)paramMap.get(str1);
+      if ((str9 == null) || (str8 == null)) {
+        break label803;
+      }
+      dmz localdmz = new dmz();
+      localdmz.Id = Pl(str9);
+      localdmz.vhJ = aZh(str8);
+      localdmz.hAP = Pl(str7);
+      localdmz.IGG = Pl(str6);
+      localdmz.Url = Pl(str5);
+      localdmz.aazR = aZh(str2);
+      localdmz.aaTl = Pl(str3);
+      localdmz.aaTm = aZh(str1);
+      localdmz.Privated = aZh(str4);
+      localdmz.aaTn = ((dnb)localObject);
+      localLinkedList.add(localdmz);
+      i += 1;
+      break;
+      str9 = paramString + ".media.id";
+      str8 = paramString + ".media.type";
+      str7 = paramString + ".media.title";
+      str6 = paramString + ".media.desc";
+      str5 = paramString + ".media.url";
+      str3 = paramString + ".media.thumb";
+      str2 = paramString + ".media.url.$type";
+      str1 = paramString + ".media.thumb.$type";
+      str4 = paramString + ".media.private";
+    }
+    label803:
+    AppMethodBeat.o(96150);
+    return localLinkedList;
+  }
+  
+  private static en b(Map<String, String> paramMap, en paramen)
+  {
+    AppMethodBeat.i(96149);
+    int i = 0;
+    cxu localcxu = new cxu();
+    String str2;
+    if (i == 0) {
+      str2 = ".albumList.album.groupList.group.name";
+    }
+    for (String str1 = ".albumList.album.groupList.group.mediaList";; str1 = ".albumList.album.groupList.group" + i + ".mediaList")
+    {
+      str2 = (String)paramMap.get(str2);
+      if (str2 == null) {
+        break label137;
+      }
+      localcxu.IGU = Pl(str2);
+      localcxu.Zpr = af(paramMap, str1);
+      paramen.GroupList.add(localcxu);
+      i += 1;
+      break;
+      str2 = ".albumList.album.groupList.group" + i + ".name";
+    }
+    label137:
+    AppMethodBeat.o(96149);
+    return paramen;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.k.a
  * JD-Core Version:    0.7.0.1
  */

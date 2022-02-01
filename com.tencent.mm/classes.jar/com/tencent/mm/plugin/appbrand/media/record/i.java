@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
 {
-  public static String BW(int paramInt)
+  public static String Cl(int paramInt)
   {
     AppMethodBeat.i(146329);
     Object localObject = new StringBuilder();
@@ -69,7 +69,7 @@ public final class i
     }
   }
   
-  public static int BX(int paramInt)
+  public static int Cm(int paramInt)
   {
     AppMethodBeat.i(146330);
     Log.i("MicroMsg.Record.RecordErrorHandler", "getErrIdKey errType:%d", new Object[] { Integer.valueOf(paramInt) });
@@ -150,7 +150,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.i
  * JD-Core Version:    0.7.0.1
  */

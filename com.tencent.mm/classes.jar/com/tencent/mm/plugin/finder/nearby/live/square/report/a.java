@@ -1,74 +1,72 @@
 package com.tencent.mm.plugin.finder.nearby.live.square.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.ae.g;
-import com.tencent.mm.f.b.a.bb;
+import com.tencent.mm.ae.f;
+import com.tencent.mm.autogen.mmdata.rpt.bx;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.c;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.extension.reddot.f;
+import com.tencent.mm.plugin.finder.extension.reddot.i;
+import com.tencent.mm.plugin.finder.extension.reddot.p;
 import com.tencent.mm.protocal.protobuf.FinderTipsShowEntranceExtInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
 import org.json.JSONObject;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/square/report/EnterFinderLiveFromRedDotReport;", "", "()V", "TAG", "", "report", "", "contextId", "errorReason", "", "feedId", "liveId", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/square/report/EnterFinderLiveFromRedDotReport;", "", "()V", "TAG", "", "report", "", "contextId", "errorReason", "", "feedId", "liveId", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a zGH;
+  public static final a EMb;
   
   static
   {
-    AppMethodBeat.i(201690);
-    zGH = new a();
-    AppMethodBeat.o(201690);
+    AppMethodBeat.i(341122);
+    EMb = new a();
+    AppMethodBeat.o(341122);
   }
   
-  public static void j(String paramString1, int paramInt, String paramString2, String paramString3)
+  public static void g(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(201687);
-    p.k(paramString1, "contextId");
-    p.k(paramString2, "feedId");
-    p.k(paramString3, "liveId");
-    Object localObject = h.ag(PluginFinder.class);
-    p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    com.tencent.mm.plugin.finder.extension.reddot.l locall = ((PluginFinder)localObject).getRedDotManager().aBf("FinderLiveEntrance");
-    localObject = new bb();
-    ((bb)localObject).agR();
-    ((bb)localObject).jF(paramString1);
-    ((bb)localObject).dC(paramInt);
-    ((bb)localObject).jB(paramString2);
-    ((bb)localObject).jC(paramString3);
-    if (locall != null) {}
-    for (paramString1 = locall.field_tipsId;; paramString1 = null)
+    AppMethodBeat.i(341118);
+    s.u(paramString1, "contextId");
+    s.u(paramString2, "feedId");
+    s.u(paramString3, "liveId");
+    p localp = ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager().Su("FinderLiveEntrance");
+    bx localbx = new bx();
+    localbx.ioV = 1L;
+    localbx.ln(paramString1);
+    localbx.iuH = paramInt;
+    localbx.lj(paramString2);
+    localbx.lk(paramString3);
+    if (localp == null) {}
+    for (paramString1 = null;; paramString1 = localp.field_tipsId)
     {
-      ((bb)localObject).jD(paramString1);
-      if (locall != null)
+      localbx.ll(paramString1);
+      if (localp != null)
       {
-        paramString1 = g.bN(locall.drG());
-        paramString1.put("object_id", d.Fw(locall.drG().object_id));
+        paramString1 = f.dg(localp.eav());
+        paramString1.put("object_id", com.tencent.mm.ae.d.hF(localp.eav().object_id));
         paramString1 = paramString1.toString();
-        p.j(paramString1, "extInfo.toString()");
-        ((bb)localObject).jG(n.l(paramString1, ",", ";", false));
+        s.s(paramString1, "extInfo.toString()");
+        localbx.lo(n.m(paramString1, ",", ";", false));
       }
-      paramString2 = ((c)h.ae(c.class)).dbr();
+      paramString2 = ((com.tencent.mm.plugin.expt.b.d)h.ax(com.tencent.mm.plugin.expt.b.d.class)).dHN();
       paramString1 = paramString2;
       if (paramString2 == null) {
         paramString1 = "";
       }
-      ((bb)localObject).jE(paramString1);
-      Log.i("EnterFinderLiveFromRedDotReport", "report " + ((bb)localObject).agI());
-      ((bb)localObject).bpa();
-      AppMethodBeat.o(201687);
+      localbx.lm(paramString1);
+      Log.i("EnterFinderLiveFromRedDotReport", s.X("report ", localbx.aIF()));
+      localbx.bMH();
+      AppMethodBeat.o(341118);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.nearby.live.square.report.a
  * JD-Core Version:    0.7.0.1
  */

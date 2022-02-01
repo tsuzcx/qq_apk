@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.cast;
 
 public final class b$g
 {
-  public static final int tIA = 2131757277;
-  public static final int tIB = 2131765208;
-  public static final int tIC = 2131765209;
-  public static final int tID = 2131765578;
-  public static final int tIE = 2131765585;
-  public static final int tIF = 2131765609;
-  public static final int tIG = 2131766982;
-  public static final int tIH = 2131767048;
-  public static final int tIt = 2131757268;
-  public static final int tIu = 2131757269;
-  public static final int tIv = 2131757270;
-  public static final int tIw = 2131757271;
-  public static final int tIx = 2131757273;
-  public static final int tIy = 2131757275;
-  public static final int tIz = 2131757276;
+  public static final int wMb = 2131757470;
+  public static final int wMc = 2131757471;
+  public static final int wMd = 2131757472;
+  public static final int wMe = 2131757473;
+  public static final int wMf = 2131757475;
+  public static final int wMg = 2131757477;
+  public static final int wMh = 2131757478;
+  public static final int wMi = 2131757479;
+  public static final int wMj = 2131767182;
+  public static final int wMk = 2131767183;
+  public static final int wMl = 2131767613;
+  public static final int wMm = 2131767620;
+  public static final int wMn = 2131767644;
+  public static final int wMo = 2131769264;
+  public static final int wMp = 2131769320;
 }
 
 

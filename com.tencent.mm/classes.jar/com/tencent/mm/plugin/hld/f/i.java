@@ -5,7 +5,6 @@ import android.content.res.AssetManager;
 import android.media.AudioAttributes.Builder;
 import android.media.SoundPool;
 import android.media.SoundPool.Builder;
-import android.media.SoundPool.OnLoadCompleteListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.a.j;
@@ -16,92 +15,118 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/utils/WxImeSettingUtil;", "", "()V", "TAG", "", "clickSoundIDs", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "currentKeyboardMode", "", "Ljava/lang/Boolean;", "currentKeyboardOrdinal", "Ljava/lang/Integer;", "isLogin", "mClickSoundPool", "Landroid/media/SoundPool;", "getCurrentKeyboardOrdinal", "getIMESetting", "isOpenKeySound", "isOpenKeyVibrate", "isSafetyKeyboardMode", "isSettingKeyVoice", "isSettingKeyboardOpen", "isSettingTNine", "performClick", "", "v", "Landroid/view/View;", "type", "btn", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "context", "Landroid/content/Context;", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "performClickSound", "performClickVibrate", "playSound", "pathId", "stream", "releaseClickSoundPool", "resetLogicStatus", "resetSetting", "saveCurrentKeyboard", "currentId", "saveCurrentKeyboardMode", "safety", "saveIMESetting", "imeSetting", "saveKeySoundStatus", "open", "saveKeyVibrateStatus", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/utils/WxImeSettingUtil;", "", "()V", "TAG", "", "clickSoundIDs", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "currentKeyboardMode", "", "Ljava/lang/Boolean;", "currentKeyboardOrdinal", "Ljava/lang/Integer;", "isLogin", "mClickSoundPool", "Landroid/media/SoundPool;", "getCurrentKeyboardOrdinal", "getIMESetting", "isOpenKeySound", "isOpenKeyVibrate", "isSafetyKeyboardMode", "isSettingKeyVoice", "isSettingKeyboardOpen", "isSettingTNine", "performClick", "", "v", "Landroid/view/View;", "type", "btn", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "context", "Landroid/content/Context;", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "performClickSound", "performClickVibrate", "playSound", "pathId", "stream", "releaseClickSoundPool", "resetLogicStatus", "resetSetting", "saveCurrentKeyboard", "currentId", "saveCurrentKeyboardMode", "safety", "saveIMESetting", "imeSetting", "saveKeySoundStatus", "open", "saveKeyVibrateStatus", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
 {
-  private static Integer DHm;
-  private static Boolean DHn;
-  private static SoundPool DHo;
-  private static final HashMap<Integer, Integer> DHp;
-  public static final i DHq;
-  public static final String TAG = "WxIme.WxImeSettingUtil";
+  public static final i JyA;
+  private static Integer JyB;
+  private static Boolean JyC;
+  private static SoundPool JyD;
+  private static final HashMap<Integer, Integer> JyE;
+  public static final String TAG;
   private static boolean isLogin;
   
   static
   {
-    AppMethodBeat.i(217068);
-    DHq = new i();
+    AppMethodBeat.i(311678);
+    JyA = new i();
     TAG = "WxIme.WxImeSettingUtil";
-    l locall = l.DHK;
-    isLogin = l.biq();
-    DHp = new HashMap();
-    AppMethodBeat.o(217068);
+    l locall = l.JyV;
+    isLogin = l.bGa();
+    JyE = new HashMap();
+    AppMethodBeat.o(311678);
   }
   
-  public static void UJ(int paramInt)
+  public static void YH(int paramInt)
   {
-    AppMethodBeat.i(217046);
-    Log.i(TAG, "saveCurrentKeyboard ".concat(String.valueOf(paramInt)));
-    DHm = Integer.valueOf(paramInt);
-    Object localObject = l.DHK;
-    localObject = l.eHB();
-    if ((localObject == null) || (((MultiProcessMMKV)localObject).putInt("ime_current_keyboard", paramInt) == null))
+    Object localObject2 = null;
+    AppMethodBeat.i(311556);
+    Log.i(TAG, s.X("saveCurrentKeyboard ", Integer.valueOf(paramInt)));
+    JyB = Integer.valueOf(paramInt);
+    Object localObject1 = l.JyV;
+    localObject1 = l.fPk();
+    if (localObject1 == null)
     {
-      Log.e(TAG, "saveCurrentKeyboard getUserKV null");
-      localObject = x.aazN;
+      localObject1 = null;
+      if (localObject1 == null) {
+        Log.e(TAG, "saveCurrentKeyboard getUserKV null");
+      }
+      localObject1 = l.JyV;
+      localObject1 = l.fPl();
+      if (localObject1 != null) {
+        break label98;
+      }
     }
-    localObject = l.DHK;
-    localObject = l.eHC();
-    if ((localObject == null) || (((MultiProcessMMKV)localObject).putInt("ime_current_keyboard", paramInt) == null))
+    label98:
+    for (localObject1 = localObject2;; localObject1 = ((MultiProcessMMKV)localObject1).putInt("ime_current_keyboard", paramInt))
     {
-      Log.e(TAG, "saveCurrentKeyboard getInvalidUserKV null");
-      localObject = x.aazN;
+      if (localObject1 == null) {
+        Log.e(TAG, "saveCurrentKeyboard getInvalidUserKV null");
+      }
+      AppMethodBeat.o(311556);
+      return;
+      localObject1 = ((MultiProcessMMKV)localObject1).putInt("ime_current_keyboard", paramInt);
+      break;
     }
-    AppMethodBeat.o(217046);
+  }
+  
+  private static final void a(int paramInt1, SoundPool paramSoundPool, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(311669);
+    if (paramInt3 == 0)
+    {
+      ((Map)JyE).put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+      paramSoundPool = JyD;
+      if (paramSoundPool != null)
+      {
+        paramSoundPool.play(paramInt2, 1.0F, 1.0F, 0, 0, 1.0F);
+        AppMethodBeat.o(311669);
+      }
+    }
+    else
+    {
+      Log.e(TAG, "SoundPool load error pathId " + paramInt1 + " status " + paramInt3);
+    }
+    AppMethodBeat.o(311669);
   }
   
   public static void a(b paramb, Context paramContext)
   {
-    AppMethodBeat.i(217055);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(311604);
+    s.u(paramContext, "context");
     if (paramb != null)
     {
-      if (((paramb.type & 0x2) == 2) && (paramb.DzR == 2))
+      if (((paramb.type & 0x2) == 2) && (paramb.JsU == 2))
       {
-        ax(paramContext, 3);
-        AppMethodBeat.o(217055);
+        aK(paramContext, 3);
+        AppMethodBeat.o(311604);
         return;
       }
-      ax(paramContext, 1);
-      AppMethodBeat.o(217055);
-      return;
+      aK(paramContext, 1);
     }
-    AppMethodBeat.o(217055);
+    AppMethodBeat.o(311604);
   }
   
-  public static void an(View paramView, int paramInt)
+  public static void aC(View paramView, int paramInt)
   {
-    AppMethodBeat.i(217056);
+    AppMethodBeat.i(311612);
     if (paramView != null)
     {
       paramView = paramView.getContext();
-      if (paramView != null)
-      {
-        ax(paramView, paramInt);
-        AppMethodBeat.o(217056);
-        return;
+      if (paramView != null) {
+        aK(paramView, paramInt);
       }
     }
-    AppMethodBeat.o(217056);
+    AppMethodBeat.o(311612);
   }
   
-  private static void ax(Context paramContext, int paramInt)
+  private static void aK(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(217065);
-    if (eGD()) {
+    AppMethodBeat.i(311652);
+    if (fOp()) {
       switch (paramInt)
       {
       default: 
@@ -110,8 +135,8 @@ public final class i
     }
     for (;;)
     {
-      ay(paramContext, paramInt);
-      AppMethodBeat.o(217065);
+      aL(paramContext, paramInt);
+      AppMethodBeat.o(311652);
       return;
       paramInt = a.j.key_sound2;
       continue;
@@ -119,319 +144,275 @@ public final class i
     }
   }
   
-  private static void ay(Context paramContext, int paramInt)
+  private static void aL(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(217067);
+    AppMethodBeat.i(311663);
     Object localObject = paramContext.getString(paramInt);
-    p.j(localObject, "context.getString(pathId)");
-    Log.d(TAG, "play start path:" + (String)localObject + " context:" + paramContext + " pathId:" + paramInt + " loaded " + DHp.containsKey(Integer.valueOf(paramInt)));
-    if (DHo == null) {
-      DHo = new SoundPool.Builder().setMaxStreams(10).setAudioAttributes(new AudioAttributes.Builder().setLegacyStreamType(1).build()).build();
+    s.s(localObject, "context.getString(pathId)");
+    Log.d(TAG, "play start path:" + (String)localObject + " context:" + paramContext + " pathId:" + paramInt + " loaded " + JyE.containsKey(Integer.valueOf(paramInt)));
+    if (JyD == null) {
+      JyD = new SoundPool.Builder().setMaxStreams(10).setAudioAttributes(new AudioAttributes.Builder().setLegacyStreamType(1).build()).build();
     }
-    if (DHp.containsKey(Integer.valueOf(paramInt)))
+    if (JyE.containsKey(Integer.valueOf(paramInt)))
     {
-      paramContext = DHo;
+      paramContext = JyD;
       if (paramContext != null)
       {
-        localObject = DHp.get(Integer.valueOf(paramInt));
-        if (localObject == null) {
-          p.iCn();
-        }
-        p.j(localObject, "clickSoundIDs[pathId]!!");
+        localObject = JyE.get(Integer.valueOf(paramInt));
+        s.checkNotNull(localObject);
+        s.s(localObject, "clickSoundIDs[pathId]!!");
         paramContext.play(((Number)localObject).intValue(), 1.0F, 1.0F, 0, 0, 1.0F);
-        AppMethodBeat.o(217067);
-        return;
+        AppMethodBeat.o(311663);
       }
-      AppMethodBeat.o(217067);
-      return;
     }
-    localObject = DHo;
-    if (localObject != null) {
-      ((SoundPool)localObject).load(paramContext.getAssets().openFd(paramContext.getString(paramInt)), 1);
-    }
-    paramContext = DHo;
-    if (paramContext != null)
+    else
     {
-      paramContext.setOnLoadCompleteListener((SoundPool.OnLoadCompleteListener)new a(paramInt));
-      AppMethodBeat.o(217067);
-      return;
+      localObject = JyD;
+      if (localObject != null) {
+        ((SoundPool)localObject).load(paramContext.getAssets().openFd(paramContext.getString(paramInt)), 1);
+      }
+      paramContext = JyD;
+      if (paramContext != null) {
+        paramContext.setOnLoadCompleteListener(new i..ExternalSyntheticLambda0(paramInt));
+      }
     }
-    AppMethodBeat.o(217067);
+    AppMethodBeat.o(311663);
   }
   
-  public static boolean biq()
+  public static boolean bGa()
   {
     return isLogin;
   }
   
   public static void d(ImeKeyRelativeLayout paramImeKeyRelativeLayout)
   {
-    AppMethodBeat.i(217053);
+    AppMethodBeat.i(311595);
     if (paramImeKeyRelativeLayout != null)
     {
       if (((paramImeKeyRelativeLayout.getType() & 0x2) == 2) && (paramImeKeyRelativeLayout.getFunctionCode() == 2))
       {
-        an((View)paramImeKeyRelativeLayout, 3);
-        AppMethodBeat.o(217053);
+        aC((View)paramImeKeyRelativeLayout, 3);
+        AppMethodBeat.o(311595);
         return;
       }
-      an((View)paramImeKeyRelativeLayout, 1);
-      AppMethodBeat.o(217053);
-      return;
+      aC((View)paramImeKeyRelativeLayout, 1);
     }
-    AppMethodBeat.o(217053);
+    AppMethodBeat.o(311595);
   }
   
-  public static int eEm()
+  public static int fMo()
   {
-    AppMethodBeat.i(217048);
-    Object localObject = l.DHK;
+    AppMethodBeat.i(311566);
+    Object localObject = l.JyV;
     int i;
-    if (l.eCE())
+    if (l.fKH())
     {
-      i = c.Dym.ordinal();
-      AppMethodBeat.o(217048);
+      i = c.Jrq.ordinal();
+      AppMethodBeat.o(311566);
       return i;
     }
-    if (DHm == null)
+    if (JyB == null)
     {
-      i = c.Dym.ordinal();
+      i = c.Jrq.ordinal();
       if (!isLogin) {
-        break label109;
+        break label103;
       }
-      localObject = l.DHK;
-      localObject = l.eHB();
-      if (localObject == null) {
-        break label101;
+      localObject = l.JyV;
+      localObject = l.fPk();
+      if (localObject != null) {
+        break label92;
       }
-      localObject = Integer.valueOf(((MultiProcessMMKV)localObject).getInt("ime_current_keyboard", i));
     }
     for (;;)
     {
-      DHm = (Integer)localObject;
-      localObject = DHm;
-      if (localObject == null) {
-        p.iCn();
-      }
-      i = ((Integer)localObject).intValue();
-      AppMethodBeat.o(217048);
-      return i;
-      label101:
       localObject = Integer.valueOf(i);
-      continue;
-      label109:
-      localObject = l.DHK;
-      localObject = l.eHC();
-      if (localObject != null) {
-        localObject = Integer.valueOf(((MultiProcessMMKV)localObject).getInt("ime_current_keyboard", i));
-      } else {
-        localObject = Integer.valueOf(i);
-      }
+      JyB = (Integer)localObject;
+      localObject = JyB;
+      s.checkNotNull(localObject);
+      i = ((Integer)localObject).intValue();
+      AppMethodBeat.o(311566);
+      return i;
+      label92:
+      i = ((MultiProcessMMKV)localObject).getInt("ime_current_keyboard", i);
+    }
+    label103:
+    localObject = l.JyV;
+    localObject = l.fPl();
+    if (localObject == null) {}
+    for (;;)
+    {
+      localObject = Integer.valueOf(i);
+      break;
+      i = ((MultiProcessMMKV)localObject).getInt("ime_current_keyboard", i);
     }
   }
   
-  public static boolean eGC()
+  public static boolean fOo()
   {
-    AppMethodBeat.i(217045);
-    Object localObject;
-    if (DHn == null)
+    boolean bool2 = true;
+    boolean bool1 = true;
+    AppMethodBeat.i(311547);
+    if (JyC == null)
     {
       if (!isLogin) {
-        break label77;
+        break label76;
       }
-      localObject = l.DHK;
-      localObject = l.eHB();
-      if (localObject == null) {
-        break label70;
+      localObject = l.JyV;
+      localObject = l.fPk();
+      if (localObject != null) {
+        break label64;
       }
-      localObject = Boolean.valueOf(((MultiProcessMMKV)localObject).getBoolean("ime_current_mode", true));
     }
     for (;;)
     {
-      DHn = (Boolean)localObject;
-      localObject = DHn;
-      if (localObject == null) {
-        p.iCn();
-      }
-      boolean bool = ((Boolean)localObject).booleanValue();
-      AppMethodBeat.o(217045);
-      return bool;
-      label70:
-      localObject = Boolean.TRUE;
-      continue;
-      label77:
-      localObject = l.DHK;
-      localObject = l.eHC();
-      if (localObject != null) {
-        localObject = Boolean.valueOf(((MultiProcessMMKV)localObject).getBoolean("ime_current_mode", true));
-      } else {
-        localObject = Boolean.TRUE;
-      }
+      localObject = Boolean.valueOf(bool1);
+      JyC = (Boolean)localObject;
+      localObject = JyC;
+      s.checkNotNull(localObject);
+      bool1 = ((Boolean)localObject).booleanValue();
+      AppMethodBeat.o(311547);
+      return bool1;
+      label64:
+      bool1 = ((MultiProcessMMKV)localObject).getBoolean("ime_current_mode", true);
+    }
+    label76:
+    Object localObject = l.JyV;
+    localObject = l.fPl();
+    if (localObject == null) {}
+    for (bool1 = bool2;; bool1 = ((MultiProcessMMKV)localObject).getBoolean("ime_current_mode", true))
+    {
+      localObject = Boolean.valueOf(bool1);
+      break;
     }
   }
   
-  public static boolean eGD()
+  public static boolean fOp()
   {
-    AppMethodBeat.i(217051);
-    boolean bool;
+    AppMethodBeat.i(311581);
     if (isLogin)
     {
-      localObject = l.DHK;
-      localObject = l.eHB();
-      if (localObject != null)
+      localObject = l.JyV;
+      localObject = l.fPk();
+      if (localObject == null)
       {
-        bool = ((MultiProcessMMKV)localObject).getBoolean("ime_key_sound_status", false);
-        AppMethodBeat.o(217051);
-        return bool;
+        AppMethodBeat.o(311581);
+        return false;
       }
-      AppMethodBeat.o(217051);
+      bool = ((MultiProcessMMKV)localObject).getBoolean("ime_key_sound_status", false);
+      AppMethodBeat.o(311581);
+      return bool;
+    }
+    Object localObject = l.JyV;
+    localObject = l.fPl();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(311581);
       return false;
     }
-    Object localObject = l.DHK;
-    localObject = l.eHC();
-    if (localObject != null)
-    {
-      bool = ((MultiProcessMMKV)localObject).getBoolean("ime_key_sound_status", false);
-      AppMethodBeat.o(217051);
-      return bool;
-    }
-    AppMethodBeat.o(217051);
-    return false;
+    boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_key_sound_status", false);
+    AppMethodBeat.o(311581);
+    return bool;
   }
   
-  public static boolean eGE()
+  public static boolean fOq()
   {
-    AppMethodBeat.i(217052);
-    boolean bool;
+    AppMethodBeat.i(311588);
     if (isLogin)
     {
-      localObject = l.DHK;
-      localObject = l.eHB();
-      if (localObject != null)
+      localObject = l.JyV;
+      localObject = l.fPk();
+      if (localObject == null)
       {
-        bool = ((MultiProcessMMKV)localObject).getBoolean("ime_key_vibrate_status", true);
-        AppMethodBeat.o(217052);
-        return bool;
+        AppMethodBeat.o(311588);
+        return true;
       }
-      AppMethodBeat.o(217052);
-      return true;
-    }
-    Object localObject = l.DHK;
-    localObject = l.eHC();
-    if (localObject != null)
-    {
       bool = ((MultiProcessMMKV)localObject).getBoolean("ime_key_vibrate_status", true);
-      AppMethodBeat.o(217052);
+      AppMethodBeat.o(311588);
       return bool;
     }
-    AppMethodBeat.o(217052);
-    return true;
-  }
-  
-  public static void eGF()
-  {
-    AppMethodBeat.i(217060);
-    l locall = l.DHK;
-    isLogin = l.biq();
-    AppMethodBeat.o(217060);
-  }
-  
-  public static int eGG()
-  {
-    AppMethodBeat.i(217062);
-    Object localObject = l.DHK;
-    localObject = l.eHB();
-    if (localObject != null)
+    Object localObject = l.JyV;
+    localObject = l.fPl();
+    if (localObject == null)
     {
-      int i = ((MultiProcessMMKV)localObject).getInt("ime_setting", 0);
-      AppMethodBeat.o(217062);
-      return i;
+      AppMethodBeat.o(311588);
+      return true;
     }
-    AppMethodBeat.o(217062);
-    return 0;
+    boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_key_vibrate_status", true);
+    AppMethodBeat.o(311588);
+    return bool;
   }
   
-  public static void eGH()
+  public static void fOr()
   {
-    DHm = null;
-    DHn = null;
+    AppMethodBeat.i(311631);
+    l locall = l.JyV;
+    isLogin = l.bGa();
+    AppMethodBeat.o(311631);
   }
   
-  public static void td(boolean paramBoolean)
+  public static int fOs()
   {
-    AppMethodBeat.i(217043);
-    Log.i(TAG, "saveCurrentKeyboardMode ".concat(String.valueOf(paramBoolean)));
-    DHn = Boolean.valueOf(paramBoolean);
-    Object localObject = l.DHK;
-    localObject = l.eHB();
+    AppMethodBeat.i(311637);
+    Object localObject = l.JyV;
+    localObject = l.fPk();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(311637);
+      return 0;
+    }
+    int i = ((MultiProcessMMKV)localObject).getInt("ime_setting", 0);
+    AppMethodBeat.o(311637);
+    return i;
+  }
+  
+  public static void fOt()
+  {
+    JyB = null;
+    JyC = null;
+  }
+  
+  public static void xo(boolean paramBoolean)
+  {
+    AppMethodBeat.i(311541);
+    Log.i(TAG, s.X("saveCurrentKeyboardMode ", Boolean.valueOf(paramBoolean)));
+    JyC = Boolean.valueOf(paramBoolean);
+    Object localObject = l.JyV;
+    localObject = l.fPk();
     if (localObject != null) {
       ((MultiProcessMMKV)localObject).putBoolean("ime_current_mode", paramBoolean);
     }
-    localObject = l.DHK;
-    localObject = l.eHC();
-    if (localObject != null)
-    {
+    localObject = l.JyV;
+    localObject = l.fPl();
+    if (localObject != null) {
       ((MultiProcessMMKV)localObject).putBoolean("ime_current_mode", paramBoolean);
-      AppMethodBeat.o(217043);
-      return;
     }
-    AppMethodBeat.o(217043);
+    AppMethodBeat.o(311541);
   }
   
-  public static void te(boolean paramBoolean)
+  public static void xp(boolean paramBoolean)
   {
-    AppMethodBeat.i(217049);
-    Log.i(TAG, "saveKeySoundStatus ".concat(String.valueOf(paramBoolean)));
-    Object localObject = l.DHK;
-    localObject = l.eHB();
+    AppMethodBeat.i(311575);
+    Log.i(TAG, s.X("saveKeySoundStatus ", Boolean.valueOf(paramBoolean)));
+    Object localObject = l.JyV;
+    localObject = l.fPk();
     if (localObject != null) {
       ((MultiProcessMMKV)localObject).putBoolean("ime_key_sound_status", paramBoolean);
     }
-    localObject = l.DHK;
-    localObject = l.eHC();
+    localObject = l.JyV;
+    localObject = l.fPl();
     if (localObject != null) {
       ((MultiProcessMMKV)localObject).putBoolean("ime_key_sound_status", paramBoolean);
     }
     if (!paramBoolean)
     {
-      localObject = DHo;
+      localObject = JyD;
       if (localObject != null) {
         ((SoundPool)localObject).release();
       }
-      DHo = null;
-      DHp.clear();
+      JyD = null;
+      JyE.clear();
     }
-    AppMethodBeat.o(217049);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "soundPool", "Landroid/media/SoundPool;", "kotlin.jvm.PlatformType", "sampleId", "", "status", "onLoadComplete"})
-  static final class a
-    implements SoundPool.OnLoadCompleteListener
-  {
-    a(int paramInt) {}
-    
-    public final void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(217109);
-      if (paramInt2 == 0)
-      {
-        paramSoundPool = i.DHq;
-        ((Map)i.eGI()).put(Integer.valueOf(this.DHr), Integer.valueOf(paramInt1));
-        paramSoundPool = i.DHq;
-        paramSoundPool = i.eGJ();
-        if (paramSoundPool != null)
-        {
-          paramSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F);
-          AppMethodBeat.o(217109);
-          return;
-        }
-        AppMethodBeat.o(217109);
-        return;
-      }
-      paramSoundPool = i.DHq;
-      Log.e(i.eGK(), "SoundPool load error pathId " + this.DHr + " status " + paramInt2);
-      AppMethodBeat.o(217109);
-    }
+    AppMethodBeat.o(311575);
   }
 }
 

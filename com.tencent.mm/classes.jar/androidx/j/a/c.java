@@ -4,94 +4,94 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public static final c afo;
-  public static final c afp;
-  public static final c afq;
-  public static final c afr;
-  public static final c afs;
-  public static final c aft;
-  final float[] afu;
-  final float[] afv;
-  final float[] afw;
-  boolean afx;
+  public static final c bTt;
+  public static final c bTu;
+  public static final c bTv;
+  public static final c bTw;
+  public static final c bTx;
+  public static final c bTy;
+  final float[] bTA;
+  final float[] bTB;
+  boolean bTC;
+  final float[] bTz;
   
   static
   {
-    AppMethodBeat.i(243020);
+    AppMethodBeat.i(192786);
     c localc = new c();
-    afo = localc;
+    bTt = localc;
     c(localc);
-    d(afo);
+    d(bTt);
     localc = new c();
-    afp = localc;
+    bTu = localc;
     b(localc);
-    d(afp);
+    d(bTu);
     localc = new c();
-    afq = localc;
+    bTv = localc;
     a(localc);
-    d(afq);
+    d(bTv);
     localc = new c();
-    afr = localc;
+    bTw = localc;
     c(localc);
-    e(afr);
+    e(bTw);
     localc = new c();
-    afs = localc;
+    bTx = localc;
     b(localc);
-    e(afs);
+    e(bTx);
     localc = new c();
-    aft = localc;
+    bTy = localc;
     a(localc);
-    e(aft);
-    AppMethodBeat.o(243020);
+    e(bTy);
+    AppMethodBeat.o(192786);
   }
   
   c()
   {
-    AppMethodBeat.i(243019);
-    this.afu = new float[3];
-    this.afv = new float[3];
-    this.afw = new float[3];
-    this.afx = true;
-    f(this.afu);
-    f(this.afv);
-    this.afw[0] = 0.24F;
-    this.afw[1] = 0.52F;
-    this.afw[2] = 0.24F;
-    AppMethodBeat.o(243019);
+    AppMethodBeat.i(192711);
+    this.bTz = new float[3];
+    this.bTA = new float[3];
+    this.bTB = new float[3];
+    this.bTC = true;
+    o(this.bTz);
+    o(this.bTA);
+    this.bTB[0] = 0.24F;
+    this.bTB[1] = 0.52F;
+    this.bTB[2] = 0.24F;
+    AppMethodBeat.o(192711);
   }
   
   private static void a(c paramc)
   {
-    paramc.afv[1] = 0.26F;
-    paramc.afv[2] = 0.45F;
+    paramc.bTA[1] = 0.26F;
+    paramc.bTA[2] = 0.45F;
   }
   
   private static void b(c paramc)
   {
-    paramc.afv[0] = 0.3F;
-    paramc.afv[1] = 0.5F;
-    paramc.afv[2] = 0.7F;
+    paramc.bTA[0] = 0.3F;
+    paramc.bTA[1] = 0.5F;
+    paramc.bTA[2] = 0.7F;
   }
   
   private static void c(c paramc)
   {
-    paramc.afv[0] = 0.55F;
-    paramc.afv[1] = 0.74F;
+    paramc.bTA[0] = 0.55F;
+    paramc.bTA[1] = 0.74F;
   }
   
   private static void d(c paramc)
   {
-    paramc.afu[0] = 0.35F;
-    paramc.afu[1] = 1.0F;
+    paramc.bTz[0] = 0.35F;
+    paramc.bTz[1] = 1.0F;
   }
   
   private static void e(c paramc)
   {
-    paramc.afu[1] = 0.3F;
-    paramc.afu[2] = 0.4F;
+    paramc.bTz[1] = 0.3F;
+    paramc.bTz[2] = 0.4F;
   }
   
-  private static void f(float[] paramArrayOfFloat)
+  private static void o(float[] paramArrayOfFloat)
   {
     paramArrayOfFloat[0] = 0.0F;
     paramArrayOfFloat[1] = 0.5F;
@@ -100,7 +100,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     androidx.j.a.c
  * JD-Core Version:    0.7.0.1
  */

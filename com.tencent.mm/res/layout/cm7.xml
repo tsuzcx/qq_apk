@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/d0g" android:paddingLeft="24.0dip" android:paddingTop="24.0dip" android:paddingRight="24.0dip" android:paddingBottom="74.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kqt" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="14.0sp" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/kqv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jyz" />
-            <TextView android:textSize="14.0sp" android:textColor="@color/aj2" android:gravity="center_vertical" android:id="@id/kqs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" />
-            <ImageView android:id="@id/kqr" android:visibility="gone" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_marginLeft="3.0dip" android:scaleType="fitXY" />
-            <TextView android:textSize="14.0sp" android:textColor="@color/aj2" android:gravity="center_vertical" android:id="@id/kqx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" />
-            <ImageView android:id="@id/kqw" android:visibility="gone" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_marginLeft="3.0dip" android:scaleType="fitXY" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kqu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/kqt">
-            <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/kqy" android:layout_width="24.0dip" android:layout_height="24.0dip" android:scaleType="fitXY" app:radius="12.0dip" />
-            <TextView android:textSize="17.0sp" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/kqq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
-        </LinearLayout>
-        <TextView android:textSize="14.0sp" android:gravity="center" android:id="@id/kqo" android:background="@drawable/d0f" android:layout_width="52.0dip" android:layout_height="32.0dip" android:text="@string/jzd" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
+<RelativeLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/ahw" android:id="@id/ar7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gt8" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center" android:id="@id/ar8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginRight="@dimen/d0">
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hu6" android:includeFontPadding="false" />
+        <ImageView android:layout_width="@dimen/cd" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/df" android:src="@drawable/bxj" />
+    </LinearLayout>
 </RelativeLayout>

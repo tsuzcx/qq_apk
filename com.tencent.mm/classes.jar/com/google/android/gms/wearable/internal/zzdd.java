@@ -7,12 +7,6 @@ import android.os.Parcelable.Creator;
 import android.util.Log;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.wearable.DataItem;
 import com.google.android.gms.wearable.DataItemAsset;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -22,19 +16,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@SafeParcelable.Class(creator="DataItemParcelableCreator")
-@SafeParcelable.Reserved({1})
-@VisibleForTesting
 public final class zzdd
   extends AbstractSafeParcelable
   implements DataItem
 {
   public static final Parcelable.Creator<zzdd> CREATOR;
-  @SafeParcelable.Field(getter="getData", id=5)
   private byte[] data;
-  @SafeParcelable.Field(getter="getUri", id=2)
   private final Uri uri;
-  @SafeParcelable.Field(getter="getAssetsInternal", id=4, type="android.os.Bundle")
   private final Map<String, DataItemAsset> zzdo;
   
   static
@@ -44,8 +32,7 @@ public final class zzdd
     AppMethodBeat.o(101180);
   }
   
-  @SafeParcelable.Constructor
-  zzdd(@SafeParcelable.Param(id=2) Uri paramUri, @SafeParcelable.Param(id=4) Bundle paramBundle, @SafeParcelable.Param(id=5) byte[] paramArrayOfByte)
+  zzdd(Uri paramUri, Bundle paramBundle, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(101177);
     this.uri = paramUri;
@@ -67,7 +54,6 @@ public final class zzdd
     return this.zzdo;
   }
   
-  @VisibleForTesting
   public final byte[] getData()
   {
     return this.data;
@@ -142,7 +128,7 @@ public final class zzdd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzdd
  * JD-Core Version:    0.7.0.1
  */

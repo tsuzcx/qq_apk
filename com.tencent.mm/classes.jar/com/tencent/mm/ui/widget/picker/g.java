@@ -8,16 +8,16 @@ import java.util.Locale;
 final class g
   implements NumberPicker.Formatter
 {
-  final Object[] Ysj;
-  char Ysk;
-  Formatter Ysl;
+  Formatter agkA;
+  final Object[] agky;
+  char agkz;
   final StringBuilder mBuilder;
   
   g()
   {
     AppMethodBeat.i(159590);
     this.mBuilder = new StringBuilder();
-    this.Ysj = new Object[1];
+    this.agky = new Object[1];
     e(Locale.getDefault());
     AppMethodBeat.o(159590);
   }
@@ -25,8 +25,8 @@ final class g
   private void e(Locale paramLocale)
   {
     AppMethodBeat.i(159591);
-    this.Ysl = f(paramLocale);
-    this.Ysk = '0';
+    this.agkA = f(paramLocale);
+    this.agkz = '0';
     AppMethodBeat.o(159591);
   }
   
@@ -42,20 +42,20 @@ final class g
   {
     AppMethodBeat.i(159592);
     Object localObject = Locale.getDefault();
-    if (this.Ysk != '0') {
+    if (this.agkz != '0') {
       e((Locale)localObject);
     }
-    this.Ysj[0] = Integer.valueOf(paramInt);
+    this.agky[0] = Integer.valueOf(paramInt);
     this.mBuilder.delete(0, this.mBuilder.length());
-    this.Ysl.format("%02d", this.Ysj);
-    localObject = this.Ysl.toString();
+    this.agkA.format("%02d", this.agky);
+    localObject = this.agkA.toString();
     AppMethodBeat.o(159592);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.g
  * JD-Core Version:    0.7.0.1
  */

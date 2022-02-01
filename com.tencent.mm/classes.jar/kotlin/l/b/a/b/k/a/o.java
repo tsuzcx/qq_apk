@@ -1,53 +1,28 @@
 package kotlin.l.b.a.b.k.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.List;
-import kotlin.l.b.a.b.b.ab;
-import kotlin.l.b.a.b.b.ac;
-import kotlin.l.b.a.b.f.a;
-import kotlin.l.b.a.b.f.b;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.b.c.y;
+import kotlin.l.b.a.b.f.c;
+import kotlin.l.b.a.b.l.m;
 
-public final class o
-  implements i
+public abstract class o
+  extends y
 {
-  private final ac abns;
+  private final m aiBu;
   
-  public o(ac paramac)
+  public o(c paramc, m paramm, ae paramae)
   {
-    AppMethodBeat.i(60311);
-    this.abns = paramac;
-    AppMethodBeat.o(60311);
+    super(paramae, paramc);
+    this.aiBu = paramm;
   }
   
-  public final h d(a parama)
-  {
-    AppMethodBeat.i(60310);
-    kotlin.g.b.p.k(parama, "classId");
-    Object localObject1 = this.abns;
-    Object localObject2 = parama.iNs();
-    kotlin.g.b.p.j(localObject2, "classId.packageFqName");
-    localObject1 = ((ac)localObject1).f((b)localObject2).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (ab)((Iterator)localObject1).next();
-      if ((localObject2 instanceof p))
-      {
-        localObject2 = ((p)localObject2).iPw().d(parama);
-        if (localObject2 != null)
-        {
-          AppMethodBeat.o(60310);
-          return localObject2;
-        }
-      }
-    }
-    AppMethodBeat.o(60310);
-    return null;
-  }
+  public abstract void b(j paramj);
+  
+  public abstract g kzX();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.o
  * JD-Core Version:    0.7.0.1
  */

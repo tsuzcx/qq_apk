@@ -84,7 +84,7 @@ public class TXRecordCommon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.ugc.TXRecordCommon
  * JD-Core Version:    0.7.0.1
  */

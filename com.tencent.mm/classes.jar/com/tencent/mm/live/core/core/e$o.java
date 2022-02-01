@@ -1,35 +1,45 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$SEIMode;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "SEIMode_OFF", "SEIMode_GAMEREPORT", "SEIMode_SUBTITLE", "SEIMode_LINKMIC", "SEIMode_OWD", "SEIMode_ANCHOR_INFO", "plugin-core_release"})
-public enum e$o
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$NetStatus;", "", "()V", "NET_BAD", "", "getNET_BAD", "()I", "NET_DISABLE", "getNET_DISABLE", "NET_GOOD", "getNET_GOOD", "NET_NORMAL", "getNET_NORMAL", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class e$o
 {
-  public final int value;
+  private static final int mLA = 0;
+  private static final int mLB;
+  private static final int mLC;
+  private static final int mLD;
+  public static final o mLz;
   
   static
   {
-    AppMethodBeat.i(198506);
-    o localo1 = new o("SEIMode_OFF", 0, 0);
-    kkM = localo1;
-    o localo2 = new o("SEIMode_GAMEREPORT", 1, 1);
-    kkN = localo2;
-    o localo3 = new o("SEIMode_SUBTITLE", 2, 2);
-    kkO = localo3;
-    o localo4 = new o("SEIMode_LINKMIC", 3, 4);
-    kkP = localo4;
-    o localo5 = new o("SEIMode_OWD", 4, 8);
-    kkQ = localo5;
-    o localo6 = new o("SEIMode_ANCHOR_INFO", 5, 16);
-    kkR = localo6;
-    kkS = new o[] { localo1, localo2, localo3, localo4, localo5, localo6 };
-    AppMethodBeat.o(198506);
+    AppMethodBeat.i(248192);
+    mLz = new o();
+    mLB = 1;
+    mLC = 2;
+    mLD = 3;
+    AppMethodBeat.o(248192);
   }
   
-  private e$o(int paramInt)
+  public static int bdC()
   {
-    this.value = paramInt;
+    return mLA;
+  }
+  
+  public static int bdD()
+  {
+    return mLB;
+  }
+  
+  public static int bdE()
+  {
+    return mLC;
+  }
+  
+  public static int bdF()
+  {
+    return mLD;
   }
 }
 

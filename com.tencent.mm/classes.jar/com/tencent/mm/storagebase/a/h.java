@@ -45,7 +45,7 @@ public final class h
         if (step(1) != 1) {
           break;
         }
-        paramb.VJM = paramb.hCa();
+        paramb.adnQ = paramb.jeg();
         j = 0;
         if (j >= m) {
           break label394;
@@ -54,7 +54,7 @@ public final class h
         {
         case 3: 
           label164:
-          paramb.mf(i, 1);
+          paramb.nV(i, 1);
           SQLiteException localSQLiteException1 = new SQLiteException("Unknown column type when filling window.");
           AppMethodBeat.o(133505);
           throw localSQLiteException1;
@@ -65,16 +65,16 @@ public final class h
         Log.printErrStackTrace("WCDB.SQLiteNewQuery", localIllegalStateException, "fillWindow failed", new Object[0]);
         return 0;
         String str = getString(j);
-        if (paramb.VJM == null) {
+        if (paramb.adnQ == null) {
           break label451;
         }
-        paramb.VJM.dg(j, str);
+        paramb.adnQ.dY(j, str);
         break label451;
         long l = getLong(j);
-        if (paramb.VJM == null) {
+        if (paramb.adnQ == null) {
           break label451;
         }
-        paramb.VJM.bf(j, l);
+        paramb.adnQ.bo(j, l);
       }
       catch (SQLiteException localSQLiteException2)
       {
@@ -92,13 +92,13 @@ public final class h
       getDouble(j);
       break label451;
       byte[] arrayOfByte = getBlob(j);
-      if (paramb.VJM == null) {
+      if (paramb.adnQ == null) {
         break label451;
       }
-      paramb.VJM.u(j, arrayOfByte);
+      paramb.adnQ.v(j, arrayOfByte);
       break label451;
       label394:
-      paramb.mf(i, 0);
+      paramb.nV(i, 0);
       i += 1;
     }
     for (;;)
@@ -147,19 +147,19 @@ public final class h
         if (step(1) != 1) {
           break label531;
         }
-        j = i / paramc.VJO;
-        if (paramc.VJN.indexOfKey(j) < 0)
+        j = i / paramc.adnS;
+        if (paramc.adnR.indexOfKey(j) < 0)
         {
-          localObject = new Object[paramc.VJO * paramc.columnCount];
-          paramc.VJN.put(j, localObject);
-          j = paramc.VJO;
+          localObject = new Object[paramc.adnS * paramc.columnCount];
+          paramc.adnR.put(j, localObject);
+          j = paramc.adnS;
           m = paramc.columnCount * (i % j);
           int n = paramc.columnCount;
           j = i + 1;
-          if (j <= paramc.VJP) {
+          if (j <= paramc.adnT) {
             break label347;
           }
-          paramc.VJP = j;
+          paramc.adnT = j;
           locala = new c.a(paramc, m, m + n, (Object[])localObject);
           j = 0;
           if (j >= k) {
@@ -187,10 +187,10 @@ public final class h
         releaseReference();
         AppMethodBeat.o(133506);
       }
-      localObject = (Object[])paramc.VJN.get(j);
+      localObject = (Object[])paramc.adnR.get(j);
       continue;
       label347:
-      int j = paramc.VJP;
+      int j = paramc.adnT;
       continue;
       localObject = getString(j);
       label364:
@@ -205,7 +205,7 @@ public final class h
         continue;
         localObject = getBlob(j);
       }
-      Object[] arrayOfObject = locala.VJQ;
+      Object[] arrayOfObject = locala.adnU;
       int m = locala.index;
       locala.index = (m + 1);
       arrayOfObject[m] = localObject;
@@ -244,7 +244,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.storagebase.a.h
  * JD-Core Version:    0.7.0.1
  */

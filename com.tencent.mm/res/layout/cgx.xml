@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.hld.emoji.ImeEmojiGridScrollView android:id="@id/h9a" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:fadeScrollbars="false" android:overScrollMode="never"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/h8v" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
-        <RelativeLayout android:id="@id/jum" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="58.569977dip">
-            <TextView android:textSize="13.309998dip" android:textColor="@color/ag8" android:gravity="center" android:id="@id/jun" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.589996dip" android:text="@string/je5" android:layout_toLeftOf="@id/k4s" android:layout_marginStart="25.0dip" android:layout_marginEnd="15.0dip" />
-            <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/k4s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true">
-                <View android:id="@id/k4r" android:layout_width="53.25dip" android:layout_height="37.26999dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toStartOf="@id/k4t" app:layout_goneMarginEnd="10.639984dip" />
-                <View android:id="@id/k4t" android:layout_width="53.25dip" android:layout_height="37.26999dip" android:layout_marginEnd="10.639984dip" app:layout_constraintBottom_toBottomOf="@id/k4r" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintTop_toTopOf="@id/kaf" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </RelativeLayout>
-    </LinearLayout>
-</com.tencent.mm.plugin.hld.emoji.ImeEmojiGridScrollView>
+<LinearLayout android:orientation="vertical" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/a78" android:id="@id/lju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="6.0dip" android:text="@string/l92" />
+    <ListView android:id="@id/lfn" android:background="@color/a6w" android:focusable="true" android:visibility="visible" android:layout_height="wrap_content" android:transcriptMode="disabled" style="@style/na" />
+</LinearLayout>

@@ -5,7 +5,7 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface e
   extends a
 {
-  public abstract void ad(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void av(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

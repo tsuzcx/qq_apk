@@ -1,453 +1,441 @@
 package com.tencent.mm.plugin.finder.live.widget;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.c.b.b;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.live.model.ah;
-import com.tencent.mm.plugin.finder.live.plugin.d;
-import com.tencent.mm.plugin.finder.live.report.m;
-import com.tencent.mm.plugin.finder.live.report.s.ag;
-import com.tencent.mm.plugin.finder.live.report.s.bl;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.f;
-import com.tencent.mm.protocal.protobuf.axc;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.plugin.finder.live.model.ap;
+import com.tencent.mm.plugin.finder.live.model.cgi.ac;
+import com.tencent.mm.plugin.finder.live.model.g;
+import com.tencent.mm.plugin.finder.live.sidebar.c;
+import com.tencent.mm.plugin.finder.live.view.FinderLiveShadeView;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.h;
+import com.tencent.mm.plugin.findersdk.a.bn;
+import com.tencent.mm.plugin.findersdk.a.t;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.azf;
+import com.tencent.mm.protocal.protobuf.bgh;
+import com.tencent.mm.protocal.protobuf.bip;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.w;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.widget.a.e.b;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveVisitorMicEntranceWidget;", "Landroid/view/View$OnClickListener;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "basePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;)V", "SHEET_MORE_ACTION_AUDIO_LINK", "", "SHEET_MORE_ACTION_STOP_LINK", "SHEET_MORE_ACTION_VIDEO_LINK", "TAG", "", "getBasePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "clickArea", "Landroid/view/View;", "kotlin.jvm.PlatformType", "linkBottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "linkMicIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "liveCore", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "getLiveCore", "()Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "menuItemClickListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "getRoot", "()Landroid/view/ViewGroup;", "getStatusMonitor", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "buildRequestLinkMicDialog", "", "checkLicense", "", "checkLinkMicGroup", "checkPermission", "checkRequestLinkMic", "checkVisible", "isVisible", "onClick", "v", "prepareLinkMenuItems", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "setVisible", "visible", "plugin-finder_release"})
-public final class as
-  implements View.OnClickListener
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveMicStateWidget;", "", "root", "Landroid/view/ViewGroup;", "basePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "shadeView", "Lcom/tencent/mm/plugin/finder/live/view/FinderLiveShadeView;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;Lcom/tencent/mm/plugin/finder/live/view/FinderLiveShadeView;)V", "TAG", "", "getBasePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "bindLinkMicUser", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveLinkMicUser;", "getBindLinkMicUser", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveLinkMicUser;", "setBindLinkMicUser", "(Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveLinkMicUser;)V", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "getBottomSheet", "()Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "setBottomSheet", "(Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;)V", "bottomSheetShowListener", "Lkotlin/Function1;", "", "", "isBottomSheetShowing", "lastContentRect", "Landroid/graphics/Rect;", "getLastContentRect", "()Landroid/graphics/Rect;", "menuItemClickListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "getRoot", "()Landroid/view/ViewGroup;", "linkMicUser", "buildBottomSheet", "getMicType", "", "()Ljava/lang/Integer;", "goToFinderLive", "userName", "goToFinderProfile", "finderUsername", "hideLinkMicBottomBar", "prepareMenuItems", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "printBindMicUser", "requestDisallowInterceptTouchEvent", "disallow", "showLinkMicBottomBar", "contentRect", "showProfilePlugin", "updateLinkMicBottomBar", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class as
 {
+  public static final as.a Esx = new as.a((byte)0);
+  final com.tencent.mm.plugin.finder.live.plugin.b CwG;
+  private final FinderLiveShadeView Dfo;
+  private final u.i Dgv;
+  private boolean EsA;
+  private final kotlin.g.a.b<Boolean, ah> EsB;
+  public h Esy;
+  final Rect Esz;
   private final String TAG;
-  public final View clickArea;
-  final com.tencent.mm.live.c.b kCL;
-  public final ViewGroup kiF;
-  public final d xYq;
-  private q.g ybB;
-  private e ymL;
-  private final int yvs;
-  private final int yvt;
-  private final int yvu;
-  public final WeImageView zsx;
+  final ViewGroup mJe;
+  private com.tencent.mm.ui.widget.a.f ngn;
   
-  public as(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb, d paramd)
+  public as(ViewGroup paramViewGroup, com.tencent.mm.plugin.finder.live.plugin.b paramb, FinderLiveShadeView paramFinderLiveShadeView)
   {
-    AppMethodBeat.i(264496);
-    this.kiF = paramViewGroup;
-    this.kCL = paramb;
-    this.xYq = paramd;
-    this.TAG = "Finder.FinderLiveVisitorMicEntranceWidget";
-    this.yvt = 1;
-    this.yvu = 2;
-    this.clickArea = this.kiF.findViewById(b.f.finder_live_visitor_link_mic_group);
-    this.zsx = ((WeImageView)this.kiF.findViewById(b.f.finder_live_visitor_link_mic_icon));
-    this.ybB = ((q.g)new c(this));
-    this.clickArea.setOnClickListener((View.OnClickListener)this);
-    AppMethodBeat.o(264496);
+    this.mJe = paramViewGroup;
+    this.CwG = paramb;
+    this.Dfo = paramFinderLiveShadeView;
+    this.TAG = "Finder.FinderLiveMicStateWidget";
+    this.Esz = new Rect();
+    this.EsB = ((kotlin.g.a.b)new b(this));
+    this.Dgv = new as..ExternalSyntheticLambda0(this);
   }
   
-  private final boolean dEc()
+  private static final void a(as paramas, MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(264494);
-    Object localObject = this.kiF.getContext();
-    if (localObject == null)
+    Object localObject2 = null;
+    Object localObject1 = null;
+    s.u(paramas, "this$0");
+    if (paramMenuItem == null)
     {
-      localObject = new t("null cannot be cast to non-null type android.app.Activity");
-      AppMethodBeat.o(264494);
-      throw ((Throwable)localObject);
-    }
-    if (!com.tencent.mm.pluginsdk.permission.b.a((Activity)localObject, "android.permission.CAMERA", 16, "", ""))
-    {
-      Log.i(this.TAG, "not get enough permission checkCamera");
-      AppMethodBeat.o(264494);
-      return false;
-    }
-    localObject = this.kiF.getContext();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type android.app.Activity");
-      AppMethodBeat.o(264494);
-      throw ((Throwable)localObject);
-    }
-    if (!com.tencent.mm.pluginsdk.permission.b.a((Activity)localObject, "android.permission.RECORD_AUDIO", 80, "", ""))
-    {
-      Log.i(this.TAG, "not get enough permission checkMicroPhone");
-      AppMethodBeat.o(264494);
-      return false;
-    }
-    AppMethodBeat.o(264494);
-    return true;
-  }
-  
-  private static boolean dIS()
-  {
-    AppMethodBeat.i(264493);
-    com.tencent.c.a.a.a.a.a locala = com.tencent.c.a.a.a.a.a.Zlt;
-    if (com.tencent.c.a.a.a.a.a.imH() == 1)
-    {
-      AppMethodBeat.o(264493);
-      return true;
-    }
-    AppMethodBeat.o(264493);
-    return false;
-  }
-  
-  private static com.tencent.mm.live.core.core.trtc.a getLiveCore()
-  {
-    AppMethodBeat.i(264487);
-    Object localObject = ah.yhC;
-    localObject = (com.tencent.mm.live.core.core.trtc.a)ah.dzA();
-    AppMethodBeat.o(264487);
-    return localObject;
-  }
-  
-  public final void dAH()
-  {
-    AppMethodBeat.i(264488);
-    if ((((f)this.xYq.business(f.class)).dHd()) && (!((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.xYq.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).dGP()) && (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.xYq.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).isLiveStarted())) {
-      tU(0);
-    }
-    for (;;)
-    {
-      m.yCt.a(s.bl.yMG, s.ag.yIs, this.kiF.getVisibility());
-      AppMethodBeat.o(264488);
-      return;
-      tU(8);
-    }
-  }
-  
-  public final void dIQ()
-  {
-    AppMethodBeat.i(264489);
-    Context localContext;
-    if (!((f)this.xYq.business(f.class)).dHd())
-    {
-      Log.i(this.TAG, "skip apply mic, disable mic");
-      localObject = this.kiF.getContext();
-      localContext = this.kiF.getContext();
-      p.j(localContext, "root.context");
-      w.makeText((Context)localObject, (CharSequence)localContext.getResources().getString(b.j.finder_live_link_mic_disable_msg_tip), 0).show();
-      AppMethodBeat.o(264489);
-      return;
-    }
-    if (!((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.xYq.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zfc)
-    {
-      Log.i(this.TAG, "skip apply mic, ban comment");
-      localObject = this.kiF.getContext();
-      localContext = this.kiF.getContext();
-      p.j(localContext, "root.context");
-      w.makeText((Context)localObject, (CharSequence)localContext.getResources().getString(b.j.finder_live_link_mic_ban_comment_tip), 0).show();
-      AppMethodBeat.o(264489);
-      return;
-    }
-    if (!dIS())
-    {
-      Log.i(this.TAG, "skip apply mic, live lisence unchecked");
-      b.b.a(this.kCL, b.c.kBe);
-      AppMethodBeat.o(264489);
-      return;
-    }
-    if (!dEc())
-    {
-      Log.i(this.TAG, "skip apply mic, live permission unchecked");
-      AppMethodBeat.o(264489);
-      return;
-    }
-    if (((f)this.xYq.business(f.class)).dHf())
-    {
-      localObject = this.kiF.getContext();
-      localContext = this.kiF.getContext();
-      p.j(localContext, "root.context");
-      w.makeText((Context)localObject, (CharSequence)localContext.getResources().getString(b.j.finder_live_link_mic_visitor_waiting_tip), 0).show();
-      AppMethodBeat.o(264489);
-      return;
-    }
-    Object localObject = getLiveCore();
-    if (localObject != null)
-    {
-      localObject = ((com.tencent.mm.live.core.core.trtc.a)localObject).knA;
-      if ((localObject != null) && (((com.tencent.mm.live.core.core.model.h)localObject).kmG == true))
-      {
-        localObject = this.kiF.getContext();
-        localContext = this.kiF.getContext();
-        p.j(localContext, "root.context");
-        w.makeText((Context)localObject, (CharSequence)localContext.getResources().getString(b.j.finder_live_mic_screen_share_tip), 0).show();
-        AppMethodBeat.o(264489);
-        return;
+      paramMenuItem = null;
+      if (paramMenuItem != null) {
+        break label47;
+      }
+      label21:
+      if (paramMenuItem != null) {
+        break label217;
+      }
+      label25:
+      if (paramMenuItem != null) {
+        break label395;
+      }
+      label29:
+      if (paramMenuItem != null) {
+        break label515;
       }
     }
-    if ((((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.xYq.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).dGG()) && (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.xYq.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zfS.SJy != 1))
+    label47:
+    label104:
+    while (paramMenuItem.intValue() != 3)
     {
-      localObject = new Bundle();
-      localContext = this.kiF.getContext();
-      p.j(localContext, "root.context");
-      ((Bundle)localObject).putString("PARAM_FINDER_BOTTOM_TIP_TITLE", localContext.getResources().getString(b.j.finder_live_link_mic_lucky_money_tip));
-      localContext = this.kiF.getContext();
-      p.j(localContext, "root.context");
-      ((Bundle)localObject).putString("PARAM_FINDER_BOTTOM_TIP_MSG", localContext.getResources().getString(b.j.finder_live_link_mic_lucky_money_msg));
-      ((Bundle)localObject).putInt("PARAM_FINDER_BOTTOM_TIP_SCENE", 0);
-      this.xYq.yld.statusChange(b.c.kBm, (Bundle)localObject);
-      AppMethodBeat.o(264489);
       return;
-    }
-    dIR();
-    AppMethodBeat.o(264489);
-  }
-  
-  public final void dIR()
-  {
-    AppMethodBeat.i(264490);
-    if (this.ymL == null)
-    {
-      this.ymL = new e(this.kiF.getContext(), 1, true);
-      locale = this.ymL;
-      if (locale != null) {
-        locale.icA();
-      }
-    }
-    e locale = this.ymL;
-    if (locale != null) {
-      locale.icy();
-    }
-    locale = this.ymL;
-    if (locale != null) {
-      locale.HK(true);
-    }
-    locale = this.ymL;
-    if (locale != null) {
-      locale.a((q.f)new a(this));
-    }
-    locale = this.ymL;
-    if (locale != null) {
-      locale.a(this.ybB);
-    }
-    locale = this.ymL;
-    if (locale != null) {
-      locale.b((e.b)new b(this));
-    }
-    locale = this.ymL;
-    if (locale != null) {
-      locale.eik();
-    }
-    m.a(m.yCt, s.bl.yMy, null, 6);
-    AppMethodBeat.o(264490);
-  }
-  
-  public final boolean isVisible()
-  {
-    AppMethodBeat.i(264492);
-    if (this.kiF.getVisibility() == 0)
-    {
-      AppMethodBeat.o(264492);
-      return true;
-    }
-    AppMethodBeat.o(264492);
-    return false;
-  }
-  
-  public final void onClick(View paramView)
-  {
-    AppMethodBeat.i(264495);
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderLiveVisitorMicEntranceWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    int i;
-    if (paramView != null)
-    {
-      paramView = Integer.valueOf(paramView.getId());
-      i = b.f.finder_live_visitor_link_mic_group;
-      if (paramView != null) {
-        break label87;
-      }
-    }
-    for (;;)
-    {
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/widget/FinderLiveVisitorMicEntranceWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(264495);
-      return;
-      paramView = null;
+      paramMenuItem = Integer.valueOf(paramMenuItem.getItemId());
       break;
-      label87:
-      if (paramView.intValue() == i) {
-        dIQ();
+      if (paramMenuItem.intValue() != 0) {
+        break label21;
       }
-    }
-  }
-  
-  public final void tU(int paramInt)
-  {
-    AppMethodBeat.i(264491);
-    com.tencent.mm.kernel.c.a locala = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.j(locala, "MMKernel.service(ITeenModeService::class.java)");
-    if (((com.tencent.mm.plugin.teenmode.a.b)locala).ZM())
-    {
-      this.kiF.setVisibility(8);
-      Log.w(this.TAG, "setVisible return for isTeenMode");
-      AppMethodBeat.o(264491);
-      return;
-    }
-    this.kiF.setVisibility(paramInt);
-    AppMethodBeat.o(264491);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class a
-    implements q.f
-  {
-    a(as paramas) {}
-    
-    public final void onCreateMMMenu(o paramo)
-    {
-      AppMethodBeat.i(274879);
-      Object localObject = as.a(this.zsy);
-      if (localObject != null) {
-        ((e)localObject).setFooterView(null);
+      Log.i(paramas.TAG, "SHEET_MORE_REWARD");
+      localObject2 = new Bundle();
+      paramMenuItem = paramas.Esy;
+      if (paramMenuItem == null)
+      {
+        paramMenuItem = "";
+        ((Bundle)localObject2).putString("PARAM_FINDER_LIVE_LINK_USERNAME", paramMenuItem);
+        paramMenuItem = paramas.Esy;
+        if (paramMenuItem != null) {
+          break label192;
+        }
+        paramMenuItem = "";
+        ((Bundle)localObject2).putString("PARAM_FINDER_LIVE_LINK_NICKNAME", paramMenuItem);
+        paramMenuItem = paramas.Esy;
+        if (paramMenuItem != null) {
+          break label209;
+        }
       }
-      paramo.clear();
-      localObject = this.zsy;
-      p.j(paramo, "menu");
-      as.a((as)localObject, paramo);
-      AppMethodBeat.o(274879);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDismiss"})
-  static final class b
-    implements e.b
-  {
-    b(as paramas) {}
-    
-    public final void onDismiss()
-    {
-      AppMethodBeat.i(268551);
-      as.b(this.zsy);
-      AppMethodBeat.o(268551);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onMMMenuItemSelected"})
-  static final class c
-    implements q.g
-  {
-    c(as paramas) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(285848);
+      for (paramMenuItem = null;; paramMenuItem = paramMenuItem.headUrl)
+      {
+        ((Bundle)localObject2).putString("PARAM_FINDER_LIVE_LINK_AVATAR", paramMenuItem);
+        paramas.CwG.CTj.statusChange(b.c.ndq, (Bundle)localObject2);
+        paramMenuItem = paramas.ngn;
+        if (paramMenuItem != null) {
+          paramMenuItem.cyW();
+        }
+        paramas.EsB.invoke(Boolean.FALSE);
+        return;
+        localObject1 = paramMenuItem.username;
+        paramMenuItem = (MenuItem)localObject1;
+        if (localObject1 != null) {
+          break;
+        }
+        paramMenuItem = "";
+        break;
+        localObject1 = paramMenuItem.nickname;
+        paramMenuItem = (MenuItem)localObject1;
+        if (localObject1 != null) {
+          break label104;
+        }
+        paramMenuItem = "";
+        break label104;
+      }
+      if (paramMenuItem.intValue() != 1) {
+        break label25;
+      }
+      Log.i(paramas.TAG, "SHEET_MORE_PORFILE");
+      paramMenuItem = paramas.Esy;
+      if (paramMenuItem == null)
+      {
+        paramMenuItem = (MenuItem)localObject1;
+        localObject1 = (CharSequence)paramMenuItem;
+        if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+          break label317;
+        }
+        paramInt = 1;
+        if (paramInt == 0) {
+          break label322;
+        }
+        Log.i(paramas.TAG, s.X("goToFinderProfile finderUsername:", paramMenuItem));
+      }
+      for (;;)
+      {
+        paramMenuItem = paramas.ngn;
+        if (paramMenuItem != null) {
+          paramMenuItem.cyW();
+        }
+        paramas.EsB.invoke(Boolean.FALSE);
+        return;
+        paramMenuItem = paramMenuItem.username;
+        break;
+        paramInt = 0;
+        break label265;
+        localObject1 = g.CEN;
+        localObject1 = paramas.mJe.getContext();
+        localObject2 = paramas.CwG.getBuContext();
+        Object localObject3 = k.aeZF;
+        localObject3 = paramas.mJe.getContext();
+        s.s(localObject3, "root.context");
+        g.a((Context)localObject1, (com.tencent.mm.plugin.finder.live.model.context.a)localObject2, false, paramMenuItem, ((bn)k.nq((Context)localObject3).cq(bn.class)).fou());
+      }
+      if (paramMenuItem.intValue() != 2) {
+        break label29;
+      }
+      Log.i(paramas.TAG, "SHEET_MORE_EXPOSE");
+      paramMenuItem = paramas.Esy;
       if (paramMenuItem != null)
       {
-        paramMenuItem = Integer.valueOf(paramMenuItem.getItemId());
-        paramInt = as.c(this.zsy);
-        if (paramMenuItem != null) {
-          break label66;
-        }
-        label31:
-        paramInt = as.e(this.zsy);
-        if (paramMenuItem != null) {
-          break label254;
-        }
-      }
-      label66:
-      Context localContext;
-      label254:
-      while (paramMenuItem.intValue() != paramInt)
-      {
-        paramInt = as.f(this.zsy);
-        if (paramMenuItem != null) {
-          break label442;
-        }
-        AppMethodBeat.o(285848);
-        return;
-        paramMenuItem = null;
-        break;
-        if (paramMenuItem.intValue() != paramInt) {
-          break label31;
-        }
-        Log.i(as.d(this.zsy), "SHEET_MORE_ACTION_VIDEO_LINK");
-        if (!((f)this.zsy.xYq.business(f.class)).dHd())
-        {
-          Log.i(as.d(this.zsy), "skip apply mic, disable mic");
-          paramMenuItem = this.zsy.kiF.getContext();
-          localContext = this.zsy.kiF.getContext();
-          p.j(localContext, "root.context");
-          w.makeText(paramMenuItem, (CharSequence)localContext.getResources().getString(b.j.finder_live_link_mic_disable_msg_tip), 0).show();
-          AppMethodBeat.o(285848);
-          return;
-        }
-        paramMenuItem = new Bundle();
-        paramMenuItem.putInt("PARAM_FINDER_LIVE_LINK_MIC_TYPE", 2);
-        this.zsy.kCL.statusChange(b.c.kAW, paramMenuItem);
-        paramMenuItem = as.a(this.zsy);
-        if (paramMenuItem != null) {
-          paramMenuItem.bYF();
-        }
-        if (this.zsy.kCL.getLiveRole() == 0) {
-          m.a(m.yCt, s.bl.yMA, null, 6);
-        }
-        AppMethodBeat.o(285848);
-        return;
-      }
-      Log.i(as.d(this.zsy), "SHEET_MORE_ACTION_AUDIO_LINK");
-      if (!((f)this.zsy.xYq.business(f.class)).dHd())
-      {
-        Log.i(as.d(this.zsy), "skip apply mic, disable mic");
-        paramMenuItem = this.zsy.kiF.getContext();
-        localContext = this.zsy.kiF.getContext();
-        p.j(localContext, "root.context");
-        w.makeText(paramMenuItem, (CharSequence)localContext.getResources().getString(b.j.finder_live_link_mic_disable_msg_tip), 0).show();
-        AppMethodBeat.o(285848);
-        return;
-      }
-      paramMenuItem = new Bundle();
-      paramMenuItem.putInt("PARAM_FINDER_LIVE_LINK_MIC_TYPE", 1);
-      this.zsy.kCL.statusChange(b.c.kAW, paramMenuItem);
-      paramMenuItem = as.a(this.zsy);
-      if (paramMenuItem != null) {
-        paramMenuItem.bYF();
-      }
-      if (this.zsy.kCL.getLiveRole() == 0) {
-        m.a(m.yCt, s.bl.yMz, null, 6);
-      }
-      AppMethodBeat.o(285848);
-      return;
-      label442:
-      if (paramMenuItem.intValue() == paramInt)
-      {
-        Log.i(as.d(this.zsy), "SHEET_MORE_ACTION_STOP_LINK");
-        if (this.zsy.kCL.getLiveRole() == 0)
-        {
-          paramMenuItem = m.yCt;
-          m.ps(true);
-        }
-        b.b.a(this.zsy.kCL, b.c.kBa);
-        paramMenuItem = as.a(this.zsy);
+        paramMenuItem = paramMenuItem.username;
         if (paramMenuItem != null)
         {
-          paramMenuItem.bYF();
-          AppMethodBeat.o(285848);
+          localObject1 = com.tencent.mm.plugin.finder.live.plugin.b.getFinderLiveAssistant();
+          if (localObject1 != null)
+          {
+            localObject2 = paramas.mJe.getContext();
+            s.s(localObject2, "root.context");
+            ((ap)localObject1).a((Context)localObject2, ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)paramas.CwG.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.f.class)).liveInfo.liveId, paramMenuItem, Long.valueOf(0L));
+          }
+        }
+      }
+      paramMenuItem = paramas.ngn;
+      if (paramMenuItem != null) {
+        paramMenuItem.cyW();
+      }
+      paramas.EsB.invoke(Boolean.FALSE);
+      return;
+    }
+    label192:
+    label209:
+    label217:
+    Log.i(paramas.TAG, "SHEET_MORE_LIVE");
+    label265:
+    label317:
+    label322:
+    paramMenuItem = paramas.Esy;
+    label395:
+    if (paramMenuItem == null) {}
+    label515:
+    for (paramMenuItem = (MenuItem)localObject2;; paramMenuItem = paramMenuItem.username)
+    {
+      paramas.ayB(paramMenuItem);
+      paramMenuItem = paramas.ngn;
+      if (paramMenuItem != null) {
+        paramMenuItem.cyW();
+      }
+      paramas.EsB.invoke(Boolean.FALSE);
+      return;
+    }
+  }
+  
+  public final void ayB(String paramString)
+  {
+    Log.i(this.TAG, "goToFinderLive from:" + ((e)this.CwG.business(e.class)).mIC + " to:" + paramString);
+    if (paramString == null) {}
+    for (Object localObject = "";; localObject = paramString)
+    {
+      paramString = new ac((String)localObject, (t)new c(paramString, this)).bFJ();
+      if ((this.mJe.getContext() == null) || (!(this.mJe.getContext() instanceof MMActivity))) {
+        return;
+      }
+      localObject = this.mJe.getContext();
+      if (localObject != null) {
+        break;
+      }
+      throw new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
+    }
+    paramString.a((com.tencent.mm.vending.e.b)localObject);
+  }
+  
+  protected final com.tencent.mm.ui.widget.a.f cDi()
+  {
+    return this.ngn;
+  }
+  
+  public final void eBh()
+  {
+    Object localObject2 = null;
+    Object localObject1 = k.aeZF;
+    localObject1 = this.mJe.getContext();
+    s.s(localObject1, "root.context");
+    if (((com.tencent.mm.plugin.finder.live.sidebar.d)k.nq((Context)localObject1).q(com.tencent.mm.plugin.finder.live.sidebar.d.class)).DGD)
+    {
+      localObject1 = k.aeZF;
+      localObject1 = this.mJe.getContext();
+      s.s(localObject1, "root.context");
+      localObject1 = ((com.tencent.mm.plugin.finder.live.sidebar.d)k.nq((Context)localObject1).q(com.tencent.mm.plugin.finder.live.sidebar.d.class)).DGE;
+      if (localObject1 != null) {
+        ((c)localObject1).hide();
+      }
+      localObject1 = k.aeZF;
+      localObject1 = this.mJe.getContext();
+      s.s(localObject1, "root.context");
+      ((com.tencent.mm.plugin.finder.live.sidebar.d)k.nq((Context)localObject1).q(com.tencent.mm.plugin.finder.live.sidebar.d.class)).DGH.DGN = 3;
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localObject1 = this.Esy;
+    if (localObject1 == null)
+    {
+      localObject1 = null;
+      localBundle.putByteArray("PARAM_MEMBERS_PROFILE_CONTACT", (byte[])localObject1);
+      localBundle.putBoolean("PARAM_MEMBERS_PROFILE_NEED_NOTIFY_CLOSE", false);
+      localBundle.putInt("PARAM_MEMBERS_PROFILE_SOURCE_TYPE", 3);
+      localObject1 = this.Esy;
+      if (localObject1 != null) {
+        break label272;
+      }
+      localObject1 = localObject2;
+      label182:
+      localBundle.putString("PARAM_MEMBERS_PROFILE_USERNAME", (String)localObject1);
+      localObject1 = this.Esy;
+      if (localObject1 != null) {
+        break label280;
+      }
+      bool = false;
+      label202:
+      if (!bool)
+      {
+        localObject1 = this.Esy;
+        if (localObject1 != null) {
+          break label288;
+        }
+        bool = false;
+        label217:
+        if (!bool) {
+          break label310;
+        }
+      }
+    }
+    label272:
+    label280:
+    label288:
+    label310:
+    for (boolean bool = true;; bool = false)
+    {
+      localBundle.putBoolean("PARAM_MEMBERS_PROFILE_IS_OTHER_ROOM_USER", bool);
+      this.CwG.CTj.statusChange(b.c.ncV, localBundle);
+      return;
+      localObject1 = ((h)localObject1).EbJ;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        break;
+      }
+      localObject1 = ((bgh)localObject1).toByteArray();
+      break;
+      localObject1 = ((h)localObject1).username;
+      break label182;
+      bool = ((h)localObject1).EbD;
+      break label202;
+      localObject1 = ((h)localObject1).EbK;
+      if (localObject1 == null)
+      {
+        bool = false;
+        break label217;
+      }
+      bool = ((Boolean)localObject1).booleanValue();
+      break label217;
+    }
+  }
+  
+  public final Integer eBi()
+  {
+    h localh = this.Esy;
+    if (localh == null) {
+      return null;
+    }
+    return Integer.valueOf(localh.mXM);
+  }
+  
+  public void erb()
+  {
+    com.tencent.mm.ui.widget.a.f localf = this.ngn;
+    if (localf != null) {
+      localf.cyW();
+    }
+  }
+  
+  public final void i(h paramh)
+  {
+    s.u(paramh, "linkMicUser");
+    this.Esy = paramh;
+  }
+  
+  public abstract void requestDisallowInterceptTouchEvent(boolean paramBoolean);
+  
+  public void x(Rect paramRect)
+  {
+    s.u(paramRect, "contentRect");
+    this.Esz.set(paramRect);
+    if (this.EsA) {
+      this.Dfo.setHighLightRect(paramRect);
+    }
+  }
+  
+  public void y(Rect paramRect)
+  {
+    s.u(paramRect, "contentRect");
+    this.Esz.set(paramRect);
+    if (this.EsA) {
+      this.Dfo.setHighLightRect(paramRect);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "isShow", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
+  {
+    b(as paramas)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/widget/FinderLiveMicStateWidget$goToFinderLive$1", "Lcom/tencent/mm/plugin/findersdk/api/ICgiFinderLiveGetLastObjectCallback;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderGetLatestLiveObjectResponse;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements t
+  {
+    c(String paramString, as paramas) {}
+    
+    public final void a(int paramInt1, int paramInt2, azf paramazf)
+    {
+      Object localObject1 = null;
+      AppMethodBeat.i(360977);
+      s.u(paramazf, "resp");
+      Object localObject2 = paramazf.ZIo;
+      if (localObject2 != null)
+      {
+        paramazf = ((FinderObject)localObject2).contact;
+        if (paramazf == null) {}
+        for (paramazf = null; s.p(paramazf, this.pmW); paramazf = paramazf.username)
+        {
+          com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this.pmW, jdField_this, (FinderObject)localObject2));
+          AppMethodBeat.o(360977);
           return;
         }
       }
-      AppMethodBeat.o(285848);
+      String str = as.a(jdField_this);
+      StringBuilder localStringBuilder = new StringBuilder("[LiveLogoAssistant]CgiFinderLiveGetLastObject invalid resp local username:").append(this.pmW).append(",remote username:");
+      if (localObject2 == null) {
+        paramazf = localObject1;
+      }
+      for (;;)
+      {
+        Log.i(str, paramazf);
+        AppMethodBeat.o(360977);
+        return;
+        localObject2 = ((FinderObject)localObject2).contact;
+        paramazf = localObject1;
+        if (localObject2 != null) {
+          paramazf = ((FinderContact)localObject2).username;
+        }
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements kotlin.g.a.a<ah>
+    {
+      a(String paramString, as paramas, FinderObject paramFinderObject)
+      {
+        super();
+      }
     }
   }
 }

@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class i
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<Long> rVA;
-  public LinkedList<String> rVz;
+  public LinkedList<String> vgP;
+  public LinkedList<Long> vgQ;
   
   public i()
   {
     AppMethodBeat.i(22110);
-    this.rVz = new LinkedList();
-    this.rVA = new LinkedList();
+    this.vgP = new LinkedList();
+    this.vgQ = new LinkedList();
     AppMethodBeat.o(22110);
   }
   
@@ -22,28 +22,28 @@ public final class i
     AppMethodBeat.i(22111);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 1, this.rVz);
-      paramVarArgs.e(2, 3, this.rVA);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 1, this.vgP);
+      paramVarArgs.e(2, 3, this.vgQ);
       AppMethodBeat.o(22111);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.a.c(1, 1, this.rVz);
-      int i = g.a.a.a.c(2, 3, this.rVA);
+      paramInt = i.a.a.a.c(1, 1, this.vgP);
+      int i = i.a.a.a.c(2, 3, this.vgQ);
       AppMethodBeat.o(22111);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.rVz.clear();
-      this.rVA.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      this.vgP.clear();
+      this.vgQ.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(22111);
@@ -51,7 +51,7 @@ public final class i
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       i locali = (i)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -59,11 +59,11 @@ public final class i
         AppMethodBeat.o(22111);
         return -1;
       case 1: 
-        locali.rVz.add(locala.abFh.readString());
+        locali.vgP.add(locala.ajGk.readString());
         AppMethodBeat.o(22111);
         return 0;
       }
-      locali.rVA.add(Long.valueOf(locala.abFh.AN()));
+      locali.vgQ.add(Long.valueOf(locala.ajGk.aaw()));
       AppMethodBeat.o(22111);
       return 0;
     }
@@ -73,7 +73,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.i
  * JD-Core Version:    0.7.0.1
  */

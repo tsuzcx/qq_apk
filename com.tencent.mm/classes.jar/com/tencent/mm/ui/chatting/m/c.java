@@ -1,121 +1,60 @@
 package com.tencent.mm.ui.chatting.m;
 
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.component.UIComponent;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/utils/SportsMsgReportUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "set", "", "", "getSet", "()Ljava/util/Set;", "set$delegate", "Lkotlin/Lazy;", "clearSet", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
+  extends UIComponent
 {
-  public static final c WZL;
-  public int PpQ;
-  public int WZM;
-  public int WZN;
-  public int WZO;
-  public int mCount;
-  public int mSuccessCount;
+  private final j aeKC;
   
-  static
+  public c(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(36612);
-    WZL = new c();
-    AppMethodBeat.o(36612);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(253880);
+    this.aeKC = k.cm((a)a.aeKD);
+    AppMethodBeat.o(253880);
   }
   
-  public static void aW(String paramString, int paramInt1, int paramInt2)
+  public final Set<String> jxe()
   {
-    AppMethodBeat.i(36608);
-    Log.i("MicroMsg.GetChatroomReporter", "[report] chatroomId:%s cleanCount:%s count:%s ", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (paramInt1 > 0)
-    {
-      f.Iyx.idkeyStat(403L, 67L, 1L, true);
-      f.Iyx.idkeyStat(403L, 68L, paramInt1, true);
-    }
-    f.Iyx.idkeyStat(403L, 70L, paramInt2, true);
-    if (paramInt2 <= 5)
-    {
-      f.Iyx.idkeyStat(403L, 71L, 1L, true);
-      AppMethodBeat.o(36608);
-      return;
-    }
-    if (paramInt2 <= 10)
-    {
-      f.Iyx.idkeyStat(403L, 72L, 1L, true);
-      AppMethodBeat.o(36608);
-      return;
-    }
-    if (paramInt2 <= 20)
-    {
-      f.Iyx.idkeyStat(403L, 73L, 1L, true);
-      AppMethodBeat.o(36608);
-      return;
-    }
-    if (paramInt2 <= 30)
-    {
-      f.Iyx.idkeyStat(403L, 74L, 1L, true);
-      AppMethodBeat.o(36608);
-      return;
-    }
-    if (paramInt2 <= 50)
-    {
-      f.Iyx.idkeyStat(403L, 75L, 1L, true);
-      AppMethodBeat.o(36608);
-      return;
-    }
-    f.Iyx.idkeyStat(403L, 76L, 1L, true);
-    AppMethodBeat.o(36608);
+    AppMethodBeat.i(253884);
+    Set localSet = (Set)this.aeKC.getValue();
+    AppMethodBeat.o(253884);
+    return localSet;
   }
   
-  public static void hTn()
+  @Metadata(d1={""}, d2={"<anonymous>", "", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements a<Set<String>>
   {
-    AppMethodBeat.i(36609);
-    f.Iyx.idkeyStat(403L, 77L, 1L, true);
-    AppMethodBeat.o(36609);
-  }
-  
-  public static void hTo()
-  {
-    AppMethodBeat.i(36610);
-    f.Iyx.idkeyStat(403L, 41L, 1L, false);
-    AppMethodBeat.o(36610);
-  }
-  
-  public static void hTp()
-  {
-    AppMethodBeat.i(36611);
-    f.Iyx.idkeyStat(403L, 78L, 1L, false);
-    AppMethodBeat.o(36611);
-  }
-  
-  public final void awB(int paramInt)
-  {
-    this.WZO += paramInt;
-  }
-  
-  public final void e(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    AppMethodBeat.i(36607);
-    Log.i("MicroMsg.GetChatroomReporter", "[recordFetch] isDown:" + paramBoolean1 + " isSuccess:" + paramBoolean2 + " chatroomid:" + paramString);
-    if (paramBoolean1) {
-      this.WZM += 1;
-    }
-    for (;;)
+    public static final a aeKD;
+    
+    static
     {
-      this.mCount += 1;
-      if (paramBoolean2) {
-        break;
-      }
-      this.PpQ += 1;
-      AppMethodBeat.o(36607);
-      return;
-      this.WZN += 1;
+      AppMethodBeat.i(253876);
+      aeKD = new a();
+      AppMethodBeat.o(253876);
     }
-    this.mSuccessCount += 1;
-    AppMethodBeat.o(36607);
+    
+    a()
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.m.c
  * JD-Core Version:    0.7.0.1
  */

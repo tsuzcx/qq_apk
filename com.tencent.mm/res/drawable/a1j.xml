@@ -4,19 +4,19 @@
     <item android:state_pressed="true">
         <shape android:shape="oval">
             <solid android:color="@color/Red_80" />
-            <size android:height="@dimen/cp" android:width="@dimen/cp" />
+            <size android:height="@dimen/d_" android:width="@dimen/d_" />
         </shape>
     </item>
     <item android:state_focused="true">
         <shape android:shape="oval">
             <solid android:color="@color/Red_80" />
-            <size android:height="@dimen/cp" android:width="@dimen/cp" />
+            <size android:height="@dimen/d_" android:width="@dimen/d_" />
         </shape>
     </item>
     <item>
         <shape android:shape="oval">
             <solid android:color="@color/Red" />
-            <size android:height="@dimen/cp" android:width="@dimen/cp" />
+            <size android:height="@dimen/d_" android:width="@dimen/d_" />
         </shape>
     </item>
 </selector>

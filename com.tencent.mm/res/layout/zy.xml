@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/BW_95" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/g2j" android:layout_width="150.0dip" android:layout_height="150.0dip" android:src="@drawable/bmz" />
-    <TextView android:textSize="@dimen/i7" android:textColor="@color/a2x" android:gravity="center" android:id="@id/g2n" android:paddingLeft="@dimen/br" android:paddingRight="@dimen/br" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hw" android:text="@string/fbe" android:lineSpacingExtra="4.0dip" />
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/x0" android:id="@id/g2k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="50.0dip" android:text="@string/e2x" />
-</LinearLayout>
+    <com.tencent.mm.plugin.downloader_app.search.DownloadSearchListView android:id="@id/j73" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/j70" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a74" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/ae2" android:layout_gravity="center_horizontal" android:id="@id/hgw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" />
+</FrameLayout>

@@ -1,89 +1,79 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bzo
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public ao Tir;
-  public int scene;
+  public int index;
+  public int rBp;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32256);
+    AppMethodBeat.i(32211);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.scene);
-      if (this.Tir != null)
-      {
-        paramVarArgs.oE(2, this.Tir.computeSize());
-        this.Tir.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.index);
+      if (this.username != null) {
+        paramVarArgs.g(2, this.username);
       }
-      AppMethodBeat.o(32256);
+      paramVarArgs.bS(3, this.rBp);
+      AppMethodBeat.o(32211);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.bM(1, this.scene) + 0;
+      int i = i.a.a.b.b.a.cJ(1, this.index) + 0;
       paramInt = i;
-      if (this.Tir != null) {
-        paramInt = i + g.a.a.a.oD(2, this.Tir.computeSize());
+      if (this.username != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.username);
       }
-      AppMethodBeat.o(32256);
-      return paramInt;
+      i = i.a.a.b.b.a.cJ(3, this.rBp);
+      AppMethodBeat.o(32211);
+      return paramInt + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(32256);
+      AppMethodBeat.o(32211);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       bzo localbzo = (bzo)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32256);
+        AppMethodBeat.o(32211);
         return -1;
       case 1: 
-        localbzo.scene = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(32256);
+        localbzo.index = locala.ajGk.aar();
+        AppMethodBeat.o(32211);
+        return 0;
+      case 2: 
+        localbzo.username = locala.ajGk.readString();
+        AppMethodBeat.o(32211);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        ao localao = new ao();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localao.parseFrom((byte[])localObject);
-        }
-        localbzo.Tir = localao;
-        paramInt += 1;
-      }
-      AppMethodBeat.o(32256);
+      localbzo.rBp = locala.ajGk.aar();
+      AppMethodBeat.o(32211);
       return 0;
     }
-    AppMethodBeat.o(32256);
+    AppMethodBeat.o(32211);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bzo
  * JD-Core Version:    0.7.0.1
  */

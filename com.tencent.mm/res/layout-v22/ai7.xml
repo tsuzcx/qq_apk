@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/BW_100" android:paddingLeft="@dimen/cp" android:paddingTop="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bx" android:paddingHorizontal="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="@dimen/d4">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/g88" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/g7m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/fa" android:textColor="@color/BW_0_Alpha_0_3" android:layout_gravity="end" android:id="@id/kl9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:layout_gravity="bottom" android:background="@color/FG_3" android:layout_width="wrap_content" android:layout_height="0.5dip" android:layout_marginTop="@dimen/cp" />
+</FrameLayout>

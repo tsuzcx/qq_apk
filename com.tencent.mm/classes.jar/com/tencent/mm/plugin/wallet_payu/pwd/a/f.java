@@ -7,9 +7,8 @@ import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUSetPasswordUI;
 import com.tencent.mm.plugin.wallet_payu.security_question.model.a;
 import com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionAnswerUI;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.d;
-import com.tencent.mm.wallet_core.d.g;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.c.i;
 
 public class f
   extends e
@@ -19,7 +18,7 @@ public class f
     AppMethodBeat.i(72153);
     if ((paramMMActivity instanceof WalletPayUSecurityQuestionAnswerUI))
     {
-      paramMMActivity = new a(paramMMActivity, parami, this.fKb);
+      paramMMActivity = new a(paramMMActivity, parami, this.hPH);
       AppMethodBeat.o(72153);
       return paramMMActivity;
     }
@@ -28,7 +27,7 @@ public class f
     return paramMMActivity;
   }
   
-  public final d a(Activity paramActivity, Bundle paramBundle)
+  public final com.tencent.mm.wallet_core.e a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72151);
     b(paramActivity, WalletPayUSecurityQuestionAnswerUI.class, paramBundle);
@@ -50,7 +49,7 @@ public class f
     AppMethodBeat.o(72152);
   }
   
-  public final String epb()
+  public final String fud()
   {
     return "PayUForgotPwdProcess";
   }

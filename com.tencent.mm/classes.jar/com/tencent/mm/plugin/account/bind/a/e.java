@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.account.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.evg;
-import com.tencent.mm.protocal.protobuf.evh;
+import com.tencent.mm.protocal.protobuf.fqt;
+import com.tencent.mm.protocal.protobuf.fqu;
 
 public final class e
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private d rr;
+  private h callback;
+  private c rr;
   
   public e(String paramString)
   {
     AppMethodBeat.i(109752);
-    d.a locala = new d.a();
-    locala.lBU = new evg();
-    locala.lBV = new evh();
+    c.a locala = new c.a();
+    locala.otE = new fqt();
+    locala.otF = new fqu();
     locala.uri = "/cgi-bin/micromsg-bin/unbindqq";
     locala.funcId = 253;
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    ((evg)d.b.b(this.rr.lBR)).HlB = paramString;
+    this.rr = locala.bEF();
+    ((fqt)c.b.b(this.rr.otB)).Njp = paramString;
     AppMethodBeat.o(109752);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(109753);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(109753);
     return i;

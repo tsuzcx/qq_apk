@@ -75,7 +75,7 @@ public final class ChannelUtil
   
   private static String formatVersionImpl(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(249192);
+    AppMethodBeat.i(244167);
     int i = paramInt >> 8 & 0xFF;
     if (i == 0) {}
     String str2;
@@ -113,23 +113,23 @@ public final class ChannelUtil
         if ((paramContext != null) && (paramContext.length >= 4)) {
           break label275;
         }
-        AppMethodBeat.o(249192);
+        AppMethodBeat.o(244167);
         return str2;
         str1 = paramContext[0] + "." + paramContext[1];
         if (!paramContext[2].trim().equals("0")) {
           break label326;
         }
-        AppMethodBeat.o(249192);
+        AppMethodBeat.o(244167);
         return str1;
         paramContext = str1 + "." + paramContext[2];
-        AppMethodBeat.o(249192);
+        AppMethodBeat.o(244167);
       }
       if (!paramBoolean) {
         break;
       }
       paramContext = str2 + "_" + paramInt;
       Log.d("MicroMsg.SDK.ChannelUtil", "full version: ".concat(String.valueOf(paramContext)));
-      AppMethodBeat.o(249192);
+      AppMethodBeat.o(244167);
       return paramContext;
     }
     label275:
@@ -144,13 +144,13 @@ public final class ChannelUtil
   
   public static boolean isGPVersion()
   {
-    AppMethodBeat.i(249193);
+    AppMethodBeat.i(244171);
     if ((WeChatSomeFeatureSwitch.forceGooglePlayChannel()) || (channelId == 1))
     {
-      AppMethodBeat.o(249193);
+      AppMethodBeat.o(244171);
       return true;
     }
-    AppMethodBeat.o(249193);
+    AppMethodBeat.o(244171);
     return false;
   }
   
@@ -165,7 +165,9 @@ public final class ChannelUtil
       if (str.length() <= 0) {
         profileDeviceType = Build.VERSION.SDK_INT;
       }
-      updateMode = parseInt((String)paramContext.get("UPDATE_MODE"));
+      if (parseInt((String)paramContext.get("UPDATE_MODE")) != 0) {
+        updateMode = parseInt((String)paramContext.get("UPDATE_MODE"));
+      }
       buildRev = parseInt((String)paramContext.get("BUILD_REVISION"));
       shouldShowGprsAlert = parseBoolean((String)paramContext.get("GPRS_ALERT"));
       autoAddAccount = parseInt((String)paramContext.get("AUTO_ADD_ACOUNT"));
@@ -231,7 +233,11 @@ public final class ChannelUtil
     AppMethodBeat.i(125206);
     try
     {
-      channelId = Integer.parseInt((String)IniParser.parse(Util.convertStreamToString(paramContext.getAssets().open("channel.ini"))).get("CHANNEL"));
+      int i = Integer.parseInt((String)IniParser.parse(Util.convertStreamToString(paramContext.getAssets().open("channel.ini"))).get("CHANNEL"));
+      channelId = i;
+      if (i == 1) {
+        updateMode = 1;
+      }
       AppMethodBeat.o(125206);
       return;
     }
@@ -245,7 +251,7 @@ public final class ChannelUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ChannelUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.luggage;
 
 public final class a$h
 {
-  public static final int SwipeBackLayout = 2131821351;
+  public static final int SwipeBackLayout = 2131821339;
 }
 
 

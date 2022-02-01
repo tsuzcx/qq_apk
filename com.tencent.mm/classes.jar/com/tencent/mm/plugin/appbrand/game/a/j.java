@@ -1,93 +1,40 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
-import kotlin.z;
+import com.tencent.mm.plugin.expt.b.c.a;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "kv", "", "defaultValue", "askRestart", "(Ljava/lang/String;ZZ)V", "enableAlert", "enableKv", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigNativeSwitchThread;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  extends x<Boolean>
+  extends z<Boolean>
 {
-  private static final HashMap<String, j> omE;
-  public static final a omF;
-  final String omB;
-  private final boolean omC;
-  private final boolean omD;
+  public static final j rqk;
   
   static
   {
-    AppMethodBeat.i(50378);
-    omF = new a((byte)0);
-    omE = new HashMap();
-    a.a(new j("localso", (byte)0));
-    a.a(new j("renderprofiler", (byte)0));
-    a.a(new j("debugNode", (byte)0));
-    a.a(new j("tracejstask", (byte)0));
-    AppMethodBeat.o(50378);
+    AppMethodBeat.i(180449);
+    rqk = new j();
+    AppMethodBeat.o(180449);
   }
   
-  private j(String paramString)
+  protected final String coJ()
   {
-    AppMethodBeat.i(50377);
-    this.omB = paramString;
-    this.omC = false;
-    this.omD = true;
-    if (!n.ba((CharSequence)this.omB)) {}
-    for (int i = 1; (z.aazO) && (i == 0); i = 0)
-    {
-      paramString = (Throwable)new AssertionError("Assertion failed");
-      AppMethodBeat.o(50377);
-      throw paramString;
-    }
-    AppMethodBeat.o(50377);
+    return "nativeSwitchThread";
   }
   
-  public static final j agw(String paramString)
+  protected final c.a coK()
   {
-    AppMethodBeat.i(50379);
-    p.k(paramString, "kv_name");
-    paramString = omE.get(paramString);
-    if (paramString == null) {
-      p.iCn();
-    }
-    paramString = (j)paramString;
-    AppMethodBeat.o(50379);
-    return paramString;
+    return c.a.zph;
   }
   
-  protected final String bOt()
+  protected final boolean coL()
   {
-    return this.omB;
-  }
-  
-  protected final boolean bOv()
-  {
-    return this.omD;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple$Companion;", "", "()V", "registry", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple;", "Lkotlin/collections/HashMap;", "get", "kv_name", "getAll", "", "register", "", "config", "plugin-appbrand-integration_release"})
-  public static final class a
-  {
-    static void a(j paramj)
-    {
-      AppMethodBeat.i(50374);
-      Map localMap = (Map)j.bOy();
-      String str = paramj.omB;
-      if (str == null) {
-        p.iCn();
-      }
-      localMap.put(str, paramj);
-      AppMethodBeat.o(50374);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/bnn" style="@style/rj"
+<RelativeLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/fad" android:background="@color/al2" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/a4d"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/bnm" android:background="@color/a74" android:paddingTop="@dimen/i1" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bnr" android:background="@color/a74" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/k4" style="@style/rj">
-            <TextView android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/bns" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/buz" android:layout_weight="1.0" style="@style/o2" />
-        </LinearLayout>
-        <com.tencent.mm.plugin.emoji.ui.v2.PreViewListGridView android:gravity="center" android:id="@id/bnp" android:background="@color/a2h" android:paddingBottom="@dimen/ir" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/b0w" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
-        <LinearLayout android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <View android:id="@id/bno" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bnq" android:background="@drawable/emoji_store_v2_single_bar" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="@dimen/k4" style="@style/rj">
-            <TextView android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/bnt" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/buy" android:layout_weight="1.0" style="@style/o2" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/fas" android:padding="@dimen/j6" android:layout_width="@dimen/a4f" android:layout_height="@dimen/a4f" android:scaleType="fitXY" />
+    <ImageView android:id="@id/fan" android:background="@drawable/emoji_grid_item_fg" android:layout_width="@dimen/a4f" android:layout_height="@dimen/a4f" />
+    <TextView android:textSize="@dimen/m8" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/fc9" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="@dimen/a4b" android:maxWidth="@dimen/a4f" android:layout_below="@id/fas" android:layout_centerHorizontal="true" style="@style/ma" />
+</RelativeLayout>

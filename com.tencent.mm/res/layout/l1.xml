@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/a8a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:id="@id/avq" android:paddingBottom="@dimen/t8" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:id="@id/axw" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <include android:id="@id/gbq" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ky" />
-                <include android:id="@id/gbs" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/l0" />
-                <include android:id="@id/gbr" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/kz" />
-                <include android:id="@id/gbp" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/kx" />
-            </RelativeLayout>
-            <LinearLayout android:id="@id/a8t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-                <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/ib" android:layout_marginRight="@dimen/hs" android:layout_marginBottom="@dimen/k5">
-                    <include android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" layout="@layout/ks" />
-                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-                        <ImageView android:id="@id/gbm" android:padding="1.0dip" android:layout_width="20.0dip" android:layout_height="16.0dip" android:src="@raw/biz_time_line_pic_icon" />
-                        <TextView android:textSize="@dimen/k6" android:textColor="@color/ag2" android:id="@id/gbt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g" android:includeFontPadding="false" />
-                    </LinearLayout>
-                </RelativeLayout>
-            </LinearLayout>
-            <ImageView android:id="@id/ggb" android:background="@drawable/hx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </RelativeLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/hsd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ta" android:layout_marginTop="@dimen/t7" android:layout_marginRight="@dimen/ta" android:layout_below="@id/axw">
-            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/k6" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/hsa" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:lineSpacingExtra="@dimen/tg" />
-        </LinearLayout>
-    </RelativeLayout>
+    <View android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="@dimen/df" />
+    <ImageView android:id="@id/c7o" style="@style/i7" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/aqy" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/w0">
+        <TextView android:textSize="@dimen/w2" android:textColor="@color/gp" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView style="@style/i7" />
 </LinearLayout>

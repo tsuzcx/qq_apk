@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/arb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.sortview.CatalogView android:id="@id/apx" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/nq" />
-    <FrameLayout android:id="@id/beh" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz">
-        <LinearLayout android:orientation="horizontal" android:id="@id/hj4" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/ib" android:paddingBottom="@dimen/ib" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ImageView android:layout_gravity="center" android:id="@id/n9" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:src="@drawable/bar" android:scaleType="fitCenter" />
-                    <ImageView android:layout_gravity="center" android:id="@id/n_" android:visibility="gone" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:src="@raw/app_avatar_shadow" android:scaleType="fitCenter" />
-                </FrameLayout>
-                <TextView android:textSize="@dimen/is" android:textColor="@color/a0b" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ac5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:text="@string/wx" android:maxLines="2" />
-            </LinearLayout>
-        </LinearLayout>
-        <ImageView android:layout_gravity="center|right" android:id="@id/fx7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@raw/app_new" />
-    </FrameLayout>
-</LinearLayout>
+    <ProgressBar android:layout_gravity="center" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:maxWidth="@dimen/cv" android:maxHeight="@dimen/cv" android:minWidth="@dimen/cv" android:minHeight="@dimen/cv" style="@style/a85" />
+</FrameLayout>

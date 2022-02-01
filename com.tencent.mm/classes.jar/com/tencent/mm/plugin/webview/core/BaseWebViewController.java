@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.core;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -9,20 +10,17 @@ import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.view.WindowManager;
-import android.webkit.ValueCallback;
-import androidx.annotation.Keep;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.plugin.appbrand.ac.p.a;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.webview.f.c.a;
-import com.tencent.mm.plugin.webview.f.g.b;
-import com.tencent.mm.plugin.webview.k.h.a;
+import com.tencent.mm.api.ab;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.appbrand.af.r.a;
+import com.tencent.mm.plugin.webview.e.g.b;
+import com.tencent.mm.plugin.webview.k.j.a;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.protobuf.bot;
-import com.tencent.mm.protocal.protobuf.bov;
+import com.tencent.mm.protocal.protobuf.cdf;
+import com.tencent.mm.protocal.protobuf.cdh;
+import com.tencent.mm.protocal.protobuf.cdi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
@@ -31,14 +29,18 @@ import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.aa;
+import com.tencent.xweb.ac;
 import com.tencent.xweb.ad;
-import com.tencent.xweb.r;
+import com.tencent.xweb.ag;
+import com.tencent.xweb.ao;
+import com.tencent.xweb.t;
+import java.io.Closeable;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -46,154 +48,261 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ConcurrentSkipListSet;
+import kotlin.Metadata;
 import kotlin.ResultKt;
-import kotlin.a.ae;
-import kotlin.g.b.ab;
+import kotlin.a.ar;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.ai;
 import kotlin.g.b.q;
-import kotlin.o;
-import kotlin.s;
-import kotlin.t;
-import kotlin.x;
-import kotlinx.coroutines.br;
+import kotlin.g.b.u;
+import kotlin.v;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bu;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "Lcom/tencent/mm/plugin/webview/permission/AuthCallback;", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "Lcom/tencent/xweb/WebViewClient;", "viewWV", "Lcom/tencent/mm/ui/widget/MMWebView;", "options", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Options;", "limitedJsApiSet", "", "", "jsApiPool", "Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;", "(Lcom/tencent/mm/ui/widget/MMWebView;Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Options;Ljava/util/Set;Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;)V", "BWC_TAG", "getBWC_TAG", "()Ljava/lang/String;", "BWC_TAG$delegate", "Lkotlin/Lazy;", "CONTROLLER_INIT_ENV", "", "getCONTROLLER_INIT_ENV", "()I", "CONTROLLER_INVOKER_READY", "getCONTROLLER_INVOKER_READY", "CONTROLLER_LOAD_DATA", "getCONTROLLER_LOAD_DATA", "CONTROLLER_PROGRESS_CACHE_LOAD_START", "getCONTROLLER_PROGRESS_CACHE_LOAD_START", "CONTROLLER_START_INTENT", "getCONTROLLER_START_INTENT", "PAGE_A8KEY_ERR", "getPAGE_A8KEY_ERR", "PAGE_A8KEY_SUCC", "getPAGE_A8KEY_SUCC", "PAGE_COMMIT_VISIBLE", "getPAGE_COMMIT_VISIBLE", "PAGE_FINISHED", "getPAGE_FINISHED", "PAGE_LOAD_PROGRESS_FULL", "getPAGE_LOAD_PROGRESS_FULL", "PAGE_PROGRESS_NO_FRAME_AUTH_START", "getPAGE_PROGRESS_NO_FRAME_AUTH_START", "PAGE_PROGRESS_SHOW_TIME_OUT", "getPAGE_PROGRESS_SHOW_TIME_OUT", "PAGE_PROGRESS_STATUS", "getPAGE_PROGRESS_STATUS", "()Ljava/util/Set;", "PAGE_PROGRESS_WEBVIEW_START", "getPAGE_PROGRESS_WEBVIEW_START", "PAGE_SPA_STATUS", "getPAGE_SPA_STATUS", "PAGE_SPA_UPDATED", "getPAGE_SPA_UPDATED", "a8KeyHeaders", "", "getA8KeyHeaders", "()Ljava/util/Map;", "a8KeyManager", "Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key;", "getA8KeyManager", "()Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key;", "a8KeyManager$delegate", "actionsCheckList", "", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebEvent;", "getActionsCheckList", "()Ljava/util/List;", "authCallBack", "Lcom/tencent/mm/plugin/webview/permission/UIThreadAuthCallBack;", "getAuthCallBack", "()Lcom/tencent/mm/plugin/webview/permission/UIThreadAuthCallBack;", "authCallBack$delegate", "baseUrl", "getBaseUrl", "setBaseUrl", "(Ljava/lang/String;)V", "binderId", "getBinderId", "binderId$delegate", "canFinishProgress", "", "getCanFinishProgress", "()Z", "clearHistory", "getClearHistory", "setClearHistory", "(Z)V", "clientListeners", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "getClientListeners", "()Ljava/util/concurrent/ConcurrentLinkedDeque;", "value", "commitUrl", "getCommitUrl", "setCommitUrl", "conn", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "getConn", "()Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "setConn", "(Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;)V", "contentData", "getContentData", "contentData$delegate", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "controllerActionCheckList", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "Lkotlin/Function0;", "", "controllerActions", "Ljava/util/concurrent/ConcurrentSkipListSet;", "controllerListeners", "Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "getControllerListeners", "controllerStatus", "currentUrl", "getCurrentUrl", "destroyCalled", "getDestroyCalled", "setDestroyCalled", "fileUrlWhiteList", "getFileUrlWhiteList", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handler$delegate", "hasStartCalled", "getHasStartCalled", "setHasStartCalled", "intent", "Landroid/content/Intent;", "getIntent", "()Landroid/content/Intent;", "setIntent", "(Landroid/content/Intent;)V", "interceptors", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "getInterceptors", "invoker", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "getInvoker", "()Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "setInvoker", "(Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;)V", "isGettingA8Key", "isInject", "isPerformanceCollected", "isStarted", "jsLoader", "Lcom/tencent/mm/plugin/webview/jsapi/JsLoader;", "getJsLoader", "()Lcom/tencent/mm/plugin/webview/jsapi/JsLoader;", "jsLoader$delegate", "jsapi", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "getJsapi", "()Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "jsapi$delegate", "keyDownBackCount", "getKeyDownBackCount", "setKeyDownBackCount", "(I)V", "keyDownTime", "", "getKeyDownTime", "()J", "setKeyDownTime", "(J)V", "<set-?>", "loadUrl", "getLoadUrl", "setLoadUrl", "openQuickAppIntercept", "getOpenQuickAppIntercept", "openQuickAppIntercept$delegate", "openQuickAppReport", "getOpenQuickAppReport", "openQuickAppReport$delegate", "getOptions", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Options;", "pageActionCheckList", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "pageActions", "pageErrorMonitor", "Lcom/tencent/mm/plugin/webview/core/WebPageErrorMonitor;", "getPageErrorMonitor", "()Lcom/tencent/mm/plugin/webview/core/WebPageErrorMonitor;", "pageErrorMonitor$delegate", "pageStatus", "performanceHelper", "Lcom/tencent/mm/plugin/webview/util/WebViewPerformanceHelper;", "getPerformanceHelper", "()Lcom/tencent/mm/plugin/webview/util/WebViewPerformanceHelper;", "prefetchNewReportInfo", "Lcom/tencent/mm/plugin/webview/reporter/PrefetchNewReportInfo;", "getPrefetchNewReportInfo", "()Lcom/tencent/mm/plugin/webview/reporter/PrefetchNewReportInfo;", "setPrefetchNewReportInfo", "(Lcom/tencent/mm/plugin/webview/reporter/PrefetchNewReportInfo;)V", "progressBarDelayShowRunnable", "Ljava/lang/Runnable;", "getProgressBarDelayShowRunnable", "()Ljava/lang/Runnable;", "progressBarDelayShowRunnable$delegate", "progressController", "Lcom/tencent/mm/plugin/webview/core/WebViewProgressController;", "getProgressController", "()Lcom/tencent/mm/plugin/webview/core/WebViewProgressController;", "progressFinished", "getProgressFinished", "setProgressFinished", "rawUrl", "getRawUrl", "screenOrientation", "getScreenOrientation", "spaUrl", "getSpaUrl", "setSpaUrl", "startUrl", "getStartUrl", "setStartUrl", "statusListeners", "Ljava/util/concurrent/ConcurrentHashMap;", "stubService", "Ljava/lang/Class;", "Landroid/app/Service;", "getStubService", "()Ljava/lang/Class;", "updateRandomStr", "getUpdateRandomStr", "updateRandomStr$delegate", "useWvUrl", "getUseWvUrl", "useWvUrl$delegate", "getViewWV", "()Lcom/tencent/mm/ui/widget/MMWebView;", "webPrefetchPage", "getWebPrefetchPage", "setWebPrefetchPage", "willFinish", "getWillFinish", "setWillFinish", "wvPerm", "Lcom/tencent/mm/plugin/webview/permission/WebViewPermission;", "getWvPerm", "()Lcom/tencent/mm/plugin/webview/permission/WebViewPermission;", "addClientListener", "listener", "addControllerListener", "addInterceptor", "interceptor", "addStatusListener", "status", "callback", "canLoadUrl", "url", "canShowRefresh", "checkStatus", "check", "dealSPAUpdate", "destroy", "doAuthCurrentUrl", "doClearHistory", "view", "Lcom/tencent/xweb/WebView;", "doShouldOverrideUrlLoading", "request", "Lcom/tencent/xweb/WebResourceRequest;", "doUpdateVisitedHistory", "isReload", "enableMinimize", "evaluateJavascript", "script", "Lkotlin/Function1;", "exitTmpl", "forceQuitOnUrlForbidden", "getA8KeyReason", "getCachedAppId", "getCallBackUrl", "getPageLoadType", "getShareUrl", "getStatusListener", "hasCurrentPageFinished", "hasCurrentPageStarted", "hasStatus", "init", "initEnviroment", "initWebViewSettings", "intercept", "Lcom/tencent/xweb/WebResourceResponse;", "webView", "bundle", "Landroid/os/Bundle;", "interceptOverrideUrl", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "isActivityFinished", "isPageCached", "loadCacheUrl", "headers", "", "loadDataWithBaseURL", "data", "mimeType", "encoding", "historyUrl", "httpHeaders", "withoutCache", "needSync", "needSyncGetA8Key", "nullAsBaseUrl", "onAuthEnd", "reason", "reqUrl", "onAuthStart", "onAuthSucc", "onBinded", "onContentRedirect", "content", "onDestroy", "onError", "errType", "errCode", "errMsg", "onFinish", "onFontSizeChanged", "fontSize", "onForceQuit", "onGoBack", "onJsReady", "onKeyDownBack", "onPageCommitVisible", "onPageFinished", "onPageStarted", "favicon", "Landroid/graphics/Bitmap;", "onPerformanceCollect", "onPermissionUpdate", "fullUrl", "response", "onProcessResult", "onReceivedError", "error", "Lcom/tencent/xweb/WebResourceError;", "errorCode", "description", "failingUrl", "onReceivedHttpAuthRequest", "Lcom/tencent/xweb/HttpAuthHandler;", "host", "realm", "onReceivedHttpError", "onReceivedSslError", "Lcom/tencent/xweb/SslErrorHandler;", "Landroid/net/http/SslError;", "onServiceConnected", "onServiceDisconnected", "onShowContent", "html", "onStartLoad", "onStartLoaded", "onUrlRedirect", "forceRedirect", "overrideGetA8Key", "force", "overrideProcessResult", "resp", "overrideUrl", "overrideUrlRedirect", "refresh", "reload", "removeClientListener", "removeControllerListener", "removeInterceptor", "removeInvoker", "floating", "removeStatus", "resetActions", "resetPageActions", "restoreController", "setGetA8KeyParams", "setWebViewPluginClient", "shouldBeFinished", "shouldInterceptLoadError", "webview", "shouldInterceptRequest", "shouldOverrideUrlLoading", "start", "startAuth", "startGetA8Key", "Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key$Result;", "tryBindService", "updateDgtVerify", "validCommitUrl", "validStartUrl", "verifyActions", "T", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction;", "list", "", "set", "", "waitForInject", "waitForReady", "Auth", "BaseWebViewUIConnectionBinder", "Bind", "Companion", "ControllerAction", "Init", "Inject", "Options", "PageAction", "PageLoadEndForCommitNotSupport", "ProgressBarEnd", "ProgressBarStart", "ProgressClientListener", "Ready", "SPAUpdated", "Start", "WebAction", "WebEvent", "WebViewOptions", "webview-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "Lcom/tencent/mm/plugin/webview/permission/AuthCallback;", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "Lcom/tencent/xweb/WebViewClient;", "viewWV", "Lcom/tencent/mm/ui/widget/MMWebView;", "options", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Options;", "limitedJsApiSet", "", "", "jsApiPool", "Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;", "(Lcom/tencent/mm/ui/widget/MMWebView;Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Options;Ljava/util/Set;Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;)V", "BWC_TAG", "getBWC_TAG", "()Ljava/lang/String;", "BWC_TAG$delegate", "Lkotlin/Lazy;", "CONTROLLER_INIT_ENV", "", "getCONTROLLER_INIT_ENV", "()I", "CONTROLLER_INVOKER_READY", "getCONTROLLER_INVOKER_READY", "CONTROLLER_LOAD_DATA", "getCONTROLLER_LOAD_DATA", "CONTROLLER_PROGRESS_CACHE_LOAD_START", "getCONTROLLER_PROGRESS_CACHE_LOAD_START", "CONTROLLER_START_INTENT", "getCONTROLLER_START_INTENT", "PAGE_A8KEY_ERR", "getPAGE_A8KEY_ERR", "PAGE_A8KEY_SUCC", "getPAGE_A8KEY_SUCC", "PAGE_COMMIT_VISIBLE", "getPAGE_COMMIT_VISIBLE", "PAGE_FINISHED", "getPAGE_FINISHED", "PAGE_LOAD_PROGRESS_FULL", "getPAGE_LOAD_PROGRESS_FULL", "PAGE_PROGRESS_NO_FRAME_AUTH_START", "getPAGE_PROGRESS_NO_FRAME_AUTH_START", "PAGE_PROGRESS_SHOW_TIME_OUT", "getPAGE_PROGRESS_SHOW_TIME_OUT", "PAGE_PROGRESS_STATUS", "getPAGE_PROGRESS_STATUS", "()Ljava/util/Set;", "PAGE_PROGRESS_WEBVIEW_START", "getPAGE_PROGRESS_WEBVIEW_START", "PAGE_SPA_STATUS", "getPAGE_SPA_STATUS", "PAGE_SPA_UPDATED", "getPAGE_SPA_UPDATED", "a8KeyHeaders", "", "getA8KeyHeaders", "()Ljava/util/Map;", "a8KeyManager", "Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key;", "getA8KeyManager", "()Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key;", "a8KeyManager$delegate", "actionsCheckList", "", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebEvent;", "getActionsCheckList", "()Ljava/util/List;", "authCallBack", "Lcom/tencent/mm/plugin/webview/permission/UIThreadAuthCallBack;", "getAuthCallBack", "()Lcom/tencent/mm/plugin/webview/permission/UIThreadAuthCallBack;", "authCallBack$delegate", "baseUrl", "getBaseUrl", "setBaseUrl", "(Ljava/lang/String;)V", "binderId", "getBinderId", "binderId$delegate", "browseHistoryWebControllerReportInfo", "Lcom/tencent/mm/plugin/webview/reporter/WebViewBrowseHistoryReportInfo;", "getBrowseHistoryWebControllerReportInfo", "()Lcom/tencent/mm/plugin/webview/reporter/WebViewBrowseHistoryReportInfo;", "canFinishProgress", "", "getCanFinishProgress", "()Z", "clearHistory", "getClearHistory", "setClearHistory", "(Z)V", "clientListeners", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "getClientListeners", "()Ljava/util/concurrent/ConcurrentLinkedDeque;", "value", "commitUrl", "getCommitUrl", "setCommitUrl", "conn", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "getConn", "()Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "setConn", "(Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;)V", "contentData", "getContentData", "contentData$delegate", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "controllerActionCheckList", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "Lkotlin/Function0;", "", "controllerActions", "Ljava/util/concurrent/ConcurrentSkipListSet;", "controllerListeners", "Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "getControllerListeners", "controllerStatus", "currentUrl", "getCurrentUrl", "destroyCalled", "getDestroyCalled", "setDestroyCalled", "fileUrlWhiteList", "getFileUrlWhiteList", "fullRespUrl", "getFullRespUrl", "setFullRespUrl", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handler$delegate", "hasStartCalled", "getHasStartCalled", "setHasStartCalled", "intent", "Landroid/content/Intent;", "getIntent", "()Landroid/content/Intent;", "setIntent", "(Landroid/content/Intent;)V", "interceptors", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "getInterceptors", "invoker", "Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "getInvoker", "()Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;", "setInvoker", "(Lcom/tencent/mm/plugin/webview/stub/WebViewStub_AIDL;)V", "isGettingA8Key", "isInject", "isMarkRiskControl", "setMarkRiskControl", "isPerformanceCollected", "isStarted", "jsLoader", "Lcom/tencent/mm/plugin/webview/jsapi/JsLoader;", "getJsLoader", "()Lcom/tencent/mm/plugin/webview/jsapi/JsLoader;", "jsLoader$delegate", "jsapi", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "getJsapi", "()Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "jsapi$delegate", "keyDownBackCount", "getKeyDownBackCount", "setKeyDownBackCount", "(I)V", "keyDownTime", "", "getKeyDownTime", "()J", "setKeyDownTime", "(J)V", "<set-?>", "loadUrl", "getLoadUrl", "setLoadUrl", "openQuickAppIntercept", "getOpenQuickAppIntercept", "openQuickAppIntercept$delegate", "openQuickAppReport", "getOpenQuickAppReport", "openQuickAppReport$delegate", "getOptions", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Options;", "pageActionCheckList", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "pageActions", "pageErrorMonitor", "Lcom/tencent/mm/plugin/webview/core/WebPageErrorMonitor;", "getPageErrorMonitor", "()Lcom/tencent/mm/plugin/webview/core/WebPageErrorMonitor;", "pageErrorMonitor$delegate", "pageStatus", "performanceHelper", "Lcom/tencent/mm/plugin/webview/util/WebViewPerformanceHelper;", "getPerformanceHelper", "()Lcom/tencent/mm/plugin/webview/util/WebViewPerformanceHelper;", "prefetchId", "getPrefetchId", "prefetchId$delegate", "prefetchWebControllerReportInfo", "Lcom/tencent/mm/plugin/webview/reporter/PrefetchWebControllerReportInfo;", "getPrefetchWebControllerReportInfo", "()Lcom/tencent/mm/plugin/webview/reporter/PrefetchWebControllerReportInfo;", "setPrefetchWebControllerReportInfo", "(Lcom/tencent/mm/plugin/webview/reporter/PrefetchWebControllerReportInfo;)V", "progressBarDelayShowRunnable", "Ljava/lang/Runnable;", "getProgressBarDelayShowRunnable", "()Ljava/lang/Runnable;", "progressBarDelayShowRunnable$delegate", "progressController", "Lcom/tencent/mm/plugin/webview/core/WebViewProgressController;", "getProgressController", "()Lcom/tencent/mm/plugin/webview/core/WebViewProgressController;", "progressFinished", "getProgressFinished", "setProgressFinished", "rawUrl", "getRawUrl", "screenOrientation", "getScreenOrientation", "showTeenModeNoAccessView", "getShowTeenModeNoAccessView", "setShowTeenModeNoAccessView", "showTeenModeNoAccessViewUrl", "getShowTeenModeNoAccessViewUrl", "setShowTeenModeNoAccessViewUrl", "spaUrl", "getSpaUrl", "setSpaUrl", "startUrl", "getStartUrl", "setStartUrl", "statusListeners", "Ljava/util/concurrent/ConcurrentHashMap;", "stubService", "Ljava/lang/Class;", "Landroid/app/Service;", "getStubService", "()Ljava/lang/Class;", "textUrlShare", "getTextUrlShare", "setTextUrlShare", "uiDialog", "Landroid/app/Dialog;", "getUiDialog", "()Landroid/app/Dialog;", "setUiDialog", "(Landroid/app/Dialog;)V", "updateRandomStr", "getUpdateRandomStr", "updateRandomStr$delegate", "useWvUrl", "getUseWvUrl", "useWvUrl$delegate", "getViewWV", "()Lcom/tencent/mm/ui/widget/MMWebView;", "webPrefetchPage", "getWebPrefetchPage", "setWebPrefetchPage", "webViewEnv", "Lcom/tencent/mm/plugin/webview/jsapi/media/WebViewEnv;", "getWebViewEnv", "()Lcom/tencent/mm/plugin/webview/jsapi/media/WebViewEnv;", "willFinish", "getWillFinish", "setWillFinish", "wvPerm", "Lcom/tencent/mm/plugin/webview/permission/WebViewPermission;", "getWvPerm", "()Lcom/tencent/mm/plugin/webview/permission/WebViewPermission;", "addClientListener", "listener", "addControllerListener", "addInterceptor", "interceptor", "addStatusListener", "status", "callback", "canCheckStatus", "check", "url", "canLoadUrl", "canShowRefresh", "checkStatus", "dealSPAUpdate", "destroy", "doAuthCurrentUrl", "doClearHistory", "view", "Lcom/tencent/xweb/WebView;", "doShouldOverrideUrlLoading", "request", "Lcom/tencent/xweb/WebResourceRequest;", "doUpdateVisitedHistory", "isReload", "enableMinimize", "evaluateJavascript", "script", "Lkotlin/Function1;", "exitTmpl", "forceQuitOnUrlForbidden", "getA8KeyReason", "getCachedAppId", "getCallBackUrl", "getPageLoadType", "getShareUrl", "getStatusListener", "hasA8KeyError", "hasCurrentPageFinished", "hasCurrentPageStarted", "hasStatus", "init", "initEnviroment", "initFont", "initWebViewSettings", "intercept", "Lcom/tencent/xweb/WebResourceResponse;", "webView", "bundle", "Landroid/os/Bundle;", "interceptOverrideUrl", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "isActivityFinished", "isPageCached", "loadCacheUrl", "headers", "", "loadDataWithBaseURL", "data", "mimeType", "encoding", "historyUrl", "httpHeaders", "withoutCache", "localSetFontSize", "size", "needSync", "needSyncGetA8Key", "nullAsBaseUrl", "onAuthEnd", "reason", "reqUrl", "onAuthStart", "onAuthSucc", "onBinded", "onContentRedirect", "content", "onDestroy", "onError", "errType", "errCode", "errMsg", "onFinish", "onFontSizeChanged", "fontSize", "onForceQuit", "onGoBack", "onJsReady", "onKeyDownBack", "onPageCommitVisible", "onPageFinished", "onPageStarted", "favicon", "Landroid/graphics/Bitmap;", "onPerformanceCollect", "onPermissionUpdate", "fullUrl", "response", "onProcessResult", "onReceivedError", "error", "Lcom/tencent/xweb/WebResourceError;", "errorCode", "description", "failingUrl", "onReceivedHttpAuthRequest", "Lcom/tencent/xweb/HttpAuthHandler;", "host", "realm", "onReceivedHttpError", "onReceivedSslError", "Lcom/tencent/xweb/SslErrorHandler;", "Landroid/net/http/SslError;", "onServiceConnected", "onServiceDisconnected", "onShowContent", "html", "onStartLoad", "onStartLoaded", "onTeenModeStatusChange", "onUrlRedirect", "forceRedirect", "overrideGetA8Key", "force", "overrideProcessResult", "resp", "overrideUrl", "overrideUrlRedirect", "refresh", "reload", "removeClientListener", "removeControllerListener", "removeInterceptor", "removeInvoker", "floating", "removeStatus", "resetActions", "resetPageActions", "restoreController", "setGetA8KeyParams", "setWebViewPluginClient", "shouldBeFinished", "shouldInterceptLoadError", "webview", "shouldInterceptRequest", "shouldOverrideUrlLoading", "start", "startAuth", "startGetA8Key", "Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key$Result;", "tryBindService", "updateDgtVerify", "updateUIStyle", "uiConfig", "jsApiPermission", "Lcom/tencent/mm/protocal/JsapiPermissionWrapper;", "validCommitUrl", "validStartUrl", "verifyActions", "T", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction;", "list", "", "set", "", "waitForInject", "waitForReady", "Auth", "BaseWebViewUIConnectionBinder", "Bind", "Companion", "ControllerAction", "Init", "Inject", "Options", "PageAction", "PageLoadEndForCommitNotSupport", "ProgressBarEnd", "ProgressBarStart", "ProgressClientListener", "Ready", "SPAUpdated", "Start", "WebAction", "WebEvent", "WebViewOptions", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class BaseWebViewController
-  extends ad
-  implements com.tencent.mm.plugin.webview.f.a<bot>
+  extends ag
+  implements com.tencent.mm.plugin.webview.e.a<cdf>
 {
-  private static final String[] PGN = { "https://statres.quickapp.cn/quickapp/js/routerinline.min.js", "http://fastappjump-drcn.hispace.hicloud.com/", "http://thefatherofsalmon.com/", "http://v2.thefatherofsalmon.com/" };
-  public static final c PGO = new c((byte)0);
-  private final kotlin.f PFE;
-  public com.tencent.mm.plugin.webview.i.b PFF;
-  private final kotlin.f PFG;
-  private int PFH;
-  private long PFI;
-  private boolean PFJ;
-  public String PFK;
-  private final kotlin.f PFL;
-  String PFM;
-  public String PFN;
-  String PFO;
-  public boolean PFP;
-  private boolean PFQ;
-  public boolean PFR;
-  private final kotlin.f PFS;
-  private final kotlin.f PFT;
-  private final kotlin.f PFU;
-  public final Map<String, String> PFV;
-  private final kotlin.f PFW;
-  public final l PFX;
-  public final com.tencent.mm.plugin.webview.k.n PFY;
-  private final kotlin.f PFZ;
-  private final ConcurrentSkipListSet<Integer> PGA;
-  private final ConcurrentSkipListSet<String> PGB;
-  private final ConcurrentSkipListSet<String> PGC;
-  public final boolean PGD;
-  c PGE;
-  private final kotlin.f PGF;
-  private boolean PGG;
-  private final kotlin.f PGH;
-  private final kotlin.f PGI;
-  private final kotlin.f PGJ;
-  public final d PGK;
-  private Set<String> PGL;
-  private com.tencent.mm.plugin.webview.d.e PGM;
-  private final ConcurrentLinkedDeque<f> PGa;
-  public final ConcurrentLinkedDeque<j> PGb;
-  private final ConcurrentHashMap<Integer, ConcurrentLinkedDeque<kotlin.g.a.a<x>>> PGc;
-  public boolean PGd;
-  boolean PGe;
-  private final kotlin.f PGf;
-  final int PGg;
-  public final int PGh;
-  public final int PGi;
-  public final int PGj;
-  protected final int PGk;
-  final int PGl;
-  final int PGm;
-  public final int PGn;
-  final int PGo;
-  final int PGp;
-  final int PGq;
-  public final int PGr;
-  final int PGs;
-  final int PGt;
-  final Set<Integer> PGu;
-  final Set<Integer> PGv;
-  private final boolean PGw;
-  private final ConcurrentLinkedDeque<o<ControllerAction, kotlin.g.a.a<x>>> PGx;
-  private final ConcurrentLinkedDeque<o<PageAction, kotlin.g.a.a<x>>> PGy;
-  public final ConcurrentSkipListSet<Integer> PGz;
-  public final ConcurrentLinkedDeque<k> PwK;
-  private String fba;
+  public static final c Wwe = new c((byte)0);
+  private static final String[] Wxx = { "https://statres.quickapp.cn/quickapp/js/routerinline.min.js", "http://fastappjump-drcn.hispace.hicloud.com/", "http://thefatherofsalmon.com/", "http://v2.thefatherofsalmon.com/" };
+  public final ConcurrentLinkedDeque<m> WmV;
+  private String WwA;
+  String WwB;
+  public boolean WwC;
+  public boolean WwD;
+  public boolean WwE;
+  private final kotlin.j WwF;
+  private final kotlin.j WwG;
+  private final kotlin.j WwH;
+  public final Map<String, String> WwI;
+  private final kotlin.j WwJ;
+  public final n WwK;
+  public final com.tencent.mm.plugin.webview.k.r WwL;
+  private final kotlin.j WwM;
+  private final ConcurrentLinkedDeque<h> WwN;
+  public final ConcurrentLinkedDeque<l> WwO;
+  private final ConcurrentHashMap<Integer, ConcurrentLinkedDeque<kotlin.g.a.a<ah>>> WwP;
+  public boolean WwQ;
+  boolean WwR;
+  private final kotlin.j WwS;
+  final int WwT;
+  public final int WwU;
+  public final int WwV;
+  public final int WwW;
+  protected final int WwX;
+  final int WwY;
+  public final int WwZ;
+  public final d Wwf;
+  private Set<String> Wwg;
+  private com.tencent.mm.plugin.webview.jsapi.g Wwh;
+  private final kotlin.j Wwi;
+  public com.tencent.mm.plugin.webview.h.f Wwj;
+  public final com.tencent.mm.plugin.webview.h.g Wwk;
+  private final kotlin.j Wwl;
+  public final com.tencent.mm.plugin.webview.jsapi.b.b Wwm;
+  public boolean Wwn;
+  public String Wwo;
+  public Dialog Wwp;
+  private int Wwq;
+  private long Wwr;
+  private boolean Wws;
+  public boolean Wwt;
+  private boolean Wwu;
+  public final kotlin.j Wwv;
+  public String Www;
+  private final kotlin.j Wwx;
+  String Wwy;
+  public String Wwz;
+  public final int Wxa;
+  final int Wxb;
+  final int Wxc;
+  final int Wxd;
+  public final int Wxe;
+  final int Wxf;
+  final int Wxg;
+  private final Set<Integer> Wxh;
+  final Set<Integer> Wxi;
+  private final boolean Wxj;
+  private final ConcurrentLinkedDeque<kotlin.r<ControllerAction, kotlin.g.a.a<ah>>> Wxk;
+  private final ConcurrentLinkedDeque<kotlin.r<PageAction, kotlin.g.a.a<ah>>> Wxl;
+  public final ConcurrentSkipListSet<Integer> Wxm;
+  private final ConcurrentSkipListSet<Integer> Wxn;
+  private final ConcurrentSkipListSet<String> Wxo;
+  private final ConcurrentSkipListSet<String> Wxp;
+  public final boolean Wxq;
+  public e Wxr;
+  private final kotlin.j Wxs;
+  private boolean Wxt;
+  private final kotlin.j Wxu;
+  private final kotlin.j Wxv;
+  private final kotlin.j Wxw;
+  private String heA;
   protected Intent intent;
-  private final kotlin.f ocu;
-  public com.tencent.mm.plugin.webview.stub.e pGC;
-  public final com.tencent.mm.plugin.webview.f.g pGD;
-  public final MMWebView pHS;
-  private final List<f> sRc;
+  private final kotlin.j rdm;
+  public com.tencent.mm.plugin.webview.stub.e sLC;
+  public final com.tencent.mm.plugin.webview.e.g sLD;
+  public final MMWebView sMP;
+  private final List<f> vWE;
   
-  public BaseWebViewController(MMWebView paramMMWebView, d paramd, Set<String> paramSet, com.tencent.mm.plugin.webview.d.e parame)
+  public BaseWebViewController(MMWebView paramMMWebView, d paramd, Set<String> paramSet, com.tencent.mm.plugin.webview.jsapi.g paramg)
   {
-    this.pHS = paramMMWebView;
-    this.PGK = paramd;
-    this.PGL = paramSet;
-    this.PGM = parame;
-    this.PFE = kotlin.g.ar((kotlin.g.a.a)new a(this));
-    this.PFF = new com.tencent.mm.plugin.webview.i.b();
-    this.PFG = kotlin.g.ar((kotlin.g.a.a)new s(this));
-    this.PFL = kotlin.g.ar((kotlin.g.a.a)h.PHc);
-    this.fba = "";
-    this.PFM = "";
-    this.PFN = "";
-    this.PFO = "";
-    this.PFS = kotlin.g.ar((kotlin.g.a.a)new ab(this));
-    this.PFT = kotlin.g.ar((kotlin.g.a.a)new ac(this));
-    this.PFU = kotlin.g.ar((kotlin.g.a.a)new t(this));
-    this.ocu = kotlin.g.ar((kotlin.g.a.a)z.PHg);
-    this.pGD = new com.tencent.mm.plugin.webview.f.g((g.b)new an(this));
-    this.PFV = ((Map)new HashMap());
-    this.PFW = kotlin.g.ar((kotlin.g.a.a)new ai(this));
-    this.PFX = ((l)new aj(this));
-    this.PFY = new com.tencent.mm.plugin.webview.k.n();
-    this.PFZ = kotlin.g.ar((kotlin.g.a.a)new ah(this));
-    this.PwK = new ConcurrentLinkedDeque();
-    this.PGa = new ConcurrentLinkedDeque();
-    this.PGb = new ConcurrentLinkedDeque();
-    this.PGc = new ConcurrentHashMap();
-    this.PGf = kotlin.g.ar((kotlin.g.a.a)new w(this));
-    this.PGg = -1;
-    this.PGh = -2;
-    this.PGi = -3;
-    this.PGj = -10;
-    this.PGk = -5;
-    this.PGl = 1;
-    this.PGm = 2;
-    this.PGn = 3;
-    this.PGo = 4;
-    this.PGp = 6;
-    this.PGq = 10;
-    this.PGr = 11;
-    this.PGs = 12;
-    this.PGt = 13;
-    this.PGu = kotlin.a.ak.setOf(new Integer[] { Integer.valueOf(this.PGr), Integer.valueOf(this.PGs), Integer.valueOf(this.PGq), Integer.valueOf(this.PGt) });
-    this.PGv = kotlin.a.ak.setOf(new Integer[] { Integer.valueOf(this.PGn), Integer.valueOf(this.PGo), Integer.valueOf(this.PGp) });
-    this.PGw = true;
-    this.sRc = kotlin.a.j.mutableListOf(new f[] { new f(ab.bO(Init.class), (kotlin.g.a.a)new i((BaseWebViewController)this)), new f(ab.bO(PageLoadEndForCommitNotSupport.class), (kotlin.g.a.a)new k(this)), new f(ab.bO(Inject.class), (kotlin.g.a.a)new l(this)), new f(ab.bO(Bind.class), (kotlin.g.a.a)new m((BaseWebViewController)this)), new f(ab.bO(Auth.class), (kotlin.g.a.a)new n(this)), new f(ab.bO(Ready.class), (kotlin.g.a.a)new o(this)), new f(ab.bO(Start.class), (kotlin.g.a.a)new p(this)), new f(ab.bO(SPAUpdated.class), (kotlin.g.a.a)new q(this)), new f(ab.bO(ProgressBarStart.class), (kotlin.g.a.a)new r(this)), new f(ab.bO(ProgressBarEnd.class), (kotlin.g.a.a)new j(this)) });
-    this.PGx = new ConcurrentLinkedDeque();
-    this.PGy = new ConcurrentLinkedDeque();
-    this.PGz = new ConcurrentSkipListSet();
-    this.PGA = new ConcurrentSkipListSet();
-    this.PGB = new ConcurrentSkipListSet();
-    this.PGC = new ConcurrentSkipListSet();
-    this.PGD = gSl().gUz();
-    this.PGF = kotlin.g.ar((kotlin.g.a.a)al.PHl);
-    this.PGH = kotlin.g.ar((kotlin.g.a.a)am.PHm);
-    this.PGI = kotlin.g.ar((kotlin.g.a.a)ag.PHj);
-    this.PGJ = kotlin.g.ar((kotlin.g.a.a)af.PHi);
+    this.sMP = paramMMWebView;
+    this.Wwf = paramd;
+    this.Wwg = paramSet;
+    this.Wwh = paramg;
+    this.Wwi = kotlin.k.cm((kotlin.g.a.a)new a(this));
+    this.Wwj = new com.tencent.mm.plugin.webview.h.f();
+    this.Wwk = new com.tencent.mm.plugin.webview.h.g();
+    this.Wwl = kotlin.k.cm((kotlin.g.a.a)new s(this));
+    this.Wwm = new com.tencent.mm.plugin.webview.jsapi.b.b();
+    this.Wwv = kotlin.k.cm((kotlin.g.a.a)new ae(this));
+    this.Wwx = kotlin.k.cm((kotlin.g.a.a)h.WxM);
+    this.heA = "";
+    this.Wwy = "";
+    this.Wwz = "";
+    this.WwA = "";
+    this.WwB = "";
+    this.WwF = kotlin.k.cm((kotlin.g.a.a)new z(this));
+    this.WwG = kotlin.k.cm((kotlin.g.a.a)new aa(this));
+    this.WwH = kotlin.k.cm((kotlin.g.a.a)new t(this));
+    this.rdm = kotlin.k.cm((kotlin.g.a.a)y.WxO);
+    this.sLD = new com.tencent.mm.plugin.webview.e.g((g.b)new ak(this));
+    this.WwI = ((Map)new ConcurrentHashMap());
+    this.WwJ = kotlin.k.cm((kotlin.g.a.a)new af(this));
+    this.WwK = ((n)new ag(this));
+    this.WwL = new com.tencent.mm.plugin.webview.k.r();
+    this.WwM = kotlin.k.cm((kotlin.g.a.a)new ad(this));
+    this.WmV = new ConcurrentLinkedDeque();
+    this.WwN = new ConcurrentLinkedDeque();
+    this.WwO = new ConcurrentLinkedDeque();
+    this.WwP = new ConcurrentHashMap();
+    this.WwS = kotlin.k.cm((kotlin.g.a.a)new v(this));
+    this.WwT = -1;
+    this.WwU = -2;
+    this.WwV = -3;
+    this.WwW = -10;
+    this.WwX = -5;
+    this.WwY = 1;
+    this.WwZ = 2;
+    this.Wxa = 3;
+    this.Wxb = 4;
+    this.Wxc = 6;
+    this.Wxd = 10;
+    this.Wxe = 11;
+    this.Wxf = 12;
+    this.Wxg = 13;
+    this.Wxh = ar.setOf(new Integer[] { Integer.valueOf(this.Wxe), Integer.valueOf(this.Wxf), Integer.valueOf(this.Wxd), Integer.valueOf(this.Wxg) });
+    this.Wxi = ar.setOf(new Integer[] { Integer.valueOf(this.Wxa), Integer.valueOf(this.Wxb), Integer.valueOf(this.Wxc) });
+    this.Wxj = true;
+    this.vWE = p.mutableListOf(new f[] { new f(ai.cz(Init.class), (kotlin.g.a.a)new i()), new f(ai.cz(PageLoadEndForCommitNotSupport.class), (kotlin.g.a.a)new k(this)), new f(ai.cz(Inject.class), (kotlin.g.a.a)new l(this)), new f(ai.cz(Bind.class), (kotlin.g.a.a)new m()), new f(ai.cz(Auth.class), (kotlin.g.a.a)new n(this)), new f(ai.cz(Ready.class), (kotlin.g.a.a)new o(this)), new f(ai.cz(Start.class), (kotlin.g.a.a)new p(this)), new f(ai.cz(SPAUpdated.class), (kotlin.g.a.a)new q(this)), new f(ai.cz(ProgressBarStart.class), (kotlin.g.a.a)new r(this)), new f(ai.cz(ProgressBarEnd.class), (kotlin.g.a.a)new j(this)) });
+    this.Wxk = new ConcurrentLinkedDeque();
+    this.Wxl = new ConcurrentLinkedDeque();
+    this.Wxm = new ConcurrentSkipListSet();
+    this.Wxn = new ConcurrentSkipListSet();
+    this.Wxo = new ConcurrentSkipListSet();
+    this.Wxp = new ConcurrentSkipListSet();
+    if (irI().WOP.size() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.Wxq = bool;
+      this.Wxs = kotlin.k.cm((kotlin.g.a.a)ai.WxR);
+      this.Wxu = kotlin.k.cm((kotlin.g.a.a)aj.WxS);
+      this.Wxv = kotlin.k.cm((kotlin.g.a.a)ac.WxQ);
+      this.Wxw = kotlin.k.cm((kotlin.g.a.a)ab.WxP);
+      return;
+    }
   }
   
-  private final <T extends WebAction> void a(Iterable<? extends o<? extends T, ? extends kotlin.g.a.a<x>>> paramIterable, Set<String> paramSet, String paramString)
+  private final String YM(String paramString)
+  {
+    if (!ajL(paramString)) {
+      paramString = this.Wwz;
+    }
+    for (;;)
+    {
+      String str = paramString;
+      if (kotlin.n.n.bp((CharSequence)paramString))
+      {
+        str = paramString;
+        if (atn(this.WwV)) {
+          str = dgY();
+        }
+      }
+      return str;
+    }
+  }
+  
+  private static final void a(int paramInt, BaseWebViewController paramBaseWebViewController)
+  {
+    int j = 0;
+    kotlin.g.b.s.u(paramBaseWebViewController, "this$0");
+    if (paramInt < 0) {}
+    for (int i = 1; (kotlin.ak.aiuY) && (i == 0); i = 0) {
+      throw ((Throwable)new AssertionError("Assertion failed"));
+    }
+    Log.i(paramBaseWebViewController.irB(), "checkStatus:" + paramInt + " to [" + p.a((Iterable)paramBaseWebViewController.Wxn, (CharSequence)",", null, null, 0, null, null, 62) + "] [" + p.a((Iterable)paramBaseWebViewController.Wxm, (CharSequence)",", null, null, 0, null, null, 62) + "] [" + p.a((Iterable)paramBaseWebViewController.Wxo, (CharSequence)",", null, null, 0, null, null, 62) + ']');
+    paramBaseWebViewController.Wxn.add(Integer.valueOf(paramInt));
+    paramBaseWebViewController.a((Iterable)paramBaseWebViewController.Wxk, (Set)paramBaseWebViewController.Wxp, null);
+    CharSequence localCharSequence = (CharSequence)paramBaseWebViewController.Wwy;
+    if (localCharSequence != null)
+    {
+      i = j;
+      if (!kotlin.n.n.bp(localCharSequence)) {}
+    }
+    else
+    {
+      i = 1;
+    }
+    if (i == 0) {
+      paramBaseWebViewController.a((Iterable)paramBaseWebViewController.Wxl, (Set)paramBaseWebViewController.Wxo, paramBaseWebViewController.Wwy);
+    }
+    p.a((Iterable)paramBaseWebViewController.atl(paramInt), (kotlin.g.a.b)u.WxN);
+  }
+  
+  private static final void a(int paramInt, BaseWebViewController paramBaseWebViewController, String paramString)
+  {
+    kotlin.g.b.s.u(paramBaseWebViewController, "this$0");
+    kotlin.g.b.s.u(paramString, "$url");
+    if (paramInt > 0) {}
+    for (int i = 1; (kotlin.ak.aiuY) && (i == 0); i = 0) {
+      throw ((Throwable)new AssertionError("Assertion failed"));
+    }
+    if (paramBaseWebViewController.dH(paramInt, paramString))
+    {
+      Log.i(paramBaseWebViewController.irB(), "checkStatus:" + paramInt + ' ' + paramString + " to [" + p.a((Iterable)paramBaseWebViewController.Wxn, (CharSequence)",", null, null, 0, null, null, 62) + "] [" + p.a((Iterable)paramBaseWebViewController.Wxm, (CharSequence)",", null, null, 0, null, null, 62) + "] [" + p.a((Iterable)paramBaseWebViewController.Wxo, (CharSequence)",", null, null, 0, null, null, 62) + ']');
+      paramBaseWebViewController.Wxm.add(Integer.valueOf(paramInt));
+      paramBaseWebViewController.a((Iterable)paramBaseWebViewController.Wxl, (Set)paramBaseWebViewController.Wxo, paramBaseWebViewController.Wwy);
+      return;
+    }
+    String str = paramBaseWebViewController.irB();
+    paramString = new StringBuilder("checkStatus skip: ").append(paramInt).append(", url=").append(paramString).append(", startUrl=").append(paramBaseWebViewController.Wwy).append(' ');
+    if (paramBaseWebViewController.Wxh.contains(Integer.valueOf(paramInt))) {}
+    for (paramBaseWebViewController = kotlin.g.b.s.X(", spaUrl=", paramBaseWebViewController.WwA);; paramBaseWebViewController = "")
+    {
+      Log.w(str, paramBaseWebViewController);
+      return;
+    }
+  }
+  
+  private static final void a(BaseWebViewController paramBaseWebViewController)
+  {
+    kotlin.g.b.s.u(paramBaseWebViewController, "this$0");
+    paramBaseWebViewController.getHandler().postUIDelayed(paramBaseWebViewController.irM(), 500L);
+  }
+  
+  private static final void a(BaseWebViewController paramBaseWebViewController, int paramInt, String paramString)
+  {
+    kotlin.g.b.s.u(paramBaseWebViewController, "this$0");
+    kotlin.g.b.s.u(paramString, "$reqUrl");
+    paramBaseWebViewController = ((Iterable)paramBaseWebViewController.WwO).iterator();
+    while (paramBaseWebViewController.hasNext()) {
+      ((l)paramBaseWebViewController.next()).cb(paramInt, paramString);
+    }
+  }
+  
+  private final <T extends WebAction> void a(Iterable<? extends kotlin.r<? extends T, ? extends kotlin.g.a.a<ah>>> paramIterable, Set<String> paramSet, String paramString)
   {
     for (;;)
     {
@@ -205,9 +314,9 @@ public abstract class BaseWebViewController
         if (!localIterator.hasNext()) {
           break;
         }
-        paramIterable = (o)localIterator.next();
-        localWebAction = (WebAction)paramIterable.Mx;
-        paramIterable = (kotlin.g.a.a)paramIterable.My;
+        paramIterable = (kotlin.r)localIterator.next();
+        localWebAction = (WebAction)paramIterable.bsC;
+        paramIterable = (kotlin.g.a.a)paramIterable.bsD;
         if (!(localWebAction instanceof PageAction)) {
           break label235;
         }
@@ -217,18 +326,18 @@ public abstract class BaseWebViewController
           if (!bool) {
             continue;
           }
-          Log.i(gSh(), "verify WebAction: " + ab.bO(localWebAction.getClass()).iCe() + " start");
+          Log.i(irB(), "verify WebAction: " + ai.cz(localWebAction.getClass()).klt() + " start");
           if (!localWebAction.getKeep()) {
             localIterator.remove();
           }
           paramIterable.invoke();
-          String str = ab.bO(localWebAction.getClass()).iCe();
+          String str = ai.cz(localWebAction.getClass()).klt();
           paramIterable = str;
           if (str == null) {
             paramIterable = "";
           }
           paramSet.add(paramIterable);
-          Log.v(gSh(), "verifyActions: " + ab.bO(localWebAction.getClass()).iCe() + " end");
+          Log.v(irB(), "verifyActions: " + ai.cz(localWebAction.getClass()).klt() + " end");
           continue;
         }
         bool = false;
@@ -244,248 +353,239 @@ public abstract class BaseWebViewController
     }
   }
   
-  private final String afQ(String paramString)
-  {
-    if (!aqm(paramString)) {
-      paramString = this.PFN;
-    }
-    for (;;)
-    {
-      String str = paramString;
-      if (kotlin.n.n.ba((CharSequence)paramString))
-      {
-        str = paramString;
-        if (anw(this.PGi)) {
-          str = cDu();
-        }
-      }
-      return str;
-    }
-  }
-  
-  private boolean anx(int paramInt)
+  private boolean ato(int paramInt)
   {
     if (paramInt < 0) {}
     for (int i = 1;; i = 0) {
       try
       {
-        if ((!kotlin.z.aazO) || (i != 0)) {
+        if ((!kotlin.ak.aiuY) || (i != 0)) {
           break;
         }
         throw ((Throwable)new AssertionError("Assertion failed"));
       }
       finally {}
     }
-    boolean bool = this.PGA.remove(Integer.valueOf(paramInt));
+    boolean bool = this.Wxn.remove(Integer.valueOf(paramInt));
     return bool;
   }
   
-  private final String bjn(String paramString)
+  public static final String bK(Intent paramIntent)
+  {
+    return c.bK(paramIntent);
+  }
+  
+  private final String biY(String paramString)
   {
     Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (kotlin.n.n.ba((CharSequence)localObject))) {}
+    if ((localObject == null) || (kotlin.n.n.bp((CharSequence)localObject))) {}
     for (int i = 1;; i = 0)
     {
-      if ((i == 0) && (!com.tencent.luggage.k.c.a(paramString, "about:blank", true)))
+      if ((i == 0) && (!com.tencent.luggage.l.c.a(paramString, "about:blank", true)))
       {
         localObject = paramString;
-        if (!com.tencent.luggage.k.c.a(paramString, "data:text/html;charset=utf-8", true)) {}
+        if (!com.tencent.luggage.l.c.a(paramString, "data:text/html;charset=utf-8", true)) {}
       }
       else
       {
-        localObject = this.fba;
+        localObject = this.heA;
       }
       return localObject;
     }
   }
   
-  private final void bjq(String paramString)
+  private final void bjb(String paramString)
   {
     try
     {
-      Log.i(gSh(), "resetPageActions clear status:" + paramString + ", [" + kotlin.a.j.a((Iterable)this.PGz, (CharSequence)",", null, null, 0, null, null, 62) + "] actions: [" + kotlin.a.j.a((Iterable)this.PGB, (CharSequence)",", null, null, 0, null, null, 62) + ']');
-      this.PGz.clear();
-      this.PGB.clear();
-      this.PGy.clear();
-      this.PGe = false;
-      Iterator localIterator = ((Iterable)cDy()).iterator();
+      Log.i(irB(), "resetPageActions clear status:" + paramString + ", [" + p.a((Iterable)this.Wxm, (CharSequence)",", null, null, 0, null, null, 62) + "] actions: [" + p.a((Iterable)this.Wxo, (CharSequence)",", null, null, 0, null, null, 62) + ']');
+      this.Wxm.clear();
+      this.Wxo.clear();
+      this.Wxl.clear();
+      this.WwR = false;
+      Iterator localIterator = ((Iterable)dhc()).iterator();
       while (localIterator.hasNext())
       {
         f localf = (f)localIterator.next();
-        Object localObject = kotlin.l.a.c.d(localf.PGX);
-        ((WebAction)localObject).setController((BaseWebViewController)this);
+        Object localObject = kotlin.l.a.c.e(localf.WxH);
+        ((WebAction)localObject).setController(this);
         localObject = (WebAction)localObject;
         if ((localObject instanceof PageAction)) {
-          this.PGy.add(s.M(localObject, localf.kRn));
+          this.Wxl.add(v.Y(localObject, localf.nsP));
         }
       }
-      bjo(paramString);
+      biZ(paramString);
     }
     finally {}
-    this.PFO = "";
+    this.WwA = "";
   }
   
-  private final int bjr(String paramString)
+  private final int bjc(String paramString)
   {
-    Iterator localIterator = ((Iterable)this.PwK).iterator();
+    Iterator localIterator = ((Iterable)this.WmV).iterator();
     while (localIterator.hasNext())
     {
-      int i = ((k)localIterator.next()).bjr(paramString);
+      int i = ((m)localIterator.next()).bjc(paramString);
       if (i != -1) {
         return i;
       }
     }
-    return gSl().blC(paramString);
+    return irI().dJ(paramString, false);
   }
   
-  private final void bjw(String paramString)
+  private final void bji(String paramString)
   {
-    if ((((Boolean)this.PGF.getValue()).booleanValue()) && (!this.pHS.dwQ()) && (!anw(this.PGj)) && (paramString != null) && (!kotlin.n.n.M(paramString, "file:", false)) && (!gSt()))
+    if ((((Boolean)this.Wxs.getValue()).booleanValue()) && (!this.sMP.rsE) && (!atn(this.WwW)) && (paramString != null) && (!kotlin.n.n.U(paramString, "file:", false)) && (!irQ()))
     {
       paramString = getJsapi();
-      if (paramString != null) {
-        paramString.gTM();
+      if (paramString != null)
+      {
+        paramString.WDI = true;
+        paramString.KQY = Util.getRandomString(16);
+        paramString.WDz.setRandomStr(paramString.KQY);
+        Log.i("MicroMsg.JsApiHandler", "WebView-Trace js digest updateDgtVerify randomStr = %s, hashCode: %d", new Object[] { paramString.KQY, Integer.valueOf(paramString.hashCode()) });
       }
     }
   }
   
-  public static final String bk(Intent paramIntent)
+  private boolean dH(int paramInt, String paramString)
   {
-    return c.bk(paramIntent);
+    kotlin.g.b.s.u(paramString, "url");
+    return (kotlin.g.b.s.p(paramString, this.Wwy)) || ((this.Wxh.contains(Integer.valueOf(paramInt))) && (kotlin.g.b.s.p(paramString, this.WwA))) || (this.Wxi.contains(Integer.valueOf(paramInt)));
   }
   
-  private final String gSh()
+  private final String irB()
   {
-    return (String)this.PFE.getValue();
+    return (String)this.Wwi.getValue();
   }
   
-  private final e gSq()
+  private final com.tencent.mm.plugin.webview.e.f<cdf> irE()
   {
-    return (e)this.PFZ.getValue();
+    return (com.tencent.mm.plugin.webview.e.f)this.Wwl.getValue();
+  }
+  
+  private final g irN()
+  {
+    return (g)this.WwM.getValue();
   }
   
   /* Error */
-  private final void gSs()
+  private final void irP()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 940	com/tencent/mm/plugin/webview/core/BaseWebViewController:gSh	()Ljava/lang/String;
-    //   6: ldc_w 1201
-    //   9: invokestatic 1013	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3: invokespecial 1051	com/tencent/mm/plugin/webview/core/BaseWebViewController:irB	()Ljava/lang/String;
+    //   6: ldc_w 1383
+    //   9: invokestatic 1087	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   12: aload_0
-    //   13: getfield 885	com/tencent/mm/plugin/webview/core/BaseWebViewController:PGA	Ljava/util/concurrent/ConcurrentSkipListSet;
-    //   16: invokevirtual 1114	java/util/concurrent/ConcurrentSkipListSet:clear	()V
+    //   13: getfield 958	com/tencent/mm/plugin/webview/core/BaseWebViewController:Wxn	Ljava/util/concurrent/ConcurrentSkipListSet;
+    //   16: invokevirtual 1257	java/util/concurrent/ConcurrentSkipListSet:clear	()V
     //   19: aload_0
-    //   20: getfield 889	com/tencent/mm/plugin/webview/core/BaseWebViewController:PGC	Ljava/util/concurrent/ConcurrentSkipListSet;
-    //   23: invokevirtual 1114	java/util/concurrent/ConcurrentSkipListSet:clear	()V
+    //   20: getfield 962	com/tencent/mm/plugin/webview/core/BaseWebViewController:Wxp	Ljava/util/concurrent/ConcurrentSkipListSet;
+    //   23: invokevirtual 1257	java/util/concurrent/ConcurrentSkipListSet:clear	()V
     //   26: aload_0
-    //   27: getfield 876	com/tencent/mm/plugin/webview/core/BaseWebViewController:PGx	Ljava/util/concurrent/ConcurrentLinkedDeque;
-    //   30: invokevirtual 1115	java/util/concurrent/ConcurrentLinkedDeque:clear	()V
+    //   27: getfield 949	com/tencent/mm/plugin/webview/core/BaseWebViewController:Wxk	Ljava/util/concurrent/ConcurrentLinkedDeque;
+    //   30: invokevirtual 1258	java/util/concurrent/ConcurrentLinkedDeque:clear	()V
     //   33: aload_0
-    //   34: getfield 883	com/tencent/mm/plugin/webview/core/BaseWebViewController:PGz	Ljava/util/concurrent/ConcurrentSkipListSet;
-    //   37: invokevirtual 1114	java/util/concurrent/ConcurrentSkipListSet:clear	()V
+    //   34: getfield 956	com/tencent/mm/plugin/webview/core/BaseWebViewController:Wxm	Ljava/util/concurrent/ConcurrentSkipListSet;
+    //   37: invokevirtual 1257	java/util/concurrent/ConcurrentSkipListSet:clear	()V
     //   40: aload_0
-    //   41: getfield 887	com/tencent/mm/plugin/webview/core/BaseWebViewController:PGB	Ljava/util/concurrent/ConcurrentSkipListSet;
-    //   44: invokevirtual 1114	java/util/concurrent/ConcurrentSkipListSet:clear	()V
+    //   41: getfield 960	com/tencent/mm/plugin/webview/core/BaseWebViewController:Wxo	Ljava/util/concurrent/ConcurrentSkipListSet;
+    //   44: invokevirtual 1257	java/util/concurrent/ConcurrentSkipListSet:clear	()V
     //   47: aload_0
-    //   48: getfield 878	com/tencent/mm/plugin/webview/core/BaseWebViewController:PGy	Ljava/util/concurrent/ConcurrentLinkedDeque;
-    //   51: invokevirtual 1115	java/util/concurrent/ConcurrentLinkedDeque:clear	()V
+    //   48: getfield 951	com/tencent/mm/plugin/webview/core/BaseWebViewController:Wxl	Ljava/util/concurrent/ConcurrentLinkedDeque;
+    //   51: invokevirtual 1258	java/util/concurrent/ConcurrentLinkedDeque:clear	()V
     //   54: aload_0
-    //   55: invokevirtual 1120	com/tencent/mm/plugin/webview/core/BaseWebViewController:cDy	()Ljava/util/List;
-    //   58: checkcast 956	java/lang/Iterable
-    //   61: invokeinterface 960 1 0
+    //   55: invokevirtual 1263	com/tencent/mm/plugin/webview/core/BaseWebViewController:dhc	()Ljava/util/List;
+    //   58: checkcast 1068	java/lang/Iterable
+    //   61: invokeinterface 1152 1 0
     //   66: astore_1
     //   67: aload_1
-    //   68: invokeinterface 965 1 0
-    //   73: ifeq +91 -> 164
+    //   68: invokeinterface 1157 1 0
+    //   73: ifeq +78 -> 151
     //   76: aload_1
-    //   77: invokeinterface 969 1 0
-    //   82: checkcast 92	com/tencent/mm/plugin/webview/core/BaseWebViewController$f
+    //   77: invokeinterface 1161 1 0
+    //   82: checkcast 84	com/tencent/mm/plugin/webview/core/BaseWebViewController$f
     //   85: astore_2
     //   86: aload_2
-    //   87: getfield 1124	com/tencent/mm/plugin/webview/core/BaseWebViewController$f:PGX	Lkotlin/l/b;
-    //   90: invokestatic 1129	kotlin/l/a/c:d	(Lkotlin/l/b;)Ljava/lang/Object;
+    //   87: getfield 1267	com/tencent/mm/plugin/webview/core/BaseWebViewController$f:WxH	Lkotlin/l/c;
+    //   90: invokestatic 1272	kotlin/l/a/c:e	(Lkotlin/l/c;)Ljava/lang/Object;
     //   93: astore_3
     //   94: aload_3
     //   95: checkcast 45	com/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction
     //   98: aload_0
-    //   99: checkcast 2	com/tencent/mm/plugin/webview/core/BaseWebViewController
-    //   102: invokevirtual 1132	com/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction:setController	(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V
-    //   105: aload_3
-    //   106: checkcast 45	com/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction
-    //   109: astore_3
-    //   110: aload_3
-    //   111: instanceof 15
-    //   114: ifeq +53 -> 167
-    //   117: aload_0
-    //   118: getfield 876	com/tencent/mm/plugin/webview/core/BaseWebViewController:PGx	Ljava/util/concurrent/ConcurrentLinkedDeque;
-    //   121: aload_3
-    //   122: aload_2
-    //   123: getfield 1136	com/tencent/mm/plugin/webview/core/BaseWebViewController$f:kRn	Lkotlin/g/a/a;
-    //   126: invokestatic 1142	kotlin/s:M	(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/o;
-    //   129: invokevirtual 1143	java/util/concurrent/ConcurrentLinkedDeque:add	(Ljava/lang/Object;)Z
-    //   132: pop
-    //   133: goto -66 -> 67
-    //   136: astore_1
-    //   137: aload_0
-    //   138: invokespecial 940	com/tencent/mm/plugin/webview/core/BaseWebViewController:gSh	()Ljava/lang/String;
-    //   141: new 984	java/lang/StringBuilder
-    //   144: dup
-    //   145: ldc_w 1203
-    //   148: invokespecial 988	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   151: aload_1
-    //   152: invokevirtual 1206	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   155: invokevirtual 1002	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   158: invokevirtual 1007	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   161: invokestatic 1013	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   164: aload_0
-    //   165: monitorexit
-    //   166: return
-    //   167: aload_3
-    //   168: instanceof 24
-    //   171: ifeq -104 -> 67
-    //   174: aload_0
-    //   175: getfield 878	com/tencent/mm/plugin/webview/core/BaseWebViewController:PGy	Ljava/util/concurrent/ConcurrentLinkedDeque;
-    //   178: aload_3
-    //   179: aload_2
-    //   180: getfield 1136	com/tencent/mm/plugin/webview/core/BaseWebViewController$f:kRn	Lkotlin/g/a/a;
-    //   183: invokestatic 1142	kotlin/s:M	(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/o;
-    //   186: invokevirtual 1143	java/util/concurrent/ConcurrentLinkedDeque:add	(Ljava/lang/Object;)Z
-    //   189: pop
-    //   190: goto -123 -> 67
-    //   193: astore_1
-    //   194: aload_0
-    //   195: monitorexit
-    //   196: aload_1
-    //   197: athrow
+    //   99: invokevirtual 1275	com/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction:setController	(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V
+    //   102: aload_3
+    //   103: checkcast 45	com/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction
+    //   106: astore_3
+    //   107: aload_3
+    //   108: instanceof 15
+    //   111: ifeq +43 -> 154
+    //   114: aload_0
+    //   115: getfield 949	com/tencent/mm/plugin/webview/core/BaseWebViewController:Wxk	Ljava/util/concurrent/ConcurrentLinkedDeque;
+    //   118: aload_3
+    //   119: aload_2
+    //   120: getfield 1279	com/tencent/mm/plugin/webview/core/BaseWebViewController$f:nsP	Lkotlin/g/a/a;
+    //   123: invokestatic 1285	kotlin/v:Y	(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/r;
+    //   126: invokevirtual 1286	java/util/concurrent/ConcurrentLinkedDeque:add	(Ljava/lang/Object;)Z
+    //   129: pop
+    //   130: goto -63 -> 67
+    //   133: astore_1
+    //   134: aload_0
+    //   135: invokespecial 1051	com/tencent/mm/plugin/webview/core/BaseWebViewController:irB	()Ljava/lang/String;
+    //   138: ldc_w 1385
+    //   141: aload_1
+    //   142: invokevirtual 1388	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   145: invokestatic 1130	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    //   148: invokestatic 1087	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   151: aload_0
+    //   152: monitorexit
+    //   153: return
+    //   154: aload_3
+    //   155: instanceof 24
+    //   158: ifeq -91 -> 67
+    //   161: aload_0
+    //   162: getfield 951	com/tencent/mm/plugin/webview/core/BaseWebViewController:Wxl	Ljava/util/concurrent/ConcurrentLinkedDeque;
+    //   165: aload_3
+    //   166: aload_2
+    //   167: getfield 1279	com/tencent/mm/plugin/webview/core/BaseWebViewController$f:nsP	Lkotlin/g/a/a;
+    //   170: invokestatic 1285	kotlin/v:Y	(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/r;
+    //   173: invokevirtual 1286	java/util/concurrent/ConcurrentLinkedDeque:add	(Ljava/lang/Object;)Z
+    //   176: pop
+    //   177: goto -110 -> 67
+    //   180: astore_1
+    //   181: aload_0
+    //   182: monitorexit
+    //   183: aload_1
+    //   184: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	198	0	this	BaseWebViewController
+    //   0	185	0	this	BaseWebViewController
     //   66	11	1	localIterator	Iterator
-    //   136	16	1	localException	Exception
-    //   193	4	1	localObject1	Object
-    //   85	95	2	localf	f
-    //   93	86	3	localObject2	Object
+    //   133	9	1	localException	Exception
+    //   180	4	1	localObject1	Object
+    //   85	82	2	localf	f
+    //   93	73	3	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   54	67	136	java/lang/Exception
-    //   67	133	136	java/lang/Exception
-    //   167	190	136	java/lang/Exception
-    //   2	54	193	finally
-    //   54	67	193	finally
-    //   67	133	193	finally
-    //   137	164	193	finally
-    //   167	190	193	finally
+    //   54	67	133	java/lang/Exception
+    //   67	130	133	java/lang/Exception
+    //   154	177	133	java/lang/Exception
+    //   2	54	180	finally
+    //   54	67	180	finally
+    //   67	130	180	finally
+    //   134	151	180	finally
+    //   154	177	180	finally
   }
   
-  private final int gSy()
+  private final int irW()
   {
-    if (!cDD()) {
+    if (!dhh()) {
       return 0;
     }
-    if (this.PFJ) {
+    if (this.Wws) {
       return 2;
     }
     return 1;
@@ -493,84 +593,73 @@ public abstract class BaseWebViewController
   
   private final void n(WebView paramWebView, String paramString)
   {
-    if ((paramWebView != null) && (this.PGd) && (paramWebView.canGoBack()))
+    if ((paramWebView != null) && (this.WwQ) && (paramWebView.canGoBack()))
     {
-      Log.i(gSh(), "clearHistory :".concat(String.valueOf(paramString)));
+      Log.i(irB(), kotlin.g.b.s.X("clearHistory :", paramString));
       paramWebView.clearHistory();
-      this.PGd = false;
+      if (!Util.isEqual(paramString, "about:blank")) {
+        this.WwQ = false;
+      }
     }
   }
   
-  public final void CM(boolean paramBoolean)
+  public final void Ir(boolean paramBoolean)
   {
     try
     {
-      com.tencent.mm.plugin.webview.stub.e locale = this.pGC;
-      if (locale == null) {
-        kotlin.g.b.p.bGy("invoker");
-      }
-      if (locale != null)
+      if (irJ() != null)
       {
-        if (!paramBoolean)
-        {
-          locale = this.pGC;
-          if (locale == null) {
-            kotlin.g.b.p.bGy("invoker");
-          }
-          locale.aon(gSo());
+        if (!paramBoolean) {
+          irJ().auf(irL());
         }
-        locale = this.pGC;
-        if (locale == null) {
-          kotlin.g.b.p.bGy("invoker");
-        }
-        locale.bD(gSo(), paramBoolean);
+        irJ().cl(irL(), paramBoolean);
       }
-      Log.i(gSh(), "removeInvoker ok");
+      Log.i(irB(), "removeInvoker ok");
       return;
     }
     catch (Exception localException)
     {
-      Log.w(gSh(), "onDestroy, remove callback and invoke event on webview destroy, ex = ".concat(String.valueOf(localException)));
+      Log.w(irB(), kotlin.g.b.s.X("onDestroy, remove callback and invoke event on webview destroy, ex = ", localException));
     }
   }
   
-  protected final void CN(boolean paramBoolean)
+  protected final void Is(boolean paramBoolean)
   {
-    Iterator localIterator = ((Iterable)this.PGb).iterator();
+    Iterator localIterator = ((Iterable)this.WwO).iterator();
     while (localIterator.hasNext()) {
-      ((j)localIterator.next()).CN(paramBoolean);
+      ((l)localIterator.next()).Is(paramBoolean);
     }
   }
   
-  public final void F(int paramInt, String paramString1, String paramString2)
+  public final void J(int paramInt, String paramString1, String paramString2)
   {
     if (paramString2 != null)
     {
-      paramString1 = this.pHS.getSettings();
+      paramString1 = this.sMP.getSettings();
       if (paramString1 != null) {
         paramString1.setJavaScriptEnabled(false);
       }
-      this.pHS.loadData(paramString2, "text/html", "utf-8");
+      this.sMP.loadData(paramString2, "text/html", "utf-8");
     }
   }
   
-  public final void N(String paramString, Map<String, String> paramMap)
+  public final void X(String paramString, Map<String, String> paramMap)
   {
-    kotlin.g.b.p.k(paramString, "baseUrl");
-    Log.i(gSh(), "WebView-Trace loadCacheUrl baseUrl ".concat(String.valueOf(paramString)));
-    this.fba = paramString;
-    this.PFJ = true;
-    anv(this.PGk);
-    this.pHS.loadUrl(paramString, paramMap);
-    bjp(paramString);
-    anv(this.PGj);
-    com.tencent.e.h.ZvG.bc((Runnable)new ad(this));
+    kotlin.g.b.s.u(paramString, "baseUrl");
+    Log.i(irB(), kotlin.g.b.s.X("WebView-Trace loadCacheUrl baseUrl ", paramString));
+    this.heA = paramString;
+    this.Wws = true;
+    atm(this.WwX);
+    this.sMP.loadUrl(paramString, paramMap);
+    bja(paramString);
+    atm(this.WwW);
+    com.tencent.threadpool.h.ahAA.bk(new BaseWebViewController..ExternalSyntheticLambda2(this));
   }
   
   public final WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    kotlin.g.b.p.k(paramWebView, "webview");
-    kotlin.g.b.p.k(paramWebResourceRequest, "request");
+    kotlin.g.b.s.u(paramWebView, "webview");
+    kotlin.g.b.s.u(paramWebResourceRequest, "request");
     WebResourceResponse localWebResourceResponse2 = b(paramWebView, paramWebResourceRequest, null);
     WebResourceResponse localWebResourceResponse1 = localWebResourceResponse2;
     if (localWebResourceResponse2 == null) {
@@ -581,8 +670,8 @@ public abstract class BaseWebViewController
   
   public final WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
   {
-    kotlin.g.b.p.k(paramWebView, "webview");
-    kotlin.g.b.p.k(paramWebResourceRequest, "request");
+    kotlin.g.b.s.u(paramWebView, "webview");
+    kotlin.g.b.s.u(paramWebResourceRequest, "request");
     WebResourceResponse localWebResourceResponse2 = b(paramWebView, paramWebResourceRequest, paramBundle);
     WebResourceResponse localWebResourceResponse1 = localWebResourceResponse2;
     if (localWebResourceResponse2 == null) {
@@ -593,123 +682,154 @@ public abstract class BaseWebViewController
   
   public void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
   {
-    kotlin.g.b.p.k(paramString1, "reqUrl");
-    kotlin.g.b.p.k(paramString2, "errMsg");
+    kotlin.g.b.s.u(paramString1, "reqUrl");
+    kotlin.g.b.s.u(paramString2, "errMsg");
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      cR(this.PGm, paramString1);
-      Iterator localIterator = ((Iterable)this.PGb).iterator();
+      this.WwB = paramString1;
+      dI(this.WwZ, paramString1);
+      Iterator localIterator = ((Iterable)this.WwO).iterator();
       while (localIterator.hasNext()) {
-        ((j)localIterator.next()).d(paramInt1, paramString1, paramInt2, paramString2);
+        ((l)localIterator.next()).b(paramInt1, paramString1, paramInt2, paramInt3, paramString2);
       }
-      this.PFK = null;
+      this.Www = null;
     }
   }
   
-  public void a(int paramInt, String paramString1, String paramString2, bot parambot)
+  public void a(int paramInt, String paramString1, String paramString2, cdf paramcdf)
   {
-    kotlin.g.b.p.k(paramString1, "reqUrl");
-    kotlin.g.b.p.k(paramString2, "fullUrl");
-    kotlin.g.b.p.k(parambot, "response");
-    Log.d(gSh(), "WebView-Trace onPermissionUpdate:" + paramString1 + ", fullUrl:" + paramString2);
-    if (gSx()) {
-      Log.d(gSh(), "onPermissionUpdate destroyCalled");
-    }
-    do
+    boolean bool2 = true;
+    kotlin.g.b.s.u(paramString1, "reqUrl");
+    kotlin.g.b.s.u(paramString2, "fullUrl");
+    kotlin.g.b.s.u(paramcdf, "response");
+    Log.d(irB(), "WebView-Trace onPermissionUpdate reason:" + paramInt + ", :" + paramString1 + ", fullUrl:" + paramString2);
+    if (irU())
     {
+      Log.d(irB(), "onPermissionUpdate destroyCalled");
       return;
-      this.pGD.a(paramString1, gSl().bly(paramString1), gSl().blA(paramString1));
-      this.pGD.a(paramString2, gSl().bly(paramString2), gSl().blA(paramString2));
-      Iterator localIterator = ((Iterable)this.PGb).iterator();
-      while (localIterator.hasNext()) {
-        ((j)localIterator.next()).a(paramString1, parambot);
+    }
+    this.WwB = paramString2;
+    this.sLD.a(paramString1, irI().blb(paramString1), irI().blc(paramString1));
+    this.sLD.a(paramString2, irI().blb(paramString2), irI().blc(paramString2));
+    Iterator localIterator = ((Iterable)this.WwO).iterator();
+    while (localIterator.hasNext()) {
+      ((l)localIterator.next()).a(paramInt, paramString1, paramcdf);
+    }
+    dI(this.WwY, paramString1);
+    dI(this.WwY, paramString2);
+    if (!this.Wwt)
+    {
+      paramString2 = this.sLD.iwp();
+      if (paramString2 == null)
+      {
+        bool1 = false;
+        this.Wwt = bool1;
       }
-      cR(this.PGl, paramString1);
-      cR(this.PGl, paramString2);
-    } while (!kotlin.g.b.p.h(paramString1, this.PFO));
-    cR(this.PGs, paramString1);
-    Log.i(gSh(), "WebAction:Ready onPermissionUpdated Patch: " + this.PFO);
-  }
-  
-  public final void a(f paramf)
-  {
-    kotlin.g.b.p.k(paramf, "listener");
-    if (!this.PGa.contains(paramf)) {
-      this.PGa.add(paramf);
+    }
+    else if (!this.Wwu)
+    {
+      paramString2 = irI().WPd;
+      if ((paramString2 == null) || (paramString2.aanE != 1)) {
+        break label345;
+      }
+    }
+    label345:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.Wwu = bool1;
+      if (!kotlin.g.b.s.p(paramString1, this.WwA)) {
+        break;
+      }
+      dI(this.Wxf, paramString1);
+      Log.i(irB(), kotlin.g.b.s.X("WebAction:Ready onPermissionUpdated Patch: ", this.WwA));
+      return;
+      if ((paramString2.YxC & 0x800000) > 0) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        Log.d("MicroMsg.GeneralControlWrapper", "isMarkRiskControl, ret = ".concat(String.valueOf(bool1)));
+        break;
+      }
     }
   }
   
-  public final void a(j paramj)
+  public final void a(h paramh)
+  {
+    kotlin.g.b.s.u(paramh, "listener");
+    if (!this.WwN.contains(paramh)) {
+      this.WwN.add(paramh);
+    }
+  }
+  
+  public final void a(l paraml)
   {
     try
     {
-      kotlin.g.b.p.k(paramj, "listener");
-      if (!this.PGb.contains(paramj))
+      kotlin.g.b.s.u(paraml, "listener");
+      if (!this.WwO.contains(paraml))
       {
-        BaseWebViewController localBaseWebViewController = (BaseWebViewController)this;
-        kotlin.g.b.p.k(localBaseWebViewController, "<set-?>");
-        paramj.controller = localBaseWebViewController;
-        this.PGb.add(paramj);
-        if (this.PGC.contains(ab.bO(Bind.class).iCe()))
+        kotlin.g.b.s.u(this, "<set-?>");
+        paraml.controller = this;
+        this.WwO.add(paraml);
+        if (this.Wxp.contains(ai.cz(Bind.class).klt()))
         {
-          Log.i(gSh(), "Abe-Debug Patch Call onBind");
-          paramj.bXM();
+          Log.i(irB(), "Abe-Debug Patch Call onBind");
+          paraml.cxX();
         }
       }
       return;
     }
     finally
     {
-      paramj = finally;
-      throw paramj;
+      paraml = finally;
+      throw paraml;
     }
   }
   
-  public final void a(k paramk)
+  public final void a(m paramm)
   {
-    kotlin.g.b.p.k(paramk, "interceptor");
-    this.PwK.add(paramk);
-    Object localObject = paramk.gTb();
+    kotlin.g.b.s.u(paramm, "interceptor");
+    this.WmV.add(paramm);
+    Object localObject = paramm.isN();
     if (localObject != null) {
-      a((f)localObject);
+      a((h)localObject);
     }
-    localObject = paramk.bXJ();
+    localObject = paramm.cxU();
     if (localObject != null) {
-      a((j)localObject);
+      a((l)localObject);
     }
-    paramk.k(this);
+    paramm.k(this);
   }
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.a(paramWebView, paramInt, paramString1, paramString2);
-    if (com.tencent.mm.compatible.util.d.qV(23)) {}
+    if (com.tencent.mm.compatible.util.d.rb(23)) {}
     for (;;)
     {
       return;
-      if (!anw(this.PGi))
+      if (!atn(this.WwV))
       {
-        Log.i(gSh(), "onReceivedError, intent not ready");
+        Log.i(irB(), "onReceivedError, intent not ready");
         return;
       }
-      Log.i(gSh(), "WebView-Trace onReceivedError-old, errCode:" + paramInt + ", description:" + paramString1 + ", failingUrl:" + paramString2);
+      Log.i(irB(), "WebView-Trace onReceivedError-old, errCode:" + paramInt + ", description:" + paramString1 + ", failingUrl:" + paramString2);
       Object localObject2;
-      if (anw(this.PGh))
+      if (atn(this.WwU))
       {
-        localObject1 = gSq();
-        localObject2 = bju(getCurrentUrl());
-        e.a locala = e.PHr;
-        e.a((e)localObject1, paramInt, paramString1, paramString2, (String)localObject2, e.a.e(this.pHS), gSy());
+        localObject1 = irN();
+        localObject2 = bjg(getCurrentUrl());
+        g.a locala = g.WxV;
+        g.a((g)localObject1, paramInt, paramString1, paramString2, (String)localObject2, g.a.g(this.sMP), irW());
       }
-      Object localObject1 = ((Iterable)this.PGa).iterator();
+      Object localObject1 = ((Iterable)this.WwN).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (f)((Iterator)localObject1).next();
+        localObject2 = (h)((Iterator)localObject1).next();
         if (isStarted()) {
-          ((f)localObject2).a(paramWebView, paramInt, paramString1, paramString2);
+          ((h)localObject2).a(paramWebView, paramInt, paramString1, paramString2);
         }
       }
     }
@@ -719,188 +839,174 @@ public abstract class BaseWebViewController
   {
     Object localObject2 = null;
     super.a(paramWebView, paramWebResourceRequest, paramWebResourceResponse);
-    if (!anw(this.PGi))
+    if (!atn(this.WwV))
     {
-      Log.i(gSh(), "onReceivedHttpError, intent not ready");
+      Log.i(irB(), "onReceivedHttpError, intent not ready");
       return;
     }
-    Object localObject3 = gSh();
+    Object localObject3 = irB();
     StringBuilder localStringBuilder = new StringBuilder("WebView-Trace onReceivedHttpError, errCode:");
-    if (paramWebResourceResponse != null)
+    if (paramWebResourceResponse == null)
     {
-      localObject1 = Integer.valueOf(paramWebResourceResponse.getStatusCode());
-      label63:
+      localObject1 = null;
+      label57:
       localStringBuilder = localStringBuilder.append(localObject1).append(", description:");
-      if (paramWebResourceResponse == null) {
-        break label288;
+      if (paramWebResourceResponse != null) {
+        break label235;
+      }
+      localObject1 = null;
+      label79:
+      localStringBuilder = localStringBuilder.append(localObject1).append(", failingUrl:");
+      if (paramWebResourceRequest != null) {
+        break label244;
       }
     }
-    label288:
-    for (Object localObject1 = paramWebResourceResponse.getReasonPhrase();; localObject1 = null)
+    label235:
+    label244:
+    for (Object localObject1 = localObject2;; localObject1 = paramWebResourceRequest.getUrl())
     {
-      localStringBuilder = localStringBuilder.append((String)localObject1).append(", failingUrl:");
-      localObject1 = localObject2;
-      if (paramWebResourceRequest != null) {
-        localObject1 = paramWebResourceRequest.getUrl();
-      }
-      Log.i((String)localObject3, String.valueOf(localObject1));
-      if (anw(this.PGh))
+      Log.i((String)localObject3, localObject1);
+      if (atn(this.WwU))
       {
-        localObject1 = gSq();
-        localObject2 = bju(getCurrentUrl());
-        localObject3 = e.PHr;
-        int i = e.a.e(this.pHS);
-        int j = gSy();
-        if ((((e)localObject1).cin()) && (paramWebResourceRequest != null)) {
-          com.tencent.e.h.ZvG.d((Runnable)new e.e((e)localObject1, paramWebResourceRequest, paramWebResourceResponse, (String)localObject2, i, j), "MicroMsg.WebPageErrorMonitor");
-        }
+        localObject1 = irN();
+        localObject2 = bjg(getCurrentUrl());
+        localObject3 = g.WxV;
+        ((g)localObject1).a(paramWebResourceRequest, paramWebResourceResponse, (String)localObject2, g.a.g(this.sMP), irW());
       }
-      localObject1 = ((Iterable)this.PGa).iterator();
+      localObject1 = ((Iterable)this.WwN).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (f)((Iterator)localObject1).next();
+        localObject2 = (h)((Iterator)localObject1).next();
         if (isStarted()) {
-          ((f)localObject2).a(paramWebView, paramWebResourceRequest, paramWebResourceResponse);
+          ((h)localObject2).a(paramWebView, paramWebResourceRequest, paramWebResourceResponse);
         }
       }
       break;
-      localObject1 = null;
+      localObject1 = Integer.valueOf(paramWebResourceResponse.mStatusCode);
+      break label57;
+      localObject1 = paramWebResourceResponse.mReasonPhrase;
+      break label79;
+    }
+  }
+  
+  public final void a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, ac paramac)
+  {
+    super.a(paramWebView, paramWebResourceRequest, paramac);
+    if ((paramWebResourceRequest == null) || (paramac == null) || (com.tencent.mm.compatible.util.d.rc(23))) {
+      return;
+    }
+    if (!atn(this.WwV))
+    {
+      Log.i(irB(), "onReceivedError, intent not ready");
+      return;
+    }
+    int i = paramac.getErrorCode();
+    paramWebView = paramac.getDescription();
+    if (paramWebView == null)
+    {
+      paramWebView = null;
+      label63:
+      localObject = paramWebResourceRequest.getUrl();
+      if (localObject != null) {
+        break label244;
+      }
+    }
+    label244:
+    for (Object localObject = null;; localObject = ((Uri)localObject).toString())
+    {
+      Log.i(irB(), "WebView-Trace onReceivedError, errCode:" + i + ", description:" + paramWebView + ", failingUrl:" + localObject);
+      if (atn(this.WwU))
+      {
+        g localg = irN();
+        String str = bjg(getCurrentUrl());
+        g.a locala = g.WxV;
+        localg.a(i, paramWebView, (String)localObject, str, g.a.g(this.sMP), irW(), paramWebResourceRequest.isForMainFrame());
+      }
+      paramWebView = ((Iterable)this.WwN).iterator();
+      while (paramWebView.hasNext())
+      {
+        localObject = (h)paramWebView.next();
+        if (isStarted()) {
+          ((h)localObject).a(paramWebResourceRequest, paramac);
+        }
+      }
+      break;
+      paramWebView = paramWebView.toString();
       break label63;
     }
   }
   
-  public final void a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, com.tencent.xweb.z paramz)
+  public final void a(WebView paramWebView, com.tencent.xweb.l paraml, String paramString1, String paramString2)
   {
-    super.a(paramWebView, paramWebResourceRequest, paramz);
-    if ((paramWebResourceRequest == null) || (paramz == null) || (com.tencent.mm.compatible.util.d.qW(23))) {
-      return;
-    }
-    if (!anw(this.PGi))
-    {
-      Log.i(gSh(), "onReceivedError, intent not ready");
-      return;
-    }
-    int i = paramz.getErrorCode();
-    paramz = paramz.getDescription();
-    if (paramz != null)
-    {
-      paramz = paramz.toString();
-      label66:
-      localObject1 = paramWebResourceRequest.getUrl();
-      if (localObject1 == null) {
-        break label252;
-      }
-    }
-    label252:
-    for (Object localObject1 = ((Uri)localObject1).toString();; localObject1 = null)
-    {
-      Log.i(gSh(), "WebView-Trace onReceivedError, errCode:" + i + ", description:" + paramz + ", failingUrl:" + (String)localObject1);
-      Object localObject2;
-      if (anw(this.PGh))
-      {
-        localObject2 = gSq();
-        String str = bju(getCurrentUrl());
-        e.a locala = e.PHr;
-        ((e)localObject2).a(i, paramz, (String)localObject1, str, e.a.e(this.pHS), gSy(), paramWebResourceRequest.isForMainFrame());
-      }
-      paramWebResourceRequest = ((Iterable)this.PGa).iterator();
-      while (paramWebResourceRequest.hasNext())
-      {
-        localObject2 = (f)paramWebResourceRequest.next();
-        if (isStarted()) {
-          ((f)localObject2).a(paramWebView, i, paramz, (String)localObject1);
-        }
-      }
-      break;
-      paramz = null;
-      break label66;
-    }
+    kotlin.g.b.s.u(paraml, "handler");
+    super.a(paramWebView, paraml, paramString1, paramString2);
+    com.tencent.mm.plugin.report.service.h.OAn.p(155L, 35L, 1L);
   }
   
-  public final void a(WebView paramWebView, com.tencent.xweb.j paramj, String paramString1, String paramString2)
+  public void a(WebView paramWebView, t paramt, SslError paramSslError)
   {
-    kotlin.g.b.p.k(paramj, "handler");
-    super.a(paramWebView, paramj, paramString1, paramString2);
-    com.tencent.mm.plugin.report.service.h.IzE.p(155L, 35L, 1L);
-  }
-  
-  public void a(WebView paramWebView, r paramr, SslError paramSslError)
-  {
-    super.a(paramWebView, paramr, paramSslError);
-    if (!anw(this.PGi))
+    super.a(paramWebView, paramt, paramSslError);
+    if (!atn(this.WwV))
     {
-      Log.i(gSh(), "onReceivedSslError, intent not ready");
+      Log.i(irB(), "onReceivedSslError, intent not ready");
       return;
     }
-    Object localObject2 = gSh();
-    Object localObject3 = new StringBuilder("WebView-Trace onReceivedSslError, ");
-    if (paramSslError != null) {}
-    for (Object localObject1 = paramSslError.toString();; localObject1 = null)
+    Object localObject2 = irB();
+    if (paramSslError == null) {}
+    for (Object localObject1 = null;; localObject1 = paramSslError.toString())
     {
-      Log.i((String)localObject2, (String)localObject1);
-      if (anw(this.PGh))
+      Log.i((String)localObject2, kotlin.g.b.s.X("WebView-Trace onReceivedSslError, ", localObject1));
+      if (atn(this.WwU))
       {
-        localObject1 = gSq();
-        localObject2 = bju(getCurrentUrl());
-        localObject3 = e.PHr;
-        int i = e.a.e(this.pHS);
-        int j = gSy();
-        if ((((e)localObject1).cin()) && (paramSslError != null)) {
-          com.tencent.e.h.ZvG.d((Runnable)new e.f((e)localObject1, paramSslError, (String)localObject2, i, j), "MicroMsg.WebPageErrorMonitor");
-        }
+        localObject1 = irN();
+        localObject2 = bjg(getCurrentUrl());
+        g.a locala = g.WxV;
+        ((g)localObject1).a(paramSslError, (String)localObject2, g.a.g(this.sMP), irW());
       }
-      localObject1 = ((Iterable)this.PGa).iterator();
+      localObject1 = ((Iterable)this.WwN).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (f)((Iterator)localObject1).next();
+        localObject2 = (h)((Iterator)localObject1).next();
         if (isStarted()) {
-          ((f)localObject2).a(paramWebView, paramr, paramSslError);
+          ((h)localObject2).a(paramWebView, paramt, paramSslError);
         }
       }
       break;
     }
   }
   
-  protected boolean a(int paramInt, String paramString, bot parambot)
+  public void a(boolean paramBoolean, String paramString, JsapiPermissionWrapper paramJsapiPermissionWrapper)
   {
-    kotlin.g.b.p.k(paramString, "reqUrl");
-    kotlin.g.b.p.k(parambot, "resp");
-    Iterator localIterator = ((Iterable)this.PwK).iterator();
-    while (localIterator.hasNext()) {
-      if (((k)localIterator.next()).a(paramInt, paramString, parambot)) {
-        return true;
-      }
-    }
-    return false;
+    kotlin.g.b.s.u(paramString, "uiConfig");
   }
   
   public final boolean a(WebView paramWebView, String paramString)
   {
     boolean bool2 = true;
-    kotlin.g.b.p.k(paramWebView, "view");
-    kotlin.g.b.p.k(paramString, "url");
-    Log.i(gSh(), "shouldOverrideUrlLoading: ".concat(String.valueOf(paramString)));
-    Log.d(gSh(), "doShouldOverrideUrlLoading url:".concat(String.valueOf(paramString)));
+    kotlin.g.b.s.u(paramWebView, "view");
+    kotlin.g.b.s.u(paramString, "url");
+    Log.i(irB(), kotlin.g.b.s.X("shouldOverrideUrlLoading: ", paramString));
+    Log.d(irB(), kotlin.g.b.s.X("doShouldOverrideUrlLoading url:", paramString));
     boolean bool1;
     if (m(paramWebView, paramString))
     {
       bool1 = bool2;
       if (!bool1) {
-        this.PFK = paramString;
+        this.Www = paramString;
       }
       return bool1;
     }
-    label150:
-    if (bjr(paramString) == 2)
+    label146:
+    if (bjc(paramString) == 2)
     {
       bool1 = true;
-      label89:
-      if (aM(paramString, bool1))
+      label83:
+      if (aY(paramString, bool1))
       {
-        if (this.PGK.PGV) {
-          break label181;
+        if (this.Wwf.WxE) {
+          break label177;
         }
-        switch (bjr(paramString))
+        switch (bjc(paramString))
         {
         default: 
           i = 0;
@@ -910,7 +1016,7 @@ public abstract class BaseWebViewController
         }
       }
     }
-    label181:
+    label177:
     for (int i = 1;; i = 0)
     {
       bool1 = bool2;
@@ -920,109 +1026,39 @@ public abstract class BaseWebViewController
       bool1 = false;
       break;
       bool1 = false;
-      break label89;
+      break label83;
       i = 1;
-      break label150;
+      break label146;
     }
   }
   
-  protected boolean aM(String paramString, boolean paramBoolean)
+  protected boolean aY(String paramString, boolean paramBoolean)
   {
     boolean bool = false;
-    kotlin.g.b.p.k(paramString, "url");
-    if (a(this, paramString, paramBoolean, 0, 4) == c.a.PYJ) {
+    kotlin.g.b.s.u(paramString, "url");
+    if (a(this, paramString, paramBoolean, 0, 4) == com.tencent.mm.plugin.webview.e.c.a.WPn) {
       bool = true;
     }
     return bool;
   }
   
-  public final ConcurrentLinkedDeque<kotlin.g.a.a<x>> anu(int paramInt)
+  protected boolean ajK(String paramString)
   {
-    ConcurrentLinkedDeque localConcurrentLinkedDeque2 = (ConcurrentLinkedDeque)this.PGc.get(Integer.valueOf(paramInt));
-    ConcurrentLinkedDeque localConcurrentLinkedDeque1 = localConcurrentLinkedDeque2;
-    if (localConcurrentLinkedDeque2 == null)
-    {
-      localConcurrentLinkedDeque1 = new ConcurrentLinkedDeque();
-      ((Map)this.PGc).put(Integer.valueOf(paramInt), localConcurrentLinkedDeque1);
-    }
-    return localConcurrentLinkedDeque1;
-  }
-  
-  /* Error */
-  public final void anv(final int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 1350	com/tencent/mm/plugin/webview/core/BaseWebViewController:gSx	()Z
-    //   6: istore_2
-    //   7: iload_2
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: getstatic 1306	com/tencent/e/h:ZvG	Lcom/tencent/e/i;
-    //   17: new 132	com/tencent/mm/plugin/webview/core/BaseWebViewController$u
-    //   20: dup
-    //   21: aload_0
-    //   22: iload_1
-    //   23: invokespecial 1607	com/tencent/mm/plugin/webview/core/BaseWebViewController$u:<init>	(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;I)V
-    //   26: checkcast 1309	java/lang/Runnable
-    //   29: invokeinterface 1315 2 0
-    //   34: pop
-    //   35: goto -24 -> 11
-    //   38: astore_3
-    //   39: aload_0
-    //   40: monitorexit
-    //   41: aload_3
-    //   42: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	43	0	this	BaseWebViewController
-    //   0	43	1	paramInt	int
-    //   6	2	2	bool	boolean
-    //   38	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	38	finally
-    //   14	35	38	finally
-  }
-  
-  public final boolean anw(int paramInt)
-  {
-    if (paramInt < 0) {}
-    for (int i = 1;; i = 0) {
-      try
-      {
-        if ((!kotlin.z.aazO) || (i != 0)) {
-          break;
-        }
-        throw ((Throwable)new AssertionError("Assertion failed"));
-      }
-      finally {}
-    }
-    boolean bool = this.PGA.contains(Integer.valueOf(paramInt));
-    return bool;
-  }
-  
-  protected boolean aql(String paramString)
-  {
-    kotlin.g.b.p.k(paramString, "url");
+    kotlin.g.b.s.u(paramString, "url");
     return true;
   }
   
-  protected boolean aqm(String paramString)
+  protected boolean ajL(String paramString)
   {
-    kotlin.g.b.p.k(paramString, "url");
-    if (!kotlin.n.n.ba((CharSequence)paramString)) {}
-    for (int i = 1; (i != 0) && (!kotlin.n.n.M(paramString, "data:text/html;charset=utf-8", false)) && (!kotlin.n.n.M(paramString, "about:blank", false)); i = 0)
+    kotlin.g.b.s.u(paramString, "url");
+    if (!kotlin.n.n.bp((CharSequence)paramString)) {}
+    for (int i = 1; (i != 0) && (!kotlin.n.n.U(paramString, "data:text/html;charset=utf-8", false)) && (!kotlin.n.n.U(paramString, "about:blank", false)); i = 0)
     {
-      if (anw(this.PGj))
+      if (atn(this.WwW))
       {
-        String str = com.tencent.mm.plugin.webview.h.a.sQA;
-        kotlin.g.b.p.j(str, "ConstantsPreload.HARDCODE_URL");
-        if (kotlin.n.n.M(paramString, str, false)) {
+        String str = com.tencent.mm.plugin.webview.g.a.vVP;
+        kotlin.g.b.s.s(str, "HARDCODE_URL");
+        if (kotlin.n.n.U(paramString, str, false)) {
           break;
         }
       }
@@ -1031,119 +1067,248 @@ public abstract class BaseWebViewController
     return false;
   }
   
+  public final ConcurrentLinkedDeque<kotlin.g.a.a<ah>> atl(int paramInt)
+  {
+    ConcurrentLinkedDeque localConcurrentLinkedDeque2 = (ConcurrentLinkedDeque)this.WwP.get(Integer.valueOf(paramInt));
+    ConcurrentLinkedDeque localConcurrentLinkedDeque1 = localConcurrentLinkedDeque2;
+    if (localConcurrentLinkedDeque2 == null)
+    {
+      localConcurrentLinkedDeque1 = new ConcurrentLinkedDeque();
+      ((Map)this.WwP).put(Integer.valueOf(paramInt), localConcurrentLinkedDeque1);
+    }
+    return localConcurrentLinkedDeque1;
+  }
+  
+  /* Error */
+  public final void atm(int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokevirtual 1515	com/tencent/mm/plugin/webview/core/BaseWebViewController:irU	()Z
+    //   6: istore_2
+    //   7: iload_2
+    //   8: ifeq +6 -> 14
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: return
+    //   14: getstatic 1471	com/tencent/threadpool/h:ahAA	Lcom/tencent/threadpool/i;
+    //   17: new 1792	com/tencent/mm/plugin/webview/core/BaseWebViewController$$ExternalSyntheticLambda0
+    //   20: dup
+    //   21: iload_1
+    //   22: aload_0
+    //   23: invokespecial 1794	com/tencent/mm/plugin/webview/core/BaseWebViewController$$ExternalSyntheticLambda0:<init>	(ILcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V
+    //   26: invokeinterface 1480 2 0
+    //   31: pop
+    //   32: goto -21 -> 11
+    //   35: astore_3
+    //   36: aload_0
+    //   37: monitorexit
+    //   38: aload_3
+    //   39: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	40	0	this	BaseWebViewController
+    //   0	40	1	paramInt	int
+    //   6	2	2	bool	boolean
+    //   35	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	35	finally
+    //   14	32	35	finally
+  }
+  
+  public final boolean atn(int paramInt)
+  {
+    if (paramInt < 0) {}
+    for (int i = 1;; i = 0) {
+      try
+      {
+        if ((!kotlin.ak.aiuY) || (i != 0)) {
+          break;
+        }
+        throw ((Throwable)new AssertionError("Assertion failed"));
+      }
+      finally {}
+    }
+    boolean bool = this.Wxn.contains(Integer.valueOf(paramInt));
+    return bool;
+  }
+  
+  protected final void atp(int paramInt)
+  {
+    Iterator localIterator = ((Iterable)this.WwO).iterator();
+    while (localIterator.hasNext()) {
+      ((l)localIterator.next()).atp(paramInt);
+    }
+  }
+  
+  public final void atq(int paramInt)
+  {
+    Object localObject = this.sMP;
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = ((MMWebView)localObject).getSettings()) {
+      return;
+    }
+    int i = paramInt;
+    if (paramInt <= 0) {
+      i = 2;
+    }
+    Log.i(irB(), kotlin.g.b.s.X("localSetFontSize, fontSize = ", Integer.valueOf(i)));
+    switch (i)
+    {
+    default: 
+      this.sMP.getSettings().setTextZoom(100);
+    }
+    for (;;)
+    {
+      this.Wwm.ni(i, this.sMP.getSettings().getTextZoom());
+      return;
+      this.sMP.getSettings().setTextZoom(80);
+      continue;
+      this.sMP.getSettings().setTextZoom(100);
+      continue;
+      this.sMP.getSettings().setTextZoom(110);
+      continue;
+      this.sMP.getSettings().setTextZoom(112);
+      continue;
+      this.sMP.getSettings().setTextZoom(113);
+      continue;
+      this.sMP.getSettings().setTextZoom(140);
+      continue;
+      this.sMP.getSettings().setTextZoom(155);
+      continue;
+      this.sMP.getSettings().setTextZoom(165);
+    }
+  }
+  
   protected WebResourceResponse b(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
   {
-    kotlin.g.b.p.k(paramWebView, "webView");
-    kotlin.g.b.p.k(paramWebResourceRequest, "request");
-    Log.i(gSh(), "shouldInterceptRequest, url = " + paramWebResourceRequest.getUrl() + ", method = " + paramWebResourceRequest.getMethod() + ", isForMainFrame = " + paramWebResourceRequest.isForMainFrame());
+    kotlin.g.b.s.u(paramWebView, "webView");
+    kotlin.g.b.s.u(paramWebResourceRequest, "request");
+    Log.i(irB(), "shouldInterceptRequest, url = " + paramWebResourceRequest.getUrl() + ", method = " + paramWebResourceRequest.getMethod() + ", isForMainFrame = " + paramWebResourceRequest.isForMainFrame());
     Object localObject = paramWebResourceRequest.getUrl().toString();
-    kotlin.g.b.p.j(localObject, "request.url.toString()");
-    if (bjt((String)localObject)) {
+    kotlin.g.b.s.s(localObject, "request.url.toString()");
+    if (bje((String)localObject)) {
       return null;
     }
-    if ((com.tencent.mm.xwebutil.c.lP(getContext())) && (paramBundle != null)) {}
-    try
+    if ((com.tencent.mm.xwebutil.c.nV(getContext())) && (paramBundle != null)) {}
+    for (;;)
     {
-      i = paramBundle.getInt("resourceType");
-      if ((i == 1) || (i == 7))
+      try
       {
-        Log.i(gSh(), "get resoutce type is iframe : %d, start geta8key", new Object[] { Integer.valueOf(i) });
-        gSl().blx(getCurrentUrl());
-        paramBundle = paramWebResourceRequest.getUrl().toString();
-        kotlin.g.b.p.j(paramBundle, "request.url.toString()");
-        n(paramBundle, false, 5);
+        i = paramBundle.getInt("resourceType");
+        switch (i)
+        {
+        }
       }
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
+      catch (Exception paramBundle)
       {
-        Log.w(gSh(), "get resource type failed Exception ; " + paramBundle.getMessage());
+        Log.w(irB(), kotlin.g.b.s.X("get resource type failed Exception ; ", paramBundle.getMessage()));
+        continue;
       }
-    }
-    catch (Throwable paramBundle)
-    {
-      for (;;)
+      finally
       {
-        Log.w(gSh(), "get resource type failed Throwable ; " + paramBundle.getMessage());
-      }
-      if (!((Boolean)this.PGI.getValue()).booleanValue()) {
-        break label473;
-      }
-      paramWebView = PGN;
-      int j = 0;
-      int k = paramWebView.length;
-      int i = 0;
-      while (i < k)
-      {
+        Log.w(irB(), kotlin.g.b.s.X("get resource type failed Throwable ; ", paramBundle.getMessage()));
+        continue;
+        if (!((Boolean)this.Wxv.getValue()).booleanValue()) {
+          break label530;
+        }
+        paramWebView = Wxx;
+        int m = paramWebView.length;
+        int j = 0;
+        int i = 0;
+        if (i >= m) {
+          break label530;
+        }
         paramBundle = paramWebView[i];
         localObject = paramWebResourceRequest.getUrl();
-        if (localObject != null)
-        {
-          localObject = ((Uri)localObject).toString();
-          if ((localObject != null) && (kotlin.n.n.M((String)localObject, paramBundle, false) == true))
-          {
-            Log.i(gSh(), "QuickAppInterceptor interceptor url = ".concat(String.valueOf(paramBundle)));
-            com.tencent.mm.plugin.report.service.h.IzE.p(1551L, j + 1, 1L);
-            if (((Boolean)this.PGJ.getValue()).booleanValue())
-            {
-              Log.i(gSh(), "QuickAppInterceptor interceptor WebResourceResponse");
-              return new WebResourceResponse("", null, null);
-            }
-          }
+        if (localObject == null) {
+          continue;
         }
+        localObject = ((Uri)localObject).toString();
+        if ((localObject == null) || (kotlin.n.n.U((String)localObject, paramBundle, false) != true)) {
+          continue;
+        }
+        int k = 1;
+        if (k == 0) {
+          continue;
+        }
+        Log.i(irB(), kotlin.g.b.s.X("QuickAppInterceptor interceptor url = ", paramBundle));
+        com.tencent.mm.plugin.report.service.h.OAn.p(1551L, j + 1, 1L);
+        if (!((Boolean)this.Wxw.getValue()).booleanValue()) {
+          continue;
+        }
+        Log.i(irB(), "QuickAppInterceptor interceptor WebResourceResponse");
+        return new WebResourceResponse("", null, null);
+        k = 0;
+        continue;
         j += 1;
         i += 1;
+        continue;
       }
-    }
-    paramBundle = ((Iterable)this.PwK).iterator();
-    while (paramBundle.hasNext())
-    {
-      localObject = ((k)paramBundle.next()).b(paramWebView, paramWebResourceRequest);
-      if (localObject != null) {
+      paramBundle = ((Iterable)this.WmV).iterator();
+      if (!paramBundle.hasNext()) {
+        continue;
+      }
+      localObject = ((m)paramBundle.next()).b(paramWebView, paramWebResourceRequest);
+      if (localObject != null)
+      {
         return localObject;
+        Log.i(irB(), "get resoutce type is iframe : %d, start geta8key", new Object[] { Integer.valueOf(i) });
+        paramBundle = irI();
+        localObject = getCurrentUrl();
+        Log.i("MicroMsg.LuggageGetA8Key", "setOuterUrlForIframe(%s)", new Object[] { localObject });
+        paramBundle.WOX = ((String)localObject);
+        paramBundle = paramWebResourceRequest.getUrl().toString();
+        kotlin.g.b.s.s(paramBundle, "request.url.toString()");
+        m(paramBundle, false, 5);
+        if (this.Wwf.WxG) {
+          com.tencent.mm.plugin.webview.modeltools.h.bkP(paramWebResourceRequest.getUrl().toString());
+        }
       }
     }
-    label473:
+    label530:
     return null;
   }
   
-  public final void b(f paramf)
+  public final void b(h paramh)
   {
-    kotlin.g.b.p.k(paramf, "listener");
-    if (this.PGa.contains(paramf)) {
-      this.PGa.remove(paramf);
+    kotlin.g.b.s.u(paramh, "listener");
+    if (this.WwN.contains(paramh)) {
+      this.WwN.remove(paramh);
     }
   }
   
-  public final void b(j paramj)
+  public final void b(l paraml)
   {
     try
     {
-      kotlin.g.b.p.k(paramj, "listener");
-      if (this.PGb.contains(paramj)) {
-        this.PGb.remove(paramj);
+      kotlin.g.b.s.u(paraml, "listener");
+      if (this.WwO.contains(paraml)) {
+        this.WwO.remove(paraml);
       }
       return;
     }
     finally
     {
-      paramj = finally;
-      throw paramj;
+      paraml = finally;
+      throw paraml;
     }
   }
   
-  public final void b(k paramk)
+  public final void b(m paramm)
   {
-    kotlin.g.b.p.k(paramk, "interceptor");
-    this.PwK.remove(paramk);
-    f localf = paramk.gTb();
-    if (localf != null) {
-      b(localf);
+    kotlin.g.b.s.u(paramm, "interceptor");
+    this.WmV.remove(paramm);
+    h localh = paramm.isN();
+    if (localh != null) {
+      b(localh);
     }
-    paramk = paramk.bXJ();
-    if (paramk != null) {
-      b(paramk);
+    paramm = paramm.cxU();
+    if (paramm != null) {
+      b(paramm);
     }
   }
   
@@ -1151,68 +1316,66 @@ public abstract class BaseWebViewController
   
   public void b(WebView paramWebView, String paramString)
   {
-    if (gSx())
+    if (irU())
     {
-      Log.w(gSh(), "ActivityFinished");
+      Log.w(irB(), "ActivityFinished");
       return;
     }
     if (paramString == null) {}
     for (String str = "";; str = paramString)
     {
-      str = afQ(str);
-      Log.i(gSh(), "WebView-Trace onPageFinished: " + paramString + ", callbackUrl:" + str);
+      str = YM(str);
+      Log.i(irB(), "WebView-Trace onPageFinished: " + paramString + ", callbackUrl:" + str);
       super.b(paramWebView, paramString);
-      if ((!this.PGz.contains(Integer.valueOf(this.PGq))) && (!cDD()))
+      if ((!this.Wxm.contains(Integer.valueOf(this.Wxd))) && (!dhh()))
       {
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1200L, 104L, 1L, false);
-        Log.i(gSh(), "WebView-Trace onPageFinished callback before onPageCommitVisible");
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1200L, 104L, 1L, false);
+        Log.i(irB(), "WebView-Trace onPageFinished callback before onPageCommitVisible");
       }
-      cR(this.PGr, bjn(paramString));
-      Iterator localIterator = ((Iterable)this.PGa).iterator();
+      dI(this.Wxe, biY(paramString));
+      Iterator localIterator = ((Iterable)this.WwN).iterator();
       while (localIterator.hasNext())
       {
-        f localf = (f)localIterator.next();
+        h localh = (h)localIterator.next();
         if (isStarted()) {
-          localf.b(paramWebView, str);
+          localh.b(paramWebView, str);
         }
       }
-      n(paramWebView, paramString);
-      return;
     }
+    n(paramWebView, paramString);
   }
   
   public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    kotlin.g.b.p.k(paramWebView, "view");
-    kotlin.g.b.p.k(paramString, "url");
-    if (gSx())
+    kotlin.g.b.s.u(paramWebView, "view");
+    kotlin.g.b.s.u(paramString, "url");
+    if (irU())
     {
-      Log.w(gSh(), "ActivityFinished");
+      Log.w(irB(), "ActivityFinished");
       return;
     }
-    Object localObject2 = this.pHS.getActivityContextIfHas();
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof Activity)) {
-      localObject1 = null;
-    }
-    localObject1 = (Activity)localObject1;
-    if (localObject1 != null)
+    Object localObject = this.sMP.getActivityContextIfHas();
+    if ((localObject instanceof Activity)) {}
+    for (localObject = (Activity)localObject;; localObject = null)
     {
-      localObject1 = ((Activity)localObject1).getIntent();
-      kotlin.g.b.p.j(localObject1, "it.intent");
-      this.intent = ((Intent)localObject1);
-    }
-    cR(this.PGn, paramString);
-    Log.i(gSh(), "WebView-Trace onPageStarted: ".concat(String.valueOf(paramString)));
-    this.PGe = false;
-    this.PFK = paramString;
-    bjq(paramString);
-    localObject1 = ((Iterable)this.PGa).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (f)((Iterator)localObject1).next();
-      if (isStarted()) {
-        ((f)localObject2).h(paramWebView, afQ(paramString));
+      if (localObject != null)
+      {
+        localObject = ((Activity)localObject).getIntent();
+        kotlin.g.b.s.s(localObject, "it.intent");
+        setIntent((Intent)localObject);
+      }
+      dI(this.Wxa, paramString);
+      Log.i(irB(), kotlin.g.b.s.X("WebView-Trace onPageStarted: ", paramString));
+      this.WwR = false;
+      this.Www = paramString;
+      bjb(paramString);
+      localObject = ((Iterable)this.WwN).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        h localh = (h)((Iterator)localObject).next();
+        if (isStarted()) {
+          localh.h(paramWebView, YM(paramString));
+        }
       }
     }
     super.b(paramWebView, paramString, paramBitmap);
@@ -1220,402 +1383,253 @@ public abstract class BaseWebViewController
   
   public void b(WebView paramWebView, String paramString, boolean paramBoolean)
   {
-    kotlin.g.b.p.k(paramWebView, "view");
-    kotlin.g.b.p.k(paramString, "url");
-    Log.i(gSh(), "WebView-Trace doUpdateVisitedHistory, url = " + paramString + ", wvUrl = " + paramWebView.getUrl() + ", isReload = " + paramBoolean);
-    if (kotlin.n.n.M(paramString, "data:text/html;charset=utf-8", false))
+    kotlin.g.b.s.u(paramWebView, "view");
+    kotlin.g.b.s.u(paramString, "url");
+    Log.i(irB(), "WebView-Trace doUpdateVisitedHistory, url = " + paramString + ", wvUrl = " + paramWebView.getUrl() + ", isReload = " + paramBoolean);
+    if (kotlin.n.n.U(paramString, "data:text/html;charset=utf-8", false))
     {
-      Log.i(gSh(), "url starts with data:text, url : ".concat(String.valueOf(paramString)));
+      Log.i(irB(), kotlin.g.b.s.X("url starts with data:text, url : ", paramString));
       return;
     }
-    if ((com.tencent.luggage.k.c.G(paramString, "about:blank")) || (com.tencent.luggage.k.c.G(paramString, "file:///android_asset/")))
+    if ((com.tencent.luggage.l.c.K(paramString, "about:blank")) || (com.tencent.luggage.l.c.K(paramString, "file:///android_asset/")))
     {
-      Log.e(gSh(), "doUpdateVisitedHistory, url is invalid");
+      Log.e(irB(), "doUpdateVisitedHistory, url is invalid");
       return;
     }
-    Object localObject;
-    if (anw(this.PGj))
+    if (atn(this.WwW))
     {
-      localObject = com.tencent.mm.plugin.webview.h.a.sQA;
-      kotlin.g.b.p.j(localObject, "ConstantsPreload.HARDCODE_URL");
-      if (com.tencent.luggage.k.c.G(paramString, (String)localObject))
+      localObject1 = com.tencent.mm.plugin.webview.g.a.vVP;
+      kotlin.g.b.s.s(localObject1, "HARDCODE_URL");
+      if (com.tencent.luggage.l.c.K(paramString, (String)localObject1))
       {
-        Log.i(gSh(), "doUpdateVisitedHistory, url is HARDCODE_URL");
+        Log.i(irB(), "doUpdateVisitedHistory, url is HARDCODE_URL");
         return;
       }
     }
     super.b(paramWebView, paramString, paramBoolean);
-    if (((Boolean)this.PGH.getValue()).booleanValue()) {
+    if (irX()) {
       paramString = paramWebView.getUrl();
     }
-    kotlin.g.b.p.j(paramString, "url");
-    int i;
-    if (!kotlin.g.b.p.h(this.PFM, paramString))
+    kotlin.g.b.s.s(paramString, "url");
+    if (!kotlin.g.b.s.p(this.Wwy, paramString))
     {
-      localObject = (CharSequence)this.PFN;
-      if ((localObject != null) && (!kotlin.n.n.ba((CharSequence)localObject))) {
-        break label455;
+      localObject1 = (CharSequence)this.Wwz;
+      if ((localObject1 != null) && (!kotlin.n.n.bp((CharSequence)localObject1))) {
+        break label442;
       }
       i = 1;
-      if ((i != 0) || (!(kotlin.g.b.p.h(com.tencent.mm.plugin.webview.l.a.getHost(paramString), com.tencent.mm.plugin.webview.l.a.getHost(this.PFN)) ^ true)))
+      if ((i != 0) || (kotlin.g.b.s.p(com.tencent.mm.plugin.webview.l.a.getHost(paramString), com.tencent.mm.plugin.webview.l.a.getHost(this.Wwz))))
       {
-        localObject = (CharSequence)this.PFM;
-        if ((localObject != null) && (!kotlin.n.n.ba((CharSequence)localObject))) {
-          break label461;
-        }
-        i = 1;
-        label287:
-        if ((i != 0) || (!(kotlin.g.b.p.h(com.tencent.mm.plugin.webview.l.a.getHost(paramString), com.tencent.mm.plugin.webview.l.a.getHost(this.PFM)) ^ true))) {
-          break label467;
+        localObject1 = (CharSequence)this.Wwy;
+        if ((localObject1 != null) && (!kotlin.n.n.bp((CharSequence)localObject1))) {
+          break label448;
         }
       }
-      Log.w(gSh(), "dealSPAUpdate hot not equal, url=" + paramString + ", commitUrl=" + this.PFN + ", startUrl=" + this.PFM);
+    }
+    Object localObject2;
+    label442:
+    label448:
+    for (int i = 1;; i = 0)
+    {
+      if ((i != 0) || (kotlin.g.b.s.p(com.tencent.mm.plugin.webview.l.a.getHost(paramString), com.tencent.mm.plugin.webview.l.a.getHost(this.Wwy)))) {
+        break label454;
+      }
+      Log.w(irB(), "dealSPAUpdate hot not equal, url=" + paramString + ", commitUrl=" + this.Wwz + ", startUrl=" + this.Wwy);
+      if ((!this.Wwf.WxE) && (!irI().WOY.has(paramString))) {
+        m(paramString, false, irI().dJ(paramString, true));
+      }
+      this.Www = paramString;
+      localObject1 = ((Iterable)this.WwN).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (h)((Iterator)localObject1).next();
+        if (isStarted()) {
+          ((h)localObject2).b(paramWebView, paramString, paramBoolean);
+        }
+      }
+      i = 0;
+      break;
+    }
+    label454:
+    Log.d(irB(), "dealSPAUpdate url=" + paramString + ", startUrl=" + this.Wwy);
+    if (this.sLD.has(paramString)) {
+      dI(this.Wxf, paramString);
+    }
+    Object localObject1 = irK();
+    if ((((com.tencent.mm.plugin.webview.jsapi.m)localObject1).WEt == null) || (((com.tencent.mm.plugin.webview.jsapi.m)localObject1).WlX == null)) {
+      Log.e("MicroMsg.JsLoader", "auth, viewWV or jsapi is null");
     }
     for (;;)
     {
-      if ((!this.PGK.PGV) && (!gSl().blz(paramString))) {
-        n(paramString, false, gSl().dc(paramString, true));
-      }
-      this.PFK = paramString;
-      localObject = ((Iterable)this.PGa).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        f localf = (f)((Iterator)localObject).next();
-        if (isStarted()) {
-          localf.bjz(paramString);
-        }
-      }
-      label455:
-      i = 0;
+      this.WwA = paramString;
+      localObject1 = this.Wwk;
+      localObject2 = this.WwA;
+      long l = System.currentTimeMillis();
+      String str = this.sMP.getTitle();
+      kotlin.g.b.s.s(str, "viewWV.title");
+      ((com.tencent.mm.plugin.webview.h.g)localObject1).a(new com.tencent.mm.plugin.webview.h.g.a((String)localObject2, l, str));
       break;
-      label461:
-      i = 0;
-      break label287;
-      label467:
-      Log.d(gSh(), "dealSPAUpdate url=" + paramString + ", startUrl=" + this.PFM);
-      if (this.pGD.has(paramString)) {
-        cR(this.PGs, paramString);
-      }
-      gSn().gUe();
-      this.PFO = paramString;
+      Log.i("MicroMsg.JsLoader", "SPA-Trace, spaHistoryChanged");
+      localObject2 = new HashMap();
+      ((com.tencent.mm.plugin.webview.jsapi.m)localObject1).WlX.b("sys:spa:historyChanged", (Map)localObject2, null);
     }
     n(paramWebView, paramString);
   }
   
-  public boolean b(int paramInt, String paramString, bot parambot)
+  protected boolean b(int paramInt, String paramString, cdf paramcdf)
   {
-    kotlin.g.b.p.k(paramString, "reqUrl");
-    kotlin.g.b.p.k(parambot, "response");
-    Log.i(gSh(), "edw geta8key onSceneEnd, req reason = ".concat(String.valueOf(paramInt)));
-    this.pHS.setA8keyReason(paramInt);
-    Object localObject1 = this.PFV;
-    ((Map)localObject1).clear();
-    Object localObject2 = parambot.SZV;
-    kotlin.g.b.p.j(localObject2, "response.HttpHeader");
-    int i;
-    if (!((Collection)localObject2).isEmpty())
-    {
-      i = 1;
-      if (i == 0) {
-        break label134;
+    kotlin.g.b.s.u(paramString, "reqUrl");
+    kotlin.g.b.s.u(paramcdf, "resp");
+    Iterator localIterator = ((Iterable)this.WmV).iterator();
+    while (localIterator.hasNext()) {
+      if (((m)localIterator.next()).b(paramInt, paramString, paramcdf)) {
+        return true;
       }
-      localObject2 = com.tencent.mm.plugin.webview.f.c.iZ((List)parambot.SZV);
-      kotlin.g.b.p.j(localObject2, "LuggageGetA8Key.getHttpH…ders(response.HttpHeader)");
-      ((Map)localObject1).putAll((Map)localObject2);
-    }
-    label134:
-    label327:
-    label459:
-    for (;;)
-    {
-      if (!a(paramInt, paramString, parambot)) {
-        break label461;
-      }
-      return true;
-      i = 0;
-      break;
-      localObject2 = this.intent;
-      if (localObject2 == null) {
-        kotlin.g.b.p.bGy("intent");
-      }
-      if (((Intent)localObject2).getBooleanExtra("k_has_http_header", false))
-      {
-        Log.i(gSh(), "use intent httpheader info");
-        localObject2 = this.intent;
-        if (localObject2 == null) {
-          kotlin.g.b.p.bGy("intent");
-        }
-        localObject2 = ((Intent)localObject2).getStringArrayExtra("geta8key_result_http_header_key_list");
-        Object localObject3 = this.intent;
-        if (localObject3 == null) {
-          kotlin.g.b.p.bGy("intent");
-        }
-        localObject3 = ((Intent)localObject3).getStringArrayExtra("geta8key_result_http_header_value_list");
-        Intent localIntent = this.intent;
-        if (localIntent == null) {
-          kotlin.g.b.p.bGy("intent");
-        }
-        localIntent.putExtra("k_has_http_header", false);
-        localIntent = this.intent;
-        if (localIntent == null) {
-          kotlin.g.b.p.bGy("intent");
-        }
-        localIntent.putStringArrayListExtra("geta8key_result_http_header_key_list", null);
-        localIntent = this.intent;
-        if (localIntent == null) {
-          kotlin.g.b.p.bGy("intent");
-        }
-        localIntent.putStringArrayListExtra("geta8key_result_http_header_value_list", null);
-        if ((localObject2 != null) && (localObject3 != null))
-        {
-          if (localObject2.length == 0)
-          {
-            i = 1;
-            if (i != 0) {
-              break label443;
-            }
-            i = 1;
-            label335:
-            if (i == 0) {
-              break label447;
-            }
-            if (localObject3.length != 0) {
-              break label449;
-            }
-            i = 1;
-            label349:
-            if (i != 0) {
-              break label455;
-            }
-          }
-          for (i = 1;; i = 0)
-          {
-            if ((i == 0) || (localObject2.length != localObject3.length)) {
-              break label459;
-            }
-            int j = localObject2.length;
-            i = 0;
-            while (i < j)
-            {
-              localIntent = localObject2[i];
-              kotlin.g.b.p.j(localIntent, "httpHeaderKey[i]");
-              Object localObject4 = localObject3[i];
-              kotlin.g.b.p.j(localObject4, "httpHeaderValue[i]");
-              ((Map)localObject1).put(localIntent, localObject4);
-              i += 1;
-            }
-            break;
-            i = 0;
-            break label327;
-            i = 0;
-            break label335;
-            break;
-            i = 0;
-            break label349;
-          }
-        }
-      }
-    }
-    label443:
-    label447:
-    label449:
-    label455:
-    label461:
-    localObject1 = ((Iterable)this.PGb).iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ((j)((Iterator)localObject1).next()).c(paramString, parambot);
     }
     return false;
   }
   
   public final boolean b(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    kotlin.g.b.p.k(paramWebView, "webview");
-    kotlin.g.b.p.k(paramString1, "description");
-    kotlin.g.b.p.k(paramString2, "failingUrl");
-    Log.e(gSh(), "shouldInterceptLoadError, failingUrl = %s, errorCode = %d, desc = %s", new Object[] { paramString2, Integer.valueOf(paramInt), paramString1 });
-    Object localObject1 = bju(getCurrentUrl());
-    Object localObject2 = e.PHr;
-    int i = e.a.e(this.pHS);
-    localObject2 = gSq();
-    int j = gSy();
-    if ((((e)localObject2).cin()) && (paramString2 != null)) {
-      com.tencent.e.h.ZvG.d((Runnable)new e.c((e)localObject2, paramString2, paramInt, paramString1, (String)localObject1, i, j), "MicroMsg.WebPageErrorMonitor");
-    }
-    localObject1 = ((Iterable)this.PwK).iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ((k)((Iterator)localObject1).next()).a(paramWebView, paramString1, paramString2);
+    kotlin.g.b.s.u(paramWebView, "webview");
+    kotlin.g.b.s.u(paramString1, "description");
+    kotlin.g.b.s.u(paramString2, "failingUrl");
+    Log.e(irB(), "shouldInterceptLoadError, failingUrl = %s, errorCode = %d, desc = %s", new Object[] { paramString2, Integer.valueOf(paramInt), paramString1 });
+    Object localObject = bjg(getCurrentUrl());
+    g.a locala = g.WxV;
+    int i = g.a.g(this.sMP);
+    irN().a(paramInt, paramString1, paramString2, (String)localObject, i, irW());
+    localObject = ((Iterable)this.WmV).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((m)((Iterator)localObject).next()).a(paramWebView, paramString1, paramString2)) {
+        return true;
+      }
     }
     return super.b(paramWebView, paramInt, paramString1, paramString2);
   }
   
-  protected void bXH()
+  public final void bJ(Intent paramIntent)
   {
-    com.tencent.mm.plugin.expansions.a.dbf();
-    a((k)new com.tencent.mm.plugin.webview.g.a());
-    a((k)new com.tencent.mm.plugin.webview.l.e());
-    this.pHS.setWebViewClient((ad)this);
-    MMWebView localMMWebView = this.pHS;
-    Object localObject1 = aa.PHh;
-    com.tencent.mm.plugin.webview.k.p.h(localMMWebView);
-    aa localaa = localMMWebView.getSettings();
-    localaa.setJavaScriptEnabled(((Boolean)this.PGK.PGR.PHa.getValue()).booleanValue());
-    localaa.setPluginsEnabled(((Boolean)this.PGK.PGR.PGY.getValue()).booleanValue());
-    localaa.iwC();
-    localaa.setBuiltInZoomControls(((Boolean)this.PGK.PGR.PGZ.getValue()).booleanValue());
-    localaa.setUseWideViewPort(true);
-    localaa.setLoadWithOverviewMode(true);
-    localaa.iwx();
-    localaa.iww();
-    localaa.setGeolocationEnabled(true);
-    localaa.setJavaScriptCanOpenWindowsAutomatically(true);
-    localaa.iwE();
-    localaa.iwA();
-    localObject1 = localMMWebView.getContext().getDir("webviewcache", 0);
-    kotlin.g.b.p.j(localObject1, "context.getDir(\"webviewc…e\", Context.MODE_PRIVATE)");
-    localaa.setAppCachePath(((File)localObject1).getAbsolutePath());
-    localaa.iwz();
-    localaa.iwB();
-    localaa.setDatabasePath(com.tencent.mm.loader.j.b.aSC() + "databases/");
-    String str = localaa.getUserAgentString();
-    kotlin.g.b.p.j(str, "currentUa");
-    Object localObject2;
-    if (!kotlin.n.n.g((CharSequence)str, (CharSequence)" MicroMessenger/"))
+    kotlin.g.b.s.u(paramIntent, "intent");
+    Log.i(irB(), "start");
+    this.WwC = true;
+    setIntent(paramIntent);
+    com.tencent.mm.plugin.webview.e.g localg = this.sLD;
+    Object localObject1 = paramIntent.getParcelableExtra("hardcode_jspermission");
+    label73:
+    String str;
+    if ((localObject1 instanceof JsapiPermissionWrapper))
     {
-      localObject2 = (p.a)com.tencent.luggage.a.e.K(p.a.class);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = (p.a)new com.tencent.mm.plugin.appbrand.luggage.b.e(localMMWebView.getContext());
+      localObject1 = (JsapiPermissionWrapper)localObject1;
+      localObject2 = paramIntent.getParcelableExtra("hardcode_general_ctrl");
+      if (!(localObject2 instanceof GeneralControlWrapper)) {
+        break label233;
       }
-      localObject2 = com.tencent.mm.plugin.webview.k.h.QAa;
-      kotlin.g.b.p.k(str, "prefix");
-      h.a.bcJ().putString("key_web_prefetch_ua", str);
-      localaa.setUserAgentString(com.tencent.mm.plugin.appbrand.ac.p.a(localMMWebView.getContext(), str, (p.a)localObject1));
-    }
-    if (!((Boolean)this.PGK.PGR.PHb.getValue()).booleanValue())
-    {
-      localMMWebView.setVerticalScrollBarEnabled(false);
-      localMMWebView.setHorizontalScrollBarEnabled(false);
-    }
-    com.tencent.xweb.c.ivX().ivY();
-    com.tencent.xweb.c.ivX().f((WebView)localMMWebView);
-    localObject1 = aa.PHh;
-    localObject1 = localMMWebView.getContext().getSystemService("window");
-    if (localObject1 == null) {
-      throw new t("null cannot be cast to non-null type android.view.WindowManager");
-    }
-    aa.b((WindowManager)localObject1);
-    if (this.pHS.dwQ())
-    {
-      localObject2 = this.pHS.getUrl();
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
+      localObject2 = (GeneralControlWrapper)localObject2;
+      localg.a((JsapiPermissionWrapper)localObject1, (GeneralControlWrapper)localObject2);
+      localg = this.sLD;
+      str = dgY();
+      localObject1 = paramIntent.getParcelableExtra("scan_jspermission");
+      if (!(localObject1 instanceof JsapiPermissionWrapper)) {
+        break label238;
       }
-      bjp((String)localObject1);
+      localObject1 = (JsapiPermissionWrapper)localObject1;
+      label112:
+      localObject2 = paramIntent.getParcelableExtra("scan_general_ctrl");
+      if (!(localObject2 instanceof GeneralControlWrapper)) {
+        break label243;
+      }
     }
-    this.PFY.bU("onTryBindServiceStart", System.currentTimeMillis());
-    Log.i(gSh(), "WebView-Trace tryBindService");
-    localObject1 = m.PJj;
-    m.a(true, gSi(), (d)new b(new WeakReference(this)));
-    this.PFY.bU("onTryBindServiceEnd", System.currentTimeMillis());
-  }
-  
-  protected void bXI()
-  {
-    if (!this.PGG)
+    label233:
+    label238:
+    label243:
+    for (Object localObject2 = (GeneralControlWrapper)localObject2;; localObject2 = null)
     {
-      gSA();
-      this.PGG = true;
-    }
-    Iterator localIterator = ((Iterable)this.PGb).iterator();
-    while (localIterator.hasNext()) {
-      ((j)localIterator.next()).bXI();
-    }
-  }
-  
-  protected void bXM() {}
-  
-  public final void bj(Intent paramIntent)
-  {
-    kotlin.g.b.p.k(paramIntent, "intent");
-    Log.i(gSh(), "start");
-    this.PFP = true;
-    this.intent = paramIntent;
-    com.tencent.mm.plugin.webview.f.g localg = this.pGD;
-    Object localObject2 = paramIntent.getParcelableExtra("hardcode_jspermission");
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof JsapiPermissionWrapper)) {
+      localg.a(str, (JsapiPermissionWrapper)localObject1, (GeneralControlWrapper)localObject2);
+      kotlinx.coroutines.j.a((aq)bu.ajwo, null, null, (kotlin.g.a.m)new ah(this, null), 3);
+      this.Wwj.WQO = System.currentTimeMillis();
+      localObject1 = this.Wwj;
+      localObject2 = dgY();
+      kotlin.g.b.s.u(localObject2, "<set-?>");
+      ((com.tencent.mm.plugin.webview.h.f)localObject1).ytX = ((String)localObject2);
+      this.Wwj.WQN = paramIntent.getLongExtra("startTime", 0L);
+      paramIntent = com.tencent.mm.plugin.webview.k.s.XtJ;
+      com.tencent.mm.plugin.webview.k.s.a(com.tencent.mm.plugin.webview.h.d.WQC, this.Wwj);
+      return;
       localObject1 = null;
-    }
-    Object localObject3 = (JsapiPermissionWrapper)localObject1;
-    localObject2 = paramIntent.getParcelableExtra("hardcode_general_ctrl");
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof GeneralControlWrapper)) {
+      break;
+      localObject2 = null;
+      break label73;
       localObject1 = null;
+      break label112;
     }
-    localg.a((JsapiPermissionWrapper)localObject3, (GeneralControlWrapper)localObject1);
-    localg = this.pGD;
-    localObject3 = cDu();
-    localObject2 = paramIntent.getParcelableExtra("scan_jspermission");
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof JsapiPermissionWrapper)) {
-      localObject1 = null;
-    }
-    localObject2 = (JsapiPermissionWrapper)localObject1;
-    localObject1 = paramIntent.getParcelableExtra("scan_general_ctrl");
-    paramIntent = (Intent)localObject1;
-    if (!(localObject1 instanceof GeneralControlWrapper)) {
-      paramIntent = null;
-    }
-    localg.a((String)localObject3, (JsapiPermissionWrapper)localObject2, (GeneralControlWrapper)paramIntent);
-    kotlinx.coroutines.g.b((kotlinx.coroutines.ak)br.abxo, null, (kotlin.g.a.m)new ak(this, null), 3);
   }
   
-  protected final void bjm(String paramString)
+  public final String bLY()
   {
-    kotlin.g.b.p.k(paramString, "<set-?>");
-    this.fba = paramString;
-  }
-  
-  protected final void bjo(String paramString)
-  {
-    kotlin.g.b.p.k(paramString, "value");
-    if (aql(paramString))
+    com.tencent.mm.plugin.webview.e.c localc = irI();
+    Object localObject = (CharSequence)getCurrentUrl();
+    int i;
+    if ((localObject == null) || (kotlin.n.n.bp((CharSequence)localObject)))
     {
-      Log.d(gSh(), "WebView-Trace startUrl:".concat(String.valueOf(paramString)));
-      this.PFM = paramString;
+      i = 1;
+      if (i == 0) {
+        break label46;
+      }
+    }
+    label46:
+    for (localObject = dgY();; localObject = getCurrentUrl())
+    {
+      return localc.bkG((String)localObject);
+      i = 0;
+      break;
     }
   }
   
-  protected final void bjp(String paramString)
+  protected final void biX(String paramString)
   {
-    kotlin.g.b.p.k(paramString, "value");
-    if (aqm(paramString))
+    kotlin.g.b.s.u(paramString, "<set-?>");
+    this.heA = paramString;
+  }
+  
+  protected final void biZ(String paramString)
+  {
+    kotlin.g.b.s.u(paramString, "value");
+    if (ajK(paramString))
     {
-      Log.d(gSh(), "WebView-Trace commitUrl:".concat(String.valueOf(paramString)));
-      this.PFN = paramString;
+      Log.d(irB(), kotlin.g.b.s.X("WebView-Trace startUrl:", paramString));
+      this.Wwy = paramString;
     }
   }
   
-  public final boolean bjs(String paramString)
+  protected final void bja(String paramString)
   {
-    kotlin.g.b.p.k(paramString, "url");
-    if (ac.mFJ)
+    kotlin.g.b.s.u(paramString, "value");
+    if (ajL(paramString))
     {
-      Log.w(gSh(), "skipLoadUrlCheck");
+      Log.d(irB(), kotlin.g.b.s.X("WebView-Trace commitUrl:", paramString));
+      this.Wwz = paramString;
+    }
+  }
+  
+  public final boolean bjd(String paramString)
+  {
+    kotlin.g.b.s.u(paramString, "url");
+    if (z.pCj)
+    {
+      Log.w(irB(), "skipLoadUrlCheck");
       return true;
     }
-    if (this.PGK.PGS)
+    if (this.Wwf.WxB)
     {
-      Log.i(gSh(), "albie: trust this url(%s)", new Object[] { paramString });
+      Log.i(irB(), "albie: trust this url(%s)", new Object[] { paramString });
       return true;
     }
-    if (com.tencent.luggage.k.c.a(paramString, "file://", true))
+    if (com.tencent.luggage.l.c.a(paramString, "file://", true))
     {
-      Iterator localIterator = ((Iterable)gSj()).iterator();
+      Iterator localIterator = ((Iterable)irD()).iterator();
       while (localIterator.hasNext()) {
-        if (com.tencent.luggage.k.c.a(paramString, (String)localIterator.next(), true)) {
+        if (com.tencent.luggage.l.c.a(paramString, (String)localIterator.next(), true)) {
           return true;
         }
       }
@@ -1624,207 +1638,433 @@ public abstract class BaseWebViewController
     return true;
   }
   
-  protected final boolean bjt(String paramString)
+  protected final boolean bje(String paramString)
   {
-    kotlin.g.b.p.k(paramString, "url");
-    if (!bjs(paramString))
+    kotlin.g.b.s.u(paramString, "url");
+    if (!bjd(paramString))
     {
-      Log.f(gSh(), "forceQuitOnUrlForbidden, canLoadUrl fail, url = ".concat(String.valueOf(paramString)));
-      paramString = ((Iterable)this.PGb).iterator();
+      Log.f(irB(), kotlin.g.b.s.X("forceQuitOnUrlForbidden, canLoadUrl fail, url = ", paramString));
+      paramString = ((Iterable)this.WwO).iterator();
       while (paramString.hasNext()) {
-        ((j)paramString.next()).gSY();
+        ((l)paramString.next()).isI();
       }
       return true;
     }
     return false;
   }
   
-  public String bju(String paramString)
+  public final void bjf(String paramString)
+  {
+    kotlin.g.b.s.u(paramString, "url");
+    try
+    {
+      if (irJ().iwU() == true) {
+        atq(((ab)com.tencent.mm.kernel.h.ax(ab.class)).a(getContext(), irJ(), paramString));
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Log.w(irB(), kotlin.g.b.s.X("initFont, ex = ", paramString.getMessage()));
+    }
+  }
+  
+  public String bjg(String paramString)
   {
     return "";
   }
   
-  public final void bjv(String paramString)
+  public final void bjh(String paramString)
   {
-    kotlin.g.b.p.k(paramString, "url");
-    Log.i(gSh(), "reload for:".concat(String.valueOf(paramString)));
-    this.pHS.loadUrl(paramString);
-    this.PGd = true;
+    kotlin.g.b.s.u(paramString, "url");
+    Log.i(irB(), kotlin.g.b.s.X("reload for:", paramString));
+    this.sMP.loadUrl(paramString);
+    this.WwQ = true;
   }
   
-  public final String boj()
+  public boolean c(int paramInt, String paramString, cdf paramcdf)
   {
-    com.tencent.mm.plugin.webview.f.c localc = gSl();
-    Object localObject = (CharSequence)getCurrentUrl();
+    boolean bool2 = false;
+    kotlin.g.b.s.u(paramString, "reqUrl");
+    kotlin.g.b.s.u(paramcdf, "response");
+    Log.i(irB(), kotlin.g.b.s.X("edw geta8key onSceneEnd, req reason = ", Integer.valueOf(paramInt)));
+    this.sMP.setA8keyReason(paramInt);
+    Object localObject1 = this.WwI;
+    ((Map)localObject1).clear();
+    Object localObject2 = paramcdf.aamS;
+    kotlin.g.b.s.s(localObject2, "response.HttpHeader");
     int i;
-    if ((localObject == null) || (kotlin.n.n.ba((CharSequence)localObject)))
+    if (!((Collection)localObject2).isEmpty())
     {
       i = 1;
       if (i == 0) {
-        break label46;
+        break label141;
       }
+      localObject2 = com.tencent.mm.plugin.webview.e.c.mi((List)paramcdf.aamS);
+      kotlin.g.b.s.s(localObject2, "getHttpHeaders(response.HttpHeader)");
+      ((Map)localObject1).putAll((Map)localObject2);
     }
-    label46:
-    for (localObject = cDu();; localObject = getCurrentUrl())
+    boolean bool1;
+    label266:
+    for (;;)
     {
-      return localc.bld((String)localObject);
+      if (!b(paramInt, paramString, paramcdf)) {
+        break label389;
+      }
+      bool1 = true;
+      return bool1;
       i = 0;
       break;
+      label141:
+      if (getIntent().getBooleanExtra("k_has_http_header", false))
+      {
+        Log.i(irB(), "use intent httpheader info");
+        localObject2 = getIntent().getStringArrayExtra("geta8key_result_http_header_key_list");
+        String[] arrayOfString = getIntent().getStringArrayExtra("geta8key_result_http_header_value_list");
+        getIntent().putExtra("k_has_http_header", false);
+        getIntent().putStringArrayListExtra("geta8key_result_http_header_key_list", null);
+        getIntent().putStringArrayListExtra("geta8key_result_http_header_value_list", null);
+        if ((localObject2 != null) && (arrayOfString != null))
+        {
+          if (localObject2.length == 0)
+          {
+            i = 1;
+            label244:
+            if (i != 0) {
+              break label371;
+            }
+            i = 1;
+            label252:
+            if (i == 0) {
+              break label375;
+            }
+            if (arrayOfString.length != 0) {
+              break label377;
+            }
+            i = 1;
+            if (i != 0) {
+              break label383;
+            }
+          }
+          label371:
+          label375:
+          label377:
+          label383:
+          for (i = 1;; i = 0)
+          {
+            if ((i == 0) || (localObject2.length != arrayOfString.length)) {
+              break label387;
+            }
+            int k = localObject2.length - 1;
+            if (k < 0) {
+              break;
+            }
+            int j;
+            for (i = 0;; i = j)
+            {
+              j = i + 1;
+              Object localObject3 = localObject2[i];
+              kotlin.g.b.s.s(localObject3, "httpHeaderKey[i]");
+              String str = arrayOfString[i];
+              kotlin.g.b.s.s(str, "httpHeaderValue[i]");
+              ((Map)localObject1).put(localObject3, str);
+              if (j > k) {
+                break;
+              }
+            }
+            i = 0;
+            break label244;
+            i = 0;
+            break label252;
+            break;
+            i = 0;
+            break label266;
+          }
+        }
+      }
+    }
+    label387:
+    label389:
+    localObject1 = ((Iterable)this.WwO).iterator();
+    for (;;)
+    {
+      bool1 = bool2;
+      if (!((Iterator)localObject1).hasNext()) {
+        break;
+      }
+      ((l)((Iterator)localObject1).next()).b(paramString, paramcdf);
     }
   }
   
-  public final MMHandler btS()
+  public final void ca(int paramInt, String paramString)
   {
-    return (MMHandler)this.ocu.getValue();
-  }
-  
-  public final void bu(int paramInt, String paramString)
-  {
-    kotlin.g.b.p.k(paramString, "reqUrl");
-    this.PFY.bU("getA8KeyEnd", System.currentTimeMillis());
-    Iterator localIterator = ((Iterable)this.PGb).iterator();
+    kotlin.g.b.s.u(paramString, "reqUrl");
+    this.WwL.cf("getA8KeyEnd", System.currentTimeMillis());
+    Iterator localIterator = ((Iterable)this.WwO).iterator();
     while (localIterator.hasNext()) {
-      ((j)localIterator.next()).bjH(paramString);
+      ((l)localIterator.next()).bjt(paramString);
     }
   }
   
-  public final void bv(final int paramInt, final String paramString)
+  public final void cb(int paramInt, String paramString)
   {
-    kotlin.g.b.p.k(paramString, "reqUrl");
-    this.PFY.bU("getA8KeyStart", System.currentTimeMillis());
+    kotlin.g.b.s.u(paramString, "reqUrl");
+    this.WwL.cf("getA8KeyStart", System.currentTimeMillis());
     if (paramInt != 5) {
-      cR(this.PGo, paramString);
+      dI(this.Wxb, paramString);
     }
-    if ((kotlin.g.b.p.h(this.PFO, paramString) ^ true)) {
-      com.tencent.e.h.ZvG.bc((Runnable)new ae(this, paramInt, paramString));
+    if (!kotlin.g.b.s.p(this.WwA, paramString)) {
+      com.tencent.threadpool.h.ahAA.bk(new BaseWebViewController..ExternalSyntheticLambda3(this, paramInt, paramString));
     }
   }
   
-  protected boolean cDA()
+  protected void cxS()
   {
-    return true;
-  }
-  
-  public boolean cDD()
-  {
-    return (anw(this.PGj)) && (kotlin.g.b.p.h(this.fba, this.PFN));
-  }
-  
-  public String cDu()
-  {
+    if (com.tencent.mm.plugin.expansions.e.aQh())
+    {
+      a((m)new com.tencent.mm.plugin.webview.f.a());
+      a((m)new com.tencent.mm.plugin.webview.l.d());
+    }
+    this.sMP.setWebViewClient((ag)this);
+    Object localObject3 = this.sMP;
+    ad localad = ((MMWebView)localObject3).getSettings();
+    localad.setJavaScriptEnabled(((Boolean)this.Wwf.WxA.WxK.getValue()).booleanValue());
+    localad.setPluginsEnabled(((Boolean)this.Wwf.WxA.WxI.getValue()).booleanValue());
+    localad.kfS();
+    localad.setBuiltInZoomControls(((Boolean)this.Wwf.WxA.WxJ.getValue()).booleanValue());
+    localad.setUseWideViewPort(true);
+    localad.setLoadWithOverviewMode(true);
+    localad.kfN();
+    localad.kfM();
+    localad.setGeolocationEnabled(true);
+    localad.setJavaScriptCanOpenWindowsAutomatically(true);
+    localad.kfU();
+    localad.kfQ();
+    localad.setAppCachePath(((MMWebView)localObject3).getContext().getDir("webviewcache", 0).getAbsolutePath());
+    localad.kfP();
+    localad.kfR();
+    localad.setDatabasePath(kotlin.g.b.s.X(com.tencent.mm.loader.i.b.bmq(), "databases/"));
+    String str = localad.getUserAgentString();
+    kotlin.g.b.s.s(str, "currentUa");
+    Object localObject2;
+    if (!kotlin.n.n.a((CharSequence)str, (CharSequence)" MicroMessenger/", false))
+    {
+      localObject2 = (r.a)com.tencent.luggage.a.e.T(r.a.class);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = (r.a)new com.tencent.mm.plugin.appbrand.luggage.b.e(((MMWebView)localObject3).getContext());
+      }
+      localObject2 = com.tencent.mm.plugin.webview.k.j.Xta;
+      kotlin.g.b.s.u(str, "prefix");
+      j.a.atj().putString("key_web_prefetch_ua", str);
+      localad.setUserAgentString(com.tencent.mm.plugin.appbrand.af.r.a(((MMWebView)localObject3).getContext(), str, (r.a)localObject1));
+    }
+    if (!((Boolean)this.Wwf.WxA.WxL.getValue()).booleanValue())
+    {
+      ((MMWebView)localObject3).setVerticalScrollBarEnabled(false);
+      ((MMWebView)localObject3).setHorizontalScrollBarEnabled(false);
+    }
+    ao.kfp();
+    ao.g((WebView)localObject3);
+    Object localObject1 = ((MMWebView)localObject3).getContext().getSystemService("window");
+    if (localObject1 == null) {
+      throw new NullPointerException("null cannot be cast to non-null type android.view.WindowManager");
+    }
+    localObject1 = (WindowManager)localObject1;
     try
     {
-      Object localObject = this.intent;
-      if (localObject == null) {
-        kotlin.g.b.p.bGy("intent");
+      localObject3 = WebView.class.getDeclaredField("mWebViewCore").getType().getDeclaredField("mBrowserFrame").getType().getDeclaredField("sConfigCallback");
+      ((Field)localObject3).setAccessible(true);
+      localObject2 = ((Field)localObject3).get(null);
+      if (localObject2 != null)
+      {
+        localObject3 = ((Field)localObject3).getType().getDeclaredField("mWindowManager");
+        ((Field)localObject3).setAccessible(true);
+        ((Field)localObject3).set(localObject2, localObject1);
       }
-      localObject = c.bk((Intent)localObject);
-      return localObject;
     }
     catch (Exception localException)
     {
-      Log.e(gSh(), String.valueOf(localException.getMessage()));
-      onFinish();
+      label469:
+      break label469;
     }
-    return "";
+    if (this.sMP.rsE)
+    {
+      localObject2 = this.sMP.getUrl();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      bja((String)localObject1);
+    }
+    this.WwL.cf("onTryBindServiceStart", System.currentTimeMillis());
+    Log.i(irB(), "WebView-Trace tryBindService");
+    localObject1 = o.WzA;
+    o.a(true, irC(), (f)new b(new WeakReference(this)));
+    this.WwL.cf("onTryBindServiceEnd", System.currentTimeMillis());
   }
   
-  protected boolean cDv()
+  protected void cxT()
   {
-    return this.PGw;
+    if (!this.Wxt)
+    {
+      irZ();
+      this.Wxt = true;
+    }
+    Iterator localIterator = ((Iterable)this.WwO).iterator();
+    while (localIterator.hasNext()) {
+      ((l)localIterator.next()).cxT();
+    }
   }
   
-  protected boolean cDw()
-  {
-    return false;
-  }
+  protected void cxX() {}
   
-  protected boolean cDx()
-  {
-    return false;
-  }
-  
-  protected List<f> cDy()
-  {
-    return this.sRc;
-  }
-  
-  protected void cDz() {}
-  
-  protected final void cR(final int paramInt, final String paramString)
+  public final void dI(int paramInt, String paramString)
   {
     for (;;)
     {
       int i;
       try
       {
-        kotlin.g.b.p.k(paramString, "url");
-        if (!gSx())
+        kotlin.g.b.s.u(paramString, "url");
+        if (!irU())
         {
-          if (kotlin.n.n.ba((CharSequence)paramString))
+          if (kotlin.n.n.bp((CharSequence)paramString))
           {
             i = 1;
-            break label86;
+            break label80;
           }
         }
         else
         {
-          Log.w(gSh(), "checkStatus return url=".concat(String.valueOf(paramString)));
+          Log.w(irB(), kotlin.g.b.s.X("checkStatus return url=", paramString));
           return;
         }
         i = 0;
       }
       finally {}
-      com.tencent.e.h.ZvG.bc((Runnable)new v(this, paramInt, paramString));
+      com.tencent.threadpool.h.ahAA.bk(new BaseWebViewController..ExternalSyntheticLambda1(paramInt, this, paramString));
       continue;
-      label86:
+      label80:
       if (i == 0) {}
     }
   }
   
   public final void destroy()
   {
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new x(this));
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new w(this));
+  }
+  
+  public String dgY()
+  {
+    try
+    {
+      String str = c.bK(getIntent());
+      return str;
+    }
+    catch (Exception localException)
+    {
+      Log.e(irB(), String.valueOf(localException.getMessage()));
+      onFinish();
+    }
+    return "";
+  }
+  
+  protected boolean dgZ()
+  {
+    return this.Wxj;
+  }
+  
+  protected boolean dha()
+  {
+    return false;
+  }
+  
+  protected boolean dhb()
+  {
+    return false;
+  }
+  
+  protected List<f> dhc()
+  {
+    return this.vWE;
+  }
+  
+  protected void dhd() {}
+  
+  protected boolean dhe()
+  {
+    return true;
+  }
+  
+  public boolean dhh()
+  {
+    return (atn(this.WwW)) && (kotlin.g.b.s.p(this.heA, this.Wwz));
   }
   
   public void e(WebView paramWebView, String paramString)
   {
-    if (gSx())
+    if (irU())
     {
-      Log.w(gSh(), "ActivityFinished");
+      Log.w(irB(), "ActivityFinished");
       return;
     }
     Object localObject1 = getJsapi();
     if (localObject1 != null) {
-      ((com.tencent.mm.plugin.webview.d.h)localObject1).gPF();
+      ((com.tencent.mm.plugin.webview.jsapi.j)localObject1).ioZ();
     }
-    bjw(paramString);
-    if (paramString == null) {}
-    for (localObject1 = "";; localObject1 = paramString)
+    Object localObject2;
+    if (paramString == null)
     {
-      localObject1 = afQ((String)localObject1);
-      Log.i(gSh(), "WebView-Trace onPageCommitVisible: " + paramString + ", callbackUrl:" + (String)localObject1);
-      bjp((String)localObject1);
+      localObject1 = "";
+      localObject1 = YM((String)localObject1);
+      Log.i(irB(), "WebView-Trace onPageCommitVisible: " + paramString + ", callbackUrl:" + (String)localObject1);
+      bja((String)localObject1);
       super.e(paramWebView, paramString);
-      Object localObject2 = g.PHD;
-      if (!g.a.gSJ()) {
-        cR(this.PGq, bjn(paramString));
+      localObject2 = i.Wya;
+      if (i.a.iso()) {
+        break label273;
       }
-      for (;;)
-      {
-        localObject2 = ((Iterable)this.PGa).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          f localf = (f)((Iterator)localObject2).next();
-          if (isStarted()) {
-            localf.e(paramWebView, (String)localObject1);
-          }
-        }
-        Log.i(gSh(), "WebView Page Commit Mock Enabled");
+      if (!dH(this.Wxd, biY(paramString))) {
+        break label254;
       }
-      n(paramWebView, paramString);
-      return;
+      bji(paramString);
+      label130:
+      dI(this.Wxd, biY(paramString));
     }
+    for (;;)
+    {
+      Object localObject3;
+      if (paramWebView != null)
+      {
+        localObject2 = this.Wwk;
+        localObject3 = this.Wwz;
+        long l = System.currentTimeMillis();
+        String str = paramWebView.getTitle();
+        kotlin.g.b.s.s(str, "view.title");
+        ((com.tencent.mm.plugin.webview.h.g)localObject2).a(new com.tencent.mm.plugin.webview.h.g.a((String)localObject3, l, str));
+      }
+      localObject2 = ((Iterable)this.WwN).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (h)((Iterator)localObject2).next();
+        if (isStarted()) {
+          ((h)localObject3).e(paramWebView, (String)localObject1);
+        }
+      }
+      localObject1 = paramString;
+      break;
+      label254:
+      localObject2 = getJsapi();
+      if (localObject2 == null) {
+        break label130;
+      }
+      ((com.tencent.mm.plugin.webview.jsapi.j)localObject2).ity();
+      break label130;
+      label273:
+      Log.i(irB(), "WebView Page Commit Mock Enabled");
+    }
+    n(paramWebView, paramString);
   }
   
   public final boolean e(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
@@ -1833,17 +2073,17 @@ public abstract class BaseWebViewController
     if ((paramWebResourceRequest == null) || (paramWebView == null)) {
       return false;
     }
-    kotlin.g.b.p.k(paramWebView, "webView");
-    kotlin.g.b.p.k(paramWebResourceRequest, "request");
-    kotlin.g.b.p.k(paramWebView, "webView");
-    kotlin.g.b.p.k(paramWebResourceRequest, "request");
-    Iterator localIterator = ((Iterable)this.PwK).iterator();
-    k.a locala;
+    kotlin.g.b.s.u(paramWebView, "webView");
+    kotlin.g.b.s.u(paramWebResourceRequest, "request");
+    kotlin.g.b.s.u(paramWebView, "webView");
+    kotlin.g.b.s.u(paramWebResourceRequest, "request");
+    Iterator localIterator = ((Iterable)this.WmV).iterator();
+    m.a locala;
     while (localIterator.hasNext())
     {
-      locala = ((k)localIterator.next()).c(paramWebView, paramWebResourceRequest);
-      if (locala.PJg) {
-        if (!locala.PJg) {
+      locala = ((m)localIterator.next()).c(paramWebView, paramWebResourceRequest);
+      if (locala.Wzz) {
+        if (!locala.Wzz) {
           break label136;
         }
       }
@@ -1858,144 +2098,56 @@ public abstract class BaseWebViewController
         break label142;
       }
       return super.e(paramWebView, paramWebResourceRequest);
-      locala = new k.a(false, false);
+      locala = new m.a(false, false);
       break;
     }
     label142:
     return true;
   }
   
-  protected void gSA() {}
-  
-  protected void gSB() {}
-  
-  protected abstract Class<? extends Service> gSi();
-  
-  protected abstract Set<String> gSj();
-  
-  public final void gSk()
-  {
-    this.PFH += 1;
-    this.PFI = System.currentTimeMillis();
-  }
-  
-  public final com.tencent.mm.plugin.webview.f.c gSl()
-  {
-    return (com.tencent.mm.plugin.webview.f.c)this.PFL.getValue();
-  }
-  
-  public final com.tencent.mm.plugin.webview.stub.e gSm()
-  {
-    com.tencent.mm.plugin.webview.stub.e locale = this.pGC;
-    if (locale == null) {
-      kotlin.g.b.p.bGy("invoker");
-    }
-    return locale;
-  }
-  
-  public final com.tencent.mm.plugin.webview.d.k gSn()
-  {
-    return (com.tencent.mm.plugin.webview.d.k)this.PFS.getValue();
-  }
-  
-  public final int gSo()
-  {
-    return ((Number)this.PFU.getValue()).intValue();
-  }
-  
-  public final Runnable gSp()
-  {
-    return (Runnable)this.PFW.getValue();
-  }
-  
-  public final String gSr()
-  {
-    return (String)this.PGf.getValue();
-  }
-  
-  protected final boolean gSt()
-  {
-    try
-    {
-      boolean bool = this.PGB.contains(ab.bO(Inject.class).iCe());
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  protected void gSu() {}
-  
-  public boolean gSv()
-  {
-    return false;
-  }
-  
-  public void gSw()
-  {
-    this.PFR = false;
-  }
-  
-  public final boolean gSx()
-  {
-    return (this.PFR) || (this.PFQ);
-  }
-  
-  public final boolean gSz()
-  {
-    try
-    {
-      anx(this.PGk);
-      boolean bool = anx(this.PGj);
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   public final Context getContext()
   {
-    Context localContext = this.pHS.getContext();
-    kotlin.g.b.p.j(localContext, "viewWV.context");
+    Context localContext = this.sMP.getActivityContextIfHas();
+    kotlin.g.b.s.s(localContext, "viewWV.activityContextIfHas");
     return localContext;
   }
   
   public final String getCurrentUrl()
   {
-    if (kotlin.n.n.ba((CharSequence)this.PFO)) {
-      return this.PFN;
+    if (kotlin.n.n.bp((CharSequence)this.WwA)) {
+      return this.Wwz;
     }
-    return this.PFO;
+    return this.WwA;
+  }
+  
+  public final MMHandler getHandler()
+  {
+    return (MMHandler)this.rdm.getValue();
   }
   
   public final Intent getIntent()
   {
     Intent localIntent = this.intent;
-    if (localIntent == null) {
-      kotlin.g.b.p.bGy("intent");
+    if (localIntent != null) {
+      return localIntent;
     }
-    return localIntent;
+    kotlin.g.b.s.bIx("intent");
+    return null;
   }
   
-  public final com.tencent.mm.plugin.webview.d.h getJsapi()
+  public final com.tencent.mm.plugin.webview.jsapi.j getJsapi()
   {
-    return (com.tencent.mm.plugin.webview.d.h)this.PFT.getValue();
+    return (com.tencent.mm.plugin.webview.jsapi.j)this.WwG.getValue();
   }
   
   protected final int getScreenOrientation()
   {
-    Iterator localIterator = ((Iterable)this.PwK).iterator();
+    Iterator localIterator = ((Iterable)this.WmV).iterator();
     while (localIterator.hasNext())
     {
-      k localk = (k)localIterator.next();
-      if (localk.getScreenOrientation() != -1) {
-        return localk.getScreenOrientation();
+      m localm = (m)localIterator.next();
+      if (localm.getScreenOrientation() != -1) {
+        return localm.getScreenOrientation();
       }
     }
     return -1;
@@ -2003,16 +2155,74 @@ public abstract class BaseWebViewController
   
   public final void init()
   {
-    gSs();
-    anv(this.PGg);
-    this.pHS.a((com.tencent.mm.ui.widget.k)new e());
+    irP();
+    atm(this.WwT);
+    MMWebView localMMWebView = this.sMP;
+    com.tencent.mm.ui.widget.m localm = (com.tencent.mm.ui.widget.m)new e();
+    localMMWebView.afUw.add(localm);
+    getJsapi().GXZ = this;
   }
   
-  protected final boolean isStarted()
+  protected abstract Class<? extends Service> irC();
+  
+  protected abstract Set<String> irD();
+  
+  public final String irF()
+  {
+    return this.Wwo;
+  }
+  
+  public final void irG()
+  {
+    this.Wwq += 1;
+    this.Wwr = System.currentTimeMillis();
+  }
+  
+  public final boolean irH()
+  {
+    return this.Wwu;
+  }
+  
+  public final com.tencent.mm.plugin.webview.e.c irI()
+  {
+    return (com.tencent.mm.plugin.webview.e.c)this.Wwx.getValue();
+  }
+  
+  public final com.tencent.mm.plugin.webview.stub.e irJ()
+  {
+    com.tencent.mm.plugin.webview.stub.e locale = this.sLC;
+    if (locale != null) {
+      return locale;
+    }
+    kotlin.g.b.s.bIx("invoker");
+    return null;
+  }
+  
+  public final com.tencent.mm.plugin.webview.jsapi.m irK()
+  {
+    return (com.tencent.mm.plugin.webview.jsapi.m)this.WwF.getValue();
+  }
+  
+  public final int irL()
+  {
+    return ((Number)this.WwH.getValue()).intValue();
+  }
+  
+  public final Runnable irM()
+  {
+    return (Runnable)this.WwJ.getValue();
+  }
+  
+  public final String irO()
+  {
+    return (String)this.WwS.getValue();
+  }
+  
+  protected final boolean irQ()
   {
     try
     {
-      boolean bool = this.PGC.contains(ab.bO(Start.class).iCe());
+      boolean bool = this.Wxo.contains(ai.cz(Inject.class).klt());
       return bool;
     }
     finally
@@ -2022,29 +2232,100 @@ public abstract class BaseWebViewController
     }
   }
   
-  protected final k.a l(WebView paramWebView, String paramString)
+  protected void irR() {}
+  
+  public boolean irS()
   {
-    kotlin.g.b.p.k(paramWebView, "webView");
-    kotlin.g.b.p.k(paramString, "url");
-    Iterator localIterator = ((Iterable)this.PwK).iterator();
+    return false;
+  }
+  
+  public void irT()
+  {
+    this.WwE = false;
+  }
+  
+  public final boolean irU()
+  {
+    return (this.WwE) || (this.WwD);
+  }
+  
+  public final void irV()
+  {
+    m(dgY(), true, 8);
+  }
+  
+  public final boolean irX()
+  {
+    return ((Boolean)this.Wxu.getValue()).booleanValue();
+  }
+  
+  public final boolean irY()
+  {
+    try
+    {
+      ato(this.WwX);
+      boolean bool = ato(this.WwW);
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  protected void irZ() {}
+  
+  protected final boolean isStarted()
+  {
+    try
+    {
+      boolean bool = this.Wxp.contains(ai.cz(Start.class).klt());
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  protected void isa() {}
+  
+  public final boolean isb()
+  {
+    return this.Wxm.contains(Integer.valueOf(this.Wxe));
+  }
+  
+  public final void isc()
+  {
+    Iterator localIterator = ((Iterable)this.WmV).iterator();
+    while ((localIterator.hasNext()) && (!((m)localIterator.next()).isJ())) {}
+  }
+  
+  protected final m.a l(WebView paramWebView, String paramString)
+  {
+    kotlin.g.b.s.u(paramWebView, "webView");
+    kotlin.g.b.s.u(paramString, "url");
+    Iterator localIterator = ((Iterable)this.WmV).iterator();
     while (localIterator.hasNext())
     {
-      k.a locala = ((k)localIterator.next()).o(paramWebView, paramString);
-      if (locala.PJg) {
+      m.a locala = ((m)localIterator.next()).j(paramWebView, paramString);
+      if (locala.Wzz) {
         return locala;
       }
     }
-    return new k.a(false, false);
+    return new m.a(false, false);
   }
   
   public void loadUrl(String paramString, Map<String, String> paramMap, boolean paramBoolean)
   {
     int i = 0;
-    kotlin.g.b.p.k(paramString, "url");
-    Log.i(gSh(), "WebView-Trace loadUrl url ".concat(String.valueOf(paramString)));
+    kotlin.g.b.s.u(paramString, "url");
+    Log.i(irB(), kotlin.g.b.s.X("WebView-Trace loadUrl url ", paramString));
     if (paramBoolean)
     {
-      this.pHS.loadUrl(paramString, (Map)ae.g(new o[] { s.M("Pragma", "no-cache"), s.M("Cache-Control", "no-cache") }));
+      this.sMP.loadUrl(paramString, (Map)kotlin.a.ak.g(new kotlin.r[] { v.Y("Pragma", "no-cache"), v.Y("Cache-Control", "no-cache") }));
       return;
     }
     if ((paramMap == null) || (paramMap.isEmpty())) {
@@ -2052,248 +2333,203 @@ public abstract class BaseWebViewController
     }
     if (i != 0)
     {
-      this.pHS.loadUrl(paramString);
+      this.sMP.loadUrl(paramString);
       return;
     }
-    this.pHS.loadUrl(paramString, paramMap);
+    this.sMP.loadUrl(paramString, paramMap);
+  }
+  
+  public final com.tencent.mm.plugin.webview.e.c.a m(String paramString, boolean paramBoolean, int paramInt)
+  {
+    kotlin.g.b.s.u(paramString, "url");
+    if (this.Wwf.WxE)
+    {
+      Log.w(irB(), kotlin.g.b.s.X("startGetA8Key neverGetA8Key ", paramString));
+      return com.tencent.mm.plugin.webview.e.c.a.WPm;
+    }
+    Object localObject = ((Iterable)this.WmV).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((m)((Iterator)localObject).next()).f(paramString, paramBoolean, paramInt)) {
+        return com.tencent.mm.plugin.webview.e.c.a.WPl;
+      }
+    }
+    if (this.Wwq > 0)
+    {
+      localObject = irI();
+      cdi localcdi = new cdi();
+      localcdi.aanH = this.Wwq;
+      localcdi.aanI = ((int)(System.currentTimeMillis() - this.Wwr));
+      Log.i(irB(), "GetA8KeySecurityInfo KeyBackCounts=" + localcdi.aanH + ", KeyBackTimes=" + localcdi.aanI);
+      ah localah = ah.aiuX;
+      ((com.tencent.mm.plugin.webview.e.c)localObject).WPb = localcdi;
+    }
+    paramString = irI().a(paramString, paramBoolean, paramInt, (com.tencent.mm.plugin.webview.e.a)irE());
+    kotlin.g.b.s.s(paramString, "a8KeyManager.startGetA8K…ce, reason, authCallBack)");
+    return paramString;
   }
   
   protected boolean m(WebView paramWebView, String paramString)
   {
-    kotlin.g.b.p.k(paramWebView, "webView");
-    kotlin.g.b.p.k(paramString, "url");
+    kotlin.g.b.s.u(paramWebView, "webView");
+    kotlin.g.b.s.u(paramString, "url");
     paramWebView = l(paramWebView, paramString);
-    if (paramWebView.PJg) {
+    if (paramWebView.Wzz) {
       return paramWebView.result;
     }
     return false;
   }
   
-  public final c.a n(String paramString, boolean paramBoolean, int paramInt)
-  {
-    kotlin.g.b.p.k(paramString, "url");
-    if (this.PGK.PGV)
-    {
-      Log.w(gSh(), "startGetA8Key neverGetA8Key ".concat(String.valueOf(paramString)));
-      return c.a.PYI;
-    }
-    Object localObject = ((Iterable)this.PwK).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (((k)((Iterator)localObject).next()).g(paramString, paramBoolean, paramInt)) {
-        return c.a.PYH;
-      }
-    }
-    if (this.PFH > 0)
-    {
-      localObject = gSl();
-      bov localbov = new bov();
-      localbov.TaF = this.PFH;
-      localbov.TaG = ((int)(System.currentTimeMillis() - this.PFI));
-      Log.i(gSh(), "GetA8KeySecurityInfo KeyBackCounts=" + localbov.TaF + ", KeyBackTimes=" + localbov.TaG);
-      ((com.tencent.mm.plugin.webview.f.c)localObject).a(localbov);
-    }
-    paramString = gSl().a(paramString, paramBoolean, paramInt, (com.tencent.mm.plugin.webview.f.a)this.PFG.getValue());
-    kotlin.g.b.p.j(paramString, "a8KeyManager.startGetA8K…ce, reason, authCallBack)");
-    return paramString;
-  }
-  
-  /* Error */
   public void onDestroy()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_0
-    //   3: iconst_1
-    //   4: putfield 2284	com/tencent/mm/plugin/webview/core/BaseWebViewController:PFQ	Z
-    //   7: aload_0
-    //   8: getfield 2282	com/tencent/mm/plugin/webview/core/BaseWebViewController:PFR	Z
-    //   11: ifne +8 -> 19
-    //   14: aload_0
-    //   15: iconst_0
-    //   16: invokevirtual 2357	com/tencent/mm/plugin/webview/core/BaseWebViewController:CM	(Z)V
-    //   19: aload_0
-    //   20: getfield 2359	com/tencent/mm/plugin/webview/core/BaseWebViewController:PGE	Lcom/tencent/mm/plugin/webview/core/c;
-    //   23: astore_1
-    //   24: aload_1
-    //   25: ifnull +27 -> 52
-    //   28: aload_1
-    //   29: checkcast 2361	java/io/Closeable
-    //   32: astore_3
-    //   33: aload_0
-    //   34: invokespecial 940	com/tencent/mm/plugin/webview/core/BaseWebViewController:gSh	()Ljava/lang/String;
-    //   37: ldc_w 2363
-    //   40: invokestatic 1013	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   43: getstatic 2369	kotlin/x:aazN	Lkotlin/x;
-    //   46: astore_1
-    //   47: aload_3
-    //   48: aconst_null
-    //   49: invokestatic 2374	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   52: aload_0
-    //   53: invokevirtual 2376	com/tencent/mm/plugin/webview/core/BaseWebViewController:btS	()Lcom/tencent/mm/sdk/platformtools/MMHandler;
-    //   56: aload_0
-    //   57: invokevirtual 2378	com/tencent/mm/plugin/webview/core/BaseWebViewController:gSp	()Ljava/lang/Runnable;
-    //   60: invokevirtual 2381	com/tencent/mm/sdk/platformtools/MMHandler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
-    //   63: aload_0
-    //   64: invokevirtual 1178	com/tencent/mm/plugin/webview/core/BaseWebViewController:getJsapi	()Lcom/tencent/mm/plugin/webview/d/h;
-    //   67: invokevirtual 2384	com/tencent/mm/plugin/webview/d/h:detach	()V
-    //   70: aload_0
-    //   71: invokevirtual 1775	com/tencent/mm/plugin/webview/core/BaseWebViewController:gSn	()Lcom/tencent/mm/plugin/webview/d/k;
-    //   74: invokevirtual 2385	com/tencent/mm/plugin/webview/d/k:detach	()V
-    //   77: aload_0
-    //   78: invokevirtual 893	com/tencent/mm/plugin/webview/core/BaseWebViewController:gSl	()Lcom/tencent/mm/plugin/webview/f/c;
-    //   81: invokevirtual 2387	com/tencent/mm/plugin/webview/f/c:destroy	()V
-    //   84: return
-    //   85: astore_2
-    //   86: aload_2
-    //   87: athrow
-    //   88: astore_1
-    //   89: aload_3
-    //   90: aload_2
-    //   91: invokestatic 2374	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   94: aload_1
-    //   95: athrow
-    //   96: astore_1
-    //   97: goto -8 -> 89
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	this	BaseWebViewController
-    //   23	24	1	localObject1	Object
-    //   88	7	1	localObject2	Object
-    //   96	1	1	localObject3	Object
-    //   1	1	2	localObject4	Object
-    //   85	6	2	localThrowable	Throwable
-    //   32	58	3	localCloseable	java.io.Closeable
-    // Exception table:
-    //   from	to	target	type
-    //   33	47	85	java/lang/Throwable
-    //   86	88	88	finally
-    //   33	47	96	finally
+    this.WwD = true;
+    if (!this.WwE) {
+      Ir(false);
+    }
+    Object localObject1 = this.Wxr;
+    if (localObject1 != null) {
+      localObject1 = (Closeable)localObject1;
+    }
+    try
+    {
+      Log.i(irB(), "unbindService");
+      ah localah = ah.aiuX;
+      kotlin.f.b.a((Closeable)localObject1, null);
+      getHandler().removeCallbacksAndMessages(irM());
+      getJsapi().detach();
+      irK().detach();
+      irI().WwD = true;
+      return;
+    }
+    finally
+    {
+      try
+      {
+        throw localThrowable;
+      }
+      finally
+      {
+        kotlin.f.b.a((Closeable)localObject1, localThrowable);
+      }
+    }
   }
   
   protected final void onFinish()
   {
-    Log.i(gSh(), "onFinish " + Util.getStack());
-    Iterator localIterator = ((Iterable)this.PGb).iterator();
+    Log.i(irB(), kotlin.g.b.s.X("onFinish ", Util.getStack()));
+    Iterator localIterator = ((Iterable)this.WwO).iterator();
     while (localIterator.hasNext()) {
-      ((j)localIterator.next()).onFinish();
+      ((l)localIterator.next()).onFinish();
     }
-  }
-  
-  public final void p(final String paramString, final kotlin.g.a.b<? super String, x> paramb)
-  {
-    kotlin.g.b.p.k(paramString, "script");
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new y(this, paramString, paramb));
   }
   
   public final void reload()
   {
-    if ((this.pHS == null) || (Util.isNullOrNil(this.pHS.getUrl()))) {
+    if ((this.sMP == null) || (Util.isNullOrNil(this.sMP.getUrl()))) {
       return;
     }
-    Iterator localIterator = ((Iterable)this.PwK).iterator();
+    Iterator localIterator = ((Iterable)this.WmV).iterator();
     while (localIterator.hasNext())
     {
-      k localk = (k)localIterator.next();
-      String str = this.pHS.getUrl();
-      kotlin.g.b.p.j(str, "viewWV.url");
-      if (localk.aqs(afQ(str))) {
+      m localm = (m)localIterator.next();
+      String str = this.sMP.getUrl();
+      kotlin.g.b.s.s(str, "viewWV.url");
+      if (localm.ajR(YM(str))) {
         return;
       }
     }
-    Log.i(gSh(), "reload");
-    this.pHS.reload();
+    Log.i(irB(), "reload");
+    this.sMP.reload();
   }
   
   protected final void setIntent(Intent paramIntent)
   {
-    kotlin.g.b.p.k(paramIntent, "<set-?>");
+    kotlin.g.b.s.u(paramIntent, "<set-?>");
     this.intent = paramIntent;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Auth;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"})
-  @Keep
+  public final void v(final String paramString, final kotlin.g.a.b<? super String, ah> paramb)
+  {
+    kotlin.g.b.s.u(paramString, "script");
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new x(this, paramString, paramb));
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Auth;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static final class Auth
     extends BaseWebViewController.PageAction
   {
     public final boolean verify(String paramString)
     {
-      AppMethodBeat.i(205381);
-      kotlin.g.b.p.k(paramString, "url");
+      AppMethodBeat.i(294991);
+      kotlin.g.b.s.u(paramString, "url");
       BaseWebViewController localBaseWebViewController = getController();
-      if ((waitFor(ab.bO(BaseWebViewController.Inject.class), paramString)) && (waitFor(localBaseWebViewController.PGh)) && ((localBaseWebViewController.PGK.PGV) || (localBaseWebViewController.pGD.has(paramString)) || (waitFor(localBaseWebViewController.PGl, paramString))))
+      if ((waitFor(ai.cz(BaseWebViewController.Inject.class), paramString)) && (waitFor(localBaseWebViewController.WwU)) && ((localBaseWebViewController.Wwf.WxE) || (localBaseWebViewController.sLD.has(paramString)) || (waitFor(localBaseWebViewController.WwY, paramString))))
       {
-        AppMethodBeat.o(205381);
+        AppMethodBeat.o(294991);
         return true;
       }
-      AppMethodBeat.o(205381);
+      AppMethodBeat.o(294991);
       return false;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Bind;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "()V", "verify", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Bind;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "()V", "verify", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static final class Bind
     extends BaseWebViewController.ControllerAction
   {
     public final boolean verify()
     {
-      AppMethodBeat.i(205305);
+      AppMethodBeat.i(295118);
       BaseWebViewController localBaseWebViewController = getController();
-      if ((waitFor(localBaseWebViewController.PGi)) && (waitFor(localBaseWebViewController.PGh)))
+      if ((waitFor(localBaseWebViewController.WwV)) && (waitFor(localBaseWebViewController.WwU)))
       {
-        AppMethodBeat.o(205305);
+        AppMethodBeat.o(295118);
         return true;
       }
-      AppMethodBeat.o(205305);
+      AppMethodBeat.o(295118);
       return false;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction;", "()V", "verify", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction;", "()V", "verify", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract class ControllerAction
     extends BaseWebViewController.WebAction
   {
     public abstract boolean verify();
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Init;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "()V", "verify", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Init;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "()V", "verify", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static final class Init
     extends BaseWebViewController.ControllerAction
   {
     public final boolean verify()
     {
-      AppMethodBeat.i(205483);
-      boolean bool = waitFor(getController().PGg);
-      AppMethodBeat.o(205483);
+      AppMethodBeat.i(295053);
+      boolean bool = waitFor(getController().WwT);
+      AppMethodBeat.o(295053);
       return bool;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Inject;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Inject;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static final class Inject
     extends BaseWebViewController.PageAction
   {
     public final boolean verify(String paramString)
     {
-      AppMethodBeat.i(207227);
-      kotlin.g.b.p.k(paramString, "url");
+      AppMethodBeat.i(294946);
+      kotlin.g.b.s.u(paramString, "url");
       BaseWebViewController localBaseWebViewController = getController();
-      if (((!localBaseWebViewController.pHS.dwQ()) && (!waitFor(localBaseWebViewController.PGq, paramString)) && (!waitFor(ab.bO(BaseWebViewController.PageLoadEndForCommitNotSupport.class), paramString))) || (((waitFor(localBaseWebViewController.PGh)) && ((localBaseWebViewController.PGK.PGV) || (localBaseWebViewController.pGD.has(paramString)) || (waitFor(localBaseWebViewController.PGl, paramString)))) || (localBaseWebViewController.cDw())))
+      if (((!localBaseWebViewController.sMP.rsE) && (!waitFor(localBaseWebViewController.Wxd, paramString)) && (!waitFor(ai.cz(BaseWebViewController.PageLoadEndForCommitNotSupport.class), paramString))) || (((waitFor(localBaseWebViewController.WwU)) && ((localBaseWebViewController.Wwf.WxE) || (localBaseWebViewController.sLD.has(paramString)) || (waitFor(localBaseWebViewController.WwY, paramString)))) || (localBaseWebViewController.dha())))
       {
-        AppMethodBeat.o(207227);
+        AppMethodBeat.o(294946);
         return true;
       }
-      AppMethodBeat.o(207227);
+      AppMethodBeat.o(294946);
       return false;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction;", "()V", "verify", "", "url", "", "waitFor", "status", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction;", "()V", "verify", "", "url", "", "waitFor", "status", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static abstract class PageAction
     extends BaseWebViewController.WebAction
   {
@@ -2301,93 +2537,88 @@ public abstract class BaseWebViewController
     
     public final boolean waitFor(int paramInt, String paramString)
     {
-      kotlin.g.b.p.k(paramString, "url");
-      return ((kotlin.g.b.p.h(paramString, getController().PFM)) || (getController().PGv.contains(Integer.valueOf(paramInt)))) && (BaseWebViewController.b(getController()).contains(Integer.valueOf(paramInt)));
+      kotlin.g.b.s.u(paramString, "url");
+      return ((kotlin.g.b.s.p(paramString, getController().Wwy)) || (getController().Wxi.contains(Integer.valueOf(paramInt)))) && (BaseWebViewController.c(getController()).contains(Integer.valueOf(paramInt)));
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageLoadEndForCommitNotSupport;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageLoadEndForCommitNotSupport;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static final class PageLoadEndForCommitNotSupport
     extends BaseWebViewController.PageAction
   {
     public final boolean verify(String paramString)
     {
-      AppMethodBeat.i(215865);
-      kotlin.g.b.p.k(paramString, "url");
+      AppMethodBeat.i(295086);
+      kotlin.g.b.s.u(paramString, "url");
       BaseWebViewController localBaseWebViewController = getController();
-      if ((waitFor(ab.bO(BaseWebViewController.Start.class))) && (waitFor(localBaseWebViewController.PGr, paramString)) && (waitFor(localBaseWebViewController.PGt, paramString)))
+      if ((waitFor(ai.cz(BaseWebViewController.Start.class))) && (waitFor(localBaseWebViewController.Wxe, paramString)) && (waitFor(localBaseWebViewController.Wxg, paramString)))
       {
-        AppMethodBeat.o(215865);
+        AppMethodBeat.o(295086);
         return true;
       }
-      AppMethodBeat.o(215865);
+      AppMethodBeat.o(295086);
       return false;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ProgressBarEnd;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ProgressBarEnd;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static final class ProgressBarEnd
     extends BaseWebViewController.PageAction
   {
     public final boolean verify(String paramString)
     {
-      AppMethodBeat.i(207050);
-      kotlin.g.b.p.k(paramString, "url");
+      AppMethodBeat.i(295082);
+      kotlin.g.b.s.u(paramString, "url");
       BaseWebViewController localBaseWebViewController = getController();
-      if ((localBaseWebViewController.cDv()) && ((localBaseWebViewController.cDx()) || (waitFor(ab.bO(BaseWebViewController.Ready.class), paramString)) || (waitFor(localBaseWebViewController.PGr, paramString)) || (waitFor(localBaseWebViewController.PGq, paramString)) || (waitFor(localBaseWebViewController.PGm, paramString))))
+      if ((localBaseWebViewController.dgZ()) && ((localBaseWebViewController.dhb()) || (waitFor(ai.cz(BaseWebViewController.Ready.class), paramString)) || (waitFor(localBaseWebViewController.Wxe, paramString)) || (waitFor(localBaseWebViewController.Wxd, paramString)) || (waitFor(localBaseWebViewController.WwZ, paramString))))
       {
-        AppMethodBeat.o(207050);
+        AppMethodBeat.o(295082);
         return true;
       }
-      AppMethodBeat.o(207050);
+      AppMethodBeat.o(295082);
       return false;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ProgressBarStart;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ProgressBarStart;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static final class ProgressBarStart
     extends BaseWebViewController.PageAction
   {
     public final boolean verify(String paramString)
     {
-      AppMethodBeat.i(205920);
-      kotlin.g.b.p.k(paramString, "url");
+      AppMethodBeat.i(295130);
+      kotlin.g.b.s.u(paramString, "url");
       BaseWebViewController localBaseWebViewController = getController();
-      if ((waitFor(ab.bO(BaseWebViewController.Start.class))) && (((!localBaseWebViewController.anw(localBaseWebViewController.PGk)) && ((waitFor(localBaseWebViewController.PGo, paramString)) || (waitFor(localBaseWebViewController.PGn, paramString)))) || ((!waitFor(ab.bO(BaseWebViewController.ProgressBarEnd.class), paramString)) && (localBaseWebViewController.anw(localBaseWebViewController.PGk)) && (waitFor(localBaseWebViewController.PGp, paramString)))))
+      if ((waitFor(ai.cz(BaseWebViewController.Start.class))) && (((!localBaseWebViewController.atn(localBaseWebViewController.WwX)) && ((waitFor(localBaseWebViewController.Wxb, paramString)) || (waitFor(localBaseWebViewController.Wxa, paramString)))) || ((!waitFor(ai.cz(BaseWebViewController.ProgressBarEnd.class), paramString)) && (localBaseWebViewController.atn(localBaseWebViewController.WwX)) && (waitFor(localBaseWebViewController.Wxc, paramString)))))
       {
-        AppMethodBeat.o(205920);
+        AppMethodBeat.o(295130);
         return true;
       }
-      AppMethodBeat.o(205920);
+      AppMethodBeat.o(295130);
       return false;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Ready;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Ready;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "verify", "", "url", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static final class Ready
     extends BaseWebViewController.PageAction
   {
     public final boolean verify(String paramString)
     {
-      AppMethodBeat.i(216014);
-      kotlin.g.b.p.k(paramString, "url");
+      AppMethodBeat.i(295070);
+      kotlin.g.b.s.u(paramString, "url");
       BaseWebViewController localBaseWebViewController = getController();
-      if (((waitFor(ab.bO(BaseWebViewController.Start.class))) && (waitFor(ab.bO(BaseWebViewController.Auth.class), paramString)) && ((waitFor(localBaseWebViewController.PGr, paramString)) || (localBaseWebViewController.pHS.dwQ()))) || (localBaseWebViewController.cDx()))
+      if (((waitFor(ai.cz(BaseWebViewController.Start.class))) && (waitFor(ai.cz(BaseWebViewController.Auth.class), paramString)) && ((waitFor(localBaseWebViewController.Wxe, paramString)) || (localBaseWebViewController.sMP.rsE))) || (localBaseWebViewController.dhb()))
       {
-        AppMethodBeat.o(216014);
+        AppMethodBeat.o(295070);
         return true;
       }
-      AppMethodBeat.o(216014);
+      AppMethodBeat.o(295070);
       return false;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$SPAUpdated;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "keep", "", "getKeep", "()Z", "verify", "url", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$SPAUpdated;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "()V", "keep", "", "getKeep", "()Z", "verify", "url", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static final class SPAUpdated
     extends BaseWebViewController.PageAction
   {
@@ -2400,37 +2631,36 @@ public abstract class BaseWebViewController
     
     public final boolean verify(String paramString)
     {
-      AppMethodBeat.i(205199);
-      kotlin.g.b.p.k(paramString, "url");
+      AppMethodBeat.i(294953);
+      kotlin.g.b.s.u(paramString, "url");
       BaseWebViewController localBaseWebViewController = getController();
-      if ((waitFor(ab.bO(BaseWebViewController.Ready.class), paramString)) && (waitFor(localBaseWebViewController.PGs, paramString)))
+      if ((waitFor(ai.cz(BaseWebViewController.Ready.class), paramString)) && (waitFor(localBaseWebViewController.Wxf, paramString)))
       {
-        AppMethodBeat.o(205199);
+        AppMethodBeat.o(294953);
         return true;
       }
-      AppMethodBeat.o(205199);
+      AppMethodBeat.o(294953);
       return false;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Start;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "()V", "verify", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Start;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "()V", "verify", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   protected static final class Start
     extends BaseWebViewController.ControllerAction
   {
     public final boolean verify()
     {
-      AppMethodBeat.i(206370);
+      AppMethodBeat.i(294943);
       Object localObject = getController();
-      if ((waitFor(((BaseWebViewController)localObject).PGi)) && ((!((BaseWebViewController)localObject).cDA()) || (waitFor(((BaseWebViewController)localObject).PGh))))
+      if ((waitFor(((BaseWebViewController)localObject).WwV)) && ((!((BaseWebViewController)localObject).dhe()) || (waitFor(((BaseWebViewController)localObject).WwU))))
       {
-        if (((CharSequence)((BaseWebViewController)localObject).cDu()).length() > 0)
+        if (((CharSequence)((BaseWebViewController)localObject).dgY()).length() > 0)
         {
           i = 1;
           if (i == 0)
           {
-            localObject = (CharSequence)((BaseWebViewController)localObject).gSr();
-            if ((localObject != null) && (!kotlin.n.n.ba((CharSequence)localObject))) {
+            localObject = (CharSequence)((BaseWebViewController)localObject).irO();
+            if ((localObject != null) && (!kotlin.n.n.bp((CharSequence)localObject))) {
               break label97;
             }
           }
@@ -2441,20 +2671,19 @@ public abstract class BaseWebViewController
           if (i != 0) {
             break label102;
           }
-          AppMethodBeat.o(206370);
+          AppMethodBeat.o(294943);
           return true;
           i = 0;
           break;
         }
       }
       label102:
-      AppMethodBeat.o(206370);
+      AppMethodBeat.o(294943);
       return false;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction;", "", "()V", "controller", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "getController", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "setController", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V", "keep", "", "getKeep", "()Z", "waitFor", "status", "", "clazz", "Lkotlin/reflect/KClass;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "url", "", "webview-sdk_release"})
-  @Keep
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction;", "", "()V", "controller", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "getController", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "setController", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V", "keep", "", "getKeep", "()Z", "waitFor", "status", "", "clazz", "Lkotlin/reflect/KClass;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ControllerAction;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$PageAction;", "url", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract class WebAction
   {
     public BaseWebViewController controller;
@@ -2463,10 +2692,11 @@ public abstract class BaseWebViewController
     public final BaseWebViewController getController()
     {
       BaseWebViewController localBaseWebViewController = this.controller;
-      if (localBaseWebViewController == null) {
-        kotlin.g.b.p.bGy("controller");
+      if (localBaseWebViewController != null) {
+        return localBaseWebViewController;
       }
-      return localBaseWebViewController;
+      kotlin.g.b.s.bIx("controller");
+      return null;
     }
     
     public boolean getKeep()
@@ -2476,54 +2706,32 @@ public abstract class BaseWebViewController
     
     public final void setController(BaseWebViewController paramBaseWebViewController)
     {
-      kotlin.g.b.p.k(paramBaseWebViewController, "<set-?>");
+      kotlin.g.b.s.u(paramBaseWebViewController, "<set-?>");
       this.controller = paramBaseWebViewController;
     }
     
     public final boolean waitFor(int paramInt)
     {
-      BaseWebViewController localBaseWebViewController = this.controller;
-      if (localBaseWebViewController == null) {
-        kotlin.g.b.p.bGy("controller");
-      }
-      return BaseWebViewController.c(localBaseWebViewController).contains(Integer.valueOf(paramInt));
+      return BaseWebViewController.d(getController()).contains(Integer.valueOf(paramInt));
     }
     
-    public final boolean waitFor(kotlin.l.b<? extends BaseWebViewController.ControllerAction> paramb)
+    public final boolean waitFor(kotlin.l.c<? extends BaseWebViewController.ControllerAction> paramc)
     {
-      kotlin.g.b.p.k(paramb, "clazz");
-      BaseWebViewController localBaseWebViewController = this.controller;
-      if (localBaseWebViewController == null) {
-        kotlin.g.b.p.bGy("controller");
-      }
-      return BaseWebViewController.d(localBaseWebViewController).contains(paramb.iCe());
+      kotlin.g.b.s.u(paramc, "clazz");
+      return BaseWebViewController.e(getController()).contains(paramc.klt());
     }
     
-    public final boolean waitFor(kotlin.l.b<? extends BaseWebViewController.PageAction> paramb, String paramString)
+    public final boolean waitFor(kotlin.l.c<? extends BaseWebViewController.PageAction> paramc, String paramString)
     {
-      kotlin.g.b.p.k(paramb, "clazz");
-      kotlin.g.b.p.k(paramString, "url");
-      BaseWebViewController localBaseWebViewController = this.controller;
-      if (localBaseWebViewController == null) {
-        kotlin.g.b.p.bGy("controller");
-      }
-      if (kotlin.g.b.p.h(paramString, localBaseWebViewController.PFM))
-      {
-        paramString = this.controller;
-        if (paramString == null) {
-          kotlin.g.b.p.bGy("controller");
-        }
-        if (BaseWebViewController.e(paramString).contains(paramb.iCe())) {
-          return true;
-        }
-      }
-      return false;
+      kotlin.g.b.s.u(paramc, "clazz");
+      kotlin.g.b.s.u(paramString, "url");
+      return (kotlin.g.b.s.p(paramString, getController().Wwy)) && (BaseWebViewController.f(getController()).contains(paramc.klt()));
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
+    extends u
     implements kotlin.g.a.a<String>
   {
     a(BaseWebViewController paramBaseWebViewController)
@@ -2532,408 +2740,376 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"setConfigCallback", "", "windowManager", "Landroid/view/WindowManager;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class aa
-    extends q
-    implements kotlin.g.a.b<WindowManager, x>
+    extends u
+    implements kotlin.g.a.a<com.tencent.mm.plugin.webview.jsapi.j>
   {
-    public static final aa PHh;
-    
-    static
-    {
-      AppMethodBeat.i(215657);
-      PHh = new aa();
-      AppMethodBeat.o(215657);
-    }
-    
-    aa()
+    aa(BaseWebViewController paramBaseWebViewController)
     {
       super();
     }
-    
-    public static void b(WindowManager paramWindowManager)
-    {
-      AppMethodBeat.i(215656);
-      kotlin.g.b.p.k(paramWindowManager, "windowManager");
-      try
-      {
-        Object localObject = WebView.class.getDeclaredField("mWebViewCore");
-        kotlin.g.b.p.j(localObject, "WebView::class.java.getD…aredField(\"mWebViewCore\")");
-        localObject = ((Field)localObject).getType().getDeclaredField("mBrowserFrame");
-        kotlin.g.b.p.j(localObject, "field.type.getDeclaredField(\"mBrowserFrame\")");
-        Field localField = ((Field)localObject).getType().getDeclaredField("sConfigCallback");
-        kotlin.g.b.p.j(localField, "field.type.getDeclaredField(\"sConfigCallback\")");
-        localField.setAccessible(true);
-        localObject = localField.get(null);
-        if (localObject == null)
-        {
-          AppMethodBeat.o(215656);
-          return;
-        }
-        localField = localField.getType().getDeclaredField("mWindowManager");
-        kotlin.g.b.p.j(localField, "field.type.getDeclaredField(\"mWindowManager\")");
-        localField.setAccessible(true);
-        localField.set(localObject, paramWindowManager);
-        AppMethodBeat.o(215656);
-        return;
-      }
-      catch (Exception paramWindowManager)
-      {
-        AppMethodBeat.o(215656);
-      }
-    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/webview/jsapi/JsLoader;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class ab
-    extends q
-    implements kotlin.g.a.a<com.tencent.mm.plugin.webview.d.k>
+    extends u
+    implements kotlin.g.a.a<Boolean>
   {
-    ab(BaseWebViewController paramBaseWebViewController)
+    public static final ab WxP;
+    
+    static
+    {
+      AppMethodBeat.i(295020);
+      WxP = new ab();
+      AppMethodBeat.o(295020);
+    }
+    
+    ab()
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class ac
-    extends q
-    implements kotlin.g.a.a<com.tencent.mm.plugin.webview.d.h>
+    extends u
+    implements kotlin.g.a.a<Boolean>
   {
-    ac(BaseWebViewController paramBaseWebViewController)
+    public static final ac WxQ;
+    
+    static
+    {
+      AppMethodBeat.i(295004);
+      WxQ = new ac();
+      AppMethodBeat.o(295004);
+    }
+    
+    ac()
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/webview/core/WebPageErrorMonitor;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class ad
-    implements Runnable
+    extends u
+    implements kotlin.g.a.a<g>
   {
-    ad(BaseWebViewController paramBaseWebViewController) {}
-    
-    public final void run()
+    ad(BaseWebViewController paramBaseWebViewController)
     {
-      AppMethodBeat.i(209537);
-      this.PGP.btS().postUIDelayed(this.PGP.gSp(), 500L);
-      AppMethodBeat.o(209537);
+      super();
+    }
+    
+    /* Error */
+    private g isd()
+    {
+      // Byte code:
+      //   0: ldc 37
+      //   2: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: ldc2_w 43
+      //   8: lstore_2
+      //   9: aload_0
+      //   10: getfield 30	com/tencent/mm/plugin/webview/core/BaseWebViewController$ad:Wxy	Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;
+      //   13: invokevirtual 48	com/tencent/mm/plugin/webview/core/BaseWebViewController:irJ	()Lcom/tencent/mm/plugin/webview/stub/e;
+      //   16: invokeinterface 54 1 0
+      //   21: ifeq +37 -> 58
+      //   24: aload_0
+      //   25: getfield 30	com/tencent/mm/plugin/webview/core/BaseWebViewController$ad:Wxy	Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;
+      //   28: invokevirtual 48	com/tencent/mm/plugin/webview/core/BaseWebViewController:irJ	()Lcom/tencent/mm/plugin/webview/stub/e;
+      //   31: invokeinterface 58 1 0
+      //   36: istore_1
+      //   37: iload_1
+      //   38: i2l
+      //   39: lstore_2
+      //   40: new 60	com/tencent/mm/plugin/webview/core/g
+      //   43: dup
+      //   44: lload_2
+      //   45: invokespecial 63	com/tencent/mm/plugin/webview/core/g:<init>	(J)V
+      //   48: astore 4
+      //   50: ldc 37
+      //   52: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   55: aload 4
+      //   57: areturn
+      //   58: lconst_0
+      //   59: lstore_2
+      //   60: goto -20 -> 40
+      //   63: astore 4
+      //   65: aload_0
+      //   66: getfield 30	com/tencent/mm/plugin/webview/core/BaseWebViewController$ad:Wxy	Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;
+      //   69: invokestatic 70	com/tencent/mm/plugin/webview/core/BaseWebViewController:b	(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)Ljava/lang/String;
+      //   72: ldc 72
+      //   74: aload 4
+      //   76: invokevirtual 78	java/lang/Throwable:getLocalizedMessage	()Ljava/lang/String;
+      //   79: invokestatic 84	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+      //   82: invokestatic 90	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   85: goto -45 -> 40
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	88	0	this	ad
+      //   36	2	1	i	int
+      //   8	52	2	l	long
+      //   48	8	4	localg	g
+      //   63	12	4	localObject	Object
+      // Exception table:
+      //   from	to	target	type
+      //   9	37	63	finally
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class ae
-    implements Runnable
+    extends u
+    implements kotlin.g.a.a<String>
   {
-    ae(BaseWebViewController paramBaseWebViewController, int paramInt, String paramString) {}
-    
-    public final void run()
+    ae(BaseWebViewController paramBaseWebViewController)
     {
-      AppMethodBeat.i(205651);
-      Iterator localIterator = ((Iterable)this.PGP.PGb).iterator();
-      while (localIterator.hasNext()) {
-        ((j)localIterator.next()).bv(paramInt, paramString);
-      }
-      AppMethodBeat.o(205651);
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Ljava/lang/Runnable;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class af
-    extends q
-    implements kotlin.g.a.a<Boolean>
-  {
-    public static final af PHi;
-    
-    static
-    {
-      AppMethodBeat.i(205987);
-      PHi = new af();
-      AppMethodBeat.o(205987);
-    }
-    
-    af()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class ag
-    extends q
-    implements kotlin.g.a.a<Boolean>
-  {
-    public static final ag PHj;
-    
-    static
-    {
-      AppMethodBeat.i(216164);
-      PHj = new ag();
-      AppMethodBeat.o(216164);
-    }
-    
-    ag()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/webview/core/WebPageErrorMonitor;", "invoke"})
-  static final class ah
-    extends q
-    implements kotlin.g.a.a<e>
-  {
-    ah(BaseWebViewController paramBaseWebViewController)
-    {
-      super();
-    }
-    
-    private e gSC()
-    {
-      AppMethodBeat.i(205213);
-      for (long l = -1L;; l = 0L)
-      {
-        try
-        {
-          if (!this.PGP.gSm().gWY()) {
-            continue;
-          }
-          int i = this.PGP.gSm().gXe();
-          l = i;
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            e locale;
-            Log.e(BaseWebViewController.a(this.PGP), "Get Uin Error:" + localThrowable.getLocalizedMessage());
-          }
-        }
-        locale = new e(l);
-        AppMethodBeat.o(205213);
-        return locale;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/lang/Runnable;", "invoke"})
-  static final class ai
-    extends q
+    extends u
     implements kotlin.g.a.a<Runnable>
   {
-    ai(BaseWebViewController paramBaseWebViewController)
+    af(BaseWebViewController paramBaseWebViewController)
     {
       super();
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/webview/core/BaseWebViewController$progressController$1", "Lcom/tencent/mm/plugin/webview/core/WebViewProgressController;", "delay", "", "mills", "", "finish", "webview-sdk_release"})
-  public static final class aj
-    extends l
-  {
-    public final void TA(long paramLong)
+    
+    private static final void j(BaseWebViewController paramBaseWebViewController)
     {
-      AppMethodBeat.i(208793);
-      this.PGP.btS().postDelayed(this.PGP.gSp(), paramLong);
-      AppMethodBeat.o(208793);
+      AppMethodBeat.i(295015);
+      kotlin.g.b.s.u(paramBaseWebViewController, "this$0");
+      int i = paramBaseWebViewController.Wxc;
+      String str2 = paramBaseWebViewController.getCurrentUrl();
+      String str1 = str2;
+      if (str2 == null) {
+        str1 = "";
+      }
+      paramBaseWebViewController.dI(i, str1);
+      AppMethodBeat.o(295015);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-  static final class ak
-    extends kotlin.d.b.a.j
-    implements kotlin.g.a.m<kotlinx.coroutines.ak, kotlin.d.d<? super x>, Object>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/core/BaseWebViewController$progressController$1", "Lcom/tencent/mm/plugin/webview/core/WebViewProgressController;", "delay", "", "mills", "", "finish", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class ag
+    extends n
+  {
+    ag(BaseWebViewController paramBaseWebViewController) {}
+    
+    public final void xK(long paramLong)
+    {
+      AppMethodBeat.i(294997);
+      this.Wxy.getHandler().postDelayed(this.Wxy.irM(), paramLong);
+      AppMethodBeat.o(294997);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class ah
+    extends kotlin.d.b.a.k
+    implements kotlin.g.a.m<aq, kotlin.d.d<? super ah>, Object>
   {
     int label;
-    private kotlinx.coroutines.ak p$;
     
-    ak(BaseWebViewController paramBaseWebViewController, kotlin.d.d paramd)
+    ah(BaseWebViewController paramBaseWebViewController, kotlin.d.d<? super ah> paramd)
     {
       super(paramd);
     }
     
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(214821);
-      kotlin.g.b.p.k(paramd, "completion");
-      paramd = new ak(this.PGP, paramd);
-      paramd.p$ = ((kotlinx.coroutines.ak)paramObject);
-      AppMethodBeat.o(214821);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(214822);
-      paramObject1 = ((ak)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(214822);
-      return paramObject1;
+      AppMethodBeat.i(295025);
+      paramObject = (kotlin.d.d)new ah(this.Wxy, paramd);
+      AppMethodBeat.o(295025);
+      return paramObject;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(214815);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+      AppMethodBeat.i(295012);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(214815);
+        AppMethodBeat.o(295012);
         throw paramObject;
       }
       ResultKt.throwOnFailure(paramObject);
-      this.PGP.anv(this.PGP.PGi);
-      paramObject = x.aazN;
-      AppMethodBeat.o(214815);
+      this.Wxy.atm(this.Wxy.WwV);
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(295012);
       return paramObject;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class al
-    extends q
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class ai
+    extends u
     implements kotlin.g.a.a<Boolean>
   {
-    public static final al PHl;
+    public static final ai WxR;
     
     static
     {
-      AppMethodBeat.i(206995);
-      PHl = new al();
-      AppMethodBeat.o(206995);
+      AppMethodBeat.i(295009);
+      WxR = new ai();
+      AppMethodBeat.o(295009);
     }
     
-    al()
+    ai()
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class am
-    extends q
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class aj
+    extends u
     implements kotlin.g.a.a<Boolean>
   {
-    public static final am PHm;
+    public static final aj WxS;
     
     static
     {
-      AppMethodBeat.i(215741);
-      PHm = new am();
-      AppMethodBeat.o(215741);
+      AppMethodBeat.i(295002);
+      WxS = new aj();
+      AppMethodBeat.o(295002);
     }
     
-    am()
+    aj()
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/webview/core/BaseWebViewController$wvPerm$1", "Lcom/tencent/mm/plugin/webview/permission/WebViewPermission$UrlFetcher;", "getA8keyUrl", "", "getPreverifyUrl", "webview-sdk_release"})
-  public static final class an
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/core/BaseWebViewController$wvPerm$1", "Lcom/tencent/mm/plugin/webview/permission/WebViewPermission$UrlFetcher;", "getA8keyUrl", "", "getPreverifyUrl", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class ak
     implements g.b
   {
-    public final String gSD()
+    ak(BaseWebViewController paramBaseWebViewController) {}
+    
+    public final String ise()
     {
-      AppMethodBeat.i(206786);
-      Object localObject = this.PGP.getCurrentUrl();
-      if (localObject != null)
-      {
-        if (((CharSequence)localObject).length() > 0) {}
-        for (int i = 1; i == 1; i = 0)
+      AppMethodBeat.i(294990);
+      Object localObject = this.Wxy.getCurrentUrl();
+      if (localObject != null) {
+        if (((CharSequence)localObject).length() > 0)
         {
-          localObject = this.PGP.getCurrentUrl();
-          AppMethodBeat.o(206786);
-          return localObject;
+          i = 1;
+          if (i != 1) {
+            break label62;
+          }
         }
       }
-      String str = this.PGP.pHS.getUrl();
-      localObject = str;
-      if (str == null) {
-        localObject = "";
+      label62:
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label67;
+        }
+        localObject = this.Wxy.getCurrentUrl();
+        AppMethodBeat.o(294990);
+        return localObject;
+        i = 0;
+        break;
       }
-      AppMethodBeat.o(206786);
+      label67:
+      localObject = this.Wxy.sMP.getUrl();
+      if (localObject == null)
+      {
+        localObject = BaseWebViewController.Wwe;
+        localObject = BaseWebViewController.c.bK(this.Wxy.getIntent());
+        AppMethodBeat.o(294990);
+        return localObject;
+      }
+      AppMethodBeat.o(294990);
       return localObject;
     }
     
-    public final String gSE()
+    public final String isf()
     {
-      return this.PGP.PFN;
+      return this.Wxy.Wwz;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$BaseWebViewUIConnectionBinder;", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnectionBinder;", "weakController", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "(Ljava/lang/ref/WeakReference;)V", "onConnected", "", "conn", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "onDisconnected", "", "webview-sdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$BaseWebViewUIConnectionBinder;", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnectionBinder;", "weakController", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "(Ljava/lang/ref/WeakReference;)V", "onConnected", "", "conn", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "onDisconnected", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements d
+    implements f
   {
-    private final WeakReference<BaseWebViewController> PGQ;
+    private final WeakReference<BaseWebViewController> Wxz;
     
     public b(WeakReference<BaseWebViewController> paramWeakReference)
     {
-      AppMethodBeat.i(210873);
-      this.PGQ = paramWeakReference;
-      AppMethodBeat.o(210873);
+      AppMethodBeat.i(294920);
+      this.Wxz = paramWeakReference;
+      AppMethodBeat.o(294920);
     }
     
-    public final void a(c paramc)
+    public final void a(e parame)
     {
-      AppMethodBeat.i(210869);
-      kotlin.g.b.p.k(paramc, "conn");
-      BaseWebViewController localBaseWebViewController = (BaseWebViewController)this.PGQ.get();
+      AppMethodBeat.i(294933);
+      kotlin.g.b.s.u(parame, "conn");
+      BaseWebViewController localBaseWebViewController = (BaseWebViewController)this.Wxz.get();
       if (localBaseWebViewController == null)
       {
-        AppMethodBeat.o(210869);
+        AppMethodBeat.o(294933);
         return;
       }
-      kotlin.g.b.p.j(localBaseWebViewController, "weakController.get() ?: return");
-      if (localBaseWebViewController.gSx())
+      if (localBaseWebViewController.irU())
       {
-        Log.i(BaseWebViewController.a(localBaseWebViewController), "WebView-Trace onConnected when destroyCalled");
-        AppMethodBeat.o(210869);
+        Log.i(BaseWebViewController.b(localBaseWebViewController), "WebView-Trace onConnected when destroyCalled");
+        AppMethodBeat.o(294933);
         return;
       }
-      localBaseWebViewController.PGE = paramc;
-      paramc = paramc.gSm();
-      kotlin.g.b.p.k(paramc, "<set-?>");
-      localBaseWebViewController.pGC = paramc;
-      localBaseWebViewController.getJsapi().a(localBaseWebViewController.gSm());
-      localBaseWebViewController.b(localBaseWebViewController.gSm());
-      Log.i(BaseWebViewController.a(localBaseWebViewController), "WebView-Trace tryBindService checkStatus CONTROLLER_INVOKER_READY");
-      if (BaseWebViewController.d(localBaseWebViewController).contains(ab.bO(BaseWebViewController.Bind.class).iCe()))
+      com.tencent.mm.plugin.webview.k.s locals = com.tencent.mm.plugin.webview.k.s.XtJ;
+      com.tencent.mm.plugin.webview.k.s.a(com.tencent.mm.plugin.webview.h.d.WQH, localBaseWebViewController.Wwj);
+      localBaseWebViewController.Wxr = parame;
+      parame = parame.irJ();
+      kotlin.g.b.s.u(parame, "<set-?>");
+      localBaseWebViewController.sLC = parame;
+      localBaseWebViewController.getJsapi().sLC = localBaseWebViewController.irJ();
+      localBaseWebViewController.b(localBaseWebViewController.irJ());
+      Log.i(BaseWebViewController.b(localBaseWebViewController), "WebView-Trace tryBindService checkStatus CONTROLLER_INVOKER_READY");
+      if (BaseWebViewController.e(localBaseWebViewController).contains(ai.cz(BaseWebViewController.Bind.class).klt()))
       {
-        localBaseWebViewController.bXM();
-        AppMethodBeat.o(210869);
+        localBaseWebViewController.cxX();
+        AppMethodBeat.o(294933);
         return;
       }
-      localBaseWebViewController.anv(localBaseWebViewController.PGh);
-      AppMethodBeat.o(210869);
+      localBaseWebViewController.atm(localBaseWebViewController.WwU);
+      AppMethodBeat.o(294933);
     }
     
-    public final boolean gPK()
+    public final boolean fTZ()
     {
-      AppMethodBeat.i(210871);
-      BaseWebViewController localBaseWebViewController = (BaseWebViewController)this.PGQ.get();
-      if ((localBaseWebViewController != null) && (localBaseWebViewController.gSv() == true))
+      AppMethodBeat.i(294939);
+      BaseWebViewController localBaseWebViewController = (BaseWebViewController)this.Wxz.get();
+      if ((localBaseWebViewController != null) && (localBaseWebViewController.irS() == true))
       {
-        AppMethodBeat.o(210871);
+        AppMethodBeat.o(294939);
         return true;
       }
-      AppMethodBeat.o(210871);
+      AppMethodBeat.o(294939);
       return false;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Companion;", "", "()V", "DATA_TEXT_HTML_PREFIX", "", "FILE_URL_SCHEME", "QuickAppUrl", "", "[Ljava/lang/String;", "getRawUrl", "intent", "Landroid/content/Intent;", "webview-sdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Companion;", "", "()V", "DATA_TEXT_HTML_PREFIX", "", "FILE_URL_SCHEME", "FONT1", "", "FONT2", "FONT3", "FONT4", "FONT5", "FONT6", "FONT7", "FONT8", "QuickAppUrl", "", "[Ljava/lang/String;", "getRawUrl", "intent", "Landroid/content/Intent;", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
   {
-    public static String bk(Intent paramIntent)
+    public static String bK(Intent paramIntent)
     {
-      AppMethodBeat.i(216413);
-      kotlin.g.b.p.k(paramIntent, "intent");
+      AppMethodBeat.i(294932);
+      kotlin.g.b.s.u(paramIntent, "intent");
       try
       {
-        localObject2 = paramIntent.getStringExtra("rawUrl");
-        localObject1 = localObject2;
-        if (localObject2 == null) {
+        localObject3 = paramIntent.getStringExtra("rawUrl");
+        localObject1 = localObject3;
+        if (localObject3 == null) {
           localObject1 = "";
         }
       }
@@ -2941,244 +3117,256 @@ public abstract class BaseWebViewController
       {
         for (;;)
         {
-          Object localObject2;
+          Object localObject3;
           Object localObject1;
           Log.e("MicroMsg.WebViewController", "getRawUrl exception:%s", new Object[] { localException.getMessage() });
           if ((localException instanceof ClassNotFoundException))
           {
-            paramIntent = (Throwable)localException;
-            AppMethodBeat.o(216413);
-            throw paramIntent;
+            AppMethodBeat.o(294932);
+            throw localException;
           }
-          str = null;
+          Object localObject2 = null;
           continue;
           int i = 0;
         }
-        label104:
+        label99:
         paramIntent = paramIntent.getData();
-        if (paramIntent == null) {
-          break label124;
+        if (paramIntent != null) {
+          break label116;
         }
-        String str = paramIntent.toString();
-        paramIntent = str;
-        if (str != null) {
-          break label127;
+        AppMethodBeat.o(294932);
+        return "";
+        label116:
+        paramIntent = paramIntent.toString();
+        if (paramIntent != null) {
+          break label133;
         }
-        label124:
-        paramIntent = "";
-        label127:
-        AppMethodBeat.o(216413);
+        AppMethodBeat.o(294932);
+        return "";
+        label133:
+        AppMethodBeat.o(294932);
       }
-      localObject2 = (CharSequence)localObject1;
-      if ((localObject2 == null) || (kotlin.n.n.ba((CharSequence)localObject2)))
+      localObject3 = (CharSequence)localObject1;
+      if ((localObject3 == null) || (kotlin.n.n.bp((CharSequence)localObject3)))
       {
         i = 1;
         if (i != 0) {
-          break label104;
+          break label99;
         }
-        AppMethodBeat.o(216413);
+        AppMethodBeat.o(294932);
         return localObject1;
       }
       return paramIntent;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Options;", "", "webView", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebViewOptions;", "trust", "", "enableWvSHA1", "fontWithSys", "neverGetA8Key", "getA8keyScene", "", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebViewOptions;ZZZZI)V", "getEnableWvSHA1", "()Z", "getFontWithSys", "getGetA8keyScene", "()I", "setGetA8keyScene", "(I)V", "getNeverGetA8Key", "getTrust", "getWebView", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebViewOptions;", "webview-sdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$Options;", "", "webView", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebViewOptions;", "trust", "", "enableWvSHA1", "fontWithSys", "neverGetA8Key", "getA8keyScene", "", "snapShotMode", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebViewOptions;ZZZZIZ)V", "getEnableWvSHA1", "()Z", "getFontWithSys", "getGetA8keyScene", "()I", "setGetA8keyScene", "(I)V", "getNeverGetA8Key", "getSnapShotMode", "getTrust", "getWebView", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebViewOptions;", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
   {
-    final BaseWebViewController.g PGR;
-    final boolean PGS;
-    final boolean PGT;
-    final boolean PGU;
-    final boolean PGV;
-    public int PGW;
+    final BaseWebViewController.g WxA;
+    final boolean WxB;
+    final boolean WxC;
+    final boolean WxD;
+    final boolean WxE;
+    public int WxF;
+    final boolean WxG;
     
     public d()
     {
-      this(null, false, false, false, false, 63);
+      this(null, false, false, false, false, false, 127);
     }
     
-    public d(BaseWebViewController.g paramg, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+    public d(BaseWebViewController.g paramg, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
     {
-      AppMethodBeat.i(206502);
-      this.PGR = paramg;
-      this.PGS = paramBoolean1;
-      this.PGT = paramBoolean2;
-      this.PGU = paramBoolean3;
-      this.PGV = paramBoolean4;
-      this.PGW = 0;
-      AppMethodBeat.o(206502);
+      AppMethodBeat.i(294928);
+      this.WxA = paramg;
+      this.WxB = paramBoolean1;
+      this.WxC = paramBoolean2;
+      this.WxD = paramBoolean3;
+      this.WxE = paramBoolean4;
+      this.WxF = 0;
+      this.WxG = paramBoolean5;
+      AppMethodBeat.o(294928);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ProgressClientListener;", "Lcom/tencent/mm/ui/widget/WebChromeClientListener;", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V", "onProgressChanged", "", "view", "Lcom/tencent/xweb/WebView;", "newProgress", "", "webview-sdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$ProgressClientListener;", "Lcom/tencent/mm/ui/widget/WebChromeClientListener;", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V", "onProgressChanged", "", "view", "Lcom/tencent/xweb/WebView;", "newProgress", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   final class e
-    extends com.tencent.mm.ui.widget.k
+    extends com.tencent.mm.ui.widget.m
   {
+    public e()
+    {
+      AppMethodBeat.i(294923);
+      AppMethodBeat.o(294923);
+    }
+    
     public final void a(WebView paramWebView, int paramInt)
     {
       int i = 0;
-      AppMethodBeat.i(215325);
+      AppMethodBeat.i(294937);
       Object localObject;
-      if ((paramInt >= 100) && (!this.PGP.gSx()))
+      BaseWebViewController localBaseWebViewController1;
+      BaseWebViewController localBaseWebViewController2;
+      if ((paramInt >= 100) && (!this.Wxy.irU()))
       {
-        this.PGP.PGe = true;
-        Log.i(BaseWebViewController.a(this.PGP), "Abe-Debug Progress 100");
-        localObject = com.tencent.mm.plugin.webview.k.k.QAg;
-        localObject = this.PGP.pHS;
-        kotlin.g.b.p.k(localObject, "webView");
+        this.Wxy.WwR = true;
+        Log.i(BaseWebViewController.b(this.Wxy), "Abe-Debug Progress 100");
+        localObject = com.tencent.mm.plugin.webview.k.o.Xtm;
+        localObject = this.Wxy.sMP;
+        kotlin.g.b.s.u(localObject, "webView");
         if (((MMWebView)localObject).supportFeature(2006)) {
-          break label163;
+          break label149;
         }
         paramInt = i;
-      }
-      for (;;)
-      {
         if (paramInt != 0)
         {
-          localObject = g.PHD;
-          if (!g.a.gSJ()) {}
+          localObject = i.Wya;
+          if (!i.a.iso()) {}
         }
         else
         {
-          Log.i(BaseWebViewController.a(this.PGP), "WebView-Trace not support onPageCommitVisible");
-          BaseWebViewController localBaseWebViewController1 = this.PGP;
-          paramInt = this.PGP.PGt;
-          BaseWebViewController localBaseWebViewController2 = this.PGP;
-          if (paramWebView != null)
-          {
-            localObject = paramWebView.getUrl();
-            paramWebView = (WebView)localObject;
-            if (localObject != null) {}
+          Log.i(BaseWebViewController.b(this.Wxy), "WebView-Trace not support onPageCommitVisible");
+          localBaseWebViewController1 = this.Wxy;
+          paramInt = this.Wxy.Wxg;
+          localBaseWebViewController2 = this.Wxy;
+          if (paramWebView != null) {
+            break label312;
           }
-          else
-          {
-            paramWebView = "";
-          }
-          localBaseWebViewController1.cR(paramInt, BaseWebViewController.c(localBaseWebViewController2, paramWebView));
+          paramWebView = "";
         }
-        AppMethodBeat.o(215325);
+      }
+      for (;;)
+      {
+        localBaseWebViewController1.dI(paramInt, BaseWebViewController.c(localBaseWebViewController2, paramWebView));
+        AppMethodBeat.o(294937);
         return;
-        label163:
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzH, 0) == 1) {}
+        label149:
+        if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.yNn, 0) == 1) {}
         for (paramInt = 1;; paramInt = 0)
         {
-          if ((paramInt == 0) || (!((MMWebView)localObject).hZL()) || (com.tencent.mm.plugin.webview.k.k.g((MMWebView)localObject) > 86)) {
-            break label225;
+          if ((paramInt == 0) || (!((MMWebView)localObject).jES()) || (com.tencent.mm.plugin.webview.k.o.j((MMWebView)localObject) > 86)) {
+            break label211;
           }
           Log.i("MicroMsg.WebViewKernelUtil", "WebView-Trace, inject time enable SysKernel86");
           paramInt = i;
           break;
         }
-        label225:
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzI, 1) == 1) {}
+        label211:
+        if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.yNo, 1) == 1) {}
         for (paramInt = 1;; paramInt = 0)
         {
-          if ((!((MMWebView)localObject).hZL()) || (paramInt == 0)) {
-            break label277;
+          if ((!((MMWebView)localObject).jES()) || (paramInt == 0)) {
+            break label263;
           }
           Log.i("MicroMsg.WebViewKernelUtil", "WebView-Trace, inject time enable SysKernel");
           paramInt = i;
           break;
         }
-        label277:
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzJ, 0) == 1) {}
+        label263:
+        if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.yNp, 0) == 1) {}
         for (paramInt = 1;; paramInt = 0)
         {
           if (paramInt == 0) {
-            break label321;
+            break label307;
           }
           Log.i("MicroMsg.WebViewKernelUtil", "WebView-Trace, inject time enable AllKernel");
           paramInt = i;
           break;
         }
-        label321:
+        label307:
         paramInt = 1;
+        break;
+        label312:
+        localObject = paramWebView.getUrl();
+        paramWebView = (WebView)localObject;
+        if (localObject == null) {
+          paramWebView = "";
+        }
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebEvent;", "", "action", "Lkotlin/reflect/KClass;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction;", "block", "Lkotlin/Function0;", "", "(Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function0;)V", "getAction", "()Lkotlin/reflect/KClass;", "getBlock", "()Lkotlin/jvm/functions/Function0;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "webview-sdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebEvent;", "", "action", "Lkotlin/reflect/KClass;", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebAction;", "block", "Lkotlin/Function0;", "", "(Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function0;)V", "getAction", "()Lkotlin/reflect/KClass;", "getBlock", "()Lkotlin/jvm/functions/Function0;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class f
   {
-    final kotlin.l.b<? extends BaseWebViewController.WebAction> PGX;
-    final kotlin.g.a.a<x> kRn;
+    final kotlin.l.c<? extends BaseWebViewController.WebAction> WxH;
+    final kotlin.g.a.a<ah> nsP;
     
-    public f(kotlin.l.b<? extends BaseWebViewController.WebAction> paramb, kotlin.g.a.a<x> parama)
+    public f(kotlin.l.c<? extends BaseWebViewController.WebAction> paramc, kotlin.g.a.a<ah> parama)
     {
-      AppMethodBeat.i(205150);
-      this.PGX = paramb;
-      this.kRn = parama;
-      AppMethodBeat.o(205150);
+      AppMethodBeat.i(294898);
+      this.WxH = paramc;
+      this.nsP = parama;
+      AppMethodBeat.o(294898);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(205157);
-      if (this != paramObject)
+      AppMethodBeat.i(294934);
+      if (this == paramObject)
       {
-        if ((paramObject instanceof f))
-        {
-          paramObject = (f)paramObject;
-          if ((!kotlin.g.b.p.h(this.PGX, paramObject.PGX)) || (!kotlin.g.b.p.h(this.kRn, paramObject.kRn))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(205157);
+        AppMethodBeat.o(294934);
         return true;
       }
-      AppMethodBeat.o(205157);
-      return false;
+      if (!(paramObject instanceof f))
+      {
+        AppMethodBeat.o(294934);
+        return false;
+      }
+      paramObject = (f)paramObject;
+      if (!kotlin.g.b.s.p(this.WxH, paramObject.WxH))
+      {
+        AppMethodBeat.o(294934);
+        return false;
+      }
+      if (!kotlin.g.b.s.p(this.nsP, paramObject.nsP))
+      {
+        AppMethodBeat.o(294934);
+        return false;
+      }
+      AppMethodBeat.o(294934);
+      return true;
     }
     
     public final int hashCode()
     {
-      int j = 0;
-      AppMethodBeat.i(205155);
-      Object localObject = this.PGX;
-      if (localObject != null) {}
-      for (int i = localObject.hashCode();; i = 0)
-      {
-        localObject = this.kRn;
-        if (localObject != null) {
-          j = localObject.hashCode();
-        }
-        AppMethodBeat.o(205155);
-        return i * 31 + j;
-      }
+      AppMethodBeat.i(294921);
+      int i = this.WxH.hashCode();
+      int j = this.nsP.hashCode();
+      AppMethodBeat.o(294921);
+      return i * 31 + j;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(205153);
-      String str = "WebEvent(action=" + this.PGX + ", block=" + this.kRn + ")";
-      AppMethodBeat.o(205153);
+      AppMethodBeat.i(294912);
+      String str = "WebEvent(action=" + this.WxH + ", block=" + this.nsP + ')';
+      AppMethodBeat.o(294912);
       return str;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebViewOptions;", "", "intent", "Landroid/content/Intent;", "(Landroid/content/Intent;)V", "enableJavascript", "", "getEnableJavascript", "()Z", "enableJavascript$delegate", "Lkotlin/Lazy;", "enablePlugin", "getEnablePlugin", "enablePlugin$delegate", "enableVerticalScroll", "getEnableVerticalScroll", "enableVerticalScroll$delegate", "enableZoom", "getEnableZoom", "enableZoom$delegate", "webview-sdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/BaseWebViewController$WebViewOptions;", "", "intent", "Landroid/content/Intent;", "(Landroid/content/Intent;)V", "enableJavascript", "", "getEnableJavascript", "()Z", "enableJavascript$delegate", "Lkotlin/Lazy;", "enablePlugin", "getEnablePlugin", "enablePlugin$delegate", "enableVerticalScroll", "getEnableVerticalScroll", "enableVerticalScroll$delegate", "enableZoom", "getEnableZoom", "enableZoom$delegate", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class g
   {
-    final kotlin.f PGY;
-    final kotlin.f PGZ;
-    final kotlin.f PHa;
-    final kotlin.f PHb;
+    final kotlin.j WxI;
+    final kotlin.j WxJ;
+    final kotlin.j WxK;
+    final kotlin.j WxL;
     
     public g(Intent paramIntent)
     {
-      AppMethodBeat.i(210623);
-      this.PGY = kotlin.g.ar((kotlin.g.a.a)new b(paramIntent));
-      this.PGZ = kotlin.g.ar((kotlin.g.a.a)new d(paramIntent));
-      this.PHa = kotlin.g.ar((kotlin.g.a.a)new a(paramIntent));
-      this.PHb = kotlin.g.ar((kotlin.g.a.a)new c(paramIntent));
-      AppMethodBeat.o(210623);
+      AppMethodBeat.i(294895);
+      this.WxI = kotlin.k.cm((kotlin.g.a.a)new b(paramIntent));
+      this.WxJ = kotlin.k.cm((kotlin.g.a.a)new d(paramIntent));
+      this.WxK = kotlin.k.cm((kotlin.g.a.a)new a(paramIntent));
+      this.WxL = kotlin.k.cm((kotlin.g.a.a)new c(paramIntent));
+      AppMethodBeat.o(294895);
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends q
+      extends u
       implements kotlin.g.a.a<Boolean>
     {
       a(Intent paramIntent)
@@ -3187,9 +3375,9 @@ public abstract class BaseWebViewController
       }
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class b
-      extends q
+      extends u
       implements kotlin.g.a.a<Boolean>
     {
       b(Intent paramIntent)
@@ -3198,9 +3386,9 @@ public abstract class BaseWebViewController
       }
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class c
-      extends q
+      extends u
       implements kotlin.g.a.a<Boolean>
     {
       c(Intent paramIntent)
@@ -3209,9 +3397,9 @@ public abstract class BaseWebViewController
       }
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class d
-      extends q
+      extends u
       implements kotlin.g.a.a<Boolean>
     {
       d(Intent paramIntent)
@@ -3221,18 +3409,18 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/webview/permission/LuggageGetA8Key;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
-    implements kotlin.g.a.a<com.tencent.mm.plugin.webview.f.c>
+    extends u
+    implements kotlin.g.a.a<com.tencent.mm.plugin.webview.e.c>
   {
-    public static final h PHc;
+    public static final h WxM;
     
     static
     {
-      AppMethodBeat.i(206837);
-      PHc = new h();
-      AppMethodBeat.o(206837);
+      AppMethodBeat.i(294902);
+      WxM = new h();
+      AppMethodBeat.o(294902);
     }
     
     h()
@@ -3241,10 +3429,10 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class j
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     j(BaseWebViewController paramBaseWebViewController)
     {
@@ -3252,10 +3440,10 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class k
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     k(BaseWebViewController paramBaseWebViewController)
     {
@@ -3263,10 +3451,10 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class l
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     l(BaseWebViewController paramBaseWebViewController)
     {
@@ -3274,10 +3462,10 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class n
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     n(BaseWebViewController paramBaseWebViewController)
     {
@@ -3285,10 +3473,10 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class o
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     o(BaseWebViewController paramBaseWebViewController)
     {
@@ -3296,10 +3484,10 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class p
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     p(BaseWebViewController paramBaseWebViewController)
     {
@@ -3307,10 +3495,10 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class q
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     q(BaseWebViewController paramBaseWebViewController)
     {
@@ -3318,10 +3506,10 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class r
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     r(BaseWebViewController paramBaseWebViewController)
     {
@@ -3329,10 +3517,10 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/webview/permission/UIThreadAuthCallBack;", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/webview/permission/UIThreadAuthCallBack;", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class s
-    extends q
-    implements kotlin.g.a.a<com.tencent.mm.plugin.webview.f.f<bot>>
+    extends u
+    implements kotlin.g.a.a<com.tencent.mm.plugin.webview.e.f<cdf>>
   {
     s(BaseWebViewController paramBaseWebViewController)
     {
@@ -3340,9 +3528,9 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class t
-    extends q
+    extends u
     implements kotlin.g.a.a<Integer>
   {
     t(BaseWebViewController paramBaseWebViewController)
@@ -3351,84 +3539,41 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "callback", "Lkotlin/Function0;", "", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class u
-    implements Runnable
+    extends u
+    implements kotlin.g.a.b<kotlin.g.a.a<? extends ah>, Boolean>
   {
-    u(BaseWebViewController paramBaseWebViewController, int paramInt) {}
+    public static final u WxN;
     
-    public final void run()
+    static
     {
-      int j = 0;
-      AppMethodBeat.i(205711);
-      if (paramInt < 0) {}
-      for (int i = 1; (kotlin.z.aazO) && (i == 0); i = 0)
-      {
-        localObject = (Throwable)new AssertionError("Assertion failed");
-        AppMethodBeat.o(205711);
-        throw ((Throwable)localObject);
-      }
-      Log.i(BaseWebViewController.a(this.PGP), "checkStatus:" + paramInt + " to [" + kotlin.a.j.a((Iterable)BaseWebViewController.c(this.PGP), (CharSequence)",", null, null, 0, null, null, 62) + "] [" + kotlin.a.j.a((Iterable)BaseWebViewController.b(this.PGP), (CharSequence)",", null, null, 0, null, null, 62) + "] [" + kotlin.a.j.a((Iterable)BaseWebViewController.e(this.PGP), (CharSequence)",", null, null, 0, null, null, 62) + ']');
-      BaseWebViewController.c(this.PGP).add(Integer.valueOf(paramInt));
-      BaseWebViewController.a(this.PGP, (Iterable)BaseWebViewController.f(this.PGP), (Set)BaseWebViewController.d(this.PGP));
-      Object localObject = (CharSequence)this.PGP.PFM;
-      if (localObject != null)
-      {
-        i = j;
-        if (!kotlin.n.n.ba((CharSequence)localObject)) {}
-      }
-      else
-      {
-        i = 1;
-      }
-      if (i == 0) {
-        BaseWebViewController.a(this.PGP, (Iterable)BaseWebViewController.g(this.PGP), (Set)BaseWebViewController.e(this.PGP), this.PGP.PFM);
-      }
-      kotlin.a.j.a((Iterable)BaseWebViewController.a(this.PGP, paramInt), (kotlin.g.a.b)1.PHe);
-      AppMethodBeat.o(205711);
+      AppMethodBeat.i(295037);
+      WxN = new u();
+      AppMethodBeat.o(295037);
+    }
+    
+    u()
+    {
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class v
-    implements Runnable
+    extends u
+    implements kotlin.g.a.a<String>
   {
-    v(BaseWebViewController paramBaseWebViewController, int paramInt, String paramString) {}
-    
-    public final void run()
+    v(BaseWebViewController paramBaseWebViewController)
     {
-      AppMethodBeat.i(211073);
-      if (paramInt > 0) {}
-      for (int i = 1; (kotlin.z.aazO) && (i == 0); i = 0)
-      {
-        localObject = (Throwable)new AssertionError("Assertion failed");
-        AppMethodBeat.o(211073);
-        throw ((Throwable)localObject);
-      }
-      if ((kotlin.g.b.p.h(paramString, this.PGP.PFM)) || ((this.PGP.PGu.contains(Integer.valueOf(paramInt))) && (kotlin.g.b.p.h(paramString, this.PGP.PFO))) || (this.PGP.PGv.contains(Integer.valueOf(paramInt))))
-      {
-        Log.i(BaseWebViewController.a(this.PGP), "checkStatus:" + paramInt + ' ' + paramString + " to [" + kotlin.a.j.a((Iterable)BaseWebViewController.c(this.PGP), (CharSequence)",", null, null, 0, null, null, 62) + "] [" + kotlin.a.j.a((Iterable)BaseWebViewController.b(this.PGP), (CharSequence)",", null, null, 0, null, null, 62) + "] [" + kotlin.a.j.a((Iterable)BaseWebViewController.e(this.PGP), (CharSequence)",", null, null, 0, null, null, 62) + ']');
-        BaseWebViewController.b(this.PGP).add(Integer.valueOf(paramInt));
-        BaseWebViewController.a(this.PGP, (Iterable)BaseWebViewController.g(this.PGP), (Set)BaseWebViewController.e(this.PGP), this.PGP.PFM);
-        AppMethodBeat.o(211073);
-        return;
-      }
-      String str = BaseWebViewController.a(this.PGP);
-      StringBuilder localStringBuilder = new StringBuilder("checkStatus skip: ").append(paramInt).append(", url=").append(paramString).append(", startUrl=").append(this.PGP.PFM).append(' ');
-      if (this.PGP.PGu.contains(Integer.valueOf(paramInt))) {}
-      for (Object localObject = ", spaUrl=" + this.PGP.PFO;; localObject = "")
-      {
-        Log.w(str, (String)localObject);
-        AppMethodBeat.o(211073);
-        return;
-      }
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class w
-    extends q
-    implements kotlin.g.a.a<String>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     w(BaseWebViewController paramBaseWebViewController)
     {
@@ -3436,43 +3581,51 @@ public abstract class BaseWebViewController
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class x
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    x(BaseWebViewController paramBaseWebViewController)
+    x(BaseWebViewController paramBaseWebViewController, String paramString, kotlin.g.a.b<? super String, ah> paramb)
     {
       super();
     }
+    
+    private static final void b(kotlin.g.a.b paramb, String paramString)
+    {
+      AppMethodBeat.i(295022);
+      kotlin.g.b.s.s(paramString, "it");
+      paramb.invoke(paramString);
+      AppMethodBeat.o(295022);
+    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class y
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    y(BaseWebViewController paramBaseWebViewController, String paramString, kotlin.g.a.b paramb)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invoke"})
-  static final class z
-    extends q
+    extends u
     implements kotlin.g.a.a<MMHandler>
   {
-    public static final z PHg;
+    public static final y WxO;
     
     static
     {
-      AppMethodBeat.i(206255);
-      PHg = new z();
-      AppMethodBeat.o(206255);
+      AppMethodBeat.i(295019);
+      WxO = new y();
+      AppMethodBeat.o(295019);
     }
     
-    z()
+    y()
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/webview/jsapi/JsLoader;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class z
+    extends u
+    implements kotlin.g.a.a<com.tencent.mm.plugin.webview.jsapi.m>
+  {
+    z(BaseWebViewController paramBaseWebViewController)
     {
       super();
     }

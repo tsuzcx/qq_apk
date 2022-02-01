@@ -4,19 +4,20 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.widget.Toast;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.i;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.j;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class JsApiAddNativeDownloadTask
-  extends c<v>
+  extends c<y>
 {
   private static final int CTRL_INDEX = 428;
   private static final String NAME = "addNativeDownloadTask";
@@ -25,10 +26,10 @@ public final class JsApiAddNativeDownloadTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<AddNativeDownloadTaskTask> CREATOR;
-    public int cUP = 0;
-    public long fuD = 0L;
-    private IListener otu;
-    Runnable otv;
+    public int eQp = 0;
+    public long hyV = 0L;
+    private IListener rxi;
+    Runnable rxj;
     
     static
     {
@@ -37,37 +38,37 @@ public final class JsApiAddNativeDownloadTask
       AppMethodBeat.o(45448);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(45441);
-      Log.i("MicroMsg.JsApiAddNativeDownloadTask", "runInMainProcess flag:%d", new Object[] { Integer.valueOf(this.cUP) });
-      this.otu = new IListener() {};
-      EventCenter.instance.add(this.otu);
+      Log.i("MicroMsg.JsApiAddNativeDownloadTask", "runInMainProcess flag:%d", new Object[] { Integer.valueOf(this.eQp) });
+      this.rxi = new IListener(f.hfK) {};
+      this.rxi.alive();
       AppMethodBeat.o(45441);
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(45442);
-      if (this.otv != null) {
-        this.otv.run();
+      if (this.rxj != null) {
+        this.rxj.run();
       }
       AppMethodBeat.o(45442);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(45443);
-      this.cUP = paramParcel.readInt();
-      this.fuD = paramParcel.readLong();
+      this.eQp = paramParcel.readInt();
+      this.hyV = paramParcel.readLong();
       AppMethodBeat.o(45443);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45444);
-      paramParcel.writeInt(this.cUP);
-      paramParcel.writeLong(this.fuD);
+      paramParcel.writeInt(this.eQp);
+      paramParcel.writeLong(this.hyV);
       AppMethodBeat.o(45444);
     }
   }

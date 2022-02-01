@@ -9,66 +9,66 @@ public final class d
   extends com.tencent.mm.plugin.backup.b.a
 {
   private static String TAG = "MicroMsg.BackupStorageModel";
-  private static d rSF;
-  private b rSG;
-  private a rSH;
+  private static d vdU;
+  private b vdV;
+  private a vdW;
   
-  public static d cua()
+  public static d cWK()
   {
     AppMethodBeat.i(21763);
-    if (rSF == null)
+    if (vdU == null)
     {
       locald = new d();
-      rSF = locald;
+      vdU = locald;
       a(locald);
     }
-    d locald = rSF;
+    d locald = vdU;
     AppMethodBeat.o(21763);
     return locald;
   }
   
-  public final void crU()
+  public final void cUE()
   {
-    rSF = null;
+    vdU = null;
   }
   
-  public final b cub()
+  public final b cWL()
   {
     AppMethodBeat.i(21764);
-    if (this.rSG == null) {
-      this.rSG = new b();
+    if (this.vdV == null) {
+      this.vdV = new b();
     }
-    b localb = this.rSG;
+    b localb = this.vdV;
     AppMethodBeat.o(21764);
     return localb;
   }
   
-  public final a cuc()
+  public final a cWM()
   {
     AppMethodBeat.i(21765);
-    if (this.rSH == null) {
-      this.rSH = new a();
+    if (this.vdW == null) {
+      this.vdW = new a();
     }
-    a locala = this.rSH;
+    a locala = this.vdW;
     AppMethodBeat.o(21765);
     return locala;
   }
   
-  public final void cud()
+  public final void cWN()
   {
     AppMethodBeat.i(21766);
     Log.i(TAG, "backupInitStorage.");
-    b localb = cub();
-    bh.beI();
+    b localb = cWL();
+    bh.bCz();
     String str = c.getAccPath();
-    bh.beI();
-    localb.cS(str, c.getUin());
+    bh.bCz();
+    localb.du(str, c.getUin());
     AppMethodBeat.o(21766);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.h.d
  * JD-Core Version:    0.7.0.1
  */

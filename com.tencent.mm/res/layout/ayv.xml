@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="@dimen/a7f" android:layout_height="@dimen/a7f"
+<FrameLayout android:background="@color/wl" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/y2" android:layout_width="@dimen/a7g" android:layout_height="@dimen/a7g" android:src="@drawable/et" />
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@null" android:paddingLeft="@dimen/a7e" android:paddingTop="@dimen/a7e" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/dxv" android:layout_width="@dimen/a7d" android:layout_height="@dimen/a7d" />
-        <TextView android:textSize="@dimen/kc" android:textColor="@color/r_" android:layout_gravity="center_horizontal" android:id="@id/dxw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="@string/bwz" />
-    </LinearLayout>
+    <ListView android:id="@id/ep2" android:background="@color/al2" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ahb" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/cif" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/fdg" />
 </FrameLayout>

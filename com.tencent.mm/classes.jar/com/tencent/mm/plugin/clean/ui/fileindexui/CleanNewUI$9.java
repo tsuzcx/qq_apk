@@ -6,8 +6,8 @@ import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.http.HttpWrapperBase.Response;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,21 +21,21 @@ final class CleanNewUI$9
   
   public final void onComplete()
   {
-    AppMethodBeat.i(245430);
+    AppMethodBeat.i(271867);
     Log.d("MicroMsg.CleanNewUI", "request onComplete:%s", new Object[] { this.content });
     try
     {
       new JSONObject(this.content);
-      bh.beI();
-      c.aHp().set(ar.a.Vky, this.content);
-      AppMethodBeat.o(245430);
+      bh.bCz();
+      c.ban().set(at.a.acLS, this.content);
+      AppMethodBeat.o(271867);
       return;
     }
     catch (JSONException localJSONException)
     {
       Log.printErrStackTrace("MicroMsg.CleanNewUI", localJSONException, "", new Object[0]);
-      h.IzE.idkeyStat(714L, 6L, 1L, false);
-      AppMethodBeat.o(245430);
+      h.OAn.idkeyStat(714L, 6L, 1L, false);
+      AppMethodBeat.o(271867);
     }
   }
 }

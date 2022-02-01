@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 
 public final class b
 {
-  public static boolean c(Bankcard paramBankcard)
+  public static boolean d(Bankcard paramBankcard)
   {
     AppMethodBeat.i(69076);
     if (paramBankcard == null)
@@ -17,8 +17,8 @@ public final class b
       AppMethodBeat.o(69076);
       return false;
     }
-    h.aHH();
-    Object localObject1 = (String)h.aHG().aHp().b(196659, null);
+    h.baF();
+    Object localObject1 = (String)h.baE().ban().d(196659, null);
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       AppMethodBeat.o(69076);

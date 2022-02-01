@@ -2,7 +2,7 @@ package com.tencent.mm.ipcinvoker;
 
 public abstract interface p
 {
-  public abstract void aFw();
+  public abstract void onDisconnect();
 }
 
 

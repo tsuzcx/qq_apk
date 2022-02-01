@@ -38,7 +38,6 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class zzw
   implements zzbp
@@ -56,15 +55,10 @@ public final class zzw
   private final boolean zzgm;
   private final boolean zzgn;
   private final Queue<BaseImplementation.ApiMethodImpl<?, ?>> zzgo;
-  @GuardedBy("mLock")
   private boolean zzgp;
-  @GuardedBy("mLock")
   private Map<zzh<?>, ConnectionResult> zzgq;
-  @GuardedBy("mLock")
   private Map<zzh<?>, ConnectionResult> zzgr;
-  @GuardedBy("mLock")
   private zzz zzgs;
-  @GuardedBy("mLock")
   private ConnectionResult zzgt;
   
   public zzw(Context paramContext, Lock paramLock, Looper paramLooper, GoogleApiAvailabilityLight paramGoogleApiAvailabilityLight, Map<Api.AnyClientKey<?>, Api.Client> paramMap, ClientSettings paramClientSettings, Map<Api<?>, Boolean> paramMap1, Api.AbstractClientBuilder<? extends SignInClient, SignInOptions> paramAbstractClientBuilder, ArrayList<zzp> paramArrayList, zzav paramzzav, boolean paramBoolean)
@@ -223,7 +217,6 @@ public final class zzw
     }
   }
   
-  @GuardedBy("mLock")
   private final void zzag()
   {
     AppMethodBeat.i(11490);
@@ -248,7 +241,6 @@ public final class zzw
     AppMethodBeat.o(11490);
   }
   
-  @GuardedBy("mLock")
   private final void zzah()
   {
     AppMethodBeat.i(11491);
@@ -259,7 +251,6 @@ public final class zzw
     AppMethodBeat.o(11491);
   }
   
-  @GuardedBy("mLock")
   private final ConnectionResult zzai()
   {
     AppMethodBeat.i(11493);
@@ -338,7 +329,6 @@ public final class zzw
     return false;
   }
   
-  @GuardedBy("mLock")
   public final ConnectionResult blockingConnect()
   {
     AppMethodBeat.i(11480);
@@ -373,7 +363,6 @@ public final class zzw
     return localConnectionResult;
   }
   
-  @GuardedBy("mLock")
   public final ConnectionResult blockingConnect(long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(11481);
@@ -521,25 +510,25 @@ public final class zzw
   {
     // Byte code:
     //   0: sipush 11485
-    //   3: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 68	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   10: invokeinterface 191 1 0
+    //   7: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   10: invokeinterface 188 1 0
     //   15: aload_0
-    //   16: getfield 193	com/google/android/gms/common/api/internal/zzw:zzgq	Ljava/util/Map;
+    //   16: getfield 190	com/google/android/gms/common/api/internal/zzw:zzgq	Ljava/util/Map;
     //   19: ifnull +31 -> 50
     //   22: aload_0
-    //   23: getfield 208	com/google/android/gms/common/api/internal/zzw:zzgt	Lcom/google/android/gms/common/ConnectionResult;
+    //   23: getfield 205	com/google/android/gms/common/api/internal/zzw:zzgt	Lcom/google/android/gms/common/ConnectionResult;
     //   26: astore_2
     //   27: aload_2
     //   28: ifnonnull +22 -> 50
     //   31: iconst_1
     //   32: istore_1
     //   33: aload_0
-    //   34: getfield 68	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   37: invokeinterface 204 1 0
+    //   34: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   37: invokeinterface 201 1 0
     //   42: sipush 11485
-    //   45: invokestatic 183	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: invokestatic 180	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: iload_1
     //   49: ireturn
     //   50: iconst_0
@@ -547,10 +536,10 @@ public final class zzw
     //   52: goto -19 -> 33
     //   55: astore_2
     //   56: aload_0
-    //   57: getfield 68	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   60: invokeinterface 204 1 0
+    //   57: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   60: invokeinterface 201 1 0
     //   65: sipush 11485
-    //   68: invokestatic 183	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   68: invokestatic 180	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: aload_2
     //   72: athrow
     // Local variable table:
@@ -569,25 +558,25 @@ public final class zzw
   {
     // Byte code:
     //   0: sipush 11486
-    //   3: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 68	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   10: invokeinterface 191 1 0
+    //   7: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   10: invokeinterface 188 1 0
     //   15: aload_0
-    //   16: getfield 193	com/google/android/gms/common/api/internal/zzw:zzgq	Ljava/util/Map;
+    //   16: getfield 190	com/google/android/gms/common/api/internal/zzw:zzgq	Ljava/util/Map;
     //   19: ifnonnull +31 -> 50
     //   22: aload_0
-    //   23: getfield 241	com/google/android/gms/common/api/internal/zzw:zzgp	Z
+    //   23: getfield 238	com/google/android/gms/common/api/internal/zzw:zzgp	Z
     //   26: istore_1
     //   27: iload_1
     //   28: ifeq +22 -> 50
     //   31: iconst_1
     //   32: istore_1
     //   33: aload_0
-    //   34: getfield 68	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   37: invokeinterface 204 1 0
+    //   34: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   37: invokeinterface 201 1 0
     //   42: sipush 11486
-    //   45: invokestatic 183	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: invokestatic 180	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: iload_1
     //   49: ireturn
     //   50: iconst_0
@@ -595,10 +584,10 @@ public final class zzw
     //   52: goto -19 -> 33
     //   55: astore_2
     //   56: aload_0
-    //   57: getfield 68	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   60: invokeinterface 204 1 0
+    //   57: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   60: invokeinterface 201 1 0
     //   65: sipush 11486
-    //   68: invokestatic 183	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   68: invokestatic 180	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: aload_2
     //   72: athrow
     // Local variable table:
@@ -674,7 +663,7 @@ public final class zzw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzw
  * JD-Core Version:    0.7.0.1
  */

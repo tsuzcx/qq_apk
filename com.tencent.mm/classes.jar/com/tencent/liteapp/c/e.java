@@ -1,24 +1,24 @@
 package com.tencent.liteapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/mgr/WxaLiteAppDefaultDownloader;", "Lcom/tencent/liteapp/mgr/IWxaLiteAppDownloader;", "()V", "startDownload", "", "app", "Lcom/tencent/liteapp/storage/WxaLiteAppInfo;", "callback", "Lcom/tencent/liteapp/mgr/IWxaLiteAppDownloadCallback;", "Companion", "wxa_lite_app_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/mgr/WxaLiteAppDefaultDownloader;", "Lcom/tencent/liteapp/mgr/IWxaLiteAppDownloader;", "()V", "startDownload", "", "app", "Lcom/tencent/liteapp/storage/WxaLiteAppInfo;", "callback", "Lcom/tencent/liteapp/mgr/IWxaLiteAppDownloadCallback;", "startDownloadBaselib", "baselib", "Lcom/tencent/liteapp/storage/WxaLiteAppBaselibInfo;", "Companion", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
 public final class e
   implements a
 {
   private static final String TAG = "WxaLiteApp.WxaLiteAppDefaultDownloader";
-  public static final a coT;
+  public static final a egf;
   
   static
   {
-    AppMethodBeat.i(259203);
-    coT = new a((byte)0);
+    AppMethodBeat.i(219042);
+    egf = new a((byte)0);
     TAG = "WxaLiteApp.WxaLiteAppDefaultDownloader";
-    AppMethodBeat.o(259203);
+    AppMethodBeat.o(219042);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/mgr/WxaLiteAppDefaultDownloader$Companion;", "", "()V", "BUFF_SIZE", "", "TAG", "", "getTAG", "()Ljava/lang/String;", "wxa_lite_app_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/mgr/WxaLiteAppDefaultDownloader$Companion;", "", "()V", "BUFF_SIZE", "", "TAG", "", "getTAG", "()Ljava/lang/String;", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
   public static final class a {}
 }
 

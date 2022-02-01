@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:background="@color/BW_97" android:paddingLeft="@dimen/ct" android:paddingTop="@dimen/ct" style="@style/mq">
-        <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <RelativeLayout android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ct" android:layout_marginBottom="@dimen/c5">
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j7" android:background="@null" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/icons_outlined_at" android:scaleType="fitXY" />
-                <ImageView android:id="@id/j8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b1a" android:layout_alignTop="@id/j7" android:layout_alignRight="@id/j7" />
-            </RelativeLayout>
-            <com.tencent.mm.ui.widget.cedit.api.MMFlexEditText android:textColor="@color/a2x" android:id="@id/ja" android:background="@drawable/b64" android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:layout_width="0.0dip" android:layout_marginBottom="@dimen/ct" android:maxHeight="@dimen/ae" android:minHeight="@dimen/ag" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/a70" app:customEdt="com.tencent.mm.ui.widget.cedit.api.MMCustomEditText" app:sysEdt="com.tencent.mm.ui.widget.MMEditText" style="@style/mb" />
-            <com.tencent.mm.ui.widget.imageview.WeImageButton android:layout_gravity="bottom" android:id="@id/jj" android:background="@null" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginLeft="@dimen/ct" android:layout_marginBottom="@dimen/c5" android:src="@drawable/of" android:scaleType="fitXY" android:contentDescription="@string/auf" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <Button android:textSize="@dimen/k0" android:textColor="@color/m5" android:id="@id/jl" android:background="@drawable/asp" android:layout_width="wrap_content" android:layout_height="@dimen/aj" android:layout_marginBottom="12.0dip" android:minWidth="@dimen/al" android:text="@string/yq" />
-            <Button android:id="@id/je" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/aj" android:layout_marginBottom="12.0dip" android:minWidth="@dimen/al" android:text="@string/yq" style="@style/ow" />
-        </LinearLayout>
-    </LinearLayout>
+<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@color/al2" android:paddingTop="@dimen/r" android:paddingBottom="@dimen/r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qo" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/login_auth_state_radar_default_select" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/a7b" android:layout_gravity="center" android:id="@id/qn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_centerVertical="true" />
 </LinearLayout>

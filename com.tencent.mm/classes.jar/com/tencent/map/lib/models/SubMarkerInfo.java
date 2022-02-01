@@ -1,9 +1,7 @@
 package com.tencent.map.lib.models;
 
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@Keep
 public class SubMarkerInfo
 {
   private boolean mAvoidOtherMarker = false;
@@ -51,15 +49,15 @@ public class SubMarkerInfo
   
   public String toString()
   {
-    AppMethodBeat.i(236049);
+    AppMethodBeat.i(210965);
     String str = "SubMarkerInfo{mIconName='" + this.mIconName + '\'' + ", mIconWidth=" + this.mIconWidth + ", mIconHeight=" + this.mIconHeight + ", mInteractive=" + this.mInteractive + ", mIsAvoidAnnotation=" + this.mIsAvoidAnnotation + ", mAvoidOtherMarker=" + this.mAvoidOtherMarker + '}';
-    AppMethodBeat.o(236049);
+    AppMethodBeat.o(210965);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.map.lib.models.SubMarkerInfo
  * JD-Core Version:    0.7.0.1
  */

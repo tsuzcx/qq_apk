@@ -21,29 +21,29 @@ public class e<K, V>
   
   public e(int paramInt)
   {
-    AppMethodBeat.i(210257);
+    AppMethodBeat.i(194515);
     if (paramInt <= 0)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("maxSize <= 0");
-      AppMethodBeat.o(210257);
+      AppMethodBeat.o(194515);
       throw localIllegalArgumentException;
     }
     this.maxSize = paramInt;
     this.map = new LinkedHashMap(0, 0.75F, true);
-    AppMethodBeat.o(210257);
+    AppMethodBeat.o(194515);
   }
   
   private int safeSizeOf(K paramK, V paramV)
   {
-    AppMethodBeat.i(210265);
+    AppMethodBeat.i(194522);
     int i = sizeOf(paramK, paramV);
     if (i < 0)
     {
       paramK = new IllegalStateException("Negative size: " + paramK + "=" + paramV);
-      AppMethodBeat.o(210265);
+      AppMethodBeat.o(194522);
       throw paramK;
     }
-    AppMethodBeat.o(210265);
+    AppMethodBeat.o(194522);
     return i;
   }
   
@@ -70,9 +70,9 @@ public class e<K, V>
   
   public final void evictAll()
   {
-    AppMethodBeat.i(210267);
+    AppMethodBeat.i(194611);
     trimToSize(-1);
-    AppMethodBeat.o(210267);
+    AppMethodBeat.o(194611);
   }
   
   public final int evictionCount()
@@ -91,11 +91,11 @@ public class e<K, V>
   
   public final V get(K paramK)
   {
-    AppMethodBeat.i(210259);
+    AppMethodBeat.i(194543);
     if (paramK == null)
     {
       paramK = new NullPointerException("key == null");
-      AppMethodBeat.o(210259);
+      AppMethodBeat.o(194543);
       throw paramK;
     }
     Object localObject1;
@@ -111,13 +111,13 @@ public class e<K, V>
       localObject1 = create(paramK);
       if (localObject1 == null)
       {
-        AppMethodBeat.o(210259);
+        AppMethodBeat.o(194543);
         return null;
       }
     }
     finally
     {
-      AppMethodBeat.o(210259);
+      AppMethodBeat.o(194543);
     }
     try
     {
@@ -132,7 +132,7 @@ public class e<K, V>
           break;
         }
         entryRemoved(false, paramK, localObject1, localObject2);
-        AppMethodBeat.o(210259);
+        AppMethodBeat.o(194543);
         return localObject2;
         this.size += safeSizeOf(paramK, localObject1);
       }
@@ -140,9 +140,9 @@ public class e<K, V>
     }
     finally
     {
-      AppMethodBeat.o(210259);
+      AppMethodBeat.o(194543);
     }
-    AppMethodBeat.o(210259);
+    AppMethodBeat.o(194543);
     return localObject1;
   }
   
@@ -190,11 +190,11 @@ public class e<K, V>
   
   public final V put(K paramK, V paramV)
   {
-    AppMethodBeat.i(210260);
+    AppMethodBeat.i(194554);
     if ((paramK == null) || (paramV == null))
     {
       paramK = new NullPointerException("key == null || value == null");
-      AppMethodBeat.o(210260);
+      AppMethodBeat.o(194554);
       throw paramK;
     }
     try
@@ -209,12 +209,12 @@ public class e<K, V>
         entryRemoved(false, paramK, localObject, paramV);
       }
       trimToSize(this.maxSize);
-      AppMethodBeat.o(210260);
+      AppMethodBeat.o(194554);
       return localObject;
     }
     finally
     {
-      AppMethodBeat.o(210260);
+      AppMethodBeat.o(194554);
     }
   }
   
@@ -234,11 +234,11 @@ public class e<K, V>
   
   public final V remove(K paramK)
   {
-    AppMethodBeat.i(210263);
+    AppMethodBeat.i(194579);
     if (paramK == null)
     {
       paramK = new NullPointerException("key == null");
-      AppMethodBeat.o(210263);
+      AppMethodBeat.o(194579);
       throw paramK;
     }
     try
@@ -250,34 +250,34 @@ public class e<K, V>
       if (localObject != null) {
         entryRemoved(false, paramK, localObject, null);
       }
-      AppMethodBeat.o(210263);
+      AppMethodBeat.o(194579);
       return localObject;
     }
     finally
     {
-      AppMethodBeat.o(210263);
+      AppMethodBeat.o(194579);
     }
   }
   
   public void resize(int paramInt)
   {
-    AppMethodBeat.i(210258);
+    AppMethodBeat.i(194530);
     if (paramInt <= 0)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("maxSize <= 0");
-      AppMethodBeat.o(210258);
+      AppMethodBeat.o(194530);
       throw localIllegalArgumentException;
     }
     try
     {
       this.maxSize = paramInt;
       trimToSize(paramInt);
-      AppMethodBeat.o(210258);
+      AppMethodBeat.o(194530);
       return;
     }
     finally
     {
-      AppMethodBeat.o(210258);
+      AppMethodBeat.o(194530);
     }
   }
   
@@ -304,9 +304,9 @@ public class e<K, V>
   {
     try
     {
-      AppMethodBeat.i(210268);
+      AppMethodBeat.i(194680);
       LinkedHashMap localLinkedHashMap = new LinkedHashMap(this.map);
-      AppMethodBeat.o(210268);
+      AppMethodBeat.o(194680);
       return localLinkedHashMap;
     }
     finally
@@ -321,13 +321,13 @@ public class e<K, V>
     int i = 0;
     try
     {
-      AppMethodBeat.i(210270);
+      AppMethodBeat.i(194692);
       int j = this.hitCount + this.missCount;
       if (j != 0) {
         i = this.hitCount * 100 / j;
       }
       String str = String.format(Locale.US, "LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.maxSize), Integer.valueOf(this.hitCount), Integer.valueOf(this.missCount), Integer.valueOf(i) });
-      AppMethodBeat.o(210270);
+      AppMethodBeat.o(194692);
       return str;
     }
     finally {}
@@ -335,7 +335,7 @@ public class e<K, V>
   
   public void trimToSize(int paramInt)
   {
-    AppMethodBeat.i(210262);
+    AppMethodBeat.i(194567);
     for (;;)
     {
       try
@@ -343,17 +343,17 @@ public class e<K, V>
         if ((this.size < 0) || ((this.map.isEmpty()) && (this.size != 0)))
         {
           IllegalStateException localIllegalStateException = new IllegalStateException(getClass().getName() + ".sizeOf() is reporting inconsistent results!");
-          AppMethodBeat.o(210262);
+          AppMethodBeat.o(194567);
           throw localIllegalStateException;
         }
       }
       finally
       {
-        AppMethodBeat.o(210262);
+        AppMethodBeat.o(194567);
       }
       if ((this.size <= paramInt) || (this.map.isEmpty()))
       {
-        AppMethodBeat.o(210262);
+        AppMethodBeat.o(194567);
         return;
       }
       Object localObject3 = (Map.Entry)this.map.entrySet().iterator().next();
@@ -368,7 +368,7 @@ public class e<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     androidx.b.e
  * JD-Core Version:    0.7.0.1
  */

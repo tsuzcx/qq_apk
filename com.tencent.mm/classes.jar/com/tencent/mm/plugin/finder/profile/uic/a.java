@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.finder.profile.uic;
 
+import android.animation.ArgbEvaluator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -7,622 +8,947 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.AppBarLayout.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.finder.api.d.a;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.cr;
-import com.tencent.mm.plugin.finder.live.report.s;
-import com.tencent.mm.plugin.finder.live.report.s.a;
-import com.tencent.mm.plugin.finder.live.report.s.bc;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.plugin.finder.utils.ab;
-import com.tencent.mm.plugin.finder.utils.ac;
-import com.tencent.mm.plugin.finder.utils.ac.a;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
-import com.tencent.mm.plugin.finder.viewmodel.component.m;
-import com.tencent.mm.plugin.finder.viewmodel.component.m.a;
-import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.finder.api.m;
+import com.tencent.mm.plugin.finder.cgi.dt;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.live.report.q;
+import com.tencent.mm.plugin.finder.live.report.q.a;
+import com.tencent.mm.plugin.finder.live.report.q.br;
+import com.tencent.mm.plugin.finder.loader.p.a;
+import com.tencent.mm.plugin.finder.post.g;
+import com.tencent.mm.plugin.finder.report.ae;
+import com.tencent.mm.plugin.finder.report.ae.a;
+import com.tencent.mm.plugin.finder.utils.am;
+import com.tencent.mm.plugin.finder.utils.an;
+import com.tencent.mm.plugin.finder.utils.an.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.plugin.findersdk.a.ce;
+import com.tencent.mm.plugin.findersdk.a.cn;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.bbh;
-import com.tencent.mm.protocal.protobuf.dna;
+import com.tencent.mm.protocal.protobuf.aps;
+import com.tencent.mm.protocal.protobuf.bkk;
+import com.tencent.mm.protocal.protobuf.efo;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.ax;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g.a;
-import com.tencent.mm.ui.w;
-import com.tencent.mm.ui.widget.a.e.b;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.view.HardTouchableLayout;
+import com.tencent.mm.ui.y;
 import java.util.HashMap;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.ah;
+import kotlin.j;
+import kotlin.r;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "actionBarAvatarIv", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getActionBarAvatarIv", "()Landroid/widget/ImageView;", "actionBarAvatarIv$delegate", "Lkotlin/Lazy;", "actionBarFollowText", "Landroid/widget/TextView;", "getActionBarFollowText", "()Landroid/widget/TextView;", "actionBarFollowText$delegate", "actionBarFollowedIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getActionBarFollowedIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "actionBarFollowedIv$delegate", "actionBarNicknameTv", "getActionBarNicknameTv", "actionBarNicknameTv$delegate", "appBarLayout", "Lcom/google/android/material/appbar/AppBarLayout;", "getAppBarLayout", "()Lcom/google/android/material/appbar/AppBarLayout;", "appBarLayout$delegate", "appBarLayoutOffset", "", "backBtn", "Landroid/widget/LinearLayout;", "getBackBtn", "()Landroid/widget/LinearLayout;", "backBtn$delegate", "backBtnIv", "getBackBtnIv", "backBtnIv$delegate", "contentLayout", "Lcom/tencent/mm/view/HardTouchableLayout;", "getContentLayout", "()Lcom/tencent/mm/view/HardTouchableLayout;", "contentLayout$delegate", "coordinatorLayout", "Landroidx/coordinatorlayout/widget/CoordinatorLayout;", "getCoordinatorLayout", "()Landroidx/coordinatorlayout/widget/CoordinatorLayout;", "coordinatorLayout$delegate", "followContainer", "Landroid/widget/FrameLayout;", "getFollowContainer", "()Landroid/widget/FrameLayout;", "followContainer$delegate", "hasFinderEntry", "", "isSelf", "()Z", "isSelf$delegate", "isSelfFlag", "isSelfFlag$delegate", "lastActionBarProgress", "", "livePostUic", "Lcom/tencent/mm/plugin/finder/live/viewmodel/component/FinderLivePostBtnUIC;", "getLivePostUic", "()Lcom/tencent/mm/plugin/finder/live/viewmodel/component/FinderLivePostBtnUIC;", "livePostUic$delegate", "moreBtn", "getMoreBtn", "moreBtn$delegate", "moreBtnIv", "getMoreBtnIv", "moreBtnIv$delegate", "myActionBar", "getMyActionBar", "myActionBar$delegate", "normalActionBarColor", "postBtn", "getPostBtn", "postBtn$delegate", "postBtnIv", "getPostBtnIv", "postBtnIv$delegate", "postItemMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/protocal/protobuf/PostActionSheet;", "Lkotlin/collections/HashMap;", "profileContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getProfileContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "userInfoLayout", "getUserInfoLayout", "userInfoLayout$delegate", "username", "", "changeFollowView", "", "progress", "alpha", "doClickMoreAction", "doClickPostAction", "doClickPostLiveAction", "doShowPostBottomSheet", "fixActionBarStatus", "hasSetCoverImg", "hideActionBar", "initCustomActionBar", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setVisibleStats", "view", "Landroid/view/View;", "visibleStat", "Companion", "OnOffsetChangedListener", "OverScrollListener", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "actionBarAvatarIv", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getActionBarAvatarIv", "()Landroid/widget/ImageView;", "actionBarAvatarIv$delegate", "Lkotlin/Lazy;", "actionBarBg", "Landroid/widget/FrameLayout;", "getActionBarBg", "()Landroid/widget/FrameLayout;", "actionBarBg$delegate", "actionBarContainer", "getActionBarContainer", "actionBarContainer$delegate", "actionBarFollowText", "Landroid/widget/TextView;", "getActionBarFollowText", "()Landroid/widget/TextView;", "actionBarFollowText$delegate", "actionBarFollowedIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getActionBarFollowedIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "actionBarFollowedIv$delegate", "actionBarNicknameTv", "getActionBarNicknameTv", "actionBarNicknameTv$delegate", "appBarLayout", "Lcom/google/android/material/appbar/AppBarLayout;", "getAppBarLayout", "()Lcom/google/android/material/appbar/AppBarLayout;", "appBarLayout$delegate", "appBarLayoutOffset", "", "argbEvaluator", "Landroid/animation/ArgbEvaluator;", "backBtn", "Landroid/widget/LinearLayout;", "getBackBtn", "()Landroid/widget/LinearLayout;", "backBtn$delegate", "backBtnIv", "getBackBtnIv", "backBtnIv$delegate", "colorBg2", "getColorBg2", "()I", "setColorBg2", "(I)V", "coverInfo", "Lkotlin/Pair;", "", "getCoverInfo", "()Lkotlin/Pair;", "setCoverInfo", "(Lkotlin/Pair;)V", "endColor", "getEndColor", "setEndColor", "followContainer", "getFollowContainer", "followContainer$delegate", "hasFinderEntry", "isSelf", "()Z", "isSelf$delegate", "isSelfFlag", "isSelfFlag$delegate", "lastActionBarProgress", "", "livePostUic", "Lcom/tencent/mm/plugin/findersdk/api/IFinderLivePostBtnUIC;", "getLivePostUic", "()Lcom/tencent/mm/plugin/findersdk/api/IFinderLivePostBtnUIC;", "livePostUic$delegate", "moreBtn", "getMoreBtn", "moreBtn$delegate", "myActionBar", "getMyActionBar", "myActionBar$delegate", "normalActionBarColor", "postBtn", "getPostBtn", "postBtn$delegate", "postBtnIv", "getPostBtnIv", "postBtnIv$delegate", "postItemMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/protocal/protobuf/PostActionSheet;", "Lkotlin/collections/HashMap;", "profileContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getProfileContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "startColor", "userInfoLayout", "getUserInfoLayout", "userInfoLayout$delegate", "username", "", "changeFollowView", "", "progress", "alpha", "doClickMoreAction", "doClickPostAction", "doClickPostLiveAction", "doShowPostBottomSheet", "fixActionBarStatus", "hideActionBar", "initCustomActionBar", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "isHasCover", "coverColor", "setVisibleStats", "view", "Landroid/view/View;", "visibleStat", "Companion", "OnOffsetChangedListener", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends UIComponent
-  implements com.tencent.mm.an.i
+  implements com.tencent.mm.am.h
 {
-  public static final a zQs;
+  public static final a Fct;
+  private final j AIq;
+  private final j AvT;
+  private final j AvV;
+  private final j AvW;
+  private final j AvX;
+  private final j AvY;
+  private final j AvZ;
+  private final int Awb;
+  private float Awe;
+  private int Awf;
+  private HashMap<Integer, efo> Bsq;
+  private int CRt;
+  private final j ETF;
+  private final j FcA;
+  private final j FcB;
+  private final j FcC;
+  private final boolean FcD;
+  private ArgbEvaluator FcE;
+  r<Boolean, Integer> FcF;
+  int FcG;
+  private final j FcH;
+  private final j Fcu;
+  private final j Fcv;
+  final j Fcw;
+  final j Fcx;
+  private final j Fcy;
+  private final j Fcz;
+  int endColor;
   private String username;
-  private final kotlin.f wYL;
-  private final kotlin.f wYM;
-  private final kotlin.f wYN;
-  private final kotlin.f wYO;
-  private final kotlin.f wYP;
-  private final kotlin.f wYQ;
-  private final kotlin.f wYR;
-  private final int wYT;
-  private float wYW;
-  private int wYX;
-  private HashMap<Integer, dna> xSN;
-  private final kotlin.f xjx;
-  private final kotlin.f yOZ;
-  private final kotlin.f zQh;
-  private final kotlin.f zQi;
-  final kotlin.f zQj;
-  final kotlin.f zQk;
-  private final kotlin.f zQl;
-  private final kotlin.f zQm;
-  private final kotlin.f zQn;
-  private final kotlin.f zQo;
-  private final kotlin.f zQp;
-  private final boolean zQq;
-  private final kotlin.f zQr;
   
   static
   {
-    AppMethodBeat.i(255571);
-    zQs = new a((byte)0);
-    AppMethodBeat.o(255571);
+    AppMethodBeat.i(349304);
+    Fct = new a((byte)0);
+    AppMethodBeat.o(349304);
   }
   
   public a(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(255568);
-    this.yOZ = kotlin.g.ar((kotlin.g.a.a)new h(paramAppCompatActivity));
-    this.zQh = kotlin.g.ar((kotlin.g.a.a)new ah(paramAppCompatActivity));
-    this.zQi = kotlin.g.ar((kotlin.g.a.a)new v(paramAppCompatActivity));
-    this.zQj = kotlin.g.ar((kotlin.g.a.a)new e(paramAppCompatActivity));
-    this.zQk = kotlin.g.ar((kotlin.g.a.a)new d(paramAppCompatActivity));
-    this.wYL = kotlin.g.ar((kotlin.g.a.a)new g(paramAppCompatActivity));
-    this.wYP = kotlin.g.ar((kotlin.g.a.a)new i(paramAppCompatActivity));
-    this.zQl = kotlin.g.ar((kotlin.g.a.a)new ai(paramAppCompatActivity));
-    this.wYR = kotlin.g.ar((kotlin.g.a.a)new ab(paramAppCompatActivity));
-    this.wYQ = kotlin.g.ar((kotlin.g.a.a)new z(paramAppCompatActivity));
-    this.zQm = kotlin.g.ar((kotlin.g.a.a)new aa(paramAppCompatActivity));
-    this.zQn = kotlin.g.ar((kotlin.g.a.a)new j(paramAppCompatActivity));
-    this.wYO = kotlin.g.ar((kotlin.g.a.a)new aj(paramAppCompatActivity));
-    this.wYM = kotlin.g.ar((kotlin.g.a.a)new k(paramAppCompatActivity));
-    this.zQo = kotlin.g.ar((kotlin.g.a.a)new c(paramAppCompatActivity));
-    this.wYN = kotlin.g.ar((kotlin.g.a.a)new f(paramAppCompatActivity));
-    this.wYT = paramAppCompatActivity.getResources().getColor(b.c.BG_2);
+    AppMethodBeat.i(348957);
+    this.ETF = kotlin.k.cm((kotlin.g.a.a)new j(paramAppCompatActivity));
+    this.Fcu = kotlin.k.cm((kotlin.g.a.a)new t(paramAppCompatActivity));
+    this.Fcv = kotlin.k.cm((kotlin.g.a.a)new n(paramAppCompatActivity));
+    this.Fcw = kotlin.k.cm((kotlin.g.a.a)new g(paramAppCompatActivity));
+    this.Fcx = kotlin.k.cm((kotlin.g.a.a)new f(paramAppCompatActivity));
+    this.AvT = kotlin.k.cm((kotlin.g.a.a)new i(paramAppCompatActivity));
+    this.AvX = kotlin.k.cm((kotlin.g.a.a)new k(paramAppCompatActivity));
+    this.Fcy = kotlin.k.cm((kotlin.g.a.a)new u(paramAppCompatActivity));
+    this.AvZ = kotlin.k.cm((kotlin.g.a.a)new s(paramAppCompatActivity));
+    this.AvY = kotlin.k.cm((kotlin.g.a.a)new r(paramAppCompatActivity));
+    this.AvW = kotlin.k.cm((kotlin.g.a.a)new v(paramAppCompatActivity));
+    this.Fcz = kotlin.k.cm((kotlin.g.a.a)new c(paramAppCompatActivity));
+    this.AvV = kotlin.k.cm((kotlin.g.a.a)new h(paramAppCompatActivity));
+    this.FcA = kotlin.k.cm((kotlin.g.a.a)new e(paramAppCompatActivity));
+    this.FcB = kotlin.k.cm((kotlin.g.a.a)new d(paramAppCompatActivity));
+    this.Awb = paramAppCompatActivity.getResources().getColor(e.b.BG_2);
     this.username = "";
-    this.xjx = kotlin.g.ar((kotlin.g.a.a)new x(this));
-    this.zQp = kotlin.g.ar((kotlin.g.a.a)new w(this));
-    this.zQq = ((ak)com.tencent.mm.kernel.h.ag(ak.class)).showFinderEntry();
-    this.xSN = new HashMap();
-    this.zQr = kotlin.g.ar((kotlin.g.a.a)new y(paramAppCompatActivity));
-    AppMethodBeat.o(255568);
+    this.AIq = kotlin.k.cm((kotlin.g.a.a)new p(this));
+    this.FcC = kotlin.k.cm((kotlin.g.a.a)new o(this));
+    this.FcD = ((cn)com.tencent.mm.kernel.h.az(cn.class)).showFinderEntry();
+    this.FcE = new ArgbEvaluator();
+    this.CRt = this.Awb;
+    this.FcG = paramAppCompatActivity.getResources().getColor(e.b.BG_2);
+    this.endColor = this.FcG;
+    this.Bsq = new HashMap();
+    this.FcH = kotlin.k.cm((kotlin.g.a.a)new q(paramAppCompatActivity));
+    AppMethodBeat.o(348957);
   }
   
-  private static void ah(View paramView, int paramInt)
+  private static final void a(AppCompatActivity paramAppCompatActivity, a parama, String paramString, MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(255561);
+    am localam = null;
+    AppMethodBeat.i(349193);
+    kotlin.g.b.s.u(paramAppCompatActivity, "$context");
+    kotlin.g.b.s.u(parama, "this$0");
+    kotlin.g.b.s.u(paramString, "$postId");
+    Intent localIntent = new Intent();
+    if (paramMenuItem.getItemId() == 1)
+    {
+      localIntent.putExtra("key_finder_post_router", 2);
+      parama = com.tencent.mm.plugin.finder.report.z.FrZ;
+      parama = as.GSQ;
+      parama = as.a.hu((Context)paramAppCompatActivity);
+      if (parama == null)
+      {
+        parama = null;
+        com.tencent.mm.plugin.finder.report.z.b(1, "post_acionsheet_camera", "", parama);
+      }
+    }
+    for (;;)
+    {
+      localIntent.putExtra("key_finder_post_from", 1);
+      localIntent.putExtra("key_finder_post_id", paramString);
+      parama = com.tencent.mm.plugin.finder.utils.u.GgT;
+      com.tencent.mm.plugin.finder.utils.u.a((Context)paramAppCompatActivity, localIntent, 132, 10);
+      parama = com.tencent.mm.plugin.finder.utils.a.GfO;
+      com.tencent.mm.plugin.finder.utils.a.enterFinderPostRouterUI((Context)paramAppCompatActivity, localIntent);
+      AppMethodBeat.o(349193);
+      return;
+      parama = parama.fou();
+      break;
+      if (paramMenuItem.getItemId() == 2)
+      {
+        localIntent.putExtra("key_finder_post_router", 3);
+        localIntent.putExtra("key_maas_entrance", 2);
+        parama = com.tencent.mm.plugin.finder.report.z.FrZ;
+        parama = as.GSQ;
+        parama = as.a.hu((Context)paramAppCompatActivity);
+        if (parama == null) {}
+        for (parama = localam;; parama = parama.fou())
+        {
+          com.tencent.mm.plugin.finder.report.z.b(1, "post_actionsheet_album", "", parama);
+          break;
+        }
+      }
+      if (paramMenuItem.getItemId() == 4)
+      {
+        localIntent.putExtra("key_finder_post_router", 16);
+      }
+      else if (parama.Bsq.containsKey(Integer.valueOf(paramMenuItem.getItemId())))
+      {
+        localam = am.GhD;
+        am.a((Context)parama.getActivity(), (efo)parama.Bsq.get(Integer.valueOf(paramMenuItem.getItemId())));
+        parama = com.tencent.mm.plugin.finder.report.v.FrN;
+        com.tencent.mm.plugin.finder.report.v.aP(2, false);
+      }
+    }
+  }
+  
+  private static final void a(a parama)
+  {
+    AppMethodBeat.i(349175);
+    kotlin.g.b.s.u(parama, "this$0");
+    com.tencent.mm.plugin.finder.report.z localz = com.tencent.mm.plugin.finder.report.z.FrZ;
+    com.tencent.mm.plugin.finder.report.z.h((Context)parama.getActivity(), 2, 4);
+    AppMethodBeat.o(349175);
+  }
+  
+  private static final void a(a parama, MenuItem paramMenuItem, int paramInt)
+  {
+    AppMethodBeat.i(349145);
+    kotlin.g.b.s.u(parama, "this$0");
+    switch (paramMenuItem.getItemId())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(349145);
+      return;
+      paramMenuItem = com.tencent.mm.plugin.secinforeport.a.d.Pmb;
+      com.tencent.mm.plugin.secinforeport.a.d.asyncReportFinderSecurityInfoThroughCgi(540999703);
+      paramMenuItem = parama.getProfileContact();
+      if (paramMenuItem != null)
+      {
+        Object localObject = an.GhR;
+        an.a.a((MMActivity)parama.getActivity(), paramMenuItem);
+        AppMethodBeat.o(349145);
+        return;
+        paramMenuItem = parama.getActivity().getString(e.h.finder_expose_url, new Object[] { LocaleUtil.getApplicationLanguage(), parama.username });
+        kotlin.g.b.s.s(paramMenuItem, "activity.getString(R.str…tionLanguage(), username)");
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("rawUrl", paramMenuItem);
+        com.tencent.mm.br.c.b((Context)parama.getActivity(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+        long l1 = parama.getActivity().getIntent().getLongExtra("KEY_FINDER_FEEDID", 0L);
+        long l2 = parama.getActivity().getIntent().getLongExtra("finder_read_feed_id", 0L);
+        paramMenuItem = new aps();
+        localObject = com.tencent.mm.plugin.finder.utils.aw.Gjk;
+        paramMenuItem.ZwW = com.tencent.mm.plugin.finder.utils.aw.aj(ak.l(kotlin.v.Y("feedActionType", Integer.valueOf(14))));
+        if (l1 != 0L)
+        {
+          paramMenuItem.hKN = l1;
+          paramMenuItem.finderUsername = parama.getActivity().getIntent().getStringExtra("finder_username");
+          localObject = ae.Fsm;
+          localObject = as.GSQ;
+          parama = as.a.hu((Context)parama.getContext());
+          if (parama != null) {
+            break label319;
+          }
+        }
+        label319:
+        for (parama = null;; parama = parama.fou())
+        {
+          ae.a.b(parama, paramMenuItem);
+          AppMethodBeat.o(349145);
+          return;
+          l1 = l2;
+          break;
+        }
+        paramMenuItem = com.tencent.mm.ui.component.k.aeZF;
+        ((h)com.tencent.mm.ui.component.k.d(parama.getActivity()).q(h.class)).eJX();
+        AppMethodBeat.o(349145);
+        return;
+        paramMenuItem = com.tencent.mm.plugin.finder.utils.a.GfO;
+        com.tencent.mm.plugin.finder.utils.a.hm((Context)parama.getActivity());
+      }
+    }
+  }
+  
+  private static final void a(a parama, View paramView)
+  {
+    AppMethodBeat.i(349088);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(parama, "this$0");
+    paramView = com.tencent.mm.ui.component.k.aeZF;
+    ((f)com.tencent.mm.ui.component.k.d(parama.getActivity()).q(f.class)).FdH = true;
+    parama.getActivity().finish();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(349088);
+  }
+  
+  private static final void a(a parama, AppCompatActivity paramAppCompatActivity, com.tencent.mm.ui.base.s params)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(349185);
+    kotlin.g.b.s.u(parama, "this$0");
+    kotlin.g.b.s.u(paramAppCompatActivity, "$context");
+    if (params.jmw())
+    {
+      params.oh(1, e.h.app_field_mmsight);
+      params.oh(2, e.h.app_field_select_new_pic);
+      if (((com.tencent.mm.mj_template.api.d)com.tencent.mm.kernel.h.az(com.tencent.mm.mj_template.api.d.class)).getFinderMaasConfig().bxg()) {
+        params.oh(4, e.h.finder_video_template_post);
+      }
+      am localam = am.GhD;
+      am.a(parama.Bsq, params, (Activity)paramAppCompatActivity);
+    }
+    parama = com.tencent.mm.plugin.finder.report.z.FrZ;
+    parama = as.GSQ;
+    parama = as.a.hu((Context)paramAppCompatActivity);
+    if (parama == null)
+    {
+      parama = null;
+      com.tencent.mm.plugin.finder.report.z.b(0, "post_acionsheet_camera", "", parama);
+      parama = com.tencent.mm.plugin.finder.report.z.FrZ;
+      parama = as.GSQ;
+      parama = as.a.hu((Context)paramAppCompatActivity);
+      if (parama != null) {
+        break label176;
+      }
+    }
+    label176:
+    for (parama = localObject;; parama = parama.fou())
+    {
+      com.tencent.mm.plugin.finder.report.z.b(0, "post_actionsheet_album", "", parama);
+      AppMethodBeat.o(349185);
+      return;
+      parama = parama.fou();
+      break;
+    }
+  }
+  
+  private static final void a(a parama, com.tencent.mm.ui.base.s params)
+  {
+    AppMethodBeat.i(349131);
+    kotlin.g.b.s.u(parama, "this$0");
+    if (params.jmw())
+    {
+      Object localObject = parama.getProfileContact();
+      if (localObject == null)
+      {
+        i = 0;
+        if ((i & 0x100000) == 0) {
+          params.oh(10002, e.h.finder_profile_recommend);
+        }
+        if ((parama.FcD) && (!kotlin.g.b.s.p(parama.username, com.tencent.mm.model.z.bAW())))
+        {
+          localObject = com.tencent.mm.plugin.finder.utils.aw.Gjk;
+          localObject = com.tencent.mm.plugin.finder.api.d.AwY;
+          if (!com.tencent.mm.plugin.finder.utils.aw.o(d.a.auT(parama.username))) {
+            break label149;
+          }
+          params.oh(10010, e.h.finder_unblock_his_feed);
+        }
+      }
+      for (;;)
+      {
+        parama = com.tencent.mm.kernel.h.baE().ban().get(at.a.adfc, "");
+        if (parama != null) {
+          break label163;
+        }
+        parama = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(349131);
+        throw parama;
+        i = ((m)localObject).field_extFlag;
+        break;
+        label149:
+        params.oh(10010, e.h.finder_block_his_feed);
+      }
+      label163:
+      if (((CharSequence)parama).length() <= 0) {
+        break label213;
+      }
+    }
+    label213:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        params.oh(10011, e.h.finder_account_detail);
+      }
+      params.oh(10004, e.h.finder_profile_expose);
+      AppMethodBeat.o(349131);
+      return;
+    }
+  }
+  
+  private static void ar(View paramView, int paramInt)
+  {
+    AppMethodBeat.i(349077);
     if (paramView.getVisibility() != paramInt) {
       paramView.setVisibility(paramInt);
     }
-    AppMethodBeat.o(255561);
+    AppMethodBeat.o(349077);
   }
   
-  private final LinearLayout dNi()
+  private static final void b(a parama, MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(255530);
-    LinearLayout localLinearLayout = (LinearLayout)this.zQh.getValue();
-    AppMethodBeat.o(255530);
-    return localLinearLayout;
+    AppMethodBeat.i(349167);
+    kotlin.g.b.s.u(parama, "this$0");
+    switch (paramMenuItem.getItemId())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(349167);
+      return;
+      paramMenuItem = com.tencent.mm.plugin.finder.report.z.FrZ;
+      com.tencent.mm.plugin.finder.report.z.h((Context)parama.getActivity(), 2, 2);
+      parama.efU();
+      AppMethodBeat.o(349167);
+      return;
+      paramMenuItem = com.tencent.mm.plugin.finder.report.z.FrZ;
+      com.tencent.mm.plugin.finder.report.z.h((Context)parama.getActivity(), 2, 3);
+      ((ce)com.tencent.mm.kernel.h.ax(ce.class)).etm().a(q.br.DBY);
+      ((ce)com.tencent.mm.kernel.h.ax(ce.class)).C(q.a.DqE.mwI, "");
+      ((com.tencent.mm.plugin.findersdk.a.av)parama.FcH.getValue()).exO();
+    }
   }
   
-  private final LinearLayout dNk()
+  private static final void b(a parama, View paramView)
   {
-    AppMethodBeat.i(255539);
-    LinearLayout localLinearLayout = (LinearLayout)this.wYQ.getValue();
-    AppMethodBeat.o(255539);
-    return localLinearLayout;
+    AppMethodBeat.i(349096);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(parama, "this$0");
+    parama.eIL();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(349096);
   }
   
-  private final ImageView dNl()
+  private static final void b(a parama, com.tencent.mm.ui.base.s params)
   {
-    AppMethodBeat.i(255545);
-    ImageView localImageView = (ImageView)this.zQo.getValue();
-    AppMethodBeat.o(255545);
-    return localImageView;
+    AppMethodBeat.i(349158);
+    kotlin.g.b.s.u(parama, "this$0");
+    if (params.jmw())
+    {
+      params.oh(10012, e.h.finder_post_new);
+      com.tencent.mm.ui.component.k localk = com.tencent.mm.ui.component.k.aeZF;
+      if (((h)com.tencent.mm.ui.component.k.d(parama.getActivity()).q(h.class)).Fey) {
+        params.oh(10013, e.h.finder_profile_post_live);
+      }
+    }
+    AppMethodBeat.o(349158);
   }
   
-  private final AppBarLayout dmO()
+  private static final void c(a parama, View paramView)
   {
-    AppMethodBeat.i(255534);
-    AppBarLayout localAppBarLayout = (AppBarLayout)this.wYL.getValue();
-    AppMethodBeat.o(255534);
+    AppMethodBeat.i(349102);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(parama, "this$0");
+    parama.eIK();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(349102);
+  }
+  
+  private static final boolean d(a parama, View paramView)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(349113);
+    Object localObject2 = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", localObject2, localb.aYj());
+    kotlin.g.b.s.u(parama, "this$0");
+    localObject2 = new StringBuilder();
+    paramView = h.FdM;
+    paramView = (h.c)h.access$getUserExtInfoCache$cp().get(parama.username);
+    if (paramView == null)
+    {
+      paramView = null;
+      ((StringBuilder)localObject2).append("finderUsername:" + parama.username + '\n');
+      if (paramView != null) {
+        break label213;
+      }
+    }
+    label213:
+    for (paramView = localObject1;; paramView = paramView.hAR)
+    {
+      ((StringBuilder)localObject2).append(kotlin.g.b.s.X("noticeId:", paramView));
+      paramView = com.tencent.mm.plugin.finder.tools.a.FNQ;
+      parama = (Context)parama.getActivity();
+      paramView = ((StringBuilder)localObject2).toString();
+      kotlin.g.b.s.s(paramView, "sb.toString()");
+      com.tencent.mm.plugin.finder.tools.a.aF(parama, paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(349113);
+      return true;
+      paramView = paramView.FeE;
+      break;
+    }
+  }
+  
+  private final AppBarLayout dTJ()
+  {
+    AppMethodBeat.i(348972);
+    AppBarLayout localAppBarLayout = (AppBarLayout)this.AvT.getValue();
+    AppMethodBeat.o(348972);
     return localAppBarLayout;
   }
   
-  private final TextView dmP()
+  private final TextView dTK()
   {
-    AppMethodBeat.i(255547);
-    TextView localTextView = (TextView)this.wYN.getValue();
-    AppMethodBeat.o(255547);
+    AppMethodBeat.i(349010);
+    TextView localTextView = (TextView)this.AvV.getValue();
+    AppMethodBeat.o(349010);
     return localTextView;
   }
   
-  private final LinearLayout dmQ()
+  private final LinearLayout dTL()
   {
-    AppMethodBeat.i(255543);
-    LinearLayout localLinearLayout = (LinearLayout)this.wYO.getValue();
-    AppMethodBeat.o(255543);
+    AppMethodBeat.i(348995);
+    LinearLayout localLinearLayout = (LinearLayout)this.AvW.getValue();
+    AppMethodBeat.o(348995);
     return localLinearLayout;
   }
   
-  private final com.tencent.mm.plugin.finder.api.i getProfileContact()
+  private LinearLayout dTM()
   {
-    AppMethodBeat.i(255551);
-    Object localObject = com.tencent.mm.plugin.finder.api.d.wZQ;
-    localObject = d.a.aAK(this.username);
-    AppMethodBeat.o(255551);
+    AppMethodBeat.i(348979);
+    LinearLayout localLinearLayout = (LinearLayout)this.AvZ.getValue();
+    AppMethodBeat.o(348979);
+    return localLinearLayout;
+  }
+  
+  private static final void e(a parama, View paramView)
+  {
+    AppMethodBeat.i(349119);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(parama, "this$0");
+    parama.eIK();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(349119);
+  }
+  
+  private final LinearLayout eIF()
+  {
+    AppMethodBeat.i(348964);
+    LinearLayout localLinearLayout = (LinearLayout)this.Fcu.getValue();
+    AppMethodBeat.o(348964);
+    return localLinearLayout;
+  }
+  
+  private final LinearLayout eIH()
+  {
+    AppMethodBeat.i(348987);
+    LinearLayout localLinearLayout = (LinearLayout)this.AvY.getValue();
+    AppMethodBeat.o(348987);
+    return localLinearLayout;
+  }
+  
+  private final ImageView eII()
+  {
+    AppMethodBeat.i(349003);
+    ImageView localImageView = (ImageView)this.Fcz.getValue();
+    AppMethodBeat.o(349003);
+    return localImageView;
+  }
+  
+  private final FrameLayout eIJ()
+  {
+    AppMethodBeat.i(349015);
+    FrameLayout localFrameLayout = (FrameLayout)this.FcA.getValue();
+    AppMethodBeat.o(349015);
+    return localFrameLayout;
+  }
+  
+  private final void eIK()
+  {
+    AppMethodBeat.i(349042);
+    com.tencent.mm.ui.widget.a.f localf = new com.tencent.mm.ui.widget.a.f((Context)getActivity(), 1, false);
+    localf.Vtg = new a..ExternalSyntheticLambda5(this);
+    localf.GAC = new a..ExternalSyntheticLambda10(this);
+    localf.dDn();
+    AppMethodBeat.o(349042);
+  }
+  
+  private final void eIL()
+  {
+    AppMethodBeat.i(349052);
+    Object localObject = com.tencent.mm.plugin.finder.report.z.FrZ;
+    com.tencent.mm.plugin.finder.report.z.h((Context)getActivity(), 1, 2);
+    localObject = com.tencent.mm.plugin.finder.report.z.FrZ;
+    com.tencent.mm.plugin.finder.report.z.h((Context)getActivity(), 1, 3);
+    localObject = com.tencent.mm.plugin.finder.report.z.FrZ;
+    com.tencent.mm.plugin.finder.report.z.h((Context)getActivity(), 2, 1);
+    localObject = new com.tencent.mm.ui.widget.a.f((Context)getActivity(), 1, false);
+    ((com.tencent.mm.ui.widget.a.f)localObject).Vtg = new a..ExternalSyntheticLambda6(this);
+    ((com.tencent.mm.ui.widget.a.f)localObject).GAC = new a..ExternalSyntheticLambda9(this);
+    ((com.tencent.mm.ui.widget.a.f)localObject).aeLi = new a..ExternalSyntheticLambda11(this);
+    ((com.tencent.mm.ui.widget.a.f)localObject).dDn();
+    AppMethodBeat.o(349052);
+  }
+  
+  private static final void eIM()
+  {
+    AppMethodBeat.i(349201);
+    com.tencent.mm.plugin.finder.report.v localv = com.tencent.mm.plugin.finder.report.v.FrN;
+    com.tencent.mm.plugin.finder.report.v.SA(6);
+    AppMethodBeat.o(349201);
+  }
+  
+  private final void efU()
+  {
+    AppMethodBeat.i(349072);
+    Object localObject1 = com.tencent.mm.plugin.findersdk.d.a.Hdr;
+    if (com.tencent.mm.plugin.findersdk.d.a.aDj("post"))
+    {
+      AppMethodBeat.o(349072);
+      return;
+    }
+    Object localObject2 = getActivity();
+    localObject1 = new StringBuilder();
+    com.tencent.mm.kernel.h.baC();
+    localObject1 = com.tencent.mm.kernel.b.aZs() + '_' + Util.nowMilliSecond();
+    Object localObject3 = com.tencent.mm.plugin.finder.activity.b.Aty;
+    if (com.tencent.mm.plugin.finder.activity.b.c(null, 5)) {}
+    for (int i = 9;; i = 2)
+    {
+      localObject3 = com.tencent.mm.plugin.finder.utils.a.GfO;
+      if (!com.tencent.mm.plugin.finder.utils.a.gX((Context)localObject2)) {
+        break;
+      }
+      localObject2 = com.tencent.mm.plugin.finder.report.v.FrN;
+      com.tencent.mm.plugin.finder.report.v.aP(i, true);
+      localObject2 = com.tencent.mm.plugin.finder.report.v.FrN;
+      com.tencent.mm.plugin.finder.report.v.azR((String)localObject1);
+      AppMethodBeat.o(349072);
+      return;
+    }
+    localObject3 = com.tencent.mm.plugin.finder.report.v.FrN;
+    com.tencent.mm.plugin.finder.report.v.aP(i, false);
+    localObject3 = com.tencent.mm.plugin.finder.report.v.FrN;
+    com.tencent.mm.plugin.finder.report.v.azR((String)localObject1);
+    localObject3 = com.tencent.mm.plugin.finder.report.v.FrN;
+    com.tencent.mm.plugin.finder.report.v.T(false, i);
+    localObject3 = com.tencent.mm.ui.component.k.aeZF;
+    if (!((g)com.tencent.mm.ui.component.k.d(getActivity()).q(g.class)).a((kotlin.g.a.a)new l(this), (kotlin.g.a.a)new m(this)))
+    {
+      AppMethodBeat.o(349072);
+      return;
+    }
+    localObject3 = new com.tencent.mm.ui.widget.a.f((Context)localObject2, 1, false);
+    View localView = af.mU((Context)localObject2).inflate(e.f.finder_sheet_header, null);
+    Object localObject6 = (TextView)localView.findViewById(e.e.nickname);
+    Object localObject4 = (ImageView)localView.findViewById(e.e.avatar);
+    Object localObject5 = com.tencent.mm.plugin.finder.api.d.AwY;
+    localObject5 = d.a.auT(com.tencent.mm.model.z.bAW());
+    if (localObject5 != null)
+    {
+      ((TextView)localObject6).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.p.b((Context)localObject2, (CharSequence)((m)localObject5).getNickname()));
+      localObject6 = com.tencent.mm.plugin.finder.loader.p.ExI;
+      localObject6 = com.tencent.mm.plugin.finder.loader.p.eCp();
+      com.tencent.mm.plugin.finder.loader.b localb = new com.tencent.mm.plugin.finder.loader.b(((m)localObject5).field_avatarUrl);
+      kotlin.g.b.s.s(localObject4, "avatarIv");
+      com.tencent.mm.plugin.finder.loader.p localp = com.tencent.mm.plugin.finder.loader.p.ExI;
+      ((com.tencent.mm.loader.d)localObject6).a(localb, (ImageView)localObject4, com.tencent.mm.plugin.finder.loader.p.a(p.a.ExM));
+      localObject4 = com.tencent.mm.plugin.finder.utils.av.GiL;
+      kotlin.g.b.s.s(localView, "headerView");
+      com.tencent.mm.plugin.finder.utils.av.a((m)localObject5, localView);
+    }
+    localObject4 = com.tencent.mm.plugin.finder.report.v.FrN;
+    com.tencent.mm.plugin.finder.report.v.azP((String)localObject1);
+    ((com.tencent.mm.ui.widget.a.f)localObject3).af(localView, true);
+    ((com.tencent.mm.ui.widget.a.f)localObject3).Vtg = new a..ExternalSyntheticLambda7(this, (AppCompatActivity)localObject2);
+    ((com.tencent.mm.ui.widget.a.f)localObject3).GAC = new a..ExternalSyntheticLambda8((AppCompatActivity)localObject2, this, (String)localObject1);
+    ((com.tencent.mm.ui.widget.a.f)localObject3).aeLi = a..ExternalSyntheticLambda12.INSTANCE;
+    ((com.tencent.mm.ui.widget.a.f)localObject3).dDn();
+    AppMethodBeat.o(349072);
+  }
+  
+  private final m getProfileContact()
+  {
+    AppMethodBeat.i(349032);
+    Object localObject = com.tencent.mm.plugin.finder.api.d.AwY;
+    localObject = d.a.auT(this.username);
+    AppMethodBeat.o(349032);
     return localObject;
   }
   
   private final boolean isSelf()
   {
-    AppMethodBeat.i(255549);
-    boolean bool = ((Boolean)this.zQp.getValue()).booleanValue();
-    AppMethodBeat.o(255549);
+    AppMethodBeat.i(349024);
+    boolean bool = ((Boolean)this.FcC.getValue()).booleanValue();
+    AppMethodBeat.o(349024);
     return bool;
   }
   
-  public final FrameLayout dNj()
+  public final void R(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(255532);
-    FrameLayout localFrameLayout = (FrameLayout)this.zQi.getValue();
-    AppMethodBeat.o(255532);
-    return localFrameLayout;
+    AppMethodBeat.i(349431);
+    this.FcF = new r(Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt));
+    if (paramBoolean)
+    {
+      eIJ().setBackground(null);
+      AppMethodBeat.o(349431);
+      return;
+    }
+    eIJ().setBackgroundColor(this.Awb);
+    AppMethodBeat.o(349431);
   }
   
-  public final LinearLayout dmR()
+  public final FrameLayout eIG()
   {
-    AppMethodBeat.i(255538);
-    LinearLayout localLinearLayout = (LinearLayout)this.wYR.getValue();
-    AppMethodBeat.o(255538);
-    return localLinearLayout;
+    AppMethodBeat.i(349398);
+    FrameLayout localFrameLayout = (FrameLayout)this.Fcv.getValue();
+    AppMethodBeat.o(349398);
+    return localFrameLayout;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(255556);
+    AppMethodBeat.i(349413);
     super.onCreate(paramBundle);
     paramBundle = getActivity().getIntent().getStringExtra("finder_username");
-    p.j(paramBundle, "activity.intent.getStrin…leUI.KEY_FINDER_USERNAME)");
+    kotlin.g.b.s.checkNotNull(paramBundle);
+    kotlin.g.b.s.s(paramBundle, "activity.intent.getStrin…UI.KEY_FINDER_USERNAME)!!");
     this.username = paramBundle;
-    com.tencent.mm.kernel.h.aGY().a(3736, (com.tencent.mm.an.i)this);
-    paramBundle = getActivity().getWindow();
-    p.j(paramBundle, "activity.window");
-    paramBundle = paramBundle.getDecorView();
-    p.j(paramBundle, "activity.window.decorView");
+    com.tencent.mm.kernel.h.aZW().a(3736, (com.tencent.mm.am.h)this);
+    paramBundle = getActivity().getWindow().getDecorView();
+    kotlin.g.b.s.s(paramBundle, "activity.window.decorView");
     paramBundle.setSystemUiVisibility(1280);
-    com.tencent.mm.ui.c.f((Activity)getActivity(), false);
+    com.tencent.mm.ui.c.h((Activity)getActivity(), false);
     paramBundle = getActivity().getSupportActionBar();
     if (paramBundle != null)
     {
       paramBundle.setBackgroundDrawable((Drawable)new ColorDrawable(0));
       paramBundle.hide();
     }
-    int i = ax.getStatusBarHeight((Context)getActivity());
-    paramBundle = dmR();
-    p.j(paramBundle, "myActionBar");
-    paramBundle = paramBundle.getLayoutParams();
+    int i = bf.getStatusBarHeight((Context)getActivity());
+    paramBundle = eIJ().getLayoutParams();
     paramBundle.height += i;
-    Object localObject1 = dmR();
-    p.j(localObject1, "myActionBar");
-    ((LinearLayout)localObject1).setLayoutParams(paramBundle);
-    dmR().setPadding(0, i, 0, 0);
-    paramBundle = dmQ();
-    p.j(paramBundle, "userInfoLayout");
-    paramBundle.setAlpha(0.0F);
-    localObject1 = getProfileContact();
-    if (localObject1 == null) {}
+    eIJ().setLayoutParams(paramBundle);
+    paramBundle = dTM().getLayoutParams();
+    if (paramBundle == null)
+    {
+      paramBundle = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+      AppMethodBeat.o(349413);
+      throw paramBundle;
+    }
+    paramBundle = (FrameLayout.LayoutParams)paramBundle;
+    paramBundle.topMargin = i;
+    dTM().setLayoutParams((ViewGroup.LayoutParams)paramBundle);
+    dTL().setAlpha(0.0F);
+    Object localObject1 = getProfileContact();
+    if (localObject1 != null)
+    {
+      dTK().setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.p.b((Context)getActivity(), (CharSequence)((m)localObject1).dUr()));
+      paramBundle = com.tencent.mm.plugin.finder.loader.p.ExI;
+      paramBundle = com.tencent.mm.plugin.finder.loader.p.eCp();
+      localObject1 = new com.tencent.mm.plugin.finder.loader.b(((m)localObject1).dUs());
+      localObject2 = eII();
+      kotlin.g.b.s.s(localObject2, "actionBarAvatarIv");
+      com.tencent.mm.plugin.finder.loader.p localp = com.tencent.mm.plugin.finder.loader.p.ExI;
+      paramBundle.a(localObject1, (ImageView)localObject2, com.tencent.mm.plugin.finder.loader.p.a(p.a.ExM));
+    }
+    paramBundle = dTJ();
+    localObject1 = new b();
+    Object localObject2 = dTJ();
+    kotlin.g.b.s.s(localObject2, "appBarLayout");
+    ((b)localObject1).onOffsetChanged((AppBarLayout)localObject2, 0);
+    localObject2 = ah.aiuX;
+    paramBundle.a((AppBarLayout.b)localObject1);
+    ((LinearLayout)this.ETF.getValue()).setOnClickListener(new a..ExternalSyntheticLambda0(this));
+    eIF().setVisibility(8);
+    eIH().setVisibility(8);
+    if ((isSelf()) && (((Boolean)this.AIq.getValue()).booleanValue()))
+    {
+      eIF().setVisibility(0);
+      eIF().setOnClickListener(new a..ExternalSyntheticLambda2(this));
+      paramBundle = com.tencent.mm.plugin.finder.report.z.FrZ;
+      com.tencent.mm.plugin.finder.report.z.h((Context)getActivity(), 1, 1);
+    }
     for (;;)
     {
-      paramBundle = dmO();
-      localObject1 = new b();
-      Object localObject2 = dmO();
-      p.j(localObject2, "appBarLayout");
-      ((b)localObject1).c((AppBarLayout)localObject2, 0);
-      paramBundle.a((AppBarLayout.b)localObject1);
-      ((LinearLayout)this.yOZ.getValue()).setOnClickListener((View.OnClickListener)new ac(this));
-      paramBundle = dNi();
-      p.j(paramBundle, "postBtn");
-      paramBundle.setVisibility(8);
-      paramBundle = dNk();
-      p.j(paramBundle, "moreBtn");
-      paramBundle.setVisibility(8);
-      if ((!isSelf()) || (!((Boolean)this.xjx.getValue()).booleanValue())) {
-        break;
+      if ((getActivity() instanceof MMActivity)) {
+        ((MMActivity)getActivity()).getController().s((Activity)getActivity(), getResources().getColor(e.b.transparent));
       }
-      paramBundle = dNi();
-      p.j(paramBundle, "postBtn");
-      paramBundle.setVisibility(0);
-      dNi().setOnClickListener((View.OnClickListener)new ad(this));
-      paramBundle = n.zWF;
-      n.f((Context)getActivity(), 1, 1);
-      AppMethodBeat.o(255556);
+      AppMethodBeat.o(349413);
       return;
-      paramBundle = dmP();
-      p.j(paramBundle, "actionBarNicknameTv");
-      paramBundle.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)getActivity(), (CharSequence)((com.tencent.mm.plugin.finder.api.i)localObject1).getNickname()));
-      paramBundle = com.tencent.mm.plugin.finder.loader.t.ztT;
-      paramBundle = com.tencent.mm.plugin.finder.loader.t.dJh();
-      localObject1 = new com.tencent.mm.plugin.finder.loader.e(((com.tencent.mm.plugin.finder.api.i)localObject1).field_avatarUrl);
-      localObject2 = dNl();
-      p.j(localObject2, "actionBarAvatarIv");
-      com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
-      paramBundle.a(localObject1, (ImageView)localObject2, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztX));
-    }
-    if (this.zQq)
-    {
-      paramBundle = dNj();
-      p.j(paramBundle, "followContainer");
-      ah((View)paramBundle, 8);
-      paramBundle = dNk();
-      p.j(paramBundle, "moreBtn");
-      paramBundle.setVisibility(0);
-      dNk().setOnClickListener((View.OnClickListener)new ae(this));
-      if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
+      if (this.FcD)
       {
-        dNk().setOnLongClickListener((View.OnLongClickListener)new af(this));
-        AppMethodBeat.o(255556);
+        paramBundle = eIG();
+        kotlin.g.b.s.s(paramBundle, "followContainer");
+        ar((View)paramBundle, 8);
+        eIH().setVisibility(0);
+        eIH().setOnClickListener(new a..ExternalSyntheticLambda1(this));
+        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED)) {
+          eIH().setOnLongClickListener(new a..ExternalSyntheticLambda4(this));
+        }
+      }
+      else
+      {
+        eIH().setVisibility(0);
+        eIH().setOnClickListener(new a..ExternalSyntheticLambda3(this));
       }
     }
-    else
-    {
-      paramBundle = dNk();
-      p.j(paramBundle, "moreBtn");
-      paramBundle.setVisibility(0);
-      dNk().setOnClickListener((View.OnClickListener)new ag(this));
-    }
-    AppMethodBeat.o(255556);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(255560);
+    AppMethodBeat.i(349419);
     super.onDestroy();
-    com.tencent.mm.kernel.h.aGY().b(3736, (com.tencent.mm.an.i)this);
-    AppMethodBeat.o(255560);
+    com.tencent.mm.kernel.h.aZW().b(3736, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(349419);
   }
   
-  public final void onResume()
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(255558);
-    super.onResume();
-    AppMethodBeat.o(255558);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
-  {
-    AppMethodBeat.i(255565);
-    p.k(paramq, "scene");
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof cr)))
+    AppMethodBeat.i(349439);
+    kotlin.g.b.s.u(paramp, "scene");
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramp instanceof dt)))
     {
       Object localObject = new StringBuilder("username=").append(this.username).append(", scene username=");
-      paramString = ((cr)paramq).dpc();
-      if (paramString != null) {}
-      for (paramString = paramString.username;; paramString = null)
+      paramString = ((dt)paramp).caK();
+      if (paramString == null) {}
+      for (paramString = null;; paramString = paramString.username)
       {
         Log.i("Finder.SelfProfileActionBarUIC", paramString);
-        paramString = ((cr)paramq).dpc();
+        paramString = ((dt)paramp).caK();
         if (paramString != null)
         {
           paramString = paramString.username;
-          if (paramString != null)
-          {
-            p.j(paramString, "it");
+          if (paramString != null) {
             this.username = paramString;
           }
         }
-        paramq = getProfileContact();
-        if (paramq != null) {
+        paramp = getProfileContact();
+        if (paramp != null) {
           break;
         }
-        AppMethodBeat.o(255565);
+        AppMethodBeat.o(349439);
         return;
       }
-      paramString = dmP();
-      p.j(paramString, "actionBarNicknameTv");
-      paramString.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)getActivity(), (CharSequence)paramq.getNickname()));
-      paramString = com.tencent.mm.plugin.finder.loader.t.ztT;
-      paramString = com.tencent.mm.plugin.finder.loader.t.dJh();
-      paramq = new com.tencent.mm.plugin.finder.loader.e(paramq.field_avatarUrl);
-      localObject = dNl();
-      p.j(localObject, "actionBarAvatarIv");
-      com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
-      paramString.a(paramq, (ImageView)localObject, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztX));
+      dTK().setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.p.b((Context)getActivity(), (CharSequence)paramp.dUr()));
+      paramString = com.tencent.mm.plugin.finder.loader.p.ExI;
+      paramString = com.tencent.mm.plugin.finder.loader.p.eCp();
+      paramp = new com.tencent.mm.plugin.finder.loader.b(paramp.dUs());
+      localObject = eII();
+      kotlin.g.b.s.s(localObject, "actionBarAvatarIv");
+      com.tencent.mm.plugin.finder.loader.p localp = com.tencent.mm.plugin.finder.loader.p.ExI;
+      paramString.a(paramp, (ImageView)localObject, com.tencent.mm.plugin.finder.loader.p.a(p.a.ExM));
     }
-    AppMethodBeat.o(255565);
+    AppMethodBeat.o(349439);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$Companion;", "", "()V", "MENU_ID_ACCOUNT_DETAIL", "", "MENU_ID_CREATE_NOTICE", "MENU_ID_EXPOSE", "MENU_ID_OPEN_LIVE", "MENU_ID_POST_FEED", "MENU_ID_POST_LIVE", "MENU_ID_RECOMMEND", "MENU_ID_SET_NO_SEE", "REQUEST_CODE_POST_ACTIONSHEET", "REQUEST_CODE_SELECT_PHOTO", "REQUEST_CODE_TAKE_PHOTO", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$Companion;", "", "()V", "MENU_ID_ACCOUNT_DETAIL", "", "MENU_ID_EXPOSE", "MENU_ID_POST_FEED", "MENU_ID_POST_LIVE", "MENU_ID_RECOMMEND", "MENU_ID_SET_NO_SEE", "REQUEST_CODE_POST_ACTIONSHEET", "REQUEST_CODE_POST_MJ_TEMPLATE", "REQUEST_CODE_SELECT_PHOTO", "REQUEST_CODE_SELECT_SNS_ALBUM", "REQUEST_CODE_TAKE_PHOTO", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class aa
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<WeImageView>
-  {
-    aa(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class ab
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<LinearLayout>
-  {
-    ab(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class ac
-    implements View.OnClickListener
-  {
-    ac(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(265134);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.ui.component.g.Xox;
-      ((h)com.tencent.mm.ui.component.g.b(this.zQt.getActivity()).i(h.class)).zRk = true;
-      this.zQt.getActivity().finish();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(265134);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class ad
-    implements View.OnClickListener
-  {
-    ad(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(291196);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      a.f(this.zQt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(291196);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class ae
-    implements View.OnClickListener
-  {
-    ae(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(225150);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      a.g(this.zQt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(225150);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
-  static final class af
-    implements View.OnLongClickListener
-  {
-    af(a parama) {}
-    
-    public final boolean onLongClick(View paramView)
-    {
-      String str = null;
-      AppMethodBeat.i(274740);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$onCreate$5", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).aFi());
-      localObject = new StringBuilder();
-      paramView = j.zSy;
-      paramView = (j.b)j.access$getUserExtInfoCache$cp().get(a.h(this.zQt));
-      if (paramView != null) {}
-      for (paramView = paramView.zSz;; paramView = null)
-      {
-        ((StringBuilder)localObject).append("finderUsername:" + a.h(this.zQt) + '\n');
-        StringBuilder localStringBuilder = new StringBuilder("noticeId:");
-        if (paramView != null) {
-          str = paramView.fwt;
-        }
-        ((StringBuilder)localObject).append(str);
-        paramView = m.BiL;
-        paramView = (Context)this.zQt.getActivity();
-        str = ((StringBuilder)localObject).toString();
-        p.j(str, "sb.toString()");
-        m.a.aN(paramView, str);
-        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$onCreate$5", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(274740);
-        return true;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class ag
-    implements View.OnClickListener
-  {
-    ag(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(287249);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$onCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      a.g(this.zQt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$onCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(287249);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class ah
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<LinearLayout>
-  {
-    ah(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class ai
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<WeImageView>
-  {
-    ai(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class aj
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<LinearLayout>
-  {
-    aj(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$OnOffsetChangedListener;", "Lcom/google/android/material/appbar/AppBarLayout$OnOffsetChangedListener;", "(Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC;)V", "onOffsetChanged", "", "view", "Lcom/google/android/material/appbar/AppBarLayout;", "offset", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC$OnOffsetChangedListener;", "Lcom/google/android/material/appbar/AppBarLayout$OnOffsetChangedListener;", "(Lcom/tencent/mm/plugin/finder/profile/uic/FinderProfileActionBarUIC;)V", "onOffsetChanged", "", "view", "Lcom/google/android/material/appbar/AppBarLayout;", "offset", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class b
     implements AppBarLayout.b
   {
-    public final void c(AppBarLayout paramAppBarLayout, int paramInt)
+    public b()
     {
-      AppMethodBeat.i(268378);
-      p.k(paramAppBarLayout, "view");
-      a.a(this.zQt, paramInt);
+      AppMethodBeat.i(348511);
+      AppMethodBeat.o(348511);
+    }
+    
+    public final void onOffsetChanged(AppBarLayout paramAppBarLayout, int paramInt)
+    {
+      AppMethodBeat.i(348528);
+      kotlin.g.b.s.u(paramAppBarLayout, "view");
+      a.a(this.FcI, paramInt);
       float f2 = Math.abs(paramInt) * 1.0F / paramAppBarLayout.getTotalScrollRange();
-      if (f2 == a.a(this.zQt))
+      if (f2 == a.c(this.FcI)) {}
+      for (paramInt = 1; paramInt != 0; paramInt = 0)
       {
-        AppMethodBeat.o(268378);
+        AppMethodBeat.o(348528);
         return;
       }
-      a.a(this.zQt, f2);
+      a.a(this.FcI, f2);
       float f1;
       if (f2 < 0.5F)
       {
         f1 = (0.5F - f2) / 0.5F;
-        this.zQt.dmR().setBackgroundColor(this.zQt.getResources().getColor(b.c.transparent));
-        paramAppBarLayout = this.zQt.getActivity();
-        if (paramAppBarLayout == null)
-        {
-          paramAppBarLayout = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-          AppMethodBeat.o(268378);
-          throw paramAppBarLayout;
-        }
-        ((MMActivity)paramAppBarLayout).getController().updataStatusBarIcon(ar.isDarkMode());
-        paramAppBarLayout = this.zQt.getActivity();
-        if (paramAppBarLayout == null)
-        {
-          paramAppBarLayout = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-          AppMethodBeat.o(268378);
-          throw paramAppBarLayout;
-        }
-        ((MMActivity)paramAppBarLayout).getController().q((Activity)this.zQt.getActivity(), this.zQt.getResources().getColor(b.c.transparent));
-        paramAppBarLayout = a.b(this.zQt);
-        p.j(paramAppBarLayout, "userInfoLayout");
-        paramAppBarLayout.setAlpha(0.0F);
-        a.a(this.zQt, f2, f1);
+        a.d(this.FcI).setBackgroundColor(this.FcI.getResources().getColor(e.b.transparent));
+        ((MMActivity)this.FcI.getActivity()).getController().updataStatusBarIcon(com.tencent.mm.ui.aw.isDarkMode());
+        a.e(this.FcI).setAlpha(0.0F);
+        a.f(this.FcI).setVisibility(8);
+        a.d(this.FcI).setAlpha(1.0F);
+        a.a(this.FcI, f2, f1);
       }
       for (;;)
       {
-        paramAppBarLayout = a.d(this.zQt);
-        p.j(paramAppBarLayout, "backBtnIv");
-        paramAppBarLayout.setAlpha(f1);
-        paramAppBarLayout = a.e(this.zQt);
-        p.j(paramAppBarLayout, "postBtnIv");
-        paramAppBarLayout.setAlpha(f1);
-        AppMethodBeat.o(268378);
+        a.i(this.FcI).setAlpha(f1);
+        a.j(this.FcI).setAlpha(f1);
+        AppMethodBeat.o(348528);
         return;
         f1 = (f2 - 0.5F) / 0.5F;
-        paramInt = (int)(255.0F * f1);
-        this.zQt.dmR().setBackgroundColor(au.fG(a.c(this.zQt), paramInt));
-        paramAppBarLayout = this.zQt.getActivity();
+        paramAppBarLayout = this.FcI.FcF;
         if (paramAppBarLayout == null)
         {
-          paramAppBarLayout = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-          AppMethodBeat.o(268378);
-          throw paramAppBarLayout;
+          paramAppBarLayout = null;
+          if (paramAppBarLayout == null)
+          {
+            paramAppBarLayout = this.FcI;
+            a.b(paramAppBarLayout, a.k(paramAppBarLayout));
+            paramAppBarLayout.endColor = paramAppBarLayout.FcG;
+            a.f(paramAppBarLayout).setVisibility(8);
+          }
+          paramAppBarLayout = a.g(this.FcI).evaluate(f1, Integer.valueOf(a.h(this.FcI)), Integer.valueOf(this.FcI.endColor));
+          if (paramAppBarLayout == null)
+          {
+            paramAppBarLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+            AppMethodBeat.o(348528);
+            throw paramAppBarLayout;
+          }
         }
-        ((MMActivity)paramAppBarLayout).getController().setStatusBarColor(au.fG(a.c(this.zQt), paramInt));
-        paramAppBarLayout = a.b(this.zQt);
-        p.j(paramAppBarLayout, "userInfoLayout");
-        paramAppBarLayout.setAlpha(f1);
-        a.a(this.zQt, f2, f1);
+        else
+        {
+          a locala = this.FcI;
+          if (((Boolean)paramAppBarLayout.bsC).booleanValue())
+          {
+            a.b(locala, ((Number)paramAppBarLayout.bsD).intValue());
+            locala.endColor = ((Number)paramAppBarLayout.bsD).intValue();
+            a.f(locala).setVisibility(0);
+            a.f(locala).setAlpha(0.4F * f1);
+          }
+          for (;;)
+          {
+            break;
+            a.b(locala, a.k(locala));
+            locala.endColor = locala.FcG;
+            a.f(locala).setVisibility(8);
+          }
+        }
+        paramInt = ((Integer)paramAppBarLayout).intValue();
+        a.d(this.FcI).setBackgroundColor(paramInt);
+        ((MMActivity)this.FcI.getActivity()).getController().updataStatusBarIcon(com.tencent.mm.ui.aw.isDarkMode());
+        a.e(this.FcI).setAlpha(f1);
+        a.d(this.FcI).setAlpha(f1);
+        a.a(this.FcI, f2, f1);
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends kotlin.g.b.q
+    extends kotlin.g.b.u
     implements kotlin.g.a.a<ImageView>
   {
     c(AppCompatActivity paramAppCompatActivity)
@@ -631,10 +957,10 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<TextView>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<FrameLayout>
   {
     d(AppCompatActivity paramAppCompatActivity)
     {
@@ -642,10 +968,10 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<WeImageView>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<FrameLayout>
   {
     e(AppCompatActivity paramAppCompatActivity)
     {
@@ -653,9 +979,9 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends kotlin.g.b.q
+    extends kotlin.g.b.u
     implements kotlin.g.a.a<TextView>
   {
     f(AppCompatActivity paramAppCompatActivity)
@@ -664,10 +990,10 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/google/android/material/appbar/AppBarLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<AppBarLayout>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<WeImageView>
   {
     g(AppCompatActivity paramAppCompatActivity)
     {
@@ -675,10 +1001,10 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<LinearLayout>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<TextView>
   {
     h(AppCompatActivity paramAppCompatActivity)
     {
@@ -686,10 +1012,10 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/google/android/material/appbar/AppBarLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class i
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<WeImageView>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<AppBarLayout>
   {
     i(AppCompatActivity paramAppCompatActivity)
     {
@@ -697,10 +1023,10 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/view/HardTouchableLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class j
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<HardTouchableLayout>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<LinearLayout>
   {
     j(AppCompatActivity paramAppCompatActivity)
     {
@@ -708,10 +1034,10 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroidx/coordinatorlayout/widget/CoordinatorLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class k
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<CoordinatorLayout>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<WeImageView>
   {
     k(AppCompatActivity paramAppCompatActivity)
     {
@@ -719,166 +1045,43 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class l
-    implements q.f
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
   {
-    l(a parama) {}
-    
-    public final void onCreateMMMenu(o paramo)
-    {
-      AppMethodBeat.i(270688);
-      p.j(paramo, "it");
-      if (paramo.hJO())
-      {
-        Object localObject = a.i(this.zQt);
-        if (localObject != null)
-        {
-          i = ((com.tencent.mm.plugin.finder.api.i)localObject).field_extFlag;
-          if ((i & 0x100000) == 0) {
-            paramo.mn(10002, b.j.finder_profile_recommend);
-          }
-          if ((a.j(this.zQt)) && ((p.h(a.h(this.zQt), z.bdh()) ^ true)))
-          {
-            localObject = com.tencent.mm.plugin.finder.utils.aj.AGc;
-            localObject = com.tencent.mm.plugin.finder.api.d.wZQ;
-            if (!com.tencent.mm.plugin.finder.utils.aj.k(d.a.aAK(a.h(this.zQt)))) {
-              break label165;
-            }
-            paramo.mn(10010, b.j.finder_unblock_his_feed);
-          }
-        }
-        for (;;)
-        {
-          localObject = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject, "MMKernel.storage()");
-          localObject = ((com.tencent.mm.kernel.f)localObject).aHp().get(ar.a.VCn, "");
-          if (localObject != null) {
-            break label179;
-          }
-          paramo = new kotlin.t("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(270688);
-          throw paramo;
-          i = 0;
-          break;
-          label165:
-          paramo.mn(10010, b.j.finder_block_his_feed);
-        }
-        label179:
-        if (((CharSequence)localObject).length() <= 0) {
-          break label228;
-        }
-      }
-      label228:
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          paramo.mn(10011, b.j.finder_account_detail);
-        }
-        paramo.mn(10004, b.j.finder_profile_expose);
-        AppMethodBeat.o(270688);
-        return;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class m
-    implements q.g
-  {
-    m(a parama) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      boolean bool2 = true;
-      AppMethodBeat.i(272852);
-      p.j(paramMenuItem, "menuItem");
-      switch (paramMenuItem.getItemId())
-      {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(272852);
-        return;
-        paramMenuItem = a.i(this.zQt);
-        if (paramMenuItem != null)
-        {
-          localObject1 = ac.AEJ;
-          localObject2 = this.zQt.getActivity();
-          if (localObject2 == null)
-          {
-            paramMenuItem = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-            AppMethodBeat.o(272852);
-            throw paramMenuItem;
-          }
-          ac.a.a((ac.a)localObject1, (MMActivity)localObject2, paramMenuItem);
-          AppMethodBeat.o(272852);
-          return;
-        }
-        AppMethodBeat.o(272852);
-        return;
-        paramMenuItem = this.zQt.getActivity().getString(b.j.finder_expose_url, new Object[] { LocaleUtil.getApplicationLanguage(), a.h(this.zQt) });
-        p.j(paramMenuItem, "activity.getString(R.str…tionLanguage(), username)");
-        Object localObject1 = new Intent();
-        ((Intent)localObject1).putExtra("rawUrl", paramMenuItem);
-        com.tencent.mm.by.c.b((Context)this.zQt.getActivity(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
-        AppMethodBeat.o(272852);
-        return;
-        paramMenuItem = com.tencent.mm.ui.component.g.Xox;
-        paramMenuItem = (j)com.tencent.mm.ui.component.g.b(this.zQt.getActivity()).i(j.class);
-        localObject1 = new aa.a();
-        Object localObject2 = com.tencent.mm.plugin.finder.utils.aj.AGc;
-        localObject2 = com.tencent.mm.plugin.finder.api.d.wZQ;
-        ((aa.a)localObject1).aaBx = com.tencent.mm.plugin.finder.utils.aj.k(d.a.aAK(paramMenuItem.username));
-        localObject2 = com.tencent.mm.plugin.finder.upload.action.f.ABS;
-        localObject2 = paramMenuItem.username;
-        if (!((aa.a)localObject1).aaBx) {}
-        for (boolean bool1 = true;; bool1 = false)
-        {
-          com.tencent.mm.plugin.finder.upload.action.f.e(2, (String)localObject2, bool1);
-          if (((aa.a)localObject1).aaBx) {
-            break;
-          }
-          localObject2 = com.tencent.mm.plugin.finder.api.d.wZQ;
-          if (!d.a.aAN(paramMenuItem.username)) {
-            break;
-          }
-          localObject2 = new com.tencent.mm.ui.widget.a.e((Context)paramMenuItem.getContext(), 1, true);
-          ((com.tencent.mm.ui.widget.a.e)localObject2).q((CharSequence)paramMenuItem.getContext().getResources().getString(b.j.finder_mod_block_bottom_sheet_title), 17);
-          ((com.tencent.mm.ui.widget.a.e)localObject2).a((q.f)new j.by(paramMenuItem));
-          ((com.tencent.mm.ui.widget.a.e)localObject2).a((q.g)new j.bz(paramMenuItem, (aa.a)localObject1));
-          ((com.tencent.mm.ui.widget.a.e)localObject2).eik();
-          AppMethodBeat.o(272852);
-          return;
-        }
-        if (!((aa.a)localObject1).aaBx) {}
-        for (bool1 = bool2;; bool1 = false)
-        {
-          j.b(paramMenuItem, bool1);
-          AppMethodBeat.o(272852);
-          return;
-        }
-        paramMenuItem = com.tencent.mm.plugin.finder.utils.a.ACH;
-        com.tencent.mm.plugin.finder.utils.a.fR((Context)this.zQt.getActivity());
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class n
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    n(a parama)
+    l(a parama)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class m
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
+  {
+    m(a parama)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class n
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<FrameLayout>
+  {
+    n(AppCompatActivity paramAppCompatActivity)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class o
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<Boolean>
   {
     o(a parama)
     {
@@ -886,245 +1089,78 @@ public final class a
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class p
-    implements q.f
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<Boolean>
   {
-    p(a parama, AppCompatActivity paramAppCompatActivity) {}
-    
-    public final void onCreateMMMenu(o paramo)
+    p(a parama)
     {
-      Object localObject1 = null;
-      AppMethodBeat.i(272598);
-      p.j(paramo, "it");
-      Object localObject2;
-      if (paramo.hJO())
-      {
-        paramo.mn(1, b.j.app_field_mmsight);
-        paramo.mn(2, b.j.app_field_select_new_pic);
-        localObject2 = ab.AEA;
-        ab.a(a.m(this.zQt), paramo, (Activity)this.zQu);
-      }
-      paramo = n.zWF;
-      paramo = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-      paramo = aj.a.fZ((Context)this.zQu);
-      if (paramo != null) {}
-      for (paramo = paramo.ekY();; paramo = null)
-      {
-        n.b(0, "post_acionsheet_camera", "", paramo);
-        paramo = n.zWF;
-        paramo = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-        localObject2 = aj.a.fZ((Context)this.zQu);
-        paramo = localObject1;
-        if (localObject2 != null) {
-          paramo = ((com.tencent.mm.plugin.finder.viewmodel.component.aj)localObject2).ekY();
-        }
-        n.b(0, "post_actionsheet_album", "", paramo);
-        AppMethodBeat.o(272598);
-        return;
-      }
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/findersdk/api/IFinderLivePostBtnUIC;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class q
-    implements q.g
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<com.tencent.mm.plugin.findersdk.a.av>
   {
-    q(a parama, AppCompatActivity paramAppCompatActivity, String paramString) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+    q(AppCompatActivity paramAppCompatActivity)
     {
-      ab localab = null;
-      AppMethodBeat.i(272565);
-      Intent localIntent = new Intent();
-      p.j(paramMenuItem, "menuItem");
-      if (paramMenuItem.getItemId() == 1)
-      {
-        localIntent.putExtra("key_finder_post_router", 2);
-        paramMenuItem = n.zWF;
-        paramMenuItem = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-        paramMenuItem = aj.a.fZ((Context)this.zQu);
-        if (paramMenuItem != null)
-        {
-          paramMenuItem = paramMenuItem.ekY();
-          n.b(1, "post_acionsheet_camera", "", paramMenuItem);
-        }
-      }
-      for (;;)
-      {
-        localIntent.putExtra("key_finder_post_from", 1);
-        localIntent.putExtra("key_finder_post_id", this.xNP);
-        paramMenuItem = com.tencent.mm.plugin.finder.utils.a.ACH;
-        com.tencent.mm.plugin.finder.utils.a.enterFinderPostRouterUI((Context)this.zQu, localIntent);
-        AppMethodBeat.o(272565);
-        return;
-        paramMenuItem = null;
-        break;
-        if (paramMenuItem.getItemId() == 2)
-        {
-          localIntent.putExtra("key_finder_post_router", 3);
-          paramMenuItem = n.zWF;
-          paramMenuItem = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-          com.tencent.mm.plugin.finder.viewmodel.component.aj localaj = aj.a.fZ((Context)this.zQu);
-          paramMenuItem = localab;
-          if (localaj != null) {
-            paramMenuItem = localaj.ekY();
-          }
-          n.b(1, "post_actionsheet_album", "", paramMenuItem);
-        }
-        else if (a.m(this.zQt).containsKey(Integer.valueOf(paramMenuItem.getItemId())))
-        {
-          localab = ab.AEA;
-          ab.a((Context)this.zQt.getActivity(), (dna)a.m(this.zQt).get(Integer.valueOf(paramMenuItem.getItemId())));
-          paramMenuItem = com.tencent.mm.plugin.finder.report.k.zWs;
-          com.tencent.mm.plugin.finder.report.k.av(2, false);
-        }
-      }
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDismiss"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class r
-    implements e.b
-  {
-    public static final r zQv;
-    
-    static
-    {
-      AppMethodBeat.i(245225);
-      zQv = new r();
-      AppMethodBeat.o(245225);
-    }
-    
-    public final void onDismiss()
-    {
-      AppMethodBeat.i(245223);
-      com.tencent.mm.plugin.finder.report.k localk = com.tencent.mm.plugin.finder.report.k.zWs;
-      com.tencent.mm.plugin.finder.report.k.Pw(6);
-      AppMethodBeat.o(245223);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class s
-    implements q.f
-  {
-    s(a parama) {}
-    
-    public final void onCreateMMMenu(o paramo)
-    {
-      AppMethodBeat.i(282892);
-      p.j(paramo, "it");
-      if (paramo.hJO())
-      {
-        paramo.mn(10012, b.j.finder_post_new);
-        com.tencent.mm.ui.component.g localg = com.tencent.mm.ui.component.g.Xox;
-        if (((j)com.tencent.mm.ui.component.g.b(this.zQt.getActivity()).i(j.class)).zSl) {
-          paramo.mn(10013, b.j.finder_profile_post_live);
-        }
-      }
-      AppMethodBeat.o(282892);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class t
-    implements q.g
-  {
-    t(a parama) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(279697);
-      p.j(paramMenuItem, "menuItem");
-      switch (paramMenuItem.getItemId())
-      {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(279697);
-        return;
-        paramMenuItem = n.zWF;
-        n.f((Context)this.zQt.getActivity(), 2, 2);
-        a.k(this.zQt);
-        AppMethodBeat.o(279697);
-        return;
-        paramMenuItem = n.zWF;
-        n.f((Context)this.zQt.getActivity(), 2, 3);
-        paramMenuItem = com.tencent.mm.plugin.finder.live.report.k.yBj;
-        com.tencent.mm.plugin.finder.live.report.k.dDm().a(s.bc.yKP);
-        paramMenuItem = com.tencent.mm.plugin.finder.live.report.k.yBj;
-        com.tencent.mm.plugin.finder.live.report.k.t(s.a.yDK.jWO, "");
-        a.l(this.zQt);
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDismiss"})
-  static final class u
-    implements e.b
-  {
-    u(a parama) {}
-    
-    public final void onDismiss()
-    {
-      AppMethodBeat.i(285707);
-      n localn = n.zWF;
-      n.f((Context)this.zQt.getActivity(), 2, 4);
-      AppMethodBeat.o(285707);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/FrameLayout;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class v
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<FrameLayout>
-  {
-    v(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class w
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<Boolean>
-  {
-    w(a parama)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class x
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<Boolean>
-  {
-    x(a parama)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/live/viewmodel/component/FinderLivePostBtnUIC;", "invoke"})
-  static final class y
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<com.tencent.mm.plugin.finder.live.viewmodel.component.d>
-  {
-    y(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class z
-    extends kotlin.g.b.q
+    extends kotlin.g.b.u
     implements kotlin.g.a.a<LinearLayout>
   {
-    z(AppCompatActivity paramAppCompatActivity)
+    r(AppCompatActivity paramAppCompatActivity)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class s
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<LinearLayout>
+  {
+    s(AppCompatActivity paramAppCompatActivity)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class t
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<LinearLayout>
+  {
+    t(AppCompatActivity paramAppCompatActivity)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class u
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<WeImageView>
+  {
+    u(AppCompatActivity paramAppCompatActivity)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class v
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<LinearLayout>
+  {
+    v(AppCompatActivity paramAppCompatActivity)
     {
       super();
     }

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/a29" android:background="@drawable/a_9" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center|left" android:id="@id/zj" android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/amh">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/zk" android:layout_width="@dimen/k9" android:layout_height="@dimen/k9" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:src="@raw/icons_outlined_display_mobile" android:contentDescription="@string/wx" app:iconColor="@color/BW_50" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/abs" android:id="@id/zl" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/a7e" />
-    </LinearLayout>
+<LinearLayout android:orientation="horizontal" android:id="@id/a63" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:weightSum="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0dip" android:textColor="@color/a78" android:gravity="left" android:id="@id/aiy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:gravity="right" android:layout_gravity="center|right" android:id="@id/aix" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
 </LinearLayout>

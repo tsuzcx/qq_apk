@@ -1,9 +1,7 @@
 package com.google.android.gms.common.api;
 
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepForSdk
 public class CommonStatusCodes
 {
   public static final int API_NOT_CONNECTED = 17;
@@ -89,7 +87,7 @@ public class CommonStatusCodes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.CommonStatusCodes
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
@@ -40,11 +40,11 @@ class JsApiNFCStartHCE$6
     {
       AppMethodBeat.o(136113);
       return;
-      a.a(this.pfo.nNw, i, paramBundle);
+      a.a(this.skH.qNp, i, paramBundle);
       AppMethodBeat.o(136113);
       return;
     } while (paramBundle == null);
-    paramBundle = this.pfo;
+    paramBundle = this.skH;
     synchronized (paramBundle.mLock)
     {
       boolean bool = paramBundle.isFinished;
@@ -58,7 +58,7 @@ class JsApiNFCStartHCE$6
         return;
       }
     }
-    if (HCEEventLogic.bTr())
+    if (HCEEventLogic.ctw())
     {
       Log.i("MicroMsg.JsApiNFCStartHCE", "alvinluo startHCE onStartHCEOvertime has stop, return");
       AppMethodBeat.o(136113);
@@ -66,41 +66,41 @@ class JsApiNFCStartHCE$6
     }
     ??? = new HashMap();
     i = (int)(System.currentTimeMillis() - paramBundle.mStartTime);
-    if (paramBundle.odx != null)
+    if (paramBundle.rep != null)
     {
       Log.d("MicroMsg.JsApiNFCStartHCE", "alvinluo startHCE timer cancel");
-      paramBundle.odx.cancel(false);
-      paramBundle.odx = null;
+      paramBundle.rep.cancel(false);
+      paramBundle.rep = null;
     }
-    if ((str1 != null) && (!str1.equals(paramBundle.nNw.getAppId())))
+    if ((str1 != null) && (!str1.equals(paramBundle.qNp.getAppId())))
     {
       Log.e("MicroMsg.JsApiNFCStartHCE", "alvinluo start HCESevice callback appId invalid, appId: %s", new Object[] { str1 });
       ((Map)???).put("errCode", Integer.valueOf(13010));
-      c.R(paramBundle.nNw.getAppId(), 13010, i);
-      paramBundle.aho(paramBundle.m("fail: unknown error", (Map)???));
+      c.V(paramBundle.qNp.getAppId(), 13010, i);
+      paramBundle.aal(j.a(paramBundle, 13010, "fail: unknown error", (Map)???));
       AppMethodBeat.o(136113);
       return;
     }
     Log.i("MicroMsg.JsApiNFCStartHCE", "alvinluo HCE start HCEService callback onRefreshed errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), str2 });
     if (paramInt == 0)
     {
-      HCEEventLogic.ail(paramBundle.nNw.getAppId());
-      ((Map)???).put("errCode", Integer.valueOf(0));
-      paramBundle.aho(paramBundle.m("ok", (Map)???));
+      HCEEventLogic.abj(paramBundle.qNp.getAppId());
+      ((Map)???).put("errCode", Integer.valueOf(paramInt));
+      paramBundle.aal(j.a(paramBundle, paramInt, "ok", (Map)???));
     }
     for (;;)
     {
-      c.R(paramBundle.nNw.getAppId(), paramInt, i);
-      HCEEventLogic.iy(true);
+      c.V(paramBundle.qNp.getAppId(), paramInt, i);
+      HCEEventLogic.jC(true);
       break;
       ((Map)???).put("errCode", Integer.valueOf(paramInt));
-      paramBundle.aho(paramBundle.m("fail: ".concat(String.valueOf(str2)), (Map)???));
+      paramBundle.aal(j.a(paramBundle, paramInt, "fail: ".concat(String.valueOf(str2)), (Map)???));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.JsApiNFCStartHCE.6
  * JD-Core Version:    0.7.0.1
  */

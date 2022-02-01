@@ -13,10 +13,10 @@ import java.util.List;
 public class MRecyclerView
   extends RecyclerView
 {
-  private View Xd;
-  protected a rGa;
-  private MRecyclerView.a rGb;
-  private MRecyclerView.b rGc;
+  private View bEx;
+  protected a uRm;
+  private MRecyclerView.a uRn;
+  private MRecyclerView.b uRo;
   
   public MRecyclerView(Context paramContext)
   {
@@ -45,12 +45,12 @@ public class MRecyclerView
   private void init()
   {
     AppMethodBeat.i(131573);
-    this.rGa = new a();
-    if (cqo()) {
-      this.rGa.aw(true);
+    this.uRm = new a();
+    if (cSV()) {
+      this.uRm.bf(true);
     }
-    super.setAdapter(this.rGa);
-    this.rGa.a(new RecyclerView.c()
+    super.setAdapter(this.uRm);
+    this.uRm.a(new RecyclerView.c()
     {
       public final void onChanged()
       {
@@ -59,7 +59,7 @@ public class MRecyclerView
         if (MRecyclerView.a(MRecyclerView.this) != null)
         {
           localView = MRecyclerView.a(MRecyclerView.this);
-          if (!MRecyclerView.this.cqn()) {
+          if (!MRecyclerView.this.cSU()) {
             break label46;
           }
         }
@@ -75,45 +75,38 @@ public class MRecyclerView
     AppMethodBeat.o(131573);
   }
   
-  public final int U(RecyclerView.v paramv)
+  public final int P(RecyclerView.v paramv)
   {
-    AppMethodBeat.i(230931);
-    if (this.rGa == null)
+    AppMethodBeat.i(323994);
+    if (this.uRm == null)
     {
-      AppMethodBeat.o(230931);
+      AppMethodBeat.o(323994);
       return -1;
     }
-    a locala = this.rGa;
+    a locala = this.uRm;
     if (paramv == null)
     {
-      AppMethodBeat.o(230931);
+      AppMethodBeat.o(323994);
       return -1;
     }
-    if (paramv.md() == -1)
+    if (paramv.KJ() == -1)
     {
-      AppMethodBeat.o(230931);
+      AppMethodBeat.o(323994);
       return -1;
     }
-    int j = paramv.md();
-    if (locala.rFO.isEmpty()) {}
+    int j = paramv.KJ();
+    if (locala.uRa.isEmpty()) {}
     for (int i = 0;; i = 1)
     {
-      AppMethodBeat.o(230931);
+      AppMethodBeat.o(323994);
       return j - i;
     }
   }
   
-  public final void c(int paramInt, View paramView)
-  {
-    AppMethodBeat.i(131579);
-    this.rGa.c(paramInt, paramView);
-    AppMethodBeat.o(131579);
-  }
-  
-  protected boolean cqn()
+  protected boolean cSU()
   {
     AppMethodBeat.i(131584);
-    if (this.rGa.getItemCount() == 0)
+    if (this.uRm.getItemCount() == 0)
     {
       AppMethodBeat.o(131584);
       return true;
@@ -122,42 +115,49 @@ public class MRecyclerView
     return false;
   }
   
-  protected boolean cqo()
+  protected boolean cSV()
   {
     return true;
   }
   
-  public void dG(View paramView)
+  public final void e(int paramInt, View paramView)
+  {
+    AppMethodBeat.i(131579);
+    this.uRm.e(paramInt, paramView);
+    AppMethodBeat.o(131579);
+  }
+  
+  public void et(View paramView)
   {
     AppMethodBeat.i(131578);
-    this.rGa.dG(paramView);
+    this.uRm.et(paramView);
     AppMethodBeat.o(131578);
   }
   
-  public final void dH(View paramView)
+  public final void eu(View paramView)
   {
     AppMethodBeat.i(131580);
-    this.rGa.dH(paramView);
+    this.uRm.eu(paramView);
     AppMethodBeat.o(131580);
   }
   
-  public final void dI(View paramView)
+  public final void ev(View paramView)
   {
     AppMethodBeat.i(131577);
-    a locala = this.rGa;
-    locala.rFO.add(paramView);
-    locala.aE(0, 1);
+    a locala = this.uRm;
+    locala.uRa.add(paramView);
+    locala.by(0, 1);
     AppMethodBeat.o(131577);
   }
   
-  public RecyclerView.a getAdapter()
+  public RecyclerView.a<?> getAdapter()
   {
-    return this.rGa;
+    return this.uRm;
   }
   
   public View getEmptyView()
   {
-    return this.Xd;
+    return this.bEx;
   }
   
   public void scrollToPosition(int paramInt)
@@ -169,37 +169,37 @@ public class MRecyclerView
   
   public void setAdapter(RecyclerView.a parama)
   {
-    AppMethodBeat.i(230935);
-    a locala = this.rGa;
-    if (locala.afJ != null)
+    AppMethodBeat.i(323997);
+    a locala = this.uRm;
+    if (locala.bUp != null)
     {
-      if (!locala.afJ.equals(parama)) {
-        locala.afJ.b(locala.rFS);
+      if (!locala.bUp.equals(parama)) {
+        locala.bUp.b(locala.uRe);
       }
     }
     else
     {
-      locala.afJ = parama;
-      if (locala.afJ != null) {
-        locala.afJ.a(locala.rFS);
+      locala.bUp = parama;
+      if (locala.bUp != null) {
+        locala.bUp.a(locala.uRe);
       }
     }
-    AppMethodBeat.o(230935);
+    AppMethodBeat.o(323997);
   }
   
   public void setEmptyView(View paramView)
   {
     AppMethodBeat.i(131581);
-    if (this.Xd == paramView)
+    if (this.bEx == paramView)
     {
       AppMethodBeat.o(131581);
       return;
     }
-    this.Xd = paramView;
-    if (this.Xd != null)
+    this.bEx = paramView;
+    if (this.bEx != null)
     {
-      paramView = this.Xd;
-      if (!cqn()) {
+      paramView = this.bEx;
+      if (!cSU()) {
         break label56;
       }
     }
@@ -215,27 +215,37 @@ public class MRecyclerView
   public void setOnItemClickListener(MRecyclerView.a parama)
   {
     AppMethodBeat.i(131582);
-    this.rGb = parama;
-    this.rGa.rFQ = new MRecyclerView.2(this);
+    this.uRn = parama;
+    this.uRm.uRc = new b()
+    {
+      public final void onItemClick(View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(323991);
+        if (MRecyclerView.b(MRecyclerView.this) != null) {
+          MRecyclerView.b(MRecyclerView.this).onItemClick(MRecyclerView.this, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
+        }
+        AppMethodBeat.o(323991);
+      }
+    };
     AppMethodBeat.o(131582);
   }
   
   public void setOnItemLongClickListener(MRecyclerView.b paramb)
   {
     AppMethodBeat.i(131583);
-    this.rGc = paramb;
-    this.rGa.rFR = new c()
+    this.uRo = paramb;
+    this.uRm.uRd = new c()
     {
-      public final boolean T(View paramAnonymousView, int paramAnonymousInt)
+      public final boolean a(View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(131569);
+        AppMethodBeat.i(323992);
         if (MRecyclerView.c(MRecyclerView.this) != null)
         {
-          boolean bool = MRecyclerView.c(MRecyclerView.this).V(paramAnonymousView, paramAnonymousInt);
-          AppMethodBeat.o(131569);
+          boolean bool = MRecyclerView.c(MRecyclerView.this).onItemLongClick(MRecyclerView.this, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
+          AppMethodBeat.o(323992);
           return bool;
         }
-        AppMethodBeat.o(131569);
+        AppMethodBeat.o(323992);
         return false;
       }
     };
@@ -244,7 +254,7 @@ public class MRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView
  * JD-Core Version:    0.7.0.1
  */

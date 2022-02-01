@@ -95,7 +95,7 @@ public class sns_comment_silence
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.sns_comment_silence
  * JD-Core Version:    0.7.0.1
  */

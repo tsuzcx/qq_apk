@@ -18,22 +18,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  private static ConcurrentHashMap<String, b> UXD;
-  private static Vector<Intent> UXE;
-  private static Vector<Intent> UXF;
-  private static ConcurrentHashMap<Integer, String> UXG;
-  private static ConcurrentHashMap<Integer, IBinder> UXH;
-  private static ConcurrentHashMap<Integer, IBinder.DeathRecipient> UXI;
+  private static ConcurrentHashMap<Integer, IBinder.DeathRecipient> acwA;
+  private static ConcurrentHashMap<String, b> acwv;
+  private static Vector<Intent> acww;
+  private static Vector<Intent> acwx;
+  private static ConcurrentHashMap<Integer, String> acwy;
+  private static ConcurrentHashMap<Integer, IBinder> acwz;
   
   static
   {
     AppMethodBeat.i(125331);
-    UXD = new ConcurrentHashMap();
-    UXE = new Vector();
-    UXF = new Vector();
-    UXG = new ConcurrentHashMap();
-    UXH = new ConcurrentHashMap();
-    UXI = new ConcurrentHashMap();
+    acwv = new ConcurrentHashMap();
+    acww = new Vector();
+    acwx = new Vector();
+    acwy = new ConcurrentHashMap();
+    acwz = new ConcurrentHashMap();
+    acwA = new ConcurrentHashMap();
     AppMethodBeat.o(125331);
   }
   
@@ -54,12 +54,12 @@ public final class c
       return;
     }
     paramIntent1.putExtra("class_name", str);
-    Object localObject = (b)UXD.get(paramString);
+    Object localObject = (b)acwv.get(paramString);
     if (localObject == null)
     {
-      UXE.add(paramIntent1);
+      acww.add(paramIntent1);
       localObject = MMApplicationContext.getContext();
-      h((Context)localObject, paramString, paramIntent2);
+      i((Context)localObject, paramString, paramIntent2);
     }
     for (;;)
     {
@@ -70,40 +70,40 @@ public final class c
           public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
           {
             AppMethodBeat.i(125310);
-            f.Iyx.idkeyStat(963L, 2L, 1L, false);
+            f.Ozc.idkeyStat(963L, 2L, 1L, false);
             if (paramAnonymousIBinder == null)
             {
-              Log.i("MicroMsg.MMServiceHelper", "startService() ClassName = %s ProcessName = %s onServiceConnected() service == null", new Object[] { this.UXJ, paramString });
+              Log.i("MicroMsg.MMServiceHelper", "startService() ClassName = %s ProcessName = %s onServiceConnected() service == null", new Object[] { c.this, paramString });
               AppMethodBeat.o(125310);
               return;
             }
-            Log.i("MicroMsg.MMServiceHelper", "startService() ClassName = %s ProcessName = %s onServiceConnected()", new Object[] { this.UXJ, paramString });
-            if (!c.bQa().contains(paramIntent1))
+            Log.i("MicroMsg.MMServiceHelper", "startService() ClassName = %s ProcessName = %s onServiceConnected()", new Object[] { c.this, paramString });
+            if (!c.cqh().contains(paramIntent1))
             {
               AppMethodBeat.o(125310);
               return;
             }
             try
             {
-              paramAnonymousComponentName = b.a.T(paramAnonymousIBinder);
+              paramAnonymousComponentName = b.a.Y(paramAnonymousIBinder);
               paramAnonymousComponentName.startService(paramIntent1);
-              c.fPJ().put(paramString, paramAnonymousComponentName);
+              c.hhB().put(paramString, paramAnonymousComponentName);
               return;
             }
             catch (Exception paramAnonymousComponentName)
             {
               if (paramBoolean)
               {
-                f.Iyx.idkeyStat(963L, 5L, 1L, false);
+                f.Ozc.idkeyStat(963L, 5L, 1L, false);
                 c.a(paramIntent1, paramString, false, paramIntent2);
               }
-              f.Iyx.idkeyStat(963L, 3L, 1L, false);
-              Log.i("MicroMsg.MMServiceHelper", "startService ClassName = %s ProcessName = %s  exception = %s stack[%s]", new Object[] { this.UXJ, paramString, paramAnonymousComponentName.getMessage(), Util.getStack() });
+              f.Ozc.idkeyStat(963L, 3L, 1L, false);
+              Log.i("MicroMsg.MMServiceHelper", "startService ClassName = %s ProcessName = %s  exception = %s stack[%s]", new Object[] { c.this, paramString, paramAnonymousComponentName.getMessage(), Util.getStack() });
               return;
             }
             finally
             {
-              c.bQa().remove(paramIntent1);
+              c.cqh().remove(paramIntent1);
               AppMethodBeat.o(125310);
             }
           }
@@ -111,15 +111,15 @@ public final class c
           public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
           {
             AppMethodBeat.i(125311);
-            c.fPJ().remove(paramString);
-            Log.i("MicroMsg.MMServiceHelper", "startService() ClassName = %s ProcessName = %s onServiceDisconnected()", new Object[] { this.UXJ, paramString });
-            f.Iyx.idkeyStat(963L, 4L, 1L, false);
+            c.hhB().remove(paramString);
+            Log.i("MicroMsg.MMServiceHelper", "startService() ClassName = %s ProcessName = %s onServiceDisconnected()", new Object[] { c.this, paramString });
+            f.Ozc.idkeyStat(963L, 4L, 1L, false);
             AppMethodBeat.o(125311);
           }
         }, 1)) });
-        f.Iyx.idkeyStat(963L, 1L, 1L, false);
+        f.Ozc.idkeyStat(963L, 1L, 1L, false);
         Log.i("MicroMsg.MMServiceHelper", "startService() ClassName = %s ProcessName = %s", new Object[] { str, paramString });
-        f.Iyx.idkeyStat(963L, 0L, 1L, false);
+        f.Ozc.idkeyStat(963L, 0L, 1L, false);
         AppMethodBeat.o(125324);
         return;
       }
@@ -132,17 +132,17 @@ public final class c
       {
         ((b)localObject).startService(paramIntent1);
         Log.i("MicroMsg.MMServiceHelper", "IMMServiceStub_AIDL != null, startService() ClassName = %s ProcessName = %s ", new Object[] { str, paramString });
-        f.Iyx.idkeyStat(963L, 6L, 1L, false);
+        f.Ozc.idkeyStat(963L, 6L, 1L, false);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          UXD.remove(paramString);
+          acwv.remove(paramString);
           if (paramBoolean)
           {
             a(paramIntent1, paramString, false, paramIntent2);
-            f.Iyx.idkeyStat(963L, 5L, 1L, false);
+            f.Ozc.idkeyStat(963L, 5L, 1L, false);
           }
           Log.i("MicroMsg.MMServiceHelper", "startService ClassName = %s ProcessName = %s  exception = %s stack[%s]", new Object[] { str, paramString, localException.getMessage(), Util.getStack() });
         }
@@ -159,9 +159,9 @@ public final class c
       AppMethodBeat.o(125327);
       return;
     }
-    String str = (String)UXG.remove(Integer.valueOf(paramServiceConnection.hashCode()));
-    Object localObject1 = (IBinder)UXH.remove(Integer.valueOf(paramServiceConnection.hashCode()));
-    Object localObject2 = (IBinder.DeathRecipient)UXI.remove(Integer.valueOf(paramServiceConnection.hashCode()));
+    String str = (String)acwy.remove(Integer.valueOf(paramServiceConnection.hashCode()));
+    Object localObject1 = (IBinder)acwz.remove(Integer.valueOf(paramServiceConnection.hashCode()));
+    Object localObject2 = (IBinder.DeathRecipient)acwA.remove(Integer.valueOf(paramServiceConnection.hashCode()));
     if (localObject1 != null) {
       ((IBinder)localObject1).unlinkToDeath((IBinder.DeathRecipient)localObject2, 0);
     }
@@ -174,12 +174,12 @@ public final class c
     localObject1 = new Intent();
     ((Intent)localObject1).putExtra("class_name", str);
     ((Intent)localObject1).putExtra("service_connection", paramServiceConnection.hashCode());
-    localObject2 = (b)UXD.get(paramString);
+    localObject2 = (b)acwv.get(paramString);
     if (localObject2 == null)
     {
-      f.Iyx.idkeyStat(963L, 47L, 1L, false);
+      f.Ozc.idkeyStat(963L, 47L, 1L, false);
       localObject2 = MMApplicationContext.getContext();
-      h((Context)localObject2, paramString, paramIntent);
+      i((Context)localObject2, paramString, paramIntent);
     }
     for (;;)
     {
@@ -190,19 +190,19 @@ public final class c
           public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
           {
             AppMethodBeat.i(125320);
-            f.Iyx.idkeyStat(963L, 48L, 1L, false);
+            f.Ozc.idkeyStat(963L, 48L, 1L, false);
             if (paramAnonymousIBinder == null)
             {
-              Log.i("MicroMsg.MMServiceHelper", "unbindService() ClassName = %s ProcessName = %s onServiceConnected() service == null", new Object[] { this.UXR, paramString });
+              Log.i("MicroMsg.MMServiceHelper", "unbindService() ClassName = %s ProcessName = %s onServiceConnected() service == null", new Object[] { c.this, paramString });
               AppMethodBeat.o(125320);
               return;
             }
-            Log.i("MicroMsg.MMServiceHelper", "unbindService() ClassName = %s ProcessName = %s onServiceConnected()", new Object[] { this.UXR, paramString });
+            Log.i("MicroMsg.MMServiceHelper", "unbindService() ClassName = %s ProcessName = %s onServiceConnected()", new Object[] { c.this, paramString });
             try
             {
-              paramAnonymousComponentName = b.a.T(paramAnonymousIBinder);
-              paramAnonymousComponentName.bw(this.val$intent);
-              c.fPJ().put(paramString, paramAnonymousComponentName);
+              paramAnonymousComponentName = b.a.Y(paramAnonymousIBinder);
+              paramAnonymousComponentName.ca(this.val$intent);
+              c.hhB().put(paramString, paramAnonymousComponentName);
               AppMethodBeat.o(125320);
               return;
             }
@@ -211,10 +211,10 @@ public final class c
               if (paramBoolean)
               {
                 c.a(paramServiceConnection, paramString, false, paramIntent);
-                f.Iyx.idkeyStat(963L, 51L, 1L, false);
+                f.Ozc.idkeyStat(963L, 51L, 1L, false);
               }
-              f.Iyx.idkeyStat(963L, 49L, 1L, false);
-              Log.i("MicroMsg.MMServiceHelper", "unbindService() ClassName = %s ProcessName = %s onServiceConnected() exception = %s stack[%s]", new Object[] { this.UXR, paramString, paramAnonymousComponentName.getMessage(), Util.getStack() });
+              f.Ozc.idkeyStat(963L, 49L, 1L, false);
+              Log.i("MicroMsg.MMServiceHelper", "unbindService() ClassName = %s ProcessName = %s onServiceConnected() exception = %s stack[%s]", new Object[] { c.this, paramString, paramAnonymousComponentName.getMessage(), Util.getStack() });
               AppMethodBeat.o(125320);
             }
           }
@@ -222,14 +222,14 @@ public final class c
           public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
           {
             AppMethodBeat.i(125321);
-            Log.i("MicroMsg.MMServiceHelper", "unbindService() ClassName = %s ProcessName = %s onServiceDisconnected()", new Object[] { this.UXR, paramString });
-            c.fPJ().remove(paramString);
-            f.Iyx.idkeyStat(963L, 50L, 1L, false);
+            Log.i("MicroMsg.MMServiceHelper", "unbindService() ClassName = %s ProcessName = %s onServiceDisconnected()", new Object[] { c.this, paramString });
+            c.hhB().remove(paramString);
+            f.Ozc.idkeyStat(963L, 50L, 1L, false);
             AppMethodBeat.o(125321);
           }
         }, 1)) });
         Log.i("MicroMsg.MMServiceHelper", "unbindService() ClassName = %s processName = %s", new Object[] { str, paramString });
-        f.Iyx.idkeyStat(963L, 46L, 1L, false);
+        f.Ozc.idkeyStat(963L, 46L, 1L, false);
         AppMethodBeat.o(125327);
         return;
       }
@@ -240,24 +240,62 @@ public final class c
       }
       try
       {
-        ((b)localObject2).bw((Intent)localObject1);
-        f.Iyx.idkeyStat(963L, 52L, 1L, false);
+        ((b)localObject2).ca((Intent)localObject1);
+        f.Ozc.idkeyStat(963L, 52L, 1L, false);
         Log.i("MicroMsg.MMServiceHelper", "IMMServiceStub_AIDL != null, unbindService() ClassName = %s ProcessName = %s ", new Object[] { str, paramString });
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          UXD.remove(paramString);
+          acwv.remove(paramString);
           if (paramBoolean)
           {
             a(paramServiceConnection, paramString, false, paramIntent);
-            f.Iyx.idkeyStat(963L, 51L, 1L, false);
+            f.Ozc.idkeyStat(963L, 51L, 1L, false);
           }
           Log.i("MicroMsg.MMServiceHelper", "unbindService() ClassName = %s ProcessName = %s exception = %s stack[%s]", new Object[] { str, paramString, localException.getMessage(), Util.getStack() });
         }
       }
     }
+  }
+  
+  public static void a(String paramString, final boolean paramBoolean, final Intent paramIntent)
+  {
+    AppMethodBeat.i(125328);
+    Context localContext = MMApplicationContext.getContext();
+    i(localContext, paramString, paramIntent);
+    localContext.bindService(paramIntent, new ServiceConnection()
+    {
+      public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
+      {
+        AppMethodBeat.i(125322);
+        if (paramAnonymousIBinder == null)
+        {
+          Log.i("MicroMsg.MMServiceHelper", "startProcessService() ProcessName = %s onServiceConnected() service == null", new Object[] { c.this });
+          AppMethodBeat.o(125322);
+          return;
+        }
+        paramAnonymousComponentName = b.a.Y(paramAnonymousIBinder);
+        c.hhB().put(c.this, paramAnonymousComponentName);
+        Log.i("MicroMsg.MMServiceHelper", "startProcessService() ProcessName = %s onServiceConnected()", new Object[] { c.this });
+        AppMethodBeat.o(125322);
+      }
+      
+      public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
+      {
+        AppMethodBeat.i(125323);
+        c.hhB().remove(c.this);
+        if (paramBoolean) {
+          c.a(c.this, false, paramIntent);
+        }
+        Log.i("MicroMsg.MMServiceHelper", "startProcessService() ProcessName = %s onServiceDisconnected()", new Object[] { c.this });
+        f.Ozc.idkeyStat(963L, 4L, 1L, false);
+        AppMethodBeat.o(125323);
+      }
+    }, 1);
+    Log.i("MicroMsg.MMServiceHelper", "startProcessService() processName = %s", new Object[] { paramString });
+    AppMethodBeat.o(125328);
   }
   
   public static boolean a(final Intent paramIntent1, final ServiceConnection paramServiceConnection, final int paramInt, final String paramString, final boolean paramBoolean, Intent paramIntent2)
@@ -276,16 +314,16 @@ public final class c
       AppMethodBeat.o(125326);
       return false;
     }
-    Object localObject = (b)UXD.get(paramString);
+    Object localObject = (b)acwv.get(paramString);
     paramIntent1.putExtra("class_name", str);
     paramIntent1.putExtra("service_connection", paramServiceConnection.hashCode());
-    UXG.put(Integer.valueOf(paramServiceConnection.hashCode()), str);
+    acwy.put(Integer.valueOf(paramServiceConnection.hashCode()), str);
     if (localObject == null)
     {
-      f.Iyx.idkeyStat(963L, 32L, 1L, false);
-      UXF.add(paramIntent1);
+      f.Ozc.idkeyStat(963L, 32L, 1L, false);
+      acwx.add(paramIntent1);
       localObject = MMApplicationContext.getContext();
-      h((Context)localObject, paramString, paramIntent2);
+      i((Context)localObject, paramString, paramIntent2);
     }
     for (;;)
     {
@@ -296,68 +334,68 @@ public final class c
           public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
           {
             AppMethodBeat.i(125316);
-            Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s onServiceConnected()", new Object[] { this.UXM.getComponent().getClassName(), str, paramString });
-            f.Iyx.idkeyStat(963L, 33L, 1L, false);
-            if (!c.RD().contains(paramIntent1))
+            Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s onServiceConnected()", new Object[] { c.this.getComponent().getClassName(), str, paramString });
+            f.Ozc.idkeyStat(963L, 33L, 1L, false);
+            if (!c.arR().contains(paramIntent1))
             {
               AppMethodBeat.o(125316);
               return;
             }
             if (paramAnonymousIBinder == null)
             {
-              Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s onServiceConnected() service == null", new Object[] { this.UXM.getComponent().getClassName(), str, paramString });
+              Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s onServiceConnected() service == null", new Object[] { c.this.getComponent().getClassName(), str, paramString });
               AppMethodBeat.o(125316);
               return;
             }
             try
             {
-              paramAnonymousComponentName = b.a.T(paramAnonymousIBinder);
+              paramAnonymousComponentName = b.a.Y(paramAnonymousIBinder);
               paramAnonymousComponentName.a(paramIntent1, new a.a()
               {
-                public final void S(IBinder paramAnonymous2IBinder)
+                public final void X(IBinder paramAnonymous2IBinder)
                 {
                   AppMethodBeat.i(125315);
                   if (paramAnonymous2IBinder == null)
                   {
-                    Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s IMMServiceStub_AIDL.bindService: onServiceConnected() service == null", new Object[] { c.3.this.UXM.getComponent().getClassName(), c.3.this.UXJ, c.3.this.fds });
+                    Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s IMMServiceStub_AIDL.bindService: onServiceConnected() service == null", new Object[] { c.this.getComponent().getClassName(), c.3.this.acwB, c.3.this.sTB });
                     AppMethodBeat.o(125315);
                     return;
                   }
-                  c.3.this.UXN.onServiceConnected(new ComponentName(MMApplicationContext.getContext(), c.3.this.UXJ), paramAnonymous2IBinder);
-                  c.htE().put(Integer.valueOf(c.3.this.UXN.hashCode()), paramAnonymous2IBinder);
+                  c.3.this.acwF.onServiceConnected(new ComponentName(MMApplicationContext.getContext(), c.3.this.acwB), paramAnonymous2IBinder);
+                  c.iUF().put(Integer.valueOf(c.3.this.acwF.hashCode()), paramAnonymous2IBinder);
                   IBinder.DeathRecipient local1 = new IBinder.DeathRecipient()
                   {
                     public final void binderDied()
                     {
                       AppMethodBeat.i(125314);
-                      c.3.this.UXN.onServiceDisconnected(new ComponentName(MMApplicationContext.getContext(), c.3.this.UXJ));
-                      Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s IMMServiceStub_AIDL.bindService: onServiceConnected()", new Object[] { c.3.this.UXM.getComponent().getClassName(), c.3.this.UXJ, c.3.this.fds });
+                      c.3.this.acwF.onServiceDisconnected(new ComponentName(MMApplicationContext.getContext(), c.3.this.acwB));
+                      Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s IMMServiceStub_AIDL.bindService: onServiceConnected()", new Object[] { c.this.getComponent().getClassName(), c.3.this.acwB, c.3.this.sTB });
                       AppMethodBeat.o(125314);
                     }
                   };
-                  c.UXI.put(Integer.valueOf(c.3.this.UXN.hashCode()), local1);
+                  c.iUG().put(Integer.valueOf(c.3.this.acwF.hashCode()), local1);
                   paramAnonymous2IBinder.linkToDeath(local1, 0);
-                  Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s IMMServiceStub_AIDL.bindService: onServiceConnected()", new Object[] { c.3.this.UXM.getComponent().getClassName(), c.3.this.UXJ, c.3.this.fds });
+                  Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s IMMServiceStub_AIDL.bindService: onServiceConnected()", new Object[] { c.this.getComponent().getClassName(), c.3.this.acwB, c.3.this.sTB });
                   AppMethodBeat.o(125315);
                 }
               });
-              c.fPJ().put(paramString, paramAnonymousComponentName);
+              c.hhB().put(paramString, paramAnonymousComponentName);
               return;
             }
             catch (Exception paramAnonymousComponentName)
             {
               if (paramBoolean)
               {
-                c.a(paramIntent1, paramServiceConnection, paramInt, paramString, false, this.UXM);
-                f.Iyx.idkeyStat(963L, 36L, 1L, false);
+                c.a(paramIntent1, paramServiceConnection, paramInt, paramString, false, c.this);
+                f.Ozc.idkeyStat(963L, 36L, 1L, false);
               }
-              Log.i("MicroMsg.MMServiceHelper", "bindService()  ProcessServiceClassName = %s ClassName = %s ProcessName = %s onServiceConnected() exception = %s stack[%s]", new Object[] { this.UXM.getComponent().getClassName(), str, paramString, paramAnonymousComponentName.getMessage(), Util.getStack() });
-              f.Iyx.idkeyStat(963L, 34L, 1L, false);
+              Log.i("MicroMsg.MMServiceHelper", "bindService()  ProcessServiceClassName = %s ClassName = %s ProcessName = %s onServiceConnected() exception = %s stack[%s]", new Object[] { c.this.getComponent().getClassName(), str, paramString, paramAnonymousComponentName.getMessage(), Util.getStack() });
+              f.Ozc.idkeyStat(963L, 34L, 1L, false);
               return;
             }
             finally
             {
-              c.RD().remove(paramIntent1);
+              c.arR().remove(paramIntent1);
               AppMethodBeat.o(125316);
             }
           }
@@ -365,15 +403,15 @@ public final class c
           public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
           {
             AppMethodBeat.i(125317);
-            c.fPJ().remove(paramString);
-            Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s onServiceDisconnected()", new Object[] { this.UXM.getComponent().getClassName(), str, paramString });
-            f.Iyx.idkeyStat(963L, 35L, 1L, false);
+            c.hhB().remove(paramString);
+            Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s onServiceDisconnected()", new Object[] { c.this.getComponent().getClassName(), str, paramString });
+            f.Ozc.idkeyStat(963L, 35L, 1L, false);
             AppMethodBeat.o(125317);
           }
         }, 1);
         Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s bindService_result = %b", new Object[] { paramIntent2.getComponent().getClassName(), str, paramString, Boolean.valueOf(paramBoolean) });
         Log.i("MicroMsg.MMServiceHelper", "bindService() ClassName = %s ProcessName = %s", new Object[] { str, paramString });
-        f.Iyx.idkeyStat(963L, 31L, 1L, false);
+        f.Ozc.idkeyStat(963L, 31L, 1L, false);
         AppMethodBeat.o(125326);
         return true;
       }
@@ -382,30 +420,30 @@ public final class c
         Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s Context.bindService() Exception = %s", new Object[] { paramIntent2.getComponent().getClassName(), str, paramString, paramIntent1.getMessage() });
         continue;
       }
-      f.Iyx.idkeyStat(963L, 37L, 1L, false);
+      f.Ozc.idkeyStat(963L, 37L, 1L, false);
       try
       {
         Log.i("MicroMsg.MMServiceHelper", "IMMServiceStub_AIDL != null, bindService() ClassName = %s ProcessName = %s ", new Object[] { str, paramString });
         ((b)localObject).a(paramIntent1, new a.a()
         {
-          public final void S(IBinder paramAnonymousIBinder)
+          public final void X(IBinder paramAnonymousIBinder)
           {
             AppMethodBeat.i(125319);
-            Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s IMMServiceStub_AIDL.bindService: onServiceConnected()", new Object[] { this.UXM.getComponent().getClassName(), str, paramString });
+            Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s IMMServiceStub_AIDL.bindService: onServiceConnected()", new Object[] { c.this.getComponent().getClassName(), str, paramString });
             if (paramAnonymousIBinder == null)
             {
               AppMethodBeat.o(125319);
               return;
             }
             paramServiceConnection.onServiceConnected(new ComponentName(MMApplicationContext.getContext(), str), paramAnonymousIBinder);
-            c.htE().put(Integer.valueOf(paramServiceConnection.hashCode()), paramAnonymousIBinder);
+            c.iUF().put(Integer.valueOf(paramServiceConnection.hashCode()), paramAnonymousIBinder);
             paramAnonymousIBinder.linkToDeath(new IBinder.DeathRecipient()
             {
               public final void binderDied()
               {
                 AppMethodBeat.i(125318);
-                c.4.this.UXN.onServiceDisconnected(new ComponentName(MMApplicationContext.getContext(), c.4.this.UXJ));
-                Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s IMMServiceStub_AIDL.bindService: onServiceConnected()", new Object[] { c.4.this.UXM.getComponent().getClassName(), c.4.this.UXJ, c.4.this.fds });
+                c.4.this.acwF.onServiceDisconnected(new ComponentName(MMApplicationContext.getContext(), c.4.this.acwB));
+                Log.i("MicroMsg.MMServiceHelper", "bindService() ProcessServiceClassName = %s ClassName = %s ProcessName = %s IMMServiceStub_AIDL.bindService: onServiceConnected()", new Object[] { c.this.getComponent().getClassName(), c.4.this.acwB, c.4.this.sTB });
                 AppMethodBeat.o(125318);
               }
             }, 0);
@@ -415,11 +453,11 @@ public final class c
       }
       catch (Exception localException)
       {
-        UXD.remove(paramString);
+        acwv.remove(paramString);
         if (paramBoolean)
         {
           a(paramIntent1, paramServiceConnection, paramInt, paramString, false, paramIntent2);
-          f.Iyx.idkeyStat(963L, 36L, 1L, false);
+          f.Ozc.idkeyStat(963L, 36L, 1L, false);
         }
         Log.i("MicroMsg.MMServiceHelper", "bindService ClassName = %s ProcessName = %s exception = %s stack[%s]", new Object[] { str, paramString, localException.getMessage(), Util.getStack() });
       }
@@ -442,13 +480,13 @@ public final class c
       AppMethodBeat.o(125325);
       return;
     }
-    Object localObject = (b)UXD.get(paramString);
+    Object localObject = (b)acwv.get(paramString);
     paramIntent1.putExtra("class_name", str);
     if (localObject == null)
     {
-      f.Iyx.idkeyStat(963L, 17L, 1L, false);
+      f.Ozc.idkeyStat(963L, 17L, 1L, false);
       localObject = MMApplicationContext.getContext();
-      h((Context)localObject, paramString, paramIntent2);
+      i((Context)localObject, paramString, paramIntent2);
     }
     for (;;)
     {
@@ -459,19 +497,19 @@ public final class c
           public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
           {
             AppMethodBeat.i(125312);
-            f.Iyx.idkeyStat(963L, 18L, 1L, false);
+            f.Ozc.idkeyStat(963L, 18L, 1L, false);
             if (paramAnonymousIBinder == null)
             {
-              Log.i("MicroMsg.MMServiceHelper", "stopService() ClassName = %s ProcessName = %s onServiceConnected() service == null", new Object[] { this.UXJ, paramString });
+              Log.i("MicroMsg.MMServiceHelper", "stopService() ClassName = %s ProcessName = %s onServiceConnected() service == null", new Object[] { c.this, paramString });
               AppMethodBeat.o(125312);
               return;
             }
-            Log.i("MicroMsg.MMServiceHelper", "stopService() ClassName = %s ProcessName = %s onServiceConnected()", new Object[] { this.UXJ, paramString });
+            Log.i("MicroMsg.MMServiceHelper", "stopService() ClassName = %s ProcessName = %s onServiceConnected()", new Object[] { c.this, paramString });
             try
             {
-              paramAnonymousComponentName = b.a.T(paramAnonymousIBinder);
-              paramAnonymousComponentName.bs(paramIntent1);
-              c.fPJ().put(paramString, paramAnonymousComponentName);
+              paramAnonymousComponentName = b.a.Y(paramAnonymousIBinder);
+              paramAnonymousComponentName.bV(paramIntent1);
+              c.hhB().put(paramString, paramAnonymousComponentName);
               AppMethodBeat.o(125312);
               return;
             }
@@ -480,10 +518,10 @@ public final class c
               if (paramBoolean)
               {
                 c.b(paramIntent1, paramString, false, paramIntent2);
-                f.Iyx.idkeyStat(963L, 21L, 1L, false);
+                f.Ozc.idkeyStat(963L, 21L, 1L, false);
               }
-              Log.i("MicroMsg.MMServiceHelper", "stopService ClassName = %s ProcessName = %s onServiceConnected() exception = %s stack[%s]", new Object[] { this.UXJ, paramString, paramAnonymousComponentName.getMessage(), Util.getStack() });
-              f.Iyx.idkeyStat(963L, 19L, 1L, false);
+              Log.i("MicroMsg.MMServiceHelper", "stopService ClassName = %s ProcessName = %s onServiceConnected() exception = %s stack[%s]", new Object[] { c.this, paramString, paramAnonymousComponentName.getMessage(), Util.getStack() });
+              f.Ozc.idkeyStat(963L, 19L, 1L, false);
               AppMethodBeat.o(125312);
             }
           }
@@ -491,14 +529,14 @@ public final class c
           public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
           {
             AppMethodBeat.i(125313);
-            c.fPJ().remove(paramString);
-            Log.i("MicroMsg.MMServiceHelper", "stopService() ClassName = %s ProcessName = %s onServiceDisconnected()", new Object[] { this.UXJ, paramString });
-            f.Iyx.idkeyStat(963L, 20L, 1L, false);
+            c.hhB().remove(paramString);
+            Log.i("MicroMsg.MMServiceHelper", "stopService() ClassName = %s ProcessName = %s onServiceDisconnected()", new Object[] { c.this, paramString });
+            f.Ozc.idkeyStat(963L, 20L, 1L, false);
             AppMethodBeat.o(125313);
           }
         }, 1)) });
         Log.i("MicroMsg.MMServiceHelper", "stopService() ClassName = %s ProcessName = %s", new Object[] { str, paramString });
-        f.Iyx.idkeyStat(963L, 16L, 1L, false);
+        f.Ozc.idkeyStat(963L, 16L, 1L, false);
         AppMethodBeat.o(125325);
         return;
       }
@@ -509,19 +547,19 @@ public final class c
       }
       try
       {
-        ((b)localObject).bs(paramIntent1);
-        f.Iyx.idkeyStat(963L, 22L, 1L, false);
+        ((b)localObject).bV(paramIntent1);
+        f.Ozc.idkeyStat(963L, 22L, 1L, false);
         Log.i("MicroMsg.MMServiceHelper", "IMMServiceStub_AIDL != null, stopService() ClassName = %s ProcessName = %s stack[%s]", new Object[] { str, paramString, Util.getStack() });
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          UXD.remove(paramString);
+          acwv.remove(paramString);
           if (paramBoolean)
           {
             b(paramIntent1, paramString, false, paramIntent2);
-            f.Iyx.idkeyStat(963L, 21L, 1L, false);
+            f.Ozc.idkeyStat(963L, 21L, 1L, false);
           }
           Log.i("MicroMsg.MMServiceHelper", "stopService ClassName = %s ProcessName = %s exception = %s", new Object[] { str, paramString, localException.getMessage() });
         }
@@ -529,45 +567,7 @@ public final class c
     }
   }
   
-  public static void b(String paramString, final boolean paramBoolean, final Intent paramIntent)
-  {
-    AppMethodBeat.i(125328);
-    Context localContext = MMApplicationContext.getContext();
-    h(localContext, paramString, paramIntent);
-    localContext.bindService(paramIntent, new ServiceConnection()
-    {
-      public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
-      {
-        AppMethodBeat.i(125322);
-        if (paramAnonymousIBinder == null)
-        {
-          Log.i("MicroMsg.MMServiceHelper", "startProcessService() ProcessName = %s onServiceConnected() service == null", new Object[] { this.fds });
-          AppMethodBeat.o(125322);
-          return;
-        }
-        paramAnonymousComponentName = b.a.T(paramAnonymousIBinder);
-        c.fPJ().put(this.fds, paramAnonymousComponentName);
-        Log.i("MicroMsg.MMServiceHelper", "startProcessService() ProcessName = %s onServiceConnected()", new Object[] { this.fds });
-        AppMethodBeat.o(125322);
-      }
-      
-      public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
-      {
-        AppMethodBeat.i(125323);
-        c.fPJ().remove(this.fds);
-        if (paramBoolean) {
-          c.b(this.fds, false, paramIntent);
-        }
-        Log.i("MicroMsg.MMServiceHelper", "startProcessService() ProcessName = %s onServiceDisconnected()", new Object[] { this.fds });
-        f.Iyx.idkeyStat(963L, 4L, 1L, false);
-        AppMethodBeat.o(125323);
-      }
-    }, 1);
-    Log.i("MicroMsg.MMServiceHelper", "startProcessService() processName = %s", new Object[] { paramString });
-    AppMethodBeat.o(125328);
-  }
-  
-  private static boolean bup(String paramString)
+  private static boolean but(String paramString)
   {
     AppMethodBeat.i(125330);
     if (!Util.isEqual(paramString, "mm"))
@@ -575,7 +575,7 @@ public final class c
       AppMethodBeat.o(125330);
       return false;
     }
-    if (d.qV(26))
+    if (d.rb(26))
     {
       int i = MMApplicationContext.getContext().getSharedPreferences("service_launch_way", 4).getInt("huawei_switch", 0);
       Log.i("MicroMsg.MMServiceHelper", "ifTarget26StartServiceHuawei() huaweiEnable : %s", new Object[] { Integer.valueOf(i) });
@@ -591,10 +591,10 @@ public final class c
     return true;
   }
   
-  private static void h(Context paramContext, String paramString, Intent paramIntent)
+  private static void i(Context paramContext, String paramString, Intent paramIntent)
   {
     AppMethodBeat.i(125329);
-    if (bup(paramString)) {
+    if (but(paramString)) {
       try
       {
         paramContext.startService(paramIntent);
@@ -611,7 +611,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.service.c
  * JD-Core Version:    0.7.0.1
  */

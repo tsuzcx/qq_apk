@@ -8,27 +8,27 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 
 public class CardTagTextView
   extends TextView
 {
   private int fillColor;
-  private RectF shN;
-  private Paint shO;
-  private int shP;
-  private int tHh;
-  private int tHi;
+  private RectF vtO;
+  private Paint vtP;
+  private int vtQ;
+  private int wKI;
+  private int wKJ;
   
   public CardTagTextView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(113879);
-    this.shN = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.shO = new Paint();
-    this.shP = 3;
-    this.tHh = 9;
-    this.tHi = 0;
+    this.vtO = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.vtP = new Paint();
+    this.vtQ = 3;
+    this.wKI = 9;
+    this.wKJ = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113879);
@@ -38,11 +38,11 @@ public class CardTagTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(113880);
-    this.shN = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.shO = new Paint();
-    this.shP = 3;
-    this.tHh = 9;
-    this.tHi = 0;
+    this.vtO = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.vtP = new Paint();
+    this.vtQ = 3;
+    this.wKI = 9;
+    this.wKJ = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113880);
@@ -52,11 +52,11 @@ public class CardTagTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(113881);
-    this.shN = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.shO = new Paint();
-    this.shP = 3;
-    this.tHh = 9;
-    this.tHi = 0;
+    this.vtO = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.vtP = new Paint();
+    this.vtQ = 3;
+    this.wKI = 9;
+    this.wKJ = 0;
     this.fillColor = 0;
     init();
     AppMethodBeat.o(113881);
@@ -65,30 +65,30 @@ public class CardTagTextView
   private void init()
   {
     AppMethodBeat.i(113882);
-    this.shP = Math.round(a.getDensity(getContext()) * 0.5F);
-    this.tHh = a.fromDPToPix(getContext(), 3);
-    this.tHi = getCurrentTextColor();
+    this.vtQ = Math.round(a.getDensity(getContext()) * 0.5F);
+    this.wKI = a.fromDPToPix(getContext(), 3);
+    this.wKJ = getCurrentTextColor();
     AppMethodBeat.o(113882);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(113884);
-    this.shN.left = this.tHh;
-    this.shN.top = this.shP;
-    this.shN.right = (getWidth() - this.tHh);
-    this.shN.bottom = (getHeight() - this.shP);
-    this.shO.setAntiAlias(true);
+    this.vtO.left = this.wKI;
+    this.vtO.top = this.vtQ;
+    this.vtO.right = (getWidth() - this.wKI);
+    this.vtO.bottom = (getHeight() - this.vtQ);
+    this.vtP.setAntiAlias(true);
     if (this.fillColor != 0)
     {
-      this.shO.setColor(this.fillColor);
-      this.shO.setStyle(Paint.Style.FILL);
-      paramCanvas.drawRoundRect(this.shN, getHeight() / 2 - this.shP, getHeight() / 2 - this.shP, this.shO);
+      this.vtP.setColor(this.fillColor);
+      this.vtP.setStyle(Paint.Style.FILL);
+      paramCanvas.drawRoundRect(this.vtO, getHeight() / 2 - this.vtQ, getHeight() / 2 - this.vtQ, this.vtP);
     }
-    this.shO.setColor(this.tHi);
-    this.shO.setStrokeWidth(this.shP);
-    this.shO.setStyle(Paint.Style.STROKE);
-    paramCanvas.drawRoundRect(this.shN, getHeight() / 2 - this.shP, getHeight() / 2 - this.shP, this.shO);
+    this.vtP.setColor(this.wKJ);
+    this.vtP.setStrokeWidth(this.vtQ);
+    this.vtP.setStyle(Paint.Style.STROKE);
+    paramCanvas.drawRoundRect(this.vtO, getHeight() / 2 - this.vtQ, getHeight() / 2 - this.vtQ, this.vtP);
     super.onDraw(paramCanvas);
     AppMethodBeat.o(113884);
   }
@@ -101,7 +101,7 @@ public class CardTagTextView
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(113883);
-    this.tHi = paramInt;
+    this.wKJ = paramInt;
     super.setTextColor(paramInt);
     AppMethodBeat.o(113883);
   }

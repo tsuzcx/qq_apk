@@ -1,17 +1,19 @@
 package com.tencent.mm.ui.tools;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.mq;
+import com.tencent.mm.autogen.a.nx;
 import com.tencent.mm.sdk.event.IListener;
 
-final class NewTaskUI$1
-  extends IListener<mq>
+class NewTaskUI$1
+  extends IListener<nx>
 {
-  NewTaskUI$1(NewTaskUI paramNewTaskUI)
+  NewTaskUI$1(NewTaskUI paramNewTaskUI, q paramq)
   {
-    AppMethodBeat.i(161581);
-    this.__eventId = mq.class.getName().hashCode();
-    AppMethodBeat.o(161581);
+    super(paramq);
+    AppMethodBeat.i(250970);
+    this.__eventId = nx.class.getName().hashCode();
+    AppMethodBeat.o(250970);
   }
 }
 

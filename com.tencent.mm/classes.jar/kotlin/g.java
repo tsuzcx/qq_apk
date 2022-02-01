@@ -1,8 +1,8 @@
 package kotlin;
 
-@l(iBK={1, 1, 16}, iBL={"kotlin/LazyKt__LazyJVMKt", "kotlin/LazyKt__LazyKt"}, iBN=1)
+@Metadata(d1={""}, d2={"Lkotlin/KotlinNullPointerException;", "Ljava/lang/NullPointerException;", "Lkotlin/NullPointerException;", "()V", "message", "", "(Ljava/lang/String;)V", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public final class g
-  extends j
+  extends NullPointerException
 {}
 
 

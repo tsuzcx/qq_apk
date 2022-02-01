@@ -1,134 +1,108 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 import java.util.LinkedList;
 
 public final class eyo
-  extends dyy
+  extends erp
 {
-  public eym Smu;
+  public String abzT;
+  public long abzU;
+  public long eUc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32488);
+    AppMethodBeat.i(82476);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(32488);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.Smu == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: UploadCtx");
-        AppMethodBeat.o(32488);
-        throw paramVarArgs;
+      if (this.abzT != null) {
+        paramVarArgs.g(2, this.abzT);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
-      }
-      if (this.Smu != null)
-      {
-        paramVarArgs.oE(2, this.Smu.computeSize());
-        this.Smu.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(32488);
+      paramVarArgs.bv(3, this.eUc);
+      paramVarArgs.bv(4, this.abzU);
+      AppMethodBeat.o(82476);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label530;
+      if (this.BaseRequest == null) {
+        break label436;
       }
     }
-    label530:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label436:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Smu != null) {
-        i = paramInt + g.a.a.a.oD(2, this.Smu.computeSize());
+      if (this.abzT != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.abzT);
       }
-      AppMethodBeat.o(32488);
-      return i;
+      paramInt = i.a.a.b.b.a.q(3, this.eUc);
+      int j = i.a.a.b.b.a.q(4, this.abzU);
+      AppMethodBeat.o(82476);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(32488);
-          throw paramVarArgs;
-        }
-        if (this.Smu == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: UploadCtx");
-          AppMethodBeat.o(32488);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32488);
+        AppMethodBeat.o(82476);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         eyo localeyo = (eyo)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32488);
+          AppMethodBeat.o(82476);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jh();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jh)localObject2).parseFrom((byte[])localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
             }
-            localeyo.BaseResponse = ((jh)localObject2);
+            localeyo.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(32488);
+          AppMethodBeat.o(82476);
+          return 0;
+        case 2: 
+          localeyo.abzT = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(82476);
+          return 0;
+        case 3: 
+          localeyo.eUc = ((i.a.a.a.a)localObject).ajGk.aaw();
+          AppMethodBeat.o(82476);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new eym();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((eym)localObject2).parseFrom((byte[])localObject1);
-          }
-          localeyo.Smu = ((eym)localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(32488);
+        localeyo.abzU = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(82476);
         return 0;
       }
-      AppMethodBeat.o(32488);
+      AppMethodBeat.o(82476);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.eyo
  * JD-Core Version:    0.7.0.1
  */

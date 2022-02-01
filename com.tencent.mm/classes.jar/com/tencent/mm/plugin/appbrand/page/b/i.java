@@ -1,29 +1,26 @@
 package com.tencent.mm.plugin.appbrand.page.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/navigation/TypePageNavigateBackInterceptor;", "", "(Ljava/lang/String;I)V", "NONE", "SILENT", "WITH_CONFIRM_DIALOG", "luggage-wxa-app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/navigation/TypePageNavigateBackInterceptor;", "", "(Ljava/lang/String;I)V", "NONE", "SILENT", "WITH_CONFIRM_DIALOG", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum i
 {
   static
   {
-    AppMethodBeat.i(246517);
-    i locali1 = new i("NONE", 0);
-    qxW = locali1;
-    i locali2 = new i("SILENT", 1);
-    qxX = locali2;
-    i locali3 = new i("WITH_CONFIRM_DIALOG", 2);
-    qxY = locali3;
-    qxZ = new i[] { locali1, locali2, locali3 };
-    AppMethodBeat.o(246517);
+    AppMethodBeat.i(325109);
+    tCW = new i("NONE", 0);
+    tCX = new i("SILENT", 1);
+    tCY = new i("WITH_CONFIRM_DIALOG", 2);
+    tCZ = new i[] { tCW, tCX, tCY };
+    AppMethodBeat.o(325109);
   }
   
   private i() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.i
  * JD-Core Version:    0.7.0.1
  */

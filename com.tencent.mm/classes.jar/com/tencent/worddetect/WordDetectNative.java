@@ -5,12 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WordDetectNative
 {
   private static final String TAG = "WordDetectNative";
+  private byte _hellAccFlag_;
   private int handleId = -1;
   
   static
   {
     AppMethodBeat.i(40076);
-    System.loadLibrary("wechatWordDetectMod");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("wechatWordDetectMod");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/worddetect/WordDetectNative", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/worddetect/WordDetectNative", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     AppMethodBeat.o(40076);
   }
   
@@ -105,7 +110,7 @@ public class WordDetectNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.worddetect.WordDetectNative
  * JD-Core Version:    0.7.0.1
  */

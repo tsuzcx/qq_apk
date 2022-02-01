@@ -14,19 +14,19 @@ final class WalletChangeBankcardUI$5
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(277578);
+    AppMethodBeat.i(315505);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/wallet/pay/ui/WalletChangeBankcardUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet/pay/ui/WalletChangeBankcardUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     paramView = new KeyEvent(1, 4);
-    this.Oyc.dispatchKeyEvent(paramView);
+    this.Vnn.dispatchKeyEvent(paramView);
     a.a(this, "com/tencent/mm/plugin/wallet/pay/ui/WalletChangeBankcardUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(277578);
+    AppMethodBeat.o(315505);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletChangeBankcardUI.5
  * JD-Core Version:    0.7.0.1
  */

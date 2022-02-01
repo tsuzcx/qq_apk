@@ -17,10 +17,10 @@ public class AvatarImageView
   extends AvatarPatImageView
   implements m
 {
-  private i LeM;
-  private String LtE;
+  private i REW;
+  private String RWX;
   private final String TAG;
-  private boolean XaX;
+  private boolean aeKE;
   private int pageType;
   
   public AvatarImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -34,16 +34,16 @@ public class AvatarImageView
     AppMethodBeat.i(36689);
     this.TAG = "MicroMsg.AvatarImageView";
     this.pageType = -1;
-    this.LeM = null;
-    this.LtE = "";
-    this.XaX = true;
-    this.LeM = ((e)h.ag(e.class)).getStoryUIFactory().ik(paramContext);
-    this.LeM.g(this);
+    this.REW = null;
+    this.RWX = "";
+    this.aeKE = true;
+    this.REW = ((e)h.az(e.class)).getStoryUIFactory().ka(paramContext);
+    this.REW.g(this);
     setLayerType(1, null);
     AppMethodBeat.o(36689);
   }
   
-  public final void cF(String paramString, boolean paramBoolean)
+  public final void dl(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(36696);
     if ((TextUtils.isEmpty(paramString)) || (getContext() == null))
@@ -51,7 +51,7 @@ public class AvatarImageView
       AppMethodBeat.o(36696);
       return;
     }
-    if (paramString.equals(this.LtE)) {
+    if (paramString.equals(this.RWX)) {
       if (paramBoolean) {
         break label53;
       }
@@ -65,11 +65,11 @@ public class AvatarImageView
     }
   }
   
-  public final void gp(String paramString, int paramInt)
+  public final void hj(String paramString, int paramInt)
   {
     AppMethodBeat.i(36695);
-    this.LeM.gp(paramString, paramInt);
-    this.LtE = paramString;
+    this.REW.hj(paramString, paramInt);
+    this.RWX = paramString;
     this.pageType = paramInt;
     AppMethodBeat.o(36695);
   }
@@ -79,7 +79,7 @@ public class AvatarImageView
     AppMethodBeat.i(36697);
     super.onDetachedFromWindow();
     if (this.pageType != -1) {
-      a.b(this.pageType, this.LtE, this);
+      a.b(this.pageType, this.RWX, this);
     }
     AppMethodBeat.o(36697);
   }
@@ -88,13 +88,13 @@ public class AvatarImageView
   {
     AppMethodBeat.i(36690);
     super.onDraw(paramCanvas);
-    if (this.XaX)
+    if (this.aeKE)
     {
-      this.LeM.a(paramCanvas, true, 0);
+      this.REW.a(paramCanvas, true, 0);
       AppMethodBeat.o(36690);
       return;
     }
-    this.LeM.a(paramCanvas, false, 0);
+    this.REW.a(paramCanvas, false, 0);
     AppMethodBeat.o(36690);
   }
   
@@ -107,19 +107,19 @@ public class AvatarImageView
   
   public void setChattingBG(boolean paramBoolean)
   {
-    this.XaX = paramBoolean;
+    this.aeKE = paramBoolean;
   }
   
   public void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(36694);
-    this.LeM.setShowStoryHint(paramBoolean);
+    this.REW.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(36694);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.view.AvatarImageView
  * JD-Core Version:    0.7.0.1
  */

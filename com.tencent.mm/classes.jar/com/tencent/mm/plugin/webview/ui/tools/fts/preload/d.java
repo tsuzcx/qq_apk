@@ -3,102 +3,106 @@ package com.tencent.mm.plugin.webview.ui.tools.fts.preload;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.webview.WebSearchWebView;
-import com.tencent.mm.plugin.webview.d.i;
+import com.tencent.mm.plugin.webview.jsapi.k;
 import java.util.concurrent.atomic.AtomicBoolean;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadObj;", "", "biz", "", "url", "", "(ILjava/lang/String;)V", "getBiz", "()I", "proxy", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandlerProxy;", "getProxy", "()Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandlerProxy;", "setProxy", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandlerProxy;)V", "scene", "getScene", "setScene", "(I)V", "sessionId", "getSessionId", "()Ljava/lang/String;", "setSessionId", "(Ljava/lang/String;)V", "getUrl", "webView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "getWebView", "()Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "setWebView", "(Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;)V", "webViewReady", "Ljava/util/concurrent/atomic/AtomicBoolean;", "getWebViewReady", "()Ljava/util/concurrent/atomic/AtomicBoolean;", "setWebViewReady", "(Ljava/util/concurrent/atomic/AtomicBoolean;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/fts/preload/WebSearchPreloadObj;", "", "biz", "", "url", "", "(ILjava/lang/String;)V", "getBiz", "()I", "proxy", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandlerProxy;", "getProxy", "()Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandlerProxy;", "setProxy", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandlerProxy;)V", "scene", "getScene", "setScene", "(I)V", "sessionId", "getSessionId", "()Ljava/lang/String;", "setSessionId", "(Ljava/lang/String;)V", "getUrl", "webView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "getWebView", "()Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "setWebView", "(Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;)V", "webViewReady", "Ljava/util/concurrent/atomic/AtomicBoolean;", "getWebViewReady", "()Ljava/util/concurrent/atomic/AtomicBoolean;", "setWebViewReady", "(Ljava/util/concurrent/atomic/AtomicBoolean;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public WebSearchWebView Ndj;
-  public i PzB;
-  AtomicBoolean QmX;
-  final int ppO;
+  public WebSearchWebView TPU;
+  public k WpJ;
+  AtomicBoolean Xfn;
+  final int biz;
   private int scene;
   private String sessionId;
   private final String url;
   
   public d(int paramInt, String paramString)
   {
-    AppMethodBeat.i(216504);
-    this.ppO = paramInt;
+    AppMethodBeat.i(296985);
+    this.biz = paramInt;
     this.url = paramString;
     this.sessionId = "";
-    this.QmX = new AtomicBoolean(false);
+    this.Xfn = new AtomicBoolean(false);
     paramString = Uri.parse(this.url);
     for (;;)
     {
       try
       {
-        String str = paramString.getQueryParameter("scene");
-        if (str == null) {
+        str = paramString.getQueryParameter("scene");
+        if (str != null) {
           continue;
         }
-        paramInt = Integer.parseInt(str);
+        paramInt = i;
         this.scene = paramInt;
       }
       catch (Exception localException)
       {
+        String str;
         continue;
       }
       paramString = paramString.getQueryParameter("sessionId");
-      if (paramString == null) {
-        continue;
+      if (paramString != null)
+      {
+        s.u(paramString, "<set-?>");
+        this.sessionId = paramString;
       }
-      p.j(paramString, "it");
-      this.sessionId = paramString;
-      AppMethodBeat.o(216504);
+      AppMethodBeat.o(296985);
       return;
-      paramInt = i;
+      paramInt = Integer.parseInt(str);
     }
-    AppMethodBeat.o(216504);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(216510);
-    if (this != paramObject)
+    AppMethodBeat.i(297006);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof d))
-      {
-        paramObject = (d)paramObject;
-        if ((this.ppO != paramObject.ppO) || (!p.h(this.url, paramObject.url))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(216510);
+      AppMethodBeat.o(297006);
       return true;
     }
-    AppMethodBeat.o(216510);
-    return false;
+    if (!(paramObject instanceof d))
+    {
+      AppMethodBeat.o(297006);
+      return false;
+    }
+    paramObject = (d)paramObject;
+    if (this.biz != paramObject.biz)
+    {
+      AppMethodBeat.o(297006);
+      return false;
+    }
+    if (!s.p(this.url, paramObject.url))
+    {
+      AppMethodBeat.o(297006);
+      return false;
+    }
+    AppMethodBeat.o(297006);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(216508);
-    int j = this.ppO;
-    String str = this.url;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      AppMethodBeat.o(216508);
-      return i + j * 31;
-    }
+    AppMethodBeat.i(296999);
+    int i = this.biz;
+    int j = this.url.hashCode();
+    AppMethodBeat.o(296999);
+    return i * 31 + j;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(216506);
-    String str = "WebSearchPreloadObj(biz=" + this.ppO + ", url=" + this.url + ")";
-    AppMethodBeat.o(216506);
+    AppMethodBeat.i(296994);
+    String str = "WebSearchPreloadObj(biz=" + this.biz + ", url=" + this.url + ')';
+    AppMethodBeat.o(296994);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.preload.d
  * JD-Core Version:    0.7.0.1
  */

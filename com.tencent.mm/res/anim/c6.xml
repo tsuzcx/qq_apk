@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<set android:ordering="together"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="200" android:drawable="@drawable/bfe" />
-    <item android:duration="200" android:drawable="@drawable/bff" />
-    <item android:duration="200" android:drawable="@drawable/bfg" />
-</animation-list>
+    <translate android:interpolator="@android:anim/accelerate_interpolator" android:duration="300" android:fillAfter="false" android:fromYDelta="0.0%p" android:toYDelta="55.000008%" />
+    <alpha android:interpolator="@android:anim/accelerate_interpolator" android:duration="300" android:fromAlpha="1.0" android:toAlpha="0.0" />
+</set>

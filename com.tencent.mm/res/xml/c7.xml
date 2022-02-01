@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <CheckBoxPreference android:defaultValue="false" android:key="follow_system" android:summary="@string/gle" android:title="@string/w8" />
-    <PreferenceTitleCategory android:key="manual_title" android:title="@string/glf" />
-    <SelectPreference android:key="normal_mode" android:title="@string/glm" />
-    <SelectPreference android:key="dark_mode" android:title="@string/go9" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference newtip:key="settings_account_info" newtip:layout="@layout/bdi" newtip:title="@string/ipv" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference newtip:key="settings_teen_mode" newtip:layout="@layout/bdi" newtip:title="@string/j0s" />
+    <Preference newtip:key="settings_care_mode" newtip:layout="@layout/bdi" newtip:title="@string/ir1" />
+    <PreferenceSmallCategory />
+    <Preference newtip:key="settings_notification_preference" newtip:layout="@layout/bdi" newtip:title="@string/ivu" />
+    <Preference newtip:key="settings_active_time" newtip:layout="@layout/bdi" newtip:title="@string/ipy" />
+    <Preference newtip:key="settings_chatting" newtip:layout="@layout/bdi" newtip:title="@string/ir8" />
+    <Preference newtip:key="settings_about_device" newtip:layout="@layout/bdi" newtip:title="@string/ipl" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:key="settings_about_system" newtip:layout="@layout/bdi" newtip:path="general" newtip:title="@string/ipu" />
+    <PreferenceTitleCategory newtip:title="@string/ix8" />
+    <IconPreference newtip:key="settings_about_privacy" newtip:layout="@layout/bdi" newtip:title="@string/ipr" />
+    <Preference newtip:key="settings_permission_index" newtip:title="@string/ixa" />
+    <Preference newtip:key="settings_privacy_personal_list" newtip:title="@string/ixd" />
+    <Preference newtip:key="settings_privacy_third_party_list" newtip:title="@string/ixf" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:key="settings_about_micromsg" newtip:path="about" newtip:title="@string/ipq" />
+    <Preference newtip:key="settings_feedback" newtip:layout="@layout/bdi" newtip:title="@string/isa" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPluginPreference newtip:key="settings_welab" newtip:layout="@layout/bdi" newtip:path="plugin" newtip:title="@string/j2g" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference newtip:btn_title="@string/izr" newtip:key="settings_switch_account" newtip:title_color="@color/FG_0" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference newtip:btn_title="@string/itc" newtip:key="settings_logout" newtip:layout="@layout/bdi" />
+    <PreferenceCategory />
 </PreferenceScreen>

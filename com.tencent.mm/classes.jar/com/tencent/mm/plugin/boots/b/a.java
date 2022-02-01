@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.boots.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.plugin.boots.a.e;
 import com.tencent.mm.plugin.boots.a.f;
 import com.tencent.mm.plugin.hp.net.c;
@@ -11,17 +11,17 @@ import java.util.List;
 public final class a
   implements e
 {
-  public static a smV;
-  public com.tencent.mm.plugin.boots.b.a.a smW;
+  public static a vyT;
+  public com.tencent.mm.plugin.boots.b.a.a vyU;
   
-  public static a cyn()
+  public static a dbe()
   {
-    AppMethodBeat.i(196062);
-    if (smV == null) {
-      smV = new a();
+    AppMethodBeat.i(260576);
+    if (vyT == null) {
+      vyT = new a();
     }
-    a locala = smV;
-    AppMethodBeat.o(196062);
+    a locala = vyT;
+    AppMethodBeat.o(260576);
     return locala;
   }
   
@@ -29,10 +29,10 @@ public final class a
   {
     int i = 255;
     AppMethodBeat.i(117371);
-    if (this.smW != null)
+    if (this.vyU != null)
     {
-      com.tencent.mm.plugin.boots.a.a locala = this.smW.Gu(paramInt1);
-      paramInt1 = this.smW.Gt(paramInt1);
+      com.tencent.mm.plugin.boots.a.a locala = this.vyU.GT(paramInt1);
+      paramInt1 = this.vyU.GS(paramInt1);
       if ((paramBoolean) && (locala.field_dau != paramInt1))
       {
         if (paramInt1 <= 255) {
@@ -43,7 +43,7 @@ public final class a
       label77:
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(paramInt2, paramInt1, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(paramInt2, paramInt1, 1L, false);
         AppMethodBeat.o(117371);
         return;
       }
@@ -52,7 +52,7 @@ public final class a
     AppMethodBeat.o(117371);
   }
   
-  public final void Gs(int paramInt)
+  public final void GR(int paramInt)
   {
     AppMethodBeat.i(117369);
     e(paramInt, false, 0);
@@ -61,18 +61,18 @@ public final class a
   
   public final void a(String paramString1, String paramString2, String paramString3, f paramf)
   {
-    AppMethodBeat.i(196066);
+    AppMethodBeat.i(260590);
     paramString1 = new c(paramString1, paramString2, paramString3, paramf);
-    com.tencent.mm.kernel.h.aGY().a(paramString1, 0);
-    AppMethodBeat.o(196066);
+    com.tencent.mm.kernel.h.aZW().a(paramString1, 0);
+    AppMethodBeat.o(260590);
   }
   
-  public final List<com.tencent.mm.plugin.boots.a.a> cym()
+  public final List<com.tencent.mm.plugin.boots.a.a> dbd()
   {
     AppMethodBeat.i(117372);
-    if (this.smW != null)
+    if (this.vyU != null)
     {
-      List localList = this.smW.cym();
+      List localList = this.vyU.dbd();
       AppMethodBeat.o(117372);
       return localList;
     }
@@ -80,7 +80,7 @@ public final class a
     return null;
   }
   
-  public final void fA(int paramInt1, int paramInt2)
+  public final void gs(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(117370);
     e(paramInt1, true, paramInt2);

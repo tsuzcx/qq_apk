@@ -7,37 +7,37 @@ import java.util.Map;
 
 public enum c
 {
-  private Map<String, a> ozk;
+  private Map<String, a> rDc;
   
   static
   {
-    AppMethodBeat.i(226021);
-    ozj = new c("INSTANCE");
-    ozl = new c[] { ozj };
-    AppMethodBeat.o(226021);
+    AppMethodBeat.i(327779);
+    rDb = new c("INSTANCE");
+    rDd = new c[] { rDb };
+    AppMethodBeat.o(327779);
   }
   
   private c()
   {
-    AppMethodBeat.i(226016);
-    this.ozk = new HashMap(2);
-    AppMethodBeat.o(226016);
+    AppMethodBeat.i(327778);
+    this.rDc = new HashMap(2);
+    AppMethodBeat.o(327778);
   }
   
-  public final a agZ(String paramString)
+  public final a ZX(String paramString)
   {
-    AppMethodBeat.i(226018);
-    if (!this.ozk.containsKey(paramString)) {
-      this.ozk.put(paramString, new a());
+    AppMethodBeat.i(327781);
+    if (!this.rDc.containsKey(paramString)) {
+      this.rDc.put(paramString, new a());
     }
-    paramString = (a)this.ozk.get(paramString);
-    AppMethodBeat.o(226018);
+    paramString = (a)this.rDc.get(paramString);
+    AppMethodBeat.o(327781);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.c
  * JD-Core Version:    0.7.0.1
  */

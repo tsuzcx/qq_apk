@@ -13,32 +13,32 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.account.security.a.a;
 import com.tencent.mm.plugin.account.security.a.b;
 import com.tencent.mm.plugin.account.security.a.d;
-import com.tencent.mm.plugin.account.security.a.d;
-import com.tencent.mm.plugin.account.security.a.e;
-import com.tencent.mm.plugin.account.security.a.g;
+import com.tencent.mm.plugin.account.security.model.d;
+import com.tencent.mm.plugin.account.security.model.e;
+import com.tencent.mm.plugin.account.security.model.g;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class SafeDeviceListPreference
   extends Preference
-  implements i
+  implements com.tencent.mm.am.h
 {
   private Context context;
-  private ProgressDialog iXX;
+  private ProgressDialog lzP;
   int mode = -2;
-  d nbc;
-  private boolean nbd = false;
-  private Button nbe;
-  a nbf;
-  b nbg;
+  d pYk;
+  private boolean pYl = false;
+  private Button pYm;
+  a pYn;
+  b pYo;
   
   public SafeDeviceListPreference(Context paramContext)
   {
@@ -56,17 +56,17 @@ public class SafeDeviceListPreference
     this.context = paramContext;
   }
   
-  private void brR()
+  private void bPx()
   {
     AppMethodBeat.i(125579);
-    com.tencent.mm.kernel.h.aGY().b(362, this);
+    com.tencent.mm.kernel.h.aZW().b(362, this);
     AppMethodBeat.o(125579);
   }
   
   final void initView()
   {
     AppMethodBeat.i(125580);
-    if (!this.nbd)
+    if (!this.pYl)
     {
       Log.d("MicroMsg.SafeDeviceListPreference", "has not binded");
       AppMethodBeat.o(125580);
@@ -77,41 +77,41 @@ public class SafeDeviceListPreference
     case -1: 
     case 0: 
     default: 
-      auN(0);
-      auO(0);
+      aBp(0);
+      aBq(0);
       AppMethodBeat.o(125580);
       return;
     case 1: 
-      auN(a.b.delete_safe_divice);
-      if (this.nbe != null) {
-        this.nbe.setOnClickListener(new View.OnClickListener()
+      aBp(a.b.delete_safe_divice);
+      if (this.pYm != null) {
+        this.pYm.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(125576);
             b localb = new b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/security/ui/SafeDeviceListPreference$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/security/ui/SafeDeviceListPreference$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             SafeDeviceListPreference.d(SafeDeviceListPreference.this);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/security/ui/SafeDeviceListPreference$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(125576);
           }
         });
       }
-      auO(8);
+      aBq(8);
       AppMethodBeat.o(125580);
       return;
     }
-    auN(0);
-    auO(0);
+    aBp(0);
+    aBq(0);
     AppMethodBeat.o(125580);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(125578);
-    this.nbd = true;
-    this.nbe = ((Button)paramView.findViewById(a.a.del_safe_device_btn));
+    this.pYl = true;
+    this.pYm = ((Button)paramView.findViewById(a.a.del_safe_device_btn));
     initView();
     super.onBindView(paramView);
     AppMethodBeat.o(125578);
@@ -132,34 +132,34 @@ public class SafeDeviceListPreference
     return paramViewGroup;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(125581);
-    brR();
-    if ((this.iXX != null) && (this.iXX.isShowing()))
+    bPx();
+    if ((this.lzP != null) && (this.lzP.isShowing()))
     {
-      this.iXX.dismiss();
-      this.iXX = null;
+      this.lzP.dismiss();
+      this.lzP = null;
     }
     if ((paramInt2 == 0) && (paramInt2 == 0))
     {
-      g.bzc().delete(this.nbc, new String[0]);
-      if (this.nbg != null)
+      g.bXS().delete(this.pYk, new String[0]);
+      if (this.pYo != null)
       {
-        this.nbg.onSucceed(this.mKey);
+        this.pYo.onSucceed(this.mKey);
         AppMethodBeat.o(125581);
       }
     }
     else
     {
-      if (com.tencent.mm.plugin.account.sdk.a.mIH.a(this.context, paramInt1, paramInt2, paramString))
+      if (com.tencent.mm.plugin.account.sdk.a.pFo.a(this.context, paramInt1, paramInt2, paramString))
       {
         AppMethodBeat.o(125581);
         return;
       }
       Toast.makeText(this.context, this.context.getString(a.d.safe_device_del_failed, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-      if (this.nbf != null) {
-        this.nbf.aaV(this.nbc.field_uid);
+      if (this.pYn != null) {
+        this.pYn.To(this.pYk.field_uid);
       }
     }
     AppMethodBeat.o(125581);
@@ -167,7 +167,7 @@ public class SafeDeviceListPreference
   
   public static abstract interface a
   {
-    public abstract void aaV(String paramString);
+    public abstract void To(String paramString);
   }
   
   public static abstract interface b
@@ -177,7 +177,7 @@ public class SafeDeviceListPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.SafeDeviceListPreference
  * JD-Core Version:    0.7.0.1
  */

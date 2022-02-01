@@ -2,109 +2,91 @@ package com.tencent.mm.plugin.mv.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.ImageMediaItem;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.VideoMediaItem;
-import com.tencent.mm.plugin.livelist.a;
-import com.tencent.mm.protocal.protobuf.dog;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.mvvmlist.a;
+import com.tencent.mm.protocal.protobuf.egx;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewLiveItem;", "Lcom/tencent/mm/plugin/livelist/BaseMMLiveListItem;", "id", "", "orderId", "", "previewItem", "Lcom/tencent/mm/protocal/protobuf/PreviewItem;", "listId", "(Ljava/lang/String;ILcom/tencent/mm/protocal/protobuf/PreviewItem;Ljava/lang/String;)V", "galleryItem", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "getGalleryItem", "()Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "setGalleryItem", "(Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;)V", "getId", "()Ljava/lang/String;", "isChecked", "", "()Z", "setChecked", "(Z)V", "isCurrentPreview", "setCurrentPreview", "getListId", "getOrderId", "()I", "setOrderId", "(I)V", "getPreviewItem", "()Lcom/tencent/mm/protocal/protobuf/PreviewItem;", "clone", "compareTo", "other", "Lcom/tencent/mm/plugin/livelist/IMMLiveListItem;", "getItemType", "getUniqueId", "isSameContent", "Companion", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewLiveItem;", "Lcom/tencent/mm/plugin/mvvmlist/BaseMvvmListItem;", "id", "", "orderId", "", "previewItem", "Lcom/tencent/mm/protocal/protobuf/PreviewItem;", "listId", "(Ljava/lang/String;ILcom/tencent/mm/protocal/protobuf/PreviewItem;Ljava/lang/String;)V", "galleryItem", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "getGalleryItem", "()Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "setGalleryItem", "(Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;)V", "getId", "()Ljava/lang/String;", "isChecked", "", "()Z", "setChecked", "(Z)V", "isCurrentPreview", "setCurrentPreview", "getListId", "getOrderId", "()I", "setOrderId", "(I)V", "getPreviewItem", "()Lcom/tencent/mm/protocal/protobuf/PreviewItem;", "compareTo", "other", "getItemType", "getUniqueId", "isSameContent", "Companion", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends a
+  extends a<e>
 {
-  public static final e.a Geb;
-  public final String GdS;
-  public boolean GdX;
-  public GalleryItem.MediaItem GdY;
-  public int GdZ;
-  public final dog Gea;
-  public boolean fXF;
+  public static final e.a LZF;
+  public int FWs;
+  public final String LZD;
+  public final egx LZG;
+  public boolean LZH;
+  public GalleryItem.MediaItem LZI;
   public final String id;
+  public boolean idG;
   
   static
   {
-    AppMethodBeat.i(237268);
-    Geb = new e.a((byte)0);
-    AppMethodBeat.o(237268);
+    AppMethodBeat.i(286193);
+    LZF = new e.a((byte)0);
+    AppMethodBeat.o(286193);
   }
   
-  public e(String paramString1, int paramInt, dog paramdog, String paramString2)
+  public e(String paramString1, int paramInt, egx paramegx, String paramString2)
   {
-    AppMethodBeat.i(237265);
+    AppMethodBeat.i(286187);
     this.id = paramString1;
-    this.GdZ = paramInt;
-    this.Gea = paramdog;
-    this.GdS = paramString2;
-    paramString1 = this.Gea.TVy;
+    this.FWs = paramInt;
+    this.LZG = paramegx;
+    this.LZD = paramString2;
+    paramString1 = this.LZG.abml;
     if (paramString1 != null)
     {
       paramString1 = paramString1.toByteArray();
-      if (this.Gea.type == 1)
+      if (paramString1 != null)
       {
-        paramdog = GalleryItem.ImageMediaItem.CREATOR;
-        p.j(paramdog, "GalleryItem.ImageMediaItem.CREATOR");
-        this.GdY = ((GalleryItem.MediaItem)d.a(paramString1, paramdog));
-        AppMethodBeat.o(237265);
-        return;
+        if (this.LZG.type == 1)
+        {
+          paramegx = GalleryItem.ImageMediaItem.CREATOR;
+          s.s(paramegx, "CREATOR");
+          this.LZI = ((GalleryItem.MediaItem)d.a(paramString1, paramegx));
+          AppMethodBeat.o(286187);
+          return;
+        }
+        if (this.LZG.type == 2)
+        {
+          paramegx = GalleryItem.VideoMediaItem.CREATOR;
+          s.s(paramegx, "CREATOR");
+          this.LZI = ((GalleryItem.MediaItem)d.a(paramString1, paramegx));
+        }
       }
-      if (this.Gea.type == 2)
-      {
-        paramdog = GalleryItem.VideoMediaItem.CREATOR;
-        p.j(paramdog, "GalleryItem.VideoMediaItem.CREATOR");
-        this.GdY = ((GalleryItem.MediaItem)d.a(paramString1, paramdog));
-      }
-      AppMethodBeat.o(237265);
-      return;
     }
-    AppMethodBeat.o(237265);
+    AppMethodBeat.o(286187);
   }
   
-  public final int bAQ()
+  public final int bZB()
   {
-    return this.Gea.type;
+    return this.LZG.type;
   }
   
-  public final boolean c(com.tencent.mm.plugin.livelist.b paramb)
+  public final Object clone()
   {
-    AppMethodBeat.i(237252);
-    p.k(paramb, "other");
-    if ((paramb instanceof e))
-    {
-      if ((p.h(this.id, ((e)paramb).id)) && (p.h(this.Gea, ((e)paramb).Gea)) && (p.h(this.GdS, ((e)paramb).GdS)) && (this.GdX == ((e)paramb).GdX))
-      {
-        AppMethodBeat.o(237252);
-        return true;
-      }
-      AppMethodBeat.o(237252);
-      return false;
-    }
-    AppMethodBeat.o(237252);
-    return false;
+    AppMethodBeat.i(286212);
+    Object localObject = super.clone();
+    AppMethodBeat.o(286212);
+    return localObject;
   }
   
-  public final String eLP()
+  public final String fcs()
   {
-    AppMethodBeat.i(237249);
-    String str = this.GdS + '-' + this.id;
-    AppMethodBeat.o(237249);
+    AppMethodBeat.i(286199);
+    String str = this.LZD + '-' + this.id;
+    AppMethodBeat.o(286199);
     return str;
-  }
-  
-  public final e fgo()
-  {
-    AppMethodBeat.i(237257);
-    e locale = new e(this.id, this.GdZ, this.Gea, this.GdS);
-    locale.GdX = this.GdX;
-    locale.fXF = this.fXF;
-    AppMethodBeat.o(237257);
-    return locale;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.model.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -5,30 +5,30 @@ import java.util.Map;
 
 public enum c
 {
-  private static Map<Integer, c> cly;
+  private static Map<Integer, c> ebT;
   private int mId;
   private int mSize;
   
   static
   {
     int i = 0;
-    ddB = new c("OBJECT", 0, 2, 0);
-    ddC = new c("BOOLEAN", 1, 4, 1);
-    ddD = new c("CHAR", 2, 5, 2);
-    ddE = new c("FLOAT", 3, 6, 4);
-    ddF = new c("DOUBLE", 4, 7, 8);
-    ddG = new c("BYTE", 5, 8, 1);
-    ddH = new c("SHORT", 6, 9, 2);
-    ddI = new c("INT", 7, 10, 4);
-    ddJ = new c("LONG", 8, 11, 8);
-    ddK = new c[] { ddB, ddC, ddD, ddE, ddF, ddG, ddH, ddI, ddJ };
-    cly = new HashMap();
+    fcc = new c("OBJECT", 0, 2, 0);
+    fcd = new c("BOOLEAN", 1, 4, 1);
+    fce = new c("CHAR", 2, 5, 2);
+    fcf = new c("FLOAT", 3, 6, 4);
+    fcg = new c("DOUBLE", 4, 7, 8);
+    fch = new c("BYTE", 5, 8, 1);
+    fci = new c("SHORT", 6, 9, 2);
+    fcj = new c("INT", 7, 10, 4);
+    fck = new c("LONG", 8, 11, 8);
+    fcl = new c[] { fcc, fcd, fce, fcf, fcg, fch, fci, fcj, fck };
+    ebT = new HashMap();
     c[] arrayOfc = values();
     int j = arrayOfc.length;
     while (i < j)
     {
       c localc = arrayOfc[i];
-      cly.put(Integer.valueOf(localc.mId), localc);
+      ebT.put(Integer.valueOf(localc.mId), localc);
       i += 1;
     }
   }
@@ -39,12 +39,12 @@ public enum c
     this.mSize = paramInt2;
   }
   
-  public static c jF(int paramInt)
+  public static c nu(int paramInt)
   {
-    return (c)cly.get(Integer.valueOf(paramInt));
+    return (c)ebT.get(Integer.valueOf(paramInt));
   }
   
-  public final int jG(int paramInt)
+  public final int nv(int paramInt)
   {
     if (this.mSize != 0) {
       paramInt = this.mSize;
@@ -54,7 +54,7 @@ public enum c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.matrix.resource.d.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -3,50 +3,72 @@ package kotlin.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.Set;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"filterIsInstance", "", "R", "", "klass", "Ljava/lang/Class;", "filterIsInstanceTo", "C", "", "destination", "(Ljava/lang/Iterable;Ljava/util/Collection;Ljava/lang/Class;)Ljava/util/Collection;", "reverse", "", "T", "", "toSortedSet", "Ljava/util/SortedSet;", "", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "kotlin-stdlib"}, iBN=1)
+@Metadata(d1={""}, d2={"Iterable", "", "T", "iterator", "Lkotlin/Function0;", "", "collectionSizeOrDefault", "", "default", "collectionSizeOrNull", "(Ljava/lang/Iterable;)Ljava/lang/Integer;", "convertToSetForSetOperation", "", "convertToSetForSetOperationWith", "source", "flatten", "", "safeToConvertToSet", "", "safeToConvertToSet$CollectionsKt__IterablesKt", "unzip", "Lkotlin/Pair;", "R", "kotlin-stdlib"}, k=5, mv={1, 5, 1}, xi=1, xs="kotlin/collections/CollectionsKt")
 public class s
   extends r
 {
-  public static final <C extends Collection<? super R>, R> C a(Iterable<?> paramIterable, C paramC, Class<R> paramClass)
+  public static final <T> int a(Iterable<? extends T> paramIterable, int paramInt)
   {
-    AppMethodBeat.i(218709);
-    p.k(paramIterable, "$this$filterIsInstanceTo");
-    p.k(paramC, "destination");
-    p.k(paramClass, "klass");
-    paramIterable = paramIterable.iterator();
-    while (paramIterable.hasNext())
+    AppMethodBeat.i(129232);
+    kotlin.g.b.s.u(paramIterable, "$this$collectionSizeOrDefault");
+    if ((paramIterable instanceof Collection))
     {
-      Object localObject = paramIterable.next();
-      if (paramClass.isInstance(localObject)) {
-        paramC.add(localObject);
+      paramInt = ((Collection)paramIterable).size();
+      AppMethodBeat.o(129232);
+      return paramInt;
+    }
+    AppMethodBeat.o(129232);
+    return paramInt;
+  }
+  
+  public static final <T> Collection<T> a(Iterable<? extends T> paramIterable1, Iterable<? extends T> paramIterable2)
+  {
+    AppMethodBeat.i(191012);
+    kotlin.g.b.s.u(paramIterable1, "$this$convertToSetForSetOperationWith");
+    kotlin.g.b.s.u(paramIterable2, "source");
+    if ((paramIterable1 instanceof Set))
+    {
+      paramIterable1 = (Collection)paramIterable1;
+      AppMethodBeat.o(191012);
+      return paramIterable1;
+    }
+    if ((paramIterable1 instanceof Collection))
+    {
+      if (((paramIterable2 instanceof Collection)) && (((Collection)paramIterable2).size() < 2))
+      {
+        paramIterable1 = (Collection)paramIterable1;
+        AppMethodBeat.o(191012);
+        return paramIterable1;
+      }
+      paramIterable2 = (Collection)paramIterable1;
+      if ((paramIterable2.size() > 2) && ((paramIterable2 instanceof ArrayList))) {}
+      for (int i = 1; i == 0; i = 0)
+      {
+        paramIterable1 = (Collection)paramIterable1;
+        AppMethodBeat.o(191012);
+        return paramIterable1;
       }
     }
-    AppMethodBeat.o(218709);
-    return paramC;
+    paramIterable1 = (Collection)p.o(paramIterable1);
+    AppMethodBeat.o(191012);
+    return paramIterable1;
   }
   
-  public static final <R> List<R> a(Iterable<?> paramIterable, Class<R> paramClass)
+  public static final <T> Integer d(Iterable<? extends T> paramIterable)
   {
-    AppMethodBeat.i(218706);
-    p.k(paramIterable, "$this$filterIsInstance");
-    p.k(paramClass, "klass");
-    paramIterable = (List)j.a(paramIterable, (Collection)new ArrayList(), paramClass);
-    AppMethodBeat.o(218706);
-    return paramIterable;
-  }
-  
-  public static final <T> void ln(List<T> paramList)
-  {
-    AppMethodBeat.i(129225);
-    p.k(paramList, "$this$reverse");
-    Collections.reverse(paramList);
-    AppMethodBeat.o(129225);
+    AppMethodBeat.i(191007);
+    kotlin.g.b.s.u(paramIterable, "$this$collectionSizeOrNull");
+    if ((paramIterable instanceof Collection))
+    {
+      int i = ((Collection)paramIterable).size();
+      AppMethodBeat.o(191007);
+      return Integer.valueOf(i);
+    }
+    AppMethodBeat.o(191007);
+    return null;
   }
 }
 

@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.kidswatch;
 
 public final class b$f
 {
-  public static final int Ebf = 2131495228;
-  public static final int Ebg = 2131495229;
-  public static final int Ebh = 2131495230;
-  public static final int Ebi = 2131495231;
-  public static final int Ebj = 2131495232;
-  public static final int Ebk = 2131495233;
-  public static final int Ebl = 2131495234;
-  public static final int Ebm = 2131495235;
-  public static final int Ebn = 2131495236;
-  public static final int Ebo = 2131495237;
-  public static final int Ebp = 2131495238;
-  public static final int Ebq = 2131495239;
+  public static final int JSn = 2131495355;
+  public static final int JSo = 2131495356;
+  public static final int JSp = 2131495357;
+  public static final int JSq = 2131495358;
+  public static final int JSr = 2131495359;
+  public static final int JSs = 2131495360;
+  public static final int JSt = 2131495361;
+  public static final int JSu = 2131495362;
+  public static final int JSv = 2131495363;
+  public static final int JSw = 2131495364;
+  public static final int JSx = 2131495365;
+  public static final int JSy = 2131495366;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.kidswatch.b.f
  * JD-Core Version:    0.7.0.1
  */

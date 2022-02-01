@@ -1,174 +1,175 @@
 package com.tencent.mm.plugin.hld.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.jni.utils.UtilsJni;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.platformtools.z;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.plugin.hld.f.i;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.model.e;
 import com.tencent.mm.plugin.hld.model.n;
-import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.aj;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.MMProtocalJni;
 import com.tencent.mm.protocal.f;
-import com.tencent.mm.protocal.l.a;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.bwd;
-import com.tencent.mm.protocal.protobuf.bwe;
 import com.tencent.mm.protocal.protobuf.clg;
-import com.tencent.mm.protocal.protobuf.cqh;
-import com.tencent.mm.protocal.protobuf.duw;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.eto;
-import com.tencent.mm.protocal.protobuf.ets;
-import com.tencent.mm.protocal.protobuf.eur;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.clh;
+import com.tencent.mm.protocal.protobuf.dbo;
+import com.tencent.mm.protocal.protobuf.dhb;
+import com.tencent.mm.protocal.protobuf.enu;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.foz;
+import com.tencent.mm.protocal.protobuf.fpd;
+import com.tencent.mm.protocal.protobuf.fqe;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/cgi/CgiImeGetImeDictListConfig;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetImeDictListConfigResp;", "dictInfos", "Lcom/tencent/mm/protocal/protobuf/ImeLocalClientStaticDictInfos;", "rawDictInfo", "Lcom/tencent/mm/protocal/protobuf/ImeLocalRawDictInfos;", "(Lcom/tencent/mm/protocal/protobuf/ImeLocalClientStaticDictInfos;Lcom/tencent/mm/protocal/protobuf/ImeLocalRawDictInfos;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/cgi/CgiImeGetImeDictListConfig;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetImeDictListConfigResp;", "dictInfos", "Lcom/tencent/mm/protocal/protobuf/ImeLocalClientStaticDictInfos;", "rawDictInfo", "Lcom/tencent/mm/protocal/protobuf/ImeLocalRawDictInfos;", "(Lcom/tencent/mm/protocal/protobuf/ImeLocalClientStaticDictInfos;Lcom/tencent/mm/protocal/protobuf/ImeLocalRawDictInfos;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends c<bwe>
+  extends com.tencent.mm.am.b<clh>
 {
-  public static final a Dvl;
+  public static final b.a JoF;
   
   static
   {
-    AppMethodBeat.i(216836);
-    Dvl = new a((byte)0);
-    AppMethodBeat.o(216836);
+    AppMethodBeat.i(312107);
+    JoF = new b.a((byte)0);
+    AppMethodBeat.o(312107);
   }
   
-  private b(clg paramclg)
+  private b(dbo paramdbo)
   {
-    AppMethodBeat.i(216834);
-    Object localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-    boolean bool2 = com.tencent.mm.plugin.hld.f.l.biq();
-    d.a locala = new d.a();
-    localObject1 = new bwd();
-    ((bwd)localObject1).TfQ = e.DBF.value;
-    ((bwd)localObject1).TfR = com.tencent.mm.plugin.hld.model.d.DBA.value;
-    Object localObject2 = n.DEn;
-    ((bwd)localObject1).TfS = n.eET();
-    localObject2 = (com.tencent.mm.plugin.hld.a.d)h.ae(com.tencent.mm.plugin.hld.a.d.class);
+    AppMethodBeat.i(312077);
+    Object localObject1 = l.JyV;
+    boolean bool2 = l.bGa();
+    c.a locala = new c.a();
+    localObject1 = new clg();
+    ((clg)localObject1).aatk = e.JuE.value;
+    ((clg)localObject1).aatl = com.tencent.mm.plugin.hld.model.d.Juz.value;
+    Object localObject2 = n.JvW;
+    ((clg)localObject1).aatm = n.fMW();
+    localObject2 = (com.tencent.mm.plugin.hld.a.d)h.ax(com.tencent.mm.plugin.hld.a.d.class);
+    int i;
     boolean bool1;
+    label106:
     Object localObject3;
-    if ((localObject2 == null) || (((com.tencent.mm.plugin.hld.a.d)localObject2).eCC() != true))
+    if ((localObject2 != null) && (((com.tencent.mm.plugin.hld.a.d)localObject2).fKF() == true))
     {
-      bool1 = true;
-      ((bwd)localObject1).TfT = bool1;
-      localObject2 = i.DHq;
-      if (i.eGC()) {
-        break label373;
+      i = 1;
+      if (i != 0) {
+        break label388;
       }
-      localObject2 = new duw();
-      localObject3 = ai.czn();
+      bool1 = true;
+      ((clg)localObject1).aatn = bool1;
+      localObject2 = i.JyA;
+      if (i.fOo()) {
+        break label393;
+      }
+      localObject2 = new enu();
+      localObject3 = aj.dch();
       if (localObject3 != null)
       {
-        ((duw)localObject2).longitude = ((cqh)localObject3).ScO;
-        ((duw)localObject2).latitude = ((cqh)localObject3).ScP;
+        ((enu)localObject2).longitude = ((dhb)localObject3).ZaG;
+        ((enu)localObject2).latitude = ((dhb)localObject3).ZaH;
       }
-      Log.i("WxIme.CgiImeGetImeDictListConfig", " loc:[" + ((duw)localObject2).longitude + ", " + ((duw)localObject2).latitude + ']');
-      ((bwd)localObject1).TfU = ((duw)localObject2);
-      ((bwd)localObject1).TfV = true;
-      label213:
-      if (paramclg != null)
+      Log.i("WxIme.CgiImeGetImeDictListConfig", " loc:[" + ((enu)localObject2).longitude + ", " + ((enu)localObject2).latitude + ']');
+      localObject3 = ah.aiuX;
+      ((clg)localObject1).aato = ((enu)localObject2);
+      ((clg)localObject1).aatp = true;
+      label225:
+      if (paramdbo != null)
       {
-        paramclg = paramclg.TfX;
-        if (paramclg != null) {
-          ((bwd)localObject1).TfX = paramclg;
+        paramdbo = paramdbo.aatr;
+        if (paramdbo != null) {
+          ((clg)localObject1).aatr = paramdbo;
         }
       }
-      paramclg = new bwe();
-      paramclg.setBaseResponse(new jh());
-      paramclg.getBaseResponse().Tef = new eaf();
-      locala.c((a)localObject1);
-      locala.d((a)paramclg);
+      paramdbo = new clh();
+      paramdbo.setBaseResponse(new kd());
+      paramdbo.getBaseResponse().akjO = new etl();
+      locala.otE = ((a)localObject1);
+      locala.otF = ((a)paramdbo);
       if (!bool2) {
-        break label382;
+        break label402;
       }
-      locala.TW("/cgi-bin/mmsprime/getimedictlistconfig");
-      locala.vD(4872);
-      c(locala.bgN());
+      locala.uri = "/cgi-bin/mmsprime/getimedictlistconfig";
+      locala.funcId = 4872;
+      c(locala.bEF());
     }
     for (;;)
     {
-      Log.i("WxIme.CgiImeGetImeDictListConfig", "isLogin:" + bool2 + " is_initializing:" + ((bwd)localObject1).TfT + " engineVersion:" + ((bwd)localObject1).TfS);
-      AppMethodBeat.o(216834);
+      Log.i("WxIme.CgiImeGetImeDictListConfig", "isLogin:" + bool2 + " is_initializing:" + ((clg)localObject1).aatn + " engineVersion:" + ((clg)localObject1).aatm);
+      AppMethodBeat.o(312077);
       return;
-      bool1 = false;
+      i = 0;
       break;
-      label373:
-      ((bwd)localObject1).TfV = false;
-      break label213;
-      label382:
-      locala.TW("/cgi-bin/mmsprime/getimedictlistconfignonlogin");
-      locala.vD(5126);
-      localObject2 = new ets();
-      localObject3 = new eur();
-      ((eur)localObject3).Uwn = new eae();
-      ((ets)localObject2).UvB = ((eur)localObject3);
-      localObject3 = new eto();
-      Object localObject4 = locala.bgN();
-      p.j(localObject4, "rr");
-      localObject4 = ((com.tencent.mm.an.d)localObject4).getReqObj();
-      if ((localObject4 instanceof d.b))
+      label388:
+      bool1 = false;
+      break label106;
+      label393:
+      ((clg)localObject1).aatp = false;
+      break label225;
+      label402:
+      locala.uri = "/cgi-bin/mmsprime/getimedictlistconfignonlogin";
+      locala.funcId = 5126;
+      localObject2 = new fpd();
+      localObject3 = new fqe();
+      ((fqe)localObject3).abPT = new gol();
+      Object localObject4 = ah.aiuX;
+      ((fpd)localObject2).abPg = ((fqe)localObject3);
+      localObject3 = new foz();
+      localObject4 = locala.bEF().getReqObj();
+      if ((localObject4 instanceof c.b))
       {
-        ((d.b)localObject4).toProtoBuf();
-        ((eto)localObject3).BaseRequest = ((bwd)localObject1).getBaseRequest();
-        ((eto)localObject3).Uvy = z.aN(((bwd)localObject1).toByteArray());
+        ((c.b)localObject4).toProtoBuf();
+        ((foz)localObject3).BaseRequest = ((clg)localObject1).getBaseRequest();
+        ((foz)localObject3).abPd = w.aN(((clg)localObject1).toByteArray());
       }
-      ((ets)localObject2).UvC = ((eto)localObject3);
-      locala.c((a)localObject2);
-      locala.d((a)paramclg);
-      paramclg = locala.bgN();
-      p.j(paramclg, "rr");
-      paramclg.getReqObj().setReqPackControl((l.a)new l.a()
-      {
-        public final boolean a(PByteArray paramAnonymousPByteArray, int paramAnonymousInt1, byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2, int paramAnonymousInt2, int paramAnonymousInt3)
-        {
-          AppMethodBeat.i(214055);
-          Log.i("WxIme.CgiImeGetImeDictListConfig", "reqPackControl");
-          paramAnonymousArrayOfByte2 = this.sDH;
-          p.j(paramAnonymousArrayOfByte2, "rr");
-          paramAnonymousArrayOfByte2 = paramAnonymousArrayOfByte2.getReqObj();
-          Object localObject = this.sDH;
-          p.j(localObject, "rr");
-          localObject = ((com.tencent.mm.an.d)localObject).bhX();
-          if (localObject == null)
-          {
-            paramAnonymousPByteArray = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.TransferEncryptReq");
-            AppMethodBeat.o(214055);
-            throw paramAnonymousPByteArray;
-          }
-          localObject = (ets)localObject;
-          long l = f.cW(null);
-          paramAnonymousArrayOfByte2.setEcdhEngine(l);
-          localObject = UtilsJni.HybridEcdhEncrypt(l, ((ets)localObject).toByteArray());
-          boolean bool = MMProtocalJni.packHybridEcdh(paramAnonymousPByteArray, paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2.getDeviceID(), paramAnonymousArrayOfByte2.getUin(), 5126, f.hoP(), (byte[])localObject, paramAnonymousInt2, paramAnonymousInt3, 12);
-          Log.i("WxIme.CgiImeGetImeDictListConfig", "summerauths reqToBuf packHybridEcdh using protobuf ok, jType:%d, cert:%d len:%d, flag:%d ret:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(f.hoP()), Integer.valueOf(paramAnonymousPByteArray.value.length), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool) });
-          AppMethodBeat.o(214055);
-          return true;
-        }
-      });
-      paramclg.bhZ();
-      paramclg.getReqObj().setUseECDH(false);
-      c(paramclg);
+      localObject4 = ah.aiuX;
+      ((fpd)localObject2).abPh = ((foz)localObject3);
+      locala.otE = ((a)localObject2);
+      locala.otF = ((a)paramdbo);
+      paramdbo = locala.bEF();
+      paramdbo.getReqObj().setReqPackControl(new b..ExternalSyntheticLambda0(paramdbo));
+      paramdbo.option = 1;
+      paramdbo.getReqObj().setUseECDH(false);
+      c(paramdbo);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/cgi/CgiImeGetImeDictListConfig$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
+  private static final boolean a(c paramc, PByteArray paramPByteArray, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(312099);
+    Log.i("WxIme.CgiImeGetImeDictListConfig", "reqPackControl");
+    paramArrayOfByte1 = paramc.getReqObj();
+    paramc = c.b.b(paramc.otB);
+    if (paramc == null)
+    {
+      paramc = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.TransferEncryptReq");
+      AppMethodBeat.o(312099);
+      throw paramc;
+    }
+    paramc = (fpd)paramc;
+    long l = f.cZ(null);
+    paramArrayOfByte1.setEcdhEngine(l);
+    paramc = UtilsJni.HybridEcdhEncrypt(l, paramc.toByteArray());
+    paramBoolean = MMProtocalJni.packHybridEcdh(paramPByteArray, paramArrayOfByte2, paramArrayOfByte1.getDeviceID(), paramArrayOfByte1.getUin(), 5126, f.iPL(), paramc, paramInt3, paramInt4, 12);
+    Log.i("WxIme.CgiImeGetImeDictListConfig", "summerauths reqToBuf packHybridEcdh using protobuf ok, jType:%d, cert:%d len:%d, flag:%d ret:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(f.iPL()), Integer.valueOf(paramPByteArray.value.length), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(312099);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hld.b.b
  * JD-Core Version:    0.7.0.1
  */

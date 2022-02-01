@@ -4,13 +4,13 @@ import android.view.View;
 
 public final class i
 {
-  public View JQo;
-  public String fAg;
+  public View QmV;
+  public String hES;
   
   public i(View paramView, String paramString)
   {
-    this.JQo = paramView;
-    this.fAg = paramString;
+    this.QmV = paramView;
+    this.hES = paramString;
   }
 }
 

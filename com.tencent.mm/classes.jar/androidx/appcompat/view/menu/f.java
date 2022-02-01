@@ -25,73 +25,73 @@ import java.util.ArrayList;
 public final class f
   implements AdapterView.OnItemClickListener, o
 {
-  h is;
-  public o.a lp;
-  int lr;
+  h jo;
   Context mContext;
   private int mId;
   LayoutInflater mInflater;
-  ExpandedMenuView mq;
-  int mr;
-  int ms;
-  a mt;
+  public o.a ml;
+  int mn;
+  ExpandedMenuView np;
+  int nq;
+  int nr;
+  a ns;
   
   private f(int paramInt)
   {
-    this.lr = paramInt;
-    this.ms = 0;
+    this.mn = paramInt;
+    this.nr = 0;
   }
   
   public f(Context paramContext, int paramInt)
   {
     this(paramInt);
-    AppMethodBeat.i(239286);
+    AppMethodBeat.i(200930);
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(this.mContext);
-    AppMethodBeat.o(239286);
+    AppMethodBeat.o(200930);
   }
   
-  public final void F(boolean paramBoolean)
+  public final void J(boolean paramBoolean)
   {
-    AppMethodBeat.i(239295);
-    if (this.mt != null) {
-      this.mt.notifyDataSetChanged();
+    AppMethodBeat.i(201005);
+    if (this.ns != null) {
+      this.ns.notifyDataSetChanged();
     }
-    AppMethodBeat.o(239295);
+    AppMethodBeat.o(201005);
   }
   
   public final p a(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(239291);
-    if (this.mq == null)
+    AppMethodBeat.i(200979);
+    if (this.np == null)
     {
-      this.mq = ((ExpandedMenuView)this.mInflater.inflate(a.g.abc_expanded_menu_layout, paramViewGroup, false));
-      if (this.mt == null) {
-        this.mt = new a();
+      this.np = ((ExpandedMenuView)this.mInflater.inflate(a.g.abc_expanded_menu_layout, paramViewGroup, false));
+      if (this.ns == null) {
+        this.ns = new a();
       }
-      this.mq.setAdapter(this.mt);
-      this.mq.setOnItemClickListener(this);
+      this.np.setAdapter(this.ns);
+      this.np.setOnItemClickListener(this);
     }
-    paramViewGroup = this.mq;
-    AppMethodBeat.o(239291);
+    paramViewGroup = this.np;
+    AppMethodBeat.o(200979);
     return paramViewGroup;
   }
   
   public final void a(Context paramContext, h paramh)
   {
-    AppMethodBeat.i(239289);
-    if (this.ms != 0)
+    AppMethodBeat.i(200962);
+    if (this.nr != 0)
     {
-      this.mContext = new ContextThemeWrapper(paramContext, this.ms);
+      this.mContext = new ContextThemeWrapper(paramContext, this.nr);
       this.mInflater = LayoutInflater.from(this.mContext);
     }
     for (;;)
     {
-      this.is = paramh;
-      if (this.mt != null) {
-        this.mt.notifyDataSetChanged();
+      this.jo = paramh;
+      if (this.ns != null) {
+        this.ns.notifyDataSetChanged();
       }
-      AppMethodBeat.o(239289);
+      AppMethodBeat.o(200962);
       return;
       if (this.mContext != null)
       {
@@ -105,66 +105,66 @@ public final class f
   
   public final void a(h paramh, boolean paramBoolean)
   {
-    AppMethodBeat.i(239299);
-    if (this.lp != null) {
-      this.lp.a(paramh, paramBoolean);
+    AppMethodBeat.i(201050);
+    if (this.ml != null) {
+      this.ml.a(paramh, paramBoolean);
     }
-    AppMethodBeat.o(239299);
+    AppMethodBeat.o(201050);
   }
   
   public final boolean a(u paramu)
   {
-    AppMethodBeat.i(239298);
+    AppMethodBeat.i(201041);
     if (!paramu.hasVisibleItems())
     {
-      AppMethodBeat.o(239298);
+      AppMethodBeat.o(201041);
       return false;
     }
     i locali = new i(paramu);
-    Object localObject2 = locali.is;
+    Object localObject2 = locali.jo;
     Object localObject1 = new b.a(((h)localObject2).mContext);
-    locali.mZ = new f(((b.a)localObject1).fP.mContext, a.g.abc_list_menu_item_layout);
-    locali.mZ.lp = locali;
-    locali.is.a(locali.mZ);
-    Object localObject3 = locali.mZ.getAdapter();
-    ((b.a)localObject1).fP.eP = ((ListAdapter)localObject3);
-    ((b.a)localObject1).fP.fw = locali;
-    localObject3 = ((h)localObject2).mL;
+    locali.nV = new f(((b.a)localObject1).gK.mContext, a.g.abc_list_menu_item_layout);
+    locali.nV.ml = locali;
+    locali.jo.a(locali.nV);
+    Object localObject3 = locali.nV.getAdapter();
+    ((b.a)localObject1).gK.fR = ((ListAdapter)localObject3);
+    ((b.a)localObject1).gK.gr = locali;
+    localObject3 = ((h)localObject2).nJ;
     if (localObject3 != null) {
-      ((b.a)localObject1).fP.eO = ((View)localObject3);
+      ((b.a)localObject1).gK.fQ = ((View)localObject3);
     }
     for (;;)
     {
-      ((b.a)localObject1).fP.fu = locali;
-      locali.mW = ((b.a)localObject1).aH();
-      locali.mW.setOnDismissListener(locali);
-      localObject1 = locali.mW.getWindow().getAttributes();
+      ((b.a)localObject1).gK.gp = locali;
+      locali.nU = ((b.a)localObject1).bA();
+      locali.nU.setOnDismissListener(locali);
+      localObject1 = locali.nU.getWindow().getAttributes();
       ((WindowManager.LayoutParams)localObject1).type = 1003;
       ((WindowManager.LayoutParams)localObject1).flags |= 0x20000;
-      locali.mW.show();
-      if (this.lp != null) {
-        this.lp.c(paramu);
+      locali.nU.show();
+      if (this.ml != null) {
+        this.ml.c(paramu);
       }
-      AppMethodBeat.o(239298);
+      AppMethodBeat.o(201041);
       return true;
-      localObject3 = ((h)localObject2).mK;
-      ((b.a)localObject1).fP.eK = ((Drawable)localObject3);
-      localObject2 = ((h)localObject2).mJ;
-      ((b.a)localObject1).fP.cZ = ((CharSequence)localObject2);
+      localObject3 = ((h)localObject2).nI;
+      ((b.a)localObject1).gK.fM = ((Drawable)localObject3);
+      localObject2 = ((h)localObject2).nH;
+      ((b.a)localObject1).gK.cZ = ((CharSequence)localObject2);
     }
   }
   
   public final void b(o.a parama)
   {
-    this.lp = parama;
+    this.ml = parama;
   }
   
-  public final boolean bS()
+  public final boolean c(j paramj)
   {
     return false;
   }
   
-  public final boolean c(j paramj)
+  public final boolean cL()
   {
     return false;
   }
@@ -176,12 +176,12 @@ public final class f
   
   public final ListAdapter getAdapter()
   {
-    AppMethodBeat.i(239293);
-    if (this.mt == null) {
-      this.mt = new a();
+    AppMethodBeat.i(200992);
+    if (this.ns == null) {
+      this.ns = new a();
     }
-    a locala = this.mt;
-    AppMethodBeat.o(239293);
+    a locala = this.ns;
+    AppMethodBeat.o(200992);
     return locala;
   }
   
@@ -192,104 +192,104 @@ public final class f
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(239301);
-    this.is.a(this.mt.ai(paramInt), this, 0);
-    AppMethodBeat.o(239301);
+    AppMethodBeat.i(201063);
+    this.jo.a(this.ns.ag(paramInt), this, 0);
+    AppMethodBeat.o(201063);
   }
   
   public final void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(239305);
+    AppMethodBeat.i(201126);
     paramParcelable = ((Bundle)paramParcelable).getSparseParcelableArray("android:menu:list");
     if (paramParcelable != null) {
-      this.mq.restoreHierarchyState(paramParcelable);
+      this.np.restoreHierarchyState(paramParcelable);
     }
-    AppMethodBeat.o(239305);
+    AppMethodBeat.o(201126);
   }
   
   public final Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(239303);
-    if (this.mq == null)
+    AppMethodBeat.i(201113);
+    if (this.np == null)
     {
-      AppMethodBeat.o(239303);
+      AppMethodBeat.o(201113);
       return null;
     }
     Bundle localBundle = new Bundle();
     SparseArray localSparseArray = new SparseArray();
-    if (this.mq != null) {
-      this.mq.saveHierarchyState(localSparseArray);
+    if (this.np != null) {
+      this.np.saveHierarchyState(localSparseArray);
     }
     localBundle.putSparseParcelableArray("android:menu:list", localSparseArray);
-    AppMethodBeat.o(239303);
+    AppMethodBeat.o(201113);
     return localBundle;
   }
   
   final class a
     extends BaseAdapter
   {
-    private int mu;
+    private int nt;
     
     public a()
     {
-      AppMethodBeat.i(239270);
-      this.mu = -1;
-      bZ();
-      AppMethodBeat.o(239270);
+      AppMethodBeat.i(201046);
+      this.nt = -1;
+      cS();
+      AppMethodBeat.o(201046);
     }
     
-    private void bZ()
+    private void cS()
     {
-      AppMethodBeat.i(239279);
-      j localj = f.this.is.mT;
+      AppMethodBeat.i(201056);
+      j localj = f.this.jo.nR;
       if (localj != null)
       {
-        ArrayList localArrayList = f.this.is.ck();
+        ArrayList localArrayList = f.this.jo.dd();
         int j = localArrayList.size();
         int i = 0;
         while (i < j)
         {
           if ((j)localArrayList.get(i) == localj)
           {
-            this.mu = i;
-            AppMethodBeat.o(239279);
+            this.nt = i;
+            AppMethodBeat.o(201056);
             return;
           }
           i += 1;
         }
       }
-      this.mu = -1;
-      AppMethodBeat.o(239279);
+      this.nt = -1;
+      AppMethodBeat.o(201056);
     }
     
-    public final j ai(int paramInt)
+    public final j ag(int paramInt)
     {
-      AppMethodBeat.i(239275);
-      Object localObject = f.this.is.ck();
-      int i = f.this.mr + paramInt;
+      AppMethodBeat.i(201071);
+      Object localObject = f.this.jo.dd();
+      int i = f.this.nq + paramInt;
       paramInt = i;
-      if (this.mu >= 0)
+      if (this.nt >= 0)
       {
         paramInt = i;
-        if (i >= this.mu) {
+        if (i >= this.nt) {
           paramInt = i + 1;
         }
       }
       localObject = (j)((ArrayList)localObject).get(paramInt);
-      AppMethodBeat.o(239275);
+      AppMethodBeat.o(201071);
       return localObject;
     }
     
     public final int getCount()
     {
-      AppMethodBeat.i(239272);
-      int i = f.this.is.ck().size() - f.this.mr;
-      if (this.mu < 0)
+      AppMethodBeat.i(201066);
+      int i = f.this.jo.dd().size() - f.this.nq;
+      if (this.nt < 0)
       {
-        AppMethodBeat.o(239272);
+        AppMethodBeat.o(201066);
         return i;
       }
-      AppMethodBeat.o(239272);
+      AppMethodBeat.o(201066);
       return i - 1;
     }
     
@@ -300,30 +300,30 @@ public final class f
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(239278);
+      AppMethodBeat.i(201081);
       if (paramView == null) {
-        paramView = f.this.mInflater.inflate(f.this.lr, paramViewGroup, false);
+        paramView = f.this.mInflater.inflate(f.this.mn, paramViewGroup, false);
       }
       for (;;)
       {
-        ((p.a)paramView).a(ai(paramInt));
-        AppMethodBeat.o(239278);
+        ((p.a)paramView).a(ag(paramInt));
+        AppMethodBeat.o(201081);
         return paramView;
       }
     }
     
     public final void notifyDataSetChanged()
     {
-      AppMethodBeat.i(239280);
-      bZ();
+      AppMethodBeat.i(201088);
+      cS();
       super.notifyDataSetChanged();
-      AppMethodBeat.o(239280);
+      AppMethodBeat.o(201088);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.f
  * JD-Core Version:    0.7.0.1
  */

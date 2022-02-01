@@ -7,26 +7,81 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class d
 {
   int backgroundColor;
-  int bmA = -1;
-  int bmB = -1;
-  int bmC = -1;
-  int bmD = -1;
-  d bmE;
-  Layout.Alignment bmF;
-  int bmx;
-  boolean bmy;
-  boolean bmz;
+  Layout.Alignment dgA;
+  int dgs;
+  boolean dgt;
+  boolean dgu;
+  int dgv = -1;
+  int dgw = -1;
+  int dgx = -1;
+  int dgy = -1;
+  d dgz;
   String fontFamily;
   float fontSize;
   String id;
   int italic = -1;
   
-  public final d aS(boolean paramBoolean)
+  public final int TY()
+  {
+    int j = 0;
+    if ((this.dgx == -1) && (this.italic == -1)) {
+      return -1;
+    }
+    if (this.dgx == 1) {}
+    for (int i = 1;; i = 0)
+    {
+      if (this.italic == 1) {
+        j = 2;
+      }
+      return i | j;
+    }
+  }
+  
+  final d b(d paramd)
+  {
+    AppMethodBeat.i(92861);
+    if (paramd != null)
+    {
+      if ((!this.dgt) && (paramd.dgt)) {
+        iz(paramd.dgs);
+      }
+      if (this.dgx == -1) {
+        this.dgx = paramd.dgx;
+      }
+      if (this.italic == -1) {
+        this.italic = paramd.italic;
+      }
+      if (this.fontFamily == null) {
+        this.fontFamily = paramd.fontFamily;
+      }
+      if (this.dgv == -1) {
+        this.dgv = paramd.dgv;
+      }
+      if (this.dgw == -1) {
+        this.dgw = paramd.dgw;
+      }
+      if (this.dgA == null) {
+        this.dgA = paramd.dgA;
+      }
+      if (this.dgy == -1)
+      {
+        this.dgy = paramd.dgy;
+        this.fontSize = paramd.fontSize;
+      }
+      if ((!this.dgu) && (paramd.dgu)) {
+        iA(paramd.backgroundColor);
+      }
+    }
+    AppMethodBeat.o(92861);
+    return this;
+  }
+  
+  public final d bA(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(92858);
     boolean bool;
-    if (this.bmE == null)
+    if (this.dgz == null)
     {
       bool = true;
       a.checkState(bool);
@@ -36,7 +91,7 @@ final class d
     }
     for (;;)
     {
-      this.bmA = i;
+      this.dgv = i;
       AppMethodBeat.o(92858);
       return this;
       bool = false;
@@ -46,12 +101,12 @@ final class d
     }
   }
   
-  public final d aT(boolean paramBoolean)
+  public final d bB(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(92859);
     boolean bool;
-    if (this.bmE == null)
+    if (this.dgz == null)
     {
       bool = true;
       a.checkState(bool);
@@ -61,7 +116,7 @@ final class d
     }
     for (;;)
     {
-      this.bmB = i;
+      this.dgw = i;
       AppMethodBeat.o(92859);
       return this;
       bool = false;
@@ -71,79 +126,24 @@ final class d
     }
   }
   
-  final d b(d paramd)
+  public final d iA(int paramInt)
   {
-    AppMethodBeat.i(92861);
-    if (paramd != null)
-    {
-      if ((!this.bmy) && (paramd.bmy)) {
-        fk(paramd.bmx);
-      }
-      if (this.bmC == -1) {
-        this.bmC = paramd.bmC;
-      }
-      if (this.italic == -1) {
-        this.italic = paramd.italic;
-      }
-      if (this.fontFamily == null) {
-        this.fontFamily = paramd.fontFamily;
-      }
-      if (this.bmA == -1) {
-        this.bmA = paramd.bmA;
-      }
-      if (this.bmB == -1) {
-        this.bmB = paramd.bmB;
-      }
-      if (this.bmF == null) {
-        this.bmF = paramd.bmF;
-      }
-      if (this.bmD == -1)
-      {
-        this.bmD = paramd.bmD;
-        this.fontSize = paramd.fontSize;
-      }
-      if ((!this.bmz) && (paramd.bmz)) {
-        fl(paramd.backgroundColor);
-      }
-    }
-    AppMethodBeat.o(92861);
+    this.backgroundColor = paramInt;
+    this.dgu = true;
     return this;
   }
   
-  public final d fk(int paramInt)
+  public final d iz(int paramInt)
   {
     AppMethodBeat.i(92860);
-    if (this.bmE == null) {}
+    if (this.dgz == null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.bmx = paramInt;
-      this.bmy = true;
+      this.dgs = paramInt;
+      this.dgt = true;
       AppMethodBeat.o(92860);
       return this;
-    }
-  }
-  
-  public final d fl(int paramInt)
-  {
-    this.backgroundColor = paramInt;
-    this.bmz = true;
-    return this;
-  }
-  
-  public final int uv()
-  {
-    int j = 0;
-    if ((this.bmC == -1) && (this.italic == -1)) {
-      return -1;
-    }
-    if (this.bmC == 1) {}
-    for (int i = 1;; i = 0)
-    {
-      if (this.italic == 1) {
-        j = 2;
-      }
-      return i | j;
     }
   }
 }

@@ -1,7 +1,5 @@
 package com.tencent.mm.chatroom.ui;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -9,53 +7,50 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.ViewGroup;
-import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.aa;
 import com.tencent.xweb.ad;
-import com.tencent.xweb.x;
+import com.tencent.xweb.ag;
+import com.tencent.xweb.z;
 
 @Deprecated
-@JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.JSEXECUTECHECK})
 public class RoomAnnouncementUI
   extends MMActivity
 {
-  private WebView jhN;
-  private boolean jhO;
+  private WebView lKd;
+  private boolean lKe;
   private String roomId;
   
   public int getLayoutId()
   {
-    return a.f.jdQ;
+    return a.f.lFY;
   }
   
-  @SuppressLint({"SetJavaScriptEnabled"})
   public void initView()
   {
     AppMethodBeat.i(12690);
-    setMMTitle(a.i.jgV);
-    this.jhN = MMWebView.a.s(this, a.e.webview);
-    this.jhN.getSettings().setJavaScriptEnabled(true);
-    this.jhN.getSettings().iwC();
-    this.jhN.getSettings().setBuiltInZoomControls(true);
-    this.jhN.getSettings().setUseWideViewPort(true);
-    this.jhN.getSettings().setLoadWithOverviewMode(true);
-    this.jhN.getSettings().iwx();
-    this.jhN.getSettings().iww();
-    this.jhN.getSettings().setGeolocationEnabled(false);
-    this.jhN.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
-    this.jhN.setWebChromeClient(new x()
+    setMMTitle(a.i.lJl);
+    this.lKd = MMWebView.a.u(this, a.e.webview);
+    this.lKd.getSettings().setJavaScriptEnabled(true);
+    this.lKd.getSettings().kfS();
+    this.lKd.getSettings().setBuiltInZoomControls(true);
+    this.lKd.getSettings().setUseWideViewPort(true);
+    this.lKd.getSettings().setLoadWithOverviewMode(true);
+    this.lKd.getSettings().kfN();
+    this.lKd.getSettings().kfM();
+    this.lKd.getSettings().setGeolocationEnabled(false);
+    this.lKd.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
+    this.lKd.setWebChromeClient(new z()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, JsResult paramAnonymousJsResult)
       {
         AppMethodBeat.i(12683);
-        h.d(RoomAnnouncementUI.this, paramAnonymousString2, null, new DialogInterface.OnClickListener()
+        k.d(RoomAnnouncementUI.this, paramAnonymousString2, null, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
@@ -69,14 +64,14 @@ public class RoomAnnouncementUI
         return true;
       }
     });
-    this.jhN.setWebViewClient(new ad()
+    this.lKd.setWebViewClient(new ag()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(12684);
         if (paramAnonymousString.equals("weixin://chatroom/upgradeagree"))
         {
-          b.a(RoomAnnouncementUI.this, RoomAnnouncementUI.b(RoomAnnouncementUI.this), RoomAnnouncementUI.c(RoomAnnouncementUI.this));
+          d.a(RoomAnnouncementUI.this, RoomAnnouncementUI.b(RoomAnnouncementUI.this), RoomAnnouncementUI.c(RoomAnnouncementUI.this));
           AppMethodBeat.o(12684);
           return true;
         }
@@ -96,7 +91,7 @@ public class RoomAnnouncementUI
       }
     });
     String str = getString(a.i.chatroom_owner_responsibility, new Object[] { LocaleUtil.getApplicationLanguage() });
-    this.jhN.loadUrl(str);
+    this.lKd.loadUrl(str);
     AppMethodBeat.o(12690);
   }
   
@@ -104,7 +99,7 @@ public class RoomAnnouncementUI
   {
     AppMethodBeat.i(12686);
     super.onCreate(paramBundle);
-    this.jhO = getIntent().getBooleanExtra("need_bind_mobile", false);
+    this.lKe = getIntent().getBooleanExtra("need_bind_mobile", false);
     this.roomId = getIntent().getStringExtra("RoomInfo_Id");
     initView();
     AppMethodBeat.o(12686);
@@ -113,13 +108,13 @@ public class RoomAnnouncementUI
   public void onDestroy()
   {
     AppMethodBeat.i(12689);
-    if (this.jhN != null)
+    if (this.lKd != null)
     {
-      this.jhN.setVisibility(8);
-      ((ViewGroup)this.jhN.getParent()).removeView(this.jhN);
-      this.jhN.removeAllViews();
-      this.jhN.destroy();
-      this.jhN = null;
+      this.lKd.setVisibility(8);
+      ((ViewGroup)this.lKd.getParent()).removeView(this.lKd);
+      this.lKd.removeAllViews();
+      this.lKd.destroy();
+      this.lKd = null;
       System.gc();
     }
     super.onDestroy();

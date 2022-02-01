@@ -1,117 +1,122 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 import java.util.LinkedList;
 
 public final class ctv
-  extends dyy
+  extends erp
 {
-  public LinkedList<ctt> TBC;
+  public LinkedList<fqj> aazx;
+  public String aazy;
+  public int vgM;
   
   public ctv()
   {
-    AppMethodBeat.i(124530);
-    this.TBC = new LinkedList();
-    AppMethodBeat.o(124530);
+    AppMethodBeat.i(152600);
+    this.aazx = new LinkedList();
+    AppMethodBeat.o(152600);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124531);
+    AppMethodBeat.i(152601);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(124531);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      paramVarArgs.bS(2, this.vgM);
+      paramVarArgs.e(3, 8, this.aazx);
+      if (this.aazy != null) {
+        paramVarArgs.g(4, this.aazy);
       }
-      paramVarArgs.e(2, 8, this.TBC);
-      AppMethodBeat.o(124531);
+      AppMethodBeat.o(152601);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label454;
+      if (this.BaseRequest == null) {
+        break label506;
       }
     }
-    label454:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label506:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.a.c(2, 8, this.TBC);
-      AppMethodBeat.o(124531);
-      return paramInt + i;
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.vgM) + i.a.a.a.c(3, 8, this.aazx);
+      paramInt = i;
+      if (this.aazy != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.aazy);
+      }
+      AppMethodBeat.o(152601);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.TBC.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        this.aazx.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(124531);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(124531);
+        AppMethodBeat.o(152601);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         ctv localctv = (ctv)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(124531);
+          AppMethodBeat.o(152601);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jh();
+            localObject2 = new kc();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jh)localObject2).parseFrom((byte[])localObject1);
+              ((kc)localObject2).parseFrom((byte[])localObject1);
             }
-            localctv.BaseResponse = ((jh)localObject2);
+            localctv.BaseRequest = ((kc)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(124531);
+          AppMethodBeat.o(152601);
+          return 0;
+        case 2: 
+          localctv.vgM = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(152601);
+          return 0;
+        case 3: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new fqj();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((fqj)localObject2).parseFrom((byte[])localObject1);
+            }
+            localctv.aazx.add(localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(152601);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new ctt();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((ctt)localObject2).parseFrom((byte[])localObject1);
-          }
-          localctv.TBC.add(localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(124531);
+        localctv.aazy = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(152601);
         return 0;
       }
-      AppMethodBeat.o(124531);
+      AppMethodBeat.o(152601);
       return -1;
     }
   }

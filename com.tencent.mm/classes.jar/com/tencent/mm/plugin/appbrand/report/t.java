@@ -1,71 +1,62 @@
 package com.tencent.mm.plugin.appbrand.report;
 
+import com.tencent.luggage.sdk.config.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.b.p;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.apache.commons.c.i;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/report/PVReportIDFactory;", "Lcom/tencent/luggage/sdk/config/MPInstanceIdFactory;", "Lcom/tencent/luggage/sdk/config/MPSessionIdFactory;", "()V", "createInstanceId", "", "createSessionId", "getUINString", "init", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
+  implements com.tencent.luggage.sdk.config.d, e
 {
-  private static String amF(String paramString)
+  public static final t tOE;
+  
+  static
   {
-    AppMethodBeat.i(48072);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(48072);
-      return "";
-    }
-    try
-    {
-      String str = Util.nullAsNil(q.aT(paramString));
-      AppMethodBeat.o(48072);
-      return str;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.AppBrand.ReportUtil", "safeEncode, given %s, e %s", new Object[] { paramString, localException });
-      AppMethodBeat.o(48072);
-    }
-    return "";
+    AppMethodBeat.i(321517);
+    tOE = new t();
+    AppMethodBeat.o(321517);
   }
   
-  public static Object[] j(Object... paramVarArgs)
+  public static final void init()
   {
-    AppMethodBeat.i(48073);
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
+    com.tencent.luggage.sdk.config.e.a.eqq = (e)tOE;
+    com.tencent.luggage.sdk.config.d.a.eqo = (com.tencent.luggage.sdk.config.d)tOE;
+  }
+  
+  public final String aqP()
+  {
+    AppMethodBeat.i(321524);
+    String str;
+    if (MMApplicationContext.isMainProcess())
     {
-      AppMethodBeat.o(48073);
-      return new Object[0];
+      h.baC();
+      str = b.aZs();
+      s.s(str, "{\n            MMKernel.a…unt().uinString\n        }");
     }
-    Object[] arrayOfObject = new Object[paramVarArgs.length];
-    int k = paramVarArgs.length;
-    int j = 0;
-    int i = 0;
-    if (j < k)
+    for (;;)
     {
-      Object localObject2 = paramVarArgs[j];
-      Object localObject1;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      for (;;)
-      {
-        arrayOfObject[i] = String.valueOf(localObject1);
-        j += 1;
-        i += 1;
-        break;
-        localObject1 = localObject2;
-        if ((localObject2 instanceof String))
-        {
-          localObject1 = localObject2;
-          if (((String)localObject2).contains(",")) {
-            localObject1 = amF((String)localObject2);
-          }
-        }
-      }
+      str = i.b(new String[] { s.X("hash=", str), s.X("ts=", Long.valueOf(Util.nowMilliSecond())), "host=", s.X("version=", Integer.valueOf(com.tencent.mm.protocal.d.Yxh)), "device=2" }, "&");
+      s.s(str, "join(arrayOf(\n          …2-android\n        ), \"&\")");
+      AppMethodBeat.o(321524);
+      return str;
+      str = p.getString(b.aZt());
+      s.s(str, "{\n            UIN.getStr…OtherProcess())\n        }");
     }
-    AppMethodBeat.o(48073);
-    return arrayOfObject;
+  }
+  
+  public final String aqQ()
+  {
+    AppMethodBeat.i(321526);
+    String str = aqP();
+    AppMethodBeat.o(321526);
+    return str;
   }
 }
 

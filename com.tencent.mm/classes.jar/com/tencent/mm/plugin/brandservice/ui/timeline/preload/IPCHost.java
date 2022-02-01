@@ -6,16 +6,15 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/IPCHost;", "Landroid/os/Parcelable;", "Lcom/tencent/mm/ipcinvoker/event/IPCData;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "hosts", "", "", "([Ljava/lang/String;)V", "getHosts", "()[Ljava/lang/String;", "setHosts", "[Ljava/lang/String;", "describeContents", "", "fromBundle", "", "bundle", "Landroid/os/Bundle;", "invoke", "processName", "process", "Ljava/lang/Class;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "callback", "Lkotlin/Function1;", "toBundle", "writeToParcel", "flags", "CREATOR", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/IPCHost;", "Landroid/os/Parcelable;", "Lcom/tencent/mm/ipcinvoker/event/IPCData;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "hosts", "", "", "([Ljava/lang/String;)V", "getHosts", "()[Ljava/lang/String;", "setHosts", "[Ljava/lang/String;", "describeContents", "", "fromBundle", "", "bundle", "Landroid/os/Bundle;", "invoke", "processName", "process", "Ljava/lang/Class;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "callback", "Lkotlin/Function1;", "toBundle", "writeToParcel", "flags", "CREATOR", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class IPCHost
   implements Parcelable, a
 {
   public static final a CREATOR;
-  private String[] sLp;
+  private String[] vRd;
   
   static
   {
@@ -34,7 +33,7 @@ public final class IPCHost
   private IPCHost(String[] paramArrayOfString)
   {
     AppMethodBeat.i(6587);
-    this.sLp = paramArrayOfString;
+    this.vRd = paramArrayOfString;
     AppMethodBeat.o(6587);
   }
   
@@ -51,13 +50,12 @@ public final class IPCHost
       paramBundle = paramBundle.getStringArray("hosts");
       if (paramBundle == null)
       {
-        paramBundle = new t("null cannot be cast to non-null type kotlin.Array<kotlin.String>");
+        paramBundle = new NullPointerException("null cannot be cast to non-null type kotlin.Array<kotlin.String>");
         AppMethodBeat.o(6585);
         throw paramBundle;
       }
-      this.sLp = paramBundle;
-      AppMethodBeat.o(6585);
-      return;
+      s.u(paramBundle, "<set-?>");
+      this.vRd = paramBundle;
     }
     AppMethodBeat.o(6585);
   }
@@ -66,7 +64,7 @@ public final class IPCHost
   {
     AppMethodBeat.i(6584);
     Bundle localBundle = new Bundle();
-    localBundle.putStringArray("hosts", this.sLp);
+    localBundle.putStringArray("hosts", this.vRd);
     AppMethodBeat.o(6584);
     return localBundle;
   }
@@ -74,12 +72,12 @@ public final class IPCHost
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(6586);
-    p.k(paramParcel, "parcel");
-    paramParcel.writeStringArray(this.sLp);
+    s.u(paramParcel, "parcel");
+    paramParcel.writeStringArray(this.vRd);
     AppMethodBeat.o(6586);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/IPCHost$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/IPCHost;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/IPCHost;", "plugin-brandservice_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/IPCHost$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/IPCHost;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/IPCHost;", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Parcelable.Creator<IPCHost>
   {}

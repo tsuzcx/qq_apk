@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.m;
-import com.tencent.mm.plugin.appbrand.ac.m.a;
-import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.af.k;
+import com.tencent.mm.plugin.appbrand.af.o;
+import com.tencent.mm.plugin.appbrand.af.o.a;
+import com.tencent.mm.plugin.appbrand.appstorage.w;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.plugin.sight.base.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.y;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -22,27 +22,27 @@ public final class i
 {
   private static final int CTRL_INDEX = 733;
   public static final String NAME = "compressVideo";
-  AtomicBoolean pbA;
+  AtomicBoolean sgL;
   
   public i()
   {
     AppMethodBeat.i(46573);
-    this.pbA = new AtomicBoolean(false);
+    this.sgL = new AtomicBoolean(false);
     AppMethodBeat.o(46573);
   }
   
-  private void a(final e parame, final int paramInt, final t.a parama)
+  private void a(final f paramf, final int paramInt, final u.a parama)
   {
-    AppMethodBeat.i(275118);
-    this.pbA.compareAndSet(false, true);
-    m.clV().postToWorker(new Runnable()
+    AppMethodBeat.i(329282);
+    this.sgL.compareAndSet(false, true);
+    o.cNm().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(46572);
-        int j = t.aie(parama.filePath);
+        int j = u.abc(parama.filePath);
         Object localObject1 = i.this;
-        Object localObject2 = parame;
+        Object localObject2 = paramf;
         int i = paramInt;
         switch (j)
         {
@@ -50,75 +50,75 @@ public final class i
         for (i = 1;; i = 0)
         {
           if (i == 0) {
-            break label189;
+            break label186;
           }
-          i.this.pbA.compareAndSet(true, false);
+          i.this.sgL.compareAndSet(true, false);
           AppMethodBeat.o(46572);
           return;
           Log.i("MicroMsg.JsApiCompressVideo", "fail:compress failed, file type not be supported");
-          ((e)localObject2).j(i, ((o)localObject1).h("fail:compress failed, video type not be supported", null));
+          ((f)localObject2).callback(i, ((i)localObject1).ZP("fail:compress failed, video type not be supported"));
           break;
           Log.i("MicroMsg.JsApiCompressVideo", "fail:compress failed, video duration error");
-          ((e)localObject2).j(i, ((o)localObject1).h("fail:compress failed, video duration error", null));
+          ((f)localObject2).callback(i, ((i)localObject1).ZP("fail:compress failed, video duration error"));
           break;
           Log.i("MicroMsg.JsApiCompressVideo", "fail:compress failed, file not exist");
-          ((e)localObject2).j(i, ((o)localObject1).h("fail:file doesn't exist", null));
+          ((f)localObject2).callback(i, ((i)localObject1).ZP("fail:file doesn't exist"));
           break;
         }
-        label189:
-        if ((parame == null) || (parame.getFileSystem() == null))
+        label186:
+        if ((paramf == null) || (paramf.getFileSystem() == null))
         {
           Log.i("MicroMsg.JsApiCompressVideo", "component or file system is null");
-          i.this.pbA.compareAndSet(true, false);
+          i.this.sgL.compareAndSet(true, false);
           AppMethodBeat.o(46572);
           return;
         }
         if (j == 2)
         {
           Log.e("MicroMsg.JsApiCompressVideo", "file not be compressed, cuz unnecessary");
-          localObject1 = new com.tencent.mm.plugin.appbrand.ac.i();
-          parame.getFileSystem().a(new q(parama.filePath), "mp4", false, (com.tencent.mm.plugin.appbrand.ac.i)localObject1);
+          localObject1 = new k();
+          paramf.getFileSystem().a(new com.tencent.mm.vfs.u(parama.filePath), "mp4", false, (k)localObject1);
           localObject2 = new HashMap();
-          ((HashMap)localObject2).put("tempFilePath", ((com.tencent.mm.plugin.appbrand.ac.i)localObject1).value);
-          ((HashMap)localObject2).put("size", Long.valueOf(Math.round(u.bBQ(parama.filePath) * 1.0D / 1024.0D)));
-          parame.j(paramInt, i.this.m("ok", (Map)localObject2));
-          i.this.pbA.compareAndSet(true, false);
+          ((HashMap)localObject2).put("tempFilePath", ((k)localObject1).value);
+          ((HashMap)localObject2).put("size", Long.valueOf(Math.round(y.bEl(parama.filePath) * 1.0D / 1024.0D)));
+          paramf.callback(paramInt, i.this.m("ok", (Map)localObject2));
+          i.this.sgL.compareAndSet(true, false);
           AppMethodBeat.o(46572);
           return;
         }
-        localObject1 = t.a(parama);
-        if (!u.agG((String)localObject1))
+        localObject1 = u.a(parama);
+        if (!y.ZC((String)localObject1))
         {
           Log.i("MicroMsg.JsApiCompressVideo", "compressed file not exist");
-          parame.j(paramInt, i.this.h("fail:compress failed, generate path failed", null));
-          i.this.pbA.compareAndSet(true, false);
+          paramf.callback(paramInt, i.this.ZP("fail:compress failed, generate path failed"));
+          i.this.sgL.compareAndSet(true, false);
           AppMethodBeat.o(46572);
           return;
         }
-        localObject2 = new com.tencent.mm.plugin.appbrand.ac.i();
-        parame.getFileSystem().a(new q((String)localObject1), null, false, (com.tencent.mm.plugin.appbrand.ac.i)localObject2);
+        localObject2 = new k();
+        paramf.getFileSystem().a(new com.tencent.mm.vfs.u((String)localObject1), null, false, (k)localObject2);
         HashMap localHashMap = new HashMap();
-        localHashMap.put("tempFilePath", ((com.tencent.mm.plugin.appbrand.ac.i)localObject2).value);
-        localHashMap.put("size", Long.valueOf(Math.round(u.bBQ((String)localObject1) * 1.0D / 1024.0D)));
-        parame.j(paramInt, i.this.m("ok", localHashMap));
-        i.this.pbA.compareAndSet(true, false);
+        localHashMap.put("tempFilePath", ((k)localObject2).value);
+        localHashMap.put("size", Long.valueOf(Math.round(y.bEl((String)localObject1) * 1.0D / 1024.0D)));
+        paramf.callback(paramInt, i.this.m("ok", localHashMap));
+        i.this.sgL.compareAndSet(true, false);
         AppMethodBeat.o(46572);
       }
     });
-    AppMethodBeat.o(275118);
+    AppMethodBeat.o(329282);
   }
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(46574);
-    if (this.pbA.get())
+    if (this.sgL.get())
     {
       Log.i("MicroMsg.JsApiCompressVideo", "is compressing now");
-      parame.j(paramInt, h("fail:is compressing now", null));
+      paramf.callback(paramInt, ZP("fail:is compressing now"));
       AppMethodBeat.o(46574);
       return;
     }
-    if (parame == null)
+    if (paramf == null)
     {
       Log.e("MicroMsg.JsApiCompressVideo", "fail:component is null");
       AppMethodBeat.o(46574);
@@ -127,7 +127,7 @@ public final class i
     if (paramJSONObject == null)
     {
       Log.w("MicroMsg.JsApiCompressVideo", "fail:data is null");
-      parame.j(paramInt, h("fail:invalid data", null));
+      paramf.callback(paramInt, ZP("fail:invalid data"));
       AppMethodBeat.o(46574);
       return;
     }
@@ -135,45 +135,45 @@ public final class i
     if (Util.isNullOrNil((String)localObject1))
     {
       Log.w("MicroMsg.JsApiCompressVideo", "fail:data src is empty");
-      parame.j(paramInt, h("fail:invalid data", null));
+      paramf.callback(paramInt, ZP("fail:invalid data"));
       AppMethodBeat.o(46574);
       return;
     }
     if (!((String)localObject1).startsWith("wxfile://"))
     {
       Log.w("MicroMsg.JsApiCompressVideo", "fail:src path not supported");
-      parame.j(paramInt, h("fail:src path not be supported", null));
+      paramf.callback(paramInt, ZP("fail:src path not be supported"));
       AppMethodBeat.o(46574);
       return;
     }
-    Object localObject2 = parame.getFileSystem();
+    Object localObject2 = paramf.getFileSystem();
     if (localObject2 == null)
     {
       Log.w("MicroMsg.JsApiCompressVideo", "fail:runtime fileSystem is null");
-      parame.j(paramInt, h("fail:internal error", null));
+      paramf.callback(paramInt, ZP("fail:internal error"));
       AppMethodBeat.o(46574);
       return;
     }
-    localObject1 = ((r)localObject2).adL((String)localObject1);
+    localObject1 = ((w)localObject2).Wm((String)localObject1);
     if (localObject1 == null)
     {
       Log.w("MicroMsg.JsApiCompressVideo", "fail:srcFile is null");
-      parame.j(paramInt, h("fail:file doesn't exist", null));
+      paramf.callback(paramInt, ZP("fail:file doesn't exist"));
       AppMethodBeat.o(46574);
       return;
     }
-    localObject1 = ((q)localObject1).bOF();
-    if (!u.agG((String)localObject1))
+    localObject1 = ah.v(((com.tencent.mm.vfs.u)localObject1).jKT());
+    if (!y.ZC((String)localObject1))
     {
       Log.w("MicroMsg.JsApiCompressVideo", "fail:filePath is null or without exist file");
-      parame.j(paramInt, h("fail:file doesn't exist", null));
+      paramf.callback(paramInt, ZP("fail:file doesn't exist"));
       AppMethodBeat.o(46574);
       return;
     }
     if ((!paramJSONObject.has("quality")) && (!paramJSONObject.has("bitrate")) && (!paramJSONObject.has("fps")) && (!paramJSONObject.has("resolution")))
     {
       Log.w("MicroMsg.JsApiCompressVideo", "no quality config");
-      parame.j(paramInt, h("fail:invalid data", null));
+      paramf.callback(paramInt, ZP("fail:invalid data"));
       AppMethodBeat.o(46574);
       return;
     }
@@ -182,15 +182,15 @@ public final class i
       Log.i("MicroMsg.JsApiCompressVideo", "compress with quality config");
       paramJSONObject = paramJSONObject.optString("quality");
       Log.i("MicroMsg.JsApiCompressVideo", "quality: %s", new Object[] { paramJSONObject });
-      localObject2 = t.aif((String)localObject1);
+      localObject2 = u.abd((String)localObject1);
       if (localObject2 == null)
       {
         j = 720;
         if (localObject2 != null) {
-          break label517;
+          break label513;
         }
         k = 540;
-        label423:
+        label418:
         i = -1;
         switch (paramJSONObject.hashCode())
         {
@@ -198,7 +198,7 @@ public final class i
           switch (i)
           {
           default: 
-            label464:
+            label460:
             paramJSONObject = null;
           }
           break;
@@ -206,34 +206,34 @@ public final class i
       }
       for (;;)
       {
-        a(parame, paramInt, paramJSONObject);
+        a(paramf, paramInt, paramJSONObject);
         AppMethodBeat.o(46574);
         return;
-        j = ((t.b)localObject2).width;
+        j = ((u.b)localObject2).width;
         break;
-        label517:
-        k = ((t.b)localObject2).height;
-        break label423;
+        label513:
+        k = ((u.b)localObject2).height;
+        break label418;
         if (!paramJSONObject.equals("high")) {
-          break label464;
+          break label460;
         }
         i = 0;
-        break label464;
+        break label460;
         if (!paramJSONObject.equals("medium")) {
-          break label464;
+          break label460;
         }
         i = 1;
-        break label464;
+        break label460;
         if (!paramJSONObject.equals("low")) {
-          break label464;
+          break label460;
         }
         i = 2;
-        break label464;
-        paramJSONObject = new t.a((String)localObject1, 0, 0, Math.round(j * 0.8F), Math.round(k * 0.8F), Math.round(t.pcy * 2.0F), d.JrJ);
+        break label460;
+        paramJSONObject = new u.a((String)localObject1, 0, 0, Math.round(j * 0.8F), Math.round(k * 0.8F), Math.round(u.shM * 2.0F), d.PFl);
         continue;
-        paramJSONObject = new t.a((String)localObject1, 0, 0, Math.round(j * 0.5F), Math.round(k * 0.5F), Math.round(t.pcy * 1.5F), d.JrJ);
+        paramJSONObject = new u.a((String)localObject1, 0, 0, Math.round(j * 0.5F), Math.round(k * 0.5F), Math.round(u.shM * 1.5F), d.PFl);
         continue;
-        paramJSONObject = new t.a((String)localObject1, 0, 0, Math.round(j * 0.3F), Math.round(k * 0.3F), t.pcy, d.JrJ);
+        paramJSONObject = new u.a((String)localObject1, 0, 0, Math.round(j * 0.3F), Math.round(k * 0.3F), u.shM, d.PFl);
       }
     }
     Log.i("MicroMsg.JsApiCompressVideo", "compress with advance config");
@@ -241,48 +241,48 @@ public final class i
     if ((f1 > 0.0F) && (f1 <= 1.0F)) {}
     for (f1 = Math.round(f1 * 10.0F) * 1.0F / 10.0F;; f1 = 1.0F)
     {
-      localObject2 = t.aif((String)localObject1);
+      localObject2 = u.abd((String)localObject1);
       if (localObject2 != null) {
         break;
       }
       Log.w("MicroMsg.JsApiCompressVideo", "fail:videoInfo is null");
-      parame.j(paramInt, h("fail:can't get info from video file", null));
+      paramf.callback(paramInt, ZP("fail:can't get info from video file"));
       AppMethodBeat.o(46574);
       return;
     }
-    int j = Math.round(((t.b)localObject2).width * f1);
-    int k = Math.round(((t.b)localObject2).height * f1);
-    int i = paramJSONObject.optInt("bitrate", Math.round(t.pcy * 1.0F / 1000.0F)) * 1000;
+    int j = Math.round(((u.b)localObject2).width * f1);
+    int k = Math.round(((u.b)localObject2).height * f1);
+    int i = paramJSONObject.optInt("bitrate", Math.round(u.shM * 1.0F / 1000.0F)) * 1000;
     float f2;
-    if ((i > 0) && (i < ((t.b)localObject2).bitrate))
+    if ((i > 0) && (i < ((u.b)localObject2).bitrate))
     {
-      f2 = (float)paramJSONObject.optDouble("fps", d.JrJ);
-      if ((f2 < 1.0F) || (f2 > ((t.b)localObject2).cLa)) {
-        break label981;
+      f2 = (float)paramJSONObject.optDouble("fps", d.PFl);
+      if ((f2 < 1.0F) || (f2 > ((u.b)localObject2).eGw)) {
+        break label976;
       }
-      label892:
+      label887:
       Log.i("MicroMsg.JsApiCompressVideo", "ratio: %f, bitrate: %d, fps: %f", new Object[] { Float.valueOf(f1), Integer.valueOf(i), Float.valueOf(f2) });
       if ((j != 0) && (k != 0)) {
-        break label989;
+        break label984;
       }
     }
-    label981:
-    label989:
-    for (paramJSONObject = new t.a((String)localObject1, 720, 540, 0, 0, i, f2);; paramJSONObject = new t.a((String)localObject1, 0, 0, j, k, i, f2))
+    label976:
+    label984:
+    for (paramJSONObject = new u.a((String)localObject1, 720, 540, 0, 0, i, f2);; paramJSONObject = new u.a((String)localObject1, 0, 0, j, k, i, f2))
     {
-      a(parame, paramInt, paramJSONObject);
+      a(paramf, paramInt, paramJSONObject);
       AppMethodBeat.o(46574);
       return;
-      i = t.pcy;
+      i = u.shM;
       break;
-      f2 = d.JrJ;
-      break label892;
+      f2 = d.PFl;
+      break label887;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.i
  * JD-Core Version:    0.7.0.1
  */

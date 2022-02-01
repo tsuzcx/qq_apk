@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.chatting.a;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,236 +16,245 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.ay.i;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.e;
+import com.tencent.mm.message.k.b;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.x;
-import com.tencent.mm.pluginsdk.model.app.ao;
+import com.tencent.mm.modelimage.j;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.modelvideo.aa;
+import com.tencent.mm.modelvideo.ab;
+import com.tencent.mm.modelvideo.v;
+import com.tencent.mm.modelvideo.z;
+import com.tencent.mm.pluginsdk.model.app.as;
 import com.tencent.mm.pluginsdk.model.app.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.gallery.l;
-import com.tencent.mm.ui.chatting.gallery.l.a;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.chatting.gallery.n;
+import com.tencent.mm.ui.chatting.gallery.n.a;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public final class b
   extends RecyclerView.a
 {
-  private long WFI;
-  public b WFJ;
-  private com.tencent.mm.ay.a.a.c jjH;
-  private String jkq;
+  private boolean Aet;
+  public boolean Anw;
+  private long aenl;
+  public b aenm;
+  private String lMU;
+  private com.tencent.mm.modelimage.loader.a.c lMm;
   private Context mContext;
-  public List<c> rEV;
-  private boolean tMW;
-  public boolean tMZ;
-  private boolean wIf;
-  public boolean wQS;
+  public List<c> uQh;
+  private boolean wQm;
+  public boolean wQp;
+  private SimpleDateFormat xiR;
   
   public b(Context paramContext, List<c> paramList, String paramString)
   {
     AppMethodBeat.i(35029);
-    this.rEV = null;
-    this.jjH = null;
-    this.tMW = true;
-    this.wIf = false;
-    this.wQS = false;
-    this.rEV = paramList;
-    this.jkq = paramString;
-    bh.beI();
-    this.tMW = com.tencent.mm.model.c.isSDCardAvailable();
+    this.uQh = null;
+    this.lMm = null;
+    this.wQm = true;
+    this.Aet = false;
+    this.xiR = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+    this.Anw = false;
+    this.uQh = paramList;
+    this.lMU = paramString;
+    bh.bCz();
+    this.wQm = com.tencent.mm.model.c.isSDCardAvailable();
     this.mContext = paramContext;
-    lh(paramContext);
+    nl(paramContext);
     AppMethodBeat.o(35029);
   }
   
   public b(Context paramContext, List<c> paramList, String paramString, long paramLong)
   {
     AppMethodBeat.i(35030);
-    this.rEV = null;
-    this.jjH = null;
-    this.tMW = true;
-    this.wIf = false;
-    this.wQS = false;
-    this.rEV = paramList;
-    this.WFI = paramLong;
-    this.jkq = paramString;
-    bh.beI();
-    this.tMW = com.tencent.mm.model.c.isSDCardAvailable();
-    this.wIf = true;
+    this.uQh = null;
+    this.lMm = null;
+    this.wQm = true;
+    this.Aet = false;
+    this.xiR = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+    this.Anw = false;
+    this.uQh = paramList;
+    this.aenl = paramLong;
+    this.lMU = paramString;
+    bh.bCz();
+    this.wQm = com.tencent.mm.model.c.isSDCardAvailable();
+    this.Aet = true;
     this.mContext = paramContext;
-    lh(paramContext);
+    nl(paramContext);
     AppMethodBeat.o(35030);
   }
   
-  private static long Im(long paramLong)
+  private static long kE(long paramLong)
   {
     AppMethodBeat.i(35037);
     Date localDate = new Date(paramLong);
-    paramLong = com.tencent.mm.ui.gridviewheaders.a.hWZ().b(localDate);
+    paramLong = com.tencent.mm.ui.gridviewheaders.a.jBw().b(localDate);
     AppMethodBeat.o(35037);
     return paramLong;
   }
   
-  private void lh(Context paramContext)
+  private void nl(Context paramContext)
   {
     AppMethodBeat.i(35031);
     c.a locala = new c.a();
-    locala.lRG = 1;
-    locala.lRX = true;
-    locala.kOg = (com.tencent.mm.ci.a.kr(paramContext) / 4);
-    locala.kOf = (com.tencent.mm.ci.a.kr(paramContext) / 4);
-    locala.lRS = R.e.pic_thum_bg_color;
-    this.jjH = locala.bmL();
+    locala.oKs = 1;
+    locala.oKJ = true;
+    locala.npV = (com.tencent.mm.cd.a.ms(paramContext) / 4);
+    locala.npU = (com.tencent.mm.cd.a.ms(paramContext) / 4);
+    locala.oKE = R.e.pic_thum_bg_color;
+    this.lMm = locala.bKx();
     AppMethodBeat.o(35031);
-  }
-  
-  public final String Il(long paramLong)
-  {
-    AppMethodBeat.i(35036);
-    Object localObject = new Date(paramLong);
-    localObject = com.tencent.mm.ui.gridviewheaders.a.hWZ().a((Date)localObject, this.mContext);
-    AppMethodBeat.o(35036);
-    return localObject;
   }
   
   public final void a(RecyclerView.v paramv, int paramInt, List paramList)
   {
-    AppMethodBeat.i(271431);
+    AppMethodBeat.i(254387);
     if ((paramList != null) && (paramList.size() > 0) && ((paramv instanceof d)))
     {
       if (((Integer)paramList.get(0)).intValue() == 0)
       {
         ((d)paramv).checkBox.setChecked(false);
         ((d)paramv).checkBox.setVisibility(0);
-        ((d)paramv).wRk.setVisibility(0);
-        AppMethodBeat.o(271431);
+        ((d)paramv).AnN.setVisibility(0);
+        AppMethodBeat.o(254387);
         return;
       }
       ((d)paramv).checkBox.setChecked(false);
       ((d)paramv).checkBox.setVisibility(8);
-      ((d)paramv).wRk.setVisibility(8);
-      AppMethodBeat.o(271431);
+      ((d)paramv).AnN.setVisibility(8);
+      AppMethodBeat.o(254387);
       return;
     }
     super.a(paramv, paramInt, paramList);
-    AppMethodBeat.o(271431);
+    AppMethodBeat.o(254387);
   }
   
-  public final c avx(int paramInt)
+  public final c aBZ(int paramInt)
   {
     AppMethodBeat.i(35039);
-    c localc = (c)this.rEV.get(paramInt);
+    c localc = (c)this.uQh.get(paramInt);
     AppMethodBeat.o(35039);
     return localc;
   }
   
   public final RecyclerView.v b(ViewGroup paramViewGroup, int paramInt)
   {
-    AppMethodBeat.i(271430);
+    AppMethodBeat.i(254383);
     if (paramInt == 2147483647)
     {
-      paramViewGroup = new a(LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.ehs, paramViewGroup, false));
-      AppMethodBeat.o(271430);
+      paramViewGroup = new b.a(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.gkn, paramViewGroup, false));
+      AppMethodBeat.o(254383);
       return paramViewGroup;
     }
-    paramViewGroup = new d(LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.ehA, paramViewGroup, false));
-    AppMethodBeat.o(271430);
+    paramViewGroup = new d(LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.gkv, paramViewGroup, false));
+    AppMethodBeat.o(254383);
     return paramViewGroup;
   }
   
   public final void d(RecyclerView.v paramv, int paramInt)
   {
-    AppMethodBeat.i(271432);
-    if (!this.tMW)
+    AppMethodBeat.i(254393);
+    if (!this.wQm)
     {
-      Log.e("MicroMsg.MediaHistoryGalleryAdapter", "[onBindViewHolder] isSDCardAvailable:%s", new Object[] { Boolean.valueOf(this.tMW) });
-      AppMethodBeat.o(271432);
+      Log.e("MicroMsg.MediaHistoryGalleryAdapter", "[onBindViewHolder] isSDCardAvailable:%s", new Object[] { Boolean.valueOf(this.wQm) });
+      AppMethodBeat.o(254393);
       return;
     }
-    c localc = avx(paramInt);
-    if (paramv.amo == 2147483647)
+    Object localObject = aBZ(paramInt);
+    if (paramv.caO == 2147483647)
     {
-      if ((paramInt == getItemCount() - 1) || (Im(avx(paramInt + 1).timeStamp) != Im(localc.timeStamp)))
+      if ((paramInt == getItemCount() - 1) || (kE(aBZ(paramInt + 1).timeStamp) != kE(((c)localObject).timeStamp)))
       {
-        ((a)paramv).mMb.setVisibility(8);
-        AppMethodBeat.o(271432);
+        ((b.a)paramv).pIJ.setVisibility(8);
+        AppMethodBeat.o(254393);
         return;
       }
-      ((a)paramv).mMb.setVisibility(0);
-      ((a)paramv).mMb.setText(Il(localc.timeStamp));
-      if (this.tMZ)
+      ((b.a)paramv).pIJ.setVisibility(0);
+      ((b.a)paramv).pIJ.setText(kD(((c)localObject).timeStamp));
+      if (this.wQp)
       {
-        ((a)paramv).progressBar.setVisibility(0);
-        AppMethodBeat.o(271432);
+        ((b.a)paramv).progressBar.setVisibility(0);
+        AppMethodBeat.o(254393);
         return;
       }
-      ((a)paramv).progressBar.setVisibility(8);
-      AppMethodBeat.o(271432);
+      ((b.a)paramv).progressBar.setVisibility(8);
+      AppMethodBeat.o(254393);
       return;
     }
-    ((d)paramv).wRg.setTag(Integer.valueOf(paramInt));
-    ((d)paramv).wRk.setTag(Integer.valueOf(paramInt));
-    if (localc.wRc)
+    ((d)paramv).cqj.setTag(Integer.valueOf(paramInt));
+    ((d)paramv).AnN.setTag(Integer.valueOf(paramInt));
+    String str1;
+    if (((c)localObject).AnG)
     {
-      String str1 = com.tencent.mm.pluginsdk.model.w.bpO(localc.imagePath);
-      com.tencent.mm.ay.a.a locala = q.bml();
-      String str2 = localc.imagePath;
-      ImageView localImageView = ((d)paramv).wRg;
+      str1 = com.tencent.mm.pluginsdk.model.y.bpF(((c)localObject).imagePath);
+      com.tencent.mm.modelimage.loader.a locala = r.bKe();
+      String str2 = ((c)localObject).imagePath;
+      ImageView localImageView = ((d)paramv).cqj;
       c.a locala1 = new c.a();
       locala1.fullPath = str1;
-      locala1.lRD = true;
-      locala.a(str2, localImageView, locala1.bmL());
-      if ((!localc.wRb) && (!localc.wRc)) {
-        break label438;
+      locala1.oKp = true;
+      locala.a(str2, localImageView, locala1.bKx());
+      if ((!((c)localObject).AnF) && (!((c)localObject).AnG)) {
+        break label537;
       }
-      ((d)paramv).wRh.setVisibility(0);
-      ((d)paramv).tMO.setVisibility(0);
-      ((d)paramv).tMO.setText(Util.nullAs(localc.WFL.wRe, ""));
+      ((d)paramv).AnK.setVisibility(0);
+      ((d)paramv).wQe.setVisibility(0);
+      ((d)paramv).wQe.setText(Util.nullAs(((c)localObject).aeno.AnI, ""));
+      label343:
+      if (!this.Anw) {
+        break label590;
+      }
+      ((d)paramv).AnN.setVisibility(0);
+      ((d)paramv).checkBox.setVisibility(0);
+      if (!n.a.jvm().dx(((c)localObject).hTm)) {
+        break label564;
+      }
+      ((d)paramv).AnL.setVisibility(0);
+      ((d)paramv).checkBox.setChecked(true);
+      label407:
+      str1 = this.xiR.format(new Date(((c)localObject).timeStamp));
+      str1 = paramInt - 1 + ", " + str1;
+      if (!((c)localObject).AnF) {
+        break label617;
+      }
     }
-    for (;;)
+    label537:
+    label564:
+    label590:
+    label617:
+    for (localObject = this.mContext.getResources().getString(R.l.app_field_video) + str1;; localObject = this.mContext.getResources().getString(R.l.app_field_pic) + str1)
     {
-      if (this.wQS)
-      {
-        ((d)paramv).wRk.setVisibility(0);
-        ((d)paramv).checkBox.setVisibility(0);
-        if (l.a.hRO().da(localc.fNz))
-        {
-          ((d)paramv).wRi.setVisibility(0);
-          ((d)paramv).checkBox.setChecked(true);
-          AppMethodBeat.o(271432);
-          return;
-          q.bml().a(localc.imagePath, ((d)paramv).wRg, this.jjH);
-          break;
-          label438:
-          ((d)paramv).tMO.setVisibility(8);
-          ((d)paramv).wRh.setVisibility(8);
-          continue;
-        }
-        ((d)paramv).wRi.setVisibility(8);
-        ((d)paramv).checkBox.setChecked(false);
-        AppMethodBeat.o(271432);
-        return;
-      }
+      ((d)paramv).cqj.setContentDescription((CharSequence)localObject);
+      AppMethodBeat.o(254393);
+      return;
+      r.bKe().a(((c)localObject).imagePath, ((d)paramv).cqj, this.lMm);
+      break;
+      ((d)paramv).wQe.setVisibility(8);
+      ((d)paramv).AnK.setVisibility(8);
+      break label343;
+      ((d)paramv).AnL.setVisibility(8);
+      ((d)paramv).checkBox.setChecked(false);
+      break label407;
+      ((d)paramv).AnN.setVisibility(8);
+      ((d)paramv).checkBox.setVisibility(8);
+      break label407;
     }
-    ((d)paramv).wRk.setVisibility(8);
-    ((d)paramv).checkBox.setVisibility(8);
-    AppMethodBeat.o(271432);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(35038);
-    int i = this.rEV.size();
+    int i = this.uQh.size();
     AppMethodBeat.o(35038);
     return i;
   }
@@ -252,25 +262,18 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(35032);
-    paramInt = avx(paramInt).type;
+    paramInt = aBZ(paramInt).type;
     AppMethodBeat.o(35032);
     return paramInt;
   }
   
-  public final class a
-    extends RecyclerView.v
+  public final String kD(long paramLong)
   {
-    TextView mMb;
-    ProgressBar progressBar;
-    
-    public a(View paramView)
-    {
-      super();
-      AppMethodBeat.i(35022);
-      this.mMb = ((TextView)paramView.findViewById(R.h.date_info));
-      this.progressBar = ((ProgressBar)paramView.findViewById(R.h.load_progress));
-      AppMethodBeat.o(35022);
-    }
+    AppMethodBeat.i(35036);
+    Object localObject = new Date(paramLong);
+    localObject = com.tencent.mm.ui.gridviewheaders.a.jBw().a((Date)localObject, this.mContext);
+    AppMethodBeat.o(35036);
+    return localObject;
   }
   
   public static abstract interface b
@@ -280,62 +283,62 @@ public final class b
   
   public static final class c
   {
-    public a WFL;
-    public ca fNz;
+    boolean AnF;
+    boolean AnG;
+    public a aeno;
+    public cc hTm;
     public String imagePath;
     public long timeStamp;
     public int type;
-    boolean wRb;
-    boolean wRc;
     
     public c(long paramLong)
     {
       AppMethodBeat.i(35025);
       this.type = 0;
-      this.wRc = false;
-      this.WFL = new a();
+      this.AnG = false;
+      this.aeno = new a();
       this.timeStamp = paramLong;
       this.type = 2147483647;
       AppMethodBeat.o(35025);
     }
     
-    public c(ca paramca)
+    public c(cc paramcc)
     {
       AppMethodBeat.i(35024);
       this.type = 0;
-      this.wRc = false;
-      this.WFL = new a();
-      this.fNz = paramca;
+      this.AnG = false;
+      this.aeno = new a();
+      this.hTm = paramcc;
       Object localObject1 = "";
       Object localObject2;
-      if ((paramca.dlR()) || (paramca.dlT()))
+      if ((paramcc.dSH()) || (paramcc.dSJ()))
       {
-        this.wRb = true;
-        s.bqB();
-        localObject1 = x.XU(paramca.field_imgPath);
-        localObject2 = com.tencent.mm.modelvideo.y.Yk(paramca.field_imgPath);
+        this.AnF = true;
+        v.bOh();
+        localObject1 = aa.PY(paramcc.field_imgPath);
+        localObject2 = ab.Qo(paramcc.field_imgPath);
         if (localObject2 != null) {
-          this.WFL.wRe = Util.formatSecToMin(((com.tencent.mm.modelvideo.w)localObject2).lvw);
+          this.aeno.AnI = Util.formatSecToMin(((z)localObject2).omT);
         }
-        this.WFL.fQY = k.b.aG(paramca.field_content, paramca.field_reserved);
+        this.aeno.hWV = k.b.aP(paramcc.field_content, paramcc.field_reserved);
       }
       for (;;)
       {
         Object localObject3 = localObject1;
-        if (paramca.hzF())
+        if (paramcc.jbK())
         {
-          Object localObject4 = k.b.OQ(paramca.field_content);
+          Object localObject4 = k.b.Hf(paramcc.field_content);
           localObject3 = null;
           localObject2 = localObject3;
           if (localObject4 != null)
           {
             localObject2 = localObject3;
-            if (((k.b)localObject4).fvr != null)
+            if (((k.b)localObject4).hzM != null)
             {
               localObject2 = localObject3;
-              if (((k.b)localObject4).fvr.length() > 0)
+              if (((k.b)localObject4).hzM.length() > 0)
               {
-                localObject4 = ao.ctZ().bpR(((k.b)localObject4).fvr);
+                localObject4 = as.cWJ().bpI(((k.b)localObject4).hzM);
                 localObject2 = localObject3;
                 if (localObject4 != null) {
                   localObject2 = ((com.tencent.mm.pluginsdk.model.app.c)localObject4).field_fileFullPath;
@@ -349,25 +352,25 @@ public final class b
           }
         }
         this.imagePath = localObject3;
-        this.timeStamp = paramca.field_createTime;
+        this.timeStamp = paramcc.getCreateTime();
         AppMethodBeat.o(35024);
         return;
-        if (paramca.dlS())
+        if (paramcc.dSI())
         {
-          this.wRc = true;
-          localObject2 = k.b.OQ(paramca.field_content);
+          this.AnG = true;
+          localObject2 = k.b.Hf(paramcc.field_content);
           if (localObject2 != null)
           {
             localObject1 = ((k.b)localObject2).thumburl;
-            localObject2 = (e)((k.b)localObject2).ar(e.class);
-            if ((localObject2 != null) && (((e)localObject2).llv != null)) {
-              this.WFL.wRe = Util.formatSecToMin(((e)localObject2).llv.videoDuration);
+            localObject2 = (e)((k.b)localObject2).aK(e.class);
+            if ((localObject2 != null) && (((e)localObject2).nQs != null)) {
+              this.aeno.AnI = Util.formatSecToMin(((e)localObject2).nQs.videoDuration);
             }
           }
         }
         else
         {
-          localObject2 = q.bmh().d(paramca.field_imgPath, false, false);
+          localObject2 = r.bKa().d(paramcc.field_imgPath, false, false);
           localObject1 = localObject2;
           if (!Util.isNullOrNil((String)localObject2))
           {
@@ -375,7 +378,7 @@ public final class b
             if (!((String)localObject2).endsWith("hd"))
             {
               localObject1 = localObject2;
-              if (u.agG((String)localObject2 + "hd")) {
+              if (com.tencent.mm.vfs.y.ZC((String)localObject2 + "hd")) {
                 localObject1 = (String)localObject2 + "hd";
               }
             }
@@ -387,9 +390,9 @@ public final class b
     public final boolean equals(Object paramObject)
     {
       AppMethodBeat.i(35023);
-      if ((this.fNz != null) && ((paramObject instanceof ca)) && (paramObject != null))
+      if ((this.hTm != null) && ((paramObject instanceof cc)) && (paramObject != null))
       {
-        if (this.fNz.field_msgId == ((ca)paramObject).field_msgId)
+        if (this.hTm.field_msgId == ((cc)paramObject).field_msgId)
         {
           AppMethodBeat.o(35023);
           return true;
@@ -404,8 +407,8 @@ public final class b
     
     final class a
     {
-      public k.b fQY;
-      public String wRe;
+      public String AnI;
+      public k.b hWV;
       
       a() {}
     }
@@ -414,38 +417,38 @@ public final class b
   public final class d
     extends RecyclerView.v
   {
+    View AnK;
+    ImageView AnL;
+    View AnM;
+    View AnN;
     CheckBox checkBox;
-    TextView tMO;
-    ImageView wRg;
-    View wRh;
-    ImageView wRi;
-    View wRj;
-    View wRk;
+    ImageView cqj;
+    TextView wQe;
     
     public d(View paramView)
     {
       super();
       AppMethodBeat.i(35028);
-      this.wRg = ((ImageView)paramView.findViewById(R.h.grid_header_item));
-      this.wRh = paramView.findViewById(R.h.video_tips_root);
-      this.wRj = paramView.findViewById(R.h.sight_tips_root);
-      this.tMO = ((TextView)paramView.findViewById(R.h.video_time_tv));
-      this.wRi = ((ImageView)paramView.findViewById(R.h.grid_selected_item_mask));
+      this.cqj = ((ImageView)paramView.findViewById(R.h.grid_header_item));
+      this.AnK = paramView.findViewById(R.h.video_tips_root);
+      this.AnM = paramView.findViewById(R.h.sight_tips_root);
+      this.wQe = ((TextView)paramView.findViewById(R.h.video_time_tv));
+      this.AnL = ((ImageView)paramView.findViewById(R.h.grid_selected_item_mask));
       this.checkBox = ((CheckBox)paramView.findViewById(R.h.media_cbx));
-      this.wRk = paramView.findViewById(R.h.media_cbx_clickarea);
-      this.wRk.setVisibility(8);
+      this.AnN = paramView.findViewById(R.h.media_cbx_clickarea);
+      this.AnN.setVisibility(8);
       this.checkBox.setVisibility(8);
-      this.wRh.setVisibility(8);
-      this.tMO.setVisibility(8);
-      this.wRj.setVisibility(8);
-      this.wRg.setOnClickListener(new View.OnClickListener()
+      this.AnK.setVisibility(8);
+      this.wQe.setVisibility(8);
+      this.AnM.setVisibility(8);
+      this.cqj.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(35026);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/adapter/MediaHistoryGalleryAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/adapter/MediaHistoryGalleryAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
           if ((paramAnonymousView.getTag() == null) || (!(paramAnonymousView.getTag() instanceof Integer)))
           {
             Log.e("MicroMsg.MediaHistoryGalleryAdapter", "getTag is %s", new Object[] { paramAnonymousView.getTag() });
@@ -453,7 +456,7 @@ public final class b
             AppMethodBeat.o(35026);
             return;
           }
-          localObject = b.this.avx(((Integer)paramAnonymousView.getTag()).intValue());
+          localObject = b.this.aBZ(((Integer)paramAnonymousView.getTag()).intValue());
           if (localObject == null)
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/adapter/MediaHistoryGalleryAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -465,28 +468,28 @@ public final class b
           AppMethodBeat.o(35026);
         }
       });
-      this.wRk.setOnClickListener(new View.OnClickListener()
+      this.AnN.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(35027);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/adapter/MediaHistoryGalleryAdapter$ViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/adapter/MediaHistoryGalleryAdapter$ViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           boolean bool;
           if (!b.d.this.checkBox.isChecked())
           {
             bool = true;
-            if (l.a.hRO().wQK.size() >= 9) {
+            if (n.a.jvm().Ann.size() >= 9) {
               break label194;
             }
             b.d.this.checkBox.setChecked(bool);
-            if (b.d.this.wRi != null)
+            if (b.d.this.AnL != null)
             {
               if (bool) {
                 break label180;
               }
-              b.d.this.wRi.setVisibility(8);
+              b.d.this.AnL.setVisibility(8);
             }
           }
           for (;;)
@@ -494,7 +497,7 @@ public final class b
             if (b.a(b.this) != null)
             {
               int i = ((Integer)paramAnonymousView.getTag()).intValue();
-              paramAnonymousView = b.this.avx(i);
+              paramAnonymousView = b.this.aBZ(i);
               b.a(b.this).a(bool, paramAnonymousView, i);
             }
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/adapter/MediaHistoryGalleryAdapter$ViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -503,7 +506,7 @@ public final class b
             bool = false;
             break;
             label180:
-            b.d.this.wRi.setVisibility(0);
+            b.d.this.AnL.setVisibility(0);
             continue;
             label194:
             if (!bool) {
@@ -518,7 +521,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.a.b
  * JD-Core Version:    0.7.0.1
  */

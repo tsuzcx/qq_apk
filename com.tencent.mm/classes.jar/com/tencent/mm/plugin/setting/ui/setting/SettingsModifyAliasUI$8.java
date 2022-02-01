@@ -14,13 +14,13 @@ final class SettingsModifyAliasUI$8
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(263197);
+    AppMethodBeat.i(298724);
     b localb = new b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    com.tencent.mm.plugin.account.sdk.b.a.b(this.Jii, this.Jii.getString(b.i.set_alias_term_url, new Object[] { LocaleUtil.getApplicationLanguage() }), 0, true);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    com.tencent.mm.plugin.account.sdk.c.a.b(this.Puo, this.Puo.getString(b.i.set_alias_term_url, new Object[] { LocaleUtil.getApplicationLanguage() }), 0, true);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsModifyAliasUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(263197);
+    AppMethodBeat.o(298724);
   }
 }
 

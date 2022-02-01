@@ -5,6 +5,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 @Deprecated
 public abstract interface MessageApi
@@ -22,6 +25,9 @@ public abstract interface MessageApi
   
   public abstract PendingResult<SendMessageResult> sendMessage(GoogleApiClient paramGoogleApiClient, String paramString1, String paramString2, byte[] paramArrayOfByte);
   
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface FilterType {}
+  
   @Deprecated
   public static abstract interface MessageListener
   {
@@ -37,7 +43,7 @@ public abstract interface MessageApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.MessageApi
  * JD-Core Version:    0.7.0.1
  */

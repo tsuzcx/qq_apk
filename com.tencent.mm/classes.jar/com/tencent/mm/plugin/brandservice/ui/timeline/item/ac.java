@@ -1,116 +1,130 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
-import android.content.MutableContextWrapper;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewStub;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.aw.b;
-import com.tencent.mm.plugin.webcanvas.c;
-import com.tencent.mm.plugin.webcanvas.k;
+import com.tencent.mm.plugin.biz.b.c;
+import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.ui.timeline.b;
+import com.tencent.mm.plugin.webcanvas.j;
+import com.tencent.mm.protocal.protobuf.ene;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.r;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.n.n;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardRenderJsEngine;", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasRenderJsEngine;", "tlJsEngine", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardJsEngine;", "bizPkg", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "wxaPkg", "performanceReporter", "Lcom/tencent/mm/plugin/webjsengine/WebCanvasPerformanceReporter;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardJsEngine;Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;Lcom/tencent/mm/plugin/webjsengine/WebCanvasPerformanceReporter;)V", "createCanvasContext", "Lcom/tencent/mm/plugin/webcanvas/WebCanvasContext;", "canvasId", "", "contextWrapper", "Landroid/content/MutableContextWrapper;", "checkDrawChanged", "", "updateHeight", "enterHotZone", "", "exitHotZone", "getEngineName", "onScreenShot", "Companion", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecFeedCanvas;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardTmpl;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;Landroid/content/Context;)V", "TAG", "", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "canvasView", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardCanvasView;", "getContext", "()Landroid/content/Context;", "hasProcessCrash", "", "item", "Landroid/view/View;", "style", "", "getStyle", "()I", "setStyle", "(I)V", "filling", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "position", "convertView", "parent", "gone", "inflate", "show", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ac
-  extends k
+  extends ab
 {
-  public static final a sGe;
+  private final String TAG;
+  private final Context context;
+  private int style;
+  private final b vHY;
+  private View vJU;
+  private BizTLRecCardCanvasView vKq;
+  private boolean vKr;
   
-  static
+  public ac(b paramb, Context paramContext)
   {
-    AppMethodBeat.i(265221);
-    sGe = new a((byte)0);
-    AppMethodBeat.o(265221);
+    AppMethodBeat.i(302496);
+    this.vHY = paramb;
+    this.context = paramContext;
+    this.TAG = "MicroMsg.BizTLRecFeedCanvas";
+    this.style = 2003;
+    AppMethodBeat.o(302496);
   }
   
-  public ac(y paramy, com.tencent.mm.plugin.appbrand.appcache.p paramp1, com.tencent.mm.plugin.appbrand.appcache.p paramp2, b paramb)
+  public final int TY()
   {
-    super((c)paramy, paramp1, paramp2, paramb);
-    AppMethodBeat.i(265220);
-    AppMethodBeat.o(265220);
+    return this.style;
   }
   
-  public final com.tencent.mm.plugin.webcanvas.a a(String paramString, MutableContextWrapper paramMutableContextWrapper, boolean paramBoolean1, boolean paramBoolean2)
+  public final void a(com.tencent.mm.storage.ab paramab, int paramInt, View paramView1, View paramView2)
   {
-    AppMethodBeat.i(265218);
-    kotlin.g.b.p.k(paramString, "canvasId");
-    kotlin.g.b.p.k(paramMutableContextWrapper, "contextWrapper");
-    paramMutableContextWrapper = super.a(paramString, paramMutableContextWrapper, paramBoolean1, paramBoolean2);
-    if (kotlin.g.b.p.h(paramString, "__biz_video_channel_canvas_id__"))
+    AppMethodBeat.i(302506);
+    s.u(paramab, "info");
+    s.u(paramView1, "convertView");
+    s.u(paramView2, "parent");
+    String str = s.X("__rec_feed_", paramab.acFJ.YSF);
+    Object localObject = j.WkY;
+    j.xC(71L);
+    Log.i(this.TAG, "filling#" + str + " msgId=" + paramab.field_orderFlag);
+    localObject = r.acDM;
+    if (!r.iXo())
     {
-      paramMutableContextWrapper.PsY = ((kotlin.g.a.a)c.sGg);
-      paramMutableContextWrapper.PsZ = ((kotlin.g.a.a)d.sGh);
+      paramView1.setVisibility(8);
+      AppMethodBeat.o(302506);
+      return;
     }
-    r localr = r.VcW;
-    if ((r.hvQ()) && (n.M(paramString, "__ad_card_", false))) {
-      paramMutableContextWrapper.Pta = ((kotlin.g.a.a)new b(paramString));
+    if (!this.vKr)
+    {
+      localObject = c.vtp;
+      if (!c.e(str, paramView1))
+      {
+        paramab = j.WkY;
+        j.xC(73L);
+        AppMethodBeat.o(302506);
+        return;
+      }
     }
-    AppMethodBeat.o(265218);
-    return paramMutableContextWrapper;
+    this.vKr = true;
+    s.u(paramView2, "parent");
+    if (this.vJU == null)
+    {
+      paramView1 = ((ViewStub)paramView2.findViewById(d.e.viewstub_feed_canvas)).inflate();
+      this.vKq = ((BizTLRecCardCanvasView)paramView1.findViewById(d.e.rec_feed_canvas));
+      paramView2 = ah.aiuX;
+      this.vJU = paramView1;
+    }
+    paramView1 = this.vJU;
+    if (paramView1 != null) {
+      paramView1.setVisibility(0);
+    }
+    paramView1 = this.vKq;
+    if (paramView1 != null) {
+      paramView1.setBizTimeLineInfo(paramab);
+    }
+    paramView1 = this.vKq;
+    if (paramView1 != null)
+    {
+      long l = paramab.field_orderFlag;
+      paramab = paramab.iYv();
+      s.s(paramab, "info.recFeedData");
+      paramView1.a(l, str, "rec-feed", paramab);
+    }
+    paramab = j.WkY;
+    j.xC(72L);
+    paramab = c.vtp;
+    c.ail(str);
+    AppMethodBeat.o(302506);
   }
   
-  public final String cAJ()
+  public final void ddv()
   {
-    return "BizRenderJsEngine";
+    AppMethodBeat.i(302513);
+    View localView = this.vJU;
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
+    AppMethodBeat.o(302513);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardRenderJsEngine$Companion;", "", "()V", "limitFontSize", "", "getLimitFontSize", "()F", "plugin-brandservice_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardRenderJsEngine$createCanvasContext$1$3"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<Boolean>
+  public final void show()
   {
-    b(String paramString)
-    {
-      super();
+    AppMethodBeat.i(302518);
+    View localView = this.vJU;
+    if (localView != null) {
+      localView.setVisibility(0);
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<Float>
-  {
-    public static final c sGg;
-    
-    static
-    {
-      AppMethodBeat.i(265889);
-      sGg = new c();
-      AppMethodBeat.o(265889);
-    }
-    
-    c()
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<Float>
-  {
-    public static final d sGh;
-    
-    static
-    {
-      AppMethodBeat.i(265780);
-      sGh = new d();
-      AppMethodBeat.o(265780);
-    }
-    
-    d()
-    {
-      super();
-    }
+    AppMethodBeat.o(302518);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.ac
  * JD-Core Version:    0.7.0.1
  */

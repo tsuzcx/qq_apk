@@ -10,11 +10,11 @@ public final class ColorInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ColorInfo> CREATOR;
-  private int aNf;
-  public final int aTA;
-  public final byte[] brw;
+  private int cHb;
+  public final int cNw;
   public final int colorRange;
   public final int colorTransfer;
+  public final byte[] dkY;
   
   static
   {
@@ -25,16 +25,16 @@ public final class ColorInfo
   
   public ColorInfo(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
-    this.aTA = paramInt1;
+    this.cNw = paramInt1;
     this.colorRange = paramInt2;
     this.colorTransfer = paramInt3;
-    this.brw = paramArrayOfByte;
+    this.dkY = paramArrayOfByte;
   }
   
   ColorInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(93253);
-    this.aTA = paramParcel.readInt();
+    this.cNw = paramParcel.readInt();
     this.colorRange = paramParcel.readInt();
     this.colorTransfer = paramParcel.readInt();
     int i;
@@ -48,7 +48,7 @@ public final class ColorInfo
     label67:
     for (paramParcel = paramParcel.createByteArray();; paramParcel = null)
     {
-      this.brw = paramParcel;
+      this.dkY = paramParcel;
       AppMethodBeat.o(93253);
       return;
       i = 0;
@@ -75,7 +75,7 @@ public final class ColorInfo
       return false;
     }
     paramObject = (ColorInfo)paramObject;
-    if ((this.aTA != paramObject.aTA) || (this.colorRange != paramObject.colorRange) || (this.colorTransfer != paramObject.colorTransfer) || (!Arrays.equals(this.brw, paramObject.brw)))
+    if ((this.cNw != paramObject.cNw) || (this.colorRange != paramObject.colorRange) || (this.colorTransfer != paramObject.colorTransfer) || (!Arrays.equals(this.dkY, paramObject.dkY)))
     {
       AppMethodBeat.o(93254);
       return false;
@@ -87,10 +87,10 @@ public final class ColorInfo
   public final int hashCode()
   {
     AppMethodBeat.i(93256);
-    if (this.aNf == 0) {
-      this.aNf = ((((this.aTA + 527) * 31 + this.colorRange) * 31 + this.colorTransfer) * 31 + Arrays.hashCode(this.brw));
+    if (this.cHb == 0) {
+      this.cHb = ((((this.cNw + 527) * 31 + this.colorRange) * 31 + this.colorTransfer) * 31 + Arrays.hashCode(this.dkY));
     }
-    int i = this.aNf;
+    int i = this.cHb;
     AppMethodBeat.o(93256);
     return i;
   }
@@ -98,8 +98,8 @@ public final class ColorInfo
   public final String toString()
   {
     AppMethodBeat.i(93255);
-    Object localObject = new StringBuilder("ColorInfo(").append(this.aTA).append(", ").append(this.colorRange).append(", ").append(this.colorTransfer).append(", ");
-    if (this.brw != null) {}
+    Object localObject = new StringBuilder("ColorInfo(").append(this.cNw).append(", ").append(this.colorRange).append(", ").append(this.colorTransfer).append(", ");
+    if (this.dkY != null) {}
     for (boolean bool = true;; bool = false)
     {
       localObject = bool + ")";
@@ -111,15 +111,15 @@ public final class ColorInfo
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(93257);
-    paramParcel.writeInt(this.aTA);
+    paramParcel.writeInt(this.cNw);
     paramParcel.writeInt(this.colorRange);
     paramParcel.writeInt(this.colorTransfer);
-    if (this.brw != null) {}
+    if (this.dkY != null) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      if (this.brw != null) {
-        paramParcel.writeByteArray(this.brw);
+      if (this.dkY != null) {
+        paramParcel.writeByteArray(this.dkY);
       }
       AppMethodBeat.o(93257);
       return;

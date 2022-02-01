@@ -2,17 +2,17 @@ package com.tencent.mm.model;
 
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.chatroom.a.b;
-import com.tencent.mm.plugin.messenger.b.d;
+import com.tencent.mm.plugin.messenger.b.e;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,31 +21,37 @@ import java.util.Set;
 
 public final class aa
 {
-  private static Set<String> lsx;
+  private static Set<String> ojV;
   
   static
   {
     AppMethodBeat.i(90684);
-    lsx = new HashSet();
+    ojV = new HashSet();
     AppMethodBeat.o(90684);
   }
   
-  public static String PH(String paramString)
+  public static String IC(String paramString)
   {
     AppMethodBeat.i(90675);
-    as localas = ((n)h.ae(n.class)).bbL().RG(paramString);
-    if (localas == null)
+    au localau = ((n)h.ax(n.class)).bzA().JE(paramString);
+    if (localau == null)
     {
       AppMethodBeat.o(90675);
       return paramString;
     }
-    if (!Util.isNullOrNil(localas.field_nickname))
+    if (!Util.isNullOrNil(localau.field_nickname))
     {
-      paramString = localas.field_nickname;
+      paramString = localau.field_nickname;
       AppMethodBeat.o(90675);
       return paramString;
     }
-    if (ab.Qk(paramString))
+    if (!Util.isNullOrNil(localau.aJs()))
+    {
+      paramString = localau.aJs();
+      AppMethodBeat.o(90675);
+      return paramString;
+    }
+    if (au.bxa(paramString))
     {
       AppMethodBeat.o(90675);
       return " ";
@@ -54,7 +60,7 @@ public final class aa
     return paramString;
   }
   
-  public static String PI(String paramString)
+  public static String ID(String paramString)
   {
     AppMethodBeat.i(90677);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -62,29 +68,29 @@ public final class aa
       AppMethodBeat.o(90677);
       return "";
     }
-    as localas = ((n)h.ae(n.class)).bbL().RG(paramString);
+    au localau = ((n)h.ax(n.class)).bzA().JE(paramString);
     Log.d("MicroMsg.ContactCommDisplay", "username: %s", new Object[] { paramString });
-    if (localas == null)
+    if (localau == null)
     {
       AppMethodBeat.o(90677);
       return paramString;
     }
-    if ((ab.Lj(paramString)) && (Util.isNullOrNil(localas.field_nickname)))
+    if ((au.bwE(paramString)) && (Util.isNullOrNil(localau.field_nickname)))
     {
-      String str = ((b)h.ae(b.class)).bbV().PJ(paramString);
+      String str = ((b)h.ax(b.class)).bzK().getDisplayName(paramString);
       if (!Util.isNullOrNil(str))
       {
         AppMethodBeat.o(90677);
         return str;
       }
     }
-    if ((localas.ayr() != null) && (localas.ayr().length() > 0))
+    if ((localau.aSU() != null) && (localau.aSU().length() > 0))
     {
-      paramString = localas.ayr();
+      paramString = localau.aSU();
       AppMethodBeat.o(90677);
       return paramString;
     }
-    if (ab.Qk(paramString))
+    if (au.bxa(paramString))
     {
       AppMethodBeat.o(90677);
       return " ";
@@ -93,23 +99,10 @@ public final class aa
     return paramString;
   }
   
-  public static String PJ(String paramString)
-  {
-    AppMethodBeat.i(90678);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(90678);
-      return "";
-    }
-    paramString = b(((n)h.ae(n.class)).bbL().RG(paramString), paramString);
-    AppMethodBeat.o(90678);
-    return paramString;
-  }
-  
-  public static String PK(String paramString)
+  public static String IE(String paramString)
   {
     AppMethodBeat.i(90682);
-    paramString = ((n)h.ae(n.class)).bbL().RG(paramString);
+    paramString = ((n)h.ax(n.class)).bzA().JE(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(90682);
@@ -125,10 +118,10 @@ public final class aa
     return "";
   }
   
-  public static String PL(String paramString)
+  public static String IF(String paramString)
   {
     AppMethodBeat.i(90683);
-    if (lsx.contains(paramString))
+    if (ojV.contains(paramString))
     {
       AppMethodBeat.o(90683);
       return "";
@@ -137,33 +130,40 @@ public final class aa
     return paramString;
   }
   
-  public static String a(as paramas, String paramString, boolean paramBoolean)
+  public static String a(au paramau, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(90680);
-    if (paramas == null)
+    if (paramau == null)
     {
       AppMethodBeat.o(90680);
       return paramString;
     }
-    if ((paramBoolean) && (Util.isNullOrNil(paramas.field_nickname)) && (Util.isNullOrNil(paramas.field_conRemark)))
+    if ((paramBoolean) && (Util.isNullOrNil(paramau.field_nickname)) && (Util.isNullOrNil(paramau.field_conRemark)))
     {
-      paramas = ((b)h.ae(b.class)).bbV().PJ(paramString);
+      paramau = ((b)h.ax(b.class)).bzK();
+      if ((Util.isNullOrNil(paramau.getDisplayName(paramString))) && (v.Iw(paramString)))
+      {
+        paramau = v.bAE();
+        AppMethodBeat.o(90680);
+        return paramau;
+      }
+      paramau = paramau.getDisplayName(paramString);
       AppMethodBeat.o(90680);
-      return paramas;
+      return paramau;
     }
-    if ((paramas.ays() != null) && (paramas.ays().length() > 0))
+    if ((paramau.aSV() != null) && (paramau.aSV().length() > 0))
     {
-      paramas = paramas.ays();
+      paramau = paramau.aSV();
       AppMethodBeat.o(90680);
-      return paramas;
+      return paramau;
     }
-    if ((Util.isNullOrNil(paramas.field_nickname)) && (ab.QU(paramString)))
+    if ((Util.isNullOrNil(paramau.field_nickname)) && (au.bwy(paramString)))
     {
-      paramas = d.Lp(paramString);
+      paramau = d.DW(paramString);
       AppMethodBeat.o(90680);
-      return paramas;
+      return paramau;
     }
-    if (ab.Qk(paramString))
+    if (au.bxa(paramString))
     {
       AppMethodBeat.o(90680);
       return " ";
@@ -172,25 +172,25 @@ public final class aa
     return paramString;
   }
   
-  public static String aL(String paramString1, String paramString2)
+  public static String aV(String paramString1, String paramString2)
   {
     AppMethodBeat.i(90676);
     if (Util.isNullOrNil(paramString2))
     {
-      paramString1 = PJ(paramString1);
+      paramString1 = getDisplayName(paramString1);
       AppMethodBeat.o(90676);
       return paramString1;
     }
-    String str = PK(paramString1);
+    String str = IE(paramString1);
     if (!Util.isNullOrNil(str))
     {
       AppMethodBeat.o(90676);
       return str;
     }
-    paramString2 = v.al(paramString1, paramString2);
+    paramString2 = v.aq(paramString1, paramString2);
     if (Util.isNullOrNil(paramString2))
     {
-      paramString1 = PJ(paramString1);
+      paramString1 = getDisplayName(paramString1);
       AppMethodBeat.o(90676);
       return paramString1;
     }
@@ -198,48 +198,61 @@ public final class aa
     return paramString2;
   }
   
-  public static String b(as paramas)
+  public static String b(au paramau)
   {
     AppMethodBeat.i(90681);
-    Object localObject = PJ(paramas.field_username);
-    if (ab.Lj(paramas.field_username))
+    Object localObject = getDisplayName(paramau.field_username);
+    if (au.bwE(paramau.field_username))
     {
-      if ((localObject != null) && (!((String)localObject).equals(paramas.field_username)))
+      if ((localObject != null) && (!((String)localObject).equals(paramau.field_username)))
       {
         AppMethodBeat.o(90681);
         return localObject;
       }
-      localObject = ((b)h.ae(b.class)).bbV().RA(paramas.field_username);
+      localObject = ((b)h.ax(b.class)).bzK().Jy(paramau.field_username);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        paramas = new ArrayList();
+        paramau = new ArrayList();
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          paramas.add(PJ((String)((Iterator)localObject).next()));
+          paramau.add(getDisplayName((String)((Iterator)localObject).next()));
         }
-        paramas = "(" + Util.listToString(paramas, ", ") + ")";
+        paramau = "(" + Util.listToString(paramau, ", ") + ")";
         AppMethodBeat.o(90681);
-        return paramas;
+        return paramau;
       }
-      paramas = MMApplicationContext.getResources().getString(b.d.address_chatroom_contact_nick);
+      paramau = MMApplicationContext.getResources().getString(b.e.address_chatroom_contact_nick);
       AppMethodBeat.o(90681);
-      return paramas;
+      return paramau;
     }
     AppMethodBeat.o(90681);
     return localObject;
   }
   
-  public static String b(as paramas, String paramString)
+  public static String b(au paramau, String paramString)
   {
     AppMethodBeat.i(186094);
-    paramas = a(paramas, paramString, ab.Lj(paramString));
+    paramau = a(paramau, paramString, au.bwE(paramString));
     AppMethodBeat.o(186094);
-    return paramas;
+    return paramau;
   }
   
-  public static void f(Set<String> paramSet)
+  public static String getDisplayName(String paramString)
   {
-    lsx = paramSet;
+    AppMethodBeat.i(90678);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(90678);
+      return "";
+    }
+    paramString = b(((n)h.ax(n.class)).bzA().JE(paramString), paramString);
+    AppMethodBeat.o(90678);
+    return paramString;
+  }
+  
+  public static void m(Set<String> paramSet)
+  {
+    ojV = paramSet;
   }
 }
 

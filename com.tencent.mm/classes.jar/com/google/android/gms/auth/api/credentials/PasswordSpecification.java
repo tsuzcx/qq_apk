@@ -6,11 +6,6 @@ import android.text.TextUtils;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -22,8 +17,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.TreeSet;
 
-@SafeParcelable.Class(creator="PasswordSpecificationCreator")
-@SafeParcelable.Reserved({1000})
 public final class PasswordSpecification
   extends AbstractSafeParcelable
   implements ReflectedParcelable
@@ -31,15 +24,10 @@ public final class PasswordSpecification
   public static final Parcelable.Creator<PasswordSpecification> CREATOR;
   public static final PasswordSpecification zzdg;
   private static final PasswordSpecification zzdh;
-  @SafeParcelable.Field(id=1)
   private final String zzdi;
-  @SafeParcelable.Field(id=2)
   private final List<String> zzdj;
-  @SafeParcelable.Field(id=3)
   private final List<Integer> zzdk;
-  @SafeParcelable.Field(id=4)
   private final int zzdl;
-  @SafeParcelable.Field(id=5)
   private final int zzdm;
   private final int[] zzdn;
   private final Random zzdo;
@@ -53,8 +41,7 @@ public final class PasswordSpecification
     AppMethodBeat.o(88260);
   }
   
-  @SafeParcelable.Constructor
-  PasswordSpecification(@SafeParcelable.Param(id=1) String paramString, @SafeParcelable.Param(id=2) List<String> paramList, @SafeParcelable.Param(id=3) List<Integer> paramList1, @SafeParcelable.Param(id=4) int paramInt1, @SafeParcelable.Param(id=5) int paramInt2)
+  PasswordSpecification(String paramString, List<String> paramList, List<Integer> paramList1, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88255);
     this.zzdi = paramString;
@@ -232,10 +219,19 @@ public final class PasswordSpecification
       return localObject;
     }
   }
+  
+  public static final class zze
+    extends Error
+  {
+    public zze(String paramString)
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.credentials.PasswordSpecification
  * JD-Core Version:    0.7.0.1
  */

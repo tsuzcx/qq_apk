@@ -1,223 +1,172 @@
 package com.tencent.mm.plugin.finder.upload.action;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.g.a.a;
-import com.tencent.mm.loader.g.a.g;
+import com.tencent.mm.loader.f.a.a;
+import com.tencent.mm.loader.f.a.f;
+import com.tencent.mm.loader.f.a.g;
 import com.tencent.mm.plugin.finder.api.d.a;
-import com.tencent.mm.plugin.finder.cgi.o;
+import com.tencent.mm.plugin.finder.cgi.p;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/upload/action/FollowActionMgr;", "", "()V", "actionQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/plugin/finder/upload/action/FollowActionTask;", "feedMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/upload/action/FollowAction;", "queue", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "tryTask", "Ljava/lang/Runnable;", "doFollow", "", "finderUser", "opType", "", "feedId", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "isPrivate", "", "enterType", "doPost", "action", "isFollow", "isWaiting", "removeFollowCache", "removeUnuseAction", "tryNext", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/upload/action/FollowActionMgr;", "", "()V", "actionQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/plugin/finder/upload/action/FollowActionTask;", "feedMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/upload/action/FollowAction;", "queue", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "tryTask", "Ljava/lang/Runnable;", "doFollow", "", "finderUser", "opType", "", "feedId", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "isPrivate", "", "enterType", "participantFinderUsername", "liveReportObj", "Lcom/tencent/mm/protocal/protobuf/FinderLiveReportBaseInfo;", "doPost", "action", "isFollow", "onlyCheckFinderFollow", "ignoreOneTimeFlag", "isWaiting", "removeFollowCache", "removeUnuseAction", "tryNext", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
 {
-  private static final i ABZ;
-  public static final a ACa;
-  private static final String TAG = "Finder.FollowActionMgr";
-  private final ConcurrentHashMap<String, h> ABA;
-  private final ConcurrentLinkedQueue<e> ABz;
-  private com.tencent.mm.loader.g.d<j> Azm;
-  private final Runnable Azn;
+  public static final a Gde;
+  private static final i Gdf;
+  private static final String TAG;
+  private com.tencent.mm.loader.f.d<j> Gag;
+  private final Runnable Gai;
+  private final ConcurrentLinkedQueue<e> Gap;
+  private final ConcurrentHashMap<String, h> GcI;
   
   static
   {
-    AppMethodBeat.i(276532);
-    ACa = new a((byte)0);
+    AppMethodBeat.i(343421);
+    Gde = new a((byte)0);
     TAG = "Finder.FollowActionMgr";
-    ABZ = new i();
-    AppMethodBeat.o(276532);
+    Gdf = new i();
+    AppMethodBeat.o(343421);
   }
   
   public i()
   {
-    AppMethodBeat.i(276530);
-    this.Azm = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new a(100), new g(1, (byte)0), 1, "finder_action_follow_post_quene"));
-    this.ABz = new ConcurrentLinkedQueue();
-    this.ABA = new ConcurrentHashMap();
-    this.Azn = ((Runnable)new c(this));
-    AppMethodBeat.o(276530);
+    AppMethodBeat.i(343338);
+    this.Gag = new com.tencent.mm.loader.f.d((com.tencent.mm.loader.f.a.d)new f((com.tencent.mm.loader.f.a.c)new a(100), new g(1, (byte)0), 1, "finder_action_follow_post_quene"));
+    this.Gap = new ConcurrentLinkedQueue();
+    this.GcI = new ConcurrentHashMap();
+    this.Gai = new i..ExternalSyntheticLambda0(this);
+    AppMethodBeat.o(343338);
   }
   
   private final void a(final e parame)
   {
-    AppMethodBeat.i(276528);
-    this.Azm.a((com.tencent.mm.loader.g.c)new j(parame), (com.tencent.mm.loader.g.f)new b(this, parame));
-    AppMethodBeat.o(276528);
+    AppMethodBeat.i(343377);
+    this.Gag.a((com.tencent.mm.loader.f.c)new j(parame), (com.tencent.mm.loader.f.e)new b(this, parame));
+    AppMethodBeat.o(343377);
+  }
+  
+  private static final void a(i parami)
+  {
+    AppMethodBeat.i(343387);
+    s.u(parami, "this$0");
+    parami.fdz();
+    AppMethodBeat.o(343387);
+  }
+  
+  public final boolean St(String paramString)
+  {
+    AppMethodBeat.i(343437);
+    if ((paramString == null) || (s.p(paramString, "")))
+    {
+      AppMethodBeat.o(343437);
+      return false;
+    }
+    Object localObject1 = com.tencent.mm.plugin.finder.api.d.AwY;
+    boolean bool = d.a.St(paramString);
+    localObject1 = (h)this.GcI.get(paramString);
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      int i = ((h)localObject1).opType;
+      localObject2 = p.AyV;
+      if ((i == p.dVd()) && (((h)localObject1).Gdb)) {
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      Object localObject3;
+      if (BuildInfo.DEBUG)
+      {
+        localObject2 = TAG;
+        localObject3 = new StringBuilder("isWaiting test ").append(paramString).append(" optype:");
+        localObject1 = (h)this.GcI.get(paramString);
+        if (localObject1 != null) {
+          break label197;
+        }
+      }
+      label197:
+      for (localObject1 = null;; localObject1 = Integer.valueOf(((h)localObject1).opType))
+      {
+        localObject1 = ((StringBuilder)localObject3).append(localObject1).append(" waitingFlag:");
+        localObject3 = com.tencent.mm.plugin.finder.api.d.AwY;
+        Log.i((String)localObject2, d.a.St(paramString) + " result:" + bool);
+        AppMethodBeat.o(343437);
+        return bool;
+        bool = false;
+        break;
+      }
+    }
   }
   
   public final void a(h paramh)
   {
-    AppMethodBeat.i(276522);
-    p.k(paramh, "action");
-    h localh = (h)this.ABA.get(paramh.fGm);
-    if (localh != null)
-    {
-      String str;
-      StringBuilder localStringBuilder;
+    AppMethodBeat.i(343443);
+    s.u(paramh, "action");
+    h localh = (h)this.GcI.get(paramh.hLI);
+    String str;
+    StringBuilder localStringBuilder;
+    if (localh != null) {
       if (BuildInfo.DEBUG)
       {
         str = TAG;
         localStringBuilder = new StringBuilder("removeFollowCache ").append(paramh).append(" result ");
-        if (paramh.ABL < localh.ABL) {
+        if (paramh.Gae < localh.Gae) {
           break label124;
         }
       }
-      label124:
-      for (boolean bool = true;; bool = false)
-      {
-        Log.i(str, bool);
-        if (paramh.ABL >= localh.ABL) {
-          this.ABA.remove(paramh.fGm);
-        }
-        AppMethodBeat.o(276522);
-        return;
+    }
+    label124:
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i(str, bool);
+      if (paramh.Gae >= localh.Gae) {
+        this.GcI.remove(paramh.hLI);
       }
-    }
-    AppMethodBeat.o(276522);
-  }
-  
-  public final boolean aAN(String paramString)
-  {
-    AppMethodBeat.i(276520);
-    if ((paramString == null) || (p.h(paramString, "")))
-    {
-      AppMethodBeat.o(276520);
-      return false;
-    }
-    Object localObject1 = com.tencent.mm.plugin.finder.api.d.wZQ;
-    boolean bool = d.a.aAN(paramString);
-    localObject1 = (h)this.ABA.get(paramString);
-    Object localObject2;
-    Object localObject3;
-    if (localObject1 != null)
-    {
-      int i = ((h)localObject1).opType;
-      localObject2 = o.xaR;
-      if ((i == o.dnA()) && (!((h)localObject1).ABX))
-      {
-        bool = true;
-        if (BuildInfo.DEBUG)
-        {
-          localObject2 = TAG;
-          localObject3 = new StringBuilder("isFollow test ").append(paramString).append(" optype:");
-          localObject1 = (h)this.ABA.get(paramString);
-          if (localObject1 == null) {
-            break label208;
-          }
-        }
-      }
-    }
-    label208:
-    for (localObject1 = Integer.valueOf(((h)localObject1).opType);; localObject1 = null)
-    {
-      localObject1 = ((StringBuilder)localObject3).append(localObject1).append(" followFlag:");
-      localObject3 = com.tencent.mm.plugin.finder.api.d.wZQ;
-      Log.i((String)localObject2, d.a.aAN(paramString) + " result:" + bool);
-      AppMethodBeat.o(276520);
-      return bool;
-      bool = false;
-      break;
-      break;
+      AppMethodBeat.o(343443);
+      return;
     }
   }
   
-  public final boolean aAO(String paramString)
+  public final void fdz()
   {
-    AppMethodBeat.i(276521);
-    if ((paramString == null) || (p.h(paramString, "")))
-    {
-      AppMethodBeat.o(276521);
-      return false;
-    }
-    Object localObject1 = com.tencent.mm.plugin.finder.api.d.wZQ;
-    boolean bool = d.a.aAO(paramString);
-    localObject1 = (h)this.ABA.get(paramString);
-    Object localObject2;
-    Object localObject3;
-    if (localObject1 != null)
-    {
-      int i = ((h)localObject1).opType;
-      localObject2 = o.xaR;
-      if ((i == o.dnA()) && (((h)localObject1).ABX))
-      {
-        bool = true;
-        if (BuildInfo.DEBUG)
-        {
-          localObject2 = TAG;
-          localObject3 = new StringBuilder("isWaiting test ").append(paramString).append(" optype:");
-          localObject1 = (h)this.ABA.get(paramString);
-          if (localObject1 == null) {
-            break label208;
-          }
-        }
-      }
-    }
-    label208:
-    for (localObject1 = Integer.valueOf(((h)localObject1).opType);; localObject1 = null)
-    {
-      localObject1 = ((StringBuilder)localObject3).append(localObject1).append(" waitingFlag:");
-      localObject3 = com.tencent.mm.plugin.finder.api.d.wZQ;
-      Log.i((String)localObject2, d.a.aAO(paramString) + " result:" + bool);
-      AppMethodBeat.o(276521);
-      return bool;
-      bool = false;
-      break;
-      break;
-    }
-  }
-  
-  public final void ebY()
-  {
-    AppMethodBeat.i(276523);
+    AppMethodBeat.i(343448);
     e locale;
     boolean bool;
     do
     {
-      if (this.ABz.size() <= 0)
+      if (this.Gap.size() <= 0)
       {
-        AppMethodBeat.o(276523);
+        AppMethodBeat.o(343448);
         return;
       }
-      locale = (e)this.ABz.poll();
+      locale = (e)this.Gap.poll();
       bool = locale.isValid();
-      Log.i(TAG, "tryNext isValid:" + bool + " action:" + locale + " size:" + this.ABz.size());
+      Log.i(TAG, "tryNext isValid:" + bool + " action:" + locale + " size:" + this.Gap.size());
     } while (!bool);
-    p.j(locale, "action");
+    s.s(locale, "action");
     a(locale);
-    AppMethodBeat.o(276523);
+    AppMethodBeat.o(343448);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/upload/action/FollowActionMgr$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/plugin/finder/upload/action/FollowActionMgr;", "getINSTANCE", "()Lcom/tencent/mm/plugin/finder/upload/action/FollowActionMgr;", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/upload/action/FollowActionMgr$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/plugin/finder/upload/action/FollowActionMgr;", "getINSTANCE", "()Lcom/tencent/mm/plugin/finder/upload/action/FollowActionMgr;", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/upload/action/FollowActionMgr$doPost$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/finder/upload/action/FollowActionTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/upload/action/FollowActionMgr$doPost$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/plugin/finder/upload/action/FollowActionTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements com.tencent.mm.loader.g.f<j>
+    implements com.tencent.mm.loader.f.e<j>
   {
-    b(e parame) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(i parami) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(291608);
-      this.ACb.ebY();
-      AppMethodBeat.o(291608);
-    }
+    b(i parami, e parame) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.upload.action.i
  * JD-Core Version:    0.7.0.1
  */

@@ -2,31 +2,31 @@ package com.tencent.mm.ui.chatting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
 import java.util.List;
 
 final class AppAttachDownloadUI$13
-  implements q.f
+  implements u.g
 {
   AppAttachDownloadUI$13(AppAttachDownloadUI paramAppAttachDownloadUI, List paramList1, List paramList2) {}
   
-  public final void onCreateMMMenu(o paramo)
+  public final void onCreateMMMenu(s params)
   {
-    AppMethodBeat.i(278310);
-    if (!Util.isNullOrNil(this.cWz)) {
-      paramo.setHeaderTitle(this.cWz);
+    AppMethodBeat.i(253847);
+    if (!Util.isNullOrNil(this.eSG)) {
+      params.setHeaderTitle(this.eSG);
     }
     int i = 0;
-    while (i < this.KEx.size())
+    while (i < this.adPu.size())
     {
-      paramo.d(((Integer)this.KDR.get(i)).intValue(), (CharSequence)this.KEx.get(i));
+      params.c(((Integer)this.adPv.get(i)).intValue(), (CharSequence)this.adPu.get(i));
       i += 1;
     }
-    if (!Util.isNullOrNil(this.Wiv)) {
-      paramo.d(-1, this.Wiv);
+    if (!Util.isNullOrNil(this.adPw)) {
+      params.c(-1, this.adPw);
     }
-    AppMethodBeat.o(278310);
+    AppMethodBeat.o(253847);
   }
 }
 

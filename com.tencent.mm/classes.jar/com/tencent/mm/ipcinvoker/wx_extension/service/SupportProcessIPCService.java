@@ -11,9 +11,9 @@ public class SupportProcessIPCService
   
   static
   {
-    AppMethodBeat.i(205365);
+    AppMethodBeat.i(235722);
     PROCESS_NAME = MMApplicationContext.getPackageName() + ":support";
-    AppMethodBeat.o(205365);
+    AppMethodBeat.o(235722);
   }
   
   public final String getProcessName()

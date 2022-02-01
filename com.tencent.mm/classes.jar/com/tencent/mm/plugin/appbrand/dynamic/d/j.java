@@ -21,7 +21,7 @@ public final class j
     parama = paramJSONObject.optJSONArray("dataArray");
     if (parama == null)
     {
-      parama1.bt(i(false, "dataArray is null"));
+      parama1.cN(h(false, "dataArray is null"));
       AppMethodBeat.o(121331);
       return;
     }
@@ -35,7 +35,7 @@ public final class j
           int j = paramJSONObject.optInt("id");
           int k = paramJSONObject.optInt("key");
           int m = paramJSONObject.optInt("value");
-          h.IzE.idkeyStat(j, k, m, false);
+          h.OAn.idkeyStat(j, k, m, false);
           i += 1;
         }
         catch (Exception paramJSONObject)
@@ -47,13 +47,13 @@ public final class j
         }
       }
     }
-    parama1.bt(i(true, ""));
+    parama1.cN(h(true, ""));
     AppMethodBeat.o(121331);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.j
  * JD-Core Version:    0.7.0.1
  */

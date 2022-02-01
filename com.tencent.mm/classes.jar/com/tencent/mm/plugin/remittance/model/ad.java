@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.utils.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
@@ -11,41 +10,31 @@ import org.json.JSONObject;
 public final class ad
   extends m
 {
-  public b EAY;
-  public String EBK;
-  public String EBM;
-  public b EIf;
-  public String Imj;
-  
-  public ad(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, String paramString5)
+  public ad(String paramString1, String paramString2)
   {
-    this(paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, "", paramString5);
+    AppMethodBeat.i(67880);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("receiver_user_name", paramString1);
+    localHashMap.put("transfer_qrcode_id", paramString2);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(67880);
   }
   
-  public ad(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, String paramString5, String paramString6)
+  public ad(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(275216);
-    this.Imj = null;
-    this.EBM = "";
-    this.EBK = "";
-    this.Imj = paramString3;
+    AppMethodBeat.i(67881);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("trans_id", paramString2);
-    localHashMap.put("transaction_id", paramString1);
-    localHashMap.put("op", paramString3);
-    localHashMap.put("username", paramString4);
-    localHashMap.put("invalid_time", String.valueOf(paramInt2));
-    localHashMap.put("total_fee", String.valueOf(paramInt1));
-    localHashMap.put("left_button_continue", paramString5);
-    localHashMap.put("group_username", paramString6);
-    Log.i("Micromsg.NetSceneTenpayRemittanceQuery", "trans_id=" + paramString2 + ";transaction_id=" + paramString1 + ";total_fee=" + paramInt1);
+    localHashMap.put("receiver_user_name", paramString1);
+    localHashMap.put("transfer_qrcode_id", paramString2);
+    localHashMap.put("rcvr_ticket", paramString3);
+    localHashMap.put("receiver_openid", paramString4);
     setRequestData(localHashMap);
-    AppMethodBeat.o(275216);
+    AppMethodBeat.o(67881);
   }
   
   public final int getFuncId()
   {
-    return 1691;
+    return 1535;
   }
   
   public final int getTenpayCgicmd()
@@ -55,37 +44,24 @@ public final class ad
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/transferoperation";
+    return "/cgi-bin/mmpay-bin/transfersendcancelf2f";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(67884);
-    Log.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
+    AppMethodBeat.i(67882);
+    Log.d("MicroMsg.NetSenceTenPayBase", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
-      AppMethodBeat.o(67884);
+      AppMethodBeat.o(67882);
       return;
     }
-    paramString = paramJSONObject.optJSONObject("real_name_info");
-    if (paramString != null) {
-      this.EBM = paramString.optString("guide_flag", "0");
-    }
-    if (paramJSONObject.has("intercept_win")) {
-      this.EAY = b.cg(paramJSONObject.optJSONObject("intercept_win"));
-    }
-    if (paramJSONObject.has("intercept_win_after")) {
-      this.EIf = b.cg(paramJSONObject.optJSONObject("intercept_win_after"));
-    }
-    if (paramJSONObject.has("left_button_continue")) {
-      this.EBK = paramJSONObject.optString("left_button_continue");
-    }
-    AppMethodBeat.o(67884);
+    AppMethodBeat.o(67882);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.ad
  * JD-Core Version:    0.7.0.1
  */

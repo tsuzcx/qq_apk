@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.hld.a;
 
 public abstract interface c
 {
-  public abstract void Up(int paramInt);
+  public abstract void K(int paramInt, Object paramObject);
+  
+  public abstract void Yl(int paramInt);
   
   public abstract void a(g paramg);
   
-  public abstract void aLs(String paramString);
+  public abstract void aIj(String paramString);
   
   public abstract void b(g paramg);
   
   public abstract void c(g paramg);
   
   public abstract void d(g paramg);
-  
-  public abstract void q(int paramInt, Object paramObject);
 }
 
 

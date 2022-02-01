@@ -10,7 +10,7 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfoWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaCodecRetryInfoWrapper> CREATOR;
-  List<MediaCodecProxyUtils.MediaCodecRetryInfo> jun;
+  List<MediaCodecProxyUtils.MediaCodecRetryInfo> lXE;
   
   static
   {
@@ -22,7 +22,7 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfoWrapper
   protected MediaCodecProxyUtils$MediaCodecRetryInfoWrapper(Parcel paramParcel)
   {
     AppMethodBeat.i(155807);
-    this.jun = paramParcel.createTypedArrayList(MediaCodecProxyUtils.MediaCodecRetryInfo.CREATOR);
+    this.lXE = paramParcel.createTypedArrayList(MediaCodecProxyUtils.MediaCodecRetryInfo.CREATOR);
     AppMethodBeat.o(155807);
   }
   
@@ -34,13 +34,13 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfoWrapper
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(155808);
-    paramParcel.writeTypedList(this.jun);
+    paramParcel.writeTypedList(this.lXE);
     AppMethodBeat.o(155808);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.MediaCodecProxyUtils.MediaCodecRetryInfoWrapper
  * JD-Core Version:    0.7.0.1
  */

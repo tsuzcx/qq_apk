@@ -27,7 +27,7 @@ final class zzzh
     AppMethodBeat.i(40350);
     try
     {
-      Class localClass = Class.forName("com.google.b.an");
+      Class localClass = Class.forName("com.google.d.ar");
       AppMethodBeat.o(40350);
       return localClass;
     }
@@ -57,7 +57,7 @@ final class zzzh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzh
  * JD-Core Version:    0.7.0.1
  */

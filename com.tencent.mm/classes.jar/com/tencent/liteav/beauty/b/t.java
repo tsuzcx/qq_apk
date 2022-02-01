@@ -43,14 +43,14 @@ public class t
   
   public void a(l paraml, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(231910);
+    AppMethodBeat.i(229836);
     paraml = m.a(paraml, paramBoolean1, paramBoolean2);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
     FloatBuffer localFloatBuffer = localByteBuffer.asFloatBuffer();
     localFloatBuffer.put(paraml);
     localFloatBuffer.flip();
     this.r = localByteBuffer;
-    AppMethodBeat.o(231910);
+    AppMethodBeat.o(229836);
   }
   
   public boolean b()
@@ -99,7 +99,7 @@ public class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.t
  * JD-Core Version:    0.7.0.1
  */

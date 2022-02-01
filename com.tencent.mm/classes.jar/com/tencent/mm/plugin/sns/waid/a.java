@@ -8,51 +8,51 @@ import java.util.ArrayList;
 
 public final class a
 {
-  ArrayList<Runnable> Lvm;
-  HandlerThread Lvn;
-  Handler Lvo;
-  private Runnable Lvp;
+  Handler Qjm;
+  HandlerThread Qjn;
+  ArrayList<Runnable> RYN;
+  private Runnable RYO;
   private final String TAG;
   
   public a()
   {
-    AppMethodBeat.i(220890);
+    AppMethodBeat.i(306353);
     this.TAG = "InitTaskMgr";
-    this.Lvm = new ArrayList();
-    this.Lvp = new Runnable()
+    this.RYN = new ArrayList();
+    this.RYO = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(262573);
+        AppMethodBeat.i(306347);
         try
         {
           long l1 = System.currentTimeMillis();
-          com.tencent.mm.plugin.sns.ad.a.a.fJG();
+          com.tencent.mm.plugin.sns.ad.a.a.gZA();
           long l2 = System.currentTimeMillis();
           Log.i("InitTaskMgr", "DeviceIdInitTask run, timeCost=" + (l2 - l1));
-          AppMethodBeat.o(262573);
+          AppMethodBeat.o(306347);
           return;
         }
         catch (Exception localException)
         {
           Log.e("InitTaskMgr", "mDeviceIdInitTask exp=" + localException.toString());
-          AppMethodBeat.o(262573);
+          AppMethodBeat.o(306347);
         }
       }
     };
-    this.Lvm.add(this.Lvp);
+    this.RYN.add(this.RYO);
     try
     {
-      this.Lvn = new HandlerThread("waidproviderInitTask");
-      this.Lvn.start();
-      this.Lvo = new Handler(this.Lvn.getLooper());
-      AppMethodBeat.o(220890);
+      this.Qjn = new HandlerThread("waidproviderInitTask");
+      this.Qjn.start();
+      this.Qjm = new Handler(this.Qjn.getLooper());
+      AppMethodBeat.o(306353);
       return;
     }
     catch (Exception localException)
     {
       Log.e("InitTaskMgr", "initWorkThread exp=" + localException.toString());
-      AppMethodBeat.o(220890);
+      AppMethodBeat.o(306353);
     }
   }
 }

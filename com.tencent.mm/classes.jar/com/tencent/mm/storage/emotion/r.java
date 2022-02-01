@@ -2,34 +2,18 @@ package com.tencent.mm.storage.emotion;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.dk;
+import com.tencent.mm.autogen.b.dv;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class r
-  extends dk
+  extends dv
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(105127);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[2];
-    localMAutoDBInfo.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "reqType";
-    localMAutoDBInfo.colsMap.put("reqType", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" reqType TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "reqType";
-    localMAutoDBInfo.columns[1] = "cache";
-    localMAutoDBInfo.colsMap.put("cache", "BLOB default '' ");
-    localStringBuilder.append(" cache BLOB default '' ");
-    localMAutoDBInfo.columns[2] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = dv.aJm();
     AppMethodBeat.o(105127);
   }
   
@@ -58,7 +42,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.r
  * JD-Core Version:    0.7.0.1
  */

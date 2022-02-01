@@ -1,129 +1,135 @@
 package com.tencent.mm.plugin.finder.feed.component;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.service.j;
-import com.tencent.mm.plugin.findersdk.a.aj;
-import com.tencent.mm.protocal.protobuf.aqu;
-import com.tencent.mm.protocal.protobuf.bfa;
-import com.tencent.mm.ui.base.w.b;
-import kotlin.g.a.a;
-import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.d;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.g;
+import com.tencent.mm.plugin.finder.feed.jumper.k;
+import com.tencent.mm.plugin.finder.feed.jumper.l;
+import com.tencent.mm.plugin.finder.feed.jumper.r;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.protocal.protobuf.FinderJumpInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/component/StickyFeedComponent;", "", "()V", "MMFinder_ModSticky_Err_Private_NotAllow_Sticky", "", "getMMFinder_ModSticky_Err_Private_NotAllow_Sticky", "()I", "MMFinder_ModSticky_Err_Sticky_Num_Limit", "getMMFinder_ModSticky_Err_Sticky_Num_Limit", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModProfileStickySetting;", "getCallback", "()Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "requesting", "", "getRequesting", "()Z", "setRequesting", "(Z)V", "succCallback", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "req", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "ret", "", "getSuccCallback", "()Lkotlin/jvm/functions/Function2;", "setSuccCallback", "(Lkotlin/jvm/functions/Function2;)V", "tipDialog", "Landroid/app/Dialog;", "getTipDialog", "()Landroid/app/Dialog;", "setTipDialog", "(Landroid/app/Dialog;)V", "addStickyMenuItem", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "context", "Landroid/content/Context;", "CANCEL_STICKY_ID", "STICKY_ID", "ifSticky", "makeFeedSticky", "feedId", "", "sticky", "nonceId", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/component/FeedAdCommonJumperObserver;", "Lcom/tencent/mm/plugin/finder/feed/component/FinderBaseAdFeedJumperUIC$FeedJumperObserver;", "()V", "onBindView", "", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "jumpView", "Landroid/view/View;", "infoEx", "Lcom/tencent/mm/plugin/finder/feed/jumper/FinderJumpInfoEx;", "source", "", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
+  extends f.b
 {
-  Dialog tipDialog;
-  final int xFh;
-  final int xFi;
-  private final aj<bfa> xFj;
-  m<? super bfa, ? super aqu, x> xFk;
-  boolean xFl;
+  public static final a BbX;
   
-  public b()
+  static
   {
-    AppMethodBeat.i(291018);
-    this.xFh = -4051;
-    this.xFi = -4053;
-    this.xFj = ((aj)new a(this));
-    AppMethodBeat.o(291018);
+    AppMethodBeat.i(364063);
+    BbX = new a((byte)0);
+    AppMethodBeat.o(364063);
   }
   
-  public final void a(final Context paramContext, long paramLong, boolean paramBoolean, String paramString, m<? super bfa, ? super aqu, x> paramm)
+  public final void a(BaseFinderFeed paramBaseFinderFeed, com.tencent.mm.view.recyclerview.j paramj, View paramView, k paramk, String paramString)
   {
-    int i = 1;
-    AppMethodBeat.i(291017);
-    p.k(paramContext, "context");
-    p.k(paramString, "nonceId");
-    p.k(paramm, "succCallback");
-    this.xFk = paramm;
-    this.xFl = true;
-    d.a(500L, (a)new b(this, paramContext));
-    paramContext = (j)h.ae(j.class);
-    if (paramBoolean) {
-      i = 0;
-    }
-    paramContext.a(paramLong, i, paramString, this.xFj);
-    AppMethodBeat.o(291017);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/component/StickyFeedComponent$callback$1", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModProfileStickySetting;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
-  public static final class a
-    implements aj<bfa>
-  {
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onViewCustomize"})
-    static final class a
-      implements w.b
+    AppMethodBeat.i(364085);
+    s.u(paramBaseFinderFeed, "feed");
+    s.u(paramj, "holder");
+    s.u(paramView, "jumpView");
+    s.u(paramk, "infoEx");
+    s.u(paramString, "source");
+    FinderJumpInfo localFinderJumpInfo = paramk.hVf;
+    Log.i("Finder.FeedAdCommonJumperObserver", "[onBindView] hashCode:" + hashCode() + " position: " + paramj.getPosition() + " feedId=" + d.hF(this.feedId) + " jumpType=" + localFinderJumpInfo.jumpinfo_type + " title=" + localFinderJumpInfo.recommend_reason + '|' + localFinderJumpInfo.wording + " icon_url=" + localFinderJumpInfo.icon_url + " ext_info=" + localFinderJumpInfo.ext_info + ' ');
+    WeImageView localWeImageView = (WeImageView)paramView.findViewById(e.e.finder_feed_ad_icon);
+    TextView localTextView = (TextView)paramView.findViewById(e.e.finder_feed_ad_title);
+    localWeImageView.clearColorFilter();
+    localWeImageView.setLayerPaint(null);
+    localWeImageView.setIconColor(0);
+    paramBaseFinderFeed = paramk.Bea;
+    label276:
+    Object localObject;
+    if (paramBaseFinderFeed == null)
     {
-      public static final a xFn;
-      
-      static
+      paramBaseFinderFeed = null;
+      if (paramBaseFinderFeed == null)
       {
-        AppMethodBeat.i(282048);
-        xFn = new a();
-        AppMethodBeat.o(282048);
+        paramBaseFinderFeed = r.Bej;
+        paramBaseFinderFeed = new com.tencent.mm.plugin.finder.feed.jumper.j();
+        paramBaseFinderFeed.iconUrl = localFinderJumpInfo.icon_url;
       }
-      
-      public final void eu(View paramView)
+      switch (localFinderJumpInfo.business_type)
       {
-        AppMethodBeat.i(282047);
-        if (paramView != null)
-        {
-          paramView = (TextView)paramView.findViewById(b.f.toast_text);
-          if (paramView != null)
-          {
-            paramView.setTextSize(1, 14.0F);
-            AppMethodBeat.o(282047);
-            return;
-          }
+      default: 
+        localObject = ah.aiuX;
+        s.s(localWeImageView, "iconView");
+        r.a(paramBaseFinderFeed, localWeImageView, paramj);
+        paramBaseFinderFeed = r.Bej;
+        paramBaseFinderFeed = paramj.context;
+        s.s(paramBaseFinderFeed, "holder.context");
+        localTextView.setText((CharSequence)r.a(paramBaseFinderFeed, localFinderJumpInfo));
+        paramBaseFinderFeed = localTextView.getText();
+        if ((paramBaseFinderFeed != null) && (paramBaseFinderFeed.length() != 0)) {
+          break;
         }
-        AppMethodBeat.o(282047);
       }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label472;
+      }
+      paramView.setVisibility(8);
+      Log.w("Finder.FeedAdCommonJumperObserver", "title is null.");
+      AppMethodBeat.o(364085);
+      return;
+      localObject = r.Bej;
+      s.s(localWeImageView, "iconView");
+      r.a(paramBaseFinderFeed, localWeImageView, paramj);
+      if ((paramBaseFinderFeed instanceof l)) {
+        localObject = r.Bej;
+      }
+      for (paramBaseFinderFeed = (CharSequence)r.a(paramj, (l)paramBaseFinderFeed);; paramBaseFinderFeed = paramBaseFinderFeed.title)
+      {
+        localTextView.setText(paramBaseFinderFeed);
+        paramBaseFinderFeed = ah.aiuX;
+        break;
+      }
+      paramBaseFinderFeed.BdY = e.d.icons_filled_tencent_video;
+      paramBaseFinderFeed.BdZ = 0;
+      break label276;
+      paramBaseFinderFeed.BdY = e.g.icons_filled_sticker;
+      paramBaseFinderFeed.BdZ = e.b.Yellow;
+      break label276;
+    }
+    label472:
+    paramView.setVisibility(0);
+    if (s.p(paramString, "comment")) {
+      localTextView.setTextColor(localTextView.getContext().getResources().getColor(e.b.Link_100));
+    }
+    for (;;)
+    {
+      paramBaseFinderFeed = z.FrZ;
+      paramBaseFinderFeed = paramj.context;
+      s.s(paramBaseFinderFeed, "holder.context");
+      z.a(paramBaseFinderFeed, this.feedId, "universal_jumpinfo", paramk);
+      AppMethodBeat.o(364085);
+      return;
+      localTextView.setTextColor(Color.parseColor("#DEE9FF"));
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements a<x>
-  {
-    b(b paramb, Context paramContext)
-    {
-      super();
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
-    static final class a
-      implements DialogInterface.OnCancelListener
-    {
-      public static final a xFo;
-      
-      static
-      {
-        AppMethodBeat.i(286917);
-        xFo = new a();
-        AppMethodBeat.o(286917);
-      }
-      
-      public final void onCancel(DialogInterface paramDialogInterface) {}
-    }
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/component/FeedAdCommonJumperObserver$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.component.b
  * JD-Core Version:    0.7.0.1
  */

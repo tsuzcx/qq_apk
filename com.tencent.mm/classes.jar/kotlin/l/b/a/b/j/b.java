@@ -1,213 +1,165 @@
 package kotlin.l.b.a.b.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Collections;
-import kotlin.l.b.a.b.b.a.g.a;
+import kotlin.a.p;
+import kotlin.g.a.m;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.a;
+import kotlin.l.b.a.b.b.aa;
 import kotlin.l.b.a.b.b.ah;
-import kotlin.l.b.a.b.b.ak;
-import kotlin.l.b.a.b.b.am;
-import kotlin.l.b.a.b.b.an;
-import kotlin.l.b.a.b.b.az;
+import kotlin.l.b.a.b.b.av;
 import kotlin.l.b.a.b.b.ba;
-import kotlin.l.b.a.b.b.c.ac;
-import kotlin.l.b.a.b.b.c.ad;
-import kotlin.l.b.a.b.b.c.ae;
-import kotlin.l.b.a.b.b.c.aj;
 import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.b.t;
-import kotlin.l.b.a.b.b.w;
-import kotlin.l.b.a.b.m.bh;
+import kotlin.l.b.a.b.b.l;
+import kotlin.l.b.a.b.m.a.e.a;
+import kotlin.l.b.a.b.m.a.g;
+import kotlin.l.b.a.b.m.a.g.a;
 
 public final class b
 {
-  public static ak a(kotlin.l.b.a.b.b.a parama, kotlin.l.b.a.b.m.ab paramab, kotlin.l.b.a.b.b.a.g paramg)
+  public static final b ajiF;
+  
+  static
   {
-    AppMethodBeat.i(59894);
-    if (parama == null) {
-      aDG(29);
-    }
-    if (paramg == null) {
-      aDG(30);
-    }
-    if (paramab == null)
+    AppMethodBeat.i(59881);
+    ajiF = new b();
+    AppMethodBeat.o(59881);
+  }
+  
+  private final boolean a(l paraml1, l paraml2, m<? super l, ? super l, Boolean> paramm, boolean paramBoolean)
+  {
+    AppMethodBeat.i(59880);
+    paraml1 = paraml1.knp();
+    paraml2 = paraml2.knp();
+    if (((paraml1 instanceof kotlin.l.b.a.b.b.b)) || ((paraml2 instanceof kotlin.l.b.a.b.b.b)))
     {
-      AppMethodBeat.o(59894);
-      return null;
+      paramBoolean = ((Boolean)paramm.invoke(paraml1, paraml2)).booleanValue();
+      AppMethodBeat.o(59880);
+      return paramBoolean;
     }
-    parama = new ad(parama, new kotlin.l.b.a.b.j.f.a.b(parama, paramab, null), paramg);
-    AppMethodBeat.o(59894);
-    return parama;
+    paramBoolean = a(paraml1, paraml2, paramBoolean);
+    AppMethodBeat.o(59880);
+    return paramBoolean;
   }
   
-  public static kotlin.l.b.a.b.b.c.ab a(ah paramah, kotlin.l.b.a.b.b.a.g paramg)
+  private static av d(a parama)
   {
-    AppMethodBeat.i(59888);
-    if (paramah == null) {
-      aDG(13);
-    }
-    if (paramg == null) {
-      aDG(14);
-    }
-    paramah = b(paramah, paramg);
-    AppMethodBeat.o(59888);
-    return paramah;
-  }
-  
-  public static kotlin.l.b.a.b.b.c.ab a(ah paramah, kotlin.l.b.a.b.b.a.g paramg, boolean paramBoolean, an paraman)
-  {
-    AppMethodBeat.i(59890);
-    if (paramah == null) {
-      aDG(17);
-    }
-    if (paramg == null) {
-      aDG(18);
-    }
-    if (paraman == null) {
-      aDG(19);
-    }
-    paramah = new kotlin.l.b.a.b.b.c.ab(paramah, paramg, paramah.iDO(), paramah.iDQ(), paramBoolean, false, false, kotlin.l.b.a.b.b.b.a.aaJQ, null, paraman);
-    AppMethodBeat.o(59890);
-    return paramah;
-  }
-  
-  public static ac a(ah paramah, kotlin.l.b.a.b.b.a.g paramg1, kotlin.l.b.a.b.b.a.g paramg2)
-  {
-    AppMethodBeat.i(59885);
-    if (paramah == null) {
-      aDG(0);
-    }
-    if (paramg1 == null) {
-      aDG(1);
-    }
-    if (paramg2 == null) {
-      aDG(2);
-    }
-    paramah = a(paramah, paramg1, paramg2, paramah.iDZ());
-    AppMethodBeat.o(59885);
-    return paramah;
-  }
-  
-  private static ac a(ah paramah, kotlin.l.b.a.b.b.a.g paramg1, kotlin.l.b.a.b.b.a.g paramg2, an paraman)
-  {
-    AppMethodBeat.i(59886);
-    if (paramah == null) {
-      aDG(3);
-    }
-    if (paramg1 == null) {
-      aDG(4);
-    }
-    if (paramg2 == null) {
-      aDG(5);
-    }
-    if (paraman == null) {
-      aDG(6);
-    }
-    paramah = a(paramah, paramg1, paramg2, true, paramah.iDQ(), paraman);
-    AppMethodBeat.o(59886);
-    return paramah;
-  }
-  
-  public static ac a(ah paramah, kotlin.l.b.a.b.b.a.g paramg1, kotlin.l.b.a.b.b.a.g paramg2, boolean paramBoolean, ba paramba, an paraman)
-  {
-    AppMethodBeat.i(59887);
-    if (paramah == null) {
-      aDG(7);
-    }
-    if (paramg1 == null) {
-      aDG(8);
-    }
-    if (paramg2 == null) {
-      aDG(9);
-    }
-    if (paramba == null) {
-      aDG(10);
-    }
-    if (paraman == null) {
-      aDG(11);
-    }
-    paramg1 = new ac(paramah, paramg1, paramah.iDO(), paramba, paramBoolean, false, false, kotlin.l.b.a.b.b.b.a.aaJQ, null, paraman);
-    paramg1.a(ac.a(paramg1, paramah.iFN(), paramg2));
-    AppMethodBeat.o(59887);
-    return paramg1;
-  }
-  
-  private static kotlin.l.b.a.b.b.c.ab b(ah paramah, kotlin.l.b.a.b.b.a.g paramg)
-  {
-    AppMethodBeat.i(59889);
-    if (paramah == null) {
-      aDG(15);
-    }
-    if (paramg == null) {
-      aDG(16);
-    }
-    paramah = a(paramah, paramg, true, paramah.iDZ());
-    AppMethodBeat.o(59889);
-    return paramah;
-  }
-  
-  public static boolean g(t paramt)
-  {
-    AppMethodBeat.i(59893);
-    if (paramt == null) {
-      aDG(28);
-    }
-    if ((paramt.iEN() == kotlin.l.b.a.b.b.b.a.aaJT) && (c.y(paramt.iDJ())))
+    AppMethodBeat.i(59879);
+    for (;;)
     {
-      AppMethodBeat.o(59893);
+      if ((!(parama instanceof kotlin.l.b.a.b.b.b)) || (((kotlin.l.b.a.b.b.b)parama).koh() != kotlin.l.b.a.b.b.b.a.aiGm))
+      {
+        parama = parama.knm();
+        AppMethodBeat.o(59879);
+        return parama;
+      }
+      parama = ((kotlin.l.b.a.b.b.b)parama).kof();
+      s.s(parama, "overriddenDescriptors");
+      parama = (kotlin.l.b.a.b.b.b)p.j((Iterable)parama);
+      if (parama == null)
+      {
+        AppMethodBeat.o(59879);
+        return null;
+      }
+      parama = (a)parama;
+    }
+  }
+  
+  public final boolean a(ba paramba1, ba paramba2, boolean paramBoolean, m<? super l, ? super l, Boolean> paramm)
+  {
+    AppMethodBeat.i(59878);
+    s.u(paramba1, "a");
+    s.u(paramba2, "b");
+    s.u(paramm, "equivalentCallables");
+    if (s.p(paramba1, paramba2))
+    {
+      AppMethodBeat.o(59878);
       return true;
     }
-    AppMethodBeat.o(59893);
+    if (s.p(paramba1.knp(), paramba2.knp()))
+    {
+      AppMethodBeat.o(59878);
+      return false;
+    }
+    if (!a((l)paramba1, (l)paramba2, paramm, paramBoolean))
+    {
+      AppMethodBeat.o(59878);
+      return false;
+    }
+    if (paramba1.getIndex() == paramba2.getIndex())
+    {
+      AppMethodBeat.o(59878);
+      return true;
+    }
+    AppMethodBeat.o(59878);
     return false;
   }
   
-  public static am w(e parame)
+  public final boolean a(l paraml1, l paraml2, boolean paramBoolean)
   {
-    AppMethodBeat.i(59891);
-    if (parame == null) {
-      aDG(22);
-    }
-    g.a locala = kotlin.l.b.a.b.b.a.g.aaLw;
-    parame = ae.a(parame, g.a.iGe(), c.abjX, kotlin.l.b.a.b.b.b.a.aaJT, parame.iDZ()).b(null, null, Collections.emptyList(), Collections.emptyList(), kotlin.l.b.a.b.j.d.a.G(parame).a(bh.abrp, parame.iET()), w.aaKi, az.aaKO);
-    if (parame == null) {
-      aDG(23);
-    }
-    AppMethodBeat.o(59891);
-    return parame;
-  }
-  
-  public static am x(e parame)
-  {
-    AppMethodBeat.i(59892);
-    if (parame == null) {
-      aDG(24);
-    }
-    Object localObject1 = kotlin.l.b.a.b.b.a.g.aaLw;
-    localObject1 = ae.a(parame, g.a.iGe(), c.abjY, kotlin.l.b.a.b.b.b.a.aaJT, parame.iDZ());
-    Object localObject2 = kotlin.l.b.a.b.b.a.g.aaLw;
-    localObject2 = new aj((kotlin.l.b.a.b.b.a)localObject1, null, 0, g.a.iGe(), kotlin.l.b.a.b.f.f.bHb("value"), kotlin.l.b.a.b.j.d.a.G(parame).iDD(), false, false, false, null, parame.iDZ());
-    parame = ((ae)localObject1).b(null, null, Collections.emptyList(), Collections.singletonList(localObject2), parame.iET(), w.aaKi, az.aaKO);
-    if (parame == null) {
-      aDG(25);
-    }
-    AppMethodBeat.o(59892);
-    return parame;
-  }
-  
-  public static final class a
-    extends kotlin.l.b.a.b.b.c.f
-  {
-    public a(e parame, an paraman)
+    AppMethodBeat.i(192198);
+    if (((paraml1 instanceof e)) && ((paraml2 instanceof e)))
     {
-      super(null, g.a.iGe(), true, kotlin.l.b.a.b.b.b.a.aaJQ, paraman);
-      AppMethodBeat.i(59883);
-      a(Collections.emptyList(), c.z(parame));
-      AppMethodBeat.o(59883);
+      paraml1 = (e)paraml1;
+      paraml2 = (e)paraml2;
+      paramBoolean = s.p(paraml1.kmZ(), paraml2.kmZ());
+      AppMethodBeat.o(192198);
+      return paramBoolean;
     }
+    if (((paraml1 instanceof ba)) && ((paraml2 instanceof ba)))
+    {
+      paramBoolean = a(this, (ba)paraml1, (ba)paraml2, paramBoolean);
+      AppMethodBeat.o(192198);
+      return paramBoolean;
+    }
+    if (((paraml1 instanceof a)) && ((paraml2 instanceof a)))
+    {
+      paraml1 = (a)paraml1;
+      paraml2 = (a)paraml2;
+      Object localObject = (g)g.a.ajra;
+      s.u(paraml1, "a");
+      s.u(paraml2, "b");
+      s.u(localObject, "kotlinTypeRefiner");
+      if (s.p(paraml1, paraml2))
+      {
+        AppMethodBeat.o(192198);
+        return true;
+      }
+      if ((s.p(paraml1.kok(), paraml2.kok())) && ((!(paraml1 instanceof aa)) || (!(paraml2 instanceof aa)) || (((aa)paraml1).kni() == ((aa)paraml2).kni())) && ((!s.p(paraml1.knp(), paraml2.knp())) || ((paramBoolean) && (s.p(d(paraml1), d(paraml2))))))
+      {
+        if ((d.m((l)paraml1)) || (d.m((l)paraml2)))
+        {
+          AppMethodBeat.o(192198);
+          return false;
+        }
+        if (a((l)paraml1, (l)paraml2, (m)b.a.ajiG, paramBoolean))
+        {
+          localObject = j.a((g)localObject, (e.a)new b.b(paramBoolean, paraml1, paraml2));
+          s.s(localObject, "a: CallableDescriptor,\n …= a && y == b }\n        }");
+          if ((((j)localObject).a(paraml1, paraml2, null, true).kzj() == j.a.a.ajjn) && (((j)localObject).a(paraml2, paraml1, null, true).kzj() == j.a.a.ajjn))
+          {
+            AppMethodBeat.o(192198);
+            return true;
+          }
+        }
+      }
+      AppMethodBeat.o(192198);
+      return false;
+    }
+    if (((paraml1 instanceof ah)) && ((paraml2 instanceof ah)))
+    {
+      paramBoolean = s.p(((ah)paraml1).koY(), ((ah)paraml2).koY());
+      AppMethodBeat.o(192198);
+      return paramBoolean;
+    }
+    paramBoolean = s.p(paraml1, paraml2);
+    AppMethodBeat.o(192198);
+    return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b
  * JD-Core Version:    0.7.0.1
  */

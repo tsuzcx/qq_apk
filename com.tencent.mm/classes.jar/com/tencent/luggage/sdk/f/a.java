@@ -1,89 +1,135 @@
 package com.tencent.luggage.sdk.f;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.concurrent.Callable;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/tasks/AppBrandBasePreFetchTask;", "T", "", "()V", "cost", "", "endTimeStampMs", "getEndTimeStampMs", "()J", "setEndTimeStampMs", "(J)V", "futureTask", "Ljava/util/concurrent/FutureTask;", "isUsed", "", "()Z", "setUsed", "(Z)V", "startTimeStampMs", "getStartTimeStampMs", "setStartTimeStampMs", "cancel", "", "getPreFetchResult", "timeoutMs", "", "(I)Ljava/lang/Object;", "initialed", "isDone", "key", "post", "preFetch", "()Ljava/lang/Object;", "Companion", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/sdk/tasks/AppBrandBasePreFetchTask;", "T", "", "()V", "cost", "", "endTimeStampMs", "getEndTimeStampMs", "()J", "setEndTimeStampMs", "(J)V", "futureTask", "Ljava/util/concurrent/FutureTask;", "isUsed", "", "()Z", "setUsed", "(Z)V", "startTimeStampMs", "getStartTimeStampMs", "setStartTimeStampMs", "cancel", "", "getPreFetchResult", "timeoutMs", "", "(I)Ljava/lang/Object;", "initialed", "isDone", "key", "post", "preFetch", "()Ljava/lang/Object;", "Companion", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a<T>
 {
-  public static final a cCZ = new a((byte)0);
-  protected FutureTask<T> cCU;
-  private long cCV;
-  private long cCW;
-  public boolean cCX;
-  private long cCY;
+  public static final a.a evx = new a.a((byte)0);
+  private long cost;
+  private long evA;
+  public boolean evB;
+  private FutureTask<T> evy;
+  private long evz;
   
-  protected final long St()
+  private static final Object b(a parama)
   {
-    return this.cCV;
+    s.u(parama, "this$0");
+    long l = System.currentTimeMillis();
+    Object localObject = parama.asK();
+    parama.cost = (System.currentTimeMillis() - l);
+    return localObject;
   }
   
-  protected final long Su()
+  protected final long asI()
   {
-    return this.cCW;
+    return this.evz;
   }
   
-  public abstract T Sv();
-  
-  public abstract int Sw();
-  
-  public final boolean Sx()
+  protected final long asJ()
   {
-    return ((a)this).cCU != null;
+    return this.evA;
   }
   
-  protected final void bc(long paramLong)
+  public abstract T asK();
+  
+  public abstract int asL();
+  
+  public final void asM()
   {
-    this.cCV = paramLong;
+    this.evy = new FutureTask(new a..ExternalSyntheticLambda0(this));
+    i locali = h.ahAA;
+    FutureTask localFutureTask2 = this.evy;
+    FutureTask localFutureTask1 = localFutureTask2;
+    if (localFutureTask2 == null)
+    {
+      s.bIx("futureTask");
+      localFutureTask1 = null;
+    }
+    locali.bm((Runnable)localFutureTask1);
   }
   
-  protected final void bd(long paramLong)
+  public final boolean asN()
   {
-    this.cCW = paramLong;
+    return this.evy != null;
   }
   
   public final void cancel()
   {
-    if (((a)this).cCU == null) {
-      throw ((Throwable)new IllegalStateException());
+    if (this.evy == null) {
+      throw new IllegalStateException();
     }
-    FutureTask localFutureTask = this.cCU;
-    if (localFutureTask == null) {
-      p.bGy("futureTask");
+    FutureTask localFutureTask2 = this.evy;
+    FutureTask localFutureTask1 = localFutureTask2;
+    if (localFutureTask2 == null)
+    {
+      s.bIx("futureTask");
+      localFutureTask1 = null;
     }
-    localFutureTask.cancel(false);
+    localFutureTask1.cancel(false);
   }
   
-  public T iU(int paramInt)
+  protected final void du(long paramLong)
   {
-    if (((a)this).cCU == null) {
-      throw ((Throwable)new IllegalStateException());
+    this.evz = paramLong;
+  }
+  
+  protected final void dv(long paramLong)
+  {
+    this.evA = paramLong;
+  }
+  
+  public final boolean isDone()
+  {
+    if (this.evy == null) {
+      throw new IllegalStateException();
     }
-    Object localObject1 = this.cCU;
-    if (localObject1 == null) {
-      p.bGy("futureTask");
+    FutureTask localFutureTask2 = this.evy;
+    FutureTask localFutureTask1 = localFutureTask2;
+    if (localFutureTask2 == null)
+    {
+      s.bIx("futureTask");
+      localFutureTask1 = null;
     }
-    boolean bool2 = ((FutureTask)localObject1).isDone();
-    Object localObject2 = null;
+    return localFutureTask1.isDone();
+  }
+  
+  public T mv(int paramInt)
+  {
+    Object localObject3 = null;
+    if (this.evy == null) {
+      throw new IllegalStateException();
+    }
+    Object localObject2 = this.evy;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      s.bIx("futureTask");
+      localObject1 = null;
+    }
+    boolean bool2 = localObject1.isDone();
     long l1 = 0L;
-    localObject1 = localObject2;
+    localObject1 = localObject3;
     try
     {
       long l2 = System.currentTimeMillis();
-      localObject1 = localObject2;
-      FutureTask localFutureTask = this.cCU;
+      localObject1 = localObject3;
+      FutureTask localFutureTask = this.evy;
+      localObject2 = localFutureTask;
       if (localFutureTask == null)
       {
-        localObject1 = localObject2;
-        p.bGy("futureTask");
+        localObject1 = localObject3;
+        s.bIx("futureTask");
+        localObject2 = null;
       }
-      localObject1 = localObject2;
-      localObject2 = localFutureTask.get(paramInt, TimeUnit.MILLISECONDS);
+      localObject1 = localObject3;
+      localObject2 = ((FutureTask)localObject2).get(paramInt, TimeUnit.MILLISECONDS);
       localObject1 = localObject2;
       long l3 = System.currentTimeMillis();
       l1 = l3 - l2;
@@ -93,7 +139,7 @@ public abstract class a<T>
     {
       for (;;)
       {
-        Log.e("Luggage.AppBrandBasePreFetchTask", "getPreFetchResult: " + localException.getMessage());
+        Log.e("Luggage.AppBrandBasePreFetchTask", s.X("getPreFetchResult: ", localException.getMessage()));
         continue;
         boolean bool1 = false;
       }
@@ -101,40 +147,19 @@ public abstract class a<T>
     if (localObject1 == null) {
       cancel();
     }
-    paramInt = Sw();
+    paramInt = asL();
     if (localObject1 != null)
     {
       bool1 = true;
-      Log.i("Luggage.AppBrandBasePreFetchTask", "getPreFetchResult: #%d task hit preFetch, isPreFetchSuccess = [%b], is done before invoke = [%b], cost = [%dms], wait = [%dms]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Long.valueOf(this.cCY), Long.valueOf(l1) });
-      this.cCX = true;
+      Log.i("Luggage.AppBrandBasePreFetchTask", "getPreFetchResult: #%d task hit preFetch, isPreFetchSuccess = [%b], is done before invoke = [%b], cost = [%dms], wait = [%dms]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Long.valueOf(this.cost), Long.valueOf(l1) });
+      this.evB = true;
       return localObject1;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/tasks/AppBrandBasePreFetchTask$Companion;", "", "()V", "DEFAULT_TIME_OUT", "", "TAG", "", "luggage-wechat-full-sdk_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "T", "call", "()Ljava/lang/Object;"})
-  static final class b<V>
-    implements Callable<T>
-  {
-    b(a parama) {}
-    
-    public final T call()
-    {
-      AppMethodBeat.i(246001);
-      long l1 = System.currentTimeMillis();
-      Object localObject = this.cDa.Sv();
-      long l2 = System.currentTimeMillis();
-      a.a(this.cDa, l2 - l1);
-      AppMethodBeat.o(246001);
-      return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.sdk.f.a
  * JD-Core Version:    0.7.0.1
  */

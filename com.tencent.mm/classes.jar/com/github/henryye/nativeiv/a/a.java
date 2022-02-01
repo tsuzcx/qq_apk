@@ -4,17 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a aKO;
+  private static a cEK;
   
   static
   {
     AppMethodBeat.i(127379);
-    aKO = new a()
+    cEK = new a()
     {
       public final void loadLibrary(String paramAnonymousString)
       {
         AppMethodBeat.i(127377);
-        System.loadLibrary(paramAnonymousString);
+        paramAnonymousString = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousString);
+        Object localObject = new Object();
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousString.aYi(), "com/github/henryye/nativeiv/delegate/LibraryLoadDelegate$1", "loadLibrary", "(Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+        System.loadLibrary((String)paramAnonymousString.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/github/henryye/nativeiv/delegate/LibraryLoadDelegate$1", "loadLibrary", "(Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
         AppMethodBeat.o(127377);
       }
     };
@@ -23,13 +27,13 @@ public final class a
   
   public static void a(a parama)
   {
-    aKO = parama;
+    cEK = parama;
   }
   
   public static void loadLibrary(String paramString)
   {
     AppMethodBeat.i(127378);
-    aKO.loadLibrary(paramString);
+    cEK.loadLibrary(paramString);
     AppMethodBeat.o(127378);
   }
   
@@ -40,7 +44,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.github.henryye.nativeiv.a.a
  * JD-Core Version:    0.7.0.1
  */

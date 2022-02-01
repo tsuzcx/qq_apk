@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.scanner;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import androidx.lifecycle.r;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import androidx.lifecycle.p;
+import androidx.lifecycle.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.modelimage.loader.a.c.a;
 import com.tencent.mm.plugin.comm.c.b;
 import com.tencent.mm.plugin.comm.c.d;
 import com.tencent.mm.plugin.comm.c.g;
 import com.tencent.mm.plugin.comm.c.h;
-import com.tencent.mm.pluginsdk.e.d;
-import com.tencent.mm.protocal.protobuf.cei;
+import com.tencent.mm.pluginsdk.e.e;
+import com.tencent.mm.protocal.protobuf.cuk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.base.q.b;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.b;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.widget.a.f;
 import com.tencent.mm.ui.widget.bottomsheet.ViewTitleWithAnimation;
 import com.tencent.mm.vending.g.d.b;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class ScanCodeSheetItemLogic
-  implements androidx.lifecycle.k
+  implements p
 {
-  private r<cei> EiN;
-  private cei IFM;
-  private final cei IFN;
-  private a IFO;
-  private b IFP;
-  private e IFQ;
-  private HashMap<String, cei> IFR;
-  private int IFS;
-  private boolean IFT;
+  private x<cuk> MnI;
+  private cuk OLV;
+  private final cuk OLW;
+  private a OLX;
+  private b OLY;
+  private e OLZ;
+  private HashMap<String, cuk> OMa;
+  private int OMb;
+  private boolean OMc;
   public Context mContext;
   
   public ScanCodeSheetItemLogic(Context paramContext)
   {
     AppMethodBeat.i(151569);
-    this.IFM = null;
-    this.IFN = new cei();
-    this.IFR = new HashMap();
-    this.EiN = new r();
-    this.IFT = false;
+    this.OLV = null;
+    this.OLW = new cuk();
+    this.OMa = new HashMap();
+    this.MnI = new x();
+    this.OMc = false;
     this.mContext = paramContext;
     AppMethodBeat.o(151569);
   }
@@ -61,37 +61,36 @@ public class ScanCodeSheetItemLogic
   public ScanCodeSheetItemLogic(Context paramContext, a parama)
   {
     AppMethodBeat.i(151570);
-    this.IFM = null;
-    this.IFN = new cei();
-    this.IFR = new HashMap();
-    this.EiN = new r();
-    this.IFT = false;
+    this.OLV = null;
+    this.OLW = new cuk();
+    this.OMa = new HashMap();
+    this.MnI = new x();
+    this.OMc = false;
     this.mContext = paramContext;
-    this.IFO = parama;
+    this.OLX = parama;
     AppMethodBeat.o(151570);
   }
   
   public ScanCodeSheetItemLogic(Context paramContext, b paramb)
   {
     AppMethodBeat.i(151571);
-    this.IFM = null;
-    this.IFN = new cei();
-    this.IFR = new HashMap();
-    this.EiN = new r();
-    this.IFT = false;
+    this.OLV = null;
+    this.OLW = new cuk();
+    this.OMa = new HashMap();
+    this.MnI = new x();
+    this.OMc = false;
     this.mContext = paramContext;
-    this.IFP = paramb;
+    this.OLY = paramb;
     AppMethodBeat.o(151571);
   }
   
-  @SuppressLint({"ResourceType"})
   private View a(View.OnClickListener paramOnClickListener, int paramInt, String paramString)
   {
     AppMethodBeat.i(151577);
     Object localObject = new ViewTitleWithAnimation(this.mContext);
     ((ViewTitleWithAnimation)localObject).startLoading();
     ((ViewTitleWithAnimation)localObject).setOnClickListener(paramOnClickListener);
-    if (k.bY(paramInt, paramString))
+    if (k.cK(paramInt, paramString))
     {
       ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.g.actionsheet_default_appbrand_icon);
       ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_app_brand_in_pic));
@@ -100,43 +99,43 @@ public class ScanCodeSheetItemLogic
     {
       AppMethodBeat.o(151577);
       return localObject;
-      if (k.bZ(paramInt, paramString))
+      if (k.cL(paramInt, paramString))
       {
         ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_brand_brand_in_pic));
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(null);
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.d.scan_default_avatar_icon);
       }
-      else if (k.ca(paramInt, paramString))
+      else if (k.cM(paramInt, paramString))
       {
         ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_personal_brand_in_pic));
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(null);
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.b.BW_BG_95);
       }
-      else if (k.cb(paramInt, paramString))
+      else if (k.cN(paramInt, paramString))
       {
         ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_group_chat_brand_in_pic));
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(null);
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.g.default_chatroom);
       }
-      else if (k.cc(paramInt, paramString))
+      else if (k.cO(paramInt, paramString))
       {
         ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_wechat_work_in_pic));
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(null);
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.b.BW_BG_95);
       }
-      else if (k.cf(paramInt, paramString))
+      else if (k.cR(paramInt, paramString))
       {
         ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_payment_in_pic));
-        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(au.o(this.mContext, c.g.icons_outlined_wallet, this.mContext.getResources().getColor(c.b.Brand_100)));
+        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(bb.m(this.mContext, c.g.icons_outlined_wallet, this.mContext.getResources().getColor(c.b.Brand_100)));
       }
-      else if (k.ce(paramInt, paramString))
+      else if (k.cQ(paramInt, paramString))
       {
         ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_reward_in_pic));
-        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(au.o(this.mContext, c.g.icon_scan_code_reward, this.mContext.getResources().getColor(c.b.Yellow)));
+        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(bb.m(this.mContext, c.g.icon_scan_code_reward, this.mContext.getResources().getColor(c.b.Yellow)));
       }
       else
       {
-        if (!k.ch(paramInt, paramString)) {
+        if (!k.cT(paramInt, paramString)) {
           break;
         }
         ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_finder_finder_in_pic));
@@ -145,7 +144,7 @@ public class ScanCodeSheetItemLogic
       }
     }
     paramString = this.mContext.getString(c.h.scan_pic_qr_code);
-    if (!e.d.apt(paramInt)) {
+    if (!e.e.avx(paramInt)) {
       paramString = this.mContext.getString(c.h.scan_pic_bar_code);
     }
     localObject = new com.tencent.mm.ui.widget.bottomsheet.a(this.mContext);
@@ -157,138 +156,276 @@ public class ScanCodeSheetItemLogic
   
   private View a(View.OnClickListener paramOnClickListener, List<ImageQBarDataBean> paramList, ImageQBarDataBean paramImageQBarDataBean)
   {
-    AppMethodBeat.i(232042);
+    AppMethodBeat.i(315092);
     if ((paramList == null) || (paramList.isEmpty()))
     {
       Log.e("MicroMsg.ScanCodeSheetItemLogic", "createQRCodeMenuItemDefault return null,  list is null or empty");
-      AppMethodBeat.o(232042);
+      AppMethodBeat.o(315092);
       return null;
     }
     if (paramImageQBarDataBean != null)
     {
-      paramOnClickListener = a(paramOnClickListener, paramImageQBarDataBean.fys, paramImageQBarDataBean.IAH);
-      AppMethodBeat.o(232042);
+      paramOnClickListener = a(paramOnClickListener, paramImageQBarDataBean.hDb, paramImageQBarDataBean.OGQ);
+      AppMethodBeat.o(315092);
       return paramOnClickListener;
     }
     if (paramList.size() == 1)
     {
       paramList = (ImageQBarDataBean)paramList.get(0);
-      paramOnClickListener = a(paramOnClickListener, paramList.fys, paramList.IAH);
-      AppMethodBeat.o(232042);
+      paramOnClickListener = a(paramOnClickListener, paramList.hDb, paramList.OGQ);
+      AppMethodBeat.o(315092);
       return paramOnClickListener;
     }
-    paramList = hb(paramList);
+    paramList = kc(paramList);
     paramImageQBarDataBean = new com.tencent.mm.ui.widget.bottomsheet.a(this.mContext);
     paramImageQBarDataBean.setOnClickListener(paramOnClickListener);
     paramImageQBarDataBean.setTitle(paramList);
-    AppMethodBeat.o(232042);
+    AppMethodBeat.o(315092);
     return paramImageQBarDataBean;
   }
   
-  @SuppressLint({"ResourceType"})
+  private void a(int paramInt1, String paramString, int paramInt2, s params)
+  {
+    AppMethodBeat.i(315038);
+    if (k.cU(paramInt1, paramString))
+    {
+      params.aAV(paramInt2);
+      AppMethodBeat.o(315038);
+      return;
+    }
+    params.a(paramInt2, ahD(paramInt1), c.g.icons_outlined_qr_code);
+    AppMethodBeat.o(315038);
+  }
+  
+  private void a(int paramInt1, String paramString, f paramf, s params, int paramInt2)
+  {
+    AppMethodBeat.i(315034);
+    if ((this.OLV == null) || ((!Util.isEqual(this.OLV.aamI, paramString)) && (this.OLV != this.OLW)))
+    {
+      a(paramInt1, paramString, paramInt2, params);
+      AppMethodBeat.o(315034);
+      return;
+    }
+    b(paramInt1, paramString, paramf, params, paramInt2);
+    AppMethodBeat.o(315034);
+  }
+  
+  private void b(int paramInt1, String paramString, f paramf, s params, int paramInt2)
+  {
+    AppMethodBeat.i(315063);
+    if (gPo())
+    {
+      Log.e("MicroMsg.ScanCodeSheetItemLogic", "qrcode banned: %s, remove menu: %d", new Object[] { paramString, Integer.valueOf(paramInt2) });
+      params.removeItem(paramInt2);
+      AppMethodBeat.o(315063);
+      return;
+    }
+    if ((this.OLV.Idd != 0) || (Util.isNullOrNil(this.OLV.UserName)))
+    {
+      if ((k.cL(paramInt1, paramString)) || (k.cN(paramInt1, paramString)) || (k.cM(paramInt1, paramString)) || (k.cO(paramInt1, paramString)))
+      {
+        params.a(paramInt2, this.mContext.getString(c.h.scan_identify_qr_code), c.g.icons_outlined_qr_code, this.mContext.getResources().getColor(c.b.FG_0));
+        AppMethodBeat.o(315063);
+        return;
+      }
+      if (k.cK(paramInt1, paramString))
+      {
+        params.a(paramInt2, this.mContext.getString(c.h.scan_identify_we_app_code), c.g.icons_outlined_qr_code, this.mContext.getResources().getColor(c.b.FG_0));
+        AppMethodBeat.o(315063);
+        return;
+      }
+      if (k.cR(paramInt1, paramString))
+      {
+        params.a(paramInt2, this.mContext.getString(c.h.scan_identify_pay_code), c.g.icons_outlined_wechatpay, this.mContext.getResources().getColor(c.b.FG_0));
+        AppMethodBeat.o(315063);
+        return;
+      }
+      if (k.cQ(paramInt1, paramString))
+      {
+        params.a(paramInt2, this.mContext.getString(c.h.scan_identify_reward_code), c.g.icons_outlined_pay_reward_code, this.mContext.getResources().getColor(c.b.FG_0));
+        AppMethodBeat.o(315063);
+        return;
+      }
+      paramString = this.mContext.getString(c.h.scan_identify_qr_code);
+      if (!e.e.avx(paramInt1)) {
+        paramString = this.mContext.getString(c.h.scan_identify_dimens_code);
+      }
+      params.a(paramInt2, paramString, c.g.icons_outlined_qr_code, this.mContext.getResources().getColor(c.b.FG_0));
+      AppMethodBeat.o(315063);
+      return;
+    }
+    paramString = this.OLV.UserName;
+    Object localObject = new ScanCodeSheetItemLogic.5(this, paramInt2);
+    paramf.ageu = ((u.b)localObject);
+    paramf.aget = ((u.b)localObject);
+    if (this.OLV.aazR == 4)
+    {
+      params.b(paramInt2, paramString, this.mContext.getString(c.h.scan_app_brand_code), 0);
+      AppMethodBeat.o(315063);
+      return;
+    }
+    if (this.OLV.aazR == 3)
+    {
+      params.b(paramInt2, paramString, this.mContext.getString(c.h.scan_biz_brand_code), 0);
+      AppMethodBeat.o(315063);
+      return;
+    }
+    if (this.OLV.aazR == 1)
+    {
+      params.b(paramInt2, paramString, this.mContext.getString(c.h.scan_personal_code), 0);
+      AppMethodBeat.o(315063);
+      return;
+    }
+    if (this.OLV.aazR == 2)
+    {
+      params.b(paramInt2, paramString, this.mContext.getString(c.h.scan_group_code), this.mContext.getResources().getColor(c.b.FG_0));
+      AppMethodBeat.o(315063);
+      return;
+    }
+    if (this.OLV.aazR == 7)
+    {
+      paramf = new SpannableStringBuilder();
+      paramString = paramString + " ";
+      paramf.append(paramString);
+      localObject = "@" + this.OLV.aazW;
+      paramf.append((CharSequence)localObject);
+      paramf.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(c.b.Orange)), paramString.length(), paramString.length() + ((String)localObject).length(), 33);
+      params.b(paramInt2, paramf, this.mContext.getString(c.h.scan_wework_code), 0);
+      AppMethodBeat.o(315063);
+      return;
+    }
+    if (this.OLV.aazR == 6)
+    {
+      params.b(paramInt2, Util.safeFormatString(this.mContext.getString(c.h.scan_pay_to_someone), new Object[] { this.OLV.UserName }), this.mContext.getString(c.h.scan_pay_code), this.mContext.getResources().getColor(c.b.FG_0));
+      AppMethodBeat.o(315063);
+      return;
+    }
+    if (this.OLV.aazR == 5)
+    {
+      params.b(paramInt2, Util.safeFormatString(this.mContext.getString(c.h.scan_reward_to_someone), new Object[] { this.OLV.UserName }), this.mContext.getString(c.h.scan_reward_code), this.mContext.getResources().getColor(c.b.FG_0));
+      AppMethodBeat.o(315063);
+      return;
+    }
+    if (this.OLV.aazR == 9) {
+      params.b(paramInt2, paramString, this.mContext.getString(c.h.scan_finder_code), 0);
+    }
+    AppMethodBeat.o(315063);
+  }
+  
   private View e(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(151576);
+    if (gPo())
+    {
+      Log.e("MicroMsg.ScanCodeSheetItemLogic", "qrcode banned, remove menu");
+      AppMethodBeat.o(151576);
+      return null;
+    }
     ViewTitleWithAnimation localViewTitleWithAnimation = new ViewTitleWithAnimation(this.mContext);
     localViewTitleWithAnimation.hideLoading();
-    if ((this.IFM.CqV != 0) || (Util.isNullOrNil(this.IFM.UserName)))
+    if ((this.OLV.Idd != 0) || (Util.isNullOrNil(this.OLV.UserName)))
     {
-      localViewTitleWithAnimation.iad();
+      localViewTitleWithAnimation.jFk();
       localViewTitleWithAnimation.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(151576);
       return localViewTitleWithAnimation;
     }
-    localViewTitleWithAnimation.setTitle(this.IFM.UserName);
+    localViewTitleWithAnimation.setTitle(this.OLV.UserName);
     localViewTitleWithAnimation.setOnClickListener(paramOnClickListener);
     paramOnClickListener = new c.a();
-    paramOnClickListener.lRC = true;
+    paramOnClickListener.oKo = true;
     localViewTitleWithAnimation.getIconImageView().setBackground(null);
     localViewTitleWithAnimation.getIconImageView().setImageDrawable(null);
-    if (this.IFM.TlV == 4)
+    if (this.OLV.aazR == 4)
     {
       localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_app_brand_in_pic));
-      paramOnClickListener.lRP = c.g.actionsheet_default_appbrand_icon;
-      paramOnClickListener.kPz = true;
-      com.tencent.mm.ay.a.a.bms().a(this.IFM.TlW, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bmL());
+      paramOnClickListener.oKB = c.g.actionsheet_default_appbrand_icon;
+      paramOnClickListener.nrc = true;
+      com.tencent.mm.modelimage.loader.a.bKl().a(this.OLV.aazV, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bKx());
     }
     for (;;)
     {
       AppMethodBeat.o(151576);
       return localViewTitleWithAnimation;
-      if (this.IFM.TlV == 3)
+      if (this.OLV.aazR == 3)
       {
         localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_brand_brand_in_pic));
-        paramOnClickListener.lRP = c.d.scan_default_avatar_icon;
-        paramOnClickListener.kPz = true;
-        com.tencent.mm.ay.a.a.bms().a(this.IFM.TlW, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bmL());
+        paramOnClickListener.oKB = c.d.scan_default_avatar_icon;
+        paramOnClickListener.nrc = true;
+        com.tencent.mm.modelimage.loader.a.bKl().a(this.OLV.aazV, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bKx());
       }
-      else if (this.IFM.TlV == 1)
+      else if (this.OLV.aazR == 1)
       {
         localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_personal_brand_in_pic));
-        paramOnClickListener.lRP = c.b.BW_BG_95;
-        com.tencent.mm.ay.a.a.bms().a(this.IFM.TlW, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bmL());
+        paramOnClickListener.oKB = c.b.BW_BG_95;
+        com.tencent.mm.modelimage.loader.a.bKl().a(this.OLV.aazV, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bKx());
       }
-      else if (this.IFM.TlV == 2)
+      else if (this.OLV.aazR == 2)
       {
         localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_group_chat_brand_in_pic));
         localViewTitleWithAnimation.getIconImageView().setImageResource(c.g.default_chatroom);
       }
-      else if (this.IFM.TlV == 7)
+      else if (this.OLV.aazR == 7)
       {
         localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_wechat_work_in_pic));
         localViewTitleWithAnimation.getIconImageView().setImageDrawable(null);
-        if (!Util.isNullOrNil(this.IFM.TlX)) {
-          localViewTitleWithAnimation.setCompanyText(Util.safeFormatString("@%s", new Object[] { this.IFM.TlX }));
+        if (!Util.isNullOrNil(this.OLV.aazW)) {
+          localViewTitleWithAnimation.setCompanyText(Util.safeFormatString("@%s", new Object[] { this.OLV.aazW }));
         }
-        paramOnClickListener.lRP = c.b.BW_BG_95;
-        com.tencent.mm.ay.a.a.bms().a(this.IFM.TlW, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bmL());
+        paramOnClickListener.oKB = c.b.BW_BG_95;
+        com.tencent.mm.modelimage.loader.a.bKl().a(this.OLV.aazV, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bKx());
       }
-      else if (this.IFM.TlV == 6)
+      else if (this.OLV.aazR == 6)
       {
-        localViewTitleWithAnimation.setTitle(Util.safeFormatString(this.mContext.getString(c.h.scan_pay_to_someone), new Object[] { this.IFM.UserName }));
+        localViewTitleWithAnimation.setTitle(Util.safeFormatString(this.mContext.getString(c.h.scan_pay_to_someone), new Object[] { this.OLV.UserName }));
         localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_payment_in_pic));
-        localViewTitleWithAnimation.getIconImageView().setImageDrawable(au.o(this.mContext, c.g.icons_outlined_wallet, this.mContext.getResources().getColor(c.b.Brand)));
+        localViewTitleWithAnimation.getIconImageView().setImageDrawable(bb.m(this.mContext, c.g.icons_outlined_wallet, this.mContext.getResources().getColor(c.b.Brand)));
       }
-      else if (this.IFM.TlV == 5)
+      else if (this.OLV.aazR == 5)
       {
-        localViewTitleWithAnimation.setTitle(Util.safeFormatString(this.mContext.getString(c.h.scan_reward_to_someone), new Object[] { this.IFM.UserName }));
+        localViewTitleWithAnimation.setTitle(Util.safeFormatString(this.mContext.getString(c.h.scan_reward_to_someone), new Object[] { this.OLV.UserName }));
         localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_reward_in_pic));
-        localViewTitleWithAnimation.getIconImageView().setImageDrawable(au.o(this.mContext, c.g.icon_scan_code_reward, this.mContext.getResources().getColor(c.b.Yellow)));
+        localViewTitleWithAnimation.getIconImageView().setImageDrawable(bb.m(this.mContext, c.g.icon_scan_code_reward, this.mContext.getResources().getColor(c.b.Yellow)));
       }
-      else if (this.IFM.TlV == 9)
+      else if (this.OLV.aazR == 9)
       {
         localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_finder_finder_in_pic));
-        paramOnClickListener.lRP = c.d.scan_default_avatar_icon;
-        paramOnClickListener.kPz = true;
-        com.tencent.mm.ay.a.a.bms().a(this.IFM.TlW, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bmL());
+        paramOnClickListener.oKB = c.d.scan_default_avatar_icon;
+        paramOnClickListener.nrc = true;
+        com.tencent.mm.modelimage.loader.a.bKl().a(this.OLV.aazV, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bKx());
       }
       else
       {
-        localViewTitleWithAnimation.iad();
+        localViewTitleWithAnimation.jFk();
       }
     }
   }
   
-  public static String hb(List<ImageQBarDataBean> paramList)
+  private boolean gPo()
+  {
+    return (this.OLV != null) && ((this.OLV.aamo & 0x1) != 0);
+  }
+  
+  public static String kc(List<ImageQBarDataBean> paramList)
   {
     int n = 1;
-    AppMethodBeat.i(232030);
+    AppMethodBeat.i(315025);
     int m = 0;
     int j = 0;
     int k = 0;
     int i = 0;
     if (m < paramList.size())
     {
-      String str = ((ImageQBarDataBean)paramList.get(m)).IAH;
-      int i1 = ((ImageQBarDataBean)paramList.get(m)).fys;
-      if (k.bY(i1, str)) {
+      String str = ((ImageQBarDataBean)paramList.get(m)).OGQ;
+      int i1 = ((ImageQBarDataBean)paramList.get(m)).hDb;
+      if (k.cK(i1, str)) {
         j = 1;
       }
       for (;;)
       {
         m += 1;
         break;
-        if (!e.d.apt(i1)) {
+        if (!e.e.avx(i1)) {
           k = 1;
         } else {
           i = 1;
@@ -319,19 +456,18 @@ public class ScanCodeSheetItemLogic
           paramList.append("小程序码");
         }
         paramList = paramList.toString();
-        AppMethodBeat.o(232030);
+        AppMethodBeat.o(315025);
         return paramList;
       }
     }
   }
   
-  @SuppressLint({"ResourceType"})
   public final View a(View.OnClickListener paramOnClickListener, int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(151575);
-    this.IFS = paramInt2;
+    this.OMb = paramInt2;
     paramOnClickListener = new ScanCodeSheetItemLogic.6(this, paramInt2, paramOnClickListener);
-    if (this.IFM == null)
+    if (this.OLV == null)
     {
       paramOnClickListener = a(paramOnClickListener, paramInt1, paramString);
       AppMethodBeat.o(151575);
@@ -342,348 +478,186 @@ public class ScanCodeSheetItemLogic
     return paramOnClickListener;
   }
   
-  @SuppressLint({"ResourceType"})
   public final View a(View.OnClickListener paramOnClickListener, List<ImageQBarDataBean> paramList, ImageQBarDataBean paramImageQBarDataBean, int paramInt)
   {
-    AppMethodBeat.i(232041);
-    this.IFS = paramInt;
+    AppMethodBeat.i(315137);
+    this.OMb = paramInt;
     paramOnClickListener = new ScanCodeSheetItemLogic.7(this, paramInt, paramOnClickListener);
-    if (this.IFM != null)
+    if (this.OLV != null)
     {
       paramOnClickListener = e(paramOnClickListener);
-      AppMethodBeat.o(232041);
+      AppMethodBeat.o(315137);
       return paramOnClickListener;
     }
     paramOnClickListener = a(paramOnClickListener, paramList, paramImageQBarDataBean);
-    AppMethodBeat.o(232041);
+    AppMethodBeat.o(315137);
     return paramOnClickListener;
   }
   
-  public final void a(int paramInt, final String paramString, final a parama)
+  public final void a(int paramInt, e.a parama, final a parama1)
   {
-    AppMethodBeat.i(232031);
-    this.IFM = null;
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(315131);
+    this.OLV = null;
+    final String str = parama.OGM;
+    if (Util.isNullOrNil(str))
     {
-      AppMethodBeat.o(232031);
+      AppMethodBeat.o(315131);
       return;
     }
-    if (this.IFQ == null) {
-      this.IFQ = new e();
+    if (this.OLZ == null) {
+      this.OLZ = new e();
     }
-    if (k.ci(paramInt, paramString)) {
-      this.IFQ.bX(paramInt, paramString).a(new d.b() {});
+    if (k.cU(paramInt, str)) {
+      this.OLZ.a(paramInt, parama).a(new d.b() {});
     }
-    AppMethodBeat.o(232031);
+    AppMethodBeat.o(315131);
   }
   
-  public final void a(int paramInt, String paramString, com.tencent.mm.ui.widget.a.e parame, o paramo)
+  public final void a(ArrayList<ImageQBarDataBean> paramArrayList, ImageQBarDataBean paramImageQBarDataBean, f paramf, s params, int paramInt)
   {
-    AppMethodBeat.i(232039);
-    if ((this.IFM == null) || ((!Util.isEqual(this.IFM.SZL, paramString)) && (this.IFM != this.IFN)))
+    AppMethodBeat.i(315135);
+    if (paramArrayList.isEmpty())
     {
-      if (k.ci(paramInt, paramString))
+      AppMethodBeat.o(315135);
+      return;
+    }
+    if (paramArrayList.size() > 1)
+    {
+      if (paramImageQBarDataBean != null)
       {
-        paramString = new p(paramo.mContext, 3, 0);
-        paramString.HhK = true;
-        paramo.WkP.add(paramString);
-        AppMethodBeat.o(232039);
+        a(paramImageQBarDataBean.hDb, paramImageQBarDataBean.OGQ, paramf, params, paramInt);
+        AppMethodBeat.o(315135);
         return;
       }
-      paramo.b(3, adg(paramInt), c.g.icons_outlined_qr_code);
-      AppMethodBeat.o(232039);
+      params.a(paramInt, kc(paramArrayList), c.g.icons_outlined_qr_code);
+      AppMethodBeat.o(315135);
       return;
     }
-    if ((this.IFM.CqV != 0) || (Util.isNullOrNil(this.IFM.UserName)))
-    {
-      if ((k.bZ(paramInt, paramString)) || (k.cb(paramInt, paramString)) || (k.ca(paramInt, paramString)) || (k.cc(paramInt, paramString)))
-      {
-        paramo.a(3, this.mContext.getString(c.h.scan_identify_qr_code), c.g.icons_outlined_qr_code, this.mContext.getResources().getColor(c.b.FG_0));
-        AppMethodBeat.o(232039);
-        return;
-      }
-      if (k.bY(paramInt, paramString))
-      {
-        paramo.a(3, this.mContext.getString(c.h.scan_identify_we_app_code), c.g.icons_outlined_qr_code, this.mContext.getResources().getColor(c.b.FG_0));
-        AppMethodBeat.o(232039);
-        return;
-      }
-      if (k.cf(paramInt, paramString))
-      {
-        paramo.a(3, this.mContext.getString(c.h.scan_identify_pay_code), c.g.icons_outlined_wechatpay, this.mContext.getResources().getColor(c.b.FG_0));
-        AppMethodBeat.o(232039);
-        return;
-      }
-      if (k.ce(paramInt, paramString))
-      {
-        paramo.a(3, this.mContext.getString(c.h.scan_identify_reward_code), c.g.icons_outlined_pay_reward_code, this.mContext.getResources().getColor(c.b.FG_0));
-        AppMethodBeat.o(232039);
-        return;
-      }
-      paramString = this.mContext.getString(c.h.scan_identify_qr_code);
-      if (!e.d.apt(paramInt)) {
-        paramString = this.mContext.getString(c.h.scan_identify_dimens_code);
-      }
-      paramo.a(3, paramString, c.g.icons_outlined_qr_code, this.mContext.getResources().getColor(c.b.FG_0));
-      AppMethodBeat.o(232039);
-      return;
-    }
-    paramString = this.IFM.UserName;
-    Object localObject = new q.b()
-    {
-      @SuppressLint({"ResourceType"})
-      public final void a(ImageView paramAnonymousImageView, MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(198675);
-        if (paramAnonymousMenuItem.getItemId() == 7)
-        {
-          paramAnonymousImageView.setImageDrawable(au.o(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), c.g.icons_outlined_translate, ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this).getResources().getColor(c.b.FG_0)));
-          AppMethodBeat.o(198675);
-          return;
-        }
-        if (paramAnonymousMenuItem.getItemId() != this.IFY)
-        {
-          AppMethodBeat.o(198675);
-          return;
-        }
-        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this) == null)
-        {
-          AppMethodBeat.o(198675);
-          return;
-        }
-        paramAnonymousMenuItem = new c.a();
-        paramAnonymousMenuItem.lRC = true;
-        paramAnonymousImageView.setBackground(null);
-        paramAnonymousImageView.setImageDrawable(null);
-        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 4)
-        {
-          paramAnonymousMenuItem.lRP = c.g.actionsheet_default_appbrand_icon;
-          paramAnonymousMenuItem.kPz = true;
-          com.tencent.mm.ay.a.a.bms().a(ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlW, paramAnonymousImageView, paramAnonymousMenuItem.bmL());
-          AppMethodBeat.o(198675);
-          return;
-        }
-        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 3)
-        {
-          paramAnonymousMenuItem.lRP = c.g.default_avatar_round;
-          paramAnonymousMenuItem.kPz = true;
-          com.tencent.mm.ay.a.a.bms().a(ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlW, paramAnonymousImageView, paramAnonymousMenuItem.bmL());
-          AppMethodBeat.o(198675);
-          return;
-        }
-        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 1)
-        {
-          paramAnonymousMenuItem.kPz = true;
-          paramAnonymousMenuItem.lRW = com.tencent.mm.ci.a.fromDPToPix(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), 4);
-          paramAnonymousMenuItem.lRP = c.g.default_avatar;
-          com.tencent.mm.ay.a.a.bms().a(ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlW, paramAnonymousImageView, paramAnonymousMenuItem.bmL());
-          AppMethodBeat.o(198675);
-          return;
-        }
-        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 2)
-        {
-          paramAnonymousImageView.setImageDrawable(au.o(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), c.g.icons_outlined_group_detail, ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this).getResources().getColor(c.b.FG_0)));
-          AppMethodBeat.o(198675);
-          return;
-        }
-        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 7)
-        {
-          paramAnonymousMenuItem.kPz = true;
-          paramAnonymousMenuItem.lRW = com.tencent.mm.ci.a.fromDPToPix(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), 4);
-          paramAnonymousMenuItem.lRP = c.g.default_avatar;
-          com.tencent.mm.ay.a.a.bms().a(ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlW, paramAnonymousImageView, paramAnonymousMenuItem.bmL());
-          AppMethodBeat.o(198675);
-          return;
-        }
-        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 6)
-        {
-          paramAnonymousImageView.setImageDrawable(au.o(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), c.g.icons_outlined_wechatpay, ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this).getResources().getColor(c.b.FG_0)));
-          AppMethodBeat.o(198675);
-          return;
-        }
-        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 5)
-        {
-          paramAnonymousImageView.setImageDrawable(au.o(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), c.g.icons_outlined_pay_reward_code, ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this).getResources().getColor(c.b.FG_0)));
-          AppMethodBeat.o(198675);
-          return;
-        }
-        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 9)
-        {
-          paramAnonymousMenuItem.lRP = c.g.default_avatar_round;
-          paramAnonymousMenuItem.kPz = true;
-          com.tencent.mm.ay.a.a.bms().a(ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlW, paramAnonymousImageView, paramAnonymousMenuItem.bmL());
-        }
-        AppMethodBeat.o(198675);
-      }
-    };
-    parame.YmG = ((q.b)localObject);
-    parame.YmF = ((q.b)localObject);
-    if (this.IFM.TlV == 4)
-    {
-      paramo.b(3, paramString, this.mContext.getString(c.h.scan_app_brand_code), 0);
-      AppMethodBeat.o(232039);
-      return;
-    }
-    if (this.IFM.TlV == 3)
-    {
-      paramo.b(3, paramString, this.mContext.getString(c.h.scan_biz_brand_code), 0);
-      AppMethodBeat.o(232039);
-      return;
-    }
-    if (this.IFM.TlV == 1)
-    {
-      paramo.b(3, paramString, this.mContext.getString(c.h.scan_personal_code), 0);
-      AppMethodBeat.o(232039);
-      return;
-    }
-    if (this.IFM.TlV == 2)
-    {
-      paramo.b(3, paramString, this.mContext.getString(c.h.scan_group_code), this.mContext.getResources().getColor(c.b.FG_0));
-      AppMethodBeat.o(232039);
-      return;
-    }
-    if (this.IFM.TlV == 7)
-    {
-      parame = new SpannableStringBuilder();
-      paramString = paramString + " ";
-      parame.append(paramString);
-      localObject = "@" + this.IFM.TlX;
-      parame.append((CharSequence)localObject);
-      parame.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(c.b.Orange)), paramString.length(), paramString.length() + ((String)localObject).length(), 33);
-      paramo.b(3, parame, this.mContext.getString(c.h.scan_wework_code), 0);
-      AppMethodBeat.o(232039);
-      return;
-    }
-    if (this.IFM.TlV == 6)
-    {
-      paramo.b(3, Util.safeFormatString(this.mContext.getString(c.h.scan_pay_to_someone), new Object[] { this.IFM.UserName }), this.mContext.getString(c.h.scan_pay_code), this.mContext.getResources().getColor(c.b.FG_0));
-      AppMethodBeat.o(232039);
-      return;
-    }
-    if (this.IFM.TlV == 5)
-    {
-      paramo.b(3, Util.safeFormatString(this.mContext.getString(c.h.scan_reward_to_someone), new Object[] { this.IFM.UserName }), this.mContext.getString(c.h.scan_reward_code), this.mContext.getResources().getColor(c.b.FG_0));
-      AppMethodBeat.o(232039);
-      return;
-    }
-    if (this.IFM.TlV == 9) {
-      paramo.b(3, paramString, this.mContext.getString(c.h.scan_finder_code), 0);
-    }
-    AppMethodBeat.o(232039);
+    a(((ImageQBarDataBean)paramArrayList.get(0)).hDb, ((ImageQBarDataBean)paramArrayList.get(0)).OGQ, paramf, params, paramInt);
+    AppMethodBeat.o(315135);
   }
   
-  public final String adg(int paramInt)
+  public final String ahD(int paramInt)
   {
-    AppMethodBeat.i(232029);
+    AppMethodBeat.i(315130);
     String str = this.mContext.getString(c.h.scan_identify_qr_code);
-    if (!e.d.apt(paramInt)) {
+    if (!e.e.avx(paramInt)) {
       str = this.mContext.getString(c.h.scan_identify_dimens_code);
     }
-    AppMethodBeat.o(232029);
+    AppMethodBeat.o(315130);
     return str;
   }
   
-  public final void ck(int paramInt, final String paramString)
+  public final void b(int paramInt, e.a parama)
   {
-    AppMethodBeat.i(232032);
-    this.IFT = true;
-    this.IFM = null;
-    h.ZvG.bDh("MicroMsg.ScanCodeSheetItemLogic");
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(315132);
+    this.OMc = true;
+    this.OLV = null;
+    h.ahAA.bFQ("MicroMsg.ScanCodeSheetItemLogic");
+    final String str = parama.OGM;
+    if (Util.isNullOrNil(str))
     {
-      AppMethodBeat.o(232032);
+      AppMethodBeat.o(315132);
       return;
     }
-    if (this.IFQ == null) {
-      this.IFQ = new e();
+    if (this.OLZ == null) {
+      this.OLZ = new e();
     }
-    if (k.ci(paramInt, paramString))
+    if (k.cU(paramInt, str))
     {
       if (1000L > 0L)
       {
-        h.ZvG.bDh("MicroMsg.ScanCodeSheetItemLogic");
-        h.ZvG.a(new Runnable()
+        h.ahAA.bFQ("MicroMsg.ScanCodeSheetItemLogic");
+        h.ahAA.a(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(204110);
-            h.ZvG.bc(new Runnable()
+            AppMethodBeat.i(313293);
+            h.ahAA.bk(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(219884);
+                AppMethodBeat.i(313319);
                 if ((ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this) != null) && (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this) != ScanCodeSheetItemLogic.c(ScanCodeSheetItemLogic.this)))
                 {
-                  AppMethodBeat.o(219884);
+                  AppMethodBeat.o(313319);
                   return;
                 }
                 ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this, ScanCodeSheetItemLogic.c(ScanCodeSheetItemLogic.this));
                 ScanCodeSheetItemLogic.b(ScanCodeSheetItemLogic.this, ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this));
                 if (ScanCodeSheetItemLogic.e(ScanCodeSheetItemLogic.this) != null) {
-                  ScanCodeSheetItemLogic.e(ScanCodeSheetItemLogic.this).bPS();
+                  ScanCodeSheetItemLogic.e(ScanCodeSheetItemLogic.this).onFetchedCodeInfo();
                 }
                 if (ScanCodeSheetItemLogic.f(ScanCodeSheetItemLogic.this) != null)
                 {
                   ScanCodeSheetItemLogic.b localb = ScanCodeSheetItemLogic.f(ScanCodeSheetItemLogic.this);
-                  String str = ScanCodeSheetItemLogic.4.this.IFU;
+                  String str = ScanCodeSheetItemLogic.4.this.OMd;
                   ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this);
-                  localb.aAx(str);
+                  localb.auF(str);
                 }
-                AppMethodBeat.o(219884);
+                AppMethodBeat.o(313319);
               }
             });
-            AppMethodBeat.o(204110);
+            AppMethodBeat.o(313293);
           }
         }, 1000L, "MicroMsg.ScanCodeSheetItemLogic");
       }
-      this.IFQ.bX(paramInt, paramString).a(new d.b() {});
+      this.OLZ.a(paramInt, parama).a(new d.b() {});
     }
-    AppMethodBeat.o(232032);
+    AppMethodBeat.o(315132);
   }
   
-  public final void cl(int paramInt, final String paramString)
+  public final void c(int paramInt, e.a parama)
   {
-    AppMethodBeat.i(151573);
-    this.IFM = null;
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(315133);
+    this.OLV = null;
+    final String str = parama.OGM;
+    if (Util.isNullOrNil(str))
     {
-      AppMethodBeat.o(151573);
+      AppMethodBeat.o(315133);
       return;
     }
-    if (this.IFQ == null) {
-      this.IFQ = new e();
+    if (this.OLZ == null) {
+      this.OLZ = new e();
     }
-    if (k.ci(paramInt, paramString)) {
-      this.IFQ.bX(paramInt, paramString).a(new d.b() {});
+    if (k.cU(paramInt, str)) {
+      this.OLZ.a(paramInt, parama).a(new d.b() {});
     }
+    AppMethodBeat.o(315133);
+  }
+  
+  public final void cW(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(151573);
+    c(paramInt, new e.a(paramString));
     AppMethodBeat.o(151573);
   }
   
   public final void onDismiss()
   {
-    AppMethodBeat.i(232043);
-    h.ZvG.bDh("MicroMsg.ScanCodeSheetItemLogic");
-    this.IFM = null;
-    this.IFT = false;
-    AppMethodBeat.o(232043);
+    AppMethodBeat.i(315141);
+    h.ahAA.bFQ("MicroMsg.ScanCodeSheetItemLogic");
+    this.OLV = null;
+    this.OMc = false;
+    AppMethodBeat.o(315141);
   }
   
-  public final void r(int paramInt, byte[] paramArrayOfByte)
+  public final void s(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151574);
-    cei localcei = new cei();
+    cuk localcuk = new cuk();
     if ((paramInt == 0) && (!Util.isNullOrNil(paramArrayOfByte))) {}
     for (;;)
     {
       try
       {
-        localcei.parseFrom(paramArrayOfByte);
-        if ((Util.isNullOrNil(localcei.TlW)) && (Util.isNullOrNil(localcei.UserName))) {
-          localcei.CqV = -1;
+        localcuk.parseFrom(paramArrayOfByte);
+        if ((Util.isNullOrNil(localcuk.aazV)) && (Util.isNullOrNil(localcuk.UserName))) {
+          localcuk.Idd = -1;
         }
-        this.IFM = localcei;
-        if (this.IFO != null) {
-          this.IFO.bPS();
+        this.OLV = localcuk;
+        if (this.OLX != null) {
+          this.OLX.onFetchedCodeInfo();
         }
         AppMethodBeat.o(151574);
         return;
@@ -692,23 +666,23 @@ public class ScanCodeSheetItemLogic
       {
         Log.e("MicroMsg.ScanCodeSheetItemLogic", "parse exception: s%", new Object[] { paramArrayOfByte.getMessage() });
       }
-      localcei.CqV = -1;
+      localcuk.Idd = -1;
     }
   }
   
   public static abstract interface a
   {
-    public abstract void bPS();
+    public abstract void onFetchedCodeInfo();
   }
   
   public static abstract interface b
   {
-    public abstract void aAx(String paramString);
+    public abstract void auF(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic
  * JD-Core Version:    0.7.0.1
  */

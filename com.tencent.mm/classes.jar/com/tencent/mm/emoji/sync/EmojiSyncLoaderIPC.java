@@ -1,200 +1,142 @@
 package com.tencent.mm.emoji.sync;
 
 import android.os.Bundle;
-import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/sync/EmojiSyncLoaderIPC;", "Lcom/tencent/mm/emoji/sync/IEmojiSyncLoader;", "customType", "", "(I)V", "TAG", "", "callbackQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/emoji/sync/EmojiSyncLoader$LoadCallback;", "getCustomType", "()I", "isLoadEnd", "", "syncCount", "targetSyncCount", "waitingIndex", "checkSyncEmoji", "", "start", "destroy", "getSyncCount", "getTargetSyncCount", "getWaitingIndex", "hasMore", "init", "loadMore", "registerCallback", "callback", "unregisterCallback", "updateData", "data", "Lcom/tencent/mm/emoji/sync/EmojiSyncLoaderIPC$EmojiSyncData;", "Companion", "EmojiSyncData", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/sync/EmojiSyncLoaderIPC;", "Lcom/tencent/mm/emoji/sync/IEmojiSyncLoader;", "customType", "", "(I)V", "TAG", "", "callbackQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/emoji/sync/EmojiSyncLoader$LoadCallback;", "getCustomType", "()I", "isLoadEnd", "", "syncCount", "targetSyncCount", "waitingIndex", "checkSyncEmoji", "", "start", "destroy", "getSyncCount", "getTargetSyncCount", "getWaitingIndex", "hasMore", "init", "loadMore", "registerCallback", "callback", "unregisterCallback", "updateData", "data", "Lcom/tencent/mm/emoji/sync/EmojiSyncLoaderIPC$EmojiSyncData;", "Companion", "EmojiSyncData", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class EmojiSyncLoaderIPC
   implements j
 {
-  public static final EmojiSyncLoaderIPC.a jOx;
+  public static final EmojiSyncLoaderIPC.a mnr;
   private String TAG;
-  private final int jNY;
-  private int jOd;
-  private int jOe;
-  private int jOf;
-  private boolean jOg;
-  private final LinkedList<g.i> jOi;
+  private final int mmT;
+  private int mna;
+  private int mnb;
+  private int mnd;
+  private boolean mne;
+  private final LinkedList<g.i> mng;
   
   static
   {
-    AppMethodBeat.i(223137);
-    jOx = new EmojiSyncLoaderIPC.a((byte)0);
-    AppMethodBeat.o(223137);
+    AppMethodBeat.i(242582);
+    mnr = new EmojiSyncLoaderIPC.a((byte)0);
+    AppMethodBeat.o(242582);
   }
   
   public EmojiSyncLoaderIPC(int paramInt)
   {
-    AppMethodBeat.i(223136);
-    this.jNY = paramInt;
+    AppMethodBeat.i(242570);
+    this.mmT = paramInt;
     this.TAG = "MicroMsg.EmojiSyncLoaderIPC";
-    this.jOi = new LinkedList();
-    Object localObject;
-    if (this.jNY == 1) {
-      localObject = this.TAG;
-    }
-    for (this.TAG = ((String)localObject + "_capture");; this.TAG = ((String)localObject + "_custom"))
+    this.mng = new LinkedList();
+    if (this.mmT == 1) {}
+    for (this.TAG = s.X(this.TAG, "_capture");; this.TAG = s.X(this.TAG, "_custom"))
     {
-      localObject = new Bundle();
-      ((Bundle)localObject).putInt("custom_type", this.jNY);
-      com.tencent.mm.ipcinvoker.j.a(MMApplicationContext.getPackageName(), (Parcelable)localObject, k.class, (f)new f() {});
-      AppMethodBeat.o(223136);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("custom_type", this.mmT);
+      com.tencent.mm.ipcinvoker.j.a(MMApplicationContext.getPackageName(), (Parcelable)localBundle, k.class, new EmojiSyncLoaderIPC..ExternalSyntheticLambda0(this));
+      AppMethodBeat.o(242570);
       return;
-      localObject = this.TAG;
     }
   }
   
-  public final void a(EmojiSyncData paramEmojiSyncData)
+  private static final void a(EmojiSyncLoaderIPC paramEmojiSyncLoaderIPC, Bundle paramBundle)
   {
-    AppMethodBeat.i(223131);
-    String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("updateData: ");
-    if (paramEmojiSyncData != null) {}
-    for (Integer localInteger = Integer.valueOf(paramEmojiSyncData.jOe);; localInteger = null)
+    AppMethodBeat.i(242573);
+    s.u(paramEmojiSyncLoaderIPC, "this$0");
+    Log.i(paramEmojiSyncLoaderIPC.TAG, s.X("init data callback: ", paramBundle));
+    if (paramBundle == null) {}
+    for (paramBundle = null;; paramBundle = (EmojiSyncLoaderIPC.EmojiSyncData)paramBundle.getParcelable("data"))
     {
-      Log.i(str, localInteger);
+      paramEmojiSyncLoaderIPC.a(paramBundle);
+      AppMethodBeat.o(242573);
+      return;
+    }
+  }
+  
+  public final void a(EmojiSyncLoaderIPC.EmojiSyncData paramEmojiSyncData)
+  {
+    AppMethodBeat.i(242601);
+    String str = this.TAG;
+    if (paramEmojiSyncData == null) {}
+    for (Object localObject = null;; localObject = Integer.valueOf(paramEmojiSyncData.mnb))
+    {
+      Log.i(str, s.X("updateData: ", localObject));
       if (paramEmojiSyncData != null) {
         break;
       }
-      AppMethodBeat.o(223131);
+      AppMethodBeat.o(242601);
       return;
     }
-    this.jOd = paramEmojiSyncData.jOd;
-    this.jOe = paramEmojiSyncData.jOe;
-    this.jOf = paramEmojiSyncData.jOf;
-    this.jOg = paramEmojiSyncData.jOg;
+    this.mna = paramEmojiSyncData.mna;
+    this.mnb = paramEmojiSyncData.mnb;
+    this.mnd = paramEmojiSyncData.mnd;
+    this.mne = paramEmojiSyncData.mne;
     d.uiThread((a)new d(this));
-    AppMethodBeat.o(223131);
+    AppMethodBeat.o(242601);
   }
   
   public final void a(final g.i parami)
   {
-    AppMethodBeat.i(223122);
-    p.k(parami, "callback");
+    AppMethodBeat.i(242590);
+    s.u(parami, "callback");
     d.uiThread((a)new b(this, parami));
-    AppMethodBeat.o(223122);
+    AppMethodBeat.o(242590);
   }
   
-  public final void aDi()
+  public final void aWi()
   {
-    AppMethodBeat.i(223127);
+    AppMethodBeat.i(242595);
     Log.i(this.TAG, "loadMore: ");
     Bundle localBundle = new Bundle();
-    localBundle.putInt("custom_type", this.jNY);
+    localBundle.putInt("custom_type", this.mmT);
     com.tencent.mm.ipcinvoker.j.a(MMApplicationContext.getPackageName(), (Parcelable)localBundle, l.class);
-    AppMethodBeat.o(223127);
+    AppMethodBeat.o(242595);
   }
   
-  public final int aDj()
+  public final int aWj()
   {
-    return this.jOe;
+    return this.mnb;
   }
   
-  public final int aDk()
+  public final int aWk()
   {
-    return this.jOf;
+    return this.mnd;
   }
   
-  public final boolean aDl()
+  public final boolean aWl()
   {
-    return !this.jOg;
+    return !this.mne;
   }
   
   public final void b(final g.i parami)
   {
-    AppMethodBeat.i(223125);
-    p.k(parami, "callback");
+    AppMethodBeat.i(242594);
+    s.u(parami, "callback");
     d.uiThread((a)new c(this, parami));
-    AppMethodBeat.o(223125);
+    AppMethodBeat.o(242594);
   }
   
   public final void destroy() {}
   
-  public final void eD(boolean paramBoolean) {}
+  public final void fo(boolean paramBoolean) {}
   
   public final void init() {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/sync/EmojiSyncLoaderIPC$EmojiSyncData;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "isLoadEnd", "", "()Z", "setLoadEnd", "(Z)V", "panelType", "", "getPanelType", "()I", "setPanelType", "(I)V", "syncCount", "getSyncCount", "setSyncCount", "targetSyncCount", "getTargetSyncCount", "setTargetSyncCount", "waitingIndex", "getWaitingIndex", "setWaitingIndex", "describeContents", "writeToParcel", "", "flags", "CREATOR", "plugin-emojisdk_release"})
-  public static final class EmojiSyncData
-    implements Parcelable
-  {
-    public static final a CREATOR;
-    int jJL;
-    int jOd;
-    int jOe;
-    int jOf;
-    boolean jOg;
-    
-    static
-    {
-      AppMethodBeat.i(225908);
-      CREATOR = new a((byte)0);
-      AppMethodBeat.o(225908);
-    }
-    
-    public EmojiSyncData() {}
-    
-    public EmojiSyncData(Parcel paramParcel)
-    {
-      this();
-      AppMethodBeat.i(225906);
-      this.jJL = paramParcel.readInt();
-      this.jOd = paramParcel.readInt();
-      this.jOe = paramParcel.readInt();
-      this.jOf = paramParcel.readInt();
-      if (paramParcel.readByte() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.jOg = bool;
-        AppMethodBeat.o(225906);
-        return;
-      }
-    }
-    
-    public final int describeContents()
-    {
-      return 0;
-    }
-    
-    public final void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(225901);
-      p.k(paramParcel, "parcel");
-      paramParcel.writeInt(this.jJL);
-      paramParcel.writeInt(this.jOd);
-      paramParcel.writeInt(this.jOe);
-      paramParcel.writeInt(this.jOf);
-      if (this.jOg) {}
-      for (byte b = 1;; b = 0)
-      {
-        paramParcel.writeByte(b);
-        AppMethodBeat.o(225901);
-        return;
-      }
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/sync/EmojiSyncLoaderIPC$EmojiSyncData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/emoji/sync/EmojiSyncLoaderIPC$EmojiSyncData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/emoji/sync/EmojiSyncLoaderIPC$EmojiSyncData;", "plugin-emojisdk_release"})
-    public static final class a
-      implements Parcelable.Creator<EmojiSyncLoaderIPC.EmojiSyncData>
-    {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     b(EmojiSyncLoaderIPC paramEmojiSyncLoaderIPC, g.i parami)
     {
@@ -202,10 +144,10 @@ public final class EmojiSyncLoaderIPC
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     c(EmojiSyncLoaderIPC paramEmojiSyncLoaderIPC, g.i parami)
     {
@@ -213,10 +155,10 @@ public final class EmojiSyncLoaderIPC
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     d(EmojiSyncLoaderIPC paramEmojiSyncLoaderIPC)
     {
@@ -226,7 +168,7 @@ public final class EmojiSyncLoaderIPC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.emoji.sync.EmojiSyncLoaderIPC
  * JD-Core Version:    0.7.0.1
  */

@@ -14,19 +14,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.b.c;
 import com.tencent.mm.plugin.recordvideo.background.e;
 import com.tencent.mm.plugin.recordvideo.ui.editor.PhotoEditText;
-import com.tencent.mm.protocal.protobuf.ajc;
+import com.tencent.mm.protocal.protobuf.amh;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItemView;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BitmapItemView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "font", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "textItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItem;", "createBitmap", "Landroid/graphics/Bitmap;", "item", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "getBitmapEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "getEditorData", "getType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/EditItemType;", "initScale", "", "sx", "", "sy", "reshowText", "setText", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItemView;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BitmapItemView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "font", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "textItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItem;", "createBitmap", "Landroid/graphics/Bitmap;", "item", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "getBitmapEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "getEditorData", "getType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/EditItemType;", "initScale", "", "sx", "", "sy", "reshowText", "setText", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class s
   extends b
 {
-  private String IbE;
-  private r IcY;
+  private r NZu;
   private final String TAG;
+  private String mAD;
   
   public s(Context paramContext)
   {
@@ -34,44 +33,44 @@ public final class s
     AppMethodBeat.i(76171);
     this.TAG = "MicroMsg.TextItemView";
     setTextSize(getResources().getDimension(b.c.editor_text_item_text_size));
-    this.IbE = "";
+    this.mAD = "";
     AppMethodBeat.o(76171);
   }
   
   private Bitmap c(r paramr)
   {
-    AppMethodBeat.i(216487);
-    p.k(paramr, "item");
-    setSourceDataType(d.IbG);
+    AppMethodBeat.i(280298);
+    kotlin.g.b.s.u(paramr, "item");
+    setSourceDataType(d.NYd);
     Object localObject = getContext();
-    p.j(localObject, "context");
+    kotlin.g.b.s.s(localObject, "context");
     localObject = new PhotoEditText((Context)localObject);
-    int k = com.tencent.mm.ci.a.fromDPToPix(getContext(), 16);
-    int m = com.tencent.mm.ci.a.fromDPToPix(getContext(), 8);
+    int k = com.tencent.mm.cd.a.fromDPToPix(getContext(), 16);
+    int m = com.tencent.mm.cd.a.fromDPToPix(getContext(), 8);
     ((PhotoEditText)localObject).setPadding(k, m, k, m);
     ((PhotoEditText)localObject).setTextColor(paramr.textColor);
-    ((PhotoEditText)localObject).setTextBackground(paramr.IcW);
+    ((PhotoEditText)localObject).setTextBackground(paramr.NZt);
     ((PhotoEditText)localObject).setTextSize(0, getTextSize());
-    ((PhotoEditText)localObject).setText((CharSequence)String.valueOf(paramr.LV));
+    ((PhotoEditText)localObject).setText((CharSequence)String.valueOf(paramr.bba));
     ((PhotoEditText)localObject).setSingleLine(false);
     int i;
     label169:
     int j;
-    if (((CharSequence)paramr.IbE).length() > 0)
+    if (((CharSequence)paramr.mAD).length() > 0)
     {
       i = 1;
       if (i == 0) {
         break label427;
       }
-      if (!u.agG(paramr.IbE)) {
+      if (!y.ZC(paramr.mAD)) {
         break label416;
       }
-      ((PhotoEditText)localObject).setTypeface(Typeface.createFromFile(paramr.IbE));
-      if ((paramr.IcW == 0) && (paramr.textColor != -16777216)) {
-        com.tencent.mm.ae.d.g((TextView)localObject);
+      ((PhotoEditText)localObject).setTypeface(Typeface.createFromFile(paramr.mAD));
+      if ((paramr.NZt == 0) && (paramr.textColor != -16777216)) {
+        com.tencent.mm.ae.d.h((TextView)localObject);
       }
-      paramr = e.HGz;
-      i = e.fuV().width();
+      paramr = e.NDU;
+      i = e.gGL().width();
       if (i > 0) {
         ((PhotoEditText)localObject).setMaxWidth(i);
       }
@@ -79,24 +78,24 @@ public final class s
       if (((PhotoEditText)localObject).getMeasuredWidth() > 0)
       {
         i = ((PhotoEditText)localObject).getMeasuredWidth();
-        paramr = e.HGz;
-        if (i <= e.fuV().width()) {
+        paramr = e.NDU;
+        if (i <= e.gGL().width()) {
           break label441;
         }
       }
-      paramr = e.HGz;
-      i = e.fuV().width();
+      paramr = e.NDU;
+      i = e.gGL().width();
       label260:
       if (((PhotoEditText)localObject).getMeasuredHeight() > 0)
       {
         j = ((PhotoEditText)localObject).getMeasuredHeight();
-        paramr = e.HGz;
-        if (j <= e.fuV().height()) {
+        paramr = e.NDU;
+        if (j <= e.gGL().height()) {
           break label450;
         }
       }
-      paramr = e.HGz;
-      j = e.fuV().height();
+      paramr = e.NDU;
+      j = e.gGL().height();
       label299:
       if ((i > 0) && (j > 0)) {
         break label459;
@@ -116,8 +115,8 @@ public final class s
       localCanvas.translate(k, m);
       ((PhotoEditText)localObject).getLayout().draw(localCanvas);
       localCanvas.restore();
-      p.j(paramr, "bitmap");
-      AppMethodBeat.o(216487);
+      kotlin.g.b.s.s(paramr, "bitmap");
+      AppMethodBeat.o(280298);
       return paramr;
       i = 0;
       break;
@@ -132,117 +131,129 @@ public final class s
     }
   }
   
-  public final void ah(float paramFloat1, float paramFloat2)
+  public final void aM(float paramFloat1, float paramFloat2)
   {
+    int j = 1;
     AppMethodBeat.i(76167);
-    if ((paramFloat1 != 0.0F) && (paramFloat2 != 0.0F)) {
-      getTouchTracker().aHZ.setScale(paramFloat1, paramFloat2);
+    if (paramFloat1 == 0.0F)
+    {
+      i = 1;
+      if (i == 0) {
+        if (paramFloat2 != 0.0F) {
+          break label58;
+        }
+      }
     }
-    AppMethodBeat.o(76167);
+    label58:
+    for (int i = j;; i = 0)
+    {
+      if (i == 0) {
+        getTouchTracker().matrix.setScale(paramFloat1, paramFloat2);
+      }
+      AppMethodBeat.o(76167);
+      return;
+      i = 0;
+      break;
+    }
   }
   
   public final void b(r paramr)
   {
-    AppMethodBeat.i(216485);
-    p.k(paramr, "item");
+    AppMethodBeat.i(280341);
+    kotlin.g.b.s.u(paramr, "item");
     setText(paramr);
-    setViewMatrix(paramr.aHZ);
-    getTouchTracker().aHZ.set(paramr.aHZ);
-    setSourceDataType(d.IbG);
-    AppMethodBeat.o(216485);
-  }
-  
-  public final a cYy()
-  {
-    AppMethodBeat.i(216490);
-    a locala = super.cYy();
-    r localr = this.IcY;
-    if (localr != null)
-    {
-      Object localObject;
-      if (locala != null)
-      {
-        localObject = localr.Ibr;
-        p.k(localObject, "range");
-        locala.Ibr.ar(((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject).Ido.getTime(), ((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject).Idp.getTime());
-      }
-      if (locala != null) {
-        locala.objectId = localr.objectId;
-      }
-      if ((locala instanceof r))
-      {
-        localr = (r)locala;
-        localObject = this.IbE;
-        p.k(localObject, "<set-?>");
-        localr.IbE = ((String)localObject);
-      }
-    }
-    AppMethodBeat.o(216490);
-    return locala;
+    setViewMatrix(paramr.matrix);
+    getTouchTracker().matrix.set(paramr.matrix);
+    setSourceDataType(d.NYd);
+    AppMethodBeat.o(280341);
   }
   
   public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c d(r paramr)
   {
-    AppMethodBeat.i(216492);
-    p.k(paramr, "item");
-    com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c localc = new com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c(c(paramr), paramr.aHZ);
-    ajc localajc = new ajc();
-    localajc.start = paramr.Ibr.Ido.getTime();
-    localajc.aYz = paramr.Ibr.Idp.getTime();
-    localc.IcZ = localajc;
-    AppMethodBeat.o(216492);
+    AppMethodBeat.i(280355);
+    kotlin.g.b.s.u(paramr, "item");
+    com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c localc = new com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c(c(paramr), paramr.matrix);
+    amh localamh = new amh();
+    localamh.start = paramr.NXR.NZL.getTime();
+    localamh.axI = paramr.NXR.NZM.getTime();
+    localc.NZv = localamh;
+    AppMethodBeat.o(280355);
     return localc;
+  }
+  
+  public final a dEP()
+  {
+    AppMethodBeat.i(280350);
+    a locala = super.dEP();
+    r localr = this.NZu;
+    if (localr != null)
+    {
+      if (locala != null)
+      {
+        com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d locald = localr.NXR;
+        kotlin.g.b.s.u(locald, "range");
+        locala.NXR.bb(locald.NZL.getTime(), locald.NZM.getTime());
+      }
+      if (locala != null) {
+        locala.objectId = localr.objectId;
+      }
+      if ((locala instanceof r)) {
+        ((r)locala).setFont(getFont());
+      }
+    }
+    AppMethodBeat.o(280350);
+    return locala;
   }
   
   public final a getEditorData()
   {
-    return (a)this.IcY;
+    return (a)this.NZu;
   }
   
   public final String getFont()
   {
-    return this.IbE;
+    return this.mAD;
   }
   
   public final com.tencent.mm.plugin.recordvideo.ui.editor.view.b getType()
   {
-    return com.tencent.mm.plugin.recordvideo.ui.editor.view.b.Ieo;
+    return com.tencent.mm.plugin.recordvideo.ui.editor.view.b.OaE;
   }
   
   public final void setFont(String paramString)
   {
-    AppMethodBeat.i(216480);
-    p.k(paramString, "<set-?>");
-    this.IbE = paramString;
-    AppMethodBeat.o(216480);
+    AppMethodBeat.i(280317);
+    kotlin.g.b.s.u(paramString, "<set-?>");
+    this.mAD = paramString;
+    AppMethodBeat.o(280317);
   }
   
   public final void setText(r paramr)
   {
-    AppMethodBeat.i(216482);
-    p.k(paramr, "item");
-    this.IcY = paramr;
+    AppMethodBeat.i(280330);
+    kotlin.g.b.s.u(paramr, "item");
+    this.NZu = paramr;
     Bitmap localBitmap = c(paramr);
-    setText(paramr.LV);
-    setSourceDataType(d.IbG);
+    setText(paramr.bba);
+    setSourceDataType(d.NYd);
     setColor(paramr.textColor);
-    setTextBg(paramr.IcW);
-    this.IbE = paramr.IbE;
+    setTextBg(paramr.NZt);
+    this.mAD = paramr.mAD;
     if (getBitmap() == null) {
-      getTouchTracker().aHZ.postTranslate(-getWidth() / 2.0F, -((getDisplayRect().top + getDisplayRect().bottom) / 2 - (getValidRect().top + getValidRect().bottom) / 2.0F + getHeight() / 2.0F));
+      getTouchTracker().matrix.postTranslate(-getWidth() / 2.0F, -((getDisplayRect().top + getDisplayRect().bottom) / 2 - (getValidRect().top + getValidRect().bottom) / 2.0F + getHeight() / 2.0F));
     }
     paramr = getBitmap();
     if (paramr != null) {
-      getTouchTracker().aHZ.preTranslate(paramr.getWidth() / 2.0F, paramr.getHeight() / 2.0F);
+      getTouchTracker().matrix.preTranslate(paramr.getWidth() / 2.0F, paramr.getHeight() / 2.0F);
     }
     setBitmap(localBitmap);
     postInvalidate();
-    AppMethodBeat.o(216482);
+    AppMethodBeat.o(280330);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.s
  * JD-Core Version:    0.7.0.1
  */

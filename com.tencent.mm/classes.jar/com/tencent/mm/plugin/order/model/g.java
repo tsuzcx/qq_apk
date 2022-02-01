@@ -1,75 +1,75 @@
 package com.tencent.mm.plugin.order.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.djf;
-import com.tencent.mm.protocal.protobuf.djg;
+import com.tencent.mm.protocal.protobuf.ebp;
+import com.tencent.mm.protocal.protobuf.ebq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.c.w;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class g
   extends w
 {
-  private i callback;
-  private d rr;
+  private h callback;
+  private c rr;
   
   public g(String paramString1, String paramString2)
   {
     AppMethodBeat.i(66686);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new djf();
-    ((d.a)localObject).lBV = new djg();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/paydeluserroll";
-    ((d.a)localObject).funcId = 389;
-    ((d.a)localObject).lBW = 187;
-    ((d.a)localObject).respCmdId = 1000000187;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (djf)d.b.b(this.rr.lBR);
-    ((djf)localObject).TQH = 1;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ebp();
+    ((c.a)localObject).otF = new ebq();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/paydeluserroll";
+    ((c.a)localObject).funcId = 389;
+    ((c.a)localObject).otG = 187;
+    ((c.a)localObject).respCmdId = 1000000187;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ebp)c.b.b(this.rr.otB);
+    ((ebp)localObject).abhg = 1;
     if (!Util.isNullOrNil(paramString1)) {
-      ((djf)localObject).GIh = paramString1;
+      ((ebp)localObject).MEX = paramString1;
     }
     if (!Util.isNullOrNil(paramString2)) {
-      ((djf)localObject).GIz = paramString2;
+      ((ebp)localObject).MFp = paramString2;
     }
-    ((djf)localObject).Sdp = k.gJe();
+    ((ebp)localObject).Zbi = k.iis();
     AppMethodBeat.o(66686);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
     AppMethodBeat.i(66688);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(66688);
     return i;
   }
   
-  public final int fmP()
-  {
-    AppMethodBeat.i(228295);
-    int i = ((djf)d.b.b(this.rr.lBR)).TQH;
-    AppMethodBeat.o(228295);
-    return i;
-  }
-  
-  public final String fmQ()
-  {
-    AppMethodBeat.i(228296);
-    String str = ((djf)d.b.b(this.rr.lBR)).GIh;
-    AppMethodBeat.o(228296);
-    return str;
-  }
-  
   public final int getType()
   {
     return 389;
+  }
+  
+  public final int gxD()
+  {
+    AppMethodBeat.i(262778);
+    int i = ((ebp)c.b.b(this.rr.otB)).abhg;
+    AppMethodBeat.o(262778);
+    return i;
+  }
+  
+  public final String gxE()
+  {
+    AppMethodBeat.i(262780);
+    String str = ((ebp)c.b.b(this.rr.otB)).MEX;
+    AppMethodBeat.o(262780);
+    return str;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)

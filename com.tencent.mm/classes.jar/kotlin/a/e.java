@@ -1,14 +1,31 @@
 package kotlin.a;
 
-import kotlin.l;
+import java.util.AbstractList;
+import java.util.List;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={"kotlin/collections/ArraysKt__ArraysJVMKt", "kotlin/collections/ArraysKt__ArraysKt", "kotlin/collections/ArraysKt___ArraysJvmKt", "kotlin/collections/ArraysKt___ArraysKt"}, iBN=1)
-public final class e
-  extends i
-{}
+@Metadata(d1={""}, d2={"Lkotlin/collections/AbstractMutableList;", "E", "", "Ljava/util/AbstractList;", "()V", "add", "", "index", "", "element", "(ILjava/lang/Object;)V", "removeAt", "(I)Ljava/lang/Object;", "set", "(ILjava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public abstract class e<E>
+  extends AbstractList<E>
+  implements List<E>, kotlin.g.b.a.e
+{
+  public abstract int getSize();
+  
+  public final E remove(int paramInt)
+  {
+    return removeAt(paramInt);
+  }
+  
+  public abstract E removeAt(int paramInt);
+  
+  public final int size()
+  {
+    return getSize();
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.a.e
  * JD-Core Version:    0.7.0.1
  */

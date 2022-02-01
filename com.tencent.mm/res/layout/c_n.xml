@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:layout_gravity="center_vertical" android:id="@id/h74" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ml" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/h6t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:src="@raw/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/en" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.textstatus.emoji.TextStatusEmojiSubTypeScrollView android:id="@id/ci5" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/d1" android:overScrollMode="never" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/d0" keybutton:emoji_type="@integer/av" />
+    <com.tencent.mm.plugin.textstatus.emoji.TextStatusEmojiContentScrollView android:id="@id/cf2" android:background="@color/UN_BW_93" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ci5" android:overScrollMode="never" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/aok" android:background="@drawable/a_y" android:layout_width="@dimen/d_" android:layout_height="44.0dip" android:layout_marginBottom="@dimen/cd" android:layout_alignParentBottom="true" android:layout_marginEnd="@dimen/cd" android:layout_alignParentEnd="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/al_" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="@dimen/d_" android:layout_height="44.0dip" android:src="@raw/icons_outlined_delemoji" android:layout_centerInParent="true" android:contentDescription="@string/x0" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp" keybutton:iconColor="@color/UN_BW_0_Alpha_0_9" />
+        </RelativeLayout>
+    </RelativeLayout>
+</merge>

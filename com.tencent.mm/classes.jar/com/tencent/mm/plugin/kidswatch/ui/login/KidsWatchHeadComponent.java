@@ -3,127 +3,127 @@ package com.tencent.mm.plugin.kidswatch.ui.login;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.kidswatch.b.e;
 import com.tencent.mm.plugin.kidswatch.b.f;
 import com.tencent.mm.plugin.kidswatch.b.g;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import java.util.HashMap;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/ui/login/KidsWatchHeadComponent;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "closeBtnCallBack", "Lkotlin/Function0;", "", "getCloseBtnCallBack", "()Lkotlin/jvm/functions/Function0;", "setCloseBtnCallBack", "(Lkotlin/jvm/functions/Function0;)V", "prepareViews", "setCloseIconResId", "resId", "setTitle", "title", "", "showHelpIcon", "Companion", "plugin-kidswatch_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/kidswatch/ui/login/KidsWatchHeadComponent;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "closeBtnCallBack", "Lkotlin/Function0;", "", "getCloseBtnCallBack", "()Lkotlin/jvm/functions/Function0;", "setCloseBtnCallBack", "(Lkotlin/jvm/functions/Function0;)V", "prepareViews", "setCloseIconResId", "resId", "setTitle", "title", "", "showHelpIcon", "Companion", "plugin-kidswatch_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class KidsWatchHeadComponent
   extends RelativeLayout
 {
-  public static final a Ect;
-  private a<x> Ecs;
-  private HashMap _$_findViewCache;
+  public static final KidsWatchHeadComponent.a JTw;
+  private kotlin.g.a.a<ah> JTx;
   
   static
   {
-    AppMethodBeat.i(252230);
-    Ect = new a((byte)0);
-    AppMethodBeat.o(252230);
+    AppMethodBeat.i(262221);
+    JTw = new KidsWatchHeadComponent.a((byte)0);
+    AppMethodBeat.o(262221);
   }
   
   public KidsWatchHeadComponent(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(252228);
-    AppMethodBeat.o(252228);
+    AppMethodBeat.i(262196);
+    AppMethodBeat.o(262196);
   }
   
   public KidsWatchHeadComponent(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(252227);
+    AppMethodBeat.i(262185);
     setNestedScrollingEnabled(true);
-    View.inflate(paramContext, b.f.Ebg, (ViewGroup)this);
-    paramContext = (TextView)_$_findCachedViewById(b.e.dXx);
-    p.j(paramContext, "titleTV");
-    paramContext.setVisibility(4);
-    paramContext = (WeImageView)_$_findCachedViewById(b.e.EaH);
-    p.j(paramContext, "helpIcon");
-    paramContext.setVisibility(4);
-    paramContext = (WeImageView)_$_findCachedViewById(b.e.EaA);
-    p.j(paramContext, "closeBtn");
-    paramContext.setBackground(getContext().getDrawable(b.g.icons_outlined_close));
-    ((WeImageView)_$_findCachedViewById(b.e.EaA)).setOnClickListener((View.OnClickListener)new KidsWatchHeadComponent.b(this));
-    ((WeImageView)_$_findCachedViewById(b.e.EaH)).setOnClickListener((View.OnClickListener)new KidsWatchHeadComponent.c(this));
-    AppMethodBeat.o(252227);
+    View.inflate(paramContext, b.f.JSo, (ViewGroup)this);
+    ((TextView)findViewById(b.e.gac)).setVisibility(4);
+    ((WeImageView)findViewById(b.e.JRP)).setVisibility(4);
+    ((WeImageView)findViewById(b.e.JRI)).setBackground(getContext().getDrawable(b.g.icons_outlined_close));
+    ((WeImageView)findViewById(b.e.JRI)).setOnClickListener(new KidsWatchHeadComponent..ExternalSyntheticLambda0(this));
+    ((WeImageView)findViewById(b.e.JRP)).setOnClickListener(new KidsWatchHeadComponent..ExternalSyntheticLambda1(this));
+    AppMethodBeat.o(262185);
   }
   
-  private View _$_findCachedViewById(int paramInt)
+  private static final void a(KidsWatchHeadComponent paramKidsWatchHeadComponent, View paramView)
   {
-    AppMethodBeat.i(252231);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
+    AppMethodBeat.i(262206);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramKidsWatchHeadComponent);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/kidswatch/ui/login/KidsWatchHeadComponent", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramKidsWatchHeadComponent, "this$0");
+    Log.d("KidsWatchHeadComponent", "close clicked");
+    paramKidsWatchHeadComponent = paramKidsWatchHeadComponent.getCloseBtnCallBack();
+    if (paramKidsWatchHeadComponent != null) {
+      paramKidsWatchHeadComponent.invoke();
     }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(252231);
-    return localView1;
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/kidswatch/ui/login/KidsWatchHeadComponent", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(262206);
   }
   
-  public final void eKU()
+  private static final void b(KidsWatchHeadComponent paramKidsWatchHeadComponent, View paramView)
   {
-    AppMethodBeat.i(252225);
-    WeImageView localWeImageView = (WeImageView)_$_findCachedViewById(b.e.EaH);
-    p.j(localWeImageView, "helpIcon");
-    localWeImageView.setVisibility(0);
-    AppMethodBeat.o(252225);
+    AppMethodBeat.i(262212);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramKidsWatchHeadComponent);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/kidswatch/ui/login/KidsWatchHeadComponent", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramKidsWatchHeadComponent, "this$0");
+    Log.i("KidsWatchHeadComponent", "click help icon");
+    paramView = com.tencent.mm.plugin.kidswatch.b.a.JTW;
+    paramKidsWatchHeadComponent = paramKidsWatchHeadComponent.getContext();
+    s.s(paramKidsWatchHeadComponent, "context");
+    com.tencent.mm.plugin.kidswatch.b.a.i(paramKidsWatchHeadComponent, "wxaaff6b96fc2cd3c6", "pages/help/help.html", "1");
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/kidswatch/ui/login/KidsWatchHeadComponent", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(262212);
   }
   
-  public final a<x> getCloseBtnCallBack()
+  public final void fSR()
   {
-    return this.Ecs;
+    AppMethodBeat.i(262262);
+    ((WeImageView)findViewById(b.e.JRP)).setVisibility(0);
+    AppMethodBeat.o(262262);
   }
   
-  public final void setCloseBtnCallBack(a<x> parama)
+  public final kotlin.g.a.a<ah> getCloseBtnCallBack()
   {
-    this.Ecs = parama;
+    return this.JTx;
+  }
+  
+  public final void setCloseBtnCallBack(kotlin.g.a.a<ah> parama)
+  {
+    this.JTx = parama;
   }
   
   public final void setCloseIconResId(int paramInt)
   {
-    AppMethodBeat.i(252224);
-    WeImageView localWeImageView = (WeImageView)_$_findCachedViewById(b.e.EaA);
-    p.j(localWeImageView, "closeBtn");
-    localWeImageView.setBackground(getContext().getDrawable(paramInt));
-    AppMethodBeat.o(252224);
+    AppMethodBeat.i(262255);
+    ((WeImageView)findViewById(b.e.JRI)).setBackground(getContext().getDrawable(paramInt));
+    AppMethodBeat.o(262255);
   }
   
   public final void setTitle(String paramString)
   {
-    AppMethodBeat.i(252222);
-    p.k(paramString, "title");
-    TextView localTextView = (TextView)_$_findCachedViewById(b.e.dXx);
-    p.j(localTextView, "titleTV");
-    localTextView.setText((CharSequence)paramString);
-    paramString = (TextView)_$_findCachedViewById(b.e.dXx);
-    p.j(paramString, "titleTV");
-    paramString.setVisibility(0);
-    AppMethodBeat.o(252222);
+    AppMethodBeat.i(262247);
+    s.u(paramString, "title");
+    ((TextView)findViewById(b.e.gac)).setText((CharSequence)paramString);
+    ((TextView)findViewById(b.e.gac)).setVisibility(0);
+    AppMethodBeat.o(262247);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/ui/login/KidsWatchHeadComponent$Companion;", "", "()V", "TAG", "", "plugin-kidswatch_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.kidswatch.ui.login.KidsWatchHeadComponent
  * JD-Core Version:    0.7.0.1
  */

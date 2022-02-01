@@ -5,11 +5,11 @@ import com.google.android.exoplayer2.source.r;
 
 public abstract class h
 {
-  public a bog;
-  
-  public abstract void Z(Object paramObject);
+  public a dhZ;
   
   public abstract i a(s[] paramArrayOfs, r paramr);
+  
+  public abstract void bi(Object paramObject);
   
   public static abstract interface a {}
 }

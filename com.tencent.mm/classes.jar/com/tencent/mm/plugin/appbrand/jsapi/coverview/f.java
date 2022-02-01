@@ -11,17 +11,17 @@ public final class f
   private static final int CTRL_INDEX = 809;
   public static final String NAME = "insertImagePreviewer";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(278674);
+    AppMethodBeat.i(327317);
     int i = paramJSONObject.getInt("viewId");
-    AppMethodBeat.o(278674);
+    AppMethodBeat.o(327317);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.f
  * JD-Core Version:    0.7.0.1
  */

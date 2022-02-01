@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/eql" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/eqk" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m">
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/eq9" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_location" app:iconColor="@color/BW_100_Alpha_0_8" />
-                <TextView android:textSize="@dimen/bd" android:id="@id/eqn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="@string/jb_" android:includeFontPadding="false" style="@style/a1h" />
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="2.0dip" android:src="@drawable/qt" app:iconColor="@color/am" />
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <LinearLayout android:orientation="horizontal" android:id="@id/eqh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/eqz" android:background="@drawable/ae0" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" />
-            <TextView android:gravity="center_vertical" android:id="@id/er0" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/bt" android:text="@string/ekl" style="@style/a1h" />
-        </LinearLayout>
-    </FrameLayout>
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:layout_gravity="center_vertical" android:id="@id/h6_" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" style="@style/jv" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:text="@string/dfp" android:singleLine="true" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:ellipsize="end" android:layout_gravity="center|right" android:id="@id/h6b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dft" android:singleLine="true" />
+</FrameLayout>

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4" style="@style/mz"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:weightSum="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/be9" android:paddingLeft="@dimen/ih" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:layout_weight="1.0">
-        <ImageView android:background="@color/x5" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a2t" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
-        <TextView android:id="@android:id/summary" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/ih" android:paddingBottom="@dimen/k5" android:singleLine="true" style="@style/ml" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0dip" android:textColor="@color/a78" android:gravity="center_horizontal" android:id="@id/ifc" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/i2p" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/inb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/ilz" android:background="@color/ahb" android:focusable="false" android:layout_width="56.0dip" android:layout_height="56.0dip" android:src="@drawable/b__" android:scaleType="centerCrop" android:contentDescription="@string/a_q" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="15.0dip">
+            <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:gravity="center_horizontal" android:id="@id/idb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{¥100}" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,12 +19,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.sight.decode.ui.SnsAdNativeLandingPagesVideoPlayerLoadingBar;
-import com.tencent.mm.plugin.sns.i.d;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.model.al;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
-import com.tencent.mm.pluginsdk.ui.tools.k.a;
+import com.tencent.mm.pluginsdk.ui.tools.i.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -33,35 +32,33 @@ import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.w;
-import com.tencent.mm.vfs.u;
 import java.util.HashSet;
 import java.util.Set;
 
 public class SnsAdNativeLandingTestUI
   extends MMActivity
 {
-  private int JJO;
-  private double JtA;
-  private VideoSightView KMW;
-  SnsAdNativeLandingPagesVideoPlayerLoadingBar KMX;
+  private double PGZ;
+  private int Qbs;
+  private VideoSightView RmJ;
+  SnsAdNativeLandingPagesVideoPlayerLoadingBar RmK;
   private int duration;
-  private MMHandler knk;
+  private MMHandler mRi;
   private int videoHeight;
   private int videoWidth;
   
   public SnsAdNativeLandingTestUI()
   {
     AppMethodBeat.i(98446);
-    this.JtA = 0.0D;
+    this.PGZ = 0.0D;
     this.duration = 0;
-    this.knk = new MMHandler();
+    this.mRi = new MMHandler();
     AppMethodBeat.o(98446);
   }
   
   public int getLayoutId()
   {
-    return i.g.sns_ad_native_landing_pages_test_ui;
+    return b.g.sns_ad_native_landing_pages_test_ui;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -70,50 +67,52 @@ public class SnsAdNativeLandingTestUI
     super.onCreate(paramBundle);
     this.mController.hideTitleView();
     getWindow().setFlags(1024, 1024);
-    ((Button)findViewById(i.f.sns_ad_native_landing_pages_test_share_btn)).setOnClickListener(new SnsAdNativeLandingTestUI.1(this));
-    paramBundle = (ViewGroup)findViewById(i.f.sns_ad_native_landing_pages_test_root);
+    ((Button)findViewById(b.f.sns_ad_native_landing_pages_test_share_btn)).setOnClickListener(new SnsAdNativeLandingTestUI.1(this));
+    paramBundle = (ViewGroup)findViewById(b.f.sns_ad_native_landing_pages_test_root);
     Object localObject2 = (LayoutInflater)getContext().getSystemService("layout_inflater");
     Object localObject1 = (WindowManager)getContext().getSystemService("window");
     int i = ((WindowManager)localObject1).getDefaultDisplay().getWidth();
     int j = ((WindowManager)localObject1).getDefaultDisplay().getHeight();
-    localObject1 = com.tencent.mm.loader.j.b.aSL() + "/sns_ad_landingpages";
+    localObject1 = com.tencent.mm.loader.i.b.bmz() + "/sns_ad_landingpages";
     String str1 = "adId" + "_image_" + MD5Util.getMD5String("http://mmsns.qpic.cn/mmsns/pUBe8EmICSCsszwvTNz7XO46mx3SDurmV95hHIeQvib0AEVBGYU02Mg/150");
     String str2 = "adId" + "_stream_" + MD5Util.getMD5String("http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804105d999cf2831eae6ca6e65b177800230f0204009297fd0400&amp;bizid=1023&amp;hy=SH&amp;fileparam=302c020101042530230204136ffd9302045719f85d02024ef202031e8d7f02030f42400204045a320a0201000400");
-    localObject2 = ((LayoutInflater)localObject2).inflate(i.g.sns_ad_native_landing_pages_item_sight, null);
+    localObject2 = ((LayoutInflater)localObject2).inflate(b.g.sns_ad_native_landing_pages_item_sight, null);
     ((View)localObject2).setMinimumHeight(j);
-    Object localObject3 = (ViewGroup)((View)localObject2).findViewById(i.f.sns_ad_native_landing_pages_item_sight_container);
-    this.KMW = new VideoSightView(getContext());
-    this.KMW.setLoop(false);
+    Object localObject3 = (ViewGroup)((View)localObject2).findViewById(b.f.sns_ad_native_landing_pages_item_sight_container);
+    this.RmJ = new VideoSightView(getContext());
+    this.RmJ.setLoop(false);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    ((ViewGroup)localObject3).addView(this.KMW, 0, localLayoutParams);
+    ((ViewGroup)localObject3).addView(this.RmJ, 0, localLayoutParams);
     localObject3 = new RelativeLayout.LayoutParams(-1, -2);
     ((RelativeLayout.LayoutParams)localObject3).addRule(12);
-    ((RelativeLayout.LayoutParams)localObject3).bottomMargin = BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), getContext().getResources().getDimension(i.d.NoPadding));
-    this.KMX = new SnsAdNativeLandingPagesVideoPlayerLoadingBar(getContext());
-    this.KMX.setVisibility(0);
-    this.KMW.setPlayProgressCallback(true);
-    ((ViewGroup)localObject2).addView(this.KMX, (ViewGroup.LayoutParams)localObject3);
-    this.KMX.setIplaySeekCallback(new com.tencent.mm.plugin.sight.decode.ui.b()
+    ((RelativeLayout.LayoutParams)localObject3).bottomMargin = BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), getContext().getResources().getDimension(b.d.NoPadding));
+    this.RmK = new SnsAdNativeLandingPagesVideoPlayerLoadingBar(getContext());
+    this.RmK.setVisibility(0);
+    this.RmJ.setPlayProgressCallback(true);
+    ((ViewGroup)localObject2).addView(this.RmK, (ViewGroup.LayoutParams)localObject3);
+    this.RmK.setIplaySeekCallback(new com.tencent.mm.plugin.sight.decode.ui.b()
     {
-      public final void aRo() {}
+      public final void blc() {}
       
-      public final void tY(int paramAnonymousInt)
+      public final void tS(int paramAnonymousInt)
       {
         AppMethodBeat.i(98422);
         Log.i("MicroMsg.Sns.SnsAdNativieLandingTestUI", "onSeek time ".concat(String.valueOf(paramAnonymousInt)));
         SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this, paramAnonymousInt);
-        SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).q(paramAnonymousInt);
+        SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).H(paramAnonymousInt);
         AppMethodBeat.o(98422);
       }
+      
+      public final void tT(int paramAnonymousInt) {}
     });
-    this.KMX.setOnPlayButtonClickListener(new View.OnClickListener()
+    this.RmK.setOnPlayButtonClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98423);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).isPlaying()) {
           SnsAdNativeLandingTestUI.b(SnsAdNativeLandingTestUI.this);
         }
@@ -126,12 +125,21 @@ public class SnsAdNativeLandingTestUI
         }
       }
     });
-    this.KMX.setIsPlay(this.KMW.isPlaying());
-    this.KMX.setVisibility(0);
-    this.KMX.seek(0);
-    this.KMW.setVideoCallback(new k.a()
+    this.RmK.setIsPlay(this.RmJ.isPlaying());
+    this.RmK.setVisibility(0);
+    this.RmK.seek(0);
+    this.RmJ.setVideoCallback(new i.a()
     {
-      public final void eM(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void Qz()
+      {
+        AppMethodBeat.i(98425);
+        if (SnsAdNativeLandingTestUI.this.RmK.getIsPlay()) {
+          SnsAdNativeLandingTestUI.c(SnsAdNativeLandingTestUI.this);
+        }
+        AppMethodBeat.o(98425);
+      }
+      
+      public final void fG(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(98428);
         SnsAdNativeLandingTestUI.c(SnsAdNativeLandingTestUI.this, paramAnonymousInt1);
@@ -139,7 +147,7 @@ public class SnsAdNativeLandingTestUI
         AppMethodBeat.o(98428);
       }
       
-      public final int fE(final int paramAnonymousInt1, final int paramAnonymousInt2)
+      public final int gw(final int paramAnonymousInt1, final int paramAnonymousInt2)
       {
         AppMethodBeat.i(98427);
         MMHandlerThread.postToMainThread(new Runnable()
@@ -153,10 +161,10 @@ public class SnsAdNativeLandingTestUI
               SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this, paramAnonymousInt2);
               SnsAdNativeLandingTestUI.b(SnsAdNativeLandingTestUI.this, paramAnonymousInt2);
             }
-            if (SnsAdNativeLandingTestUI.this.KMX.getVideoTotalTime() != paramAnonymousInt2) {
-              SnsAdNativeLandingTestUI.this.KMX.setVideoTotalTime(paramAnonymousInt2);
+            if (SnsAdNativeLandingTestUI.this.RmK.getVideoTotalTime() != paramAnonymousInt2) {
+              SnsAdNativeLandingTestUI.this.RmK.setVideoTotalTime(paramAnonymousInt2);
             }
-            SnsAdNativeLandingTestUI.this.KMX.seek(paramAnonymousInt1);
+            SnsAdNativeLandingTestUI.this.RmK.seek(paramAnonymousInt1);
             AppMethodBeat.o(98424);
           }
         });
@@ -172,31 +180,22 @@ public class SnsAdNativeLandingTestUI
         SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).stop();
         AppMethodBeat.o(98426);
       }
-      
-      public final void qX()
-      {
-        AppMethodBeat.i(98425);
-        if (SnsAdNativeLandingTestUI.this.KMX.getIsPlay()) {
-          SnsAdNativeLandingTestUI.c(SnsAdNativeLandingTestUI.this);
-        }
-        AppMethodBeat.o(98425);
-      }
     });
-    this.KMW.setEnableConfigChanged(false);
-    this.KMW.setOnClickListener(new View.OnClickListener()
+    this.RmJ.setEnableConfigChanged(false);
+    this.RmJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98429);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if ((!"".equals(SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).getVideoPath())) && (SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).getVideoPath() != null))
         {
-          if (SnsAdNativeLandingTestUI.this.KMX.getVisibility() != 0) {
+          if (SnsAdNativeLandingTestUI.this.RmK.getVisibility() != 0) {
             break label107;
           }
-          SnsAdNativeLandingTestUI.this.KMX.setVisibility(4);
+          SnsAdNativeLandingTestUI.this.RmK.setVisibility(4);
         }
         for (;;)
         {
@@ -204,12 +203,12 @@ public class SnsAdNativeLandingTestUI
           AppMethodBeat.o(98429);
           return;
           label107:
-          SnsAdNativeLandingTestUI.this.KMX.setVisibility(0);
+          SnsAdNativeLandingTestUI.this.RmK.setVisibility(0);
         }
       }
     });
     paramBundle.addView((View)localObject2, new LinearLayout.LayoutParams(i, j));
-    this.KMW.post(new Runnable()
+    this.RmJ.post(new Runnable()
     {
       public final void run()
       {
@@ -225,42 +224,35 @@ public class SnsAdNativeLandingTestUI
         AppMethodBeat.o(98430);
       }
     });
-    new a((String)localObject1, str1, aj.etE(), new SnsAdNativeLandingTestUI.a.a()
+    new a((String)localObject1, str1, al.fAG(), new SnsAdNativeLandingTestUI.a.a()
     {
-      public final void Oy(String paramAnonymousString)
+      public final void GO(String paramAnonymousString)
       {
         AppMethodBeat.i(98431);
         SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).setThumb(BitmapUtil.decodeFile(paramAnonymousString));
         AppMethodBeat.o(98431);
       }
       
-      public final void aij(String paramAnonymousString) {}
+      public final void V(String paramAnonymousString, int paramAnonymousInt) {}
       
-      public final void dT(String paramAnonymousString, int paramAnonymousInt) {}
+      public final void abh(String paramAnonymousString) {}
     }).execute(new String[] { "http://mmsns.qpic.cn/mmsns/pUBe8EmICSCsszwvTNz7XO46mx3SDurmV95hHIeQvib0AEVBGYU02Mg/150" });
-    new a((String)localObject1, str2, aj.etE(), new SnsAdNativeLandingTestUI.a.a()
+    new a((String)localObject1, str2, al.fAG(), new SnsAdNativeLandingTestUI.a.a()
     {
-      public final void Oy(String paramAnonymousString)
+      public final void GO(String paramAnonymousString)
       {
         AppMethodBeat.i(98434);
         SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).setVideoPath(paramAnonymousString);
         SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).setLoop(true);
-        if (SnsAdNativeLandingTestUI.this.KMX.getIsPlay())
+        if (SnsAdNativeLandingTestUI.this.RmK.getIsPlay())
         {
-          SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).q(SnsAdNativeLandingTestUI.d(SnsAdNativeLandingTestUI.this));
+          SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).H(SnsAdNativeLandingTestUI.d(SnsAdNativeLandingTestUI.this));
           SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).start();
         }
         AppMethodBeat.o(98434);
       }
       
-      public final void aij(String paramAnonymousString)
-      {
-        AppMethodBeat.i(98433);
-        Log.e("MicroMsg.Sns.SnsAdNativieLandingTestUI", paramAnonymousString);
-        AppMethodBeat.o(98433);
-      }
-      
-      public final void dT(String paramAnonymousString, int paramAnonymousInt)
+      public final void V(String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(98432);
         if (SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).isPlaying())
@@ -272,12 +264,19 @@ public class SnsAdNativeLandingTestUI
         if (!paramAnonymousString.equals(SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).getVideoPath())) {
           SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).setVideoPath(paramAnonymousString);
         }
-        if (SnsAdNativeLandingTestUI.this.KMX.getIsPlay())
+        if (SnsAdNativeLandingTestUI.this.RmK.getIsPlay())
         {
-          SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).q(SnsAdNativeLandingTestUI.d(SnsAdNativeLandingTestUI.this));
+          SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).H(SnsAdNativeLandingTestUI.d(SnsAdNativeLandingTestUI.this));
           SnsAdNativeLandingTestUI.a(SnsAdNativeLandingTestUI.this).start();
         }
         AppMethodBeat.o(98432);
+      }
+      
+      public final void abh(String paramAnonymousString)
+      {
+        AppMethodBeat.i(98433);
+        Log.e("MicroMsg.Sns.SnsAdNativieLandingTestUI", paramAnonymousString);
+        AppMethodBeat.o(98433);
       }
     }, 409600).execute(new String[] { "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804105d999cf2831eae6ca6e65b177800230f0204009297fd0400&amp;bizid=1023&amp;hy=SH&amp;fileparam=302c020101042530230204136ffd9302045719f85d02024ef202031e8d7f02030f42400204045a320a0201000400" });
     AppMethodBeat.o(98447);
@@ -292,13 +291,13 @@ public class SnsAdNativeLandingTestUI
   static final class a
     extends AsyncTask<String, Void, Void>
   {
-    private static Set<String> KNc;
-    private static byte[] KNd;
-    final a KNe;
-    final String KxY;
-    final String KxZ;
-    final int Kyb;
-    final String Kyc;
+    private static Set<String> RmP;
+    private static byte[] RmQ;
+    final String QWS;
+    final String QWT;
+    final int QWV;
+    final String QWW;
+    final a RmR;
     final String fileName;
     final String filePath;
     final MMHandler handler;
@@ -306,8 +305,8 @@ public class SnsAdNativeLandingTestUI
     static
     {
       AppMethodBeat.i(98445);
-      KNc = new HashSet();
-      KNd = new byte[0];
+      RmP = new HashSet();
+      RmQ = new byte[0];
       AppMethodBeat.o(98445);
     }
     
@@ -319,17 +318,17 @@ public class SnsAdNativeLandingTestUI
     public a(String paramString1, String paramString2, final MMHandler paramMMHandler, final a parama, int paramInt)
     {
       AppMethodBeat.i(98442);
-      u.bBD(paramString1);
-      this.Kyc = paramString1;
+      com.tencent.mm.vfs.y.bDX(paramString1);
+      this.QWW = paramString1;
       this.fileName = paramString2;
       this.filePath = (paramString1 + "/" + paramString2);
-      this.KxZ = "temp_".concat(String.valueOf(paramString2));
-      this.KxY = (paramString1 + "/" + this.KxZ);
+      this.QWT = "temp_".concat(String.valueOf(paramString2));
+      this.QWS = (paramString1 + "/" + this.QWT);
       this.handler = paramMMHandler;
-      this.Kyb = paramInt;
-      this.KNe = new a()
+      this.QWV = paramInt;
+      this.RmR = new a()
       {
-        public final void Oy(final String paramAnonymousString)
+        public final void GO(final String paramAnonymousString)
         {
           AppMethodBeat.i(98441);
           paramMMHandler.post(new Runnable()
@@ -337,29 +336,14 @@ public class SnsAdNativeLandingTestUI
             public final void run()
             {
               AppMethodBeat.i(98438);
-              SnsAdNativeLandingTestUI.a.1.this.KNf.Oy(paramAnonymousString);
+              SnsAdNativeLandingTestUI.a.1.this.RmS.GO(paramAnonymousString);
               AppMethodBeat.o(98438);
             }
           });
           AppMethodBeat.o(98441);
         }
         
-        public final void aij(final String paramAnonymousString)
-        {
-          AppMethodBeat.i(98440);
-          paramMMHandler.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(98437);
-              SnsAdNativeLandingTestUI.a.1.this.KNf.aij(paramAnonymousString);
-              AppMethodBeat.o(98437);
-            }
-          });
-          AppMethodBeat.o(98440);
-        }
-        
-        public final void dT(final String paramAnonymousString, final int paramAnonymousInt)
+        public final void V(final String paramAnonymousString, final int paramAnonymousInt)
         {
           AppMethodBeat.i(98439);
           paramMMHandler.post(new Runnable()
@@ -367,27 +351,42 @@ public class SnsAdNativeLandingTestUI
             public final void run()
             {
               AppMethodBeat.i(98436);
-              SnsAdNativeLandingTestUI.a.1.this.KNf.dT(paramAnonymousString, paramAnonymousInt);
+              SnsAdNativeLandingTestUI.a.1.this.RmS.V(paramAnonymousString, paramAnonymousInt);
               AppMethodBeat.o(98436);
             }
           });
           AppMethodBeat.o(98439);
+        }
+        
+        public final void abh(final String paramAnonymousString)
+        {
+          AppMethodBeat.i(98440);
+          paramMMHandler.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(98437);
+              SnsAdNativeLandingTestUI.a.1.this.RmS.abh(paramAnonymousString);
+              AppMethodBeat.o(98437);
+            }
+          });
+          AppMethodBeat.o(98440);
         }
       };
       AppMethodBeat.o(98442);
     }
     
     /* Error */
-    private Void P(String... paramVarArgs)
+    private Void Q(String... paramVarArgs)
     {
       // Byte code:
       //   0: ldc 120
       //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   5: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNd	[B
+      //   5: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmQ	[B
       //   8: astore 5
       //   10: aload 5
       //   12: monitorenter
-      //   13: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNc	Ljava/util/Set;
+      //   13: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmP	Ljava/util/Set;
       //   16: aload_1
       //   17: iconst_0
       //   18: aaload
@@ -399,7 +398,7 @@ public class SnsAdNativeLandingTestUI
       //   32: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   35: aconst_null
       //   36: areturn
-      //   37: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNc	Ljava/util/Set;
+      //   37: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmP	Ljava/util/Set;
       //   40: aload_1
       //   41: iconst_0
       //   42: aaload
@@ -409,18 +408,18 @@ public class SnsAdNativeLandingTestUI
       //   51: monitorexit
       //   52: aload_0
       //   53: getfield 88	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:filePath	Ljava/lang/String;
-      //   56: invokestatic 132	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
+      //   56: invokestatic 132	com/tencent/mm/vfs/y:ZC	(Ljava/lang/String;)Z
       //   59: ifeq +68 -> 127
       //   62: aload_0
-      //   63: getfield 113	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNe	Lcom/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a$a;
+      //   63: getfield 113	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmR	Lcom/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a$a;
       //   66: aload_0
       //   67: getfield 88	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:filePath	Ljava/lang/String;
       //   70: invokeinterface 136 2 0
-      //   75: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNd	[B
+      //   75: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmQ	[B
       //   78: astore 5
       //   80: aload 5
       //   82: monitorenter
-      //   83: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNc	Ljava/util/Set;
+      //   83: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmP	Ljava/util/Set;
       //   86: aload_1
       //   87: iconst_0
       //   88: aaload
@@ -447,12 +446,12 @@ public class SnsAdNativeLandingTestUI
       //   125: aload_1
       //   126: athrow
       //   127: aload_0
-      //   128: getfield 104	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KxY	Ljava/lang/String;
-      //   131: invokestatic 132	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
+      //   128: getfield 104	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:QWS	Ljava/lang/String;
+      //   131: invokestatic 132	com/tencent/mm/vfs/y:ZC	(Ljava/lang/String;)Z
       //   134: ifeq +11 -> 145
       //   137: aload_0
-      //   138: getfield 104	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KxY	Ljava/lang/String;
-      //   141: invokestatic 142	com/tencent/mm/vfs/u:deleteFile	(Ljava/lang/String;)Z
+      //   138: getfield 104	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:QWS	Ljava/lang/String;
+      //   141: invokestatic 142	com/tencent/mm/vfs/y:deleteFile	(Ljava/lang/String;)Z
       //   144: pop
       //   145: new 144	java/net/URL
       //   148: dup
@@ -470,7 +469,7 @@ public class SnsAdNativeLandingTestUI
       //   173: sipush 200
       //   176: if_icmpeq +119 -> 295
       //   179: aload_0
-      //   180: getfield 113	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNe	Lcom/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a$a;
+      //   180: getfield 113	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmR	Lcom/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a$a;
       //   183: new 75	java/lang/StringBuilder
       //   186: dup
       //   187: ldc 161
@@ -492,11 +491,11 @@ public class SnsAdNativeLandingTestUI
       //   231: invokevirtual 182	java/io/InputStream:close	()V
       //   234: aload 5
       //   236: invokevirtual 185	java/net/HttpURLConnection:disconnect	()V
-      //   239: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNd	[B
+      //   239: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmQ	[B
       //   242: astore 5
       //   244: aload 5
       //   246: monitorenter
-      //   247: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNc	Ljava/util/Set;
+      //   247: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmP	Ljava/util/Set;
       //   250: aload_1
       //   251: iconst_0
       //   252: aaload
@@ -528,300 +527,301 @@ public class SnsAdNativeLandingTestUI
       //   303: invokevirtual 177	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
       //   306: astore 8
       //   308: aload_0
-      //   309: getfield 104	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KxY	Ljava/lang/String;
-      //   312: invokestatic 203	com/tencent/mm/vfs/u:Te	(Ljava/lang/String;)Ljava/io/OutputStream;
-      //   315: astore 7
-      //   317: sipush 4096
-      //   320: newarray byte
-      //   322: astore 6
-      //   324: iconst_0
-      //   325: istore_3
-      //   326: iconst_0
-      //   327: istore_2
-      //   328: aload 8
-      //   330: aload 6
-      //   332: invokevirtual 207	java/io/InputStream:read	([B)I
-      //   335: istore 4
-      //   337: iload 4
-      //   339: iconst_m1
-      //   340: if_icmpeq +54 -> 394
-      //   343: aload 7
-      //   345: aload 6
-      //   347: iconst_0
-      //   348: iload 4
-      //   350: invokevirtual 213	java/io/OutputStream:write	([BII)V
-      //   353: iload 4
-      //   355: iload_2
-      //   356: iadd
-      //   357: istore_2
-      //   358: aload_0
-      //   359: getfield 108	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:Kyb	I
-      //   362: ifeq +492 -> 854
-      //   365: iload_2
-      //   366: iload_3
-      //   367: isub
-      //   368: aload_0
-      //   369: getfield 108	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:Kyb	I
-      //   372: if_icmplt +482 -> 854
-      //   375: aload_0
-      //   376: getfield 113	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNe	Lcom/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a$a;
-      //   379: aload_0
-      //   380: getfield 104	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KxY	Ljava/lang/String;
-      //   383: iload_2
-      //   384: invokeinterface 217 3 0
-      //   389: iload_2
-      //   390: istore_3
-      //   391: goto -63 -> 328
-      //   394: aload_0
-      //   395: getfield 104	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KxY	Ljava/lang/String;
-      //   398: aload_0
-      //   399: getfield 88	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:filePath	Ljava/lang/String;
-      //   402: invokestatic 221	com/tencent/mm/vfs/u:oo	(Ljava/lang/String;Ljava/lang/String;)Z
-      //   405: pop
-      //   406: aload_0
-      //   407: getfield 113	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNe	Lcom/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a$a;
-      //   410: aload_0
-      //   411: getfield 88	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:filePath	Ljava/lang/String;
-      //   414: invokeinterface 136 2 0
-      //   419: aload 7
-      //   421: ifnull +8 -> 429
-      //   424: aload 7
-      //   426: invokevirtual 222	java/io/OutputStream:close	()V
-      //   429: aload 8
-      //   431: ifnull +8 -> 439
-      //   434: aload 8
-      //   436: invokevirtual 182	java/io/InputStream:close	()V
-      //   439: aload 5
-      //   441: ifnull +16 -> 457
-      //   444: aload 5
-      //   446: invokevirtual 177	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-      //   449: invokevirtual 182	java/io/InputStream:close	()V
-      //   452: aload 5
-      //   454: invokevirtual 185	java/net/HttpURLConnection:disconnect	()V
-      //   457: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNd	[B
-      //   460: astore 5
-      //   462: aload 5
-      //   464: monitorenter
-      //   465: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNc	Ljava/util/Set;
-      //   468: aload_1
-      //   469: iconst_0
-      //   470: aaload
-      //   471: invokeinterface 139 2 0
-      //   476: pop
-      //   477: aload 5
-      //   479: monitorexit
-      //   480: ldc 120
-      //   482: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   485: aconst_null
-      //   486: areturn
-      //   487: astore 6
-      //   489: ldc 187
-      //   491: aload 6
-      //   493: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   496: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   499: goto -47 -> 452
-      //   502: astore_1
-      //   503: aload 5
-      //   505: monitorexit
-      //   506: ldc 120
-      //   508: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   511: aload_1
-      //   512: athrow
-      //   513: astore 5
-      //   515: aconst_null
-      //   516: astore 6
-      //   518: aconst_null
-      //   519: astore 7
-      //   521: aconst_null
-      //   522: astore 8
-      //   524: aload_0
-      //   525: getfield 113	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNe	Lcom/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a$a;
-      //   528: aload 5
-      //   530: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   533: invokeinterface 173 2 0
-      //   538: aload 7
-      //   540: ifnull +8 -> 548
-      //   543: aload 7
-      //   545: invokevirtual 222	java/io/OutputStream:close	()V
-      //   548: aload 8
-      //   550: ifnull +8 -> 558
-      //   553: aload 8
-      //   555: invokevirtual 182	java/io/InputStream:close	()V
-      //   558: aload 6
-      //   560: ifnull +16 -> 576
-      //   563: aload 6
-      //   565: invokevirtual 177	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-      //   568: invokevirtual 182	java/io/InputStream:close	()V
-      //   571: aload 6
-      //   573: invokevirtual 185	java/net/HttpURLConnection:disconnect	()V
-      //   576: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNd	[B
-      //   579: astore 5
-      //   581: aload 5
-      //   583: monitorenter
-      //   584: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNc	Ljava/util/Set;
-      //   587: aload_1
-      //   588: iconst_0
-      //   589: aaload
-      //   590: invokeinterface 139 2 0
-      //   595: pop
-      //   596: aload 5
-      //   598: monitorexit
-      //   599: ldc 120
-      //   601: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   604: aconst_null
-      //   605: areturn
-      //   606: astore 5
-      //   608: ldc 187
-      //   610: aload 5
-      //   612: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   615: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   618: goto -47 -> 571
-      //   621: astore_1
-      //   622: aload 5
-      //   624: monitorexit
-      //   625: ldc 120
-      //   627: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   630: aload_1
-      //   631: athrow
-      //   632: astore 5
-      //   634: aconst_null
-      //   635: astore 6
-      //   637: aconst_null
-      //   638: astore 7
-      //   640: aconst_null
-      //   641: astore 8
-      //   643: aload 7
-      //   645: ifnull +8 -> 653
-      //   648: aload 7
-      //   650: invokevirtual 222	java/io/OutputStream:close	()V
-      //   653: aload 8
-      //   655: ifnull +8 -> 663
-      //   658: aload 8
-      //   660: invokevirtual 182	java/io/InputStream:close	()V
-      //   663: aload 6
-      //   665: ifnull +16 -> 681
-      //   668: aload 6
-      //   670: invokevirtual 177	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-      //   673: invokevirtual 182	java/io/InputStream:close	()V
-      //   676: aload 6
-      //   678: invokevirtual 185	java/net/HttpURLConnection:disconnect	()V
-      //   681: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNd	[B
-      //   684: astore 6
-      //   686: aload 6
-      //   688: monitorenter
-      //   689: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:KNc	Ljava/util/Set;
-      //   692: aload_1
-      //   693: iconst_0
-      //   694: aaload
-      //   695: invokeinterface 139 2 0
-      //   700: pop
-      //   701: aload 6
-      //   703: monitorexit
-      //   704: ldc 120
-      //   706: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   709: aload 5
-      //   711: athrow
-      //   712: astore 7
-      //   714: ldc 187
-      //   716: aload 7
-      //   718: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   721: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   724: goto -48 -> 676
-      //   727: astore_1
-      //   728: aload 6
-      //   730: monitorexit
-      //   731: ldc 120
-      //   733: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   736: aload_1
-      //   737: athrow
-      //   738: astore 7
-      //   740: goto -77 -> 663
-      //   743: astore 9
-      //   745: aload 5
-      //   747: astore 6
-      //   749: aconst_null
-      //   750: astore 7
-      //   752: aconst_null
-      //   753: astore 8
-      //   755: aload 9
-      //   757: astore 5
-      //   759: goto -116 -> 643
-      //   762: astore 9
-      //   764: aload 5
-      //   766: astore 6
-      //   768: aconst_null
-      //   769: astore 7
-      //   771: aload 9
-      //   773: astore 5
-      //   775: goto -132 -> 643
-      //   778: astore 9
-      //   780: aload 5
-      //   782: astore 6
-      //   784: aload 9
-      //   786: astore 5
-      //   788: goto -145 -> 643
-      //   791: astore 5
-      //   793: goto -150 -> 643
-      //   796: astore 5
-      //   798: goto -240 -> 558
-      //   801: astore 9
-      //   803: aload 5
-      //   805: astore 6
-      //   807: aconst_null
-      //   808: astore 7
-      //   810: aconst_null
-      //   811: astore 8
-      //   813: aload 9
-      //   815: astore 5
-      //   817: goto -293 -> 524
-      //   820: astore 9
-      //   822: aload 5
-      //   824: astore 6
-      //   826: aconst_null
-      //   827: astore 7
-      //   829: aload 9
-      //   831: astore 5
-      //   833: goto -309 -> 524
-      //   836: astore 9
-      //   838: aload 5
-      //   840: astore 6
-      //   842: aload 9
-      //   844: astore 5
-      //   846: goto -322 -> 524
-      //   849: astore 6
-      //   851: goto -412 -> 439
-      //   854: goto -526 -> 328
+      //   309: getfield 104	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:QWS	Ljava/lang/String;
+      //   312: iconst_0
+      //   313: invokestatic 203	com/tencent/mm/vfs/y:ev	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+      //   316: astore 7
+      //   318: sipush 4096
+      //   321: newarray byte
+      //   323: astore 6
+      //   325: iconst_0
+      //   326: istore_3
+      //   327: iconst_0
+      //   328: istore_2
+      //   329: aload 8
+      //   331: aload 6
+      //   333: invokevirtual 207	java/io/InputStream:read	([B)I
+      //   336: istore 4
+      //   338: iload 4
+      //   340: iconst_m1
+      //   341: if_icmpeq +54 -> 395
+      //   344: aload 7
+      //   346: aload 6
+      //   348: iconst_0
+      //   349: iload 4
+      //   351: invokevirtual 213	java/io/OutputStream:write	([BII)V
+      //   354: iload 4
+      //   356: iload_2
+      //   357: iadd
+      //   358: istore_2
+      //   359: aload_0
+      //   360: getfield 108	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:QWV	I
+      //   363: ifeq +492 -> 855
+      //   366: iload_2
+      //   367: iload_3
+      //   368: isub
+      //   369: aload_0
+      //   370: getfield 108	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:QWV	I
+      //   373: if_icmplt +482 -> 855
+      //   376: aload_0
+      //   377: getfield 113	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmR	Lcom/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a$a;
+      //   380: aload_0
+      //   381: getfield 104	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:QWS	Ljava/lang/String;
+      //   384: iload_2
+      //   385: invokeinterface 217 3 0
+      //   390: iload_2
+      //   391: istore_3
+      //   392: goto -63 -> 329
+      //   395: aload_0
+      //   396: getfield 104	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:QWS	Ljava/lang/String;
+      //   399: aload_0
+      //   400: getfield 88	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:filePath	Ljava/lang/String;
+      //   403: invokestatic 221	com/tencent/mm/vfs/y:qn	(Ljava/lang/String;Ljava/lang/String;)Z
+      //   406: pop
+      //   407: aload_0
+      //   408: getfield 113	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmR	Lcom/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a$a;
+      //   411: aload_0
+      //   412: getfield 88	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:filePath	Ljava/lang/String;
+      //   415: invokeinterface 136 2 0
+      //   420: aload 7
+      //   422: ifnull +8 -> 430
+      //   425: aload 7
+      //   427: invokevirtual 222	java/io/OutputStream:close	()V
+      //   430: aload 8
+      //   432: ifnull +8 -> 440
+      //   435: aload 8
+      //   437: invokevirtual 182	java/io/InputStream:close	()V
+      //   440: aload 5
+      //   442: ifnull +16 -> 458
+      //   445: aload 5
+      //   447: invokevirtual 177	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+      //   450: invokevirtual 182	java/io/InputStream:close	()V
+      //   453: aload 5
+      //   455: invokevirtual 185	java/net/HttpURLConnection:disconnect	()V
+      //   458: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmQ	[B
+      //   461: astore 5
+      //   463: aload 5
+      //   465: monitorenter
+      //   466: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmP	Ljava/util/Set;
+      //   469: aload_1
+      //   470: iconst_0
+      //   471: aaload
+      //   472: invokeinterface 139 2 0
+      //   477: pop
+      //   478: aload 5
+      //   480: monitorexit
+      //   481: ldc 120
+      //   483: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   486: aconst_null
+      //   487: areturn
+      //   488: astore 6
+      //   490: ldc 187
+      //   492: aload 6
+      //   494: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
+      //   497: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   500: goto -47 -> 453
+      //   503: astore_1
+      //   504: aload 5
+      //   506: monitorexit
+      //   507: ldc 120
+      //   509: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   512: aload_1
+      //   513: athrow
+      //   514: astore 5
+      //   516: aconst_null
+      //   517: astore 6
+      //   519: aconst_null
+      //   520: astore 7
+      //   522: aconst_null
+      //   523: astore 8
+      //   525: aload_0
+      //   526: getfield 113	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmR	Lcom/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a$a;
+      //   529: aload 5
+      //   531: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
+      //   534: invokeinterface 173 2 0
+      //   539: aload 7
+      //   541: ifnull +8 -> 549
+      //   544: aload 7
+      //   546: invokevirtual 222	java/io/OutputStream:close	()V
+      //   549: aload 8
+      //   551: ifnull +8 -> 559
+      //   554: aload 8
+      //   556: invokevirtual 182	java/io/InputStream:close	()V
+      //   559: aload 6
+      //   561: ifnull +16 -> 577
+      //   564: aload 6
+      //   566: invokevirtual 177	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+      //   569: invokevirtual 182	java/io/InputStream:close	()V
+      //   572: aload 6
+      //   574: invokevirtual 185	java/net/HttpURLConnection:disconnect	()V
+      //   577: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmQ	[B
+      //   580: astore 5
+      //   582: aload 5
+      //   584: monitorenter
+      //   585: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmP	Ljava/util/Set;
+      //   588: aload_1
+      //   589: iconst_0
+      //   590: aaload
+      //   591: invokeinterface 139 2 0
+      //   596: pop
+      //   597: aload 5
+      //   599: monitorexit
+      //   600: ldc 120
+      //   602: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   605: aconst_null
+      //   606: areturn
+      //   607: astore 5
+      //   609: ldc 187
+      //   611: aload 5
+      //   613: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
+      //   616: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   619: goto -47 -> 572
+      //   622: astore_1
+      //   623: aload 5
+      //   625: monitorexit
+      //   626: ldc 120
+      //   628: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   631: aload_1
+      //   632: athrow
+      //   633: astore 5
+      //   635: aconst_null
+      //   636: astore 6
+      //   638: aconst_null
+      //   639: astore 7
+      //   641: aconst_null
+      //   642: astore 8
+      //   644: aload 7
+      //   646: ifnull +8 -> 654
+      //   649: aload 7
+      //   651: invokevirtual 222	java/io/OutputStream:close	()V
+      //   654: aload 8
+      //   656: ifnull +8 -> 664
+      //   659: aload 8
+      //   661: invokevirtual 182	java/io/InputStream:close	()V
+      //   664: aload 6
+      //   666: ifnull +16 -> 682
+      //   669: aload 6
+      //   671: invokevirtual 177	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+      //   674: invokevirtual 182	java/io/InputStream:close	()V
+      //   677: aload 6
+      //   679: invokevirtual 185	java/net/HttpURLConnection:disconnect	()V
+      //   682: getstatic 53	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmQ	[B
+      //   685: astore 6
+      //   687: aload 6
+      //   689: monitorenter
+      //   690: getstatic 51	com/tencent/mm/plugin/sns/ui/SnsAdNativeLandingTestUI$a:RmP	Ljava/util/Set;
+      //   693: aload_1
+      //   694: iconst_0
+      //   695: aaload
+      //   696: invokeinterface 139 2 0
+      //   701: pop
+      //   702: aload 6
+      //   704: monitorexit
+      //   705: ldc 120
+      //   707: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   710: aload 5
+      //   712: athrow
+      //   713: astore 7
+      //   715: ldc 187
+      //   717: aload 7
+      //   719: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
+      //   722: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   725: goto -48 -> 677
+      //   728: astore_1
+      //   729: aload 6
+      //   731: monitorexit
+      //   732: ldc 120
+      //   734: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   737: aload_1
+      //   738: athrow
+      //   739: astore 7
+      //   741: goto -77 -> 664
+      //   744: astore 9
+      //   746: aload 5
+      //   748: astore 6
+      //   750: aconst_null
+      //   751: astore 7
+      //   753: aconst_null
+      //   754: astore 8
+      //   756: aload 9
+      //   758: astore 5
+      //   760: goto -116 -> 644
+      //   763: astore 9
+      //   765: aload 5
+      //   767: astore 6
+      //   769: aconst_null
+      //   770: astore 7
+      //   772: aload 9
+      //   774: astore 5
+      //   776: goto -132 -> 644
+      //   779: astore 9
+      //   781: aload 5
+      //   783: astore 6
+      //   785: aload 9
+      //   787: astore 5
+      //   789: goto -145 -> 644
+      //   792: astore 5
+      //   794: goto -150 -> 644
+      //   797: astore 5
+      //   799: goto -240 -> 559
+      //   802: astore 9
+      //   804: aload 5
+      //   806: astore 6
+      //   808: aconst_null
+      //   809: astore 7
+      //   811: aconst_null
+      //   812: astore 8
+      //   814: aload 9
+      //   816: astore 5
+      //   818: goto -293 -> 525
+      //   821: astore 9
+      //   823: aload 5
+      //   825: astore 6
+      //   827: aconst_null
+      //   828: astore 7
+      //   830: aload 9
+      //   832: astore 5
+      //   834: goto -309 -> 525
+      //   837: astore 9
+      //   839: aload 5
+      //   841: astore 6
+      //   843: aload 9
+      //   845: astore 5
+      //   847: goto -322 -> 525
+      //   850: astore 6
+      //   852: goto -412 -> 440
+      //   855: goto -526 -> 329
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	857	0	this	a
-      //   0	857	1	paramVarArgs	String[]
-      //   327	63	2	i	int
-      //   325	66	3	j	int
-      //   335	22	4	k	int
-      //   8	496	5	localObject1	Object
-      //   513	16	5	localException1	java.lang.Exception
-      //   579	18	5	arrayOfByte1	byte[]
-      //   606	17	5	localException2	java.lang.Exception
-      //   632	114	5	localObject2	Object
-      //   757	30	5	localObject3	Object
-      //   791	1	5	localObject4	Object
-      //   796	8	5	localIOException1	java.io.IOException
-      //   815	30	5	localObject5	Object
+      //   0	858	0	this	a
+      //   0	858	1	paramVarArgs	String[]
+      //   328	63	2	i	int
+      //   326	66	3	j	int
+      //   336	22	4	k	int
+      //   8	497	5	localObject1	Object
+      //   514	16	5	localException1	java.lang.Exception
+      //   580	18	5	arrayOfByte1	byte[]
+      //   607	17	5	localException2	java.lang.Exception
+      //   633	114	5	localObject2	Object
+      //   758	30	5	localObject3	Object
+      //   792	1	5	localObject4	Object
+      //   797	8	5	localIOException1	java.io.IOException
+      //   816	30	5	localObject5	Object
       //   269	5	6	localException3	java.lang.Exception
-      //   322	24	6	arrayOfByte2	byte[]
-      //   487	5	6	localException4	java.lang.Exception
-      //   849	1	6	localIOException2	java.io.IOException
-      //   315	334	7	localOutputStream	java.io.OutputStream
-      //   712	5	7	localException5	java.lang.Exception
-      //   738	1	7	localIOException3	java.io.IOException
-      //   750	78	7	localObject7	Object
-      //   306	506	8	localInputStream	java.io.InputStream
-      //   743	13	9	localObject8	Object
-      //   762	10	9	localObject9	Object
-      //   778	7	9	localObject10	Object
-      //   801	13	9	localException6	java.lang.Exception
-      //   820	10	9	localException7	java.lang.Exception
-      //   836	7	9	localException8	java.lang.Exception
+      //   323	24	6	arrayOfByte2	byte[]
+      //   488	5	6	localException4	java.lang.Exception
+      //   850	1	6	localIOException2	java.io.IOException
+      //   316	334	7	localOutputStream	java.io.OutputStream
+      //   713	5	7	localException5	java.lang.Exception
+      //   739	1	7	localIOException3	java.io.IOException
+      //   751	78	7	localObject7	Object
+      //   306	507	8	localInputStream	java.io.InputStream
+      //   744	13	9	localObject8	Object
+      //   763	10	9	localObject9	Object
+      //   779	7	9	localObject10	Object
+      //   802	13	9	localException6	java.lang.Exception
+      //   821	10	9	localException7	java.lang.Exception
+      //   837	7	9	localException8	java.lang.Exception
       // Exception table:
       //   from	to	target	type
       //   13	30	105	finally
@@ -829,56 +829,56 @@ public class SnsAdNativeLandingTestUI
       //   83	98	116	finally
       //   226	234	269	java/lang/Exception
       //   247	262	284	finally
-      //   444	452	487	java/lang/Exception
-      //   465	480	502	finally
-      //   52	75	513	java/lang/Exception
-      //   127	145	513	java/lang/Exception
-      //   145	163	513	java/lang/Exception
-      //   563	571	606	java/lang/Exception
-      //   584	599	621	finally
-      //   52	75	632	finally
-      //   127	145	632	finally
-      //   145	163	632	finally
-      //   668	676	712	java/lang/Exception
-      //   689	704	727	finally
-      //   648	653	738	java/io/IOException
-      //   658	663	738	java/io/IOException
-      //   163	221	743	finally
-      //   295	308	743	finally
-      //   308	317	762	finally
-      //   317	324	778	finally
-      //   328	337	778	finally
-      //   343	353	778	finally
-      //   358	389	778	finally
-      //   394	419	778	finally
-      //   524	538	791	finally
-      //   543	548	796	java/io/IOException
-      //   553	558	796	java/io/IOException
-      //   163	221	801	java/lang/Exception
-      //   295	308	801	java/lang/Exception
-      //   308	317	820	java/lang/Exception
-      //   317	324	836	java/lang/Exception
-      //   328	337	836	java/lang/Exception
-      //   343	353	836	java/lang/Exception
-      //   358	389	836	java/lang/Exception
-      //   394	419	836	java/lang/Exception
-      //   424	429	849	java/io/IOException
-      //   434	439	849	java/io/IOException
+      //   445	453	488	java/lang/Exception
+      //   466	481	503	finally
+      //   52	75	514	java/lang/Exception
+      //   127	145	514	java/lang/Exception
+      //   145	163	514	java/lang/Exception
+      //   564	572	607	java/lang/Exception
+      //   585	600	622	finally
+      //   52	75	633	finally
+      //   127	145	633	finally
+      //   145	163	633	finally
+      //   669	677	713	java/lang/Exception
+      //   690	705	728	finally
+      //   649	654	739	java/io/IOException
+      //   659	664	739	java/io/IOException
+      //   163	221	744	finally
+      //   295	308	744	finally
+      //   308	318	763	finally
+      //   318	325	779	finally
+      //   329	338	779	finally
+      //   344	354	779	finally
+      //   359	390	779	finally
+      //   395	420	779	finally
+      //   525	539	792	finally
+      //   544	549	797	java/io/IOException
+      //   554	559	797	java/io/IOException
+      //   163	221	802	java/lang/Exception
+      //   295	308	802	java/lang/Exception
+      //   308	318	821	java/lang/Exception
+      //   318	325	837	java/lang/Exception
+      //   329	338	837	java/lang/Exception
+      //   344	354	837	java/lang/Exception
+      //   359	390	837	java/lang/Exception
+      //   395	420	837	java/lang/Exception
+      //   425	430	850	java/io/IOException
+      //   435	440	850	java/io/IOException
     }
     
     static abstract interface a
     {
-      public abstract void Oy(String paramString);
+      public abstract void GO(String paramString);
       
-      public abstract void aij(String paramString);
+      public abstract void V(String paramString, int paramInt);
       
-      public abstract void dT(String paramString, int paramInt);
+      public abstract void abh(String paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingTestUI
  * JD-Core Version:    0.7.0.1
  */

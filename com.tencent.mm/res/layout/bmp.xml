@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/h1i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="right" android:id="@id/h1e" android:paddingLeft="24.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_weight="1.0" />
+<LinearLayout android:gravity="center_vertical" android:id="@id/a7i" android:background="@drawable/abw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/a7e" android:background="@drawable/b7q" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="@dimen/aum">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/a7g" android:layout_width="@dimen/m6" android:layout_height="@dimen/m6" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:src="@raw/icons_outlined_imac" app:iconColor="@color/BW_50" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/agv" android:id="@id/a7j" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/m4" />
+    </LinearLayout>
 </LinearLayout>

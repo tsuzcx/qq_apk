@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:orientation="horizontal" android:background="@color/zl" android:paddingLeft="@dimen/acn" android:paddingTop="@dimen/aco" android:paddingRight="@dimen/acn" android:paddingBottom="@dimen/aco" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/is" android:textColor="@color/zn" android:id="@id/f7l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/acp" android:includeFontPadding="false" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/zm" android:gravity="right" android:id="@id/f7k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="false" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/a3d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/bry" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/byt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/c58" android:scaleType="centerCrop" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/j2_" android:text="@string/ief" android:singleLine="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/tl" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/j2b" android:background="@drawable/aqg" android:paddingLeft="@dimen/cr" android:paddingTop="@dimen/cd" android:paddingRight="@dimen/cr" android:paddingBottom="@dimen/cd" android:visibility="gone" android:text="@string/ibh" android:singleLine="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/tl" />
+        <com.tencent.mm.plugin.scanner.ui.ScannerFlashSwitcher android:id="@id/j2i" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <LinearLayout android:id="@id/j__" android:background="@drawable/aq8" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginRight="@dimen/i9" android:layout_marginBottom="@dimen/i_" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="@string/ib5">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:padding="@dimen/j6" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@raw/icons_filled_album" app:iconColor="@color/BW_100_Alpha_0_9" />
+        </LinearLayout>
+        <TextView android:textSize="28.0dip" android:textColor="@color/az" android:id="@id/j2a" android:paddingBottom="@dimen/apc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ibu" android:includeFontPadding="false" android:shadowColor="@color/UN_BW_0_Alpha_0_2" android:shadowRadius="10.0" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</merge>

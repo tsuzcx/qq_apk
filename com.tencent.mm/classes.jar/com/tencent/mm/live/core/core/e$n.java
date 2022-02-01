@@ -1,36 +1,36 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$Role;", "", "()V", "ANCHOR", "", "getANCHOR", "()I", "VISITOR", "getVISITOR", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MirrorMode;", "", "()V", "AUTO", "", "getAUTO", "()I", "SAME", "getSAME", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$n
 {
-  private static final int kkJ = 0;
-  private static final int kkK = 1;
-  public static final n kkL;
+  public static final n mLw;
+  private static final int mLx = 0;
+  private static final int mLy;
   
   static
   {
-    AppMethodBeat.i(200239);
-    kkL = new n();
-    kkK = 1;
-    AppMethodBeat.o(200239);
+    AppMethodBeat.i(248176);
+    mLw = new n();
+    mLy = 1;
+    AppMethodBeat.o(248176);
   }
   
-  public static int aKK()
+  public static int bdA()
   {
-    return kkJ;
+    return mLx;
   }
   
-  public static int aKL()
+  public static int bdB()
   {
-    return kkK;
+    return mLy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.live.core.core.e.n
  * JD-Core Version:    0.7.0.1
  */

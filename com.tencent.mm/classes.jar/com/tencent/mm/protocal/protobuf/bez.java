@@ -1,72 +1,107 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bez
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int opType;
-  public String sessionId;
+  public dij ZPi;
+  public String ZPj;
+  public String description;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(207344);
+    AppMethodBeat.i(258670);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.opType);
-      if (this.sessionId != null) {
-        paramVarArgs.f(2, this.sessionId);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.description != null) {
+        paramVarArgs.g(1, this.description);
       }
-      AppMethodBeat.o(207344);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bM(1, this.opType) + 0;
-      paramInt = i;
-      if (this.sessionId != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.sessionId);
-      }
-      AppMethodBeat.o(207344);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(207344);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      bez localbez = (bez)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.ZPi != null)
       {
-      default: 
-        AppMethodBeat.o(207344);
-        return -1;
-      case 1: 
-        localbez.opType = locala.abFh.AK();
-        AppMethodBeat.o(207344);
+        paramVarArgs.qD(2, this.ZPi.computeSize());
+        this.ZPi.writeFields(paramVarArgs);
+      }
+      if (this.ZPj != null) {
+        paramVarArgs.g(3, this.ZPj);
+      }
+      AppMethodBeat.o(258670);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.description == null) {
+        break label404;
+      }
+    }
+    label404:
+    for (int i = i.a.a.b.b.a.h(1, this.description) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.ZPi != null) {
+        paramInt = i + i.a.a.a.qC(2, this.ZPi.computeSize());
+      }
+      i = paramInt;
+      if (this.ZPj != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.ZPj);
+      }
+      AppMethodBeat.o(258670);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(258670);
         return 0;
       }
-      localbez.sessionId = locala.abFh.readString();
-      AppMethodBeat.o(207344);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        bez localbez = (bez)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(258670);
+          return -1;
+        case 1: 
+          localbez.description = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(258670);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            dij localdij = new dij();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localdij.parseFrom((byte[])localObject);
+            }
+            localbez.ZPi = localdij;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(258670);
+          return 0;
+        }
+        localbez.ZPj = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(258670);
+        return 0;
+      }
+      AppMethodBeat.o(258670);
+      return -1;
     }
-    AppMethodBeat.o(207344);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bez
  * JD-Core Version:    0.7.0.1
  */

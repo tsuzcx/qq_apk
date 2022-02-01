@@ -4,26 +4,27 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 
 public final class h
 {
-  boolean XZc;
-  a XZd;
+  boolean afPN;
+  a afPO;
   Context context;
-  Runnable oJs;
-  boolean qWp;
-  boolean qWq;
-  boolean qWr;
-  int qWs;
+  Runnable rNg;
   String text;
-  s tipDialog;
+  w tipDialog;
+  boolean ubY;
+  boolean ubZ;
+  boolean uca;
+  int ucb;
   
   public h(Context paramContext)
   {
     AppMethodBeat.i(39488);
-    this.XZc = false;
-    this.oJs = new Runnable()
+    this.afPN = false;
+    this.rNg = new Runnable()
     {
       public final void run()
       {
@@ -31,7 +32,7 @@ public final class h
         if (h.this.tipDialog != null) {
           h.this.tipDialog.dismiss();
         }
-        h.this.cjT();
+        h.this.cLf();
         AppMethodBeat.o(39487);
       }
     };
@@ -39,62 +40,62 @@ public final class h
     AppMethodBeat.o(39488);
   }
   
-  private boolean pG()
+  private boolean checkReady()
   {
-    return this.qWp & this.qWq;
+    return this.ubY & this.ubZ;
   }
   
   public final void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    AppMethodBeat.i(272893);
-    this.qWp = true;
-    this.qWr = paramBoolean1;
+    AppMethodBeat.i(250920);
+    this.ubY = true;
+    this.uca = paramBoolean1;
     this.text = paramString;
-    this.qWs = paramInt;
-    this.XZc = paramBoolean2;
-    if (pG())
+    this.ucb = paramInt;
+    this.afPN = paramBoolean2;
+    if (checkReady())
     {
-      cjT();
-      AppMethodBeat.o(272893);
+      cLf();
+      AppMethodBeat.o(250920);
       return;
     }
     if (paramBoolean1)
     {
-      this.tipDialog = com.tencent.mm.ui.base.h.a(this.context, this.context.getString(R.l.eSl), true, null);
-      MMHandlerThread.postToMainThreadDelayed(this.oJs, 5000L);
+      this.tipDialog = k.a(this.context, this.context.getString(R.l.gUV), true, null);
+      MMHandlerThread.postToMainThreadDelayed(this.rNg, 5000L);
     }
-    AppMethodBeat.o(272893);
+    AppMethodBeat.o(250920);
   }
   
-  public final void cjT()
+  public final void cLf()
   {
     AppMethodBeat.i(39489);
-    if (this.XZd != null) {
-      this.XZd.e(this.qWr, this.text, this.XZc);
+    if (this.afPO != null) {
+      this.afPO.g(this.uca, this.text, this.afPN);
     }
     AppMethodBeat.o(39489);
   }
   
-  public final void hZj()
+  public final void jEb()
   {
-    AppMethodBeat.i(272891);
-    this.qWq = true;
-    if (pG())
+    AppMethodBeat.i(250916);
+    this.ubZ = true;
+    if (checkReady())
     {
-      MMHandlerThread.removeRunnable(this.oJs);
-      cjT();
+      MMHandlerThread.removeRunnable(this.rNg);
+      cLf();
     }
-    AppMethodBeat.o(272891);
+    AppMethodBeat.o(250916);
   }
   
   static abstract interface a
   {
-    public abstract void e(boolean paramBoolean1, String paramString, boolean paramBoolean2);
+    public abstract void g(boolean paramBoolean1, String paramString, boolean paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.h
  * JD-Core Version:    0.7.0.1
  */

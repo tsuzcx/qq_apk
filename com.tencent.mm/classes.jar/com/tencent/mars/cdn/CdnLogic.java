@@ -7,8 +7,8 @@ import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ public class CdnLogic
   public static final int MediaTypeFriendsADImageThumb = 20204;
   public static final int MediaTypeFriendsImageThumb = 20205;
   public static final int MediaTypeFriendsVideoThumbImage = 20250;
+  public static final int MediaType_ChatVoice = 15;
   public static final int MediaType_F2F_VOICE_RESOURCE = 101;
   public static final int MediaType_FAVORITE_FILE = 10001;
   public static final int MediaType_FAVORITE_VIDEO = 10002;
@@ -128,17 +129,17 @@ public class CdnLogic
   public static final int kNetTypeWifi = 1;
   public static final int kSingleImageDownload = 1;
   
-  public static void InitSavePath(String paramString, CdnLogic.AppCallback paramAppCallback)
+  public static void InitSavePath(String paramString, AppCallback paramAppCallback)
   {
     setAppCallback(paramAppCallback);
     onCreate(paramString);
   }
   
-  public static void Initialize(String paramString1, CdnLogic.AppCallback paramAppCallback, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static void Initialize(String paramString1, AppCallback paramAppCallback, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     Log.i("mars.CdnLogic", "init cdnlogic");
     setAppCallback(paramAppCallback);
-    onCreate(u.n(paramString1, true));
+    onCreate(y.n(paramString1, true));
     setRSAPublicKeyParams(paramString2, paramString3, paramString4);
     setToUserCiper(paramString5);
   }
@@ -247,12 +248,18 @@ public class CdnLogic
   
   public static native int getRecentAverageSpeed(int paramInt);
   
+  public static native int getRecentAverageSpeed2(int paramInt1, int paramInt2);
+  
+  public static native CdnLogic.DownloadInfo getRecentDownloadInfo(int paramInt1, int paramInt2, int paramInt3);
+  
   public static native boolean getSnsImagePrivateProtocolAvalible();
   
   public static String getSystemProperty(String paramString)
   {
     return System.getProperty(paramString);
   }
+  
+  public static native int getTaskRecentAverageSpeed(String paramString, int paramInt1, int paramInt2);
   
   public static int getUSBState()
   {
@@ -277,14 +284,14 @@ public class CdnLogic
   public static int isFileReady(String paramString)
   {
     int i;
-    if (!new q(paramString).ifE()) {
+    if (!new u(paramString).jKS()) {
       i = -1;
     }
     int j;
     do
     {
       return i;
-      Log.i("mars.CdnLogic", "checkFileProperty sdcard state ".concat(String.valueOf(g.avJ())));
+      Log.i("mars.CdnLogic", "checkFileProperty sdcard state ".concat(String.valueOf(g.aQd())));
       j = getUSBState();
       i = j;
     } while (2 != j);
@@ -306,20 +313,20 @@ public class CdnLogic
   
   public static long queryFreeSpace(String paramString)
   {
-    q localq = new q(paramString);
-    paramString = localq;
-    if (!localq.isDirectory()) {
-      paramString = localq.ifB();
+    u localu = new u(paramString);
+    paramString = localu;
+    if (!localu.isDirectory()) {
+      paramString = localu.jKP();
     }
     do
     {
-      long l = paramString.ifN();
+      long l = paramString.jLa();
       if (l > 0L) {
         return l;
       }
-      localq = paramString.ifB();
-      paramString = localq;
-    } while (localq != null);
+      localu = paramString.jKP();
+      paramString = localu;
+    } while (localu != null);
     return 0L;
   }
   
@@ -331,7 +338,7 @@ public class CdnLogic
   
   public static native int resumeHttpMultiSocketDownloadTask(String paramString);
   
-  private static native void setAppCallback(CdnLogic.AppCallback paramAppCallback);
+  private static native void setAppCallback(AppCallback paramAppCallback);
   
   public static native void setCdnInfo(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
@@ -357,13 +364,13 @@ public class CdnLogic
   
   public static native int startC2CDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
   
-  public static native int startC2CUpload(C2CUploadRequest paramC2CUploadRequest, CdnLogic.UploadCallback paramUploadCallback);
+  public static native int startC2CUpload(C2CUploadRequest paramC2CUploadRequest, UploadCallback paramUploadCallback);
   
   public static native int startCronetFileDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
   
   public static native int startCronetSimpleRequest(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
   
-  public static native int startFtnUpload(C2CUploadRequest paramC2CUploadRequest, CdnLogic.UploadCallback paramUploadCallback);
+  public static native int startFtnUpload(C2CUploadRequest paramC2CUploadRequest, UploadCallback paramUploadCallback);
   
   public static native int startHttpMultiSocketDownloadTask(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
   
@@ -373,7 +380,7 @@ public class CdnLogic
   
   public static native int startSNSDownload(C2CDownloadRequest paramC2CDownloadRequest, VideoStreamingCallback paramVideoStreamingCallback, CdnLogic.DownloadCallback paramDownloadCallback, int paramInt);
   
-  public static native int startSSUpload(C2CUploadRequest paramC2CUploadRequest, SessionCallback paramSessionCallback, CdnLogic.UploadCallback paramUploadCallback);
+  public static native int startSSUpload(C2CUploadRequest paramC2CUploadRequest, SessionCallback paramSessionCallback, UploadCallback paramUploadCallback);
   
   public static native int startURLDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
   
@@ -382,6 +389,28 @@ public class CdnLogic
   public static native boolean taskExist(String paramString);
   
   public static native void triggerPreConnect(String paramString, String[] paramArrayOfString, boolean paramBoolean);
+  
+  public static abstract interface AppCallback
+  {
+    public abstract void onBadNetworkProbed();
+    
+    public abstract void reportFlow(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+    
+    public abstract void requestGetCDN(int paramInt);
+    
+    public abstract String[] resolveHost(String paramString, boolean paramBoolean, int[] paramArrayOfInt);
+  }
+  
+  public static class BatchSnsReqImageData
+  {
+    public String decryptKey = "";
+    public String fileKey = "";
+    public String imageCachePath = "";
+    public int picIndex = 0;
+    public boolean retry = true;
+    public int totalFileSize = 0;
+    public String url = "";
+  }
   
   public static class C2CDownloadRequest
   {
@@ -718,12 +747,12 @@ public class CdnLogic
     
     public void setSavePath(String paramString)
     {
-      this.savePath = u.n(paramString, false);
+      this.savePath = y.n(paramString, false);
     }
     
     public void setStatePath(String paramString)
     {
-      this.statePath = u.n(paramString, false);
+      this.statePath = y.n(paramString, false);
     }
     
     public C2CDownloadRequest signalQuality(String paramString)
@@ -900,7 +929,7 @@ public class CdnLogic
     
     public void setFilePath(String paramString)
     {
-      this.filePath = u.n(paramString, false);
+      this.filePath = y.n(paramString, false);
       if (Util.isNullOrNil(this.filePath)) {
         this.filePath = "";
       }
@@ -908,7 +937,7 @@ public class CdnLogic
     
     public void setMidimgPath(String paramString)
     {
-      this.midimgPath = u.n(paramString, false);
+      this.midimgPath = y.n(paramString, false);
       if (Util.isNullOrNil(this.midimgPath)) {
         this.midimgPath = "";
       }
@@ -916,7 +945,7 @@ public class CdnLogic
     
     public void setThumbfilePath(String paramString)
     {
-      this.thumbfilePath = u.n(paramString, false);
+      this.thumbfilePath = y.n(paramString, false);
       if (Util.isNullOrNil(this.thumbfilePath)) {
         this.thumbfilePath = "";
       }
@@ -1015,20 +1044,18 @@ public class CdnLogic
     }
   }
   
-  public static class CronetTaskResult
-  {
-    public CdnLogic.WebPageProfile performance = null;
-    public int statusCode = 0;
-    public String statusText = "";
-    public boolean useHttp2 = false;
-    public boolean useQuic = false;
-  }
-  
   public static abstract interface SessionCallback
   {
     public abstract byte[] decodeSessionResponseBuf(String paramString, byte[] paramArrayOfByte);
     
     public abstract byte[] getSessionRequestBuf(String paramString, byte[] paramArrayOfByte);
+  }
+  
+  public static abstract interface UploadCallback
+  {
+    public abstract void onC2CUploadCompleted(String paramString, CdnLogic.C2CUploadResult paramC2CUploadResult);
+    
+    public abstract void onUploadProgressChanged(String paramString, long paramLong1, long paramLong2);
   }
   
   public static abstract interface VideoStreamingCallback
@@ -1046,7 +1073,7 @@ public class CdnLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mars.cdn.CdnLogic
  * JD-Core Version:    0.7.0.1
  */

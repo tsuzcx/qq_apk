@@ -1,201 +1,216 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.f;
-import com.tencent.mm.ad.i;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
+import com.tencent.mm.protocal.protobuf.atz;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig;", "", "jsonStr", "", "(Ljava/lang/String;)V", "configList", "", "Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Config;", "getConfigList", "()Ljava/util/List;", "Companion", "Config", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderExptUtil;", "", "()V", "TAG", "", "fillExptFlag", "", "finderBaseReq", "Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "EXPT_FLAG", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
 {
-  private static boolean AkY = false;
-  public static final a AkZ;
-  private static final String TAG = "Finder.FinderFakeVideoConfig";
-  final List<b> AkX;
+  public static final k FKi;
   
   static
   {
-    AppMethodBeat.i(166965);
-    AkZ = new a((byte)0);
-    TAG = "Finder.FinderFakeVideoConfig";
-    AppMethodBeat.o(166965);
+    AppMethodBeat.i(339235);
+    FKi = new k();
+    AppMethodBeat.o(339235);
   }
   
-  public k(String paramString)
+  public static void a(atz paramatz)
   {
-    AppMethodBeat.i(166964);
-    this.AkX = ((List)new ArrayList());
-    for (;;)
+    AppMethodBeat.i(339225);
+    s.u(paramatz, "finderBaseReq");
+    paramatz.ZEr = 0;
+    Object localObject = d.FAy;
+    if (((Number)d.eRV().bmg()).intValue() == 1)
     {
-      int i;
-      try
-      {
-        paramString = new i(paramString).MI("configs");
-        if (paramString != null)
-        {
-          int j = paramString.length();
-          i = 0;
-          if (i < j)
-          {
-            Object localObject = paramString.sy(i);
-            String str1 = ((i)localObject).optString("brands");
-            String str2 = ((i)localObject).optString("models");
-            int k = ((i)localObject).optInt("maxSize", 0);
-            if (k > 0)
-            {
-              localObject = this.AkX;
-              p.j(str1, "brands");
-              p.j(str2, "models");
-              ((List)localObject).add(new b(str1, str2, k));
-            }
-          }
-          else
-          {
-            AppMethodBeat.o(166964);
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(166964);
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        AppMethodBeat.o(166964);
-        return;
-      }
-      i += 1;
+      i = paramatz.ZEr;
+      localObject = a.FKj;
+      paramatz.ZEr = (i | a.eYS());
     }
+    localObject = com.tencent.mm.plugin.finder.permission.a.ESS;
+    if (com.tencent.mm.plugin.finder.permission.a.eGX())
+    {
+      i = paramatz.ZEr;
+      localObject = a.FKj;
+      paramatz.ZEr = (i | a.eYT());
+    }
+    localObject = d.FAy;
+    if (((Number)d.eUg().bmg()).intValue() == 1)
+    {
+      i = paramatz.ZEr;
+      localObject = a.FKj;
+      paramatz.ZEr = (i | a.eYU());
+    }
+    localObject = d.FAy;
+    if (((Number)d.eUo().bmg()).intValue() == 1)
+    {
+      i = paramatz.ZEr;
+      localObject = a.FKj;
+      paramatz.ZEr = (i | a.eYV());
+    }
+    int i = paramatz.ZEr;
+    localObject = a.FKj;
+    int j = a.eYW();
+    localObject = a.FKj;
+    int k = a.eYX();
+    localObject = a.FKj;
+    int m = a.eYY();
+    localObject = a.FKj;
+    int n = a.eYZ();
+    localObject = a.FKj;
+    paramatz.ZEr = (i | j | k | m | n | a.eZa());
+    localObject = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+    if (com.tencent.mm.plugin.finder.nearby.abtest.a.eEi())
+    {
+      i = paramatz.ZEr;
+      localObject = a.FKj;
+      paramatz.ZEr = (i | a.eZb());
+    }
+    localObject = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+    if (com.tencent.mm.plugin.finder.nearby.abtest.a.eEl())
+    {
+      i = paramatz.ZEr;
+      localObject = a.FKj;
+      paramatz.ZEr = (i | a.eZc());
+    }
+    localObject = d.FAy;
+    if (((Number)d.eXJ().bmg()).intValue() == 1)
+    {
+      i = paramatz.ZEr;
+      localObject = a.FKj;
+      paramatz.ZEr = (i | a.eZd());
+    }
+    i = paramatz.ZEr;
+    localObject = a.FKj;
+    paramatz.ZEr = (i | a.eZf());
+    localObject = d.FAy;
+    if (((Number)d.eYE().bmg()).intValue() == 1) {
+      paramatz.ZEr |= 0x4000;
+    }
+    Log.i("Finder.ExptUtil", s.X("[fillExptFlag] exptFlag=", Integer.valueOf(paramatz.ZEr)));
+    AppMethodBeat.o(339225);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "debugEnable", "", "getDebugEnable", "()Z", "setDebugEnable", "(Z)V", "getConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig;", "hitConfig", "videoSize", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderExptUtil$EXPT_FLAG;", "", "()V", "FINDER_COMMENT_EXPOSE", "", "getFINDER_COMMENT_EXPOSE", "()I", "FriendCommentExpand", "getFriendCommentExpand", "HAS_FINDER_ENTRANCE", "getHAS_FINDER_ENTRANCE", "MMFinderBaseReqExptFlag_AllFullScreen", "getMMFinderBaseReqExptFlag_AllFullScreen", "MMFinderBaseReqExptFlag_FoldFriendTab", "getMMFinderBaseReqExptFlag_FoldFriendTab", "MMFinderBaseReqExptFlag_FollowFullScreen", "getMMFinderBaseReqExptFlag_FollowFullScreen", "MMFinderBaseReqExptFlag_FriendFullScreen", "getMMFinderBaseReqExptFlag_FriendFullScreen", "MMFinderBaseReqExptFlag_FriendReddotJumpMachine", "getMMFinderBaseReqExptFlag_FriendReddotJumpMachine", "MMFinderBaseReqExptFlag_IsFullScreen", "getMMFinderBaseReqExptFlag_IsFullScreen", "MMFinderBaseReqExptFlag_MachineShowSquare", "getMMFinderBaseReqExptFlag_MachineShowSquare", "MMFinderBaseReqExptFlag_NewLiveEntrance", "getMMFinderBaseReqExptFlag_NewLiveEntrance", "MMFinderBaseReqExptFlag_NewLiveEntrance_On_TopStory", "getMMFinderBaseReqExptFlag_NewLiveEntrance_On_TopStory", "MMFinderBaseReqExptFlag_OutlineInteractionIcon", "MMFinderBaseReqExptFlag_RelatedFullScreen", "getMMFinderBaseReqExptFlag_RelatedFullScreen", "MMFinderBaseReqExptFlag_ShowStarButton", "getMMFinderBaseReqExptFlag_ShowStarButton", "REAL_NAME_LIKE", "getREAL_NAME_LIKE", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static boolean Qi(int paramInt)
-    {
-      AppMethodBeat.i(166959);
-      Object localObject1 = Build.BRAND;
-      p.j(localObject1, "Build.BRAND");
-      if (localObject1 == null)
-      {
-        localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(166959);
-        throw ((Throwable)localObject1);
-      }
-      localObject1 = ((String)localObject1).toLowerCase();
-      p.j(localObject1, "(this as java.lang.String).toLowerCase()");
-      String str = Build.MODEL;
-      p.j(str, "Build.MODEL");
-      if (str == null)
-      {
-        localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(166959);
-        throw ((Throwable)localObject1);
-      }
-      str = str.toLowerCase();
-      p.j(str, "(this as java.lang.String).toLowerCase()");
-      Object localObject2 = d.AjH;
-      localObject2 = d.dTa();
-      p.j(localObject2, "FinderConfig.FAKE_VIDEO_CONFIG_JSON");
-      Object localObject3 = ((Iterable)new k((String)localObject2).AkX).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject2 = (k.b)((Iterator)localObject3).next();
-        if (((n.a((CharSequence)((k.b)localObject2).Ala, (CharSequence)localObject1, false)) || (n.a((CharSequence)((k.b)localObject2).Alb, (CharSequence)str, false)) || (Util.isNullOrNil(((k.b)localObject2).Ala))) && (paramInt > ((k.b)localObject2).maxSize) && (((k.b)localObject2).maxSize > 0))
-        {
-          localObject3 = k.AkZ;
-          Log.i(k.access$getTAG$cp(), "hitConfig brand:" + (String)localObject1 + ", model:" + str + ", videoSize:" + paramInt + "; config brands:" + ((k.b)localObject2).Ala + ", models:" + ((k.b)localObject2).Alb + ", maxSize:" + ((k.b)localObject2).maxSize);
-          AppMethodBeat.o(166959);
-          return true;
-        }
-      }
-      if (Log.getLogLevel() <= 1)
-      {
-        boolean bool = k.dYA();
-        AppMethodBeat.o(166959);
-        return bool;
-      }
-      AppMethodBeat.o(166959);
-      return false;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Config;", "", "brands", "", "models", "maxSize", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "getBrands", "()Ljava/lang/String;", "getMaxSize", "()I", "getModels", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "plugin-finder_release"})
-  public static final class b
-  {
-    final String Ala;
-    final String Alb;
-    final int maxSize;
+    public static final a FKj;
+    private static final int FKk;
+    private static final int FKl;
+    private static final int FKm;
+    private static final int FKn;
+    private static final int FKo;
+    private static final int FKp;
+    private static final int FKq;
+    private static final int FKr;
+    private static final int FKs;
+    private static final int FKt;
+    private static final int FKu;
+    private static final int FKv;
+    private static final int FKw;
+    private static final int FKx;
+    private static final int FKy;
     
-    public b(String paramString1, String paramString2, int paramInt)
+    static
     {
-      AppMethodBeat.i(166960);
-      this.Ala = paramString1;
-      this.Alb = paramString2;
-      this.maxSize = paramInt;
-      AppMethodBeat.o(166960);
+      AppMethodBeat.i(339167);
+      FKj = new a();
+      FKk = 1;
+      FKl = 2;
+      FKm = 4;
+      FKn = 8;
+      FKo = 16;
+      FKp = 32;
+      FKq = 64;
+      FKr = 128;
+      FKs = 256;
+      FKt = 512;
+      FKu = 1024;
+      FKv = 2048;
+      FKw = 4096;
+      FKx = 8192;
+      FKy = 32768;
+      AppMethodBeat.o(339167);
     }
     
-    public final boolean equals(Object paramObject)
+    public static int eYS()
     {
-      AppMethodBeat.i(166963);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((!p.h(this.Ala, paramObject.Ala)) || (!p.h(this.Alb, paramObject.Alb)) || (this.maxSize != paramObject.maxSize)) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(166963);
-        return true;
-      }
-      AppMethodBeat.o(166963);
-      return false;
+      return FKk;
     }
     
-    public final int hashCode()
+    public static int eYT()
     {
-      int j = 0;
-      AppMethodBeat.i(166962);
-      String str = this.Ala;
-      if (str != null) {}
-      for (int i = str.hashCode();; i = 0)
-      {
-        str = this.Alb;
-        if (str != null) {
-          j = str.hashCode();
-        }
-        int k = this.maxSize;
-        AppMethodBeat.o(166962);
-        return (i * 31 + j) * 31 + k;
-      }
+      return FKl;
     }
     
-    public final String toString()
+    public static int eYU()
     {
-      AppMethodBeat.i(166961);
-      String str = "Config(brands=" + this.Ala + ", models=" + this.Alb + ", maxSize=" + this.maxSize + ")";
-      AppMethodBeat.o(166961);
-      return str;
+      return FKm;
+    }
+    
+    public static int eYV()
+    {
+      return FKn;
+    }
+    
+    public static int eYW()
+    {
+      return FKo;
+    }
+    
+    public static int eYX()
+    {
+      return FKp;
+    }
+    
+    public static int eYY()
+    {
+      return FKq;
+    }
+    
+    public static int eYZ()
+    {
+      return FKr;
+    }
+    
+    public static int eZa()
+    {
+      return FKs;
+    }
+    
+    public static int eZb()
+    {
+      return FKt;
+    }
+    
+    public static int eZc()
+    {
+      return FKu;
+    }
+    
+    public static int eZd()
+    {
+      return FKv;
+    }
+    
+    public static int eZe()
+    {
+      return FKx;
+    }
+    
+    public static int eZf()
+    {
+      return FKy;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.k
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.weui.base.preference;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.g;
+import com.tencent.mm.ck.a.g;
 
 public class PreferenceSmallCategory
   extends PreferenceCategory
@@ -28,7 +28,7 @@ public class PreferenceSmallCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.weui.base.preference.PreferenceSmallCategory
  * JD-Core Version:    0.7.0.1
  */

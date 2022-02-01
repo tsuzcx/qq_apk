@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>icons_filled_search</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons_filled_search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="common_icons_search" fill="#000000">
+            <path d="M49.8648743,45.515253 L62.5986175,58.2489962 L58.3559768,62.4916369 L45.6375899,49.77325 C42.1214005,52.4266541 37.7444413,54 33,54 C21.402,54 12,44.598 12,33 C12,21.402 21.402,12 33,12 C44.598,12 54,21.402 54,33 C54,37.6895728 52.4628346,42.0201139 49.8648743,45.515253 Z M48,33 C48,24.7157143 41.2842857,18 33,18 C24.7157143,18 18,24.7157143 18,33 C18,41.2842857 24.7157143,48 33,48 C41.2842857,48 48,41.2842857 48,33 Z" id="Fill-1"></path>
+        </g>
+    </g>
+</svg>

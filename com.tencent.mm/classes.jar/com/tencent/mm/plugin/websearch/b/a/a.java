@@ -1,47 +1,20 @@
 package com.tencent.mm.plugin.websearch.b.a;
 
-import com.tencent.mm.plugin.fts.a.a.m;
-import java.util.List;
+import com.tencent.mm.protocal.protobuf.cry;
+import kotlin.Metadata;
 
-public abstract class a<T>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;", "", "appendSearchTag", "", "tag", "", "enterType", "", "onDismiss", "onSearchShare", "shareContent", "Lcom/tencent/mm/protocal/protobuf/GetSearchShareResponse;", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface a
 {
-  protected int PAN;
-  protected String query;
+  public abstract void a(cry paramcry);
   
-  public a(String paramString, int paramInt)
-  {
-    this.query = paramString;
-    this.PAN = 2147483647;
-  }
+  public abstract void hN(String paramString, int paramInt);
   
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {}
-    for (;;)
-    {
-      return true;
-      if (!(paramObject instanceof a)) {
-        break;
-      }
-      paramObject = (a)paramObject;
-      if ((this.query == paramObject.query) || ((this.query != null) && (this.query.equalsIgnoreCase(paramObject.query)))) {}
-      for (int i = 1; (paramObject.PAN != this.PAN) || (i == 0); i = 0) {
-        return false;
-      }
-    }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return super.hashCode();
-  }
-  
-  public abstract void iX(List<m> paramList);
+  public abstract void onDismiss();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.b.a.a
  * JD-Core Version:    0.7.0.1
  */

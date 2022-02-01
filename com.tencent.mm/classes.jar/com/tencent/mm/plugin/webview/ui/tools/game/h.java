@@ -12,36 +12,36 @@ import java.util.HashMap;
 
 public final class h
 {
-  private static HashMap<String, h> QoI;
-  public long QoA;
-  public long QoB;
-  public long QoC;
-  public long QoD;
-  public long QoE;
-  public long QoF;
-  public long QoG;
-  public long QoH;
-  public long Qor;
-  public long Qos;
-  public long Qot;
-  public long Qou;
-  public long Qov;
-  public long Qow;
-  public long Qox;
-  public long Qoy;
-  public long Qoz;
-  public long qRk;
+  private static HashMap<String, h> XgW;
+  public long XgF;
+  public long XgG;
+  public long XgH;
+  public long XgI;
+  public long XgJ;
+  public long XgK;
+  public long XgL;
+  public long XgM;
+  public long XgN;
+  public long XgO;
+  public long XgP;
+  public long XgQ;
+  public long XgR;
+  public long XgS;
+  public long XgT;
+  public long XgU;
+  public long XgV;
   public long startTime;
+  public long tVS;
   public String url;
   
   static
   {
     AppMethodBeat.i(80894);
-    QoI = new HashMap();
+    XgW = new HashMap();
     AppMethodBeat.o(80894);
   }
   
-  public static void bI(String paramString, long paramLong)
+  public static void bT(String paramString, long paramLong)
   {
     AppMethodBeat.i(182714);
     if (Util.isNullOrNil(paramString))
@@ -49,15 +49,15 @@ public final class h
       AppMethodBeat.o(182714);
       return;
     }
-    if (haz())
+    if (iAM())
     {
-      if (bmJ(paramString) == null) {
+      if (bmn(paramString) == null) {
         break label74;
       }
-      bmJ(paramString).Qor = paramLong;
+      bmn(paramString).XgF = paramLong;
       try
       {
-        a.jTp.a(6, URLEncoder.encode(paramString), "", 0L);
+        a.mtH.a(6, URLEncoder.encode(paramString), "", 0L);
         AppMethodBeat.o(182714);
         return;
       }
@@ -72,7 +72,7 @@ public final class h
     AppMethodBeat.o(182714);
   }
   
-  public static void bJ(String paramString, long paramLong)
+  public static void bU(String paramString, long paramLong)
   {
     AppMethodBeat.i(80882);
     if (Util.isNullOrNil(paramString))
@@ -80,11 +80,11 @@ public final class h
       AppMethodBeat.o(80882);
       return;
     }
-    if (haz())
+    if (iAM())
     {
-      if (bmJ(paramString) != null)
+      if (bmn(paramString) != null)
       {
-        bmJ(paramString).startTime = paramLong;
+        bmn(paramString).startTime = paramLong;
         AppMethodBeat.o(80882);
       }
     }
@@ -94,7 +94,7 @@ public final class h
     AppMethodBeat.o(80882);
   }
   
-  public static void bK(String paramString, long paramLong)
+  public static void bV(String paramString, long paramLong)
   {
     AppMethodBeat.i(80883);
     if (Util.isNullOrNil(paramString))
@@ -102,11 +102,11 @@ public final class h
       AppMethodBeat.o(80883);
       return;
     }
-    if (haz())
+    if (iAM())
     {
-      if (bmJ(paramString) != null)
+      if (bmn(paramString) != null)
       {
-        bmJ(paramString).Qos = paramLong;
+        bmn(paramString).XgG = paramLong;
         AppMethodBeat.o(80883);
       }
     }
@@ -116,7 +116,7 @@ public final class h
     AppMethodBeat.o(80883);
   }
   
-  public static void bL(String paramString, long paramLong)
+  public static void bW(String paramString, long paramLong)
   {
     AppMethodBeat.i(80884);
     if (Util.isNullOrNil(paramString))
@@ -124,11 +124,11 @@ public final class h
       AppMethodBeat.o(80884);
       return;
     }
-    if (haz())
+    if (iAM())
     {
-      if (bmJ(paramString) != null)
+      if (bmn(paramString) != null)
       {
-        bmJ(paramString).Qot = paramLong;
+        bmn(paramString).XgH = paramLong;
         AppMethodBeat.o(80884);
       }
     }
@@ -138,7 +138,7 @@ public final class h
     AppMethodBeat.o(80884);
   }
   
-  public static void bM(String paramString, long paramLong)
+  public static void bX(String paramString, long paramLong)
   {
     AppMethodBeat.i(80885);
     if (Util.isNullOrNil(paramString))
@@ -146,11 +146,11 @@ public final class h
       AppMethodBeat.o(80885);
       return;
     }
-    if (haz())
+    if (iAM())
     {
-      if (bmJ(paramString) != null)
+      if (bmn(paramString) != null)
       {
-        bmJ(paramString).Qou = paramLong;
+        bmn(paramString).XgI = paramLong;
         AppMethodBeat.o(80885);
       }
     }
@@ -160,7 +160,7 @@ public final class h
     AppMethodBeat.o(80885);
   }
   
-  public static void bN(String paramString, long paramLong)
+  public static void bY(String paramString, long paramLong)
   {
     AppMethodBeat.i(80886);
     if (Util.isNullOrNil(paramString))
@@ -168,11 +168,11 @@ public final class h
       AppMethodBeat.o(80886);
       return;
     }
-    if (haz())
+    if (iAM())
     {
-      if (bmJ(paramString) != null)
+      if (bmn(paramString) != null)
       {
-        bmJ(paramString).Qov = paramLong;
+        bmn(paramString).XgJ = paramLong;
         AppMethodBeat.o(80886);
       }
     }
@@ -182,7 +182,7 @@ public final class h
     AppMethodBeat.o(80886);
   }
   
-  public static void bO(String paramString, long paramLong)
+  public static void bZ(String paramString, long paramLong)
   {
     AppMethodBeat.i(80887);
     if (Util.isNullOrNil(paramString))
@@ -190,11 +190,11 @@ public final class h
       AppMethodBeat.o(80887);
       return;
     }
-    if (haz())
+    if (iAM())
     {
-      if (bmJ(paramString) != null)
+      if (bmn(paramString) != null)
       {
-        bmJ(paramString).Qow = paramLong;
+        bmn(paramString).XgK = paramLong;
         AppMethodBeat.o(80887);
       }
     }
@@ -204,136 +204,47 @@ public final class h
     AppMethodBeat.o(80887);
   }
   
-  public static void bP(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80888);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80888);
-      return;
-    }
-    if (haz())
-    {
-      if (bmJ(paramString) != null)
-      {
-        bmJ(paramString).Qox = paramLong;
-        AppMethodBeat.o(80888);
-      }
-    }
-    else {
-      d(7, paramString, paramLong);
-    }
-    AppMethodBeat.o(80888);
-  }
-  
-  public static void bQ(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80889);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80889);
-      return;
-    }
-    if (haz())
-    {
-      if (bmJ(paramString) != null)
-      {
-        bmJ(paramString).Qoy = paramLong;
-        AppMethodBeat.o(80889);
-      }
-    }
-    else {
-      d(8, paramString, paramLong);
-    }
-    AppMethodBeat.o(80889);
-  }
-  
-  public static void bR(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(80890);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(80890);
-      return;
-    }
-    if (haz())
-    {
-      if (bmJ(paramString) != null)
-      {
-        bmJ(paramString).Qoz = paramLong;
-        AppMethodBeat.o(80890);
-      }
-    }
-    else {
-      d(10, paramString, paramLong);
-    }
-    AppMethodBeat.o(80890);
-  }
-  
-  public static void bS(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(219007);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(219007);
-      return;
-    }
-    if (haz())
-    {
-      paramString = bmJ(paramString);
-      if (paramString != null)
-      {
-        paramString.QoA = paramLong;
-        paramString.QoE = paramLong;
-      }
-      AppMethodBeat.o(219007);
-      return;
-    }
-    d(11, paramString, paramLong);
-    AppMethodBeat.o(219007);
-  }
-  
-  public static h bmH(String paramString)
+  public static h bml(String paramString)
   {
     AppMethodBeat.i(80878);
-    if (QoI.containsKey(paramString)) {
-      QoI.remove(paramString);
+    if (XgW.containsKey(paramString)) {
+      XgW.remove(paramString);
     }
     h localh = new h();
     localh.url = paramString;
-    QoI.put(paramString, localh);
+    XgW.put(paramString, localh);
     AppMethodBeat.o(80878);
     return localh;
   }
   
-  public static h bmI(String paramString)
+  public static h bmm(String paramString)
   {
     AppMethodBeat.i(80879);
-    if (QoI.containsKey(paramString))
+    if (XgW.containsKey(paramString))
     {
-      paramString = (h)QoI.get(paramString);
+      paramString = (h)XgW.get(paramString);
       AppMethodBeat.o(80879);
       return paramString;
     }
     h localh = new h();
     localh.url = paramString;
-    QoI.put(paramString, localh);
+    XgW.put(paramString, localh);
     AppMethodBeat.o(80879);
     return localh;
   }
   
-  public static h bmJ(String paramString)
+  public static h bmn(String paramString)
   {
     AppMethodBeat.i(80880);
-    paramString = (h)QoI.get(paramString);
+    paramString = (h)XgW.get(paramString);
     AppMethodBeat.o(80880);
     return paramString;
   }
   
-  public static h bmK(String paramString)
+  public static h bmo(String paramString)
   {
     AppMethodBeat.i(80881);
-    paramString = (h)QoI.remove(paramString);
+    paramString = (h)XgW.remove(paramString);
     AppMethodBeat.o(80881);
     return paramString;
   }
@@ -349,6 +260,95 @@ public final class h
     return localBundle;
   }
   
+  public static void ca(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80888);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80888);
+      return;
+    }
+    if (iAM())
+    {
+      if (bmn(paramString) != null)
+      {
+        bmn(paramString).XgL = paramLong;
+        AppMethodBeat.o(80888);
+      }
+    }
+    else {
+      d(7, paramString, paramLong);
+    }
+    AppMethodBeat.o(80888);
+  }
+  
+  public static void cb(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80889);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80889);
+      return;
+    }
+    if (iAM())
+    {
+      if (bmn(paramString) != null)
+      {
+        bmn(paramString).XgM = paramLong;
+        AppMethodBeat.o(80889);
+      }
+    }
+    else {
+      d(8, paramString, paramLong);
+    }
+    AppMethodBeat.o(80889);
+  }
+  
+  public static void cc(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(80890);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(80890);
+      return;
+    }
+    if (iAM())
+    {
+      if (bmn(paramString) != null)
+      {
+        bmn(paramString).XgN = paramLong;
+        AppMethodBeat.o(80890);
+      }
+    }
+    else {
+      d(10, paramString, paramLong);
+    }
+    AppMethodBeat.o(80890);
+  }
+  
+  public static void cd(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(297034);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(297034);
+      return;
+    }
+    if (iAM())
+    {
+      paramString = bmn(paramString);
+      if (paramString != null)
+      {
+        paramString.XgO = paramLong;
+        paramString.XgS = paramLong;
+      }
+      AppMethodBeat.o(297034);
+      return;
+    }
+    d(11, paramString, paramLong);
+    AppMethodBeat.o(297034);
+  }
+  
   private static void d(int paramInt, String paramString, long paramLong)
   {
     AppMethodBeat.i(80893);
@@ -356,7 +356,7 @@ public final class h
     AppMethodBeat.o(80893);
   }
   
-  private static boolean haz()
+  private static boolean iAM()
   {
     AppMethodBeat.i(80892);
     if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))

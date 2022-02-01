@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/ek2" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ek1" android:background="@drawable/adi" android:layout_width="32.0dip" android:layout_height="32.0dip">
-        <ImageView android:id="@id/ek0" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/aco"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.hld.floatview.ImeFloatViewClickBg android:id="@id/a3e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" keybutton:ime_float_view_click_bg_type="1" />
+    <com.tencent.mm.plugin.hld.floatview.ImeFloatViewClickBg android:id="@id/fmw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" keybutton:ime_float_view_click_bg_type="2" />
+    <com.tencent.mm.plugin.hld.floatview.ImeFloatViewClickBg android:id="@id/ith" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" keybutton:ime_float_view_click_bg_type="3" />
+    <TextView android:textSize="@dimen/adg" android:textColor="@color/zs" android:gravity="center" android:id="@id/l1o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_centerHorizontal="true" android:lineSpacingExtra="36.0dip" />
+    <RelativeLayout android:id="@id/l1j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginEnd="7.5dip">
+        <TextView android:textSize="@dimen/adg" android:textColor="@color/zs" android:gravity="center" android:id="@id/l1k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="Q" android:layout_centerHorizontal="true" android:lineSpacingExtra="36.0dip" />
     </RelativeLayout>
-</LinearLayout>
+    <RelativeLayout android:id="@id/l1l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="7.5dip">
+        <TextView android:textSize="@dimen/adg" android:textColor="@color/zs" android:gravity="center" android:id="@id/l1m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_centerHorizontal="true" android:lineSpacingExtra="36.0dip" android:layout_marginStart="10.0dip" />
+    </RelativeLayout>
+</RelativeLayout>

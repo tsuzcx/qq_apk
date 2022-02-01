@@ -1,182 +1,188 @@
 package com.tencent.mm.recovery;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningTaskInfo;
 import android.app.Service;
-import android.content.ComponentName;
 import android.content.Context;
 import android.os.Looper;
-import androidx.annotation.Keep;
 import com.tencent.mars.comm.PlatformComm;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.aa;
-import com.tencent.mm.cj.b;
-import com.tencent.mm.model.cs;
+import com.tencent.mm.model.ct;
 import com.tencent.mm.recovery.ui.RecoveryUI;
-import com.tencent.mm.recoveryv2.b.c;
-import com.tencent.mm.recoveryv2.i;
+import com.tencent.mm.recoveryv2.a.c;
+import com.tencent.mm.recoveryv2.c;
+import com.tencent.mm.recoveryv2.h.a;
+import com.tencent.mm.recoveryv2.j;
+import com.tencent.mm.recoveryv2.k.b.a;
 import com.tencent.mm.recoveryv2.l;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.vfs.k;
 import com.tencent.recovery.wx.service.WXRecoveryUploadService;
 import com.tencent.tinker.entry.ApplicationLike;
 import com.tinkerboots.sdk.a;
 import com.tinkerboots.sdk.a.a;
-import java.util.Iterator;
-import java.util.List;
 
-@SuppressLint({"LongLogTag"})
-@Keep
 public class RecoveryInitializer
 {
   private static final int RECOVERY_SETTING_DEBUG = 30000;
   private static final String TAG = "MicroMsg.recovery.initializer";
   
-  @Keep
   public static boolean init(Context paramContext)
   {
-    AppMethodBeat.i(202584);
-    try
+    int i = 0;
+    AppMethodBeat.i(242787);
+    if (l.ma(paramContext))
     {
-      bool = isStartWithActivity(paramContext);
-      if (!bool)
+      Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
       {
-        com.tencent.mm.recoveryv2.g.i("MicroMsg.recovery.initializer", "isStartWithActivity = false, skip recovery detect");
-        AppMethodBeat.o(202584);
-        return true;
+        public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
+        {
+          AppMethodBeat.i(242757);
+          com.tencent.mm.recoveryv2.e.w("MicroMsg.recovery.initializer", "recovery process crash, thread = " + paramAnonymousThread.getName(), paramAnonymousThrowable);
+          com.tencent.mm.recoveryv2.e.lO(RecoveryInitializer.this);
+          AppMethodBeat.o(242757);
+        }
+      });
+      for (;;)
+      {
+        try
+        {
+          MMApplicationContext.setContext(paramContext);
+        }
+        finally
+        {
+          com.tencent.mm.kernel.b.h localh;
+          com.tencent.mm.recoveryv2.e.w("MicroMsg.recovery.initializer", "recovery process init error", localThrowable2);
+          com.tencent.mm.recoveryv2.e.lO(paramContext);
+          continue;
+        }
+        try
+        {
+          MMApplicationContext.setResources(com.tencent.mm.ce.d.a(paramContext.getResources(), paramContext, true));
+          LocaleUtil.initLanguage(paramContext);
+          localh = new com.tencent.mm.kernel.b.h(l.iRe(), com.tencent.mm.app.e.hfI.getApplication(), com.tencent.mm.app.e.hfI);
+          localh.lsS = com.tencent.mm.booter.d.cO(localh.bGP);
+          com.tencent.mm.kernel.h.a(localh);
+          k.setContext(paramContext);
+          com.tencent.threadpool.g.a(localh.bGP, new aa());
+          PlatformComm.init(MMApplicationContext.getContext(), new MMHandler(Looper.getMainLooper()));
+          ct.bDF();
+          a.a(new a.a(com.tencent.mm.app.e.hfI).a(new b.1(paramContext)).kks());
+          l.iRc().a("diagnostic_mmkv_reset", new a.1("diagnostic_storage"));
+          l.iRc().a("jectl_mmkv_reset", new a.2("jectl_config"));
+          AppMethodBeat.o(242787);
+          return false;
+        }
+        finally
+        {
+          com.tencent.mm.recoveryv2.e.w("MicroMsg.recovery.initializer", "init MMResources fail", localThrowable1);
+        }
       }
     }
-    catch (Throwable localThrowable1)
+    if (!l.lZ(paramContext))
+    {
+      AppMethodBeat.o(242787);
+      return true;
+    }
+    try
+    {
+      boolean bool = isStartWithActivity(paramContext);
+      i = bool;
+    }
+    finally
     {
       for (;;)
       {
-        com.tencent.mm.recoveryv2.g.w("MicroMsg.recovery.initializer", "check isStartWithActivity error", localThrowable1);
-        boolean bool = false;
+        com.tencent.mm.recoveryv2.e.w("MicroMsg.recovery.initializer", "check isStartWithActivity error", localThrowable3);
       }
-      if (l.jX(paramContext))
-      {
-        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
-        {
-          public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
-          {
-            AppMethodBeat.i(202413);
-            com.tencent.mm.recoveryv2.g.w("MicroMsg.recovery.initializer", "recovery process crash, thread = " + paramAnonymousThread.getName(), paramAnonymousThrowable);
-            com.tencent.mm.recoveryv2.g.jO(this.val$context);
-            AppMethodBeat.o(202413);
-          }
-        });
-        for (;;)
-        {
-          try
-          {
-            MMApplicationContext.setContext(paramContext);
-          }
-          catch (Throwable localThrowable3)
-          {
-            com.tencent.mm.kernel.b.h localh;
-            com.tencent.mm.recoveryv2.g.w("MicroMsg.recovery.initializer", "recovery process init error", localThrowable3);
-            com.tencent.mm.recoveryv2.g.jO(paramContext);
-            continue;
-          }
-          try
-          {
-            MMApplicationContext.setResources(b.a(paramContext.getResources(), paramContext, true));
-            LocaleUtil.initLanguage(paramContext);
-            localh = new com.tencent.mm.kernel.b.h(l.hqU(), com.tencent.mm.app.d.fcb.getApplication(), com.tencent.mm.app.d.fcb);
-            localh.iQW = com.tencent.mm.booter.d.cc(localh.Zw);
-            com.tencent.mm.kernel.h.a(localh);
-            com.tencent.mm.vfs.h.setContext(paramContext);
-            com.tencent.e.g.a(localh.Zw, new aa());
-            PlatformComm.init(MMApplicationContext.getContext(), new MMHandler(Looper.getMainLooper()));
-            cs.bfO();
-            a.a(new a.a(com.tencent.mm.app.d.fcb).a(new b.1(paramContext)).izX());
-            l.hqR().a("diagnostic_mmkv_reset", new a.1("diagnostic_storage"));
-            l.hqR().a("jectl_mmkv_reset", new a.2("jectl_config"));
-            AppMethodBeat.o(202584);
-            return false;
-          }
-          catch (Throwable localThrowable2)
-          {
-            com.tencent.mm.recoveryv2.g.w("MicroMsg.recovery.initializer", "init MMResources fail", localThrowable2);
-          }
-        }
+      Object localObject = com.tencent.mm.recoveryv2.h.lR(paramContext);
+      ((com.tencent.mm.recoveryv2.h)localObject).ackh = 0L;
+      ((com.tencent.mm.recoveryv2.h)localObject).sz();
+      localObject = l.iRc();
+      if (paramContext == null) {
+        break label293;
       }
-      if (!l.jW(paramContext))
+      ((l)localObject).mContext = paramContext;
+      paramContext = new a.c()
       {
-        AppMethodBeat.o(202584);
-        return true;
-      }
-      i.jP(paramContext).hqt().arg();
-      l.hqR().jV(paramContext).b(new b.c()
-      {
-        public final Class<? extends Activity> hpU()
+        public final Class<? extends Activity> iQy()
         {
           return RecoveryUI.class;
         }
         
-        public final Class<? extends Service> hpV()
+        public final Class<? extends Service> iQz()
         {
           return WXRecoveryUploadService.class;
         }
-      }).b(1, new com.tencent.mm.recoveryv2.d()
+      };
+      if (((l)localObject).ackR != null) {
+        break label312;
+      }
+      ((l)localObject).iRd();
+      ((l)localObject).ackR.a(paramContext);
+      paramContext = ((l)localObject).b(1, new c()
       {
-        public final void arF(int paramAnonymousInt)
+        public final void axN(int paramAnonymousInt)
         {
-          AppMethodBeat.i(202248);
+          AppMethodBeat.i(242759);
           Log.e("MicroMsg.recovery.initializer", "onRecovery, level = ".concat(String.valueOf(paramAnonymousInt)));
-          AppMethodBeat.o(202248);
+          AppMethodBeat.o(242759);
         }
-      }).b(2, new com.tencent.mm.recoveryv2.d()
+      }).b(2, new c()
       {
-        public final void arF(int paramAnonymousInt)
+        public final void axN(int paramAnonymousInt)
         {
-          AppMethodBeat.i(201867);
+          AppMethodBeat.i(242755);
           Log.e("MicroMsg.recovery.initializer", "onRecovery, level = ".concat(String.valueOf(paramAnonymousInt)));
-          AppMethodBeat.o(201867);
+          AppMethodBeat.o(242755);
         }
-      }).OO();
-      AppMethodBeat.o(202584);
+      });
+      if (l.lZ(paramContext.getContext())) {
+        break label374;
+      }
     }
-    return true;
+    if (i == 0)
+    {
+      com.tencent.mm.recoveryv2.e.i("MicroMsg.recovery.initializer", "isStartWithActivity = false, skip recovery detect");
+      AppMethodBeat.o(242787);
+      return true;
+    }
+    label293:
+    label312:
+    k.b.a.log(4, "MicroMsg.recovery", "not main proc, skip");
+    for (;;)
+    {
+      AppMethodBeat.o(242787);
+      return true;
+      label374:
+      if (!h.a.lS(paramContext.getContext()).mEnabled)
+      {
+        k.b.a.log(4, "MicroMsg.recovery", "Recovery is disabled, skip");
+      }
+      else
+      {
+        if (paramContext.ackR == null) {
+          paramContext.iRd();
+        }
+        paramContext.ackR.begin();
+      }
+    }
   }
   
   private static boolean isStartWithActivity(Context paramContext)
   {
-    AppMethodBeat.i(202586);
-    Object localObject1 = (ActivityManager)paramContext.getSystemService("activity");
-    if (localObject1 != null)
-    {
-      localObject1 = ((ActivityManager)localObject1).getRunningTasks(2147483647);
-      if (localObject1 != null)
-      {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          Object localObject2 = (ActivityManager.RunningTaskInfo)((Iterator)localObject1).next();
-          if (((ActivityManager.RunningTaskInfo)localObject2).numActivities > 0)
-          {
-            String str = paramContext.getPackageName();
-            localObject2 = ((ActivityManager.RunningTaskInfo)localObject2).topActivity;
-            if ((localObject2 != null) && (str.equals(((ComponentName)localObject2).getPackageName())))
-            {
-              AppMethodBeat.o(202586);
-              return true;
-            }
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(202586);
-    return false;
+    AppMethodBeat.i(242788);
+    boolean bool = l.mb(paramContext);
+    AppMethodBeat.o(242788);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.recovery.RecoveryInitializer
  * JD-Core Version:    0.7.0.1
  */

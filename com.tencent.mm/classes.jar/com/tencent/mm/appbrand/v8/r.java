@@ -9,15 +9,15 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class r
   extends o
 {
-  final d fiz;
+  final d hmM;
   
   public r(d paramd)
   {
     super("WeixinArrayBuffer");
-    this.fiz = paramd;
+    this.hmM = paramd;
   }
   
-  protected final void a(m paramm, V8Object paramV8Object)
+  protected final void b(m paramm, V8Object paramV8Object)
   {
     AppMethodBeat.i(144085);
     paramV8Object.registerJavaMethod(new JavaCallback()
@@ -33,7 +33,7 @@ public final class r
         }
         int i = paramAnonymousV8Array.getInteger(0);
         Log.i("MicroMsg.V8DirectApiSharedBuffer", "get, id:%d", new Object[] { Integer.valueOf(i) });
-        paramAnonymousV8Object = r.this.fiz.kh(i);
+        paramAnonymousV8Object = r.this.hmM.nP(i);
         AppMethodBeat.o(144084);
         return paramAnonymousV8Object;
       }
@@ -45,7 +45,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.r
  * JD-Core Version:    0.7.0.1
  */

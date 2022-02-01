@@ -20,11 +20,15 @@ class Mp3FrameInfoParse
   static
   {
     int[] arrayOfInt1 = { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 };
-    int[] arrayOfInt2 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 };
-    Object localObject = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
-    localObject = new int[][] { { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 }, localObject };
-    BitrateTable = new int[][][] { { arrayOfInt1, arrayOfInt2, { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 } }, localObject };
-    SAMPLE_RATE_TABLE = new int[][] { { 11025, 12000, 8000 }, { 0, 0, 0 }, { 22050, 24000, 16000 }, { 44100, 48000, 32000 } };
+    int[] arrayOfInt2 = { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
+    int[] arrayOfInt3 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 };
+    int[] arrayOfInt4 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
+    int[] arrayOfInt5 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
+    BitrateTable = new int[][][] { { arrayOfInt1, { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 }, arrayOfInt2 }, { arrayOfInt3, arrayOfInt4, arrayOfInt5 } };
+    arrayOfInt1 = new int[] { 0, 0, 0 };
+    arrayOfInt2 = new int[] { 22050, 24000, 16000 };
+    arrayOfInt3 = new int[] { 44100, 48000, 32000 };
+    SAMPLE_RATE_TABLE = new int[][] { { 11025, 12000, 8000 }, arrayOfInt1, arrayOfInt2, arrayOfInt3 };
   }
   
   private static boolean IsMp3Header(TrackPositionDataSource paramTrackPositionDataSource, byte[] paramArrayOfByte, int paramInt1, int paramInt2, Mp3Info paramMp3Info)
@@ -531,7 +535,7 @@ class Mp3FrameInfoParse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mp3.Mp3FrameInfoParse
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import com.tencent.mm.plugin.appbrand.g.c.a.b;
 
 public final class c
 {
-  public String ofY;
-  public b ofZ;
+  public String rjC;
+  public b rjD;
   public String timeout;
 }
 

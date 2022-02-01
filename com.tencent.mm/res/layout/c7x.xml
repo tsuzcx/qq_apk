@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="20.0dip" android:textColor="#ff515151" android:gravity="center" android:id="@id/jdo" android:background="@drawable/b3a" android:layout_width="fill_parent" android:layout_height="111.0dip" android:layout_margin="0.0dip" android:maxHeight="111.0dip" android:minHeight="111.0dip" android:text="@string/idq" />
+    <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@android:id/title" android:layout_width="@dimen/f9" android:layout_height="wrap_content" android:singleLine="true" android:layout_marginEnd="@dimen/ig" style="@style/m4" />
+    <RelativeLayout android:id="@id/gvi" android:layout_width="@dimen/atf" android:layout_height="@dimen/ate" android:layout_marginTop="@dimen/m2" android:layout_marginBottom="@dimen/m2">
+        <com.tencent.mm.plugin.story.ui.view.StoryRoundImageView android:id="@id/gvh" android:layout_width="@dimen/atf" android:layout_height="@dimen/ate" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/gve" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/gvk" android:layout_width="@dimen/atf" android:layout_height="@dimen/ate" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/m2" android:layout_marginBottom="@dimen/m2">
+        <com.tencent.mm.plugin.story.ui.view.StoryRoundImageView android:id="@id/gvj" android:layout_width="@dimen/atf" android:layout_height="@dimen/ate" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/gvf" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/gvm" android:layout_width="@dimen/atf" android:layout_height="@dimen/ate" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/m2" android:layout_marginBottom="@dimen/m2">
+        <com.tencent.mm.plugin.story.ui.view.StoryRoundImageView android:id="@id/gvl" android:layout_width="@dimen/atf" android:layout_height="@dimen/ate" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/gvg" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
 </LinearLayout>

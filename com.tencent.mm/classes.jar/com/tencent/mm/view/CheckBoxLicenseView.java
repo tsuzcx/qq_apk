@@ -11,84 +11,70 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.g;
 import com.tencent.mm.ah.a.h;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 
 public class CheckBoxLicenseView
   extends LinearLayout
 {
-  private CompoundButton.OnCheckedChangeListener YKm;
-  private View.OnClickListener YKn;
+  private CompoundButton.OnCheckedChangeListener agGe;
+  private View.OnClickListener agGf;
   
   public CheckBoxLicenseView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, -1);
   }
   
-  public CheckBoxLicenseView(Context paramContext, final AttributeSet paramAttributeSet, int paramInt)
+  public CheckBoxLicenseView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(197613);
+    AppMethodBeat.i(234803);
     Object localObject = inflate(getContext(), a.h.common_term_check_view, this);
     paramContext = ((View)localObject).findViewById(a.g.term_check);
     paramAttributeSet = (CheckBox)((View)localObject).findViewById(a.g.term_check_box);
     localObject = (TextView)((View)localObject).findViewById(a.g.term_tv);
-    paramContext.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(189028);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/view/CheckBoxLicenseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAttributeSet.performClick();
-        a.a(this, "com/tencent/mm/view/CheckBoxLicenseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(189028);
-      }
-    });
-    if (this.YKm != null) {
-      paramAttributeSet.setOnCheckedChangeListener(this.YKm);
+    paramContext.setOnClickListener(new CheckBoxLicenseView.1(this, paramAttributeSet));
+    if (this.agGe != null) {
+      paramAttributeSet.setOnCheckedChangeListener(this.agGe);
     }
-    if (this.YKn != null) {
-      ((TextView)localObject).setOnClickListener(this.YKn);
+    if (this.agGf != null) {
+      ((TextView)localObject).setOnClickListener(this.agGf);
     }
-    AppMethodBeat.o(197613);
+    AppMethodBeat.o(234803);
   }
   
   public void setCheckStateChangeListener(CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    AppMethodBeat.i(197618);
-    this.YKm = paramOnCheckedChangeListener;
+    AppMethodBeat.i(234808);
+    this.agGe = paramOnCheckedChangeListener;
     ((CheckBox)findViewById(a.g.term_check_box)).setOnCheckedChangeListener(paramOnCheckedChangeListener);
-    AppMethodBeat.o(197618);
+    AppMethodBeat.o(234808);
   }
   
   public void setLicenseClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(197621);
+    AppMethodBeat.i(234809);
     TextView localTextView = (TextView)findViewById(a.g.term_tv);
-    this.YKn = paramOnClickListener;
+    this.agGf = paramOnClickListener;
     localTextView.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(197621);
+    AppMethodBeat.o(234809);
   }
   
   public void setTermText(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(197622);
+    AppMethodBeat.i(234811);
     ((TextView)findViewById(a.g.term_tv)).setText(paramCharSequence);
-    AppMethodBeat.o(197622);
+    AppMethodBeat.o(234811);
   }
   
   public void setTermTip(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(197625);
+    AppMethodBeat.i(234814);
     ((TextView)findViewById(a.g.term_tip)).setText(paramCharSequence);
-    AppMethodBeat.o(197625);
+    AppMethodBeat.o(234814);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.CheckBoxLicenseView
  * JD-Core Version:    0.7.0.1
  */

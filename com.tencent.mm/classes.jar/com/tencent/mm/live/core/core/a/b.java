@@ -3,11 +3,8 @@ package com.tencent.mm.live.core.core.a;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.SurfaceTexture;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
@@ -15,428 +12,594 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.liteav.audio.TXAudioEffectManager.AudioMusicParam;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.i;
-import com.tencent.mm.live.core.a.c;
-import com.tencent.mm.live.core.b.d.i;
-import com.tencent.mm.live.core.b.j;
-import com.tencent.mm.live.core.b.n;
+import com.tencent.mm.live.core.a.f;
+import com.tencent.mm.live.core.b.d.k;
 import com.tencent.mm.live.core.core.c.a;
 import com.tencent.mm.live.core.core.e.a;
-import com.tencent.mm.live.core.core.e.e;
-import com.tencent.mm.live.core.core.e.o;
-import com.tencent.mm.live.core.core.e.p;
+import com.tencent.mm.live.core.core.e.g;
+import com.tencent.mm.live.core.core.e.m;
+import com.tencent.mm.live.core.core.e.q;
+import com.tencent.mm.live.core.core.e.r;
 import com.tencent.mm.live.core.core.model.UserVolumeInfo;
-import com.tencent.mm.live.core.core.model.f;
-import com.tencent.mm.live.core.core.model.h.f;
+import com.tencent.mm.live.core.core.model.i.f;
+import com.tencent.mm.live.core.core.trtc.sdkadapter.a.a;
 import com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e;
 import com.tencent.mm.live.core.view.LivePreviewView;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ax;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.trtc.TRTCCloud;
 import com.tencent.trtc.TRTCCloudDef.TRTCVolumeInfo;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.g.b.s;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "Lcom/tencent/mm/live/core/core/anchor/IMMLiveAnchorCore;", "()V", "anchorSeiTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "anchorVolume", "", "debugRunnable", "com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1", "Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1;", "userStatus", "checkLiveMode", "", "checkNotTalking", "checkScreenShare", "endScaleAnimation", "time", "enterRoom", "callback", "Lcom/tencent/mm/live/core/core/LiveCallback;", "floatMode", "context", "Landroid/content/Context;", "forceMoveTask", "", "dontFinish", "generateType", "opType", "staticFloatImage", "Landroid/graphics/Bitmap;", "normalMode", "onEnterRoom", "result", "", "onError", "errCode", "errMsg", "", "extraInfo", "Landroid/os/Bundle;", "onExitRoom", "reason", "onUserVoiceVolume", "userVolumes", "Ljava/util/ArrayList;", "Lcom/tencent/trtc/TRTCCloudDef$TRTCVolumeInfo;", "totalVolume", "prepareAnchorSeiInfo", "Lcom/tencent/mm/json/JSONObject;", "refreshMicUserView", "userId", "release", "resetPkConfig", "setupPkConfig", "roomId", "username", "pkSign", "startCrossLinkMic", "startPreview", "beautyConfig", "Lcom/tencent/mm/live/core/render/BeautyConfig;", "filterConfig", "Lcom/tencent/mm/live/core/render/FilterConfig;", "startPush", "startScaleAnimation", "scale", "", "stopCrossLinkMic", "stopPush", "updateRenderMirror", "isMirror", "Companion", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "Lcom/tencent/mm/live/core/core/anchor/IMMLiveAnchorCore;", "()V", "anchorSeiTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "anchorVolume", "", "debugRunnable", "com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1", "Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1;", "userStatus", "checkLiveMode", "", "checkNotTalking", "checkScreenShare", "endScaleAnimation", "time", "enterRoom", "callback", "Lcom/tencent/mm/live/core/core/LiveCallback;", "floatMode", "context", "Landroid/content/Context;", "forceMoveTask", "", "dontFinish", "generateType", "opType", "staticFloatImage", "Landroid/graphics/Bitmap;", "isFluentFloatShow", "normalMode", "notifyCloudMixtureForFinder", "micData", "Lorg/json/JSONObject;", "onEnterRoom", "result", "", "onError", "errCode", "errMsg", "", "extraInfo", "Landroid/os/Bundle;", "onExitRoom", "reason", "onUserVoiceVolume", "userVolumes", "Ljava/util/ArrayList;", "Lcom/tencent/trtc/TRTCCloudDef$TRTCVolumeInfo;", "totalVolume", "prepareAnchorSeiInfo", "Lcom/tencent/mm/json/JSONObject;", "refreshMicUserView", "userId", "release", "resetPkConfig", "resetRoomPkConfig", "restartAudioDevice", "setupPkConfig", "roomId", "username", "pkSign", "setupRoomPkConfig", "connectRoomId", "connectedRoomId", "roomPkSign", "startCrossLinkMic", "startPreview", "beautyConfig", "Lcom/tencent/mm/live/core/render/BeautyConfig;", "filterConfig", "Lcom/tencent/mm/live/core/render/FilterConfig;", "startPush", "startRoomPkLinkMic", "startScaleAnimation", "scale", "", "stopCrossLinkMic", "stopPush", "stopRoomPkLinkMic", "updateRenderMirror", "isMirror", "Companion", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends com.tencent.mm.live.core.core.trtc.a
   implements a
 {
-  private static b klp;
-  public static final b klq;
-  private int kbN;
-  private final d klm;
-  private int kln;
-  private final MTimerHandler klo;
+  public static final a mMo;
+  private static b mMs;
+  private int mBT;
+  private final b mMp;
+  private int mMq;
+  private final MTimerHandler mMr;
   
   static
   {
-    AppMethodBeat.i(199772);
-    klq = new b((byte)0);
-    AppMethodBeat.o(199772);
+    AppMethodBeat.i(248239);
+    mMo = new a((byte)0);
+    AppMethodBeat.o(248239);
   }
   
   public b()
   {
     super(true);
-    AppMethodBeat.i(199769);
-    this.klm = new d(this);
-    this.klo = new MTimerHandler("anchor_sei_sender", (MTimerHandler.CallBack)new c(this), true);
-    AppMethodBeat.o(199769);
+    AppMethodBeat.i(248180);
+    this.mMp = new b(this);
+    this.mMr = new MTimerHandler("anchor_sei_sender", new b..ExternalSyntheticLambda0(this), true);
+    AppMethodBeat.o(248180);
   }
   
-  private final i aLe()
+  private static final boolean a(b paramb)
   {
-    AppMethodBeat.i(199718);
-    com.tencent.mm.ad.c localc = com.tencent.mm.ad.h.aGm();
-    int i;
-    Object localObject;
-    if (this.kln <= this.knK.klD)
+    AppMethodBeat.i(248207);
+    s.u(paramb, "this$0");
+    TRTCCloud localTRTCCloud = paramb.beO();
+    paramb = paramb.beg().toString();
+    s.s(paramb, "prepareAnchorSeiInfo().toString()");
+    paramb = paramb.getBytes(kotlin.n.d.UTF_8);
+    s.s(paramb, "(this as java.lang.String).getBytes(charset)");
+    localTRTCCloud.sendSEIMsg(paramb, 1);
+    AppMethodBeat.o(248207);
+    return true;
+  }
+  
+  private final com.tencent.mm.ad.i beg()
+  {
+    AppMethodBeat.i(248195);
+    Object localObject1 = com.tencent.mm.ad.h.aZn();
+    Object localObject3;
+    label72:
+    label101:
+    Object localObject4;
+    if (this.mMq <= this.mRM.mMI)
     {
-      i = this.kbN;
-      localObject = e.a.kjw;
-      this.kbN = (i | e.a.aJG());
+      i = this.mBT;
+      localObject3 = e.a.mKb;
+      this.mBT = (i | e.a.bcq());
+      if (!this.mRB.bex()) {
+        break label494;
+      }
+      i = this.mBT;
+      localObject3 = e.a.mKb;
+      this.mBT = (i | e.a.bcr());
+      if (!this.mRB.mNQ) {
+        break label518;
+      }
+      i = this.mBT;
+      localObject3 = e.a.mKb;
+      this.mBT = (i | e.a.bcs());
+      localObject3 = e.r.mLO;
+      ((com.tencent.mm.ad.c)localObject1).l(e.r.getUserId(), this.mRB.mNM);
+      localObject3 = e.r.mLO;
+      ((com.tencent.mm.ad.c)localObject1).l(e.r.bdI(), Integer.valueOf(this.mBT));
+      localObject3 = e.r.mLO;
+      localObject3 = e.r.bdJ();
+      localObject4 = this.mRH;
+      if (localObject4 != null) {
+        break label542;
+      }
+      i = 0;
+      label170:
+      ((com.tencent.mm.ad.c)localObject1).l((String)localObject3, Integer.valueOf(i));
+      localObject3 = e.r.mLO;
+      localObject3 = e.r.bdK();
+      if (!this.mRI) {
+        break label551;
+      }
+      i = 1;
+      label203:
+      ((com.tencent.mm.ad.c)localObject1).l((String)localObject3, Integer.valueOf(i));
+      localObject3 = e.r.mLO;
+      ((com.tencent.mm.ad.c)localObject1).l(e.r.bdL(), Long.valueOf(cn.bDv()));
+      localObject3 = new com.tencent.mm.ad.i();
+    }
+    try
+    {
+      ((com.tencent.mm.ad.i)localObject3).n("wxT", Integer.valueOf(e.q.mLM.value));
+      ((com.tencent.mm.ad.i)localObject3).n("d", localObject1.toString());
+      localObject4 = beP().mTO;
+      if (localObject4 == null) {
+        break label437;
+      }
+      localJSONArray = ((JSONObject)localObject4).optJSONArray("list");
+      if (localJSONArray != null) {
+        break label556;
+      }
+      k = 0;
+    }
+    catch (com.tencent.mm.ad.g localg)
+    {
+      Object localObject5;
+      break label448;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        JSONArray localJSONArray;
+        int k;
+        label314:
+        int j;
+        continue;
+        int m;
+        do
+        {
+          i = m;
+          break label645;
+          if (k <= 0) {
+            break label423;
+          }
+          i = 0;
+          m = i + 1;
+          if (localJSONArray != null) {
+            break label565;
+          }
+          Object localObject2 = null;
+          if (localObject2 != null) {
+            break label576;
+          }
+          j = 0;
+          break;
+        } while (m < k);
+      }
+    }
+    i = j;
+    if (localObject1 != null)
+    {
+      localObject5 = ((JSONObject)localObject1).optString("uId");
+      i = j;
+      if (localObject5 != null)
+      {
+        localObject5 = com.tencent.mm.live.core.core.trtc.sdkadapter.b.b.a.bfv().FU((String)localObject5);
+        i = j;
+        if (localObject5 != null)
+        {
+          if (((com.tencent.mm.live.core.core.trtc.sdkadapter.b.a)localObject5).mTx > this.mRM.mMI) {
+            break label589;
+          }
+          localObject5 = e.m.mLr;
+          i = j | e.m.bdw();
+        }
+      }
+    }
+    label381:
+    if (this.mRB.bex())
+    {
+      localObject5 = e.m.mLr;
+      i |= e.m.bdx();
     }
     for (;;)
     {
-      if (this.knA.aLs())
-      {
-        i = this.kbN;
-        localObject = e.a.kjw;
-        this.kbN = (i | e.a.aJH());
-        label69:
-        if (!this.knA.kmG) {
-          break label310;
-        }
-        i = this.kbN;
-        localObject = e.a.kjw;
-        this.kbN = (i | e.a.aJI());
-        label97:
-        localObject = e.p.kkW;
-        localc.f(e.p.getUserId(), this.knA.kmC);
-        localObject = e.p.kkW;
-        localc.f(e.p.aKM(), Integer.valueOf(this.kbN));
-        localObject = e.p.kkW;
-        String str = e.p.aKN();
-        localObject = this.knG;
-        if (localObject == null) {
-          break label333;
-        }
-        localObject = Integer.valueOf(((TXAudioEffectManager.AudioMusicParam)localObject).id);
-        label165:
-        localc.f(str, localObject);
-        localObject = e.p.kkW;
-        localObject = e.p.aKO();
-        if (!this.knH) {
-          break label341;
-        }
-        i = 1;
-        localc.f((String)localObject, Integer.valueOf(i));
-        localObject = new i();
+      if (localObject1 == null) {
+        break label668;
       }
-      try
-      {
-        ((i)localObject).h("wxT", Integer.valueOf(e.o.kkR.value));
-        ((i)localObject).h("d", localc.toString());
-        label241:
-        Log.d("MicroMsg.LiveCoreAnchor", "prepareAnchorSeiInfo json:".concat(String.valueOf(localObject)));
-        AppMethodBeat.o(199718);
-        return localObject;
-        i = this.kbN;
-        localObject = e.a.kjw;
-        this.kbN = (i & (e.a.aJG() ^ 0xFFFFFFFF));
-        continue;
-        i = this.kbN;
-        localObject = e.a.kjw;
-        this.kbN = (i & (e.a.aJH() ^ 0xFFFFFFFF));
-        break label69;
-        label310:
-        i = this.kbN;
-        localObject = e.a.kjw;
-        this.kbN = (i & (e.a.aJI() ^ 0xFFFFFFFF));
-        break label97;
-        label333:
-        localObject = Integer.valueOf(0);
-        break label165;
-        label341:
-        i = 0;
-      }
-      catch (com.tencent.mm.ad.g localg)
-      {
-        break label241;
-      }
-      catch (IOException localIOException)
-      {
-        break label241;
-      }
+      ((JSONObject)localObject1).putOpt("us", Integer.valueOf(i));
+      break label668;
+      label423:
+      ((com.tencent.mm.ad.i)localObject3).n("m", ((JSONObject)localObject4).toString());
+      label437:
+      C(beP().mTO);
+      label448:
+      Log.d("MicroMsg.LiveCoreAnchor", s.X("prepareAnchorSeiInfo json:", localObject3));
+      AppMethodBeat.o(248195);
+      return localObject3;
+      i = this.mBT;
+      localObject3 = e.a.mKb;
+      this.mBT = (i & (e.a.bcq() ^ 0xFFFFFFFF));
+      break;
+      label494:
+      i = this.mBT;
+      localObject3 = e.a.mKb;
+      this.mBT = (i & (e.a.bcr() ^ 0xFFFFFFFF));
+      break label72;
+      label518:
+      i = this.mBT;
+      localObject3 = e.a.mKb;
+      this.mBT = (i & (e.a.bcs() ^ 0xFFFFFFFF));
+      break label101;
+      label542:
+      i = ((TXAudioEffectManager.AudioMusicParam)localObject4).id;
+      break label170;
+      label551:
+      i = 0;
+      break label203;
+      label556:
+      k = localJSONArray.length();
+      break label639;
+      label565:
+      localObject1 = localJSONArray.optJSONObject(i);
+      break label658;
+      label576:
+      j = ((JSONObject)localObject1).optInt("us", 0);
+      break label314;
+      label589:
+      localObject5 = e.m.mLr;
+      i = j & (e.m.bdw() ^ 0xFFFFFFFF);
+      break label381;
+      localObject5 = e.m.mLr;
+      j = e.m.bdx();
+      i &= (j ^ 0xFFFFFFFF);
     }
   }
   
-  public static void m(String paramString1, String paramString2, String paramString3)
+  public static void d(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(199753);
-    Object localObject = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
-    p.j(localObject, "ConfigHelper.getInstance()");
-    localObject = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject).aLL();
-    if (localObject != null)
+    AppMethodBeat.i(248202);
+    s.u(paramString1, "connectRoomId");
+    s.u(paramString2, "connectedRoomId");
+    s.u(paramString3, "roomPkSign");
+    com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d locald = a.a.bfr().bfp();
+    if (locald != null)
     {
-      ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).NC(paramString3);
-      ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).NB(paramString2);
-      ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).fc(true);
-      ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).NA(paramString1);
-      AppMethodBeat.o(199753);
-      return;
+      locald.mSY = paramString3;
+      locald.mSV = true;
+      locald.mSW = paramString1;
+      locald.mSX = paramString2;
+      locald.mSS = paramString4;
     }
-    AppMethodBeat.o(199753);
+    AppMethodBeat.o(248202);
   }
   
-  public final void Nt(String paramString)
+  public static void r(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(199757);
-    Log.i("MicroMsg.LiveCoreAnchor", "refreshMicUserView, userId:".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(248198);
+    com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d locald = a.a.bfr().bfp();
+    if (locald != null)
+    {
+      locald.mSU = paramString3;
+      locald.mSS = paramString2;
+      locald.mST = true;
+      locald.mSR = paramString1;
+    }
+    AppMethodBeat.o(248198);
+  }
+  
+  public final void C(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(248382);
+    super.C(paramJSONObject);
+    Bundle localBundle = new Bundle();
+    if (paramJSONObject != null) {
+      localBundle.putString("live_link_mic_info_in_anchor_sei_msg", paramJSONObject.toString());
+    }
+    paramJSONObject = this.mRy;
+    if (paramJSONObject != null)
+    {
+      e.g localg = e.g.mKv;
+      paramJSONObject.callback(e.g.bde(), localBundle);
+    }
+    AppMethodBeat.o(248382);
+  }
+  
+  public final void FM(String paramString)
+  {
+    AppMethodBeat.i(248365);
+    Log.i("MicroMsg.LiveCoreAnchor", s.X("refreshMicUserView, userId:", paramString));
     if (paramString != null)
     {
-      paramString = this.knm.NL(paramString);
+      paramString = beP().FY(paramString);
       if (paramString != null)
       {
-        Log.i("MicroMsg.LiveCoreAnchor", "refreshMicUserView, find renderSurface for userId:" + this.knA.kmC);
-        TXCloudVideoView localTXCloudVideoView = ao(paramString.userId, paramString.streamType);
+        Log.i("MicroMsg.LiveCoreAnchor", s.X("refreshMicUserView, find renderSurface for userId:", this.mRB.mNM));
+        TXCloudVideoView localTXCloudVideoView = ax(paramString.userId, paramString.streamType);
         if (localTXCloudVideoView != null)
         {
           TextureView localTextureView = new TextureView(MMApplicationContext.getContext());
           localTXCloudVideoView.addVideoView(localTextureView);
-          localTextureView.setSurfaceTextureListener((TextureView.SurfaceTextureListener)new a(paramString));
-          AppMethodBeat.o(199757);
-          return;
+          localTextureView.setSurfaceTextureListener((TextureView.SurfaceTextureListener)new b.f(paramString));
         }
       }
-      AppMethodBeat.o(199757);
-      return;
     }
-    AppMethodBeat.o(199757);
+    AppMethodBeat.o(248365);
   }
   
-  public final int a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public final int a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, Bitmap paramBitmap, boolean paramBoolean3)
   {
-    AppMethodBeat.i(199724);
-    p.k(paramContext, "context");
-    com.tencent.mm.live.core.core.model.h localh = this.knA;
-    Object localObject = this.knz;
-    if (localObject != null)
+    Object localObject1 = null;
+    AppMethodBeat.i(248261);
+    s.u(paramContext, "context");
+    com.tencent.mm.live.core.core.model.i locali = this.mRB;
+    Object localObject2 = this.mRA;
+    if (localObject2 == null) {}
+    while (!locali.a((Long)localObject1))
     {
-      localObject = ((com.tencent.mm.live.core.core.model.g)localObject).kjd;
-      if (localObject == null) {}
-    }
-    for (localObject = Long.valueOf(((f)localObject).liveId); !localh.a((Long)localObject); localObject = null)
-    {
-      AppMethodBeat.o(199724);
+      AppMethodBeat.o(248261);
       return -4;
+      localObject2 = ((com.tencent.mm.live.core.core.model.h)localObject2).mJH;
+      if (localObject2 != null) {
+        localObject1 = Long.valueOf(((com.tencent.mm.live.core.core.model.g)localObject2).liveId);
+      }
     }
-    final long l = Util.currentTicks();
-    Log.i("MicroMsg.LiveCoreAnchor", "floatMode liveMode:" + this.knA.aLs() + ", forceMoveTask:" + paramBoolean1 + ", dontFinish:" + paramBoolean2 + ", generateType:" + paramInt1 + ", opType:" + paramInt2 + ", staticFloatImage:" + paramBitmap + ", isScreenShareMode:" + this.knA.kmG);
-    if ((this.knA.kmG) || (this.knA.aLs()))
+    long l = Util.currentTicks();
+    Log.i("MicroMsg.LiveCoreAnchor", "floatMode liveMode:" + this.mRB.bex() + ", forceMoveTask:" + paramBoolean1 + ", dontFinish:" + paramBoolean2 + ", generateType:" + paramInt1 + ", opType:" + paramInt2 + ", staticFloatImage:" + paramBitmap + ", isScreenShareMode:" + this.mRB.mNQ);
+    if ((this.mRB.mNQ) || (this.mRB.bex()))
     {
-      localObject = new ImageView(MMApplicationContext.getContext());
-      ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
-      ((ImageView)localObject).setImageBitmap(paramBitmap);
-      this.knr.cH((View)localObject);
+      localObject1 = new ImageView(MMApplicationContext.getContext());
+      ((ImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      ((ImageView)localObject1).setImageBitmap(paramBitmap);
+      this.mRq.dc((View)localObject1);
     }
     for (;;)
     {
-      paramInt1 = super.a(paramContext, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramBitmap);
-      AppMethodBeat.o(199724);
+      paramInt1 = super.a(paramContext, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramBitmap, paramBoolean3);
+      AppMethodBeat.o(248261);
       return paramInt1;
-      localObject = new TextureView(MMApplicationContext.getContext());
-      ((TextureView)localObject).setSurfaceTextureListener((TextureView.SurfaceTextureListener)new e(this, l, paramContext, (TextureView)localObject));
-      this.kns.reset();
-      this.knr.cH((View)localObject);
+      localObject1 = new TextureView(MMApplicationContext.getContext());
+      ((TextureView)localObject1).setSurfaceTextureListener((TextureView.SurfaceTextureListener)new b.c(this, l, paramContext, (TextureView)localObject1));
+      this.mRs.reset();
+      this.mRq.dc((View)localObject1);
     }
+  }
+  
+  public final void a(com.tencent.mm.live.core.b.a parama, com.tencent.mm.live.core.b.b paramb)
+  {
+    AppMethodBeat.i(248351);
+    a(this.mRt, parama, paramb);
+    AppMethodBeat.o(248351);
   }
   
   public final void a(com.tencent.mm.live.core.core.c paramc)
   {
-    AppMethodBeat.i(199726);
-    p.k(paramc, "callback");
+    AppMethodBeat.i(248269);
+    s.u(paramc, "callback");
     super.a(paramc);
-    paramc = this.knl;
-    Object localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    localObject = ((Context)localObject).getResources().getDrawable(a.c.mic_user_leave);
-    p.j(localObject, "MMApplicationContext.get….drawable.mic_user_leave)");
+    paramc = beO();
+    Object localObject = MMApplicationContext.getContext().getResources().getDrawable(a.f.mic_user_leave);
+    s.s(localObject, "getContext().resources.g…ble(R.raw.mic_user_leave)");
     paramc.setVideoMuteImage(com.tencent.mm.ae.d.drawable2Bitmap((Drawable)localObject), 5);
-    paramc = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
-    p.j(paramc, "ConfigHelper.getInstance()");
-    localObject = paramc.aLJ();
-    paramc = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
-    p.j(paramc, "ConfigHelper.getInstance()");
-    paramc = paramc.aLK();
-    p.j(localObject, "videoConfig");
-    ((e)localObject).ff(true);
-    p.j(paramc, "audioConfig");
-    paramc.fb(true);
-    localObject = this.knn;
+    localObject = a.a.bfr().bfn();
+    paramc = a.a.bfr().bfo();
+    ((e)localObject).mTi = true;
+    paramc.mSJ = true;
+    localObject = beQ();
     if (localObject != null) {
       ((com.tencent.mm.live.core.core.trtc.sdkadapter.c)localObject).startLocalAudio();
     }
-    localObject = this.knn;
+    localObject = beQ();
     if (localObject != null)
     {
-      ((com.tencent.mm.live.core.core.trtc.sdkadapter.c)localObject).fa(paramc.aLU());
-      AppMethodBeat.o(199726);
-      return;
+      boolean bool = paramc.mSK;
+      ((com.tencent.mm.live.core.core.trtc.sdkadapter.c)localObject).mSx.enableAudioEarMonitoring(bool);
     }
-    AppMethodBeat.o(199726);
+    AppMethodBeat.o(248269);
   }
   
-  public final int aJC()
+  public final void aG(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(199737);
-    this.knl.enableCustomVideoCapture(true);
-    com.tencent.mm.live.core.core.trtc.sdkadapter.c localc = this.knn;
+    AppMethodBeat.i(248344);
+    s.u(paramString1, "connectRoomId");
+    s.u(paramString2, "connectedRoomId");
+    boolean bool = this.mRB.ber();
+    Log.i("MicroMsg.LiveCoreAnchor", "stopRoomPkLinkMic: connectRoomId:" + paramString1 + " connectedRoomId:" + paramString2 + ", isPkRoleApply:" + bool);
+    if (bool)
+    {
+      Object localObject = a.a.bfr().bfp();
+      if (localObject != null)
+      {
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).mSY = "";
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).mSV = false;
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).mSW = "";
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).mSX = "";
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).mSS = "";
+      }
+      localObject = beQ();
+      if (localObject != null)
+      {
+        JSONObject localJSONObject1 = new JSONObject();
+        try
+        {
+          localJSONObject1.put("api", "disconnectOtherRoom");
+          JSONObject localJSONObject2 = new JSONObject();
+          localJSONObject2.put("connectRoomId", Long.parseLong(paramString1));
+          localJSONObject2.put("connectedRoomId", Long.parseLong(paramString2));
+          localJSONObject1.put("params", localJSONObject2);
+          ((com.tencent.mm.live.core.core.trtc.sdkadapter.c)localObject).mSx.callExperimentalAPI(localJSONObject1.toString());
+          AppMethodBeat.o(248344);
+          return;
+        }
+        catch (Exception paramString1) {}
+      }
+    }
+    AppMethodBeat.o(248344);
+  }
+  
+  public final void bcg()
+  {
+    AppMethodBeat.i(248298);
+    long l = Util.currentTicks();
+    super.bcg();
+    LivePreviewView localLivePreviewView = this.mRt;
+    if (localLivePreviewView != null) {
+      localLivePreviewView.a((kotlin.g.a.b)new b.d(this, l), (m)new b.e(this));
+    }
+    AppMethodBeat.o(248298);
+  }
+  
+  public final int bcj()
+  {
+    AppMethodBeat.i(248290);
+    beO().enableCustomVideoCapture(true);
+    com.tencent.mm.live.core.core.trtc.sdkadapter.c localc = beQ();
     if (localc != null) {
       localc.startLocalAudio();
     }
-    this.knB = true;
-    this.kns.e((kotlin.g.a.b)g.klx);
-    this.kns.f((kotlin.g.a.b)h.kly);
-    AppMethodBeat.o(199737);
+    this.mRC = true;
+    this.mRs.u((kotlin.g.a.b)b.g.mMx);
+    this.mRs.v((kotlin.g.a.b)b.h.mMy);
+    AppMethodBeat.o(248290);
     return 0;
   }
   
-  public final void aJz()
+  public final void beh()
   {
-    AppMethodBeat.i(199738);
-    final long l = Util.currentTicks();
-    super.aJz();
-    LivePreviewView localLivePreviewView = this.knt;
-    if (localLivePreviewView != null)
+    AppMethodBeat.i(248325);
+    Log.i("MicroMsg.LiveCoreAnchor", s.X("stopCrossLinkMic is applyPkRole:", Boolean.valueOf(this.mRB.ber())));
+    if (this.mRB.ber())
     {
-      localLivePreviewView.a((kotlin.g.a.q)new f(this, l));
-      AppMethodBeat.o(199738);
-      return;
-    }
-    AppMethodBeat.o(199738);
-  }
-  
-  public final void aLf()
-  {
-    AppMethodBeat.i(199748);
-    Log.i("MicroMsg.LiveCoreAnchor", "stopCrossLinkMic is applyPkRole:" + this.knA.aLm());
-    if (this.knA.aLm())
-    {
-      Object localObject = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
-      p.j(localObject, "ConfigHelper.getInstance()");
-      localObject = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject).aLL();
+      Object localObject = a.a.bfr().bfp();
       if (localObject != null)
       {
-        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).NC("");
-        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).NB("");
-        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).fc(false);
-        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).NA("");
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).mSU = "";
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).mSS = "";
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).mST = false;
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.d)localObject).mSR = "";
       }
-      localObject = this.knn;
+      localObject = beQ();
       if (localObject != null) {
-        ((com.tencent.mm.live.core.core.trtc.sdkadapter.c)localObject).aLT();
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.c)localObject).mSx.DisconnectOtherRoom();
       }
-      this.knA.kmz = h.f.kna;
+      this.mRB.mNJ = i.f.mOj;
     }
-    AppMethodBeat.o(199748);
+    AppMethodBeat.o(248325);
   }
   
-  public final void eU(boolean paramBoolean)
+  public final void c(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(199749);
-    com.tencent.mm.live.core.b.d locald = this.kns;
-    locald.i((kotlin.g.a.a)new d.i(locald, paramBoolean));
-    AppMethodBeat.o(199749);
-  }
-  
-  public final void l(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(199744);
-    p.k(paramString1, "roomId");
-    p.k(paramString2, "username");
-    p.k(paramString3, "pkSign");
-    Log.i("MicroMsg.LiveCoreAnchor", "startCrossLinkMic roomId:" + paramString1 + " username:" + paramString2 + " pkSign:" + paramString3);
-    this.knA.kmz = h.f.knb;
-    m(paramString1, paramString2, paramString3);
-    com.tencent.mm.live.core.core.trtc.sdkadapter.c localc = this.knn;
-    if (localc != null)
+    AppMethodBeat.i(248335);
+    s.u(paramString1, "connectRoomId");
+    s.u(paramString2, "connectedRoomId");
+    s.u(paramString3, "roomPkSign");
+    Log.i("MicroMsg.LiveCoreAnchor", "startRoomPkLinkMic: connectRoomId:" + paramString1 + " connectedRoomId:" + paramString2 + " roomPkSign:" + paramString3 + " username:" + paramString4);
+    this.mRB.mNJ = i.f.mOk;
+    d(paramString1, paramString2, paramString3, paramString4);
+    paramString4 = beQ();
+    if (paramString4 != null)
     {
-      localc.n(paramString1, paramString2, paramString3);
-      AppMethodBeat.o(199744);
-      return;
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("connectRoomId", Long.parseLong(paramString1));
+        localJSONObject.put("connectedRoomId", Long.parseLong(paramString2));
+        localJSONObject.put("sign", paramString3);
+        paramString4.mSx.ConnectOtherRoom(localJSONObject.toString());
+        AppMethodBeat.o(248335);
+        return;
+      }
+      catch (Exception paramString1) {}
     }
-    AppMethodBeat.o(199744);
+    AppMethodBeat.o(248335);
+  }
+  
+  public final void fE(boolean paramBoolean)
+  {
+    AppMethodBeat.i(248360);
+    com.tencent.mm.live.core.b.d locald = this.mRs;
+    locald.H((kotlin.g.a.a)new d.k(locald, paramBoolean));
+    AppMethodBeat.o(248360);
   }
   
   public final void onEnterRoom(long paramLong)
   {
-    AppMethodBeat.i(199730);
+    AppMethodBeat.i(248275);
     super.onEnterRoom(paramLong);
     if (paramLong > 0L) {
-      this.klo.startTimer(1000L, 1000L);
+      this.mMr.startTimer(1000L, 1000L);
     }
-    this.knk.post((Runnable)this.klm);
-    AppMethodBeat.o(199730);
+    this.mRi.post((Runnable)this.mMp);
+    AppMethodBeat.o(248275);
   }
   
   public final void onError(int paramInt, String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(199739);
+    AppMethodBeat.i(248308);
     if (paramInt == -3301)
     {
-      paramBundle = com.tencent.mm.live.core.debug.a.kqB;
-      com.tencent.mm.live.core.debug.a.NO("[-3301]create room fail,".concat(String.valueOf(paramString)));
-      paramString = aLv();
+      paramBundle = com.tencent.mm.live.core.debug.a.mUy;
+      com.tencent.mm.live.core.debug.a.Gb(s.X("[-3301]create room fail,", paramString));
+      paramString = beR();
       if (paramString != null) {
         c.a.a(paramString, paramInt);
       }
-      aLw();
-      AppMethodBeat.o(199739);
+      beS();
+      AppMethodBeat.o(248308);
       return;
     }
     super.onError(paramInt, paramString, paramBundle);
-    AppMethodBeat.o(199739);
+    AppMethodBeat.o(248308);
   }
   
   public final void onExitRoom(int paramInt)
   {
-    AppMethodBeat.i(199733);
+    AppMethodBeat.i(248279);
     super.onExitRoom(paramInt);
-    this.klo.stopTimer();
-    AppMethodBeat.o(199733);
+    this.mMr.stopTimer();
+    AppMethodBeat.o(248279);
   }
   
   public final void onUserVoiceVolume(ArrayList<TRTCCloudDef.TRTCVolumeInfo> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(199766);
+    AppMethodBeat.i(248379);
     super.onUserVoiceVolume(paramArrayList, paramInt);
-    ??? = com.tencent.mm.live.core.core.trtc.sdkadapter.b.b.aLY();
-    p.j(???, "RemoteUserConfigHelper.getInstance()");
-    ??? = ((com.tencent.mm.live.core.core.trtc.sdkadapter.b.b)???).aLZ();
-    p.j(???, "RemoteUserConfigHelper.g…ce().remoteUserConfigList");
-    Object localObject3;
+    ??? = com.tencent.mm.live.core.core.trtc.sdkadapter.b.b.a.bfv().mTz;
+    s.s(???, "getInstance().remoteUserConfigList");
     synchronized ((Iterable)???)
     {
       localObject2 = ((Iterable)???).iterator();
-      if (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (com.tencent.mm.live.core.core.trtc.sdkadapter.b.a)((Iterator)localObject2).next();
-        p.j(localObject3, "it");
-        ((com.tencent.mm.live.core.core.trtc.sdkadapter.b.a)localObject3).setVolume(0);
+      if (((Iterator)localObject2).hasNext()) {
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.b.a)((Iterator)localObject2).next()).mTx = 0;
       }
     }
-    Object localObject2 = x.aazN;
-    this.kln = 0;
+    Object localObject2 = ah.aiuX;
+    this.mMq = 0;
+    Object localObject3;
     if (paramArrayList != null)
     {
       ??? = ((Iterable)paramArrayList).iterator();
       while (((Iterator)???).hasNext())
       {
         localObject2 = (TRTCCloudDef.TRTCVolumeInfo)((Iterator)???).next();
-        if (Util.isEqual(this.knA.kmC, ((TRTCCloudDef.TRTCVolumeInfo)localObject2).userId))
+        if (Util.isEqual(this.mRB.mNM, ((TRTCCloudDef.TRTCVolumeInfo)localObject2).userId))
         {
-          this.kln = ((TRTCCloudDef.TRTCVolumeInfo)localObject2).volume;
+          this.mMq = ((TRTCCloudDef.TRTCVolumeInfo)localObject2).volume;
         }
         else
         {
-          localObject3 = com.tencent.mm.live.core.core.trtc.sdkadapter.b.b.aLY().NE(((TRTCCloudDef.TRTCVolumeInfo)localObject2).userId);
+          localObject3 = com.tencent.mm.live.core.core.trtc.sdkadapter.b.b.a.bfv().FU(((TRTCCloudDef.TRTCVolumeInfo)localObject2).userId);
           if (localObject3 != null) {
-            ((com.tencent.mm.live.core.core.trtc.sdkadapter.b.a)localObject3).setVolume(((TRTCCloudDef.TRTCVolumeInfo)localObject2).volume);
+            ((com.tencent.mm.live.core.core.trtc.sdkadapter.b.a)localObject3).mTx = ((TRTCCloudDef.TRTCVolumeInfo)localObject2).volume;
           }
         }
       }
@@ -449,309 +612,135 @@ public final class b
       {
         localObject2 = (TRTCCloudDef.TRTCVolumeInfo)paramArrayList.next();
         localObject3 = ((TRTCCloudDef.TRTCVolumeInfo)localObject2).userId;
-        p.j(localObject3, "it.userId");
+        s.s(localObject3, "it.userId");
         ((ArrayList)???).add(new UserVolumeInfo((String)localObject3, ((TRTCCloudDef.TRTCVolumeInfo)localObject2).volume));
       }
     }
     paramArrayList = new Bundle();
     paramArrayList.putParcelableArrayList("live_user_volume_info", (ArrayList)???);
-    ??? = this.kny;
+    ??? = this.mRy;
     if (??? != null)
     {
-      localObject2 = e.e.kjZ;
-      ((com.tencent.mm.live.core.core.c)???).callback(e.e.aKg(), paramArrayList);
-      AppMethodBeat.o(199766);
-      return;
+      localObject2 = e.g.mKv;
+      ((com.tencent.mm.live.core.core.c)???).callback(e.g.bcZ(), paramArrayList);
     }
-    AppMethodBeat.o(199766);
+    AppMethodBeat.o(248379);
+  }
+  
+  public final void q(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(248317);
+    s.u(paramString1, "roomId");
+    s.u(paramString2, "username");
+    s.u(paramString3, "pkSign");
+    Log.i("MicroMsg.LiveCoreAnchor", "startCrossLinkMic roomId:" + paramString1 + " username:" + paramString2 + " pkSign:" + paramString3);
+    this.mRB.mNJ = i.f.mOk;
+    r(paramString1, paramString2, paramString3);
+    com.tencent.mm.live.core.core.trtc.sdkadapter.c localc = beQ();
+    if (localc != null)
+    {
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("roomId", Long.parseLong(paramString1));
+        localJSONObject.put("userId", paramString2);
+        localJSONObject.put("sign", paramString3);
+        localc.mSx.ConnectOtherRoom(localJSONObject.toString());
+        AppMethodBeat.o(248317);
+        return;
+      }
+      catch (Exception paramString1) {}
+    }
+    AppMethodBeat.o(248317);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(199759);
+    AppMethodBeat.i(248371);
     super.release();
-    this.knk.removeCallbacks((Runnable)this.klm);
-    aLw();
-    aLx();
-    AppMethodBeat.o(199759);
+    this.mRi.removeCallbacks((Runnable)this.mMp);
+    beS();
+    beT();
+    AppMethodBeat.o(248371);
   }
   
   public final int stopPush()
   {
-    AppMethodBeat.i(199736);
-    this.kns.e(null);
-    this.knl.enableCustomVideoCapture(false);
-    com.tencent.mm.live.core.core.trtc.sdkadapter.c localc = this.knn;
+    AppMethodBeat.i(248284);
+    this.mRs.u(null);
+    beO().enableCustomVideoCapture(false);
+    com.tencent.mm.live.core.core.trtc.sdkadapter.c localc = beQ();
     if (localc != null) {
-      localc.stopLocalAudio();
+      localc.mSx.stopLocalAudio();
     }
-    this.knB = false;
-    AppMethodBeat.o(199736);
+    this.mRC = false;
+    AppMethodBeat.o(248284);
     return 0;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$refreshMicUserView$1$1$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "surface", "plugin-core_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "TAG", "", "getInstance", "hasInstance", "", "releaseInstance", "", "onlyResetReference", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements TextureView.SurfaceTextureListener
   {
-    a(j paramj) {}
-    
-    public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+    public static b bej()
     {
-      AppMethodBeat.i(199224);
-      p.k(paramSurfaceTexture, "surfaceTexture");
-      Log.i("MicroMsg.LiveCoreAnchor", "customRender onSurfaceTextureAvailable, size:[%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      this.klr.bO(new Surface(paramSurfaceTexture));
-      this.klr.dt(paramInt1, paramInt2);
-      AppMethodBeat.o(199224);
-    }
-    
-    public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-    {
-      AppMethodBeat.i(199227);
-      p.k(paramSurfaceTexture, "surfaceTexture");
-      Log.i("MicroMsg.LiveCoreAnchor", "customRender onSurfaceTextureDestroyed");
-      this.klr.aMX();
-      AppMethodBeat.o(199227);
-      return false;
-    }
-    
-    public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(199226);
-      p.k(paramSurfaceTexture, "surfaceTexture");
-      Log.i("MicroMsg.LiveCoreAnchor", "customRender onSurfaceTextureSizeChanged, size:[%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      this.klr.dt(paramInt1, paramInt2);
-      AppMethodBeat.o(199226);
-    }
-    
-    public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
-    {
-      AppMethodBeat.i(199229);
-      p.k(paramSurfaceTexture, "surface");
-      AppMethodBeat.o(199229);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore;", "TAG", "", "getInstance", "hasInstance", "", "releaseInstance", "", "onlyResetReference", "plugin-core_release"})
-  public static final class b
-  {
-    public static b aLh()
-    {
-      AppMethodBeat.i(197984);
-      if (b.aLg() == null) {
-        b.e(new b());
+      AppMethodBeat.i(248133);
+      if (b.bei() == null) {
+        b.b(new b());
       }
-      b localb = b.aLg();
-      if (localb == null) {
-        p.iCn();
-      }
-      AppMethodBeat.o(197984);
+      b localb = b.bei();
+      s.checkNotNull(localb);
+      AppMethodBeat.o(248133);
       return localb;
     }
     
-    public static boolean aLi()
+    public static boolean bek()
     {
-      AppMethodBeat.i(197986);
-      if (b.aLg() != null)
+      AppMethodBeat.i(248143);
+      if (b.bei() != null)
       {
-        AppMethodBeat.o(197986);
+        AppMethodBeat.o(248143);
         return true;
       }
-      AppMethodBeat.o(197986);
+      AppMethodBeat.o(248143);
       return false;
     }
     
-    public static void eV(boolean paramBoolean)
+    public static void fF(boolean paramBoolean)
     {
-      AppMethodBeat.i(197988);
+      AppMethodBeat.i(248151);
+      Log.i("MicroMsg.LiveCoreAnchor", s.X("releaseInstance: onlyResetReference:", Boolean.valueOf(paramBoolean)));
       if (!paramBoolean)
       {
-        b localb = b.aLg();
+        b localb = b.bei();
         if (localb != null) {
           localb.release();
         }
       }
-      b.e(null);
-      AppMethodBeat.o(197988);
+      b.b(null);
+      AppMethodBeat.o(248151);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
-  static final class c
-    implements MTimerHandler.CallBack
-  {
-    c(b paramb) {}
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(198688);
-      Object localObject1 = b.b(this.kls);
-      Object localObject2 = b.d(this.kls).toString();
-      p.j(localObject2, "prepareAnchorSeiInfo().toString()");
-      Charset localCharset = kotlin.n.d.UTF_8;
-      if (localObject2 == null)
-      {
-        localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(198688);
-        throw ((Throwable)localObject1);
-      }
-      localObject2 = ((String)localObject2).getBytes(localCharset);
-      p.j(localObject2, "(this as java.lang.String).getBytes(charset)");
-      ((TRTCCloud)localObject1).sendSEIMsg((byte[])localObject2, 1);
-      AppMethodBeat.o(198688);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1", "Ljava/lang/Runnable;", "run", "", "plugin-core_release"})
-  public static final class d
+  @Metadata(d1={""}, d2={"com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$debugRunnable$1", "Ljava/lang/Runnable;", "run", "", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
     implements Runnable
   {
+    b(b paramb) {}
+    
     public final void run()
     {
-      AppMethodBeat.i(198358);
-      Object localObject = com.tencent.mm.live.core.debug.a.kqB;
-      localObject = b.b(this.kls);
-      if (localObject == null)
-      {
-        localObject = new t("null cannot be cast to non-null type com.tencent.mm.live.core.core.trtc.WXTRTCCloudImpl");
-        AppMethodBeat.o(198358);
-        throw ((Throwable)localObject);
-      }
-      com.tencent.mm.live.core.debug.a.NP(((com.tencent.mm.live.core.core.trtc.b)localObject).aLG().toString());
-      b.c(this.kls).removeCallbacks((Runnable)this);
-      b.c(this.kls).postDelayed((Runnable)this, 10000L);
-      AppMethodBeat.o(198358);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/core/core/anchor/LiveAnchorTRTCCore$floatMode$2", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-core_release"})
-  public static final class e
-    implements TextureView.SurfaceTextureListener
-  {
-    e(long paramLong, Context paramContext, TextureView paramTextureView) {}
-    
-    public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(199056);
-      Log.i("MicroMsg.LiveCoreAnchor", "float onSurfaceTextureAvailable, surface:" + paramSurfaceTexture + ", size:[" + paramInt1 + ", " + paramInt2 + ']');
-      com.tencent.mm.live.core.c.a.tp((int)Util.ticksToNow(l));
-      int j = ax.au(this.$context).x;
-      int i = ax.au(this.$context).y;
-      if (j > i) {}
-      for (;;)
-      {
-        float f;
-        int m;
-        if (paramInt1 < paramInt2)
-        {
-          f = paramInt1;
-          m = (int)(j / i * f);
-          k = paramInt1;
-        }
-        for (;;)
-        {
-          b.a(this.kls).bO(this.klu.getSurfaceTexture());
-          b.a(this.kls).dt(k, m);
-          AppMethodBeat.o(199056);
-          return;
-          if (i <= j) {
-            break label209;
-          }
-          k = i;
-          i = j;
-          j = k;
-          break;
-          k = paramInt1;
-          m = paramInt2;
-          if (paramInt2 < paramInt1)
-          {
-            f = paramInt2;
-            k = (int)(j / i * f);
-            m = paramInt2;
-          }
-        }
-        label209:
-        int k = i;
-        i = j;
-        j = k;
-      }
-    }
-    
-    public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-    {
-      AppMethodBeat.i(199052);
-      Log.i("MicroMsg.LiveCoreAnchor", "float onSurfaceTextureDestroyed");
-      AppMethodBeat.o(199052);
-      return false;
-    }
-    
-    public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(199049);
-      Log.i("MicroMsg.LiveCoreAnchor", "float onSurfaceTextureSizeChanged, surface:" + paramSurfaceTexture + ", size:[" + paramInt1 + ", " + paramInt2 + ']');
-      b.a(this.kls).dt(paramInt1, paramInt2);
-      AppMethodBeat.o(199049);
-    }
-    
-    public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "surface", "Lcom/tencent/mm/live/core/render/RenderSurfaceHolder;", "i", "", "i1", "invoke"})
-  static final class f
-    extends kotlin.g.b.q
-    implements kotlin.g.a.q<n, Integer, Integer, x>
-  {
-    f(b paramb, long paramLong)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "mFps", "", "invoke"})
-  static final class g
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<Integer, x>
-  {
-    public static final g klx;
-    
-    static
-    {
-      AppMethodBeat.i(199864);
-      klx = new g();
-      AppMethodBeat.o(199864);
-    }
-    
-    g()
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "cost", "", "invoke"})
-  static final class h
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<Integer, x>
-  {
-    public static final h kly;
-    
-    static
-    {
-      AppMethodBeat.i(198975);
-      kly = new h();
-      AppMethodBeat.o(198975);
-    }
-    
-    h()
-    {
-      super();
+      AppMethodBeat.i(248131);
+      com.tencent.mm.live.core.debug.a locala = com.tencent.mm.live.core.debug.a.mUy;
+      com.tencent.mm.live.core.debug.a.Gc(((com.tencent.mm.live.core.core.trtc.c)b.d(this.mMt)).bfk().toString());
+      b.e(this.mMt).removeCallbacks((Runnable)this);
+      b.e(this.mMt).postDelayed((Runnable)this, 10000L);
+      AppMethodBeat.o(248131);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.live.core.core.a.b
  * JD-Core Version:    0.7.0.1
  */

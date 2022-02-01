@@ -3,86 +3,86 @@ package kotlin.l.b.a.b.j.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.a.v;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.b.as;
-import kotlin.l.b.a.b.m.a.l;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.l.b.a.b.m.at;
-import kotlin.l.b.a.b.m.av;
-import kotlin.l.b.a.b.m.bh;
-import kotlin.z;
+import kotlin.a.ab;
+import kotlin.a.p;
+import kotlin.ak;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.a.h;
+import kotlin.l.b.a.b.b.ba;
+import kotlin.l.b.a.b.m.a.j;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.b.a.b.m.ax;
+import kotlin.l.b.a.b.m.az;
+import kotlin.l.b.a.b.m.bl;
 
 public final class c
   implements b
 {
-  public l abkR;
-  public final av abkS;
+  public final az ajjx;
+  public j ajjy;
   
-  public c(av paramav)
+  public c(az paramaz)
   {
     AppMethodBeat.i(60031);
-    this.abkS = paramav;
-    if (this.abkS.iQa() != bh.abrp) {}
-    for (int i = 1; (z.aazO) && (i == 0); i = 0)
+    this.ajjx = paramaz;
+    if (this.ajjx.kAN() != bl.ajqM) {}
+    for (int i = 1; (ak.aiuY) && (i == 0); i = 0)
     {
-      paramav = (Throwable)new AssertionError("Only nontrivial projections can be captured, not: " + this.abkS);
+      paramaz = (Throwable)new AssertionError(s.X("Only nontrivial projections can be captured, not: ", this.ajjx));
       AppMethodBeat.o(60031);
-      throw paramav;
+      throw paramaz;
     }
     AppMethodBeat.o(60031);
   }
   
-  public final List<as> iCb()
+  public final List<ba> klq()
   {
-    return (List)v.aaAd;
+    return (List)ab.aivy;
   }
   
-  public final boolean iEh()
+  public final boolean knx()
   {
     return false;
   }
   
-  public final g iFv()
+  public final h koV()
   {
     AppMethodBeat.i(60030);
-    g localg = this.abkS.iFN().iOU().iFv();
-    p.j(localg, "projection.type.constructor.builtIns");
+    h localh = this.ajjx.koG().kzm().koV();
+    s.s(localh, "projection.type.constructor.builtIns");
     AppMethodBeat.o(60030);
-    return localg;
+    return localh;
   }
   
-  public final Collection<ab> iGk()
+  public final Collection<ad> kpG()
   {
     AppMethodBeat.i(60028);
-    if (this.abkS.iQa() == bh.abrr) {}
-    for (Object localObject = this.abkS.iFN();; localObject = (ab)iFv().iDv())
+    if (this.ajjx.kAN() == bl.ajqO) {}
+    for (Object localObject = this.ajjx.koG();; localObject = (ad)koV().kmP())
     {
-      p.j(localObject, "if (projection.projectio… builtIns.nullableAnyType");
-      localObject = (Collection)j.listOf(localObject);
+      s.s(localObject, "if (projection.projectio… builtIns.nullableAnyType");
+      localObject = (Collection)p.listOf(localObject);
       AppMethodBeat.o(60028);
       return localObject;
     }
   }
   
-  public final av iOV()
+  public final az kzn()
   {
-    return this.abkS;
+    return this.ajjx;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(60029);
-    String str = "CapturedTypeConstructor(" + this.abkS + ')';
+    String str = "CapturedTypeConstructor(" + this.ajjx + ')';
     AppMethodBeat.o(60029);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.a.a.c
  * JD-Core Version:    0.7.0.1
  */

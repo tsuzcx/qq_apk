@@ -44,7 +44,7 @@ public class CameraParameter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.CameraParameter
  * JD-Core Version:    0.7.0.1
  */

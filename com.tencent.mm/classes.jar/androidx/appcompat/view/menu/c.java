@@ -12,9 +12,9 @@ import java.util.Set;
 abstract class c<T>
   extends d<T>
 {
-  private Map<b, MenuItem> lt;
-  private Map<androidx.core.a.a.c, SubMenu> lu;
   final Context mContext;
+  private Map<b, MenuItem> mp;
+  private Map<androidx.core.a.a.c, SubMenu> mq;
   
   c(Context paramContext, T paramT)
   {
@@ -22,33 +22,13 @@ abstract class c<T>
     this.mContext = paramContext;
   }
   
-  final SubMenu a(SubMenu paramSubMenu)
+  final void Z(int paramInt)
   {
-    if ((paramSubMenu instanceof androidx.core.a.a.c))
-    {
-      androidx.core.a.a.c localc = (androidx.core.a.a.c)paramSubMenu;
-      if (this.lu == null) {
-        this.lu = new a();
-      }
-      SubMenu localSubMenu = (SubMenu)this.lu.get(localc);
-      paramSubMenu = localSubMenu;
-      if (localSubMenu == null)
-      {
-        paramSubMenu = new v(this.mContext, localc);
-        this.lu.put(localc, paramSubMenu);
-      }
-      return paramSubMenu;
-    }
-    return paramSubMenu;
-  }
-  
-  final void ab(int paramInt)
-  {
-    if (this.lt == null) {}
+    if (this.mp == null) {}
     for (;;)
     {
       return;
-      Iterator localIterator = this.lt.keySet().iterator();
+      Iterator localIterator = this.mp.keySet().iterator();
       while (localIterator.hasNext()) {
         if (paramInt == ((MenuItem)localIterator.next()).getGroupId()) {
           localIterator.remove();
@@ -57,15 +37,35 @@ abstract class c<T>
     }
   }
   
-  final void ac(int paramInt)
+  final SubMenu a(SubMenu paramSubMenu)
   {
-    if (this.lt == null) {}
+    if ((paramSubMenu instanceof androidx.core.a.a.c))
+    {
+      androidx.core.a.a.c localc = (androidx.core.a.a.c)paramSubMenu;
+      if (this.mq == null) {
+        this.mq = new a();
+      }
+      SubMenu localSubMenu = (SubMenu)this.mq.get(localc);
+      paramSubMenu = localSubMenu;
+      if (localSubMenu == null)
+      {
+        paramSubMenu = new v(this.mContext, localc);
+        this.mq.put(localc, paramSubMenu);
+      }
+      return paramSubMenu;
+    }
+    return paramSubMenu;
+  }
+  
+  final void aa(int paramInt)
+  {
+    if (this.mp == null) {}
     Iterator localIterator;
     do
     {
       return;
       while (!localIterator.hasNext()) {
-        localIterator = this.lt.keySet().iterator();
+        localIterator = this.mp.keySet().iterator();
       }
     } while (paramInt != ((MenuItem)localIterator.next()).getItemId());
     localIterator.remove();
@@ -76,34 +76,34 @@ abstract class c<T>
     if ((paramMenuItem instanceof b))
     {
       b localb = (b)paramMenuItem;
-      if (this.lt == null) {
-        this.lt = new a();
+      if (this.mp == null) {
+        this.mp = new a();
       }
-      MenuItem localMenuItem = (MenuItem)this.lt.get(paramMenuItem);
+      MenuItem localMenuItem = (MenuItem)this.mp.get(paramMenuItem);
       paramMenuItem = localMenuItem;
       if (localMenuItem == null)
       {
         paramMenuItem = q.a(this.mContext, localb);
-        this.lt.put(localb, paramMenuItem);
+        this.mp.put(localb, paramMenuItem);
       }
       return paramMenuItem;
     }
     return paramMenuItem;
   }
   
-  final void bT()
+  final void cM()
   {
-    if (this.lt != null) {
-      this.lt.clear();
+    if (this.mp != null) {
+      this.mp.clear();
     }
-    if (this.lu != null) {
-      this.lu.clear();
+    if (this.mq != null) {
+      this.mq.clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     androidx.appcompat.view.menu.c
  * JD-Core Version:    0.7.0.1
  */

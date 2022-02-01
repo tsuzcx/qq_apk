@@ -1,25 +1,27 @@
 package com.tencent.mm.plugin.wallet.wecoin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bwj;
-import com.tencent.mm.protocal.protobuf.bwk;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.cji;
+import com.tencent.mm.protocal.protobuf.cjj;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import java.util.LinkedList;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiGetIncomeBalanceRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/GetIncomeBalanceResponse;", "()V", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiGetEncashPrepareInfoRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/GetEncashPrepareInfoResponse;", "businessID", "Ljava/util/LinkedList;", "", "(Ljava/util/LinkedList;)V", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends m<bwk>
+  extends n<cjj>
 {
-  public d()
+  public d(LinkedList<Integer> paramLinkedList)
   {
-    AppMethodBeat.i(251716);
-    bwj localbwj = new bwj();
-    bwk localbwk = new bwk();
-    a((dyl)localbwj, (dyy)localbwk, 4032, "/cgi-bin/micromsg-bin/getincomebalance");
-    Log.i("MicroMsg.CommonWeCoinCgi", "CgiGetIncomeBalanceRequest: ");
-    AppMethodBeat.o(251716);
+    AppMethodBeat.i(315701);
+    cji localcji = new cji();
+    localcji.aarW = paramLinkedList;
+    paramLinkedList = new cjj();
+    a((erp)localcji, (esc)paramLinkedList, 5990, "/cgi-bin/micromsg-bin/getencashprepareinfo");
+    Log.i("MicroMsg.CommonWeCoinCgi", "CgiGetEncashPrepareInfoRequest: ");
+    AppMethodBeat.o(315701);
   }
 }
 

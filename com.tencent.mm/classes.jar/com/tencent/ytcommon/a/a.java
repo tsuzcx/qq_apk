@@ -6,16 +6,16 @@ import com.tencent.ytcommon.auth.Auth;
 
 public final class a
 {
-  public static int dm(Context paramContext, String paramString)
+  public static int dv(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(251305);
-    int i = Auth.aj(paramContext, paramString, "");
+    AppMethodBeat.i(210528);
+    int i = Auth.ao(paramContext, paramString, "");
     if (i == 0) {
       new StringBuilder("error code: ").append(i).append("  version: ").append(Auth.getVersion()).append("  ").append(Auth.getFailedReason(i));
     }
     for (;;)
     {
-      AppMethodBeat.o(251305);
+      AppMethodBeat.o(210528);
       return i;
       new StringBuilder("error code: ").append(i).append("  version: ").append(Auth.getVersion()).append("  ").append(Auth.getFailedReason(i));
     }

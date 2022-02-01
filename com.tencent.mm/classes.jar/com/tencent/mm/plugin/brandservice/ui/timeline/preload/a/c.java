@@ -1,389 +1,395 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.a;
 
 import android.webkit.ValueCallback;
-import com.tencent.e.i;
 import com.tencent.luggage.bridge.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.aw.f.d;
-import com.tencent.mm.plugin.aw.f.i;
-import com.tencent.mm.plugin.aw.f.j;
-import com.tencent.mm.plugin.aw.g.b;
-import com.tencent.mm.plugin.aw.g.o;
-import com.tencent.mm.plugin.ax.d;
+import com.tencent.mm.plugin.appbrand.n.g;
+import com.tencent.mm.plugin.ay.d.d;
+import com.tencent.mm.plugin.ay.d.i;
+import com.tencent.mm.plugin.ay.d.j;
+import com.tencent.mm.plugin.ay.e;
+import com.tencent.mm.plugin.ay.e.b;
+import com.tencent.mm.plugin.ay.e.o;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.UrlExKt;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.plugin.webcanvas.j;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.threadpool.i;
 import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 import org.json.JSONObject;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GameWebPrefetcherJsEngineInterceptor;", "Lcom/tencent/mm/plugin/webprefetcher/WebPrefetcherJsEngineInterceptor;", "()V", "bizAppId", "", "getBizAppId", "()Ljava/lang/String;", "setBizAppId", "(Ljava/lang/String;)V", "clientContextReport", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngineContextReporter;", "contextName", "engineReporter", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngineReporter;", "jsContext", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "jsContextInited", "", "createBizJsContext", "type", "", "url", "onCompleted", "Lkotlin/Function1;", "", "dispatchEvent", "event", "data", "Lorg/json/JSONObject;", "appId", "initJsContext", "onJsContextInited", "callback", "Lkotlin/Function0;", "onUrlExposed", "Companion", "GamePrefetcherClientContextImpl", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GameWebPrefetcherJsEngineInterceptor;", "Lcom/tencent/mm/plugin/webprefetcher/WebPrefetcherJsEngineInterceptor;", "()V", "bizAppId", "", "getBizAppId", "()Ljava/lang/String;", "setBizAppId", "(Ljava/lang/String;)V", "clientContextReport", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngineContextReporter;", "contextName", "engineReporter", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngineReporter;", "jsContext", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "jsContextInited", "", "createBizJsContext", "type", "", "url", "onCompleted", "Lkotlin/Function1;", "", "dispatchEvent", "event", "data", "Lorg/json/JSONObject;", "appId", "initJsContext", "onJsContextInited", "callback", "Lkotlin/Function0;", "onUrlExposed", "Companion", "GamePrefetcherClientContextImpl", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends d
+  extends com.tencent.mm.plugin.az.d
 {
-  private static boolean sPX;
-  public static final a sPY;
-  private final String contextName;
-  String mpE;
-  private com.tencent.mm.plugin.appbrand.m.g sPT;
-  private boolean sPU;
-  private final com.tencent.mm.plugin.aw.g sPV;
-  private final com.tencent.mm.plugin.aw.f sPW;
+  public static final a vVi;
+  private static boolean vVo;
+  private String pjl;
+  private g vVj;
+  private boolean vVk;
+  private final e vVl;
+  private final com.tencent.mm.plugin.ay.d vVm;
+  private final String vVn;
   
   static
   {
-    AppMethodBeat.i(258219);
-    sPY = new a((byte)0);
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzQ, 0);
-    if ((i == 1) || (BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      sPX = bool;
-      Log.i("MicroMsg.GameWebPrefetcherJsEngineInterceptor", "initGameWebPrefetcherJsEngineInterceptor config: " + i + ", open: " + sPX);
-      AppMethodBeat.o(258219);
-      return;
-    }
+    AppMethodBeat.i(303201);
+    vVi = new a((byte)0);
+    vVo = true;
+    Log.i("MicroMsg.GameWebPrefetcherJsEngineInterceptor", s.X("initGameWebPrefetcherJsEngineInterceptor open: ", Boolean.valueOf(vVo)));
+    AppMethodBeat.o(303201);
   }
   
   public c()
   {
-    AppMethodBeat.i(258218);
-    this.sPV = new com.tencent.mm.plugin.aw.g();
-    this.sPW = new com.tencent.mm.plugin.aw.f(1696L, f.j.PwG);
-    this.mpE = "__Game_Prefetcher_FakeAppId";
-    this.contextName = "GameWebPrefetcher";
-    AppMethodBeat.o(258218);
+    AppMethodBeat.i(303134);
+    this.vVl = new e();
+    this.vVm = new com.tencent.mm.plugin.ay.d(1696L, d.j.WmQ);
+    this.pjl = "__Game_Prefetcher_FakeAppId";
+    this.vVn = "GameWebPrefetcher";
+    AppMethodBeat.o(303134);
   }
   
-  private static void dispatchEvent(String paramString, JSONObject paramJSONObject)
+  private static final void a(g paramg, c paramc, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(258217);
-    Object localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.a.a.sQi;
+    AppMethodBeat.i(303166);
+    s.u(paramg, "$this_apply");
+    s.u(paramc, "this$0");
+    Log.e("MicroMsg.GameWebPrefetcherJsEngineInterceptor", "[game-web-prefetch] handleException, message : %s\n, stackTrace : %s", new Object[] { paramString1, paramString2 });
+    Object localObject1 = "exception : " + paramString1 + " ; stack : " + paramString2;
+    Object localObject2 = am.aixg;
+    localObject1 = String.format("try {WxGameJsCoreBridge.invokeError(\"%s\");} catch(e) {console.log(e);}", Arrays.copyOf(new Object[] { org.apache.commons.c.h.bLc((String)localObject1) }, 1));
+    s.s(localObject1, "java.lang.String.format(format, *args)");
+    Log.i("MicroMsg.GameWebPrefetcherJsEngineInterceptor", "[game-web-prefetch] handleException, js = %s", new Object[] { localObject1 });
+    paramg.evaluateJavascript((String)localObject1, null);
+    paramg = paramc.vVl;
+    localObject1 = new e.b();
+    localObject2 = j.WkY;
+    j.bn(paramc.pjl, paramc.vVn, paramString1 + '\t' + paramString2);
+    paramString1 = ah.aiuX;
+    paramg.a((e.o)localObject1);
+    paramc.vVm.a((d.i)new d.d());
+    AppMethodBeat.o(303166);
+  }
+  
+  private static void n(String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(303145);
+    Object localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.a.a.vVy;
     localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.a.a.getBridge();
-    if (localObject != null)
-    {
+    if (localObject != null) {
       ((o)localObject).b(paramString, paramJSONObject);
-      AppMethodBeat.o(258217);
-      return;
     }
-    AppMethodBeat.o(258217);
+    AppMethodBeat.o(303145);
   }
   
   /* Error */
-  public final boolean g(final String paramString, final kotlin.g.a.b<? super Boolean, x> paramb)
+  public final boolean l(String paramString, final kotlin.g.a.b<? super Boolean, ah> paramb)
   {
     // Byte code:
-    //   0: ldc_w 324
-    //   3: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 405
+    //   3: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_2
-    //   7: ldc_w 325
-    //   10: invokestatic 331	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   7: ldc_w 406
+    //   10: invokestatic 159	kotlin/g/b/s:u	(Ljava/lang/Object;Ljava/lang/String;)V
     //   13: aload_0
-    //   14: getfield 333	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPT	Lcom/tencent/mm/plugin/appbrand/m/g;
-    //   17: ifnonnull +377 -> 394
+    //   14: getfield 408	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVj	Lcom/tencent/mm/plugin/appbrand/n/g;
+    //   17: ifnonnull +368 -> 385
     //   20: aload_0
     //   21: aload_0
-    //   22: invokevirtual 337	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:gQb	()Lcom/tencent/mm/plugin/aw/c;
-    //   25: invokevirtual 343	com/tencent/mm/plugin/aw/c:bYV	()Lcom/tencent/mm/plugin/appbrand/m/g;
-    //   28: putfield 333	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPT	Lcom/tencent/mm/plugin/appbrand/m/g;
-    //   31: ldc 118
-    //   33: ldc_w 345
-    //   36: invokestatic 144	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   39: aload_0
-    //   40: getfield 333	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPT	Lcom/tencent/mm/plugin/appbrand/m/g;
-    //   43: ifnonnull +29 -> 72
-    //   46: ldc 118
-    //   48: ldc_w 347
-    //   51: invokestatic 350	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   54: aload_2
-    //   55: getstatic 356	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   58: invokeinterface 361 2 0
-    //   63: pop
-    //   64: ldc_w 324
-    //   67: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   70: iconst_1
-    //   71: ireturn
-    //   72: aload_0
-    //   73: getfield 333	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPT	Lcom/tencent/mm/plugin/appbrand/m/g;
-    //   76: astore_3
-    //   77: aload_3
-    //   78: ifnull -14 -> 64
-    //   81: new 363	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/a
-    //   84: dup
-    //   85: new 11	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$b
-    //   88: dup
-    //   89: invokespecial 364	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$b:<init>	()V
-    //   92: checkcast 366	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/b
-    //   95: invokespecial 369	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/a:<init>	(Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/a/b;)V
-    //   98: astore 4
-    //   100: aload_0
-    //   101: getfield 333	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPT	Lcom/tencent/mm/plugin/appbrand/m/g;
-    //   104: astore 5
-    //   106: aload 5
-    //   108: ifnonnull +6 -> 114
-    //   111: invokestatic 372	kotlin/g/b/p:iCn	()V
+    //   22: invokevirtual 412	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:ips	()Lcom/tencent/mm/plugin/ay/c;
+    //   25: getfield 418	com/tencent/mm/plugin/appbrand/n/a:sSV	Lcom/tencent/mm/plugin/appbrand/n/e;
+    //   28: invokevirtual 424	com/tencent/mm/plugin/appbrand/n/e:czj	()Lcom/tencent/mm/plugin/appbrand/n/g;
+    //   31: putfield 408	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVj	Lcom/tencent/mm/plugin/appbrand/n/g;
+    //   34: ldc 102
+    //   36: ldc_w 426
+    //   39: invokestatic 121	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   42: aload_0
+    //   43: getfield 408	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVj	Lcom/tencent/mm/plugin/appbrand/n/g;
+    //   46: ifnonnull +29 -> 75
+    //   49: ldc 102
+    //   51: ldc_w 428
+    //   54: invokestatic 430	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   57: aload_2
+    //   58: getstatic 434	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   61: invokeinterface 439 2 0
+    //   66: pop
+    //   67: ldc_w 405
+    //   70: invokestatic 89	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: iconst_1
+    //   74: ireturn
+    //   75: aload_0
+    //   76: getfield 408	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVj	Lcom/tencent/mm/plugin/appbrand/n/g;
+    //   79: astore_3
+    //   80: aload_3
+    //   81: ifnull -14 -> 67
+    //   84: new 441	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/a
+    //   87: dup
+    //   88: new 9	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$b
+    //   91: dup
+    //   92: invokespecial 442	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$b:<init>	()V
+    //   95: checkcast 444	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/b
+    //   98: invokespecial 447	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/a:<init>	(Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/a/b;)V
+    //   101: astore 4
+    //   103: aload_0
+    //   104: getfield 408	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVj	Lcom/tencent/mm/plugin/appbrand/n/g;
+    //   107: astore 5
+    //   109: aload 5
+    //   111: invokestatic 451	kotlin/g/b/s:checkNotNull	(Ljava/lang/Object;)V
     //   114: aload 4
     //   116: aload 5
-    //   118: checkcast 374	com/tencent/mm/plugin/appbrand/m/i
-    //   121: invokevirtual 378	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/a:h	(Lcom/tencent/mm/plugin/appbrand/m/i;)V
+    //   118: checkcast 453	com/tencent/mm/plugin/appbrand/n/i
+    //   121: invokevirtual 456	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/a:l	(Lcom/tencent/mm/plugin/appbrand/n/i;)V
     //   124: aload_0
-    //   125: getfield 156	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPV	Lcom/tencent/mm/plugin/aw/g;
-    //   128: new 380	com/tencent/mm/plugin/aw/g$c
+    //   125: getfield 129	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVl	Lcom/tencent/mm/plugin/ay/e;
+    //   128: new 458	com/tencent/mm/plugin/ay/e$c
     //   131: dup
-    //   132: invokespecial 381	com/tencent/mm/plugin/aw/g$c:<init>	()V
-    //   135: checkcast 383	com/tencent/mm/plugin/aw/g$o
-    //   138: invokevirtual 386	com/tencent/mm/plugin/aw/g:a	(Lcom/tencent/mm/plugin/aw/g$o;)V
+    //   132: invokespecial 459	com/tencent/mm/plugin/ay/e$c:<init>	()V
+    //   135: checkcast 253	com/tencent/mm/plugin/ay/e$o
+    //   138: invokevirtual 256	com/tencent/mm/plugin/ay/e:a	(Lcom/tencent/mm/plugin/ay/e$o;)V
     //   141: aload_0
-    //   142: getfield 171	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPW	Lcom/tencent/mm/plugin/aw/f;
-    //   145: new 388	com/tencent/mm/plugin/aw/f$g
+    //   142: getfield 144	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVm	Lcom/tencent/mm/plugin/ay/d;
+    //   145: new 461	com/tencent/mm/plugin/ay/d$g
     //   148: dup
-    //   149: invokespecial 389	com/tencent/mm/plugin/aw/f$g:<init>	()V
-    //   152: checkcast 391	com/tencent/mm/plugin/aw/f$i
-    //   155: invokevirtual 394	com/tencent/mm/plugin/aw/f:a	(Lcom/tencent/mm/plugin/aw/f$i;)V
+    //   149: invokespecial 462	com/tencent/mm/plugin/ay/d$g:<init>	()V
+    //   152: checkcast 261	com/tencent/mm/plugin/ay/d$i
+    //   155: invokevirtual 264	com/tencent/mm/plugin/ay/d:a	(Lcom/tencent/mm/plugin/ay/d$i;)V
     //   158: aload_3
-    //   159: new 16	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$d
+    //   159: new 464	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$$ExternalSyntheticLambda0
     //   162: dup
     //   163: aload_3
     //   164: aload_0
-    //   165: aload_2
-    //   166: aload_1
-    //   167: invokespecial 397	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$d:<init>	(Lcom/tencent/mm/plugin/appbrand/m/g;Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c;Lkotlin/g/a/b;Ljava/lang/String;)V
-    //   170: checkcast 399	com/tencent/mm/plugin/appbrand/m/h
-    //   173: invokeinterface 405 2 0
-    //   178: aload_0
-    //   179: getfield 175	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:mpE	Ljava/lang/String;
-    //   182: aload_0
-    //   183: getfield 179	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:contextName	Ljava/lang/String;
-    //   186: invokestatic 410	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/a/a/b:fz	(Ljava/lang/String;Ljava/lang/String;)V
-    //   189: aload_0
-    //   190: getfield 333	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPT	Lcom/tencent/mm/plugin/appbrand/m/g;
-    //   193: astore_3
-    //   194: aload_3
-    //   195: ifnonnull +6 -> 201
-    //   198: invokestatic 372	kotlin/g/b/p:iCn	()V
-    //   201: aload_3
-    //   202: aload_1
-    //   203: new 18	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$e
-    //   206: dup
+    //   165: invokespecial 467	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$$ExternalSyntheticLambda0:<init>	(Lcom/tencent/mm/plugin/appbrand/n/g;Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c;)V
+    //   168: invokeinterface 471 2 0
+    //   173: aload_0
+    //   174: getfield 148	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:pjl	Ljava/lang/String;
+    //   177: aload_0
+    //   178: getfield 152	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVn	Ljava/lang/String;
+    //   181: invokestatic 476	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/a/a/b:fZ	(Ljava/lang/String;Ljava/lang/String;)V
+    //   184: aload_0
+    //   185: getfield 408	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVj	Lcom/tencent/mm/plugin/appbrand/n/g;
+    //   188: astore_3
+    //   189: aload_3
+    //   190: invokestatic 451	kotlin/g/b/s:checkNotNull	(Ljava/lang/Object;)V
+    //   193: aload_3
+    //   194: aload_1
+    //   195: new 14	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$d
+    //   198: dup
+    //   199: aload_0
+    //   200: aload_2
+    //   201: invokespecial 479	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$d:<init>	(Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c;Lkotlin/g/a/b;)V
+    //   204: checkcast 481	kotlin/g/a/m
     //   207: aload_0
-    //   208: aload_2
-    //   209: aload_1
-    //   210: invokespecial 413	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c$e:<init>	(Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c;Lkotlin/g/a/b;Ljava/lang/String;)V
-    //   213: checkcast 415	kotlin/g/a/m
-    //   216: aload_0
-    //   217: getfield 171	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPW	Lcom/tencent/mm/plugin/aw/f;
-    //   220: invokestatic 418	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/a/a/b:a	(Lcom/tencent/mm/plugin/appbrand/m/g;Ljava/lang/String;Lkotlin/g/a/m;Lcom/tencent/mm/plugin/aw/f;)V
-    //   223: aload_0
-    //   224: getfield 156	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPV	Lcom/tencent/mm/plugin/aw/g;
-    //   227: new 420	com/tencent/mm/plugin/aw/g$d
-    //   230: dup
-    //   231: invokespecial 421	com/tencent/mm/plugin/aw/g$d:<init>	()V
-    //   234: checkcast 383	com/tencent/mm/plugin/aw/g$o
-    //   237: invokevirtual 386	com/tencent/mm/plugin/aw/g:a	(Lcom/tencent/mm/plugin/aw/g$o;)V
-    //   240: aload_0
-    //   241: getfield 171	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPW	Lcom/tencent/mm/plugin/aw/f;
-    //   244: new 423	com/tencent/mm/plugin/aw/f$h
-    //   247: dup
-    //   248: invokespecial 424	com/tencent/mm/plugin/aw/f$h:<init>	()V
-    //   251: checkcast 391	com/tencent/mm/plugin/aw/f$i
-    //   254: invokevirtual 394	com/tencent/mm/plugin/aw/f:a	(Lcom/tencent/mm/plugin/aw/f$i;)V
-    //   257: goto -193 -> 64
-    //   260: astore_1
-    //   261: aload_0
-    //   262: getfield 156	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPV	Lcom/tencent/mm/plugin/aw/g;
-    //   265: new 426	com/tencent/mm/plugin/aw/g$a
-    //   268: dup
-    //   269: invokespecial 427	com/tencent/mm/plugin/aw/g$a:<init>	()V
-    //   272: checkcast 383	com/tencent/mm/plugin/aw/g$o
-    //   275: invokevirtual 386	com/tencent/mm/plugin/aw/g:a	(Lcom/tencent/mm/plugin/aw/g$o;)V
-    //   278: aload_0
-    //   279: getfield 171	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPW	Lcom/tencent/mm/plugin/aw/f;
-    //   282: new 429	com/tencent/mm/plugin/aw/f$b
-    //   285: dup
-    //   286: invokespecial 430	com/tencent/mm/plugin/aw/f$b:<init>	()V
-    //   289: checkcast 391	com/tencent/mm/plugin/aw/f$i
-    //   292: invokevirtual 394	com/tencent/mm/plugin/aw/f:a	(Lcom/tencent/mm/plugin/aw/f$i;)V
-    //   295: getstatic 436	com/tencent/mm/plugin/webcanvas/l:PuB	Lcom/tencent/mm/plugin/webcanvas/l;
-    //   298: astore_3
-    //   299: aload_0
-    //   300: getfield 175	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:mpE	Ljava/lang/String;
-    //   303: aload_0
-    //   304: getfield 179	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:contextName	Ljava/lang/String;
-    //   307: aload_1
-    //   308: invokevirtual 439	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   311: invokestatic 443	com/tencent/mm/plugin/webcanvas/l:aU	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   314: aload_2
-    //   315: getstatic 356	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   318: invokeinterface 361 2 0
-    //   323: pop
-    //   324: goto -260 -> 64
-    //   327: astore_3
-    //   328: ldc 118
-    //   330: aload_3
-    //   331: checkcast 445	java/lang/Throwable
-    //   334: ldc_w 446
-    //   337: iconst_0
-    //   338: anewarray 269	java/lang/Object
-    //   341: invokestatic 450	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   344: aload_0
-    //   345: getfield 171	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:sPW	Lcom/tencent/mm/plugin/aw/f;
-    //   348: new 452	com/tencent/mm/plugin/aw/f$c
-    //   351: dup
-    //   352: invokespecial 453	com/tencent/mm/plugin/aw/f$c:<init>	()V
-    //   355: checkcast 391	com/tencent/mm/plugin/aw/f$i
-    //   358: invokevirtual 394	com/tencent/mm/plugin/aw/f:a	(Lcom/tencent/mm/plugin/aw/f$i;)V
-    //   361: getstatic 436	com/tencent/mm/plugin/webcanvas/l:PuB	Lcom/tencent/mm/plugin/webcanvas/l;
-    //   364: astore 4
-    //   366: aload_0
-    //   367: getfield 175	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:mpE	Ljava/lang/String;
-    //   370: aload_0
-    //   371: getfield 179	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:contextName	Ljava/lang/String;
-    //   374: aload_3
-    //   375: invokevirtual 439	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   378: invokestatic 443	com/tencent/mm/plugin/webcanvas/l:aU	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   381: aload_2
-    //   382: getstatic 356	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   385: invokeinterface 361 2 0
-    //   390: pop
-    //   391: goto -213 -> 178
-    //   394: aload_2
-    //   395: getstatic 456	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   398: invokeinterface 361 2 0
-    //   403: pop
-    //   404: goto -340 -> 64
+    //   208: getfield 144	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVm	Lcom/tencent/mm/plugin/ay/d;
+    //   211: invokestatic 484	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/a/a/b:a	(Lcom/tencent/mm/plugin/appbrand/n/g;Ljava/lang/String;Lkotlin/g/a/m;Lcom/tencent/mm/plugin/ay/d;)V
+    //   214: aload_0
+    //   215: getfield 129	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVl	Lcom/tencent/mm/plugin/ay/e;
+    //   218: new 486	com/tencent/mm/plugin/ay/e$d
+    //   221: dup
+    //   222: invokespecial 487	com/tencent/mm/plugin/ay/e$d:<init>	()V
+    //   225: checkcast 253	com/tencent/mm/plugin/ay/e$o
+    //   228: invokevirtual 256	com/tencent/mm/plugin/ay/e:a	(Lcom/tencent/mm/plugin/ay/e$o;)V
+    //   231: aload_0
+    //   232: getfield 144	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVm	Lcom/tencent/mm/plugin/ay/d;
+    //   235: new 489	com/tencent/mm/plugin/ay/d$h
+    //   238: dup
+    //   239: invokespecial 490	com/tencent/mm/plugin/ay/d$h:<init>	()V
+    //   242: checkcast 261	com/tencent/mm/plugin/ay/d$i
+    //   245: invokevirtual 264	com/tencent/mm/plugin/ay/d:a	(Lcom/tencent/mm/plugin/ay/d$i;)V
+    //   248: goto -181 -> 67
+    //   251: astore_1
+    //   252: aload_0
+    //   253: getfield 129	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVl	Lcom/tencent/mm/plugin/ay/e;
+    //   256: new 492	com/tencent/mm/plugin/ay/e$a
+    //   259: dup
+    //   260: invokespecial 493	com/tencent/mm/plugin/ay/e$a:<init>	()V
+    //   263: checkcast 253	com/tencent/mm/plugin/ay/e$o
+    //   266: invokevirtual 256	com/tencent/mm/plugin/ay/e:a	(Lcom/tencent/mm/plugin/ay/e$o;)V
+    //   269: aload_0
+    //   270: getfield 144	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVm	Lcom/tencent/mm/plugin/ay/d;
+    //   273: new 495	com/tencent/mm/plugin/ay/d$b
+    //   276: dup
+    //   277: invokespecial 496	com/tencent/mm/plugin/ay/d$b:<init>	()V
+    //   280: checkcast 261	com/tencent/mm/plugin/ay/d$i
+    //   283: invokevirtual 264	com/tencent/mm/plugin/ay/d:a	(Lcom/tencent/mm/plugin/ay/d$i;)V
+    //   286: getstatic 237	com/tencent/mm/plugin/webcanvas/j:WkY	Lcom/tencent/mm/plugin/webcanvas/j;
+    //   289: astore_3
+    //   290: aload_0
+    //   291: getfield 148	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:pjl	Ljava/lang/String;
+    //   294: aload_0
+    //   295: getfield 152	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVn	Ljava/lang/String;
+    //   298: aload_1
+    //   299: invokevirtual 499	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   302: invokestatic 245	com/tencent/mm/plugin/webcanvas/j:bn	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   305: aload_2
+    //   306: getstatic 434	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   309: invokeinterface 439 2 0
+    //   314: pop
+    //   315: goto -248 -> 67
+    //   318: astore_3
+    //   319: ldc 102
+    //   321: aload_3
+    //   322: checkcast 501	java/lang/Throwable
+    //   325: ldc_w 502
+    //   328: iconst_0
+    //   329: anewarray 165	java/lang/Object
+    //   332: invokestatic 506	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   335: aload_0
+    //   336: getfield 144	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVm	Lcom/tencent/mm/plugin/ay/d;
+    //   339: new 508	com/tencent/mm/plugin/ay/d$c
+    //   342: dup
+    //   343: invokespecial 509	com/tencent/mm/plugin/ay/d$c:<init>	()V
+    //   346: checkcast 261	com/tencent/mm/plugin/ay/d$i
+    //   349: invokevirtual 264	com/tencent/mm/plugin/ay/d:a	(Lcom/tencent/mm/plugin/ay/d$i;)V
+    //   352: getstatic 237	com/tencent/mm/plugin/webcanvas/j:WkY	Lcom/tencent/mm/plugin/webcanvas/j;
+    //   355: astore 4
+    //   357: aload_0
+    //   358: getfield 148	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:pjl	Ljava/lang/String;
+    //   361: aload_0
+    //   362: getfield 152	com/tencent/mm/plugin/brandservice/ui/timeline/preload/a/c:vVn	Ljava/lang/String;
+    //   365: aload_3
+    //   366: invokevirtual 499	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   369: invokestatic 245	com/tencent/mm/plugin/webcanvas/j:bn	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   372: aload_2
+    //   373: getstatic 434	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   376: invokeinterface 439 2 0
+    //   381: pop
+    //   382: goto -209 -> 173
+    //   385: aload_2
+    //   386: getstatic 512	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   389: invokeinterface 439 2 0
+    //   394: pop
+    //   395: goto -328 -> 67
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	407	0	this	c
-    //   0	407	1	paramString	String
-    //   0	407	2	paramb	kotlin.g.a.b<? super Boolean, x>
-    //   76	223	3	localObject1	Object
-    //   327	48	3	localException	java.lang.Exception
-    //   98	267	4	localObject2	Object
-    //   104	13	5	localg	com.tencent.mm.plugin.appbrand.m.g
+    //   0	398	0	this	c
+    //   0	398	1	paramString	String
+    //   0	398	2	paramb	kotlin.g.a.b<? super Boolean, ah>
+    //   79	211	3	localObject1	Object
+    //   318	48	3	localException	java.lang.Exception
+    //   101	255	4	localObject2	Object
+    //   107	10	5	localg	g
     // Exception table:
     //   from	to	target	type
-    //   81	106	260	java/lang/Exception
-    //   111	114	260	java/lang/Exception
-    //   114	158	260	java/lang/Exception
-    //   178	194	260	java/lang/Exception
-    //   198	201	260	java/lang/Exception
-    //   201	257	260	java/lang/Exception
-    //   328	391	260	java/lang/Exception
-    //   158	178	327	java/lang/Exception
+    //   84	158	251	java/lang/Exception
+    //   173	248	251	java/lang/Exception
+    //   319	382	251	java/lang/Exception
+    //   158	173	318	java/lang/Exception
   }
   
   public final boolean o(String paramString1, final String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(258216);
-    p.k(paramString3, "event");
+    AppMethodBeat.i(303227);
+    s.u(paramString3, "event");
     paramString1 = (CharSequence)paramString1;
     if ((paramString1 == null) || (paramString1.length() == 0)) {}
     for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(258216);
+      AppMethodBeat.o(303227);
       return false;
     }
-    if ((paramString2 != null) && (!UrlExKt.isGameCenterUrl(paramString2)))
+    if ((paramString2 != null) && (!UrlExKt.isGameCenterUrl(paramString2))) {}
+    for (i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(258216);
+      AppMethodBeat.o(303227);
       return false;
     }
-    if (!this.sPU)
+    if (!this.vVk)
     {
       Log.e("MicroMsg.GameWebPrefetcherJsEngineInterceptor", "dispatchEvent jsContext not init url: " + paramString2 + ", event: " + paramString3);
-      AppMethodBeat.o(258216);
+      AppMethodBeat.o(303227);
       return false;
     }
     Log.v("MicroMsg.GameWebPrefetcherJsEngineInterceptor", "[game-web-prefetch] dispatchEvent event: %s, data: %s", new Object[] { paramString3, paramString4 });
-    if (p.h(paramString3, "urlExposed"))
+    if (s.p(paramString3, "urlExposed"))
     {
-      paramString1 = (kotlin.g.a.a)new c(this, paramString2);
-      com.tencent.e.h.ZvG.d((Runnable)new c.a.a(paramString1), "MicroMsg.GameWebPrefetcherJsEngineInterceptor");
-      AppMethodBeat.o(258216);
+      a.aE((kotlin.g.a.a)new c(this, paramString2));
+      AppMethodBeat.o(303227);
       return true;
     }
     paramString1 = paramString4;
     if (paramString4 == null) {
       paramString1 = "";
     }
-    dispatchEvent(paramString3, new JSONObject(paramString1));
-    AppMethodBeat.o(258216);
+    n(paramString3, new JSONObject(paramString1));
+    AppMethodBeat.o(303227);
     return true;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GameWebPrefetcherJsEngineInterceptor$Companion;", "", "()V", "EVENT_URL_EXPOSED", "", "TAG", "openGameCenterPrefetch", "", "buildUrlExposedData", "Lorg/json/JSONObject;", "url", "runTask", "", "runnable", "Lkotlin/Function0;", "plugin-brandservice_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GameWebPrefetcherJsEngineInterceptor$Companion;", "", "()V", "EVENT_URL_EXPOSED", "", "TAG", "openGameCenterPrefetch", "", "buildUrlExposedData", "Lorg/json/JSONObject;", "url", "runTask", "", "runnable", "Lkotlin/Function0;", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
+    static void aE(kotlin.g.a.a<ah> parama)
     {
-      a(kotlin.g.a.a parama) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(266111);
-        this.sPZ.invoke();
-        AppMethodBeat.o(266111);
-      }
+      AppMethodBeat.i(303126);
+      com.tencent.threadpool.h.ahAA.g(new c.a..ExternalSyntheticLambda0(parama), "MicroMsg.GameWebPrefetcherJsEngineInterceptor");
+      AppMethodBeat.o(303126);
+    }
+    
+    private static final void aF(kotlin.g.a.a parama)
+    {
+      AppMethodBeat.i(303132);
+      s.u(parama, "$runnable");
+      parama.invoke();
+      AppMethodBeat.o(303132);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GameWebPrefetcherJsEngineInterceptor$GamePrefetcherClientContextImpl;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GamePrefetcherClientContext;", "()V", "dispatch", "", "eventType", "", "event", "cb", "Landroid/webkit/ValueCallback;", "error", "msg", "log", "postMessage", "plugin-brandservice_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GameWebPrefetcherJsEngineInterceptor$GamePrefetcherClientContextImpl;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GamePrefetcherClientContext;", "()V", "dispatch", "", "eventType", "", "event", "cb", "Landroid/webkit/ValueCallback;", "error", "msg", "log", "postMessage", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class b
     implements b
   {
     public final void b(String paramString1, String paramString2, ValueCallback<String> paramValueCallback)
     {
-      AppMethodBeat.i(266223);
-      p.k(paramString1, "eventType");
-      p.k(paramString2, "event");
-      AppMethodBeat.o(266223);
+      AppMethodBeat.i(303135);
+      s.u(paramString1, "eventType");
+      s.u(paramString2, "event");
+      AppMethodBeat.o(303135);
     }
     
     public final void error(String paramString)
     {
-      AppMethodBeat.i(266222);
+      AppMethodBeat.i(303130);
       if (paramString == null)
       {
-        AppMethodBeat.o(266222);
+        AppMethodBeat.o(303130);
         return;
       }
       Log.e("MicroMsg.GameWebPrefetcherJsEngineInterceptor", "[game-web-prefetch] js console error: %s", new Object[] { paramString });
-      AppMethodBeat.o(266222);
+      AppMethodBeat.o(303130);
     }
     
     public final void log(String paramString)
     {
-      AppMethodBeat.i(266221);
+      AppMethodBeat.i(303125);
       if (paramString == null)
       {
-        AppMethodBeat.o(266221);
+        AppMethodBeat.o(303125);
         return;
       }
       if (Log.getLogLevel() <= 1) {
         Log.d("MicroMsg.GameWebPrefetcherJsEngineInterceptor", "[game-web-prefetch] js console log: %s", new Object[] { paramString });
       }
-      AppMethodBeat.o(266221);
+      AppMethodBeat.o(303125);
     }
     
     public final void postMessage(String paramString)
     {
-      AppMethodBeat.i(266220);
+      AppMethodBeat.i(303117);
       Log.i("MicroMsg.GameWebPrefetcherJsEngineInterceptor", "[game-web-prefetch] postMessage ignore msg: %s", new Object[] { paramString });
-      AppMethodBeat.o(266220);
+      AppMethodBeat.o(303117);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     c(c paramc, String paramString)
     {
@@ -391,38 +397,12 @@ public final class c
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "message", "", "kotlin.jvm.PlatformType", "stackTrace", "handleException", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GameWebPrefetcherJsEngineInterceptor$initJsContext$1$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "success", "", "url", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    implements com.tencent.mm.plugin.appbrand.m.h
+    extends u
+    implements m<Boolean, String, ah>
   {
-    d(com.tencent.mm.plugin.appbrand.m.g paramg, c paramc, kotlin.g.a.b paramb, String paramString) {}
-    
-    public final void A(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(266598);
-      Log.e("MicroMsg.GameWebPrefetcherJsEngineInterceptor", "[game-web-prefetch] handleException, message : %s\n, stackTrace : %s", new Object[] { paramString1, paramString2 });
-      Object localObject1 = "exception : " + paramString1 + " ; stack : " + paramString2;
-      Object localObject2 = af.aaBG;
-      localObject1 = String.format("try {WxGameJsCoreBridge.invokeError(\"%s\");} catch(e) {console.log(e);}", Arrays.copyOf(new Object[] { org.apache.commons.b.f.bIi((String)localObject1) }, 1));
-      p.j(localObject1, "java.lang.String.format(format, *args)");
-      Log.i("MicroMsg.GameWebPrefetcherJsEngineInterceptor", "[game-web-prefetch] handleException, js = %s", new Object[] { localObject1 });
-      this.sKo.evaluateJavascript((String)localObject1, null);
-      localObject1 = c.a(jdField_this);
-      localObject2 = new g.b();
-      com.tencent.mm.plugin.webcanvas.l locall = com.tencent.mm.plugin.webcanvas.l.PuB;
-      com.tencent.mm.plugin.webcanvas.l.aU(jdField_this.mpE, c.b(jdField_this), paramString1 + '\t' + paramString2);
-      ((com.tencent.mm.plugin.aw.g)localObject1).a((g.o)localObject2);
-      c.c(jdField_this).a((f.i)new f.d());
-      AppMethodBeat.o(266598);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "success", "", "url", "", "invoke", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GameWebPrefetcherJsEngineInterceptor$initJsContext$1$2"})
-  static final class e
-    extends q
-    implements m<Boolean, String, x>
-  {
-    e(c paramc, kotlin.g.a.b paramb, String paramString)
+    d(c paramc, kotlin.g.a.b<? super Boolean, ah> paramb)
     {
       super();
     }

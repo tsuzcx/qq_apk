@@ -13,74 +13,75 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.vn;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.xd;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bq;
+import com.tencent.mm.model.br;
 import com.tencent.mm.plugin.game.api.b.a;
-import com.tencent.mm.pluginsdk.model.app.aa;
-import com.tencent.mm.pluginsdk.model.app.ai;
-import com.tencent.mm.pluginsdk.model.app.ao;
+import com.tencent.mm.pluginsdk.model.app.ae;
+import com.tencent.mm.pluginsdk.model.app.af;
+import com.tencent.mm.pluginsdk.model.app.am;
+import com.tencent.mm.pluginsdk.model.app.as;
 import com.tencent.mm.pluginsdk.model.app.e;
-import com.tencent.mm.pluginsdk.model.app.u;
-import com.tencent.mm.protocal.protobuf.ctt;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.pluginsdk.model.app.y;
+import com.tencent.mm.protocal.protobuf.dkv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.ui.ac.a;
-import com.tencent.mm.ui.base.h.d;
-import com.tencent.mm.ui.chatting.viewitems.by;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.ae.a;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.d;
+import com.tencent.mm.ui.chatting.viewitems.bz;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.LinkedList;
 
 public final class c
-  implements View.OnClickListener, i, u
+  implements View.OnClickListener, com.tencent.mm.am.h, y
 {
-  private static final String Wxr;
-  private com.tencent.mm.ui.chatting.e.a Wxs;
-  private ProgressDialog iXX;
+  private static final String aeeJ;
+  private com.tencent.mm.ui.chatting.d.a aeeK;
+  private ProgressDialog lzP;
   
   static
   {
-    AppMethodBeat.i(264453);
-    Wxr = "https://" + WeChatHosts.domainString(R.l.host_mp_weixin_qq_com) + "/mp/readtemplate?t=wxm-appmsg-inform&bizusername=%s&tid=%s&mid=%s&mtime=%s&scene=%s#wechat_redirect";
-    AppMethodBeat.o(264453);
+    AppMethodBeat.i(253921);
+    aeeJ = "https://" + WeChatHosts.domainString(R.l.host_mp_weixin_qq_com) + "/mp/readtemplate?t=wxm-appmsg-inform&bizusername=%s&tid=%s&mid=%s&mtime=%s&scene=%s#wechat_redirect";
+    AppMethodBeat.o(253921);
   }
   
-  public c(com.tencent.mm.ui.chatting.e.a parama)
+  public c(com.tencent.mm.ui.chatting.d.a parama)
   {
-    this.Wxs = parama;
+    this.aeeK = parama;
   }
   
-  public final void a(int paramInt1, int paramInt2, String paramString, aa paramaa)
+  public final void a(int paramInt1, int paramInt2, String paramString, ae paramae)
   {
     AppMethodBeat.i(34234);
     Log.d("MicroMsg.AppSpamClickListener", "appsettings errType = " + paramInt1 + ", errCode = " + paramInt2);
-    if ((this.iXX != null) && (this.iXX.isShowing()))
+    if ((this.lzP != null) && (this.lzP.isShowing()))
     {
-      this.iXX.dismiss();
-      this.iXX = null;
+      this.lzP.dismiss();
+      this.lzP = null;
     }
-    ao.fmC().b(2, this);
+    as.gxq().b(2, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      com.tencent.mm.ui.base.h.cO(this.Wxs.WQv.getContext(), this.Wxs.WQv.getMMResources().getString(R.l.eGh));
+      k.cZ(this.aeeK.aezO.getContext(), this.aeeK.aezO.getMMResources().getString(R.l.gJc));
       AppMethodBeat.o(34234);
       return;
     }
-    if (ac.a.a(this.Wxs.WQv.getContext(), paramInt1, paramInt2, paramString, 4))
+    if (ae.a.a(this.aeeK.aezO.getContext(), paramInt1, paramInt2, paramString, 4))
     {
       AppMethodBeat.o(34234);
       return;
     }
-    Toast.makeText(this.Wxs.WQv.getContext(), this.Wxs.WQv.getMMResources().getString(R.l.eGc, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    Toast.makeText(this.aeeK.aezO.getContext(), this.aeeK.aezO.getMMResources().getString(R.l.gIX, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
     AppMethodBeat.o(34234);
   }
   
@@ -91,8 +92,8 @@ public final class c
     final int i = 0;
     AppMethodBeat.i(34233);
     Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/AppSpamClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/AppSpamClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aYj());
     if (paramView.getTag() == null)
     {
       Log.e("MicroMsg.AppSpamClickListener", "onClick tag is null");
@@ -100,9 +101,9 @@ public final class c
       AppMethodBeat.o(34233);
       return;
     }
-    if ((paramView.getTag() instanceof by))
+    if ((paramView.getTag() instanceof bz))
     {
-      localObject1 = (by)paramView.getTag();
+      localObject1 = (bz)paramView.getTag();
       if (localObject1 == null)
       {
         Log.e("MicroMsg.AppSpamClickListener", "ItemDataTag is null");
@@ -110,7 +111,7 @@ public final class c
         AppMethodBeat.o(34233);
         return;
       }
-      paramView = ((by)localObject1).fQY.appId;
+      paramView = ((bz)localObject1).hWV.appId;
       if (Util.isNullOrNil(paramView)) {
         Log.e("MicroMsg.AppSpamClickListener", "appId is null or nil");
       }
@@ -119,39 +120,39 @@ public final class c
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/AppSpamClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(34233);
         return;
-        if (com.tencent.mm.pluginsdk.model.app.h.o(paramView, false, false) == null) {
+        if (com.tencent.mm.pluginsdk.model.app.h.s(paramView, false, false) == null) {
           Log.e("MicroMsg.AppSpamClickListener", "get null appinfo : appid = ".concat(String.valueOf(paramView)));
         } else {
           i = 1;
         }
       }
-      ao.fmC().a(2, this);
+      as.gxq().a(2, this);
       i = j;
-      if (this.Wxs.hRi()) {
+      if (this.aeeK.juG()) {
         i = 2;
       }
-      paramView = this.Wxs.getTalkerUserName();
-      if (!com.tencent.mm.model.ab.Lj(paramView)) {
+      paramView = this.aeeK.getTalkerUserName();
+      if (!au.bwE(paramView)) {
         break label595;
       }
-      paramView = bq.RL(((by)localObject1).fNz.field_content);
+      paramView = br.JJ(((bz)localObject1).hTm.field_content);
     }
     label595:
     for (;;)
     {
-      localObject1 = ((by)localObject1).fQY;
-      com.tencent.mm.ui.base.h.c(this.Wxs.WQv.getContext(), this.Wxs.WQv.getMMResources().getString(R.l.eoC), this.Wxs.WQv.getMMResources().getString(R.l.eoD), this.Wxs.WQv.getMMResources().getString(R.l.emC), this.Wxs.WQv.getMMResources().getString(R.l.eQx), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      localObject1 = ((bz)localObject1).hWV;
+      k.b(this.aeeK.aezO.getContext(), this.aeeK.aezO.getMMResources().getString(R.l.grB), this.aeeK.aezO.getMMResources().getString(R.l.grC), this.aeeK.aezO.getMMResources().getString(R.l.gpF), this.aeeK.aezO.getMMResources().getString(R.l.gTc), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(34230);
-          paramAnonymousDialogInterface = new com.tencent.mm.pluginsdk.model.app.ab(2, new ai(this.pqD.appId, "1"));
+          paramAnonymousDialogInterface = new af(2, new am(this.svq.appId, "1"));
           c.a(c.this, paramAnonymousDialogInterface);
-          paramAnonymousDialogInterface = b.a.evu();
+          paramAnonymousDialogInterface = b.a.fCn();
           if (paramAnonymousDialogInterface != null)
           {
-            c.a(c.this).WQv.getContext();
-            paramAnonymousDialogInterface.a(paramView, this.pqD.appId, this.pqD.type, i, this.pqD.mediaTagName, 1);
+            c.a(c.this).aezO.getContext();
+            paramAnonymousDialogInterface.a(paramView, this.svq.appId, this.svq.type, i, this.svq.mediaTagName, 1);
           }
           AppMethodBeat.o(34230);
         }
@@ -160,13 +161,13 @@ public final class c
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(34231);
-          paramAnonymousDialogInterface = new com.tencent.mm.pluginsdk.model.app.ab(2, new ai(this.pqD.appId, "0"));
+          paramAnonymousDialogInterface = new af(2, new am(this.svq.appId, "0"));
           c.a(c.this, paramAnonymousDialogInterface);
-          paramAnonymousDialogInterface = b.a.evu();
+          paramAnonymousDialogInterface = b.a.fCn();
           if (paramAnonymousDialogInterface != null)
           {
-            c.a(c.this).WQv.getContext();
-            paramAnonymousDialogInterface.a(paramView, this.pqD.appId, this.pqD.type, i, this.pqD.mediaTagName, 2);
+            c.a(c.this).aezO.getContext();
+            paramAnonymousDialogInterface.a(paramView, this.svq.appId, this.svq.type, i, this.svq.mediaTagName, 2);
           }
           AppMethodBeat.o(34231);
         }
@@ -176,9 +177,9 @@ public final class c
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/AppSpamClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(34233);
         return;
-        if ((paramView.getTag() instanceof t.o))
+        if ((paramView.getTag() instanceof v.o))
         {
-          Object localObject2 = (t.o)paramView.getTag();
+          Object localObject2 = (v.o)paramView.getTag();
           if (localObject2 == null)
           {
             Log.e("MicroMsg.AppSpamClickListener", "TemplateItemDataTag is null");
@@ -186,7 +187,7 @@ public final class c
             AppMethodBeat.o(34233);
             return;
           }
-          if ((localObject2 == null) || (Util.isNullOrNil(((t.o)localObject2).lnb)) || (((t.o)localObject2).fNz == null))
+          if ((localObject2 == null) || (Util.isNullOrNil(((v.o)localObject2).nSg)) || (((v.o)localObject2).hTm == null))
           {
             if (localObject2 == null) {}
             for (;;)
@@ -196,13 +197,13 @@ public final class c
               bool = false;
             }
           }
-          paramView = this.Wxs.WQv.getMMResources().getString(R.l.eUm);
-          localObject1 = this.Wxs.WQv.getMMResources().getString(R.l.eUn);
-          String str = this.Wxs.WQv.getMMResources().getString(R.l.app_cancel);
-          Activity localActivity = this.Wxs.WQv.getContext();
-          localObject2 = new h.d()
+          paramView = this.aeeK.aezO.getMMResources().getString(R.l.template_msg_btn_expose);
+          localObject1 = this.aeeK.aezO.getMMResources().getString(R.l.template_msg_btn_refuse);
+          String str = this.aeeK.aezO.getMMResources().getString(R.l.app_cancel);
+          Activity localActivity = this.aeeK.aezO.getContext();
+          localObject2 = new k.d()
           {
-            public final void qy(int paramAnonymousInt)
+            public final void qz(int paramAnonymousInt)
             {
               AppMethodBeat.i(34229);
               switch (paramAnonymousInt)
@@ -215,10 +216,10 @@ public final class c
                 Intent localIntent = new Intent();
                 try
                 {
-                  localIntent.putExtra("rawUrl", String.format(c.Wxr, new Object[] { URLEncoder.encode(this.Wxt.fcC, "UTF-8"), URLEncoder.encode(this.Wxt.lnb, "UTF-8"), Long.valueOf(this.Wxt.fNz.field_msgSvrId), Integer.valueOf((int)(this.Wxt.fNz.field_createTime / 1000L)), Integer.valueOf(42) }));
+                  localIntent.putExtra("rawUrl", String.format(c.aeeJ, new Object[] { URLEncoder.encode(this.aeeL.hgk, "UTF-8"), URLEncoder.encode(this.aeeL.nSg, "UTF-8"), Long.valueOf(this.aeeL.hTm.field_msgSvrId), Integer.valueOf((int)(this.aeeL.hTm.getCreateTime() / 1000L)), Integer.valueOf(42) }));
                   localIntent.putExtra("show_bottom", false);
                   localIntent.putExtra("showShare", false);
-                  com.tencent.mm.by.c.b(c.a(c.this).WQv.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+                  com.tencent.mm.br.c.b(c.a(c.this).aezO.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
                   AppMethodBeat.o(34229);
                   return;
                 }
@@ -228,28 +229,28 @@ public final class c
                   AppMethodBeat.o(34229);
                   return;
                 }
-                Log.d("MicroMsg.AppSpamClickListener", "hakon refulse, fromUserName = %s, templateId = %s", new Object[] { this.Wxt.fcC, this.Wxt.lnb });
-                bh.aGY().a(1030, c.this);
-                Object localObject2 = new ctt();
-                ((ctt)localObject2).RIs = 1;
-                ((ctt)localObject2).TBB = this.Wxt.lnb;
-                ((ctt)localObject2).fwr = "";
+                Log.d("MicroMsg.AppSpamClickListener", "hakon refulse, fromUserName = %s, templateId = %s", new Object[] { this.aeeL.hgk, this.aeeL.nSg });
+                bh.aZW().a(1030, c.this);
+                Object localObject2 = new dkv();
+                ((dkv)localObject2).YFu = 1;
+                ((dkv)localObject2).aaQP = this.aeeL.nSg;
+                ((dkv)localObject2).hAP = "";
                 Object localObject1 = new LinkedList();
                 ((LinkedList)localObject1).add(localObject2);
-                localObject2 = new vn();
-                ((vn)localObject2).fUH.fSj = this.Wxt.fcC;
-                ((vn)localObject2).fUH.fUI = ((LinkedList)localObject1);
-                if (EventCenter.instance.publish((IEvent)localObject2))
+                localObject2 = new xd();
+                ((xd)localObject2).iaE.hYg = this.aeeL.hgk;
+                ((xd)localObject2).iaE.iaF = ((LinkedList)localObject1);
+                if (((xd)localObject2).publish())
                 {
                   localObject1 = c.this;
-                  localObject2 = c.a(c.this).WQv.getContext();
-                  c.a(c.this).WQv.getMMResources().getString(R.l.app_tip);
-                  c.a((c)localObject1, com.tencent.mm.ui.base.h.a((Context)localObject2, c.a(c.this).WQv.getMMResources().getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
+                  localObject2 = c.a(c.this).aezO.getContext();
+                  c.a(c.this).aezO.getMMResources().getString(R.l.app_tip);
+                  c.a((c)localObject1, k.a((Context)localObject2, c.a(c.this).aezO.getMMResources().getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
                   {
                     public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                     {
                       AppMethodBeat.i(34228);
-                      bh.aGY().b(1030, c.this);
+                      bh.aZW().b(1030, c.this);
                       AppMethodBeat.o(34228);
                     }
                   }));
@@ -257,34 +258,34 @@ public final class c
               }
             }
           };
-          com.tencent.mm.ui.base.h.b(localActivity, null, new String[] { paramView, localObject1, str }, null, (h.d)localObject2);
+          k.b(localActivity, null, new String[] { paramView, localObject1, str }, null, (k.d)localObject2);
         }
       }
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(34235);
-    if ((this.iXX != null) && (this.iXX.isShowing()))
+    if ((this.lzP != null) && (this.lzP.isShowing()))
     {
-      this.iXX.dismiss();
-      this.iXX = null;
+      this.lzP.dismiss();
+      this.lzP = null;
     }
-    bh.aGY().b(1030, this);
+    bh.aZW().b(1030, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      com.tencent.mm.ui.base.h.cO(this.Wxs.WQv.getContext(), this.Wxs.WQv.getMMResources().getString(R.l.eGh));
+      k.cZ(this.aeeK.aezO.getContext(), this.aeeK.aezO.getMMResources().getString(R.l.gJc));
       AppMethodBeat.o(34235);
       return;
     }
-    Toast.makeText(this.Wxs.WQv.getContext(), this.Wxs.WQv.getMMResources().getString(R.l.eUo, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    Toast.makeText(this.aeeK.aezO.getContext(), this.aeeK.aezO.getMMResources().getString(R.l.template_msg_refuse_success, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
     AppMethodBeat.o(34235);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c
  * JD-Core Version:    0.7.0.1
  */

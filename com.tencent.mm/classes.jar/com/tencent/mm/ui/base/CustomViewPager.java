@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.mogic.WxViewPager;
-import com.tencent.mm.ui.widget.SwipeBackLayout.b;
+import com.tencent.mm.ui.widget.SwipeBackLayout.c;
 
 public class CustomViewPager
   extends WxViewPager
@@ -14,7 +14,7 @@ public class CustomViewPager
   private static final String TAG = "MicroMsg.CustomViewPager";
   private boolean mCanSlide = true;
   private boolean mCanSlideBySide = true;
-  private SwipeBackLayout.b mSwipeBackListener = null;
+  private SwipeBackLayout.c mSwipeBackListener = null;
   
   public CustomViewPager(Context paramContext)
   {
@@ -28,21 +28,21 @@ public class CustomViewPager
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(220101);
-    if ((this.mSwipeBackListener != null) && (this.mSwipeBackListener.fav())) {
-      if (this.mSwipeBackListener.fay())
+    AppMethodBeat.i(251310);
+    if ((this.mSwipeBackListener != null) && (this.mSwipeBackListener.gjA())) {
+      if (this.mSwipeBackListener.gjD())
       {
-        if (this.mSwipeBackListener.fau() == 1)
+        if (this.mSwipeBackListener.gjz() == 1)
         {
           this.mSwipeBackListener.n(paramMotionEvent);
-          AppMethodBeat.o(220101);
+          AppMethodBeat.o(251310);
           return true;
         }
         if (this.mSwipeBackListener.i(paramMotionEvent))
         {
           paramMotionEvent.setAction(3);
           super.dispatchTouchEvent(paramMotionEvent);
-          AppMethodBeat.o(220101);
+          AppMethodBeat.o(251310);
           return true;
         }
       }
@@ -52,7 +52,7 @@ public class CustomViewPager
       }
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(220101);
+    AppMethodBeat.o(251310);
     return bool;
   }
   
@@ -123,14 +123,14 @@ public class CustomViewPager
     this.mCanSlideBySide = paramBoolean;
   }
   
-  public void setSwipeBackListener(SwipeBackLayout.b paramb)
+  public void setSwipeBackListener(SwipeBackLayout.c paramc)
   {
-    this.mSwipeBackListener = paramb;
+    this.mSwipeBackListener = paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.base.CustomViewPager
  * JD-Core Version:    0.7.0.1
  */

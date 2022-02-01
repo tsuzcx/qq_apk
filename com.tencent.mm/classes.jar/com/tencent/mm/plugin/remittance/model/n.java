@@ -1,95 +1,69 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ds;
-import com.tencent.mm.protocal.protobuf.esi;
-import com.tencent.mm.protocal.protobuf.rg;
-import com.tencent.mm.protocal.protobuf.rh;
+import com.tencent.mm.protocal.protobuf.eh;
+import com.tencent.mm.protocal.protobuf.sp;
+import com.tencent.mm.protocal.protobuf.sq;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.j;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class n
-  extends q
-  implements m, j, com.tencent.mm.wallet_core.d.d
+  extends w
 {
-  public rh IlI;
-  private rg IlJ;
-  private i callback;
-  public String fwv;
-  public boolean hasRetried;
-  private com.tencent.mm.an.d kwO;
-  public boolean uTW;
+  public sq OiY;
+  private com.tencent.mm.am.h callback;
+  private c nao;
   
-  public n(esi paramesi, ds paramds, String paramString1, int paramInt, String paramString2, String paramString3)
+  public n(eh parameh, String paramString)
   {
-    AppMethodBeat.i(67860);
-    this.uTW = false;
-    this.hasRetried = false;
-    d.a locala = new d.a();
-    locala.lBU = new rg();
-    locala.lBV = new rh();
-    locala.funcId = 2682;
-    locala.uri = "/cgi-bin/mmpay-bin/busif2fzerocallback";
-    locala.lBW = 0;
-    locala.respCmdId = 0;
-    this.kwO = locala.bgN();
-    this.IlJ = ((rg)d.b.b(this.kwO.lBR));
-    this.IlJ.RZn = paramds;
-    this.IlJ.RZJ = paramesi;
-    this.IlJ.RZK = paramString1;
-    this.IlJ.Sah = paramInt;
-    this.IlJ.token = paramString2;
-    this.fwv = paramString3;
-    Log.i("MicroMsg.NetSceneBusiF2fZeroCallback", "NetSceneBusiF2fZeroCallback, token %s AfterPlaceOrderCommReq %s zero_pay_extend: %s", new Object[] { paramString2, a.a(paramds), paramString1 });
-    AppMethodBeat.o(67860);
+    AppMethodBeat.i(67857);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new sp();
+    ((c.a)localObject).otF = new sq();
+    ((c.a)localObject).funcId = 2702;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/busif2funlockfavor";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.nao = ((c.a)localObject).bEF();
+    localObject = (sp)c.b.b(this.nao.otB);
+    ((sp)localObject).YXl = parameh;
+    ((sp)localObject).YXE = paramString;
+    com.tencent.mm.plugin.report.service.h.OAn.kJ(886, 0);
+    Log.i("MicroMsg.NetSceneBusiF2fUnlockFavor", "NetSceneBusiF2fUnlockFavor, f2fId: %s, transId: %s, amount: %s", new Object[] { parameh.YGt, parameh.Oln, Integer.valueOf(parameh.YGv) });
+    AppMethodBeat.o(67857);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(67861);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
-    AppMethodBeat.o(67861);
+    AppMethodBeat.i(67858);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
+    AppMethodBeat.o(67858);
     return i;
-  }
-  
-  public final boolean getHasRetried()
-  {
-    return this.hasRetried;
   }
   
   public final int getType()
   {
-    return 2682;
+    return 2702;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(67862);
-    Log.i("MicroMsg.NetSceneBusiF2fZeroCallback", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.IlI = ((rh)d.c.b(((com.tencent.mm.an.d)params).lBS));
-    Log.i("MicroMsg.NetSceneBusiF2fZeroCallback", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.IlI.tqa), this.IlI.tqb });
+    AppMethodBeat.i(288827);
+    Log.i("MicroMsg.NetSceneBusiF2fUnlockFavor", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.OiY = ((sq)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneBusiF2fUnlockFavor", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.OiY.wuz), this.OiY.wuA });
+    com.tencent.mm.plugin.report.service.h.OAn.kJ(886, 1);
     if (this.callback != null) {
-      if (this.IlI.Sai != 1) {
-        break label134;
-      }
-    }
-    label134:
-    for (boolean bool = true;; bool = false)
-    {
-      this.uTW = bool;
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(67862);
-      return;
     }
+    AppMethodBeat.o(288827);
   }
 }
 

@@ -1,105 +1,110 @@
 package com.tencent.mm.plugin.selectrecord.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.kk;
+import com.tencent.mm.autogen.mmdata.rpt.nd;
 
 public final class a
 {
-  public static a Jct = null;
-  public int JcA;
-  public int JcB;
-  public long JcC;
-  public int JcD;
-  public int JcE;
-  public int JcF;
-  public int JcG;
-  public int JcH;
-  public long JcI;
-  public long JcJ;
-  public kk Jcu;
-  public int Jcv;
-  public int Jcw;
-  public int Jcx;
-  public int Jcy;
-  public int Jcz;
+  public static a Pmi = null;
+  public nd Pmj;
+  public int Pmk;
+  public int Pml;
+  public int Pmm;
+  public int Pmn;
+  public int Pmo;
+  public int Pmp;
+  public int Pmq;
+  public long Pmr;
+  public int Pms;
+  public int Pmt;
+  public int Pmu;
+  public int Pmv;
+  public int Pmw;
+  public long Pmx;
+  public long Pmy;
   
   public a()
   {
-    AppMethodBeat.i(255121);
-    this.Jcu = null;
-    this.Jcv = 0;
-    this.Jcw = 0;
-    this.Jcx = 0;
-    this.Jcy = 0;
-    this.Jcz = 0;
-    this.JcA = 0;
-    this.JcB = 0;
-    this.JcC = 0L;
-    this.JcD = 0;
-    this.JcE = 0;
-    this.JcF = 0;
-    this.JcG = 0;
-    this.JcH = 0;
-    this.JcI = 0L;
-    this.JcJ = 0L;
-    this.Jcu = new kk();
-    AppMethodBeat.o(255121);
+    AppMethodBeat.i(266729);
+    this.Pmj = null;
+    this.Pmk = 0;
+    this.Pml = 0;
+    this.Pmm = 0;
+    this.Pmn = 0;
+    this.Pmo = 0;
+    this.Pmp = 0;
+    this.Pmq = 0;
+    this.Pmr = 0L;
+    this.Pms = 0;
+    this.Pmt = 0;
+    this.Pmu = 0;
+    this.Pmv = 0;
+    this.Pmw = 0;
+    this.Pmx = 0L;
+    this.Pmy = 0L;
+    this.Pmj = new nd();
+    AppMethodBeat.o(266729);
   }
   
-  public static a fFx()
+  public static a gUF()
   {
-    AppMethodBeat.i(255119);
-    if (Jct == null) {
-      fFy();
+    AppMethodBeat.i(266717);
+    if (Pmi == null) {
+      gUG();
     }
-    a locala = Jct;
-    AppMethodBeat.o(255119);
+    a locala = Pmi;
+    AppMethodBeat.o(266717);
     return locala;
   }
   
-  public static void fFy()
+  public static void gUG()
   {
-    AppMethodBeat.i(255120);
-    Jct = new a();
-    AppMethodBeat.o(255120);
+    AppMethodBeat.i(266721);
+    Pmi = new a();
+    AppMethodBeat.o(266721);
   }
   
-  public final void PZ(long paramLong)
+  public final void CC(boolean paramBoolean)
   {
-    this.Jcu.gNd = paramLong;
-  }
-  
-  public final void Qa(long paramLong)
-  {
-    if (paramLong > this.JcC) {
-      this.Jcu.gNm = (paramLong - this.JcC);
-    }
-  }
-  
-  public final void fFA()
-  {
-    this.Jcz += 1;
-  }
-  
-  public final void fFB()
-  {
-    this.JcF += 1;
-  }
-  
-  public final void fFz()
-  {
-    this.Jcy += 1;
-  }
-  
-  public final void xL(boolean paramBoolean)
-  {
-    kk localkk = this.Jcu;
+    nd localnd = this.Pmj;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localkk.gNa = i;
+      localnd.jdi = i;
       return;
     }
+  }
+  
+  public final void gUH()
+  {
+    this.Pmn += 1;
+  }
+  
+  public final void gUI()
+  {
+    this.Pmo += 1;
+  }
+  
+  public final void gUJ()
+  {
+    this.Pmu += 1;
+  }
+  
+  public final void ud(long paramLong)
+  {
+    this.Pmj.jdl = paramLong;
+  }
+  
+  public final void ue(long paramLong)
+  {
+    if (paramLong > this.Pmr) {
+      this.Pmj.jdu = (paramLong - this.Pmr);
+    }
+  }
+  
+  public final void uf(long paramLong)
+  {
+    this.Pmj.jdy = paramLong;
   }
 }
 

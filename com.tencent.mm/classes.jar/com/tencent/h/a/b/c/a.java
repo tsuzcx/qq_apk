@@ -20,67 +20,37 @@ public final class a
   extends com.tencent.h.a.b.c.a.a
   implements SensorEventListener
 {
-  private com.tencent.h.a.b.c.a.c ZSO;
-  private com.tencent.h.a.a.a ZSP;
-  private final SparseArray<com.tencent.h.a.b.c.b.a> ZSQ;
+  private com.tencent.h.a.b.c.a.c ahXo;
+  private com.tencent.h.a.a.a ahXp;
+  private final SparseArray<com.tencent.h.a.b.c.b.a> ahXq;
   private final Object mLock;
   private SensorManager mSensorManager;
   
   public a(com.tencent.h.a.a.c paramc)
   {
     super(paramc);
-    AppMethodBeat.i(207489);
-    this.ZSP = new com.tencent.h.a.a.a("sensor_task") {};
-    this.ZSQ = new SparseArray();
+    AppMethodBeat.i(212147);
+    this.ahXq = new SparseArray();
     this.mLock = new Object();
-    AppMethodBeat.o(207489);
+    AppMethodBeat.o(212147);
   }
   
-  private void la(List<g> paramList)
+  private void ox(List<g> paramList)
   {
-    AppMethodBeat.i(207507);
+    AppMethodBeat.i(212157);
     synchronized (this.mLock)
     {
-      if ((this.ZSO != null) && (paramList != null) && (!paramList.isEmpty())) {
-        this.ZSO.kZ(paramList);
+      if ((this.ahXo != null) && (paramList != null) && (!paramList.isEmpty())) {
+        this.ahXo.ow(paramList);
       }
-      AppMethodBeat.o(207507);
+      AppMethodBeat.o(212157);
       return;
     }
   }
   
-  public final boolean TV()
-  {
-    AppMethodBeat.i(207501);
-    synchronized (this.mLock)
-    {
-      this.ZSO = null;
-      i.i("sensor_SensorTask", "[method: unregisterSensor ] unregister sensor: " + Thread.currentThread().getName());
-      if ((this.mSensorManager == null) || (this.ZSQ.size() <= 0))
-      {
-        AppMethodBeat.o(207501);
-        return true;
-      }
-    }
-    int i = 0;
-    while (i < this.ZSQ.size())
-    {
-      ??? = (com.tencent.h.a.b.c.b.a)this.ZSQ.valueAt(i);
-      if ((??? != null) && (((com.tencent.h.a.b.c.b.a)???).GxY != null))
-      {
-        i.i("sensor_SensorTask", "[method: stop ] controller getPointerSize : " + ((com.tencent.h.a.b.c.b.a)???).iud());
-        this.mSensorManager.unregisterListener(this, ((com.tencent.h.a.b.c.b.a)???).GxY);
-      }
-      i += 1;
-    }
-    this.ZSQ.clear();
-    AppMethodBeat.o(207501);
-    return true;
-  }
-  
   public final void a(e parame)
   {
-    this.ZSO = ((com.tencent.h.a.b.c.a.c)parame);
+    this.ahXo = ((com.tencent.h.a.b.c.a.c)parame);
   }
   
   public final int getTaskId()
@@ -88,20 +58,25 @@ public final class a
     return 0;
   }
   
-  public final boolean itY()
+  public final boolean kdu()
   {
-    AppMethodBeat.i(207497);
-    int[] arrayOfInt = d.ZSx;
+    AppMethodBeat.i(212179);
+    int[] arrayOfInt = d.ahWV;
     if (arrayOfInt.length <= 0) {
-      arrayOfInt = d.ZSw;
+      arrayOfInt = d.ahWU;
     }
     for (;;)
     {
-      int m = itK().ZSq.itF().ZSb;
+      int m = kdg().ahWO.kda().ahWy;
       if (this.mSensorManager == null) {
-        this.mSensorManager = ((SensorManager)itK().mAppContext.getSystemService("sensor"));
+        this.mSensorManager = ((SensorManager)kdg().mAppContext.getSystemService("sensor"));
       }
-      this.ZSQ.clear();
+      if ((this.ahXp == null) || (!this.ahXp.isAlive()))
+      {
+        i.i("sensor_SensorTask", "[method: registerSensor ] build AsyncWork");
+        this.ahXp = new com.tencent.h.a.a.a("sensor_task") {};
+      }
+      this.ahXq.clear();
       i.i("sensor_SensorTask", "[method: registerSensor ] begin register sensor");
       int n = arrayOfInt.length;
       int j = 0;
@@ -110,10 +85,11 @@ public final class a
       {
         i1 = arrayOfInt[j];
         if ((Build.VERSION.SDK_INT >= 9) || (i1 != 9)) {
-          break label257;
+          break label295;
         }
       }
-      label257:
+      label275:
+      label295:
       for (int i = 1;; i = 0)
       {
         int k = i;
@@ -131,50 +107,49 @@ public final class a
           localSensor = this.mSensorManager.getDefaultSensor(i1);
           localObject = new StringBuilder("[method: registerSensor ] sensor is null ? ");
           if (localSensor != null) {
-            break label237;
+            break label275;
           }
         }
-        label237:
         for (boolean bool = true;; bool = false)
         {
           i.i("sensor_SensorTask", bool);
           if (localSensor != null)
           {
             localObject = new com.tencent.h.a.b.c.b.a(localSensor, m);
-            this.ZSQ.put(i1, localObject);
-            this.mSensorManager.registerListener(this, localSensor, 0, this.ZSP.ZQg);
+            this.ahXq.put(i1, localObject);
+            this.mSensorManager.registerListener(this, localSensor, 0, this.ahXp.ahWL);
           }
           j += 1;
           break;
         }
         i.i("sensor_SensorTask", "[method: registerSensor ] register completed");
-        AppMethodBeat.o(207497);
+        AppMethodBeat.o(212179);
         return true;
       }
     }
   }
   
-  public final boolean itZ()
+  public final boolean kdv()
   {
-    AppMethodBeat.i(207499);
-    if (this.ZSQ.size() <= 0)
+    AppMethodBeat.i(212188);
+    if (this.ahXq.size() <= 0)
     {
-      AppMethodBeat.o(207499);
+      AppMethodBeat.o(212188);
       return true;
     }
     int i = 0;
-    while (i < this.ZSQ.size())
+    while (i < this.ahXq.size())
     {
-      Object localObject = (com.tencent.h.a.b.c.b.a)this.ZSQ.valueAt(i);
+      Object localObject = (com.tencent.h.a.b.c.b.a)this.ahXq.valueAt(i);
       if (localObject != null)
       {
-        localObject = ((com.tencent.h.a.b.c.b.a)localObject).iuc();
+        localObject = ((com.tencent.h.a.b.c.b.a)localObject).kdy();
         i.i("sensor_SensorTask", "[method: notifyTaskDataPush ] controller getPointerSize : " + ((List)localObject).size());
-        la((List)localObject);
+        ox((List)localObject);
       }
       i += 1;
     }
-    AppMethodBeat.o(207499);
+    AppMethodBeat.o(212188);
     return true;
   }
   
@@ -182,16 +157,16 @@ public final class a
   
   public final void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    AppMethodBeat.i(207505);
+    AppMethodBeat.i(212233);
     int k;
     Object localObject;
     try
     {
       k = paramSensorEvent.sensor.getType();
-      locala = (com.tencent.h.a.b.c.b.a)this.ZSQ.get(k);
+      locala = (com.tencent.h.a.b.c.b.a)this.ahXq.get(k);
       if (locala == null)
       {
-        AppMethodBeat.o(207505);
+        AppMethodBeat.o(212233);
         return;
       }
       if (paramSensorEvent == null)
@@ -201,37 +176,37 @@ public final class a
         break label809;
         if (localObject != null)
         {
-          ((g)localObject).Zqg = locala.WZ(paramSensorEvent.timestamp);
+          ((g)localObject).ahuN = locala.Bm(paramSensorEvent.timestamp);
           if (localObject != null)
           {
-            locala.ZTa.add(localObject);
-            locala.ZTb = ((g)localObject).Zqg;
+            locala.ahXA.add(localObject);
+            locala.ahXB = ((g)localObject).ahuN;
           }
-          if (locala.iud() >= 5) {
-            la(locala.iuc());
+          if (locala.kdz() >= 5) {
+            ox(locala.kdy());
           }
         }
         if (paramSensorEvent != null)
         {
-          paramSensorEvent.fkN[0] = (0.0F / 0.0F);
-          paramSensorEvent.fkN[1] = (0.0F / 0.0F);
-          paramSensorEvent.fkN[2] = (0.0F / 0.0F);
+          paramSensorEvent.hpa[0] = (0.0F / 0.0F);
+          paramSensorEvent.hpa[1] = (0.0F / 0.0F);
+          paramSensorEvent.hpa[2] = (0.0F / 0.0F);
           paramSensorEvent.timestamp = 0L;
         }
         label156:
-        AppMethodBeat.o(207505);
+        AppMethodBeat.o(212233);
       }
       else
       {
-        if ((paramSensorEvent.timestamp > 0L) && (locala.HQh)) {
+        if ((paramSensorEvent.timestamp > 0L) && (locala.NMQ)) {
           break label895;
         }
-        locala.HQh = true;
+        locala.NMQ = true;
         i.i("sensor_EventController", "[method: isFilterEvent ] " + paramSensorEvent.timestamp);
         i = 1;
       }
     }
-    catch (Throwable paramSensorEvent)
+    finally
     {
       com.tencent.h.a.b.c.b.a locala;
       label214:
@@ -239,28 +214,28 @@ public final class a
       long l1;
       long l2;
       label285:
-      itK().ZSs.b(paramSensorEvent, "onSensorChanged");
-      AppMethodBeat.o(207505);
+      kdg().ahWQ.b(paramSensorEvent, "onSensorChanged");
+      AppMethodBeat.o(212233);
       return;
     }
-    if (locala.ZSX <= 0)
+    if (locala.ahXx <= 0)
     {
       i = 1;
       if (i != 0)
       {
-        paramSensorEvent = com.tencent.h.a.b.c.b.a.a(paramSensorEvent, locala.iub());
+        paramSensorEvent = com.tencent.h.a.b.c.b.a.a(paramSensorEvent, locala.kdx());
       }
       else
       {
-        l1 = locala.WZ(paramSensorEvent.timestamp);
-        l2 = l1 - locala.ZTb;
+        l1 = locala.Bm(paramSensorEvent.timestamp);
+        l2 = l1 - locala.ahXB;
         i = 0;
-        if (l2 >= locala.ZSX - 5L) {
+        if (l2 >= locala.ahXx - 5L) {
           break label905;
         }
         i = 1;
         break label905;
-        if (locala.ZSX != l2) {
+        if (locala.ahXx != l2) {
           break label914;
         }
       }
@@ -273,78 +248,78 @@ public final class a
     {
       if (i != 0)
       {
-        paramSensorEvent = com.tencent.h.a.b.c.b.a.a(paramSensorEvent, locala.iub());
+        paramSensorEvent = com.tencent.h.a.b.c.b.a.a(paramSensorEvent, locala.kdx());
       }
       else
       {
         int j = 0;
         i = j;
-        if (locala.ZSZ != null)
+        if (locala.ahXz != null)
         {
           i = j;
-          if (locala.ZSZ.timestamp != 0L) {
+          if (locala.ahXz.timestamp != 0L) {
             i = 1;
           }
         }
         if (i != 0)
         {
-          l2 = locala.ZTb + locala.ZSX;
-          if (Math.abs(l2 - locala.WZ(locala.iub().timestamp)) < Math.abs(l2 - l1)) {
-            paramSensorEvent = locala.iub();
+          l2 = locala.ahXB + locala.ahXx;
+          if (Math.abs(l2 - locala.Bm(locala.kdx().timestamp)) < Math.abs(l2 - l1)) {
+            paramSensorEvent = locala.kdx();
           } else {
-            paramSensorEvent = com.tencent.h.a.b.c.b.a.a(paramSensorEvent, locala.iub());
+            paramSensorEvent = com.tencent.h.a.b.c.b.a.a(paramSensorEvent, locala.kdx());
           }
         }
         else
         {
           i = 0;
-          if (l2 > locala.ZSX + 5L) {
+          if (l2 > locala.ahXx + 5L) {
             i = 1;
           }
           if (i != 0)
           {
-            paramSensorEvent = com.tencent.h.a.b.c.b.a.a(paramSensorEvent, locala.iub());
+            paramSensorEvent = com.tencent.h.a.b.c.b.a.a(paramSensorEvent, locala.kdx());
           }
           else
           {
-            com.tencent.h.a.b.c.b.a.a(paramSensorEvent, locala.iub());
+            com.tencent.h.a.b.c.b.a.a(paramSensorEvent, locala.kdx());
             paramSensorEvent = null;
             break label815;
             localObject = new g();
-            ((g)localObject).ZpN = 0;
-            ((g)localObject).KxF = (paramSensorEvent.fkN[0] / 9.8F);
-            ((g)localObject).KxG = (paramSensorEvent.fkN[1] / 9.8F);
-            ((g)localObject).KxH = (paramSensorEvent.fkN[2] / 9.8F);
+            ((g)localObject).ahuv = 0;
+            ((g)localObject).QWn = (paramSensorEvent.hpa[0] / 9.8F);
+            ((g)localObject).QWo = (paramSensorEvent.hpa[1] / 9.8F);
+            ((g)localObject).QWp = (paramSensorEvent.hpa[2] / 9.8F);
             break;
             localObject = new g();
-            ((g)localObject).ZpN = 1;
-            ((g)localObject).KxF = paramSensorEvent.fkN[0];
+            ((g)localObject).ahuv = 1;
+            ((g)localObject).QWn = paramSensorEvent.hpa[0];
             break;
             localObject = new g();
-            ((g)localObject).ZpN = 2;
-            ((g)localObject).KxF = paramSensorEvent.fkN[0];
-            ((g)localObject).KxG = paramSensorEvent.fkN[1];
-            ((g)localObject).KxH = paramSensorEvent.fkN[2];
+            ((g)localObject).ahuv = 2;
+            ((g)localObject).QWn = paramSensorEvent.hpa[0];
+            ((g)localObject).QWo = paramSensorEvent.hpa[1];
+            ((g)localObject).QWp = paramSensorEvent.hpa[2];
             break;
             localObject = new g();
-            ((g)localObject).ZpN = 3;
-            ((g)localObject).KxF = paramSensorEvent.fkN[0];
+            ((g)localObject).ahuv = 3;
+            ((g)localObject).QWn = paramSensorEvent.hpa[0];
             break;
             localObject = new g();
-            ((g)localObject).ZpN = 4;
-            ((g)localObject).KxF = (paramSensorEvent.fkN[0] / 9.8F);
-            ((g)localObject).KxG = (paramSensorEvent.fkN[1] / 9.8F);
-            ((g)localObject).KxH = (-paramSensorEvent.fkN[2] / 9.8F);
+            ((g)localObject).ahuv = 4;
+            ((g)localObject).QWn = (paramSensorEvent.hpa[0] / 9.8F);
+            ((g)localObject).QWo = (paramSensorEvent.hpa[1] / 9.8F);
+            ((g)localObject).QWp = (-paramSensorEvent.hpa[2] / 9.8F);
             break;
             localObject = new g();
-            ((g)localObject).ZpN = 5;
-            ((g)localObject).KxF = paramSensorEvent.fkN[0];
-            ((g)localObject).KxG = paramSensorEvent.fkN[1];
-            ((g)localObject).KxH = paramSensorEvent.fkN[2];
+            ((g)localObject).ahuv = 5;
+            ((g)localObject).QWn = paramSensorEvent.hpa[0];
+            ((g)localObject).QWo = paramSensorEvent.hpa[1];
+            ((g)localObject).QWp = paramSensorEvent.hpa[2];
             break;
             localObject = new g();
-            ((g)localObject).ZpN = 6;
-            ((g)localObject).KxF = paramSensorEvent.fkN[0];
+            ((g)localObject).ahuv = 6;
+            ((g)localObject).QWn = paramSensorEvent.hpa[0];
             break;
             label809:
             if (i == 0) {
@@ -377,10 +352,45 @@ public final class a
       break label156;
     }
   }
+  
+  public final boolean stop()
+  {
+    AppMethodBeat.i(212205);
+    synchronized (this.mLock)
+    {
+      this.ahXo = null;
+      i.i("sensor_SensorTask", "[method: unregisterSensor ] unregister sensor: " + Thread.currentThread().getName());
+      if ((this.mSensorManager == null) || (this.ahXq.size() <= 0))
+      {
+        AppMethodBeat.o(212205);
+        return true;
+      }
+    }
+    int i = 0;
+    while (i < this.ahXq.size())
+    {
+      ??? = (com.tencent.h.a.b.c.b.a)this.ahXq.valueAt(i);
+      if ((??? != null) && (((com.tencent.h.a.b.c.b.a)???).Mug != null))
+      {
+        i.i("sensor_SensorTask", "[method: stop ] controller getPointerSize : " + ((com.tencent.h.a.b.c.b.a)???).kdz());
+        this.mSensorManager.unregisterListener(this, ((com.tencent.h.a.b.c.b.a)???).Mug);
+      }
+      i += 1;
+    }
+    if (this.ahXp != null)
+    {
+      i.i("sensor_SensorTask", "[method: unregisterSensor ] unregister sensor: stop asyncWorker");
+      this.ahXp.kdd();
+      this.ahXp = null;
+    }
+    this.ahXq.clear();
+    AppMethodBeat.o(212205);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.b.c.a
  * JD-Core Version:    0.7.0.1
  */

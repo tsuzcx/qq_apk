@@ -2,65 +2,105 @@ package com.tencent.mm.plugin.recordvideo.plugin;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import kotlin.g.b.p;
-import kotlin.l;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "customName", "", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Ljava/lang/String;)V", "getCustomName", "()Ljava/lang/String;", "setCustomName", "(Ljava/lang/String;)V", "name", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "customName", "", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Ljava/lang/String;)V", "getCustomName", "()Ljava/lang/String;", "setCustomName", "(Ljava/lang/String;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "T", "Landroid/view/View;", "resId", "", "(I)Landroid/view/View;", "name", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a
-  implements u
+  implements v
 {
-  private String HMC = null;
+  public com.tencent.mm.plugin.recordvideo.plugin.parent.a GrC;
+  private String NJz;
   
-  private a(d paramd)
+  public a(com.tencent.mm.plugin.recordvideo.plugin.parent.a parama, String paramString)
   {
-    paramd.a((u)this);
+    this.GrC = parama;
+    this.NJz = paramString;
+    this.GrC.a((v)this);
   }
   
-  public final void aVU(String paramString)
+  public final <T extends View> T UH(int paramInt)
   {
-    this.HMC = paramString;
+    View localView = ((ViewGroup)this.GrC).findViewById(paramInt);
+    s.s(localView, "status as ViewGroup).findViewById(resId)");
+    return localView;
   }
   
-  public void bbp() {}
+  public void a(RecordConfigProvider paramRecordConfigProvider)
+  {
+    v.a.a(this, paramRecordConfigProvider);
+  }
+  
+  public final void aTb(String paramString)
+  {
+    this.NJz = paramString;
+  }
+  
+  public void bwk()
+  {
+    s.u(this, "this");
+  }
   
   public final String name()
   {
-    if (TextUtils.isEmpty((CharSequence)this.HMC)) {
+    if (TextUtils.isEmpty((CharSequence)this.NJz)) {
       return getClass().getName();
     }
-    return this.HMC;
+    return this.NJz;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    s.u(this, "this");
+  }
   
   public boolean onBackPress()
   {
+    s.u(this, "this");
     return false;
   }
   
-  public void onDetach() {}
+  public void onDetach()
+  {
+    s.u(this, "this");
+  }
   
-  public void onPause() {}
+  public void onPause()
+  {
+    s.u(this, "this");
+  }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
-    u.a.a(paramArrayOfString, paramArrayOfInt);
+    v.a.a(this, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onResume() {}
+  public void onResume()
+  {
+    s.u(this, "this");
+  }
   
-  public void release() {}
+  public void release()
+  {
+    s.u(this, "this");
+  }
   
-  public void reset() {}
+  public void reset()
+  {
+    s.u(this, "this");
+  }
   
-  public void setVisibility(int paramInt) {}
+  public void setVisibility(int paramInt)
+  {
+    s.u(this, "this");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.a
  * JD-Core Version:    0.7.0.1
  */

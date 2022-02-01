@@ -1,58 +1,59 @@
 package com.tencent.mm.plugin.login_exdevice.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.z;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.protocal.ac;
+import com.tencent.mm.protocal.d;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.dpx;
-import com.tencent.mm.protocal.protobuf.dpy;
+import com.tencent.mm.protocal.protobuf.eis;
+import com.tencent.mm.protocal.protobuf.eit;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public com.tencent.mm.an.d kwO;
+  private h callback;
+  public com.tencent.mm.am.c nao;
   
   public c(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(285833);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dpx();
-    ((d.a)localObject).lBV = new dpy();
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/pushloginurl";
-    this.kwO = ((d.a)localObject).bgN();
-    localObject = (dpx)d.b.b(this.kwO.lBR);
-    ((dpx)localObject).UserName = paramString;
-    ((dpx)localObject).RLV = z.aN(paramArrayOfByte);
-    ((dpx)localObject).RRw = 3;
-    ((dpx)localObject).TCU = com.tencent.mm.b.g.getMessageDigest(Util.currentTicks().getBytes());
-    ((dpx)localObject).rVG = com.tencent.mm.protocal.d.RAB;
+    AppMethodBeat.i(262305);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new eis();
+    ((c.a)localObject).otF = new eit();
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/pushloginurl";
+    this.nao = ((c.a)localObject).bEF();
+    localObject = (eis)c.b.b(this.nao.otB);
+    ((eis)localObject).UserName = paramString;
+    ((eis)localObject).YJj = w.aN(paramArrayOfByte);
+    ((eis)localObject).YOO = 3;
+    ((eis)localObject).aaSC = com.tencent.mm.b.g.getMessageDigest(Util.currentTicks().getBytes());
+    ((eis)localObject).vgW = d.Yxf;
     paramString = Util.getUuidRandom();
-    ((dpx)localObject).RQU = z.aN(paramString);
-    this.kwO.setRsaInfo(ac.hpj());
-    this.kwO.option = 1;
-    this.kwO.getReqObj().setPassKey(paramString);
-    AppMethodBeat.o(285833);
+    ((eis)localObject).YOj = w.aN(paramString);
+    this.nao.setRsaInfo(ac.iQe());
+    this.nao.option = 1;
+    this.nao.getReqObj().setPassKey(paramString);
+    AppMethodBeat.o(262305);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
-    AppMethodBeat.i(285835);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
-    AppMethodBeat.o(285835);
+    AppMethodBeat.i(262327);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
+    AppMethodBeat.o(262327);
     return i;
   }
   
@@ -63,12 +64,12 @@ public final class c
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(285834);
+    AppMethodBeat.i(262315);
     Log.i("MicroMsg.NetScenePushLoginUrl", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(285834);
+    AppMethodBeat.o(262315);
   }
 }
 

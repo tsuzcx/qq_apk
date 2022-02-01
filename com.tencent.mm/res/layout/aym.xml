@@ -1,3 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/eoi" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    <ImageView android:id="@id/eog" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@raw/actionbar_icon_light_back" android:layout_alignParentTop="true" android:layout_marginStart="24.0dip" android:layout_alignParentStart="true" />
+    <View android:id="@id/gp5" android:background="@color/w2" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/agw" android:background="@color/w2" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/gp5">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip">
+            <TextView android:textSize="17.0dip" android:textColor="@color/i2" android:ellipsize="end" android:id="@id/kpx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <com.tencent.mm.plugin.game.media.GameVideoTagContainer android:orientation="horizontal" android:id="@id/l7v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="12.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/h_k" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bf3" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <View android:background="@color/BW_100_Alpha_0_1" android:layout_width="1.0px" android:layout_height="14.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f87" />
+                <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" android:src="@raw/video_preview_info" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:background="@color/BW_100_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:gravity="center" android:layout_gravity="right" android:orientation="horizontal" android:id="@id/jii" android:background="@drawable/a7v" android:layout_width="76.0dip" android:layout_height="32.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:background="@raw/game_haowan_share" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/m4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/fc1" />
+        </LinearLayout>
+        <Button android:textColor="@color/al2" android:layout_gravity="right" android:id="@id/bl1" android:background="@drawable/a7t" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip" android:text="@string/fcm" style="@style/od" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/g40" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <com.tencent.mm.plugin.game.commlib.view.CycleProgressView android:layout_gravity="center_horizontal" android:id="@id/byo" android:layout_width="36.0dip" android:layout_height="36.0dip" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/al2" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/fct" />
+    </LinearLayout>
+</RelativeLayout>

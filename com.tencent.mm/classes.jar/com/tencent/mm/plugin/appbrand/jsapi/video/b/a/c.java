@@ -17,66 +17,92 @@ import java.io.IOException;
 public final class c
   implements e
 {
-  private long bom;
-  private final boolean bpH;
-  private final boolean bpI;
-  private long bpM;
-  private long bpQ;
+  private long die;
+  private final boolean djl;
+  private final boolean djm;
+  private long djq;
+  private long dju;
   private int flags;
   private String key;
-  private long nHt;
   private int priority;
-  private final a pvM;
-  private String pvQ;
-  private long pvR;
-  private int pvS;
-  private long pvT;
-  private final e pvU;
-  private final e pvV;
-  public final e pvW;
-  private final a pvX;
-  private e pvY;
-  private f pvZ;
-  private boolean pwa;
-  private boolean pwb;
+  private long qHg;
+  private final a sAS;
+  private String sAW;
+  private long sAX;
+  private int sAY;
+  private long sAZ;
+  private final e sBa;
+  private final e sBb;
+  public final e sBc;
+  private final a sBd;
+  private e sBe;
+  private f sBf;
+  private boolean sBg;
+  private boolean sBh;
   private Uri uri;
   private String uuid;
   
   public c(a parama, e parame1, e parame2, d paramd, a parama1)
   {
-    AppMethodBeat.i(229226);
-    this.pvR = 0L;
-    this.pvQ = "";
-    this.pvM = parama;
-    this.pvU = parame2;
-    this.bpH = false;
-    this.bpI = true;
-    this.pvW = parame1;
+    AppMethodBeat.i(328306);
+    this.sAX = 0L;
+    this.sAW = "";
+    this.sAS = parama;
+    this.sBa = parame2;
+    this.djl = false;
+    this.djm = true;
+    this.sBc = parame1;
     if (paramd != null) {}
-    for (this.pvV = new r(parame1, paramd);; this.pvV = null)
+    for (this.sBb = new r(parame1, paramd);; this.sBb = null)
     {
-      this.pvX = parama1;
-      AppMethodBeat.o(229226);
+      this.sBd = parama1;
+      AppMethodBeat.o(328306);
       return;
     }
   }
   
-  private void b(IOException paramIOException)
+  private void Ur()
   {
-    AppMethodBeat.i(229262);
-    h.log(3, getLogTag(), "handleBeforeThrow " + paramIOException + ", ignoreCacheOnError=" + this.bpI + ", currentDataSource=" + this.pvY);
-    if ((this.bpI) && (this.pvY == this.pvU))
+    AppMethodBeat.i(328358);
+    if (this.sBe == null)
     {
-      h.log(4, getLogTag(), "handleBeforeThrow currentDataSource=" + this.pvY + ", exception=" + paramIOException);
-      this.pwa = true;
+      AppMethodBeat.o(328358);
+      return;
     }
-    AppMethodBeat.o(229262);
+    try
+    {
+      this.sBe.close();
+      this.sBe = null;
+      return;
+    }
+    finally
+    {
+      if (this.sBf != null)
+      {
+        this.sAS.a(this.sBf);
+        this.sBf = null;
+      }
+      AppMethodBeat.o(328358);
+    }
+    AppMethodBeat.o(328358);
   }
   
-  private long bVx()
+  private void b(IOException paramIOException)
+  {
+    AppMethodBeat.i(328371);
+    h.log(3, getLogTag(), "handleBeforeThrow " + paramIOException + ", ignoreCacheOnError=" + this.djm + ", currentDataSource=" + this.sBe);
+    if ((this.djm) && (this.sBe == this.sBa))
+    {
+      h.log(4, getLogTag(), "handleBeforeThrow currentDataSource=" + this.sBe + ", exception=" + paramIOException);
+      this.sBg = true;
+    }
+    AppMethodBeat.o(328371);
+  }
+  
+  private long cvL()
   {
     int i = 0;
-    AppMethodBeat.i(229257);
+    AppMethodBeat.i(328339);
     for (;;)
     {
       long l1;
@@ -84,129 +110,103 @@ public final class c
       try
       {
         Object localObject1;
-        if (this.pwa)
+        if (this.sBg)
         {
           localObject1 = null;
           if (localObject1 == null)
           {
-            this.pvY = this.pvW;
-            localObject1 = new g(this.uri, this.bpM, this.bpM, this.bom, this.key, this.flags, this.uuid, this.priority);
-            l1 = this.pvY.a((g)localObject1);
-            if (((this.pvY instanceof l)) && (this.pvY.getTotalLength() != -1L) && (((g)localObject1).position >= this.pvY.getTotalLength() - 1L)) {
+            this.sBe = this.sBc;
+            localObject1 = new g(this.uri, this.djq, this.djq, this.die, this.key, this.flags, this.uuid, this.priority);
+            l1 = this.sBe.a((g)localObject1);
+            if (((this.sBe instanceof l)) && (this.sBe.getTotalLength() != -1L) && (((g)localObject1).position >= this.sBe.getTotalLength() - 1L)) {
               h.log(6, getLogTag(), "read position out of bound");
             }
-            if ((this.bom == -1L) && (this.pvY.getTotalLength() != -1L))
+            if ((this.die == -1L) && (this.sBe.getTotalLength() != -1L))
             {
-              this.bom = (this.pvY.getTotalLength() - this.bpM);
-              h.log(4, getLogTag(), "init bytesRemaining " + this.bom + ", readPosition=" + this.bpM + ", totalLength=" + this.pvY.getTotalLength());
+              this.die = (this.sBe.getTotalLength() - this.djq);
+              h.log(4, getLogTag(), "init bytesRemaining " + this.die + ", readPosition=" + this.djq + ", totalLength=" + this.sBe.getTotalLength());
             }
-            this.bom = Math.max(0L, Math.min(this.bom, getTotalLength()));
-            this.pwb = false;
-            AppMethodBeat.o(229257);
+            this.die = Math.max(0L, Math.min(this.die, getTotalLength()));
+            this.sBh = false;
+            AppMethodBeat.o(328339);
             return l1;
           }
         }
         else
         {
-          if (this.bpH)
+          if (this.djl)
           {
-            localObject1 = this.pvM.Q(this.key, this.bpM);
+            localObject1 = this.sAS.V(this.key, this.djq);
             continue;
           }
-          localObject1 = this.pvM.R(this.key, this.bpM);
+          localObject1 = this.sAS.W(this.key, this.djq);
           continue;
         }
-        if (!((f)localObject1).bpU) {
+        if (!((f)localObject1).djy) {
           break label546;
         }
         localObject3 = FileProviderHelper.getUriForFile(MMApplicationContext.getContext(), ((f)localObject1).file);
-        l1 = this.bpM - ((f)localObject1).position;
-        if (this.bom == -1L)
+        l1 = this.djq - ((f)localObject1).position;
+        if (this.die == -1L)
         {
-          this.bom = (((f)localObject1).nHt - this.bpM);
-          long l2 = Math.min(((f)localObject1).aFL - l1, this.bom);
-          localObject1 = new g((Uri)localObject3, this.bpM, l1, l2, this.key, this.flags, this.uuid, this.priority);
-          localObject3 = this.pvU;
-          this.pvY = ((e)localObject3);
+          this.die = (((f)localObject1).qHg - this.djq);
+          long l2 = Math.min(((f)localObject1).length - l1, this.die);
+          localObject1 = new g((Uri)localObject3, this.djq, l1, l2, this.key, this.flags, this.uuid, this.priority);
+          localObject3 = this.sBa;
+          this.sBe = ((e)localObject3);
           continue;
         }
-        if (this.bom <= ((f)localObject2).nHt - this.bpM) {
+        if (this.die <= ((f)localObject2).qHg - this.djq) {
           continue;
         }
       }
       catch (InterruptedException localInterruptedException)
       {
         localObject2 = new RuntimeException(localInterruptedException);
-        AppMethodBeat.o(229257);
+        AppMethodBeat.o(328339);
         throw ((Throwable)localObject2);
       }
-      h.log(5, getLogTag(), "fix bytesRemaining, max=" + (((f)localObject2).nHt - this.bpM) + " current=" + this.bom);
-      this.bom = (((f)localObject2).nHt - this.bpM);
+      h.log(5, getLogTag(), "fix bytesRemaining, max=" + (((f)localObject2).qHg - this.djq) + " current=" + this.die);
+      this.die = (((f)localObject2).qHg - this.djq);
       continue;
       label546:
-      this.pvZ = ((f)localObject2);
-      if (((f)localObject2).aFL == -1L) {
+      this.sBf = ((f)localObject2);
+      if (((f)localObject2).length == -1L) {
         i = 1;
       }
       if (i != 0) {
-        l1 = this.bom;
+        l1 = this.die;
       }
       for (;;)
       {
-        localObject2 = new g(this.uri, this.bpM, this.bpM, l1, this.key, this.flags, this.uuid, this.priority);
-        if (this.pvV == null) {
+        localObject2 = new g(this.uri, this.djq, this.djq, l1, this.key, this.flags, this.uuid, this.priority);
+        if (this.sBb == null) {
           break label665;
         }
-        localObject3 = this.pvV;
+        localObject3 = this.sBb;
         break;
-        if (this.bom != -1L) {
-          l1 = Math.min(((f)localObject2).aFL, this.bom);
+        if (this.die != -1L) {
+          l1 = Math.min(((f)localObject2).length, this.die);
         } else {
-          l1 = ((f)localObject2).aFL;
+          l1 = ((f)localObject2).length;
         }
       }
       label665:
-      Object localObject3 = this.pvW;
+      Object localObject3 = this.sBc;
     }
   }
   
   private String getLogTag()
   {
-    AppMethodBeat.i(229275);
-    String str = this.pvQ + "CacheDataSource";
-    AppMethodBeat.o(229275);
+    AppMethodBeat.i(328385);
+    String str = this.sAW + "CacheDataSource";
+    AppMethodBeat.o(328385);
     return str;
-  }
-  
-  private void uS()
-  {
-    AppMethodBeat.i(229259);
-    if (this.pvY == null)
-    {
-      AppMethodBeat.o(229259);
-      return;
-    }
-    try
-    {
-      this.pvY.close();
-      this.pvY = null;
-      return;
-    }
-    finally
-    {
-      if (this.pvZ != null)
-      {
-        this.pvM.a(this.pvZ);
-        this.pvZ = null;
-      }
-      AppMethodBeat.o(229259);
-    }
-    AppMethodBeat.o(229259);
   }
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(229237);
+    AppMethodBeat.i(328409);
     long l1;
     long l2;
     try
@@ -215,97 +215,77 @@ public final class c
       this.flags = paramg.flags;
       this.uuid = paramg.uuid;
       this.key = paramg.key;
-      this.bpM = paramg.position;
-      this.bom = paramg.aFL;
+      this.djq = paramg.position;
+      this.die = paramg.length;
       this.priority = paramg.priority;
       l1 = System.currentTimeMillis();
-      l2 = bVx();
-      this.nHt = getTotalLength();
-      this.pvR = (System.currentTimeMillis() - l1);
-      AppMethodBeat.o(229237);
+      l2 = cvL();
+      this.qHg = getTotalLength();
+      this.sAX = (System.currentTimeMillis() - l1);
+      AppMethodBeat.o(328409);
       return l2;
     }
     catch (IOException paramg)
     {
-      if ((this.pvY instanceof k)) {
+      if ((this.sBe instanceof k)) {
         h.log(6, getLogTag(), "open cache error " + paramg.toString());
       }
       for (;;)
       {
         b(paramg);
-        if (this.pwa) {
+        if (this.sBg) {
           break;
         }
-        AppMethodBeat.o(229237);
+        AppMethodBeat.o(328409);
         throw paramg;
         h.log(6, getLogTag(), "open error " + paramg.toString());
       }
     }
     try
     {
-      uS();
+      Ur();
       h.log(6, getLogTag(), "open cache error, try reopen without cache");
       l1 = System.currentTimeMillis();
-      l2 = bVx();
-      this.nHt = getTotalLength();
-      this.pvR = (System.currentTimeMillis() - l1);
-      AppMethodBeat.o(229237);
+      l2 = cvL();
+      this.qHg = getTotalLength();
+      this.sAX = (System.currentTimeMillis() - l1);
+      AppMethodBeat.o(328409);
       return l2;
     }
     catch (Exception paramg)
     {
       for (;;)
       {
-        h.a(5, getLogTag(), "open, failed on closeCurrentSource, shouldn't be a problem", paramg);
+        h.b(5, getLogTag(), "open, failed on closeCurrentSource, shouldn't be a problem", paramg);
       }
     }
   }
   
   public final long available()
   {
-    AppMethodBeat.i(229263);
-    if (this.pvY == null)
+    AppMethodBeat.i(328447);
+    if (this.sBe == null)
     {
-      AppMethodBeat.o(229263);
+      AppMethodBeat.o(328447);
       return 0L;
     }
-    long l = this.pvY.available();
-    AppMethodBeat.o(229263);
+    long l = this.sBe.available();
+    AppMethodBeat.o(328447);
     return l;
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c bVy()
-  {
-    AppMethodBeat.i(229269);
-    if (this.pvY == null)
-    {
-      localc = com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c.pwO;
-      AppMethodBeat.o(229269);
-      return localc;
-    }
-    if ((this.pvY == this.pvU) && (this.pvM != null))
-    {
-      localc = this.pvM.aiS(this.key);
-      AppMethodBeat.o(229269);
-      return localc;
-    }
-    com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c localc = this.pvY.bVy();
-    AppMethodBeat.o(229269);
-    return localc;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(229267);
+    AppMethodBeat.i(328462);
     try
     {
-      uS();
-      AppMethodBeat.o(229267);
+      Ur();
+      AppMethodBeat.o(328462);
       return;
     }
     catch (IOException localIOException)
     {
-      if (!(this.pvY instanceof k)) {
+      if (!(this.sBe instanceof k)) {
         break label70;
       }
     }
@@ -313,98 +293,118 @@ public final class c
     for (;;)
     {
       b(localIOException);
-      AppMethodBeat.o(229267);
+      AppMethodBeat.o(328462);
       throw localIOException;
       label70:
       h.log(6, getLogTag(), "close error " + localIOException.toString());
     }
   }
   
+  public final com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c cvM()
+  {
+    AppMethodBeat.i(328479);
+    if (this.sBe == null)
+    {
+      localc = com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c.sBU;
+      AppMethodBeat.o(328479);
+      return localc;
+    }
+    if ((this.sBe == this.sBa) && (this.sAS != null))
+    {
+      localc = this.sAS.abR(this.key);
+      AppMethodBeat.o(328479);
+      return localc;
+    }
+    com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c localc = this.sBe.cvM();
+    AppMethodBeat.o(328479);
+    return localc;
+  }
+  
   public final long getTotalLength()
   {
-    AppMethodBeat.i(229272);
-    if (this.pvY == null)
+    AppMethodBeat.i(328490);
+    if (this.sBe == null)
     {
-      AppMethodBeat.o(229272);
+      AppMethodBeat.o(328490);
       return -1L;
     }
-    if ((this.pvY == this.pvU) && (this.pvM != null))
+    if ((this.sBe == this.sBa) && (this.sAS != null))
     {
-      l = this.pvM.aiR(this.key);
-      AppMethodBeat.o(229272);
+      l = this.sAS.abQ(this.key);
+      AppMethodBeat.o(328490);
       return l;
     }
-    long l = this.pvY.getTotalLength();
-    AppMethodBeat.o(229272);
+    long l = this.sBe.getTotalLength();
+    AppMethodBeat.o(328490);
     return l;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(229246);
+    AppMethodBeat.i(328438);
     try
     {
-      if ((!this.pwb) && ((this.pvY instanceof k)) && (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().dal)) {
-        h.log(4, getLogTag(), "read from cache " + ((k)this.pvY).getUri() + ", fileSize=" + this.pvY.available());
+      if ((!this.sBh) && ((this.sBe instanceof k)) && (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().eYL)) {
+        h.log(4, getLogTag(), "read from cache " + ((k)this.sBe).getUri() + ", fileSize=" + this.sBe.available());
       }
       long l = System.currentTimeMillis();
-      int i = this.pvY.read(paramArrayOfByte, paramInt1, paramInt2);
+      int i = this.sBe.read(paramArrayOfByte, paramInt1, paramInt2);
       l = System.currentTimeMillis() - l;
-      if (!this.pwb)
+      if (!this.sBh)
       {
-        if ((this.pvY != this.pvU) && (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bVt().pvJ != null) && (this.priority == 90) && (URLUtil.isNetworkUrl(this.uri.toString())) && (this.pvX != null)) {
-          this.pvX.b(this.uuid, this.pvR, this.pvR, l);
+        if ((this.sBe != this.sBa) && (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.cvH().sAP != null) && (this.priority == 90) && (URLUtil.isNetworkUrl(this.uri.toString())) && (this.sBd != null)) {
+          this.sBd.c(this.uuid, this.sAX, this.sAX, l);
         }
-        this.pwb = true;
+        this.sBh = true;
       }
       if (i >= 0)
       {
-        if (this.pvY == this.pvU) {
-          this.bpQ += i;
+        if (this.sBe == this.sBa) {
+          this.dju += i;
         }
         for (;;)
         {
-          this.bpM += i;
-          if (this.bom != -1L) {
-            this.bom -= i;
+          this.djq += i;
+          if (this.die != -1L) {
+            this.die -= i;
           }
-          AppMethodBeat.o(229246);
+          AppMethodBeat.o(328438);
           return i;
-          this.pvS += i;
-          this.pvT += l;
+          this.sAY += i;
+          this.sAZ += l;
         }
         h.log(6, getLogTag(), "read cache error " + paramArrayOfByte.toString());
       }
     }
     catch (IOException paramArrayOfByte)
     {
-      if (!(this.pvY instanceof k)) {}
+      if (!(this.sBe instanceof k)) {}
     }
     for (;;)
     {
       b(paramArrayOfByte);
-      AppMethodBeat.o(229246);
+      AppMethodBeat.o(328438);
       throw paramArrayOfByte;
-      if (this.pvX != null)
+      if (this.sBd != null)
       {
         if (this.priority == 90) {
-          this.pvX.a(this.uuid, this.pvS, this.pvT, this.nHt, this.bpQ);
+          this.sBd.a(this.uuid, this.sAY, this.sAZ, this.qHg, this.dju);
         }
-        this.pvS = 0;
-        this.pvT = 0L;
-        if ((this.pvY == this.pvU) && (this.bpQ > 0L))
+        this.sAY = 0;
+        this.sAZ = 0L;
+        if ((this.sBe == this.sBa) && (this.dju > 0L))
         {
-          this.pvX.l(this.pvM.uP(), this.bpQ);
-          this.bpQ = 0L;
+          this.sBd.H(this.sAS.Uo(), this.dju);
+          this.dju = 0L;
         }
       }
-      uS();
-      if (this.bom <= 0L) {
+      Ur();
+      if (this.die <= 0L) {
         break;
       }
-      bVx();
+      cvL();
       paramInt1 = read(paramArrayOfByte, paramInt1, paramInt2);
-      AppMethodBeat.o(229246);
+      AppMethodBeat.o(328438);
       return paramInt1;
       h.log(6, getLogTag(), "read error " + paramArrayOfByte.toString());
     }
@@ -412,21 +412,21 @@ public final class c
   
   public final void setLogTag(String paramString)
   {
-    this.pvQ = paramString;
+    this.sAW = paramString;
   }
   
   public static abstract interface a
   {
+    public abstract void H(long paramLong1, long paramLong2);
+    
     public abstract void a(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3);
     
-    public abstract void b(String paramString, long paramLong1, long paramLong2, long paramLong3);
-    
-    public abstract void l(long paramLong1, long paramLong2);
+    public abstract void c(String paramString, long paramLong1, long paramLong2, long paramLong3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.a.c
  * JD-Core Version:    0.7.0.1
  */

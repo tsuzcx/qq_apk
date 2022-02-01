@@ -16,9 +16,9 @@ public class PluginGameReport
   public void execute(g paramg)
   {
     AppMethodBeat.i(108252);
-    if ((paramg.aIE()) || (paramg.MY(":tools")) || (paramg.MY(":toolsmp")))
+    if ((paramg.bbA()) || (paramg.FH(":tools")) || (paramg.FH(":toolsmp")))
     {
-      com.tencent.mm.game.report.api.a.jTp = new b();
+      com.tencent.mm.game.report.api.a.mtH = new b();
       h.b(com.tencent.mm.game.report.a.b.class, new a());
     }
     AppMethodBeat.o(108252);

@@ -8,45 +8,45 @@ public abstract class e
   implements d
 {
   protected String mUrl;
-  protected a oee;
-  protected String oef;
-  protected String oeg;
-  protected Map<String, String> oeh = new HashMap();
+  protected a rhK;
+  protected String rhL;
+  protected String rhM;
+  protected Map<String, String> rhN = new HashMap();
   
   public e(String paramString1, String paramString2)
   {
     this.mUrl = paramString1;
-    this.oeg = paramString2;
-    this.oef = bMB();
-    this.oee = a.oej;
+    this.rhM = paramString2;
+    this.rhL = cmR();
+    this.rhK = a.rhP;
   }
   
   protected final void a(a parama)
   {
-    this.oee = parama;
+    this.rhK = parama;
   }
   
-  public abstract String bMB();
+  public abstract String cmR();
   
-  protected final void bMD()
+  protected final void cmT()
   {
-    de("Content-Type", "text/xml;charset=\"utf-8\"");
-    de("Connection", "close");
+    dx("Content-Type", "text/xml;charset=\"utf-8\"");
+    dx("Connection", "close");
   }
   
-  public final a bME()
+  public final a cmU()
   {
-    return this.oee;
+    return this.rhK;
   }
   
-  public final Map<String, String> bMF()
+  public final Map<String, String> cmV()
   {
-    return this.oeh;
+    return this.rhN;
   }
   
-  public final void de(String paramString1, String paramString2)
+  public final void dx(String paramString1, String paramString2)
   {
-    this.oeh.put(paramString1, paramString2);
+    this.rhN.put(paramString1, paramString2);
   }
   
   public final String getUrl()
@@ -61,15 +61,15 @@ public abstract class e
     static
     {
       AppMethodBeat.i(158886);
-      oei = new a("GET", 0, "GET");
-      oej = new a("POST", 1, "POST");
-      oek = new a("NOTIFY", 2, "NOTIFY");
-      oel = new a("M_SEARCH", 3, "M-SEARCH");
-      oem = new a("SUBSCRIBE", 4, "SUBSCRIBE");
-      oen = new a("UNSUBSCRIBE", 5, "UNSUBSCRIBE");
-      oeo = new a("RENEW_SUBSCRIBE", 6, "SUBSCRIBE");
-      oep = new a("UNKNOWN", 7, "UNKNOWN");
-      oeq = new a[] { oei, oej, oek, oel, oem, oen, oeo, oep };
+      rhO = new a("GET", 0, "GET");
+      rhP = new a("POST", 1, "POST");
+      rhQ = new a("NOTIFY", 2, "NOTIFY");
+      rhR = new a("M_SEARCH", 3, "M-SEARCH");
+      rhS = new a("SUBSCRIBE", 4, "SUBSCRIBE");
+      rhT = new a("UNSUBSCRIBE", 5, "UNSUBSCRIBE");
+      rhU = new a("RENEW_SUBSCRIBE", 6, "SUBSCRIBE");
+      rhV = new a("UNKNOWN", 7, "UNKNOWN");
+      rhW = new a[] { rhO, rhP, rhQ, rhR, rhS, rhT, rhU, rhV };
       AppMethodBeat.o(158886);
     }
     
@@ -81,7 +81,7 @@ public abstract class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.a.e
  * JD-Core Version:    0.7.0.1
  */

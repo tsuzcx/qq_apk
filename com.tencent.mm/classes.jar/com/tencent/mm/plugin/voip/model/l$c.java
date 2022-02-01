@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.voip.model;
 
 import android.net.Proxy;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip.c.e;
+import com.tencent.mm.plugin.voip.f.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -10,10 +10,10 @@ import java.net.UnknownHostException;
 final class l$c
   implements Runnable
 {
-  int NMJ = 0;
-  int NMK = 0;
-  l.b NML;
-  int rZU;
+  int Uzx = 0;
+  int Uzy = 0;
+  l.b Uzz;
+  int vll;
   
   private l$c(l paraml) {}
   
@@ -24,13 +24,13 @@ final class l$c
     int i = Proxy.getDefaultPort();
     if ((str != null) && (str.length() > 0) && (i > 0))
     {
-      this.rZU = 1;
-      this.NMJ = i;
+      this.vll = 1;
+      this.Uzx = i;
     }
     try
     {
-      this.NMK = e.aMK(InetAddress.getByName(str).getHostAddress());
-      this.NML.aG(this.rZU, this.NMJ, this.NMK);
+      this.Uzy = g.aJE(InetAddress.getByName(str).getHostAddress());
+      this.Uzz.bi(this.vll, this.Uzx, this.Uzy);
       AppMethodBeat.o(114898);
       return;
     }
@@ -45,7 +45,7 @@ final class l$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.l.c
  * JD-Core Version:    0.7.0.1
  */

@@ -15,35 +15,35 @@ import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFra
 
 public final class a
 {
-  b BAA;
-  c BAB;
-  FaceFlashUI BzL;
+  b HhY;
+  c HhZ;
+  FaceFlashUI Hhn;
   
   a(FaceFlashUI paramFaceFlashUI)
   {
-    this.BzL = paramFaceFlashUI;
+    this.Hhn = paramFaceFlashUI;
   }
   
-  public final void TL()
+  public final void auq()
   {
-    AppMethodBeat.i(191286);
-    if ((egx()) && (this.BAB != null)) {
-      this.BAB.TL();
+    AppMethodBeat.i(264441);
+    if ((boa()) && (this.HhZ != null)) {
+      this.HhZ.auq();
     }
-    AppMethodBeat.o(191286);
+    AppMethodBeat.o(264441);
   }
   
-  public final boolean egx()
+  public final boolean boa()
   {
-    if (this.BAB == null) {
+    if (this.HhZ == null) {
       return false;
     }
-    return this.BAB.wFf;
+    return this.HhZ.nvB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.flash.a
  * JD-Core Version:    0.7.0.1
  */

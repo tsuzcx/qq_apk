@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.yu;
-import com.tencent.mm.protocal.protobuf.yv;
+import com.tencent.mm.protocal.protobuf.aar;
+import com.tencent.mm.protocal.protobuf.aas;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.r;
+import com.tencent.mm.wallet_core.model.r;
 
 public final class b
   extends r
 {
-  public yv DJA;
+  public aas JAw;
   private final String TAG;
   public String username;
   
@@ -23,17 +23,17 @@ public final class b
   {
     AppMethodBeat.i(64614);
     this.TAG = "MicroMsg.NetSceneCheckHoneyUser";
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new yu();
-    ((d.a)localObject).lBV = new yv();
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/checkhoneyuser";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (yu)d.b.b(this.rr.lBR);
-    ((yu)localObject).SkU = paramString;
-    ((yu)localObject).qJt = paramInt;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new aar();
+    ((c.a)localObject).otF = new aas();
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/checkhoneyuser";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (aar)c.b.b(this.rr.otB);
+    ((aar)localObject).Zje = paramString;
+    ((aar)localObject).tNW = paramInt;
     this.username = paramString;
     AppMethodBeat.o(64614);
   }
@@ -42,8 +42,8 @@ public final class b
   {
     AppMethodBeat.i(64615);
     Log.i("MicroMsg.NetSceneCheckHoneyUser", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.DJA = ((yv)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneCheckHoneyUser", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.DJA.tqa), this.DJA.tqb });
+    this.JAw = ((aas)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneCheckHoneyUser", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.JAw.wuz), this.JAw.wuA });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -52,11 +52,11 @@ public final class b
   
   public final void f(s params)
   {
-    AppMethodBeat.i(274212);
-    params = (yv)d.c.b(((d)params).lBS);
-    this.YVy = params.tqa;
-    this.YVz = params.tqb;
-    AppMethodBeat.o(274212);
+    AppMethodBeat.i(267307);
+    params = (aas)c.c.b(((c)params).otC);
+    this.agTs = params.wuz;
+    this.agTt = params.wuA;
+    AppMethodBeat.o(267307);
   }
   
   public final int getType()

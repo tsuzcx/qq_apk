@@ -9,16 +9,16 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b
 {
-  b jvv;
-  private final String jvw;
+  public b lYM;
+  private final String lYN;
   Context mContext;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(155865);
     this.mContext = null;
-    this.jvv = null;
-    this.jvw = "audio_lock";
+    this.lYM = null;
+    this.lYN = "audio_lock";
     Context localContext = paramContext;
     if ((paramContext instanceof Activity)) {
       localContext = MMApplicationContext.getContext();
@@ -29,48 +29,31 @@ public final class b
       public final void run()
       {
         AppMethodBeat.i(155864);
-        b.this.jvv = new c(b.this.mContext);
+        b.this.lYM = new c(b.this.mContext);
         AppMethodBeat.o(155864);
       }
     });
     AppMethodBeat.o(155865);
   }
   
-  public final void a(b.a parama)
+  public final void a(a parama)
   {
     AppMethodBeat.i(155868);
-    if (this.jvv != null) {
-      this.jvv.a(parama);
+    if (this.lYM != null) {
+      this.lYM.a(parama);
     }
     AppMethodBeat.o(155868);
   }
   
-  public final boolean avy()
-  {
-    AppMethodBeat.i(155866);
-    try
-    {
-      if (this.jvv == null) {
-        return false;
-      }
-      boolean bool = this.jvv.avy();
-      return bool;
-    }
-    finally
-    {
-      AppMethodBeat.o(155866);
-    }
-  }
-  
-  public final boolean avz()
+  public final boolean aPS()
   {
     AppMethodBeat.i(155867);
     try
     {
-      if (this.jvv == null) {
+      if (this.lYM == null) {
         return false;
       }
-      boolean bool = this.jvv.avz();
+      boolean bool = this.lYM.aPS();
       return bool;
     }
     finally
@@ -79,29 +62,42 @@ public final class b
     }
   }
   
-  public final void b(b.a parama)
+  public final boolean requestFocus()
   {
-    AppMethodBeat.i(262244);
-    if (this.jvv != null) {
-      this.jvv.b(parama);
+    AppMethodBeat.i(155866);
+    try
+    {
+      if (this.lYM == null) {
+        return false;
+      }
+      boolean bool = this.lYM.requestFocus();
+      return bool;
     }
-    AppMethodBeat.o(262244);
+    finally
+    {
+      AppMethodBeat.o(155866);
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onChange(int paramInt);
   }
   
   public static abstract interface b
   {
     public abstract void a(b.a parama);
     
-    public abstract boolean avy();
-    
-    public abstract boolean avz();
+    public abstract boolean aPS();
     
     public abstract void b(b.a parama);
+    
+    public abstract boolean requestFocus();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.util.b
  * JD-Core Version:    0.7.0.1
  */

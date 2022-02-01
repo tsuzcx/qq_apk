@@ -6,17 +6,17 @@ import com.tencent.mm.pointers.PByteArray;
 
 public class MediaRecorder
 {
-  public static long mjJ;
-  public static long mjK;
-  public static final int[] mjL;
+  public static long pdg;
+  public static long pdh;
+  public static final int[] pdi;
   
   static
   {
     AppMethodBeat.i(177009);
     g.b.init();
-    mjJ = 0L;
-    mjK = 0L;
-    mjL = new int[] { 13, 14, 16, 18, 20, 21, 27, 32 };
+    pdg = 0L;
+    pdh = 0L;
+    pdi = new int[] { 13, 14, 16, 18, 20, 21, 27, 32 };
     AppMethodBeat.o(177009);
   }
   
@@ -48,7 +48,7 @@ public class MediaRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.modelvoice.MediaRecorder
  * JD-Core Version:    0.7.0.1
  */

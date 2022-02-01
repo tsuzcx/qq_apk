@@ -1,17 +1,23 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.view.View;
-import kotlin.l;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/exdevice/ui/SportProfileUIC$OtherBtnViewHolder;", "", "(Lcom/tencent/mm/plugin/exdevice/ui/SportProfileUIC;)V", "donateBtn", "Landroid/view/View;", "getDonateBtn", "()Landroid/view/View;", "setDonateBtn", "(Landroid/view/View;)V", "followBtn", "getFollowBtn", "setFollowBtn", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/exdevice/ui/SportProfileUIC$AddFollowBtnViewHolder;", "", "(Lcom/tencent/mm/plugin/exdevice/ui/SportProfileUIC;)V", "addFollowTv", "Landroid/widget/TextView;", "getAddFollowTv", "()Landroid/widget/TextView;", "setAddFollowTv", "(Landroid/widget/TextView;)V", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$a
 {
-  View vsC;
-  View vsD;
+  TextView yEL;
+  
+  public e$a()
+  {
+    AppMethodBeat.i(274689);
+    AppMethodBeat.o(274689);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.e.a
  * JD-Core Version:    0.7.0.1
  */

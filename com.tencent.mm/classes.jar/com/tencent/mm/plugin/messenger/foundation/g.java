@@ -8,30 +8,30 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class g
   implements r
 {
-  private ConcurrentHashMap<Integer, z> cDe;
+  private ConcurrentHashMap<Integer, z> evG;
   
   public g()
   {
-    AppMethodBeat.i(188760);
-    this.cDe = new ConcurrentHashMap();
-    AppMethodBeat.o(188760);
-  }
-  
-  public final z Wy(int paramInt)
-  {
-    AppMethodBeat.i(188763);
-    z localz = (z)this.cDe.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(188763);
-    return localz;
+    AppMethodBeat.i(288627);
+    this.evG = new ConcurrentHashMap();
+    AppMethodBeat.o(288627);
   }
   
   public final void a(z paramz)
   {
-    AppMethodBeat.i(188762);
-    if (!this.cDe.containsKey(Integer.valueOf(19))) {
-      this.cDe.put(Integer.valueOf(19), paramz);
+    AppMethodBeat.i(288631);
+    if (!this.evG.containsKey(Integer.valueOf(19))) {
+      this.evG.put(Integer.valueOf(19), paramz);
     }
-    AppMethodBeat.o(188762);
+    AppMethodBeat.o(288631);
+  }
+  
+  public final z aaA(int paramInt)
+  {
+    AppMethodBeat.i(288634);
+    z localz = (z)this.evG.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(288634);
+    return localz;
   }
 }
 

@@ -1,29 +1,41 @@
 package com.tencent.mm.plugin.appbrand.jsapi.v;
 
-import com.tencent.luggage.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import kotlin.Metadata;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerHelper;", "Lcom/tencent/luggage/base/ICustomize;", "defaultReferrerPolicy", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "getDefaultReferrerPolicy", "()Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "parseReferrerPolicy", "referrerPolicyStr", "", "parseReferrerPolicyFallback", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "parseReferrerPolicyOrFallback", "data", "Lorg/json/JSONObject;", "parseReferrerPolicyStr", "provideReferrer", "luggage-commons_release"})
-public abstract interface a
-  extends b
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/picker/BasePickerJsapi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentView;", "()V", "isEnableNewPicker", "", "()Z", "setEnableNewPicker", "(Z)V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-default-impl_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class a
+  extends c<h>
 {
-  public abstract c A(e parame);
+  public static final a spM;
+  private boolean spN = true;
   
-  public abstract String B(e parame);
+  static
+  {
+    AppMethodBeat.i(138163);
+    spM = new a((byte)0);
+    AppMethodBeat.o(138163);
+  }
   
-  public abstract c a(JSONObject paramJSONObject, e parame);
+  public void b(h paramh, JSONObject paramJSONObject, int paramInt) {}
   
-  public abstract c aix(String paramString);
+  public final boolean cui()
+  {
+    AppMethodBeat.i(138162);
+    boolean bool = this.spN;
+    AppMethodBeat.o(138162);
+    return bool;
+  }
   
-  public abstract String aj(JSONObject paramJSONObject);
-  
-  public abstract c bUd();
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/picker/BasePickerJsapi$Companion;", "", "()V", "TAG", "", "luggage-commons-jsapi-default-impl_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.v.a
  * JD-Core Version:    0.7.0.1
  */

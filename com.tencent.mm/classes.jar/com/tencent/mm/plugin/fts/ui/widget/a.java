@@ -1,201 +1,200 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.ui.o.a;
-import com.tencent.mm.plugin.fts.ui.o.c;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.fts.ui.p.e;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputDialog;", "Lcom/tencent/mm/ui/dialog/HalfScreenDialog;", "context", "Landroid/content/Context;", "proxy", "Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputProxy;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputProxy;)V", "closeBtn", "Landroid/view/View;", "getCloseBtn", "()Landroid/view/View;", "closeBtn$delegate", "Lkotlin/Lazy;", "loadingIv", "Landroid/widget/ProgressBar;", "getLoadingIv", "()Landroid/widget/ProgressBar;", "loadingIv$delegate", "getProxy", "()Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputProxy;", "sayTv", "Landroid/widget/TextView;", "getSayTv", "()Landroid/widget/TextView;", "sayTv$delegate", "voiceHelper", "Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputHelper;", "getVoiceHelper", "()Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputHelper;", "voiceHelper$delegate", "voicePanel", "Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputLayoutImpl;", "getVoicePanel", "()Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputLayoutImpl;", "voicePanel$delegate", "getEmptyViewHeight", "", "inflateContentView", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "ui-fts_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends Drawable
+  extends com.tencent.mm.ui.f.a
 {
-  private Drawable BRl;
-  private Drawable BRm;
-  private int BRn;
-  private int BRo;
-  private int BRp;
-  private int BRq;
-  private int BRr;
-  private int BRs;
-  private int BRt;
-  boolean BRu;
-  private int BRv;
-  int BRw;
-  private int BRx;
-  private Context context;
-  int currentState;
-  private Paint paint;
+  private final j FSd;
+  final j HCP;
+  final j HCQ;
+  final j HCR;
+  private final j HCS;
+  final d Hzw;
   
-  public a(Context paramContext)
+  public a(final Context paramContext, d paramd)
   {
-    AppMethodBeat.i(112284);
-    this.BRn = 0;
-    this.BRo = 0;
-    this.paint = new Paint(1);
-    this.BRt = 0;
-    this.BRu = false;
-    this.currentState = 2;
-    this.BRw = 0;
-    this.BRx = 0;
-    this.context = paramContext;
-    this.BRn = com.tencent.mm.ci.a.w(paramContext, o.a.wechat_green);
-    this.BRo = com.tencent.mm.ci.a.w(paramContext, o.a.white);
-    this.BRl = paramContext.getResources().getDrawable(o.c.fts_microphone_normal);
-    this.BRm = paramContext.getResources().getDrawable(o.c.fts_microphone_press);
-    this.BRt = com.tencent.mm.ci.a.fromDPToPix(paramContext, 24);
-    this.BRp = com.tencent.mm.ci.a.w(paramContext, o.a.voice_input_btn_outer_color);
-    this.BRs = com.tencent.mm.ci.a.w(paramContext, o.a.voice_input_btn_pressed_mask);
-    this.BRv = com.tencent.mm.ci.a.fromDPToPix(paramContext, 47);
-    this.BRq = com.tencent.mm.ci.a.fromDPToPix(paramContext, 47);
-    this.BRr = com.tencent.mm.ci.a.fromDPToPix(paramContext, 60);
-    this.BRx = 4;
-    Log.d("MicroMsg.FTSVoiceInputDrawable", "waveStep %s", new Object[] { Integer.valueOf(this.BRx) });
-    AppMethodBeat.o(112284);
+    super(paramContext);
+    AppMethodBeat.i(265873);
+    this.Hzw = paramd;
+    this.HCP = k.cm((kotlin.g.a.a)new f(this, paramContext));
+    this.HCQ = k.cm((kotlin.g.a.a)new d(this));
+    this.HCR = k.cm((kotlin.g.a.a)new b(this));
+    this.HCS = k.cm((kotlin.g.a.a)new e(paramContext, this));
+    this.FSd = k.cm((kotlin.g.a.a)new a(this));
+    AppMethodBeat.o(265873);
   }
   
-  public static boolean SK(int paramInt)
+  private static final void a(a parama, DialogInterface paramDialogInterface)
   {
-    return paramInt < 10;
+    AppMethodBeat.i(265888);
+    s.u(parama, "this$0");
+    parama.fzi().release();
+    AppMethodBeat.o(265888);
   }
   
-  private void d(Canvas paramCanvas, boolean paramBoolean)
+  private static final void a(a parama, View paramView)
   {
-    AppMethodBeat.i(112287);
-    if ((this.BRl == null) || (u(paramCanvas)))
+    AppMethodBeat.i(265885);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    parama.dismiss();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(265885);
+  }
+  
+  private c fzi()
+  {
+    AppMethodBeat.i(265879);
+    c localc = (c)this.HCS.getValue();
+    AppMethodBeat.o(265879);
+    return localc;
+  }
+  
+  public final View bZy()
+  {
+    AppMethodBeat.i(265903);
+    View localView = LayoutInflater.from(getContext()).inflate(p.e.fts_voice_input_dialog, null);
+    s.s(localView, "from(context).inflate(R.…voice_input_dialog, null)");
+    AppMethodBeat.o(265903);
+    return localView;
+  }
+  
+  public final int fcr()
+  {
+    AppMethodBeat.i(265905);
+    int i = com.tencent.mm.cd.a.mt(getContext());
+    int j = com.tencent.mm.cd.a.fromDPToPix(getContext(), 320);
+    AppMethodBeat.o(265905);
+    return i - j;
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(265901);
+    super.onCreate(paramBundle);
+    fzi().HDg = ((c.a)new c(this));
+    paramBundle = (View)this.FSd.getValue();
+    if (paramBundle != null) {
+      paramBundle.setOnClickListener(new a..ExternalSyntheticLambda1(this));
+    }
+    setOnDismissListener(new a..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(265901);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<View>
+  {
+    a(a parama)
     {
-      AppMethodBeat.o(112287);
-      return;
-    }
-    Drawable localDrawable;
-    if (paramBoolean) {
-      localDrawable = this.BRm;
-    }
-    for (int i = this.BRn;; i = this.BRo)
-    {
-      int j = paramCanvas.getWidth() / 2;
-      int k = paramCanvas.getHeight() / 2;
-      int m = localDrawable.getIntrinsicWidth() / 2;
-      int n = localDrawable.getIntrinsicHeight() / 2;
-      this.paint.setShader(null);
-      this.paint.setStyle(Paint.Style.FILL);
-      this.paint.setColor(i);
-      paramCanvas.drawCircle(j, k, this.BRt, this.paint);
-      localDrawable.setBounds(j - m, k - n, j + m, k + n);
-      localDrawable.draw(paramCanvas);
-      AppMethodBeat.o(112287);
-      return;
-      localDrawable = this.BRl;
+      super();
     }
   }
   
-  private static boolean u(Canvas paramCanvas)
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ProgressBar;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<ProgressBar>
   {
-    AppMethodBeat.i(112289);
-    if ((paramCanvas == null) || (paramCanvas.getWidth() == 0) || (paramCanvas.getHeight() == 0))
+    b(a parama)
     {
-      AppMethodBeat.o(112289);
-      return true;
-    }
-    AppMethodBeat.o(112289);
-    return false;
-  }
-  
-  public final void draw(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(112286);
-    int i;
-    int j;
-    if (((this.currentState == 6) || (this.currentState == 7)) && (!u(paramCanvas)))
-    {
-      i = paramCanvas.getWidth() >> 1;
-      j = paramCanvas.getHeight() >> 1;
-      this.paint.setShader(null);
-      this.paint.setStyle(Paint.Style.FILL);
-      this.paint.setColor(this.BRp);
-      if (this.currentState != 7) {
-        break label261;
-      }
-      if (this.BRu)
-      {
-        this.BRv -= this.BRx;
-        this.BRv = Math.min(Math.max(this.BRq, this.BRv), this.BRr);
-        paramCanvas.drawCircle(i, j, this.BRv, this.paint);
-      }
-    }
-    else
-    {
-      label142:
-      if ((this.currentState != 6) && (this.currentState != 7)) {
-        break label281;
-      }
-      d(paramCanvas, true);
-    }
-    for (;;)
-    {
-      if (((this.currentState == 6) || (this.currentState == 7)) && (!u(paramCanvas)))
-      {
-        this.paint.setStyle(Paint.Style.FILL);
-        this.paint.setColor(this.BRs);
-        paramCanvas.drawCircle(paramCanvas.getWidth() >> 1, paramCanvas.getHeight() >> 1, this.BRt, this.paint);
-      }
-      AppMethodBeat.o(112286);
-      return;
-      this.BRv += this.BRx;
-      break;
-      label261:
-      paramCanvas.drawCircle(i, j, this.BRq, this.paint);
-      break label142;
-      label281:
-      d(paramCanvas, false);
+      super();
     }
   }
   
-  public final void esk()
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputDialog$onCreate$1", "Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputHelper$StateListener;", "onDetectBegin", "", "onDetectError", "speakShort", "", "netError", "lastContent", "", "onDetectFinish", "voiceId", "content", "onDetectTextChange", "ui-fts_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements c.a
   {
-    AppMethodBeat.i(112285);
-    Log.d("MicroMsg.FTSVoiceInputDrawable", "readyState %s", new Object[] { Integer.valueOf(this.currentState) });
-    this.currentState = 2;
-    this.BRw = 0;
-    invalidateSelf();
-    AppMethodBeat.o(112285);
-  }
-  
-  public final int getIntrinsicHeight()
-  {
-    return this.BRt * 2;
-  }
-  
-  public final int getIntrinsicWidth()
-  {
-    AppMethodBeat.i(112288);
-    if (this.context == null)
+    c(a parama) {}
+    
+    public final void aEH(String paramString)
     {
-      AppMethodBeat.o(112288);
-      return 0;
+      AppMethodBeat.i(265924);
+      this.HCT.Hzw.aEH(paramString);
+      AppMethodBeat.o(265924);
     }
-    int i = com.tencent.mm.ci.a.kr(this.context);
-    AppMethodBeat.o(112288);
-    return i;
+    
+    public final void c(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+    {
+      AppMethodBeat.i(265912);
+      this.HCT.Hzw.c(paramBoolean1, paramBoolean2, paramString);
+      AppMethodBeat.o(265912);
+    }
+    
+    public final void fyx()
+    {
+      AppMethodBeat.i(265920);
+      this.HCT.Hzw.fyx();
+      AppMethodBeat.o(265920);
+    }
+    
+    public final void iE(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(265916);
+      this.HCT.Hzw.iE(paramString1, paramString2);
+      this.HCT.dismiss();
+      AppMethodBeat.o(265916);
+    }
   }
   
-  public final int getOpacity()
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<TextView>
   {
-    return -3;
+    d(a parama)
+    {
+      super();
+    }
   }
   
-  public final void setAlpha(int paramInt) {}
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputHelper;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<c>
+  {
+    e(Context paramContext, a parama)
+    {
+      super();
+    }
+  }
   
-  public final void setColorFilter(ColorFilter paramColorFilter) {}
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/fts/ui/widget/FTSVoiceInputLayoutImpl;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends u
+    implements kotlin.g.a.a<FTSVoiceInputLayoutImpl>
+  {
+    f(a parama, Context paramContext)
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.a
  * JD-Core Version:    0.7.0.1
  */

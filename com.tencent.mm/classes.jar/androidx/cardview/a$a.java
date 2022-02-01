@@ -2,7 +2,7 @@ package androidx.cardview;
 
 public final class a$a
 {
-  public static final int cardViewStyle = 2130968747;
+  public static final int cardViewStyle = 2130968754;
 }
 
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.sns.ad.widget.living.LivingStatusLayout android:layout_width="@dimen/da" android:layout_height="@dimen/cr"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/i6" android:layout_width="fill_parent" android:layout_height="fill_parent" app:desc_color="@color/az" app:desc_margin_left="2.0dip" app:desc_text="@string/e71" app:desc_text_size="11.0dip" app:logo_color="@color/az" app:logo_height="@dimen/cd" app:logo_margin_left="6.0dip" app:logo_mode="hmb" app:logo_style="f3g" app:logo_width="@dimen/cd" />
+    <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatTextView android:textSize="11.0dip" android:textColor="@color/az" android:gravity="center" android:id="@id/i7" android:background="@drawable/bi" android:layout_width="fill_parent" android:layout_height="fill_parent" app:autoSizeMaxTextSize="11.0dip" app:autoSizeMinTextSize="5.0dip" app:autoSizeTextType="l08" />
+</com.tencent.mm.plugin.sns.ad.widget.living.LivingStatusLayout>

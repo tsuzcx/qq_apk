@@ -1,47 +1,24 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.ab;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-final class s
+public final class s
+  extends ab
 {
-  public String appId;
-  public int lZJ;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
-  public s(String paramString, int paramInt)
+  static
   {
-    this.appId = paramString;
-    this.lZJ = paramInt;
+    AppMethodBeat.i(31043);
+    info = ab.aJm();
+    AppMethodBeat.o(31043);
   }
   
-  public final boolean equals(Object paramObject)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(151791);
-    if (paramObject == null)
-    {
-      AppMethodBeat.o(151791);
-      return false;
-    }
-    if (!(paramObject instanceof s))
-    {
-      AppMethodBeat.o(151791);
-      return false;
-    }
-    paramObject = (s)paramObject;
-    if ((paramObject.appId.equals(this.appId)) && (paramObject.lZJ == this.lZJ))
-    {
-      AppMethodBeat.o(151791);
-      return true;
-    }
-    AppMethodBeat.o(151791);
-    return false;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(151792);
-    String str = this.appId + this.lZJ;
-    AppMethodBeat.o(151792);
-    return str;
+    return info;
   }
 }
 

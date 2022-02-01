@@ -3,11 +3,10 @@ package com.tencent.mm.plugin.appbrand.jsapi.share;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.l;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.config.n;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.plugin.appbrand.t;
-import com.tencent.mm.plugin.gallery.model.n;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.gallery.model.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.wework.api.IWWAPI;
 import com.tencent.wework.api.IWWAPI.WWAppType;
@@ -21,30 +20,30 @@ final class JsApiShareAppMessageBase$1
   
   public final void run()
   {
-    AppMethodBeat.i(282498);
-    JsApiShareAppMessageBase localJsApiShareAppMessageBase = this.ppj;
-    c localc = this.nAX;
-    int j = this.cuf;
-    Object localObject2 = this.ppi;
+    AppMethodBeat.i(326425);
+    JsApiShareAppMessageBase localJsApiShareAppMessageBase = this.stX;
+    c localc = this.qAj;
+    int j = this.elZ;
+    Object localObject2 = this.stW;
     Log.i("MicroMsg.JsApiShareAppMessageBase", "sendToWework");
-    Object localObject1 = localc.getRuntime().bDx();
+    Object localObject1 = localc.getRuntime().ccM();
     WWMediaMiniProgram localWWMediaMiniProgram = new WWMediaMiniProgram();
     localWWMediaMiniProgram.username = ((JsApiShareAppMessageBase.d)localObject2).userName;
-    localWWMediaMiniProgram.path = ((JsApiShareAppMessageBase.d)localObject2).fve;
+    localWWMediaMiniProgram.path = ((JsApiShareAppMessageBase.d)localObject2).hzy;
     localWWMediaMiniProgram.title = ((JsApiShareAppMessageBase.d)localObject2).title;
     if (TextUtils.isEmpty(localWWMediaMiniProgram.title)) {
-      localWWMediaMiniProgram.title = ((l)localObject1).fzM;
+      localWWMediaMiniProgram.title = ((n)localObject1).hEy;
     }
-    localWWMediaMiniProgram.ZYx = ((JsApiShareAppMessageBase.d)localObject2).fES;
+    localWWMediaMiniProgram.miniProgramType = ((JsApiShareAppMessageBase.d)localObject2).hJK;
     localWWMediaMiniProgram.type = 0;
     if (localObject1 != null)
     {
-      localWWMediaMiniProgram.name = ((l)localObject1).fzM;
-      localWWMediaMiniProgram.iconUrl = ((l)localObject1).mnM;
+      localWWMediaMiniProgram.name = ((n)localObject1).hEy;
+      localWWMediaMiniProgram.iconUrl = ((n)localObject1).phA;
     }
-    Log.i("MicroMsg.JsApiShareAppMessageBase", "username:%s, path:%s, title:%s, name:%s, iconUrl:%s, miniProgramType:%d, imgPath:%s", new Object[] { localWWMediaMiniProgram.username, localWWMediaMiniProgram.path, localWWMediaMiniProgram.title, localWWMediaMiniProgram.name, localWWMediaMiniProgram.iconUrl, Integer.valueOf(localWWMediaMiniProgram.ZYx), ((JsApiShareAppMessageBase.d)localObject2).fKH });
-    if (!TextUtils.isEmpty(((JsApiShareAppMessageBase.d)localObject2).fKH)) {
-      localObject1 = ((JsApiShareAppMessageBase.d)localObject2).fKH;
+    Log.i("MicroMsg.JsApiShareAppMessageBase", "username:%s, path:%s, title:%s, name:%s, iconUrl:%s, miniProgramType:%d, imgPath:%s", new Object[] { localWWMediaMiniProgram.username, localWWMediaMiniProgram.path, localWWMediaMiniProgram.title, localWWMediaMiniProgram.name, localWWMediaMiniProgram.iconUrl, Integer.valueOf(localWWMediaMiniProgram.miniProgramType), ((JsApiShareAppMessageBase.d)localObject2).hQn });
+    if (!TextUtils.isEmpty(((JsApiShareAppMessageBase.d)localObject2).hQn)) {
+      localObject1 = ((JsApiShareAppMessageBase.d)localObject2).hQn;
     }
     for (;;)
     {
@@ -52,11 +51,11 @@ final class JsApiShareAppMessageBase$1
       int i;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject1 = z.aiD((String)localObject1);
-        localObject2 = (com.tencent.mm.plugin.appbrand.f.a)localc.K(com.tencent.mm.plugin.appbrand.f.a.class);
-        if (com.tencent.mm.pluginsdk.k.a.d.a.agG((String)localObject1))
+        localObject1 = x.abD((String)localObject1);
+        localObject2 = (com.tencent.mm.plugin.appbrand.f.a)localc.T(com.tencent.mm.plugin.appbrand.f.a.class);
+        if (com.tencent.mm.pluginsdk.res.downloader.b.a.ZC((String)localObject1))
         {
-          localObject1 = n.aIt((String)localObject1);
+          localObject1 = p.aER((String)localObject1);
           if (localObject1 != null) {
             JsApiShareAppMessageBase.a((Bitmap)localObject1, localWWMediaMiniProgram);
           }
@@ -67,9 +66,9 @@ final class JsApiShareAppMessageBase$1
       }
       try
       {
-        WWAPIFactory.mw(localc.getContext()).a(localWWMediaMiniProgram, IWWAPI.WWAppType.ZYb);
-        localc.j(j, localJsApiShareAppMessageBase.h("ok", null));
-        AppMethodBeat.o(282498);
+        WWAPIFactory.oM(localc.getContext()).a(localWWMediaMiniProgram, IWWAPI.WWAppType.aicA);
+        localc.callback(j, localJsApiShareAppMessageBase.ZP("ok"));
+        AppMethodBeat.o(326425);
         return;
         localObject1 = ((JsApiShareAppMessageBase.d)localObject2).imageUrl;
         continue;
@@ -88,12 +87,12 @@ final class JsApiShareAppMessageBase$1
           i = 0;
           break label297;
         }
-        localWWMediaMiniProgram.ZYw = new byte[1];
+        localWWMediaMiniProgram.aida = new byte[1];
         Log.e("MicroMsg.JsApiShareAppMessageBase", "loader is null");
         i = 1;
         break label297;
         Log.e("MicroMsg.JsApiShareAppMessageBase", "imgPath is empty");
-        localWWMediaMiniProgram.ZYw = new byte[1];
+        localWWMediaMiniProgram.aida = new byte[1];
         i = 1;
       }
       catch (Exception localException)

@@ -1,6 +1,5 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -11,21 +10,20 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.by.c;
-import com.tencent.mm.f.a.ac;
-import com.tencent.mm.f.a.ae;
-import com.tencent.mm.f.a.mr;
+import com.tencent.mm.autogen.a.af;
+import com.tencent.mm.autogen.a.ah;
+import com.tencent.mm.autogen.a.ny;
+import com.tencent.mm.br.c;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.platformtools.t;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.ui.base.k;
 import java.util.Map;
 
 @com.tencent.mm.ui.base.a(3)
@@ -36,16 +34,16 @@ public class AccountExpiredUI
   private String errMsg;
   private int errType;
   
-  private static void i(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  private static void j(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(271725);
-    com.tencent.mm.f.b.a.a locala = new com.tencent.mm.f.b.a.a();
-    locala.gcR = paramInt2;
-    locala.gcQ = paramInt1;
-    locala.io(paramString1);
-    locala.ip(paramString2);
-    locala.bpa();
-    AppMethodBeat.o(271725);
+    AppMethodBeat.i(249609);
+    com.tencent.mm.autogen.mmdata.rpt.a locala = new com.tencent.mm.autogen.mmdata.rpt.a();
+    locala.ijh = paramInt2;
+    locala.ijg = paramInt1;
+    locala.jP(paramString1);
+    locala.jQ(paramString2);
+    locala.bMH();
+    AppMethodBeat.o(249609);
   }
   
   protected int getLayoutId()
@@ -71,76 +69,74 @@ public class AccountExpiredUI
       try
       {
         Log.i("MicroMsg.AccountExpiredUI", "errType = " + this.errType + " errCode = " + this.errCode + " errMsg = " + this.errMsg);
-        if (!com.tencent.mm.plugin.account.ui.a.ei(4, this.errCode)) {
-          break label935;
+        if (!com.tencent.mm.plugin.account.ui.a.fc(4, this.errCode)) {
+          break label922;
         }
         localIntent = new Intent();
         localIntent.setClass(this, LauncherUI.class).putExtra("Intro_Switch", true).addFlags(67108864);
-        String str = bh.aGs();
+        String str = bh.aZu();
         Log.e("MicroMsg.AccountExpiredUI", "account expired=" + this.errCode + " lastKickReason=" + str);
-        localObject2 = new ac();
-        EventCenter.instance.publish((IEvent)localObject2);
-        com.tencent.mm.kernel.b.aGF();
-        localObject2 = new mr();
-        ((mr)localObject2).fKQ.status = 0;
-        ((mr)localObject2).fKQ.bnA = 1;
-        EventCenter.instance.publish((IEvent)localObject2);
+        new af().publish();
+        com.tencent.mm.kernel.b.aZH();
+        localObject2 = new ny();
+        ((ny)localObject2).hQx.status = 0;
+        ((ny)localObject2).hQx.reason = 1;
+        ((ny)localObject2).publish();
         MMApplicationContext.getContext().getSharedPreferences("switch_account_preferences", 0).edit().putBoolean("last_logout_switch_account", false).commit();
         switch (this.errCode)
         {
         case -2023: 
           if (Util.isNullOrNil(str)) {
-            break label914;
+            break label901;
           }
           if ((str != null) && (str.length() > 1024)) {
             str.substring(0, 1024);
           }
-          i(this.errType, this.errCode, this.errMsg, str);
-          localObject2 = com.tencent.mm.h.a.Kb(str);
+          j(this.errType, this.errCode, this.errMsg, str);
+          localObject2 = com.tencent.mm.broadcast.a.CH(str);
           if (localObject2 == null) {
-            break label750;
+            break label737;
           }
-          Log.i("MicroMsg.AccountExpiredUI", "account expired br showType[%d]", new Object[] { Integer.valueOf(((com.tencent.mm.h.a)localObject2).fwp) });
-          if ((((com.tencent.mm.h.a)localObject2).fwp != 3) && (((com.tencent.mm.h.a)localObject2).fwp != 4)) {
-            break label629;
+          Log.i("MicroMsg.AccountExpiredUI", "account expired br showType[%d]", new Object[] { Integer.valueOf(((com.tencent.mm.broadcast.a)localObject2).hAN) });
+          if ((((com.tencent.mm.broadcast.a)localObject2).hAN != 3) && (((com.tencent.mm.broadcast.a)localObject2).hAN != 4)) {
+            break label621;
           }
-          ((com.tencent.mm.h.a)localObject2).a(this, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          ((com.tencent.mm.broadcast.a)localObject2).a(this, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(32892);
               Object localObject;
-              if (!Util.isNullOrNil(this.mEP.url))
+              if (!Util.isNullOrNil(this.pBr.url))
               {
                 paramAnonymousDialogInterface = new Intent();
-                localObject = new StringBuilder(this.mEP.url);
+                localObject = new StringBuilder(this.pBr.url);
                 ((StringBuilder)localObject).append("&wechat_real_lang=" + LocaleUtil.getApplicationLanguage());
                 paramAnonymousDialogInterface.putExtra("rawUrl", ((StringBuilder)localObject).toString());
                 paramAnonymousDialogInterface.putExtra("showShare", false);
                 paramAnonymousDialogInterface.putExtra("show_bottom", false);
                 paramAnonymousDialogInterface.putExtra("needRedirect", false);
                 paramAnonymousDialogInterface.putExtra("neverGetA8Key", true);
-                paramAnonymousDialogInterface.putExtra("hardcode_jspermission", JsapiPermissionWrapper.RBc);
-                paramAnonymousDialogInterface.putExtra("hardcode_general_ctrl", GeneralControlWrapper.RAX);
+                paramAnonymousDialogInterface.putExtra("hardcode_jspermission", JsapiPermissionWrapper.YxF);
+                paramAnonymousDialogInterface.putExtra("hardcode_general_ctrl", GeneralControlWrapper.YxA);
                 c.b(AccountExpiredUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousDialogInterface);
-                com.tencent.mm.ui.base.b.kZ(AccountExpiredUI.this);
+                com.tencent.mm.ui.base.b.nd(AccountExpiredUI.this);
               }
               for (;;)
               {
                 AccountExpiredUI.this.finish();
-                t.dp(AccountExpiredUI.this);
-                paramAnonymousDialogInterface = new ae();
-                paramAnonymousDialogInterface.fvH.fvI = true;
-                EventCenter.instance.publish(paramAnonymousDialogInterface);
+                paramAnonymousDialogInterface = new ah();
+                paramAnonymousDialogInterface.hAc.hAd = true;
+                paramAnonymousDialogInterface.publish();
                 AppMethodBeat.o(32892);
                 return;
                 paramAnonymousDialogInterface = AccountExpiredUI.this;
                 localObject = localIntent;
-                localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-                com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/AccountExpiredUI$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+                localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+                com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/AccountExpiredUI$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
                 com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousDialogInterface, "com/tencent/mm/ui/AccountExpiredUI$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                com.tencent.mm.ui.base.b.kZ(AccountExpiredUI.this);
+                com.tencent.mm.ui.base.b.nd(AccountExpiredUI.this);
               }
             }
           }, new DialogInterface.OnClickListener()
@@ -150,12 +146,11 @@ public class AccountExpiredUI
               AppMethodBeat.i(32893);
               paramAnonymousDialogInterface = AccountExpiredUI.this;
               Object localObject = localIntent;
-              localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-              com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/AccountExpiredUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+              localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+              com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/AccountExpiredUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
               com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousDialogInterface, "com/tencent/mm/ui/AccountExpiredUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              t.dp(AccountExpiredUI.this);
-              com.tencent.mm.ui.base.b.kZ(AccountExpiredUI.this);
+              com.tencent.mm.ui.base.b.nd(AccountExpiredUI.this);
               AccountExpiredUI.this.finish();
               AppMethodBeat.o(32893);
             }
@@ -170,34 +165,33 @@ public class AccountExpiredUI
         AppMethodBeat.o(32898);
         return;
       }
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1582L, 0L, 1L, false);
+      h.OAn.idkeyStat(1582L, 0L, 1L, false);
       continue;
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1582L, 1L, 1L, false);
+      h.OAn.idkeyStat(1582L, 1L, 1L, false);
       continue;
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1582L, 2L, 1L, false);
+      h.OAn.idkeyStat(1582L, 2L, 1L, false);
       continue;
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1582L, 3L, 1L, false);
+      h.OAn.idkeyStat(1582L, 3L, 1L, false);
       continue;
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1582L, 4L, 1L, false);
+      h.OAn.idkeyStat(1582L, 4L, 1L, false);
       continue;
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1582L, 5L, 1L, false);
+      h.OAn.idkeyStat(1582L, 5L, 1L, false);
       continue;
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1582L, 6L, 1L, false);
+      h.OAn.idkeyStat(1582L, 6L, 1L, false);
     }
-    label629:
+    label621:
     localIntent.putExtra("key_errType", this.errType);
     localIntent.putExtra("key_errCode", this.errCode);
     localIntent.putExtra("key_errMsg", localException);
-    Object localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/ui/AccountExpiredUI", "handleExpired", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+    Object localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/ui/AccountExpiredUI", "handleExpired", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/AccountExpiredUI", "handleExpired", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    t.dp(this);
-    com.tencent.mm.ui.base.b.kZ(this);
+    com.tencent.mm.ui.base.b.nd(this);
     finish();
     AppMethodBeat.o(32898);
     return;
-    label750:
+    label737:
     if (((String)localObject1).startsWith("<"))
     {
       localObject2 = XmlParser.parseXml((String)localObject1, "e", null);
@@ -207,9 +201,9 @@ public class AccountExpiredUI
         Log.i("MicroMsg.AccountExpiredUI", "account expired summerauthkick errmsg=" + (String)localObject1 + " |v=" + localObject2);
       }
     }
-    label914:
-    label935:
-    label956:
+    label901:
+    label922:
+    label943:
     for (;;)
     {
       Log.i("MicroMsg.AccountExpiredUI", "account expired lastKickReason[%s]", new Object[] { localObject1 });
@@ -217,47 +211,45 @@ public class AccountExpiredUI
       if (Util.isNullOrNil((String)localObject1)) {
         localObject2 = getString(R.l.main_err_another_place);
       }
-      com.tencent.mm.ui.base.h.a(this, (String)localObject2, getString(R.l.app_tip), new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
+      k.a(this, (String)localObject2, getString(R.l.app_tip), new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(224420);
+          AppMethodBeat.i(249772);
           paramAnonymousDialogInterface = AccountExpiredUI.this;
           Object localObject = localIntent;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/AccountExpiredUI$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/AccountExpiredUI$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousDialogInterface, "com/tencent/mm/ui/AccountExpiredUI$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          t.dp(AccountExpiredUI.this);
-          com.tencent.mm.ui.base.b.kZ(AccountExpiredUI.this);
+          com.tencent.mm.ui.base.b.nd(AccountExpiredUI.this);
           AccountExpiredUI.this.finish();
-          paramAnonymousDialogInterface = new ae();
-          paramAnonymousDialogInterface.fvH.fvI = true;
-          EventCenter.instance.publish(paramAnonymousDialogInterface);
-          AppMethodBeat.o(224420);
+          paramAnonymousDialogInterface = new ah();
+          paramAnonymousDialogInterface.hAc.hAd = true;
+          paramAnonymousDialogInterface.publish();
+          AppMethodBeat.o(249772);
         }
       }, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(288650);
+          AppMethodBeat.i(249775);
           paramAnonymousDialogInterface = AccountExpiredUI.this;
           Object localObject = localIntent;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/AccountExpiredUI$4", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/AccountExpiredUI$4", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousDialogInterface, "com/tencent/mm/ui/AccountExpiredUI$4", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          t.dp(AccountExpiredUI.this);
-          com.tencent.mm.ui.base.b.kZ(AccountExpiredUI.this);
+          com.tencent.mm.ui.base.b.nd(AccountExpiredUI.this);
           AccountExpiredUI.this.finish();
-          AppMethodBeat.o(288650);
+          AppMethodBeat.o(249775);
         }
       });
       Log.i("MicroMsg.AccountExpiredUI", "show kickout dialog by old logic.");
       AppMethodBeat.o(32898);
       return;
-      i(this.errType, this.errCode, this.errMsg, "empty!");
-      break label956;
+      j(this.errType, this.errCode, this.errMsg, "empty!");
+      break label943;
       Log.i("MicroMsg.AccountExpiredUI", "errCode not  -100, quit");
       finish();
       AppMethodBeat.o(32898);
@@ -284,7 +276,7 @@ public class AccountExpiredUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.AccountExpiredUI
  * JD-Core Version:    0.7.0.1
  */

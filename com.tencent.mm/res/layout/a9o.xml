@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/h9h" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/d_"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:id="@id/d0a" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" style="@style/fo" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lr_" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@drawable/bxi" android:layout_centerVertical="true" app:iconColor="@color/FG_0" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/kw8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/erz" android:maxLines="1" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" android:layout_toEndOf="@id/lr_" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/BW_70" />
+</RelativeLayout>

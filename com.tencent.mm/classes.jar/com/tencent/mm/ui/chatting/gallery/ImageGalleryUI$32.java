@@ -4,13 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.y;
-import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.message.m;
+import com.tencent.mm.message.y;
 
 final class ImageGalleryUI$32
   implements View.OnClickListener
@@ -19,26 +16,28 @@ final class ImageGalleryUI$32
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(287621);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/chatting/gallery/ImageGalleryUI$38", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if ((this.WQS == null) || (Util.isNullOrNil(this.WQS.fzT)))
+    AppMethodBeat.i(254530);
+    Object localObject = new b();
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/ui/chatting/gallery/ImageGalleryUI$39", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+    paramView = new Intent();
+    int i = this.aeDZ.getIntent().getIntExtra("KOpenArticleSceneFromScene", 1);
+    paramView.putExtra("srcUsername", this.aeAy.hEE);
+    paramView.putExtra("srcDisplayname", this.aeAy.nUF);
+    localObject = m.e(this.aeAy.YMm, 139, i, (int)(System.currentTimeMillis() / 1000L));
+    if ((((com.tencent.mm.plugin.brandservice.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class)).GV(139)) && (((com.tencent.mm.plugin.brandservice.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class)).a(this.aeDZ, (String)localObject, -1, 139, i, paramView))) {}
+    for (i = 1;; i = 0)
     {
-      Log.w("MicroMsg.ImageGalleryUI", "srcUserName is null");
-      a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryUI$38", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(287621);
+      if (i == 0)
+      {
+        paramView.putExtra("rawUrl", (String)localObject);
+        com.tencent.mm.br.c.b(this.aeDZ, "webview", ".ui.tools.WebViewUI", paramView);
+      }
+      com.tencent.mm.plugin.report.service.h.OAn.b(18589, new Object[] { Integer.valueOf(15), Integer.valueOf(ImageGalleryUI.ad(this.aeDZ)) });
+      a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryUI$39", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(254530);
       return;
     }
-    paramView = new Intent();
-    paramView.putExtra("Contact_User", this.WQS.fzT);
-    paramView.putExtra("Contact_Scene", 163);
-    paramView.putExtra("force_get_contact", true);
-    paramView.putExtra("key_use_new_contact_profile", true);
-    c.b(this.WUq.WQM.WQV, "profile", ".ui.ContactInfoUI", paramView);
-    h.IzE.a(18589, new Object[] { Integer.valueOf(1), Integer.valueOf(ImageGalleryUI.ac(this.WUq)) });
-    a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryUI$38", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(287621);
   }
 }
 

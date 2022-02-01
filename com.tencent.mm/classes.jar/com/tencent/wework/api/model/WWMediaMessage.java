@@ -1,10 +1,7 @@
 package com.tencent.wework.api.model;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 public class WWMediaMessage
@@ -38,30 +35,12 @@ public class WWMediaMessage
   
   public void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(233417);
+    AppMethodBeat.i(210630);
     super.fromBundle(paramBundle);
     this.title = paramBundle.getString("_wwobject_title");
     this.description = paramBundle.getString("_wwobject_description");
     this.thumbData = paramBundle.getByteArray("_wwobject_thumbdata");
-    AppMethodBeat.o(233417);
-  }
-  
-  public final void setThumbImage(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(106551);
-    try
-    {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      paramBitmap.compress(Bitmap.CompressFormat.JPEG, 85, localByteArrayOutputStream);
-      this.thumbData = localByteArrayOutputStream.toByteArray();
-      localByteArrayOutputStream.close();
-      AppMethodBeat.o(106551);
-      return;
-    }
-    catch (Exception paramBitmap)
-    {
-      AppMethodBeat.o(106551);
-    }
+    AppMethodBeat.o(210630);
   }
   
   public void toBundle(Bundle paramBundle)

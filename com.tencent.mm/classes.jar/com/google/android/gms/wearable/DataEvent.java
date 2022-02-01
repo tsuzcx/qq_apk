@@ -1,9 +1,7 @@
 package com.google.android.gms.wearable;
 
 import com.google.android.gms.common.data.Freezable;
-import com.google.android.gms.common.util.VisibleForTesting;
 
-@VisibleForTesting
 public abstract interface DataEvent
   extends Freezable<DataEvent>
 {
@@ -16,7 +14,7 @@ public abstract interface DataEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.DataEvent
  * JD-Core Version:    0.7.0.1
  */

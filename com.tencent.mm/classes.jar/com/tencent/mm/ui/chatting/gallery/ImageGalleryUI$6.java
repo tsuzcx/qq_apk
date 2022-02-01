@@ -13,12 +13,12 @@ final class ImageGalleryUI$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(270028);
+    AppMethodBeat.i(254680);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/chatting/gallery/ImageGalleryUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/chatting/gallery/ImageGalleryUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(270028);
+    AppMethodBeat.o(254680);
   }
 }
 

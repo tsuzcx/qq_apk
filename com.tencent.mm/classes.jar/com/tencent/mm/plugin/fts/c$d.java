@@ -5,17 +5,17 @@ import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 
 final class c$d
   implements Runnable
 {
-  private c.a BFA;
+  private c.a Hqc;
   
   public c$d(c paramc, c.a parama)
   {
-    this.BFA = parama;
+    this.Hqc = parama;
   }
   
   public final void run()
@@ -24,12 +24,12 @@ final class c$d
     Log.d("MicroMsg.FTS.FTSImageLoader", "Start to run save bitmap job");
     try
     {
-      if (!new q(this.BFA.fNU).ifE())
+      if (!new u(this.Hqc.hTM).jKS())
       {
-        if ((this.BFA.bitmap != null) && (!this.BFA.bitmap.isRecycled()))
+        if ((this.Hqc.bitmap != null) && (!this.Hqc.bitmap.isRecycled()))
         {
           long l = System.currentTimeMillis();
-          BitmapUtil.saveBitmapToImage(this.BFA.bitmap, 100, Bitmap.CompressFormat.PNG, this.BFA.fNU, false);
+          BitmapUtil.saveBitmapToImage(this.Hqc.bitmap, 100, Bitmap.CompressFormat.PNG, this.Hqc.hTM, false);
           Log.d("MicroMsg.FTS.FTSImageLoader", "Save bitmap use time: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
           AppMethodBeat.o(52508);
           return;

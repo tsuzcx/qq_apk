@@ -23,9 +23,9 @@ public enum OAuthErrCode
   
   private OAuthErrCode(int paramInt)
   {
-    AppMethodBeat.i(254940);
+    AppMethodBeat.i(242921);
     this.code = paramInt;
-    AppMethodBeat.o(254940);
+    AppMethodBeat.o(242921);
   }
   
   public final int getCode()
@@ -43,7 +43,7 @@ public enum OAuthErrCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.OAuthErrCode
  * JD-Core Version:    0.7.0.1
  */

@@ -10,29 +10,7 @@ public class Logger
   static
   {
     AppMethodBeat.i(87707);
-    mILog = new ILog()
-    {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void e(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void e(String paramAnonymousString1, String paramAnonymousString2, Throwable paramAnonymousThrowable) {}
-      
-      public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(87747);
-        String.format(paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(87747);
-      }
-      
-      public final void e(String paramAnonymousString, Throwable paramAnonymousThrowable) {}
-      
-      public final void i(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void i(String paramAnonymousString1, String paramAnonymousString2, Throwable paramAnonymousThrowable) {}
-      
-      public final void w(String paramAnonymousString1, String paramAnonymousString2) {}
-    };
+    mILog = new Logger.1();
     AppMethodBeat.o(87707);
   }
   
@@ -115,7 +93,7 @@ public class Logger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.Logger
  * JD-Core Version:    0.7.0.1
  */

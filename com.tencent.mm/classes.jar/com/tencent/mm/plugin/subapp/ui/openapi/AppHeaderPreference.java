@@ -11,19 +11,19 @@ import com.tencent.mm.R.g;
 import com.tencent.mm.R.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.v;
+import com.tencent.mm.ui.tools.u;
 import junit.framework.Assert;
 
 public class AppHeaderPreference
   extends Preference
 {
-  private a Mgs;
-  private boolean fZd = false;
-  private ImageView jiu;
-  private TextView jmj;
-  private boolean mRv = false;
-  private TextView mZA;
-  private TextView nmi;
+  private a SHP;
+  private boolean hAJ = false;
+  private ImageView lKK;
+  private TextView lPf;
+  private boolean pOc = false;
+  private TextView pWj;
+  private TextView qjr;
   
   public AppHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,8 +42,8 @@ public class AppHeaderPreference
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.Mgs = parama;
-      this.fZd = paramBoolean;
+      this.SHP = parama;
+      this.hAJ = paramBoolean;
       AppMethodBeat.o(29134);
       return;
     }
@@ -52,78 +52,78 @@ public class AppHeaderPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(29133);
-    this.jiu = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
-    this.jmj = ((TextView)paramView.findViewById(R.h.contact_info_status_tv));
-    this.mZA = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
-    this.nmi = ((TextView)paramView.findViewById(R.h.contact_info_helper_hing_tv));
-    this.mRv = true;
-    if ((!this.mRv) || (this.Mgs == null)) {
-      Log.w("MicroMsg.HeaderPreference", "initView : bindView = " + this.mRv);
+    this.lKK = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
+    this.lPf = ((TextView)paramView.findViewById(R.h.contact_info_status_tv));
+    this.pWj = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
+    this.qjr = ((TextView)paramView.findViewById(R.h.contact_info_helper_hing_tv));
+    this.pOc = true;
+    if ((!this.pOc) || (this.SHP == null)) {
+      Log.w("MicroMsg.HeaderPreference", "initView : bindView = " + this.pOc);
     }
     for (;;)
     {
       super.onBindView(paramView);
       AppMethodBeat.o(29133);
       return;
-      Object localObject = this.Mgs.ghR();
-      if ((this.jiu != null) && (localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-        this.jiu.setImageBitmap((Bitmap)localObject);
+      Object localObject = this.SHP.fwJ();
+      if ((this.lKK != null) && (localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+        this.lKK.setImageBitmap((Bitmap)localObject);
       }
-      localObject = this.Mgs.ghQ();
-      if ((this.mZA != null) && (localObject != null) && (((String)localObject).length() > 0)) {
-        this.mZA.setText((CharSequence)localObject);
+      localObject = this.SHP.hBs();
+      if ((this.pWj != null) && (localObject != null) && (((String)localObject).length() > 0)) {
+        this.pWj.setText((CharSequence)localObject);
       }
-      localObject = this.Mgs.getHint();
+      localObject = this.SHP.getHint();
       if (localObject != null)
       {
-        this.nmi.setText((CharSequence)localObject);
-        this.nmi.setVisibility(0);
+        this.qjr.setText((CharSequence)localObject);
+        this.qjr.setVisibility(0);
       }
       for (;;)
       {
-        boolean bool = this.fZd;
-        if (this.jmj == null) {
+        boolean bool = this.hAJ;
+        if (this.lPf == null) {
           break;
         }
-        localObject = this.Mgs.zL(bool);
+        localObject = this.SHP.Fc(bool);
         if (!bool) {
           break label319;
         }
         if ((localObject == null) || (((String)localObject).length() <= 0)) {
           break label307;
         }
-        this.jmj.setTextColor(v.lC(this.mContext));
-        this.jmj.setText((CharSequence)localObject);
-        this.jmj.setCompoundDrawablesWithIntrinsicBounds(R.g.status_enable, 0, 0, 0);
+        this.lPf.setTextColor(u.nF(this.mContext));
+        this.lPf.setText((CharSequence)localObject);
+        this.lPf.setCompoundDrawablesWithIntrinsicBounds(R.g.status_enable, 0, 0, 0);
         break;
-        this.nmi.setVisibility(8);
+        this.qjr.setVisibility(8);
       }
       label307:
-      this.jmj.setVisibility(8);
+      this.lPf.setVisibility(8);
       continue;
       label319:
       if ((localObject != null) && (((String)localObject).length() > 0))
       {
-        this.jmj.setTextColor(v.lD(this.mContext));
-        this.jmj.setText((CharSequence)localObject);
-        this.jmj.setCompoundDrawablesWithIntrinsicBounds(R.g.status_disable, 0, 0, 0);
+        this.lPf.setTextColor(u.nG(this.mContext));
+        this.lPf.setText((CharSequence)localObject);
+        this.lPf.setCompoundDrawablesWithIntrinsicBounds(R.g.status_disable, 0, 0, 0);
       }
       else
       {
-        this.jmj.setVisibility(8);
+        this.lPf.setVisibility(8);
       }
     }
   }
   
   public static abstract interface a
   {
+    public abstract String Fc(boolean paramBoolean);
+    
+    public abstract Bitmap fwJ();
+    
     public abstract String getHint();
     
-    public abstract String ghQ();
-    
-    public abstract Bitmap ghR();
-    
-    public abstract String zL(boolean paramBoolean);
+    public abstract String hBs();
   }
 }
 

@@ -1,435 +1,154 @@
 package com.tencent.e.b;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.CursorWrapper;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.e.d.a;
+import com.tencent.e.f.d;
+import com.tencent.e.f.d.a;
+import com.tencent.e.f.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.q;
 
 public final class b
-  extends SQLiteOpenHelper
-  implements d
 {
-  private SQLiteDatabase Zwe;
+  private int ahsl;
+  private int ahsm;
+  private String ahsn;
+  private com.tencent.e.c.a.c ahso;
+  private com.tencent.e.c.a.a ahsp;
+  private String mChannelId;
+  private Context mContext;
+  private String mVersionName;
   
   public b(Context paramContext)
   {
-    super(paramContext, "Scheduler.db", null, 1);
-    AppMethodBeat.i(183214);
+    AppMethodBeat.i(138313);
+    this.mContext = null;
+    this.ahsl = -1;
+    this.ahsm = -1;
+    this.mVersionName = null;
+    this.mChannelId = null;
+    this.ahsn = null;
+    this.ahso = null;
+    this.ahsp = null;
+    this.mContext = paramContext;
+    paramContext = com.tencent.e.f.a.dn(paramContext, paramContext.getPackageName());
+    this.mVersionName = paramContext.versionName;
+    this.ahsm = paramContext.versionCode;
+    this.ahsl = 82;
+    this.mChannelId = "105901";
+    this.ahsn = "7AD75E27CD5842F6";
+    AppMethodBeat.o(138313);
+  }
+  
+  private static String bFv(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    return str;
+  }
+  
+  private com.tencent.e.c.a.c jXe()
+  {
+    int m = 2;
+    AppMethodBeat.i(138315);
+    if (this.ahso == null)
+    {
+      this.ahso = new com.tencent.e.c.a.c();
+      this.ahso.ahsy = this.ahsl;
+      this.ahso.ahsD = this.ahsm;
+      this.ahso.ahsw = this.mChannelId;
+      this.ahso.ahsv = this.ahsn;
+    }
     try
     {
-      this.Zwe = getWritableDatabase();
-      AppMethodBeat.o(183214);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      com.tencent.e.d.Zvw.e("ExperienceStorage", "%s", new Object[] { paramContext.toString() });
-      AppMethodBeat.o(183214);
-    }
-  }
-  
-  public final void delete(long paramLong)
-  {
-    AppMethodBeat.i(183217);
-    if (this.Zwe == null)
-    {
-      AppMethodBeat.o(183217);
-      return;
-    }
-    if (paramLong <= 0L) {}
-    for (paramLong = System.currentTimeMillis();; paramLong = System.currentTimeMillis() + paramLong) {
-      try
-      {
-        this.Zwe.delete("DisposedTask", "timestamp<?", new String[] { String.valueOf(paramLong) });
-        AppMethodBeat.o(183217);
-        return;
+      localObject = this.mVersionName.trim().split("[\\.]");
+      if ((localObject == null) || (localObject.length < 3)) {
+        break label341;
       }
-      catch (Exception localException)
+      k = Integer.parseInt(localObject[0]);
+      j = Integer.parseInt(localObject[1]);
+      i = Integer.parseInt(localObject[2]);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        com.tencent.e.d.Zvw.e("ExperienceStorage", "%s", new Object[] { localException.toString() });
-        AppMethodBeat.o(183217);
+        Object localObject;
+        continue;
+        int i = 0;
+        int j = 0;
+        int k = 0;
       }
     }
-  }
-  
-  /* Error */
-  public final java.util.Map<String, a.a> ipL()
-  {
-    // Byte code:
-    //   0: ldc 86
-    //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 88	java/util/HashMap
-    //   8: dup
-    //   9: invokespecial 91	java/util/HashMap:<init>	()V
-    //   12: astore 8
-    //   14: aload_0
-    //   15: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   18: ifnonnull +11 -> 29
-    //   21: ldc 86
-    //   23: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   26: aload 8
-    //   28: areturn
-    //   29: aload_0
-    //   30: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   33: ldc 70
-    //   35: iconst_3
-    //   36: anewarray 74	java/lang/String
-    //   39: dup
-    //   40: iconst_0
-    //   41: ldc 93
-    //   43: aastore
-    //   44: dup
-    //   45: iconst_1
-    //   46: ldc 95
-    //   48: iconst_1
-    //   49: anewarray 48	java/lang/Object
-    //   52: dup
-    //   53: iconst_0
-    //   54: ldc 97
-    //   56: aastore
-    //   57: invokestatic 101	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   60: aastore
-    //   61: dup
-    //   62: iconst_2
-    //   63: ldc 95
-    //   65: iconst_1
-    //   66: anewarray 48	java/lang/Object
-    //   69: dup
-    //   70: iconst_0
-    //   71: ldc 103
-    //   73: aastore
-    //   74: invokestatic 101	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   77: aastore
-    //   78: aconst_null
-    //   79: aconst_null
-    //   80: ldc 93
-    //   82: aconst_null
-    //   83: aconst_null
-    //   84: invokevirtual 107	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   87: astore 6
-    //   89: aload 6
-    //   91: astore 5
-    //   93: aload 6
-    //   95: invokeinterface 113 1 0
-    //   100: pop
-    //   101: aload 6
-    //   103: astore 5
-    //   105: aload 6
-    //   107: invokeinterface 116 1 0
-    //   112: ifne +156 -> 268
-    //   115: aload 6
-    //   117: astore 5
-    //   119: new 8	com/tencent/e/b/b$a
-    //   122: dup
-    //   123: aload_0
-    //   124: aload 6
-    //   126: invokespecial 119	com/tencent/e/b/b$a:<init>	(Lcom/tencent/e/b/b;Landroid/database/Cursor;)V
-    //   129: astore 7
-    //   131: aload 6
-    //   133: astore 5
-    //   135: aload 7
-    //   137: iconst_0
-    //   138: invokevirtual 123	com/tencent/e/b/b$a:getString	(I)Ljava/lang/String;
-    //   141: astore 9
-    //   143: aload 6
-    //   145: astore 5
-    //   147: aload 7
-    //   149: iconst_1
-    //   150: invokevirtual 127	com/tencent/e/b/b$a:getDouble	(I)D
-    //   153: dstore_1
-    //   154: aload 6
-    //   156: astore 5
-    //   158: aload 7
-    //   160: iconst_2
-    //   161: invokevirtual 127	com/tencent/e/b/b$a:getDouble	(I)D
-    //   164: dstore_3
-    //   165: aload 6
-    //   167: astore 5
-    //   169: new 129	com/tencent/e/b/a$a
-    //   172: dup
-    //   173: aload 9
-    //   175: dload_1
-    //   176: d2f
-    //   177: dload_3
-    //   178: d2l
-    //   179: invokespecial 132	com/tencent/e/b/a$a:<init>	(Ljava/lang/String;FJ)V
-    //   182: astore 7
-    //   184: aload 6
-    //   186: astore 5
-    //   188: aload 8
-    //   190: aload 7
-    //   192: getfield 136	com/tencent/e/b/a$a:name	Ljava/lang/String;
-    //   195: aload 7
-    //   197: invokeinterface 142 3 0
-    //   202: pop
-    //   203: aload 6
-    //   205: astore 5
-    //   207: aload 6
-    //   209: invokeinterface 145 1 0
-    //   214: pop
-    //   215: goto -114 -> 101
-    //   218: astore 7
-    //   220: aload 6
-    //   222: astore 5
-    //   224: getstatic 42	com/tencent/e/d:Zvw	Lcom/tencent/e/d$a;
-    //   227: ldc 44
-    //   229: ldc 46
-    //   231: iconst_1
-    //   232: anewarray 48	java/lang/Object
-    //   235: dup
-    //   236: iconst_0
-    //   237: aload 7
-    //   239: invokevirtual 52	java/lang/Exception:toString	()Ljava/lang/String;
-    //   242: aastore
-    //   243: invokeinterface 58 4 0
-    //   248: aload 6
-    //   250: ifnull +10 -> 260
-    //   253: aload 6
-    //   255: invokeinterface 148 1 0
-    //   260: ldc 86
-    //   262: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   265: aload 8
-    //   267: areturn
-    //   268: aload 6
-    //   270: ifnull -10 -> 260
-    //   273: aload 6
-    //   275: invokeinterface 148 1 0
-    //   280: goto -20 -> 260
-    //   283: astore 6
-    //   285: aconst_null
-    //   286: astore 5
-    //   288: aload 5
-    //   290: ifnull +10 -> 300
-    //   293: aload 5
-    //   295: invokeinterface 148 1 0
-    //   300: ldc 86
-    //   302: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   305: aload 6
-    //   307: athrow
-    //   308: astore 6
-    //   310: goto -22 -> 288
-    //   313: astore 7
-    //   315: aconst_null
-    //   316: astore 6
-    //   318: goto -98 -> 220
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	321	0	this	b
-    //   153	23	1	d1	double
-    //   164	14	3	d2	double
-    //   91	203	5	localCursor1	Cursor
-    //   87	187	6	localCursor2	Cursor
-    //   283	23	6	localObject1	Object
-    //   308	1	6	localObject2	Object
-    //   316	1	6	localObject3	Object
-    //   129	67	7	localObject4	Object
-    //   218	20	7	localException1	Exception
-    //   313	1	7	localException2	Exception
-    //   12	254	8	localHashMap	java.util.HashMap
-    //   141	33	9	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   93	101	218	java/lang/Exception
-    //   105	115	218	java/lang/Exception
-    //   119	131	218	java/lang/Exception
-    //   135	143	218	java/lang/Exception
-    //   147	154	218	java/lang/Exception
-    //   158	165	218	java/lang/Exception
-    //   169	184	218	java/lang/Exception
-    //   188	203	218	java/lang/Exception
-    //   207	215	218	java/lang/Exception
-    //   29	89	283	finally
-    //   93	101	308	finally
-    //   105	115	308	finally
-    //   119	131	308	finally
-    //   135	143	308	finally
-    //   147	154	308	finally
-    //   158	165	308	finally
-    //   169	184	308	finally
-    //   188	203	308	finally
-    //   207	215	308	finally
-    //   224	248	308	finally
-    //   29	89	313	java/lang/Exception
-  }
-  
-  /* Error */
-  public final void o(java.util.Collection<a.a> paramCollection)
-  {
-    // Byte code:
-    //   0: ldc 152
-    //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   9: ifnull +12 -> 21
-    //   12: aload_1
-    //   13: invokeinterface 158 1 0
-    //   18: ifgt +9 -> 27
-    //   21: ldc 152
-    //   23: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   26: return
-    //   27: aload_0
-    //   28: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   31: invokevirtual 161	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
-    //   34: aload_1
-    //   35: invokeinterface 165 1 0
-    //   40: astore_1
-    //   41: aload_1
-    //   42: invokeinterface 170 1 0
-    //   47: ifeq +191 -> 238
-    //   50: aload_1
-    //   51: invokeinterface 174 1 0
-    //   56: checkcast 129	com/tencent/e/b/a$a
-    //   59: astore_2
-    //   60: new 176	com/tencent/e/b/a$b
-    //   63: dup
-    //   64: aload_2
-    //   65: getfield 136	com/tencent/e/b/a$a:name	Ljava/lang/String;
-    //   68: aload_2
-    //   69: getfield 180	com/tencent/e/b/a$a:ZvX	J
-    //   72: aload_2
-    //   73: getfield 183	com/tencent/e/b/a$a:fpe	J
-    //   76: ldc 185
-    //   78: invokespecial 188	com/tencent/e/b/a$b:<init>	(Ljava/lang/String;JJLjava/lang/String;)V
-    //   81: astore_2
-    //   82: aload_2
-    //   83: invokestatic 68	java/lang/System:currentTimeMillis	()J
-    //   86: putfield 191	com/tencent/e/b/a$b:timestamp	J
-    //   89: aload_0
-    //   90: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   93: astore_3
-    //   94: new 193	android/content/ContentValues
-    //   97: dup
-    //   98: invokespecial 194	android/content/ContentValues:<init>	()V
-    //   101: astore 4
-    //   103: aload 4
-    //   105: ldc 93
-    //   107: aload_2
-    //   108: getfield 195	com/tencent/e/b/a$b:name	Ljava/lang/String;
-    //   111: invokevirtual 198	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   114: aload 4
-    //   116: ldc 103
-    //   118: aload_2
-    //   119: getfield 201	com/tencent/e/b/a$b:GOR	J
-    //   122: invokestatic 206	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   125: invokevirtual 209	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   128: aload 4
-    //   130: ldc 211
-    //   132: aload_2
-    //   133: getfield 213	com/tencent/e/b/a$b:time	J
-    //   136: invokestatic 206	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   139: invokevirtual 209	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   142: aload 4
-    //   144: ldc 214
-    //   146: aload_2
-    //   147: getfield 191	com/tencent/e/b/a$b:timestamp	J
-    //   150: invokestatic 206	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   153: invokevirtual 209	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   156: aload 4
-    //   158: ldc 97
-    //   160: aload_2
-    //   161: getfield 217	com/tencent/e/b/a$b:rate	F
-    //   164: invokestatic 222	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   167: invokevirtual 225	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Float;)V
-    //   170: aload 4
-    //   172: ldc 227
-    //   174: aload_2
-    //   175: getfield 230	com/tencent/e/b/a$b:Zwd	Ljava/lang/String;
-    //   178: invokevirtual 198	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   181: aload_3
-    //   182: ldc 70
-    //   184: aconst_null
-    //   185: aload 4
-    //   187: invokevirtual 234	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
-    //   190: pop2
-    //   191: goto -150 -> 41
-    //   194: astore_1
-    //   195: getstatic 42	com/tencent/e/d:Zvw	Lcom/tencent/e/d$a;
-    //   198: ldc 44
-    //   200: ldc 46
-    //   202: iconst_1
-    //   203: anewarray 48	java/lang/Object
-    //   206: dup
-    //   207: iconst_0
-    //   208: aload_1
-    //   209: invokevirtual 52	java/lang/Exception:toString	()Ljava/lang/String;
-    //   212: aastore
-    //   213: invokeinterface 58 4 0
-    //   218: aload_0
-    //   219: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   222: invokevirtual 237	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   225: aload_0
-    //   226: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   229: invokevirtual 240	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   232: ldc 152
-    //   234: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   237: return
-    //   238: aload_0
-    //   239: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   242: invokevirtual 237	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   245: aload_0
-    //   246: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   249: invokevirtual 240	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   252: ldc 152
-    //   254: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   257: return
-    //   258: astore_1
-    //   259: aload_0
-    //   260: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   263: invokevirtual 237	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   266: aload_0
-    //   267: getfield 33	com/tencent/e/b/b:Zwe	Landroid/database/sqlite/SQLiteDatabase;
-    //   270: invokevirtual 240	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   273: ldc 152
-    //   275: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   278: aload_1
-    //   279: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	280	0	this	b
-    //   0	280	1	paramCollection	java.util.Collection<a.a>
-    //   59	116	2	localObject	Object
-    //   93	89	3	localSQLiteDatabase	SQLiteDatabase
-    //   101	85	4	localContentValues	android.content.ContentValues
-    // Exception table:
-    //   from	to	target	type
-    //   27	41	194	java/lang/Exception
-    //   41	191	194	java/lang/Exception
-    //   27	41	258	finally
-    //   41	191	258	finally
-    //   195	218	258	finally
-  }
-  
-  public final void onCreate(SQLiteDatabase paramSQLiteDatabase)
-  {
-    AppMethodBeat.i(183215);
-    if (paramSQLiteDatabase == null)
+    this.ahso.ahsz = new com.tencent.e.c.a.b();
+    this.ahso.ahsz.ahss = k;
+    this.ahso.ahsz.ahst = j;
+    this.ahso.ahsz.ahsu = i;
+    this.ahso.ahsA = 0;
+    this.ahso.ahsC = d.getSDKVersion();
+    this.ahso.imei = bFv(d.getIMEI(this.mContext));
+    this.ahso.imsi = bFv(d.oc(this.mContext));
+    this.ahso.YDY = bFv(q.aPo());
+    this.ahso.aid = bFv(d.jXA());
+    this.ahso.ahsI = bFv(d.Or(true));
+    this.ahso.ahsJ = bFv(d.Or(false));
+    this.ahso.guid = null;
+    this.ahso.ahsB = 0;
+    localObject = this.ahso;
+    if (d.od(this.mContext) == d.a.ahvl) {}
+    for (i = m;; i = 1)
     {
-      AppMethodBeat.o(183215);
-      return;
+      ((com.tencent.e.c.a.c)localObject).ahsx = i;
+      localObject = this.ahso;
+      AppMethodBeat.o(138315);
+      return localObject;
     }
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS DisposedTask(_ID INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL, taskName TEXT NOT NULL, threadTime LONG NOT NULL, time LONG NOT NULL, rate REAL NOT NULL, timestamp LONG NOT NULL, scheduler TEXT NOT NULL )");
-    paramSQLiteDatabase.execSQL("CREATE INDEX IF NOT EXISTS timestampIndex ON DisposedTask(timestamp)");
-    paramSQLiteDatabase.execSQL("CREATE INDEX IF NOT EXISTS taskNameIndex ON DisposedTask(taskName)");
-    AppMethodBeat.o(183215);
   }
   
-  public final void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
-  
-  public final class a
-    extends CursorWrapper
+  public final byte[] a(com.tencent.e.c.b.a parama)
   {
-    a(Cursor paramCursor)
+    AppMethodBeat.i(138314);
+    Object localObject = null;
+    try
     {
-      super();
+      l locall = new l();
+      locall.ako();
+      locall.em("viruscheck");
+      locall.en("RiskCheck");
+      locall.bFC("UTF-8");
+      if (this.ahsp == null)
+      {
+        this.ahsp = new com.tencent.e.c.a.a();
+        this.ahsp.ahsq = 2;
+        this.ahsp.ahsr = 201;
+      }
+      locall.j("phonetype", this.ahsp);
+      locall.j("userinfo", jXe());
+      locall.j("req", parama);
+      parama = com.tencent.e.f.b.compress(locall.akn());
+      if (parama == null)
+      {
+        parama = new RuntimeException("compress data fail");
+        AppMethodBeat.o(138314);
+        throw parama;
+      }
+    }
+    catch (Exception parama)
+    {
+      parama = localObject;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(138314);
+      return parama;
+      parama = com.tencent.e.f.c.q(parama, com.tencent.e.f.c.jXz());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.b.b
  * JD-Core Version:    0.7.0.1
  */

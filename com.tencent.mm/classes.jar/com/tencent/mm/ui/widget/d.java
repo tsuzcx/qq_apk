@@ -13,263 +13,263 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class d
   extends ActionBar
 {
-  private ActionBar YaD;
-  private View YaE;
+  private ActionBar afSu;
+  private View afSv;
   
   private d(ActionBar paramActionBar)
   {
-    this.YaD = paramActionBar;
+    this.afSu = paramActionBar;
   }
   
   public static ActionBar c(ActionBar paramActionBar)
   {
-    AppMethodBeat.i(194456);
+    AppMethodBeat.i(251569);
     if (paramActionBar == null)
     {
-      AppMethodBeat.o(194456);
+      AppMethodBeat.o(251569);
       return paramActionBar;
     }
     paramActionBar = new d(paramActionBar);
-    AppMethodBeat.o(194456);
+    AppMethodBeat.o(251569);
     return paramActionBar;
   }
   
-  private void hZr()
+  private void jEA()
   {
-    AppMethodBeat.i(194468);
-    if (this.YaD.getCustomView() == null)
+    AppMethodBeat.i(251575);
+    if (this.afSu.getCustomView() == null)
     {
       Log.i("MicroMsg.MMActionBarProxy", "updateMenuView, getCustomView is null.");
-      this.YaE = null;
-      AppMethodBeat.o(194468);
+      this.afSv = null;
+      AppMethodBeat.o(251575);
       return;
     }
-    Object localObject = (ViewGroup)this.YaD.getCustomView().findViewById(a.g.custom_menu_container_outside);
+    Object localObject = (ViewGroup)this.afSu.getCustomView().findViewById(a.g.custom_menu_container_outside);
     if (localObject == null)
     {
-      this.YaE = null;
+      this.afSv = null;
       Log.i("MicroMsg.MMActionBarProxy", "preSetCustomView, mActionbar.customMenuContainerOutside is null.");
-      AppMethodBeat.o(194468);
+      AppMethodBeat.o(251575);
       return;
     }
     localObject = ((ViewGroup)localObject).findViewById(a.g.custom_menu_container);
     if (!(localObject instanceof ViewGroup))
     {
-      this.YaE = null;
+      this.afSv = null;
       Log.i("MicroMsg.MMActionBarProxy", "preSetCustomView, menuView no instanceof ViewGroup.");
-      AppMethodBeat.o(194468);
+      AppMethodBeat.o(251575);
       return;
     }
     Log.i("MicroMsg.MMActionBarProxy", "preSetCustomView,, ((ViewGroup)menuView).getChildCount(): " + ((ViewGroup)localObject).getChildCount() + ", menuView = " + localObject);
-    this.YaE = ((View)localObject).findViewById(a.g.custom_menu_container);
-    iH(this.YaE);
-    Log.i("MicroMsg.MMActionBarProxy", "preSetCustomView, menuViewCache: " + this.YaE);
-    AppMethodBeat.o(194468);
+    this.afSv = ((View)localObject).findViewById(a.g.custom_menu_container);
+    mc(this.afSv);
+    Log.i("MicroMsg.MMActionBarProxy", "preSetCustomView, menuViewCache: " + this.afSv);
+    AppMethodBeat.o(251575);
   }
   
-  private void hZs()
+  private void jEB()
   {
-    AppMethodBeat.i(194473);
-    Object localObject = this.YaD.getCustomView();
+    AppMethodBeat.i(251579);
+    Object localObject = this.afSu.getCustomView();
     if (localObject == null)
     {
       Log.i("MicroMsg.MMActionBarProxy", "updateMenuView, getCustomView is null.");
-      AppMethodBeat.o(194473);
+      AppMethodBeat.o(251579);
       return;
     }
     localObject = (ViewGroup)((View)localObject).findViewById(a.g.custom_menu_container_outside);
     if (localObject == null)
     {
       Log.i("MicroMsg.MMActionBarProxy", "updateMenuView, customMenuContainerOutside is null.");
-      AppMethodBeat.o(194473);
+      AppMethodBeat.o(251579);
       return;
     }
-    if (!(this.YaE instanceof ViewGroup))
+    if (!(this.afSv instanceof ViewGroup))
     {
       Log.i("MicroMsg.MMActionBarProxy", "preSetCustomView, menuView no instanceof ViewGroup.");
-      AppMethodBeat.o(194473);
+      AppMethodBeat.o(251579);
       return;
     }
-    Log.i("MicroMsg.MMActionBarProxy", "updateMenuView, menuViewCache = ." + this.YaE + ", menuView childCount = " + ((ViewGroup)this.YaE).getChildCount() + ", customMenuContainerOutside = " + localObject);
-    iH(this.YaE);
+    Log.i("MicroMsg.MMActionBarProxy", "updateMenuView, menuViewCache = ." + this.afSv + ", menuView childCount = " + ((ViewGroup)this.afSv).getChildCount() + ", customMenuContainerOutside = " + localObject);
+    mc(this.afSv);
     ((ViewGroup)localObject).removeAllViews();
-    ((ViewGroup)localObject).addView(this.YaE);
-    AppMethodBeat.o(194473);
+    ((ViewGroup)localObject).addView(this.afSv);
+    AppMethodBeat.o(251579);
   }
   
-  private static void iH(View paramView)
+  private static void mc(View paramView)
   {
-    AppMethodBeat.i(194475);
+    AppMethodBeat.i(251581);
     if ((paramView.getParent() instanceof ViewGroup))
     {
       ((ViewGroup)paramView.getParent()).removeView(paramView);
       Log.i("MicroMsg.MMActionBarProxy", "removeParentHold, menuView is hasparent, has ? " + paramView.getParent());
     }
-    AppMethodBeat.o(194475);
+    AppMethodBeat.o(251581);
   }
   
-  public final void N(int paramInt)
+  public final void L(int paramInt)
   {
-    AppMethodBeat.i(194463);
-    hZr();
-    this.YaD.N(paramInt);
-    hZs();
-    AppMethodBeat.o(194463);
+    AppMethodBeat.i(251590);
+    jEA();
+    this.afSu.L(paramInt);
+    jEB();
+    AppMethodBeat.o(251590);
   }
   
-  public final void O(int paramInt)
+  public final void M(int paramInt)
   {
-    AppMethodBeat.i(194481);
-    this.YaD.O(paramInt);
-    AppMethodBeat.o(194481);
+    AppMethodBeat.i(251600);
+    this.afSu.M(paramInt);
+    AppMethodBeat.o(251600);
   }
   
   public final void a(View paramView, ActionBar.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(194460);
-    hZr();
-    this.YaD.a(paramView, paramLayoutParams);
-    hZs();
-    AppMethodBeat.o(194460);
+    AppMethodBeat.i(251586);
+    jEA();
+    this.afSu.a(paramView, paramLayoutParams);
+    jEB();
+    AppMethodBeat.o(251586);
   }
   
-  public final int aC()
+  public final int bu()
   {
-    AppMethodBeat.i(194499);
-    int i = this.YaD.aC();
-    AppMethodBeat.o(194499);
+    AppMethodBeat.i(251633);
+    int i = this.afSu.bu();
+    AppMethodBeat.o(251633);
     return i;
   }
   
-  public final Context aD()
+  public final Context bw()
   {
-    AppMethodBeat.i(194508);
-    Context localContext = this.YaD.aD();
-    AppMethodBeat.o(194508);
+    AppMethodBeat.i(251653);
+    Context localContext = this.afSu.bw();
+    AppMethodBeat.o(251653);
     return localContext;
   }
   
-  public final void e(float paramFloat)
+  public final void g(float paramFloat)
   {
-    AppMethodBeat.i(194512);
-    this.YaD.e(paramFloat);
-    AppMethodBeat.o(194512);
+    AppMethodBeat.i(251663);
+    this.afSu.g(paramFloat);
+    AppMethodBeat.o(251663);
   }
   
   public final View getCustomView()
   {
-    AppMethodBeat.i(194494);
-    View localView = this.YaD.getCustomView();
-    AppMethodBeat.o(194494);
+    AppMethodBeat.i(251620);
+    View localView = this.afSu.getCustomView();
+    AppMethodBeat.o(251620);
     return localView;
   }
   
   public final int getHeight()
   {
-    AppMethodBeat.i(194501);
-    int i = this.YaD.getHeight();
-    AppMethodBeat.o(194501);
+    AppMethodBeat.i(251638);
+    int i = this.afSu.getHeight();
+    AppMethodBeat.o(251638);
     return i;
   }
   
   public final CharSequence getTitle()
   {
-    AppMethodBeat.i(194498);
-    CharSequence localCharSequence = this.YaD.getTitle();
-    AppMethodBeat.o(194498);
+    AppMethodBeat.i(251627);
+    CharSequence localCharSequence = this.afSu.getTitle();
+    AppMethodBeat.o(251627);
     return localCharSequence;
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(194504);
-    this.YaD.hide();
-    AppMethodBeat.o(194504);
+    AppMethodBeat.i(251644);
+    this.afSu.hide();
+    AppMethodBeat.o(251644);
   }
   
   public final boolean isShowing()
   {
-    AppMethodBeat.i(194507);
-    boolean bool = this.YaD.isShowing();
-    AppMethodBeat.o(194507);
+    AppMethodBeat.i(251649);
+    boolean bool = this.afSu.isShowing();
+    AppMethodBeat.o(251649);
     return bool;
-  }
-  
-  public final void r(boolean paramBoolean)
-  {
-    AppMethodBeat.i(194483);
-    this.YaD.r(paramBoolean);
-    AppMethodBeat.o(194483);
-  }
-  
-  public final void s(boolean paramBoolean)
-  {
-    AppMethodBeat.i(194485);
-    this.YaD.s(paramBoolean);
-    AppMethodBeat.o(194485);
   }
   
   public final void setBackgroundDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(194492);
-    this.YaD.setBackgroundDrawable(paramDrawable);
-    AppMethodBeat.o(194492);
+    AppMethodBeat.i(251616);
+    this.afSu.setBackgroundDrawable(paramDrawable);
+    AppMethodBeat.o(251616);
   }
   
   public final void setCustomView(View paramView)
   {
-    AppMethodBeat.i(194459);
-    hZr();
-    this.YaD.setCustomView(paramView);
-    hZs();
-    AppMethodBeat.o(194459);
+    AppMethodBeat.i(251582);
+    jEA();
+    this.afSu.setCustomView(paramView);
+    jEB();
+    AppMethodBeat.o(251582);
   }
   
   public final void setHideOnContentScrollEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(194509);
-    this.YaD.setHideOnContentScrollEnabled(paramBoolean);
-    AppMethodBeat.o(194509);
+    AppMethodBeat.i(251657);
+    this.afSu.setHideOnContentScrollEnabled(paramBoolean);
+    AppMethodBeat.o(251657);
   }
   
   public final void setIcon(int paramInt)
   {
-    AppMethodBeat.i(194476);
-    this.YaD.setIcon(paramInt);
-    AppMethodBeat.o(194476);
+    AppMethodBeat.i(251594);
+    this.afSu.setIcon(paramInt);
+    AppMethodBeat.o(251594);
   }
   
   public final void setLogo(Drawable paramDrawable)
   {
-    AppMethodBeat.i(194479);
-    this.YaD.setLogo(paramDrawable);
-    AppMethodBeat.o(194479);
+    AppMethodBeat.i(251596);
+    this.afSu.setLogo(paramDrawable);
+    AppMethodBeat.o(251596);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(194503);
-    this.YaD.show();
-    AppMethodBeat.o(194503);
+    AppMethodBeat.i(251642);
+    this.afSu.show();
+    AppMethodBeat.o(251642);
   }
   
-  public final void t(boolean paramBoolean)
+  public final void v(boolean paramBoolean)
   {
-    AppMethodBeat.i(194487);
-    this.YaD.t(paramBoolean);
-    AppMethodBeat.o(194487);
+    AppMethodBeat.i(251603);
+    this.afSu.v(paramBoolean);
+    AppMethodBeat.o(251603);
   }
   
-  public final void u(boolean paramBoolean)
+  public final void w(boolean paramBoolean)
   {
-    AppMethodBeat.i(194490);
-    this.YaD.u(paramBoolean);
-    AppMethodBeat.o(194490);
+    AppMethodBeat.i(251605);
+    this.afSu.w(paramBoolean);
+    AppMethodBeat.o(251605);
+  }
+  
+  public final void x(boolean paramBoolean)
+  {
+    AppMethodBeat.i(251608);
+    this.afSu.x(paramBoolean);
+    AppMethodBeat.o(251608);
+  }
+  
+  public final void y(boolean paramBoolean)
+  {
+    AppMethodBeat.i(251612);
+    this.afSu.y(paramBoolean);
+    AppMethodBeat.o(251612);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.d
  * JD-Core Version:    0.7.0.1
  */

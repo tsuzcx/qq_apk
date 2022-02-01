@@ -11,46 +11,46 @@ import java.util.ArrayList;
 public final class b
   implements d
 {
-  private static final ArrayList<IDKey> GLw;
-  private static boolean GLx;
+  private static final ArrayList<IDKey> MIr;
+  private static boolean MIs;
   
   static
   {
-    AppMethodBeat.i(201607);
-    GLw = new ArrayList();
-    GLx = false;
-    AppMethodBeat.o(201607);
+    AppMethodBeat.i(300891);
+    MIr = new ArrayList();
+    MIs = false;
+    AppMethodBeat.o(300891);
   }
   
   static void setup()
   {
-    AppMethodBeat.i(201583);
-    com.tencent.mm.kernel.h.aHH().a(new g()
+    AppMethodBeat.i(300878);
+    com.tencent.mm.kernel.h.baF().a(new g()
     {
-      public final void abB()
+      public final void aDv()
       {
-        AppMethodBeat.i(201699);
-        com.tencent.mm.kernel.h.aHH().b(this);
-        synchronized (b.fnq())
+        AppMethodBeat.i(300851);
+        com.tencent.mm.kernel.h.baF().b(this);
+        synchronized (b.gyd())
         {
-          b.bfm();
-          com.tencent.mm.plugin.report.service.h.IzE.b(b.fnq(), false);
-          b.fnq().clear();
-          AppMethodBeat.o(201699);
+          b.bDd();
+          com.tencent.mm.plugin.report.service.h.OAn.b(b.gyd(), false);
+          b.gyd().clear();
+          AppMethodBeat.o(300851);
           return;
         }
       }
       
-      public final void dn(boolean paramAnonymousBoolean) {}
+      public final void dZ(boolean paramAnonymousBoolean) {}
     });
-    AppMethodBeat.o(201583);
+    AppMethodBeat.o(300878);
   }
   
   public final void a(d.a arg1, Object... paramVarArgs)
   {
     int i = 0;
-    AppMethodBeat.i(201603);
-    switch (2.GLy[???.ordinal()])
+    AppMethodBeat.i(300904);
+    switch (2.MIt[???.ordinal()])
     {
     }
     label389:
@@ -68,12 +68,12 @@ public final class b
           label96:
           paramVarArgs.add(new IDKey(1593, i, 1));
         }
-        synchronized (GLw)
+        synchronized (MIr)
         {
-          if (GLx)
+          if (MIs)
           {
-            com.tencent.mm.plugin.report.service.h.IzE.b(paramVarArgs, false);
-            AppMethodBeat.o(201603);
+            com.tencent.mm.plugin.report.service.h.OAn.b(paramVarArgs, false);
+            AppMethodBeat.o(300904);
             return;
             i = 1;
             break label54;
@@ -208,16 +208,16 @@ public final class b
             paramVarArgs.add(new IDKey(1593, 60, 1));
             break label96;
           }
-          GLw.addAll(paramVarArgs);
+          MIr.addAll(paramVarArgs);
         }
       }
     }
-    AppMethodBeat.o(201603);
+    AppMethodBeat.o(300904);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.b
  * JD-Core Version:    0.7.0.1
  */

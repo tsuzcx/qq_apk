@@ -1,45 +1,44 @@
 package com.tencent.mm.kernel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa.b;
-import com.tencent.mm.an.t;
-import com.tencent.mm.an.t.a;
-import com.tencent.mm.cw.a;
-import com.tencent.mm.cw.a.a;
-import com.tencent.mm.f.a.oc;
+import com.tencent.mm.am.s;
+import com.tencent.mm.am.s.a;
+import com.tencent.mm.am.z.b;
+import com.tencent.mm.cp.a.a;
 import com.tencent.mm.kernel.api.d;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bv;
-import com.tencent.mm.model.bv.a;
-import com.tencent.mm.model.cn;
-import com.tencent.mm.model.cn.a;
+import com.tencent.mm.model.bw;
+import com.tencent.mm.model.bw.a;
+import com.tencent.mm.model.co;
+import com.tencent.mm.model.co.a;
 import com.tencent.mm.network.d.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.j.a;
 import com.tencent.mm.network.p;
 import com.tencent.mm.network.p.a;
+import com.tencent.mm.protocal.aa.a;
+import com.tencent.mm.protocal.aa.b;
+import com.tencent.mm.protocal.ab.a;
 import com.tencent.mm.sdk.crash.CallbackForReset;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class c
 {
-  private static aw kcg = null;
-  public final a kcc;
-  public final t kcd;
-  private HashSet<p> kce;
-  public p kcf;
+  public final a mCl;
+  public final s mCm;
+  HashSet<p> mCn;
+  public p mCo;
   
-  public c(t.a parama, a parama1)
+  public c(s.a parama, a parama1)
   {
     AppMethodBeat.i(132057);
-    this.kce = new HashSet();
-    this.kcf = new p.a()
+    this.mCn = new HashSet();
+    this.mCo = new p.a()
     {
       /* Error */
       public final void onNetworkChange(int paramAnonymousInt)
@@ -52,15 +51,15 @@ public final class c
         //   9: invokespecial 29	java/util/HashSet:<init>	()V
         //   12: astore_3
         //   13: aload_0
-        //   14: getfield 12	com/tencent/mm/kernel/c$2:kch	Lcom/tencent/mm/kernel/c;
-        //   17: invokestatic 33	com/tencent/mm/kernel/c:b	(Lcom/tencent/mm/kernel/c;)Ljava/util/HashSet;
+        //   14: getfield 12	com/tencent/mm/kernel/c$2:mCp	Lcom/tencent/mm/kernel/c;
+        //   17: getfield 33	com/tencent/mm/kernel/c:mCn	Ljava/util/HashSet;
         //   20: astore_2
         //   21: aload_2
         //   22: monitorenter
         //   23: aload_3
         //   24: aload_0
-        //   25: getfield 12	com/tencent/mm/kernel/c$2:kch	Lcom/tencent/mm/kernel/c;
-        //   28: invokestatic 33	com/tencent/mm/kernel/c:b	(Lcom/tencent/mm/kernel/c;)Ljava/util/HashSet;
+        //   25: getfield 12	com/tencent/mm/kernel/c$2:mCp	Lcom/tencent/mm/kernel/c;
+        //   28: getfield 33	com/tencent/mm/kernel/c:mCn	Ljava/util/HashSet;
         //   31: invokevirtual 37	java/util/HashSet:addAll	(Ljava/util/Collection;)Z
         //   34: pop
         //   35: aload_2
@@ -113,99 +112,77 @@ public final class c
         //   23	37	88	finally
       }
     };
-    this.kcd = t.a(parama);
-    this.kcd.lCE = h.aHJ();
-    com.tencent.mm.an.aa.lDv = new aa.b()
+    this.mCm = s.a(parama);
+    this.mCm.ouo = h.baH();
+    com.tencent.mm.am.z.ovg = new z.b()
     {
-      public final t aGZ()
+      public final s aZX()
       {
         AppMethodBeat.i(132046);
-        t localt = c.a(c.this);
+        s locals = c.this.mCm;
         AppMethodBeat.o(132046);
-        return localt;
+        return locals;
       }
     };
-    this.kcc = parama1;
+    this.mCl = parama1;
     AppMethodBeat.o(132057);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
-  {
-    AppMethodBeat.i(132062);
-    oc localoc = new oc();
-    localoc.fMT.status = paramInt1;
-    localoc.fMT.fMU = paramInt2;
-    localoc.fMT.fMV = paramBoolean;
-    localoc.fMT.fMW = paramString;
-    EventCenter.instance.publish(localoc);
-    AppMethodBeat.o(132062);
-  }
-  
-  public static void a(aw paramaw)
-  {
-    kcg = paramaw;
-  }
-  
-  public static aw aGW()
-  {
-    return kcg;
   }
   
   public final void a(p paramp)
   {
     AppMethodBeat.i(132058);
-    synchronized (this.kce)
+    synchronized (this.mCn)
     {
-      this.kce.add(paramp);
+      this.mCn.add(paramp);
       AppMethodBeat.o(132058);
       return;
     }
   }
   
-  public final void aGX()
+  public final void aZV()
   {
     AppMethodBeat.i(132060);
-    this.kcd.a(new bv(new bv.a()
+    this.mCm.a(new bw(new bw.a()
     {
-      public final void a(g paramAnonymousg)
+      public final void b(g paramAnonymousg)
       {
         AppMethodBeat.i(132048);
-        if ((paramAnonymousg == null) || (paramAnonymousg.biw() == null))
+        if ((paramAnonymousg == null) || (paramAnonymousg.bGg() == null))
         {
           AppMethodBeat.o(132048);
           return;
         }
-        paramAnonymousg.biw().reset();
+        paramAnonymousg.bGg().reset();
         AppMethodBeat.o(132048);
       }
     }, "reset accinfo"), 0);
     AppMethodBeat.o(132060);
   }
   
-  public final t aGY()
+  public final s aZW()
   {
-    return this.kcd;
+    return this.mCm;
   }
   
   public final void b(p paramp)
   {
     AppMethodBeat.i(132059);
-    synchronized (this.kce)
+    synchronized (this.mCn)
     {
-      this.kce.remove(paramp);
+      this.mCn.remove(paramp);
       AppMethodBeat.o(132059);
       return;
     }
   }
   
-  public final byte[] sE(int paramInt)
+  public final byte[] sA(int paramInt)
   {
     AppMethodBeat.i(132061);
     try
     {
-      if ((this.kcd != null) && (this.kcd.lCD != null))
+      if ((this.mCm != null) && (this.mCm.oun != null))
       {
-        localObject = this.kcd.lCD.biw();
+        localObject = this.mCm.oun.bGg();
         if (localObject != null) {}
       }
       else
@@ -213,7 +190,7 @@ public final class c
         AppMethodBeat.o(132061);
         return null;
       }
-      Object localObject = this.kcd.lCD.biw().sE(paramInt);
+      Object localObject = this.mCm.oun.bGg().sA(paramInt);
       AppMethodBeat.o(132061);
       return localObject;
     }
@@ -227,10 +204,10 @@ public final class c
   }
   
   public static final class a
-    extends a<d>
+    extends com.tencent.mm.cp.a<d>
     implements d
   {
-    public final void b(final g paramg)
+    public final void c(final g paramg)
     {
       AppMethodBeat.i(132056);
       a(new a.a() {});
@@ -240,7 +217,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kernel.c
  * JD-Core Version:    0.7.0.1
  */

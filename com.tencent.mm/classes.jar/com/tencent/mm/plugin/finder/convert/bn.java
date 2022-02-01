@@ -1,21 +1,23 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.model.ay;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.model.bi;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgFollowNewConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgFollow;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgMentionedConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgMentioned;", "scene", "", "(I)V", "AT_PREFFIX", "", "getAT_PREFFIX", "()Ljava/lang/String;", "TAG", "getTAG", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bn
-  extends bj<ay>
+  extends bf<bi>
 {
+  private final String ALn;
   private final String TAG;
   private final int scene;
   
   public bn(int paramInt)
   {
-    super(b.g.finder_msg_item_of_follow_new, paramInt);
+    super(e.f.finder_msg_item_of_mentioned, paramInt);
     this.scene = paramInt;
-    this.TAG = "Finder.FinderMsgFollowConvert";
+    this.TAG = "Finder.FinderMsgMentionedConvert";
+    this.ALn = "@";
   }
 }
 

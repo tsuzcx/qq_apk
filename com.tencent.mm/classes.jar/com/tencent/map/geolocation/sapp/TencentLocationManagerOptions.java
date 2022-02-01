@@ -19,14 +19,14 @@ public class TencentLocationManagerOptions
   
   public static boolean setKey(String paramString)
   {
-    AppMethodBeat.i(254915);
+    AppMethodBeat.i(210879);
     if ((paramString != null) && (!paramString.equals("")))
     {
       mKey = paramString;
-      AppMethodBeat.o(254915);
+      AppMethodBeat.o(210879);
       return true;
     }
-    AppMethodBeat.o(254915);
+    AppMethodBeat.o(210879);
     return false;
   }
   
@@ -37,7 +37,7 @@ public class TencentLocationManagerOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.map.geolocation.sapp.TencentLocationManagerOptions
  * JD-Core Version:    0.7.0.1
  */

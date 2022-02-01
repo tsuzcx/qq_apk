@@ -3,211 +3,280 @@ package com.tencent.mm.plugin.finder.live.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.live.b.h;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.live.report.m;
-import com.tencent.mm.plugin.finder.live.report.s.bg;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.live.report.k;
+import com.tencent.mm.plugin.finder.live.report.q.bv;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.a.g;
-import com.tencent.mm.ui.widget.a.g.a;
+import com.tencent.mm.ui.widget.a.j;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
 import kotlin.g.a.q;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveCommentPostRealNamePanel;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bottomDialog", "Lcom/tencent/mm/ui/widget/dialog/MMHalfBottomDialog;", "check", "", "checkBox", "Landroid/widget/CheckBox;", "licenseContent", "Landroid/widget/TextView;", "realNameCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "success", "", "verifyUrl", "", "webviewForwardCallback", "Lkotlin/Function3;", "Landroid/content/Intent;", "intent", "requestCode", "init", "onActivityResult", "resultCode", "data", "setDialogHeight", "height", "", "setWebviewForwardCallback", "callback", "showDialog", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveCommentPostRealNamePanel;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bottomDialog", "Lcom/tencent/mm/ui/widget/dialog/MMHalfBottomDialog;", "check", "", "checkBox", "Landroid/widget/CheckBox;", "licenseContent", "Landroid/widget/TextView;", "realNameCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "success", "", "verifyUrl", "", "webviewForwardCallback", "Lkotlin/Function3;", "Landroid/content/Intent;", "intent", "requestCode", "init", "onActivityResult", "resultCode", "data", "setDialogHeight", "height", "", "setLicenseText", "tv", "setWebviewForwardCallback", "callback", "showDialog", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveCommentPostRealNamePanel
   extends LinearLayout
 {
-  public static final a yTH;
+  public static final FinderLiveCommentPostRealNamePanel.a DMd;
+  private TextView Bqr;
+  private q<? super Context, ? super Intent, ? super Integer, ah> DMe;
+  public b<? super Boolean, ah> DMf;
+  public j DMg;
   private CheckBox checkBox;
-  public String kwF;
-  private boolean msB;
-  private q<? super Context, ? super Intent, ? super Integer, x> yTD;
-  public kotlin.g.a.b<? super Boolean, x> yTE;
-  private TextView yTF;
-  public g yTG;
+  public String nag;
+  private boolean plZ;
   
   static
   {
-    AppMethodBeat.i(280609);
-    yTH = new a((byte)0);
-    AppMethodBeat.o(280609);
+    AppMethodBeat.i(358046);
+    DMd = new FinderLiveCommentPostRealNamePanel.a((byte)0);
+    AppMethodBeat.o(358046);
   }
   
   public FinderLiveCommentPostRealNamePanel(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(280606);
-    this.kwF = "";
+    AppMethodBeat.i(357980);
+    this.nag = "";
     init(paramContext);
-    AppMethodBeat.o(280606);
+    AppMethodBeat.o(357980);
   }
   
   public FinderLiveCommentPostRealNamePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(280607);
-    this.kwF = "";
+    AppMethodBeat.i(357987);
+    this.nag = "";
     init(paramContext);
-    AppMethodBeat.o(280607);
+    AppMethodBeat.o(357987);
   }
   
   public FinderLiveCommentPostRealNamePanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(280608);
-    this.kwF = "";
+    AppMethodBeat.i(357992);
+    this.nag = "";
     init(paramContext);
-    AppMethodBeat.o(280608);
+    AppMethodBeat.o(357992);
   }
   
-  private final void init(final Context paramContext)
+  private static final void a(FinderLiveCommentPostRealNamePanel paramFinderLiveCommentPostRealNamePanel, Context paramContext)
   {
-    AppMethodBeat.i(280603);
-    Object localObject1 = View.inflate(paramContext, b.g.finder_live_comment_post_real_name_ui, (ViewGroup)this);
-    Object localObject2 = ((View)localObject1).findViewById(b.f.license_checkbox);
-    p.j(localObject2, "root.findViewById(R.id.license_checkbox)");
-    this.checkBox = ((CheckBox)localObject2);
-    localObject2 = this.checkBox;
-    if (localObject2 == null) {
-      p.bGy("checkBox");
+    AppMethodBeat.i(358031);
+    s.u(paramFinderLiveCommentPostRealNamePanel, "this$0");
+    s.u(paramContext, "$context");
+    if ((paramFinderLiveCommentPostRealNamePanel.plZ) && (!Util.isNullOrNil(paramFinderLiveCommentPostRealNamePanel.nag)))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("open_custom_style_url", true);
+      localIntent.putExtra("forceHideShare", true);
+      localIntent.putExtra("show_native_web_view", true);
+      localIntent.putExtra("rawUrl", paramFinderLiveCommentPostRealNamePanel.nag);
+      localIntent.putExtra("screen_orientation", 1);
+      paramFinderLiveCommentPostRealNamePanel = paramFinderLiveCommentPostRealNamePanel.DMe;
+      if (paramFinderLiveCommentPostRealNamePanel != null) {
+        paramFinderLiveCommentPostRealNamePanel.invoke(paramContext, localIntent, Integer.valueOf(10000));
+      }
+      k.Doi.a(q.bv.DDu);
     }
-    ((CheckBox)localObject2).setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new b(this));
-    localObject1 = ((View)localObject1).findViewById(b.f.license_content);
-    p.j(localObject1, "root.findViewById(R.id.license_content)");
-    this.yTF = ((TextView)localObject1);
-    localObject1 = this.yTF;
-    if (localObject1 == null) {
-      p.bGy("licenseContent");
+    AppMethodBeat.o(358031);
+  }
+  
+  private static final void a(FinderLiveCommentPostRealNamePanel paramFinderLiveCommentPostRealNamePanel, CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    Object localObject = null;
+    paramCompoundButton = null;
+    AppMethodBeat.i(358021);
+    s.u(paramFinderLiveCommentPostRealNamePanel, "this$0");
+    paramFinderLiveCommentPostRealNamePanel.plZ = paramBoolean;
+    if (paramBoolean)
+    {
+      paramFinderLiveCommentPostRealNamePanel = paramFinderLiveCommentPostRealNamePanel.DMg;
+      if (paramFinderLiveCommentPostRealNamePanel == null)
+      {
+        s.bIx("bottomDialog");
+        paramFinderLiveCommentPostRealNamePanel = paramCompoundButton;
+      }
+      for (;;)
+      {
+        paramFinderLiveCommentPostRealNamePanel.aFe(0);
+        AppMethodBeat.o(358021);
+        return;
+      }
     }
-    ((TextView)localObject1).setOnClickListener((View.OnClickListener)new c(this, paramContext));
-    this.yTG = new g(paramContext, 2, 1);
-    localObject1 = this.yTG;
-    if (localObject1 == null) {
-      p.bGy("bottomDialog");
+    paramFinderLiveCommentPostRealNamePanel = paramFinderLiveCommentPostRealNamePanel.DMg;
+    if (paramFinderLiveCommentPostRealNamePanel == null)
+    {
+      s.bIx("bottomDialog");
+      paramFinderLiveCommentPostRealNamePanel = localObject;
     }
-    ((g)localObject1).ah((CharSequence)paramContext.getResources().getString(b.h.live_face_verify_ok));
-    localObject1 = this.yTG;
-    if (localObject1 == null) {
-      p.bGy("bottomDialog");
+    for (;;)
+    {
+      paramFinderLiveCommentPostRealNamePanel.aFe(1);
+      AppMethodBeat.o(358021);
+      return;
     }
-    ((g)localObject1).a((g.a)new d(this, paramContext));
-    paramContext = this.yTG;
-    if (paramContext == null) {
-      p.bGy("bottomDialog");
+  }
+  
+  private final void init(Context paramContext)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(358004);
+    View localView = View.inflate(paramContext, p.f.Cds, (ViewGroup)this);
+    Object localObject1 = localView.findViewById(p.e.BVV);
+    s.s(localObject1, "root.findViewById(R.id.license_checkbox)");
+    this.checkBox = ((CheckBox)localObject1);
+    Object localObject3 = this.checkBox;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("checkBox");
+      localObject1 = null;
     }
-    paramContext.ayu(1);
-    paramContext = this.yTG;
-    if (paramContext == null) {
-      p.bGy("bottomDialog");
+    ((CheckBox)localObject1).setOnCheckedChangeListener(new FinderLiveCommentPostRealNamePanel..ExternalSyntheticLambda0(this));
+    localObject1 = localView.findViewById(p.e.BVW);
+    s.s(localObject1, "root.findViewById(R.id.license_content)");
+    this.Bqr = ((TextView)localObject1);
+    localObject3 = this.Bqr;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("licenseContent");
+      localObject1 = null;
     }
-    paramContext.setCustomView((View)this);
-    AppMethodBeat.o(280603);
+    setLicenseText((TextView)localObject1);
+    this.DMg = new j(paramContext, 2, 1);
+    localObject1 = this.DMg;
+    if (localObject1 == null)
+    {
+      s.bIx("bottomDialog");
+      localObject1 = null;
+      ((j)localObject1).au((CharSequence)paramContext.getResources().getString(b.h.live_face_verify_ok));
+      localObject3 = this.DMg;
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        s.bIx("bottomDialog");
+        localObject1 = null;
+      }
+      ((j)localObject1).agfR = new FinderLiveCommentPostRealNamePanel..ExternalSyntheticLambda1(this, paramContext);
+      localObject1 = this.DMg;
+      paramContext = (Context)localObject1;
+      if (localObject1 == null)
+      {
+        s.bIx("bottomDialog");
+        paramContext = null;
+      }
+      paramContext.aFe(1);
+      paramContext = this.DMg;
+      if (paramContext != null) {
+        break label263;
+      }
+      s.bIx("bottomDialog");
+      paramContext = localObject2;
+    }
+    label263:
+    for (;;)
+    {
+      paramContext.setCustomView((View)this);
+      AppMethodBeat.o(358004);
+      return;
+      break;
+    }
+  }
+  
+  private final void setLicenseText(TextView paramTextView)
+  {
+    AppMethodBeat.i(358017);
+    Object localObject1 = paramTextView.getContext().getResources().getString(p.h.Cid);
+    s.s(localObject1, "tv.context.resources.get…inder_live_anchor_iterms)");
+    Object localObject2 = am.aixg;
+    localObject2 = paramTextView.getContext().getResources().getString(p.h.Cjy, new Object[] { localObject1 });
+    s.s(localObject2, "tv.context.resources.get…alname_license, firstStr)");
+    localObject2 = String.format((String)localObject2, Arrays.copyOf(new Object[0], 0));
+    s.s(localObject2, "java.lang.String.format(format, *args)");
+    int i = n.a((CharSequence)localObject2, (String)localObject1, 0, false, 6);
+    int j = ((String)localObject1).length();
+    localObject1 = new SpannableString((CharSequence)localObject2);
+    ((SpannableString)localObject1).setSpan(new b(this), i, i + j, 33);
+    paramTextView.setHighlightColor(paramTextView.getContext().getResources().getColor(17170445));
+    paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    paramTextView.setText((CharSequence)localObject1);
+    AppMethodBeat.o(358017);
   }
   
   public final void setDialogHeight(double paramDouble)
   {
-    AppMethodBeat.i(280605);
-    g localg = this.yTG;
-    if (localg == null) {
-      p.bGy("bottomDialog");
+    AppMethodBeat.i(358077);
+    j localj2 = this.DMg;
+    j localj1 = localj2;
+    if (localj2 == null)
+    {
+      s.bIx("bottomDialog");
+      localj1 = null;
     }
-    localg.setHeight((int)paramDouble);
-    AppMethodBeat.o(280605);
+    localj1.setHeight((int)paramDouble);
+    AppMethodBeat.o(358077);
   }
   
-  public final void setWebviewForwardCallback(q<? super Context, ? super Intent, ? super Integer, x> paramq)
+  public final void setWebviewForwardCallback(q<? super Context, ? super Intent, ? super Integer, ah> paramq)
   {
-    AppMethodBeat.i(280604);
-    p.k(paramq, "callback");
-    this.yTD = paramq;
-    AppMethodBeat.o(280604);
+    AppMethodBeat.i(358072);
+    s.u(paramq, "callback");
+    this.DMe = paramq;
+    AppMethodBeat.o(358072);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveCommentPostRealNamePanel$Companion;", "", "()V", "REQUEST_CODE_FACE_VERIFY", "", "TAG", "", "url", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "buttonView", "Landroid/widget/CompoundButton;", "kotlin.jvm.PlatformType", "isChecked", "", "onCheckedChanged"})
-  static final class b
-    implements CompoundButton.OnCheckedChangeListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/view/FinderLiveCommentPostRealNamePanel$setLicenseText$firstClickSpan$1", "Landroid/text/style/ClickableSpan;", "onClick", "", "widget", "Landroid/view/View;", "updateDrawState", "ds", "Landroid/text/TextPaint;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    extends ClickableSpan
   {
     b(FinderLiveCommentPostRealNamePanel paramFinderLiveCommentPostRealNamePanel) {}
     
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-    {
-      AppMethodBeat.i(287699);
-      FinderLiveCommentPostRealNamePanel.a(this.yTI, paramBoolean);
-      if (paramBoolean)
-      {
-        FinderLiveCommentPostRealNamePanel.b(this.yTI).ayu(0);
-        AppMethodBeat.o(287699);
-        return;
-      }
-      FinderLiveCommentPostRealNamePanel.b(this.yTI).ayu(1);
-      AppMethodBeat.o(287699);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(FinderLiveCommentPostRealNamePanel paramFinderLiveCommentPostRealNamePanel, Context paramContext) {}
-    
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(290539);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCommentPostRealNamePanel$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      AppMethodBeat.i(357493);
+      s.u(paramView, "widget");
       paramView = new Intent();
       paramView.putExtra("rawUrl", "https://weixin.qq.com/cgi-bin/readtemplate?t=finder_live_privacy");
-      localObject = FinderLiveCommentPostRealNamePanel.c(this.yTI);
-      if (localObject != null) {
-        ((q)localObject).c(paramContext, paramView, null);
-      }
-      a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveCommentPostRealNamePanel$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(290539);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onClick"})
-  static final class d
-    implements g.a
-  {
-    d(FinderLiveCommentPostRealNamePanel paramFinderLiveCommentPostRealNamePanel, Context paramContext) {}
-    
-    public final void onClick()
-    {
-      AppMethodBeat.i(281196);
-      if ((FinderLiveCommentPostRealNamePanel.a(this.yTI)) && (!Util.isNullOrNil(FinderLiveCommentPostRealNamePanel.d(this.yTI))))
+      q localq = FinderLiveCommentPostRealNamePanel.a(this.DMh);
+      if (localq != null)
       {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("open_custom_style_url", true);
-        localIntent.putExtra("forceHideShare", true);
-        localIntent.putExtra("show_native_web_view", true);
-        localIntent.putExtra("rawUrl", FinderLiveCommentPostRealNamePanel.d(this.yTI));
-        localIntent.putExtra("screen_orientation", 1);
-        q localq = FinderLiveCommentPostRealNamePanel.c(this.yTI);
-        if (localq != null) {
-          localq.c(paramContext, localIntent, Integer.valueOf(10000));
-        }
-        m.yCt.a(s.bg.yLD);
+        Context localContext = this.DMh.getContext();
+        s.s(localContext, "context");
+        localq.invoke(localContext, paramView, null);
       }
-      AppMethodBeat.o(281196);
+      AppMethodBeat.o(357493);
+    }
+    
+    public final void updateDrawState(TextPaint paramTextPaint)
+    {
+      AppMethodBeat.i(357498);
+      s.u(paramTextPaint, "ds");
+      paramTextPaint.setColor(Color.parseColor("#7D90A9"));
+      paramTextPaint.setUnderlineText(false);
+      paramTextPaint.clearShadowLayer();
+      AppMethodBeat.o(357498);
     }
   }
 }

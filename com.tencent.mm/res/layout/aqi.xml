@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.viewpager.widget.ViewPager android:id="@id/dfr" android:background="@color/cb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.ui.base.MMDotView android:layout_gravity="bottom|center" android:id="@id/dfv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip" />
-</FrameLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@id/iiy" app:loadMoreLayout="@layout/b8d">
+        <androidx.recyclerview.widget.RecyclerView android:paddingTop="@dimen/d6" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.view.RefreshLoadMoreLayout>
+    <FrameLayout android:id="@id/do" android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="@dimen/d6" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/dm" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/actionbar_icon_light_close" android:layout_marginStart="@dimen/cp" app:iconColor="@android:color/white" />
+        <TextView android:textSize="@dimen/t" android:textColor="#e6ffffff" android:layout_gravity="center" android:id="@id/dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eq4" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/cjf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@id/do">
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/i7q" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/ca" android:indeterminateDrawable="@drawable/ang" />
+        <TextView android:textSize="@dimen/hq" android:textColor="#ccffffff" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/isi" android:paddingTop="@dimen/ca" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/d8n" />
+        <TextView android:textSize="@dimen/hq" android:textColor="#ccffffff" android:layout_gravity="center_horizontal" android:id="@id/cj6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ca" android:text="@string/ekq" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ciy" android:background="@color/a2" android:paddingTop="@dimen/ca" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/hp" android:textColor="#ccffffff" android:id="@id/cja" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eq2" />
+            <TextView android:textSize="@dimen/t" android:textColor="#80ffffff" android:gravity="center" android:id="@id/cjb" android:paddingLeft="35.0dip" android:paddingRight="35.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:text="@string/eq3" />
+            <TextView android:textColor="#ccffffff" android:gravity="center" android:id="@id/cil" android:background="@drawable/vb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="297.0dip" android:minWidth="@dimen/cj" android:minHeight="@dimen/d4" android:text="@string/epz" />
+        </LinearLayout>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

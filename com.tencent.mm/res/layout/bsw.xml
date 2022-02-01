@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/auf" android:background="@color/d" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.tools.VideoSightView android:id="@id/dup" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
-    <com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView android:id="@id/g3g" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:gravity="center" android:id="@id/c3v" android:background="@color/fm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h4l" android:layout_centerInParent="true" android:alpha="0.8" />
-    <ViewStub android:id="@id/hru" android:layout="@layout/bst" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/i59" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <TextView android:textSize="@dimen/kc" android:textColor="@color/ag2" android:gravity="center" android:id="@id/c4k" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:alpha="0.8" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/gl7" android:visibility="gone" android:layout_width="@dimen/ag2" android:layout_height="@dimen/ag2" android:layout_centerInParent="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button android:id="@id/amc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="设置demo背景" style="@style/oh" />
+        <Button android:id="@id/ame" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="设置音乐播放器背景" style="@style/oh" />
+        <Button android:id="@id/amd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="设置视频号背景" style="@style/oh" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/fjs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true">
+        <Button android:id="@id/am5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="onPreOpen" style="@style/oh" />
+        <Button android:id="@id/am3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="onPostOpen" style="@style/oh" />
+        <Button android:id="@id/am4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="onPreClose" style="@style/oh" />
+        <Button android:id="@id/am2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:text="onPostClose" style="@style/oh" />
+    </LinearLayout>
+    <ImageView android:id="@id/fck" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_below="@id/fjs" />
+    <FrameLayout android:id="@id/fkm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/fjs" />
 </RelativeLayout>

@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WrapScollview
   extends NestedScrollView
 {
-  private boolean Lgp = true;
+  private boolean RGz = true;
   private View contentView;
   
   public WrapScollview(Context paramContext, AttributeSet paramAttributeSet)
@@ -24,15 +24,15 @@ public class WrapScollview
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final int computeScrollDeltaToGetChildRectOnScreen(Rect paramRect)
+  public final int n(Rect paramRect)
   {
     AppMethodBeat.i(99806);
-    if (!this.Lgp)
+    if (!this.RGz)
     {
       AppMethodBeat.o(99806);
       return 0;
     }
-    int i = super.computeScrollDeltaToGetChildRectOnScreen(paramRect);
+    int i = super.n(paramRect);
     AppMethodBeat.o(99806);
     return i;
   }
@@ -72,12 +72,12 @@ public class WrapScollview
   
   public void setDoComputeScrollDeltaToGetChildRectOnScreen(boolean paramBoolean)
   {
-    this.Lgp = paramBoolean;
+    this.RGz = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.WrapScollview
  * JD-Core Version:    0.7.0.1
  */

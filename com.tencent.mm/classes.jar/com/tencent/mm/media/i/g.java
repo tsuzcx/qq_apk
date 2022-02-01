@@ -1,92 +1,115 @@
 package com.tencent.mm.media.i;
 
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.nio.ByteBuffer;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.a.m;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/remuxer/MediaCodecRemuxerCallback;", "", "mixMuxerController", "Lcom/tencent/mm/media/remuxer/MixMuxerController;", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "outputFilePath", "", "type", "", "outputSampleRate", "outputChannelCount", "(Lcom/tencent/mm/media/remuxer/MixMuxerController;Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;III)V", "TAG", "audioEncodeCallback", "Lkotlin/Function3;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "data", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "Landroid/media/MediaFormat;", "format", "", "getAudioEncodeCallback", "()Lkotlin/jvm/functions/Function3;", "setAudioEncodeCallback", "(Lkotlin/jvm/functions/Function3;)V", "backgroundMediaExtractor", "drawCallback", "Lkotlin/Function0;", "getDrawCallback", "()Lkotlin/jvm/functions/Function0;", "setDrawCallback", "(Lkotlin/jvm/functions/Function0;)V", "encodeEndCallback", "Lkotlin/Function1;", "path", "encodeFinish", "getEncodeEndCallback", "()Lkotlin/jvm/functions/Function1;", "setEncodeEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "frameCount", "mixFinishCallback", "mixType", "tempPath", "videoEncodeCallback", "Lkotlin/Function2;", "getVideoEncodeCallback", "()Lkotlin/jvm/functions/Function2;", "setVideoEncodeCallback", "(Lkotlin/jvm/functions/Function2;)V", "videoRotate", "getVideoRotate", "()I", "setVideoRotate", "(I)V", "finishMix", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/remuxer/MediaCodecRemuxerFactory;", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer$Factory;", "()V", "get", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer;", "filePath", "", "outputFilePath", "outputWidth", "", "outputHeight", "outputBitrate", "outputFps", "minQP", "maxQP", "callback", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer$FinishCallback;", "startTimeMs", "", "endTimeMs", "getWithSoftEncode", "outputHevc", "", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
+  implements c.a
 {
-  final String TAG;
-  int frameCount;
-  String jHQ;
-  int kRX;
-  int kWG;
-  i kWL;
-  com.tencent.mm.media.f.a kXK;
-  int kXL;
-  int kXM;
-  b<? super String, x> kXN;
-  public m<? super ByteBuffer, ? super MediaCodec.BufferInfo, x> kXO;
-  public kotlin.g.a.q<? super ByteBuffer, ? super MediaCodec.BufferInfo, ? super MediaFormat, x> kXP;
-  public b<? super b<? super String, x>, x> kXQ;
-  public kotlin.g.a.a<x> kXR;
-  String outputFilePath;
+  public static final g nDb;
   
-  public g(i parami, com.tencent.mm.media.f.a parama, String paramString, int paramInt1, int paramInt2)
+  static
   {
-    AppMethodBeat.i(93820);
-    this.TAG = "MicroMsg.RemuxerCallback";
-    this.outputFilePath = "";
-    this.jHQ = "";
-    this.kXO = ((m)new d(this));
-    this.kXP = ((kotlin.g.a.q)new a(this));
-    this.kXQ = ((b)new c(this));
-    this.kXR = ((kotlin.g.a.a)new b(this));
-    this.jHQ = (paramString + "_" + System.currentTimeMillis() + ".mp4");
-    this.kWL = parami;
-    this.kXK = parama;
-    this.outputFilePath = paramString;
-    this.kXL = paramInt2;
-    this.kXM = 1;
-    this.kRX = paramInt1;
-    AppMethodBeat.o(93820);
+    AppMethodBeat.i(93825);
+    nDb = new g();
+    AppMethodBeat.o(93825);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Ljava/nio/ByteBuffer;", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "format", "Landroid/media/MediaFormat;", "invoke"})
+  public final c a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, c.b paramb)
+  {
+    AppMethodBeat.i(93823);
+    if (paramString1 == null)
+    {
+      paramString1 = "";
+      if (paramString2 != null) {
+        break label82;
+      }
+      paramString2 = "";
+    }
+    label82:
+    for (;;)
+    {
+      paramString1 = (c)new e(null, paramString1, 1, paramString2, 0, 0, paramInt1, paramInt2, paramInt3, 48000, 44100, 1, paramInt4, 0L, 0L, false, false, paramInt5, paramInt6, false, 0, (b)new a(paramb), 7340032);
+      AppMethodBeat.o(93823);
+      return paramString1;
+      break;
+    }
+  }
+  
+  public final c a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean, c.b paramb)
+  {
+    AppMethodBeat.i(237807);
+    if (paramString1 == null)
+    {
+      paramString1 = "";
+      if (paramString2 != null) {
+        break label83;
+      }
+      paramString2 = "";
+    }
+    label83:
+    for (;;)
+    {
+      paramString1 = (c)new e(null, paramString1, 1, paramString2, 0, 0, paramInt1, paramInt2, paramInt3, 48000, 44100, 1, paramInt4, 0L, 0L, true, paramBoolean, paramInt5, paramInt6, false, 0, (b)new c(paramb), 7340032);
+      AppMethodBeat.o(237807);
+      return paramString1;
+      break;
+    }
+  }
+  
+  public final c a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, int paramInt5, int paramInt6, c.b paramb)
+  {
+    AppMethodBeat.i(93824);
+    if (paramString1 == null)
+    {
+      paramString1 = "";
+      if (paramString2 != null) {
+        break label84;
+      }
+      paramString2 = "";
+    }
+    label84:
+    for (;;)
+    {
+      paramString1 = (c)new e(null, paramString1, 1, paramString2, 0, 0, paramInt1, paramInt2, paramInt3, 48000, 44100, 1, paramInt4, paramLong1, paramLong2, false, false, paramInt5, paramInt6, false, 0, (b)new b(paramb), 7340032);
+      AppMethodBeat.o(93824);
+      return paramString1;
+      break;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "path", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.q<ByteBuffer, MediaCodec.BufferInfo, MediaFormat, x>
+    extends u
+    implements b<String, ah>
   {
-    a(g paramg)
+    a(c.b paramb)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "path", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements b<String, ah>
   {
-    b(g paramg)
+    b(c.b paramb)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "path", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "path", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends kotlin.g.b.q
-    implements b<b<? super String, ? extends x>, x>
+    extends u
+    implements b<String, ah>
   {
-    c(g paramg)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Ljava/nio/ByteBuffer;", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "invoke"})
-  static final class d
-    extends kotlin.g.b.q
-    implements m<ByteBuffer, MediaCodec.BufferInfo, x>
-  {
-    d(g paramg)
+    c(c.b paramb)
     {
       super();
     }

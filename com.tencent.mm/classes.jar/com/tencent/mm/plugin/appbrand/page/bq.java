@@ -9,15 +9,15 @@ import com.tencent.mm.plugin.appbrand.page.a.h;
 import com.tencent.mm.plugin.appbrand.page.c.a;
 import com.tencent.mm.plugin.appbrand.page.c.c.b;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewStatusBarExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewStatusBarExtension;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewExtensionLifecycle;", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "H", "Lcom/tencent/mm/plugin/appbrand/page/statusbar/IPageStatusBarHelper;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;Lcom/tencent/mm/plugin/appbrand/page/statusbar/IPageStatusBarHelper;)V", "hideStatusBar", "", "isStatusBarHidden", "", "onActionbarInstalled", "actionBar", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;", "onBackground", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDestroy", "onForeground", "showStatusBar", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/MPPageViewStatusBarExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewStatusBarExtension;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewExtensionLifecycle;", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "H", "Lcom/tencent/mm/plugin/appbrand/page/statusbar/IPageStatusBarHelper;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;Lcom/tencent/mm/plugin/appbrand/page/statusbar/IPageStatusBarHelper;)V", "hideStatusBar", "", "isStatusBarHidden", "", "onActionbarInstalled", "actionBar", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;", "onBackground", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onDestroy", "onForeground", "showStatusBar", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class bq
   implements com.tencent.mm.plugin.appbrand.page.a.b, h
 {
-  private final ad cvZ;
-  private final com.tencent.mm.plugin.appbrand.page.c.c qwe;
+  private final ad enX;
+  private final com.tencent.mm.plugin.appbrand.page.c.c tAV;
   
   public bq(ad paramad)
   {
@@ -29,55 +29,66 @@ public class bq
   public bq(ad paramad, com.tencent.mm.plugin.appbrand.page.c.c paramc)
   {
     AppMethodBeat.i(148005);
-    this.cvZ = paramad;
-    this.qwe = paramc;
+    this.enX = paramad;
+    this.tAV = paramc;
     AppMethodBeat.o(148005);
   }
   
-  public final void Qb()
+  private static final void a(a parama, bq parambq, Configuration paramConfiguration)
+  {
+    AppMethodBeat.i(324995);
+    s.u(parama, "$H21");
+    s.u(parambq, "this$0");
+    s.u(paramConfiguration, "$newConfig");
+    parama.v(parambq.enX.qwF.asq(), paramConfiguration.orientation);
+    AppMethodBeat.o(324995);
+  }
+  
+  public final void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb)
+  {
+    AppMethodBeat.i(325025);
+    s.u(paramb, "actionBar");
+    AppMethodBeat.o(325025);
+  }
+  
+  public final void aql()
   {
     AppMethodBeat.i(148000);
-    Object localObject = (d)this.cvZ;
+    Object localObject = (e)this.enX;
     if (MMHandlerThread.isMainThread())
     {
-      this.qwe.Qb();
+      this.tAV.aql();
       AppMethodBeat.o(148000);
       return;
     }
-    localObject = ((d)localObject).getContentView();
-    if (localObject != null)
-    {
-      ((View)localObject).post((Runnable)new c(this));
-      AppMethodBeat.o(148000);
-      return;
+    localObject = ((e)localObject).getContentView();
+    if (localObject != null) {
+      ((View)localObject).post((Runnable)new b(this));
     }
     AppMethodBeat.o(148000);
   }
   
-  public final void Qc()
+  public final void aqm()
   {
     AppMethodBeat.i(148001);
-    Object localObject = (d)this.cvZ;
+    Object localObject = (e)this.enX;
     if (MMHandlerThread.isMainThread())
     {
-      this.qwe.Qc();
+      this.tAV.aqm();
       AppMethodBeat.o(148001);
       return;
     }
-    localObject = ((d)localObject).getContentView();
-    if (localObject != null)
-    {
+    localObject = ((e)localObject).getContentView();
+    if (localObject != null) {
       ((View)localObject).post((Runnable)new a(this));
-      AppMethodBeat.o(148001);
-      return;
     }
     AppMethodBeat.o(148001);
   }
   
-  public final boolean Qe()
+  public final boolean aqo()
   {
     AppMethodBeat.i(148004);
-    if (this.qwe.Qd() == c.b.qyc)
+    if (this.tAV.aqn() == c.b.tDc)
     {
       AppMethodBeat.o(148004);
       return true;
@@ -86,32 +97,22 @@ public class bq
     return false;
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb)
-  {
-    AppMethodBeat.i(243266);
-    p.k(paramb, "actionBar");
-    AppMethodBeat.o(243266);
-  }
-  
   public final void onBackground() {}
   
-  public final void onConfigurationChanged(final Configuration paramConfiguration)
+  public final void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(148003);
-    p.k(paramConfiguration, "newConfig");
-    com.tencent.mm.plugin.appbrand.page.c.c localc = this.qwe;
-    Object localObject = localc;
-    if (!(localc instanceof a)) {
-      localObject = null;
-    }
-    localObject = (a)localObject;
-    if (localObject != null)
+    s.u(paramConfiguration, "newConfig");
+    Object localObject = this.tAV;
+    if ((localObject instanceof a)) {}
+    for (localObject = (a)localObject;; localObject = null)
     {
-      this.cvZ.post((Runnable)new b((a)localObject, this, paramConfiguration));
+      if (localObject != null) {
+        this.enX.post(new bq..ExternalSyntheticLambda0((a)localObject, this, paramConfiguration));
+      }
       AppMethodBeat.o(148003);
       return;
     }
-    AppMethodBeat.o(148003);
   }
   
   public final void onDestroy() {}
@@ -119,28 +120,20 @@ public class bq
   public final void onForeground()
   {
     AppMethodBeat.i(148002);
-    this.qwe.PN();
-    Object localObject2 = this.qwe;
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof a)) {
-      localObject1 = null;
-    }
-    localObject1 = (a)localObject1;
-    if (localObject1 != null)
+    this.tAV.apW();
+    Object localObject = this.tAV;
+    if ((localObject instanceof a)) {}
+    for (localObject = (a)localObject;; localObject = null)
     {
-      boolean bool = this.cvZ.getWindowAndroid().RZ();
-      localObject2 = this.cvZ.getContext();
-      p.j(localObject2, "page.context");
-      localObject2 = ((Context)localObject2).getResources();
-      p.j(localObject2, "page.context.resources");
-      ((a)localObject1).x(bool, ((Resources)localObject2).getConfiguration().orientation);
+      if (localObject != null) {
+        ((a)localObject).v(this.enX.qwF.asq(), this.enX.getContext().getResources().getConfiguration().orientation);
+      }
       AppMethodBeat.o(148002);
       return;
     }
-    AppMethodBeat.o(148002);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/AppBrandComponentViewWxa$runOnUiThread$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "com/tencent/mm/plugin/appbrand/page/AppBrandComponentViewWxa$runOnUiThread$1"}, k=3, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Runnable
   {
@@ -149,42 +142,28 @@ public class bq
     public final void run()
     {
       AppMethodBeat.i(147997);
-      bq.a(this.qwf).Qc();
+      bq.a(this.tAW).aqm();
       AppMethodBeat.o(147997);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/MPPageViewStatusBarExtensionImpl$onConfigurationChanged$1$1"})
-  static final class b
+  @Metadata(d1={""}, d2={"<anonymous>", "", "com/tencent/mm/plugin/appbrand/page/AppBrandComponentViewWxa$runOnUiThread$1"}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class b
     implements Runnable
   {
-    b(a parama, bq parambq, Configuration paramConfiguration) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(147998);
-      this.qwg.x(bq.b(jdField_this).getWindowAndroid().RZ(), paramConfiguration.orientation);
-      AppMethodBeat.o(147998);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/appbrand/page/AppBrandComponentViewWxa$runOnUiThread$1"})
-  public static final class c
-    implements Runnable
-  {
-    public c(bq parambq) {}
+    public b(bq parambq) {}
     
     public final void run()
     {
       AppMethodBeat.i(147999);
-      bq.a(this.qwf).Qb();
+      bq.a(this.tAW).aql();
       AppMethodBeat.o(147999);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bq
  * JD-Core Version:    0.7.0.1
  */

@@ -6,27 +6,27 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import kotlin.l;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.finder.publish.l.f;
+import com.tencent.mm.plugin.finder.publish.l.i;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordBeautyView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordBeautyView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SubRecordBeautyView
   extends FrameLayout
 {
   public SubRecordBeautyView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(281997);
-    LayoutInflater.from(paramContext).inflate(b.g.finder_sub_record_beauty_layout, (ViewGroup)this, true);
-    setContentDescription((CharSequence)a.ba(paramContext, b.j.finder_live_menu_opt_beauty));
-    AppMethodBeat.o(281997);
+    AppMethodBeat.i(335686);
+    LayoutInflater.from(paramContext).inflate(l.f.finder_sub_record_beauty_layout, (ViewGroup)this, true);
+    setContentDescription((CharSequence)a.bt(paramContext, l.i.Fik));
+    AppMethodBeat.o(335686);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.plugin.view.SubRecordBeautyView
  * JD-Core Version:    0.7.0.1
  */

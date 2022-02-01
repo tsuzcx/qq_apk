@@ -16,7 +16,7 @@ public final class g
   public static v a(Context paramContext, com.google.android.exoplayer2.g.h paramh)
   {
     AppMethodBeat.i(91887);
-    paramContext = a(new d(paramContext), paramh, new c());
+    paramContext = a(new d(paramContext), paramh);
     AppMethodBeat.o(91887);
     return paramContext;
   }
@@ -28,6 +28,14 @@ public final class g
     paramContext = a(new d(paramContext), paramh, paramm);
     AppMethodBeat.o(91886);
     return paramContext;
+  }
+  
+  public static v a(u paramu, com.google.android.exoplayer2.g.h paramh)
+  {
+    AppMethodBeat.i(210112);
+    paramu = a(paramu, paramh, new c());
+    AppMethodBeat.o(210112);
+    return paramu;
   }
   
   public static v a(u paramu, com.google.android.exoplayer2.g.h paramh, m paramm)

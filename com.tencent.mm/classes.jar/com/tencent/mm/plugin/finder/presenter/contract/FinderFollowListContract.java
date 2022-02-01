@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.finder.presenter.contract;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowListContract;", "", "()V", "FollowListPresent", "FollowListViewCallback", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowListContract;", "", "()V", "FollowListPresent", "FollowListViewCallback", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderFollowListContract
 {
-  public static final FinderFollowListContract zMP;
+  public static final FinderFollowListContract EXD;
   
   static
   {
-    AppMethodBeat.i(291786);
-    zMP = new FinderFollowListContract();
-    AppMethodBeat.o(291786);
+    AppMethodBeat.i(343885);
+    EXD = new FinderFollowListContract();
+    AppMethodBeat.o(343885);
   }
 }
 

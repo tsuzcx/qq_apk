@@ -4,7 +4,7 @@ import com.tencent.luggage.d.d;
 import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.j;
+import com.tencent.mm.plugin.webview.luggage.k;
 import java.util.Iterator;
 import java.util.LinkedList;
 import org.json.JSONObject;
@@ -13,23 +13,27 @@ public final class c
 {
   public static void b(String paramString, final JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(268491);
-    Iterator localIterator = j.gUQ().iterator();
-    while (localIterator.hasNext()) {
-      ((s)localIterator.next()).crX.a(new d()
-      {
-        public final JSONObject NU()
+    AppMethodBeat.i(295904);
+    Object localObject = k.iuB();
+    if (localObject != null)
+    {
+      localObject = ((LinkedList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((s)((Iterator)localObject).next()).ejR.a(new d()
         {
-          return paramJSONObject;
-        }
-        
-        public final String name()
-        {
-          return this.nAF;
-        }
-      });
+          public final JSONObject aoe()
+          {
+            return paramJSONObject;
+          }
+          
+          public final String name()
+          {
+            return c.this;
+          }
+        });
+      }
     }
-    AppMethodBeat.o(268491);
+    AppMethodBeat.o(295904);
   }
 }
 

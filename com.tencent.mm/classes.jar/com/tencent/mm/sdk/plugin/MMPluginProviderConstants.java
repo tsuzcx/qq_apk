@@ -39,75 +39,75 @@ public class MMPluginProviderConstants
     
     public static int getType(Object paramObject)
     {
-      AppMethodBeat.i(186539);
+      AppMethodBeat.i(243231);
       if (paramObject == null)
       {
         Log.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, null value");
-        AppMethodBeat.o(186539);
+        AppMethodBeat.o(243231);
         return 0;
       }
       if ((paramObject instanceof Integer))
       {
-        AppMethodBeat.o(186539);
+        AppMethodBeat.o(243231);
         return 1;
       }
       if ((paramObject instanceof Long))
       {
-        AppMethodBeat.o(186539);
+        AppMethodBeat.o(243231);
         return 2;
       }
       if ((paramObject instanceof String))
       {
-        AppMethodBeat.o(186539);
+        AppMethodBeat.o(243231);
         return 3;
       }
       if ((paramObject instanceof Boolean))
       {
-        AppMethodBeat.o(186539);
+        AppMethodBeat.o(243231);
         return 4;
       }
       if ((paramObject instanceof Float))
       {
-        AppMethodBeat.o(186539);
+        AppMethodBeat.o(243231);
         return 5;
       }
       if ((paramObject instanceof Double))
       {
-        AppMethodBeat.o(186539);
+        AppMethodBeat.o(243231);
         return 6;
       }
       Log.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, unknown type=" + paramObject.getClass().toString());
-      AppMethodBeat.o(186539);
+      AppMethodBeat.o(243231);
       return 0;
     }
     
     public static Object resolveObj(int paramInt, String paramString)
     {
-      AppMethodBeat.i(186548);
+      AppMethodBeat.i(243239);
       switch (paramInt)
       {
       }
       try
       {
         Log.e("MicroMsg.SDK.PluginProvider.Resolver", "unknown type");
-        AppMethodBeat.o(186548);
+        AppMethodBeat.o(243239);
         return null;
         paramString = Integer.valueOf(paramString);
-        AppMethodBeat.o(186548);
+        AppMethodBeat.o(243239);
         return paramString;
         paramString = Long.valueOf(paramString);
-        AppMethodBeat.o(186548);
+        AppMethodBeat.o(243239);
         return paramString;
-        AppMethodBeat.o(186548);
+        AppMethodBeat.o(243239);
         return paramString;
         paramString = Boolean.valueOf(paramString);
-        AppMethodBeat.o(186548);
+        AppMethodBeat.o(243239);
         return paramString;
         paramString = Float.valueOf(paramString);
-        AppMethodBeat.o(186548);
+        AppMethodBeat.o(243239);
         return paramString;
         paramString = Double.valueOf(paramString);
-        AppMethodBeat.o(186548);
+        AppMethodBeat.o(243239);
         return paramString;
       }
       catch (Exception paramString)
@@ -121,16 +121,16 @@ public class MMPluginProviderConstants
     
     public static boolean unresolveObj(ContentValues paramContentValues, Object paramObject)
     {
-      AppMethodBeat.i(186541);
+      AppMethodBeat.i(243238);
       int i = getType(paramObject);
       if (i == 0)
       {
-        AppMethodBeat.o(186541);
+        AppMethodBeat.o(243238);
         return false;
       }
       paramContentValues.put("type", Integer.valueOf(i));
       paramContentValues.put("value", paramObject.toString());
-      AppMethodBeat.o(186541);
+      AppMethodBeat.o(243238);
       return true;
     }
   }
@@ -145,9 +145,9 @@ public class MMPluginProviderConstants
     
     static
     {
-      AppMethodBeat.i(190318);
+      AppMethodBeat.i(243228);
       CONTENT_URI = Uri.parse("content://com.tencent.mm.sdk.plugin.provider/sharedpref");
-      AppMethodBeat.o(190318);
+      AppMethodBeat.o(243228);
     }
   }
 }

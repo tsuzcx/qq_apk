@@ -1,26 +1,25 @@
 package com.tencent.mm.plugin.appbrand.page;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
 
 public final class s
-  extends r
+  extends com.tencent.mm.plugin.appbrand.jsapi.s
 {
   private static final int CTRL_INDEX = 156;
   private static final String NAME = "onTapStatusBar";
-  private static s qqq;
+  private static s tuS;
   
   static
   {
     AppMethodBeat.i(135003);
-    qqq = new s();
+    tuS = new s();
     AppMethodBeat.o(135003);
   }
   
   public static void h(ad paramad)
   {
     AppMethodBeat.i(135002);
-    qqq.i(paramad).bPO();
+    tuS.h(paramad).cpV();
     AppMethodBeat.o(135002);
   }
 }

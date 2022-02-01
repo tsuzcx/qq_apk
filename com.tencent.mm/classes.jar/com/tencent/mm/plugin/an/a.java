@@ -1,6 +1,13 @@
 package com.tencent.mm.plugin.an;
 
-public final class a {}
+public abstract class a
+  implements b
+{
+  public int getType()
+  {
+    return 0;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

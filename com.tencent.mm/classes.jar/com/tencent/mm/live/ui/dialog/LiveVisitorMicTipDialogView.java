@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,51 +11,50 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.live.b.e;
 import com.tencent.mm.live.b.f;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/dialog/LiveVisitorMicTipDialogView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onButtonClickListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isOK", "", "setOnButtonClickListener", "listener", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/ui/dialog/LiveVisitorMicTipDialogView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onButtonClickListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isOK", "", "setOnButtonClickListener", "listener", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class LiveVisitorMicTipDialogView
   extends RelativeLayout
 {
-  private kotlin.g.a.b<? super Boolean, x> kKf;
+  private kotlin.g.a.b<? super Boolean, ah> nmu;
   
   public LiveVisitorMicTipDialogView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(190794);
+    AppMethodBeat.i(246393);
     paramContext = (TextView)LayoutInflater.from(paramContext).inflate(b.f.live_visitor_mic_dialog_view, (ViewGroup)this, true).findViewById(b.e.live_mic_dialog_confirm);
-    if (paramContext != null)
-    {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(201095);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/live/ui/dialog/LiveVisitorMicTipDialogView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          paramAnonymousView = LiveVisitorMicTipDialogView.a(this.kKg);
-          if (paramAnonymousView != null) {
-            paramAnonymousView.invoke(Boolean.TRUE);
-          }
-          a.a(this, "com/tencent/mm/live/ui/dialog/LiveVisitorMicTipDialogView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(201095);
-        }
-      });
-      AppMethodBeat.o(190794);
-      return;
+    if (paramContext != null) {
+      paramContext.setOnClickListener(new LiveVisitorMicTipDialogView..ExternalSyntheticLambda0(this));
     }
-    AppMethodBeat.o(190794);
+    AppMethodBeat.o(246393);
   }
   
-  public final void setOnButtonClickListener(kotlin.g.a.b<? super Boolean, x> paramb)
+  private static final void a(LiveVisitorMicTipDialogView paramLiveVisitorMicTipDialogView, View paramView)
   {
-    AppMethodBeat.i(190790);
-    p.k(paramb, "listener");
-    this.kKf = paramb;
-    AppMethodBeat.o(190790);
+    AppMethodBeat.i(246412);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramLiveVisitorMicTipDialogView);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/live/ui/dialog/LiveVisitorMicTipDialogView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramLiveVisitorMicTipDialogView, "this$0");
+    paramLiveVisitorMicTipDialogView = paramLiveVisitorMicTipDialogView.nmu;
+    if (paramLiveVisitorMicTipDialogView != null) {
+      paramLiveVisitorMicTipDialogView.invoke(Boolean.TRUE);
+    }
+    a.a(new Object(), "com/tencent/mm/live/ui/dialog/LiveVisitorMicTipDialogView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(246412);
+  }
+  
+  public final void setOnButtonClickListener(kotlin.g.a.b<? super Boolean, ah> paramb)
+  {
+    AppMethodBeat.i(246426);
+    s.u(paramb, "listener");
+    this.nmu = paramb;
+    AppMethodBeat.o(246426);
   }
 }
 

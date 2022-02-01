@@ -1,129 +1,90 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class pj
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
-  public int RTQ;
-  public pg RXQ;
+  public int YSQ;
+  public String YSR;
+  public String YSS;
+  public int start_time;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(206549);
+    AppMethodBeat.i(258377);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(206549);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.start_time);
+      paramVarArgs.bS(2, this.YSQ);
+      if (this.YSR != null) {
+        paramVarArgs.g(3, this.YSR);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.YSS != null) {
+        paramVarArgs.g(4, this.YSS);
       }
-      if (this.RXQ != null)
-      {
-        paramVarArgs.oE(2, this.RXQ.computeSize());
-        this.RXQ.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aY(3, this.RTQ);
-      AppMethodBeat.o(206549);
+      AppMethodBeat.o(258377);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label514;
-      }
-    }
-    label514:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.RXQ != null) {
-        i = paramInt + g.a.a.a.oD(2, this.RXQ.computeSize());
+      int i = i.a.a.b.b.a.cJ(1, this.start_time) + 0 + i.a.a.b.b.a.cJ(2, this.YSQ);
+      paramInt = i;
+      if (this.YSR != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.YSR);
       }
-      paramInt = g.a.a.b.b.a.bM(3, this.RTQ);
-      AppMethodBeat.o(206549);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(206549);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(206549);
-        return 0;
+      i = paramInt;
+      if (this.YSS != null) {
+        i = paramInt + i.a.a.b.b.a.h(4, this.YSS);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        pj localpj = (pj)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(206549);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jh();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jh)localObject2).parseFrom((byte[])localObject1);
-            }
-            localpj.BaseResponse = ((jh)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(206549);
-          return 0;
-        case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new pg();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((pg)localObject2).parseFrom((byte[])localObject1);
-            }
-            localpj.RXQ = ((pg)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(206549);
-          return 0;
-        }
-        localpj.RTQ = ((g.a.a.a.a)localObject1).abFh.AK();
-        AppMethodBeat.o(206549);
-        return 0;
-      }
-      AppMethodBeat.o(206549);
-      return -1;
+      AppMethodBeat.o(258377);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(258377);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      pj localpj = (pj)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(258377);
+        return -1;
+      case 1: 
+        localpj.start_time = locala.ajGk.aar();
+        AppMethodBeat.o(258377);
+        return 0;
+      case 2: 
+        localpj.YSQ = locala.ajGk.aar();
+        AppMethodBeat.o(258377);
+        return 0;
+      case 3: 
+        localpj.YSR = locala.ajGk.readString();
+        AppMethodBeat.o(258377);
+        return 0;
+      }
+      localpj.YSS = locala.ajGk.readString();
+      AppMethodBeat.o(258377);
+      return 0;
+    }
+    AppMethodBeat.o(258377);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.pj
  * JD-Core Version:    0.7.0.1
  */

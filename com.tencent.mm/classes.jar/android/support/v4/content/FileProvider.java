@@ -2,11 +2,9 @@ package android.support.v4.content;
 
 import android.content.Context;
 import android.net.Uri;
-import androidx.annotation.Keep;
 import java.io.File;
 
 @Deprecated
-@Keep
 public class FileProvider
   extends androidx.core.content.FileProvider
 {

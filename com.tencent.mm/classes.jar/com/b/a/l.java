@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
 {
-  static void b(boolean paramBoolean, String paramString)
+  static void c(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(183601);
     if (!paramBoolean)
@@ -31,7 +31,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.b.a.l
  * JD-Core Version:    0.7.0.1
  */

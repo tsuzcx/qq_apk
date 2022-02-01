@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.view.TouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/dmj" android:layout_width="@dimen/bx" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/gka" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </com.tencent.mm.view.RefreshLoadMoreLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</com.tencent.mm.view.TouchableLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/epq" android:paddingBottom="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df">
+        <ImageView android:id="@id/dne" android:layout_width="@dimen/db" android:layout_height="@dimen/db" />
+        <TextView android:textColor="@color/al6" android:id="@id/dmk" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dn6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/dn7" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:src="@raw/coin_icon" android:layout_marginEnd="@dimen/bv" app:iconColor="@color/BW_100_Alpha_0_3" />
+            <TextView android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_vertical" android:id="@id/dn8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textSize="10.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center" android:id="@id/cs8" android:background="@drawable/z2" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/cp" android:text="@string/dky" android:layout_alignParentRight="true" />
+</RelativeLayout>

@@ -2,11 +2,11 @@ package com.google.android.exoplayer2.source;
 
 public abstract interface o
 {
-  public abstract boolean aa(long paramLong);
+  public abstract long SR();
   
-  public abstract long to();
+  public abstract long SS();
   
-  public abstract long tp();
+  public abstract boolean co(long paramLong);
   
   public static abstract interface a<T extends o>
   {
@@ -15,7 +15,7 @@ public abstract interface o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.source.o
  * JD-Core Version:    0.7.0.1
  */

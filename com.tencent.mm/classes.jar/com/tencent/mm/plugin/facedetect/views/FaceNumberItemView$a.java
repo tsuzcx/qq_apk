@@ -7,26 +7,26 @@ import java.lang.ref.WeakReference;
 final class FaceNumberItemView$a
   implements MTimerHandler.CallBack
 {
-  private final WeakReference<Runnable> wCt;
+  private final WeakReference<Runnable> zYE;
   
   public FaceNumberItemView$a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(196533);
-    this.wCt = new WeakReference(paramRunnable);
-    AppMethodBeat.o(196533);
+    AppMethodBeat.i(271913);
+    this.zYE = new WeakReference(paramRunnable);
+    AppMethodBeat.o(271913);
   }
   
   public final boolean onTimerExpired()
   {
-    AppMethodBeat.i(196535);
-    Runnable localRunnable = (Runnable)this.wCt.get();
+    AppMethodBeat.i(271914);
+    Runnable localRunnable = (Runnable)this.zYE.get();
     if (localRunnable == null)
     {
-      AppMethodBeat.o(196535);
+      AppMethodBeat.o(271914);
       return false;
     }
     localRunnable.run();
-    AppMethodBeat.o(196535);
+    AppMethodBeat.o(271914);
     return true;
   }
 }

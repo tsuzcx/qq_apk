@@ -19,12 +19,12 @@ public abstract class h$a
     attachInterface(this, "com.tencent.mm.network.IDispatcher_AIDL");
   }
   
-  public static h btd()
+  public static h bQM()
   {
-    return h.a.a.muu;
+    return h.a.a.pnO;
   }
   
-  public static h p(IBinder paramIBinder)
+  public static h r(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -62,7 +62,6 @@ public abstract class h$a
     boolean bool9 = false;
     boolean bool10 = false;
     boolean bool11 = false;
-    boolean bool12 = false;
     boolean bool1 = false;
     switch (paramInt1)
     {
@@ -73,7 +72,7 @@ public abstract class h$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      localt = t.a.s(paramParcel1.readStrongBinder());
+      localt = t.a.u(paramParcel1.readStrongBinder());
       paramParcel1 = paramParcel1.readStrongBinder();
       if (paramParcel1 == null) {
         paramParcel1 = (Parcel)localObject1;
@@ -98,7 +97,7 @@ public abstract class h$a
       return true;
     case 3: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      localObject1 = bta();
+      localObject1 = bQJ();
       paramParcel2.writeNoException();
       paramParcel1 = localt;
       if (localObject1 != null) {
@@ -159,7 +158,7 @@ public abstract class h$a
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
-      gj(bool1);
+      ha(bool1);
       paramParcel2.writeNoException();
       return true;
     case 10: 
@@ -174,12 +173,12 @@ public abstract class h$a
       return true;
     case 12: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      btb();
+      bQK();
       paramParcel2.writeNoException();
       return true;
     case 13: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      bool1 = bii();
+      bool1 = bFR();
       paramParcel2.writeNoException();
       paramInt1 = i;
       if (bool1) {
@@ -189,17 +188,17 @@ public abstract class h$a
       return true;
     case 14: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      a(b.a.t(paramParcel1.readStrongBinder()));
+      a(b.a.w(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       return true;
     case 15: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      Uc(paramParcel1.readString());
+      Mb(paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
     case 16: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      localObject1 = btc();
+      localObject1 = bQL();
       paramParcel2.writeNoException();
       paramParcel1 = localObject3;
       if (localObject1 != null) {
@@ -223,7 +222,7 @@ public abstract class h$a
         bool1 = true;
       }
       paramParcel1 = new ArrayList();
-      paramInt1 = a(bool1, paramParcel1);
+      paramInt1 = c(bool1, paramParcel1);
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       paramParcel2.writeStringList(paramParcel1);
@@ -258,54 +257,59 @@ public abstract class h$a
       return true;
     case 23: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      paramInt1 = paramParcel1.readInt();
-      localObject1 = paramParcel1.readString();
-      paramInt2 = paramParcel1.readInt();
-      bool1 = bool6;
-      if (paramParcel1.readInt() != 0) {
-        bool1 = true;
-      }
-      a(paramInt1, (String)localObject1, paramInt2, bool1);
+      paramInt1 = a(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readLong(), paramParcel1.readString(), paramParcel1.readString());
       paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
       return true;
     case 24: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      b(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
+      localObject1 = paramParcel1.createIntArray();
+      if (paramParcel1.readInt() != 0) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        paramInt1 = a((int[])localObject1, bool1, paramParcel1.readLong(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      }
     case 25: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      biy();
+      bFP();
       paramParcel2.writeNoException();
       return true;
     case 26: 
+      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
+      bGi();
+      paramParcel2.writeNoException();
+      return true;
+    case 27: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       paramParcel1 = getIspId();
       paramParcel2.writeNoException();
       paramParcel2.writeString(paramParcel1);
       return true;
-    case 27: 
+    case 28: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       paramInt1 = j(paramParcel1.readInt(), paramParcel1.createByteArray());
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
-    case 28: 
+    case 29: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       setSignallingStrategy(paramParcel1.readLong(), paramParcel1.readLong());
       paramParcel2.writeNoException();
       return true;
-    case 29: 
+    case 30: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       keepSignalling();
       paramParcel2.writeNoException();
       return true;
-    case 30: 
+    case 31: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       stopSignalling();
       paramParcel2.writeNoException();
       return true;
-    case 31: 
+    case 32: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       paramParcel1 = paramParcel1.readStrongBinder();
       if (paramParcel1 == null) {
@@ -323,7 +327,7 @@ public abstract class h$a
           paramParcel1 = new q.a.a(paramParcel1);
         }
       }
-    case 32: 
+    case 33: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       paramParcel1 = paramParcel1.readStrongBinder();
       if (paramParcel1 == null) {
@@ -335,13 +339,13 @@ public abstract class h$a
         paramParcel2.writeNoException();
         return true;
         localObject1 = paramParcel1.queryLocalInterface("com.tencent.mm.network.IWorkerCallback_AIDL");
-        if ((localObject1 != null) && ((localObject1 instanceof u))) {
-          paramParcel1 = (u)localObject1;
+        if ((localObject1 != null) && ((localObject1 instanceof v))) {
+          paramParcel1 = (v)localObject1;
         } else {
-          paramParcel1 = new u.a.a(paramParcel1);
+          paramParcel1 = new v.a.a(paramParcel1);
         }
       }
-    case 33: 
+    case 34: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       paramParcel1 = paramParcel1.readStrongBinder();
       if (paramParcel1 == null) {
@@ -359,44 +363,44 @@ public abstract class h$a
           paramParcel1 = new i.a.a(paramParcel1);
         }
       }
-    case 34: 
+    case 35: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      Ud(paramParcel1.readString());
+      Mc(paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
-    case 35: 
+    case 36: 
+      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
+      bool1 = bool6;
+      if (paramParcel1.readInt() != 0) {
+        bool1 = true;
+      }
+      hb(bool1);
+      paramParcel2.writeNoException();
+      return true;
+    case 37: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       bool1 = bool7;
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
-      gk(bool1);
+      hc(bool1);
       paramParcel2.writeNoException();
       return true;
-    case 36: 
+    case 38: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       bool1 = bool8;
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
-      gl(bool1);
-      paramParcel2.writeNoException();
-      return true;
-    case 37: 
-      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      bool1 = bool9;
-      if (paramParcel1.readInt() != 0) {
-        bool1 = true;
-      }
-      gm(bool1);
-      paramParcel2.writeNoException();
-      return true;
-    case 38: 
-      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      biz();
+      hd(bool1);
       paramParcel2.writeNoException();
       return true;
     case 39: 
+      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
+      bGj();
+      paramParcel2.writeNoException();
+      return true;
+    case 40: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       paramParcel1 = paramParcel1.readStrongBinder();
       if (paramParcel1 == null) {
@@ -414,91 +418,109 @@ public abstract class h$a
           paramParcel1 = new j.a.a(paramParcel1);
         }
       }
-    case 40: 
-      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      Ue(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
     case 41: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      bool1 = bool10;
+      Md(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    case 42: 
+      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
+      bool1 = bool9;
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
       reportV6Status(bool1);
       paramParcel2.writeNoException();
       return true;
-    case 42: 
+    case 43: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      bool1 = bool11;
+      bool1 = bool10;
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
       forceUseV6(bool1);
       paramParcel2.writeNoException();
       return true;
-    case 43: 
+    case 44: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      bool1 = bool12;
+      bool1 = bool11;
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
       switchProcessActiveState(bool1);
       paramParcel2.writeNoException();
       return true;
-    case 44: 
+    case 45: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       setDebugHost(paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
-    case 45: 
-      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      bN(paramParcel1.readString(), paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
     case 46: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      paramParcel1 = biA();
+      bY(paramParcel1.readString(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    case 47: 
+      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
+      paramParcel1 = bGk();
       paramParcel2.writeNoException();
       paramParcel2.writeStringArray(paramParcel1);
       return true;
-    case 47: 
+    case 48: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       clearMMtlsForbidenHostAndPsk();
       paramParcel2.writeNoException();
       return true;
-    case 48: 
+    case 49: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       paramInt1 = getMMtlsRegion();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
-    case 49: 
+    case 50: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-      paramParcel1 = Uf(paramParcel1.readString());
+      paramParcel1 = Me(paramParcel1.readString());
       paramParcel2.writeNoException();
       paramParcel2.writeStringArray(paramParcel1);
       return true;
-    case 50: 
+    case 51: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       setMMtlsRegion(paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
-    case 51: 
+    case 52: 
       paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
       setNetIdAndIsp(paramParcel1.readString(), paramParcel1.readString(), paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
+    case 53: 
+      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
+      simpleTestCommand(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    case 54: 
+      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
+      paramInt1 = ackActionNotify(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 55: 
+      paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
+      paramInt1 = doLiveSpeedTest(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.createByteArray(), paramParcel1.createByteArray(), u.a.v(paramParcel1.readStrongBinder()));
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.network.IDispatcher_AIDL");
-    simpleTestCommand(paramParcel1.readString());
+    long l = getMarsTimestamp();
     paramParcel2.writeNoException();
+    paramParcel2.writeLong(l);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.network.h.a
  * JD-Core Version:    0.7.0.1
  */

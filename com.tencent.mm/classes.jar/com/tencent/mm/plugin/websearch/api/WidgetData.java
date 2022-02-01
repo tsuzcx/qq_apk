@@ -15,17 +15,17 @@ public class WidgetData
   implements Parcelable
 {
   public static final Parcelable.Creator<WidgetData> CREATOR;
-  public int PAa;
-  public MoreFooter PzX;
-  public Info PzY;
-  public Style PzZ;
-  public String fQb;
+  public WidgetData.MoreFooter Wqm;
+  public Info Wqn;
+  public Style Wqo;
+  public int Wqp;
+  public String hVW;
   public String query;
   
   static
   {
     AppMethodBeat.i(117833);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new WidgetData.1();
     AppMethodBeat.o(117833);
   }
   
@@ -34,16 +34,16 @@ public class WidgetData
   protected WidgetData(Parcel paramParcel)
   {
     AppMethodBeat.i(117832);
-    this.PzX = ((MoreFooter)paramParcel.readParcelable(MoreFooter.class.getClassLoader()));
-    this.PzY = ((Info)paramParcel.readParcelable(Info.class.getClassLoader()));
-    this.PzZ = ((Style)paramParcel.readParcelable(Style.class.getClassLoader()));
-    this.PAa = paramParcel.readInt();
+    this.Wqm = ((WidgetData.MoreFooter)paramParcel.readParcelable(WidgetData.MoreFooter.class.getClassLoader()));
+    this.Wqn = ((Info)paramParcel.readParcelable(Info.class.getClassLoader()));
+    this.Wqo = ((Style)paramParcel.readParcelable(Style.class.getClassLoader()));
+    this.Wqp = paramParcel.readInt();
     this.query = paramParcel.readString();
-    this.fQb = paramParcel.readString();
+    this.hVW = paramParcel.readString();
     AppMethodBeat.o(117832);
   }
   
-  public static WidgetData biW(String paramString)
+  public static WidgetData biE(String paramString)
   {
     AppMethodBeat.i(117830);
     if ((paramString == null) || (paramString.length() == 0))
@@ -53,29 +53,29 @@ public class WidgetData
       return null;
     }
     WidgetData localWidgetData = new WidgetData();
-    localWidgetData.PzY = new Info();
-    localWidgetData.PzZ = new Style();
+    localWidgetData.Wqn = new Info();
+    localWidgetData.Wqo = new Style();
     for (;;)
     {
       try
       {
         paramString = new JSONObject(paramString);
-        localWidgetData.PzY.appid = paramString.optString("appid");
-        localWidgetData.PzY.version = paramString.optInt("version");
-        localWidgetData.PzY.nickName = paramString.optString("nickName");
-        localWidgetData.PzY.userName = paramString.optString("username");
-        localWidgetData.PzY.lyD = paramString.optString("srcAppid");
-        localWidgetData.PzY.PAb = paramString.optString("inputData");
-        localWidgetData.PzY.fve = paramString.optString("pagePath");
-        localWidgetData.PzY.PAc = paramString.optString("wxaData");
-        localWidgetData.PzY.PAd = paramString.optString("launchwxawidget");
-        localWidgetData.PzY.serviceType = Util.safeParseInt(paramString.optString("serviceType"));
-        Object localObject = localWidgetData.PzY;
+        localWidgetData.Wqn.appid = paramString.optString("appid");
+        localWidgetData.Wqn.version = paramString.optInt("version");
+        localWidgetData.Wqn.nickName = paramString.optString("nickName");
+        localWidgetData.Wqn.userName = paramString.optString("username");
+        localWidgetData.Wqn.oqe = paramString.optString("srcAppid");
+        localWidgetData.Wqn.Wqq = paramString.optString("inputData");
+        localWidgetData.Wqn.hzy = paramString.optString("pagePath");
+        localWidgetData.Wqn.Wqr = paramString.optString("wxaData");
+        localWidgetData.Wqn.Wqs = paramString.optString("launchwxawidget");
+        localWidgetData.Wqn.serviceType = Util.safeParseInt(paramString.optString("serviceType"));
+        Object localObject = localWidgetData.Wqn;
         if (!paramString.has("debugMode"))
         {
           i = 0;
-          ((Info)localObject).qbu = i;
-          localWidgetData.PzY.jQi = paramString.optString("searchId");
+          ((Info)localObject).tgv = i;
+          localWidgetData.Wqn.mpa = paramString.optString("searchId");
           localObject = paramString.optString("relayInfoStr");
         }
         try
@@ -84,31 +84,31 @@ public class WidgetData
           {
             localObject = new JSONObject((String)localObject);
             if (((JSONObject)localObject).has("openapp_permission")) {
-              localWidgetData.PzY.MFy = ((JSONObject)localObject).optLong("openapp_permission");
+              localWidgetData.Wqn.TpJ = ((JSONObject)localObject).optLong("openapp_permission");
             }
           }
-          localObject = localWidgetData.PzZ;
+          localObject = localWidgetData.Wqo;
           if (paramString.has("maxHeight"))
           {
             i = paramString.optInt("maxHeight");
-            ((Style)localObject).PAj = i;
-            localWidgetData.PzZ.height = paramString.optInt("height");
-            localWidgetData.PzZ.width = paramString.optInt("width");
-            localWidgetData.PzZ.nWx = paramString.optString("backgroundColor");
-            localObject = localWidgetData.PzZ;
+            ((Style)localObject).Wqy = i;
+            localWidgetData.Wqo.height = paramString.optInt("height");
+            localWidgetData.Wqo.width = paramString.optInt("width");
+            localWidgetData.Wqo.qWk = paramString.optString("backgroundColor");
+            localObject = localWidgetData.Wqo;
             if (!paramString.has("minHeight")) {
-              break label529;
+              break label527;
             }
             d = paramString.optDouble("minHeight");
-            ((Style)localObject).PAi = d;
-            localWidgetData.PzZ.oYQ = paramString.optInt("offsetX");
-            localWidgetData.PzZ.oYR = paramString.optInt("offsetY");
-            localObject = localWidgetData.PzZ;
+            ((Style)localObject).Wqx = d;
+            localWidgetData.Wqo.sep = paramString.optInt("offsetX");
+            localWidgetData.Wqo.ser = paramString.optInt("offsetY");
+            localObject = localWidgetData.Wqo;
             if (!paramString.has("show")) {
-              break label534;
+              break label532;
             }
             bool = paramString.optBoolean("show");
-            ((Style)localObject).fWq = bool;
+            ((Style)localObject).icp = bool;
             AppMethodBeat.o(117830);
             return localWidgetData;
             i = paramString.optInt("debugMode");
@@ -128,10 +128,10 @@ public class WidgetData
         return null;
       }
       continue;
-      label529:
+      label527:
       double d = 0.0D;
       continue;
-      label534:
+      label532:
       boolean bool = true;
     }
   }
@@ -155,7 +155,7 @@ public class WidgetData
       return false;
     }
     paramObject = (WidgetData)paramObject;
-    if ((this.PAa == paramObject.PAa) && (Objects.equals(this.PzX, paramObject.PzX)) && (Objects.equals(this.PzY, paramObject.PzY)) && (Objects.equals(this.PzZ, paramObject.PzZ)) && (Objects.equals(this.query, paramObject.query)) && (Objects.equals(this.fQb, paramObject.fQb)))
+    if ((this.Wqp == paramObject.Wqp) && (Objects.equals(this.Wqm, paramObject.Wqm)) && (Objects.equals(this.Wqn, paramObject.Wqn)) && (Objects.equals(this.Wqo, paramObject.Wqo)) && (Objects.equals(this.query, paramObject.query)) && (Objects.equals(this.hVW, paramObject.hVW)))
     {
       AppMethodBeat.o(117828);
       return true;
@@ -167,7 +167,7 @@ public class WidgetData
   public int hashCode()
   {
     AppMethodBeat.i(117829);
-    int i = Objects.hash(new Object[] { this.PzX, this.PzY, this.PzZ, Integer.valueOf(this.PAa), this.query, this.fQb });
+    int i = Objects.hash(new Object[] { this.Wqm, this.Wqn, this.Wqo, Integer.valueOf(this.Wqp), this.query, this.hVW });
     AppMethodBeat.o(117829);
     return i;
   }
@@ -176,20 +176,20 @@ public class WidgetData
   {
     AppMethodBeat.i(117827);
     String str1;
-    if (this.PzY == null)
+    if (this.Wqn == null)
     {
       str1 = "";
-      if (this.PzZ != null) {
-        break label66;
+      if (this.Wqo != null) {
+        break label64;
       }
     }
-    label66:
-    for (String str2 = "";; str2 = this.PzZ.toString())
+    label64:
+    for (String str2 = "";; str2 = this.Wqo.toString())
     {
       str1 = String.format("info: [%s], style:[%s]", new Object[] { str1, str2 });
       AppMethodBeat.o(117827);
       return str1;
-      str1 = this.PzY.toString();
+      str1 = this.Wqn.toString();
       break;
     }
   }
@@ -197,12 +197,12 @@ public class WidgetData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(117831);
-    paramParcel.writeParcelable(this.PzX, paramInt);
-    paramParcel.writeParcelable(this.PzY, paramInt);
-    paramParcel.writeParcelable(this.PzZ, paramInt);
-    paramParcel.writeInt(this.PAa);
+    paramParcel.writeParcelable(this.Wqm, paramInt);
+    paramParcel.writeParcelable(this.Wqn, paramInt);
+    paramParcel.writeParcelable(this.Wqo, paramInt);
+    paramParcel.writeInt(this.Wqp);
     paramParcel.writeString(this.query);
-    paramParcel.writeString(this.fQb);
+    paramParcel.writeString(this.hVW);
     AppMethodBeat.o(117831);
   }
   
@@ -210,25 +210,25 @@ public class WidgetData
     implements Parcelable
   {
     public static final Parcelable.Creator<Info> CREATOR;
-    public boolean AVv;
-    public String BHW;
-    public long MFy;
-    public String PAb;
-    public String PAc;
-    public String PAd;
-    public String PAe;
-    public String PAf;
+    public boolean FYI;
+    public String HsD;
+    public long TpJ;
+    public String Wqq;
+    public String Wqr;
+    public String Wqs;
+    public String Wqt;
+    public String Wqu;
     public String appid;
     public String downloadUrl;
     public String footerWording;
-    public String fve;
+    public String hzy;
     public String iconUrl;
-    public String jQi;
     public String label;
-    public String lyD;
+    public String mpa;
     public String nickName;
-    public int qbu;
+    public String oqe;
     public int serviceType;
+    public int tgv;
     public String userName;
     public int version;
     
@@ -245,29 +245,29 @@ public class WidgetData
     {
       AppMethodBeat.i(117812);
       this.serviceType = paramParcel.readInt();
-      this.PAb = paramParcel.readString();
+      this.Wqq = paramParcel.readString();
       this.nickName = paramParcel.readString();
-      this.PAc = paramParcel.readString();
-      this.PAd = paramParcel.readString();
-      this.fve = paramParcel.readString();
+      this.Wqr = paramParcel.readString();
+      this.Wqs = paramParcel.readString();
+      this.hzy = paramParcel.readString();
       this.appid = paramParcel.readString();
       this.userName = paramParcel.readString();
-      this.qbu = paramParcel.readInt();
+      this.tgv = paramParcel.readInt();
       this.version = paramParcel.readInt();
-      this.BHW = paramParcel.readString();
+      this.HsD = paramParcel.readString();
       this.iconUrl = paramParcel.readString();
       this.downloadUrl = paramParcel.readString();
-      this.PAe = paramParcel.readString();
-      this.jQi = paramParcel.readString();
+      this.Wqt = paramParcel.readString();
+      this.mpa = paramParcel.readString();
       this.label = paramParcel.readString();
-      this.MFy = paramParcel.readLong();
-      this.lyD = paramParcel.readString();
-      this.PAf = paramParcel.readString();
+      this.TpJ = paramParcel.readLong();
+      this.oqe = paramParcel.readString();
+      this.Wqu = paramParcel.readString();
       this.footerWording = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.AVv = bool;
+        this.FYI = bool;
         AppMethodBeat.o(117812);
         return;
       }
@@ -292,7 +292,7 @@ public class WidgetData
         return false;
       }
       paramObject = (Info)paramObject;
-      if ((this.serviceType == paramObject.serviceType) && (this.qbu == paramObject.qbu) && (this.version == paramObject.version) && (this.MFy == paramObject.MFy) && (this.AVv == paramObject.AVv) && (Objects.equals(this.PAb, paramObject.PAb)) && (Objects.equals(this.nickName, paramObject.nickName)) && (Objects.equals(this.PAc, paramObject.PAc)) && (Objects.equals(this.PAd, paramObject.PAd)) && (Objects.equals(this.fve, paramObject.fve)) && (Objects.equals(this.appid, paramObject.appid)) && (Objects.equals(this.userName, paramObject.userName)) && (Objects.equals(this.BHW, paramObject.BHW)) && (Objects.equals(this.iconUrl, paramObject.iconUrl)) && (Objects.equals(this.downloadUrl, paramObject.downloadUrl)) && (Objects.equals(this.PAe, paramObject.PAe)) && (Objects.equals(this.jQi, paramObject.jQi)) && (Objects.equals(this.label, paramObject.label)) && (Objects.equals(this.lyD, paramObject.lyD)) && (Objects.equals(this.PAf, paramObject.PAf)) && (Objects.equals(this.footerWording, paramObject.footerWording)))
+      if ((this.serviceType == paramObject.serviceType) && (this.tgv == paramObject.tgv) && (this.version == paramObject.version) && (this.TpJ == paramObject.TpJ) && (this.FYI == paramObject.FYI) && (Objects.equals(this.Wqq, paramObject.Wqq)) && (Objects.equals(this.nickName, paramObject.nickName)) && (Objects.equals(this.Wqr, paramObject.Wqr)) && (Objects.equals(this.Wqs, paramObject.Wqs)) && (Objects.equals(this.hzy, paramObject.hzy)) && (Objects.equals(this.appid, paramObject.appid)) && (Objects.equals(this.userName, paramObject.userName)) && (Objects.equals(this.HsD, paramObject.HsD)) && (Objects.equals(this.iconUrl, paramObject.iconUrl)) && (Objects.equals(this.downloadUrl, paramObject.downloadUrl)) && (Objects.equals(this.Wqt, paramObject.Wqt)) && (Objects.equals(this.mpa, paramObject.mpa)) && (Objects.equals(this.label, paramObject.label)) && (Objects.equals(this.oqe, paramObject.oqe)) && (Objects.equals(this.Wqu, paramObject.Wqu)) && (Objects.equals(this.footerWording, paramObject.footerWording)))
       {
         AppMethodBeat.o(117809);
         return true;
@@ -304,7 +304,7 @@ public class WidgetData
     public int hashCode()
     {
       AppMethodBeat.i(117810);
-      int i = Objects.hash(new Object[] { Integer.valueOf(this.serviceType), this.PAb, this.nickName, this.PAc, this.PAd, this.fve, this.appid, this.userName, Integer.valueOf(this.qbu), Integer.valueOf(this.version), this.BHW, this.iconUrl, this.downloadUrl, this.PAe, this.jQi, this.label, Long.valueOf(this.MFy), this.lyD, this.PAf, this.footerWording, Boolean.valueOf(this.AVv) });
+      int i = Objects.hash(new Object[] { Integer.valueOf(this.serviceType), this.Wqq, this.nickName, this.Wqr, this.Wqs, this.hzy, this.appid, this.userName, Integer.valueOf(this.tgv), Integer.valueOf(this.version), this.HsD, this.iconUrl, this.downloadUrl, this.Wqt, this.mpa, this.label, Long.valueOf(this.TpJ), this.oqe, this.Wqu, this.footerWording, Boolean.valueOf(this.FYI) });
       AppMethodBeat.o(117810);
       return i;
     }
@@ -312,7 +312,7 @@ public class WidgetData
     public String toString()
     {
       AppMethodBeat.i(117808);
-      String str = String.format("appid:%s, srcAppid %s, permission %d, pathPath: %s", new Object[] { this.appid, this.lyD, Long.valueOf(this.MFy), this.fve });
+      String str = String.format("appid:%s, srcAppid %s, permission %d, pathPath: %s", new Object[] { this.appid, this.oqe, Long.valueOf(this.TpJ), this.hzy });
       AppMethodBeat.o(117808);
       return str;
     }
@@ -321,26 +321,26 @@ public class WidgetData
     {
       AppMethodBeat.i(117811);
       paramParcel.writeInt(this.serviceType);
-      paramParcel.writeString(this.PAb);
+      paramParcel.writeString(this.Wqq);
       paramParcel.writeString(this.nickName);
-      paramParcel.writeString(this.PAc);
-      paramParcel.writeString(this.PAd);
-      paramParcel.writeString(this.fve);
+      paramParcel.writeString(this.Wqr);
+      paramParcel.writeString(this.Wqs);
+      paramParcel.writeString(this.hzy);
       paramParcel.writeString(this.appid);
       paramParcel.writeString(this.userName);
-      paramParcel.writeInt(this.qbu);
+      paramParcel.writeInt(this.tgv);
       paramParcel.writeInt(this.version);
-      paramParcel.writeString(this.BHW);
+      paramParcel.writeString(this.HsD);
       paramParcel.writeString(this.iconUrl);
       paramParcel.writeString(this.downloadUrl);
-      paramParcel.writeString(this.PAe);
-      paramParcel.writeString(this.jQi);
+      paramParcel.writeString(this.Wqt);
+      paramParcel.writeString(this.mpa);
       paramParcel.writeString(this.label);
-      paramParcel.writeLong(this.MFy);
-      paramParcel.writeString(this.lyD);
-      paramParcel.writeString(this.PAf);
+      paramParcel.writeLong(this.TpJ);
+      paramParcel.writeString(this.oqe);
+      paramParcel.writeString(this.Wqu);
       paramParcel.writeString(this.footerWording);
-      if (this.AVv) {}
+      if (this.FYI) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
@@ -350,89 +350,17 @@ public class WidgetData
     }
   }
   
-  public static class MoreFooter
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<MoreFooter> CREATOR;
-    public String PAg;
-    public String PAh;
-    public String title;
-    
-    static
-    {
-      AppMethodBeat.i(117819);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(117819);
-    }
-    
-    public MoreFooter() {}
-    
-    protected MoreFooter(Parcel paramParcel)
-    {
-      AppMethodBeat.i(117816);
-      this.title = paramParcel.readString();
-      this.PAg = paramParcel.readString();
-      this.PAh = paramParcel.readString();
-      AppMethodBeat.o(117816);
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    public boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(117817);
-      if (this == paramObject)
-      {
-        AppMethodBeat.o(117817);
-        return true;
-      }
-      if (!(paramObject instanceof MoreFooter))
-      {
-        AppMethodBeat.o(117817);
-        return false;
-      }
-      paramObject = (MoreFooter)paramObject;
-      if ((Objects.equals(this.title, paramObject.title)) && (Objects.equals(this.PAg, paramObject.PAg)) && (Objects.equals(this.PAh, paramObject.PAh)))
-      {
-        AppMethodBeat.o(117817);
-        return true;
-      }
-      AppMethodBeat.o(117817);
-      return false;
-    }
-    
-    public int hashCode()
-    {
-      AppMethodBeat.i(117818);
-      int i = Objects.hash(new Object[] { this.title, this.PAg, this.PAh });
-      AppMethodBeat.o(117818);
-      return i;
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(117815);
-      paramParcel.writeString(this.title);
-      paramParcel.writeString(this.PAg);
-      paramParcel.writeString(this.PAh);
-      AppMethodBeat.o(117815);
-    }
-  }
-  
   public static class Style
     implements Parcelable
   {
     public static final Parcelable.Creator<Style> CREATOR;
-    public double PAi;
-    public int PAj;
-    public boolean fWq;
+    public double Wqx;
+    public int Wqy;
     public int height;
-    public String nWx;
-    public int oYQ;
-    public int oYR;
+    public boolean icp;
+    public String qWk;
+    public int sep;
+    public int ser;
     public int width;
     
     static
@@ -444,26 +372,26 @@ public class WidgetData
     
     public Style()
     {
-      this.PAi = 65.0D;
-      this.fWq = true;
+      this.Wqx = 65.0D;
+      this.icp = true;
     }
     
     protected Style(Parcel paramParcel)
     {
       AppMethodBeat.i(117823);
-      this.PAi = 65.0D;
-      this.fWq = true;
-      this.PAi = paramParcel.readDouble();
-      this.PAj = paramParcel.readInt();
-      this.oYQ = paramParcel.readInt();
-      this.oYR = paramParcel.readInt();
+      this.Wqx = 65.0D;
+      this.icp = true;
+      this.Wqx = paramParcel.readDouble();
+      this.Wqy = paramParcel.readInt();
+      this.sep = paramParcel.readInt();
+      this.ser = paramParcel.readInt();
       this.height = paramParcel.readInt();
-      this.nWx = paramParcel.readString();
+      this.qWk = paramParcel.readString();
       this.width = paramParcel.readInt();
       if (paramParcel.readByte() != 0) {}
       for (;;)
       {
-        this.fWq = bool;
+        this.icp = bool;
         AppMethodBeat.o(117823);
         return;
         bool = false;
@@ -489,7 +417,7 @@ public class WidgetData
         return false;
       }
       paramObject = (Style)paramObject;
-      if ((Double.compare(paramObject.PAi, this.PAi) == 0) && (this.PAj == paramObject.PAj) && (this.oYQ == paramObject.oYQ) && (this.oYR == paramObject.oYR) && (this.height == paramObject.height) && (this.width == paramObject.width) && (this.fWq == paramObject.fWq) && (Objects.equals(this.nWx, paramObject.nWx)))
+      if ((Double.compare(paramObject.Wqx, this.Wqx) == 0) && (this.Wqy == paramObject.Wqy) && (this.sep == paramObject.sep) && (this.ser == paramObject.ser) && (this.height == paramObject.height) && (this.width == paramObject.width) && (this.icp == paramObject.icp) && (Objects.equals(this.qWk, paramObject.qWk)))
       {
         AppMethodBeat.o(117824);
         return true;
@@ -501,7 +429,7 @@ public class WidgetData
     public int hashCode()
     {
       AppMethodBeat.i(117825);
-      int i = Objects.hash(new Object[] { Double.valueOf(this.PAi), Integer.valueOf(this.PAj), Integer.valueOf(this.oYQ), Integer.valueOf(this.oYR), Integer.valueOf(this.height), this.nWx, Integer.valueOf(this.width), Boolean.valueOf(this.fWq) });
+      int i = Objects.hash(new Object[] { Double.valueOf(this.Wqx), Integer.valueOf(this.Wqy), Integer.valueOf(this.sep), Integer.valueOf(this.ser), Integer.valueOf(this.height), this.qWk, Integer.valueOf(this.width), Boolean.valueOf(this.icp) });
       AppMethodBeat.o(117825);
       return i;
     }
@@ -517,14 +445,14 @@ public class WidgetData
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(117822);
-      paramParcel.writeDouble(this.PAi);
-      paramParcel.writeInt(this.PAj);
-      paramParcel.writeInt(this.oYQ);
-      paramParcel.writeInt(this.oYR);
+      paramParcel.writeDouble(this.Wqx);
+      paramParcel.writeInt(this.Wqy);
+      paramParcel.writeInt(this.sep);
+      paramParcel.writeInt(this.ser);
       paramParcel.writeInt(this.height);
-      paramParcel.writeString(this.nWx);
+      paramParcel.writeString(this.qWk);
       paramParcel.writeInt(this.width);
-      if (this.fWq) {}
+      if (this.icp) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
@@ -536,7 +464,7 @@ public class WidgetData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.WidgetData
  * JD-Core Version:    0.7.0.1
  */

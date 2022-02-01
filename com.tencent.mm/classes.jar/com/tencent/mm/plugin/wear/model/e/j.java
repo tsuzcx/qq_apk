@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelvoice.q;
 import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.fjr;
-import com.tencent.mm.protocal.protobuf.fjs;
-import com.tencent.mm.protocal.protobuf.fjw;
-import com.tencent.mm.protocal.protobuf.fjx;
-import com.tencent.mm.protocal.protobuf.fjz;
-import com.tencent.mm.protocal.protobuf.fka;
+import com.tencent.mm.protocal.protobuf.ggf;
+import com.tencent.mm.protocal.protobuf.ggg;
+import com.tencent.mm.protocal.protobuf.ggk;
+import com.tencent.mm.protocal.protobuf.ggl;
+import com.tencent.mm.protocal.protobuf.ggn;
+import com.tencent.mm.protocal.protobuf.ggo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -27,9 +27,9 @@ import java.util.List;
 public final class j
   extends a
 {
-  public String Psy = "";
+  public String Wjl = "";
   
-  protected final boolean amU(int paramInt)
+  protected final boolean asL(int paramInt)
   {
     switch (paramInt)
     {
@@ -39,7 +39,7 @@ public final class j
     return false;
   }
   
-  protected final boolean amV(int paramInt)
+  protected final boolean asM(int paramInt)
   {
     switch (paramInt)
     {
@@ -49,7 +49,7 @@ public final class j
     return false;
   }
   
-  public final List<Integer> gON()
+  public final List<Integer> iob()
   {
     AppMethodBeat.i(30087);
     ArrayList localArrayList = new ArrayList();
@@ -61,7 +61,7 @@ public final class j
     return localArrayList;
   }
   
-  protected final byte[] t(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] u(int paramInt, byte[] paramArrayOfByte)
   {
     boolean bool = true;
     AppMethodBeat.i(30088);
@@ -72,33 +72,33 @@ public final class j
     {
       AppMethodBeat.o(30088);
       return null;
-      Object localObject2 = new fjr();
+      Object localObject2 = new ggf();
       try
       {
-        ((fjr)localObject2).parseFrom(paramArrayOfByte);
-        localObject1 = new fjs();
-        ((fjs)localObject1).UIN = ((fjr)localObject2).UIN;
-        if (((fjs)localObject1).UIN) {
-          bh.beI();
+        ((ggf)localObject2).parseFrom(paramArrayOfByte);
+        localObject1 = new ggg();
+        ((ggg)localObject1).accV = ((ggf)localObject2).accV;
+        if (((ggg)localObject1).accV) {
+          bh.bCz();
         }
-        for (paramArrayOfByte = c.bbO().h(((fjr)localObject2).Username, ((fjr)localObject2).TVZ, 11);; paramArrayOfByte = c.bbO().g(((fjr)localObject2).Username, ((fjr)localObject2).TVZ, 11))
+        for (paramArrayOfByte = c.bzD().j(((ggf)localObject2).Username, ((ggf)localObject2).abmO, 11);; paramArrayOfByte = c.bzD().i(((ggf)localObject2).Username, ((ggf)localObject2).abmO, 11))
         {
           paramInt = 0;
           while ((paramInt < 10) && (paramInt < paramArrayOfByte.size()))
           {
-            localObject2 = (ca)paramArrayOfByte.get(paramInt);
-            ((fjs)localObject1).TlE.add(h.bd((ca)localObject2));
+            localObject2 = (cc)paramArrayOfByte.get(paramInt);
+            ((ggg)localObject1).aazx.add(h.bv((cc)localObject2));
             paramInt += 1;
           }
-          bh.beI();
+          bh.bCz();
         }
         if (paramArrayOfByte.size() > 10) {}
         for (bool = true;; bool = false)
         {
-          ((fjs)localObject1).Tic = bool;
+          ((ggg)localObject1).aavs = bool;
           try
           {
-            paramArrayOfByte = ((fjs)localObject1).toByteArray();
+            paramArrayOfByte = ((ggg)localObject1).toByteArray();
             AppMethodBeat.o(30088);
             return paramArrayOfByte;
           }
@@ -108,15 +108,15 @@ public final class j
           }
         }
         continue;
-        this.Psy = "";
+        this.Wjl = "";
         continue;
-        com.tencent.mm.plugin.wear.model.c.a.lp(9, 0);
-        com.tencent.mm.plugin.wear.model.c.a.amT(8);
-        localObject1 = new fjw();
+        com.tencent.mm.plugin.wear.model.c.a.kK(9, 0);
+        com.tencent.mm.plugin.wear.model.c.a.asK(8);
+        localObject1 = new ggk();
         try
         {
-          ((fjw)localObject1).parseFrom(paramArrayOfByte);
-          if (Util.isNullOrNil(((fjw)localObject1).Username))
+          ((ggk)localObject1).parseFrom(paramArrayOfByte);
+          if (Util.isNullOrNil(((ggk)localObject1).Username))
           {
             AppMethodBeat.o(30088);
             return null;
@@ -127,21 +127,21 @@ public final class j
           AppMethodBeat.o(30088);
           return null;
         }
-        this.Psy = ((fjw)localObject1).Username;
-        paramArrayOfByte = new fjx();
-        bh.beI();
-        localObject1 = c.bbO().g(((fjw)localObject1).Username, ((fjw)localObject1).TVZ, 11);
+        this.Wjl = ((ggk)localObject1).Username;
+        paramArrayOfByte = new ggl();
+        bh.bCz();
+        localObject1 = c.bzD().i(((ggk)localObject1).Username, ((ggk)localObject1).abmO, 11);
         paramInt = 0;
         while ((paramInt < 10) && (paramInt < ((List)localObject1).size()))
         {
-          localObject2 = (ca)((List)localObject1).get(paramInt);
-          paramArrayOfByte.TlE.add(h.bd((ca)localObject2));
+          localObject2 = (cc)((List)localObject1).get(paramInt);
+          paramArrayOfByte.aazx.add(h.bv((cc)localObject2));
           paramInt += 1;
         }
         if (((List)localObject1).size() > 10) {}
         for (;;)
         {
-          paramArrayOfByte.Tic = bool;
+          paramArrayOfByte.aavs = bool;
           try
           {
             paramArrayOfByte = paramArrayOfByte.toByteArray();
@@ -155,28 +155,28 @@ public final class j
           bool = false;
         }
         continue;
-        com.tencent.mm.plugin.wear.model.c.a.lp(12, 0);
-        com.tencent.mm.plugin.wear.model.c.a.amT(14);
-        localObject1 = new fjz();
+        com.tencent.mm.plugin.wear.model.c.a.kK(12, 0);
+        com.tencent.mm.plugin.wear.model.c.a.asK(14);
+        localObject1 = new ggn();
       }
       catch (IOException paramArrayOfByte)
       {
         try
         {
           Object localObject1;
-          ((fjz)localObject1).parseFrom(paramArrayOfByte);
+          ((ggn)localObject1).parseFrom(paramArrayOfByte);
           label498:
-          bh.beI();
-          paramArrayOfByte = c.bbO().Oq(((fjz)localObject1).RNj);
-          localObject2 = new fka();
+          bh.bCz();
+          paramArrayOfByte = c.bzD().sl(((ggn)localObject1).YKx);
+          localObject2 = new ggo();
           String str = s.getFullPath(paramArrayOfByte.field_imgPath);
-          ((fka)localObject2).UIX = q.k(str, 0, true);
-          ((fka)localObject2).RNj = ((fjz)localObject1).RNj;
-          ((fka)localObject2).RLr = new b(u.aY(str, 0, -1));
-          s.as(paramArrayOfByte);
+          ((ggo)localObject2).acdf = q.l(str, 0, true);
+          ((ggo)localObject2).YKx = ((ggn)localObject1).YKx;
+          ((ggo)localObject2).YID = new b(y.bi(str, 0, -1));
+          s.ay(paramArrayOfByte);
           try
           {
-            paramArrayOfByte = ((fka)localObject2).toByteArray();
+            paramArrayOfByte = ((ggo)localObject2).toByteArray();
             AppMethodBeat.o(30088);
             return paramArrayOfByte;
           }
@@ -197,7 +197,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.j
  * JD-Core Version:    0.7.0.1
  */

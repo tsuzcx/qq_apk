@@ -1,6 +1,5 @@
 package com.tencent.tencentmap.mapsdk.maps;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@TargetApi(12)
 public class MapFragment
   extends Fragment
 {
@@ -165,7 +163,7 @@ public class MapFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.MapFragment
  * JD-Core Version:    0.7.0.1
  */

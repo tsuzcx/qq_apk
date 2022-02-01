@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.webview.ui.tools.game.menu;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,29 +13,29 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.s;
 
 public final class d
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private boolean AUA;
-  private o ODY;
-  private e Qpw;
-  public b.b Qpx;
-  private GameMenuView Qpy;
-  private f Qpz;
-  private View lJ;
-  private ViewTreeObserver lS;
+  private boolean GwR;
+  private s Vtk;
+  private e XhK;
+  public b.b XhL;
+  private GameMenuView XhM;
+  private f XhN;
   private Context mContext;
-  private boolean pMD;
-  public boolean pMF;
-  public boolean pMG;
+  private View mF;
+  private ViewTreeObserver mP;
+  private boolean sRw;
+  public boolean sRy;
+  public boolean sRz;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(80973);
-    this.pMD = false;
-    this.pMG = false;
+    this.sRw = false;
+    this.sRz = false;
     this.mContext = paramContext;
     if ((this.mContext instanceof Activity))
     {
@@ -46,29 +45,28 @@ public final class d
       }
     }
     label156:
-    for (this.lJ = paramContext.getChildAt(0);; this.lJ = paramContext)
+    for (this.mF = paramContext.getChildAt(0);; this.mF = paramContext)
     {
       paramContext = this.mContext;
-      this.ODY = new o(paramContext);
-      this.Qpw = new e(paramContext);
-      this.Qpy = new GameMenuView(paramContext);
-      this.Qpz = new f(paramContext);
-      this.Qpy.setAdapter(this.Qpz);
-      this.pMD = isLandscape();
-      this.Qpw.setContentView(this.Qpy);
+      this.Vtk = new s(paramContext);
+      this.XhK = new e(paramContext);
+      this.XhM = new GameMenuView(paramContext);
+      this.XhN = new f(paramContext);
+      this.XhM.setAdapter(this.XhN);
+      this.sRw = isLandscape();
+      this.XhK.setContentView(this.XhM);
       AppMethodBeat.o(80973);
       return;
     }
   }
   
-  @TargetApi(23)
-  private void haF()
+  private void iAS()
   {
     AppMethodBeat.i(80974);
-    if ((Build.VERSION.SDK_INT >= 23) && (this.Qpw != null))
+    if ((Build.VERSION.SDK_INT >= 23) && (this.XhK != null))
     {
-      this.Qpw.getWindow().getDecorView().setSystemUiVisibility(9216);
-      this.Qpw.getWindow().setStatusBarColor(0);
+      this.XhK.getWindow().getDecorView().setSystemUiVisibility(9216);
+      this.XhK.getWindow().setStatusBarColor(0);
     }
     AppMethodBeat.o(80974);
   }
@@ -89,9 +87,9 @@ public final class d
   private boolean isShowing()
   {
     AppMethodBeat.i(80977);
-    if (this.Qpw != null)
+    if (this.XhK != null)
     {
-      if (this.Qpw.isShowing())
+      if (this.XhK.isShowing())
       {
         AppMethodBeat.o(80977);
         return true;
@@ -106,98 +104,98 @@ public final class d
   public final void a(b.c paramc)
   {
     AppMethodBeat.i(80978);
-    if (this.Qpy != null) {
-      this.Qpy.setGameMenuItemSelectedListener(paramc);
+    if (this.XhM != null) {
+      this.XhM.setGameMenuItemSelectedListener(paramc);
     }
     AppMethodBeat.o(80978);
   }
   
-  public final void bYF()
+  public final void cyW()
   {
     AppMethodBeat.i(80976);
-    if (this.lS != null)
+    if (this.mP != null)
     {
-      if (!this.lS.isAlive()) {
-        this.lS = this.lJ.getViewTreeObserver();
+      if (!this.mP.isAlive()) {
+        this.mP = this.mF.getViewTreeObserver();
       }
-      this.lS.removeGlobalOnLayoutListener(this);
-      this.lS = null;
+      this.mP.removeGlobalOnLayoutListener(this);
+      this.mP = null;
     }
-    if (this.Qpw != null) {
-      this.Qpw.dismiss();
+    if (this.XhK != null) {
+      this.XhK.dismiss();
     }
     AppMethodBeat.o(80976);
   }
   
-  public final void eik()
+  public final void dDn()
   {
     int i = 0;
     AppMethodBeat.i(80975);
-    this.pMD = isLandscape();
-    if (this.Qpx != null) {
-      this.Qpx.onCreateMMMenu(this.ODY);
+    this.sRw = isLandscape();
+    if (this.XhL != null) {
+      this.XhL.onCreateMMMenu(this.Vtk);
     }
-    if (this.Qpw != null)
+    if (this.XhK != null)
     {
-      if (this.Qpz != null) {
-        this.Qpz.c(this.ODY);
+      if (this.XhN != null) {
+        this.XhN.v(this.Vtk);
       }
       if (Build.VERSION.SDK_INT >= 21) {
-        this.Qpw.getWindow().addFlags(-2147483648);
+        this.XhK.getWindow().addFlags(-2147483648);
       }
-      if (this.AUA) {
-        haF();
+      if (this.GwR) {
+        iAS();
       }
-      if (this.pMF) {
-        this.Qpw.getWindow().addFlags(1024);
+      if (this.sRy) {
+        this.XhK.getWindow().addFlags(1024);
       }
-      if (!this.pMG) {
+      if (!this.sRz) {
         break label248;
       }
-      this.Qpw.getWindow().setFlags(8, 8);
-      this.Qpw.getWindow().addFlags(131200);
-      this.Qpw.getWindow().getDecorView().setSystemUiVisibility(6);
+      this.XhK.getWindow().setFlags(8, 8);
+      this.XhK.getWindow().addFlags(131200);
+      this.XhK.getWindow().getDecorView().setSystemUiVisibility(6);
     }
     for (;;)
     {
-      if (this.lJ != null)
+      if (this.mF != null)
       {
-        if (this.lS == null) {
+        if (this.mP == null) {
           i = 1;
         }
-        this.lS = this.lJ.getViewTreeObserver();
+        this.mP = this.mF.getViewTreeObserver();
         if (i != 0) {
-          this.lS.addOnGlobalLayoutListener(this);
+          this.mP.addOnGlobalLayoutListener(this);
         }
       }
-      this.Qpw.setOnDismissListener(new DialogInterface.OnDismissListener()
+      this.XhK.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(80970);
-          d.this.bYF();
+          d.this.cyW();
           AppMethodBeat.o(80970);
         }
       });
-      if (this.Qpy != null) {
-        this.Qpy.setDismissListener(new b.a()
+      if (this.XhM != null) {
+        this.XhM.setDismissListener(new b.a()
         {
           public final void onDismiss()
           {
             AppMethodBeat.i(80971);
-            d.this.bYF();
+            d.this.cyW();
             AppMethodBeat.o(80971);
           }
         });
       }
-      this.Qpw.show();
+      this.XhK.show();
       AppMethodBeat.o(80975);
       return;
       label248:
-      this.Qpw.getWindow().clearFlags(8);
-      this.Qpw.getWindow().clearFlags(131072);
-      this.Qpw.getWindow().clearFlags(128);
-      this.Qpw.getWindow().getDecorView().setSystemUiVisibility(0);
+      this.XhK.getWindow().clearFlags(8);
+      this.XhK.getWindow().clearFlags(131072);
+      this.XhK.getWindow().clearFlags(128);
+      this.XhK.getWindow().getDecorView().setSystemUiVisibility(0);
     }
   }
   
@@ -206,15 +204,15 @@ public final class d
     AppMethodBeat.i(80972);
     if (isShowing())
     {
-      View localView = this.lJ;
+      View localView = this.mF;
       if ((localView == null) || (!localView.isShown()))
       {
-        bYF();
+        cyW();
         AppMethodBeat.o(80972);
         return;
       }
-      if ((isShowing()) && (this.pMD != isLandscape())) {
-        bYF();
+      if ((isShowing()) && (this.sRw != isLandscape())) {
+        cyW();
       }
     }
     AppMethodBeat.o(80972);

@@ -1,39 +1,64 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$j
   extends e
 {
-  public long DPJ = 0L;
-  public a.aq[] Zfg = a.aq.ikQ();
+  public long Hnt = 0L;
+  public a.aq[] ahdJ = a.aq.jRh();
   public String groupId = "";
   public int roomId = 0;
   public long timestamp = 0L;
   
   public a$j()
   {
-    this.ccR = -1;
+    this.dXv = -1;
   }
   
-  public final int JG()
+  public final void a(b paramb)
   {
-    int j = super.JG() + b.bM(1, this.roomId) + b.p(2, this.DPJ);
+    paramb.cF(1, this.roomId);
+    paramb.t(2, this.Hnt);
+    if (!this.groupId.equals("")) {
+      paramb.g(3, this.groupId);
+    }
+    if ((this.ahdJ != null) && (this.ahdJ.length > 0))
+    {
+      int i = 0;
+      while (i < this.ahdJ.length)
+      {
+        a.aq localaq = this.ahdJ[i];
+        if (localaq != null) {
+          paramb.a(4, localaq);
+        }
+        i += 1;
+      }
+    }
+    if (this.timestamp != 0L) {
+      paramb.n(5, this.timestamp);
+    }
+    super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc() + b.cJ(1, this.roomId) + b.q(2, this.Hnt);
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.g(3, this.groupId);
+      i = j + b.h(3, this.groupId);
     }
     j = i;
-    if (this.Zfg != null)
+    if (this.ahdJ != null)
     {
       j = i;
-      if (this.Zfg.length > 0)
+      if (this.ahdJ.length > 0)
       {
         j = 0;
-        while (j < this.Zfg.length)
+        while (j < this.ahdJ.length)
         {
-          a.aq localaq = this.Zfg[j];
+          a.aq localaq = this.ahdJ[j];
           int k = i;
           if (localaq != null) {
             k = i + b.b(4, localaq);
@@ -46,39 +71,14 @@ public final class a$j
     }
     i = j;
     if (this.timestamp != 0L) {
-      i = j + b.q(5, this.timestamp);
+      i = j + b.r(5, this.timestamp);
     }
     return i;
-  }
-  
-  public final void a(b paramb)
-  {
-    paramb.bJ(1, this.roomId);
-    paramb.r(2, this.DPJ);
-    if (!this.groupId.equals("")) {
-      paramb.f(3, this.groupId);
-    }
-    if ((this.Zfg != null) && (this.Zfg.length > 0))
-    {
-      int i = 0;
-      while (i < this.Zfg.length)
-      {
-        a.aq localaq = this.Zfg[i];
-        if (localaq != null) {
-          paramb.a(4, localaq);
-        }
-        i += 1;
-      }
-    }
-    if (this.timestamp != 0L) {
-      paramb.n(5, this.timestamp);
-    }
-    super.a(paramb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public class MarkerOptions
   @Deprecated
   public MarkerOptions()
   {
-    AppMethodBeat.i(237751);
+    AppMethodBeat.i(218008);
     this.strtitle = "";
     this.fAngle = 0.0F;
     this.fAlpha = 1.0F;
@@ -51,18 +51,18 @@ public class MarkerOptions
     this.mInfowindowOffsetY = 0;
     this.mIsFastLoad = true;
     this.mIsViewInfowindow = false;
-    this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
+    this.iLevel = 2;
     this.mIconLooperDuration = 500;
     this.mCollisions = new Collision[0];
     this.fanchorU = 0.5F;
     this.fanchorV = 0.5F;
     this.boVisible = true;
-    AppMethodBeat.o(237751);
+    AppMethodBeat.o(218008);
   }
   
   public MarkerOptions(LatLng paramLatLng)
   {
-    AppMethodBeat.i(237750);
+    AppMethodBeat.i(218005);
     this.strtitle = "";
     this.fAngle = 0.0F;
     this.fAlpha = 1.0F;
@@ -76,14 +76,14 @@ public class MarkerOptions
     this.mInfowindowOffsetY = 0;
     this.mIsFastLoad = true;
     this.mIsViewInfowindow = false;
-    this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
+    this.iLevel = 2;
     this.mIconLooperDuration = 500;
     this.mCollisions = new Collision[0];
     this.fanchorU = 0.5F;
     this.fanchorV = 0.5F;
     this.boVisible = true;
     this.mlatlng = paramLatLng;
-    AppMethodBeat.o(237750);
+    AppMethodBeat.o(218005);
   }
   
   public MarkerOptions alpha(float paramFloat)
@@ -320,7 +320,7 @@ public class MarkerOptions
   
   public MarkerOptions level(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
+    if ((paramInt < 0) || (paramInt > 2)) {
       return this;
     }
     this.iLevel = paramInt;
@@ -391,7 +391,7 @@ public class MarkerOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions
  * JD-Core Version:    0.7.0.1
  */

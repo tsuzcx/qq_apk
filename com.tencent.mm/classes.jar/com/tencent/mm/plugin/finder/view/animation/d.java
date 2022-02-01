@@ -8,175 +8,165 @@ import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import androidx.recyclerview.widget.RecyclerView.v;
+import androidx.recyclerview.widget.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.d;
+import com.tencent.mm.plugin.finder.e.c;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/animation/RefreshFadeInAnimation;", "Lcom/tencent/mm/plugin/finder/view/animation/DefaultItemAnimator;", "()V", "animateAdd", "", "holder", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "animateAddImpl", "", "animateRemove", "animateRemoveImpl", "getAddDelay", "", "getAddDuration", "getRemoveDelay", "getRemoveDuration", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/animation/RefreshFadeInAnimation;", "Lcom/tencent/mm/plugin/finder/view/animation/DefaultItemAnimator;", "()V", "animateAdd", "", "holder", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "animateAddImpl", "", "animateRemove", "animateRemoveImpl", "getAddDelay", "", "getAddDuration", "getRemoveDelay", "getRemoveDuration", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends a
 {
-  public static final a BdP;
+  public static final a GGr;
   
   static
   {
-    AppMethodBeat.i(286435);
-    BdP = new a((byte)0);
-    AppMethodBeat.o(286435);
+    AppMethodBeat.i(345951);
+    GGr = new a((byte)0);
+    AppMethodBeat.o(345951);
   }
   
-  public final boolean a(RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(286431);
-    p.k(paramv, "holder");
-    d(paramv);
-    this.afZ.add(paramv);
-    AppMethodBeat.o(286431);
-    return true;
-  }
-  
-  protected final void ab(final RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(286432);
-    if (paramv == null) {
-      p.iCn();
-    }
-    final View localView = paramv.amk;
-    p.j(localView, "holder!!.itemView");
-    localView.setAlpha(0.3F);
-    final ViewPropertyAnimator localViewPropertyAnimator1 = localView.animate();
-    this.agi.add(paramv);
-    ViewPropertyAnimator localViewPropertyAnimator2 = localViewPropertyAnimator1.setDuration(200L).alpha(0.0F);
-    Object localObject = paramv.amk;
-    p.j(localObject, "holder.itemView");
-    localObject = ((View)localObject).getContext();
-    p.j(localObject, "holder.itemView.context");
-    localViewPropertyAnimator2.translationY(((Context)localObject).getResources().getDimension(b.d.Edge_6A)).setStartDelay(0L).setListener((Animator.AnimatorListener)new c(this, paramv, localView, localViewPropertyAnimator1)).start();
-    AppMethodBeat.o(286432);
-  }
-  
-  protected final void ac(final RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(286434);
-    if (paramv == null) {
-      p.iCn();
-    }
-    final View localView = paramv.amk;
-    p.j(localView, "holder!!.itemView");
-    final ViewPropertyAnimator localViewPropertyAnimator = localView.animate();
-    this.agg.add(paramv);
-    localViewPropertyAnimator.alpha(1.0F).setStartDelay(0L).setDuration(260L).setListener((Animator.AnimatorListener)new b(this, paramv, localView, localViewPropertyAnimator)).start();
-    AppMethodBeat.o(286434);
-  }
-  
-  public final boolean b(RecyclerView.v paramv)
-  {
-    AppMethodBeat.i(286433);
-    p.k(paramv, "holder");
-    d(paramv);
-    if (paramv.mg() != -3)
-    {
-      View localView = paramv.amk;
-      p.j(localView, "holder.itemView");
-      localView.setAlpha(0.0F);
-      this.aga.add(paramv);
-    }
-    AppMethodBeat.o(286433);
-    return true;
-  }
-  
-  protected final long ejz()
-  {
-    return 0L;
-  }
-  
-  public final long lJ()
+  public final long Kt()
   {
     return 260L;
   }
   
-  public final long lK()
+  public final long Ku()
   {
     return 200L;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/animation/RefreshFadeInAnimation$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  protected final void W(final RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(345976);
+    s.checkNotNull(paramv);
+    final View localView = paramv.caK;
+    s.s(localView, "holder!!.itemView");
+    localView.setAlpha(0.3F);
+    final ViewPropertyAnimator localViewPropertyAnimator = localView.animate();
+    this.bUO.add(paramv);
+    localViewPropertyAnimator.setDuration(200L).alpha(0.0F).translationY(paramv.caK.getContext().getResources().getDimension(e.c.Edge_6A)).setStartDelay(0L).setListener((Animator.AnimatorListener)new c(this, paramv, localView, localViewPropertyAnimator)).start();
+    AppMethodBeat.o(345976);
+  }
+  
+  protected final void X(final RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(345987);
+    s.checkNotNull(paramv);
+    final View localView = paramv.caK;
+    s.s(localView, "holder!!.itemView");
+    final ViewPropertyAnimator localViewPropertyAnimator = localView.animate();
+    this.bUM.add(paramv);
+    localViewPropertyAnimator.alpha(1.0F).setStartDelay(0L).setDuration(260L).setListener((Animator.AnimatorListener)new b(this, paramv, localView, localViewPropertyAnimator)).start();
+    AppMethodBeat.o(345987);
+  }
+  
+  public final boolean a(RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(345960);
+    s.u(paramv, "holder");
+    d(paramv);
+    this.bUF.add(paramv);
+    AppMethodBeat.o(345960);
+    return true;
+  }
+  
+  public final boolean b(RecyclerView.v paramv)
+  {
+    AppMethodBeat.i(345982);
+    s.u(paramv, "holder");
+    d(paramv);
+    if (paramv.caO != -3)
+    {
+      paramv.caK.setAlpha(0.0F);
+      this.bUG.add(paramv);
+    }
+    AppMethodBeat.o(345982);
+    return true;
+  }
+  
+  protected final long flM()
+  {
+    return 0L;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/animation/RefreshFadeInAnimation$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/animation/RefreshFadeInAnimation$animateAddImpl$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animator", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationStart", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/animation/RefreshFadeInAnimation$animateAddImpl$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animator", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationStart", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends AnimatorListenerAdapter
   {
-    b(RecyclerView.v paramv, View paramView, ViewPropertyAnimator paramViewPropertyAnimator) {}
+    b(d paramd, RecyclerView.v paramv, View paramView, ViewPropertyAnimator paramViewPropertyAnimator) {}
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(222729);
-      p.k(paramAnimator, "animator");
+      AppMethodBeat.i(345943);
+      s.u(paramAnimator, "animator");
       onAnimationEnd(paramAnimator);
-      AppMethodBeat.o(222729);
+      AppMethodBeat.o(345943);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(222732);
-      p.k(paramAnimator, "animator");
-      f.eU(localView);
+      AppMethodBeat.i(345955);
+      s.u(paramAnimator, "animator");
+      f.hf(localView);
       localViewPropertyAnimator.setListener(null);
-      this.BdQ.B(paramv);
-      this.BdQ.agg.remove(paramv);
-      this.BdQ.km();
-      AppMethodBeat.o(222732);
+      this.GGs.r(paramv);
+      this.GGs.bUM.remove(paramv);
+      this.GGs.IX();
+      AppMethodBeat.o(345955);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(222727);
-      p.k(paramAnimator, "animator");
-      AppMethodBeat.o(222727);
+      AppMethodBeat.i(345933);
+      s.u(paramAnimator, "animator");
+      AppMethodBeat.o(345933);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/animation/RefreshFadeInAnimation$animateRemoveImpl$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "animator", "onAnimationStart", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/animation/RefreshFadeInAnimation$animateRemoveImpl$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "animator", "onAnimationStart", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     extends AnimatorListenerAdapter
   {
-    c(RecyclerView.v paramv, View paramView, ViewPropertyAnimator paramViewPropertyAnimator) {}
+    c(d paramd, RecyclerView.v paramv, View paramView, ViewPropertyAnimator paramViewPropertyAnimator) {}
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(272001);
-      p.k(paramAnimator, "animation");
+      AppMethodBeat.i(345925);
+      s.u(paramAnimator, "animation");
       onAnimationEnd(paramAnimator);
-      AppMethodBeat.o(272001);
+      AppMethodBeat.o(345925);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(272003);
-      p.k(paramAnimator, "animator");
-      f.eU(localView);
-      localViewPropertyAnimator1.setListener(null);
-      this.BdQ.z(paramv);
-      this.BdQ.agi.remove(paramv);
-      this.BdQ.km();
-      AppMethodBeat.o(272003);
+      AppMethodBeat.i(345932);
+      s.u(paramAnimator, "animator");
+      f.hf(localView);
+      localViewPropertyAnimator.setListener(null);
+      this.GGs.A(paramv);
+      this.GGs.bUO.remove(paramv);
+      this.GGs.IX();
+      AppMethodBeat.o(345932);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(272000);
-      p.k(paramAnimator, "animator");
-      this.BdQ.D(paramv);
-      AppMethodBeat.o(272000);
+      AppMethodBeat.i(345918);
+      s.u(paramAnimator, "animator");
+      this.GGs.C(paramv);
+      AppMethodBeat.o(345918);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.animation.d
  * JD-Core Version:    0.7.0.1
  */

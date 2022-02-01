@@ -1,69 +1,67 @@
 package com.tencent.mm.plugin.story.ui;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.story.a.d;
 import com.tencent.mm.plugin.story.a.e;
 import com.tencent.mm.plugin.story.a.g;
-import com.tencent.mm.plugin.story.f.i;
-import com.tencent.mm.plugin.story.f.j;
-import com.tencent.mm.plugin.story.f.j.b;
+import com.tencent.mm.plugin.story.c.a.g.a;
+import com.tencent.mm.plugin.story.model.StoryCore;
+import com.tencent.mm.plugin.story.model.StoryCore.b;
+import com.tencent.mm.plugin.story.model.i;
 import com.tencent.mm.plugin.story.proxy.StoryCaptureProxy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h.e;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.aa;
 import com.tencent.mm.ui.base.w;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
 @com.tencent.mm.ui.base.a(3)
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "adapter", "Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ChoiceAdapter;", "listview", "Landroid/widget/ListView;", "mDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "proxy", "Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy;", "selectsList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ITestMenu;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "getLayoutId", "", "initOnCreate", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "ChoiceAdapter", "ChoiceItem", "ClickItem", "Companion", "ITestMenu", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "adapter", "Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ChoiceAdapter;", "listview", "Landroid/widget/ListView;", "mDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "proxy", "Lcom/tencent/mm/plugin/story/proxy/StoryCaptureProxy;", "selectsList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ITestMenu;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "getLayoutId", "", "initOnCreate", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "ChoiceAdapter", "ChoiceItem", "ClickItem", "Companion", "ITestMenu", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class StorySettingsUI
   extends MMActivity
 {
-  public static final d LRw;
-  private static final String TAG = "MicroMsg.StorySettingUI";
-  private a LRt;
-  private StoryCaptureProxy LRu;
-  private s LRv;
-  private com.tencent.mm.remoteservice.d jGJ;
-  private final LinkedList<e> kJf;
-  private ListView kJh;
+  public static final d StY;
+  private static final String TAG;
+  private a StZ;
+  private StoryCaptureProxy Sua;
+  private w Sub;
+  private final LinkedList<e> nlG;
+  private ListView nlI;
+  private com.tencent.mm.remoteservice.d pfZ;
   
   static
   {
     AppMethodBeat.i(119711);
-    LRw = new d((byte)0);
+    StY = new d((byte)0);
     TAG = "MicroMsg.StorySettingUI";
     AppMethodBeat.o(119711);
   }
@@ -71,26 +69,247 @@ public final class StorySettingsUI
   public StorySettingsUI()
   {
     AppMethodBeat.i(119710);
-    this.jGJ = new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext());
-    this.kJf = new LinkedList();
+    this.pfZ = new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext());
+    this.nlG = new LinkedList();
     AppMethodBeat.o(119710);
+  }
+  
+  private static final void a(StorySettingsUI paramStorySettingsUI)
+  {
+    AppMethodBeat.i(367222);
+    s.u(paramStorySettingsUI, "this$0");
+    Log.i(TAG, "has connect");
+    paramStorySettingsUI.nlG.add(new c("TestUI", "点我", (View.OnClickListener)new f(paramStorySettingsUI)));
+    paramStorySettingsUI.nlG.add(new b("支付Kinda开关", at.a.acYX, new String[] { "open", "close", "default" }, new int[] { 1, 2, 0 }));
+    paramStorySettingsUI.nlG.add(new b("朋友圈入口", at.a.acYM, new String[] { "方案一", "方案二", "关闭", "使用后台动态配置" }, new int[] { 1, 2, 10000, 0 }));
+    long l = com.tencent.mm.kernel.h.baE().ban().a(at.a.acYN, 0L);
+    if (l <= 0L) {
+      l = System.currentTimeMillis();
+    }
+    for (;;)
+    {
+      paramStorySettingsUI.nlG.add(new b("朋友圈入口新动态时间重设", at.a.acYN, new String[] { "1个小时前", "2个小时前", "4个小时前", "24个小时前" }, new long[] { l - 3600000L, l - 7200000L, l - 14400000L, l - 86400000L }));
+      paramStorySettingsUI.nlG.add(new b("vlog开关", at.a.acWc, new String[] { "关", "开" }, new int[] { 0, 1 }));
+      paramStorySettingsUI.nlG.add(new b("vlog新旧逻辑", at.a.acWd, new String[] { "新", "旧" }, new int[] { 0, 1 }));
+      Object localObject1 = paramStorySettingsUI.nlG;
+      Object localObject2 = at.a.acVW;
+      int i = g.a.Sjh.value;
+      int j = g.a.Sji.value;
+      ((LinkedList)localObject1).add(new b("合成方案", (at.a)localObject2, new String[] { "前台合成", "后台合成" }, new int[] { i, j }));
+      paramStorySettingsUI.nlG.add(new b("裁剪方案", at.a.acVX, new String[] { "GPU裁剪", "CPU裁剪" }, new int[] { 2, 1 }));
+      paramStorySettingsUI.nlG.add(new b("CameraApi方案", at.a.acZB, new String[] { "Camera1", "Camera2" }, new int[] { 1, 2 }));
+      paramStorySettingsUI.nlG.add(new b("编码方案", at.a.acVY, new String[] { "MediaCodec", "x264" }, new int[] { 2, 1 }));
+      paramStorySettingsUI.nlG.add(new c("一天九张?", "点我", (View.OnClickListener)new p()));
+      paramStorySettingsUI.nlG.add(new c("新手指引", "点我", (View.OnClickListener)new t()));
+      paramStorySettingsUI.nlG.add(new b("视频动态足迹开关", at.a.adfG, new String[] { "关", "开" }, new int[] { 0, 1 }));
+      paramStorySettingsUI.nlG.add(new c("清空表", "嗯", (View.OnClickListener)new u()));
+      localObject2 = paramStorySettingsUI.nlG;
+      localObject1 = com.tencent.mm.plugin.recordvideo.c.f.NGM;
+      if (com.tencent.mm.plugin.recordvideo.c.f.gHq())
+      {
+        localObject1 = "图片视频不自动合成";
+        ((LinkedList)localObject2).add(new c((String)localObject1, "嗯", (View.OnClickListener)new v()));
+        localObject2 = paramStorySettingsUI.nlG;
+        localObject1 = com.tencent.mm.plugin.recordvideo.c.f.NGM;
+        if (!com.tencent.mm.plugin.recordvideo.c.f.gHr()) {
+          break label1553;
+        }
+        localObject1 = "视频不重新合成";
+        label815:
+        ((LinkedList)localObject2).add(new c((String)localObject1, "嗯", (View.OnClickListener)new w()));
+        localObject2 = paramStorySettingsUI.nlG;
+        if (com.tencent.mm.plugin.story.c.c.NHr) {
+          break label1561;
+        }
+      }
+      label1553:
+      label1561:
+      for (localObject1 = "强制使用软编码";; localObject1 = "不强制使用软编码")
+      {
+        ((LinkedList)localObject2).add(new c((String)localObject1, "嗯", (View.OnClickListener)new x()));
+        paramStorySettingsUI.nlG.add(new c("软编码超时次数+1", "嗯", (View.OnClickListener)new y()));
+        paramStorySettingsUI.nlG.add(new c("软编码失败次数+1", "嗯", (View.OnClickListener)new z()));
+        paramStorySettingsUI.nlG.add(new c("软编码超时次数-1", "嗯", (View.OnClickListener)new g()));
+        paramStorySettingsUI.nlG.add(new c("不删除ext, 删除info/room/file", "嗯", (View.OnClickListener)new StorySettingsUI.h()));
+        paramStorySettingsUI.nlG.add(new c("拉取数据", "嗯", (View.OnClickListener)new i()));
+        paramStorySettingsUI.nlG.add(new c("所有未读", "嗯", (View.OnClickListener)new j()));
+        paramStorySettingsUI.nlG.add(new c("查看Story缓存大小", "嗯", (View.OnClickListener)new k(paramStorySettingsUI)));
+        paramStorySettingsUI.nlG.add(new c("清除Story缓存", "嗯", (View.OnClickListener)new l(paramStorySettingsUI)));
+        paramStorySettingsUI.nlG.add(new c("同步cache到Sdcard", "嗯", (View.OnClickListener)new m(paramStorySettingsUI)));
+        paramStorySettingsUI.nlG.add(new c("点我发送后台失败", "嗯 Test", (View.OnClickListener)new n(paramStorySettingsUI)));
+        paramStorySettingsUI.nlG.add(new c("点我发送超时失败", "嗯 Test", (View.OnClickListener)new o(paramStorySettingsUI)));
+        paramStorySettingsUI.nlG.add(new c("群视频上拉提示", "再看一下", new StorySettingsUI..ExternalSyntheticLambda4(paramStorySettingsUI)));
+        paramStorySettingsUI.nlG.add(new c("冒个泡提示", "再看一次", StorySettingsUI..ExternalSyntheticLambda6.INSTANCE));
+        paramStorySettingsUI.nlG.add(new c("首次拍摄", "", StorySettingsUI..ExternalSyntheticLambda7.INSTANCE));
+        paramStorySettingsUI.nlG.add(new c("轻触查看", "再来一次", StorySettingsUI..ExternalSyntheticLambda5.INSTANCE));
+        paramStorySettingsUI.nlG.add(new c("视频动态过期时长测试", "过期时长设置为1分钟", new StorySettingsUI..ExternalSyntheticLambda3(paramStorySettingsUI)));
+        paramStorySettingsUI.nlG.add(new c("重置大嘴巴显示头像时间", "点我", (View.OnClickListener)new q()));
+        paramStorySettingsUI.nlG.add(new c("删除相册缩略图缓存", "删除", new StorySettingsUI..ExternalSyntheticLambda2(paramStorySettingsUI)));
+        paramStorySettingsUI.nlG.add(new c("编辑器", "跳转", new StorySettingsUI..ExternalSyntheticLambda1(paramStorySettingsUI)));
+        paramStorySettingsUI.nlG.add(new c("重置视频号朋友圈入口", "点我", (View.OnClickListener)new r()));
+        paramStorySettingsUI.nlG.add(new c("支付测试ID", "点我", (View.OnClickListener)new s(paramStorySettingsUI)));
+        localObject1 = paramStorySettingsUI.findViewById(a.d.SfY);
+        if (localObject1 != null) {
+          break label1569;
+        }
+        paramStorySettingsUI = new NullPointerException("null cannot be cast to non-null type android.widget.ListView");
+        AppMethodBeat.o(367222);
+        throw paramStorySettingsUI;
+        localObject1 = "图片视频自动合成";
+        break;
+        localObject1 = "视频重新合成";
+        break label815;
+      }
+      label1569:
+      paramStorySettingsUI.nlI = ((ListView)localObject1);
+      paramStorySettingsUI.StZ = new a();
+      localObject2 = paramStorySettingsUI.nlI;
+      s.checkNotNull(localObject2);
+      localObject1 = paramStorySettingsUI.StZ;
+      paramStorySettingsUI = (StorySettingsUI)localObject1;
+      if (localObject1 == null)
+      {
+        s.bIx("adapter");
+        paramStorySettingsUI = null;
+      }
+      ((ListView)localObject2).setAdapter((ListAdapter)paramStorySettingsUI);
+      AppMethodBeat.o(367222);
+      return;
+    }
+  }
+  
+  private static final void a(StorySettingsUI paramStorySettingsUI, View paramView)
+  {
+    AppMethodBeat.i(367229);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramStorySettingsUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramStorySettingsUI, "this$0");
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acYw, Boolean.FALSE);
+    com.tencent.mm.ui.base.k.c((Context)paramStorySettingsUI.getContext(), "在群视频，不要上滑，静候5秒", "", true);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367229);
+  }
+  
+  private static final boolean a(StorySettingsUI paramStorySettingsUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(367226);
+    s.u(paramStorySettingsUI, "this$0");
+    paramStorySettingsUI.finish();
+    AppMethodBeat.o(367226);
+    return false;
+  }
+  
+  private static final void b(StorySettingsUI paramStorySettingsUI, View paramView)
+  {
+    AppMethodBeat.i(367241);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramStorySettingsUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramStorySettingsUI, "this$0");
+    paramView = i.SjL;
+    i.hvA();
+    com.tencent.mm.ui.base.k.c((Context)paramStorySettingsUI.getContext(), "ok！", "", true);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367241);
+  }
+  
+  private static final void c(StorySettingsUI paramStorySettingsUI, View paramView)
+  {
+    AppMethodBeat.i(367244);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramStorySettingsUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramStorySettingsUI, "this$0");
+    try
+    {
+      y.ew(paramStorySettingsUI.getContext().getExternalCacheDir() + "/imgcache", true);
+      label89:
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(367244);
+      return;
+    }
+    catch (Exception paramStorySettingsUI)
+    {
+      break label89;
+    }
+  }
+  
+  private static final void d(StorySettingsUI paramStorySettingsUI, View paramView)
+  {
+    AppMethodBeat.i(367248);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramStorySettingsUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramStorySettingsUI, "this$0");
+    paramView = new Intent();
+    paramView.putExtra("KEY_EDITABLE", true);
+    paramView.putExtra("KEY_CONTENT_XML", paramStorySettingsUI.getSharedPreferences("test_plugin", 0).getString("content", ""));
+    com.tencent.mm.br.c.b((Context)paramStorySettingsUI.getContext(), "editor", ".EditorUI", paramView, 4096);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367248);
+  }
+  
+  private static final void kf(View paramView)
+  {
+    AppMethodBeat.i(367233);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acYv, Integer.valueOf(0));
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367233);
+  }
+  
+  private static final void kg(View paramView)
+  {
+    AppMethodBeat.i(367236);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acYx, Boolean.FALSE);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367236);
+  }
+  
+  private static final void kh(View paramView)
+  {
+    AppMethodBeat.i(367239);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acYz, Boolean.FALSE);
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acYA, Boolean.FALSE);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/StorySettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367239);
   }
   
   public final int getLayoutId()
   {
-    return a.e.LDp;
+    return a.e.Sha;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(178052);
     if ((4096 == paramInt1) && (-1 == paramInt2)) {
-      if (paramIntent == null) {
-        break label71;
+      if (paramIntent != null) {
+        break label65;
       }
     }
-    label71:
-    for (paramIntent = paramIntent.getStringExtra("KEY_CONTENT_XML");; paramIntent = null)
+    label65:
+    for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("KEY_CONTENT_XML"))
     {
       if (!Util.isNullOrNil(paramIntent)) {
         getSharedPreferences("test_plugin", 0).edit().putString("content", paramIntent).apply();
@@ -104,9 +323,9 @@ public final class StorySettingsUI
   {
     AppMethodBeat.i(119706);
     super.onCreate(paramBundle);
-    this.LRu = new StoryCaptureProxy(this.jGJ);
-    this.jGJ.connect((Runnable)new ah(this));
-    setBackBtn((MenuItem.OnMenuItemClickListener)new ai(this));
+    this.Sua = new StoryCaptureProxy(this.pfZ);
+    this.pfZ.connect(new StorySettingsUI..ExternalSyntheticLambda8(this));
+    setBackBtn(new StorySettingsUI..ExternalSyntheticLambda0(this));
     AppMethodBeat.o(119706);
   }
   
@@ -114,7 +333,7 @@ public final class StorySettingsUI
   {
     AppMethodBeat.i(119707);
     super.onDestroy();
-    this.jGJ.release();
+    this.pfZ.release();
     AppMethodBeat.o(119707);
   }
   
@@ -138,14 +357,36 @@ public final class StorySettingsUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ChoiceAdapter;", "Landroid/widget/BaseAdapter;", "(Lcom/tencent/mm/plugin/story/ui/StorySettingsUI;)V", "getCount", "", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ChoiceAdapter;", "Landroid/widget/BaseAdapter;", "(Lcom/tencent/mm/plugin/story/ui/StorySettingsUI;)V", "getCount", "", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class a
     extends BaseAdapter
   {
+    public a()
+    {
+      AppMethodBeat.i(367243);
+      AppMethodBeat.o(367243);
+    }
+    
+    private static final void a(StorySettingsUI.e parame, TextView paramTextView, View paramView)
+    {
+      AppMethodBeat.i(367245);
+      Object localObject = new Object();
+      b localb = new b();
+      localb.cH(parame);
+      localb.cH(paramTextView);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$ChoiceAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      s.u(parame, "$item");
+      s.u(paramTextView, "$textView");
+      parame.di((View)paramTextView);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/StorySettingsUI$ChoiceAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(367245);
+    }
+    
     public final int getCount()
     {
       AppMethodBeat.i(119659);
-      int i = StorySettingsUI.c(this.LRx).size();
+      int i = StorySettingsUI.e(this.Suc).size();
       AppMethodBeat.o(119659);
       return i;
     }
@@ -153,8 +394,8 @@ public final class StorySettingsUI
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(119660);
-      Object localObject = StorySettingsUI.c(this.LRx).get(paramInt);
-      p.j(localObject, "selectsList[position]");
+      Object localObject = StorySettingsUI.e(this.Suc).get(paramInt);
+      s.s(localObject, "selectsList[position]");
       AppMethodBeat.o(119660);
       return localObject;
     }
@@ -164,488 +405,197 @@ public final class StorySettingsUI
       return 0L;
     }
     
-    @SuppressLint({"SetTextI18n"})
-    public final View getView(int paramInt, final View paramView, ViewGroup paramViewGroup)
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(119661);
-      p.k(paramViewGroup, "parent");
-      paramView = new TextView((Context)this.LRx);
-      paramViewGroup = getItem(paramInt);
-      if (paramViewGroup == null)
-      {
-        paramView = new t("null cannot be cast to non-null type com.tencent.mm.plugin.story.ui.StorySettingsUI.ITestMenu");
-        AppMethodBeat.o(119661);
-        throw paramView;
-      }
-      paramViewGroup = (StorySettingsUI.e)paramViewGroup;
-      paramView.setText((CharSequence)(paramViewGroup.aBd() + "->:" + paramViewGroup.value()));
+      s.u(paramViewGroup, "parent");
+      paramView = new TextView((Context)this.Suc);
+      paramViewGroup = (StorySettingsUI.e)getItem(paramInt);
+      paramView.setText((CharSequence)(paramViewGroup.aUa() + "->:" + paramViewGroup.value()));
       paramView.setGravity(17);
       paramView.setTextSize(1, 20.0F);
-      paramView.setHeight(com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 50));
+      paramView.setHeight(com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 50));
       if (paramInt % 2 == 1) {
         paramView.setBackgroundColor(Color.parseColor("#e2efda"));
       }
-      paramView.setOnClickListener((View.OnClickListener)new a(paramViewGroup, paramView));
+      paramView.setOnClickListener(new StorySettingsUI.a..ExternalSyntheticLambda0(paramViewGroup, paramView));
       paramView = (View)paramView;
       AppMethodBeat.o(119661);
       return paramView;
     }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class a
-      implements View.OnClickListener
-    {
-      a(StorySettingsUI.e parame, TextView paramTextView) {}
-      
-      public final void onClick(View paramView)
-      {
-        AppMethodBeat.i(119658);
-        b localb = new b();
-        localb.bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$ChoiceAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        this.LRy.cI((View)paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$ChoiceAdapter$getView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(119658);
-      }
-    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$3", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
-  public static final class aa
-    implements View.OnClickListener
-  {
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119697);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwV, Boolean.TRUE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwX, Boolean.TRUE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwW, Boolean.TRUE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwL, Boolean.FALSE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwK, Integer.valueOf(0));
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwM, Boolean.FALSE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwN, Boolean.FALSE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwO, Boolean.FALSE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwP, Boolean.FALSE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwY, Boolean.TRUE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwZ, Integer.valueOf(0));
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.Vxi, Boolean.TRUE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwQ, Boolean.TRUE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwR, Boolean.TRUE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VCL, Integer.valueOf(0));
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VCN, Boolean.TRUE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VCT, "");
-      w.makeText(MMApplicationContext.getContext(), (CharSequence)"好了", 1).show();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(119697);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$4", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
-  public static final class ab
-    implements View.OnClickListener
-  {
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119698);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      new com.tencent.mm.plugin.story.f.h();
-      com.tencent.mm.plugin.story.f.h.gck();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(119698);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$5", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
-  public static final class ac
-    implements View.OnClickListener
-  {
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119699);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.plugin.recordvideo.b.f.HJU;
-      paramView = com.tencent.mm.plugin.recordvideo.b.f.HJU;
-      if (!com.tencent.mm.plugin.recordvideo.b.f.fvC()) {}
-      for (boolean bool = true;; bool = false)
-      {
-        com.tencent.mm.plugin.recordvideo.b.f.ww(bool);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(119699);
-        return;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$6", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
-  public static final class ad
-    implements View.OnClickListener
-  {
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119700);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.plugin.recordvideo.b.f.HJU;
-      paramView = com.tencent.mm.plugin.recordvideo.b.f.HJU;
-      if (!com.tencent.mm.plugin.recordvideo.b.f.fvD()) {}
-      for (boolean bool = true;; bool = false)
-      {
-        com.tencent.mm.plugin.recordvideo.b.f.wx(bool);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(119700);
-        return;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$7", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
-  public static final class ae
-    implements View.OnClickListener
-  {
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119701);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (!com.tencent.mm.plugin.story.c.c.HKt) {}
-      for (boolean bool = true;; bool = false)
-      {
-        com.tencent.mm.plugin.story.c.c.HKt = bool;
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(119701);
-        return;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$8", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
-  public static final class af
-    implements View.OnClickListener
-  {
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119702);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      com.tencent.mm.plugin.story.c.c.RB(100000L);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(119702);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$9", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
-  public static final class ag
-    implements View.OnClickListener
-  {
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119703);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      com.tencent.mm.plugin.story.c.c.gbM();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(119703);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class ah
-    implements Runnable
-  {
-    ah(StorySettingsUI paramStorySettingsUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(119704);
-      StorySettingsUI.d locald = StorySettingsUI.LRw;
-      Log.i(StorySettingsUI.access$getTAG$cp(), "has connect");
-      StorySettingsUI.d(this.LRx);
-      AppMethodBeat.o(119704);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class ai
-    implements MenuItem.OnMenuItemClickListener
-  {
-    ai(StorySettingsUI paramStorySettingsUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(119705);
-      this.LRx.finish();
-      AppMethodBeat.o(119705);
-      return false;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ChoiceItem;", "Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ITestMenu;", "_showtitle", "", "_key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "_items", "", "_vals", "", "(Lcom/tencent/mm/plugin/story/ui/StorySettingsUI;Ljava/lang/String;Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;[Ljava/lang/String;Ljava/lang/Object;)V", "get_items", "()[Ljava/lang/String;", "set_items", "([Ljava/lang/String;)V", "[Ljava/lang/String;", "get_key", "()Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "set_key", "(Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;)V", "get_showtitle", "()Ljava/lang/String;", "set_showtitle", "(Ljava/lang/String;)V", "get_vals", "()Ljava/lang/Object;", "set_vals", "(Ljava/lang/Object;)V", "value", "getValue", "get", "field", "showAlert", "", "view", "Landroid/view/View;", "title", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ChoiceItem;", "Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ITestMenu;", "_showtitle", "", "_key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "_items", "", "_vals", "", "(Lcom/tencent/mm/plugin/story/ui/StorySettingsUI;Ljava/lang/String;Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;[Ljava/lang/String;Ljava/lang/Object;)V", "get_items", "()[Ljava/lang/String;", "set_items", "([Ljava/lang/String;)V", "[Ljava/lang/String;", "get_key", "()Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "set_key", "(Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;)V", "get_showtitle", "()Ljava/lang/String;", "set_showtitle", "(Ljava/lang/String;)V", "get_vals", "()Ljava/lang/Object;", "set_vals", "(Ljava/lang/Object;)V", "value", "getValue", "get", "field", "showAlert", "", "view", "Landroid/view/View;", "title", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class b
     implements StorySettingsUI.e
   {
-    private String kJm;
-    ar.a kJn;
-    private String[] kJo;
-    Object kJp;
+    private String nlK;
+    private at.a nlL;
+    private String[] nlM;
+    private Object nlN;
     
-    public b(ar.a parama, String[] paramArrayOfString, Object paramObject)
+    public b(at.a parama, String[] paramArrayOfString, Object paramObject)
     {
       AppMethodBeat.i(119666);
-      this.kJm = parama;
-      this.kJn = paramArrayOfString;
-      this.kJo = paramObject;
-      this.kJp = localObject;
+      this.nlK = parama;
+      this.nlL = paramArrayOfString;
+      this.nlM = paramObject;
+      this.nlN = localObject;
       AppMethodBeat.o(119666);
     }
     
-    private final String dY(Object paramObject)
+    private static final void a(b paramb, StorySettingsUI paramStorySettingsUI, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(367249);
+      s.u(paramb, "this$0");
+      s.u(paramStorySettingsUI, "this$1");
+      try
+      {
+        Object localObject = paramb.nlN;
+        if ((localObject instanceof long[]))
+        {
+          localObject = StorySettingsUI.c(paramStorySettingsUI);
+          s.checkNotNull(localObject);
+          ((StoryCaptureProxy)localObject).set(paramb.nlL, Long.valueOf(((long[])paramb.nlN)[paramInt1]));
+        }
+        for (;;)
+        {
+          paramStorySettingsUI = StorySettingsUI.d(paramStorySettingsUI);
+          paramb = paramStorySettingsUI;
+          if (paramStorySettingsUI == null)
+          {
+            s.bIx("adapter");
+            paramb = null;
+          }
+          paramb.notifyDataSetChanged();
+          AppMethodBeat.o(367249);
+          return;
+          if ((localObject instanceof int[]))
+          {
+            localObject = StorySettingsUI.c(paramStorySettingsUI);
+            s.checkNotNull(localObject);
+            ((StoryCaptureProxy)localObject).set(paramb.nlL, Integer.valueOf(((int[])paramb.nlN)[paramInt1]));
+          }
+        }
+        return;
+      }
+      catch (Exception paramb)
+      {
+        paramStorySettingsUI = StorySettingsUI.StY;
+        Log.printErrStackTrace(StorySettingsUI.access$getTAG$cp(), (Throwable)paramb, "", new Object[0]);
+        AppMethodBeat.o(367249);
+      }
+    }
+    
+    private final String gw(Object paramObject)
     {
       AppMethodBeat.i(119665);
-      Object localObject = this.kJp;
-      int j;
-      int i;
+      Object localObject = this.nlN;
+      long l;
+      int k;
       if ((localObject instanceof long[]))
       {
-        if (paramObject == null)
-        {
-          paramObject = new t("null cannot be cast to non-null type kotlin.Long");
-          AppMethodBeat.o(119665);
-          throw paramObject;
-        }
-        long l = ((Long)paramObject).longValue();
-        paramObject = this.kJp;
-        if (paramObject == null)
-        {
-          paramObject = new t("null cannot be cast to non-null type kotlin.LongArray");
-          AppMethodBeat.o(119665);
-          throw paramObject;
-        }
-        j = ((long[])paramObject).length;
-        i = 0;
-        while (i < j)
-        {
-          paramObject = this.kJp;
-          if (paramObject == null)
-          {
-            paramObject = new t("null cannot be cast to non-null type kotlin.LongArray");
-            AppMethodBeat.o(119665);
-            throw paramObject;
-          }
-          if ((l == ((long[])paramObject)[i]) && (i < this.kJo.length))
-          {
-            paramObject = this.kJo[i];
-            AppMethodBeat.o(119665);
-            return paramObject;
-          }
-          i += 1;
-        }
-        paramObject = this.kJo[0];
-        AppMethodBeat.o(119665);
-        return paramObject;
+        l = ((Long)paramObject).longValue();
+        k = ((long[])this.nlN).length - 1;
+        if (k < 0) {}
       }
-      if ((localObject instanceof int[]))
+      int j;
+      for (int i = 0;; i = j)
       {
-        if (paramObject == null)
+        j = i + 1;
+        if ((l == ((long[])this.nlN)[i]) && (i < this.nlM.length))
         {
-          paramObject = new t("null cannot be cast to non-null type kotlin.Int");
+          paramObject = this.nlM[i];
           AppMethodBeat.o(119665);
-          throw paramObject;
+          return paramObject;
         }
-        j = ((Integer)paramObject).intValue();
-        paramObject = this.kJp;
-        if (paramObject == null)
+        if (j > k)
         {
-          paramObject = new t("null cannot be cast to non-null type kotlin.IntArray");
+          paramObject = this.nlM[0];
           AppMethodBeat.o(119665);
-          throw paramObject;
-        }
-        int k = ((int[])paramObject).length;
-        i = 0;
-        while (i < k)
-        {
-          paramObject = this.kJp;
-          if (paramObject == null)
+          return paramObject;
+          int m;
+          if ((localObject instanceof int[]))
           {
-            paramObject = new t("null cannot be cast to non-null type kotlin.IntArray");
-            AppMethodBeat.o(119665);
-            throw paramObject;
+            k = ((Integer)paramObject).intValue();
+            m = ((int[])this.nlN).length - 1;
+            if (m < 0) {}
           }
-          if ((j == ((int[])paramObject)[i]) && (i < this.kJo.length))
+          for (i = 0;; i = j)
           {
-            paramObject = this.kJo[i];
-            AppMethodBeat.o(119665);
-            return paramObject;
+            j = i + 1;
+            if ((k == ((int[])this.nlN)[i]) && (i < this.nlM.length))
+            {
+              paramObject = this.nlM[i];
+              AppMethodBeat.o(119665);
+              return paramObject;
+            }
+            if (j > m)
+            {
+              paramObject = this.nlM[0];
+              AppMethodBeat.o(119665);
+              return paramObject;
+              AppMethodBeat.o(119665);
+              return "";
+            }
           }
-          i += 1;
         }
-        paramObject = this.kJo[0];
-        AppMethodBeat.o(119665);
-        return paramObject;
       }
-      AppMethodBeat.o(119665);
-      return "";
     }
     
-    public final String aBd()
+    public final String aUa()
     {
-      return this.kJm;
+      return this.nlK;
     }
     
-    public final void cI(View paramView)
+    public final void di(View paramView)
     {
       AppMethodBeat.i(119664);
-      p.k(paramView, "view");
+      s.u(paramView, "view");
       paramView = new LinkedList();
       LinkedList localLinkedList = new LinkedList();
       int i = 0;
-      int j = this.kJo.length;
-      while (i < j)
+      int k = this.nlM.length - 1;
+      if (k >= 0) {}
+      for (;;)
       {
-        paramView.add(this.kJo[i]);
+        int j = i + 1;
+        paramView.add(this.nlM[i]);
         localLinkedList.add(Integer.valueOf(i));
-        i += 1;
+        if (j > k)
+        {
+          com.tencent.mm.ui.base.k.a((Context)StorySettingsUI.this, "", (List)paramView, (List)localLinkedList, "", new StorySettingsUI.b..ExternalSyntheticLambda0(this, StorySettingsUI.this));
+          AppMethodBeat.o(119664);
+          return;
+        }
+        i = j;
       }
-      com.tencent.mm.ui.base.h.a((Context)StorySettingsUI.this, "", (List)paramView, (List)localLinkedList, "", (h.e)new a(this));
-      AppMethodBeat.o(119664);
     }
     
     public final String value()
     {
       AppMethodBeat.i(119663);
-      if ((this.kJp instanceof long[]))
+      if ((this.nlN instanceof long[]))
       {
-        localObject = StorySettingsUI.a(StorySettingsUI.this);
-        if (localObject == null) {
-          p.iCn();
-        }
-        localObject = dY(((StoryCaptureProxy)localObject).get(this.kJn, Long.valueOf(0L)));
+        localObject = StorySettingsUI.c(StorySettingsUI.this);
+        s.checkNotNull(localObject);
+        localObject = gw(((StoryCaptureProxy)localObject).get(this.nlL, Long.valueOf(0L)));
         AppMethodBeat.o(119663);
         return localObject;
       }
-      Object localObject = StorySettingsUI.a(StorySettingsUI.this);
-      if (localObject == null) {
-        p.iCn();
-      }
-      localObject = dY(((StoryCaptureProxy)localObject).get(this.kJn, Integer.valueOf(0)));
+      Object localObject = StorySettingsUI.c(StorySettingsUI.this);
+      s.checkNotNull(localObject);
+      localObject = gw(((StoryCaptureProxy)localObject).get(this.nlL, Integer.valueOf(0)));
       AppMethodBeat.o(119663);
       return localObject;
     }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "whichButton", "", "<anonymous parameter 1>", "onClick"})
-    static final class a
-      implements h.e
-    {
-      a(StorySettingsUI.b paramb) {}
-      
-      public final void cS(int paramInt1, int paramInt2)
-      {
-        AppMethodBeat.i(119662);
-        Object localObject3;
-        Object localObject4;
-        try
-        {
-          Object localObject1 = this.LRz.kJp;
-          if (!(localObject1 instanceof long[])) {
-            break label141;
-          }
-          localObject1 = StorySettingsUI.a(this.LRz.LRx);
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          localObject3 = this.LRz.kJn;
-          localObject4 = this.LRz.kJp;
-          if (localObject4 == null)
-          {
-            localObject1 = new t("null cannot be cast to non-null type kotlin.LongArray");
-            AppMethodBeat.o(119662);
-            throw ((Throwable)localObject1);
-          }
-        }
-        catch (Exception localException)
-        {
-          localObject3 = StorySettingsUI.LRw;
-          Log.printErrStackTrace(StorySettingsUI.access$getTAG$cp(), (Throwable)localException, "", new Object[0]);
-          AppMethodBeat.o(119662);
-          return;
-        }
-        localException.set((ar.a)localObject3, Long.valueOf(((long[])localObject4)[paramInt1]));
-        for (;;)
-        {
-          StorySettingsUI.b(this.LRz.LRx).notifyDataSetChanged();
-          AppMethodBeat.o(119662);
-          return;
-          label141:
-          if ((localException instanceof int[]))
-          {
-            Object localObject2 = StorySettingsUI.a(this.LRz.LRx);
-            if (localObject2 == null) {
-              p.iCn();
-            }
-            localObject3 = this.LRz.kJn;
-            localObject4 = this.LRz.kJp;
-            if (localObject4 == null)
-            {
-              localObject2 = new t("null cannot be cast to non-null type kotlin.IntArray");
-              AppMethodBeat.o(119662);
-              throw ((Throwable)localObject2);
-            }
-            ((StoryCaptureProxy)localObject2).set((ar.a)localObject3, Integer.valueOf(((int[])localObject4)[paramInt1]));
-          }
-        }
-      }
-    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ClickItem;", "Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ITestMenu;", "title", "", "value", "clickEvent", "Landroid/view/View$OnClickListener;", "(Ljava/lang/String;Ljava/lang/String;Landroid/view/View$OnClickListener;)V", "getClickEvent", "()Landroid/view/View$OnClickListener;", "getTitle", "()Ljava/lang/String;", "getValue", "showAlert", "", "view", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ClickItem;", "Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ITestMenu;", "title", "", "value", "clickEvent", "Landroid/view/View$OnClickListener;", "(Ljava/lang/String;Ljava/lang/String;Landroid/view/View$OnClickListener;)V", "getClickEvent", "()Landroid/view/View$OnClickListener;", "getTitle", "()Ljava/lang/String;", "getValue", "showAlert", "", "view", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements StorySettingsUI.e
   {
-    private final View.OnClickListener KXi;
+    private final View.OnClickListener Rxj;
     private final String title;
     private final String value;
     
@@ -654,21 +604,21 @@ public final class StorySettingsUI
       AppMethodBeat.i(119668);
       this.title = paramString1;
       this.value = paramString2;
-      this.KXi = paramOnClickListener;
+      this.Rxj = paramOnClickListener;
       AppMethodBeat.o(119668);
     }
     
-    public final String aBd()
+    public final String aUa()
     {
       return this.title;
     }
     
-    public final void cI(View paramView)
+    public final void di(View paramView)
     {
       AppMethodBeat.i(119667);
-      p.k(paramView, "view");
-      this.KXi.onClick(paramView);
-      w.makeText(MMApplicationContext.getContext(), (CharSequence)"ClickItem Done", 1).show();
+      s.u(paramView, "view");
+      this.Rxj.onClick(paramView);
+      aa.makeText(MMApplicationContext.getContext(), (CharSequence)"ClickItem Done", 1).show();
       AppMethodBeat.o(119667);
     }
     
@@ -678,41 +628,43 @@ public final class StorySettingsUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ITestMenu;", "", "showAlert", "", "view", "Landroid/view/View;", "title", "", "value", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/StorySettingsUI$ITestMenu;", "", "showAlert", "", "view", "Landroid/view/View;", "title", "", "value", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface e
   {
-    public abstract String aBd();
+    public abstract String aUa();
     
-    public abstract void cI(View paramView);
+    public abstract void di(View paramView);
     
     public abstract String value();
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$1", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$1", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class f
     implements View.OnClickListener
   {
+    f(StorySettingsUI paramStorySettingsUI) {}
+    
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(119669);
       Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      localObject = new Intent((Context)this.LRx, Class.forName("com.tencent.mm.plugin.ui.SampleListUI"));
-      paramView = this.LRx;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-      com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      ((b)localObject).cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+      localObject = new Intent((Context)this.Suc, Class.forName("com.tencent.mm.plugin.ui.SampleListUI"));
+      paramView = this.Suc;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(119669);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$10", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$10", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class g
     implements View.OnClickListener
   {
@@ -720,15 +672,15 @@ public final class StorySettingsUI
     {
       AppMethodBeat.i(119670);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      com.tencent.mm.plugin.story.c.c.RB(10000L);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      com.tencent.mm.plugin.story.c.c.vK(10000L);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(119670);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$12", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$12", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class i
     implements View.OnClickListener
   {
@@ -736,26 +688,26 @@ public final class StorySettingsUI
     {
       AppMethodBeat.i(119674);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.plugin.story.f.f.a.LJD;
-      com.tencent.mm.plugin.story.f.f.a.gdv();
-      com.tencent.mm.ae.d.a(5000L, (kotlin.g.a.a)a.LRA);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      paramView = com.tencent.mm.plugin.story.model.sync.a.SmO;
+      com.tencent.mm.plugin.story.model.sync.a.hwQ();
+      com.tencent.mm.ae.d.a(5000L, (kotlin.g.a.a)a.Sud);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(119674);
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends q
-      implements kotlin.g.a.a<x>
+      extends u
+      implements kotlin.g.a.a<ah>
     {
-      public static final a LRA;
+      public static final a Sud;
       
       static
       {
         AppMethodBeat.i(119673);
-        LRA = new a();
+        Sud = new a();
         AppMethodBeat.o(119673);
       }
       
@@ -766,7 +718,7 @@ public final class StorySettingsUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$13", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$13", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class j
     implements View.OnClickListener
   {
@@ -774,114 +726,116 @@ public final class StorySettingsUI
     {
       AppMethodBeat.i(119675);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = j.LGA;
-      j.RD(0L);
-      new com.tencent.mm.plugin.story.f.h();
-      com.tencent.mm.plugin.story.f.h.gcl();
-      com.tencent.mm.plugin.story.f.f.a.LJD.init();
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      paramView = StoryCore.SjP;
+      StoryCore.vM(0L);
+      new com.tencent.mm.plugin.story.model.h();
+      com.tencent.mm.plugin.story.model.h.hvx();
+      com.tencent.mm.plugin.story.model.sync.a.SmO.init();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(119675);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$14", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$14", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class k
     implements View.OnClickListener
   {
+    k(StorySettingsUI paramStorySettingsUI) {}
+    
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(119676);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.plugin.story.f.l.LGM;
-      paramView = com.tencent.mm.plugin.story.f.l.gcN();
-      com.tencent.mm.ui.base.h.af((Context)this.LRx.getContext(), paramView, "嗯");
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      paramView = com.tencent.mm.plugin.story.model.k.Skq;
+      paramView = com.tencent.mm.plugin.story.model.k.hwh();
+      com.tencent.mm.ui.base.k.c((Context)this.Suc.getContext(), paramView, "嗯", true);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(119676);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$15", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$15", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class l
     implements View.OnClickListener
   {
+    l(StorySettingsUI paramStorySettingsUI) {}
+    
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(119677);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = j.LGA;
-      u.deleteDir(j.b.getAccStoryCachePath());
-      com.tencent.mm.ui.base.h.af((Context)this.LRx.getContext(), "ok", "嗯");
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      paramView = StoryCore.SjP;
+      y.ew(StoryCore.b.getAccStoryCachePath(), true);
+      com.tencent.mm.ui.base.k.c((Context)this.Suc.getContext(), "ok", "嗯", true);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(119677);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$16", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$16", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class m
     implements View.OnClickListener
   {
+    m(StorySettingsUI paramStorySettingsUI) {}
+    
+    private static final void a(StorySettingsUI paramStorySettingsUI, DialogInterface paramDialogInterface)
+    {
+      AppMethodBeat.i(367221);
+      s.u(paramStorySettingsUI, "this$0");
+      paramStorySettingsUI.finish();
+      AppMethodBeat.o(367221);
+    }
+    
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(119681);
       Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      paramView = this.LRx;
-      localObject = (Context)this.LRx.getContext();
-      this.LRx.getString(a.g.app_tip);
-      StorySettingsUI.a(paramView, com.tencent.mm.ui.base.h.a((Context)localObject, this.LRx.getString(a.g.app_waiting), true, (DialogInterface.OnCancelListener)new a(this)));
-      com.tencent.mm.ae.d.b("cpfiles", (kotlin.g.a.a)new b(this));
+      ((b)localObject).cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+      paramView = this.Suc;
+      localObject = (Context)this.Suc.getContext();
+      this.Suc.getString(a.g.app_tip);
+      StorySettingsUI.a(paramView, com.tencent.mm.ui.base.k.a((Context)localObject, this.Suc.getString(a.g.app_waiting), true, new StorySettingsUI.m..ExternalSyntheticLambda0(this.Suc)));
+      com.tencent.mm.ae.d.d("cpfiles", (kotlin.g.a.a)new a(this.Suc));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(119681);
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      implements DialogInterface.OnCancelListener
+      extends u
+      implements kotlin.g.a.a<ah>
     {
-      a(StorySettingsUI.m paramm) {}
-      
-      public final void onCancel(DialogInterface paramDialogInterface)
-      {
-        AppMethodBeat.i(119678);
-        this.LRB.LRx.finish();
-        AppMethodBeat.o(119678);
-      }
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class b
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      b(StorySettingsUI.m paramm)
+      a(StorySettingsUI paramStorySettingsUI)
       {
         super();
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$17", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$17", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class n
     implements View.OnClickListener
   {
+    n(StorySettingsUI paramStorySettingsUI) {}
+    
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(119682);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (!ac.mGS) {}
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      if (!z.pDs) {}
       for (boolean bool = true;; bool = false)
       {
-        ac.mGS = bool;
-        com.tencent.mm.ui.base.h.af((Context)this.LRx.getContext(), "ok value Test Fail:" + ac.mGS, "嗯");
+        z.pDs = bool;
+        com.tencent.mm.ui.base.k.c((Context)this.Suc.getContext(), s.X("ok value Test Fail:", Boolean.valueOf(z.pDs)), "嗯", true);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(119682);
         return;
@@ -889,21 +843,23 @@ public final class StorySettingsUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$18", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$18", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class o
     implements View.OnClickListener
   {
+    o(StorySettingsUI paramStorySettingsUI) {}
+    
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(119683);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      if (!ac.mGT) {}
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      if (!z.pDt) {}
       for (boolean bool = true;; bool = false)
       {
-        ac.mGT = bool;
-        com.tencent.mm.ui.base.h.af((Context)this.LRx.getContext(), "ok value Test Fail:" + ac.mGT, "嗯");
+        z.pDt = bool;
+        com.tencent.mm.ui.base.k.c((Context)this.Suc.getContext(), s.X("ok value Test Fail:", Boolean.valueOf(z.pDt)), "嗯", true);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(119683);
         return;
@@ -911,249 +867,220 @@ public final class StorySettingsUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class p
-    implements View.OnClickListener
-  {
-    p(StorySettingsUI paramStorySettingsUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119684);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwL, Boolean.FALSE);
-      com.tencent.mm.ui.base.h.af((Context)this.LRx.getContext(), "在群视频，不要上滑，静候5秒", "");
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(119684);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$2", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
-  public static final class q
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$2", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class p
     implements View.OnClickListener
   {
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(119685);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      new com.tencent.mm.plugin.story.f.h();
-      com.tencent.mm.plugin.story.f.h.gcm();
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      new com.tencent.mm.plugin.story.model.h();
+      com.tencent.mm.plugin.story.model.h.hvy();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(119685);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class r
-    implements View.OnClickListener
-  {
-    public static final r LRD;
-    
-    static
-    {
-      AppMethodBeat.i(119687);
-      LRD = new r();
-      AppMethodBeat.o(119687);
-    }
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119686);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$20", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwK, Integer.valueOf(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$20", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(119686);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class s
-    implements View.OnClickListener
-  {
-    public static final s LRE;
-    
-    static
-    {
-      AppMethodBeat.i(119689);
-      LRE = new s();
-      AppMethodBeat.o(119689);
-    }
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119688);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwM, Boolean.FALSE);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(119688);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class t
-    implements View.OnClickListener
-  {
-    public static final t LRF;
-    
-    static
-    {
-      AppMethodBeat.i(119691);
-      LRF = new t();
-      AppMethodBeat.o(119691);
-    }
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119690);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwO, Boolean.FALSE);
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VwP, Boolean.FALSE);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(119690);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class u
-    implements View.OnClickListener
-  {
-    u(StorySettingsUI paramStorySettingsUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119692);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = i.LGd;
-      i.gco();
-      com.tencent.mm.ui.base.h.af((Context)this.LRx.getContext(), "ok！", "");
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(119692);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$24", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
-  public static final class v
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$24", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class q
     implements View.OnClickListener
   {
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(119693);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.Vxe, Long.valueOf(0L));
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYP, Long.valueOf(0L));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(119693);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class w
-    implements View.OnClickListener
-  {
-    w(StorySettingsUI paramStorySettingsUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119694);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      try
-      {
-        paramView = this.LRx.getContext();
-        p.j(paramView, "context");
-        paramView = String.valueOf(paramView.getExternalCacheDir());
-        u.deleteDir(paramView + "/imgcache");
-        label79:
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(119694);
-        return;
-      }
-      catch (Exception paramView)
-      {
-        break label79;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class x
-    implements View.OnClickListener
-  {
-    x(StorySettingsUI paramStorySettingsUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(119695);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = new Intent();
-      paramView.putExtra("KEY_EDITABLE", true);
-      paramView.putExtra("KEY_CONTENT_XML", this.LRx.getSharedPreferences("test_plugin", 0).getString("content", ""));
-      com.tencent.mm.by.c.b((Context)this.LRx.getContext(), "editor", ".EditorUI", paramView, 4096);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(119695);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$27", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
-  public static final class y
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$27", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class r
     implements View.OnClickListener
   {
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(119696);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$27", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.kernel.h.aHG();
-      p.j(paramView, "MMKernel.storage()");
-      paramView.aHp().set(ar.a.VDw, Integer.valueOf(0));
-      w.makeText(MMApplicationContext.getContext(), (CharSequence)"好了", 1).show();
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$27", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adgt, Integer.valueOf(0));
+      aa.makeText(MMApplicationContext.getContext(), (CharSequence)"好了", 1).show();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$27", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(119696);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$28", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$28", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class s
+    implements View.OnClickListener
+  {
+    s(StorySettingsUI paramStorySettingsUI) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(178049);
+      b localb = new b();
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$28", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      com.tencent.mm.plugin.ae.a.c.gxP().jm((Context)this.Suc.getContext());
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$28", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(178049);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$3", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class t
+    implements View.OnClickListener
+  {
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(119697);
+      b localb = new b();
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYG, Boolean.TRUE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYI, Boolean.TRUE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYH, Boolean.TRUE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYw, Boolean.FALSE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYv, Integer.valueOf(0));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYx, Boolean.FALSE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYy, Boolean.FALSE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYz, Boolean.FALSE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYA, Boolean.FALSE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYJ, Boolean.TRUE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYK, Integer.valueOf(0));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYU, Boolean.TRUE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYB, Boolean.TRUE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acYC, Boolean.TRUE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adfF, Integer.valueOf(0));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adfH, Boolean.TRUE);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adfN, "");
+      aa.makeText(MMApplicationContext.getContext(), (CharSequence)"好了", 1).show();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(119697);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$4", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class u
+    implements View.OnClickListener
+  {
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(119698);
+      b localb = new b();
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      new com.tencent.mm.plugin.story.model.h();
+      com.tencent.mm.plugin.story.model.h.hvw();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(119698);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$5", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class v
+    implements View.OnClickListener
+  {
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(119699);
+      b localb = new b();
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      paramView = com.tencent.mm.plugin.recordvideo.c.f.NGM;
+      paramView = com.tencent.mm.plugin.recordvideo.c.f.NGM;
+      if (!com.tencent.mm.plugin.recordvideo.c.f.gHq()) {}
+      for (boolean bool = true;; bool = false)
+      {
+        com.tencent.mm.plugin.recordvideo.c.f.AV(bool);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(119699);
+        return;
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$6", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class w
+    implements View.OnClickListener
+  {
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(119700);
+      b localb = new b();
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      paramView = com.tencent.mm.plugin.recordvideo.c.f.NGM;
+      paramView = com.tencent.mm.plugin.recordvideo.c.f.NGM;
+      if (!com.tencent.mm.plugin.recordvideo.c.f.gHr()) {}
+      for (boolean bool = true;; bool = false)
+      {
+        com.tencent.mm.plugin.recordvideo.c.f.AW(bool);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(119700);
+        return;
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$7", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class x
+    implements View.OnClickListener
+  {
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(119701);
+      b localb = new b();
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      if (!com.tencent.mm.plugin.story.c.c.NHr) {}
+      for (boolean bool = true;; bool = false)
+      {
+        com.tencent.mm.plugin.story.c.c.NHr = bool;
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(119701);
+        return;
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$8", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class y
+    implements View.OnClickListener
+  {
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(119702);
+      b localb = new b();
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      com.tencent.mm.plugin.story.c.c.vK(100000L);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(119702);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$9", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class z
     implements View.OnClickListener
   {
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(178049);
+      AppMethodBeat.i(119703);
       b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$28", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      com.tencent.mm.plugin.ad.a.c.fnc().hL((Context)this.LRx.getContext());
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$28", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(178049);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      com.tencent.mm.plugin.story.c.c.hvd();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(119703);
     }
   }
 }

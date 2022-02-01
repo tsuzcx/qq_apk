@@ -42,7 +42,7 @@ public abstract class HeatMapTileProvider
   
   public abstract void setRadius(int paramInt);
   
-  public abstract void setWeightedData(Collection<WeightedLatLng> paramCollection);
+  public abstract <T extends com.tencent.map.sdk.utilities.visualization.datamodels.WeightedLatLng> void setWeightedData(Collection<T> paramCollection);
   
   public static class Builder
   {
@@ -150,7 +150,7 @@ public abstract class HeatMapTileProvider
       return this;
     }
     
-    public Builder weightedData(Collection<WeightedLatLng> paramCollection)
+    public <T extends com.tencent.map.sdk.utilities.visualization.datamodels.WeightedLatLng> Builder weightedData(Collection<T> paramCollection)
     {
       AppMethodBeat.i(84376);
       if (paramCollection.isEmpty())
@@ -159,7 +159,14 @@ public abstract class HeatMapTileProvider
         AppMethodBeat.o(84376);
         throw paramCollection;
       }
-      this.data = paramCollection;
+      ArrayList localArrayList = new ArrayList();
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext())
+      {
+        com.tencent.map.sdk.utilities.visualization.datamodels.WeightedLatLng localWeightedLatLng = (com.tencent.map.sdk.utilities.visualization.datamodels.WeightedLatLng)paramCollection.next();
+        localArrayList.add(new WeightedLatLng(localWeightedLatLng.getPoint(), localWeightedLatLng.getIntensity()));
+      }
+      this.data = localArrayList;
       AppMethodBeat.o(84376);
       return this;
     }
@@ -171,10 +178,15 @@ public abstract class HeatMapTileProvider
     
     public abstract double[] generateKernel(int paramInt);
   }
+  
+  public static abstract interface OnHeatMapReadyListener
+  {
+    public abstract void onHeatMapReady();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.map.sdk.utilities.heatmap.HeatMapTileProvider
  * JD-Core Version:    0.7.0.1
  */

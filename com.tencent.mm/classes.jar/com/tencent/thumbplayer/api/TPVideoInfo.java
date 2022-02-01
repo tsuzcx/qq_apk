@@ -17,7 +17,7 @@ public class TPVideoInfo
   
   private TPVideoInfo(Builder paramBuilder)
   {
-    AppMethodBeat.i(219940);
+    AppMethodBeat.i(228422);
     this.width = paramBuilder.width;
     this.height = paramBuilder.height;
     this.videoCodecId = paramBuilder.videoCodecId;
@@ -25,7 +25,7 @@ public class TPVideoInfo
     this.definition = paramBuilder.definition;
     this.downloadParamList = paramBuilder.downloadParamList;
     this.builder = paramBuilder;
-    AppMethodBeat.o(219940);
+    AppMethodBeat.o(228422);
   }
   
   public Builder getBuilder()
@@ -74,9 +74,9 @@ public class TPVideoInfo
     
     public TPVideoInfo build()
     {
-      AppMethodBeat.i(219938);
+      AppMethodBeat.i(228455);
       TPVideoInfo localTPVideoInfo = new TPVideoInfo(this, null);
-      AppMethodBeat.o(219938);
+      AppMethodBeat.o(228455);
       return localTPVideoInfo;
     }
     
@@ -88,14 +88,14 @@ public class TPVideoInfo
     
     public Builder downloadParam(TPDownloadParamData paramTPDownloadParamData)
     {
-      AppMethodBeat.i(219937);
+      AppMethodBeat.i(228450);
       if (b.isEmpty(this.downloadParamList)) {
         this.downloadParamList = new ArrayList();
       }
       for (;;)
       {
         this.downloadParamList.add(paramTPDownloadParamData);
-        AppMethodBeat.o(219937);
+        AppMethodBeat.o(228450);
         return this;
         this.downloadParamList.clear();
       }

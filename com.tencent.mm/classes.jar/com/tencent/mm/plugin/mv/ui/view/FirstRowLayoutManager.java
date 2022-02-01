@@ -5,7 +5,7 @@ import android.util.DisplayMetrics;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.s;
-import androidx.recyclerview.widget.p;
+import androidx.recyclerview.widget.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FirstRowLayoutManager
@@ -18,27 +18,27 @@ public class FirstRowLayoutManager
   
   public void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(229266);
+    AppMethodBeat.i(286897);
     paramRecyclerView = new a(paramRecyclerView.getContext());
-    paramRecyclerView.alG = paramInt;
+    paramRecyclerView.cag = paramInt;
     startSmoothScroll(paramRecyclerView);
-    AppMethodBeat.o(229266);
+    AppMethodBeat.o(286897);
   }
   
   static final class a
-    extends p
+    extends o
   {
     a(Context paramContext)
     {
       super();
     }
     
-    public final float a(DisplayMetrics paramDisplayMetrics)
+    public final float c(DisplayMetrics paramDisplayMetrics)
     {
       return 50.0F / paramDisplayMetrics.densityDpi;
     }
     
-    public final int f(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+    public final int g(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
     {
       return paramInt3 - paramInt1;
     }

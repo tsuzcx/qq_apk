@@ -16,8 +16,8 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.am.f;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
+import com.tencent.mm.modelavatar.AvatarStorage;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MaskLayout;
@@ -27,33 +27,33 @@ public final class b
 {
   private TextView contentView;
   private Context context;
-  private View fyN;
-  private View mXN;
+  private View hDw;
+  private View pUv;
   
   public b(Context paramContext, final a parama)
   {
     super(paramContext);
     AppMethodBeat.i(37654);
-    this.fyN = null;
-    this.mXN = null;
+    this.hDw = null;
+    this.pUv = null;
     this.contentView = null;
     this.context = paramContext;
-    View.inflate(getContext(), R.i.ebq, this);
-    this.fyN = findViewById(R.h.container);
-    this.mXN = this.fyN.findViewById(R.h.dqF);
-    paramContext = this.mXN.getLayoutParams();
-    paramContext.height = ((int)(com.tencent.mm.ci.a.aZ(this.context, R.f.ContactListHeight) * com.tencent.mm.ci.a.kn(this.context)));
-    this.mXN.setLayoutParams(paramContext);
-    this.contentView = ((TextView)this.mXN.findViewById(R.h.dqH));
-    this.fyN.setOnClickListener(new View.OnClickListener()
+    View.inflate(getContext(), R.i.gdX, this);
+    this.hDw = findViewById(R.h.container);
+    this.pUv = this.hDw.findViewById(R.h.fqT);
+    paramContext = this.pUv.getLayoutParams();
+    paramContext.height = ((int)(com.tencent.mm.cd.a.bs(this.context, R.f.ContactListHeight) * com.tencent.mm.cd.a.mo(this.context)));
+    this.pUv.setLayoutParams(paramContext);
+    this.contentView = ((TextView)this.pUv.findViewById(R.h.fqV));
+    this.hDw.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(37648);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/contact/AddressUIEntranceHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        switch (b.3.XpZ[parama.ordinal()])
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/contact/AddressUIEntranceHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+        switch (b.3.afbC[parama.ordinal()])
         {
         default: 
           Log.e("MicroMsg.ChatroomContactEntranceView", "[cpan] unknow type for click. type:%s", new Object[] { parama });
@@ -66,12 +66,13 @@ public final class b
           localObject = new Intent();
           ((Intent)localObject).setClassName(b.a(b.this), "com.tencent.mm.ui.contact.ChatroomContactUI");
           paramAnonymousView = b.a(b.this);
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/contact/AddressUIEntranceHeaderView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/contact/AddressUIEntranceHeaderView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/ui/contact/AddressUIEntranceHeaderView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           continue;
           paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("key_label_click_source", 2);
           c.b(b.a(b.this), "label", ".ui.ContactLabelManagerUI", paramAnonymousView);
           continue;
           paramAnonymousView = new Intent();
@@ -79,14 +80,14 @@ public final class b
           continue;
           localObject = new Intent(b.a(b.this), OnlyChatContactMgrUI.class);
           paramAnonymousView = b.a(b.this);
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/contact/AddressUIEntranceHeaderView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/contact/AddressUIEntranceHeaderView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/ui/contact/AddressUIEntranceHeaderView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
       }
     });
-    this.mXN.setOnTouchListener(new View.OnTouchListener()
+    this.pUv.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -98,8 +99,8 @@ public final class b
         return false;
       }
     });
-    paramContext = (ImageView)((MaskLayout)this.mXN.findViewById(R.h.dqG)).getContentView();
-    switch (3.XpZ[parama.ordinal()])
+    paramContext = (ImageView)((MaskLayout)this.pUv.findViewById(R.h.fqU)).getContentView();
+    switch (3.afbC[parama.ordinal()])
     {
     }
     for (;;)
@@ -107,27 +108,27 @@ public final class b
       AppMethodBeat.o(37654);
       return;
       this.contentView.setText(R.l.address_chatroom_contact_nick);
-      f.a(getContext(), paramContext, R.k.default_chatroom);
+      AvatarStorage.a(getContext(), paramContext, R.k.default_chatroom);
       AppMethodBeat.o(37654);
       return;
-      this.contentView.setText(R.l.emZ);
-      f.a(getContext(), paramContext, R.k.default_contactlabel);
+      this.contentView.setText(R.l.gqb);
+      AvatarStorage.a(getContext(), paramContext, R.k.default_contactlabel);
       AppMethodBeat.o(37654);
       return;
-      this.mXN.setBackgroundResource(R.g.comm_list_item_selector);
-      this.contentView.setText(R.l.emY);
-      f.a(getContext(), paramContext, R.k.default_ipcall);
+      this.pUv.setBackgroundResource(R.g.comm_list_item_selector);
+      this.contentView.setText(R.l.gqa);
+      AvatarStorage.a(getContext(), paramContext, R.k.default_ipcall);
       AppMethodBeat.o(37654);
       return;
-      this.contentView.setText(R.l.ena);
-      f.a(getContext(), paramContext, R.g.chatonlyfriends);
+      this.contentView.setText(R.l.gqc);
+      AvatarStorage.a(getContext(), paramContext, R.g.chatonlyfriends);
     }
   }
   
   public final void setVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(37655);
-    View localView = this.fyN;
+    View localView = this.hDw;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -142,11 +143,11 @@ public final class b
     static
     {
       AppMethodBeat.i(37653);
-      Xqa = new a("Chatromm", 0);
-      Xqb = new a("ContactLabel", 1);
-      Xqc = new a("ContactIpCall", 2);
-      Xqd = new a("OnlyChat", 3);
-      Xqe = new a[] { Xqa, Xqb, Xqc, Xqd };
+      afbD = new a("Chatromm", 0);
+      afbE = new a("ContactLabel", 1);
+      afbF = new a("ContactIpCall", 2);
+      afbG = new a("OnlyChat", 3);
+      afbH = new a[] { afbD, afbE, afbF, afbG };
       AppMethodBeat.o(37653);
     }
     

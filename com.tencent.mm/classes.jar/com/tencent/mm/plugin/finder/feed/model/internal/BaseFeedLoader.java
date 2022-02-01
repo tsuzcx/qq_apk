@@ -1,43 +1,49 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import android.content.Intent;
+import androidx.recyclerview.widget.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.c;
-import com.tencent.mm.plugin.finder.feed.model.s.a;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.plugin.finder.feed.model.u.a;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.plugin.finder.model.x;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.v;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.ab;
+import kotlin.a.p;
+import kotlin.ah;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/Dispatcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "backCache", "Lcom/tencent/mm/plugin/finder/feed/model/LoaderCache;", "getBackCache", "()Lcom/tencent/mm/plugin/finder/feed/model/LoaderCache;", "cache", "getCache", "value", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "setContextObj", "dataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "getDataFetch", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "dataFetch$delegate", "Lkotlin/Lazy;", "initDone", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "getInitDone", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "setInitDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;)V", "initPos", "", "getInitPos", "()I", "Lcom/tencent/mm/protobuf/ByteString;", "lastBuffer", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "preload", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IPreload;", "store", "Lcom/tencent/mm/plugin/finder/feed/model/LoaderStateStore;", "getStore", "()Lcom/tencent/mm/plugin/finder/feed/model/LoaderStateStore;", "createDataFetch", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "initBackCache", "", "intent", "Landroid/content/Intent;", "initFromCache", "isInitOperation", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "isInsertOperation", "isRefreshOperation", "onAlive", "onDead", "onFetchDone", "onFetchInitDone", "initResponse", "onFetchInsertedDone", "onFetchLoadMoreDone", "onFetchRefreshDone", "onSaveLastBuffer", "request", "", "callback", "requestInit", "isSyncLoad", "requestInsert", "requestLoadMore", "requestPreload", "requestRefresh", "saveCache", "position", "customData", "Lcom/tencent/mm/plugin/finder/feed/model/CacheCustom;", "saveCacheToIntent", "feedList", "", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "setPreload", "preloader", "DefaultDataMerger", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/Dispatcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "backCache", "Lcom/tencent/mm/plugin/finder/feed/model/LoaderCache;", "getBackCache", "()Lcom/tencent/mm/plugin/finder/feed/model/LoaderCache;", "cache", "getCache", "value", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "setContextObj", "dataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "getDataFetch", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "dataFetch$delegate", "Lkotlin/Lazy;", "initDone", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "getInitDone", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "setInitDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;)V", "initPos", "", "getInitPos", "()I", "Lcom/tencent/mm/protobuf/ByteString;", "lastBuffer", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "preload", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IPreload;", "store", "Lcom/tencent/mm/plugin/finder/feed/model/LoaderStateStore;", "getStore", "()Lcom/tencent/mm/plugin/finder/feed/model/LoaderStateStore;", "checkIsNeedUiThread", "", "isNeed", "", "block", "Lkotlin/Function0;", "createDataFetch", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "initBackCache", "intent", "Landroid/content/Intent;", "initFromCache", "isInitOperation", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "isInsertOperation", "isInsertSpecifyOperation", "isRefreshOperation", "onAlive", "onDead", "onFetchDone", "onFetchInitDone", "initResponse", "onFetchInsertedDone", "onFetchLoadMoreDone", "onFetchRefreshDone", "onSaveLastBuffer", "request", "", "callback", "requestInit", "isSyncLoad", "requestInsert", "requestLoadMore", "isAuto", "requestPreload", "requestRefresh", "saveCache", "position", "customData", "Lcom/tencent/mm/plugin/finder/feed/model/CacheCustom;", "saveCacheToIntent", "feedList", "", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "setPreload", "preloader", "DefaultDataMerger", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class BaseFeedLoader<T extends k>
   extends Dispatcher<T>
   implements h<T>
 {
-  private final kotlin.f dataFetch$delegate;
+  private final kotlin.j dataFetch$delegate;
   private j initDone;
   private l<T> preload;
-  private final com.tencent.mm.plugin.finder.feed.model.s store = new com.tencent.mm.plugin.finder.feed.model.s();
+  private final com.tencent.mm.plugin.finder.feed.model.u store = new com.tencent.mm.plugin.finder.feed.model.u();
   
   public BaseFeedLoader()
   {
     this(null, 1, null);
   }
   
-  public BaseFeedLoader(bid parambid)
+  public BaseFeedLoader(bui parambui)
   {
-    this.store.xbu = parambid;
-    this.dataFetch$delegate = g.ar((kotlin.g.a.a)new b(this));
+    this.store.Auc = parambui;
+    this.dataFetch$delegate = kotlin.k.cm((kotlin.g.a.a)new b(this));
   }
   
   private final i<T> getDataFetch()
@@ -45,26 +51,37 @@ public abstract class BaseFeedLoader<T extends k>
     return (i)this.dataFetch$delegate.getValue();
   }
   
+  public final void checkIsNeedUiThread(boolean paramBoolean, kotlin.g.a.a<ah> parama)
+  {
+    kotlin.g.b.s.u(parama, "block");
+    if (paramBoolean)
+    {
+      com.tencent.mm.ae.d.uiThread(parama);
+      return;
+    }
+    parama.invoke();
+  }
+  
   public abstract i<T> createDataFetch();
   
   public d<T> createDataMerger()
   {
-    return (d)new a();
+    return (d)new a(false, 1, null);
   }
   
-  public final com.tencent.mm.plugin.finder.feed.model.q getBackCache()
+  public final com.tencent.mm.plugin.finder.feed.model.s getBackCache()
   {
-    return this.store.xJW;
+    return this.store.BjK;
   }
   
-  public final com.tencent.mm.plugin.finder.feed.model.q getCache()
+  public final com.tencent.mm.plugin.finder.feed.model.s getCache()
   {
-    return this.store.xJV;
+    return this.store.BjJ;
   }
   
-  public final bid getContextObj()
+  public final bui getContextObj()
   {
-    return this.store.xbu;
+    return this.store.Auc;
   }
   
   public final j getInitDone()
@@ -74,54 +91,60 @@ public abstract class BaseFeedLoader<T extends k>
   
   public final int getInitPos()
   {
-    com.tencent.mm.plugin.finder.feed.model.q localq = this.store.xJV;
-    if (localq != null) {}
-    for (int i = localq.position;; i = 0) {
+    com.tencent.mm.plugin.finder.feed.model.s locals = this.store.BjJ;
+    if (locals == null) {}
+    for (int i = 0;; i = locals.position) {
       return Math.max(i, 0);
     }
   }
   
-  public final com.tencent.mm.cd.b getLastBuffer()
+  public final com.tencent.mm.bx.b getLastBuffer()
   {
     return this.store.lastBuffer;
   }
   
-  protected final com.tencent.mm.plugin.finder.feed.model.s getStore()
+  protected final com.tencent.mm.plugin.finder.feed.model.u getStore()
   {
     return this.store;
   }
   
   public final void initBackCache(Intent paramIntent)
   {
-    p.k(paramIntent, "intent");
-    com.tencent.mm.plugin.finder.feed.model.s locals = this.store;
-    p.k(paramIntent, "intent");
-    s.a locala = com.tencent.mm.plugin.finder.feed.model.s.xKa;
-    locals.xJW = s.a.ai(paramIntent);
+    kotlin.g.b.s.u(paramIntent, "intent");
+    com.tencent.mm.plugin.finder.feed.model.u localu = this.store;
+    kotlin.g.b.s.u(paramIntent, "intent");
+    u.a locala = com.tencent.mm.plugin.finder.feed.model.u.BjI;
+    localu.BjK = u.a.as(paramIntent);
   }
   
   public final void initFromCache(Intent paramIntent)
   {
-    p.k(paramIntent, "intent");
-    com.tencent.mm.plugin.finder.feed.model.s.a(this.store, paramIntent);
+    kotlin.g.b.s.u(paramIntent, "intent");
+    com.tencent.mm.plugin.finder.feed.model.u.a(this.store, paramIntent);
   }
   
   public final boolean isInitOperation(IResponse<T> paramIResponse)
   {
-    p.k(paramIResponse, "response");
+    kotlin.g.b.s.u(paramIResponse, "response");
     return 1000 == paramIResponse.getPullType();
   }
   
   public final boolean isInsertOperation(IResponse<T> paramIResponse)
   {
-    p.k(paramIResponse, "response");
+    kotlin.g.b.s.u(paramIResponse, "response");
     return -1 == paramIResponse.getPullType();
+  }
+  
+  public final boolean isInsertSpecifyOperation(IResponse<T> paramIResponse)
+  {
+    kotlin.g.b.s.u(paramIResponse, "response");
+    return 16 == paramIResponse.getPullType();
   }
   
   public final boolean isRefreshOperation(IResponse<T> paramIResponse)
   {
-    p.k(paramIResponse, "response");
-    return (1 == paramIResponse.getPullType()) || (paramIResponse.getPullType() == 0) || (4 == paramIResponse.getPullType()) || (3 == paramIResponse.getPullType()) || (10 == paramIResponse.getPullType()) || (11 == paramIResponse.getPullType()) || (12 == paramIResponse.getPullType());
+    kotlin.g.b.s.u(paramIResponse, "response");
+    return (1 == paramIResponse.getPullType()) || (paramIResponse.getPullType() == 0) || (4 == paramIResponse.getPullType()) || (3 == paramIResponse.getPullType()) || (10 == paramIResponse.getPullType()) || (11 == paramIResponse.getPullType()) || (12 == paramIResponse.getPullType()) || (14 == paramIResponse.getPullType()) || (15 == paramIResponse.getPullType()) || (18 == paramIResponse.getPullType());
   }
   
   public void onAlive()
@@ -138,7 +161,7 @@ public abstract class BaseFeedLoader<T extends k>
   
   public void onFetchDone(final IResponse<T> paramIResponse)
   {
-    p.k(paramIResponse, "response");
+    kotlin.g.b.s.u(paramIResponse, "response");
     if (isInitOperation(paramIResponse)) {
       getMerger().mergeInit(paramIResponse, (kotlin.g.a.b)new c(this));
     }
@@ -150,7 +173,7 @@ public abstract class BaseFeedLoader<T extends k>
         getMerger().mergeRefresh(paramIResponse, (kotlin.g.a.b)new d(this, paramIResponse));
       } else if (isInsertOperation(paramIResponse)) {
         getMerger().mergeInsert(paramIResponse, (kotlin.g.a.b)new e(this, paramIResponse));
-      } else {
+      } else if (!isInsertSpecifyOperation(paramIResponse)) {
         getMerger().mergeLoadMore(paramIResponse, (kotlin.g.a.b)new f(this, paramIResponse));
       }
     }
@@ -158,17 +181,17 @@ public abstract class BaseFeedLoader<T extends k>
   
   protected void onFetchInitDone(IResponse<T> paramIResponse)
   {
-    p.k(paramIResponse, "initResponse");
+    kotlin.g.b.s.u(paramIResponse, "initResponse");
     j localj = this.initDone;
     if (localj != null)
     {
       paramIResponse = paramIResponse.getIncrementList();
-      if (paramIResponse == null) {
-        break label45;
+      if (paramIResponse != null) {
+        break label40;
       }
     }
-    label45:
-    for (int i = paramIResponse.size();; i = 0)
+    label40:
+    for (int i = 0;; i = paramIResponse.size())
     {
       localj.call(i);
       this.initDone = null;
@@ -178,22 +201,22 @@ public abstract class BaseFeedLoader<T extends k>
   
   protected void onFetchInsertedDone(IResponse<T> paramIResponse)
   {
-    p.k(paramIResponse, "response");
+    kotlin.g.b.s.u(paramIResponse, "response");
   }
   
   protected void onFetchLoadMoreDone(IResponse<T> paramIResponse)
   {
-    p.k(paramIResponse, "response");
+    kotlin.g.b.s.u(paramIResponse, "response");
   }
   
   protected void onFetchRefreshDone(IResponse<T> paramIResponse)
   {
-    p.k(paramIResponse, "response");
+    kotlin.g.b.s.u(paramIResponse, "response");
   }
   
   public void onSaveLastBuffer(IResponse<T> paramIResponse)
   {
-    p.k(paramIResponse, "response");
+    kotlin.g.b.s.u(paramIResponse, "response");
     setLastBuffer(paramIResponse.getLastBuffer());
   }
   
@@ -203,53 +226,66 @@ public abstract class BaseFeedLoader<T extends k>
     if (paramh == null)
     {
       paramh = this.preload;
-      if (paramh != null)
+      if (paramh == null)
       {
-        paramh.I((kotlin.g.a.b)new g(this, paramObject));
-        return;
+        paramh = null;
+        if (paramh == null)
+        {
+          paramh = (BaseFeedLoader)this;
+          i.fetch$default(paramh.getDataFetch(), paramObject, (h)paramh, false, 4, null);
+        }
       }
-      paramh = (BaseFeedLoader)this;
-      paramh.getDataFetch().fetch(paramObject, (h)paramh);
-      return;
     }
-    l locall = this.preload;
-    if (locall != null)
+    for (;;)
     {
-      locall.I((kotlin.g.a.b)new h(this, paramObject, paramh));
       return;
+      paramh.al((kotlin.g.a.b)new g(this, paramObject));
+      paramh = ah.aiuX;
+      break;
+      Object localObject = this.preload;
+      if (localObject == null) {}
+      for (localObject = null; localObject == null; localObject = ah.aiuX)
+      {
+        i.fetch$default(((BaseFeedLoader)this).getDataFetch(), paramObject, paramh, false, 4, null);
+        return;
+        ((l)localObject).al((kotlin.g.a.b)new h(this, paramObject, paramh));
+      }
     }
-    ((BaseFeedLoader)this).getDataFetch().fetch(paramObject, paramh);
   }
   
   public final void requestInit(boolean paramBoolean)
   {
-    Log.i(getTAG(), "initData from " + Util.getStack());
+    Log.i(getTAG(), kotlin.g.b.s.X("initData from ", Util.getStack()));
     if (paramBoolean)
     {
       getDataFetch().fetchInit((h)this);
       return;
     }
-    kotlin.c.a.as((kotlin.g.a.a)new i(this));
+    kotlin.c.a.cn((kotlin.g.a.a)new i(this));
   }
   
   public void requestInsert(Object paramObject)
   {
-    p.k(paramObject, "request");
-    Log.i(getTAG(), "requestInsert ".concat(String.valueOf(paramObject)));
+    kotlin.g.b.s.u(paramObject, "request");
+    Log.i(getTAG(), kotlin.g.b.s.X("requestInsert ", paramObject));
     request$default(this, paramObject, null, 2, null);
   }
   
-  public void requestLoadMore()
+  public void requestLoadMore(final boolean paramBoolean)
   {
     Log.i(getTAG(), "requestLoadMore");
     Object localObject = this.preload;
-    if (localObject != null)
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ah.aiuX)
     {
-      ((l)localObject).I((kotlin.g.a.b)new j(this));
+      if (localObject == null)
+      {
+        localObject = (BaseFeedLoader)this;
+        ((BaseFeedLoader)localObject).getDataFetch().fetchLoadMore((h)localObject, paramBoolean);
+      }
       return;
+      ((l)localObject).al((kotlin.g.a.b)new j(this, paramBoolean));
     }
-    localObject = (BaseFeedLoader)this;
-    ((BaseFeedLoader)localObject).getDataFetch().fetchLoadMore((h)localObject);
   }
   
   public final void requestPreload()
@@ -261,7 +297,7 @@ public abstract class BaseFeedLoader<T extends k>
   {
     l locall = this.preload;
     if (locall != null) {
-      locall.F((kotlin.g.a.a)new k(this, paramh));
+      locall.aT((kotlin.g.a.a)new k(this, paramh));
     }
   }
   
@@ -269,44 +305,50 @@ public abstract class BaseFeedLoader<T extends k>
   {
     Log.i(getTAG(), "requestRefresh");
     Object localObject = this.preload;
-    if (localObject != null)
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ah.aiuX)
     {
-      ((l)localObject).I((kotlin.g.a.b)new l(this));
+      if (localObject == null)
+      {
+        localObject = (BaseFeedLoader)this;
+        ((BaseFeedLoader)localObject).getDataFetch().fetchRefresh((h)localObject);
+      }
       return;
+      ((l)localObject).al((kotlin.g.a.b)new l(this));
     }
-    localObject = (BaseFeedLoader)this;
-    ((BaseFeedLoader)localObject).getDataFetch().fetchRefresh((h)localObject);
   }
   
   public final void saveCache(Intent paramIntent, int paramInt, c paramc)
   {
-    p.k(paramIntent, "intent");
+    kotlin.g.b.s.u(paramIntent, "intent");
     ArrayList localArrayList = new ArrayList();
-    DataBuffer localDataBuffer2 = getDataList();
-    DataBuffer localDataBuffer1 = localDataBuffer2;
-    if (!(localDataBuffer2 instanceof DataBuffer)) {
-      localDataBuffer1 = null;
+    DataBuffer localDataBuffer = getDataList();
+    if ((localDataBuffer instanceof DataBuffer)) {}
+    for (;;)
+    {
+      if (localDataBuffer != null) {
+        localArrayList.addAll((Collection)localDataBuffer);
+      }
+      paramc = new com.tencent.mm.plugin.finder.feed.model.s(localArrayList, getLastBuffer(), paramInt, paramc);
+      this.store.a(paramc, paramIntent);
+      return;
+      localDataBuffer = null;
     }
-    if (localDataBuffer1 != null) {
-      localArrayList.addAll((Collection)localDataBuffer1);
-    }
-    paramc = new com.tencent.mm.plugin.finder.feed.model.q(localArrayList, getLastBuffer(), paramInt, paramc);
-    this.store.a(paramc, paramIntent);
   }
   
-  public final void saveCacheToIntent(Intent paramIntent, List<? extends bu> paramList, com.tencent.mm.cd.b paramb, int paramInt, c paramc)
+  public final void saveCacheToIntent(Intent paramIntent, List<? extends cc> paramList, com.tencent.mm.bx.b paramb, int paramInt, c paramc)
   {
-    p.k(paramIntent, "intent");
-    p.k(paramList, "feedList");
+    kotlin.g.b.s.u(paramIntent, "intent");
+    kotlin.g.b.s.u(paramList, "feedList");
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll((Collection)paramList);
-    paramList = new com.tencent.mm.plugin.finder.feed.model.q(localArrayList, paramb, paramInt, paramc);
+    paramList = new com.tencent.mm.plugin.finder.feed.model.s(localArrayList, paramb, paramInt, paramc);
     this.store.a(paramList, paramIntent);
   }
   
-  public final void setContextObj(bid parambid)
+  public final void setContextObj(bui parambui)
   {
-    this.store.xbu = parambid;
+    this.store.Auc = parambui;
   }
   
   public final void setInitDone(j paramj)
@@ -314,21 +356,126 @@ public abstract class BaseFeedLoader<T extends k>
     this.initDone = paramj;
   }
   
-  public final void setLastBuffer(com.tencent.mm.cd.b paramb)
+  public final void setLastBuffer(com.tencent.mm.bx.b paramb)
   {
     this.store.lastBuffer = paramb;
   }
   
   public final void setPreload(l<T> paraml)
   {
-    p.k(paraml, "preloader");
+    kotlin.g.b.s.u(paraml, "preloader");
     this.preload = paraml;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;)V", "canFinallyHandleMergeList", "", "cmd", "", "cleanDataList", "", "dataList", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "convertOpToReason", "op", "Lcom/tencent/mm/plugin/finder/feed/model/internal/UpdateOp;", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "findMergeIndex", "srcList", "Ljava/util/ArrayList;", "newList", "", "request", "getListUpdateCallback", "Landroidx/recyclerview/widget/ListUpdateCallback;", "merge", "Lcom/tencent/mm/plugin/finder/feed/model/internal/MergeResult;", "mergeDataAndNotify", "insList", "isNeedClear", "mergeInit", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "mergeInsert", "mergeLoadMore", "mergeRefresh", "onDataReplace", "feed", "existIndex", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;I)Z", "printList", "tag", "", "mmlist", "plugin-finder-base_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "runUiThread", "", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;Z)V", "calculateIndex", "", "data", "Lcom/tencent/mm/plugin/finder/feed/model/internal/MergeInsertData;", "canFinallyHandleMergeList", "cmd", "cleanDataList", "", "dataList", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "convertOpToReason", "op", "Lcom/tencent/mm/plugin/finder/feed/model/internal/UpdateOp;", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "findMergeIndex", "srcList", "Ljava/util/ArrayList;", "newList", "", "request", "getListUpdateCallback", "Landroidx/recyclerview/widget/ListUpdateCallback;", "getOffestIndex", "currentIndex", "merge", "Lcom/tencent/mm/plugin/finder/feed/model/internal/MergeResult;", "mergeDataAndNotify", "insList", "isNeedClear", "mergeInit", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "mergeInsert", "mergeInsertData", "startIndex", "mergeInsertSpecifiedLocation", "mergeLoadMore", "mergeRefresh", "onDataReplace", "feed", "existIndex", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;I)Z", "printList", "tag", "", "mmlist", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public class a
     extends d<T>
   {
+    private final boolean runUiThread;
+    
+    public a()
+    {
+      AppMethodBeat.i(366606);
+      boolean bool;
+      this.runUiThread = bool;
+      AppMethodBeat.o(366606);
+    }
+    
+    private final int getOffestIndex(int paramInt)
+    {
+      int n = 1;
+      int m = 1;
+      int i1 = 0;
+      AppMethodBeat.i(366616);
+      int j;
+      int k;
+      int i;
+      if (paramInt >= 0)
+      {
+        j = 0;
+        k = 0;
+        i = k;
+        if (!(BaseFeedLoader.this.getDataList().get(j) instanceof x)) {
+          i = k + 1;
+        }
+        if (j != paramInt) {}
+      }
+      for (;;)
+      {
+        if (i % 2 == 0) {}
+        for (i = i1; paramInt % 2 == 0; i = 1)
+        {
+          j = m;
+          if (i == 0) {
+            j = 2;
+          }
+          AppMethodBeat.o(366616);
+          return paramInt + j;
+        }
+        if (i == 0) {}
+        for (i = n;; i = 2)
+        {
+          AppMethodBeat.o(366616);
+          return paramInt + i;
+        }
+        j += 1;
+        k = i;
+        break;
+        i = 0;
+      }
+    }
+    
+    public int calculateIndex(n paramn)
+    {
+      AppMethodBeat.i(366654);
+      kotlin.g.b.s.u(paramn, "data");
+      Iterator localIterator = ((List)BaseFeedLoader.this.getDataList()).iterator();
+      int i = 0;
+      int j;
+      if (localIterator.hasNext())
+      {
+        k localk = (k)localIterator.next();
+        if ((localk instanceof x))
+        {
+          bip localbip = ((x)localk).feedObject.getLiveInfo();
+          if ((localbip != null) && (localbip.liveStatus == 1))
+          {
+            j = 1;
+            label89:
+            if ((j == 0) || (((x)localk).feedObject.getFeedObject().id != paramn.hKN)) {
+              break label138;
+            }
+            j = 1;
+            label117:
+            if (j == 0) {
+              break label143;
+            }
+          }
+        }
+      }
+      for (;;)
+      {
+        if (i != -1) {
+          break label155;
+        }
+        AppMethodBeat.o(366654);
+        return -1;
+        j = 0;
+        break label89;
+        label138:
+        j = 0;
+        break label117;
+        label143:
+        i += 1;
+        break;
+        i = -1;
+      }
+      label155:
+      i = getOffestIndex(i);
+      AppMethodBeat.o(366654);
+      return i;
+    }
+    
     public boolean canFinallyHandleMergeList(int paramInt)
     {
       return false;
@@ -336,121 +483,128 @@ public abstract class BaseFeedLoader<T extends k>
     
     public void cleanDataList(DataBuffer<T> paramDataBuffer)
     {
-      AppMethodBeat.i(259186);
-      p.k(paramDataBuffer, "dataList");
+      AppMethodBeat.i(366676);
+      kotlin.g.b.s.u(paramDataBuffer, "dataList");
       paramDataBuffer.clear();
-      AppMethodBeat.o(259186);
+      AppMethodBeat.o(366676);
     }
     
-    public final void convertOpToReason(q<T> paramq, RefreshLoadMoreLayout.c<Object> paramc)
+    public final void convertOpToReason(r<T> paramr, RefreshLoadMoreLayout.d<Object> paramd)
     {
-      AppMethodBeat.i(259195);
-      p.k(paramq, "op");
-      p.k(paramc, "reason");
-      paramq = mergeDataAndNotify(paramq.Vh, paramq.xLb, paramq.isNeedClear, paramq.request);
-      paramc.lCh = paramq;
-      paramc.YNG = paramq.xKO;
-      AppMethodBeat.o(259195);
+      AppMethodBeat.i(366701);
+      kotlin.g.b.s.u(paramr, "op");
+      kotlin.g.b.s.u(paramd, "reason");
+      paramr = mergeDataAndNotify(paramr.bUl, paramr.BkQ, paramr.isNeedClear, paramr.request);
+      paramd.extra = paramr;
+      paramd.agJv = paramr.apS;
+      AppMethodBeat.o(366701);
     }
     
     public int findMergeIndex(ArrayList<T> paramArrayList, List<? extends T> paramList, int paramInt, Object paramObject)
     {
-      AppMethodBeat.i(259185);
-      p.k(paramArrayList, "srcList");
-      p.k(paramList, "newList");
-      if ((paramInt == 1) || (paramInt == 5))
+      AppMethodBeat.i(366669);
+      kotlin.g.b.s.u(paramArrayList, "srcList");
+      kotlin.g.b.s.u(paramList, "newList");
+      switch (paramInt)
       {
-        paramInt = this.this$0.getDataList().size();
-        AppMethodBeat.o(259185);
-        return paramInt;
+      default: 
+        switch (paramInt)
+        {
+        case 3: 
+        case 5: 
+        default: 
+          AppMethodBeat.o(366669);
+          return 0;
+        }
+        break;
       }
-      if ((paramInt == 2) || (paramInt == 6) || (paramInt == 4))
-      {
-        AppMethodBeat.o(259185);
-        return 0;
-      }
-      AppMethodBeat.o(259185);
+      paramInt = BaseFeedLoader.this.getDataList().size();
+      AppMethodBeat.o(366669);
+      return paramInt;
+      AppMethodBeat.o(366669);
       return 0;
     }
     
-    public androidx.recyclerview.widget.s getListUpdateCallback()
+    public q getListUpdateCallback()
     {
-      AppMethodBeat.i(259200);
-      androidx.recyclerview.widget.s locals = (androidx.recyclerview.widget.s)new a(this);
-      AppMethodBeat.o(259200);
-      return locals;
+      AppMethodBeat.i(366711);
+      q localq = (q)new a(BaseFeedLoader.this);
+      AppMethodBeat.o(366711);
+      return localq;
     }
     
-    protected final n merge(List<? extends T> paramList, int paramInt, Object paramObject)
+    protected final o merge(List<? extends T> paramList, int paramInt, Object paramObject)
     {
-      AppMethodBeat.i(259190);
-      p.k(paramList, "newList");
+      AppMethodBeat.i(366694);
+      kotlin.g.b.s.u(paramList, "newList");
       printList("newList", paramInt, paramList);
-      DataBuffer localDataBuffer = this.this$0.getDataList();
+      DataBuffer localDataBuffer = BaseFeedLoader.this.getDataList();
       LinkedList localLinkedList1 = new LinkedList();
       LinkedList localLinkedList2 = new LinkedList();
-      paramList = ((Iterable)paramList).iterator();
+      Object localObject1 = (Iterable)paramList;
+      paramList = BaseFeedLoader.this;
+      localObject1 = ((Iterable)localObject1).iterator();
       boolean bool1 = false;
       int i;
-      while (paramList.hasNext())
+      while (((Iterator)localObject1).hasNext())
       {
-        k localk = (k)paramList.next();
-        Object localObject = (List)localDataBuffer;
+        k localk = (k)((Iterator)localObject1).next();
+        Object localObject2 = (List)localDataBuffer;
         i = 0;
-        localObject = ((List)localObject).iterator();
-        label98:
+        localObject2 = ((List)localObject2).iterator();
+        label111:
         int k;
-        if (((Iterator)localObject).hasNext()) {
-          if (((k)((Iterator)localObject).next()).a(localk) == 0)
+        if (((Iterator)localObject2).hasNext()) {
+          if (((k)((Iterator)localObject2).next()).a(localk) == 0)
           {
             j = 1;
-            label131:
+            label144:
             if (j == 0) {
-              break label226;
+              break label239;
             }
             j = i;
-            label140:
-            localObject = (List)localLinkedList1;
+            label153:
+            localObject2 = (List)localLinkedList1;
             i = 0;
-            localObject = ((List)localObject).iterator();
-            label159:
-            if (!((Iterator)localObject).hasNext()) {
-              break label256;
+            localObject2 = ((List)localObject2).iterator();
+            label172:
+            if (!((Iterator)localObject2).hasNext()) {
+              break label269;
             }
-            if (((k)((Iterator)localObject).next()).a(localk) != 0) {
-              break label241;
+            if (((k)((Iterator)localObject2).next()).a(localk) != 0) {
+              break label254;
             }
             k = 1;
-            label192:
+            label205:
             if (k == 0) {
-              break label247;
+              break label260;
             }
           }
         }
         for (;;)
         {
           if ((j != -1) || (i != -1)) {
-            break label262;
+            break label275;
           }
           localLinkedList1.add(localk);
           break;
           j = 0;
-          break label131;
-          label226:
+          break label144;
+          label239:
           i += 1;
-          break label98;
+          break label111;
           j = -1;
-          break label140;
-          label241:
+          break label153;
+          label254:
           k = 0;
-          break label192;
-          label247:
+          break label205;
+          label260:
           i += 1;
-          break label159;
-          label256:
+          break label172;
+          label269:
           i = -1;
         }
-        label262:
+        label275:
         if (j != -1)
         {
           localDataBuffer.set(j, localk);
@@ -459,7 +613,7 @@ public abstract class BaseFeedLoader<T extends k>
         }
         else
         {
-          Log.w(this.this$0.getTAG(), "newList exist a same feed[" + (k)localLinkedList1.get(i) + "], just ignore this feed=" + localk + " existIndex=" + j + " existIndexInIncrementList=" + i);
+          Log.w(paramList.getTAG(), "newList exist a same feed[" + localLinkedList1.get(i) + "], just ignore this feed=" + localk + " existIndex=" + j + " existIndexInIncrementList=" + i);
         }
       }
       printList("incrementList", paramInt, (List)localLinkedList1);
@@ -469,399 +623,515 @@ public abstract class BaseFeedLoader<T extends k>
       {
         i = 1;
         if (i == 0) {
-          break label575;
+          break label589;
         }
       }
-      label575:
+      label589:
       for (paramList = localLinkedList1;; paramList = null)
       {
         i = j;
         if (paramList != null)
         {
+          paramList = BaseFeedLoader.this;
           i = findMergeIndex((ArrayList)localDataBuffer, (List)localLinkedList1, paramInt, paramObject);
           bool2 = finallyHandleMergeList((ArrayList)localDataBuffer, localLinkedList1, i, paramInt, paramObject);
-          Log.i(this.this$0.getTAG(), "merge list index " + i + " incrementList:" + localLinkedList1.size() + " cmd=" + paramInt);
+          Log.i(paramList.getTAG(), "merge list index " + i + " incrementList:" + localLinkedList1.size() + " cmd=" + paramInt);
           localDataBuffer.addAll(i, (Collection)localLinkedList1);
         }
-        paramList = new n(i, localLinkedList1.size(), localLinkedList2, bool2, bool1);
-        printList("dataList", paramInt, (List)this.this$0.getDataList());
-        AppMethodBeat.o(259190);
+        paramList = new o(i, localLinkedList1.size(), localLinkedList2, bool2, bool1);
+        printList("dataList", paramInt, (List)BaseFeedLoader.this.getDataList());
+        AppMethodBeat.o(366694);
         return paramList;
         i = 0;
         break;
       }
     }
     
-    public n mergeDataAndNotify(int paramInt, List<? extends T> paramList, boolean paramBoolean, Object paramObject)
+    public o mergeDataAndNotify(int paramInt, List<? extends T> paramList, boolean paramBoolean, Object paramObject)
     {
-      AppMethodBeat.i(259187);
+      AppMethodBeat.i(366684);
       if (paramList == null)
       {
-        paramList = new n(new LinkedList());
-        AppMethodBeat.o(259187);
+        paramList = new o(new LinkedList());
+        AppMethodBeat.o(366684);
         return paramList;
       }
       if (!paramBoolean)
       {
-        Log.i(this.this$0.getTAG(), "nothing need to notify, just return. cmd=" + paramInt + " size =" + paramList.size());
-        paramList = new n(new LinkedList());
-        AppMethodBeat.o(259187);
+        Log.i(BaseFeedLoader.this.getTAG(), "nothing need to notify, just return. cmd=" + paramInt + " size =" + paramList.size());
+        paramList = new o(new LinkedList());
+        AppMethodBeat.o(366684);
         return paramList;
       }
-      int j = this.this$0.getDataList().size();
+      int j = BaseFeedLoader.this.getDataList().size();
       if (((paramInt == 4) || (paramInt == 3) || (paramInt == 7)) && (needCleanWhenRefresh(paramList)))
       {
         if (((Collection)paramList).isEmpty()) {
-          break label410;
+          break label411;
         }
         i = 1;
         if ((i != 0) || (paramInt == 7))
         {
-          cleanDataList(this.this$0.getDataList());
+          cleanDataList(BaseFeedLoader.this.getDataList());
           if (paramInt == 4) {
-            this.this$0.dispatcher().onItemRangeRemoved(0, j);
+            BaseFeedLoader.this.dispatcher().onItemRangeRemoved(0, j);
           }
         }
       }
       paramList = merge(paramList, paramInt, paramObject);
-      paramObject = this.this$0.getTAG();
-      StringBuilder localStringBuilder = new StringBuilder("mergeDataAndNotify insertIndex=").append(paramList.xKN).append(" insertCount=").append(paramList.xKO).append(" changeIndex=").append(paramList.xKP).append(' ').append("size: ").append(this.this$0.getDataList().size()).append(" isRemoveBeforeInsert=").append(paramList.xKQ).append(" loader:").append(getClass().getSimpleName()).append(" cmd:");
-      q.a locala = q.xLc;
-      Log.i(paramObject, q.a.MH(paramInt) + '}');
-      if (!((Collection)paramList.xKP).isEmpty()) {}
+      paramObject = BaseFeedLoader.this.getTAG();
+      Object localObject = new StringBuilder("mergeDataAndNotify insertIndex=").append(paramList.BkC).append(" insertCount=").append(paramList.apS).append(" changeIndex=").append(paramList.BkD).append(" size: ").append(BaseFeedLoader.this.getDataList().size()).append(" isRemoveBeforeInsert=").append(paramList.BkE).append(" loader:").append(getClass().getSimpleName()).append(" cmd:");
+      r.a locala = r.BkP;
+      Log.i(paramObject, r.a.Oe(paramInt) + '}');
+      if (!((Collection)paramList.BkD).isEmpty()) {}
       for (int i = 1;; i = 0)
       {
-        if ((i == 0) || (paramList.xKO > 0)) {
-          break label422;
+        if ((i == 0) || (paramList.apS > 0) || (paramInt == 9)) {
+          break label423;
         }
-        Log.i(this.this$0.getTAG(), "just change all. cmd=".concat(String.valueOf(paramInt)));
-        this.this$0.dispatcher().onChanged();
-        AppMethodBeat.o(259187);
+        Log.i(BaseFeedLoader.this.getTAG(), kotlin.g.b.s.X("just change all. cmd=", Integer.valueOf(paramInt)));
+        BaseFeedLoader.this.dispatcher().onChanged();
+        AppMethodBeat.o(366684);
         return paramList;
-        label410:
+        label411:
         i = 0;
         break;
       }
-      label422:
-      if ((paramInt == 3) || (paramInt == 2) || (paramInt == 6) || (paramInt == 7)) {
-        this.this$0.dispatcher().onChanged();
+      switch (paramInt)
+      {
+      case 4: 
+      case 5: 
+      default: 
+        label423:
+        if (paramList.BkE)
+        {
+          paramObject = BaseFeedLoader.this.dispatcher();
+          i = paramList.BkC;
+          paramObject.onItemRangeRemoved(i, j - i);
+        }
+        if (paramInt == 9)
+        {
+          paramObject = (Integer)p.oL((List)paramList.BkD);
+          if (paramObject != null)
+          {
+            localObject = BaseFeedLoader.this;
+            if (((Number)paramObject).intValue() == 0) {
+              ((BaseFeedLoader)localObject).dispatcher().onItemRangeChanged(0, 1, Integer.valueOf(1));
+            }
+          }
+        }
+        if (paramList.apS > 0) {
+          BaseFeedLoader.this.dispatcher().onItemRangeInserted(paramList.BkC, paramList.apS);
+        }
+        break;
       }
       for (;;)
       {
-        AppMethodBeat.o(259187);
+        AppMethodBeat.o(366684);
         return paramList;
-        if (paramList.xKQ)
-        {
-          paramObject = this.this$0.dispatcher();
-          paramInt = paramList.xKN;
-          paramObject.onItemRangeRemoved(paramInt, j - paramInt);
-        }
-        this.this$0.dispatcher().onItemRangeInserted(paramList.xKN, paramList.xKO);
+        BaseFeedLoader.this.dispatcher().onChanged();
       }
     }
     
-    public void mergeInit(final IResponse<T> paramIResponse, final kotlin.g.a.b<? super IResponse<T>, x> paramb)
+    public void mergeInit(final IResponse<T> paramIResponse, final kotlin.g.a.b<? super IResponse<T>, ah> paramb)
     {
-      AppMethodBeat.i(259178);
-      p.k(paramIResponse, "response");
+      AppMethodBeat.i(366623);
+      kotlin.g.b.s.u(paramIResponse, "response");
       if (paramIResponse.getIncrementList() == null) {
-        paramIResponse.setIncrementList((List)v.aaAd);
+        paramIResponse.setIncrementList((List)ab.aivy);
       }
-      String str = this.this$0.getTAG();
-      StringBuilder localStringBuilder = new StringBuilder("initData dataFetch.initData ");
+      String str = BaseFeedLoader.this.getTAG();
       Object localObject = paramIResponse.getIncrementList();
-      if (localObject != null) {}
-      for (localObject = Integer.valueOf(((List)localObject).size());; localObject = null)
+      if (localObject == null) {}
+      for (localObject = null;; localObject = Integer.valueOf(((List)localObject).size()))
       {
-        Log.i(str, localObject);
-        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b(this, paramIResponse, paramb));
-        AppMethodBeat.o(259178);
+        Log.i(str, kotlin.g.b.s.X("initData dataFetch.initData ", localObject));
+        BaseFeedLoader.this.checkIsNeedUiThread(this.runUiThread, (kotlin.g.a.a)new b(BaseFeedLoader.this, paramIResponse, paramb));
+        AppMethodBeat.o(366623);
         return;
       }
     }
     
-    public void mergeInsert(final IResponse<T> paramIResponse, final kotlin.g.a.b<? super IResponse<T>, x> paramb)
+    public void mergeInsert(final IResponse<T> paramIResponse, final kotlin.g.a.b<? super IResponse<T>, ah> paramb)
     {
-      AppMethodBeat.i(259183);
-      p.k(paramIResponse, "response");
-      Object localObject = RefreshLoadMoreLayout.c.YNO;
-      localObject = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.ihu());
-      ((RefreshLoadMoreLayout.c)localObject).mCI = true;
-      ((RefreshLoadMoreLayout.c)localObject).YNF = true;
-      final q localq = new q(8, paramIResponse.getIncrementList(), false, 12);
-      localq.request = paramIResponse.getRequest();
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new c(this, localq, (RefreshLoadMoreLayout.c)localObject, paramb, paramIResponse));
-      AppMethodBeat.o(259183);
+      AppMethodBeat.i(366644);
+      kotlin.g.b.s.u(paramIResponse, "response");
+      Object localObject = RefreshLoadMoreLayout.d.agJr;
+      localObject = new RefreshLoadMoreLayout.d(RefreshLoadMoreLayout.d.jMI());
+      ((RefreshLoadMoreLayout.d)localObject).pzq = true;
+      ((RefreshLoadMoreLayout.d)localObject).agJu = true;
+      final r localr = new r(8, paramIResponse.getIncrementList(), false, 12);
+      localr.request = paramIResponse.getRequest();
+      BaseFeedLoader.this.checkIsNeedUiThread(this.runUiThread, (kotlin.g.a.a)new c(this, localr, (RefreshLoadMoreLayout.d)localObject, paramb, paramIResponse));
+      AppMethodBeat.o(366644);
     }
     
-    public void mergeLoadMore(final IResponse<T> paramIResponse, final kotlin.g.a.b<? super IResponse<T>, x> paramb)
+    public final o mergeInsertData(List<? extends T> paramList, int paramInt)
+    {
+      AppMethodBeat.i(366661);
+      kotlin.g.b.s.u(paramList, "newList");
+      LinkedList localLinkedList = new LinkedList();
+      paramList = (Iterable)paramList;
+      BaseFeedLoader localBaseFeedLoader = BaseFeedLoader.this;
+      Iterator localIterator = paramList.iterator();
+      label132:
+      label165:
+      label177:
+      label182:
+      label185:
+      while (localIterator.hasNext())
+      {
+        k localk = (k)localIterator.next();
+        paramList = ((List)localBaseFeedLoader.getDataList()).iterator();
+        int i = 0;
+        label78:
+        int j;
+        if (paramList.hasNext()) {
+          if (((k)paramList.next()).a(localk) == 0)
+          {
+            j = 1;
+            label109:
+            if (j == 0) {
+              break label165;
+            }
+            label114:
+            paramList = Integer.valueOf(i);
+            if (((Number)paramList).intValue() != -1) {
+              break label177;
+            }
+            i = 1;
+            if (i == 0) {
+              break label182;
+            }
+          }
+        }
+        for (;;)
+        {
+          if (paramList == null) {
+            break label185;
+          }
+          ((Number)paramList).intValue();
+          localLinkedList.add(localk);
+          break;
+          j = 0;
+          break label109;
+          i += 1;
+          break label78;
+          i = -1;
+          break label114;
+          i = 0;
+          break label132;
+          paramList = null;
+        }
+      }
+      Log.i(BaseFeedLoader.this.getTAG(), "mergeInsertData startIndex = " + paramInt + ", incrementSize: " + localLinkedList.size());
+      BaseFeedLoader.this.getDataList().addAll(paramInt, (Collection)localLinkedList);
+      paramList = new o(paramInt, localLinkedList.size(), new LinkedList(), true, false);
+      AppMethodBeat.o(366661);
+      return paramList;
+    }
+    
+    public void mergeInsertSpecifiedLocation(final IResponse<T> paramIResponse, final n paramn, final kotlin.g.a.b<? super IResponse<T>, ah> paramb)
+    {
+      AppMethodBeat.i(366649);
+      kotlin.g.b.s.u(paramIResponse, "response");
+      kotlin.g.b.s.u(paramn, "data");
+      Object localObject = RefreshLoadMoreLayout.d.agJr;
+      localObject = new RefreshLoadMoreLayout.d(RefreshLoadMoreLayout.d.jMI());
+      ((RefreshLoadMoreLayout.d)localObject).pzq = true;
+      ((RefreshLoadMoreLayout.d)localObject).agJu = true;
+      final List localList = paramIResponse.getIncrementList();
+      if (localList != null) {
+        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new d(this, paramn, localList, BaseFeedLoader.this, (RefreshLoadMoreLayout.d)localObject, paramb, paramIResponse));
+      }
+      AppMethodBeat.o(366649);
+    }
+    
+    public void mergeLoadMore(final IResponse<T> paramIResponse, final kotlin.g.a.b<? super IResponse<T>, ah> paramb)
     {
       int i = 1;
-      AppMethodBeat.i(259181);
-      p.k(paramIResponse, "response");
-      Object localObject = RefreshLoadMoreLayout.c.YNO;
-      localObject = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.iht());
-      List localList = paramIResponse.getIncrementList();
+      AppMethodBeat.i(366637);
+      kotlin.g.b.s.u(paramIResponse, "response");
+      Object localObject1 = RefreshLoadMoreLayout.d.agJr;
+      localObject1 = new RefreshLoadMoreLayout.d(RefreshLoadMoreLayout.d.jMH());
+      Object localObject2 = paramIResponse.getIncrementList();
       boolean bool;
-      if (localList != null)
+      if (localObject2 == null)
       {
-        bool = localList.isEmpty();
-        ((RefreshLoadMoreLayout.c)localObject).mCI = bool;
-        ((RefreshLoadMoreLayout.c)localObject).YNF = paramIResponse.getHasMore();
+        bool = true;
+        ((RefreshLoadMoreLayout.d)localObject1).pzq = bool;
+        ((RefreshLoadMoreLayout.d)localObject1).agJu = paramIResponse.getHasMore();
         if (!paramIResponse.getHasMore()) {
-          break label121;
+          break label137;
         }
       }
       for (;;)
       {
-        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new d(this, new q(i, paramIResponse.getIncrementList(), false, 12), (RefreshLoadMoreLayout.c)localObject, paramb, paramIResponse));
-        AppMethodBeat.o(259181);
+        localObject2 = new r(i, paramIResponse.getIncrementList(), false, 12);
+        BaseFeedLoader.this.checkIsNeedUiThread(this.runUiThread, (kotlin.g.a.a)new e(this, (r)localObject2, (RefreshLoadMoreLayout.d)localObject1, BaseFeedLoader.this, paramb, paramIResponse));
+        AppMethodBeat.o(366637);
         return;
-        bool = true;
+        bool = ((List)localObject2).isEmpty();
         break;
-        label121:
+        label137:
         i = 5;
       }
     }
     
-    public void mergeRefresh(final IResponse<T> paramIResponse, final kotlin.g.a.b<? super IResponse<T>, x> paramb)
+    public void mergeRefresh(final IResponse<T> paramIResponse, final kotlin.g.a.b<? super IResponse<T>, ah> paramb)
     {
-      AppMethodBeat.i(259180);
-      p.k(paramIResponse, "response");
-      Object localObject = RefreshLoadMoreLayout.c.YNO;
-      localObject = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.ihs());
+      AppMethodBeat.i(366632);
+      kotlin.g.b.s.u(paramIResponse, "response");
+      Object localObject = RefreshLoadMoreLayout.d.agJr;
+      localObject = new RefreshLoadMoreLayout.d(RefreshLoadMoreLayout.d.jMG());
       if (paramIResponse.getHasMore()) {}
       for (int i = 2;; i = 6)
       {
-        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new e(this, new q(i, paramIResponse.getIncrementList(), false, 12), (RefreshLoadMoreLayout.c)localObject, paramb, paramIResponse));
-        AppMethodBeat.o(259180);
+        final r localr = new r(i, paramIResponse.getIncrementList(), false, 12);
+        BaseFeedLoader.this.checkIsNeedUiThread(this.runUiThread, (kotlin.g.a.a)new f(this, localr, (RefreshLoadMoreLayout.d)localObject, paramb, paramIResponse, BaseFeedLoader.this));
+        AppMethodBeat.o(366632);
         return;
       }
     }
     
     public boolean onDataReplace(T paramT, int paramInt)
     {
-      AppMethodBeat.i(259198);
-      p.k(paramT, "feed");
-      AppMethodBeat.o(259198);
+      AppMethodBeat.i(366709);
+      kotlin.g.b.s.u(paramT, "feed");
+      AppMethodBeat.o(366709);
       return false;
     }
     
     public final void printList(String paramString, int paramInt, List<? extends T> paramList)
     {
-      AppMethodBeat.i(259201);
-      p.k(paramString, "tag");
-      p.k(paramList, "mmlist");
+      AppMethodBeat.i(366721);
+      kotlin.g.b.s.u(paramString, "tag");
+      kotlin.g.b.s.u(paramList, "mmlist");
       if (getDEBUG())
       {
-        paramList = ((Iterable)paramList).iterator();
+        Object localObject1 = (Iterable)paramList;
+        paramList = BaseFeedLoader.this;
+        localObject1 = ((Iterable)localObject1).iterator();
         int i = 0;
-        while (paramList.hasNext())
+        while (((Iterator)localObject1).hasNext())
         {
-          Object localObject = paramList.next();
+          Object localObject2 = ((Iterator)localObject1).next();
           if (i < 0) {
-            kotlin.a.j.iBO();
+            p.kkW();
           }
-          localObject = (k)localObject;
-          String str = this.this$0.getTAG();
+          localObject2 = (k)localObject2;
+          String str = paramList.getTAG();
           StringBuilder localStringBuilder = new StringBuilder().append(paramString).append(" index ").append(i).append(" cmd:");
-          q.a locala = q.xLc;
-          Log.i(str, q.a.MH(paramInt) + ' ' + localObject);
+          r.a locala = r.BkP;
+          Log.i(str, r.a.Oe(paramInt) + ' ' + localObject2);
           i += 1;
         }
       }
-      AppMethodBeat.o(259201);
+      AppMethodBeat.o(366721);
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger$getListUpdateCallback$1", "Landroidx/recyclerview/widget/ListUpdateCallback;", "onChanged", "", "positionStart", "", "itemCount", "payload", "", "onInserted", "onMoved", "p0", "p1", "onRemoved", "plugin-finder-base_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger$getListUpdateCallback$1", "Landroidx/recyclerview/widget/ListUpdateCallback;", "onChanged", "", "positionStart", "", "itemCount", "payload", "", "onInserted", "onMoved", "p0", "p1", "onRemoved", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
-      implements androidx.recyclerview.widget.s
+      implements q
     {
-      public final void W(int paramInt1, int paramInt2)
+      a(BaseFeedLoader<T> paramBaseFeedLoader) {}
+      
+      public final void aR(int paramInt1, int paramInt2)
       {
-        AppMethodBeat.i(263561);
-        this.xKe.this$0.dispatcher().onItemRangeInserted(paramInt1, paramInt2);
-        AppMethodBeat.o(263561);
+        AppMethodBeat.i(366550);
+        this.this$0.dispatcher().onItemRangeInserted(paramInt1, paramInt2);
+        AppMethodBeat.o(366550);
       }
       
-      public final void ac(int paramInt1, int paramInt2)
+      public final void aS(int paramInt1, int paramInt2)
       {
-        AppMethodBeat.i(263562);
-        this.xKe.this$0.dispatcher().onItemRangeRemoved(paramInt1, paramInt2);
-        AppMethodBeat.o(263562);
+        AppMethodBeat.i(366556);
+        this.this$0.dispatcher().onItemRangeRemoved(paramInt1, paramInt2);
+        AppMethodBeat.o(366556);
       }
       
-      public final void ad(int paramInt1, int paramInt2) {}
+      public final void aW(int paramInt1, int paramInt2) {}
       
       public final void c(int paramInt1, int paramInt2, Object paramObject)
       {
-        AppMethodBeat.i(263559);
-        this.xKe.this$0.dispatcher().onItemRangeChanged(paramInt1, paramInt2, paramObject);
-        AppMethodBeat.o(263559);
+        AppMethodBeat.i(366536);
+        this.this$0.dispatcher().onItemRangeChanged(paramInt1, paramInt2, paramObject);
+        AppMethodBeat.o(366536);
       }
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class b
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+      extends kotlin.g.b.u
+      implements kotlin.g.a.a<ah>
     {
-      b(BaseFeedLoader.a parama, IResponse paramIResponse, kotlin.g.a.b paramb)
+      b(BaseFeedLoader<T> paramBaseFeedLoader, IResponse<T> paramIResponse, kotlin.g.a.b<? super IResponse<T>, ah> paramb)
       {
         super();
       }
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class c
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+      extends kotlin.g.b.u
+      implements kotlin.g.a.a<ah>
     {
-      c(BaseFeedLoader.a parama, q paramq, RefreshLoadMoreLayout.c paramc, kotlin.g.a.b paramb, IResponse paramIResponse)
+      c(BaseFeedLoader<T>.a paramBaseFeedLoader, r<T> paramr, RefreshLoadMoreLayout.d<Object> paramd, kotlin.g.a.b<? super IResponse<T>, ah> paramb, IResponse<T> paramIResponse)
       {
         super();
       }
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class d
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+      extends kotlin.g.b.u
+      implements kotlin.g.a.a<ah>
     {
-      d(BaseFeedLoader.a parama, q paramq, RefreshLoadMoreLayout.c paramc, kotlin.g.a.b paramb, IResponse paramIResponse)
+      d(BaseFeedLoader<T>.a paramBaseFeedLoader, n paramn, List<? extends T> paramList, BaseFeedLoader<T> paramBaseFeedLoader1, RefreshLoadMoreLayout.d<Object> paramd, kotlin.g.a.b<? super IResponse<T>, ah> paramb, IResponse<T> paramIResponse)
       {
         super();
       }
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class e
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+      extends kotlin.g.b.u
+      implements kotlin.g.a.a<ah>
     {
-      e(BaseFeedLoader.a parama, q paramq, RefreshLoadMoreLayout.c paramc, kotlin.g.a.b paramb, IResponse paramIResponse)
+      e(BaseFeedLoader<T>.a paramBaseFeedLoader, r<T> paramr, RefreshLoadMoreLayout.d<Object> paramd, BaseFeedLoader<T> paramBaseFeedLoader1, kotlin.g.a.b<? super IResponse<T>, ah> paramb, IResponse<T> paramIResponse)
+      {
+        super();
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class f
+      extends kotlin.g.b.u
+      implements kotlin.g.a.a<ah>
+    {
+      f(BaseFeedLoader<T>.a paramBaseFeedLoader, r<T> paramr, RefreshLoadMoreLayout.d<Object> paramd, kotlin.g.a.b<? super IResponse<T>, ah> paramb, IResponse<T> paramIResponse, BaseFeedLoader<T> paramBaseFeedLoader1)
       {
         super();
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.g.b.q
+    extends kotlin.g.b.u
     implements kotlin.g.a.a<i<T>>
   {
-    b(BaseFeedLoader paramBaseFeedLoader)
+    b(BaseFeedLoader<T> paramBaseFeedLoader)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<IResponse<T>, x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<IResponse<T>, ah>
   {
-    c(BaseFeedLoader paramBaseFeedLoader)
+    c(BaseFeedLoader<T> paramBaseFeedLoader)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<IResponse<T>, x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<IResponse<T>, ah>
   {
-    d(BaseFeedLoader paramBaseFeedLoader, IResponse paramIResponse)
+    d(BaseFeedLoader<T> paramBaseFeedLoader, IResponse<T> paramIResponse)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<IResponse<T>, x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<IResponse<T>, ah>
   {
-    e(BaseFeedLoader paramBaseFeedLoader, IResponse paramIResponse)
+    e(BaseFeedLoader<T> paramBaseFeedLoader, IResponse<T> paramIResponse)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<IResponse<T>, x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<IResponse<T>, ah>
   {
-    f(BaseFeedLoader paramBaseFeedLoader, IResponse paramIResponse)
+    f(BaseFeedLoader<T> paramBaseFeedLoader, IResponse<T> paramIResponse)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "cache", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "cache", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<IResponse<T>, x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<IResponse<T>, ah>
   {
-    g(BaseFeedLoader paramBaseFeedLoader, Object paramObject)
+    g(BaseFeedLoader<T> paramBaseFeedLoader, Object paramObject)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "cache", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "cache", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<IResponse<T>, x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<IResponse<T>, ah>
   {
-    h(BaseFeedLoader paramBaseFeedLoader, Object paramObject, h paramh)
+    h(BaseFeedLoader<T> paramBaseFeedLoader, Object paramObject, h<T> paramh)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class i
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
   {
-    i(BaseFeedLoader paramBaseFeedLoader)
+    i(BaseFeedLoader<T> paramBaseFeedLoader)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "cache", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "cache", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class j
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<IResponse<T>, x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<IResponse<T>, ah>
   {
-    j(BaseFeedLoader paramBaseFeedLoader)
+    j(BaseFeedLoader<T> paramBaseFeedLoader, boolean paramBoolean)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class k
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
   {
-    k(BaseFeedLoader paramBaseFeedLoader, h paramh)
+    k(BaseFeedLoader<T> paramBaseFeedLoader, h<T> paramh)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "cache", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "cache", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class l
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<IResponse<T>, x>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<IResponse<T>, ah>
   {
-    l(BaseFeedLoader paramBaseFeedLoader)
+    l(BaseFeedLoader<T> paramBaseFeedLoader)
     {
       super();
     }

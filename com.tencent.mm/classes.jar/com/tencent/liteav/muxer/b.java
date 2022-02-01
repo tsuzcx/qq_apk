@@ -1,6 +1,5 @@
 package com.tencent.liteav.muxer;
 
-import android.annotation.TargetApi;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
 import android.media.MediaMuxer;
@@ -9,7 +8,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-@TargetApi(18)
 public class b
   implements a
 {
@@ -285,35 +283,35 @@ public class b
     //   2: aload_0
     //   3: monitorenter
     //   4: sipush 14934
-    //   7: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
-    //   11: getfield 64	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
+    //   11: getfield 61	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
     //   14: ifnull +13 -> 27
     //   17: aload_0
-    //   18: getfield 64	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
-    //   21: invokevirtual 249	java/lang/String:isEmpty	()Z
+    //   18: getfield 61	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
+    //   21: invokevirtual 246	java/lang/String:isEmpty	()Z
     //   24: ifeq +22 -> 46
-    //   27: ldc 149
-    //   29: ldc 251
-    //   31: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: ldc 146
+    //   29: ldc 248
+    //   31: invokestatic 153	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   34: iconst_m1
     //   35: istore_1
     //   36: sipush 14934
-    //   39: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   39: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: aload_0
     //   43: monitorexit
     //   44: iload_1
     //   45: ireturn
     //   46: aload_0
-    //   47: invokevirtual 253	com/tencent/liteav/muxer/b:c	()Z
+    //   47: invokevirtual 250	com/tencent/liteav/muxer/b:c	()Z
     //   50: ifne +27 -> 77
-    //   53: ldc 149
-    //   55: ldc 255
-    //   57: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   53: ldc 146
+    //   55: ldc 252
+    //   57: invokestatic 153	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   60: bipush 254
     //   62: istore_1
     //   63: sipush 14934
-    //   66: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   66: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: goto -27 -> 42
     //   72: astore_2
     //   73: aload_0
@@ -321,141 +319,141 @@ public class b
     //   75: aload_2
     //   76: athrow
     //   77: aload_0
-    //   78: getfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
-    //   81: ifnull +20 -> 101
-    //   84: ldc 149
-    //   86: ldc_w 257
-    //   89: invokestatic 191	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   92: sipush 14934
-    //   95: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   98: goto -56 -> 42
-    //   101: ldc 149
-    //   103: ldc_w 259
-    //   106: invokestatic 261	com/tencent/liteav/basic/log/TXCLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   109: aload_0
-    //   110: new 195	android/media/MediaMuxer
-    //   113: dup
-    //   114: aload_0
-    //   115: getfield 64	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
-    //   118: iconst_0
-    //   119: invokespecial 264	android/media/MediaMuxer:<init>	(Ljava/lang/String;I)V
-    //   122: putfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
-    //   125: aload_0
-    //   126: getfield 66	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
-    //   129: astore_2
-    //   130: aload_2
-    //   131: ifnull +18 -> 149
+    //   78: getfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   81: ifnull +19 -> 100
+    //   84: ldc 146
+    //   86: ldc 254
+    //   88: invokestatic 188	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   91: sipush 14934
+    //   94: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: goto -55 -> 42
+    //   100: ldc 146
+    //   102: ldc_w 256
+    //   105: invokestatic 258	com/tencent/liteav/basic/log/TXCLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   108: aload_0
+    //   109: new 192	android/media/MediaMuxer
+    //   112: dup
+    //   113: aload_0
+    //   114: getfield 61	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
+    //   117: iconst_0
+    //   118: invokespecial 261	android/media/MediaMuxer:<init>	(Ljava/lang/String;I)V
+    //   121: putfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   124: aload_0
+    //   125: getfield 63	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
+    //   128: astore_2
+    //   129: aload_2
+    //   130: ifnull +18 -> 148
+    //   133: aload_0
     //   134: aload_0
-    //   135: aload_0
-    //   136: getfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
-    //   139: aload_0
-    //   140: getfield 66	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
-    //   143: invokevirtual 268	android/media/MediaMuxer:addTrack	(Landroid/media/MediaFormat;)I
-    //   146: putfield 72	com/tencent/liteav/muxer/b:k	I
-    //   149: aload_0
-    //   150: getfield 68	com/tencent/liteav/muxer/b:i	Landroid/media/MediaFormat;
-    //   153: astore_2
-    //   154: aload_2
-    //   155: ifnull +18 -> 173
+    //   135: getfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   138: aload_0
+    //   139: getfield 63	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
+    //   142: invokevirtual 265	android/media/MediaMuxer:addTrack	(Landroid/media/MediaFormat;)I
+    //   145: putfield 69	com/tencent/liteav/muxer/b:k	I
+    //   148: aload_0
+    //   149: getfield 65	com/tencent/liteav/muxer/b:i	Landroid/media/MediaFormat;
+    //   152: astore_2
+    //   153: aload_2
+    //   154: ifnull +18 -> 172
+    //   157: aload_0
     //   158: aload_0
-    //   159: aload_0
-    //   160: getfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
-    //   163: aload_0
-    //   164: getfield 68	com/tencent/liteav/muxer/b:i	Landroid/media/MediaFormat;
-    //   167: invokevirtual 268	android/media/MediaMuxer:addTrack	(Landroid/media/MediaFormat;)I
-    //   170: putfield 70	com/tencent/liteav/muxer/b:j	I
-    //   173: aload_0
-    //   174: getfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
-    //   177: invokevirtual 270	android/media/MediaMuxer:start	()V
-    //   180: aload_0
-    //   181: ldc2_w 84
-    //   184: putfield 87	com/tencent/liteav/muxer/b:p	J
-    //   187: aload_0
-    //   188: iconst_1
-    //   189: putfield 74	com/tencent/liteav/muxer/b:l	Z
-    //   192: aload_0
-    //   193: iconst_0
-    //   194: putfield 76	com/tencent/liteav/muxer/b:m	Z
-    //   197: aload_0
-    //   198: ldc2_w 84
-    //   201: putfield 89	com/tencent/liteav/muxer/b:q	J
-    //   204: aload_0
-    //   205: ldc2_w 84
-    //   208: putfield 91	com/tencent/liteav/muxer/b:r	J
-    //   211: sipush 14934
-    //   214: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   217: goto -175 -> 42
-    //   220: astore_2
-    //   221: ldc 149
-    //   223: ldc_w 272
-    //   226: aload_2
-    //   227: invokestatic 207	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   230: invokevirtual 211	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   233: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   236: bipush 252
-    //   238: istore_1
-    //   239: sipush 14934
-    //   242: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   245: goto -203 -> 42
-    //   248: astore_2
-    //   249: ldc 149
-    //   251: ldc_w 274
-    //   254: aload_2
-    //   255: invokestatic 207	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   258: invokevirtual 211	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   261: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   264: bipush 251
-    //   266: istore_1
-    //   267: sipush 14934
-    //   270: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   273: goto -231 -> 42
-    //   276: astore_2
-    //   277: ldc 149
-    //   279: ldc_w 276
-    //   282: aload_2
-    //   283: invokestatic 207	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   286: invokevirtual 211	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   289: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   292: bipush 250
-    //   294: istore_1
-    //   295: sipush 14934
-    //   298: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   301: goto -259 -> 42
-    //   304: astore_2
-    //   305: ldc 149
-    //   307: ldc_w 278
-    //   310: aload_2
-    //   311: invokestatic 207	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   314: invokevirtual 211	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   317: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   320: bipush 249
-    //   322: istore_1
-    //   323: sipush 14934
-    //   326: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   329: goto -287 -> 42
-    //   332: astore_2
-    //   333: ldc 149
-    //   335: ldc_w 280
-    //   338: aload_2
-    //   339: invokestatic 207	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   342: invokevirtual 211	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   345: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   348: bipush 248
-    //   350: istore_1
-    //   351: sipush 14934
-    //   354: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   357: goto -315 -> 42
+    //   159: getfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   162: aload_0
+    //   163: getfield 65	com/tencent/liteav/muxer/b:i	Landroid/media/MediaFormat;
+    //   166: invokevirtual 265	android/media/MediaMuxer:addTrack	(Landroid/media/MediaFormat;)I
+    //   169: putfield 67	com/tencent/liteav/muxer/b:j	I
+    //   172: aload_0
+    //   173: getfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   176: invokevirtual 267	android/media/MediaMuxer:start	()V
+    //   179: aload_0
+    //   180: ldc2_w 81
+    //   183: putfield 84	com/tencent/liteav/muxer/b:p	J
+    //   186: aload_0
+    //   187: iconst_1
+    //   188: putfield 71	com/tencent/liteav/muxer/b:l	Z
+    //   191: aload_0
+    //   192: iconst_0
+    //   193: putfield 73	com/tencent/liteav/muxer/b:m	Z
+    //   196: aload_0
+    //   197: ldc2_w 81
+    //   200: putfield 86	com/tencent/liteav/muxer/b:q	J
+    //   203: aload_0
+    //   204: ldc2_w 81
+    //   207: putfield 88	com/tencent/liteav/muxer/b:r	J
+    //   210: sipush 14934
+    //   213: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   216: goto -174 -> 42
+    //   219: astore_2
+    //   220: ldc 146
+    //   222: ldc_w 269
+    //   225: aload_2
+    //   226: invokestatic 204	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   229: invokevirtual 208	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   232: invokestatic 153	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   235: bipush 252
+    //   237: istore_1
+    //   238: sipush 14934
+    //   241: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   244: goto -202 -> 42
+    //   247: astore_2
+    //   248: ldc 146
+    //   250: ldc_w 271
+    //   253: aload_2
+    //   254: invokestatic 204	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   257: invokevirtual 208	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   260: invokestatic 153	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   263: bipush 251
+    //   265: istore_1
+    //   266: sipush 14934
+    //   269: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   272: goto -230 -> 42
+    //   275: astore_2
+    //   276: ldc 146
+    //   278: ldc_w 273
+    //   281: aload_2
+    //   282: invokestatic 204	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   285: invokevirtual 208	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   288: invokestatic 153	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   291: bipush 250
+    //   293: istore_1
+    //   294: sipush 14934
+    //   297: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   300: goto -258 -> 42
+    //   303: astore_2
+    //   304: ldc 146
+    //   306: ldc_w 275
+    //   309: aload_2
+    //   310: invokestatic 204	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   313: invokevirtual 208	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   316: invokestatic 153	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   319: bipush 249
+    //   321: istore_1
+    //   322: sipush 14934
+    //   325: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   328: goto -286 -> 42
+    //   331: astore_2
+    //   332: ldc 146
+    //   334: ldc_w 277
+    //   337: aload_2
+    //   338: invokestatic 204	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   341: invokevirtual 208	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   344: invokestatic 153	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   347: bipush 248
+    //   349: istore_1
+    //   350: sipush 14934
+    //   353: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   356: goto -314 -> 42
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	360	0	this	b
-    //   1	350	1	i1	int
+    //   0	359	0	this	b
+    //   1	349	1	i1	int
     //   72	4	2	localObject	Object
-    //   129	26	2	localMediaFormat	MediaFormat
-    //   220	7	2	localIOException	java.io.IOException
-    //   248	7	2	localIllegalArgumentException1	IllegalArgumentException
-    //   276	7	2	localIllegalStateException1	IllegalStateException
-    //   304	7	2	localIllegalArgumentException2	IllegalArgumentException
-    //   332	7	2	localIllegalStateException2	IllegalStateException
+    //   128	26	2	localMediaFormat	MediaFormat
+    //   219	7	2	localIOException	java.io.IOException
+    //   247	7	2	localIllegalArgumentException1	IllegalArgumentException
+    //   275	7	2	localIllegalStateException1	IllegalStateException
+    //   303	7	2	localIllegalArgumentException2	IllegalArgumentException
+    //   331	7	2	localIllegalStateException2	IllegalStateException
     // Exception table:
     //   from	to	target	type
     //   4	27	72	finally
@@ -463,29 +461,29 @@ public class b
     //   36	42	72	finally
     //   46	60	72	finally
     //   63	69	72	finally
-    //   77	98	72	finally
-    //   101	109	72	finally
-    //   109	125	72	finally
-    //   125	130	72	finally
-    //   134	149	72	finally
-    //   149	154	72	finally
-    //   158	173	72	finally
-    //   173	217	72	finally
-    //   221	236	72	finally
-    //   239	245	72	finally
-    //   249	264	72	finally
-    //   267	273	72	finally
-    //   277	292	72	finally
-    //   295	301	72	finally
-    //   305	320	72	finally
-    //   323	329	72	finally
-    //   333	348	72	finally
-    //   351	357	72	finally
-    //   109	125	220	java/io/IOException
-    //   134	149	248	java/lang/IllegalArgumentException
-    //   134	149	276	java/lang/IllegalStateException
-    //   158	173	304	java/lang/IllegalArgumentException
-    //   158	173	332	java/lang/IllegalStateException
+    //   77	97	72	finally
+    //   100	108	72	finally
+    //   108	124	72	finally
+    //   124	129	72	finally
+    //   133	148	72	finally
+    //   148	153	72	finally
+    //   157	172	72	finally
+    //   172	216	72	finally
+    //   220	235	72	finally
+    //   238	244	72	finally
+    //   248	263	72	finally
+    //   266	272	72	finally
+    //   276	291	72	finally
+    //   294	300	72	finally
+    //   304	319	72	finally
+    //   322	328	72	finally
+    //   332	347	72	finally
+    //   350	356	72	finally
+    //   108	124	219	java/io/IOException
+    //   133	148	247	java/lang/IllegalArgumentException
+    //   133	148	275	java/lang/IllegalStateException
+    //   157	172	303	java/lang/IllegalArgumentException
+    //   157	172	331	java/lang/IllegalStateException
   }
   
   public void a(MediaFormat paramMediaFormat)
@@ -512,51 +510,51 @@ public class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 287
-    //   5: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 284
+    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: putfield 64	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
+    //   10: putfield 61	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
     //   13: aload_0
-    //   14: getfield 64	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
-    //   17: invokestatic 292	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   14: getfield 61	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
+    //   17: invokestatic 289	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   20: ifne +68 -> 88
-    //   23: new 294	java/io/File
+    //   23: new 291	java/io/File
     //   26: dup
     //   27: aload_0
-    //   28: getfield 64	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
-    //   31: invokespecial 295	java/io/File:<init>	(Ljava/lang/String;)V
+    //   28: getfield 61	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
+    //   31: invokespecial 292	java/io/File:<init>	(Ljava/lang/String;)V
     //   34: astore_1
     //   35: aload_1
-    //   36: invokevirtual 299	java/io/File:getParentFile	()Ljava/io/File;
+    //   36: invokevirtual 296	java/io/File:getParentFile	()Ljava/io/File;
     //   39: astore_2
     //   40: aload_2
-    //   41: invokevirtual 302	java/io/File:exists	()Z
+    //   41: invokevirtual 299	java/io/File:exists	()Z
     //   44: ifne +8 -> 52
     //   47: aload_2
-    //   48: invokevirtual 305	java/io/File:mkdirs	()Z
+    //   48: invokevirtual 302	java/io/File:mkdirs	()Z
     //   51: pop
     //   52: aload_1
-    //   53: invokevirtual 302	java/io/File:exists	()Z
+    //   53: invokevirtual 299	java/io/File:exists	()Z
     //   56: ifeq +8 -> 64
     //   59: aload_1
-    //   60: invokevirtual 308	java/io/File:delete	()Z
+    //   60: invokevirtual 305	java/io/File:delete	()Z
     //   63: pop
     //   64: aload_1
-    //   65: invokevirtual 311	java/io/File:createNewFile	()Z
+    //   65: invokevirtual 308	java/io/File:createNewFile	()Z
     //   68: pop
-    //   69: ldc_w 287
-    //   72: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: ldc_w 284
+    //   72: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   75: aload_0
     //   76: monitorexit
     //   77: return
     //   78: astore_1
-    //   79: ldc 149
-    //   81: ldc_w 313
+    //   79: ldc 146
+    //   81: ldc_w 310
     //   84: aload_1
-    //   85: invokestatic 316	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   88: ldc_w 287
-    //   91: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: invokestatic 313	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   88: ldc_w 284
+    //   91: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   94: goto -19 -> 75
     //   97: astore_1
     //   98: aload_0
@@ -641,108 +639,108 @@ public class b
     //   2: aload_0
     //   3: monitorenter
     //   4: sipush 14935
-    //   7: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
-    //   11: getfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   11: getfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
     //   14: ifnull +122 -> 136
-    //   17: ldc 149
-    //   19: new 164	java/lang/StringBuilder
+    //   17: ldc 146
+    //   19: new 161	java/lang/StringBuilder
     //   22: dup
-    //   23: ldc_w 336
-    //   26: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   23: ldc_w 333
+    //   26: invokespecial 166	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   29: aload_0
-    //   30: getfield 74	com/tencent/liteav/muxer/b:l	Z
-    //   33: invokevirtual 339	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   36: ldc_w 341
-    //   39: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: getfield 71	com/tencent/liteav/muxer/b:l	Z
+    //   33: invokevirtual 336	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   36: ldc_w 338
+    //   39: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: aload_0
-    //   43: getfield 76	com/tencent/liteav/muxer/b:m	Z
-    //   46: invokevirtual 339	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   49: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   52: invokestatic 261	com/tencent/liteav/basic/log/TXCLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   43: getfield 73	com/tencent/liteav/muxer/b:m	Z
+    //   46: invokevirtual 336	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: invokestatic 258	com/tencent/liteav/basic/log/TXCLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   55: aload_0
-    //   56: getfield 74	com/tencent/liteav/muxer/b:l	Z
+    //   56: getfield 71	com/tencent/liteav/muxer/b:l	Z
     //   59: ifeq +17 -> 76
     //   62: aload_0
-    //   63: getfield 76	com/tencent/liteav/muxer/b:m	Z
+    //   63: getfield 73	com/tencent/liteav/muxer/b:m	Z
     //   66: ifeq +10 -> 76
     //   69: aload_0
-    //   70: getfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
-    //   73: invokevirtual 344	android/media/MediaMuxer:stop	()V
+    //   70: getfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   73: invokevirtual 341	android/media/MediaMuxer:stop	()V
     //   76: aload_0
-    //   77: getfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
-    //   80: invokevirtual 347	android/media/MediaMuxer:release	()V
+    //   77: getfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   80: invokevirtual 344	android/media/MediaMuxer:release	()V
     //   83: aload_0
     //   84: iconst_0
-    //   85: putfield 74	com/tencent/liteav/muxer/b:l	Z
+    //   85: putfield 71	com/tencent/liteav/muxer/b:l	Z
     //   88: aload_0
     //   89: aconst_null
-    //   90: putfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   90: putfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
     //   93: aload_0
     //   94: iconst_0
-    //   95: putfield 76	com/tencent/liteav/muxer/b:m	Z
+    //   95: putfield 73	com/tencent/liteav/muxer/b:m	Z
     //   98: aload_0
-    //   99: getfield 81	com/tencent/liteav/muxer/b:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   102: invokevirtual 286	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   99: getfield 78	com/tencent/liteav/muxer/b:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   102: invokevirtual 283	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   105: aload_0
-    //   106: getfield 83	com/tencent/liteav/muxer/b:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   109: invokevirtual 286	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   106: getfield 80	com/tencent/liteav/muxer/b:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   109: invokevirtual 283	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   112: aload_0
     //   113: aconst_null
-    //   114: putfield 66	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
+    //   114: putfield 63	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
     //   117: aload_0
     //   118: aconst_null
-    //   119: putfield 68	com/tencent/liteav/muxer/b:i	Landroid/media/MediaFormat;
+    //   119: putfield 65	com/tencent/liteav/muxer/b:i	Landroid/media/MediaFormat;
     //   122: aload_0
-    //   123: ldc2_w 84
-    //   126: putfield 89	com/tencent/liteav/muxer/b:q	J
+    //   123: ldc2_w 81
+    //   126: putfield 86	com/tencent/liteav/muxer/b:q	J
     //   129: aload_0
-    //   130: ldc2_w 84
-    //   133: putfield 91	com/tencent/liteav/muxer/b:r	J
+    //   130: ldc2_w 81
+    //   133: putfield 88	com/tencent/liteav/muxer/b:r	J
     //   136: sipush 14935
-    //   139: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   139: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   142: aload_0
     //   143: monitorexit
     //   144: iload_1
     //   145: ireturn
     //   146: astore_2
-    //   147: ldc 149
-    //   149: ldc_w 349
+    //   147: ldc 146
+    //   149: ldc_w 346
     //   152: aload_2
-    //   153: invokestatic 207	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   156: invokevirtual 211	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   159: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   153: invokestatic 204	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   156: invokevirtual 208	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   159: invokestatic 153	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   162: aload_0
     //   163: iconst_0
-    //   164: putfield 74	com/tencent/liteav/muxer/b:l	Z
+    //   164: putfield 71	com/tencent/liteav/muxer/b:l	Z
     //   167: aload_0
     //   168: aconst_null
-    //   169: putfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   169: putfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
     //   172: aload_0
     //   173: iconst_0
-    //   174: putfield 76	com/tencent/liteav/muxer/b:m	Z
+    //   174: putfield 73	com/tencent/liteav/muxer/b:m	Z
     //   177: aload_0
-    //   178: getfield 81	com/tencent/liteav/muxer/b:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   181: invokevirtual 286	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   178: getfield 78	com/tencent/liteav/muxer/b:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   181: invokevirtual 283	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   184: aload_0
-    //   185: getfield 83	com/tencent/liteav/muxer/b:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   188: invokevirtual 286	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   185: getfield 80	com/tencent/liteav/muxer/b:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   188: invokevirtual 283	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   191: aload_0
     //   192: aconst_null
-    //   193: putfield 66	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
+    //   193: putfield 63	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
     //   196: aload_0
     //   197: aconst_null
-    //   198: putfield 68	com/tencent/liteav/muxer/b:i	Landroid/media/MediaFormat;
+    //   198: putfield 65	com/tencent/liteav/muxer/b:i	Landroid/media/MediaFormat;
     //   201: aload_0
-    //   202: ldc2_w 84
-    //   205: putfield 89	com/tencent/liteav/muxer/b:q	J
+    //   202: ldc2_w 81
+    //   205: putfield 86	com/tencent/liteav/muxer/b:q	J
     //   208: aload_0
-    //   209: ldc2_w 84
-    //   212: putfield 91	com/tencent/liteav/muxer/b:r	J
+    //   209: ldc2_w 81
+    //   212: putfield 88	com/tencent/liteav/muxer/b:r	J
     //   215: iconst_m1
     //   216: istore_1
     //   217: sipush 14935
-    //   220: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   220: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   223: goto -81 -> 142
     //   226: astore_2
     //   227: aload_0
@@ -752,33 +750,33 @@ public class b
     //   231: astore_2
     //   232: aload_0
     //   233: iconst_0
-    //   234: putfield 74	com/tencent/liteav/muxer/b:l	Z
+    //   234: putfield 71	com/tencent/liteav/muxer/b:l	Z
     //   237: aload_0
     //   238: aconst_null
-    //   239: putfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   239: putfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
     //   242: aload_0
     //   243: iconst_0
-    //   244: putfield 76	com/tencent/liteav/muxer/b:m	Z
+    //   244: putfield 73	com/tencent/liteav/muxer/b:m	Z
     //   247: aload_0
-    //   248: getfield 81	com/tencent/liteav/muxer/b:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   251: invokevirtual 286	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   248: getfield 78	com/tencent/liteav/muxer/b:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   251: invokevirtual 283	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   254: aload_0
-    //   255: getfield 83	com/tencent/liteav/muxer/b:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   258: invokevirtual 286	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   255: getfield 80	com/tencent/liteav/muxer/b:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   258: invokevirtual 283	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   261: aload_0
     //   262: aconst_null
-    //   263: putfield 66	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
+    //   263: putfield 63	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
     //   266: aload_0
     //   267: aconst_null
-    //   268: putfield 68	com/tencent/liteav/muxer/b:i	Landroid/media/MediaFormat;
+    //   268: putfield 65	com/tencent/liteav/muxer/b:i	Landroid/media/MediaFormat;
     //   271: aload_0
-    //   272: ldc2_w 84
-    //   275: putfield 89	com/tencent/liteav/muxer/b:q	J
+    //   272: ldc2_w 81
+    //   275: putfield 86	com/tencent/liteav/muxer/b:q	J
     //   278: aload_0
-    //   279: ldc2_w 84
-    //   282: putfield 91	com/tencent/liteav/muxer/b:r	J
+    //   279: ldc2_w 81
+    //   282: putfield 88	com/tencent/liteav/muxer/b:r	J
     //   285: sipush 14935
-    //   288: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   288: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   291: aload_2
     //   292: athrow
     // Local variable table:
@@ -828,41 +826,41 @@ public class b
     //   0: aload_0
     //   1: monitorenter
     //   2: sipush 14939
-    //   5: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
+    //   9: getfield 190	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
     //   12: ifnull +12 -> 24
     //   15: aload_0
-    //   16: getfield 87	com/tencent/liteav/muxer/b:p	J
+    //   16: getfield 84	com/tencent/liteav/muxer/b:p	J
     //   19: lconst_0
     //   20: lcmp
     //   21: ifge +44 -> 65
-    //   24: ldc 149
-    //   26: new 164	java/lang/StringBuilder
+    //   24: ldc 146
+    //   26: new 161	java/lang/StringBuilder
     //   29: dup
-    //   30: ldc_w 353
-    //   33: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   30: ldc_w 350
+    //   33: invokespecial 166	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   36: aload_2
-    //   37: getfield 131	android/media/MediaCodec$BufferInfo:presentationTimeUs	J
-    //   40: invokevirtual 173	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   43: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: invokestatic 261	com/tencent/liteav/basic/log/TXCLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   37: getfield 128	android/media/MediaCodec$BufferInfo:presentationTimeUs	J
+    //   40: invokevirtual 170	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   43: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   46: invokestatic 258	com/tencent/liteav/basic/log/TXCLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   49: aload_0
     //   50: iconst_0
     //   51: aload_1
     //   52: aload_2
-    //   53: invokespecial 318	com/tencent/liteav/muxer/b:a	(ZLjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
+    //   53: invokespecial 315	com/tencent/liteav/muxer/b:a	(ZLjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
     //   56: sipush 14939
-    //   59: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   59: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   62: aload_0
     //   63: monitorexit
     //   64: return
     //   65: aload_0
     //   66: aload_1
     //   67: aload_2
-    //   68: invokespecial 243	com/tencent/liteav/muxer/b:d	(Ljava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
+    //   68: invokespecial 240	com/tencent/liteav/muxer/b:d	(Ljava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
     //   71: sipush 14939
-    //   74: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   74: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   77: goto -15 -> 62
     //   80: astore_1
     //   81: aload_0
@@ -911,7 +909,7 @@ public class b
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 66	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
+    //   3: getfield 63	com/tencent/liteav/muxer/b:h	Landroid/media/MediaFormat;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnull +9 -> 17
@@ -964,7 +962,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.liteav.muxer.b
  * JD-Core Version:    0.7.0.1
  */

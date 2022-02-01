@@ -35,10 +35,10 @@ public class WXAPIFactory
   
   public static IWXAPI createWXAPI(Context paramContext, String paramString, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(253793);
+    AppMethodBeat.i(242918);
     Log.d("MicroMsg.PaySdk.WXFactory", "createWXAPI, appId = " + paramString + ", checkSignature = " + paramBoolean + ", launchMode = " + paramInt);
     paramContext = new WXApiImplV10(paramContext, paramString, paramBoolean, paramInt);
-    AppMethodBeat.o(253793);
+    AppMethodBeat.o(242918);
     return paramContext;
   }
 }

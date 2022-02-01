@@ -4,19 +4,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static int bp(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(93109);
-    if ((paramInt1 < 0) || (paramInt1 >= paramInt2))
-    {
-      IndexOutOfBoundsException localIndexOutOfBoundsException = new IndexOutOfBoundsException();
-      AppMethodBeat.o(93109);
-      throw localIndexOutOfBoundsException;
-    }
-    AppMethodBeat.o(93109);
-    return paramInt1;
-  }
-  
   public static void checkArgument(boolean paramBoolean)
   {
     AppMethodBeat.i(93107);
@@ -77,10 +64,23 @@ public final class a
     }
     AppMethodBeat.o(93111);
   }
+  
+  public static int ck(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(93109);
+    if ((paramInt1 < 0) || (paramInt1 >= paramInt2))
+    {
+      IndexOutOfBoundsException localIndexOutOfBoundsException = new IndexOutOfBoundsException();
+      AppMethodBeat.o(93109);
+      throw localIndexOutOfBoundsException;
+    }
+    AppMethodBeat.o(93109);
+    return paramInt1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.i.a
  * JD-Core Version:    0.7.0.1
  */

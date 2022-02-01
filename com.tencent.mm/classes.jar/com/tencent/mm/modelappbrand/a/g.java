@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   extends e
 {
-  public static final g lzF;
+  public static final g org;
   
   static
   {
     AppMethodBeat.i(131406);
-    lzF = new g();
+    org = new g();
     AppMethodBeat.o(131406);
   }
   
-  public final Bitmap H(Bitmap paramBitmap)
+  public final Bitmap P(Bitmap paramBitmap)
   {
     AppMethodBeat.i(131405);
-    paramBitmap = super.H(paramBitmap);
+    paramBitmap = super.P(paramBitmap);
     AppMethodBeat.o(131405);
     return paramBitmap;
   }
@@ -30,7 +30,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.g
  * JD-Core Version:    0.7.0.1
  */

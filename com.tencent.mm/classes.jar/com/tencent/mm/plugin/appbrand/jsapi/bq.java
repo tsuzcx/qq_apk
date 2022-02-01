@@ -1,14 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
 
 public final class bq
-  extends c<g>
+  extends c<k>
 {
-  public static final int CTRL_INDEX = 925;
-  public static final String NAME = "requestOfflineUserBindQuery";
+  public static final int CTRL_INDEX = 988;
+  public static final String NAME = "jumpRedPacketEnvelopePreview";
+  
+  public static class a
+    implements m<Bundle, IPCVoid>
+  {}
 }
 
 

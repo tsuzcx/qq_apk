@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.gamelife;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gamelife.g.b;
+import com.tencent.mm.plugin.gamelife.h.b;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageInterceptor;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageInterceptor;"}, k=3, mv={1, 5, 1}, xi=48)
 final class PluginGameLife$b
-  extends q
+  extends u
   implements a<b>
 {
-  public static final b DeV;
+  public static final b IZl;
   
   static
   {
-    AppMethodBeat.i(203166);
-    DeV = new b();
-    AppMethodBeat.o(203166);
+    AppMethodBeat.i(267720);
+    IZl = new b();
+    AppMethodBeat.o(267720);
   }
   
   PluginGameLife$b()

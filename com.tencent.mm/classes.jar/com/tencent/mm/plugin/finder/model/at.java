@@ -2,49 +2,61 @@ package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.protocal.protobuf.bal;
-import com.tencent.mm.view.recyclerview.h.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.bjc;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderLotteryWinnerListHeader;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "lotteryInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "isEmpty", "", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;Z)V", "()Z", "getLotteryInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderLotteryHistoryData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "lotteryInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;)V", "getLotteryInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class at
-  extends h.b
-  implements k
+  implements cc
 {
-  public final boolean fEw;
-  public final bal xHW;
+  public final bjc Bhm;
   
-  public at(bal parambal, boolean paramBoolean)
+  public at(bjc parambjc)
   {
-    AppMethodBeat.i(274310);
-    this.xHW = parambal;
-    this.fEw = paramBoolean;
-    AppMethodBeat.o(274310);
+    AppMethodBeat.i(332058);
+    this.Bhm = parambjc;
+    AppMethodBeat.o(332058);
   }
   
   public final int a(k paramk)
   {
-    AppMethodBeat.i(274309);
-    p.k(paramk, "obj");
-    AppMethodBeat.o(274309);
-    return 0;
+    AppMethodBeat.i(332080);
+    s.u(paramk, "obj");
+    if ((paramk instanceof at)) {
+      paramk = (at)paramk;
+    }
+    while (paramk != null) {
+      if (s.p(paramk.Bhm.id, this.Bhm.id))
+      {
+        AppMethodBeat.o(332080);
+        return 0;
+        paramk = null;
+      }
+      else if (this.Bhm.endTime > paramk.Bhm.endTime)
+      {
+        AppMethodBeat.o(332080);
+        return 1;
+      }
+    }
+    AppMethodBeat.o(332080);
+    return -1;
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    AppMethodBeat.i(274308);
-    int i = at.class.hashCode();
-    AppMethodBeat.o(274308);
-    return i;
-  }
-  
-  public final long mf()
-  {
-    AppMethodBeat.i(274307);
+    AppMethodBeat.i(332064);
     long l = hashCode();
-    AppMethodBeat.o(274307);
+    AppMethodBeat.o(332064);
     return l;
+  }
+  
+  public final int bZB()
+  {
+    AppMethodBeat.i(332070);
+    int i = at.class.hashCode();
+    AppMethodBeat.o(332070);
+    return i;
   }
 }
 

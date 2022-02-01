@@ -3,7 +3,6 @@ package com.tencent.smtt.utils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Closeable;
 import java.io.File;
-import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.UnknownFormatConversionException;
 
@@ -138,13 +137,9 @@ public class e
       paramFile = new RandomAccessFile(paramFile, "r");
       long l = paramFile.readInt();
       paramFile.close();
-      if (l == 2135247942L)
-      {
-        AppMethodBeat.o(53945);
-        return true;
-      }
+      if (l != 2135247942L) {}
     }
-    catch (Throwable paramFile)
+    finally
     {
       AppMethodBeat.o(53945);
       return false;
@@ -153,36 +148,64 @@ public class e
     return false;
   }
   
+  /* Error */
   public static boolean b(File paramFile)
   {
-    AppMethodBeat.i(53946);
-    if ((g()) && (a(paramFile))) {}
-    try
-    {
-      new e(paramFile);
-      AppMethodBeat.o(53946);
-      return true;
-    }
-    catch (IOException paramFile)
-    {
-      new StringBuilder("checkElfFile IOException: ").append(paramFile);
-      AppMethodBeat.o(53946);
-      return false;
-    }
-    catch (UnknownFormatConversionException paramFile)
-    {
-      for (;;)
-      {
-        new StringBuilder("checkElfFile UnknownFormatConversionException: ").append(paramFile);
-      }
-    }
-    catch (Throwable paramFile)
-    {
-      for (;;)
-      {
-        new StringBuilder("checkElfFile Throwable: ").append(paramFile);
-      }
-    }
+    // Byte code:
+    //   0: ldc 255
+    //   2: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 257	com/tencent/smtt/utils/e:g	()Z
+    //   8: ifeq +19 -> 27
+    //   11: aload_0
+    //   12: invokestatic 259	com/tencent/smtt/utils/e:a	(Ljava/io/File;)Z
+    //   15: ifeq +12 -> 27
+    //   18: new 2	com/tencent/smtt/utils/e
+    //   21: dup
+    //   22: aload_0
+    //   23: invokespecial 260	com/tencent/smtt/utils/e:<init>	(Ljava/io/File;)V
+    //   26: pop
+    //   27: ldc 255
+    //   29: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   32: iconst_1
+    //   33: ireturn
+    //   34: astore_0
+    //   35: new 222	java/lang/StringBuilder
+    //   38: dup
+    //   39: ldc_w 262
+    //   42: invokespecial 225	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   45: aload_0
+    //   46: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   49: pop
+    //   50: ldc 255
+    //   52: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: iconst_0
+    //   56: ireturn
+    //   57: astore_0
+    //   58: new 222	java/lang/StringBuilder
+    //   61: dup
+    //   62: ldc_w 267
+    //   65: invokespecial 225	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   68: aload_0
+    //   69: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   72: pop
+    //   73: goto -46 -> 27
+    //   76: astore_0
+    //   77: new 222	java/lang/StringBuilder
+    //   80: dup
+    //   81: ldc_w 269
+    //   84: invokespecial 225	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   87: aload_0
+    //   88: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   91: pop
+    //   92: goto -65 -> 27
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	95	0	paramFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   18	27	34	java/io/IOException
+    //   18	27	57	java/util/UnknownFormatConversionException
+    //   18	27	76	finally
   }
   
   private void f()
@@ -212,15 +235,15 @@ public class e
         if (!bool) {
           break label192;
         }
-        localObject2 = new i();
-        ((i)localObject2).c = localc.b();
+        localObject2 = new e.i();
+        ((e.i)localObject2).c = localc.b();
         localc.a(arrayOfChar);
-        ((i)localObject2).d = arrayOfChar[0];
+        ((e.i)localObject2).d = arrayOfChar[0];
         localc.a(arrayOfChar);
-        ((i)localObject2).e = arrayOfChar[0];
-        ((i)localObject2).a = localc.c();
-        ((i)localObject2).b = localc.c();
-        ((i)localObject2).f = localc.a();
+        ((e.i)localObject2).e = arrayOfChar[0];
+        ((e.i)localObject2).a = localc.c();
+        ((e.i)localObject2).b = localc.c();
+        ((e.i)localObject2).f = localc.a();
         this.e[k] = localObject2;
       }
       for (;;)
@@ -230,15 +253,15 @@ public class e
         k = 16;
         break;
         label192:
-        localObject2 = new e();
-        ((e)localObject2).c = localc.b();
-        ((e)localObject2).a = localc.b();
-        ((e)localObject2).b = localc.b();
+        localObject2 = new e.e();
+        ((e.e)localObject2).c = localc.b();
+        ((e.e)localObject2).a = localc.b();
+        ((e.e)localObject2).b = localc.b();
         localc.a(arrayOfChar);
-        ((e)localObject2).d = arrayOfChar[0];
+        ((e.e)localObject2).d = arrayOfChar[0];
         localc.a(arrayOfChar);
-        ((e)localObject2).e = arrayOfChar[0];
-        ((e)localObject2).f = localc.a();
+        ((e.e)localObject2).e = arrayOfChar[0];
+        ((e.e)localObject2).f = localc.a();
         this.e[k] = localObject2;
       }
       label286:
@@ -452,13 +475,6 @@ public class e
     }
   }
   
-  static class e
-    extends e.l
-  {
-    int a;
-    int b;
-  }
-  
   static class f
     extends e.a
   {
@@ -509,13 +525,6 @@ public class e
     }
   }
   
-  static class i
-    extends e.l
-  {
-    long a;
-    long b;
-  }
-  
   static abstract class j
   {
     int g;
@@ -536,7 +545,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.smtt.utils.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,96 +1,109 @@
 package com.tencent.mm.plugin.appbrand.xweb_ext.a;
 
-import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/FlattenEyeBrowInfo;", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/BaseFlattenMakeupInfo;", "()V", "alpha", "", "getAlpha", "()F", "setAlpha", "(F)V", "faceModel", "", "getFaceModel", "()I", "setFaceModel", "(I)V", "isValid", "", "()Z", "leftEyeBrowPath", "", "getLeftEyeBrowPath", "()Ljava/lang/String;", "setLeftEyeBrowPath", "(Ljava/lang/String;)V", "rightEyeBrowPath", "getRightEyeBrowPath", "setRightEyeBrowPath", "fromJson", "Lcom/tencent/mm/sticker/BaseJsonObject;", "jsonObj", "Lorg/json/JSONObject;", "toJson", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/FlattenEyeBrowInfo;", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/BaseFlattenMakeupInfo;", "()V", "alpha", "", "getAlpha", "()F", "setAlpha", "(F)V", "blendMode", "", "getBlendMode", "()I", "setBlendMode", "(I)V", "faceModel", "getFaceModel", "setFaceModel", "isValid", "", "()Z", "path", "", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "shrinkRate", "getShrinkRate", "setShrinkRate", "type", "getType", "fromJson", "Lcom/tencent/mm/sticker/BaseJsonObject;", "jsonObj", "Lorg/json/JSONObject;", "toJson", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends a
 {
-  @SuppressLint({"Range"})
   float alpha = -1.0F;
-  int cGI;
-  String cGL = "";
-  String cGN = "";
+  int eAs;
+  float eAv = -1.0F;
+  String path = "";
+  private final String type = "EyeBrow";
+  int uTR = -1;
   
-  public final com.tencent.mm.sticker.a ay(JSONObject paramJSONObject)
+  public final com.tencent.mm.sticker.a G(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(278739);
-    p.k(paramJSONObject, "jsonObj");
+    AppMethodBeat.i(317083);
+    s.u(paramJSONObject, "jsonObj");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("params");
     if (localJSONObject == null)
     {
       Log.w("MicroMsg.FlattenEyeBrowInfo", "fromJson, paramsJsonObj is null");
-      paramJSONObject = super.ay(paramJSONObject);
-      AppMethodBeat.o(278739);
+      paramJSONObject = super.G(paramJSONObject);
+      AppMethodBeat.o(317083);
       return paramJSONObject;
     }
     this.alpha = ((float)localJSONObject.optDouble("alpha", -1.0D));
-    String str = localJSONObject.optString("left_path", "");
-    p.j(str, "paramsJsonObj.optString(…Y_LEFT_EYE_BROW_PATH, \"\")");
-    this.cGL = str;
-    str = localJSONObject.optString("right_path", "");
-    p.j(str, "paramsJsonObj.optString(…_RIGHT_EYE_BROW_PATH, \"\")");
-    this.cGN = str;
-    this.cGI = localJSONObject.optInt("face_model", 0);
-    paramJSONObject = super.ay(paramJSONObject);
-    AppMethodBeat.o(278739);
+    this.eAs = localJSONObject.optInt("face_model", 0);
+    this.uTR = localJSONObject.optInt("blend_mode", -1);
+    String str = localJSONObject.optString("path", "");
+    s.s(str, "paramsJsonObj.optString(JSON_KEY_PATH, \"\")");
+    this.path = str;
+    this.eAv = ((float)localJSONObject.optDouble("shrink_rate", -1.0D));
+    paramJSONObject = super.G(paramJSONObject);
+    AppMethodBeat.o(317083);
     return paramJSONObject;
+  }
+  
+  public final String getType()
+  {
+    return this.type;
   }
   
   public final boolean isValid()
   {
-    AppMethodBeat.i(278738);
-    if (-1.0F != this.alpha)
+    AppMethodBeat.i(317075);
+    if (-1.0F == this.alpha)
     {
-      if (((CharSequence)this.cGL).length() > 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break label74;
-        }
-        if (((CharSequence)this.cGN).length() <= 0) {
-          break label69;
-        }
+      i = 1;
+      if ((i != 0) || (-1 == this.uTR)) {
+        break label88;
       }
-      label69:
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label74;
-        }
-        AppMethodBeat.o(278738);
-        return true;
-        i = 0;
-        break;
+      if (((CharSequence)this.path).length() <= 0) {
+        break label78;
+      }
+      i = 1;
+      label46:
+      if (i == 0) {
+        break label88;
+      }
+      if (-1.0F != this.eAv) {
+        break label83;
       }
     }
-    label74:
-    AppMethodBeat.o(278738);
+    label78:
+    label83:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        break label88;
+      }
+      AppMethodBeat.o(317075);
+      return true;
+      i = 0;
+      break;
+      i = 0;
+      break label46;
+    }
+    label88:
+    AppMethodBeat.o(317075);
     return false;
   }
   
   public final JSONObject toJson()
   {
-    AppMethodBeat.i(278741);
+    AppMethodBeat.i(317094);
     JSONObject localJSONObject1 = super.toJson();
     JSONObject localJSONObject2 = new JSONObject();
     localJSONObject2.put("alpha", Float.valueOf(this.alpha));
-    localJSONObject2.put("left_path", this.cGL);
-    localJSONObject2.put("right_path", this.cGN);
-    localJSONObject2.put("face_model", this.cGI);
+    localJSONObject2.put("face_model", this.eAs);
+    localJSONObject2.put("blend_mode", this.uTR);
+    localJSONObject2.put("path", this.path);
+    localJSONObject2.put("shrink_rate", Float.valueOf(this.eAv));
     localJSONObject1.put("params", localJSONObject2);
-    AppMethodBeat.o(278741);
+    AppMethodBeat.o(317094);
     return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.a.d
  * JD-Core Version:    0.7.0.1
  */

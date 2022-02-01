@@ -1,19 +1,15 @@
 package kotlin.l.b.a.b.d.a.e;
 
-import kotlin.l.b.a.b.f.f;
+import java.util.List;
 
 public abstract interface y
-  extends d
+  extends l
 {
-  public abstract f iEU();
-  
-  public abstract boolean iHD();
-  
-  public abstract v iHv();
+  public abstract List<x> koa();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.e.y
  * JD-Core Version:    0.7.0.1
  */

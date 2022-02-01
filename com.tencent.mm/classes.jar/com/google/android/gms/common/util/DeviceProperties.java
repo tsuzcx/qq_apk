@@ -1,6 +1,5 @@
 package com.google.android.gms.common.util;
 
-import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -132,7 +131,6 @@ public final class DeviceProperties
     return bool;
   }
   
-  @TargetApi(21)
   public static boolean isSidewinder(Context paramContext)
   {
     AppMethodBeat.i(5193);
@@ -229,7 +227,6 @@ public final class DeviceProperties
     return bool;
   }
   
-  @TargetApi(20)
   public static boolean isWearable(Context paramContext)
   {
     AppMethodBeat.i(5191);
@@ -248,7 +245,6 @@ public final class DeviceProperties
     }
   }
   
-  @TargetApi(24)
   public static boolean isWearableWithoutPlayStore(Context paramContext)
   {
     AppMethodBeat.i(5192);
@@ -261,7 +257,6 @@ public final class DeviceProperties
     return false;
   }
   
-  @VisibleForTesting
   public static void resetForTest()
   {
     zzzm = null;
@@ -277,7 +272,6 @@ public final class DeviceProperties
     zzzv = null;
   }
   
-  @VisibleForTesting
   public static void setIsAutoForTest(boolean paramBoolean)
   {
     AppMethodBeat.i(5206);
@@ -285,7 +279,6 @@ public final class DeviceProperties
     AppMethodBeat.o(5206);
   }
   
-  @VisibleForTesting
   public static void setIsIoTForTest(boolean paramBoolean)
   {
     AppMethodBeat.i(5205);
@@ -293,7 +286,6 @@ public final class DeviceProperties
     AppMethodBeat.o(5205);
   }
   
-  @VisibleForTesting
   public static void setIsLatchskyForTest(boolean paramBoolean)
   {
     AppMethodBeat.i(5204);
@@ -301,7 +293,6 @@ public final class DeviceProperties
     AppMethodBeat.o(5204);
   }
   
-  @VisibleForTesting
   public static void setIsLowRamForTest(boolean paramBoolean)
   {
     AppMethodBeat.i(5208);
@@ -309,7 +300,6 @@ public final class DeviceProperties
     AppMethodBeat.o(5208);
   }
   
-  @VisibleForTesting
   public static void setIsPixelForTest(boolean paramBoolean)
   {
     AppMethodBeat.i(5209);
@@ -317,7 +307,6 @@ public final class DeviceProperties
     AppMethodBeat.o(5209);
   }
   
-  @VisibleForTesting
   public static void setIsSideWinderForTest(boolean paramBoolean)
   {
     AppMethodBeat.i(5203);
@@ -325,7 +314,6 @@ public final class DeviceProperties
     AppMethodBeat.o(5203);
   }
   
-  @VisibleForTesting
   public static void setIsTvForTest(boolean paramBoolean)
   {
     AppMethodBeat.i(5207);
@@ -333,7 +321,6 @@ public final class DeviceProperties
     AppMethodBeat.o(5207);
   }
   
-  @VisibleForTesting
   public static void setIsWearableForTest(boolean paramBoolean)
   {
     AppMethodBeat.i(5202);
@@ -343,7 +330,7 @@ public final class DeviceProperties
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.DeviceProperties
  * JD-Core Version:    0.7.0.1
  */

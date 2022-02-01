@@ -1,19 +1,13 @@
 package kotlin.g.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.d;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/jvm/internal/IntCompanionObject;", "", "()V", "MAX_VALUE", "", "MIN_VALUE", "SIZE_BITS", "SIZE_BYTES", "kotlin-stdlib"})
-public final class o
+@Metadata(d1={""}, d2={"Lkotlin/jvm/internal/FunctionBase;", "R", "Lkotlin/Function;", "arity", "", "getArity", "()I", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public abstract interface o<R>
+  extends d<R>
 {
-  public static final o aaBu;
-  
-  static
-  {
-    AppMethodBeat.i(217096);
-    aaBu = new o();
-    AppMethodBeat.o(217096);
-  }
+  public abstract int getArity();
 }
 
 

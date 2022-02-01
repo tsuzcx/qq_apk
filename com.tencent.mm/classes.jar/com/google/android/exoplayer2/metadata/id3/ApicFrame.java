@@ -10,8 +10,8 @@ public final class ApicFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<ApicFrame> CREATOR;
-  public final int bdN;
-  public final byte[] bdO;
+  public final int cXH;
+  public final byte[] cXI;
   public final String description;
   public final String mimeType;
   
@@ -28,8 +28,8 @@ public final class ApicFrame
     AppMethodBeat.i(92397);
     this.mimeType = paramParcel.readString();
     this.description = paramParcel.readString();
-    this.bdN = paramParcel.readInt();
-    this.bdO = paramParcel.createByteArray();
+    this.cXH = paramParcel.readInt();
+    this.cXI = paramParcel.createByteArray();
     AppMethodBeat.o(92397);
   }
   
@@ -38,8 +38,8 @@ public final class ApicFrame
     super("APIC");
     this.mimeType = paramString1;
     this.description = paramString2;
-    this.bdN = paramInt;
-    this.bdO = paramArrayOfByte;
+    this.cXH = paramInt;
+    this.cXI = paramArrayOfByte;
   }
   
   public final boolean equals(Object paramObject)
@@ -56,7 +56,7 @@ public final class ApicFrame
       return false;
     }
     paramObject = (ApicFrame)paramObject;
-    if ((this.bdN == paramObject.bdN) && (x.h(this.mimeType, paramObject.mimeType)) && (x.h(this.description, paramObject.description)) && (Arrays.equals(this.bdO, paramObject.bdO)))
+    if ((this.cXH == paramObject.cXH) && (x.p(this.mimeType, paramObject.mimeType)) && (x.p(this.description, paramObject.description)) && (Arrays.equals(this.cXI, paramObject.cXI)))
     {
       AppMethodBeat.o(92398);
       return true;
@@ -69,14 +69,14 @@ public final class ApicFrame
   {
     int j = 0;
     AppMethodBeat.i(92399);
-    int k = this.bdN;
+    int k = this.cXH;
     if (this.mimeType != null) {}
     for (int i = this.mimeType.hashCode();; i = 0)
     {
       if (this.description != null) {
         j = this.description.hashCode();
       }
-      int m = Arrays.hashCode(this.bdO);
+      int m = Arrays.hashCode(this.cXI);
       AppMethodBeat.o(92399);
       return ((i + (k + 527) * 31) * 31 + j) * 31 + m;
     }
@@ -87,8 +87,8 @@ public final class ApicFrame
     AppMethodBeat.i(92400);
     paramParcel.writeString(this.mimeType);
     paramParcel.writeString(this.description);
-    paramParcel.writeInt(this.bdN);
-    paramParcel.writeByteArray(this.bdO);
+    paramParcel.writeInt(this.cXH);
+    paramParcel.writeByteArray(this.cXI);
     AppMethodBeat.o(92400);
   }
 }

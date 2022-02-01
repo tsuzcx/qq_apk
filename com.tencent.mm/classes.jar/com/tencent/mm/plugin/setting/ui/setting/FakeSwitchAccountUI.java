@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Intent;
@@ -8,9 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.TextView;
-import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.setting.b.c;
 import com.tencent.mm.plugin.setting.b.f;
@@ -25,7 +22,6 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.SystemProperty;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.w;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,27 +32,25 @@ import java.util.Map;
 public class FakeSwitchAccountUI
   extends MMActivity
 {
-  private SwitchAccountGridView JeC;
-  private View JeD;
-  private View JeE;
-  private ArrayList<SwitchAccountModel> JeF;
-  private Map<String, SwitchAccountModel> JeG;
-  private MTimerHandler JeH;
-  private float JeI;
+  private SwitchAccountGridView Ppc;
+  private ArrayList<SwitchAccountModel> Ppd;
+  private Map<String, SwitchAccountModel> Ppe;
+  private MTimerHandler Ppf;
   private int count;
   private String country;
-  private int iQT;
-  private String ndm;
+  private float fontScale;
+  private int lsP;
+  private String qaF;
   private TextView titleView;
   
   public FakeSwitchAccountUI()
   {
     AppMethodBeat.i(73883);
-    this.JeG = new HashMap();
+    this.Ppe = new HashMap();
     AppMethodBeat.o(73883);
   }
   
-  private int fFN()
+  private int gVb()
   {
     AppMethodBeat.i(73886);
     Object localObject = (ActivityManager)getSystemService("activity");
@@ -99,39 +93,35 @@ public class FakeSwitchAccountUI
   public void initView()
   {
     AppMethodBeat.i(73885);
-    Log.i("MicroMsg.FakeSwitchAccountUI", "FakeSwitchAccount onCreate");
     setMMTitle("");
-    getSupportActionBar().hide();
-    getController().q(this, getResources().getColor(b.c.white));
+    hideActionbarLine();
+    setActionbarColor(getResources().getColor(b.c.settings_bg));
+    setBackBtnVisible(false);
+    Log.i("MicroMsg.FakeSwitchAccountUI", "FakeSwitchAccount onCreate");
     this.titleView = ((TextView)findViewById(b.f.switch_account_title));
-    this.JeC = ((SwitchAccountGridView)findViewById(b.f.switch_account_grid));
-    this.JeC.setRowCount(1);
-    this.JeC.setClickable(false);
-    this.iQT = getIntent().getIntExtra("key_mm_process_pid", 0);
-    this.ndm = getIntent().getStringExtra("key_switch_from_wx_username");
+    this.Ppc = ((SwitchAccountGridView)findViewById(b.f.switch_account_grid));
+    this.Ppc.setClickable(false);
+    this.lsP = getIntent().getIntExtra("key_mm_process_pid", 0);
+    this.qaF = getIntent().getStringExtra("key_switch_from_wx_username");
     Log.i("MicroMsg.FakeSwitchAccountUI", "title %s", new Object[] { getResources().getString(b.i.settings_switch_account_login_title) });
     this.titleView.setText(getResources().getString(b.i.settings_switch_account_login_title));
-    this.JeF = getIntent().getParcelableArrayListExtra("key_switch_account_users");
-    if (this.JeF != null)
+    this.Ppd = getIntent().getParcelableArrayListExtra("key_switch_account_users");
+    if (this.Ppd != null)
     {
-      Iterator localIterator = this.JeF.iterator();
+      Iterator localIterator = this.Ppd.iterator();
       while (localIterator.hasNext())
       {
         SwitchAccountModel localSwitchAccountModel = (SwitchAccountModel)localIterator.next();
-        this.JeG.put(localSwitchAccountModel.Jdy, localSwitchAccountModel);
+        this.Ppe.put(localSwitchAccountModel.PnR, localSwitchAccountModel);
       }
     }
-    this.JeD = findViewById(b.f.switch_account_delete_btn);
-    this.JeD.setVisibility(8);
-    this.JeE = findViewById(b.f.switch_account_cancel_btn);
-    this.JeE.setVisibility(8);
-    Log.i("MicroMsg.FakeSwitchAccountUI", "account count %d", new Object[] { Integer.valueOf(this.JeG.size()) });
-    this.JeC.setUseSystemDecoder(true);
-    this.JeC.aA(this.JeG);
-    this.JeC.setLastLoginWxUsername(this.ndm);
-    this.JeC.setLogoutState(true);
-    this.JeC.fGQ();
-    this.JeH = new MTimerHandler(Looper.myLooper(), new MTimerHandler.CallBack()
+    Log.i("MicroMsg.FakeSwitchAccountUI", "account count %d", new Object[] { Integer.valueOf(this.Ppe.size()) });
+    this.Ppc.setUseSystemDecoder(true);
+    this.Ppc.aQ(this.Ppe);
+    this.Ppc.setLastLoginWxUsername(this.qaF);
+    this.Ppc.setLogoutState(true);
+    this.Ppc.gWD();
+    this.Ppf = new MTimerHandler(Looper.myLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -161,8 +151,8 @@ public class FakeSwitchAccountUI
         return false;
       }
     }, true);
-    if (this.JeH != null) {
-      this.JeH.startTimer(1500L, 500L);
+    if (this.Ppf != null) {
+      this.Ppf.startTimer(1500L, 500L);
     }
     AppMethodBeat.o(73885);
   }
@@ -171,18 +161,25 @@ public class FakeSwitchAccountUI
   {
     AppMethodBeat.i(73884);
     super.onCreate(paramBundle);
-    this.country = getIntent().getStringExtra("key_langauage_code");
-    this.JeI = getIntent().getFloatExtra("key_font_scale_size", 1.0F);
-    if (!Util.isNullOrNil(this.country))
+    try
     {
-      Log.i("MicroMsg.FakeSwitchAccountUI", "country %s", new Object[] { this.country });
-      SystemProperty.setProperty("language_key", this.country);
-      MMActivity.initLanguage(MMApplicationContext.getContext(), this.country);
+      this.country = getIntent().getStringExtra("key_langauage_code");
+      this.fontScale = getIntent().getFloatExtra("key_font_scale_size", 1.0F);
+      if (!Util.isNullOrNil(this.country))
+      {
+        Log.i("MicroMsg.FakeSwitchAccountUI", "country %s", new Object[] { this.country });
+        SystemProperty.setProperty("language_key", this.country);
+        MMActivity.initLanguage(MMApplicationContext.getContext(), this.country);
+      }
+      Log.i("MicroMsg.FakeSwitchAccountUI", "fontScale %f", new Object[] { Float.valueOf(this.fontScale) });
+      com.tencent.mm.cd.a.i(MMApplicationContext.getContext(), this.fontScale);
+      return;
     }
-    Log.i("MicroMsg.FakeSwitchAccountUI", "fontScale %f", new Object[] { Float.valueOf(this.JeI) });
-    com.tencent.mm.ci.a.h(MMApplicationContext.getContext(), this.JeI);
-    initView();
-    AppMethodBeat.o(73884);
+    finally
+    {
+      finish();
+      AppMethodBeat.o(73884);
+    }
   }
   
   public void onDestroy()
@@ -233,7 +230,7 @@ public class FakeSwitchAccountUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.FakeSwitchAccountUI
  * JD-Core Version:    0.7.0.1
  */

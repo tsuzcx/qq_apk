@@ -8,30 +8,30 @@ import java.lang.reflect.Method;
 
 public final class e
 {
-  private static Method bCl;
-  private static boolean bCm;
+  private static Method dvn;
+  private static boolean dvo;
   
   public static boolean a(DrawableContainer paramDrawableContainer, Drawable.ConstantState paramConstantState)
   {
-    AppMethodBeat.i(237652);
-    if (!bCm) {}
+    AppMethodBeat.i(209262);
+    if (!dvo) {}
     try
     {
       Method localMethod = DrawableContainer.class.getDeclaredMethod("setConstantState", new Class[] { DrawableContainer.DrawableContainerState.class });
-      bCl = localMethod;
+      dvn = localMethod;
       localMethod.setAccessible(true);
       label37:
-      bCm = true;
-      if (bCl != null) {
+      dvo = true;
+      if (dvn != null) {
         try
         {
-          bCl.invoke(paramDrawableContainer, new Object[] { paramConstantState });
-          AppMethodBeat.o(237652);
+          dvn.invoke(paramDrawableContainer, new Object[] { paramConstantState });
+          AppMethodBeat.o(209262);
           return true;
         }
         catch (Exception paramDrawableContainer) {}
       }
-      AppMethodBeat.o(237652);
+      AppMethodBeat.o(209262);
       return false;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
@@ -42,7 +42,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.internal.e
  * JD-Core Version:    0.7.0.1
  */

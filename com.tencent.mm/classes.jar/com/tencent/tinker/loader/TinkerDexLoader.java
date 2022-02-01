@@ -240,7 +240,7 @@ public class TinkerDexLoader
           return false;
         }
       }
-      catch (Throwable paramTinkerApplication)
+      finally
       {
         ShareTinkerLog.i("Tinker.TinkerDexLoader", "getCurrentInstructionSet fail:".concat(String.valueOf(paramTinkerApplication)), new Object[0]);
         deleteOutOfDateOATFile(paramString1);
@@ -254,7 +254,7 @@ public class TinkerDexLoader
       SystemClassLoaderAdder.installDexes(paramTinkerApplication, localClassLoader, paramString2, localArrayList, paramBoolean2, paramTinkerApplication.isUseDelegateLastClassLoader());
       return true;
     }
-    catch (Throwable paramTinkerApplication)
+    finally
     {
       ShareTinkerLog.e("Tinker.TinkerDexLoader", "install dexes failed", new Object[0]);
       paramIntent.putExtra("intent_patch_exception", paramTinkerApplication);
@@ -265,7 +265,7 @@ public class TinkerDexLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.TinkerDexLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,16 @@ import junit.framework.Assert;
 
 public final class a
 {
-  SparseArray<WeakReference<e>> viG;
+  SparseArray<WeakReference<e>> yuF;
   
   public final void a(e parame)
   {
     AppMethodBeat.i(23543);
     Assert.assertTrue(true);
-    if (this.viG == null) {
-      this.viG = new SparseArray();
+    if (this.yuF == null) {
+      this.yuF = new SparseArray();
     }
-    this.viG.put(parame.hashCode(), new WeakReference(parame));
+    this.yuF.put(parame.hashCode(), new WeakReference(parame));
     AppMethodBeat.o(23543);
   }
   
@@ -25,17 +25,17 @@ public final class a
   {
     AppMethodBeat.i(23545);
     Assert.assertTrue(true);
-    if (this.viG == null)
+    if (this.yuF == null)
     {
       Log.d("MicroMsg.ExdeviceRankCallbackManager", "hy: callback pool is null. abort");
       AppMethodBeat.o(23545);
       return;
     }
     int i = 0;
-    while (i < this.viG.size())
+    while (i < this.yuF.size())
     {
-      int j = this.viG.keyAt(i);
-      e locale = (e)((WeakReference)this.viG.get(j)).get();
+      int j = this.yuF.keyAt(i);
+      e locale = (e)((WeakReference)this.yuF.get(j)).get();
       if (locale != null) {
         locale.b(paramString, paramd);
       }
@@ -49,19 +49,19 @@ public final class a
   {
     AppMethodBeat.i(23544);
     Assert.assertTrue(true);
-    if (this.viG == null)
+    if (this.yuF == null)
     {
       Log.d("MicroMsg.ExdeviceRankCallbackManager", "hy: callback pool is null. abort ");
       AppMethodBeat.o(23544);
       return;
     }
-    this.viG.remove(parame.hashCode());
+    this.yuF.remove(parame.hashCode());
     AppMethodBeat.o(23544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,32 +7,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class ap
   implements aq
 {
-  private final WindowId atD;
+  private final WindowId cim;
   
   ap(View paramView)
   {
-    AppMethodBeat.i(193420);
-    this.atD = paramView.getWindowId();
-    AppMethodBeat.o(193420);
+    AppMethodBeat.i(201496);
+    this.cim = paramView.getWindowId();
+    AppMethodBeat.o(201496);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(193423);
-    if (((paramObject instanceof ap)) && (((ap)paramObject).atD.equals(this.atD)))
+    AppMethodBeat.i(201505);
+    if (((paramObject instanceof ap)) && (((ap)paramObject).cim.equals(this.cim)))
     {
-      AppMethodBeat.o(193423);
+      AppMethodBeat.o(201505);
       return true;
     }
-    AppMethodBeat.o(193423);
+    AppMethodBeat.o(201505);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(193427);
-    int i = this.atD.hashCode();
-    AppMethodBeat.o(193427);
+    AppMethodBeat.i(201513);
+    int i = this.cim.hashCode();
+    AppMethodBeat.o(201513);
     return i;
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.mm.xeffect.effect;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/PagTransitionEffect;", "Lcom/tencent/mm/xeffect/effect/PagEffect;", "ptr", "", "(J)V", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/xeffect/effect/PagTransitionEffect;", "Lcom/tencent/mm/xeffect/effect/PagEffect;", "ptr", "", "(J)V", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"}, k=1, mv={1, 1, 15})
 public final class y
   extends t
 {
@@ -11,14 +11,14 @@ public final class y
     super(paramLong);
   }
   
-  public final j ika()
+  public final j jQi()
   {
-    return j.YZB;
+    return j.agXN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.y
  * JD-Core Version:    0.7.0.1
  */

@@ -2,85 +2,88 @@ package kotlin.l.b.a.b.k.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.aa;
-import kotlin.l.b.a.b.b.ab;
-import kotlin.l.b.a.b.b.ac;
-import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.b.y;
-import kotlin.l.b.a.b.e.b.h;
-import kotlin.l.b.a.b.k.a.b.f;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.e.a.r;
+import kotlin.l.b.a.b.e.b.a;
+import kotlin.l.b.a.b.e.b.c;
+import kotlin.l.b.a.b.e.b.i;
 
 public final class l
 {
-  public final kotlin.l.b.a.b.l.j aaFH;
-  public final aa aaHL;
-  public final y aaIY;
-  public final r aaTO;
-  public final kotlin.l.b.a.b.c.a.b aaTV;
-  public final kotlin.l.b.a.b.m.a.n aaUb;
-  public final j abno;
-  public final m abnp;
-  final i abnq;
-  public final c<kotlin.l.b.a.b.b.a.c, kotlin.l.b.a.b.j.b.g<?>> abnr;
-  final ac abns;
-  final v abnt;
-  final s abnu;
-  public final Iterable<kotlin.l.b.a.b.b.b.b> abnv;
-  final k abnw;
-  public final kotlin.l.b.a.b.b.b.a abnx;
-  public final kotlin.l.b.a.b.b.b.c abny;
-  public final kotlin.l.b.a.b.h.g abnz;
+  public final kotlin.l.b.a.b.b.l aiJT;
+  public final j aiWx;
+  public final c aiyk;
+  public final kotlin.l.b.a.b.e.b.g aiyl;
+  private final a ajlN;
+  final i ajml;
+  final kotlin.l.b.a.b.k.a.b.g ajmm;
+  public final ac ajmn;
+  public final v ajmo;
   
-  public l(kotlin.l.b.a.b.l.j paramj, y paramy, m paramm, i parami, c<? extends kotlin.l.b.a.b.b.a.c, ? extends kotlin.l.b.a.b.j.b.g<?>> paramc, ac paramac, v paramv, r paramr, kotlin.l.b.a.b.c.a.b paramb, s params, Iterable<? extends kotlin.l.b.a.b.b.b.b> paramIterable, aa paramaa, k paramk, kotlin.l.b.a.b.b.b.a parama, kotlin.l.b.a.b.b.b.c paramc1, kotlin.l.b.a.b.h.g paramg, kotlin.l.b.a.b.m.a.n paramn)
+  public l(j paramj, c paramc, kotlin.l.b.a.b.b.l paraml, kotlin.l.b.a.b.e.b.g paramg, i parami, a parama, kotlin.l.b.a.b.k.a.b.g paramg1, ac paramac, List<a.r> paramList)
   {
-    AppMethodBeat.i(60305);
-    this.aaFH = paramj;
-    this.aaIY = paramy;
-    this.abnp = paramm;
-    this.abnq = parami;
-    this.abnr = paramc;
-    this.abns = paramac;
-    this.abnt = paramv;
-    this.aaTO = paramr;
-    this.aaTV = paramb;
-    this.abnu = params;
-    this.abnv = paramIterable;
-    this.aaHL = paramaa;
-    this.abnw = paramk;
-    this.abnx = parama;
-    this.abny = paramc1;
-    this.abnz = paramg;
-    this.aaUb = paramn;
-    this.abno = new j(this);
-    AppMethodBeat.o(60305);
+    AppMethodBeat.i(60309);
+    this.aiWx = paramj;
+    this.aiyk = paramc;
+    this.aiJT = paraml;
+    this.aiyl = paramg;
+    this.ajml = parami;
+    this.ajlN = parama;
+    this.ajmm = paramg1;
+    paraml = "Deserializer for \"" + this.aiJT.kok() + '"';
+    paramj = this.ajmm;
+    if (paramj == null) {
+      paramj = "[container not found]";
+    }
+    for (;;)
+    {
+      this.ajmn = new ac(this, paramac, paramList, paraml, paramj, (byte)0);
+      this.ajmo = new v(this);
+      AppMethodBeat.o(60309);
+      return;
+      paramc = paramj.ksM();
+      paramj = paramc;
+      if (paramc == null) {
+        paramj = "[container not found]";
+      }
+    }
   }
   
-  public final n a(ab paramab, kotlin.l.b.a.b.e.b.c paramc, h paramh, kotlin.l.b.a.b.e.b.i parami, kotlin.l.b.a.b.e.b.a parama, f paramf)
+  public final l a(kotlin.l.b.a.b.b.l paraml, List<a.r> paramList, c paramc, kotlin.l.b.a.b.e.b.g paramg, i parami, a parama)
   {
-    AppMethodBeat.i(60304);
-    p.k(paramab, "descriptor");
-    p.k(paramc, "nameResolver");
-    p.k(paramh, "typeTable");
-    p.k(parami, "versionRequirementTable");
-    p.k(parama, "metadataVersion");
-    paramab = new n(this, paramc, (kotlin.l.b.a.b.b.l)paramab, paramh, parami, parama, paramf, null, (List)kotlin.a.v.aaAd);
-    AppMethodBeat.o(60304);
-    return paramab;
-  }
-  
-  public final e g(kotlin.l.b.a.b.f.a parama)
-  {
-    AppMethodBeat.i(60303);
-    p.k(parama, "classId");
-    parama = j.a(this.abno, parama);
-    AppMethodBeat.o(60303);
-    return parama;
+    AppMethodBeat.i(60307);
+    s.u(paraml, "descriptor");
+    s.u(paramList, "typeParameterProtos");
+    s.u(paramc, "nameResolver");
+    s.u(paramg, "typeTable");
+    s.u(parami, "versionRequirementTable");
+    s.u(parama, "metadataVersion");
+    j localj = this.aiWx;
+    s.u(parama, "version");
+    s.u(parama, "version");
+    int i;
+    if ((parama.rid == 1) && (parama.rie >= 4))
+    {
+      i = 1;
+      if (i == 0) {
+        break label130;
+      }
+    }
+    for (;;)
+    {
+      paraml = new l(localj, paramc, paraml, paramg, parami, parama, this.ajmm, this.ajmn, paramList);
+      AppMethodBeat.o(60307);
+      return paraml;
+      i = 0;
+      break;
+      label130:
+      parami = this.ajml;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.l
  * JD-Core Version:    0.7.0.1
  */

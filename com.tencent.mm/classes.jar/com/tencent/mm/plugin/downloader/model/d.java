@@ -3,122 +3,91 @@ package com.tencent.mm.plugin.downloader.model;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.downloader.g.a;
+import com.tencent.mm.plugin.downloader.f.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class d
 {
-  public static a IF(long paramLong)
-  {
-    AppMethodBeat.i(88951);
-    Object localObject = bbS();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(88951);
-      return null;
-    }
-    localObject = ((com.tencent.mm.plugin.downloader.g.b)localObject).IQ(paramLong);
-    AppMethodBeat.o(88951);
-    return localObject;
-  }
-  
-  public static boolean IG(long paramLong)
-  {
-    AppMethodBeat.i(88959);
-    Log.i("MicroMsg.FileDownloadInfoDBHelper", "removeDownloadInfo id: [%s]", new Object[] { Long.valueOf(paramLong) });
-    com.tencent.mm.plugin.downloader.g.b localb = bbS();
-    if (localb == null)
-    {
-      AppMethodBeat.o(88959);
-      return false;
-    }
-    a locala = new a();
-    locala.field_downloadId = paramLong;
-    boolean bool = localb.delete(locala, new String[0]);
-    AppMethodBeat.o(88959);
-    return bool;
-  }
-  
-  public static a asU(String paramString)
+  public static a amJ(String paramString)
   {
     AppMethodBeat.i(88952);
-    com.tencent.mm.plugin.downloader.g.b localb = bbS();
+    com.tencent.mm.plugin.downloader.f.b localb = bzH();
     if (localb == null)
     {
       AppMethodBeat.o(88952);
       return null;
     }
-    paramString = localb.asU(paramString);
+    paramString = localb.amJ(paramString);
     AppMethodBeat.o(88952);
     return paramString;
   }
   
-  public static boolean asV(String paramString)
+  public static boolean amK(String paramString)
   {
     AppMethodBeat.i(88956);
     Log.i("MicroMsg.FileDownloadInfoDBHelper", "removeDownloadInfoByURLIfExist url: [%s]", new Object[] { paramString });
-    com.tencent.mm.plugin.downloader.g.b localb = bbS();
+    com.tencent.mm.plugin.downloader.f.b localb = bzH();
     if (localb == null)
     {
       AppMethodBeat.o(88956);
       return false;
     }
-    boolean bool = localb.asV(paramString);
+    boolean bool = localb.amK(paramString);
     AppMethodBeat.o(88956);
     return bool;
   }
   
-  public static boolean asW(String paramString)
+  public static boolean amL(String paramString)
   {
     AppMethodBeat.i(88957);
     Log.i("MicroMsg.FileDownloadInfoDBHelper", "removeDownloadInfoByAppIdIfExist id: [%s]", new Object[] { paramString });
-    com.tencent.mm.plugin.downloader.g.b localb = bbS();
+    com.tencent.mm.plugin.downloader.f.b localb = bzH();
     if (localb == null)
     {
       AppMethodBeat.o(88957);
       return false;
     }
-    boolean bool = localb.asW(paramString);
+    boolean bool = localb.amL(paramString);
     AppMethodBeat.o(88957);
     return bool;
   }
   
-  public static a asX(String paramString)
+  public static a amM(String paramString)
   {
     AppMethodBeat.i(88958);
-    com.tencent.mm.plugin.downloader.g.b localb = bbS();
+    com.tencent.mm.plugin.downloader.f.b localb = bzH();
     if (localb == null)
     {
       AppMethodBeat.o(88958);
       return null;
     }
-    paramString = localb.asX(paramString);
+    paramString = localb.amM(paramString);
     AppMethodBeat.o(88958);
     return paramString;
   }
   
-  public static boolean asY(String paramString)
+  public static boolean amN(String paramString)
   {
     AppMethodBeat.i(88963);
-    com.tencent.mm.plugin.downloader.g.b localb = bbS();
+    com.tencent.mm.plugin.downloader.f.b localb = bzH();
     if (localb == null)
     {
       AppMethodBeat.o(88963);
       return false;
     }
-    boolean bool = localb.asY(paramString);
+    boolean bool = localb.amN(paramString);
     AppMethodBeat.o(88963);
     return bool;
   }
   
-  public static com.tencent.mm.plugin.downloader.g.b bbS()
+  public static com.tencent.mm.plugin.downloader.f.b bzH()
   {
     AppMethodBeat.i(88961);
-    if (h.aHE().aGM())
+    if (h.baC().aZN())
     {
-      h.aHE();
-      if (!com.tencent.mm.kernel.b.aGE()) {}
+      h.baC();
+      if (!com.tencent.mm.kernel.b.aZG()) {}
     }
     else
     {
@@ -126,28 +95,67 @@ public final class d
       AppMethodBeat.o(88961);
       return null;
     }
-    if (h.ae(com.tencent.mm.plugin.downloader.a.d.class) == null)
+    if (h.ax(com.tencent.mm.plugin.downloader.a.d.class) == null)
     {
       Log.e("MicroMsg.FileDownloadInfoDBHelper", "service not ready");
       AppMethodBeat.o(88961);
       return null;
     }
-    com.tencent.mm.plugin.downloader.g.b localb = ((com.tencent.mm.plugin.downloader.a.d)h.ae(com.tencent.mm.plugin.downloader.a.d.class)).bbS();
+    com.tencent.mm.plugin.downloader.f.b localb = ((com.tencent.mm.plugin.downloader.a.d)h.ax(com.tencent.mm.plugin.downloader.a.d.class)).bzH();
     AppMethodBeat.o(88961);
     return localb;
   }
   
-  public static LinkedList<a> cPW()
+  public static long d(a parama)
+  {
+    AppMethodBeat.i(88953);
+    if (parama == null)
+    {
+      AppMethodBeat.o(88953);
+      return -1L;
+    }
+    com.tencent.mm.plugin.downloader.f.b localb = bzH();
+    if (localb == null)
+    {
+      AppMethodBeat.o(88953);
+      return -1L;
+    }
+    amL(parama.field_appId);
+    amK(parama.field_downloadUrl);
+    amL(parama.field_rawAppId);
+    parama.field_updateTime = System.currentTimeMillis();
+    boolean bool = localb.insert(parama);
+    Log.i("MicroMsg.FileDownloadInfoDBHelper", "insert downloadinfo: " + parama.field_downloadId + ", ret=" + bool);
+    long l = parama.field_downloadId;
+    AppMethodBeat.o(88953);
+    return l;
+  }
+  
+  public static boolean dR(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(88955);
+    com.tencent.mm.plugin.downloader.f.b localb = bzH();
+    if (localb == null)
+    {
+      AppMethodBeat.o(88955);
+      return false;
+    }
+    boolean bool = localb.dR(paramString, paramInt);
+    AppMethodBeat.o(88955);
+    return bool;
+  }
+  
+  public static LinkedList<a> dus()
   {
     AppMethodBeat.i(88960);
-    Object localObject = bbS();
+    Object localObject = bzH();
     if (localObject == null)
     {
       AppMethodBeat.o(88960);
       return null;
     }
     Log.i("MicroMsg.FileDownloadInfoStorage", "getDownloadInWifiRunningTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo where status=1 and downloadInWifi=1")));
-    localObject = ((com.tencent.mm.plugin.downloader.g.b)localObject).rawQuery("select * from FileDownloadInfo where status=1 and downloadInWifi=1", new String[0]);
+    localObject = ((com.tencent.mm.plugin.downloader.f.b)localObject).rawQuery("select * from FileDownloadInfo where status=1 and downloadInWifi=1", new String[0]);
     LinkedList localLinkedList = new LinkedList();
     if (localObject == null)
     {
@@ -165,24 +173,24 @@ public final class d
     return localLinkedList;
   }
   
-  public static LinkedList<a> cPX()
+  public static LinkedList<a> dut()
   {
-    AppMethodBeat.i(219745);
-    Object localObject = bbS();
+    AppMethodBeat.i(267130);
+    Object localObject = bzH();
     if (localObject == null)
     {
-      AppMethodBeat.o(219745);
+      AppMethodBeat.o(267130);
       return null;
     }
-    localObject = ((com.tencent.mm.plugin.downloader.g.b)localObject).cPX();
-    AppMethodBeat.o(219745);
+    localObject = ((com.tencent.mm.plugin.downloader.f.b)localObject).dut();
+    AppMethodBeat.o(267130);
     return localObject;
   }
   
-  public static LinkedList<a> cPY()
+  public static LinkedList<a> duu()
   {
     AppMethodBeat.i(88962);
-    Object localObject1 = bbS();
+    Object localObject1 = bzH();
     if (localObject1 == null)
     {
       AppMethodBeat.o(88962);
@@ -190,7 +198,7 @@ public final class d
     }
     Object localObject2 = String.format("select * from %s where %s<%d order by %s desc", new Object[] { "FileDownloadInfo", "updateTime", Long.valueOf(System.currentTimeMillis() - 604800000L), "updateTime" });
     Log.i("MicroMsg.FileDownloadInfoStorage", "getUpdateTimeBiggerThanTimeInterval, sql = ".concat(String.valueOf(localObject2)));
-    localObject1 = ((com.tencent.mm.plugin.downloader.g.b)localObject1).rawQuery((String)localObject2, new String[0]);
+    localObject1 = ((com.tencent.mm.plugin.downloader.f.b)localObject1).rawQuery((String)localObject2, new String[0]);
     localObject2 = new LinkedList();
     if (localObject1 == null)
     {
@@ -208,45 +216,6 @@ public final class d
     return localObject2;
   }
   
-  public static long d(a parama)
-  {
-    AppMethodBeat.i(88953);
-    if (parama == null)
-    {
-      AppMethodBeat.o(88953);
-      return -1L;
-    }
-    com.tencent.mm.plugin.downloader.g.b localb = bbS();
-    if (localb == null)
-    {
-      AppMethodBeat.o(88953);
-      return -1L;
-    }
-    asW(parama.field_appId);
-    asV(parama.field_downloadUrl);
-    asW(parama.field_rawAppId);
-    parama.field_updateTime = System.currentTimeMillis();
-    boolean bool = localb.insert(parama);
-    Log.i("MicroMsg.FileDownloadInfoDBHelper", "insert downloadinfo: " + parama.field_downloadId + ", ret=" + bool);
-    long l = parama.field_downloadId;
-    AppMethodBeat.o(88953);
-    return l;
-  }
-  
-  public static boolean dq(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(88955);
-    com.tencent.mm.plugin.downloader.g.b localb = bbS();
-    if (localb == null)
-    {
-      AppMethodBeat.o(88955);
-      return false;
-    }
-    boolean bool = localb.dq(paramString, paramInt);
-    AppMethodBeat.o(88955);
-    return bool;
-  }
-  
   public static long e(a parama)
   {
     AppMethodBeat.i(88954);
@@ -255,7 +224,7 @@ public final class d
       AppMethodBeat.o(88954);
       return -1L;
     }
-    com.tencent.mm.plugin.downloader.g.b localb = bbS();
+    com.tencent.mm.plugin.downloader.f.b localb = bzH();
     if (localb == null)
     {
       AppMethodBeat.o(88954);
@@ -267,6 +236,37 @@ public final class d
     long l = parama.field_downloadId;
     AppMethodBeat.o(88954);
     return l;
+  }
+  
+  public static a la(long paramLong)
+  {
+    AppMethodBeat.i(88951);
+    Object localObject = bzH();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(88951);
+      return null;
+    }
+    localObject = ((com.tencent.mm.plugin.downloader.f.b)localObject).ll(paramLong);
+    AppMethodBeat.o(88951);
+    return localObject;
+  }
+  
+  public static boolean lb(long paramLong)
+  {
+    AppMethodBeat.i(88959);
+    Log.i("MicroMsg.FileDownloadInfoDBHelper", "removeDownloadInfo id: [%s]", new Object[] { Long.valueOf(paramLong) });
+    com.tencent.mm.plugin.downloader.f.b localb = bzH();
+    if (localb == null)
+    {
+      AppMethodBeat.o(88959);
+      return false;
+    }
+    a locala = new a();
+    locala.field_downloadId = paramLong;
+    boolean bool = localb.delete(locala, new String[0]);
+    AppMethodBeat.o(88959);
+    return bool;
   }
 }
 

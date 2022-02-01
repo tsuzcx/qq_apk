@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
+import android.system.ErrnoException;
 import android.system.Os;
 import android.system.StructStat;
 import android.util.Pair;
@@ -20,19 +21,19 @@ import java.util.Queue;
 
 final class b
 {
-  static volatile d cQX;
-  boolean cQQ = false;
-  String cQR;
-  private d cQS;
-  c cQT;
-  e cQU;
-  g.a cQV;
-  final boolean[] cQW = { false };
+  static volatile d eMo;
+  boolean eMh = false;
+  String eMi;
+  private d eMj;
+  c eMk;
+  e eMl;
+  g.a eMm;
+  final boolean[] eMn = { false };
   
   static void a(g.d paramd)
   {
-    if ((paramd == g.d.cSv) || (paramd == g.d.cSw)) {
-      WeChatBacktraceNative.setBacktraceMode(g.d.cSt.value);
+    if ((paramd == g.d.eNL) || (paramd == g.d.eNM)) {
+      WeChatBacktraceNative.setBacktraceMode(g.d.eNJ.value);
     }
   }
   
@@ -44,7 +45,7 @@ final class b
     //   1: monitorenter
     //   2: aload_1
     //   3: getfield 111	com/tencent/matrix/backtrace/g$a:mContext	Landroid/content/Context;
-    //   6: invokestatic 179	com/tencent/matrix/backtrace/f:aY	(Landroid/content/Context;)Ljava/io/File;
+    //   6: invokestatic 179	com/tencent/matrix/backtrace/f:bI	(Landroid/content/Context;)Ljava/io/File;
     //   9: invokevirtual 185	java/io/File:exists	()Z
     //   12: istore_3
     //   13: iload_3
@@ -53,14 +54,14 @@ final class b
     //   18: monitorexit
     //   19: return
     //   20: aload_0
-    //   21: getfield 187	com/tencent/matrix/backtrace/b:cQS	Lcom/tencent/matrix/backtrace/b$d;
+    //   21: getfield 187	com/tencent/matrix/backtrace/b:eMj	Lcom/tencent/matrix/backtrace/b$d;
     //   24: ifnonnull -7 -> 17
     //   27: aload_0
     //   28: new 29	com/tencent/matrix/backtrace/b$d
     //   31: dup
     //   32: aload_2
     //   33: invokespecial 189	com/tencent/matrix/backtrace/b$d:<init>	(Lcom/tencent/matrix/backtrace/g$d;)V
-    //   36: putfield 187	com/tencent/matrix/backtrace/b:cQS	Lcom/tencent/matrix/backtrace/b$d;
+    //   36: putfield 187	com/tencent/matrix/backtrace/b:eMj	Lcom/tencent/matrix/backtrace/b$d;
     //   39: ldc 166
     //   41: ldc 191
     //   43: iconst_0
@@ -76,7 +77,7 @@ final class b
     //   64: aload_1
     //   65: getfield 111	com/tencent/matrix/backtrace/g$a:mContext	Landroid/content/Context;
     //   68: aload_0
-    //   69: getfield 187	com/tencent/matrix/backtrace/b:cQS	Lcom/tencent/matrix/backtrace/b$d;
+    //   69: getfield 187	com/tencent/matrix/backtrace/b:eMj	Lcom/tencent/matrix/backtrace/b$d;
     //   72: aload_2
     //   73: new 204	java/lang/StringBuilder
     //   76: dup
@@ -111,14 +112,14 @@ final class b
   
   final void setSavingPath(String paramString)
   {
-    this.cQR = paramString;
+    this.eMi = paramString;
     WeChatBacktraceNative.setSavingPath(paramString);
   }
   
   static final class a
     implements c
   {
-    public final boolean F(String paramString, int paramInt)
+    public final boolean N(String paramString, int paramInt)
     {
       return WeChatBacktraceNative.warmUp(paramString, paramInt, false);
     }
@@ -127,26 +128,26 @@ final class b
   static final class b
     implements c
   {
-    private Bundle aaS;
-    private final String cQR;
-    WarmUpService.b cRg = new WarmUpService.b();
+    private Bundle bIB;
+    private final String eMi;
+    WarmUpService.b eMx = new WarmUpService.b();
     private Context mContext;
     
     b(String paramString)
     {
-      this.cQR = paramString;
+      this.eMi = paramString;
     }
     
-    public final boolean F(String paramString, int paramInt)
+    public final boolean N(String paramString, int paramInt)
     {
-      if ((this.cRg.cRY[0] == 0) && (!d(this.mContext, this.aaS))) {
+      if ((this.eMx.eNp[0] == 0) && (!d(this.mContext, this.bIB))) {
         return false;
       }
       Bundle localBundle = new Bundle();
-      localBundle.putString("saving-path", this.cQR);
+      localBundle.putString("saving-path", this.eMi);
       localBundle.putString("path-of-elf", paramString);
       localBundle.putInt("elf-start-offset", paramInt);
-      localBundle = this.cRg.z(localBundle);
+      localBundle = this.eMx.G(localBundle);
       int i;
       if (localBundle != null)
       {
@@ -171,20 +172,20 @@ final class b
     public final boolean d(Context paramContext, Bundle paramBundle)
     {
       this.mContext = paramContext;
-      this.aaS = paramBundle;
-      return this.cRg.d(paramContext, paramBundle);
+      this.bIB = paramBundle;
+      return this.eMx.d(paramContext, paramBundle);
     }
   }
   
   static final class c
     implements Handler.Callback, Runnable
   {
-    private Thread cRh;
-    private HashMap<String, Runnable> cRi = new HashMap();
-    private Queue<String> cRj = new LinkedList();
-    private Handler cRk = new Handler(Looper.getMainLooper(), this);
-    private boolean cRl = false;
-    long[] cRm = { 0L };
+    private Queue<String> eMA = new LinkedList();
+    private Handler eMB = new Handler(Looper.getMainLooper(), this);
+    private boolean eMC = false;
+    long[] eMD = { 0L };
+    private Thread eMy;
+    private HashMap<String, Runnable> eMz = new HashMap();
     private String mThreadName;
     
     c(String paramString)
@@ -194,21 +195,21 @@ final class b
     
     final void a(Runnable paramRunnable, String paramString)
     {
-      synchronized (this.cRj)
+      synchronized (this.eMA)
       {
-        if (this.cRj.contains(paramString)) {
+        if (this.eMA.contains(paramString)) {
           return;
         }
-        this.cRj.add(paramString);
-        this.cRi.put(paramString, paramRunnable);
+        this.eMA.add(paramString);
+        this.eMz.put(paramString, paramRunnable);
         try
         {
-          if ((this.cRh == null) || (!this.cRh.isAlive()))
+          if ((this.eMy == null) || (!this.eMy.isAlive()))
           {
-            this.cRh = new Thread(this, this.mThreadName);
-            this.cRh.start();
-            this.cRk.removeMessages(1);
-            this.cRk.sendEmptyMessageDelayed(1, 300000L);
+            this.eMy = new Thread(this, this.mThreadName);
+            this.eMy.start();
+            this.eMB.removeMessages(1);
+            this.eMB.sendEmptyMessageDelayed(1, 300000L);
           }
           return;
         }
@@ -219,29 +220,29 @@ final class b
     public final boolean handleMessage(Message arg1)
     {
       if (???.what == 1) {}
-      synchronized (this.cRm)
+      synchronized (this.eMD)
       {
-        if (this.cRm[0] == 0L) {}
+        if (this.eMD[0] == 0L) {}
         do
         {
           return false;
-          this.cRl = true;
-          ??? = b.cQX;
+          this.eMC = true;
+          ??? = b.eMo;
         } while (??? == null);
-        ???.a(d.a.cRq, new Object[0]);
+        ???.a(d.a.eMH, new Object[0]);
         return false;
       }
     }
     
     public final void run()
     {
-      this.cRl = false;
+      this.eMC = false;
       for (;;)
       {
         d locald;
-        synchronized (this.cRm)
+        synchronized (this.eMD)
         {
-          this.cRm[0] = System.currentTimeMillis();
+          this.eMD[0] = System.currentTimeMillis();
           ??? = null;
           locald = null;
           if (locald == null) {}
@@ -253,35 +254,35 @@ final class b
           locald.run();
           com.tencent.matrix.e.c.i("Matrix.WarmUpDelegate", "After '%s' task execution..", new Object[] { ??? });
           l = System.currentTimeMillis() - l;
-          locald = b.cQX;
+          locald = b.eMo;
           if (locald != null)
           {
             if (!"warm-up".equalsIgnoreCase((String)???)) {
               break label181;
             }
-            locald.a(d.a.cRs, new Object[] { Long.valueOf(l) });
+            locald.a(d.a.eMJ, new Object[] { Long.valueOf(l) });
           }
           label181:
           Runnable localRunnable;
         }
         finally
         {
-          synchronized (this.cRj)
+          synchronized (this.eMA)
           {
             for (;;)
             {
-              ??? = (String)this.cRj.poll();
+              ??? = (String)this.eMA.poll();
               if (??? == null) {
-                synchronized (this.cRm)
+                synchronized (this.eMD)
                 {
-                  this.cRm[0] = 0L;
-                  this.cRk.removeMessages(1);
+                  this.eMD[0] = 0L;
+                  this.eMB.removeMessages(1);
                   return;
                   localObject3 = finally;
                   throw localObject3;
                   if ("consuming-up".equalsIgnoreCase((String)???))
                   {
-                    localObject3.a(d.a.cRt, new Object[] { Long.valueOf(l) });
+                    localObject3.a(d.a.eMK, new Object[] { Long.valueOf(l) });
                     continue;
                     localObject4 = finally;
                   }
@@ -289,19 +290,19 @@ final class b
               }
             }
           }
-          synchronized (this.cRm)
+          synchronized (this.eMD)
           {
-            this.cRm[0] = 0L;
-            this.cRk.removeMessages(1);
+            this.eMD[0] = 0L;
+            this.eMB.removeMessages(1);
             throw localObject4;
             localObject5 = finally;
             throw localObject5;
-            localRunnable = (Runnable)this.cRi.remove(???);
+            localRunnable = (Runnable)this.eMz.remove(???);
             if (localRunnable == null) {
-              synchronized (this.cRm)
+              synchronized (this.eMD)
               {
-                this.cRm[0] = 0L;
-                this.cRk.removeMessages(1);
+                this.eMD[0] = 0L;
+                this.eMB.removeMessages(1);
                 return;
                 localObject2 = finally;
                 throw localObject2;
@@ -316,11 +317,11 @@ final class b
   static final class d
     extends BroadcastReceiver
   {
-    private g.d cRn;
+    private g.d eME;
     
     d(g.d paramd)
     {
-      this.cRn = paramd;
+      this.eME = paramd;
     }
     
     public final void onReceive(Context paramContext, Intent paramIntent)
@@ -342,13 +343,13 @@ final class b
           return;
         }
         WeChatBacktraceNative.setWarmedUp(true);
-        b.a(this.cRn);
+        b.a(this.eME);
         try
         {
           paramContext.unregisterReceiver(this);
           return;
         }
-        catch (Throwable paramContext)
+        finally
         {
           com.tencent.matrix.e.c.printErrStackTrace("Matrix.WarmUpDelegate", paramContext, "Unregister receiver twice.", new Object[0]);
           return;
@@ -362,7 +363,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.backtrace.b
  * JD-Core Version:    0.7.0.1
  */

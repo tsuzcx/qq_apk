@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.c;
 
+@com.tencent.mm.ipcinvoker.c.a
 final class a
-  implements d<Bundle, Bundle>
+  implements c<Bundle, Bundle>
 {}
 
 

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/menu/MenuDelegate_GameLive$EventOnGameStateChange;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/menu/MenuDelegate_GameLive$EventOnGameStateChange;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h$b
-  extends r
+  extends s
 {
   private static final int CTRL_INDEX = 1036;
   public static final String NAME = "onGameLiveStateChange";
-  public static final b qfe;
+  public static final b tjJ;
   
   static
   {
-    AppMethodBeat.i(280291);
-    qfe = new b();
-    AppMethodBeat.o(280291);
+    AppMethodBeat.i(323886);
+    tjJ = new b();
+    AppMethodBeat.o(323886);
   }
 }
 

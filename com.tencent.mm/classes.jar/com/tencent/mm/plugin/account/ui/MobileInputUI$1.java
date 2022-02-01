@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.account.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.mq;
+import com.tencent.mm.autogen.a.nx;
 import com.tencent.mm.sdk.event.IListener;
 
-final class MobileInputUI$1
-  extends IListener<mq>
+class MobileInputUI$1
+  extends IListener<nx>
 {
-  MobileInputUI$1(MobileInputUI paramMobileInputUI)
+  MobileInputUI$1(MobileInputUI paramMobileInputUI, q paramq)
   {
-    AppMethodBeat.i(161704);
-    this.__eventId = mq.class.getName().hashCode();
-    AppMethodBeat.o(161704);
+    super(paramq);
+    AppMethodBeat.i(305183);
+    this.__eventId = nx.class.getName().hashCode();
+    AppMethodBeat.o(305183);
   }
 }
 

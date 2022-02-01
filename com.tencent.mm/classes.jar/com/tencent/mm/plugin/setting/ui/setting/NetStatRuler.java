@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -30,7 +29,6 @@ class NetStatRuler
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  @SuppressLint({"DrawAllocation"})
   public void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(73898);

@@ -1,18 +1,14 @@
 package com.tencent.mm.plugin.scanner;
 
-import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.g;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.be;
-import com.tencent.mm.model.y;
-import com.tencent.mm.platformtools.r;
-import com.tencent.mm.platformtools.r.a;
+import com.tencent.mm.platformtools.o.a;
 import com.tencent.mm.plugin.scanner.i.a;
-import com.tencent.mm.plugin.scanner.model.c;
-import com.tencent.mm.plugin.scanner.model.s;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.scanner.model.ProductOperationListener;
+import com.tencent.mm.plugin.scanner.model.z;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.thread.ThreadPool;
@@ -24,19 +20,18 @@ public class o
   implements be
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  @SuppressLint({"UseSparseArrays"})
-  private static HashMap<Integer, h.b> nnH;
-  private com.tencent.mm.plugin.scanner.model.q IGf;
-  private s IGg;
-  private a IGh;
-  private c IGi;
-  public String kcB;
-  private r.a nnI;
+  private static HashMap<Integer, h.b> qkO;
+  private ProductOperationListener OMn;
+  private z OMo;
+  private a OMp;
+  private com.tencent.mm.plugin.scanner.model.g OMq;
+  public String mCJ;
+  private o.a qkP;
   
   static
   {
     AppMethodBeat.i(51571);
-    nnH = new HashMap();
+    qkO = new HashMap();
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("SCANHISTORY_TABLE".hashCode()), new h.b()
@@ -59,18 +54,18 @@ public class o
   public o()
   {
     AppMethodBeat.i(51562);
-    this.IGf = new com.tencent.mm.plugin.scanner.model.q();
-    this.IGg = new s();
-    this.IGi = new c();
+    this.OMn = new ProductOperationListener();
+    this.OMo = new z();
+    this.OMq = new com.tencent.mm.plugin.scanner.model.g();
     AppMethodBeat.o(51562);
   }
   
-  public static o fBS()
+  public static o gPw()
   {
     try
     {
       AppMethodBeat.i(51563);
-      o localo = (o)y.as(o.class);
+      o localo = (o)com.tencent.mm.model.y.aL(o.class);
       AppMethodBeat.o(51563);
       return localo;
     }
@@ -81,25 +76,25 @@ public class o
     }
   }
   
-  public static void fBT()
+  public static void gPx()
   {
-    AppMethodBeat.i(217310);
-    fBS();
-    com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q(getScanImageSaveDir());
-    if (!localq.ifE()) {
-      localq.ifL();
+    AppMethodBeat.i(313310);
+    gPw();
+    u localu = new u(getScanImageSaveDir());
+    if (!localu.jKS()) {
+      localu.jKY();
     }
-    fBS();
-    u.bBX(getScanImageSaveDir());
-    AppMethodBeat.o(217310);
+    gPw();
+    com.tencent.mm.vfs.y.bEr(getScanImageSaveDir());
+    AppMethodBeat.o(313310);
   }
   
   public static String getAccScannerPath()
   {
     AppMethodBeat.i(51568);
     Object localObject = new StringBuilder();
-    h.aHH();
-    localObject = h.aHG().kcB + "scanner/";
+    h.baF();
+    localObject = h.baE().mCJ + "scanner/";
     AppMethodBeat.o(51568);
     return localObject;
   }
@@ -114,14 +109,14 @@ public class o
   
   public void clearPluginData(int paramInt) {}
   
-  public final a fBU()
+  public final a gPy()
   {
     AppMethodBeat.i(51570);
-    h.aHE().aGH();
-    if (this.IGh == null) {
-      this.IGh = new a(h.aHG().kcF);
+    h.baC().aZJ();
+    if (this.OMp == null) {
+      this.OMp = new a(h.baE().mCN);
     }
-    a locala = this.IGh;
+    a locala = this.OMp;
     AppMethodBeat.o(51570);
     return locala;
   }
@@ -131,12 +126,12 @@ public class o
     return baseDBFactories;
   }
   
-  public final String kh(String paramString1, String paramString2)
+  public final String lG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(51567);
-    if ((h.aHB()) && (!Util.isNullOrNil(paramString1)))
+    if ((h.baz()) && (!Util.isNullOrNil(paramString1)))
     {
-      paramString1 = String.format("%s/scanbook%s_%s", new Object[] { this.kcB + "image/scan/img", paramString2, g.getMessageDigest(paramString1.getBytes()) });
+      paramString1 = String.format("%s/scanbook%s_%s", new Object[] { this.mCJ + "image/scan/img", paramString2, com.tencent.mm.b.g.getMessageDigest(paramString1.getBytes()) });
       AppMethodBeat.o(51567);
       return paramString1;
     }
@@ -147,17 +142,17 @@ public class o
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(51565);
-    Object localObject = h.aHG().cachePath + "CommonOneMicroMsg.db";
-    this.nnI = r.a(hashCode(), (String)localObject, nnH, false);
-    localObject = this.IGi;
-    EventCenter.instance.addListener(((c)localObject).IKI);
-    EventCenter.instance.addListener(((c)localObject).IKJ);
-    EventCenter.instance.addListener(((c)localObject).IKK);
-    EventCenter.instance.addListener(this.IGf);
-    EventCenter.instance.addListener(this.IGg.IKY);
-    EventCenter.instance.addListener(this.IGg.IKZ);
+    Object localObject = h.baE().cachePath + "CommonOneMicroMsg.db";
+    this.qkP = com.tencent.mm.platformtools.o.a(hashCode(), (String)localObject, qkO, false);
+    localObject = this.OMq;
+    ((com.tencent.mm.plugin.scanner.model.g)localObject).ORv.alive();
+    ((com.tencent.mm.plugin.scanner.model.g)localObject).ORw.alive();
+    ((com.tencent.mm.plugin.scanner.model.g)localObject).ORx.alive();
+    this.OMn.alive();
+    this.OMo.ORV.alive();
+    this.OMo.ORW.alive();
     ThreadPool.post(new o.1(this), "MicroMsg.scanner.SubCoreScannerdeleteOutDateImg");
-    localObject = com.tencent.mm.plugin.scanner.util.b.IYA;
+    localObject = com.tencent.mm.plugin.scanner.util.b.PhX;
     com.tencent.mm.plugin.scanner.util.b.init();
     AppMethodBeat.o(51565);
   }
@@ -165,21 +160,21 @@ public class o
   public void onAccountRelease()
   {
     AppMethodBeat.i(51564);
-    EventCenter.instance.removeListener(this.IGf);
-    EventCenter.instance.removeListener(this.IGg.IKY);
-    EventCenter.instance.removeListener(this.IGg.IKZ);
-    Object localObject = this.IGi;
-    EventCenter.instance.removeListener(((c)localObject).IKI);
-    EventCenter.instance.removeListener(((c)localObject).IKJ);
-    EventCenter.instance.removeListener(((c)localObject).IKK);
-    ((c)localObject).fCI();
-    if (this.nnI != null)
+    this.OMn.dead();
+    this.OMo.ORV.dead();
+    this.OMo.ORW.dead();
+    Object localObject = this.OMq;
+    ((com.tencent.mm.plugin.scanner.model.g)localObject).ORv.dead();
+    ((com.tencent.mm.plugin.scanner.model.g)localObject).ORw.dead();
+    ((com.tencent.mm.plugin.scanner.model.g)localObject).ORx.dead();
+    ((com.tencent.mm.plugin.scanner.model.g)localObject).gQJ();
+    if (this.qkP != null)
     {
-      this.nnI.xW(hashCode());
-      this.nnI = null;
+      this.qkP.yb(hashCode());
+      this.qkP = null;
     }
-    this.kcB = "";
-    localObject = com.tencent.mm.plugin.scanner.util.b.IYA;
+    this.mCJ = "";
+    localObject = com.tencent.mm.plugin.scanner.util.b.PhX;
     com.tencent.mm.plugin.scanner.util.b.release();
     AppMethodBeat.o(51564);
   }
@@ -187,33 +182,33 @@ public class o
   public void onSdcardMount(boolean paramBoolean)
   {
     AppMethodBeat.i(51566);
-    Log.d("MicroMsg.scanner.SubCoreScanner", "onSdcardMount " + h.aHG().kcB);
-    Object localObject = h.aHG().kcB;
+    Log.d("MicroMsg.scanner.SubCoreScanner", "onSdcardMount " + h.baE().mCJ);
+    Object localObject = h.baE().mCJ;
     Log.d("MicroMsg.scanner.SubCoreScanner", "resetAccPath on accPath : ".concat(String.valueOf(localObject)));
-    this.kcB = ((String)localObject);
-    com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q((String)localObject);
-    if (!localq.ifE()) {
-      localq.ifL();
+    this.mCJ = ((String)localObject);
+    u localu = new u((String)localObject);
+    if (!localu.jKS()) {
+      localu.jKY();
     }
-    localq = new com.tencent.mm.vfs.q((String)localObject + "image/scan/img");
-    if (!localq.ifE()) {
-      localq.ifL();
+    localu = new u((String)localObject + "image/scan/img");
+    if (!localu.jKS()) {
+      localu.jKY();
     }
-    localObject = new com.tencent.mm.vfs.q((String)localObject + "image/scan/music");
-    if (!((com.tencent.mm.vfs.q)localObject).ifE()) {
-      ((com.tencent.mm.vfs.q)localObject).ifL();
+    localObject = new u((String)localObject + "image/scan/music");
+    if (!((u)localObject).jKS()) {
+      ((u)localObject).jKY();
     }
-    localObject = new com.tencent.mm.vfs.q(getAccScannerPath());
-    if (!((com.tencent.mm.vfs.q)localObject).ifE()) {
-      ((com.tencent.mm.vfs.q)localObject).ifL();
+    localObject = new u(getAccScannerPath());
+    if (!((u)localObject).jKS()) {
+      ((u)localObject).jKY();
     }
-    fBT();
+    gPx();
     AppMethodBeat.o(51566);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.o
  * JD-Core Version:    0.7.0.1
  */

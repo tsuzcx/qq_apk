@@ -2,68 +2,96 @@ package androidx.appcompat.view;
 
 import android.view.View;
 import android.view.animation.Interpolator;
-import androidx.core.g.aa;
-import androidx.core.g.ab;
-import androidx.core.g.ac;
+import androidx.core.g.ad;
+import androidx.core.g.ae;
+import androidx.core.g.af;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class h
 {
-  final ArrayList<aa> kF;
-  ab kG;
-  private final ac kH;
+  final ArrayList<ad> lB;
+  ae lC;
+  private final af lD;
   private long mDuration;
   private Interpolator mInterpolator;
   boolean mIsStarted;
   
   public h()
   {
-    AppMethodBeat.i(239006);
+    AppMethodBeat.i(200648);
     this.mDuration = -1L;
-    this.kH = new ac()
+    this.lD = new af()
     {
-      private boolean kI = false;
-      private int kJ = 0;
+      private boolean lE = false;
+      private int lF = 0;
       
       public final void e(View paramAnonymousView)
       {
-        AppMethodBeat.i(239002);
-        if (this.kI)
+        AppMethodBeat.i(200689);
+        if (this.lE)
         {
-          AppMethodBeat.o(239002);
+          AppMethodBeat.o(200689);
           return;
         }
-        this.kI = true;
-        if (h.this.kG != null) {
-          h.this.kG.e(null);
+        this.lE = true;
+        if (h.this.lC != null) {
+          h.this.lC.e(null);
         }
-        AppMethodBeat.o(239002);
+        AppMethodBeat.o(200689);
       }
       
       public final void f(View paramAnonymousView)
       {
-        AppMethodBeat.i(239004);
-        int i = this.kJ + 1;
-        this.kJ = i;
-        if (i == h.this.kF.size())
+        AppMethodBeat.i(200702);
+        int i = this.lF + 1;
+        this.lF = i;
+        if (i == h.this.lB.size())
         {
-          if (h.this.kG != null) {
-            h.this.kG.f(null);
+          if (h.this.lC != null) {
+            h.this.lC.f(null);
           }
-          this.kJ = 0;
-          this.kI = false;
+          this.lF = 0;
+          this.lE = false;
           h.this.mIsStarted = false;
         }
-        AppMethodBeat.o(239004);
+        AppMethodBeat.o(200702);
       }
     };
-    this.kF = new ArrayList();
-    AppMethodBeat.o(239006);
+    this.lB = new ArrayList();
+    AppMethodBeat.o(200648);
   }
   
-  public final h a(Interpolator paramInterpolator)
+  public final h a(ad paramad)
+  {
+    AppMethodBeat.i(200654);
+    if (!this.mIsStarted) {
+      this.lB.add(paramad);
+    }
+    AppMethodBeat.o(200654);
+    return this;
+  }
+  
+  public final h a(ad paramad1, ad paramad2)
+  {
+    AppMethodBeat.i(200663);
+    this.lB.add(paramad1);
+    paramad2.bv(paramad1.getDuration());
+    this.lB.add(paramad2);
+    AppMethodBeat.o(200663);
+    return this;
+  }
+  
+  public final h a(ae paramae)
+  {
+    if (!this.mIsStarted) {
+      this.lC = paramae;
+    }
+    return this;
+  }
+  
+  public final h b(Interpolator paramInterpolator)
   {
     if (!this.mIsStarted) {
       this.mInterpolator = paramInterpolator;
@@ -71,35 +99,7 @@ public final class h
     return this;
   }
   
-  public final h a(aa paramaa)
-  {
-    AppMethodBeat.i(239008);
-    if (!this.mIsStarted) {
-      this.kF.add(paramaa);
-    }
-    AppMethodBeat.o(239008);
-    return this;
-  }
-  
-  public final h a(aa paramaa1, aa paramaa2)
-  {
-    AppMethodBeat.i(239009);
-    this.kF.add(paramaa1);
-    paramaa2.g(paramaa1.getDuration());
-    this.kF.add(paramaa2);
-    AppMethodBeat.o(239009);
-    return this;
-  }
-  
-  public final h a(ab paramab)
-  {
-    if (!this.mIsStarted) {
-      this.kG = paramab;
-    }
-    return this;
-  }
-  
-  public final h bH()
+  public final h cA()
   {
     if (!this.mIsStarted) {
       this.mDuration = 250L;
@@ -109,50 +109,50 @@ public final class h
   
   public final void cancel()
   {
-    AppMethodBeat.i(239013);
+    AppMethodBeat.i(200683);
     if (!this.mIsStarted)
     {
-      AppMethodBeat.o(239013);
+      AppMethodBeat.o(200683);
       return;
     }
-    Iterator localIterator = this.kF.iterator();
+    Iterator localIterator = this.lB.iterator();
     while (localIterator.hasNext()) {
-      ((aa)localIterator.next()).cancel();
+      ((ad)localIterator.next()).cancel();
     }
     this.mIsStarted = false;
-    AppMethodBeat.o(239013);
+    AppMethodBeat.o(200683);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(239010);
+    AppMethodBeat.i(200675);
     if (this.mIsStarted)
     {
-      AppMethodBeat.o(239010);
+      AppMethodBeat.o(200675);
       return;
     }
-    Iterator localIterator = this.kF.iterator();
+    Iterator localIterator = this.lB.iterator();
     while (localIterator.hasNext())
     {
-      aa localaa = (aa)localIterator.next();
+      ad localad = (ad)localIterator.next();
       if (this.mDuration >= 0L) {
-        localaa.f(this.mDuration);
+        localad.bu(this.mDuration);
       }
       if (this.mInterpolator != null) {
-        localaa.b(this.mInterpolator);
+        localad.c(this.mInterpolator);
       }
-      if (this.kG != null) {
-        localaa.b(this.kH);
+      if (this.lC != null) {
+        localad.b(this.lD);
       }
-      localaa.start();
+      localad.start();
     }
     this.mIsStarted = true;
-    AppMethodBeat.o(239010);
+    AppMethodBeat.o(200675);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.h
  * JD-Core Version:    0.7.0.1
  */

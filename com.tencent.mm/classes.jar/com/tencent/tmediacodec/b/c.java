@@ -1,6 +1,5 @@
 package com.tencent.tmediacodec.b;
 
-import android.annotation.TargetApi;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCrypto;
@@ -11,32 +10,31 @@ import com.tencent.tmediacodec.e.a.b;
 
 public abstract interface c
 {
-  public abstract int EX(long paramLong);
-  
-  public abstract int a(MediaCodec.BufferInfo paramBufferInfo, long paramLong);
-  
   public abstract void a(int paramInt1, int paramInt2, long paramLong, int paramInt3);
-  
-  public abstract void a(MediaFormat paramMediaFormat, Surface paramSurface, MediaCrypto paramMediaCrypto, int paramInt);
   
   public abstract void a(a parama);
   
   public abstract a.b b(e parame);
   
+  public abstract void configure(MediaFormat paramMediaFormat, Surface paramSurface, MediaCrypto paramMediaCrypto, int paramInt);
+  
+  public abstract int dequeueInputBuffer(long paramLong);
+  
+  public abstract int dequeueOutputBuffer(MediaCodec.BufferInfo paramBufferInfo, long paramLong);
+  
   public abstract void flush();
   
-  public abstract MediaCodec isY();
+  public abstract MediaCodec kcs();
   
-  public abstract void isZ();
+  public abstract void kct();
   
-  public abstract void ita();
-  
-  @TargetApi(23)
-  public abstract void q(Surface paramSurface);
+  public abstract void kcu();
   
   public abstract void release();
   
   public abstract void releaseOutputBuffer(int paramInt, boolean paramBoolean);
+  
+  public abstract void setOutputSurface(Surface paramSurface);
   
   public abstract void start();
   

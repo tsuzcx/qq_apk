@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.widget.a;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -21,16 +20,16 @@ import android.widget.FrameLayout;
 import androidx.appcompat.app.e;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.f;
-import com.tencent.mm.cr.a.g;
-import com.tencent.mm.cr.a.j;
+import com.tencent.mm.ck.a.f;
+import com.tencent.mm.ck.a.g;
+import com.tencent.mm.ck.a.j;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bf;
 
-public final class b
+public class b
   extends e
 {
-  private FrameLayout JMG;
+  private FrameLayout PQX;
   private Context mContext;
   
   public b(Context paramContext)
@@ -43,7 +42,7 @@ public final class b
     super(paramContext, a.j.CustomSheetStyle);
     AppMethodBeat.i(159284);
     this.mContext = paramContext;
-    bb();
+    bU();
     AppMethodBeat.o(159284);
   }
   
@@ -79,26 +78,26 @@ public final class b
       if (!isLandscape()) {
         break label243;
       }
-      this.JMG = ((FrameLayout)((ViewGroup)localObject2).findViewById(a.f.menu_sheet_right_container));
+      this.PQX = ((FrameLayout)((ViewGroup)localObject2).findViewById(a.f.menu_sheet_right_container));
       label156:
-      ico();
-      this.JMG.setVisibility(0);
+      jHC();
+      this.PQX.setVisibility(0);
       if (paramLayoutParams != null) {
         break label261;
       }
-      this.JMG.addView((View)localObject1);
+      this.PQX.addView((View)localObject1);
     }
     for (;;)
     {
-      if (haG()) {
+      if (fku()) {
         localView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(159283);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            a.c("com/tencent/mm/ui/widget/dialog/CustomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            localb.cH(paramAnonymousView);
+            a.c("com/tencent/mm/ui/widget/dialog/CustomSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             if (b.this.isShowing()) {
               b.this.cancel();
             }
@@ -117,14 +116,13 @@ public final class b
       ((WindowManager.LayoutParams)localObject2).height = -2;
       break label71;
       label243:
-      this.JMG = ((FrameLayout)((ViewGroup)localObject2).findViewById(a.f.menu_sheet_bottom_container));
+      this.PQX = ((FrameLayout)((ViewGroup)localObject2).findViewById(a.f.menu_sheet_bottom_container));
       break label156;
       label261:
-      this.JMG.addView((View)localObject1, paramLayoutParams);
+      this.PQX.addView((View)localObject1, paramLayoutParams);
     }
   }
   
-  @SuppressLint({"WrongConstant"})
   private int getRotation()
   {
     AppMethodBeat.i(159292);
@@ -133,7 +131,44 @@ public final class b
     return i;
   }
   
-  private boolean haG()
+  private void jHC()
+  {
+    AppMethodBeat.i(251826);
+    if ((bf.bg(this.mContext)) && (Build.VERSION.SDK_INT < 30)) {}
+    for (int i = bf.bk(this.mContext);; i = 0)
+    {
+      CoordinatorLayout.d locald;
+      if (isLandscape())
+      {
+        if (this.PQX != null)
+        {
+          locald = (CoordinatorLayout.d)this.PQX.getLayoutParams();
+          if (getRotation() == 1) {
+            locald.setMargins(0, 0, i, 0);
+          }
+          for (;;)
+          {
+            this.PQX.setLayoutParams(locald);
+            AppMethodBeat.o(251826);
+            return;
+            if (getRotation() == 3) {
+              locald.setMargins(i, 0, 0, 0);
+            }
+          }
+        }
+      }
+      else if (this.PQX != null)
+      {
+        locald = (CoordinatorLayout.d)this.PQX.getLayoutParams();
+        locald.setMargins(0, 0, 0, i);
+        this.PQX.setLayoutParams(locald);
+      }
+      AppMethodBeat.o(251826);
+      return;
+    }
+  }
+  
+  protected boolean fku()
   {
     AppMethodBeat.i(159290);
     if (Build.VERSION.SDK_INT < 11)
@@ -156,44 +191,7 @@ public final class b
     return false;
   }
   
-  private void ico()
-  {
-    AppMethodBeat.i(252538);
-    if ((ax.av(this.mContext)) && (Build.VERSION.SDK_INT < 30)) {}
-    for (int i = ax.aB(this.mContext);; i = 0)
-    {
-      CoordinatorLayout.d locald;
-      if (isLandscape())
-      {
-        if (this.JMG != null)
-        {
-          locald = (CoordinatorLayout.d)this.JMG.getLayoutParams();
-          if (getRotation() == 1) {
-            locald.setMargins(0, 0, i, 0);
-          }
-          for (;;)
-          {
-            this.JMG.setLayoutParams(locald);
-            AppMethodBeat.o(252538);
-            return;
-            if (getRotation() == 3) {
-              locald.setMargins(i, 0, 0, 0);
-            }
-          }
-        }
-      }
-      else if (this.JMG != null)
-      {
-        locald = (CoordinatorLayout.d)this.JMG.getLayoutParams();
-        locald.setMargins(0, 0, 0, i);
-        this.JMG.setLayoutParams(locald);
-      }
-      AppMethodBeat.o(252538);
-      return;
-    }
-  }
-  
-  private boolean isLandscape()
+  protected final boolean isLandscape()
   {
     AppMethodBeat.i(159291);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
@@ -205,15 +203,15 @@ public final class b
     return false;
   }
   
-  public final void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
-    AppMethodBeat.i(252534);
+    AppMethodBeat.i(251842);
     super.onAttachedToWindow();
-    ico();
-    AppMethodBeat.o(252534);
+    jHC();
+    AppMethodBeat.o(251842);
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(159288);
     super.onCreate(paramBundle);
@@ -221,21 +219,21 @@ public final class b
     AppMethodBeat.o(159288);
   }
   
-  public final void setContentView(int paramInt)
+  public void setContentView(int paramInt)
   {
     AppMethodBeat.i(159287);
     super.setContentView(b(paramInt, null, null));
     AppMethodBeat.o(159287);
   }
   
-  public final void setContentView(View paramView)
+  public void setContentView(View paramView)
   {
     AppMethodBeat.i(159285);
     super.setContentView(b(0, paramView, null));
     AppMethodBeat.o(159285);
   }
   
-  public final void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  public void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(159286);
     super.setContentView(b(0, paramView, paramLayoutParams));

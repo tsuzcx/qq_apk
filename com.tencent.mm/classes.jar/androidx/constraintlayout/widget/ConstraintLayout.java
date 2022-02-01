@@ -1,6 +1,5 @@
 package androidx.constraintlayout.widget;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
@@ -36,118 +35,138 @@ import org.xmlpull.v1.XmlPullParserException;
 public class ConstraintLayout
   extends ViewGroup
 {
-  private int CO;
-  private int DJ;
-  SparseArray<View> EG;
-  private ArrayList<ConstraintHelper> EH;
-  private final ArrayList<androidx.constraintlayout.a.a.f> EI;
-  g EJ;
-  private int EK;
-  private boolean EL;
-  private a EM;
-  private int EN;
-  private HashMap<String, Integer> EO;
-  private int EP;
-  private int EQ;
-  int ER;
-  int ES;
-  int ET;
-  int EU;
-  private androidx.constraintlayout.a.f EV;
-  private int lj;
-  private int uJ;
+  private int biW;
+  private int bjR;
+  SparseArray<View> bkN;
+  private ArrayList<ConstraintHelper> bkO;
+  private final ArrayList<androidx.constraintlayout.a.a.f> bkP;
+  g bkQ;
+  private int bkR;
+  private boolean bkS;
+  private a bkT;
+  private int bkU;
+  private HashMap<String, Integer> bkV;
+  private int bkW;
+  private int bkX;
+  int bkY;
+  int bkZ;
+  int bla;
+  int blb;
+  private androidx.constraintlayout.a.f blc;
+  private int mf;
+  private int vF;
   
   public ConstraintLayout(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(194678);
-    this.EG = new SparseArray();
-    this.EH = new ArrayList(4);
-    this.EI = new ArrayList(100);
-    this.EJ = new g();
-    this.lj = 0;
-    this.CO = 0;
-    this.uJ = 2147483647;
-    this.EK = 2147483647;
-    this.EL = true;
-    this.DJ = 7;
-    this.EM = null;
-    this.EN = -1;
-    this.EO = new HashMap();
-    this.EP = -1;
-    this.EQ = -1;
-    this.ER = -1;
-    this.ES = -1;
-    this.ET = 0;
-    this.EU = 0;
+    AppMethodBeat.i(194170);
+    this.bkN = new SparseArray();
+    this.bkO = new ArrayList(4);
+    this.bkP = new ArrayList(100);
+    this.bkQ = new g();
+    this.mf = 0;
+    this.biW = 0;
+    this.vF = 2147483647;
+    this.bkR = 2147483647;
+    this.bkS = true;
+    this.bjR = 7;
+    this.bkT = null;
+    this.bkU = -1;
+    this.bkV = new HashMap();
+    this.bkW = -1;
+    this.bkX = -1;
+    this.bkY = -1;
+    this.bkZ = -1;
+    this.bla = 0;
+    this.blb = 0;
     f(null);
-    AppMethodBeat.o(194678);
+    AppMethodBeat.o(194170);
   }
   
   public ConstraintLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(194683);
-    this.EG = new SparseArray();
-    this.EH = new ArrayList(4);
-    this.EI = new ArrayList(100);
-    this.EJ = new g();
-    this.lj = 0;
-    this.CO = 0;
-    this.uJ = 2147483647;
-    this.EK = 2147483647;
-    this.EL = true;
-    this.DJ = 7;
-    this.EM = null;
-    this.EN = -1;
-    this.EO = new HashMap();
-    this.EP = -1;
-    this.EQ = -1;
-    this.ER = -1;
-    this.ES = -1;
-    this.ET = 0;
-    this.EU = 0;
+    AppMethodBeat.i(194179);
+    this.bkN = new SparseArray();
+    this.bkO = new ArrayList(4);
+    this.bkP = new ArrayList(100);
+    this.bkQ = new g();
+    this.mf = 0;
+    this.biW = 0;
+    this.vF = 2147483647;
+    this.bkR = 2147483647;
+    this.bkS = true;
+    this.bjR = 7;
+    this.bkT = null;
+    this.bkU = -1;
+    this.bkV = new HashMap();
+    this.bkW = -1;
+    this.bkX = -1;
+    this.bkY = -1;
+    this.bkZ = -1;
+    this.bla = 0;
+    this.blb = 0;
     f(paramAttributeSet);
-    AppMethodBeat.o(194683);
+    AppMethodBeat.o(194179);
   }
   
   public ConstraintLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(194687);
-    this.EG = new SparseArray();
-    this.EH = new ArrayList(4);
-    this.EI = new ArrayList(100);
-    this.EJ = new g();
-    this.lj = 0;
-    this.CO = 0;
-    this.uJ = 2147483647;
-    this.EK = 2147483647;
-    this.EL = true;
-    this.DJ = 7;
-    this.EM = null;
-    this.EN = -1;
-    this.EO = new HashMap();
-    this.EP = -1;
-    this.EQ = -1;
-    this.ER = -1;
-    this.ES = -1;
-    this.ET = 0;
-    this.EU = 0;
+    AppMethodBeat.i(194187);
+    this.bkN = new SparseArray();
+    this.bkO = new ArrayList(4);
+    this.bkP = new ArrayList(100);
+    this.bkQ = new g();
+    this.mf = 0;
+    this.biW = 0;
+    this.vF = 2147483647;
+    this.bkR = 2147483647;
+    this.bkS = true;
+    this.bjR = 7;
+    this.bkT = null;
+    this.bkU = -1;
+    this.bkV = new HashMap();
+    this.bkW = -1;
+    this.bkX = -1;
+    this.bkY = -1;
+    this.bkZ = -1;
+    this.bla = 0;
+    this.blb = 0;
     f(paramAttributeSet);
-    AppMethodBeat.o(194687);
+    AppMethodBeat.o(194187);
   }
   
-  private final androidx.constraintlayout.a.a.f bf(int paramInt)
+  private void Dj()
   {
-    AppMethodBeat.i(194729);
+    AppMethodBeat.i(194203);
+    this.bkQ.CY();
+    if (this.blc != null)
+    {
+      AppMethodBeat.o(194203);
+      throw null;
+    }
+    AppMethodBeat.o(194203);
+  }
+  
+  protected static LayoutParams Dk()
+  {
+    AppMethodBeat.i(194206);
+    LayoutParams localLayoutParams = new LayoutParams(-2, -2);
+    AppMethodBeat.o(194206);
+    return localLayoutParams;
+  }
+  
+  private final androidx.constraintlayout.a.a.f dT(int paramInt)
+  {
+    AppMethodBeat.i(194200);
     if (paramInt == 0)
     {
-      localObject = this.EJ;
-      AppMethodBeat.o(194729);
+      localObject = this.bkQ;
+      AppMethodBeat.o(194200);
       return localObject;
     }
-    View localView = (View)this.EG.get(paramInt);
+    View localView = (View)this.bkN.get(paramInt);
     Object localObject = localView;
     if (localView == null)
     {
@@ -169,46 +188,26 @@ public class ConstraintLayout
     }
     if (localObject == this)
     {
-      localObject = this.EJ;
-      AppMethodBeat.o(194729);
+      localObject = this.bkQ;
+      AppMethodBeat.o(194200);
       return localObject;
     }
     if (localObject == null)
     {
-      AppMethodBeat.o(194729);
+      AppMethodBeat.o(194200);
       return null;
     }
-    localObject = ((LayoutParams)((View)localObject).getLayoutParams()).Gh;
-    AppMethodBeat.o(194729);
+    localObject = ((LayoutParams)((View)localObject).getLayoutParams()).bml;
+    AppMethodBeat.o(194200);
     return localObject;
-  }
-  
-  private void c(Object paramObject1, Object paramObject2)
-  {
-    AppMethodBeat.i(194667);
-    if (((paramObject1 instanceof String)) && ((paramObject2 instanceof Integer)))
-    {
-      if (this.EO == null) {
-        this.EO = new HashMap();
-      }
-      String str = (String)paramObject1;
-      int i = str.indexOf("/");
-      paramObject1 = str;
-      if (i != -1) {
-        paramObject1 = str.substring(i + 1);
-      }
-      i = ((Integer)paramObject2).intValue();
-      this.EO.put(paramObject1, Integer.valueOf(i));
-    }
-    AppMethodBeat.o(194667);
   }
   
   private void f(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(194696);
-    this.EJ.CV = this;
-    this.EG.put(getId(), this);
-    this.EM = null;
+    AppMethodBeat.i(194195);
+    this.bkQ.bjc = this;
+    this.bkN.put(getId(), this);
+    this.bkT = null;
     int j;
     label185:
     int m;
@@ -221,7 +220,7 @@ public class ConstraintLayout
       {
         j = paramAttributeSet.getIndex(i);
         if (j == R.styleable.ConstraintLayout_Layout_android_minWidth) {
-          this.lj = paramAttributeSet.getDimensionPixelOffset(j, this.lj);
+          this.mf = paramAttributeSet.getDimensionPixelOffset(j, this.mf);
         }
         do
         {
@@ -231,22 +230,22 @@ public class ConstraintLayout
             break;
             if (j == R.styleable.ConstraintLayout_Layout_android_minHeight)
             {
-              this.CO = paramAttributeSet.getDimensionPixelOffset(j, this.CO);
+              this.biW = paramAttributeSet.getDimensionPixelOffset(j, this.biW);
             }
             else if (j == R.styleable.ConstraintLayout_Layout_android_maxWidth)
             {
-              this.uJ = paramAttributeSet.getDimensionPixelOffset(j, this.uJ);
+              this.vF = paramAttributeSet.getDimensionPixelOffset(j, this.vF);
             }
             else if (j == R.styleable.ConstraintLayout_Layout_android_maxHeight)
             {
-              this.EK = paramAttributeSet.getDimensionPixelOffset(j, this.EK);
+              this.bkR = paramAttributeSet.getDimensionPixelOffset(j, this.bkR);
             }
             else
             {
               if (j != R.styleable.ConstraintLayout_Layout_layout_optimizationLevel) {
                 break label185;
               }
-              this.DJ = paramAttributeSet.getInt(j, this.DJ);
+              this.bjR = paramAttributeSet.getInt(j, this.bjR);
             }
           }
         } while (j != R.styleable.ConstraintLayout_Layout_constraintSet);
@@ -259,8 +258,8 @@ public class ConstraintLayout
       {
         try
         {
-          this.EM = new a();
-          a locala = this.EM;
+          this.bkT = new a();
+          a locala = this.bkT;
           localContext = getContext();
           localXmlResourceParser = localContext.getResources().getXml(m);
         }
@@ -271,7 +270,7 @@ public class ConstraintLayout
           String str;
           Object localObject;
           a.a locala1;
-          this.EM = null;
+          this.bkT = null;
           continue;
         }
         try
@@ -284,7 +283,7 @@ public class ConstraintLayout
         }
         catch (XmlPullParserException localXmlPullParserException)
         {
-          this.EN = m;
+          this.bkU = m;
           break;
           str = localXmlResourceParser.getName();
           localObject = Xml.asAttributeSet(localXmlResourceParser);
@@ -293,15 +292,15 @@ public class ConstraintLayout
           a.a(locala1, (TypedArray)localObject);
           ((TypedArray)localObject).recycle();
           if (str.equalsIgnoreCase("Guideline")) {
-            locala1.Gn = true;
+            locala1.bmr = true;
           }
-          localXmlPullParserException.Gl.put(Integer.valueOf(locala1.Go), locala1);
+          localXmlPullParserException.bmp.put(Integer.valueOf(locala1.bms), locala1);
         }
         catch (IOException localIOException) {}
       }
       paramAttributeSet.recycle();
-      this.EJ.DJ = this.DJ;
-      AppMethodBeat.o(194696);
+      this.bkQ.bjR = this.bjR;
+      AppMethodBeat.o(194195);
       return;
       label404:
       if (j != 1) {
@@ -312,42 +311,70 @@ public class ConstraintLayout
     }
   }
   
-  private void ga()
+  private void k(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(194763);
-    this.EJ.fP();
-    if (this.EV != null)
+    AppMethodBeat.i(194162);
+    if (((paramObject1 instanceof String)) && ((paramObject2 instanceof Integer)))
     {
-      AppMethodBeat.o(194763);
-      throw null;
+      if (this.bkV == null) {
+        this.bkV = new HashMap();
+      }
+      String str = (String)paramObject1;
+      int i = str.indexOf("/");
+      paramObject1 = str;
+      if (i != -1) {
+        paramObject1 = str.substring(i + 1);
+      }
+      i = ((Integer)paramObject2).intValue();
+      this.bkV.put(paramObject1, Integer.valueOf(i));
     }
-    AppMethodBeat.o(194763);
+    AppMethodBeat.o(194162);
   }
   
-  protected static LayoutParams gb()
+  public final androidx.constraintlayout.a.a.f D(View paramView)
   {
-    AppMethodBeat.i(194777);
-    LayoutParams localLayoutParams = new LayoutParams(-2, -2);
-    AppMethodBeat.o(194777);
-    return localLayoutParams;
+    AppMethodBeat.i(194296);
+    if (paramView == this)
+    {
+      paramView = this.bkQ;
+      AppMethodBeat.o(194296);
+      return paramView;
+    }
+    if (paramView == null)
+    {
+      AppMethodBeat.o(194296);
+      return null;
+    }
+    paramView = ((LayoutParams)paramView.getLayoutParams()).bml;
+    AppMethodBeat.o(194296);
+    return paramView;
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(194700);
+    AppMethodBeat.i(194222);
     super.addView(paramView, paramInt, paramLayoutParams);
     if (Build.VERSION.SDK_INT < 14) {
       onViewAdded(paramView);
     }
-    AppMethodBeat.o(194700);
+    AppMethodBeat.o(194222);
   }
   
-  public final View bg(int paramInt)
+  public final Object at(Object paramObject)
   {
-    AppMethodBeat.i(194782);
-    View localView = (View)this.EG.get(paramInt);
-    AppMethodBeat.o(194782);
-    return localView;
+    AppMethodBeat.i(194212);
+    if ((paramObject instanceof String))
+    {
+      paramObject = (String)paramObject;
+      if ((this.bkV != null) && (this.bkV.containsKey(paramObject)))
+      {
+        paramObject = this.bkV.get(paramObject);
+        AppMethodBeat.o(194212);
+        return paramObject;
+      }
+    }
+    AppMethodBeat.o(194212);
+    return null;
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -355,9 +382,17 @@ public class ConstraintLayout
     return paramLayoutParams instanceof LayoutParams;
   }
   
+  public final View dU(int paramInt)
+  {
+    AppMethodBeat.i(194395);
+    View localView = (View)this.bkN.get(paramInt);
+    AppMethodBeat.o(194395);
+    return localView;
+  }
+  
   public void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(194786);
+    AppMethodBeat.i(194403);
     super.dispatchDraw(paramCanvas);
     if (isInEditMode())
     {
@@ -399,45 +434,45 @@ public class ConstraintLayout
         i += 1;
       }
     }
-    AppMethodBeat.o(194786);
+    AppMethodBeat.o(194403);
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(194779);
+    AppMethodBeat.i(194378);
     paramLayoutParams = new LayoutParams(paramLayoutParams);
-    AppMethodBeat.o(194779);
+    AppMethodBeat.o(194378);
     return paramLayoutParams;
   }
   
   public int getMaxHeight()
   {
-    return this.EK;
+    return this.bkR;
   }
   
   public int getMaxWidth()
   {
-    return this.uJ;
+    return this.vF;
   }
   
   public int getMinHeight()
   {
-    return this.CO;
+    return this.biW;
   }
   
   public int getMinWidth()
   {
-    return this.lj;
+    return this.mf;
   }
   
   public int getOptimizationLevel()
   {
-    return this.EJ.DJ;
+    return this.bkQ.bjR;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(194771);
+    AppMethodBeat.i(194361);
     paramInt2 = getChildCount();
     paramBoolean = isInEditMode();
     paramInt1 = 0;
@@ -445,11 +480,11 @@ public class ConstraintLayout
     {
       View localView = getChildAt(paramInt1);
       LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
-      androidx.constraintlayout.a.a.f localf = localLayoutParams.Gh;
-      if (((localView.getVisibility() != 8) || (localLayoutParams.FU) || (localLayoutParams.FV) || (paramBoolean)) && (!localLayoutParams.FW))
+      androidx.constraintlayout.a.a.f localf = localLayoutParams.bml;
+      if (((localView.getVisibility() != 8) || (localLayoutParams.blY) || (localLayoutParams.blZ) || (paramBoolean)) && (!localLayoutParams.bma))
       {
-        paramInt3 = localf.fC();
-        paramInt4 = localf.fD();
+        paramInt3 = localf.CL();
+        paramInt4 = localf.CM();
         int i = localf.getWidth() + paramInt3;
         int j = localf.getHeight() + paramInt4;
         localView.layout(paramInt3, paramInt4, i, j);
@@ -465,22 +500,22 @@ public class ConstraintLayout
       }
       paramInt1 += 1;
     }
-    paramInt2 = this.EH.size();
+    paramInt2 = this.bkO.size();
     if (paramInt2 > 0)
     {
       paramInt1 = 0;
       while (paramInt1 < paramInt2)
       {
-        ((ConstraintHelper)this.EH.get(paramInt1)).fZ();
+        ((ConstraintHelper)this.bkO.get(paramInt1)).Di();
         paramInt1 += 1;
       }
     }
-    AppMethodBeat.o(194771);
+    AppMethodBeat.o(194361);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194758);
+    AppMethodBeat.i(194352);
     System.currentTimeMillis();
     int i13 = View.MeasureSpec.getMode(paramInt1);
     int i14 = View.MeasureSpec.getSize(paramInt1);
@@ -488,14 +523,14 @@ public class ConstraintLayout
     int i16 = View.MeasureSpec.getSize(paramInt2);
     int i11 = getPaddingLeft();
     int i12 = getPaddingTop();
-    this.EJ.setX(i11);
-    this.EJ.setY(i12);
-    Object localObject1 = this.EJ;
-    int i = this.uJ;
-    ((androidx.constraintlayout.a.a.f)localObject1).Cn[0] = i;
-    localObject1 = this.EJ;
-    i = this.EK;
-    ((androidx.constraintlayout.a.a.f)localObject1).Cn[1] = i;
+    this.bkQ.setX(i11);
+    this.bkQ.setY(i12);
+    Object localObject1 = this.bkQ;
+    int i = this.vF;
+    ((androidx.constraintlayout.a.a.f)localObject1).biu[0] = i;
+    localObject1 = this.bkQ;
+    i = this.bkR;
+    ((androidx.constraintlayout.a.a.f)localObject1).biu[1] = i;
     boolean bool;
     int i1;
     int k;
@@ -510,11 +545,11 @@ public class ConstraintLayout
     int i10;
     if (Build.VERSION.SDK_INT >= 17)
     {
-      localObject1 = this.EJ;
+      localObject1 = this.bkQ;
       if (getLayoutDirection() == 1)
       {
         bool = true;
-        ((g)localObject1).tL = bool;
+        ((g)localObject1).uK = bool;
       }
     }
     else
@@ -527,8 +562,8 @@ public class ConstraintLayout
       n = getPaddingBottom();
       i2 = getPaddingLeft();
       i3 = getPaddingRight();
-      localObject1 = f.a.Do;
-      localObject2 = f.a.Do;
+      localObject1 = f.a.bjw;
+      localObject2 = f.a.bjw;
       getLayoutParams();
       switch (i1)
       {
@@ -538,20 +573,20 @@ public class ConstraintLayout
         {
         default: 
           j = 0;
-          this.EJ.setMinWidth(0);
-          this.EJ.setMinHeight(0);
-          this.EJ.a((f.a)localObject1);
-          this.EJ.setWidth(i);
-          this.EJ.b((f.a)localObject2);
-          this.EJ.setHeight(j);
-          this.EJ.setMinWidth(this.lj - getPaddingLeft() - getPaddingRight());
-          this.EJ.setMinHeight(this.CO - getPaddingTop() - getPaddingBottom());
-          i9 = this.EJ.getWidth();
-          i10 = this.EJ.getHeight();
-          if (!this.EL) {
+          this.bkQ.setMinWidth(0);
+          this.bkQ.setMinHeight(0);
+          this.bkQ.a((f.a)localObject1);
+          this.bkQ.setWidth(i);
+          this.bkQ.b((f.a)localObject2);
+          this.bkQ.setHeight(j);
+          this.bkQ.setMinWidth(this.mf - getPaddingLeft() - getPaddingRight());
+          this.bkQ.setMinHeight(this.biW - getPaddingTop() - getPaddingBottom());
+          i9 = this.bkQ.getWidth();
+          i10 = this.bkQ.getHeight();
+          if (!this.bkS) {
             break label6090;
           }
-          this.EL = false;
+          this.bkS = false;
           m = getChildCount();
           k = 0;
           i = 0;
@@ -575,7 +610,7 @@ public class ConstraintLayout
         if (j == 0) {
           break label2741;
         }
-        this.EI.clear();
+        this.bkP.clear();
         bool = isInEditMode();
         i17 = getChildCount();
         if (!bool) {
@@ -588,13 +623,13 @@ public class ConstraintLayout
           try
           {
             localObject2 = getResources().getResourceName(((View)localObject3).getId());
-            c(localObject2, Integer.valueOf(((View)localObject3).getId()));
+            k(localObject2, Integer.valueOf(((View)localObject3).getId()));
             j = ((String)localObject2).indexOf('/');
             localObject1 = localObject2;
             if (j != -1) {
               localObject1 = ((String)localObject2).substring(j + 1);
             }
-            bf(((View)localObject3).getId()).CY = ((String)localObject1);
+            dT(((View)localObject3).getId()).bjf = ((String)localObject1);
           }
           catch (Resources.NotFoundException localNotFoundException1)
           {
@@ -646,19 +681,19 @@ public class ConstraintLayout
         }
         bool = false;
         break;
-        localObject1 = f.a.Dp;
+        localObject1 = f.a.bjx;
         break label239;
-        localObject1 = f.a.Dp;
+        localObject1 = f.a.bjx;
         i = 0;
         break label239;
-        i = Math.min(this.uJ, i) - (i2 + i3);
+        i = Math.min(this.vF, i) - (i2 + i3);
         break label239;
-        localObject2 = f.a.Dp;
+        localObject2 = f.a.bjx;
         break label279;
-        localObject2 = f.a.Dp;
+        localObject2 = f.a.bjx;
         j = 0;
         break label279;
-        j = Math.min(this.EK, j) - (m + n);
+        j = Math.min(this.bkR, j) - (m + n);
         break label279;
       }
       i += 1;
@@ -667,35 +702,35 @@ public class ConstraintLayout
     i = 0;
     while (i < i17)
     {
-      localObject1 = u(getChildAt(i));
+      localObject1 = D(getChildAt(i));
       if (localObject1 != null) {
         ((androidx.constraintlayout.a.a.f)localObject1).reset();
       }
       i += 1;
     }
-    if (this.EN != -1)
+    if (this.bkU != -1)
     {
       i = 0;
       while (i < i17)
       {
         localObject1 = getChildAt(i);
-        if ((((View)localObject1).getId() == this.EN) && ((localObject1 instanceof Constraints))) {
-          this.EM = ((Constraints)localObject1).getConstraintSet();
+        if ((((View)localObject1).getId() == this.bkU) && ((localObject1 instanceof Constraints))) {
+          this.bkT = ((Constraints)localObject1).getConstraintSet();
         }
         i += 1;
       }
     }
-    if (this.EM != null) {
-      this.EM.d(this);
+    if (this.bkT != null) {
+      this.bkT.d(this);
     }
-    this.EJ.fX();
-    int j = this.EH.size();
+    this.bkQ.Dg();
+    int j = this.bkO.size();
     if (j > 0)
     {
       i = 0;
       while (i < j)
       {
-        ((ConstraintHelper)this.EH.get(i)).a(this);
+        ((ConstraintHelper)this.bkO.get(i)).a(this);
         i += 1;
       }
     }
@@ -712,45 +747,45 @@ public class ConstraintLayout
     if (i5 < i17)
     {
       localObject3 = getChildAt(i5);
-      localObject2 = u((View)localObject3);
+      localObject2 = D((View)localObject3);
       if (localObject2 != null)
       {
         localObject1 = (LayoutParams)((View)localObject3).getLayoutParams();
-        ((LayoutParams)localObject1).validate();
-        if (!((LayoutParams)localObject1).Gi) {
+        ((LayoutParams)localObject1).Dl();
+        if (!((LayoutParams)localObject1).bmm) {
           break label1098;
         }
-        ((LayoutParams)localObject1).Gi = false;
+        ((LayoutParams)localObject1).bmm = false;
         label945:
-        ((androidx.constraintlayout.a.a.f)localObject2).CX = ((View)localObject3).getVisibility();
-        if (((LayoutParams)localObject1).FW) {
-          ((androidx.constraintlayout.a.a.f)localObject2).CX = 8;
+        ((androidx.constraintlayout.a.a.f)localObject2).bje = ((View)localObject3).getVisibility();
+        if (((LayoutParams)localObject1).bma) {
+          ((androidx.constraintlayout.a.a.f)localObject2).bje = 8;
         }
-        ((androidx.constraintlayout.a.a.f)localObject2).CV = localObject3;
-        this.EJ.e((androidx.constraintlayout.a.a.f)localObject2);
-        if ((!((LayoutParams)localObject1).FS) || (!((LayoutParams)localObject1).FR)) {
-          this.EI.add(localObject2);
+        ((androidx.constraintlayout.a.a.f)localObject2).bjc = localObject3;
+        this.bkQ.e((androidx.constraintlayout.a.a.f)localObject2);
+        if ((!((LayoutParams)localObject1).blW) || (!((LayoutParams)localObject1).blV)) {
+          this.bkP.add(localObject2);
         }
-        if (!((LayoutParams)localObject1).FU) {
+        if (!((LayoutParams)localObject1).blY) {
           break label1202;
         }
         localObject2 = (i)localObject2;
-        j = ((LayoutParams)localObject1).Ge;
-        i = ((LayoutParams)localObject1).Gf;
-        f1 = ((LayoutParams)localObject1).Gg;
+        j = ((LayoutParams)localObject1).bmi;
+        i = ((LayoutParams)localObject1).bmj;
+        f1 = ((LayoutParams)localObject1).bmk;
         if (Build.VERSION.SDK_INT < 17)
         {
-          j = ((LayoutParams)localObject1).EW;
-          i = ((LayoutParams)localObject1).EX;
-          f1 = ((LayoutParams)localObject1).EY;
+          j = ((LayoutParams)localObject1).bld;
+          i = ((LayoutParams)localObject1).ble;
+          f1 = ((LayoutParams)localObject1).blf;
         }
         if (f1 == -1.0F) {
           break label1170;
         }
-        ((i)localObject2).g(f1);
+        ((i)localObject2).am(f1);
       }
       label1098:
-      while ((((LayoutParams)localObject1).EZ == -1) && (((LayoutParams)localObject1).Fa == -1) && (((LayoutParams)localObject1).Fb == -1) && (((LayoutParams)localObject1).Fc == -1) && (((LayoutParams)localObject1).Fm == -1) && (((LayoutParams)localObject1).Fl == -1) && (((LayoutParams)localObject1).Fn == -1) && (((LayoutParams)localObject1).Fo == -1) && (((LayoutParams)localObject1).Fd == -1) && (((LayoutParams)localObject1).Fe == -1) && (((LayoutParams)localObject1).Ff == -1) && (((LayoutParams)localObject1).Fg == -1) && (((LayoutParams)localObject1).Fh == -1) && (((LayoutParams)localObject1).FM == -1) && (((LayoutParams)localObject1).FN == -1) && (((LayoutParams)localObject1).Fi == -1) && (((LayoutParams)localObject1).width != -1) && (((LayoutParams)localObject1).height != -1)) {
+      while ((((LayoutParams)localObject1).blg == -1) && (((LayoutParams)localObject1).blh == -1) && (((LayoutParams)localObject1).bli == -1) && (((LayoutParams)localObject1).blj == -1) && (((LayoutParams)localObject1).blt == -1) && (((LayoutParams)localObject1).bls == -1) && (((LayoutParams)localObject1).blu == -1) && (((LayoutParams)localObject1).blv == -1) && (((LayoutParams)localObject1).blk == -1) && (((LayoutParams)localObject1).bll == -1) && (((LayoutParams)localObject1).blm == -1) && (((LayoutParams)localObject1).bln == -1) && (((LayoutParams)localObject1).blo == -1) && (((LayoutParams)localObject1).blR == -1) && (((LayoutParams)localObject1).blS == -1) && (((LayoutParams)localObject1).blp == -1) && (((LayoutParams)localObject1).width != -1) && (((LayoutParams)localObject1).height != -1)) {
         for (;;)
         {
           for (;;)
@@ -763,39 +798,39 @@ public class ConstraintLayout
             try
             {
               String str = getResources().getResourceName(((View)localObject3).getId());
-              c(str, Integer.valueOf(((View)localObject3).getId()));
+              k(str, Integer.valueOf(((View)localObject3).getId()));
               str = str.substring(str.indexOf("id/") + 3);
-              bf(((View)localObject3).getId()).CY = str;
+              dT(((View)localObject3).getId()).bjf = str;
             }
             catch (Resources.NotFoundException localNotFoundException2) {}
           }
           break label945;
           if (j != -1) {
-            ((i)localObject2).aZ(j);
+            ((i)localObject2).dP(j);
           } else if (i != -1) {
-            ((i)localObject2).bc(i);
+            ((i)localObject2).dQ(i);
           }
         }
       }
       label1170:
       label1202:
-      m = ((LayoutParams)localObject1).FX;
-      k = ((LayoutParams)localObject1).FY;
-      i3 = ((LayoutParams)localObject1).FZ;
-      i2 = ((LayoutParams)localObject1).Ga;
-      i4 = ((LayoutParams)localObject1).Gb;
-      i1 = ((LayoutParams)localObject1).Gc;
-      f2 = ((LayoutParams)localObject1).Gd;
+      m = ((LayoutParams)localObject1).bmb;
+      k = ((LayoutParams)localObject1).bmc;
+      i3 = ((LayoutParams)localObject1).bmd;
+      i2 = ((LayoutParams)localObject1).bme;
+      i4 = ((LayoutParams)localObject1).bmf;
+      i1 = ((LayoutParams)localObject1).bmg;
+      f2 = ((LayoutParams)localObject1).bmh;
       if (Build.VERSION.SDK_INT >= 17) {
         break label6064;
       }
-      k = ((LayoutParams)localObject1).EZ;
-      m = ((LayoutParams)localObject1).Fa;
-      i7 = ((LayoutParams)localObject1).Fb;
-      i8 = ((LayoutParams)localObject1).Fc;
-      i6 = ((LayoutParams)localObject1).Fp;
-      n = ((LayoutParams)localObject1).Fr;
-      f1 = ((LayoutParams)localObject1).Fv;
+      k = ((LayoutParams)localObject1).blg;
+      m = ((LayoutParams)localObject1).blh;
+      i7 = ((LayoutParams)localObject1).bli;
+      i8 = ((LayoutParams)localObject1).blj;
+      i6 = ((LayoutParams)localObject1).blw;
+      n = ((LayoutParams)localObject1).bly;
+      f1 = ((LayoutParams)localObject1).atU;
       i = m;
       j = k;
       if (k == -1)
@@ -804,10 +839,10 @@ public class ConstraintLayout
         j = k;
         if (m == -1)
         {
-          if (((LayoutParams)localObject1).Fm == -1) {
+          if (((LayoutParams)localObject1).blt == -1) {
             break label2036;
           }
-          j = ((LayoutParams)localObject1).Fm;
+          j = ((LayoutParams)localObject1).blt;
           i = m;
         }
       }
@@ -832,88 +867,88 @@ public class ConstraintLayout
       if (i8 != -1) {
         break label6064;
       }
-      if (((LayoutParams)localObject1).Fn != -1)
+      if (((LayoutParams)localObject1).blu != -1)
       {
-        i2 = ((LayoutParams)localObject1).Fn;
+        i2 = ((LayoutParams)localObject1).blu;
         i1 = i8;
         i4 = i6;
         label1607:
-        if (((LayoutParams)localObject1).Fi == -1) {
+        if (((LayoutParams)localObject1).blp == -1) {
           break label2121;
         }
-        localObject3 = bf(((LayoutParams)localObject1).Fi);
+        localObject3 = dT(((LayoutParams)localObject1).blp);
         if (localObject3 != null)
         {
-          f1 = ((LayoutParams)localObject1).Fk;
-          i = ((LayoutParams)localObject1).Fj;
-          ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BR, (androidx.constraintlayout.a.a.f)localObject3, e.c.BR, i, 0);
-          ((androidx.constraintlayout.a.a.f)localObject2).Co = f1;
+          f1 = ((LayoutParams)localObject1).blr;
+          i = ((LayoutParams)localObject1).blq;
+          ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhY, (androidx.constraintlayout.a.a.f)localObject3, e.c.bhY, i, 0);
+          ((androidx.constraintlayout.a.a.f)localObject2).biv = f1;
         }
-        if ((bool) && ((((LayoutParams)localObject1).FM != -1) || (((LayoutParams)localObject1).FN != -1))) {
-          ((androidx.constraintlayout.a.a.f)localObject2).u(((LayoutParams)localObject1).FM, ((LayoutParams)localObject1).FN);
+        if ((bool) && ((((LayoutParams)localObject1).blR != -1) || (((LayoutParams)localObject1).blS != -1))) {
+          ((androidx.constraintlayout.a.a.f)localObject2).ao(((LayoutParams)localObject1).blR, ((LayoutParams)localObject1).blS);
         }
-        if (((LayoutParams)localObject1).FR) {
+        if (((LayoutParams)localObject1).blV) {
           break label2682;
         }
         if (((LayoutParams)localObject1).width != -1) {
           break label2665;
         }
-        ((androidx.constraintlayout.a.a.f)localObject2).a(f.a.Dr);
-        ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BM).Bw = ((LayoutParams)localObject1).leftMargin;
-        ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BO).Bw = ((LayoutParams)localObject1).rightMargin;
+        ((androidx.constraintlayout.a.a.f)localObject2).a(f.a.bjz);
+        ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhT).bhE = ((LayoutParams)localObject1).leftMargin;
+        ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhV).bhE = ((LayoutParams)localObject1).rightMargin;
         label1762:
-        if (((LayoutParams)localObject1).FS) {
+        if (((LayoutParams)localObject1).blW) {
           break label2720;
         }
         if (((LayoutParams)localObject1).height != -1) {
           break label2703;
         }
-        ((androidx.constraintlayout.a.a.f)localObject2).b(f.a.Dr);
-        ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BN).Bw = ((LayoutParams)localObject1).topMargin;
-        ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BP).Bw = ((LayoutParams)localObject1).bottomMargin;
+        ((androidx.constraintlayout.a.a.f)localObject2).b(f.a.bjz);
+        ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhU).bhE = ((LayoutParams)localObject1).topMargin;
+        ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhW).bhE = ((LayoutParams)localObject1).bottomMargin;
       }
       for (;;)
       {
-        if (((LayoutParams)localObject1).Fx != null) {
-          ((androidx.constraintlayout.a.a.f)localObject2).x(((LayoutParams)localObject1).Fx);
+        if (((LayoutParams)localObject1).blC != null) {
+          ((androidx.constraintlayout.a.a.f)localObject2).ap(((LayoutParams)localObject1).blC);
         }
-        f1 = ((LayoutParams)localObject1).FA;
-        ((androidx.constraintlayout.a.a.f)localObject2).Di[0] = f1;
-        f1 = ((LayoutParams)localObject1).FB;
-        ((androidx.constraintlayout.a.a.f)localObject2).Di[1] = f1;
-        ((androidx.constraintlayout.a.a.f)localObject2).De = ((LayoutParams)localObject1).FC;
-        ((androidx.constraintlayout.a.a.f)localObject2).Df = ((LayoutParams)localObject1).FD;
-        i = ((LayoutParams)localObject1).FE;
-        j = ((LayoutParams)localObject1).FG;
-        k = ((LayoutParams)localObject1).FI;
-        f1 = ((LayoutParams)localObject1).FK;
-        ((androidx.constraintlayout.a.a.f)localObject2).BZ = i;
-        ((androidx.constraintlayout.a.a.f)localObject2).Cc = j;
-        ((androidx.constraintlayout.a.a.f)localObject2).Cd = k;
-        ((androidx.constraintlayout.a.a.f)localObject2).Ce = f1;
-        if ((f1 < 1.0F) && (((androidx.constraintlayout.a.a.f)localObject2).BZ == 0)) {
-          ((androidx.constraintlayout.a.a.f)localObject2).BZ = 2;
+        f1 = ((LayoutParams)localObject1).blF;
+        ((androidx.constraintlayout.a.a.f)localObject2).bjq[0] = f1;
+        f1 = ((LayoutParams)localObject1).blG;
+        ((androidx.constraintlayout.a.a.f)localObject2).bjq[1] = f1;
+        ((androidx.constraintlayout.a.a.f)localObject2).bjm = ((LayoutParams)localObject1).blH;
+        ((androidx.constraintlayout.a.a.f)localObject2).bjn = ((LayoutParams)localObject1).blI;
+        i = ((LayoutParams)localObject1).blJ;
+        j = ((LayoutParams)localObject1).blL;
+        k = ((LayoutParams)localObject1).blN;
+        f1 = ((LayoutParams)localObject1).blP;
+        ((androidx.constraintlayout.a.a.f)localObject2).big = i;
+        ((androidx.constraintlayout.a.a.f)localObject2).bij = j;
+        ((androidx.constraintlayout.a.a.f)localObject2).bik = k;
+        ((androidx.constraintlayout.a.a.f)localObject2).bil = f1;
+        if ((f1 < 1.0F) && (((androidx.constraintlayout.a.a.f)localObject2).big == 0)) {
+          ((androidx.constraintlayout.a.a.f)localObject2).big = 2;
         }
-        i = ((LayoutParams)localObject1).FF;
-        j = ((LayoutParams)localObject1).FH;
-        k = ((LayoutParams)localObject1).FJ;
-        f1 = ((LayoutParams)localObject1).FL;
-        ((androidx.constraintlayout.a.a.f)localObject2).Ca = i;
-        ((androidx.constraintlayout.a.a.f)localObject2).Cf = j;
-        ((androidx.constraintlayout.a.a.f)localObject2).Cg = k;
-        ((androidx.constraintlayout.a.a.f)localObject2).Ch = f1;
-        if ((f1 >= 1.0F) || (((androidx.constraintlayout.a.a.f)localObject2).Ca != 0)) {
+        i = ((LayoutParams)localObject1).blK;
+        j = ((LayoutParams)localObject1).blM;
+        k = ((LayoutParams)localObject1).blO;
+        f1 = ((LayoutParams)localObject1).blQ;
+        ((androidx.constraintlayout.a.a.f)localObject2).bih = i;
+        ((androidx.constraintlayout.a.a.f)localObject2).bim = j;
+        ((androidx.constraintlayout.a.a.f)localObject2).bin = k;
+        ((androidx.constraintlayout.a.a.f)localObject2).bio = f1;
+        if ((f1 >= 1.0F) || (((androidx.constraintlayout.a.a.f)localObject2).bih != 0)) {
           break;
         }
-        ((androidx.constraintlayout.a.a.f)localObject2).Ca = 2;
+        ((androidx.constraintlayout.a.a.f)localObject2).bih = 2;
         break;
         label2036:
         i = m;
         j = k;
-        if (((LayoutParams)localObject1).Fl == -1) {
+        if (((LayoutParams)localObject1).bls == -1) {
           break label1517;
         }
-        i = ((LayoutParams)localObject1).Fl;
+        i = ((LayoutParams)localObject1).bls;
         j = k;
         break label1517;
         f2 = f1;
@@ -923,121 +958,121 @@ public class ConstraintLayout
         i4 = i6;
         k = i;
         m = j;
-        if (((LayoutParams)localObject1).Fo == -1) {
+        if (((LayoutParams)localObject1).blv == -1) {
           break label6064;
         }
-        i1 = ((LayoutParams)localObject1).Fo;
+        i1 = ((LayoutParams)localObject1).blv;
         i2 = i7;
         i4 = i6;
         break label1607;
         label2121:
         if (j != -1)
         {
-          localObject3 = bf(j);
+          localObject3 = dT(j);
           if (localObject3 != null) {
-            ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BM, (androidx.constraintlayout.a.a.f)localObject3, e.c.BM, ((LayoutParams)localObject1).leftMargin, i4);
+            ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhT, (androidx.constraintlayout.a.a.f)localObject3, e.c.bhT, ((LayoutParams)localObject1).leftMargin, i4);
           }
           label2160:
           if (i2 == -1) {
             break label2521;
           }
-          localObject3 = bf(i2);
+          localObject3 = dT(i2);
           if (localObject3 != null) {
-            ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BO, (androidx.constraintlayout.a.a.f)localObject3, e.c.BM, ((LayoutParams)localObject1).rightMargin, n);
+            ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhV, (androidx.constraintlayout.a.a.f)localObject3, e.c.bhT, ((LayoutParams)localObject1).rightMargin, n);
           }
-          if (((LayoutParams)localObject1).Fd == -1) {
+          if (((LayoutParams)localObject1).blk == -1) {
             break label2563;
           }
-          localObject3 = bf(((LayoutParams)localObject1).Fd);
+          localObject3 = dT(((LayoutParams)localObject1).blk);
           if (localObject3 != null) {
-            ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BN, (androidx.constraintlayout.a.a.f)localObject3, e.c.BN, ((LayoutParams)localObject1).topMargin, ((LayoutParams)localObject1).Fq);
+            ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhU, (androidx.constraintlayout.a.a.f)localObject3, e.c.bhU, ((LayoutParams)localObject1).topMargin, ((LayoutParams)localObject1).blx);
           }
-          if (((LayoutParams)localObject1).Ff == -1) {
+          if (((LayoutParams)localObject1).blm == -1) {
             break label2614;
           }
-          localObject3 = bf(((LayoutParams)localObject1).Ff);
+          localObject3 = dT(((LayoutParams)localObject1).blm);
           if (localObject3 != null) {
-            ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BP, (androidx.constraintlayout.a.a.f)localObject3, e.c.BN, ((LayoutParams)localObject1).bottomMargin, ((LayoutParams)localObject1).Fs);
+            ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhW, (androidx.constraintlayout.a.a.f)localObject3, e.c.bhU, ((LayoutParams)localObject1).bottomMargin, ((LayoutParams)localObject1).blz);
           }
         }
         for (;;)
         {
           label2199:
           label2247:
-          if (((LayoutParams)localObject1).Fh != -1)
+          if (((LayoutParams)localObject1).blo != -1)
           {
-            localObject4 = (View)this.EG.get(((LayoutParams)localObject1).Fh);
-            localObject3 = bf(((LayoutParams)localObject1).Fh);
+            localObject4 = (View)this.bkN.get(((LayoutParams)localObject1).blo);
+            localObject3 = dT(((LayoutParams)localObject1).blo);
             if ((localObject3 != null) && (localObject4 != null) && ((((View)localObject4).getLayoutParams() instanceof LayoutParams)))
             {
               localObject4 = (LayoutParams)((View)localObject4).getLayoutParams();
-              ((LayoutParams)localObject1).FT = true;
-              ((LayoutParams)localObject4).FT = true;
-              ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BQ).a(((androidx.constraintlayout.a.a.f)localObject3).a(e.c.BQ), 0, -1, e.b.BI, 0, true);
-              ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BN).reset();
-              ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BP).reset();
+              ((LayoutParams)localObject1).blX = true;
+              ((LayoutParams)localObject4).blX = true;
+              ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhX).a(((androidx.constraintlayout.a.a.f)localObject3).a(e.c.bhX), 0, -1, e.b.bhP, 0, true);
+              ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhU).reset();
+              ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhW).reset();
             }
           }
           if ((f1 >= 0.0F) && (f1 != 0.5F)) {
-            ((androidx.constraintlayout.a.a.f)localObject2).CT = f1;
+            ((androidx.constraintlayout.a.a.f)localObject2).bja = f1;
           }
-          if ((((LayoutParams)localObject1).Fw < 0.0F) || (((LayoutParams)localObject1).Fw == 0.5F)) {
+          if ((((LayoutParams)localObject1).atV < 0.0F) || (((LayoutParams)localObject1).atV == 0.5F)) {
             break;
           }
-          ((androidx.constraintlayout.a.a.f)localObject2).CU = ((LayoutParams)localObject1).Fw;
+          ((androidx.constraintlayout.a.a.f)localObject2).bjb = ((LayoutParams)localObject1).atV;
           break;
           if (i == -1) {
             break label2160;
           }
-          localObject3 = bf(i);
+          localObject3 = dT(i);
           if (localObject3 == null) {
             break label2160;
           }
-          ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BM, (androidx.constraintlayout.a.a.f)localObject3, e.c.BO, ((LayoutParams)localObject1).leftMargin, i4);
+          ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhT, (androidx.constraintlayout.a.a.f)localObject3, e.c.bhV, ((LayoutParams)localObject1).leftMargin, i4);
           break label2160;
           label2521:
           if (i1 == -1) {
             break label2199;
           }
-          localObject3 = bf(i1);
+          localObject3 = dT(i1);
           if (localObject3 == null) {
             break label2199;
           }
-          ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BO, (androidx.constraintlayout.a.a.f)localObject3, e.c.BO, ((LayoutParams)localObject1).rightMargin, n);
+          ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhV, (androidx.constraintlayout.a.a.f)localObject3, e.c.bhV, ((LayoutParams)localObject1).rightMargin, n);
           break label2199;
           label2563:
-          if (((LayoutParams)localObject1).Fe == -1) {
+          if (((LayoutParams)localObject1).bll == -1) {
             break label2247;
           }
-          localObject3 = bf(((LayoutParams)localObject1).Fe);
+          localObject3 = dT(((LayoutParams)localObject1).bll);
           if (localObject3 == null) {
             break label2247;
           }
-          ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BN, (androidx.constraintlayout.a.a.f)localObject3, e.c.BP, ((LayoutParams)localObject1).topMargin, ((LayoutParams)localObject1).Fq);
+          ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhU, (androidx.constraintlayout.a.a.f)localObject3, e.c.bhW, ((LayoutParams)localObject1).topMargin, ((LayoutParams)localObject1).blx);
           break label2247;
           label2614:
-          if (((LayoutParams)localObject1).Fg != -1)
+          if (((LayoutParams)localObject1).bln != -1)
           {
-            localObject3 = bf(((LayoutParams)localObject1).Fg);
+            localObject3 = dT(((LayoutParams)localObject1).bln);
             if (localObject3 != null) {
-              ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.BP, (androidx.constraintlayout.a.a.f)localObject3, e.c.BP, ((LayoutParams)localObject1).bottomMargin, ((LayoutParams)localObject1).Fs);
+              ((androidx.constraintlayout.a.a.f)localObject2).a(e.c.bhW, (androidx.constraintlayout.a.a.f)localObject3, e.c.bhW, ((LayoutParams)localObject1).bottomMargin, ((LayoutParams)localObject1).blz);
             }
           }
         }
         label2665:
-        ((androidx.constraintlayout.a.a.f)localObject2).a(f.a.Dq);
+        ((androidx.constraintlayout.a.a.f)localObject2).a(f.a.bjy);
         ((androidx.constraintlayout.a.a.f)localObject2).setWidth(0);
         break label1762;
         label2682:
-        ((androidx.constraintlayout.a.a.f)localObject2).a(f.a.Do);
+        ((androidx.constraintlayout.a.a.f)localObject2).a(f.a.bjw);
         ((androidx.constraintlayout.a.a.f)localObject2).setWidth(((LayoutParams)localObject1).width);
         break label1762;
         label2703:
-        ((androidx.constraintlayout.a.a.f)localObject2).b(f.a.Dq);
+        ((androidx.constraintlayout.a.a.f)localObject2).b(f.a.bjy);
         ((androidx.constraintlayout.a.a.f)localObject2).setHeight(0);
         continue;
         label2720:
-        ((androidx.constraintlayout.a.a.f)localObject2).b(f.a.Do);
+        ((androidx.constraintlayout.a.a.f)localObject2).b(f.a.bjw);
         ((androidx.constraintlayout.a.a.f)localObject2).setHeight(((LayoutParams)localObject1).height);
       }
     }
@@ -1046,13 +1081,13 @@ public class ConstraintLayout
     label6009:
     for (i5 = 1;; i5 = 0)
     {
-      if ((this.DJ & 0x8) == 8) {
+      if ((this.bjR & 0x8) == 8) {
         i4 = 1;
       }
       while (i4 != 0)
       {
-        this.EJ.fQ();
-        this.EJ.z(i9, i10);
+        this.bkQ.CZ();
+        this.bkQ.at(i9, i10);
         i17 = getPaddingTop() + getPaddingBottom();
         int i18 = getPaddingLeft() + getPaddingRight();
         int i19 = getChildCount();
@@ -1065,17 +1100,17 @@ public class ConstraintLayout
             if (((View)localObject1).getVisibility() != 8)
             {
               localObject2 = (LayoutParams)((View)localObject1).getLayoutParams();
-              localObject3 = ((LayoutParams)localObject2).Gh;
-              if ((!((LayoutParams)localObject2).FU) && (!((LayoutParams)localObject2).FV))
+              localObject3 = ((LayoutParams)localObject2).bml;
+              if ((!((LayoutParams)localObject2).blY) && (!((LayoutParams)localObject2).blZ))
               {
-                ((androidx.constraintlayout.a.a.f)localObject3).CX = ((View)localObject1).getVisibility();
+                ((androidx.constraintlayout.a.a.f)localObject3).bje = ((View)localObject1).getVisibility();
                 m = ((LayoutParams)localObject2).width;
                 n = ((LayoutParams)localObject2).height;
                 if ((m != 0) && (n != 0)) {
                   break label2936;
                 }
-                ((androidx.constraintlayout.a.a.f)localObject3).fA().invalidate();
-                ((androidx.constraintlayout.a.a.f)localObject3).fB().invalidate();
+                ((androidx.constraintlayout.a.a.f)localObject3).CJ().invalidate();
+                ((androidx.constraintlayout.a.a.f)localObject3).CK().invalidate();
               }
             }
             i += 1;
@@ -1092,51 +1127,51 @@ public class ConstraintLayout
               k = 1;
             }
             ((View)localObject1).measure(i1, getChildMeasureSpec(paramInt2, i17, n));
-            if (this.EV != null)
+            if (this.blc != null)
             {
-              AppMethodBeat.o(194758);
+              AppMethodBeat.o(194352);
               throw null;
             }
             if (m == -2)
             {
               bool = true;
-              ((androidx.constraintlayout.a.a.f)localObject3).Ci = bool;
+              ((androidx.constraintlayout.a.a.f)localObject3).bip = bool;
               if (n != -2) {
                 break label3161;
               }
             }
             for (bool = true;; bool = false)
             {
-              ((androidx.constraintlayout.a.a.f)localObject3).Cj = bool;
+              ((androidx.constraintlayout.a.a.f)localObject3).biq = bool;
               m = ((View)localObject1).getMeasuredWidth();
               n = ((View)localObject1).getMeasuredHeight();
               ((androidx.constraintlayout.a.a.f)localObject3).setWidth(m);
               ((androidx.constraintlayout.a.a.f)localObject3).setHeight(n);
               if (j != 0) {
-                ((androidx.constraintlayout.a.a.f)localObject3).CQ = m;
+                ((androidx.constraintlayout.a.a.f)localObject3).biX = m;
               }
               if (k != 0) {
-                ((androidx.constraintlayout.a.a.f)localObject3).CR = n;
+                ((androidx.constraintlayout.a.a.f)localObject3).biY = n;
               }
-              if (((LayoutParams)localObject2).FT)
+              if (((LayoutParams)localObject2).blX)
               {
                 j = ((View)localObject1).getBaseline();
                 if (j != -1) {
-                  ((androidx.constraintlayout.a.a.f)localObject3).CN = j;
+                  ((androidx.constraintlayout.a.a.f)localObject3).biV = j;
                 }
               }
-              if ((!((LayoutParams)localObject2).FR) || (!((LayoutParams)localObject2).FS)) {
+              if ((!((LayoutParams)localObject2).blV) || (!((LayoutParams)localObject2).blW)) {
                 break;
               }
-              ((androidx.constraintlayout.a.a.f)localObject3).fA().be(m);
-              ((androidx.constraintlayout.a.a.f)localObject3).fB().be(n);
+              ((androidx.constraintlayout.a.a.f)localObject3).CJ().dS(m);
+              ((androidx.constraintlayout.a.a.f)localObject3).CK().dS(n);
               break;
               bool = false;
               break label3012;
             }
           }
         }
-        this.EJ.fR();
+        this.bkQ.Da();
         i6 = 0;
         if (i6 >= i19) {
           break label4488;
@@ -1145,22 +1180,22 @@ public class ConstraintLayout
         if (((View)localObject1).getVisibility() != 8)
         {
           localObject2 = (LayoutParams)((View)localObject1).getLayoutParams();
-          localObject3 = ((LayoutParams)localObject2).Gh;
-          if ((!((LayoutParams)localObject2).FU) && (!((LayoutParams)localObject2).FV))
+          localObject3 = ((LayoutParams)localObject2).bml;
+          if ((!((LayoutParams)localObject2).blY) && (!((LayoutParams)localObject2).blZ))
           {
-            ((androidx.constraintlayout.a.a.f)localObject3).CX = ((View)localObject1).getVisibility();
+            ((androidx.constraintlayout.a.a.f)localObject3).bje = ((View)localObject1).getVisibility();
             n = ((LayoutParams)localObject2).width;
             m = ((LayoutParams)localObject2).height;
             if ((n == 0) || (m == 0))
             {
-              localObject4 = ((androidx.constraintlayout.a.a.f)localObject3).a(e.c.BM).Bs;
-              m localm1 = ((androidx.constraintlayout.a.a.f)localObject3).a(e.c.BO).Bs;
-              if ((((androidx.constraintlayout.a.a.f)localObject3).a(e.c.BM).Bv != null) && (((androidx.constraintlayout.a.a.f)localObject3).a(e.c.BO).Bv != null))
+              localObject4 = ((androidx.constraintlayout.a.a.f)localObject3).a(e.c.bhT).bhA;
+              m localm1 = ((androidx.constraintlayout.a.a.f)localObject3).a(e.c.bhV).bhA;
+              if ((((androidx.constraintlayout.a.a.f)localObject3).a(e.c.bhT).bhD != null) && (((androidx.constraintlayout.a.a.f)localObject3).a(e.c.bhV).bhD != null))
               {
                 k = 1;
-                m localm2 = ((androidx.constraintlayout.a.a.f)localObject3).a(e.c.BN).Bs;
-                m localm3 = ((androidx.constraintlayout.a.a.f)localObject3).a(e.c.BP).Bs;
-                if ((((androidx.constraintlayout.a.a.f)localObject3).a(e.c.BN).Bv == null) || (((androidx.constraintlayout.a.a.f)localObject3).a(e.c.BP).Bv == null)) {
+                m localm2 = ((androidx.constraintlayout.a.a.f)localObject3).a(e.c.bhU).bhA;
+                m localm3 = ((androidx.constraintlayout.a.a.f)localObject3).a(e.c.bhW).bhA;
+                if ((((androidx.constraintlayout.a.a.f)localObject3).a(e.c.bhU).bhD == null) || (((androidx.constraintlayout.a.a.f)localObject3).a(e.c.bhW).bhD == null)) {
                   break label3666;
                 }
                 i7 = 1;
@@ -1168,28 +1203,28 @@ public class ConstraintLayout
                   break label3955;
                 }
                 i8 = 0;
-                if (this.EJ.fM() == f.a.Dp) {
+                if (this.bkQ.CV() == f.a.bjx) {
                   break label3672;
                 }
                 j = 1;
-                if (this.EJ.fN() == f.a.Dp) {
+                if (this.bkQ.CW() == f.a.bjx) {
                   break label3678;
                 }
                 i = 1;
                 if (j == 0) {
-                  ((androidx.constraintlayout.a.a.f)localObject3).fA().invalidate();
+                  ((androidx.constraintlayout.a.a.f)localObject3).CJ().invalidate();
                 }
                 if (i == 0) {
-                  ((androidx.constraintlayout.a.a.f)localObject3).fB().invalidate();
+                  ((androidx.constraintlayout.a.a.f)localObject3).CK().invalidate();
                 }
                 if (n != 0) {
                   break label3711;
                 }
-                if ((j == 0) || (!((androidx.constraintlayout.a.a.f)localObject3).fw()) || (k == 0) || (!((m)localObject4).fW()) || (!localm1.fW())) {
+                if ((j == 0) || (!((androidx.constraintlayout.a.a.f)localObject3).CF()) || (k == 0) || (!((m)localObject4).Df()) || (!localm1.Df())) {
                   break label3684;
                 }
-                n = (int)(localm1.El - ((m)localObject4).El);
-                ((androidx.constraintlayout.a.a.f)localObject3).fA().be(n);
+                n = (int)(localm1.bkt - ((m)localObject4).bkt);
+                ((androidx.constraintlayout.a.a.f)localObject3).CJ().dS(n);
                 k = 0;
                 i2 = getChildMeasureSpec(paramInt1, i18, n);
                 i3 = n;
@@ -1198,11 +1233,11 @@ public class ConstraintLayout
                 if (m != 0) {
                   break label3772;
                 }
-                if ((i == 0) || (!((androidx.constraintlayout.a.a.f)localObject3).fx()) || (i7 == 0) || (!localm2.fW()) || (!localm3.fW())) {
+                if ((i == 0) || (!((androidx.constraintlayout.a.a.f)localObject3).CG()) || (i7 == 0) || (!localm2.Df()) || (!localm3.Df())) {
                   break label3753;
                 }
-                k = (int)(localm3.El - localm2.El);
-                ((androidx.constraintlayout.a.a.f)localObject3).fB().be(k);
+                k = (int)(localm3.bkt - localm2.bkt);
+                ((androidx.constraintlayout.a.a.f)localObject3).CK().dS(k);
                 j = 0;
               }
               for (;;)
@@ -1213,10 +1248,10 @@ public class ConstraintLayout
                 for (;;)
                 {
                   ((View)localObject1).measure(i2, k);
-                  if (this.EV == null) {
+                  if (this.blc == null) {
                     break label3811;
                   }
-                  AppMethodBeat.o(194758);
+                  AppMethodBeat.o(194352);
                   throw null;
                   k = 0;
                   break;
@@ -1266,41 +1301,41 @@ public class ConstraintLayout
                 break label3964;
               }
               bool = true;
-              ((androidx.constraintlayout.a.a.f)localObject3).Ci = bool;
+              ((androidx.constraintlayout.a.a.f)localObject3).bip = bool;
               if (m != -2) {
                 break label3970;
               }
               bool = true;
               label3838:
-              ((androidx.constraintlayout.a.a.f)localObject3).Cj = bool;
+              ((androidx.constraintlayout.a.a.f)localObject3).biq = bool;
               k = ((View)localObject1).getMeasuredWidth();
               m = ((View)localObject1).getMeasuredHeight();
               ((androidx.constraintlayout.a.a.f)localObject3).setWidth(k);
               ((androidx.constraintlayout.a.a.f)localObject3).setHeight(m);
               if (i1 != 0) {
-                ((androidx.constraintlayout.a.a.f)localObject3).CQ = k;
+                ((androidx.constraintlayout.a.a.f)localObject3).biX = k;
               }
               if (j != 0) {
-                ((androidx.constraintlayout.a.a.f)localObject3).CR = m;
+                ((androidx.constraintlayout.a.a.f)localObject3).biY = m;
               }
               if (n == 0) {
                 break label3976;
               }
-              ((androidx.constraintlayout.a.a.f)localObject3).fA().be(k);
+              ((androidx.constraintlayout.a.a.f)localObject3).CJ().dS(k);
               if (i == 0) {
                 break label3988;
               }
-              ((androidx.constraintlayout.a.a.f)localObject3).fB().be(m);
+              ((androidx.constraintlayout.a.a.f)localObject3).CK().dS(m);
             }
           }
         }
         for (;;)
         {
-          if (((LayoutParams)localObject2).FT)
+          if (((LayoutParams)localObject2).blX)
           {
             i = ((View)localObject1).getBaseline();
             if (i != -1) {
-              ((androidx.constraintlayout.a.a.f)localObject3).CN = i;
+              ((androidx.constraintlayout.a.a.f)localObject3).biV = i;
             }
           }
           i6 += 1;
@@ -1310,9 +1345,9 @@ public class ConstraintLayout
           break label3821;
           bool = false;
           break label3838;
-          ((androidx.constraintlayout.a.a.f)localObject3).fA().state = 2;
+          ((androidx.constraintlayout.a.a.f)localObject3).CJ().state = 2;
           break label3912;
-          ((androidx.constraintlayout.a.a.f)localObject3).fB().state = 2;
+          ((androidx.constraintlayout.a.a.f)localObject3).CK().state = 2;
         }
       }
       i3 = getPaddingTop() + getPaddingBottom();
@@ -1325,13 +1360,13 @@ public class ConstraintLayout
         if (((View)localObject1).getVisibility() != 8)
         {
           localObject2 = (LayoutParams)((View)localObject1).getLayoutParams();
-          localObject3 = ((LayoutParams)localObject2).Gh;
-          if ((!((LayoutParams)localObject2).FU) && (!((LayoutParams)localObject2).FV))
+          localObject3 = ((LayoutParams)localObject2).bml;
+          if ((!((LayoutParams)localObject2).blY) && (!((LayoutParams)localObject2).blZ))
           {
-            ((androidx.constraintlayout.a.a.f)localObject3).CX = ((View)localObject1).getVisibility();
+            ((androidx.constraintlayout.a.a.f)localObject3).bje = ((View)localObject1).getVisibility();
             i1 = ((LayoutParams)localObject2).width;
             i2 = ((LayoutParams)localObject2).height;
-            if ((((LayoutParams)localObject2).FR) || (((LayoutParams)localObject2).FS) || ((!((LayoutParams)localObject2).FR) && (((LayoutParams)localObject2).FE == 1)) || (((LayoutParams)localObject2).width == -1) || ((!((LayoutParams)localObject2).FS) && ((((LayoutParams)localObject2).FF == 1) || (((LayoutParams)localObject2).height == -1))))
+            if ((((LayoutParams)localObject2).blV) || (((LayoutParams)localObject2).blW) || ((!((LayoutParams)localObject2).blV) && (((LayoutParams)localObject2).blJ == 1)) || (((LayoutParams)localObject2).width == -1) || ((!((LayoutParams)localObject2).blW) && ((((LayoutParams)localObject2).blK == 1) || (((LayoutParams)localObject2).height == -1))))
             {
               i = 1;
               m = 0;
@@ -1353,10 +1388,10 @@ public class ConstraintLayout
             for (;;)
             {
               ((View)localObject1).measure(k, m);
-              if (this.EV == null) {
+              if (this.blc == null) {
                 break label4353;
               }
-              AppMethodBeat.o(194758);
+              AppMethodBeat.o(194352);
               throw null;
               i = 0;
               break;
@@ -1390,7 +1425,7 @@ public class ConstraintLayout
               break label4476;
             }
             bool = true;
-            ((androidx.constraintlayout.a.a.f)localObject3).Ci = bool;
+            ((androidx.constraintlayout.a.a.f)localObject3).bip = bool;
             if (i2 != -2) {
               break label4482;
             }
@@ -1398,22 +1433,22 @@ public class ConstraintLayout
         }
         for (bool = true;; bool = false)
         {
-          ((androidx.constraintlayout.a.a.f)localObject3).Cj = bool;
+          ((androidx.constraintlayout.a.a.f)localObject3).biq = bool;
           m = ((View)localObject1).getMeasuredWidth();
           k = ((View)localObject1).getMeasuredHeight();
           ((androidx.constraintlayout.a.a.f)localObject3).setWidth(m);
           ((androidx.constraintlayout.a.a.f)localObject3).setHeight(k);
           if (i != 0) {
-            ((androidx.constraintlayout.a.a.f)localObject3).CQ = m;
+            ((androidx.constraintlayout.a.a.f)localObject3).biX = m;
           }
           if (j != 0) {
-            ((androidx.constraintlayout.a.a.f)localObject3).CR = k;
+            ((androidx.constraintlayout.a.a.f)localObject3).biY = k;
           }
-          if (((LayoutParams)localObject2).FT)
+          if (((LayoutParams)localObject2).blX)
           {
             i = ((View)localObject1).getBaseline();
             if (i != -1) {
-              ((androidx.constraintlayout.a.a.f)localObject3).CN = i;
+              ((androidx.constraintlayout.a.a.f)localObject3).biV = i;
             }
           }
           n += 1;
@@ -1433,85 +1468,85 @@ public class ConstraintLayout
           if ((localObject1 instanceof Placeholder))
           {
             localObject2 = (Placeholder)localObject1;
-            if (((Placeholder)localObject2).GR != null)
+            if (((Placeholder)localObject2).bmR != null)
             {
               localObject1 = (LayoutParams)((Placeholder)localObject2).getLayoutParams();
-              localObject2 = (LayoutParams)((Placeholder)localObject2).GR.getLayoutParams();
-              ((LayoutParams)localObject2).Gh.CX = 0;
-              ((LayoutParams)localObject1).Gh.setWidth(((LayoutParams)localObject2).Gh.getWidth());
-              ((LayoutParams)localObject1).Gh.setHeight(((LayoutParams)localObject2).Gh.getHeight());
-              ((LayoutParams)localObject2).Gh.CX = 8;
+              localObject2 = (LayoutParams)((Placeholder)localObject2).bmR.getLayoutParams();
+              ((LayoutParams)localObject2).bml.bje = 0;
+              ((LayoutParams)localObject1).bml.setWidth(((LayoutParams)localObject2).bml.getWidth());
+              ((LayoutParams)localObject1).bml.setHeight(((LayoutParams)localObject2).bml.getHeight());
+              ((LayoutParams)localObject2).bml.bje = 8;
             }
           }
           i += 1;
         }
-        j = this.EH.size();
+        j = this.bkO.size();
         if (j > 0)
         {
           i = 0;
           while (i < j)
           {
-            this.EH.get(i);
+            this.bkO.get(i);
             i += 1;
           }
         }
         if ((getChildCount() > 0) && (i5 != 0)) {
-          androidx.constraintlayout.a.a.a.a(this.EJ);
+          androidx.constraintlayout.a.a.a.a(this.bkQ);
         }
-        if (this.EJ.DE)
+        if (this.bkQ.bjM)
         {
-          if ((this.EJ.DF) && (i13 == -2147483648))
+          if ((this.bkQ.bjN) && (i13 == -2147483648))
           {
-            if (this.EJ.DH < i14) {
-              this.EJ.setWidth(this.EJ.DH);
+            if (this.bkQ.bjP < i14) {
+              this.bkQ.setWidth(this.bkQ.bjP);
             }
-            this.EJ.a(f.a.Do);
+            this.bkQ.a(f.a.bjw);
           }
-          if ((this.EJ.DG) && (i15 == -2147483648))
+          if ((this.bkQ.bjO) && (i15 == -2147483648))
           {
-            if (this.EJ.DI < i16) {
-              this.EJ.setHeight(this.EJ.DI);
+            if (this.bkQ.bjQ < i16) {
+              this.bkQ.setHeight(this.bkQ.bjQ);
             }
-            this.EJ.b(f.a.Do);
+            this.bkQ.b(f.a.bjw);
           }
         }
-        if ((this.DJ & 0x20) == 32)
+        if ((this.bjR & 0x20) == 32)
         {
-          i = this.EJ.getWidth();
-          j = this.EJ.getHeight();
-          if ((this.EP != i) && (i13 == 1073741824)) {
-            androidx.constraintlayout.a.a.a.a(this.EJ.DD, 0, i);
+          i = this.bkQ.getWidth();
+          j = this.bkQ.getHeight();
+          if ((this.bkW != i) && (i13 == 1073741824)) {
+            androidx.constraintlayout.a.a.a.g(this.bkQ.bjL, 0, i);
           }
-          if ((this.EQ != j) && (i15 == 1073741824)) {
-            androidx.constraintlayout.a.a.a.a(this.EJ.DD, 1, j);
+          if ((this.bkX != j) && (i15 == 1073741824)) {
+            androidx.constraintlayout.a.a.a.g(this.bkQ.bjL, 1, j);
           }
-          if ((this.EJ.DF) && (this.EJ.DH > i14)) {
-            androidx.constraintlayout.a.a.a.a(this.EJ.DD, 0, i14);
+          if ((this.bkQ.bjN) && (this.bkQ.bjP > i14)) {
+            androidx.constraintlayout.a.a.a.g(this.bkQ.bjL, 0, i14);
           }
-          if ((this.EJ.DG) && (this.EJ.DI > i16)) {
-            androidx.constraintlayout.a.a.a.a(this.EJ.DD, 1, i16);
+          if ((this.bkQ.bjO) && (this.bkQ.bjQ > i16)) {
+            androidx.constraintlayout.a.a.a.g(this.bkQ.bjL, 1, i16);
           }
         }
         if (getChildCount() > 0) {
-          ga();
+          Dj();
         }
         j = 0;
         i = 0;
-        i6 = this.EI.size();
+        i6 = this.bkP.size();
         i7 = i12 + getPaddingBottom();
         i8 = i11 + getPaddingRight();
         if (i6 > 0)
         {
           m = 0;
-          if (this.EJ.fM() == f.a.Dp)
+          if (this.bkQ.CV() == f.a.bjx)
           {
             i1 = 1;
-            if (this.EJ.fN() != f.a.Dp) {
+            if (this.bkQ.CW() != f.a.bjx) {
               break label5268;
             }
             i2 = 1;
-            j = Math.max(this.EJ.getWidth(), this.lj);
-            k = Math.max(this.EJ.getHeight(), this.CO);
+            j = Math.max(this.bkQ.getWidth(), this.mf);
+            k = Math.max(this.bkQ.getHeight(), this.biW);
             i3 = 0;
           }
           for (;;)
@@ -1519,29 +1554,29 @@ public class ConstraintLayout
             if (i3 >= i6) {
               break label5566;
             }
-            localObject1 = (androidx.constraintlayout.a.a.f)this.EI.get(i3);
-            localObject2 = (View)((androidx.constraintlayout.a.a.f)localObject1).CV;
+            localObject1 = (androidx.constraintlayout.a.a.f)this.bkP.get(i3);
+            localObject2 = (View)((androidx.constraintlayout.a.a.f)localObject1).bjc;
             if (localObject2 == null) {
               break label5970;
             }
             localObject3 = (LayoutParams)((View)localObject2).getLayoutParams();
-            if ((((LayoutParams)localObject3).FV) || (((LayoutParams)localObject3).FU) || (((View)localObject2).getVisibility() == 8) || ((i4 != 0) && (((androidx.constraintlayout.a.a.f)localObject1).fA().fW()) && (((androidx.constraintlayout.a.a.f)localObject1).fB().fW()))) {
+            if ((((LayoutParams)localObject3).blZ) || (((LayoutParams)localObject3).blY) || (((View)localObject2).getVisibility() == 8) || ((i4 != 0) && (((androidx.constraintlayout.a.a.f)localObject1).CJ().Df()) && (((androidx.constraintlayout.a.a.f)localObject1).CK().Df()))) {
               break label5970;
             }
-            if ((((LayoutParams)localObject3).width == -2) && (((LayoutParams)localObject3).FR))
+            if ((((LayoutParams)localObject3).width == -2) && (((LayoutParams)localObject3).blV))
             {
               n = getChildMeasureSpec(paramInt1, i8, ((LayoutParams)localObject3).width);
-              if ((((LayoutParams)localObject3).height != -2) || (!((LayoutParams)localObject3).FS)) {
+              if ((((LayoutParams)localObject3).height != -2) || (!((LayoutParams)localObject3).blW)) {
                 break label5290;
               }
             }
             for (i5 = getChildMeasureSpec(paramInt2, i7, ((LayoutParams)localObject3).height);; i5 = View.MeasureSpec.makeMeasureSpec(((androidx.constraintlayout.a.a.f)localObject1).getHeight(), 1073741824))
             {
               ((View)localObject2).measure(n, i5);
-              if (this.EV == null) {
+              if (this.blc == null) {
                 break label5306;
               }
-              AppMethodBeat.o(194758);
+              AppMethodBeat.o(194352);
               throw null;
               i1 = 0;
               break;
@@ -1557,37 +1592,37 @@ public class ConstraintLayout
             }
             ((androidx.constraintlayout.a.a.f)localObject1).setWidth(n);
             if (i4 != 0) {
-              ((androidx.constraintlayout.a.a.f)localObject1).fA().be(n);
+              ((androidx.constraintlayout.a.a.f)localObject1).CJ().dS(n);
             }
-            if ((i1 == 0) || (((androidx.constraintlayout.a.a.f)localObject1).fG() <= j)) {
+            if ((i1 == 0) || (((androidx.constraintlayout.a.a.f)localObject1).CP() <= j)) {
               break label6002;
             }
-            m = Math.max(j, ((androidx.constraintlayout.a.a.f)localObject1).fG() + ((androidx.constraintlayout.a.a.f)localObject1).a(e.c.BO).fv());
+            m = Math.max(j, ((androidx.constraintlayout.a.a.f)localObject1).CP() + ((androidx.constraintlayout.a.a.f)localObject1).a(e.c.bhV).CE());
             j = 1;
             if (i5 == ((androidx.constraintlayout.a.a.f)localObject1).getHeight()) {
               break label5995;
             }
             ((androidx.constraintlayout.a.a.f)localObject1).setHeight(i5);
             if (i4 != 0) {
-              ((androidx.constraintlayout.a.a.f)localObject1).fB().be(i5);
+              ((androidx.constraintlayout.a.a.f)localObject1).CK().dS(i5);
             }
-            if ((i2 == 0) || (((androidx.constraintlayout.a.a.f)localObject1).fH() <= k)) {
+            if ((i2 == 0) || (((androidx.constraintlayout.a.a.f)localObject1).CQ() <= k)) {
               break label5988;
             }
-            j = Math.max(k, ((androidx.constraintlayout.a.a.f)localObject1).fH() + ((androidx.constraintlayout.a.a.f)localObject1).a(e.c.BP).fv());
+            j = Math.max(k, ((androidx.constraintlayout.a.a.f)localObject1).CQ() + ((androidx.constraintlayout.a.a.f)localObject1).a(e.c.bhW).CE());
             n = 1;
             k = j;
             j = n;
-            if (((LayoutParams)localObject3).FT)
+            if (((LayoutParams)localObject3).blX)
             {
               i5 = ((View)localObject2).getBaseline();
               j = n;
               if (i5 != -1)
               {
                 j = n;
-                if (i5 != ((androidx.constraintlayout.a.a.f)localObject1).CN)
+                if (i5 != ((androidx.constraintlayout.a.a.f)localObject1).biV)
                 {
-                  ((androidx.constraintlayout.a.a.f)localObject1).CN = i5;
+                  ((androidx.constraintlayout.a.a.f)localObject1).biV = i5;
                   j = 1;
                 }
               }
@@ -1603,25 +1638,25 @@ public class ConstraintLayout
           }
           if (m != 0)
           {
-            this.EJ.setWidth(i9);
-            this.EJ.setHeight(i10);
+            this.bkQ.setWidth(i9);
+            this.bkQ.setHeight(i10);
             if (i4 != 0) {
-              this.EJ.fR();
+              this.bkQ.Da();
             }
-            ga();
+            Dj();
             m = 0;
-            if (this.EJ.getWidth() < j)
+            if (this.bkQ.getWidth() < j)
             {
-              this.EJ.setWidth(j);
+              this.bkQ.setWidth(j);
               m = 1;
             }
-            if (this.EJ.getHeight() < k)
+            if (this.bkQ.getHeight() < k)
             {
-              this.EJ.setHeight(k);
+              this.bkQ.setHeight(k);
               m = 1;
             }
             if (m != 0) {
-              ga();
+              Dj();
             }
           }
           k = 0;
@@ -1631,46 +1666,46 @@ public class ConstraintLayout
             if (k >= i6) {
               break;
             }
-            localObject1 = (androidx.constraintlayout.a.a.f)this.EI.get(k);
-            localObject2 = (View)((androidx.constraintlayout.a.a.f)localObject1).CV;
-            if ((localObject2 != null) && ((((View)localObject2).getMeasuredWidth() != ((androidx.constraintlayout.a.a.f)localObject1).getWidth()) || (((View)localObject2).getMeasuredHeight() != ((androidx.constraintlayout.a.a.f)localObject1).getHeight())) && (((androidx.constraintlayout.a.a.f)localObject1).CX != 8))
+            localObject1 = (androidx.constraintlayout.a.a.f)this.bkP.get(k);
+            localObject2 = (View)((androidx.constraintlayout.a.a.f)localObject1).bjc;
+            if ((localObject2 != null) && ((((View)localObject2).getMeasuredWidth() != ((androidx.constraintlayout.a.a.f)localObject1).getWidth()) || (((View)localObject2).getMeasuredHeight() != ((androidx.constraintlayout.a.a.f)localObject1).getHeight())) && (((androidx.constraintlayout.a.a.f)localObject1).bje != 8))
             {
               ((View)localObject2).measure(View.MeasureSpec.makeMeasureSpec(((androidx.constraintlayout.a.a.f)localObject1).getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(((androidx.constraintlayout.a.a.f)localObject1).getHeight(), 1073741824));
-              if (this.EV != null)
+              if (this.blc != null)
               {
-                AppMethodBeat.o(194758);
+                AppMethodBeat.o(194352);
                 throw null;
               }
             }
             k += 1;
           }
         }
-        i = this.EJ.getWidth() + i8;
-        k = this.EJ.getHeight() + i7;
+        i = this.bkQ.getWidth() + i8;
+        k = this.bkQ.getHeight() + i7;
         if (Build.VERSION.SDK_INT >= 11)
         {
           paramInt1 = resolveSizeAndState(i, paramInt1, j);
           i = resolveSizeAndState(k, paramInt2, j << 16);
-          paramInt2 = Math.min(this.uJ, paramInt1 & 0xFFFFFF);
-          i = Math.min(this.EK, i & 0xFFFFFF);
+          paramInt2 = Math.min(this.vF, paramInt1 & 0xFFFFFF);
+          i = Math.min(this.bkR, i & 0xFFFFFF);
           paramInt1 = paramInt2;
-          if (this.EJ.DL) {
+          if (this.bkQ.bjT) {
             paramInt1 = paramInt2 | 0x1000000;
           }
           paramInt2 = i;
-          if (this.EJ.DM) {
+          if (this.bkQ.bjU) {
             paramInt2 = i | 0x1000000;
           }
           setMeasuredDimension(paramInt1, paramInt2);
-          this.EP = paramInt1;
-          this.EQ = paramInt2;
-          AppMethodBeat.o(194758);
+          this.bkW = paramInt1;
+          this.bkX = paramInt2;
+          AppMethodBeat.o(194352);
           return;
         }
         setMeasuredDimension(i, k);
-        this.EP = i;
-        this.EQ = k;
-        AppMethodBeat.o(194758);
+        this.bkW = i;
+        this.bkX = k;
+        AppMethodBeat.o(194352);
         return;
       }
     }
@@ -1678,140 +1713,140 @@ public class ConstraintLayout
   
   public void onViewAdded(View paramView)
   {
-    AppMethodBeat.i(194710);
+    AppMethodBeat.i(194239);
     if (Build.VERSION.SDK_INT >= 14) {
       super.onViewAdded(paramView);
     }
-    Object localObject = u(paramView);
+    Object localObject = D(paramView);
     if (((paramView instanceof Guideline)) && (!(localObject instanceof i)))
     {
       localObject = (LayoutParams)paramView.getLayoutParams();
-      ((LayoutParams)localObject).Gh = new i();
-      ((LayoutParams)localObject).FU = true;
-      ((i)((LayoutParams)localObject).Gh).setOrientation(((LayoutParams)localObject).FO);
+      ((LayoutParams)localObject).bml = new i();
+      ((LayoutParams)localObject).blY = true;
+      ((i)((LayoutParams)localObject).bml).setOrientation(((LayoutParams)localObject).orientation);
     }
     if ((paramView instanceof ConstraintHelper))
     {
       localObject = (ConstraintHelper)paramView;
-      ((ConstraintHelper)localObject).fY();
-      ((LayoutParams)paramView.getLayoutParams()).FV = true;
-      if (!this.EH.contains(localObject)) {
-        this.EH.add(localObject);
+      ((ConstraintHelper)localObject).Dh();
+      ((LayoutParams)paramView.getLayoutParams()).blZ = true;
+      if (!this.bkO.contains(localObject)) {
+        this.bkO.add(localObject);
       }
     }
-    this.EG.put(paramView.getId(), paramView);
-    this.EL = true;
-    AppMethodBeat.o(194710);
+    this.bkN.put(paramView.getId(), paramView);
+    this.bkS = true;
+    AppMethodBeat.o(194239);
   }
   
   public void onViewRemoved(View paramView)
   {
-    AppMethodBeat.i(194713);
+    AppMethodBeat.i(194246);
     if (Build.VERSION.SDK_INT >= 14) {
       super.onViewRemoved(paramView);
     }
-    this.EG.remove(paramView.getId());
-    androidx.constraintlayout.a.a.f localf = u(paramView);
-    this.EJ.f(localf);
-    this.EH.remove(paramView);
-    this.EI.remove(localf);
-    this.EL = true;
-    AppMethodBeat.o(194713);
+    this.bkN.remove(paramView.getId());
+    androidx.constraintlayout.a.a.f localf = D(paramView);
+    this.bkQ.f(localf);
+    this.bkO.remove(paramView);
+    this.bkP.remove(localf);
+    this.bkS = true;
+    AppMethodBeat.o(194246);
   }
   
   public void removeView(View paramView)
   {
-    AppMethodBeat.i(194703);
+    AppMethodBeat.i(194231);
     super.removeView(paramView);
     if (Build.VERSION.SDK_INT < 14) {
       onViewRemoved(paramView);
     }
-    AppMethodBeat.o(194703);
+    AppMethodBeat.o(194231);
   }
   
   public void requestLayout()
   {
-    AppMethodBeat.i(194788);
+    AppMethodBeat.i(194409);
     super.requestLayout();
-    this.EL = true;
-    this.EP = -1;
-    this.EQ = -1;
-    this.ER = -1;
-    this.ES = -1;
-    this.ET = 0;
-    this.EU = 0;
-    AppMethodBeat.o(194788);
+    this.bkS = true;
+    this.bkW = -1;
+    this.bkX = -1;
+    this.bkY = -1;
+    this.bkZ = -1;
+    this.bla = 0;
+    this.blb = 0;
+    AppMethodBeat.o(194409);
   }
   
   public void setConstraintSet(a parama)
   {
-    this.EM = parama;
+    this.bkT = parama;
   }
   
   public void setId(int paramInt)
   {
-    AppMethodBeat.i(194688);
-    this.EG.remove(getId());
+    AppMethodBeat.i(194215);
+    this.bkN.remove(getId());
     super.setId(paramInt);
-    this.EG.put(getId(), this);
-    AppMethodBeat.o(194688);
+    this.bkN.put(getId(), this);
+    AppMethodBeat.o(194215);
   }
   
   public void setMaxHeight(int paramInt)
   {
-    AppMethodBeat.i(194725);
-    if (paramInt == this.EK)
+    AppMethodBeat.i(194281);
+    if (paramInt == this.bkR)
     {
-      AppMethodBeat.o(194725);
+      AppMethodBeat.o(194281);
       return;
     }
-    this.EK = paramInt;
+    this.bkR = paramInt;
     requestLayout();
-    AppMethodBeat.o(194725);
+    AppMethodBeat.o(194281);
   }
   
   public void setMaxWidth(int paramInt)
   {
-    AppMethodBeat.i(194723);
-    if (paramInt == this.uJ)
+    AppMethodBeat.i(194276);
+    if (paramInt == this.vF)
     {
-      AppMethodBeat.o(194723);
+      AppMethodBeat.o(194276);
       return;
     }
-    this.uJ = paramInt;
+    this.vF = paramInt;
     requestLayout();
-    AppMethodBeat.o(194723);
+    AppMethodBeat.o(194276);
   }
   
   public void setMinHeight(int paramInt)
   {
-    AppMethodBeat.i(194718);
-    if (paramInt == this.CO)
+    AppMethodBeat.i(194257);
+    if (paramInt == this.biW)
     {
-      AppMethodBeat.o(194718);
+      AppMethodBeat.o(194257);
       return;
     }
-    this.CO = paramInt;
+    this.biW = paramInt;
     requestLayout();
-    AppMethodBeat.o(194718);
+    AppMethodBeat.o(194257);
   }
   
   public void setMinWidth(int paramInt)
   {
-    AppMethodBeat.i(194715);
-    if (paramInt == this.lj)
+    AppMethodBeat.i(194253);
+    if (paramInt == this.mf)
     {
-      AppMethodBeat.o(194715);
+      AppMethodBeat.o(194253);
       return;
     }
-    this.lj = paramInt;
+    this.mf = paramInt;
     requestLayout();
-    AppMethodBeat.o(194715);
+    AppMethodBeat.o(194253);
   }
   
   public void setOptimizationLevel(int paramInt)
   {
-    this.EJ.DJ = paramInt;
+    this.bkQ.bjR = paramInt;
   }
   
   public boolean shouldDelayChildPressedState()
@@ -1819,377 +1854,341 @@ public class ConstraintLayout
     return false;
   }
   
-  public final androidx.constraintlayout.a.a.f u(View paramView)
-  {
-    AppMethodBeat.i(194732);
-    if (paramView == this)
-    {
-      paramView = this.EJ;
-      AppMethodBeat.o(194732);
-      return paramView;
-    }
-    if (paramView == null)
-    {
-      AppMethodBeat.o(194732);
-      return null;
-    }
-    paramView = ((LayoutParams)paramView.getLayoutParams()).Gh;
-    AppMethodBeat.o(194732);
-    return paramView;
-  }
-  
-  public final Object u(Object paramObject)
-  {
-    AppMethodBeat.i(194671);
-    if ((paramObject instanceof String))
-    {
-      paramObject = (String)paramObject;
-      if ((this.EO != null) && (this.EO.containsKey(paramObject)))
-      {
-        paramObject = this.EO.get(paramObject);
-        AppMethodBeat.o(194671);
-        return paramObject;
-      }
-    }
-    AppMethodBeat.o(194671);
-    return null;
-  }
-  
   public static class LayoutParams
     extends ViewGroup.MarginLayoutParams
   {
-    public int EW;
-    public int EX;
-    public float EY;
-    public int EZ;
-    public float FA;
-    public float FB;
-    public int FC;
-    public int FD;
-    public int FE;
-    public int FF;
-    public int FG;
-    public int FH;
-    public int FI;
-    public int FJ;
-    public float FK;
-    public float FL;
-    public int FM;
-    public int FN;
-    public int FO;
-    public boolean FP;
-    public boolean FQ;
-    boolean FR;
-    boolean FS;
-    boolean FT;
-    boolean FU;
-    boolean FV;
-    boolean FW;
-    int FX;
-    int FY;
-    int FZ;
-    public int Fa;
-    public int Fb;
-    public int Fc;
-    public int Fd;
-    public int Fe;
-    public int Ff;
-    public int Fg;
-    public int Fh;
-    public int Fi;
-    public int Fj;
-    public float Fk;
-    public int Fl;
-    public int Fm;
-    public int Fn;
-    public int Fo;
-    public int Fp;
-    public int Fq;
-    public int Fr;
-    public int Fs;
-    public int Ft;
-    public int Fu;
-    public float Fv;
-    public float Fw;
-    public String Fx;
-    float Fy;
-    int Fz;
-    int Ga;
-    int Gb;
-    int Gc;
-    float Gd;
-    int Ge;
-    int Gf;
-    float Gg;
-    androidx.constraintlayout.a.a.f Gh;
-    public boolean Gi;
+    public float atU;
+    public float atV;
+    public int blA;
+    public int blB;
+    public String blC;
+    float blD;
+    int blE;
+    public float blF;
+    public float blG;
+    public int blH;
+    public int blI;
+    public int blJ;
+    public int blK;
+    public int blL;
+    public int blM;
+    public int blN;
+    public int blO;
+    public float blP;
+    public float blQ;
+    public int blR;
+    public int blS;
+    public boolean blT;
+    public boolean blU;
+    boolean blV;
+    boolean blW;
+    boolean blX;
+    boolean blY;
+    boolean blZ;
+    public int bld;
+    public int ble;
+    public float blf;
+    public int blg;
+    public int blh;
+    public int bli;
+    public int blj;
+    public int blk;
+    public int bll;
+    public int blm;
+    public int bln;
+    public int blo;
+    public int blp;
+    public int blq;
+    public float blr;
+    public int bls;
+    public int blt;
+    public int blu;
+    public int blv;
+    public int blw;
+    public int blx;
+    public int bly;
+    public int blz;
+    boolean bma;
+    int bmb;
+    int bmc;
+    int bmd;
+    int bme;
+    int bmf;
+    int bmg;
+    float bmh;
+    int bmi;
+    int bmj;
+    float bmk;
+    androidx.constraintlayout.a.a.f bml;
+    public boolean bmm;
+    public int orientation;
     
     public LayoutParams(int paramInt1, int paramInt2)
     {
       super(paramInt2);
-      AppMethodBeat.i(194639);
-      this.EW = -1;
-      this.EX = -1;
-      this.EY = -1.0F;
-      this.EZ = -1;
-      this.Fa = -1;
-      this.Fb = -1;
-      this.Fc = -1;
-      this.Fd = -1;
-      this.Fe = -1;
-      this.Ff = -1;
-      this.Fg = -1;
-      this.Fh = -1;
-      this.Fi = -1;
-      this.Fj = 0;
-      this.Fk = 0.0F;
-      this.Fl = -1;
-      this.Fm = -1;
-      this.Fn = -1;
-      this.Fo = -1;
-      this.Fp = -1;
-      this.Fq = -1;
-      this.Fr = -1;
-      this.Fs = -1;
-      this.Ft = -1;
-      this.Fu = -1;
-      this.Fv = 0.5F;
-      this.Fw = 0.5F;
-      this.Fx = null;
-      this.Fy = 0.0F;
-      this.Fz = 1;
-      this.FA = -1.0F;
-      this.FB = -1.0F;
-      this.FC = 0;
-      this.FD = 0;
-      this.FE = 0;
-      this.FF = 0;
-      this.FG = 0;
-      this.FH = 0;
-      this.FI = 0;
-      this.FJ = 0;
-      this.FK = 1.0F;
-      this.FL = 1.0F;
-      this.FM = -1;
-      this.FN = -1;
-      this.FO = -1;
-      this.FP = false;
-      this.FQ = false;
-      this.FR = true;
-      this.FS = true;
-      this.FT = false;
-      this.FU = false;
-      this.FV = false;
-      this.FW = false;
-      this.FX = -1;
-      this.FY = -1;
-      this.FZ = -1;
-      this.Ga = -1;
-      this.Gb = -1;
-      this.Gc = -1;
-      this.Gd = 0.5F;
-      this.Gh = new androidx.constraintlayout.a.a.f();
-      this.Gi = false;
-      AppMethodBeat.o(194639);
+      AppMethodBeat.i(194217);
+      this.bld = -1;
+      this.ble = -1;
+      this.blf = -1.0F;
+      this.blg = -1;
+      this.blh = -1;
+      this.bli = -1;
+      this.blj = -1;
+      this.blk = -1;
+      this.bll = -1;
+      this.blm = -1;
+      this.bln = -1;
+      this.blo = -1;
+      this.blp = -1;
+      this.blq = 0;
+      this.blr = 0.0F;
+      this.bls = -1;
+      this.blt = -1;
+      this.blu = -1;
+      this.blv = -1;
+      this.blw = -1;
+      this.blx = -1;
+      this.bly = -1;
+      this.blz = -1;
+      this.blA = -1;
+      this.blB = -1;
+      this.atU = 0.5F;
+      this.atV = 0.5F;
+      this.blC = null;
+      this.blD = 0.0F;
+      this.blE = 1;
+      this.blF = -1.0F;
+      this.blG = -1.0F;
+      this.blH = 0;
+      this.blI = 0;
+      this.blJ = 0;
+      this.blK = 0;
+      this.blL = 0;
+      this.blM = 0;
+      this.blN = 0;
+      this.blO = 0;
+      this.blP = 1.0F;
+      this.blQ = 1.0F;
+      this.blR = -1;
+      this.blS = -1;
+      this.orientation = -1;
+      this.blT = false;
+      this.blU = false;
+      this.blV = true;
+      this.blW = true;
+      this.blX = false;
+      this.blY = false;
+      this.blZ = false;
+      this.bma = false;
+      this.bmb = -1;
+      this.bmc = -1;
+      this.bmd = -1;
+      this.bme = -1;
+      this.bmf = -1;
+      this.bmg = -1;
+      this.bmh = 0.5F;
+      this.bml = new androidx.constraintlayout.a.a.f();
+      this.bmm = false;
+      AppMethodBeat.o(194217);
     }
     
     public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      AppMethodBeat.i(194627);
-      this.EW = -1;
-      this.EX = -1;
-      this.EY = -1.0F;
-      this.EZ = -1;
-      this.Fa = -1;
-      this.Fb = -1;
-      this.Fc = -1;
-      this.Fd = -1;
-      this.Fe = -1;
-      this.Ff = -1;
-      this.Fg = -1;
-      this.Fh = -1;
-      this.Fi = -1;
-      this.Fj = 0;
-      this.Fk = 0.0F;
-      this.Fl = -1;
-      this.Fm = -1;
-      this.Fn = -1;
-      this.Fo = -1;
-      this.Fp = -1;
-      this.Fq = -1;
-      this.Fr = -1;
-      this.Fs = -1;
-      this.Ft = -1;
-      this.Fu = -1;
-      this.Fv = 0.5F;
-      this.Fw = 0.5F;
-      this.Fx = null;
-      this.Fy = 0.0F;
-      this.Fz = 1;
-      this.FA = -1.0F;
-      this.FB = -1.0F;
-      this.FC = 0;
-      this.FD = 0;
-      this.FE = 0;
-      this.FF = 0;
-      this.FG = 0;
-      this.FH = 0;
-      this.FI = 0;
-      this.FJ = 0;
-      this.FK = 1.0F;
-      this.FL = 1.0F;
-      this.FM = -1;
-      this.FN = -1;
-      this.FO = -1;
-      this.FP = false;
-      this.FQ = false;
-      this.FR = true;
-      this.FS = true;
-      this.FT = false;
-      this.FU = false;
-      this.FV = false;
-      this.FW = false;
-      this.FX = -1;
-      this.FY = -1;
-      this.FZ = -1;
-      this.Ga = -1;
-      this.Gb = -1;
-      this.Gc = -1;
-      this.Gd = 0.5F;
-      this.Gh = new androidx.constraintlayout.a.a.f();
-      this.Gi = false;
+      AppMethodBeat.i(194211);
+      this.bld = -1;
+      this.ble = -1;
+      this.blf = -1.0F;
+      this.blg = -1;
+      this.blh = -1;
+      this.bli = -1;
+      this.blj = -1;
+      this.blk = -1;
+      this.bll = -1;
+      this.blm = -1;
+      this.bln = -1;
+      this.blo = -1;
+      this.blp = -1;
+      this.blq = 0;
+      this.blr = 0.0F;
+      this.bls = -1;
+      this.blt = -1;
+      this.blu = -1;
+      this.blv = -1;
+      this.blw = -1;
+      this.blx = -1;
+      this.bly = -1;
+      this.blz = -1;
+      this.blA = -1;
+      this.blB = -1;
+      this.atU = 0.5F;
+      this.atV = 0.5F;
+      this.blC = null;
+      this.blD = 0.0F;
+      this.blE = 1;
+      this.blF = -1.0F;
+      this.blG = -1.0F;
+      this.blH = 0;
+      this.blI = 0;
+      this.blJ = 0;
+      this.blK = 0;
+      this.blL = 0;
+      this.blM = 0;
+      this.blN = 0;
+      this.blO = 0;
+      this.blP = 1.0F;
+      this.blQ = 1.0F;
+      this.blR = -1;
+      this.blS = -1;
+      this.orientation = -1;
+      this.blT = false;
+      this.blU = false;
+      this.blV = true;
+      this.blW = true;
+      this.blX = false;
+      this.blY = false;
+      this.blZ = false;
+      this.bma = false;
+      this.bmb = -1;
+      this.bmc = -1;
+      this.bmd = -1;
+      this.bme = -1;
+      this.bmf = -1;
+      this.bmg = -1;
+      this.bmh = 0.5F;
+      this.bml = new androidx.constraintlayout.a.a.f();
+      this.bmm = false;
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ConstraintLayout_Layout);
       int k = paramContext.getIndexCount();
       int i = 0;
       if (i < k)
       {
         int j = paramContext.getIndex(i);
-        switch (a.Gj.get(j))
+        switch (a.bmn.get(j))
         {
         }
         for (;;)
         {
           i += 1;
           break;
-          this.EZ = paramContext.getResourceId(j, this.EZ);
-          if (this.EZ == -1)
+          this.blg = paramContext.getResourceId(j, this.blg);
+          if (this.blg == -1)
           {
-            this.EZ = paramContext.getInt(j, -1);
+            this.blg = paramContext.getInt(j, -1);
             continue;
-            this.Fa = paramContext.getResourceId(j, this.Fa);
-            if (this.Fa == -1)
+            this.blh = paramContext.getResourceId(j, this.blh);
+            if (this.blh == -1)
             {
-              this.Fa = paramContext.getInt(j, -1);
+              this.blh = paramContext.getInt(j, -1);
               continue;
-              this.Fb = paramContext.getResourceId(j, this.Fb);
-              if (this.Fb == -1)
+              this.bli = paramContext.getResourceId(j, this.bli);
+              if (this.bli == -1)
               {
-                this.Fb = paramContext.getInt(j, -1);
+                this.bli = paramContext.getInt(j, -1);
                 continue;
-                this.Fc = paramContext.getResourceId(j, this.Fc);
-                if (this.Fc == -1)
+                this.blj = paramContext.getResourceId(j, this.blj);
+                if (this.blj == -1)
                 {
-                  this.Fc = paramContext.getInt(j, -1);
+                  this.blj = paramContext.getInt(j, -1);
                   continue;
-                  this.Fd = paramContext.getResourceId(j, this.Fd);
-                  if (this.Fd == -1)
+                  this.blk = paramContext.getResourceId(j, this.blk);
+                  if (this.blk == -1)
                   {
-                    this.Fd = paramContext.getInt(j, -1);
+                    this.blk = paramContext.getInt(j, -1);
                     continue;
-                    this.Fe = paramContext.getResourceId(j, this.Fe);
-                    if (this.Fe == -1)
+                    this.bll = paramContext.getResourceId(j, this.bll);
+                    if (this.bll == -1)
                     {
-                      this.Fe = paramContext.getInt(j, -1);
+                      this.bll = paramContext.getInt(j, -1);
                       continue;
-                      this.Ff = paramContext.getResourceId(j, this.Ff);
-                      if (this.Ff == -1)
+                      this.blm = paramContext.getResourceId(j, this.blm);
+                      if (this.blm == -1)
                       {
-                        this.Ff = paramContext.getInt(j, -1);
+                        this.blm = paramContext.getInt(j, -1);
                         continue;
-                        this.Fg = paramContext.getResourceId(j, this.Fg);
-                        if (this.Fg == -1)
+                        this.bln = paramContext.getResourceId(j, this.bln);
+                        if (this.bln == -1)
                         {
-                          this.Fg = paramContext.getInt(j, -1);
+                          this.bln = paramContext.getInt(j, -1);
                           continue;
-                          this.Fh = paramContext.getResourceId(j, this.Fh);
-                          if (this.Fh == -1)
+                          this.blo = paramContext.getResourceId(j, this.blo);
+                          if (this.blo == -1)
                           {
-                            this.Fh = paramContext.getInt(j, -1);
+                            this.blo = paramContext.getInt(j, -1);
                             continue;
-                            this.Fi = paramContext.getResourceId(j, this.Fi);
-                            if (this.Fi == -1)
+                            this.blp = paramContext.getResourceId(j, this.blp);
+                            if (this.blp == -1)
                             {
-                              this.Fi = paramContext.getInt(j, -1);
+                              this.blp = paramContext.getInt(j, -1);
                               continue;
-                              this.Fj = paramContext.getDimensionPixelSize(j, this.Fj);
+                              this.blq = paramContext.getDimensionPixelSize(j, this.blq);
                               continue;
-                              this.Fk = (paramContext.getFloat(j, this.Fk) % 360.0F);
-                              if (this.Fk < 0.0F)
+                              this.blr = (paramContext.getFloat(j, this.blr) % 360.0F);
+                              if (this.blr < 0.0F)
                               {
-                                this.Fk = ((360.0F - this.Fk) % 360.0F);
+                                this.blr = ((360.0F - this.blr) % 360.0F);
                                 continue;
-                                this.FM = paramContext.getDimensionPixelOffset(j, this.FM);
+                                this.blR = paramContext.getDimensionPixelOffset(j, this.blR);
                                 continue;
-                                this.FN = paramContext.getDimensionPixelOffset(j, this.FN);
+                                this.blS = paramContext.getDimensionPixelOffset(j, this.blS);
                                 continue;
-                                this.EW = paramContext.getDimensionPixelOffset(j, this.EW);
+                                this.bld = paramContext.getDimensionPixelOffset(j, this.bld);
                                 continue;
-                                this.EX = paramContext.getDimensionPixelOffset(j, this.EX);
+                                this.ble = paramContext.getDimensionPixelOffset(j, this.ble);
                                 continue;
-                                this.EY = paramContext.getFloat(j, this.EY);
+                                this.blf = paramContext.getFloat(j, this.blf);
                                 continue;
-                                this.FO = paramContext.getInt(j, this.FO);
+                                this.orientation = paramContext.getInt(j, this.orientation);
                                 continue;
-                                this.Fl = paramContext.getResourceId(j, this.Fl);
-                                if (this.Fl == -1)
+                                this.bls = paramContext.getResourceId(j, this.bls);
+                                if (this.bls == -1)
                                 {
-                                  this.Fl = paramContext.getInt(j, -1);
+                                  this.bls = paramContext.getInt(j, -1);
                                   continue;
-                                  this.Fm = paramContext.getResourceId(j, this.Fm);
-                                  if (this.Fm == -1)
+                                  this.blt = paramContext.getResourceId(j, this.blt);
+                                  if (this.blt == -1)
                                   {
-                                    this.Fm = paramContext.getInt(j, -1);
+                                    this.blt = paramContext.getInt(j, -1);
                                     continue;
-                                    this.Fn = paramContext.getResourceId(j, this.Fn);
-                                    if (this.Fn == -1)
+                                    this.blu = paramContext.getResourceId(j, this.blu);
+                                    if (this.blu == -1)
                                     {
-                                      this.Fn = paramContext.getInt(j, -1);
+                                      this.blu = paramContext.getInt(j, -1);
                                       continue;
-                                      this.Fo = paramContext.getResourceId(j, this.Fo);
-                                      if (this.Fo == -1)
+                                      this.blv = paramContext.getResourceId(j, this.blv);
+                                      if (this.blv == -1)
                                       {
-                                        this.Fo = paramContext.getInt(j, -1);
+                                        this.blv = paramContext.getInt(j, -1);
                                         continue;
-                                        this.Fp = paramContext.getDimensionPixelSize(j, this.Fp);
+                                        this.blw = paramContext.getDimensionPixelSize(j, this.blw);
                                         continue;
-                                        this.Fq = paramContext.getDimensionPixelSize(j, this.Fq);
+                                        this.blx = paramContext.getDimensionPixelSize(j, this.blx);
                                         continue;
-                                        this.Fr = paramContext.getDimensionPixelSize(j, this.Fr);
+                                        this.bly = paramContext.getDimensionPixelSize(j, this.bly);
                                         continue;
-                                        this.Fs = paramContext.getDimensionPixelSize(j, this.Fs);
+                                        this.blz = paramContext.getDimensionPixelSize(j, this.blz);
                                         continue;
-                                        this.Ft = paramContext.getDimensionPixelSize(j, this.Ft);
+                                        this.blA = paramContext.getDimensionPixelSize(j, this.blA);
                                         continue;
-                                        this.Fu = paramContext.getDimensionPixelSize(j, this.Fu);
+                                        this.blB = paramContext.getDimensionPixelSize(j, this.blB);
                                         continue;
-                                        this.Fv = paramContext.getFloat(j, this.Fv);
+                                        this.atU = paramContext.getFloat(j, this.atU);
                                         continue;
-                                        this.Fw = paramContext.getFloat(j, this.Fw);
+                                        this.atV = paramContext.getFloat(j, this.atV);
                                         continue;
-                                        this.Fx = paramContext.getString(j);
-                                        this.Fy = (0.0F / 0.0F);
-                                        this.Fz = -1;
-                                        if (this.Fx != null)
+                                        this.blC = paramContext.getString(j);
+                                        this.blD = (0.0F / 0.0F);
+                                        this.blE = -1;
+                                        if (this.blC != null)
                                         {
-                                          int m = this.Fx.length();
-                                          j = this.Fx.indexOf(',');
+                                          int m = this.blC.length();
+                                          j = this.blC.indexOf(',');
                                           if ((j > 0) && (j < m - 1))
                                           {
-                                            paramAttributeSet = this.Fx.substring(0, j);
+                                            paramAttributeSet = this.blC.substring(0, j);
                                             if (paramAttributeSet.equalsIgnoreCase("W"))
                                             {
-                                              this.Fz = 0;
+                                              this.blE = 0;
                                               label1495:
                                               j += 1;
                                             }
@@ -2200,12 +2199,12 @@ public class ConstraintLayout
                                           {
                                             for (;;)
                                             {
-                                              int n = this.Fx.indexOf(':');
+                                              int n = this.blC.indexOf(':');
                                               if ((n < 0) || (n >= m - 1)) {
                                                 break label1657;
                                               }
-                                              paramAttributeSet = this.Fx.substring(j, n);
-                                              String str = this.Fx.substring(n + 1);
+                                              paramAttributeSet = this.blC.substring(j, n);
+                                              String str = this.blC.substring(n + 1);
                                               if ((paramAttributeSet.length() <= 0) || (str.length() <= 0)) {
                                                 break;
                                               }
@@ -2216,10 +2215,10 @@ public class ConstraintLayout
                                                 if ((f1 <= 0.0F) || (f2 <= 0.0F)) {
                                                   break;
                                                 }
-                                                if (this.Fz != 1) {
+                                                if (this.blE != 1) {
                                                   break label1641;
                                                 }
-                                                this.Fy = Math.abs(f2 / f1);
+                                                this.blD = Math.abs(f2 / f1);
                                               }
                                               catch (NumberFormatException paramAttributeSet) {}
                                             }
@@ -2227,83 +2226,83 @@ public class ConstraintLayout
                                             if (!paramAttributeSet.equalsIgnoreCase("H")) {
                                               break label1495;
                                             }
-                                            this.Fz = 1;
+                                            this.blE = 1;
                                             break label1495;
                                             j = 0;
                                           }
                                           label1641:
                                           f1 /= f2;
-                                          this.Fy = Math.abs(f1);
+                                          this.blD = Math.abs(f1);
                                           continue;
                                           label1657:
-                                          paramAttributeSet = this.Fx.substring(j);
+                                          paramAttributeSet = this.blC.substring(j);
                                           if (paramAttributeSet.length() > 0)
                                           {
                                             try
                                             {
-                                              this.Fy = Float.parseFloat(paramAttributeSet);
+                                              this.blD = Float.parseFloat(paramAttributeSet);
                                             }
                                             catch (NumberFormatException paramAttributeSet) {}
                                             continue;
-                                            this.FA = paramContext.getFloat(j, this.FA);
+                                            this.blF = paramContext.getFloat(j, this.blF);
                                             continue;
-                                            this.FB = paramContext.getFloat(j, this.FB);
+                                            this.blG = paramContext.getFloat(j, this.blG);
                                             continue;
-                                            this.FC = paramContext.getInt(j, 0);
+                                            this.blH = paramContext.getInt(j, 0);
                                             continue;
-                                            this.FD = paramContext.getInt(j, 0);
+                                            this.blI = paramContext.getInt(j, 0);
                                             continue;
-                                            this.FP = paramContext.getBoolean(j, this.FP);
+                                            this.blT = paramContext.getBoolean(j, this.blT);
                                             continue;
-                                            this.FQ = paramContext.getBoolean(j, this.FQ);
+                                            this.blU = paramContext.getBoolean(j, this.blU);
                                             continue;
-                                            this.FE = paramContext.getInt(j, 0);
-                                            if (this.FE == 1)
+                                            this.blJ = paramContext.getInt(j, 0);
+                                            if (this.blJ == 1)
                                             {
                                               continue;
-                                              this.FF = paramContext.getInt(j, 0);
-                                              if (this.FF == 1)
+                                              this.blK = paramContext.getInt(j, 0);
+                                              if (this.blK == 1)
                                               {
                                                 continue;
                                                 try
                                                 {
-                                                  this.FG = paramContext.getDimensionPixelSize(j, this.FG);
+                                                  this.blL = paramContext.getDimensionPixelSize(j, this.blL);
                                                 }
                                                 catch (Exception paramAttributeSet) {}
-                                                if (paramContext.getInt(j, this.FG) == -2)
+                                                if (paramContext.getInt(j, this.blL) == -2)
                                                 {
-                                                  this.FG = -2;
+                                                  this.blL = -2;
                                                   continue;
                                                   try
                                                   {
-                                                    this.FI = paramContext.getDimensionPixelSize(j, this.FI);
+                                                    this.blN = paramContext.getDimensionPixelSize(j, this.blN);
                                                   }
                                                   catch (Exception paramAttributeSet) {}
-                                                  if (paramContext.getInt(j, this.FI) == -2)
+                                                  if (paramContext.getInt(j, this.blN) == -2)
                                                   {
-                                                    this.FI = -2;
+                                                    this.blN = -2;
                                                     continue;
-                                                    this.FK = Math.max(0.0F, paramContext.getFloat(j, this.FK));
+                                                    this.blP = Math.max(0.0F, paramContext.getFloat(j, this.blP));
                                                     continue;
                                                     try
                                                     {
-                                                      this.FH = paramContext.getDimensionPixelSize(j, this.FH);
+                                                      this.blM = paramContext.getDimensionPixelSize(j, this.blM);
                                                     }
                                                     catch (Exception paramAttributeSet) {}
-                                                    if (paramContext.getInt(j, this.FH) == -2)
+                                                    if (paramContext.getInt(j, this.blM) == -2)
                                                     {
-                                                      this.FH = -2;
+                                                      this.blM = -2;
                                                       continue;
                                                       try
                                                       {
-                                                        this.FJ = paramContext.getDimensionPixelSize(j, this.FJ);
+                                                        this.blO = paramContext.getDimensionPixelSize(j, this.blO);
                                                       }
                                                       catch (Exception paramAttributeSet) {}
-                                                      if (paramContext.getInt(j, this.FJ) == -2)
+                                                      if (paramContext.getInt(j, this.blO) == -2)
                                                       {
-                                                        this.FJ = -2;
+                                                        this.blO = -2;
                                                         continue;
-                                                        this.FL = Math.max(0.0F, paramContext.getFloat(j, this.FL));
+                                                        this.blQ = Math.max(0.0F, paramContext.getFloat(j, this.blQ));
                                                       }
                                                     }
                                                   }
@@ -2330,98 +2329,144 @@ public class ConstraintLayout
         }
       }
       paramContext.recycle();
-      validate();
-      AppMethodBeat.o(194627);
+      Dl();
+      AppMethodBeat.o(194211);
     }
     
     public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
     {
       super();
-      AppMethodBeat.i(194646);
-      this.EW = -1;
-      this.EX = -1;
-      this.EY = -1.0F;
-      this.EZ = -1;
-      this.Fa = -1;
-      this.Fb = -1;
-      this.Fc = -1;
-      this.Fd = -1;
-      this.Fe = -1;
-      this.Ff = -1;
-      this.Fg = -1;
-      this.Fh = -1;
-      this.Fi = -1;
-      this.Fj = 0;
-      this.Fk = 0.0F;
-      this.Fl = -1;
-      this.Fm = -1;
-      this.Fn = -1;
-      this.Fo = -1;
-      this.Fp = -1;
-      this.Fq = -1;
-      this.Fr = -1;
-      this.Fs = -1;
-      this.Ft = -1;
-      this.Fu = -1;
-      this.Fv = 0.5F;
-      this.Fw = 0.5F;
-      this.Fx = null;
-      this.Fy = 0.0F;
-      this.Fz = 1;
-      this.FA = -1.0F;
-      this.FB = -1.0F;
-      this.FC = 0;
-      this.FD = 0;
-      this.FE = 0;
-      this.FF = 0;
-      this.FG = 0;
-      this.FH = 0;
-      this.FI = 0;
-      this.FJ = 0;
-      this.FK = 1.0F;
-      this.FL = 1.0F;
-      this.FM = -1;
-      this.FN = -1;
-      this.FO = -1;
-      this.FP = false;
-      this.FQ = false;
-      this.FR = true;
-      this.FS = true;
-      this.FT = false;
-      this.FU = false;
-      this.FV = false;
-      this.FW = false;
-      this.FX = -1;
-      this.FY = -1;
-      this.FZ = -1;
-      this.Ga = -1;
-      this.Gb = -1;
-      this.Gc = -1;
-      this.Gd = 0.5F;
-      this.Gh = new androidx.constraintlayout.a.a.f();
-      this.Gi = false;
-      AppMethodBeat.o(194646);
+      AppMethodBeat.i(194228);
+      this.bld = -1;
+      this.ble = -1;
+      this.blf = -1.0F;
+      this.blg = -1;
+      this.blh = -1;
+      this.bli = -1;
+      this.blj = -1;
+      this.blk = -1;
+      this.bll = -1;
+      this.blm = -1;
+      this.bln = -1;
+      this.blo = -1;
+      this.blp = -1;
+      this.blq = 0;
+      this.blr = 0.0F;
+      this.bls = -1;
+      this.blt = -1;
+      this.blu = -1;
+      this.blv = -1;
+      this.blw = -1;
+      this.blx = -1;
+      this.bly = -1;
+      this.blz = -1;
+      this.blA = -1;
+      this.blB = -1;
+      this.atU = 0.5F;
+      this.atV = 0.5F;
+      this.blC = null;
+      this.blD = 0.0F;
+      this.blE = 1;
+      this.blF = -1.0F;
+      this.blG = -1.0F;
+      this.blH = 0;
+      this.blI = 0;
+      this.blJ = 0;
+      this.blK = 0;
+      this.blL = 0;
+      this.blM = 0;
+      this.blN = 0;
+      this.blO = 0;
+      this.blP = 1.0F;
+      this.blQ = 1.0F;
+      this.blR = -1;
+      this.blS = -1;
+      this.orientation = -1;
+      this.blT = false;
+      this.blU = false;
+      this.blV = true;
+      this.blW = true;
+      this.blX = false;
+      this.blY = false;
+      this.blZ = false;
+      this.bma = false;
+      this.bmb = -1;
+      this.bmc = -1;
+      this.bmd = -1;
+      this.bme = -1;
+      this.bmf = -1;
+      this.bmg = -1;
+      this.bmh = 0.5F;
+      this.bml = new androidx.constraintlayout.a.a.f();
+      this.bmm = false;
+      AppMethodBeat.o(194228);
     }
     
-    @TargetApi(17)
+    public final void Dl()
+    {
+      AppMethodBeat.i(194238);
+      this.blY = false;
+      this.blV = true;
+      this.blW = true;
+      if ((this.width == -2) && (this.blT))
+      {
+        this.blV = false;
+        this.blJ = 1;
+      }
+      if ((this.height == -2) && (this.blU))
+      {
+        this.blW = false;
+        this.blK = 1;
+      }
+      if ((this.width == 0) || (this.width == -1))
+      {
+        this.blV = false;
+        if ((this.width == 0) && (this.blJ == 1))
+        {
+          this.width = -2;
+          this.blT = true;
+        }
+      }
+      if ((this.height == 0) || (this.height == -1))
+      {
+        this.blW = false;
+        if ((this.height == 0) && (this.blK == 1))
+        {
+          this.height = -2;
+          this.blU = true;
+        }
+      }
+      if ((this.blf != -1.0F) || (this.bld != -1) || (this.ble != -1))
+      {
+        this.blY = true;
+        this.blV = true;
+        this.blW = true;
+        if (!(this.bml instanceof i)) {
+          this.bml = new i();
+        }
+        ((i)this.bml).setOrientation(this.orientation);
+      }
+      AppMethodBeat.o(194238);
+    }
+    
     public void resolveLayoutDirection(int paramInt)
     {
-      AppMethodBeat.i(194658);
+      AppMethodBeat.i(194252);
       int i = this.leftMargin;
       int j = this.rightMargin;
       super.resolveLayoutDirection(paramInt);
-      this.FZ = -1;
-      this.Ga = -1;
-      this.FX = -1;
-      this.FY = -1;
-      this.Gb = -1;
-      this.Gc = -1;
-      this.Gb = this.Fp;
-      this.Gc = this.Fr;
-      this.Gd = this.Fv;
-      this.Ge = this.EW;
-      this.Gf = this.EX;
-      this.Gg = this.EY;
+      this.bmd = -1;
+      this.bme = -1;
+      this.bmb = -1;
+      this.bmc = -1;
+      this.bmf = -1;
+      this.bmg = -1;
+      this.bmf = this.blw;
+      this.bmg = this.bly;
+      this.bmh = this.atU;
+      this.bmi = this.bld;
+      this.bmj = this.ble;
+      this.bmk = this.blf;
       if (1 == getLayoutDirection())
       {
         paramInt = 1;
@@ -2429,244 +2474,197 @@ public class ConstraintLayout
           break label449;
         }
         paramInt = 0;
-        if (this.Fl == -1) {
+        if (this.bls == -1) {
           break label368;
         }
-        this.FZ = this.Fl;
+        this.bmd = this.bls;
         paramInt = 1;
         label133:
-        if (this.Fn != -1)
+        if (this.blu != -1)
         {
-          this.FY = this.Fn;
+          this.bmc = this.blu;
           paramInt = 1;
         }
-        if (this.Fo != -1)
+        if (this.blv != -1)
         {
-          this.FX = this.Fo;
+          this.bmb = this.blv;
           paramInt = 1;
         }
-        if (this.Ft != -1) {
-          this.Gc = this.Ft;
+        if (this.blA != -1) {
+          this.bmg = this.blA;
         }
-        if (this.Fu != -1) {
-          this.Gb = this.Fu;
+        if (this.blB != -1) {
+          this.bmf = this.blB;
         }
         if (paramInt != 0) {
-          this.Gd = (1.0F - this.Fv);
+          this.bmh = (1.0F - this.atU);
         }
-        if ((this.FU) && (this.FO == 1))
+        if ((this.blY) && (this.orientation == 1))
         {
-          if (this.EY == -1.0F) {
+          if (this.blf == -1.0F) {
             break label389;
           }
-          this.Gg = (1.0F - this.EY);
-          this.Ge = -1;
-          this.Gf = -1;
+          this.bmk = (1.0F - this.blf);
+          this.bmi = -1;
+          this.bmj = -1;
         }
         label260:
-        if ((this.Fn != -1) || (this.Fo != -1) || (this.Fm != -1) || (this.Fl != -1)) {
+        if ((this.blu != -1) || (this.blv != -1) || (this.blt != -1) || (this.bls != -1)) {
           break label615;
         }
-        if (this.Fb == -1) {
+        if (this.bli == -1) {
           break label548;
         }
-        this.FZ = this.Fb;
+        this.bmd = this.bli;
         if ((this.rightMargin <= 0) && (j > 0)) {
           this.rightMargin = j;
         }
       }
       for (;;)
       {
-        if (this.EZ == -1) {
+        if (this.blg == -1) {
           break label583;
         }
-        this.FX = this.EZ;
+        this.bmb = this.blg;
         if ((this.leftMargin > 0) || (i <= 0)) {
           break label615;
         }
         this.leftMargin = i;
-        AppMethodBeat.o(194658);
+        AppMethodBeat.o(194252);
         return;
         paramInt = 0;
         break;
         label368:
-        if (this.Fm == -1) {
+        if (this.blt == -1) {
           break label133;
         }
-        this.Ga = this.Fm;
+        this.bme = this.blt;
         paramInt = 1;
         break label133;
         label389:
-        if (this.EW != -1)
+        if (this.bld != -1)
         {
-          this.Gf = this.EW;
-          this.Ge = -1;
-          this.Gg = -1.0F;
+          this.bmj = this.bld;
+          this.bmi = -1;
+          this.bmk = -1.0F;
           break label260;
         }
-        if (this.EX == -1) {
+        if (this.ble == -1) {
           break label260;
         }
-        this.Ge = this.EX;
-        this.Gf = -1;
-        this.Gg = -1.0F;
+        this.bmi = this.ble;
+        this.bmj = -1;
+        this.bmk = -1.0F;
         break label260;
         label449:
-        if (this.Fl != -1) {
-          this.FY = this.Fl;
+        if (this.bls != -1) {
+          this.bmc = this.bls;
         }
-        if (this.Fm != -1) {
-          this.FX = this.Fm;
+        if (this.blt != -1) {
+          this.bmb = this.blt;
         }
-        if (this.Fn != -1) {
-          this.FZ = this.Fn;
+        if (this.blu != -1) {
+          this.bmd = this.blu;
         }
-        if (this.Fo != -1) {
-          this.Ga = this.Fo;
+        if (this.blv != -1) {
+          this.bme = this.blv;
         }
-        if (this.Ft != -1) {
-          this.Gb = this.Ft;
+        if (this.blA != -1) {
+          this.bmf = this.blA;
         }
-        if (this.Fu == -1) {
+        if (this.blB == -1) {
           break label260;
         }
-        this.Gc = this.Fu;
+        this.bmg = this.blB;
         break label260;
         label548:
-        if (this.Fc != -1)
+        if (this.blj != -1)
         {
-          this.Ga = this.Fc;
+          this.bme = this.blj;
           if ((this.rightMargin <= 0) && (j > 0)) {
             this.rightMargin = j;
           }
         }
       }
       label583:
-      if (this.Fa != -1)
+      if (this.blh != -1)
       {
-        this.FY = this.Fa;
+        this.bmc = this.blh;
         if ((this.leftMargin <= 0) && (i > 0)) {
           this.leftMargin = i;
         }
       }
       label615:
-      AppMethodBeat.o(194658);
-    }
-    
-    public final void validate()
-    {
-      AppMethodBeat.i(194631);
-      this.FU = false;
-      this.FR = true;
-      this.FS = true;
-      if ((this.width == -2) && (this.FP))
-      {
-        this.FR = false;
-        this.FE = 1;
-      }
-      if ((this.height == -2) && (this.FQ))
-      {
-        this.FS = false;
-        this.FF = 1;
-      }
-      if ((this.width == 0) || (this.width == -1))
-      {
-        this.FR = false;
-        if ((this.width == 0) && (this.FE == 1))
-        {
-          this.width = -2;
-          this.FP = true;
-        }
-      }
-      if ((this.height == 0) || (this.height == -1))
-      {
-        this.FS = false;
-        if ((this.height == 0) && (this.FF == 1))
-        {
-          this.height = -2;
-          this.FQ = true;
-        }
-      }
-      if ((this.EY != -1.0F) || (this.EW != -1) || (this.EX != -1))
-      {
-        this.FU = true;
-        this.FR = true;
-        this.FS = true;
-        if (!(this.Gh instanceof i)) {
-          this.Gh = new i();
-        }
-        ((i)this.Gh).setOrientation(this.FO);
-      }
-      AppMethodBeat.o(194631);
+      AppMethodBeat.o(194252);
     }
     
     static final class a
     {
-      public static final SparseIntArray Gj;
+      public static final SparseIntArray bmn;
       
       static
       {
-        AppMethodBeat.i(194598);
+        AppMethodBeat.i(194169);
         SparseIntArray localSparseIntArray = new SparseIntArray();
-        Gj = localSparseIntArray;
+        bmn = localSparseIntArray;
         localSparseIntArray.append(R.styleable.ConstraintLayout_Layout_layout_constraintLeft_toLeftOf, 8);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintLeft_toRightOf, 9);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintRight_toLeftOf, 10);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintRight_toRightOf, 11);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintTop_toTopOf, 12);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintTop_toBottomOf, 13);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintBottom_toTopOf, 14);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintBottom_toBottomOf, 15);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintBaseline_toBaselineOf, 16);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintCircle, 2);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintCircleRadius, 3);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintCircleAngle, 4);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_editor_absoluteX, 49);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_editor_absoluteY, 50);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintGuide_begin, 5);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintGuide_end, 6);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintGuide_percent, 7);
-        Gj.append(R.styleable.ConstraintLayout_Layout_android_orientation, 1);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintStart_toEndOf, 17);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintStart_toStartOf, 18);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintEnd_toStartOf, 19);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintEnd_toEndOf, 20);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginLeft, 21);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginTop, 22);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginRight, 23);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginBottom, 24);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginStart, 25);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginEnd, 26);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintHorizontal_bias, 29);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintVertical_bias, 30);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintDimensionRatio, 44);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintHorizontal_weight, 45);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintVertical_weight, 46);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintHorizontal_chainStyle, 47);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintVertical_chainStyle, 48);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constrainedWidth, 27);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constrainedHeight, 28);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintWidth_default, 31);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintHeight_default, 32);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintWidth_min, 33);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintWidth_max, 34);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintWidth_percent, 35);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintHeight_min, 36);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintHeight_max, 37);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintHeight_percent, 38);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintLeft_creator, 39);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintTop_creator, 40);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintRight_creator, 41);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintBottom_creator, 42);
-        Gj.append(R.styleable.ConstraintLayout_Layout_layout_constraintBaseline_creator, 43);
-        AppMethodBeat.o(194598);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintLeft_toRightOf, 9);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintRight_toLeftOf, 10);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintRight_toRightOf, 11);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintTop_toTopOf, 12);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintTop_toBottomOf, 13);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintBottom_toTopOf, 14);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintBottom_toBottomOf, 15);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintBaseline_toBaselineOf, 16);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintCircle, 2);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintCircleRadius, 3);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintCircleAngle, 4);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_editor_absoluteX, 49);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_editor_absoluteY, 50);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintGuide_begin, 5);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintGuide_end, 6);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintGuide_percent, 7);
+        bmn.append(R.styleable.ConstraintLayout_Layout_android_orientation, 1);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintStart_toEndOf, 17);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintStart_toStartOf, 18);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintEnd_toStartOf, 19);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintEnd_toEndOf, 20);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginLeft, 21);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginTop, 22);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginRight, 23);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginBottom, 24);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginStart, 25);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_goneMarginEnd, 26);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintHorizontal_bias, 29);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintVertical_bias, 30);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintDimensionRatio, 44);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintHorizontal_weight, 45);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintVertical_weight, 46);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintHorizontal_chainStyle, 47);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintVertical_chainStyle, 48);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constrainedWidth, 27);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constrainedHeight, 28);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintWidth_default, 31);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintHeight_default, 32);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintWidth_min, 33);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintWidth_max, 34);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintWidth_percent, 35);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintHeight_min, 36);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintHeight_max, 37);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintHeight_percent, 38);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintLeft_creator, 39);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintTop_creator, 40);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintRight_creator, 41);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintBottom_creator, 42);
+        bmn.append(R.styleable.ConstraintLayout_Layout_layout_constraintBaseline_creator, 43);
+        AppMethodBeat.o(194169);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.widget.ConstraintLayout
  * JD-Core Version:    0.7.0.1
  */

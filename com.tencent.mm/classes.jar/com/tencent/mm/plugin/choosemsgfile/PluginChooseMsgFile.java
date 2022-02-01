@@ -4,6 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.comm.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
@@ -15,7 +16,7 @@ public class PluginChooseMsgFile
   {
     AppMethodBeat.i(123220);
     if (MMApplicationContext.isMainProcess()) {
-      dependsOn(com.tencent.mm.plugin.comm.a.a.class);
+      dependsOn(b.class);
     }
     AppMethodBeat.o(123220);
   }
@@ -24,7 +25,7 @@ public class PluginChooseMsgFile
   {
     AppMethodBeat.i(123219);
     Log.d("MicroMsg.PluginChooseMsgFile", "execute");
-    h.b(com.tencent.mm.choosemsgfile.compat.a.class, new com.tencent.mm.plugin.choosemsgfile.b.a());
+    h.b(com.tencent.mm.choosemsgfile.compat.a.class, new com.tencent.mm.plugin.choosemsgfile.logic.a());
     AppMethodBeat.o(123219);
   }
   
@@ -43,7 +44,7 @@ public class PluginChooseMsgFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.PluginChooseMsgFile
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.api.g;
-import com.tencent.mm.plugin.appbrand.au.c;
-import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.appbrand.ba.c;
+import com.tencent.mm.plugin.appbrand.service.t;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class AppBrandProfileUI$7
@@ -22,18 +22,18 @@ final class AppBrandProfileUI$7
     paramView = new g();
     paramView.username = "gh_32d0f14ab3c6@app";
     paramView.scene = 1085;
-    ((r)h.ae(r.class)).a(MMApplicationContext.getContext(), paramView);
-    AppBrandProfileUI.a(this.qXA, 24, 1);
-    AppBrandProfileUI.cjX();
+    ((t)h.ax(t.class)).a(MMApplicationContext.getContext(), paramView);
+    AppBrandProfileUI.a(this.udA, 24, 1);
+    AppBrandProfileUI.cLo();
     AppMethodBeat.o(48712);
   }
   
   public final void updateDrawState(TextPaint paramTextPaint)
   {
-    AppMethodBeat.i(280613);
-    paramTextPaint.setColor(this.qXA.getResources().getColor(au.c.link_color));
+    AppMethodBeat.i(322439);
+    paramTextPaint.setColor(this.udA.getResources().getColor(ba.c.link_color));
     paramTextPaint.setUnderlineText(false);
-    AppMethodBeat.o(280613);
+    AppMethodBeat.o(322439);
   }
 }
 

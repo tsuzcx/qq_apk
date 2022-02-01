@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:background="@drawable/aql" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.nearlife.ui.LogoImageView android:layout_gravity="center" android:id="@id/gmd" android:layout_width="wrap_content" android:layout_height="33.0dip" android:scaleType="centerInside" />
-</LinearLayout>
+    <TextView android:textSize="@dimen/d6" android:textColor="@color/al6" android:layout_gravity="center" android:id="@id/iek" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="17.0dip" android:textColor="#e6fffafa" android:layout_gravity="center" android:id="@id/iel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c4" />
+</FrameLayout>

@@ -31,6 +31,7 @@ public class FileProvider
   private static final String ATTR_PATH = "path";
   private static final String[] COLUMNS;
   private static final File DEVICE_ROOT;
+  private static final String DISPLAYNAME_FIELD = "displayName";
   private static final String META_DATA_FILE_PROVIDER_PATHS = "android.support.FILE_PROVIDER_PATHS";
   private static final String TAG_CACHE_PATH = "cache-path";
   private static final String TAG_EXTERNAL = "external-path";
@@ -44,16 +45,16 @@ public class FileProvider
   
   static
   {
-    AppMethodBeat.i(250567);
+    AppMethodBeat.i(195597);
     COLUMNS = new String[] { "_display_name", "_size" };
     DEVICE_ROOT = new File("/");
     sCache = new HashMap();
-    AppMethodBeat.o(250567);
+    AppMethodBeat.o(195597);
   }
   
   private static File buildPath(File paramFile, String... paramVarArgs)
   {
-    AppMethodBeat.i(250564);
+    AppMethodBeat.i(195572);
     int j = paramVarArgs.length;
     int i = 0;
     if (i < j)
@@ -69,32 +70,32 @@ public class FileProvider
     {
       i += 1;
       break;
-      AppMethodBeat.o(250564);
+      AppMethodBeat.o(195572);
       return paramFile;
     }
   }
   
   private static Object[] copyOf(Object[] paramArrayOfObject, int paramInt)
   {
-    AppMethodBeat.i(250566);
+    AppMethodBeat.i(195586);
     Object[] arrayOfObject = new Object[paramInt];
     System.arraycopy(paramArrayOfObject, 0, arrayOfObject, 0, paramInt);
-    AppMethodBeat.o(250566);
+    AppMethodBeat.o(195586);
     return arrayOfObject;
   }
   
   private static String[] copyOf(String[] paramArrayOfString, int paramInt)
   {
-    AppMethodBeat.i(250565);
+    AppMethodBeat.i(195579);
     String[] arrayOfString = new String[paramInt];
     System.arraycopy(paramArrayOfString, 0, arrayOfString, 0, paramInt);
-    AppMethodBeat.o(250565);
+    AppMethodBeat.o(195579);
     return arrayOfString;
   }
   
   private static a getPathStrategy(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(250559);
+    AppMethodBeat.i(195544);
     a locala1;
     synchronized (sCache)
     {
@@ -106,44 +107,52 @@ public class FileProvider
     {
       locala1 = parsePathStrategy(paramContext, paramString);
       sCache.put(paramString, locala1);
-      AppMethodBeat.o(250559);
+      AppMethodBeat.o(195544);
       return locala1;
     }
     catch (IOException paramContext)
     {
       paramContext = new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
-      AppMethodBeat.o(250559);
+      AppMethodBeat.o(195544);
       throw paramContext;
       paramContext = finally;
-      AppMethodBeat.o(250559);
+      AppMethodBeat.o(195544);
       throw paramContext;
     }
     catch (XmlPullParserException paramContext)
     {
       paramContext = new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
-      AppMethodBeat.o(250559);
+      AppMethodBeat.o(195544);
       throw paramContext;
     }
   }
   
   public static Uri getUriForFile(Context paramContext, String paramString, File paramFile)
   {
-    AppMethodBeat.i(250550);
+    AppMethodBeat.i(195523);
     paramContext = getPathStrategy(paramContext, paramString).l(paramFile);
-    AppMethodBeat.o(250550);
+    AppMethodBeat.o(195523);
+    return paramContext;
+  }
+  
+  public static Uri getUriForFile(Context paramContext, String paramString1, File paramFile, String paramString2)
+  {
+    AppMethodBeat.i(195533);
+    paramContext = getUriForFile(paramContext, paramString1, paramFile).buildUpon().appendQueryParameter("displayName", paramString2).build();
+    AppMethodBeat.o(195533);
     return paramContext;
   }
   
   private static int modeToMode(String paramString)
   {
-    AppMethodBeat.i(250562);
+    AppMethodBeat.i(195565);
     int i;
     if ("r".equals(paramString)) {
       i = 268435456;
     }
     for (;;)
     {
-      AppMethodBeat.o(250562);
+      AppMethodBeat.o(195565);
       return i;
       if (("w".equals(paramString)) || ("wt".equals(paramString)))
       {
@@ -166,26 +175,26 @@ public class FileProvider
       }
     }
     paramString = new IllegalArgumentException("Invalid mode: ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(250562);
+    AppMethodBeat.o(195565);
     throw paramString;
   }
   
   private static a parsePathStrategy(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(250561);
+    AppMethodBeat.i(195560);
     b localb = new b(paramString);
     Object localObject1 = paramContext.getPackageManager().resolveContentProvider(paramString, 128);
     if (localObject1 == null)
     {
       paramContext = new IllegalArgumentException("Couldn't find meta-data for provider with authority ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(250561);
+      AppMethodBeat.o(195560);
       throw paramContext;
     }
     localObject1 = ((ProviderInfo)localObject1).loadXmlMetaData(paramContext.getPackageManager(), "android.support.FILE_PROVIDER_PATHS");
     if (localObject1 == null)
     {
       paramContext = new IllegalArgumentException("Missing android.support.FILE_PROVIDER_PATHS meta-data");
-      AppMethodBeat.o(250561);
+      AppMethodBeat.o(195560);
       throw paramContext;
     }
     for (;;)
@@ -194,7 +203,7 @@ public class FileProvider
       {
         Object localObject3 = paramString.getCanonicalFile();
         Object localObject2;
-        localb.JX.put(localObject2, localObject3);
+        localb.bqb.put(localObject2, localObject3);
         int i = ((XmlResourceParser)localObject1).next();
         if (i != 1)
         {
@@ -214,7 +223,7 @@ public class FileProvider
                 continue;
               }
               paramContext = new IllegalArgumentException("Name must not be empty");
-              AppMethodBeat.o(250561);
+              AppMethodBeat.o(195560);
               throw paramContext;
             }
           }
@@ -237,7 +246,7 @@ public class FileProvider
             }
             if ("external-files-path".equals(paramString))
             {
-              paramString = a.P(paramContext);
+              paramString = a.aa(paramContext);
               if (paramString.length <= 0) {
                 break label385;
               }
@@ -246,7 +255,7 @@ public class FileProvider
             }
             if ("external-cache-path".equals(paramString))
             {
-              paramString = a.Q(paramContext);
+              paramString = a.ab(paramContext);
               if (paramString.length <= 0) {
                 break label385;
               }
@@ -265,12 +274,12 @@ public class FileProvider
           }
           continue;
         }
-        AppMethodBeat.o(250561);
+        AppMethodBeat.o(195560);
       }
       catch (IOException paramContext)
       {
         paramContext = new IllegalArgumentException("Failed to resolve canonical path for ".concat(String.valueOf(paramString)), paramContext);
-        AppMethodBeat.o(250561);
+        AppMethodBeat.o(195560);
         throw paramContext;
       }
       return localb;
@@ -281,39 +290,39 @@ public class FileProvider
   
   public void attachInfo(Context paramContext, ProviderInfo paramProviderInfo)
   {
-    AppMethodBeat.i(250549);
+    AppMethodBeat.i(195610);
     super.attachInfo(paramContext, paramProviderInfo);
     if (paramProviderInfo.exported)
     {
       paramContext = new SecurityException("Provider must not be exported");
-      AppMethodBeat.o(250549);
+      AppMethodBeat.o(195610);
       throw paramContext;
     }
     if (!paramProviderInfo.grantUriPermissions)
     {
       paramContext = new SecurityException("Provider must grant uri permissions");
-      AppMethodBeat.o(250549);
+      AppMethodBeat.o(195610);
       throw paramContext;
     }
-    this.mStrategy = getPathStrategy(paramContext, paramProviderInfo.authority);
-    AppMethodBeat.o(250549);
+    this.mStrategy = getPathStrategy(paramContext, paramProviderInfo.authority.split(";")[0]);
+    AppMethodBeat.o(195610);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(250556);
+    AppMethodBeat.i(195661);
     if (this.mStrategy.e(paramUri).delete())
     {
-      AppMethodBeat.o(250556);
+      AppMethodBeat.o(195661);
       return 1;
     }
-    AppMethodBeat.o(250556);
+    AppMethodBeat.o(195661);
     return 0;
   }
   
   public String getType(Uri paramUri)
   {
-    AppMethodBeat.i(250553);
+    AppMethodBeat.i(195629);
     paramUri = this.mStrategy.e(paramUri);
     int i = paramUri.getName().lastIndexOf('.');
     if (i >= 0)
@@ -322,19 +331,19 @@ public class FileProvider
       paramUri = MimeTypeMap.getSingleton().getMimeTypeFromExtension(paramUri);
       if (paramUri != null)
       {
-        AppMethodBeat.o(250553);
+        AppMethodBeat.o(195629);
         return paramUri;
       }
     }
-    AppMethodBeat.o(250553);
+    AppMethodBeat.o(195629);
     return "application/octet-stream";
   }
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    AppMethodBeat.i(250554);
+    AppMethodBeat.i(195639);
     paramUri = new UnsupportedOperationException("No external inserts");
-    AppMethodBeat.o(250554);
+    AppMethodBeat.o(195639);
     throw paramUri;
   }
   
@@ -345,53 +354,59 @@ public class FileProvider
   
   public ParcelFileDescriptor openFile(Uri paramUri, String paramString)
   {
-    AppMethodBeat.i(250558);
+    AppMethodBeat.i(195671);
     paramUri = ParcelFileDescriptor.open(this.mStrategy.e(paramUri), modeToMode(paramString));
-    AppMethodBeat.o(250558);
+    AppMethodBeat.o(195671);
     return paramUri;
   }
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    AppMethodBeat.i(250552);
-    paramString1 = this.mStrategy.e(paramUri);
+    AppMethodBeat.i(195621);
+    paramArrayOfString2 = this.mStrategy.e(paramUri);
+    paramString1 = paramUri.getQueryParameter("displayName");
     paramUri = paramArrayOfString1;
     if (paramArrayOfString1 == null) {
       paramUri = COLUMNS;
     }
-    paramArrayOfString2 = new String[paramUri.length];
-    paramArrayOfString1 = new Object[paramUri.length];
+    String[] arrayOfString = new String[paramUri.length];
+    paramString2 = new Object[paramUri.length];
     int i = 0;
     int m = paramUri.length;
     int j = 0;
-    int k;
     if (j < m)
     {
-      paramString2 = paramUri[j];
-      if ("_display_name".equals(paramString2))
+      paramArrayOfString1 = paramUri[j];
+      if ("_display_name".equals(paramArrayOfString1))
       {
-        paramArrayOfString2[i] = "_display_name";
-        k = i + 1;
-        paramArrayOfString1[i] = paramString1.getName();
-        i = k;
+        arrayOfString[i] = "_display_name";
+        if (paramString1 == null)
+        {
+          paramArrayOfString1 = paramArrayOfString2.getName();
+          label97:
+          paramString2[i] = paramArrayOfString1;
+          i += 1;
+        }
       }
     }
     for (;;)
     {
       j += 1;
       break;
-      if ("_size".equals(paramString2))
+      paramArrayOfString1 = paramString1;
+      break label97;
+      if ("_size".equals(paramArrayOfString1))
       {
-        paramArrayOfString2[i] = "_size";
-        k = i + 1;
-        paramArrayOfString1[i] = Long.valueOf(paramString1.length());
+        arrayOfString[i] = "_size";
+        int k = i + 1;
+        paramString2[i] = Long.valueOf(paramArrayOfString2.length());
         i = k;
         continue;
-        paramUri = copyOf(paramArrayOfString2, i);
-        paramArrayOfString1 = copyOf(paramArrayOfString1, i);
+        paramUri = copyOf(arrayOfString, i);
+        paramArrayOfString1 = copyOf(paramString2, i);
         paramUri = new MatrixCursor(paramUri, 1);
         paramUri.addRow(paramArrayOfString1);
-        AppMethodBeat.o(250552);
+        AppMethodBeat.o(195621);
         return paramUri;
       }
     }
@@ -399,9 +414,9 @@ public class FileProvider
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(250555);
+    AppMethodBeat.i(195650);
     paramUri = new UnsupportedOperationException("No external updates");
-    AppMethodBeat.o(250555);
+    AppMethodBeat.o(195650);
     throw paramUri;
   }
   
@@ -415,29 +430,29 @@ public class FileProvider
   static final class b
     implements FileProvider.a
   {
-    private final String JW;
-    final HashMap<String, File> JX;
+    private final String bqa;
+    final HashMap<String, File> bqb;
     
     b(String paramString)
     {
-      AppMethodBeat.i(250537);
-      this.JX = new HashMap();
-      this.JW = paramString;
-      AppMethodBeat.o(250537);
+      AppMethodBeat.i(195620);
+      this.bqb = new HashMap();
+      this.bqa = paramString;
+      AppMethodBeat.o(195620);
     }
     
     public final File e(Uri paramUri)
     {
-      AppMethodBeat.i(250539);
+      AppMethodBeat.i(195647);
       Object localObject2 = paramUri.getEncodedPath();
       int i = ((String)localObject2).indexOf('/', 1);
       Object localObject1 = Uri.decode(((String)localObject2).substring(1, i));
       localObject2 = Uri.decode(((String)localObject2).substring(i + 1));
-      localObject1 = (File)this.JX.get(localObject1);
+      localObject1 = (File)this.bqb.get(localObject1);
       if (localObject1 == null)
       {
         paramUri = new IllegalArgumentException("Unable to find configured root for ".concat(String.valueOf(paramUri)));
-        AppMethodBeat.o(250539);
+        AppMethodBeat.o(195647);
         throw paramUri;
       }
       paramUri = new File((File)localObject1, (String)localObject2);
@@ -447,23 +462,23 @@ public class FileProvider
         if (!((File)localObject2).getPath().startsWith(((File)localObject1).getPath()))
         {
           paramUri = new SecurityException("Resolved path jumped beyond configured root");
-          AppMethodBeat.o(250539);
+          AppMethodBeat.o(195647);
           throw paramUri;
         }
       }
       catch (IOException localIOException)
       {
         paramUri = new IllegalArgumentException("Failed to resolve canonical path for ".concat(String.valueOf(paramUri)));
-        AppMethodBeat.o(250539);
+        AppMethodBeat.o(195647);
         throw paramUri;
       }
-      AppMethodBeat.o(250539);
+      AppMethodBeat.o(195647);
       return localObject2;
     }
     
     public final Uri l(File paramFile)
     {
-      AppMethodBeat.i(250538);
+      AppMethodBeat.i(195636);
       for (;;)
       {
         String str1;
@@ -471,7 +486,7 @@ public class FileProvider
         {
           str1 = paramFile.getCanonicalPath();
           paramFile = null;
-          Iterator localIterator = this.JX.entrySet().iterator();
+          Iterator localIterator = this.bqb.entrySet().iterator();
           if (localIterator.hasNext())
           {
             Map.Entry localEntry2 = (Map.Entry)localIterator.next();
@@ -497,11 +512,11 @@ public class FileProvider
         catch (IOException localIOException)
         {
           paramFile = new IllegalArgumentException("Failed to resolve canonical path for ".concat(String.valueOf(paramFile)));
-          AppMethodBeat.o(250538);
+          AppMethodBeat.o(195636);
           throw paramFile;
         }
         paramFile = new IllegalArgumentException("Failed to find configured root that contains ".concat(String.valueOf(str1)));
-        AppMethodBeat.o(250538);
+        AppMethodBeat.o(195636);
         throw paramFile;
         label162:
         Object localObject = ((File)paramFile.getValue()).getPath();
@@ -509,8 +524,8 @@ public class FileProvider
         for (localObject = str1.substring(((String)localObject).length());; localObject = str1.substring(((String)localObject).length() + 1))
         {
           paramFile = Uri.encode((String)paramFile.getKey()) + '/' + Uri.encode((String)localObject, "/");
-          paramFile = new Uri.Builder().scheme("content").authority(this.JW).encodedPath(paramFile).build();
-          AppMethodBeat.o(250538);
+          paramFile = new Uri.Builder().scheme("content").authority(this.bqa).encodedPath(paramFile).build();
+          AppMethodBeat.o(195636);
           return paramFile;
         }
         label283:
@@ -521,7 +536,7 @@ public class FileProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.core.content.FileProvider
  * JD-Core Version:    0.7.0.1
  */

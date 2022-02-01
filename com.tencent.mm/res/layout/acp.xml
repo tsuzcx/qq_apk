@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.view.TouchableLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/cmp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:layout_gravity="center_horizontal" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr" android:text="@string/ek8" style="@style/hv" />
-    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center_horizontal" android:id="@id/ep_" android:background="@drawable/ady" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cr" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/h5x" android:paddingTop="@dimen/cr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/dbc" />
-</com.tencent.mm.view.TouchableLayout>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/el2" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/az" android:ellipsize="end" android:gravity="center" android:id="@id/eod" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:maxLines="1" />
+    <TextView android:textSize="@dimen/cd" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/eix" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="@string/dnx" />
+</LinearLayout>

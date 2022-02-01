@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/khv" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" style="@style/hx" />
-    </LinearLayout>
-    <ViewStub android:id="@id/j7x" android:layout="@layout/kl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/j7y" android:layout="@layout/kp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/kvl" android:layout="@layout/amk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/aem" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/aen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/v6" />
 </LinearLayout>

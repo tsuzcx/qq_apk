@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ht2" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</RelativeLayout>
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/j7" android:textColor="@color/ib" android:id="@id/apy" android:background="@drawable/c1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/av" android:minHeight="48.0dip" android:text="@string/atw" android:layout_alignParentLeft="true" />
+        <Button android:textSize="@dimen/j7" android:textColor="@color/gw" android:id="@id/hls" android:background="@drawable/c1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/av" android:minHeight="48.0dip" android:text="@string/au4" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom" style="@style/i7" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ev3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/a7b" android:gravity="center_vertical" android:id="@id/evl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/vy" android:minHeight="@dimen/vx" />
+        <ImageView android:layout_gravity="bottom" android:id="@id/c7o" style="@style/i7" />
+    </LinearLayout>
+    <ListView android:id="@id/h3c" android:background="@color/ahb" android:layout_height="wrap_content" style="@style/na" />
+</LinearLayout>

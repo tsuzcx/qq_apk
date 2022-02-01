@@ -6,11 +6,11 @@ public enum AppBrandRuntimeContainerWC$a
 {
   static
   {
-    AppMethodBeat.i(272615);
-    nvN = new a("Finish", 0);
-    nvO = new a("OnDestroy", 1);
-    nvP = new a[] { nvN, nvO };
-    AppMethodBeat.o(272615);
+    AppMethodBeat.i(316754);
+    quA = new a("Finish", 0);
+    quB = new a("OnDestroy", 1);
+    quC = new a[] { quA, quB };
+    AppMethodBeat.o(316754);
   }
   
   private AppBrandRuntimeContainerWC$a() {}

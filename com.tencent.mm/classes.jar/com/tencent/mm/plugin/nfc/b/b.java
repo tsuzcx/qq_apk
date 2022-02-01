@@ -4,21 +4,21 @@ import android.nfc.Tag;
 
 public abstract class b
 {
-  private Tag Gxi;
-  public byte[] Gxj = null;
+  private Tag Mti;
+  public byte[] Mtj = null;
   
   public boolean a(Tag paramTag)
   {
-    this.Gxi = paramTag;
+    this.Mti = paramTag;
     if (paramTag != null) {
-      this.Gxj = paramTag.getId();
+      this.Mtj = paramTag.getId();
     }
     return true;
   }
   
-  public final Tag fiZ()
+  public final Tag ctW()
   {
-    return this.Gxi;
+    return this.Mti;
   }
 }
 

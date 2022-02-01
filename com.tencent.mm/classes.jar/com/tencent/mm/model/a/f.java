@@ -10,11 +10,11 @@ import com.tencent.mm.sdk.platformtools.WeChatPermissions;
 
 public final class f
 {
-  private static void Sm(String paramString)
+  private static void Ko(String paramString)
   {
     AppMethodBeat.i(153094);
     Log.i("MicroMsg.abtest.AbTestReportHelper", "[AbTest] reportAbTestClickStreamBroadcast:%s", new Object[] { paramString });
-    if (g.bga().bfY())
+    if (g.bDR().bDP())
     {
       Intent localIntent = new Intent();
       localIntent.setAction("com.tencent.mm.ui.ACTION_ABTEST");
@@ -27,40 +27,40 @@ public final class f
     AppMethodBeat.o(153094);
   }
   
-  public static void Sn(String paramString)
+  public static void Kp(String paramString)
   {
     AppMethodBeat.i(153097);
     Log.i("MicroMsg.abtest.AbTestReportHelper", "[Abtest] startAbTestCase: start abtest click stream");
-    Sm("TestCaseID:".concat(String.valueOf(paramString)));
+    Ko("TestCaseID:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(153097);
   }
   
-  public static void So(String paramString)
+  public static void Kq(String paramString)
   {
     AppMethodBeat.i(153098);
-    if (g.bga().Sk(paramString) != null)
+    if (g.bDR().Km(paramString) != null)
     {
       Log.i("MicroMsg.abtest.AbTestReportHelper", "[Abtest] startAbTestPoint:%s", new Object[] { paramString });
-      g.bga().Sk(paramString).lwE = System.currentTimeMillis();
-      g.bga().Sk(paramString).startTime = System.currentTimeMillis();
-      g.bga().Sk(paramString).lwF = false;
-      g.bga().Sk(paramString).result = "0";
-      a(g.bga().Sk(paramString), true);
+      g.bDR().Km(paramString).ood = System.currentTimeMillis();
+      g.bDR().Km(paramString).startTime = System.currentTimeMillis();
+      g.bDR().Km(paramString).ooe = false;
+      g.bDR().Km(paramString).result = "0";
+      a(g.bDR().Km(paramString), true);
     }
     AppMethodBeat.o(153098);
   }
   
-  public static void Sp(String paramString)
+  public static void Kr(String paramString)
   {
     AppMethodBeat.i(153099);
-    if ((g.bga().Sk(paramString) != null) && (!g.bga().Sk(paramString).lwF))
+    if ((g.bDR().Km(paramString) != null) && (!g.bDR().Km(paramString).ooe))
     {
       Log.i("MicroMsg.abtest.AbTestReportHelper", "[Abtest] endAbTestPoint:%s", new Object[] { paramString });
-      g.bga().Sk(paramString).lwE = System.currentTimeMillis();
-      g.bga().Sk(paramString).endTime = System.currentTimeMillis();
-      g.bga().Sk(paramString).lwF = true;
-      a(g.bga().Sk(paramString));
-      a(g.bga().Sk(paramString), false);
+      g.bDR().Km(paramString).ood = System.currentTimeMillis();
+      g.bDR().Km(paramString).endTime = System.currentTimeMillis();
+      g.bDR().Km(paramString).ooe = true;
+      a(g.bDR().Km(paramString));
+      a(g.bDR().Km(paramString), false);
     }
     AppMethodBeat.o(153099);
   }
@@ -68,17 +68,17 @@ public final class f
   public static void a(e parame)
   {
     AppMethodBeat.i(153096);
-    if ((parame != null) && (g.bga().bfY()))
+    if ((parame != null) && (g.bDR().bDP()))
     {
-      String str1 = g.bga().lwB.lwy;
+      String str1 = g.bDR().ooa.onX;
       String str2 = parame.id;
       String str3 = parame.id;
       String str4 = parame.endTime - parame.startTime;
       String str5 = parame.result;
-      String str6 = parame.lwD;
-      long l = parame.kVd;
+      String str6 = parame.ooc;
+      long l = parame.nAz;
       Log.i("MicroMsg.abtest.AbTestReportHelper", "TestCaseID:%s TestPointsID:%s TestReportID：%s TetsCheckID:%s TestDurationTime:%s TestActionResult:%s, TestActionScene:%d", new Object[] { str1, str2, str6, str3, str4, str5, Long.valueOf(l) });
-      h.IzE.a(11394, new Object[] { str1, str2, str6, str3, str4, str5, Long.valueOf(l) });
+      h.OAn.b(11394, new Object[] { str1, str2, str6, str3, str4, str5, Long.valueOf(l) });
     }
     AppMethodBeat.o(153096);
   }
@@ -86,7 +86,7 @@ public final class f
   private static void a(e parame, boolean paramBoolean)
   {
     AppMethodBeat.i(153095);
-    if ((parame == null) || (!g.bga().bfY()))
+    if ((parame == null) || (!g.bDR().bDP()))
     {
       Log.w("MicroMsg.abtest.AbTestReportHelper", "[AbTest] reportAbTestClickStreamBroadcast abtest faild. abTestPoint or testcase is null.");
       AppMethodBeat.o(153095);
@@ -97,20 +97,20 @@ public final class f
     for (StringBuilder localStringBuilder1 = localStringBuilder2.append("TestPointStart:");; localStringBuilder1 = localStringBuilder2.append("TestPointEnd:"))
     {
       localStringBuilder2.append(localStringBuilder1);
-      localStringBuilder2.append(g.bga().lwB.lwy);
+      localStringBuilder2.append(g.bDR().ooa.onX);
       localStringBuilder2.append("_");
       localStringBuilder2.append(parame.id);
       localStringBuilder2.append("_");
-      localStringBuilder2.append(parame.lwD);
+      localStringBuilder2.append(parame.ooc);
       localStringBuilder2.append("_");
-      localStringBuilder2.append(parame.lwD);
+      localStringBuilder2.append(parame.ooc);
       localStringBuilder2.append("_");
-      localStringBuilder2.append(parame.lwE);
+      localStringBuilder2.append(parame.ood);
       localStringBuilder2.append("_");
       localStringBuilder2.append(parame.result);
       localStringBuilder2.append("_");
-      localStringBuilder2.append(parame.kVd);
-      Sm(localStringBuilder2.toString());
+      localStringBuilder2.append(parame.nAz);
+      Ko(localStringBuilder2.toString());
       AppMethodBeat.o(153095);
       return;
     }

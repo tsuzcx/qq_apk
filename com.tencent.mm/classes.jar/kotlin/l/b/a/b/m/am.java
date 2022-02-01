@@ -1,135 +1,120 @@
 package kotlin.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.a.g.a;
+import kotlin.l.b.a.b.j.g.h;
 
-public final class am
+final class am
+  extends al
 {
-  private static final aa a(aa paramaa)
+  private final List<az> aiHl;
+  private final h aiLf;
+  private final boolean ajjw;
+  private final ax ajpu;
+  private final b<kotlin.l.b.a.b.m.a.g, al> ajqe;
+  
+  public am(ax paramax, List<? extends az> paramList, boolean paramBoolean, h paramh, b<? super kotlin.l.b.a.b.m.a.g, ? extends al> paramb)
   {
-    AppMethodBeat.i(60807);
-    int i = 0;
-    paramaa = (Iterable)paramaa.abqE;
-    Collection localCollection = (Collection)new ArrayList(j.a(paramaa, 10));
-    Iterator localIterator = paramaa.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(60791);
+    this.ajpu = paramax;
+    this.aiHl = paramList;
+    this.ajjw = paramBoolean;
+    this.aiLf = paramh;
+    this.ajqe = paramb;
+    if ((this.aiLf instanceof v.b))
     {
-      ab localab = (ab)localIterator.next();
-      paramaa = localab;
-      if (bc.aE(localab))
-      {
-        i = 1;
-        paramaa = (ab)b(localab.iPX());
-      }
-      localCollection.add(paramaa);
+      paramax = new IllegalStateException("SimpleTypeImpl should not be created for error type: " + this.aiLf + '\n' + this.ajpu);
+      AppMethodBeat.o(60791);
+      throw paramax;
     }
-    paramaa = (List)localCollection;
-    if (i == 0)
-    {
-      AppMethodBeat.o(60807);
-      return null;
-    }
-    paramaa = new aa((Collection)paramaa);
-    AppMethodBeat.o(60807);
-    return paramaa;
+    AppMethodBeat.o(60791);
   }
   
-  public static final aj aq(ab paramab)
+  private al j(kotlin.l.b.a.b.m.a.g paramg)
   {
-    AppMethodBeat.i(60802);
-    p.k(paramab, "$this$getAbbreviation");
-    p.k(paramab, "$this$getAbbreviatedType");
-    bg localbg = paramab.iPX();
-    paramab = localbg;
-    if (!(localbg instanceof a)) {
-      paramab = null;
-    }
-    paramab = (a)paramab;
-    if (paramab != null)
+    AppMethodBeat.i(60788);
+    s.u(paramg, "kotlinTypeRefiner");
+    paramg = (al)this.ajqe.invoke(paramg);
+    if (paramg == null)
     {
-      paramab = paramab.abpJ;
-      AppMethodBeat.o(60802);
-      return paramab;
+      paramg = (al)this;
+      AppMethodBeat.o(60788);
+      return paramg;
     }
-    AppMethodBeat.o(60802);
-    return null;
+    AppMethodBeat.o(60788);
+    return paramg;
   }
   
-  public static final boolean ar(ab paramab)
+  public final al Pq(boolean paramBoolean)
   {
-    AppMethodBeat.i(60804);
-    p.k(paramab, "$this$isDefinitelyNotNullType");
-    boolean bool = paramab.iPX() instanceof l;
-    AppMethodBeat.o(60804);
-    return bool;
+    AppMethodBeat.i(60786);
+    if (paramBoolean == this.ajjw)
+    {
+      localal = (al)this;
+      AppMethodBeat.o(60786);
+      return localal;
+    }
+    if (paramBoolean)
+    {
+      localal = (al)new aj((al)this);
+      AppMethodBeat.o(60786);
+      return localal;
+    }
+    al localal = (al)new ah((al)this);
+    AppMethodBeat.o(60786);
+    return localal;
   }
   
-  public static final aj as(ab paramab)
+  public final al d(kotlin.l.b.a.b.b.a.g paramg)
   {
-    AppMethodBeat.i(60806);
-    at localat = paramab.iOU();
-    paramab = localat;
-    if (!(localat instanceof aa)) {
-      paramab = null;
-    }
-    paramab = (aa)paramab;
-    if (paramab == null)
+    AppMethodBeat.i(60784);
+    s.u(paramg, "newAnnotations");
+    if (paramg.isEmpty())
     {
-      AppMethodBeat.o(60806);
-      return null;
+      paramg = (al)this;
+      AppMethodBeat.o(60784);
+      return paramg;
     }
-    paramab = a(paramab);
-    if (paramab == null)
-    {
-      AppMethodBeat.o(60806);
-      return null;
-    }
-    paramab = paramab.iPW();
-    AppMethodBeat.o(60806);
-    return paramab;
+    paramg = (al)new i((al)this, paramg);
+    AppMethodBeat.o(60784);
+    return paramg;
   }
   
-  public static final aj b(aj paramaj1, aj paramaj2)
+  public final List<az> klR()
   {
-    AppMethodBeat.i(60803);
-    p.k(paramaj1, "$this$withAbbreviation");
-    p.k(paramaj2, "abbreviatedType");
-    if (ad.ap((ab)paramaj1))
-    {
-      AppMethodBeat.o(60803);
-      return paramaj1;
-    }
-    paramaj1 = (aj)new a(paramaj1, paramaj2);
-    AppMethodBeat.o(60803);
-    return paramaj1;
+    return this.aiHl;
   }
   
-  public static final bg b(bg parambg)
+  public final h knP()
   {
-    AppMethodBeat.i(60805);
-    p.k(parambg, "$this$makeDefinitelyNotNullOrNotNull");
-    Object localObject1 = l.abqh;
-    localObject1 = l.a.a(parambg);
-    if (localObject1 != null) {}
-    for (localObject1 = (bg)localObject1;; localObject1 = (bg)as((ab)parambg))
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = parambg.Jm(false);
-      }
-      AppMethodBeat.o(60805);
-      return localObject2;
-    }
+    return this.aiLf;
+  }
+  
+  public final kotlin.l.b.a.b.b.a.g knl()
+  {
+    AppMethodBeat.i(60783);
+    Object localObject = kotlin.l.b.a.b.b.a.g.aiIh;
+    localObject = g.a.kpB();
+    AppMethodBeat.o(60783);
+    return localObject;
+  }
+  
+  public final boolean ksB()
+  {
+    return this.ajjw;
+  }
+  
+  public final ax kzm()
+  {
+    return this.ajpu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.am
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,31 @@
 package kotlinx.coroutines;
 
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.d.f;
+import kotlin.d.g;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/IncompleteStateBox;", "", "state", "Lkotlinx/coroutines/Incomplete;", "(Lkotlinx/coroutines/Incomplete;)V", "kotlinx-coroutines-core"})
-final class bu
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/GlobalScope;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public final class bu
+  implements aq
 {
-  public final bt abxq;
+  public static final bu ajwo;
   
-  public bu(bt parambt)
+  static
   {
-    this.abxq = parambt;
+    AppMethodBeat.i(118184);
+    ajwo = new bu();
+    AppMethodBeat.o(118184);
+  }
+  
+  public final f getCoroutineContext()
+  {
+    return (f)g.aiwf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.bu
  * JD-Core Version:    0.7.0.1
  */

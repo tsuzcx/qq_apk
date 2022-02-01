@@ -1,15 +1,17 @@
 package com.tencent.mm.plugin.scanner.word;
 
 import android.util.Pair;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.r;
-import androidx.lifecycle.s;
-import androidx.lifecycle.t;
-import com.tencent.e.i;
+import androidx.lifecycle.j;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.x;
+import androidx.lifecycle.y;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import com.tencent.worddetect.WordDetectNative.WordDetectDetailResult;
 import com.tencent.worddetect.b.b;
 import java.util.ArrayList;
@@ -17,54 +19,54 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ImageWordScanDetailEngine
-  implements k, a<String, b>
+  implements p, a<String, b>
 {
-  private r<Pair<String, b>> Jbh;
-  private ConcurrentHashMap<String, WordDetectNative.WordDetectDetailResult> Jbi;
-  private ConcurrentHashMap<String, ArrayList<a.a<String, b>>> Jbj;
-  private boolean Jbk;
-  private boolean aJQ;
+  private ConcurrentHashMap<String, WordDetectNative.WordDetectDetailResult> PkZ;
+  private ConcurrentHashMap<String, ArrayList<a.a<String, b>>> Pla;
+  private boolean Plb;
+  private boolean aUP;
   private MMActivity activity;
+  private x<Pair<String, b>> resultLiveData;
   
   public ImageWordScanDetailEngine(MMActivity paramMMActivity)
   {
     this(paramMMActivity, (byte)0);
-    this.Jbk = false;
+    this.Plb = false;
   }
   
   public ImageWordScanDetailEngine(MMActivity paramMMActivity, byte paramByte)
   {
-    AppMethodBeat.i(193652);
-    this.Jbh = new r();
-    this.Jbi = new ConcurrentHashMap();
-    this.Jbj = new ConcurrentHashMap();
-    this.aJQ = false;
-    this.Jbk = true;
-    paramMMActivity.getLifecycle().a(this);
+    AppMethodBeat.i(313440);
+    this.resultLiveData = new x();
+    this.PkZ = new ConcurrentHashMap();
+    this.Pla = new ConcurrentHashMap();
+    this.aUP = false;
+    this.Plb = true;
+    paramMMActivity.getLifecycle().addObserver(this);
     this.activity = paramMMActivity;
-    this.aJQ = false;
-    AppMethodBeat.o(193652);
+    this.aUP = false;
+    AppMethodBeat.o(313440);
   }
   
-  @t(jl=h.a.ON_DESTROY)
+  @z(Ho=j.a.ON_DESTROY)
   private void onActivityDestroy()
   {
-    AppMethodBeat.i(193654);
-    this.aJQ = true;
-    this.Jbi.clear();
-    this.activity.getLifecycle().b(this);
-    com.tencent.e.h.ZvG.bDh("WordDetectThread");
+    AppMethodBeat.i(313444);
+    this.aUP = true;
+    this.PkZ.clear();
+    this.activity.getLifecycle().removeObserver(this);
+    h.ahAA.bFQ("WordDetectThread");
     this.activity = null;
-    this.Jbj.clear();
-    if (this.Jbk) {
+    this.Pla.clear();
+    if (this.Plb) {
       com.tencent.worddetect.b.release();
     }
-    AppMethodBeat.o(193654);
+    AppMethodBeat.o(313444);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.word.ImageWordScanDetailEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,10 @@ package com.tencent.mm.plugin.repairer.ui;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
@@ -16,66 +13,117 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.e;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.widget.InputPanelLinearLayout;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.ui.widget.c.a;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/repairer/ui/RepairerSetValueDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "Lcom/tencent/mm/ui/widget/InputPanelHelper$OnInputPanelChange;", "dialogContext", "Landroid/content/Context;", "title", "", "initValue", "onValueSetListener", "Lcom/tencent/mm/plugin/repairer/ui/OnValueSetListener;", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/repairer/ui/OnValueSetListener;)V", "getDialogContext", "()Landroid/content/Context;", "setDialogContext", "(Landroid/content/Context;)V", "getInitValue", "()Ljava/lang/String;", "okBtn", "Landroid/widget/Button;", "getOkBtn", "()Landroid/widget/Button;", "setOkBtn", "(Landroid/widget/Button;)V", "getOnValueSetListener", "()Lcom/tencent/mm/plugin/repairer/ui/OnValueSetListener;", "getTitle", "valueEt", "Landroid/widget/EditText;", "getValueEt", "()Landroid/widget/EditText;", "setValueEt", "(Landroid/widget/EditText;)V", "hideVKB", "", "initContentView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onInputPanelChange", "isKeyboardShow", "", "keyboardHeight", "", "showVKB", "ui-repairer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/repairer/ui/RepairerSetValueDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "Lcom/tencent/mm/ui/widget/InputPanelHelper$OnInputPanelChange;", "dialogContext", "Landroid/content/Context;", "title", "", "initValue", "onValueSetListener", "Lcom/tencent/mm/plugin/repairer/ui/OnValueSetListener;", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/repairer/ui/OnValueSetListener;)V", "getDialogContext", "()Landroid/content/Context;", "setDialogContext", "(Landroid/content/Context;)V", "getInitValue", "()Ljava/lang/String;", "okBtn", "Landroid/widget/Button;", "getOkBtn", "()Landroid/widget/Button;", "setOkBtn", "(Landroid/widget/Button;)V", "getOnValueSetListener", "()Lcom/tencent/mm/plugin/repairer/ui/OnValueSetListener;", "getTitle", "valueEt", "Landroid/widget/EditText;", "getValueEt", "()Landroid/widget/EditText;", "setValueEt", "(Landroid/widget/EditText;)V", "hideVKB", "", "initContentView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onInputPanelChange", "isKeyboardShow", "", "keyboardHeight", "", "showVKB", "ui-repairer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends e
-  implements com.tencent.mm.ui.widget.c.a
+  implements c.a
 {
-  Context GKX;
-  EditText Ixf;
-  private final String Ixg;
-  final a Ixh;
-  private Button kEt;
+  private Context MHM;
+  private final a OwA;
+  private EditText OwB;
+  private final String Owz;
+  private Button nhC;
   private final String title;
   
   public c(Context paramContext, String paramString1, String paramString2, a parama)
   {
-    super(paramContext, b.e.IwW);
-    AppMethodBeat.i(227454);
-    this.GKX = paramContext;
+    super(paramContext, b.g.Own);
+    AppMethodBeat.i(277942);
+    this.MHM = paramContext;
     this.title = paramString1;
-    this.Ixg = paramString2;
-    this.Ixh = parama;
-    AppMethodBeat.o(227454);
+    this.Owz = paramString2;
+    this.OwA = parama;
+    AppMethodBeat.o(277942);
   }
   
-  public final void h(boolean paramBoolean, int paramInt)
+  private static final void a(c paramc)
   {
-    AppMethodBeat.i(227451);
-    if (paramBoolean)
+    AppMethodBeat.i(277961);
+    s.u(paramc, "this$0");
+    Object localObject = paramc.MHM.getSystemService("input_method");
+    if (localObject == null)
     {
-      localView = findViewById(b.a.input_container);
-      if (localView != null)
+      paramc = new NullPointerException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
+      AppMethodBeat.o(277961);
+      throw paramc;
+    }
+    ((InputMethodManager)localObject).showSoftInput((View)paramc.OwB, 0);
+    AppMethodBeat.o(277961);
+  }
+  
+  private static final void a(c paramc, DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(277972);
+    s.u(paramc, "this$0");
+    paramDialogInterface = paramc.MHM.getSystemService("input_method");
+    if (paramDialogInterface == null)
+    {
+      paramc = new NullPointerException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
+      AppMethodBeat.o(277972);
+      throw paramc;
+    }
+    paramDialogInterface = (InputMethodManager)paramDialogInterface;
+    paramc = paramc.OwB;
+    if (paramc == null) {}
+    for (paramc = null;; paramc = paramc.getWindowToken())
+    {
+      paramDialogInterface.hideSoftInputFromWindow(paramc, 0);
+      AppMethodBeat.o(277972);
+      return;
+    }
+  }
+  
+  private static final void a(c paramc, View paramView)
+  {
+    AppMethodBeat.i(277966);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramc);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/repairer/ui/RepairerSetValueDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramc, "this$0");
+    paramView = paramc.OwB;
+    if (paramView != null)
+    {
+      paramView = paramView.getText();
+      if (paramView != null)
       {
-        localView.setPadding(0, 0, 0, paramInt);
-        AppMethodBeat.o(227451);
-        return;
+        paramView = paramView.toString();
+        if (paramView != null)
+        {
+          localObject = paramc.OwA;
+          if (localObject != null) {
+            ((a)localObject).aUk(paramView);
+          }
+        }
       }
-      AppMethodBeat.o(227451);
-      return;
     }
-    View localView = findViewById(b.a.input_container);
-    if (localView != null)
-    {
-      localView.setPadding(0, 0, 0, 0);
-      AppMethodBeat.o(227451);
-      return;
-    }
-    AppMethodBeat.o(227451);
+    paramc.dismiss();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/repairer/ui/RepairerSetValueDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(277966);
+  }
+  
+  private static final boolean a(c paramc, View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(277948);
+    s.u(paramc, "this$0");
+    paramc.cancel();
+    AppMethodBeat.o(277948);
+    return true;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(227447);
+    AppMethodBeat.i(277999);
     super.onCreate(paramBundle);
     paramBundle = getWindow();
     if (paramBundle != null) {
@@ -91,149 +139,70 @@ public final class c
     }
     paramBundle = getWindow();
     if (paramBundle != null) {
-      paramBundle.setWindowAnimations(b.e.BottomToTopSlowAnimation);
+      paramBundle.setWindowAnimations(b.g.BottomToTopSlowAnimation);
     }
-    paramBundle = LayoutInflater.from(this.GKX).inflate(b.b.IwT, null, false);
+    paramBundle = LayoutInflater.from(this.MHM).inflate(b.d.Owb, null, false);
     setContentView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
-    Object localObject = paramBundle.findViewById(b.a.title_tv);
-    p.j(localObject, "view.findViewById<TextView>(R.id.title_tv)");
-    ((TextView)localObject).setText((CharSequence)this.title);
-    this.Ixf = ((EditText)paramBundle.findViewById(b.a.value_et));
-    this.kEt = ((Button)paramBundle.findViewById(b.a.ok_btn));
-    localObject = this.Ixf;
+    ((TextView)paramBundle.findViewById(b.c.title_tv)).setText((CharSequence)this.title);
+    this.OwB = ((EditText)paramBundle.findViewById(b.c.value_et));
+    this.nhC = ((Button)paramBundle.findViewById(b.c.ok_btn));
+    Object localObject = this.OwB;
     if (localObject != null) {
       ((EditText)localObject).requestFocus();
     }
-    localObject = this.Ixg;
+    localObject = this.Owz;
     if (localObject != null)
     {
-      EditText localEditText = this.Ixf;
+      EditText localEditText = this.OwB;
       if (localEditText != null) {
         localEditText.setText((CharSequence)localObject);
       }
-      localEditText = this.Ixf;
+      localEditText = this.OwB;
       if (localEditText != null) {
         localEditText.setSelection(((String)localObject).length());
       }
     }
-    paramBundle.findViewById(b.a.empty_area_view).setOnTouchListener((View.OnTouchListener)new a(this));
+    paramBundle.findViewById(b.c.empty_area_view).setOnTouchListener(new c..ExternalSyntheticLambda2(this));
     setCancelable(true);
-    paramBundle = (InputPanelLinearLayout)findViewById(b.a.input_container);
+    paramBundle = (InputPanelLinearLayout)findViewById(b.c.input_container);
     if (paramBundle != null) {
-      paramBundle.setExternalListener((com.tencent.mm.ui.widget.c.a)this);
+      paramBundle.setExternalListener((c.a)this);
     }
-    h.ZvG.n((Runnable)new b(this), 128L);
-    paramBundle = this.kEt;
+    h.ahAA.o(new c..ExternalSyntheticLambda3(this), 128L);
+    paramBundle = this.nhC;
     if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)new c(this));
+      paramBundle.setOnClickListener(new c..ExternalSyntheticLambda1(this));
     }
-    setOnDismissListener((DialogInterface.OnDismissListener)new d(this));
-    AppMethodBeat.o(227447);
+    setOnDismissListener(new c..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(277999);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class a
-    implements View.OnTouchListener
+  public final void onInputPanelChange(boolean paramBoolean, int paramInt)
   {
-    a(c paramc) {}
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+    AppMethodBeat.i(278005);
+    View localView;
+    if (paramBoolean)
     {
-      AppMethodBeat.i(227206);
-      this.Ixi.cancel();
-      AppMethodBeat.o(227206);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(c paramc) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(227391);
-      Object localObject1 = this.Ixi;
-      Object localObject2 = ((c)localObject1).GKX.getSystemService("input_method");
-      if (localObject2 == null)
+      localView = findViewById(b.c.input_container);
+      if (localView != null)
       {
-        localObject1 = new t("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
-        AppMethodBeat.o(227391);
-        throw ((Throwable)localObject1);
-      }
-      ((InputMethodManager)localObject2).showSoftInput((View)((c)localObject1).Ixf, 0);
-      AppMethodBeat.o(227391);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(c paramc) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(226633);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/repairer/ui/RepairerSetValueDialog$initContentView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      paramView = this.Ixi.Ixf;
-      if (paramView != null)
-      {
-        paramView = paramView.getText();
-        if (paramView != null)
-        {
-          paramView = paramView.toString();
-          if (paramView != null)
-          {
-            localObject = this.Ixi.Ixh;
-            if (localObject != null) {
-              ((a)localObject).aWU(paramView);
-            }
-          }
-        }
-      }
-      this.Ixi.dismiss();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/repairer/ui/RepairerSetValueDialog$initContentView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(226633);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
-  static final class d
-    implements DialogInterface.OnDismissListener
-  {
-    d(c paramc) {}
-    
-    public final void onDismiss(DialogInterface paramDialogInterface)
-    {
-      AppMethodBeat.i(226983);
-      paramDialogInterface = this.Ixi;
-      Object localObject = paramDialogInterface.GKX.getSystemService("input_method");
-      if (localObject == null)
-      {
-        paramDialogInterface = new t("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
-        AppMethodBeat.o(226983);
-        throw paramDialogInterface;
-      }
-      localObject = (InputMethodManager)localObject;
-      paramDialogInterface = paramDialogInterface.Ixf;
-      if (paramDialogInterface != null) {}
-      for (paramDialogInterface = paramDialogInterface.getWindowToken();; paramDialogInterface = null)
-      {
-        ((InputMethodManager)localObject).hideSoftInputFromWindow(paramDialogInterface, 0);
-        AppMethodBeat.o(226983);
-        return;
+        localView.setPadding(0, 0, 0, paramInt);
+        AppMethodBeat.o(278005);
       }
     }
+    else
+    {
+      localView = findViewById(b.c.input_container);
+      if (localView != null) {
+        localView.setPadding(0, 0, 0, 0);
+      }
+    }
+    AppMethodBeat.o(278005);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.repairer.ui.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,42 @@
 package com.tencent.mm.plugin.websearch.webview;
 
-import android.webkit.ConsoleMessage;
-import android.webkit.ConsoleMessage.MessageLevel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.xweb.x;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchChromeClient;", "Lcom/tencent/xweb/WebChromeClient;", "()V", "TAG", "", "onConsoleMessage", "", "consoleMessage", "Landroid/webkit/ConsoleMessage;", "ui-websearch_release"})
-public final class e
-  extends x
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/webview/IWebSearchQueryUIComponent;", "T", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;", "getWebSearchData", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchQueryData;", "getWebSearchJSApi", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchQueryJSApi;", "onSearchInputChange", "", "query", "", "inputChange", "", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface e<T>
+  extends d<T>
 {
-  private final String TAG = "MicroMsg.WebSearch.WebSearchChromeClient";
+  public abstract void cd(String paramString, boolean paramBoolean);
   
-  public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public abstract n<T> fyE();
+  
+  public abstract o<T> fyP();
+  
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    String str2 = null;
-    AppMethodBeat.i(197942);
-    String str3 = this.TAG;
-    Integer localInteger;
-    Object localObject;
-    if (paramConsoleMessage != null)
+    public static <T> void a(e<T> parame)
     {
-      localInteger = Integer.valueOf(paramConsoleMessage.lineNumber());
-      if (paramConsoleMessage != null)
-      {
-        localObject = paramConsoleMessage.messageLevel();
-        if (localObject != null)
-        {
-          str1 = ((ConsoleMessage.MessageLevel)localObject).name();
-          localObject = str1;
-          if (str1 != null) {
-            break label61;
-          }
-        }
-      }
-      localObject = "";
-      label61:
-      if (paramConsoleMessage == null) {
-        break label129;
-      }
+      AppMethodBeat.i(315186);
+      s.u(parame, "this");
+      d.a.a((d)parame);
+      AppMethodBeat.o(315186);
     }
-    label129:
-    for (String str1 = paramConsoleMessage.message();; str1 = null)
+    
+    public static <T> void b(e<T> parame)
     {
-      if (paramConsoleMessage != null) {
-        str2 = paramConsoleMessage.sourceId();
-      }
-      Log.i(str3, "onConsoleMessage %d %s %s %s", new Object[] { localInteger, localObject, str1, str2 });
-      boolean bool = super.onConsoleMessage(paramConsoleMessage);
-      AppMethodBeat.o(197942);
-      return bool;
-      localInteger = null;
-      break;
+      AppMethodBeat.i(315189);
+      s.u(parame, "this");
+      d.a.b((d)parame);
+      AppMethodBeat.o(315189);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.webview.e
  * JD-Core Version:    0.7.0.1
  */

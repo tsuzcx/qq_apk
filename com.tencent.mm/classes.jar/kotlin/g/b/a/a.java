@@ -1,8 +1,8 @@
 package kotlin.g.b.a;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/jvm/internal/markers/KMappedMarker;", "", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/jvm/internal/markers/KMappedMarker;", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public abstract interface a {}
 
 

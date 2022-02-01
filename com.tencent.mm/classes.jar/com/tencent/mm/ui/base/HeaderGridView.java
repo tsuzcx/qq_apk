@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.base;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
@@ -12,13 +11,13 @@ import java.util.ArrayList;
 public class HeaderGridView
   extends GridView
 {
-  private ArrayList<Object> Whx;
+  private ArrayList<Object> adOu;
   
   public HeaderGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141668);
-    this.Whx = new ArrayList();
+    this.adOu = new ArrayList();
     super.setClipChildren(false);
     AppMethodBeat.o(141668);
   }
@@ -27,7 +26,7 @@ public class HeaderGridView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141669);
-    this.Whx = new ArrayList();
+    this.adOu = new ArrayList();
     super.setClipChildren(false);
     AppMethodBeat.o(141669);
   }
@@ -35,12 +34,11 @@ public class HeaderGridView
   public int getHeaderViewCount()
   {
     AppMethodBeat.i(141671);
-    int i = this.Whx.size();
+    int i = this.adOu.size();
     AppMethodBeat.o(141671);
     return i;
   }
   
-  @TargetApi(11)
   public int getNumColumns()
   {
     AppMethodBeat.i(141670);
@@ -70,7 +68,7 @@ public class HeaderGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.HeaderGridView
  * JD-Core Version:    0.7.0.1
  */

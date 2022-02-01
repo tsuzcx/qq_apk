@@ -1,59 +1,19 @@
 package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 
 public final class b
 {
-  public static boolean WL(String paramString)
+  public static String bML()
   {
-    AppMethodBeat.i(137007);
-    f localf = a.bnA();
-    if ((localf != null) && (localf.lVz.equals(paramString)))
-    {
-      AppMethodBeat.o(137007);
-      return true;
-    }
-    AppMethodBeat.o(137007);
-    return false;
-  }
-  
-  public static boolean bnC()
-  {
-    AppMethodBeat.i(137004);
-    if ((a.bnz()) && (!a.bnx()))
-    {
-      a.bnu();
-      AppMethodBeat.o(137004);
-      return true;
-    }
-    AppMethodBeat.o(137004);
-    return false;
-  }
-  
-  public static boolean bnD()
-  {
-    AppMethodBeat.i(137005);
-    if (a.bnx())
-    {
-      a.bnt();
-      AppMethodBeat.o(137005);
-      return true;
-    }
-    AppMethodBeat.o(137005);
-    return false;
-  }
-  
-  public static boolean bnE()
-  {
-    AppMethodBeat.i(137006);
-    if (a.bnz())
-    {
-      a.bnv();
-      AppMethodBeat.o(137006);
-      return true;
-    }
-    AppMethodBeat.o(137006);
-    return false;
+    AppMethodBeat.i(148374);
+    Object localObject = new StringBuilder();
+    h.baF();
+    localObject = h.baE().mCJ + "speextemp/";
+    AppMethodBeat.o(148374);
+    return localObject;
   }
 }
 

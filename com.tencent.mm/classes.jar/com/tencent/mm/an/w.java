@@ -1,234 +1,156 @@
 package com.tencent.mm.an;
 
-import android.os.Looper;
-import android.widget.Toast;
-import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.bt;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.network.n.a;
 import com.tencent.mm.network.s;
-import com.tencent.mm.network.t;
-import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.acr;
+import com.tencent.mm.protocal.protobuf.acs;
+import com.tencent.mm.protocal.protobuf.act;
+import com.tencent.mm.protocal.protobuf.ezh;
+import com.tencent.mm.protocal.protobuf.fas;
+import com.tencent.mm.protocal.protobuf.gjl;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.cc;
+import java.util.LinkedList;
 
-public class w
-  extends n.a
+public final class w
+  extends p
+  implements m
 {
-  private final g dispatcher;
-  private final q fzz;
-  final MMHandler handler;
-  private boolean kUn;
-  private final long lCV;
-  private s lCW;
-  private m lCX;
-  private boolean lCY;
-  Runnable lCZ;
-  private final i queueCallback;
+  private com.tencent.mm.am.h callback;
+  private c rr;
   
-  public w(s params, m paramm, q paramq, i parami, g paramg)
+  public w(String paramString1, int paramInt1, String paramString2, LinkedList<acr> paramLinkedList, int paramInt2, ezh paramezh, fas paramfas)
   {
-    AppMethodBeat.i(132421);
-    this.lCV = 330000L;
-    this.kUn = false;
-    this.lCY = false;
-    this.lCZ = new Runnable()
+    AppMethodBeat.i(124120);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new acs();
+    ((c.a)localObject).otF = new act();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/clickcommand";
+    ((c.a)localObject).funcId = 359;
+    ((c.a)localObject).otG = 176;
+    ((c.a)localObject).respCmdId = 1000000176;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (acs)c.b.b(this.rr.otB);
+    ((acs)localObject).Zlk = paramInt1;
+    ((acs)localObject).Zll = paramString2;
+    ((acs)localObject).YRs = paramString1;
+    ((acs)localObject).YFJ = bt.bCQ();
+    ((acs)localObject).scene = paramInt2;
+    ((acs)localObject).YPI = ad.getSessionId();
+    if (paramLinkedList != null) {
+      ((acs)localObject).Zlm = paramLinkedList;
+    }
+    if (paramezh != null)
     {
-      public final void run()
+      ((acs)localObject).Zln = paramezh;
+      Log.d("MicroMsg.NetSceneBizClickCommand", "SessionStat StayDuration=%d, UnreadCount=%d, UnreadDuration=%d, IndexInSessionList=%d, LatestMsgType=%d, MassSendUnreadCount=%d, TemplateUnreadCount=%d", new Object[] { Integer.valueOf(paramezh.abAs), Integer.valueOf(paramezh.abAu), Integer.valueOf(paramezh.abAt), Integer.valueOf(paramezh.abAw), Integer.valueOf(paramezh.abAv), Integer.valueOf(paramezh.abAx), Integer.valueOf(paramezh.abAy) });
+    }
+    if (paramfas != null)
+    {
+      ((acs)localObject).Zlo = paramfas;
+      Log.d("MicroMsg.NetSceneBizClickCommand", "settingPageInfo Scene=%d, IsServiceWuRaoOpen=%d", new Object[] { Integer.valueOf(paramfas.IJG), Integer.valueOf(paramfas.abAN) });
+    }
+    Log.i("MicroMsg.NetSceneBizClickCommand", "click command : %s, type: %s, info: %s, MsgSource : %s, MsgReport size %d, scene %d", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, ((acs)localObject).YFJ, Integer.valueOf(((acs)localObject).Zlm.size()), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(124120);
+  }
+  
+  public w(String paramString1, String paramString2)
+  {
+    this(paramString1, paramString2, (byte)0);
+  }
+  
+  private w(String paramString1, String paramString2, byte paramByte)
+  {
+    this(paramString1, 1, paramString2, null, 0, null, null);
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(124122);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(124122);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 359;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(124121);
+    Object localObject2;
+    String str1;
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      params = (acs)c.b.b(this.rr.otB);
+      paramArrayOfByte = (act)c.c.b(this.rr.otC);
+      if ((params.Zlk == 10) && (params.YRs != null) && (paramArrayOfByte.Zlp != null) && (((n)com.tencent.mm.kernel.h.ax(n.class)).bzG().bxM(params.YRs) != null))
       {
-        int k = 0;
-        int j = 0;
-        AppMethodBeat.i(132419);
-        int i;
-        if ((w.a(w.this)) || (w.b(w.this)))
-        {
-          if (w.c(w.this) == null)
-          {
-            i = 0;
-            if (w.c(w.this) != null) {
-              break label96;
-            }
-          }
-          for (;;)
-          {
-            Log.e("MicroMsg.RemoteOnGYNetEnd", "time exceed But removeCallbacks failed hash:%d type:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-            AppMethodBeat.o(132419);
-            return;
-            i = w.c(w.this).hashCode();
-            break;
-            label96:
-            j = w.c(w.this).getType();
-          }
+        localObject2 = paramArrayOfByte.Zlp;
+        str1 = params.YRs;
+        if ((localObject2 != null) && (!Util.isNullOrNil(((gjl)localObject2).acfI)) && (!Util.isNullOrNil(((gjl)localObject2).acfH))) {
+          break label193;
         }
-        final boolean bool1 = w.a(w.this);
-        final boolean bool2 = w.b(w.this);
-        if (w.c(w.this) == null)
-        {
-          i = 0;
-          if (w.c(w.this) != null) {
-            break label247;
-          }
-        }
-        label247:
-        for (j = k;; j = w.c(w.this).getType())
-        {
-          Log.w("MicroMsg.RemoteOnGYNetEnd", "time exceed, force to callback hash:%d type:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-          w.d(w.this);
-          ThreadPool.post(new Runnable()
-          {
-            public final void run()
-            {
-              int j = 0;
-              AppMethodBeat.i(132418);
-              w.e(w.this).Ud("push process's network haven't callback in 5.5min!!!! cancelStatus:" + bool1 + " hasCallbackStatus:" + bool2);
-              int i;
-              if (w.c(w.this) == null)
-              {
-                i = 0;
-                if (w.c(w.this) != null) {
-                  break label129;
-                }
-              }
-              for (;;)
-              {
-                Log.w("MicroMsg.RemoteOnGYNetEnd", "time exceed, force to callback . kill push fin. hash:%d type:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-                AppMethodBeat.o(132418);
-                return;
-                i = w.c(w.this).hashCode();
-                break;
-                label129:
-                j = w.c(w.this).getType();
-              }
-            }
-          }, "RemoteOnGYNetEnd_killPush");
-          w.g(w.this).onGYNetEnd(-1, 3, -1, "time exceed, force to callback", w.f(w.this), null);
-          AppMethodBeat.o(132419);
-          return;
-          i = w.c(w.this).hashCode();
-          break;
-        }
+        Log.w("MicroMsg.NetSceneBizClickCommand", "insertReportLocationMsg tips is null");
       }
-    };
-    this.lCW = params;
-    this.lCX = paramm;
-    this.fzz = paramq;
-    this.queueCallback = parami;
-    if (Looper.myLooper() == null) {}
-    for (params = new MMHandler(Looper.getMainLooper());; params = new MMHandler())
-    {
-      this.handler = params;
-      this.dispatcher = paramg;
-      AppMethodBeat.o(132421);
-      return;
     }
-  }
-  
-  public final void a(final int paramInt1, final int paramInt2, final int paramInt3, final String paramString, t paramt, final byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(132423);
-    Log.i("MicroMsg.RemoteOnGYNetEnd", "onGYNetEnd netId:%d, errType:%d, errCode:%d, isCancel:%b, hash[%d,%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(this.kUn), Integer.valueOf(this.fzz.hashCode()), Integer.valueOf(this.lCW.hashCode()) });
-    this.fzz.updateDispatchIdNew(-1);
-    if (this.kUn)
+    for (;;)
     {
-      AppMethodBeat.o(132423);
+      if (paramArrayOfByte.Zlp != null) {
+        Log.d("MicroMsg.NetSceneBizClickCommand", "onGYNetEnd ClickType=%d", new Object[] { Integer.valueOf(params.Zlk) });
+      }
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(124121);
       return;
-    }
-    if (!this.lCY)
-    {
-      this.lCY = true;
-      this.handler.removeCallbacks(this.lCZ);
-      this.handler.post(new Runnable()
+      label193:
+      if (((gjl)localObject2).acfG != 1)
       {
-        public final void run()
-        {
-          AppMethodBeat.i(132420);
-          if (w.a(w.this))
-          {
-            Log.w("MicroMsg.RemoteOnGYNetEnd", "netId:%d has been canceled", new Object[] { Integer.valueOf(paramInt1) });
-            AppMethodBeat.o(132420);
-            return;
-          }
-          int k = paramInt2;
-          int m = paramInt3;
-          int i = k;
-          int j = m;
-          if (10016 == ac.mFM)
-          {
-            i = k;
-            j = m;
-            if (!Util.isNullOrNil(ac.mFO))
-            {
-              Log.i("MicroMsg.RemoteOnGYNetEnd", "onGYNetEnd DK TEST SET : %s ", new Object[] { ac.mFO });
-              String[] arrayOfString = ac.mFO.split(",");
-              i = k;
-              j = m;
-              if (arrayOfString != null)
-              {
-                i = k;
-                j = m;
-                if (arrayOfString.length == 3)
-                {
-                  i = k;
-                  j = m;
-                  if (Util.getInt(arrayOfString[0], -1) == w.c(w.this).getType())
-                  {
-                    k = Util.getInt(arrayOfString[1], 0);
-                    j = Util.getInt(arrayOfString[2], 0);
-                    i = k;
-                    if (k == 999)
-                    {
-                      Log.w("MicroMsg.RemoteOnGYNetEnd", "onGYNetEnd DK TEST SET syncservice : %s  NOT  CALLBACK !!!", new Object[] { ac.mFO });
-                      AppMethodBeat.o(132420);
-                      return;
-                    }
-                  }
-                }
-              }
-            }
-          }
-          Log.i("MicroMsg.RemoteOnGYNetEnd", "onGYNetEnd after post to worker netId:%d, errType:%d, errCode:%d, isCancel:%b, hashcode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(w.a(w.this)), Integer.valueOf(w.c(w.this).hashCode()) });
-          w.g(w.this).onGYNetEnd(paramInt1, i, j, paramString, w.f(w.this), paramArrayOfByte);
-          if ((w.c(w.this).needCheckCallback()) && (!w.c(w.this).hasCallBackToQueue()))
-          {
-            Log.e("MicroMsg.RemoteOnGYNetEnd", "the netscene hasn't call callback to onSceneEnd, type:%d", new Object[] { Integer.valueOf(w.c(w.this).getType()) });
-            Log.appenderFlush();
-            if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {
-              h.ZvG.bc(new Runnable()
-              {
-                public final void run()
-                {
-                  AppMethodBeat.i(196647);
-                  Toast.makeText(MMApplicationContext.getContext(), "the netscene hasn't call callback to onSceneEnd, type:" + w.c(w.this).getType(), 1).show();
-                  AppMethodBeat.o(196647);
-                }
-              });
-            }
-          }
-          AppMethodBeat.o(132420);
-        }
-      });
-      AppMethodBeat.o(132423);
-      return;
+        Log.w("MicroMsg.NetSceneBizClickCommand", "insertReportLocationMsg %d", new Object[] { Integer.valueOf(((gjl)localObject2).acfG) });
+      }
+      else
+      {
+        Object localObject1 = ((gjl)localObject2).acfH;
+        String str2 = ((gjl)localObject2).acfI;
+        localObject2 = new StringBuffer();
+        ((StringBuffer)localObject2).append("<sysmsg type=\"biz_services_mute\">");
+        ((StringBuffer)localObject2).append("<biz_services_mute>");
+        ((StringBuffer)localObject2).append("<text><![CDATA[").append((String)localObject1).append("]]></text>");
+        ((StringBuffer)localObject2).append("<link>");
+        ((StringBuffer)localObject2).append("<scene>biz_services_mute</scene>");
+        ((StringBuffer)localObject2).append("<text><![CDATA[").append(str2).append("]]></text>");
+        ((StringBuffer)localObject2).append("</link>");
+        ((StringBuffer)localObject2).append("</biz_services_mute>");
+        ((StringBuffer)localObject2).append("</sysmsg>");
+        localObject1 = new cc();
+        ((cc)localObject1).BS(str1);
+        ((cc)localObject1).pI(2);
+        ((cc)localObject1).setType(10002);
+        ((cc)localObject1).setCreateTime(br.bCJ());
+        ((cc)localObject1).setContent(((StringBuffer)localObject2).toString());
+        br.B((cc)localObject1);
+      }
     }
-    AppMethodBeat.o(132423);
-  }
-  
-  public final void cancel()
-  {
-    AppMethodBeat.i(132422);
-    this.kUn = true;
-    this.handler.removeCallbacks(this.lCZ);
-    AppMethodBeat.o(132422);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.an.w
  * JD-Core Version:    0.7.0.1
  */

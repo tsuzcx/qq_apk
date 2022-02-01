@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +13,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
-import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wallet_core.model.y;
 import com.tencent.mm.plugin.wxpay.a.e;
@@ -27,8 +26,8 @@ import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MaxListView;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.y.b;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,45 +39,45 @@ import java.util.List;
 public class WalletCardSelectUI
   extends WalletBaseUI
 {
-  private int OBy;
-  private List<ElementQuery> OXX;
-  private List<ElementQuery> OXY;
-  private CheckedTextView OXZ;
-  private CheckedTextView OYa;
-  private String OYb;
-  private int OYc;
-  private int OYd;
-  private int OYe;
-  private a OYf;
-  private MaxListView OYg;
-  private int Ovx;
+  private List<ElementQuery> VOl;
+  private List<ElementQuery> VOm;
+  private CheckedTextView VOn;
+  private CheckedTextView VOo;
+  private String VOp;
+  private int VOq;
+  private int VOr;
+  private int VOs;
+  private a VOt;
+  private MaxListView VOu;
+  private int VkK;
+  private int VqL;
   
   public WalletCardSelectUI()
   {
     AppMethodBeat.i(70870);
-    this.OXX = new LinkedList();
-    this.OXY = new LinkedList();
-    this.OBy = 3;
-    this.OYd = -1;
-    this.OYe = -1;
-    this.Ovx = -1;
+    this.VOl = new LinkedList();
+    this.VOm = new LinkedList();
+    this.VqL = 3;
+    this.VOr = -1;
+    this.VOs = -1;
+    this.VkK = -1;
     AppMethodBeat.o(70870);
   }
   
-  private void Ci(boolean paramBoolean)
+  private void HN(boolean paramBoolean)
   {
     AppMethodBeat.i(70873);
-    this.OYg.setVisibility(0);
+    this.VOu.setVisibility(0);
     if (paramBoolean)
     {
-      this.OXZ.setChecked(true);
-      this.OYa.setChecked(false);
-      this.OYf.lxh = this.OXX;
-      this.OYf.notifyDataSetChanged();
-      this.OYg.clearChoices();
-      if (this.OYd >= 0)
+      this.VOn.setChecked(true);
+      this.VOo.setChecked(false);
+      this.VOt.bMQ = this.VOl;
+      this.VOt.notifyDataSetChanged();
+      this.VOu.clearChoices();
+      if (this.VOr >= 0)
       {
-        this.OYg.setItemChecked(this.OYd, true);
+        this.VOu.setItemChecked(this.VOr, true);
         enableOptionMenu(true);
         AppMethodBeat.o(70873);
         return;
@@ -87,14 +86,14 @@ public class WalletCardSelectUI
       AppMethodBeat.o(70873);
       return;
     }
-    this.OXZ.setChecked(false);
-    this.OYa.setChecked(true);
-    this.OYf.lxh = this.OXY;
-    this.OYf.notifyDataSetChanged();
-    this.OYg.clearChoices();
-    if (this.OYe >= 0)
+    this.VOn.setChecked(false);
+    this.VOo.setChecked(true);
+    this.VOt.bMQ = this.VOm;
+    this.VOt.notifyDataSetChanged();
+    this.VOu.clearChoices();
+    if (this.VOs >= 0)
     {
-      this.OYg.setItemChecked(this.OYe, true);
+      this.VOu.setItemChecked(this.VOs, true);
       enableOptionMenu(true);
       AppMethodBeat.o(70873);
       return;
@@ -121,35 +120,35 @@ public class WalletCardSelectUI
   public void initView()
   {
     AppMethodBeat.i(70872);
-    this.OYb = getInput().getString("key_bank_type");
-    this.OYc = getInput().getInt("key_bankcard_type", 1);
-    this.OBy = getInput().getInt("key_support_bankcard", 1);
-    this.Ovx = getInput().getInt("key_bind_scene", -1);
-    this.OYg = ((MaxListView)findViewById(a.f.settings_lv_bank));
-    this.OXZ = ((CheckedTextView)findViewById(a.f.check_type_first_tv));
-    this.OYa = ((CheckedTextView)findViewById(a.f.check_type_second_tv));
-    this.OYf = new a(this);
-    this.OYg.setAdapter(this.OYf);
-    this.OYg.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.VOp = getInput().getString("key_bank_type");
+    this.VOq = getInput().getInt("key_bankcard_type", 1);
+    this.VqL = getInput().getInt("key_support_bankcard", 1);
+    this.VkK = getInput().getInt("key_bind_scene", -1);
+    this.VOu = ((MaxListView)findViewById(a.f.settings_lv_bank));
+    this.VOn = ((CheckedTextView)findViewById(a.f.check_type_first_tv));
+    this.VOo = ((CheckedTextView)findViewById(a.f.check_type_second_tv));
+    this.VOt = new a(this);
+    this.VOu.setAdapter(this.VOt);
+    this.VOu.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(70859);
         b localb = new b();
-        localb.bn(paramAnonymousAdapterView);
-        localb.bn(paramAnonymousView);
-        localb.sg(paramAnonymousInt);
-        localb.Fs(paramAnonymousLong);
-        a.c("com/tencent/mm/plugin/wallet_core/ui/WalletCardSelectUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
-        paramAnonymousAdapterView = WalletCardSelectUI.a(WalletCardSelectUI.this).amE(paramAnonymousInt);
-        if (!Util.isNullOrNil(paramAnonymousAdapterView.OPr))
+        localb.cH(paramAnonymousAdapterView);
+        localb.cH(paramAnonymousView);
+        localb.sc(paramAnonymousInt);
+        localb.hB(paramAnonymousLong);
+        a.c("com/tencent/mm/plugin/wallet_core/ui/WalletCardSelectUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
+        paramAnonymousAdapterView = WalletCardSelectUI.a(WalletCardSelectUI.this).ast(paramAnonymousInt);
+        if (!Util.isNullOrNil(paramAnonymousAdapterView.VFl))
         {
-          h.a(WalletCardSelectUI.this, paramAnonymousAdapterView.OPr, null, true, null);
+          k.a(WalletCardSelectUI.this, paramAnonymousAdapterView.VFl, null, true, null);
           a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletCardSelectUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(70859);
           return;
         }
-        if (paramAnonymousAdapterView.gIX()) {
+        if (paramAnonymousAdapterView.iil()) {
           WalletCardSelectUI.a(WalletCardSelectUI.this, paramAnonymousInt);
         }
         for (;;)
@@ -207,29 +206,29 @@ public class WalletCardSelectUI
           WalletCardSelectUI.this.setResult(0);
         }
       }
-    }, null, w.b.Wao);
+    }, null, y.b.adEJ);
     enableOptionMenu(false);
-    this.OXZ.setOnClickListener(new View.OnClickListener()
+    this.VOn.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70862);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/wallet_core/ui/WalletCardSelectUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/wallet_core/ui/WalletCardSelectUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         WalletCardSelectUI.a(WalletCardSelectUI.this, true);
         a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletCardSelectUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(70862);
       }
     });
-    this.OYa.setOnClickListener(new View.OnClickListener()
+    this.VOo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70863);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/wallet_core/ui/WalletCardSelectUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/wallet_core/ui/WalletCardSelectUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         WalletCardSelectUI.a(WalletCardSelectUI.this, false);
         a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletCardSelectUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(70863);
@@ -244,64 +243,64 @@ public class WalletCardSelectUI
     super.onCreate(paramBundle);
     setMMTitle(a.i.wallet_card_select_ui);
     initView();
-    this.OXY.clear();
-    this.OXX.clear();
-    if (u.gJw().OIn != null)
+    this.VOm.clear();
+    this.VOl.clear();
+    if (u.iiK().VxZ != null)
     {
-      paramBundle = u.gJw().OIn.iterator();
+      paramBundle = u.iiK().VxZ.iterator();
       while (paramBundle.hasNext())
       {
         ElementQuery localElementQuery = (ElementQuery)paramBundle.next();
-        if ((this.Ovx == 5) && (!localElementQuery.OPH)) {
-          localElementQuery.OPr = getString(a.i.wallet_wx_offline_no_support);
+        if ((this.VkK == 5) && (!localElementQuery.VFB)) {
+          localElementQuery.VFl = getString(a.i.wallet_wx_offline_no_support);
         }
-        if (localElementQuery.gIJ()) {
-          this.OXY.add(localElementQuery);
-        } else if (localElementQuery.gIX()) {
-          this.OXX.add(localElementQuery);
+        if (localElementQuery.ihX()) {
+          this.VOm.add(localElementQuery);
+        } else if (localElementQuery.iil()) {
+          this.VOl.add(localElementQuery);
         }
       }
     }
-    if ((this.OBy == 3) && (!this.OXY.isEmpty()))
+    if ((this.VqL == 3) && (!this.VOm.isEmpty()))
     {
-      if (!u.gJo().gJZ()) {
+      if (!u.iiC().ijq()) {
         break label251;
       }
-      Collections.sort(this.OXY, new Comparator() {});
+      Collections.sort(this.VOm, new Comparator() {});
     }
-    while (!this.OXX.isEmpty()) {
-      if (Util.isNullOrNil(this.OYb))
+    while (!this.VOl.isEmpty()) {
+      if (Util.isNullOrNil(this.VOp))
       {
-        this.OXZ.setChecked(false);
-        this.OYa.setChecked(false);
-        this.OYg.setVisibility(8);
+        this.VOn.setChecked(false);
+        this.VOo.setChecked(false);
+        this.VOu.setVisibility(8);
         AppMethodBeat.o(70871);
         return;
         label251:
-        Collections.sort(this.OXY, new Comparator() {});
+        Collections.sort(this.VOm, new Comparator() {});
       }
       else
       {
-        if (this.OYc == 2)
+        if (this.VOq == 2)
         {
-          j = this.OXY.size();
+          j = this.VOm.size();
           i = 0;
           for (;;)
           {
             if (i < j)
             {
-              if (((ElementQuery)this.OXY.get(i)).fvP.equals(this.OYb))
+              if (((ElementQuery)this.VOm.get(i)).hAk.equals(this.VOp))
               {
-                this.OYe = i;
-                Ci(false);
+                this.VOs = i;
+                HN(false);
                 enableOptionMenu(true);
               }
             }
             else
             {
-              if (this.OYe < 0)
+              if (this.VOs < 0)
               {
-                Ci(false);
+                HN(false);
                 enableOptionMenu(false);
               }
               AppMethodBeat.o(70871);
@@ -310,24 +309,24 @@ public class WalletCardSelectUI
             i += 1;
           }
         }
-        j = this.OXX.size();
+        j = this.VOl.size();
         i = 0;
         for (;;)
         {
           if (i < j)
           {
-            if (((ElementQuery)this.OXX.get(i)).fvP.equals(this.OYb))
+            if (((ElementQuery)this.VOl.get(i)).hAk.equals(this.VOp))
             {
-              this.OYd = i;
-              Ci(true);
+              this.VOr = i;
+              HN(true);
               enableOptionMenu(true);
             }
           }
           else
           {
-            if (this.OYd < 0)
+            if (this.VOr < 0)
             {
-              Ci(false);
+              HN(false);
               enableOptionMenu(false);
             }
             AppMethodBeat.o(70871);
@@ -337,29 +336,29 @@ public class WalletCardSelectUI
         }
       }
     }
-    int j = this.OXY.size();
+    int j = this.VOm.size();
     int i = 0;
     for (;;)
     {
       if (i < j)
       {
-        if (((ElementQuery)this.OXY.get(i)).fvP.equals(this.OYb))
+        if (((ElementQuery)this.VOm.get(i)).hAk.equals(this.VOp))
         {
-          this.OYe = i;
-          Ci(false);
+          this.VOs = i;
+          HN(false);
           enableOptionMenu(true);
         }
       }
       else
       {
-        if (this.OYe < 0)
+        if (this.VOs < 0)
         {
-          Ci(false);
+          HN(false);
           enableOptionMenu(false);
         }
-        this.OXZ.setVisibility(8);
-        this.OYa.setBackgroundResource(a.e.comm_list_item_selector);
-        this.OYa.setCheckMarkDrawable(a.e.round_selector);
+        this.VOn.setVisibility(8);
+        this.VOo.setBackgroundResource(a.e.comm_list_item_selector);
+        this.VOo.setCheckMarkDrawable(a.e.round_selector);
         AppMethodBeat.o(70871);
         return;
       }
@@ -367,7 +366,7 @@ public class WalletCardSelectUI
     }
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -381,21 +380,21 @@ public class WalletCardSelectUI
   public final class a
     extends BaseAdapter
   {
+    List<ElementQuery> bMQ;
     private Context context;
-    List<ElementQuery> lxh;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(70864);
-      this.lxh = new ArrayList();
+      this.bMQ = new ArrayList();
       this.context = paramContext;
       AppMethodBeat.o(70864);
     }
     
-    public final ElementQuery amE(int paramInt)
+    public final ElementQuery ast(int paramInt)
     {
       AppMethodBeat.i(70868);
-      ElementQuery localElementQuery = (ElementQuery)this.lxh.get(paramInt);
+      ElementQuery localElementQuery = (ElementQuery)this.bMQ.get(paramInt);
       AppMethodBeat.o(70868);
       return localElementQuery;
     }
@@ -403,7 +402,7 @@ public class WalletCardSelectUI
     public final int getCount()
     {
       AppMethodBeat.i(70867);
-      int i = this.lxh.size();
+      int i = this.bMQ.size();
       AppMethodBeat.o(70867);
       return i;
     }
@@ -418,34 +417,34 @@ public class WalletCardSelectUI
       AppMethodBeat.i(70866);
       paramViewGroup = new a();
       View localView = View.inflate(this.context, a.g.wallet_bank_select_item, null);
-      paramViewGroup.OYi = ((CheckedTextView)localView.findViewById(a.f.check_tv_cv));
-      ElementQuery localElementQuery = (ElementQuery)this.lxh.get(paramInt);
-      paramView = Util.nullAs(localElementQuery.DNV, "");
-      if (!Util.isNullOrNil(localElementQuery.OPr))
+      paramViewGroup.VOw = ((CheckedTextView)localView.findViewById(a.f.check_tv_cv));
+      ElementQuery localElementQuery = (ElementQuery)this.bMQ.get(paramInt);
+      paramView = Util.nullAs(localElementQuery.JFk, "");
+      if (!Util.isNullOrNil(localElementQuery.VFl))
       {
-        paramView = paramView + "[" + localElementQuery.OPr + "]";
-        paramViewGroup.OYi.setEnabled(false);
+        paramView = paramView + "[" + localElementQuery.VFl + "]";
+        paramViewGroup.VOw.setEnabled(false);
       }
       for (;;)
       {
-        paramViewGroup.OYi.setText(paramView);
+        paramViewGroup.VOw.setText(paramView);
         AppMethodBeat.o(70866);
         return localView;
-        paramViewGroup.OYi.setEnabled(true);
+        paramViewGroup.VOw.setEnabled(true);
       }
     }
     
     public final boolean isEnabled(int paramInt)
     {
       AppMethodBeat.i(70865);
-      boolean bool = Util.isNullOrNil(((ElementQuery)this.lxh.get(paramInt)).OPr);
+      boolean bool = Util.isNullOrNil(((ElementQuery)this.bMQ.get(paramInt)).VFl);
       AppMethodBeat.o(70865);
       return bool;
     }
     
     final class a
     {
-      CheckedTextView OYi;
+      CheckedTextView VOw;
       
       a() {}
     }
@@ -453,7 +452,7 @@ public class WalletCardSelectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletCardSelectUI
  * JD-Core Version:    0.7.0.1
  */

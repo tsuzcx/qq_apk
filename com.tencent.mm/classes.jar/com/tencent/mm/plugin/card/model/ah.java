@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dgr;
-import com.tencent.mm.protocal.protobuf.dwy;
-import com.tencent.mm.protocal.protobuf.dwz;
+import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.eqc;
+import com.tencent.mm.protocal.protobuf.eqd;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class ah
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d rr;
+  private h callback;
+  private final c rr;
   
-  public ah(LinkedList<dgr> paramLinkedList)
+  public ah(LinkedList<dyy> paramLinkedList)
   {
     AppMethodBeat.i(112858);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dwy();
-    ((d.a)localObject).lBV = new dwz();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/reportdynamiccardcodeaction";
-    ((d.a)localObject).funcId = 1275;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    ((dwy)d.b.b(this.rr.lBR)).UcH = paramLinkedList;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new eqc();
+    ((c.a)localObject).otF = new eqd();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/reportdynamiccardcodeaction";
+    ((c.a)localObject).funcId = 1275;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    ((eqc)c.b.b(this.rr.otB)).abub = paramLinkedList;
     if (paramLinkedList != null)
     {
       paramLinkedList = paramLinkedList.iterator();
       while (paramLinkedList.hasNext())
       {
-        localObject = (dgr)paramLinkedList.next();
-        Log.d("MicroMsg.NetSceneReportDynamicCardCodeAction", "ReportDynamicCardCodeActionReq operate card_id=%s,code_id=%s,operate_timestamp=%d,operate_type=%d", new Object[] { ((dgr)localObject).fUL, ((dgr)localObject).tpN, Integer.valueOf(((dgr)localObject).TNv), Integer.valueOf(((dgr)localObject).TNw) });
+        localObject = (dyy)paramLinkedList.next();
+        Log.d("MicroMsg.NetSceneReportDynamicCardCodeAction", "ReportDynamicCardCodeActionReq operate card_id=%s,code_id=%s,operate_timestamp=%d,operate_type=%d", new Object[] { ((dyy)localObject).iaI, ((dyy)localObject).wum, Integer.valueOf(((dyy)localObject).abdO), Integer.valueOf(((dyy)localObject).abdP) });
       }
     }
     AppMethodBeat.o(112858);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(112860);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(112860);
     return i;

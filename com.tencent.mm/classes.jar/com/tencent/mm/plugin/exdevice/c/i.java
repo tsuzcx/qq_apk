@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.exdevice.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.plugin.exdevice.f.c;
 import com.tencent.mm.plugin.exdevice.f.h;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -16,22 +16,22 @@ public final class i
   {
     AppMethodBeat.i(23160);
     h localh = new h();
-    localh.vhI = new c();
-    localh.rVk = new b(paramArrayOfByte);
-    localh.rWu = paramInt;
-    this.vdf = localh;
-    this.smk = paramLong;
-    this.vdd = 30001;
+    localh.ytJ = new c();
+    localh.vgA = new b(paramArrayOfByte);
+    localh.vhJ = paramInt;
+    this.yoS = localh;
+    this.vyj = paramLong;
+    this.yoQ = 30001;
     AppMethodBeat.o(23160);
   }
   
-  public final byte[] cYS()
+  public final byte[] dFj()
   {
     AppMethodBeat.i(23161);
-    Assert.assertNotNull(this.vdf);
+    Assert.assertNotNull(this.yoS);
     try
     {
-      byte[] arrayOfByte = this.vdf.toByteArray();
+      byte[] arrayOfByte = this.yoS.toByteArray();
       AppMethodBeat.o(23161);
       return arrayOfByte;
     }
@@ -45,7 +45,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.i
  * JD-Core Version:    0.7.0.1
  */

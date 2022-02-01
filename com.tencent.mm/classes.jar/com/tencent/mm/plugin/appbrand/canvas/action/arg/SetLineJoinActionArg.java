@@ -11,7 +11,7 @@ public class SetLineJoinActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineJoinActionArg> CREATOR;
-  public String nTY;
+  public String qTJ;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetLineJoinActionArg
       return false;
     }
     paramObject = (SetLineJoinActionArg)paramObject;
-    boolean bool = Objects.equals(this.nTY, paramObject.nTY);
+    boolean bool = Objects.equals(this.qTJ, paramObject.qTJ);
     AppMethodBeat.o(145207);
     return bool;
   }
@@ -59,16 +59,16 @@ public class SetLineJoinActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145208);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.nTY });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.qTJ });
     AppMethodBeat.o(145208);
     return i;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145204);
-    super.i(paramParcel);
-    this.nTY = paramParcel.readString();
+    super.k(paramParcel);
+    this.qTJ = paramParcel.readString();
     AppMethodBeat.o(145204);
   }
   
@@ -76,7 +76,7 @@ public class SetLineJoinActionArg
   {
     AppMethodBeat.i(145205);
     super.parse(paramJSONObject);
-    this.nTY = paramJSONObject.optJSONArray("data").optString(0);
+    this.qTJ = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145205);
   }
   
@@ -84,13 +84,13 @@ public class SetLineJoinActionArg
   {
     AppMethodBeat.i(145206);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.nTY);
+    paramParcel.writeString(this.qTJ);
     AppMethodBeat.o(145206);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineJoinActionArg
  * JD-Core Version:    0.7.0.1
  */

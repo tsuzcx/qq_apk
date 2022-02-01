@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/bne" android:background="@drawable/qd" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/k5" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/iwl" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/bnk" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="fitXY" />
-    <TextView android:textColor="@color/a2x" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/bnu" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/mp" />
-    <TextView android:ellipsize="end" android:layout_gravity="center|right" android:id="@id/bni" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bu4" android:singleLine="true" android:drawableRight="@raw/emoji_arrow" style="@style/mo" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c2y" android:background="@drawable/emoji_store_v2_single_bar" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="@dimen/m1" android:layout_marginTop="@dimen/if" android:layout_marginBottom="@dimen/if" style="@style/r8">
+        <TextView android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c99" android:singleLine="true" style="@style/ma" />
+        <TextView android:textColor="@color/al6" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/he4" android:background="@drawable/azm" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/ig" android:layout_marginRight="@dimen/ig" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cf8" android:background="@color/al2" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/iq" android:paddingRight="@dimen/j6" android:paddingBottom="@dimen/iq" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/r8">
+        <TextView android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/cfp" android:layout_width="0.0dip" android:text="@string/c6f" android:layout_weight="1.0" style="@style/ma" />
+        <TextView android:gravity="center|right" android:layout_gravity="center|right" android:id="@id/cg_" android:layout_width="0.0dip" android:text="@string/c8z" android:drawableRight="@raw/emoji_arrow" android:layout_weight="1.0" style="@style/m_" />
+    </LinearLayout>
 </LinearLayout>

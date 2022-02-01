@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory android:title="@string/iif" />
+    <CheckPreference android:key="settings_half_year_not_chat" android:layout="@layout/bdi" android:title="@string/isq" />
+    <CheckPreference android:key="settings_has_not_same_chatroom" android:layout="@layout/bdi" android:title="@string/ist" />
+    <CheckPreference android:key="settings_half_year_not_response" android:layout="@layout/bdi" android:title="@string/isr" />
+    <PreferenceCategory />
+    <PreferenceCategory />
+    <TextButtonPreference android:key="settings_next_step" android:title="@string/j1l" />
+</PreferenceScreen>

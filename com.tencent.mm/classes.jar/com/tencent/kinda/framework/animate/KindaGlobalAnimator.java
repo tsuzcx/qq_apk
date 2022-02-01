@@ -75,7 +75,7 @@ public class KindaGlobalAnimator
     AppMethodBeat.i(18331);
     KindaAnimatorWatch.post(new Runnable()
     {
-      public final void run()
+      public void run()
       {
         AppMethodBeat.i(18328);
         if ((this.val$duration > 0L) && (this.val$run != null))
@@ -95,7 +95,7 @@ public class KindaGlobalAnimator
     AppMethodBeat.i(18332);
     KindaAnimatorWatch.post(new Runnable()
     {
-      public final void run()
+      public void run()
       {
         AppMethodBeat.i(18329);
         if ((this.val$duration > 0L) && (paramRunnable2 != null))
@@ -117,7 +117,7 @@ public class KindaGlobalAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.animate.KindaGlobalAnimator
  * JD-Core Version:    0.7.0.1
  */

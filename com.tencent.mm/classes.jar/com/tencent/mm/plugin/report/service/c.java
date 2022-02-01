@@ -15,21 +15,21 @@ import java.util.Set;
 
 public final class c
 {
-  public static Set<Integer> Izc;
+  public static Set<Integer> OzJ;
   private static boolean hasInit;
   
   static
   {
-    AppMethodBeat.i(195173);
-    Izc = new HashSet();
+    AppMethodBeat.i(261702);
+    OzJ = new HashSet();
     hasInit = false;
-    AppMethodBeat.o(195173);
+    AppMethodBeat.o(261702);
   }
   
-  public static boolean acY(int paramInt)
+  public static boolean aht(int paramInt)
   {
-    AppMethodBeat.i(195168);
-    synchronized (Izc)
+    AppMethodBeat.i(261700);
+    synchronized (OzJ)
     {
       if (!hasInit)
       {
@@ -44,7 +44,7 @@ public final class c
               break;
             }
             int i = Integer.parseInt(str);
-            Izc.add(Integer.valueOf(i));
+            OzJ.add(Integer.valueOf(i));
           }
         }
         catch (IOException localIOException)
@@ -53,19 +53,19 @@ public final class c
           hasInit = true;
         }
       }
-      if (Izc.contains(Integer.valueOf(paramInt)))
+      if (OzJ.contains(Integer.valueOf(paramInt)))
       {
-        AppMethodBeat.o(195168);
+        AppMethodBeat.o(261700);
         return true;
       }
     }
-    AppMethodBeat.o(195168);
+    AppMethodBeat.o(261700);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mm.sdk.thread;
 
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.thread.api.IThreadPool;
+import com.tencent.threadpool.i;
 
 @Deprecated
 public class ThreadPool
@@ -41,9 +41,9 @@ public class ThreadPool
   @Deprecated
   public static void post(Runnable paramRunnable, String paramString, int paramInt)
   {
-    AppMethodBeat.i(186688);
+    AppMethodBeat.i(243139);
     INSTANCE.adapterPost(paramRunnable, paramString);
-    AppMethodBeat.o(186688);
+    AppMethodBeat.o(243139);
   }
   
   @Deprecated
@@ -64,7 +64,7 @@ public class ThreadPool
       AppMethodBeat.o(158142);
       throw paramRunnable;
     }
-    com.tencent.e.h.ZvG.be(new com.tencent.e.i.h()
+    com.tencent.threadpool.h.ahAA.bm(new com.tencent.threadpool.i.h()
     {
       public String getKey()
       {
@@ -83,7 +83,7 @@ public class ThreadPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.thread.ThreadPool
  * JD-Core Version:    0.7.0.1
  */

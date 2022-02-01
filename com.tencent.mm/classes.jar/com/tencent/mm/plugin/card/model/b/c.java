@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.card.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.a.j;
-import com.tencent.mm.protocal.protobuf.byj;
-import com.tencent.mm.protocal.protobuf.byk;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.cnm;
+import com.tencent.mm.protocal.protobuf.cnn;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/model/v3/CgiGetMktCardHomePageV3;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/GetMktCardHomePageV2Response;", "offset", "", "reqNum", "(II)V", "Companion", "plugin-card_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/card/model/v3/CgiGetMktCardHomePageV3;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/GetMktCardHomePageV2Response;", "offset", "", "reqNum", "(II)V", "Companion", "plugin-card_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends j<byk>
+  extends j<cnn>
 {
-  private static final String TAG = "MicroMsg.CgiGetMktCardHomePageV3";
-  public static final a trB;
+  private static final String TAG;
+  public static final a wvZ;
   
   static
   {
-    AppMethodBeat.i(250666);
-    trB = new a((byte)0);
+    AppMethodBeat.i(294517);
+    wvZ = new a((byte)0);
     TAG = "MicroMsg.CgiGetMktCardHomePageV3";
-    AppMethodBeat.o(250666);
+    AppMethodBeat.o(294517);
   }
   
   public c(int paramInt)
   {
-    AppMethodBeat.i(250663);
-    byj localbyj = new byj();
-    byk localbyk = new byk();
-    localbyj.offset = paramInt;
-    localbyj.SfE = 10;
-    a((dyl)localbyj, (dyy)localbyk, 1701, "/cgi-bin/mmpay-bin/mktgetmktcardhomepagev2");
+    AppMethodBeat.i(294514);
+    cnm localcnm = new cnm();
+    cnn localcnn = new cnn();
+    localcnm.offset = paramInt;
+    localcnm.Zdz = 10;
+    a((erp)localcnm, (esc)localcnn, 1701, "/cgi-bin/mmpay-bin/mktgetmktcardhomepagev2");
     Log.i(TAG, "offset: " + paramInt + ", reqnum: 10");
-    AppMethodBeat.o(250663);
+    AppMethodBeat.o(294514);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/model/v3/CgiGetMktCardHomePageV3$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-card_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/card/model/v3/CgiGetMktCardHomePageV3$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-card_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

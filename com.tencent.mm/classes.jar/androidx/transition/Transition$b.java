@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 final class Transition$b
 {
-  static <T> ArrayList<T> a(ArrayList<T> paramArrayList, T paramT)
+  static <T> ArrayList<T> c(ArrayList<T> paramArrayList, T paramT)
   {
-    AppMethodBeat.i(192564);
+    AppMethodBeat.i(201428);
     Object localObject = paramArrayList;
     if (paramArrayList == null) {
       localObject = new ArrayList();
@@ -15,13 +15,13 @@ final class Transition$b
     if (!((ArrayList)localObject).contains(paramT)) {
       ((ArrayList)localObject).add(paramT);
     }
-    AppMethodBeat.o(192564);
+    AppMethodBeat.o(201428);
     return localObject;
   }
   
-  static <T> ArrayList<T> b(ArrayList<T> paramArrayList, T paramT)
+  static <T> ArrayList<T> d(ArrayList<T> paramArrayList, T paramT)
   {
-    AppMethodBeat.i(192568);
+    AppMethodBeat.i(201436);
     ArrayList<T> localArrayList = paramArrayList;
     if (paramArrayList != null)
     {
@@ -31,7 +31,7 @@ final class Transition$b
         localArrayList = null;
       }
     }
-    AppMethodBeat.o(192568);
+    AppMethodBeat.o(201436);
     return localArrayList;
   }
 }

@@ -16,10 +16,10 @@ final class LoginUI$25
   {
     AppMethodBeat.i(128226);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/account/ui/LoginUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    paramView = this.neS.getString(r.j.freeze_account_url, new Object[] { LocaleUtil.getApplicationLanguage() });
-    LoginUI.X(this.neS, paramView);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/account/ui/LoginUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    paramView = this.qbD.getString(r.j.login_forget_password_help) + LocaleUtil.getApplicationLanguage();
+    LoginUI.X(this.qbD, paramView);
     a.a(this, "com/tencent/mm/plugin/account/ui/LoginUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128226);
   }

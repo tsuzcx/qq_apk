@@ -7,26 +7,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private SharedPreferences ZUY;
+  private SharedPreferences ahZx;
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(208177);
+    AppMethodBeat.i(212084);
     try
     {
-      this.ZUY = paramContext.getSharedPreferences("ts_" + d.U(d.ZRA), 0);
-      AppMethodBeat.o(208177);
+      this.ahZx = paramContext.getSharedPreferences("ts_" + d.W(d.ahVX), 0);
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(208177);
+      AppMethodBeat.o(212084);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.d.c
  * JD-Core Version:    0.7.0.1
  */

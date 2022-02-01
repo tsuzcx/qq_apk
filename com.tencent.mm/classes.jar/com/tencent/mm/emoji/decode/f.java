@@ -9,28 +9,28 @@ import com.tencent.mm.plugin.gif.MMGIFJNI;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.InputStream;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/decode/MMGIFDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "stream", "Ljava/io/InputStream;", "(Ljava/io/InputStream;)V", "TAG", "", "currFrame", "", "currFrameTime", "framePicker", "Lcom/tencent/mm/emoji/decode/FramePicker;", "gifPointer", "", "lastValidFrame", "Landroid/graphics/Bitmap;", "metadata", "", "startPerformance", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/decode/MMGIFDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "stream", "Ljava/io/InputStream;", "(Ljava/io/InputStream;)V", "TAG", "", "currFrame", "", "currFrameTime", "framePicker", "Lcom/tencent/mm/emoji/decode/FramePicker;", "gifPointer", "", "lastValidFrame", "Landroid/graphics/Bitmap;", "metadata", "", "startPerformance", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   implements d
 {
   private final String TAG;
-  private int iWt;
-  private Bitmap jFB;
-  private long jFC;
-  private final int[] jFD;
-  private int jFE;
-  private int jFF;
-  private final c jFG;
+  private int lyw;
+  private Bitmap mfo;
+  private long mfp;
+  private final int[] mfq;
+  private int mfr;
+  private int mfs;
+  private final c mft;
   
   public f(InputStream paramInputStream)
   {
     AppMethodBeat.i(105373);
     this.TAG = "MicroMsg.GIF.MMGIFDecoder";
-    this.jFD = new int[6];
-    this.jFE = -1;
+    this.mfq = new int[6];
+    this.mfr = -1;
     boolean bool = WXHardCoderJNI.hcGifEnable;
     int j = WXHardCoderJNI.hcGifDelay;
     int k = WXHardCoderJNI.hcGifCPU;
@@ -38,17 +38,17 @@ public final class f
     if (WXHardCoderJNI.hcGifThr) {}
     for (int i = Process.myTid();; i = 0)
     {
-      this.iWt = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, this.TAG);
-      this.jFC = MMGIFJNI.openByInputStrem(paramInputStream, this.jFD);
-      if ((this.jFD[0] > 1024) || (this.jFD[1] > 1024))
+      this.lyw = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, this.TAG);
+      this.mfp = MMGIFJNI.openByInputStrem(paramInputStream, this.mfq);
+      if ((this.mfq[0] > 1024) || (this.mfq[1] > 1024))
       {
-        Log.w(this.TAG, "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.jFD[0]), Integer.valueOf(this.jFD[1]) });
-        h.IzE.idkeyStat(401L, 2L, 1L, false);
+        Log.w(this.TAG, "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.mfq[0]), Integer.valueOf(this.mfq[1]) });
+        h.OAn.idkeyStat(401L, 2L, 1L, false);
       }
-      paramInputStream = Bitmap.createBitmap(this.jFD[0], this.jFD[1], Bitmap.Config.ARGB_8888);
-      p.j(paramInputStream, "Bitmap.createBitmap(fram… Bitmap.Config.ARGB_8888)");
-      this.jFB = paramInputStream;
-      this.jFG = new c(this.jFD[2]);
+      paramInputStream = Bitmap.createBitmap(this.mfq[0], this.mfq[1], Bitmap.Config.ARGB_8888);
+      s.s(paramInputStream, "createBitmap(frameWidth(… Bitmap.Config.ARGB_8888)");
+      this.mfo = paramInputStream;
+      this.mft = new c(this.mfq[2]);
       AppMethodBeat.o(105373);
       return;
     }
@@ -58,8 +58,8 @@ public final class f
   {
     AppMethodBeat.i(105372);
     this.TAG = "MicroMsg.GIF.MMGIFDecoder";
-    this.jFD = new int[6];
-    this.jFE = -1;
+    this.mfq = new int[6];
+    this.mfr = -1;
     boolean bool = WXHardCoderJNI.hcGifEnable;
     int j = WXHardCoderJNI.hcGifDelay;
     int k = WXHardCoderJNI.hcGifCPU;
@@ -67,60 +67,60 @@ public final class f
     if (WXHardCoderJNI.hcGifThr) {}
     for (int i = Process.myTid();; i = 0)
     {
-      this.iWt = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, this.TAG);
-      this.jFC = MMGIFJNI.openByByteArray(paramArrayOfByte, this.jFD);
-      if ((this.jFD[0] > 1024) || (this.jFD[1] > 1024))
+      this.lyw = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, this.TAG);
+      this.mfp = MMGIFJNI.openByByteArray(paramArrayOfByte, this.mfq);
+      if ((this.mfq[0] > 1024) || (this.mfq[1] > 1024))
       {
-        Log.w(this.TAG, "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.jFD[0]), Integer.valueOf(this.jFD[1]) });
-        h.IzE.idkeyStat(401L, 2L, 1L, false);
+        Log.w(this.TAG, "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.mfq[0]), Integer.valueOf(this.mfq[1]) });
+        h.OAn.idkeyStat(401L, 2L, 1L, false);
       }
-      paramArrayOfByte = Bitmap.createBitmap(this.jFD[0], this.jFD[1], Bitmap.Config.ARGB_8888);
-      p.j(paramArrayOfByte, "Bitmap.createBitmap(fram… Bitmap.Config.ARGB_8888)");
-      this.jFB = paramArrayOfByte;
-      this.jFG = new c(this.jFD[2]);
+      paramArrayOfByte = Bitmap.createBitmap(this.mfq[0], this.mfq[1], Bitmap.Config.ARGB_8888);
+      s.s(paramArrayOfByte, "createBitmap(frameWidth(… Bitmap.Config.ARGB_8888)");
+      this.mfo = paramArrayOfByte;
+      this.mft = new c(this.mfq[2]);
       AppMethodBeat.o(105372);
       return;
     }
   }
   
-  public final void aBh()
+  public final void aUe()
   {
     AppMethodBeat.i(105370);
-    Bitmap localBitmap = this.jFB;
-    MMGIFJNI.drawFrameBitmap(this.jFC, localBitmap, this.jFD);
-    this.jFE = this.jFD[5];
-    this.jFF = this.jFD[4];
-    Log.d(this.TAG, "drawFrameBitmap: decode frame " + this.jFE + ", " + this.jFF);
+    Bitmap localBitmap = this.mfo;
+    MMGIFJNI.drawFrameBitmap(this.mfp, localBitmap, this.mfq);
+    this.mfr = this.mfq[5];
+    this.mfs = this.mfq[4];
+    Log.d(this.TAG, "drawFrameBitmap: decode frame " + this.mfr + ", " + this.mfs);
     AppMethodBeat.o(105370);
   }
   
-  public final int aBi()
+  public final int aUf()
   {
-    return this.jFD[2];
+    return this.mfq[2];
   }
   
-  public final int aBj()
+  public final int aUg()
   {
-    if (this.jFD[2] == 1) {
+    if (this.mfq[2] == 1) {
       return 2147483647;
     }
-    return this.jFD[4];
+    return this.mfq[4];
   }
   
-  public final int aBk()
+  public final int aUh()
   {
-    return this.jFD[0];
+    return this.mfq[0];
   }
   
-  public final int aBl()
+  public final int aUi()
   {
-    return this.jFD[1];
+    return this.mfq[1];
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(105371);
-    if (this.iWt != 0) {
+    if (this.lyw != 0) {
       if ((!WXHardCoderJNI.hcGifEnable) && (!WXHardCoderJNI.hcGifFrameEnable)) {
         break label60;
       }
@@ -128,10 +128,10 @@ public final class f
     label60:
     for (boolean bool = true;; bool = false)
     {
-      WXHardCoderJNI.stopPerformance(bool, this.iWt);
-      this.iWt = 0;
-      long l = this.jFC;
-      this.jFC = 0L;
+      WXHardCoderJNI.stopPerformance(bool, this.lyw);
+      this.lyw = 0;
+      long l = this.mfp;
+      this.mfp = 0L;
       MMGIFJNI.recycle(l);
       AppMethodBeat.o(105371);
       return;
@@ -140,40 +140,55 @@ public final class f
   
   public final Bitmap getFrame()
   {
-    return this.jFB;
+    return this.mfo;
   }
   
   public final void seekTo(long paramLong)
   {
-    int k = 0;
-    AppMethodBeat.i(225996);
-    if (this.jFF <= 0) {
-      aBh();
+    AppMethodBeat.i(242233);
+    if (this.mfs <= 0) {
+      aUe();
     }
-    int j = this.jFG.rx((int)paramLong);
-    int m = this.jFD[2];
-    int i = 0;
-    while ((i < m) && (j < 0))
+    int i = this.mft.rz((int)paramLong);
+    int n = this.mfq[2];
+    int j = i;
+    if (n > 0)
     {
-      aBh();
-      this.jFG.cT(this.jFE, this.jFF);
-      j = this.jFG.rx((int)paramLong);
-      i += 1;
+      j = 0;
+      int m;
+      do
+      {
+        m = j + 1;
+        j = i;
+        if (i >= 0) {
+          break;
+        }
+        aUe();
+        this.mft.dG(this.mfr, this.mfs);
+        k = this.mft.rz((int)paramLong);
+        i = k;
+        j = m;
+      } while (m < n);
+      j = k;
     }
-    j = (j - this.jFE + this.jFD[2]) % this.jFD[2];
-    Log.d(this.TAG, "seekTo: " + paramLong + ", " + this.jFE + ", " + j + ", " + aBj() + ", " + this.jFD[2] + 65292 + this.jFG.jFz);
-    i = k;
-    while (i < j)
+    int k = (j - this.mfr + this.mfq[2]) % this.mfq[2];
+    Log.d(this.TAG, "seekTo: " + paramLong + ", " + this.mfr + ", " + k + ", " + aUg() + ", " + this.mfq[2] + 65292 + this.mft.mfm);
+    if (k > 0)
     {
-      aBh();
-      i += 1;
+      i = 0;
+      do
+      {
+        j = i + 1;
+        aUe();
+        i = j;
+      } while (j < k);
     }
-    AppMethodBeat.o(225996);
+    AppMethodBeat.o(242233);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.f
  * JD-Core Version:    0.7.0.1
  */

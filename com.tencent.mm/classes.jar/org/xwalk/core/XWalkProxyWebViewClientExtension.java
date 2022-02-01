@@ -35,22 +35,16 @@ public class XWalkProxyWebViewClientExtension
     AppMethodBeat.o(154838);
   }
   
-  protected Object getBridge()
-  {
-    return this.bridge;
-  }
-  
-  void reflectionInit()
+  private void reflectionInit()
   {
     AppMethodBeat.i(154839);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
+    if (XWalkCoreWrapper.getInstance() == null)
     {
-      XWalkCoreWrapper.reserveReflectObject(this);
+      XWalkReflectionInitHandler.reserveReflectObject(this);
       AppMethodBeat.o(154839);
       return;
     }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
     int j = this.constructorTypes.size();
     Object localObject1 = new Class[j + 1];
     int i = 0;
@@ -62,7 +56,7 @@ public class XWalkProxyWebViewClientExtension
         localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
         this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
       }
-      label137:
+      label133:
       do
       {
         for (;;)
@@ -70,7 +64,7 @@ public class XWalkProxyWebViewClientExtension
           i += 1;
           break;
           if (!(localObject2 instanceof Class)) {
-            break label137;
+            break label133;
           }
           localObject1[i] = ((Class)localObject2);
         }
@@ -93,13 +87,19 @@ public class XWalkProxyWebViewClientExtension
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
+      Log.e("XWalkProxyWebViewClientExtension", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
       AppMethodBeat.o(154839);
     }
+  }
+  
+  protected Object getBridge()
+  {
+    return this.bridge;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkProxyWebViewClientExtension
  * JD-Core Version:    0.7.0.1
  */

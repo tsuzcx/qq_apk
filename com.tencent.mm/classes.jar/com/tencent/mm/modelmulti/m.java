@@ -1,87 +1,98 @@
 package com.tencent.mm.modelmulti;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.efr;
+import com.tencent.mm.protocal.protobuf.efs;
+import com.tencent.mm.protocal.protobuf.fqo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.lang.reflect.Method;
+import com.tencent.mm.ui.q.a;
+import org.b.d.i;
 
 public final class m
+  extends p
+  implements com.tencent.mm.network.m
 {
-  Boolean lTY;
+  private h callback;
+  private int oLN;
+  private c rr;
   
-  public m(Context paramContext, final a parama)
+  public m(int paramInt, String paramString)
   {
-    AppMethodBeat.i(150782);
-    this.lTY = null;
-    this.lTY = cZ(paramContext);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-    localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-    paramContext.registerReceiver(new BroadcastReceiver()
+    AppMethodBeat.i(20546);
+    this.oLN = 0;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new efr();
+    ((c.a)localObject).otF = new efs();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/postinvitefriendsmsg";
+    ((c.a)localObject).funcId = 1804;
+    this.rr = ((c.a)localObject).bEF();
+    efr localefr = (efr)c.b.b(this.rr.otB);
+    localefr.aatG = paramInt;
+    localefr.aatI = paramString;
+    if ((paramInt & 0x10) > 0)
     {
-      public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
-      {
-        AppMethodBeat.i(150781);
-        if (paramAnonymousIntent == null)
-        {
-          paramAnonymousIntent = "";
-          Log.i("MicroMsg.ScreenState", "ScreenReceiver action [%s] ", new Object[] { paramAnonymousIntent });
-          if (!"android.intent.action.SCREEN_OFF".equals(paramAnonymousIntent)) {
-            break label98;
-          }
-        }
-        label98:
-        for (m.this.lTY = Boolean.FALSE;; m.this.lTY = Boolean.TRUE)
-        {
-          if (parama != null) {
-            parama.gt(m.this.lTY.booleanValue());
-          }
-          if (this.lUa) {
-            paramAnonymousContext.unregisterReceiver(this);
-          }
-          AppMethodBeat.o(150781);
-          return;
-          paramAnonymousIntent = paramAnonymousIntent.getAction();
-          break;
-        }
+      a locala = new a();
+      localObject = new fqo();
+      if (locala.afPW == null) {
+        break label185;
       }
-    }, localIntentFilter);
-    AppMethodBeat.o(150782);
+      paramString = (String)localObject;
+      if (!Util.isNullOrNil(locala.afPW.token))
+      {
+        ((fqo)localObject).abQw = locala.afPW.token;
+        ((fqo)localObject).abQx = locala.afPW.aaTQ;
+      }
+    }
+    label185:
+    for (paramString = (String)localObject;; paramString = null)
+    {
+      localefr.abld = paramString;
+      this.oLN = paramInt;
+      AppMethodBeat.o(20546);
+      return;
+    }
   }
   
-  private Boolean cZ(Context paramContext)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(150783);
-    try
-    {
-      paramContext = (Boolean)PowerManager.class.getMethod("isScreenOn", new Class[0]).invoke((PowerManager)paramContext.getSystemService("power"), new Object[0]);
-      Log.i("MicroMsg.ScreenState", "reflectScreenOn: byReflect:%s isScreenOn:%s", new Object[] { paramContext, this.lTY });
-      AppMethodBeat.o(150783);
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      h.IzE.idkeyStat(99L, 154L, 1L, false);
-      Log.e("MicroMsg.ScreenState", "reflectScreenOn invoke ERROR use isScreenOn:%s e:%s", new Object[] { this.lTY, Util.stackTraceToString(paramContext) });
-      AppMethodBeat.o(150783);
-    }
-    return null;
+    AppMethodBeat.i(20548);
+    Log.d("MicroMsg.NetScenePostInviteFriendsMsg", "doScene");
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(20548);
+    return i;
   }
   
-  public static abstract interface a
+  public final int getType()
   {
-    public abstract void gt(boolean paramBoolean);
+    return 1804;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(20547);
+    Log.d("MicroMsg.NetScenePostInviteFriendsMsg", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(20547);
+      return;
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(20547);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelmulti.m
  * JD-Core Version:    0.7.0.1
  */

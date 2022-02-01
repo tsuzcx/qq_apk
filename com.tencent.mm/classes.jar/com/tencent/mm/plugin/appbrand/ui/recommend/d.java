@@ -2,95 +2,75 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.service.w;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.appbrand.service.y;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.concurrent.TimeUnit;
-import kotlin.f;
-import kotlin.g;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendFakeNativePredownloadPeriodCheckLogic;", "", "()V", "INTERVAL", "", "getINTERVAL", "()J", "KEY_LAST_CHECK_TIMESTAMP", "", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "MMKV$delegate", "Lkotlin/Lazy;", "SP", "hitFrequencyLimit", "", "triggerCheck", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendFakeNativePredownloadPeriodCheckLogic;", "", "()V", "INTERVAL", "", "getINTERVAL", "()J", "KEY_LAST_CHECK_TIMESTAMP", "", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "MMKV$delegate", "Lkotlin/Lazy;", "SP", "hitFrequencyLimit", "", "triggerCheck", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  private static final f rgP;
-  public static final d rgQ;
+  public static final d uoL;
+  private static final j uoM;
   
   static
   {
     AppMethodBeat.i(51351);
-    rgQ = new d();
-    rgP = g.ar((a)a.rgR);
+    uoL = new d();
+    uoM = k.cm((a)a.uoN);
     AppMethodBeat.o(51351);
   }
   
-  private static MultiProcessMMKV aal()
+  private static MultiProcessMMKV aBP()
   {
     AppMethodBeat.i(51352);
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)rgP.getValue();
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)uoM.getValue();
     AppMethodBeat.o(51352);
     return localMultiProcessMMKV;
   }
   
-  private static long clD()
-  {
-    AppMethodBeat.i(264375);
-    long l = TimeUnit.MINUTES.toMillis(((b)h.ae(b.class)).a(b.a.vEK, 60L));
-    AppMethodBeat.o(264375);
-    return l;
-  }
-  
-  private static boolean clF()
-  {
-    AppMethodBeat.i(264376);
-    long l = aal().getLong("KEY_LAST_CHECK_TIMESTAMP", 0L);
-    if (Util.nowMilliSecond() - l <= clD())
-    {
-      AppMethodBeat.o(264376);
-      return true;
-    }
-    AppMethodBeat.o(264376);
-    return false;
-  }
-  
-  public final void clE()
+  public static void cNa()
   {
     AppMethodBeat.i(51353);
-    if (!c.clA())
+    if (!c.cMX())
     {
       AppMethodBeat.o(51353);
       return;
     }
-    if (!c.clB())
+    if (!c.cMY())
     {
       AppMethodBeat.o(51353);
       return;
     }
-    if (clF())
+    long l = aBP().getLong("KEY_LAST_CHECK_TIMESTAMP", 0L);
+    if (Util.nowMilliSecond() - l <= TimeUnit.MINUTES.toMillis(((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yUf, 60L))) {}
+    for (int i = 1; i != 0; i = 0)
     {
       AppMethodBeat.o(51353);
       return;
     }
-    aal().putLong("KEY_LAST_CHECK_TIMESTAMP", Util.nowMilliSecond());
-    ((w)h.ae(w.class)).bu("gh_b489f391e008@app", 0);
+    aBP().putLong("KEY_LAST_CHECK_TIMESTAMP", Util.nowMilliSecond());
+    ((y)h.ax(y.class)).bL("gh_b489f391e008@app", 0);
     AppMethodBeat.o(51353);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
+    extends u
     implements a<MultiProcessMMKV>
   {
-    public static final a rgR;
+    public static final a uoN;
     
     static
     {
       AppMethodBeat.i(51350);
-      rgR = new a();
+      uoN = new a();
       AppMethodBeat.o(51350);
     }
     

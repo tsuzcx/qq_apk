@@ -3,7 +3,7 @@ package com.tencent.mm.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.sdk.thread.ThreadPool;
 
 final class c$4
@@ -11,25 +11,25 @@ final class c$4
 {
   c$4(c paramc) {}
   
-  public final void MU(String paramString)
+  public final void FD(String paramString)
   {
     AppMethodBeat.i(20245);
-    if (e.avA())
+    if (e.aPU())
     {
-      h.aHH();
-      if (h.aHG().kcA.equals(b.aSL()))
+      h.baF();
+      if (h.baE().mCI.equals(b.bmz()))
       {
-        h.aHH();
-        ThreadPool.post(new c.b(h.aHG().cachePath, paramString), "AccountStorage_moveDataFiles");
+        h.baF();
+        ThreadPool.post(new c.b(h.baE().cachePath, paramString), "AccountStorage_moveDataFiles");
       }
     }
     AppMethodBeat.o(20245);
   }
   
-  public final void aHQ()
+  public final void baN()
   {
     AppMethodBeat.i(20244);
-    bh.beH();
+    bh.bCy();
     AppMethodBeat.o(20244);
   }
 }

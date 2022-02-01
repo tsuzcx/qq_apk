@@ -46,7 +46,7 @@ public final class g
   
   public final void update(final Bundle paramBundle, final TBSOneCallback<Void> paramTBSOneCallback)
   {
-    AppMethodBeat.i(187962);
+    AppMethodBeat.i(219266);
     String str = this.b.b;
     f.a("[%s] Updating", new Object[] { str });
     if (this.b.h())
@@ -55,7 +55,7 @@ public final class g
       if (paramTBSOneCallback != null) {
         paramTBSOneCallback.onCompleted(null);
       }
-      AppMethodBeat.o(187962);
+      AppMethodBeat.o(219266);
       return;
     }
     m.a(new Runnable()
@@ -67,12 +67,12 @@ public final class g
         AppMethodBeat.o(174138);
       }
     });
-    AppMethodBeat.o(187962);
+    AppMethodBeat.o(219266);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.g
  * JD-Core Version:    0.7.0.1
  */

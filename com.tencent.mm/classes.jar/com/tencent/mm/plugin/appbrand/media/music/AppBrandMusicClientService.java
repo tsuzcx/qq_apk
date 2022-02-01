@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.b;
+import com.tencent.mm.aw.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -12,26 +12,26 @@ import java.util.HashMap;
 
 public final class AppBrandMusicClientService
 {
-  public static AppBrandMusicClientService qdk;
-  public HashMap<String, a> qdj;
-  public volatile String qdl;
+  public static AppBrandMusicClientService thY;
+  public HashMap<String, a> thX;
+  public volatile String thZ;
   
   static
   {
     AppMethodBeat.i(145815);
-    qdk = new AppBrandMusicClientService();
+    thY = new AppBrandMusicClientService();
     AppMethodBeat.o(145815);
   }
   
   private AppBrandMusicClientService()
   {
     AppMethodBeat.i(145813);
-    this.qdj = new HashMap();
-    this.qdl = "";
+    this.thX = new HashMap();
+    this.thZ = "";
     AppMethodBeat.o(145813);
   }
   
-  public static boolean akw(String paramString)
+  public static boolean adC(String paramString)
   {
     AppMethodBeat.i(145814);
     if (TextUtils.isEmpty(paramString))
@@ -41,7 +41,7 @@ public final class AppBrandMusicClientService
     }
     IPCQueryPlaying localIPCQueryPlaying = new IPCQueryPlaying();
     IPCQueryPlaying.a(localIPCQueryPlaying, paramString);
-    if (localIPCQueryPlaying.bPu())
+    if (localIPCQueryPlaying.cpB())
     {
       boolean bool = IPCQueryPlaying.a(localIPCQueryPlaying);
       AppMethodBeat.o(145814);
@@ -55,8 +55,8 @@ public final class AppBrandMusicClientService
     extends MainProcessTask
   {
     public static final Parcelable.Creator<IPCQueryPlaying> CREATOR;
-    private boolean fGh;
-    private String qdm;
+    private boolean hLy;
+    private String tia;
     
     static
     {
@@ -67,34 +67,34 @@ public final class AppBrandMusicClientService
     
     IPCQueryPlaying()
     {
-      this.qdm = null;
-      this.fGh = false;
+      this.tia = null;
+      this.hLy = false;
     }
     
     IPCQueryPlaying(Parcel paramParcel)
     {
       AppMethodBeat.i(145802);
-      this.qdm = null;
-      this.fGh = false;
-      f(paramParcel);
+      this.tia = null;
+      this.hLy = false;
+      h(paramParcel);
       AppMethodBeat.o(145802);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(145803);
-      this.fGh = a.a.cbh().aky(this.qdm);
+      this.hLy = a.a.cBB().adE(this.tia);
       AppMethodBeat.o(145803);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(145804);
-      this.qdm = paramParcel.readString();
+      this.tia = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.fGh = bool;
+        this.hLy = bool;
         AppMethodBeat.o(145804);
         return;
       }
@@ -103,8 +103,8 @@ public final class AppBrandMusicClientService
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(145805);
-      paramParcel.writeString(this.qdm);
-      if (this.fGh) {}
+      paramParcel.writeString(this.tia);
+      if (this.hLy) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
@@ -132,42 +132,42 @@ public final class AppBrandMusicClientService
     public StopBackgroundMusicTask(Parcel paramParcel)
     {
       AppMethodBeat.i(145808);
-      f(paramParcel);
+      h(paramParcel);
       AppMethodBeat.o(145808);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(145809);
       Log.i("MicroMsg.AppBrandMusicClientService", "runInMainProcess");
-      String str = a.a.cbh().qdn;
+      String str = a.a.cBB().tib;
       if ((!Util.isNullOrNil(str)) && (!str.equals(this.appId)))
       {
         Log.i("MicroMsg.AppBrandMusicClientService", "appid not match cannot operate, preAppId:%s, appId:%s", new Object[] { str, this.appId });
-        bPt();
+        cpA();
         AppMethodBeat.o(145809);
         return;
       }
-      if (!a.a.cbh().aky(this.appId))
+      if (!a.a.cBB().adE(this.appId))
       {
         Log.i("MicroMsg.AppBrandMusicClientService", "appid not match cannot operate, can't not stop, preAppId:%s, appId:%s", new Object[] { str, this.appId });
-        bPt();
+        cpA();
         AppMethodBeat.o(145809);
         return;
       }
-      if (b.bnE()) {
+      if (b.bLr()) {
         Log.i("MicroMsg.AppBrandMusicClientService", "stop music ok");
       }
       for (;;)
       {
-        bPt();
+        cpA();
         AppMethodBeat.o(145809);
         return;
         Log.e("MicroMsg.AppBrandMusicClientService", "stop music fail");
       }
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(145810);
       this.appId = paramParcel.readString();
@@ -184,7 +184,7 @@ public final class AppBrandMusicClientService
   
   public static abstract interface a
   {
-    public abstract void bIo();
+    public abstract void chO();
     
     public abstract void onStop();
   }

@@ -1,347 +1,247 @@
 package com.tencent.mm.ui.chatting;
 
+import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.l;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.f.a.mp;
-import com.tencent.mm.f.a.mp.b;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.aa;
-import com.tencent.mm.model.ab;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.b.fi;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.z;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.x;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.pluginsdk.model.app.d;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
-import com.tencent.mm.sdk.platformtools.FileProviderHelper;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.profile.ui.SayHiWithSnsPermissionUI;
+import com.tencent.mm.plugin.profile.ui.SayHiWithSnsPermissionUI2;
+import com.tencent.mm.plugin.profile.ui.SayHiWithSnsPermissionUI3;
+import com.tencent.mm.pluginsdk.ui.applet.ab.b;
+import com.tencent.mm.pluginsdk.ui.applet.u;
+import com.tencent.mm.pluginsdk.ui.span.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.storage.ca.a;
-import com.tencent.mm.vfs.q;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.ui.f.e;
+import java.util.LinkedList;
 
 public final class aj
+  implements m
 {
-  private String WDJ;
-  String WDK;
-  ArrayList<Uri> WDL;
-  List<ca> WzW;
-  private Context context;
-  private as fLE;
-  private SimpleDateFormat rOV;
+  private com.tencent.mm.ui.chatting.d.a hlc;
   
-  public aj(Context paramContext, List<ca> paramList, as paramas)
+  public aj(com.tencent.mm.ui.chatting.d.a parama)
   {
-    AppMethodBeat.i(34842);
-    this.WDJ = null;
-    this.fLE = null;
-    this.rOV = new SimpleDateFormat("yyyy-MM-dd");
-    this.WDK = null;
-    this.WDL = new ArrayList();
-    this.context = paramContext;
-    this.WzW = paramList;
-    this.fLE = paramas;
-    AppMethodBeat.o(34842);
+    this.hlc = parama;
   }
   
-  private String VA(long paramLong)
+  public final Object a(u paramu)
   {
-    AppMethodBeat.i(34847);
-    String str = this.rOV.format(new Date(paramLong));
-    AppMethodBeat.o(34847);
-    return str;
-  }
-  
-  private String bX(ca paramca)
-  {
-    AppMethodBeat.i(34845);
-    Object localObject1 = null;
-    if (paramca.hwF()) {
-      localObject1 = String.format("[%s]", new Object[] { this.context.getString(R.l.eCe) });
-    }
-    for (;;)
+    AppMethodBeat.i(34836);
+    com.tencent.mm.pluginsdk.wallet.h.setPayChannel(6);
+    switch (paramu.type)
     {
-      Log.i("MicroMsg.OtherMailHistoryExporter", "formatOtherMsg, msgStr = %s", new Object[] { localObject1 });
-      paramca = String.format("%s\n\n%s\n\n", new Object[] { bY(paramca), localObject1 });
-      AppMethodBeat.o(34845);
-      return paramca;
-      if (paramca.hzu())
+    case 3: 
+    case 5: 
+    case 8: 
+    case 10: 
+    case 11: 
+    case 12: 
+    case 13: 
+    case 19: 
+    case 24: 
+    case 26: 
+    case 27: 
+    case 28: 
+    case 29: 
+    case 32: 
+    default: 
+    case 4: 
+    case 2: 
+    case 6: 
+    case 7: 
+    case 9: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 20: 
+    case 21: 
+    case 22: 
+    case 23: 
+      for (;;)
       {
-        if (paramca.field_isSend == 1) {
-          localObject1 = this.context.getString(R.l.eCc);
-        } else {
-          localObject1 = this.context.getString(R.l.eCb);
-        }
-      }
-      else if (paramca.erm())
-      {
-        localObject1 = new mp();
-        ((mp)localObject1).fKL.fKG = 1;
-        ((mp)localObject1).fKL.fvt = paramca;
-        EventCenter.instance.publish((IEvent)localObject1);
-        localObject1 = String.format("[%s]", new Object[] { ((mp)localObject1).fKM.fGw });
-      }
-      else
-      {
-        Object localObject2;
-        if (paramca.erk())
+        AppMethodBeat.o(34836);
+        return null;
+        Object localObject1 = new LinkedList();
+        int i;
+        if (au.bwE(this.hlc.getTalkerUserName()))
         {
-          localObject2 = k.b.OQ(Util.processXml(paramca.field_content));
-          if (localObject2 != null)
+          i = paramu.url.lastIndexOf("/");
+          if (i >= 0) {
+            ((LinkedList)localObject1).add(paramu.url.substring(i + 1));
+          }
+        }
+        else
+        {
+          Object localObject2;
+          for (;;)
           {
-            switch (((k.b)localObject2).type)
+            localObject2 = new LinkedList();
+            i = 0;
+            while (i < ((LinkedList)localObject1).size())
             {
+              ((LinkedList)localObject2).add(Integer.valueOf(6));
+              i += 1;
+            }
+            ((LinkedList)localObject1).add(this.hlc.getTalkerUserName());
+          }
+          if ((this.hlc.Uxa != null) && (au.bwO(this.hlc.Uxa.field_username)))
+          {
+            new com.tencent.mm.pluginsdk.ui.applet.ab(this.hlc.aezO.getContext(), new ab.b()
+            {
+              public final void sendEnd(boolean paramAnonymousBoolean) {}
+            }).a((LinkedList)localObject1, (LinkedList)localObject2, null);
+          }
+          else
+          {
+            localObject2 = this.hlc.aezO.getContext();
+            au localau = this.hlc.Uxa;
+            long l = 0L;
+            if (paramu.hTm != null) {
+              l = paramu.hTm.field_msgId;
+            }
+            i = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.zpi, 2);
+            int j = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.zpl, 5000);
+            localObject1 = SayHiWithSnsPermissionUI.class;
+            if ((!au.bwO(localau.field_username)) && (i == 1)) {
+              paramu = SayHiWithSnsPermissionUI2.class;
             }
             for (;;)
             {
-              localObject1 = h.o(((k.b)localObject2).appId, true, false);
-              if (localObject1 != null) {
-                break label313;
-              }
-              localObject1 = "";
+              paramu = new Intent((Context)localObject2, paramu);
+              paramu.putExtra("Contact_User", localau.field_username);
+              paramu.putExtra("Contact_Nick", localau.field_nickname);
+              paramu.putExtra("Contact_RemarkName", localau.field_conRemark);
+              paramu.putExtra("Contact_IsForceVerifyFriend", true);
+              paramu.putExtra("Contact_Scene", 6);
+              paramu.putExtra("Contact_Source_Add", 184);
+              paramu.putExtra("key_force_use_contact_label", true);
+              paramu.putExtra("sayhi_with_sns_perm_send_verify", true);
+              paramu.putExtra("sayhi_with_sns_perm_add_remark", true);
+              paramu.putExtra("sayhi_with_sns_perm_set_label", false);
+              paramu.putExtra(f.e.adwe, "");
+              paramu.putExtra("sayhi_verify_add_errcode", -1);
+              paramu.putExtra("key_msg_id", l);
+              paramu = new com.tencent.mm.hellhoundlib.b.a().cG(paramu);
+              com.tencent.mm.hellhoundlib.a.a.b(localObject2, paramu.aYi(), "com/tencent/mm/ui/chatting/MMChattingSpanClickCallback", "gotoSayHiPage", "(Landroid/app/Activity;Lcom/tencent/mm/storage/Contact;ILcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ((Activity)localObject2).startActivity((Intent)paramu.sb(0));
+              com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/ui/chatting/MMChattingSpanClickCallback", "gotoSayHiPage", "(Landroid/app/Activity;Lcom/tencent/mm/storage/Contact;ILcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               break;
-              localObject1 = com.tencent.mm.pluginsdk.model.app.ao.ctZ().bpR(((k.b)localObject2).fvr);
-              if (localObject1 != null)
+              paramu = (u)localObject1;
+              if (!au.bwO(localau.field_username))
               {
-                localObject1 = new q(((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath);
-                if (((q)localObject1).ifE()) {
-                  this.WDL.add(FileProviderHelper.getUriForFile(this.context, (q)localObject1));
+                paramu = (u)localObject1;
+                if (i == 2)
+                {
+                  paramu = (u)localObject1;
+                  if (com.tencent.mm.model.ab.bBW() >= j) {
+                    paramu = SayHiWithSnsPermissionUI3.class;
+                  }
                 }
               }
             }
-            label313:
-            localObject1 = ((g)localObject1).field_appName;
-            if (6 == ((k.b)localObject2).type) {
-              localObject1 = String.format("[%s: %s(%s)]", new Object[] { this.context.getString(R.l.eBU), localObject1, this.context.getString(R.l.eBV) });
-            } else {
-              localObject1 = String.format("[%s: %s]", new Object[] { this.context.getString(R.l.eBU), localObject1 });
-            }
+            this.hlc.aezO.joU();
           }
-        }
-        else if (paramca.hzy())
-        {
-          bh.beI();
-          localObject1 = com.tencent.mm.model.c.bbO().aOU(paramca.field_content).nickname;
-          localObject1 = String.format("[%s: %s]", new Object[] { this.context.getString(R.l.eBW), localObject1 });
-        }
-        else if (paramca.dlR())
-        {
-          localObject1 = this.context.getString(R.l.eCd);
-          s.bqB();
-          localObject2 = String.format("[%s: %s(%s)]", new Object[] { localObject1, new q(x.XT(paramca.field_imgPath)).getName(), this.context.getString(R.l.eBV) });
-          s.bqB();
-          q localq = new q(x.XT(paramca.field_imgPath));
-          localObject1 = localObject2;
-          if (localq.ifE())
-          {
-            this.WDL.add(FileProviderHelper.getUriForFile(this.context, localq));
-            localObject1 = localObject2;
-          }
-        }
-        else if ((paramca.hzB()) || (paramca.hzC()))
-        {
-          localObject1 = String.format("[%s]", new Object[] { this.context.getString(R.l.eBX) });
         }
       }
+    case 25: 
+    case 30: 
+    case 31: 
+    case 33: 
+      paramu = this.hlc.getTalkerUserName();
+      AppMethodBeat.o(34836);
+      return paramu;
     }
+    paramu = this.hlc.getTalkerUserName();
+    AppMethodBeat.o(34836);
+    return paramu;
   }
   
-  private String bY(ca paramca)
+  public final Object b(u paramu)
   {
-    AppMethodBeat.i(34846);
-    String str = null;
-    if (!ab.Lj(this.fLE.field_username)) {
-      str = aa.PJ(paramca.field_talker);
+    AppMethodBeat.i(34837);
+    switch (paramu.type)
+    {
+    default: 
+      AppMethodBeat.o(34837);
+      return null;
     }
+    if (bh.baz())
+    {
+      if (com.tencent.mm.an.g.Dn(this.hlc.getTalkerUserName()))
+      {
+        AppMethodBeat.o(34837);
+        return null;
+      }
+      if (com.tencent.mm.an.g.MB(this.hlc.getTalkerUserName()))
+      {
+        AppMethodBeat.o(34837);
+        return null;
+      }
+      if (com.tencent.mm.an.g.MA(this.hlc.getTalkerUserName()))
+      {
+        AppMethodBeat.o(34837);
+        return null;
+      }
+    }
+    String str2 = new String(Base64.decode(paramu.url, 0));
+    String str1 = (String)paramu.cf(String.class);
+    paramu = "";
+    Object localObject1 = paramu;
     for (;;)
     {
-      if (paramca.field_isSend == 1)
+      try
       {
-        Log.i("MicroMsg.OtherMailHistoryExporter", "isSend");
-        str = z.bdb();
+        localObject2 = new i(str1);
+        localObject1 = paramu;
+        paramu = ((i)localObject2).optString("fullText");
+        localObject1 = paramu;
+        str1 = ((i)localObject2).optString("linkText");
+        localObject1 = str1;
       }
-      long l = paramca.field_createTime;
-      paramca = new SimpleDateFormat("HH:mm").format(new Date(l));
-      Object localObject = new StringBuilder("");
-      ((StringBuilder)localObject).append(str);
-      ((StringBuilder)localObject).append("  ");
-      ((StringBuilder)localObject).append(paramca);
-      paramca = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(34846);
-      return paramca;
-      localObject = paramca.field_content;
-      int i = bq.RI((String)localObject);
-      if (i != -1) {
-        str = aa.PJ(((String)localObject).substring(0, i).trim());
-      }
-    }
-  }
-  
-  private String hNw()
-  {
-    AppMethodBeat.i(34844);
-    Object localObject;
-    if (!ab.Lj(this.fLE.field_username))
-    {
-      str1 = this.context.getString(R.l.eSe);
-      localObject = this.fLE.ayr();
-      bh.beI();
-      str1 = String.format(str1, new Object[] { localObject, com.tencent.mm.model.c.aHp().b(4, null) });
-      AppMethodBeat.o(34844);
-      return str1;
-    }
-    if (Util.isNullOrNil(this.fLE.field_nickname))
-    {
-      localObject = v.Ps(this.fLE.field_username).iterator();
-      String str2;
-      for (str1 = ""; ((Iterator)localObject).hasNext(); str1 = str1 + str2 + ", ") {
-        str2 = aa.PJ((String)((Iterator)localObject).next());
-      }
-    }
-    for (String str1 = str1.substring(0, str1.length() - 2);; str1 = this.fLE.ayr())
-    {
-      str1 = String.format(this.context.getString(R.l.eSd), new Object[] { str1 });
-      break;
-    }
-  }
-  
-  public final String hNv()
-  {
-    AppMethodBeat.i(34843);
-    if (this.WDK == null) {}
-    Object localObject1;
-    for (boolean bool = true;; bool = false)
-    {
-      Log.d("MicroMsg.OtherMailHistoryExporter", "export: history is null? %B, selectItems.size = %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.WzW.size()) });
-      if (this.WDK == null) {
-        break;
-      }
-      localObject1 = this.WDK;
-      AppMethodBeat.o(34843);
-      return localObject1;
-    }
-    this.WDL.clear();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(hNw());
-    localStringBuilder.append("\n\n");
-    Iterator localIterator = this.WzW.iterator();
-    ca localca;
-    if (localIterator.hasNext())
-    {
-      localca = (ca)localIterator.next();
-      if (this.WDJ == null)
+      catch (com.tencent.mm.ad.g paramu)
       {
-        this.WDJ = VA(localca.field_createTime);
-        localStringBuilder.append(String.format("—————  %s  —————\n\n", new Object[] { this.WDJ }));
-        localStringBuilder.append("\n");
-        label196:
-        if (!localca.hwH()) {
-          break label428;
-        }
-        if (!localca.hwH()) {
-          break label422;
-        }
-        if (localca.field_isSend != 1) {
-          break label324;
-        }
-        localObject1 = String.format("%s\n\n%s\n\n", new Object[] { bY(localca), localca.field_content });
-      }
-    }
-    label422:
-    label428:
-    for (;;)
-    {
-      localStringBuilder.append((String)localObject1);
-      break;
-      localObject1 = VA(localca.field_createTime);
-      if (((String)localObject1).equals(this.WDJ)) {
-        break label196;
-      }
-      this.WDJ = ((String)localObject1);
-      localStringBuilder.append(String.format("—————  %s  —————\n\n", new Object[] { this.WDJ }));
-      localStringBuilder.append("\n");
-      break label196;
-      label324:
-      if (!ab.Lj(this.fLE.field_username))
-      {
-        localObject1 = String.format("%s\n\n%s\n\n", new Object[] { bY(localca), localca.field_content });
-      }
-      else
-      {
-        int i = bq.RI(localca.field_content);
-        if (i != -1)
+        try
         {
-          localObject1 = String.format("%s\n\n%s\n\n", new Object[] { bY(localca), localca.field_content.substring(i + 1).trim() });
-          continue;
-          localObject1 = null;
-          continue;
-          if (localca.hwG())
-          {
-            if (localca.hwG())
-            {
-              long l1 = localca.field_msgId;
-              long l2 = localca.field_msgSvrId;
-              Object localObject2 = ad.cm(localca.field_talker, l1);
-              localObject1 = localObject2;
-              if (Util.isNullOrNil((String)localObject2)) {
-                localObject1 = ad.cn(localca.field_talker, l2);
-              }
-              Log.d("MicroMsg.OtherMailHistoryExporter", "imgPath[%s]", new Object[] { localObject1 });
-              if (!Util.isNullOrNil((String)localObject1))
-              {
-                localObject1 = new q((String)localObject1);
-                localObject2 = FileProviderHelper.getUriForFile(this.context, (q)localObject1);
-                this.WDL.add(localObject2);
-                localObject1 = String.format("[%s: %s(%s)]", new Object[] { this.context.getString(R.l.eBZ), ((q)localObject1).getName(), this.context.getString(R.l.eBV) });
-              }
-            }
-            for (localObject1 = String.format("%s\n\n%s\n\n", new Object[] { bY(localca), localObject1 });; localObject1 = null)
-            {
-              localStringBuilder.append((String)localObject1);
-              break;
-            }
+          str1 = new String(Base64.decode(Util.nullAs(((i)localObject2).optString("path"), ""), 0));
+          Log.i("MicroMsg.MMChattingSpanClickCallback", "appId:%s,path:%s", new Object[] { str2, str1 });
+          localObject2 = new AppBrandStatObject();
+          if (!au.bwQ(this.hlc.getTalkerUserName())) {
+            break label309;
           }
-          if (localca.erk())
-          {
-            localObject1 = k.b.OQ(localca.field_content);
-            if ((localObject1 != null) && ((((k.b)localObject1).type == 53) || (((k.b)localObject1).type == 57)))
-            {
-              if ((localObject1 != null) && ((((k.b)localObject1).type == 53) || (((k.b)localObject1).type == 57))) {}
-              for (localObject1 = String.format("%s\n\n%s\n\n", new Object[] { bY(localca), ((k.b)localObject1).title });; localObject1 = null)
-              {
-                localStringBuilder.append((String)localObject1);
-                break;
-              }
-            }
-            localStringBuilder.append(bX(localca));
-            break;
-          }
-          localStringBuilder.append(bX(localca));
-          break;
-          localStringBuilder.append("\n\n");
-          this.WDK = localStringBuilder.toString();
-          localObject1 = this.WDK;
-          AppMethodBeat.o(34843);
-          return localObject1;
+          ((AppBrandStatObject)localObject2).scene = 1207;
+          ((AppBrandStatObject)localObject2).hzx = this.hlc.getTalkerUserName();
+          ((t)com.tencent.mm.kernel.h.ax(t.class)).a(this.hlc.aezO.getContext(), null, str2, 0, 0, str1, (AppBrandStatObject)localObject2);
         }
-        localObject1 = null;
+        catch (com.tencent.mm.ad.g localg)
+        {
+          Object localObject2;
+          break label303;
+        }
+        paramu = paramu;
+        str1 = "";
+        paramu = (u)localObject1;
+        localObject1 = str1;
       }
+      label303:
+      str1 = "";
+      continue;
+      label309:
+      ((AppBrandStatObject)localObject2).scene = 1082;
+      ((AppBrandStatObject)localObject2).hzx = (this.hlc.getTalkerUserName() + ":1:" + paramu + ":" + (String)localObject1 + ":" + str1);
+      Log.d("MicroMsg.MMChattingSpanClickCallback", "sceneNote = %s", new Object[] { ((AppBrandStatObject)localObject2).hzx });
     }
   }
 }

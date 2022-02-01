@@ -1,188 +1,160 @@
 package com.tencent.mm.plugin.finder.viewmodel.component;
 
-import android.app.Activity;
-import android.content.Context;
+import android.animation.TimeInterpolator;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.animation.LinearInterpolator;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.p;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.b;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.feed.ui.FinderFloatBallDetailUI;
-import com.tencent.mm.plugin.finder.live.model.ah;
-import com.tencent.mm.plugin.finder.megavideo.floatball.a.a;
-import com.tencent.mm.plugin.finder.model.bs;
-import com.tencent.mm.plugin.finder.report.am;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.plugin.finder.video.FinderVideoLayout;
-import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
-import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.cwl;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.app.f;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.e.e;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.view.recyclerview.i;
-import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFloatMiniViewUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "videoFloatBallInfo", "Lcom/tencent/mm/protocal/protobuf/MegaVideoFloatBallInfo;", "addVideoFloatBall", "", "item", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "isFromHorizontal", "", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFeedMegaVideoBtnAnimUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "animator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "currentShowingView", "Landroid/view/View;", "isAttached", "", "isForeground", "lifecycleObserver", "com/tencent/mm/plugin/finder/viewmodel/component/FinderFeedMegaVideoBtnAnimUIC$lifecycleObserver$1", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFeedMegaVideoBtnAnimUIC$lifecycleObserver$1;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "tabType", "", "targetAnimMinWidth", "videoFinishListener", "com/tencent/mm/plugin/finder/viewmodel/component/FinderFeedMegaVideoBtnAnimUIC$videoFinishListener$1", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFeedMegaVideoBtnAnimUIC$videoFinishListener$1;", "attach", "", "rv", "getCurrentColor", "fraction", "", "startColor", "endColor", "startAppearAnim", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "startDisappearAnim", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
   extends UIComponent
 {
-  public static final a Bke;
-  private cwl zxK;
+  public static final t.a GPr;
+  private View GPs;
+  private int GPt;
+  private final FinderFeedMegaVideoBtnAnimUIC.videoFinishListener.1 GPu;
+  private final FinderFeedMegaVideoBtnAnimUIC.lifecycleObserver.1 GPv;
+  private final ValueAnimator animator;
+  private boolean ffv;
+  private int hJx;
+  private RecyclerView mkw;
+  private boolean nOG;
   
   static
   {
-    AppMethodBeat.i(271702);
-    Bke = new a((byte)0);
-    AppMethodBeat.o(271702);
+    AppMethodBeat.i(337786);
+    GPr = new t.a((byte)0);
+    AppMethodBeat.o(337786);
   }
   
   public t(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(271701);
-    paramAppCompatActivity = new cwl();
-    n localn = n.zWF;
-    paramAppCompatActivity.key = n.dPD();
-    this.zxK = paramAppCompatActivity;
-    AppMethodBeat.o(271701);
+    AppMethodBeat.i(337679);
+    paramAppCompatActivity = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    paramAppCompatActivity.setDuration(300L);
+    paramAppCompatActivity.setInterpolator((TimeInterpolator)new LinearInterpolator());
+    this.animator = paramAppCompatActivity;
+    this.ffv = true;
+    this.GPu = new FinderFeedMegaVideoBtnAnimUIC.videoFinishListener.1(this, f.hfK);
+    this.GPv = new FinderFeedMegaVideoBtnAnimUIC.lifecycleObserver.1(this);
+    AppMethodBeat.o(337679);
   }
   
-  public final void a(bs parambs, RecyclerView paramRecyclerView, boolean paramBoolean)
+  public t(Fragment paramFragment)
   {
-    int i = 0;
-    AppMethodBeat.i(271699);
-    p.k(parambs, "item");
-    p.k(paramRecyclerView, "recyclerView");
-    Log.i("FinderFloatMiniViewUIC", "addVideoFloatBall: id = " + parambs.mf());
-    Object localObject1 = am.zZN;
-    localObject1 = aj.Bnu;
-    localObject1 = aj.a.fZ((Context)getActivity());
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject1 = ((aj)localObject1).ekY();
-      if (!paramBoolean) {
-        break label201;
-      }
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("ref_eid", "transpose_video_card");
+    super(paramFragment);
+    AppMethodBeat.i(337689);
+    paramFragment = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    paramFragment.setDuration(300L);
+    paramFragment.setInterpolator((TimeInterpolator)new LinearInterpolator());
+    this.animator = paramFragment;
+    this.ffv = true;
+    this.GPu = new FinderFeedMegaVideoBtnAnimUIC.videoFinishListener.1(this, f.hfK);
+    this.GPv = new FinderFeedMegaVideoBtnAnimUIC.lifecycleObserver.1(this);
+    AppMethodBeat.o(337689);
+  }
+  
+  public final void E(RecyclerView paramRecyclerView)
+  {
+    AppMethodBeat.i(337792);
+    s.u(paramRecyclerView, "rv");
+    this.mkw = paramRecyclerView;
+    if (!this.nOG) {
+      this.GPu.alive();
     }
-    for (;;)
+    this.nOG = true;
+    getActivity().getLifecycle().addObserver((p)this.GPv);
+    AppMethodBeat.o(337792);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    b(com.tencent.mm.view.recyclerview.j paramj, t paramt)
     {
-      am.a((bid)localObject1, "add_pictureinpicture", 1, (JSONObject)localObject2);
-      if ((!com.tencent.mm.q.a.p((Context)getContext(), true)) && (!com.tencent.mm.q.a.r((Context)getContext(), true)) && (!com.tencent.mm.q.a.cB((Context)getContext())) && (!com.tencent.mm.q.a.cA((Context)getContext()))) {
-        break label207;
-      }
-      Log.w("FinderFloatMiniViewUIC", "addVideoFloatBall: failed to add video float ball, id = " + parambs.mf());
-      AppMethodBeat.o(271699);
-      return;
-      localObject1 = null;
-      break;
-      label201:
-      localObject2 = null;
+      super();
     }
-    label207:
-    if (com.tencent.mm.q.a.q(null, false))
+    
+    private static final void a(t paramt, View paramView1, View paramView2, int paramInt1, int paramInt2, ValueAnimator paramValueAnimator)
     {
-      localObject1 = ah.yhC;
-      ah.dzx();
+      AppMethodBeat.i(337617);
+      s.u(paramt, "this$0");
+      s.u(paramView1, "$it");
+      float f1 = paramValueAnimator.getAnimatedFraction();
+      float f2 = t.a(paramt);
+      float f3 = paramView1.getWidth() - t.a(paramt);
+      paramView2.getLayoutParams().width = ((int)(f2 + f3 * f1));
+      paramView2.requestLayout();
+      paramView2.setBackgroundColor(t.f(f1, paramInt1, paramInt2));
+      if (f1 > 0.5F) {
+        ((TextView)paramView1.findViewById(e.e.long_video_tips)).setAlpha((f1 - 0.5F) * 2.0F);
+      }
+      AppMethodBeat.o(337617);
     }
-    for (paramBoolean = true;; paramBoolean = false)
+    
+    private static final void k(com.tencent.mm.view.recyclerview.j paramj, View paramView)
     {
-      if (!b.ct((Context)getContext()))
-      {
-        Log.w("FinderFloatMiniViewUIC", "addVideoFloatBall: showVideoTalking, permission denied");
-        RequestFloatWindowPermissionDialog.a((Context)getContext(), getContext().getString(b.j.mega_video_float_permission_alert_content), (RequestFloatWindowPermissionDialog.a)new b(), false, com.tencent.mm.bx.a.awc());
-        AppMethodBeat.o(271699);
-        return;
-      }
-      localObject2 = paramRecyclerView.getLayoutManager();
-      localObject1 = localObject2;
-      if (!(localObject2 instanceof LinearLayoutManager)) {
-        localObject1 = null;
-      }
-      localObject1 = (LinearLayoutManager)localObject1;
-      if (localObject1 != null)
-      {
-        int j = ((LinearLayoutManager)localObject1).kJ();
-        localObject1 = paramRecyclerView.cJ(j);
-        paramRecyclerView = (RecyclerView)localObject1;
-        if (!(localObject1 instanceof i)) {
-          paramRecyclerView = null;
-        }
-        paramRecyclerView = (i)paramRecyclerView;
-        if (paramRecyclerView != null)
-        {
-          localObject1 = (FinderVideoLayout)paramRecyclerView.RD(b.f.finder_banner_video_layout);
-          if (localObject1 != null) {
-            i = ((FinderVideoLayout)localObject1).getCurrentPosSec();
-          }
-          Log.i("FinderFloatMiniViewUIC", "addVideoFloatBall: videoCurrPlayTimes = ".concat(String.valueOf(i)));
-          localObject1 = com.tencent.mm.plugin.finder.megavideo.floatball.a.zwo;
-          localObject1 = a.a.dJH();
-          this.zxK.TFi = i;
-          this.zxK.TFg.clear();
-          this.zxK.TFk.clear();
-          this.zxK.TFk.add(parambs.getFeedObject());
-          ((com.tencent.mm.plugin.finder.megavideo.floatball.a)localObject1).n("KEY_VIDEO_FLOAT_BALL_INFO", this.zxK.toByteArray());
-          ((com.tencent.mm.plugin.finder.megavideo.floatball.a)localObject1).a(paramRecyclerView, paramBoolean, parambs.mf(), parambs.dKW());
-          if ((getContext() instanceof FinderFloatBallDetailUI)) {
-            getContext().finish();
-          }
-          AppMethodBeat.o(271699);
-          return;
-        }
-        Log.e("FinderFloatMiniViewUIC", "addVideoFloatBall: holder is null, pos = ".concat(String.valueOf(j)));
-        AppMethodBeat.o(271699);
-        return;
-      }
-      Log.e("FinderFloatMiniViewUIC", "addVideoFloatBall: layout manager is not linear layout manager");
-      AppMethodBeat.o(271699);
-      return;
+      AppMethodBeat.i(337612);
+      Object localObject = new Object();
+      b localb = new b();
+      localb.cH(paramj);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderFeedMegaVideoBtnAnimUIC$startAppearAnim$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      s.u(paramj, "$holder");
+      paramj.UH(e.e.long_video_button).performClick();
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/viewmodel/component/FinderFeedMegaVideoBtnAnimUIC$startAppearAnim$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(337612);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFloatMiniViewUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/component/FinderFloatMiniViewUIC$addVideoFloatBall$2", "Lcom/tencent/mm/pluginsdk/permission/RequestFloatWindowPermissionDialog$OverlayPermissionResultCallBack;", "onResultAllow", "", "dialog", "Lcom/tencent/mm/pluginsdk/permission/RequestFloatWindowPermissionDialog;", "onResultCancel", "onResultRefuse", "plugin-finder_release"})
-  public static final class b
-    implements RequestFloatWindowPermissionDialog.a
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    public final void a(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog)
+    c(t paramt)
     {
-      AppMethodBeat.i(275944);
-      p.k(paramRequestFloatWindowPermissionDialog, "dialog");
-      paramRequestFloatWindowPermissionDialog.finish();
-      AppMethodBeat.o(275944);
+      super();
     }
     
-    public final void b(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog)
+    private static final void a(View paramView1, t paramt, View paramView2, int paramInt1, int paramInt2, ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(275945);
-      p.k(paramRequestFloatWindowPermissionDialog, "dialog");
-      paramRequestFloatWindowPermissionDialog.finish();
-      AppMethodBeat.o(275945);
-    }
-    
-    public final void c(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog)
-    {
-      AppMethodBeat.i(275946);
-      p.k(paramRequestFloatWindowPermissionDialog, "dialog");
-      paramRequestFloatWindowPermissionDialog.finish();
-      AppMethodBeat.o(275946);
+      AppMethodBeat.i(337611);
+      s.u(paramView1, "$it");
+      s.u(paramt, "this$0");
+      float f1 = paramValueAnimator.getAnimatedFraction();
+      float f2 = paramView1.getWidth();
+      float f3 = paramView1.getWidth() - t.a(paramt);
+      paramView2.getLayoutParams().width = ((int)(f2 - f3 * f1));
+      paramView2.requestLayout();
+      paramView2.setBackgroundColor(t.f(f1, paramInt1, paramInt2));
+      if (f1 >= 1.0F) {
+        paramView1.setVisibility(8);
+      }
+      AppMethodBeat.o(337611);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.t
  * JD-Core Version:    0.7.0.1
  */

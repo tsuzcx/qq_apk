@@ -2,57 +2,57 @@ package com.tencent.mm.platformtools;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsimple.t;
-import com.tencent.mm.modelsimple.t.a;
+import com.tencent.mm.modelsimple.u;
+import com.tencent.mm.modelsimple.u.a;
 import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.j.f;
 import com.tencent.mm.protocal.j.g;
-import com.tencent.mm.protocal.protobuf.cvb;
-import com.tencent.mm.protocal.protobuf.cvc;
-import com.tencent.mm.protocal.protobuf.eii;
-import com.tencent.mm.protocal.protobuf.eos;
-import com.tencent.mm.protocal.protobuf.evr;
-import com.tencent.mm.protocal.protobuf.ha;
+import com.tencent.mm.protocal.protobuf.dmh;
+import com.tencent.mm.protocal.protobuf.dmi;
+import com.tencent.mm.protocal.protobuf.fck;
+import com.tencent.mm.protocal.protobuf.fjq;
+import com.tencent.mm.protocal.protobuf.frg;
+import com.tencent.mm.protocal.protobuf.hw;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class e
 {
-  private static t.a a(t paramt, Bundle paramBundle)
+  private static u.a a(u paramu, Bundle paramBundle)
   {
     AppMethodBeat.i(151376);
-    if (paramt == null)
+    if (paramu == null)
     {
       AppMethodBeat.o(151376);
       return null;
     }
-    if (((j.g)paramt.lCW.getRespObj()).RBm.Uxi == null)
+    if (((j.g)paramu.ouH.getRespObj()).YxP.abQQ == null)
     {
       AppMethodBeat.o(151376);
       return null;
     }
-    Object localObject = ((j.g)paramt.lCW.getRespObj()).RBm.Uxi.RMf;
-    if ((localObject != null) && (((eii)localObject).Ukq != null) && (((eii)localObject).Ukq.size() > 0))
+    Object localObject = ((j.g)paramu.ouH.getRespObj()).YxP.abQQ.YJt;
+    if ((localObject != null) && (((fck)localObject).abBZ != null) && (((fck)localObject).abBZ.size() > 0))
     {
-      t.a locala = new t.a();
-      localObject = ((eii)localObject).Ukq.iterator();
+      u.a locala = new u.a();
+      localObject = ((fck)localObject).abBZ.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        eos localeos = (eos)((Iterator)localObject).next();
-        if (localeos.IyZ == 19) {
-          locala.fAo = localeos.Uro;
-        } else if (localeos.IyZ == 20) {
-          locala.maa = localeos.Uro;
-        } else if (localeos.IyZ == 21) {
-          locala.wording = localeos.Uro;
+        fjq localfjq = (fjq)((Iterator)localObject).next();
+        if (localfjq.OzG == 19) {
+          locala.hFb = localfjq.abKm;
+        } else if (localfjq.OzG == 20) {
+          locala.oSR = localfjq.abKm;
+        } else if (localfjq.OzG == 21) {
+          locala.wording = localfjq.abKm;
         }
       }
-      locala.mab = paramBundle;
+      locala.oSS = paramBundle;
       locala.type = 0;
-      if (!Util.isNullOrNil(locala.fAo))
+      if (!Util.isNullOrNil(locala.hFb))
       {
-        locala.username = ((j.f)paramt.lCW.getReqObj()).RBo.TCK.UserName;
+        locala.username = ((j.f)paramu.ouH.getReqObj()).YxR.aaSr.UserName;
         AppMethodBeat.o(151376);
         return locala;
       }
@@ -61,19 +61,19 @@ public final class e
     return null;
   }
   
-  public static t.a d(t paramt)
+  public static u.a d(u paramu)
   {
     AppMethodBeat.i(151375);
     Bundle localBundle = new Bundle();
     localBundle.putInt("kscene_type", 73);
-    paramt = a(paramt, localBundle);
+    paramu = a(paramu, localBundle);
     AppMethodBeat.o(151375);
-    return paramt;
+    return paramu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.e
  * JD-Core Version:    0.7.0.1
  */

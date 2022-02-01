@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.ui.e;
+import com.tencent.mm.plugin.wallet_core.ui.f;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,26 +10,26 @@ import java.util.Vector;
 
 public abstract class p<K>
 {
-  Map<String, Integer> OQe = new HashMap();
-  List<K> OQf = new LinkedList();
-  public Vector<p<K>.b> OQg = new Vector();
-  List<String> OQh = new LinkedList();
+  Map<String, Integer> VFY = new HashMap();
+  List<K> VFZ = new LinkedList();
+  public Vector<p<K>.b> VGa = new Vector();
+  List<String> VGb = new LinkedList();
   
-  private void gJh()
+  private void iiv()
   {
     int i = 0;
     int j;
-    if (i < this.OQg.size()) {
-      if (((b)this.OQg.get(i)).OQo != a.OQk)
+    if (i < this.VGa.size()) {
+      if (((b)this.VGa.get(i)).VGi != a.VGe)
       {
-        Object localObject = a(this.OQg, i);
-        if (this.OQe.containsKey(localObject)) {
+        Object localObject = a(this.VGa, i);
+        if (this.VFY.containsKey(localObject)) {
           break label158;
         }
-        localObject = e.bht((String)localObject);
+        localObject = f.bhc((String)localObject);
         j = 0;
         label67:
-        if (j >= this.OQh.size()) {
+        if (j >= this.VGb.size()) {
           break label153;
         }
         k = 0;
@@ -37,7 +37,7 @@ public abstract class p<K>
         if (k >= localObject.length) {
           break label170;
         }
-        if (((String)this.OQh.get(j)).contains(localObject[k])) {
+        if (((String)this.VGb.get(j)).contains(localObject[k])) {
           break label139;
         }
       }
@@ -55,7 +55,7 @@ public abstract class p<K>
         if (j != 0) {
           break label158;
         }
-        a(i, a.OQj);
+        a(i, a.VGd);
       }
       for (;;)
       {
@@ -67,7 +67,7 @@ public abstract class p<K>
         break label67;
         j = 0;
         break label120;
-        a(i, a.OQl);
+        a(i, a.VGf);
       }
       return;
     }
@@ -77,37 +77,37 @@ public abstract class p<K>
   
   public final void a(int paramInt, a parama)
   {
-    ((b)this.OQg.get(paramInt)).OQo = parama;
+    ((b)this.VGa.get(paramInt)).VGi = parama;
   }
   
   public final void f(List<K> paramList1, List<K> paramList2, List<String> paramList)
   {
-    this.OQh = paramList;
-    this.OQf = paramList2;
-    this.OQg.clear();
-    this.OQg = new Vector(paramList1.size());
+    this.VGb = paramList;
+    this.VFZ = paramList2;
+    this.VGa.clear();
+    this.VGa = new Vector(paramList1.size());
     int i = 0;
     if (i < paramList1.size())
     {
       paramList2 = new b();
       Object localObject = paramList1.get(i);
-      paramList2.OQn = localObject;
-      if (this.OQf.contains(localObject)) {}
-      for (paramList2.OQo = a.OQk;; paramList2.OQo = a.OQj)
+      paramList2.VGh = localObject;
+      if (this.VFZ.contains(localObject)) {}
+      for (paramList2.VGi = a.VGe;; paramList2.VGi = a.VGd)
       {
-        this.OQg.add(paramList2);
+        this.VGa.add(paramList2);
         i += 1;
         break;
       }
     }
-    this.OQe.clear();
+    this.VFY.clear();
     i = 0;
     while (i < paramList.size())
     {
-      this.OQe.put(paramList.get(i), Integer.valueOf(0));
+      this.VFY.put((String)paramList.get(i), Integer.valueOf(0));
       i += 1;
     }
-    gJh();
+    iiv();
   }
   
   public static enum a
@@ -115,10 +115,10 @@ public abstract class p<K>
     static
     {
       AppMethodBeat.i(70308);
-      OQj = new a("DISABLED", 0);
-      OQk = new a("CHECKED", 1);
-      OQl = new a("UNCHECKED", 2);
-      OQm = new a[] { OQj, OQk, OQl };
+      VGd = new a("DISABLED", 0);
+      VGe = new a("CHECKED", 1);
+      VGf = new a("UNCHECKED", 2);
+      VGg = new a[] { VGd, VGe, VGf };
       AppMethodBeat.o(70308);
     }
     
@@ -127,15 +127,15 @@ public abstract class p<K>
   
   public final class b
   {
-    public K OQn;
-    public p.a OQo;
+    public K VGh;
+    public p.a VGi;
     
     public b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.p
  * JD-Core Version:    0.7.0.1
  */

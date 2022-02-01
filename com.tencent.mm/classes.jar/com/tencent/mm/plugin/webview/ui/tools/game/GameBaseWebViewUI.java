@@ -1,11 +1,10 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
-import com.tencent.mm.plugin.webview.core.f;
+import com.tencent.mm.plugin.webview.core.h;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.xweb.WebView;
@@ -13,21 +12,21 @@ import com.tencent.xweb.WebView;
 public class GameBaseWebViewUI
   extends WebViewUI
 {
-  private d CCS;
-  protected b Qnf;
+  private d IwT;
+  protected b Xft;
   
   public GameBaseWebViewUI()
   {
     AppMethodBeat.i(80808);
-    this.CCS = new d()
+    this.IwT = new d()
     {
-      protected final void ah(Bundle paramAnonymousBundle)
+      protected final void az(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(80805);
         try
         {
-          if ((GameBaseWebViewUI.this.pGC != null) && (paramAnonymousBundle != null)) {
-            GameBaseWebViewUI.this.pGC.l(96, paramAnonymousBundle);
+          if ((GameBaseWebViewUI.this.sLC != null) && (paramAnonymousBundle != null)) {
+            GameBaseWebViewUI.this.sLC.m(96, paramAnonymousBundle);
           }
           AppMethodBeat.o(80805);
           return;
@@ -41,14 +40,14 @@ public class GameBaseWebViewUI
     AppMethodBeat.o(80808);
   }
   
-  public final void aW(Bundle paramBundle)
+  public final void bA(Bundle paramBundle)
   {
     AppMethodBeat.i(80809);
-    this.CCS.QnE.bk(paramBundle);
+    this.IwT.XfS.bP(paramBundle);
     AppMethodBeat.o(80809);
   }
   
-  public final boolean cjM()
+  public final boolean cKZ()
   {
     return true;
   }
@@ -63,9 +62,9 @@ public class GameBaseWebViewUI
   public void onDestroy()
   {
     AppMethodBeat.i(80813);
-    d.a(this.CCS.QnE.QnF);
-    if (this.Qnf != null) {
-      this.Qnf.onDestroy();
+    d.a(this.IwT.XfS.XfT);
+    if (this.Xft != null) {
+      this.Xft.onDestroy();
     }
     super.onDestroy();
     AppMethodBeat.o(80813);
@@ -75,14 +74,14 @@ public class GameBaseWebViewUI
   {
     AppMethodBeat.i(80812);
     super.onPause();
-    this.CCS.QnE.onPause();
-    if (this.Qnf != null)
+    this.IwT.XfS.onPause();
+    if (this.Xft != null)
     {
-      b localb = this.Qnf;
-      localb.CCS.QnE.onPause();
-      GameWebPerformanceInfo localGameWebPerformanceInfo = localb.CCD;
-      localGameWebPerformanceInfo.jTS += System.currentTimeMillis() - localb.CCT;
-      localb.CCT = System.currentTimeMillis();
+      b localb = this.Xft;
+      localb.IwT.XfS.onPause();
+      GameWebPerformanceInfo localGameWebPerformanceInfo = localb.IwE;
+      localGameWebPerformanceInfo.muk += System.currentTimeMillis() - localb.IwU;
+      localb.IwU = System.currentTimeMillis();
     }
     AppMethodBeat.o(80812);
   }
@@ -90,12 +89,12 @@ public class GameBaseWebViewUI
   public void onResume()
   {
     AppMethodBeat.i(80811);
-    this.CCS.QnE.onResume();
-    if (this.Qnf != null)
+    this.IwT.XfS.onResume();
+    if (this.Xft != null)
     {
-      b localb = this.Qnf;
-      localb.CCS.QnE.onResume();
-      localb.CCT = System.currentTimeMillis();
+      b localb = this.Xft;
+      localb.IwT.XfS.onResume();
+      localb.IwU = System.currentTimeMillis();
     }
     super.onResume();
     AppMethodBeat.o(80811);
@@ -108,22 +107,22 @@ public class GameBaseWebViewUI
   }
   
   protected class a
-    extends f
+    extends h
   {
     protected a() {}
     
     public void b(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(264859);
-      GameBaseWebViewUI.a(GameBaseWebViewUI.this).QnE.OR();
-      AppMethodBeat.o(264859);
+      AppMethodBeat.i(297051);
+      GameBaseWebViewUI.a(GameBaseWebViewUI.this).XfS.aoZ();
+      AppMethodBeat.o(297051);
     }
     
     public void h(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(264858);
-      GameBaseWebViewUI.a(GameBaseWebViewUI.this).QnE.hay();
-      AppMethodBeat.o(264858);
+      AppMethodBeat.i(297047);
+      GameBaseWebViewUI.a(GameBaseWebViewUI.this).XfS.iAL();
+      AppMethodBeat.o(297047);
     }
   }
 }

@@ -12,13 +12,13 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
 import androidx.appcompat.a.a;
-import androidx.core.g.u;
-import androidx.core.widget.i;
+import androidx.core.g.x;
+import androidx.core.widget.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppCompatEditText
   extends EditText
-  implements u
+  implements x
 {
   private final d mBackgroundTintHelper;
   private final k mTextHelper;
@@ -36,134 +36,134 @@ public class AppCompatEditText
   public AppCompatEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(z.L(paramContext), paramAttributeSet, paramInt);
-    AppMethodBeat.i(240802);
+    AppMethodBeat.i(200047);
     this.mBackgroundTintHelper = new d(this);
     this.mBackgroundTintHelper.a(paramAttributeSet, paramInt);
     this.mTextHelper = new k(this);
     this.mTextHelper.a(paramAttributeSet, paramInt);
-    this.mTextHelper.du();
-    AppMethodBeat.o(240802);
+    this.mTextHelper.et();
+    AppMethodBeat.o(200047);
   }
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(240814);
+    AppMethodBeat.i(200116);
     super.drawableStateChanged();
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.dm();
+      this.mBackgroundTintHelper.el();
     }
     if (this.mTextHelper != null) {
-      this.mTextHelper.du();
+      this.mTextHelper.et();
     }
-    AppMethodBeat.o(240814);
+    AppMethodBeat.o(200116);
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    AppMethodBeat.i(240809);
+    AppMethodBeat.i(200091);
     if (this.mBackgroundTintHelper != null)
     {
       ColorStateList localColorStateList = this.mBackgroundTintHelper.getSupportBackgroundTintList();
-      AppMethodBeat.o(240809);
+      AppMethodBeat.o(200091);
       return localColorStateList;
     }
-    AppMethodBeat.o(240809);
+    AppMethodBeat.o(200091);
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    AppMethodBeat.i(240811);
+    AppMethodBeat.i(200107);
     if (this.mBackgroundTintHelper != null)
     {
       PorterDuff.Mode localMode = this.mBackgroundTintHelper.getSupportBackgroundTintMode();
-      AppMethodBeat.o(240811);
+      AppMethodBeat.o(200107);
       return localMode;
     }
-    AppMethodBeat.o(240811);
+    AppMethodBeat.o(200107);
     return null;
   }
   
   public Editable getText()
   {
-    AppMethodBeat.i(240803);
+    AppMethodBeat.i(200057);
     if (Build.VERSION.SDK_INT >= 28)
     {
       localEditable = super.getText();
-      AppMethodBeat.o(240803);
+      AppMethodBeat.o(200057);
       return localEditable;
     }
     Editable localEditable = super.getEditableText();
-    AppMethodBeat.o(240803);
+    AppMethodBeat.o(200057);
     return localEditable;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    AppMethodBeat.i(240817);
+    AppMethodBeat.i(200131);
     paramEditorInfo = g.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
-    AppMethodBeat.o(240817);
+    AppMethodBeat.o(200131);
     return paramEditorInfo;
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(240805);
+    AppMethodBeat.i(200073);
     super.setBackgroundDrawable(paramDrawable);
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.dl();
+      this.mBackgroundTintHelper.ek();
     }
-    AppMethodBeat.o(240805);
+    AppMethodBeat.o(200073);
   }
   
   public void setBackgroundResource(int paramInt)
   {
-    AppMethodBeat.i(240804);
+    AppMethodBeat.i(200067);
     super.setBackgroundResource(paramInt);
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.ar(paramInt);
+      this.mBackgroundTintHelper.ap(paramInt);
     }
-    AppMethodBeat.o(240804);
+    AppMethodBeat.o(200067);
   }
   
   public void setCustomSelectionActionModeCallback(ActionMode.Callback paramCallback)
   {
-    AppMethodBeat.i(240819);
-    super.setCustomSelectionActionModeCallback(i.a(this, paramCallback));
-    AppMethodBeat.o(240819);
+    AppMethodBeat.i(200141);
+    super.setCustomSelectionActionModeCallback(j.a(this, paramCallback));
+    AppMethodBeat.o(200141);
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(240807);
+    AppMethodBeat.i(200083);
     if (this.mBackgroundTintHelper != null) {
       this.mBackgroundTintHelper.setSupportBackgroundTintList(paramColorStateList);
     }
-    AppMethodBeat.o(240807);
+    AppMethodBeat.o(200083);
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(240810);
+    AppMethodBeat.i(200101);
     if (this.mBackgroundTintHelper != null) {
       this.mBackgroundTintHelper.setSupportBackgroundTintMode(paramMode);
     }
-    AppMethodBeat.o(240810);
+    AppMethodBeat.o(200101);
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(240816);
+    AppMethodBeat.i(200123);
     super.setTextAppearance(paramContext, paramInt);
     if (this.mTextHelper != null) {
       this.mTextHelper.s(paramContext, paramInt);
     }
-    AppMethodBeat.o(240816);
+    AppMethodBeat.o(200123);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.AppCompatEditText
  * JD-Core Version:    0.7.0.1
  */

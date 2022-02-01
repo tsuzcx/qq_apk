@@ -23,11 +23,11 @@ public final class j
   
   public j(i parami, Bundle paramBundle)
   {
-    AppMethodBeat.i(187745);
+    AppMethodBeat.i(219258);
     this.d = new ConcurrentHashMap();
     this.b = parami;
     this.e = paramBundle;
-    AppMethodBeat.o(187745);
+    AppMethodBeat.o(219258);
   }
   
   private boolean a(d paramd, String paramString, Set<d.a> paramSet)
@@ -120,7 +120,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.j
  * JD-Core Version:    0.7.0.1
  */

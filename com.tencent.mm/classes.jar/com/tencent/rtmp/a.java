@@ -2,8 +2,6 @@ package com.tencent.rtmp;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -13,10 +11,14 @@ import com.tencent.liteav.audio.TXCAudioEngine;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSVideoFrame;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
+import com.tencent.liteav.f;
+import com.tencent.liteav.h;
 import com.tencent.liteav.j;
 import com.tencent.liteav.j.a;
 import com.tencent.liteav.n;
+import com.tencent.liteav.network.e;
 import com.tencent.liteav.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -35,8 +37,9 @@ public class a
   private String G;
   private int H;
   private int I;
-  private a J;
-  private TXLivePlayer.ITXAudioRawDataListener K;
+  private e J;
+  private a K;
+  private TXLivePlayer.ITXAudioRawDataListener L;
   private TXCloudVideoView a;
   private Surface b;
   private int c;
@@ -84,7 +87,7 @@ public class a
     this.D = null;
     this.E = 0;
     this.I = 0;
-    this.J = null;
+    this.K = null;
     this.e = null;
     this.r = paramContext.getApplicationContext();
     TXCCommonUtil.setAppContext(this.r);
@@ -97,21 +100,21 @@ public class a
   
   private String a(Bundle paramBundle)
   {
-    AppMethodBeat.i(219426);
+    AppMethodBeat.i(218539);
     paramBundle = " IP:" + paramBundle.getString("SERVER_IP") + " RES:" + paramBundle.getInt("VIDEO_WIDTH") + "*" + paramBundle.getInt("VIDEO_HEIGHT") + " FPS:" + paramBundle.getInt("VIDEO_FPS") + " GOP:" + paramBundle.getInt("VIDEO_GOP") + "s Speed:" + paramBundle.getInt("NET_SPEED") + "Kbps AudioSpeed:" + paramBundle.getInt("AUDIO_BITRATE") + "Kbps VideoSpeed:" + paramBundle.getInt("VIDEO_BITRATE") + "Kbps AudioCache:" + paramBundle.getInt("AUDIO_CACHE") + " VideoCache:" + paramBundle.getInt("VIDEO_CACHE") + " VideoCacheFrameCount:" + paramBundle.getInt("V_SUM_CACHE_SIZE") + " VideoDecoderCacheFrameCount:" + paramBundle.getInt("V_DEC_CACHE_SIZE") + " AVJitterSync:" + paramBundle.getInt("AV_RECV_INTERVAL") + " AVPlaySync:" + paramBundle.getInt("AV_PLAY_INTERVAL") + " AudioParamsInfo:" + paramBundle.getString("AUDIO_PLAY_INFO");
-    AppMethodBeat.o(219426);
+    AppMethodBeat.o(218539);
     return paramBundle;
   }
   
   private void a(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(219410);
+    AppMethodBeat.i(218532);
     if ((paramInt == 15001) && (paramBundle != null))
     {
       String str = this.k;
       if (str == null)
       {
-        AppMethodBeat.o(219410);
+        AppMethodBeat.o(218532);
         return;
       }
       boolean bool = str.startsWith("room://");
@@ -124,7 +127,7 @@ public class a
       if (((!bool) && (this.H > paramInt)) || (i1 < 10) || ((i2 != 0) && (i2 < 5)) || (Math.abs(i3) > 5000) || (Math.abs(i4) > 5000)) {
         h();
       }
-      AppMethodBeat.o(219410);
+      AppMethodBeat.o(218532);
       return;
     }
     if ((paramInt == 2007) || (paramInt == 2105))
@@ -132,7 +135,7 @@ public class a
       TXCLog.i("TXLivePlayer", "[Event]code:" + paramInt + " param:" + paramBundle);
       h();
     }
-    AppMethodBeat.o(219410);
+    AppMethodBeat.o(218532);
   }
   
   private void a(final TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener, final Bitmap paramBitmap)
@@ -147,12 +150,12 @@ public class a
     {
       public void run()
       {
-        AppMethodBeat.i(219282);
+        AppMethodBeat.i(218474);
         if (paramITXSnapshotListener != null) {
           paramITXSnapshotListener.onSnapshot(paramBitmap);
         }
         a.a(a.this, false);
-        AppMethodBeat.o(219282);
+        AppMethodBeat.o(218474);
       }
     });
     AppMethodBeat.o(14099);
@@ -220,13 +223,13 @@ public class a
   
   private void c(String paramString)
   {
-    AppMethodBeat.i(219306);
+    AppMethodBeat.i(218525);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
     TXCLog.i("TXLivePlayer", "[API] TXLivePlayer(" + hashCode() + ") " + str);
-    AppMethodBeat.o(219306);
+    AppMethodBeat.o(218525);
   }
   
   private void f()
@@ -234,14 +237,14 @@ public class a
     AppMethodBeat.i(14082);
     if ((this.t != null) && (this.E > 0))
     {
-      if (this.J == null) {
-        this.J = new a(null);
+      if (this.K == null) {
+        this.K = new a(null);
       }
-      this.J.a(this.E);
+      this.K.a(this.E);
       if (this.s != null)
       {
-        this.s.removeCallbacks(this.J);
-        this.s.postDelayed(this.J, this.E);
+        this.s.removeCallbacks(this.K);
+        this.s.postDelayed(this.K, this.E);
       }
     }
     AppMethodBeat.o(14082);
@@ -250,56 +253,56 @@ public class a
   private void g()
   {
     AppMethodBeat.i(14083);
-    if ((this.s != null) && (this.J != null)) {
-      this.s.removeCallbacks(this.J);
+    if ((this.s != null) && (this.K != null)) {
+      this.s.removeCallbacks(this.K);
     }
-    this.J = null;
+    this.K = null;
     this.E = 0;
     AppMethodBeat.o(14083);
   }
   
   private void h()
   {
-    AppMethodBeat.i(219413);
+    AppMethodBeat.i(218535);
     long l1 = System.currentTimeMillis();
     if (l1 - this.F > 3000L)
     {
       this.F = l1;
       c("[Statistics] logStatisticsStr statistics:" + this.G);
     }
-    AppMethodBeat.o(219413);
+    AppMethodBeat.o(218535);
   }
   
   private boolean i()
   {
-    AppMethodBeat.i(219430);
-    if ((Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) && (Build.MODEL.equalsIgnoreCase("Che2-TL00")))
+    AppMethodBeat.i(218544);
+    if ((TXCBuild.Manufacturer().equalsIgnoreCase("HUAWEI")) && (TXCBuild.Model().equalsIgnoreCase("Che2-TL00")))
     {
-      AppMethodBeat.o(219430);
+      AppMethodBeat.o(218544);
       return true;
     }
-    AppMethodBeat.o(219430);
+    AppMethodBeat.o(218544);
     return false;
   }
   
   public int a(TXLivePlayer.ITXLivePlayVideoRenderListener paramITXLivePlayVideoRenderListener, Object paramObject)
   {
-    AppMethodBeat.i(219369);
+    AppMethodBeat.i(218783);
     c("setVideoRenderListener listener:" + paramITXLivePlayVideoRenderListener + " context:" + paramObject);
     if (paramObject != null) {
-      if (Build.VERSION.SDK_INT >= 17)
+      if (TXCBuild.VersionInt() >= 17)
       {
         if ((!(paramObject instanceof javax.microedition.khronos.egl.EGLContext)) && (!(paramObject instanceof android.opengl.EGLContext)))
         {
           TXCLog.w("TXLivePlayer", "setVideoRenderListener error when glContext error ".concat(String.valueOf(paramObject)));
-          AppMethodBeat.o(219369);
+          AppMethodBeat.o(218783);
           return -1;
         }
       }
       else if (!(paramObject instanceof javax.microedition.khronos.egl.EGLContext))
       {
         TXCLog.w("TXLivePlayer", "setVideoRenderListener error when glContext error ".concat(String.valueOf(paramObject)));
-        AppMethodBeat.o(219369);
+        AppMethodBeat.o(218783);
         return -1;
       }
     }
@@ -336,7 +339,7 @@ public class a
     }
     for (;;)
     {
-      AppMethodBeat.o(219369);
+      AppMethodBeat.o(218783);
       return 0;
       label166:
       this.t.a(null, com.tencent.liteav.basic.b.b.a, null);
@@ -349,6 +352,12 @@ public class a
     c("[SwitchStream]switchStream url:".concat(String.valueOf(paramString)));
     if (this.t != null)
     {
+      if ((this.J != null) && (!TextUtils.isEmpty(this.J.a())) && (paramString.equals(this.J.a())))
+      {
+        i1 = this.t.a(paramString, this.J);
+        AppMethodBeat.o(14079);
+        return i1;
+      }
       int i1 = this.t.a(paramString);
       AppMethodBeat.o(14079);
       return i1;
@@ -360,6 +369,8 @@ public class a
   public int a(String paramString, int paramInt)
   {
     AppMethodBeat.i(14066);
+    TXCCommonUtil.sStartTime = System.currentTimeMillis();
+    TXCLog.i("TXLivePlayer", "[statistics firstFrame cost]. startPlay ".concat(String.valueOf(this)));
     if (TextUtils.isEmpty(paramString))
     {
       TXCLog.e("TXLivePlayer", "start play error when url is empty ".concat(String.valueOf(this)));
@@ -391,7 +402,7 @@ public class a
     TXCDRApi.initCrashReport(this.r);
     TXCLog.i("TXLivePlayer", "===========================================================================================================================================================");
     TXCLog.i("TXLivePlayer", "===========================================================================================================================================================");
-    TXCLog.i("TXLivePlayer", "=====  StartPlay url = " + paramString + " playType = " + paramInt + " DeviceName = " + com.tencent.liteav.basic.util.h.c() + " SDKVersion = " + TXCCommonUtil.getSDKID() + " , " + TXCCommonUtil.getSDKVersionStr() + "    ======");
+    TXCLog.i("TXLivePlayer", "=====  StartPlay url = " + paramString + " playType = " + paramInt + " DeviceName = " + TXCBuild.Model() + " SDKVersion = " + TXCCommonUtil.getSDKID() + " , " + TXCCommonUtil.getSDKVersionStr() + "    ======");
     TXCLog.i("TXLivePlayer", "===========================================================================================================================================================");
     TXCLog.i("TXLivePlayer", "===========================================================================================================================================================");
     if ((this.B == -1) || (this.B != paramInt)) {
@@ -420,33 +431,38 @@ public class a
       this.t.a(this.b);
       this.t.a(this.c, this.d);
     }
-    this.t.a(this.k, paramInt);
-    this.t.b(this.l);
-    this.t.c(this.m);
-    this.t.a(this.v);
-    this.t.b(this.j);
-    this.t.a(this.i);
-    this.t.a(this.K);
-    if (this.n != null) {
-      a(this.n);
-    }
-    if (this.q != null) {
-      a(this.q, this.p);
-    }
     long l1;
-    if (this.t.e())
+    if ((this.J != null) && (TXCCommonUtil.equalURL(this.J.a(), this.k)))
     {
-      this.A = this.k;
-      if (this.x == null) {
-        break label696;
+      this.t.a(this.k, paramInt, this.J);
+      this.t.b(this.l);
+      this.t.c(this.m);
+      this.t.a(this.v);
+      this.t.b(this.j);
+      this.t.a(this.i);
+      this.t.a(this.L);
+      if (this.n != null) {
+        a(this.n);
       }
-      l1 = this.x.a();
-      this.z = l1;
-      if (this.z > 0L) {
-        this.t.f();
+      if (this.q != null) {
+        a(this.q, this.p);
       }
-    }
-    if (this.I == 0) {
+      if (this.t.e())
+      {
+        this.A = this.k;
+        if (this.x == null) {
+          break label762;
+        }
+        l1 = this.x.a();
+        label693:
+        this.z = l1;
+        if (this.z > 0L) {
+          this.t.f();
+        }
+      }
+      if (this.I != 0) {
+        break label767;
+      }
       TXCDRApi.txReportDAU(this.r.getApplicationContext(), com.tencent.liteav.basic.datareport.a.bu);
     }
     for (;;)
@@ -454,9 +470,12 @@ public class a
       f();
       AppMethodBeat.o(14066);
       return 0;
-      label696:
-      l1 = 0L;
+      this.t.a(this.k, paramInt);
       break;
+      label762:
+      l1 = 0L;
+      break label693;
+      label767:
       TXCDRApi.txReportDAU(this.r.getApplicationContext(), com.tencent.liteav.basic.datareport.a.bH);
     }
   }
@@ -477,6 +496,7 @@ public class a
     this.I = 0;
     this.x = null;
     this.y = false;
+    this.J = null;
     AppMethodBeat.o(14067);
     return 0;
   }
@@ -552,7 +572,7 @@ public class a
         localObject = this.t.i();
         paramTXLivePlayConfig = (TXLivePlayConfig)localObject;
         if (localObject == null) {
-          paramTXLivePlayConfig = new com.tencent.liteav.h();
+          paramTXLivePlayConfig = new h();
         }
         this.H = ((int)(this.f.mMinAutoAdjustCacheTime * 1000.0F));
         paramTXLivePlayConfig.a = this.f.mCacheTime;
@@ -583,7 +603,7 @@ public class a
   {
     AppMethodBeat.i(14090);
     c("setAudioRawDataListener listener:".concat(String.valueOf(paramITXAudioRawDataListener)));
-    this.K = paramITXAudioRawDataListener;
+    this.L = paramITXAudioRawDataListener;
     if (this.t != null) {
       this.t.a(paramITXAudioRawDataListener);
     }
@@ -639,10 +659,10 @@ public class a
       {
         public void onRenderVideoFrame(String paramAnonymousString, int paramAnonymousInt, TXSVideoFrame paramAnonymousTXSVideoFrame)
         {
-          AppMethodBeat.i(218888);
+          AppMethodBeat.i(218478);
           if ((paramAnonymousTXSVideoFrame == null) || (paramAnonymousTXSVideoFrame.width <= 0) || (paramAnonymousTXSVideoFrame.height <= 0))
           {
-            AppMethodBeat.o(218888);
+            AppMethodBeat.o(218478);
             return;
           }
           paramAnonymousString = a.f(a.this);
@@ -655,12 +675,12 @@ public class a
               paramAnonymousTXSVideoFrame.loadYUVArray(paramAnonymousString);
               localITXVideoRawDataListener.onVideoRawDataAvailable(paramAnonymousString, paramAnonymousTXSVideoFrame.width, paramAnonymousTXSVideoFrame.height, (int)paramAnonymousTXSVideoFrame.pts);
               paramAnonymousTXSVideoFrame.release();
-              AppMethodBeat.o(218888);
+              AppMethodBeat.o(218478);
               return;
             }
             TXCLog.e("TXLivePlayer", "raw data buffer length is too large");
           }
-          AppMethodBeat.o(218888);
+          AppMethodBeat.o(218478);
         }
       }, com.tencent.liteav.basic.b.b.b, null);
       AppMethodBeat.o(14089);
@@ -742,12 +762,12 @@ public class a
       {
         public void a(long paramAnonymousLong)
         {
-          AppMethodBeat.i(219203);
+          AppMethodBeat.i(218476);
           a.a(a.this, paramAnonymousLong);
           if (a.a(a.this) != null) {
             a.a(a.this).f();
           }
-          AppMethodBeat.o(219203);
+          AppMethodBeat.o(218476);
         }
       });
       AppMethodBeat.o(14091);
@@ -786,79 +806,139 @@ public class a
     AppMethodBeat.i(14081);
     c("callExperimentalAPI json:".concat(String.valueOf(paramString)));
     String str;
-    try
+    int i1;
+    for (;;)
     {
-      Object localObject = new JSONObject(paramString);
-      if (!((JSONObject)localObject).has("api"))
+      try
       {
-        TXCLog.e("TXLivePlayer", "callExperimentalAPI[lack api or illegal type]: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(14081);
-        return;
-      }
-      str = ((JSONObject)localObject).getString("api");
-      JSONObject localJSONObject = null;
-      if (((JSONObject)localObject).has("params")) {
-        localJSONObject = ((JSONObject)localObject).getJSONObject("params");
-      }
-      if (str.equals("muteRemoteAudioInSpeaker"))
-      {
-        if (localJSONObject == null)
+        JSONObject localJSONObject = new JSONObject(paramString);
+        if (!localJSONObject.has("api"))
+        {
+          TXCLog.e("TXLivePlayer", "callExperimentalAPI[lack api or illegal type]: ".concat(String.valueOf(paramString)));
+          AppMethodBeat.o(14081);
+          return;
+        }
+        str = localJSONObject.getString("api");
+        Object localObject = null;
+        if (localJSONObject.has("params")) {
+          localObject = localJSONObject.getJSONObject("params");
+        }
+        if (!str.equals("muteRemoteAudioInSpeaker")) {
+          break;
+        }
+        if (localObject == null)
         {
           TXCLog.e("TXLivePlayer", "muteRemoteAudioInSpeaker[lack parameter]");
           AppMethodBeat.o(14081);
           return;
         }
-        if (!localJSONObject.has("enable"))
+        if (!((JSONObject)localObject).has("enable"))
         {
           TXCLog.e("TXLivePlayer", "muteRemoteAudioInSpeaker[lack parameter]: enable");
           AppMethodBeat.o(14081);
           return;
         }
-        int i1 = localJSONObject.getInt("enable");
+        i1 = ((JSONObject)localObject).getInt("enable");
         if (this.t != null)
         {
           localObject = this.t;
-          if (i1 != 1) {
-            break label224;
+          if (i1 == 1) {
+            ((n)localObject).c(bool);
           }
-          ((n)localObject).c(bool);
+        }
+        else
+        {
+          AppMethodBeat.o(14081);
+          return;
         }
       }
-      for (;;)
+      catch (Exception localException)
       {
-        if (!str.equals("setInterfaceType")) {
-          break label321;
-        }
-        if (localJSONObject != null) {
-          break label274;
-        }
+        TXCLog.e("TXLivePlayer", "callExperimentalAPI[failed]: ".concat(String.valueOf(paramString)));
+        AppMethodBeat.o(14081);
+        return;
+      }
+      bool = false;
+    }
+    if (str.equals("setInterfaceType"))
+    {
+      if (localException == null)
+      {
         TXCLog.e("TXLivePlayer", "setInterfaceType[lack parameter]");
         AppMethodBeat.o(14081);
         return;
-        label224:
-        bool = false;
-        break;
-        TXCLog.e("TXLivePlayer", "callExperimentalAPI[illegal api]: ".concat(String.valueOf(str)));
       }
-      if (localException.has("type")) {
-        break label301;
+      if (!localException.has("type"))
+      {
+        TXCLog.e("TXLivePlayer", "setInterfaceType[lack parameter]: type");
+        AppMethodBeat.o(14081);
+        return;
       }
-    }
-    catch (Exception localException)
-    {
-      TXCLog.e("TXLivePlayer", "callExperimentalAPI[failed]: ".concat(String.valueOf(paramString)));
+      this.I = localException.optInt("type", 0);
       AppMethodBeat.o(14081);
       return;
     }
-    label274:
-    TXCLog.e("TXLivePlayer", "setInterfaceType[lack parameter]: type");
-    AppMethodBeat.o(14081);
-    return;
-    label301:
-    this.I = localException.optInt("type", 0);
-    AppMethodBeat.o(14081);
-    return;
-    label321:
+    if (str.equals("setCustomRenderMode"))
+    {
+      if (localException == null)
+      {
+        TXCLog.e("TXLivePlayer", "setCustomRenderMode[lack parameter]");
+        AppMethodBeat.o(14081);
+        return;
+      }
+      if (!localException.has("customRenderMode"))
+      {
+        TXCLog.e("TXLivePlayer", "setCustomRenderMode[lack parameter]: customRenderMode");
+        AppMethodBeat.o(14081);
+        return;
+      }
+      i1 = localException.getInt("customRenderMode");
+      if ((this.t != null) && ((this.t instanceof f))) {
+        ((f)this.t).e(i1);
+      }
+      AppMethodBeat.o(14081);
+      return;
+    }
+    if (str.equals("setEncryptionParams"))
+    {
+      if (localException == null)
+      {
+        TXCLog.e("TXLivePlayer", "setEncryptionParams[lack parameter]");
+        AppMethodBeat.o(14081);
+        return;
+      }
+      if (!localException.has("url"))
+      {
+        TXCLog.e("TXLivePlayer", "setEncryptionParams[lack parameter]: url");
+        AppMethodBeat.o(14081);
+        return;
+      }
+      if (!localException.has("encMode"))
+      {
+        TXCLog.e("TXLivePlayer", "setEncryptionParams[lack parameter]: encMode");
+        AppMethodBeat.o(14081);
+        return;
+      }
+      if (!localException.has("encKey"))
+      {
+        TXCLog.e("TXLivePlayer", "setEncryptionParams[lack parameter]: encKey");
+        AppMethodBeat.o(14081);
+        return;
+      }
+      if (!localException.has("encIV"))
+      {
+        TXCLog.e("TXLivePlayer", "setEncryptionParams[lack parameter]: encIV");
+        AppMethodBeat.o(14081);
+        return;
+      }
+      this.J = new e();
+      this.J.a(localException.getString("url"));
+      this.J.a(localException.getInt("encMode"));
+      this.J.b(localException.getString("encKey"));
+      this.J.c(localException.getString("encIV"));
+      AppMethodBeat.o(14081);
+      return;
+    }
     TXCLog.e("TXLivePlayer", "callExperimentalAPI[illegal api]: ".concat(String.valueOf(str)));
     AppMethodBeat.o(14081);
   }
@@ -869,15 +949,15 @@ public class a
     c("enableHardwareDecode enable:".concat(String.valueOf(paramBoolean)));
     if (paramBoolean)
     {
-      if (Build.VERSION.SDK_INT < 18)
+      if (TXCBuild.VersionInt() < 18)
       {
-        TXCLog.e("HardwareDecode", "enableHardwareDecode failed, android system build.version = " + Build.VERSION.SDK_INT + ", the minimum build.version should be 18(android 4.3 or later)");
+        TXCLog.e("HardwareDecode", "enableHardwareDecode failed, android system build.version = " + TXCBuild.VersionInt() + ", the minimum build.version should be 18(android 4.3 or later)");
         AppMethodBeat.o(14075);
         return false;
       }
       if (i())
       {
-        TXCLog.e("HardwareDecode", "enableHardwareDecode failed, MANUFACTURER = " + Build.MANUFACTURER + ", MODEL" + Build.MODEL);
+        TXCLog.e("HardwareDecode", "enableHardwareDecode failed, MANUFACTURER = " + TXCBuild.Manufacturer() + ", MODEL" + TXCBuild.Model());
         AppMethodBeat.o(14075);
         return false;
       }
@@ -885,10 +965,10 @@ public class a
     this.g = paramBoolean;
     if (this.t != null)
     {
-      com.tencent.liteav.h localh2 = this.t.i();
-      com.tencent.liteav.h localh1 = localh2;
+      h localh2 = this.t.i();
+      h localh1 = localh2;
       if (localh2 == null) {
-        localh1 = new com.tencent.liteav.h();
+        localh1 = new h();
       }
       localh1.h = this.g;
       this.t.a(localh1);
@@ -1028,9 +1108,9 @@ public class a
   {
     AppMethodBeat.i(14085);
     c("startRecord type:".concat(String.valueOf(paramInt)));
-    if (Build.VERSION.SDK_INT < 18)
+    if (TXCBuild.VersionInt() < 18)
     {
-      TXCLog.e("TXLivePlayer", "API levl is too low (record need 18, current is" + Build.VERSION.SDK_INT + ")");
+      TXCLog.e("TXLivePlayer", "API levl is too low (record need 18, current is" + TXCBuild.VersionInt() + ")");
       AppMethodBeat.o(14085);
       return -3;
     }
@@ -1090,7 +1170,7 @@ public class a
         AppMethodBeat.o(14092);
         return;
       }
-      this.t.e(paramInt);
+      this.t.f(paramInt);
     }
     AppMethodBeat.o(14092);
   }
@@ -1211,6 +1291,8 @@ public class a
       i1 = 2013;
       continue;
       i1 = 2031;
+      continue;
+      i1 = 2032;
     }
   }
   
@@ -1245,7 +1327,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.a
  * JD-Core Version:    0.7.0.1
  */

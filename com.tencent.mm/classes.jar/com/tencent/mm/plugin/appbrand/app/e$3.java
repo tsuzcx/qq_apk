@@ -10,14 +10,14 @@ final class e$3
   
   public final void run()
   {
-    AppMethodBeat.i(267780);
-    this.nCg.invoke("MMHandlerThread.postToMainThread");
-    AppMethodBeat.o(267780);
+    AppMethodBeat.i(317716);
+    this.qBu.invoke("MMHandlerThread.postToMainThread");
+    AppMethodBeat.o(317716);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.e.3
  * JD-Core Version:    0.7.0.1
  */

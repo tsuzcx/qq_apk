@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left|top" android:orientation="vertical" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/bd" android:textColor="@color/x0" android:id="@id/ijq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:text="@string/jp_" />
-</LinearLayout>
+    <ImageView android:id="@id/edd" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="13.0sp" android:textColor="#ff888888" android:ellipsize="end" android:id="@id/edr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="14.0dip" android:text="由**小程序提供" android:layout_toRightOf="@id/edd" />
+    <TextView android:textSize="13.0sp" android:textColor="#ff576b95" android:id="@id/eda" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="调试" android:layout_toLeftOf="@id/edo" />
+    <TextView android:textSize="13.0sp" android:textColor="#ff576b95" android:id="@id/edo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/im_" android:layout_alignParentRight="true" />
+</RelativeLayout>

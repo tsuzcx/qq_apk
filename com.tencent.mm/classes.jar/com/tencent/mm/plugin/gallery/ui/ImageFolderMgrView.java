@@ -22,73 +22,74 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.gallery.b.c;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.AlbumItem;
-import com.tencent.mm.plugin.gallery.model.GalleryItem.PrivateAlbumItem;
+import com.tencent.mm.plugin.gallery.model.PrivateAlbumItem;
 import com.tencent.mm.plugin.gallery.model.e;
 import com.tencent.mm.plugin.gallery.model.g;
-import com.tencent.mm.plugin.gallery.model.i.a;
-import com.tencent.mm.plugin.gallery.model.o;
-import com.tencent.mm.plugin.gallery.model.s.a;
-import com.tencent.mm.plugin.gallery.model.s.b;
+import com.tencent.mm.plugin.gallery.model.l.a;
+import com.tencent.mm.plugin.gallery.model.q;
+import com.tencent.mm.plugin.gallery.model.t.a;
+import com.tencent.mm.plugin.gallery.model.t.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ImageFolderMgrView
   extends LinearLayout
-  implements AdapterView.OnItemClickListener, i.a
+  implements AdapterView.OnItemClickListener, l.a
 {
-  private a Ccm;
-  FrameLayout Ccn;
-  private View Cco;
-  private ListView Ccp;
-  b Ccq;
-  boolean Ccr;
-  i.a Ccs;
-  private LinkedList<GalleryItem.PrivateAlbumItem> Cct;
-  private GalleryItem.PrivateAlbumItem Ccu;
-  b Ccv;
-  boolean py;
+  private a HOo;
+  FrameLayout HOp;
+  private View HOq;
+  private ListView HOr;
+  b HOs;
+  boolean HOt;
+  l.a HOu;
+  private LinkedList<PrivateAlbumItem> HOv;
+  private PrivateAlbumItem HOw;
+  c HOx;
+  ImageFolderMgrView.b HOy;
+  boolean qv;
   
   public ImageFolderMgrView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(111536);
-    this.Ccm = null;
-    this.py = false;
-    this.Ccr = false;
-    this.Cct = new LinkedList();
-    this.Ccu = null;
+    this.HOo = null;
+    this.qv = false;
+    this.HOt = false;
+    this.HOv = new LinkedList();
+    this.HOw = null;
     setOrientation(1);
-    this.Ccn = new FrameLayout(getContext());
+    this.HOp = new FrameLayout(getContext());
     paramContext = new LinearLayout.LayoutParams(-1, -1);
-    this.Ccn.setVisibility(8);
-    addView(this.Ccn, paramContext);
-    this.Cco = new View(getContext());
-    this.Cco.setBackgroundColor(-872415232);
-    this.Cco.setOnClickListener(new ImageFolderMgrView.3(this));
+    this.HOp.setVisibility(8);
+    addView(this.HOp, paramContext);
+    this.HOq = new View(getContext());
+    this.HOq.setBackgroundColor(-872415232);
+    this.HOq.setOnClickListener(new ImageFolderMgrView.3(this));
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    this.Ccn.addView(this.Cco, paramContext);
+    this.HOp.addView(this.HOq, paramContext);
     paramContext = new RoundedCornerFrameLayout(getContext());
-    paramContext.v(0.0F, 0.0F, aw.fromDPToPix(getContext(), 8), aw.fromDPToPix(getContext(), 8));
+    paramContext.A(0.0F, 0.0F, bd.fromDPToPix(getContext(), 8), bd.fromDPToPix(getContext(), 8));
     paramAttributeSet = new FrameLayout.LayoutParams(-1, -2);
     paramAttributeSet.bottomMargin = getResources().getDimensionPixelSize(b.c.gallery_bottom_margin);
     paramAttributeSet.gravity = 48;
-    this.Ccn.addView(paramContext, paramAttributeSet);
-    this.Ccp = new ListView(getContext());
-    this.Ccp.setCacheColorHint(0);
-    this.Ccp.setOnItemClickListener(this);
+    this.HOp.addView(paramContext, paramAttributeSet);
+    this.HOr = new ListView(getContext());
+    this.HOr.setCacheColorHint(0);
+    this.HOr.setOnItemClickListener(this);
     paramAttributeSet = new RelativeLayout.LayoutParams(-1, -2);
-    paramContext.addView(this.Ccp, paramAttributeSet);
-    this.Ccq = new b(getContext());
-    this.Ccp.setAdapter(this.Ccq);
-    this.Ccs = new i.a()
+    paramContext.addView(this.HOr, paramAttributeSet);
+    this.HOs = new b(getContext());
+    this.HOr.setAdapter(this.HOs);
+    this.HOu = new l.a()
     {
-      public final void be(LinkedList<GalleryItem.AlbumItem> paramAnonymousLinkedList)
+      public final void bm(LinkedList<GalleryItem.AlbumItem> paramAnonymousLinkedList)
       {
         AppMethodBeat.i(173780);
         Object localObject;
@@ -96,7 +97,7 @@ public class ImageFolderMgrView
         {
           localObject = Integer.valueOf(paramAnonymousLinkedList.size());
           Log.i("MicroMsg.ImageFolderMgrView", "onGetPrivateAlbum, %s.", new Object[] { localObject });
-          e.etl().c(ImageFolderMgrView.d(ImageFolderMgrView.this));
+          e.fAn().c(ImageFolderMgrView.c(ImageFolderMgrView.this));
           if ((paramAnonymousLinkedList != null) && (paramAnonymousLinkedList.size() > 0)) {
             paramAnonymousLinkedList = paramAnonymousLinkedList.iterator();
           }
@@ -110,37 +111,37 @@ public class ImageFolderMgrView
               break label154;
             }
             localObject = (GalleryItem.AlbumItem)paramAnonymousLinkedList.next();
-            if ((localObject instanceof GalleryItem.PrivateAlbumItem))
+            if ((localObject instanceof PrivateAlbumItem))
             {
-              localObject = (GalleryItem.PrivateAlbumItem)localObject;
-              s.b localb = ((GalleryItem.PrivateAlbumItem)localObject).BVu.BWd;
+              localObject = (PrivateAlbumItem)localObject;
+              t.b localb = ((PrivateAlbumItem)localObject).HIp.HIB;
               if (localb == null) {}
-              for (boolean bool = false;; bool = localb.BWg)
+              for (boolean bool = false;; bool = localb.HIE)
               {
                 if (!bool) {
                   break label139;
                 }
-                ImageFolderMgrView.a(ImageFolderMgrView.this, (GalleryItem.PrivateAlbumItem)localObject);
+                ImageFolderMgrView.a(ImageFolderMgrView.this, (PrivateAlbumItem)localObject);
                 break label61;
                 localObject = "res is null.";
                 break;
               }
               label139:
-              ImageFolderMgrView.e(ImageFolderMgrView.this).add(localObject);
+              ImageFolderMgrView.d(ImageFolderMgrView.this).add(localObject);
             }
           }
           label154:
-          Log.i("MicroMsg.ImageFolderMgrView", "filter res: %s.", new Object[] { Integer.valueOf(ImageFolderMgrView.e(ImageFolderMgrView.this).size()) });
-          if ((!ImageFolderMgrView.this.isInLayout()) && ((ImageFolderMgrView.f(ImageFolderMgrView.this) != null) || (ImageFolderMgrView.e(ImageFolderMgrView.this).size() > 0))) {
-            e.etm().postToMainThread(new Runnable()
+          Log.i("MicroMsg.ImageFolderMgrView", "filter res: %s.", new Object[] { Integer.valueOf(ImageFolderMgrView.d(ImageFolderMgrView.this).size()) });
+          if ((!ImageFolderMgrView.this.isInLayout()) && ((ImageFolderMgrView.e(ImageFolderMgrView.this) != null) || (ImageFolderMgrView.d(ImageFolderMgrView.this).size() > 0))) {
+            e.fAo().postToMainThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(173779);
-                ImageFolderMgrView.g(ImageFolderMgrView.this).a(ImageFolderMgrView.f(ImageFolderMgrView.this), ImageFolderMgrView.e(ImageFolderMgrView.this));
+                ImageFolderMgrView.f(ImageFolderMgrView.this).a(ImageFolderMgrView.e(ImageFolderMgrView.this), ImageFolderMgrView.d(ImageFolderMgrView.this));
                 ImageFolderMgrView.a(ImageFolderMgrView.this, null);
-                ImageFolderMgrView.e(ImageFolderMgrView.this).clear();
-                ImageFolderMgrView.g(ImageFolderMgrView.this).notifyDataSetChanged();
+                ImageFolderMgrView.d(ImageFolderMgrView.this).clear();
+                ImageFolderMgrView.f(ImageFolderMgrView.this).notifyDataSetChanged();
                 AppMethodBeat.o(173779);
               }
             });
@@ -155,17 +156,17 @@ public class ImageFolderMgrView
       {
         AppMethodBeat.i(179469);
         Log.i("MicroMsg.ImageFolderMgrView", "onPreDraw.");
-        if ((ImageFolderMgrView.f(ImageFolderMgrView.this) != null) || (ImageFolderMgrView.e(ImageFolderMgrView.this).size() > 0))
+        if ((ImageFolderMgrView.e(ImageFolderMgrView.this) != null) || (ImageFolderMgrView.d(ImageFolderMgrView.this).size() > 0))
         {
-          e.etm().postToMainThread(new Runnable()
+          e.fAo().postToMainThread(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(179468);
-              ImageFolderMgrView.g(ImageFolderMgrView.this).a(ImageFolderMgrView.f(ImageFolderMgrView.this), ImageFolderMgrView.e(ImageFolderMgrView.this));
+              ImageFolderMgrView.f(ImageFolderMgrView.this).a(ImageFolderMgrView.e(ImageFolderMgrView.this), ImageFolderMgrView.d(ImageFolderMgrView.this));
               ImageFolderMgrView.a(ImageFolderMgrView.this, null);
-              ImageFolderMgrView.e(ImageFolderMgrView.this).clear();
-              ImageFolderMgrView.g(ImageFolderMgrView.this).notifyDataSetChanged();
+              ImageFolderMgrView.d(ImageFolderMgrView.this).clear();
+              ImageFolderMgrView.f(ImageFolderMgrView.this).notifyDataSetChanged();
               AppMethodBeat.o(179468);
             }
           });
@@ -179,14 +180,14 @@ public class ImageFolderMgrView
     AppMethodBeat.o(111536);
   }
   
-  private void euI()
+  private void fBD()
   {
     AppMethodBeat.i(111539);
-    this.Ccr = true;
-    this.Ccn.setVisibility(0);
+    this.HOt = true;
+    this.HOp.setVisibility(0);
     Object localObject = new AlphaAnimation(0.0F, 1.0F);
     ((AlphaAnimation)localObject).setDuration(300L);
-    this.Cco.startAnimation((Animation)localObject);
+    this.HOq.startAnimation((Animation)localObject);
     localObject = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -1.0F, 1, 0.0F);
     ((TranslateAnimation)localObject).setDuration(300L);
     ((TranslateAnimation)localObject).setAnimationListener(new Animation.AnimationListener()
@@ -196,8 +197,8 @@ public class ImageFolderMgrView
         AppMethodBeat.i(111530);
         ImageFolderMgrView.a(ImageFolderMgrView.this, true);
         ImageFolderMgrView.a(ImageFolderMgrView.this);
-        if (ImageFolderMgrView.this.Ccv != null) {
-          ImageFolderMgrView.this.Ccv.rW(true);
+        if (ImageFolderMgrView.this.HOx != null) {
+          ImageFolderMgrView.this.HOx.vV(true);
         }
         AppMethodBeat.o(111530);
       }
@@ -206,14 +207,14 @@ public class ImageFolderMgrView
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.Ccp.startAnimation((Animation)localObject);
+    this.HOr.startAnimation((Animation)localObject);
     AppMethodBeat.o(111539);
   }
   
-  private void euJ()
+  private void fBE()
   {
     AppMethodBeat.i(111540);
-    this.Ccr = true;
+    this.HOt = true;
     Object localObject = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -1.0F);
     ((TranslateAnimation)localObject).setDuration(300L);
     ((TranslateAnimation)localObject).setAnimationListener(new Animation.AnimationListener()
@@ -224,8 +225,8 @@ public class ImageFolderMgrView
         ImageFolderMgrView.b(ImageFolderMgrView.this).setVisibility(8);
         ImageFolderMgrView.a(ImageFolderMgrView.this, false);
         ImageFolderMgrView.a(ImageFolderMgrView.this);
-        if (ImageFolderMgrView.this.Ccv != null) {
-          ImageFolderMgrView.this.Ccv.rW(false);
+        if (ImageFolderMgrView.this.HOx != null) {
+          ImageFolderMgrView.this.HOx.vV(false);
         }
         AppMethodBeat.o(111531);
       }
@@ -234,61 +235,60 @@ public class ImageFolderMgrView
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.Ccp.startAnimation((Animation)localObject);
+    this.HOr.startAnimation((Animation)localObject);
     localObject = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject).setFillAfter(true);
     ((AlphaAnimation)localObject).setDuration(300L);
-    this.Cco.startAnimation((Animation)localObject);
+    this.HOq.startAnimation((Animation)localObject);
     AppMethodBeat.o(111540);
   }
   
-  private void rY(boolean paramBoolean)
+  private void vX(boolean paramBoolean)
   {
     AppMethodBeat.i(111538);
-    if (this.py == paramBoolean)
+    if (this.qv == paramBoolean)
     {
-      Log.d("MicroMsg.ImageFolderMgrView", "want to expand, but same status, expanded %B", new Object[] { Boolean.valueOf(this.py) });
+      Log.d("MicroMsg.ImageFolderMgrView", "want to expand, but same status, expanded %B", new Object[] { Boolean.valueOf(this.qv) });
       AppMethodBeat.o(111538);
       return;
     }
-    if (this.Ccr)
+    if (this.HOt)
     {
       Log.d("MicroMsg.ImageFolderMgrView", "want to expand[%B], but now in animation", new Object[] { Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(111538);
       return;
     }
-    if (this.py)
+    if (this.qv)
     {
-      euJ();
+      fBE();
       AppMethodBeat.o(111538);
       return;
     }
-    euI();
+    fBD();
     AppMethodBeat.o(111538);
   }
   
-  public final void be(LinkedList<GalleryItem.AlbumItem> paramLinkedList)
+  public final void bm(LinkedList<GalleryItem.AlbumItem> paramLinkedList)
   {
     AppMethodBeat.i(111541);
     Log.i("MicroMsg.ImageFolderMgrView", "onQueryAlbumFinished, %s, size: %s.", new Object[] { this, Integer.valueOf(paramLinkedList.size()) });
-    e.etl().b(this);
+    e.fAn().b(this);
     final LinkedList localLinkedList = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
       GalleryItem.AlbumItem localAlbumItem = (GalleryItem.AlbumItem)paramLinkedList.next();
-      if (u.agG(localAlbumItem.aZe())) {
+      if (y.ZC(localAlbumItem.bud())) {
         localLinkedList.add(localAlbumItem);
       }
     }
-    e.etm().postToMainThread(new Runnable()
+    e.fAo().postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(179470);
-        ImageFolderMgrView.g(ImageFolderMgrView.this).CbD = localLinkedList;
-        ImageFolderMgrView.g(ImageFolderMgrView.this).notifyDataSetChanged();
-        ImageFolderMgrView.g(ImageFolderMgrView.this).euE();
+        ImageFolderMgrView.f(ImageFolderMgrView.this).HNF = localLinkedList;
+        ImageFolderMgrView.f(ImageFolderMgrView.this).notifyDataSetChanged();
         AppMethodBeat.o(179470);
       }
       
@@ -303,14 +303,14 @@ public class ImageFolderMgrView
     AppMethodBeat.o(111541);
   }
   
-  public final void euH()
+  public final void fBC()
   {
     AppMethodBeat.i(111537);
-    if (!this.py) {}
+    if (!this.qv) {}
     for (boolean bool = true;; bool = false)
     {
-      rY(bool);
-      this.Ccq.euE();
+      vX(bool);
+      this.HOs.fBA();
       AppMethodBeat.o(111537);
       return;
     }
@@ -318,19 +318,19 @@ public class ImageFolderMgrView
   
   public String getSelectedAlbumName()
   {
-    return this.Ccq.CbE;
+    return this.HOs.HNG;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(111542);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramAdapterView);
-    localb.bn(paramView);
-    localb.sg(paramInt);
-    localb.Fs(paramLong);
-    a.c("com/tencent/mm/plugin/gallery/ui/ImageFolderMgrView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
-    paramAdapterView = this.Ccq.Tb(paramInt);
+    localb.cH(paramAdapterView);
+    localb.cH(paramView);
+    localb.sc(paramInt);
+    localb.hB(paramLong);
+    a.c("com/tencent/mm/plugin/gallery/ui/ImageFolderMgrView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
+    paramAdapterView = this.HOs.WJ(paramInt);
     if (paramAdapterView == null)
     {
       Log.d("MicroMsg.ImageFolderMgrView", "get folder failed:".concat(String.valueOf(paramInt)));
@@ -338,12 +338,12 @@ public class ImageFolderMgrView
       AppMethodBeat.o(111542);
       return;
     }
-    this.Cco.performClick();
-    if (this.Ccm != null) {
-      this.Ccm.c(paramAdapterView);
+    vX(false);
+    if (this.HOo != null) {
+      this.HOo.b(paramAdapterView);
     }
-    this.Ccq.CbE = Util.nullAs(paramAdapterView.albumName, "");
-    this.Ccq.notifyDataSetChanged();
+    this.HOs.HNG = Util.nullAs(paramAdapterView.albumName, "");
+    this.HOs.notifyDataSetChanged();
     a.a(this, "com/tencent/mm/plugin/gallery/ui/ImageFolderMgrView", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
     AppMethodBeat.o(111542);
   }
@@ -351,44 +351,49 @@ public class ImageFolderMgrView
   public void setFavItemCount(int paramInt)
   {
     AppMethodBeat.i(111543);
-    this.Ccq.CbF = paramInt;
-    c localc = new c((byte)0);
-    localc.Cbn = new WeakReference(this.Ccq);
-    e.etm().postToMainThread(localc);
+    this.HOs.HNH = paramInt;
+    d locald = new d((byte)0);
+    locald.HNp = new WeakReference(this.HOs);
+    e.fAo().postToMainThread(locald);
     AppMethodBeat.o(111543);
+  }
+  
+  public void setFolderAlbumDialogDismiss(ImageFolderMgrView.b paramb)
+  {
+    this.HOy = paramb;
   }
   
   public void setListener(a parama)
   {
-    this.Ccm = parama;
+    this.HOo = parama;
   }
   
-  public void setOnFolderStateChanged(b paramb)
+  public void setOnFolderStateChanged(c paramc)
   {
-    this.Ccv = paramb;
+    this.HOx = paramc;
   }
   
   public static abstract interface a
   {
-    public abstract void c(GalleryItem.AlbumItem paramAlbumItem);
+    public abstract void b(GalleryItem.AlbumItem paramAlbumItem);
   }
   
-  public static abstract interface b
+  public static abstract interface c
   {
-    public abstract void rW(boolean paramBoolean);
+    public abstract void vV(boolean paramBoolean);
   }
   
-  static final class c
+  static final class d
     implements Runnable
   {
-    WeakReference<b> Cbn;
+    WeakReference<b> HNp;
     
     public final void run()
     {
       AppMethodBeat.i(111535);
-      if (this.Cbn != null)
+      if (this.HNp != null)
       {
-        b localb = (b)this.Cbn.get();
+        b localb = (b)this.HNp.get();
         if (localb != null) {
           localb.notifyDataSetChanged();
         }
@@ -399,7 +404,7 @@ public class ImageFolderMgrView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.ImageFolderMgrView
  * JD-Core Version:    0.7.0.1
  */

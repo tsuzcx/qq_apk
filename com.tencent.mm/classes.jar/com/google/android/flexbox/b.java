@@ -7,55 +7,57 @@ import java.util.List;
 
 public final class b
 {
-  int alU;
-  int apP;
-  int apQ;
-  int bsJ;
-  int bsK;
-  int bsL;
-  int bsM;
-  float bsN;
-  float bsO;
-  int bsP;
-  int bsQ;
-  List<Integer> bsR;
-  int bsS;
-  int iV;
-  int tF;
-  int tG;
+  int cau;
+  int cey;
+  int cez;
+  int dml;
+  int dmm;
+  int dmn;
+  int dmo;
+  float dmp;
+  float dmq;
+  int dmr;
+  int dms;
+  List<Integer> dmt;
+  int dmu;
+  boolean dmv;
+  boolean dmw;
+  int jQ;
+  int uE;
+  int uF;
   
   b()
   {
     AppMethodBeat.i(62214);
-    this.tF = 2147483647;
-    this.apP = 2147483647;
-    this.tG = -2147483648;
-    this.apQ = -2147483648;
-    this.bsR = new ArrayList();
+    this.uE = 2147483647;
+    this.cey = 2147483647;
+    this.uF = -2147483648;
+    this.cez = -2147483648;
+    this.dmt = new ArrayList();
     AppMethodBeat.o(62214);
+  }
+  
+  public final int Vl()
+  {
+    return this.cau - this.dmo;
   }
   
   final void k(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(62215);
     FlexItem localFlexItem = (FlexItem)paramView.getLayoutParams();
-    this.tF = Math.min(this.tF, paramView.getLeft() - localFlexItem.vJ() - paramInt1);
-    this.apP = Math.min(this.apP, paramView.getTop() - localFlexItem.vK() - paramInt2);
-    this.tG = Math.max(this.tG, paramView.getRight() + localFlexItem.vL() + paramInt3);
-    paramInt1 = this.apQ;
+    this.uE = Math.min(this.uE, paramView.getLeft() - localFlexItem.Vi() - paramInt1);
+    this.cey = Math.min(this.cey, paramView.getTop() - localFlexItem.Vj() - paramInt2);
+    this.uF = Math.max(this.uF, paramView.getRight() + localFlexItem.Vk() + paramInt3);
+    paramInt1 = this.cez;
     paramInt2 = paramView.getBottom();
-    this.apQ = Math.max(paramInt1, localFlexItem.getMarginBottom() + paramInt2 + paramInt4);
+    this.cez = Math.max(paramInt1, localFlexItem.getMarginBottom() + paramInt2 + paramInt4);
     AppMethodBeat.o(62215);
-  }
-  
-  public final int vM()
-  {
-    return this.alU - this.bsM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.flexbox.b
  * JD-Core Version:    0.7.0.1
  */

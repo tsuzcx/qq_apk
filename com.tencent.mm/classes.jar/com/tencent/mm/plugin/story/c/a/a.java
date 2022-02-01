@@ -2,28 +2,30 @@ package com.tencent.mm.plugin.story.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.story.api.f;
 import com.tencent.mm.plugin.story.api.f.a;
 import com.tencent.mm.plugin.story.api.o;
+import com.tencent.mm.plugin.story.c.b;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.HashSet;
 import java.util.regex.Pattern;
-import kotlin.a.j;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryBasicElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryBasicElementConfig$StoryBasicConfig;", "Lcom/tencent/mm/plugin/story/api/IStoryBasicConfig;", "()V", "canShowConfig", "", "type", "Lcom/tencent/mm/plugin/story/api/IStoryBasicConfig$SnsPositionType;", "enableBlurMouth", "enableFavorite", "enableFavoriteByStatus", "enableImage2Video", "enableLyrics", "enableMusic", "enableReply", "enableSnsNotify", "enableTips", "getDurationFromAlbum", "", "getEasterEggRegex", "", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "getFavExpiredTime", "", "initDefaultConfig", "loadConfig", "", "loadConfigByStatus", "StoryBasicConfig", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryBasicElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryBasicElementConfig$StoryBasicConfig;", "Lcom/tencent/mm/plugin/story/api/IStoryBasicConfig;", "()V", "canShowConfig", "", "type", "Lcom/tencent/mm/plugin/story/api/IStoryBasicConfig$SnsPositionType;", "enableBlurMouth", "enableFavorite", "enableFavoriteByStatus", "enableImage2Video", "enableLyrics", "enableMusic", "enableReply", "enableSnsNotify", "enableTips", "getDurationFromAlbum", "", "getEasterEggRegex", "", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "getFavExpiredTime", "", "()Ljava/lang/Long;", "initDefaultConfig", "loadConfig", "", "loadConfigByStatus", "StoryBasicConfig", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends com.tencent.mm.plugin.story.c.b<a>
+  extends b<a>
   implements f
 {
-  public static final a LEY;
+  public static final a SiJ;
   
   static
   {
     AppMethodBeat.i(118580);
-    LEY = new a();
+    SiJ = new a();
     AppMethodBeat.o(118580);
   }
   
@@ -32,7 +34,7 @@ public final class a
     try
     {
       AppMethodBeat.i(118577);
-      boolean bool = j.a((Iterable)((a)aUb()).LEZ, parama);
+      boolean bool = p.a((Iterable)((a)boF()).SiK, parama);
       AppMethodBeat.o(118577);
       return bool;
     }
@@ -43,7 +45,7 @@ public final class a
     }
   }
   
-  public final void aTZ()
+  public final void boD()
   {
     AppMethodBeat.i(118576);
     if (!o.isShowStoryCheck())
@@ -51,118 +53,110 @@ public final class a
       AppMethodBeat.o(118576);
       return;
     }
-    aUa();
+    boE();
     AppMethodBeat.o(118576);
   }
   
-  public final void aUa()
+  public final void boE()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(213156);
-    ((a)aTX()).LEZ.clear();
+    AppMethodBeat.i(367198);
+    ((a)boB()).SiK.clear();
     int i;
     a locala;
-    if (at("SnsTimelineLikeCommentStoryBubbleSwitch", 1) == 1)
+    if (aC("SnsTimelineLikeCommentStoryBubbleSwitch", 1) == 1)
     {
       i = 1;
       if (i != 0) {
-        ((a)aTX()).LEZ.add(f.a.LEx);
+        ((a)boB()).SiK.add(f.a.Sii);
       }
-      at("SnsTimelineJumpStorySwitch", 0);
-      com.tencent.mm.pluginsdk.ui.span.k.a.RrZ = Pattern.compile(((a)aTX()).regex);
-      locala = (a)aTX();
-      if (at("StoryEditVideoBgmSwitch", 1) != 1) {
+      aC("SnsTimelineJumpStorySwitch", 0);
+      com.tencent.mm.pluginsdk.ui.span.o.a.Yos = Pattern.compile(((a)boB()).SiL);
+      locala = (a)boB();
+      if (aC("StoryEditVideoBgmSwitch", 1) != 1) {
         break label365;
       }
       bool1 = true;
       label100:
-      locala.HKF = bool1;
-      i = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 1);
-      ((a)aTX()).HKG = (i * 100);
-      ((a)aTX()).HKH = (i * 100);
+      locala.NHu = bool1;
+      i = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 1);
+      ((a)boB()).NHv = (i * 100);
+      ((a)boB()).NHw = (i * 100);
       if ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!BuildInfo.DEBUG)) {
         break label370;
       }
-      ((a)aTX()).HKv = true;
-      ((a)aTX()).HKw = true;
-      ((a)aTX()).HKx = true;
-      ((a)aTX()).HKA = true;
-      ((a)aTX()).HKz = true;
-      locala = (a)aTX();
+      ((a)boB()).NHx = true;
+      ((a)boB()).NHy = true;
+      ((a)boB()).NHz = true;
+      ((a)boB()).NHC = true;
+      ((a)boB()).NHB = true;
+      locala = (a)boB();
       bool1 = true;
       label226:
-      locala.HKB = bool1;
-      ((a)aTX()).HKC = at("StoryFeaturedExpiredTime", 15552000);
-      ((a)aTX()).HKD = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvO, 10);
-      locala = (a)aTX();
-      if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvK, 1) != 1) {
-        break label625;
+      locala.NHD = bool1;
+      ((a)boB()).NHE = aC("StoryFeaturedExpiredTime", 15552000);
+      ((a)boB()).NHF = ((c)h.ax(c.class)).a(c.a.yIP, 10);
+      locala = (a)boB();
+      if (((c)h.ax(c.class)).a(c.a.yIL, 1) != 1) {
+        break label561;
       }
       bool1 = true;
       label310:
-      locala.HKy = bool1;
-      locala = (a)aTX();
-      if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvR, 1) != 1) {
-        break label630;
+      locala.NHA = bool1;
+      locala = (a)boB();
+      if (((c)h.ax(c.class)).a(c.a.yIS, 1) != 1) {
+        break label566;
       }
     }
-    label365:
-    label370:
-    label630:
+    label402:
+    label546:
+    label551:
+    label556:
+    label561:
+    label566:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      locala.ynt = bool1;
-      AppMethodBeat.o(213156);
+      locala.CWm = bool1;
+      AppMethodBeat.o(367198);
       return;
       i = 0;
       break;
+      label365:
       bool1 = false;
       break label100;
-      locala = (a)aTX();
-      if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvH, 0) == 1)
+      label370:
+      locala = (a)boB();
+      if (((c)h.ax(c.class)).a(c.a.yIK, 0) == 1)
       {
         bool1 = true;
-        locala.HKv = bool1;
-        locala = (a)aTX();
-        if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvI, 0) != 1) {
-          break label600;
+        locala.NHx = bool1;
+        ((a)boB()).NHy = true;
+        ((a)boB()).NHz = true;
+        locala = (a)boB();
+        if (((c)h.ax(c.class)).a(c.a.yIN, 1) != 1) {
+          break label546;
         }
         bool1 = true;
-        locala.HKw = bool1;
-        locala = (a)aTX();
-        if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvJ, 0) != 1) {
-          break label605;
-        }
-        bool1 = true;
-        locala.HKx = bool1;
-        locala = (a)aTX();
-        if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvM, 1) != 1) {
-          break label610;
-        }
-        bool1 = true;
-        locala.HKA = bool1;
-        locala = (a)aTX();
-        if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvL, 1) != 1) {
-          break label615;
+        label462:
+        locala.NHC = bool1;
+        locala = (a)boB();
+        if (((c)h.ax(c.class)).a(c.a.yIM, 1) != 1) {
+          break label551;
         }
       }
       for (bool1 = true;; bool1 = false)
       {
-        locala.HKz = bool1;
-        locala = (a)aTX();
-        if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvQ, 0) != 1) {
-          break label620;
+        locala.NHB = bool1;
+        locala = (a)boB();
+        if (((c)h.ax(c.class)).a(c.a.yIR, 0) != 1) {
+          break label556;
         }
         bool1 = true;
         break;
         bool1 = false;
         break label402;
         bool1 = false;
-        break label440;
-        bool1 = false;
-        break label478;
-        bool1 = false;
-        break label516;
+        break label462;
       }
       bool1 = false;
       break label226;
@@ -171,78 +165,85 @@ public final class a
     }
   }
   
-  public final boolean gbN()
-  {
-    AppMethodBeat.i(213159);
-    boolean bool = ((a)aUc()).HKv;
-    AppMethodBeat.o(213159);
-    return bool;
-  }
-  
-  public final boolean gbO()
-  {
-    AppMethodBeat.i(118579);
-    boolean bool = ((a)aUb()).HKx;
-    AppMethodBeat.o(118579);
-    return bool;
-  }
-  
-  public final boolean gbw()
+  public final boolean huP()
   {
     AppMethodBeat.i(118578);
-    boolean bool = ((a)aUb()).HKv;
+    boolean bool = ((a)boF()).NHx;
     AppMethodBeat.o(118578);
     return bool;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryBasicElementConfig$StoryBasicConfig;", "", "repeatMD5", "", "showMusicIcon", "", "albumThumbHeight", "albumThumbWidth", "(IZII)V", "getAlbumThumbHeight", "()I", "setAlbumThumbHeight", "(I)V", "getAlbumThumbWidth", "setAlbumThumbWidth", "durationFromAlbum", "getDurationFromAlbum", "setDurationFromAlbum", "enableBlurMouth", "getEnableBlurMouth", "()Z", "setEnableBlurMouth", "(Z)V", "enableFavorite", "getEnableFavorite", "setEnableFavorite", "enableImage2Video", "getEnableImage2Video", "setEnableImage2Video", "enableLyrics", "getEnableLyrics", "setEnableLyrics", "enableMusic", "getEnableMusic", "setEnableMusic", "enableReply", "getEnableReply", "setEnableReply", "enableSnsNotify", "getEnableSnsNotify", "setEnableSnsNotify", "enableTips", "getEnableTips", "setEnableTips", "favExpiredTime", "getFavExpiredTime", "setFavExpiredTime", "regex", "", "getRegex", "()Ljava/lang/String;", "getRepeatMD5", "setRepeatMD5", "getShowMusicIcon", "setShowMusicIcon", "showSet", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/story/api/IStoryBasicConfig$SnsPositionType;", "getShowSet", "()Ljava/util/HashSet;", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-story_release"})
+  public final boolean hve()
+  {
+    AppMethodBeat.i(367199);
+    boolean bool = ((a)boG()).NHx;
+    AppMethodBeat.o(367199);
+    return bool;
+  }
+  
+  public final boolean hvf()
+  {
+    AppMethodBeat.i(118579);
+    boolean bool = ((a)boF()).NHz;
+    AppMethodBeat.o(118579);
+    return bool;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryBasicElementConfig$StoryBasicConfig;", "", "repeatMD5", "", "showMusicIcon", "", "albumThumbHeight", "albumThumbWidth", "(IZII)V", "getAlbumThumbHeight", "()I", "setAlbumThumbHeight", "(I)V", "getAlbumThumbWidth", "setAlbumThumbWidth", "durationFromAlbum", "getDurationFromAlbum", "setDurationFromAlbum", "enableBlurMouth", "getEnableBlurMouth", "()Z", "setEnableBlurMouth", "(Z)V", "enableFavorite", "getEnableFavorite", "setEnableFavorite", "enableImage2Video", "getEnableImage2Video", "setEnableImage2Video", "enableLyrics", "getEnableLyrics", "setEnableLyrics", "enableMusic", "getEnableMusic", "setEnableMusic", "enableReply", "getEnableReply", "setEnableReply", "enableSnsNotify", "getEnableSnsNotify", "setEnableSnsNotify", "enableTips", "getEnableTips", "setEnableTips", "favExpiredTime", "getFavExpiredTime", "setFavExpiredTime", "regex", "", "getRegex", "()Ljava/lang/String;", "getRepeatMD5", "setRepeatMD5", "getShowMusicIcon", "setShowMusicIcon", "showSet", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/story/api/IStoryBasicConfig$SnsPositionType;", "getShowSet", "()Ljava/util/HashSet;", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    boolean HKA;
-    public boolean HKB;
-    int HKC;
-    int HKD;
-    private int HKE;
-    boolean HKF;
-    public int HKG;
-    public int HKH;
-    boolean HKv;
-    public boolean HKw;
-    boolean HKx;
-    boolean HKy;
-    boolean HKz;
-    final HashSet<f.a> LEZ;
-    final String regex;
-    boolean ynt;
+    boolean CWm;
+    boolean NHA;
+    boolean NHB;
+    boolean NHC;
+    public boolean NHD;
+    int NHE;
+    int NHF;
+    private int NHt;
+    boolean NHu;
+    public int NHv;
+    public int NHw;
+    boolean NHx;
+    public boolean NHy;
+    boolean NHz;
+    final HashSet<f.a> SiK;
+    final String SiL;
     
     private a()
     {
       AppMethodBeat.i(118573);
-      this.HKE = 2;
-      this.HKF = true;
-      this.HKG = 0;
-      this.HKH = 0;
-      this.LEZ = new HashSet();
-      this.regex = "#冒泡#";
-      this.ynt = true;
-      this.HKC = 15552000;
-      this.HKD = 10;
+      this.NHt = 2;
+      this.NHu = true;
+      this.NHv = 0;
+      this.NHw = 0;
+      this.SiK = new HashSet();
+      this.SiL = "#冒泡#";
+      this.CWm = true;
+      this.NHE = 15552000;
+      this.NHF = 10;
       AppMethodBeat.o(118573);
     }
     
     public final boolean equals(Object paramObject)
     {
-      if (this != paramObject)
+      if (this == paramObject) {}
+      do
       {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((this.HKE != paramObject.HKE) || (this.HKF != paramObject.HKF) || (this.HKG != paramObject.HKG) || (this.HKH != paramObject.HKH)) {}
-        }
-      }
-      else {
         return true;
-      }
+        if (!(paramObject instanceof a)) {
+          return false;
+        }
+        paramObject = (a)paramObject;
+        if (this.NHt != paramObject.NHt) {
+          return false;
+        }
+        if (this.NHu != paramObject.NHu) {
+          return false;
+        }
+        if (this.NHv != paramObject.NHv) {
+          return false;
+        }
+      } while (this.NHw == paramObject.NHw);
       return false;
     }
     
@@ -254,7 +255,7 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(118574);
-      String str = "StoryBasicConfig(repeatMD5=" + this.HKE + ", showMusicIcon=" + this.HKF + ", albumThumbHeight=" + this.HKG + ", albumThumbWidth=" + this.HKH + ")";
+      String str = "StoryBasicConfig(repeatMD5=" + this.NHt + ", showMusicIcon=" + this.NHu + ", albumThumbHeight=" + this.NHv + ", albumThumbWidth=" + this.NHw + ')';
       AppMethodBeat.o(118574);
       return str;
     }
@@ -262,7 +263,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.c.a.a
  * JD-Core Version:    0.7.0.1
  */

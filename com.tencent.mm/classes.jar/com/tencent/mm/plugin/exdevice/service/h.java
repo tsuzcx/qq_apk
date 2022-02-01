@@ -9,14 +9,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface h
   extends IInterface
 {
-  public abstract boolean Js(long paramLong);
-  
-  public abstract boolean Jt(long paramLong);
-  
-  public abstract boolean Ju(long paramLong);
-  
-  public abstract boolean Jv(long paramLong);
-  
   public abstract long a(p paramp);
   
   public abstract void a(n paramn);
@@ -39,11 +31,19 @@ public abstract interface h
   
   public abstract boolean c(int paramInt, j paramj);
   
-  public abstract long[] cZN();
-  
   public abstract boolean d(int paramInt, j paramj);
   
+  public abstract long[] dGg();
+  
   public abstract boolean e(int paramInt, j paramj);
+  
+  public abstract boolean lI(long paramLong);
+  
+  public abstract boolean lJ(long paramLong);
+  
+  public abstract boolean lK(long paramLong);
+  
+  public abstract boolean lL(long paramLong);
   
   public abstract void setChannelSessionKey(long paramLong, byte[] paramArrayOfByte);
   
@@ -56,12 +56,7 @@ public abstract interface h
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
     }
     
-    public static h cZR()
-    {
-      return a.vjr;
-    }
-    
-    public static h z(IBinder paramIBinder)
+    public static h E(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -71,6 +66,11 @@ public abstract interface h
         return (h)localIInterface;
       }
       return new a(paramIBinder);
+    }
+    
+    public static h dGk()
+    {
+      return a.yvp;
     }
     
     public IBinder asBinder()
@@ -108,7 +108,7 @@ public abstract interface h
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = b(paramParcel1.readInt(), j.a.B(paramParcel1.readStrongBinder()));
+        bool = b(paramParcel1.readInt(), j.a.G(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         if (bool) {}
         for (paramInt1 = 1;; paramInt1 = 0)
@@ -118,7 +118,7 @@ public abstract interface h
         }
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = c(paramParcel1.readInt(), j.a.B(paramParcel1.readStrongBinder()));
+        bool = c(paramParcel1.readInt(), j.a.G(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -128,13 +128,13 @@ public abstract interface h
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        paramParcel1 = cZN();
+        paramParcel1 = dGg();
         paramParcel2.writeNoException();
         paramParcel2.writeLongArray(paramParcel1);
         return true;
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = a(paramParcel1.readLong(), paramParcel1.readInt(), k.a.C(paramParcel1.readStrongBinder()));
+        bool = a(paramParcel1.readLong(), paramParcel1.readInt(), k.a.H(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         paramInt1 = j;
         if (bool) {
@@ -144,7 +144,7 @@ public abstract interface h
         return true;
       case 5: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = Js(paramParcel1.readLong());
+        bool = lI(paramParcel1.readLong());
         paramParcel2.writeNoException();
         paramInt1 = k;
         if (bool) {
@@ -154,7 +154,7 @@ public abstract interface h
         return true;
       case 6: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = Jt(paramParcel1.readLong());
+        bool = lJ(paramParcel1.readLong());
         paramParcel2.writeNoException();
         paramInt1 = m;
         if (bool) {
@@ -164,13 +164,13 @@ public abstract interface h
         return true;
       case 7: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        l = a(p.a.F(paramParcel1.readStrongBinder()));
+        l = a(p.a.K(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         paramParcel2.writeLong(l);
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = Ju(paramParcel1.readLong());
+        bool = lK(paramParcel1.readLong());
         paramParcel2.writeNoException();
         paramInt1 = n;
         if (bool) {
@@ -180,7 +180,7 @@ public abstract interface h
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = a(i.a.A(paramParcel1.readStrongBinder()));
+        bool = a(i.a.F(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         paramInt1 = i1;
         if (bool) {
@@ -190,7 +190,7 @@ public abstract interface h
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = b(i.a.A(paramParcel1.readStrongBinder()));
+        bool = b(i.a.F(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         paramInt1 = i2;
         if (bool) {
@@ -254,7 +254,7 @@ public abstract interface h
         }
       case 14: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = d(paramParcel1.readInt(), j.a.B(paramParcel1.readStrongBinder()));
+        bool = d(paramParcel1.readInt(), j.a.G(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         paramInt1 = i4;
         if (bool) {
@@ -264,7 +264,7 @@ public abstract interface h
         return true;
       case 15: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = e(paramParcel1.readInt(), j.a.B(paramParcel1.readStrongBinder()));
+        bool = e(paramParcel1.readInt(), j.a.G(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         paramInt1 = i5;
         if (bool) {
@@ -274,7 +274,7 @@ public abstract interface h
         return true;
       case 16: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = b(paramParcel1.readLong(), paramParcel1.readInt(), k.a.C(paramParcel1.readStrongBinder()));
+        bool = b(paramParcel1.readLong(), paramParcel1.readInt(), k.a.H(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         paramInt1 = i6;
         if (bool) {
@@ -284,7 +284,7 @@ public abstract interface h
         return true;
       case 17: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-        bool = Jv(paramParcel1.readLong());
+        bool = lL(paramParcel1.readLong());
         paramParcel2.writeNoException();
         paramInt1 = i7;
         if (bool) {
@@ -346,132 +346,12 @@ public abstract interface h
     static final class a
       implements h
     {
-      public static h vjr;
+      public static h yvp;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
       {
         this.mRemote = paramIBinder;
-      }
-      
-      public final boolean Js(long paramLong)
-      {
-        boolean bool = false;
-        AppMethodBeat.i(23664);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-          localParcel1.writeLong(paramLong);
-          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (h.a.cZR() != null))
-          {
-            bool = h.a.cZR().Js(paramLong);
-            return bool;
-          }
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(23664);
-        }
-      }
-      
-      public final boolean Jt(long paramLong)
-      {
-        boolean bool = false;
-        AppMethodBeat.i(23665);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-          localParcel1.writeLong(paramLong);
-          if ((!this.mRemote.transact(6, localParcel1, localParcel2, 0)) && (h.a.cZR() != null))
-          {
-            bool = h.a.cZR().Jt(paramLong);
-            return bool;
-          }
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(23665);
-        }
-      }
-      
-      public final boolean Ju(long paramLong)
-      {
-        boolean bool = false;
-        AppMethodBeat.i(23667);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-          localParcel1.writeLong(paramLong);
-          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (h.a.cZR() != null))
-          {
-            bool = h.a.cZR().Ju(paramLong);
-            return bool;
-          }
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(23667);
-        }
-      }
-      
-      public final boolean Jv(long paramLong)
-      {
-        boolean bool = false;
-        AppMethodBeat.i(23676);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-          localParcel1.writeLong(paramLong);
-          if ((!this.mRemote.transact(17, localParcel1, localParcel2, 0)) && (h.a.cZR() != null))
-          {
-            bool = h.a.cZR().Jv(paramLong);
-            return bool;
-          }
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(23676);
-        }
       }
       
       public final long a(p paramp)
@@ -486,10 +366,10 @@ public abstract interface h
           for (IBinder localIBinder = paramp.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(7, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(7, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            l = h.a.cZR().a(paramp);
+            l = h.a.dGk().a(paramp);
             return l;
           }
           localParcel2.readException();
@@ -516,10 +396,10 @@ public abstract interface h
           for (IBinder localIBinder = paramn.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(11, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(11, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            h.a.cZR().a(paramn);
+            h.a.dGk().a(paramn);
             return;
           }
           localParcel2.readException();
@@ -548,10 +428,10 @@ public abstract interface h
           for (IBinder localIBinder = paramk.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(4, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(4, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            bool = h.a.cZR().a(paramLong, paramInt, paramk);
+            bool = h.a.dGk().a(paramLong, paramInt, paramk);
             return bool;
           }
           localParcel2.readException();
@@ -582,10 +462,10 @@ public abstract interface h
           for (IBinder localIBinder = parami.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(9, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(9, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            bool = h.a.cZR().a(parami);
+            bool = h.a.dGk().a(parami);
             return bool;
           }
           localParcel2.readException();
@@ -616,10 +496,10 @@ public abstract interface h
           for (IBinder localIBinder = params.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(18, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(18, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            bool = h.a.cZR().a(params);
+            bool = h.a.dGk().a(params);
             return bool;
           }
           localParcel2.readException();
@@ -644,54 +524,54 @@ public abstract interface h
         //   0: iconst_1
         //   1: istore 5
         //   3: sipush 23672
-        //   6: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   9: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   6: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   9: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   12: astore 7
-        //   14: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   14: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   17: astore 8
         //   19: aload 7
-        //   21: ldc 37
-        //   23: invokevirtual 41	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   21: ldc 36
+        //   23: invokevirtual 40	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
         //   26: aload 7
         //   28: aload_1
-        //   29: invokevirtual 126	android/os/Parcel:writeString	(Ljava/lang/String;)V
+        //   29: invokevirtual 113	android/os/Parcel:writeString	(Ljava/lang/String;)V
         //   32: iload_2
         //   33: ifeq +87 -> 120
         //   36: iconst_1
         //   37: istore 4
         //   39: aload 7
         //   41: iload 4
-        //   43: invokevirtual 105	android/os/Parcel:writeInt	(I)V
+        //   43: invokevirtual 88	android/os/Parcel:writeInt	(I)V
         //   46: aload_3
         //   47: ifnull +79 -> 126
         //   50: aload_3
-        //   51: invokeinterface 129 1 0
+        //   51: invokeinterface 116 1 0
         //   56: astore 6
         //   58: aload 7
         //   60: aload 6
-        //   62: invokevirtual 89	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+        //   62: invokevirtual 49	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
         //   65: aload_0
         //   66: getfield 20	com/tencent/mm/plugin/exdevice/service/h$a$a:mRemote	Landroid/os/IBinder;
         //   69: bipush 13
         //   71: aload 7
         //   73: aload 8
         //   75: iconst_0
-        //   76: invokeinterface 51 5 0
+        //   76: invokeinterface 55 5 0
         //   81: ifne +51 -> 132
-        //   84: invokestatic 55	com/tencent/mm/plugin/exdevice/service/h$a:cZR	()Lcom/tencent/mm/plugin/exdevice/service/h;
+        //   84: invokestatic 59	com/tencent/mm/plugin/exdevice/service/h$a:dGk	()Lcom/tencent/mm/plugin/exdevice/service/h;
         //   87: ifnull +45 -> 132
-        //   90: invokestatic 55	com/tencent/mm/plugin/exdevice/service/h$a:cZR	()Lcom/tencent/mm/plugin/exdevice/service/h;
+        //   90: invokestatic 59	com/tencent/mm/plugin/exdevice/service/h$a:dGk	()Lcom/tencent/mm/plugin/exdevice/service/h;
         //   93: aload_1
         //   94: iload_2
         //   95: aload_3
-        //   96: invokeinterface 131 4 0
+        //   96: invokeinterface 118 4 0
         //   101: istore_2
         //   102: aload 8
-        //   104: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   104: invokevirtual 64	android/os/Parcel:recycle	()V
         //   107: aload 7
-        //   109: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   109: invokevirtual 64	android/os/Parcel:recycle	()V
         //   112: sipush 23672
-        //   115: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   115: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   118: iload_2
         //   119: ireturn
         //   120: iconst_0
@@ -701,20 +581,20 @@ public abstract interface h
         //   127: astore 6
         //   129: goto -71 -> 58
         //   132: aload 8
-        //   134: invokevirtual 66	android/os/Parcel:readException	()V
+        //   134: invokevirtual 70	android/os/Parcel:readException	()V
         //   137: aload 8
-        //   139: invokevirtual 70	android/os/Parcel:readInt	()I
+        //   139: invokevirtual 97	android/os/Parcel:readInt	()I
         //   142: istore 4
         //   144: iload 4
         //   146: ifeq +24 -> 170
         //   149: iload 5
         //   151: istore_2
         //   152: aload 8
-        //   154: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   154: invokevirtual 64	android/os/Parcel:recycle	()V
         //   157: aload 7
-        //   159: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   159: invokevirtual 64	android/os/Parcel:recycle	()V
         //   162: sipush 23672
-        //   165: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   165: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   168: iload_2
         //   169: ireturn
         //   170: iconst_0
@@ -722,11 +602,11 @@ public abstract interface h
         //   172: goto -20 -> 152
         //   175: astore_1
         //   176: aload 8
-        //   178: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   178: invokevirtual 64	android/os/Parcel:recycle	()V
         //   181: aload 7
-        //   183: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   183: invokevirtual 64	android/os/Parcel:recycle	()V
         //   186: sipush 23672
-        //   189: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   189: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   192: aload_1
         //   193: athrow
         // Local variable table:
@@ -761,64 +641,64 @@ public abstract interface h
         //   0: iconst_1
         //   1: istore_3
         //   2: sipush 23660
-        //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   8: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   8: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   11: astore 5
-        //   13: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   13: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   16: astore 6
         //   18: aload 5
-        //   20: ldc 37
-        //   22: invokevirtual 41	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   20: ldc 36
+        //   22: invokevirtual 40	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
         //   25: aload 5
         //   27: iload_1
-        //   28: invokevirtual 105	android/os/Parcel:writeInt	(I)V
+        //   28: invokevirtual 88	android/os/Parcel:writeInt	(I)V
         //   31: aload_2
         //   32: ifnull +71 -> 103
         //   35: aload_2
-        //   36: invokeinterface 136 1 0
+        //   36: invokeinterface 123 1 0
         //   41: astore 4
         //   43: aload 5
         //   45: aload 4
-        //   47: invokevirtual 89	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+        //   47: invokevirtual 49	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
         //   50: aload_0
         //   51: getfield 20	com/tencent/mm/plugin/exdevice/service/h$a$a:mRemote	Landroid/os/IBinder;
         //   54: iconst_1
         //   55: aload 5
         //   57: aload 6
         //   59: iconst_0
-        //   60: invokeinterface 51 5 0
+        //   60: invokeinterface 55 5 0
         //   65: ifne +44 -> 109
-        //   68: invokestatic 55	com/tencent/mm/plugin/exdevice/service/h$a:cZR	()Lcom/tencent/mm/plugin/exdevice/service/h;
+        //   68: invokestatic 59	com/tencent/mm/plugin/exdevice/service/h$a:dGk	()Lcom/tencent/mm/plugin/exdevice/service/h;
         //   71: ifnull +38 -> 109
-        //   74: invokestatic 55	com/tencent/mm/plugin/exdevice/service/h$a:cZR	()Lcom/tencent/mm/plugin/exdevice/service/h;
+        //   74: invokestatic 59	com/tencent/mm/plugin/exdevice/service/h$a:dGk	()Lcom/tencent/mm/plugin/exdevice/service/h;
         //   77: iload_1
         //   78: aload_2
-        //   79: invokeinterface 138 3 0
+        //   79: invokeinterface 125 3 0
         //   84: istore_3
         //   85: aload 6
-        //   87: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   87: invokevirtual 64	android/os/Parcel:recycle	()V
         //   90: aload 5
-        //   92: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   92: invokevirtual 64	android/os/Parcel:recycle	()V
         //   95: sipush 23660
-        //   98: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   98: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   101: iload_3
         //   102: ireturn
         //   103: aconst_null
         //   104: astore 4
         //   106: goto -63 -> 43
         //   109: aload 6
-        //   111: invokevirtual 66	android/os/Parcel:readException	()V
+        //   111: invokevirtual 70	android/os/Parcel:readException	()V
         //   114: aload 6
-        //   116: invokevirtual 70	android/os/Parcel:readInt	()I
+        //   116: invokevirtual 97	android/os/Parcel:readInt	()I
         //   119: istore_1
         //   120: iload_1
         //   121: ifeq +21 -> 142
         //   124: aload 6
-        //   126: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   126: invokevirtual 64	android/os/Parcel:recycle	()V
         //   129: aload 5
-        //   131: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   131: invokevirtual 64	android/os/Parcel:recycle	()V
         //   134: sipush 23660
-        //   137: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   137: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   140: iload_3
         //   141: ireturn
         //   142: iconst_0
@@ -826,11 +706,11 @@ public abstract interface h
         //   144: goto -20 -> 124
         //   147: astore_2
         //   148: aload 6
-        //   150: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   150: invokevirtual 64	android/os/Parcel:recycle	()V
         //   153: aload 5
-        //   155: invokevirtual 60	android/os/Parcel:recycle	()V
+        //   155: invokevirtual 64	android/os/Parcel:recycle	()V
         //   158: sipush 23660
-        //   161: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   161: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   164: aload_2
         //   165: athrow
         // Local variable table:
@@ -865,10 +745,10 @@ public abstract interface h
           for (IBinder localIBinder = paramk.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(16, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(16, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            bool = h.a.cZR().b(paramLong, paramInt, paramk);
+            bool = h.a.dGk().b(paramLong, paramInt, paramk);
             return bool;
           }
           localParcel2.readException();
@@ -901,10 +781,10 @@ public abstract interface h
           for (IBinder localIBinder = paramt.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(19, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(19, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            bool = h.a.cZR().b(paramLong, paramArrayOfByte, paramt);
+            bool = h.a.dGk().b(paramLong, paramArrayOfByte, paramt);
             return bool;
           }
           localParcel2.readException();
@@ -935,10 +815,10 @@ public abstract interface h
           for (IBinder localIBinder = parami.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(10, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(10, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            bool = h.a.cZR().b(parami);
+            bool = h.a.dGk().b(parami);
             return bool;
           }
           localParcel2.readException();
@@ -970,10 +850,10 @@ public abstract interface h
           for (IBinder localIBinder = paramj.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(2, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(2, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            bool = h.a.cZR().c(paramInt, paramj);
+            bool = h.a.dGk().c(paramInt, paramj);
             return bool;
           }
           localParcel2.readException();
@@ -991,31 +871,6 @@ public abstract interface h
         }
       }
       
-      public final long[] cZN()
-      {
-        AppMethodBeat.i(23662);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (h.a.cZR() != null))
-          {
-            arrayOfLong = h.a.cZR().cZN();
-            return arrayOfLong;
-          }
-          localParcel2.readException();
-          long[] arrayOfLong = localParcel2.createLongArray();
-          return arrayOfLong;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(23662);
-        }
-      }
-      
       public final boolean d(int paramInt, j paramj)
       {
         boolean bool = false;
@@ -1030,10 +885,10 @@ public abstract interface h
           for (IBinder localIBinder = paramj.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(14, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(14, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            bool = h.a.cZR().d(paramInt, paramj);
+            bool = h.a.dGk().d(paramInt, paramj);
             return bool;
           }
           localParcel2.readException();
@@ -1051,6 +906,31 @@ public abstract interface h
         }
       }
       
+      public final long[] dGg()
+      {
+        AppMethodBeat.i(23662);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (h.a.dGk() != null))
+          {
+            arrayOfLong = h.a.dGk().dGg();
+            return arrayOfLong;
+          }
+          localParcel2.readException();
+          long[] arrayOfLong = localParcel2.createLongArray();
+          return arrayOfLong;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(23662);
+        }
+      }
+      
       public final boolean e(int paramInt, j paramj)
       {
         boolean bool = false;
@@ -1065,10 +945,10 @@ public abstract interface h
           for (IBinder localIBinder = paramj.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(15, localParcel1, localParcel2, 0)) || (h.a.cZR() == null)) {
+            if ((this.mRemote.transact(15, localParcel1, localParcel2, 0)) || (h.a.dGk() == null)) {
               break;
             }
-            bool = h.a.cZR().e(paramInt, paramj);
+            bool = h.a.dGk().e(paramInt, paramj);
             return bool;
           }
           localParcel2.readException();
@@ -1086,6 +966,126 @@ public abstract interface h
         }
       }
       
+      public final boolean lI(long paramLong)
+      {
+        boolean bool = false;
+        AppMethodBeat.i(23664);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
+          localParcel1.writeLong(paramLong);
+          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (h.a.dGk() != null))
+          {
+            bool = h.a.dGk().lI(paramLong);
+            return bool;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(23664);
+        }
+      }
+      
+      public final boolean lJ(long paramLong)
+      {
+        boolean bool = false;
+        AppMethodBeat.i(23665);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
+          localParcel1.writeLong(paramLong);
+          if ((!this.mRemote.transact(6, localParcel1, localParcel2, 0)) && (h.a.dGk() != null))
+          {
+            bool = h.a.dGk().lJ(paramLong);
+            return bool;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(23665);
+        }
+      }
+      
+      public final boolean lK(long paramLong)
+      {
+        boolean bool = false;
+        AppMethodBeat.i(23667);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
+          localParcel1.writeLong(paramLong);
+          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (h.a.dGk() != null))
+          {
+            bool = h.a.dGk().lK(paramLong);
+            return bool;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(23667);
+        }
+      }
+      
+      public final boolean lL(long paramLong)
+      {
+        boolean bool = false;
+        AppMethodBeat.i(23676);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
+          localParcel1.writeLong(paramLong);
+          if ((!this.mRemote.transact(17, localParcel1, localParcel2, 0)) && (h.a.dGk() != null))
+          {
+            bool = h.a.dGk().lL(paramLong);
+            return bool;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(23676);
+        }
+      }
+      
       public final void setChannelSessionKey(long paramLong, byte[] paramArrayOfByte)
       {
         AppMethodBeat.i(23671);
@@ -1096,9 +1096,9 @@ public abstract interface h
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
           localParcel1.writeLong(paramLong);
           localParcel1.writeByteArray(paramArrayOfByte);
-          if ((!this.mRemote.transact(12, localParcel1, localParcel2, 0)) && (h.a.cZR() != null))
+          if ((!this.mRemote.transact(12, localParcel1, localParcel2, 0)) && (h.a.dGk() != null))
           {
-            h.a.cZR().setChannelSessionKey(paramLong, paramArrayOfByte);
+            h.a.dGk().setChannelSessionKey(paramLong, paramArrayOfByte);
             return;
           }
           localParcel2.readException();
@@ -1116,7 +1116,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.h
  * JD-Core Version:    0.7.0.1
  */

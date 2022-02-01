@@ -9,34 +9,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class b
   extends Drawable
 {
-  final ActionBarContainer nN;
+  final ActionBarContainer oM;
   
   public b(ActionBarContainer paramActionBarContainer)
   {
-    this.nN = paramActionBarContainer;
+    this.oM = paramActionBarContainer;
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(239997);
-    if (this.nN.nU)
+    AppMethodBeat.i(200001);
+    if (this.oM.oT)
     {
-      if (this.nN.nT != null)
+      if (this.oM.oS != null)
       {
-        this.nN.nT.draw(paramCanvas);
-        AppMethodBeat.o(239997);
+        this.oM.oS.draw(paramCanvas);
+        AppMethodBeat.o(200001);
       }
     }
     else
     {
-      if (this.nN.mj != null) {
-        this.nN.mj.draw(paramCanvas);
+      if (this.oM.ni != null) {
+        this.oM.ni.draw(paramCanvas);
       }
-      if ((this.nN.nS != null) && (this.nN.nV)) {
-        this.nN.nS.draw(paramCanvas);
+      if ((this.oM.oR != null) && (this.oM.oU)) {
+        this.oM.oR.draw(paramCanvas);
       }
     }
-    AppMethodBeat.o(239997);
+    AppMethodBeat.o(200001);
   }
   
   public final int getOpacity()
@@ -46,19 +46,19 @@ final class b
   
   public final void getOutline(Outline paramOutline)
   {
-    AppMethodBeat.i(240003);
-    if (this.nN.nU)
+    AppMethodBeat.i(200051);
+    if (this.oM.oT)
     {
-      if (this.nN.nT != null)
+      if (this.oM.oS != null)
       {
-        this.nN.nT.getOutline(paramOutline);
-        AppMethodBeat.o(240003);
+        this.oM.oS.getOutline(paramOutline);
+        AppMethodBeat.o(200051);
       }
     }
-    else if (this.nN.mj != null) {
-      this.nN.mj.getOutline(paramOutline);
+    else if (this.oM.ni != null) {
+      this.oM.ni.getOutline(paramOutline);
     }
-    AppMethodBeat.o(240003);
+    AppMethodBeat.o(200051);
   }
   
   public final void setAlpha(int paramInt) {}
@@ -67,7 +67,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.b
  * JD-Core Version:    0.7.0.1
  */

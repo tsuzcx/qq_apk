@@ -15,31 +15,31 @@ final class m$3
   
   public final boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(230913);
+    AppMethodBeat.i(245413);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(230913);
+      AppMethodBeat.o(245413);
       return false;
-      this.Roq.mHandler.sendEmptyMessage(20002);
+      this.YkH.mHandler.sendEmptyMessage(20002);
       continue;
-      this.Roq.mHandler.sendEmptyMessageDelayed(20001, 3000L);
+      this.YkH.mHandler.sendEmptyMessageDelayed(20001, 3000L);
     }
   }
   
-  public final void ao(boolean paramBoolean) {}
+  public final void aX(boolean paramBoolean) {}
   
   public final void b(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(230915);
+    AppMethodBeat.i(245417);
     b localb = new b();
-    localb.bn(paramRecyclerView);
-    localb.bn(paramMotionEvent);
-    a.c("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$3", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.aFi());
+    localb.cH(paramRecyclerView);
+    localb.cH(paramMotionEvent);
+    a.c("com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$3", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.aYj());
     a.a(this, "com/tencent/mm/pluginsdk/ui/chat/SuggestEmoticonBubble$3", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(230915);
+    AppMethodBeat.o(245417);
   }
 }
 

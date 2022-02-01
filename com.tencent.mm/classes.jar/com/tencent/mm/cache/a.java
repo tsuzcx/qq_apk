@@ -9,92 +9,65 @@ import java.util.Stack;
 public final class a
   implements f<com.tencent.mm.ab.a>
 {
-  private Stack<com.tencent.mm.ab.a> iTF;
-  private Stack<com.tencent.mm.ab.a> iTG;
-  public Matrix iTH;
-  private int iTI;
+  private Stack<com.tencent.mm.ab.a> lvL;
+  private Stack<com.tencent.mm.ab.a> lvM;
+  public Matrix lvN;
+  private int lvO;
   
   public a()
   {
     AppMethodBeat.i(9187);
-    this.iTH = new Matrix();
+    this.lvN = new Matrix();
     AppMethodBeat.o(9187);
   }
-  
-  public final void a(Canvas paramCanvas, boolean paramBoolean) {}
   
   public final void a(com.tencent.mm.ab.a parama)
   {
     AppMethodBeat.i(9193);
-    if (this.iTF != null) {
-      this.iTF.push(parama);
+    if (this.lvL != null) {
+      this.lvL.push(parama);
     }
     AppMethodBeat.o(9193);
   }
   
-  public final void acG()
+  public final void aEG()
   {
-    this.iTI += 1;
+    this.lvO += 1;
   }
   
-  public final int ai(boolean paramBoolean)
-  {
-    AppMethodBeat.i(9195);
-    int i;
-    if (paramBoolean)
-    {
-      if (this.iTF != null)
-      {
-        i = this.iTF.size();
-        AppMethodBeat.o(9195);
-        return i;
-      }
-      AppMethodBeat.o(9195);
-      return 0;
-    }
-    if (this.iTG != null)
-    {
-      i = this.iTG.size();
-      AppMethodBeat.o(9195);
-      return i;
-    }
-    AppMethodBeat.o(9195);
-    return 0;
-  }
-  
-  public final void arB()
+  public final void aLx()
   {
     AppMethodBeat.i(9191);
-    Log.i("MicroMsg.CropCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.iTF.size()) });
-    this.iTF.clear();
-    if (this.iTG != null)
+    Log.i("MicroMsg.CropCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.lvL.size()) });
+    this.lvL.clear();
+    if (this.lvM != null)
     {
-      Log.i("MicroMsg.CropCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.iTG.size()) });
-      this.iTF.addAll(this.iTG);
+      Log.i("MicroMsg.CropCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.lvM.size()) });
+      this.lvL.addAll(this.lvM);
     }
     AppMethodBeat.o(9191);
   }
   
-  public final com.tencent.mm.ab.a arC()
+  public final com.tencent.mm.ab.a aLy()
   {
     AppMethodBeat.i(9192);
-    if (this.iTF.size() <= 0)
+    if (this.lvL.size() <= 0)
     {
       Log.e("MicroMsg.CropCache", "[pop]");
       AppMethodBeat.o(9192);
       return null;
     }
-    com.tencent.mm.ab.a locala = (com.tencent.mm.ab.a)this.iTF.pop();
+    com.tencent.mm.ab.a locala = (com.tencent.mm.ab.a)this.lvL.pop();
     AppMethodBeat.o(9192);
     return locala;
   }
   
-  public final com.tencent.mm.ab.a arD()
+  public final com.tencent.mm.ab.a aLz()
   {
     AppMethodBeat.i(9194);
-    if ((this.iTF != null) && (this.iTF.size() > 0))
+    if ((this.lvL != null) && (this.lvL.size() > 0))
     {
-      com.tencent.mm.ab.a locala = (com.tencent.mm.ab.a)this.iTF.peek();
+      com.tencent.mm.ab.a locala = (com.tencent.mm.ab.a)this.lvL.peek();
       AppMethodBeat.o(9194);
       return locala;
     }
@@ -102,55 +75,82 @@ public final class a
     return null;
   }
   
-  public final void clear()
+  public final int aR(boolean paramBoolean)
   {
-    AppMethodBeat.i(260249);
-    if (this.iTF != null) {
-      this.iTF.clear();
+    AppMethodBeat.i(9195);
+    int i;
+    if (paramBoolean)
+    {
+      if (this.lvL != null)
+      {
+        i = this.lvL.size();
+        AppMethodBeat.o(9195);
+        return i;
+      }
+      AppMethodBeat.o(9195);
+      return 0;
     }
-    AppMethodBeat.o(260249);
+    if (this.lvM != null)
+    {
+      i = this.lvM.size();
+      AppMethodBeat.o(9195);
+      return i;
+    }
+    AppMethodBeat.o(9195);
+    return 0;
   }
   
-  public final void dL(boolean paramBoolean)
+  public final void b(Canvas paramCanvas, boolean paramBoolean) {}
+  
+  public final void clear()
+  {
+    AppMethodBeat.i(232045);
+    if (this.lvL != null) {
+      this.lvL.clear();
+    }
+    AppMethodBeat.o(232045);
+  }
+  
+  public final void ex(boolean paramBoolean)
   {
     AppMethodBeat.i(9190);
-    Log.i("MicroMsg.CropCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.iTF.size()) });
-    if (this.iTG != null) {
-      this.iTG.clear();
+    Log.i("MicroMsg.CropCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.lvL.size()) });
+    if (this.lvM != null) {
+      this.lvM.clear();
     }
-    this.iTG = ((Stack)this.iTF.clone());
+    this.lvM = ((Stack)this.lvL.clone());
     if (paramBoolean) {
-      this.iTF.clear();
+      this.lvL.clear();
     }
     AppMethodBeat.o(9190);
   }
   
-  public final void f(Canvas paramCanvas) {}
+  public final void i(Canvas paramCanvas) {}
   
   public final void onCreate()
   {
     AppMethodBeat.i(9188);
     Log.i("MicroMsg.CropCache", "[onCreate]");
-    this.iTF = new Stack();
+    this.lvL = new Stack();
     AppMethodBeat.o(9188);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(9189);
-    if (this.iTF != null) {
-      this.iTF.clear();
+    if (this.lvL != null) {
+      this.lvL.clear();
     }
-    if (this.iTG != null) {
-      this.iTG.clear();
+    if (this.lvM != null) {
+      this.lvM.clear();
     }
-    this.iTH.reset();
+    this.lvN.reset();
     AppMethodBeat.o(9189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.cache.a
  * JD-Core Version:    0.7.0.1
  */

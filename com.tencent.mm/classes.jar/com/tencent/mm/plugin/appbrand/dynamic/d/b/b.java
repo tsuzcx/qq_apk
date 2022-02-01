@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.d.b;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.jw;
+import com.tencent.mm.autogen.mmdata.rpt.mn;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.i;
 import com.tencent.mm.ipcinvoker.j;
@@ -22,72 +22,72 @@ import org.json.JSONObject;
 public final class b
   implements Runnable
 {
-  public String jZi;
-  public JSONObject oiG;
-  public com.tencent.mm.plugin.appbrand.dynamic.d.b oiH;
-  public com.tencent.mm.ac.b.b.a oiI;
-  public e oiJ;
-  public String oiK;
-  public long oiL;
+  public String mzg;
+  public JSONObject rmi;
+  public com.tencent.mm.plugin.appbrand.dynamic.d.b rmj;
+  public com.tencent.mm.ac.b.b.a rmk;
+  public e rml;
+  public String rmm;
+  public long rmn;
   public String viewId;
   
   public final void a(String paramString1, String paramString2, JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.dynamic.d.b paramb, com.tencent.mm.ac.b.b.a parama, e parame, String paramString3)
   {
     AppMethodBeat.i(121369);
-    this.jZi = paramString1;
+    this.mzg = paramString1;
     this.viewId = paramString2;
-    this.oiG = paramJSONObject;
-    this.oiH = paramb;
-    this.oiI = parama;
-    this.oiJ = parame;
-    this.oiK = paramString3;
-    this.oiL = System.currentTimeMillis();
+    this.rmi = paramJSONObject;
+    this.rmj = paramb;
+    this.rmk = parama;
+    this.rml = parame;
+    this.rmm = paramString3;
+    this.rmn = System.currentTimeMillis();
     AppMethodBeat.o(121369);
   }
   
   public final void run()
   {
     AppMethodBeat.i(121370);
-    if (this.oiJ.ago(this.oiK))
+    if (this.rml.Zk(this.rmm))
     {
       u.v("DrawCanvasRunnable", "running draw", new Object[0]);
       Bundle localBundle = new Bundle();
       localBundle.putString("viewId", this.viewId);
-      localBundle.putInt("drawStrategy", this.oiJ.bNA());
-      localBundle.putString("remoteProcess", i.aFr());
-      a.dl(this.viewId, this.oiK);
+      localBundle.putInt("drawStrategy", this.rml.cnP());
+      localBundle.putString("remoteProcess", i.aYs());
+      a.dE(this.viewId, this.rmm);
       Object localObject1;
-      switch (this.oiJ.bNA())
+      switch (this.rml.cnP())
       {
       default: 
         localObject1 = null;
       }
       for (;;)
       {
-        Object localObject2 = com.tencent.mm.plugin.appbrand.dynamic.h.d.J(this.oiG);
-        CollectSession localCollectSession = c.cY((String)localObject2, "after_jsapi_invoke");
+        Object localObject2 = com.tencent.mm.plugin.appbrand.dynamic.h.d.U(this.rmi);
+        CollectSession localCollectSession = c.dp((String)localObject2, "after_jsapi_invoke");
         localBundle.putString("__session_id", (String)localObject2);
         localBundle.putParcelable("__cost_time_session", localCollectSession);
-        v.rE(19);
-        localObject2 = new jw().AS(u.SO(this.viewId));
-        ((jw)localObject2).gyo = u.SM(this.viewId);
-        ((jw)localObject2).gLX = 11L;
-        localObject2 = ((jw)localObject2).AR(this.viewId);
-        ((jw)localObject2).gLY = System.currentTimeMillis();
-        ((jw)localObject2).AT(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).bpa();
-        if (!j.a(this.jZi, localBundle, a.class, new f() {})) {
+        v.rG(19);
+        localObject2 = new mn().uY(u.KQ(this.viewId));
+        ((mn)localObject2).iKD = u.KO(this.viewId);
+        ((mn)localObject2).jbJ = 11L;
+        localObject2 = ((mn)localObject2).uX(this.viewId);
+        ((mn)localObject2).jbK = System.currentTimeMillis();
+        ((mn)localObject2).uZ(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).bMH();
+        if (!j.a(this.mzg, localBundle, a.class, new f() {})) {
           break;
         }
-        this.oiJ.bNz();
+        this.rml.cnO();
         AppMethodBeat.o(121370);
         return;
-        localObject1 = (String)this.oiJ.e(this.oiG, this.oiK);
-        this.oiJ.cB(this.oiK);
+        localObject1 = (String)this.rml.e(this.rmi, this.rmm);
+        this.rml.dV(this.rmm);
         localBundle.putString("jsApiInvokeData", (String)localObject1);
         localObject1 = null;
         continue;
-        localObject1 = (DrawCanvasArg)this.oiJ.e(this.oiG, this.oiK);
-        this.oiJ.cB(localObject1);
+        localObject1 = (DrawCanvasArg)this.rml.e(this.rmi, this.rmm);
+        this.rml.dV(localObject1);
         localBundle.putParcelable("jsApiInvokeDataObj", (Parcelable)localObject1);
       }
       if (localObject1 != null) {
@@ -96,8 +96,8 @@ public final class b
       AppMethodBeat.o(121370);
       return;
     }
-    if ((this.oiI != null) && (this.oiH != null)) {
-      this.oiI.bt(this.oiH.a(true, "same actions with last draw, drop this", null));
+    if ((this.rmk != null) && (this.rmj != null)) {
+      this.rmk.cN(this.rmj.a(true, "same actions with last draw, drop this", null));
     }
     AppMethodBeat.o(121370);
   }
@@ -108,7 +108,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.b.b
  * JD-Core Version:    0.7.0.1
  */

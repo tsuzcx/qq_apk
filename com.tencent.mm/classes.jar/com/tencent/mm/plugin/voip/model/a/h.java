@@ -1,139 +1,145 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.voip.c.e;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.plugin.voip.f.g;
 import com.tencent.mm.plugin.voip.model.l;
 import com.tencent.mm.plugin.voip.model.o;
 import com.tencent.mm.plugin.voip.model.v2protocal;
 import com.tencent.mm.plugin.voip.model.w;
-import com.tencent.mm.protocal.protobuf.dbt;
-import com.tencent.mm.protocal.protobuf.dwc;
-import com.tencent.mm.protocal.protobuf.dwd;
-import com.tencent.mm.protocal.protobuf.fdc;
-import com.tencent.mm.protocal.protobuf.feo;
-import com.tencent.mm.protocal.protobuf.fet;
-import com.tencent.mm.protocal.protobuf.feu;
-import com.tencent.mm.protocal.protobuf.few;
+import com.tencent.mm.protocal.protobuf.dtl;
+import com.tencent.mm.protocal.protobuf.epe;
+import com.tencent.mm.protocal.protobuf.epf;
+import com.tencent.mm.protocal.protobuf.fzo;
+import com.tencent.mm.protocal.protobuf.gba;
+import com.tencent.mm.protocal.protobuf.gbf;
+import com.tencent.mm.protocal.protobuf.gbg;
+import com.tencent.mm.protocal.protobuf.gbi;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class h
-  extends n<fet, feu>
+  extends n<gbf, gbg>
 {
-  public h(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt, LinkedList<dbt> paramLinkedList)
+  public h(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt, LinkedList<dtl> paramLinkedList)
   {
     AppMethodBeat.i(115240);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new fet();
-    ((d.a)localObject).lBV = new feu();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/voipRedirect";
-    ((d.a)localObject).funcId = 678;
-    ((d.a)localObject).lBW = 240;
-    ((d.a)localObject).respCmdId = 1000000240;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (fet)d.b.b(this.rr.lBR);
-    ((fet)localObject).Svu = paramInt1;
-    ((fet)localObject).Svv = paramLong;
-    ((fet)localObject).TWl = paramInt2;
-    ((fet)localObject).UFk = paramInt3;
-    ((fet)localObject).UFl = paramInt4;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new gbf();
+    ((c.a)localObject).otF = new gbg();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/voipRedirect";
+    ((c.a)localObject).funcId = 678;
+    ((c.a)localObject).otG = 240;
+    ((c.a)localObject).respCmdId = 1000000240;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (gbf)c.b.b(this.rr.otB);
+    ((gbf)localObject).Zvz = paramInt1;
+    ((gbf)localObject).ZvA = paramLong;
+    ((gbf)localObject).abna = paramInt2;
+    ((gbf)localObject).abZu = paramInt3;
+    ((gbf)localObject).abZv = paramInt4;
     paramInt2 = 0;
     paramInt1 = 0;
     while (paramInt1 < paramInt4)
     {
-      few localfew = new few();
+      gbi localgbi = new gbi();
       paramInt3 = paramInt2 + 1;
-      localfew.UFy = paramArrayOfInt[paramInt2];
+      localgbi.abZI = paramArrayOfInt[paramInt2];
       paramInt2 = paramInt3 + 1;
-      localfew.UFz = paramArrayOfInt[paramInt3];
+      localgbi.abZJ = paramArrayOfInt[paramInt3];
       paramInt3 = paramInt2 + 1;
-      localfew.UFA = paramArrayOfInt[paramInt2];
+      localgbi.abZK = paramArrayOfInt[paramInt2];
       int i = paramInt3 + 1;
-      localfew.UFB = paramArrayOfInt[paramInt3];
+      localgbi.abZL = paramArrayOfInt[paramInt3];
       paramInt2 = i + 1;
-      localfew.UFC = paramArrayOfInt[i];
-      ((fet)localObject).UFm.add(localfew);
+      localgbi.abZM = paramArrayOfInt[i];
+      ((gbf)localObject).abZw.add(localgbi);
       paramInt1 += 1;
     }
     paramInt1 = 0;
-    if (this.NMN.NMi.NSI.NNR != 0L) {
-      paramInt1 = (int)((System.currentTimeMillis() - this.NMN.NMi.NSI.NNR) / 1000L);
+    if (this.UzB.UyU.UFN.UAI != 0L) {
+      paramInt1 = (int)((System.currentTimeMillis() - this.UzB.UyU.UFN.UAI) / 1000L);
     }
-    ((fet)localObject).UFn = paramInt1;
-    ((fet)localObject).UCL = paramLinkedList.size();
-    ((fet)localObject).UCM = paramLinkedList;
+    ((gbf)localObject).abZx = paramInt1;
+    ((gbf)localObject).abWV = paramLinkedList.size();
+    ((gbf)localObject).abWW = paramLinkedList;
     AppMethodBeat.o(115240);
   }
   
-  public final i gAU()
+  public final int getType()
+  {
+    return 678;
+  }
+  
+  public final com.tencent.mm.am.h hYT()
   {
     AppMethodBeat.i(115242);
-    i local1 = new i()
+    com.tencent.mm.am.h local1 = new com.tencent.mm.am.h()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
       {
         AppMethodBeat.i(115239);
-        e.Logi("MicroMsg.Voip.Redirect", "Redirect response:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " status:" + h.this.NMN.mStatus);
+        g.Logi("MicroMsg.Voip.Redirect", "Redirect response:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " status:" + h.this.UzB.mStatus);
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
-          e.Loge("MicroMsg.Voip.Redirect", " redirect response with error code:" + paramAnonymousInt2 + "error type" + paramAnonymousInt1);
+          g.Loge("MicroMsg.Voip.Redirect", " redirect response with error code:" + paramAnonymousInt2 + "error type" + paramAnonymousInt1);
           AppMethodBeat.o(115239);
           return;
         }
-        paramAnonymousString = (feu)h.this.gAY();
-        e.Logi("MicroMsg.Voip.Redirect", "room " + paramAnonymousString.Svu + " member " + paramAnonymousString.TWl + " key " + paramAnonymousString.Svv + " relay addr cnt " + paramAnonymousString.UFq + " RedirectThreshold " + paramAnonymousString.UFv + " RedirectDecision " + paramAnonymousString.UFw);
-        paramAnonymousq = new fdc();
-        Object localObject = new fdc();
-        fdc localfdc = new fdc();
-        paramAnonymousq.UCU = paramAnonymousString.UFq;
-        paramAnonymousq.UCV = paramAnonymousString.UFr;
-        ((fdc)localObject).UCU = paramAnonymousString.UFs;
-        ((fdc)localObject).UCV = paramAnonymousString.UFt;
-        localfdc.UCU = paramAnonymousString.UFu;
-        localfdc.UCV = paramAnonymousString.UDx;
-        h.this.NMN.NMl.a(paramAnonymousString.UFx);
-        if (((paramAnonymousString.UFx == null) || (paramAnonymousString.UFx.NMs == 0)) && (paramAnonymousString.UFq > 0))
+        paramAnonymousString = h.this.UzB.UyU.UFN;
+        paramAnonymousString.wS((int)(System.currentTimeMillis() - paramAnonymousString.UAS));
+        paramAnonymousString = (gbg)h.this.hYX();
+        g.Logi("MicroMsg.Voip.Redirect", "room " + paramAnonymousString.Zvz + " member " + paramAnonymousString.abna + " key " + paramAnonymousString.ZvA + " relay addr cnt " + paramAnonymousString.abZA + " RedirectThreshold " + paramAnonymousString.abZF + " RedirectDecision " + paramAnonymousString.abZG);
+        paramAnonymousp = new fzo();
+        Object localObject = new fzo();
+        fzo localfzo = new fzo();
+        paramAnonymousp.abXf = paramAnonymousString.abZA;
+        paramAnonymousp.abXg = paramAnonymousString.abZB;
+        ((fzo)localObject).abXf = paramAnonymousString.abZC;
+        ((fzo)localObject).abXg = paramAnonymousString.abZD;
+        localfzo.abXf = paramAnonymousString.abZE;
+        localfzo.abXg = paramAnonymousString.abXI;
+        h.this.UzB.UyX.a(paramAnonymousString.abZH);
+        if (((paramAnonymousString.abZH == null) || (paramAnonymousString.abZH.Uze == 0)) && (paramAnonymousString.abZA > 0))
         {
-          e.Logi("MicroMsg.Voip.Redirect", "use old method to add redirect conn");
-          paramAnonymousq = new dwd();
-          localObject = new dwc();
-          ((dwc)localObject).Ssu = 0;
-          ((dwc)localObject).Ssv = "";
-          ((dwc)localObject).Ssw = "";
-          ((dwc)localObject).Ssx = h.this.NMN.NMi.netType;
-          ((dwc)localObject).Ssy = 4;
-          ((dwc)localObject).Ssz = 2;
-          ((dwc)localObject).Ucb = new fdc();
-          ((dwc)localObject).Ucc = new fdc();
-          ((dwc)localObject).Ucb.UCU = paramAnonymousString.UFq;
-          ((dwc)localObject).Ucb.UCV = paramAnonymousString.UFr;
-          ((dwc)localObject).Ucc.UCU = paramAnonymousString.UFu;
-          ((dwc)localObject).Ucc.UCV = paramAnonymousString.UDx;
-          paramAnonymousq.Uce.add(localObject);
-          paramAnonymousq.Ucd = 1;
+          g.Logi("MicroMsg.Voip.Redirect", "use old method to add redirect conn");
+          paramAnonymousp = new epf();
+          localObject = new epe();
+          ((epe)localObject).ZrC = 0;
+          ((epe)localObject).ZrD = "";
+          ((epe)localObject).ZrE = "";
+          ((epe)localObject).ZrF = h.this.UzB.UyU.netType;
+          ((epe)localObject).ZrG = 4;
+          ((epe)localObject).ZrH = 2;
+          ((epe)localObject).abto = new fzo();
+          ((epe)localObject).abtp = new fzo();
+          ((epe)localObject).abto.abXf = paramAnonymousString.abZA;
+          ((epe)localObject).abto.abXg = paramAnonymousString.abZB;
+          ((epe)localObject).abtp.abXf = paramAnonymousString.abZE;
+          ((epe)localObject).abtp.abXg = paramAnonymousString.abXI;
+          paramAnonymousp.abtr.add(localObject);
+          paramAnonymousp.abtq = 1;
           paramAnonymousString = null;
         }
         try
         {
-          paramAnonymousq = paramAnonymousq.toByteArray();
-          paramAnonymousString = paramAnonymousq;
+          paramAnonymousp = paramAnonymousp.toByteArray();
+          paramAnonymousString = paramAnonymousp;
         }
-        catch (Exception paramAnonymousq)
+        catch (Exception paramAnonymousp)
         {
           for (;;)
           {
             Log.e("MicroMsg.Voip.Redirect", "conn info to byte array fail..");
           }
         }
-        paramAnonymousInt1 = h.this.NMN.NMi.AddNewRelayConns(paramAnonymousString, paramAnonymousString.length, 1);
+        paramAnonymousInt1 = h.this.UzB.UyU.AddNewRelayConns(paramAnonymousString, paramAnonymousString.length, 1);
         if (paramAnonymousInt1 != 0) {
-          e.Loge("MicroMsg.Voip.Redirect", "redirect relay conns fail ret:".concat(String.valueOf(paramAnonymousInt1)));
+          g.Loge("MicroMsg.Voip.Redirect", "redirect relay conns fail ret:".concat(String.valueOf(paramAnonymousInt1)));
         }
         AppMethodBeat.o(115239);
       }
@@ -142,19 +148,14 @@ public final class h
     return local1;
   }
   
-  public final int getType()
-  {
-    return 678;
-  }
-  
-  public final void kQ(int paramInt1, int paramInt2)
+  public final void mD(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115241);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      feu localfeu = (feu)d.c.b(this.rr.lBS);
-      if (localfeu != null) {
-        Log.i("MicroMsg.Voip.Redirect", "roomId:%d, roomKey:%s, member:%d", new Object[] { Integer.valueOf(localfeu.Svu), Long.valueOf(localfeu.Svv), Integer.valueOf(localfeu.TWl) });
+      gbg localgbg = (gbg)c.c.b(this.rr.otC);
+      if (localgbg != null) {
+        Log.i("MicroMsg.Voip.Redirect", "roomId:%d, roomKey:%s, member:%d", new Object[] { Integer.valueOf(localgbg.Zvz), Long.valueOf(localgbg.ZvA), Integer.valueOf(localgbg.abna) });
       }
       AppMethodBeat.o(115241);
       return;
@@ -165,7 +166,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.h
  * JD-Core Version:    0.7.0.1
  */

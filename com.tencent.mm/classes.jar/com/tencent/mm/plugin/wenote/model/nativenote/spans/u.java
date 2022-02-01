@@ -6,27 +6,27 @@ import java.util.ArrayList;
 
 public final class u
 {
-  public static final j QIA;
-  public static final c QIB;
-  public static final l QIC;
-  public static final h QID;
-  public static final b QIz;
-  public static final ArrayList<t> uvS;
+  public static final b XBY;
+  public static final j XBZ;
+  public static final c XCa;
+  public static final l XCb;
+  public static final h XCc;
+  public static final ArrayList<t> xCr;
   
   static
   {
     AppMethodBeat.i(30669);
-    QIz = new b();
-    QIA = new j();
-    QIB = new c();
-    QIC = new l();
-    QID = new h();
+    XBY = new b();
+    XBZ = new j();
+    XCa = new c();
+    XCb = new l();
+    XCc = new h();
     ArrayList localArrayList = new ArrayList();
-    uvS = localArrayList;
-    localArrayList.add(QIz);
-    uvS.add(QIB);
-    uvS.add(QIC);
-    uvS.add(QIA);
+    xCr = localArrayList;
+    localArrayList.add(XBY);
+    xCr.add(XCa);
+    xCr.add(XCb);
+    xCr.add(XBZ);
     AppMethodBeat.o(30669);
   }
   
@@ -51,16 +51,16 @@ public final class u
   public static void a(WXRTEditText paramWXRTEditText, t... paramVarArgs)
   {
     AppMethodBeat.i(30667);
-    a(paramWXRTEditText, QID, paramVarArgs);
-    a(paramWXRTEditText, QIB, paramVarArgs);
-    a(paramWXRTEditText, QIC, paramVarArgs);
-    a(paramWXRTEditText, QIA, paramVarArgs);
+    a(paramWXRTEditText, XCc, paramVarArgs);
+    a(paramWXRTEditText, XCa, paramVarArgs);
+    a(paramWXRTEditText, XCb, paramVarArgs);
+    a(paramWXRTEditText, XBZ, paramVarArgs);
     AppMethodBeat.o(30667);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.spans.u
  * JD-Core Version:    0.7.0.1
  */

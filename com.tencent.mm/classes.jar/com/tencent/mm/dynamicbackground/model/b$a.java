@@ -1,15 +1,15 @@
 package com.tencent.mm.dynamicbackground.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 11}, iBL={""}, iBM={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener$Companion;", "", "()V", "CHECK_DRAW_COUNT", "", "dynamicbg_release"})
+@Metadata(bv={1, 0, 2}, d1={""}, d2={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener$Companion;", "", "()V", "CHECK_DRAW_COUNT", "", "dynamicbg_release"}, k=1, mv={1, 1, 11})
 public final class b$a
 {
   static
   {
     AppMethodBeat.i(103078);
-    jBD = new a();
+    mbq = new a();
     AppMethodBeat.o(103078);
   }
 }

@@ -1,19 +1,19 @@
 package kotlin.l.b.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/calls/AnnotationConstructorCaller$Origin;", "", "(Ljava/lang/String;I)V", "JAVA", "KOTLIN", "kotlin-reflection"})
+@Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/calls/AnnotationConstructorCaller$Origin;", "", "(Ljava/lang/String;I)V", "JAVA", "KOTLIN", "kotlin-reflection"}, k=1, mv={1, 5, 1})
 public enum a$b
 {
   static
   {
     AppMethodBeat.i(56571);
     b localb1 = new b("JAVA", 0);
-    aaEQ = localb1;
+    aiAH = localb1;
     b localb2 = new b("KOTLIN", 1);
-    aaER = localb2;
-    aaES = new b[] { localb1, localb2 };
+    aiAI = localb2;
+    aiAJ = new b[] { localb1, localb2 };
     AppMethodBeat.o(56571);
   }
   
@@ -21,7 +21,7 @@ public enum a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlin.l.b.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

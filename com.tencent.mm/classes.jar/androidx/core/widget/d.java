@@ -8,77 +8,77 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public EdgeEffect Qf;
+  public EdgeEffect bww;
   
   @Deprecated
   public d(Context paramContext)
   {
-    AppMethodBeat.i(252445);
-    this.Qf = new EdgeEffect(paramContext);
-    AppMethodBeat.o(252445);
+    AppMethodBeat.i(195327);
+    this.bww = new EdgeEffect(paramContext);
+    AppMethodBeat.o(195327);
   }
   
   public static void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(252451);
+    AppMethodBeat.i(195333);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramEdgeEffect.onPull(paramFloat1, paramFloat2);
-      AppMethodBeat.o(252451);
+      AppMethodBeat.o(195333);
       return;
     }
     paramEdgeEffect.onPull(paramFloat1);
-    AppMethodBeat.o(252451);
+    AppMethodBeat.o(195333);
   }
   
   @Deprecated
-  public final boolean a(Canvas paramCanvas)
+  public final boolean Fi()
   {
-    AppMethodBeat.i(252457);
-    boolean bool = this.Qf.draw(paramCanvas);
-    AppMethodBeat.o(252457);
+    AppMethodBeat.i(195352);
+    this.bww.onRelease();
+    boolean bool = this.bww.isFinished();
+    AppMethodBeat.o(195352);
     return bool;
   }
   
   @Deprecated
-  public final boolean bJ(int paramInt)
+  public final boolean as(float paramFloat)
   {
-    AppMethodBeat.i(252455);
-    this.Qf.onAbsorb(paramInt);
-    AppMethodBeat.o(252455);
+    AppMethodBeat.i(195345);
+    this.bww.onPull(paramFloat);
+    AppMethodBeat.o(195345);
     return true;
   }
   
   @Deprecated
-  public final boolean hD()
+  public final boolean d(Canvas paramCanvas)
   {
-    AppMethodBeat.i(252453);
-    this.Qf.onRelease();
-    boolean bool = this.Qf.isFinished();
-    AppMethodBeat.o(252453);
+    AppMethodBeat.i(195363);
+    boolean bool = this.bww.draw(paramCanvas);
+    AppMethodBeat.o(195363);
     return bool;
   }
   
   @Deprecated
-  public final boolean m(float paramFloat)
+  public final boolean eE(int paramInt)
   {
-    AppMethodBeat.i(252449);
-    this.Qf.onPull(paramFloat);
-    AppMethodBeat.o(252449);
+    AppMethodBeat.i(195357);
+    this.bww.onAbsorb(paramInt);
+    AppMethodBeat.o(195357);
     return true;
   }
   
   @Deprecated
   public final void setSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(252447);
-    this.Qf.setSize(paramInt1, paramInt2);
-    AppMethodBeat.o(252447);
+    AppMethodBeat.i(195339);
+    this.bww.setSize(paramInt1, paramInt2);
+    AppMethodBeat.o(195339);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.widget.d
  * JD-Core Version:    0.7.0.1
  */

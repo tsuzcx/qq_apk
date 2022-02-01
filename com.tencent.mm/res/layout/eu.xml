@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/hwp" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="112.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Button android:textSize="@dimen/amy" android:id="@id/akz" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/gki" android:layout_marginStart="8.0dip" app:layout_constraintBottom_toBottomOf="@id/l8i" app:layout_constraintStart_toEndOf="@id/l8i" app:layout_constraintTop_toTopOf="@id/l8i" style="@style/oh" />
+    <View android:id="@id/l8i" android:background="@color/ahb" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="32.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <Button android:textSize="@dimen/amy" android:id="@id/aky" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/gkh" android:layout_marginEnd="8.0dip" app:layout_constraintBottom_toBottomOf="@id/l8i" app:layout_constraintEnd_toStartOf="@id/l8i" app:layout_constraintTop_toTopOf="@id/l8i" style="@style/op" />
+</androidx.constraintlayout.widget.ConstraintLayout>

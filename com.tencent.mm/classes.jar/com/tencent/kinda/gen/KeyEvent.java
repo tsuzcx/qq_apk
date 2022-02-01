@@ -6,11 +6,11 @@ public enum KeyEvent
 {
   static
   {
-    AppMethodBeat.i(220048);
+    AppMethodBeat.i(226741);
     UNKONWN = new KeyEvent("UNKONWN", 0);
     ENTER = new KeyEvent("ENTER", 1);
     $VALUES = new KeyEvent[] { UNKONWN, ENTER };
-    AppMethodBeat.o(220048);
+    AppMethodBeat.o(226741);
   }
   
   private KeyEvent() {}

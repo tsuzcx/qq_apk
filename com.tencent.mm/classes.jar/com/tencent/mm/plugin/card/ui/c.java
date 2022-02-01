@@ -9,15 +9,15 @@ import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.n.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.v;
+import com.tencent.mm.ui.x;
 
 public class c
-  extends v<CardInfo>
+  extends x<CardInfo>
 {
   private final String TAG;
   private int count;
-  private com.tencent.mm.plugin.card.base.c ttl;
-  private n.a tuN;
+  private com.tencent.mm.plugin.card.base.c wxI;
+  private n.a wzk;
   
   public c(Context paramContext, n.a parama)
   {
@@ -25,33 +25,33 @@ public class c
     AppMethodBeat.i(113174);
     this.TAG = "MicroMsg.CardAdapter";
     this.count = 0;
-    this.tuN = parama;
-    Fx(true);
-    this.ttl = new l(paramContext, this);
+    this.wzk = parama;
+    Lh(true);
+    this.wxI = new l(paramContext, this);
     AppMethodBeat.o(113174);
   }
   
-  public void atr()
+  public void aNy()
   {
     AppMethodBeat.i(113175);
     Log.v("MicroMsg.CardAdapter", "resetCursor");
-    eKd();
-    Cursor localCursor = am.cHs().a(this.tuN);
+    fSd();
+    Cursor localCursor = am.dkJ().a(this.wzk);
     if (localCursor != null)
     {
       this.count = localCursor.getCount();
       Log.v("MicroMsg.CardAdapter", "card count:" + this.count);
     }
-    v(localCursor);
+    w(localCursor);
     notifyDataSetChanged();
     AppMethodBeat.o(113175);
   }
   
-  public void ats()
+  public void aNz()
   {
     AppMethodBeat.i(113176);
-    eKd();
-    atr();
+    fSd();
+    aNy();
     AppMethodBeat.o(113176);
   }
   
@@ -59,7 +59,7 @@ public class c
   {
     AppMethodBeat.i(113177);
     paramViewGroup = (CardInfo)getItem(paramInt);
-    paramView = this.ttl.a(paramInt, paramView, paramViewGroup);
+    paramView = this.wxI.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113177);
     return paramView;
   }
@@ -67,15 +67,15 @@ public class c
   public void release()
   {
     AppMethodBeat.i(113178);
-    eKd();
-    this.ttl.release();
-    this.ttl = null;
+    fSd();
+    this.wxI.release();
+    this.wxI = null;
     AppMethodBeat.o(113178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.c
  * JD-Core Version:    0.7.0.1
  */

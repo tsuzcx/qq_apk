@@ -101,7 +101,7 @@ public class spannable_wxa_game_link_logo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.spannable_wxa_game_link_logo
  * JD-Core Version:    0.7.0.1
  */

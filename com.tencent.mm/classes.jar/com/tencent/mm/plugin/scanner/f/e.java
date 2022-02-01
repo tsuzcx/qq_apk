@@ -6,66 +6,66 @@ import com.tencent.mm.plugin.scanner.api.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ocr/ImageOCRReporter;", "Lcom/tencent/mm/plugin/scanner/api/ocr/IImageOCRReporter;", "()V", "opReported", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "key", "opType", "", "scene", "reportOCRMenuOp", "", "reset", "Companion", "ResultOpType", "ZoomOpType", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/ocr/ImageOCRReporter;", "Lcom/tencent/mm/plugin/scanner/api/ocr/IImageOCRReporter;", "()V", "opReported", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "key", "opType", "", "scene", "reportOCRMenuOp", "", "reason", "reset", "Companion", "ResultOpType", "ZoomOpType", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   implements b
 {
-  public static final a INz;
-  private final HashMap<String, Boolean> INy;
+  public static final a OUC;
+  private final HashMap<String, Boolean> OUD;
   
   static
   {
-    AppMethodBeat.i(219122);
-    INz = new a((byte)0);
-    AppMethodBeat.o(219122);
+    AppMethodBeat.i(313476);
+    OUC = new a((byte)0);
+    AppMethodBeat.o(313476);
   }
   
   public e()
   {
-    AppMethodBeat.i(219119);
-    this.INy = new HashMap();
-    AppMethodBeat.o(219119);
+    AppMethodBeat.i(313468);
+    this.OUD = new HashMap();
+    AppMethodBeat.o(313468);
   }
   
-  public final void jc(int paramInt1, int paramInt2)
+  public final void aZ(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(219118);
+    AppMethodBeat.i(313495);
     String str = paramInt1 + ',' + paramInt2;
-    Log.v("MicroMsg.ImageOCRReporter", "alvinluo reportOCRMenuOp key: %s, reported: %s", new Object[] { str, this.INy.get(str) });
-    if ((p.h((Boolean)this.INy.get(str), Boolean.TRUE) ^ true))
+    Log.v("MicroMsg.ImageOCRReporter", "alvinluo reportOCRMenuOp key: %s, reported: %s, reason: %s", new Object[] { str, this.OUD.get(str), Integer.valueOf(paramInt3) });
+    if (!s.p(this.OUD.get(str), Boolean.TRUE))
     {
-      ((Map)this.INy).put(str, Boolean.TRUE);
-      h.IzE.a(22143, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+      ((Map)this.OUD).put(str, Boolean.TRUE);
+      h.OAn.b(22143, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
     }
-    AppMethodBeat.o(219118);
+    AppMethodBeat.o(313495);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(219110);
+    AppMethodBeat.i(313483);
     Log.v("MicroMsg.ImageOCRReporter", "alvinluo ImageOCRReporter reset");
-    this.INy.clear();
-    AppMethodBeat.o(219110);
+    this.OUD.clear();
+    AppMethodBeat.o(313483);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ocr/ImageOCRReporter$Companion;", "", "()V", "TAG", "", "reportImageOCRResultOp", "", "sessionId", "", "opType", "", "reportImageZoomOp", "zoomOpType", "plugin-scan_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/ocr/ImageOCRReporter$Companion;", "", "()V", "TAG", "", "reportImageOCRResultOp", "", "sessionId", "", "opType", "", "reportImageZoomOp", "zoomOpType", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static void ab(long paramLong, int paramInt)
+    public static void as(long paramLong, int paramInt)
     {
-      AppMethodBeat.i(220921);
-      h.IzE.a(21699, new Object[] { String.valueOf(paramLong), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(220921);
+      AppMethodBeat.i(313463);
+      h.OAn.b(21699, new Object[] { String.valueOf(paramLong), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(313463);
     }
     
-    public static void ac(long paramLong, int paramInt)
+    public static void at(long paramLong, int paramInt)
     {
-      AppMethodBeat.i(220923);
-      h.IzE.a(21700, new Object[] { String.valueOf(paramLong), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(220923);
+      AppMethodBeat.i(313472);
+      h.OAn.b(21700, new Object[] { String.valueOf(paramLong), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(313472);
     }
   }
 }

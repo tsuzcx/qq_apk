@@ -4,7 +4,7 @@ import android.content.Context;
 
 public abstract class a
 {
-  public static a jTp;
+  public static a mtH;
   
   public abstract void a(int paramInt, String paramString1, String paramString2, long paramLong);
   
@@ -24,11 +24,11 @@ public abstract class a
   
   public abstract void c(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3);
   
-  public abstract void k(Context paramContext, String paramString1, String paramString2);
+  public abstract void o(Context paramContext, String paramString1, String paramString2);
   
-  public abstract void k(String paramString1, String paramString2, String paramString3);
+  public abstract void p(String paramString1, String paramString2, String paramString3);
   
-  public abstract void n(String paramString, int paramInt1, int paramInt2);
+  public abstract void q(String paramString, int paramInt1, int paramInt2);
 }
 
 

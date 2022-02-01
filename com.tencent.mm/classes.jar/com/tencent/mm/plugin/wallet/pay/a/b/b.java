@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.wallet.pay.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
-  private static long OxK = 0L;
+  private static long VmV = 0L;
   
-  public static void aG(String paramString, int paramInt1, int paramInt2)
+  public static void aO(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(69280);
     long l = System.currentTimeMillis();
-    if (l - OxK > 1000L)
+    if (l - VmV > 1000L)
     {
-      OxK = l;
+      VmV = l;
       if (Util.isNullOrNil(paramString)) {
         break label269;
       }
@@ -30,8 +30,8 @@ public final class b
       if (paramString != null)
       {
         Log.v("NetSceneCancelPayHelper", "start cancelPay request");
-        com.tencent.mm.kernel.h.aHH();
-        com.tencent.mm.kernel.h.aHF().kcd.a(paramString, 0);
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baD().mCm.a(paramString, 0);
       }
       AppMethodBeat.o(69280);
       return;
@@ -60,7 +60,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.b.b
  * JD-Core Version:    0.7.0.1
  */

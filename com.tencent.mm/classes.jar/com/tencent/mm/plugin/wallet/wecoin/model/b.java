@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.wallet.wecoin.model;
 
-import com.tencent.mm.protocal.protobuf.dms;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.efg;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/model/InterceptWinClickListener;", "", "onClick", "", "item", "Lcom/tencent/mm/protocal/protobuf/PopUpJumpInfo;", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet/wecoin/model/InterceptWinClickListener;", "", "onClick", "", "item", "Lcom/tencent/mm/protocal/protobuf/PopUpJumpInfo;", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface b
 {
-  public abstract void a(dms paramdms);
+  public abstract void a(efg paramefg);
 }
 
 

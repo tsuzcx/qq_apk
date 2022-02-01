@@ -1,66 +1,71 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import com.tencent.luggage.a.b;
+import android.content.Context;
+import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.widget.SwipeBackLayout;
+import com.tencent.mm.vending.c.a;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider;", "Lcom/tencent/luggage/base/ICustomize;", "getExpectedPadding", "Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider$Padding;", "getExpectedSize", "Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider$Size;", "Padding", "Size", "luggage-wxa-app_release"})
-public abstract interface af
-  extends b
+@Metadata(d1={""}, d2={"askScreenStatus", "", "context", "Landroid/content/Context;", "onScreenStatusGot", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isScreenOn", "runIfDrawStatusBarLayoutPresent", "activity", "Lcom/tencent/mm/ui/MMActivity;", "function", "Lcom/tencent/mm/vending/functional/Functional;", "Ljava/lang/Void;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "plugin-appbrand-integration_release"}, k=2, mv={1, 5, 1}, xi=48)
+public final class af
 {
-  public abstract a Qg();
-  
-  public abstract af.b ckx();
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider$Padding;", "", "left", "", "top", "right", "bottom", "(IIII)V", "getBottom", "()I", "getLeft", "getRight", "getTop", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "luggage-wxa-app_release"})
-  public static final class a
+  public static final void a(MMActivity paramMMActivity, a<Void, com.tencent.mm.ui.statusbar.b> parama)
   {
-    public final int bottom;
-    public final int left;
-    public final int right;
-    public final int top;
-    
-    public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    AppMethodBeat.i(51154);
+    paramMMActivity = paramMMActivity.getSwipeBackLayout();
+    if (paramMMActivity == null)
     {
-      this.left = paramInt1;
-      this.top = paramInt2;
-      this.right = paramInt3;
-      this.bottom = paramInt4;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((this.left != paramObject.left) || (this.top != paramObject.top) || (this.right != paramObject.right) || (this.bottom != paramObject.bottom)) {}
-        }
+      paramMMActivity = null;
+      if (!(paramMMActivity instanceof com.tencent.mm.ui.statusbar.b)) {
+        break label54;
       }
-      else {
-        return true;
+    }
+    label54:
+    for (paramMMActivity = (com.tencent.mm.ui.statusbar.b)paramMMActivity;; paramMMActivity = null)
+    {
+      if (paramMMActivity != null) {
+        parama.call(paramMMActivity);
       }
-      return false;
+      AppMethodBeat.o(51154);
+      return;
+      paramMMActivity = paramMMActivity.getTargetContentView();
+      break;
     }
-    
-    public final int hashCode()
+  }
+  
+  public static final void c(Context paramContext, kotlin.g.a.b<? super Boolean, ah> paramb)
+  {
+    AppMethodBeat.i(322043);
+    s.u(paramContext, "context");
+    s.u(paramb, "onScreenStatusGot");
+    MMHandlerThread.postToMainThread(new af..ExternalSyntheticLambda0(paramContext, paramb));
+    AppMethodBeat.o(322043);
+  }
+  
+  private static final void d(Context paramContext, kotlin.g.a.b paramb)
+  {
+    AppMethodBeat.i(322050);
+    s.u(paramContext, "$context");
+    s.u(paramb, "$onScreenStatusGot");
+    paramContext = paramContext.getSystemService("power");
+    if (paramContext == null)
     {
-      return ((this.left * 31 + this.top) * 31 + this.right) * 31 + this.bottom;
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.os.PowerManager");
+      AppMethodBeat.o(322050);
+      throw paramContext;
     }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(135603);
-      String str = "Padding(left=" + this.left + ", top=" + this.top + ", right=" + this.right + ", bottom=" + this.bottom + ")";
-      AppMethodBeat.o(135603);
-      return str;
-    }
+    paramb.invoke(Boolean.valueOf(((PowerManager)paramContext).isInteractive()));
+    AppMethodBeat.o(322050);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.af
  * JD-Core Version:    0.7.0.1
  */

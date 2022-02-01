@@ -12,26 +12,29 @@ import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.a.g;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.model.k;
 import com.tencent.mm.plugin.hld.view.ImeGridScrollView;
 import com.tencent.mm.plugin.hld.view.a.a;
-import com.tencent.mm.plugin.hld.view.f;
+import com.tencent.mm.plugin.hld.view.e;
 import java.util.List;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridScrollView;", "Lcom/tencent/mm/plugin/hld/view/ImeGridScrollView;", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridViewHolder$ISymbolGridViewListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "currentSymbolType", "", "getAdapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "onClick", "", "symbolStr", "pressTime", "", "reset", "updateSymbolType", "symbolType", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridScrollView;", "Lcom/tencent/mm/plugin/hld/view/ImeGridScrollView;", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridViewHolder$ISymbolGridViewListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "currentSymbolType", "", "getAdapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "onClick", "", "symbolStr", "pressTime", "", "reset", "updateSymbolType", "symbolType", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ImeSymbolGridScrollView
   extends ImeGridScrollView
   implements e.a
 {
-  public static final a DFq;
-  private String DFp;
+  public static final ImeSymbolGridScrollView.a JwW;
+  private String JwX;
   
   static
   {
-    AppMethodBeat.i(209677);
-    DFq = new a((byte)0);
-    AppMethodBeat.o(209677);
+    AppMethodBeat.i(312208);
+    JwW = new ImeSymbolGridScrollView.a((byte)0);
+    AppMethodBeat.o(312208);
   }
   
   public ImeSymbolGridScrollView(Context paramContext, AttributeSet paramAttributeSet)
@@ -47,99 +50,96 @@ public final class ImeSymbolGridScrollView
   private ImeSymbolGridScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(209676);
-    paramContext = com.tencent.mm.plugin.hld.f.b.DGL;
-    this.DFp = com.tencent.mm.plugin.hld.f.b.eFV();
+    AppMethodBeat.i(312200);
+    paramContext = com.tencent.mm.plugin.hld.f.b.Jyf;
+    this.JwX = com.tencent.mm.plugin.hld.f.b.fNO();
     initView();
-    AppMethodBeat.o(209676);
+    AppMethodBeat.o(312200);
   }
   
-  public final void aB(String paramString, long paramLong)
+  public final void aIt(String paramString)
   {
-    AppMethodBeat.i(209668);
-    p.k(paramString, "symbolStr");
-    Object localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    com.tencent.mm.plugin.hld.f.l.it("WxIme.ImeSymbolGridScrollView", "onClick ".concat(String.valueOf(paramString)));
-    localObject = (com.tencent.mm.plugin.hld.a.d)h.ae(com.tencent.mm.plugin.hld.a.d.class);
-    if (localObject != null)
+    AppMethodBeat.i(312277);
+    s.u(paramString, "symbolType");
+    this.JwX = paramString;
+    Object localObject = getScrollContainerRv().getAdapter();
+    if ((localObject instanceof d)) {}
+    for (localObject = (d)localObject;; localObject = null)
     {
-      localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).eCD();
       if (localObject != null)
       {
-        localObject = ((com.tencent.mm.plugin.hld.a.b)localObject).eCr();
+        localObject = (e)localObject;
+        RecyclerView localRecyclerView = getScrollContainerRv();
+        com.tencent.mm.plugin.hld.f.b localb = com.tencent.mm.plugin.hld.f.b.Jyf;
+        Context localContext = getContext();
+        s.s(localContext, "context");
+        e.a((e)localObject, localRecyclerView, (List)localb.be(localContext, this.JwX), paramString, false, 8);
+      }
+      AppMethodBeat.o(312277);
+      return;
+    }
+  }
+  
+  public final void aL(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(312239);
+    s.u(paramString, "symbolStr");
+    Object localObject = l.JyV;
+    l.jC("WxIme.ImeSymbolGridScrollView", s.X("onClick ", paramString));
+    localObject = (com.tencent.mm.plugin.hld.a.d)h.ax(com.tencent.mm.plugin.hld.a.d.class);
+    if (localObject != null)
+    {
+      localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).fKG();
+      if (localObject != null)
+      {
+        localObject = ((com.tencent.mm.plugin.hld.a.b)localObject).fKC();
         if (localObject != null)
         {
           paramString = new g(paramString);
-          paramString.Dui = paramLong;
+          paramString.JnG = paramLong;
+          ah localah = ah.aiuX;
           ((c)localObject).b(paramString);
         }
       }
     }
-    paramString = k.DDb;
-    k.hO(500, 1);
-    AppMethodBeat.o(209668);
-  }
-  
-  public final void aLB(String paramString)
-  {
-    AppMethodBeat.i(209674);
-    p.k(paramString, "symbolType");
-    this.DFp = paramString;
-    Object localObject2 = getScrollContainerRv().getAdapter();
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof d)) {
-      localObject1 = null;
-    }
-    localObject1 = (d)localObject1;
-    if (localObject1 != null)
-    {
-      localObject2 = getScrollContainerRv();
-      com.tencent.mm.plugin.hld.f.b localb = com.tencent.mm.plugin.hld.f.b.DGL;
-      Context localContext = getContext();
-      p.j(localContext, "context");
-      f.a((f)localObject1, (RecyclerView)localObject2, (List)localb.bc(localContext, this.DFp), paramString, false, 8);
-      AppMethodBeat.o(209674);
-      return;
-    }
-    AppMethodBeat.o(209674);
+    paramString = k.JvH;
+    k.YA(500);
+    AppMethodBeat.o(312239);
   }
   
   public final RecyclerView.a<RecyclerView.v> getAdapter()
   {
-    AppMethodBeat.i(209666);
+    AppMethodBeat.i(312224);
     Object localObject = getContext();
-    p.j(localObject, "context");
-    com.tencent.mm.plugin.hld.f.b localb = com.tencent.mm.plugin.hld.f.b.DGL;
+    s.s(localObject, "context");
+    com.tencent.mm.plugin.hld.f.b localb = com.tencent.mm.plugin.hld.f.b.Jyf;
     Context localContext = getContext();
-    p.j(localContext, "context");
-    localObject = (RecyclerView.a)new d((Context)localObject, localb.bc(localContext, this.DFp), this.DFp, (e.a)this);
-    AppMethodBeat.o(209666);
+    s.s(localContext, "context");
+    localObject = (RecyclerView.a)new d((Context)localObject, localb.be(localContext, this.JwX), this.JwX, (e.a)this);
+    AppMethodBeat.o(312224);
     return localObject;
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(209672);
+    AppMethodBeat.i(312263);
     Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = new a.a((Context)localObject).UN(a.d.ime_divider_size).UM(a.d.ime_divider_size).UL(a.c.ime_divider_color);
-    ((a.a)localObject).CbQ = false;
-    localObject = (RecyclerView.h)((a.a)localObject).eHD();
-    AppMethodBeat.o(209672);
+    s.s(localObject, "context");
+    localObject = new a.a((Context)localObject).YL(a.d.ime_divider_size).YK(a.d.ime_divider_size).YJ(a.c.ime_divider_color);
+    ((a.a)localObject).HNS = false;
+    localObject = (RecyclerView.h)((a.a)localObject).fPp();
+    AppMethodBeat.o(312263);
     return localObject;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(209670);
+    AppMethodBeat.i(312249);
     super.reset();
-    com.tencent.mm.plugin.hld.f.b localb = com.tencent.mm.plugin.hld.f.b.DGL;
-    aLB(com.tencent.mm.plugin.hld.f.b.eFV());
-    AppMethodBeat.o(209670);
+    com.tencent.mm.plugin.hld.f.b localb = com.tencent.mm.plugin.hld.f.b.Jyf;
+    aIt(com.tencent.mm.plugin.hld.f.b.fNO());
+    AppMethodBeat.o(312249);
   }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolGridScrollView$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
 }
 
 

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import com.tencent.mm.emoji.b.b.ad;
-import com.tencent.mm.emoji.b.b.y;
-import kotlin.l;
+import com.tencent.mm.emoji.c.b.ad;
+import com.tencent.mm.emoji.c.b.y;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emoji/model/AbsEmojiCustomGroupModel;", "T", "Lcom/tencent/mm/emoji/model/panel/IPanelItemGroup;", "Lcom/tencent/mm/emoji/model/panel/PanelGroupModel;", "()V", "entrance", "", "getEntrance", "()Z", "setEntrance", "(Z)V", "plugin-emoji_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emoji/model/AbsEmojiCustomGroupModel;", "T", "Lcom/tencent/mm/emoji/model/panel/IPanelItemGroup;", "Lcom/tencent/mm/emoji/model/panel/PanelGroupModel;", "()V", "entrance", "", "getEntrance", "()Z", "setEntrance", "(Z)V", "plugin-emoji_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a<T extends y>
   extends ad<T>
 {
-  private boolean uDV;
+  private boolean xMm;
   
-  public void cUC()
+  public void dzJ()
   {
-    this.uDV = true;
+    this.xMm = true;
   }
 }
 

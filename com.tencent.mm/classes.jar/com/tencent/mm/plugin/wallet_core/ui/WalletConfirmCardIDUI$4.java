@@ -15,16 +15,16 @@ final class WalletConfirmCardIDUI$4
   {
     AppMethodBeat.i(70933);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/wallet_core/ui/WalletConfirmCardIDUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.OYQ.hideTenpayKB();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet_core/ui/WalletConfirmCardIDUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.VPe.hideTenpayKB();
     a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletConfirmCardIDUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(70933);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletConfirmCardIDUI.4
  * JD-Core Version:    0.7.0.1
  */

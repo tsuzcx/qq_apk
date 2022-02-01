@@ -39,17 +39,17 @@ public class LuckMoneyUseCaseCallback
       {
         localIntent = new Intent();
         localIntent.putExtra("key_trans_id", paramITransmitKvData);
-        if (localPayInfo.lfu != null) {
-          bool = localPayInfo.lfu.getBoolean("isF2FHongBao", false);
+        if (localPayInfo.nKf != null) {
+          bool = localPayInfo.nKf.getBoolean("isF2FHongBao", false);
         }
         if (!bool) {
           break;
         }
-        ((LuckyMoneyPrepareUI)localObject).i(i, localIntent);
+        ((LuckyMoneyPrepareUI)localObject).l(i, localIntent);
         AppMethodBeat.o(18710);
         return;
       }
-      ((LuckyMoneyPrepareUI)localObject).j(i, localIntent);
+      ((LuckyMoneyPrepareUI)localObject).m(i, localIntent);
     }
     AppMethodBeat.o(18710);
   }
@@ -63,7 +63,7 @@ public class LuckMoneyUseCaseCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.LuckMoneyUseCaseCallback
  * JD-Core Version:    0.7.0.1
  */

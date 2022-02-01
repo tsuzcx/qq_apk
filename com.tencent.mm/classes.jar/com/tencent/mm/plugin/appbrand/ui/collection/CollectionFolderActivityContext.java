@@ -3,16 +3,18 @@ package com.tencent.mm.plugin.appbrand.ui.collection;
 import android.content.Intent;
 import android.view.View;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.e;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import com.tencent.luggage.sdk.processes.LuggageServiceType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.appusage.ae;
+import com.tencent.mm.plugin.appbrand.appusage.ae.a;
 import com.tencent.mm.plugin.appbrand.appusage.af;
-import com.tencent.mm.plugin.appbrand.appusage.af.a;
-import com.tencent.mm.plugin.appbrand.appusage.ag;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.plugin.appbrand.report.j;
-import com.tencent.mm.plugin.appbrand.service.z;
+import com.tencent.mm.plugin.appbrand.service.ab;
+import com.tencent.mm.plugin.appbrand.task.i;
 import com.tencent.mm.plugin.appbrand.task.i.a;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherBlankPage;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI.Fragment;
@@ -21,10 +23,10 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
 import com.tencent.mm.sdk.storage.MStorageEventData;
 import com.tencent.mm.ui.MMActivity;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionFolderActivityContext;", "Lcom/tencent/mm/plugin/appbrand/ui/launcher/FolderActivityContextWithLifecycle;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "TAG", "", "onActivityDidCreate", "", "intent", "Landroid/content/Intent;", "onActivityDidResume", "onActivityWillDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "showListPage", "showList", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionFolderActivityContext;", "Lcom/tencent/mm/plugin/appbrand/ui/launcher/FolderActivityContextWithLifecycle;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "TAG", "", "onActivityDidCreate", "", "intent", "Landroid/content/Intent;", "onActivityDidResume", "onActivityWillDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "showListPage", "showList", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class CollectionFolderActivityContext
   extends FolderActivityContextWithLifecycle
   implements MStorage.IOnStorageChange
@@ -39,96 +41,83 @@ public final class CollectionFolderActivityContext
     AppMethodBeat.o(51263);
   }
   
-  public final void Q(Intent paramIntent)
+  private static final void a(CollectionFolderActivityContext paramCollectionFolderActivityContext)
+  {
+    AppMethodBeat.i(322673);
+    s.u(paramCollectionFolderActivityContext, "this$0");
+    paramCollectionFolderActivityContext.kT(true);
+    AppMethodBeat.o(322673);
+  }
+  
+  public final void T(Intent paramIntent)
   {
     AppMethodBeat.i(51260);
-    View localView = getActivity().findViewById(16908290);
+    View localView = ((MMActivity)getBaseContext()).findViewById(16908290);
     if (localView != null) {
       localView.setBackgroundColor(-855310);
     }
-    jE(true);
+    kT(true);
     if (paramIntent != null)
     {
       int i = paramIntent.getIntExtra("extra_get_usage_reason", 7);
       int j = paramIntent.getIntExtra("extra_get_usage_prescene", 0);
-      paramIntent = af.nQe;
-      af.a.a(i, j, null, 4);
-      AppMethodBeat.o(51260);
-      return;
+      paramIntent = ae.qPW;
+      ae.a.a(i, j, null, 4);
     }
     AppMethodBeat.o(51260);
   }
   
-  public final void jE(boolean paramBoolean)
+  public final void kT(boolean paramBoolean)
   {
     AppMethodBeat.i(51259);
-    Object localObject1 = getActivity();
-    p.j(localObject1, "activity");
-    if (((MMActivity)localObject1).isFinishing())
+    if (((MMActivity)getBaseContext()).isFinishing())
     {
       AppMethodBeat.o(51259);
       return;
     }
     if (paramBoolean) {}
-    Object localObject2;
-    for (localObject1 = AppBrandCollectionDisplayVerticalList.class;; localObject1 = AppBrandLauncherBlankPage.class)
+    for (Object localObject1 = AppBrandCollectionDisplayVerticalList.class; ((Class)localObject1).isInstance(((MMActivity)getBaseContext()).getSupportFragmentManager().findFragmentById(16908290)); localObject1 = AppBrandLauncherBlankPage.class)
     {
-      localObject2 = getActivity();
-      p.j(localObject2, "activity");
-      if (!((Class)localObject1).isInstance(((MMActivity)localObject2).getSupportFragmentManager().findFragmentById(16908290))) {
-        break;
-      }
       AppMethodBeat.o(51259);
       return;
     }
-    getActivity().removeAllOptionMenu();
-    label131:
-    ag localag;
-    label193:
+    ((MMActivity)getBaseContext()).removeAllOptionMenu();
+    Object localObject2;
+    label119:
     int i;
     if (paramBoolean)
     {
-      getActivity().showActionbarLine();
-      localObject1 = getActivity();
-      p.j(localObject1, "activity");
-      localObject2 = ((MMActivity)localObject1).getSupportFragmentManager().beginTransaction();
+      ((MMActivity)getBaseContext()).showActionbarLine();
+      localObject2 = ((MMActivity)getBaseContext()).getSupportFragmentManager().beginTransaction();
       if (!paramBoolean) {
-        break label361;
+        break label319;
       }
       localObject1 = (AppBrandLauncherUI.Fragment)new AppBrandCollectionDisplayVerticalList();
-      ((androidx.fragment.app.i)localObject2).b(16908290, (Fragment)localObject1).ip();
-      localag = (ag)h.ae(ag.class);
-      localObject1 = getActivity();
-      if (localObject1 != null)
-      {
-        localObject1 = ((MMActivity)localObject1).getIntent();
-        if (localObject1 != null)
-        {
-          localObject2 = ((Intent)localObject1).getStringExtra("extra_enter_scene_note");
-          localObject1 = localObject2;
-          if (localObject2 != null) {
-            break label193;
-          }
-        }
+      ((r)localObject2).b(16908290, (Fragment)localObject1).FX();
+      localObject2 = (af)h.ax(af.class);
+      localObject1 = (MMActivity)getBaseContext();
+      if (localObject1 != null) {
+        break label355;
       }
       localObject1 = "";
-      localObject2 = getActivity();
-      if (localObject2 != null)
+      label159:
+      Object localObject3 = (MMActivity)getBaseContext();
+      if (localObject3 != null)
       {
-        localObject2 = ((MMActivity)localObject2).getIntent();
-        if (localObject2 != null)
+        localObject3 = ((MMActivity)localObject3).getIntent();
+        if (localObject3 != null)
         {
-          i = ((Intent)localObject2).getIntExtra("extra_enter_scene", -1);
-          Log.i(this.TAG, "EnterScene = ".concat(String.valueOf(i)));
+          i = ((Intent)localObject3).getIntExtra("extra_enter_scene", -1);
+          Log.i(this.TAG, s.X("EnterScene = ", Integer.valueOf(i)));
         }
       }
       switch (i)
       {
       case 2: 
       default: 
-        label272:
+        label240:
         if (!paramBoolean) {
-          localag.add(this.TAG + ".WORKER", (MStorage.IOnStorageChange)this);
+          ((af)localObject2).add(s.X(this.TAG, ".WORKER"), (MStorage.IOnStorageChange)this);
         }
         break;
       }
@@ -137,28 +126,42 @@ public final class CollectionFolderActivityContext
     {
       if (paramBoolean)
       {
-        localObject1 = com.tencent.mm.plugin.appbrand.task.i.qRL;
-        i.a.cjb().a(LuggageServiceType.cBP, z.qOU);
-        localObject1 = com.tencent.mm.plugin.appbrand.task.i.qRL;
-        i.a.cjb().a(LuggageServiceType.cBQ, z.qOU);
+        localObject1 = i.tWq;
+        i.a.cJV().a(LuggageServiceType.euv, ab.tTL);
+        localObject1 = i.tWq;
+        i.a.cJV().a(LuggageServiceType.euw, ab.tTL);
       }
       AppMethodBeat.o(51259);
       return;
-      getActivity().hideActionbarLine();
+      ((MMActivity)getBaseContext()).hideActionbarLine();
       break;
-      label361:
-      localObject1 = (AppBrandLauncherUI.Fragment)AppBrandLauncherBlankPage.eX(getActivity().getString(au.i.app_brand_recents_list_collection_entrance), getActivity().getString(au.i.app_brand_collection_list_blank_page_tip));
-      break label131;
-      j.au(i, (String)localObject1);
-      break label272;
-      localag.remove((MStorage.IOnStorageChange)this);
+      label319:
+      localObject1 = (AppBrandLauncherUI.Fragment)AppBrandLauncherBlankPage.fo(((MMActivity)getBaseContext()).getString(ba.i.app_brand_recents_list_collection_entrance), ((MMActivity)getBaseContext()).getString(ba.i.app_brand_collection_list_blank_page_tip));
+      break label119;
+      label355:
+      localObject1 = ((MMActivity)localObject1).getIntent();
+      if (localObject1 == null)
+      {
+        localObject1 = "";
+        break label159;
+      }
+      localObject1 = ((Intent)localObject1).getStringExtra("extra_enter_scene_note");
+      if (localObject1 == null)
+      {
+        localObject1 = "";
+        break label159;
+      }
+      break label159;
+      j.aG(i, (String)localObject1);
+      break label240;
+      ((af)localObject2).remove((MStorage.IOnStorageChange)this);
     }
   }
   
   public final void onActivityDidResume()
   {
     AppMethodBeat.i(51261);
-    getActivity().setMMTitle(au.i.app_brand_recents_list_collection_entrance);
+    ((MMActivity)getBaseContext()).setMMTitle(ba.i.app_brand_recents_list_collection_entrance);
     AppMethodBeat.o(51261);
   }
   
@@ -166,38 +169,22 @@ public final class CollectionFolderActivityContext
   {
     AppMethodBeat.i(51262);
     super.onActivityWillDestroy();
-    ((ag)h.ae(ag.class)).remove((MStorage.IOnStorageChange)this);
+    ((af)h.ax(af.class)).remove((MStorage.IOnStorageChange)this);
     AppMethodBeat.o(51262);
   }
   
   public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
   {
     AppMethodBeat.i(51258);
-    paramString = h.ae(ag.class);
-    p.j(paramString, "MMKernel.service(IAppBra…ctionStorage::class.java)");
-    if (((ag)paramString).getCount() > 0) {
-      getActivity().runOnUiThread((Runnable)new a(this));
+    if (((af)h.ax(af.class)).getCount() > 0) {
+      ((MMActivity)getBaseContext()).runOnUiThread(new CollectionFolderActivityContext..ExternalSyntheticLambda0(this));
     }
     AppMethodBeat.o(51258);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    a(CollectionFolderActivityContext paramCollectionFolderActivityContext) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(51257);
-      this.rcD.jE(true);
-      AppMethodBeat.o(51257);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.CollectionFolderActivityContext
  * JD-Core Version:    0.7.0.1
  */

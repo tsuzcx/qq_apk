@@ -4,51 +4,51 @@ import com.tencent.mm.plugin.multitalk.ui.widget.o;
 
 public abstract interface e
 {
-  public abstract void a(v.a parama);
+  public abstract void a(u.a parama);
   
   public abstract void a(o paramo);
   
-  public abstract void aQe(String paramString);
+  public abstract void aMZ(String paramString);
   
-  public abstract void aQf(String paramString);
+  public abstract void aNa(String paramString);
   
-  public abstract boolean aXN();
+  public abstract boolean bsA();
   
-  public abstract void eIN();
+  public abstract void fQN();
   
-  public abstract void eIO();
+  public abstract void fQY();
   
-  public abstract void eIX();
+  public abstract void fQZ();
   
-  public abstract void eIY();
+  public abstract void fwx();
   
-  public abstract void eRL();
+  public abstract void gau();
   
-  public abstract void eWh();
+  public abstract void geY();
   
-  public abstract void eWi();
+  public abstract void geZ();
   
-  public abstract void eWj();
+  public abstract void gfa();
   
-  public abstract void eWk();
+  public abstract void gfb();
   
-  public abstract void eWl();
+  public abstract void gfc();
   
-  public abstract void eWm();
+  public abstract void gfd();
   
-  public abstract void im(int paramInt1, int paramInt2);
+  public abstract void jQ(int paramInt1, int paramInt2);
   
-  public abstract void kv(int paramInt);
+  public abstract void oc(int paramInt);
   
-  public abstract void uA(boolean paramBoolean);
+  public abstract void yN(boolean paramBoolean);
   
-  public abstract void uy(boolean paramBoolean);
+  public abstract void yO(boolean paramBoolean);
   
-  public abstract void uz(boolean paramBoolean);
+  public abstract void yP(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.e
  * JD-Core Version:    0.7.0.1
  */

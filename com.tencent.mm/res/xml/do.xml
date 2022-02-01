@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory android:title="@string/fpz" />
+    <SelectPreference android:defaultValue="false" android:key="settings_wxime_s1_chinese_t9" android:persistent="false" android:title="@string/fnh" />
+    <SelectPreference android:defaultValue="false" android:key="settings_wxime_s2_chinese_qwerty" android:persistent="false" android:title="@string/fng" />
+    <PreferenceTitleCategory android:title="@string/fpy" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_wxime_enable_key_sound" android:persistent="false" android:title="@string/fqf" />
+</PreferenceScreen>

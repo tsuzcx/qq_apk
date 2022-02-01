@@ -4,11 +4,11 @@ import java.util.Map;
 
 public abstract interface c
 {
-  public abstract void au(Map<String, String> paramMap);
+  public abstract void aK(Map<String, String> paramMap);
   
-  public abstract String fnm();
+  public abstract String gxZ();
   
-  public abstract void fnn();
+  public abstract void gya();
 }
 
 

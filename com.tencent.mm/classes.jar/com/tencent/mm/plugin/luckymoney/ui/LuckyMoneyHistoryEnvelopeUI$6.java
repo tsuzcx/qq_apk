@@ -6,8 +6,8 @@ import android.os.Build.VERSION;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.i;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.widget.a.i;
 
 final class LuckyMoneyHistoryEnvelopeUI$6
   implements DialogInterface.OnShowListener
@@ -16,13 +16,13 @@ final class LuckyMoneyHistoryEnvelopeUI$6
   
   public final void onShow(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(228671);
+    AppMethodBeat.i(284514);
     int i;
     if (Build.VERSION.SDK_INT >= 23)
     {
-      paramDialogInterface = this.qVA.getWindow().getDecorView();
+      paramDialogInterface = this.ubf.getWindow().getDecorView();
       i = paramDialogInterface.getSystemUiVisibility();
-      if (!ar.isDarkMode()) {
+      if (!aw.isDarkMode()) {
         break label52;
       }
       i &= 0xFFFFDFFF;
@@ -30,7 +30,7 @@ final class LuckyMoneyHistoryEnvelopeUI$6
     for (;;)
     {
       paramDialogInterface.setSystemUiVisibility(i);
-      AppMethodBeat.o(228671);
+      AppMethodBeat.o(284514);
       return;
       label52:
       i |= 0x2000;

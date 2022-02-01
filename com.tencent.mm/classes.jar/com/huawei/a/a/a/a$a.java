@@ -12,7 +12,7 @@ public abstract class a$a
   extends Binder
   implements a
 {
-  public static a h(IBinder paramIBinder)
+  public static a i(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -35,13 +35,13 @@ public abstract class a$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.huawei.multimedia.audioengine.IHwAudioEngine");
-      paramParcel1 = Kc();
+      paramParcel1 = akd();
       paramParcel2.writeNoException();
       paramParcel2.writeList(paramParcel1);
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.huawei.multimedia.audioengine.IHwAudioEngine");
-      boolean bool = ie(paramParcel1.readInt());
+      boolean bool = lJ(paramParcel1.readInt());
       paramParcel2.writeNoException();
       if (bool) {}
       for (paramInt1 = 1;; paramInt1 = 0)
@@ -51,7 +51,7 @@ public abstract class a$a
       }
     }
     paramParcel1.enforceInterface("com.huawei.multimedia.audioengine.IHwAudioEngine");
-    z(paramParcel1.readString(), paramParcel1.readString());
+    F(paramParcel1.readString(), paramParcel1.readString());
     paramParcel2.writeNoException();
     return true;
   }
@@ -66,9 +66,31 @@ public abstract class a$a
       this.mRemote = paramIBinder;
     }
     
-    public final List Kc()
+    public final void F(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(213578);
+      AppMethodBeat.i(208287);
+      Parcel localParcel1 = Parcel.obtain();
+      Parcel localParcel2 = Parcel.obtain();
+      try
+      {
+        localParcel1.writeInterfaceToken("com.huawei.multimedia.audioengine.IHwAudioEngine");
+        localParcel1.writeString(paramString1);
+        localParcel1.writeString(paramString2);
+        this.mRemote.transact(3, localParcel1, localParcel2, 0);
+        localParcel2.readException();
+        return;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(208287);
+      }
+    }
+    
+    public final List akd()
+    {
+      AppMethodBeat.i(208277);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -83,7 +105,7 @@ public abstract class a$a
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(213578);
+        AppMethodBeat.o(208277);
       }
     }
     
@@ -92,10 +114,10 @@ public abstract class a$a
       return this.mRemote;
     }
     
-    public final boolean ie(int paramInt)
+    public final boolean lJ(int paramInt)
     {
       boolean bool = false;
-      AppMethodBeat.i(213580);
+      AppMethodBeat.i(208282);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -114,29 +136,7 @@ public abstract class a$a
       {
         localParcel2.recycle();
         localParcel1.recycle();
-        AppMethodBeat.o(213580);
-      }
-    }
-    
-    public final void z(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(213582);
-      Parcel localParcel1 = Parcel.obtain();
-      Parcel localParcel2 = Parcel.obtain();
-      try
-      {
-        localParcel1.writeInterfaceToken("com.huawei.multimedia.audioengine.IHwAudioEngine");
-        localParcel1.writeString(paramString1);
-        localParcel1.writeString(paramString2);
-        this.mRemote.transact(3, localParcel1, localParcel2, 0);
-        localParcel2.readException();
-        return;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-        AppMethodBeat.o(213582);
+        AppMethodBeat.o(208282);
       }
     }
   }

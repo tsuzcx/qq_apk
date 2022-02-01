@@ -1,25 +1,25 @@
 package com.tencent.mm.emoji.sync;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/sync/IEmojiSyncLoader;", "", "checkSyncEmoji", "", "start", "", "destroy", "getSyncCount", "", "getTargetSyncCount", "getWaitingIndex", "hasMore", "init", "loadMore", "registerCallback", "callback", "Lcom/tencent/mm/emoji/sync/EmojiSyncLoader$LoadCallback;", "unregisterCallback", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/sync/IEmojiSyncLoader;", "", "checkSyncEmoji", "", "start", "", "destroy", "getSyncCount", "", "getTargetSyncCount", "getWaitingIndex", "hasMore", "init", "loadMore", "registerCallback", "callback", "Lcom/tencent/mm/emoji/sync/EmojiSyncLoader$LoadCallback;", "unregisterCallback", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface j
 {
   public abstract void a(g.i parami);
   
-  public abstract void aDi();
+  public abstract void aWi();
   
-  public abstract int aDj();
+  public abstract int aWj();
   
-  public abstract int aDk();
+  public abstract int aWk();
   
-  public abstract boolean aDl();
+  public abstract boolean aWl();
   
   public abstract void b(g.i parami);
   
   public abstract void destroy();
   
-  public abstract void eD(boolean paramBoolean);
+  public abstract void fo(boolean paramBoolean);
   
   public abstract void init();
 }

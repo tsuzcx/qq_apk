@@ -6,21 +6,21 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.k.a;
-import com.tencent.mm.an.k.b;
+import com.tencent.mm.am.j.a;
+import com.tencent.mm.am.j.b;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class i
 {
-  BroadcastReceiver Psl;
+  BroadcastReceiver WiY;
   AudioManager audioManager;
-  private k.a fCs;
-  private k.b fCt;
+  private j.a hHh;
+  private j.b hHi;
   
   public i()
   {
     AppMethodBeat.i(30031);
-    this.fCs = new k.a()
+    this.hHh = new j.a()
     {
       public final void onCompletion()
       {
@@ -29,16 +29,16 @@ public final class i
         throw null;
       }
     };
-    this.fCt = new k.b()
+    this.hHi = new j.b()
     {
-      public final void onError()
+      public final void atR()
       {
         AppMethodBeat.i(30029);
         AppMethodBeat.o(30029);
         throw null;
       }
     };
-    this.Psl = new BroadcastReceiver()
+    this.WiY = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -52,13 +52,13 @@ public final class i
     this.audioManager = ((AudioManager)MMApplicationContext.getContext().getSystemService("audio"));
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.HEADSET_PLUG");
-    MMApplicationContext.getContext().registerReceiver(this.Psl, localIntentFilter);
+    MMApplicationContext.getContext().registerReceiver(this.WiY, localIntentFilter);
     AppMethodBeat.o(30031);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.i
  * JD-Core Version:    0.7.0.1
  */

@@ -2,70 +2,52 @@ package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.ah;
 import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.ArrayList;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class s
   extends m
 {
-  public boolean isRetry;
-  private int limit;
-  public boolean lwF;
-  public int tVD;
-  public int tVE;
-  public int tVF;
-  public int tVG;
-  public String tVH;
-  public List<h> tVI;
-  public long tVc;
+  public String desc;
+  public String hCH;
+  public String wZd;
+  public double wZe;
+  public int wZf;
   
-  public s(int paramInt1, long paramLong, int paramInt2, int paramInt3)
+  public s(double paramDouble, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(63843);
-    this.lwF = false;
-    this.isRetry = false;
-    this.tVI = new ArrayList();
-    this.limit = paramInt2;
-    this.tVE = 0;
+    AppMethodBeat.i(63848);
+    this.wZd = null;
     HashMap localHashMap = new HashMap();
-    localHashMap.put("type", String.valueOf(paramInt1));
-    localHashMap.put("from_timestamp", String.valueOf(paramLong));
-    localHashMap.put("direction_flag", "0");
-    localHashMap.put("num", String.valueOf(paramInt2));
-    localHashMap.put("choose_flag", String.valueOf(paramInt3));
-    setRequestData(localHashMap);
-    AppMethodBeat.o(63843);
-  }
-  
-  public s(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    AppMethodBeat.i(63844);
-    this.lwF = false;
-    this.isRetry = false;
-    this.tVI = new ArrayList();
-    this.isRetry = true;
-    this.limit = paramInt3;
-    this.tVE = paramInt2;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("type", String.valueOf(paramInt1));
-    localHashMap.put("from_timestamp", String.valueOf(paramLong));
-    localHashMap.put("direction_flag", String.valueOf(paramInt2));
-    localHashMap.put("num", String.valueOf(paramInt3));
-    localHashMap.put("choose_flag", String.valueOf(paramInt4));
-    localHashMap.put("try_num", String.valueOf(paramInt5));
-    setRequestData(localHashMap);
-    AppMethodBeat.o(63844);
+    try
+    {
+      localHashMap.put("fee", Math.round(100.0D * paramDouble));
+      localHashMap.put("fee_type", paramString1);
+      localHashMap.put("desc", URLEncoder.encode(paramString2, "UTF-8"));
+      this.wZe = paramDouble;
+      this.hCH = paramString1;
+      this.desc = paramString2;
+      setRequestData(localHashMap);
+      AppMethodBeat.o(63848);
+      return;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("Micromsg.NetSceneTenpayRemittanceQuery", localUnsupportedEncodingException, "", new Object[0]);
+      }
+    }
   }
   
   public final int getFuncId()
   {
-    return 1993;
+    return 1623;
   }
   
   public final int getTenpayCgicmd()
@@ -75,56 +57,28 @@ public final class s
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/f2frcvrcdhissta";
+    return "/cgi-bin/mmpay-bin/transfersetf2ffee";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(63845);
-    Log.d("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "json: %s", new Object[] { paramJSONObject.toString() });
-    this.tVD = paramJSONObject.optInt("choose_flag", 0);
-    this.tVc = paramJSONObject.optLong("from_timestamp", -1L);
-    this.tVF = paramJSONObject.optInt("finish_flag", 0);
-    this.tVG = paramJSONObject.optInt("try_num", 0);
-    this.tVH = paramJSONObject.optString("retmsg", "");
-    paramString = paramJSONObject.optJSONArray("records");
-    if ((paramString == null) || (paramString.length() <= 0))
+    AppMethodBeat.i(63849);
+    Log.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
+    if (paramInt != 0)
     {
-      Log.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "empty records");
-      if (this.tVF == 1)
-      {
-        Log.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "finish query");
-        this.lwF = true;
-      }
-      AppMethodBeat.o(63845);
+      AppMethodBeat.o(63849);
       return;
     }
-    paramInt = 0;
-    while (paramInt < paramString.length()) {
-      try
-      {
-        paramJSONObject = paramString.getJSONObject(paramInt);
-        h localh = new h();
-        localh.type = paramJSONObject.optInt("type", 0);
-        localh.tVc = paramJSONObject.optLong("from_timestamp", 0L);
-        localh.tVd = paramJSONObject.optInt("total_num", 0);
-        localh.fDi = paramJSONObject.optInt("total_amt", 0);
-        this.tVI.add(localh);
-        paramInt += 1;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          Log.printErrStackTrace("MicroMsg.NetSceneTenpayF2fHistoryRecordList", paramJSONObject, "", new Object[0]);
-        }
-      }
-    }
+    this.wZd = paramJSONObject.optString("pay_url");
+    this.wZf = ah.aGs(paramJSONObject.optInt("qrcode_level"));
+    this.desc = paramJSONObject.optString("desc");
+    Log.i("Micromsg.NetSceneTenpayRemittanceQuery", "qrcodeLevel:%s ", new Object[] { Integer.valueOf(this.wZf) });
+    AppMethodBeat.o(63849);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.s
  * JD-Core Version:    0.7.0.1
  */

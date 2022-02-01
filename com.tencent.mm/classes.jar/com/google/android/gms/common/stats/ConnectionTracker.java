@@ -1,13 +1,11 @@
 package com.google.android.gms.common.stats;
 
-import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import com.google.android.gms.common.util.ClientLibraryUtils;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +14,6 @@ public class ConnectionTracker
 {
   private static final Object zztm;
   private static volatile ConnectionTracker zzyg;
-  @VisibleForTesting
   private static boolean zzyh;
   private final List<String> zzyi = Collections.EMPTY_LIST;
   private final List<String> zzyj = Collections.EMPTY_LIST;
@@ -46,7 +43,6 @@ public class ConnectionTracker
     }
   }
   
-  @SuppressLint({"UntrackedBindService"})
   private static boolean zza(Context paramContext, String paramString, Intent paramIntent, ServiceConnection paramServiceConnection, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(4978);
@@ -97,7 +93,6 @@ public class ConnectionTracker
   
   public void logStopService(Service paramService, int paramInt) {}
   
-  @SuppressLint({"UntrackedBindService"})
   public void unbindService(Context paramContext, ServiceConnection paramServiceConnection)
   {
     AppMethodBeat.i(4980);
@@ -107,7 +102,7 @@ public class ConnectionTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.stats.ConnectionTracker
  * JD-Core Version:    0.7.0.1
  */

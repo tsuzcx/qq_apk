@@ -1,72 +1,85 @@
 package com.tencent.mm.plugin.xlabeffect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.xeffect.XEffectLog;
-import com.tencent.mm.xeffect.XEffectLog.b;
-import java.util.Arrays;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.emoji.c.a;
+import com.tencent.mm.xeffect.d;
+import com.tencent.mm.xeffect.d.a;
+import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.xmlpull.v1.XmlPullParser;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/xlabeffect/XLabEffectUtil;", "", "()V", "setupXLog", "", "plugin-xlabeffect_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/xlabeffect/WeVisModelListConfig;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "configVersion", "", "getConfigVersion", "()I", "setConfigVersion", "(I)V", "isValid", "", "()Z", "modelList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/xlabeffect/WeVisModelConfig;", "getModelList", "()Ljava/util/LinkedList;", "sdkVersion", "getSdkVersion", "setSdkVersion", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "", "reportModelRes", "plugin-xlabeffect_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
+  extends a
 {
-  public static final g QQD;
+  public int XKk;
+  public final LinkedList<e> XKl;
+  public int sdkVersion;
   
-  static
+  public g()
   {
-    AppMethodBeat.i(187033);
-    QQD = new g();
-    AppMethodBeat.o(187033);
+    AppMethodBeat.i(261643);
+    this.XKl = new LinkedList();
+    AppMethodBeat.o(261643);
   }
   
-  public static final void hfh()
+  public final void a(String paramString, XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(187027);
-    XEffectLog.a((XEffectLog.b)new a());
-    AppMethodBeat.o(187027);
+    AppMethodBeat.i(261655);
+    s.u(paramString, "tag");
+    s.u(paramXmlPullParser, "parser");
+    switch (paramString.hashCode())
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            skip(paramXmlPullParser);
+            AppMethodBeat.o(261655);
+            return;
+          } while (!paramString.equals("ModelList"));
+          AppMethodBeat.o(261655);
+          return;
+        } while (!paramString.equals("ConfigVersion"));
+        this.XKk = g(paramXmlPullParser);
+        AppMethodBeat.o(261655);
+        return;
+      } while (!paramString.equals("Model"));
+      paramString = new e();
+      paramString.e(paramXmlPullParser);
+      this.XKl.add(paramString);
+      AppMethodBeat.o(261655);
+      return;
+    } while (!paramString.equals("SDKVersion"));
+    this.sdkVersion = g(paramXmlPullParser);
+    AppMethodBeat.o(261655);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/xlabeffect/XLabEffectUtil$setupXLog$1", "Lcom/tencent/mm/xeffect/XEffectLog$ILog;", "d", "", "TAG", "", "format", "args", "", "", "(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V", "e", "i", "v", "w", "plugin-xlabeffect_release"})
-  public static final class a
-    implements XEffectLog.b
+  public final void e(XmlPullParser paramXmlPullParser)
   {
-    public final void d(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(186911);
-      p.k(paramVarArgs, "args");
-      Log.d(paramString1, paramString2, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
-      AppMethodBeat.o(186911);
-    }
-    
-    public final void e(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(186914);
-      p.k(paramVarArgs, "args");
-      Log.e(paramString1, paramString2, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
-      AppMethodBeat.o(186914);
-    }
-    
-    public final void i(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(186912);
-      p.k(paramVarArgs, "args");
-      Log.i(paramString1, paramString2, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
-      AppMethodBeat.o(186912);
-    }
-    
-    public final void w(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(186913);
-      p.k(paramVarArgs, "args");
-      Log.w(paramString1, paramString2, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
-      AppMethodBeat.o(186913);
-    }
+    AppMethodBeat.i(261650);
+    s.u(paramXmlPullParser, "parser");
+    this.XKl.clear();
+    super.e(paramXmlPullParser);
+    AppMethodBeat.o(261650);
+  }
+  
+  public final boolean isValid()
+  {
+    int i = this.sdkVersion;
+    d.a locala = d.agXC;
+    return i == 140;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.xlabeffect.g
  * JD-Core Version:    0.7.0.1
  */

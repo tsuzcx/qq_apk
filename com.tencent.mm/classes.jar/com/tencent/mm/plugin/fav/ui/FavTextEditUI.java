@@ -1,17 +1,16 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.plugin.fav.a.ag;
-import com.tencent.mm.plugin.fav.a.an;
+import com.tencent.mm.am.s;
+import com.tencent.mm.plugin.fav.a.ah;
+import com.tencent.mm.plugin.fav.a.ao;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.y;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.protocal.protobuf.cyi;
-import com.tencent.mm.protocal.protobuf.cyl;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.dpo;
+import com.tencent.mm.protocal.protobuf.dpr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.tools.MMTextInputUI;
@@ -20,7 +19,7 @@ import java.util.LinkedList;
 public class FavTextEditUI
   extends MMTextInputUI
 {
-  public final void X(CharSequence paramCharSequence)
+  public final void ac(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(106934);
     if ((paramCharSequence == null) || (Util.isNullOrNil(paramCharSequence.toString())))
@@ -38,36 +37,36 @@ public class FavTextEditUI
       return;
     }
     LinkedList localLinkedList = new LinkedList();
-    Object localObject1 = new cyi();
-    ((cyi)localObject1).TGG = 4;
-    ((cyi)localObject1).TGH = 0;
+    Object localObject1 = new dpo();
+    ((dpo)localObject1).aaWn = 4;
+    ((dpo)localObject1).aaWo = 0;
     localLinkedList.add(localObject1);
     localObject1 = new LinkedList();
-    Object localObject2 = new cyl();
-    ((cyl)localObject2).CQx = "favitem.desc";
-    ((cyl)localObject2).Izj = Util.nullAs(paramCharSequence, "");
+    Object localObject2 = new dpr();
+    ((dpr)localObject2).IKH = "favitem.desc";
+    ((dpr)localObject2).OzQ = Util.nullAs(paramCharSequence, "");
     ((LinkedList)localObject1).add(localObject2);
-    localObject2 = new cyl();
-    ((cyl)localObject2).CQx = "favitem.edittime";
-    ((cyl)localObject2).Izj = String.valueOf(Util.nowSecond());
+    localObject2 = new dpr();
+    ((dpr)localObject2).IKH = "favitem.edittime";
+    ((dpr)localObject2).OzQ = String.valueOf(Util.nowSecond());
     ((LinkedList)localObject1).add(localObject2);
-    localObject2 = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().Kn(i);
+    localObject2 = ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavItemInfoStorage().mL(i);
     if (localObject2 != null)
     {
       ((g)localObject2).field_edittime = Util.nowSecond();
-      ((g)localObject2).field_favProto.Ud(((g)localObject2).field_edittime);
-      ((g)localObject2).field_favProto.btw(Util.nullAs(paramCharSequence, ""));
-      ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().a((g)localObject2, new String[] { "localId" });
+      ((g)localObject2).field_favProto.yt(((g)localObject2).field_edittime);
+      ((g)localObject2).field_favProto.btn(Util.nullAs(paramCharSequence, ""));
+      ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavItemInfoStorage().a((g)localObject2, new String[] { "localId" });
     }
-    paramCharSequence = new an(i, localLinkedList, (LinkedList)localObject1);
-    com.tencent.mm.kernel.h.aGY().a(paramCharSequence, 0);
-    com.tencent.mm.plugin.report.service.h.IzE.a(10874, new Object[] { Integer.valueOf(1) });
+    paramCharSequence = new ao(i, localLinkedList, (LinkedList)localObject1);
+    com.tencent.mm.kernel.h.aZW().a(paramCharSequence, 0);
+    com.tencent.mm.plugin.report.service.h.OAn.b(10874, new Object[] { Integer.valueOf(1) });
     AppMethodBeat.o(106934);
   }
   
   public int getLayoutId()
   {
-    return s.f.fav_edit_input_ui;
+    return q.f.fav_edit_input_ui;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -75,7 +74,7 @@ public class FavTextEditUI
     AppMethodBeat.i(106933);
     customfixStatusbar(true);
     super.onCreate(paramBundle);
-    setMMTitle(s.i.favorite_edit_title);
+    setMMTitle(q.i.favorite_edit_title);
     AppMethodBeat.o(106933);
   }
   
@@ -87,7 +86,7 @@ public class FavTextEditUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavTextEditUI
  * JD-Core Version:    0.7.0.1
  */

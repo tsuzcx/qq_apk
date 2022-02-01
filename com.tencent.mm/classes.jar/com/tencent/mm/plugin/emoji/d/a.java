@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.emoji.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.b.e;
-import com.tencent.mm.ay.a.c.c;
 import com.tencent.mm.b.p;
+import com.tencent.mm.modelimage.loader.impr.e;
+import com.tencent.mm.network.aa;
 import com.tencent.mm.network.d.b;
-import com.tencent.mm.network.y;
 import com.tencent.mm.network.z;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.m.a.j;
 import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
 import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
@@ -18,10 +17,10 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
 
 public final class a
-  implements c
+  implements com.tencent.mm.modelimage.loader.b.c
 {
   /* Error */
-  public final com.tencent.mm.ay.a.d.b Wt(String paramString)
+  public final com.tencent.mm.modelimage.loader.c.b Os(String paramString)
   {
     // Byte code:
     //   0: ldc 33
@@ -110,11 +109,11 @@ public final class a
     //   161: getfield 50	com/tencent/mm/network/d$b:ip	Ljava/lang/String;
     //   164: astore 4
     //   166: aload 13
-    //   168: getfield 60	com/tencent/mm/network/d$b:muo	I
+    //   168: getfield 60	com/tencent/mm/network/d$b:pnI	I
     //   171: istore_2
     //   172: aload_1
     //   173: aload 13
-    //   175: invokestatic 64	com/tencent/mm/plugin/emoji/d/a$a:c	(Ljava/lang/String;Lcom/tencent/mm/network/d$b;)Lcom/tencent/mm/ay/a/d/b;
+    //   175: invokestatic 64	com/tencent/mm/plugin/emoji/d/a$a:c	(Ljava/lang/String;Lcom/tencent/mm/network/d$b;)Lcom/tencent/mm/modelimage/loader/c/b;
     //   178: astore 5
     //   180: ldc 33
     //   182: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -156,7 +155,7 @@ public final class a
     //   235: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   238: aastore
     //   239: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   242: getstatic 93	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   242: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   245: ldc2_w 94
     //   248: ldc2_w 96
     //   251: lconst_1
@@ -172,11 +171,11 @@ public final class a
     //   269: ifeq +7 -> 276
     //   272: aload_1
     //   273: invokestatic 118	com/tencent/mm/network/d:reportFailIp	(Ljava/lang/String;)V
-    //   276: new 120	com/tencent/mm/ay/a/d/b
+    //   276: new 120	com/tencent/mm/modelimage/loader/c/b
     //   279: dup
     //   280: aconst_null
     //   281: aconst_null
-    //   282: invokespecial 123	com/tencent/mm/ay/a/d/b:<init>	([BLjava/lang/String;)V
+    //   282: invokespecial 123	com/tencent/mm/modelimage/loader/c/b:<init>	([BLjava/lang/String;)V
     //   285: astore_1
     //   286: ldc 33
     //   288: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -216,7 +215,7 @@ public final class a
     //   336: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   339: aastore
     //   340: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   343: getstatic 93	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   343: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   346: ldc2_w 94
     //   349: lconst_0
     //   350: lconst_1
@@ -259,7 +258,7 @@ public final class a
     //   403: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   406: aastore
     //   407: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   410: getstatic 93	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   410: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   413: ldc2_w 94
     //   416: lconst_1
     //   417: lconst_1
@@ -302,7 +301,7 @@ public final class a
     //   470: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   473: aastore
     //   474: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   477: getstatic 93	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   477: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   480: ldc2_w 94
     //   483: ldc2_w 124
     //   486: lconst_1
@@ -345,7 +344,7 @@ public final class a
     //   539: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   542: aastore
     //   543: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   546: getstatic 93	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   546: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   549: ldc2_w 94
     //   552: ldc2_w 126
     //   555: lconst_1
@@ -388,7 +387,7 @@ public final class a
     //   608: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   611: aastore
     //   612: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   615: getstatic 93	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   615: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   618: ldc2_w 94
     //   621: ldc2_w 128
     //   624: lconst_1
@@ -431,7 +430,7 @@ public final class a
     //   677: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   680: aastore
     //   681: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   684: getstatic 93	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   684: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   687: ldc2_w 94
     //   690: ldc2_w 130
     //   693: lconst_1
@@ -474,7 +473,7 @@ public final class a
     //   746: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   749: aastore
     //   750: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   753: getstatic 93	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
+    //   753: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   756: ldc2_w 94
     //   759: ldc2_w 132
     //   762: lconst_1
@@ -625,16 +624,16 @@ public final class a
   
   static final class a
   {
-    private static y b(String paramString, d.b paramb)
+    private static z b(String paramString, d.b paramb)
     {
       AppMethodBeat.i(104563);
-      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUw, false))
+      if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zmZ, false))
       {
-        paramString = com.tencent.mm.network.d.Zq(paramString);
-        ((z)paramString).mvT = 1195;
-        boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vXk, false);
-        ((z)paramString).mvU = bool;
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1195L, 96L, 1L, false);
+        paramString = com.tencent.mm.network.d.Rt(paramString);
+        ((aa)paramString).pps = 1195;
+        boolean bool = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zpP, false);
+        ((aa)paramString).ppt = bool;
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1195L, 96L, 1L, false);
       }
       for (;;)
       {
@@ -643,39 +642,39 @@ public final class a
         if (MMApplicationContext.isMMProcess())
         {
           paramb = str;
-          if (com.tencent.mm.kernel.h.aHB())
+          if (com.tencent.mm.kernel.h.baz())
           {
             paramb = "https://" + WeChatHosts.domainString(a.j.host_weixin_qq_com) + "/?version=%d&uin=%s&nettype=%d&signal=%d";
-            int i = com.tencent.mm.protocal.d.RAD;
-            com.tencent.mm.kernel.h.aHE();
+            int i = com.tencent.mm.protocal.d.Yxh;
+            com.tencent.mm.kernel.h.baC();
             paramb = String.format(paramb, new Object[] { Integer.valueOf(i), p.getString(com.tencent.mm.kernel.b.getUin()), Integer.valueOf(NetStatusUtil.getNetTypeForStat(MMApplicationContext.getContext())), Integer.valueOf(ConnectivityCompat.Companion.getCompatMixStrength()) });
           }
         }
         Log.d("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "referer %s ", new Object[] { paramb });
-        paramString.Zu("GET");
-        paramString.bP("referer", paramb);
-        paramString.xz(15000);
-        paramString.xA(20000);
+        paramString.Rx("GET");
+        paramString.setRequestProperty("referer", paramb);
+        paramString.xx(15000);
+        paramString.xy(20000);
         AppMethodBeat.o(104563);
         return paramString;
         paramString = com.tencent.mm.network.d.a(paramString, paramb);
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1195L, 95L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1195L, 95L, 1L, false);
       }
     }
     
-    public static com.tencent.mm.ay.a.d.b c(String paramString, d.b paramb)
+    public static com.tencent.mm.modelimage.loader.c.b c(String paramString, d.b paramb)
     {
       AppMethodBeat.i(104564);
-      y localy2 = b(paramString, paramb);
-      if ((localy2 instanceof z)) {}
+      z localz2 = b(paramString, paramb);
+      if ((localz2 instanceof aa)) {}
       for (int i = 1;; i = 0)
       {
-        if (localy2 == null) {
+        if (localz2 == null) {
           Log.i("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "open connection failed.");
         }
         long l = System.currentTimeMillis();
-        int j = localy2.getResponseCode();
-        y localy1 = localy2;
+        int j = localz2.getResponseCode();
+        z localz1 = localz2;
         d.b localb = paramb;
         if (j == 302) {}
         for (;;)
@@ -683,8 +682,8 @@ public final class a
           try
           {
             Log.i("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "302 redirect: %s", new Object[] { paramString });
-            String str = localy2.Zv("location");
-            localy1 = localy2;
+            String str = localz2.getHeaderField("location");
+            localz1 = localz2;
             localb = paramb;
             if (!Util.isNullOrNil(str)) {
               localb = new d.b(str);
@@ -695,18 +694,18 @@ public final class a
           {
             try
             {
-              localy2.disconnect();
-              localy1 = b(str, localb);
-              if (com.tencent.mm.network.d.a(localy1) == 0) {
+              localz2.disconnect();
+              localz1 = b(str, localb);
+              if (com.tencent.mm.network.d.a(localz1) == 0) {
                 break;
               }
-              i = localy1.getResponseCode();
-              Log.e("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "checkHttpConnection failed! url:%s urlIP:%s dnsServerIP:%s dnsType:%d retCode:%d", new Object[] { paramString, localb.ip, localb.ip, Integer.valueOf(localb.muo), Integer.valueOf(i) });
+              i = localz1.getResponseCode();
+              Log.e("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "checkHttpConnection failed! url:%s urlIP:%s dnsServerIP:%s dnsType:%d retCode:%d", new Object[] { paramString, localb.ip, localb.ip, Integer.valueOf(localb.pnI), Integer.valueOf(i) });
               switch (i)
               {
               default: 
-                com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(315L, 12L, 1L, false);
-                i = localb.muo;
+                com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(315L, 12L, 1L, false);
+                i = localb.pnI;
                 paramString = localb.ip;
                 if ((i == 1) && (NetStatusUtil.isConnected(MMApplicationContext.getContext()))) {
                   com.tencent.mm.network.d.reportFailIp(paramString);
@@ -725,45 +724,45 @@ public final class a
             }
             localException1 = localException1;
           }
-          localy1 = localy2;
+          localz1 = localz2;
           localObject = paramb;
           continue;
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(315L, 8L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(315L, 8L, 1L, false);
           continue;
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(315L, 9L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(315L, 9L, 1L, false);
           continue;
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(315L, 10L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(315L, 10L, 1L, false);
           continue;
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(315L, 11L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(315L, 11L, 1L, false);
         }
-        paramb = localy1.getInputStream();
+        paramb = localz1.getInputStream();
         if (paramb == null)
         {
           Log.d("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "getInputStream failed. url:%s", new Object[] { paramString });
           AppMethodBeat.o(104564);
           return null;
         }
-        paramString = localy1.btu();
+        paramString = localz1.bRe();
         paramb = e.b(paramb, false);
-        localy1.disconnect();
+        localz1.disconnect();
         l = System.currentTimeMillis() - l;
         if (j == 200)
         {
           if (i == 0) {
             break label518;
           }
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(99L, 99L, l, false);
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(97L, 97L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(99L, 99L, l, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(97L, 97L, 1L, false);
           Log.i("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "cronet request time ".concat(String.valueOf(l)));
         }
         for (;;)
         {
-          paramString = new com.tencent.mm.ay.a.d.b(paramb, paramString);
+          paramString = new com.tencent.mm.modelimage.loader.c.b(paramb, paramString);
           AppMethodBeat.o(104564);
           return paramString;
           label518:
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(98L, 98L, l, false);
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(100L, 100L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(98L, 98L, l, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(100L, 100L, 1L, false);
           Log.i("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "normal request time ".concat(String.valueOf(l)));
         }
       }
@@ -772,7 +771,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.d.a
  * JD-Core Version:    0.7.0.1
  */

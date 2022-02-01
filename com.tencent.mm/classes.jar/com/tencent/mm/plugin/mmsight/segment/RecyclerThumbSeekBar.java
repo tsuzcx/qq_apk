@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView.l;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.memory.o;
-import com.tencent.mm.memory.o.b;
+import com.tencent.mm.memory.n;
+import com.tencent.mm.memory.n.b;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.w.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -26,7 +26,7 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.Callable;
@@ -36,19 +36,19 @@ public class RecyclerThumbSeekBar
   extends RelativeLayout
   implements c
 {
-  private VideoTransPara EZB;
-  private int FdY;
-  private c.a FdZ;
-  private c.b Fea;
-  private c Feb;
-  private SliderSeekBar Fec;
-  private int Fed;
-  private d.a Fee;
-  private Runnable Fef;
-  private RecyclerView.l Feg;
-  private SliderSeekBar.a Feh;
-  private RecyclerView jLl;
-  private int maT;
+  private VideoTransPara KVn;
+  private int KZH;
+  private c.a KZI;
+  private c.b KZJ;
+  private c KZK;
+  private SliderSeekBar KZL;
+  private int KZM;
+  private d.a KZN;
+  private Runnable KZO;
+  private RecyclerView.l KZP;
+  private SliderSeekBar.a KZQ;
+  private RecyclerView mkw;
+  private int oTN;
   private String path;
   private int thumbHeight;
   private int thumbWidth;
@@ -57,9 +57,9 @@ public class RecyclerThumbSeekBar
   {
     super(paramContext);
     AppMethodBeat.i(94427);
-    this.maT = -1;
-    this.Fee = new d.a(4, new Callable() {});
-    this.Fef = new Runnable()
+    this.oTN = -1;
+    this.KZN = new d.a(4, new Callable() {});
+    this.KZO = new Runnable()
     {
       public final void run()
       {
@@ -80,7 +80,7 @@ public class RecyclerThumbSeekBar
             AppMethodBeat.i(94408);
             try
             {
-              d locald = RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).eTY();
+              d locald = RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).gcQ();
               RecyclerThumbSeekBar.c(RecyclerThumbSeekBar.this, locald.getDurationMs());
               RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).a(locald);
               i = 1;
@@ -123,69 +123,69 @@ public class RecyclerThumbSeekBar
         AppMethodBeat.o(94409);
       }
     };
-    this.Feg = new RecyclerView.l()
+    this.KZP = new RecyclerView.l()
     {
       public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(248972);
+        AppMethodBeat.i(303575);
         b localb = new b();
-        localb.bn(paramAnonymousRecyclerView);
-        localb.sg(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+        localb.cH(paramAnonymousRecyclerView);
+        localb.sc(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
         if ((paramAnonymousInt == 0) && (RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).X(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).aE(RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-        AppMethodBeat.o(248972);
+        AppMethodBeat.o(303575);
       }
       
       public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(248973);
+        AppMethodBeat.i(303576);
         b localb = new b();
-        localb.bn(paramAnonymousRecyclerView);
-        localb.sg(paramAnonymousInt1);
-        localb.sg(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+        localb.cH(paramAnonymousRecyclerView);
+        localb.sc(paramAnonymousInt1);
+        localb.sc(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
         super.onScrolled(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-        AppMethodBeat.o(248973);
+        AppMethodBeat.o(303576);
       }
     };
-    this.Feh = new SliderSeekBar.a()
+    this.KZQ = new SliderSeekBar.a()
     {
-      public final void eUg()
-      {
-        AppMethodBeat.i(94413);
-        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).Y(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
-        }
-        AppMethodBeat.o(94413);
-      }
-      
-      public final void eUh()
-      {
-        AppMethodBeat.i(94414);
-        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).Z(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
-        }
-        AppMethodBeat.o(94414);
-      }
-      
-      public final void un(boolean paramAnonymousBoolean)
+      public final void yA(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(94415);
         if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).aa(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).aF(RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
         }
         if (paramAnonymousBoolean)
         {
-          RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).Z(true, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getLeftSliderBound());
+          RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).ab(true, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getLeftSliderBound());
           AppMethodBeat.o(94415);
           return;
         }
-        RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).Z(false, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getWidth() - RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getRightSliderBound());
+        RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).ab(false, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getWidth() - RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getRightSliderBound());
         AppMethodBeat.o(94415);
+      }
+      
+      public final void yx(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(303577);
+        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).b(paramAnonymousBoolean, RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
+        }
+        AppMethodBeat.o(303577);
+      }
+      
+      public final void yy(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(303580);
+        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).c(paramAnonymousBoolean, RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
+        }
+        AppMethodBeat.o(303580);
       }
     };
     init();
@@ -196,9 +196,9 @@ public class RecyclerThumbSeekBar
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94428);
-    this.maT = -1;
-    this.Fee = new d.a(4, new Callable() {});
-    this.Fef = new Runnable()
+    this.oTN = -1;
+    this.KZN = new d.a(4, new Callable() {});
+    this.KZO = new Runnable()
     {
       public final void run()
       {
@@ -219,7 +219,7 @@ public class RecyclerThumbSeekBar
             AppMethodBeat.i(94408);
             try
             {
-              d locald = RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).eTY();
+              d locald = RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).gcQ();
               RecyclerThumbSeekBar.c(RecyclerThumbSeekBar.this, locald.getDurationMs());
               RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).a(locald);
               i = 1;
@@ -262,69 +262,69 @@ public class RecyclerThumbSeekBar
         AppMethodBeat.o(94409);
       }
     };
-    this.Feg = new RecyclerView.l()
+    this.KZP = new RecyclerView.l()
     {
       public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(248972);
+        AppMethodBeat.i(303575);
         b localb = new b();
-        localb.bn(paramAnonymousRecyclerView);
-        localb.sg(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+        localb.cH(paramAnonymousRecyclerView);
+        localb.sc(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
         if ((paramAnonymousInt == 0) && (RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).X(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).aE(RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-        AppMethodBeat.o(248972);
+        AppMethodBeat.o(303575);
       }
       
       public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(248973);
+        AppMethodBeat.i(303576);
         b localb = new b();
-        localb.bn(paramAnonymousRecyclerView);
-        localb.sg(paramAnonymousInt1);
-        localb.sg(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+        localb.cH(paramAnonymousRecyclerView);
+        localb.sc(paramAnonymousInt1);
+        localb.sc(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
         super.onScrolled(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-        AppMethodBeat.o(248973);
+        AppMethodBeat.o(303576);
       }
     };
-    this.Feh = new SliderSeekBar.a()
+    this.KZQ = new SliderSeekBar.a()
     {
-      public final void eUg()
-      {
-        AppMethodBeat.i(94413);
-        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).Y(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
-        }
-        AppMethodBeat.o(94413);
-      }
-      
-      public final void eUh()
-      {
-        AppMethodBeat.i(94414);
-        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).Z(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
-        }
-        AppMethodBeat.o(94414);
-      }
-      
-      public final void un(boolean paramAnonymousBoolean)
+      public final void yA(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(94415);
         if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).aa(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).aF(RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
         }
         if (paramAnonymousBoolean)
         {
-          RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).Z(true, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getLeftSliderBound());
+          RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).ab(true, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getLeftSliderBound());
           AppMethodBeat.o(94415);
           return;
         }
-        RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).Z(false, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getWidth() - RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getRightSliderBound());
+        RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).ab(false, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getWidth() - RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getRightSliderBound());
         AppMethodBeat.o(94415);
+      }
+      
+      public final void yx(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(303577);
+        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).b(paramAnonymousBoolean, RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
+        }
+        AppMethodBeat.o(303577);
+      }
+      
+      public final void yy(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(303580);
+        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).c(paramAnonymousBoolean, RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
+        }
+        AppMethodBeat.o(303580);
       }
     };
     init();
@@ -335,9 +335,9 @@ public class RecyclerThumbSeekBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(94429);
-    this.maT = -1;
-    this.Fee = new d.a(4, new Callable() {});
-    this.Fef = new Runnable()
+    this.oTN = -1;
+    this.KZN = new d.a(4, new Callable() {});
+    this.KZO = new Runnable()
     {
       public final void run()
       {
@@ -358,7 +358,7 @@ public class RecyclerThumbSeekBar
             AppMethodBeat.i(94408);
             try
             {
-              d locald = RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).eTY();
+              d locald = RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).gcQ();
               RecyclerThumbSeekBar.c(RecyclerThumbSeekBar.this, locald.getDurationMs());
               RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).a(locald);
               i = 1;
@@ -401,92 +401,92 @@ public class RecyclerThumbSeekBar
         AppMethodBeat.o(94409);
       }
     };
-    this.Feg = new RecyclerView.l()
+    this.KZP = new RecyclerView.l()
     {
       public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(248972);
+        AppMethodBeat.i(303575);
         b localb = new b();
-        localb.bn(paramAnonymousRecyclerView);
-        localb.sg(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+        localb.cH(paramAnonymousRecyclerView);
+        localb.sc(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
         if ((paramAnonymousInt == 0) && (RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).X(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).aE(RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-        AppMethodBeat.o(248972);
+        AppMethodBeat.o(303575);
       }
       
       public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(248973);
+        AppMethodBeat.i(303576);
         b localb = new b();
-        localb.bn(paramAnonymousRecyclerView);
-        localb.sg(paramAnonymousInt1);
-        localb.sg(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+        localb.cH(paramAnonymousRecyclerView);
+        localb.sc(paramAnonymousInt1);
+        localb.sc(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
         super.onScrolled(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mmsight/segment/RecyclerThumbSeekBar$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-        AppMethodBeat.o(248973);
+        AppMethodBeat.o(303576);
       }
     };
-    this.Feh = new SliderSeekBar.a()
+    this.KZQ = new SliderSeekBar.a()
     {
-      public final void eUg()
-      {
-        AppMethodBeat.i(94413);
-        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).Y(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
-        }
-        AppMethodBeat.o(94413);
-      }
-      
-      public final void eUh()
-      {
-        AppMethodBeat.i(94414);
-        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).Z(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
-        }
-        AppMethodBeat.o(94414);
-      }
-      
-      public final void un(boolean paramAnonymousBoolean)
+      public final void yA(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(94415);
         if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
-          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).aa(RecyclerThumbSeekBar.this.eTW(), RecyclerThumbSeekBar.this.eTX());
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).aF(RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
         }
         if (paramAnonymousBoolean)
         {
-          RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).Z(true, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getLeftSliderBound());
+          RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).ab(true, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getLeftSliderBound());
           AppMethodBeat.o(94415);
           return;
         }
-        RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).Z(false, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getWidth() - RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getRightSliderBound());
+        RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this).ab(false, RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getWidth() - RecyclerThumbSeekBar.l(RecyclerThumbSeekBar.this).getRightSliderBound());
         AppMethodBeat.o(94415);
+      }
+      
+      public final void yx(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(303577);
+        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).b(paramAnonymousBoolean, RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
+        }
+        AppMethodBeat.o(303577);
+      }
+      
+      public final void yy(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(303580);
+        if ((RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this) != null) && (RecyclerThumbSeekBar.m(RecyclerThumbSeekBar.this) != null)) {
+          RecyclerThumbSeekBar.p(RecyclerThumbSeekBar.this).c(paramAnonymousBoolean, RecyclerThumbSeekBar.this.gcO(), RecyclerThumbSeekBar.this.gcP());
+        }
+        AppMethodBeat.o(303580);
       }
     };
     init();
     AppMethodBeat.o(94429);
   }
   
-  private float aI(int paramInt, boolean paramBoolean)
+  private float bj(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(94439);
-    if ((this.Feb == null) || (this.jLl == null))
+    if ((this.KZK == null) || (this.mkw == null))
     {
       AppMethodBeat.o(94439);
       return 0.0F;
     }
-    View localView = this.jLl.h(paramInt, 0.0F);
+    View localView = this.mkw.Q(paramInt, 0.0F);
     if (localView == null)
     {
       Log.w("RecyclerThumbSeekBar", "getPositionInTotalRange x[%d] isEnd[%b], view is null.", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(94439);
       return 0.0F;
     }
-    int i = RecyclerView.bh(localView);
-    int j = this.Feb.getItemCount();
+    int i = RecyclerView.bA(localView);
+    int j = this.KZK.getItemCount();
     if (i <= 1)
     {
       AppMethodBeat.o(94439);
@@ -502,7 +502,7 @@ public class RecyclerThumbSeekBar
     return f;
   }
   
-  private void eUf()
+  private void gcX()
   {
     AppMethodBeat.i(94434);
     MMHandlerThread.postToMainThread(new Runnable()
@@ -511,7 +511,7 @@ public class RecyclerThumbSeekBar
       {
         AppMethodBeat.i(94411);
         if (RecyclerThumbSeekBar.o(RecyclerThumbSeekBar.this) != null) {
-          RecyclerThumbSeekBar.o(RecyclerThumbSeekBar.this).um(true);
+          RecyclerThumbSeekBar.o(RecyclerThumbSeekBar.this).onPrepared(true);
         }
         AppMethodBeat.o(94411);
       }
@@ -522,20 +522,20 @@ public class RecyclerThumbSeekBar
   private void init()
   {
     AppMethodBeat.i(94430);
-    this.jLl = new RecyclerView(getContext());
+    this.mkw = new RecyclerView(getContext());
     getContext();
     Object localObject = new LinearLayoutManager(0, false);
-    this.jLl.setLayoutManager((RecyclerView.LayoutManager)localObject);
-    this.jLl.setHasFixedSize(true);
-    com.tencent.mm.ci.a.aY(getContext(), a.c.video_segment_seekbar_recycler_view_height);
-    this.Fed = com.tencent.mm.ci.a.aY(getContext(), a.c.video_segment_seekbar_padding);
+    this.mkw.setLayoutManager((RecyclerView.LayoutManager)localObject);
+    this.mkw.setHasFixedSize(true);
+    com.tencent.mm.cd.a.br(getContext(), a.c.video_segment_seekbar_recycler_view_height);
+    this.KZM = com.tencent.mm.cd.a.br(getContext(), a.c.video_segment_seekbar_padding);
     localObject = new RelativeLayout.LayoutParams(-1, -1);
-    addView(this.jLl, (ViewGroup.LayoutParams)localObject);
-    this.Fec = new SliderSeekBar(getContext());
+    addView(this.mkw, (ViewGroup.LayoutParams)localObject);
+    this.KZL = new SliderSeekBar(getContext());
     localObject = new RelativeLayout.LayoutParams(-1, -1);
-    addView(this.Fec, (ViewGroup.LayoutParams)localObject);
-    this.Fec.setOnSliderTouchListener(this.Feh);
-    this.jLl.a(this.Feg);
+    addView(this.KZL, (ViewGroup.LayoutParams)localObject);
+    this.KZL.setOnSliderTouchListener(this.KZQ);
+    this.mkw.a(this.KZP);
     AppMethodBeat.o(94430);
   }
   
@@ -548,83 +548,83 @@ public class RecyclerThumbSeekBar
     AppMethodBeat.o(94433);
   }
   
-  public final void aPz(String paramString)
+  public final void aMx(String paramString)
   {
     AppMethodBeat.i(94432);
     Log.i("RecyclerThumbSeekBar", "initAsync %s", new Object[] { paramString });
-    if ((Util.isNullOrNil(paramString)) || (!u.agG(paramString)))
+    if ((Util.isNullOrNil(paramString)) || (!y.ZC(paramString)))
     {
-      eUf();
+      gcX();
       AppMethodBeat.o(94432);
       return;
     }
     this.path = paramString;
-    post(this.Fef);
+    post(this.KZO);
     AppMethodBeat.o(94432);
   }
   
-  public final float eTW()
+  public final float gcO()
   {
     AppMethodBeat.i(94437);
-    if (this.Fec == null)
+    if (this.KZL == null)
     {
       AppMethodBeat.o(94437);
       return 0.0F;
     }
-    float f = aI(this.Fec.getLeftSliderBound(), false);
-    Log.d("RecyclerThumbSeekBar", "computeStartPercent x : [%d] ret[%f] seekLoopStartTime[%d] durationMs[%d]", new Object[] { Integer.valueOf(this.Fec.getLeftSliderBound()), Float.valueOf(f), Integer.valueOf(Math.round(this.maT * f)), Integer.valueOf(this.maT) });
+    float f = bj(this.KZL.getLeftSliderBound(), false);
+    Log.d("RecyclerThumbSeekBar", "computeStartPercent x : [%d] ret[%f] seekLoopStartTime[%d] durationMs[%d]", new Object[] { Integer.valueOf(this.KZL.getLeftSliderBound()), Float.valueOf(f), Integer.valueOf(Math.round(this.oTN * f)), Integer.valueOf(this.oTN) });
     AppMethodBeat.o(94437);
     return f;
   }
   
-  public final float eTX()
+  public final float gcP()
   {
     AppMethodBeat.i(94438);
-    if (this.Fec == null)
+    if (this.KZL == null)
     {
       AppMethodBeat.o(94438);
       return 0.0F;
     }
-    float f = aI(this.Fec.getRightSliderBound(), true);
-    Log.d("RecyclerThumbSeekBar", "computeEndPercent x : [%d] ret[%f] seekLoopEndTime[%d]", new Object[] { Integer.valueOf(this.Fec.getRightSliderBound()), Float.valueOf(f), Integer.valueOf(Math.round(this.maT * f)) });
+    float f = bj(this.KZL.getRightSliderBound(), true);
+    Log.d("RecyclerThumbSeekBar", "computeEndPercent x : [%d] ret[%f] seekLoopEndTime[%d]", new Object[] { Integer.valueOf(this.KZL.getRightSliderBound()), Float.valueOf(f), Integer.valueOf(Math.round(this.oTN * f)) });
     AppMethodBeat.o(94438);
     return f;
   }
   
   public int getDurationMs()
   {
-    return this.maT;
+    return this.oTN;
   }
   
   public final void release()
   {
     AppMethodBeat.i(94435);
-    this.maT = -1;
+    this.oTN = -1;
     this.path = null;
-    if (this.Fee != null) {
-      this.Fee.destroy();
+    if (this.KZN != null) {
+      this.KZN.destroy();
     }
-    if ((this.Feb != null) && (c.a(this.Feb) != null))
+    if ((this.KZK != null) && (c.a(this.KZK) != null))
     {
-      d locald = c.a(this.Feb);
-      if ((locald.Fer != null) && (locald.Fer.length != 0))
+      d locald = c.a(this.KZK);
+      if ((locald.Laa != null) && (locald.Laa.length != 0))
       {
         int i = 0;
-        while (i < locald.Fer.length)
+        while (i < locald.Laa.length)
         {
-          if (locald.Fer[i] != null)
+          if (locald.Laa[i] != null)
           {
-            locald.Fer[i].getSerial().Zxu.quit();
-            locald.Fer[i] = null;
+            locald.Laa[i].getSerial().ahCy.quit();
+            locald.Laa[i] = null;
           }
           i += 1;
         }
       }
-      c.b(this.Feb);
-      this.Feb = null;
+      c.b(this.KZK);
+      this.KZK = null;
     }
-    if (this.Fec != null) {
-      this.Fec.reset();
+    if (this.KZL != null) {
+      this.KZL.reset();
     }
     AppMethodBeat.o(94435);
   }
@@ -632,8 +632,8 @@ public class RecyclerThumbSeekBar
   public final void reset()
   {
     AppMethodBeat.i(94436);
-    if (this.Fec != null) {
-      this.Fec.reset();
+    if (this.KZL != null) {
+      this.KZL.reset();
     }
     AppMethodBeat.o(94436);
   }
@@ -642,11 +642,11 @@ public class RecyclerThumbSeekBar
   {
     float f2 = 0.0F;
     AppMethodBeat.i(94431);
-    SliderSeekBar localSliderSeekBar = this.Fec;
+    SliderSeekBar localSliderSeekBar = this.KZL;
     float f1 = f2;
-    if (this.Feb != null)
+    if (this.KZK != null)
     {
-      if (this.jLl != null) {
+      if (this.mkw != null) {
         break label45;
       }
       f1 = f2;
@@ -657,14 +657,14 @@ public class RecyclerThumbSeekBar
       AppMethodBeat.o(94431);
       return;
       label45:
-      paramFloat = (this.Feb.getItemCount() - 2) * paramFloat;
+      paramFloat = (this.KZK.getItemCount() - 2) * paramFloat;
       int i = (int)Math.floor(paramFloat);
       float f3 = i;
-      Object localObject = this.jLl.cK(i + 1);
+      Object localObject = this.mkw.fU(i + 1);
       f1 = f2;
       if (localObject != null)
       {
-        localObject = ((RecyclerView.v)localObject).amk;
+        localObject = ((RecyclerView.v)localObject).caK;
         f1 = ((View)localObject).getLeft();
         f1 = (((View)localObject).getWidth() * (paramFloat - f3) + f1) / getWidth();
       }
@@ -673,81 +673,81 @@ public class RecyclerThumbSeekBar
   
   public void setOnPreparedListener(c.a parama)
   {
-    this.FdZ = parama;
+    this.KZI = parama;
   }
   
   public void setThumbBarSeekListener(c.b paramb)
   {
-    this.Fea = paramb;
+    this.KZJ = paramb;
   }
   
   public void setVideoTransPara(VideoTransPara paramVideoTransPara)
   {
-    this.EZB = paramVideoTransPara;
+    this.KVn = paramVideoTransPara;
     if (paramVideoTransPara.duration <= paramVideoTransPara.minDuration) {
-      this.Fec.FcM = true;
+      this.KZL.KYv = true;
     }
   }
   
-  public final void ul(boolean paramBoolean)
+  public final void yz(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.Fec.FcM = true;
+      this.KZL.KYv = true;
       return;
     }
-    this.Fec.FcM = false;
+    this.KZL.KYv = false;
   }
   
   final class b
     implements Runnable
   {
-    private Bitmap Fel;
-    private WeakReference<ImageView> aFW;
+    private Bitmap KZU;
     private MMHandler handler;
-    boolean lTb;
+    boolean oLU;
     private int time;
+    private WeakReference<ImageView> viewRef;
     
     b(int paramInt, ImageView paramImageView, Bitmap paramBitmap, MMHandler paramMMHandler)
     {
       AppMethodBeat.i(94417);
-      this.lTb = false;
+      this.oLU = false;
       this.time = paramInt;
-      this.aFW = new WeakReference(paramImageView);
+      this.viewRef = new WeakReference(paramImageView);
       this.handler = paramMMHandler;
-      this.Fel = paramBitmap;
+      this.KZU = paramBitmap;
       AppMethodBeat.o(94417);
     }
     
     public final void run()
     {
       AppMethodBeat.i(94418);
-      if (this.lTb)
+      if (this.oLU)
       {
-        o.liV.E(this.Fel);
+        n.nNG.M(this.KZU);
         AppMethodBeat.o(94418);
         return;
       }
-      if ((ImageView)this.aFW.get() == null)
+      if ((ImageView)this.viewRef.get() == null)
       {
-        o.liV.E(this.Fel);
+        n.nNG.M(this.KZU);
         AppMethodBeat.o(94418);
         return;
       }
       try
       {
-        d locald = RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).eTY();
-        if (this.Fel == null) {
-          this.Fel = o.liV.a(new o.b(locald.getScaledWidth(), locald.getScaledHeight()));
+        d locald = RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).gcQ();
+        if (this.KZU == null) {
+          this.KZU = n.nNG.a(new n.b(locald.getScaledWidth(), locald.getScaledHeight()));
         }
-        locald.reuseBitmap(this.Fel);
-        if (!this.lTb) {
-          this.Fel = locald.getFrameAtTime(this.time);
+        locald.reuseBitmap(this.KZU);
+        if (!this.oLU) {
+          this.KZU = locald.getFrameAtTime(this.time);
         }
         RecyclerThumbSeekBar.g(RecyclerThumbSeekBar.this).a(locald);
-        if ((this.Fel != null) && (!this.lTb) && (this.aFW.get() != null))
+        if ((this.KZU != null) && (!this.oLU) && (this.viewRef.get() != null))
         {
-          this.handler.post(new RecyclerThumbSeekBar.a(RecyclerThumbSeekBar.this, this.Fel, (ImageView)this.aFW.get(), this));
+          this.handler.post(new RecyclerThumbSeekBar.a(RecyclerThumbSeekBar.this, this.KZU, (ImageView)this.viewRef.get(), this));
           AppMethodBeat.o(94418);
           return;
         }
@@ -755,11 +755,11 @@ public class RecyclerThumbSeekBar
       catch (Exception localException)
       {
         Log.e("RecyclerThumbSeekBar", "get bitmap error " + localException.getMessage());
-        o.liV.E(this.Fel);
+        n.nNG.M(this.KZU);
         AppMethodBeat.o(94418);
         return;
       }
-      o.liV.E(this.Fel);
+      n.nNG.M(this.KZU);
       AppMethodBeat.o(94418);
     }
   }
@@ -767,39 +767,39 @@ public class RecyclerThumbSeekBar
   final class c
     extends RecyclerView.a<RecyclerThumbSeekBar.e>
   {
-    private RecyclerThumbSeekBar.d Fem;
-    private int Fen;
-    private int Feo;
-    private View Fep;
-    private View Feq;
+    private RecyclerThumbSeekBar.d KZV;
+    private int KZW;
+    private int KZX;
+    private View KZY;
+    private View KZZ;
     
     private c()
     {
       AppMethodBeat.i(94419);
-      this.Fem = new RecyclerThumbSeekBar.d(RecyclerThumbSeekBar.this);
-      this.Fen = RecyclerThumbSeekBar.f(RecyclerThumbSeekBar.this);
-      this.Feo = RecyclerThumbSeekBar.f(RecyclerThumbSeekBar.this);
+      this.KZV = new RecyclerThumbSeekBar.d(RecyclerThumbSeekBar.this);
+      this.KZW = RecyclerThumbSeekBar.f(RecyclerThumbSeekBar.this);
+      this.KZX = RecyclerThumbSeekBar.f(RecyclerThumbSeekBar.this);
       AppMethodBeat.o(94419);
     }
     
-    public final void Z(boolean paramBoolean, int paramInt)
+    public final void ab(boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(94421);
       if (paramBoolean)
       {
-        if (this.Fep != null) {
-          this.Fep.setMinimumWidth(paramInt);
+        if (this.KZY != null) {
+          this.KZY.setMinimumWidth(paramInt);
         }
-        if (((LinearLayoutManager)RecyclerThumbSeekBar.n(RecyclerThumbSeekBar.this).getLayoutManager()).kJ() == 0) {
-          RecyclerThumbSeekBar.n(RecyclerThumbSeekBar.this).scrollBy(paramInt - this.Fen, 0);
+        if (((LinearLayoutManager)RecyclerThumbSeekBar.n(RecyclerThumbSeekBar.this).getLayoutManager()).Ju() == 0) {
+          RecyclerThumbSeekBar.n(RecyclerThumbSeekBar.this).scrollBy(paramInt - this.KZW, 0);
         }
-        this.Fen = paramInt;
+        this.KZW = paramInt;
         AppMethodBeat.o(94421);
         return;
       }
-      this.Feo = paramInt;
-      if (this.Feq != null) {
-        this.Feq.setMinimumWidth(this.Feo);
+      this.KZX = paramInt;
+      if (this.KZZ != null) {
+        this.KZZ.setMinimumWidth(this.KZX);
       }
       AppMethodBeat.o(94421);
     }
@@ -837,27 +837,27 @@ public class RecyclerThumbSeekBar
   
   final class d
   {
-    int FaA;
-    MMHandler[] Fer;
-    int Fes;
-    private BlockingDeque<RecyclerThumbSeekBar.b> Fet;
+    int KWj;
+    MMHandler[] Laa;
+    int Lab;
+    private BlockingDeque<RecyclerThumbSeekBar.b> Lac;
     MMHandler handler;
     
     public d()
     {
       AppMethodBeat.i(94425);
       this.handler = new MMHandler();
-      this.FaA = 4;
-      this.Fer = new MMHandler[this.FaA];
-      this.Fes = 0;
-      this.Fet = new LinkedBlockingDeque();
+      this.KWj = 4;
+      this.Laa = new MMHandler[this.KWj];
+      this.Lab = 0;
+      this.Lac = new LinkedBlockingDeque();
       int i = 0;
-      while (i < this.Fer.length)
+      while (i < this.Laa.length)
       {
-        this.Fer[i] = new MMHandler("RecyclerThumbSeekBar_SimpleImageLoader_".concat(String.valueOf(i)));
+        this.Laa[i] = new MMHandler("RecyclerThumbSeekBar_SimpleImageLoader_".concat(String.valueOf(i)));
         i += 1;
       }
-      this.Fes = 0;
+      this.Lab = 0;
       AppMethodBeat.o(94425);
     }
   }
@@ -865,14 +865,14 @@ public class RecyclerThumbSeekBar
   final class e
     extends RecyclerView.v
   {
-    ImageView fDJ;
+    ImageView hIz;
     
     e(View paramView, int paramInt)
     {
       super();
       AppMethodBeat.i(94426);
       if (paramInt == 0) {
-        this.fDJ = ((ImageView)((LinearLayout)paramView).getChildAt(0));
+        this.hIz = ((ImageView)((LinearLayout)paramView).getChildAt(0));
       }
       AppMethodBeat.o(94426);
     }
@@ -880,7 +880,7 @@ public class RecyclerThumbSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar
  * JD-Core Version:    0.7.0.1
  */

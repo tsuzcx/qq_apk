@@ -2,10 +2,10 @@ package com.tencent.mm.particles;
 
 public final class d
 {
-  public final int mAd;
-  public final int mAe;
-  public final int mAf;
-  public final int mAg;
+  public final int pwN;
+  public final int pwO;
+  public final int pwP;
+  public final int pwQ;
   
   public d(int paramInt1, int paramInt2)
   {
@@ -14,25 +14,25 @@ public final class d
   
   private d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.mAd = paramInt1;
-    this.mAe = paramInt2;
-    this.mAf = paramInt3;
-    this.mAg = paramInt4;
+    this.pwN = paramInt1;
+    this.pwO = paramInt2;
+    this.pwP = paramInt3;
+    this.pwQ = paramInt4;
   }
   
-  protected final float aA(float paramFloat)
+  protected final float by(float paramFloat)
   {
-    return this.mAd + (this.mAf - this.mAd) * paramFloat;
+    return this.pwN + (this.pwP - this.pwN) * paramFloat;
   }
   
-  protected final float aB(float paramFloat)
+  protected final float bz(float paramFloat)
   {
-    return this.mAe + (this.mAg - this.mAe) * paramFloat;
+    return this.pwO + (this.pwQ - this.pwO) * paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.particles.d
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import androidx.appcompat.a.f;
 import androidx.core.g.e;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AlertDialogLayout
@@ -21,7 +21,7 @@ public class AlertDialogLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(240650);
+    AppMethodBeat.i(199350);
     int j = getPaddingLeft();
     int k = paramInt3 - paramInt1;
     int m = getPaddingRight();
@@ -58,12 +58,12 @@ public class AlertDialogLayout
             i3 = ((View)localObject).getMeasuredWidth();
             i4 = ((View)localObject).getMeasuredHeight();
             localLayoutParams = (LinearLayoutCompat.LayoutParams)((View)localObject).getLayoutParams();
-            i = localLayoutParams.ek;
+            i = localLayoutParams.fl;
             paramInt2 = i;
             if (i < 0) {
               paramInt2 = 0x800007 & i2;
             }
-            switch (e.D(paramInt2, w.I(this)) & 0x7)
+            switch (e.ay(paramInt2, z.U(this)) & 0x7)
             {
             default: 
               paramInt2 = localLayoutParams.leftMargin + j;
@@ -76,7 +76,7 @@ public class AlertDialogLayout
     for (;;)
     {
       i = paramInt1;
-      if (aw(paramInt4)) {
+      if (au(paramInt4)) {
         i = paramInt1 + paramInt3;
       }
       paramInt1 = i + localLayoutParams.topMargin;
@@ -97,12 +97,12 @@ public class AlertDialogLayout
       paramInt2 = k - m - i3 - localLayoutParams.rightMargin;
     }
     label385:
-    AppMethodBeat.o(240650);
+    AppMethodBeat.o(199350);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(240649);
+    AppMethodBeat.i(199338);
     Object localObject4 = null;
     Object localObject2 = null;
     Object localObject1 = null;
@@ -141,7 +141,7 @@ public class AlertDialogLayout
           if (i == 0) {
             super.onMeasure(paramInt1, paramInt2);
           }
-          AppMethodBeat.o(240649);
+          AppMethodBeat.o(199338);
           return;
           localObject1 = localObject3;
           break;
@@ -166,7 +166,7 @@ public class AlertDialogLayout
           {
             ((View)localObject2).measure(paramInt1, 0);
             localObject3 = localObject2;
-            i = w.P((View)localObject3);
+            i = z.ab((View)localObject3);
             if (i > 0)
             {
               m = ((View)localObject2).getMeasuredHeight();
@@ -288,7 +288,7 @@ public class AlertDialogLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.AlertDialogLayout
  * JD-Core Version:    0.7.0.1
  */

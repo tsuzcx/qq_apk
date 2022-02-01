@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:id="@id/cc" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="?z"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:id="@id/eh" android:background="@drawable/b7" android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ei" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/b2" android:contentDescription="@string/cr" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/iqp" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/eh">
-        <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ijr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/lr" />
-        <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ijs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/lq" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
-        <View android:id="@id/b4r" android:layout_width="28.0dip" android:layout_height="fill_parent" />
-        <com.google.android.material.tabs.TabLayout android:id="@id/ift" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ac_" app:tabGravity="aq3" app:tabIndicatorHeight="0.0dip" app:tabMode="d5n" app:tabPaddingEnd="0.0dip" app:tabPaddingStart="0.0dip" app:tabRippleColor="@color/ac_" app:tabSelectedTextColor="@color/a2x" app:tabTextColor="@color/l4" />
-    </LinearLayout>
-    <RelativeLayout android:visibility="visible" android:layout_width="56.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/itc" android:background="@drawable/b7" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/icons_outlined_me" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/e56" android:visibility="gone" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/zs" />
-    </RelativeLayout>
-</RelativeLayout>
+    <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/ix3" android:layout_width="268.0dip" android:layout_height="@dimen/bx">
+        <View android:id="@id/aft" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h61" android:background="@drawable/au4" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/b7t" android:layout_width="@dimen/bx" android:layout_height="@dimen/bx" android:src="@raw/icons_filled_music" android:scaleType="centerCrop" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/df" android:layout_weight="1.0">
+                    <TextView android:textSize="@dimen/hn" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/b7y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="我要飞的更高我要你的爱" android:singleLine="true" />
+                    <TextView android:textSize="@dimen/m_" android:textColor="@color/m4" android:ellipsize="end" android:id="@id/b7x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="BTS防弹少年团BTS防弹少年团" android:maxLines="1" />
+                    <View android:id="@id/hqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                    <TextView android:textSize="@dimen/y" android:textColor="@color/xo" android:ellipsize="middle" android:id="@id/b7v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:text="生活大爆炸生活大爆炸生活大爆炸生活大爆炸的音乐视频" android:singleLine="true" />
+                </LinearLayout>
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b7u" android:padding="1.0dip" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="@dimen/cd" android:layout_marginRight="@dimen/cd" android:src="@raw/icons_outlined_play2" android:scaleType="fitCenter" />
+            </LinearLayout>
+            <View android:background="@drawable/au2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+</LinearLayout>

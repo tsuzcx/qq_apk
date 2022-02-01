@@ -1,56 +1,86 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.ank;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
-import java.util.HashMap;
+import com.tencent.mm.autogen.a.dn;
+import com.tencent.mm.autogen.a.dn.a;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/fav/ui/FavDataItemChecker;", "", "()V", "Companion", "ui-fav_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public static HashMap<String, Object> F(g paramg)
+  public static final c.a Ago;
+  
+  static
   {
-    AppMethodBeat.i(230149);
-    ank localank = paramg.field_favProto.SzE;
-    anm localanm = b.c(paramg);
-    Object localObject2 = String.format("file://%s", new Object[] { b.a(localanm) });
-    Object localObject1 = localObject2;
-    if (!u.agG((String)localObject2)) {
-      localObject1 = String.format("file://%s", new Object[] { b.d(localanm) });
-    }
-    localObject2 = new HashMap();
-    ((HashMap)localObject2).put("desc", paramg.field_favProto.title);
-    ((HashMap)localObject2).put("type", Integer.valueOf(2));
-    ((HashMap)localObject2).put("title", paramg.field_favProto.title);
-    ((HashMap)localObject2).put("app_id", localank.appId);
-    ((HashMap)localObject2).put("pkg_type", Integer.valueOf(localank.fES));
-    ((HashMap)localObject2).put("pkg_version", Integer.valueOf(localank.version));
-    ((HashMap)localObject2).put("img_url", localObject1);
-    ((HashMap)localObject2).put("is_dynamic", Boolean.FALSE);
-    ((HashMap)localObject2).put("cache_key", "");
-    ((HashMap)localObject2).put("path", localank.fve);
-    ((HashMap)localObject2).put("subType", Integer.valueOf(localank.subType));
-    Log.i("MicroMsg.FavAppBrandLogic", "buildAppBrandMsgParamsForIntent image path:%s", new Object[] { localObject1 });
-    AppMethodBeat.o(230149);
-    return localObject2;
+    AppMethodBeat.i(274425);
+    Ago = new c.a((byte)0);
+    AppMethodBeat.o(274425);
   }
   
-  public static boolean a(ank paramank)
+  public static final boolean b(dn paramdn)
   {
-    if (paramank == null) {}
-    while ((paramank.type != 3) && (paramank.otE != 1)) {
-      return false;
+    AppMethodBeat.i(274423);
+    s.u(paramdn, "event");
+    paramdn = paramdn.hDr.hDt;
+    if (paramdn != null)
+    {
+      paramdn = paramdn.vEn;
+      if (paramdn != null)
+      {
+        paramdn = ((Iterable)paramdn).iterator();
+        while (paramdn.hasNext())
+        {
+          arf localarf = (arf)paramdn.next();
+          arg localarg = localarf.Zzy;
+          if ((localarg == null) || (localarg.ZAz == null)) {
+            switch (localarf.dataType)
+            {
+            default: 
+              break;
+            case 2: 
+            case 4: 
+            case 8: 
+            case 15: 
+              if (Util.isNullOrNil(localarf.Ysw))
+              {
+                if (Util.isNullOrNil(localarf.Zzd))
+                {
+                  AppMethodBeat.o(274423);
+                  return false;
+                }
+                if (!y.ZC(localarf.Zzd))
+                {
+                  AppMethodBeat.o(274423);
+                  return false;
+                }
+              }
+              break;
+            case 3: 
+              if (!y.ZC(localarf.Zzd))
+              {
+                AppMethodBeat.o(274423);
+                return false;
+              }
+              break;
+            }
+          }
+        }
+      }
     }
+    AppMethodBeat.o(274423);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.c
  * JD-Core Version:    0.7.0.1
  */

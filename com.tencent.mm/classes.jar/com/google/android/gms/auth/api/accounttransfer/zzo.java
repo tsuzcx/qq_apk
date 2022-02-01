@@ -3,12 +3,6 @@ package com.google.android.gms.auth.api.accounttransfer;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Indicator;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.google.android.gms.common.server.response.FastJsonResponse;
 import com.google.android.gms.common.server.response.FastJsonResponse.Field;
 import com.google.android.gms.internal.auth.zzbs;
@@ -18,21 +12,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-@SafeParcelable.Class(creator="AccountTransferMsgCreator")
 public final class zzo
   extends zzbs
 {
   public static final Parcelable.Creator<zzo> CREATOR;
   private static final HashMap<String, FastJsonResponse.Field<?, ?>> zzbk;
-  @SafeParcelable.Indicator
   private final Set<Integer> zzbl;
-  @SafeParcelable.Field(getter="getAuthenticatorDatas", id=2)
   private ArrayList<zzu> zzbm;
-  @SafeParcelable.Field(getter="getRequestType", id=3)
   private int zzbn;
-  @SafeParcelable.Field(getter="getProgress", id=4)
   private zzr zzbo;
-  @SafeParcelable.VersionField(id=1)
   private final int zzy;
   
   static
@@ -54,8 +42,7 @@ public final class zzo
     AppMethodBeat.o(10662);
   }
   
-  @SafeParcelable.Constructor
-  zzo(@SafeParcelable.Indicator Set<Integer> paramSet, @SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) ArrayList<zzu> paramArrayList, @SafeParcelable.Param(id=3) int paramInt2, @SafeParcelable.Param(id=4) zzr paramzzr)
+  zzo(Set<Integer> paramSet, int paramInt1, ArrayList<zzu> paramArrayList, int paramInt2, zzr paramzzr)
   {
     this.zzbl = paramSet;
     this.zzy = paramInt1;
@@ -153,7 +140,7 @@ public final class zzo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.accounttransfer.zzo
  * JD-Core Version:    0.7.0.1
  */

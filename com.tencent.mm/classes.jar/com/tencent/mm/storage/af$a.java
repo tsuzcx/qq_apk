@@ -1,20 +1,20 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.protocal.protobuf.eqg;
-import java.util.Map;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.protocal.protobuf.eoa;
+import com.tencent.mm.protocal.protobuf.pz;
+import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
 final class af$a
-  extends q
-  implements a<x>
+  extends u
+  implements b<pz, Boolean>
 {
-  af$a(eqg parameqg, Map paramMap)
+  af$a(LinkedList<eoa> paramLinkedList)
   {
-    super(0);
+    super(1);
   }
 }
 

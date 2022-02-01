@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SurfaceView android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/iwl" android:background="@drawable/a_q" android:layout_width="@dimen/add" android:layout_height="@dimen/ad_" android:layout_marginStart="@dimen/adi" android:layout_marginEnd="@dimen/adi"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/adc" android:textColor="@color/zj" android:id="@id/eam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerInParent="true" />
+</RelativeLayout>

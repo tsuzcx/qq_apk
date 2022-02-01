@@ -1,29 +1,33 @@
 package com.tencent.mm.wlogcat.b;
 
+import android.content.Context;
 import com.tencent.mars.xlog.Xlog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.y;
 import com.tencent.mm.xlog.app.XLogSetup;
+import java.io.File;
 
 public final class a
 {
-  private static a YYd;
-  private Runnable YYe;
+  private static a agWo;
+  private Runnable agWp;
   
   static
   {
-    AppMethodBeat.i(189315);
-    YYd = new a();
-    AppMethodBeat.o(189315);
+    AppMethodBeat.i(231309);
+    agWo = new a();
+    AppMethodBeat.o(231309);
   }
   
   private a()
   {
-    AppMethodBeat.i(189309);
-    this.YYe = new Runnable()
+    AppMethodBeat.i(231300);
+    this.agWp = new Runnable()
     {
       /* Error */
       public final void run()
@@ -250,43 +254,44 @@ public final class a
         //   43	53	313	java/lang/Exception
       }
     };
-    AppMethodBeat.o(189309);
+    AppMethodBeat.o(231300);
   }
   
-  public static a ijH()
+  public static a jPP()
   {
-    return YYd;
+    return agWo;
   }
   
-  public final void ijI()
+  public final void jPQ()
   {
-    AppMethodBeat.i(189314);
+    AppMethodBeat.i(231318);
+    y.bEp(MMApplicationContext.getContext().getFilesDir().getAbsolutePath() + "/crashFlag.live");
     if (Log.getImpl().getClass() != Xlog.class)
     {
       Log.e("MicroMsg.CrashLogcatCatcher", "impl is not xlog!");
-      AppMethodBeat.o(189314);
+      AppMethodBeat.o(231318);
       return;
     }
     Log.i("MicroMsg.CrashLogcatCatcher", "Log.consoleLogOpen:" + XLogSetup.isLogcatOpen);
     if (XLogSetup.isLogcatOpen.booleanValue())
     {
-      AppMethodBeat.o(189314);
+      AppMethodBeat.o(231318);
       return;
     }
-    int i = ((b)h.ae(b.class)).a(b.a.vtK, 0);
+    int i = ((c)h.ax(c.class)).a(c.a.yGo, 0);
     Log.i("MicroMsg.CrashLogcatCatcher", "is need work :".concat(String.valueOf(i)));
     if (i == 0)
     {
-      AppMethodBeat.o(189314);
+      AppMethodBeat.o(231318);
       return;
     }
-    this.YYe.run();
-    AppMethodBeat.o(189314);
+    this.agWp.run();
+    AppMethodBeat.o(231318);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.wlogcat.b.a
  * JD-Core Version:    0.7.0.1
  */

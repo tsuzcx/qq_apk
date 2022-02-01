@@ -5,18 +5,15 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.plugin.downloader.g.a;
+import com.tencent.mm.plugin.downloader.f.a;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public final class JsApiCancelDownloadTask
-  extends c<v>
+  extends c<com.tencent.mm.plugin.appbrand.y>
 {
   public static final int CTRL_INDEX = 475;
   public static final String NAME = "cancelDownloadTask";
@@ -25,10 +22,10 @@ public final class JsApiCancelDownloadTask
     extends MainProcessTask
   {
     public static Parcelable.Creator<CancelDownloadTask> CREATOR;
-    private v nAz;
-    private int okO;
-    private JSONArray oyF;
-    private c oyG;
+    private com.tencent.mm.plugin.appbrand.y qqV;
+    private JSONArray rCx;
+    private c rCy;
+    private int ror;
     
     static
     {
@@ -40,64 +37,64 @@ public final class JsApiCancelDownloadTask
     private CancelDownloadTask(Parcel paramParcel)
     {
       AppMethodBeat.i(45775);
-      f(paramParcel);
+      h(paramParcel);
       AppMethodBeat.o(45775);
     }
     
-    public CancelDownloadTask(JSONArray paramJSONArray, c paramc, v paramv, int paramInt)
+    public CancelDownloadTask(JSONArray paramJSONArray, c paramc, com.tencent.mm.plugin.appbrand.y paramy, int paramInt)
     {
       AppMethodBeat.i(45774);
-      this.oyF = paramJSONArray;
-      this.oyG = paramc;
-      this.nAz = paramv;
-      this.okO = paramInt;
+      this.rCx = paramJSONArray;
+      this.rCy = paramc;
+      this.qqV = paramy;
+      this.ror = paramInt;
       AppMethodBeat.o(45774);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(45772);
-      if ((this.oyF != null) && (this.oyF.length() > 0))
+      if ((this.rCx != null) && (this.rCx.length() > 0))
       {
         int i = 0;
-        if (i < this.oyF.length())
+        if (i < this.rCx.length())
         {
-          long l = this.oyF.optLong(i);
-          a locala = d.IF(l);
+          long l = this.rCx.optLong(i);
+          a locala = d.la(l);
           if ((locala != null) && (locala.field_status == 3))
           {
             Log.i("MicroMsg.JsApiCancelDownloadTask", "canceldownloadtask, path: %s", new Object[] { locala.field_filePath });
-            u.deleteFile(locala.field_filePath);
-            d.asV(locala.field_downloadUrl);
+            com.tencent.mm.vfs.y.deleteFile(locala.field_filePath);
+            d.amK(locala.field_downloadUrl);
           }
           for (;;)
           {
             i += 1;
             break;
-            f.cPZ().Iw(l);
+            f.duv().kR(l);
           }
         }
       }
-      bPt();
+      cpA();
       AppMethodBeat.o(45772);
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(45773);
-      bPk();
-      this.nAz.j(this.okO, this.oyG.h("ok", null));
+      cpx();
+      this.qqV.callback(this.ror, this.rCy.ZP("ok"));
       AppMethodBeat.o(45773);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(45776);
       paramParcel = paramParcel.readString();
       if (paramParcel != null) {
         try
         {
-          this.oyF = new JSONArray(paramParcel);
+          this.rCx = new JSONArray(paramParcel);
           AppMethodBeat.o(45776);
           return;
         }
@@ -112,8 +109,8 @@ public final class JsApiCancelDownloadTask
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45777);
-      if (this.oyF != null) {}
-      for (String str = this.oyF.toString();; str = null)
+      if (this.rCx != null) {}
+      for (String str = this.rCx.toString();; str = null)
       {
         paramParcel.writeString(str);
         AppMethodBeat.o(45777);

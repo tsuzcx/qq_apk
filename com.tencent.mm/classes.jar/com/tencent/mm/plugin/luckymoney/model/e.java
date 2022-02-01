@@ -1,26 +1,45 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.protocal.protobuf.cdt;
-import com.tencent.mm.protocal.protobuf.cdu;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.protocal.protobuf.csl;
+import com.tencent.mm.protocal.protobuf.csm;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class e
-  extends c<cdu>
+  extends z<csm>
 {
-  public e(String paramString)
+  public e(String paramString, int paramInt)
   {
-    AppMethodBeat.i(226501);
-    cdt localcdt = new cdt();
-    d.a locala = new d.a();
-    locala.lBU = localcdt;
-    locala.lBV = new cdu();
-    locala.funcId = 5952;
-    locala.uri = "/cgi-bin/micromsg-bin/gettimelimitpromo";
-    localcdt.llH = paramString;
-    c(locala.bgN());
-    AppMethodBeat.o(226501);
+    AppMethodBeat.i(283971);
+    csl localcsl = new csl();
+    com.tencent.mm.am.c.a locala = new com.tencent.mm.am.c.a();
+    locala.otE = localcsl;
+    locala.otF = new csm();
+    boolean bool;
+    if (((c)h.ax(c.class)).a(com.tencent.mm.plugin.expt.b.c.a.znw, 1) == 1)
+    {
+      bool = true;
+      Log.d("CgiGetShowSource", "is new: %s", new Object[] { Boolean.valueOf(bool) });
+      if (!bool) {
+        break label138;
+      }
+      locala.funcId = 3857;
+    }
+    for (locala.uri = "/cgi-bin/micromsg-bin/getshowsourcenew";; locala.uri = "/cgi-bin/mmpay-bin/ftfhb/getshowsource")
+    {
+      localcsl.aayv = paramString;
+      localcsl.aayw = paramInt;
+      c(locala.bEF());
+      AppMethodBeat.o(283971);
+      return;
+      bool = false;
+      break;
+      label138:
+      locala.funcId = 2620;
+    }
   }
 }
 

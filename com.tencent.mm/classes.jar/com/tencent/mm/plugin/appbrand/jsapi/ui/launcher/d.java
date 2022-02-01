@@ -1,27 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ui.launcher;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/launcher/JSAPIsForAppBrandLauncherUI;", "", "()V", "collectAPIs", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/launcher/JSAPIsForAppBrandLauncherUI;", "", "()V", "collectAPIs", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final d ptN;
+  public static final d syR;
   
   static
   {
     AppMethodBeat.i(50723);
-    ptN = new d();
+    syR = new d();
     AppMethodBeat.o(50723);
   }
   
-  public static final List<o> bUE()
+  public static final List<com.tencent.mm.plugin.appbrand.jsapi.p> cuU()
   {
     AppMethodBeat.i(50722);
-    List localList = j.listOf(new com.tencent.mm.plugin.appbrand.jsapi.c[] { (com.tencent.mm.plugin.appbrand.jsapi.c)new API_openWeAppSearch(), (com.tencent.mm.plugin.appbrand.jsapi.c)new a(), (com.tencent.mm.plugin.appbrand.jsapi.c)new c(), (com.tencent.mm.plugin.appbrand.jsapi.c)new b() });
+    List localList = kotlin.a.p.listOf(new com.tencent.mm.plugin.appbrand.jsapi.c[] { (com.tencent.mm.plugin.appbrand.jsapi.c)new API_openWeAppSearch(), (com.tencent.mm.plugin.appbrand.jsapi.c)new a(), (com.tencent.mm.plugin.appbrand.jsapi.c)new c(), (com.tencent.mm.plugin.appbrand.jsapi.c)new b() });
     AppMethodBeat.o(50722);
     return localList;
   }

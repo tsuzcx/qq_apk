@@ -6,115 +6,26 @@ import android.text.TextUtils;
 import com.qq.a.a.c;
 import com.qq.taf.jce.JceOutputStream;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d;
-import d.e;
+import e.d;
+import e.e;
 import java.util.ArrayList;
 
 public final class a
 {
-  private static final byte[] ZRp = new byte[1];
+  private static final byte[] ahVK = new byte[1];
   
-  public static byte[] a(b paramb, byte[] paramArrayOfByte)
+  public static String F(Throwable paramThrowable)
   {
-    AppMethodBeat.i(208411);
-    if ((TextUtils.isEmpty(paramb.uFI)) || (TextUtils.isEmpty(paramb.ZRu)) || (paramArrayOfByte == null))
-    {
-      AppMethodBeat.o(208411);
-      return null;
-    }
-    c localc = new c();
-    localc.cT("analytics");
-    localc.Kn();
-    localc.cS("uploadServer");
-    b.a locala = new b.a();
-    locala.aamM = 1;
-    locala.productId = paramb.uFI;
-    locala.aamO = paramb.ZRu;
-    locala.sdkId = paramb.ZRv;
-    locala.aamQ = paramb.mSdkVersion;
-    locala.Vh = 206;
-    paramb = f.a.a.a.a.iUq();
-    try
-    {
-      paramb = paramb.zip(paramArrayOfByte);
-      if (paramb != null) {
-        locala.aamS = 2;
-      }
-      paramArrayOfByte = new f.a.a.b.a();
-      paramArrayOfByte.bHY("*^@K#K@!");
-      return paramb;
-    }
-    catch (Throwable paramb)
-    {
-      try
-      {
-        paramb = paramArrayOfByte.dI(paramb);
-        if (paramb != null) {
-          locala.aamK = 1;
-        }
-        locala.sBuffer = paramb;
-        locala.aamL = (Build.BRAND + "-" + Build.MODEL + ";Android " + Build.VERSION.RELEASE + ",level " + Build.VERSION.SDK_INT);
-        locala.qua = "";
-        localc.c("detail", locala);
-        paramb = localc.Km();
-        AppMethodBeat.o(208411);
-        return paramb;
-      }
-      catch (Throwable paramb)
-      {
-        paramb = ZRp;
-        AppMethodBeat.o(208411);
-      }
-      paramb = paramb;
-      paramb = ZRp;
-      AppMethodBeat.o(208411);
-      return paramb;
-    }
-  }
-  
-  public static int bDX(String paramString)
-  {
-    AppMethodBeat.i(208408);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(208408);
-      return -1;
-    }
-    int i = Math.abs(paramString.hashCode());
-    AppMethodBeat.o(208408);
-    return i;
-  }
-  
-  public static byte[] bM(ArrayList<d> paramArrayList)
-  {
-    AppMethodBeat.i(208409);
-    if ((paramArrayList == null) || (paramArrayList.isEmpty()))
-    {
-      AppMethodBeat.o(208409);
-      return null;
-    }
-    e locale = new e();
-    locale.fmA = paramArrayList;
-    paramArrayList = new JceOutputStream();
-    paramArrayList.setServerEncoding("UTF-8");
-    locale.writeTo(paramArrayList);
-    paramArrayList = paramArrayList.toByteArray();
-    AppMethodBeat.o(208409);
-    return paramArrayList;
-  }
-  
-  public static String p(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(208406);
+    AppMethodBeat.i(212075);
     if (paramThrowable == null)
     {
-      AppMethodBeat.o(208406);
+      AppMethodBeat.o(212075);
       return "";
     }
     paramThrowable = paramThrowable.getStackTrace();
     if ((paramThrowable == null) || (paramThrowable.length <= 0))
     {
-      AppMethodBeat.o(208406);
+      AppMethodBeat.o(212075);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -135,31 +46,120 @@ public final class a
       i += 1;
     }
     paramThrowable = localStringBuilder.toString();
-    AppMethodBeat.o(208406);
+    AppMethodBeat.o(212075);
     return paramThrowable;
+  }
+  
+  public static byte[] a(b paramb, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(212093);
+    if ((TextUtils.isEmpty(paramb.xOk)) || (TextUtils.isEmpty(paramb.ahVP)) || (paramArrayOfByte == null))
+    {
+      AppMethodBeat.o(212093);
+      return null;
+    }
+    c localc = new c();
+    localc.en("analytics");
+    localc.ako();
+    localc.em("uploadServer");
+    b.a locala = new b.a();
+    locala.aitb = 1;
+    locala.productId = paramb.xOk;
+    locala.aitd = paramb.ahVP;
+    locala.sdkId = paramb.ahVQ;
+    locala.aitf = paramb.ahVR;
+    locala.bUl = 206;
+    paramb = h.a.a.a.a.kFR();
+    try
+    {
+      paramb = paramb.zip(paramArrayOfByte);
+      if (paramb != null) {
+        locala.aith = 2;
+      }
+      paramArrayOfByte = new h.a.a.b.a();
+      paramArrayOfByte.bKc("*^@K#K@!");
+      return paramb;
+    }
+    finally
+    {
+      try
+      {
+        paramb = paramArrayOfByte.dL(paramb);
+        if (paramb != null) {
+          locala.aisZ = 1;
+        }
+        locala.sBuffer = paramb;
+        locala.aita = (Build.BRAND + "-" + Build.MODEL + ";Android " + Build.VERSION.RELEASE + ",level " + Build.VERSION.SDK_INT);
+        locala.qua = "";
+        localc.j("detail", locala);
+        paramb = localc.akn();
+        AppMethodBeat.o(212093);
+        return paramb;
+      }
+      finally
+      {
+        paramb = ahVK;
+        AppMethodBeat.o(212093);
+      }
+      paramb = finally;
+      paramb = ahVK;
+      AppMethodBeat.o(212093);
+      return paramb;
+    }
+  }
+  
+  public static int bGw(String paramString)
+  {
+    AppMethodBeat.i(212079);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(212079);
+      return -1;
+    }
+    int i = Math.abs(paramString.hashCode());
+    AppMethodBeat.o(212079);
+    return i;
+  }
+  
+  public static byte[] cm(ArrayList<d> paramArrayList)
+  {
+    AppMethodBeat.i(212087);
+    if ((paramArrayList == null) || (paramArrayList.isEmpty()))
+    {
+      AppMethodBeat.o(212087);
+      return null;
+    }
+    e locale = new e();
+    locale.hqL = paramArrayList;
+    paramArrayList = new JceOutputStream();
+    paramArrayList.setServerEncoding("UTF-8");
+    locale.writeTo(paramArrayList);
+    paramArrayList = paramArrayList.toByteArray();
+    AppMethodBeat.o(212087);
+    return paramArrayList;
   }
   
   public static final class a
   {
-    public String ZRq;
-    public String ZRr;
-    public long ZRs;
-    public String ZRt;
+    public String ahVL;
+    public String ahVM;
+    public long ahVN;
+    public String ahVO;
     public String mProcessName;
     public String mThreadName;
   }
   
   public static final class b
   {
-    public String ZRu;
-    public String ZRv;
-    public String mSdkVersion;
-    public String uFI;
+    public String ahVP;
+    public String ahVQ;
+    public String ahVR;
+    public String xOk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.g.a.a.a
  * JD-Core Version:    0.7.0.1
  */

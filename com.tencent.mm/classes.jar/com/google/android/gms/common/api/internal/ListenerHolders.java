@@ -1,7 +1,6 @@
 package com.google.android.gms.common.api.internal;
 
 import android.os.Looper;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.internal.Preconditions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
@@ -9,7 +8,6 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-@KeepForSdk
 public class ListenerHolders
 {
   private final Set<ListenerHolder<?>> zzlm;
@@ -21,7 +19,6 @@ public class ListenerHolders
     AppMethodBeat.o(11137);
   }
   
-  @KeepForSdk
   public static <L> ListenerHolder<L> createListenerHolder(L paramL, Looper paramLooper, String paramString)
   {
     AppMethodBeat.i(11140);
@@ -33,7 +30,6 @@ public class ListenerHolders
     return paramL;
   }
   
-  @KeepForSdk
   public static <L> ListenerHolder.ListenerKey<L> createListenerKey(L paramL, String paramString)
   {
     AppMethodBeat.i(11141);
@@ -67,7 +63,7 @@ public class ListenerHolders
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.ListenerHolders
  * JD-Core Version:    0.7.0.1
  */

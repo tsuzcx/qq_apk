@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="facebook_auth_tip" android:layout="@layout/b_7" android:title="@string/c74" />
-    <PreferenceCategory android:key="facebook_auth_cat" />
-    <Preference android:key="facebook_auth_bind_btn" android:layout="@layout/a6l" android:title="@string/c73" />
-    <Preference android:key="facebook_auth_account" android:layout="@layout/b8j" android:title="@string/c76" />
-    <PreferenceCategory android:key="facebook_auth_cat2" />
-    <Preference android:key="facebook_auth_unbind_btn" android:layout="@layout/bg7" android:title="@string/c7c" />
+    <IconPreference android:key="settings_follow" android:layout="@layout/bdi" android:title="@string/d_k" />
+    <IconPreference android:key="settings_liked" android:layout="@layout/bdi" android:title="@string/eea" />
+    <IconPreference android:key="settings_collected" android:layout="@layout/bdi" android:title="@string/d8a" />
+    <IconPreference android:key="settings_mention" android:layout="@layout/bdi" android:title="@string/eob" />
+    <IconPreference android:key="settings_privacy_msg" android:layout="@layout/bdi" android:title="@string/ec1" />
 </PreferenceScreen>

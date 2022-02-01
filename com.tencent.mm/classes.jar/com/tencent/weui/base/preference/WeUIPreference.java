@@ -1,6 +1,5 @@
 package com.tencent.weui.base.preference;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -23,15 +22,15 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.f;
-import com.tencent.mm.cr.a.g;
+import com.tencent.mm.ck.a.f;
+import com.tencent.mm.ck.a.g;
 import com.tencent.mm.ui.BaseActivity;
-import com.tencent.mm.ui.av;
+import com.tencent.mm.ui.bc;
 
 public abstract class WeUIPreference
   extends BaseActivity
 {
-  private b ZXW;
+  public b aicv;
   protected ImageView bannerCloseBtn;
   protected TextView bannerTv;
   protected RelativeLayout bannerView;
@@ -39,6 +38,11 @@ public abstract class WeUIPreference
   private boolean isRefreshing = false;
   private ListView list;
   private SharedPreferences sp;
+  
+  public static boolean keH()
+  {
+    return false;
+  }
   
   public abstract boolean a(a parama, Preference paramPreference);
   
@@ -54,11 +58,6 @@ public abstract class WeUIPreference
   
   public abstract int getResourceId();
   
-  public final a ivl()
-  {
-    return this.ZXW;
-  }
-  
   public boolean onContextItemSelected(MenuItem paramMenuItem)
   {
     return super.onContextItemSelected(paramMenuItem);
@@ -68,7 +67,7 @@ public abstract class WeUIPreference
   {
     super.onCreate(paramBundle);
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
-    this.ZXW = new b(this, this.sp);
+    this.aicv = new b(this, this.sp);
     this.list = ((ListView)findViewById(16908298));
     this.bannerView = ((RelativeLayout)findViewById(a.f.preference_tips_banner_view));
     this.bannerTv = ((TextView)findViewById(a.f.preference_tips_banner_tv));
@@ -79,8 +78,8 @@ public abstract class WeUIPreference
       paramBundle = getLayoutInflater().inflate(i, null);
       this.list.addFooterView(paramBundle);
     }
-    paramBundle = this.ZXW;
-    paramBundle.ZYa = new Preference.OnPreferenceChangeListener()
+    paramBundle = this.aicv;
+    paramBundle.aicz = new Preference.OnPreferenceChangeListener()
     {
       public final boolean onPreferenceChange(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
@@ -92,7 +91,7 @@ public abstract class WeUIPreference
             break label170;
           }
           paramAnonymousObject = (CheckBoxPreference)paramAnonymousPreference;
-          paramAnonymousObject.bBh = paramAnonymousObject.isChecked();
+          paramAnonymousObject.duj = paramAnonymousObject.isChecked();
           if (paramAnonymousObject.isPersistent()) {
             WeUIPreference.b(WeUIPreference.this).edit().putBoolean(paramAnonymousPreference.getKey(), paramAnonymousObject.isChecked()).commit();
           }
@@ -124,9 +123,9 @@ public abstract class WeUIPreference
     c localc;
     if (i != -1)
     {
-      localb = this.ZXW;
-      localb.ZXZ = true;
-      localc = localb.ZXY;
+      localb = this.aicv;
+      localb.aicy = true;
+      localc = localb.aicx;
       paramBundle = localc.mContext.getResources().getXml(i);
       if (paramBundle == null) {}
     }
@@ -134,20 +133,20 @@ public abstract class WeUIPreference
     {
       localc.a(paramBundle, localb);
       paramBundle.close();
-      localb.ZXZ = false;
+      localb.aicy = false;
       localb.notifyDataSetChanged();
-      this.list.setAdapter(this.ZXW);
+      this.list.setAdapter(this.aicv);
       this.list.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(159998);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousAdapterView);
-          localb.bn(paramAnonymousView);
-          localb.sg(paramAnonymousInt);
-          localb.Fs(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+          localb.cH(paramAnonymousAdapterView);
+          localb.cH(paramAnonymousView);
+          localb.sc(paramAnonymousInt);
+          localb.hB(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/weui/base/preference/WeUIPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
           paramAnonymousAdapterView = (Preference)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
           if (paramAnonymousAdapterView == null)
           {
@@ -184,15 +183,16 @@ public abstract class WeUIPreference
           paramAnonymousInt -= WeUIPreference.e(WeUIPreference.this).getHeaderViewsCount();
           if (paramAnonymousInt >= WeUIPreference.d(WeUIPreference.this).getCount())
           {
-            av.e("MicroMsg.mmui.WeUIPreference", "itemlongclick, outofindex, %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(WeUIPreference.d(WeUIPreference.this).getCount()) });
+            bc.e("MicroMsg.mmui.WeUIPreference", "itemlongclick, outofindex, %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(WeUIPreference.d(WeUIPreference.this).getCount()) });
             AppMethodBeat.o(159999);
             return false;
           }
           WeUIPreference.d(WeUIPreference.this).getItem(paramAnonymousInt);
           WeUIPreference.d(WeUIPreference.this);
           WeUIPreference.e(WeUIPreference.this);
+          boolean bool = WeUIPreference.keH();
           AppMethodBeat.o(159999);
-          return false;
+          return bool;
         }
       });
       this.list.setOnScrollListener(new AbsListView.OnScrollListener()
@@ -222,7 +222,7 @@ public abstract class WeUIPreference
   
   public void onResume()
   {
-    this.ZXW.notifyDataSetChanged();
+    this.aicv.notifyDataSetChanged();
     super.onResume();
   }
   
@@ -234,7 +234,7 @@ public abstract class WeUIPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.weui.base.preference.WeUIPreference
  * JD-Core Version:    0.7.0.1
  */

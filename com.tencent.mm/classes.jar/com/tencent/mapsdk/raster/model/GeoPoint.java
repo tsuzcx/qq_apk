@@ -17,7 +17,7 @@ public class GeoPoint
     AppMethodBeat.i(87540);
     CREATOR = new Parcelable.Creator()
     {
-      public final GeoPoint createFromParcel(Parcel paramAnonymousParcel)
+      public GeoPoint createFromParcel(Parcel paramAnonymousParcel)
       {
         AppMethodBeat.i(87597);
         paramAnonymousParcel = new GeoPoint(paramAnonymousParcel, null);
@@ -25,7 +25,7 @@ public class GeoPoint
         return paramAnonymousParcel;
       }
       
-      public final GeoPoint[] newArray(int paramAnonymousInt)
+      public GeoPoint[] newArray(int paramAnonymousInt)
       {
         return new GeoPoint[paramAnonymousInt];
       }
@@ -138,7 +138,7 @@ public class GeoPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.GeoPoint
  * JD-Core Version:    0.7.0.1
  */

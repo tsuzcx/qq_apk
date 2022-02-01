@@ -103,7 +103,7 @@ public class finder_outlined_self_like
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.finder_outlined_self_like
  * JD-Core Version:    0.7.0.1
  */

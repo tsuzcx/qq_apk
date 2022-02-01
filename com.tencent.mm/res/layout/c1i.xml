@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="58.0dip" android:layout_height="58.0dip"
+<FrameLayout android:id="@id/iwl" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/e47" android:background="@drawable/bod" android:padding="4.0dip" android:layout_width="58.0dip" android:layout_height="58.0dip" android:scaleType="fitXY" android:contentDescription="@null" style="@style/t3" />
-    <TextView android:gravity="center" android:layout_gravity="bottom" android:id="@id/iy6" android:background="#55000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarChart android:id="@id/b01" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

@@ -2,10 +2,10 @@ package com.tencent.mm.storage.emotion;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.protocal.protobuf.buh;
-import com.tencent.mm.protocal.protobuf.caj;
-import com.tencent.mm.protocal.protobuf.eiv;
+import com.tencent.mm.protocal.protobuf.ciu;
+import com.tencent.mm.protocal.protobuf.cps;
+import com.tencent.mm.protocal.protobuf.fdc;
+import com.tencent.mm.protocal.protobuf.gog;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -28,16 +28,16 @@ public final class s
   
   public s(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(paramISQLiteDatabase, r.info, "GetEmotionListCache", null);
+    this(paramISQLiteDatabase, r.info, "GetEmotionListCache");
   }
   
-  public s(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  private s(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
   {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
     this.db = paramISQLiteDatabase;
   }
   
-  private boolean bxV(String paramString)
+  private boolean bzl(String paramString)
   {
     AppMethodBeat.i(105128);
     if (this.db.delete("GetEmotionListCache", "reqType=?", new String[] { paramString }) > 0)
@@ -49,10 +49,10 @@ public final class s
     return false;
   }
   
-  public final boolean a(int paramInt, buh parambuh)
+  public final boolean a(int paramInt, gog paramgog)
   {
     AppMethodBeat.i(105129);
-    if (parambuh == null)
+    if (paramgog == null)
     {
       AppMethodBeat.o(105129);
       return false;
@@ -60,55 +60,55 @@ public final class s
     try
     {
       this.db.delete("GetEmotionListCache", "reqType=?", new String[] { String.valueOf(paramInt) });
-      parambuh = new r(String.valueOf(paramInt), parambuh.toByteArray());
+      paramgog = new r(String.valueOf(paramInt), paramgog.toByteArray());
       Log.d("MicroMsg.emoji.Storage", "insert cache: %d", new Object[] { Integer.valueOf(paramInt) });
-      boolean bool = insert(parambuh);
+      boolean bool = insert(paramgog);
       AppMethodBeat.o(105129);
       return bool;
     }
-    catch (Exception parambuh)
+    catch (Exception paramgog)
     {
-      Log.e("MicroMsg.emoji.Storage", "exception:%s", new Object[] { Util.stackTraceToString(parambuh) });
+      Log.e("MicroMsg.emoji.Storage", "exception:%s", new Object[] { Util.stackTraceToString(paramgog) });
       AppMethodBeat.o(105129);
     }
     return false;
   }
   
-  public final boolean a(eiv parameiv)
+  public final boolean a(fdc paramfdc)
   {
     AppMethodBeat.i(105134);
-    if (parameiv == null)
+    if (paramfdc == null)
     {
       AppMethodBeat.o(105134);
       return false;
     }
     try
     {
-      bxV("Smiley_panel_req_type");
-      boolean bool = insert(new r("Smiley_panel_req_type", parameiv.toByteArray()));
+      bzl("Smiley_panel_req_type");
+      boolean bool = insert(new r("Smiley_panel_req_type", paramfdc.toByteArray()));
       AppMethodBeat.o(105134);
       return bool;
     }
-    catch (Exception parameiv)
+    catch (Exception paramfdc)
     {
-      Log.e("MicroMsg.emoji.Storage", "exception:%s", new Object[] { Util.stackTraceToString(parameiv) });
+      Log.e("MicroMsg.emoji.Storage", "exception:%s", new Object[] { Util.stackTraceToString(paramfdc) });
       AppMethodBeat.o(105134);
     }
     return false;
   }
   
-  public final boolean a(String paramString, btz parambtz)
+  public final boolean a(String paramString, ciu paramciu)
   {
     AppMethodBeat.i(105136);
-    if (parambtz == null)
+    if (paramciu == null)
     {
       AppMethodBeat.o(105136);
       return false;
     }
     try
     {
-      bxV("activityID:".concat(String.valueOf(paramString)));
-      boolean bool = insert(new r("activityID:".concat(String.valueOf(paramString)), parambtz.toByteArray()));
+      bzl("activityID:".concat(String.valueOf(paramString)));
+      boolean bool = insert(new r("activityID:".concat(String.valueOf(paramString)), paramciu.toByteArray()));
       AppMethodBeat.o(105136);
       return bool;
     }
@@ -120,18 +120,18 @@ public final class s
     return false;
   }
   
-  public final boolean a(String paramString, caj paramcaj)
+  public final boolean a(String paramString, cps paramcps)
   {
     AppMethodBeat.i(105131);
-    if (paramcaj == null)
+    if (paramcps == null)
     {
       AppMethodBeat.o(105131);
       return false;
     }
     try
     {
-      bxV(paramString);
-      boolean bool = insert(new r(paramString, paramcaj.toByteArray()));
+      bzl(paramString);
+      boolean bool = insert(new r(paramString, paramcps.toByteArray()));
       AppMethodBeat.o(105131);
       return bool;
     }
@@ -143,7 +143,7 @@ public final class s
     return false;
   }
   
-  public final buh asU(int paramInt)
+  public final gog azj(int paramInt)
   {
     Object localObject3 = null;
     AppMethodBeat.i(105130);
@@ -159,8 +159,8 @@ public final class s
     }
     try
     {
-      localObject1 = new buh();
-      ((buh)localObject1).parseFrom(localr.field_cache);
+      localObject1 = new gog();
+      ((gog)localObject1).parseFrom(localr.field_cache);
       Log.d("MicroMsg.emoji.Storage", "succed get cache: %d", new Object[] { Integer.valueOf(paramInt) });
       if (localCursor != null) {
         localCursor.close();
@@ -178,7 +178,7 @@ public final class s
     }
   }
   
-  public final caj bxW(String paramString)
+  public final cps bzm(String paramString)
   {
     Object localObject2 = null;
     AppMethodBeat.i(105132);
@@ -194,8 +194,8 @@ public final class s
     }
     try
     {
-      localObject1 = new caj();
-      ((caj)localObject1).parseFrom(localr.field_cache);
+      localObject1 = new cps();
+      ((cps)localObject1).parseFrom(localr.field_cache);
       Log.d("MicroMsg.emoji.Storage", "succed get designerID cache: %s", new Object[] { paramString });
       if (localCursor != null) {
         localCursor.close();
@@ -214,66 +214,66 @@ public final class s
   }
   
   /* Error */
-  public final btz bxX(String paramString)
+  public final ciu bzn(String paramString)
   {
     // Byte code:
-    //   0: ldc 178
+    //   0: ldc 180
     //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 181	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 183	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifeq +17 -> 26
-    //   12: ldc 77
-    //   14: ldc 183
-    //   16: invokestatic 187	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   19: ldc 178
+    //   12: ldc 79
+    //   14: ldc 185
+    //   16: invokestatic 189	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: ldc 180
     //   21: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aconst_null
     //   25: areturn
     //   26: aload_0
-    //   27: getfield 46	com/tencent/mm/storage/emotion/s:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   27: getfield 48	com/tencent/mm/storage/emotion/s:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   30: ldc 28
     //   32: aconst_null
-    //   33: ldc 51
+    //   33: ldc 53
     //   35: iconst_1
     //   36: anewarray 20	java/lang/String
     //   39: dup
     //   40: iconst_0
-    //   41: ldc 120
+    //   41: ldc 122
     //   43: aload_1
-    //   44: invokestatic 123	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   47: invokevirtual 127	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: invokestatic 125	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   47: invokevirtual 129	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   50: aastore
     //   51: aconst_null
     //   52: aconst_null
     //   53: aconst_null
-    //   54: invokeinterface 190 8 0
+    //   54: invokeinterface 192 8 0
     //   59: astore_1
     //   60: aload_1
     //   61: ifnull +142 -> 203
     //   64: aload_1
     //   65: astore_2
     //   66: aload_1
-    //   67: invokeinterface 150 1 0
+    //   67: invokeinterface 152 1 0
     //   72: ifeq +131 -> 203
     //   75: aload_1
     //   76: astore_2
     //   77: new 22	com/tencent/mm/storage/emotion/r
     //   80: dup
     //   81: aload_1
-    //   82: invokespecial 153	com/tencent/mm/storage/emotion/r:<init>	(Landroid/database/Cursor;)V
+    //   82: invokespecial 155	com/tencent/mm/storage/emotion/r:<init>	(Landroid/database/Cursor;)V
     //   85: astore 4
     //   87: aload_1
     //   88: astore_2
-    //   89: new 129	com/tencent/mm/protocal/protobuf/btz
+    //   89: new 131	com/tencent/mm/protocal/protobuf/ciu
     //   92: dup
-    //   93: invokespecial 191	com/tencent/mm/protocal/protobuf/btz:<init>	()V
+    //   93: invokespecial 193	com/tencent/mm/protocal/protobuf/ciu:<init>	()V
     //   96: astore_3
     //   97: aload_1
     //   98: astore_2
     //   99: aload_3
     //   100: aload 4
-    //   102: getfield 159	com/tencent/mm/storage/emotion/r:field_cache	[B
-    //   105: invokevirtual 192	com/tencent/mm/protocal/protobuf/btz:parseFrom	([B)Lcom/tencent/mm/cd/a;
+    //   102: getfield 161	com/tencent/mm/storage/emotion/r:field_cache	[B
+    //   105: invokevirtual 194	com/tencent/mm/protocal/protobuf/ciu:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   108: pop
     //   109: aload_3
     //   110: astore_2
@@ -282,10 +282,10 @@ public final class s
     //   113: aload_1
     //   114: ifnull +11 -> 125
     //   117: aload_1
-    //   118: invokeinterface 168 1 0
+    //   118: invokeinterface 170 1 0
     //   123: aload_2
     //   124: astore_3
-    //   125: ldc 178
+    //   125: ldc 180
     //   127: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   130: aload_3
     //   131: areturn
@@ -294,20 +294,20 @@ public final class s
     //   134: astore_1
     //   135: aload_1
     //   136: astore_2
-    //   137: ldc 77
-    //   139: ldc 98
+    //   137: ldc 79
+    //   139: ldc 100
     //   141: iconst_1
-    //   142: anewarray 81	java/lang/Object
+    //   142: anewarray 83	java/lang/Object
     //   145: dup
     //   146: iconst_0
     //   147: aload_3
-    //   148: invokestatic 104	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   148: invokestatic 106	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   151: aastore
-    //   152: invokestatic 107	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   152: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   155: aload_1
     //   156: ifnull +42 -> 198
     //   159: aload_1
-    //   160: invokeinterface 168 1 0
+    //   160: invokeinterface 170 1 0
     //   165: aconst_null
     //   166: astore_3
     //   167: goto -42 -> 125
@@ -317,8 +317,8 @@ public final class s
     //   173: aload_2
     //   174: ifnull +9 -> 183
     //   177: aload_2
-    //   178: invokeinterface 168 1 0
-    //   183: ldc 178
+    //   178: invokeinterface 170 1 0
+    //   183: ldc 180
     //   185: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   188: aload_1
     //   189: athrow
@@ -362,7 +362,7 @@ public final class s
   {
     Object localObject2 = null;
     Object localObject1 = null;
-    AppMethodBeat.i(225949);
+    AppMethodBeat.i(249019);
     Cursor localCursor = this.db.query("GetEmotionListCache", null, "reqType=?", new String[] { paramString }, null, null, null);
     paramString = localObject2;
     if (localCursor != null)
@@ -373,58 +373,58 @@ public final class s
       }
       localCursor.close();
     }
-    AppMethodBeat.o(225949);
+    AppMethodBeat.o(249019);
     return paramString;
   }
   
   /* Error */
-  public final eiv hBK()
+  public final fdc jdK()
   {
     // Byte code:
-    //   0: ldc 198
+    //   0: ldc 200
     //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 46	com/tencent/mm/storage/emotion/s:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   6: getfield 48	com/tencent/mm/storage/emotion/s:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   9: ldc 28
     //   11: aconst_null
-    //   12: ldc 51
+    //   12: ldc 53
     //   14: iconst_1
     //   15: anewarray 20	java/lang/String
     //   18: dup
     //   19: iconst_0
-    //   20: ldc 111
+    //   20: ldc 113
     //   22: aastore
     //   23: aconst_null
     //   24: aconst_null
     //   25: aconst_null
-    //   26: invokeinterface 190 8 0
+    //   26: invokeinterface 192 8 0
     //   31: astore_1
     //   32: aload_1
     //   33: ifnull +142 -> 175
     //   36: aload_1
     //   37: astore_2
     //   38: aload_1
-    //   39: invokeinterface 150 1 0
+    //   39: invokeinterface 152 1 0
     //   44: ifeq +131 -> 175
     //   47: aload_1
     //   48: astore_2
     //   49: new 22	com/tencent/mm/storage/emotion/r
     //   52: dup
     //   53: aload_1
-    //   54: invokespecial 153	com/tencent/mm/storage/emotion/r:<init>	(Landroid/database/Cursor;)V
+    //   54: invokespecial 155	com/tencent/mm/storage/emotion/r:<init>	(Landroid/database/Cursor;)V
     //   57: astore 4
     //   59: aload_1
     //   60: astore_2
-    //   61: new 115	com/tencent/mm/protocal/protobuf/eiv
+    //   61: new 117	com/tencent/mm/protocal/protobuf/fdc
     //   64: dup
-    //   65: invokespecial 199	com/tencent/mm/protocal/protobuf/eiv:<init>	()V
+    //   65: invokespecial 201	com/tencent/mm/protocal/protobuf/fdc:<init>	()V
     //   68: astore_3
     //   69: aload_1
     //   70: astore_2
     //   71: aload_3
     //   72: aload 4
-    //   74: getfield 159	com/tencent/mm/storage/emotion/r:field_cache	[B
-    //   77: invokevirtual 200	com/tencent/mm/protocal/protobuf/eiv:parseFrom	([B)Lcom/tencent/mm/cd/a;
+    //   74: getfield 161	com/tencent/mm/storage/emotion/r:field_cache	[B
+    //   77: invokevirtual 202	com/tencent/mm/protocal/protobuf/fdc:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   80: pop
     //   81: aload_3
     //   82: astore_2
@@ -433,10 +433,10 @@ public final class s
     //   85: aload_1
     //   86: ifnull +11 -> 97
     //   89: aload_1
-    //   90: invokeinterface 168 1 0
+    //   90: invokeinterface 170 1 0
     //   95: aload_2
     //   96: astore_3
-    //   97: ldc 198
+    //   97: ldc 200
     //   99: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   102: aload_3
     //   103: areturn
@@ -445,20 +445,20 @@ public final class s
     //   106: astore_1
     //   107: aload_1
     //   108: astore_2
-    //   109: ldc 77
-    //   111: ldc 98
+    //   109: ldc 79
+    //   111: ldc 100
     //   113: iconst_1
-    //   114: anewarray 81	java/lang/Object
+    //   114: anewarray 83	java/lang/Object
     //   117: dup
     //   118: iconst_0
     //   119: aload_3
-    //   120: invokestatic 104	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   120: invokestatic 106	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   123: aastore
-    //   124: invokestatic 107	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   124: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   127: aload_1
     //   128: ifnull +42 -> 170
     //   131: aload_1
-    //   132: invokeinterface 168 1 0
+    //   132: invokeinterface 170 1 0
     //   137: aconst_null
     //   138: astore_3
     //   139: goto -42 -> 97
@@ -468,8 +468,8 @@ public final class s
     //   145: aload_2
     //   146: ifnull +9 -> 155
     //   149: aload_2
-    //   150: invokeinterface 168 1 0
-    //   155: ldc 198
+    //   150: invokeinterface 170 1 0
+    //   155: ldc 200
     //   157: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   160: aload_1
     //   161: athrow
@@ -511,11 +511,11 @@ public final class s
     //   71	81	166	java/lang/Exception
   }
   
-  public final void l(String paramString, byte[] paramArrayOfByte)
+  public final void n(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(225951);
+    AppMethodBeat.i(249023);
     replace(new r(paramString, paramArrayOfByte));
-    AppMethodBeat.o(225951);
+    AppMethodBeat.o(249023);
   }
 }
 

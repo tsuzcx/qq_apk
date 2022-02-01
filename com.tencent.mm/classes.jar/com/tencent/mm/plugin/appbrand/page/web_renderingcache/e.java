@@ -5,16 +5,16 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"invokeMMAsync", "", "T", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "p", "(Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;Ljava/lang/Object;)V", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"invokeMMAsync", "", "T", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "p", "(Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;Ljava/lang/Object;)V", "plugin-appbrand-integration_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class e
 {
   public static final <T> void a(d<T, IPCVoid> paramd, T paramT)
   {
     AppMethodBeat.i(50984);
-    p.k(paramd, "$this$invokeMMAsync");
+    s.u(paramd, "<this>");
     XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, paramT, paramd.getClass(), null);
     AppMethodBeat.o(50984);
   }

@@ -3,12 +3,12 @@ package com.tencent.mm.audio.mix.g;
 public class b
   implements c
 {
-  public com.tencent.mm.al.b aeD()
+  public com.tencent.mm.al.b aGB()
   {
     return null;
   }
   
-  public String aeE()
+  public String aGC()
   {
     return null;
   }
@@ -29,7 +29,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.audio.mix.g.b
  * JD-Core Version:    0.7.0.1
  */

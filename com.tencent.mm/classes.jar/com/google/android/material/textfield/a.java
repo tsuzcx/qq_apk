@@ -15,31 +15,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a
   extends GradientDrawable
 {
-  private final Paint bFX;
-  private final RectF bFY;
-  private int bFZ;
+  private final Paint dyX;
+  private final RectF dyY;
+  private int dyZ;
   
   a()
   {
-    AppMethodBeat.i(240100);
-    this.bFX = new Paint(1);
-    this.bFX.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.bFX.setColor(-1);
-    this.bFX.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-    this.bFY = new RectF();
-    AppMethodBeat.o(240100);
+    AppMethodBeat.i(209713);
+    this.dyX = new Paint(1);
+    this.dyX.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.dyX.setColor(-1);
+    this.dyX.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+    this.dyY = new RectF();
+    AppMethodBeat.o(209713);
+  }
+  
+  final boolean Xg()
+  {
+    AppMethodBeat.i(209719);
+    if (!this.dyY.isEmpty())
+    {
+      AppMethodBeat.o(209719);
+      return true;
+    }
+    AppMethodBeat.o(209719);
+    return false;
   }
   
   final void c(RectF paramRectF)
   {
-    AppMethodBeat.i(240107);
-    k(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom);
-    AppMethodBeat.o(240107);
+    AppMethodBeat.i(209737);
+    m(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom);
+    AppMethodBeat.o(209737);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(240110);
+    AppMethodBeat.i(209743);
     Drawable.Callback localCallback = getCallback();
     if ((localCallback instanceof View)) {
       ((View)localCallback).setLayerType(2, null);
@@ -47,41 +59,29 @@ final class a
     for (;;)
     {
       super.draw(paramCanvas);
-      paramCanvas.drawRect(this.bFY, this.bFX);
+      paramCanvas.drawRect(this.dyY, this.dyX);
       if (!(getCallback() instanceof View)) {
-        paramCanvas.restoreToCount(this.bFZ);
+        paramCanvas.restoreToCount(this.dyZ);
       }
-      AppMethodBeat.o(240110);
+      AppMethodBeat.o(209743);
       return;
       if (Build.VERSION.SDK_INT >= 21) {
-        this.bFZ = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
+        this.dyZ = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
       } else {
-        this.bFZ = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null, 31);
+        this.dyZ = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null, 31);
       }
     }
   }
   
-  final void k(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  final void m(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    AppMethodBeat.i(240105);
-    if ((paramFloat1 != this.bFY.left) || (paramFloat2 != this.bFY.top) || (paramFloat3 != this.bFY.right) || (paramFloat4 != this.bFY.bottom))
+    AppMethodBeat.i(209728);
+    if ((paramFloat1 != this.dyY.left) || (paramFloat2 != this.dyY.top) || (paramFloat3 != this.dyY.right) || (paramFloat4 != this.dyY.bottom))
     {
-      this.bFY.set(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+      this.dyY.set(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
       invalidateSelf();
     }
-    AppMethodBeat.o(240105);
-  }
-  
-  final boolean xJ()
-  {
-    AppMethodBeat.i(240102);
-    if (!this.bFY.isEmpty())
-    {
-      AppMethodBeat.o(240102);
-      return true;
-    }
-    AppMethodBeat.o(240102);
-    return false;
+    AppMethodBeat.o(209728);
   }
 }
 

@@ -1,117 +1,115 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class fef
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public int Svi;
-  public int Svu;
-  public long Svv;
-  public long UCJ;
-  public int UDQ;
+  public int CreateTime;
+  public String Username;
+  public gol abDk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115881);
+    AppMethodBeat.i(125786);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abDk == null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: HBBuffer");
+        AppMethodBeat.o(125786);
+        throw paramVarArgs;
       }
-      paramVarArgs.aY(2, this.Svu);
-      paramVarArgs.bm(3, this.Svv);
-      paramVarArgs.aY(4, this.Svi);
-      paramVarArgs.bm(5, this.UCJ);
-      paramVarArgs.aY(6, this.UDQ);
-      AppMethodBeat.o(115881);
+      if (this.Username != null) {
+        paramVarArgs.g(1, this.Username);
+      }
+      paramVarArgs.bS(2, this.CreateTime);
+      if (this.abDk != null)
+      {
+        paramVarArgs.qD(3, this.abDk.computeSize());
+        this.abDk.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(125786);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label520;
+      if (this.Username == null) {
+        break label436;
       }
     }
-    label520:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label436:
+    for (paramInt = i.a.a.b.b.a.h(1, this.Username) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.Svu);
-      int j = g.a.a.b.b.a.p(3, this.Svv);
-      int k = g.a.a.b.b.a.bM(4, this.Svi);
-      int m = g.a.a.b.b.a.p(5, this.UCJ);
-      int n = g.a.a.b.b.a.bM(6, this.UDQ);
-      AppMethodBeat.o(115881);
-      return paramInt + i + j + k + m + n;
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.CreateTime);
+      paramInt = i;
+      if (this.abDk != null) {
+        paramInt = i + i.a.a.a.qC(3, this.abDk.computeSize());
+      }
+      AppMethodBeat.o(125786);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(115881);
+        if (this.abDk == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: HBBuffer");
+          AppMethodBeat.o(125786);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(125786);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         fef localfef = (fef)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(115881);
+          AppMethodBeat.o(125786);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localfef.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(115881);
+          localfef.Username = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(125786);
           return 0;
         case 2: 
-          localfef.Svu = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(115881);
-          return 0;
-        case 3: 
-          localfef.Svv = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(115881);
-          return 0;
-        case 4: 
-          localfef.Svi = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(115881);
-          return 0;
-        case 5: 
-          localfef.UCJ = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(115881);
+          localfef.CreateTime = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(125786);
           return 0;
         }
-        localfef.UDQ = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(115881);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          gol localgol = new gol();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localgol.dg((byte[])localObject);
+          }
+          localfef.abDk = localgol;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(125786);
         return 0;
       }
-      AppMethodBeat.o(115881);
+      AppMethodBeat.o(125786);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fef
  * JD-Core Version:    0.7.0.1
  */

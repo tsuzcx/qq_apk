@@ -20,6 +20,13 @@ public class WrappingGridView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  public void invalidate()
+  {
+    AppMethodBeat.i(100376);
+    super.invalidate();
+    AppMethodBeat.o(100376);
+  }
+  
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100375);
@@ -29,10 +36,17 @@ public class WrappingGridView
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(100375);
   }
+  
+  public void requestLayout()
+  {
+    AppMethodBeat.i(308588);
+    super.requestLayout();
+    AppMethodBeat.o(308588);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.WrappingGridView
  * JD-Core Version:    0.7.0.1
  */

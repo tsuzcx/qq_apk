@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 import java.util.ArrayList;
 
 public abstract class BaseKindaCodeView
@@ -22,7 +22,7 @@ public abstract class BaseKindaCodeView
       int i = this.mCodeBitmaps.size() - 1;
       while (i > 1)
       {
-        g.X((Bitmap)this.mCodeBitmaps.remove(i));
+        i.ah((Bitmap)this.mCodeBitmaps.remove(i));
         i -= 1;
       }
     }
@@ -55,7 +55,7 @@ public abstract class BaseKindaCodeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.BaseKindaCodeView
  * JD-Core Version:    0.7.0.1
  */

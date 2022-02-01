@@ -1,13 +1,10 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
@@ -19,20 +16,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.game.report.g;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.f;
-import com.tencent.mm.plugin.game.d.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.h;
-import com.tencent.mm.plugin.game.g.i;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
+import com.tencent.mm.plugin.game.h.h;
+import com.tencent.mm.plugin.game.h.i;
 import com.tencent.mm.plugin.game.model.ae;
 import com.tencent.mm.plugin.game.model.aq;
 import com.tencent.mm.plugin.game.model.e;
@@ -47,55 +40,55 @@ import java.util.LinkedList;
 
 public class GameLibraryUI
   extends MMActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private boolean BKC;
-  private int CKU;
-  private int CKZ;
-  private k CTf;
-  private ListView CTm;
-  private l CTn;
-  private boolean CTo;
-  private boolean CTp;
-  private m.a CTs;
-  private AbsListView.OnScrollListener CTt;
-  private GameBannerView CXM;
-  private GameLibraryCategoriesView CXN;
-  private View CXO;
-  private TextView CXP;
-  private View CXQ;
-  private GameDropdownView CXR;
-  private HashMap<Integer, String> CXS;
-  private int CXT;
-  private View CXU;
-  private Button CXV;
-  private boolean CXW;
-  private int CXX;
-  private int CXY;
-  private View.OnClickListener CXZ;
-  private View.OnClickListener CYa;
-  private GameDropdownView.a CYb;
-  private boolean jHo;
-  private View jkB;
-  private Dialog vgC;
+  private boolean Hvv;
+  private int IFc;
+  private int IFh;
+  private ListView INC;
+  private l IND;
+  private boolean INE;
+  private boolean INF;
+  private m.a INI;
+  private AbsListView.OnScrollListener INJ;
+  private k INv;
+  private GameBannerView ISc;
+  private GameLibraryCategoriesView ISd;
+  private View ISe;
+  private TextView ISf;
+  private View ISg;
+  private GameDropdownView ISh;
+  private HashMap<Integer, String> ISi;
+  private int ISj;
+  private View ISk;
+  private Button ISl;
+  private boolean ISm;
+  private int ISn;
+  private int ISo;
+  private View.OnClickListener ISp;
+  private View.OnClickListener ISq;
+  private GameDropdownView.a ISr;
+  private View lNf;
+  private boolean mgS;
+  private Dialog ysC;
   
   public GameLibraryUI()
   {
     AppMethodBeat.i(42230);
-    this.CXT = 0;
-    this.BKC = false;
-    this.CTo = false;
-    this.CKZ = 0;
-    this.CTp = true;
-    this.CXW = false;
-    this.jHo = true;
-    this.CKU = 0;
-    this.CXX = 990;
-    this.CXY = 0;
-    this.CTf = new k();
-    this.CTs = new m.a()
+    this.ISj = 0;
+    this.Hvv = false;
+    this.INE = false;
+    this.IFh = 0;
+    this.INF = true;
+    this.ISm = false;
+    this.mgS = true;
+    this.IFc = 0;
+    this.ISn = 990;
+    this.ISo = 0;
+    this.INv = new k();
+    this.INI = new m.a()
     {
-      public final void TM(int paramAnonymousInt)
+      public final void XG(int paramAnonymousInt)
       {
         AppMethodBeat.i(42221);
         int i = GameLibraryUI.b(GameLibraryUI.this).getFirstVisiblePosition() - GameLibraryUI.c(GameLibraryUI.this);
@@ -104,35 +97,35 @@ public class GameLibraryUI
         if ((paramAnonymousInt >= i) && (paramAnonymousInt <= j - k))
         {
           View localView = GameLibraryUI.b(GameLibraryUI.this).getChildAt(paramAnonymousInt - i);
-          GameLibraryUI.d(GameLibraryUI.this).al(localView, paramAnonymousInt);
+          GameLibraryUI.d(GameLibraryUI.this).aA(localView, paramAnonymousInt);
         }
         AppMethodBeat.o(42221);
       }
     };
-    this.CXZ = new View.OnClickListener()
+    this.ISp = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(42224);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameLibraryUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        c.a(paramAnonymousView, GameLibraryUI.this);
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameLibraryUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        com.tencent.mm.plugin.game.d.c.b(paramAnonymousView, GameLibraryUI.this);
         g.a(GameLibraryUI.this, 11, 1110, 999, 7, GameLibraryUI.e(GameLibraryUI.this), null);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameLibraryUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(42224);
       }
     };
-    this.CYa = new View.OnClickListener()
+    this.ISq = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(42225);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameLibraryUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameLibraryUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
         if ((paramAnonymousView.getTag() instanceof String)) {
-          c.a(paramAnonymousView, GameLibraryUI.this);
+          com.tencent.mm.plugin.game.d.c.b(paramAnonymousView, GameLibraryUI.this);
         }
         for (int i = 7;; i = 6)
         {
@@ -142,19 +135,19 @@ public class GameLibraryUI
           return;
           localObject = new Intent(GameLibraryUI.this, GameCategoryUI.class);
           ((Intent)localObject).putExtra("extra_type", 2);
-          ((Intent)localObject).putExtra("extra_category_name", GameLibraryUI.this.getString(g.i.CoY));
+          ((Intent)localObject).putExtra("extra_category_name", GameLibraryUI.this.getString(h.i.Ibg));
           ((Intent)localObject).putExtra("game_report_from_scene", 1113);
           paramAnonymousView = GameLibraryUI.this;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/game/ui/GameLibraryUI$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/game/ui/GameLibraryUI$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/game/ui/GameLibraryUI$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
       }
     };
-    this.CYb = new GameDropdownView.a()
+    this.ISr = new GameDropdownView.a()
     {
-      public final void TP(int paramAnonymousInt)
+      public final void XJ(int paramAnonymousInt)
       {
         AppMethodBeat.i(42226);
         LinkedList localLinkedList = new LinkedList();
@@ -166,13 +159,13 @@ public class GameLibraryUI
         }
         GameLibraryUI.a(GameLibraryUI.this, ((Integer)localLinkedList.get(paramAnonymousInt)).intValue());
         Log.i("MicroMsg.GameLibraryUI", "Selected SortType: %d", new Object[] { Integer.valueOf(GameLibraryUI.g(GameLibraryUI.this)) });
-        GameLibraryUI.b(GameLibraryUI.this, 0);
         GameLibraryUI.h(GameLibraryUI.this);
-        g.a(GameLibraryUI.this, 11, 1111, GameLibraryUI.g(GameLibraryUI.this) + GameLibraryUI.i(GameLibraryUI.this), 2, GameLibraryUI.e(GameLibraryUI.this), null);
+        GameLibraryUI.i(GameLibraryUI.this);
+        g.a(GameLibraryUI.this, 11, 1111, GameLibraryUI.g(GameLibraryUI.this) + GameLibraryUI.j(GameLibraryUI.this), 2, GameLibraryUI.e(GameLibraryUI.this), null);
         AppMethodBeat.o(42226);
       }
     };
-    this.CTt = new AbsListView.OnScrollListener()
+    this.INJ = new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
@@ -181,13 +174,13 @@ public class GameLibraryUI
         AppMethodBeat.i(42227);
         if ((paramAnonymousInt == 0) && (paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1))
         {
-          if ((!GameLibraryUI.j(GameLibraryUI.this)) || (GameLibraryUI.k(GameLibraryUI.this)))
+          if ((!GameLibraryUI.k(GameLibraryUI.this)) || (GameLibraryUI.l(GameLibraryUI.this)))
           {
             AppMethodBeat.o(42227);
             return;
           }
-          GameLibraryUI.l(GameLibraryUI.this).setVisibility(0);
-          GameLibraryUI.h(GameLibraryUI.this);
+          GameLibraryUI.m(GameLibraryUI.this).setVisibility(0);
+          GameLibraryUI.i(GameLibraryUI.this);
         }
         AppMethodBeat.o(42227);
       }
@@ -195,7 +188,7 @@ public class GameLibraryUI
     AppMethodBeat.o(42230);
   }
   
-  private void ezv()
+  private void fHt()
   {
     AppMethodBeat.i(42238);
     Object localObject = getIntent().getStringExtra("jump_game_center");
@@ -203,26 +196,26 @@ public class GameLibraryUI
     {
       localObject = new Intent(this, GameCenterUI.class);
       ((Intent)localObject).putExtra("jump_find_more_friends", "jump_find_more_friends");
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/game/ui/GameLibraryUI", "backToGameCenterUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/game/ui/GameLibraryUI", "backToGameCenterUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/game/ui/GameLibraryUI", "backToGameCenterUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(42238);
   }
   
-  private void ezy()
+  private void fHw()
   {
     AppMethodBeat.i(42239);
-    Object localObject = e.exY();
-    int i = this.CKZ;
-    int j = this.CXT;
-    if (this.CKZ == 0) {}
+    Object localObject = e.fFU();
+    int i = this.IFh;
+    int j = this.ISj;
+    if (this.IFh == 0) {}
     for (boolean bool = true;; bool = false)
     {
       localObject = new aq(i, (LinkedList)localObject, j, bool);
-      h.aGY().a((q)localObject, 0);
-      this.CTo = true;
+      com.tencent.mm.kernel.h.aZW().a((p)localObject, 0);
+      this.INE = true;
       AppMethodBeat.o(42239);
       return;
     }
@@ -231,7 +224,7 @@ public class GameLibraryUI
   private void goBack()
   {
     AppMethodBeat.i(42237);
-    ezv();
+    fHt();
     finish();
     AppMethodBeat.o(42237);
   }
@@ -243,78 +236,54 @@ public class GameLibraryUI
   
   public int getLayoutId()
   {
-    return g.f.Cnz;
+    return h.f.HZH;
   }
   
   public void initView()
   {
     AppMethodBeat.i(42236);
-    setMMTitle(g.i.Cnz);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(42219);
-        GameLibraryUI.a(GameLibraryUI.this);
-        AppMethodBeat.o(42219);
-        return true;
-      }
-    });
-    if (!Util.isNullOrNil(e.eym())) {
-      addIconOptionMenu(0, g.i.top_item_desc_search, g.h.actionbar_icon_dark_search, new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(42220);
-          Object localObject = new Intent(GameLibraryUI.this, GameSearchUI.class);
-          ((Intent)localObject).putExtra("game_report_from_scene", 1109);
-          paramAnonymousMenuItem = GameLibraryUI.this;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/game/ui/GameLibraryUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
-          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousMenuItem, "com/tencent/mm/plugin/game/ui/GameLibraryUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          AppMethodBeat.o(42220);
-          return true;
-        }
-      });
+    setMMTitle(h.i.HZH);
+    setBackBtn(new GameLibraryUI.1(this));
+    if (!Util.isNullOrNil(e.fGi())) {
+      addIconOptionMenu(0, h.i.top_item_desc_search, h.h.actionbar_icon_dark_search, new GameLibraryUI.2(this));
     }
-    this.CTm = ((ListView)findViewById(g.e.CjK));
-    this.CTm.setOnItemClickListener(this.CTf);
-    this.CTf.setSourceScene(this.CKU);
-    this.CTm.setOnScrollListener(this.CTt);
-    this.CTn = new l(this);
-    this.CTn.setSourceScene(this.CKU);
-    this.CTn.a(this.CTs);
+    this.INC = ((ListView)findViewById(h.e.HVS));
+    this.INC.setOnItemClickListener(this.INv);
+    this.INv.setSourceScene(this.IFc);
+    this.INC.setOnScrollListener(this.INJ);
+    this.IND = new l(this);
+    this.IND.setSourceScene(this.IFc);
+    this.IND.a(this.INI);
     LayoutInflater localLayoutInflater = (LayoutInflater)getContext().getSystemService("layout_inflater");
-    Object localObject = localLayoutInflater.inflate(g.f.CjN, this.CTm, false);
-    this.CXM = ((GameBannerView)((View)localObject).findViewById(g.e.CjN));
-    this.CXM.setSourceScene(this.CKU);
-    this.CTm.addHeaderView((View)localObject);
-    this.CXY += 1;
-    this.CXN = ((GameLibraryCategoriesView)localLayoutInflater.inflate(g.f.CnB, this.CTm, false));
+    Object localObject = localLayoutInflater.inflate(h.f.HVV, this.INC, false);
+    this.ISc = ((GameBannerView)((View)localObject).findViewById(h.e.HVV));
+    this.ISc.setSourceScene(this.IFc);
+    this.INC.addHeaderView((View)localObject);
+    this.ISo += 1;
+    this.ISd = ((GameLibraryCategoriesView)localLayoutInflater.inflate(h.f.HZJ, this.INC, false));
     localObject = new LinearLayout(this);
-    ((LinearLayout)localObject).addView(this.CXN);
-    this.CTm.addHeaderView((View)localObject);
-    this.CXY += 1;
-    this.CXO = localLayoutInflater.inflate(g.f.CnF, this.CTm, false);
-    this.CXO.setOnClickListener(this.CXZ);
-    this.CXP = ((TextView)this.CXO.findViewById(g.e.CjM));
-    this.CXQ = localLayoutInflater.inflate(g.f.CnA, this.CTm, false);
-    this.CXQ.setOnClickListener(null);
-    this.CXR = ((GameDropdownView)this.CXQ.findViewById(g.e.CjI));
-    this.CXR.setAnchorView(this.CXQ);
-    this.CXR.setOnSelectionChangedListener(this.CYb);
-    this.jkB = localLayoutInflater.inflate(g.f.CnH, this.CTm, false);
-    this.jkB.setVisibility(8);
+    ((LinearLayout)localObject).addView(this.ISd);
+    this.INC.addHeaderView((View)localObject);
+    this.ISo += 1;
+    this.ISe = localLayoutInflater.inflate(h.f.HZN, this.INC, false);
+    this.ISe.setOnClickListener(this.ISp);
+    this.ISf = ((TextView)this.ISe.findViewById(h.e.HVU));
+    this.ISg = localLayoutInflater.inflate(h.f.HZI, this.INC, false);
+    this.ISg.setOnClickListener(null);
+    this.ISh = ((GameDropdownView)this.ISg.findViewById(h.e.HVQ));
+    this.ISh.setAnchorView(this.ISg);
+    this.ISh.setOnSelectionChangedListener(this.ISr);
+    this.lNf = localLayoutInflater.inflate(h.f.HZP, this.INC, false);
+    this.lNf.setVisibility(8);
     localObject = new LinearLayout(this);
-    ((LinearLayout)localObject).addView(this.jkB);
-    this.CTm.addFooterView((View)localObject);
-    this.CXU = localLayoutInflater.inflate(g.f.CnE, this.CTm, false);
-    this.CXU.setVisibility(8);
-    this.CXV = ((Button)this.CXU.findViewById(g.e.CjL));
-    this.CXV.setOnClickListener(this.CYa);
-    this.CTm.addFooterView(this.CXU);
-    this.CTm.setAdapter(this.CTn);
+    ((LinearLayout)localObject).addView(this.lNf);
+    this.INC.addFooterView((View)localObject);
+    this.ISk = localLayoutInflater.inflate(h.f.HZM, this.INC, false);
+    this.ISk.setVisibility(8);
+    this.ISl = ((Button)this.ISk.findViewById(h.e.HVT));
+    this.ISl.setOnClickListener(this.ISq);
+    this.INC.addFooterView(this.ISk);
+    this.INC.setAdapter(this.IND);
     AppMethodBeat.o(42236);
   }
   
@@ -336,17 +305,17 @@ public class GameLibraryUI
   {
     AppMethodBeat.i(42231);
     super.onCreate(paramBundle);
-    if (!h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       Log.e("MicroMsg.GameLibraryUI", "account not ready");
       finish();
       AppMethodBeat.o(42231);
       return;
     }
-    this.CKU = getIntent().getIntExtra("game_report_from_scene", 0);
-    h.aGY().a(1218, this);
+    this.IFc = getIntent().getIntExtra("game_report_from_scene", 0);
+    com.tencent.mm.kernel.h.aZW().a(1218, this);
     initView();
-    paramBundle = ((f)h.ae(f.class)).evp().aIX("pb_library");
+    paramBundle = ((f)com.tencent.mm.kernel.h.ax(f.class)).fCi().aFI("pb_library");
     if (paramBundle == null) {
       Log.i("MicroMsg.GameLibraryUI", "No cache found");
     }
@@ -354,14 +323,14 @@ public class GameLibraryUI
     {
       if (i == 0)
       {
-        this.vgC = c.gF(this);
-        this.vgC.show();
+        this.ysC = com.tencent.mm.plugin.game.d.c.hY(this);
+        this.ysC.show();
       }
-      ezy();
-      g.a(this, 11, 1100, 0, 1, this.CKU, null);
+      fHw();
+      g.a(this, 11, 1100, 0, 1, this.IFc, null);
       AppMethodBeat.o(42231);
       return;
-      h.aHJ().postToWorker(new Runnable()
+      com.tencent.mm.kernel.h.baH().postToWorker(new Runnable()
       {
         public final void run()
         {
@@ -371,7 +340,7 @@ public class GameLibraryUI
             public final void run()
             {
               AppMethodBeat.i(42222);
-              GameLibraryUI.a(GameLibraryUI.this, this.CYd, false);
+              GameLibraryUI.a(GameLibraryUI.this, this.ISt, false);
               AppMethodBeat.o(42222);
             }
           });
@@ -386,10 +355,10 @@ public class GameLibraryUI
     AppMethodBeat.i(42234);
     Log.i("MicroMsg.GameLibraryUI", "onDestroy");
     super.onDestroy();
-    h.aGY().b(1218, this);
-    this.CTn.clear();
-    if (this.CXM != null) {
-      this.CXM.CSP.stopTimer();
+    com.tencent.mm.kernel.h.aZW().b(1218, this);
+    this.IND.clear();
+    if (this.ISc != null) {
+      this.ISc.INf.stopTimer();
     }
     AppMethodBeat.o(42234);
   }
@@ -412,12 +381,12 @@ public class GameLibraryUI
   {
     AppMethodBeat.i(42233);
     super.onPause();
-    if (this.CXM != null)
+    if (this.ISc != null)
     {
-      GameBannerView localGameBannerView = this.CXM;
-      if (localGameBannerView.CSP != null)
+      GameBannerView localGameBannerView = this.ISc;
+      if (localGameBannerView.INf != null)
       {
-        localGameBannerView.CSP.stopTimer();
+        localGameBannerView.INf.stopTimer();
         Log.i("MicroMsg.GameBannerView", "Auto scroll stopped");
       }
     }
@@ -428,68 +397,68 @@ public class GameLibraryUI
   {
     AppMethodBeat.i(42232);
     super.onResume();
-    if (!h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       Log.e("MicroMsg.GameLibraryUI", "account not ready");
       AppMethodBeat.o(42232);
       return;
     }
-    this.CTn.bfU();
-    if ((!this.jHo) && (this.CXM != null))
+    this.IND.bDL();
+    if ((!this.mgS) && (this.ISc != null))
     {
-      GameBannerView localGameBannerView = this.CXM;
-      if ((localGameBannerView.CSP != null) && (localGameBannerView.CSP.stopped()) && (localGameBannerView.CSO.size() > 1))
+      GameBannerView localGameBannerView = this.ISc;
+      if ((localGameBannerView.INf != null) && (localGameBannerView.INf.stopped()) && (localGameBannerView.INe.size() > 1))
       {
-        localGameBannerView.CSP.startTimer(5000L);
+        localGameBannerView.INf.startTimer(5000L);
         Log.i("MicroMsg.GameBannerView", "Auto scroll restarted");
       }
     }
-    if (this.jHo) {
-      this.jHo = false;
+    if (this.mgS) {
+      this.mgS = false;
     }
     AppMethodBeat.o(42232);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, p paramp)
   {
     AppMethodBeat.i(42240);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      switch (paramq.getType())
+      switch (paramp.getType())
       {
       }
       for (;;)
       {
         AppMethodBeat.o(42240);
         return;
-        paramString = d.c.b(((aq)paramq).jTk.lBS);
-        h.aHJ().postToWorker(new Runnable()
+        paramString = c.c.b(((aq)paramp).mtC.otC);
+        com.tencent.mm.kernel.h.baH().postToWorker(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(42229);
             Object localObject = paramString;
-            if ((GameLibraryUI.m(GameLibraryUI.this) == 0) && (!GameLibraryUI.n(GameLibraryUI.this))) {}
+            if ((GameLibraryUI.n(GameLibraryUI.this) == 0) && (!GameLibraryUI.o(GameLibraryUI.this))) {}
             for (boolean bool = true;; bool = false)
             {
-              localObject = new ae((com.tencent.mm.cd.a)localObject, bool, GameLibraryUI.m(GameLibraryUI.this));
-              GameLibraryUI.o(GameLibraryUI.this);
+              localObject = new ae((com.tencent.mm.bx.a)localObject, bool, GameLibraryUI.n(GameLibraryUI.this));
+              GameLibraryUI.p(GameLibraryUI.this);
               MMHandlerThread.postToMainThread(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(42228);
                   GameLibraryUI localGameLibraryUI = GameLibraryUI.this;
-                  ae localae = this.CYd;
-                  if (GameLibraryUI.m(GameLibraryUI.this) != 0) {}
+                  ae localae = this.ISt;
+                  if (GameLibraryUI.n(GameLibraryUI.this) != 0) {}
                   for (boolean bool = true;; bool = false)
                   {
                     GameLibraryUI.a(localGameLibraryUI, localae, bool);
-                    GameLibraryUI.p(GameLibraryUI.this);
-                    GameLibraryUI.l(GameLibraryUI.this).setVisibility(8);
-                    GameLibraryUI.b(GameLibraryUI.this, GameLibraryUI.m(GameLibraryUI.this) + 15);
-                    if (GameLibraryUI.q(GameLibraryUI.this) != null) {
-                      GameLibraryUI.q(GameLibraryUI.this).dismiss();
+                    GameLibraryUI.q(GameLibraryUI.this);
+                    GameLibraryUI.m(GameLibraryUI.this).setVisibility(8);
+                    GameLibraryUI.r(GameLibraryUI.this);
+                    if (GameLibraryUI.s(GameLibraryUI.this) != null) {
+                      GameLibraryUI.s(GameLibraryUI.this).dismiss();
                     }
                     AppMethodBeat.o(42228);
                     return;
@@ -503,11 +472,11 @@ public class GameLibraryUI
         });
       }
     }
-    if (!com.tencent.mm.plugin.game.a.a.mIH.a(this, paramInt1, paramInt2, paramString)) {
-      Toast.makeText(this, getString(g.i.Cpf, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    if (!com.tencent.mm.plugin.game.a.a.pFo.a(this, paramInt1, paramInt2, paramString)) {
+      Toast.makeText(this, getString(h.i.Ibn, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
     }
-    if (this.vgC != null) {
-      this.vgC.cancel();
+    if (this.ysC != null) {
+      this.ysC.cancel();
     }
     AppMethodBeat.o(42240);
   }
@@ -520,7 +489,7 @@ public class GameLibraryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameLibraryUI
  * JD-Core Version:    0.7.0.1
  */

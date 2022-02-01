@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b$a
 {
-  public final int qAh;
+  public final int tFg;
   
   static
   {
-    AppMethodBeat.i(247063);
-    qAe = new a("Phys3D", 0, 0);
-    qAf = new a("NewGameEngine", 1, 1);
-    qAg = new a("GameLive", 2, 2);
-    qAi = new a[] { qAe, qAf, qAg };
-    AppMethodBeat.o(247063);
+    AppMethodBeat.i(318780);
+    tFd = new a("Phys3D", 0, 0);
+    tFe = new a("NewGameEngine", 1, 1);
+    tFf = new a("GameLive", 2, 2);
+    tFh = new a[] { tFd, tFe, tFf };
+    AppMethodBeat.o(318780);
   }
   
   private b$a(int paramInt)
   {
-    this.qAh = paramInt;
+    this.tFg = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.appidABTest.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,176 +6,201 @@ import android.view.View;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.e.i.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.q;
+import com.tencent.mm.plugin.hld.f.l;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import com.tencent.threadpool.i.d;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/floatview/ImeClickFloatView;", "Lcom/tencent/mm/plugin/hld/floatview/IImeFloatView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "allView", "Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "getAllView", "()Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "allView$delegate", "Lkotlin/Lazy;", "getContext", "()Landroid/content/Context;", "delayHideFuture", "Lcom/tencent/threadpool/runnable/FutureEx;", "leftView", "getLeftView", "leftView$delegate", "mAnchorView", "Landroid/view/View;", "mCompositionStr", "", "mFloatCompositionWidow", "Landroid/widget/PopupWindow;", "mLeftUpperTextTv", "Landroid/widget/TextView;", "getMLeftUpperTextTv", "()Landroid/widget/TextView;", "mLeftUpperTextTv$delegate", "mRightUpperTextTv", "getMRightUpperTextTv", "mRightUpperTextTv$delegate", "mUpperLeftRl", "Landroid/widget/RelativeLayout;", "getMUpperLeftRl", "()Landroid/widget/RelativeLayout;", "mUpperLeftRl$delegate", "mUpperRightRl", "getMUpperRightRl", "mUpperRightRl$delegate", "mUpperTextTv", "getMUpperTextTv", "mUpperTextTv$delegate", "rightView", "getRightView", "rightView$delegate", "rootView", "getRootView", "()Landroid/view/View;", "rootView$delegate", "onHide", "", "end", "", "delayMs", "", "onHideImpl", "onShowView", "textList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "keyboard", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "button", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "lastKeyOperation", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView$KeyOperation;", "parent", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "anchorView", "Lcom/tencent/mm/plugin/hld/keyboard/KeyOperation;", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/floatview/ImeClickFloatView;", "Lcom/tencent/mm/plugin/hld/floatview/IImeFloatView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "allView", "Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "getAllView", "()Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "allView$delegate", "Lkotlin/Lazy;", "getContext", "()Landroid/content/Context;", "delayHideFuture", "Lcom/tencent/threadpool/runnable/FutureEx;", "leftView", "getLeftView", "leftView$delegate", "mAnchorView", "Landroid/view/View;", "mCompositionStr", "", "mFloatCompositionWidow", "Landroid/widget/PopupWindow;", "mLeftUpperTextTv", "Landroid/widget/TextView;", "getMLeftUpperTextTv", "()Landroid/widget/TextView;", "mLeftUpperTextTv$delegate", "mRightUpperTextTv", "getMRightUpperTextTv", "mRightUpperTextTv$delegate", "mUpperLeftRl", "Landroid/widget/RelativeLayout;", "getMUpperLeftRl", "()Landroid/widget/RelativeLayout;", "mUpperLeftRl$delegate", "mUpperRightRl", "getMUpperRightRl", "mUpperRightRl$delegate", "mUpperTextTv", "getMUpperTextTv", "mUpperTextTv$delegate", "rightView", "getRightView", "rightView$delegate", "rootView", "getRootView", "()Landroid/view/View;", "rootView$delegate", "onHide", "", "end", "", "delayMs", "", "onHideImpl", "onShowView", "textList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "keyboard", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "button", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "lastKeyOperation", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView$KeyOperation;", "parent", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "anchorView", "Lcom/tencent/mm/plugin/hld/keyboard/KeyOperation;", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements a
 {
-  public static final a DwV;
-  private final f DwJ;
-  private final f DwK;
-  private final f DwL;
-  private final f DwM;
-  public PopupWindow DwN;
-  private final f DwO;
-  private final f DwP;
-  private final f DwQ;
-  private final f DwR;
-  private final f DwS;
-  public String DwT;
-  private d<?> DwU;
+  public static final b.a JpP;
+  private final j JpQ;
+  private final j JpR;
+  private final j JpS;
+  private final j JpT;
+  public PopupWindow JpU;
+  private final j JpV;
+  private final j JpW;
+  private final j JpX;
+  private final j JpY;
+  private final j JpZ;
+  public String Jqa;
+  private d<?> Jqb;
   public final Context context;
-  public View lJ;
+  public View mF;
   
   static
   {
-    AppMethodBeat.i(216720);
-    DwV = new a((byte)0);
-    AppMethodBeat.o(216720);
+    AppMethodBeat.i(312848);
+    JpP = new b.a((byte)0);
+    AppMethodBeat.o(312848);
   }
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(216719);
+    AppMethodBeat.i(312803);
     this.context = paramContext;
-    this.DwJ = g.ar((kotlin.g.a.a)new k(this));
-    this.DwK = g.ar((kotlin.g.a.a)new b(this));
-    this.DwL = g.ar((kotlin.g.a.a)new c(this));
-    this.DwM = g.ar((kotlin.g.a.a)new j(this));
-    this.DwO = g.ar((kotlin.g.a.a)new h(this));
-    this.DwP = g.ar((kotlin.g.a.a)new d(this));
-    this.DwQ = g.ar((kotlin.g.a.a)new e(this));
-    this.DwR = g.ar((kotlin.g.a.a)new f(this));
-    this.DwS = g.ar((kotlin.g.a.a)new g(this));
+    this.JpQ = k.cm((kotlin.g.a.a)new j(this));
+    this.JpR = k.cm((kotlin.g.a.a)new b(this));
+    this.JpS = k.cm((kotlin.g.a.a)new c(this));
+    this.JpT = k.cm((kotlin.g.a.a)new i(this));
+    this.JpV = k.cm((kotlin.g.a.a)new h(this));
+    this.JpW = k.cm((kotlin.g.a.a)new d(this));
+    this.JpX = k.cm((kotlin.g.a.a)new e(this));
+    this.JpY = k.cm((kotlin.g.a.a)new f(this));
+    this.JpZ = k.cm((kotlin.g.a.a)new g(this));
     paramContext = new PopupWindow(getRootView());
     paramContext.setClippingEnabled(false);
     paramContext.setInputMethodMode(2);
     paramContext.setTouchable(false);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      com.tencent.mm.plugin.hld.f.l locall = com.tencent.mm.plugin.hld.f.l.DHK;
-      paramContext.setWindowLayoutType(1003);
+      localObject = l.JyV;
+      paramContext.setWindowLayoutType(l.fOG());
     }
-    this.DwN = paramContext;
-    AppMethodBeat.o(216719);
+    Object localObject = ah.aiuX;
+    this.JpU = paramContext;
+    AppMethodBeat.o(312803);
   }
   
-  private final void eDs()
+  private static final void a(b paramb, boolean paramBoolean)
   {
-    AppMethodBeat.i(216718);
-    PopupWindow localPopupWindow = this.DwN;
-    if (localPopupWindow != null)
-    {
+    AppMethodBeat.i(312827);
+    s.u(paramb, "this$0");
+    paramb.fLs();
+    AppMethodBeat.o(312827);
+  }
+  
+  private final void fLs()
+  {
+    AppMethodBeat.i(312819);
+    PopupWindow localPopupWindow = this.JpU;
+    if (localPopupWindow != null) {
       localPopupWindow.dismiss();
-      AppMethodBeat.o(216718);
-      return;
     }
-    AppMethodBeat.o(216718);
+    AppMethodBeat.o(312819);
   }
   
   private final View getRootView()
   {
-    AppMethodBeat.i(216706);
-    View localView = (View)this.DwJ.getValue();
-    AppMethodBeat.o(216706);
-    return localView;
+    AppMethodBeat.i(312814);
+    Object localObject = this.JpQ.getValue();
+    s.s(localObject, "<get-rootView>(...)");
+    localObject = (View)localObject;
+    AppMethodBeat.o(312814);
+    return localObject;
   }
   
-  public final ImeFloatViewClickBg eDk()
+  public final ImeFloatViewClickBg fLk()
   {
-    AppMethodBeat.i(216707);
-    ImeFloatViewClickBg localImeFloatViewClickBg = (ImeFloatViewClickBg)this.DwK.getValue();
-    AppMethodBeat.o(216707);
-    return localImeFloatViewClickBg;
+    AppMethodBeat.i(312865);
+    Object localObject = this.JpR.getValue();
+    s.s(localObject, "<get-allView>(...)");
+    localObject = (ImeFloatViewClickBg)localObject;
+    AppMethodBeat.o(312865);
+    return localObject;
   }
   
-  public final ImeFloatViewClickBg eDl()
+  public final ImeFloatViewClickBg fLl()
   {
-    AppMethodBeat.i(216709);
-    ImeFloatViewClickBg localImeFloatViewClickBg = (ImeFloatViewClickBg)this.DwL.getValue();
-    AppMethodBeat.o(216709);
-    return localImeFloatViewClickBg;
+    AppMethodBeat.i(312872);
+    Object localObject = this.JpS.getValue();
+    s.s(localObject, "<get-leftView>(...)");
+    localObject = (ImeFloatViewClickBg)localObject;
+    AppMethodBeat.o(312872);
+    return localObject;
   }
   
-  public final ImeFloatViewClickBg eDm()
+  public final ImeFloatViewClickBg fLm()
   {
-    AppMethodBeat.i(216710);
-    ImeFloatViewClickBg localImeFloatViewClickBg = (ImeFloatViewClickBg)this.DwM.getValue();
-    AppMethodBeat.o(216710);
-    return localImeFloatViewClickBg;
+    AppMethodBeat.i(312886);
+    Object localObject = this.JpT.getValue();
+    s.s(localObject, "<get-rightView>(...)");
+    localObject = (ImeFloatViewClickBg)localObject;
+    AppMethodBeat.o(312886);
+    return localObject;
   }
   
-  public final TextView eDn()
+  public final TextView fLn()
   {
-    AppMethodBeat.i(216712);
-    TextView localTextView = (TextView)this.DwO.getValue();
-    AppMethodBeat.o(216712);
-    return localTextView;
+    AppMethodBeat.i(312898);
+    Object localObject = this.JpV.getValue();
+    s.s(localObject, "<get-mUpperTextTv>(...)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(312898);
+    return localObject;
   }
   
-  public final TextView eDo()
+  public final TextView fLo()
   {
-    AppMethodBeat.i(216713);
-    TextView localTextView = (TextView)this.DwP.getValue();
-    AppMethodBeat.o(216713);
-    return localTextView;
+    AppMethodBeat.i(312909);
+    Object localObject = this.JpW.getValue();
+    s.s(localObject, "<get-mLeftUpperTextTv>(...)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(312909);
+    return localObject;
   }
   
-  public final TextView eDp()
+  public final TextView fLp()
   {
-    AppMethodBeat.i(216714);
-    TextView localTextView = (TextView)this.DwQ.getValue();
-    AppMethodBeat.o(216714);
-    return localTextView;
+    AppMethodBeat.i(312919);
+    Object localObject = this.JpX.getValue();
+    s.s(localObject, "<get-mRightUpperTextTv>(...)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(312919);
+    return localObject;
   }
   
-  public final RelativeLayout eDq()
+  public final RelativeLayout fLq()
   {
-    AppMethodBeat.i(216715);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.DwR.getValue();
-    AppMethodBeat.o(216715);
-    return localRelativeLayout;
+    AppMethodBeat.i(312929);
+    Object localObject = this.JpY.getValue();
+    s.s(localObject, "<get-mUpperLeftRl>(...)");
+    localObject = (RelativeLayout)localObject;
+    AppMethodBeat.o(312929);
+    return localObject;
   }
   
-  public final RelativeLayout eDr()
+  public final RelativeLayout fLr()
   {
-    AppMethodBeat.i(216716);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.DwS.getValue();
-    AppMethodBeat.o(216716);
-    return localRelativeLayout;
+    AppMethodBeat.i(312939);
+    Object localObject = this.JpZ.getValue();
+    s.s(localObject, "<get-mUpperRightRl>(...)");
+    localObject = (RelativeLayout)localObject;
+    AppMethodBeat.o(312939);
+    return localObject;
   }
   
-  public final void i(final boolean paramBoolean, long paramLong)
+  public final void l(boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(216717);
-    d locald = this.DwU;
+    AppMethodBeat.i(312952);
+    d locald = this.Jqb;
     if (locald != null) {
       locald.cancel(false);
     }
-    this.DwU = null;
+    this.Jqb = null;
     if (paramLong == 0L)
     {
-      eDs();
-      AppMethodBeat.o(216717);
+      fLs();
+      AppMethodBeat.o(312952);
       return;
     }
-    this.DwU = h.ZvG.n((Runnable)new i(this, paramBoolean), paramLong);
-    AppMethodBeat.o(216717);
+    this.Jqb = h.ahAA.o(new b..ExternalSyntheticLambda0(this, paramBoolean), paramLong);
+    AppMethodBeat.o(312952);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/floatview/ImeClickFloatView$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<ImeFloatViewClickBg>
   {
     b(b paramb)
@@ -184,9 +209,9 @@ public final class b
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<ImeFloatViewClickBg>
   {
     c(b paramb)
@@ -195,9 +220,9 @@ public final class b
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
+    extends u
     implements kotlin.g.a.a<TextView>
   {
     d(b paramb)
@@ -206,9 +231,9 @@ public final class b
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
+    extends u
     implements kotlin.g.a.a<TextView>
   {
     e(b paramb)
@@ -217,9 +242,9 @@ public final class b
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
+    extends u
     implements kotlin.g.a.a<RelativeLayout>
   {
     f(b paramb)
@@ -228,9 +253,9 @@ public final class b
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
+    extends u
     implements kotlin.g.a.a<RelativeLayout>
   {
     g(b paramb)
@@ -239,9 +264,9 @@ public final class b
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
+    extends u
     implements kotlin.g.a.a<TextView>
   {
     h(b paramb)
@@ -250,37 +275,23 @@ public final class b
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class i
-    implements Runnable
-  {
-    i(b paramb, boolean paramBoolean) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(209965);
-      b.a(this.DwW);
-      AppMethodBeat.o(209965);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class j
-    extends q
+    extends u
     implements kotlin.g.a.a<ImeFloatViewClickBg>
   {
-    j(b paramb)
+    i(b paramb)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class k
-    extends q
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class j
+    extends u
     implements kotlin.g.a.a<View>
   {
-    k(b paramb)
+    j(b paramb)
     {
       super();
     }

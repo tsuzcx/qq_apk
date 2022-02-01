@@ -7,82 +7,76 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.ui.bd;
 
 public class ImageIndicatorView
   extends View
 {
-  public int Lsg;
-  int Lsh;
-  private int oYQ;
+  public int RVj;
+  public int RVk;
   private Paint paint;
   private int radius;
-  int vag;
+  private int sep;
+  public int ymh;
   
   public ImageIndicatorView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(245621);
+    AppMethodBeat.i(308455);
     this.paint = new Paint();
-    this.Lsg = 0;
-    this.oYQ = 0;
+    this.RVj = 0;
+    this.sep = 0;
     this.radius = 0;
-    this.vag = 0;
-    this.Lsh = 0;
+    this.ymh = 0;
+    this.RVk = 0;
     init();
-    AppMethodBeat.o(245621);
+    AppMethodBeat.o(308455);
   }
   
   public ImageIndicatorView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(245622);
+    AppMethodBeat.i(308457);
     this.paint = new Paint();
-    this.Lsg = 0;
-    this.oYQ = 0;
+    this.RVj = 0;
+    this.sep = 0;
     this.radius = 0;
-    this.vag = 0;
-    this.Lsh = 0;
+    this.ymh = 0;
+    this.RVk = 0;
     init();
-    AppMethodBeat.o(245622);
+    AppMethodBeat.o(308457);
   }
   
   private void init()
   {
-    AppMethodBeat.i(245623);
-    this.oYQ = aw.fromDPToPix(getContext(), 4);
-    this.radius = aw.fromDPToPix(getContext(), 2);
-    AppMethodBeat.o(245623);
+    AppMethodBeat.i(308460);
+    this.sep = bd.fromDPToPix(getContext(), 4);
+    this.radius = bd.fromDPToPix(getContext(), 2);
+    AppMethodBeat.o(308460);
   }
   
-  public final void ahH(int paramInt)
+  public final void amK(int paramInt)
   {
-    this.Lsg = paramInt;
-  }
-  
-  public final void kg(int paramInt1, int paramInt2)
-  {
-    this.Lsh = paramInt2;
-    this.vag = paramInt1;
+    this.RVj = paramInt;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(245624);
-    if (this.Lsg > 0)
+    AppMethodBeat.i(308470);
+    if (this.RVj > 0)
     {
       int j = getMeasuredWidth() / 2;
       int i = j;
-      if (this.Lsg > 1) {
-        i = j - (this.Lsg * (this.radius + this.radius) + (this.Lsg - 1) * this.oYQ) / 2;
+      if (this.RVj > 1) {
+        i = j - (this.RVj * (this.radius + this.radius) + (this.RVj - 1) * this.sep) / 2;
       }
       j = 0;
-      if (j < this.Lsg)
+      if (j < this.RVj)
       {
         if (j == 0) {
-          if (this.vag != 0) {
-            this.paint.setColor(getContext().getResources().getColor(this.vag));
+          if (this.ymh != 0) {
+            this.paint.setColor(getContext().getResources().getColor(this.ymh));
           }
         }
         for (;;)
@@ -90,27 +84,27 @@ public class ImageIndicatorView
           int k = getPaddingBottom();
           int m = getPaddingTop();
           int n = getMeasuredHeight();
-          float f = (this.oYQ + this.radius + this.radius) * j + i;
+          float f = (this.sep + this.radius + this.radius) * j + i;
           int i1 = getPaddingTop();
           paramCanvas.drawCircle(f, (n - (k + m)) / 2 + i1, this.radius, this.paint);
           j += 1;
           break;
-          this.paint.setColor(getContext().getResources().getColor(i.c.Orange_100));
+          this.paint.setColor(getContext().getResources().getColor(b.c.Orange_100));
           continue;
-          if (this.Lsh != 0) {
-            this.paint.setColor(getContext().getResources().getColor(this.Lsh));
+          if (this.RVk != 0) {
+            this.paint.setColor(getContext().getResources().getColor(this.RVk));
           } else {
-            this.paint.setColor(getContext().getResources().getColor(i.c.BW_90));
+            this.paint.setColor(getContext().getResources().getColor(b.c.BW_90));
           }
         }
       }
     }
-    AppMethodBeat.o(245624);
+    AppMethodBeat.o(308470);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,41 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
-import kotlin.d.a.b;
+import kotlin.Metadata;
 import kotlin.d.d;
 import kotlin.d.f;
-import kotlin.l;
-import kotlinx.coroutines.internal.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/DispatchedCoroutine;", "T", "Lkotlin/coroutines/CoroutineContext;", "context", "Lkotlin/coroutines/Continuation;", "uCont", "<init>", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/Continuation;)V", "", "state", "", "afterCompletion", "(Ljava/lang/Object;)V", "afterResume", "getResult", "()Ljava/lang/Object;", "", "tryResume", "()Z", "trySuspend", "kotlinx-coroutines-core", "Lkotlinx/coroutines/internal/ScopeCoroutine;"})
-final class az<T>
-  extends t<T>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/DeferredCoroutine;", "T", "Lkotlinx/coroutines/AbstractCoroutine;", "Lkotlinx/coroutines/Deferred;", "Lkotlinx/coroutines/selects/SelectClause1;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "onAwait", "getOnAwait", "()Lkotlinx/coroutines/selects/SelectClause1;", "await", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getCompleted", "()Ljava/lang/Object;", "registerSelectClause1", "", "R", "select", "Lkotlinx/coroutines/selects/SelectInstance;", "block", "Lkotlin/Function2;", "Lkotlin/coroutines/Continuation;", "", "(Lkotlinx/coroutines/selects/SelectInstance;Lkotlin/jvm/functions/Function2;)V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+class az<T>
+  extends a<T>
+  implements ay<T>
 {
-  static final AtomicIntegerFieldUpdater abwh;
-  volatile int _decision = 0;
-  
-  static
+  public az(f paramf, boolean paramBoolean)
   {
-    AppMethodBeat.i(204755);
-    abwh = AtomicIntegerFieldUpdater.newUpdater(az.class, "_decision");
-    AppMethodBeat.o(204755);
+    super(paramf, paramBoolean);
+    AppMethodBeat.i(118061);
+    AppMethodBeat.o(118061);
   }
   
-  public az(f paramf, d<? super T> paramd)
+  public final Object e(d<? super T> paramd)
   {
-    super(paramf, paramd);
+    AppMethodBeat.i(118059);
+    paramd = az(paramd);
+    AppMethodBeat.o(118059);
+    return paramd;
   }
   
-  private final boolean iQQ()
+  public final T kBS()
   {
-    AppMethodBeat.i(204752);
-    do
-    {
-      switch (this._decision)
-      {
-      default: 
-        Throwable localThrowable = (Throwable)new IllegalStateException("Already resumed".toString());
-        AppMethodBeat.o(204752);
-        throw localThrowable;
-      }
-    } while (!abwh.compareAndSet(this, 0, 2));
-    AppMethodBeat.o(204752);
-    return true;
-    AppMethodBeat.o(204752);
-    return false;
-  }
-  
-  public final void fT(Object paramObject)
-  {
-    AppMethodBeat.i(204754);
-    if (iQQ())
-    {
-      AppMethodBeat.o(204754);
-      return;
-    }
-    ay.a(b.k(this.abzw), y.b(paramObject, this.abzw));
-    AppMethodBeat.o(204754);
-  }
-  
-  public final void fU(Object paramObject)
-  {
-    AppMethodBeat.i(204753);
-    fT(paramObject);
-    AppMethodBeat.o(204753);
+    AppMethodBeat.i(188867);
+    Object localObject = kCA();
+    AppMethodBeat.o(188867);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.az
  * JD-Core Version:    0.7.0.1
  */

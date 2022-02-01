@@ -22,17 +22,17 @@ public final class k
   public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121332);
-    parama = com.tencent.mm.plugin.appbrand.dynamic.k.agg(parama.aGj().getString("__page_view_id", null));
+    parama = com.tencent.mm.plugin.appbrand.dynamic.k.Zc(parama.aZk().getString("__page_view_id", null));
     if (parama == null)
     {
-      parama1.bt(i(false, "JsApi Framework Context is null"));
+      parama1.cN(h(false, "JsApi Framework Context is null"));
       AppMethodBeat.o(121332);
       return;
     }
     paramJSONObject = paramJSONObject.optJSONArray("dataArray");
     if (paramJSONObject == null)
     {
-      parama1.bt(i(false, "dataArray is null"));
+      parama1.cN(h(false, "dataArray is null"));
       AppMethodBeat.o(121332);
       return;
     }
@@ -48,7 +48,7 @@ public final class k
         int j = ((JSONObject)localObject).optInt("key");
         localObject = ((JSONObject)localObject).optString("value");
         if ((j > 0) && (!Util.isNullOrNil((String)localObject))) {
-          h.IzE.a(j, new Object[] { parama.getAppId(), Integer.valueOf(parama.bNm()), Integer.valueOf(b.zD(parama.bGn()) + 1), localObject });
+          h.OAn.b(j, new Object[] { parama.getAppId(), Integer.valueOf(parama.cnB()), Integer.valueOf(b.zT(parama.cfM()) + 1), localObject });
         }
       }
       catch (Exception localException)
@@ -61,13 +61,13 @@ public final class k
       i += 1;
     }
     label210:
-    parama1.bt(i(true, ""));
+    parama1.cN(h(true, ""));
     AppMethodBeat.o(121332);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.k
  * JD-Core Version:    0.7.0.1
  */

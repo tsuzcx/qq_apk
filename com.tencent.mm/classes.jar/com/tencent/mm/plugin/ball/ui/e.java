@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.ball.ui;
 import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.ball.a.f;
 import com.tencent.mm.plugin.ball.a.f.a;
 import com.tencent.mm.plugin.ball.view.FloatIndicatorView;
@@ -14,115 +14,99 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 
 public final class e
 {
-  private boolean lft;
-  public f rZC;
-  private com.tencent.mm.plugin.ball.d.e rZD;
-  private boolean saA;
-  private boolean saB;
-  private long saC;
-  public FloatIndicatorView sav;
-  int saw;
-  int sax;
-  FrameLayout.LayoutParams say;
-  private boolean saz;
+  private boolean nKe;
+  public f vkT;
+  private com.tencent.mm.plugin.ball.d.e vkU;
+  public FloatIndicatorView vlM;
+  int vlN;
+  int vlO;
+  FrameLayout.LayoutParams vlP;
+  private boolean vlQ;
+  private boolean vlR;
+  private boolean vlS;
+  private long vlT;
   
   public e(f paramf, com.tencent.mm.plugin.ball.d.e parame)
   {
     AppMethodBeat.i(106321);
-    this.saC = -1L;
-    this.rZC = paramf;
-    this.rZD = parame;
-    this.sav = new FloatIndicatorView(this.rZC.getActivity());
-    this.sav.setOnOrientationChangedListener(new FloatIndicatorView.a()
+    this.vlT = -1L;
+    this.vkT = paramf;
+    this.vkU = parame;
+    this.vlM = new FloatIndicatorView(this.vkT.getActivity());
+    this.vlM.setOnOrientationChangedListener(new FloatIndicatorView.a()
     {
-      public final void lj(boolean paramAnonymousBoolean)
+      public final void mw(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(106316);
         Log.i("MicroMsg.FloatIndicatorController", "onOrientationChanged, isLandscape:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        e.this.li(paramAnonymousBoolean);
-        e.this.say.bottomMargin = e.this.sax;
-        e.this.say.rightMargin = e.this.saw;
-        e.this.sav.setLayoutParams(e.this.say);
-        Log.i("MicroMsg.FloatIndicatorController", "onOrientationChanged layoutParams, right:%s, bottom:%s", new Object[] { Integer.valueOf(e.this.say.rightMargin), Integer.valueOf(e.this.say.bottomMargin) });
+        e.this.mv(paramAnonymousBoolean);
+        e.this.vlP.bottomMargin = e.this.vlO;
+        e.this.vlP.rightMargin = e.this.vlN;
+        e.this.vlM.setLayoutParams(e.this.vlP);
+        Log.i("MicroMsg.FloatIndicatorController", "onOrientationChanged layoutParams, right:%s, bottom:%s", new Object[] { Integer.valueOf(e.this.vlP.rightMargin), Integer.valueOf(e.this.vlP.bottomMargin) });
         AppMethodBeat.o(106316);
       }
     });
-    if (a.kr(MMApplicationContext.getContext()) > a.ks(MMApplicationContext.getContext())) {}
+    if (a.ms(MMApplicationContext.getContext()) > a.mt(MMApplicationContext.getContext())) {}
     for (boolean bool = true;; bool = false)
     {
-      li(bool);
-      this.say = new FrameLayout.LayoutParams(-2, -2);
-      this.say.gravity = 8388693;
-      this.say.bottomMargin = this.sax;
-      this.say.rightMargin = this.saw;
-      this.sav.setLayoutParams(this.say);
-      Log.i("MicroMsg.FloatIndicatorController", "createFloatIndicator layoutParams, right:%s, bottom:%s", new Object[] { Integer.valueOf(this.say.rightMargin), Integer.valueOf(this.say.bottomMargin) });
+      mv(bool);
+      this.vlP = new FrameLayout.LayoutParams(-2, -2);
+      this.vlP.gravity = 8388693;
+      this.vlP.bottomMargin = this.vlO;
+      this.vlP.rightMargin = this.vlN;
+      this.vlM.setLayoutParams(this.vlP);
+      Log.i("MicroMsg.FloatIndicatorController", "createFloatIndicator layoutParams, right:%s, bottom:%s", new Object[] { Integer.valueOf(this.vlP.rightMargin), Integer.valueOf(this.vlP.bottomMargin) });
       AppMethodBeat.o(106321);
       return;
     }
   }
   
-  private void bWU()
-  {
-    AppMethodBeat.i(106323);
-    com.tencent.mm.plugin.ball.f.e.eJ(this.rZC.getActivity());
-    if (this.lft)
-    {
-      this.sax = (-com.tencent.mm.plugin.ball.f.e.saQ);
-      this.saw = (cwu() - com.tencent.mm.plugin.ball.f.e.saQ);
-      AppMethodBeat.o(106323);
-      return;
-    }
-    this.saw = (-com.tencent.mm.plugin.ball.f.e.saQ);
-    this.sax = (cwu() - com.tencent.mm.plugin.ball.f.e.saQ);
-    AppMethodBeat.o(106323);
-  }
-  
-  private int cwu()
+  private int cZe()
   {
     AppMethodBeat.i(106324);
-    if (this.rZC.cuS() >= 0)
+    if (this.vkT.cXC() >= 0)
     {
-      i = this.rZC.cuS();
+      i = this.vkT.cXC();
       AppMethodBeat.o(106324);
       return i;
     }
-    int i = com.tencent.mm.plugin.ball.f.e.saV;
+    int i = com.tencent.mm.plugin.ball.f.e.vmn;
     AppMethodBeat.o(106324);
     return i;
   }
   
-  private void cwv()
+  private void cZf()
   {
     AppMethodBeat.i(106327);
-    if (!this.saA)
+    if (!this.vlR)
     {
       AppMethodBeat.o(106327);
       return;
     }
-    if (this.sav != null)
+    if (this.vlM != null)
     {
-      this.sav.setVisibility(8);
-      this.saA = false;
+      this.vlM.setVisibility(8);
+      this.vlR = false;
     }
     AppMethodBeat.o(106327);
   }
   
-  private void cww()
+  private void cZg()
   {
     AppMethodBeat.i(106328);
     ViewGroup localViewGroup;
-    if (this.sav != null)
+    if (this.vlM != null)
     {
-      this.sav.setVisibility(8);
-      localViewGroup = this.rZC.cuR();
+      this.vlM.setVisibility(8);
+      localViewGroup = this.vkT.cXB();
     }
     for (;;)
     {
       int i;
       try
       {
-        if (this.sav.getParent() == null)
+        if (this.vlM.getParent() == null)
         {
           int k = localViewGroup.getChildCount();
           i = 0;
@@ -134,7 +118,7 @@ public final class e
             }
             j = i + 1;
           }
-          localViewGroup.addView(this.sav, j);
+          localViewGroup.addView(this.vlM, j);
           AppMethodBeat.o(106328);
           return;
         }
@@ -153,12 +137,28 @@ public final class e
     }
   }
   
-  final void li(boolean paramBoolean)
+  private void cxh()
+  {
+    AppMethodBeat.i(106323);
+    com.tencent.mm.plugin.ball.f.e.fE(this.vkT.getActivity());
+    if (this.nKe)
+    {
+      this.vlO = (-com.tencent.mm.plugin.ball.f.e.vmi);
+      this.vlN = (cZe() - com.tencent.mm.plugin.ball.f.e.vmi);
+      AppMethodBeat.o(106323);
+      return;
+    }
+    this.vlN = (-com.tencent.mm.plugin.ball.f.e.vmi);
+    this.vlO = (cZe() - com.tencent.mm.plugin.ball.f.e.vmi);
+    AppMethodBeat.o(106323);
+  }
+  
+  final void mv(boolean paramBoolean)
   {
     AppMethodBeat.i(106322);
     Log.i("MicroMsg.FloatIndicatorController", "updateOrientation, isLandscape:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.lft = paramBoolean;
-    bWU();
+    this.nKe = paramBoolean;
+    cxh();
     AppMethodBeat.o(106322);
   }
   
@@ -166,24 +166,24 @@ public final class e
   {
     AppMethodBeat.i(106325);
     Log.i("MicroMsg.FloatIndicatorController", "start FloatIndicatorController");
-    cwv();
-    this.saC = -1L;
-    this.saz = false;
-    this.saA = false;
-    this.saB = false;
-    if (!this.rZC.aOg())
+    cZf();
+    this.vlT = -1L;
+    this.vlQ = false;
+    this.vlR = false;
+    this.vlS = false;
+    if (!this.vkT.bhU())
     {
       AppMethodBeat.o(106325);
       return;
     }
-    this.rZC.a(new f.a() {});
-    cww();
+    this.vkT.a(new f.a() {});
+    cZg();
     AppMethodBeat.o(106325);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.ui.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,43 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
+import com.tencent.mm.plugin.wallet_core.utils.c;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class am
-  extends aj
+  extends ak
 {
-  public String EAP;
-  public String EAQ;
-  public int EAT;
-  public String EAU;
-  public String EAV;
-  public int EAW;
-  public int EAZ;
-  public String EBa;
-  public String EBb;
-  public int EBc;
-  public String EBd;
-  public String EBe;
-  public String EBf;
-  public String EBg;
-  public String EBh;
-  public long EBi;
-  public String EyY;
-  public bh Ezp;
-  public String Ezq;
-  public String gbn;
-  public int gbo;
-  public int gbp;
-  public int gbq;
-  public String ybP;
+  public String CAf;
+  public RealnameGuideHelper Koa;
+  public String KrL;
+  public j Ksa;
+  public String KtM;
+  public String KtN;
+  public int KtO;
+  public String KtP;
+  public int KtQ;
+  public String KtR;
+  public String KtS;
+  public int KtT;
+  public q KtU;
+  public c KtV;
+  public int ihA;
+  public long ihV;
+  public int ihz;
+  public int wYz;
   
-  public am(String paramString1, String paramString2, int paramInt, String paramString3)
+  public am(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(65281);
-    this.EBc = 1;
-    this.EBd = null;
-    this.EBe = null;
-    this.EBf = null;
-    this.EBg = null;
-    this.EBh = null;
-    this.EBi = 0L;
-    this.gbn = paramString2;
-    this.ybP = paramString1;
-    this.EAZ = paramInt;
+    AppMethodBeat.i(65279);
+    this.KtU = null;
+    this.CAf = paramString1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
     if (!Util.isNullOrNil(paramString2)) {
@@ -60,72 +46,79 @@ public final class am
     localHashMap.put("way", String.valueOf(paramInt));
     localHashMap.put("channelId", "2");
     localHashMap.put("package", paramString3);
-    h.aHH();
-    long l = ((Long)h.aHG().aHp().get(ar.a.Vlr, Long.valueOf(0L))).longValue();
-    if (l > 0L)
-    {
-      if (System.currentTimeMillis() >= l) {
-        break label206;
-      }
-      localHashMap.put("agreeDuty", "0");
-    }
-    for (;;)
-    {
-      setRequestData(localHashMap);
-      AppMethodBeat.o(65281);
-      return;
-      label206:
-      paramString1 = new StringBuilder();
-      h.aHH();
-      localHashMap.put("agreeDuty", (Integer)h.aHG().aHp().get(ar.a.Vls, Integer.valueOf(1)));
-    }
+    localHashMap.put("sessionUserName", paramString4);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(65279);
   }
   
-  public final int cOe()
+  public final int drJ()
   {
-    return 0;
+    return 1;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(65282);
-    this.EBa = paramJSONObject.optString("spidLogo");
-    this.EBb = paramJSONObject.optString("spidWishing");
-    this.EAP = paramJSONObject.optString("spidName");
-    this.EBa = paramJSONObject.optString("spidLogo");
-    this.gbp = paramJSONObject.optInt("hbStatus");
-    this.gbq = paramJSONObject.optInt("receiveStatus");
-    this.EyY = paramJSONObject.optString("statusMess");
-    this.EAQ = paramJSONObject.optString("hintMess");
-    this.Ezq = paramJSONObject.optString("watermark");
-    this.ybP = paramJSONObject.optString("sendId");
-    this.EAT = paramJSONObject.optInt("focusFlag");
-    this.EAU = paramJSONObject.optString("focusWording");
-    this.EAV = paramJSONObject.optString("focusAppidUserName");
-    this.EAW = paramJSONObject.optInt("isFocus");
-    this.gbo = paramJSONObject.optInt("hbType");
-    paramString = paramJSONObject.optJSONObject("agree_duty");
+    AppMethodBeat.i(65280);
+    Log.i("MicroMsg.NetSceneLuckyMoneyBusiOpen", "errCode: %s, errMsg: %s ，json：%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject.toString() });
+    this.KtM = paramJSONObject.optString("spidName");
+    this.ihz = paramJSONObject.optInt("hbStatus");
+    this.ihA = paramJSONObject.optInt("receiveStatus");
+    this.KrL = paramJSONObject.optString("statusMess");
+    this.KtN = paramJSONObject.optString("hintMess");
+    this.ihV = paramJSONObject.optLong("amount");
+    this.KtO = paramJSONObject.optInt("recNum");
+    this.wYz = paramJSONObject.optInt("totalNum");
+    this.Ksa = new j();
+    paramString = paramJSONObject.optJSONObject("atomicFunc");
     if (paramString != null)
     {
-      this.EBd = paramString.optString("agreed_flag", "-1");
-      this.EBe = paramString.optString("title", "");
-      this.EBf = paramString.optString("service_protocol_wording", "");
-      this.EBg = paramString.optString("service_protocol_url", "");
-      this.EBh = paramString.optString("button_wording", "");
-      this.EBi = paramString.optLong("delay_expired_time", 0L);
+      this.Ksa.lTH = paramString.optInt("enable");
+      this.Ksa.Krr = paramString.optString("fissionContent");
+      this.Ksa.Krq = paramString.optString("fissionUrl");
     }
-    if (this.EBi > 0L)
+    this.KtQ = paramJSONObject.optInt("focusFlag");
+    this.KtR = paramJSONObject.optString("focusWording");
+    this.KtS = paramJSONObject.optString("focusAppidUserName");
+    this.KtT = paramJSONObject.optInt("isFocus");
+    this.KtP = paramJSONObject.optString("smallHbButtonMess");
+    try
     {
-      h.aHH();
-      h.aHG().aHp().set(ar.a.Vlr, Long.valueOf(System.currentTimeMillis() + this.EBi * 1000L));
+      this.KtU = ae.bt(paramJSONObject);
+      this.KtU.KrO = paramJSONObject.optString("spidLogo");
+      this.KtU.KrN = paramJSONObject.optString("spidName");
+      this.KtU.Kmq = paramJSONObject.optString("spidWishing");
+      if ((paramInt == 0) && (paramJSONObject.has("real_name_info")))
+      {
+        Object localObject = paramJSONObject.optJSONObject("real_name_info");
+        if (localObject != null)
+        {
+          paramString = ((JSONObject)localObject).optString("guide_flag");
+          String str1 = ((JSONObject)localObject).optString("guide_wording");
+          String str2 = ((JSONObject)localObject).optString("left_button_wording");
+          String str3 = ((JSONObject)localObject).optString("right_button_wording");
+          localObject = ((JSONObject)localObject).optString("upload_credit_url");
+          this.Koa = new RealnameGuideHelper();
+          this.Koa.a(paramString, str1, str2, str3, (String)localObject, 1005);
+        }
+      }
+      if ((paramInt == 0) && (paramJSONObject.has("intercept_win"))) {
+        this.KtV = c.cC(paramJSONObject.optJSONObject("intercept_win"));
+      }
+      AppMethodBeat.o(65280);
+      return;
     }
-    this.Ezp = ad.bh(paramJSONObject.optJSONObject("operationTail"));
-    AppMethodBeat.o(65282);
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        Log.w("MicroMsg.NetSceneLuckyMoneyBusiOpen", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.am
  * JD-Core Version:    0.7.0.1
  */

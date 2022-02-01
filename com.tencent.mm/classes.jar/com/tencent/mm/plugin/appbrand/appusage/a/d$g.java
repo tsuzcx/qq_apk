@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dud;
 import java.util.LinkedList;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 2>", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Ljava/util/LinkedList;", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class d$g
-  extends kotlin.g.b.q
-  implements kotlin.g.a.q<Integer, LinkedList<dud>, Integer, x>
+  extends u
+  implements a<LinkedList<Integer>>
 {
-  public static final g nRx;
+  public static final g qRl;
   
   static
   {
-    AppMethodBeat.i(50314);
-    nRx = new g();
-    AppMethodBeat.o(50314);
+    AppMethodBeat.i(50316);
+    qRl = new g();
+    AppMethodBeat.o(50316);
   }
   
   d$g()
   {
-    super(3);
+    super(0);
   }
 }
 

@@ -1,270 +1,91 @@
 package com.tencent.mm.ui.contact;
 
-import android.database.Cursor;
-import android.database.MergeCursor;
-import android.util.SparseArray;
-import android.widget.ListView;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.model.c;
-import com.tencent.mm.openim.PluginOpenIM;
-import com.tencent.mm.openim.e.d;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.storage.MStorageEx;
-import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.contact.a.f;
-import com.tencent.mm.ui.contact.a.j;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mm.openim.api.e;
+import com.tencent.mm.openim.api.e.a;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.MaskLayout;
 
 public final class ac
-  extends r
-  implements MStorageEx.IOnStorageChange
+  extends LinearLayout
 {
-  private HashMap<String, Integer> Xqo;
-  private SparseArray<String> Xqp;
-  private a Xvd;
-  private final String appid;
-  private Cursor mNt;
+  private String afgU;
+  private Context context;
   
-  public ac(String paramString, MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean)
+  public ac(Context paramContext, String paramString)
   {
-    super(paramMMBaseSelectContactUI, paramList, false, paramBoolean, false);
-    AppMethodBeat.i(37935);
-    this.Xqo = null;
-    this.Xqp = null;
-    this.appid = paramString;
-    this.Xvd = new a();
-    ((n)h.ae(n.class)).bbL().add(this);
-    ate();
-    AppMethodBeat.o(37935);
-  }
-  
-  private static ArrayList<as> bAb(String paramString)
-  {
-    AppMethodBeat.i(37936);
-    bh.beI();
-    paramString = c.bbL().bwf(paramString);
-    ArrayList localArrayList = new ArrayList();
-    if (paramString.moveToFirst()) {
-      do
-      {
-        as localas = new as();
-        localas.convertFrom(paramString);
-        localArrayList.add(localas);
-      } while (paramString.moveToNext());
-    }
-    paramString.close();
-    AppMethodBeat.o(37936);
-    return localArrayList;
-  }
-  
-  private void dl(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(37938);
-    this.Xqo.put(paramString, Integer.valueOf(paramInt));
-    this.Xqp.put(paramInt, paramString);
-    AppMethodBeat.o(37938);
-  }
-  
-  public final void ate()
-  {
-    AppMethodBeat.i(37937);
-    label33:
-    ArrayList localArrayList;
-    Object localObject1;
-    Object localObject2;
-    int[] arrayOfInt;
-    int i;
-    int j;
-    if (this.Xqo != null)
+    super(paramContext);
+    AppMethodBeat.i(37933);
+    this.context = paramContext;
+    this.afgU = paramString;
+    paramContext = View.inflate(getContext(), R.i.gmQ, this);
+    paramString = findViewById(R.h.fGJ);
+    paramContext.setOnClickListener(new View.OnClickListener()
     {
-      this.Xqo.clear();
-      if (this.Xqp == null) {
-        break label358;
-      }
-      this.Xqp.clear();
-      localArrayList = new ArrayList();
-      localObject1 = ((PluginOpenIM)h.ag(PluginOpenIM.class)).getAppIdInfoStg().ZF(this.appid);
-      bh.beI();
-      localArrayList.add(c.bbL().a(csq(), LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()), (List)localObject1));
-      bAb("select rcontact.username ,rcontact.nickname ,rcontact.alias,rcontact.conRemark,rcontact.verifyFlag,rcontact.showHead,rcontact.weiboFlag,rcontact.rowid ,rcontact.deleteFlag,rcontact.lvbuff,rcontact.descWordingId, rcontact.openImAppid,  OpenIMWordingInfo.wording, OpenIMWordingInfo.quanpin  from rcontact left join OpenIMWordingInfo on rcontact.descWordingId=OpenIMWordingInfo.wordingId  and OpenIMWordingInfo.language='zh_CN'  where (type & 1!=0) and type & 32=0   and type & 8=0 and username like '%@openim' and username != 'appbrandcustomerservicemsg' and username != 'notifymessage' and username != 'weibo' and username != 'pc_share' and username != 'officialaccounts' and username != 'voicevoipapp' and username != 'cardpackage' and username != 'qqfriend' and username != 'helper_entry' and username != 'medianote' and username != 'shakeapp' and username != 'topstoryapp' and username != 'qmessage' and username != 'voipapp' and username != 'qqsync' and username != 'qqmail' and username != 'blogapp' and username != 'lbsapp' and username != 'readerapp' and username != 'feedsapp' and username != 'newsapp' and username != 'floatbottle' and username != 'fmessage' and username != 'tmessage' and username != 'weixin' and username != 'facebookapp' and username != 'meishiapp' and username != 'masssendapp' and username != 'voiceinputapp' and username != 'filehelper' and username != 'linkedinplugin' group by rcontact.openImAppid");
-      bh.beI();
-      localObject2 = c.bbL().b(csq(), LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()), (List)localObject1);
-      arrayOfInt = new int[((Cursor)localObject2).getCount()];
-      if (((Cursor)localObject2).moveToFirst())
+      public final void onClick(View paramAnonymousView)
       {
-        i = 0;
-        do
+        AppMethodBeat.i(37931);
+        Object localObject = new b();
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/contact/OpenIMListViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+        if (!WeChatBrands.Business.Entries.ContactWeCom.checkAvailable(paramAnonymousView.getContext()))
         {
-          arrayOfInt[i] = ((Cursor)localObject2).getInt(0);
-          i += 1;
-        } while (((Cursor)localObject2).moveToNext());
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(37931);
+          return;
+        }
+        paramAnonymousView = paramAnonymousView.getContext();
+        localObject = new Intent(paramAnonymousView, OpenIMAddressUI.class);
+        ((Intent)localObject).addFlags(67108864);
+        ((Intent)localObject).putExtra("key_openim_acctype_id", ac.a(ac.this));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/OpenIMListViewItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(37931);
       }
-      ((Cursor)localObject2).close();
-      bh.beI();
-      localObject1 = c.bbL().c(csq(), LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()), (List)localObject1);
-      if (((Cursor)localObject1).moveToFirst())
+    });
+    paramString.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        i = 0;
-        j = 0;
+        AppMethodBeat.i(37932);
+        if ((ac.b(ac.this) instanceof MMActivity)) {
+          ((MMActivity)ac.b(ac.this)).hideVKB();
+        }
+        AppMethodBeat.o(37932);
+        return false;
       }
+    });
+    paramContext = (MaskLayout)paramString.findViewById(R.h.ftx);
+    ((e)h.ax(e.class)).b(this.afgU, "openim_acct_type_icon", e.a.prc);
+    if (this.afgU.equals("cloudim")) {
+      ((ImageView)paramContext.getContentView()).setImageResource(R.k.avatar_wechat_frame);
     }
-    for (;;)
-    {
-      localObject2 = new as();
-      ((as)localObject2).convertFrom((Cursor)localObject1);
-      dl(j, ((com.tencent.mm.openim.a.a)h.ae(com.tencent.mm.openim.a.a.class)).bR(this.appid, ((ax)localObject2).field_descWordingId));
-      j = arrayOfInt[i] + (j + 1);
-      if (!((Cursor)localObject1).moveToNext())
-      {
-        ((Cursor)localObject1).close();
-        Log.d("MicroMsg.OpenIMSelectContactAdapter", "headerPosMap=%s", new Object[] { this.Xqo.toString() });
-        this.mNt = new MergeCursor((Cursor[])localArrayList.toArray(new Cursor[0]));
-        notifyDataSetChanged();
-        AppMethodBeat.o(37937);
-        return;
-        this.Xqo = new HashMap();
-        break;
-        label358:
-        this.Xqp = new SparseArray();
-        break label33;
-      }
-      i += 1;
-    }
+    paramContext = ((e)h.ax(e.class)).b(this.afgU, "openim_acct_type_title", e.a.prb);
+    ((TextView)findViewById(R.h.fGK)).setText(paramContext);
+    AppMethodBeat.o(37933);
   }
-  
-  public final int bzR(String paramString)
-  {
-    AppMethodBeat.i(37939);
-    if (paramString.equals("↑"))
-    {
-      AppMethodBeat.o(37939);
-      return 0;
-    }
-    if (this.Xqo != null)
-    {
-      if (this.Xqo.containsKey(paramString))
-      {
-        int i = ((Integer)this.Xqo.get(paramString)).intValue();
-        int j = this.XsW.getContentLV().getHeaderViewsCount();
-        AppMethodBeat.o(37939);
-        return i + j;
-      }
-      AppMethodBeat.o(37939);
-      return -1;
-    }
-    AppMethodBeat.o(37939);
-    return -1;
-  }
-  
-  protected final boolean c(com.tencent.mm.ui.contact.a.a parama)
-  {
-    AppMethodBeat.i(37944);
-    int i = parama.position;
-    if (this.Xqp.indexOfKey(i + 1) >= 0)
-    {
-      AppMethodBeat.o(37944);
-      return true;
-    }
-    AppMethodBeat.o(37944);
-    return false;
-  }
-  
-  public final void finish()
-  {
-    AppMethodBeat.i(37942);
-    super.finish();
-    Log.i("MicroMsg.OpenIMSelectContactAdapter", "finish!");
-    if (this.mNt != null)
-    {
-      this.mNt.close();
-      this.mNt = null;
-    }
-    ((n)h.ae(n.class)).bbL().remove(this);
-    AppMethodBeat.o(37942);
-  }
-  
-  public final int getCount()
-  {
-    AppMethodBeat.i(37940);
-    int i = this.mNt.getCount();
-    int j = this.Xqo.size();
-    AppMethodBeat.o(37940);
-    return i + j;
-  }
-  
-  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
-  {
-    AppMethodBeat.i(37943);
-    ate();
-    notifyDataSetChanged();
-    AppMethodBeat.o(37943);
-  }
-  
-  protected final com.tencent.mm.ui.contact.a.a ye(int paramInt)
-  {
-    AppMethodBeat.i(37941);
-    Object localObject1;
-    Object localObject2;
-    if (this.Xqp.indexOfKey(paramInt) >= 0)
-    {
-      localObject1 = (String)this.Xqp.get(paramInt);
-      localObject2 = new j(paramInt);
-      ((j)localObject2).header = ((String)localObject1);
-      AppMethodBeat.o(37941);
-      return localObject2;
-    }
-    int i = 0;
-    int k = paramInt;
-    int j;
-    int m;
-    do
-    {
-      j = i;
-      if (i > this.Xqp.size()) {
-        break;
-      }
-      j = i;
-      if (this.Xqp.indexOfKey(k) >= 0) {
-        j = i + 1;
-      }
-      m = k - 1;
-      i = j;
-      k = m;
-    } while (m >= 0);
-    i = paramInt - j;
-    if (this.mNt.moveToPosition(i))
-    {
-      Log.d("MicroMsg.OpenIMSelectContactAdapter", "create contact item position=%d | index=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      localObject1 = new as();
-      ((as)localObject1).convertFrom(this.mNt);
-      localObject2 = new f(paramInt);
-      ((com.tencent.mm.ui.contact.a.a)localObject2).contact = ((as)localObject1);
-      ((com.tencent.mm.ui.contact.a.a)localObject2).XsX = fJk();
-      ((com.tencent.mm.ui.contact.a.a)localObject2).XsY = hUO();
-      ((f)localObject2).XxL = true;
-      AppMethodBeat.o(37941);
-      return localObject2;
-    }
-    Log.i("MicroMsg.OpenIMSelectContactAdapter", "create contact item error: position=%d | index=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-    AppMethodBeat.o(37941);
-    return null;
-  }
-  
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ac
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,30 @@
 package com.tencent.mm.modelstat;
 
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.d;
+import com.tencent.mm.am.g.d;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.model.az.e;
 import com.tencent.mm.model.be;
 import com.tencent.mm.model.y;
-import com.tencent.mm.network.ac;
+import com.tencent.mm.network.ad;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.p.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.h.b;
+import com.tencent.threadpool.i;
 import java.util.HashMap;
 
 public class p
   implements be
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.network.p lHL;
-  private k meI;
-  private com.tencent.mm.cw.h<l> meJ;
-  private ac meK;
-  private com.tencent.mm.cw.h<f> meL;
+  private com.tencent.mm.network.p oAk;
+  private k oXA;
+  private com.tencent.mm.cp.h<l> oXB;
+  private ad oXC;
+  private com.tencent.mm.cp.h<f> oXD;
   
   static
   {
@@ -44,11 +44,11 @@ public class p
   public p()
   {
     AppMethodBeat.i(151136);
-    this.meI = new k();
-    this.meJ = new com.tencent.mm.cw.h(new com.tencent.mm.cw.c() {});
-    this.meK = new ac();
-    this.meL = new com.tencent.mm.cw.h(new com.tencent.mm.cw.c() {});
-    this.lHL = new p.a()
+    this.oXA = new k();
+    this.oXB = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.oXC = new ad();
+    this.oXD = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.oAk = new p.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
@@ -58,17 +58,17 @@ public class p
           AppMethodBeat.o(151134);
           return;
         }
-        com.tencent.mm.kernel.h.aHJ().postToWorkerDelayed(new Runnable()
+        com.tencent.mm.kernel.h.baH().postToWorkerDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(151132);
-            if (!com.tencent.mm.kernel.h.aHE().aGM())
+            if (!com.tencent.mm.kernel.h.baC().aZN())
             {
               AppMethodBeat.o(151132);
               return;
             }
-            p.bpB().bpv();
+            p.bNi().bNc();
             AppMethodBeat.o(151132);
           }
           
@@ -86,33 +86,33 @@ public class p
     AppMethodBeat.o(151136);
   }
   
-  public static f bpB()
+  public static f bNi()
   {
     AppMethodBeat.i(151137);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    f localf = (f)bpC().meL.get();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    f localf = (f)bNj().oXD.get();
     AppMethodBeat.o(151137);
     return localf;
   }
   
-  private static p bpC()
+  private static p bNj()
   {
     AppMethodBeat.i(151138);
-    p localp = (p)y.as(p.class);
+    p localp = (p)y.aL(p.class);
     AppMethodBeat.o(151138);
     return localp;
   }
   
-  public static l bpD()
+  public static l bNk()
   {
     AppMethodBeat.i(151139);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    l locall = (l)bpC().meJ.get();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    l locall = (l)bNj().oXB.get();
     AppMethodBeat.o(151139);
     return locall;
   }
   
-  public static void d(g paramg)
+  public static void e(g paramg)
   {
     AppMethodBeat.i(151140);
     if (paramg == null) {}
@@ -120,14 +120,14 @@ public class p
     {
       Log.d("MicroMsg.SubCoreStat", "dknetstat setNetworkMoniter  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), Util.getStack() });
       if (paramg != null) {
-        paramg.a(bpC().meI);
+        paramg.a(bNj().oXA);
       }
       AppMethodBeat.o(151140);
       return;
     }
   }
   
-  public static void e(g paramg)
+  public static void f(g paramg)
   {
     AppMethodBeat.i(151141);
     if (paramg == null) {}
@@ -135,7 +135,7 @@ public class p
     {
       Log.d("MicroMsg.SubCoreStat", "setKVReportMonitor  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), Util.getStack() });
       if (paramg != null) {
-        paramg.a(bpC().meK);
+        paramg.a(bNj().oXC);
       }
       AppMethodBeat.o(151141);
       return;
@@ -152,21 +152,21 @@ public class p
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(151143);
-    h.d.a(Integer.valueOf(9998), this.meI);
-    com.tencent.mm.kernel.h.aHF().a(this.lHL);
-    com.tencent.mm.model.az.a.lts = new az.e()
+    g.d.a(Integer.valueOf(9998), this.oXA);
+    com.tencent.mm.kernel.h.baD().a(this.oAk);
+    com.tencent.mm.model.az.a.okQ = new az.e()
     {
-      public final void dH(final int paramAnonymousInt1, final int paramAnonymousInt2)
+      public final void eB(final int paramAnonymousInt1, final int paramAnonymousInt2)
       {
         AppMethodBeat.i(151135);
         Log.d("MicroMsg.SubCoreStat", "ReportDataFlow [%d][%d][%d] : %s ", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(0), Util.getStack() });
-        com.tencent.e.h.ZvG.d(new Runnable()
+        com.tencent.threadpool.h.ahAA.g(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(194066);
-            m.b(paramAnonymousInt1, paramAnonymousInt2, this.val$type);
-            AppMethodBeat.o(194066);
+            AppMethodBeat.i(242895);
+            m.d(paramAnonymousInt1, paramAnonymousInt2, this.val$type);
+            AppMethodBeat.o(242895);
           }
         }, "SubCoreStat-NetStatStorageLogic");
         AppMethodBeat.o(151135);
@@ -178,10 +178,10 @@ public class p
   public void onAccountRelease()
   {
     AppMethodBeat.i(151142);
-    com.tencent.mm.kernel.h.aHF().b(this.lHL);
-    h.d.b(Integer.valueOf(9998), this.meI);
-    this.meI = new k();
-    com.tencent.mm.model.az.a.lts = null;
+    com.tencent.mm.kernel.h.baD().b(this.oAk);
+    g.d.b(Integer.valueOf(9998), this.oXA);
+    this.oXA = new k();
+    com.tencent.mm.model.az.a.okQ = null;
     AppMethodBeat.o(151142);
   }
   
@@ -189,7 +189,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelstat.p
  * JD-Core Version:    0.7.0.1
  */

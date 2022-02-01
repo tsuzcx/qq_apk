@@ -11,31 +11,31 @@ import com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView;
 
 final class a
 {
-  TextView Pqf;
-  FrameLayout Pqg;
-  PatternLockView Pqh;
-  TextView Pqi;
+  TextView WgS;
+  FrameLayout WgT;
+  PatternLockView WgU;
+  TextView WgV;
   View mView;
   
   public a(Activity paramActivity)
   {
     AppMethodBeat.i(129853);
     this.mView = null;
-    this.Pqf = null;
-    this.Pqg = null;
-    this.Pqh = null;
-    this.Pqi = null;
-    this.mView = View.inflate(paramActivity, a.e.PnY, null);
-    this.Pqf = ((TextView)this.mView.findViewById(a.d.elB));
-    this.Pqg = ((FrameLayout)this.mView.findViewById(a.d.PnU));
-    this.Pqh = ((PatternLockView)this.mView.findViewById(a.d.PnT));
-    this.Pqi = ((TextView)this.mView.findViewById(a.d.PnW));
+    this.WgS = null;
+    this.WgT = null;
+    this.WgU = null;
+    this.WgV = null;
+    this.mView = View.inflate(paramActivity, a.e.Wez, null);
+    this.WgS = ((TextView)this.mView.findViewById(a.d.goF));
+    this.WgT = ((FrameLayout)this.mView.findViewById(a.d.Wev));
+    this.WgU = ((PatternLockView)this.mView.findViewById(a.d.Weu));
+    this.WgV = ((TextView)this.mView.findViewById(a.d.Wex));
     AppMethodBeat.o(129853);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.ui.a
  * JD-Core Version:    0.7.0.1
  */

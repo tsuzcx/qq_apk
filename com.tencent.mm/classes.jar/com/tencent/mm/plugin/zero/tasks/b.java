@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.zero.tasks;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
 
@@ -12,9 +12,9 @@ public final class b
   {
     AppMethodBeat.i(133036);
     getClass().getClassLoader();
-    j.KW("commonimgdec");
+    k.DA("commonimgdec");
     getClass().getClassLoader();
-    j.KW("wechatcommon");
+    k.DA("wechatcommon");
     AppMethodBeat.o(133036);
   }
   

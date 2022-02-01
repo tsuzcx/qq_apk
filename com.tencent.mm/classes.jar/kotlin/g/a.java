@@ -2,41 +2,25 @@ package kotlin.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.annotation.Annotation;
-import kotlin.g.b.ab;
-import kotlin.g.b.g;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.l.b;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.ai;
+import kotlin.g.b.h;
+import kotlin.g.b.s;
+import kotlin.l.c;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"annotationClass", "Lkotlin/reflect/KClass;", "T", "", "getAnnotationClass", "(Ljava/lang/annotation/Annotation;)Lkotlin/reflect/KClass;", "java", "Ljava/lang/Class;", "java$annotations", "(Lkotlin/reflect/KClass;)V", "getJavaClass", "(Lkotlin/reflect/KClass;)Ljava/lang/Class;", "javaClass", "", "(Ljava/lang/Object;)Ljava/lang/Class;", "javaClass$annotations", "getRuntimeClassOfKClassInstance", "javaObjectType", "getJavaObjectType", "javaPrimitiveType", "getJavaPrimitiveType", "kotlin", "getKotlinClass", "(Ljava/lang/Class;)Lkotlin/reflect/KClass;", "isArrayOf", "", "", "([Ljava/lang/Object;)Z", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"annotationClass", "Lkotlin/reflect/KClass;", "T", "", "getAnnotationClass", "(Ljava/lang/annotation/Annotation;)Lkotlin/reflect/KClass;", "java", "Ljava/lang/Class;", "getJavaClass$annotations", "(Lkotlin/reflect/KClass;)V", "getJavaClass", "(Lkotlin/reflect/KClass;)Ljava/lang/Class;", "javaClass", "", "(Ljava/lang/Object;)Ljava/lang/Class;", "getRuntimeClassOfKClassInstance$annotations", "getRuntimeClassOfKClassInstance", "javaObjectType", "getJavaObjectType", "javaPrimitiveType", "getJavaPrimitiveType", "kotlin", "getKotlinClass", "(Ljava/lang/Class;)Lkotlin/reflect/KClass;", "isArrayOf", "", "", "([Ljava/lang/Object;)Z", "kotlin-stdlib"}, k=2, mv={1, 5, 1})
 public final class a
 {
-  public static final <T> Class<T> a(b<T> paramb)
-  {
-    AppMethodBeat.i(129345);
-    p.k(paramb, "$this$java");
-    paramb = ((g)paramb).iCd();
-    if (paramb == null)
-    {
-      paramb = new t("null cannot be cast to non-null type java.lang.Class<T>");
-      AppMethodBeat.o(129345);
-      throw paramb;
-    }
-    AppMethodBeat.o(129345);
-    return paramb;
-  }
-  
-  public static final <T extends Annotation> b<? extends T> a(T paramT)
+  public static final <T extends Annotation> c<? extends T> a(T paramT)
   {
     AppMethodBeat.i(129349);
-    p.k(paramT, "$this$annotationClass");
+    s.u(paramT, "$this$annotationClass");
     paramT = paramT.annotationType();
-    p.j(paramT, "(this as java.lang.annot…otation).annotationType()");
-    paramT = bN(paramT);
+    s.s(paramT, "(this as java.lang.annot…otation).annotationType()");
+    paramT = cx(paramT);
     if (paramT == null)
     {
-      paramT = new t("null cannot be cast to non-null type kotlin.reflect.KClass<out T>");
+      paramT = new NullPointerException("null cannot be cast to non-null type kotlin.reflect.KClass<out T>");
       AppMethodBeat.o(129349);
       throw paramT;
     }
@@ -44,24 +28,39 @@ public final class a
     return paramT;
   }
   
-  public static final <T> Class<T> b(b<T> paramb)
+  public static final <T> Class<T> b(c<T> paramc)
+  {
+    AppMethodBeat.i(129345);
+    s.u(paramc, "$this$java");
+    paramc = ((h)paramc).kls();
+    if (paramc == null)
+    {
+      paramc = new NullPointerException("null cannot be cast to non-null type java.lang.Class<T>");
+      AppMethodBeat.o(129345);
+      throw paramc;
+    }
+    AppMethodBeat.o(129345);
+    return paramc;
+  }
+  
+  public static final <T> Class<T> c(c<T> paramc)
   {
     AppMethodBeat.i(129346);
-    p.k(paramb, "$this$javaPrimitiveType");
-    paramb = ((g)paramb).iCd();
-    if (paramb.isPrimitive())
+    s.u(paramc, "$this$javaPrimitiveType");
+    paramc = ((h)paramc).kls();
+    if (paramc.isPrimitive())
     {
-      if (paramb == null)
+      if (paramc == null)
       {
-        paramb = new t("null cannot be cast to non-null type java.lang.Class<T>");
+        paramc = new NullPointerException("null cannot be cast to non-null type java.lang.Class<T>");
         AppMethodBeat.o(129346);
-        throw paramb;
+        throw paramc;
       }
       AppMethodBeat.o(129346);
-      return paramb;
+      return paramc;
     }
-    paramb = paramb.getName();
-    if (paramb == null) {}
+    paramc = paramc.getName();
+    if (paramc == null) {}
     do
     {
       do
@@ -84,138 +83,138 @@ public final class a
                       {
                         AppMethodBeat.o(129346);
                         return null;
-                        switch (paramb.hashCode())
+                        switch (paramc.hashCode())
                         {
                         }
                       }
-                    } while (!paramb.equals("java.lang.Integer"));
-                    paramb = Integer.TYPE;
+                    } while (!paramc.equals("java.lang.Integer"));
+                    paramc = Integer.TYPE;
                     AppMethodBeat.o(129346);
-                    return paramb;
-                  } while (!paramb.equals("java.lang.Float"));
-                  paramb = Float.TYPE;
+                    return paramc;
+                  } while (!paramc.equals("java.lang.Float"));
+                  paramc = Float.TYPE;
                   AppMethodBeat.o(129346);
-                  return paramb;
-                } while (!paramb.equals("java.lang.Void"));
-                paramb = Void.TYPE;
+                  return paramc;
+                } while (!paramc.equals("java.lang.Void"));
+                paramc = Void.TYPE;
                 AppMethodBeat.o(129346);
-                return paramb;
-              } while (!paramb.equals("java.lang.Character"));
-              paramb = Character.TYPE;
+                return paramc;
+              } while (!paramc.equals("java.lang.Character"));
+              paramc = Character.TYPE;
               AppMethodBeat.o(129346);
-              return paramb;
-            } while (!paramb.equals("java.lang.Long"));
-            paramb = Long.TYPE;
+              return paramc;
+            } while (!paramc.equals("java.lang.Long"));
+            paramc = Long.TYPE;
             AppMethodBeat.o(129346);
-            return paramb;
-          } while (!paramb.equals("java.lang.Double"));
-          paramb = Double.TYPE;
+            return paramc;
+          } while (!paramc.equals("java.lang.Double"));
+          paramc = Double.TYPE;
           AppMethodBeat.o(129346);
-          return paramb;
-        } while (!paramb.equals("java.lang.Short"));
-        paramb = Short.TYPE;
+          return paramc;
+        } while (!paramc.equals("java.lang.Short"));
+        paramc = Short.TYPE;
         AppMethodBeat.o(129346);
-        return paramb;
-      } while (!paramb.equals("java.lang.Boolean"));
-      paramb = Boolean.TYPE;
+        return paramc;
+      } while (!paramc.equals("java.lang.Boolean"));
+      paramc = Boolean.TYPE;
       AppMethodBeat.o(129346);
-      return paramb;
-    } while (!paramb.equals("java.lang.Byte"));
-    paramb = Byte.TYPE;
+      return paramc;
+    } while (!paramc.equals("java.lang.Byte"));
+    paramc = Byte.TYPE;
     AppMethodBeat.o(129346);
-    return paramb;
+    return paramc;
   }
   
-  public static final <T> b<T> bN(Class<T> paramClass)
+  public static final <T> c<T> cx(Class<T> paramClass)
   {
     AppMethodBeat.i(129348);
-    p.k(paramClass, "$this$kotlin");
-    paramClass = ab.bO(paramClass);
+    s.u(paramClass, "$this$kotlin");
+    paramClass = ai.cz(paramClass);
     AppMethodBeat.o(129348);
     return paramClass;
   }
   
-  public static final <T> Class<T> c(b<T> paramb)
+  public static final <T> Class<T> d(c<T> paramc)
   {
     AppMethodBeat.i(129347);
-    p.k(paramb, "$this$javaObjectType");
-    paramb = ((g)paramb).iCd();
-    if (!paramb.isPrimitive())
+    s.u(paramc, "$this$javaObjectType");
+    paramc = ((h)paramc).kls();
+    if (!paramc.isPrimitive())
     {
-      if (paramb == null)
+      if (paramc == null)
       {
-        paramb = new t("null cannot be cast to non-null type java.lang.Class<T>");
+        paramc = new NullPointerException("null cannot be cast to non-null type java.lang.Class<T>");
         AppMethodBeat.o(129347);
-        throw paramb;
+        throw paramc;
       }
       AppMethodBeat.o(129347);
-      return paramb;
+      return paramc;
     }
-    String str = paramb.getName();
+    String str = paramc.getName();
     if (str == null) {}
-    while (paramb == null)
+    while (paramc == null)
     {
-      paramb = new t("null cannot be cast to non-null type java.lang.Class<T>");
+      paramc = new NullPointerException("null cannot be cast to non-null type java.lang.Class<T>");
       AppMethodBeat.o(129347);
-      throw paramb;
+      throw paramc;
       switch (str.hashCode())
       {
       default: 
         break;
       case -1325958191: 
         if (str.equals("double")) {
-          paramb = Double.class;
+          paramc = Double.class;
         }
         break;
       case 64711720: 
         if (str.equals("boolean")) {
-          paramb = Boolean.class;
+          paramc = Boolean.class;
         }
         break;
       case 3625364: 
         if (str.equals("void")) {
-          paramb = Void.class;
+          paramc = Void.class;
         }
         break;
       case 3039496: 
         if (str.equals("byte")) {
-          paramb = Byte.class;
+          paramc = Byte.class;
         }
         break;
       case 3052374: 
         if (str.equals("char")) {
-          paramb = Character.class;
+          paramc = Character.class;
         }
         break;
       case 109413500: 
         if (str.equals("short")) {
-          paramb = Short.class;
+          paramc = Short.class;
         }
         break;
       case 97526364: 
         if (str.equals("float")) {
-          paramb = Float.class;
+          paramc = Float.class;
         }
         break;
       case 104431: 
         if (str.equals("int")) {
-          paramb = Integer.class;
+          paramc = Integer.class;
         }
         break;
       case 3327612: 
         if (str.equals("long")) {
-          paramb = Long.class;
+          paramc = Long.class;
         }
         break;
       }
     }
     AppMethodBeat.o(129347);
-    return paramb;
+    return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.g.a
  * JD-Core Version:    0.7.0.1
  */

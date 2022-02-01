@@ -1,53 +1,46 @@
 package com.tencent.mm.plugin.repairer.ui.demo;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.repairer.ui.b.b;
-import com.tencent.mm.ui.report.MMSecDataActivity;
-import kotlin.l;
+import com.tencent.mm.plugin.repairer.ui.BaseRepairerUI;
+import com.tencent.mm.plugin.repairer.ui.b.d;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/repairer/ui/demo/RepairerDragComponentDemoUI;", "Lcom/tencent/mm/ui/report/MMSecDataActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "ui-repairer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/repairer/ui/demo/RepairerDragComponentDemoUI;", "Lcom/tencent/mm/plugin/repairer/ui/BaseRepairerUI;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "ui-repairer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RepairerDragComponentDemoUI
-  extends MMSecDataActivity
+  extends BaseRepairerUI
 {
   private final String TAG = "MicroMsg.RepairerDragComponentDemoUI";
   
+  private static final boolean a(RepairerDragComponentDemoUI paramRepairerDragComponentDemoUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(278607);
+    s.u(paramRepairerDragComponentDemoUI, "this$0");
+    paramRepairerDragComponentDemoUI.finish();
+    AppMethodBeat.o(278607);
+    return true;
+  }
+  
   public final int getLayoutId()
   {
-    return b.b.IwH;
+    return b.d.Ovt;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(227508);
+    AppMethodBeat.i(278623);
     super.onCreate(paramBundle);
     setMMTitle("滑动组件Demo");
-    setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    AppMethodBeat.o(227508);
+    setBackBtn(new RepairerDragComponentDemoUI..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(278623);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class a
-    implements MenuItem.OnMenuItemClickListener
-  {
-    a(RepairerDragComponentDemoUI paramRepairerDragComponentDemoUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(226940);
-      this.IxF.finish();
-      AppMethodBeat.o(226940);
-      return true;
-    }
   }
 }
 

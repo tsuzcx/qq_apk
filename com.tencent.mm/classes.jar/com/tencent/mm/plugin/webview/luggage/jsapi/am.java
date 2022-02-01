@@ -1,65 +1,76 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.b;
+import android.content.Intent;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.br.c;
+import com.tencent.mm.contact.d;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class am
-  extends bs<g>
+  extends bv
 {
-  public final void a(Context paramContext, String paramString, br.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    AppMethodBeat.i(230727);
-    Log.d("MicroMsg.JsApiOpenFinderView", "invokeInMM");
+    AppMethodBeat.i(78586);
     try
     {
       paramString = new JSONObject(paramString);
-      if (paramString == null)
+      paramString = paramString.optString("username");
+      if (Util.isNullOrNil(paramString))
       {
-        parama.i("data is null", null);
-        AppMethodBeat.o(230727);
+        parama.j("param_err", null);
+        AppMethodBeat.o(78586);
         return;
       }
     }
-    catch (Exception paramString)
+    catch (JSONException paramContext)
     {
-      for (;;)
-      {
-        paramString = null;
-      }
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("extInfo", new JSONObject(paramString.optString("extInfo")));
-        ((ak)h.ag(ak.class)).enterFinderUI(paramContext, localJSONObject.toString());
-        parama.i(null, null);
-        AppMethodBeat.o(230727);
-        return;
-      }
-      catch (JSONException paramContext)
-      {
-        parama.i("fail", null);
-        AppMethodBeat.o(230727);
-      }
+      Log.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
+      parama.j("fail", null);
+      AppMethodBeat.o(78586);
+      return;
     }
+    Object localObject = ((n)h.ax(n.class)).bzA().JE(paramString);
+    if ((localObject == null) || (!((au)localObject).iZC()))
+    {
+      parama.j("not biz username", null);
+      AppMethodBeat.o(78586);
+      return;
+    }
+    if (!d.rs(((az)localObject).field_type))
+    {
+      parama.j("open_biz_chat", null);
+      AppMethodBeat.o(78586);
+      return;
+    }
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("Chat_User", paramString);
+    ((Intent)localObject).putExtra("finish_direct", true);
+    c.g(paramContext, ".ui.chatting.ChattingUI", (Intent)localObject);
+    parama.j(null, null);
+    AppMethodBeat.o(78586);
   }
   
-  public final void b(b<g>.a paramb) {}
+  public final void b(b.a parama) {}
   
-  public final int cDj()
+  public final int dgI()
   {
-    return 2;
+    return 1;
   }
   
   public final String name()
   {
-    return "openFinderView";
+    return "openBizChat";
   }
 }
 

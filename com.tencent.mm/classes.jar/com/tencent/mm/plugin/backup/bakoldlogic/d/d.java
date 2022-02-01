@@ -1,29 +1,56 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.bb;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.aq;
-import com.tencent.mm.modelvideo.w;
-import com.tencent.mm.modelvideo.x;
+import com.tencent.mm.autogen.b.bd;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.model.ar;
+import com.tencent.mm.modelvideo.aa;
+import com.tencent.mm.modelvideo.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.sdk.platformtools.FilePathGenerator;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class d
 {
-  public static boolean Lj(String paramString)
+  public static long B(cc paramcc)
+  {
+    AppMethodBeat.i(22097);
+    au localau = b.cXr().cXs().bzA().JE(paramcc.field_talker);
+    if ((localau == null) || ((int)localau.maN == 0))
+    {
+      if (Util.isNullOrNil(paramcc.field_talker)) {
+        break label146;
+      }
+      b.cXr().cXt().F(2, paramcc.field_talker);
+      b.cXr().cXs().bzA().aB(new au(paramcc.field_talker));
+    }
+    for (;;)
+    {
+      long l = b.cXr().cXs().bzD().ba(paramcc);
+      if (l < 0L) {
+        Log.e("MicroMsg.BakOldTempStorageLogic", "insertMsgWithContact faile: type:%d, talker:%s", new Object[] { Integer.valueOf(paramcc.getType()), paramcc.field_talker });
+      }
+      AppMethodBeat.o(22097);
+      return l;
+      label146:
+      if ((paramcc.field_talker.endsWith("@chatroom")) && (b.cXr().cXs().bzK().Jy(paramcc.field_talker) == null)) {
+        b.cXr().cXt().F(2, paramcc.field_talker);
+      }
+    }
+  }
+  
+  public static boolean DQ(String paramString)
   {
     AppMethodBeat.i(22096);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -36,7 +63,7 @@ public final class d
     return bool;
   }
   
-  public static int RK(String paramString)
+  public static int JI(String paramString)
   {
     AppMethodBeat.i(22098);
     if (paramString == null)
@@ -59,7 +86,7 @@ public final class d
     return i;
   }
   
-  public static w aom(String paramString)
+  public static z ahJ(String paramString)
   {
     AppMethodBeat.i(22099);
     if (Util.isNullOrNil(paramString))
@@ -67,120 +94,93 @@ public final class d
       AppMethodBeat.o(22099);
       return null;
     }
-    paramString = b.cuH().cuI().bqB().XN(paramString);
+    paramString = b.cXr().cXs().bOh().PR(paramString);
     AppMethodBeat.o(22099);
     return paramString;
   }
   
-  public static String aon(String paramString)
+  public static String ahK(String paramString)
   {
     AppMethodBeat.i(22100);
-    String str = FilePathGenerator.genPath(b.cuH().cuI().bbY(), "msg_", paramString, ".amr", 2);
+    String str = FilePathGenerator.genPath(b.cXr().cXs().bzN(), "msg_", paramString, ".amr", 2);
     if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(22100);
       return null;
     }
-    if (new q(str).ifE())
+    if (new u(str).jKS())
     {
       AppMethodBeat.o(22100);
       return str;
     }
-    paramString = b.cuH().cuI().brH() + paramString;
-    if (new q(paramString + ".amr").ifE()) {
-      u.oo(paramString + ".amr", str);
+    paramString = b.cXr().cXs().bPn() + paramString;
+    if (new u(paramString + ".amr").jKS()) {
+      y.qn(paramString + ".amr", str);
     }
     for (;;)
     {
       AppMethodBeat.o(22100);
       return str;
-      if (new q(paramString).ifE()) {
-        u.oo(paramString, str);
+      if (new u(paramString).jKS()) {
+        y.qn(paramString, str);
       }
     }
   }
   
-  public static void i(HashMap<String, Integer> paramHashMap)
+  public static void k(HashMap<String, Integer> paramHashMap)
   {
     AppMethodBeat.i(22095);
     Iterator localIterator = paramHashMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      ca localca = b.cuH().cuI().bbO().iR((String)localObject, " and not ( type = 10000 and isSend != 2 ) ");
-      if (localca != null)
+      cc localcc = b.cXr().cXs().bzD().kf((String)localObject, " and not ( type = 10000 and isSend != 2 ) ");
+      if (localcc != null)
       {
         int j = ((Integer)paramHashMap.get(localObject)).intValue();
-        String str = localca.field_talker;
+        String str = localcc.field_talker;
         Log.i("MicroMsg.BakOldTempStorageLogic", "talker:%s, addUnreadCount:%d", new Object[] { str, Integer.valueOf(j) });
         int i = 0;
-        az localaz = b.cuH().cuI().bbR().bwx(str);
-        if ((localaz != null) && (localaz.field_conversationTime > localca.field_createTime) && (localaz.field_conversationTime != 9223372036854775807L))
+        bb localbb = b.cXr().cXs().bzG().bxM(str);
+        if ((localbb != null) && (localbb.field_conversationTime > localcc.getCreateTime()) && (localbb.field_conversationTime != 9223372036854775807L))
         {
           Log.i("MicroMsg.BakOldTempStorageLogic", "updateConvFromLastMsg ignore(maybe the system time is bigger than normal)");
         }
         else
         {
-          localObject = localaz;
-          if (localaz == null)
+          localObject = localbb;
+          if (localbb == null)
           {
             Log.i("MicroMsg.BakOldTempStorageLogic", "updateConvFromLastMsg conversation is null.");
             Log.d("MicroMsg.BakOldTempStorageLogic", "updateConvFromLastMsg cvs:%s", new Object[] { str });
-            localObject = new az(str);
+            localObject = new bb(str);
             i = 1;
           }
-          ((az)localObject).pJ(localca.field_isSend);
-          ((az)localObject).pH(j + ((bb)localObject).field_unReadCount);
-          ((az)localObject).bq(localca);
-          ((az)localObject).IZ(Integer.toString(localca.getType()));
-          ((az)localObject).EC(((bb)localObject).field_flag & 0x0 | localca.field_createTime & 0xFFFFFFFF);
-          ((az)localObject).pG(0);
+          ((bb)localObject).pI(localcc.field_isSend);
+          ((bb)localObject).pG(j + ((bd)localObject).field_unReadCount);
+          ((bb)localObject).bG(localcc);
+          ((bb)localObject).BE(Integer.toString(localcc.getType()));
+          ((bb)localObject).gS(((bd)localObject).field_flag & 0x0 | localcc.getCreateTime() & 0xFFFFFFFF);
+          ((bb)localObject).pF(0);
           if (i != 0)
           {
-            Log.d("MicroMsg.BakOldTempStorageLogic", "updateConvFromLastMsg cvs:%s, cvs.flag:%d", new Object[] { str, Long.valueOf(((bb)localObject).field_flag) });
-            b.cuH().cuI().bbR().e((az)localObject);
+            Log.d("MicroMsg.BakOldTempStorageLogic", "updateConvFromLastMsg cvs:%s, cvs.flag:%d", new Object[] { str, Long.valueOf(((bd)localObject).field_flag) });
+            b.cXr().cXs().bzG().h((bb)localObject);
           }
           else
           {
-            b.cuH().cuI().bbR().a((az)localObject, str);
+            b.cXr().cXs().bzG().c((bb)localObject, str);
           }
         }
       }
     }
-    b.cuH().cuI().bbR().hyH();
+    b.cXr().cXs().bzG().jaM();
     AppMethodBeat.o(22095);
-  }
-  
-  public static long z(ca paramca)
-  {
-    AppMethodBeat.i(22097);
-    as localas = b.cuH().cuI().bbL().RG(paramca.field_talker);
-    if ((localas == null) || ((int)localas.jxt == 0))
-    {
-      if (Util.isNullOrNil(paramca.field_talker)) {
-        break label147;
-      }
-      b.cuH().cuJ().m(2, paramca.field_talker);
-      b.cuH().cuI().bbL().av(new as(paramca.field_talker));
-    }
-    for (;;)
-    {
-      long l = b.cuH().cuI().bbO().aM(paramca);
-      if (l < 0L) {
-        Log.e("MicroMsg.BakOldTempStorageLogic", "insertMsgWithContact faile: type:%d, talker:%s", new Object[] { Integer.valueOf(paramca.getType()), paramca.field_talker });
-      }
-      AppMethodBeat.o(22097);
-      return l;
-      label147:
-      if ((paramca.field_talker.endsWith("@chatroom")) && (b.cuH().cuI().bbV().RA(paramca.field_talker) == null)) {
-        b.cuH().cuJ().m(2, paramca.field_talker);
-      }
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.d.d
  * JD-Core Version:    0.7.0.1
  */

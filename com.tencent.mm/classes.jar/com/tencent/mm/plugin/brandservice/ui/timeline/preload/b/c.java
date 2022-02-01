@@ -1,54 +1,51 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.b;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.brandservice.e;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.z;
+import com.tencent.mm.am.z.a;
+import com.tencent.mm.plugin.brandservice.SubCoreBrandService;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.g;
-import com.tencent.mm.protocal.protobuf.fp;
-import com.tencent.mm.protocal.protobuf.fq;
-import com.tencent.mm.protocal.protobuf.fr;
+import com.tencent.mm.protocal.protobuf.gj;
+import com.tencent.mm.protocal.protobuf.gk;
+import com.tencent.mm.protocal.protobuf.gl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
 {
-  private static d.a a(fp paramfp)
+  private static c.a a(gj paramgj)
   {
     AppMethodBeat.i(6198);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(paramfp);
-    paramfp = c(localLinkedList, 0);
+    localLinkedList.add(paramgj);
+    paramgj = d(localLinkedList, 0);
     AppMethodBeat.o(6198);
-    return paramfp;
+    return paramgj;
   }
   
-  static void a(final fp paramfp, int paramInt)
+  public static void a(final gj paramgj, int paramInt)
   {
     AppMethodBeat.i(6195);
-    aa.a(a(paramfp).bgN(), new aa.a()
+    z.a(a(paramgj).bEF(), new z.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, q paramAnonymousq)
+      public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, p paramAnonymousp)
       {
         AppMethodBeat.i(6192);
         Log.i("MicroMsg.Preload.BizAppMsgReportMgr", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-        paramAnonymousString = (fr)d.c.b(paramAnonymousd.lBS);
+        paramAnonymousString = (gl)c.c.b(paramAnonymousc.otC);
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousString != null))
         {
-          if (this.rSO > 0) {
-            com.tencent.mm.plugin.webview.h.a.rE(57);
+          if (this.ved > 0) {
+            com.tencent.mm.plugin.webview.g.a.rG(57);
           }
-          Log.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync]url:%s", new Object[] { paramfp.Url });
-          com.tencent.mm.plugin.webview.h.a.rE(51);
+          Log.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync]url:%s", new Object[] { paramgj.Url });
+          com.tencent.mm.plugin.webview.g.a.rG(51);
         }
         for (;;)
         {
@@ -56,15 +53,15 @@ public final class c
           return 0;
           if (paramAnonymousInt2 == 50001)
           {
-            if (this.rSO < 3)
+            if (this.ved < 3)
             {
-              c.a(paramfp, this.rSO + 1);
+              c.a(paramgj, this.ved + 1);
             }
             else
             {
-              com.tencent.mm.plugin.webview.h.a.rE(52);
-              com.tencent.mm.plugin.webview.h.a.rE(59);
-              if (e.cyP().a(new a(paramfp))) {
+              com.tencent.mm.plugin.webview.g.a.rG(52);
+              com.tencent.mm.plugin.webview.g.a.rG(59);
+              if (SubCoreBrandService.dbN().a(new a(paramgj))) {
                 Log.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync]");
               } else {
                 Log.w("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync], insert fail");
@@ -73,11 +70,11 @@ public final class c
           }
           else
           {
-            if (this.rSO > 0) {
-              com.tencent.mm.plugin.webview.h.a.rE(58);
+            if (this.ved > 0) {
+              com.tencent.mm.plugin.webview.g.a.rG(58);
             }
-            com.tencent.mm.plugin.webview.h.a.rE(52);
-            if (e.cyP().a(new a(paramfp))) {
+            com.tencent.mm.plugin.webview.g.a.rG(52);
+            if (SubCoreBrandService.dbN().a(new a(paramgj))) {
               Log.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync]");
             } else {
               Log.w("MicroMsg.Preload.BizAppMsgReportMgr", "[report sync], insert fail");
@@ -89,87 +86,24 @@ public final class c
     AppMethodBeat.o(6195);
   }
   
-  public static void apV(String paramString)
-  {
-    AppMethodBeat.i(6194);
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.w("MicroMsg.Preload.BizAppMsgReportMgr", "url is null, err");
-      AppMethodBeat.o(6194);
-      return;
-    }
-    fp localfp = new fp();
-    localfp.Url = paramString;
-    com.tencent.mm.plugin.webview.h.a.rE(50);
-    com.tencent.mm.plugin.webview.h.a.rE(56);
-    a(localfp, 0);
-    AppMethodBeat.o(6194);
-  }
-  
-  private static d.a c(LinkedList<fp> paramLinkedList, int paramInt)
+  public static c.a d(LinkedList<gj> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(6199);
-    d.a locala = new d.a();
+    c.a locala = new c.a();
     locala.funcId = 2998;
     locala.uri = "/cgi-bin/mmbiz-bin/appmsgreport";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    fq localfq = new fq();
-    localfq.RKJ = paramLinkedList;
-    localfq.RKK = paramInt;
-    locala.lBU = localfq;
-    locala.lBV = new fr();
+    gk localgk = new gk();
+    localgk.YId = paramLinkedList;
+    localgk.YIe = paramInt;
+    locala.otE = localgk;
+    locala.otF = new gl();
     AppMethodBeat.o(6199);
     return locala;
   }
   
-  public static void cCn()
-  {
-    AppMethodBeat.i(6196);
-    Object localObject = e.cyP().db.query("BizAppMsgReportContext", null, null, null, null, null, "reportTime DESC limit 50");
-    final LinkedList localLinkedList = new LinkedList();
-    while (((Cursor)localObject).moveToNext())
-    {
-      a locala = new a();
-      locala.convertFrom((Cursor)localObject);
-      localLinkedList.add(locala);
-    }
-    ((Cursor)localObject).close();
-    localObject = cH(localLinkedList);
-    if (((LinkedList)localObject).size() <= 0)
-    {
-      e.cyP().cG(localLinkedList);
-      Log.w("MicroMsg.Preload.BizAppMsgReportMgr", "list is null, return");
-      AppMethodBeat.o(6196);
-      return;
-    }
-    com.tencent.mm.plugin.webview.h.a.rE(53);
-    aa.a(c((LinkedList)localObject, 1).bgN(), new aa.a()
-    {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, q paramAnonymousq)
-      {
-        AppMethodBeat.i(6193);
-        Log.i("MicroMsg.Preload.BizAppMsgReportMgr", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-        paramAnonymousString = (fr)d.c.b(paramAnonymousd.lBS);
-        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousString != null))
-        {
-          Log.i("MicroMsg.Preload.BizAppMsgReportMgr", "[report batch]reportList:%d", new Object[] { Integer.valueOf(this.sQy.size()) });
-          com.tencent.mm.plugin.webview.h.a.rE(54);
-          e.cyP().cG(localLinkedList);
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(6193);
-          return 0;
-          Log.e("MicroMsg.Preload.BizAppMsgReportMgr", "[report batch]reportList:%d fail", new Object[] { Integer.valueOf(this.sQy.size()) });
-          com.tencent.mm.plugin.webview.h.a.rE(55);
-        }
-      }
-    });
-    AppMethodBeat.o(6196);
-  }
-  
-  private static LinkedList<fp> cH(List<a> paramList)
+  public static LinkedList<gj> eC(List<a> paramList)
   {
     AppMethodBeat.i(6197);
     LinkedList localLinkedList = new LinkedList();
@@ -182,17 +116,17 @@ public final class c
         a locala = (a)paramList.next();
         if (!Util.isNullOrNil(locala.field_url))
         {
-          if (System.currentTimeMillis() - locala.field_reportTime >= g.sLo)
+          if (System.currentTimeMillis() - locala.field_reportTime >= g.vRc)
           {
-            com.tencent.mm.plugin.webview.h.a.lz(60, 1);
+            com.tencent.mm.plugin.webview.g.a.nk(60, 1);
           }
           else
           {
-            fp localfp = new fp();
-            localfp.Url = locala.field_url;
-            localfp.RKG = locala.field_reportTime;
-            localLinkedList.add(localfp);
-            Log.v("MicroMsg.Preload.BizAppMsgReportMgr", "[processReportList] url:%s reportTime:%d", new Object[] { localfp.Url, Long.valueOf(localfp.RKG) });
+            gj localgj = new gj();
+            localgj.Url = locala.field_url;
+            localgj.YIa = locala.field_reportTime;
+            localLinkedList.add(localgj);
+            Log.v("MicroMsg.Preload.BizAppMsgReportMgr", "[processReportList] url:%s reportTime:%d", new Object[] { localgj.Url, Long.valueOf(localgj.YIa) });
           }
         }
         else {
@@ -206,7 +140,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.c
  * JD-Core Version:    0.7.0.1
  */

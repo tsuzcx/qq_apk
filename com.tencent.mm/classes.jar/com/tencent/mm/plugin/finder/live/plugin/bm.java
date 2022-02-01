@@ -2,569 +2,392 @@ package com.tencent.mm.plugin.finder.live.plugin;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Point;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.live.c.b.b;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.live.model.ah;
-import com.tencent.mm.plugin.finder.live.model.an;
-import com.tencent.mm.plugin.finder.live.model.cgi.x.a;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.g;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.protocal.protobuf.azs;
-import com.tencent.mm.protocal.protobuf.bal;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ax;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
-import org.libpag.PAGFile;
-import org.libpag.PAGView;
-import org.libpag.PAGView.PAGViewListener;
+import com.tencent.mm.am.p;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.plugin.finder.cgi.bp;
+import com.tencent.mm.plugin.finder.feed.model.j;
+import com.tencent.mm.plugin.finder.live.model.aj;
+import com.tencent.mm.plugin.finder.live.p.b;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.g;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.protocal.protobuf.bkk;
+import com.tencent.mm.protocal.protobuf.bla;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.base.aa;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryCardPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "BIG_ANIMATION_FILE", "", "getBIG_ANIMATION_FILE", "()Ljava/lang/String;", "LANDSCAPE_SCALE_SIZE", "", "getLANDSCAPE_SCALE_SIZE", "()F", "PORTRAIT_HEIGHT", "getPORTRAIT_HEIGHT", "PORTRAIT_WIDTH", "getPORTRAIT_WIDTH", "TAG", "getTAG", "animationCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "Lkotlin/ParameterName;", "name", "lotteryInfo", "", "getAnimationCallback", "()Lkotlin/jvm/functions/Function1;", "setAnimationCallback", "(Lkotlin/jvm/functions/Function1;)V", "bigAnim", "Lorg/libpag/PAGView;", "getBigAnim", "()Lorg/libpag/PAGView;", "setBigAnim", "(Lorg/libpag/PAGView;)V", "bigAnimContainer", "Landroid/widget/FrameLayout;", "getBigAnimContainer", "()Landroid/widget/FrameLayout;", "setBigAnimContainer", "(Landroid/widget/FrameLayout;)V", "bigAnimListener", "Lcom/tencent/mm/plugin/finder/live/plugin/BigAnimListener;", "getBigAnimListener", "()Lcom/tencent/mm/plugin/finder/live/plugin/BigAnimListener;", "setBigAnimListener", "(Lcom/tencent/mm/plugin/finder/live/plugin/BigAnimListener;)V", "card", "Landroid/view/View;", "getCard", "()Landroid/view/View;", "setCard", "(Landroid/view/View;)V", "cardContainer", "getCardContainer", "setCardContainer", "closeBtn", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getCloseBtn", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setCloseBtn", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "lottering", "", "getLottering", "()Z", "setLottering", "(Z)V", "getLotteryInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "setLotteryInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;)V", "adjustLayout", "canClearScreen", "changeToUnvisible", "getLotteryRecord", "callback", "Lkotlin/Function0;", "initBigAnim", "initView", "isLotteryFinish", "onCloseClick", "openCard", "statusChange", "openCardImpl", "lotteryInfoWrapper", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/LotteryInfoWrapper;", "playLotteringAnim", "status", "", "reset", "setVisible", "visible", "showLottering", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "updateCard", "plugin-finder_release"})
-public abstract class bm
-  extends d
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveNoticeBubble;", "Lcom/tencent/mm/plugin/finder/live/plugin/IFinderLivePromoteItem;", "context", "Landroid/content/Context;", "buContext", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "DIMISS_AFTER_RESERVE", "", "TAG", "", "root", "Landroid/view/ViewGroup;", "afterAddAnim", "", "getView", "Landroid/view/View;", "initView", "data", "", "onBubbleDel", "onPortraitDelayAction", "extraMsg", "Landroid/os/Bundle;", "extraData", "delayMs", "refreshView", "Lcom/tencent/mm/plugin/finder/live/view/convert/PromoteLiveNoticeItem;", "updateView", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class bm
+  implements cx
 {
+  private final long Dho;
   private final String TAG;
-  private final com.tencent.mm.live.c.b kCL;
-  private WeImageView kDx;
-  bal xHW;
-  private final float ytW;
-  private final float ytX;
-  private final float ytY;
-  private final String ytZ;
-  FrameLayout yua;
-  PAGView yub;
-  volatile boolean yuc;
-  private a yud;
-  View yue;
-  private View yuf;
-  kotlin.g.a.b<? super bal, x> yug;
+  private final com.tencent.mm.plugin.finder.live.model.context.a buContext;
+  private final Context context;
+  private ViewGroup mJe;
+  private final com.tencent.mm.live.b.b nfT;
   
-  public bm(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb)
+  public bm(Context paramContext, com.tencent.mm.plugin.finder.live.model.context.a parama, com.tencent.mm.live.b.b paramb)
   {
-    super(paramViewGroup, paramb);
-    this.kCL = paramb;
-    this.TAG = "FinderLiveLotteryCardPlugin";
-    this.ytW = 0.81F;
-    this.ytX = 320.0F;
-    this.ytY = 424.0F;
-    this.ytZ = "big_lottery_anim.pag";
-    this.xHW = new bal();
-    paramViewGroup = aj.AGc;
-    aj.aFQ("FinderLiveLotteryCardPlugin");
-    initView();
+    AppMethodBeat.i(355317);
+    this.context = paramContext;
+    this.buContext = parama;
+    this.nfT = paramb;
+    this.TAG = "FinderLiveNoticeBubble";
+    this.Dho = 5000L;
+    paramContext = af.mU(this.context).inflate(p.f.CeK, null);
+    if (paramContext == null)
+    {
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(355317);
+      throw paramContext;
+    }
+    this.mJe = ((ViewGroup)paramContext);
+    AppMethodBeat.o(355317);
   }
   
-  private void P(kotlin.g.a.a<x> parama)
+  private static final void a(bm parambm, com.tencent.mm.plugin.finder.live.view.convert.f paramf, View paramView)
   {
-    p.k(parama, "callback");
-    reset();
-    dBV();
-    tU(0);
-    Object localObject = this.yue;
-    if (localObject != null) {
-      ((View)localObject).setVisibility(4);
+    AppMethodBeat.i(355351);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(parambm);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramf);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveNoticeBubble", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    kotlin.g.b.s.u(parambm, "this$0");
+    kotlin.g.b.s.u(paramf, "$data");
+    kotlin.g.b.s.X("close promote, id:", paramf.DUK.hAR);
+    com.tencent.e.f.h.jXD();
+    paramView = com.tencent.mm.plugin.finder.live.component.statecomponent.b.CCd;
+    com.tencent.mm.plugin.finder.live.component.statecomponent.b.a(parambm.buContext, 2, 1);
+    parambm = aj.CGT;
+    parambm = aj.elk();
+    if (parambm != null)
+    {
+      paramView = b.c.ndQ;
+      localObject1 = new Bundle();
+      localObject2 = new bla();
+      ((bla)localObject2).id = paramf.DUI;
+      ((bla)localObject2).type = 1;
+      ((bla)localObject2).ZTU = new com.tencent.mm.bx.b(paramf.DUK.toByteArray());
+      paramf = ah.aiuX;
+      ((Bundle)localObject1).putByteArray("PARAM_FINDER_LIVE_PROMOTE_DATA", ((bla)localObject2).toByteArray());
+      paramf = ah.aiuX;
+      parambm.statusChange(paramView, (Bundle)localObject1);
     }
-    localObject = this.yud;
-    if (localObject != null) {
-      ((a)localObject).M(parama);
-    }
-    parama = this.yub;
-    if (parama != null) {
-      parama.setProgress(0.0D);
-    }
-    parama = this.yub;
-    if (parama != null) {
-      parama.flush();
-    }
-    parama = this.yub;
-    if (parama != null) {
-      parama.play();
-    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderLiveNoticeBubble", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(355351);
   }
   
-  private final void dBV()
+  private static final void a(bm parambm, com.tencent.mm.plugin.finder.live.view.convert.f paramf, String paramString, bkk parambkk, int paramInt)
   {
-    if (this.yub == null)
+    AppMethodBeat.i(355375);
+    new StringBuilder("reserve notice, id:").append(paramf.DUK.hAR).append(", optype:").append(paramInt);
+    com.tencent.e.f.h.jXD();
+    Object localObject = j.BfL;
+    localObject = j.Sv(paramString);
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ah.aiuX)
     {
-      this.yub = new PAGView(this.kiF.getContext());
-      this.yud = new a(this);
-      localObject1 = this.yub;
-      if (localObject1 != null) {
-        ((PAGView)localObject1).addListener((PAGView.PAGViewListener)this.yud);
-      }
-    }
-    Object localObject1 = this.yua;
-    if ((localObject1 != null) && (((FrameLayout)localObject1).indexOfChild((View)this.yub) == -1))
-    {
-      localObject1 = new FrameLayout.LayoutParams(-1, -1);
-      Object localObject2 = this.yub;
-      if (localObject2 != null) {
-        ((PAGView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      }
-      localObject1 = this.yub;
-      if (localObject1 != null)
+      if (localObject == null)
       {
-        localObject2 = MMApplicationContext.getContext();
-        p.j(localObject2, "MMApplicationContext.getContext()");
-        localObject2 = ((Context)localObject2).getResources();
-        p.j(localObject2, "MMApplicationContext.getContext().resources");
-        ((PAGView)localObject1).setFile(PAGFile.Load(((Resources)localObject2).getAssets(), this.ytZ));
+        localObject = j.BfL;
+        j.b(paramString, parambkk);
       }
-      localObject1 = this.yua;
-      if (localObject1 != null) {
-        ((FrameLayout)localObject1).addView((View)this.yub);
-      }
-      localObject1 = this.yua;
-      if (localObject1 != null) {
-        ((FrameLayout)localObject1).setClickable(true);
-      }
-    }
-  }
-  
-  public final void O(final kotlin.g.a.a<x> parama)
-  {
-    p.k(parama, "callback");
-    Object localObject = ah.yhC;
-    an localan = ah.getFinderLiveAssistant();
-    if (localan != null)
-    {
-      localObject = ((g)business(g.class)).zic;
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.plugin.finder.live.viewmodel.data.l)localObject).xHW;
-        if (localObject != null)
-        {
-          localObject = ((bal)localObject).id;
-          if (localObject != null) {
-            break label79;
-          }
-        }
-      }
-      localObject = "";
-    }
-    label79:
-    for (;;)
-    {
-      localan.a((String)localObject, null, (x.a)new a(this, parama));
+      localObject = parambkk.hAR;
+      kotlin.g.b.s.checkNotNull(localObject);
+      kotlin.g.b.s.s(localObject, "liveNoticeInfo.noticeId!!");
+      paramString = new bp(paramString, (String)localObject, paramInt, null, null, null, 48);
+      com.tencent.mm.kernel.h.aZW().a((p)paramString, 0);
+      parambkk.status = parambkk.status;
+      parambm.a(paramf);
+      AppMethodBeat.o(355375);
       return;
+      ((bkk)localObject).status = parambkk.status;
     }
   }
   
-  public final void a(com.tencent.mm.plugin.finder.live.viewmodel.data.l paraml, final bal parambal, final int paramInt, kotlin.g.a.b<? super bal, x> paramb)
-  {
-    p.k(paraml, "lotteryInfoWrapper");
-    p.k(parambal, "lotteryInfo");
-    p.k(paramb, "callback");
-    this.yug = paramb;
-    this.xHW = parambal;
-    boolean bool2 = paraml.zeP;
-    boolean bool1;
-    boolean bool3;
-    if (this.kiF.getVisibility() == 0)
-    {
-      bool1 = true;
-      paramb = h.ag(PluginFinder.class);
-      p.j(paramb, "MMKernel.plugin(PluginFinder::class.java)");
-      bool3 = ((PluginFinder)paramb).isPagEnable();
-      String str = getTAG();
-      StringBuilder localStringBuilder = new StringBuilder("playLotteringAnim id:").append(parambal.id).append(" status:").append(paramInt).append(", haveLottering:").append(bool2).append(", isCardShowing:").append(bool1).append(", lottering:").append(this.yuc).append(",callback:");
-      paramb = this.yug;
-      if (paramb == null) {
-        break label214;
-      }
-      paramb = Integer.valueOf(paramb.hashCode());
-      label174:
-      Log.i(str, paramb + ",isPagEnable:" + bool3);
-      if (!this.yuc) {
-        break label220;
-      }
-    }
-    label214:
-    label220:
-    label246:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          bool1 = false;
-          break;
-          paramb = null;
-          break label174;
-          if (bool3) {
-            break label246;
-          }
-          paraml = this.yug;
-        } while (paraml == null);
-        paraml.invoke(this.xHW);
-        return;
-        if (!bool2) {
-          break label272;
-        }
-        paraml = this.yug;
-      } while (paraml == null);
-      paraml.invoke(this.xHW);
-      return;
-      paraml.zeP = true;
-      if (!bool1) {
-        break label303;
-      }
-      paraml = this.yug;
-    } while (paraml == null);
-    label272:
-    paraml.invoke(this.xHW);
-    return;
-    label303:
-    this.yuc = true;
-    P((kotlin.g.a.a)new d(this, parambal, paramInt));
-  }
-  
-  public void a(boolean paramBoolean, com.tencent.mm.plugin.finder.live.viewmodel.data.l paraml)
-  {
-    p.k(paraml, "lotteryInfoWrapper");
-    switch (paraml.ycO)
-    {
-    default: 
-      return;
-    case 2: 
-      paraml = this.kCL;
-      localObject1 = b.c.kAO;
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putBoolean("PARAM_FINDER_LIVE_LOTTERY_VISIBILITY_CACHE", true);
-      paraml.statusChange((b.c)localObject1, (Bundle)localObject2);
-      return;
-    }
-    Object localObject1 = this.kCL;
-    Object localObject2 = b.c.kAO;
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("PARAM_FINDER_LIVE_LOTTERY_VISIBILITY_CACHE", true);
-    ((com.tencent.mm.live.c.b)localObject1).statusChange((b.c)localObject2, localBundle);
-    localObject1 = (g)business(g.class);
-    paraml = paraml.xHW;
-    if (paraml != null) {}
-    for (paraml = paraml.id;; paraml = null)
-    {
-      ((g)localObject1).aDc(paraml);
-      return;
-    }
-  }
-  
-  public final boolean dAo()
-  {
-    return false;
-  }
-  
-  public final View dBU()
-  {
-    return this.yuf;
-  }
-  
-  public final void dBW()
-  {
-    tU(8);
-    b.b.a(this.kCL, b.c.kAR);
-  }
-  
-  public void dBX()
-  {
-    Log.i(getTAG(), "changeToUnvisible");
-  }
-  
-  public String getTAG()
-  {
-    return this.TAG;
-  }
-  
-  public void initView()
-  {
-    this.kiF.setOnClickListener((View.OnClickListener)new b(this));
-    this.yue = this.kiF.findViewById(b.f.card_container);
-    this.yuf = this.kiF.findViewById(b.f.card);
-    this.yua = ((FrameLayout)this.kiF.findViewById(b.f.finder_live_lottery_big_anim));
-    this.kDx = ((WeImageView)this.kiF.findViewById(b.f.close));
-    Object localObject = this.kDx;
-    if (localObject != null) {
-      ((WeImageView)localObject).setOnClickListener((View.OnClickListener)new c(this));
-    }
-    float f1;
-    int i;
-    float f2;
-    if (isLandscape())
-    {
-      f1 = ax.au(this.kiF.getContext()).y * this.ytW;
-      i = com.tencent.mm.view.d.e(MMApplicationContext.getContext(), this.ytY);
-      f2 = f1 / i;
-      if (f2 <= 0.0F) {
-        Log.i(getTAG(), "adjustLayout invalid scale:" + f2 + ",targetHeight:" + f1 + ",sourceHeight:" + i);
-      }
-    }
-    do
-    {
-      float f7;
-      do
-      {
-        return;
-        int j = com.tencent.mm.view.d.e(MMApplicationContext.getContext(), this.ytX);
-        float f3 = j * f2;
-        float f4 = i - f1;
-        float f5 = j - f3;
-        float f6 = f4 / 2.0F;
-        f7 = -(f5 / 2.0F);
-        Log.i(getTAG(), "adjustLayout targetHeight:" + f1 + ",targetWidth:" + f3 + ",sourceHeight:" + i + ",sourceWidth:" + j + ',' + "scale:" + f2 + ",diffHeight:" + f4 + ",translationY:" + f6 + ",diffWidth:" + f5 + ',' + f7);
-        localObject = this.yuf;
-        if (localObject != null) {
-          ((View)localObject).setScaleX(f2);
-        }
-        localObject = this.yuf;
-        if (localObject != null) {
-          ((View)localObject).setScaleY(f2);
-        }
-        localObject = this.kDx;
-        if (localObject != null) {
-          ((WeImageView)localObject).setTranslationY(f6);
-        }
-        localObject = this.kDx;
-      } while (localObject == null);
-      ((WeImageView)localObject).setTranslationX(f7);
-      return;
-      localObject = this.yuf;
-      if (localObject != null) {
-        ((View)localObject).setScaleX(1.0F);
-      }
-      localObject = this.yuf;
-      if (localObject != null) {
-        ((View)localObject).setScaleY(1.0F);
-      }
-      localObject = this.kDx;
-    } while (localObject == null);
-    ((WeImageView)localObject).setTranslationY(0.0F);
-  }
-  
-  public final void reset()
-  {
-    PAGView localPAGView = this.yub;
-    if ((localPAGView != null) && (localPAGView.isPlaying() == true))
-    {
-      localPAGView = this.yub;
-      if (localPAGView != null) {
-        localPAGView.stop();
-      }
-    }
-  }
-  
-  public final void statusChange(b.c paramc, Bundle paramBundle)
+  private static final void a(bm parambm, com.tencent.mm.ui.base.s params)
   {
     Object localObject = null;
-    boolean bool2 = true;
-    p.k(paramc, "status");
-    switch (bn.$EnumSwitchMapping$0[paramc.ordinal()])
+    AppMethodBeat.i(355385);
+    kotlin.g.b.s.u(parambm, "this$0");
+    int i;
+    if (params.jmw())
     {
+      ViewGroup localViewGroup2 = parambm.mJe;
+      ViewGroup localViewGroup1 = localViewGroup2;
+      if (localViewGroup2 == null)
+      {
+        kotlin.g.b.s.bIx("root");
+        localViewGroup1 = null;
+      }
+      i = localViewGroup1.getContext().getResources().getColor(p.b.Red);
+      parambm = parambm.mJe;
+      if (parambm != null) {
+        break label106;
+      }
+      kotlin.g.b.s.bIx("root");
+      parambm = localObject;
     }
-    do
+    label106:
+    for (;;)
     {
-      return;
-      if (paramBundle != null) {}
-      for (boolean bool1 = paramBundle.getBoolean("PARAM_FINDER_LIVE_LOTTERY_CARD_SHOW_STATUS");; bool1 = true)
-      {
-        paramBundle = ((g)business(g.class)).zic;
-        paramc = localObject;
-        if (paramBundle != null) {
-          paramc = paramBundle.xHW;
-        }
-        if (paramc == null) {
-          break;
-        }
-        a(bool1, paramBundle);
-        return;
-      }
-      tU(8);
-      paramc = getTAG();
-      paramBundle = new StringBuilder("openCard statusChange:").append(bool1).append(" lotteryInfo is empty:");
-      if (this.xHW == null) {}
-      for (bool1 = bool2;; bool1 = false)
-      {
-        Log.i(paramc, bool1 + '!');
-        return;
-      }
-      tU(4);
-      return;
-    } while (this.kiF.getVisibility() != 0);
-    paramBundle = ((g)business(g.class)).zic;
-    if (paramBundle != null) {}
-    for (paramc = paramBundle.xHW; paramc != null; paramc = null)
-    {
-      a(false, paramBundle);
+      params.a(4, i, (CharSequence)parambm.getContext().getResources().getString(p.h.finder_live_notice_unreserve));
+      AppMethodBeat.o(355385);
       return;
     }
-    tU(8);
-    Log.i(getTAG(), "updateCard lotteryInfo is empty!");
   }
   
-  public void tU(int paramInt)
+  private final void a(com.tencent.mm.plugin.finder.live.view.convert.f paramf)
   {
-    Bundle localBundle = null;
-    boolean bool2 = true;
-    int i = this.kiF.getVisibility();
-    Object localObject1 = ((g)business(g.class)).zic;
-    label105:
-    Object localObject2;
-    if ((localObject1 == null) || (((com.tencent.mm.plugin.finder.live.viewmodel.data.l)localObject1).ycO != 1))
+    Object localObject2 = null;
+    AppMethodBeat.i(355337);
+    Object localObject3 = this.mJe;
+    Object localObject1 = localObject3;
+    if (localObject3 == null)
     {
-      localObject1 = ((g)business(g.class)).zic;
-      if ((localObject1 == null) || (((com.tencent.mm.plugin.finder.live.viewmodel.data.l)localObject1).ycO != 2))
-      {
-        bool1 = true;
-        localObject1 = ((g)business(g.class)).zic;
-        if (localObject1 == null) {
-          break label428;
-        }
-        localObject1 = Boolean.valueOf(((com.tencent.mm.plugin.finder.live.viewmodel.data.l)localObject1).zeS);
-        localObject2 = ((g)business(g.class)).zic;
-        if (localObject2 == null) {
-          break label434;
-        }
-        localObject2 = Boolean.valueOf(((com.tencent.mm.plugin.finder.live.viewmodel.data.l)localObject2).zeQ);
-        label135:
-        int j = ((g)business(g.class)).zib.size();
-        Log.i(getTAG(), "curVisibility:" + i + ",lastVisibility:" + paramInt + ",lastDoneLottery:" + localObject2 + ",remoteSize:" + j + ",isLotteryFinish:" + bool1 + ",bubbleFinish:" + localObject1);
-        if ((i == 0) && (paramInt != 0))
-        {
-          if ((bool1) && ((p.h(localObject1, Boolean.TRUE)) || (j > 1)))
-          {
-            localObject2 = (g)business(g.class);
-            Object localObject3 = ((g)business(g.class)).zic;
-            localObject1 = localBundle;
-            if (localObject3 != null)
-            {
-              localObject3 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.l)localObject3).xHW;
-              localObject1 = localBundle;
-              if (localObject3 != null) {
-                localObject1 = ((bal)localObject3).id;
-              }
-            }
-            ((g)localObject2).bn((String)localObject1, ((g)business(g.class)).dHj());
-          }
-          localObject1 = this.kCL;
-          localObject2 = b.c.kAN;
-          localBundle = new Bundle();
-          localBundle.putBoolean("PARAM_FINDER_LIVE_LOTTERY_VISIBILITY_CACHE", true);
-          ((com.tencent.mm.live.c.b)localObject1).statusChange((b.c)localObject2, localBundle);
-          dBX();
-        }
-        localObject1 = ((g)business(g.class)).zic;
-        if (localObject1 != null) {
-          if (paramInt != 0) {
-            break label440;
-          }
-        }
-      }
-    }
-    label428:
-    label434:
-    label440:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((com.tencent.mm.plugin.finder.live.viewmodel.data.l)localObject1).zeR = bool1;
-      super.tU(paramInt);
-      return;
-      bool1 = false;
-      break;
+      kotlin.g.b.s.bIx("root");
       localObject1 = null;
-      break label105;
-      localObject2 = null;
-      break label135;
+    }
+    localObject1 = (TextView)((ViewGroup)localObject1).findViewById(p.e.BPv);
+    localObject3 = com.tencent.mm.plugin.finder.utils.aw.Gjk;
+    ((TextView)localObject1).setText((CharSequence)com.tencent.mm.plugin.finder.utils.aw.a(paramf.DUK.startTime * 1000L, null, false, 6));
+    localObject3 = this.mJe;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      localObject1 = null;
+    }
+    TextView localTextView = (TextView)((ViewGroup)localObject1).findViewById(p.e.BPu);
+    localObject3 = this.mJe;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      localObject1 = null;
+    }
+    View localView = ((ViewGroup)localObject1).findViewById(p.e.BIb);
+    localObject3 = this.mJe;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      localObject1 = null;
+    }
+    com.tencent.mm.ui.aw.a((Paint)((TextView)((ViewGroup)localObject1).findViewById(p.e.title)).getPaint(), 0.8F);
+    localObject1 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    if (com.tencent.mm.plugin.finder.live.utils.a.s(this.buContext))
+    {
+      localTextView.setVisibility(8);
+      localView.setVisibility(4);
+      AppMethodBeat.o(355337);
+      return;
+    }
+    localTextView.setVisibility(0);
+    localView.setVisibility(0);
+    localView.setOnClickListener(new bm..ExternalSyntheticLambda0(this, paramf));
+    if (paramf.DUK.status == 1)
+    {
+      localTextView.setText((CharSequence)this.context.getString(p.h.Crz));
+      com.tencent.mm.ui.aw.a((Paint)localTextView.getPaint(), 0.8F);
+      localTextView.setOnClickListener(new bm..ExternalSyntheticLambda1(paramf, this));
+      AppMethodBeat.o(355337);
+      return;
+    }
+    localTextView.setText((CharSequence)this.context.getString(p.h.CrA));
+    localObject1 = this.mJe;
+    if (localObject1 == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      ((ViewGroup)localObject1).postDelayed(new bm..ExternalSyntheticLambda4(paramf), this.Dho);
+      break;
     }
   }
   
-  public final void unMount()
+  private static final void a(com.tencent.mm.plugin.finder.live.view.convert.f paramf, bm parambm, View paramView)
   {
-    super.unMount();
-    reset();
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryCardPlugin$getLotteryRecord$1", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveGetLotteryRecord$CallBack;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetLotteryRecordResponse;", "plugin-finder_release"})
-  public static final class a
-    implements x.a
-  {
-    a(kotlin.g.a.a parama) {}
-    
-    public final void a(int paramInt1, int paramInt2, String paramString, azs paramazs)
+    Object localObject2 = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(355412);
+    Object localObject3 = new Object();
+    Object localObject4 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject4).cH(paramf);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject4).cH(parambm);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject4).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveNoticeBubble", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject3, ((com.tencent.mm.hellhoundlib.b.b)localObject4).aYj());
+    kotlin.g.b.s.u(paramf, "$data");
+    kotlin.g.b.s.u(parambm, "this$0");
+    localObject3 = paramf.DUK;
+    localObject4 = ((e)parambm.buContext.business(e.class)).mIC;
+    if (((bkk)localObject3).status == 1)
     {
-      AppMethodBeat.i(268165);
-      p.k(paramazs, "resp");
-      if ((paramInt1 == 0) && (paramInt2 == 0))
+      ((bkk)localObject3).status = 0;
+      localObject2 = parambm.mJe;
+      paramView = (View)localObject2;
+      if (localObject2 == null)
       {
-        ((g)this.yuh.business(g.class)).a(paramazs.xHW);
-        ((g)this.yuh.business(g.class)).d(paramazs);
+        kotlin.g.b.s.bIx("root");
+        paramView = null;
       }
-      parama.invoke();
-      AppMethodBeat.o(268165);
+      localObject2 = paramView.getContext();
+      paramView = parambm.mJe;
+      if (paramView == null)
+      {
+        kotlin.g.b.s.bIx("root");
+        paramView = localObject1;
+      }
+      for (;;)
+      {
+        paramView = aa.makeText((Context)localObject2, (CharSequence)paramView.getContext().getString(p.h.finder_live_notice_edu_toast_tips), 0);
+        paramView.setGravity(17, 0, 0);
+        paramView.show();
+        a(parambm, paramf, (String)localObject4, (bkk)localObject3, 1);
+        paramf = com.tencent.mm.plugin.finder.live.component.statecomponent.b.CCd;
+        com.tencent.mm.plugin.finder.live.component.statecomponent.b.a(parambm.buContext, 3, 1);
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderLiveNoticeBubble", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(355412);
+        return;
+      }
+    }
+    paramView = parambm.mJe;
+    if (paramView == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      paramView = (View)localObject2;
+    }
+    for (;;)
+    {
+      paramView = new com.tencent.mm.ui.widget.a.f(paramView.getContext(), 1, true);
+      paramView.NE(true);
+      paramView.Vtg = new bm..ExternalSyntheticLambda2(parambm);
+      paramView.GAC = new bm..ExternalSyntheticLambda3((bkk)localObject3, parambm, paramf, (String)localObject4);
+      paramView.dDn();
+      break;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
+  private static final void a(bkk parambkk, bm parambm, com.tencent.mm.plugin.finder.live.view.convert.f paramf, String paramString, MenuItem paramMenuItem, int paramInt)
   {
-    b(bm parambm) {}
-    
-    public final void onClick(View paramView)
+    Object localObject = null;
+    AppMethodBeat.i(355397);
+    kotlin.g.b.s.u(parambkk, "$liveNoticeInfo");
+    kotlin.g.b.s.u(parambm, "this$0");
+    kotlin.g.b.s.u(paramf, "$data");
+    kotlin.g.b.s.u(paramString, "$anchorUserNameStr");
+    if (paramMenuItem.getItemId() == 4)
     {
-      AppMethodBeat.i(291270);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryCardPlugin$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.yuh.dBW();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryCardPlugin$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(291270);
+      parambkk.status = 1;
+      a(parambm, paramf, paramString, parambkk, 2);
+      parambkk = com.tencent.mm.plugin.finder.live.component.statecomponent.b.CCd;
+      com.tencent.mm.plugin.finder.live.component.statecomponent.b.a(parambm.buContext, 4, 1);
+      paramf = parambm.mJe;
+      parambkk = paramf;
+      if (paramf == null)
+      {
+        kotlin.g.b.s.bIx("root");
+        parambkk = null;
+      }
+      paramf = parambkk.getContext();
+      parambkk = parambm.mJe;
+      if (parambkk != null) {
+        break label138;
+      }
+      kotlin.g.b.s.bIx("root");
+      parambkk = localObject;
+    }
+    label138:
+    for (;;)
+    {
+      aa.y(paramf, parambkk.getContext().getString(p.h.finder_cancel_succ), p.g.icons_filled_done);
+      AppMethodBeat.o(355397);
+      return;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
+  private static final void b(com.tencent.mm.plugin.finder.live.view.convert.f paramf)
   {
-    c(bm parambm) {}
-    
-    public final void onClick(View paramView)
+    AppMethodBeat.i(355361);
+    kotlin.g.b.s.u(paramf, "$data");
+    Object localObject = aj.CGT;
+    localObject = aj.elk();
+    if (localObject != null)
     {
-      AppMethodBeat.i(285874);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryCardPlugin$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.yuh.dBW();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/plugin/FinderLiveLotteryCardPlugin$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(285874);
+      b.c localc = b.c.ndQ;
+      Bundle localBundle = new Bundle();
+      bla localbla = new bla();
+      localbla.type = 1;
+      localbla.ZTU = new com.tencent.mm.bx.b(paramf.DUK.toByteArray());
+      localbla.id = paramf.DUI;
+      paramf = ah.aiuX;
+      localBundle.putByteArray("PARAM_FINDER_LIVE_PROMOTE_DATA", localbla.toByteArray());
+      paramf = ah.aiuX;
+      ((com.tencent.mm.plugin.finder.live.view.a)localObject).statusChange(localc, localBundle);
     }
+    AppMethodBeat.o(355361);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<x>
+  public final void a(Bundle paramBundle, Object paramObject, long paramLong) {}
+  
+  public final void eoK() {}
+  
+  public final void eoL() {}
+  
+  public final void fs(Object paramObject)
   {
-    d(bm parambm, bal parambal, int paramInt)
-    {
-      super();
+    AppMethodBeat.i(355471);
+    kotlin.g.b.s.u(paramObject, "data");
+    if ((paramObject instanceof com.tencent.mm.plugin.finder.live.view.convert.f)) {
+      a((com.tencent.mm.plugin.finder.live.view.convert.f)paramObject);
     }
+    AppMethodBeat.o(355471);
+  }
+  
+  public final void ft(Object paramObject)
+  {
+    AppMethodBeat.i(355481);
+    kotlin.g.b.s.u(paramObject, "data");
+    if ((paramObject instanceof com.tencent.mm.plugin.finder.live.view.convert.f))
+    {
+      a((com.tencent.mm.plugin.finder.live.view.convert.f)paramObject);
+      paramObject = com.tencent.mm.plugin.finder.live.component.statecomponent.b.CCd;
+      com.tencent.mm.plugin.finder.live.component.statecomponent.b.a(this.buContext, 1, 1);
+    }
+    AppMethodBeat.o(355481);
+  }
+  
+  public final View getView()
+  {
+    AppMethodBeat.i(355488);
+    ViewGroup localViewGroup = this.mJe;
+    Object localObject = localViewGroup;
+    if (localViewGroup == null)
+    {
+      kotlin.g.b.s.bIx("root");
+      localObject = null;
+    }
+    localObject = (View)localObject;
+    AppMethodBeat.o(355488);
+    return localObject;
   }
 }
 

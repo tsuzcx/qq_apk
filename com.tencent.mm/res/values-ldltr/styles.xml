@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="f2" parent="@android:style/Widget.Material.Spinner.Underlined" />
+    <style name="f4" parent="@android:style/Widget.Material.Spinner.Underlined" />
 </resources>

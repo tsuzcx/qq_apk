@@ -24,7 +24,7 @@ public class X5Graphics
     return bool;
   }
   
-  public static boolean init(Context paramContext, String paramString, SoThinker paramSoThinker)
+  public static boolean init(Context paramContext, String paramString, X5Graphics.SoThinker paramSoThinker)
   {
     AppMethodBeat.i(53172);
     boolean bool = GraphicsLib.init(paramContext, paramString, paramSoThinker, null);
@@ -32,7 +32,7 @@ public class X5Graphics
     return bool;
   }
   
-  public static boolean init(Context paramContext, String paramString, SoThinker paramSoThinker, IBeacon paramIBeacon)
+  public static boolean init(Context paramContext, String paramString, X5Graphics.SoThinker paramSoThinker, IBeacon paramIBeacon)
   {
     AppMethodBeat.i(53174);
     boolean bool = GraphicsLib.init(paramContext, paramString, paramSoThinker, paramIBeacon);
@@ -49,15 +49,10 @@ public class X5Graphics
   {
     public abstract void report(String paramString, HashMap<String, String> paramHashMap);
   }
-  
-  public static abstract class SoThinker
-  {
-    public abstract String path(String paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.X5Graphics.X5Graphics
  * JD-Core Version:    0.7.0.1
  */

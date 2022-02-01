@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bxt;
-import com.tencent.mm.protocal.protobuf.bxu;
+import com.tencent.mm.protocal.protobuf.cmw;
+import com.tencent.mm.protocal.protobuf.cmx;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
-  extends q
+  extends p
   implements m
 {
-  private boolean OHV;
-  private bxt OHY;
-  public bxu OHZ;
-  private i callback;
-  private d kwO;
+  private boolean VxI;
+  private cmw VxL;
+  public cmx VxM;
+  private h callback;
+  private c nao;
   
   public o(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(69917);
-    this.OHV = paramBoolean;
-    d.a locala = new d.a();
-    locala.lBU = new bxt();
-    locala.lBV = new bxu();
+    this.VxI = paramBoolean;
+    c.a locala = new c.a();
+    locala.otE = new cmw();
+    locala.otF = new cmx();
     if (paramBoolean) {
       locala.funcId = 2803;
     }
     for (locala.uri = "/cgi-bin/mmpay-bin/mktgetf2flottery";; locala.uri = "/cgi-bin/mmpay-bin/mktgetlottery")
     {
-      locala.lBW = 0;
+      locala.otG = 0;
       locala.respCmdId = 0;
-      this.kwO = locala.bgN();
-      this.OHY = ((bxt)d.b.b(this.kwO.lBR));
-      this.OHY.Thl = paramString;
+      this.nao = locala.bEF();
+      this.VxL = ((cmw)c.b.b(this.nao.otB));
+      this.VxL.aauB = paramString;
       Log.i("MicroMsg.NetSceneMktGetLottery", "NetSceneMktGetLottery, getLotteryParams: %s, isF2f: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(69917);
       return;
@@ -48,18 +48,18 @@ public final class o
     }
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(69918);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
     AppMethodBeat.o(69918);
     return i;
   }
   
   public final int getType()
   {
-    if (this.OHV) {
+    if (this.VxI) {
       return 2803;
     }
     return 2508;
@@ -69,7 +69,7 @@ public final class o
   {
     AppMethodBeat.i(69919);
     Log.i("MicroMsg.NetSceneMktGetLottery", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.OHZ = ((bxu)d.c.b(((d)params).lBS));
+    this.VxM = ((cmx)c.c.b(((c)params).otC));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

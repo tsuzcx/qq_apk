@@ -13,21 +13,21 @@ import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class e
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(160421);
     Log.i("MicroMsg.Predownload.WebViewJsApiBatchPreloadMiniProgram", "invokeInOwn");
-    Object localObject = paramb.crh.cqn;
+    Object localObject = paramb.eiZ.eif;
     if (localObject == null)
     {
       AppMethodBeat.o(160421);
       return;
     }
-    localObject = ((IAppBrandBatchPreloadController)h.ae(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
+    localObject = ((IAppBrandBatchPreloadController)h.ax(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
     if (!Util.isNullOrNil((String)localObject))
     {
       if ("ok".equalsIgnoreCase((String)localObject))
@@ -44,7 +44,7 @@ public class e
     AppMethodBeat.o(160421);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/cvi" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jn"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/cvj" android:padding="@dimen/f1" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jf">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@id/ihw" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <FrameLayout android:id="@id/cw1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ew">
+                        <ImageView android:id="@id/cvz" style="@style/je" />
+                        <View android:layout_gravity="bottom" android:id="@id/cvb" android:background="@drawable/t3" android:layout_width="@dimen/ey" android:layout_height="45.0dip" />
+                        <ImageView android:layout_gravity="center" android:id="@id/cvf" android:src="@drawable/ak8" style="@style/jl" />
+                        <TextView android:layout_gravity="bottom|center|right" android:id="@id/cvc" android:paddingRight="3.0dip" android:paddingBottom="3.0dip" android:text="{11:32}" style="@style/ji" />
+                    </FrameLayout>
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <TextView android:id="@id/cw5" android:text="{title}" style="@style/jk" />
+                        <TextView android:id="@id/cw0" android:layout_marginTop="@dimen/f6" android:text="{desc}" android:maxLines="3" style="@style/jh" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/laq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/ql" android:src="@raw/app_attach_file_icon_sound" android:contentDescription="@string/ha7" style="@style/jd" />
+                    <TextView android:layout_gravity="center_vertical" android:id="@id/cx7" android:layout_marginLeft="@dimen/ew" android:text="{title}" style="@style/jk" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/b_3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/qm" android:src="@raw/app_attach_file_icon_voice" android:contentDescription="@string/h_x" style="@style/jd" />
+                    <TextView android:layout_gravity="center_vertical" android:id="@id/cuk" android:layout_marginLeft="@dimen/ew" android:text="{title}" style="@style/jk" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/bkb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/cuq" style="@style/jd" />
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ew">
+                        <TextView android:id="@id/cui" android:text="{title}" style="@style/jk" />
+                        <TextView android:id="@id/cuh" android:layout_marginTop="@dimen/f6" android:text="{desc}" style="@style/jh" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+            <include layout="@layout/a6w" />
+            <include layout="@layout/a6v" />
+        </LinearLayout>
+        <include layout="@layout/a6t" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,142 +1,109 @@
 package com.tencent.mm.plugin.finder.live.model.context;
 
-import androidx.lifecycle.ab;
-import androidx.lifecycle.x;
-import androidx.lifecycle.y;
-import androidx.lifecycle.y.b;
-import androidx.lifecycle.y.c;
+import androidx.lifecycle.af;
+import androidx.lifecycle.ah;
+import androidx.lifecycle.ah.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.component.c;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.ui.component.f;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveContext;", "tag", "", "(Ljava/lang/String;)V", "getTag", "()Ljava/lang/String;", "business", "T", "Landroidx/lifecycle/ViewModel;", "bu", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;", "toString", "Companion", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveContext;", "tag", "", "(Ljava/lang/String;)V", "getTag", "()Ljava/lang/String;", "business", "T", "Landroidx/lifecycle/ViewModel;", "bu", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;", "toString", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends b
 {
-  private static a ykq;
-  public static final a ykr;
+  public static final a.a CMm;
+  private static a CMn;
   private final String tag;
   
   static
   {
-    AppMethodBeat.i(263238);
-    ykr = new a((byte)0);
-    ykq = new a("from LivingBuContext");
-    AppMethodBeat.o(263238);
+    AppMethodBeat.i(359746);
+    CMm = new a.a((byte)0);
+    CMn = new a("from LivingBuContext");
+    AppMethodBeat.o(359746);
   }
   
   public a(String paramString)
   {
-    AppMethodBeat.i(263235);
+    AppMethodBeat.i(359721);
     this.tag = paramString;
-    AppMethodBeat.o(263235);
+    AppMethodBeat.o(359721);
   }
   
-  public final <T extends x> T business(Class<T> paramClass)
+  public final <T extends af> T business(Class<T> paramClass)
   {
-    AppMethodBeat.i(263231);
-    p.k(paramClass, "bu");
-    paramClass = a.a((c)this).i(paramClass);
-    p.j(paramClass, "of(this).get(bu)");
-    AppMethodBeat.o(263231);
+    AppMethodBeat.i(359754);
+    s.u(paramClass, "bu");
+    paramClass = a.a.a((f)this).q(paramClass);
+    s.s(paramClass, "of(this).get(bu)");
+    AppMethodBeat.o(359754);
     return paramClass;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(263233);
-    String str = this.tag + '_' + (com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class);
-    AppMethodBeat.o(263233);
+    AppMethodBeat.i(359760);
+    String str = this.tag + '_' + business(e.class);
+    AppMethodBeat.o(359760);
     return str;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext$Companion;", "", "()V", "value", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "LivingBuContext", "getLivingBuContext", "()Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "setLivingBuContext", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;)V", "of", "Landroidx/lifecycle/ViewModelProvider;", "owner", "Lcom/tencent/mm/ui/component/IModel;", "plugin-finder-base_release"})
-  public static final class a
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/model/context/LiveBuContext$Companion$of$1", "Landroidx/lifecycle/ViewModelProvider$NewInstanceFactory;", "create", "T", "Landroidx/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a$a
+    extends ah.d
   {
-    public static y a(c paramc)
-    {
-      AppMethodBeat.i(259608);
-      p.k(paramc, "owner");
-      paramc = new y((ab)paramc, (y.b)new a(paramc));
-      AppMethodBeat.o(259608);
-      return paramc;
-    }
+    a$a(f paramf) {}
     
-    public static void j(a parama)
+    public final <T extends af> T create(Class<T> paramClass)
     {
-      AppMethodBeat.i(259607);
-      a.i(parama);
-      p.j("", "if(BuildConfig.DEBUG) Ut…tack().toString() else \"\"");
-      Log.i("LivingBuContext", "LivingBuContext set value " + parama + ' ' + "");
-      AppMethodBeat.o(259607);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/model/context/LiveBuContext$Companion$of$1", "Landroidx/lifecycle/ViewModelProvider$NewInstanceFactory;", "create", "T", "Landroidx/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;", "plugin-finder-base_release"})
-    public static final class a
-      extends y.c
-    {
-      a(c paramc) {}
-      
-      public final <T extends x> T create(Class<T> paramClass)
-      {
-        AppMethodBeat.i(262409);
-        p.k(paramClass, "modelClass");
-        if (com.tencent.mm.plugin.finder.live.viewmodel.data.business.a.class.isAssignableFrom(paramClass)) {
-          try
-          {
-            Object localObject = paramClass.getConstructor(new Class[] { a.class });
-            localc = this.yks;
-            if (localc == null)
-            {
-              localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.live.model.context.LiveBuContext");
-              AppMethodBeat.o(262409);
-              throw ((Throwable)localObject);
-            }
-          }
-          catch (NoSuchMethodException localNoSuchMethodException)
-          {
-            c localc;
-            paramClass = (Throwable)new RuntimeException("Cannot create an instance of ".concat(String.valueOf(paramClass)), (Throwable)localNoSuchMethodException);
-            AppMethodBeat.o(262409);
-            throw paramClass;
-            x localx = (x)localNoSuchMethodException.newInstance(new Object[] { (a)localc });
-            AppMethodBeat.o(262409);
-            return localx;
-          }
-          catch (IllegalAccessException localIllegalAccessException)
-          {
-            paramClass = (Throwable)new RuntimeException("Cannot create an instance of ".concat(String.valueOf(paramClass)), (Throwable)localIllegalAccessException);
-            AppMethodBeat.o(262409);
-            throw paramClass;
-          }
-          catch (InstantiationException localInstantiationException)
-          {
-            paramClass = (Throwable)new RuntimeException("Cannot create an instance of ".concat(String.valueOf(paramClass)), (Throwable)localInstantiationException);
-            AppMethodBeat.o(262409);
-            throw paramClass;
-          }
-          catch (InvocationTargetException localInvocationTargetException)
-          {
-            paramClass = (Throwable)new RuntimeException("Cannot create an instance of ".concat(String.valueOf(paramClass)), (Throwable)localInvocationTargetException);
-            AppMethodBeat.o(262409);
-            throw paramClass;
-          }
+      AppMethodBeat.i(359740);
+      s.u(paramClass, "modelClass");
+      if (c.class.isAssignableFrom(paramClass)) {
+        try
+        {
+          af localaf = (af)paramClass.getConstructor(new Class[] { a.class }).newInstance(new Object[] { (a)this.CMo });
+          AppMethodBeat.o(359740);
+          return localaf;
         }
-        paramClass = super.create(paramClass);
-        AppMethodBeat.o(262409);
-        return paramClass;
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
+          paramClass = new RuntimeException(s.X("Cannot create an instance of ", paramClass), (Throwable)localNoSuchMethodException);
+          AppMethodBeat.o(359740);
+          throw paramClass;
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          paramClass = new RuntimeException(s.X("Cannot create an instance of ", paramClass), (Throwable)localIllegalAccessException);
+          AppMethodBeat.o(359740);
+          throw paramClass;
+        }
+        catch (InstantiationException localInstantiationException)
+        {
+          paramClass = new RuntimeException(s.X("Cannot create an instance of ", paramClass), (Throwable)localInstantiationException);
+          AppMethodBeat.o(359740);
+          throw paramClass;
+        }
+        catch (InvocationTargetException localInvocationTargetException)
+        {
+          paramClass = new RuntimeException(s.X("Cannot create an instance of ", paramClass), (Throwable)localInvocationTargetException);
+          AppMethodBeat.o(359740);
+          throw paramClass;
+        }
       }
+      paramClass = super.create(paramClass);
+      AppMethodBeat.o(359740);
+      return paramClass;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.context.a
  * JD-Core Version:    0.7.0.1
  */

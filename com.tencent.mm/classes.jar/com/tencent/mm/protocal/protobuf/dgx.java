@@ -1,96 +1,72 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class dgx
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int CqV;
-  public dgy TNE;
+  public double latitude;
+  public double longitude;
+  public String wws;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43119);
+    AppMethodBeat.i(93333);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.TNE == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: OplogRet");
-        AppMethodBeat.o(43119);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.d(1, this.latitude);
+      paramVarArgs.d(2, this.longitude);
+      if (this.wws != null) {
+        paramVarArgs.g(3, this.wws);
       }
-      paramVarArgs.aY(1, this.CqV);
-      if (this.TNE != null)
-      {
-        paramVarArgs.oE(2, this.TNE.computeSize());
-        this.TNE.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(43119);
+      AppMethodBeat.o(93333);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.bM(1, this.CqV) + 0;
+      int i = i.a.a.b.b.a.ko(1) + 8 + 0 + (i.a.a.b.b.a.ko(2) + 8);
       paramInt = i;
-      if (this.TNE != null) {
-        paramInt = i + g.a.a.a.oD(2, this.TNE.computeSize());
+      if (this.wws != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.wws);
       }
-      AppMethodBeat.o(43119);
+      AppMethodBeat.o(93333);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      if (this.TNE == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: OplogRet");
-        AppMethodBeat.o(43119);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(43119);
+      AppMethodBeat.o(93333);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       dgx localdgx = (dgx)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(43119);
+        AppMethodBeat.o(93333);
         return -1;
       case 1: 
-        localdgx.CqV = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(43119);
+        localdgx.latitude = Double.longBitsToDouble(locala.ajGk.aay());
+        AppMethodBeat.o(93333);
+        return 0;
+      case 2: 
+        localdgx.longitude = Double.longBitsToDouble(locala.ajGk.aay());
+        AppMethodBeat.o(93333);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        dgy localdgy = new dgy();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localdgy.parseFrom((byte[])localObject);
-        }
-        localdgx.TNE = localdgy;
-        paramInt += 1;
-      }
-      AppMethodBeat.o(43119);
+      localdgx.wws = locala.ajGk.readString();
+      AppMethodBeat.o(93333);
       return 0;
     }
-    AppMethodBeat.o(43119);
+    AppMethodBeat.o(93333);
     return -1;
   }
 }

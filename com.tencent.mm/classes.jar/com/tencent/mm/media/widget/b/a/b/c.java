@@ -3,74 +3,71 @@ package com.tencent.mm.media.widget.b.a.b;
 import android.hardware.camera2.CaptureResult.Key;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Constructor;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCResultKeyCreator;", "", "()V", "TAG", "", "resultConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureResult$Key;", "resultKey", "T", "name", "klass", "Ljava/lang/Class;", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCResultKeyCreator;", "", "()V", "TAG", "", "resultConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureResult$Key;", "resultKey", "T", "name", "klass", "Ljava/lang/Class;", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  private static final String TAG = "CT2.WCRequestKeyCreator";
-  private static Constructor<CaptureResult.Key<?>> lep;
-  public static final c leq;
+  private static final String TAG;
+  public static final c nIZ;
+  private static Constructor<CaptureResult.Key<?>> nJa;
   
   static
   {
     AppMethodBeat.i(94210);
-    leq = new c();
+    nIZ = new c();
     TAG = "CT2.WCRequestKeyCreator";
     AppMethodBeat.o(94210);
   }
   
-  public static final <T> CaptureResult.Key<T> e(String paramString, Class<T> paramClass)
+  public static final <T> CaptureResult.Key<T> i(String paramString, Class<T> paramClass)
   {
     AppMethodBeat.i(94209);
-    p.k(paramString, "name");
-    p.k(paramClass, "klass");
+    s.u(paramString, "name");
+    s.u(paramClass, "klass");
     try
     {
       Constructor localConstructor;
-      if (lep == null)
+      if (nJa == null)
       {
         localConstructor = CaptureResult.Key.class.getConstructor(new Class[] { String.class, paramClass.getClass() });
-        lep = localConstructor;
-        if (localConstructor == null) {
-          p.iCn();
-        }
+        nJa = localConstructor;
+        s.checkNotNull(localConstructor);
         localConstructor.setAccessible(true);
       }
       try
       {
-        localConstructor = lep;
-        if (localConstructor == null) {
-          p.iCn();
+        localConstructor = nJa;
+        s.checkNotNull(localConstructor);
+        paramClass = localConstructor.newInstance(new Object[] { paramString, paramClass });
+        if (paramClass != null) {
+          break label129;
         }
-        paramString = localConstructor.newInstance(new Object[] { paramString, paramClass });
-        if (paramString != null) {
-          break label135;
-        }
-        paramString = new t("null cannot be cast to non-null type android.hardware.camera2.CaptureResult.Key<T>");
+        paramClass = new NullPointerException("null cannot be cast to non-null type android.hardware.camera2.CaptureResult.Key<T of com.tencent.mm.media.widget.camera2.effect.result.WCResultKeyCreator.resultKey>");
         AppMethodBeat.o(94209);
-        throw paramString;
+        throw paramClass;
       }
-      catch (Exception paramString)
+      catch (Exception paramClass)
       {
-        new StringBuilder("cannot call captureResult.Key constructor: ").append(paramString.getMessage());
+        s.X("creator result key error ", paramString);
+        s.X("cannot call captureResult.Key constructor: ", paramClass.getMessage());
       }
     }
-    catch (NoSuchMethodException paramString)
+    catch (NoSuchMethodException paramClass)
     {
       for (;;)
       {
-        new StringBuilder("cannot find captureResult.Key constructor: ").append(paramString.getMessage());
+        s.X("creator result key method error ", paramString);
+        s.X("cannot find captureResult.Key constructor: ", paramClass.getMessage());
       }
     }
     AppMethodBeat.o(94209);
     return null;
-    label135:
-    paramString = (CaptureResult.Key)paramString;
+    label129:
+    paramClass = (CaptureResult.Key)paramClass;
     AppMethodBeat.o(94209);
-    return paramString;
+    return paramClass;
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.storage.emotion;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bud;
+import com.tencent.mm.protocal.protobuf.goe;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -27,20 +27,20 @@ public final class m
     this.db = paramISQLiteDatabase;
   }
   
-  public final void a(String paramString1, bud parambud, String paramString2)
+  public final void a(String paramString1, goe paramgoe, String paramString2)
   {
     AppMethodBeat.i(183930);
-    if ((Util.isNullOrNil(paramString1)) || (parambud == null)) {
+    if ((Util.isNullOrNil(paramString1)) || (paramgoe == null)) {
       Log.w("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
     }
     try
     {
       l locall = new l();
       locall.field_productID = paramString1;
-      locall.field_content = parambud.toByteArray();
+      locall.field_content = paramgoe.toByteArray();
       locall.field_lan = paramString2;
-      parambud = locall.convertTo();
-      if (this.db.replace("EmotionDetailInfo", "productID", parambud) > 0L)
+      paramgoe = locall.convertTo();
+      if (this.db.replace("EmotionDetailInfo", "productID", paramgoe) > 0L)
       {
         Log.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID success. ProductId:%s", new Object[] { paramString1 });
         AppMethodBeat.o(183930);
@@ -57,7 +57,7 @@ public final class m
     }
   }
   
-  public final l bxT(String paramString)
+  public final l bzj(String paramString)
   {
     Object localObject2 = null;
     AppMethodBeat.i(105116);
@@ -94,7 +94,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.m
  * JD-Core Version:    0.7.0.1
  */

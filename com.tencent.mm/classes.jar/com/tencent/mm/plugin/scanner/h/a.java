@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.scanner.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.f.e;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/service/ScanReportServiceImpl;", "Lcom/tencent/mm/plugin/scanner/api/IScanReportService;", "()V", "createImageOCRReporter", "Lcom/tencent/mm/plugin/scanner/api/ocr/IImageOCRReporter;", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/service/ScanReportServiceImpl;", "Lcom/tencent/mm/plugin/scanner/api/IScanReportService;", "()V", "createImageOCRReporter", "Lcom/tencent/mm/plugin/scanner/api/ocr/IImageOCRReporter;", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   implements com.tencent.mm.plugin.scanner.api.b
 {
-  public final com.tencent.mm.plugin.scanner.api.a.b fBV()
+  public final com.tencent.mm.plugin.scanner.api.a.b gPz()
   {
-    AppMethodBeat.i(217181);
+    AppMethodBeat.i(313315);
     com.tencent.mm.plugin.scanner.api.a.b localb = (com.tencent.mm.plugin.scanner.api.a.b)new e();
-    AppMethodBeat.o(217181);
+    AppMethodBeat.o(313315);
     return localb;
   }
 }

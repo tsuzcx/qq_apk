@@ -13,7 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public abstract class d
 {
-  private static int fQ = -1;
+  private static int gL = -1;
   
   public static d a(Activity paramActivity, c paramc)
   {
@@ -25,20 +25,20 @@ public abstract class d
     return new AppCompatDelegateImpl(paramDialog.getContext(), paramDialog.getWindow(), paramc);
   }
   
-  public static int aL()
+  public static int bE()
   {
-    return fQ;
+    return gL;
   }
   
-  public abstract boolean P(int paramInt);
-  
-  public abstract void aI();
-  
-  public abstract void aJ();
-  
-  public abstract boolean aK();
+  public abstract boolean N(int paramInt);
   
   public abstract void addContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams);
+  
+  public abstract void bB();
+  
+  public abstract void bC();
+  
+  public abstract boolean bD();
   
   public abstract <T extends View> T findViewById(int paramInt);
   
@@ -78,7 +78,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.app.d
  * JD-Core Version:    0.7.0.1
  */

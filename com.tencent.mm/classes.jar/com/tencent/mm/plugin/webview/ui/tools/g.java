@@ -1,41 +1,98 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.lifecycle.x;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.protocal.protobuf.dcn;
+import com.tencent.mm.protocal.protobuf.fuw;
+import com.tencent.mm.ui.widget.a.j;
+import java.util.LinkedList;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/UrlParams;", "", "immersiveStyle", "", "immersiveBgDark", "(ZZ)V", "getImmersiveBgDark", "()Z", "setImmersiveBgDark", "(Z)V", "getImmersiveStyle", "setImmersiveStyle", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-webview_release"})
 public final class g
 {
-  boolean PQp = false;
-  boolean PQq = false;
+  a WSU;
+  public LinkedList<dcn> WSV;
+  public LinkedList<fuw> WSW;
+  x<Integer> WSX;
+  int WSY;
+  final Context mContext;
+  private RecyclerView mRecyclerView;
+  View tss;
+  j xcO;
   
-  public final boolean equals(Object paramObject)
+  public g(Context paramContext, LinkedList<dcn> paramLinkedList, LinkedList<fuw> paramLinkedList1)
   {
-    if (this != paramObject)
+    AppMethodBeat.i(296214);
+    this.WSX = new x();
+    this.WSY = 0;
+    this.mContext = paramContext;
+    this.xcO = new j(paramContext, 0, 3);
+    this.WSV = paramLinkedList;
+    this.WSW = paramLinkedList1;
+    ixq();
+    AppMethodBeat.o(296214);
+  }
+  
+  final void ixq()
+  {
+    AppMethodBeat.i(296222);
+    this.mRecyclerView = new RecyclerView(this.mContext);
+    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+    this.mRecyclerView.setLayoutParams(localLayoutParams);
+    this.mRecyclerView.setLayoutManager(new LinearLayoutManager());
+    this.mRecyclerView.setPadding(0, 0, 0, com.tencent.mm.cd.a.fromDPToPix(this.mContext, 98));
+    this.WSU = new a();
+    this.mRecyclerView.setAdapter(this.WSU);
+    if (this.xcO != null) {
+      this.xcO.setCustomView(this.mRecyclerView);
+    }
+    AppMethodBeat.o(296222);
+  }
+  
+  public final class a
+    extends RecyclerView.a<a>
+  {
+    public a() {}
+    
+    public final int getItemCount()
     {
-      if ((paramObject instanceof g))
+      AppMethodBeat.i(296240);
+      int i = ((dcn)g.this.WSV.get(g.this.WSY)).aaIv.size();
+      AppMethodBeat.o(296240);
+      return i;
+    }
+    
+    public final class a
+      extends RecyclerView.v
+    {
+      View WTb;
+      TextView WTc;
+      View WTd;
+      ImageView WTe;
+      
+      public a(View paramView)
       {
-        paramObject = (g)paramObject;
-        if ((this.PQp != paramObject.PQp) || (this.PQq != paramObject.PQq)) {}
+        super();
+        AppMethodBeat.i(296391);
+        this.WTb = paramView;
+        this.WTc = ((TextView)paramView.findViewById(c.f.appdata_auth_half_bottom_selection));
+        this.WTd = paramView.findViewById(c.f.appdata_auth_half_bottom_selection_mark);
+        this.WTe = ((ImageView)paramView.findViewById(c.f.bottom_line));
+        AppMethodBeat.o(296391);
       }
     }
-    else {
-      return true;
-    }
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(267558);
-    String str = "UrlParams(immersiveStyle=" + this.PQp + ", immersiveBgDark=" + this.PQq + ")";
-    AppMethodBeat.o(267558);
-    return str;
   }
 }
 

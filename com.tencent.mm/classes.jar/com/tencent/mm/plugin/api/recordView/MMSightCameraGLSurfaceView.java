@@ -2,33 +2,30 @@ package com.tencent.mm.plugin.api.recordView;
 
 import android.content.Context;
 import android.opengl.EGL14;
+import android.opengl.EGLContext;
 import android.opengl.GLSurfaceView;
-import android.opengl.GLSurfaceView.EGLContextFactory;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
 
 public class MMSightCameraGLSurfaceView
   extends GLSurfaceView
 {
-  private android.opengl.EGLContext lau;
-  int lfC;
-  int nqW;
-  int nqX;
-  a nrg;
-  private int nrh;
-  private c nri;
+  private EGLContext eXL;
+  int nKn;
+  int qpD;
+  int qpE;
+  a qpN;
+  private int qpO;
+  private c qpP;
   
   public MMSightCameraGLSurfaceView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(89201);
-    this.nrg = null;
-    this.nrh = 0;
+    this.qpN = null;
+    this.qpO = 0;
     init();
     AppMethodBeat.o(89201);
   }
@@ -37,8 +34,8 @@ public class MMSightCameraGLSurfaceView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(89202);
-    this.nrg = null;
-    this.nrh = 0;
+    this.qpN = null;
+    this.qpO = 0;
     init();
     AppMethodBeat.o(89202);
   }
@@ -50,10 +47,10 @@ public class MMSightCameraGLSurfaceView
     try
     {
       getHolder().setType(2);
-      setEGLContextFactory(new b());
+      setEGLContextFactory(new MMSightCameraGLSurfaceView.b(this));
       setEGLConfigChooser(new MMSightCameraGLSurfaceView.a(this));
-      this.nrg = new a();
-      setRenderer(this.nrg);
+      this.qpN = new a();
+      setRenderer(this.qpN);
       setRenderMode(0);
       AppMethodBeat.o(89203);
       return;
@@ -78,29 +75,29 @@ public class MMSightCameraGLSurfaceView
     }
   }
   
-  public android.opengl.EGLContext getEglContext()
+  public EGLContext getEglContext()
   {
-    return this.lau;
+    return this.eXL;
   }
   
   public int getFrameHeight()
   {
-    return this.nqX;
+    return this.qpE;
   }
   
   public int getFrameRotate()
   {
-    return this.lfC;
+    return this.nKn;
   }
   
   public int getFrameWidth()
   {
-    return this.nqW;
+    return this.qpD;
   }
   
   public void setOnEglEnableListener(c paramc)
   {
-    this.nri = paramc;
+    this.qpP = paramc;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
@@ -116,9 +113,9 @@ public class MMSightCameraGLSurfaceView
     AppMethodBeat.i(89204);
     super.surfaceCreated(paramSurfaceHolder);
     Log.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceCreated: %s this: %s %s", new Object[] { paramSurfaceHolder, this, Integer.valueOf(getId()) });
-    this.lau = EGL14.eglGetCurrentContext();
-    if (this.nri != null) {
-      this.nri.enable();
+    this.eXL = EGL14.eglGetCurrentContext();
+    if (this.qpP != null) {
+      this.qpP.enable();
     }
     AppMethodBeat.o(89204);
   }
@@ -131,31 +128,6 @@ public class MMSightCameraGLSurfaceView
     AppMethodBeat.o(89205);
   }
   
-  final class b
-    implements GLSurfaceView.EGLContextFactory
-  {
-    private int jCT = 12440;
-    
-    b() {}
-    
-    public final javax.microedition.khronos.egl.EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
-    {
-      AppMethodBeat.i(89199);
-      Log.w("MicroMsg.MMSightCameraGLSurfaceView", "creating OpenGL ES 2.0 context");
-      int i = this.jCT;
-      paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-      AppMethodBeat.o(89199);
-      return paramEGL10;
-    }
-    
-    public final void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, javax.microedition.khronos.egl.EGLContext paramEGLContext)
-    {
-      AppMethodBeat.i(89200);
-      paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
-      AppMethodBeat.o(89200);
-    }
-  }
-  
   public static abstract interface c
   {
     public abstract void enable();
@@ -163,7 +135,7 @@ public class MMSightCameraGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.api.recordView.MMSightCameraGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

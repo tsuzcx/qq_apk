@@ -10,42 +10,23 @@ import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 
-@SafeParcelable.Class(creator="GetServiceRequestCreator")
-@SafeParcelable.Reserved({9})
 public class GetServiceRequest
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<GetServiceRequest> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int version;
-  @SafeParcelable.Field(id=2)
   private final int zzst;
-  @SafeParcelable.Field(id=3)
   private int zzsu;
-  @SafeParcelable.Field(id=4)
   private String zzsv;
-  @SafeParcelable.Field(id=5)
   private IBinder zzsw;
-  @SafeParcelable.Field(id=6)
   private Scope[] zzsx;
-  @SafeParcelable.Field(id=7)
   private Bundle zzsy;
-  @SafeParcelable.Field(id=8)
   private Account zzsz;
-  @SafeParcelable.Field(id=10)
   private Feature[] zzta;
-  @SafeParcelable.Field(id=11)
   private Feature[] zztb;
-  @SafeParcelable.Field(id=12)
   private boolean zztc;
   
   static
@@ -63,8 +44,7 @@ public class GetServiceRequest
     this.zztc = true;
   }
   
-  @SafeParcelable.Constructor
-  GetServiceRequest(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) int paramInt2, @SafeParcelable.Param(id=3) int paramInt3, @SafeParcelable.Param(id=4) String paramString, @SafeParcelable.Param(id=5) IBinder paramIBinder, @SafeParcelable.Param(id=6) Scope[] paramArrayOfScope, @SafeParcelable.Param(id=7) Bundle paramBundle, @SafeParcelable.Param(id=8) Account paramAccount, @SafeParcelable.Param(id=10) Feature[] paramArrayOfFeature1, @SafeParcelable.Param(id=11) Feature[] paramArrayOfFeature2, @SafeParcelable.Param(id=12) boolean paramBoolean)
+  GetServiceRequest(int paramInt1, int paramInt2, int paramInt3, String paramString, IBinder paramIBinder, Scope[] paramArrayOfScope, Bundle paramBundle, Account paramAccount, Feature[] paramArrayOfFeature1, Feature[] paramArrayOfFeature2, boolean paramBoolean)
   {
     AppMethodBeat.i(4626);
     this.version = paramInt1;
@@ -243,7 +223,7 @@ public class GetServiceRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.GetServiceRequest
  * JD-Core Version:    0.7.0.1
  */

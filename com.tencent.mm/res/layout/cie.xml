@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/arz" android:layout_marginEnd="@dimen/arz"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="168.0">
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/kal" android:background="@drawable/cxe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/as1" android:layout_marginBottom="@dimen/as0" />
-    </FrameLayout>
-    <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/cv5" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="56.0" keybutton:functionCode="@integer/an" keybutton:imeKeyBackground="@drawable/cxd" keybutton:imeKeyMarginBottom="@dimen/arx" keybutton:imeKeyMarginDp="true" keybutton:imeKeyMarginTop="@dimen/arx" keybutton:keyType="@integer/ap" keybutton:key_text_color="@color/ahz" keybutton:key_text_size="@dimen/avc" keybutton:key_view_type="@integer/ay" keybutton:text="@string/jn6" />
-</LinearLayout>
+<RelativeLayout android:id="@id/iwl" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.webview.ui.tools.bag.WebViewBagBgView android:id="@id/a8a" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/f1c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/m2" android:layout_centerInParent="true" />
+</RelativeLayout>

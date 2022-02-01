@@ -19,16 +19,16 @@ public class TPSurfaceRenderInfo
     
     public String toString()
     {
-      AppMethodBeat.i(219911);
+      AppMethodBeat.i(228384);
       String str = "width:" + this.width + ", height:" + this.height + ", cropLeft:" + this.cropLeft + ", cropRight:" + this.cropRight + ", cropTop:" + this.cropTop + ", cropBottom:" + this.cropBottom;
-      AppMethodBeat.o(219911);
+      AppMethodBeat.o(228384);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPSurfaceRenderInfo
  * JD-Core Version:    0.7.0.1
  */

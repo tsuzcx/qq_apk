@@ -1,6 +1,5 @@
 package com.google.android.gms.internal.wearable;
 
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.DataMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -9,7 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 
-@VisibleForTesting
 public final class zze
 {
   public static zzf zza(DataMap paramDataMap)
@@ -439,7 +437,7 @@ public final class zze
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.wearable.zze
  * JD-Core Version:    0.7.0.1
  */

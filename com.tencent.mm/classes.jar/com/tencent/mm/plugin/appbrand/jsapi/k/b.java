@@ -1,100 +1,48 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
-import android.app.Activity;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.plugin.luckymoney.appbrand.a;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class b
-  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
+  extends c
 {
-  private static final int CTRL_INDEX = 423;
-  private static final String NAME = "sendRedPacket";
+  private static final int CTRL_INDEX = 223;
+  private static final String NAME = "getBeacons";
   
-  public static final class a
-    extends p
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    public a(o paramo, v paramv, ad paramad, JSONObject paramJSONObject, int paramInt)
+    AppMethodBeat.i(144674);
+    Log.d("MicroMsg.JsApiGetBeacons", "getBeacons!");
+    paramJSONObject = new JSONArray();
+    Object localObject = a.aaz(paramf.getAppId());
+    if (localObject != null)
     {
-      super(paramv, paramad, paramJSONObject, paramInt);
-    }
-    
-    public final void D(Intent paramIntent)
-    {
-      AppMethodBeat.i(46393);
-      Log.i("MicroMsg.JsApiSendRedPacket", "PrepareLuckyMoneyRequest.onResult ");
-      if ((paramIntent == null) || (paramIntent.getStringExtra("sendId") == null))
+      localObject = ((a.a)localObject).rZj;
+      Log.d("MicroMsg.JsApiGetBeacons", "getBeaconInfo, beaconInfos: ".concat(String.valueOf(localObject)));
+      if ((localObject != null) && (((Map)localObject).size() > 0))
       {
-        Log.e("MicroMsg.JsApiSendRedPacket", "onResult data = [%s]", new Object[] { paramIntent });
-        onError(-1, "fail:system error {{result data error or sendId is null}}");
-        AppMethodBeat.o(46393);
-        return;
-      }
-      String str = paramIntent.getStringExtra("sendId");
-      Log.i("MicroMsg.JsApiSendRedPacket", "PrepareLuckyMoneyRequest.onResult sendId = %s,share = %b", new Object[] { str, Boolean.valueOf(paramIntent.getBooleanExtra("result_share_msg", false)) });
-      Log.i("MicroMsg.JsApiSendRedPacket", "GetLuckMoneyRequest.onResult");
-      paramIntent = new HashMap();
-      paramIntent.put("errCode", Integer.valueOf(0));
-      paramIntent.put("redPacketId", str);
-      C(paramIntent);
-      AppMethodBeat.o(46393);
-    }
-    
-    public final boolean a(Activity paramActivity, JSONObject paramJSONObject, int paramInt)
-    {
-      int j = 0;
-      AppMethodBeat.i(174840);
-      String str = paramJSONObject.optString("defaultWishingWord", null);
-      paramJSONObject = paramJSONObject.optJSONArray("scope");
-      boolean bool1;
-      boolean bool2;
-      if (paramJSONObject != null)
-      {
-        bool1 = paramJSONObject.toString().contains("friend");
-        bool2 = paramJSONObject.toString().contains("public");
-        if ((bool1) && (!bool2)) {
-          break label127;
-        }
-      }
-      label127:
-      for (int i = 1;; i = 0)
-      {
-        j = i;
-        if (bool2)
-        {
-          j = i;
-          if (bool1) {
-            j = 2;
-          }
-        }
-        for (;;)
-        {
-          ((a)h.ae(a.class)).a(paramActivity, QW().getAppId(), j, str, paramInt);
-          AppMethodBeat.o(174840);
-          return true;
-          Log.i("MicroMsg.JsApiSendRedPacket", "launch scope is nil");
+        localObject = ((Map)localObject).values().iterator();
+        while (((Iterator)localObject).hasNext()) {
+          paramJSONObject.put((JSONObject)((Iterator)localObject).next());
         }
       }
     }
-    
-    public final void onError(int paramInt, String paramString)
+    else
     {
-      AppMethodBeat.i(46394);
-      Log.i("MicroMsg.JsApiSendRedPacket", "onError errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("errCode", Integer.valueOf(paramInt));
-      n(paramString, localHashMap);
-      AppMethodBeat.o(46394);
+      Log.e("MicroMsg.JsApiGetBeacons", "not found device");
     }
+    localObject = new HashMap();
+    ((Map)localObject).put("beacons", paramJSONObject);
+    paramf.callback(paramInt, m("ok", (Map)localObject));
+    AppMethodBeat.o(144674);
   }
 }
 

@@ -4,37 +4,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.api.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizVideoChannelNativeExtraData;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "()V", "bizSessionId", "", "getBizSessionId", "()I", "setBizSessionId", "(I)V", "dataBuffer", "", "getDataBuffer", "()Ljava/lang/String;", "setDataBuffer", "(Ljava/lang/String;)V", "toJsonString", "Companion", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizVideoChannelNativeExtraData;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "()V", "bizSessionId", "", "getBizSessionId", "()I", "setBizSessionId", "(I)V", "dataBuffer", "", "getDataBuffer", "()Ljava/lang/String;", "setDataBuffer", "(Ljava/lang/String;)V", "toJsonString", "Companion", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
   implements d
 {
-  public static final a sKk;
-  String sJY = "";
-  int sKj;
+  public static final a vQj;
+  String vPX = "";
+  int vQk;
   
   static
   {
-    AppMethodBeat.i(263195);
-    sKk = new a((byte)0);
-    AppMethodBeat.o(263195);
+    AppMethodBeat.i(302249);
+    vQj = new a((byte)0);
+    AppMethodBeat.o(302249);
   }
   
-  public final String bFa()
+  public final String toJsonString()
   {
-    AppMethodBeat.i(263192);
+    AppMethodBeat.i(302258);
     try
     {
       Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("sessionId", this.sKj);
-      ((JSONObject)localObject).put("dataBuffer", Util.nullAsNil(this.sJY));
+      ((JSONObject)localObject).put("sessionId", this.vQk);
+      ((JSONObject)localObject).put("dataBuffer", Util.nullAsNil(this.vPX));
       localObject = new JSONObject().put("bizVideoChannelInfo", localObject).toString();
-      p.j(localObject, "JSONObject().put(\"bizVid…nelInfo\", obj).toString()");
-      AppMethodBeat.o(263192);
+      s.s(localObject, "{\n            val obj = …obj).toString()\n        }");
+      AppMethodBeat.o(302258);
       return localObject;
     }
     catch (JSONException localJSONException)
@@ -47,7 +47,7 @@ public final class j
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizVideoChannelNativeExtraData$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizVideoChannelNativeExtraData$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

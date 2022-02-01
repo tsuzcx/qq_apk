@@ -4,39 +4,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.report.j;
-import com.tencent.mm.plugin.appbrand.task.n;
+import com.tencent.mm.plugin.appbrand.task.l;
 
 public final class r
 {
-  int aan;
+  int bHI;
   int mScene;
   int mType;
-  long[] nvQ;
-  int nvR;
-  int nvS;
-  int nvT;
-  boolean nvU;
-  boolean nvV;
-  int nvW;
+  long[] quD;
+  int quE;
+  int quF;
+  int quG;
+  boolean quH;
+  boolean quI;
+  int quJ;
   
   public r()
   {
     AppMethodBeat.i(43853);
-    this.nvS = 0;
-    this.nvT = 0;
-    this.nvQ = new long[15];
-    if (com.tencent.mm.plugin.appbrand.task.h.j(n.qRT))
+    this.quF = 0;
+    this.quG = 0;
+    this.quD = new long[15];
+    if (com.tencent.mm.plugin.appbrand.task.h.j(l.tWx))
     {
       i = 1;
-      this.nvT = i;
-      if (!com.tencent.mm.plugin.appbrand.task.h.j(n.qRS)) {
+      this.quG = i;
+      if (!com.tencent.mm.plugin.appbrand.task.h.j(l.tWw)) {
         break label72;
       }
     }
     label72:
     for (int i = j;; i = 0)
     {
-      this.nvS = i;
+      this.quF = i;
       AppMethodBeat.o(43853);
       return;
       i = 0;
@@ -46,37 +46,42 @@ public final class r
   
   public static void a(int paramInt, AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
-    AppMethodBeat.i(280921);
-    a(paramInt, paramAppBrandInitConfigWC.appId, paramAppBrandInitConfigWC.appVersion, paramAppBrandInitConfigWC.cBI, paramAppBrandInitConfigWC.Qv());
-    AppMethodBeat.o(280921);
+    AppMethodBeat.i(316617);
+    if (paramAppBrandInitConfigWC == null)
+    {
+      AppMethodBeat.o(316617);
+      return;
+    }
+    a(paramInt, paramAppBrandInitConfigWC.appId, paramAppBrandInitConfigWC.appVersion, paramAppBrandInitConfigWC.eul, paramAppBrandInitConfigWC.aqJ());
+    AppMethodBeat.o(316617);
   }
   
   public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    AppMethodBeat.i(280922);
+    AppMethodBeat.i(316625);
     int i = 369;
     if (paramBoolean) {
       i = 777;
     }
     try
     {
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(i, paramInt1, 1L, false);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(i, paramInt1, 1L, false);
       j.b(paramString, paramInt2, paramInt3, i, paramInt1);
-      AppMethodBeat.o(280922);
+      AppMethodBeat.o(316625);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(280922);
+      AppMethodBeat.o(316625);
     }
   }
   
-  public final void I(int paramInt, long paramLong)
+  public final void L(int paramInt, long paramLong)
   {
-    if ((paramInt >= this.nvQ.length) || (this.nvQ[paramInt] != 0L)) {
+    if ((paramInt >= this.quD.length) || (this.quD[paramInt] != 0L)) {
       return;
     }
-    this.nvQ[paramInt] = paramLong;
+    this.quD[paramInt] = paramLong;
   }
   
   final void h(String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -90,30 +95,30 @@ public final class r
     long l;
     int n;
     int i1;
-    if (this.nvW == 1)
+    if (this.quJ == 1)
     {
-      i = this.nvT;
-      localh = com.tencent.mm.plugin.report.service.h.IzE;
-      k = this.aan;
+      i = this.quG;
+      localh = com.tencent.mm.plugin.report.service.h.OAn;
+      k = this.bHI;
       m = this.mType;
-      l = this.nvQ[paramInt2];
-      n = this.nvR;
+      l = this.quD[paramInt2];
+      n = this.quE;
       i1 = this.mScene;
-      if (!this.nvU) {
+      if (!this.quH) {
         break label237;
       }
       paramInt2 = 1;
       label68:
-      if (!this.nvV) {
+      if (!this.quI) {
         break label242;
       }
     }
     for (;;)
     {
-      localh.a(13886, new Object[] { paramString, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(paramInt1), "", "", Long.valueOf(l), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(i1), Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.nvW) });
+      localh.b(13886, new Object[] { paramString, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(paramInt1), "", "", Long.valueOf(l), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(i1), Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.quJ) });
       AppMethodBeat.o(43854);
       return;
-      i = this.nvS;
+      i = this.quF;
       break;
       label237:
       paramInt2 = 0;
@@ -125,7 +130,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.r
  * JD-Core Version:    0.7.0.1
  */

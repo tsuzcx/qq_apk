@@ -7,61 +7,61 @@ import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
 public class b
 {
-  private boolean lwK;
   public ArrayList<b.a> mListeners;
+  private boolean ooj;
   
   public b()
   {
     AppMethodBeat.i(20401);
     this.mListeners = new ArrayList();
-    this.lwK = false;
+    this.ooj = false;
     AppMethodBeat.o(20401);
   }
   
   private void a(String paramString1, String paramString2, long paramLong1, boolean paramBoolean1, boolean paramBoolean2, String paramString3, String paramString4, long paramLong2, boolean paramBoolean3, boolean paramBoolean4, String paramString5)
   {
     AppMethodBeat.i(20410);
-    bh.beI();
-    c.aHp().set(ar.a.Vqx, paramString3);
-    bh.beI();
-    c.aHp().set(ar.a.Vqy, paramString4);
-    bh.beI();
-    c.aHp().set(ar.a.Vqz, Long.valueOf(paramLong2));
-    bh.beI();
-    c.aHp().set(ar.a.VqA, Boolean.valueOf(paramBoolean3));
-    bh.beI();
-    c.aHp().set(ar.a.VqB, Boolean.valueOf(paramBoolean4));
-    bh.beI();
-    c.aHp().set(ar.a.VqD, paramString5);
-    bh.beI();
-    c.aHp().set(ar.a.VqC, Boolean.FALSE);
-    bh.beI();
-    c.aHp().set(ar.a.VqE, paramString1);
-    bh.beI();
-    c.aHp().set(ar.a.VqF, paramString2);
-    bh.beI();
-    c.aHp().set(ar.a.VqG, Long.valueOf(paramLong1));
-    bh.beI();
-    c.aHp().set(ar.a.VqH, Boolean.valueOf(paramBoolean1));
-    bh.beI();
-    c.aHp().set(ar.a.VqI, Boolean.valueOf(paramBoolean2));
-    bh.beI();
-    c.aHp().set(ar.a.VqK, Long.valueOf(Util.nowSecond()));
-    bh.beI();
-    c.aHp().set(ar.a.VqJ, Boolean.FALSE);
-    bh.beI();
-    c.aHp().set(ar.a.VqL, Boolean.FALSE);
-    bh.beI();
-    c.aHp().hxT();
-    bgl();
+    bh.bCz();
+    c.ban().set(at.a.acRZ, paramString3);
+    bh.bCz();
+    c.ban().set(at.a.acSa, paramString4);
+    bh.bCz();
+    c.ban().set(at.a.acSb, Long.valueOf(paramLong2));
+    bh.bCz();
+    c.ban().set(at.a.acSc, Boolean.valueOf(paramBoolean3));
+    bh.bCz();
+    c.ban().set(at.a.acSd, Boolean.valueOf(paramBoolean4));
+    bh.bCz();
+    c.ban().set(at.a.acSf, paramString5);
+    bh.bCz();
+    c.ban().set(at.a.acSe, Boolean.FALSE);
+    bh.bCz();
+    c.ban().set(at.a.acSg, paramString1);
+    bh.bCz();
+    c.ban().set(at.a.acSh, paramString2);
+    bh.bCz();
+    c.ban().set(at.a.acSi, Long.valueOf(paramLong1));
+    bh.bCz();
+    c.ban().set(at.a.acSj, Boolean.valueOf(paramBoolean1));
+    bh.bCz();
+    c.ban().set(at.a.acSk, Boolean.valueOf(paramBoolean2));
+    bh.bCz();
+    c.ban().set(at.a.acSm, Long.valueOf(Util.nowSecond()));
+    bh.bCz();
+    c.ban().set(at.a.acSl, Boolean.FALSE);
+    bh.bCz();
+    c.ban().set(at.a.acSn, Boolean.FALSE);
+    bh.bCz();
+    c.ban().iZy();
+    bEc();
     AppMethodBeat.o(20410);
   }
   
@@ -70,36 +70,36 @@ public class b
     AppMethodBeat.i(20413);
     Log.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: is checking monitor banner scene: %s", new Object[] { paramb });
     long l2 = Util.nowSecond();
-    bh.beI();
-    long l3 = ((Long)c.aHp().get(ar.a.VqK, Long.valueOf(-1L))).longValue();
-    bh.beI();
-    String str = (String)c.aHp().get(ar.a.VqD, "");
+    bh.bCz();
+    long l3 = ((Long)c.ban().get(at.a.acSm, Long.valueOf(-1L))).longValue();
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acSf, "");
     long l1;
     boolean bool2;
     boolean bool1;
-    if (paramb == b.b.lwM)
+    if (paramb == b.b.ool)
     {
-      bh.beI();
-      l1 = ((Long)c.aHp().get(ar.a.Vqz, Long.valueOf(0L))).longValue();
-      bh.beI();
-      bool2 = ((Boolean)c.aHp().get(ar.a.VqC, Boolean.FALSE)).booleanValue();
-      bool1 = bgj();
-      paramb = bgg();
+      bh.bCz();
+      l1 = ((Long)c.ban().get(at.a.acSb, Long.valueOf(0L))).longValue();
+      bh.bCz();
+      bool2 = ((Boolean)c.ban().get(at.a.acSe, Boolean.FALSE)).booleanValue();
+      bool1 = bEa();
+      paramb = bDX();
     }
     while (!Util.isNullOrNil(str)) {
       if (!str.equals(Build.FINGERPRINT))
       {
-        h.IzE.idkeyStat(633L, 5L, 1L, false);
+        h.OAn.idkeyStat(633L, 5L, 1L, false);
         Log.d("MicroMsg.ChattingMonitoredBannerStorage", "ocr banner: fingerprint [%s] NOT equals current device's [%s] , should NOT show banner", new Object[] { str, Build.FINGERPRINT });
         AppMethodBeat.o(20413);
         return false;
-        bh.beI();
-        l1 = ((Long)c.aHp().get(ar.a.VqG, Long.valueOf(0L))).longValue();
-        bh.beI();
-        bool2 = ((Boolean)c.aHp().get(ar.a.VqJ, Boolean.FALSE)).booleanValue();
-        bh.beI();
-        bool1 = ((Boolean)c.aHp().get(ar.a.VqI, Boolean.FALSE)).booleanValue();
-        paramb = bgd();
+        bh.bCz();
+        l1 = ((Long)c.ban().get(at.a.acSi, Long.valueOf(0L))).longValue();
+        bh.bCz();
+        bool2 = ((Boolean)c.ban().get(at.a.acSl, Boolean.FALSE)).booleanValue();
+        bh.bCz();
+        bool1 = ((Boolean)c.ban().get(at.a.acSk, Boolean.FALSE)).booleanValue();
+        paramb = bDU();
       }
       else
       {
@@ -124,7 +124,7 @@ public class b
       AppMethodBeat.o(20413);
       return false;
     }
-    if ((bool1) && (!bgk()))
+    if ((bool1) && (!bEb()))
     {
       Log.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: should check triggered but not triggered");
       AppMethodBeat.o(20413);
@@ -147,86 +147,86 @@ public class b
     return false;
   }
   
-  public static String bgd()
+  public static String bDU()
   {
     AppMethodBeat.i(20402);
-    bh.beI();
-    String str = (String)c.aHp().get(ar.a.VqE, "");
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acSg, "");
     AppMethodBeat.o(20402);
     return str;
   }
   
-  public static String bge()
+  public static String bDV()
   {
     AppMethodBeat.i(20403);
-    bh.beI();
-    String str = (String)c.aHp().get(ar.a.VqF, "");
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acSh, "");
     AppMethodBeat.o(20403);
     return str;
   }
   
-  public static boolean bgf()
+  public static boolean bDW()
   {
     AppMethodBeat.i(20404);
-    bh.beI();
-    boolean bool = ((Boolean)c.aHp().get(ar.a.VqH, Boolean.FALSE)).booleanValue();
+    bh.bCz();
+    boolean bool = ((Boolean)c.ban().get(at.a.acSj, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(20404);
     return bool;
   }
   
-  public static String bgg()
+  public static String bDX()
   {
     AppMethodBeat.i(20405);
-    bh.beI();
-    String str = (String)c.aHp().get(ar.a.Vqx, "");
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acRZ, "");
     AppMethodBeat.o(20405);
     return str;
   }
   
-  public static String bgh()
+  public static String bDY()
   {
     AppMethodBeat.i(20406);
-    bh.beI();
-    String str = (String)c.aHp().get(ar.a.Vqy, "");
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acSa, "");
     AppMethodBeat.o(20406);
     return str;
   }
   
-  public static boolean bgi()
+  public static boolean bDZ()
   {
     AppMethodBeat.i(20407);
-    bh.beI();
-    boolean bool = ((Boolean)c.aHp().get(ar.a.VqA, Boolean.FALSE)).booleanValue();
+    bh.bCz();
+    boolean bool = ((Boolean)c.ban().get(at.a.acSc, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(20407);
     return bool;
   }
   
-  private static boolean bgj()
+  private static boolean bEa()
   {
     AppMethodBeat.i(20408);
-    bh.beI();
-    boolean bool = ((Boolean)c.aHp().get(ar.a.VqB, Boolean.FALSE)).booleanValue();
+    bh.bCz();
+    boolean bool = ((Boolean)c.ban().get(at.a.acSd, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(20408);
     return bool;
   }
   
-  private static boolean bgk()
+  private static boolean bEb()
   {
     AppMethodBeat.i(20409);
-    bh.beI();
-    boolean bool = ((Boolean)c.aHp().get(ar.a.VqL, Boolean.FALSE)).booleanValue();
+    bh.bCz();
+    boolean bool = ((Boolean)c.ban().get(at.a.acSn, Boolean.FALSE)).booleanValue();
     AppMethodBeat.o(20409);
     return bool;
   }
   
-  private void bgl()
+  private void bEc()
   {
     AppMethodBeat.i(20414);
     try
     {
       Iterator localIterator = this.mListeners.iterator();
       while (localIterator.hasNext()) {
-        ((b.a)localIterator.next()).bgn();
+        ((b.a)localIterator.next()).bEe();
       }
     }
     finally
@@ -297,69 +297,7 @@ public class b
     }
   }
   
-  public final void b(b.b paramb)
-  {
-    AppMethodBeat.i(20416);
-    if (paramb == b.b.lwL)
-    {
-      bh.beI();
-      c.aHp().set(ar.a.VqJ, Boolean.FALSE);
-    }
-    for (;;)
-    {
-      bgl();
-      AppMethodBeat.o(20416);
-      return;
-      bh.beI();
-      c.aHp().set(ar.a.VqC, Boolean.FALSE);
-    }
-  }
-  
-  public final void bgm()
-  {
-    AppMethodBeat.i(20415);
-    if (bgk() != true)
-    {
-      Log.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: monitored illegal set text. mark now as the start time ");
-      bh.beI();
-      c.aHp().set(ar.a.VqK, Long.valueOf(Util.nowSecond()));
-      bh.beI();
-      c.aHp().set(ar.a.VqL, Boolean.TRUE);
-      bgl();
-    }
-    AppMethodBeat.o(20415);
-  }
-  
-  public final void c(b.b paramb)
-  {
-    AppMethodBeat.i(20417);
-    if (paramb == b.b.lwL)
-    {
-      bh.beI();
-      c.aHp().set(ar.a.VqG, Long.valueOf(0L));
-    }
-    for (;;)
-    {
-      bgl();
-      do
-      {
-        AppMethodBeat.o(20417);
-        return;
-      } while (paramb != b.b.lwM);
-      if (!bgj())
-      {
-        bh.beI();
-        c.aHp().set(ar.a.Vqz, Long.valueOf(0L));
-      }
-      else
-      {
-        bh.beI();
-        c.aHp().set(ar.a.VqC, Boolean.TRUE);
-      }
-    }
-  }
-  
-  public final void v(Map<String, String> paramMap)
+  public final void C(Map<String, String> paramMap)
   {
     AppMethodBeat.i(20411);
     if (paramMap == null)
@@ -367,16 +305,78 @@ public class b
       AppMethodBeat.o(20411);
       return;
     }
-    h.IzE.idkeyStat(633L, 3L, 1L, false);
+    h.OAn.idkeyStat(633L, 3L, 1L, false);
     Log.d("MicroMsg.ChattingMonitoredBannerStorage", "origin values: ".concat(String.valueOf(paramMap)));
     h(".sysmsg.banner.monitorbanner_n.", paramMap);
     h(".sysmsg.banner.monitorbanner_o.", paramMap);
     AppMethodBeat.o(20411);
   }
+  
+  public final void b(b.b paramb)
+  {
+    AppMethodBeat.i(20416);
+    if (paramb == b.b.ook)
+    {
+      bh.bCz();
+      c.ban().set(at.a.acSl, Boolean.FALSE);
+    }
+    for (;;)
+    {
+      bEc();
+      AppMethodBeat.o(20416);
+      return;
+      bh.bCz();
+      c.ban().set(at.a.acSe, Boolean.FALSE);
+    }
+  }
+  
+  public final void bEd()
+  {
+    AppMethodBeat.i(20415);
+    if (bEb() != true)
+    {
+      Log.d("MicroMsg.ChattingMonitoredBannerStorage", "hy: monitored illegal set text. mark now as the start time ");
+      bh.bCz();
+      c.ban().set(at.a.acSm, Long.valueOf(Util.nowSecond()));
+      bh.bCz();
+      c.ban().set(at.a.acSn, Boolean.TRUE);
+      bEc();
+    }
+    AppMethodBeat.o(20415);
+  }
+  
+  public final void c(b.b paramb)
+  {
+    AppMethodBeat.i(20417);
+    if (paramb == b.b.ook)
+    {
+      bh.bCz();
+      c.ban().set(at.a.acSi, Long.valueOf(0L));
+    }
+    for (;;)
+    {
+      bEc();
+      do
+      {
+        AppMethodBeat.o(20417);
+        return;
+      } while (paramb != b.b.ool);
+      if (!bEa())
+      {
+        bh.bCz();
+        c.ban().set(at.a.acSb, Long.valueOf(0L));
+      }
+      else
+      {
+        bh.bCz();
+        c.ban().set(at.a.acSe, Boolean.TRUE);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.model.b.b
  * JD-Core Version:    0.7.0.1
  */

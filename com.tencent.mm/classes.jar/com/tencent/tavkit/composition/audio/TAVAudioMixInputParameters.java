@@ -21,16 +21,16 @@ public class TAVAudioMixInputParameters
   public TAVAudioMixInputParameters(AssetTrack paramAssetTrack)
   {
     super(paramAssetTrack);
-    AppMethodBeat.i(211789);
+    AppMethodBeat.i(218790);
     this.audioConfigurationSegmentList = new ArrayList();
-    AppMethodBeat.o(211789);
+    AppMethodBeat.o(218790);
   }
   
   public void addAudioConfiguration(CMTimeRange paramCMTimeRange, TAVAudioConfiguration paramTAVAudioConfiguration)
   {
-    AppMethodBeat.i(211794);
+    AppMethodBeat.i(218819);
     this.audioConfigurationSegmentList.add(new TAVAudioConfigurationSegment(paramCMTimeRange, paramTAVAudioConfiguration));
-    AppMethodBeat.o(211794);
+    AppMethodBeat.o(218819);
   }
   
   public List<TAVAudioConfigurationSegment> getAudioConfigurationSegmentList()
@@ -40,7 +40,7 @@ public class TAVAudioMixInputParameters
   
   public float getVolumeAtTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(211791);
+    AppMethodBeat.i(218804);
     Iterator localIterator = this.audioConfigurationSegmentList.iterator();
     while (localIterator.hasNext())
     {
@@ -50,32 +50,32 @@ public class TAVAudioMixInputParameters
         if ((localTAVAudioConfigurationSegment.audioConfiguration.getStartVolumeEdge() != null) && (localTAVAudioConfigurationSegment.compositionTimeRange.getStart().add(localTAVAudioConfigurationSegment.audioConfiguration.getStartVolumeEdge().getDuration()).bigThan(paramCMTime)))
         {
           f = localTAVAudioConfigurationSegment.audioConfiguration.getStartVolumeEdge().getVolume(paramCMTime.sub(localTAVAudioConfigurationSegment.compositionTimeRange.getStart()));
-          AppMethodBeat.o(211791);
+          AppMethodBeat.o(218804);
           return f;
         }
         if ((localTAVAudioConfigurationSegment.audioConfiguration.getEndVolumeEdge() != null) && (localTAVAudioConfigurationSegment.compositionTimeRange.getEnd().sub(localTAVAudioConfigurationSegment.audioConfiguration.getEndVolumeEdge().getDuration()).smallThan(paramCMTime)))
         {
           f = localTAVAudioConfigurationSegment.audioConfiguration.getEndVolumeEdge().getVolume(paramCMTime.sub(localTAVAudioConfigurationSegment.compositionTimeRange.getEnd().sub(localTAVAudioConfigurationSegment.audioConfiguration.getEndVolumeEdge().getDuration())));
-          AppMethodBeat.o(211791);
+          AppMethodBeat.o(218804);
           return f;
         }
         f = localTAVAudioConfigurationSegment.audioConfiguration.getVolume(paramCMTime);
-        AppMethodBeat.o(211791);
+        AppMethodBeat.o(218804);
         return f;
       }
     }
     Logger.e("TAVAudioMixInputParameters", "没有设置正确audioConfiguration，走到了非预想的分支");
     float f = super.getVolumeAtTime(paramCMTime);
-    AppMethodBeat.o(211791);
+    AppMethodBeat.o(218804);
     return f;
   }
   
   public void setAudioConfigurationSegments(List<TAVAudioConfigurationSegment> paramList)
   {
-    AppMethodBeat.i(211795);
+    AppMethodBeat.i(218833);
     this.audioConfigurationSegmentList.clear();
     this.audioConfigurationSegmentList.addAll(paramList);
-    AppMethodBeat.o(211795);
+    AppMethodBeat.o(218833);
   }
 }
 

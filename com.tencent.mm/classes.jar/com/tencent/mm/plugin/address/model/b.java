@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cen;
-import com.tencent.mm.protocal.protobuf.ceo;
+import com.tencent.mm.protocal.protobuf.cup;
+import com.tencent.mm.protocal.protobuf.cuq;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import org.json.JSONArray;
@@ -19,23 +19,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private d rr;
+  private h callback;
+  private c rr;
   
   public b()
   {
     AppMethodBeat.i(20768);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new cen();
-    ((d.a)localObject).lBV = new ceo();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/getinfo";
-    ((d.a)localObject).funcId = 1191;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (cen)d.b.b(this.rr.lBR);
-    ((cen)localObject).source = 2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cup();
+    ((c.a)localObject).otF = new cuq();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/getinfo";
+    ((c.a)localObject).funcId = 1191;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cup)c.b.b(this.rr.otB);
+    ((cup)localObject).source = 2;
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.add("invoice_info.title");
     localLinkedList.add("invoice_info.tax_number");
@@ -47,15 +47,15 @@ public final class b
     localLinkedList.add("invoice_info.company_address_detail");
     localLinkedList.add("invoice_info.company_address_postcode");
     localLinkedList.add("invoice_info.phone");
-    ((cen)localObject).Tmf = localLinkedList;
-    ((cen)localObject).Tme = false;
+    ((cup)localObject).aaAe = localLinkedList;
+    ((cup)localObject).aaAd = false;
     AppMethodBeat.o(20768);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(20770);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(20770);
     return i;
@@ -72,18 +72,18 @@ public final class b
     Log.d("MicroMsg.NetSceneGetUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      com.tencent.mm.plugin.address.a.a.bAo().nkw = new com.tencent.mm.plugin.o.a.a();
+      com.tencent.mm.plugin.address.a.a.bZf().qhF = new com.tencent.mm.plugin.o.a.a();
       Log.i("MicroMsg.NetSceneGetUserAutoFillInfo", "return is 0.now we resetList and parse the json ..");
-      params = (ceo)d.c.b(((d)params).lBS);
-      Log.i("MicroMsg.NetSceneGetUserAutoFillInfo", "resp json is.." + params.Tmg);
-      if (params.Tmg == null) {}
+      params = (cuq)c.c.b(((c)params).otC);
+      Log.i("MicroMsg.NetSceneGetUserAutoFillInfo", "resp json is.." + params.aaAf);
+      if (params.aaAf == null) {}
     }
     for (;;)
     {
       int j;
       try
       {
-        params = new JSONObject(params.Tmg).getJSONArray("user_data_list").getJSONObject(0).getJSONArray("group_info_list");
+        params = new JSONObject(params.aaAf).getJSONArray("user_data_list").getJSONObject(0).getJSONArray("group_info_list");
         if ((params == null) || (params.length() <= 0)) {
           break label871;
         }
@@ -96,8 +96,8 @@ public final class b
         {
           localObject = params.getJSONObject(i);
           paramArrayOfByte = new com.tencent.mm.plugin.o.a.b();
-          paramArrayOfByte.DNR = ((JSONObject)localObject).getInt("group_id");
-          paramArrayOfByte.DOa = ((JSONObject)localObject).getString("invoice_url");
+          paramArrayOfByte.JFg = ((JSONObject)localObject).getInt("group_id");
+          paramArrayOfByte.JFp = ((JSONObject)localObject).getString("invoice_url");
           Log.i("MicroMsg.NetSceneGetUserAutoFillInfo", "get groupid:" + ((JSONObject)localObject).getInt("group_id") + "get invoiceUrl:" + ((JSONObject)localObject).getString("invoice_url"));
           localObject = ((JSONObject)localObject).getJSONArray("field_list");
           if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
@@ -164,42 +164,42 @@ public final class b
                   paramArrayOfByte.title = localJSONObject.getString("value");
                   break label940;
                   continue;
-                  paramArrayOfByte.DNT = localJSONObject.getString("value");
+                  paramArrayOfByte.JFi = localJSONObject.getString("value");
                   break label940;
-                  paramArrayOfByte.DNV = localJSONObject.getString("value");
+                  paramArrayOfByte.JFk = localJSONObject.getString("value");
                   break label940;
-                  paramArrayOfByte.DNU = localJSONObject.getString("value");
+                  paramArrayOfByte.JFj = localJSONObject.getString("value");
                   break label940;
                   paramArrayOfByte.type = localJSONObject.getString("value");
                   break label940;
-                  paramArrayOfByte.hDf = localJSONObject.getString("value");
+                  paramArrayOfByte.kab = localJSONObject.getString("value");
                   break label940;
-                  paramArrayOfByte.DNX = localJSONObject.getString("value");
-                  paramArrayOfByte.DNY = localJSONObject.getString("value");
+                  paramArrayOfByte.JFm = localJSONObject.getString("value");
+                  paramArrayOfByte.JFn = localJSONObject.getString("value");
                   break label940;
-                  paramArrayOfByte.DNZ = localJSONObject.getString("value");
+                  paramArrayOfByte.JFo = localJSONObject.getString("value");
                   break label940;
-                  localObject = com.tencent.mm.plugin.address.a.a.bAo();
+                  localObject = com.tencent.mm.plugin.address.a.a.bZf();
                   if ((paramArrayOfByte.type != null) && (paramArrayOfByte.type.equals("0")))
                   {
-                    paramArrayOfByte.DNS = "";
-                    paramArrayOfByte.DNY = "";
-                    paramArrayOfByte.hDf = "";
-                    ((com.tencent.mm.plugin.address.b.a.a)localObject).nkw.DNQ.add(paramArrayOfByte);
+                    paramArrayOfByte.JFh = "";
+                    paramArrayOfByte.JFn = "";
+                    paramArrayOfByte.kab = "";
+                    ((com.tencent.mm.plugin.address.b.a.a)localObject).qhF.JFf.add(paramArrayOfByte);
                     Log.i("MicroMsg.InvoiceMgr", "type is error..");
                     continue;
                   }
                   if ((paramArrayOfByte.type == null) || (!paramArrayOfByte.type.equals("1"))) {
                     continue;
                   }
-                  paramArrayOfByte.DNS = paramArrayOfByte.title;
+                  paramArrayOfByte.JFh = paramArrayOfByte.title;
                   paramArrayOfByte.title = "";
-                  paramArrayOfByte.DNX = "";
-                  paramArrayOfByte.DNT = "";
-                  paramArrayOfByte.DNU = "";
-                  paramArrayOfByte.DNV = "";
-                  paramArrayOfByte.DNZ = "";
-                  ((com.tencent.mm.plugin.address.b.a.a)localObject).nkw.DNQ.add(paramArrayOfByte);
+                  paramArrayOfByte.JFm = "";
+                  paramArrayOfByte.JFi = "";
+                  paramArrayOfByte.JFj = "";
+                  paramArrayOfByte.JFk = "";
+                  paramArrayOfByte.JFo = "";
+                  ((com.tencent.mm.plugin.address.b.a.a)localObject).qhF.JFf.add(paramArrayOfByte);
                   continue;
                   label871:
                   this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -222,7 +222,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.b
  * JD-Core Version:    0.7.0.1
  */

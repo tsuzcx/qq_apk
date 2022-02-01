@@ -20,7 +20,7 @@ import androidx.core.g.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.transvoice.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,24 +29,24 @@ import java.util.Random;
 public class SoundWaveView
   extends View
 {
-  private SoundWaveView.d NhM;
-  private SoundWaveView.b NhN;
-  private ArrayList<Integer> NhO;
-  private ArrayList<Integer> NhP;
-  private ArrayList<AnimatorSet> NhQ;
-  private List<List<Float>> NhR;
-  private List<List<Float>> NhS;
-  private Interpolator NhT;
-  private int NhU;
-  private int NhV;
-  private int NhW;
-  private int NhX;
-  private int NhY;
-  private int NhZ;
-  private int Nia;
-  private Runnable Nib;
-  private int Nic;
-  private a Nid;
+  private SoundWaveView.d TUK;
+  private SoundWaveView.b TUL;
+  private ArrayList<Integer> TUM;
+  private ArrayList<Integer> TUN;
+  private ArrayList<AnimatorSet> TUO;
+  private List<List<Float>> TUP;
+  private List<List<Float>> TUQ;
+  private Interpolator TUR;
+  private int TUS;
+  private int TUT;
+  private int TUU;
+  private int TUV;
+  private int TUW;
+  private int TUX;
+  private int TUY;
+  private Runnable TUZ;
+  private int TVa;
+  private a TVb;
   private int mHeight;
   private Paint mPaint;
   private int mWidth;
@@ -60,23 +60,23 @@ public class SoundWaveView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(185288);
-    this.NhM = SoundWaveView.d.NiI;
-    this.NhN = SoundWaveView.b.Nik;
-    this.NhR = new ArrayList();
-    this.NhS = new ArrayList();
-    this.Nib = new Runnable()
+    this.TUK = SoundWaveView.d.TVG;
+    this.TUL = SoundWaveView.b.TVi;
+    this.TUP = new ArrayList();
+    this.TUQ = new ArrayList();
+    this.TUZ = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(185277);
         Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "active waiting!!!");
-        SoundWaveView.a(SoundWaveView.this, SoundWaveView.b.Nik);
+        SoundWaveView.a(SoundWaveView.this, SoundWaveView.b.TVi);
         SoundWaveView.a(SoundWaveView.this);
         AppMethodBeat.o(185277);
       }
     };
-    this.Nic = -1;
-    this.Nid = new a((byte)0);
+    this.TVa = -1;
+    this.TVb = new a((byte)0);
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(185288);
   }
@@ -84,12 +84,12 @@ public class SoundWaveView
   private void a(float paramFloat, final List<Float> paramList)
   {
     AppMethodBeat.i(186026);
-    int j = c.Niv;
+    int j = c.TVt;
     int k = j / 2;
     final int i = 0;
     if (i < j)
     {
-      final float f = (float)(paramFloat * Math.pow(c.NiC, Math.abs(k - i)));
+      final float f = (float)(paramFloat * Math.pow(c.TVA, Math.abs(k - i)));
       if (2 == Math.abs(k - i)) {
         postDelayed(new Runnable()
         {
@@ -123,25 +123,15 @@ public class SoundWaveView
     AppMethodBeat.o(186026);
   }
   
-  private void aIp()
+  private boolean aps(int paramInt)
   {
-    AppMethodBeat.i(185295);
-    this.Nic = -1;
-    gsB();
-    gsF();
-    gsG();
-    AppMethodBeat.o(185295);
+    return (paramInt >= this.TVb.start) && (paramInt <= this.TVb.end);
   }
   
-  private boolean ajZ(int paramInt)
-  {
-    return (paramInt >= this.Nid.start) && (paramInt <= this.Nid.end);
-  }
-  
-  private boolean aka(int paramInt)
+  private boolean apt(int paramInt)
   {
     AppMethodBeat.i(185297);
-    if (!ajZ(paramInt))
+    if (!aps(paramInt))
     {
       AppMethodBeat.o(185297);
       return true;
@@ -150,14 +140,24 @@ public class SoundWaveView
     return false;
   }
   
+  private void bbk()
+  {
+    AppMethodBeat.i(185295);
+    this.TVa = -1;
+    hPJ();
+    hPN();
+    hPO();
+    AppMethodBeat.o(185295);
+  }
+  
   private int getActiveBundleIndex()
   {
     AppMethodBeat.i(185302);
-    Log.d("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, mLastActiveBundleIndex: %s.", new Object[] { Integer.valueOf(this.Nic) });
-    if (-1 == this.Nic)
+    Log.d("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, mLastActiveBundleIndex: %s.", new Object[] { Integer.valueOf(this.TVa) });
+    if (-1 == this.TVa)
     {
-      this.Nic = (new Random().nextInt(this.Nid.end - this.Nid.start + 1) + this.Nid.start);
-      i = this.Nic;
+      this.TVa = (new Random().nextInt(this.TVb.end - this.TVb.start + 1) + this.TVb.start);
+      i = this.TVa;
       AppMethodBeat.o(185302);
       return i;
     }
@@ -165,16 +165,16 @@ public class SoundWaveView
     int j;
     if (1 == i)
     {
-      j = this.Nic - 1;
+      j = this.TVa - 1;
       i = j;
-      if (aka(j))
+      if (apt(j))
       {
-        j = this.Nic + 1;
+        j = this.TVa + 1;
         i = j;
-        if (aka(j))
+        if (apt(j))
         {
-          Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, keep! %s %s", new Object[] { Integer.valueOf(this.Nic), this.Nid });
-          i = this.Nic;
+          Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, keep! %s %s", new Object[] { Integer.valueOf(this.TVa), this.TVb });
+          i = this.TVa;
           AppMethodBeat.o(185302);
           return i;
         }
@@ -184,16 +184,16 @@ public class SoundWaveView
     }
     if (2 == i)
     {
-      j = this.Nic + 1;
+      j = this.TVa + 1;
       i = j;
-      if (aka(j))
+      if (apt(j))
       {
-        j = this.Nic - 1;
+        j = this.TVa - 1;
         i = j;
-        if (aka(j))
+        if (apt(j))
         {
-          Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, keep! %s %s", new Object[] { Integer.valueOf(this.Nic), this.Nid });
-          i = this.Nic;
+          Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, keep! %s %s", new Object[] { Integer.valueOf(this.TVa), this.TVb });
+          i = this.TVa;
           AppMethodBeat.o(185302);
           return i;
         }
@@ -201,16 +201,16 @@ public class SoundWaveView
       AppMethodBeat.o(185302);
       return i;
     }
-    i = this.Nic;
+    i = this.TVa;
     AppMethodBeat.o(185302);
     return i;
   }
   
   private int getBundleCount()
   {
-    int i = c.Niw;
-    if (SoundWaveView.d.NiJ == this.NhM) {
-      i = c.Nix;
+    int i = c.TVu;
+    if (SoundWaveView.d.TVH == this.TUK) {
+      i = c.TVv;
     }
     return i;
   }
@@ -219,81 +219,81 @@ public class SoundWaveView
   {
     AppMethodBeat.i(185296);
     int i = getBundleCount();
-    int j = c.Niv;
+    int j = c.TVt;
     AppMethodBeat.o(185296);
     return i * j;
   }
   
-  private void gsA()
+  private void hPI()
   {
     AppMethodBeat.i(185290);
     int j = getBundleCount();
     int i = 0;
     while (i < j)
     {
-      this.NhO.set(i, Integer.valueOf(this.NhX));
+      this.TUM.set(i, Integer.valueOf(this.TUV));
       i += 1;
     }
     AppMethodBeat.o(185290);
   }
   
-  private void gsB()
+  private void hPJ()
   {
     AppMethodBeat.i(185291);
     int j = getVolumeItemCount();
     int i = 0;
     while (i < j)
     {
-      this.NhP.set(i, Integer.valueOf(this.NhX));
+      this.TUN.set(i, Integer.valueOf(this.TUV));
       i += 1;
     }
     AppMethodBeat.o(185291);
   }
   
-  private void gsC()
+  private void hPK()
   {
     AppMethodBeat.i(186024);
-    Iterator localIterator = this.NhR.iterator();
+    Iterator localIterator = this.TUP.iterator();
     while (localIterator.hasNext())
     {
       List localList = (List)localIterator.next();
       int i = 0;
       while (i < localList.size())
       {
-        localList.set(i, Float.valueOf(this.NhX));
+        localList.set(i, Float.valueOf(this.TUV));
         i += 1;
       }
     }
     AppMethodBeat.o(186024);
   }
   
-  private void gsD()
+  private void hPL()
   {
     AppMethodBeat.i(186025);
-    Iterator localIterator = this.NhS.iterator();
+    Iterator localIterator = this.TUQ.iterator();
     while (localIterator.hasNext())
     {
       List localList = (List)localIterator.next();
       int i = 0;
       while (i < localList.size())
       {
-        localList.set(i, Float.valueOf(this.NhX));
+        localList.set(i, Float.valueOf(this.TUV));
         i += 1;
       }
     }
     AppMethodBeat.o(186025);
   }
   
-  private void gsE()
+  private void hPM()
   {
     AppMethodBeat.i(185298);
-    this.NhQ.clear();
+    this.TUO.clear();
     int j = getVolumeItemCount();
     final int i = 0;
     while (i < j)
     {
       AnimatorSet localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.setStartDelay(c.Niz * i);
+      localAnimatorSet.setStartDelay(c.TVx * i);
       localAnimatorSet.setInterpolator(new LinearInterpolator());
       ValueAnimator.AnimatorUpdateListener local6 = new ValueAnimator.AnimatorUpdateListener()
       {
@@ -305,14 +305,14 @@ public class SoundWaveView
           AppMethodBeat.o(186022);
         }
       };
-      ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { this.NhX, this.NhZ });
-      localValueAnimator1.setDuration(c.NiA);
+      ValueAnimator localValueAnimator1 = ValueAnimator.ofInt(new int[] { this.TUV, this.TUX });
+      localValueAnimator1.setDuration(c.TVy);
       localValueAnimator1.addUpdateListener(local6);
-      ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { this.NhZ, this.NhX });
-      localValueAnimator2.setDuration(c.NiA);
+      ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { this.TUX, this.TUV });
+      localValueAnimator2.setDuration(c.TVy);
       localValueAnimator2.addUpdateListener(local6);
-      ValueAnimator localValueAnimator3 = ValueAnimator.ofInt(new int[] { this.NhX, this.NhX });
-      localValueAnimator3.setDuration(c.NiB);
+      ValueAnimator localValueAnimator3 = ValueAnimator.ofInt(new int[] { this.TUV, this.TUV });
+      localValueAnimator3.setDuration(c.TVz);
       localValueAnimator3.addUpdateListener(local6);
       localAnimatorSet.addListener(new Animator.AnimatorListener()
       {
@@ -322,7 +322,7 @@ public class SoundWaveView
         {
           AppMethodBeat.i(186023);
           Log.d("MicroMsg.NewTrans2Txt.SoundWaveView", "AnimatorSet onAnimationEnd, mode: %s", new Object[] { SoundWaveView.e(SoundWaveView.this) });
-          if ((SoundWaveView.b.Nik == SoundWaveView.e(SoundWaveView.this)) && (i == SoundWaveView.f(SoundWaveView.this).size() - 1) && (SoundWaveView.this.isShown()))
+          if ((SoundWaveView.b.TVi == SoundWaveView.e(SoundWaveView.this)) && (i == SoundWaveView.f(SoundWaveView.this).size() - 1) && (SoundWaveView.this.isShown()))
           {
             Log.d("MicroMsg.NewTrans2Txt.SoundWaveView", "restart waiting anim!!!");
             SoundWaveView.g(SoundWaveView.this);
@@ -335,33 +335,33 @@ public class SoundWaveView
         public final void onAnimationStart(Animator paramAnonymousAnimator) {}
       });
       localAnimatorSet.playSequentially(new Animator[] { localValueAnimator1, localValueAnimator2, localValueAnimator3 });
-      this.NhQ.add(localAnimatorSet);
+      this.TUO.add(localAnimatorSet);
       i += 1;
     }
     AppMethodBeat.o(185298);
   }
   
-  private void gsF()
+  private void hPN()
   {
     AppMethodBeat.i(185299);
-    Iterator localIterator = this.NhQ.iterator();
+    Iterator localIterator = this.TUO.iterator();
     while (localIterator.hasNext()) {
       ((AnimatorSet)localIterator.next()).end();
     }
     AppMethodBeat.o(185299);
   }
   
-  private void gsG()
+  private void hPO()
   {
     AppMethodBeat.i(185300);
-    Iterator localIterator = this.NhQ.iterator();
+    Iterator localIterator = this.TUO.iterator();
     while (localIterator.hasNext()) {
       ((AnimatorSet)localIterator.next()).start();
     }
     AppMethodBeat.o(185300);
   }
   
-  private void gsH()
+  private void hPP()
   {
     AppMethodBeat.i(185301);
     int j = getBundleCount();
@@ -377,9 +377,9 @@ public class SoundWaveView
     }
     for (;;)
     {
-      this.Nid.start = i;
-      this.Nid.end = j;
-      Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "initBaseBundleGroupInfo: %s", new Object[] { this.Nid.toString() });
+      this.TVb.start = i;
+      this.TVb.end = j;
+      Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "initBaseBundleGroupInfo: %s", new Object[] { this.TVb.toString() });
       AppMethodBeat.o(185301);
       return;
       i = k - 1;
@@ -395,78 +395,78 @@ public class SoundWaveView
     AppMethodBeat.i(185289);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.h.eWZ, 0, 0);
-      i = paramContext.getInt(a.h.NgQ, SoundWaveView.d.NiI.ordinal());
-      if (i == SoundWaveView.d.NiI.ordinal())
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.h.haC, 0, 0);
+      i = paramContext.getInt(a.h.TTO, SoundWaveView.d.TVG.ordinal());
+      if (i == SoundWaveView.d.TVG.ordinal())
       {
-        this.NhM = SoundWaveView.d.NiI;
+        this.TUK = SoundWaveView.d.TVG;
         paramContext.recycle();
-        Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "init style %s", new Object[] { this.NhM });
+        Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "init style %s", new Object[] { this.TUK });
       }
     }
     else
     {
-      this.NhU = aw.fromDPToPix(getContext(), c.Nio);
-      this.NhV = aw.fromDPToPix(getContext(), c.Nip);
-      this.NhW = aw.fromDPToPix(getContext(), c.Niq);
-      this.NhX = aw.fromDPToPix(getContext(), c.Nir);
-      this.NhY = aw.fromDPToPix(getContext(), c.Nis);
-      this.NhZ = aw.fromDPToPix(getContext(), c.Nit);
-      this.Nia = aw.fromDPToPix(getContext(), c.NiF);
-      this.mWidth = aw.fromDPToPix(getContext(), c.NiG);
-      this.mHeight = aw.fromDPToPix(getContext(), c.Nis);
-      this.NhO = new ArrayList();
+      this.TUS = bd.fromDPToPix(getContext(), c.TVm);
+      this.TUT = bd.fromDPToPix(getContext(), c.TVn);
+      this.TUU = bd.fromDPToPix(getContext(), c.TVo);
+      this.TUV = bd.fromDPToPix(getContext(), c.TVp);
+      this.TUW = bd.fromDPToPix(getContext(), c.TVq);
+      this.TUX = bd.fromDPToPix(getContext(), c.TVr);
+      this.TUY = bd.fromDPToPix(getContext(), c.TVD);
+      this.mWidth = bd.fromDPToPix(getContext(), c.TVE);
+      this.mHeight = bd.fromDPToPix(getContext(), c.TVq);
+      this.TUM = new ArrayList();
       i = 0;
     }
     for (;;)
     {
-      if (i >= c.Niw) {
+      if (i >= c.TVu) {
         break label376;
       }
-      this.NhO.add(Integer.valueOf(this.NhX));
+      this.TUM.add(Integer.valueOf(this.TUV));
       paramContext = new ArrayList();
       paramAttributeSet = new ArrayList();
       int j = 0;
       for (;;)
       {
-        if (j < c.Niv)
+        if (j < c.TVt)
         {
-          paramContext.add(Float.valueOf(this.NhX));
-          paramAttributeSet.add(Float.valueOf(this.NhX));
+          paramContext.add(Float.valueOf(this.TUV));
+          paramAttributeSet.add(Float.valueOf(this.TUV));
           j += 1;
           continue;
-          if (i == SoundWaveView.d.NiJ.ordinal())
+          if (i == SoundWaveView.d.TVH.ordinal())
           {
-            this.NhM = SoundWaveView.d.NiJ;
+            this.TUK = SoundWaveView.d.TVH;
             break;
           }
           Log.e("MicroMsg.NewTrans2Txt.SoundWaveView", "style err! %s", new Object[] { Integer.valueOf(i) });
           break;
         }
       }
-      this.NhR.add(paramContext);
-      this.NhS.add(paramAttributeSet);
+      this.TUP.add(paramContext);
+      this.TUQ.add(paramAttributeSet);
       i += 1;
     }
     label376:
-    this.NhP = new ArrayList();
+    this.TUN = new ArrayList();
     int i = k;
-    while (i < c.Niv * c.Niw)
+    while (i < c.TVt * c.TVu)
     {
-      this.NhP.add(Integer.valueOf(this.NhX));
+      this.TUN.add(Integer.valueOf(this.TUV));
       i += 1;
     }
-    gsA();
-    gsB();
-    this.NhQ = new ArrayList(c.Niv * c.Niw);
+    hPI();
+    hPJ();
+    this.TUO = new ArrayList(c.TVt * c.TVu);
     if (Build.VERSION.SDK_INT >= 21) {}
     for (paramContext = new PathInterpolator(0.0F, 0.5F, 0.2F, 1.0F);; paramContext = new a())
     {
-      this.NhT = paramContext;
-      gsH();
-      gsE();
+      this.TUR = paramContext;
+      hPP();
+      hPM();
       this.mPaint = new Paint(1);
-      this.mPaint.setColor(Color.parseColor(c.Niu));
+      this.mPaint.setColor(Color.parseColor(c.TVs));
       this.mPaint.setAlpha(128);
       AppMethodBeat.o(185289);
       return;
@@ -476,28 +476,28 @@ public class SoundWaveView
   private void reset()
   {
     AppMethodBeat.i(185305);
-    gsC();
-    gsD();
-    this.NhN = SoundWaveView.b.Nik;
-    aIp();
+    hPK();
+    hPL();
+    this.TUL = SoundWaveView.b.TVi;
+    bbk();
     AppMethodBeat.o(185305);
   }
   
   public final void a(SoundWaveView.d paramd)
   {
     AppMethodBeat.i(185304);
-    this.NhM = paramd;
-    gsA();
-    gsB();
-    gsH();
-    gsE();
-    Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "update style %s", new Object[] { this.NhM });
+    this.TUK = paramd;
+    hPI();
+    hPJ();
+    hPP();
+    hPM();
+    Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "update style %s", new Object[] { this.TUK });
     requestLayout();
     reset();
     AppMethodBeat.o(185304);
   }
   
-  public final void ajY(int paramInt)
+  public final void apr(int paramInt)
   {
     AppMethodBeat.i(185294);
     float f = paramInt / 100.0F;
@@ -510,36 +510,36 @@ public class SoundWaveView
     int m;
     if (f <= 0.05D)
     {
-      if (SoundWaveView.b.Nil == this.NhN)
+      if (SoundWaveView.b.TVj == this.TUL)
       {
-        this.NhN = SoundWaveView.b.Nim;
-        postDelayed(this.Nib, c.Niy);
+        this.TUL = SoundWaveView.b.TVk;
+        postDelayed(this.TUZ, c.TVw);
       }
-      if ((SoundWaveView.b.Nil != this.NhN) && (SoundWaveView.b.Nim != this.NhN)) {
+      if ((SoundWaveView.b.TVj != this.TUL) && (SoundWaveView.b.TVk != this.TUL)) {
         break label794;
       }
-      gsA();
-      f = this.NhT.getInterpolation(f);
+      hPI();
+      f = this.TUR.getInterpolation(f);
       Log.d("MicroMsg.NewTrans2Txt.SoundWaveView", "PathInterpolatorCompat value: %s.", new Object[] { Float.valueOf(f) });
-      j = (int)(f * this.NhY);
+      j = (int)(f * this.TUW);
       i = getActiveBundleIndex();
       Log.d("MicroMsg.NewTrans2Txt.SoundWaveView", "getActiveBundleIndex, activeBundleIndex: %s", new Object[] { Integer.valueOf(i) });
-      this.NhO.set(i, Integer.valueOf(j));
+      this.TUM.set(i, Integer.valueOf(j));
       paramInt = new Random().nextInt(2);
-      if (this.Nid.start != i) {
+      if (this.TVb.start != i) {
         break label465;
       }
-      this.NhO.set(this.Nid.end, Integer.valueOf((int)(j * c.NiD[paramInt])));
-      if (this.Nid.end - 1 != this.Nid.start)
+      this.TUM.set(this.TVb.end, Integer.valueOf((int)(j * c.TVB[paramInt])));
+      if (this.TVb.end - 1 != this.TVb.start)
       {
-        localArrayList = this.NhO;
-        i = this.Nid.end;
+        localArrayList = this.TUM;
+        i = this.TVb.end;
         f = j;
-        localArrayList.set(i - 1, Integer.valueOf((int)(c.NiD[(1 - paramInt)] * f)));
+        localArrayList.set(i - 1, Integer.valueOf((int)(c.TVB[(1 - paramInt)] * f)));
       }
       k = getBundleCount();
       paramInt = new Random().nextInt(2);
-      if (k != c.Niw) {
+      if (k != c.TVu) {
         break label709;
       }
       m = k / 2;
@@ -548,10 +548,10 @@ public class SoundWaveView
       if (i >= k) {
         break label790;
       }
-      if (!aka(i)) {
+      if (!apt(i)) {
         break label804;
       }
-      this.NhO.set(i, Integer.valueOf((int)(j * c.NiE[paramInt])));
+      this.TUM.set(i, Integer.valueOf((int)(j * c.TVC[paramInt])));
       paramInt = 1 - paramInt;
     }
     label790:
@@ -575,37 +575,37 @@ public class SoundWaveView
       {
         i += 1;
         break label324;
-        if (SoundWaveView.b.Nim == this.NhN)
+        if (SoundWaveView.b.TVk == this.TUL)
         {
           Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "cancel judging!!!");
-          this.NhN = SoundWaveView.b.Nil;
-          removeCallbacks(this.Nib);
+          this.TUL = SoundWaveView.b.TVj;
+          removeCallbacks(this.TUZ);
         }
-        if (SoundWaveView.b.Nik != this.NhN) {
+        if (SoundWaveView.b.TVi != this.TUL) {
           break;
         }
         Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "active reacting!!!");
-        this.NhN = SoundWaveView.b.Nil;
-        gsF();
+        this.TUL = SoundWaveView.b.TVj;
+        hPN();
         break;
         label465:
-        if (this.Nid.end == i)
+        if (this.TVb.end == i)
         {
-          this.NhO.set(this.Nid.start, Integer.valueOf((int)(j * c.NiD[paramInt])));
-          if (this.Nid.start + 1 == this.Nid.end) {
+          this.TUM.set(this.TVb.start, Integer.valueOf((int)(j * c.TVB[paramInt])));
+          if (this.TVb.start + 1 == this.TVb.end) {
             break label290;
           }
-          localArrayList = this.NhO;
-          i = this.Nid.start;
+          localArrayList = this.TUM;
+          i = this.TVb.start;
           f = j;
-          localArrayList.set(i + 1, Integer.valueOf((int)(c.NiD[(1 - paramInt)] * f)));
+          localArrayList.set(i + 1, Integer.valueOf((int)(c.TVB[(1 - paramInt)] * f)));
           break label290;
         }
-        this.NhO.set(this.Nid.start, Integer.valueOf((int)(j * c.NiD[paramInt])));
-        localArrayList = this.NhO;
-        i = this.Nid.end;
+        this.TUM.set(this.TVb.start, Integer.valueOf((int)(j * c.TVB[paramInt])));
+        localArrayList = this.TUM;
+        i = this.TVb.end;
         f = j;
-        localArrayList.set(i, Integer.valueOf((int)(c.NiD[paramInt] * f)));
+        localArrayList.set(i, Integer.valueOf((int)(c.TVB[paramInt] * f)));
         break label290;
         if (1 == Math.abs(m - i)) {
           postDelayed(new Runnable()
@@ -618,22 +618,22 @@ public class SoundWaveView
             }
           }, 160L);
         } else if (Math.abs(m - i) == 0) {
-          a(((Integer)this.NhO.get(i)).intValue(), (List)this.NhS.get(i));
+          a(((Integer)this.TUM.get(i)).intValue(), (List)this.TUQ.get(i));
         }
       }
       label709:
       i = 0;
       if (i < k)
       {
-        if (!aka(i)) {
+        if (!apt(i)) {
           break label801;
         }
-        this.NhO.set(i, Integer.valueOf((int)(j * c.NiE[paramInt])));
+        this.TUM.set(i, Integer.valueOf((int)(j * c.TVC[paramInt])));
         paramInt = 1 - paramInt;
       }
       for (;;)
       {
-        a(((Integer)this.NhO.get(i)).intValue(), (List)this.NhS.get(i));
+        a(((Integer)this.TUM.get(i)).intValue(), (List)this.TUQ.get(i));
         i += 1;
         break;
         invalidate();
@@ -649,58 +649,58 @@ public class SoundWaveView
     super.onDraw(paramCanvas);
     int k;
     int i;
-    if ((SoundWaveView.b.Nil == this.NhN) || (SoundWaveView.b.Nim == this.NhN))
+    if ((SoundWaveView.b.TVj == this.TUL) || (SoundWaveView.b.TVk == this.TUL))
     {
       k = getBundleCount();
       i = 0;
     }
     while (i < k)
     {
-      ((Integer)this.NhO.get(i)).intValue();
-      int m = c.Niv;
+      ((Integer)this.TUM.get(i)).intValue();
+      int m = c.TVt;
       int j = 0;
       float f1;
       float f2;
       while (j < m)
       {
-        f1 = ((Float)((List)this.NhS.get(i)).get(j)).floatValue();
-        f2 = ((Float)((List)this.NhR.get(i)).get(j)).floatValue();
-        ((List)this.NhR.get(i)).set(j, Float.valueOf((f1 - f2) / 6.0F + f2));
+        f1 = ((Float)((List)this.TUQ.get(i)).get(j)).floatValue();
+        f2 = ((Float)((List)this.TUP.get(i)).get(j)).floatValue();
+        ((List)this.TUP.get(i)).set(j, Float.valueOf((f1 - f2) / 6.0F + f2));
         j += 1;
       }
-      int n = this.Nia;
-      int i1 = this.NhV;
+      int n = this.TUY;
+      int i1 = this.TUT;
       j = 0;
       while (j < m)
       {
-        int i2 = this.NhU * j + this.NhV * j + (n * i + i1 * i);
-        f2 = ((Float)((List)this.NhR.get(i)).get(j)).floatValue();
+        int i2 = this.TUS * j + this.TUT * j + (n * i + i1 * i);
+        f2 = ((Float)((List)this.TUP.get(i)).get(j)).floatValue();
         f1 = f2;
-        if (f2 < this.NhX) {
-          f1 = this.NhX;
+        if (f2 < this.TUV) {
+          f1 = this.TUV;
         }
         f2 = f1;
-        if (f1 > this.NhY) {
-          f2 = this.NhY;
+        if (f1 > this.TUW) {
+          f2 = this.TUW;
         }
         f1 = (this.mHeight - f2) / 2.0F;
-        int i3 = this.NhU;
-        paramCanvas.drawRoundRect(i2, f1, i3 + i2, f1 + f2, this.NhW, this.NhW, this.mPaint);
+        int i3 = this.TUS;
+        paramCanvas.drawRoundRect(i2, f1, i3 + i2, f1 + f2, this.TUU, this.TUU, this.mPaint);
         j += 1;
       }
       i += 1;
       continue;
-      if (SoundWaveView.b.Nik == this.NhN)
+      if (SoundWaveView.b.TVi == this.TUL)
       {
         j = getVolumeItemCount();
         i = 0;
         while (i < j)
         {
-          k = this.mWidth - (i + 1) * this.NhU - this.NhV * i;
-          m = (this.mHeight - ((Integer)this.NhP.get(i)).intValue()) / 2;
-          n = this.NhU;
-          i1 = ((Integer)this.NhP.get(i)).intValue();
-          paramCanvas.drawRoundRect(k, m, k + n, i1 + m, this.NhW, this.NhW, this.mPaint);
+          k = this.mWidth - (i + 1) * this.TUS - this.TUT * i;
+          m = (this.mHeight - ((Integer)this.TUN.get(i)).intValue()) / 2;
+          n = this.TUS;
+          i1 = ((Integer)this.TUN.get(i)).intValue();
+          paramCanvas.drawRoundRect(k, m, k + n, i1 + m, this.TUU, this.TUU, this.mPaint);
           i += 1;
         }
       }
@@ -713,10 +713,10 @@ public class SoundWaveView
   {
     AppMethodBeat.i(185292);
     super.onMeasure(paramInt1, paramInt2);
-    if (SoundWaveView.d.NiJ == this.NhM) {}
-    for (this.mWidth = aw.fromDPToPix(getContext(), c.NiH);; this.mWidth = aw.fromDPToPix(getContext(), c.NiG))
+    if (SoundWaveView.d.TVH == this.TUK) {}
+    for (this.mWidth = bd.fromDPToPix(getContext(), c.TVF);; this.mWidth = bd.fromDPToPix(getContext(), c.TVE))
     {
-      Log.d("MicroMsg.NewTrans2Txt.SoundWaveView", "style: %s, w: %s, h: %s.", new Object[] { this.NhM, Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
+      Log.d("MicroMsg.NewTrans2Txt.SoundWaveView", "style: %s, w: %s, h: %s.", new Object[] { this.TUK, Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
       setMeasuredDimension(this.mWidth, this.mHeight);
       AppMethodBeat.o(185292);
       return;
@@ -726,8 +726,8 @@ public class SoundWaveView
   public void setStyle(SoundWaveView.d paramd)
   {
     AppMethodBeat.i(185303);
-    this.NhM = paramd;
-    Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "set style %s", new Object[] { this.NhM });
+    this.TUK = paramd;
+    Log.i("MicroMsg.NewTrans2Txt.SoundWaveView", "set style %s", new Object[] { this.TUK });
     AppMethodBeat.o(185303);
   }
   
@@ -759,62 +759,62 @@ public class SoundWaveView
   
   static final class c
   {
-    static int NiA;
-    static int NiB;
-    static float NiC;
-    static float[] NiD;
-    static float[] NiE;
-    static int NiF;
-    static int NiG;
-    static int NiH;
-    static int Nio;
-    static int Nip;
-    static int Niq;
-    static int Nir;
-    static int Nis;
-    static int Nit;
-    static String Niu;
-    static int Niv;
-    static int Niw;
-    static int Nix;
-    static int Niy;
-    static int Niz;
+    static float TVA;
+    static float[] TVB;
+    static float[] TVC;
+    static int TVD;
+    static int TVE;
+    static int TVF;
+    static int TVm;
+    static int TVn;
+    static int TVo;
+    static int TVp;
+    static int TVq;
+    static int TVr;
+    static String TVs;
+    static int TVt;
+    static int TVu;
+    static int TVv;
+    static int TVw;
+    static int TVx;
+    static int TVy;
+    static int TVz;
     
     static
     {
       AppMethodBeat.i(185284);
-      Nio = 2;
-      Nip = 1;
-      Niq = 1;
-      Nir = 4;
-      Nis = 34;
-      Nit = 10;
-      Niu = "#000000";
-      Niv = 5;
-      Niw = 5;
-      Nix = 2;
-      Niy = 300;
-      Niz = 100;
-      NiA = 500;
-      NiB = 1000;
-      NiC = 0.8F;
-      NiD = new float[] { 0.8F, 0.6F };
-      NiE = new float[] { 0.5F, 0.3F };
-      NiF = akb(Niv);
-      NiG = akb(Niv * Niw);
-      NiH = akb(Niv * Nix);
+      TVm = 2;
+      TVn = 1;
+      TVo = 1;
+      TVp = 4;
+      TVq = 34;
+      TVr = 10;
+      TVs = "#000000";
+      TVt = 5;
+      TVu = 5;
+      TVv = 2;
+      TVw = 300;
+      TVx = 100;
+      TVy = 500;
+      TVz = 1000;
+      TVA = 0.8F;
+      TVB = new float[] { 0.8F, 0.6F };
+      TVC = new float[] { 0.5F, 0.3F };
+      TVD = apu(TVt);
+      TVE = apu(TVt * TVu);
+      TVF = apu(TVt * TVv);
       AppMethodBeat.o(185284);
     }
     
-    private static int akb(int paramInt)
+    private static int apu(int paramInt)
     {
-      return (paramInt - 1) * Nip + Nio * paramInt;
+      return (paramInt - 1) * TVn + TVm * paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.transvoice.ui.SoundWaveView
  * JD-Core Version:    0.7.0.1
  */

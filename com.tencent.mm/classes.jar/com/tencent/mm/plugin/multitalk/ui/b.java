@@ -1,104 +1,68 @@
 package com.tencent.mm.plugin.multitalk.ui;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.multitalk.ui.widget.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.u;
-import java.util.LinkedList;
+import com.tencent.mm.ui.contact.o;
+import com.tencent.mm.ui.contact.r;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class b
-  extends u
+  extends r
 {
   private String chatroomName;
-  private Cursor mNt;
-  private String[] mNu;
-  private String query;
+  private List<String> pJZ;
   
-  public b(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
+  public b(o paramo, String paramString)
   {
-    super(paramMMBaseSelectContactUI, null, true, 0);
-    AppMethodBeat.i(114711);
+    super(paramo, null, true, true);
+    AppMethodBeat.i(114707);
     this.chatroomName = paramString;
-    paramMMBaseSelectContactUI = ((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().RA(this.chatroomName);
-    if (paramMMBaseSelectContactUI != null) {
-      this.mNu = Util.listToStrings(paramMMBaseSelectContactUI);
-    }
-    AppMethodBeat.o(114711);
+    aNm();
+    AppMethodBeat.o(114707);
   }
   
-  public final void a(String paramString, int[] paramArrayOfInt)
+  public final void aNm()
   {
-    AppMethodBeat.i(114712);
-    Log.i("MicroMsg.multitalk.MultiTalkSelectSearchAdapter", "doSearch: %s", new Object[] { paramString });
-    clearCache();
-    this.query = paramString;
-    if (this.mNt != null)
-    {
-      this.mNt.close();
-      this.mNt = null;
+    AppMethodBeat.i(114708);
+    Log.i("MicroMsg.multitalk.MultiTalkSelectInitAdapter", "resetData");
+    this.pJZ = ((com.tencent.mm.plugin.chatroom.a.b)h.ax(com.tencent.mm.plugin.chatroom.a.b.class)).bzK().Jy(this.chatroomName);
+    if (this.pJZ == null) {
+      this.pJZ = new ArrayList();
     }
-    if ((!Util.isNullOrNil(this.query)) && (this.mNu != null)) {
-      this.mNt = ((n)h.ae(n.class)).bbL().a(this.mNu, "@all.chatroom", this.query, new LinkedList(), null);
-    }
-    notifyDataSetChanged();
-    dE(paramString, true);
-    AppMethodBeat.o(114712);
-  }
-  
-  public final void finish()
-  {
-    AppMethodBeat.i(114714);
-    super.finish();
-    if (this.mNt != null)
-    {
-      this.mNt.close();
-      this.mNt = null;
-    }
-    AppMethodBeat.o(114714);
+    AppMethodBeat.o(114708);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(114715);
-    if (this.mNt == null)
-    {
-      AppMethodBeat.o(114715);
-      return 0;
-    }
-    int i = this.mNt.getCount();
-    AppMethodBeat.o(114715);
+    AppMethodBeat.i(114710);
+    int i = this.pJZ.size();
+    AppMethodBeat.o(114710);
     return i;
   }
   
-  public final a ye(int paramInt)
+  public final a yk(int paramInt)
   {
-    AppMethodBeat.i(114713);
-    e locale = null;
-    if (this.mNt.moveToPosition(paramInt))
-    {
-      as localas = new as();
-      localas.convertFrom(this.mNt);
-      locale = new e(paramInt);
-      locale.contact = localas;
-      locale.XsX = fJk();
-      locale.query = this.query;
-    }
-    AppMethodBeat.o(114713);
+    AppMethodBeat.i(114709);
+    Object localObject = (String)this.pJZ.get(paramInt);
+    localObject = ((n)h.ax(n.class)).bzA().JE((String)localObject);
+    e locale = new e(paramInt);
+    locale.contact = ((au)localObject);
+    locale.afey = gZe();
+    AppMethodBeat.o(114709);
     return locale;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.b
  * JD-Core Version:    0.7.0.1
  */

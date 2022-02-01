@@ -9,47 +9,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.audio.c.a.a;
 import com.tencent.mm.plugin.audio.d.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/receiver/HeadsetReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "headsetStateChangeListener", "Lcom/tencent/mm/plugin/findersdk/receiver/HeadsetReceiver$OnHeadsetStateChangeListener;", "isHeadsetOn", "", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "register", "stateChangeListener", "unRegister", "Companion", "OnHeadsetStateChangeListener", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/receiver/HeadsetReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "headsetStateChangeListener", "Lcom/tencent/mm/plugin/findersdk/receiver/HeadsetReceiver$OnHeadsetStateChangeListener;", "isHeadsetOn", "", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "register", "stateChangeListener", "unRegister", "Companion", "OnHeadsetStateChangeListener", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class HeadsetReceiver
   extends BroadcastReceiver
 {
-  public static final HeadsetReceiver.a Bwf;
-  private HeadsetReceiver.b Bwe;
+  public static final HeadsetReceiver.a Hdo;
+  private HeadsetReceiver.b Hdp;
   
   static
   {
-    AppMethodBeat.i(207994);
-    Bwf = new HeadsetReceiver.a((byte)0);
-    AppMethodBeat.o(207994);
+    AppMethodBeat.i(273721);
+    Hdo = new HeadsetReceiver.a((byte)0);
+    AppMethodBeat.o(273721);
   }
   
-  public static boolean enr()
+  public static boolean fsb()
   {
-    AppMethodBeat.i(207993);
-    Object localObject = com.tencent.mm.plugin.audio.c.a.rJX;
-    boolean bool1 = a.a.crn().crh();
-    localObject = com.tencent.mm.plugin.audio.c.a.rJX;
-    localObject = b.rKe;
-    boolean bool2 = b.cro();
+    AppMethodBeat.i(273715);
+    Object localObject = com.tencent.mm.plugin.audio.c.a.uVi;
+    boolean bool1 = a.a.cTW().cTQ();
+    localObject = com.tencent.mm.plugin.audio.c.a.uVi;
+    localObject = b.uVo;
+    boolean bool2 = b.cTX();
     Log.i("HeadsetReceiver", "isHeadsetOn isHeadsetPlugged:" + bool1 + " isBluetoothOn:" + bool2);
     if ((bool1) || (bool2))
     {
-      AppMethodBeat.o(207993);
+      AppMethodBeat.o(273715);
       return true;
     }
-    AppMethodBeat.o(207993);
+    AppMethodBeat.o(273715);
     return false;
   }
   
   public final void a(Context paramContext, HeadsetReceiver.b paramb)
   {
-    AppMethodBeat.i(207991);
-    p.k(paramContext, "context");
-    Log.i("HeadsetReceiver", "register stateChangeListener：".concat(String.valueOf(paramb)));
-    this.Bwe = paramb;
+    AppMethodBeat.i(273738);
+    s.u(paramContext, "context");
+    Log.i("HeadsetReceiver", s.X("register stateChangeListener：", paramb));
+    this.Hdp = paramb;
     paramb = new IntentFilter();
     paramb.addAction("android.media.AUDIO_BECOMING_NOISY");
     paramContext.registerReceiver((BroadcastReceiver)this, paramb);
@@ -57,26 +57,23 @@ public final class HeadsetReceiver
     paramContext.registerReceiver((BroadcastReceiver)this, paramb);
     paramb.addAction("android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED");
     paramContext.registerReceiver((BroadcastReceiver)this, paramb);
-    paramContext = this.Bwe;
-    if (paramContext != null)
-    {
-      paramContext.pR(enr());
-      AppMethodBeat.o(207991);
-      return;
+    paramContext = this.Hdp;
+    if (paramContext != null) {
+      paramContext.sO(fsb());
     }
-    AppMethodBeat.o(207991);
+    AppMethodBeat.o(273738);
   }
   
-  public final void gd(Context paramContext)
+  public final void hy(Context paramContext)
   {
-    AppMethodBeat.i(207992);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(273748);
+    s.u(paramContext, "context");
     Log.i("HeadsetReceiver", "unRegister");
     try
     {
       paramContext.unregisterReceiver((BroadcastReceiver)this);
-      this.Bwe = null;
-      AppMethodBeat.o(207992);
+      this.Hdp = null;
+      AppMethodBeat.o(273748);
       return;
     }
     catch (Exception paramContext)
@@ -90,69 +87,54 @@ public final class HeadsetReceiver
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(207990);
-    p.k(paramContext, "context");
-    p.k(paramIntent, "intent");
+    AppMethodBeat.i(273731);
+    s.u(paramContext, "context");
+    s.u(paramIntent, "intent");
     Log.i("HeadsetReceiver", "headset onReceive %s  %d", new Object[] { paramIntent.getAction(), Integer.valueOf(paramIntent.getIntExtra("state", 0)) });
     paramContext = paramIntent.getAction();
-    if (p.h("android.media.AUDIO_BECOMING_NOISY", paramContext))
+    if (s.p("android.media.AUDIO_BECOMING_NOISY", paramContext))
     {
       Log.i("HeadsetReceiver", "headset onReceive 耳机断开");
-      if (this.Bwe != null)
+      if (this.Hdp != null)
       {
-        paramContext = this.Bwe;
-        if (paramContext == null) {
-          p.iCn();
-        }
-        paramContext.pR(false);
+        paramContext = this.Hdp;
+        s.checkNotNull(paramContext);
+        paramContext.sO(false);
       }
-      AppMethodBeat.o(207990);
+      AppMethodBeat.o(273731);
       return;
     }
-    if ((paramIntent.getAction() != null) && (p.h(paramIntent.getAction(), "android.intent.action.HEADSET_PLUG")))
+    if ((paramIntent.getAction() != null) && (s.p(paramIntent.getAction(), "android.intent.action.HEADSET_PLUG")))
     {
-      switch (paramIntent.getIntExtra("state", -1))
+      if (paramIntent.getIntExtra("state", -1) == 1)
       {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(207990);
-        return;
         Log.i("HeadsetReceiver", "headset onReceive 有线耳机连接");
-        if (this.Bwe != null)
+        if (this.Hdp != null)
         {
-          paramContext = this.Bwe;
-          if (paramContext == null) {
-            p.iCn();
-          }
-          paramContext.pR(true);
+          paramContext = this.Hdp;
+          s.checkNotNull(paramContext);
+          paramContext.sO(true);
         }
       }
-    }
-    if (TextUtils.equals((CharSequence)paramContext, (CharSequence)"android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED")) {
-      switch (paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", -1))
-      {
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(207990);
+      AppMethodBeat.o(273731);
       return;
+    }
+    if ((TextUtils.equals((CharSequence)paramContext, (CharSequence)"android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED")) && (paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", -1) == 2))
+    {
       Log.i("HeadsetReceiver", "headset onReceive 蓝牙耳机连接");
-      if (this.Bwe != null)
+      if (this.Hdp != null)
       {
-        paramContext = this.Bwe;
-        if (paramContext == null) {
-          p.iCn();
-        }
-        paramContext.pR(true);
+        paramContext = this.Hdp;
+        s.checkNotNull(paramContext);
+        paramContext.sO(true);
       }
     }
+    AppMethodBeat.o(273731);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.findersdk.receiver.HeadsetReceiver
  * JD-Core Version:    0.7.0.1
  */

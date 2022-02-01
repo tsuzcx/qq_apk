@@ -17,11 +17,11 @@ final class MobileFriendUI$2
   {
     AppMethodBeat.i(110146);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    paramView = new Intent(this.mUK.getContext(), BindMContactIntroUI.class);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    paramView = new Intent(this.pRr.getContext(), BindMContactIntroUI.class);
     paramView.putExtra("key_upload_scene", 6);
-    MMWizardActivity.aH(this.mUK, paramView);
+    MMWizardActivity.aQ(this.pRr, paramView);
     a.a(this, "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(110146);
   }

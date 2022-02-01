@@ -1,163 +1,102 @@
 package com.tencent.mm.plugin.finder.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.h;
-import com.tencent.mm.plugin.finder.loader.aa;
-import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.k.i;
-import kotlin.l;
+import com.tencent.mm.autogen.mmdata.rpt.fq;
+import com.tencent.mm.plugin.finder.preload.tabPreload.g.e;
+import com.tencent.mm.plugin.finder.preload.tabPreload.g.g;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.protocal.protobuf.bwf;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "(Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;)V", "value", "", "fileFormat", "getFileFormat", "()Ljava/lang/String;", "setFileFormat", "(Ljava/lang/String;)V", "mediaTaskId", "getMediaTaskId", "originalMediaId", "getOriginalMediaId", "status", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask$TaskStatus;", "getStatus", "()Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask$TaskStatus;", "setStatus", "(Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask$TaskStatus;)V", "getVideo", "()Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "weight", "", "getWeight", "()I", "setWeight", "(I)V", "compareTo", "other", "equals", "", "", "hashCode", "toString", "Companion", "TaskStatus", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/preload/FinderTabPreloadReporter;", "", "()V", "report24123", "", "opType", "Lcom/tencent/mm/plugin/finder/preload/FinderTabPreloadReporter$Type;", "source", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "tabType", "", "extInfo", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$ExtInfo;", "serverConfig", "Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "toJson", "Lorg/json/JSONObject;", "Type", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends h
-  implements Comparable<d>
 {
-  public static final a zKw;
-  public int weight;
-  private b zKt;
-  public final String zKu;
-  public final String zKv;
-  public final aa zuY;
+  public static final d EUv;
   
   static
   {
-    AppMethodBeat.i(289982);
-    zKw = new a((byte)0);
-    AppMethodBeat.o(289982);
+    AppMethodBeat.i(346317);
+    EUv = new d();
+    AppMethodBeat.o(346317);
   }
   
-  public d(aa paramaa)
+  public static void a(a parama, g.g paramg, int paramInt, g.e parame, bwf parambwf)
   {
-    AppMethodBeat.i(289981);
-    this.zuY = paramaa;
-    this.zKt = b.zKy;
-    this.zKu = this.zuY.aBv();
-    String str = this.zuY.ztO.mediaId;
-    paramaa = str;
-    if (str == null) {
-      paramaa = "";
-    }
-    this.zKv = paramaa;
-    AppMethodBeat.o(289981);
-  }
-  
-  public final void a(b paramb)
-  {
-    AppMethodBeat.i(289975);
-    p.k(paramb, "<set-?>");
-    this.zKt = paramb;
-    AppMethodBeat.o(289975);
-  }
-  
-  public final void aDG(String paramString)
-  {
-    AppMethodBeat.i(289976);
-    p.k(paramString, "value");
-    this.videoFlag = paramString;
-    AppMethodBeat.o(289976);
-  }
-  
-  public final String dMH()
-  {
-    String str2 = this.videoFlag;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = u.AlA.detail;
-    }
-    return str1;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(289980);
-    if ((paramObject instanceof d))
-    {
-      boolean bool = p.h(this.zKu, ((d)paramObject).zKu);
-      AppMethodBeat.o(289980);
-      return bool;
-    }
-    AppMethodBeat.o(289980);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(289979);
-    int i = this.zKu.hashCode();
-    AppMethodBeat.o(289979);
-    return i;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(289977);
-    String str;
-    if (this.field_requestVideoFormat == 1) {
-      str = "H264";
+    AppMethodBeat.i(346310);
+    s.u(parama, "opType");
+    s.u(parame, "extInfo");
+    s.u(parambwf, "serverConfig");
+    fq localfq = new fq();
+    localfq.iJb = localfq.F("opType", parama.name(), true);
+    if (paramg == null) {
+      parama = "";
     }
     for (;;)
     {
-      str = "[" + this.zKt + "] " + a.aDH(this.zKu) + ' ' + str + " percent=" + this.iVi + "% minSize=" + Util.getSizeKB(this.preloadMinSize) + " connection=" + this.connectionCount;
-      AppMethodBeat.o(289977);
-      return str;
-      if (this.field_requestVideoFormat == 2) {
-        str = "H265";
-      } else {
-        str = "";
+      localfq.iJc = localfq.F("PreloadSource", parama, true);
+      localfq.iJd = paramInt;
+      localfq.iJe = parame.pullType;
+      localfq.iJf = localfq.F("entranceRedDotObjectId", com.tencent.mm.ae.d.hF(parame.EWw), true);
+      localfq.iJg = parame.EWx;
+      localfq.iJh = parame.EWy;
+      s.u(parambwf, "<this>");
+      parama = new JSONObject();
+      parama.put("new_follow_reddot_prefetch_interval", parambwf.aaeD);
+      parama.put("new_friend_reddot_prefetch_interval", parambwf.aaeE);
+      parama.put("new_hot_reddot_prefetch_interval", parambwf.aaeF);
+      parama.put("follow_outter_prefetch_valid_time", parambwf.aaeH);
+      parama.put("friend_outter_prefetch_valid_time", parambwf.aaeI);
+      parama.put("hot_outter_prefetch_valid_time", parambwf.aaeJ);
+      parama.put("follow_no_reddot_prefetch_outter_interval", parambwf.aaen);
+      parama.put("friend_no_reddot_prefetch_outter_interval", parambwf.aaeo);
+      parama.put("hot_no_reddot_prefetch_outter_interval", parambwf.aaep);
+      parama.put("follow_reddot_prefetch_inner_interval", parambwf.aaer);
+      parama.put("friend_reddot_prefetch_inner_interval", parambwf.aaes);
+      parama.put("hot_reddot_prefetch_inner_interval", parambwf.aaet);
+      parama.put("follow_no_reddot_prefetch_inner_interval", parambwf.aaev);
+      parama.put("friend_no_reddot_prefetch_inner_interval", parambwf.aaew);
+      parama.put("hot_no_reddot_prefetch_inner_interval", parambwf.aaex);
+      parama = parama.toString();
+      s.s(parama, "serverConfig.toJson().toString()");
+      localfq.iJi = localfq.F("serverConfig", n.bV(parama, ",", ";"), true);
+      localfq.bMH();
+      parama = z.FrZ;
+      z.a((a)localfq);
+      AppMethodBeat.o(346310);
+      return;
+      paramg = paramg.name();
+      parama = paramg;
+      if (paramg == null) {
+        parama = "";
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask$Companion;", "", "()V", "simpleMediaId", "", "mediaId", "plugin-finder_release"})
-  public static final class a
-  {
-    public static String aDH(String paramString)
-    {
-      AppMethodBeat.i(288266);
-      p.k(paramString, "mediaId");
-      if (((CharSequence)paramString).length() == 0) {}
-      for (int i = 1; i != 0; i = 0)
-      {
-        AppMethodBeat.o(288266);
-        return "";
-      }
-      if (paramString.length() <= 13)
-      {
-        AppMethodBeat.o(288266);
-        return paramString;
-      }
-      paramString = paramString.substring(13, i.ow(paramString.length(), 24));
-      p.j(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      AppMethodBeat.o(288266);
-      return paramString;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask$TaskStatus;", "", "(Ljava/lang/String;I)V", "LOADING", "PENDING", "WAITING", "plugin-finder_release"})
-  public static enum b
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/preload/FinderTabPreloadReporter$Type;", "", "(Ljava/lang/String;I)V", "NormalEnter", "Preload", "UseCache", "RecycleCache", "CancelTask", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum a
   {
     static
     {
-      AppMethodBeat.i(271541);
-      b localb1 = new b("LOADING", 0);
-      zKx = localb1;
-      b localb2 = new b("PENDING", 1);
-      zKy = localb2;
-      b localb3 = new b("WAITING", 2);
-      zKz = localb3;
-      zKA = new b[] { localb1, localb2, localb3 };
-      AppMethodBeat.o(271541);
+      AppMethodBeat.i(346242);
+      EUw = new a("NormalEnter", 0);
+      EUx = new a("Preload", 1);
+      EUy = new a("UseCache", 2);
+      EUz = new a("RecycleCache", 3);
+      EUA = new a("CancelTask", 4);
+      EUB = new a[] { EUw, EUx, EUy, EUz, EUA };
+      AppMethodBeat.o(346242);
     }
     
-    private b() {}
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.d
  * JD-Core Version:    0.7.0.1
  */

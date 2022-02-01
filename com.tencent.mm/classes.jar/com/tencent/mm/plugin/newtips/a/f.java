@@ -7,22 +7,22 @@ import java.util.Map;
 
 public final class f
 {
-  private static f GwA;
-  private static Map<Integer, h> Gwy;
-  static Map<Integer, j> Gwz;
+  private static f MsA;
+  private static Map<Integer, h> Msy;
+  static Map<Integer, j> Msz;
   
   private f()
   {
     AppMethodBeat.i(127219);
-    Gwy = new HashMap();
-    Gwz = new HashMap();
+    Msy = new HashMap();
+    Msz = new HashMap();
     AppMethodBeat.o(127219);
   }
   
-  public static h aam(int paramInt)
+  public static h aeF(int paramInt)
   {
     AppMethodBeat.i(127220);
-    h localh2 = (h)Gwy.get(Integer.valueOf(paramInt));
+    h localh2 = (h)Msy.get(Integer.valueOf(paramInt));
     h localh1 = localh2;
     if (localh2 == null)
     {
@@ -33,20 +33,20 @@ public final class f
     return localh1;
   }
   
-  public static f fiT()
+  public static f gtk()
   {
     AppMethodBeat.i(127218);
-    if (GwA == null) {
-      GwA = new f();
+    if (MsA == null) {
+      MsA = new f();
     }
-    f localf = GwA;
+    f localf = MsA;
     AppMethodBeat.o(127218);
     return localf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a.f
  * JD-Core Version:    0.7.0.1
  */

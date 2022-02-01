@@ -13,12 +13,12 @@ public class DefaultSnsServiceImpl
     AppMethodBeat.i(18707);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
     Object localObject = this.mBean.getPayInfo();
-    if ((localObject == null) || (((PayInfo)localObject).lfu == null))
+    if ((localObject == null) || (((PayInfo)localObject).nKf == null))
     {
       AppMethodBeat.o(18707);
       return localITransmitKvData;
     }
-    localObject = ((PayInfo)localObject).lfu;
+    localObject = ((PayInfo)localObject).nKf;
     localITransmitKvData.putString("cashier_desc", ((Bundle)localObject).getString("cashier_desc"));
     localITransmitKvData.putString("succ_tip", ((Bundle)localObject).getString("succ_tip"));
     localITransmitKvData.putString("prepay_page_payee", ((Bundle)localObject).getString("prepay_page_payee"));
@@ -37,7 +37,7 @@ public class DefaultSnsServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.DefaultSnsServiceImpl
  * JD-Core Version:    0.7.0.1
  */

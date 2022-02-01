@@ -1,6 +1,5 @@
 package com.google.android.material.button;
 
-import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
@@ -15,28 +14,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  static final boolean bxX;
-  final MaterialButton bxY;
-  int bxZ;
-  int bya;
-  int byb;
-  int byc;
-  PorterDuff.Mode byd;
-  ColorStateList bye;
-  ColorStateList byf;
-  ColorStateList byg;
-  final Paint byh;
-  final Rect byi;
-  final RectF byj;
-  GradientDrawable byk;
-  Drawable byl;
-  GradientDrawable bym;
-  Drawable byn;
-  GradientDrawable byo;
-  GradientDrawable byp;
-  GradientDrawable byq;
-  boolean byr;
+  static final boolean dra;
+  final RectF avO;
+  final Rect bounds;
   int cornerRadius;
+  final MaterialButton drb;
+  int drc;
+  int drd;
+  int dre;
+  int drf;
+  PorterDuff.Mode drg;
+  ColorStateList drh;
+  ColorStateList dri;
+  ColorStateList drj;
+  final Paint drk;
+  GradientDrawable drl;
+  Drawable drm;
+  GradientDrawable drn;
+  Drawable dro;
+  GradientDrawable drp;
+  GradientDrawable drq;
+  GradientDrawable drr;
+  boolean drs;
   int strokeWidth;
   
   static
@@ -44,82 +43,81 @@ final class b
     if (Build.VERSION.SDK_INT >= 21) {}
     for (boolean bool = true;; bool = false)
     {
-      bxX = bool;
+      dra = bool;
       return;
     }
   }
   
   public b(MaterialButton paramMaterialButton)
   {
-    AppMethodBeat.i(235600);
-    this.byh = new Paint(1);
-    this.byi = new Rect();
-    this.byj = new RectF();
-    this.byr = false;
-    this.bxY = paramMaterialButton;
-    AppMethodBeat.o(235600);
+    AppMethodBeat.i(209824);
+    this.drk = new Paint(1);
+    this.bounds = new Rect();
+    this.avO = new RectF();
+    this.drs = false;
+    this.drb = paramMaterialButton;
+    AppMethodBeat.o(209824);
   }
   
-  final InsetDrawable w(Drawable paramDrawable)
+  final InsetDrawable G(Drawable paramDrawable)
   {
-    AppMethodBeat.i(235602);
-    paramDrawable = new InsetDrawable(paramDrawable, this.bxZ, this.byb, this.bya, this.byc);
-    AppMethodBeat.o(235602);
+    AppMethodBeat.i(209836);
+    paramDrawable = new InsetDrawable(paramDrawable, this.drc, this.dre, this.drd, this.drf);
+    AppMethodBeat.o(209836);
     return paramDrawable;
   }
   
-  final void wr()
+  final void VQ()
   {
-    AppMethodBeat.i(235605);
-    if (this.byo != null)
+    AppMethodBeat.i(209844);
+    if (this.drp != null)
     {
-      androidx.core.graphics.drawable.a.a(this.byo, this.bye);
-      if (this.byd != null) {
-        androidx.core.graphics.drawable.a.a(this.byo, this.byd);
+      androidx.core.graphics.drawable.a.a(this.drp, this.drh);
+      if (this.drg != null) {
+        androidx.core.graphics.drawable.a.a(this.drp, this.drg);
       }
     }
-    AppMethodBeat.o(235605);
+    AppMethodBeat.o(209844);
   }
   
-  @TargetApi(21)
-  final Drawable ws()
+  final Drawable VR()
   {
-    AppMethodBeat.i(235610);
-    this.byo = new GradientDrawable();
-    this.byo.setCornerRadius(this.cornerRadius + 1.0E-005F);
-    this.byo.setColor(-1);
-    wr();
-    this.byp = new GradientDrawable();
-    this.byp.setCornerRadius(this.cornerRadius + 1.0E-005F);
-    this.byp.setColor(0);
-    this.byp.setStroke(this.strokeWidth, this.byf);
-    Object localObject = w(new LayerDrawable(new Drawable[] { this.byo, this.byp }));
-    this.byq = new GradientDrawable();
-    this.byq.setCornerRadius(this.cornerRadius + 1.0E-005F);
-    this.byq.setColor(-1);
-    localObject = new a(com.google.android.material.f.a.g(this.byg), (InsetDrawable)localObject, this.byq);
-    AppMethodBeat.o(235610);
+    AppMethodBeat.i(209850);
+    this.drp = new GradientDrawable();
+    this.drp.setCornerRadius(this.cornerRadius + 1.0E-005F);
+    this.drp.setColor(-1);
+    VQ();
+    this.drq = new GradientDrawable();
+    this.drq.setCornerRadius(this.cornerRadius + 1.0E-005F);
+    this.drq.setColor(0);
+    this.drq.setStroke(this.strokeWidth, this.dri);
+    Object localObject = G(new LayerDrawable(new Drawable[] { this.drp, this.drq }));
+    this.drr = new GradientDrawable();
+    this.drr.setCornerRadius(this.cornerRadius + 1.0E-005F);
+    this.drr.setColor(-1);
+    localObject = new a(com.google.android.material.f.a.g(this.drj), (InsetDrawable)localObject, this.drr);
+    AppMethodBeat.o(209850);
     return localObject;
   }
   
-  final void wt()
+  final void VS()
   {
-    AppMethodBeat.i(235612);
-    if ((bxX) && (this.byp != null))
+    AppMethodBeat.i(209859);
+    if ((dra) && (this.drq != null))
     {
-      this.bxY.setInternalBackground(ws());
-      AppMethodBeat.o(235612);
+      this.drb.setInternalBackground(VR());
+      AppMethodBeat.o(209859);
       return;
     }
-    if (!bxX) {
-      this.bxY.invalidate();
+    if (!dra) {
+      this.drb.invalidate();
     }
-    AppMethodBeat.o(235612);
+    AppMethodBeat.o(209859);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.button.b
  * JD-Core Version:    0.7.0.1
  */

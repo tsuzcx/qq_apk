@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/gi"
+<RelativeLayout style="@style/gq"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/au5" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" layout="@layout/qp" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/au5" style="@style/gt">
-        <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
+    <include android:id="@id/b3v" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" layout="@layout/qi" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/b3v" style="@style/h2">
+        <TextView android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/auk" android:background="@drawable/mv" android:maxWidth="@dimen/xb" android:minHeight="@dimen/ad" style="@style/h4" />
+            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/b4b" android:background="@drawable/lu" android:maxWidth="@dimen/zb" android:minHeight="@dimen/ad" style="@style/hc" />
             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:id="@id/atq" android:text="{source}" style="@style/gj" />
+                <TextView android:id="@id/b3g" android:text="{source}" style="@style/gr" />
                 <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-                <TextView android:id="@id/at6" android:layout_marginRight="50.0dip" android:text="@string/axz" style="@style/gj" />
+                <TextView android:id="@id/b2v" android:layout_marginRight="50.0dip" android:text="@string/b7d" style="@style/gr" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

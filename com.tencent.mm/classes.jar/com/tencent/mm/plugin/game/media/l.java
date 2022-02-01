@@ -8,50 +8,49 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.k;
 
 public final class l
-  extends k
+  extends com.tencent.mm.plugin.webview.luggage.l
 {
-  private a CFA;
+  private a IzE;
   
   public l(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void Cq(int paramInt)
+  public final void CG(int paramInt)
   {
     AppMethodBeat.i(41065);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.qtw.getLayoutParams();
-    localLayoutParams.topMargin = (paramInt - this.qtw.getHeight());
-    this.qtw.setLayoutParams(localLayoutParams);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.tyc.getLayoutParams();
+    localLayoutParams.topMargin = (paramInt - this.tyc.getHeight());
+    this.tyc.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(41065);
   }
   
-  public final void ceN()
+  public final void cFq()
   {
     AppMethodBeat.i(41068);
-    super.ceN();
-    if (this.CFA != null) {
-      this.CFA.exC();
+    super.cFq();
+    if (this.IzE != null) {
+      this.IzE.fFy();
     }
     AppMethodBeat.o(41068);
   }
   
-  public final void ceO()
+  public final void cFr()
   {
     AppMethodBeat.i(41066);
-    if (this.CFA != null) {
-      this.CFA.ceO();
+    if (this.IzE != null) {
+      this.IzE.cFr();
     }
     AppMethodBeat.o(41066);
   }
   
-  public final void exB()
+  public final void fFx()
   {
     AppMethodBeat.i(41067);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.qoa, "translationY", new float[] { 0.0F, getStayHeight() });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.tsH, "translationY", new float[] { 0.0F, getStayHeight() });
     localObjectAnimator.setDuration(250L);
     localObjectAnimator.setInterpolator(new DecelerateInterpolator());
     localObjectAnimator.start();
@@ -61,11 +60,11 @@ public final class l
       {
         AppMethodBeat.i(41063);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        l.this.Cq((int)f);
+        l.this.CG((int)f);
         AppMethodBeat.o(41063);
       }
     });
-    ceO();
+    cFr();
     AppMethodBeat.o(41067);
   }
   
@@ -79,19 +78,19 @@ public final class l
   
   public final void setOnPullDownListener(a parama)
   {
-    this.CFA = parama;
+    this.IzE = parama;
   }
   
   static abstract interface a
   {
-    public abstract void ceO();
+    public abstract void cFr();
     
-    public abstract void exC();
+    public abstract void fFy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.l
  * JD-Core Version:    0.7.0.1
  */

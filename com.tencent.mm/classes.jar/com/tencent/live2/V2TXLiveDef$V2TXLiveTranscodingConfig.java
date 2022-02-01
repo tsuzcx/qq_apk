@@ -34,7 +34,7 @@ public final class V2TXLiveDef$V2TXLiveTranscodingConfig
   
   public V2TXLiveDef$V2TXLiveTranscodingConfig(V2TXLiveTranscodingConfig paramV2TXLiveTranscodingConfig)
   {
-    AppMethodBeat.i(215787);
+    AppMethodBeat.i(211327);
     this.videoWidth = paramV2TXLiveTranscodingConfig.videoWidth;
     this.videoHeight = paramV2TXLiveTranscodingConfig.videoHeight;
     this.videoBitrate = paramV2TXLiveTranscodingConfig.videoBitrate;
@@ -47,20 +47,20 @@ public final class V2TXLiveDef$V2TXLiveTranscodingConfig
     this.audioChannels = paramV2TXLiveTranscodingConfig.audioChannels;
     this.outputStreamId = paramV2TXLiveTranscodingConfig.outputStreamId;
     this.mixStreams = new ArrayList(paramV2TXLiveTranscodingConfig.mixStreams);
-    AppMethodBeat.o(215787);
+    AppMethodBeat.o(211327);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(215789);
+    AppMethodBeat.i(211334);
     String str = "[videoWidth=" + this.videoWidth + "][videoHeight=" + this.videoHeight + "][videoBitrate=" + this.videoBitrate + "][videoFramerate=" + this.videoFramerate + "][videoGOP=" + this.videoGOP + "][backgroundColor=" + this.backgroundColor + "][backgroundImage='" + this.backgroundImage + '\'' + "][audioSampleRate=" + this.audioSampleRate + "][audioBitrate=" + this.audioBitrate + "][audioChannels=" + this.audioChannels + "][mixStreams=" + this.mixStreams + "][outputStreamId='" + this.outputStreamId + '\'' + ']';
-    AppMethodBeat.o(215789);
+    AppMethodBeat.o(211334);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.live2.V2TXLiveDef.V2TXLiveTranscodingConfig
  * JD-Core Version:    0.7.0.1
  */

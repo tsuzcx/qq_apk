@@ -4,44 +4,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  String QLQ;
-  public String QLR;
-  String QLS;
-  public String QLT;
-  public long QLU;
-  boolean QLV;
-  int QLW;
-  int QLX;
-  boolean QLY;
-  a QLZ;
-  public String QMa;
+  public String IkN;
+  String XFp;
+  public String XFq;
+  String XFr;
+  public long XFs;
+  boolean XFt;
+  int XFu;
+  int XFv;
+  boolean XFw;
+  a XFx;
+  public String XFy;
   String mFilePath;
   public long mStartTime;
   public String mUrl;
-  String ovC;
-  public int uhG;
-  int vds;
+  String ryW;
+  public int xnM;
+  int ypf;
   
   public f(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, long paramLong, String paramString8, boolean paramBoolean, a parama)
   {
     AppMethodBeat.i(110619);
-    this.QLQ = paramString1;
-    this.uhG = paramInt;
-    this.QLR = paramString2;
-    this.QLS = paramString3;
-    this.QLT = paramString4;
+    this.XFp = paramString1;
+    this.xnM = paramInt;
+    this.XFq = paramString2;
+    this.XFr = paramString3;
+    this.IkN = paramString4;
     this.mUrl = paramString6;
     this.mFilePath = paramString7;
-    this.QLU = paramLong;
-    this.ovC = paramString8;
-    this.QLV = paramBoolean;
-    this.QLZ = parama;
-    this.QLW = 20000;
-    this.QLX = 20000;
-    this.vds = 3;
-    this.QLY = true;
+    this.XFs = paramLong;
+    this.ryW = paramString8;
+    this.XFt = paramBoolean;
+    this.XFx = parama;
+    this.XFu = 20000;
+    this.XFv = 20000;
+    this.ypf = 3;
+    this.XFw = true;
     this.mStartTime = System.currentTimeMillis();
-    this.QMa = paramString5;
+    this.XFy = paramString5;
     AppMethodBeat.o(110619);
   }
 }

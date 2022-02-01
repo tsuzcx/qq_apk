@@ -2,39 +2,34 @@ package com.tencent.mm.plugin.mmsight.ui.cameraglview;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
-import android.opengl.GLSurfaceView.EGLContextFactory;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
 
 public class MMSightCameraGLSurfaceView
   extends GLSurfaceView
 {
-  b Fjb;
-  int lfC;
-  int nqW;
-  int nqX;
-  private int nrh;
+  b Ley;
+  int nKn;
+  int qpD;
+  int qpE;
+  private int qpO;
   
   public MMSightCameraGLSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94779);
-    this.Fjb = null;
-    this.nrh = 0;
+    this.Ley = null;
+    this.qpO = 0;
     getHolder().addCallback(this);
     try
     {
       getHolder().setType(2);
-      setEGLContextFactory(new b());
+      setEGLContextFactory(new MMSightCameraGLSurfaceView.b(this));
       setEGLConfigChooser(new MMSightCameraGLSurfaceView.a(this));
-      this.Fjb = new b();
-      setRenderer(this.Fjb);
+      this.Ley = new b();
+      setRenderer(this.Ley);
       setRenderMode(0);
       AppMethodBeat.o(94779);
       return;
@@ -59,33 +54,33 @@ public class MMSightCameraGLSurfaceView
     }
   }
   
-  public final void aMN()
+  public final void aT(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(94780);
+    Log.i("MicroMsg.MMSightCameraGLSurfaceView", "setFrameInfo, width: %s, height: %s, rotate: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
+    this.qpD = paramInt1;
+    this.qpE = paramInt2;
+    this.nKn = paramInt3;
+    AppMethodBeat.o(94780);
+  }
+  
+  public final void bgx()
   {
     AppMethodBeat.i(94782);
-    if (this.Fjb != null)
+    if (this.Ley != null)
     {
-      this.Fjb.nrc = true;
+      this.Ley.qpJ = true;
       requestRender();
     }
     AppMethodBeat.o(94782);
   }
   
-  public final void av(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(94780);
-    Log.i("MicroMsg.MMSightCameraGLSurfaceView", "setFrameInfo, width: %s, height: %s, rotate: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
-    this.nqW = paramInt1;
-    this.nqX = paramInt2;
-    this.lfC = paramInt3;
-    AppMethodBeat.o(94780);
-  }
-  
   public final void e(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(94781);
-    if ((paramArrayOfByte != null) && (this.Fjb != null) && (!this.Fjb.nqV))
+    if ((paramArrayOfByte != null) && (this.Ley != null) && (!this.Ley.qpC))
     {
-      this.Fjb.b(paramArrayOfByte, this.nqW, this.nqX, paramInt, paramBoolean);
+      this.Ley.b(paramArrayOfByte, this.qpD, this.qpE, paramInt, paramBoolean);
       requestRender();
       AppMethodBeat.o(94781);
       return;
@@ -96,22 +91,22 @@ public class MMSightCameraGLSurfaceView
   
   public int getFrameHeight()
   {
-    return this.nqX;
+    return this.qpE;
   }
   
   public int getFrameRotate()
   {
-    return this.lfC;
+    return this.nKn;
   }
   
   public int getFrameWidth()
   {
-    return this.nqW;
+    return this.qpD;
   }
   
   public b getRenderer()
   {
-    return this.Fjb;
+    return this.Ley;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
@@ -137,35 +132,10 @@ public class MMSightCameraGLSurfaceView
     Log.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceDestroyed: %s this: %s", new Object[] { paramSurfaceHolder, this });
     AppMethodBeat.o(94784);
   }
-  
-  final class b
-    implements GLSurfaceView.EGLContextFactory
-  {
-    private int jCT = 12440;
-    
-    b() {}
-    
-    public final EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
-    {
-      AppMethodBeat.i(94777);
-      Log.w("MicroMsg.MMSightCameraGLSurfaceView", "creating OpenGL ES 2.0 context");
-      int i = this.jCT;
-      paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-      AppMethodBeat.o(94777);
-      return paramEGL10;
-    }
-    
-    public final void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-    {
-      AppMethodBeat.i(94778);
-      paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
-      AppMethodBeat.o(94778);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.cameraglview.MMSightCameraGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

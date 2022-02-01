@@ -9,64 +9,64 @@ import java.util.Locale;
 
 public final class b
 {
-  private static Method LZ;
-  private static Method Ma;
+  private static Method bsf;
+  private static Method bsg;
   
   static
   {
-    AppMethodBeat.i(251221);
+    AppMethodBeat.i(195479);
     if (Build.VERSION.SDK_INT < 21) {
       try
       {
         Class localClass = Class.forName("libcore.icu.ICU");
         if (localClass != null)
         {
-          LZ = localClass.getMethod("getScript", new Class[] { String.class });
-          Ma = localClass.getMethod("addLikelySubtags", new Class[] { String.class });
+          bsf = localClass.getMethod("getScript", new Class[] { String.class });
+          bsg = localClass.getMethod("addLikelySubtags", new Class[] { String.class });
         }
-        AppMethodBeat.o(251221);
+        AppMethodBeat.o(195479);
         return;
       }
       catch (Exception localException1)
       {
-        LZ = null;
-        Ma = null;
-        AppMethodBeat.o(251221);
+        bsf = null;
+        bsg = null;
+        AppMethodBeat.o(195479);
         return;
       }
     }
     if (Build.VERSION.SDK_INT < 24) {
       try
       {
-        Ma = Class.forName("libcore.icu.ICU").getMethod("addLikelySubtags", new Class[] { Locale.class });
-        AppMethodBeat.o(251221);
+        bsg = Class.forName("libcore.icu.ICU").getMethod("addLikelySubtags", new Class[] { Locale.class });
+        AppMethodBeat.o(195479);
         return;
       }
       catch (Exception localException2)
       {
         IllegalStateException localIllegalStateException = new IllegalStateException(localException2);
-        AppMethodBeat.o(251221);
+        AppMethodBeat.o(195479);
         throw localIllegalStateException;
       }
     }
-    AppMethodBeat.o(251221);
+    AppMethodBeat.o(195479);
   }
   
-  private static String E(String paramString)
+  private static String ay(String paramString)
   {
-    AppMethodBeat.i(251219);
+    AppMethodBeat.i(195458);
     try
     {
-      if (LZ != null)
+      if (bsf != null)
       {
-        paramString = (String)LZ.invoke(null, new Object[] { paramString });
-        AppMethodBeat.o(251219);
+        paramString = (String)bsf.invoke(null, new Object[] { paramString });
+        AppMethodBeat.o(195458);
         return paramString;
       }
     }
     catch (InvocationTargetException paramString)
     {
-      AppMethodBeat.o(251219);
+      AppMethodBeat.o(195458);
       return null;
     }
     catch (IllegalAccessException paramString)
@@ -78,33 +78,33 @@ public final class b
   
   public static String b(Locale paramLocale)
   {
-    AppMethodBeat.i(251218);
+    AppMethodBeat.i(195449);
     if (Build.VERSION.SDK_INT >= 24)
     {
       paramLocale = ULocale.addLikelySubtags(ULocale.forLocale(paramLocale)).getScript();
-      AppMethodBeat.o(251218);
+      AppMethodBeat.o(195449);
       return paramLocale;
     }
     if (Build.VERSION.SDK_INT >= 21) {}
     try
     {
-      String str = ((Locale)Ma.invoke(null, new Object[] { paramLocale })).getScript();
-      AppMethodBeat.o(251218);
+      String str = ((Locale)bsg.invoke(null, new Object[] { paramLocale })).getScript();
+      AppMethodBeat.o(195449);
       return str;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
       paramLocale = paramLocale.getScript();
-      AppMethodBeat.o(251218);
+      AppMethodBeat.o(195449);
       return paramLocale;
       paramLocale = c(paramLocale);
       if (paramLocale != null)
       {
-        paramLocale = E(paramLocale);
-        AppMethodBeat.o(251218);
+        paramLocale = ay(paramLocale);
+        AppMethodBeat.o(195449);
         return paramLocale;
       }
-      AppMethodBeat.o(251218);
+      AppMethodBeat.o(195449);
       return null;
     }
     catch (InvocationTargetException localInvocationTargetException)
@@ -116,20 +116,20 @@ public final class b
   
   private static String c(Locale paramLocale)
   {
-    AppMethodBeat.i(251220);
+    AppMethodBeat.i(195465);
     paramLocale = paramLocale.toString();
     try
     {
-      if (Ma != null)
+      if (bsg != null)
       {
-        String str = (String)Ma.invoke(null, new Object[] { paramLocale });
-        AppMethodBeat.o(251220);
+        String str = (String)bsg.invoke(null, new Object[] { paramLocale });
+        AppMethodBeat.o(195465);
         return str;
       }
     }
     catch (InvocationTargetException localInvocationTargetException)
     {
-      AppMethodBeat.o(251220);
+      AppMethodBeat.o(195465);
       return paramLocale;
     }
     catch (IllegalAccessException localIllegalAccessException)
@@ -141,7 +141,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.core.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,23 +23,23 @@ public class FlexboxLayout
   extends ViewGroup
   implements a
 {
-  private List<b> bsY;
-  private int bta;
-  private int btb;
-  private int btc;
-  private int btd;
-  private int bte;
-  private int btf;
-  private Drawable btg;
-  private Drawable bth;
-  private int bti;
-  private int btj;
-  private int btk;
-  private int btl;
-  private int[] btm;
-  private SparseIntArray bto;
-  private c btp;
-  private c.a btq;
+  private List<b> dmC;
+  private int dmE;
+  private int dmF;
+  private int dmG;
+  private int dmH;
+  private int dmI;
+  private int dmJ;
+  private Drawable dmK;
+  private Drawable dmL;
+  private int dmM;
+  private int dmN;
+  private int dmO;
+  private int dmP;
+  private int[] dmQ;
+  private SparseIntArray dmR;
+  private c dmS;
+  private c.a dmT;
   
   public FlexboxLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -50,59 +50,72 @@ public class FlexboxLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(62270);
-    this.btf = -1;
-    this.btp = new c(this);
-    this.bsY = new ArrayList();
-    this.btq = new c.a();
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, d.a.btN, paramInt, 0);
-    this.bta = paramContext.getInt(d.a.btT, 0);
-    this.btb = paramContext.getInt(d.a.btU, 0);
-    this.btc = paramContext.getInt(d.a.btV, 0);
-    this.btd = paramContext.getInt(d.a.btP, 4);
-    this.bte = paramContext.getInt(d.a.btO, 5);
-    this.btf = paramContext.getInt(d.a.btW, -1);
-    paramAttributeSet = paramContext.getDrawable(d.a.btQ);
+    this.dmJ = -1;
+    this.dmS = new c(this);
+    this.dmC = new ArrayList();
+    this.dmT = new c.a();
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, d.a.FlexboxLayout, paramInt, 0);
+    this.dmE = paramContext.getInt(d.a.FlexboxLayout_flexDirection, 0);
+    this.dmF = paramContext.getInt(d.a.FlexboxLayout_flexWrap, 0);
+    this.dmG = paramContext.getInt(d.a.FlexboxLayout_justifyContent, 0);
+    this.dmH = paramContext.getInt(d.a.FlexboxLayout_alignItems, 0);
+    this.dmI = paramContext.getInt(d.a.FlexboxLayout_alignContent, 0);
+    this.dmJ = paramContext.getInt(d.a.FlexboxLayout_maxLine, -1);
+    paramAttributeSet = paramContext.getDrawable(d.a.FlexboxLayout_dividerDrawable);
     if (paramAttributeSet != null)
     {
       setDividerDrawableHorizontal(paramAttributeSet);
       setDividerDrawableVertical(paramAttributeSet);
     }
-    paramAttributeSet = paramContext.getDrawable(d.a.btR);
+    paramAttributeSet = paramContext.getDrawable(d.a.FlexboxLayout_dividerDrawableHorizontal);
     if (paramAttributeSet != null) {
       setDividerDrawableHorizontal(paramAttributeSet);
     }
-    paramAttributeSet = paramContext.getDrawable(d.a.btS);
+    paramAttributeSet = paramContext.getDrawable(d.a.FlexboxLayout_dividerDrawableVertical);
     if (paramAttributeSet != null) {
       setDividerDrawableVertical(paramAttributeSet);
     }
-    paramInt = paramContext.getInt(d.a.btX, 0);
+    paramInt = paramContext.getInt(d.a.FlexboxLayout_showDivider, 0);
     if (paramInt != 0)
     {
-      this.btj = paramInt;
-      this.bti = paramInt;
+      this.dmN = paramInt;
+      this.dmM = paramInt;
     }
-    paramInt = paramContext.getInt(d.a.btZ, 0);
+    paramInt = paramContext.getInt(d.a.FlexboxLayout_showDividerVertical, 0);
     if (paramInt != 0) {
-      this.btj = paramInt;
+      this.dmN = paramInt;
     }
-    paramInt = paramContext.getInt(d.a.btY, 0);
+    paramInt = paramContext.getInt(d.a.FlexboxLayout_showDividerHorizontal, 0);
     if (paramInt != 0) {
-      this.bti = paramInt;
+      this.dmM = paramInt;
     }
     paramContext.recycle();
     AppMethodBeat.o(62270);
   }
   
+  private void Vn()
+  {
+    AppMethodBeat.i(62308);
+    if ((this.dmK == null) && (this.dmL == null))
+    {
+      setWillNotDraw(true);
+      AppMethodBeat.o(62308);
+      return;
+    }
+    setWillNotDraw(false);
+    AppMethodBeat.o(62308);
+  }
+  
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62287);
-    if (this.bth == null)
+    if (this.dmL == null)
     {
       AppMethodBeat.o(62287);
       return;
     }
-    this.bth.setBounds(paramInt1, paramInt2, this.btl + paramInt1, paramInt2 + paramInt3);
-    this.bth.draw(paramCanvas);
+    this.dmL.setBounds(paramInt1, paramInt2, this.dmP + paramInt1, paramInt2 + paramInt3);
+    this.dmL.draw(paramCanvas);
     AppMethodBeat.o(62287);
   }
   
@@ -112,68 +125,68 @@ public class FlexboxLayout
     int m = getPaddingLeft();
     int i = getPaddingRight();
     int n = Math.max(0, getWidth() - i - m);
-    int i1 = this.bsY.size();
+    int i1 = this.dmC.size();
     i = 0;
     if (i < i1)
     {
-      b localb = (b)this.bsY.get(i);
+      b localb = (b)this.dmC.get(i);
       int j = 0;
-      if (j < localb.alU)
+      if (j < localb.cau)
       {
-        int k = localb.bsS + j;
-        View localView = fK(k);
+        int k = localb.dmu + j;
+        View localView = iZ(k);
         LayoutParams localLayoutParams;
         if ((localView != null) && (localView.getVisibility() != 8))
         {
           localLayoutParams = (LayoutParams)localView.getLayoutParams();
-          if (bu(k, j))
+          if (cp(k, j))
           {
             if (!paramBoolean1) {
               break label240;
             }
             k = localView.getRight() + localLayoutParams.rightMargin;
             label154:
-            a(paramCanvas, k, localb.apP, localb.bsL);
+            a(paramCanvas, k, localb.cey, localb.dmn);
           }
-          if ((j == localb.alU - 1) && ((this.btj & 0x4) > 0)) {
+          if ((j == localb.cau - 1) && ((this.dmN & 0x4) > 0)) {
             if (!paramBoolean1) {
               break label261;
             }
           }
         }
-        for (k = localView.getLeft() - localLayoutParams.leftMargin - this.btl;; k = localLayoutParams.rightMargin + k)
+        for (k = localView.getLeft() - localLayoutParams.leftMargin - this.dmP;; k = localLayoutParams.rightMargin + k)
         {
-          a(paramCanvas, k, localb.apP, localb.bsL);
+          a(paramCanvas, k, localb.cey, localb.dmn);
           j += 1;
           break;
           label240:
-          k = localView.getLeft() - localLayoutParams.leftMargin - this.btl;
+          k = localView.getLeft() - localLayoutParams.leftMargin - this.dmP;
           break label154;
           label261:
           k = localView.getRight();
         }
       }
-      if (fL(i))
+      if (ja(i))
       {
         if (paramBoolean2)
         {
-          j = localb.apQ;
+          j = localb.cez;
           label301:
           b(paramCanvas, m, j, n);
         }
       }
-      else if ((fN(i)) && ((this.bti & 0x4) > 0)) {
+      else if ((jc(i)) && ((this.dmM & 0x4) > 0)) {
         if (!paramBoolean2) {
           break label381;
         }
       }
       label381:
-      for (j = localb.apP - this.btk;; j = localb.apQ)
+      for (j = localb.cey - this.dmO;; j = localb.cez)
       {
         b(paramCanvas, m, j, n);
         i += 1;
         break;
-        j = localb.apP - this.btk;
+        j = localb.cey - this.dmO;
         break label301;
       }
     }
@@ -189,7 +202,7 @@ public class FlexboxLayout
     int i = getPaddingLeft();
     int i1 = paramInt4 - paramInt2;
     paramInt1 = paramInt3 - paramInt1 - j;
-    int i2 = this.bsY.size();
+    int i2 = this.dmC.size();
     paramInt3 = 0;
     paramInt2 = i;
     Object localObject;
@@ -204,21 +217,21 @@ public class FlexboxLayout
     int k;
     if (paramInt3 < i2)
     {
-      localObject = (b)this.bsY.get(paramInt3);
+      localObject = (b)this.dmC.get(paramInt3);
       paramInt4 = paramInt1;
       i = paramInt2;
-      if (fL(paramInt3))
+      if (ja(paramInt3))
       {
-        i = paramInt2 + this.btl;
-        paramInt4 = paramInt1 - this.btl;
+        i = paramInt2 + this.dmP;
+        paramInt4 = paramInt1 - this.dmP;
       }
       f1 = 0.0F;
       f2 = 0.0F;
       f3 = 0.0F;
-      switch (this.btc)
+      switch (this.dmG)
       {
       default: 
-        localObject = new IllegalStateException("Invalid justifyContent is set: " + this.btc);
+        localObject = new IllegalStateException("Invalid justifyContent is set: " + this.dmG);
         AppMethodBeat.o(62283);
         throw ((Throwable)localObject);
       case 0: 
@@ -227,10 +240,10 @@ public class FlexboxLayout
         f5 = Math.max(f3, 0.0F);
         paramInt1 = 0;
         f3 = f2;
-        if (paramInt1 < ((b)localObject).alU)
+        if (paramInt1 < ((b)localObject).cau)
         {
-          j = ((b)localObject).bsS + paramInt1;
-          localView = fK(j);
+          j = ((b)localObject).dmu + paramInt1;
+          localView = iZ(j);
           f2 = f3;
           f4 = f1;
           if (localView != null)
@@ -244,10 +257,10 @@ public class FlexboxLayout
               f1 -= localLayoutParams.bottomMargin;
               paramInt2 = 0;
               k = 0;
-              if (!bu(j, paramInt1)) {
+              if (!cp(j, paramInt1)) {
                 break label939;
               }
-              paramInt2 = this.btk;
+              paramInt2 = this.dmO;
               f3 = paramInt2;
               f1 -= paramInt2;
               f2 += f3;
@@ -261,17 +274,17 @@ public class FlexboxLayout
     for (;;)
     {
       j = k;
-      if (paramInt1 == ((b)localObject).alU - 1)
+      if (paramInt1 == ((b)localObject).cau - 1)
       {
         j = k;
-        if ((this.bti & 0x4) > 0) {
-          j = this.btk;
+        if ((this.dmM & 0x4) > 0) {
+          j = this.dmO;
         }
       }
       if (paramBoolean1) {
         if (paramBoolean2)
         {
-          this.btp.a(localView, (b)localObject, true, paramInt4 - localView.getMeasuredWidth(), Math.round(f1) - localView.getMeasuredHeight(), paramInt4, Math.round(f1));
+          this.dmS.a(localView, (b)localObject, true, paramInt4 - localView.getMeasuredWidth(), Math.round(f1) - localView.getMeasuredHeight(), paramInt4, Math.round(f1));
           label448:
           f2 += localView.getMeasuredHeight() + f5 + localLayoutParams.bottomMargin;
           f1 -= localView.getMeasuredHeight() + f5 + localLayoutParams.topMargin;
@@ -286,55 +299,55 @@ public class FlexboxLayout
         paramInt1 += 1;
         f3 = f2;
         break label237;
-        f2 = i1 - ((b)localObject).bsJ + n;
-        f1 = ((b)localObject).bsJ - m;
+        f2 = i1 - ((b)localObject).dml + n;
+        f1 = ((b)localObject).dml - m;
         break;
         f1 = m;
-        f2 = (i1 - ((b)localObject).bsJ) / 2.0F + f1;
-        f1 = i1 - n - (i1 - ((b)localObject).bsJ) / 2.0F;
+        f2 = (i1 - ((b)localObject).dml) / 2.0F + f1;
+        f1 = i1 - n - (i1 - ((b)localObject).dml) / 2.0F;
         break;
-        paramInt1 = ((b)localObject).vM();
+        paramInt1 = ((b)localObject).Vl();
         f3 = f1;
         if (paramInt1 != 0) {
-          f3 = (i1 - ((b)localObject).bsJ) / paramInt1;
+          f3 = (i1 - ((b)localObject).dml) / paramInt1;
         }
         f1 = m;
         f2 = f3 / 2.0F + f1;
         f1 = i1 - n - f3 / 2.0F;
         break;
         f2 = m;
-        paramInt1 = ((b)localObject).vM();
+        paramInt1 = ((b)localObject).Vl();
         if (paramInt1 != 1) {}
         for (f1 = paramInt1 - 1;; f1 = 1.0F)
         {
-          f3 = (i1 - ((b)localObject).bsJ) / f1;
+          f3 = (i1 - ((b)localObject).dml) / f1;
           f1 = i1 - n;
           break;
         }
-        paramInt1 = ((b)localObject).vM();
+        paramInt1 = ((b)localObject).Vl();
         f3 = f2;
         if (paramInt1 != 0) {
-          f3 = (i1 - ((b)localObject).bsJ) / (paramInt1 + 1);
+          f3 = (i1 - ((b)localObject).dml) / (paramInt1 + 1);
         }
         f2 = m + f3;
         f1 = i1 - n - f3;
         break;
-        this.btp.a(localView, (b)localObject, true, paramInt4 - localView.getMeasuredWidth(), Math.round(f2), paramInt4, Math.round(f2) + localView.getMeasuredHeight());
+        this.dmS.a(localView, (b)localObject, true, paramInt4 - localView.getMeasuredWidth(), Math.round(f2), paramInt4, Math.round(f2) + localView.getMeasuredHeight());
         break label448;
         if (paramBoolean2)
         {
-          this.btp.a(localView, (b)localObject, false, i, Math.round(f1) - localView.getMeasuredHeight(), i + localView.getMeasuredWidth(), Math.round(f1));
+          this.dmS.a(localView, (b)localObject, false, i, Math.round(f1) - localView.getMeasuredHeight(), i + localView.getMeasuredWidth(), Math.round(f1));
           break label448;
         }
-        this.btp.a(localView, (b)localObject, false, i, Math.round(f2), i + localView.getMeasuredWidth(), Math.round(f2) + localView.getMeasuredHeight());
+        this.dmS.a(localView, (b)localObject, false, i, Math.round(f2), i + localView.getMeasuredWidth(), Math.round(f2) + localView.getMeasuredHeight());
         break label448;
         label880:
         ((b)localObject).k(localView, 0, paramInt2, 0, j);
         f4 = f1;
         f1 = f4;
       }
-      paramInt2 = i + ((b)localObject).bsL;
-      paramInt1 = paramInt4 - ((b)localObject).bsL;
+      paramInt2 = i + ((b)localObject).dmn;
+      paramInt1 = paramInt4 - ((b)localObject).dmn;
       paramInt3 += 1;
       break;
       AppMethodBeat.o(62283);
@@ -345,13 +358,13 @@ public class FlexboxLayout
   private void b(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62288);
-    if (this.btg == null)
+    if (this.dmK == null)
     {
       AppMethodBeat.o(62288);
       return;
     }
-    this.btg.setBounds(paramInt1, paramInt2, paramInt1 + paramInt3, this.btk + paramInt2);
-    this.btg.draw(paramCanvas);
+    this.dmK.setBounds(paramInt1, paramInt2, paramInt1 + paramInt3, this.dmO + paramInt2);
+    this.dmK.draw(paramCanvas);
     AppMethodBeat.o(62288);
   }
   
@@ -361,68 +374,68 @@ public class FlexboxLayout
     int m = getPaddingTop();
     int i = getPaddingBottom();
     int n = Math.max(0, getHeight() - i - m);
-    int i1 = this.bsY.size();
+    int i1 = this.dmC.size();
     i = 0;
     if (i < i1)
     {
-      b localb = (b)this.bsY.get(i);
+      b localb = (b)this.dmC.get(i);
       int j = 0;
-      if (j < localb.alU)
+      if (j < localb.cau)
       {
-        int k = localb.bsS + j;
-        View localView = fK(k);
+        int k = localb.dmu + j;
+        View localView = iZ(k);
         LayoutParams localLayoutParams;
         if ((localView != null) && (localView.getVisibility() != 8))
         {
           localLayoutParams = (LayoutParams)localView.getLayoutParams();
-          if (bu(k, j))
+          if (cp(k, j))
           {
             if (!paramBoolean2) {
               break label241;
             }
             k = localView.getBottom() + localLayoutParams.bottomMargin;
             label155:
-            b(paramCanvas, localb.tF, k, localb.bsL);
+            b(paramCanvas, localb.uE, k, localb.dmn);
           }
-          if ((j == localb.alU - 1) && ((this.bti & 0x4) > 0)) {
+          if ((j == localb.cau - 1) && ((this.dmM & 0x4) > 0)) {
             if (!paramBoolean2) {
               break label262;
             }
           }
         }
-        for (k = localView.getTop() - localLayoutParams.topMargin - this.btk;; k = localLayoutParams.bottomMargin + k)
+        for (k = localView.getTop() - localLayoutParams.topMargin - this.dmO;; k = localLayoutParams.bottomMargin + k)
         {
-          b(paramCanvas, localb.tF, k, localb.bsL);
+          b(paramCanvas, localb.uE, k, localb.dmn);
           j += 1;
           break;
           label241:
-          k = localView.getTop() - localLayoutParams.topMargin - this.btk;
+          k = localView.getTop() - localLayoutParams.topMargin - this.dmO;
           break label155;
           label262:
           k = localView.getBottom();
         }
       }
-      if (fL(i))
+      if (ja(i))
       {
         if (paramBoolean1)
         {
-          j = localb.tG;
+          j = localb.uF;
           label302:
           a(paramCanvas, j, m, n);
         }
       }
-      else if ((fN(i)) && ((this.btj & 0x4) > 0)) {
+      else if ((jc(i)) && ((this.dmN & 0x4) > 0)) {
         if (!paramBoolean1) {
           break label382;
         }
       }
       label382:
-      for (j = localb.tF - this.btl;; j = localb.tG)
+      for (j = localb.uE - this.dmP;; j = localb.uF)
       {
         a(paramCanvas, j, m, n);
         i += 1;
         break;
-        j = localb.tF - this.btl;
+        j = localb.uE - this.dmP;
         break label302;
       }
     }
@@ -437,7 +450,7 @@ public class FlexboxLayout
     int i1 = paramInt3 - paramInt1;
     paramInt2 = paramInt4 - paramInt2 - getPaddingBottom();
     paramInt1 = getPaddingTop();
-    int i2 = this.bsY.size();
+    int i2 = this.dmC.size();
     paramInt3 = 0;
     Object localObject;
     int i;
@@ -453,21 +466,21 @@ public class FlexboxLayout
     int k;
     if (paramInt3 < i2)
     {
-      localObject = (b)this.bsY.get(paramInt3);
+      localObject = (b)this.dmC.get(paramInt3);
       paramInt4 = paramInt2;
       i = paramInt1;
-      if (fL(paramInt3))
+      if (ja(paramInt3))
       {
-        paramInt4 = paramInt2 - this.btk;
-        i = paramInt1 + this.btk;
+        paramInt4 = paramInt2 - this.dmO;
+        i = paramInt1 + this.dmO;
       }
       f1 = 0.0F;
       f2 = 0.0F;
       f3 = 0.0F;
-      switch (this.btc)
+      switch (this.dmG)
       {
       default: 
-        localObject = new IllegalStateException("Invalid justifyContent is set: " + this.btc);
+        localObject = new IllegalStateException("Invalid justifyContent is set: " + this.dmG);
         AppMethodBeat.o(62282);
         throw ((Throwable)localObject);
       case 0: 
@@ -476,10 +489,10 @@ public class FlexboxLayout
         f5 = Math.max(f3, 0.0F);
         paramInt1 = 0;
         f3 = f2;
-        if (paramInt1 < ((b)localObject).alU)
+        if (paramInt1 < ((b)localObject).cau)
         {
-          j = ((b)localObject).bsS + paramInt1;
-          localView = fK(j);
+          j = ((b)localObject).dmu + paramInt1;
+          localView = iZ(j);
           f2 = f3;
           f4 = f1;
           if (localView != null)
@@ -493,10 +506,10 @@ public class FlexboxLayout
               f1 -= localLayoutParams.rightMargin;
               paramInt2 = 0;
               k = 0;
-              if (!bu(j, paramInt1)) {
+              if (!cp(j, paramInt1)) {
                 break label920;
               }
-              paramInt2 = this.btl;
+              paramInt2 = this.dmP;
               f3 = paramInt2;
               f1 -= paramInt2;
               f2 += f3;
@@ -510,17 +523,17 @@ public class FlexboxLayout
     for (;;)
     {
       j = k;
-      if (paramInt1 == ((b)localObject).alU - 1)
+      if (paramInt1 == ((b)localObject).cau - 1)
       {
         j = k;
-        if ((this.btj & 0x4) > 0) {
-          j = this.btl;
+        if ((this.dmN & 0x4) > 0) {
+          j = this.dmP;
         }
       }
-      if (this.btb == 2) {
+      if (this.dmF == 2) {
         if (paramBoolean)
         {
-          this.btp.a(localView, (b)localObject, Math.round(f1) - localView.getMeasuredWidth(), paramInt4 - localView.getMeasuredHeight(), Math.round(f1), paramInt4);
+          this.dmS.a(localView, (b)localObject, Math.round(f1) - localView.getMeasuredWidth(), paramInt4 - localView.getMeasuredHeight(), Math.round(f1), paramInt4);
           label435:
           f2 += localView.getMeasuredWidth() + f5 + localLayoutParams.rightMargin;
           f1 -= localView.getMeasuredWidth() + f5 + localLayoutParams.leftMargin;
@@ -535,55 +548,55 @@ public class FlexboxLayout
         paramInt1 += 1;
         f3 = f2;
         break label225;
-        f2 = i1 - ((b)localObject).bsJ + n;
-        f1 = ((b)localObject).bsJ - m;
+        f2 = i1 - ((b)localObject).dml + n;
+        f1 = ((b)localObject).dml - m;
         break;
         f1 = m;
-        f2 = (i1 - ((b)localObject).bsJ) / 2.0F + f1;
-        f1 = i1 - n - (i1 - ((b)localObject).bsJ) / 2.0F;
+        f2 = (i1 - ((b)localObject).dml) / 2.0F + f1;
+        f1 = i1 - n - (i1 - ((b)localObject).dml) / 2.0F;
         break;
-        paramInt1 = ((b)localObject).vM();
+        paramInt1 = ((b)localObject).Vl();
         f3 = f1;
         if (paramInt1 != 0) {
-          f3 = (i1 - ((b)localObject).bsJ) / paramInt1;
+          f3 = (i1 - ((b)localObject).dml) / paramInt1;
         }
         f1 = m;
         f2 = f3 / 2.0F + f1;
         f1 = i1 - n - f3 / 2.0F;
         break;
         f2 = m;
-        paramInt1 = ((b)localObject).vM();
+        paramInt1 = ((b)localObject).Vl();
         if (paramInt1 != 1) {}
         for (f1 = paramInt1 - 1;; f1 = 1.0F)
         {
-          f3 = (i1 - ((b)localObject).bsJ) / f1;
+          f3 = (i1 - ((b)localObject).dml) / f1;
           f1 = i1 - n;
           break;
         }
-        paramInt1 = ((b)localObject).vM();
+        paramInt1 = ((b)localObject).Vl();
         f3 = f2;
         if (paramInt1 != 0) {
-          f3 = (i1 - ((b)localObject).bsJ) / (paramInt1 + 1);
+          f3 = (i1 - ((b)localObject).dml) / (paramInt1 + 1);
         }
         f2 = m + f3;
         f1 = i1 - n - f3;
         break;
-        this.btp.a(localView, (b)localObject, Math.round(f2), paramInt4 - localView.getMeasuredHeight(), Math.round(f2) + localView.getMeasuredWidth(), paramInt4);
+        this.dmS.a(localView, (b)localObject, Math.round(f2), paramInt4 - localView.getMeasuredHeight(), Math.round(f2) + localView.getMeasuredWidth(), paramInt4);
         break label435;
         if (paramBoolean)
         {
-          this.btp.a(localView, (b)localObject, Math.round(f1) - localView.getMeasuredWidth(), i, Math.round(f1), i + localView.getMeasuredHeight());
+          this.dmS.a(localView, (b)localObject, Math.round(f1) - localView.getMeasuredWidth(), i, Math.round(f1), i + localView.getMeasuredHeight());
           break label435;
         }
-        this.btp.a(localView, (b)localObject, Math.round(f2), i, Math.round(f2) + localView.getMeasuredWidth(), i + localView.getMeasuredHeight());
+        this.dmS.a(localView, (b)localObject, Math.round(f2), i, Math.round(f2) + localView.getMeasuredWidth(), i + localView.getMeasuredHeight());
         break label435;
         label863:
         ((b)localObject).k(localView, paramInt2, 0, j, 0);
         f4 = f1;
         f1 = f4;
       }
-      paramInt1 = i + ((b)localObject).bsL;
-      paramInt2 = paramInt4 - ((b)localObject).bsL;
+      paramInt1 = i + ((b)localObject).dmn;
+      paramInt2 = paramInt4 - ((b)localObject).dmn;
       paramInt3 += 1;
       break;
       AppMethodBeat.o(62282);
@@ -591,14 +604,14 @@ public class FlexboxLayout
     }
   }
   
-  private boolean bu(int paramInt1, int paramInt2)
+  private boolean cp(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(62309);
-    if (bv(paramInt1, paramInt2))
+    if (cq(paramInt1, paramInt2))
     {
-      if (vF())
+      if (Ve())
       {
-        if ((this.btj & 0x1) != 0)
+        if ((this.dmN & 0x1) != 0)
         {
           AppMethodBeat.o(62309);
           return true;
@@ -606,7 +619,7 @@ public class FlexboxLayout
         AppMethodBeat.o(62309);
         return false;
       }
-      if ((this.bti & 0x1) != 0)
+      if ((this.dmM & 0x1) != 0)
       {
         AppMethodBeat.o(62309);
         return true;
@@ -614,9 +627,9 @@ public class FlexboxLayout
       AppMethodBeat.o(62309);
       return false;
     }
-    if (vF())
+    if (Ve())
     {
-      if ((this.btj & 0x2) != 0)
+      if ((this.dmN & 0x2) != 0)
       {
         AppMethodBeat.o(62309);
         return true;
@@ -624,7 +637,7 @@ public class FlexboxLayout
       AppMethodBeat.o(62309);
       return false;
     }
-    if ((this.bti & 0x2) != 0)
+    if ((this.dmM & 0x2) != 0)
     {
       AppMethodBeat.o(62309);
       return true;
@@ -633,13 +646,13 @@ public class FlexboxLayout
     return false;
   }
   
-  private boolean bv(int paramInt1, int paramInt2)
+  private boolean cq(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(62310);
     int i = 1;
     while (i <= paramInt2)
     {
-      View localView = fK(paramInt1 - i);
+      View localView = iZ(paramInt1 - i);
       if ((localView != null) && (localView.getVisibility() != 8))
       {
         AppMethodBeat.o(62310);
@@ -651,32 +664,32 @@ public class FlexboxLayout
     return true;
   }
   
-  private View fK(int paramInt)
+  private View iZ(int paramInt)
   {
     AppMethodBeat.i(62274);
-    if ((paramInt < 0) || (paramInt >= this.btm.length))
+    if ((paramInt < 0) || (paramInt >= this.dmQ.length))
     {
       AppMethodBeat.o(62274);
       return null;
     }
-    View localView = getChildAt(this.btm[paramInt]);
+    View localView = getChildAt(this.dmQ[paramInt]);
     AppMethodBeat.o(62274);
     return localView;
   }
   
-  private boolean fL(int paramInt)
+  private boolean ja(int paramInt)
   {
     AppMethodBeat.i(62311);
-    if ((paramInt < 0) || (paramInt >= this.bsY.size()))
+    if ((paramInt < 0) || (paramInt >= this.dmC.size()))
     {
       AppMethodBeat.o(62311);
       return false;
     }
-    if (fM(paramInt))
+    if (jb(paramInt))
     {
-      if (vF())
+      if (Ve())
       {
-        if ((this.bti & 0x1) != 0)
+        if ((this.dmM & 0x1) != 0)
         {
           AppMethodBeat.o(62311);
           return true;
@@ -684,7 +697,7 @@ public class FlexboxLayout
         AppMethodBeat.o(62311);
         return false;
       }
-      if ((this.btj & 0x1) != 0)
+      if ((this.dmN & 0x1) != 0)
       {
         AppMethodBeat.o(62311);
         return true;
@@ -692,9 +705,9 @@ public class FlexboxLayout
       AppMethodBeat.o(62311);
       return false;
     }
-    if (vF())
+    if (Ve())
     {
-      if ((this.bti & 0x2) != 0)
+      if ((this.dmM & 0x2) != 0)
       {
         AppMethodBeat.o(62311);
         return true;
@@ -702,7 +715,7 @@ public class FlexboxLayout
       AppMethodBeat.o(62311);
       return false;
     }
-    if ((this.btj & 0x2) != 0)
+    if ((this.dmN & 0x2) != 0)
     {
       AppMethodBeat.o(62311);
       return true;
@@ -711,13 +724,13 @@ public class FlexboxLayout
     return false;
   }
   
-  private boolean fM(int paramInt)
+  private boolean jb(int paramInt)
   {
     AppMethodBeat.i(62312);
     int i = 0;
     while (i < paramInt)
     {
-      if (((b)this.bsY.get(i)).vM() > 0)
+      if (((b)this.dmC.get(i)).Vl() > 0)
       {
         AppMethodBeat.o(62312);
         return false;
@@ -728,27 +741,27 @@ public class FlexboxLayout
     return true;
   }
   
-  private boolean fN(int paramInt)
+  private boolean jc(int paramInt)
   {
     AppMethodBeat.i(62313);
-    if ((paramInt < 0) || (paramInt >= this.bsY.size()))
+    if ((paramInt < 0) || (paramInt >= this.dmC.size()))
     {
       AppMethodBeat.o(62313);
       return false;
     }
     paramInt += 1;
-    while (paramInt < this.bsY.size())
+    while (paramInt < this.dmC.size())
     {
-      if (((b)this.bsY.get(paramInt)).vM() > 0)
+      if (((b)this.dmC.get(paramInt)).Vl() > 0)
       {
         AppMethodBeat.o(62313);
         return false;
       }
       paramInt += 1;
     }
-    if (vF())
+    if (Ve())
     {
-      if ((this.bti & 0x4) != 0)
+      if ((this.dmM & 0x4) != 0)
       {
         AppMethodBeat.o(62313);
         return true;
@@ -756,7 +769,7 @@ public class FlexboxLayout
       AppMethodBeat.o(62313);
       return false;
     }
-    if ((this.btj & 0x4) != 0)
+    if ((this.dmN & 0x4) != 0)
     {
       AppMethodBeat.o(62313);
       return true;
@@ -765,14 +778,14 @@ public class FlexboxLayout
     return false;
   }
   
-  private void j(int paramInt1, int paramInt2)
+  private void o(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(62277);
-    this.bsY.clear();
-    this.btq.reset();
-    this.btp.a(this.btq, paramInt1, paramInt2, 2147483647, 0, -1, null);
-    this.bsY = this.btq.bsY;
-    this.btp.u(paramInt1, paramInt2, 0);
+    this.dmC.clear();
+    this.dmT.reset();
+    this.dmS.a(this.dmT, paramInt1, paramInt2, 2147483647, 0, -1, null);
+    this.dmC = this.dmT.dmC;
+    this.dmS.K(paramInt1, paramInt2, 0);
     b localb;
     int i;
     int j;
@@ -781,24 +794,24 @@ public class FlexboxLayout
     LayoutParams localLayoutParams;
     int k;
     int m;
-    if (this.btd == 3)
+    if (this.dmH == 3)
     {
-      Iterator localIterator = this.bsY.iterator();
+      Iterator localIterator = this.dmC.iterator();
       if (localIterator.hasNext())
       {
         localb = (b)localIterator.next();
         i = -2147483648;
         j = 0;
-        if (j < localb.alU)
+        if (j < localb.cau)
         {
-          localView = fK(localb.bsS + j);
+          localView = iZ(localb.dmu + j);
           if ((localView == null) || (localView.getVisibility() == 8)) {
             break label332;
           }
           localLayoutParams = (LayoutParams)localView.getLayoutParams();
-          if (this.btb != 2)
+          if (this.dmF != 2)
           {
-            k = Math.max(localb.bsP - localView.getBaseline(), localLayoutParams.topMargin);
+            k = Math.max(localb.dmr - localView.getBaseline(), localLayoutParams.topMargin);
             m = localView.getMeasuredHeight();
             i = Math.max(i, localLayoutParams.bottomMargin + (m + k));
           }
@@ -810,21 +823,21 @@ public class FlexboxLayout
     {
       j += 1;
       break label110;
-      k = Math.max(localb.bsP - localView.getMeasuredHeight() + localView.getBaseline(), localLayoutParams.bottomMargin);
+      k = Math.max(localb.dmr - localView.getMeasuredHeight() + localView.getBaseline(), localLayoutParams.bottomMargin);
       m = localView.getMeasuredHeight();
       i = Math.max(i, localLayoutParams.topMargin + m + k);
       continue;
-      localb.bsL = i;
+      localb.dmn = i;
       break;
-      this.btp.v(paramInt1, paramInt2, getPaddingTop() + getPaddingBottom());
-      this.btp.fG(0);
-      n(this.bta, paramInt1, paramInt2, this.btq.bsZ);
+      this.dmS.L(paramInt1, paramInt2, getPaddingTop() + getPaddingBottom());
+      this.dmS.iV(0);
+      w(this.dmE, paramInt1, paramInt2, this.dmT.dmD);
       AppMethodBeat.o(62277);
       return;
     }
   }
   
-  private void n(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void w(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(62278);
     int j = View.MeasureSpec.getMode(paramInt2);
@@ -906,35 +919,41 @@ public class FlexboxLayout
     }
   }
   
-  private void vO()
+  public final int I(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(62308);
-    if ((this.btg == null) && (this.bth == null))
-    {
-      setWillNotDraw(true);
-      AppMethodBeat.o(62308);
-      return;
-    }
-    setWillNotDraw(false);
-    AppMethodBeat.o(62308);
+    AppMethodBeat.i(62299);
+    paramInt1 = getChildMeasureSpec(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(62299);
+    return paramInt1;
   }
   
-  public final void a(int paramInt, View paramView) {}
+  public final int J(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(62300);
+    paramInt1 = getChildMeasureSpec(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(62300);
+    return paramInt1;
+  }
+  
+  public final boolean Ve()
+  {
+    return (this.dmE == 0) || (this.dmE == 1);
+  }
   
   public final void a(View paramView, int paramInt1, int paramInt2, b paramb)
   {
     AppMethodBeat.i(62301);
-    if (bu(paramInt1, paramInt2))
+    if (cp(paramInt1, paramInt2))
     {
-      if (vF())
+      if (Ve())
       {
-        paramb.bsJ += this.btl;
-        paramb.bsK += this.btl;
+        paramb.dml += this.dmP;
+        paramb.dmm += this.dmP;
         AppMethodBeat.o(62301);
         return;
       }
-      paramb.bsJ += this.btk;
-      paramb.bsK += this.btk;
+      paramb.dml += this.dmO;
+      paramb.dmm += this.dmO;
     }
     AppMethodBeat.o(62301);
   }
@@ -942,19 +961,19 @@ public class FlexboxLayout
   public final void a(b paramb)
   {
     AppMethodBeat.i(62298);
-    if (vF())
+    if (Ve())
     {
-      if ((this.btj & 0x4) > 0)
+      if ((this.dmN & 0x4) > 0)
       {
-        paramb.bsJ += this.btl;
-        paramb.bsK += this.btl;
+        paramb.dml += this.dmP;
+        paramb.dmm += this.dmP;
         AppMethodBeat.o(62298);
       }
     }
-    else if ((this.bti & 0x4) > 0)
+    else if ((this.dmM & 0x4) > 0)
     {
-      paramb.bsJ += this.btk;
-      paramb.bsK += this.btk;
+      paramb.dml += this.dmO;
+      paramb.dmm += this.dmO;
     }
     AppMethodBeat.o(62298);
   }
@@ -962,38 +981,24 @@ public class FlexboxLayout
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(62276);
-    if (this.bto == null) {
-      this.bto = new SparseIntArray(getChildCount());
+    if (this.dmR == null) {
+      this.dmR = new SparseIntArray(getChildCount());
     }
-    this.btm = this.btp.a(paramView, paramInt, paramLayoutParams, this.bto);
+    this.dmQ = this.dmS.a(paramView, paramInt, paramLayoutParams, this.dmR);
     super.addView(paramView, paramInt, paramLayoutParams);
     AppMethodBeat.o(62276);
   }
   
-  public final int bR(View paramView)
-  {
-    return 0;
-  }
+  public final void b(int paramInt, View paramView) {}
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return paramLayoutParams instanceof LayoutParams;
   }
   
-  public final View fC(int paramInt)
+  public final int cn(View paramView)
   {
-    AppMethodBeat.i(62273);
-    View localView = getChildAt(paramInt);
-    AppMethodBeat.o(62273);
-    return localView;
-  }
-  
-  public final View fD(int paramInt)
-  {
-    AppMethodBeat.i(62275);
-    View localView = fK(paramInt);
-    AppMethodBeat.o(62275);
-    return localView;
+    return 0;
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -1018,27 +1023,27 @@ public class FlexboxLayout
   
   public int getAlignContent()
   {
-    return this.bte;
+    return this.dmI;
   }
   
   public int getAlignItems()
   {
-    return this.btd;
+    return this.dmH;
   }
   
   public Drawable getDividerDrawableHorizontal()
   {
-    return this.btg;
+    return this.dmK;
   }
   
   public Drawable getDividerDrawableVertical()
   {
-    return this.bth;
+    return this.dmL;
   }
   
   public int getFlexDirection()
   {
-    return this.bta;
+    return this.dmE;
   }
   
   public int getFlexItemCount()
@@ -1052,12 +1057,12 @@ public class FlexboxLayout
   public List<b> getFlexLines()
   {
     AppMethodBeat.i(62296);
-    ArrayList localArrayList = new ArrayList(this.bsY.size());
-    Iterator localIterator = this.bsY.iterator();
+    ArrayList localArrayList = new ArrayList(this.dmC.size());
+    Iterator localIterator = this.dmC.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.vM() != 0) {
+      if (localb.Vl() != 0) {
         localArrayList.add(localb);
       }
     }
@@ -1067,76 +1072,76 @@ public class FlexboxLayout
   
   public List<b> getFlexLinesInternal()
   {
-    return this.bsY;
+    return this.dmC;
   }
   
   public int getFlexWrap()
   {
-    return this.btb;
+    return this.dmF;
   }
   
   public int getJustifyContent()
   {
-    return this.btc;
+    return this.dmG;
   }
   
   public int getLargestMainSize()
   {
     AppMethodBeat.i(62279);
-    Iterator localIterator = this.bsY.iterator();
-    for (int i = -2147483648; localIterator.hasNext(); i = Math.max(i, ((b)localIterator.next()).bsJ)) {}
+    Iterator localIterator = this.dmC.iterator();
+    for (int i = -2147483648; localIterator.hasNext(); i = Math.max(i, ((b)localIterator.next()).dml)) {}
     AppMethodBeat.o(62279);
     return i;
   }
   
   public int getMaxLine()
   {
-    return this.btf;
+    return this.dmJ;
   }
   
   public int getShowDividerHorizontal()
   {
-    return this.bti;
+    return this.dmM;
   }
   
   public int getShowDividerVertical()
   {
-    return this.btj;
+    return this.dmN;
   }
   
   public int getSumOfCrossSize()
   {
     AppMethodBeat.i(62280);
-    int m = this.bsY.size();
+    int m = this.dmC.size();
     int k = 0;
     int j = 0;
     if (k < m)
     {
-      b localb = (b)this.bsY.get(k);
+      b localb = (b)this.dmC.get(k);
       int i = j;
-      if (fL(k))
+      if (ja(k))
       {
-        if (vF()) {
-          i = j + this.btk;
+        if (Ve()) {
+          i = j + this.dmO;
         }
       }
       else
       {
         label66:
         j = i;
-        if (fN(k)) {
-          if (!vF()) {
+        if (jc(k)) {
+          if (!Ve()) {
             break label115;
           }
         }
       }
       label115:
-      for (j = i + this.btk;; j = i + this.btl)
+      for (j = i + this.dmO;; j = i + this.dmP)
       {
-        j += localb.bsL;
+        j += localb.dmn;
         k += 1;
         break;
-        i = j + this.btl;
+        i = j + this.dmP;
         break label66;
       }
     }
@@ -1144,19 +1149,35 @@ public class FlexboxLayout
     return j;
   }
   
+  public final View iR(int paramInt)
+  {
+    AppMethodBeat.i(62273);
+    View localView = getChildAt(paramInt);
+    AppMethodBeat.o(62273);
+    return localView;
+  }
+  
+  public final View iS(int paramInt)
+  {
+    AppMethodBeat.i(62275);
+    View localView = iZ(paramInt);
+    AppMethodBeat.o(62275);
+    return localView;
+  }
+  
   public final int k(View paramView, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(62297);
     int j = 0;
     int i = 0;
-    if (vF())
+    if (Ve())
     {
-      if (bu(paramInt1, paramInt2)) {
-        i = this.btl + 0;
+      if (cp(paramInt1, paramInt2)) {
+        i = this.dmP + 0;
       }
       paramInt1 = i;
-      if ((this.btj & 0x4) > 0) {
-        paramInt1 = i + this.btl;
+      if ((this.dmN & 0x4) > 0) {
+        paramInt1 = i + this.dmP;
       }
     }
     for (;;)
@@ -1164,12 +1185,12 @@ public class FlexboxLayout
       AppMethodBeat.o(62297);
       return paramInt1;
       i = j;
-      if (bu(paramInt1, paramInt2)) {
-        i = this.btk + 0;
+      if (cp(paramInt1, paramInt2)) {
+        i = this.dmO + 0;
       }
       paramInt1 = i;
-      if ((this.bti & 0x4) > 0) {
-        paramInt1 = i + this.btk;
+      if ((this.dmM & 0x4) > 0) {
+        paramInt1 = i + this.dmO;
       }
     }
   }
@@ -1181,19 +1202,19 @@ public class FlexboxLayout
     boolean bool5 = true;
     boolean bool3 = true;
     AppMethodBeat.i(62284);
-    if ((this.bth == null) && (this.btg == null))
+    if ((this.dmL == null) && (this.dmK == null))
     {
       AppMethodBeat.o(62284);
       return;
     }
-    if ((this.bti == 0) && (this.btj == 0))
+    if ((this.dmM == 0) && (this.dmN == 0))
     {
       AppMethodBeat.o(62284);
       return;
     }
-    int i = w.I(this);
+    int i = z.U(this);
     boolean bool1;
-    switch (this.bta)
+    switch (this.dmE)
     {
     default: 
       AppMethodBeat.o(62284);
@@ -1203,7 +1224,7 @@ public class FlexboxLayout
       {
         bool1 = true;
         label114:
-        if (this.btb != 2) {
+        if (this.dmF != 2) {
           break label284;
         }
       }
@@ -1221,7 +1242,7 @@ public class FlexboxLayout
       if (i != 1)
       {
         bool1 = true;
-        if (this.btb != 2) {
+        if (this.dmF != 2) {
           break label278;
         }
       }
@@ -1236,7 +1257,7 @@ public class FlexboxLayout
         {
           bool1 = true;
           label192:
-          if (this.btb != 2) {
+          if (this.dmF != 2) {
             break label275;
           }
           if (bool1) {
@@ -1258,7 +1279,7 @@ public class FlexboxLayout
           {
             bool1 = true;
             label238:
-            if (this.btb != 2) {
+            if (this.dmF != 2) {
               break label269;
             }
             if (bool1) {}
@@ -1280,11 +1301,11 @@ public class FlexboxLayout
     boolean bool1 = false;
     boolean bool2 = true;
     AppMethodBeat.i(62281);
-    int i = w.I(this);
-    switch (this.bta)
+    int i = z.U(this);
+    switch (this.dmE)
     {
     default: 
-      IllegalStateException localIllegalStateException = new IllegalStateException("Invalid flex direction is set: " + this.bta);
+      IllegalStateException localIllegalStateException = new IllegalStateException("Invalid flex direction is set: " + this.dmE);
       AppMethodBeat.o(62281);
       throw localIllegalStateException;
     case 0: 
@@ -1307,7 +1328,7 @@ public class FlexboxLayout
       if (i == 1)
       {
         paramBoolean = true;
-        if (this.btb != 2) {
+        if (this.dmF != 2) {
           break label258;
         }
         if (paramBoolean) {
@@ -1331,7 +1352,7 @@ public class FlexboxLayout
       if (i == 1)
       {
         paramBoolean = true;
-        if (this.btb != 2) {
+        if (this.dmF != 2) {
           break label252;
         }
         if (paramBoolean) {}
@@ -1351,49 +1372,41 @@ public class FlexboxLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(62271);
-    if (this.bto == null) {
-      this.bto = new SparseIntArray(getChildCount());
+    if (this.dmR == null) {
+      this.dmR = new SparseIntArray(getChildCount());
     }
-    if (this.btp.b(this.bto)) {
-      this.btm = this.btp.a(this.bto);
+    if (this.dmS.b(this.dmR)) {
+      this.dmQ = this.dmS.a(this.dmR);
     }
-    switch (this.bta)
+    switch (this.dmE)
     {
     default: 
-      IllegalStateException localIllegalStateException = new IllegalStateException("Invalid value for the flex direction is set: " + this.bta);
+      IllegalStateException localIllegalStateException = new IllegalStateException("Invalid value for the flex direction is set: " + this.dmE);
       AppMethodBeat.o(62271);
       throw localIllegalStateException;
     case 0: 
     case 1: 
-      j(paramInt1, paramInt2);
+      o(paramInt1, paramInt2);
       AppMethodBeat.o(62271);
       return;
     }
-    this.bsY.clear();
-    this.btq.reset();
-    this.btp.a(this.btq, paramInt1, paramInt2);
-    this.bsY = this.btq.bsY;
-    this.btp.bs(paramInt1, paramInt2);
-    this.btp.v(paramInt1, paramInt2, getPaddingLeft() + getPaddingRight());
-    this.btp.vN();
-    n(this.bta, paramInt1, paramInt2, this.btq.bsZ);
+    this.dmC.clear();
+    this.dmT.reset();
+    this.dmS.a(this.dmT, paramInt1, paramInt2);
+    this.dmC = this.dmT.dmC;
+    this.dmS.cn(paramInt1, paramInt2);
+    this.dmS.L(paramInt1, paramInt2, getPaddingLeft() + getPaddingRight());
+    this.dmS.Vm();
+    w(this.dmE, paramInt1, paramInt2, this.dmT.dmD);
     AppMethodBeat.o(62271);
-  }
-  
-  public final int s(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(62299);
-    paramInt1 = getChildMeasureSpec(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(62299);
-    return paramInt1;
   }
   
   public void setAlignContent(int paramInt)
   {
     AppMethodBeat.i(62294);
-    if (this.bte != paramInt)
+    if (this.dmI != paramInt)
     {
-      this.bte = paramInt;
+      this.dmI = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(62294);
@@ -1402,9 +1415,9 @@ public class FlexboxLayout
   public void setAlignItems(int paramInt)
   {
     AppMethodBeat.i(62293);
-    if (this.btd != paramInt)
+    if (this.dmH != paramInt)
     {
-      this.btd = paramInt;
+      this.dmH = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(62293);
@@ -1421,16 +1434,16 @@ public class FlexboxLayout
   public void setDividerDrawableHorizontal(Drawable paramDrawable)
   {
     AppMethodBeat.i(62303);
-    if (paramDrawable == this.btg)
+    if (paramDrawable == this.dmK)
     {
       AppMethodBeat.o(62303);
       return;
     }
-    this.btg = paramDrawable;
+    this.dmK = paramDrawable;
     if (paramDrawable != null) {}
-    for (this.btk = paramDrawable.getIntrinsicHeight();; this.btk = 0)
+    for (this.dmO = paramDrawable.getIntrinsicHeight();; this.dmO = 0)
     {
-      vO();
+      Vn();
       requestLayout();
       AppMethodBeat.o(62303);
       return;
@@ -1440,16 +1453,16 @@ public class FlexboxLayout
   public void setDividerDrawableVertical(Drawable paramDrawable)
   {
     AppMethodBeat.i(62304);
-    if (paramDrawable == this.bth)
+    if (paramDrawable == this.dmL)
     {
       AppMethodBeat.o(62304);
       return;
     }
-    this.bth = paramDrawable;
+    this.dmL = paramDrawable;
     if (paramDrawable != null) {}
-    for (this.btl = paramDrawable.getIntrinsicWidth();; this.btl = 0)
+    for (this.dmP = paramDrawable.getIntrinsicWidth();; this.dmP = 0)
     {
-      vO();
+      Vn();
       requestLayout();
       AppMethodBeat.o(62304);
       return;
@@ -1459,9 +1472,9 @@ public class FlexboxLayout
   public void setFlexDirection(int paramInt)
   {
     AppMethodBeat.i(62290);
-    if (this.bta != paramInt)
+    if (this.dmE != paramInt)
     {
-      this.bta = paramInt;
+      this.dmE = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(62290);
@@ -1469,15 +1482,15 @@ public class FlexboxLayout
   
   public void setFlexLines(List<b> paramList)
   {
-    this.bsY = paramList;
+    this.dmC = paramList;
   }
   
   public void setFlexWrap(int paramInt)
   {
     AppMethodBeat.i(62291);
-    if (this.btb != paramInt)
+    if (this.dmF != paramInt)
     {
-      this.btb = paramInt;
+      this.dmF = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(62291);
@@ -1486,9 +1499,9 @@ public class FlexboxLayout
   public void setJustifyContent(int paramInt)
   {
     AppMethodBeat.i(62292);
-    if (this.btc != paramInt)
+    if (this.dmG != paramInt)
     {
-      this.btc = paramInt;
+      this.dmG = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(62292);
@@ -1497,9 +1510,9 @@ public class FlexboxLayout
   public void setMaxLine(int paramInt)
   {
     AppMethodBeat.i(62295);
-    if (this.btf != paramInt)
+    if (this.dmJ != paramInt)
     {
-      this.btf = paramInt;
+      this.dmJ = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(62295);
@@ -1516,9 +1529,9 @@ public class FlexboxLayout
   public void setShowDividerHorizontal(int paramInt)
   {
     AppMethodBeat.i(62307);
-    if (paramInt != this.bti)
+    if (paramInt != this.dmM)
     {
-      this.bti = paramInt;
+      this.dmM = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(62307);
@@ -1527,25 +1540,12 @@ public class FlexboxLayout
   public void setShowDividerVertical(int paramInt)
   {
     AppMethodBeat.i(62306);
-    if (paramInt != this.btj)
+    if (paramInt != this.dmN)
     {
-      this.btj = paramInt;
+      this.dmN = paramInt;
       requestLayout();
     }
     AppMethodBeat.o(62306);
-  }
-  
-  public final int t(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(62300);
-    paramInt1 = getChildMeasureSpec(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(62300);
-    return paramInt1;
-  }
-  
-  public final boolean vF()
-  {
-    return (this.bta == 0) || (this.bta == 1);
   }
   
   public static class LayoutParams
@@ -1553,21 +1553,21 @@ public class FlexboxLayout
     implements FlexItem
   {
     public static final Parcelable.Creator<LayoutParams> CREATOR;
-    private int CO;
-    private int EK;
-    private int btr;
-    private float bts;
-    private float btt;
-    private int btu;
-    private float btv;
-    private boolean btw;
-    private int lj;
-    private int uJ;
+    private int biW;
+    private int bkR;
+    private int dmU;
+    private float dmV;
+    public float dmW;
+    private int dmX;
+    private float dmY;
+    private boolean dmZ;
+    private int mf;
+    private int vF;
     
     static
     {
       AppMethodBeat.i(62269);
-      CREATOR = new Parcelable.Creator() {};
+      CREATOR = new FlexboxLayout.LayoutParams.1();
       AppMethodBeat.o(62269);
     }
     
@@ -1575,24 +1575,26 @@ public class FlexboxLayout
     {
       super(paramAttributeSet);
       AppMethodBeat.i(62266);
-      this.btr = 1;
-      this.bts = 0.0F;
-      this.btt = 1.0F;
-      this.btu = -1;
-      this.btv = -1.0F;
-      this.uJ = 16777215;
-      this.EK = 16777215;
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, d.a.bua);
-      this.btr = paramContext.getInt(d.a.buk, 1);
-      this.bts = paramContext.getFloat(d.a.bud, 0.0F);
-      this.btt = paramContext.getFloat(d.a.bue, 1.0F);
-      this.btu = paramContext.getInt(d.a.bub, -1);
-      this.btv = paramContext.getFraction(d.a.buc, 1, 1, -1.0F);
-      this.lj = paramContext.getDimensionPixelSize(d.a.buj, 0);
-      this.CO = paramContext.getDimensionPixelSize(d.a.bui, 0);
-      this.uJ = paramContext.getDimensionPixelSize(d.a.buh, 16777215);
-      this.EK = paramContext.getDimensionPixelSize(d.a.bug, 16777215);
-      this.btw = paramContext.getBoolean(d.a.bul, false);
+      this.dmU = 1;
+      this.dmV = 0.0F;
+      this.dmW = 1.0F;
+      this.dmX = -1;
+      this.dmY = -1.0F;
+      this.mf = -1;
+      this.biW = -1;
+      this.vF = 16777215;
+      this.bkR = 16777215;
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, d.a.FlexboxLayout_Layout);
+      this.dmU = paramContext.getInt(d.a.FlexboxLayout_Layout_layout_order, 1);
+      this.dmV = paramContext.getFloat(d.a.FlexboxLayout_Layout_layout_flexGrow, 0.0F);
+      this.dmW = paramContext.getFloat(d.a.FlexboxLayout_Layout_layout_flexShrink, 1.0F);
+      this.dmX = paramContext.getInt(d.a.FlexboxLayout_Layout_layout_alignSelf, -1);
+      this.dmY = paramContext.getFraction(d.a.FlexboxLayout_Layout_layout_flexBasisPercent, 1, 1, -1.0F);
+      this.mf = paramContext.getDimensionPixelSize(d.a.FlexboxLayout_Layout_layout_minWidth, -1);
+      this.biW = paramContext.getDimensionPixelSize(d.a.FlexboxLayout_Layout_layout_minHeight, -1);
+      this.vF = paramContext.getDimensionPixelSize(d.a.FlexboxLayout_Layout_layout_maxWidth, 16777215);
+      this.bkR = paramContext.getDimensionPixelSize(d.a.FlexboxLayout_Layout_layout_maxHeight, 16777215);
+      this.dmZ = paramContext.getBoolean(d.a.FlexboxLayout_Layout_layout_wrapBefore, false);
       paramContext.recycle();
       AppMethodBeat.o(62266);
     }
@@ -1601,26 +1603,28 @@ public class FlexboxLayout
     {
       super(0);
       AppMethodBeat.i(62268);
-      this.btr = 1;
-      this.bts = 0.0F;
-      this.btt = 1.0F;
-      this.btu = -1;
-      this.btv = -1.0F;
-      this.uJ = 16777215;
-      this.EK = 16777215;
-      this.btr = paramParcel.readInt();
-      this.bts = paramParcel.readFloat();
-      this.btt = paramParcel.readFloat();
-      this.btu = paramParcel.readInt();
-      this.btv = paramParcel.readFloat();
-      this.lj = paramParcel.readInt();
-      this.CO = paramParcel.readInt();
-      this.uJ = paramParcel.readInt();
-      this.EK = paramParcel.readInt();
+      this.dmU = 1;
+      this.dmV = 0.0F;
+      this.dmW = 1.0F;
+      this.dmX = -1;
+      this.dmY = -1.0F;
+      this.mf = -1;
+      this.biW = -1;
+      this.vF = 16777215;
+      this.bkR = 16777215;
+      this.dmU = paramParcel.readInt();
+      this.dmV = paramParcel.readFloat();
+      this.dmW = paramParcel.readFloat();
+      this.dmX = paramParcel.readInt();
+      this.dmY = paramParcel.readFloat();
+      this.mf = paramParcel.readInt();
+      this.biW = paramParcel.readInt();
+      this.vF = paramParcel.readInt();
+      this.bkR = paramParcel.readInt();
       if (paramParcel.readByte() != 0) {}
       for (;;)
       {
-        this.btw = bool;
+        this.dmZ = bool;
         this.bottomMargin = paramParcel.readInt();
         this.leftMargin = paramParcel.readInt();
         this.rightMargin = paramParcel.readInt();
@@ -1636,47 +1640,83 @@ public class FlexboxLayout
     public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
     {
       super();
-      this.btr = 1;
-      this.bts = 0.0F;
-      this.btt = 1.0F;
-      this.btu = -1;
-      this.btv = -1.0F;
-      this.uJ = 16777215;
-      this.EK = 16777215;
+      this.dmU = 1;
+      this.dmV = 0.0F;
+      this.dmW = 1.0F;
+      this.dmX = -1;
+      this.dmY = -1.0F;
+      this.mf = -1;
+      this.biW = -1;
+      this.vF = 16777215;
+      this.bkR = 16777215;
     }
     
     public LayoutParams(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
     {
       super();
-      this.btr = 1;
-      this.bts = 0.0F;
-      this.btt = 1.0F;
-      this.btu = -1;
-      this.btv = -1.0F;
-      this.uJ = 16777215;
-      this.EK = 16777215;
+      this.dmU = 1;
+      this.dmV = 0.0F;
+      this.dmW = 1.0F;
+      this.dmX = -1;
+      this.dmY = -1.0F;
+      this.mf = -1;
+      this.biW = -1;
+      this.vF = 16777215;
+      this.bkR = 16777215;
     }
     
     public LayoutParams(LayoutParams paramLayoutParams)
     {
       super();
-      this.btr = 1;
-      this.bts = 0.0F;
-      this.btt = 1.0F;
-      this.btu = -1;
-      this.btv = -1.0F;
-      this.uJ = 16777215;
-      this.EK = 16777215;
-      this.btr = paramLayoutParams.btr;
-      this.bts = paramLayoutParams.bts;
-      this.btt = paramLayoutParams.btt;
-      this.btu = paramLayoutParams.btu;
-      this.btv = paramLayoutParams.btv;
-      this.lj = paramLayoutParams.lj;
-      this.CO = paramLayoutParams.CO;
-      this.uJ = paramLayoutParams.uJ;
-      this.EK = paramLayoutParams.EK;
-      this.btw = paramLayoutParams.btw;
+      this.dmU = 1;
+      this.dmV = 0.0F;
+      this.dmW = 1.0F;
+      this.dmX = -1;
+      this.dmY = -1.0F;
+      this.mf = -1;
+      this.biW = -1;
+      this.vF = 16777215;
+      this.bkR = 16777215;
+      this.dmU = paramLayoutParams.dmU;
+      this.dmV = paramLayoutParams.dmV;
+      this.dmW = paramLayoutParams.dmW;
+      this.dmX = paramLayoutParams.dmX;
+      this.dmY = paramLayoutParams.dmY;
+      this.mf = paramLayoutParams.mf;
+      this.biW = paramLayoutParams.biW;
+      this.vF = paramLayoutParams.vF;
+      this.bkR = paramLayoutParams.bkR;
+      this.dmZ = paramLayoutParams.dmZ;
+    }
+    
+    public final int Vf()
+    {
+      return this.dmX;
+    }
+    
+    public final boolean Vg()
+    {
+      return this.dmZ;
+    }
+    
+    public final float Vh()
+    {
+      return this.dmY;
+    }
+    
+    public final int Vi()
+    {
+      return this.leftMargin;
+    }
+    
+    public final int Vj()
+    {
+      return this.topMargin;
+    }
+    
+    public final int Vk()
+    {
+      return this.rightMargin;
     }
     
     public int describeContents()
@@ -1686,12 +1726,12 @@ public class FlexboxLayout
     
     public final float getFlexGrow()
     {
-      return this.bts;
+      return this.dmV;
     }
     
     public final float getFlexShrink()
     {
-      return this.btt;
+      return this.dmW;
     }
     
     public final int getHeight()
@@ -1706,27 +1746,27 @@ public class FlexboxLayout
     
     public final int getMaxHeight()
     {
-      return this.EK;
+      return this.bkR;
     }
     
     public final int getMaxWidth()
     {
-      return this.uJ;
+      return this.vF;
     }
     
     public final int getMinHeight()
     {
-      return this.CO;
+      return this.biW;
     }
     
     public final int getMinWidth()
     {
-      return this.lj;
+      return this.mf;
     }
     
     public final int getOrder()
     {
-      return this.btr;
+      return this.dmU;
     }
     
     public final int getWidth()
@@ -1734,49 +1774,29 @@ public class FlexboxLayout
       return this.width;
     }
     
-    public final int vG()
+    public final void setMinHeight(int paramInt)
     {
-      return this.btu;
+      this.biW = paramInt;
     }
     
-    public final boolean vH()
+    public final void setMinWidth(int paramInt)
     {
-      return this.btw;
-    }
-    
-    public final float vI()
-    {
-      return this.btv;
-    }
-    
-    public final int vJ()
-    {
-      return this.leftMargin;
-    }
-    
-    public final int vK()
-    {
-      return this.topMargin;
-    }
-    
-    public final int vL()
-    {
-      return this.rightMargin;
+      this.mf = paramInt;
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(62267);
-      paramParcel.writeInt(this.btr);
-      paramParcel.writeFloat(this.bts);
-      paramParcel.writeFloat(this.btt);
-      paramParcel.writeInt(this.btu);
-      paramParcel.writeFloat(this.btv);
-      paramParcel.writeInt(this.lj);
-      paramParcel.writeInt(this.CO);
-      paramParcel.writeInt(this.uJ);
-      paramParcel.writeInt(this.EK);
-      if (this.btw) {}
+      paramParcel.writeInt(this.dmU);
+      paramParcel.writeFloat(this.dmV);
+      paramParcel.writeFloat(this.dmW);
+      paramParcel.writeInt(this.dmX);
+      paramParcel.writeFloat(this.dmY);
+      paramParcel.writeInt(this.mf);
+      paramParcel.writeInt(this.biW);
+      paramParcel.writeInt(this.vF);
+      paramParcel.writeInt(this.bkR);
+      if (this.dmZ) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
@@ -1794,7 +1814,7 @@ public class FlexboxLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.flexbox.FlexboxLayout
  * JD-Core Version:    0.7.0.1
  */

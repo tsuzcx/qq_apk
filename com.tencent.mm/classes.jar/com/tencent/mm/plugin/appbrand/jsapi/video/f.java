@@ -6,15 +6,15 @@ import com.tencent.luggage.a.b;
 public abstract interface f
   extends b
 {
-  public abstract String aQ(String paramString);
+  public abstract String cd(String paramString);
   
-  public abstract g.a bVl();
+  public abstract g.a cvB();
   
-  public abstract g.a bVm();
+  public abstract g.a cvC();
   
   public abstract long f(String paramString, long paramLong1, long paramLong2);
   
-  public abstract void o(String paramString, long paramLong1, long paramLong2);
+  public abstract void q(String paramString, long paramLong1, long paramLong2);
 }
 
 

@@ -4,52 +4,52 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static b aKP;
+  private static b cEL;
   
   static
   {
     AppMethodBeat.i(127390);
-    aKP = new b.a((byte)0);
+    cEL = new b.a((byte)0);
     AppMethodBeat.o(127390);
   }
   
   public static void a(b paramb)
   {
-    aKP = paramb;
+    cEL = paramb;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(127385);
-    aKP.d(paramString1, paramString2, paramVarArgs);
+    cEL.d(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(127385);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(127388);
-    aKP.e(paramString1, paramString2, paramVarArgs);
+    cEL.e(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(127388);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(127386);
-    aKP.i(paramString1, paramString2, paramVarArgs);
+    cEL.i(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(127386);
   }
   
   public static void printStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(127389);
-    aKP.printStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    cEL.printStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     AppMethodBeat.o(127389);
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(127387);
-    aKP.w(paramString1, paramString2, paramVarArgs);
+    cEL.w(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(127387);
   }
   
@@ -68,7 +68,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.a.b
  * JD-Core Version:    0.7.0.1
  */

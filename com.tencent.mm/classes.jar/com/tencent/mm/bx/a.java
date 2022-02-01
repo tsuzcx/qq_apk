@@ -1,92 +1,152 @@
 package com.tencent.mm.bx;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import android.text.format.Time;
-import androidx.core.app.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bu.a.a.a;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
+import i.a.a.a.a.b;
+import java.io.OutputStream;
 
-public final class a
+public class a
 {
-  private static String QRn = "";
-  private static String jwn = "";
+  protected static final int OPCODE_COMPUTESIZE = 1;
+  protected static final int OPCODE_PARSEFROM = 2;
+  protected static final int OPCODE_POPULATEBUILDERWITHFIELD = 3;
+  protected static final int OPCODE_WRITEFIELDS = 0;
+  protected static b unknownTagHandler;
+  private boolean includeUnKnownField = false;
+  private byte[] pbData;
   
-  public static String awc()
+  static
   {
-    AppMethodBeat.i(116804);
-    if (Util.isNullOrNil(jwn)) {
-      jwn = com.tencent.mm.kernel.b.awd().getString("message_channel_id", "message_channel_new_id");
-    }
-    String str = jwn;
-    AppMethodBeat.o(116804);
-    return str;
+    AppMethodBeat.i(2349);
+    unknownTagHandler = i.a.a.a.a.a.kFU();
+    AppMethodBeat.o(2349);
   }
   
-  public static void boS(String paramString)
+  public static int getNextFieldNumber(i.a.a.a.a parama)
   {
-    jwn = paramString;
+    AppMethodBeat.i(2351);
+    int i = parama.kFS();
+    AppMethodBeat.o(2351);
+    return i;
   }
   
-  public static e.d cp(Context paramContext, String paramString)
+  public int computeSize()
   {
-    AppMethodBeat.i(209708);
-    paramContext = new e.d(paramContext, paramString);
-    AppMethodBeat.o(209708);
-    return paramContext;
-  }
-  
-  public static int fkG()
-  {
-    if (Build.VERSION.SDK_INT < 19) {
-      return a.a.notification_icon;
-    }
-    return a.a.notification_icon_gray;
-  }
-  
-  public static String hfu()
-  {
-    AppMethodBeat.i(116805);
-    if (Util.isNullOrNil(QRn)) {
-      QRn = com.tencent.mm.kernel.b.awd().getString("voip_notify_channel_new_id", "voip_notify_channel_new_id");
-    }
-    String str = QRn;
-    AppMethodBeat.o(116805);
-    return str;
-  }
-  
-  public static String hfv()
-  {
-    AppMethodBeat.i(116807);
-    if (d.qV(26))
+    AppMethodBeat.i(2354);
+    try
     {
-      localObject = new Time();
-      ((Time)localObject).setToNow();
-      int i = ((Time)localObject).hour;
-      int j = ((Time)localObject).minute;
-      MMApplicationContext.getContext();
-      if (!com.tencent.mm.n.b.cL(i, j)) {
-        Log.w("MicroMsg.NotificationHelper", "no shake & sound notification during background deactive time");
+      int i = op(1, new Object[0]);
+      AppMethodBeat.o(2354);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(2354);
+    }
+    return 0;
+  }
+  
+  public byte[] getData()
+  {
+    return this.pbData;
+  }
+  
+  public boolean isIncludeUnKnownField()
+  {
+    return this.includeUnKnownField;
+  }
+  
+  protected int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(2352);
+    paramVarArgs = new Error("Cannot use this method");
+    AppMethodBeat.o(2352);
+    throw paramVarArgs;
+  }
+  
+  public a parseFrom(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(2355);
+    this.pbData = paramArrayOfByte;
+    op(2, new Object[] { paramArrayOfByte });
+    AppMethodBeat.o(2355);
+    return this;
+  }
+  
+  public boolean populateBuilderWithField(i.a.a.a.a parama, a parama1, int paramInt)
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(2356);
+    if (op(3, new Object[] { parama, parama1, Integer.valueOf(paramInt) }) == 0) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if ((this.includeUnKnownField) || (!bool1)) {
+        bool2 = true;
       }
-      for (i = 1; i != 0; i = 0)
+      this.includeUnKnownField = bool2;
+      AppMethodBeat.o(2356);
+      return bool1;
+    }
+  }
+  
+  public byte[] toByteArray()
+  {
+    AppMethodBeat.i(2350);
+    validate();
+    i.a.a.c.a locala = new i.a.a.c.a(new byte[computeSize()]);
+    writeFields(locala);
+    locala.ajGn = null;
+    Object localObject = locala.ajGo;
+    if (((i.a.a.b.b.a)localObject).limit - ((i.a.a.b.b.a)localObject).position != 0)
+    {
+      int i = locala.ajGo.position;
+      localObject = new byte[i];
+      System.arraycopy(locala.ajGm, 0, localObject, 0, i);
+      locala.ajGn = ((byte[])localObject);
+      if (locala.osU != null)
       {
-        AppMethodBeat.o(116807);
-        return "message_dnd_mode_channel_id";
+        if ((locala.ajGn == null) || (locala.ajGn.length <= 0)) {
+          break label136;
+        }
+        locala.osU.write(locala.ajGn);
+        locala.osU.flush();
       }
     }
-    Object localObject = awc();
-    AppMethodBeat.o(116807);
-    return localObject;
+    for (;;)
+    {
+      AppMethodBeat.o(2350);
+      return localObject;
+      localObject = locala.ajGm;
+      break;
+      label136:
+      locala.kGd();
+    }
+  }
+  
+  public Object toJSON()
+  {
+    return "";
+  }
+  
+  public a toPb(String paramString)
+  {
+    return this;
+  }
+  
+  protected a validate()
+  {
+    return this;
+  }
+  
+  public void writeFields(i.a.a.c.a parama)
+  {
+    AppMethodBeat.i(2353);
+    op(0, new Object[] { parama });
+    AppMethodBeat.o(2353);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.bx.a
  * JD-Core Version:    0.7.0.1
  */

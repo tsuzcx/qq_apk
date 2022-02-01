@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/emoji_bubble" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/c5" android:paddingEnd="@dimen/c5"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/ie8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/hrp" android:paddingLeft="@dimen/i9" android:paddingRight="@dimen/i9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/a1c" android:id="@id/ebt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ig" android:layout_marginBottom="@dimen/ig" android:text="@string/kc3" android:layout_below="@id/hrp" android:layout_centerHorizontal="true" />
+</RelativeLayout>

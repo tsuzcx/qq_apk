@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ccj" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<ScrollView android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
-    <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/ekc" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:id="@id/ho_" android:visibility="gone" layout="@layout/bb9" />
+            <include android:id="@id/ho9" android:visibility="gone" layout="@layout/bb8" />
+            <include android:id="@id/hon" android:visibility="gone" layout="@layout/bbg" />
+            <include android:id="@id/hol" android:visibility="gone" layout="@layout/bbd" />
+            <include android:id="@id/hom" android:visibility="gone" layout="@layout/bbe" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/hp1" android:background="@drawable/arl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:id="@id/hp0" android:layout_height="@dimen/m1" style="@style/r0">
+                <TextView android:textSize="@dimen/j7" android:textColor="@color/a3q" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/gno" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/hq" android:textColor="@color/a3o" android:id="@id/hp2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" />
+            </LinearLayout>
+        </LinearLayout>
+        <com.tencent.mm.ui.base.MaxListView android:id="@id/ho4" android:background="@color/a6w" android:focusable="true" android:layout_height="wrap_content" android:transcriptMode="disabled" style="@style/na" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gmd" android:background="@color/al2" android:paddingLeft="@dimen/i9" android:paddingRight="@dimen/i9" android:layout_width="fill_parent" android:layout_height="@dimen/m1">
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/a1_" android:gravity="center" android:id="@id/ex_" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/gnm" android:layout_weight="1.0" />
+            <TextView android:id="@id/lud" android:background="#ffeeeeee" android:layout_width="2.0px" android:layout_height="32.0dip" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/a1_" android:gravity="center" android:id="@id/lue" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/gnx" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

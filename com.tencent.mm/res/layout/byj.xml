@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/h5p" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="result" style="@style/p_" />
-    <Button android:id="@id/i2w" android:text="@string/hde" style="@style/nk" />
-    <Button android:id="@id/i2r" android:text="@string/hd_" style="@style/nk" />
-    <Button android:id="@id/i2v" android:text="@string/hdd" style="@style/nk" />
-    <Button android:id="@id/i2t" android:text="@string/hdb" style="@style/nk" />
-    <Button android:id="@id/i2q" android:text="@string/hd9" style="@style/nk" />
-    <Button android:id="@id/i2u" android:text="@string/hdc" style="@style/nk" />
-    <Button android:id="@id/i2s" android:text="@string/hda" style="@style/nk" />
-    <Button android:id="@id/i2p" android:text="@string/hd8" style="@style/nk" />
-    <Button android:id="@id/i2o" android:text="@string/hd7" style="@style/nk" />
-</LinearLayout>
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:background="@drawable/arl" android:padding="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" app:cornerRadius="@dimen/df"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:gravity="center" android:id="@id/cn" android:layout_width="@dimen/im" android:layout_height="@dimen/im" android:layout_marginRight="@dimen/cd" android:src="@drawable/b_a" android:layout_alignParentLeft="true" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/cn">
+            <TextView android:id="@id/d0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/m4" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:id="@id/d7" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/lk" />
+        </LinearLayout>
+        <TextView android:textColor="@color/m4" android:id="@id/ck" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/izs" android:layout_toRightOf="@id/cn" android:layout_centerVertical="true" style="@style/m4" />
+        <RelativeLayout android:id="@id/bxl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerHorizontal="true">
+            <LinearLayout android:orientation="horizontal" android:id="@id/bxn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+                <ImageView android:id="@id/bxm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/g" />
+                <ProgressBar android:id="@id/cz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/g" android:indeterminateDrawable="@drawable/anj" style="@style/a85" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:id="@id/bxo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/izv" android:layout_toRightOf="@id/bxn" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <Button android:id="@id/cs" android:text="@string/bf8" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/om" />
+    </RelativeLayout>
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

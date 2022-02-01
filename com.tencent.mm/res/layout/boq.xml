@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/BW_95" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/hd0" android:background="@color/a2h" android:visibility="gone" style="@style/lz">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a2h" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/cp" android:src="@raw/icons_outlined_error" app:iconColor="#fffa5151" />
-            <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:gravity="center" android:id="@id/hpy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/h0s" android:lineSpacingMultiplier="1.2" android:paddingStart="@dimen/cl" android:paddingEnd="@dimen/cl" />
-            <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_5" android:gravity="center" android:id="@id/hpx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:lineSpacingMultiplier="1.2" android:paddingStart="@dimen/cl" android:paddingEnd="@dimen/cl" />
-        </LinearLayout>
-        <Button android:layout_gravity="bottom|center" android:id="@id/y0" android:layout_marginBottom="@dimen/bx" android:maxLines="1" style="@style/ov" />
-    </FrameLayout>
-</LinearLayout>
+<RelativeLayout android:background="@color/al2" android:padding="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/m1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/gqx" android:background="@null" android:layout_width="fill_parent" android:layout_height="180.0dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/gqs" android:background="@drawable/amq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+</RelativeLayout>

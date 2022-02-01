@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.game.media;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -30,7 +30,7 @@ public final class d
     super(paramISQLiteDatabase, c.info, "GameHaowanMedia", null);
   }
   
-  public final c aJG(String paramString)
+  public final c aGu(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(40947);
@@ -53,10 +53,10 @@ public final class d
     return paramString;
   }
   
-  public final Map<String, c> bj(LinkedList<String> paramLinkedList)
+  public final Map<String, c> bq(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(40948);
-    paramLinkedList = String.format("select * from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.d.c.br(paramLinkedList) });
+    paramLinkedList = String.format("select * from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.d.c.by(paramLinkedList) });
     Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "batchGet, sql: ".concat(String.valueOf(paramLinkedList)));
     paramLinkedList = rawQuery(paramLinkedList, new String[0]);
     if (paramLinkedList == null)
@@ -76,10 +76,10 @@ public final class d
     return localHashMap;
   }
   
-  public final void bk(LinkedList<String> paramLinkedList)
+  public final void br(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(40949);
-    Object localObject = String.format("select * from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.d.c.br(paramLinkedList) });
+    Object localObject = String.format("select * from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.d.c.by(paramLinkedList) });
     Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "batchGet, sql: ".concat(String.valueOf(localObject)));
     Cursor localCursor = rawQuery((String)localObject, new String[0]);
     if (localCursor == null) {
@@ -93,7 +93,7 @@ public final class d
           public final void run()
           {
             AppMethodBeat.i(40946);
-            Iterator localIterator = this.CEq.iterator();
+            Iterator localIterator = this.Iyt.iterator();
             while (localIterator.hasNext())
             {
               c localc = (c)localIterator.next();
@@ -108,7 +108,7 @@ public final class d
           }
         });
       }
-      paramLinkedList = String.format("delete from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.d.c.br(paramLinkedList) });
+      paramLinkedList = String.format("delete from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.d.c.by(paramLinkedList) });
       Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "batchDelete, sql: ".concat(String.valueOf(paramLinkedList)));
       execSQL("GameHaowanMedia", paramLinkedList);
       AppMethodBeat.o(40949);
@@ -126,7 +126,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.d
  * JD-Core Version:    0.7.0.1
  */

@@ -6,32 +6,32 @@ import java.util.HashMap;
 
 public final class v
 {
-  private static v vjF = null;
-  public MMHandler mat;
-  final HashMap<Long, Integer> vjG;
+  private static v yvD = null;
+  public MMHandler oTi;
+  final HashMap<Long, Integer> yvE;
   
   private v()
   {
     AppMethodBeat.i(23698);
-    this.vjG = new HashMap();
-    this.mat = new MMHandler("MMExDevicePushCore");
+    this.yvE = new HashMap();
+    this.oTi = new MMHandler("MMExDevicePushCore");
     AppMethodBeat.o(23698);
   }
   
-  public static v dam()
+  public static v dGF()
   {
     AppMethodBeat.i(23699);
-    if (vjF == null) {
-      vjF = new v();
+    if (yvD == null) {
+      yvD = new v();
     }
-    v localv = vjF;
+    v localv = yvD;
     AppMethodBeat.o(23699);
     return localv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.v
  * JD-Core Version:    0.7.0.1
  */

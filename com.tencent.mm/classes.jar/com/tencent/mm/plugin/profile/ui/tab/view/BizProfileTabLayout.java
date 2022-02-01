@@ -1,12 +1,10 @@
 package com.tencent.mm.plugin.profile.ui.tab.view;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,346 +12,496 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
-import com.tencent.mm.ui.ad;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.R.l;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.ui.tools.o;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout;", "Landroidx/constraintlayout/widget/ConstraintLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mMsgIndicator", "Landroid/view/View;", "mMsgLayout", "Landroid/view/ViewGroup;", "mMsgTextView", "Landroid/widget/TextView;", "mServiceLayout", "mServiceTextView", "mVideoIndicator", "mVideoLayout", "mVideoTextView", "onMsgTabSelected", "Lkotlin/Function0;", "", "getOnMsgTabSelected", "()Lkotlin/jvm/functions/Function0;", "setOnMsgTabSelected", "(Lkotlin/jvm/functions/Function0;)V", "onServiceTabSelected", "getOnServiceTabSelected", "setOnServiceTabSelected", "onTabSelected", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "position", "getOnTabSelected", "()Lkotlin/jvm/functions/Function1;", "setOnTabSelected", "(Lkotlin/jvm/functions/Function1;)V", "onVideoTabSelected", "getOnVideoTabSelected", "setOnVideoTabSelected", "tabCount", "getTabCount", "()I", "hideAllTab", "initView", "selectFirstTab", "selectIndex", "index", "selectMsgTab", "selectVideoTab", "showMsgTab", "showServiceTab", "showVideoTab", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout;", "Landroidx/constraintlayout/widget/ConstraintLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mMsgIndicator", "Landroid/view/View;", "mMsgLayout", "Landroid/view/ViewGroup;", "mMsgTextView", "Landroid/widget/TextView;", "mServiceLayout", "mServiceTextView", "mVideoIndicator", "mVideoLayout", "mVideoTextView", "onMsgTabSelected", "Lkotlin/Function0;", "", "getOnMsgTabSelected", "()Lkotlin/jvm/functions/Function0;", "setOnMsgTabSelected", "(Lkotlin/jvm/functions/Function0;)V", "onServiceTabSelected", "getOnServiceTabSelected", "setOnServiceTabSelected", "onTabSelected", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "position", "getOnTabSelected", "()Lkotlin/jvm/functions/Function1;", "setOnTabSelected", "(Lkotlin/jvm/functions/Function1;)V", "onVideoTabSelected", "getOnVideoTabSelected", "setOnVideoTabSelected", "tabCount", "getTabCount", "()I", "hideAllTab", "initView", "selectFirstTab", "selectIndex", "index", "selectMsgTab", "selectVideoTab", "setVideoTabText", "text", "", "showMsgTab", "showServiceTab", "showVideoTab", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class BizProfileTabLayout
   extends ConstraintLayout
 {
-  private TextView Hij;
-  private TextView Hik;
-  private TextView Hil;
-  public ViewGroup Him;
-  public ViewGroup Hin;
-  public ViewGroup Hio;
-  private View Hip;
-  private View Hiq;
-  private kotlin.g.a.a<x> Hir;
-  private kotlin.g.a.a<x> His;
-  private kotlin.g.a.a<x> Hit;
-  private kotlin.g.a.b<? super Integer, x> Hiu;
+  private TextView NfX;
+  private TextView NfY;
+  private TextView NfZ;
+  public ViewGroup Nga;
+  public ViewGroup Ngb;
+  public ViewGroup Ngc;
+  private View Ngd;
+  private View Nge;
+  private kotlin.g.a.a<ah> Ngf;
+  private kotlin.g.a.a<ah> Ngg;
+  private kotlin.g.a.a<ah> Ngh;
+  private kotlin.g.a.b<? super Integer, ah> Ngi;
   
   public BizProfileTabLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(222423);
+    AppMethodBeat.i(305973);
     initView();
-    AppMethodBeat.o(222423);
+    AppMethodBeat.o(305973);
   }
   
   public BizProfileTabLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(222424);
+    AppMethodBeat.i(305980);
     initView();
-    AppMethodBeat.o(222424);
+    AppMethodBeat.o(305980);
   }
   
-  @SuppressLint({"ResourceType"})
+  private static final void a(BizProfileTabLayout paramBizProfileTabLayout, View paramView)
+  {
+    AppMethodBeat.i(305999);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramBizProfileTabLayout);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramBizProfileTabLayout, "this$0");
+    paramBizProfileTabLayout = paramBizProfileTabLayout.getOnServiceTabSelected();
+    if (paramBizProfileTabLayout != null) {
+      paramBizProfileTabLayout.invoke();
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(305999);
+  }
+  
+  private static final void b(BizProfileTabLayout paramBizProfileTabLayout, View paramView)
+  {
+    AppMethodBeat.i(306006);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramBizProfileTabLayout);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramBizProfileTabLayout, "this$0");
+    paramView = paramBizProfileTabLayout.getOnMsgTabSelected();
+    if (paramView != null) {
+      paramView.invoke();
+    }
+    paramView = paramBizProfileTabLayout.getOnTabSelected();
+    if (paramView != null) {
+      paramView.invoke(Integer.valueOf(0));
+    }
+    paramBizProfileTabLayout.gDx();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(306006);
+  }
+  
+  private static final void c(BizProfileTabLayout paramBizProfileTabLayout, View paramView)
+  {
+    AppMethodBeat.i(306011);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramBizProfileTabLayout);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    s.u(paramBizProfileTabLayout, "this$0");
+    localObject2 = paramBizProfileTabLayout.getOnTabSelected();
+    if (localObject2 != null)
+    {
+      localObject1 = paramBizProfileTabLayout.Nga;
+      paramView = (View)localObject1;
+      if (localObject1 == null)
+      {
+        s.bIx("mMsgLayout");
+        paramView = null;
+      }
+      if (paramView.getVisibility() != 0) {
+        break label151;
+      }
+    }
+    label151:
+    for (int i = 1;; i = 0)
+    {
+      ((kotlin.g.a.b)localObject2).invoke(Integer.valueOf(i));
+      paramView = paramBizProfileTabLayout.getOnVideoTabSelected();
+      if (paramView != null) {
+        paramView.invoke();
+      }
+      paramBizProfileTabLayout.gDy();
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(306011);
+      return;
+    }
+  }
+  
   private final void initView()
   {
-    AppMethodBeat.i(222408);
-    ad.kS(getContext()).inflate(R.i.efg, (ViewGroup)this, true);
-    Object localObject = findViewById(R.h.dtJ);
-    kotlin.g.b.p.j(localObject, "findViewById(R.id.biz_profile_menu_msg)");
-    this.Hij = ((TextView)localObject);
-    localObject = findViewById(R.h.dtQ);
-    kotlin.g.b.p.j(localObject, "findViewById(R.id.biz_profile_menu_video)");
-    this.Hik = ((TextView)localObject);
-    localObject = findViewById(R.h.dtM);
-    kotlin.g.b.p.j(localObject, "findViewById(R.id.biz_profile_menu_service)");
-    this.Hil = ((TextView)localObject);
-    localObject = findViewById(R.h.dtL);
-    kotlin.g.b.p.j(localObject, "findViewById(R.id.biz_profile_menu_msg_layout)");
-    this.Him = ((ViewGroup)localObject);
-    localObject = findViewById(R.h.dtS);
-    kotlin.g.b.p.j(localObject, "findViewById(R.id.biz_profile_menu_video_layout)");
-    this.Hin = ((ViewGroup)localObject);
-    localObject = findViewById(R.h.dtN);
-    kotlin.g.b.p.j(localObject, "findViewById(R.id.biz_profile_menu_service_layout)");
-    this.Hio = ((ViewGroup)localObject);
-    localObject = this.Him;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mMsgLayout");
+    Object localObject2 = null;
+    AppMethodBeat.i(305990);
+    af.mU(getContext()).inflate(R.i.gia, (ViewGroup)this, true);
+    Object localObject1 = findViewById(R.h.fua);
+    s.s(localObject1, "findViewById(R.id.biz_profile_menu_msg)");
+    this.NfX = ((TextView)localObject1);
+    localObject1 = findViewById(R.h.fuh);
+    s.s(localObject1, "findViewById(R.id.biz_profile_menu_video)");
+    this.NfY = ((TextView)localObject1);
+    localObject1 = findViewById(R.h.fud);
+    s.s(localObject1, "findViewById(R.id.biz_profile_menu_service)");
+    this.NfZ = ((TextView)localObject1);
+    localObject1 = findViewById(R.h.fuc);
+    s.s(localObject1, "findViewById(R.id.biz_profile_menu_msg_layout)");
+    this.Nga = ((ViewGroup)localObject1);
+    localObject1 = findViewById(R.h.fuj);
+    s.s(localObject1, "findViewById(R.id.biz_profile_menu_video_layout)");
+    this.Ngb = ((ViewGroup)localObject1);
+    localObject1 = findViewById(R.h.fue);
+    s.s(localObject1, "findViewById(R.id.biz_profile_menu_service_layout)");
+    this.Ngc = ((ViewGroup)localObject1);
+    ViewGroup localViewGroup = this.Nga;
+    localObject1 = localViewGroup;
+    if (localViewGroup == null)
+    {
+      s.bIx("mMsgLayout");
+      localObject1 = null;
     }
-    com.tencent.mm.ui.tools.p.iF((View)localObject);
-    localObject = this.Hin;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mVideoLayout");
+    o.F((View)localObject1, 0.7F);
+    localViewGroup = this.Ngb;
+    localObject1 = localViewGroup;
+    if (localViewGroup == null)
+    {
+      s.bIx("mVideoLayout");
+      localObject1 = null;
     }
-    com.tencent.mm.ui.tools.p.iF((View)localObject);
-    localObject = this.Hio;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mServiceLayout");
+    o.F((View)localObject1, 0.7F);
+    localViewGroup = this.Ngc;
+    localObject1 = localViewGroup;
+    if (localViewGroup == null)
+    {
+      s.bIx("mServiceLayout");
+      localObject1 = null;
     }
-    com.tencent.mm.ui.tools.p.iF((View)localObject);
-    localObject = findViewById(R.h.dtK);
-    kotlin.g.b.p.j(localObject, "findViewById(R.id.biz_profile_menu_msg_indicator)");
-    this.Hip = ((View)localObject);
-    localObject = findViewById(R.h.dtR);
-    kotlin.g.b.p.j(localObject, "findViewById(R.id.biz_pr…ile_menu_video_indicator)");
-    this.Hiq = ((View)localObject);
-    localObject = this.Hio;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mServiceLayout");
+    o.F((View)localObject1, 0.7F);
+    localObject1 = findViewById(R.h.fub);
+    s.s(localObject1, "findViewById(R.id.biz_profile_menu_msg_indicator)");
+    this.Ngd = ((View)localObject1);
+    localObject1 = findViewById(R.h.fui);
+    s.s(localObject1, "findViewById(R.id.biz_pr…ile_menu_video_indicator)");
+    this.Nge = ((View)localObject1);
+    localViewGroup = this.Ngc;
+    localObject1 = localViewGroup;
+    if (localViewGroup == null)
+    {
+      s.bIx("mServiceLayout");
+      localObject1 = null;
     }
-    ((ViewGroup)localObject).setOnClickListener((View.OnClickListener)new a(this));
-    localObject = this.Him;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mMsgLayout");
+    ((ViewGroup)localObject1).setOnClickListener(new BizProfileTabLayout..ExternalSyntheticLambda2(this));
+    localViewGroup = this.Nga;
+    localObject1 = localViewGroup;
+    if (localViewGroup == null)
+    {
+      s.bIx("mMsgLayout");
+      localObject1 = null;
     }
-    ((ViewGroup)localObject).setOnClickListener((View.OnClickListener)new b(this));
-    localObject = this.Hin;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mVideoLayout");
+    ((ViewGroup)localObject1).setOnClickListener(new BizProfileTabLayout..ExternalSyntheticLambda0(this));
+    localObject1 = this.Ngb;
+    if (localObject1 == null)
+    {
+      s.bIx("mVideoLayout");
+      localObject1 = localObject2;
     }
-    ((ViewGroup)localObject).setOnClickListener((View.OnClickListener)new c(this));
-    AppMethodBeat.o(222408);
+    for (;;)
+    {
+      ((ViewGroup)localObject1).setOnClickListener(new BizProfileTabLayout..ExternalSyntheticLambda1(this));
+      AppMethodBeat.o(305990);
+      return;
+    }
   }
   
-  public final void frO()
+  public final void gDw()
   {
-    AppMethodBeat.i(222410);
-    ViewGroup localViewGroup = this.Him;
-    if (localViewGroup == null) {
-      kotlin.g.b.p.bGy("mMsgLayout");
+    Object localObject2 = null;
+    AppMethodBeat.i(306101);
+    ViewGroup localViewGroup = this.Nga;
+    Object localObject1 = localViewGroup;
+    if (localViewGroup == null)
+    {
+      s.bIx("mMsgLayout");
+      localObject1 = null;
     }
-    localViewGroup.setVisibility(8);
-    localViewGroup = this.Hin;
-    if (localViewGroup == null) {
-      kotlin.g.b.p.bGy("mVideoLayout");
+    ((ViewGroup)localObject1).setVisibility(8);
+    localViewGroup = this.Ngb;
+    localObject1 = localViewGroup;
+    if (localViewGroup == null)
+    {
+      s.bIx("mVideoLayout");
+      localObject1 = null;
     }
-    localViewGroup.setVisibility(8);
-    localViewGroup = this.Hio;
-    if (localViewGroup == null) {
-      kotlin.g.b.p.bGy("mServiceLayout");
+    ((ViewGroup)localObject1).setVisibility(8);
+    localObject1 = this.Ngc;
+    if (localObject1 == null)
+    {
+      s.bIx("mServiceLayout");
+      localObject1 = localObject2;
     }
-    localViewGroup.setVisibility(8);
-    AppMethodBeat.o(222410);
+    for (;;)
+    {
+      ((ViewGroup)localObject1).setVisibility(8);
+      AppMethodBeat.o(306101);
+      return;
+    }
   }
   
-  public final void frP()
+  public final void gDx()
   {
-    AppMethodBeat.i(222413);
-    Object localObject = this.Him;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mMsgLayout");
+    Object localObject2 = null;
+    AppMethodBeat.i(306112);
+    Object localObject3 = this.Nga;
+    Object localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mMsgLayout");
+      localObject1 = null;
     }
-    ((ViewGroup)localObject).setVisibility(0);
-    localObject = this.Hip;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mMsgIndicator");
+    ((ViewGroup)localObject1).setVisibility(0);
+    localObject3 = this.Ngd;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mMsgIndicator");
+      localObject1 = null;
     }
-    ((View)localObject).setVisibility(0);
-    localObject = this.Hiq;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mVideoIndicator");
+    ((View)localObject1).setVisibility(0);
+    localObject3 = this.Nge;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mVideoIndicator");
+      localObject1 = null;
     }
-    ((View)localObject).setVisibility(8);
-    localObject = this.Hij;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mMsgTextView");
+    ((View)localObject1).setVisibility(8);
+    localObject3 = this.NfX;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mMsgTextView");
+      localObject1 = null;
     }
-    Context localContext = getContext();
-    kotlin.g.b.p.j(localContext, "context");
-    ((TextView)localObject).setTextColor(localContext.getResources().getColor(R.e.normal_text_color));
-    localObject = this.Hik;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mVideoTextView");
+    ((TextView)localObject1).setTextColor(getContext().getResources().getColor(R.e.normal_text_color));
+    localObject3 = this.NfY;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mVideoTextView");
+      localObject1 = null;
     }
-    localContext = getContext();
-    kotlin.g.b.p.j(localContext, "context");
-    ((TextView)localObject).setTextColor(localContext.getResources().getColor(R.e.desc_text));
-    AppMethodBeat.o(222413);
+    ((TextView)localObject1).setTextColor(getContext().getResources().getColor(R.e.desc_text));
+    localObject1 = am.aixg;
+    String str = getResources().getString(R.l.biz_timeline_has_selected);
+    s.s(str, "resources.getString(R.st…iz_timeline_has_selected)");
+    localObject3 = this.NfX;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mMsgTextView");
+      localObject1 = null;
+    }
+    localObject1 = String.format(str, Arrays.copyOf(new Object[] { ((TextView)localObject1).getText() }, 1));
+    s.s(localObject1, "java.lang.String.format(format, *args)");
+    localObject3 = k.aeZF;
+    localObject3 = getContext();
+    s.s(localObject3, "context");
+    ((com.tencent.mm.plugin.profile.ui.a)k.nq((Context)localObject3).q(com.tencent.mm.plugin.profile.ui.a.class)).setValue("biz_timeline_profile_menu_selected_msg", (String)localObject1);
+    localObject1 = k.aeZF;
+    localObject1 = getContext();
+    s.s(localObject1, "context");
+    localObject3 = (com.tencent.mm.plugin.profile.ui.a)k.nq((Context)localObject1).q(com.tencent.mm.plugin.profile.ui.a.class);
+    localObject1 = this.NfY;
+    if (localObject1 == null)
+    {
+      s.bIx("mVideoTextView");
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      ((com.tencent.mm.plugin.profile.ui.a)localObject3).setValue("biz_timeline_profile_menu_selected_video", ((TextView)localObject1).getText().toString());
+      AppMethodBeat.o(306112);
+      return;
+    }
   }
   
-  public final void frQ()
+  public final void gDy()
   {
-    AppMethodBeat.i(222421);
-    Object localObject = this.Hin;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mVideoLayout");
+    Object localObject2 = null;
+    AppMethodBeat.i(306122);
+    Object localObject3 = this.Ngb;
+    Object localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mVideoLayout");
+      localObject1 = null;
     }
-    ((ViewGroup)localObject).setVisibility(0);
-    localObject = this.Hiq;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mVideoIndicator");
+    ((ViewGroup)localObject1).setVisibility(0);
+    localObject3 = this.Nge;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mVideoIndicator");
+      localObject1 = null;
     }
-    ((View)localObject).setVisibility(0);
-    localObject = this.Hip;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mMsgIndicator");
+    ((View)localObject1).setVisibility(0);
+    localObject3 = this.Ngd;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mMsgIndicator");
+      localObject1 = null;
     }
-    ((View)localObject).setVisibility(8);
-    localObject = this.Hik;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mVideoTextView");
+    ((View)localObject1).setVisibility(8);
+    localObject3 = this.NfY;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mVideoTextView");
+      localObject1 = null;
     }
-    Context localContext = getContext();
-    kotlin.g.b.p.j(localContext, "context");
-    ((TextView)localObject).setTextColor(localContext.getResources().getColor(R.e.normal_text_color));
-    localObject = this.Hij;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("mMsgTextView");
+    ((TextView)localObject1).setTextColor(getContext().getResources().getColor(R.e.normal_text_color));
+    localObject3 = this.NfX;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mMsgTextView");
+      localObject1 = null;
     }
-    localContext = getContext();
-    kotlin.g.b.p.j(localContext, "context");
-    ((TextView)localObject).setTextColor(localContext.getResources().getColor(R.e.desc_text));
-    AppMethodBeat.o(222421);
+    ((TextView)localObject1).setTextColor(getContext().getResources().getColor(R.e.desc_text));
+    localObject1 = am.aixg;
+    String str = getResources().getString(R.l.biz_timeline_has_selected);
+    s.s(str, "resources.getString(R.st…iz_timeline_has_selected)");
+    localObject3 = this.NfY;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("mVideoTextView");
+      localObject1 = null;
+    }
+    localObject1 = String.format(str, Arrays.copyOf(new Object[] { ((TextView)localObject1).getText() }, 1));
+    s.s(localObject1, "java.lang.String.format(format, *args)");
+    localObject3 = k.aeZF;
+    localObject3 = getContext();
+    s.s(localObject3, "context");
+    ((com.tencent.mm.plugin.profile.ui.a)k.nq((Context)localObject3).q(com.tencent.mm.plugin.profile.ui.a.class)).setValue("biz_timeline_profile_menu_selected_video", (String)localObject1);
+    localObject1 = k.aeZF;
+    localObject1 = getContext();
+    s.s(localObject1, "context");
+    localObject3 = (com.tencent.mm.plugin.profile.ui.a)k.nq((Context)localObject1).q(com.tencent.mm.plugin.profile.ui.a.class);
+    localObject1 = this.NfX;
+    if (localObject1 == null)
+    {
+      s.bIx("mMsgTextView");
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      ((com.tencent.mm.plugin.profile.ui.a)localObject3).setValue("biz_timeline_profile_menu_selected_msg", ((TextView)localObject1).getText().toString());
+      AppMethodBeat.o(306122);
+      return;
+    }
   }
   
-  public final kotlin.g.a.a<x> getOnMsgTabSelected()
+  public final kotlin.g.a.a<ah> getOnMsgTabSelected()
   {
-    return this.His;
+    return this.Ngg;
   }
   
-  public final kotlin.g.a.a<x> getOnServiceTabSelected()
+  public final kotlin.g.a.a<ah> getOnServiceTabSelected()
   {
-    return this.Hir;
+    return this.Ngf;
   }
   
-  public final kotlin.g.a.b<Integer, x> getOnTabSelected()
+  public final kotlin.g.a.b<Integer, ah> getOnTabSelected()
   {
-    return this.Hiu;
+    return this.Ngi;
   }
   
-  public final kotlin.g.a.a<x> getOnVideoTabSelected()
+  public final kotlin.g.a.a<ah> getOnVideoTabSelected()
   {
-    return this.Hit;
+    return this.Ngh;
   }
   
   public final int getTabCount()
   {
-    AppMethodBeat.i(222389);
-    int j = 0;
-    ViewGroup localViewGroup = this.Him;
-    if (localViewGroup == null) {
-      kotlin.g.b.p.bGy("mMsgLayout");
-    }
-    if (localViewGroup.getVisibility() == 0) {
-      j = 1;
-    }
-    localViewGroup = this.Hin;
-    if (localViewGroup == null) {
-      kotlin.g.b.p.bGy("mVideoLayout");
-    }
-    int i = j;
-    if (localViewGroup.getVisibility() == 0) {
-      i = j + 1;
-    }
-    localViewGroup = this.Hio;
-    if (localViewGroup == null) {
-      kotlin.g.b.p.bGy("mServiceLayout");
-    }
-    j = i;
-    if (localViewGroup.getVisibility() == 0) {
-      j = i + 1;
-    }
-    AppMethodBeat.o(222389);
-    return j;
-  }
-  
-  public final void setOnMsgTabSelected(kotlin.g.a.a<x> parama)
-  {
-    this.His = parama;
-  }
-  
-  public final void setOnServiceTabSelected(kotlin.g.a.a<x> parama)
-  {
-    this.Hir = parama;
-  }
-  
-  public final void setOnTabSelected(kotlin.g.a.b<? super Integer, x> paramb)
-  {
-    this.Hiu = paramb;
-  }
-  
-  public final void setOnVideoTabSelected(kotlin.g.a.a<x> parama)
-  {
-    this.Hit = parama;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(BizProfileTabLayout paramBizProfileTabLayout) {}
-    
-    public final void onClick(View paramView)
+    Object localObject2 = null;
+    AppMethodBeat.i(306037);
+    ViewGroup localViewGroup = this.Nga;
+    Object localObject1 = localViewGroup;
+    if (localViewGroup == null)
     {
-      AppMethodBeat.i(289359);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = this.Hiv.getOnServiceTabSelected();
-      if (paramView != null) {
-        paramView.invoke();
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(289359);
+      s.bIx("mMsgLayout");
+      localObject1 = null;
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(BizProfileTabLayout paramBizProfileTabLayout) {}
-    
-    public final void onClick(View paramView)
+    if (((ViewGroup)localObject1).getVisibility() == 0) {}
+    for (int j = 1;; j = 0)
     {
-      AppMethodBeat.i(272030);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = this.Hiv.getOnMsgTabSelected();
-      if (paramView != null) {
-        paramView.invoke();
-      }
-      paramView = this.Hiv.getOnTabSelected();
-      if (paramView != null) {
-        paramView.invoke(Integer.valueOf(0));
-      }
-      this.Hiv.frP();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(272030);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(BizProfileTabLayout paramBizProfileTabLayout) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(282039);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = this.Hiv.getOnTabSelected();
-      if (paramView != null) {
-        if (BizProfileTabLayout.a(this.Hiv).getVisibility() != 0) {
-          break label116;
-        }
-      }
-      label116:
-      for (int i = 1;; i = 0)
+      localViewGroup = this.Ngb;
+      localObject1 = localViewGroup;
+      if (localViewGroup == null)
       {
-        paramView.invoke(Integer.valueOf(i));
-        paramView = this.Hiv.getOnVideoTabSelected();
-        if (paramView != null) {
-          paramView.invoke();
+        s.bIx("mVideoLayout");
+        localObject1 = null;
+      }
+      int i = j;
+      if (((ViewGroup)localObject1).getVisibility() == 0) {
+        i = j + 1;
+      }
+      localObject1 = this.Ngc;
+      if (localObject1 == null)
+      {
+        s.bIx("mServiceLayout");
+        localObject1 = localObject2;
+      }
+      for (;;)
+      {
+        j = i;
+        if (((ViewGroup)localObject1).getVisibility() == 0) {
+          j = i + 1;
         }
-        this.Hiv.frQ();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/tab/view/BizProfileTabLayout$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(282039);
-        return;
+        AppMethodBeat.o(306037);
+        return j;
       }
     }
+  }
+  
+  public final void setOnMsgTabSelected(kotlin.g.a.a<ah> parama)
+  {
+    this.Ngg = parama;
+  }
+  
+  public final void setOnServiceTabSelected(kotlin.g.a.a<ah> parama)
+  {
+    this.Ngf = parama;
+  }
+  
+  public final void setOnTabSelected(kotlin.g.a.b<? super Integer, ah> paramb)
+  {
+    this.Ngi = paramb;
+  }
+  
+  public final void setOnVideoTabSelected(kotlin.g.a.a<ah> parama)
+  {
+    this.Ngh = parama;
+  }
+  
+  public final void setVideoTabText(String paramString)
+  {
+    AppMethodBeat.i(306093);
+    s.u(paramString, "text");
+    TextView localTextView2 = this.NfY;
+    TextView localTextView1 = localTextView2;
+    if (localTextView2 == null)
+    {
+      s.bIx("mVideoTextView");
+      localTextView1 = null;
+    }
+    localTextView1.setText((CharSequence)paramString);
+    AppMethodBeat.o(306093);
   }
 }
 

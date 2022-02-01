@@ -6,83 +6,83 @@ import java.util.ArrayList;
 
 public abstract class g<K, T extends a>
 {
-  public d VKd;
-  public boolean VKe;
+  public d adoh;
+  public boolean adoi;
   
   public g(d paramd, int paramInt, boolean paramBoolean)
   {
-    this.VKd = paramd;
-    this.VKe = paramBoolean;
-    this.VKd.EV(true);
-    this.VKd.a(new f.a()
+    this.adoh = paramd;
+    this.adoi = paramBoolean;
+    this.adoh.KF(true);
+    this.adoh.a(new f.a()
     {
-      public final ArrayList<a> bD(ArrayList<Object> paramAnonymousArrayList)
+      public final ArrayList<a> ce(ArrayList<Object> paramAnonymousArrayList)
       {
         AppMethodBeat.i(133504);
-        paramAnonymousArrayList = g.this.bD(paramAnonymousArrayList);
+        paramAnonymousArrayList = g.this.ce(paramAnonymousArrayList);
         AppMethodBeat.o(133504);
         return paramAnonymousArrayList;
       }
       
-      public final a hCa()
+      public final a jeg()
       {
         AppMethodBeat.i(133503);
-        a locala = g.this.hCc();
+        a locala = g.this.jei();
         AppMethodBeat.o(133503);
         return locala;
       }
     });
     if (paramInt != 0) {
-      this.VKd.asX(paramInt);
+      this.adoh.fi(paramInt);
     }
     if (!paramBoolean) {
       getCount();
     }
   }
   
-  public abstract ArrayList<T> bD(ArrayList<Object> paramArrayList);
-  
   public final void c(Object paramObject, T paramT)
   {
-    this.VKd.a(paramObject, paramT);
+    this.adoh.a(paramObject, paramT);
   }
+  
+  public abstract ArrayList<T> ce(ArrayList<Object> paramArrayList);
   
   public final void close()
   {
-    this.VKd.close();
-    this.VKd = null;
+    this.adoh.close();
+    this.adoh = null;
   }
   
-  public final boolean eh(Object paramObject)
+  public final boolean gF(Object paramObject)
   {
-    return this.VKd.eh(paramObject);
+    return this.adoh.gF(paramObject);
   }
   
   public final int getCount()
   {
-    return this.VKd.getCount();
+    return this.adoh.getCount();
   }
-  
-  public final SparseArray<K>[] hBN()
-  {
-    return this.VKd.hBN();
-  }
-  
-  public final boolean hBP()
-  {
-    return this.VKd.hBP();
-  }
-  
-  public abstract T hCc();
   
   public final boolean isClosed()
   {
-    return this.VKd.isClosed();
+    return this.adoh.isClosed();
   }
+  
+  public final SparseArray<K>[] jdT()
+  {
+    return this.adoh.jdT();
+  }
+  
+  public final boolean jdV()
+  {
+    return this.adoh.jdV();
+  }
+  
+  public abstract T jei();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.storagebase.a.g
  * JD-Core Version:    0.7.0.1
  */

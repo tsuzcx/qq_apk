@@ -11,9 +11,9 @@ import com.tencent.mm.R.f;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
 import com.tencent.mm.pluginsdk.o.c.a;
-import com.tencent.mm.pluginsdk.o.e;
+import com.tencent.mm.pluginsdk.o.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 
 public final class m
   implements a
@@ -70,10 +70,10 @@ public final class m
       }
       i = 2;
       break label83;
-      o.e.QSd.gOE();
+      o.d.XNU.inS();
       continue;
       paramArrayOfString = new TextView(paramContext);
-      paramArrayOfString.setText(o.e.QSd.gOD());
+      paramArrayOfString.setText(o.d.XNU.inR());
       paramArrayOfString.setGravity(19);
       paramArrayOfString.setTextSize(1, 10.0F);
       paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
@@ -81,7 +81,7 @@ public final class m
       paramArrayOfString.setTypeface(Typeface.MONOSPACE);
       i = paramContext.getResources().getDimensionPixelSize(R.f.LargePadding);
       paramArrayOfString.setPadding(i, i, i, i);
-      h.a(paramContext, null, paramArrayOfString, null);
+      k.a(paramContext, null, paramArrayOfString, null);
     }
   }
 }

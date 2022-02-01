@@ -17,7 +17,7 @@ public class DeviceInfo
       int i = Build.VERSION.SDK_INT;
       return i;
     }
-    catch (Throwable localThrowable) {}
+    finally {}
     return -1;
   }
   
@@ -28,7 +28,7 @@ public class DeviceInfo
       String str = Build.BRAND;
       return str;
     }
-    catch (Throwable localThrowable) {}
+    finally {}
     return "fail";
   }
   
@@ -39,25 +39,25 @@ public class DeviceInfo
       String str = Build.MODEL;
       return str;
     }
-    catch (Throwable localThrowable) {}
+    finally {}
     return "fail";
   }
   
   public static String getRomFingerprint(Context paramContext)
   {
-    AppMethodBeat.i(195547);
+    AppMethodBeat.i(187411);
     String str = Build.FINGERPRINT;
     paramContext = str;
     if (TextUtils.isEmpty(str)) {
       paramContext = "Android";
     }
-    AppMethodBeat.o(195547);
+    AppMethodBeat.o(187411);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.libpag.reporter.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

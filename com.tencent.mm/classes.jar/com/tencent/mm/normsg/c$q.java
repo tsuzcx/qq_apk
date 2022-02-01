@@ -7,13 +7,13 @@ import java.util.List;
 
 public final class c$q
 {
-  private static volatile a mxj = null;
+  private static volatile a pqI = null;
   
   public static void c0(a parama)
   {
     try
     {
-      mxj = parama;
+      pqI = parama;
       return;
     }
     finally
@@ -31,9 +31,9 @@ public final class c$q
     //   2: monitorenter
     //   3: ldc 22
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 13	com/tencent/mm/normsg/c$q:mxj	Lcom/tencent/mm/normsg/a;
+    //   8: getstatic 13	com/tencent/mm/normsg/c$q:pqI	Lcom/tencent/mm/normsg/a;
     //   11: ifnull +22 -> 33
-    //   14: getstatic 13	com/tencent/mm/normsg/c$q:mxj	Lcom/tencent/mm/normsg/a;
+    //   14: getstatic 13	com/tencent/mm/normsg/c$q:pqI	Lcom/tencent/mm/normsg/a;
     //   17: invokeinterface 33 1 0
     //   22: astore_0
     //   23: ldc 22
@@ -65,9 +65,9 @@ public final class c$q
   private static String c10()
   {
     AppMethodBeat.i(62435);
-    if (mxj != null)
+    if (pqI != null)
     {
-      String str = mxj.getDeviceId();
+      String str = pqI.bRM();
       AppMethodBeat.o(62435);
       return str;
     }
@@ -78,9 +78,9 @@ public final class c$q
   private static boolean c11(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62436);
-    if (mxj != null)
+    if (pqI != null)
     {
-      boolean bool = mxj.k(paramString, paramArrayOfByte);
+      boolean bool = pqI.m(paramString, paramArrayOfByte);
       AppMethodBeat.o(62436);
       return bool;
     }
@@ -91,9 +91,9 @@ public final class c$q
   private static byte[] c12(String paramString)
   {
     AppMethodBeat.i(62437);
-    if (mxj != null)
+    if (pqI != null)
     {
-      paramString = mxj.Zy(paramString);
+      paramString = pqI.RA(paramString);
       AppMethodBeat.o(62437);
       return paramString;
     }
@@ -104,8 +104,8 @@ public final class c$q
   private static void c13(String paramString)
   {
     AppMethodBeat.i(62438);
-    if (mxj != null) {
-      mxj.Zz(paramString);
+    if (pqI != null) {
+      pqI.RB(paramString);
     }
     AppMethodBeat.o(62438);
   }
@@ -113,9 +113,9 @@ public final class c$q
   private static String c14()
   {
     AppMethodBeat.i(62439);
-    if (mxj != null)
+    if (pqI != null)
     {
-      String str = mxj.auQ();
+      String str = pqI.aPk();
       AppMethodBeat.o(62439);
       return str;
     }
@@ -126,9 +126,9 @@ public final class c$q
   private static String c15(Context paramContext, String paramString)
   {
     AppMethodBeat.i(62440);
-    if (mxj != null)
+    if (pqI != null)
     {
-      paramContext = mxj.H(paramContext, paramString);
+      paramContext = pqI.M(paramContext, paramString);
       AppMethodBeat.o(62440);
       return paramContext;
     }
@@ -138,53 +138,53 @@ public final class c$q
   
   private static boolean c16(Context paramContext)
   {
-    AppMethodBeat.i(243966);
-    if (mxj != null)
+    AppMethodBeat.i(236297);
+    if (pqI != null)
     {
-      boolean bool = mxj.dk(paramContext);
-      AppMethodBeat.o(243966);
+      boolean bool = pqI.ec(paramContext);
+      AppMethodBeat.o(236297);
       return bool;
     }
-    AppMethodBeat.o(243966);
+    AppMethodBeat.o(236297);
     return false;
   }
   
   private static boolean c17()
   {
-    AppMethodBeat.i(243967);
-    if (mxj != null)
+    AppMethodBeat.i(236302);
+    if (pqI != null)
     {
-      boolean bool = mxj.buj();
-      AppMethodBeat.o(243967);
+      boolean bool = pqI.bRN();
+      AppMethodBeat.o(236302);
       return bool;
     }
-    AppMethodBeat.o(243967);
+    AppMethodBeat.o(236302);
     return false;
   }
   
   private static String c18()
   {
-    AppMethodBeat.i(243968);
-    if (mxj != null)
+    AppMethodBeat.i(236307);
+    if (pqI != null)
     {
-      String str = mxj.getWiFiSsid();
-      AppMethodBeat.o(243968);
+      String str = pqI.getWiFiSsid();
+      AppMethodBeat.o(236307);
       return str;
     }
-    AppMethodBeat.o(243968);
+    AppMethodBeat.o(236307);
     return "";
   }
   
   private static String c19()
   {
-    AppMethodBeat.i(243969);
-    if (mxj != null)
+    AppMethodBeat.i(236312);
+    if (pqI != null)
     {
-      String str = mxj.getWiFiBssid();
-      AppMethodBeat.o(243969);
+      String str = pqI.getWiFiBssid();
+      AppMethodBeat.o(236312);
       return str;
     }
-    AppMethodBeat.o(243969);
+    AppMethodBeat.o(236312);
     return "";
   }
   
@@ -196,9 +196,9 @@ public final class c$q
     //   2: monitorenter
     //   3: ldc 97
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 13	com/tencent/mm/normsg/c$q:mxj	Lcom/tencent/mm/normsg/a;
+    //   8: getstatic 13	com/tencent/mm/normsg/c$q:pqI	Lcom/tencent/mm/normsg/a;
     //   11: ifnull +22 -> 33
-    //   14: getstatic 13	com/tencent/mm/normsg/c$q:mxj	Lcom/tencent/mm/normsg/a;
+    //   14: getstatic 13	com/tencent/mm/normsg/c$q:pqI	Lcom/tencent/mm/normsg/a;
     //   17: invokeinterface 100 1 0
     //   22: lstore_0
     //   23: ldc 97
@@ -229,16 +229,47 @@ public final class c$q
   
   private static List<String> c20()
   {
-    AppMethodBeat.i(243970);
-    if (mxj != null)
+    AppMethodBeat.i(236320);
+    if (pqI != null)
     {
-      localObject = mxj.buk();
-      AppMethodBeat.o(243970);
+      localObject = pqI.bRO();
+      AppMethodBeat.o(236320);
       return localObject;
     }
     Object localObject = new ArrayList();
-    AppMethodBeat.o(243970);
+    AppMethodBeat.o(236320);
     return localObject;
+  }
+  
+  private static long c21()
+  {
+    AppMethodBeat.i(236325);
+    if (pqI != null)
+    {
+      long l = pqI.getGSMSignalStrength();
+      AppMethodBeat.o(236325);
+      return l;
+    }
+    AppMethodBeat.o(236325);
+    return -1L;
+  }
+  
+  private static String c22()
+  {
+    AppMethodBeat.i(236337);
+    if (pqI != null)
+    {
+      String str = pqI.getAndroidId();
+      if (str == null)
+      {
+        AppMethodBeat.o(236337);
+        return "";
+      }
+      AppMethodBeat.o(236337);
+      return str;
+    }
+    AppMethodBeat.o(236337);
+    return "";
   }
   
   static void c3(int paramInt, String paramString)
@@ -246,8 +277,8 @@ public final class c$q
     try
     {
       AppMethodBeat.i(62429);
-      if (mxj != null) {
-        mxj.T(paramInt, paramString);
+      if (pqI != null) {
+        pqI.Y(paramInt, paramString);
       }
       AppMethodBeat.o(62429);
       return;
@@ -260,8 +291,8 @@ public final class c$q
     try
     {
       AppMethodBeat.i(62430);
-      if (mxj != null) {
-        mxj.R(paramInt1, paramInt2, paramInt3);
+      if (pqI != null) {
+        pqI.W(paramInt1, paramInt2, paramInt3);
       }
       AppMethodBeat.o(62430);
       return;
@@ -274,8 +305,8 @@ public final class c$q
     try
     {
       AppMethodBeat.i(62431);
-      if (mxj != null) {
-        mxj.y(paramInt1, paramInt2, paramInt3, paramInt4);
+      if (pqI != null) {
+        pqI.E(paramInt1, paramInt2, paramInt3, paramInt4);
       }
       AppMethodBeat.o(62431);
       return;
@@ -294,14 +325,14 @@ public final class c$q
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 132
+    //   3: ldc 144
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 13	com/tencent/mm/normsg/c$q:mxj	Lcom/tencent/mm/normsg/a;
+    //   8: getstatic 13	com/tencent/mm/normsg/c$q:pqI	Lcom/tencent/mm/normsg/a;
     //   11: ifnull +22 -> 33
-    //   14: getstatic 13	com/tencent/mm/normsg/c$q:mxj	Lcom/tencent/mm/normsg/a;
-    //   17: invokeinterface 135 1 0
+    //   14: getstatic 13	com/tencent/mm/normsg/c$q:pqI	Lcom/tencent/mm/normsg/a;
+    //   17: invokeinterface 147 1 0
     //   22: astore_0
-    //   23: ldc 132
+    //   23: ldc 144
     //   25: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: ldc 2
     //   30: monitorexit
@@ -309,7 +340,7 @@ public final class c$q
     //   32: areturn
     //   33: ldc 38
     //   35: astore_0
-    //   36: ldc 132
+    //   36: ldc 144
     //   38: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -13 -> 28
     //   44: astore_0
@@ -330,9 +361,9 @@ public final class c$q
   private static boolean c8()
   {
     AppMethodBeat.i(62433);
-    if (mxj != null)
+    if (pqI != null)
     {
-      boolean bool = mxj.buh();
+      boolean bool = pqI.bRK();
       AppMethodBeat.o(62433);
       return bool;
     }
@@ -343,9 +374,9 @@ public final class c$q
   private static String c9()
   {
     AppMethodBeat.i(62434);
-    if (mxj != null)
+    if (pqI != null)
     {
-      String str = mxj.bui();
+      String str = pqI.bRL();
       AppMethodBeat.o(62434);
       return str;
     }
@@ -355,7 +386,7 @@ public final class c$q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.normsg.c.q
  * JD-Core Version:    0.7.0.1
  */

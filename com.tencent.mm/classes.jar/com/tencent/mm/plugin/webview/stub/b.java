@@ -7,11 +7,11 @@ import com.tencent.mm.protocal.c;
 public class b
   extends f.a
 {
-  public final void CG(boolean paramBoolean) {}
+  public final void Il(boolean paramBoolean) {}
   
-  public final void CH(boolean paramBoolean) {}
+  public final void Im(boolean paramBoolean) {}
   
-  public final void CI(boolean paramBoolean) {}
+  public final void In(boolean paramBoolean) {}
   
   public final boolean a(d paramd)
   {
@@ -23,71 +23,71 @@ public class b
     return false;
   }
   
-  public final void aH(Bundle paramBundle) {}
+  public void aF(Bundle paramBundle) {}
   
-  public final void aI(Bundle paramBundle) {}
-  
-  public final boolean amZ(int paramInt)
+  public final boolean asR(int paramInt)
   {
     return false;
   }
   
-  public String bXN()
+  public void bif(String paramString) {}
+  
+  public final void bk(Bundle paramBundle) {}
+  
+  public String cxY()
   {
     return null;
   }
   
-  public final void bix(String paramString) {}
-  
-  public final void e(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
-  
-  public final void gPF() {}
-  
-  public final String gPG()
-  {
-    return null;
-  }
-  
-  public final String gPH()
-  {
-    return null;
-  }
-  
-  public final int gPI()
-  {
-    return 0;
-  }
-  
-  public final void gPJ() {}
+  public final void f(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
   public String getCurrentUrl()
   {
     return null;
   }
   
-  public boolean h(int paramInt, Bundle paramBundle)
+  public boolean i(int paramInt, Bundle paramBundle)
   {
     return false;
   }
   
-  public Bundle l(int paramInt, Bundle paramBundle)
+  public final void ioZ() {}
+  
+  public final String ipa()
   {
     return null;
   }
   
-  public final Bundle lY(String paramString1, String paramString2)
+  public final String ipb()
   {
-    AppMethodBeat.i(205452);
-    paramString1 = c.hoD();
-    AppMethodBeat.o(205452);
+    return null;
+  }
+  
+  public final int ipc()
+  {
+    return 0;
+  }
+  
+  public final void ipd() {}
+  
+  public Bundle m(int paramInt, Bundle paramBundle)
+  {
+    return null;
+  }
+  
+  public final Bundle nK(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(298460);
+    paramString1 = c.iPz();
+    AppMethodBeat.o(298460);
     return paramString1;
   }
   
-  public final void lZ(String paramString1, String paramString2) {}
+  public final void nL(String paramString1, String paramString2) {}
   
-  public final void ma(String paramString1, String paramString2) {}
+  public final void nM(String paramString1, String paramString2) {}
   
-  public final void v(int paramInt, Bundle paramBundle) {}
+  public final void y(int paramInt, Bundle paramBundle) {}
 }
 
 

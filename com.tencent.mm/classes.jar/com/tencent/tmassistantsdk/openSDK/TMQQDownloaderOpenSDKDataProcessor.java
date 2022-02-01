@@ -233,7 +233,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
         continue;
         TMLog.i("QQDownloaderOpenSDKDataProcessor", "getBatchTaskInfos sendData = null or length = 0");
       }
-      catch (Throwable paramArrayList)
+      finally
       {
         Log.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
         AppMethodBeat.o(102129);
@@ -291,7 +291,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
         AppMethodBeat.o(102130);
         return paramTMQQDownloaderOpenSDKParam;
       }
-      catch (Throwable paramTMQQDownloaderOpenSDKParam)
+      finally
       {
         Log.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
         AppMethodBeat.o(102130);
@@ -343,7 +343,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
         AppMethodBeat.o(102128);
         return false;
       }
-      catch (Throwable paramArrayList)
+      finally
       {
         Log.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
         AppMethodBeat.o(102128);
@@ -380,7 +380,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
         AppMethodBeat.o(102126);
         return false;
       }
-      catch (Throwable paramTMQQDownloaderOpenSDKParam)
+      finally
       {
         Log.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
         AppMethodBeat.o(102126);
@@ -411,7 +411,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
         AppMethodBeat.o(102127);
         return false;
       }
-      catch (Throwable paramString)
+      finally
       {
         Log.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramString, "", new Object[0]);
         AppMethodBeat.o(102127);
@@ -536,7 +536,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKDataProcessor
  * JD-Core Version:    0.7.0.1
  */

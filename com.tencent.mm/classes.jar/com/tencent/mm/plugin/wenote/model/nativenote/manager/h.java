@@ -6,16 +6,16 @@ import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.wenote.model.a.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public class h
 {
-  private static volatile h QHF = null;
-  private q QHG = null;
+  private static volatile h XBd = null;
+  private q XBe = null;
   
   /* Error */
-  private static q cR(byte[] paramArrayOfByte)
+  private static q cU(byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: sipush 30476
@@ -367,16 +367,16 @@ public class h
     //   65	70	246	java/lang/Exception
   }
   
-  public static h hdC()
+  public static h iEj()
   {
     AppMethodBeat.i(30473);
-    if (QHF == null) {}
+    if (XBd == null) {}
     try
     {
-      if (QHF == null) {
-        QHF = new h();
+      if (XBd == null) {
+        XBd = new h();
       }
-      h localh = QHF;
+      h localh = XBd;
       AppMethodBeat.o(30473);
       return localh;
     }
@@ -389,8 +389,8 @@ public class h
   public final void c(q paramq)
   {
     AppMethodBeat.i(30475);
-    this.QHG = paramq;
-    byte[] arrayOfByte = d(this.QHG);
+    this.XBe = paramq;
+    byte[] arrayOfByte = d(this.XBe);
     String str = "";
     paramq = str;
     if (arrayOfByte != null)
@@ -400,29 +400,29 @@ public class h
         paramq = Util.encodeHexString(arrayOfByte);
       }
     }
-    if (this.QHG != null) {}
-    for (str = this.QHG.hdu();; str = "null")
+    if (this.XBe != null) {}
+    for (str = this.XBe.iEb();; str = "null")
     {
       Log.i("WNNoteKeepTopManager", "setCurrentTopItem item: %s", new Object[] { str });
       Log.i("WNNoteKeepTopManager", "setCurrentTopItem itemStr: %s", new Object[] { paramq });
-      bh.beI();
-      c.aHp().set(ar.a.Vql, Util.nullAsNil(paramq));
+      bh.bCz();
+      c.ban().set(at.a.acRN, Util.nullAsNil(paramq));
       AppMethodBeat.o(30475);
       return;
     }
   }
   
-  public final q hdD()
+  public final q iEk()
   {
     AppMethodBeat.i(30474);
-    if (this.QHG != null)
+    if (this.XBe != null)
     {
-      localObject = this.QHG;
+      localObject = this.XBe;
       AppMethodBeat.o(30474);
       return localObject;
     }
-    bh.beI();
-    Object localObject = (String)c.aHp().get(ar.a.Vql, "");
+    bh.bCz();
+    Object localObject = (String)c.ban().get(at.a.acRN, "");
     Log.d("WNNoteKeepTopManager", "getCurrentTopItem itemStr: %s", new Object[] { localObject });
     if (Util.isNullOrNil((String)localObject))
     {
@@ -435,12 +435,12 @@ public class h
       AppMethodBeat.o(30474);
       return null;
     }
-    this.QHG = cR((byte[])localObject);
-    if (this.QHG != null) {}
-    for (localObject = this.QHG.hdu();; localObject = "null")
+    this.XBe = cU((byte[])localObject);
+    if (this.XBe != null) {}
+    for (localObject = this.XBe.iEb();; localObject = "null")
     {
       Log.d("WNNoteKeepTopManager", "getCurrentTopItem item: %s", new Object[] { localObject });
-      localObject = this.QHG;
+      localObject = this.XBe;
       AppMethodBeat.o(30474);
       return localObject;
     }

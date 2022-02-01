@@ -1,24 +1,32 @@
 package com.tencent.mm.ui.contact;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.plugin.comm.b.e;
+import com.tencent.mm.plugin.comm.b.e.a;
+import com.tencent.mm.plugin.selectcontact.a.e;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.y.b;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -28,18 +36,25 @@ import java.util.List;
 public class SnsAddressUI
   extends MMBaseSelectContactUI
 {
-  private List<String> jkb;
-  private HashSet<String> mNi;
+  private ArrayList<String> afiI;
+  private List<String> lMF;
   
-  private void atk()
+  public SnsAddressUI()
+  {
+    AppMethodBeat.i(253052);
+    this.afiI = new ArrayList();
+    AppMethodBeat.o(253052);
+  }
+  
+  private void aNr()
   {
     AppMethodBeat.i(38056);
     String str;
-    if (this.mNi.size() == 0)
+    if (this.afiI.size() == 0)
     {
       str = String.format("%s", new Object[] { getString(R.l.app_ok) });
       updateOptionMenuText(1, str);
-      if (this.mNi.size() < 0) {
+      if (this.afiI.size() < 0) {
         break label110;
       }
     }
@@ -49,71 +64,59 @@ public class SnsAddressUI
       enableOptionMenu(1, bool);
       AppMethodBeat.o(38056);
       return;
-      str = String.format("%s(%d/%d)", new Object[] { getString(R.l.app_ok), Integer.valueOf(this.mNi.size()), Integer.valueOf(aq.Vga) });
+      str = String.format("%s(%d/%d)", new Object[] { getString(R.l.app_ok), Integer.valueOf(this.afiI.size()), Integer.valueOf(as.acHp) });
       break;
     }
   }
   
-  public final void N(View paramView, int paramInt)
+  public final void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(228398);
-    paramView = hUP();
-    Object localObject = paramView.awM(paramInt - getContentLV().getHeaderViewsCount());
-    if (localObject == null)
+    AppMethodBeat.i(253074);
+    paramAdapterView = jyE();
+    paramView = paramAdapterView.aDt(paramInt - getContentLV().getHeaderViewsCount());
+    if (paramView == null)
     {
-      AppMethodBeat.o(228398);
+      AppMethodBeat.o(253074);
       return;
     }
-    if (((a)localObject).contact == null)
+    if (paramView.contact == null)
     {
-      AppMethodBeat.o(228398);
+      AppMethodBeat.o(253074);
       return;
     }
-    Log.i("MicroMsg.SnsAddressUI", "ClickUser=%s", new Object[] { ((a)localObject).contact.field_username });
-    localObject = ((a)localObject).contact.field_username;
-    hUZ();
-    if (this.mNi.contains(localObject))
+    Log.i("MicroMsg.SnsAddressUI", "ClickUser=%s", new Object[] { paramView.contact.field_username });
+    paramView = paramView.contact.field_username;
+    iKA();
+    if (this.afiI.contains(paramView))
     {
-      this.mNi.remove(localObject);
-      this.ETP.bqR((String)localObject);
+      this.afiI.remove(paramView);
+      this.KOt.bqG(paramView);
     }
     for (;;)
     {
-      atk();
-      paramView.notifyDataSetChanged();
-      AppMethodBeat.o(228398);
+      aNr();
+      paramAdapterView.notifyDataSetChanged();
+      AppMethodBeat.o(253074);
       return;
-      if (this.mNi.size() < aq.Vga)
+      if (this.afiI.size() < as.acHp)
       {
-        this.mNi.add(localObject);
-        this.ETP.bqR((String)localObject);
+        this.afiI.add(paramView);
+        this.KOt.bqG(paramView);
       }
       else
       {
         Toast.makeText(this, R.l.sns_max_select_at, 0).show();
-        Log.i("MicroMsg.SnsAddressUI", "select user size equal max size:%d", new Object[] { Integer.valueOf(aq.Vga) });
+        Log.i("MicroMsg.SnsAddressUI", "select user size equal max size:%d", new Object[] { Integer.valueOf(as.acHp) });
       }
     }
-  }
-  
-  public final void V(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(38060);
-    if (paramInt == 1)
-    {
-      this.mNi.remove(paramString);
-      hUP().notifyDataSetChanged();
-      atk();
-    }
-    AppMethodBeat.o(38060);
   }
   
   public final boolean a(a parama)
   {
     AppMethodBeat.i(38059);
-    if ((parama.XsX) && (parama.contact != null))
+    if ((parama.afey) && (parama.contact != null))
     {
-      boolean bool = this.mNi.contains(parama.contact.field_username);
+      boolean bool = this.afiI.contains(parama.contact.field_username);
       AppMethodBeat.o(38059);
       return bool;
     }
@@ -121,49 +124,82 @@ public class SnsAddressUI
     return false;
   }
   
-  protected final void aOd(String paramString)
+  protected final void aLa(String paramString)
   {
     AppMethodBeat.i(38058);
     Intent localIntent = new Intent();
     localIntent.setClassName(this, "com.tencent.mm.ui.contact.SelectLabelContactUI");
     localIntent.putExtra("label", paramString);
     paramString = new HashSet();
-    paramString.addAll(this.mNi);
+    paramString.addAll(this.afiI);
     localIntent.putExtra("always_select_contact", Util.listToString(new ArrayList(paramString), ","));
-    localIntent.putExtra("list_attr", w.P(new int[] { 16384, 64 }));
+    localIntent.putExtra("list_attr", w.R(new int[] { 16384, 64 }));
     startActivityForResult(localIntent, 3);
     AppMethodBeat.o(38058);
   }
   
-  protected final void ata()
+  protected final void aNi()
   {
     AppMethodBeat.i(38050);
-    super.ata();
-    this.jkb = new ArrayList();
+    super.aNi();
+    this.lMF = new ArrayList();
     Object localObject = Util.stringsToList(Util.nullAs(getIntent().getStringExtra("Block_list"), "").split(","));
-    HashSet localHashSet = w.hVh();
+    HashSet localHashSet = w.jyV();
     localHashSet.addAll((Collection)localObject);
-    this.jkb.addAll(localHashSet);
-    this.jkb.addAll(w.hVi());
-    this.mNi = new HashSet();
+    this.lMF.addAll(localHashSet);
+    this.lMF.addAll(w.jyW());
     localObject = Util.nullAs(getIntent().getStringExtra("Select_Contact"), "");
     if (!Util.isNullOrNil((String)localObject)) {
-      this.mNi.addAll(Util.stringsToList(((String)localObject).split(",")));
+      this.afiI.addAll(Util.stringsToList(((String)localObject).split(",")));
     }
     AppMethodBeat.o(38050);
   }
   
-  protected final boolean bwH()
+  public final void ad(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(38060);
+    if (paramInt == 1)
+    {
+      this.afiI.remove(paramString);
+      jyE().notifyDataSetChanged();
+      aNr();
+    }
+    AppMethodBeat.o(38060);
+  }
+  
+  protected final r bVA()
+  {
+    AppMethodBeat.i(38054);
+    Object localObject = new c.a();
+    ((c.a)localObject).afbY = true;
+    ((c.a)localObject).afch = true;
+    ((c.a)localObject).customHeader = getString(R.l.gqL);
+    ((c.a)localObject).afci = Util.nullAs(getIntent().getStringExtra("Add_get_from_sns"), "");
+    ((c.a)localObject).afau = "@all.contact.without.chatroom.openim.openimfavour.snsblack.black.socialblack";
+    localObject = new c(this, this.lMF, true, (c.a)localObject, (byte)0);
+    AppMethodBeat.o(38054);
+    return localObject;
+  }
+  
+  protected final p bVB()
+  {
+    AppMethodBeat.i(38055);
+    u localu = new u(this, this.lMF, true, this.scene);
+    AppMethodBeat.o(38055);
+    return localu;
+  }
+  
+  protected final boolean bVx()
   {
     return false;
   }
   
-  protected final boolean bwI()
+  protected final boolean bVy()
   {
     return true;
   }
   
-  protected final String bwJ()
+  protected final String bVz()
   {
     AppMethodBeat.i(38053);
     String str = Util.nullAs(getIntent().getStringExtra("Add_address_titile"), "");
@@ -171,36 +207,40 @@ public class SnsAddressUI
     return str;
   }
   
-  protected final r bwK()
-  {
-    AppMethodBeat.i(38054);
-    Object localObject = new c.a();
-    ((c.a)localObject).Xqx = true;
-    ((c.a)localObject).XqG = true;
-    ((c.a)localObject).customHeader = getString(R.l.enK);
-    ((c.a)localObject).XqH = Util.nullAs(getIntent().getStringExtra("Add_get_from_sns"), "");
-    ((c.a)localObject).XoS = "@all.contact.without.chatroom.without.openim.without.openimfavour";
-    localObject = new c(this, this.jkb, true, (c.a)localObject, (byte)0);
-    AppMethodBeat.o(38054);
-    return localObject;
-  }
-  
-  protected final p bwL()
-  {
-    AppMethodBeat.i(38055);
-    u localu = new u(this, this.jkb, true, this.scene);
-    AppMethodBeat.o(38055);
-    return localu;
-  }
-  
-  public final int[] dvA()
+  public final int[] efu()
   {
     return new int[] { 131072 };
   }
   
-  protected final boolean eRT()
+  protected final boolean gaC()
   {
     return true;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(253067);
+    super.initView();
+    getContentLV().setBackgroundResource(R.e.default_background_color);
+    String str = getIntent().getStringExtra("address_ui_sub_title");
+    Object localObject;
+    if (!Util.isNullOrNil(str))
+    {
+      localObject = (TextView)findViewById(a.e.subtitle_tip);
+      if (localObject != null)
+      {
+        ((TextView)localObject).setText(str);
+        ((TextView)localObject).setVisibility(0);
+      }
+    }
+    str = getIntent().getStringExtra("footer_tip");
+    if (!Util.isNullOrNil(str))
+    {
+      localObject = LayoutInflater.from(this).inflate(R.i.gll, null);
+      ((TextView)((View)localObject).findViewById(R.h.footer_txt)).setText(str);
+      getContentLV().addFooterView((View)localObject);
+    }
+    AppMethodBeat.o(253067);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -234,13 +274,13 @@ public class SnsAddressUI
       while (paramInt1 < paramInt2)
       {
         Object localObject = paramIntent[paramInt1];
-        if (this.mNi.add(localObject)) {
-          this.ETP.bqR(localObject);
+        if (this.afiI.add(localObject)) {
+          this.KOt.bqG(localObject);
         }
         paramInt1 += 1;
       }
-      atk();
-      hUP().notifyDataSetChanged();
+      aNr();
+      jyE().notifyDataSetChanged();
     }
   }
   
@@ -280,7 +320,7 @@ public class SnsAddressUI
           paramAnonymousMenuItem.putExtra("Select_Contact", Util.listToString(localArrayList, ","));
         }
       }
-    }, null, w.b.Wao);
+    }, null, y.b.adEJ);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -294,15 +334,15 @@ public class SnsAddressUI
         return true;
       }
     });
-    paramBundle = this.mNi.iterator();
+    paramBundle = this.afiI.iterator();
     while (paramBundle.hasNext())
     {
       String str = (String)paramBundle.next();
-      this.ETP.bqR(str);
+      this.KOt.bqG(str);
     }
-    this.ETP.setOnContactDeselectListener(new MultiSelectContactView.c()
+    this.KOt.setOnContactDeselectListener(new MultiSelectContactView.c()
     {
-      public final void V(int paramAnonymousInt, String paramAnonymousString)
+      public final void ad(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(38049);
         if ((paramAnonymousInt == 1) && (paramAnonymousString != null))
@@ -313,8 +353,16 @@ public class SnsAddressUI
         AppMethodBeat.o(38049);
       }
     });
-    atk();
+    aNr();
     AppMethodBeat.o(38051);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(253093);
+    super.onDestroy();
+    e.xfd.a("SnsPublishProcess", "atPageStaytime_", Long.valueOf(getActivityBrowseTimeMs()), com.tencent.mm.plugin.comm.b.c.xeT);
+    AppMethodBeat.o(253093);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

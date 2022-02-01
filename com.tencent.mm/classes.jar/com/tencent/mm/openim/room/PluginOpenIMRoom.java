@@ -6,7 +6,7 @@ import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ck;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -14,14 +14,14 @@ public class PluginOpenIMRoom
   extends f
   implements c
 {
-  private com.tencent.mm.openim.c.a myR;
-  private com.tencent.mm.openim.c.b myS;
+  private com.tencent.mm.openim.b.a ptP;
+  private com.tencent.mm.openim.b.b ptQ;
   
   public PluginOpenIMRoom()
   {
     AppMethodBeat.i(151308);
-    this.myR = new com.tencent.mm.openim.c.a();
-    this.myS = new com.tencent.mm.openim.c.b();
+    this.ptP = new com.tencent.mm.openim.b.a();
+    this.ptQ = new com.tencent.mm.openim.b.b();
     AppMethodBeat.o(151308);
   }
   
@@ -33,10 +33,10 @@ public class PluginOpenIMRoom
   {
     AppMethodBeat.i(151309);
     Log.i("MicroMsg.PluginOpenIMRoom", "onAccountInitialized");
-    com.tencent.mm.roomsdk.a.b.a("@im.chatroom", new a());
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("NewXmlOpenIMChatRoomAddChatRoomMemberApplication", this.myR);
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("NewXmlOpenIMChatRoomAddChatRoomMemberApplicationApproved", this.myR);
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("SendMsgFailed", this.myS);
+    com.tencent.mm.roomsdk.model.b.a("@im.chatroom", new a());
+    ((v)h.az(v.class)).getSysCmdMsgExtension().a("NewXmlOpenIMChatRoomAddChatRoomMemberApplication", this.ptP);
+    ((v)h.az(v.class)).getSysCmdMsgExtension().a("NewXmlOpenIMChatRoomAddChatRoomMemberApplicationApproved", this.ptP);
+    ((v)h.az(v.class)).getSysCmdMsgExtension().a("SendMsgFailed", this.ptQ);
     AppMethodBeat.o(151309);
   }
   
@@ -44,9 +44,9 @@ public class PluginOpenIMRoom
   {
     AppMethodBeat.i(151310);
     Log.i("MicroMsg.PluginOpenIMRoom", "onAccountRelease");
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("NewXmlOpenIMChatRoomAddChatRoomMemberApplication", this.myR);
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("NewXmlOpenIMChatRoomAddChatRoomMemberApplicationApproved", this.myR);
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("SendMsgFailed", this.myS);
+    ((v)h.az(v.class)).getSysCmdMsgExtension().b("NewXmlOpenIMChatRoomAddChatRoomMemberApplication", this.ptP);
+    ((v)h.az(v.class)).getSysCmdMsgExtension().b("NewXmlOpenIMChatRoomAddChatRoomMemberApplicationApproved", this.ptP);
+    ((v)h.az(v.class)).getSysCmdMsgExtension().b("SendMsgFailed", this.ptQ);
     AppMethodBeat.o(151310);
   }
 }

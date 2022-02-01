@@ -1,40 +1,29 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.b.b.a;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigNativeSwitchThread;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigNativeBufferType;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableKv", "getConfigDefaultValue", "onProcessConfig", "input", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  extends x<Boolean>
+  extends z<String>
 {
-  public static final i omA;
+  public static final i rqj;
   
   static
   {
-    AppMethodBeat.i(180449);
-    omA = new i();
-    AppMethodBeat.o(180449);
+    AppMethodBeat.i(50373);
+    rqj = new i();
+    AppMethodBeat.o(50373);
   }
   
-  protected final String bOt()
+  protected final String coJ()
   {
-    return "nativeSwitchThread";
-  }
-  
-  protected final b.a bOu()
-  {
-    return b.a.vWC;
-  }
-  
-  protected final boolean bOv()
-  {
-    return true;
+    return "nativebuffertype";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.i
  * JD-Core Version:    0.7.0.1
  */

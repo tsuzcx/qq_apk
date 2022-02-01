@@ -1,100 +1,73 @@
 package io.flutter.plugins;
 
-import com.tencent.liteapp.c;
+import com.github.a.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.plugin.a.m;
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry;
+import io.flutter.plugins.connectivity.ConnectivityPlugin;
+import io.flutter.plugins.pathprovider.PathProviderPlugin;
 import java.lang.reflect.Method;
 
 public final class GeneratedPluginRegistrant
 {
   private static final String TAG = "MicroMsg.Flutter.GeneratedPluginRegistrant";
   
-  private static boolean alreadyRegisteredWith(m paramm)
+  private static boolean alreadyRegisteredWith(io.flutter.plugin.common.PluginRegistry paramPluginRegistry)
   {
-    AppMethodBeat.i(253273);
+    AppMethodBeat.i(189587);
     String str = GeneratedPluginRegistrant.class.getCanonicalName();
-    if (paramm.bFX(str))
+    if (paramPluginRegistry.hasPlugin(str))
     {
-      AppMethodBeat.o(253273);
+      AppMethodBeat.o(189587);
       return true;
     }
-    paramm.bFY(str);
-    AppMethodBeat.o(253273);
+    paramPluginRegistry.registrarFor(str);
+    AppMethodBeat.o(189587);
     return false;
   }
   
-  public static void registerWith(io.flutter.embedding.engine.a parama)
+  public static void registerWith(FlutterEngine paramFlutterEngine)
   {
-    AppMethodBeat.i(253272);
-    parama.aapV.a(new c());
-    parama.aapV.a(new com.tencent.wxa.d());
-    parama.aapV.a(new io.flutter.plugins.a.a());
-    parama.aapV.a(new com.tencent.mm.flutter.plugins.a.d());
-    parama.aapV.a(new com.github.a.a.b());
+    AppMethodBeat.i(189581);
+    new ShimPluginRegistry(paramFlutterEngine);
+    paramFlutterEngine.getPlugins().add(new com.e.a.a());
+    paramFlutterEngine.getPlugins().add(new ConnectivityPlugin());
+    paramFlutterEngine.getPlugins().add(new d.a.a.a.a());
+    paramFlutterEngine.getPlugins().add(new com.dataxad.flutter_mailer.a());
+    paramFlutterEngine.getPlugins().add(new com.tencent.mm.flutter.c.a());
+    paramFlutterEngine.getPlugins().add(new com.tencent.mm.flutter.a.a());
+    paramFlutterEngine.getPlugins().add(new io.a.a.a.a.a());
+    paramFlutterEngine.getPlugins().add(new com.d.a.a());
+    paramFlutterEngine.getPlugins().add(new com.tencent.mm.flutter.plugin.a());
+    paramFlutterEngine.getPlugins().add(new b());
+    paramFlutterEngine.getPlugins().add(new d.a.a.b.a());
+    paramFlutterEngine.getPlugins().add(new PathProviderPlugin());
+    paramFlutterEngine.getPlugins().add(new f.a.a.a.a());
+    paramFlutterEngine.getPlugins().add(new com.i.a.c());
+    paramFlutterEngine.getPlugins().add(new com.tencent.mm.flutter.b.a.d());
+    paramFlutterEngine.getPlugins().add(new com.tencent.liteapp.c());
+    paramFlutterEngine.getPlugins().add(new com.tencent.wxa.d());
+    paramFlutterEngine.getPlugins().add(new com.d.b.a());
     try
     {
-      Class.forName("com.tencent.mm.plugin.flutter.model.ChannelRegistrant").getMethod("registerWith", new Class[] { io.flutter.embedding.engine.a.class }).invoke(null, new Object[] { parama });
-      AppMethodBeat.o(253272);
+      Class.forName("com.tencent.mm.plugin.flutter.model.ChannelRegistrant").getMethod("registerWith", new Class[] { FlutterEngine.class }).invoke(null, new Object[] { paramFlutterEngine });
+      AppMethodBeat.o(189581);
       return;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    catch (ClassNotFoundException paramFlutterEngine)
     {
-      try
-      {
-        Class.forName("com.tencent.mm.plugin.luggage.natives.flutter.channel.ChannelRegistrant").getMethod("registerWith", new Class[] { io.flutter.embedding.engine.a.class }).invoke(null, new Object[] { parama });
-        AppMethodBeat.o(253272);
-        return;
-      }
-      catch (Exception parama)
-      {
-        AppMethodBeat.o(253272);
-        return;
-      }
-    }
-    catch (Exception parama)
-    {
-      AppMethodBeat.o(253272);
-    }
-  }
-  
-  public static void registerWith(m paramm)
-  {
-    AppMethodBeat.i(159080);
-    com.tencent.liteapp.b.b.i("MicroMsg.Flutter.GeneratedPluginRegistrant", "registerWith", new Object[0]);
-    if (alreadyRegisteredWith(paramm))
-    {
-      AppMethodBeat.o(159080);
+      AppMethodBeat.o(189581);
       return;
     }
-    try
+    catch (Exception paramFlutterEngine)
     {
-      Class.forName("com.tencent.mm.plugin.flutter.model.ChannelRegistrant").getMethod("registerWith", new Class[] { m.class }).invoke(null, new Object[] { paramm });
-      AppMethodBeat.o(159080);
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      try
-      {
-        Class.forName("com.tencent.mm.plugin.luggage.natives.flutter.channel.ChannelRegistrant").getMethod("registerWith", new Class[] { m.class }).invoke(null, new Object[] { paramm });
-        AppMethodBeat.o(159080);
-        return;
-      }
-      catch (Exception paramm)
-      {
-        AppMethodBeat.o(159080);
-        return;
-      }
-    }
-    catch (Exception paramm)
-    {
-      AppMethodBeat.o(159080);
+      AppMethodBeat.o(189581);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     io.flutter.plugins.GeneratedPluginRegistrant
  * JD-Core Version:    0.7.0.1
  */

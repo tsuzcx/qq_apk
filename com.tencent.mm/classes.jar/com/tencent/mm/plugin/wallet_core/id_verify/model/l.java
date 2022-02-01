@@ -12,17 +12,17 @@ import org.json.JSONObject;
 public final class l
   extends m
 {
-  public int OIq;
-  public int OIr;
-  public String[] OKH;
-  public Profession[] OLW;
-  public int OLX;
+  public String[] VAt;
+  public Profession[] VBH;
+  public int VBI;
+  public int Vyc;
+  public int Vyd;
   
   public l()
   {
     AppMethodBeat.i(70156);
-    this.OLW = null;
-    this.OKH = null;
+    this.VBH = null;
+    this.VAt = null;
     HashMap localHashMap = new HashMap();
     if (!Util.isNullOrNil(null)) {
       localHashMap.put("scene", null);
@@ -52,12 +52,12 @@ public final class l
     AppMethodBeat.i(70157);
     Log.i("MicroMsg.NetSceneTenpayGetUserExInfo", "errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
     Log.d("MicroMsg.NetSceneTenpayGetUserExInfo", "json: %s", new Object[] { paramJSONObject.toString() });
-    this.OIq = paramJSONObject.optInt("need_area");
-    this.OIr = paramJSONObject.optInt("need_profession");
+    this.Vyc = paramJSONObject.optInt("need_area");
+    this.Vyd = paramJSONObject.optInt("need_profession");
     paramString = paramJSONObject.optJSONArray("array");
     if (paramString != null)
     {
-      this.OLW = new Profession[paramString.length()];
+      this.VBH = new Profession[paramString.length()];
       paramInt = 0;
       if (paramInt < paramString.length())
       {
@@ -70,7 +70,7 @@ public final class l
             break label166;
           }
           localObject = new Profession(str, j);
-          this.OLW[paramInt] = localObject;
+          this.VBH[paramInt] = localObject;
         }
         for (;;)
         {
@@ -81,15 +81,15 @@ public final class l
         }
       }
     }
-    this.OLX = paramJSONObject.optInt("need_nationality");
+    this.VBI = paramJSONObject.optInt("need_nationality");
     paramString = paramJSONObject.optJSONArray("nationality_exclude_array");
     if (paramString != null)
     {
-      this.OKH = new String[paramString.length()];
+      this.VAt = new String[paramString.length()];
       paramInt = i;
       while (paramInt < paramString.length())
       {
-        this.OKH[paramInt] = paramString.optString(paramInt);
+        this.VAt[paramInt] = paramString.optString(paramInt);
         paramInt += 1;
       }
     }
@@ -98,7 +98,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,25 @@
 package com.tencent.mm.ui.tools;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.f.a.ac;
+import com.tencent.mm.autogen.a.af;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 
 @com.tencent.mm.ui.base.a(3)
 public class AccountDeletedAlphaAlertUI
   extends MMActivity
 {
-  private static AccountDeletedAlphaAlertUI XMK = null;
+  private static AccountDeletedAlphaAlertUI afCX = null;
   
-  public static AccountDeletedAlphaAlertUI hXY()
+  public static AccountDeletedAlphaAlertUI jCI()
   {
-    return XMK;
+    return afCX;
   }
   
   public int getLayoutId()
@@ -33,11 +31,10 @@ public class AccountDeletedAlphaAlertUI
   {
     AppMethodBeat.i(38935);
     super.onCreate(paramBundle);
-    XMK = this;
-    paramBundle = new ac();
-    EventCenter.instance.publish(paramBundle);
-    bh.aGF();
-    paramBundle = com.tencent.mm.h.a.Kb(getIntent().getStringExtra("errmsg"));
+    afCX = this;
+    new af().publish();
+    bh.aZH();
+    paramBundle = com.tencent.mm.broadcast.a.CH(getIntent().getStringExtra("errmsg"));
     if (paramBundle != null)
     {
       paramBundle.a(this, new DialogInterface.OnClickListener()
@@ -52,7 +49,7 @@ public class AccountDeletedAlphaAlertUI
       AppMethodBeat.o(38935);
       return;
     }
-    h.a(this, getString(R.l.eLs), null, false, new DialogInterface.OnClickListener()
+    k.a(this, getString(R.l.gNm), null, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -67,8 +64,8 @@ public class AccountDeletedAlphaAlertUI
   public void onDestroy()
   {
     AppMethodBeat.i(38936);
-    if (equals(XMK)) {
-      XMK = null;
+    if (equals(afCX)) {
+      afCX = null;
     }
     super.onDestroy();
     AppMethodBeat.o(38936);
@@ -82,7 +79,7 @@ public class AccountDeletedAlphaAlertUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.AccountDeletedAlphaAlertUI
  * JD-Core Version:    0.7.0.1
  */

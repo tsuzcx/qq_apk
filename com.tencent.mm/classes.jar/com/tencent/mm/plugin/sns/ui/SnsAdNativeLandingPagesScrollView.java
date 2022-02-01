@@ -10,23 +10,23 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class SnsAdNativeLandingPagesScrollView
   extends NestedScrollView
 {
-  private int KLg;
-  private int KLh;
-  private int KLi;
-  private bb KLj;
-  private long KLk;
-  private Runnable KLl;
+  private int RkT;
+  private int RkU;
+  private int RkV;
+  private bc RkW;
+  private long RkX;
+  private Runnable RkY;
   
   public SnsAdNativeLandingPagesScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98318);
-    this.KLg = 0;
-    this.KLh = 0;
-    this.KLi = 50;
-    this.KLj = null;
-    this.KLk = System.currentTimeMillis();
-    this.KLl = new Runnable()
+    this.RkT = 0;
+    this.RkU = 0;
+    this.RkV = 50;
+    this.RkW = null;
+    this.RkX = System.currentTimeMillis();
+    this.RkY = new Runnable()
     {
       public final void run()
       {
@@ -65,12 +65,12 @@ public class SnsAdNativeLandingPagesScrollView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98317);
-    this.KLg = 0;
-    this.KLh = 0;
-    this.KLi = 50;
-    this.KLj = null;
-    this.KLk = System.currentTimeMillis();
-    this.KLl = new Runnable()
+    this.RkT = 0;
+    this.RkU = 0;
+    this.RkV = 50;
+    this.RkW = null;
+    this.RkX = System.currentTimeMillis();
+    this.RkY = new Runnable()
     {
       public final void run()
       {
@@ -105,10 +105,10 @@ public class SnsAdNativeLandingPagesScrollView
     AppMethodBeat.o(98317);
   }
   
-  public final void bO(int paramInt)
+  public final void eJ(int paramInt)
   {
     AppMethodBeat.i(98322);
-    super.bO(paramInt / 3);
+    super.eJ(paramInt / 3);
     AppMethodBeat.o(98322);
   }
   
@@ -142,14 +142,14 @@ public class SnsAdNativeLandingPagesScrollView
     AppMethodBeat.o(98320);
   }
   
-  public void setScrollViewListener(bb parambb)
+  public void setScrollViewListener(bc parambc)
   {
-    this.KLj = parambb;
+    this.RkW = parambc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesScrollView
  * JD-Core Version:    0.7.0.1
  */

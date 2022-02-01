@@ -1,75 +1,87 @@
 package com.tencent.mm.live.core.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.u;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/render/FilterConfig;", "", "filterKey", "", "filterPath", "", "filterValue", "(ILjava/lang/String;I)V", "getFilterKey", "()I", "setFilterKey", "(I)V", "getFilterPath", "()Ljava/lang/String;", "setFilterPath", "(Ljava/lang/String;)V", "getFilterValue", "setFilterValue", "component1", "component2", "component3", "copy", "enableFilter", "", "equals", "other", "hashCode", "toString", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/render/FilterConfig;", "", "filterKey", "", "filterPath", "", "filterValue", "(ILjava/lang/String;I)V", "getFilterKey", "()I", "setFilterKey", "(I)V", "getFilterPath", "()Ljava/lang/String;", "setFilterPath", "(Ljava/lang/String;)V", "getFilterValue", "setFilterValue", "component1", "component2", "component3", "copy", "enableFilter", "", "equals", "other", "hashCode", "toString", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public int krb;
-  public String krc;
-  public int krd;
+  public int mUX;
+  public String mUY;
+  public int mUZ;
   
   public b(int paramInt1, String paramString, int paramInt2)
   {
-    this.krb = paramInt1;
-    this.krc = paramString;
-    this.krd = paramInt2;
+    this.mUX = paramInt1;
+    this.mUY = paramString;
+    this.mUZ = paramInt2;
   }
   
-  public final boolean aMK()
+  public final boolean bgu()
   {
-    AppMethodBeat.i(199020);
-    if ((this.krd >= 0) && (u.agG(this.krc)))
+    AppMethodBeat.i(247710);
+    if ((this.mUZ >= 0) && (y.ZC(this.mUY)))
     {
-      AppMethodBeat.o(199020);
+      AppMethodBeat.o(247710);
       return true;
     }
-    AppMethodBeat.o(199020);
+    AppMethodBeat.o(247710);
     return false;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(199026);
-    if (this != paramObject)
+    AppMethodBeat.i(247738);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof b))
-      {
-        paramObject = (b)paramObject;
-        if ((this.krb != paramObject.krb) || (!p.h(this.krc, paramObject.krc)) || (this.krd != paramObject.krd)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(199026);
+      AppMethodBeat.o(247738);
       return true;
     }
-    AppMethodBeat.o(199026);
-    return false;
+    if (!(paramObject instanceof b))
+    {
+      AppMethodBeat.o(247738);
+      return false;
+    }
+    paramObject = (b)paramObject;
+    if (this.mUX != paramObject.mUX)
+    {
+      AppMethodBeat.o(247738);
+      return false;
+    }
+    if (!s.p(this.mUY, paramObject.mUY))
+    {
+      AppMethodBeat.o(247738);
+      return false;
+    }
+    if (this.mUZ != paramObject.mUZ)
+    {
+      AppMethodBeat.o(247738);
+      return false;
+    }
+    AppMethodBeat.o(247738);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(199024);
-    int j = this.krb;
-    String str = this.krc;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
+    AppMethodBeat.i(247730);
+    int j = this.mUX;
+    if (this.mUY == null) {}
+    for (int i = 0;; i = this.mUY.hashCode())
     {
-      int k = this.krd;
-      AppMethodBeat.o(199024);
+      int k = this.mUZ;
+      AppMethodBeat.o(247730);
       return (i + j * 31) * 31 + k;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(199023);
-    String str = "FilterConfig(filterKey=" + this.krb + ", filterPath=" + this.krc + ", filterValue=" + this.krd + ")";
-    AppMethodBeat.o(199023);
+    AppMethodBeat.i(247720);
+    String str = "FilterConfig(filterKey=" + this.mUX + ", filterPath=" + this.mUY + ", filterValue=" + this.mUZ + ')';
+    AppMethodBeat.o(247720);
     return str;
   }
 }

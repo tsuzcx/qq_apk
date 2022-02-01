@@ -5,42 +5,42 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class f
 {
-  public static int pYr = 0;
-  public static int pYs = 1;
-  public static int pYt = 2;
+  public static int tdi = 0;
+  public static int tdj = 1;
+  public static int tdk = 2;
   public String appId;
   public int appType;
-  public int cBU;
+  public int euz;
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(271162);
+    AppMethodBeat.i(321097);
     if ((paramObject != null) && ((paramObject instanceof f)))
     {
       paramObject = (f)paramObject;
-      if ((!Util.isNullOrNil(this.appId)) && (!Util.isNullOrNil(paramObject.appId)) && (this.appId.equals(paramObject.appId)) && (this.appType == paramObject.appType) && (this.cBU == paramObject.cBU))
+      if ((!Util.isNullOrNil(this.appId)) && (!Util.isNullOrNil(paramObject.appId)) && (this.appId.equals(paramObject.appId)) && (this.appType == paramObject.appType) && (this.euz == paramObject.euz))
       {
-        AppMethodBeat.o(271162);
+        AppMethodBeat.o(321097);
         return true;
       }
     }
-    AppMethodBeat.o(271162);
+    AppMethodBeat.o(321097);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(271163);
+    AppMethodBeat.i(321100);
     int i = this.appId.hashCode();
     int j = this.appType;
-    int k = this.cBU;
-    AppMethodBeat.o(271163);
+    int k = this.euz;
+    AppMethodBeat.o(321100);
     return i + j + k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.a.f
  * JD-Core Version:    0.7.0.1
  */

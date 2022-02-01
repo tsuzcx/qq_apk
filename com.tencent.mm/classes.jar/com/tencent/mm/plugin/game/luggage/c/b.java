@@ -8,43 +8,43 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/luggage/jsevent/LiteAppIpcEventDispatch;", "", "()V", "Companion", "luggage-game_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/luggage/jsevent/LiteAppIpcEventDispatch;", "", "()V", "Companion", "luggage-game_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final String CBt;
-  public static final a CBu;
-  private static final String TAG = "MicroMsg.LiteAppIpcEventDispatch";
+  public static final a Ivj;
+  private static final String Ivk;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(231438);
-    CBu = new a((byte)0);
+    AppMethodBeat.i(276959);
+    Ivj = new a((byte)0);
     TAG = "MicroMsg.LiteAppIpcEventDispatch";
-    CBt = MMApplicationContext.getApplicationId() + ":lite";
-    AppMethodBeat.o(231438);
+    Ivk = s.X(MMApplicationContext.getApplicationId(), ":lite");
+    AppMethodBeat.o(276959);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/luggage/jsevent/LiteAppIpcEventDispatch$Companion;", "", "()V", "LITE_PROCESS_NAME", "", "TAG", "dispatchEventFromMMProcess", "", "data", "Landroid/os/Bundle;", "IPCLiteAppDispatchEventTask", "luggage-game_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/luggage/jsevent/LiteAppIpcEventDispatch$Companion;", "", "()V", "LITE_PROCESS_NAME", "", "TAG", "dispatchEventFromMMProcess", "", "data", "Landroid/os/Bundle;", "IPCLiteAppDispatchEventTask", "luggage-game_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static void ag(Bundle paramBundle)
+    public static void ay(Bundle paramBundle)
     {
-      AppMethodBeat.i(232072);
-      p.k(paramBundle, "data");
+      AppMethodBeat.i(276951);
+      s.u(paramBundle, "data");
       Log.i(b.access$getTAG$cp(), "dispatchEventFromMMProcess");
-      if (MMApplicationContext.isProcessExist(b.ewE()))
+      if (MMApplicationContext.isProcessExist(b.fEw()))
       {
         Log.i(b.access$getTAG$cp(), "process alive");
-        j.a(b.ewE(), (Parcelable)paramBundle, a.class, null);
+        j.a(b.fEw(), (Parcelable)paramBundle, a.class, null);
       }
-      AppMethodBeat.o(232072);
+      AppMethodBeat.o(276951);
     }
     
     @a
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/luggage/jsevent/LiteAppIpcEventDispatch$Companion$IPCLiteAppDispatchEventTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "luggage-game_release"})
+    @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/luggage/jsevent/LiteAppIpcEventDispatch$Companion$IPCLiteAppDispatchEventTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "luggage-game_release"}, k=1, mv={1, 5, 1}, xi=48)
     static final class a
       implements d<Bundle, Bundle>
     {}

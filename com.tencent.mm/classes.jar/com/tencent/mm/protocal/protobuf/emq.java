@@ -1,110 +1,123 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class emq
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String Kzb;
-  public String RzC;
-  public String Uph;
-  public int Upi;
-  public int adType;
-  public int source;
+  public fey abqV;
+  public etl abqW;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125845);
+    AppMethodBeat.i(125759);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.adType);
-      if (this.Uph != null) {
-        paramVarArgs.f(2, this.Uph);
-      }
-      if (this.RzC != null) {
-        paramVarArgs.f(3, this.RzC);
-      }
-      paramVarArgs.aY(4, this.source);
-      if (this.Kzb != null) {
-        paramVarArgs.f(5, this.Kzb);
-      }
-      paramVarArgs.aY(6, this.Upi);
-      AppMethodBeat.o(125845);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bM(1, this.adType) + 0;
-      paramInt = i;
-      if (this.Uph != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.Uph);
-      }
-      i = paramInt;
-      if (this.RzC != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.RzC);
-      }
-      i += g.a.a.b.b.a.bM(4, this.source);
-      paramInt = i;
-      if (this.Kzb != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.Kzb);
-      }
-      i = g.a.a.b.b.a.bM(6, this.Upi);
-      AppMethodBeat.o(125845);
-      return paramInt + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(125845);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      emq localemq = (emq)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abqV == null)
       {
-      default: 
-        AppMethodBeat.o(125845);
-        return -1;
-      case 1: 
-        localemq.adType = locala.abFh.AK();
-        AppMethodBeat.o(125845);
-        return 0;
-      case 2: 
-        localemq.Uph = locala.abFh.readString();
-        AppMethodBeat.o(125845);
-        return 0;
-      case 3: 
-        localemq.RzC = locala.abFh.readString();
-        AppMethodBeat.o(125845);
-        return 0;
-      case 4: 
-        localemq.source = locala.abFh.AK();
-        AppMethodBeat.o(125845);
-        return 0;
-      case 5: 
-        localemq.Kzb = locala.abFh.readString();
-        AppMethodBeat.o(125845);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: SnsRecommendObject");
+        AppMethodBeat.o(125759);
+        throw paramVarArgs;
       }
-      localemq.Upi = locala.abFh.AK();
-      AppMethodBeat.o(125845);
+      if (this.abqV != null)
+      {
+        paramVarArgs.qD(1, this.abqV.computeSize());
+        this.abqV.writeFields(paramVarArgs);
+      }
+      if (this.abqW != null)
+      {
+        paramVarArgs.qD(2, this.abqW.computeSize());
+        this.abqW.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(125759);
       return 0;
     }
-    AppMethodBeat.o(125845);
-    return -1;
+    if (paramInt == 1) {
+      if (this.abqV == null) {
+        break label466;
+      }
+    }
+    label466:
+    for (paramInt = i.a.a.a.qC(1, this.abqV.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.abqW != null) {
+        i = paramInt + i.a.a.a.qC(2, this.abqW.computeSize());
+      }
+      AppMethodBeat.o(125759);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        if (this.abqV == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: SnsRecommendObject");
+          AppMethodBeat.o(125759);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(125759);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+        emq localemq = (emq)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(125759);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new fey();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((fey)localObject2).parseFrom((byte[])localObject1);
+            }
+            localemq.abqV = ((fey)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(125759);
+          return 0;
+        }
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new etl();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((etl)localObject2).dh((byte[])localObject1);
+          }
+          localemq.abqW = ((etl)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(125759);
+        return 0;
+      }
+      AppMethodBeat.o(125759);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.emq
  * JD-Core Version:    0.7.0.1
  */

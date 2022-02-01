@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.backup.b;
 
 public final class c
 {
-  public static int rKA = 0;
-  public static int rKB = 1;
-  public static int rKC = 3;
-  public static int rKD = 0;
-  public static int rKE = 1;
-  public static int rKF = 0;
-  public static int rKG = 1;
-  public static int rKH = 2;
-  public static int rKI = 4;
-  public static int rKJ = 8;
+  public static int uVO = 0;
+  public static int uVP = 1;
+  public static int uVQ = 3;
+  public static int uVR = 0;
+  public static int uVS = 1;
+  public static int uVT = 0;
+  public static int uVU = 1;
+  public static int uVV = 2;
+  public static int uVW = 4;
+  public static int uVX = 8;
 }
 
 

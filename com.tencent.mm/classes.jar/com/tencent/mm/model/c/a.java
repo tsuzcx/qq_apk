@@ -1,375 +1,334 @@
 package com.tencent.mm.model.c;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.IPackageStatsObserver;
+import android.content.pm.IPackageStatsObserver.Stub;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageStats;
+import android.os.Looper;
+import android.os.Process;
+import android.os.StatFs;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.p;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.modelpackage.s;
+import com.tencent.mm.modelpackage.t;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.c;
-import java.io.ByteArrayInputStream;
-import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.PrintStream;
+import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
+import java.util.Locale;
 
-public final class a
+public class a
+  implements c.a
 {
-  private static DocumentBuilder lxg = null;
+  private static String hgV;
+  private static a ooV;
+  private static final String ooW;
+  private static final String ooX;
+  private static final long opa;
+  private static SimpleDateFormat sDateFormat;
+  long[] hhb;
+  private long ooY;
+  private volatile boolean ooZ;
+  private long opb;
+  private long opc;
+  private long opd;
+  private long ope;
+  private long opf;
+  private long opg;
+  private long oph;
+  private int opi;
+  private int opj;
+  private int opk;
+  private Long[] opl;
+  private long opm;
+  private long opn;
+  private String opo;
+  private LinkedList<Object> opp;
+  private SharedPreferences sp;
   
-  public static a.a Sw(String paramString)
+  static
   {
-    AppMethodBeat.i(153105);
-    a.a locala = new a.a();
-    Log.d("MicroMsg.ABTestParser", "ABTest msg content: %s", new Object[] { paramString });
-    Object localObject1 = Sy(paramString);
-    if (localObject1 == null)
+    AppMethodBeat.i(20436);
+    ooW = com.tencent.mm.loader.i.b.bmr() + "/trace/";
+    ooX = ooW + "Handler.trace";
+    opa = Looper.getMainLooper().getThread().getId();
+    sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ");
+    hgV = "";
+    AppMethodBeat.o(20436);
+  }
+  
+  private a()
+  {
+    AppMethodBeat.i(20425);
+    this.hhb = new long[] { 0L, 0L, 0L };
+    this.ooY = 0L;
+    this.ooZ = false;
+    this.opb = 8000L;
+    this.opc = 800L;
+    this.opd = 25600L;
+    this.ope = 35840L;
+    this.opf = 86400000L;
+    this.opg = 180000L;
+    this.oph = 5000L;
+    this.opi = 120;
+    this.opj = 50;
+    this.opk = 1800000;
+    this.sp = MMApplicationContext.getDefaultPreference();
+    this.opl = new Long[18];
+    this.opm = 0L;
+    this.opn = 0L;
+    this.opo = "";
+    this.opp = new LinkedList();
+    this.opb = this.sp.getLong("handler_debug_log_time", 8000L);
+    this.opc = this.sp.getLong("handler_debug_log_time_main", 800L);
+    this.opd = this.sp.getLong("handler_trace_file_full_size", 25600L);
+    this.ope = this.sp.getLong("handler_log_file_max_size", 35840L);
+    this.opf = this.sp.getLong("handler_upload_time_interval", 86400000L);
+    this.opn = bh.baH().getLooper().getThread().getId();
+    Arrays.fill(this.opl, Long.valueOf(0L));
+    AppMethodBeat.o(20425);
+  }
+  
+  /* Error */
+  private static String KC(String paramString)
+  {
+    // Byte code:
+    //   0: sipush 20429
+    //   3: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 225	com/tencent/mm/vfs/u
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 226	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   14: astore_0
+    //   15: aload_0
+    //   16: invokestatic 232	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
+    //   19: astore_0
+    //   20: aload_0
+    //   21: invokevirtual 238	java/io/InputStream:available	()I
+    //   24: newarray byte
+    //   26: astore_1
+    //   27: aload_0
+    //   28: aload_1
+    //   29: invokevirtual 242	java/io/InputStream:read	([B)I
+    //   32: pop
+    //   33: new 244	java/lang/String
+    //   36: dup
+    //   37: aload_1
+    //   38: invokestatic 250	com/tencent/mm/model/c/d:at	([B)[B
+    //   41: invokespecial 253	java/lang/String:<init>	([B)V
+    //   44: astore_1
+    //   45: aload_0
+    //   46: ifnull +7 -> 53
+    //   49: aload_0
+    //   50: invokevirtual 256	java/io/InputStream:close	()V
+    //   53: sipush 20429
+    //   56: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   59: aload_1
+    //   60: areturn
+    //   61: astore_0
+    //   62: aconst_null
+    //   63: astore_0
+    //   64: aload_0
+    //   65: ifnull +7 -> 72
+    //   68: aload_0
+    //   69: invokevirtual 256	java/io/InputStream:close	()V
+    //   72: sipush 20429
+    //   75: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   78: aconst_null
+    //   79: areturn
+    //   80: astore_1
+    //   81: aconst_null
+    //   82: astore_0
+    //   83: aload_0
+    //   84: ifnull +7 -> 91
+    //   87: aload_0
+    //   88: invokevirtual 256	java/io/InputStream:close	()V
+    //   91: sipush 20429
+    //   94: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: aload_1
+    //   98: athrow
+    //   99: astore_0
+    //   100: goto -47 -> 53
+    //   103: astore_0
+    //   104: goto -32 -> 72
+    //   107: astore_0
+    //   108: goto -17 -> 91
+    //   111: astore_1
+    //   112: goto -29 -> 83
+    //   115: astore_1
+    //   116: goto -52 -> 64
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	119	0	paramString	String
+    //   26	34	1	localObject1	Object
+    //   80	18	1	localObject2	Object
+    //   111	1	1	localObject3	Object
+    //   115	1	1	localIOException	java.io.IOException
+    // Exception table:
+    //   from	to	target	type
+    //   15	20	61	java/io/IOException
+    //   15	20	80	finally
+    //   49	53	99	java/lang/Exception
+    //   68	72	103	java/lang/Exception
+    //   87	91	107	java/lang/Exception
+    //   20	45	111	finally
+    //   20	45	115	java/io/IOException
+  }
+  
+  public static a bEw()
+  {
+    AppMethodBeat.i(20426);
+    if (ooV == null) {}
+    try
     {
-      Log.e("MicroMsg.ABTestParser", "Msg parsing failed, msg: %s", new Object[] { paramString });
-      AppMethodBeat.o(153105);
+      if (ooV == null) {
+        ooV = new a();
+      }
+      a locala = ooV;
+      AppMethodBeat.o(20426);
       return locala;
     }
-    paramString = ((Element)localObject1).getAttributes();
-    if (paramString == null)
+    finally
     {
-      AppMethodBeat.o(153105);
-      return null;
-    }
-    paramString = paramString.getNamedItem("type");
-    int i;
-    Object localObject2;
-    Object localObject3;
-    Object localObject4;
-    label469:
-    boolean bool;
-    label859:
-    long l2;
-    if ((paramString != null) && ("newabtestinfo".equals(paramString.getNodeValue())))
-    {
-      paramString = ((Element)localObject1).getElementsByTagName("prioritylevel");
-      if (paramString.getLength() > 0)
-      {
-        i = Util.getInt(paramString.item(0).getTextContent(), 1);
-        localObject1 = ((Element)localObject1).getChildNodes();
-        int j = 0;
-        if (j < ((NodeList)localObject1).getLength())
-        {
-          localObject2 = ((NodeList)localObject1).item(j);
-          if ((localObject2 == null) || ((((Node)localObject2).getNodeType() == 1) && (((Node)localObject2).getNodeName().equals("exp")))) {}
-          for (;;)
-          {
-            try
-            {
-              localObject3 = (Element)localObject2;
-              paramString = new c();
-              localObject4 = ((Element)localObject3).getAttributes();
-              if (localObject4 != null) {
-                continue;
-              }
-              paramString = null;
-            }
-            catch (Exception paramString)
-            {
-              Log.printErrStackTrace("MicroMsg.ABTestParser", paramString, "parseExp", new Object[0]);
-              continue;
-              paramString.field_sequence = Util.getLong(((NodeList)localObject4).item(0).getTextContent(), 0L);
-              localObject4 = ((Element)localObject3).getElementsByTagName("prioritylevel");
-              if (((NodeList)localObject4).getLength() <= 0) {
-                continue;
-              }
-              paramString.field_prioritylevel = Util.getInt(((NodeList)localObject4).item(0).getTextContent(), 0);
-              localObject4 = ((Element)localObject3).getElementsByTagName("starttime");
-              if (((NodeList)localObject4).getLength() <= 0) {
-                continue;
-              }
-              paramString.field_startTime = Util.getLong(((NodeList)localObject4).item(0).getTextContent(), 0L);
-              if (paramString.field_startTime != 0L) {
-                continue;
-              }
-              paramString.field_startTime = (System.currentTimeMillis() / 1000L);
-              localObject4 = ((Element)localObject3).getElementsByTagName("endtime");
-              if (((NodeList)localObject4).getLength() <= 0) {
-                continue;
-              }
-              paramString.field_endTime = Util.getLong(((NodeList)localObject4).item(0).getTextContent(), 0L);
-              if (paramString.field_endTime != 0L) {
-                continue;
-              }
-              paramString.field_endTime = 9223372036854775807L;
-              localObject4 = ((Element)localObject3).getElementsByTagName("noreport");
-              if (((NodeList)localObject4).getLength() <= 0) {
-                continue;
-              }
-              if (Util.getInt(((NodeList)localObject4).item(0).getTextContent(), 0) != 0) {
-                continue;
-              }
-              bool = true;
-              paramString.field_needReport = bool;
-              paramString.field_rawXML = a((Node)localObject3);
-              continue;
-              paramString.field_prioritylevel = 0;
-              continue;
-              bool = false;
-              continue;
-              localObject2 = ((NamedNodeMap)localObject2).getNamedItem("id");
-              if (localObject2 != null) {
-                continue;
-              }
-              paramString = null;
-              continue;
-              localObject2 = ((Node)localObject2).getNodeValue();
-              localObject3 = ((Element)localObject4).getElementsByTagName("sequence");
-              if (((NodeList)localObject3).getLength() != 0) {
-                continue;
-              }
-              paramString = null;
-              continue;
-              l3 = Util.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
-              localObject3 = ((Element)localObject4).getElementsByTagName("starttime");
-              if (((NodeList)localObject3).getLength() <= 0) {
-                continue;
-              }
-              l1 = Util.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
-              if (l1 != 0L) {
-                break label1285;
-              }
-              l1 = System.currentTimeMillis() / 1000L;
-            }
-            locala.lxh.add(paramString);
-            if ((((Node)localObject2).getNodeType() == 1) && (((Node)localObject2).getNodeName().equals("expinfo"))) {}
-            try
-            {
-              localObject4 = (Element)localObject2;
-              paramString = new LinkedList();
-              localObject2 = ((Element)localObject4).getAttributes();
-              if (localObject2 != null) {
-                continue;
-              }
-              paramString = null;
-            }
-            catch (Exception paramString)
-            {
-              Object localObject5;
-              long l3;
-              long l1;
-              Log.e("MicroMsg.ABTestParser", paramString.getMessage());
-              continue;
-              continue;
-            }
-            locala.lxi.addAll(paramString);
-            j += 1;
-            break;
-            localObject5 = ((NamedNodeMap)localObject4).getNamedItem("layerid");
-            if (localObject5 == null)
-            {
-              paramString = null;
-            }
-            else
-            {
-              paramString.field_layerId = ((Node)localObject5).getNodeValue();
-              localObject5 = ((NamedNodeMap)localObject4).getNamedItem("id");
-              if (localObject5 == null)
-              {
-                paramString = null;
-              }
-              else
-              {
-                paramString.field_expId = ((Node)localObject5).getNodeValue();
-                localObject4 = ((NamedNodeMap)localObject4).getNamedItem("business");
-                if (localObject4 == null) {}
-                for (paramString.field_business = "";; paramString.field_business = ((Node)localObject4).getNodeValue())
-                {
-                  localObject4 = ((Element)localObject3).getElementsByTagName("sequence");
-                  if (((NodeList)localObject4).getLength() != 0) {
-                    break label469;
-                  }
-                  paramString = null;
-                  break;
-                }
-                localObject3 = ((Element)localObject4).getElementsByTagName("endtime");
-                if (((NodeList)localObject3).getLength() <= 0) {
-                  break label1293;
-                }
-                l2 = Util.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
-                if (l2 == 0L) {
-                  break label1293;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    int k;
-    for (;;)
-    {
-      localObject3 = ((Element)localObject4).getElementsByTagName("noreport");
-      if (((NodeList)localObject3).getLength() > 0)
-      {
-        if (Util.getInt(((NodeList)localObject3).item(0).getTextContent(), 0) != 1) {
-          break label1311;
-        }
-        bool = true;
-        break label1301;
-      }
-      for (;;)
-      {
-        localObject3 = new HashMap();
-        localObject4 = ((Element)localObject4).getElementsByTagName("args");
-        label1004:
-        Object localObject6;
-        if (((NodeList)localObject4).getLength() > 0)
-        {
-          localObject4 = ((NodeList)localObject4).item(0).getChildNodes();
-          k = 0;
-          if (k < ((NodeList)localObject4).getLength())
-          {
-            localObject6 = ((NodeList)localObject4).item(k);
-            if ((((Node)localObject6).getNodeType() != 1) || (!((Node)localObject6).getNodeName().equals("arg"))) {
-              break;
-            }
-            localObject5 = ((Element)localObject6).getElementsByTagName("key");
-            localObject6 = ((Element)localObject6).getElementsByTagName("value");
-            if ((((NodeList)localObject5).getLength() == 0) || (((NodeList)localObject6).getLength() == 0)) {
-              break;
-            }
-            ((HashMap)localObject3).put(((NodeList)localObject5).item(0).getTextContent(), ((NodeList)localObject6).item(0).getTextContent());
-            break;
-          }
-        }
-        localObject4 = ((HashMap)localObject3).keySet().iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          localObject5 = (String)((Iterator)localObject4).next();
-          localObject6 = new com.tencent.mm.storage.a();
-          ((com.tencent.mm.storage.a)localObject6).field_abtestkey = ((String)localObject5);
-          ((com.tencent.mm.storage.a)localObject6).field_value = ((String)((HashMap)localObject3).get(localObject5));
-          ((com.tencent.mm.storage.a)localObject6).field_expId = ((String)localObject2);
-          ((com.tencent.mm.storage.a)localObject6).field_sequence = l3;
-          ((com.tencent.mm.storage.a)localObject6).field_prioritylevel = i;
-          ((com.tencent.mm.storage.a)localObject6).field_startTime = l1;
-          ((com.tencent.mm.storage.a)localObject6).field_endTime = l2;
-          ((com.tencent.mm.storage.a)localObject6).field_noReport = bool;
-          paramString.add(localObject6);
-        }
-        AppMethodBeat.o(153105);
-        return locala;
-        bool = false;
-      }
-      continue;
-      label1285:
-      break label859;
-      i = 1;
-      break;
-      label1293:
-      l2 = 9223372036854775807L;
-    }
-    for (;;)
-    {
-      label1301:
-      break;
-      k += 1;
-      break label1004;
-      label1311:
-      bool = false;
+      AppMethodBeat.o(20426);
     }
   }
   
-  public static Map<String, String> Sx(String paramString)
+  private void h(com.tencent.mm.vfs.u paramu)
   {
-    AppMethodBeat.i(153106);
-    HashMap localHashMap = new HashMap();
-    Object localObject1 = Sy(paramString);
-    if (localObject1 == null)
+    boolean bool2 = true;
+    AppMethodBeat.i(169693);
+    if (paramu.jKS())
     {
-      Log.e("MicroMsg.ABTestParser", "Raw XML string parsing failed, xml: %s", new Object[] { paramString });
-      AppMethodBeat.o(153106);
-      return localHashMap;
-    }
-    paramString = ((Element)localObject1).getElementsByTagName("args");
-    if (paramString.getLength() > 0)
-    {
-      paramString = paramString.item(0).getChildNodes();
-      int i = 0;
-      while (i < paramString.getLength())
+      long l;
+      if (paramu.length() > this.opd)
       {
-        Object localObject2 = paramString.item(i);
-        if ((((Node)localObject2).getNodeType() == 1) && (((Node)localObject2).getNodeName().equals("arg")))
-        {
-          localObject1 = ((Element)localObject2).getElementsByTagName("key");
-          localObject2 = ((Element)localObject2).getElementsByTagName("value");
-          if ((((NodeList)localObject1).getLength() != 0) && (((NodeList)localObject2).getLength() != 0)) {
-            localHashMap.put(((NodeList)localObject1).item(0).getTextContent(), ((NodeList)localObject2).item(0).getTextContent());
-          }
+        bool1 = true;
+        this.ooZ = bool1;
+        if (!this.ooZ) {
+          break label140;
         }
-        i += 1;
+        l = this.sp.getLong("handler_trace_log_file_full_time", 0L);
+        if (l == 0L) {
+          break label130;
+        }
+      }
+      label130:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        Log.i("MicroMsg.HandlerTraceManager", "has mark lastFullTime %b", new Object[] { Boolean.valueOf(bool1) });
+        if (l == 0L) {
+          this.sp.edit().putLong("handler_trace_log_file_full_time", System.currentTimeMillis()).commit();
+        }
+        AppMethodBeat.o(169693);
+        return;
+        bool1 = false;
+        break;
       }
     }
-    AppMethodBeat.o(153106);
-    return localHashMap;
+    else
+    {
+      this.ooZ = false;
+    }
+    label140:
+    AppMethodBeat.o(169693);
   }
   
-  private static Element Sy(String paramString)
+  final String bEx()
   {
-    AppMethodBeat.i(153107);
+    AppMethodBeat.i(20428);
+    Object localObject1 = q.aPg();
+    Object localObject2 = p.getString(((String)localObject1).hashCode());
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    PrintStream localPrintStream = new PrintStream(localByteArrayOutputStream);
+    localPrintStream.println("#client.version=" + d.Yxh);
+    localPrintStream.println("#accinfo.revision=" + BuildInfo.REV);
+    localPrintStream.println("#accinfo.uin=" + bg.okT.aM("last_login_uin", (String)localObject2));
+    localPrintStream.println("#accinfo.dev=".concat(String.valueOf(localObject1)));
+    localPrintStream.println("#accinfo.build=" + BuildInfo.TIME + ":" + BuildInfo.HOSTNAME + ":" + ChannelUtil.channelId);
     try
     {
-      InputSource localInputSource = new InputSource(new ByteArrayInputStream(paramString.getBytes()));
-      if (lxg != null) {
-        paramString = lxg;
+      localObject1 = new StatFs(g.aQa().getPath());
+      localObject2 = new StatFs(com.tencent.mm.loader.i.b.bmt());
+      localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getMemoryClass()), g.aQa().getAbsolutePath(), Integer.valueOf(((StatFs)localObject1).getBlockSize()), Integer.valueOf(((StatFs)localObject1).getBlockCount()), Integer.valueOf(((StatFs)localObject1).getAvailableBlocks()), com.tencent.mm.loader.i.b.bmt(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()) });
+      localPrintStream.println("#accinfo.data=".concat(String.valueOf(localObject1)));
+      localObject1 = new Date();
+      localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.getDefault());
+      localPrintStream.println("#accinfo.uploadTime=" + ((SimpleDateFormat)localObject2).format((Date)localObject1));
+      localPrintStream.println("#logfile.fulllast :".concat(String.valueOf(this.sp.getLong("handler_trace_log_file_full_time", 0L) - this.sp.getLong("handler_trace_log_file_create_time", 0L))));
+      if (this.hhb[1] != -1L) {
+        localPrintStream.println("#wxpackage :cache size=" + this.hhb[0] + " data size=" + this.hhb[1] + " code size=" + this.hhb[2]);
       }
-      for (;;)
+      localObject1 = com.tencent.mm.modelpackage.u.bLH().wK(21);
+      if ((localObject1 == null) || (localObject1.length == 0) || (localObject1[0] == null))
       {
-        paramString = paramString.parse(localInputSource);
-        paramString.normalize();
-        paramString = paramString.getDocumentElement();
-        AppMethodBeat.o(153107);
-        return paramString;
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        lxg = paramString;
+        localPrintStream.println("#traceconfig hardcode");
+        localPrintStream.println("#handler.content:");
+        localObject1 = localByteArrayOutputStream.toString();
       }
-      return null;
     }
-    catch (Exception paramString)
+    catch (Exception localException1)
     {
-      Log.e("MicroMsg.ABTestParser", paramString.toString());
-      AppMethodBeat.o(153107);
+      try
+      {
+        label532:
+        String str;
+        for (;;)
+        {
+          localByteArrayOutputStream.close();
+          AppMethodBeat.o(20428);
+          return localObject1;
+          localException1 = localException1;
+          Log.e("MicroMsg.HandlerTraceManager", "summer check data size failed :%s", new Object[] { localException1.getMessage() });
+          str = "";
+        }
+        localPrintStream.println("#traceconfig id=" + str[0].id + " version=" + str[0].version);
+      }
+      catch (Exception localException2)
+      {
+        break label532;
+      }
     }
   }
   
-  private static String a(Node paramNode)
+  public final void bEy()
   {
-    AppMethodBeat.i(153108);
-    StringWriter localStringWriter = new StringWriter();
-    try
-    {
-      Transformer localTransformer = TransformerFactory.newInstance().newTransformer();
-      localTransformer.setOutputProperty("omit-xml-declaration", "yes");
-      localTransformer.transform(new DOMSource(paramNode), new StreamResult(localStringWriter));
-      paramNode = localStringWriter.toString();
-      AppMethodBeat.o(153108);
-      return paramNode;
-    }
-    catch (TransformerException paramNode)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.ABTestParser", paramNode, "nodeToString", new Object[0]);
-      }
-    }
+    AppMethodBeat.i(20431);
+    Log.i("MicroMsg.HandlerTraceManager", "summerc onUpdateComplete");
+    this.opb = this.sp.getLong("handler_debug_log_time", 8000L);
+    this.opc = this.sp.getLong("handler_debug_log_time_main", 800L);
+    this.opd = this.sp.getLong("handler_trace_file_full_size", 25600L);
+    this.ope = this.sp.getLong("handler_log_file_max_size", 35840L);
+    this.opf = this.sp.getLong("handler_upload_time_interval", 86400000L);
+    this.opg = this.sp.getLong("handler_worker_assert_time", 180000L);
+    this.oph = this.sp.getLong("handler_worker_warn_time", 5000L);
+    this.opi = ((int)this.sp.getLong("handler_worker_warn_task_max_size", 120L));
+    this.opj = ((int)this.sp.getLong("handler_worker_warn_task_keep_size", 50L));
+    this.opk = ((int)this.sp.getLong("handler_worker_warn_task_keep_size", 1800000L));
+    h(new com.tencent.mm.vfs.u(ooX));
+    AppMethodBeat.o(20431);
   }
 }
 

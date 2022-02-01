@@ -2,25 +2,25 @@ package kotlin.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
-import kotlin.a.u;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.aa;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/sequences/EmptySequence;", "Lkotlin/sequences/Sequence;", "", "Lkotlin/sequences/DropTakeSequence;", "()V", "drop", "n", "", "iterator", "", "take", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/sequences/EmptySequence;", "Lkotlin/sequences/Sequence;", "", "Lkotlin/sequences/DropTakeSequence;", "()V", "drop", "n", "", "iterator", "", "take", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public final class d
   implements c
 {
-  public static final d abuU;
+  public static final d ajtZ;
   
   static
   {
     AppMethodBeat.i(129495);
-    abuU = new d();
+    ajtZ = new d();
     AppMethodBeat.o(129495);
   }
   
   public final Iterator iterator()
   {
-    return (Iterator)u.aaAc;
+    return (Iterator)aa.aivx;
   }
 }
 

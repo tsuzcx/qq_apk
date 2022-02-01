@@ -1,63 +1,31 @@
 package com.tencent.mm.app;
 
+import android.app.Application;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.stubs.logger.Log.Logger;
+import java.lang.reflect.Method;
 
 public final class m
-  implements Log.Logger
 {
-  public static m aaK()
+  static boolean g(Application paramApplication)
   {
-    return a.fcK;
-  }
-  
-  public final boolean isLoggable(String paramString, int paramInt)
-  {
-    return true;
-  }
-  
-  public final void println(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(123466);
-    switch (paramInt)
+    AppMethodBeat.i(239300);
+    try
     {
+      Method localMethod = Class.forName("com.tencent.mm.sdcard_migrate.ExtStorageMigrateRoutine").getDeclaredMethod("triggerOnDemand", new Class[] { Application.class });
+      localMethod.setAccessible(true);
+      boolean bool = ((Boolean)localMethod.invoke(null, new Object[] { paramApplication })).booleanValue();
+      return bool;
     }
-    for (;;)
+    finally
     {
-      AppMethodBeat.o(123466);
-      return;
-      Log.v(paramString1, paramString2);
-      AppMethodBeat.o(123466);
-      return;
-      Log.d(paramString1, paramString2);
-      AppMethodBeat.o(123466);
-      return;
-      Log.i(paramString1, paramString2);
-      AppMethodBeat.o(123466);
-      return;
-      Log.w(paramString1, paramString2);
-      AppMethodBeat.o(123466);
-      return;
-      Log.e(paramString1, paramString2);
+      AppMethodBeat.o(239300);
     }
-  }
-  
-  static final class a
-  {
-    static final m fcK;
-    
-    static
-    {
-      AppMethodBeat.i(123465);
-      fcK = new m((byte)0);
-      AppMethodBeat.o(123465);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.m
  * JD-Core Version:    0.7.0.1
  */

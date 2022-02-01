@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/iua" android:background="@color/ub" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.game.luggage.GameRoundContainerView android:layout_gravity="bottom" android:id="@id/jr8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/kyn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/erl" android:maxLines="1" android:layout_marginStart="@dimen/d4" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="end" android:id="@id/lql" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/a6s" android:src="@raw/icons_outlined_arrow" android:layout_marginEnd="@dimen/d4" app:iconColor="@color/FG_2" />
+    </FrameLayout>
+    <View android:id="@id/l3c" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="@dimen/a6s" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" />
+</LinearLayout>

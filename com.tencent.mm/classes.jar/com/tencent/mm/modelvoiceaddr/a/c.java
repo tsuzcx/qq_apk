@@ -20,16 +20,16 @@ public class c
   public static SharedPreferences sp;
   private MMHandler handler;
   private boolean isReleased;
-  private boolean mmE;
-  private int mmF;
-  private boolean mmG;
-  private boolean mmH;
-  private long mmI;
-  private int mmJ;
-  private a mmK;
-  private com.qq.wx.voice.vad.a mmL;
-  public a mmM;
-  private short[] mmN;
+  private short[] pgA;
+  private boolean pgr;
+  private int pgs;
+  private boolean pgt;
+  private boolean pgu;
+  private long pgv;
+  private int pgw;
+  private a pgx;
+  private com.qq.wx.voice.vad.a pgy;
+  public a pgz;
   
   static
   {
@@ -42,12 +42,12 @@ public class c
   public c(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(148606);
-    this.mmE = true;
-    this.mmF = 3;
-    this.mmG = false;
-    this.mmH = false;
-    this.mmI = 0L;
-    this.mmJ = 3500;
+    this.pgr = true;
+    this.pgs = 3;
+    this.pgt = false;
+    this.pgu = false;
+    this.pgv = 0L;
+    this.pgw = 3500;
     this.isReleased = false;
     this.handler = new MMHandler(Looper.getMainLooper())
     {
@@ -60,49 +60,53 @@ public class c
           return;
         }
         if (c.a(c.this) != null) {
-          c.a(c.this).acN();
+          c.a(c.this).aEN();
         }
         AppMethodBeat.o(148603);
       }
     };
-    this.mmK = null;
-    this.mmL = null;
-    this.mmJ = paramInt1;
-    this.mmL = new com.qq.wx.voice.vad.a();
+    this.pgx = null;
+    this.pgy = null;
+    this.pgw = paramInt1;
+    this.pgy = new com.qq.wx.voice.vad.a();
     int j = 0;
     int i = j;
     Object localObject;
     if (MMApplicationContext.isMMProcess())
     {
-      localObject = com.tencent.mm.model.c.d.bgB().Mu("100235");
+      localObject = com.tencent.mm.model.newabtest.d.bEt().Fd("100235");
       i = j;
-      if (((com.tencent.mm.storage.c)localObject).isValid()) {
-        i = Util.getInt((String)((com.tencent.mm.storage.c)localObject).hvz().get("MMVoipVadOn"), 0);
+      if (localObject != null)
+      {
+        i = j;
+        if (((com.tencent.mm.storage.c)localObject).isValid()) {
+          i = Util.getInt((String)((com.tencent.mm.storage.c)localObject).iWZ().get("MMVoipVadOn"), 0);
+        }
       }
     }
     Log.i(TAG, "VoiceSilentDetectAPI: abTestFlag = [%s]", new Object[] { Integer.valueOf(i) });
     if (i == 0)
     {
-      com.qq.wx.voice.vad.a.bW(false);
-      localObject = this.mmL;
-      if (!com.qq.wx.voice.vad.a.ciy) {
-        break label304;
+      com.qq.wx.voice.vad.a.cB(false);
+      localObject = this.pgy;
+      if (!com.qq.wx.voice.vad.a.dYX) {
+        break label313;
       }
-      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).cix.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
-      label206:
+      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).dYW.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
+      label215:
       if (com.qq.wx.voice.vad.a.DEBUG) {
         System.out.println("EVad Init handle = " + ((com.qq.wx.voice.vad.a)localObject).handle);
       }
       if (((com.qq.wx.voice.vad.a)localObject).handle != 0L) {
-        break label329;
+        break label338;
       }
       paramInt2 = 1;
-      label250:
+      label259:
       if (paramInt2 != 1)
       {
-        localObject = this.mmL;
+        localObject = this.pgy;
         if (((com.qq.wx.voice.vad.a)localObject).handle != 0L) {
-          break label334;
+          break label343;
         }
         paramInt2 = 1;
       }
@@ -110,36 +114,36 @@ public class c
     for (;;)
     {
       if (paramInt2 != 1) {
-        break label406;
+        break label415;
       }
       localObject = new b("Init ERROR");
       AppMethodBeat.o(148606);
       throw ((Throwable)localObject);
-      com.qq.wx.voice.vad.a.bW(true);
+      com.qq.wx.voice.vad.a.cB(true);
       break;
-      label304:
-      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).ciw.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
-      break label206;
-      label329:
+      label313:
+      ((com.qq.wx.voice.vad.a)localObject).handle = ((com.qq.wx.voice.vad.a)localObject).dYV.Init(16000, paramInt2, paramFloat, paramInt3, paramInt4);
+      break label215;
+      label338:
       paramInt2 = 0;
-      break label250;
-      label334:
+      break label259;
+      label343:
       if (com.qq.wx.voice.vad.a.DEBUG) {
         System.out.println("EVad Reset handle = " + ((com.qq.wx.voice.vad.a)localObject).handle);
       }
-      if (com.qq.wx.voice.vad.a.ciy) {
-        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).cix.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
+      if (com.qq.wx.voice.vad.a.dYX) {
+        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).dYW.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
       } else {
-        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).ciw.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
+        paramInt2 = ((com.qq.wx.voice.vad.a)localObject).dYV.Reset(((com.qq.wx.voice.vad.a)localObject).handle);
       }
     }
-    label406:
-    this.mmK = new a(paramInt5 * 16);
-    this.mmN = new short[4000];
+    label415:
+    this.pgx = new a(paramInt5 * 16);
+    this.pgA = new short[4000];
     this.handler.removeMessages(0);
     this.handler.sendEmptyMessageDelayed(0, paramInt1);
-    this.mmG = paramBoolean1;
-    this.mmH = paramBoolean2;
+    this.pgt = paramBoolean1;
+    this.pgu = paramBoolean2;
     AppMethodBeat.o(148606);
   }
   
@@ -150,7 +154,7 @@ public class c
     AppMethodBeat.o(148605);
   }
   
-  public static String bsb()
+  public static String bPH()
   {
     AppMethodBeat.i(148604);
     String str = String.format(Locale.CHINA, "%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s", new Object[] { "sil_time", Integer.valueOf(sp.getInt("sil_time", 500)), "s_n_ration", Float.valueOf(sp.getFloat("s_n_ration", 2.5F)), "s_window", Integer.valueOf(sp.getInt("s_window", 500)), "s_length", Integer.valueOf(sp.getInt("s_length", 350)), "s_delay_time", Integer.valueOf(sp.getInt("s_delay_time", 550)) });
@@ -158,7 +162,7 @@ public class c
     return str;
   }
   
-  public final void e(short[] paramArrayOfShort, int paramInt)
+  public final void f(short[] paramArrayOfShort, int paramInt)
   {
     AppMethodBeat.i(148607);
     Log.d(TAG, "input() called with: voice = [%s], length = [%s]", new Object[] { paramArrayOfShort, Integer.valueOf(paramInt) });
@@ -173,32 +177,32 @@ public class c
       AppMethodBeat.o(148607);
       return;
     }
-    if (this.mmK == null)
+    if (this.pgx == null)
     {
       Log.i(TAG, "input, circleBuffer is null.");
       AppMethodBeat.o(148607);
       return;
     }
-    int n = this.mmL.a(paramArrayOfShort, paramInt);
-    Log.d(TAG, "currState = %s,prevState = %s,directFirstStart = %s,directTempState = %s", new Object[] { Integer.valueOf(n), Integer.valueOf(this.mmF), Boolean.valueOf(this.mmG), Boolean.valueOf(this.mmH) });
+    int n = this.pgy.b(paramArrayOfShort, paramInt);
+    Log.d(TAG, "currState = %s,prevState = %s,directFirstStart = %s,directTempState = %s", new Object[] { Integer.valueOf(n), Integer.valueOf(this.pgs), Boolean.valueOf(this.pgt), Boolean.valueOf(this.pgu) });
     long l;
     int i;
     int k;
-    if (this.mmG) {
-      if (this.mmH)
+    if (this.pgt) {
+      if (this.pgu)
       {
         l = System.currentTimeMillis();
-        if (this.mmM != null) {
-          this.mmM.brW();
+        if (this.pgz != null) {
+          this.pgz.bPC();
         }
-        this.mmI = l;
+        this.pgv = l;
         if (this.isReleased)
         {
           AppMethodBeat.o(148607);
           return;
         }
-        i = this.mmK.mmC;
-        k = this.mmN.length;
+        i = this.pgx.pgp;
+        k = this.pgA.length;
         if (i > 0) {
           if (k <= i) {
             break label811;
@@ -210,53 +214,53 @@ public class c
     label811:
     for (int j = i;; j = k)
     {
-      this.mmK.c(this.mmN, j);
+      this.pgx.d(this.pgA, j);
       int m = i - j;
       i = m;
-      if (this.mmM == null) {
+      if (this.pgz == null) {
         break;
       }
-      this.mmM.b(this.mmN, j);
+      this.pgz.c(this.pgA, j);
       i = m;
       break;
-      this.mmH = false;
+      this.pgu = false;
       this.handler.removeMessages(0);
-      this.handler.sendEmptyMessageDelayed(0, this.mmJ);
+      this.handler.sendEmptyMessageDelayed(0, this.pgw);
       for (;;)
       {
-        this.mmE = false;
-        this.mmF = n;
+        this.pgr = false;
+        this.pgs = n;
         if (!this.isReleased) {
           break;
         }
         AppMethodBeat.o(148607);
         return;
-        if ((this.mmF == 3) && (n == 2)) {
-          this.mmG = false;
+        if ((this.pgs == 3) && (n == 2)) {
+          this.pgt = false;
         }
-        if ((this.mmF != 3) || (n != 3))
+        if ((this.pgs != 3) || (n != 3))
         {
           this.handler.removeMessages(0);
-          this.handler.sendEmptyMessageDelayed(0, this.mmJ);
+          this.handler.sendEmptyMessageDelayed(0, this.pgw);
         }
       }
-      if ((this.mmF == 3) && (n == 2))
+      if ((this.pgs == 3) && (n == 2))
       {
-        this.mmF = n;
+        this.pgs = n;
         this.handler.removeMessages(0);
-        this.handler.sendEmptyMessageDelayed(0, this.mmJ);
+        this.handler.sendEmptyMessageDelayed(0, this.pgw);
         l = System.currentTimeMillis();
-        if (this.mmM != null) {
-          this.mmM.brW();
+        if (this.pgz != null) {
+          this.pgz.bPC();
         }
-        this.mmI = l;
+        this.pgv = l;
         if (this.isReleased)
         {
           AppMethodBeat.o(148607);
           return;
         }
-        i = this.mmK.mmC;
-        k = this.mmN.length;
+        i = this.pgx.pgp;
+        k = this.pgA.length;
         label506:
         if (i > 0) {
           if (k <= i) {
@@ -266,55 +270,55 @@ public class c
       }
       for (j = i;; j = k)
       {
-        this.mmK.c(this.mmN, j);
+        this.pgx.d(this.pgA, j);
         m = i - j;
         i = m;
-        if (this.mmM == null) {
+        if (this.pgz == null) {
           break label506;
         }
-        this.mmM.b(this.mmN, j);
+        this.pgz.c(this.pgA, j);
         i = m;
         break label506;
-        this.mmE = false;
+        this.pgr = false;
         break;
-        if ((this.mmF == 2) && (n == 3))
+        if ((this.pgs == 2) && (n == 3))
         {
-          this.mmF = n;
-          this.mmE = true;
+          this.pgs = n;
+          this.pgr = true;
           this.handler.removeMessages(0);
-          this.handler.sendEmptyMessageDelayed(0, this.mmJ);
+          this.handler.sendEmptyMessageDelayed(0, this.pgw);
           l = System.currentTimeMillis();
-          if (this.mmM != null) {
-            this.mmM.brV();
+          if (this.pgz != null) {
+            this.pgz.bPB();
           }
-          this.mmI = l;
+          this.pgv = l;
           if (!this.isReleased) {
             break;
           }
           AppMethodBeat.o(148607);
           return;
         }
-        if ((this.mmF == 3) && (n == 3))
+        if ((this.pgs == 3) && (n == 3))
         {
-          this.mmE = true;
+          this.pgr = true;
           break;
         }
-        if ((this.mmF != 2) || (n != 2)) {
+        if ((this.pgs != 2) || (n != 2)) {
           break;
         }
-        this.mmE = false;
+        this.pgr = false;
         this.handler.removeMessages(0);
-        this.handler.sendEmptyMessageDelayed(0, this.mmJ);
+        this.handler.sendEmptyMessageDelayed(0, this.pgw);
         break;
-        this.mmK.d(paramArrayOfShort, paramInt);
-        Log.d(TAG, "isSilent %s", new Object[] { Boolean.valueOf(this.mmE) });
-        if (this.mmE)
+        this.pgx.e(paramArrayOfShort, paramInt);
+        Log.d(TAG, "isSilent %s", new Object[] { Boolean.valueOf(this.pgr) });
+        if (this.pgr)
         {
           AppMethodBeat.o(148607);
           return;
         }
-        if (this.mmM != null) {
-          this.mmM.b(paramArrayOfShort, paramInt);
+        if (this.pgz != null) {
+          this.pgz.c(paramArrayOfShort, paramInt);
         }
         AppMethodBeat.o(148607);
         return;
@@ -327,38 +331,38 @@ public class c
     AppMethodBeat.i(148608);
     Log.d(TAG, "released");
     this.isReleased = true;
-    this.mmG = false;
-    this.mmH = false;
-    if (this.mmL != null)
+    this.pgt = false;
+    this.pgu = false;
+    if (this.pgy != null)
     {
-      if (this.mmL.Ko() == 1)
+      if (this.pgy.akp() == 1)
       {
         b localb = new b();
         AppMethodBeat.o(148608);
         throw localb;
       }
-      this.mmL = null;
+      this.pgy = null;
     }
-    this.mmK = null;
-    this.mmN = null;
+    this.pgx = null;
+    this.pgA = null;
     if (this.handler != null)
     {
       this.handler.removeMessages(0);
       this.handler = null;
     }
-    this.mmM = null;
+    this.pgz = null;
     AppMethodBeat.o(148608);
   }
   
   public static abstract interface a
   {
-    public abstract void acN();
+    public abstract void aEN();
     
-    public abstract void b(short[] paramArrayOfShort, int paramInt);
+    public abstract void bPB();
     
-    public abstract void brV();
+    public abstract void bPC();
     
-    public abstract void brW();
+    public abstract void c(short[] paramArrayOfShort, int paramInt);
   }
 }
 

@@ -1,117 +1,74 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.a;
-import kotlin.d.d;
-import kotlin.d.e;
-import kotlin.d.f;
-import kotlin.d.f.b;
-import kotlin.d.f.c;
-import kotlin.d.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlin/coroutines/ContinuationInterceptor;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "dispatchYield", "interceptContinuation", "Lkotlin/coroutines/Continuation;", "T", "continuation", "isDispatchNeeded", "", "plus", "other", "releaseInterceptedContinuation", "toString", "", "Key", "kotlinx-coroutines-core"})
-public abstract class af
-  extends a
-  implements e
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CompletedWithCancellation;", "", "result", "onCancellation", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public final class af
 {
-  public static final a abwu = new a((byte)0);
+  public final b<Throwable, ah> ajvz;
+  public final Object result;
   
-  public af()
+  public af(Object paramObject, b<? super Throwable, ah> paramb)
   {
-    super((f.c)e.aaAt);
+    this.result = paramObject;
+    this.ajvz = paramb;
   }
   
-  public abstract void a(f paramf, Runnable paramRunnable);
-  
-  public <E extends f.b> E get(f.c<E> paramc)
+  public final boolean equals(Object paramObject)
   {
-    p.k(paramc, "key");
-    if ((paramc instanceof kotlin.d.b))
+    AppMethodBeat.i(188885);
+    if (this == paramObject)
     {
-      if (((kotlin.d.b)paramc).a(getKey()))
-      {
-        f.b localb = ((kotlin.d.b)paramc).a((f.b)this);
-        paramc = localb;
-        if ((localb instanceof f.b)) {}
-      }
-      else
-      {
-        paramc = null;
-      }
-      return paramc;
+      AppMethodBeat.o(188885);
+      return true;
     }
-    if (e.aaAt == paramc) {
-      return (f.b)this;
+    if (!(paramObject instanceof af))
+    {
+      AppMethodBeat.o(188885);
+      return false;
     }
-    return null;
-  }
-  
-  public final <T> d<T> i(d<? super T> paramd)
-  {
-    return (d)new ax(this, paramd);
-  }
-  
-  public boolean iRd()
-  {
+    paramObject = (af)paramObject;
+    if (!s.p(this.result, paramObject.result))
+    {
+      AppMethodBeat.o(188885);
+      return false;
+    }
+    if (!s.p(this.ajvz, paramObject.ajvz))
+    {
+      AppMethodBeat.o(188885);
+      return false;
+    }
+    AppMethodBeat.o(188885);
     return true;
   }
   
-  public final void j(d<?> paramd)
+  public final int hashCode()
   {
-    if (paramd == null) {
-      throw new t("null cannot be cast to non-null type kotlinx.coroutines.DispatchedContinuation<*>");
-    }
-    Object localObject = ((ax)paramd)._reusableCancellableContinuation;
-    paramd = localObject;
-    if (!(localObject instanceof n)) {
-      paramd = null;
-    }
-    paramd = (n)paramd;
-    if (paramd != null) {
-      paramd.iQS();
-    }
-  }
-  
-  public f minusKey(f.c<?> paramc)
-  {
-    p.k(paramc, "key");
-    if ((paramc instanceof kotlin.d.b))
+    AppMethodBeat.i(188876);
+    if (this.result == null) {}
+    for (int i = 0;; i = this.result.hashCode())
     {
-      if ((((kotlin.d.b)paramc).a(getKey())) && (((kotlin.d.b)paramc).a((f.b)this) != null)) {
-        return (f)g.aaAw;
-      }
-      return (f)this;
+      int j = this.ajvz.hashCode();
+      AppMethodBeat.o(188876);
+      return i * 31 + j;
     }
-    if (e.aaAt == paramc) {
-      return (f)g.aaAw;
-    }
-    return (f)this;
   }
   
-  public String toString()
+  public final String toString()
   {
-    return getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this));
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CoroutineDispatcher$Key;", "Lkotlin/coroutines/AbstractCoroutineContextKey;", "Lkotlin/coroutines/ContinuationInterceptor;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "kotlinx-coroutines-core"})
-  public static final class a
-    extends kotlin.d.b<e, af>
-  {
-    private a()
-    {
-      super((kotlin.g.a.b)1.abwv);
-      AppMethodBeat.i(204315);
-      AppMethodBeat.o(204315);
-    }
+    AppMethodBeat.i(188870);
+    String str = "CompletedWithCancellation(result=" + this.result + ", onCancellation=" + this.ajvz + ')';
+    AppMethodBeat.o(188870);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.af
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,6 @@
 package com.tencent.xweb.internal;
 
-import android.content.Context;
-import com.tencent.xweb.WebView;
-
-public final class CookieInternal
-{
-  public static abstract interface ICookieManagerInternal
-  {
-    public abstract void f(WebView paramWebView);
-    
-    public abstract String getCookie(String paramString);
-    
-    public abstract void ivY();
-    
-    public abstract void removeAllCookie();
-    
-    public abstract void removeSessionCookie();
-    
-    public abstract void setCookie(String paramString1, String paramString2);
-  }
-  
-  public static abstract interface ICookieSyncManagerInternal
-  {
-    public abstract void init(Context paramContext);
-    
-    public abstract void sync();
-  }
-}
+public final class CookieInternal {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

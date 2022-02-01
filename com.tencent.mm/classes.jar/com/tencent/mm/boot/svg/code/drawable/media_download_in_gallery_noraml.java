@@ -117,7 +117,7 @@ public class media_download_in_gallery_noraml
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.media_download_in_gallery_noraml
  * JD-Core Version:    0.7.0.1
  */

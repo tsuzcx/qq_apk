@@ -1,35 +1,32 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.live.ui.post.b;
-import com.tencent.mm.plugin.finder.live.ui.post.d;
-import com.tencent.mm.plugin.finder.live.ui.post.e;
+import com.tencent.mm.plugin.finder.post.b;
+import com.tencent.mm.plugin.finder.post.e;
+import com.tencent.mm.plugin.finder.post.f;
+import com.tencent.mm.plugin.finder.post.g;
+import com.tencent.mm.plugin.finder.post.h;
+import com.tencent.mm.plugin.finder.post.i;
+import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
 
-@com.tencent.mm.ui.base.a(17)
+@a(17)
 @com.tencent.mm.ui.widget.pulldown.c(0)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderPostUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-finder_release"})
-public final class FinderPostUI
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderPostUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class FinderPostUI
   extends MMFinderUI
 {
-  public static final a AtW;
-  private static final int xSK = 10000;
-  private HashMap _$_findViewCache;
+  public static final FinderPostUI.a FTe;
   
   static
   {
-    AppMethodBeat.i(270563);
-    AtW = new a((byte)0);
-    xSK = 10000;
-    AppMethodBeat.o(270563);
+    AppMethodBeat.i(346758);
+    FTe = new FinderPostUI.a((byte)0);
+    AppMethodBeat.o(346758);
   }
   
   public FinderPostUI()
@@ -38,41 +35,17 @@ public final class FinderPostUI
     AppMethodBeat.o(167543);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(270565);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(270565);
-  }
+  public void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
+  public Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(270564);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(270564);
-    return localView1;
-  }
-  
-  public final Set<Class<? extends UIComponent>> importUIComponents()
-  {
-    AppMethodBeat.i(270562);
-    Set localSet = ak.setOf(new Class[] { e.class, com.tencent.mm.plugin.finder.live.ui.post.a.class, b.class, com.tencent.mm.plugin.finder.live.ui.post.c.class, d.class });
-    AppMethodBeat.o(270562);
+    AppMethodBeat.i(346768);
+    Set localSet = ar.setOf(new Class[] { i.class, b.class, h.class, e.class, f.class, g.class, com.tencent.mm.plugin.finder.c.class });
+    AppMethodBeat.o(346768);
     return localSet;
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(167528);
     supportRequestWindowFeature(1);
@@ -85,13 +58,10 @@ public final class FinderPostUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderPostUI$Companion;", "", "()V", "MENU_ID_POST", "", "getMENU_ID_POST", "()I", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderPostUI
  * JD-Core Version:    0.7.0.1
  */

@@ -30,343 +30,344 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.j;
+import com.tencent.mm.ck.a.j;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdcard_migrate.f.a;
 import com.tencent.mm.sdcard_migrate.f.b;
 import com.tencent.mm.sdcard_migrate.f.c;
 import com.tencent.mm.sdcard_migrate.f.d;
 import com.tencent.mm.sdcard_migrate.f.e;
-import com.tencent.mm.ui.av;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bc;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.ui.widget.a.d;
 
 public final class c
   extends Dialog
   implements DialogInterface
 {
-  private Button MhR;
-  private LinearLayout UWb;
-  private TextView UWc;
-  public TextView UWd;
-  public TextView UWe;
-  private TextView UWf;
-  private TextView UWg;
-  private TextView UWh;
-  private ImageView UWi;
-  private View UWj;
-  private ViewStub UWk;
-  public LinearLayout UWl;
-  private ViewGroup UWm;
-  private LinearLayout UWn;
-  private ViewGroup UWo;
-  private View UWp;
-  private boolean UWq;
-  private Animation UWr;
-  private Animation UWs;
-  private Animation UWt;
-  private Animation UWu;
-  public c.a.c UWv;
-  private DialogInterface.OnDismissListener UWw;
-  private boolean bxO;
-  com.tencent.mm.ui.widget.a.c iOnDialogDismissListener;
+  private Button BoW;
+  private Button SJn;
+  private View acrA;
+  private boolean acrB;
+  private Animation acrC;
+  private Animation acrD;
+  private Animation acrE;
+  private Animation acrF;
+  public c.a.c acrG;
+  private DialogInterface.OnDismissListener acrH;
+  private LinearLayout acrm;
+  private TextView acrn;
+  public TextView acro;
+  public TextView acrp;
+  private TextView acrq;
+  private TextView acrr;
+  private TextView acrs;
+  private ImageView acrt;
+  private View acru;
+  private ViewStub acrv;
+  public LinearLayout acrw;
+  private ViewGroup acrx;
+  private LinearLayout acry;
+  private ViewGroup acrz;
+  private boolean dqR;
+  d iOnDialogDismissListener;
   private Context mContext;
   private EditText mEditText;
-  private TextView mLH;
-  private View nX;
   private boolean needEdit;
-  private LinearLayout qnZ;
-  private Button xPd;
+  private View oW;
+  private TextView pIp;
+  private LinearLayout tsG;
   
   public c(Context paramContext)
   {
     super(paramContext, a.j.mmalertdialog);
-    AppMethodBeat.i(192070);
-    this.UWq = false;
+    AppMethodBeat.i(257249);
+    this.acrB = false;
     this.needEdit = false;
     this.mContext = paramContext;
-    this.UWb = ((LinearLayout)View.inflate(this.mContext, f.e.mm_alert_comfirm_no_svg, null));
-    this.xPd = ((Button)this.UWb.findViewById(f.d.mm_alert_ok_btn));
-    this.MhR = ((Button)this.UWb.findViewById(f.d.mm_alert_cancel_btn));
-    this.mLH = ((TextView)this.UWb.findViewById(f.d.mm_alert_title));
-    this.UWc = ((TextView)this.UWb.findViewById(f.d.mm_alert_title_desc));
-    this.UWd = ((TextView)this.UWb.findViewById(f.d.mm_alert_msg));
-    this.UWe = ((TextView)this.UWb.findViewById(f.d.mm_alert_msg2));
-    this.UWf = ((TextView)this.UWb.findViewById(f.d.mm_alert_msg_subtitle));
-    this.UWg = ((TextView)this.UWb.findViewById(f.d.mm_alert_msg_subdesc));
-    this.UWh = ((TextView)this.UWb.findViewById(f.d.confirm_dialog_content_desc_tv));
-    this.mEditText = ((EditText)this.UWb.findViewById(f.d.confirm_dialog_text_et));
-    this.UWi = ((ImageView)this.UWb.findViewById(f.d.mm_alert_msg_icon));
-    this.qnZ = ((LinearLayout)this.UWb.findViewById(f.d.mm_alert_title_area));
-    this.UWk = ((ViewStub)this.UWb.findViewById(f.d.title_image_ll));
-    this.UWl = ((LinearLayout)this.UWb.findViewById(f.d.mm_alert_msg_area));
-    this.UWm = ((ViewGroup)this.UWb.findViewById(f.d.mm_alert_bottom_view));
-    this.UWp = this.UWb.findViewById(f.d.mm_alert_button_view);
-    this.UWn = ((LinearLayout)this.UWb.findViewById(f.d.mm_alert_custom_area));
-    this.UWo = ((ViewGroup)this.UWb.findViewById(f.d.title_image_detail_area));
+    this.acrm = ((LinearLayout)View.inflate(this.mContext, f.e.mm_alert_comfirm_no_svg, null));
+    this.BoW = ((Button)this.acrm.findViewById(f.d.mm_alert_ok_btn));
+    this.SJn = ((Button)this.acrm.findViewById(f.d.mm_alert_cancel_btn));
+    this.pIp = ((TextView)this.acrm.findViewById(f.d.mm_alert_title));
+    this.acrn = ((TextView)this.acrm.findViewById(f.d.mm_alert_title_desc));
+    this.acro = ((TextView)this.acrm.findViewById(f.d.mm_alert_msg));
+    this.acrp = ((TextView)this.acrm.findViewById(f.d.mm_alert_msg2));
+    this.acrq = ((TextView)this.acrm.findViewById(f.d.mm_alert_msg_subtitle));
+    this.acrr = ((TextView)this.acrm.findViewById(f.d.mm_alert_msg_subdesc));
+    this.acrs = ((TextView)this.acrm.findViewById(f.d.confirm_dialog_content_desc_tv));
+    this.mEditText = ((EditText)this.acrm.findViewById(f.d.confirm_dialog_text_et));
+    this.acrt = ((ImageView)this.acrm.findViewById(f.d.mm_alert_msg_icon));
+    this.tsG = ((LinearLayout)this.acrm.findViewById(f.d.mm_alert_title_area));
+    this.acrv = ((ViewStub)this.acrm.findViewById(f.d.title_image_ll));
+    this.acrw = ((LinearLayout)this.acrm.findViewById(f.d.mm_alert_msg_area));
+    this.acrx = ((ViewGroup)this.acrm.findViewById(f.d.mm_alert_bottom_view));
+    this.acrA = this.acrm.findViewById(f.d.mm_alert_button_view);
+    this.acry = ((LinearLayout)this.acrm.findViewById(f.d.mm_alert_custom_area));
+    this.acrz = ((ViewGroup)this.acrm.findViewById(f.d.title_image_detail_area));
     setCanceledOnTouchOutside(true);
-    this.UWr = AnimationUtils.loadAnimation(this.mContext, f.a.alpha_in);
-    this.UWs = AnimationUtils.loadAnimation(this.mContext, f.a.alpha_in);
-    this.UWt = AnimationUtils.loadAnimation(this.mContext, f.a.alpha_out);
-    this.UWu = AnimationUtils.loadAnimation(this.mContext, f.a.alpha_out);
-    AppMethodBeat.o(192070);
+    this.acrC = AnimationUtils.loadAnimation(this.mContext, f.a.alpha_in);
+    this.acrD = AnimationUtils.loadAnimation(this.mContext, f.a.alpha_in);
+    this.acrE = AnimationUtils.loadAnimation(this.mContext, f.a.alpha_out);
+    this.acrF = AnimationUtils.loadAnimation(this.mContext, f.a.alpha_out);
+    AppMethodBeat.o(257249);
   }
   
-  private void EO(boolean paramBoolean)
+  private void KA(boolean paramBoolean)
   {
-    AppMethodBeat.i(192090);
+    AppMethodBeat.i(257256);
     if (paramBoolean)
     {
-      int i = aw.fromDPToPix(this.mContext, 8);
-      this.UWl.setVisibility(0);
-      this.UWl.setPadding(i, i, i, i);
-      this.UWl.setBackgroundResource(f.c.dialog_content_background);
+      int i = bd.fromDPToPix(this.mContext, 8);
+      this.acrw.setVisibility(0);
+      this.acrw.setPadding(i, i, i, i);
+      this.acrw.setBackgroundResource(f.c.dialog_content_background);
     }
-    AppMethodBeat.o(192090);
+    AppMethodBeat.o(257256);
   }
   
   private void a(CharSequence paramCharSequence, DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(192119);
-    if (this.MhR != null)
+    AppMethodBeat.i(257275);
+    if (this.SJn != null)
     {
-      this.MhR.setVisibility(0);
-      this.MhR.setText(paramCharSequence);
-      this.MhR.setOnClickListener(new c.5(this, paramOnClickListener));
+      this.SJn.setVisibility(0);
+      this.SJn.setText(paramCharSequence);
+      this.SJn.setOnClickListener(new c.5(this, paramOnClickListener));
     }
-    AppMethodBeat.o(192119);
+    AppMethodBeat.o(257275);
   }
   
   private void a(CharSequence paramCharSequence, boolean paramBoolean, DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(192110);
-    if (this.xPd == null)
+    AppMethodBeat.i(257268);
+    if (this.BoW == null)
     {
-      AppMethodBeat.o(192110);
+      AppMethodBeat.o(257268);
       return;
     }
-    this.xPd.setVisibility(0);
-    this.xPd.setText(paramCharSequence);
-    this.xPd.setOnClickListener(new c.4(this, paramOnClickListener, paramBoolean));
-    AppMethodBeat.o(192110);
+    this.BoW.setVisibility(0);
+    this.BoW.setText(paramCharSequence);
+    this.BoW.setOnClickListener(new c.4(this, paramOnClickListener, paramBoolean));
+    AppMethodBeat.o(257268);
   }
   
-  private void asb(int paramInt)
+  private void ayg(int paramInt)
   {
-    AppMethodBeat.i(192083);
-    if (this.UWd != null) {
-      this.UWd.setTextColor(paramInt);
+    AppMethodBeat.i(257254);
+    if (this.acro != null) {
+      this.acro.setTextColor(paramInt);
     }
-    AppMethodBeat.o(192083);
+    AppMethodBeat.o(257254);
   }
   
-  private void asc(int paramInt)
+  private void ayh(int paramInt)
   {
-    AppMethodBeat.i(192098);
-    if (this.UWl != null) {
-      this.UWl.setVisibility(paramInt);
+    AppMethodBeat.i(257259);
+    if (this.acrw != null) {
+      this.acrw.setVisibility(paramInt);
     }
-    if (this.UWn != null) {
-      this.UWn.setVisibility(paramInt);
+    if (this.acry != null) {
+      this.acry.setVisibility(paramInt);
     }
-    if ((this.UWh != null) && (this.UWq)) {
-      this.UWh.setVisibility(paramInt);
+    if ((this.acrs != null) && (this.acrB)) {
+      this.acrs.setVisibility(paramInt);
     }
     if (this.mEditText != null)
     {
       if (!this.needEdit)
       {
         this.mEditText.setVisibility(8);
-        AppMethodBeat.o(192098);
+        AppMethodBeat.o(257259);
         return;
       }
       this.mEditText.setVisibility(paramInt);
     }
-    AppMethodBeat.o(192098);
+    AppMethodBeat.o(257259);
   }
   
-  private void asd(int paramInt)
+  private void ayi(int paramInt)
   {
-    AppMethodBeat.i(192112);
-    this.xPd.setTextColor(paramInt);
-    AppMethodBeat.o(192112);
+    AppMethodBeat.i(257270);
+    this.BoW.setTextColor(paramInt);
+    AppMethodBeat.o(257270);
   }
   
-  private void ase(int paramInt)
+  private void ayj(int paramInt)
   {
-    AppMethodBeat.i(192114);
-    this.MhR.setTextColor(paramInt);
-    AppMethodBeat.o(192114);
+    AppMethodBeat.i(257273);
+    this.SJn.setTextColor(paramInt);
+    AppMethodBeat.o(257273);
   }
   
   private void b(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(192126);
-    this.UWp.setVisibility(8);
-    this.UWm.removeAllViews();
-    this.UWm.addView(paramView, paramLayoutParams);
-    AppMethodBeat.o(192126);
+    AppMethodBeat.i(257277);
+    this.acrA.setVisibility(8);
+    this.acrx.removeAllViews();
+    this.acrx.addView(paramView, paramLayoutParams);
+    AppMethodBeat.o(257277);
   }
   
-  private void hA(View paramView)
+  private void kT(View paramView)
   {
-    AppMethodBeat.i(192107);
-    this.nX = paramView;
-    if (this.nX != null)
+    AppMethodBeat.i(257262);
+    this.oW = paramView;
+    if (this.oW != null)
     {
-      this.UWl.setVisibility(0);
-      this.UWn.setVisibility(0);
-      this.UWn.removeAllViews();
-      this.UWn.setGravity(1);
-      this.UWn.addView(this.nX, new LinearLayout.LayoutParams(-1, -1));
+      this.acrw.setVisibility(0);
+      this.acry.setVisibility(0);
+      this.acry.removeAllViews();
+      this.acry.setGravity(1);
+      this.acry.addView(this.oW, new LinearLayout.LayoutParams(-1, -1));
     }
-    AppMethodBeat.o(192107);
+    AppMethodBeat.o(257262);
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(192158);
+    AppMethodBeat.i(257290);
     int i;
-    if ((parama.Ig != null) && (parama.Ig.length() > 0))
+    if ((parama.title != null) && (parama.title.length() > 0))
     {
-      i = parama.UVT;
-      if (this.mLH != null) {
-        this.mLH.setGravity(i);
+      i = parama.acre;
+      if (this.pIp != null) {
+        this.pIp.setGravity(i);
       }
-      setTitle(parama.Ig);
+      setTitle(parama.title);
     }
     Object localObject4;
     Object localObject1;
-    if ((parama.UVl != null) && (parama.UVl.length() > 0))
+    if ((parama.acqw != null) && (parama.acqw.length() > 0))
     {
-      localObject4 = parama.UVl;
-      this.qnZ.setVisibility(0);
-      this.UWc.setVisibility(0);
+      localObject4 = parama.acqw;
+      this.tsG.setVisibility(0);
+      this.acrn.setVisibility(0);
       localObject1 = localObject4;
-      if (this.UWv != null)
+      if (this.acrG != null)
       {
-        localObject1 = this.UWv;
+        localObject1 = this.acrG;
         ((CharSequence)localObject4).toString();
-        this.mLH.getTextSize();
-        localObject1 = ((c.a.c)localObject1).htl();
+        this.pIp.getTextSize();
+        localObject1 = ((c.a.c)localObject1).iTr();
       }
-      this.UWc.setText((CharSequence)localObject1);
+      this.acrn.setText((CharSequence)localObject1);
     }
-    if (parama.RaZ != 0)
+    if (parama.XXf != 0)
     {
-      i = parama.RaZ;
-      this.mLH.setTextColor(ColorStateList.valueOf(i));
+      i = parama.XXf;
+      this.pIp.setTextColor(ColorStateList.valueOf(i));
     }
-    if (parama.UVQ != 0)
+    if (parama.acrb != 0)
     {
-      i = parama.UVQ;
-      this.mLH.setMaxLines(i);
+      i = parama.acrb;
+      this.pIp.setMaxLines(i);
     }
-    if (parama.UVR != 0)
+    if (parama.acrc != 0)
     {
-      i = parama.UVR;
-      this.UWd.setMaxLines(i);
+      i = parama.acrc;
+      this.acro.setMaxLines(i);
     }
-    if (parama.bFK != null) {
-      hA(parama.bFK);
+    if (parama.dyK != null) {
+      kT(parama.dyK);
     }
-    if (parama.UVO != null)
+    if (parama.acqZ != null)
     {
-      localObject4 = parama.UVO;
-      this.qnZ.setVisibility(0);
-      this.UWk.setLayoutResource(f.e.confirm_dialog_custom_title);
+      localObject4 = parama.acqZ;
+      this.tsG.setVisibility(0);
+      this.acrv.setLayoutResource(f.e.confirm_dialog_custom_title);
     }
     try
     {
-      localObject1 = (LinearLayout)this.UWk.inflate();
+      localObject1 = (LinearLayout)this.acrv.inflate();
       ((LinearLayout)localObject1).addView((View)localObject4);
-      if (parama.UVP != null)
+      if (parama.acra != null)
       {
-        this.UWj = parama.UVP;
-        if (this.UWj != null)
+        this.acru = parama.acra;
+        if (this.acru != null)
         {
-          this.UWl.setVisibility(8);
-          this.UWh.setVisibility(8);
+          this.acrw.setVisibility(8);
+          this.acrs.setVisibility(8);
           this.mEditText.setVisibility(8);
-          this.UWo.removeAllViews();
-          this.UWo.addView(this.UWj, new LinearLayout.LayoutParams(-1, -1));
-          this.UWo.setVisibility(8);
+          this.acrz.removeAllViews();
+          this.acrz.addView(this.acru, new LinearLayout.LayoutParams(-1, -1));
+          this.acrz.setVisibility(8);
         }
       }
-      if (parama.UVw != null)
+      if (parama.acqH != null)
       {
-        localObject1 = parama.UVw;
-        if (this.nX == null)
+        localObject1 = parama.acqH;
+        if (this.oW == null)
         {
-          this.UWl.setVisibility(0);
-          this.UWi.setVisibility(0);
-          this.UWi.setBackgroundDrawable((Drawable)localObject1);
+          this.acrw.setVisibility(0);
+          this.acrt.setVisibility(0);
+          this.acrt.setBackgroundDrawable((Drawable)localObject1);
         }
       }
-      if ((parama.UVy != null) && (parama.UVy.length() > 0)) {
-        setMessage(parama.UVy);
+      if ((parama.acqJ != null) && (parama.acqJ.length() > 0)) {
+        setMessage(parama.acqJ);
       }
-      EO(parama.UVH);
+      KA(parama.acqS);
       if (parama.thumbPath != null)
       {
         localObject1 = parama.thumbPath;
-        i = aw.fromDPToPix(this.mContext, 120);
-        this.UWl.setVisibility(0);
-        this.UWi.setVisibility(0);
-        if ((this.UWi instanceof com.tencent.mm.ui.h.a)) {
-          ((com.tencent.mm.ui.h.a)this.UWi).aO((String)localObject1, i, i);
+        i = bd.fromDPToPix(this.mContext, 120);
+        this.acrw.setVisibility(0);
+        this.acrt.setVisibility(0);
+        if ((this.acrt instanceof com.tencent.mm.ui.i.a)) {
+          ((com.tencent.mm.ui.i.a)this.acrt).aW((String)localObject1, i, i);
         }
-        i = parama.UVV;
-        this.UWl.setVisibility(i);
-        this.UWi.setVisibility(i);
+        i = parama.acrg;
+        this.acrw.setVisibility(i);
+        this.acrt.setVisibility(i);
       }
-      if ((!parama.UVZ) && (!parama.UWa))
+      if ((!parama.acrk) && (!parama.acrl))
       {
-        if ((parama.UVy != null) && (parama.UVy.length() > 0)) {
-          setMessage(parama.UVy);
+        if ((parama.acqJ != null) && (parama.acqJ.length() > 0)) {
+          setMessage(parama.acqJ);
         }
-        if ((parama.UVz == null) || (parama.UVz.length() <= 0)) {
+        if ((parama.acqK == null) || (parama.acqK.length() <= 0)) {
           break label1955;
         }
-        localObject1 = parama.UVz;
-        this.UWl.setVisibility(0);
-        this.UWf.setVisibility(0);
-        this.UWf.setMaxLines(2);
-        this.UWf.setText((CharSequence)localObject1);
-        if ((parama.UVA != null) && (parama.UVA.length() > 0))
+        localObject1 = parama.acqK;
+        this.acrw.setVisibility(0);
+        this.acrq.setVisibility(0);
+        this.acrq.setMaxLines(2);
+        this.acrq.setText((CharSequence)localObject1);
+        if ((parama.acqL != null) && (parama.acqL.length() > 0))
         {
-          localObject4 = parama.UVA;
+          localObject4 = parama.acqL;
           if (localObject4 != null)
           {
-            this.UWl.setVisibility(0);
-            this.UWg.setVisibility(0);
+            this.acrw.setVisibility(0);
+            this.acrr.setVisibility(0);
             localObject1 = localObject4;
-            if (this.UWv != null)
+            if (this.acrG != null)
             {
-              localObject1 = this.UWv;
-              this.UWg.getContext();
+              localObject1 = this.acrG;
+              this.acrr.getContext();
               ((CharSequence)localObject4).toString();
-              this.UWg.getTextSize();
-              localObject1 = ((c.a.c)localObject1).htl();
+              this.acrr.getTextSize();
+              localObject1 = ((c.a.c)localObject1).iTr();
             }
-            this.UWg.setText((CharSequence)localObject1);
+            this.acrr.setText((CharSequence)localObject1);
           }
         }
-        if (parama.UVx != null)
+        if (parama.acqI != null)
         {
-          localObject1 = parama.UVx;
-          if (this.nX == null)
+          localObject1 = parama.acqI;
+          if (this.oW == null)
           {
-            this.UWl.setVisibility(0);
-            this.UWi.setVisibility(0);
-            this.UWi.setImageBitmap((Bitmap)localObject1);
+            this.acrw.setVisibility(0);
+            this.acrt.setVisibility(0);
+            this.acrt.setImageBitmap((Bitmap)localObject1);
           }
         }
       }
-      if (parama.UVZ)
+      if (parama.acrk)
       {
-        localObject1 = parama.UVx;
-        localObject5 = parama.UVz;
-        localObject4 = parama.UVA;
+        localObject1 = parama.acqI;
+        localObject5 = parama.acqK;
+        localObject4 = parama.acqL;
         localObject6 = View.inflate(this.mContext, f.e.confirm_dialog_icon_left, null);
         if (localObject1 != null)
         {
@@ -379,12 +380,12 @@ public final class c
           localObject7 = (TextView)((View)localObject6).findViewById(f.d.mm_alert_msg_subtitle);
           ((TextView)localObject7).setVisibility(0);
           localObject1 = localObject5;
-          if (this.UWv != null)
+          if (this.acrG != null)
           {
-            localObject1 = this.UWv;
+            localObject1 = this.acrG;
             ((CharSequence)localObject5).toString();
             ((TextView)localObject7).getTextSize();
-            localObject1 = ((c.a.c)localObject1).htl();
+            localObject1 = ((c.a.c)localObject1).iTr();
           }
           ((TextView)localObject7).setText((CharSequence)localObject1);
         }
@@ -392,23 +393,23 @@ public final class c
         {
           localObject5 = (TextView)((View)localObject6).findViewById(f.d.mm_alert_msg_subdesc);
           ((TextView)localObject5).setVisibility(0);
-          if (this.UWv == null) {
+          if (this.acrG == null) {
             break label2241;
           }
-          localObject1 = this.UWv;
+          localObject1 = this.acrG;
           ((CharSequence)localObject4).toString();
           ((TextView)localObject5).getTextSize();
-          localObject1 = ((c.a.c)localObject1).htl();
+          localObject1 = ((c.a.c)localObject1).iTr();
           ((TextView)localObject5).setText((CharSequence)localObject1);
         }
-        hA((View)localObject6);
-        if ((parama.UVp != null) || (parama.UVq != null))
+        kT((View)localObject6);
+        if ((parama.acqA != null) || (parama.acqB != null))
         {
-          localObject4 = parama.UVp;
-          localObject5 = parama.UVq;
-          bool = parama.UVr;
-          localObject6 = parama.UVt;
-          this.UWk.setLayoutResource(f.e.confirm_dialog_title_image);
+          localObject4 = parama.acqA;
+          localObject5 = parama.acqB;
+          bool = parama.acqC;
+          localObject6 = parama.acqE;
+          this.acrv.setLayoutResource(f.e.confirm_dialog_title_image);
         }
       }
     }
@@ -422,7 +423,7 @@ public final class c
           Object localObject6;
           Object localObject7;
           boolean bool;
-          localObject1 = (LinearLayout)this.UWk.inflate();
+          localObject1 = (LinearLayout)this.acrv.inflate();
           if ((localObject1 != null) && (localObject4 != null)) {
             ((ImageView)((LinearLayout)localObject1).findViewById(f.d.title_image)).setVisibility(0);
           }
@@ -431,12 +432,12 @@ public final class c
             localObject7 = (TextView)((LinearLayout)localObject1).findViewById(f.d.title_text);
             ((TextView)localObject7).setVisibility(0);
             localObject4 = localObject5;
-            if (this.UWv != null)
+            if (this.acrG != null)
             {
-              localObject4 = this.UWv;
+              localObject4 = this.acrG;
               ((CharSequence)localObject5).toString();
-              this.mLH.getTextSize();
-              localObject4 = ((c.a.c)localObject4).htl();
+              this.pIp.getTextSize();
+              localObject4 = ((c.a.c)localObject4).iTr();
             }
             ((TextView)localObject7).setText((CharSequence)localObject4);
           }
@@ -444,196 +445,196 @@ public final class c
           {
             localObject4 = (ImageView)((LinearLayout)localObject1).findViewById(f.d.image_title_detail_icon);
             ((ImageView)localObject4).setVisibility(0);
-            asc(0);
+            ayh(0);
             ((LinearLayout)localObject1).setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
-                AppMethodBeat.i(191811);
+                AppMethodBeat.i(257215);
                 b localb = new b();
-                localb.bn(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-                if (this.UWy.isSelected())
+                localb.cH(paramAnonymousView);
+                com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+                if (this.acrJ.isSelected())
                 {
                   c.b(c.this).startAnimation(c.a(c.this));
                   c.a(c.this).setAnimationListener(new Animation.AnimationListener()
                   {
                     public final void onAnimationEnd(Animation paramAnonymous2Animation)
                     {
-                      AppMethodBeat.i(191797);
+                      AppMethodBeat.i(257234);
                       c.b(c.this).setVisibility(8);
                       c.a(c.this, 0);
-                      AppMethodBeat.o(191797);
+                      AppMethodBeat.o(257234);
                     }
                     
                     public final void onAnimationRepeat(Animation paramAnonymous2Animation) {}
                     
                     public final void onAnimationStart(Animation paramAnonymous2Animation)
                     {
-                      AppMethodBeat.i(191794);
+                      AppMethodBeat.i(257228);
                       c.a(c.this, c.c(c.this));
-                      AppMethodBeat.o(191794);
+                      AppMethodBeat.o(257228);
                     }
                   });
-                  ObjectAnimator.ofFloat(this.UWy, "rotation", new float[] { 180.0F, 0.0F }).setDuration(200L).start();
-                  this.UWy.setSelected(false);
+                  ObjectAnimator.ofFloat(this.acrJ, "rotation", new float[] { 180.0F, 0.0F }).setDuration(200L).start();
+                  this.acrJ.setSelected(false);
                 }
                 for (;;)
                 {
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                  AppMethodBeat.o(191811);
+                  AppMethodBeat.o(257215);
                   return;
                   c.b(c.this).startAnimation(c.d(c.this));
                   c.d(c.this).setAnimationListener(new Animation.AnimationListener()
                   {
                     public final void onAnimationEnd(Animation paramAnonymous2Animation)
                     {
-                      AppMethodBeat.i(192038);
+                      AppMethodBeat.i(257235);
                       c.b(c.this).setVisibility(0);
                       c.a(c.this, 8);
-                      AppMethodBeat.o(192038);
+                      AppMethodBeat.o(257235);
                     }
                     
                     public final void onAnimationRepeat(Animation paramAnonymous2Animation) {}
                     
                     public final void onAnimationStart(Animation paramAnonymous2Animation)
                     {
-                      AppMethodBeat.i(192036);
+                      AppMethodBeat.i(257229);
                       c.a(c.this, c.e(c.this));
-                      AppMethodBeat.o(192036);
+                      AppMethodBeat.o(257229);
                     }
                   });
-                  ObjectAnimator.ofFloat(this.UWy, "rotation", new float[] { 0.0F, 180.0F }).setDuration(200L).start();
-                  this.UWy.setSelected(true);
+                  ObjectAnimator.ofFloat(this.acrJ, "rotation", new float[] { 0.0F, 180.0F }).setDuration(200L).start();
+                  this.acrJ.setSelected(true);
                 }
               }
             });
           }
-          if (parama.UVu != null)
+          if (parama.acqF != null)
           {
-            localObject1 = parama.UVu;
-            if ((this.UWl != null) && (this.UWl.getVisibility() == 0)) {
-              this.UWl.setOnClickListener(new c.2(this, (c.a.a)localObject1));
+            localObject1 = parama.acqF;
+            if ((this.acrw != null) && (this.acrw.getVisibility() == 0)) {
+              this.acrw.setOnClickListener(new c.2(this, (c.a.a)localObject1));
             }
           }
           else
           {
-            if ((parama.UVm != null) && (parama.UVm.length() > 0))
+            if ((parama.acqx != null) && (parama.acqx.length() > 0))
             {
-              localObject1 = parama.UVm;
+              localObject1 = parama.acqx;
               if (localObject1 != null)
               {
-                this.UWh.setVisibility(0);
-                this.UWh.setText((CharSequence)localObject1);
+                this.acrs.setVisibility(0);
+                this.acrs.setText((CharSequence)localObject1);
               }
-              this.UWq = true;
-              i = parama.UVS;
-              if (this.UWh != null) {
-                this.UWh.setGravity(i);
+              this.acrB = true;
+              i = parama.acrd;
+              if (this.acrs != null) {
+                this.acrs.setGravity(i);
               }
             }
-            if ((parama.UVn != null) && (parama.UVn.length() > 0))
+            if ((parama.acqy != null) && (parama.acqy.length() > 0))
             {
-              localObject1 = parama.UVn;
+              localObject1 = parama.acqy;
               this.mEditText.setVisibility(0);
               this.mEditText.setHint((CharSequence)localObject1);
             }
-            if (parama.UVo)
+            if (parama.acqz)
             {
-              this.needEdit = parama.UVo;
-              if (!parama.UVo) {
+              this.needEdit = parama.acqz;
+              if (!parama.acqz) {
                 continue;
               }
               this.mEditText.setVisibility(0);
             }
-            if ((parama.UVB != null) && (parama.UVB.length() > 0)) {
-              a(parama.UVB, parama.UVY, parama.UVJ);
+            if ((parama.acqM != null) && (parama.acqM.length() > 0)) {
+              a(parama.acqM, parama.acrj, parama.acqU);
             }
-            if ((parama.UVC != null) && (parama.UVC.length() > 0)) {
-              a(parama.UVC, parama.UVK);
+            if ((parama.acqN != null) && (parama.acqN.length() > 0)) {
+              a(parama.acqN, parama.acqV);
             }
-            if (parama.UVX != 0) {
-              asd(parama.UVX);
+            if (parama.acri != 0) {
+              ayi(parama.acri);
             }
-            if (parama.UVW != 0) {
-              ase(parama.UVW);
+            if (parama.acrh != 0) {
+              ayj(parama.acrh);
             }
-            if (parama.fs != null) {
-              setOnCancelListener(parama.fs);
+            if (parama.mOnCancelListener != null) {
+              setOnCancelListener(parama.mOnCancelListener);
             }
-            if (parama.ft != null)
+            if (parama.mOnDismissListener != null)
             {
-              this.UWw = parama.ft;
-              setOnDismissListener(parama.ft);
+              this.acrH = parama.mOnDismissListener;
+              setOnDismissListener(parama.mOnDismissListener);
             }
-            if (parama.UVv != null) {
-              this.UWv = parama.UVv;
+            if (parama.acqG != null) {
+              this.acrG = parama.acqG;
             }
-            setCancelable(parama.bxO);
-            this.bxO = parama.bxO;
-            if (!this.bxO) {
-              super.setCancelable(parama.UVG);
+            setCancelable(parama.dqR);
+            this.dqR = parama.dqR;
+            if (!this.dqR) {
+              super.setCancelable(parama.acqR);
             }
-            if ((parama.UVD != null) || (parama.UVE != null) || (parama.UVF != null))
+            if ((parama.acqO != null) || (parama.acqP != null) || (parama.acqQ != null))
             {
               localObject1 = View.inflate(this.mContext, f.e.confirm_dialog_multi_btn, null);
               localObject4 = (Button)((View)localObject1).findViewById(f.d.mm_alert_btn_first);
               localObject5 = (Button)((View)localObject1).findViewById(f.d.mm_alert_btn_second);
               localObject6 = (Button)((View)localObject1).findViewById(f.d.mm_alert_btn_third);
-              if (parama.UVD != null)
+              if (parama.acqO != null)
               {
                 ((Button)localObject4).setVisibility(0);
-                ((Button)localObject4).setText(parama.UVD);
+                ((Button)localObject4).setText(parama.acqO);
                 ((Button)localObject4).setOnClickListener(new c.6(this, parama));
               }
-              if (parama.UVE != null)
+              if (parama.acqP != null)
               {
                 ((Button)localObject5).setVisibility(0);
-                ((Button)localObject5).setText(parama.UVE);
+                ((Button)localObject5).setText(parama.acqP);
                 ((Button)localObject5).setOnClickListener(new c.7(this, parama));
               }
-              if (parama.UVF != null)
+              if (parama.acqQ != null)
               {
                 ((Button)localObject6).setVisibility(0);
-                ((Button)localObject6).setText(parama.UVF);
+                ((Button)localObject6).setText(parama.acqQ);
                 ((Button)localObject6).setOnClickListener(new c.8(this, parama));
               }
               b((View)localObject1, new LinearLayout.LayoutParams(-1, -1));
             }
-            if (parama.UVs)
+            if (parama.acqD)
             {
               localObject1 = View.inflate(this.mContext, f.e.confirm_dialog_btn_up_down, null);
-              this.MhR = ((Button)((View)localObject1).findViewById(f.d.mm_alert_cancel_btn));
-              this.xPd = ((Button)((View)localObject1).findViewById(f.d.mm_alert_ok_btn));
-              if (parama.UVX != 0) {
-                asd(parama.UVX);
+              this.SJn = ((Button)((View)localObject1).findViewById(f.d.mm_alert_cancel_btn));
+              this.BoW = ((Button)((View)localObject1).findViewById(f.d.mm_alert_ok_btn));
+              if (parama.acri != 0) {
+                ayi(parama.acri);
               }
-              if (parama.UVW != 0) {
-                ase(parama.UVW);
+              if (parama.acrh != 0) {
+                ayj(parama.acrh);
               }
-              if ((parama.UVB != null) && (parama.UVB.length() > 0)) {
-                a(parama.UVB, parama.UVY, parama.UVJ);
+              if ((parama.acqM != null) && (parama.acqM.length() > 0)) {
+                a(parama.acqM, parama.acrj, parama.acqU);
               }
-              if ((parama.UVC != null) && (parama.UVC.length() > 0)) {
-                a(parama.UVC, parama.UVK);
+              if ((parama.acqN != null) && (parama.acqN.length() > 0)) {
+                a(parama.acqN, parama.acqV);
               }
               b((View)localObject1, new LinearLayout.LayoutParams(-1, -1));
             }
-            AppMethodBeat.o(192158);
+            AppMethodBeat.o(257290);
             return;
             localException1 = localException1;
-            this.UWk.setVisibility(0);
+            this.acrv.setVisibility(0);
             Object localObject2 = null;
             continue;
             label1955:
-            EO(false);
+            KA(false);
             continue;
-            if (!parama.UWa) {
+            if (!parama.acrl) {
               continue;
             }
-            localObject2 = parama.UVx;
-            localObject5 = parama.UVz;
-            localObject4 = parama.UVA;
+            localObject2 = parama.acqI;
+            localObject5 = parama.acqK;
+            localObject4 = parama.acqL;
             localObject6 = View.inflate(this.mContext, f.e.confirm_dialog_icon_right, null);
             if (localObject2 != null)
             {
@@ -646,12 +647,12 @@ public final class c
               localObject7 = (TextView)((View)localObject6).findViewById(f.d.mm_alert_msg_subtitle);
               ((TextView)localObject7).setVisibility(0);
               localObject2 = localObject5;
-              if (this.UWv != null)
+              if (this.acrG != null)
               {
-                localObject2 = this.UWv;
+                localObject2 = this.acrG;
                 ((CharSequence)localObject5).toString();
                 ((TextView)localObject7).getTextSize();
-                localObject2 = ((c.a.c)localObject2).htl();
+                localObject2 = ((c.a.c)localObject2).iTr();
               }
               ((TextView)localObject7).setText((CharSequence)localObject2);
             }
@@ -659,27 +660,27 @@ public final class c
             {
               localObject5 = (TextView)((View)localObject6).findViewById(f.d.mm_alert_msg_subdesc);
               ((TextView)localObject5).setVisibility(0);
-              if (this.UWv == null) {
+              if (this.acrG == null) {
                 continue;
               }
-              localObject2 = this.UWv;
+              localObject2 = this.acrG;
               ((CharSequence)localObject4).toString();
               ((TextView)localObject5).getTextSize();
-              localObject2 = ((c.a.c)localObject2).htl();
+              localObject2 = ((c.a.c)localObject2).iTr();
               ((TextView)localObject5).setText((CharSequence)localObject2);
             }
-            hA((View)localObject6);
+            kT((View)localObject6);
           }
         }
         catch (Exception localException2)
         {
-          this.UWk.setVisibility(0);
+          this.acrv.setVisibility(0);
           localObject3 = null;
           continue;
-          if (this.UWn == null) {
+          if (this.acry == null) {
             continue;
           }
-          this.UWn.setOnClickListener(new c.3(this, (c.a.a)localObject3));
+          this.acry.setOnClickListener(new c.3(this, (c.a.a)localObject3));
           continue;
           this.mEditText.setVisibility(8);
           continue;
@@ -694,12 +695,12 @@ public final class c
   
   public final void dismiss()
   {
-    AppMethodBeat.i(192167);
+    AppMethodBeat.i(257292);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       new Handler(Looper.getMainLooper()).post(new c.9(this));
-      av.e("MicroMsg.MMAlertDialog", "dialog dismiss error!", new Object[0]);
-      AppMethodBeat.o(192167);
+      bc.e("MicroMsg.MMAlertDialog", "dialog dismiss error!", new Object[0]);
+      AppMethodBeat.o(257292);
       return;
     }
     try
@@ -714,7 +715,7 @@ public final class c
         if (this.iOnDialogDismissListener != null) {
           this.iOnDialogDismissListener.onDialogDismiss(this);
         }
-        AppMethodBeat.o(192167);
+        AppMethodBeat.o(257292);
         return;
         super.dismiss();
       }
@@ -723,91 +724,91 @@ public final class c
     {
       for (;;)
       {
-        av.e("MicroMsg.MMAlertDialog", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
+        bc.e("MicroMsg.MMAlertDialog", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
       }
     }
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(192073);
+    AppMethodBeat.i(257284);
     super.onCreate(paramBundle);
-    setContentView(this.UWb);
-    AppMethodBeat.o(192073);
+    setContentView(this.acrm);
+    AppMethodBeat.o(257284);
   }
   
   public final void setCancelable(boolean paramBoolean)
   {
-    AppMethodBeat.i(192123);
+    AppMethodBeat.i(257288);
     super.setCancelable(paramBoolean);
-    this.bxO = paramBoolean;
-    setCanceledOnTouchOutside(this.bxO);
-    AppMethodBeat.o(192123);
+    this.dqR = paramBoolean;
+    setCanceledOnTouchOutside(this.dqR);
+    AppMethodBeat.o(257288);
   }
   
   public final void setMessage(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(192087);
-    this.UWl.setVisibility(0);
-    this.UWd.setVisibility(0);
+    AppMethodBeat.i(257287);
+    this.acrw.setVisibility(0);
+    this.acro.setVisibility(0);
     Object localObject = paramCharSequence;
-    if (this.UWv != null)
+    if (this.acrG != null)
     {
-      localObject = this.UWv;
-      this.UWd.getContext();
+      localObject = this.acrG;
+      this.acro.getContext();
       paramCharSequence.toString();
-      this.UWd.getTextSize();
-      localObject = ((c.a.c)localObject).htl();
+      this.acro.getTextSize();
+      localObject = ((c.a.c)localObject).iTr();
     }
-    this.UWd.setText((CharSequence)localObject);
-    AppMethodBeat.o(192087);
+    this.acro.setText((CharSequence)localObject);
+    AppMethodBeat.o(257287);
   }
   
   public final void setTitle(int paramInt)
   {
-    AppMethodBeat.i(192081);
-    this.qnZ.setVisibility(0);
-    this.mLH.setVisibility(0);
-    this.mLH.setMaxLines(2);
-    this.mLH.setText(paramInt);
-    this.mLH.getPaint().setFakeBoldText(true);
-    asb(this.mContext.getResources().getColor(f.b.FG_1));
-    AppMethodBeat.o(192081);
+    AppMethodBeat.i(257286);
+    this.tsG.setVisibility(0);
+    this.pIp.setVisibility(0);
+    this.pIp.setMaxLines(2);
+    this.pIp.setText(paramInt);
+    this.pIp.getPaint().setFakeBoldText(true);
+    ayg(this.mContext.getResources().getColor(f.b.FG_1));
+    AppMethodBeat.o(257286);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(192077);
-    this.qnZ.setVisibility(0);
-    this.mLH.setVisibility(0);
+    AppMethodBeat.i(257285);
+    this.tsG.setVisibility(0);
+    this.pIp.setVisibility(0);
     Object localObject = paramCharSequence;
-    if (this.UWv != null)
+    if (this.acrG != null)
     {
-      localObject = this.UWv;
+      localObject = this.acrG;
       paramCharSequence.toString();
-      this.mLH.getTextSize();
-      localObject = ((c.a.c)localObject).htl();
+      this.pIp.getTextSize();
+      localObject = ((c.a.c)localObject).iTr();
     }
-    this.mLH.setMaxLines(2);
-    this.mLH.setText((CharSequence)localObject);
-    this.mLH.getPaint().setFakeBoldText(true);
-    asb(this.mContext.getResources().getColor(f.b.FG_1));
-    AppMethodBeat.o(192077);
+    this.pIp.setMaxLines(2);
+    this.pIp.setText((CharSequence)localObject);
+    this.pIp.getPaint().setFakeBoldText(true);
+    ayg(this.mContext.getResources().getColor(f.b.FG_1));
+    AppMethodBeat.o(257285);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(192160);
+    AppMethodBeat.i(257291);
     try
     {
       super.show();
-      AppMethodBeat.o(192160);
+      AppMethodBeat.o(257291);
       return;
     }
     catch (Exception localException)
     {
-      av.printErrStackTrace("MicroMsg.MMAlertDialog", localException, "", new Object[0]);
-      AppMethodBeat.o(192160);
+      bc.printErrStackTrace("MicroMsg.MMAlertDialog", localException, "", new Object[0]);
+      AppMethodBeat.o(257291);
     }
   }
   
@@ -815,7 +816,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.a.c
  * JD-Core Version:    0.7.0.1
  */

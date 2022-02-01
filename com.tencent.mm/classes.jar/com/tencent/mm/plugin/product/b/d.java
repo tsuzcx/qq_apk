@@ -1,68 +1,82 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedList;
 
 public final class d
+  extends com.tencent.mm.bx.a
 {
-  public List<String> GTn;
+  public LinkedList<h> MRy;
   
   public d()
   {
-    AppMethodBeat.i(66885);
-    this.GTn = new ArrayList();
-    ata();
-    AppMethodBeat.o(66885);
+    AppMethodBeat.i(91269);
+    this.MRy = new LinkedList();
+    AppMethodBeat.o(91269);
   }
   
-  private void ata()
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(66886);
-    this.GTn.clear();
-    h.aHH();
-    Object localObject = (String)h.aHG().aHp().b(270340, "");
-    Log.d("MicroMsg.MallNewsManager", "data : ".concat(String.valueOf(localObject)));
-    localObject = Util.stringsToList(((String)localObject).split(";")).iterator();
-    while (((Iterator)localObject).hasNext())
+    AppMethodBeat.i(91270);
+    if (paramInt == 0)
     {
-      String str = (String)((Iterator)localObject).next();
-      if (!Util.isNullOrNil(str)) {
-        this.GTn.add(str);
-      }
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 8, this.MRy);
+      AppMethodBeat.o(91270);
+      return 0;
     }
-    AppMethodBeat.o(66886);
-  }
-  
-  public final boolean fpp()
-  {
-    AppMethodBeat.i(66887);
-    Log.d("MicroMsg.MallNewsManager", "notifyNewsMap.size : " + this.GTn.size());
-    StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.GTn.iterator();
-    while (localIterator.hasNext())
+    if (paramInt == 1)
     {
-      String str = (String)localIterator.next();
-      if ((!Util.isNullOrNil(str)) && (!str.contains(";"))) {
-        localStringBuffer.append(str);
-      }
+      paramInt = i.a.a.a.c(1, 8, this.MRy);
+      AppMethodBeat.o(91270);
+      return paramInt + 0;
     }
-    Log.d("MicroMsg.MallNewsManager", "save data  : " + localStringBuffer.toString());
-    h.aHH();
-    h.aHG().aHp().i(270340, localStringBuffer.toString());
-    AppMethodBeat.o(66887);
-    return true;
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.MRy.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(91270);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      d locald = (d)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(91270);
+        return -1;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        h localh = new h();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localh.parseFrom((byte[])localObject);
+        }
+        locald.MRy.add(localh);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(91270);
+      return 0;
+    }
+    AppMethodBeat.o(91270);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.d
  * JD-Core Version:    0.7.0.1
  */

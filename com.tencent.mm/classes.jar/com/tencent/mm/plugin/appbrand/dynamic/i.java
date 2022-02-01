@@ -8,52 +8,52 @@ import java.util.Map;
 
 public final class i
 {
-  private static final i ogS;
-  private Map<String, String> ogR;
+  private static final i rkw;
+  private Map<String, String> rkv;
   
   static
   {
     AppMethodBeat.i(121183);
-    ogS = new i();
+    rkw = new i();
     AppMethodBeat.o(121183);
   }
   
   public i()
   {
     AppMethodBeat.i(121178);
-    this.ogR = new HashMap();
+    this.rkv = new HashMap();
     AppMethodBeat.o(121178);
   }
   
-  public static i bNh()
+  public static i cnw()
   {
-    return ogS;
+    return rkw;
   }
   
-  public final String agb(String paramString)
+  public final String YX(String paramString)
   {
     AppMethodBeat.i(121180);
-    paramString = (String)this.ogR.get(paramString);
+    paramString = (String)this.rkv.get(paramString);
     AppMethodBeat.o(121180);
     return paramString;
   }
   
-  public final void agc(String paramString)
+  public final void YY(String paramString)
   {
     AppMethodBeat.i(121181);
-    this.ogR.remove(paramString);
+    this.rkv.remove(paramString);
     AppMethodBeat.o(121181);
   }
   
-  public final Collection<String> bNi()
+  public final Collection<String> cnx()
   {
     AppMethodBeat.i(121182);
-    Collection localCollection = this.ogR.values();
+    Collection localCollection = this.rkv.values();
     AppMethodBeat.o(121182);
     return localCollection;
   }
   
-  public final void di(String paramString1, String paramString2)
+  public final void dB(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121179);
     if (TextUtils.isEmpty(paramString2))
@@ -61,7 +61,7 @@ public final class i
       AppMethodBeat.o(121179);
       return;
     }
-    this.ogR.put(paramString1, paramString2);
+    this.rkv.put(paramString1, paramString2);
     AppMethodBeat.o(121179);
   }
 }

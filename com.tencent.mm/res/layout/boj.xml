@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.base.DrawedCallBackFrameLayout android:id="@id/h8v" style="@style/kr"
+<RelativeLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.recyclerview.widget.RecyclerView android:gravity="center" android:id="@id/fbp" android:paddingTop="@dimen/iu" android:paddingBottom="@dimen/iu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/k4" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:gravity="center|left" android:id="@id/lb" android:background="@color/UN_BW_0_Alpha_0_5" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/kb" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/kb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:gravity="center|left" android:id="@id/lc" android:background="@color/UN_BW_0_Alpha_0_5" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/kb" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/kb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:gravity="center|left" android:id="@id/kl" android:background="@color/u_" android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/kb" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/kb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/hx" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/jt" android:background="@color/s0" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
-        <TextView android:enabled="false" android:textSize="@dimen/is" android:textColor="@color/a44" android:gravity="center_vertical" android:id="@id/fby" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="0.0dip" android:layout_height="fill_parent" android:minWidth="64.0dip" android:text="@string/dm9" android:layout_weight="1.0" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:layout_marginStart="-30.0dip">
-            <ImageButton android:id="@id/g6o" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/radio_off" />
-            <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/g6p" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/dm8" android:maxLines="2" android:layout_marginStart="@dimen/k5" />
-        </LinearLayout>
-    </LinearLayout>
-    <com.tencent.mm.plugin.gallery.ui.ImageFolderMgrView android:id="@id/dvk" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.mm.ui.base.DrawedCallBackFrameLayout>
+    <androidx.viewpager.widget.ViewPager android:id="@id/gls" android:clickable="true" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_centerVertical="true" />
+</RelativeLayout>

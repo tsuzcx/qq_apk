@@ -11,26 +11,26 @@ public final class e
 {
   public static ColorStateList a(ImageView paramImageView)
   {
-    AppMethodBeat.i(252515);
+    AppMethodBeat.i(195362);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramImageView = paramImageView.getImageTintList();
-      AppMethodBeat.o(252515);
+      AppMethodBeat.o(195362);
       return paramImageView;
     }
-    if ((paramImageView instanceof k))
+    if ((paramImageView instanceof l))
     {
-      paramImageView = ((k)paramImageView).getSupportImageTintList();
-      AppMethodBeat.o(252515);
+      paramImageView = ((l)paramImageView).getSupportImageTintList();
+      AppMethodBeat.o(195362);
       return paramImageView;
     }
-    AppMethodBeat.o(252515);
+    AppMethodBeat.o(195362);
     return null;
   }
   
   public static void a(ImageView paramImageView, ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(252519);
+    AppMethodBeat.i(195370);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramImageView.setImageTintList(paramColorStateList);
@@ -44,19 +44,19 @@ public final class e
           }
           paramImageView.setImageDrawable(paramColorStateList);
         }
-        AppMethodBeat.o(252519);
+        AppMethodBeat.o(195370);
       }
     }
-    else if ((paramImageView instanceof k))
+    else if ((paramImageView instanceof l))
     {
-      ((k)paramImageView).setSupportImageTintList(paramColorStateList);
+      ((l)paramImageView).setSupportImageTintList(paramColorStateList);
     }
-    AppMethodBeat.o(252519);
+    AppMethodBeat.o(195370);
   }
   
   public static void a(ImageView paramImageView, PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(252526);
+    AppMethodBeat.i(195385);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramImageView.setImageTintMode(paramMode);
@@ -70,38 +70,38 @@ public final class e
           }
           paramImageView.setImageDrawable(paramMode);
         }
-        AppMethodBeat.o(252526);
+        AppMethodBeat.o(195385);
       }
     }
-    else if ((paramImageView instanceof k))
+    else if ((paramImageView instanceof l))
     {
-      ((k)paramImageView).setSupportImageTintMode(paramMode);
+      ((l)paramImageView).setSupportImageTintMode(paramMode);
     }
-    AppMethodBeat.o(252526);
+    AppMethodBeat.o(195385);
   }
   
   public static PorterDuff.Mode b(ImageView paramImageView)
   {
-    AppMethodBeat.i(252523);
+    AppMethodBeat.i(195375);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramImageView = paramImageView.getImageTintMode();
-      AppMethodBeat.o(252523);
+      AppMethodBeat.o(195375);
       return paramImageView;
     }
-    if ((paramImageView instanceof k))
+    if ((paramImageView instanceof l))
     {
-      paramImageView = ((k)paramImageView).getSupportImageTintMode();
-      AppMethodBeat.o(252523);
+      paramImageView = ((l)paramImageView).getSupportImageTintMode();
+      AppMethodBeat.o(195375);
       return paramImageView;
     }
-    AppMethodBeat.o(252523);
+    AppMethodBeat.o(195375);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.widget.e
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ import java.util.List;
 public class TouchCoordinatorLayout
   extends CoordinatorLayout
 {
-  private List<View.OnTouchListener> EFK;
-  public boolean EFL;
+  private List<View.OnTouchListener> KyQ;
+  public boolean KyR;
   
   public TouchCoordinatorLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163684);
-    this.EFK = new ArrayList();
-    this.EFL = false;
+    this.KyQ = new ArrayList();
+    this.KyR = false;
     AppMethodBeat.o(163684);
   }
   
@@ -29,26 +29,26 @@ public class TouchCoordinatorLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(163685);
-    this.EFK = new ArrayList();
-    this.EFL = false;
+    this.KyQ = new ArrayList();
+    this.KyR = false;
     AppMethodBeat.o(163685);
   }
   
-  public final void b(View.OnTouchListener paramOnTouchListener)
+  public final void a(View.OnTouchListener paramOnTouchListener)
   {
     AppMethodBeat.i(163686);
-    this.EFK.add(paramOnTouchListener);
+    this.KyQ.add(paramOnTouchListener);
     AppMethodBeat.o(163686);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(163687);
-    Iterator localIterator = this.EFK.iterator();
+    Iterator localIterator = this.KyQ.iterator();
     while (localIterator.hasNext()) {
       ((View.OnTouchListener)localIterator.next()).onTouch(this, paramMotionEvent);
     }
-    if (this.EFL)
+    if (this.KyR)
     {
       AppMethodBeat.o(163687);
       return true;
@@ -60,7 +60,7 @@ public class TouchCoordinatorLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.TouchCoordinatorLayout
  * JD-Core Version:    0.7.0.1
  */

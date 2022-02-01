@@ -4,119 +4,89 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bto
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int RLe;
-  public int StS;
-  public int TdG;
-  public eae TdH;
-  public String TdI;
-  public int TdJ;
-  public long TdK;
+  public int ZEp;
+  public LinkedList<FinderContact> aabr;
+  public int aabs;
+  
+  public bto()
+  {
+    AppMethodBeat.i(169041);
+    this.aabr = new LinkedList();
+    AppMethodBeat.o(169041);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104784);
+    AppMethodBeat.i(169042);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.RLe);
-      paramVarArgs.aY(2, this.TdG);
-      if (this.TdH != null)
-      {
-        paramVarArgs.oE(3, this.TdH.computeSize());
-        this.TdH.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aY(4, this.StS);
-      if (this.TdI != null) {
-        paramVarArgs.f(5, this.TdI);
-      }
-      paramVarArgs.aY(6, this.TdJ);
-      paramVarArgs.bm(7, this.TdK);
-      AppMethodBeat.o(104784);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 8, this.aabr);
+      paramVarArgs.bS(2, this.ZEp);
+      paramVarArgs.bS(3, this.aabs);
+      AppMethodBeat.o(169042);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.bM(1, this.RLe) + 0 + g.a.a.b.b.a.bM(2, this.TdG);
-      paramInt = i;
-      if (this.TdH != null) {
-        paramInt = i + g.a.a.a.oD(3, this.TdH.computeSize());
-      }
-      i = paramInt + g.a.a.b.b.a.bM(4, this.StS);
-      paramInt = i;
-      if (this.TdI != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.TdI);
-      }
-      i = g.a.a.b.b.a.bM(6, this.TdJ);
-      int j = g.a.a.b.b.a.p(7, this.TdK);
-      AppMethodBeat.o(104784);
-      return paramInt + i + j;
+      paramInt = i.a.a.a.c(1, 8, this.aabr);
+      i = i.a.a.b.b.a.cJ(2, this.ZEp);
+      int j = i.a.a.b.b.a.cJ(3, this.aabs);
+      AppMethodBeat.o(169042);
+      return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.aabr.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(104784);
+      AppMethodBeat.o(169042);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       bto localbto = (bto)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(104784);
+        AppMethodBeat.o(169042);
         return -1;
       case 1: 
-        localbto.RLe = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(104784);
-        return 0;
-      case 2: 
-        localbto.TdG = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(104784);
-        return 0;
-      case 3: 
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject = (byte[])paramVarArgs.get(paramInt);
-          eae localeae = new eae();
+          FinderContact localFinderContact = new FinderContact();
           if ((localObject != null) && (localObject.length > 0)) {
-            localeae.dd((byte[])localObject);
+            localFinderContact.parseFrom((byte[])localObject);
           }
-          localbto.TdH = localeae;
+          localbto.aabr.add(localFinderContact);
           paramInt += 1;
         }
-        AppMethodBeat.o(104784);
+        AppMethodBeat.o(169042);
         return 0;
-      case 4: 
-        localbto.StS = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(104784);
-        return 0;
-      case 5: 
-        localbto.TdI = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(104784);
-        return 0;
-      case 6: 
-        localbto.TdJ = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(104784);
+      case 2: 
+        localbto.ZEp = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(169042);
         return 0;
       }
-      localbto.TdK = ((g.a.a.a.a)localObject).abFh.AN();
-      AppMethodBeat.o(104784);
+      localbto.aabs = ((i.a.a.a.a)localObject).ajGk.aar();
+      AppMethodBeat.o(169042);
       return 0;
     }
-    AppMethodBeat.o(104784);
+    AppMethodBeat.o(169042);
     return -1;
   }
 }

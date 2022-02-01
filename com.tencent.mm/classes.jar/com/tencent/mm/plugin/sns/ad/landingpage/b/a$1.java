@@ -14,9 +14,11 @@ public final class a$1
 {
   public a$1(WeakReference paramWeakReference, String paramString) {}
   
-  public final void aH(Object paramObject)
+  public final void h(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public final void onCallback(Object paramObject)
   {
-    AppMethodBeat.i(202045);
+    AppMethodBeat.i(310637);
     Log.i("LandingPageOpenSdkBackHelper", "getOpenSdkAppInfo, ret=".concat(String.valueOf(paramObject)));
     String str2 = "";
     final String str1 = str2;
@@ -28,23 +30,23 @@ public final class a$1
       {
         public final void run()
         {
-          AppMethodBeat.i(226602);
-          TextView localTextView = (TextView)a.1.this.JDH.get();
+          AppMethodBeat.i(310632);
+          TextView localTextView = (TextView)a.1.this.PUH.get();
           if (localTextView != null)
           {
             if (!TextUtils.isEmpty(str1))
             {
-              localTextView.setText(a.1.this.JDI + str1);
-              AppMethodBeat.o(226602);
+              localTextView.setText(a.1.this.PUI + str1);
+              AppMethodBeat.o(310632);
             }
           }
           else {
             Log.w("LandingPageOpenSdkBackHelper", "getOpenSdkAppInfo, backTxtViewRef get null");
           }
-          AppMethodBeat.o(226602);
+          AppMethodBeat.o(310632);
         }
       });
-      AppMethodBeat.o(202045);
+      AppMethodBeat.o(310637);
       return;
     }
     catch (Exception paramObject)
@@ -55,12 +57,10 @@ public final class a$1
       }
     }
   }
-  
-  public final void i(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.b.a.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,60 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.model.z;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dpm;
-import com.tencent.mm.protocal.protobuf.dpn;
+import com.tencent.mm.protocal.protobuf.eig;
+import com.tencent.mm.protocal.protobuf.eih;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class n
-  extends q
+  extends p
   implements m
 {
-  public dpm DRQ;
-  private dpn DRR;
-  private i callback;
-  private d rr;
+  public eig JJa;
+  private eih JJb;
+  private h callback;
+  private c rr;
   
   public n(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
   {
     AppMethodBeat.i(25490);
     this.rr = null;
-    this.DRQ = null;
-    this.DRR = null;
+    this.JJa = null;
+    this.JJb = null;
     this.callback = null;
-    d.a locala = new d.a();
-    locala.lBU = new dpm();
-    locala.lBV = new dpn();
+    c.a locala = new c.a();
+    locala.otE = new eig();
+    locala.otF = new eih();
     locala.funcId = 723;
     locala.uri = "/cgi-bin/micromsg-bin/pstnshutdown";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
+    this.rr = locala.bEF();
     long l = System.currentTimeMillis();
-    this.DRQ = ((dpm)d.b.b(this.rr.lBR));
-    this.DRQ.CRR = z.bcZ();
-    this.DRQ.Svu = paramInt1;
-    this.DRQ.Svv = paramLong1;
-    this.DRQ.TWc = paramLong2;
-    this.DRQ.rVU = paramInt2;
-    this.DRQ.TVZ = l;
+    this.JJa = ((eig)c.b.b(this.rr.otB));
+    this.JJa.IMh = z.bAM();
+    this.JJa.Zvz = paramInt1;
+    this.JJa.ZvA = paramLong1;
+    this.JJa.abmR = paramLong2;
+    this.JJa.vhk = paramInt2;
+    this.JJa.abmO = l;
     Log.i("MicroMsg.NetSceneIPCallShutDown", "roomId: %d, roomKey: %d, callSeq: %d, status: %d, timestamp: %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt2), Long.valueOf(l) });
     AppMethodBeat.o(25490);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(25491);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25491);
     return i;
@@ -69,7 +69,7 @@ public final class n
   {
     AppMethodBeat.i(25492);
     Log.i("MicroMsg.NetSceneIPCallShutDown", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.DRR = ((dpn)d.c.b(((d)params).lBS));
+    this.JJb = ((eih)c.c.b(((c)params).otC));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

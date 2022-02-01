@@ -1,42 +1,33 @@
 package com.tencent.mm.emoji.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.o;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import kotlin.g.b.p;
-import kotlin.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/upload/EmojiUploadFactory;", "", "()V", "useCdn", "", "getUpload", "Lcom/tencent/mm/emoji/upload/EmojiUpload;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isSelfie", "callback", "Lcom/tencent/mm/emoji/upload/EmojiUpload$Callback;", "plugin-emojisdk_release"})
 public final class h
 {
-  public static final h jPr;
+  private static h mmx;
+  public String extraInfo = "";
+  public int mmA;
+  public long mmo;
+  public int mmp;
+  public int mmq;
+  public int mmy;
+  public int mmz;
+  public int scene;
   
-  static
+  public static h aWe()
   {
-    AppMethodBeat.i(105778);
-    jPr = new h();
-    AppMethodBeat.o(105778);
-  }
-  
-  public static d a(EmojiInfo paramEmojiInfo, boolean paramBoolean, d.a parama)
-  {
-    AppMethodBeat.i(105777);
-    p.k(paramEmojiInfo, "emojiInfo");
-    p.k(parama, "callback");
-    if (o.aCg())
-    {
-      paramEmojiInfo = (d)new e(paramEmojiInfo, paramBoolean, parama);
-      AppMethodBeat.o(105777);
-      return paramEmojiInfo;
+    AppMethodBeat.i(104484);
+    if (mmx == null) {
+      mmx = new h();
     }
-    paramEmojiInfo = (d)new g(paramEmojiInfo, paramBoolean, parama);
-    AppMethodBeat.o(105777);
-    return paramEmojiInfo;
+    h localh = mmx;
+    AppMethodBeat.o(104484);
+    return localh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.d.h
  * JD-Core Version:    0.7.0.1
  */

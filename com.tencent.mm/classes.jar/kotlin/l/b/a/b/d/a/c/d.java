@@ -1,40 +1,48 @@
 package kotlin.l.b.a.b.d.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.EnumMap;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.d.a.a.a;
-import kotlin.l.b.a.b.d.a.f.h;
 
-public final class d
+public abstract interface d
 {
-  final EnumMap<a.a, h> aaUf;
+  public static final d.a aiSe = d.a.aiSf;
   
-  public d(EnumMap<a.a, h> paramEnumMap)
-  {
-    AppMethodBeat.i(57746);
-    this.aaUf = paramEnumMap;
-    AppMethodBeat.o(57746);
-  }
+  public abstract boolean ksg();
   
-  public final kotlin.l.b.a.b.d.a.f.d b(a.a parama)
+  public abstract boolean ksh();
+  
+  public abstract boolean ksi();
+  
+  public static final class b
+    implements d
   {
-    AppMethodBeat.i(57745);
-    parama = (h)this.aaUf.get(parama);
-    if (parama == null)
+    public static final b aiSg;
+    
+    static
     {
-      AppMethodBeat.o(57745);
-      return null;
+      AppMethodBeat.i(57744);
+      aiSg = new b();
+      AppMethodBeat.o(57744);
     }
-    p.j(parama, "nullabilityQualifiers[ap…ilityType] ?: return null");
-    parama = new kotlin.l.b.a.b.d.a.f.d(parama.aaWR, null, false, parama.aaWS);
-    AppMethodBeat.o(57745);
-    return parama;
+    
+    public final boolean ksg()
+    {
+      return false;
+    }
+    
+    public final boolean ksh()
+    {
+      return false;
+    }
+    
+    public final boolean ksi()
+    {
+      return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.d
  * JD-Core Version:    0.7.0.1
  */

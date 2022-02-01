@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.g;
 import com.tencent.mm.plugin.mmsight.SightCaptureResult;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
@@ -13,72 +14,68 @@ import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.c;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
 import com.tencent.mm.plugin.secdata.ui.a;
 import com.tencent.mm.plugin.secdata.ui.a.a;
-import com.tencent.mm.plugin.textstatus.a.q;
-import com.tencent.mm.plugin.textstatus.proto.am;
-import com.tencent.mm.protocal.protobuf.cuv;
-import com.tencent.mm.vfs.u;
-import com.tencent.xweb.util.d;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.textstatus.proto.bh;
+import com.tencent.mm.protocal.protobuf.dmb;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/TextStatusEditActivity$goCapture$generateCallback$1", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$SimpleVideoGenerateCallback;", "onFinishBtnClick", "", "context", "Landroid/content/Context;", "extData", "Landroid/os/Bundle;", "finishController", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoFinishController;", "onMediaGenerated", "", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/textstatus/ui/TextStatusEditActivity$goCapture$generateCallback$1", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$SimpleVideoGenerateCallback;", "onFinishBtnClick", "", "context", "Landroid/content/Context;", "extData", "Landroid/os/Bundle;", "finishController", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoFinishController;", "onMediaGenerated", "", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TextStatusEditActivity$q
   extends CaptureDataManager.c
 {
+  TextStatusEditActivity$q(TextStatusEditActivity paramTextStatusEditActivity) {}
+  
   public final void a(Context paramContext, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle)
   {
-    AppMethodBeat.i(233060);
-    p.k(paramContext, "context");
-    p.k(paramCaptureVideoNormalModel, "model");
-    p.k(paramBundle, "extData");
-    paramBundle = new cuv();
-    paramBundle.TCA = true;
-    paramBundle.TCz = false;
-    Object localObject1 = u.bBW(paramCaptureVideoNormalModel.getVideoPath());
-    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.getVideoPath(), paramCaptureVideoNormalModel.aZe(), (String)localObject1, d.getMD5(paramCaptureVideoNormalModel.getVideoPath()), Math.round((float)paramCaptureVideoNormalModel.fvS().longValue() * 1.0F / 1000.0F), paramBundle);
-    localObject1 = paramCaptureVideoNormalModel.fvT();
-    p.j(localObject1, "model.getPhoto()");
+    AppMethodBeat.i(291117);
+    s.u(paramContext, "context");
+    s.u(paramCaptureVideoNormalModel, "model");
+    s.u(paramBundle, "extData");
+    paramBundle = new dmb();
+    paramBundle.aaSg = true;
+    paramBundle.aaSf = false;
+    Object localObject1 = y.bEq(paramCaptureVideoNormalModel.videoPath);
+    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.videoPath, paramCaptureVideoNormalModel.thumbPath, (String)localObject1, g.getMD5(paramCaptureVideoNormalModel.videoPath), Math.round((float)paramCaptureVideoNormalModel.NHJ.longValue() * 1.0F / 1000.0F), paramBundle);
+    localObject1 = paramCaptureVideoNormalModel.NHK;
+    s.s(localObject1, "model.getPhoto()");
     if (((Boolean)localObject1).booleanValue())
     {
-      paramBundle.EXZ = true;
-      paramBundle.wRb = false;
-      paramBundle.EYh = paramCaptureVideoNormalModel.aZe();
+      paramBundle.KTL = true;
+      paramBundle.AnF = false;
+      paramBundle.KTT = paramCaptureVideoNormalModel.thumbPath;
     }
-    localObject1 = a.JbV;
-    localObject1 = this.MMz.getContext();
-    p.j(localObject1, "getContext()");
-    localObject1 = (am)a.a.a((Context)localObject1, 8, am.class);
+    localObject1 = a.PlI;
+    localObject1 = this.Tzd.getContext();
+    s.s(localObject1, "getContext()");
+    localObject1 = (bh)a.a.a((Context)localObject1, 8, bh.class);
     if (localObject1 != null)
     {
-      Object localObject2 = paramCaptureVideoNormalModel.fvU().x("KEY_ORIGIN_MEDIA_DURATION_MS_LONG", Long.valueOf(0L));
-      p.j(localObject2, "model.reportInfo.getRepo…DIA_DURATION_MS_LONG, 0L)");
-      ((am)localObject1).MGb = ((Number)localObject2).longValue();
-      ((am)localObject1).MGe = (((Number)paramCaptureVideoNormalModel.fvU().x("KEY_MEDIA_SOURCE_INT", Integer.valueOf(0))).intValue() + 1);
-      paramCaptureVideoNormalModel = this.MMz.MKR;
-      if ((paramCaptureVideoNormalModel != null) && (paramCaptureVideoNormalModel.MEC == 5L)) {
-        ((am)localObject1).MGk = 1L;
-      }
+      Object localObject2 = paramCaptureVideoNormalModel.gHE().J("KEY_ORIGIN_MEDIA_DURATION_MS_LONG", Long.valueOf(0L));
+      s.s(localObject2, "model.reportInfo.getRepo…DIA_DURATION_MS_LONG, 0L)");
+      ((bh)localObject1).Tqv = ((Number)localObject2).longValue();
+      ((bh)localObject1).Tqy = (((Number)paramCaptureVideoNormalModel.gHE().J("KEY_MEDIA_SOURCE_INT", Integer.valueOf(0))).intValue() + 1);
     }
     paramCaptureVideoNormalModel = new Intent();
     paramCaptureVideoNormalModel.putExtra("key_req_result", (Parcelable)paramBundle);
     ((Activity)paramContext).setResult(-1, paramCaptureVideoNormalModel);
     ((Activity)paramContext).finish();
-    AppMethodBeat.o(233060);
+    AppMethodBeat.o(291117);
   }
   
   public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)
   {
-    AppMethodBeat.i(233062);
-    p.k(paramContext, "context");
-    p.k(paramBundle, "extData");
-    p.k(parama, "finishController");
-    AppMethodBeat.o(233062);
+    AppMethodBeat.i(291124);
+    s.u(paramContext, "context");
+    s.u(paramBundle, "extData");
+    s.u(parama, "finishController");
+    AppMethodBeat.o(291124);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.TextStatusEditActivity.q
  * JD-Core Version:    0.7.0.1
  */

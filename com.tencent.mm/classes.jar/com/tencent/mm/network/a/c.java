@@ -8,18 +8,18 @@ import java.net.InetAddress;
 
 public final class c
 {
-  private InetAddress mwZ;
   private int port;
+  private InetAddress pqy;
   private int type;
   
   private c(InetAddress paramInetAddress, int paramInt1, int paramInt2)
   {
-    this.mwZ = paramInetAddress;
+    this.pqy = paramInetAddress;
     this.port = paramInt1;
     this.type = paramInt2;
   }
   
-  public static c Zx(String paramString)
+  public static c Rz(String paramString)
   {
     AppMethodBeat.i(132966);
     if (paramString == null)
@@ -56,7 +56,7 @@ public final class c
     }
     for (;;)
     {
-      str = this.mwZ.getHostAddress() + ":" + this.port + "(" + str + ")";
+      str = this.pqy.getHostAddress() + ":" + this.port + "(" + str + ")";
       AppMethodBeat.o(132965);
       return str;
       if (this.type == 3) {

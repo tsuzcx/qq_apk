@@ -1,6 +1,5 @@
 package com.tencent.tav.asset;
 
-import android.annotation.TargetApi;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tav.coremedia.CMTime;
@@ -19,31 +18,30 @@ public class Composition<CTrack extends CompositionTrack>
   
   protected Composition()
   {
-    AppMethodBeat.i(188355);
+    AppMethodBeat.i(215808);
     this.tracks = new ArrayList();
-    AppMethodBeat.o(188355);
+    AppMethodBeat.o(215808);
   }
   
   protected Composition(String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(188358);
+    AppMethodBeat.i(215822);
     this.tracks = new ArrayList();
-    AppMethodBeat.o(188358);
+    AppMethodBeat.o(215822);
   }
   
   protected Composition(URL paramURL)
   {
     super(paramURL);
-    AppMethodBeat.i(188357);
+    AppMethodBeat.i(215816);
     this.tracks = new ArrayList();
-    AppMethodBeat.o(188357);
+    AppMethodBeat.o(215816);
   }
   
-  @TargetApi(16)
   protected void createTracks()
   {
-    AppMethodBeat.i(188363);
+    AppMethodBeat.i(215841);
     int j = this.extractor.getTrackCount();
     if (this.tracks == null) {
       this.tracks = new ArrayList();
@@ -74,12 +72,12 @@ public class Composition<CTrack extends CompositionTrack>
       }
     }
     Logger.e("Asset", " Composition createTracks finish, has track count: " + this.tracks);
-    AppMethodBeat.o(188363);
+    AppMethodBeat.o(215841);
   }
   
   protected CMTime getAudioDuration()
   {
-    AppMethodBeat.i(188361);
+    AppMethodBeat.i(215833);
     Object localObject1 = CMTime.CMTimeZero;
     Iterator localIterator = this.tracks.iterator();
     if (localIterator.hasNext())
@@ -99,23 +97,23 @@ public class Composition<CTrack extends CompositionTrack>
     for (;;)
     {
       break;
-      AppMethodBeat.o(188361);
+      AppMethodBeat.o(215833);
       return localObject1;
     }
   }
   
   public List<CTrack> getTracks()
   {
-    AppMethodBeat.i(188364);
+    AppMethodBeat.i(215847);
     new StringBuilder("getTracks finish, has track count: ").append(this.tracks);
     List localList = this.tracks;
-    AppMethodBeat.o(188364);
+    AppMethodBeat.o(215847);
     return localList;
   }
   
   protected CMTime getVideoDuration()
   {
-    AppMethodBeat.i(188360);
+    AppMethodBeat.i(215827);
     Object localObject1 = CMTime.CMTimeZero;
     Iterator localIterator = this.tracks.iterator();
     if (localIterator.hasNext())
@@ -135,7 +133,7 @@ public class Composition<CTrack extends CompositionTrack>
     for (;;)
     {
       break;
-      AppMethodBeat.o(188360);
+      AppMethodBeat.o(215827);
       return localObject1;
     }
   }
@@ -149,9 +147,9 @@ public class Composition<CTrack extends CompositionTrack>
   
   public String toString()
   {
-    AppMethodBeat.i(188368);
+    AppMethodBeat.i(215863);
     String str = "Composition{\ntracks=" + this.tracks + "\ntrackCount=" + this.trackCount + '}';
-    AppMethodBeat.o(188368);
+    AppMethodBeat.o(215863);
     return str;
   }
 }

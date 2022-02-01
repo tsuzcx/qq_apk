@@ -5,31 +5,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AudioAttributesImplBaseParcelizer
 {
-  public static c read(a parama)
+  public static AudioAttributesImplBase read(a parama)
   {
-    AppMethodBeat.i(242731);
-    c localc = new c();
-    localc.abL = parama.aZ(localc.abL, 1);
-    localc.abM = parama.aZ(localc.abM, 2);
-    localc.cN = parama.aZ(localc.cN, 3);
-    localc.abN = parama.aZ(localc.abN, 4);
-    AppMethodBeat.o(242731);
-    return localc;
+    AppMethodBeat.i(193068);
+    AudioAttributesImplBase localAudioAttributesImplBase = new AudioAttributesImplBase();
+    localAudioAttributesImplBase.bJu = parama.bT(localAudioAttributesImplBase.bJu, 1);
+    localAudioAttributesImplBase.bJv = parama.bT(localAudioAttributesImplBase.bJv, 2);
+    localAudioAttributesImplBase.cN = parama.bT(localAudioAttributesImplBase.cN, 3);
+    localAudioAttributesImplBase.bJw = parama.bT(localAudioAttributesImplBase.bJw, 4);
+    AppMethodBeat.o(193068);
+    return localAudioAttributesImplBase;
   }
   
-  public static void write(c paramc, a parama)
+  public static void write(AudioAttributesImplBase paramAudioAttributesImplBase, a parama)
   {
-    AppMethodBeat.i(242733);
-    parama.aY(paramc.abL, 1);
-    parama.aY(paramc.abM, 2);
-    parama.aY(paramc.cN, 3);
-    parama.aY(paramc.abN, 4);
-    AppMethodBeat.o(242733);
+    AppMethodBeat.i(193075);
+    parama.bS(paramAudioAttributesImplBase.bJu, 1);
+    parama.bS(paramAudioAttributesImplBase.bJv, 2);
+    parama.bS(paramAudioAttributesImplBase.cN, 3);
+    parama.bS(paramAudioAttributesImplBase.bJw, 4);
+    AppMethodBeat.o(193075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.media.AudioAttributesImplBaseParcelizer
  * JD-Core Version:    0.7.0.1
  */

@@ -81,7 +81,7 @@ public class ViewSearchTool
     {
       localObject1 = "android.view.WindowManagerGlobal";
       if (Build.VERSION.SDK_INT <= 16) {
-        break label127;
+        break label124;
       }
       localObject2 = "getInstance";
       localObject1 = Class.forName((String)localObject1);
@@ -90,25 +90,25 @@ public class ViewSearchTool
       localField.setAccessible(true);
       ((Class)localObject1).getDeclaredField("mParams").setAccessible(true);
       if (Build.VERSION.SDK_INT >= 19) {
-        break label133;
+        break label130;
       }
     }
-    label133:
+    label130:
     for (Object localObject1 = Arrays.asList((View[])localField.get(localObject2));; localObject1 = (List)localField.get(localObject2))
     {
       if (((List)localObject1).size() != 0) {
-        break label145;
+        break label142;
       }
       localObject1 = new RuntimeException("something wrong");
       AppMethodBeat.o(160021);
       throw ((Throwable)localObject1);
       localObject1 = "android.view.WindowManagerImpl";
       break;
-      label127:
+      label124:
       localObject2 = "getDefault";
       break label27;
     }
-    label145:
+    label142:
     AppMethodBeat.o(160021);
     return localObject1;
   }

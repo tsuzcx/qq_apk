@@ -6,30 +6,27 @@ import com.tencent.matrix.mrs.core.MrsLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.a;
 import com.tencent.mm.a.a.a;
-import com.tencent.mm.app.o;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.app.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.kernel.c.e;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.plugin.report.service.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import junit.framework.Assert;
 
 public class PluginReport
   extends com.tencent.mm.kernel.b.f
-  implements o, com.tencent.mm.kernel.api.c, c
+  implements q, com.tencent.mm.kernel.api.c, c
 {
-  private y Iyu;
-  private a.a Iyv;
+  private y OyZ;
+  private a.a Oza;
   
   public PluginReport()
   {
     AppMethodBeat.i(186000);
-    this.Iyv = new PluginReport.1(this);
+    this.Oza = new PluginReport.1(this);
     AppMethodBeat.o(186000);
   }
   
@@ -40,14 +37,14 @@ public class PluginReport
     {
       Log.i("Matrix.PluginReport", "load matrixmrs so");
       PluginReport.class.getClassLoader();
-      j.KW("matrixmrs");
-      this.Iyu = new y(k.class);
-      com.tencent.mm.kernel.h.a(y.class, new e(this.Iyu));
+      com.tencent.mm.compatible.util.k.DA("matrixmrs");
+      this.OyZ = new y(com.tencent.mm.plugin.report.service.k.class);
+      com.tencent.mm.kernel.h.a(y.class, new com.tencent.mm.kernel.c.e(this.OyZ));
     }
-    paramg = f.Iyx;
-    com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.IzE;
+    paramg = f.Ozc;
+    com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.OAn;
     Log.i("MicroMsg.ReportService", "instance set %s", new Object[] { localh });
-    paramg.Iyy = localh;
+    paramg.Ozd = localh;
     AppMethodBeat.o(143776);
   }
   
@@ -63,9 +60,9 @@ public class PluginReport
   public void execute(g paramg)
   {
     AppMethodBeat.i(143777);
-    com.tencent.matrix.c.a((Application)MMApplicationContext.getContext(), d.cQA);
-    if (a.eYi == null) {
-      a.eYi = this.Iyv;
+    d.a((Application)MMApplicationContext.getContext(), com.tencent.matrix.e.eLE);
+    if (a.hbJ == null) {
+      a.hbJ = this.Oza;
     }
     AppMethodBeat.o(143777);
   }
@@ -80,14 +77,14 @@ public class PluginReport
   public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(143778);
-    paramc = d.cQA;
-    com.tencent.mm.kernel.h.aHE();
+    paramc = com.tencent.matrix.e.eLE;
+    com.tencent.mm.kernel.h.baC();
     long l = b.getUin();
-    if (paramc.isInitialized)
+    if (paramc.baY)
     {
       Log.i("MatrixDelegate", "[onAccountReady] uin=".concat(String.valueOf(l)));
       Assert.assertTrue(MMApplicationContext.isMainProcess());
-      paramc = paramc.cQB;
+      paramc = paramc.eLF;
       MrsLogic.setUin(l);
       paramc.isInit = true;
     }
@@ -107,7 +104,7 @@ public class PluginReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.report.PluginReport
  * JD-Core Version:    0.7.0.1
  */

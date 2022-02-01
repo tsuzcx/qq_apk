@@ -1,24 +1,20 @@
 package com.tencent.mm.plugin.eggspring.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/model/AcceptEvent;", "", "(Ljava/lang/String;I)V", "Succeed", "Failed", "Denied", "FatalError", "plugin-eggspring_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/eggspring/model/AcceptEvent;", "", "(Ljava/lang/String;I)V", "Succeed", "Failed", "Denied", "FatalError", "plugin-eggspring_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum a
 {
   static
   {
-    AppMethodBeat.i(249471);
-    a locala1 = new a("Succeed", 0);
-    uxL = locala1;
-    a locala2 = new a("Failed", 1);
-    uxM = locala2;
-    a locala3 = new a("Denied", 2);
-    uxN = locala3;
-    a locala4 = new a("FatalError", 3);
-    uxO = locala4;
-    uxP = new a[] { locala1, locala2, locala3, locala4 };
-    AppMethodBeat.o(249471);
+    AppMethodBeat.i(266511);
+    xEw = new a("Succeed", 0);
+    xEx = new a("Failed", 1);
+    xEy = new a("Denied", 2);
+    xEz = new a("FatalError", 3);
+    xEA = new a[] { xEw, xEx, xEy, xEz };
+    AppMethodBeat.o(266511);
   }
   
   private a() {}

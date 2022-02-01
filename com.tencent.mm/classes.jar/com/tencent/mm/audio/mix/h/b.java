@@ -1,52 +1,27 @@
 package com.tencent.mm.audio.mix.h;
 
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  private static final String SYS_INFO;
-  private static b.a fqN;
-  private static b.a fqO;
+  private static a huW;
+  private static a huX;
   private static int level;
   
   static
   {
     AppMethodBeat.i(136967);
     level = 6;
-    Object localObject = new b.1();
-    fqN = (b.a)localObject;
-    fqO = (b.a)localObject;
-    localObject = new StringBuilder();
-    try
+    a local1 = new a()
     {
-      ((StringBuilder)localObject).append("VERSION.RELEASE:[" + Build.VERSION.RELEASE);
-      ((StringBuilder)localObject).append("] VERSION.CODENAME:[" + Build.VERSION.CODENAME);
-      ((StringBuilder)localObject).append("] VERSION.INCREMENTAL:[" + Build.VERSION.INCREMENTAL);
-      ((StringBuilder)localObject).append("] BOARD:[" + Build.BOARD);
-      ((StringBuilder)localObject).append("] DEVICE:[" + Build.DEVICE);
-      ((StringBuilder)localObject).append("] DISPLAY:[" + Build.DISPLAY);
-      ((StringBuilder)localObject).append("] FINGERPRINT:[" + Build.FINGERPRINT);
-      ((StringBuilder)localObject).append("] HOST:[" + Build.HOST);
-      ((StringBuilder)localObject).append("] MANUFACTURER:[" + Build.MANUFACTURER);
-      ((StringBuilder)localObject).append("] MODEL:[" + Build.MODEL);
-      ((StringBuilder)localObject).append("] PRODUCT:[" + Build.PRODUCT);
-      ((StringBuilder)localObject).append("] TAGS:[" + Build.TAGS);
-      ((StringBuilder)localObject).append("] TYPE:[" + Build.TYPE);
-      ((StringBuilder)localObject).append("] USER:[" + Build.USER + "]");
-      SYS_INFO = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(136967);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("mix.Log", localThrowable, "", new Object[0]);
-      }
-    }
+      private Handler handler;
+    };
+    huW = local1;
+    huX = local1;
+    AppMethodBeat.o(136967);
   }
   
   public static void d(String paramString1, String paramString2)
@@ -90,10 +65,12 @@ public final class b
     Log.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     AppMethodBeat.o(136966);
   }
+  
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.audio.mix.h.b
  * JD-Core Version:    0.7.0.1
  */

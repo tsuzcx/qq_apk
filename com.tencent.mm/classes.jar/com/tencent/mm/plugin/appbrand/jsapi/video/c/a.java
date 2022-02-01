@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.event.IEvent;
 public final class a
   extends IEvent
 {
-  public a pzf;
+  public a sEk;
   
   public a()
   {
@@ -15,18 +15,18 @@ public final class a
   
   private a(byte paramByte)
   {
-    AppMethodBeat.i(229912);
-    this.pzf = new a();
+    AppMethodBeat.i(328276);
+    this.sEk = new a();
     this.order = false;
     this.callback = null;
-    AppMethodBeat.o(229912);
+    AppMethodBeat.o(328276);
   }
   
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.c.a
  * JD-Core Version:    0.7.0.1
  */

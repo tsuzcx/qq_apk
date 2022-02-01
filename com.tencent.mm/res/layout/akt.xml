@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/cl">
-        <TextView android:textSize="@dimen/c5" android:textColor="@color/wr" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/dai" />
-    </LinearLayout>
-    <ScrollView android:id="@id/itx" android:layout_width="fill_parent" android:layout_height="318.0dip">
-        <LinearLayout android:orientation="vertical" android:id="@id/ity" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </ScrollView>
-</merge>
+    <RelativeLayout android:id="@id/e0a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr" android:layout_marginBottom="@dimen/cr" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp">
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/e0c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/we" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/e0d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e98" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <TextView android:enabled="false" android:textSize="17.0dip" android:textColor="@drawable/a22" android:id="@id/e0b" android:background="@drawable/a21" android:paddingTop="@dimen/bv" android:paddingBottom="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eqw" android:layout_centerVertical="true" android:paddingStart="@dimen/cd" android:paddingEnd="@dimen/cd" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/e0_" android:background="@color/a4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/e0a" />
+</RelativeLayout>

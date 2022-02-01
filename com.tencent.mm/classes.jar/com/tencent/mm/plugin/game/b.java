@@ -2,193 +2,160 @@ package com.tencent.mm.plugin.game;
 
 import android.content.Context;
 import android.content.Intent;
-import com.facebook.device.yearclass.YearClass;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.oo;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.autogen.a.py;
+import com.tencent.mm.k.i;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.game.model.o;
 import com.tencent.mm.plugin.game.model.r;
 import com.tencent.mm.plugin.game.model.s;
 import com.tencent.mm.plugin.game.protobuf.GetGameCenterGlobalSettingResponse;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class b
   implements com.tencent.mm.plugin.game.api.b
 {
-  private boolean CfN = false;
-  private boolean xwN = false;
+  private boolean AUs = false;
+  private boolean HRU = false;
   
-  /* Error */
-  public final void Tm(int paramInt)
+  public final void WX(int paramInt)
   {
-    // Byte code:
-    //   0: ldc 23
-    //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 30	org/json/JSONObject
-    //   8: dup
-    //   9: invokespecial 31	org/json/JSONObject:<init>	()V
-    //   12: astore 4
-    //   14: ldc 33
-    //   16: invokestatic 39	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   19: checkcast 33	com/tencent/mm/plugin/gamelife/a/c
-    //   22: invokeinterface 43 1 0
-    //   27: astore_3
-    //   28: aload_3
-    //   29: getfield 49	com/tencent/mm/plugin/gamelife/e/b:msgType	I
-    //   32: istore_2
-    //   33: new 30	org/json/JSONObject
-    //   36: dup
-    //   37: aload_3
-    //   38: getfield 53	com/tencent/mm/plugin/gamelife/e/b:CIm	Ljava/lang/String;
-    //   41: invokespecial 56	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   44: astore_3
-    //   45: aload_3
-    //   46: ldc 58
-    //   48: iload_1
-    //   49: invokestatic 64	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   52: invokevirtual 68	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   55: pop
-    //   56: ldc 70
-    //   58: ldc 72
-    //   60: aload_3
-    //   61: invokevirtual 76	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   64: aconst_null
-    //   65: invokestatic 82	com/tencent/mm/game/report/g:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
-    //   68: astore_3
-    //   69: invokestatic 88	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   72: bipush 9
-    //   74: sipush 901
-    //   77: iconst_1
-    //   78: iconst_1
-    //   79: iconst_0
-    //   80: aconst_null
-    //   81: iconst_0
-    //   82: iload_2
-    //   83: aconst_null
-    //   84: aconst_null
-    //   85: aload_3
-    //   86: invokestatic 91	com/tencent/mm/game/report/g:a	(Landroid/content/Context;IIIIILjava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   89: ldc 23
-    //   91: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   94: return
-    //   95: astore 5
-    //   97: aload 4
-    //   99: astore_3
-    //   100: aload 5
-    //   102: astore 4
-    //   104: ldc 96
-    //   106: aload 4
-    //   108: ldc 98
-    //   110: iconst_0
-    //   111: anewarray 4	java/lang/Object
-    //   114: invokestatic 104	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   117: goto -61 -> 56
-    //   120: astore 4
-    //   122: goto -18 -> 104
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	125	0	this	b
-    //   0	125	1	paramInt	int
-    //   32	51	2	i	int
-    //   27	73	3	localObject1	Object
-    //   12	95	4	localObject2	Object
-    //   120	1	4	localJSONException1	org.json.JSONException
-    //   95	6	5	localJSONException2	org.json.JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   33	45	95	org/json/JSONException
-    //   45	56	120	org/json/JSONException
-  }
-  
-  public final void V(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(40822);
-    o localo = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class)).evo().NP(paramLong);
-    if (localo != null)
+    AppMethodBeat.i(275309);
+    int i = 200;
+    Object localObject = new JSONObject();
+    com.tencent.mm.plugin.gamelife.f.b localb = ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.c.class)).fIj();
+    if (localb == null) {}
+    for (;;)
     {
-      localo.eyt();
-      String str = com.tencent.mm.game.report.g.a("resource", String.valueOf(paramInt), localo.CJY, null);
-      if (localo.field_needReport)
+      try
       {
-        com.tencent.mm.game.report.g.a(MMApplicationContext.getContext(), 9, 901, 1, 1, 0, localo.field_appId, 0, localo.CJW, localo.field_gameMsgId, localo.CJX, str);
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(858L, 2L, 1L, false);
+        ((JSONObject)localObject).put("interactive", "20002");
+        ((JSONObject)localObject).put("chatmsg_num", String.valueOf(paramInt));
+        paramInt = i;
       }
+      catch (JSONException localJSONException1)
+      {
+        paramInt = i;
+        continue;
+      }
+      localObject = com.tencent.mm.game.report.g.a("resource", "4", ((JSONObject)localObject).toString(), null);
+      com.tencent.mm.game.report.g.a(MMApplicationContext.getContext(), 9, 901, 1, 1, 0, null, 0, paramInt, null, null, (String)localObject);
+      AppMethodBeat.o(275309);
+      return;
+      i = localJSONException1.msgType;
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(localJSONException1.ICw);
+        try
+        {
+          localJSONObject.put("chatmsg_num", String.valueOf(paramInt));
+          localObject = localJSONObject;
+          paramInt = i;
+        }
+        catch (JSONException localJSONException2)
+        {
+          localObject = localJSONObject;
+        }
+      }
+      catch (JSONException localJSONException3)
+      {
+        label150:
+        break label150;
+      }
+      Log.printErrStackTrace("MicroMsg.GameDelegateImpl", localJSONException2, "", new Object[0]);
+      paramInt = i;
     }
-    AppMethodBeat.o(40822);
   }
   
   public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(40818);
-    com.tencent.mm.game.report.api.a.jTp.a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, 0L, paramString5, paramString6);
+    com.tencent.mm.game.report.api.a.mtH.a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, 0L, paramString5, paramString6);
     AppMethodBeat.o(40818);
   }
   
   public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2)
   {
     AppMethodBeat.i(40813);
-    com.tencent.mm.game.report.api.a.jTp.a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramString4, paramInt2);
+    com.tencent.mm.game.report.api.a.mtH.a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramString4, paramInt2);
     AppMethodBeat.o(40813);
   }
   
   public final void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3)
   {
     AppMethodBeat.i(40812);
-    com.tencent.mm.game.report.api.a.jTp.a(paramString1, paramString2, paramInt1, paramInt2, paramString3, paramInt3);
+    com.tencent.mm.game.report.api.a.mtH.a(paramString1, paramString2, paramInt1, paramInt2, paramString3, paramInt3);
     AppMethodBeat.o(40812);
   }
   
   public final void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, long paramLong, String paramString4, int paramInt3)
   {
     AppMethodBeat.i(40814);
-    com.tencent.mm.pluginsdk.model.app.g localg = com.tencent.mm.pluginsdk.model.app.h.o(paramString1, true, false);
+    com.tencent.mm.pluginsdk.model.app.g localg = com.tencent.mm.pluginsdk.model.app.h.s(paramString1, true, false);
     if (localg != null) {
-      com.tencent.mm.game.report.api.a.jTp.a(paramString1, paramString2, paramInt1, paramInt2, paramString3, paramLong, localg.Qv(), paramString4, paramInt3);
+      com.tencent.mm.game.report.api.a.mtH.a(paramString1, paramString2, paramInt1, paramInt2, paramString3, paramLong, localg.aqJ(), paramString4, paramInt3);
     }
     AppMethodBeat.o(40814);
   }
   
-  public final void aIK(String paramString)
+  public final void aFk(String paramString)
   {
-    AppMethodBeat.i(209788);
-    com.tencent.mm.plugin.game.b.b localb = com.tencent.mm.plugin.game.b.b.CzF;
-    com.tencent.mm.plugin.game.b.b.aJb(paramString);
-    AppMethodBeat.o(209788);
+    AppMethodBeat.i(275310);
+    com.tencent.mm.plugin.game.b.b localb = com.tencent.mm.plugin.game.b.b.Itw;
+    com.tencent.mm.plugin.game.b.b.aFN(paramString);
+    AppMethodBeat.o(275310);
   }
   
-  public final void ao(String paramString, int paramInt1, int paramInt2)
+  public final void al(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(40822);
+    o localo = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCh().rG(paramLong);
+    if (localo != null)
+    {
+      localo.fGp();
+      String str = com.tencent.mm.game.report.g.a("resource", String.valueOf(paramInt), localo.IEi, null);
+      if (localo.field_needReport)
+      {
+        com.tencent.mm.game.report.g.a(MMApplicationContext.getContext(), 9, 901, 1, 1, 0, localo.field_appId, 0, localo.IEh, localo.field_gameMsgId, localo.mNoticeId, str);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(858L, 2L, 1L, false);
+      }
+    }
+    AppMethodBeat.o(40822);
+  }
+  
+  public final void av(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(40815);
-    com.tencent.mm.game.report.api.a.jTp.n(paramString, paramInt1, paramInt2);
+    com.tencent.mm.game.report.api.a.mtH.q(paramString, paramInt1, paramInt2);
     AppMethodBeat.o(40815);
   }
   
-  public final boolean evh()
+  public final boolean fBZ()
   {
     AppMethodBeat.i(40811);
     try
     {
       boolean bool;
-      if (com.tencent.mm.plugin.game.commlib.a.Czb != null)
+      if (com.tencent.mm.plugin.game.commlib.a.IsN != null)
       {
-        bool = com.tencent.mm.plugin.game.commlib.a.Czb.ShowEntrance;
+        bool = com.tencent.mm.plugin.game.commlib.a.IsN.ShowEntrance;
         Log.i("MicroMsg.GameConfigManager", "getShowEntrance : ".concat(String.valueOf(bool)));
         AppMethodBeat.o(40811);
         return bool;
       }
-      com.tencent.mm.plugin.game.commlib.a.ewa();
+      com.tencent.mm.plugin.game.commlib.a.fDQ();
       String str = LocaleUtil.loadApplicationLanguage(MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), MMApplicationContext.getContext());
       Log.i("MicroMsg.GameConfigManager", "getShowEntrance, lang = %s", new Object[] { str });
       if ("zh_CN".equals(str)) {}
       for (str = "0";; str = "1")
       {
-        str = Util.nullAs(com.tencent.mm.n.h.axc().getValue("HideGameCenter"), str);
+        str = Util.nullAs(i.aRC().getValue("HideGameCenter"), str);
         Log.i("MicroMsg.GameConfigManager", "hide game center:[%s]", new Object[] { str });
         bool = str.equalsIgnoreCase("0");
         break;
@@ -201,95 +168,95 @@ public final class b
     }
   }
   
-  public final String evi()
+  public final String fCa()
   {
     AppMethodBeat.i(40820);
-    String str = com.tencent.mm.plugin.game.model.e.gz(MMApplicationContext.getContext());
+    String str = com.tencent.mm.plugin.game.model.e.hS(MMApplicationContext.getContext());
     AppMethodBeat.o(40820);
     return str;
   }
   
-  public final void gn(Context paramContext)
+  public final void hG(Context paramContext)
   {
     AppMethodBeat.i(40819);
-    com.tencent.mm.plugin.game.model.e.gn(paramContext);
+    com.tencent.mm.plugin.game.model.e.hG(paramContext);
     AppMethodBeat.o(40819);
   }
   
-  public final void k(Context paramContext, String paramString1, String paramString2)
+  public final void o(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(40817);
-    com.tencent.mm.game.report.api.a.jTp.k(paramContext, paramString1, paramString2);
+    com.tencent.mm.game.report.api.a.mtH.o(paramContext, paramString1, paramString2);
     AppMethodBeat.o(40817);
   }
   
-  public final void k(String paramString1, String paramString2, String paramString3)
+  public final void p(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(40816);
-    com.tencent.mm.game.report.api.a.jTp.k(paramString1, paramString2, paramString3);
+    com.tencent.mm.game.report.api.a.mtH.p(paramString1, paramString2, paramString3);
     AppMethodBeat.o(40816);
   }
   
-  public final void sb(boolean paramBoolean)
+  public final void wc(boolean paramBoolean)
   {
     AppMethodBeat.i(40821);
-    if (!this.CfN)
+    if (!this.HRU)
     {
-      if ((((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.game.report.a.b.class)).a(b.a.vtX, true)) && (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.game.report.a.b.class)).a(b.a.vua, false))) {
-        break label159;
+      if ((((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.game.report.a.b.class)).a(c.a.yGB, true)) && (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.game.report.a.b.class)).a(c.a.yGE, false))) {
+        break label156;
       }
       paramBoolean = false;
     }
     for (;;)
     {
-      this.xwN = paramBoolean;
-      this.CfN = true;
+      this.AUs = paramBoolean;
+      this.HRU = true;
       Object localObject;
-      if (this.xwN)
+      if (this.AUs)
       {
-        localObject = c.ezZ();
+        localObject = com.tencent.mm.plugin.game.d.c.fIa();
         if (!Util.isNullOrNil((String)localObject))
         {
           Log.i("MicroMsg.GameDelegateImpl", "preload");
-          oo localoo = new oo();
-          localoo.fNq.type = 3;
+          py localpy = new py();
+          localpy.hTd.type = 3;
           Intent localIntent = new Intent();
           localIntent.putExtra("rawUrl", (String)localObject);
-          localoo.fNq.intent = localIntent;
-          EventCenter.instance.publish(localoo);
+          localpy.hTd.intent = localIntent;
+          localpy.publish();
         }
       }
       AppMethodBeat.o(40821);
       return;
-      label159:
+      label156:
       Log.i("MicroMsg.GameDelegateImpl", "hit expt preload");
-      com.tencent.mm.plugin.report.service.h.IzE.p(939L, 4L, 1L);
-      if (YearClass.get(MMApplicationContext.getContext()) < 2014)
+      com.tencent.mm.plugin.report.service.h.OAn.p(939L, 4L, 1L);
+      if (com.c.a.b.aH(MMApplicationContext.getContext()) < 2014)
       {
         Log.i("MicroMsg.GameDelegateImpl", "device score smaller than 2014");
-        com.tencent.mm.plugin.report.service.h.IzE.p(939L, 5L, 1L);
+        com.tencent.mm.plugin.report.service.h.OAn.p(939L, 5L, 1L);
         paramBoolean = false;
       }
       else
       {
-        long l = com.tencent.mm.plugin.game.model.e.eyk();
+        long l = com.tencent.mm.plugin.game.model.e.fGg();
         if (System.currentTimeMillis() - l > 21600000L)
         {
           Log.i("MicroMsg.GameDelegateImpl", "larger than 6 hours");
           if (paramBoolean)
           {
-            ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.e.class)).evn();
-            localObject = r.eyv();
+            ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.e.class)).fCg();
+            localObject = r.fGr();
             if ((localObject == null) || (System.currentTimeMillis() - ((o)localObject).field_receiveTime * 1000L > 21600000L))
             {
               Log.i("MicroMsg.GameDelegateImpl", "red dot larger than 6 hours");
-              com.tencent.mm.plugin.report.service.h.IzE.p(939L, 7L, 1L);
+              com.tencent.mm.plugin.report.service.h.OAn.p(939L, 7L, 1L);
               paramBoolean = false;
             }
           }
           else
           {
-            com.tencent.mm.plugin.report.service.h.IzE.p(939L, 6L, 1L);
+            com.tencent.mm.plugin.report.service.h.OAn.p(939L, 6L, 1L);
             paramBoolean = false;
             continue;
           }
@@ -297,12 +264,12 @@ public final class b
         if (ChannelUtil.isGPVersion())
         {
           Log.i("MicroMsg.GameDelegateImpl", "isGPVersion");
-          com.tencent.mm.plugin.report.service.h.IzE.p(939L, 8L, 1L);
+          com.tencent.mm.plugin.report.service.h.OAn.p(939L, 8L, 1L);
           paramBoolean = false;
         }
-        else if (Util.isNullOrNil(c.ezZ()))
+        else if (Util.isNullOrNil(com.tencent.mm.plugin.game.d.c.fIa()))
         {
-          com.tencent.mm.plugin.report.service.h.IzE.p(939L, 9L, 1L);
+          com.tencent.mm.plugin.report.service.h.OAn.p(939L, 9L, 1L);
           paramBoolean = false;
         }
         else
@@ -315,7 +282,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.b
  * JD-Core Version:    0.7.0.1
  */

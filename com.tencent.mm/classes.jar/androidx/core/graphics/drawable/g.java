@@ -16,279 +16,399 @@ class g
   extends Drawable
   implements Drawable.Callback, e, f
 {
-  static final PorterDuff.Mode KQ = PorterDuff.Mode.SRC_IN;
-  private int KZ;
-  private PorterDuff.Mode La;
-  private boolean Lb;
-  i Lc;
-  private boolean iF;
-  Drawable mDrawable;
+  static final PorterDuff.Mode bqY = PorterDuff.Mode.SRC_IN;
+  private int bri;
+  private PorterDuff.Mode brj;
+  private boolean brk;
+  i brl;
+  private boolean jA;
+  Drawable kD;
   
   g(Drawable paramDrawable)
   {
-    AppMethodBeat.i(250911);
-    this.Lc = gE();
-    s(paramDrawable);
-    AppMethodBeat.o(250911);
+    AppMethodBeat.i(196175);
+    this.brl = DO();
+    v(paramDrawable);
+    AppMethodBeat.o(196175);
   }
   
   g(i parami, Resources paramResources)
   {
-    AppMethodBeat.i(250908);
-    this.Lc = parami;
-    if ((this.Lc != null) && (this.Lc.Le != null)) {
-      s(this.Lc.Le.newDrawable(paramResources));
+    AppMethodBeat.i(196162);
+    this.brl = parami;
+    if ((this.brl != null) && (this.brl.brn != null)) {
+      v(this.brl.brn.newDrawable(paramResources));
     }
-    AppMethodBeat.o(250908);
+    AppMethodBeat.o(196162);
   }
   
-  private boolean f(int[] paramArrayOfInt)
+  private i DO()
   {
-    AppMethodBeat.i(250982);
-    if (!gF())
+    AppMethodBeat.i(196190);
+    i locali = new i(this.brl);
+    AppMethodBeat.o(196190);
+    return locali;
+  }
+  
+  private boolean i(int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(196204);
+    if (!DP())
     {
-      AppMethodBeat.o(250982);
+      AppMethodBeat.o(196204);
       return false;
     }
-    ColorStateList localColorStateList = this.Lc.zb;
-    PorterDuff.Mode localMode = this.Lc.jF;
+    ColorStateList localColorStateList = this.brl.Rq;
+    PorterDuff.Mode localMode = this.brl.kA;
     if ((localColorStateList != null) && (localMode != null))
     {
       int i = localColorStateList.getColorForState(paramArrayOfInt, localColorStateList.getDefaultColor());
-      if ((!this.Lb) || (i != this.KZ) || (localMode != this.La))
+      if ((!this.brk) || (i != this.bri) || (localMode != this.brj))
       {
         setColorFilter(i, localMode);
-        this.KZ = i;
-        this.La = localMode;
-        this.Lb = true;
-        AppMethodBeat.o(250982);
+        this.bri = i;
+        this.brj = localMode;
+        this.brk = true;
+        AppMethodBeat.o(196204);
         return true;
       }
     }
     else
     {
-      this.Lb = false;
+      this.brk = false;
       clearColorFilter();
     }
-    AppMethodBeat.o(250982);
+    AppMethodBeat.o(196204);
     return false;
   }
   
-  private i gE()
+  public final Drawable DN()
   {
-    AppMethodBeat.i(250966);
-    i locali = new i(this.Lc);
-    AppMethodBeat.o(250966);
-    return locali;
+    return this.kD;
   }
   
-  public void draw(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(250918);
-    this.mDrawable.draw(paramCanvas);
-    AppMethodBeat.o(250918);
-  }
-  
-  public final Drawable gD()
-  {
-    return this.mDrawable;
-  }
-  
-  protected boolean gF()
+  protected boolean DP()
   {
     return true;
   }
   
+  public void draw(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(196238);
+    this.kD.draw(paramCanvas);
+    AppMethodBeat.o(196238);
+  }
+  
   public int getChangingConfigurations()
   {
-    AppMethodBeat.i(250927);
+    AppMethodBeat.i(196277);
     int j = super.getChangingConfigurations();
-    if (this.Lc != null) {}
-    for (int i = this.Lc.getChangingConfigurations();; i = 0)
+    if (this.brl != null) {}
+    for (int i = this.brl.getChangingConfigurations();; i = 0)
     {
-      int k = this.mDrawable.getChangingConfigurations();
-      AppMethodBeat.o(250927);
+      int k = this.kD.getChangingConfigurations();
+      AppMethodBeat.o(196277);
       return i | j | k;
     }
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    AppMethodBeat.i(250963);
-    if (this.Lc != null)
+    AppMethodBeat.i(196509);
+    if (this.brl != null)
     {
-      if (this.Lc.Le != null) {}
+      if (this.brl.brn != null) {}
       for (int i = 1; i != 0; i = 0)
       {
-        this.Lc.mChangingConfigurations = getChangingConfigurations();
-        i locali = this.Lc;
-        AppMethodBeat.o(250963);
+        this.brl.mChangingConfigurations = getChangingConfigurations();
+        i locali = this.brl;
+        AppMethodBeat.o(196509);
         return locali;
       }
     }
-    AppMethodBeat.o(250963);
+    AppMethodBeat.o(196509);
     return null;
   }
   
   public Drawable getCurrent()
   {
-    AppMethodBeat.i(250947);
-    Drawable localDrawable = this.mDrawable.getCurrent();
-    AppMethodBeat.o(250947);
+    AppMethodBeat.i(196370);
+    Drawable localDrawable = this.kD.getCurrent();
+    AppMethodBeat.o(196370);
     return localDrawable;
   }
   
   public int getIntrinsicHeight()
   {
-    AppMethodBeat.i(250954);
-    int i = this.mDrawable.getIntrinsicHeight();
-    AppMethodBeat.o(250954);
+    AppMethodBeat.i(196432);
+    int i = this.kD.getIntrinsicHeight();
+    AppMethodBeat.o(196432);
     return i;
   }
   
   public int getIntrinsicWidth()
   {
-    AppMethodBeat.i(250953);
-    int i = this.mDrawable.getIntrinsicWidth();
-    AppMethodBeat.o(250953);
+    AppMethodBeat.i(196423);
+    int i = this.kD.getIntrinsicWidth();
+    AppMethodBeat.o(196423);
+    return i;
+  }
+  
+  public int getLayoutDirection()
+  {
+    AppMethodBeat.i(196496);
+    int i = a.u(this.kD);
+    AppMethodBeat.o(196496);
     return i;
   }
   
   public int getMinimumHeight()
   {
-    AppMethodBeat.i(250956);
-    int i = this.mDrawable.getMinimumHeight();
-    AppMethodBeat.o(250956);
+    AppMethodBeat.i(196443);
+    int i = this.kD.getMinimumHeight();
+    AppMethodBeat.o(196443);
     return i;
   }
   
   public int getMinimumWidth()
   {
-    AppMethodBeat.i(250955);
-    int i = this.mDrawable.getMinimumWidth();
-    AppMethodBeat.o(250955);
+    AppMethodBeat.i(196437);
+    int i = this.kD.getMinimumWidth();
+    AppMethodBeat.o(196437);
     return i;
   }
   
   public int getOpacity()
   {
-    AppMethodBeat.i(250950);
-    int i = this.mDrawable.getOpacity();
-    AppMethodBeat.o(250950);
+    AppMethodBeat.i(196397);
+    int i = this.kD.getOpacity();
+    AppMethodBeat.o(196397);
     return i;
   }
   
   public boolean getPadding(Rect paramRect)
   {
-    AppMethodBeat.i(250959);
-    boolean bool = this.mDrawable.getPadding(paramRect);
-    AppMethodBeat.o(250959);
+    AppMethodBeat.i(196454);
+    boolean bool = this.kD.getPadding(paramRect);
+    AppMethodBeat.o(196454);
     return bool;
   }
   
   public int[] getState()
   {
-    AppMethodBeat.i(250946);
-    int[] arrayOfInt = this.mDrawable.getState();
-    AppMethodBeat.o(250946);
+    AppMethodBeat.i(196358);
+    int[] arrayOfInt = this.kD.getState();
+    AppMethodBeat.o(196358);
     return arrayOfInt;
   }
   
   public Region getTransparentRegion()
   {
-    AppMethodBeat.i(250951);
-    Region localRegion = this.mDrawable.getTransparentRegion();
-    AppMethodBeat.o(250951);
+    AppMethodBeat.i(196413);
+    Region localRegion = this.kD.getTransparentRegion();
+    AppMethodBeat.o(196413);
     return localRegion;
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(250968);
+    AppMethodBeat.i(196533);
     invalidateSelf();
-    AppMethodBeat.o(250968);
+    AppMethodBeat.o(196533);
   }
   
   public boolean isAutoMirrored()
   {
-    AppMethodBeat.i(250962);
-    boolean bool = this.mDrawable.isAutoMirrored();
-    AppMethodBeat.o(250962);
+    AppMethodBeat.i(196478);
+    boolean bool = a.n(this.kD);
+    AppMethodBeat.o(196478);
     return bool;
   }
   
   public boolean isStateful()
   {
-    AppMethodBeat.i(250942);
-    if ((gF()) && (this.Lc != null)) {}
-    for (ColorStateList localColorStateList = this.Lc.zb; ((localColorStateList != null) && (localColorStateList.isStateful())) || (this.mDrawable.isStateful()); localColorStateList = null)
+    AppMethodBeat.i(196337);
+    if ((DP()) && (this.brl != null)) {}
+    for (ColorStateList localColorStateList = this.brl.Rq; ((localColorStateList != null) && (localColorStateList.isStateful())) || (this.kD.isStateful()); localColorStateList = null)
     {
-      AppMethodBeat.o(250942);
+      AppMethodBeat.o(196337);
       return true;
     }
-    AppMethodBeat.o(250942);
+    AppMethodBeat.o(196337);
     return false;
   }
   
   public void jumpToCurrentState()
   {
-    AppMethodBeat.i(250915);
-    this.mDrawable.jumpToCurrentState();
-    AppMethodBeat.o(250915);
+    AppMethodBeat.i(196228);
+    this.kD.jumpToCurrentState();
+    AppMethodBeat.o(196228);
   }
   
   public Drawable mutate()
   {
-    AppMethodBeat.i(250964);
+    AppMethodBeat.i(196523);
     i locali;
-    if ((!this.iF) && (super.mutate() == this))
+    if ((!this.jA) && (super.mutate() == this))
     {
-      this.Lc = gE();
-      if (this.mDrawable != null) {
-        this.mDrawable.mutate();
+      this.brl = DO();
+      if (this.kD != null) {
+        this.kD.mutate();
       }
-      if (this.Lc != null)
+      if (this.brl != null)
       {
-        locali = this.Lc;
-        if (this.mDrawable == null) {
+        locali = this.brl;
+        if (this.kD == null) {
           break label87;
         }
       }
     }
     label87:
-    for (Drawable.ConstantState localConstantState = this.mDrawable.getConstantState();; localConstantState = null)
+    for (Drawable.ConstantState localConstantState = this.kD.getConstantState();; localConstantState = null)
     {
-      locali.Le = localConstantState;
-      this.iF = true;
-      AppMethodBeat.o(250964);
+      locali.brn = localConstantState;
+      this.jA = true;
+      AppMethodBeat.o(196523);
       return this;
     }
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    AppMethodBeat.i(250921);
-    if (this.mDrawable != null) {
-      this.mDrawable.setBounds(paramRect);
+    AppMethodBeat.i(196252);
+    if (this.kD != null) {
+      this.kD.setBounds(paramRect);
     }
-    AppMethodBeat.o(250921);
+    AppMethodBeat.o(196252);
+  }
+  
+  public boolean onLayoutDirectionChanged(int paramInt)
+  {
+    AppMethodBeat.i(196487);
+    boolean bool = a.b(this.kD, paramInt);
+    AppMethodBeat.o(196487);
+    return bool;
   }
   
   protected boolean onLevelChange(int paramInt)
   {
-    AppMethodBeat.i(250974);
-    boolean bool = this.mDrawable.setLevel(paramInt);
-    AppMethodBeat.o(250974);
+    AppMethodBeat.i(196574);
+    boolean bool = this.kD.setLevel(paramInt);
+    AppMethodBeat.o(196574);
     return bool;
   }
   
-  public final void s(Drawable paramDrawable)
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(250985);
-    if (this.mDrawable != null) {
-      this.mDrawable.setCallback(null);
+    AppMethodBeat.i(196548);
+    scheduleSelf(paramRunnable, paramLong);
+    AppMethodBeat.o(196548);
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    AppMethodBeat.i(196310);
+    this.kD.setAlpha(paramInt);
+    AppMethodBeat.o(196310);
+  }
+  
+  public void setAutoMirrored(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196466);
+    a.b(this.kD, paramBoolean);
+    AppMethodBeat.o(196466);
+  }
+  
+  public void setChangingConfigurations(int paramInt)
+  {
+    AppMethodBeat.i(196266);
+    this.kD.setChangingConfigurations(paramInt);
+    AppMethodBeat.o(196266);
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    AppMethodBeat.i(196321);
+    this.kD.setColorFilter(paramColorFilter);
+    AppMethodBeat.o(196321);
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196287);
+    this.kD.setDither(paramBoolean);
+    AppMethodBeat.o(196287);
+  }
+  
+  public void setFilterBitmap(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196299);
+    this.kD.setFilterBitmap(paramBoolean);
+    AppMethodBeat.o(196299);
+  }
+  
+  public boolean setState(int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(196345);
+    boolean bool = this.kD.setState(paramArrayOfInt);
+    if ((i(paramArrayOfInt)) || (bool))
+    {
+      AppMethodBeat.o(196345);
+      return true;
     }
-    this.mDrawable = paramDrawable;
+    AppMethodBeat.o(196345);
+    return false;
+  }
+  
+  public void setTint(int paramInt)
+  {
+    AppMethodBeat.i(196582);
+    setTintList(ColorStateList.valueOf(paramInt));
+    AppMethodBeat.o(196582);
+  }
+  
+  public void setTintList(ColorStateList paramColorStateList)
+  {
+    AppMethodBeat.i(196591);
+    this.brl.Rq = paramColorStateList;
+    i(getState());
+    AppMethodBeat.o(196591);
+  }
+  
+  public void setTintMode(PorterDuff.Mode paramMode)
+  {
+    AppMethodBeat.i(196601);
+    this.brl.kA = paramMode;
+    i(getState());
+    AppMethodBeat.o(196601);
+  }
+  
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(196383);
+    if ((super.setVisible(paramBoolean1, paramBoolean2)) || (this.kD.setVisible(paramBoolean1, paramBoolean2)))
+    {
+      AppMethodBeat.o(196383);
+      return true;
+    }
+    AppMethodBeat.o(196383);
+    return false;
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(196565);
+    unscheduleSelf(paramRunnable);
+    AppMethodBeat.o(196565);
+  }
+  
+  public final void v(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(196621);
+    if (this.kD != null) {
+      this.kD.setCallback(null);
+    }
+    this.kD = paramDrawable;
     if (paramDrawable != null)
     {
       paramDrawable.setCallback(this);
@@ -296,121 +416,17 @@ class g
       setState(paramDrawable.getState());
       setLevel(paramDrawable.getLevel());
       setBounds(paramDrawable.getBounds());
-      if (this.Lc != null) {
-        this.Lc.Le = paramDrawable.getConstantState();
+      if (this.brl != null) {
+        this.brl.brn = paramDrawable.getConstantState();
       }
     }
     invalidateSelf();
-    AppMethodBeat.o(250985);
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    AppMethodBeat.i(250970);
-    scheduleSelf(paramRunnable, paramLong);
-    AppMethodBeat.o(250970);
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    AppMethodBeat.i(250935);
-    this.mDrawable.setAlpha(paramInt);
-    AppMethodBeat.o(250935);
-  }
-  
-  public void setAutoMirrored(boolean paramBoolean)
-  {
-    AppMethodBeat.i(250961);
-    this.mDrawable.setAutoMirrored(paramBoolean);
-    AppMethodBeat.o(250961);
-  }
-  
-  public void setChangingConfigurations(int paramInt)
-  {
-    AppMethodBeat.i(250925);
-    this.mDrawable.setChangingConfigurations(paramInt);
-    AppMethodBeat.o(250925);
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    AppMethodBeat.i(250938);
-    this.mDrawable.setColorFilter(paramColorFilter);
-    AppMethodBeat.o(250938);
-  }
-  
-  public void setDither(boolean paramBoolean)
-  {
-    AppMethodBeat.i(250930);
-    this.mDrawable.setDither(paramBoolean);
-    AppMethodBeat.o(250930);
-  }
-  
-  public void setFilterBitmap(boolean paramBoolean)
-  {
-    AppMethodBeat.i(250933);
-    this.mDrawable.setFilterBitmap(paramBoolean);
-    AppMethodBeat.o(250933);
-  }
-  
-  public boolean setState(int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(250945);
-    boolean bool = this.mDrawable.setState(paramArrayOfInt);
-    if ((f(paramArrayOfInt)) || (bool))
-    {
-      AppMethodBeat.o(250945);
-      return true;
-    }
-    AppMethodBeat.o(250945);
-    return false;
-  }
-  
-  public void setTint(int paramInt)
-  {
-    AppMethodBeat.i(250976);
-    setTintList(ColorStateList.valueOf(paramInt));
-    AppMethodBeat.o(250976);
-  }
-  
-  public void setTintList(ColorStateList paramColorStateList)
-  {
-    AppMethodBeat.i(250978);
-    this.Lc.zb = paramColorStateList;
-    f(getState());
-    AppMethodBeat.o(250978);
-  }
-  
-  public void setTintMode(PorterDuff.Mode paramMode)
-  {
-    AppMethodBeat.i(250980);
-    this.Lc.jF = paramMode;
-    f(getState());
-    AppMethodBeat.o(250980);
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(250949);
-    if ((super.setVisible(paramBoolean1, paramBoolean2)) || (this.mDrawable.setVisible(paramBoolean1, paramBoolean2)))
-    {
-      AppMethodBeat.o(250949);
-      return true;
-    }
-    AppMethodBeat.o(250949);
-    return false;
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(250972);
-    unscheduleSelf(paramRunnable);
-    AppMethodBeat.o(250972);
+    AppMethodBeat.o(196621);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.graphics.drawable.g
  * JD-Core Version:    0.7.0.1
  */

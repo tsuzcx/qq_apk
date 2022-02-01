@@ -2,32 +2,32 @@ package com.tencent.xweb.sys;
 
 import android.webkit.WebResourceError;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.z;
+import com.tencent.xweb.ac;
 
 final class c$1
-  extends z
+  extends ac
 {
   c$1(WebResourceError paramWebResourceError) {}
   
   public final CharSequence getDescription()
   {
-    AppMethodBeat.i(204956);
-    CharSequence localCharSequence = this.aafg.getDescription();
-    AppMethodBeat.o(204956);
+    AppMethodBeat.i(212671);
+    CharSequence localCharSequence = this.aimb.getDescription();
+    AppMethodBeat.o(212671);
     return localCharSequence;
   }
   
   public final int getErrorCode()
   {
-    AppMethodBeat.i(204955);
-    int i = this.aafg.getErrorCode();
-    AppMethodBeat.o(204955);
+    AppMethodBeat.i(212669);
+    int i = this.aimb.getErrorCode();
+    AppMethodBeat.o(212669);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.sys.c.1
  * JD-Core Version:    0.7.0.1
  */

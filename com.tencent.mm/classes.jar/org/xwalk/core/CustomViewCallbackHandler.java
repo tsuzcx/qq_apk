@@ -1,17 +1,13 @@
 package org.xwalk.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
 
 public class CustomViewCallbackHandler
   implements CustomViewCallback
 {
   private Object bridge;
-  private ArrayList<Object> constructorParams;
-  private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
   private ReflectMethod onCustomViewHiddenMethod;
-  private ReflectMethod postWrapperMethod;
   
   public CustomViewCallbackHandler(Object paramObject)
   {
@@ -20,6 +16,20 @@ public class CustomViewCallbackHandler
     this.bridge = paramObject;
     reflectionInit();
     AppMethodBeat.o(154599);
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154601);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154601);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.onCustomViewHiddenMethod.init(this.bridge, null, "onCustomViewHiddenSuper", new Class[0]);
+    AppMethodBeat.o(154601);
   }
   
   protected Object getBridge()
@@ -49,25 +59,10 @@ public class CustomViewCallbackHandler
       AppMethodBeat.o(154600);
     }
   }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154601);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154601);
-      return;
-    }
-    this.onCustomViewHiddenMethod.init(this.bridge, null, "onCustomViewHiddenSuper", new Class[0]);
-    AppMethodBeat.o(154601);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.CustomViewCallbackHandler
  * JD-Core Version:    0.7.0.1
  */

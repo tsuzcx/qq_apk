@@ -13,27 +13,57 @@ import java.util.ArrayList;
 public class c
   extends a
 {
-  protected boolean XVP = true;
-  public WeakReference<EditText> XVQ;
-  protected int XVR;
-  protected int XVS;
-  protected ArrayList<InputFilter> XVT;
-  public a XVU;
+  protected boolean afMe = true;
+  public WeakReference<EditText> afMf;
+  protected int afMg;
+  protected int afMh;
+  protected ArrayList<InputFilter> afMi;
+  public a afMj;
   protected String mText;
-  protected g.a rvC;
+  protected g.a uGI;
   
   public c(String paramString)
   {
     this.mText = paramString;
-    this.rvC = g.a.XSu;
-    this.XVP = false;
+    this.uGI = g.a.afII;
+    this.afMe = false;
   }
   
   public c(WeakReference<EditText> paramWeakReference)
   {
-    this.XVQ = paramWeakReference;
-    this.rvC = g.a.XSu;
-    this.XVP = false;
+    this.afMf = paramWeakReference;
+    this.uGI = g.a.afII;
+    this.afMe = false;
+  }
+  
+  public static String bCI(String paramString)
+  {
+    AppMethodBeat.i(251160);
+    String str = paramString;
+    if (!Util.isNullOrNil(paramString))
+    {
+      int i = g.bCx(paramString);
+      g.ek(32, paramString);
+      str = paramString;
+      if (i > 32)
+      {
+        i = g.ei(32, paramString);
+        str = paramString;
+        if (i > 0)
+        {
+          str = paramString;
+          if (i < 32)
+          {
+            str = paramString;
+            if (i < paramString.length()) {
+              str = paramString.substring(0, i);
+            }
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(251160);
+    return str;
   }
   
   public static c i(EditText paramEditText)
@@ -44,9 +74,9 @@ public class c
     return paramEditText;
   }
   
-  public final c Hh(boolean paramBoolean)
+  public final c Nc(boolean paramBoolean)
   {
-    this.XVP = paramBoolean;
+    this.afMe = paramBoolean;
     return this;
   }
   
@@ -61,37 +91,37 @@ public class c
   public final void a(a parama)
   {
     AppMethodBeat.i(133842);
-    this.XVU = parama;
-    euX();
+    this.afMj = parama;
+    fBQ();
     AppMethodBeat.o(133842);
   }
   
-  public final c axx(int paramInt)
+  public final c aEg(int paramInt)
   {
-    this.XVS = 0;
-    this.XVR = paramInt;
+    this.afMh = 0;
+    this.afMg = paramInt;
     return this;
   }
   
   public final c b(g.a parama)
   {
-    this.rvC = parama;
+    this.uGI = parama;
     return this;
   }
   
-  protected int bNF()
+  protected int cnU()
   {
     AppMethodBeat.i(133843);
     if (Util.isNullOrNil(this.mText))
     {
-      if (this.XVQ == null)
+      if (this.afMf == null)
       {
         AppMethodBeat.o(133843);
         return 1;
       }
-      this.mText = ((EditText)this.XVQ.get()).getText().toString().trim();
+      this.mText = ((EditText)this.afMf.get()).getText().toString().trim();
     }
-    int j = g.a(this.mText, this.rvC);
+    int j = g.a(this.mText, this.uGI);
     if (j < 0) {}
     for (int i = 1; i != 0; i = 0)
     {
@@ -99,12 +129,12 @@ public class c
       AppMethodBeat.o(133843);
       return 2;
     }
-    if (j < this.XVS)
+    if (j < this.afMh)
     {
       AppMethodBeat.o(133843);
       return 1;
     }
-    if (j > this.XVR)
+    if (j > this.afMg)
     {
       AppMethodBeat.o(133843);
       return 2;
@@ -113,27 +143,27 @@ public class c
     return 0;
   }
   
-  protected void euX()
+  protected void fBQ()
   {
     AppMethodBeat.i(133844);
     Object localObject;
-    if (!this.XVP)
+    if (!this.afMe)
     {
-      if (this.XVQ == null)
+      if (this.afMf == null)
       {
         Log.w("MicroMsg.InputTextBoundaryCheck", "edit text view is null");
         AppMethodBeat.o(133844);
         return;
       }
-      if (Util.isNullOrNil(this.XVT))
+      if (Util.isNullOrNil(this.afMi))
       {
-        localObject = a(this.XVR, this.rvC);
-        ((EditText)this.XVQ.get()).setFilters(new InputFilter[] { localObject });
+        localObject = a(this.afMg, this.uGI);
+        ((EditText)this.afMf.get()).setFilters(new InputFilter[] { localObject });
       }
     }
-    else if (this.XVU != null)
+    else if (this.afMj != null)
     {
-      switch (bNF())
+      switch (cnU())
       {
       }
     }
@@ -141,39 +171,39 @@ public class c
     {
       AppMethodBeat.o(133844);
       return;
-      this.XVT.add(a(this.XVR, this.rvC));
-      localObject = (InputFilter[])this.XVT.toArray(new InputFilter[this.XVT.size()]);
-      ((EditText)this.XVQ.get()).setFilters((InputFilter[])localObject);
+      this.afMi.add(a(this.afMg, this.uGI));
+      localObject = (InputFilter[])this.afMi.toArray(new InputFilter[this.afMi.size()]);
+      ((EditText)this.afMf.get()).setFilters((InputFilter[])localObject);
       break;
-      this.XVU.abc(this.mText);
+      this.afMj.Tw(this.mText);
       AppMethodBeat.o(133844);
       return;
-      this.XVU.abd(this.mText);
+      this.afMj.Tx(this.mText);
       AppMethodBeat.o(133844);
       return;
-      this.XVU.dN(this.mText);
+      this.afMj.eY(this.mText);
     }
   }
   
-  public final c mM(int paramInt1, int paramInt2)
+  public final c oF(int paramInt1, int paramInt2)
   {
-    this.XVS = paramInt1;
-    this.XVR = paramInt2;
+    this.afMh = paramInt1;
+    this.afMg = paramInt2;
     return this;
   }
   
   public static abstract interface a
   {
-    public abstract void abc(String paramString);
+    public abstract void Tw(String paramString);
     
-    public abstract void abd(String paramString);
+    public abstract void Tx(String paramString);
     
-    public abstract void dN(String paramString);
+    public abstract void eY(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -16,13 +16,13 @@ import com.tencent.mm.plugin.wxpay.a.k;
 public class WalletItemView
   extends LinearLayout
 {
-  private String GJR;
-  private int GUZ;
-  private TextView GUs;
+  private String MGG;
+  private TextView MRV;
+  private int MSB;
   private Object mData;
   private String mTitle;
   private int mType;
-  private TextView pPT;
+  private TextView sUt;
   
   public WalletItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,7 +33,7 @@ public class WalletItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(69847);
-    this.GUZ = 1;
+    this.MSB = 1;
     this.mType = 0;
     this.mData = null;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.WalletItemView, paramInt, 0);
@@ -43,20 +43,20 @@ public class WalletItemView
     }
     paramInt = paramAttributeSet.getResourceId(a.k.WalletItemView_walletSummary, 0);
     if (paramInt != 0) {
-      this.GJR = paramContext.getString(paramInt);
+      this.MGG = paramContext.getString(paramInt);
     }
-    this.GUZ = paramAttributeSet.getInt(a.k.WalletItemView_android_lines, 1);
+    this.MSB = paramAttributeSet.getInt(a.k.WalletItemView_android_lines, 1);
     paramAttributeSet.recycle();
     paramContext = LayoutInflater.from(paramContext).inflate(a.g.wallet_item_view, this, true);
-    this.pPT = ((TextView)paramContext.findViewById(a.f.title_tv));
-    this.GUs = ((TextView)paramContext.findViewById(a.f.summary_tv));
-    if (this.pPT != null) {
-      this.pPT.setText(this.mTitle);
+    this.sUt = ((TextView)paramContext.findViewById(a.f.title_tv));
+    this.MRV = ((TextView)paramContext.findViewById(a.f.summary_tv));
+    if (this.sUt != null) {
+      this.sUt.setText(this.mTitle);
     }
-    if (this.GUs != null)
+    if (this.MRV != null)
     {
-      this.GUs.setText(this.GJR);
-      this.GUs.setLines(this.GUZ);
+      this.MRV.setText(this.MGG);
+      this.MRV.setLines(this.MSB);
     }
     AppMethodBeat.o(69847);
   }
@@ -74,16 +74,16 @@ public class WalletItemView
   public void setSummary(Spanned paramSpanned)
   {
     AppMethodBeat.i(69850);
-    this.GJR = paramSpanned.toString();
-    this.GUs.setText(this.GJR);
+    this.MGG = paramSpanned.toString();
+    this.MRV.setText(this.MGG);
     AppMethodBeat.o(69850);
   }
   
   public void setSummary(String paramString)
   {
     AppMethodBeat.i(69849);
-    this.GJR = paramString;
-    this.GUs.setText(this.GJR);
+    this.MGG = paramString;
+    this.MRV.setText(this.MGG);
     AppMethodBeat.o(69849);
   }
   
@@ -91,13 +91,13 @@ public class WalletItemView
   {
     AppMethodBeat.i(69848);
     this.mTitle = paramString;
-    this.pPT.setText(this.mTitle);
+    this.sUt.setText(this.mTitle);
     AppMethodBeat.o(69848);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.ui.WalletItemView
  * JD-Core Version:    0.7.0.1
  */

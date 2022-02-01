@@ -3,23 +3,22 @@ package com.tencent.mm.plugin.finder.video;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.widget.camerarecordview.preview.CameraPreviewGLSurfaceView;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.recordvideo.e.c;
+import com.tencent.mm.modelvideo.v;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
+import com.tencent.mm.plugin.recordvideo.util.f;
 import com.tencent.mm.plugin.xlabeffect.XEffectConfig;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderCameraContainerProcess;", "Lcom/tencent/mm/plugin/recordvideo/config/CameraContainerProcess;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "previewPlugin", "Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;", "(Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getEncodeConfig", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getPreviewRenderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getResolutionLimit", "", "getVideoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "useDaemonRecorder", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/video/FinderCameraContainerProcess;", "Lcom/tencent/mm/plugin/recordvideo/config/CameraContainerProcess;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "previewPlugin", "Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;", "(Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLSurfaceView;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getEncodeConfig", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getPreviewRenderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getResolutionLimit", "", "getVideoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "useDaemonRecorder", "", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends com.tencent.mm.plugin.recordvideo.b.b
+  extends com.tencent.mm.plugin.recordvideo.c.b
 {
   private final String TAG;
   
@@ -28,72 +27,72 @@ public final class a
     super(paramRecordConfigProvider, paramCameraPreviewGLSurfaceView);
     AppMethodBeat.i(167999);
     this.TAG = "Finder.FinderCameraContainerProcess";
-    paramRecordConfigProvider = com.tencent.mm.plugin.finder.storage.d.AjH;
-    if (com.tencent.mm.plugin.finder.storage.d.dTl())
+    paramRecordConfigProvider = com.tencent.mm.plugin.finder.storage.d.FAy;
+    if (com.tencent.mm.plugin.finder.storage.d.eRA())
     {
       paramRecordConfigProvider = super.getVideoTransPara();
-      paramCameraPreviewGLSurfaceView = com.tencent.mm.plugin.finder.storage.d.AjH;
-      paramRecordConfigProvider.videoBitrate = com.tencent.mm.plugin.finder.storage.d.dTm();
+      paramCameraPreviewGLSurfaceView = com.tencent.mm.plugin.finder.storage.d.FAy;
+      paramRecordConfigProvider.videoBitrate = com.tencent.mm.plugin.finder.storage.d.eRB();
     }
     AppMethodBeat.o(167999);
   }
   
-  public final boolean aZq()
+  public final boolean bup()
   {
     boolean bool2 = false;
     AppMethodBeat.i(178467);
-    if (aZo())
+    if (bun())
     {
       Log.i(this.TAG, "useDaemonRecorder useCpuCrop false");
-      localObject = c.IeQ;
-      c.xc(false);
+      localObject = com.tencent.mm.plugin.recordvideo.util.d.Obm;
+      com.tencent.mm.plugin.recordvideo.util.d.BD(false);
       AppMethodBeat.o(178467);
       return false;
     }
-    Object localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
+    Object localObject = com.tencent.mm.plugin.finder.storage.d.FAy;
     boolean bool1 = bool2;
-    if (com.tencent.mm.plugin.finder.storage.d.dTl())
+    if (com.tencent.mm.plugin.finder.storage.d.eRA())
     {
       bool1 = bool2;
-      if (fvw().aZc()) {
+      if (gHl().bub()) {
         bool1 = true;
       }
     }
     localObject = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder("useDaemonRecorder useDaemonRecorder:").append(bool1).append(", FinderConfig.USE_DAEMON_RECORD:");
-    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.AjH;
-    Log.i((String)localObject, com.tencent.mm.plugin.finder.storage.d.dTl());
-    localObject = c.IeQ;
-    c.xc(bool1);
+    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+    Log.i((String)localObject, com.tencent.mm.plugin.finder.storage.d.eRA());
+    localObject = com.tencent.mm.plugin.recordvideo.util.d.Obm;
+    com.tencent.mm.plugin.recordvideo.util.d.BD(bool1);
     AppMethodBeat.o(178467);
     return bool1;
   }
   
   public final com.tencent.mm.media.widget.camerarecordview.b.a getEncodeConfig()
   {
-    AppMethodBeat.i(281544);
+    AppMethodBeat.i(334941);
     com.tencent.mm.media.widget.camerarecordview.b.a locala = (com.tencent.mm.media.widget.camerarecordview.b.a)new a(this);
-    AppMethodBeat.o(281544);
+    AppMethodBeat.o(334941);
     return locala;
   }
   
   public final com.tencent.mm.media.j.a getPreviewRenderer()
   {
-    AppMethodBeat.i(281545);
-    if ((this.ALV.HLp.QPr) || (this.ALV.HLp.QPs)) {}
+    AppMethodBeat.i(334952);
+    if ((this.oaV.NIn.XKq) || (this.oaV.NIn.XKr)) {}
     for (int i = 1;; i = 0)
     {
-      if ((i != 0) && (fvx() == null))
+      if ((i != 0) && (gHm() == null))
       {
-        a(new com.tencent.mm.plugin.recordvideo.c.b(6));
-        this.HJv = new com.tencent.mm.plugin.recordvideo.c.a();
-        localObject = fvx();
+        a(new com.tencent.mm.plugin.recordvideo.e.c(6));
+        this.NGv = new com.tencent.mm.plugin.recordvideo.e.b();
+        localObject = gHm();
         if (localObject != null) {
-          ((com.tencent.mm.plugin.recordvideo.c.b)localObject).HUh = ((m)new b(this));
+          ((com.tencent.mm.plugin.recordvideo.e.c)localObject).NQZ = ((m)new b(this));
         }
       }
       Object localObject = super.getPreviewRenderer();
-      AppMethodBeat.o(281545);
+      AppMethodBeat.o(334952);
       return localObject;
     }
   }
@@ -105,9 +104,9 @@ public final class a
   
   public final VideoTransPara getVideoTransPara()
   {
-    AppMethodBeat.i(281543);
+    AppMethodBeat.i(334937);
     VideoTransPara localVideoTransPara = super.getVideoTransPara();
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vKC, 1920);
+    int i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zaW, 1920);
     float f;
     if ((localVideoTransPara.width > i) || (localVideoTransPara.height > i))
     {
@@ -121,10 +120,10 @@ public final class a
     }
     for (;;)
     {
-      localVideoTransPara.width = com.tencent.mm.plugin.mmsight.d.WV(localVideoTransPara.width);
-      localVideoTransPara.height = com.tencent.mm.plugin.mmsight.d.WV(localVideoTransPara.height);
+      localVideoTransPara.width = com.tencent.mm.plugin.mmsight.d.aaX(localVideoTransPara.width);
+      localVideoTransPara.height = com.tencent.mm.plugin.mmsight.d.aaX(localVideoTransPara.height);
       Log.i(this.TAG, "getVideoTransPara, do size crop, width:" + localVideoTransPara.width + ", height:" + localVideoTransPara.height + ", maxSize:" + i);
-      AppMethodBeat.o(281543);
+      AppMethodBeat.o(334937);
       return localVideoTransPara;
       label206:
       localVideoTransPara.width = ((int)(i / f));
@@ -132,54 +131,56 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/video/FinderCameraContainerProcess$getEncodeConfig$1", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getFilePath", "", "getRecordType", "", "getThumbPath", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderCameraContainerProcess$getEncodeConfig$1", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getFilePath", "", "getRecordType", "", "getThumbPath", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements com.tencent.mm.media.widget.camerarecordview.b.a
   {
-    public final int aZd()
+    a(a parama) {}
+    
+    public final int buc()
     {
-      AppMethodBeat.i(271856);
+      AppMethodBeat.i(335104);
       if (MultiProcessMMKV.getSingleDefault().getBoolean("mediacodec_create_error", false))
       {
-        AppMethodBeat.o(271856);
+        AppMethodBeat.o(335104);
         return 1;
       }
-      if (com.tencent.mm.plugin.recordvideo.b.h.isInit())
+      if (com.tencent.mm.plugin.recordvideo.c.h.isInit())
       {
-        com.tencent.mm.plugin.recordvideo.b.h localh = com.tencent.mm.plugin.recordvideo.b.h.HKf;
-        i = com.tencent.mm.plugin.recordvideo.b.h.fvJ();
-        AppMethodBeat.o(271856);
+        com.tencent.mm.plugin.recordvideo.c.h localh = com.tencent.mm.plugin.recordvideo.c.h.NHb;
+        i = com.tencent.mm.plugin.recordvideo.c.h.gHx();
+        AppMethodBeat.o(335104);
         return i;
       }
-      int i = this.AJO.ALV.recordType;
-      AppMethodBeat.o(271856);
+      int i = this.GmA.oaV.recordType;
+      AppMethodBeat.o(335104);
       return i;
     }
     
-    public final String aZe()
+    public final String bud()
     {
       return "";
     }
     
     public final String getFilePath()
     {
-      AppMethodBeat.i(271857);
-      Object localObject = com.tencent.mm.plugin.recordvideo.e.d.IeU;
-      if (!u.agG(com.tencent.mm.plugin.recordvideo.e.d.fzv())) {
-        u.bBD(com.tencent.mm.plugin.recordvideo.e.d.fzv());
+      AppMethodBeat.i(335112);
+      Object localObject = f.Obq;
+      if (!y.ZC(f.gLh())) {
+        y.bDX(f.gLh());
       }
       localObject = new StringBuilder();
-      p.j(s.bqA(), "SubCoreVideo.getCore()");
-      localObject = s.bqJ() + "/" + System.currentTimeMillis();
-      AppMethodBeat.o(271857);
+      v.bOg();
+      localObject = v.bOp() + '/' + System.currentTimeMillis();
+      AppMethodBeat.o(335112);
       return localObject;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "width", "", "height", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "width", "", "height"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements m<Integer, Integer, x>
+    extends u
+    implements m<Integer, Integer, ah>
   {
     b(a parama)
     {
@@ -189,7 +190,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.a
  * JD-Core Version:    0.7.0.1
  */

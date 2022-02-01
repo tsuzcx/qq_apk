@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.forcenotify.ui;
 
-import android.media.AudioManager;
+import android.app.KeyguardManager;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/media/AudioManager;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Landroid/app/KeyguardManager;"}, k=3, mv={1, 5, 1}, xi=48)
 final class b$d
-  extends q
-  implements a<AudioManager>
+  extends u
+  implements a<KeyguardManager>
 {
   b$d(b paramb)
   {

@@ -18,16 +18,16 @@ import java.util.LinkedList;
 
 public final class h
 {
-  private static HashMap<String, p> CAn;
-  private static LinkedList<String> CAo;
-  private static HashMap<String, a> jPb;
+  private static HashMap<String, p> ItY;
+  private static LinkedList<String> ItZ;
+  private static HashMap<String, a> mnT;
   
   static
   {
     AppMethodBeat.i(83024);
-    CAn = new HashMap();
-    jPb = new HashMap();
-    CAo = new LinkedList();
+    ItY = new HashMap();
+    mnT = new HashMap();
+    ItZ = new LinkedList();
     AppMethodBeat.o(83024);
   }
   
@@ -44,29 +44,29 @@ public final class h
       AppMethodBeat.o(83020);
       return;
     }
-    if (CAn.containsKey(paramString))
+    if (ItY.containsKey(paramString))
     {
       Log.i("MicroMsg.PreloadGameWebCoreHelp", "preload page[%s] exists, return", new Object[] { paramString });
       parama.callback();
       AppMethodBeat.o(83020);
       return;
     }
-    if (CAo.contains(paramString))
+    if (ItZ.contains(paramString))
     {
       Log.i("MicroMsg.PreloadGameWebCoreHelp", "preload ing, return");
       parama.callback();
       AppMethodBeat.o(83020);
       return;
     }
-    CAo.add(paramString);
-    s.y(new Runnable()
+    ItZ.add(paramString);
+    s.D(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(83017);
-        p localp = new p(MMApplicationContext.getContext(), this.CAq);
-        h.CAn.put(paramString, localp);
-        h.cEr().remove(paramString);
+        p localp = new p(MMApplicationContext.getContext(), h.this);
+        h.ItY.put(paramString, localp);
+        h.dhT().remove(paramString);
         if (!TextUtils.isEmpty(paramString))
         {
           Log.i("MicroMsg.PreloadGameWebCoreHelp", "loadUrl: %s", new Object[] { paramString });
@@ -83,49 +83,54 @@ public final class h
   
   public static void a(String paramString, b paramb)
   {
-    AppMethodBeat.i(232034);
+    AppMethodBeat.i(276957);
     if ((!MMApplicationContext.isToolsProcess()) && (!MMApplicationContext.isToolsMpProcess()))
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("action_id", 3);
       localBundle.putString("preload_url", paramString);
       b.b(localBundle, c.class, new f() {});
-      AppMethodBeat.o(232034);
+      AppMethodBeat.o(276957);
       return;
     }
-    paramb.mi(aJo(paramString));
-    AppMethodBeat.o(232034);
+    if (aFZ(paramString) != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramb.at(bool, aGa(paramString));
+      AppMethodBeat.o(276957);
+      return;
+    }
   }
   
-  public static p aJn(String paramString)
+  public static p aFZ(String paramString)
   {
     AppMethodBeat.i(83022);
-    paramString = (p)CAn.get(paramString);
+    paramString = (p)ItY.get(paramString);
     AppMethodBeat.o(83022);
     return paramString;
   }
   
-  private static boolean aJo(String paramString)
+  private static boolean aGa(String paramString)
   {
-    AppMethodBeat.i(232038);
-    paramString = (p)CAn.get(paramString);
-    if ((paramString != null) && (paramString.Ow() != null) && (((com.tencent.mm.plugin.game.luggage.g.h)paramString.Ow()).ewT()))
+    AppMethodBeat.i(276966);
+    paramString = (p)ItY.get(paramString);
+    if ((paramString != null) && (paramString.aoE() != null) && (((com.tencent.mm.plugin.game.luggage.page.h)paramString.aoE()).fEO()))
     {
-      AppMethodBeat.o(232038);
+      AppMethodBeat.o(276966);
       return true;
     }
-    AppMethodBeat.o(232038);
+    AppMethodBeat.o(276966);
     return false;
   }
   
-  public static p aR(Context paramContext, String paramString)
+  public static p aT(Context paramContext, String paramString)
   {
     AppMethodBeat.i(83021);
-    paramString = (p)CAn.remove(paramString);
+    paramString = (p)ItY.remove(paramString);
     if (paramString != null)
     {
       paramString.setContext(paramContext);
-      paramString.Ov();
+      paramString.aoD();
     }
     AppMethodBeat.o(83021);
     return paramString;
@@ -136,14 +141,14 @@ public final class h
     AppMethodBeat.i(83023);
     if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
     {
-      localObject = CAn.values().iterator();
+      localObject = ItY.values().iterator();
       while (((Iterator)localObject).hasNext())
       {
         p localp = (p)((Iterator)localObject).next();
-        localp.Ov();
-        localp.Ox();
+        localp.aoD();
+        localp.aoF();
       }
-      CAn.clear();
+      ItY.clear();
       AppMethodBeat.o(83023);
       return;
     }
@@ -155,23 +160,23 @@ public final class h
   
   public static void remove(String paramString)
   {
-    AppMethodBeat.i(232036);
+    AppMethodBeat.i(276961);
     if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
     {
-      paramString = (p)CAn.remove(paramString);
+      paramString = (p)ItY.remove(paramString);
       if (paramString != null)
       {
-        paramString.Ov();
-        paramString.Ox();
+        paramString.aoD();
+        paramString.aoF();
       }
-      AppMethodBeat.o(232036);
+      AppMethodBeat.o(276961);
       return;
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("action_id", 2);
     localBundle.putString("preload_url", paramString);
     b.b(localBundle, c.class, null);
-    AppMethodBeat.o(232036);
+    AppMethodBeat.o(276961);
   }
   
   public static abstract interface a
@@ -181,7 +186,7 @@ public final class h
   
   public static abstract interface b
   {
-    public abstract void mi(boolean paramBoolean);
+    public abstract void at(boolean paramBoolean1, boolean paramBoolean2);
   }
   
   @com.tencent.mm.ipcinvoker.c.a

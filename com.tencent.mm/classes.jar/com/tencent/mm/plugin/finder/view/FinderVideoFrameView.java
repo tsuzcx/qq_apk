@@ -8,68 +8,71 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "textureView", "Landroid/view/TextureView;", "getTextureView", "()Landroid/view/TextureView;", "setTextureView", "(Landroid/view/TextureView;)V", "initView", "", "resize", "width", "height", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "textureView", "Landroid/view/TextureView;", "getTextureView", "()Landroid/view/TextureView;", "setTextureView", "(Landroid/view/TextureView;)V", "initView", "", "resize", "width", "height", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderVideoFrameView
   extends FrameLayout
 {
-  public TextureView aND;
+  public TextureView cHz;
   
   public FinderVideoFrameView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(277728);
+    AppMethodBeat.i(344408);
     initView();
-    AppMethodBeat.o(277728);
+    AppMethodBeat.o(344408);
   }
   
   public FinderVideoFrameView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(277729);
+    AppMethodBeat.i(344419);
     initView();
-    AppMethodBeat.o(277729);
+    AppMethodBeat.o(344419);
   }
   
   public FinderVideoFrameView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(277730);
+    AppMethodBeat.i(344432);
     initView();
-    AppMethodBeat.o(277730);
+    AppMethodBeat.o(344432);
   }
   
   private final void initView()
   {
-    AppMethodBeat.i(277727);
-    LayoutInflater.from(getContext()).inflate(b.g.finder_video_frame_view_layout, (ViewGroup)this, true);
-    View localView = findViewById(b.f.video_frame_textureview);
-    p.j(localView, "findViewById(R.id.video_frame_textureview)");
-    this.aND = ((TextureView)localView);
-    AppMethodBeat.o(277727);
+    AppMethodBeat.i(344446);
+    LayoutInflater.from(getContext()).inflate(e.f.finder_video_frame_view_layout, (ViewGroup)this, true);
+    View localView = findViewById(e.e.video_frame_textureview);
+    s.s(localView, "findViewById(R.id.video_frame_textureview)");
+    setTextureView((TextureView)localView);
+    AppMethodBeat.o(344446);
   }
   
   public final TextureView getTextureView()
   {
-    AppMethodBeat.i(277725);
-    TextureView localTextureView = this.aND;
-    if (localTextureView == null) {
-      p.bGy("textureView");
+    AppMethodBeat.i(344459);
+    TextureView localTextureView = this.cHz;
+    if (localTextureView != null)
+    {
+      AppMethodBeat.o(344459);
+      return localTextureView;
     }
-    AppMethodBeat.o(277725);
-    return localTextureView;
+    s.bIx("textureView");
+    AppMethodBeat.o(344459);
+    return null;
   }
   
   public final void setTextureView(TextureView paramTextureView)
   {
-    AppMethodBeat.i(277726);
-    p.k(paramTextureView, "<set-?>");
-    this.aND = paramTextureView;
-    AppMethodBeat.o(277726);
+    AppMethodBeat.i(344467);
+    s.u(paramTextureView, "<set-?>");
+    this.cHz = paramTextureView;
+    AppMethodBeat.o(344467);
   }
 }
 

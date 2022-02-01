@@ -5,12 +5,12 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a$a
 {
-  private static final a Wfw;
+  private static final a adLo;
   
   static
   {
     AppMethodBeat.i(141493);
-    Wfw = new a(MMApplicationContext.getContext());
+    adLo = new a(MMApplicationContext.getContext());
     AppMethodBeat.o(141493);
   }
 }

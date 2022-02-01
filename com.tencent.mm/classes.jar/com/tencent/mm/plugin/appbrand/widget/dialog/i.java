@@ -2,121 +2,264 @@ package com.tencent.mm.plugin.appbrand.widget.dialog;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.animation.ArgbEvaluator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.ColorDrawable;
+import android.app.Dialog;
+import android.content.Context;
+import android.media.AudioManager;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.RatingBar.OnRatingBarChangeListener;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.ba.j;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.crashfix.b.a;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.dzg;
+import com.tencent.mm.protocal.protobuf.fjy;
+import com.tencent.mm.protocal.protobuf.fjz;
+import com.tencent.mm.protocal.protobuf.fsp;
+import com.tencent.mm.protocal.protobuf.fsq;
+import com.tencent.mm.protocal.protobuf.glj;
+import com.tencent.mm.protocal.protobuf.gnm;
+import com.tencent.mm.protocal.protobuf.gnn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.LinkedList;
 
-final class i
+public final class i
 {
-  ValueAnimator animator;
-  private int ruz;
-  View view;
+  public String appId;
+  public String hzy;
+  public com.tencent.mm.plugin.appbrand.report.b rpC;
+  public int sJm;
+  public int scene;
+  public String sessionId;
+  public boolean uCN;
+  int uCR;
+  public RatingBar uCS;
+  public Dialog uCz;
+  public TextView uDc;
+  public LinearLayout uDd;
+  public LinearLayout uDk;
+  boolean uDl;
+  public TextView uck;
+  public String userName;
   
-  public i(View paramView)
+  public i(c paramc)
   {
-    this.view = paramView;
+    AppMethodBeat.i(49886);
+    this.uCN = false;
+    this.uCR = 0;
+    this.sJm = -1;
+    this.uDl = false;
+    paramc = (com.tencent.mm.plugin.appbrand.game.b)paramc.aa(com.tencent.mm.plugin.appbrand.game.b.class);
+    if (paramc != null) {
+      this.rpC = paramc.coF();
+    }
+    AppMethodBeat.o(49886);
   }
   
-  final void c(int paramInt, final Runnable paramRunnable)
+  public static Dialog E(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(131496);
-    if (this.view == null)
+    AppMethodBeat.i(49887);
+    paramContext = new a(paramContext, ba.j.AppBrandEvaluateDialogStyle);
+    paramContext.setCancelable(true);
+    paramContext.setCanceledOnTouchOutside(paramBoolean);
+    Window localWindow = paramContext.getWindow();
+    if (localWindow != null)
     {
-      AppMethodBeat.o(131496);
+      localWindow.getDecorView().setPadding(0, 0, 0, 0);
+      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+      localLayoutParams.gravity = 81;
+      localLayoutParams.height = -2;
+      localLayoutParams.width = -1;
+      localWindow.setAttributes(localLayoutParams);
+      localWindow.setWindowAnimations(ba.j.AppBrandEvaluateDialogAnimation);
+    }
+    AppMethodBeat.o(49887);
+    return paramContext;
+  }
+  
+  final void a(w paramw, boolean paramBoolean, dzg paramdzg, gnm paramgnm)
+  {
+    AppMethodBeat.i(175092);
+    if (this.uDl)
+    {
+      AppMethodBeat.o(175092);
       return;
     }
-    if ((isRunning()) && (this.ruz == paramInt))
+    this.uDl = true;
+    int i;
+    if (paramdzg == null)
     {
-      AppMethodBeat.o(131496);
-      return;
-    }
-    this.ruz = paramInt;
-    if (((this.view.getBackground() instanceof ColorDrawable)) && (((ColorDrawable)this.view.getBackground()).getColor() == paramInt))
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
+      i = 0;
+      paramdzg = (AudioManager)paramw.mContext.getSystemService("audio");
+      if (paramdzg == null) {
+        break label387;
       }
-      if (this.animator != null) {
-        this.animator.cancel();
-      }
-      AppMethodBeat.o(131496);
-      return;
     }
-    paramRunnable = new AnimatorListenerAdapter()
+    for (;;)
     {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator)
+      try
       {
-        i.this.animator = null;
-      }
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(131494);
-        if (paramRunnable != null) {
-          paramRunnable.run();
+        j = paramdzg.getStreamVolume(3);
+        glj localglj = new glj();
+        if (j != 0) {
+          break label393;
         }
-        i.this.animator = null;
-        AppMethodBeat.o(131494);
-      }
-    };
-    if ((this.animator != null) && (this.animator.isStarted()) && (this.animator.isRunning()) && (this.ruz == paramInt))
-    {
-      this.animator.addListener(paramRunnable);
-      AppMethodBeat.o(131496);
-      return;
-    }
-    if (this.animator != null) {
-      this.animator.cancel();
-    }
-    if ((this.view.getBackground() instanceof ColorDrawable)) {}
-    for (paramInt = ((ColorDrawable)this.view.getBackground()).getColor();; paramInt = 0)
-    {
-      this.animator = ValueAnimator.ofObject(new ArgbEvaluator(), new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.ruz) });
-      this.animator.addListener(paramRunnable);
-      this.animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-      {
-        public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-        {
-          AppMethodBeat.i(131495);
-          if (i.this.view != null) {
-            i.this.view.setBackgroundColor(((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
-          }
-          AppMethodBeat.o(131495);
+        bool = true;
+        localglj.acgS = bool;
+        paramdzg = com.tencent.mm.plugin.music.b.i.glV();
+        str1 = paramw.mAppId;
+        localglj.acgT = paramdzg.LIM.contains(str1);
+        localglj.acgU = (this.sJm / 1000);
+        if (!paramBoolean) {
+          break label399;
         }
-      });
-      this.animator.start();
-      AppMethodBeat.o(131496);
+        paramdzg = "true";
+        String str3 = paramgnm.acix;
+        if (j != 0) {
+          break label406;
+        }
+        str1 = "true";
+        if (!localglj.acgT) {
+          break label414;
+        }
+        str2 = "true";
+        Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "submitGameEvaluateResult reject[%s] questionId[%s] optionId[%d] isMute[%s] isPlayMusic[%s] playSeconds[%d]", new Object[] { paramdzg, str3, Integer.valueOf(i), str1, str2, Integer.valueOf(localglj.acgU) });
+        paramdzg = new gnn();
+        paramdzg.aciC = paramBoolean;
+        paramdzg.abdZ = i;
+        paramdzg.acix = paramgnm.acix;
+        paramgnm = new fjy();
+        paramgnm.oOI = paramw.mAppId;
+        paramgnm.aaCu = this.rpC.tMT;
+        paramgnm.aaCt = this.rpC.tMU;
+        paramgnm.aaCv = localglj;
+        paramgnm.abKt = paramdzg;
+        paramw = new c.a();
+        paramw.funcId = 2772;
+        paramw.uri = "/cgi-bin/mmgame-bin/submitoriginalreview";
+        paramw.otE = paramgnm;
+        paramw.otF = new fjz();
+        IPCRunCgi.a(paramw.bEF(), new i.14(this));
+        AppMethodBeat.o(175092);
+        return;
+      }
+      catch (Exception paramdzg)
+      {
+        Log.e("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "currentVolume get error: %s", new Object[] { paramdzg.toString() });
+        h.OAn.idkeyStat(1237L, 6L, 1L, false);
+      }
+      i = paramdzg.abdZ;
+      break;
+      label387:
+      int j = 0;
+      continue;
+      label393:
+      boolean bool = false;
+      continue;
+      label399:
+      paramdzg = "false";
+      continue;
+      label406:
+      String str1 = "false";
+      continue;
+      label414:
+      String str2 = "false";
+    }
+  }
+  
+  final void a(fsp paramfsp)
+  {
+    AppMethodBeat.i(49888);
+    c.a locala = new c.a();
+    locala.funcId = 2521;
+    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/updateevaluate";
+    locala.otE = paramfsp;
+    locala.otF = new fsq();
+    IPCRunCgi.a(locala.bEF(), new i.5(this));
+    AppMethodBeat.o(49888);
+  }
+  
+  final void aqi(int paramInt)
+  {
+    AppMethodBeat.i(49890);
+    int i = ba.i.app_brand_evaluate_star_one;
+    switch (paramInt)
+    {
+    default: 
+      paramInt = i;
+    }
+    for (;;)
+    {
+      this.uDc.setText(paramInt);
+      AppMethodBeat.o(49890);
+      return;
+      paramInt = ba.i.app_brand_evaluate_star_one;
+      continue;
+      paramInt = ba.i.app_brand_evaluate_star_two;
+      continue;
+      paramInt = ba.i.app_brand_evaluate_star_three;
+      continue;
+      paramInt = ba.i.app_brand_evaluate_star_four;
+      continue;
+      paramInt = ba.i.app_brand_evaluate_star_five;
+    }
+  }
+  
+  public final void dismiss()
+  {
+    AppMethodBeat.i(49892);
+    if (this.uCz != null)
+    {
+      this.uCz.dismiss();
+      this.uCz = null;
+    }
+    AppMethodBeat.o(49892);
+  }
+  
+  public final void fY(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(49893);
+    if (Util.isNullOrNil(this.appId))
+    {
+      Log.e("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "operateReport, no app id");
+      AppMethodBeat.o(49893);
       return;
     }
+    Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "operateReport, appId:%s, eventId:%s, session:%s, score:%s, scene:%s, result:%s, path:%s", new Object[] { this.appId, Integer.valueOf(paramInt1), this.sessionId, Integer.valueOf(this.uCR), Integer.valueOf(this.scene), Integer.valueOf(paramInt2), this.hzy });
+    h.OAn.b(16176, new Object[] { this.appId, Integer.valueOf(paramInt1), Long.valueOf(Util.nowSecond()), Integer.valueOf(this.uCR), this.sessionId, this.hzy, Integer.valueOf(this.scene), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(49893);
   }
   
-  final void cancel()
+  public final void show()
   {
-    AppMethodBeat.i(131497);
-    if (this.animator != null) {
-      this.animator.cancel();
+    AppMethodBeat.i(49891);
+    if (this.uCz != null) {
+      this.uCz.show();
     }
-    AppMethodBeat.o(131497);
-  }
-  
-  final boolean isRunning()
-  {
-    AppMethodBeat.i(131498);
-    if ((this.animator != null) && (this.animator.isRunning()))
-    {
-      AppMethodBeat.o(131498);
-      return true;
-    }
-    AppMethodBeat.o(131498);
-    return false;
+    AppMethodBeat.o(49891);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.i
  * JD-Core Version:    0.7.0.1
  */

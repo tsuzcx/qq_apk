@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.textstatus.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.d.b.b;
-import com.tencent.mm.loader.f.g;
-import com.tencent.mm.loader.h.a.a;
-import com.tencent.mm.loader.h.f;
+import com.tencent.mm.loader.c.b.b;
+import com.tencent.mm.loader.e.g;
+import com.tencent.mm.loader.g.a.a;
+import com.tencent.mm.loader.g.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/download/TextStatusImgDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/textstatus/download/TextStatusImage;", "()V", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/download/TextStatusImgDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/textstatus/download/TextStatusImage;", "()V", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends com.tencent.mm.loader.d.b<b>
+  extends com.tencent.mm.loader.c.b<b>
 {
   public final void a(a<b> parama, g paramg, b.b paramb)
   {
-    AppMethodBeat.i(232834);
-    p.k(parama, "url");
-    p.k(paramg, "fileNameCreator");
-    p.k(paramb, "callback");
+    AppMethodBeat.i(289649);
+    s.u(parama, "url");
+    s.u(paramg, "fileNameCreator");
+    s.u(paramb, "callback");
     try
     {
-      paramg = Util.httpGet(((b)parama.aSr()).toString());
+      paramg = Util.httpGet(((b)parama.bmg()).toString());
       if (paramg == null)
       {
-        Log.e("TextStatusLoader", "loadDataImp() data == null url = " + (b)parama.aSr());
-        paramb.onError();
-        AppMethodBeat.o(232834);
+        Log.e("MicroMsg.TextStatus.TextStatusLoader", s.X("loadDataImp() data == null url = ", parama.bmg()));
+        paramb.atR();
+        AppMethodBeat.o(289649);
         return;
       }
-      Log.i("TextStatusLoader", "loadDataImp() finished with: url = " + (b)parama.aSr());
-      parama = com.tencent.mm.loader.h.b.d(paramg, "");
-      p.j(parama, "HttpResponse.create(data,\"\")");
+      Log.i("MicroMsg.TextStatus.TextStatusLoader", s.X("loadDataImp() finished with: url = ", parama.bmg()));
+      parama = com.tencent.mm.loader.g.b.d(paramg, "");
+      s.s(parama, "create(data,\"\")");
       paramb.a((f)parama);
-      AppMethodBeat.o(232834);
+      AppMethodBeat.o(289649);
       return;
     }
-    catch (Throwable parama)
+    finally
     {
-      Log.printErrStackTrace("TextStatusLoader", parama, "loadDataImp err", new Object[0]);
-      paramb.onError();
-      AppMethodBeat.o(232834);
+      Log.printErrStackTrace("MicroMsg.TextStatus.TextStatusLoader", parama, "loadDataImp err", new Object[0]);
+      paramb.atR();
+      AppMethodBeat.o(289649);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.c.c
  * JD-Core Version:    0.7.0.1
  */

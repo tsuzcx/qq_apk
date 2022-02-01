@@ -5,7 +5,6 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.wearable.ChannelApi.ChannelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
 
 final class zzan
   extends zzn<Status>
@@ -13,7 +12,7 @@ final class zzan
   private final String zzce;
   private ChannelApi.ChannelListener zzcf;
   
-  zzan(GoogleApiClient paramGoogleApiClient, ChannelApi.ChannelListener paramChannelListener, @Nullable String paramString)
+  zzan(GoogleApiClient paramGoogleApiClient, ChannelApi.ChannelListener paramChannelListener, String paramString)
   {
     super(paramGoogleApiClient);
     AppMethodBeat.i(100987);
@@ -24,7 +23,7 @@ final class zzan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzan
  * JD-Core Version:    0.7.0.1
  */

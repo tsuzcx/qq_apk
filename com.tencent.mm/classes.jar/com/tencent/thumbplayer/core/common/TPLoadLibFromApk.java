@@ -28,18 +28,18 @@ public final class TPLoadLibFromApk
   
   static
   {
-    AppMethodBeat.i(222917);
+    AppMethodBeat.i(227798);
     mLoadedLibs = new HashMap();
     mContext = null;
-    AppMethodBeat.o(222917);
+    AppMethodBeat.o(227798);
   }
   
   private static void extractAllLibraries(Context paramContext)
   {
-    AppMethodBeat.i(222907);
+    AppMethodBeat.i(227758);
     if (paramContext == null)
     {
-      AppMethodBeat.o(222907);
+      AppMethodBeat.o(227758);
       return;
     }
     Object localObject1 = generateAbiList();
@@ -62,14 +62,14 @@ public final class TPLoadLibFromApk
         if ((!TextUtils.isEmpty(str)) && (str.contains("../")))
         {
           localObject1 = new Exception("contain ../, throw err");
-          AppMethodBeat.o(222907);
+          AppMethodBeat.o(227758);
           throw ((Throwable)localObject1);
         }
       }
       finally
       {
         paramContext.close();
-        AppMethodBeat.o(222907);
+        AppMethodBeat.o(227758);
       }
       Object localObject2 = localPattern.matcher(((ZipEntry)localObject2).getName());
       if (((Matcher)localObject2).matches())
@@ -83,15 +83,15 @@ public final class TPLoadLibFromApk
       }
     }
     paramContext.close();
-    AppMethodBeat.o(222907);
+    AppMethodBeat.o(227758);
   }
   
   private static boolean extractLibrary(ZipFile paramZipFile, String paramString, List<String> paramList, File paramFile)
   {
-    AppMethodBeat.i(222896);
+    AppMethodBeat.i(227746);
     if (paramFile.isFile())
     {
-      AppMethodBeat.o(222896);
+      AppMethodBeat.o(227746);
       return true;
     }
     paramList = paramList.iterator();
@@ -101,13 +101,13 @@ public final class TPLoadLibFromApk
       paramString = paramZipFile.getEntry("lib/" + paramList + "/lib" + paramString + ".so");
       if (paramString == null)
       {
-        AppMethodBeat.o(222896);
+        AppMethodBeat.o(227746);
         return false;
       }
       paramList = paramString.getName();
       if ((!TextUtils.isEmpty(paramList)) && (paramList.contains("../")))
       {
-        AppMethodBeat.o(222896);
+        AppMethodBeat.o(227746);
         return false;
       }
       paramZipFile = paramZipFile.getInputStream(paramString);
@@ -129,31 +129,29 @@ public final class TPLoadLibFromApk
       {
         paramZipFile.close();
         paramString.close();
-        AppMethodBeat.o(222896);
+        AppMethodBeat.o(227746);
       }
       paramString.close();
       try
       {
         paramFile.setReadOnly();
-        AppMethodBeat.o(222896);
-        return true;
       }
-      catch (Throwable paramZipFile)
+      finally
       {
-        AppMethodBeat.o(222896);
+        AppMethodBeat.o(227746);
         return false;
       }
     }
-    AppMethodBeat.o(222896);
+    AppMethodBeat.o(227746);
     return false;
   }
   
   public static String find(String paramString, Context paramContext)
   {
-    AppMethodBeat.i(222871);
+    AppMethodBeat.i(227697);
     if (paramContext == null)
     {
-      AppMethodBeat.o(222871);
+      AppMethodBeat.o(227697);
       return null;
     }
     try
@@ -171,7 +169,7 @@ public final class TPLoadLibFromApk
           localObject3 = paramString.getAbsolutePath();
         }
       }
-      AppMethodBeat.o(222871);
+      AppMethodBeat.o(227697);
       return localObject3;
     }
     catch (Exception localException)
@@ -185,7 +183,7 @@ public final class TPLoadLibFromApk
   
   private static List<String> generateAbiList()
   {
-    AppMethodBeat.i(222886);
+    AppMethodBeat.i(227725);
     ArrayList localArrayList = new ArrayList(3);
     Object localObject = Class.forName("android.os.SystemProperties").getMethod("get", new Class[] { String.class });
     String str = (String)((Method)localObject).invoke(null, new Object[] { "ro.product.cpu.abi" });
@@ -197,16 +195,16 @@ public final class TPLoadLibFromApk
       localArrayList.add(localObject);
     }
     localArrayList.add("armeabi");
-    AppMethodBeat.o(222886);
+    AppMethodBeat.o(227725);
     return localArrayList;
   }
   
   public static boolean load(String paramString, ClassLoader paramClassLoader, Context arg2)
   {
-    AppMethodBeat.i(222855);
+    AppMethodBeat.i(227646);
     if ((paramString == null) || (paramString.length() == 0) || (paramClassLoader == null))
     {
-      AppMethodBeat.o(222855);
+      AppMethodBeat.o(227646);
       return false;
     }
     mContext = ???;
@@ -224,11 +222,11 @@ public final class TPLoadLibFromApk
           if (localObject1 == paramClassLoader)
           {
             TPNativeLog.printLog(2, "callerClassLoader has already load ! name=".concat(String.valueOf(paramString)));
-            AppMethodBeat.o(222855);
+            AppMethodBeat.o(227646);
             return true;
           }
           paramString = new UnsatisfiedLinkError("Library '" + paramString + "' was loaded by a different ClassLoader.");
-          AppMethodBeat.o(222855);
+          AppMethodBeat.o(227646);
           throw paramString;
         }
       }
@@ -240,7 +238,7 @@ public final class TPLoadLibFromApk
           synchronized (mLoadedLibs)
           {
             mLoadedLibs.put(paramString, new WeakReference(paramClassLoader));
-            AppMethodBeat.o(222855);
+            AppMethodBeat.o(227646);
             return true;
           }
           localObject1 = new File(???.getDir("recover_lib", 0), "lib" + paramString + ".so");
@@ -248,40 +246,35 @@ public final class TPLoadLibFromApk
         catch (InvocationTargetException paramClassLoader)
         {
           paramString = (UnsatisfiedLinkError)new UnsatisfiedLinkError("Failed loading library: ".concat(String.valueOf(paramString))).initCause(paramClassLoader.getCause());
-          AppMethodBeat.o(222855);
+          AppMethodBeat.o(227646);
           throw paramString;
         }
         catch (Exception paramClassLoader)
         {
           paramString = (UnsatisfiedLinkError)new UnsatisfiedLinkError("Failed loading library: ".concat(String.valueOf(paramString))).initCause(paramClassLoader);
-          AppMethodBeat.o(222855);
+          AppMethodBeat.o(227646);
           throw paramString;
         }
       }
       try
       {
         ??? = loadFromRecovery(paramString, paramClassLoader, ???, (File)localObject1);
-        if (??? == null)
-        {
-          AppMethodBeat.o(222855);
+        if (??? == null) {
           return true;
         }
       }
-      catch (Throwable paramString)
+      finally
       {
-        AppMethodBeat.o(222855);
-        throw paramString;
+        AppMethodBeat.o(227646);
       }
       try
       {
         boolean bool = loadFromApk(paramString, paramClassLoader, ???, (File)localObject1, (UnsatisfiedLinkError)???);
-        AppMethodBeat.o(222855);
         return bool;
       }
-      catch (Throwable paramString)
+      finally
       {
-        AppMethodBeat.o(222855);
-        throw paramString;
+        AppMethodBeat.o(227646);
       }
       label392:
       Object localObject1 = null;
@@ -292,7 +285,7 @@ public final class TPLoadLibFromApk
   private static boolean loadFromApk(String paramString, ClassLoader paramClassLoader, Context arg2, File paramFile, UnsatisfiedLinkError paramUnsatisfiedLinkError)
   {
     // Byte code:
-    //   0: ldc_w 349
+    //   0: ldc_w 347
     //   3: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_2
     //   7: invokevirtual 62	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
@@ -308,16 +301,16 @@ public final class TPLoadLibFromApk
     //   29: iconst_2
     //   30: new 143	java/lang/StringBuilder
     //   33: dup
-    //   34: ldc_w 351
+    //   34: ldc_w 349
     //   37: invokespecial 146	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   40: aload_0
     //   41: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: ldc_w 353
+    //   44: ldc_w 351
     //   47: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: aload 6
     //   52: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   58: invokestatic 308	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   58: invokestatic 306	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   61: aload 5
     //   63: astore_2
     //   64: aload 5
@@ -328,17 +321,17 @@ public final class TPLoadLibFromApk
     //   74: ifne +91 -> 165
     //   77: aload 5
     //   79: astore_2
-    //   80: new 355	java/lang/RuntimeException
+    //   80: new 353	java/lang/RuntimeException
     //   83: dup
-    //   84: ldc_w 357
+    //   84: ldc_w 355
     //   87: aload_0
-    //   88: invokestatic 298	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   91: invokevirtual 302	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   94: invokespecial 358	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   88: invokestatic 296	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   91: invokevirtual 300	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   94: invokespecial 356	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   97: astore_0
     //   98: aload 5
     //   100: astore_2
-    //   101: ldc_w 349
+    //   101: ldc_w 347
     //   104: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   107: aload 5
     //   109: astore_2
@@ -349,17 +342,17 @@ public final class TPLoadLibFromApk
     //   115: astore_0
     //   116: aload_0
     //   117: astore_2
-    //   118: new 310	java/lang/UnsatisfiedLinkError
+    //   118: new 308	java/lang/UnsatisfiedLinkError
     //   121: dup
-    //   122: ldc_w 360
-    //   125: invokespecial 315	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   122: ldc_w 358
+    //   125: invokespecial 313	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
     //   128: aload_1
-    //   129: invokevirtual 338	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   132: checkcast 310	java/lang/UnsatisfiedLinkError
+    //   129: invokevirtual 336	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   132: checkcast 308	java/lang/UnsatisfiedLinkError
     //   135: astore_1
     //   136: aload_0
     //   137: astore_2
-    //   138: ldc_w 349
+    //   138: ldc_w 347
     //   141: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   144: aload_0
     //   145: astore_2
@@ -370,96 +363,96 @@ public final class TPLoadLibFromApk
     //   150: ifnull +7 -> 157
     //   153: aload_2
     //   154: invokevirtual 123	java/util/zip/ZipFile:close	()V
-    //   157: ldc_w 349
+    //   157: ldc_w 347
     //   160: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: aload_0
     //   164: athrow
     //   165: aload 5
     //   167: invokevirtual 123	java/util/zip/ZipFile:close	()V
     //   170: iconst_2
-    //   171: ldc_w 362
+    //   171: ldc_w 360
     //   174: aload_0
-    //   175: invokestatic 298	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   178: invokevirtual 302	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   181: invokestatic 308	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   175: invokestatic 296	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   178: invokevirtual 300	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   181: invokestatic 306	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   184: aload_3
-    //   185: invokevirtual 252	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   185: invokevirtual 250	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   188: aload_1
-    //   189: invokestatic 365	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:reflectSystemLoad	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   189: invokestatic 363	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:reflectSystemLoad	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
     //   192: getstatic 28	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:mLoadedLibs	Ljava/util/HashMap;
     //   195: astore_2
     //   196: aload_2
     //   197: monitorenter
     //   198: getstatic 28	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:mLoadedLibs	Ljava/util/HashMap;
     //   201: aload_0
-    //   202: new 290	java/lang/ref/WeakReference
+    //   202: new 288	java/lang/ref/WeakReference
     //   205: dup
     //   206: aload_1
-    //   207: invokespecial 324	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   210: invokevirtual 328	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   207: invokespecial 322	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   210: invokevirtual 326	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   213: pop
     //   214: aload_2
     //   215: monitorexit
-    //   216: ldc_w 349
+    //   216: ldc_w 347
     //   219: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   222: iconst_1
     //   223: ireturn
     //   224: astore_0
-    //   225: ldc_w 349
+    //   225: ldc_w 347
     //   228: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   231: iconst_0
     //   232: ireturn
     //   233: astore_0
-    //   234: ldc_w 349
+    //   234: ldc_w 347
     //   237: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   240: iconst_0
     //   241: ireturn
     //   242: astore_1
     //   243: aload_2
     //   244: monitorexit
-    //   245: ldc_w 349
+    //   245: ldc_w 347
     //   248: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   251: aload_1
     //   252: athrow
     //   253: astore_1
     //   254: aload 4
     //   256: ifnonnull +39 -> 295
-    //   259: new 310	java/lang/UnsatisfiedLinkError
+    //   259: new 308	java/lang/UnsatisfiedLinkError
     //   262: dup
-    //   263: ldc_w 367
+    //   263: ldc_w 365
     //   266: aload_0
-    //   267: invokestatic 298	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   270: invokevirtual 302	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   273: invokespecial 315	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   267: invokestatic 296	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   270: invokevirtual 300	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   273: invokespecial 313	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
     //   276: aload_1
-    //   277: invokevirtual 334	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   280: invokevirtual 338	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   283: checkcast 310	java/lang/UnsatisfiedLinkError
+    //   277: invokevirtual 332	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   280: invokevirtual 336	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   283: checkcast 308	java/lang/UnsatisfiedLinkError
     //   286: astore_0
-    //   287: ldc_w 349
+    //   287: ldc_w 347
     //   290: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   293: aload_0
     //   294: athrow
-    //   295: ldc_w 349
+    //   295: ldc_w 347
     //   298: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   301: aload 4
     //   303: athrow
     //   304: astore_0
     //   305: aload 4
     //   307: ifnonnull +29 -> 336
-    //   310: new 310	java/lang/UnsatisfiedLinkError
+    //   310: new 308	java/lang/UnsatisfiedLinkError
     //   313: dup
-    //   314: ldc_w 360
-    //   317: invokespecial 315	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   314: ldc_w 358
+    //   317: invokespecial 313	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
     //   320: aload_0
-    //   321: invokevirtual 338	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   324: checkcast 310	java/lang/UnsatisfiedLinkError
+    //   321: invokevirtual 336	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   324: checkcast 308	java/lang/UnsatisfiedLinkError
     //   327: astore_0
-    //   328: ldc_w 349
+    //   328: ldc_w 347
     //   331: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   334: aload_0
     //   335: athrow
-    //   336: ldc_w 349
+    //   336: ldc_w 347
     //   339: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   342: aload 4
     //   344: athrow
@@ -509,171 +502,171 @@ public final class TPLoadLibFromApk
   private static UnsatisfiedLinkError loadFromRecovery(String paramString, ClassLoader paramClassLoader, Context arg2, File arg3)
   {
     // Byte code:
-    //   0: ldc_w 368
+    //   0: ldc_w 366
     //   3: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_3
-    //   7: invokevirtual 171	java/io/File:isFile	()Z
+    //   7: invokevirtual 169	java/io/File:isFile	()Z
     //   10: ifeq +380 -> 390
     //   13: iconst_2
     //   14: new 143	java/lang/StringBuilder
     //   17: dup
-    //   18: ldc_w 370
+    //   18: ldc_w 368
     //   21: invokespecial 146	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   24: aload_0
     //   25: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: ldc_w 372
+    //   28: ldc_w 370
     //   31: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: aload_3
-    //   35: invokevirtual 375	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 373	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   38: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 308	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   41: invokestatic 306	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   44: aload_3
-    //   45: invokevirtual 252	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   45: invokevirtual 250	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   48: aload_1
-    //   49: invokestatic 365	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:reflectSystemLoad	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   49: invokestatic 363	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:reflectSystemLoad	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
     //   52: getstatic 28	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:mLoadedLibs	Ljava/util/HashMap;
     //   55: astore_2
     //   56: aload_2
     //   57: monitorenter
     //   58: getstatic 28	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:mLoadedLibs	Ljava/util/HashMap;
     //   61: aload_0
-    //   62: new 290	java/lang/ref/WeakReference
+    //   62: new 288	java/lang/ref/WeakReference
     //   65: dup
     //   66: aload_1
-    //   67: invokespecial 324	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   70: invokevirtual 328	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   67: invokespecial 322	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   70: invokevirtual 326	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   73: pop
     //   74: aload_2
     //   75: monitorexit
-    //   76: ldc_w 368
+    //   76: ldc_w 366
     //   79: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   82: aconst_null
     //   83: areturn
     //   84: astore 4
     //   86: aload_2
     //   87: monitorexit
-    //   88: ldc_w 368
+    //   88: ldc_w 366
     //   91: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   94: aload 4
     //   96: athrow
     //   97: astore_2
     //   98: iconst_2
-    //   99: ldc_w 377
+    //   99: ldc_w 375
     //   102: aload_0
-    //   103: invokestatic 298	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   106: invokevirtual 302	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   109: invokestatic 308	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   103: invokestatic 296	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   106: invokevirtual 300	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   109: invokestatic 306	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   112: aload_3
-    //   113: invokevirtual 380	java/io/File:delete	()Z
+    //   113: invokevirtual 378	java/io/File:delete	()Z
     //   116: pop
     //   117: aload_0
     //   118: aload_1
-    //   119: invokestatic 321	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:reflectSystemLoadLibrary	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   119: invokestatic 319	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:reflectSystemLoadLibrary	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
     //   122: iconst_2
-    //   123: ldc_w 382
+    //   123: ldc_w 380
     //   126: aload_0
-    //   127: invokestatic 298	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   130: invokevirtual 302	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   133: invokestatic 308	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   127: invokestatic 296	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   130: invokevirtual 300	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   133: invokestatic 306	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   136: getstatic 28	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:mLoadedLibs	Ljava/util/HashMap;
     //   139: astore_3
     //   140: aload_3
     //   141: monitorenter
     //   142: getstatic 28	com/tencent/thumbplayer/core/common/TPLoadLibFromApk:mLoadedLibs	Ljava/util/HashMap;
     //   145: aload_0
-    //   146: new 290	java/lang/ref/WeakReference
+    //   146: new 288	java/lang/ref/WeakReference
     //   149: dup
     //   150: aload_1
-    //   151: invokespecial 324	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   154: invokevirtual 328	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   151: invokespecial 322	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   154: invokevirtual 326	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   157: pop
     //   158: aload_3
     //   159: monitorexit
-    //   160: ldc_w 368
+    //   160: ldc_w 366
     //   163: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   166: aconst_null
     //   167: areturn
     //   168: astore_2
     //   169: aload_2
-    //   170: invokevirtual 334	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   173: instanceof 310
+    //   170: invokevirtual 332	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   173: instanceof 308
     //   176: ifeq +14 -> 190
     //   179: aload_2
-    //   180: invokevirtual 334	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   183: checkcast 310	java/lang/UnsatisfiedLinkError
+    //   180: invokevirtual 332	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   183: checkcast 308	java/lang/UnsatisfiedLinkError
     //   186: astore_2
     //   187: goto -89 -> 98
-    //   190: new 310	java/lang/UnsatisfiedLinkError
+    //   190: new 308	java/lang/UnsatisfiedLinkError
     //   193: dup
-    //   194: ldc_w 367
+    //   194: ldc_w 365
     //   197: aload_0
-    //   198: invokestatic 298	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   201: invokevirtual 302	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   204: invokespecial 315	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   198: invokestatic 296	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   201: invokevirtual 300	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   204: invokespecial 313	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
     //   207: aload_2
-    //   208: invokevirtual 334	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   211: invokevirtual 338	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   214: checkcast 310	java/lang/UnsatisfiedLinkError
+    //   208: invokevirtual 332	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   211: invokevirtual 336	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   214: checkcast 308	java/lang/UnsatisfiedLinkError
     //   217: astore_0
-    //   218: ldc_w 368
+    //   218: ldc_w 366
     //   221: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   224: aload_0
     //   225: athrow
     //   226: astore_1
-    //   227: new 310	java/lang/UnsatisfiedLinkError
+    //   227: new 308	java/lang/UnsatisfiedLinkError
     //   230: dup
-    //   231: ldc_w 367
+    //   231: ldc_w 365
     //   234: aload_0
-    //   235: invokestatic 298	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   238: invokevirtual 302	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   241: invokespecial 315	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   235: invokestatic 296	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   238: invokevirtual 300	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   241: invokespecial 313	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
     //   244: aload_1
-    //   245: invokevirtual 338	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   248: checkcast 310	java/lang/UnsatisfiedLinkError
+    //   245: invokevirtual 336	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   248: checkcast 308	java/lang/UnsatisfiedLinkError
     //   251: astore_0
-    //   252: ldc_w 368
+    //   252: ldc_w 366
     //   255: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   258: aload_0
     //   259: athrow
     //   260: astore_1
     //   261: aload_3
     //   262: monitorexit
-    //   263: ldc_w 368
+    //   263: ldc_w 366
     //   266: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   269: aload_1
     //   270: athrow
     //   271: astore_0
     //   272: aload_2
     //   273: ifnonnull +112 -> 385
-    //   276: ldc_w 368
+    //   276: ldc_w 366
     //   279: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   282: aload_0
     //   283: areturn
     //   284: astore_1
     //   285: aload_1
-    //   286: invokevirtual 334	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   289: instanceof 310
+    //   286: invokevirtual 332	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   289: instanceof 308
     //   292: ifeq +18 -> 310
     //   295: aload_2
     //   296: ifnonnull +50 -> 346
     //   299: aload_1
-    //   300: invokevirtual 334	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   303: checkcast 310	java/lang/UnsatisfiedLinkError
+    //   300: invokevirtual 332	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   303: checkcast 308	java/lang/UnsatisfiedLinkError
     //   306: astore_0
     //   307: goto -31 -> 276
-    //   310: new 310	java/lang/UnsatisfiedLinkError
+    //   310: new 308	java/lang/UnsatisfiedLinkError
     //   313: dup
-    //   314: ldc_w 367
+    //   314: ldc_w 365
     //   317: aload_0
-    //   318: invokestatic 298	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   321: invokevirtual 302	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   324: invokespecial 315	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   318: invokestatic 296	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   321: invokevirtual 300	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   324: invokespecial 313	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
     //   327: aload_1
-    //   328: invokevirtual 334	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   331: invokevirtual 338	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   334: checkcast 310	java/lang/UnsatisfiedLinkError
+    //   328: invokevirtual 332	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   331: invokevirtual 336	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   334: checkcast 308	java/lang/UnsatisfiedLinkError
     //   337: astore_0
-    //   338: ldc_w 368
+    //   338: ldc_w 366
     //   341: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   344: aload_0
     //   345: athrow
@@ -681,18 +674,18 @@ public final class TPLoadLibFromApk
     //   347: astore_0
     //   348: goto -72 -> 276
     //   351: astore_1
-    //   352: new 310	java/lang/UnsatisfiedLinkError
+    //   352: new 308	java/lang/UnsatisfiedLinkError
     //   355: dup
-    //   356: ldc_w 367
+    //   356: ldc_w 365
     //   359: aload_0
-    //   360: invokestatic 298	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   363: invokevirtual 302	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   366: invokespecial 315	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   360: invokestatic 296	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   363: invokevirtual 300	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   366: invokespecial 313	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
     //   369: aload_1
-    //   370: invokevirtual 338	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   373: checkcast 310	java/lang/UnsatisfiedLinkError
+    //   370: invokevirtual 336	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   373: checkcast 308	java/lang/UnsatisfiedLinkError
     //   376: astore_0
-    //   377: ldc_w 368
+    //   377: ldc_w 366
     //   380: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   383: aload_0
     //   384: athrow
@@ -714,42 +707,42 @@ public final class TPLoadLibFromApk
     //   86	97	97	java/lang/UnsatisfiedLinkError
     //   13	58	168	java/lang/reflect/InvocationTargetException
     //   86	97	168	java/lang/reflect/InvocationTargetException
-    //   13	58	226	java/lang/Throwable
-    //   86	97	226	java/lang/Throwable
+    //   13	58	226	finally
+    //   86	97	226	finally
     //   142	160	260	finally
     //   117	142	271	java/lang/UnsatisfiedLinkError
     //   261	271	271	java/lang/UnsatisfiedLinkError
     //   117	142	284	java/lang/reflect/InvocationTargetException
     //   261	271	284	java/lang/reflect/InvocationTargetException
-    //   117	142	351	java/lang/Throwable
-    //   261	271	351	java/lang/Throwable
+    //   117	142	351	finally
+    //   261	271	351	finally
   }
   
   private static void reflectSystemLoad(String paramString, ClassLoader paramClassLoader)
   {
-    AppMethodBeat.i(222874);
+    AppMethodBeat.i(227707);
     Runtime localRuntime = Runtime.getRuntime();
     Method localMethod = localRuntime.getClass().getDeclaredMethod("load", new Class[] { String.class, ClassLoader.class });
     localMethod.setAccessible(true);
     localMethod.invoke(localRuntime, new Object[] { paramString, paramClassLoader });
-    AppMethodBeat.o(222874);
+    AppMethodBeat.o(227707);
   }
   
   private static void reflectSystemLoadLibrary(String paramString, ClassLoader paramClassLoader)
   {
-    AppMethodBeat.i(222878);
+    AppMethodBeat.i(227716);
     Runtime localRuntime = Runtime.getRuntime();
     Method localMethod = localRuntime.getClass().getDeclaredMethod("loadLibrary", new Class[] { String.class, ClassLoader.class });
     localMethod.setAccessible(true);
     localMethod.invoke(localRuntime, new Object[] { paramString, paramClassLoader });
-    AppMethodBeat.o(222878);
+    AppMethodBeat.o(227716);
   }
   
   public static void setupBrokenLibraryHandler()
   {
-    AppMethodBeat.i(222911);
+    AppMethodBeat.i(227769);
     Thread.setDefaultUncaughtExceptionHandler(new LibraryBrokenHandler(Thread.getDefaultUncaughtExceptionHandler()));
-    AppMethodBeat.o(222911);
+    AppMethodBeat.o(227769);
   }
   
   static class LibraryBrokenHandler
@@ -765,7 +758,7 @@ public final class TPLoadLibFromApk
     public void uncaughtException(Thread paramThread, Throwable paramThrowable)
     {
       int j = 1;
-      AppMethodBeat.i(222831);
+      AppMethodBeat.i(227701);
       int i;
       if (((paramThrowable instanceof UnsatisfiedLinkError)) || (((paramThrowable instanceof NoSuchMethodError)) && (paramThrowable.getMessage().matches(".*sig(nature)?[=:].*"))))
       {
@@ -792,7 +785,7 @@ public final class TPLoadLibFromApk
           localThrowable = new UnsatisfiedLinkError("Invalid so detected and recovered.").initCause(paramThrowable);
         }
         this.mParent.uncaughtException(paramThread, localThrowable);
-        AppMethodBeat.o(222831);
+        AppMethodBeat.o(227701);
         return;
         i = 0;
         break;
@@ -804,7 +797,7 @@ public final class TPLoadLibFromApk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPLoadLibFromApk
  * JD-Core Version:    0.7.0.1
  */

@@ -11,10 +11,10 @@ public class Candidate
   
   public Candidate(int paramInt)
   {
-    AppMethodBeat.i(244067);
+    AppMethodBeat.i(212300);
     this.id_len = paramInt;
     this.id = new byte[this.id_len];
-    AppMethodBeat.o(244067);
+    AppMethodBeat.o(212300);
   }
 }
 

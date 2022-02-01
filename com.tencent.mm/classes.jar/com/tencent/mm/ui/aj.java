@@ -1,265 +1,207 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import androidx.lifecycle.r;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.f.a.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.multitalk.model.ac;
-import com.tencent.mm.plugin.multitalk.model.ad;
-import com.tencent.mm.plugin.multitalk.model.q;
-import kotlin.g.b.p;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.compatible.util.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/ScreenProfileReadyPluginUI;", "", "context", "Landroid/content/Context;", "filePath", "", "scene", "", "callback", "Lkotlin/Function0;", "", "(Landroid/content/Context;Ljava/lang/String;ILkotlin/jvm/functions/Function0;)V", "getCallback", "()Lkotlin/jvm/functions/Function0;", "setCallback", "(Lkotlin/jvm/functions/Function0;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "indexLayout", "Landroid/widget/TextView;", "getIndexLayout", "()Landroid/widget/TextView;", "setIndexLayout", "(Landroid/widget/TextView;)V", "indexRootLayout", "Landroid/view/View;", "getIndexRootLayout", "()Landroid/view/View;", "setIndexRootLayout", "(Landroid/view/View;)V", "mCurrentIndex", "getMCurrentIndex", "()I", "setMCurrentIndex", "(I)V", "mLoadingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "mSecurityObserver", "Landroidx/lifecycle/Observer;", "Lcom/tencent/mm/plugin/multitalk/model/SecurityParamsData;", "mToastUI", "Landroid/widget/Toast;", "maxCount", "getMaxCount", "setMaxCount", "readerLayout", "getReaderLayout", "setReaderLayout", "readerLayoutRootView", "Landroid/widget/RelativeLayout;", "getReaderLayoutRootView", "()Landroid/widget/RelativeLayout;", "setReaderLayoutRootView", "(Landroid/widget/RelativeLayout;)V", "startBtn", "getStartBtn", "setStartBtn", "applyClickEvent", "getLandscapeLayout", "rootView", "Landroid/view/ViewGroup;", "getPortraitLayout", "goToScreenCastShow", "refreshIndexLayout", "release", "showRotateScreenInfo", "Companion", "app_release"})
 public final class aj
 {
-  public static final aj.a WdZ;
-  private com.tencent.mm.ui.base.s PIW;
-  private View WdS;
-  private TextView WdT;
-  private View WdU;
-  private RelativeLayout WdV;
-  private RelativeLayout WdW;
-  public Toast WdX;
-  private final androidx.lifecycle.s<ac> WdY;
-  public Context context;
-  String filePath;
-  public int iWH;
-  private final int scene;
-  public int uPV;
-  private kotlin.g.a.a<x> zoa;
+  private static com.f.a.a.a adIZ = null;
   
-  static
+  public static boolean aAA(int paramInt)
   {
-    AppMethodBeat.i(282576);
-    WdZ = new aj.a((byte)0);
-    AppMethodBeat.o(282576);
-  }
-  
-  private aj(Context paramContext, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(282575);
-    this.context = paramContext;
-    this.filePath = paramString;
-    this.scene = paramInt;
-    this.zoa = null;
-    this.WdY = ((androidx.lifecycle.s)new c(this));
-    AppMethodBeat.o(282575);
-  }
-  
-  private void kT(final Context paramContext)
-  {
-    AppMethodBeat.i(282570);
-    p.k(paramContext, "context");
-    Object localObject = this.WdS;
-    if (localObject != null)
+    AppMethodBeat.i(249279);
+    if (aAz(paramInt) == -1)
     {
-      localObject = (RelativeLayout)((View)localObject).findViewById(R.h.screen_profile_content_ui);
-      this.WdW = ((RelativeLayout)localObject);
-      localObject = this.WdS;
-      if (localObject == null) {
-        break label188;
-      }
-      localObject = (TextView)((View)localObject).findViewById(R.h.screen_profile_index_iv);
-      label57:
-      this.WdT = ((TextView)localObject);
-      localObject = this.WdT;
-      if (localObject != null) {
-        ((TextView)localObject).setVisibility(4);
-      }
-      localObject = this.WdS;
-      if (localObject == null) {
-        break label193;
-      }
-      localObject = ((View)localObject).findViewById(R.h.screen_profile_index_iv_root);
-      label93:
-      this.WdU = ((View)localObject);
-      localObject = this.WdU;
-      if (localObject != null) {
-        ((View)localObject).setVisibility(4);
-      }
-      localObject = this.WdS;
-      if (localObject == null) {
-        break label198;
-      }
+      AppMethodBeat.o(249279);
+      return false;
     }
-    label188:
-    label193:
-    label198:
-    for (localObject = (RelativeLayout)((View)localObject).findViewById(R.h.screen_profile_start_btn);; localObject = null)
+    AppMethodBeat.o(249279);
+    return true;
+  }
+  
+  public static void aAi(int paramInt)
+  {
+    AppMethodBeat.i(249259);
+    if ((adIZ == null) || (!l.aQm()))
     {
-      this.WdV = ((RelativeLayout)localObject);
-      localObject = this.WdV;
-      if (localObject != null) {
-        ((RelativeLayout)localObject).setVisibility(4);
-      }
-      localObject = this.WdV;
-      if (localObject == null) {
-        break label203;
-      }
-      ((RelativeLayout)localObject).setOnClickListener((View.OnClickListener)new b(this, paramContext));
-      AppMethodBeat.o(282570);
-      return;
-      localObject = null;
-      break;
-      localObject = null;
-      break label57;
-      localObject = null;
-      break label93;
-    }
-    label203:
-    AppMethodBeat.o(282570);
-  }
-  
-  public final View R(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(282566);
-    p.k(paramViewGroup, "rootView");
-    this.WdS = LayoutInflater.from(this.context).inflate(R.i.screen_projector_before_plugin, paramViewGroup);
-    kT(this.context);
-    paramViewGroup = this.WdS;
-    AppMethodBeat.o(282566);
-    return paramViewGroup;
-  }
-  
-  public final View S(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(282568);
-    p.k(paramViewGroup, "rootView");
-    this.WdS = LayoutInflater.from(this.context).inflate(R.i.screen_projector_before_plugin_land, paramViewGroup);
-    kT(this.context);
-    paramViewGroup = this.WdS;
-    AppMethodBeat.o(282568);
-    return paramViewGroup;
-  }
-  
-  public final void hIx()
-  {
-    AppMethodBeat.i(282574);
-    Object localObject = this.WdV;
-    if (localObject != null) {
-      ((RelativeLayout)localObject).setVisibility(0);
-    }
-    localObject = this.WdS;
-    if (localObject != null) {}
-    for (localObject = ((View)localObject).findViewById(R.h.screen_profile_index_iv_root);; localObject = null)
-    {
-      this.WdU = ((View)localObject);
-      localObject = this.WdU;
-      if (localObject != null) {
-        ((View)localObject).setVisibility(0);
-      }
-      localObject = this.WdT;
-      if (localObject != null) {
-        ((TextView)localObject).setVisibility(0);
-      }
-      localObject = this.WdT;
-      if (localObject == null) {
-        break;
-      }
-      ((TextView)localObject).setText((CharSequence)(this.uPV + 1 + '/' + this.iWH));
-      AppMethodBeat.o(282574);
+      AppMethodBeat.o(249259);
       return;
     }
-    AppMethodBeat.o(282574);
+    Object localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("@int:loginStatus", paramInt);
+      localObject = adIZ.a("compactWindow", "setLoginStatus", (JSONObject)localObject);
+      Log.i("MicroMsg.OPPOUtil", " setLoginStatus ret " + ((com.f.a.b.a)localObject).code);
+      AppMethodBeat.o(249259);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      Log.e("MicroMsg.OPPOUtil", localJSONException.getMessage());
+      AppMethodBeat.o(249259);
+    }
   }
   
-  public final void release()
+  public static boolean aAj(int paramInt)
   {
-    AppMethodBeat.i(282572);
-    Object localObject = this.WdX;
-    if (localObject != null) {
-      ((Toast)localObject).cancel();
-    }
-    localObject = this.PIW;
-    if (localObject != null) {
-      ((com.tencent.mm.ui.base.s)localObject).dismiss();
-    }
-    ad.eYc().FsB.b(this.WdY);
-    localObject = ad.eYc().FsB;
-    Context localContext = this.context;
-    if (localContext == null)
+    AppMethodBeat.i(249282);
+    if (adIZ == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(282572);
-      throw ((Throwable)localObject);
+      AppMethodBeat.o(249282);
+      return false;
     }
-    ((r)localObject).c((androidx.lifecycle.l)localContext);
-    AppMethodBeat.o(282572);
+    if (aAz(paramInt) == 2)
+    {
+      AppMethodBeat.o(249282);
+      return true;
+    }
+    AppMethodBeat.o(249282);
+    return false;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
+  public static boolean aAk(int paramInt)
   {
-    b(aj paramaj, Context paramContext) {}
-    
-    public final void onClick(View paramView)
+    AppMethodBeat.i(249285);
+    if (adIZ == null)
     {
-      AppMethodBeat.i(289693);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/ScreenProfileReadyPluginUI$applyClickEvent$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      if (aj.a(this.Wea) == 3)
-      {
-        ad.eYc().FsB.b(aj.b(this.Wea));
-        paramView = ad.eYc().FsB;
-        localObject = paramContext;
-        if (localObject == null)
-        {
-          paramView = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-          AppMethodBeat.o(289693);
-          throw paramView;
-        }
-        paramView.a((androidx.lifecycle.l)localObject, aj.b(this.Wea));
+      AppMethodBeat.o(249285);
+      return false;
+    }
+    if (aAz(paramInt) == 1)
+    {
+      AppMethodBeat.o(249285);
+      return true;
+    }
+    AppMethodBeat.o(249285);
+    return false;
+  }
+  
+  public static boolean aAy(int paramInt)
+  {
+    AppMethodBeat.i(249265);
+    if ((adIZ == null) || (!l.aQm()))
+    {
+      AppMethodBeat.o(249265);
+      return false;
+    }
+    Object localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("@int:taskId", paramInt);
+      localObject = adIZ.a("compactWindow", "isInCompactWindowMode", (JSONObject)localObject);
+      boolean bool = ((com.f.a.b.a)localObject).result.getBoolean("boolean");
+      Log.i("MicroMsg.OPPOUtil", " isMagicWindow ret " + ((com.f.a.b.a)localObject).code + "isMagicWindow " + bool);
+      AppMethodBeat.o(249265);
+      return bool;
+    }
+    catch (JSONException localJSONException)
+    {
+      Log.e("MicroMsg.OPPOUtil", localJSONException.getMessage());
+      AppMethodBeat.o(249265);
+    }
+    return false;
+  }
+  
+  public static int aAz(int paramInt)
+  {
+    AppMethodBeat.i(249273);
+    if ((adIZ == null) || (!l.aQm()))
+    {
+      AppMethodBeat.o(249273);
+      return -1;
+    }
+    Object localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("@int:taskId", paramInt);
+      localObject = adIZ.a("compactWindow", "getTaskPosition", (JSONObject)localObject);
+      Log.i("MicroMsg.OPPOUtil", " getTaskPos ret " + ((com.f.a.b.a)localObject).code);
+      paramInt = ((com.f.a.b.a)localObject).result.getInt("int");
+      Log.e("MicroMsg.OPPOUtil", "getTaskPosition".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(249273);
+      return paramInt;
+    }
+    catch (JSONException localJSONException)
+    {
+      Log.e("MicroMsg.OPPOUtil", localJSONException.getMessage());
+      AppMethodBeat.o(249273);
+    }
+    return -1;
+  }
+  
+  public static boolean jjK()
+  {
+    if (adIZ != null)
+    {
+      com.f.a.a.a locala = adIZ;
+      if ((locala.dYq != null) && (locala.dYq.dYt)) {
+        return true;
       }
+    }
+    return false;
+  }
+  
+  public static com.f.a.a.a jkE()
+  {
+    return adIZ;
+  }
+  
+  public static boolean mO(Context paramContext)
+  {
+    AppMethodBeat.i(249276);
+    boolean bool = paramContext.getResources().getConfiguration().toString().contains("oplus-magic-window");
+    AppMethodBeat.o(249276);
+    return bool;
+  }
+  
+  public static void mV(Context paramContext)
+  {
+    AppMethodBeat.i(249252);
+    if ((!l.aQm()) || (!aw.jkY()))
+    {
+      AppMethodBeat.o(249252);
+      return;
+    }
+    if (adIZ == null) {
+      adIZ = new com.f.a.a.a(paramContext);
+    }
+    AppMethodBeat.o(249252);
+  }
+  
+  public static void nX(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(249270);
+    if ((adIZ == null) || (!l.aQm()))
+    {
+      AppMethodBeat.o(249270);
+      return;
+    }
+    Object localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("@int:taskId", paramInt1);
+      ((JSONObject)localObject).put("@int:targetPosition", paramInt2);
+      localObject = adIZ.a("compactWindow", "setTaskPosition", (JSONObject)localObject);
+      Log.i("MicroMsg.OPPOUtil", " setTaskPos ret " + ((com.f.a.b.a)localObject).code);
+      AppMethodBeat.o(249270);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
       for (;;)
       {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/ScreenProfileReadyPluginUI$applyClickEvent$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(289693);
-        return;
-        if (aj.a(this.Wea) == 4)
-        {
-          paramView = new Intent();
-          paramView.putExtra("filePath", this.Wea.filePath);
-          localObject = paramContext;
-          if (localObject == null)
-          {
-            paramView = new t("null cannot be cast to non-null type android.app.Activity");
-            AppMethodBeat.o(289693);
-            throw paramView;
-          }
-          ((Activity)localObject).setResult(-1, paramView);
-          paramView = paramContext;
-          if (paramView == null)
-          {
-            paramView = new t("null cannot be cast to non-null type android.app.Activity");
-            AppMethodBeat.o(289693);
-            throw paramView;
-          }
-          ((Activity)paramView).finish();
-        }
+        Log.e("MicroMsg.OPPOUtil", localJSONException.getMessage());
       }
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/multitalk/model/SecurityParamsData;", "kotlin.jvm.PlatformType", "onChanged"})
-  static final class c<T>
-    implements androidx.lifecycle.s<ac>
-  {
-    c(aj paramaj) {}
   }
 }
 

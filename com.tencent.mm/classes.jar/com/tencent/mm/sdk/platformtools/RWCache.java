@@ -32,26 +32,26 @@ public class RWCache<K, V>
   
   public RWCache(IRWCacheAppender<K, V> paramIRWCacheAppender, Looper paramLooper, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(187595);
+    AppMethodBeat.i(243659);
     this.holderMap = new LinkedHashMap();
     this.trigger = true;
     this.isTimeout = false;
     if (paramIRWCacheAppender == null)
     {
       paramIRWCacheAppender = new IllegalArgumentException("arg appender can not be null!");
-      AppMethodBeat.o(187595);
+      AppMethodBeat.o(243659);
       throw paramIRWCacheAppender;
     }
     if (paramLooper == null)
     {
       paramIRWCacheAppender = new IllegalArgumentException("arg looper can not be null!");
-      AppMethodBeat.o(187595);
+      AppMethodBeat.o(243659);
       throw paramIRWCacheAppender;
     }
     if (paramInt1 <= 0)
     {
       paramIRWCacheAppender = new IllegalArgumentException("arg size can not be <= 0!");
-      AppMethodBeat.o(187595);
+      AppMethodBeat.o(243659);
       throw paramIRWCacheAppender;
     }
     this.appender = paramIRWCacheAppender;
@@ -89,13 +89,13 @@ public class RWCache<K, V>
       {
         public boolean onTimerExpired()
         {
-          AppMethodBeat.i(194200);
+          AppMethodBeat.i(244143);
           RWCache.access$002(RWCache.this, true);
-          AppMethodBeat.o(194200);
+          AppMethodBeat.o(244143);
           return false;
         }
       }, false);
-      AppMethodBeat.o(187595);
+      AppMethodBeat.o(243659);
       return;
       l = 40L;
       break;
@@ -216,7 +216,7 @@ public class RWCache<K, V>
   
   public void clear()
   {
-    AppMethodBeat.i(187606);
+    AppMethodBeat.i(243681);
     try
     {
       this.cache.evictAll();
@@ -228,7 +228,7 @@ public class RWCache<K, V>
     }
     finally
     {
-      AppMethodBeat.o(187606);
+      AppMethodBeat.o(243681);
     }
   }
   
@@ -260,20 +260,20 @@ public class RWCache<K, V>
   
   public boolean remove(K paramK)
   {
-    AppMethodBeat.i(187604);
+    AppMethodBeat.i(243678);
     if (paramK == null)
     {
       paramK = new NullPointerException("key == null");
-      AppMethodBeat.o(187604);
+      AppMethodBeat.o(243678);
       throw paramK;
     }
     if (get(paramK) != null)
     {
       boolean bool = set(paramK, null);
-      AppMethodBeat.o(187604);
+      AppMethodBeat.o(243678);
       return bool;
     }
-    AppMethodBeat.o(187604);
+    AppMethodBeat.o(243678);
     return false;
   }
   
@@ -371,7 +371,7 @@ public class RWCache<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.RWCache
  * JD-Core Version:    0.7.0.1
  */

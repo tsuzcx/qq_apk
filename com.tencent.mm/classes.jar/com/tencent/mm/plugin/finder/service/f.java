@@ -1,333 +1,207 @@
 package com.tencent.mm.plugin.finder.service;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
+import com.tencent.mm.ae.d;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.cgi.ai;
-import com.tencent.mm.plugin.finder.cgi.ck;
-import com.tencent.mm.plugin.finder.storage.af;
-import com.tencent.mm.plugin.finder.storage.af.b;
-import com.tencent.mm.plugin.findersdk.a.ab;
-import com.tencent.mm.plugin.findersdk.a.ab.a;
-import com.tencent.mm.plugin.findersdk.a.ab.b;
-import com.tencent.mm.plugin.findersdk.b.c;
-import com.tencent.mm.protocal.protobuf.bfe;
+import com.tencent.mm.model.af.b;
+import com.tencent.mm.model.az.b;
+import com.tencent.mm.model.az.b.a;
+import com.tencent.mm.plugin.finder.storage.ak;
+import com.tencent.mm.plugin.findersdk.a.bp;
+import com.tencent.mm.plugin.findersdk.a.ch;
+import com.tencent.mm.plugin.findersdk.a.y;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedList;
-import kotlin.g.a.r;
-import kotlin.g.b.p;
-import kotlin.n.n;
-import kotlin.x;
+import com.tencent.mm.storage.au;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/service/FinderSessionInfoService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSessionInfoService;", "()V", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "Lkotlin/Lazy;", "getSessionId", "", "context", "Landroid/content/Context;", "scene", "", "username", "", "roleType", "callable", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSessionInfoService$SessionIdCallback;", "getSessionIdByComment", "sessionId", "objectId", "", "commentId", "getSessionIdByFansId", "fansId", "getSessionIdByLottery", "lotteryId", "sourceType", "getSessionIdFromLive", "getSessionIdFromLocal", "talker", "getSessionIdFromServer", "feedId", "isFromLiveLottery", "", "source", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage$ReplaceSource;", "callback", "Lkotlin/Function4;", "Lkotlin/ParameterName;", "name", "result", "errType", "errCode", "errMsg", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;JJZLjava/lang/String;Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage$ReplaceSource;Ljava/lang/Integer;Lkotlin/jvm/functions/Function4;)V", "getSessionSender", "getTalkerFromLocal", "isFinderSession", "toUsername", "requestSessionStatus", "reqItems", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderMsgGetSessionReqItem;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSessionInfoService$SessionStatusCallback;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/service/FinderGetContactInterceptor;", "Lcom/tencent/mm/model/GetContactServiceProxy$GetContactInterceptor;", "()V", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "Lkotlin/Lazy;", "getContactImpl", "Lcom/tencent/mm/model/IMainService$GetContact;", "isIntercept", "", "user", "", "scene", "", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  implements ab
+  implements af.b
 {
-  public static final a Adw;
-  private final kotlin.f xgB;
+  public static final a Fza;
+  private final j AFU;
   
   static
   {
-    AppMethodBeat.i(283793);
-    Adw = new a((byte)0);
-    AppMethodBeat.o(283793);
+    AppMethodBeat.i(330048);
+    Fza = new a((byte)0);
+    AppMethodBeat.o(330048);
   }
   
   public f()
   {
-    AppMethodBeat.i(283792);
-    this.xgB = kotlin.g.ar((kotlin.g.a.a)i.AdD);
-    AppMethodBeat.o(283792);
+    AppMethodBeat.i(330040);
+    this.AFU = k.cm((a)c.Fzd);
+    AppMethodBeat.o(330040);
   }
   
-  private void a(Context paramContext, final int paramInt, final String paramString1, final String paramString2, final long paramLong1, long paramLong2, boolean paramBoolean, String paramString3, final af.b paramb, Integer paramInteger, r<? super String, ? super Integer, ? super Integer, ? super String, x> paramr)
+  public final boolean aN(String paramString, int paramInt)
   {
-    AppMethodBeat.i(283788);
-    p.k(paramContext, "context");
-    p.k(paramString1, "username");
-    p.k(paramString3, "lotteryId");
-    p.k(paramb, "source");
-    p.k(paramr, "callback");
-    if (paramString2 != null) {
-      paramString3 = c.a(new ai(paramString2), paramContext);
-    }
-    for (;;)
-    {
-      paramString3.bhW().j((com.tencent.mm.vending.c.a)new g(this, paramInt, paramString1, paramString2, paramLong1, paramLong2, paramb, paramr)).a((com.tencent.mm.vending.e.b)paramContext);
-      AppMethodBeat.o(283788);
-      return;
-      if ((paramLong1 != 0L) && (paramLong2 != 0L)) {
-        paramString3 = c.a(new ai(paramInt, paramString1, paramLong1, paramLong2), paramContext);
-      } else if (paramBoolean) {
-        paramString3 = c.a(new ai(paramInt, paramString1, paramString3, paramLong1, paramInteger), paramContext);
-      } else {
-        paramString3 = c.a(new ai(paramInt, paramString1), paramContext);
-      }
-    }
-  }
-  
-  private final af getSessionInfoStorage()
-  {
-    AppMethodBeat.i(283774);
-    af localaf = (af)this.xgB.getValue();
-    AppMethodBeat.o(283774);
-    return localaf;
-  }
-  
-  public final void a(Context paramContext, int paramInt1, String paramString, int paramInt2, ab.a parama)
-  {
-    AppMethodBeat.i(283775);
-    p.k(paramContext, "context");
-    p.k(parama, "callable");
-    Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      parama.l("", 0, 0, "");
-      Log.e("Finder.SessionInfoService", "[getSessionId] username=" + paramString + " is invalid, just return.");
-      AppMethodBeat.o(283775);
-      return;
-    }
-    localObject = dX(paramString, paramInt2);
-    CharSequence localCharSequence = (CharSequence)localObject;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (paramInt2 = 1; paramInt2 != 0; paramInt2 = 0)
-    {
-      a(this, paramContext, paramInt1, paramString, null, 0L, 0L, false, null, null, null, (r)new b(parama), 1016);
-      AppMethodBeat.o(283775);
-      return;
-    }
-    parama.l((String)localObject, 0, 0, "");
-    AppMethodBeat.o(283775);
-  }
-  
-  public final void a(Context paramContext, String paramString, ab.a parama)
-  {
-    AppMethodBeat.i(283780);
-    p.k(paramContext, "context");
-    p.k(parama, "callable");
+    AppMethodBeat.i(330065);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      parama.l("", 0, 0, "");
-      Log.e("Finder.SessionInfoService", "[getSessionId] username=" + paramString + " is invalid, just return.");
-      AppMethodBeat.o(283780);
-      return;
+      AppMethodBeat.o(330065);
+      return false;
     }
-    a(this, paramContext, 1, paramString, null, 0L, 0L, false, null, null, null, (r)new f(parama), 1016);
-    AppMethodBeat.o(283780);
-  }
-  
-  public final void a(Context paramContext, String paramString1, String paramString2, ab.a parama)
-  {
-    AppMethodBeat.i(283777);
-    p.k(paramContext, "context");
-    p.k(parama, "callable");
-    CharSequence localCharSequence = (CharSequence)paramString2;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    if ((paramInt == 2) || (au.bwV(paramString)) || (au.aAy(paramString)) || (au.bwT(paramString)))
     {
-      parama.l("", 0, 0, "");
-      Log.e("Finder.SessionInfoService", "[getSessionId] fansId=" + paramString2 + " is invalid, just return.");
-      AppMethodBeat.o(283777);
-      return;
+      AppMethodBeat.o(330065);
+      return true;
     }
-    paramString1 = getSessionInfoStorage().aEN(paramString1).field_sessionId;
-    localCharSequence = (CharSequence)paramString1;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (i = 1; i != 0; i = 0)
-    {
-      a(this, paramContext, 1, "", paramString2, 0L, 0L, false, null, null, null, (r)new d(parama), 1008);
-      AppMethodBeat.o(283777);
-      return;
-    }
-    parama.l(paramString1, 0, 0, "");
-    AppMethodBeat.o(283777);
-  }
-  
-  public final void a(LinkedList<bfe> paramLinkedList, ab.b paramb)
-  {
-    AppMethodBeat.i(283790);
-    p.k(paramLinkedList, "reqItems");
-    g localg = g.AdF;
-    p.k(paramLinkedList, "reqItems");
-    g.AdE = paramb;
-    h.aGY().a(6218, (i)localg);
-    paramLinkedList = new ck(paramLinkedList);
-    h.aGY().b((com.tencent.mm.an.q)paramLinkedList);
-    AppMethodBeat.o(283790);
-  }
-  
-  public final String aED(String paramString)
-  {
-    AppMethodBeat.i(283782);
-    String str = getSessionInfoStorage().aEN(paramString).field_talker;
-    paramString = str;
-    if (str == null) {
-      paramString = "";
-    }
-    AppMethodBeat.o(283782);
-    return paramString;
-  }
-  
-  public final String aEE(String paramString)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(283786);
-    paramString = getSessionInfoStorage().aEN(paramString);
-    Object localObject = com.tencent.mm.plugin.findersdk.b.BuZ;
-    String str = paramString.field_senderUserName;
-    int i;
-    if (str != null) {
-      if (((CharSequence)str).length() > 0)
-      {
-        i = 1;
-        if (i != 1) {
-          break label101;
-        }
-      }
-    }
-    for (;;)
-    {
-      com.tencent.mm.ae.f.a.a((com.tencent.mm.ae.f)localObject, "getSessionSender", bool, false, (kotlin.g.a.a)h.AdC, 12);
-      localObject = paramString.field_senderUserName;
-      paramString = (String)localObject;
-      if (localObject == null) {
-        paramString = "";
-      }
-      AppMethodBeat.o(283786);
-      return paramString;
-      i = 0;
-      break;
-      label101:
-      bool = false;
-    }
-  }
-  
-  public final boolean aEF(String paramString)
-  {
-    AppMethodBeat.i(283791);
-    if (paramString != null)
-    {
-      boolean bool = n.pu(paramString, "@findermsg");
-      AppMethodBeat.o(283791);
-      return bool;
-    }
-    AppMethodBeat.o(283791);
+    AppMethodBeat.o(330065);
     return false;
   }
   
-  public final String dX(String paramString, int paramInt)
+  public final az.b bCe()
   {
-    AppMethodBeat.i(283784);
-    paramString = getSessionInfoStorage().dZ(paramString, paramInt);
-    AppMethodBeat.o(283784);
-    return paramString;
+    AppMethodBeat.i(330055);
+    az.b localb = (az.b)new b();
+    AppMethodBeat.o(330055);
+    return localb;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/service/FinderSessionInfoService$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/service/FinderGetContactInterceptor$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
-  static final class b
-    extends kotlin.g.b.q
-    implements r<String, Integer, Integer, String, x>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/service/FinderGetContactInterceptor$getContactImpl$1", "Lcom/tencent/mm/model/IMainService$GetContact;", "addContact", "", "user", "", "chatroom", "addContactExtra", "scene", "", "tick", "checkPendingGetContact", "clearMapRecentDown", "username", "getContact", "callback", "Lcom/tencent/mm/model/IMainService$GetContact$GetContactCallBack;", "getNow", "removeCallBack", "sourceUsername", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements az.b
   {
-    b(ab.a parama)
+    private static final void a(final String paramString, final ah.f paramf, final az.b.a parama, ch paramch)
     {
-      super();
+      AppMethodBeat.i(330202);
+      s.u(paramString, "$username");
+      s.u(paramf, "$talker");
+      d.uiThread((a)new a(paramch, paramString, paramf, parama));
+      AppMethodBeat.o(330202);
+    }
+    
+    private static final void b(final String paramString, final ah.f paramf, final az.b.a parama, ch paramch)
+    {
+      AppMethodBeat.i(330210);
+      s.u(paramString, "$username");
+      s.u(paramf, "$talker");
+      d.uiThread((a)new b(paramch, paramString, paramf, parama));
+      AppMethodBeat.o(330210);
+    }
+    
+    private static final void c(final String paramString, final ah.f paramf, final az.b.a parama, ch paramch)
+    {
+      AppMethodBeat.i(330218);
+      s.u(paramString, "$username");
+      s.u(paramf, "$talker");
+      d.uiThread((a)new c(paramch, paramString, paramf, parama));
+      AppMethodBeat.o(330218);
+    }
+    
+    public final void Jq(String paramString) {}
+    
+    public final void Jr(String paramString) {}
+    
+    public final void a(String paramString1, String paramString2, az.b.a parama)
+    {
+      AppMethodBeat.i(330265);
+      if (paramString1 != null)
+      {
+        ah.f localf = new ah.f();
+        localf.aqH = paramString1;
+        paramString2 = "";
+        if (au.aAy(paramString1))
+        {
+          paramString2 = ((bp)h.ax(bp.class)).aAw(paramString1);
+          s.s(paramString2, "service(IFinderSessionIn…TalkerFromLocal(username)");
+          localf.aqH = paramString2;
+          paramString2 = paramString1;
+        }
+        Log.i("Finder.GetContactInterceptor", "[getContact] sessionId=" + paramString2 + " talker=" + (String)localf.aqH);
+        if (au.bwV((String)localf.aqH))
+        {
+          ((y)h.ax(y.class)).a((String)localf.aqH, new f.b..ExternalSyntheticLambda1(paramString1, localf, parama));
+          AppMethodBeat.o(330265);
+          return;
+        }
+        if (au.bwT((String)localf.aqH))
+        {
+          paramString2 = ((bp)h.ax(bp.class)).eI(paramString1, 3);
+          s.s(paramString2, "service(IFinderSessionIn…E_ALIAS_ROLE_TYPE_FINDER)");
+          ((y)h.ax(y.class)).a((String)localf.aqH, paramString2, new f.b..ExternalSyntheticLambda2(paramString1, localf, parama));
+          AppMethodBeat.o(330265);
+          return;
+        }
+        if (au.bwU((String)localf.aqH))
+        {
+          paramString2 = ((bp)h.ax(bp.class)).eI(paramString1, 2);
+          s.s(paramString2, "service(IFinderSessionIn…VE_ALIAS_ROLE_TYPE_ALIAS)");
+          ((y)h.ax(y.class)).c((String)localf.aqH, paramString2, new f.b..ExternalSyntheticLambda0(paramString1, localf, parama));
+        }
+      }
+      AppMethodBeat.o(330265);
+    }
+    
+    public final void aZ(String paramString1, String paramString2) {}
+    
+    public final void bCc() {}
+    
+    public final void j(String paramString1, int paramInt, String paramString2) {}
+    
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements a<ah>
+    {
+      a(ch paramch, String paramString, ah.f<String> paramf, az.b.a parama)
+      {
+        super();
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class b
+      extends u
+      implements a<ah>
+    {
+      b(ch paramch, String paramString, ah.f<String> paramf, az.b.a parama)
+      {
+        super();
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class c
+      extends u
+      implements a<ah>
+    {
+      c(ch paramch, String paramString, ah.f<String> paramf, az.b.a parama)
+      {
+        super();
+      }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends kotlin.g.b.q
-    implements r<String, Integer, Integer, String, x>
+    extends u
+    implements a<ak>
   {
-    c(ab.a parama)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
-  static final class d
-    extends kotlin.g.b.q
-    implements r<String, Integer, Integer, String, x>
-  {
-    d(ab.a parama)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
-  static final class e
-    extends kotlin.g.b.q
-    implements r<String, Integer, Integer, String, x>
-  {
-    e(ab.a parama)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "sessionIdServer", "", "errType", "", "errCode", "errMsg", "invoke"})
-  static final class f
-    extends kotlin.g.b.q
-    implements r<String, Integer, Integer, String, x>
-  {
-    f(ab.a parama)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetMsgSessionIdResponse;", "kotlin.jvm.PlatformType", "call"})
-  static final class g<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    g(f paramf, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2, af.b paramb, r paramr) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class h
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<String>
-  {
-    public static final h AdC;
+    public static final c Fzd;
     
     static
     {
-      AppMethodBeat.i(279063);
-      AdC = new h();
-      AppMethodBeat.o(279063);
+      AppMethodBeat.i(330208);
+      Fzd = new c();
+      AppMethodBeat.o(330208);
     }
     
-    h()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "invoke"})
-  static final class i
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<af>
-  {
-    public static final i AdD;
-    
-    static
-    {
-      AppMethodBeat.i(288661);
-      AdD = new i();
-      AppMethodBeat.o(288661);
-    }
-    
-    i()
+    c()
     {
       super();
     }
@@ -335,7 +209,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.service.f
  * JD-Core Version:    0.7.0.1
  */

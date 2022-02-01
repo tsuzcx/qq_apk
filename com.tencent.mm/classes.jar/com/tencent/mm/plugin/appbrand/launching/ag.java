@@ -1,64 +1,318 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.j;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.jsapi.ag.c;
+import com.tencent.mm.vending.e.a;
+import kotlin.Metadata;
+import kotlin.a.k;
+import kotlin.g.b.s;
 
-public final class ag
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/LaunchPrepareCallbackWrapper;", "C", "Lcom/tencent/luggage/sdk/config/AppBrandSysConfigLU;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask$PrepareCallback;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "referenced", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask$PrepareCallback;)V", "mDead", "", "mPrepareDoneCalled", "mReferenced", "mVersionUpdateCalled", "updateEventCompleteEnums", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/version/UpdateState;", "[Lcom/tencent/mm/plugin/appbrand/jsapi/version/UpdateState;", "callDeadOnCompleteExcepted", "", "dead", "notifyAppRestartOnLaunchRequestedLatestVersion", "onDataTransferState", "state", "", "onDownloadProcess", "progress", "onDownloadStarted", "startTime", "", "onLaunchTimeoutFallbackReloadRequested", "onPrepareDone", "config", "errorAction", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchErrorAction;", "startupPerformanceReport", "Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;", "(Lcom/tencent/luggage/sdk/config/AppBrandSysConfigLU;Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchErrorAction;Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;)V", "onSyncAppidABTestStart", "onSyncJsApiInfoStart", "onSyncLaunchStart", "onVersionUpdateEvent", "passThroughInfo", "", "tryOrThrows", "block", "Lkotlin/Function0;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class ag<C extends AppBrandSysConfigLU>
+  implements AppBrandPrepareTask.b<C>, a
 {
-  static void a(b paramb, String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4)
+  private volatile boolean qtq;
+  private AppBrandRuntime qzz;
+  private volatile AppBrandPrepareTask.b<C> taU;
+  private volatile boolean taV;
+  private volatile boolean taW;
+  private final c[] taX;
+  
+  public ag(AppBrandRuntime paramAppBrandRuntime, AppBrandPrepareTask.b<C> paramb)
   {
-    AppMethodBeat.i(242960);
-    int i = j.amB(paramString);
-    Log.d("MicroMsg.AppBrand.LaunchStepCostReporter", "report %s | %s | %d | %d | %d", new Object[] { paramb.name(), paramString, Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(paramInt4) });
-    h.IzE.a(13886, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2 + 1), Integer.valueOf(paramb.eventId), "", "", Long.valueOf(paramLong), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(paramInt4) });
-    AppMethodBeat.o(242960);
+    AppMethodBeat.i(320674);
+    this.qzz = paramAppBrandRuntime;
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.LaunchPrepareCallbackWrapper", s.X("<init> hash=", Integer.valueOf(hashCode())));
+    paramAppBrandRuntime.keep((a)this);
+    this.taU = paramb;
+    this.taX = new c[] { c.syZ, c.szb, c.sza };
+    AppMethodBeat.o(320674);
   }
   
-  public static enum a
+  private final void cAn()
   {
-    static
+    AppMethodBeat.i(320678);
+    if (this.qtq)
     {
-      AppMethodBeat.i(47266);
-      pWj = new a("NONE", 0);
-      pWk = new a("MISSING_PKG", 1);
-      pWl = new a("NO_USE_RECENT", 2);
-      pWm = new a("INVALID_FIELDS", 3);
-      pWn = new a("VERSION_NOT_FOUND", 4);
-      pWo = new a("PATH_NOT_FOUND", 5);
-      pWp = new a("CMD_UPDATE_VERSION", 6);
-      pWq = new a("ATTRS_NOT_FOUND", 7);
-      pWr = new a[] { pWj, pWk, pWl, pWm, pWn, pWo, pWp, pWq };
-      AppMethodBeat.o(47266);
+      AppMethodBeat.o(320678);
+      return;
     }
-    
-    private a() {}
+    if ((this.taV) && (this.taW)) {
+      dead();
+    }
+    AppMethodBeat.o(320678);
   }
   
-  public static enum b
+  public final void a(C paramC, AppBrandLaunchErrorAction paramAppBrandLaunchErrorAction, AppStartupPerformanceReportBundle paramAppStartupPerformanceReportBundle)
   {
-    final int eventId;
-    
-    static
+    AppMethodBeat.i(50760);
+    try
     {
-      AppMethodBeat.i(47269);
-      pWs = new b("SYNC_GET_ATTRS", 0, 20);
-      pWt = new b("SYNC_LAUNCH", 1, 21);
-      pWu = new b("GET_DOWNLOAD_URL", 2, 22);
-      pWv = new b[] { pWs, pWt, pWu };
-      AppMethodBeat.o(47269);
+      AppBrandPrepareTask.b localb = this.taU;
+      if (localb != null) {
+        localb.a(paramC, paramAppBrandLaunchErrorAction, paramAppStartupPerformanceReportBundle);
+      }
     }
-    
-    private b(int paramInt)
+    finally
     {
-      this.eventId = paramInt;
+      while (this.qtq) {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.LaunchPrepareCallbackWrapper", s.X("tryOfThrows when dead, get exception: ", android.util.Log.getStackTraceString(paramC)));
+      }
+      AppMethodBeat.o(50760);
+    }
+    this.taV = true;
+    cAn();
+    AppMethodBeat.o(50760);
+  }
+  
+  public final void a(c paramc, String paramString)
+  {
+    AppMethodBeat.i(320690);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.taU;
+      if (localb != null) {
+        localb.a(paramc, paramString);
+      }
+    }
+    finally
+    {
+      while (this.qtq) {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.LaunchPrepareCallbackWrapper", s.X("tryOfThrows when dead, get exception: ", android.util.Log.getStackTraceString(paramString)));
+      }
+      AppMethodBeat.o(320690);
+    }
+    if (paramc == null)
+    {
+      AppMethodBeat.o(320690);
+      return;
+    }
+    if (k.contains(this.taX, paramc))
+    {
+      this.taW = true;
+      cAn();
+    }
+    AppMethodBeat.o(320690);
+  }
+  
+  public final void cda()
+  {
+    AppMethodBeat.i(50764);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.taU;
+      if (localb != null) {
+        localb.cda();
+      }
+      AppMethodBeat.o(50764);
+      return;
+    }
+    finally
+    {
+      if (this.qtq)
+      {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.LaunchPrepareCallbackWrapper", s.X("tryOfThrows when dead, get exception: ", android.util.Log.getStackTraceString(localThrowable)));
+        AppMethodBeat.o(50764);
+        return;
+      }
+      AppMethodBeat.o(50764);
+    }
+  }
+  
+  public final void cdb()
+  {
+    AppMethodBeat.i(320694);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.taU;
+      if (localb != null) {
+        localb.cdb();
+      }
+      AppMethodBeat.o(320694);
+      return;
+    }
+    finally
+    {
+      if (this.qtq)
+      {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.LaunchPrepareCallbackWrapper", s.X("tryOfThrows when dead, get exception: ", android.util.Log.getStackTraceString(localThrowable)));
+        AppMethodBeat.o(320694);
+        return;
+      }
+      AppMethodBeat.o(320694);
+    }
+  }
+  
+  public final void cdc()
+  {
+    AppMethodBeat.i(320698);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.taU;
+      if (localb != null) {
+        localb.cdc();
+      }
+      AppMethodBeat.o(320698);
+      return;
+    }
+    finally
+    {
+      if (this.qtq)
+      {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.LaunchPrepareCallbackWrapper", s.X("tryOfThrows when dead, get exception: ", android.util.Log.getStackTraceString(localThrowable)));
+        AppMethodBeat.o(320698);
+        return;
+      }
+      AppMethodBeat.o(320698);
+    }
+  }
+  
+  public final void cdd()
+  {
+    AppMethodBeat.i(320699);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.taU;
+      if (localb != null) {
+        localb.cdd();
+      }
+      AppMethodBeat.o(320699);
+      return;
+    }
+    finally
+    {
+      if (this.qtq)
+      {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.LaunchPrepareCallbackWrapper", s.X("tryOfThrows when dead, get exception: ", android.util.Log.getStackTraceString(localThrowable)));
+        AppMethodBeat.o(320699);
+        return;
+      }
+      AppMethodBeat.o(320699);
+    }
+  }
+  
+  public final void cde()
+  {
+    AppMethodBeat.i(320704);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.taU;
+      if (localb != null) {
+        localb.cde();
+      }
+      AppMethodBeat.o(320704);
+      return;
+    }
+    finally
+    {
+      if (this.qtq)
+      {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.LaunchPrepareCallbackWrapper", s.X("tryOfThrows when dead, get exception: ", android.util.Log.getStackTraceString(localThrowable)));
+        AppMethodBeat.o(320704);
+        return;
+      }
+      AppMethodBeat.o(320704);
+    }
+  }
+  
+  public void dead()
+  {
+    AppMethodBeat.i(180618);
+    StringBuilder localStringBuilder = new StringBuilder("dead() hash=").append(hashCode()).append(", appId:");
+    Object localObject = this.qzz;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((AppBrandRuntime)localObject).mAppId)
+    {
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.LaunchPrepareCallbackWrapper", localObject + ", mPrepareDoneCalled:" + this.taV + ", mVersionUpdateCalled:" + this.taW);
+      localObject = this.qzz;
+      if (localObject != null) {
+        ((AppBrandRuntime)localObject).a((a)this);
+      }
+      this.qzz = null;
+      this.taU = null;
+      this.qtq = true;
+      AppMethodBeat.o(180618);
+      return;
+    }
+  }
+  
+  public final void jy(long paramLong)
+  {
+    AppMethodBeat.i(50761);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.taU;
+      if (localb != null) {
+        localb.jy(paramLong);
+      }
+      AppMethodBeat.o(50761);
+      return;
+    }
+    finally
+    {
+      if (this.qtq)
+      {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.LaunchPrepareCallbackWrapper", s.X("tryOfThrows when dead, get exception: ", android.util.Log.getStackTraceString(localThrowable)));
+        AppMethodBeat.o(50761);
+        return;
+      }
+      AppMethodBeat.o(50761);
+    }
+  }
+  
+  public final void yU(int paramInt)
+  {
+    AppMethodBeat.i(50759);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.taU;
+      if (localb != null) {
+        localb.yU(paramInt);
+      }
+      AppMethodBeat.o(50759);
+      return;
+    }
+    finally
+    {
+      if (this.qtq)
+      {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.LaunchPrepareCallbackWrapper", s.X("tryOfThrows when dead, get exception: ", android.util.Log.getStackTraceString(localThrowable)));
+        AppMethodBeat.o(50759);
+        return;
+      }
+      AppMethodBeat.o(50759);
+    }
+  }
+  
+  public final void yV(int paramInt)
+  {
+    AppMethodBeat.i(50762);
+    try
+    {
+      AppBrandPrepareTask.b localb = this.taU;
+      if (localb != null) {
+        localb.yV(paramInt);
+      }
+      AppMethodBeat.o(50762);
+      return;
+    }
+    finally
+    {
+      if (this.qtq)
+      {
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.LaunchPrepareCallbackWrapper", s.X("tryOfThrows when dead, get exception: ", android.util.Log.getStackTraceString(localThrowable)));
+        AppMethodBeat.o(50762);
+        return;
+      }
+      AppMethodBeat.o(50762);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ag
  * JD-Core Version:    0.7.0.1
  */

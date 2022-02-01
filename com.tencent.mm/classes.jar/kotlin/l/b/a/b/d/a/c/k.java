@@ -1,72 +1,35 @@
 package kotlin.l.b.a.b.d.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Collection;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.d.a.a.a;
-import kotlin.l.b.a.b.d.a.f.h;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.e;
+import kotlin.l.b.a.b.d.a.e.g;
+import kotlin.l.b.a.b.j.e.c;
 
 public final class k
+  implements j
 {
-  public final h aaUw;
-  public final Collection<a.a> aaUx;
+  public c aiSy;
   
-  public k(h paramh, Collection<? extends a.a> paramCollection)
+  public final e c(g paramg)
   {
-    AppMethodBeat.i(57765);
-    this.aaUw = paramh;
-    this.aaUx = paramCollection;
-    AppMethodBeat.o(57765);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(57768);
-    if (this != paramObject)
+    AppMethodBeat.i(57769);
+    s.u(paramg, "javaClass");
+    c localc = this.aiSy;
+    if (localc != null) {}
+    for (;;)
     {
-      if ((paramObject instanceof k))
-      {
-        paramObject = (k)paramObject;
-        if ((!p.h(this.aaUw, paramObject.aaUw)) || (!p.h(this.aaUx, paramObject.aaUx))) {}
-      }
+      paramg = localc.c(paramg);
+      AppMethodBeat.o(57769);
+      return paramg;
+      s.bIx("resolver");
+      localc = null;
     }
-    else
-    {
-      AppMethodBeat.o(57768);
-      return true;
-    }
-    AppMethodBeat.o(57768);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    int j = 0;
-    AppMethodBeat.i(57767);
-    Object localObject = this.aaUw;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.aaUx;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      AppMethodBeat.o(57767);
-      return i * 31 + j;
-    }
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(57766);
-    String str = "NullabilityQualifierWithApplicability(nullabilityQualifier=" + this.aaUw + ", qualifierApplicabilityTypes=" + this.aaUx + ")";
-    AppMethodBeat.o(57766);
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.k
  * JD-Core Version:    0.7.0.1
  */

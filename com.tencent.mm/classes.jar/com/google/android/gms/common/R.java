@@ -4,7 +4,7 @@ public final class R
 {
   public static final class integer
   {
-    public static final int google_play_services_version = 2131361804;
+    public static final int google_play_services_version = 2131361810;
   }
 }
 

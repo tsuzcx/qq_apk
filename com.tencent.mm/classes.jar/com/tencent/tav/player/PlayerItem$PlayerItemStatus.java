@@ -6,12 +6,12 @@ public enum PlayerItem$PlayerItemStatus
 {
   static
   {
-    AppMethodBeat.i(192703);
+    AppMethodBeat.i(215959);
     PlayerItemStatusUnknown = new PlayerItemStatus("PlayerItemStatusUnknown", 0);
     PlayerItemStatusReadyToPlay = new PlayerItemStatus("PlayerItemStatusReadyToPlay", 1);
     PlayerItemStatusFailed = new PlayerItemStatus("PlayerItemStatusFailed", 2);
     $VALUES = new PlayerItemStatus[] { PlayerItemStatusUnknown, PlayerItemStatusReadyToPlay, PlayerItemStatusFailed };
-    AppMethodBeat.o(192703);
+    AppMethodBeat.o(215959);
   }
   
   private PlayerItem$PlayerItemStatus() {}

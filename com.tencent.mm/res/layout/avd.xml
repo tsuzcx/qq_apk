@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameMessageBubbleView android:gravity="center_horizontal" android:id="@id/emt" android:background="@color/al2" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center|left" android:id="@id/ems" android:background="@drawable/a6p" android:padding="@dimen/m2" android:focusable="true" android:clickable="true" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:layout_marginBottom="@dimen/i6">
+            <ImageView android:id="@id/emr" android:layout_width="@dimen/j4" android:layout_height="@dimen/j4" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/al6" android:ellipsize="end" android:id="@id/emq" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+    </com.tencent.mm.plugin.game.ui.GameMessageBubbleView>
+</LinearLayout>

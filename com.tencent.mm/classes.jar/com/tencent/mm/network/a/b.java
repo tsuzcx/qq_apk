@@ -9,9 +9,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface b
   extends IInterface
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, boolean paramBoolean);
+  public abstract void C(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract void w(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, boolean paramBoolean);
   
   public static abstract class a
     extends Binder
@@ -22,12 +22,12 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.network.connpool.IConnPoolMoniter_AIDL");
     }
     
-    public static b buc()
+    public static b bRF()
     {
-      return a.mwY;
+      return a.pqx;
     }
     
-    public static b t(IBinder paramIBinder)
+    public static b w(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -69,7 +69,7 @@ public abstract interface b
         }
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.connpool.IConnPoolMoniter_AIDL");
-      w(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+      C(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     }
@@ -77,12 +77,40 @@ public abstract interface b
     static final class a
       implements b
     {
-      public static b mwY;
+      public static b pqx;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
       {
         this.mRemote = paramIBinder;
+      }
+      
+      public final void C(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+      {
+        AppMethodBeat.i(132964);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.connpool.IConnPoolMoniter_AIDL");
+          localParcel1.writeInt(paramInt1);
+          localParcel1.writeInt(paramInt2);
+          localParcel1.writeInt(paramInt3);
+          localParcel1.writeInt(paramInt4);
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.bRF() != null))
+          {
+            b.a.bRF().C(paramInt1, paramInt2, paramInt3, paramInt4);
+            return;
+          }
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(132964);
+        }
       }
       
       public final void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, boolean paramBoolean)
@@ -102,10 +130,10 @@ public abstract interface b
           for (int i = 1;; i = 0)
           {
             localParcel1.writeInt(i);
-            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (b.a.buc() == null)) {
+            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (b.a.bRF() == null)) {
               break;
             }
-            b.a.buc().a(paramInt1, paramInt2, paramString1, paramInt3, paramString2, paramBoolean);
+            b.a.bRF().a(paramInt1, paramInt2, paramString1, paramInt3, paramString2, paramBoolean);
             return;
           }
           localParcel2.readException();
@@ -123,40 +151,12 @@ public abstract interface b
       {
         return this.mRemote;
       }
-      
-      public final void w(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-      {
-        AppMethodBeat.i(132964);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.connpool.IConnPoolMoniter_AIDL");
-          localParcel1.writeInt(paramInt1);
-          localParcel1.writeInt(paramInt2);
-          localParcel1.writeInt(paramInt3);
-          localParcel1.writeInt(paramInt4);
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.buc() != null))
-          {
-            b.a.buc().w(paramInt1, paramInt2, paramInt3, paramInt4);
-            return;
-          }
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(132964);
-        }
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.network.a.b
  * JD-Core Version:    0.7.0.1
  */

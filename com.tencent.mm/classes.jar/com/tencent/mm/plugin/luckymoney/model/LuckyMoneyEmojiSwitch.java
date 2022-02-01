@@ -10,10 +10,10 @@ public class LuckyMoneyEmojiSwitch
   implements Parcelable
 {
   public static final Parcelable.Creator<LuckyMoneyEmojiSwitch> CREATOR;
-  public int EzG;
-  public int EzH;
-  public int EzI;
-  public int EzJ;
+  public int Kss;
+  public int Kst;
+  public int Ksu;
+  public int Ksv;
   
   static
   {
@@ -24,34 +24,34 @@ public class LuckyMoneyEmojiSwitch
   
   public LuckyMoneyEmojiSwitch()
   {
-    this.EzG = 0;
-    this.EzH = 0;
-    this.EzI = 0;
-    this.EzJ = 0;
+    this.Kss = 0;
+    this.Kst = 0;
+    this.Ksu = 0;
+    this.Ksv = 0;
   }
   
   protected LuckyMoneyEmojiSwitch(Parcel paramParcel)
   {
     AppMethodBeat.i(65187);
-    this.EzG = 0;
-    this.EzH = 0;
-    this.EzI = 0;
-    this.EzJ = 0;
-    this.EzG = paramParcel.readInt();
-    this.EzH = paramParcel.readInt();
-    this.EzI = paramParcel.readInt();
-    this.EzJ = paramParcel.readInt();
+    this.Kss = 0;
+    this.Kst = 0;
+    this.Ksu = 0;
+    this.Ksv = 0;
+    this.Kss = paramParcel.readInt();
+    this.Kst = paramParcel.readInt();
+    this.Ksu = paramParcel.readInt();
+    this.Ksv = paramParcel.readInt();
     AppMethodBeat.o(65187);
   }
   
-  public static LuckyMoneyEmojiSwitch be(JSONObject paramJSONObject)
+  public static LuckyMoneyEmojiSwitch bs(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(65185);
     LuckyMoneyEmojiSwitch localLuckyMoneyEmojiSwitch = new LuckyMoneyEmojiSwitch();
-    localLuckyMoneyEmojiSwitch.EzG = paramJSONObject.optInt("showOpenNormalExpression", 0);
-    localLuckyMoneyEmojiSwitch.EzH = paramJSONObject.optInt("showDetailNormalExpression", 0);
-    localLuckyMoneyEmojiSwitch.EzI = paramJSONObject.optInt("enableAnswerByExpression", 0);
-    localLuckyMoneyEmojiSwitch.EzJ = paramJSONObject.optInt("enableAnswerBySelfie", 0);
+    localLuckyMoneyEmojiSwitch.Kss = paramJSONObject.optInt("showOpenNormalExpression", 0);
+    localLuckyMoneyEmojiSwitch.Kst = paramJSONObject.optInt("showDetailNormalExpression", 0);
+    localLuckyMoneyEmojiSwitch.Ksu = paramJSONObject.optInt("enableAnswerByExpression", 0);
+    localLuckyMoneyEmojiSwitch.Ksv = paramJSONObject.optInt("enableAnswerBySelfie", 0);
     AppMethodBeat.o(65185);
     return localLuckyMoneyEmojiSwitch;
   }
@@ -64,7 +64,7 @@ public class LuckyMoneyEmojiSwitch
   public String toString()
   {
     AppMethodBeat.i(65188);
-    String str = "LuckyMoneyEmojiSwitch{showOpenNormalExpression=" + this.EzG + ", showDetailNormalExpression=" + this.EzH + ", enalbeAnswerByExpression=" + this.EzI + ", enableAnswerBySelfie=" + this.EzJ + '}';
+    String str = "LuckyMoneyEmojiSwitch{showOpenNormalExpression=" + this.Kss + ", showDetailNormalExpression=" + this.Kst + ", enalbeAnswerByExpression=" + this.Ksu + ", enableAnswerBySelfie=" + this.Ksv + '}';
     AppMethodBeat.o(65188);
     return str;
   }
@@ -72,16 +72,16 @@ public class LuckyMoneyEmojiSwitch
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(65186);
-    paramParcel.writeInt(this.EzG);
-    paramParcel.writeInt(this.EzH);
-    paramParcel.writeInt(this.EzI);
-    paramParcel.writeInt(this.EzJ);
+    paramParcel.writeInt(this.Kss);
+    paramParcel.writeInt(this.Kst);
+    paramParcel.writeInt(this.Ksu);
+    paramParcel.writeInt(this.Ksv);
     AppMethodBeat.o(65186);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.LuckyMoneyEmojiSwitch
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,16 @@ import com.tencent.mm.sdk.platformtools.BitmapUtil;
 public final class a
   implements b.h
 {
-  public static final a sbd;
+  public static final a vmv;
   
   static
   {
     AppMethodBeat.i(106375);
-    sbd = new a();
+    vmv = new a();
     AppMethodBeat.o(106375);
   }
   
-  public final Bitmap H(Bitmap paramBitmap)
+  public final Bitmap P(Bitmap paramBitmap)
   {
     AppMethodBeat.i(106374);
     if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
@@ -37,7 +37,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.a
  * JD-Core Version:    0.7.0.1
  */

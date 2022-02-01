@@ -1,60 +1,74 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.a;
-import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.autogen.a.kn;
+import com.tencent.mm.autogen.a.kn.b;
+import com.tencent.mm.plugin.game.luggage.page.GameWebPage;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bw;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class af
-  extends br<i>
+  extends bw<GameWebPage>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
-  
-  public final void b(b<i>.a paramb)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    AppMethodBeat.i(231645);
-    Object localObject = paramb.crh.cqn;
-    if (localObject == null)
+    AppMethodBeat.i(83084);
+    Log.i("MicroMsg.JsApiOperateGameCenterMsg", "invokeInMM");
+    try
     {
-      paramb.a("invalid_params", null);
-      AppMethodBeat.o(231645);
+      paramContext = new JSONObject(paramString);
+      if (paramContext == null)
+      {
+        Log.i("MicroMsg.JsApiOperateGameCenterMsg", "data is null");
+        parama.j("invalid_data", null);
+        AppMethodBeat.o(83084);
+        return;
+      }
+    }
+    catch (JSONException paramContext)
+    {
+      for (;;)
+      {
+        paramContext = null;
+      }
+      int i = paramContext.optInt("cmd");
+      paramString = paramContext.optJSONObject("param");
+      paramContext = new kn();
+      paramContext.hMg.bUl = i;
+      paramContext.hMg.param = paramString.toString();
+      paramContext.publish();
+      paramString = new JSONObject();
+    }
+    try
+    {
+      paramString.put("result", Util.nullAsNil(paramContext.hMh.hMi));
+      label124:
+      parama.j(null, paramString);
+      AppMethodBeat.o(83084);
       return;
     }
-    localObject = ((JSONObject)localObject).optString("chatroom_name");
-    if (Util.isNullOrNil((String)localObject))
+    catch (JSONException paramContext)
     {
-      paramb.a("invalid_params", null);
-      AppMethodBeat.o(231645);
-      return;
+      break label124;
     }
-    Log.i("MicroMsg.JsApiQuitGameLifeChatroom", "chatRoomName:%s", new Object[] { localObject });
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.mm.game.ACTION_QUIT_CHAT_ROOM");
-    localIntent.putExtra("chatroom_name", (String)localObject);
-    MMApplicationContext.getContext().sendBroadcast(localIntent, a.CfL);
-    paramb.a("", null);
-    ((i)paramb.crg).hS(true);
-    AppMethodBeat.o(231645);
   }
   
-  public final int cDj()
+  public final void b(b.a parama) {}
+  
+  public final int dgI()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "quitGameLifeChatroom";
+    return "operateGameCenterMsg";
   }
 }
 

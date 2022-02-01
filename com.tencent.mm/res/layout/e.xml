@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:id="@id/d01" android:background="@drawable/tg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="end" android:orientation="horizontal" android:id="@id/g1p" android:background="@drawable/ts" android:layout_width="171.0dip" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/c8">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/finder_left_arrows" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/bv" app:iconColor="@color/yf" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/yf" android:ellipsize="end" android:gravity="center" android:id="@id/kyx" android:layout_width="75.0dip" android:layout_height="wrap_content" android:text="@string/dda" android:maxLines="2" android:layout_marginEnd="@dimen/df" />
+        <ImageView android:layout_gravity="end" android:id="@id/fdy" android:layout_width="@dimen/d5" android:layout_height="@dimen/d_" android:scaleType="centerCrop" android:contentDescription="封面缩略图" />
+    </LinearLayout>
+</FrameLayout>

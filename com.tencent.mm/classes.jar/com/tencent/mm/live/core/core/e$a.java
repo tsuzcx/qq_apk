@@ -1,39 +1,39 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$AnchorStatus;", "", "()V", "userStatusAudioMode", "", "getUserStatusAudioMode", "()I", "userStatusNotTalking", "getUserStatusNotTalking", "userStatusScreenSharing", "getUserStatusScreenSharing", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$AnchorStatus;", "", "()V", "userStatusAudioMode", "", "getUserStatusAudioMode", "()I", "userStatusNotTalking", "getUserStatusNotTalking", "userStatusScreenSharing", "getUserStatusScreenSharing", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$a
 {
-  private static final int kjt = 1;
-  private static final int kju = 2;
-  private static final int kjv = 4;
-  public static final a kjw;
+  public static final a mKb;
+  private static final int mKc;
+  private static final int mKd;
+  private static final int mKe;
   
   static
   {
-    AppMethodBeat.i(199430);
-    kjw = new a();
-    kjt = 1;
-    kju = 2;
-    kjv = 4;
-    AppMethodBeat.o(199430);
+    AppMethodBeat.i(247844);
+    mKb = new a();
+    mKc = 1;
+    mKd = 2;
+    mKe = 4;
+    AppMethodBeat.o(247844);
   }
   
-  public static int aJG()
+  public static int bcq()
   {
-    return kjt;
+    return mKc;
   }
   
-  public static int aJH()
+  public static int bcr()
   {
-    return kju;
+    return mKd;
   }
   
-  public static int aJI()
+  public static int bcs()
   {
-    return kjv;
+    return mKe;
   }
 }
 

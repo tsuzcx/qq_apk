@@ -4,6 +4,9 @@ public final class ConstantsAPI$WXMiniProgram
 {
   public static final String KEY_ACTIVITY_ID = "_wx_mini_program_key_activity_id";
   public static final String KEY_PARAMETER_INFO_LIST = "_wx_mini_program_key_parameter_info_list";
+  public static final int MINI_PROGRAM_TYPE_PREVIEW = 2;
+  public static final int MINI_PROGRAM_TYPE_RELEASE = 0;
+  public static final int MINI_PROGRAM_TYPE_TEST = 1;
 }
 
 

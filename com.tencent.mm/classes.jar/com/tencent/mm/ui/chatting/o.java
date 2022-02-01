@@ -1,207 +1,202 @@
 package com.tencent.mm.ui.chatting;
 
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.widget.Toast;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.l;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.by.c.a;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.aa;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.z;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.x;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.aa;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.message.m;
+import com.tencent.mm.message.u;
+import com.tencent.mm.message.v;
+import com.tencent.mm.modelappbrand.a.b;
+import com.tencent.mm.modelappbrand.a.b.k;
+import com.tencent.mm.modelavatar.j;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.pluginsdk.model.app.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.chatting.d.b.l;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.u;
-import java.util.ArrayList;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
+import com.tencent.threadpool.i;
+import java.io.ByteArrayOutputStream;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 public final class o
 {
-  public static boolean a(com.tencent.mm.ui.chatting.e.a parama, List<ca> paramList, as paramas)
+  public static k.b a(String paramString, v paramv)
   {
-    AppMethodBeat.i(34482);
-    if (parama == null)
+    AppMethodBeat.i(34458);
+    k.b localb = new k.b();
+    localb.title = paramv.title;
+    localb.description = paramv.nUO;
+    localb.type = 33;
+    localb.nTD = paramv.nUR;
+    localb.nTC = paramv.nUS;
+    localb.nTE = paramv.nUV;
+    localb.nTW = paramv.nUU;
+    localb.nTX = paramv.nUT;
+    localb.nTG = "";
+    localb.nTF = 2;
+    localb.url = paramv.url;
+    localb.nTY = paramv.nUX;
+    localb.iag = ("wxapp_" + paramv.nUV + paramv.nUS);
+    localb.iaa = paramv.nUR;
+    localb.iab = paramv.nUY;
+    paramv = new com.tencent.mm.message.a();
+    paramv.nOK = false;
+    paramv.nOL = "";
+    localb.a(paramv);
+    if (Util.isNullOrNil(localb.thumburl))
     {
-      Log.w("MicroMsg.ChattingEditModeSendToMail", "do send to mail fail, context is null");
-      AppMethodBeat.o(34482);
-      return false;
+      paramString = q.bFE().LS(paramString);
+      if (paramString != null) {
+        localb.thumburl = paramString.bFw();
+      }
     }
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      Log.w("MicroMsg.ChattingEditModeSendToMail", "do send to mail fail, select item empty");
-      AppMethodBeat.o(34482);
-      return false;
-    }
-    if ((paramas == null) || ((int)paramas.jxt <= 0))
-    {
-      Log.w("MicroMsg.ChattingEditModeSendToMail", "do send to mail fail, contact error");
-      AppMethodBeat.o(34482);
-      return false;
-    }
-    boolean bool = b(parama, paramList, paramas);
-    AppMethodBeat.o(34482);
-    return bool;
+    AppMethodBeat.o(34458);
+    return localb;
   }
   
-  private static boolean b(com.tencent.mm.ui.chatting.e.a parama, List<ca> paramList, as paramas)
+  public static void b(String paramString1, k.b paramb, String paramString2)
   {
-    AppMethodBeat.i(34483);
-    String str;
-    Object localObject2;
-    label141:
-    Object localObject3;
-    if (!ab.Lj(paramas.field_username))
-    {
-      str = parama.WQv.getMMResources().getString(R.l.eSg);
-      localObject1 = paramas.ayr();
-      bh.beI();
-      str = String.format(str, new Object[] { localObject1, com.tencent.mm.model.c.aHp().b(4, null) });
-      h.IzE.a(10811, new Object[] { Integer.valueOf(7), Integer.valueOf(paramList.size()) });
-      if ((z.bdn() & 0x1) != 0) {
-        break label624;
-      }
-      Log.d("MicroMsg.ChattingEditModeSendToMail", "use qq mail plugin to send mail");
-      localObject1 = new ArrayList();
-      localObject2 = new ArrayList();
-      Iterator localIterator = paramList.iterator();
-      if (!localIterator.hasNext()) {
-        break label504;
-      }
-      localObject3 = (ca)localIterator.next();
-      if (!((ca)localObject3).dlR()) {
-        break label372;
-      }
-      s.bqB();
-      ((List)localObject1).add(x.XT(((et)localObject3).field_imgPath));
-      ((List)localObject2).add(null);
-    }
+    Object localObject2 = null;
+    AppMethodBeat.i(34457);
     for (;;)
     {
-      Log.i("MicroMsg.ChattingEditModeSendToMail", "file path = " + localObject1 + "file name = " + localObject2);
-      break label141;
-      if (Util.isNullOrNil(paramas.field_nickname))
-      {
-        localObject1 = v.Ps(paramas.field_username).iterator();
-        for (str = ""; ((Iterator)localObject1).hasNext(); str = str + (String)localObject2 + ", ") {
-          localObject2 = aa.PJ((String)((Iterator)localObject1).next());
-        }
-      }
-      for (str = str.substring(0, str.length() - 2);; str = paramas.ayr())
-      {
-        str = String.format(parama.WQv.getMMResources().getString(R.l.eSh), new Object[] { str });
-        break;
-      }
-      label372:
-      if (((ca)localObject3).erk())
-      {
-        localObject3 = k.b.OQ(((et)localObject3).field_content);
-        if (localObject3 == null) {
-          break label141;
-        }
-        switch (((k.b)localObject3).type)
-        {
-        case 5: 
-        default: 
-          break;
-        case 4: 
-        case 6: 
-          Object localObject4 = com.tencent.mm.pluginsdk.model.app.ao.ctZ().bpR(((k.b)localObject3).fvr);
-          if (localObject4 == null) {
-            break label141;
-          }
-          localObject4 = new q(((com.tencent.mm.pluginsdk.model.app.c)localObject4).field_fileFullPath);
-          if (((q)localObject4).ifE())
-          {
-            ((List)localObject1).add(u.n(((q)localObject4).bOF(), false));
-            ((List)localObject2).add(((k.b)localObject3).title);
-          }
-          break;
-        }
-      }
-    }
-    label504:
-    paramList = new QQMailHistoryExporter(parama.WQv.getContext(), paramList, paramas).hNv();
-    paramas = new Intent();
-    paramas.putExtra("mail_mode", 21);
-    paramas.putExtra("mail_content", paramList);
-    paramas.putExtra("subject", str);
-    paramas.putExtra("show_qqmail", true);
-    paramas.putExtra("mail_edit_mode", true);
-    paramas.putStringArrayListExtra("mail_attach_file", (ArrayList)localObject1);
-    com.tencent.mm.by.c.a(parama.WQt, "qqmail", ".ui.ComposeUI", paramas, 220, new c.a()
-    {
-      public final void onActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-      {
-        AppMethodBeat.i(34481);
-        paramAnonymousIntent = (l)this.WAa.bC(l.class);
-        if ((-1 == paramAnonymousInt2) && (paramAnonymousIntent != null) && (paramAnonymousIntent.hOT())) {
-          paramAnonymousIntent.hOR();
-        }
-        AppMethodBeat.o(34481);
-      }
-    });
-    AppMethodBeat.o(34483);
-    return false;
-    label624:
-    Log.w("MicroMsg.ChattingEditModeSendToMail", "use order mail app to send mail");
-    paramList = new aj(parama.WQv.getContext(), paramList, paramas);
-    Object localObject1 = paramList.hNv();
-    paramas = new Intent("android.intent.action.SEND_MULTIPLE");
-    paramas.setType("message/rfc822");
-    paramas.putExtra("android.intent.extra.SUBJECT", str);
-    paramas.putExtra("android.intent.extra.TEXT", (String)localObject1);
-    boolean bool;
-    if (paramList.WDK == null) {
-      bool = true;
-    }
-    for (;;)
-    {
-      Log.d("MicroMsg.OtherMailHistoryExporter", "get image attach: history is null? %B, selectItems.size = %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramList.WzW.size()) });
-      if (paramList.WDK != null)
-      {
-        paramList = paramList.WDL;
-        paramas.putParcelableArrayListExtra("android.intent.extra.STREAM", paramList);
-      }
       try
       {
-        paramList = parama.WQv;
-        paramas = Intent.createChooser(paramas, parama.WQv.getContext().getString(R.l.eSf));
-        paramas = new com.tencent.mm.hellhoundlib.b.a().bm(paramas);
-        com.tencent.mm.hellhoundlib.a.a.b(paramList, paramas.aFh(), "com/tencent/mm/ui/chatting/ChattingEditModeSendToMail", "doJob", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Ljava/util/List;Lcom/tencent/mm/storage/Contact;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramList.startActivity((Intent)paramas.sf(0));
-        com.tencent.mm.hellhoundlib.a.a.c(paramList, "com/tencent/mm/ui/chatting/ChattingEditModeSendToMail", "doJob", "(Lcom/tencent/mm/ui/chatting/context/ChattingContext;Ljava/util/List;Lcom/tencent/mm/storage/Contact;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(34483);
-        return true;
-        bool = false;
-        continue;
-        Log.w("MicroMsg.OtherMailHistoryExporter", "had not exported, do export first");
-        paramList.hNv();
-        paramList = paramList.WDL;
-      }
-      catch (ActivityNotFoundException paramList)
-      {
-        for (;;)
-        {
-          Toast.makeText(parama.WQv.getContext(), R.l.eSi, 0).show();
+        byte[] arrayOfByte = new byte[0];
+        Object localObject1 = localObject2;
+        if (!Util.isNullOrNil(paramString2)) {
+          if (!paramString2.startsWith("http://"))
+          {
+            localObject1 = localObject2;
+            if (!paramString2.startsWith("https://")) {}
+          }
+          else
+          {
+            localObject1 = b.bEY().a(paramString2, null);
+          }
         }
+        if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
+        {
+          Log.i("MicroMsg.ChattingEditModeSendToAppBrand", "thumb image is not null ");
+          paramString2 = new ByteArrayOutputStream();
+          ((Bitmap)localObject1).compress(Bitmap.CompressFormat.PNG, 100, paramString2);
+          paramString2 = paramString2.toByteArray();
+          if (au.bwE(paramString1))
+          {
+            i = 1;
+            n.a(paramb, paramb.nTE, paramb.title, paramString1, null, paramString2);
+            paramString2 = paramb.nTI;
+            com.tencent.mm.plugin.report.service.h.OAn.b(14127, new Object[] { paramb.nTE, paramb.nTD, paramb.nTC, paramb.title, paramb.description, "", paramb.url, Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(i), paramString1, Integer.valueOf(1), paramString2, "" });
+            AppMethodBeat.o(34457);
+          }
+        }
+        else
+        {
+          Log.e("MicroMsg.ChattingEditModeSendToAppBrand", "thumb image is null");
+          paramString2 = arrayOfByte;
+          continue;
+        }
+        int i = 0;
+      }
+      catch (Exception paramString1)
+      {
+        Log.printErrStackTrace("MicroMsg.ChattingEditModeSendToAppBrand", paramString1, "", new Object[0]);
+        Log.e("MicroMsg.ChattingEditModeSendToAppBrand", "retransmit sigle app msg error : %s", new Object[] { paramString1.getLocalizedMessage() });
+        AppMethodBeat.o(34457);
+        return;
       }
     }
+  }
+  
+  public static boolean i(cc paramcc, int paramInt)
+  {
+    AppMethodBeat.i(34459);
+    if (paramcc == null)
+    {
+      AppMethodBeat.o(34459);
+      return false;
+    }
+    if (!paramcc.iYe())
+    {
+      AppMethodBeat.o(34459);
+      return false;
+    }
+    paramcc = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.biz.a.a.class)).c(paramcc.field_msgId, paramcc.field_content).nUC;
+    if (!Util.isNullOrNil(paramcc))
+    {
+      int i;
+      if (paramInt >= 0)
+      {
+        i = paramInt;
+        if (paramInt < paramcc.size()) {}
+      }
+      else
+      {
+        i = 0;
+      }
+      if (m.Hh(((v)paramcc.get(i)).nUR))
+      {
+        AppMethodBeat.o(34459);
+        return true;
+      }
+    }
+    AppMethodBeat.o(34459);
+    return false;
+  }
+  
+  static void nt(List<cc> paramList)
+  {
+    AppMethodBeat.i(34460);
+    com.tencent.threadpool.h.ahAA.g(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(34454);
+        Object localObject1 = o.this;
+        if (!Util.isNullOrNil((List)localObject1))
+        {
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            Object localObject2 = (cc)((Iterator)localObject1).next();
+            Object localObject3;
+            if (((cc)localObject2).fxR())
+            {
+              localObject3 = k.b.Hf(((fi)localObject2).field_content);
+              if ((localObject3 != null) && (((k.b)localObject3).aK(com.tencent.mm.message.a.class) != null))
+              {
+                aa localaa = new aa();
+                localaa.nVy = ((k.b)localObject3);
+                localaa.publish();
+              }
+            }
+            if (((cc)localObject2).iYe())
+            {
+              localObject2 = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.biz.a.a.class)).c(((fi)localObject2).field_msgId, ((fi)localObject2).field_content).nUC;
+              if (localObject2 != null)
+              {
+                localObject2 = ((List)localObject2).iterator();
+                while (((Iterator)localObject2).hasNext())
+                {
+                  localObject3 = (v)((Iterator)localObject2).next();
+                  if ((!Util.isNullOrNil(((v)localObject3).nUW)) && (m.Hh(((v)localObject3).nUR))) {
+                    b.bEY().a(new o.2((v)localObject3), ((v)localObject3).nUW, null, ((com.tencent.mm.modelappbrand.k)com.tencent.mm.kernel.h.ax(com.tencent.mm.modelappbrand.k.class)).eE(112, 90));
+                  }
+                }
+              }
+            }
+          }
+        }
+        AppMethodBeat.o(34454);
+      }
+    }, "MicroMsg.ChattingEditModeSendToAppBrand$prepareAppBrandMsgToSend");
+    AppMethodBeat.o(34460);
   }
 }
 

@@ -6,25 +6,25 @@ public class WeChatPermissions
 {
   public static final String PERMISSION_MATRIX_STRATEGYNOTIFY()
   {
-    AppMethodBeat.i(249290);
+    AppMethodBeat.i(243698);
     String str = MMApplicationContext.getApplicationId() + ".matrix.strategynotify";
-    AppMethodBeat.o(249290);
+    AppMethodBeat.o(243698);
     return str;
   }
   
   public static final String PERMISSION_MM_MESSAGE()
   {
-    AppMethodBeat.i(249288);
+    AppMethodBeat.i(243689);
     String str = MMApplicationContext.getApplicationId() + ".permission.MM_MESSAGE";
-    AppMethodBeat.o(249288);
+    AppMethodBeat.o(243689);
     return str;
   }
   
   public static final String PERMISSION_WEAR_MESSAGE()
   {
-    AppMethodBeat.i(249289);
+    AppMethodBeat.i(243693);
     String str = MMApplicationContext.getApplicationId() + ".wear.message";
-    AppMethodBeat.o(249289);
+    AppMethodBeat.o(243693);
     return str;
   }
 }

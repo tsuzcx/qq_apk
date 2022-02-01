@@ -37,17 +37,14 @@ final class zzaax
     AppMethodBeat.i(40152);
     try
     {
-      Object localObject = zzui();
-      if (localObject == null)
-      {
-        AppMethodBeat.o(40152);
+      Object localObject1 = zzui();
+      if (localObject1 == null) {
         return null;
       }
-      localObject = (zzabj)((Class)localObject).getConstructor(new Class[] { Boolean.TYPE }).newInstance(new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(40152);
-      return localObject;
+      localObject1 = (zzabj)((Class)localObject1).getConstructor(new Class[] { Boolean.TYPE }).newInstance(new Object[] { Boolean.valueOf(paramBoolean) });
+      return localObject1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(40152);
     }
@@ -74,11 +71,10 @@ final class zzaax
     AppMethodBeat.i(40153);
     try
     {
-      Class localClass = Class.forName("com.google.b.ax");
-      AppMethodBeat.o(40153);
+      Class localClass = Class.forName("com.google.d.bc");
       return localClass;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(40153);
     }
@@ -90,11 +86,10 @@ final class zzaax
     AppMethodBeat.i(40154);
     try
     {
-      Class localClass = Class.forName("com.google.b.dd");
-      AppMethodBeat.o(40154);
+      Class localClass = Class.forName("com.google.d.dq");
       return localClass;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(40154);
     }
@@ -103,7 +98,7 @@ final class zzaax
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzaax
  * JD-Core Version:    0.7.0.1
  */

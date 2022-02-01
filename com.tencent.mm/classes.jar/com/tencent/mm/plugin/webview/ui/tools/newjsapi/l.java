@@ -1,145 +1,125 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.content.Context;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetNetWorkType;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetLocalImgData;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
   extends a
 {
-  private static final int IIl = 16;
-  public static final l Qve;
-  private static final String TAG = "MicroMsg.JsApiGetNetWorkType";
-  private static final String fXz = "getNetworkType";
+  private static final int OOk;
+  public static final l Xnd;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(229089);
-    Qve = new l();
-    TAG = "MicroMsg.JsApiGetNetWorkType";
-    IIl = 16;
-    fXz = "getNetworkType";
-    AppMethodBeat.o(229089);
+    AppMethodBeat.i(297772);
+    Xnd = new l();
+    OOk = 249;
+    idA = "getLocalImgData";
+    AppMethodBeat.o(297772);
   }
   
-  public final boolean a(f paramf, n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(229087);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    Context localContext = paramf.context;
-    if (!NetStatusUtil.isConnected(localContext))
+    AppMethodBeat.i(297790);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    Object localObject1 = (String)paramp.params.get("localId");
+    float f = Util.getFloat((String)paramp.params.get("compressionRatio"), 0.0F);
+    if (Util.isNullOrNil((String)localObject1))
     {
-      Log.i(TAG, "getNetworkType, not connected");
-      paramf.PNo.h(paramn.POu, "network_type:fail", null);
-      AppMethodBeat.o(229087);
-      return true;
+      paramh.WDy.doCallback(paramp.WEH, "getLocalImgData:fail_invaild_localid", null);
+      AppMethodBeat.o(297790);
+      return false;
     }
-    if (paramf.pGC != null) {}
-    int i;
     for (;;)
     {
       try
       {
-        Object localObject = paramf.pGC;
-        if (localObject == null) {
-          p.iCn();
-        }
-        localObject = ((e)localObject).l(110, new Bundle());
-        p.j(localObject, "env.invoker!!.invokeAsRe…_SIM_CARD_TYPE, Bundle())");
-        i = ((Bundle)localObject).getInt("sim_card_type", 0);
-        if (i == 0)
+        Object localObject2 = paramh.sLC;
+        if (localObject2 == null)
         {
-          i = 0;
-          int j = NetStatusUtil.getNetType(localContext);
-          Log.i(TAG, "getNetworkType, type = %s, simType = %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-          localObject = (Map)new HashMap();
-          if (!NetStatusUtil.is2G(localContext)) {
-            break;
+          localObject1 = null;
+          if (localObject1 == null) {
+            continue;
           }
-          Log.i(TAG, "getNetworkType, 2g");
-          ((Map)localObject).put("subtype", "2g");
-          ((Map)localObject).put("simtype", Integer.valueOf(i));
-          paramf.PNo.h(paramn.POu, "network_type:wwan", (Map)localObject);
-          AppMethodBeat.o(229087);
-          return true;
-        }
-        if (i == 1)
-        {
-          i = 1;
+          localObject1 = BitmapUtil.decodeFile((String)localObject1);
+          if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
+            continue;
+          }
+          localObject2 = new ByteArrayOutputStream();
+          double d = f;
+          if (0.1D > d) {
+            continue;
+          }
+          if (d <= 0.99D)
+          {
+            i = 1;
+            break label383;
+            ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, i, (OutputStream)localObject2);
+            Object localObject3 = ((ByteArrayOutputStream)localObject2).toByteArray();
+            localObject2 = Base64.encodeToString((byte[])localObject3, 2);
+            Log.i("MicroMsg.JsApiGetLocalImgData", s.X("rawData lenght = %d, base64 lenght = %d compressionRatio=", Float.valueOf(f)), new Object[] { Integer.valueOf(localObject3.length), Integer.valueOf(((String)localObject2).length()) });
+            localObject3 = new HashMap();
+            Map localMap = (Map)localObject3;
+            s.s(localObject2, "base64Content");
+            localMap.put("localData", localObject2);
+            paramh.WDy.doCallback(paramp.WEH, "getLocalImgData:ok", (Map)localObject3);
+            Log.i("MicroMsg.JsApiGetLocalImgData", "bitmap recycle %s", new Object[] { ((Bitmap)localObject1).toString() });
+            ((Bitmap)localObject1).recycle();
+            AppMethodBeat.o(297790);
+            return true;
+          }
         }
         else
         {
-          i = 2;
+          localObject1 = ((com.tencent.mm.plugin.webview.stub.e)localObject2).ic((String)localObject1, 2);
           continue;
-          i = 0;
         }
+        i = 0;
+        break label383;
+        i = 0;
       }
       catch (Exception localException)
       {
-        Log.e(TAG, "invokeAsResult ex %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.JsApiGetLocalImgData", localException.getMessage());
+        paramh.WDy.doCallback(paramp.WEH, "getLocalImgData:fail", null);
+        AppMethodBeat.o(297790);
+        return false;
       }
+      label383:
+      while (i == 0)
+      {
+        i = 90;
+        break;
+      }
+      int i = (int)(100.0F * f);
     }
-    if (NetStatusUtil.is3G(localContext))
-    {
-      Log.i(TAG, "getNetworkType, 3g");
-      localException.put("subtype", "3g");
-      localException.put("simtype", Integer.valueOf(i));
-      paramf.PNo.h(paramn.POu, "network_type:wwan", localException);
-      AppMethodBeat.o(229087);
-      return true;
-    }
-    if (NetStatusUtil.is4G(localContext))
-    {
-      Log.i(TAG, "getNetworkType, 4g");
-      localException.put("subtype", "4g");
-      localException.put("simtype", Integer.valueOf(i));
-      paramf.PNo.h(paramn.POu, "network_type:wwan", localException);
-      AppMethodBeat.o(229087);
-      return true;
-    }
-    if (NetStatusUtil.is5G(localContext))
-    {
-      Log.i(TAG, "getNetworkType, 5g");
-      localException.put("subtype", "5g");
-      localException.put("simtype", Integer.valueOf(i));
-      paramf.PNo.h(paramn.POu, "network_type:wwan", localException);
-      AppMethodBeat.o(229087);
-      return true;
-    }
-    if (NetStatusUtil.isWifi(localContext))
-    {
-      Log.i(TAG, "getNetworkType, wifi");
-      localException.put("simtype", Integer.valueOf(i));
-      paramf.PNo.h(paramn.POu, "network_type:wifi", localException);
-      AppMethodBeat.o(229087);
-      return true;
-    }
-    Log.w(TAG, "getNetworkType, unknown");
-    paramf.PNo.h(paramn.POu, "network_type:fail", null);
-    AppMethodBeat.o(229087);
-    return true;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
-    return IIl;
+    return OOk;
   }
 }
 

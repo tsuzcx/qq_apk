@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.permission;
 
 public abstract interface a
 {
-  public abstract void ia(boolean paramBoolean);
+  public abstract void iZ(boolean paramBoolean);
 }
 
 

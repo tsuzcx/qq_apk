@@ -1,41 +1,125 @@
 package com.tencent.mm.plugin.finder.conv;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.cv;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import kotlin.g.b.p;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.storage.ad;
+import com.tencent.mm.plugin.finder.storage.aw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import java.io.Closeable;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.f.b;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/conv/FinderSessionInfo;", "Lcom/tencent/mm/autogen/table/BaseFinderSessionInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "toString", "", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/conv/FinderNewXmlDataLogic;", "", "()V", "TAG", "", "TYPE_GLOBAL_PUSH", "", "clearAll", "", "type", "clearBeforeTime", "timestamp", "", "insertNewXmlData", "data", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderNewXmlData;", "queryAll", "", "removeById", "localId", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
-  extends cv
 {
-  private static final IAutoDBItem.MAutoDBInfo info;
-  public static final a xgH;
+  public static final l AGV;
   
   static
   {
-    AppMethodBeat.i(277906);
-    xgH = new a((byte)0);
-    info = cv.aoY();
-    AppMethodBeat.o(277906);
+    AppMethodBeat.i(336051);
+    AGV = new l();
+    AppMethodBeat.o(336051);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public static boolean a(aw paramaw)
   {
-    AppMethodBeat.i(277905);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
-    p.j(localMAutoDBInfo, "info");
-    AppMethodBeat.o(277905);
-    return localMAutoDBInfo;
+    AppMethodBeat.i(336041);
+    s.u(paramaw, "data");
+    boolean bool = ((PluginFinder)h.az(PluginFinder.class)).getNewXmlStorage().insert((IAutoDBItem)paramaw);
+    Log.i("Finder.NewXmlDataLogic", "insertNewXmlData data: " + paramaw + ", success: " + bool);
+    AppMethodBeat.o(336041);
+    return bool;
   }
   
-  public final String toString()
+  public static boolean avk(String paramString)
   {
-    return "";
+    AppMethodBeat.i(336024);
+    s.u(paramString, "localId");
+    ad localad = ((PluginFinder)h.az(PluginFinder.class)).getNewXmlStorage();
+    paramString = "DELETE FROM " + localad.getTableName() + " WHERE localId = " + paramString;
+    boolean bool = localad.execSQL(localad.getTableName(), paramString);
+    Log.i("Finder.NewXmlDataLogic", "removeById sql: " + paramString + ", success: " + bool);
+    AppMethodBeat.o(336024);
+    return bool;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/conv/FinderSessionInfo$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder_release"})
-  public static final class a {}
+  public static List<aw> dXc()
+  {
+    AppMethodBeat.i(336010);
+    Object localObject1 = ((PluginFinder)h.az(PluginFinder.class)).getNewXmlStorage();
+    String str = "SELECT * FROM " + ((ad)localObject1).getTableName() + " WHERE type = 1 ORDER BY createTime ASC";
+    Object localObject2 = ((ad)localObject1).rawQuery(str, new String[0]);
+    if (localObject2 == null) {
+      localObject1 = null;
+    }
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = new LinkedList();
+      }
+      Log.i("Finder.NewXmlDataLogic", "queryAll sql: " + str + ", size: " + ((LinkedList)localObject2).size());
+      localObject1 = (List)localObject2;
+      AppMethodBeat.o(336010);
+      return localObject1;
+      localObject1 = new LinkedList();
+      localObject2 = (Closeable)localObject2;
+      try
+      {
+        Object localObject4 = (Cursor)localObject2;
+        while (((Cursor)localObject4).moveToNext())
+        {
+          IAutoDBItem localIAutoDBItem = (IAutoDBItem)aw.class.newInstance();
+          localIAutoDBItem.convertFrom((Cursor)localObject4);
+          ((LinkedList)localObject1).add(localIAutoDBItem);
+        }
+      }
+      finally
+      {
+        try
+        {
+          AppMethodBeat.o(336010);
+          throw localThrowable;
+        }
+        finally
+        {
+          b.a((Closeable)localObject2, localThrowable);
+          AppMethodBeat.o(336010);
+        }
+        localObject4 = ah.aiuX;
+        b.a((Closeable)localObject2, null);
+      }
+    }
+  }
+  
+  public static boolean dXd()
+  {
+    AppMethodBeat.i(336032);
+    ad localad = ((PluginFinder)h.az(PluginFinder.class)).getNewXmlStorage();
+    String str = "DELETE FROM " + localad.getTableName() + " WHERE type = 1";
+    boolean bool = localad.execSQL(localad.getTableName(), str);
+    Log.i("Finder.NewXmlDataLogic", "clearAll sql: " + str + ", success: " + bool);
+    AppMethodBeat.o(336032);
+    return bool;
+  }
+  
+  public static boolean mT(long paramLong)
+  {
+    AppMethodBeat.i(336017);
+    ad localad = ((PluginFinder)h.az(PluginFinder.class)).getNewXmlStorage();
+    String str = "DELETE FROM " + localad.getTableName() + " WHERE type = 1 AND createTime < " + paramLong;
+    boolean bool = localad.execSQL(localad.getTableName(), str);
+    Log.i("Finder.NewXmlDataLogic", "clearBeforeTime sql: " + str + ", success: " + bool);
+    AppMethodBeat.o(336017);
+    return bool;
+  }
 }
 
 

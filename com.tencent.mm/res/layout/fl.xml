@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ecx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView android:id="@id/bkg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/h_w" android:background="@drawable/de" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="53.0dip" android:layout_marginRight="30.0dip">
+        <View android:background="@color/el" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="@dimen/iq">
+            <ImageView android:layout_width="wrap_content" android:layout_height="23.0dip" android:src="@raw/app_brand_search_nearby_icon" android:scaleType="centerCrop" android:adjustViewBounds="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:text="@string/qr" android:layout_weight="1.0" />
+            <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@raw/app_brand_search_nearby_more_arrow" />
+        </LinearLayout>
+        <View android:background="@color/el" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
 </LinearLayout>

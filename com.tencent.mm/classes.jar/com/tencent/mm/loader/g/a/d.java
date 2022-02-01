@@ -1,20 +1,12 @@
 package com.tencent.mm.loader.g.a;
 
-import com.tencent.mm.loader.g.a;
-import kotlin.l;
+import android.graphics.Matrix;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/loader/cfg/ITaskLoaderConfiguration;", "", "createHeavyExecutor", "Lcom/tencent/mm/loader/loader/ILoaderExecutor;", "createIoExecutor", "createLightExecutor", "name", "", "parallelTask", "", "retryStrategy", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "libimageloader_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/loader/model/data/ILoaderDataMatrix;", "", "getMatrix", "Landroid/graphics/Matrix;", "width", "", "height", "libimageloader_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface d
 {
-  public abstract a aSe();
-  
-  public abstract a aSf();
-  
-  public abstract int aSg();
-  
-  public abstract c aSh();
-  
-  public abstract String name();
+  public abstract Matrix aj(float paramFloat1, float paramFloat2);
 }
 
 

@@ -18,33 +18,32 @@ public abstract class c<Input extends EditText,  extends af>
   extends i
   implements ae
 {
-  public final int rtN;
-  public final WeakReference<ad> rtP;
-  public aj ruD;
-  public ai ruE;
-  final String ruF;
-  public final View.OnFocusChangeListener ruG = new View.OnFocusChangeListener()
+  public final int uES;
+  public final WeakReference<ad> uEU;
+  public aj uFv;
+  public ai uFw;
+  final String uFx;
+  public final View.OnFocusChangeListener uFy = new View.OnFocusChangeListener()
   {
     public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
     {
       AppMethodBeat.i(136308);
-      c.this.kn(paramAnonymousBoolean);
-      if (paramAnonymousBoolean)
+      if ((c.this.lz(paramAnonymousBoolean)) && (paramAnonymousBoolean))
       {
-        o.a((ad)c.this.rtP.get(), (af)c.this.cnZ());
-        ((af)c.this.cnZ()).setInputId(c.this.rtN);
-        o.b((ad)c.this.rtP.get(), c.this);
+        o.a((ad)c.this.uEU.get(), (af)c.this.cQB());
+        ((af)c.this.cQB()).setInputId(c.this.uES);
+        o.b((ad)c.this.uEU.get(), c.this);
       }
       AppMethodBeat.o(136308);
     }
   };
-  private final com.tencent.mm.ui.tools.b.c.a ruH = new p.a()
+  private final com.tencent.mm.ui.tools.b.c.a uFz = new p.a()
   {
-    public final void dN(String paramAnonymousString)
+    public final void eY(String paramAnonymousString)
     {
       AppMethodBeat.i(168762);
-      if (c.this.cnZ() != null) {
-        c.a(c.this, c.this.cnZ().getEditableText());
+      if (c.this.cQB() != null) {
+        c.a(c.this, c.this.cQB().getEditableText());
       }
       AppMethodBeat.o(168762);
     }
@@ -52,17 +51,17 @@ public abstract class c<Input extends EditText,  extends af>
   
   c(String paramString, ad paramad, int paramInt)
   {
-    this.ruF = paramString;
-    this.rtP = new WeakReference(paramad);
-    this.rtN = paramInt;
+    this.uFx = paramString;
+    this.uEU = new WeakReference(paramad);
+    this.uES = paramInt;
   }
   
   private void b(Editable paramEditable)
   {
     aj localaj;
-    if (this.ruD != null)
+    if (this.uFv != null)
     {
-      localaj = this.ruD;
+      localaj = this.uFv;
       if (paramEditable != null) {
         break label34;
       }
@@ -70,29 +69,29 @@ public abstract class c<Input extends EditText,  extends af>
     label34:
     for (String str = "";; str = paramEditable.toString())
     {
-      localaj.a(str, Selection.getSelectionEnd(paramEditable), aj.a.rxA);
+      localaj.a(str, Selection.getSelectionEnd(paramEditable), aj.a.uIE);
       return;
     }
   }
   
-  public final boolean A(ad paramad)
+  public final boolean B(ad paramad)
   {
-    return (paramad != null) && (paramad == this.rtP.get());
+    return (paramad != null) && (paramad == this.uEU.get());
   }
   
-  public final void DJ(int paramInt)
+  public final void Ej(int paramInt)
   {
-    if (this.ruE != null) {
-      this.ruE.DL(paramInt);
+    if (this.uFw != null) {
+      this.uFw.El(paramInt);
     }
   }
   
   final void a(Editable paramEditable)
   {
     aj localaj;
-    if (this.ruD != null)
+    if (this.uFv != null)
     {
-      localaj = this.ruD;
+      localaj = this.uFv;
       if (paramEditable != null) {
         break label34;
       }
@@ -100,7 +99,7 @@ public abstract class c<Input extends EditText,  extends af>
     label34:
     for (String str = "";; str = paramEditable.toString())
     {
-      localaj.a(str, Selection.getSelectionEnd(paramEditable), aj.a.rxy);
+      localaj.a(str, Selection.getSelectionEnd(paramEditable), aj.a.uIC);
       return;
     }
   }
@@ -108,9 +107,9 @@ public abstract class c<Input extends EditText,  extends af>
   final void a(Editable paramEditable, String paramString1, String paramString2)
   {
     aj localaj;
-    if (this.ruD != null)
+    if (this.uFv != null)
     {
-      localaj = this.ruD;
+      localaj = this.uFv;
       if (paramEditable != null) {
         break label37;
       }
@@ -118,19 +117,19 @@ public abstract class c<Input extends EditText,  extends af>
     label37:
     for (String str = "";; str = paramEditable.toString())
     {
-      localaj.f(str, Selection.getSelectionEnd(paramEditable), paramString1, paramString2);
+      localaj.b(str, Selection.getSelectionEnd(paramEditable), paramString1, paramString2);
       return;
     }
   }
   
   public final void a(String paramString, Integer paramInteger)
   {
-    anC(paramString);
+    agZ(paramString);
     if (paramInteger == null) {}
     for (int i = -1;; i = paramInteger.intValue())
     {
       paramString = Integer.valueOf(i);
-      fh(paramString.intValue(), paramString.intValue());
+      fZ(paramString.intValue(), paramString.intValue());
       return;
     }
   }
@@ -142,15 +141,15 @@ public abstract class c<Input extends EditText,  extends af>
     for (;;)
     {
       return false;
-      if (paramh.rAs == null) {
-        paramh.rAs = Integer.valueOf(140);
+      if (paramh.uLI == null) {
+        paramh.uLI = Integer.valueOf(140);
       }
-      while (cnZ() != null)
+      while (cQB() != null)
       {
-        p.a(cnZ()).axx(paramh.rAs.intValue()).Hh(false).b(g.a.XSt).a(this.ruH);
+        p.a(cQB()).aEg(paramh.uLI.intValue()).Nc(false).b(g.a.afIH).a(this.uFz);
         return true;
-        if (paramh.rAs.intValue() <= 0) {
-          paramh.rAs = Integer.valueOf(2147483647);
+        if (paramh.uLI.intValue() <= 0) {
+          paramh.uLI = Integer.valueOf(2147483647);
         }
       }
     }
@@ -161,110 +160,111 @@ public abstract class c<Input extends EditText,  extends af>
     b(paramEditable);
   }
   
-  public abstract boolean anC(String paramString);
+  public abstract boolean agZ(String paramString);
   
   protected abstract com.tencent.mm.plugin.appbrand.widget.input.e.h b(com.tencent.mm.plugin.appbrand.widget.input.e.h paramh);
   
-  public abstract Input cnZ();
+  public abstract Input cQB();
   
-  public abstract Rect coa();
+  public abstract Rect cQC();
   
-  public final boolean cob()
+  public final boolean cQD()
   {
     return remove();
   }
   
-  public final Input coc()
+  public final Input cQE()
   {
-    return cnZ();
+    return cQB();
   }
   
-  public Editable cod()
+  public Editable cQF()
   {
-    if (cnZ() == null) {
+    if (cQB() == null) {
       return null;
     }
-    return cnZ().getEditableText();
+    return cQB().getEditableText();
   }
   
-  protected final void coe()
+  protected final void cQJ()
   {
-    ad localad = (ad)this.rtP.get();
-    if ((localad != null) && (localad.qoF != null)) {
-      h.cop().d(localad.qoF);
+    ad localad = (ad)this.uEU.get();
+    if ((localad != null) && (localad.tti != null)) {
+      h.cQR().d(localad.tti);
     }
   }
   
-  protected final void cof()
+  protected final void cQS()
   {
-    ad localad = (ad)this.rtP.get();
-    if ((localad != null) && (localad.qoF != null)) {
-      h.cop().e(localad.qoF);
+    ad localad = (ad)this.uEU.get();
+    if ((localad != null) && (localad.tti != null)) {
+      h.cQR().e(localad.tti);
     }
   }
   
-  final void cog()
+  final void cQT()
   {
-    k.a(this.rtP).DN(this.rtN);
+    k.a(this.uEU).En(this.uES);
   }
   
-  final void coh()
+  final void cQU()
   {
-    k.a(this.rtP).DM(this.rtN);
+    k.a(this.uEU).Em(this.uES);
   }
   
-  protected final void fh(int paramInt1, int paramInt2)
+  protected final void fZ(int paramInt1, int paramInt2)
   {
-    b.a(cnZ(), paramInt1, paramInt2);
+    b.a(cQB(), paramInt1, paramInt2);
   }
   
   public final int getInputId()
   {
-    return this.rtN;
+    return this.uES;
   }
   
-  protected abstract boolean kn(boolean paramBoolean);
+  protected abstract boolean lz(boolean paramBoolean);
   
   public final boolean remove()
   {
-    EditText localEditText = cnZ();
+    EditText localEditText = cQB();
     if (localEditText == null) {
       return false;
     }
-    ((af)localEditText).b(this.ruG);
+    ((af)localEditText).b(this.uFy);
     localEditText.removeTextChangedListener(this);
     ((af)localEditText).destroy();
-    Object localObject = (ad)this.rtP.get();
-    if (localObject == null) {
+    ad localad = (ad)this.uEU.get();
+    if (localad == null) {
       return false;
     }
-    localObject = (g)((ad)localObject).cdU();
-    if (localObject == null) {
+    g localg = (g)localad.cEy();
+    if (localg == null) {
       return false;
     }
-    ((g)localObject).jdMethod_do(localEditText);
+    localg.ec(localEditText);
+    o.b(localad, (af)localEditText);
     return true;
   }
   
   public static enum a
   {
-    private static final androidx.b.b<a> ruJ;
+    private static final androidx.b.b<a> uFC;
     
     static
     {
       AppMethodBeat.i(177116);
-      ruK = new a[0];
-      ruJ = new androidx.b.b();
+      uFD = new a[0];
+      uFC = new androidx.b.b();
       AppMethodBeat.o(177116);
     }
     
     public static c a(String paramString, ad paramad, e parame)
     {
       AppMethodBeat.i(136312);
-      Iterator localIterator = ruJ.iterator();
+      Iterator localIterator = uFC.iterator();
       while (localIterator.hasNext())
       {
-        c localc = ((a)localIterator.next()).coi();
+        c localc = ((a)localIterator.next()).cQK();
         if (localc != null)
         {
           AppMethodBeat.o(136312);
@@ -289,13 +289,13 @@ public abstract class c<Input extends EditText,  extends af>
     
     public static abstract interface a
     {
-      public abstract c coi();
+      public abstract c cQK();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.c
  * JD-Core Version:    0.7.0.1
  */

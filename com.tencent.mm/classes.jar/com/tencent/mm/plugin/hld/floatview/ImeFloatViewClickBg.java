@@ -12,31 +12,28 @@ import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.h;
 import com.tencent.mm.plugin.hld.a.j;
 import com.tencent.mm.plugin.hld.a.l;
-import com.tencent.mm.plugin.hld.f.k;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ad;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.ui.af;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "bgWidth", "", "buttonWidth", "centerRl", "getCenterRl", "()Landroid/widget/RelativeLayout;", "centerRl$delegate", "Lkotlin/Lazy;", "mContext", "getBgWidth", "getButtonWidth", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "bgWidth", "", "buttonWidth", "centerRl", "getCenterRl", "()Landroid/widget/RelativeLayout;", "centerRl$delegate", "Lkotlin/Lazy;", "mContext", "getBgWidth", "getButtonWidth", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ImeFloatViewClickBg
   extends RelativeLayout
 {
-  public static final a Dxb;
-  private final f DwY;
-  private float DwZ;
-  private float Dxa;
+  public static final ImeFloatViewClickBg.a Jqd;
+  private final j Jqe;
+  private float Jqf;
+  private float Jqg;
   private Context mContext;
   
   static
   {
-    AppMethodBeat.i(211788);
-    Dxb = new a((byte)0);
-    AppMethodBeat.o(211788);
+    AppMethodBeat.i(312791);
+    Jqd = new ImeFloatViewClickBg.a((byte)0);
+    AppMethodBeat.o(312791);
   }
   
   public ImeFloatViewClickBg(Context paramContext, AttributeSet paramAttributeSet)
@@ -52,26 +49,24 @@ public final class ImeFloatViewClickBg
   private ImeFloatViewClickBg(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(211787);
-    this.DwY = g.ar((kotlin.g.a.a)new b(this));
+    AppMethodBeat.i(312779);
+    this.Jqe = kotlin.k.cm((kotlin.g.a.a)new b(this));
     this.mContext = paramContext;
-    Object localObject = k.DHH;
+    Object localObject = com.tencent.mm.plugin.hld.f.k.JyF;
     localObject = this.mContext;
-    if (localObject == null) {
-      p.iCn();
-    }
-    double d = k.gX((Context)localObject);
+    s.checkNotNull(localObject);
+    double d = com.tencent.mm.plugin.hld.f.k.is((Context)localObject);
     localObject = getResources().getString(a.j.S2_button_width);
-    p.j(localObject, "resources.getString(R.string.S2_button_width)");
-    this.DwZ = ((float)(d * Float.parseFloat((String)localObject)));
-    if (paramContext == null) {
-      p.iCn();
-    }
-    paramInt = paramContext.obtainStyledAttributes(paramAttributeSet, a.l.ImeFloatViewClickBg, paramInt, 0).getInt(a.l.ImeFloatViewClickBg_ime_float_view_click_bg_type, 1);
-    if (paramInt == 1)
+    s.s(localObject, "resources.getString(R.string.S2_button_width)");
+    this.Jqf = ((float)(d * Float.parseFloat((String)localObject)));
+    s.checkNotNull(paramContext);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.l.ImeFloatViewClickBg, paramInt, 0);
+    s.s(paramAttributeSet, "context!!.obtainStyledAt…ClickBg, defStyleAttr, 0)");
+    paramInt = paramAttributeSet.getInt(a.l.ImeFloatViewClickBg_ime_float_view_click_bg_type, 1);
+    switch (paramInt)
     {
-      ad.kS(paramContext).inflate(a.h.ime_key_float_view_click_bg, (ViewGroup)this, true);
-      this.Dxa = (this.DwZ + com.tencent.mm.ci.a.aZ(paramContext, a.d.ime_float_view_click_bg_part_width) * 2);
+    default: 
+      Log.e("WxIme.ImeClickFloatBgView", "no correct key_click_bg_type(" + paramInt + ')');
     }
     for (;;)
     {
@@ -79,53 +74,46 @@ public final class ImeFloatViewClickBg
       if (paramContext != null) {
         break;
       }
-      paramContext = new t("null cannot be cast to non-null type android.view.ViewGroup.LayoutParams");
-      AppMethodBeat.o(211787);
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.LayoutParams");
+      AppMethodBeat.o(312779);
       throw paramContext;
-      if (paramInt == 2)
-      {
-        ad.kS(paramContext).inflate(a.h.ime_key_float_view_click_left_bg, (ViewGroup)this, true);
-        this.Dxa = (this.DwZ + com.tencent.mm.ci.a.aZ(paramContext, a.d.ime_float_view_click_bg_part_width));
-      }
-      else if (paramInt == 3)
-      {
-        ad.kS(paramContext).inflate(a.h.ime_key_float_view_click_right_bg, (ViewGroup)this, true);
-        this.Dxa = (this.DwZ + com.tencent.mm.ci.a.aZ(paramContext, a.d.ime_float_view_click_bg_part_width));
-      }
-      else
-      {
-        Log.e("WxIme.ImeClickFloatBgView", "no correct key_click_bg_type(" + paramInt + ')');
-      }
+      af.mU(paramContext).inflate(a.h.ime_key_float_view_click_bg, (ViewGroup)this, true);
+      this.Jqg = (this.Jqf + com.tencent.mm.cd.a.bs(paramContext, a.d.ime_float_view_click_bg_part_width) * 2);
+      continue;
+      af.mU(paramContext).inflate(a.h.ime_key_float_view_click_left_bg, (ViewGroup)this, true);
+      this.Jqg = (this.Jqf + com.tencent.mm.cd.a.bs(paramContext, a.d.ime_float_view_click_bg_part_width));
+      continue;
+      af.mU(paramContext).inflate(a.h.ime_key_float_view_click_right_bg, (ViewGroup)this, true);
+      this.Jqg = (this.Jqf + com.tencent.mm.cd.a.bs(paramContext, a.d.ime_float_view_click_bg_part_width));
     }
-    paramContext.width = ((int)this.DwZ);
+    paramContext.width = ((int)this.Jqf);
     getCenterRl().setLayoutParams(paramContext);
-    AppMethodBeat.o(211787);
+    AppMethodBeat.o(312779);
   }
   
   private final RelativeLayout getCenterRl()
   {
-    AppMethodBeat.i(211784);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.DwY.getValue();
-    AppMethodBeat.o(211784);
-    return localRelativeLayout;
+    AppMethodBeat.i(312753);
+    Object localObject = this.Jqe.getValue();
+    s.s(localObject, "<get-centerRl>(...)");
+    localObject = (RelativeLayout)localObject;
+    AppMethodBeat.o(312753);
+    return localObject;
   }
   
   public final int getBgWidth()
   {
-    return (int)this.Dxa;
+    return (int)this.Jqg;
   }
   
   public final int getButtonWidth()
   {
-    return (int)this.DwZ;
+    return (int)this.Jqf;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/floatview/ImeFloatViewClickBg$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<RelativeLayout>
   {
     b(ImeFloatViewClickBg paramImeFloatViewClickBg)

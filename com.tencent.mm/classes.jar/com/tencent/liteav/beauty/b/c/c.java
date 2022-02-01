@@ -24,49 +24,49 @@ public class c
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(232222);
+    AppMethodBeat.i(229801);
     GLES20.glViewport(0, 0, this.E, this.F);
     paramInt1 = super.a(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(232222);
+    AppMethodBeat.o(229801);
     return paramInt1;
   }
   
   public void a(float paramFloat)
   {
-    AppMethodBeat.i(232215);
+    AppMethodBeat.i(229781);
     a(this.A, paramFloat);
     a(this.B, 0.3F * paramFloat * paramFloat);
-    AppMethodBeat.o(232215);
+    AppMethodBeat.o(229781);
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(232214);
+    AppMethodBeat.i(229775);
     a(this.y, 1.0F / paramFloat1);
     a(this.z, 1.0F / paramFloat2);
-    AppMethodBeat.o(232214);
+    AppMethodBeat.o(229775);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(232213);
+    AppMethodBeat.i(229771);
     super.a(paramInt1, paramInt2);
     this.E = paramInt1;
     this.F = paramInt2;
     a(paramInt1, paramInt2);
-    AppMethodBeat.o(232213);
+    AppMethodBeat.o(229771);
   }
   
   public void b(float paramFloat)
   {
-    AppMethodBeat.i(232217);
+    AppMethodBeat.i(229785);
     a(this.D, paramFloat);
-    AppMethodBeat.o(232217);
+    AppMethodBeat.o(229785);
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(232211);
+    AppMethodBeat.i(229766);
     super.b();
     this.y = GLES20.glGetUniformLocation(q(), "texelWidthOffset");
     this.z = GLES20.glGetUniformLocation(q(), "texelHeightOffset");
@@ -76,30 +76,30 @@ public class c
     this.D = GLES20.glGetUniformLocation(q(), "whitenStrength");
     if (this.a != 0)
     {
-      AppMethodBeat.o(232211);
+      AppMethodBeat.o(229766);
       return true;
     }
-    AppMethodBeat.o(232211);
+    AppMethodBeat.o(229766);
     return false;
   }
   
   public void c(float paramFloat)
   {
-    AppMethodBeat.i(232218);
+    AppMethodBeat.i(229790);
     a(this.C, paramFloat);
-    AppMethodBeat.o(232218);
+    AppMethodBeat.o(229790);
   }
   
   public void d(float paramFloat)
   {
-    AppMethodBeat.i(232219);
+    AppMethodBeat.i(229796);
     a(this.B, paramFloat);
-    AppMethodBeat.o(232219);
+    AppMethodBeat.o(229796);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.c.c
  * JD-Core Version:    0.7.0.1
  */

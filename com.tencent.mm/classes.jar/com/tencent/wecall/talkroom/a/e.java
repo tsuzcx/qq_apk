@@ -14,25 +14,25 @@ import com.tencent.wecall.talkroom.model.j;
 public final class e
   extends d
 {
-  public String CSB;
-  public int DVO;
-  public long NXM;
-  public String ZVC;
-  public int ZXS;
+  public String IMR;
+  public int JMX;
+  public long UGt;
+  public String aiab;
+  public int aicr;
   
   public e(e parame)
   {
     AppMethodBeat.i(62542);
-    this.CSB = null;
-    this.DVO = 0;
-    this.NXM = 0L;
-    this.ZXS = 0;
-    this.ZVC = null;
-    this.CSB = parame.CSB;
-    this.DVO = parame.DVO;
-    this.NXM = parame.NXM;
-    this.ZXS = parame.ZXS;
-    this.ZVC = parame.ZVC;
+    this.IMR = null;
+    this.JMX = 0;
+    this.UGt = 0L;
+    this.aicr = 0;
+    this.aiab = null;
+    this.IMR = parame.IMR;
+    this.JMX = parame.JMX;
+    this.UGt = parame.UGt;
+    this.aicr = parame.aicr;
+    this.aiab = parame.aiab;
     super.a(parame);
     AppMethodBeat.o(62542);
   }
@@ -40,11 +40,11 @@ public final class e
   public e(String paramString1, int paramInt1, long paramLong, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString2)
   {
     AppMethodBeat.i(62543);
-    this.CSB = null;
-    this.DVO = 0;
-    this.NXM = 0L;
-    this.ZXS = 0;
-    this.ZVC = null;
+    this.IMR = null;
+    this.JMX = 0;
+    this.UGt = 0L;
+    this.aicr = 0;
+    this.aiab = null;
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "enter2", paramString1, Integer.valueOf(paramInt1), Long.valueOf(paramLong), paramString2 });
     a.e locale = new a.e();
     for (;;)
@@ -52,32 +52,32 @@ public final class e
       try
       {
         locale.groupId = paramString1;
-        this.CSB = paramString1;
-        locale.NOc = paramInt1;
-        this.DVO = paramInt1;
-        locale.NOd = paramLong;
-        this.NXM = paramLong;
-        locale.xbJ = paramInt3;
-        this.ZXS = paramInt3;
+        this.IMR = paramString1;
+        locale.UAZ = paramInt1;
+        this.JMX = paramInt1;
+        locale.UBa = paramLong;
+        this.UGt = paramLong;
+        locale.ACR = paramInt3;
+        this.aicr = paramInt3;
         paramString1 = new a.ay();
-        paramString1.Zhv = paramString2;
-        locale.ZeS = paramString1;
-        this.ZVC = paramString2;
-        b.d("MicroMsg.Voip", new Object[] { this.TAG2, "wXgroupId", locale.ZeS.Zhv });
+        paramString1.ahfW = paramString2;
+        locale.ahdv = paramString1;
+        this.aiab = paramString2;
+        b.d("MicroMsg.Voip", new Object[] { this.TAG2, "wXgroupId", locale.ahdv.ahfW });
         paramString1 = new a.ao();
         if (paramArrayOfByte == null) {
           continue;
         }
         paramString1.buffer = paramArrayOfByte;
-        paramString1.Ufv = paramArrayOfByte.length;
+        paramString1.abwJ = paramArrayOfByte.length;
         paramArrayOfByte = new a.bf();
         paramArrayOfByte.type = 3;
-        paramArrayOfByte.Zip = paramString1;
-        locale.ZeU = paramArrayOfByte;
-        aAc(2);
-        aAd(paramInt2);
-        locale.ZeW = 2;
-        locale.netType = j.mv(c.NYh);
+        paramArrayOfByte.ahgQ = paramString1;
+        locale.ahdx = paramArrayOfByte;
+        aGP(2);
+        aGQ(paramInt2);
+        locale.ahdz = 2;
+        locale.netType = j.oL(c.UMe);
       }
       catch (Exception paramString1)
       {
@@ -87,11 +87,11 @@ public final class e
       c(141, locale);
       AppMethodBeat.o(62543);
       return;
-      paramString1.Ufv = 0;
+      paramString1.abwJ = 0;
     }
   }
   
-  public final Object dn(byte[] paramArrayOfByte)
+  public final Object dp(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62544);
     if (paramArrayOfByte != null) {}
@@ -99,7 +99,7 @@ public final class e
     {
       try
       {
-        paramArrayOfByte = (a.ac)com.google.b.a.e.a(new a.ac(), paramArrayOfByte, paramArrayOfByte.length);
+        paramArrayOfByte = (a.ac)com.google.d.a.e.a(new a.ac(), paramArrayOfByte, paramArrayOfByte.length);
         AppMethodBeat.o(62544);
         return paramArrayOfByte;
       }
@@ -118,14 +118,14 @@ public final class e
     return 202;
   }
   
-  public final String ikF()
+  public final String jQW()
   {
     return "CsCmd.Cmd_V_CSEnterVoiceRoomReq";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.e
  * JD-Core Version:    0.7.0.1
  */

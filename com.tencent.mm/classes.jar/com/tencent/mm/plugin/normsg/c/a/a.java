@@ -5,7 +5,7 @@ import android.hardware.SensorManager;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import com.tencent.d.f.j;
+import com.tencent.e.f.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.normsg.c.p;
 import com.tencent.mm.plugin.secinforeport.a.d;
@@ -19,26 +19,26 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class a
   implements b.a
 {
-  private static final j<a> GxP;
-  final b GxQ;
-  e GxR;
-  final MMHandler opL;
+  private static final j<a> MtV;
+  final b MtY;
+  e MtZ;
+  final MMHandler rtv;
   
   static
   {
-    AppMethodBeat.i(257635);
-    GxP = new j() {};
-    AppMethodBeat.o(257635);
+    AppMethodBeat.i(261924);
+    MtV = new j() {};
+    AppMethodBeat.o(261924);
   }
   
   public a()
   {
-    AppMethodBeat.i(257620);
-    this.opL = new MMHandler("NormsgSensorEngineWorker")
+    AppMethodBeat.i(261898);
+    this.rtv = new MMHandler("NormsgSensorEngineWorker")
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(257823);
+        AppMethodBeat.i(261925);
         try
         {
           localObject1 = a.this;
@@ -46,45 +46,45 @@ public final class a
           switch (i)
           {
           default: 
-            AppMethodBeat.o(257823);
+            AppMethodBeat.o(261925);
             return;
           }
         }
-        catch (Throwable paramAnonymousMessage)
+        finally
         {
           Log.e("MicroMsg.NormsgSensorEngine", "NormsgSensorEngineWorker handle msg error:" + paramAnonymousMessage.getMessage());
-          AppMethodBeat.o(257823);
+          AppMethodBeat.o(261925);
           return;
         }
         Log.d("MicroMsg.NormsgSensorEngine", "Start record sensor");
         Object localObject2 = (com.tencent.mm.plugin.normsg.c.a.a.b)paramAnonymousMessage.obj;
         int i = paramAnonymousMessage.arg1;
-        ((a)localObject1).opL.removeMessages(6);
-        paramAnonymousMessage = ((a)localObject1).GxR;
-        c.p.fa(((com.tencent.mm.plugin.normsg.c.a.a.b)localObject2).Gyj, i, ((com.tencent.mm.plugin.normsg.c.a.a.b)localObject2).Gyh);
-        if (paramAnonymousMessage.Gyd) {
+        ((a)localObject1).rtv.removeMessages(6);
+        paramAnonymousMessage = ((a)localObject1).MtZ;
+        c.p.fa(((com.tencent.mm.plugin.normsg.c.a.a.b)localObject2).Mur, i, ((com.tencent.mm.plugin.normsg.c.a.a.b)localObject2).Mup);
+        if (paramAnonymousMessage.Mul) {
           c.p.fd();
         }
-        localObject2 = paramAnonymousMessage.Gye.iterator();
+        localObject2 = paramAnonymousMessage.Mum.iterator();
         while (((Iterator)localObject2).hasNext()) {
           c.p.fe(((Integer)((Iterator)localObject2).next()).intValue());
         }
-        paramAnonymousMessage = paramAnonymousMessage.Gyf.iterator();
+        paramAnonymousMessage = paramAnonymousMessage.Mun.iterator();
         while (paramAnonymousMessage.hasNext()) {
           c.p.ff(((Integer)paramAnonymousMessage.next()).intValue());
         }
-        if (((a)localObject1).GxQ.GxT.get())
+        if (((a)localObject1).MtY.Mub.get())
         {
           Log.i("MicroMsg.NormsgSensorEngine", "SensorListener is already started");
-          AppMethodBeat.o(257823);
+          AppMethodBeat.o(261925);
           return;
         }
-        paramAnonymousMessage = ((a)localObject1).GxQ;
-        paramAnonymousMessage.GxV.clear();
-        paramAnonymousMessage.GxW = new HandlerThread("NSL");
-        paramAnonymousMessage.GxW.start();
-        paramAnonymousMessage.GxX = new Handler(paramAnonymousMessage.GxW.getLooper());
-        Object localObject1 = com.tencent.mm.plugin.normsg.c.a.a.b.Gyg;
+        paramAnonymousMessage = ((a)localObject1).MtY;
+        paramAnonymousMessage.Mud.clear();
+        paramAnonymousMessage.Mue = new HandlerThread("NSL");
+        paramAnonymousMessage.Mue.start();
+        paramAnonymousMessage.Muf = new Handler(paramAnonymousMessage.Mue.getLooper());
+        Object localObject1 = com.tencent.mm.plugin.normsg.c.a.a.b.Muo;
         int k = localObject1.length;
         i = 0;
         label323:
@@ -92,7 +92,7 @@ public final class a
         if (i < k)
         {
           m = localObject1[i];
-          if (com.tencent.mm.plugin.normsg.c.a.a.a.aaB(m) != 0) {
+          if (com.tencent.mm.plugin.normsg.c.a.a.a.aeU(m) != 0) {
             break label802;
           }
         }
@@ -107,84 +107,84 @@ public final class a
           else
           {
             localObject2 = paramAnonymousMessage.mSensorManager.getDefaultSensor(m);
-            j = com.tencent.mm.plugin.normsg.c.a.a.a.aaB(m);
+            j = com.tencent.mm.plugin.normsg.c.a.a.a.aeU(m);
             if (localObject2 == null)
             {
               Log.i("MicroMsg.NormsgSensorListener", "Device has no sensor ".concat(String.valueOf(j)));
-              paramAnonymousMessage.GxU.iF(1, j);
+              paramAnonymousMessage.Muc.kl(1, j);
             }
             else
             {
               c localc = new c((Sensor)localObject2);
-              paramAnonymousMessage.GxV.put(Integer.valueOf(j), localc);
-              if (!paramAnonymousMessage.mSensorManager.registerListener(paramAnonymousMessage, (Sensor)localObject2, 0, paramAnonymousMessage.GxX))
+              paramAnonymousMessage.Mud.put(Integer.valueOf(j), localc);
+              if (!paramAnonymousMessage.mSensorManager.registerListener(paramAnonymousMessage, (Sensor)localObject2, 0, paramAnonymousMessage.Muf))
               {
-                paramAnonymousMessage.GxU.iF(2, j);
+                paramAnonymousMessage.Muc.kl(2, j);
                 break label795;
-                if (paramAnonymousMessage.GxV.isEmpty())
+                if (paramAnonymousMessage.Mud.isEmpty())
                 {
-                  paramAnonymousMessage.GxU.iF(3, 0);
-                  paramAnonymousMessage.GxT.set(false);
-                  if (paramAnonymousMessage.GxW != null)
+                  paramAnonymousMessage.Muc.kl(3, 0);
+                  paramAnonymousMessage.Mub.set(false);
+                  if (paramAnonymousMessage.Mue != null)
                   {
-                    paramAnonymousMessage.GxW.quit();
-                    AppMethodBeat.o(257823);
+                    paramAnonymousMessage.Mue.quit();
+                    AppMethodBeat.o(261925);
                   }
                 }
                 else
                 {
-                  paramAnonymousMessage.GxT.set(true);
+                  paramAnonymousMessage.Mub.set(true);
                 }
-                AppMethodBeat.o(257823);
+                AppMethodBeat.o(261925);
                 return;
                 i = paramAnonymousMessage.arg1;
                 paramAnonymousMessage = (List)paramAnonymousMessage.obj;
                 if ((paramAnonymousMessage == null) || (paramAnonymousMessage.isEmpty()))
                 {
                   Log.e("MicroMsg.NormsgSensorEngine", "Sensor buffer is empty");
-                  AppMethodBeat.o(257823);
+                  AppMethodBeat.o(261925);
                   return;
                 }
                 if ((paramAnonymousMessage == null) || (paramAnonymousMessage.isEmpty()))
                 {
-                  AppMethodBeat.o(257823);
+                  AppMethodBeat.o(261925);
                   return;
                 }
                 c.p.fb(i, paramAnonymousMessage);
-                AppMethodBeat.o(257823);
+                AppMethodBeat.o(261925);
                 return;
                 Log.d("MicroMsg.NormsgSensorEngine", "Try stop record sensor");
                 paramAnonymousMessage = (String)paramAnonymousMessage.obj;
                 if (c.p.fg(paramAnonymousMessage))
                 {
-                  ((a)localObject1).aTr(paramAnonymousMessage);
-                  AppMethodBeat.o(257823);
+                  ((a)localObject1).aQr(paramAnonymousMessage);
+                  AppMethodBeat.o(261925);
                   return;
                 }
                 i = c.p.fl(paramAnonymousMessage);
                 if (i >= 0)
                 {
                   c.p.fh(paramAnonymousMessage);
-                  ((a)localObject1).a(4, paramAnonymousMessage, com.tencent.mm.plugin.normsg.c.a.a.b.aaC(i));
+                  ((a)localObject1).a(4, paramAnonymousMessage, com.tencent.mm.plugin.normsg.c.a.a.b.aeV(i));
                 }
-                AppMethodBeat.o(257823);
+                AppMethodBeat.o(261925);
                 return;
                 Log.d("MicroMsg.NormsgSensorEngine", "Stop record sensor immediate");
-                ((a)localObject1).aTr((String)paramAnonymousMessage.obj);
-                AppMethodBeat.o(257823);
+                ((a)localObject1).aQr((String)paramAnonymousMessage.obj);
+                AppMethodBeat.o(261925);
                 return;
                 Log.d("MicroMsg.NormsgSensorEngine", "Cancel record sensor");
-                ((a)localObject1).aTs((String)paramAnonymousMessage.obj);
-                AppMethodBeat.o(257823);
+                ((a)localObject1).aQs((String)paramAnonymousMessage.obj);
+                AppMethodBeat.o(261925);
                 return;
                 Log.d("MicroMsg.NormsgSensorEngine", "Stop sensor listener");
-                if (((a)localObject1).GxQ.GxT.get()) {
-                  ((a)localObject1).GxQ.bSq();
+                if (((a)localObject1).MtY.Mub.get()) {
+                  ((a)localObject1).MtY.csv();
                 }
-                paramAnonymousMessage = ((a)localObject1).GxR;
-                paramAnonymousMessage.Gyd = false;
-                paramAnonymousMessage.Gye.clear();
-                paramAnonymousMessage.Gyf.clear();
+                paramAnonymousMessage = ((a)localObject1).MtZ;
+                paramAnonymousMessage.Mul = false;
+                paramAnonymousMessage.Mum.clear();
+                paramAnonymousMessage.Mun.clear();
                 c.p.fk();
                 break;
               }
@@ -195,124 +195,132 @@ public final class a
         }
       }
     };
-    this.GxQ = new b(this);
-    this.GxR = new e();
-    AppMethodBeat.o(257620);
+    this.MtY = new b(this);
+    this.MtZ = new e();
+    AppMethodBeat.o(261898);
   }
   
   private void a(int paramInt1, int paramInt2, Object paramObject, long paramLong)
   {
-    AppMethodBeat.i(257634);
+    AppMethodBeat.i(261922);
     try
     {
       Message localMessage = Message.obtain();
       localMessage.what = paramInt1;
       localMessage.arg1 = paramInt2;
       localMessage.obj = paramObject;
-      this.opL.sendMessageDelayed(localMessage, paramLong);
-      AppMethodBeat.o(257634);
+      this.rtv.sendMessageDelayed(localMessage, paramLong);
+      AppMethodBeat.o(261922);
       return;
     }
-    catch (Throwable paramObject)
+    finally
     {
       Log.e("MicroMsg.NormsgSensorEngine", "Send msg error: %s" + paramObject.getMessage());
-      AppMethodBeat.o(257634);
+      AppMethodBeat.o(261922);
     }
   }
   
-  public static a fjy()
+  public static a gtR()
   {
-    AppMethodBeat.i(257622);
-    a locala = (a)GxP.get();
-    AppMethodBeat.o(257622);
+    AppMethodBeat.i(261904);
+    a locala = (a)MtV.get();
+    AppMethodBeat.o(261904);
     return locala;
   }
   
-  private void fjz()
+  private void gtS()
   {
-    AppMethodBeat.i(257630);
+    AppMethodBeat.i(261911);
     a(6, 0, null, 0L);
-    AppMethodBeat.o(257630);
+    AppMethodBeat.o(261911);
   }
   
-  public final void a(int paramInt, Object paramObject, long paramLong)
+  private void i(int paramInt1, int paramInt2, Object paramObject)
   {
-    AppMethodBeat.i(257633);
+    AppMethodBeat.i(261918);
+    a(paramInt1, paramInt2, paramObject, 0L);
+    AppMethodBeat.o(261918);
+  }
+  
+  public final void N(int paramInt, List<com.tencent.mm.normsg.b> paramList)
+  {
+    AppMethodBeat.i(261934);
+    i(2, paramInt, paramList);
+    AppMethodBeat.o(261934);
+  }
+  
+  public final void a(int paramInt, com.tencent.mm.plugin.normsg.c.a.a.b paramb)
+  {
+    AppMethodBeat.i(261928);
+    i(1, paramInt, paramb);
+    a(3, paramb.Mur, paramb.Muq);
+    AppMethodBeat.o(261928);
+  }
+  
+  final void a(int paramInt, Object paramObject, long paramLong)
+  {
+    AppMethodBeat.i(261939);
     a(paramInt, 0, paramObject, paramLong);
-    AppMethodBeat.o(257633);
+    AppMethodBeat.o(261939);
   }
   
-  final void aTr(String paramString)
+  final void aQr(String paramString)
   {
-    AppMethodBeat.i(257627);
+    AppMethodBeat.i(261936);
     byte[] arrayOfByte = c.p.fi(paramString);
     if (arrayOfByte != null) {
-      d.Jcm.asyncReportSensorSceneInfoThroughCgi(paramString, arrayOfByte);
+      d.Pmb.asyncReportSensorSceneInfoThroughCgi(paramString, arrayOfByte);
     }
     for (;;)
     {
-      aTs(paramString);
-      AppMethodBeat.o(257627);
+      aQs(paramString);
+      AppMethodBeat.o(261936);
       return;
       Log.w("MicroMsg.NormsgSensorEngine", "Can't get encrypted sensor data: ".concat(String.valueOf(paramString)));
     }
   }
   
-  final void aTs(String paramString)
+  final void aQs(String paramString)
   {
-    AppMethodBeat.i(257628);
+    AppMethodBeat.i(261938);
     c.p.fj(paramString);
     if (c.p.fc())
     {
-      AppMethodBeat.o(257628);
+      AppMethodBeat.o(261938);
       return;
     }
-    fjz();
-    AppMethodBeat.o(257628);
+    gtS();
+    AppMethodBeat.o(261938);
   }
   
-  public final void h(int paramInt1, int paramInt2, Object paramObject)
+  public final void kl(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(257631);
-    a(paramInt1, paramInt2, paramObject, 0L);
-    AppMethodBeat.o(257631);
-  }
-  
-  public final void iF(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(257624);
+    AppMethodBeat.i(261931);
     if (paramInt1 == 1)
     {
-      this.GxR.Gyf.add(Integer.valueOf(paramInt2));
+      this.MtZ.Mun.add(Integer.valueOf(paramInt2));
       c.p.ff(paramInt2);
-      AppMethodBeat.o(257624);
+      AppMethodBeat.o(261931);
       return;
     }
     if (paramInt1 == 2)
     {
-      this.GxR.Gye.add(Integer.valueOf(paramInt2));
+      this.MtZ.Mum.add(Integer.valueOf(paramInt2));
       c.p.fe(paramInt2);
-      AppMethodBeat.o(257624);
+      AppMethodBeat.o(261931);
       return;
     }
     if (paramInt1 == 3)
     {
-      this.GxR.Gyd = true;
+      this.MtZ.Mul = true;
       c.p.fd();
     }
-    AppMethodBeat.o(257624);
-  }
-  
-  public final void s(int paramInt, List<com.tencent.mm.normsg.b> paramList)
-  {
-    AppMethodBeat.i(257626);
-    h(2, paramInt, paramList);
-    AppMethodBeat.o(257626);
+    AppMethodBeat.o(261931);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.c.a.a
  * JD-Core Version:    0.7.0.1
  */

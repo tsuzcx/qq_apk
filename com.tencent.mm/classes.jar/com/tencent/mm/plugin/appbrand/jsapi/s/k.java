@@ -1,115 +1,47 @@
 package com.tencent.mm.plugin.appbrand.jsapi.s;
 
+import android.content.SharedPreferences;
+import com.tencent.luggage.sdk.b.a.b.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.picker.c.a;
-import org.json.JSONObject;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-final class k
-  extends e
+public final class k
+  implements e.b
 {
-  private int mMaxTimeHour = 2147483647;
-  private int mMaxTimeMinute = 2147483647;
-  private int mMinTimeHour = -1;
-  private int mMinTimeMinute = -1;
-  private int plt = -1;
-  private int plu = -1;
-  
-  final void ag(JSONObject paramJSONObject)
+  public final boolean arp()
   {
-    AppMethodBeat.i(137619);
-    super.ag(paramJSONObject);
-    AppMethodBeat.o(137619);
+    AppMethodBeat.i(327275);
+    if (((c)h.ax(c.class)).a(c.a.yPv, 1) > 0)
+    {
+      AppMethodBeat.o(327275);
+      return true;
+    }
+    AppMethodBeat.o(327275);
+    return false;
   }
   
-  final void ah(JSONObject paramJSONObject)
+  public final boolean isOpen()
   {
-    AppMethodBeat.i(137620);
-    Object localObject2 = paramJSONObject.optJSONObject("range");
-    if (localObject2 != null)
+    AppMethodBeat.i(174843);
+    Object localObject = MMApplicationContext.getToolsProcesstPreference().getString("appbrandgame_open_nativewss", "");
+    if ((localObject != null) && (((String)localObject).equalsIgnoreCase("close"))) {}
+    for (localObject = Boolean.TRUE; ((Boolean)localObject).booleanValue(); localObject = Boolean.FALSE)
     {
-      Object localObject1 = ((JSONObject)localObject2).optString("start");
-      localObject2 = ((JSONObject)localObject2).optString("end");
-      localObject1 = com.tencent.mm.plugin.appbrand.widget.picker.e.anJ((String)localObject1);
-      if (localObject1 != null)
-      {
-        this.mMinTimeHour = localObject1[0];
-        this.mMinTimeMinute = localObject1[1];
-      }
-      localObject1 = com.tencent.mm.plugin.appbrand.widget.picker.e.anJ((String)localObject2);
-      if (localObject1 != null)
-      {
-        this.mMaxTimeHour = localObject1[0];
-        this.mMaxTimeMinute = localObject1[1];
-      }
+      Log.i("MicroMsg.AppBrand.WcWssNativeSwitchDelegateImpl", "createWcWssBinding Command close");
+      AppMethodBeat.o(174843);
+      return false;
     }
-    this.mMinTimeHour = Math.max(this.mMinTimeHour, 0);
-    this.mMinTimeMinute = Math.max(this.mMinTimeMinute, 0);
-    this.mMaxTimeHour = Math.min(this.mMaxTimeHour, 23);
-    this.mMaxTimeMinute = Math.min(this.mMaxTimeMinute, 59);
-    paramJSONObject = com.tencent.mm.plugin.appbrand.widget.picker.e.anJ(paramJSONObject.optString("current"));
-    if (paramJSONObject != null)
-    {
-      this.plt = paramJSONObject[0];
-      this.plu = paramJSONObject[1];
-    }
-    P(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(137615);
-        k.a(k.this);
-        AppMethodBeat.o(137615);
-      }
-    });
-    AppMethodBeat.o(137620);
-  }
-  
-  final void ai(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(137621);
-    Object localObject2 = paramJSONObject.optJSONObject("range");
-    if (localObject2 != null)
-    {
-      Object localObject1 = ((JSONObject)localObject2).optString("start");
-      localObject2 = ((JSONObject)localObject2).optString("end");
-      localObject1 = com.tencent.mm.plugin.appbrand.widget.picker.e.anJ((String)localObject1);
-      if (localObject1 != null)
-      {
-        this.mMinTimeHour = localObject1[0];
-        this.mMinTimeMinute = localObject1[1];
-      }
-      localObject1 = com.tencent.mm.plugin.appbrand.widget.picker.e.anJ((String)localObject2);
-      if (localObject1 != null)
-      {
-        this.mMaxTimeHour = localObject1[0];
-        this.mMaxTimeMinute = localObject1[1];
-      }
-    }
-    this.mMinTimeHour = Math.max(this.mMinTimeHour, 0);
-    this.mMinTimeMinute = Math.max(this.mMinTimeMinute, 0);
-    this.mMaxTimeHour = Math.min(this.mMaxTimeHour, 23);
-    this.mMaxTimeMinute = Math.min(this.mMaxTimeMinute, 59);
-    paramJSONObject = com.tencent.mm.plugin.appbrand.widget.picker.e.anJ(paramJSONObject.optString("current"));
-    if (paramJSONObject != null)
-    {
-      this.plt = paramJSONObject[0];
-      this.plu = paramJSONObject[1];
-    }
-    P(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(137616);
-        k.b(k.this);
-        AppMethodBeat.o(137616);
-      }
-    });
-    AppMethodBeat.o(137621);
+    AppMethodBeat.o(174843);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.s.k
  * JD-Core Version:    0.7.0.1
  */

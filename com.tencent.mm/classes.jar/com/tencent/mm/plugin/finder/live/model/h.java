@@ -1,164 +1,109 @@
 package com.tencent.mm.plugin.finder.live.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.e;
-import com.tencent.mm.protocal.protobuf.dlk;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.protocal.protobuf.bgh;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveBattleData;", "", "battleId", "", "battleSeq", "", "leftTime", "", "battleResult", "battleStatus", "playerInfo", "", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveBattlePlayerInfo;", "(Ljava/lang/String;JIIILjava/util/List;)V", "TAG", "getBattleId", "()Ljava/lang/String;", "setBattleId", "(Ljava/lang/String;)V", "getBattleResult", "()I", "setBattleResult", "(I)V", "getBattleSeq", "()J", "setBattleSeq", "(J)V", "getBattleStatus", "setBattleStatus", "getLeftTime", "setLeftTime", "getPlayerInfo", "()Ljava/util/List;", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "getOtherBattleUser", "anchorUsername", "getSelfBattleUser", "hashCode", "toString", "transEnd", "", "endResult", "transStart", "updatePlayerInfo", "remotePlayerInfo", "", "Lcom/tencent/mm/protocal/protobuf/PlayerInfo;", "plugin-finder-base_release"})
-public final class h
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveBaseMsg;", "Lcom/tencent/mm/plugin/finder/live/model/IFinderLiveMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;)V", "getMsg", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "setMsg", "getContent", "", "getFromContact", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "getFromUserName", "getFromUserNickName", "getLocalClientMsgId", "getSeq", "", "getToContact", "getToUserName", "getToUserNickName", "getType", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class h
+  implements aq
 {
-  private final String TAG;
-  public String yeu;
-  public long yev;
-  public int yew;
-  public int yex;
-  public int yey;
-  public final List<e> yez;
+  public bdm CER;
   
-  public h()
+  public h(bdm parambdm)
   {
-    this(null, 0L, 0, 0, 0, null, 63);
+    this.CER = parambdm;
   }
   
-  private h(String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, List<e> paramList)
+  public final long dFp()
   {
-    AppMethodBeat.i(261354);
-    this.yeu = paramString;
-    this.yev = paramLong;
-    this.yew = paramInt1;
-    this.yex = paramInt2;
-    this.yey = paramInt3;
-    this.yez = paramList;
-    this.TAG = "Finder.FinderLiveBattleData";
-    AppMethodBeat.o(261354);
+    return this.CER.seq;
   }
   
-  public final void No(int paramInt)
+  public final String djQ()
   {
-    this.yey = 3;
-    this.yex = paramInt;
-  }
-  
-  public final e aBY(String paramString)
-  {
-    AppMethodBeat.i(261348);
-    Log.i(this.TAG, "getOtherBattleUser anchorUsername:".concat(String.valueOf(paramString)));
-    synchronized ((Iterable)this.yez)
+    Object localObject = this.CER.ZOb;
+    if (localObject == null) {}
+    do
     {
-      Iterator localIterator = ???.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = localIterator.next();
-        boolean bool = Util.isEqual(((e)localObject).username, paramString);
-        if (!bool) {}
-        for (int i = 1; i != 0; i = 0)
-        {
-          paramString = localObject;
-          paramString = (e)paramString;
-          AppMethodBeat.o(261348);
-          return paramString;
-        }
-      }
-      paramString = null;
-    }
+      return null;
+      localObject = ((bgh)localObject).contact;
+    } while (localObject == null);
+    return ((FinderContact)localObject).username;
   }
   
-  public final e aBZ(String paramString)
+  public final String ekt()
   {
-    AppMethodBeat.i(261351);
-    Log.i(this.TAG, "getSelfBattleUser anchorUsername:".concat(String.valueOf(paramString)));
-    synchronized ((Iterable)this.yez)
+    Object localObject = this.CER.ZOb;
+    if (localObject == null) {}
+    do
     {
-      Iterator localIterator = ???.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = localIterator.next();
-        boolean bool = Util.isEqual(((e)localObject).username, paramString);
-        if (bool)
-        {
-          paramString = localObject;
-          paramString = (e)paramString;
-          AppMethodBeat.o(261351);
-          return paramString;
-        }
-      }
-      paramString = null;
-    }
+      return null;
+      localObject = ((bgh)localObject).contact;
+    } while (localObject == null);
+    return ((FinderContact)localObject).nickname;
   }
   
-  public final void en(List<? extends dlk> paramList)
+  public final bgh eku()
   {
-    AppMethodBeat.i(261353);
-    p.k(paramList, "remotePlayerInfo");
-    ArrayList localArrayList = new ArrayList();
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext())
-    {
-      dlk localdlk = (dlk)paramList.next();
-      Log.i(this.TAG, "updatePlayerInfo remotePlayerInfo:[" + localdlk.RLN + ", " + localdlk.TSv + ']');
-      localArrayList.add(new e(localdlk.RLN, localdlk.TSv));
-    }
-    this.yez.clear();
-    this.yez.addAll((Collection)localArrayList);
-    AppMethodBeat.o(261353);
+    return this.CER.ZOb;
   }
   
-  public final boolean equals(Object paramObject)
+  public final bgh ekv()
   {
-    AppMethodBeat.i(261361);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof h))
-      {
-        paramObject = (h)paramObject;
-        if ((!p.h(this.yeu, paramObject.yeu)) || (this.yev != paramObject.yev) || (this.yew != paramObject.yew) || (this.yex != paramObject.yex) || (this.yey != paramObject.yey) || (!p.h(this.yez, paramObject.yez))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(261361);
-      return true;
-    }
-    AppMethodBeat.o(261361);
-    return false;
+    return this.CER.ZNW;
   }
   
-  public final int hashCode()
+  public final String ekw()
   {
-    int j = 0;
-    AppMethodBeat.i(261359);
-    Object localObject = this.yeu;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
+    Object localObject = this.CER.ZNW;
+    if (localObject == null) {}
+    do
     {
-      long l = this.yev;
-      int k = (int)(l ^ l >>> 32);
-      int m = this.yew;
-      int n = this.yex;
-      int i1 = this.yey;
-      localObject = this.yez;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      AppMethodBeat.o(261359);
-      return ((((i * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + j;
-    }
+      return null;
+      localObject = ((bgh)localObject).contact;
+    } while (localObject == null);
+    return ((FinderContact)localObject).username;
   }
   
-  public final String toString()
+  public final String ekx()
   {
-    AppMethodBeat.i(261357);
-    String str = "FinderLiveBattleData(battleId=" + this.yeu + ", battleSeq=" + this.yev + ", leftTime=" + this.yew + ", battleResult=" + this.yex + ", battleStatus=" + this.yey + ", playerInfo=" + this.yez + ")";
-    AppMethodBeat.o(261357);
-    return str;
+    Object localObject = this.CER.ZNW;
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = ((bgh)localObject).contact;
+    } while (localObject == null);
+    return ((FinderContact)localObject).nickname;
+  }
+  
+  public final String eky()
+  {
+    String str2 = this.CER.ZOc;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  public final int ekz()
+  {
+    s.u(this, "this");
+    return 0;
+  }
+  
+  public String getContent()
+  {
+    return "";
+  }
+  
+  public final int getType()
+  {
+    return this.CER.msg_type;
   }
 }
 

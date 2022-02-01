@@ -1,82 +1,40 @@
 package androidx.lifecycle;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.io.Closeable;
+import kotlin.Metadata;
+import kotlin.d.f;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.cg;
 
-public abstract class c<T>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Landroidx/lifecycle/CloseableCoroutineScope;", "Ljava/io/Closeable;", "Lkotlinx/coroutines/CoroutineScope;", "context", "Lkotlin/coroutines/CoroutineContext;", "(Lkotlin/coroutines/CoroutineContext;)V", "coroutineContext", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "close", "", "lifecycle-viewmodel-ktx_release"}, k=1, mv={1, 4, 1})
+public final class c
+  implements Closeable, aq
 {
-  public final LiveData<T> ZE;
-  final AtomicBoolean ZF = new AtomicBoolean(true);
-  final AtomicBoolean ZG = new AtomicBoolean(false);
-  final Runnable ZH = new Runnable()
-  {
-    public final void run()
-    {
-      AppMethodBeat.i(247949);
-      Object localObject1;
-      if (c.this.ZG.compareAndSet(false, true)) {
-        localObject1 = null;
-      }
-      for (int i = 0;; i = 0) {
-        try
-        {
-          while (c.this.ZF.compareAndSet(true, false))
-          {
-            localObject1 = c.this.ja();
-            i = 1;
-          }
-          if (i != 0) {
-            c.this.ZE.L(localObject1);
-          }
-          c.this.ZG.set(false);
-          if ((i != 0) && (c.this.ZF.get())) {
-            break;
-          }
-          AppMethodBeat.o(247949);
-          return;
-        }
-        finally
-        {
-          c.this.ZG.set(false);
-          AppMethodBeat.o(247949);
-        }
-      }
-    }
-  };
-  final Runnable ZI = new Runnable()
-  {
-    public final void run()
-    {
-      AppMethodBeat.i(247952);
-      boolean bool = c.this.ZE.ji();
-      if ((c.this.ZF.compareAndSet(false, true)) && (bool)) {
-        c.this.mExecutor.execute(c.this.ZH);
-      }
-      AppMethodBeat.o(247952);
-    }
-  };
-  final Executor mExecutor;
+  private final f bGV;
   
-  public c(Executor paramExecutor)
+  public c(f paramf)
   {
-    this.mExecutor = paramExecutor;
-    this.ZE = new LiveData()
-    {
-      protected final void jb()
-      {
-        AppMethodBeat.i(247947);
-        c.this.mExecutor.execute(c.this.ZH);
-        AppMethodBeat.o(247947);
-      }
-    };
+    AppMethodBeat.i(194414);
+    this.bGV = paramf;
+    AppMethodBeat.o(194414);
   }
   
-  protected abstract T ja();
+  public final void close()
+  {
+    AppMethodBeat.i(194428);
+    cg.a(getCoroutineContext(), null);
+    AppMethodBeat.o(194428);
+  }
+  
+  public final f getCoroutineContext()
+  {
+    return this.bGV;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.lifecycle.c
  * JD-Core Version:    0.7.0.1
  */

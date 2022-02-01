@@ -6,18 +6,19 @@ import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.d;
+import com.tencent.mm.plugin.sns.ad.j.d;
 import com.tencent.mm.plugin.sns.ad.timeline.feedback.a.c;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.b.e;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.i;
+import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.plugin.sns.data.e;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.i;
-import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.Collection;
 import java.util.Iterator;
@@ -26,177 +27,202 @@ import java.util.Map;
 public final class b
   implements View.OnClickListener
 {
-  private WeImageView JHT;
-  private WeImageView JHU;
-  private TextView JHV;
-  private View JHW;
-  private View JHX;
-  private WeImageView JHY;
-  private View JHZ;
-  private WeImageView JIa;
-  private View JIb;
-  private TextView JIc;
-  private WeImageView JId;
-  private View JIe;
-  ViewGroup JIf;
-  View JIg;
-  private TextView JIh;
-  c JIi;
-  private b JIj;
+  private WeImageView PYT;
+  private WeImageView PYU;
+  private TextView PYV;
+  private View PYW;
+  private View PYX;
+  private WeImageView PYY;
+  private View PYZ;
+  private WeImageView PZa;
+  private View PZb;
+  private TextView PZc;
+  private WeImageView PZd;
+  private View PZe;
+  ViewGroup PZf;
+  View PZg;
+  private TextView PZh;
+  c PZi;
+  private b PZj;
+  private int PZk;
+  private int PZl;
   private Context mContext;
-  private View mrI;
-  private TextView wB;
+  private View plc;
+  private int titleMargin;
+  private TextView xw;
   
   b(Context paramContext, b paramb, c paramc)
   {
     this.mContext = paramContext;
-    this.JIj = paramb;
-    this.JIi = paramc;
+    this.PZj = paramb;
+    this.PZi = paramc;
   }
   
-  private e fLr()
+  private e hbJ()
   {
-    AppMethodBeat.i(195136);
-    Object localObject = this.JIj.aYG("unlike_tag").get("unlike_tag");
-    if ((localObject instanceof e))
+    AppMethodBeat.i(311024);
+    Object localObject = this.PZj.aWK("unlike_tag");
+    if (localObject != null)
     {
-      localObject = (e)localObject;
-      AppMethodBeat.o(195136);
-      return localObject;
+      localObject = ((Map)localObject).get("unlike_tag");
+      if ((localObject instanceof e))
+      {
+        localObject = (e)localObject;
+        AppMethodBeat.o(311024);
+        return localObject;
+      }
     }
-    AppMethodBeat.o(195136);
+    AppMethodBeat.o(311024);
     return null;
   }
   
-  public final void aeR(int paramInt)
+  public final void ajz(int paramInt)
   {
-    AppMethodBeat.i(195140);
-    if ((this.JHT != null) && (this.JHU != null))
+    AppMethodBeat.i(311134);
+    if ((this.PYT != null) && (this.PYU != null))
     {
       if (paramInt < 0)
       {
-        this.JHT.setVisibility(8);
-        this.JHU.setVisibility(0);
-        AppMethodBeat.o(195140);
+        this.PYT.setVisibility(8);
+        this.PYU.setVisibility(0);
+        AppMethodBeat.o(311134);
         return;
       }
-      this.JHT.setVisibility(0);
-      this.JHU.setVisibility(8);
+      this.PYT.setVisibility(0);
+      this.PYU.setVisibility(8);
     }
-    AppMethodBeat.o(195140);
+    AppMethodBeat.o(311134);
   }
   
-  public final void ge(View paramView)
+  public final void jh(View paramView)
   {
-    AppMethodBeat.i(195121);
-    this.mrI = paramView;
-    this.JHT = ((WeImageView)this.mrI.findViewById(i.f.sns_ad_top_arrow));
-    this.JHU = ((WeImageView)this.mrI.findViewById(i.f.sns_ad_bottom_arrow));
-    this.JHV = ((TextView)this.mrI.findViewById(i.f.sns_ad_feedback_special_title));
-    this.JHW = this.mrI.findViewById(i.f.sns_ad_feedback_content_root_view);
-    this.JIb = this.mrI.findViewById(i.f.sns_ad_feedback_complaint_layout);
-    this.JIc = ((TextView)this.mrI.findViewById(i.f.sns_ad_feedback_complaint_prompt));
-    this.JId = ((WeImageView)this.mrI.findViewById(i.f.sns_ad_feedback_complaint_arrow));
-    this.JIe = this.mrI.findViewById(i.f.sns_ad_feedback_first_page_layout);
-    this.JHZ = this.mrI.findViewById(i.f.sns_ad_feedback_no_interest_layout);
-    this.JIa = ((WeImageView)this.mrI.findViewById(i.f.sns_ad_feedback_no_interest_image));
-    this.JHX = this.mrI.findViewById(i.f.sns_ad_feedback_approve_layout);
-    this.JHY = ((WeImageView)this.mrI.findViewById(i.f.sns_ad_feedback_approve_image));
-    this.JIf = ((ViewGroup)this.mrI.findViewById(i.f.sns_ad_feedback_dynamic_container));
-    this.JIg = this.mrI.findViewById(i.f.sns_ad_feedback_confirm_btn);
-    this.wB = ((TextView)this.mrI.findViewById(i.f.sns_ad_feedback_title));
-    this.JIh = ((TextView)this.mrI.findViewById(i.f.sns_ad_feedback_subtitle));
-    if (this.JHT != null) {
-      this.JHT.setImageResource(i.i.sns_ad_feedback_trangle);
+    AppMethodBeat.i(311105);
+    this.plc = paramView;
+    this.PYT = ((WeImageView)this.plc.findViewById(b.f.sns_ad_top_arrow));
+    this.PYU = ((WeImageView)this.plc.findViewById(b.f.sns_ad_bottom_arrow));
+    this.PYV = ((TextView)this.plc.findViewById(b.f.sns_ad_feedback_special_title));
+    this.PYW = this.plc.findViewById(b.f.sns_ad_feedback_content_root_view);
+    this.PZb = this.plc.findViewById(b.f.sns_ad_feedback_complaint_layout);
+    this.PZc = ((TextView)this.plc.findViewById(b.f.sns_ad_feedback_complaint_prompt));
+    this.PZd = ((WeImageView)this.plc.findViewById(b.f.sns_ad_feedback_complaint_arrow));
+    this.PZe = this.plc.findViewById(b.f.sns_ad_feedback_first_page_layout);
+    this.PYZ = this.plc.findViewById(b.f.sns_ad_feedback_no_interest_layout);
+    this.PZa = ((WeImageView)this.plc.findViewById(b.f.sns_ad_feedback_no_interest_image));
+    this.PYX = this.plc.findViewById(b.f.sns_ad_feedback_approve_layout);
+    this.PYY = ((WeImageView)this.plc.findViewById(b.f.sns_ad_feedback_approve_image));
+    this.PZf = ((ViewGroup)this.plc.findViewById(b.f.sns_ad_feedback_dynamic_container));
+    this.PZg = this.plc.findViewById(b.f.sns_ad_feedback_confirm_btn);
+    this.PZk = this.mContext.getResources().getDimensionPixelOffset(b.d.sns_ad_feedback_panel_width);
+    this.titleMargin = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 16);
+    if (this.PZg != null) {
+      this.PZg.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+      {
+        public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
+        {
+          AppMethodBeat.i(310976);
+          if (paramAnonymousView.getVisibility() == 0)
+          {
+            b.a(b.this, b.a(b.this).getWidth());
+            b.b(b.this, 0);
+            b.a(b.this).removeOnLayoutChangeListener(this);
+          }
+          AppMethodBeat.o(310976);
+        }
+      });
     }
-    if (this.JHU != null)
-    {
-      this.JHU.setImageResource(i.i.sns_ad_feedback_trangle);
-      this.JHU.setRotation(180.0F);
+    this.xw = ((TextView)this.plc.findViewById(b.f.sns_ad_feedback_title));
+    this.PZh = ((TextView)this.plc.findViewById(b.f.sns_ad_feedback_subtitle));
+    if (this.PYT != null) {
+      this.PYT.setImageResource(b.i.sns_ad_feedback_trangle);
     }
-    if (this.wB != null)
+    if (this.PYU != null)
     {
-      paramView = this.JIj;
+      this.PYU.setImageResource(b.i.sns_ad_feedback_trangle);
+      this.PYU.setRotation(180.0F);
+    }
+    if (this.xw != null)
+    {
+      paramView = this.PZj;
       if (paramView != null)
       {
-        paramView = paramView.aYG("expand_title");
-        if (d.aC(paramView))
+        paramView = paramView.aWK("expand_title");
+        if (d.aT(paramView))
         {
           paramView = paramView.get("expand_title");
           if ((paramView instanceof CharSequence)) {
-            this.wB.setText((CharSequence)paramView);
+            this.xw.setText((CharSequence)paramView);
           }
         }
       }
     }
-    if (this.JIa != null) {
-      this.JIa.setImageResource(i.i.sns_ad_feedback_no_interesting);
+    if (this.PZa != null) {
+      this.PZa.setImageResource(b.i.sns_ad_feedback_no_interesting);
     }
-    if (this.JHY != null) {
-      this.JHY.setImageResource(i.i.sns_ad_feedback_approve);
+    if (this.PYY != null) {
+      this.PYY.setImageResource(b.i.sns_ad_feedback_approve);
     }
-    if (this.JId != null) {
-      this.JId.setImageResource(i.i.sns_ad_feedback_right_arrow);
+    if (this.PZd != null) {
+      this.PZd.setImageResource(b.i.sns_ad_feedback_right_arrow);
     }
-    if (this.JHZ != null) {
-      this.JHZ.setOnClickListener(this);
+    if (this.PYZ != null) {
+      this.PYZ.setOnClickListener(this);
     }
-    if (this.JHX != null) {
-      this.JHX.setOnClickListener(this);
+    if (this.PYX != null) {
+      this.PYX.setOnClickListener(this);
     }
-    if (this.JIb != null) {
-      this.JIb.setOnClickListener(this);
+    if (this.PZb != null) {
+      this.PZb.setOnClickListener(this);
     }
-    if (this.JIg != null) {
-      this.JIg.setOnClickListener(this);
+    if (this.PZg != null) {
+      this.PZg.setOnClickListener(this);
     }
-    if (this.JIf != null)
+    if (this.PZf != null)
     {
-      paramView = this.JIj;
+      paramView = this.PZj;
       if (paramView == null) {
-        break label931;
+        break label988;
       }
-      paramView = paramView.aYG("reason_list");
-      if (!d.aC(paramView)) {
-        break label931;
+      paramView = paramView.aWK("reason_list");
+      if (!d.aT(paramView)) {
+        break label988;
       }
       paramView = paramView.get("reason_list");
       if (!(paramView instanceof Collection)) {
-        break label931;
+        break label988;
       }
     }
-    label931:
+    label988:
     for (paramView = (Collection)paramView;; paramView = null)
     {
-      if (d.n(paramView))
+      if (d.B(paramView))
       {
         paramView = paramView.iterator();
         while (paramView.hasNext())
         {
           c localc = (c)paramView.next();
           Context localContext = this.mContext;
-          String str = localc.JIB;
+          String str = localc.PZD;
           TextView localTextView = new TextView(localContext);
           localTextView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
           localTextView.setSingleLine(true);
           localTextView.setEllipsize(TextUtils.TruncateAt.END);
-          localTextView.setBackgroundResource(i.e.sns_ad_feedback_text_bg_selector);
-          localTextView.setTextColor(this.mContext.getResources().getColorStateList(i.c.sns_ad_feedback_text_front_selector));
-          int i = com.tencent.mm.ci.a.fromDPToPix(localContext, 12);
-          int j = com.tencent.mm.ci.a.fromDPToPix(localContext, 8);
+          localTextView.setBackgroundResource(b.e.sns_ad_feedback_text_bg_selector);
+          localTextView.setTextColor(this.mContext.getResources().getColorStateList(com.tencent.mm.plugin.sns.b.c.sns_ad_feedback_text_front_selector));
+          int i = com.tencent.mm.cd.a.fromDPToPix(localContext, 12);
+          int j = com.tencent.mm.cd.a.fromDPToPix(localContext, 8);
           localTextView.setPadding(i, j, i, j);
           localTextView.setTextSize(2, 14.0F);
           localTextView.setText(str);
           localTextView.setOnClickListener(new a());
-          localTextView.setTag(i.f.sns_ad_feed_no_interest_reason_key, localc);
-          this.JIf.addView(localTextView);
+          localTextView.setTag(b.f.sns_ad_feed_no_interest_reason_key, localc);
+          this.PZf.addView(localTextView);
         }
       }
-      paramView = this.JIj;
+      paramView = this.PZj;
       if (paramView != null)
       {
-        paramView = paramView.aYG("is_special");
-        if (d.aC(paramView))
+        paramView = paramView.aWK("is_special");
+        if (d.aT(paramView))
         {
           paramView = paramView.get("is_special");
           if (!(paramView instanceof Boolean)) {}
@@ -206,37 +232,37 @@ public final class b
       {
         if (bool)
         {
-          this.JHW.setVisibility(8);
-          this.JHV.setVisibility(0);
-          paramView = this.JIj;
+          this.PYW.setVisibility(8);
+          this.PYV.setVisibility(0);
+          paramView = this.PZj;
           if (paramView != null)
           {
-            paramView = paramView.aYG("special_prompt");
-            if (d.aC(paramView))
+            paramView = paramView.aWK("special_prompt");
+            if (d.aT(paramView))
             {
               paramView = paramView.get("special_prompt");
               if ((paramView instanceof CharSequence)) {
-                this.JHV.setText((CharSequence)paramView);
+                this.PYV.setText((CharSequence)paramView);
               }
             }
           }
         }
-        if (this.JIc != null)
+        if (this.PZc != null)
         {
-          paramView = this.JIj;
+          paramView = this.PZj;
           if (paramView != null)
           {
-            paramView = paramView.aYG("complaint_content");
-            if (d.aC(paramView))
+            paramView = paramView.aWK("complaint_content");
+            if (d.aT(paramView))
             {
               paramView = paramView.get("complaint_content");
               if (((paramView instanceof CharSequence)) && (!TextUtils.isEmpty((CharSequence)paramView))) {
-                this.JIc.setText((CharSequence)paramView);
+                this.PZc.setText((CharSequence)paramView);
               }
             }
           }
         }
-        AppMethodBeat.o(195121);
+        AppMethodBeat.o(311105);
         return;
       }
     }
@@ -244,63 +270,63 @@ public final class b
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(195131);
+    AppMethodBeat.i(311123);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ad/timeline/feedback/FeedbackDisplayer", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ad/timeline/feedback/FeedbackDisplayer", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
     int i = paramView.getId();
-    if (i == i.f.sns_ad_feedback_no_interest_layout)
+    if (i == b.f.sns_ad_feedback_no_interest_layout)
     {
-      if ((this.JIf != null) && (this.JIf.getChildCount() > 0))
+      if ((this.PZf != null) && (this.PZf.getChildCount() > 0))
       {
-        this.JIf.setVisibility(0);
-        if (this.JIe != null) {
-          this.JIe.setVisibility(8);
+        this.PZf.setVisibility(0);
+        if (this.PZe != null) {
+          this.PZe.setVisibility(8);
         }
-        if (this.wB != null)
+        if (this.xw != null)
         {
-          this.wB.setTextColor(com.tencent.mm.ci.a.w(this.wB.getContext(), i.c.sns_ad_new_feedback_text_normal_color));
-          this.wB.setText(i.j.sns_ad_new_feedback_select_reason);
+          this.xw.setTextColor(com.tencent.mm.cd.a.w(this.xw.getContext(), com.tencent.mm.plugin.sns.b.c.sns_ad_new_feedback_text_normal_color));
+          this.xw.setText(b.j.sns_ad_new_feedback_select_reason);
         }
-        if (this.JIh != null)
+        if (this.PZh != null)
         {
-          this.JIh.setTextColor(com.tencent.mm.ci.a.w(this.JIh.getContext(), i.c.sns_ad_new_feedback_text_gray_color));
-          this.JIh.setText(this.JIh.getContext().getString(i.j.sns_ad_new_feedback_subtitle));
+          this.PZh.setTextColor(com.tencent.mm.cd.a.w(this.PZh.getContext(), com.tencent.mm.plugin.sns.b.c.sns_ad_new_feedback_text_gray_color));
+          this.PZh.setText(this.PZh.getContext().getString(b.j.sns_ad_new_feedback_subtitle));
         }
       }
-      if (this.JIi != null)
+      if (this.PZi != null)
       {
-        localObject = fLr();
+        localObject = hbJ();
         if (localObject != null) {
           paramView.setTag(localObject);
         }
-        this.JIi.a(paramView, 1, null);
+        this.PZi.a(paramView, 1, null);
       }
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ad/timeline/feedback/FeedbackDisplayer", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(195131);
+      AppMethodBeat.o(311123);
       return;
-      if (i == i.f.sns_ad_feedback_approve_layout)
+      if (i == b.f.sns_ad_feedback_approve_layout)
       {
-        if (this.JIi != null) {
-          this.JIi.a(paramView, 2, null);
+        if (this.PZi != null) {
+          this.PZi.a(paramView, 2, null);
         }
       }
-      else if (i == i.f.sns_ad_feedback_complaint_layout)
+      else if (i == b.f.sns_ad_feedback_complaint_layout)
       {
-        if (this.JIi != null) {
-          this.JIi.a(paramView, 3, null);
+        if (this.PZi != null) {
+          this.PZi.a(paramView, 3, null);
         }
       }
-      else if ((i == i.f.sns_ad_feedback_confirm_btn) && (this.JIi != null))
+      else if ((i == b.f.sns_ad_feedback_confirm_btn) && (this.PZi != null))
       {
-        localObject = fLr();
+        localObject = hbJ();
         if (localObject != null) {
           paramView.setTag(localObject);
         }
-        this.JIi.a(paramView, 4, null);
+        this.PZi.a(paramView, 4, null);
       }
     }
   }
@@ -312,72 +338,75 @@ public final class b
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(246783);
+      AppMethodBeat.i(310977);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ad/timeline/feedback/FeedbackDisplayer$DynamicTextViewClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ad/timeline/feedback/FeedbackDisplayer$DynamicTextViewClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
       if (paramView != null) {}
       try
       {
         if (paramView.isSelected()) {
-          break label171;
+          break label179;
         }
         bool = true;
         paramView.setSelected(bool);
-        if (b.this.JIg == null) {
-          break label123;
+        if (b.this.PZg == null) {
+          break label131;
         }
-        localObject = b.this.JIf;
+        localObject = b.this.PZf;
         if (localObject == null) {
-          break label203;
+          break label220;
         }
         int j = ((ViewGroup)localObject).getChildCount();
         i = 0;
         label89:
         if (i >= j) {
-          break label203;
+          break label220;
         }
         if (!((ViewGroup)localObject).getChildAt(i).isSelected()) {
-          break label177;
+          break label185;
         }
         i = 1;
       }
-      catch (Throwable paramView)
+      finally
       {
         for (;;)
         {
           boolean bool;
-          label123:
+          label131:
+          label179:
+          label185:
           continue;
-          label171:
-          label177:
           int i = 0;
         }
       }
-      if (i != 0) {
-        b.this.JIg.setVisibility(0);
+      if (i != 0)
+      {
+        b.this.PZg.setVisibility(0);
+        b.b(b.this, 0);
       }
       for (;;)
       {
-        localObject = b.this.JIi;
+        localObject = b.this.PZi;
         if (localObject != null) {
-          ((b.c)localObject).a(paramView, 5, paramView.getTag(i.f.sns_ad_feed_no_interest_reason_key));
+          ((b.c)localObject).a(paramView, 5, paramView.getTag(b.f.sns_ad_feed_no_interest_reason_key));
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ad/timeline/feedback/FeedbackDisplayer$DynamicTextViewClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(246783);
+        AppMethodBeat.o(310977);
         return;
         bool = false;
         break;
         i += 1;
         break label89;
-        b.this.JIg.setVisibility(8);
+        b.this.PZg.setVisibility(8);
+        b.b(b.this, 8);
       }
     }
   }
   
   public static abstract interface b
   {
-    public abstract Map<String, Object> aYG(String paramString);
+    public abstract Map<String, Object> aWK(String paramString);
   }
   
   public static abstract interface c
@@ -387,7 +416,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.feedback.b
  * JD-Core Version:    0.7.0.1
  */

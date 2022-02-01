@@ -1,106 +1,81 @@
 package com.tencent.mm.sdk.storage.sql;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.sql.ColumnOrder;
-import com.tencent.mm.sdk.sql.ISqlColumn;
-import com.tencent.mm.sdk.sql.ISqlColumn.DefaultImpls;
-import com.tencent.mm.sdk.sql.ISqlOrder;
-import com.tencent.mm.sdk.sql.SingleCondition;
-import com.tencent.mm.sdk.sql.Sql.BitAndEqual;
-import com.tencent.mm.sdk.sql.Sql.BitAndNotEqual;
-import com.tencent.mm.sdk.sql.Sql.ColumnEqual;
-import com.tencent.mm.sdk.sql.Sql.ColumnLargerThan;
-import com.tencent.mm.sdk.sql.Sql.ColumnNotEqual;
-import com.tencent.mm.sdk.sql.Sql.ColumnSmallerThan;
-import com.tencent.mm.sdk.sql.Sql.Equal;
-import com.tencent.mm.sdk.sql.Sql.In;
-import com.tencent.mm.sdk.sql.Sql.LargerEqual;
-import com.tencent.mm.sdk.sql.Sql.LargerThan;
-import com.tencent.mm.sdk.sql.Sql.Like;
-import com.tencent.mm.sdk.sql.Sql.NotEqual;
-import com.tencent.mm.sdk.sql.Sql.NotIn;
-import com.tencent.mm.sdk.sql.Sql.NotLike;
-import com.tencent.mm.sdk.sql.Sql.Null;
-import com.tencent.mm.sdk.sql.Sql.NullOrEmpty;
-import com.tencent.mm.sdk.sql.Sql.SmallerEqual;
-import com.tencent.mm.sdk.sql.Sql.SmallerThan;
-import com.tencent.mm.sdk.sql.Sql.StringIn;
-import com.tencent.mm.sdk.sql.Sql.StringNotIn;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sdk/storage/sql/Column;", "Lcom/tencent/mm/sdk/sql/ISqlColumn;", "name", "", "dataType", "tableName", "referTo", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getDataType", "()Ljava/lang/String;", "getName", "getReferTo", "getTableName", "setTableName", "(Ljava/lang/String;)V", "bitAndEqual", "Lcom/tencent/mm/sdk/sql/SingleCondition;", "bitValue", "", "compareValue", "bitAndNotEqual", "count", "Lcom/tencent/mm/sdk/storage/sql/FunctionColumn;", "equal", "value", "inNumber", "numberList", "", "", "inString", "strList", "isNull", "isNullOrEmpty", "largerEqual", "largerThan", "like", "notEqual", "notInNumber", "notInString", "notLike", "orderDesc", "Lcom/tencent/mm/sdk/sql/ISqlOrder;", "orderInc", "smallerEqual", "smallerThan", "tableColumnName", "toSql", "wechat-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sdk/storage/sql/Column;", "Lcom/tencent/mm/sdk/storage/sql/ISqlColumn;", "name", "", "dataType", "tableName", "referTo", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getDataType", "()Ljava/lang/String;", "getName", "getReferTo", "getTableName", "bitAndEqual", "Lcom/tencent/mm/sdk/storage/sql/SingleCondition;", "bitValue", "", "compareValue", "bitAndNotEqual", "count", "Lcom/tencent/mm/sdk/storage/sql/FunctionColumn;", "equal", "value", "", "inNumber", "numberList", "", "inString", "strList", "isNull", "isNullOrEmpty", "largerEqual", "largerThan", "like", "max", "min", "notEqual", "notInNumber", "notInString", "notLike", "orderDesc", "Lcom/tencent/mm/sdk/storage/sql/ISqlOrder;", "orderInc", "smallerEqual", "smallerThan", "tableColumnName", "toSql", "wechat-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class Column
   implements ISqlColumn
 {
   private final String dataType;
   private final String name;
   private final String referTo;
-  private String tableName;
+  private final String tableName;
   
   public Column(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(186833);
+    AppMethodBeat.i(244281);
     this.name = paramString1;
     this.dataType = paramString2;
     this.tableName = paramString3;
     this.referTo = paramString4;
-    if (p.h(this.tableName, "Contact"))
-    {
-      this.tableName = "RContact";
-      AppMethodBeat.o(186833);
-      return;
-    }
-    if (p.h(this.tableName, "Conversation")) {
-      this.tableName = "RConversation";
-    }
-    AppMethodBeat.o(186833);
+    AppMethodBeat.o(244281);
   }
   
   public final SingleCondition bitAndEqual(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(186802);
+    AppMethodBeat.i(244459);
     SingleCondition localSingleCondition = (SingleCondition)new Sql.BitAndEqual(tableColumnName(), paramInt1, paramInt2);
-    AppMethodBeat.o(186802);
+    AppMethodBeat.o(244459);
     return localSingleCondition;
   }
   
   public final SingleCondition bitAndNotEqual(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(186800);
+    AppMethodBeat.i(244454);
     SingleCondition localSingleCondition = (SingleCondition)new Sql.BitAndNotEqual(tableColumnName(), paramInt1, paramInt2);
-    AppMethodBeat.o(186800);
+    AppMethodBeat.o(244454);
     return localSingleCondition;
   }
   
   public final FunctionColumn count()
   {
-    AppMethodBeat.i(186817);
+    AppMethodBeat.i(244470);
     FunctionColumn localFunctionColumn = new FunctionColumn(this.name, this.dataType, this.tableName, this.referTo, "count");
-    AppMethodBeat.o(186817);
+    AppMethodBeat.o(244470);
     return localFunctionColumn;
   }
   
   public final SingleCondition equal(Column paramColumn)
   {
-    AppMethodBeat.i(186785);
-    p.k(paramColumn, "value");
+    AppMethodBeat.i(244364);
+    s.u(paramColumn, "value");
     paramColumn = (SingleCondition)new Sql.ColumnEqual(tableColumnName(), paramColumn.tableColumnName());
-    AppMethodBeat.o(186785);
+    AppMethodBeat.o(244364);
     return paramColumn;
+  }
+  
+  public final SingleCondition equal(Number paramNumber)
+  {
+    AppMethodBeat.i(244351);
+    s.u(paramNumber, "value");
+    paramNumber = (SingleCondition)new Sql.Equal(tableColumnName(), paramNumber.toString());
+    AppMethodBeat.o(244351);
+    return paramNumber;
   }
   
   public final SingleCondition equal(String paramString)
   {
-    AppMethodBeat.i(186784);
-    p.k(paramString, "value");
+    AppMethodBeat.i(244358);
+    s.u(paramString, "value");
     paramString = (SingleCondition)new Sql.Equal(tableColumnName(), paramString);
-    AppMethodBeat.o(186784);
+    AppMethodBeat.o(244358);
     return paramString;
   }
   
@@ -126,211 +101,282 @@ public class Column
   
   public final SingleCondition inNumber(List<? extends Number> paramList)
   {
-    AppMethodBeat.i(186767);
-    p.k(paramList, "numberList");
+    AppMethodBeat.i(244315);
+    s.u(paramList, "numberList");
     String str = tableColumnName();
     Object localObject = (Iterable)paramList;
-    paramList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+    paramList = (Collection)new ArrayList(p.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       paramList.add(((Number)((Iterator)localObject).next()).toString());
     }
     paramList = (SingleCondition)new Sql.In(str, (List)paramList);
-    AppMethodBeat.o(186767);
+    AppMethodBeat.o(244315);
     return paramList;
   }
   
   public final SingleCondition inString(List<String> paramList)
   {
-    AppMethodBeat.i(186769);
-    p.k(paramList, "strList");
-    paramList = (SingleCondition)new Sql.StringIn(tableColumnName(), paramList);
-    AppMethodBeat.o(186769);
+    AppMethodBeat.i(244318);
+    s.u(paramList, "strList");
+    paramList = (SingleCondition)new Sql.In(tableColumnName(), paramList);
+    AppMethodBeat.o(244318);
     return paramList;
   }
   
   public final SingleCondition isNull()
   {
-    AppMethodBeat.i(186772);
+    AppMethodBeat.i(244333);
     SingleCondition localSingleCondition = (SingleCondition)new Sql.Null(tableColumnName());
-    AppMethodBeat.o(186772);
+    AppMethodBeat.o(244333);
     return localSingleCondition;
   }
   
   public final SingleCondition isNullOrEmpty()
   {
-    AppMethodBeat.i(186773);
+    AppMethodBeat.i(244339);
     SingleCondition localSingleCondition = (SingleCondition)new Sql.NullOrEmpty(tableColumnName());
-    AppMethodBeat.o(186773);
+    AppMethodBeat.o(244339);
     return localSingleCondition;
+  }
+  
+  public final SingleCondition largerEqual(Column paramColumn)
+  {
+    AppMethodBeat.i(244430);
+    s.u(paramColumn, "value");
+    paramColumn = (SingleCondition)new Sql.LargerEqual(tableColumnName(), paramColumn.tableColumnName());
+    AppMethodBeat.o(244430);
+    return paramColumn;
+  }
+  
+  public final SingleCondition largerEqual(Number paramNumber)
+  {
+    AppMethodBeat.i(244420);
+    s.u(paramNumber, "value");
+    paramNumber = (SingleCondition)new Sql.LargerEqual(tableColumnName(), paramNumber.toString());
+    AppMethodBeat.o(244420);
+    return paramNumber;
   }
   
   public final SingleCondition largerEqual(String paramString)
   {
-    AppMethodBeat.i(186797);
-    p.k(paramString, "value");
+    AppMethodBeat.i(244423);
+    s.u(paramString, "value");
     paramString = (SingleCondition)new Sql.LargerEqual(tableColumnName(), paramString);
-    AppMethodBeat.o(186797);
+    AppMethodBeat.o(244423);
     return paramString;
   }
   
   public final SingleCondition largerThan(Column paramColumn)
   {
-    AppMethodBeat.i(186791);
-    p.k(paramColumn, "value");
+    AppMethodBeat.i(244397);
+    s.u(paramColumn, "value");
     paramColumn = (SingleCondition)new Sql.ColumnLargerThan(tableColumnName(), paramColumn.tableColumnName());
-    AppMethodBeat.o(186791);
+    AppMethodBeat.o(244397);
     return paramColumn;
+  }
+  
+  public final SingleCondition largerThan(Number paramNumber)
+  {
+    AppMethodBeat.i(244386);
+    s.u(paramNumber, "value");
+    paramNumber = (SingleCondition)new Sql.LargerThan(tableColumnName(), paramNumber.toString());
+    AppMethodBeat.o(244386);
+    return paramNumber;
   }
   
   public final SingleCondition largerThan(String paramString)
   {
-    AppMethodBeat.i(186789);
-    p.k(paramString, "value");
+    AppMethodBeat.i(244393);
+    s.u(paramString, "value");
     paramString = (SingleCondition)new Sql.LargerThan(tableColumnName(), paramString);
-    AppMethodBeat.o(186789);
+    AppMethodBeat.o(244393);
     return paramString;
   }
   
   public final SingleCondition like(String paramString)
   {
-    AppMethodBeat.i(186775);
-    p.k(paramString, "value");
+    AppMethodBeat.i(244343);
+    s.u(paramString, "value");
     paramString = (SingleCondition)new Sql.Like(tableColumnName(), paramString);
-    AppMethodBeat.o(186775);
+    AppMethodBeat.o(244343);
     return paramString;
+  }
+  
+  public final FunctionColumn max()
+  {
+    AppMethodBeat.i(244476);
+    FunctionColumn localFunctionColumn = new FunctionColumn(this.name, this.dataType, this.tableName, this.referTo, "max");
+    AppMethodBeat.o(244476);
+    return localFunctionColumn;
+  }
+  
+  public final FunctionColumn min()
+  {
+    AppMethodBeat.i(244472);
+    FunctionColumn localFunctionColumn = new FunctionColumn(this.name, this.dataType, this.tableName, this.referTo, "min");
+    AppMethodBeat.o(244472);
+    return localFunctionColumn;
   }
   
   public final SingleCondition notEqual(Column paramColumn)
   {
-    AppMethodBeat.i(186788);
-    p.k(paramColumn, "value");
+    AppMethodBeat.i(244381);
+    s.u(paramColumn, "value");
     paramColumn = (SingleCondition)new Sql.ColumnNotEqual(tableColumnName(), paramColumn.tableColumnName());
-    AppMethodBeat.o(186788);
+    AppMethodBeat.o(244381);
     return paramColumn;
+  }
+  
+  public final SingleCondition notEqual(Number paramNumber)
+  {
+    AppMethodBeat.i(244369);
+    s.u(paramNumber, "value");
+    paramNumber = (SingleCondition)new Sql.NotEqual(tableColumnName(), paramNumber.toString());
+    AppMethodBeat.o(244369);
+    return paramNumber;
   }
   
   public final SingleCondition notEqual(String paramString)
   {
-    AppMethodBeat.i(186787);
-    p.k(paramString, "value");
+    AppMethodBeat.i(244375);
+    s.u(paramString, "value");
     paramString = (SingleCondition)new Sql.NotEqual(tableColumnName(), paramString);
-    AppMethodBeat.o(186787);
+    AppMethodBeat.o(244375);
     return paramString;
   }
   
   public final SingleCondition notInNumber(List<? extends Number> paramList)
   {
-    AppMethodBeat.i(186770);
-    p.k(paramList, "numberList");
+    AppMethodBeat.i(244327);
+    s.u(paramList, "numberList");
     String str = tableColumnName();
     Object localObject = (Iterable)paramList;
-    paramList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+    paramList = (Collection)new ArrayList(p.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       paramList.add(((Number)((Iterator)localObject).next()).toString());
     }
     paramList = (SingleCondition)new Sql.NotIn(str, (List)paramList);
-    AppMethodBeat.o(186770);
+    AppMethodBeat.o(244327);
     return paramList;
   }
   
   public final SingleCondition notInString(List<String> paramList)
   {
-    AppMethodBeat.i(186771);
-    p.k(paramList, "numberList");
-    paramList = (SingleCondition)new Sql.StringNotIn(tableColumnName(), paramList);
-    AppMethodBeat.o(186771);
+    AppMethodBeat.i(244330);
+    s.u(paramList, "numberList");
+    paramList = (SingleCondition)new Sql.NotIn(tableColumnName(), paramList);
+    AppMethodBeat.o(244330);
     return paramList;
   }
   
   public final SingleCondition notLike(String paramString)
   {
-    AppMethodBeat.i(186777);
-    p.k(paramString, "value");
+    AppMethodBeat.i(244346);
+    s.u(paramString, "value");
     paramString = (SingleCondition)new Sql.NotLike(tableColumnName(), paramString);
-    AppMethodBeat.o(186777);
+    AppMethodBeat.o(244346);
     return paramString;
   }
   
   public final ISqlOrder orderDesc()
   {
-    AppMethodBeat.i(186810);
+    AppMethodBeat.i(244467);
     ISqlOrder localISqlOrder = (ISqlOrder)new ColumnOrder(tableColumnName(), false);
-    AppMethodBeat.o(186810);
+    AppMethodBeat.o(244467);
     return localISqlOrder;
   }
   
   public final ISqlOrder orderInc()
   {
-    AppMethodBeat.i(186808);
+    AppMethodBeat.i(244464);
     ISqlOrder localISqlOrder = (ISqlOrder)new ColumnOrder(tableColumnName(), true);
-    AppMethodBeat.o(186808);
+    AppMethodBeat.o(244464);
     return localISqlOrder;
   }
   
   public String[] params()
   {
-    AppMethodBeat.i(186836);
-    String[] arrayOfString = ISqlColumn.DefaultImpls.params(this);
-    AppMethodBeat.o(186836);
+    AppMethodBeat.i(244480);
+    String[] arrayOfString = ISqlColumn.DefaultImpls.params((ISqlColumn)this);
+    AppMethodBeat.o(244480);
     return arrayOfString;
   }
   
-  public final void setTableName(String paramString)
+  public final SingleCondition smallerEqual(Column paramColumn)
   {
-    AppMethodBeat.i(186828);
-    p.k(paramString, "<set-?>");
-    this.tableName = paramString;
-    AppMethodBeat.o(186828);
+    AppMethodBeat.i(244447);
+    s.u(paramColumn, "value");
+    paramColumn = (SingleCondition)new Sql.SmallerEqual(tableColumnName(), paramColumn.tableColumnName());
+    AppMethodBeat.o(244447);
+    return paramColumn;
+  }
+  
+  public final SingleCondition smallerEqual(Number paramNumber)
+  {
+    AppMethodBeat.i(244435);
+    s.u(paramNumber, "value");
+    paramNumber = (SingleCondition)new Sql.SmallerEqual(tableColumnName(), paramNumber.toString());
+    AppMethodBeat.o(244435);
+    return paramNumber;
   }
   
   public final SingleCondition smallerEqual(String paramString)
   {
-    AppMethodBeat.i(186799);
-    p.k(paramString, "value");
+    AppMethodBeat.i(244441);
+    s.u(paramString, "value");
     paramString = (SingleCondition)new Sql.SmallerEqual(tableColumnName(), paramString);
-    AppMethodBeat.o(186799);
+    AppMethodBeat.o(244441);
     return paramString;
   }
   
   public final SingleCondition smallerThan(Column paramColumn)
   {
-    AppMethodBeat.i(186796);
-    p.k(paramColumn, "value");
+    AppMethodBeat.i(244413);
+    s.u(paramColumn, "value");
     paramColumn = (SingleCondition)new Sql.ColumnSmallerThan(tableColumnName(), paramColumn.tableColumnName());
-    AppMethodBeat.o(186796);
+    AppMethodBeat.o(244413);
     return paramColumn;
+  }
+  
+  public final SingleCondition smallerThan(Number paramNumber)
+  {
+    AppMethodBeat.i(244402);
+    s.u(paramNumber, "value");
+    paramNumber = (SingleCondition)new Sql.SmallerThan(tableColumnName(), paramNumber.toString());
+    AppMethodBeat.o(244402);
+    return paramNumber;
   }
   
   public final SingleCondition smallerThan(String paramString)
   {
-    AppMethodBeat.i(186795);
-    p.k(paramString, "value");
+    AppMethodBeat.i(244406);
+    s.u(paramString, "value");
     paramString = (SingleCondition)new Sql.SmallerThan(tableColumnName(), paramString);
-    AppMethodBeat.o(186795);
+    AppMethodBeat.o(244406);
     return paramString;
   }
   
   public String tableColumnName()
   {
-    AppMethodBeat.i(186765);
+    AppMethodBeat.i(244305);
     String str = this.tableName + '.' + this.name;
-    AppMethodBeat.o(186765);
+    AppMethodBeat.o(244305);
     return str;
   }
   
   public String toSql()
   {
-    AppMethodBeat.i(186822);
+    AppMethodBeat.i(244478);
     String str = tableColumnName();
-    AppMethodBeat.o(186822);
+    AppMethodBeat.o(244478);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.sql.Column
  * JD-Core Version:    0.7.0.1
  */

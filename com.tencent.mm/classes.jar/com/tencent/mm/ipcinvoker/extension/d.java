@@ -14,12 +14,12 @@ public final class d
     AppMethodBeat.o(158797);
   }
   
-  public final boolean bp(Object paramObject)
+  public final boolean cJ(Object paramObject)
   {
     return paramObject instanceof Parcelable;
   }
   
-  public final Object d(Parcel paramParcel)
+  public final Object f(Parcel paramParcel)
   {
     AppMethodBeat.i(158798);
     paramParcel = paramParcel.readParcelable(getClass().getClassLoader());

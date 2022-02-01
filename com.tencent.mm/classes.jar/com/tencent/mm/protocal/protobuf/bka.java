@@ -3,51 +3,51 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bka
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int SUY;
+  public long DVk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(197534);
+    AppMethodBeat.i(259812);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).aY(1, this.SUY);
-      AppMethodBeat.o(197534);
+      ((i.a.a.c.a)paramVarArgs[0]).bv(1, this.DVk);
+      AppMethodBeat.o(259812);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bM(1, this.SUY);
-      AppMethodBeat.o(197534);
+      paramInt = i.a.a.b.b.a.q(1, this.DVk);
+      AppMethodBeat.o(259812);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(197534);
+      AppMethodBeat.o(259812);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       bka localbka = (bka)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(197534);
+        AppMethodBeat.o(259812);
         return -1;
       }
-      localbka.SUY = locala.abFh.AK();
-      AppMethodBeat.o(197534);
+      localbka.DVk = locala.ajGk.aaw();
+      AppMethodBeat.o(259812);
       return 0;
     }
-    AppMethodBeat.o(197534);
+    AppMethodBeat.o(259812);
     return -1;
   }
 }

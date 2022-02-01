@@ -6,29 +6,29 @@ import com.tencent.tinker.a.a.b.e;
 public final class g
   extends s.a.a<g>
 {
-  public int ZIE;
-  public int ZIF;
-  public int ZIG;
-  public int ZIH;
-  public short[] ZII;
-  public b[] ZIJ;
-  public a[] ZIK;
+  public int ahNH;
+  public int ahNI;
+  public int ahNJ;
+  public int ahNK;
+  public short[] ahNL;
+  public b[] ahNM;
+  public a[] ahNN;
   
   public g(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, short[] paramArrayOfShort, b[] paramArrayOfb, a[] paramArrayOfa)
   {
     super(paramInt1);
-    this.ZIE = paramInt2;
-    this.ZIF = paramInt3;
-    this.ZIG = paramInt4;
-    this.ZIH = paramInt5;
-    this.ZII = paramArrayOfShort;
-    this.ZIJ = paramArrayOfb;
-    this.ZIK = paramArrayOfa;
+    this.ahNH = paramInt2;
+    this.ahNI = paramInt3;
+    this.ahNJ = paramInt4;
+    this.ahNK = paramInt5;
+    this.ahNL = paramArrayOfShort;
+    this.ahNM = paramArrayOfb;
+    this.ahNN = paramArrayOfa;
   }
   
   private int a(g paramg)
   {
-    int i = c.nV(this.ZIE, paramg.ZIE);
+    int i = c.pS(this.ahNH, paramg.ahNH);
     if (i != 0) {}
     int j;
     do
@@ -42,22 +42,22 @@ public final class g
             do
             {
               return i;
-              j = c.nV(this.ZIF, paramg.ZIF);
+              j = c.pS(this.ahNI, paramg.ahNI);
               i = j;
             } while (j != 0);
-            j = c.nV(this.ZIG, paramg.ZIG);
+            j = c.pS(this.ahNJ, paramg.ahNJ);
             i = j;
           } while (j != 0);
-          j = c.nV(this.ZIH, paramg.ZIH);
+          j = c.pS(this.ahNK, paramg.ahNK);
           i = j;
         } while (j != 0);
-        j = c.a(this.ZII, paramg.ZII);
+        j = c.b(this.ahNL, paramg.ahNL);
         i = j;
       } while (j != 0);
-      j = c.a(this.ZIJ, paramg.ZIJ);
+      j = c.b(this.ahNM, paramg.ahNM);
       i = j;
     } while (j != 0);
-    return c.a(this.ZIK, paramg.ZIK);
+    return c.b(this.ahNN, paramg.ahNN);
   }
   
   public final boolean equals(Object paramObject)
@@ -71,22 +71,22 @@ public final class g
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.ZIE), Integer.valueOf(this.ZIF), Integer.valueOf(this.ZIG), Integer.valueOf(this.ZIH), this.ZII, this.ZIJ, this.ZIK });
+    return e.hash(new Object[] { Integer.valueOf(this.ahNH), Integer.valueOf(this.ahNI), Integer.valueOf(this.ahNJ), Integer.valueOf(this.ahNK), this.ahNL, this.ahNM, this.ahNN });
   }
   
   public static final class a
     implements Comparable<a>
   {
-    public int[] ZIL;
-    public int[] ZIM;
-    public int ZIN;
+    public int[] ahNO;
+    public int[] ahNP;
+    public int ahNQ;
     public int offset;
     
     public a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2)
     {
-      this.ZIL = paramArrayOfInt1;
-      this.ZIM = paramArrayOfInt2;
-      this.ZIN = paramInt1;
+      this.ahNO = paramArrayOfInt1;
+      this.ahNP = paramArrayOfInt2;
+      this.ahNQ = paramInt1;
       this.offset = paramInt2;
     }
   }
@@ -94,21 +94,21 @@ public final class g
   public static final class b
     implements Comparable<b>
   {
-    public int ZIO;
-    public int ZIQ;
-    public int ZIR;
+    public int ahNR;
+    public int ahNS;
+    public int ahNT;
     
     public b(int paramInt1, int paramInt2, int paramInt3)
     {
-      this.ZIO = paramInt1;
-      this.ZIQ = paramInt2;
-      this.ZIR = paramInt3;
+      this.ahNR = paramInt1;
+      this.ahNS = paramInt2;
+      this.ahNT = paramInt3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.a.g
  * JD-Core Version:    0.7.0.1
  */

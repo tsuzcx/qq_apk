@@ -14,106 +14,106 @@ import com.tencent.mm.ui.widget.cedit.edit.CustomTextView;
 public final class a
   extends b
 {
-  private static final Object YkC;
-  private static a YkD;
+  private static final Object agcB;
+  private static a agcC;
   
   static
   {
-    AppMethodBeat.i(188744);
-    YkC = new Object();
-    AppMethodBeat.o(188744);
+    AppMethodBeat.i(252129);
+    agcB = new Object();
+    AppMethodBeat.o(252129);
   }
   
   private static int a(Spannable paramSpannable, Layout paramLayout)
   {
-    AppMethodBeat.i(188683);
+    AppMethodBeat.i(252105);
     int i = paramLayout.getLineTop(paramLayout.getLineForOffset(Selection.getSelectionEnd(paramSpannable)));
-    AppMethodBeat.o(188683);
+    AppMethodBeat.o(252105);
     return i;
   }
   
   private static int d(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(188685);
+    AppMethodBeat.i(252115);
     Rect localRect = new Rect();
     if (paramCustomTextView.getGlobalVisibleRect(localRect))
     {
       int i = localRect.height();
-      AppMethodBeat.o(188685);
+      AppMethodBeat.o(252115);
       return i;
     }
-    AppMethodBeat.o(188685);
+    AppMethodBeat.o(252115);
     return 0;
   }
   
   private static boolean i(Spannable paramSpannable)
   {
-    AppMethodBeat.i(188680);
+    AppMethodBeat.i(252098);
     if ((MetaKeyKeyListener.getMetaState(paramSpannable, 1) == 1) || (MetaKeyKeyListener.getMetaState(paramSpannable, 2048) != 0))
     {
-      AppMethodBeat.o(188680);
+      AppMethodBeat.o(252098);
       return true;
     }
-    AppMethodBeat.o(188680);
+    AppMethodBeat.o(252098);
     return false;
   }
   
-  public static d ibX()
+  public static d jHj()
   {
-    AppMethodBeat.i(188741);
-    if (YkD == null) {
-      YkD = new a();
+    AppMethodBeat.i(252122);
+    if (agcC == null) {
+      agcC = new a();
     }
-    a locala = YkD;
-    AppMethodBeat.o(188741);
+    a locala = agcC;
+    AppMethodBeat.o(252122);
     return locala;
   }
   
   public final void a(CustomTextView paramCustomTextView, Spannable paramSpannable, int paramInt)
   {
-    AppMethodBeat.i(188738);
+    AppMethodBeat.i(252280);
     if (((paramInt & 0x82) == 0) || (paramCustomTextView.getLayout() == null)) {
       Selection.setSelection(paramSpannable, paramSpannable.length());
     }
-    AppMethodBeat.o(188738);
+    AppMethodBeat.o(252280);
   }
   
   protected final boolean a(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188691);
+    AppMethodBeat.i(252150);
     paramCustomTextView = paramCustomTextView.getLayout();
     if (i(paramSpannable))
     {
       bool = Selection.extendLeft(paramSpannable, paramCustomTextView);
-      AppMethodBeat.o(188691);
+      AppMethodBeat.o(252150);
       return bool;
     }
     boolean bool = Selection.moveLeft(paramSpannable, paramCustomTextView);
-    AppMethodBeat.o(188691);
+    AppMethodBeat.o(252150);
     return bool;
   }
   
   protected final boolean a(CustomTextView paramCustomTextView, Spannable paramSpannable, int paramInt1, int paramInt2, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(188687);
+    AppMethodBeat.i(252142);
     switch (paramInt1)
     {
     }
     do
     {
       bool = super.a(paramCustomTextView, paramSpannable, paramInt1, paramInt2, paramKeyEvent);
-      AppMethodBeat.o(188687);
+      AppMethodBeat.o(252142);
       return bool;
     } while ((!KeyEvent.metaStateHasNoModifiers(paramInt2)) || (paramKeyEvent.getAction() != 0) || (paramKeyEvent.getRepeatCount() != 0) || (MetaKeyKeyListener.getMetaState(paramSpannable, 2048, paramKeyEvent) == 0));
     boolean bool = paramCustomTextView.showContextMenu();
-    AppMethodBeat.o(188687);
+    AppMethodBeat.o(252142);
     return bool;
   }
   
   public final boolean a(CustomTextView paramCustomTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
     int j = -1;
-    AppMethodBeat.i(188731);
+    AppMethodBeat.i(252262);
     int k = paramMotionEvent.getAction();
     int i;
     if (k == 1)
@@ -121,10 +121,10 @@ public final class a
       f.a[] arrayOfa = (f.a[])paramSpannable.getSpans(0, paramSpannable.length(), f.a.class);
       if (arrayOfa.length > 0)
       {
-        i = arrayOfa[0].rxR;
+        i = arrayOfa[0].uIV;
         arrayOfa = (f.a[])paramSpannable.getSpans(0, paramSpannable.length(), f.a.class);
         if (arrayOfa.length > 0) {
-          j = arrayOfa[0].rxS;
+          j = arrayOfa[0].uIW;
         }
       }
     }
@@ -132,9 +132,9 @@ public final class a
     {
       boolean bool1 = i(paramSpannable);
       boolean bool2 = f.a(paramCustomTextView, paramSpannable, paramMotionEvent);
-      if (paramCustomTextView.iax())
+      if (paramCustomTextView.jFE())
       {
-        AppMethodBeat.o(188731);
+        AppMethodBeat.o(252262);
         return bool2;
         i = -1;
         break;
@@ -144,11 +144,11 @@ public final class a
         {
           if ((!paramCustomTextView.isFocused()) && (!paramCustomTextView.requestFocus()))
           {
-            AppMethodBeat.o(188731);
+            AppMethodBeat.o(252262);
             return bool2;
           }
-          i = paramCustomTextView.aG(paramMotionEvent.getX(), paramMotionEvent.getY());
-          paramSpannable.setSpan(YkC, i, i, 34);
+          i = paramCustomTextView.bk(paramMotionEvent.getX(), paramMotionEvent.getY());
+          paramSpannable.setSpan(agcB, i, i, 34);
           paramCustomTextView.getParent().requestDisallowInterceptTouchEvent(true);
         }
       }
@@ -158,18 +158,18 @@ public final class a
         {
           do
           {
-            AppMethodBeat.o(188731);
+            AppMethodBeat.o(252262);
             return bool2;
           } while (!paramCustomTextView.isFocused());
           if (k != 2) {
             break;
           }
         } while ((!i(paramSpannable)) || (!bool2));
-        i = paramSpannable.getSpanStart(YkC);
+        i = paramSpannable.getSpanStart(agcB);
         paramCustomTextView.cancelLongPress();
-        j = paramCustomTextView.aG(paramMotionEvent.getX(), paramMotionEvent.getY());
+        j = paramCustomTextView.bk(paramMotionEvent.getX(), paramMotionEvent.getY());
         Selection.setSelection(paramSpannable, Math.min(i, j), Math.max(i, j));
-        AppMethodBeat.o(188731);
+        AppMethodBeat.o(252262);
         return true;
       } while (k != 1);
       int m;
@@ -182,9 +182,9 @@ public final class a
           m = paramCustomTextView.getSelectionStart();
           if (m == paramCustomTextView.getSelectionEnd())
           {
-            j = paramCustomTextView.WoF.getLineForOffset(m);
-            n = paramCustomTextView.WoF.getLineTop(j);
-            i1 = paramCustomTextView.WoF.getLineTop(j + 1);
+            j = paramCustomTextView.mLayout.getLineForOffset(m);
+            n = paramCustomTextView.mLayout.getLineTop(j);
+            i1 = paramCustomTextView.mLayout.getLineTop(j + 1);
             i2 = paramCustomTextView.getBottom() - paramCustomTextView.getTop() - paramCustomTextView.getExtendedPaddingTop() - paramCustomTextView.getExtendedPaddingBottom();
             k = (i1 - n) / 2;
             i = k;
@@ -195,7 +195,7 @@ public final class a
             if (n >= k + i) {
               break label582;
             }
-            i = paramCustomTextView.WoF.getLineForVertical(i + k + (i1 - n));
+            i = paramCustomTextView.mLayout.getLineForVertical(i + k + (i1 - n));
           }
         }
       }
@@ -206,8 +206,8 @@ public final class a
         i1 = paramCustomTextView.getCompoundPaddingLeft();
         i2 = paramCustomTextView.getCompoundPaddingRight();
         int i3 = paramCustomTextView.getScrollX();
-        j = paramCustomTextView.WoF.getOffsetForHorizontal(i, i3);
-        k = paramCustomTextView.WoF.getOffsetForHorizontal(i, k - n - i1 - i2 + i3);
+        j = paramCustomTextView.mLayout.getOffsetForHorizontal(i, i3);
+        k = paramCustomTextView.mLayout.getOffsetForHorizontal(i, k - n - i1 - i2 + i3);
         if (j < k)
         {
           i = j;
@@ -223,15 +223,15 @@ public final class a
         for (;;)
         {
           if (i != m) {
-            Selection.setSelection(paramCustomTextView.Yfs, i);
+            Selection.setSelection(paramCustomTextView.afXs, i);
           }
-          AppMethodBeat.o(188731);
+          AppMethodBeat.o(252262);
           return true;
           label582:
           if (i1 <= i2 + k - i) {
             break label728;
           }
-          i = paramCustomTextView.WoF.getLineForVertical(i2 + k - i - (i1 - n));
+          i = paramCustomTextView.mLayout.getLineForVertical(i2 + k - i - (i1 - n));
           break;
           i = k;
           break label545;
@@ -245,14 +245,14 @@ public final class a
             continue;
             if (bool1)
             {
-              i = paramSpannable.getSpanStart(YkC);
-              j = paramCustomTextView.aG(paramMotionEvent.getX(), paramMotionEvent.getY());
+              i = paramSpannable.getSpanStart(agcB);
+              j = paramCustomTextView.bk(paramMotionEvent.getX(), paramMotionEvent.getY());
               Selection.setSelection(paramSpannable, Math.min(i, j), Math.max(i, j));
-              paramSpannable.removeSpan(YkC);
+              paramSpannable.removeSpan(agcB);
             }
             MetaKeyKeyListener.adjustMetaAfterKeypress(paramSpannable);
             com.tencent.mm.ui.widget.cedit.util.d.k(paramSpannable);
-            AppMethodBeat.o(188731);
+            AppMethodBeat.o(252262);
             return true;
           }
           else
@@ -270,52 +270,52 @@ public final class a
   
   protected final boolean b(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188693);
+    AppMethodBeat.i(252159);
     paramCustomTextView = paramCustomTextView.getLayout();
     if (i(paramSpannable))
     {
       bool = Selection.extendRight(paramSpannable, paramCustomTextView);
-      AppMethodBeat.o(188693);
+      AppMethodBeat.o(252159);
       return bool;
     }
     boolean bool = Selection.moveRight(paramSpannable, paramCustomTextView);
-    AppMethodBeat.o(188693);
+    AppMethodBeat.o(252159);
     return bool;
   }
   
   protected final boolean c(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188695);
+    AppMethodBeat.i(252169);
     paramCustomTextView = paramCustomTextView.getLayout();
     if (i(paramSpannable))
     {
       bool = Selection.extendUp(paramSpannable, paramCustomTextView);
-      AppMethodBeat.o(188695);
+      AppMethodBeat.o(252169);
       return bool;
     }
     boolean bool = Selection.moveUp(paramSpannable, paramCustomTextView);
-    AppMethodBeat.o(188695);
+    AppMethodBeat.o(252169);
     return bool;
   }
   
   protected final boolean d(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188697);
+    AppMethodBeat.i(252177);
     paramCustomTextView = paramCustomTextView.getLayout();
     if (i(paramSpannable))
     {
       bool = Selection.extendDown(paramSpannable, paramCustomTextView);
-      AppMethodBeat.o(188697);
+      AppMethodBeat.o(252177);
       return bool;
     }
     boolean bool = Selection.moveDown(paramSpannable, paramCustomTextView);
-    AppMethodBeat.o(188697);
+    AppMethodBeat.o(252177);
     return bool;
   }
   
   protected final boolean e(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188708);
+    AppMethodBeat.i(252187);
     Layout localLayout = paramCustomTextView.getLayout();
     boolean bool3 = i(paramSpannable);
     int i = a(paramSpannable, localLayout);
@@ -336,7 +336,7 @@ public final class a
         }
         bool1 = bool2;
       }
-      AppMethodBeat.o(188708);
+      AppMethodBeat.o(252187);
       return bool1;
       Selection.moveUp(paramSpannable, localLayout);
     }
@@ -344,7 +344,7 @@ public final class a
   
   protected final boolean f(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188712);
+    AppMethodBeat.i(252196);
     Layout localLayout = paramCustomTextView.getLayout();
     boolean bool3 = i(paramSpannable);
     int i = a(paramSpannable, localLayout);
@@ -365,7 +365,7 @@ public final class a
         }
         bool1 = bool2;
       }
-      AppMethodBeat.o(188712);
+      AppMethodBeat.o(252196);
       return bool1;
       Selection.moveDown(paramSpannable, localLayout);
     }
@@ -373,13 +373,13 @@ public final class a
   
   protected final boolean g(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188713);
+    AppMethodBeat.i(252204);
     if (i(paramSpannable)) {
       Selection.extendSelection(paramSpannable, 0);
     }
     for (;;)
     {
-      AppMethodBeat.o(188713);
+      AppMethodBeat.o(252204);
       return true;
       Selection.setSelection(paramSpannable, 0);
     }
@@ -387,13 +387,13 @@ public final class a
   
   protected final boolean h(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188714);
+    AppMethodBeat.i(252210);
     if (i(paramSpannable)) {
       Selection.extendSelection(paramSpannable, paramSpannable.length());
     }
     for (;;)
     {
-      AppMethodBeat.o(188714);
+      AppMethodBeat.o(252210);
       return true;
       Selection.setSelection(paramSpannable, paramSpannable.length());
     }
@@ -401,65 +401,75 @@ public final class a
   
   protected final boolean i(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188718);
+    AppMethodBeat.i(252216);
     paramCustomTextView = paramCustomTextView.getLayout();
     if (i(paramSpannable))
     {
       bool = Selection.extendToLeftEdge(paramSpannable, paramCustomTextView);
-      AppMethodBeat.o(188718);
+      AppMethodBeat.o(252216);
       return bool;
     }
     boolean bool = Selection.moveToLeftEdge(paramSpannable, paramCustomTextView);
-    AppMethodBeat.o(188718);
+    AppMethodBeat.o(252216);
     return bool;
-  }
-  
-  public final boolean ibW()
-  {
-    return true;
   }
   
   public final void j(Spannable paramSpannable)
   {
-    AppMethodBeat.i(188735);
+    AppMethodBeat.i(252272);
     Selection.setSelection(paramSpannable, 0);
-    AppMethodBeat.o(188735);
+    AppMethodBeat.o(252272);
   }
   
   protected final boolean j(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188721);
+    AppMethodBeat.i(252222);
     paramCustomTextView = paramCustomTextView.getLayout();
     if (i(paramSpannable))
     {
       bool = Selection.extendToRightEdge(paramSpannable, paramCustomTextView);
-      AppMethodBeat.o(188721);
+      AppMethodBeat.o(252222);
       return bool;
     }
     boolean bool = Selection.moveToRightEdge(paramSpannable, paramCustomTextView);
-    AppMethodBeat.o(188721);
+    AppMethodBeat.o(252222);
     return bool;
+  }
+  
+  protected final boolean jHg()
+  {
+    return false;
+  }
+  
+  protected final boolean jHh()
+  {
+    return false;
+  }
+  
+  public final boolean jHi()
+  {
+    return true;
   }
   
   protected final boolean k(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188723);
+    AppMethodBeat.i(252236);
     boolean bool = i(paramCustomTextView, paramSpannable);
-    AppMethodBeat.o(188723);
+    AppMethodBeat.o(252236);
     return bool;
   }
   
   protected final boolean l(CustomTextView paramCustomTextView, Spannable paramSpannable)
   {
-    AppMethodBeat.i(188727);
+    AppMethodBeat.i(252244);
     boolean bool = j(paramCustomTextView, paramSpannable);
-    AppMethodBeat.o(188727);
+    AppMethodBeat.o(252244);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.b.a
  * JD-Core Version:    0.7.0.1
  */

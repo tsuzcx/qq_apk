@@ -4,31 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum a
 {
-  final boolean abhA;
-  final boolean abhB;
+  final boolean ajgj;
+  final boolean ajgk;
   
   static
   {
     AppMethodBeat.i(59645);
-    a locala1 = new a("NO_ARGUMENTS", 0, false, 3);
-    abhw = locala1;
-    a locala2 = new a("UNLESS_EMPTY", 1, true, 2);
-    abhx = locala2;
-    a locala3 = new a("ALWAYS_PARENTHESIZED", 2, true, true);
-    abhy = locala3;
-    abhz = new a[] { locala1, locala2, locala3 };
+    ajgl = new a("NO_ARGUMENTS", 0, false, 3);
+    ajgm = new a("UNLESS_EMPTY", 1, true, 2);
+    ajgn = new a("ALWAYS_PARENTHESIZED", 2, true, true);
+    ajgo = new a[] { ajgl, ajgm, ajgn };
     AppMethodBeat.o(59645);
   }
   
   private a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.abhA = paramBoolean1;
-    this.abhB = paramBoolean2;
+    this.ajgj = paramBoolean1;
+    this.ajgk = paramBoolean2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlin.l.b.a.b.i.a
  * JD-Core Version:    0.7.0.1
  */

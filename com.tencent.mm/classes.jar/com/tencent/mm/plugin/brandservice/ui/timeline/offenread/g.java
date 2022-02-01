@@ -4,12 +4,12 @@ import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.protocal.protobuf.err;
-import com.tencent.mm.protocal.protobuf.eru;
+import com.tencent.mm.protocal.protobuf.fmz;
+import com.tencent.mm.protocal.protobuf.fnc;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,9 +17,9 @@ import java.util.List;
 
 public final class g
 {
-  private static err sKa;
+  private static fmz vPZ;
   
-  public static boolean apE(String paramString)
+  public static boolean ajf(String paramString)
   {
     AppMethodBeat.i(6135);
     if (Util.isNullOrNil(paramString))
@@ -27,13 +27,13 @@ public final class g
       AppMethodBeat.o(6135);
       return false;
     }
-    Object localObject = cBq();
+    Object localObject = deD();
     if (localObject == null)
     {
       AppMethodBeat.o(6135);
       return false;
     }
-    localObject = ((err)localObject).UtH;
+    localObject = ((fmz)localObject).abNc;
     if (Util.isNullOrNil((List)localObject))
     {
       AppMethodBeat.o(6135);
@@ -42,8 +42,8 @@ public final class g
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      eru localeru = (eru)((Iterator)localObject).next();
-      if ((localeru != null) && (paramString.equals(localeru.RKL)))
+      fnc localfnc = (fnc)((Iterator)localObject).next();
+      if ((localfnc != null) && (paramString.equals(localfnc.YIf)))
       {
         AppMethodBeat.o(6135);
         return true;
@@ -53,48 +53,48 @@ public final class g
     return false;
   }
   
-  public static void b(err paramerr)
+  public static void b(fmz paramfmz)
   {
-    AppMethodBeat.i(265640);
-    sKa = paramerr;
+    AppMethodBeat.i(302251);
+    vPZ = paramfmz;
     try
     {
-      paramerr = Base64.encodeToString(paramerr.toByteArray(), 0);
-      h.aHG().aHp().set(ar.a.Vvb, paramerr);
-      AppMethodBeat.o(265640);
+      paramfmz = Base64.encodeToString(paramfmz.toByteArray(), 0);
+      h.baE().ban().set(at.a.acWK, paramfmz);
+      AppMethodBeat.o(302251);
       return;
     }
-    catch (IOException paramerr)
+    catch (IOException paramfmz)
     {
-      Log.e("MicroMsg.BizTimeLineOftenReadHelper", "resetOftenRead exp: %s", new Object[] { paramerr.getMessage() });
-      h.aHG().aHp().set(ar.a.Vvb, "");
-      AppMethodBeat.o(265640);
+      Log.e("MicroMsg.BizTimeLineOftenReadHelper", "resetOftenRead exp: %s", new Object[] { paramfmz.getMessage() });
+      h.baE().ban().set(at.a.acWK, "");
+      AppMethodBeat.o(302251);
     }
   }
   
-  public static err cBq()
+  public static fmz deD()
   {
     AppMethodBeat.i(6134);
-    if (sKa != null)
+    if (vPZ != null)
     {
-      localerr = sKa;
+      localfmz = vPZ;
       AppMethodBeat.o(6134);
-      return localerr;
+      return localfmz;
     }
-    Object localObject = (String)h.aHG().aHp().get(ar.a.Vvb, "");
+    Object localObject = (String)h.baE().ban().get(at.a.acWK, "");
     if (Util.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(6134);
       return null;
     }
-    err localerr = new err();
+    fmz localfmz = new fmz();
     localObject = Base64.decode((String)localObject, 0);
     try
     {
-      localerr.parseFrom((byte[])localObject);
-      sKa = localerr;
+      localfmz.parseFrom((byte[])localObject);
+      vPZ = localfmz;
       AppMethodBeat.o(6134);
-      return localerr;
+      return localfmz;
     }
     catch (IOException localIOException)
     {
@@ -102,19 +102,6 @@ public final class g
       AppMethodBeat.o(6134);
     }
     return null;
-  }
-  
-  public static boolean cBr()
-  {
-    AppMethodBeat.i(265643);
-    err localerr = cBq();
-    if ((localerr != null) && (!Util.isNullOrNil(localerr.UtH)))
-    {
-      AppMethodBeat.o(265643);
-      return false;
-    }
-    AppMethodBeat.o(265643);
-    return true;
   }
 }
 

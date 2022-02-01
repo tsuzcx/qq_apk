@@ -1,20 +1,33 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.pluginsdk.m;
 
 final class RegByMobileRegAIOUI$16
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  RegByMobileRegAIOUI$16(RegByMobileRegAIOUI paramRegByMobileRegAIOUI, com.tencent.mm.modelsimple.t paramt) {}
+  RegByMobileRegAIOUI$16(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void run()
   {
-    AppMethodBeat.i(221827);
-    h.aGY().a(this.nih);
-    AppMethodBeat.o(221827);
+    AppMethodBeat.i(128528);
+    Object localObject2 = com.tencent.mm.plugin.account.sdk.a.pFn.cJ(this.qfw);
+    ((Intent)localObject2).addFlags(67108864);
+    Object localObject1 = this.qfw;
+    localObject2 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject2);
+    com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/plugin/account/ui/RegByMobileRegAIOUI$23", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((RegByMobileRegAIOUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/account/ui/RegByMobileRegAIOUI$23", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localObject1 = new StringBuilder();
+    h.baC();
+    localObject1 = ((StringBuilder)localObject1).append(b.aZR()).append(",").append(this.qfw.getClass().getName()).append(",L14,");
+    h.baC();
+    com.tencent.mm.plugin.b.a.Du(b.Fw("L14") + ",4");
+    this.qfw.finish();
+    AppMethodBeat.o(128528);
   }
 }
 

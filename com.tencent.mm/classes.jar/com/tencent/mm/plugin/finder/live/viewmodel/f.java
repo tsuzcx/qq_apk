@@ -17,16 +17,14 @@ import androidx.recyclerview.widget.RecyclerView.s;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.an.i;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.cgi.bf;
+import com.tencent.mm.am.p;
+import com.tencent.mm.plugin.finder.cgi.cc;
+import com.tencent.mm.plugin.finder.live.p.c;
+import com.tencent.mm.plugin.finder.live.p.e;
 import com.tencent.mm.plugin.finder.live.view.adapter.b.a;
-import com.tencent.mm.plugin.finder.utils.o;
-import com.tencent.mm.protocal.protobuf.bcj;
-import com.tencent.mm.protocal.protobuf.bnt;
-import com.tencent.mm.protocal.protobuf.bnu;
+import com.tencent.mm.protocal.protobuf.bmk;
+import com.tencent.mm.protocal.protobuf.cbx;
+import com.tencent.mm.protocal.protobuf.cby;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.view.e.a;
@@ -35,131 +33,151 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveRecentPlayUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "container", "Landroid/widget/LinearLayout;", "netSceneSearch", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGameSearch;", "recentPlayAdapter", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderGameLiveRecentPlayAdapter;", "recentPlayList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/GameSearchUserInfo;", "Lkotlin/collections/ArrayList;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "space2A", "", "space2_5_A", "space4_5_A", "", "hide", "", "initData", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "show", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveRecentPlayUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "container", "Landroid/widget/LinearLayout;", "netSceneSearch", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGameSearch;", "recentPlayAdapter", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderGameLiveRecentPlayAdapter;", "recentPlayList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/GameSearchUserInfo;", "Lkotlin/collections/ArrayList;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "space2A", "", "space2_5_A", "space4_5_A", "", "hide", "", "initData", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "show", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   extends UIComponent
-  implements i
+  implements com.tencent.mm.am.h
 {
-  public static final a zbU;
-  private RecyclerView jLl;
-  LinearLayout wSF;
-  private final int zbO;
-  private final int zbP;
-  private final float zbQ;
-  private bf zbR;
-  private final ArrayList<bnu> zbS;
-  private final com.tencent.mm.plugin.finder.live.view.adapter.b zbT;
+  public static final f.a DXT;
+  LinearLayout Api;
+  private final int DXU;
+  private final int DXV;
+  private final float DXW;
+  private cc DXX;
+  private final ArrayList<cby> DXY;
+  private final com.tencent.mm.plugin.finder.live.view.adapter.b DXZ;
+  private RecyclerView mkw;
   
   static
   {
-    AppMethodBeat.i(269155);
-    zbU = new a((byte)0);
-    AppMethodBeat.o(269155);
+    AppMethodBeat.i(356202);
+    DXT = new f.a((byte)0);
+    AppMethodBeat.o(356202);
   }
   
   public f(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(269154);
-    this.zbO = ((int)getContext().getResources().getDimension(b.d.Edge_2A));
-    this.zbP = ((int)getContext().getResources().getDimension(b.d.Edge_2_5_A));
-    this.zbQ = getContext().getResources().getDimension(b.d.Edge_4_5_A);
-    this.zbS = new ArrayList();
-    this.zbT = new com.tencent.mm.plugin.finder.live.view.adapter.b();
-    AppMethodBeat.o(269154);
+    AppMethodBeat.i(356163);
+    this.DXU = ((int)getContext().getResources().getDimension(p.c.Edge_2A));
+    this.DXV = ((int)getContext().getResources().getDimension(p.c.Edge_2_5_A));
+    this.DXW = getContext().getResources().getDimension(p.c.Edge_4_5_A);
+    this.DXY = new ArrayList();
+    this.DXZ = new com.tencent.mm.plugin.finder.live.view.adapter.b();
+    AppMethodBeat.o(356163);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(269151);
+    Object localObject = null;
+    AppMethodBeat.i(356217);
     super.onCreate(paramBundle);
-    paramBundle = getActivity().findViewById(b.f.ll_recent_play);
-    p.j(paramBundle, "activity.findViewById(R.id.ll_recent_play)");
-    this.wSF = ((LinearLayout)paramBundle);
-    paramBundle = getActivity().findViewById(b.f.recent_play_rl_view);
-    p.j(paramBundle, "activity.findViewById(R.id.recent_play_rl_view)");
-    this.jLl = ((RecyclerView)paramBundle);
-    paramBundle = this.jLl;
-    if (paramBundle == null) {
-      p.bGy("recyclerView");
+    paramBundle = getActivity().findViewById(p.e.BXj);
+    kotlin.g.b.s.s(paramBundle, "activity.findViewById(R.id.ll_recent_play)");
+    this.Api = ((LinearLayout)paramBundle);
+    paramBundle = getActivity().findViewById(p.e.Cag);
+    kotlin.g.b.s.s(paramBundle, "activity.findViewById(R.id.recent_play_rl_view)");
+    this.mkw = ((RecyclerView)paramBundle);
+    paramBundle = this.mkw;
+    if (paramBundle == null)
+    {
+      kotlin.g.b.s.bIx("recyclerView");
+      paramBundle = null;
+      getContext();
+      paramBundle.setLayoutManager((RecyclerView.LayoutManager)new GridLayoutManager(4));
+      paramBundle = this.mkw;
+      if (paramBundle != null) {
+        break label257;
+      }
+      kotlin.g.b.s.bIx("recyclerView");
+      paramBundle = null;
+      label114:
+      paramBundle.setAdapter((RecyclerView.a)this.DXZ);
+      this.DXZ.DPH = ((kotlin.g.a.b)new b(this));
+      paramBundle = this.mkw;
+      if (paramBundle != null) {
+        break label260;
+      }
+      kotlin.g.b.s.bIx("recyclerView");
+      paramBundle = null;
+      label159:
+      paramBundle.a((RecyclerView.h)new c(this));
+      paramBundle = this.mkw;
+      if (paramBundle != null) {
+        break label263;
+      }
+      kotlin.g.b.s.bIx("recyclerView");
+      paramBundle = localObject;
     }
-    getContext();
-    paramBundle.setLayoutManager((RecyclerView.LayoutManager)new GridLayoutManager(4));
-    paramBundle = this.jLl;
-    if (paramBundle == null) {
-      p.bGy("recyclerView");
+    label257:
+    label260:
+    label263:
+    for (;;)
+    {
+      com.tencent.mm.view.f.a(paramBundle, (e.a)new d());
+      this.DXX = new cc("", "", (byte)0);
+      com.tencent.mm.kernel.h.aZW().a((p)this.DXX, 0);
+      com.tencent.mm.kernel.h.aZW().a(4140, (com.tencent.mm.am.h)this);
+      AppMethodBeat.o(356217);
+      return;
+      break;
+      break label114;
+      break label159;
     }
-    paramBundle.setAdapter((RecyclerView.a)this.zbT);
-    this.zbT.yVM = ((kotlin.g.a.b)new b(this));
-    paramBundle = this.jLl;
-    if (paramBundle == null) {
-      p.bGy("recyclerView");
-    }
-    paramBundle.b((RecyclerView.h)new c(this));
-    paramBundle = this.jLl;
-    if (paramBundle == null) {
-      p.bGy("recyclerView");
-    }
-    com.tencent.mm.view.f.a(paramBundle, (e.a)new d());
-    this.zbR = new bf("", "", (byte)0);
-    h.aGY().b((com.tencent.mm.an.q)this.zbR);
-    h.aGY().a(4140, (i)this);
-    AppMethodBeat.o(269151);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(269152);
-    h.aGY().b(4140, (i)this);
+    AppMethodBeat.i(356227);
+    com.tencent.mm.kernel.h.aZW().b(4140, (com.tencent.mm.am.h)this);
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if ((paramq instanceof bf)) {
-        break label120;
+      if (!(paramp instanceof cc)) {
+        break label112;
       }
     }
-    label120:
-    for (paramString = null;; paramString = paramq)
+    label112:
+    for (paramString = (cc)paramp;; paramString = null)
     {
-      paramString = (bf)paramString;
       if (paramString != null)
       {
-        paramString = paramString.xcM;
+        paramString = paramString.ACd;
         if (paramString != null) {
-          this.zbS.addAll((Collection)paramString.SNN);
+          this.DXY.addAll((Collection)paramString.ZVd);
         }
       }
-      Log.i("Finder.FinderGameLiveRecentPlayUIC", "recentPlayList.size:" + this.zbS.size());
+      Log.i("Finder.FinderGameLiveRecentPlayUIC", kotlin.g.b.s.X("recentPlayList.size:", Integer.valueOf(this.DXY.size())));
       d.uiThread((a)new e(this));
-      AppMethodBeat.o(269152);
+      AppMethodBeat.o(356227);
       return;
     }
   }
   
   public final void show()
   {
-    AppMethodBeat.i(269153);
-    if (this.zbT.getItemCount() > 0)
+    AppMethodBeat.i(356234);
+    if (this.DXZ.getItemCount() > 0)
     {
-      LinearLayout localLinearLayout = this.wSF;
-      if (localLinearLayout == null) {
-        p.bGy("container");
+      LinearLayout localLinearLayout2 = this.Api;
+      LinearLayout localLinearLayout1 = localLinearLayout2;
+      if (localLinearLayout2 == null)
+      {
+        kotlin.g.b.s.bIx("container");
+        localLinearLayout1 = null;
       }
-      localLinearLayout.setVisibility(0);
+      localLinearLayout1.setVisibility(0);
     }
-    AppMethodBeat.o(269153);
+    AppMethodBeat.o(356234);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveRecentPlayUIC$Companion;", "", "()V", "MAX_COUNT", "", "SPAN_COUNT", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/live/view/convert/GameSearchItem;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/live/view/convert/GameSearchItem;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<com.tencent.mm.plugin.finder.live.view.convert.b, x>
+    extends u
+    implements kotlin.g.a.b<com.tencent.mm.plugin.finder.live.view.convert.b, ah>
   {
     b(f paramf)
     {
@@ -167,99 +185,122 @@ public final class f
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveRecentPlayUIC$initView$2", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveRecentPlayUIC$initView$2", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     extends RecyclerView.h
   {
+    c(f paramf) {}
+    
     public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
     {
-      AppMethodBeat.i(285665);
-      p.k(paramRect, "outRect");
-      p.k(paramView, "view");
-      p.k(paramRecyclerView, "parent");
-      p.k(params, "state");
-      if (RecyclerView.bh(paramView) < 4) {}
-      for (paramRect.top = f.a(this.zbV);; paramRect.top = f.b(this.zbV))
+      AppMethodBeat.i(356132);
+      kotlin.g.b.s.u(paramRect, "outRect");
+      kotlin.g.b.s.u(paramView, "view");
+      kotlin.g.b.s.u(paramRecyclerView, "parent");
+      kotlin.g.b.s.u(params, "state");
+      if (RecyclerView.bA(paramView) < 4) {}
+      for (paramRect.top = f.a(this.DYa);; paramRect.top = f.b(this.DYa))
       {
         paramView = paramView.getLayoutParams();
         if (paramView != null) {
           break;
         }
-        paramRect = new kotlin.t("null cannot be cast to non-null type androidx.recyclerview.widget.GridLayoutManager.LayoutParams");
-        AppMethodBeat.o(285665);
+        paramRect = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.GridLayoutManager.LayoutParams");
+        AppMethodBeat.o(356132);
         throw paramRect;
       }
       paramView = (GridLayoutManager.LayoutParams)paramView;
-      paramRect.left = ((int)(f.c(this.zbV) * paramView.kv() / 4.0F));
-      float f = f.c(this.zbV);
-      paramRect.right = ((int)((3.0F - paramView.kv()) * f / 4.0F));
-      AppMethodBeat.o(285665);
+      paramRect.left = ((int)(f.c(this.DYa) * paramView.bWs / 4.0F));
+      float f = f.c(this.DYa);
+      paramRect.right = ((int)((3.0F - paramView.bWs) * f / 4.0F));
+      AppMethodBeat.o(356132);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveRecentPlayUIC$initView$3", "Lcom/tencent/mm/view/ExposeElves$OnRecyclerViewChildExposedListener;", "exposedSet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "getExposedSet", "()Ljava/util/HashSet;", "ignoreFlingExposed", "", "onChildExposeChanged", "", "parent", "Landroid/view/View;", "exposedHolders", "", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/viewmodel/FinderGameLiveRecentPlayUIC$initView$3", "Lcom/tencent/mm/view/ExposeElves$OnRecyclerViewChildExposedListener;", "exposedSet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "getExposedSet", "()Ljava/util/HashSet;", "ignoreFlingExposed", "", "onChildExposeChanged", "", "parent", "Landroid/view/View;", "exposedHolders", "", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
     extends e.a
   {
-    private final HashSet<String> xlV;
+    private final HashSet<String> AKl;
     
     d()
     {
-      AppMethodBeat.i(275283);
-      this.xlV = new HashSet();
-      AppMethodBeat.o(275283);
+      AppMethodBeat.i(356128);
+      this.AKl = new HashSet();
+      AppMethodBeat.o(356128);
     }
     
     public final void b(View paramView, List<? extends RecyclerView.v> paramList)
     {
-      AppMethodBeat.i(275281);
-      p.k(paramView, "parent");
-      p.k(paramList, "exposedHolders");
-      Iterator localIterator = ((Iterable)paramList).iterator();
-      while (localIterator.hasNext())
+      AppMethodBeat.i(356138);
+      kotlin.g.b.s.u(paramView, "parent");
+      kotlin.g.b.s.u(paramList, "exposedHolders");
+      paramList = ((Iterable)paramList).iterator();
+      label154:
+      label156:
+      label159:
+      label161:
+      label167:
+      while (paramList.hasNext())
       {
-        paramList = (RecyclerView.v)localIterator.next();
-        paramView = paramList;
-        if (!(paramList instanceof b.a)) {
-          paramView = null;
-        }
-        paramView = (b.a)paramView;
-        if (paramView != null)
+        paramView = (RecyclerView.v)paramList.next();
+        label58:
+        Object localObject;
+        int i;
+        if ((paramView instanceof b.a))
         {
-          paramView = paramView.yVO;
-          if (paramView != null)
-          {
-            paramList = paramView.zaE.SYP;
-            if ((paramList != null) && (paramList.SYi == 1))
-            {
-              paramView = paramView.zaE.SYP;
-              if (paramView != null)
-              {
-                paramView = paramView.appid;
-                if ((paramView != null) && (!this.xlV.contains(paramView)))
-                {
-                  this.xlV.add(paramView);
-                  paramList = o.ADA;
-                  o.bd(4, paramView);
-                }
-              }
-            }
+          paramView = (b.a)paramView;
+          if (paramView == null) {
+            break label154;
+          }
+          paramView = paramView.DPJ;
+          if (paramView == null) {
+            continue;
+          }
+          localObject = paramView.DUE.aall;
+          if ((localObject == null) || (((cbx)localObject).aakj != 1)) {
+            break label156;
+          }
+          i = 1;
+          label96:
+          if (i == 0) {
+            break label159;
+          }
+          paramView = paramView.DUE.aall;
+          if (paramView != null) {
+            break label161;
           }
         }
+        for (paramView = null;; paramView = paramView.appid)
+        {
+          if ((paramView == null) || (this.AKl.contains(paramView))) {
+            break label167;
+          }
+          this.AKl.add(paramView);
+          localObject = com.tencent.mm.plugin.finder.utils.s.GgL;
+          com.tencent.mm.plugin.finder.utils.s.bG(4, paramView);
+          break;
+          paramView = null;
+          break label58;
+          break;
+          i = 0;
+          break label96;
+          break;
+        }
       }
-      AppMethodBeat.o(275281);
+      AppMethodBeat.o(356138);
     }
     
-    public final boolean dpC()
+    public final boolean dXG()
     {
       return true;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends kotlin.g.b.q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     e(f paramf)
     {
@@ -269,7 +310,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.viewmodel.f
  * JD-Core Version:    0.7.0.1
  */

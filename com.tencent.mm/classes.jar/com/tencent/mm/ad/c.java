@@ -4,23 +4,19 @@ import java.util.Iterator;
 
 public abstract interface c
 {
-  public abstract a MA(String paramString);
+  public abstract String Fi(String paramString);
   
-  public abstract a MB(String paramString);
+  public abstract a Fj(String paramString);
   
-  public abstract c MC(String paramString);
+  public abstract a Fk(String paramString);
   
-  public abstract c MD(String paramString);
+  public abstract c Fl(String paramString);
   
-  public abstract String Mz(String paramString);
+  public abstract c Fm(String paramString);
   
-  public abstract c ak(String paramString, int paramInt);
+  public abstract c at(String paramString, int paramInt);
   
   public abstract c c(String paramString, double paramDouble);
-  
-  public abstract c e(String paramString, Object paramObject);
-  
-  public abstract c f(String paramString, Object paramObject);
   
   public abstract Object get(String paramString);
   
@@ -38,7 +34,11 @@ public abstract interface c
   
   public abstract boolean isNull(String paramString);
   
+  public abstract c k(String paramString, Object paramObject);
+  
   public abstract Iterator<String> keys();
+  
+  public abstract c l(String paramString, Object paramObject);
   
   public abstract int length();
   
@@ -56,15 +56,15 @@ public abstract interface c
   
   public abstract String optString(String paramString1, String paramString2);
   
-  public abstract c r(String paramString, long paramLong);
-  
   public abstract Object remove(String paramString);
   
-  public abstract c x(String paramString, boolean paramBoolean);
+  public abstract c s(String paramString, long paramLong);
+  
+  public abstract c z(String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.ad.c
  * JD-Core Version:    0.7.0.1
  */

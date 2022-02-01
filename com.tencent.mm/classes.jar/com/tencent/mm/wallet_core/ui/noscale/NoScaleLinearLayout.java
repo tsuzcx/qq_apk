@@ -20,15 +20,15 @@ public class NoScaleLinearLayout
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(265861);
+    AppMethodBeat.i(242203);
     super.onFinishInflate();
-    a.jg(this);
-    AppMethodBeat.o(265861);
+    a.mK(this);
+    AppMethodBeat.o(242203);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.noscale.NoScaleLinearLayout
  * JD-Core Version:    0.7.0.1
  */

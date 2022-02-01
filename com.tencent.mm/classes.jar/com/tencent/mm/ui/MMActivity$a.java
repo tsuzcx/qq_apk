@@ -4,7 +4,7 @@ import android.content.Intent;
 
 public abstract interface MMActivity$a
 {
-  public abstract void d(int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract void mmOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 

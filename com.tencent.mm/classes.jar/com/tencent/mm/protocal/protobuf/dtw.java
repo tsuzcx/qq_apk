@@ -3,95 +3,91 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dtw
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String Uaa;
-  public String Uab;
-  public int Uac;
-  public int Uad = 0;
-  public String Uae;
+  public int IIs;
+  public String IMg;
+  public String IMh;
+  public int Njs;
+  public long Njv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117895);
+    AppMethodBeat.i(43113);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Uaa != null) {
-        paramVarArgs.f(1, this.Uaa);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.IMh != null) {
+        paramVarArgs.g(1, this.IMh);
       }
-      if (this.Uab != null) {
-        paramVarArgs.f(2, this.Uab);
+      if (this.IMg != null) {
+        paramVarArgs.g(2, this.IMg);
       }
-      paramVarArgs.aY(3, this.Uac);
-      paramVarArgs.aY(4, this.Uad);
-      if (this.Uae != null) {
-        paramVarArgs.f(5, this.Uae);
-      }
-      AppMethodBeat.o(117895);
+      paramVarArgs.bS(3, this.Njs);
+      paramVarArgs.bS(4, this.IIs);
+      paramVarArgs.bv(5, this.Njv);
+      AppMethodBeat.o(43113);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Uaa == null) {
-        break label422;
+      if (this.IMh == null) {
+        break label406;
       }
     }
-    label422:
-    for (paramInt = g.a.a.b.b.a.g(1, this.Uaa) + 0;; paramInt = 0)
+    label406:
+    for (paramInt = i.a.a.b.b.a.h(1, this.IMh) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Uab != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.Uab);
+      if (this.IMg != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.IMg);
       }
-      i = i + g.a.a.b.b.a.bM(3, this.Uac) + g.a.a.b.b.a.bM(4, this.Uad);
-      paramInt = i;
-      if (this.Uae != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.Uae);
-      }
-      AppMethodBeat.o(117895);
-      return paramInt;
+      paramInt = i.a.a.b.b.a.cJ(3, this.Njs);
+      int j = i.a.a.b.b.a.cJ(4, this.IIs);
+      int k = i.a.a.b.b.a.q(5, this.Njv);
+      AppMethodBeat.o(43113);
+      return i + paramInt + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(117895);
+        AppMethodBeat.o(43113);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dtw localdtw = (dtw)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(117895);
+          AppMethodBeat.o(43113);
           return -1;
         case 1: 
-          localdtw.Uaa = locala.abFh.readString();
-          AppMethodBeat.o(117895);
+          localdtw.IMh = locala.ajGk.readString();
+          AppMethodBeat.o(43113);
           return 0;
         case 2: 
-          localdtw.Uab = locala.abFh.readString();
-          AppMethodBeat.o(117895);
+          localdtw.IMg = locala.ajGk.readString();
+          AppMethodBeat.o(43113);
           return 0;
         case 3: 
-          localdtw.Uac = locala.abFh.AK();
-          AppMethodBeat.o(117895);
+          localdtw.Njs = locala.ajGk.aar();
+          AppMethodBeat.o(43113);
           return 0;
         case 4: 
-          localdtw.Uad = locala.abFh.AK();
-          AppMethodBeat.o(117895);
+          localdtw.IIs = locala.ajGk.aar();
+          AppMethodBeat.o(43113);
           return 0;
         }
-        localdtw.Uae = locala.abFh.readString();
-        AppMethodBeat.o(117895);
+        localdtw.Njv = locala.ajGk.aaw();
+        AppMethodBeat.o(43113);
         return 0;
       }
-      AppMethodBeat.o(117895);
+      AppMethodBeat.o(43113);
       return -1;
     }
   }

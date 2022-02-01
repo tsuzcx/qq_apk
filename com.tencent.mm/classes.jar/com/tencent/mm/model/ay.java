@@ -7,9 +7,9 @@ import android.graphics.Bitmap;
 public abstract interface ay
   extends ba
 {
-  public abstract void JP(String paramString);
+  public abstract void Cv(String paramString);
   
-  public abstract void U(String paramString, int paramInt);
+  public abstract int Cw(String paramString);
   
   public abstract int a(Notification paramNotification, boolean paramBoolean);
   
@@ -21,13 +21,15 @@ public abstract interface ay
   
   public abstract void a(int paramInt, Notification paramNotification, boolean paramBoolean);
   
-  public abstract void abF();
+  public abstract void aDA();
   
-  public abstract String aqX();
+  public abstract String aKU();
   
-  public abstract void aqY();
+  public abstract void aKV();
   
-  public abstract void aqZ();
+  public abstract void aKW();
+  
+  public abstract void ad(String paramString, int paramInt);
   
   public abstract int c(Notification paramNotification);
   
@@ -35,13 +37,15 @@ public abstract interface ay
   
   public abstract void cancel(int paramInt);
   
-  public abstract void dH(boolean paramBoolean);
+  public abstract int d(Notification paramNotification);
   
-  public abstract void dI(boolean paramBoolean);
+  public abstract void et(boolean paramBoolean);
   
-  public abstract void dJ(boolean paramBoolean);
+  public abstract void eu(boolean paramBoolean);
   
-  public abstract void hg(String paramString);
+  public abstract void ev(boolean paramBoolean);
+  
+  public abstract void iH(String paramString);
   
   public abstract void qg(int paramInt);
   

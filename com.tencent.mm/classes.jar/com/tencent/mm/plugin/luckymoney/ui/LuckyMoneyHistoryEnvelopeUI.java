@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -8,102 +7,124 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager.b;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.s;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c.a;
-import com.tencent.mm.plugin.luckymoney.model.d;
-import com.tencent.mm.plugin.luckymoney.model.k;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.luckymoney.model.e;
+import com.tencent.mm.plugin.luckymoney.model.l;
 import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.plugin.wxpay.a.j;
-import com.tencent.mm.protocal.protobuf.adn;
-import com.tencent.mm.protocal.protobuf.cda;
-import com.tencent.mm.protocal.protobuf.cjf;
+import com.tencent.mm.protocal.protobuf.afv;
+import com.tencent.mm.protocal.protobuf.csm;
+import com.tencent.mm.protocal.protobuf.czi;
+import com.tencent.mm.protocal.protobuf.czj;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
+import com.tencent.mm.view.RefreshLoadMoreLayout.b;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
-import com.tencent.mm.view.recyclerview.e;
 import com.tencent.mm.view.recyclerview.f;
-import com.tencent.mm.view.recyclerview.h.c;
-import com.tencent.mm.view.recyclerview.h.d;
-import com.tencent.mm.view.recyclerview.i;
-import com.tencent.mm.wallet_core.c.a.a;
+import com.tencent.mm.view.recyclerview.g;
+import com.tencent.mm.view.recyclerview.i.c;
+import com.tencent.mm.view.recyclerview.i.d;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LuckyMoneyHistoryEnvelopeUI
   extends MMActivity
 {
-  private final float EEc;
-  private boolean EGI;
-  private WxRecyclerAdapter EIs;
-  private int EJc;
-  private int EJd;
-  private int EJe;
-  private int EJf;
-  private FrameLayout EJg;
-  private RecyclerView EJh;
-  private ArrayList<com.tencent.mm.view.recyclerview.a> EJi;
-  private List<String> EJj;
-  private String EJk;
-  private String EJl;
-  private RefreshLoadMoreLayout tCU;
-  private int uAu;
+  private WxRecyclerAdapter KBO;
+  private final float KCB;
+  private final float KCC;
+  private int KCD;
+  private int KCE;
+  private int KCF;
+  private int KCG;
+  private int KCH;
+  private int KCI;
+  private int KCJ;
+  private int KCK;
+  private int KCL;
+  private int KCM;
+  private FrameLayout KCN;
+  private RecyclerView KCO;
+  private ArrayList<com.tencent.mm.view.recyclerview.a> KCP;
+  private List<String> KCQ;
+  private String KCR;
+  private String KCS;
+  private final float Kxg;
+  private boolean KzR;
+  private int uAa;
+  private RefreshLoadMoreLayout wGX;
+  private int xGX;
   
   public LuckyMoneyHistoryEnvelopeUI()
   {
-    AppMethodBeat.i(222326);
-    this.EEc = 1.656F;
-    this.EJi = new ArrayList();
-    this.EJj = new ArrayList();
-    this.EGI = true;
-    this.EJl = "";
-    AppMethodBeat.o(222326);
+    AppMethodBeat.i(284139);
+    this.KCB = 1.9844F;
+    this.KCC = 1.72F;
+    this.Kxg = 1.656F;
+    this.KCP = new ArrayList();
+    this.KCQ = new ArrayList();
+    this.KzR = true;
+    this.KCS = "";
+    AppMethodBeat.o(284139);
   }
   
-  private void tP(boolean paramBoolean)
+  private void yd(boolean paramBoolean)
   {
-    AppMethodBeat.i(222365);
-    Log.i("MicroMsg.LuckyMoneyHistoryEnvelopeUI", "do get show source: %s", new Object[] { Boolean.valueOf(this.EGI) });
-    if (!this.EGI)
+    AppMethodBeat.i(284141);
+    Log.i("MicroMsg.LuckyMoneyHistoryEnvelopeUI", "do get show source: %s", new Object[] { Boolean.valueOf(this.KzR) });
+    if (!this.KzR)
     {
-      this.tCU.azs(0);
-      AppMethodBeat.o(222365);
+      this.wGX.aFW(0);
+      AppMethodBeat.o(284141);
       return;
     }
-    final k localk = k.eOu();
-    final s locals = null;
+    final l locall = l.fWR();
+    final w localw = null;
     if (!paramBoolean) {
-      locals = com.tencent.mm.ui.base.h.a(getContext(), 3, a.j.LuckyMoneyNoAnimDialog, getString(a.i.loading_tips), true, new DialogInterface.OnCancelListener()
+      localw = k.a(getContext(), 3, a.j.LuckyMoneyNoAnimDialog, getString(a.i.loading_tips), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(208794);
-          localk.cancel();
-          AppMethodBeat.o(208794);
+          AppMethodBeat.i(284521);
+          locall.cancel();
+          AppMethodBeat.o(284521);
         }
       });
     }
-    localk.d(new d(this.EJl, 2));
-    localk.a(new a.a() {}, 0L);
-    AppMethodBeat.o(222365);
+    locall.d(new e(this.KCS, 2));
+    locall.a(new com.tencent.mm.wallet_core.model.a.a() {}, 0L);
+    AppMethodBeat.o(284141);
   }
   
   public int getLayoutId()
@@ -113,124 +134,191 @@ public class LuckyMoneyHistoryEnvelopeUI
   
   public void initView()
   {
-    AppMethodBeat.i(222353);
-    this.EJg = ((FrameLayout)findViewById(a.f.lucky_money_history_rootview));
-    this.tCU = ((RefreshLoadMoreLayout)findViewById(a.f.lmhu_refresh_layout));
-    this.EJh = ((RecyclerView)findViewById(a.f.lmhu_rv));
-    this.tCU.setEnableRefresh(false);
-    this.tCU.setActionCallback(new LuckyMoneyHistoryEnvelopeUI.8(this));
-    getContext();
-    GridLayoutManager localGridLayoutManager = new GridLayoutManager(2);
-    localGridLayoutManager.ahK = new LuckyMoneyHistoryEnvelopeUI.9(this, localGridLayoutManager);
-    this.EJh.setLayoutManager(localGridLayoutManager);
-    this.EIs = new WxRecyclerAdapter(new f()
+    AppMethodBeat.i(284248);
+    this.KCN = ((FrameLayout)findViewById(a.f.lucky_money_history_rootview));
+    this.wGX = ((RefreshLoadMoreLayout)findViewById(a.f.lmhu_refresh_layout));
+    this.KCO = ((RecyclerView)findViewById(a.f.lmhu_rv));
+    this.wGX.setEnableRefresh(false);
+    this.wGX.setActionCallback(new RefreshLoadMoreLayout.b()
     {
-      public final e<?> yx(int paramAnonymousInt)
+      public final void a(RefreshLoadMoreLayout.d<Object> paramAnonymousd)
       {
-        AppMethodBeat.i(274217);
+        AppMethodBeat.i(284489);
+        if (!LuckyMoneyHistoryEnvelopeUI.b(LuckyMoneyHistoryEnvelopeUI.this)) {
+          LuckyMoneyHistoryEnvelopeUI.c(LuckyMoneyHistoryEnvelopeUI.this).m(null);
+        }
+        AppMethodBeat.o(284489);
+      }
+      
+      public final void qI(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(284485);
+        Log.d("MicroMsg.LuckyMoneyHistoryEnvelopeUI", "trigger load more");
+        super.qI(paramAnonymousInt);
+        LuckyMoneyHistoryEnvelopeUI.this.runOnUiThread(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(284195);
+            LuckyMoneyHistoryEnvelopeUI.a(LuckyMoneyHistoryEnvelopeUI.this);
+            AppMethodBeat.o(284195);
+          }
+        });
+        AppMethodBeat.o(284485);
+      }
+    });
+    getContext();
+    final GridLayoutManager localGridLayoutManager = new GridLayoutManager(2);
+    localGridLayoutManager.bWq = new GridLayoutManager.b()
+    {
+      public final int fJ(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(284200);
+        if (LuckyMoneyHistoryEnvelopeUI.d(LuckyMoneyHistoryEnvelopeUI.this).getItemViewType(paramAnonymousInt) == 2)
+        {
+          paramAnonymousInt = localGridLayoutManager.bWl;
+          AppMethodBeat.o(284200);
+          return paramAnonymousInt;
+        }
+        AppMethodBeat.o(284200);
+        return 1;
+      }
+    };
+    this.KCO.setLayoutManager(localGridLayoutManager);
+    this.KBO = new WxRecyclerAdapter(new g()
+    {
+      public final f<?> yF(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(284197);
         if (paramAnonymousInt == 1)
         {
           localObject = new LuckyMoneyHistoryEnvelopeUI.b(LuckyMoneyHistoryEnvelopeUI.this);
-          AppMethodBeat.o(274217);
+          AppMethodBeat.o(284197);
           return localObject;
         }
         Object localObject = new LuckyMoneyHistoryEnvelopeUI.d(LuckyMoneyHistoryEnvelopeUI.this);
-        AppMethodBeat.o(274217);
+        AppMethodBeat.o(284197);
         return localObject;
       }
-    }, this.EJi, false);
-    this.EIs.YSn = new h.c()
+    }, this.KCP, false);
+    this.KBO.agOe = new i.c()
     {
       public final void a(RecyclerView.a paramAnonymousa, View paramAnonymousView, int paramAnonymousInt, RecyclerView.v paramAnonymousv)
       {
-        AppMethodBeat.i(186685);
+        AppMethodBeat.i(284208);
         Log.i("MicroMsg.LuckyMoneyHistoryEnvelopeUI", "click envelope: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        paramAnonymousa = (com.tencent.mm.view.recyclerview.a)((i)paramAnonymousv).YSz;
+        paramAnonymousa = (com.tencent.mm.view.recyclerview.a)((j)paramAnonymousv).CSA;
         if ((paramAnonymousa instanceof LuckyMoneyHistoryEnvelopeUI.a)) {
-          LuckyMoneyHistoryEnvelopeUI.a(LuckyMoneyHistoryEnvelopeUI.this, ((LuckyMoneyHistoryEnvelopeUI.a)paramAnonymousa).ECc);
+          LuckyMoneyHistoryEnvelopeUI.a(LuckyMoneyHistoryEnvelopeUI.this, ((LuckyMoneyHistoryEnvelopeUI.a)paramAnonymousa).Kvd);
         }
-        AppMethodBeat.o(186685);
+        AppMethodBeat.o(284208);
       }
     };
-    this.EIs.YSm = new h.d()
+    this.KBO.agOd = new i.d()
     {
       public final boolean b(RecyclerView.a paramAnonymousa, View paramAnonymousView, int paramAnonymousInt, RecyclerView.v paramAnonymousv)
       {
-        AppMethodBeat.i(273684);
+        AppMethodBeat.i(284210);
         Log.i("MicroMsg.LuckyMoneyHistoryEnvelopeUI", "long click envelope: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        paramAnonymousa = (com.tencent.mm.view.recyclerview.a)((i)paramAnonymousv).YSz;
+        paramAnonymousa = (com.tencent.mm.view.recyclerview.a)((j)paramAnonymousv).CSA;
         if ((paramAnonymousa instanceof LuckyMoneyHistoryEnvelopeUI.a)) {
-          LuckyMoneyHistoryEnvelopeUI.b(LuckyMoneyHistoryEnvelopeUI.this, ((LuckyMoneyHistoryEnvelopeUI.a)paramAnonymousa).ECc);
+          LuckyMoneyHistoryEnvelopeUI.b(LuckyMoneyHistoryEnvelopeUI.this, ((LuckyMoneyHistoryEnvelopeUI.a)paramAnonymousa).Kvd);
         }
-        AppMethodBeat.o(273684);
+        AppMethodBeat.o(284210);
         return false;
       }
     };
-    this.EJh.setAdapter(this.EIs);
-    this.EJh.a(new RecyclerView.h()
+    this.KCO.setAdapter(this.KBO);
+    this.KCO.a(new RecyclerView.h()
     {
-      private final int EJs;
+      private final int agq;
       
       public final void a(Rect paramAnonymousRect, View paramAnonymousView, RecyclerView paramAnonymousRecyclerView, RecyclerView.s paramAnonymouss)
       {
-        AppMethodBeat.i(271113);
+        AppMethodBeat.i(284220);
         int i = (int)Math.ceil(LuckyMoneyHistoryEnvelopeUI.e(LuckyMoneyHistoryEnvelopeUI.this).size() / 2.0F);
-        int j = RecyclerView.bh(paramAnonymousView);
+        int j = RecyclerView.bA(paramAnonymousView);
         int k = (int)Math.ceil((j + 1) / 2.0F);
         if (k == 0)
         {
-          paramAnonymousRect.top = (this.EJs * 2);
-          paramAnonymousRect.bottom = (this.EJs * 2);
+          paramAnonymousRect.top = (this.agq * 2);
+          paramAnonymousRect.bottom = (this.agq * 2);
         }
         while (j % 2 == 0)
         {
-          paramAnonymousRect.left = (this.EJs * 2);
-          paramAnonymousRect.right = this.EJs;
-          AppMethodBeat.o(271113);
+          paramAnonymousRect.left = (this.agq * 2);
+          paramAnonymousRect.right = this.agq;
+          AppMethodBeat.o(284220);
           return;
           if (k == i)
           {
-            paramAnonymousRect.top = this.EJs;
-            paramAnonymousRect.bottom = (this.EJs * 2);
+            paramAnonymousRect.top = this.agq;
+            paramAnonymousRect.bottom = (this.agq * 2);
           }
           else
           {
-            paramAnonymousRect.top = this.EJs;
-            paramAnonymousRect.bottom = this.EJs;
+            paramAnonymousRect.top = this.agq;
+            paramAnonymousRect.bottom = this.agq;
           }
         }
-        paramAnonymousRect.left = this.EJs;
-        paramAnonymousRect.right = (this.EJs * 2);
-        AppMethodBeat.o(271113);
+        paramAnonymousRect.left = this.agq;
+        paramAnonymousRect.right = (this.agq * 2);
+        AppMethodBeat.o(284220);
       }
     });
-    AppMethodBeat.o(222353);
+    AppMethodBeat.o(284248);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(222336);
+    AppMethodBeat.i(284240);
     super.onCreate(paramBundle);
     setActionbarColor(getResources().getColor(a.c.BW_97));
     hideActionbarLine();
     setMMTitle(getString(a.i.lucky_money_envelope_history_entrance_text));
-    setBackBtn(new LuckyMoneyHistoryEnvelopeUI.1(this));
-    this.EJk = LocaleUtil.loadApplicationLanguage(MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), MMApplicationContext.getContext());
-    this.uAu = ((com.tencent.mm.ci.a.kr(getContext()) - com.tencent.mm.wallet_core.ui.noscale.a.azO(8) * 3) / 2);
-    this.EJc = (this.uAu - com.tencent.mm.wallet_core.ui.noscale.a.azO(8) * 2);
-    this.EJd = ((int)(this.EJc * 1.656F));
-    this.EJe = ((int)(this.EJc * 1.38F));
-    this.EJf = ((int)(this.EJc / 2.9F));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(284460);
+        LuckyMoneyHistoryEnvelopeUI.this.finish();
+        AppMethodBeat.o(284460);
+        return false;
+      }
+    });
+    this.KCR = LocaleUtil.loadApplicationLanguage(MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), MMApplicationContext.getContext());
+    getWindow().getDecorView().post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(284493);
+        Rect localRect = new Rect();
+        LuckyMoneyHistoryEnvelopeUI.this.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+        LuckyMoneyHistoryEnvelopeUI.a(LuckyMoneyHistoryEnvelopeUI.this, (localRect.width() - com.tencent.mm.wallet_core.ui.noscale.a.aGE(8) * 3) / 2);
+        LuckyMoneyHistoryEnvelopeUI.b(LuckyMoneyHistoryEnvelopeUI.this, (int)(LuckyMoneyHistoryEnvelopeUI.g(LuckyMoneyHistoryEnvelopeUI.this) * 1.9844F));
+        LuckyMoneyHistoryEnvelopeUI.c(LuckyMoneyHistoryEnvelopeUI.this, LuckyMoneyHistoryEnvelopeUI.g(LuckyMoneyHistoryEnvelopeUI.this) - com.tencent.mm.wallet_core.ui.noscale.a.aGE(8) * 2);
+        LuckyMoneyHistoryEnvelopeUI.d(LuckyMoneyHistoryEnvelopeUI.this, (int)(LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this) * 1.656F));
+        LuckyMoneyHistoryEnvelopeUI.e(LuckyMoneyHistoryEnvelopeUI.this, (int)(LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this) * 1.38F));
+        LuckyMoneyHistoryEnvelopeUI.f(LuckyMoneyHistoryEnvelopeUI.this, (int)(LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this) / 2.9F));
+        LuckyMoneyHistoryEnvelopeUI.g(LuckyMoneyHistoryEnvelopeUI.this, (int)(LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this) / 1.1F));
+        LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this, (int)(LuckyMoneyHistoryEnvelopeUI.i(LuckyMoneyHistoryEnvelopeUI.this) * 1.656F));
+        LuckyMoneyHistoryEnvelopeUI.i(LuckyMoneyHistoryEnvelopeUI.this, (int)(LuckyMoneyHistoryEnvelopeUI.i(LuckyMoneyHistoryEnvelopeUI.this) * 1.38F));
+        LuckyMoneyHistoryEnvelopeUI.j(LuckyMoneyHistoryEnvelopeUI.this, (int)(LuckyMoneyHistoryEnvelopeUI.i(LuckyMoneyHistoryEnvelopeUI.this) / 2.9F));
+        LuckyMoneyHistoryEnvelopeUI.k(LuckyMoneyHistoryEnvelopeUI.this, LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this));
+        LuckyMoneyHistoryEnvelopeUI.l(LuckyMoneyHistoryEnvelopeUI.this, (int)(LuckyMoneyHistoryEnvelopeUI.j(LuckyMoneyHistoryEnvelopeUI.this) * 1.72F));
+        AppMethodBeat.o(284493);
+      }
+    });
     initView();
-    tP(false);
-    AppMethodBeat.o(222336);
+    yd(false);
+    AppMethodBeat.o(284240);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(222355);
+    AppMethodBeat.i(284253);
     super.onDestroy();
-    AppMethodBeat.o(222355);
+    AppMethodBeat.o(284253);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -242,72 +330,132 @@ public class LuckyMoneyHistoryEnvelopeUI
   final class a
     implements com.tencent.mm.view.recyclerview.a
   {
-    public cjf ECc;
+    public czi Kvd;
     
     a() {}
     
-    public final int bAQ()
+    public final long bZA()
     {
-      return 1;
+      AppMethodBeat.i(284340);
+      long l = this.Kvd.ZoK.hashCode();
+      AppMethodBeat.o(284340);
+      return l;
     }
     
-    public final long mf()
+    public final int bZB()
     {
-      AppMethodBeat.i(275964);
-      long l = this.ECc.SpP.hashCode();
-      AppMethodBeat.o(275964);
-      return l;
+      return 1;
     }
   }
   
   final class b
-    extends e<LuckyMoneyHistoryEnvelopeUI.a>
+    extends f<LuckyMoneyHistoryEnvelopeUI.a>
   {
     b() {}
     
-    public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+    private static boolean a(j paramj, czj paramczj)
     {
-      AppMethodBeat.i(269336);
-      paramRecyclerView = parami.amk.getLayoutParams();
-      paramRecyclerView.width = LuckyMoneyHistoryEnvelopeUI.g(LuckyMoneyHistoryEnvelopeUI.this);
-      parami.amk.setLayoutParams(paramRecyclerView);
-      paramInt = com.tencent.mm.wallet_core.ui.noscale.a.azO(8);
-      parami.amk.setPadding(paramInt, paramInt, paramInt, paramInt);
-      paramRecyclerView = parami.RD(a.f.lmpi_envelope_red_bg).getLayoutParams();
-      paramRecyclerView.width = LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this);
-      paramRecyclerView.height = LuckyMoneyHistoryEnvelopeUI.i(LuckyMoneyHistoryEnvelopeUI.this);
-      parami.RD(a.f.lmpi_envelope_red_bg).setLayoutParams(paramRecyclerView);
-      paramRecyclerView = parami.RD(a.f.lmpi_envelope_iv).getLayoutParams();
-      paramRecyclerView.width = LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this);
-      paramRecyclerView.height = LuckyMoneyHistoryEnvelopeUI.i(LuckyMoneyHistoryEnvelopeUI.this);
-      parami.RD(a.f.lmpi_envelope_iv).setLayoutParams(paramRecyclerView);
-      paramRecyclerView = parami.RD(a.f.lmpi_envelope_top_cap_iv).getLayoutParams();
-      paramRecyclerView.width = LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this);
-      paramRecyclerView.height = LuckyMoneyHistoryEnvelopeUI.j(LuckyMoneyHistoryEnvelopeUI.this);
-      parami.RD(a.f.lmpi_envelope_top_cap_iv).setLayoutParams(paramRecyclerView);
-      paramRecyclerView = parami.RD(a.f.lmpi_envelope_open_btn).getLayoutParams();
-      paramRecyclerView.width = LuckyMoneyHistoryEnvelopeUI.k(LuckyMoneyHistoryEnvelopeUI.this);
-      paramRecyclerView.height = LuckyMoneyHistoryEnvelopeUI.k(LuckyMoneyHistoryEnvelopeUI.this);
-      parami.RD(a.f.lmpi_envelope_open_btn).setLayoutParams(paramRecyclerView);
-      AppMethodBeat.o(269336);
+      AppMethodBeat.i(284338);
+      if ((paramj.UH(a.f.lmpi_envelope_widget_iv) != null) && (!Util.isNullOrNil(paramczj.aaEP)) && (!Util.isNullOrNil(paramczj.aaEQ)))
+      {
+        AppMethodBeat.o(284338);
+        return true;
+      }
+      AppMethodBeat.o(284338);
+      return false;
     }
     
-    final void a(i parami, cjf paramcjf, boolean paramBoolean)
+    public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
     {
-      AppMethodBeat.i(269337);
+      AppMethodBeat.i(284348);
+      paramRecyclerView = paramj.caK.getLayoutParams();
+      paramRecyclerView.width = LuckyMoneyHistoryEnvelopeUI.g(LuckyMoneyHistoryEnvelopeUI.this);
+      paramj.caK.setMinimumHeight(LuckyMoneyHistoryEnvelopeUI.k(LuckyMoneyHistoryEnvelopeUI.this));
+      paramj.caK.setLayoutParams(paramRecyclerView);
+      paramInt = com.tencent.mm.wallet_core.ui.noscale.a.aGE(8);
+      paramj.caK.setPadding(paramInt, paramInt, paramInt, paramInt);
+      paramRecyclerView = paramj.UH(a.f.lmpi_envelope_red_bg).getLayoutParams();
+      paramRecyclerView.width = LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this);
+      paramRecyclerView.height = LuckyMoneyHistoryEnvelopeUI.l(LuckyMoneyHistoryEnvelopeUI.this);
+      paramj.UH(a.f.lmpi_envelope_red_bg).setLayoutParams(paramRecyclerView);
+      paramRecyclerView = paramj.UH(a.f.lmpi_envelope_iv).getLayoutParams();
+      paramRecyclerView.width = LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this);
+      paramRecyclerView.height = LuckyMoneyHistoryEnvelopeUI.l(LuckyMoneyHistoryEnvelopeUI.this);
+      paramj.UH(a.f.lmpi_envelope_iv).setLayoutParams(paramRecyclerView);
+      paramRecyclerView = paramj.UH(a.f.lmpi_envelope_top_cap_iv).getLayoutParams();
+      paramRecyclerView.width = LuckyMoneyHistoryEnvelopeUI.h(LuckyMoneyHistoryEnvelopeUI.this);
+      paramRecyclerView.height = LuckyMoneyHistoryEnvelopeUI.m(LuckyMoneyHistoryEnvelopeUI.this);
+      paramj.UH(a.f.lmpi_envelope_top_cap_iv).setLayoutParams(paramRecyclerView);
+      paramRecyclerView = paramj.UH(a.f.lmpi_envelope_open_btn).getLayoutParams();
+      paramRecyclerView.width = LuckyMoneyHistoryEnvelopeUI.n(LuckyMoneyHistoryEnvelopeUI.this);
+      paramRecyclerView.height = LuckyMoneyHistoryEnvelopeUI.n(LuckyMoneyHistoryEnvelopeUI.this);
+      paramj.UH(a.f.lmpi_envelope_open_btn).setLayoutParams(paramRecyclerView);
+      AppMethodBeat.o(284348);
+    }
+    
+    final void a(final j paramj, czi paramczi, boolean paramBoolean)
+    {
+      AppMethodBeat.i(284350);
       if (paramBoolean)
       {
-        parami.RD(a.f.lmpi_loading_iv).setVisibility(8);
-        parami.RD(a.f.lmpi_anim_pb).setVisibility(0);
-        parami.RD(a.f.lmpi_retry_tv).setVisibility(8);
+        paramj.UH(a.f.lmpi_loading_iv).setVisibility(8);
+        paramj.UH(a.f.lmpi_anim_pb).setVisibility(0);
+        paramj.UH(a.f.lmpi_retry_tv).setVisibility(8);
       }
       for (;;)
       {
-        ((ImageView)parami.RD(a.f.lmpi_envelope_iv)).setImageBitmap(null);
-        ((com.tencent.mm.plugin.luckymoney.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.luckymoney.a.a.class)).a((ImageView)parami.RD(a.f.lmpi_envelope_iv), paramcjf, new LuckyMoneyHistoryEnvelopeUI.b.2(this, parami));
-        AppMethodBeat.o(269337);
+        ((ImageView)paramj.UH(a.f.lmpi_envelope_iv)).setImageBitmap(null);
+        ((com.tencent.mm.plugin.luckymoney.a.a)h.ax(com.tencent.mm.plugin.luckymoney.a.a.class)).a((ImageView)paramj.UH(a.f.lmpi_envelope_iv), paramczi, new com.tencent.mm.plugin.luckymoney.a.a.a()
+        {
+          public final void onComplete(final boolean paramAnonymousBoolean)
+          {
+            AppMethodBeat.i(284418);
+            Log.i("MicroMsg.LuckyMoneyHistoryEnvelopeUI", "load ok: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+            Runnable local1 = new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(284194);
+                LuckyMoneyHistoryEnvelopeUI.b.2.this.KxL.UH(a.f.lmpi_inline_cover_loading_pb).setVisibility(8);
+                if (!paramAnonymousBoolean)
+                {
+                  LuckyMoneyHistoryEnvelopeUI.b.2.this.KxL.UH(a.f.lmpi_white_cover_view).setVisibility(0);
+                  LuckyMoneyHistoryEnvelopeUI.b.2.this.KxL.UH(a.f.lmpi_loading_iv).setVisibility(0);
+                  LuckyMoneyHistoryEnvelopeUI.b.2.this.KxL.UH(a.f.lmpi_anim_pb).setVisibility(8);
+                  LuckyMoneyHistoryEnvelopeUI.b.2.this.KxL.UH(a.f.lmpi_retry_tv).setVisibility(0);
+                  AppMethodBeat.o(284194);
+                  return;
+                }
+                LuckyMoneyHistoryEnvelopeUI.b.2.this.KxL.UH(a.f.lmpi_white_cover_view).setVisibility(8);
+                AppMethodBeat.o(284194);
+              }
+            };
+            if (MMHandlerThread.isMainThread())
+            {
+              local1.run();
+              AppMethodBeat.o(284418);
+              return;
+            }
+            paramj.UH(a.f.lmpi_white_cover_view).post(local1);
+            AppMethodBeat.o(284418);
+          }
+        });
+        if (a(paramj, paramczi.aaEq))
+        {
+          paramj = (ImageView)paramj.UH(a.f.lmpi_envelope_widget_iv);
+          ((com.tencent.mm.plugin.luckymoney.a.a)h.ax(com.tencent.mm.plugin.luckymoney.a.a.class)).b(paramj, paramczi, new com.tencent.mm.plugin.luckymoney.a.a.a()
+          {
+            public final void onComplete(boolean paramAnonymousBoolean)
+            {
+              AppMethodBeat.i(284425);
+              Log.i("MicroMsg.LuckyMoneyHistoryEnvelopeUI", "load ok: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+              AppMethodBeat.o(284425);
+            }
+          });
+        }
+        AppMethodBeat.o(284350);
         return;
-        parami.RD(a.f.lmpi_inline_cover_loading_pb).setVisibility(0);
+        paramj.UH(a.f.lmpi_inline_cover_loading_pb).setVisibility(0);
       }
     }
     
@@ -320,27 +468,27 @@ public class LuckyMoneyHistoryEnvelopeUI
   final class c
     implements com.tencent.mm.view.recyclerview.a
   {
-    public String EJw;
+    public String KDc;
     
     c() {}
     
-    public final int bAQ()
-    {
-      return 2;
-    }
-    
-    public final long mf()
+    public final long bZA()
     {
       return 0L;
+    }
+    
+    public final int bZB()
+    {
+      return 2;
     }
   }
   
   final class d
-    extends e<LuckyMoneyHistoryEnvelopeUI.c>
+    extends f<LuckyMoneyHistoryEnvelopeUI.c>
   {
     d() {}
     
-    public final void a(RecyclerView paramRecyclerView, i parami, int paramInt) {}
+    public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt) {}
     
     public final int getLayoutId()
     {
@@ -350,7 +498,7 @@ public class LuckyMoneyHistoryEnvelopeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyHistoryEnvelopeUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.tav.decoder;
 
 import android.opengl.EGL14;
-import android.opengl.GLES20;
+import android.opengl.GLES30;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tav.decoder.logger.Logger;
 
@@ -11,7 +11,7 @@ public class Program
   
   public static void checkEglError(String paramString)
   {
-    AppMethodBeat.i(191161);
+    AppMethodBeat.i(216383);
     int i = 0;
     StringBuilder localStringBuilder = new StringBuilder("");
     for (;;)
@@ -27,16 +27,16 @@ public class Program
     if (i != 0) {
       new RuntimeException("EGL error encountered (see log): " + localStringBuilder.toString());
     }
-    AppMethodBeat.o(191161);
+    AppMethodBeat.o(216383);
   }
   
   public static int createProgram(String paramString1, String paramString2)
   {
     try
     {
-      AppMethodBeat.i(191145);
+      AppMethodBeat.i(216363);
       int i = createProgram(paramString1, paramString2, null);
-      AppMethodBeat.o(191145);
+      AppMethodBeat.o(216363);
       return i;
     }
     finally
@@ -54,13 +54,13 @@ public class Program
     int m;
     try
     {
-      AppMethodBeat.i(191153);
-      GLES20.glEnable(3042);
-      GLES20.glBlendEquationSeparate(32774, 32774);
-      GLES20.glBlendFuncSeparate(770, 771, 1, 771);
+      AppMethodBeat.i(216372);
+      GLES30.glEnable(3042);
+      GLES30.glBlendEquationSeparate(32774, 32774);
+      GLES30.glBlendFuncSeparate(770, 771, 1, 771);
       k = loadShader(35633, paramString1);
       if (k == 0) {
-        AppMethodBeat.o(191153);
+        AppMethodBeat.o(216372);
       }
       for (i = j;; i = j)
       {
@@ -69,7 +69,7 @@ public class Program
         if (m != 0) {
           break;
         }
-        AppMethodBeat.o(191153);
+        AppMethodBeat.o(216372);
       }
       if (paramArrayOfInt == null) {
         break label115;
@@ -82,27 +82,27 @@ public class Program
       paramArrayOfInt[1] = m;
     }
     label115:
-    j = GLES20.glCreateProgram();
+    j = GLES30.glCreateProgram();
     checkEglError("glCreateProgram");
     if (j == 0) {
       Logger.e("Program", "Could not create program");
     }
-    GLES20.glAttachShader(j, k);
+    GLES30.glAttachShader(j, k);
     checkEglError("glAttachShader");
-    GLES20.glAttachShader(j, m);
+    GLES30.glAttachShader(j, m);
     checkEglError("glAttachShader");
-    GLES20.glLinkProgram(j);
+    GLES30.glLinkProgram(j);
     paramString1 = new int[1];
-    GLES20.glGetProgramiv(j, 35714, paramString1, 0);
+    GLES30.glGetProgramiv(j, 35714, paramString1, 0);
     if (paramString1[0] != 1)
     {
       Logger.e("Program", "Could not link program: ");
-      Logger.e("Program", GLES20.glGetProgramInfoLog(j));
-      GLES20.glDeleteProgram(j);
+      Logger.e("Program", GLES30.glGetProgramInfoLog(j));
+      GLES30.glDeleteProgram(j);
     }
     for (;;)
     {
-      AppMethodBeat.o(191153);
+      AppMethodBeat.o(216372);
       break;
       i = j;
     }
@@ -116,20 +116,20 @@ public class Program
       int j;
       try
       {
-        AppMethodBeat.i(191158);
-        j = GLES20.glCreateShader(paramInt);
+        AppMethodBeat.i(216379);
+        j = GLES30.glCreateShader(paramInt);
         checkEglError("glCreateShader type=".concat(String.valueOf(paramInt)));
-        GLES20.glShaderSource(j, paramString);
-        GLES20.glCompileShader(j);
+        GLES30.glShaderSource(j, paramString);
+        GLES30.glCompileShader(j);
         paramString = new int[1];
-        GLES20.glGetShaderiv(j, 35713, paramString, 0);
+        GLES30.glGetShaderiv(j, 35713, paramString, 0);
         if (paramString[0] == 0)
         {
           Logger.e("Program", "Could not compile shader " + paramInt + ":");
-          Logger.e("Program", " " + GLES20.glGetShaderInfoLog(j));
-          GLES20.glDeleteShader(j);
+          Logger.e("Program", " " + GLES30.glGetShaderInfoLog(j));
+          GLES30.glDeleteShader(j);
           paramInt = i;
-          AppMethodBeat.o(191158);
+          AppMethodBeat.o(216379);
           return paramInt;
         }
       }
@@ -140,7 +140,7 @@ public class Program
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.Program
  * JD-Core Version:    0.7.0.1
  */

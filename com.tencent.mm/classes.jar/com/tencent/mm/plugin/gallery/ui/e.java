@@ -7,6 +7,7 @@ import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
 import com.tencent.mm.b.f.a;
+import com.tencent.mm.b.f.b;
 import com.tencent.mm.memory.a.b;
 import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
 import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
@@ -17,138 +18,138 @@ import java.util.LinkedList;
 
 final class e
 {
-  private SparseArray<WeakReference<MultiTouchImageView>> CcA;
-  HashMap<String, Integer> CcB;
-  private SparseArray<String> CcC;
-  SparseArray<Bitmap> CcD;
-  protected f<String, Bitmap> CcE;
-  protected SparseIntArray CcF;
-  private LinkedList<String> CcG;
-  d CcH;
-  boolean CcI;
-  private QueueWorkerThread lFb;
+  private SparseArray<WeakReference<MultiTouchImageView>> HOD;
+  HashMap<String, Integer> HOE;
+  private SparseArray<String> HOF;
+  SparseArray<Bitmap> HOG;
+  protected f<String, Bitmap> HOH;
+  protected SparseIntArray HOI;
+  private LinkedList<String> HOJ;
+  d HOK;
+  boolean HOL;
   private int mScrollState;
+  private QueueWorkerThread owH;
   
   public e(d paramd)
   {
     AppMethodBeat.i(111549);
-    this.lFb = new QueueWorkerThread(1, "album-image-gallery-lazy-loader");
-    this.CcA = new SparseArray();
-    this.CcB = new HashMap();
-    this.CcC = new SparseArray();
-    this.CcD = new SparseArray();
+    this.owH = new QueueWorkerThread(1, "album-image-gallery-lazy-loader");
+    this.HOD = new SparseArray();
+    this.HOE = new HashMap();
+    this.HOF = new SparseArray();
+    this.HOG = new SparseArray();
     this.mScrollState = 0;
-    this.CcE = new b(5, new e.1(this), getClass());
-    this.CcF = new SparseIntArray();
-    this.CcG = new LinkedList();
-    this.CcI = false;
-    this.CcH = paramd;
+    this.HOH = new b(5, new f.b() {}, getClass());
+    this.HOI = new SparseIntArray();
+    this.HOJ = new LinkedList();
+    this.HOL = false;
+    this.HOK = paramd;
     AppMethodBeat.o(111549);
   }
   
-  private void Ti(int paramInt)
+  private void WQ(int paramInt)
   {
     AppMethodBeat.i(111553);
-    if (this.CcC.get(paramInt) != null)
+    if (this.HOF.get(paramInt) != null)
     {
-      String str = (String)this.CcC.get(paramInt);
-      this.CcA.remove(paramInt);
-      this.CcC.remove(paramInt);
-      this.CcB.remove(str);
-      this.CcD.remove(paramInt);
+      String str = (String)this.HOF.get(paramInt);
+      this.HOD.remove(paramInt);
+      this.HOF.remove(paramInt);
+      this.HOE.remove(str);
+      this.HOG.remove(paramInt);
     }
     AppMethodBeat.o(111553);
   }
   
   private void a(int paramInt, MultiTouchImageView paramMultiTouchImageView, String paramString)
   {
-    AppMethodBeat.i(241683);
-    this.CcB.put(paramString, Integer.valueOf(paramInt));
-    this.CcC.put(paramInt, paramString);
-    this.CcA.put(paramInt, new WeakReference(paramMultiTouchImageView));
-    AppMethodBeat.o(241683);
+    AppMethodBeat.i(289548);
+    this.HOE.put(paramString, Integer.valueOf(paramInt));
+    this.HOF.put(paramInt, paramString);
+    this.HOD.put(paramInt, new WeakReference(paramMultiTouchImageView));
+    AppMethodBeat.o(289548);
   }
   
-  private void c(int paramInt, Bitmap paramBitmap)
+  private void e(int paramInt, Bitmap paramBitmap)
   {
     AppMethodBeat.i(111554);
-    if (this.CcA.get(paramInt) == null)
+    if (this.HOD.get(paramInt) == null)
     {
       AppMethodBeat.o(111554);
       return;
     }
-    MultiTouchImageView localMultiTouchImageView = (MultiTouchImageView)((WeakReference)this.CcA.get(paramInt)).get();
-    String str = (String)this.CcC.get(paramInt);
+    MultiTouchImageView localMultiTouchImageView = (MultiTouchImageView)((WeakReference)this.HOD.get(paramInt)).get();
+    String str = (String)this.HOF.get(paramInt);
     if ((paramBitmap != null) && (localMultiTouchImageView != null))
     {
       int i = paramBitmap.hashCode();
-      int j = this.CcF.indexOfValue(paramInt);
+      int j = this.HOI.indexOfValue(paramInt);
       if (j >= 0) {
-        this.CcF.removeAt(j);
+        this.HOI.removeAt(j);
       }
-      this.CcF.put(i, paramInt);
+      this.HOI.put(i, paramInt);
     }
-    this.CcH.a(localMultiTouchImageView, str, paramBitmap);
-    Ti(paramInt);
+    this.HOK.a(localMultiTouchImageView, str, paramBitmap);
+    WQ(paramInt);
     AppMethodBeat.o(111554);
   }
   
-  private void euK()
+  private void fBF()
   {
     AppMethodBeat.i(111551);
-    this.CcE.a(new f.a() {});
+    this.HOH.a(new f.a() {});
     AppMethodBeat.o(111551);
   }
   
   public final void a(MultiTouchImageView paramMultiTouchImageView, String paramString)
   {
-    AppMethodBeat.i(241686);
-    if (this.CcG.contains(paramString))
+    AppMethodBeat.i(289554);
+    if (this.HOJ.contains(paramString))
     {
-      AppMethodBeat.o(241686);
+      AppMethodBeat.o(289554);
       return;
     }
     int i = paramMultiTouchImageView.hashCode();
-    Ti(i);
+    WQ(i);
     a(i, paramMultiTouchImageView, paramString);
-    this.CcG.add(paramString);
-    adj();
-    AppMethodBeat.o(241686);
+    this.HOJ.add(paramString);
+    aFi();
+    AppMethodBeat.o(289554);
   }
   
-  final void adj()
+  final void aFi()
   {
     AppMethodBeat.i(111555);
-    if (this.CcI)
+    if (this.HOL)
     {
       AppMethodBeat.o(111555);
       return;
     }
-    if (this.CcG.size() == 0)
+    if (this.HOJ.size() == 0)
     {
       AppMethodBeat.o(111555);
       return;
     }
-    Object localObject = (String)this.CcG.removeLast();
-    if (!this.CcB.containsKey(localObject))
+    Object localObject = (String)this.HOJ.removeLast();
+    if (!this.HOE.containsKey(localObject))
     {
       AppMethodBeat.o(111555);
       return;
     }
-    this.CcI = true;
+    this.HOL = true;
     localObject = new QueueWorkerThread.ThreadObject()
     {
-      private Bitmap tJN = null;
+      private Bitmap wNk = null;
       
       public final boolean doInBackground()
       {
         AppMethodBeat.i(111547);
-        if ((e.this.CcH == null) || (TextUtils.isEmpty(this.CcK)))
+        if ((e.this.HOK == null) || (TextUtils.isEmpty(this.HON)))
         {
           AppMethodBeat.o(111547);
           return false;
         }
-        this.tJN = d.aIz(this.CcK);
+        this.wNk = d.aEY(this.HON);
         AppMethodBeat.o(111547);
         return true;
       }
@@ -156,45 +157,45 @@ final class e
       public final boolean onPostExecute()
       {
         AppMethodBeat.i(111548);
-        e.this.CcI = false;
+        e.this.HOL = false;
         int i;
-        if (e.this.CcB.containsKey(this.CcK))
+        if (e.this.HOE.containsKey(this.HON))
         {
-          i = ((Integer)e.this.CcB.get(this.CcK)).intValue();
-          if (e.this.euL()) {
+          i = ((Integer)e.this.HOE.get(this.HON)).intValue();
+          if (e.this.fBG()) {
             break label115;
           }
-          e.this.CcD.put(i, this.tJN);
+          e.this.HOG.put(i, this.wNk);
         }
         for (;;)
         {
-          e.this.CcE.q(this.CcK, this.tJN);
-          this.tJN = null;
-          e.this.adj();
+          e.this.HOH.B(this.HON, this.wNk);
+          this.wNk = null;
+          e.this.aFi();
           AppMethodBeat.o(111548);
           return false;
           label115:
-          e.a(e.this, i, this.tJN);
+          e.a(e.this, i, this.wNk);
         }
       }
     };
-    this.lFb.add((QueueWorkerThread.ThreadObject)localObject);
+    this.owH.add((QueueWorkerThread.ThreadObject)localObject);
     AppMethodBeat.o(111555);
   }
   
   public final void detach()
   {
     AppMethodBeat.i(111550);
-    this.CcH = null;
-    this.CcA.clear();
-    this.CcD.clear();
-    this.CcC.clear();
-    this.CcB.clear();
-    euK();
+    this.HOK = null;
+    this.HOD.clear();
+    this.HOG.clear();
+    this.HOF.clear();
+    this.HOE.clear();
+    fBF();
     AppMethodBeat.o(111550);
   }
   
-  final boolean euL()
+  final boolean fBG()
   {
     return this.mScrollState == 0;
   }
@@ -204,9 +205,9 @@ final class e
     int j = 0;
     AppMethodBeat.i(111552);
     this.mScrollState = paramInt;
-    if (euL())
+    if (fBG())
     {
-      int[] arrayOfInt = new int[this.CcD.size()];
+      int[] arrayOfInt = new int[this.HOG.size()];
       int i = 0;
       for (;;)
       {
@@ -214,13 +215,13 @@ final class e
         if (i >= arrayOfInt.length) {
           break;
         }
-        arrayOfInt[i] = this.CcD.keyAt(i);
+        arrayOfInt[i] = this.HOG.keyAt(i);
         i += 1;
       }
       while (paramInt < arrayOfInt.length)
       {
         i = arrayOfInt[paramInt];
-        c(i, (Bitmap)this.CcD.get(i));
+        e(i, (Bitmap)this.HOG.get(i));
         paramInt += 1;
       }
     }
@@ -229,7 +230,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,31 @@
 package com.tencent.mm.dynamicbackground.model;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 11}, iBL={""}, iBM={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "", "isInitCrash", "", "markDrawEndPoint", "", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "willCrash", "Companion", "dynamicbg_release"})
+@Metadata(bv={1, 0, 2}, d1={""}, d2={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "", "isInitCrash", "", "markDrawEndPoint", "", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "willCrash", "Companion", "dynamicbg_release"}, k=1, mv={1, 1, 11})
 public abstract interface b
 {
-  public static final b.a jBC = b.a.jBD;
+  public static final b.a mbp = b.a.mbq;
   
-  public abstract boolean aAA();
+  public abstract boolean aTr();
   
-  public abstract boolean aAB();
+  public abstract void aTs();
   
-  public abstract void aAC();
+  public abstract void aTt();
   
-  public abstract void aAD();
+  public abstract void aTu();
   
-  public abstract boolean aAw();
+  public abstract boolean aTv();
   
-  public abstract void aAx();
+  public abstract boolean aTw();
   
-  public abstract void aAy();
+  public abstract void aTx();
   
-  public abstract void aAz();
+  public abstract void aTy();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.model.b
  * JD-Core Version:    0.7.0.1
  */

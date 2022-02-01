@@ -2,46 +2,45 @@ package com.tencent.mm.plugin.newtips.a;
 
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dpz;
-import com.tencent.mm.protocal.protobuf.dqa;
+import com.tencent.mm.protocal.protobuf.eiu;
+import com.tencent.mm.protocal.protobuf.eiv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class c
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private String fND;
-  private d rr;
+  private h callback;
+  private String hTs;
+  private com.tencent.mm.am.c rr;
   
   public c(String paramString)
   {
     AppMethodBeat.i(184028);
-    d.a locala = new d.a();
-    locala.lBU = new dpz();
-    locala.lBV = new dqa();
+    c.a locala = new c.a();
+    locala.otE = new eiu();
+    locala.otF = new eiv();
     locala.uri = "/cgi-bin/micromsg-bin/pushnewtips";
     locala.funcId = 597;
-    this.rr = locala.bgN();
-    ((dpz)d.b.b(this.rr.lBR)).RTN = paramString;
-    this.fND = paramString;
+    this.rr = locala.bEF();
+    ((eiu)c.b.b(this.rr.otB)).YRn = paramString;
+    this.hTs = paramString;
     AppMethodBeat.o(184028);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
     AppMethodBeat.i(184030);
     Log.d("MicroMsg.NewTips.NetScenePushNewTips", "doScene");
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(184030);
     return i;
@@ -62,13 +61,13 @@ public final class c
       AppMethodBeat.o(184029);
       return;
     }
-    params = (dqa)d.c.b(((d)params).lBS);
-    paramArrayOfByte = this.fND;
-    boolean bool = params.TWO;
+    params = (eiv)c.c.b(((com.tencent.mm.am.c)params).otC);
+    paramArrayOfByte = this.hTs;
+    boolean bool = params.abnG;
     Log.i("MicroMsg.NewTips.NewTipsHelper", "setLocalNewTipsState() uniqueId:%s isReject:%s", new Object[] { paramArrayOfByte, Boolean.valueOf(bool) });
     g.getKV().edit().putBoolean(paramArrayOfByte, bool).commit();
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    Log.i("MicroMsg.NewTips.NetScenePushNewTips", "onGYNetEnd() uniqueId:%s IsReject:%s", new Object[] { this.fND, Boolean.valueOf(params.TWO) });
+    Log.i("MicroMsg.NewTips.NetScenePushNewTips", "onGYNetEnd() uniqueId:%s IsReject:%s", new Object[] { this.hTs, Boolean.valueOf(params.abnG) });
     AppMethodBeat.o(184029);
   }
 }

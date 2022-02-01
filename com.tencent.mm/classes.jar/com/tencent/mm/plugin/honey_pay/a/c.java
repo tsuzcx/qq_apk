@@ -1,42 +1,41 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.aem;
-import com.tencent.mm.protocal.protobuf.aen;
+import com.tencent.mm.protocal.protobuf.agy;
+import com.tencent.mm.protocal.protobuf.agz;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.r;
+import com.tencent.mm.wallet_core.model.r;
 
 public final class c
   extends r
 {
-  public aen DJB;
+  public agz JAx;
   private final String TAG;
   
   public c(String paramString1, long paramLong, String paramString2, String paramString3, int paramInt, String paramString4)
   {
     AppMethodBeat.i(64616);
     this.TAG = "MicroMsg.NetSceneCreateHoneyPayCard";
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new aem();
-    ((d.a)localObject).lBV = new aen();
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/createhoneypaycard";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (aem)d.b.b(this.rr.lBR);
-    ((aem)localObject).SqY = paramString1;
-    ((aem)localObject).SqZ = paramLong;
-    ((aem)localObject).SkU = paramString2;
-    ((aem)localObject).SkY = paramString3;
-    ((aem)localObject).qJt = paramInt;
-    ((aem)localObject).EtJ = paramString4;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new agy();
+    ((c.a)localObject).otF = new agz();
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/createhoneypaycard";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (agy)c.b.b(this.rr.otB);
+    ((agy)localObject).ZpZ = paramString1;
+    ((agy)localObject).Zqa = paramLong;
+    ((agy)localObject).Zje = paramString2;
+    ((agy)localObject).Zji = paramString3;
+    ((agy)localObject).tNW = paramInt;
+    ((agy)localObject).Kmq = paramString4;
     Log.d("MicroMsg.NetSceneCreateHoneyPayCard", "token: %s, take message: %s, wishing: %s", new Object[] { paramString1, paramString3, paramString4 });
     Log.i("MicroMsg.NetSceneCreateHoneyPayCard", "username: %s, credit line: %s", new Object[] { paramString2, Long.valueOf(paramLong) });
     AppMethodBeat.o(64616);
@@ -46,8 +45,8 @@ public final class c
   {
     AppMethodBeat.i(64617);
     Log.i("MicroMsg.NetSceneCreateHoneyPayCard", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.DJB = ((aen)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneCreateHoneyPayCard", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.DJB.tqa), this.DJB.tqb });
+    this.JAx = ((agz)c.c.b(((com.tencent.mm.am.c)params).otC));
+    Log.i("MicroMsg.NetSceneCreateHoneyPayCard", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.JAx.wuz), this.JAx.wuA });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -56,11 +55,11 @@ public final class c
   
   public final void f(s params)
   {
-    AppMethodBeat.i(219980);
-    params = (aen)d.c.b(((d)params).lBS);
-    this.YVy = params.tqa;
-    this.YVz = params.tqb;
-    AppMethodBeat.o(219980);
+    AppMethodBeat.i(267306);
+    params = (agz)c.c.b(((com.tencent.mm.am.c)params).otC);
+    this.agTs = params.wuz;
+    this.agTt = params.wuA;
+    AppMethodBeat.o(267306);
   }
   
   public final int getType()
@@ -70,7 +69,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/fu8" style="@style/np" />
-    <TextView android:ellipsize="none" android:gravity="center" android:id="@id/fu_" android:padding="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/f_x" android:singleLine="false" style="@style/mi" />
-    <ScrollView android:id="@id/fu7" android:visibility="gone" android:scrollbars="none" style="@style/om">
-        <LinearLayout android:gravity="center_horizontal" style="@style/lz">
-            <ImageView android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bgk" />
-            <TextView android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fa2" style="@style/m0" />
-        </LinearLayout>
-    </ScrollView>
-</FrameLayout>
+<LinearLayout android:gravity="center|left" android:id="@id/kpd" android:paddingLeft="0.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/bb" android:layout_weight="1.0" style="@style/mk"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center|left" android:orientation="vertical" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/m4">
+        <TextView android:ellipsize="end" android:id="@android:id/title" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/m4" />
+        <TextView android:ellipsize="end" android:gravity="left" android:id="@id/c21" android:paddingRight="@dimen/m2" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/bv" android:lines="1" style="@style/lk" />
+    </LinearLayout>
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/m4" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/k14" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_done" android:contentDescription="@string/fxp" app:iconColor="@color/Brand" />
+</LinearLayout>

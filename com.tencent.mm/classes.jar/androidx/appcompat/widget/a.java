@@ -12,22 +12,22 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import androidx.appcompat.a.j;
-import androidx.core.g.aa;
-import androidx.core.g.ab;
-import androidx.core.g.w;
+import androidx.core.g.ad;
+import androidx.core.g.ae;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 abstract class a
   extends ViewGroup
 {
-  protected final a nD = new a();
-  protected final Context nE;
-  protected ActionMenuView nF;
-  protected ActionMenuPresenter nG;
-  protected int nH;
-  protected aa nI;
-  private boolean nJ;
-  private boolean nK;
+  protected final a oC = new a();
+  protected final Context oD;
+  protected ActionMenuView oE;
+  protected ActionMenuPresenter oF;
+  protected int oG;
+  protected ad oH;
+  private boolean oI;
+  private boolean oJ;
   
   a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
@@ -35,18 +35,10 @@ abstract class a
     paramAttributeSet = new TypedValue();
     if ((paramContext.getTheme().resolveAttribute(androidx.appcompat.a.a.actionBarPopupTheme, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
     {
-      this.nE = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
+      this.oD = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
       return;
     }
-    this.nE = paramContext;
-  }
-  
-  protected static int a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return paramInt1 - paramInt2;
-    }
-    return paramInt1 + paramInt2;
+    this.oD = paramContext;
   }
   
   protected static int a(View paramView, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
@@ -68,52 +60,60 @@ abstract class a
     }
   }
   
+  protected static int b(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return paramInt1 - paramInt2;
+    }
+    return paramInt1 + paramInt2;
+  }
+  
   protected static int b(View paramView, int paramInt1, int paramInt2)
   {
     paramView.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, -2147483648), paramInt2);
     return Math.max(0, paramInt1 - paramView.getMeasuredWidth() + 0);
   }
   
-  public aa b(int paramInt, long paramLong)
+  public ad b(int paramInt, long paramLong)
   {
-    if (this.nI != null) {
-      this.nI.cancel();
+    if (this.oH != null) {
+      this.oH.cancel();
     }
     if (paramInt == 0)
     {
       if (getVisibility() != 0) {
         setAlpha(0.0F);
       }
-      localaa = w.Q(this).i(1.0F);
-      localaa.f(paramLong);
-      localaa.b(this.nD.a(localaa, paramInt));
-      return localaa;
+      localad = z.ac(this).ao(1.0F);
+      localad.bu(paramLong);
+      localad.b(this.oC.a(localad, paramInt));
+      return localad;
     }
-    aa localaa = w.Q(this).i(0.0F);
-    localaa.f(paramLong);
-    localaa.b(this.nD.a(localaa, paramInt));
-    return localaa;
+    ad localad = z.ac(this).ao(0.0F);
+    localad.bu(paramLong);
+    localad.b(this.oC.a(localad, paramInt));
+    return localad;
   }
   
-  public boolean cC()
+  public boolean dv()
   {
-    if (this.nG != null) {
-      return this.nG.cC();
+    if (this.oF != null) {
+      return this.oF.dv();
     }
     return false;
   }
   
   public int getAnimatedVisibility()
   {
-    if (this.nI != null) {
-      return this.nD.nL;
+    if (this.oH != null) {
+      return this.oC.oK;
     }
     return getVisibility();
   }
   
   public int getContentHeight()
   {
-    return this.nH;
+    return this.oG;
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
@@ -122,8 +122,8 @@ abstract class a
     paramConfiguration = getContext().obtainStyledAttributes(null, a.j.ActionBar, androidx.appcompat.a.a.actionBarStyle, 0);
     setContentHeight(paramConfiguration.getLayoutDimension(a.j.ActionBar_height, 0));
     paramConfiguration.recycle();
-    if (this.nG != null) {
-      this.nG.cN();
+    if (this.oF != null) {
+      this.oF.dG();
     }
   }
   
@@ -131,17 +131,17 @@ abstract class a
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 9) {
-      this.nK = false;
+      this.oJ = false;
     }
-    if (!this.nK)
+    if (!this.oJ)
     {
       boolean bool = super.onHoverEvent(paramMotionEvent);
       if ((i == 9) && (!bool)) {
-        this.nK = true;
+        this.oJ = true;
       }
     }
     if ((i == 10) || (i == 3)) {
-      this.nK = false;
+      this.oJ = false;
     }
     return true;
   }
@@ -150,24 +150,24 @@ abstract class a
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 0) {
-      this.nJ = false;
+      this.oI = false;
     }
-    if (!this.nJ)
+    if (!this.oI)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
       if ((i == 0) && (!bool)) {
-        this.nJ = true;
+        this.oI = true;
       }
     }
     if ((i == 1) || (i == 3)) {
-      this.nJ = false;
+      this.oI = false;
     }
     return true;
   }
   
   public void setContentHeight(int paramInt)
   {
-    this.nH = paramInt;
+    this.oG = paramInt;
     requestLayout();
   }
   
@@ -175,47 +175,47 @@ abstract class a
   {
     if (paramInt != getVisibility())
     {
-      if (this.nI != null) {
-        this.nI.cancel();
+      if (this.oH != null) {
+        this.oH.cancel();
       }
       super.setVisibility(paramInt);
     }
   }
   
   protected final class a
-    implements ab
+    implements ae
   {
     private boolean mCanceled = false;
-    int nL;
+    int oK;
     
     protected a() {}
     
-    public final a a(aa paramaa, int paramInt)
+    public final a a(ad paramad, int paramInt)
     {
-      a.this.nI = paramaa;
-      this.nL = paramInt;
+      a.this.oH = paramad;
+      this.oK = paramInt;
       return this;
     }
     
     public final void e(View paramView)
     {
-      AppMethodBeat.i(239964);
+      AppMethodBeat.i(199303);
       a.a(a.this);
       this.mCanceled = false;
-      AppMethodBeat.o(239964);
+      AppMethodBeat.o(199303);
     }
     
     public final void f(View paramView)
     {
-      AppMethodBeat.i(239966);
+      AppMethodBeat.i(199313);
       if (this.mCanceled)
       {
-        AppMethodBeat.o(239966);
+        AppMethodBeat.o(199313);
         return;
       }
-      a.this.nI = null;
-      a.a(a.this, this.nL);
-      AppMethodBeat.o(239966);
+      a.this.oH = null;
+      a.a(a.this, this.oK);
+      AppMethodBeat.o(199313);
     }
     
     public final void k(View paramView)
@@ -226,7 +226,7 @@ abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.luggage.xweb_ext.extendplugin.b;
 
 public abstract interface d
 {
-  public abstract c Ut();
+  public abstract c auW();
 }
 
 

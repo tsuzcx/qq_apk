@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public static final String av(String paramString1, String paramString2)
+  public static final String aD(String paramString1, String paramString2)
   {
     AppMethodBeat.i(158840);
     if ((!paramString1.contains(":")) && (paramString1.length() > 0))

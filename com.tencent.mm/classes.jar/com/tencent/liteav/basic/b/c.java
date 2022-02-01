@@ -6,7 +6,7 @@ public enum c
 {
   static
   {
-    AppMethodBeat.i(242039);
+    AppMethodBeat.i(229941);
     a = new c("RESOLUTION_TYPE_INVALID", 0);
     b = new c("RESOLUTION_TYPE_360_640", 1);
     c = new c("RESOLUTION_TYPE_540_960", 2);
@@ -32,14 +32,14 @@ public enum c
     w = new c("RESOLUTION_TYPE_1080_1920", 22);
     x = new c("RESOLUTION_TYPE_1920_1080", 23);
     y = new c[] { a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x };
-    AppMethodBeat.o(242039);
+    AppMethodBeat.o(229941);
   }
   
   private c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.b.c
  * JD-Core Version:    0.7.0.1
  */

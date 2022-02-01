@@ -70,19 +70,19 @@ public class WXLivePlayer
   
   private boolean isRtmpProxyUrl(String paramString)
   {
-    AppMethodBeat.i(219275);
+    AppMethodBeat.i(218528);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(219275);
+      AppMethodBeat.o(218528);
       return false;
     }
     if ((paramString.startsWith("room://cloud.tencent.com/rtc")) || (paramString.startsWith("room://rtc.tencent.com")))
     {
-      AppMethodBeat.o(219275);
+      AppMethodBeat.o(218528);
       return false;
     }
     boolean bool = paramString.startsWith("room://");
-    AppMethodBeat.o(219275);
+    AppMethodBeat.o(218528);
     return bool;
   }
   
@@ -170,7 +170,7 @@ public class WXLivePlayer
   
   public void apiOnlineLog(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(219281);
+    AppMethodBeat.i(218645);
     String str = paramString;
     if (paramString == null) {
       str = "";
@@ -179,11 +179,11 @@ public class WXLivePlayer
     if (paramBoolean)
     {
       Monitor.a(1, paramString + " " + str, "", 0, "");
-      AppMethodBeat.o(219281);
+      AppMethodBeat.o(218645);
       return;
     }
     TXCLog.i("WXLivePlayer", paramString + " " + str);
-    AppMethodBeat.o(219281);
+    AppMethodBeat.o(218645);
   }
   
   public void enableAudioVolumeEvaluation(int paramInt)
@@ -650,7 +650,7 @@ public class WXLivePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.WXLivePlayer
  * JD-Core Version:    0.7.0.1
  */

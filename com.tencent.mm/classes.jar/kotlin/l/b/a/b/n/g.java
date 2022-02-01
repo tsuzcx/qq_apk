@@ -1,7 +1,7 @@
 package kotlin.l.b.a.b.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
+import kotlin.g.b.s;
 import kotlin.l.b.a.b.b.l;
 
 public abstract interface g
@@ -11,20 +11,20 @@ public abstract interface g
   public static final class a
     implements g
   {
-    public static final a absQ;
+    public static final a ajsg;
     
     static
     {
       AppMethodBeat.i(61302);
-      absQ = new a();
+      ajsg = new a();
       AppMethodBeat.o(61302);
     }
     
     public final boolean g(l paraml1, l paraml2)
     {
       AppMethodBeat.i(61301);
-      p.k(paraml1, "what");
-      p.k(paraml2, "from");
+      s.u(paraml1, "what");
+      s.u(paraml2, "from");
       AppMethodBeat.o(61301);
       return true;
     }
@@ -32,7 +32,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlin.l.b.a.b.n.g
  * JD-Core Version:    0.7.0.1
  */

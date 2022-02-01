@@ -1,28 +1,53 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
-import androidx.recyclerview.widget.RecyclerView;
-import com.tencent.mm.plugin.finder.event.base.b;
-import com.tencent.mm.plugin.finder.model.bu;
-import java.util.LinkedList;
-import kotlin.g.a.m;
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.protocal.protobuf.to;
+import com.tencent.mm.view.recyclerview.a;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/IFinderBatchSyncLoader;", "Id", "", "batchLoad", "", "ids", "", "Lkotlin/Pair;", "", "clearCache", "id", "type", "", "(Ljava/lang/Object;I)V", "getSyncData", "Lcom/tencent/mm/plugin/finder/feed/model/IFinderCache;", "(Ljava/lang/Object;I)Lcom/tencent/mm/plugin/finder/feed/model/IFinderCache;", "onAttach", "generator", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "firstItemPos", "lastItemPos", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "requestType", "onDetach", "onEventHappen", "ev", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onScrollEvent", "feeds", "requestLoad", "nonceId", "(Ljava/lang/Object;Ljava/lang/String;I)V", "setUxInfo", "uxInfo", "plugin-finder-base_release"})
-public abstract interface n<Id>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/FinderWordingItem;", "Lcom/tencent/mm/protocal/protobuf/Buzzword;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "item", "selfFlag", "", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;Lcom/tencent/mm/protocal/protobuf/Buzzword;Z)V", "feedId", "", "id", "wording", "", "likeCount", "isLike", "isSelf", "(JJLjava/lang/String;JZZ)V", "()V", "getFeedId", "()J", "setFeedId", "(J)V", "()Z", "setSelf", "(Z)V", "getItemId", "getItemType", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class n
+  extends to
+  implements a
 {
-  public abstract void a(b paramb);
+  public long feedId;
+  public boolean hHq;
   
-  public abstract void a(b paramb, LinkedList<bu> paramLinkedList);
+  public n() {}
   
-  public abstract void a(m<? super Integer, ? super Integer, ? extends LinkedList<bu>> paramm, RecyclerView paramRecyclerView, int paramInt);
+  public n(BaseFinderFeed paramBaseFinderFeed, to paramto, boolean paramBoolean)
+  {
+    this();
+    AppMethodBeat.i(366371);
+    this.feedId = paramBaseFinderFeed.bZA();
+    if (paramBoolean)
+    {
+      av localav = av.GiL;
+      if (!av.e(paramBaseFinderFeed)) {}
+    }
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.hHq = paramBoolean;
+      this.YZe = paramto.YZe;
+      this.wording = paramto.wording;
+      this.YZf = paramto.YZf;
+      this.hJr = paramto.hJr;
+      AppMethodBeat.o(366371);
+      return;
+    }
+  }
   
-  public abstract void e(Id paramId, String paramString);
+  public final long bZA()
+  {
+    return 0L;
+  }
   
-  public abstract void onDetach();
-  
-  public abstract void s(Id paramId, int paramInt);
-  
-  public abstract o t(Id paramId, int paramInt);
+  public final int bZB()
+  {
+    return 0;
+  }
 }
 
 

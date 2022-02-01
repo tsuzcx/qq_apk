@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true">
-        <shape android:shape="rectangle" android:useLevel="true">
-            <solid android:color="@color/br" />
-            <corners android:topLeftRadius="@dimen/p2" android:bottomLeftRadius="@dimen/p2" />
-        </shape>
-    </item>
-    <item android:state_focused="true">
-        <shape android:shape="rectangle" android:useLevel="true">
-            <solid android:color="@color/br" />
-            <corners android:topLeftRadius="@dimen/p2" android:bottomLeftRadius="@dimen/p2" />
-        </shape>
-    </item>
-    <item android:state_focused="false" android:state_pressed="true">
-        <shape android:shape="rectangle" android:useLevel="true">
-            <solid android:color="@color/br" />
-            <corners android:topLeftRadius="@dimen/p2" android:bottomLeftRadius="@dimen/p2" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle" android:useLevel="true">
-            <solid android:color="@color/ac_" />
-            <corners android:topLeftRadius="@dimen/p2" android:bottomLeftRadius="@dimen/p2" />
-        </shape>
-    </item>
-</selector>
+    <solid android:color="@color/Purple" />
+    <stroke android:width="1.0dip" android:color="@color/gv" />
+    <size android:height="@dimen/cp" android:width="@dimen/cp" />
+</shape>

@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/account/model/LoginUtil;", "", "()V", "Companion", "plugin-account_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/account/model/LoginUtil;", "", "()V", "Companion", "plugin-account_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final a mZQ;
+  public static final a pWz;
   
   static
   {
-    AppMethodBeat.i(215883);
-    mZQ = new a((byte)0);
-    AppMethodBeat.o(215883);
+    AppMethodBeat.i(304860);
+    pWz = new a((byte)0);
+    AppMethodBeat.o(304860);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/account/model/LoginUtil$Companion;", "", "()V", "canExdeviceChangeAndroidDeviceType", "", "canLoginAsExdevice", "plugin-account_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/account/model/LoginUtil$Companion;", "", "()V", "canExdeviceChangeAndroidDeviceType", "", "canLoginAsExdevice", "plugin-account_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

@@ -1,41 +1,18 @@
 package kotlin.l.b.a.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
-import java.util.Map.Entry;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "T", "", "invoke"}, k=3, mv={1, 5, 1})
 final class b$d
-  extends q
+  extends u
   implements a<String>
 {
   b$d(Class paramClass, Map paramMap)
   {
     super(0);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "", "entry", "", "invoke"})
-  static final class a
-    extends q
-    implements b<Map.Entry<? extends String, ? extends Object>, String>
-  {
-    public static final a aaFa;
-    
-    static
-    {
-      AppMethodBeat.i(56582);
-      aaFa = new a();
-      AppMethodBeat.o(56582);
-    }
-    
-    a()
-    {
-      super();
-    }
   }
 }
 

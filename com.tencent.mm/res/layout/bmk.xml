@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@color/a5g" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@drawable/ar2" android:paddingLeft="15.0dip" android:paddingTop="20.0dip" android:paddingRight="15.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:gravity="center_horizontal" android:id="@id/wm" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bcb" />
-            <TextView android:textSize="16.0dip" android:textColor="@color/a2x" android:id="@id/fzc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="nickname" android:singleLine="true" android:layout_weight="1.0" />
-            <TextView android:textSize="16.0dip" android:textColor="@color/a2x" android:id="@id/inr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="12:00" />
-        </LinearLayout>
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-            <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="36.0dip" android:text="title" android:singleLine="true" android:layout_weight="1.0" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView android:textSize="17.0dip" android:ellipsize="end" android:id="@id/kx2" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/i_" />
+    <TextView android:textSize="@dimen/ce" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/kwc" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:maxLines="10" android:singleLine="false" />
 </LinearLayout>

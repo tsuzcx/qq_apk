@@ -1,22 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/d0" android:paddingRight="@dimen/d0" android:paddingBottom="@dimen/d6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/heh" android:background="@drawable/b64" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/k5" android:layout_marginRight="@dimen/c5" android:layout_marginBottom="@dimen/k5">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hf_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bt" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
-        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/is" android:textColor="@color/a2x" android:textColorHint="@color/ui" android:gravity="center_vertical" android:id="@id/hi6" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/g" android:minHeight="@dimen/hj" android:hint="@string/yn" android:singleLine="true" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a70" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginTop="@dimen/c6" android:src="@raw/icons_outlined_location" />
+    <TextView android:textSize="@dimen/hp" android:textColor="@color/gb" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:text="@string/ly1" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/gb" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/m79" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/cb0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6">
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="lxl" app:MMPermissionType="m43" />
     </LinearLayout>
-    <RelativeLayout android:id="@id/ecu" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj">
-        <TextView android:textSize="13.0dip" android:textColor="@color/tx" android:id="@id/kuy" android:paddingLeft="14.0dip" android:paddingTop="10.0dip" android:paddingRight="14.0dip" android:paddingBottom="10.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ListView android:id="@id/fcl" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/fe_" android:layout_below="@id/kuy" style="@style/np" />
-        <com.tencent.mm.chatroom.ui.SelectMemberScrollBar android:id="@id/fco" android:layout_width="@dimen/o8" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/uj" android:gravity="center" android:layout_gravity="center" android:id="@id/c39" android:paddingBottom="110.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/k08" android:layout_centerInParent="true" />
-        <LinearLayout android:orientation="vertical" android:id="@id/fe_" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-            <TextView android:textSize="@dimen/kc" android:textColor="@color/tx" android:id="@id/h1a" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/g" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/k_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/im" android:text="{header}" />
-            <RelativeLayout android:orientation="horizontal" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="@dimen/im">
-                <Button android:textSize="@dimen/hp" android:textColor="@color/fu" android:gravity="center" android:id="@id/gn" android:background="@drawable/b7" android:layout_height="fill_parent" android:minWidth="@dimen/in" android:text="@string/h6" android:layout_alignParentLeft="true" style="@style/os" />
-                <Button android:textSize="@dimen/hp" android:textColor="@color/fu" android:gravity="center" android:id="@id/e5s" android:background="@drawable/b7" android:layout_height="fill_parent" android:minWidth="@dimen/in" android:text="@string/ei" android:layout_alignParentRight="true" style="@style/os" />
-                <Button android:textSize="@dimen/hp" android:textColor="@color/a5f" android:gravity="center" android:id="@id/blh" android:background="@drawable/aij" android:visibility="gone" android:minWidth="@dimen/in" android:text="@string/ei" android:layout_alignParentRight="true" style="@style/os" />
-            </RelativeLayout>
-        </LinearLayout>
-    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:background="@drawable/cb0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df">
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m6k" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="lz5" app:MMPermissionType="m43" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@drawable/cb0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df">
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m7o" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="d3e" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m3m" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m75" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m7b" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m7z" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m76" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m5f" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m5g" app:MMPermissionType="m43" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@drawable/cb0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df">
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m53" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="k1e" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="lza" app:MMPermissionType="m43" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" />
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="arc" app:MMPermissionType="m43" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@drawable/cb0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df">
+        <com.tencent.mm.plugin.setting.ui.setting.view.SettingPermissionView android:layout_width="fill_parent" android:layout_height="wrap_content" app:MMBusinessType="m9p" app:MMPermissionType="m43" />
+    </LinearLayout>
 </LinearLayout>

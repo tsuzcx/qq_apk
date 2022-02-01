@@ -1,13 +1,13 @@
 package com.tencent.mm.xeffect.effect;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/EffectLayoutInfo;", "", "centerX", "", "centerY", "scale", "", "rotate", "(IIFF)V", "getCenterX", "()I", "setCenterX", "(I)V", "getCenterY", "setCenterY", "getRotate", "()F", "setRotate", "(F)V", "getScale", "setScale", "renderlib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/xeffect/effect/EffectLayoutInfo;", "", "centerX", "", "centerY", "scale", "", "rotate", "(IIFF)V", "getCenterX", "()I", "setCenterX", "(I)V", "getCenterY", "setCenterY", "getRotate", "()F", "setRotate", "(F)V", "getScale", "setScale", "renderlib_release"}, k=1, mv={1, 1, 15})
 public final class f
 {
+  float aBi;
   int centerX;
   int centerY;
-  float oYk;
   float scale;
   
   public f(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
@@ -15,12 +15,12 @@ public final class f
     this.centerX = paramInt1;
     this.centerY = paramInt2;
     this.scale = paramFloat1;
-    this.oYk = paramFloat2;
+    this.aBi = paramFloat2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.f
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.d.d;
-import com.tencent.mm.plugin.game.protobuf.ai;
-import com.tencent.mm.plugin.game.protobuf.ap;
-import com.tencent.mm.plugin.game.protobuf.bf;
-import com.tencent.mm.plugin.game.protobuf.bh;
-import com.tencent.mm.plugin.game.protobuf.bn;
-import com.tencent.mm.plugin.game.protobuf.di;
+import com.tencent.mm.plugin.game.protobuf.aj;
+import com.tencent.mm.plugin.game.protobuf.aq;
+import com.tencent.mm.plugin.game.protobuf.bg;
+import com.tencent.mm.plugin.game.protobuf.bi;
+import com.tencent.mm.plugin.game.protobuf.bo;
+import com.tencent.mm.plugin.game.protobuf.dm;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,32 +15,32 @@ import java.util.LinkedList;
 public final class ad
   extends x
 {
-  public static void a(bn parambn)
+  public static void a(bo parambo)
   {
     AppMethodBeat.i(41542);
-    if ((parambn == null) || (Util.isNullOrNil(parambn.CPL)))
+    if ((parambo == null) || (Util.isNullOrNil(parambo.IJV)))
     {
       AppMethodBeat.o(41542);
       return;
     }
-    parambn = parambn.CPL.iterator();
-    while (parambn.hasNext())
+    parambo = parambo.IJV.iterator();
+    while (parambo.hasNext())
     {
-      Object localObject = (ap)parambn.next();
-      if ((((ap)localObject).COA != null) && (((ap)localObject).COA.CME != null))
+      Object localObject = (aq)parambo.next();
+      if ((((aq)localObject).IIK != null) && (((aq)localObject).IIK.IGJ != null))
       {
-        d.c(a(((ap)localObject).COA.CME));
+        d.c(a(((aq)localObject).IIK.IGJ));
       }
-      else if ((((ap)localObject).COC != null) && (!Util.isNullOrNil(((ap)localObject).COC.CNz)))
+      else if ((((aq)localObject).IIM != null) && (!Util.isNullOrNil(((aq)localObject).IIM.IHH)))
       {
-        localObject = ((ap)localObject).COC.CNz.iterator();
+        localObject = ((aq)localObject).IIM.IHH.iterator();
         while (((Iterator)localObject).hasNext()) {
-          d.c(a(((ai)((Iterator)localObject).next()).CME));
+          d.c(a(((aj)((Iterator)localObject).next()).IGJ));
         }
       }
-      else if ((((ap)localObject).COB != null) && (((ap)localObject).COB.CME != null))
+      else if ((((aq)localObject).IIL != null) && (((aq)localObject).IIL.IGJ != null))
       {
-        d.c(a(((ap)localObject).COB.CME));
+        d.c(a(((aq)localObject).IIL.IGJ));
       }
     }
     AppMethodBeat.o(41542);
@@ -48,7 +48,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ad
  * JD-Core Version:    0.7.0.1
  */

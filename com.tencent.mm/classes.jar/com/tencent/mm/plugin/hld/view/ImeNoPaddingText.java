@@ -9,49 +9,45 @@ import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.a.l;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/ImeNoPaddingText;", "Landroidx/appcompat/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/view/ImeNoPaddingText;", "Landroidx/appcompat/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ImeNoPaddingText
   extends AppCompatTextView
 {
-  public static final a DIO;
+  public static final ImeNoPaddingText.a JzQ;
   
   static
   {
-    AppMethodBeat.i(215146);
-    DIO = new a((byte)0);
-    AppMethodBeat.o(215146);
+    AppMethodBeat.i(312641);
+    JzQ = new ImeNoPaddingText.a((byte)0);
+    AppMethodBeat.o(312641);
   }
   
   public ImeNoPaddingText(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
+    AppMethodBeat.i(312626);
+    AppMethodBeat.o(312626);
   }
   
   public ImeNoPaddingText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(215144);
-    if (paramContext == null) {
-      p.iCn();
-    }
+    AppMethodBeat.i(312637);
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, a.l.NoPaddingTextView, 0, 0);
-    p.j(paramContext, "context!!.theme.obtainSt….NoPaddingTextView, 0, 0)");
+    s.s(paramContext, "context.theme.obtainStyl….NoPaddingTextView, 0, 0)");
     float f = paramContext.getDimension(a.l.NoPaddingTextView_textSize, 0.0F);
     paramAttributeSet = new Paint();
     paramAttributeSet.setTextSize(f);
     paramAttributeSet = paramAttributeSet.getFontMetricsInt();
-    p.j(paramAttributeSet, "paint.fontMetricsInt");
+    s.s(paramAttributeSet, "paint.fontMetricsInt");
     setTextSize(0, paramContext.getDimension(a.l.NoPaddingTextView_textSize, 0.0F));
     setPadding(0, -((int)Math.ceil(Math.abs((paramAttributeSet.top - paramAttributeSet.ascent) / 2.0D)) + Math.abs(paramAttributeSet.top - paramAttributeSet.ascent)), 0, paramAttributeSet.top - paramAttributeSet.ascent);
     paramContext.recycle();
-    AppMethodBeat.o(215144);
+    AppMethodBeat.o(312637);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/ImeNoPaddingText$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
 }
 
 

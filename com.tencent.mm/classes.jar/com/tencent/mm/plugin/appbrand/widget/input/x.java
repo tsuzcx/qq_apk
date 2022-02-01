@@ -11,302 +11,311 @@ import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.i;
-import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.plugin.appbrand.af.k;
+import com.tencent.mm.plugin.appbrand.appstorage.w;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.widget.i;
 import com.tenpay.miniapp.MiniAppSecureEditText;
-import com.tenpay.miniapp.MiniAppSecureEditText.OnPasswdInputListener;
 import java.nio.ByteBuffer;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.d;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget;", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandInputWidgetSingleLineBase;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "cachedCertPem", "", "cachedSafePasswordCertPath", "listener", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget$IListener;", "getListener", "()Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget$IListener;", "setListener", "(Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget$IListener;)V", "myTag", "getMyTag$luggage_wxa_app_input_ext_release", "()Ljava/lang/String;", "secureInputWidgetLogic", "Lcom/tenpay/miniapp/MiniAppSecureEditText;", "getSecureInputWidgetLogic$luggage_wxa_app_input_ext_release", "()Lcom/tenpay/miniapp/MiniAppSecureEditText;", "appendText", "", "text", "", "deleteLast", "dispatchKeyEvent", "", "event", "Landroid/view/KeyEvent;", "ensureInputConnection", "getInputPanel", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel;", "getRealText", "getRealText$luggage_wxa_app_input_ext_release", "onAttachedToPage", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "onCreateContextMenu", "menu", "Landroid/view/ContextMenu;", "onCreateInputConnection", "Landroid/view/inputmethod/InputConnection;", "outAttrs", "Landroid/view/inputmethod/EditorInfo;", "onDetachedFromPage", "onSelectionChanged", "selStart", "", "selEnd", "onSelectionChangedDisable", "onSelectionChangedSync", "onTextContextMenuItem", "id", "readCertPem", "env", "safePasswordCertPath", "readCertPem$luggage_wxa_app_input_ext_release", "realSetSelection", "index", "start", "stop", "saveLastKeyPressed", "code", "", "setInputId", "setLength", "length", "setLength$luggage_wxa_app_input_ext_release", "setLogicSelection", "setText", "type", "Landroid/widget/TextView$BufferType;", "supportsAutoFill", "isKeyCodeLetterOrDigit", "IListener", "luggage-wxa-app-input-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget;", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandInputWidgetSingleLineBase;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "cachedCertPem", "", "cachedSafePasswordCertPath", "listener", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget$IListener;", "getListener", "()Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget$IListener;", "setListener", "(Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget$IListener;)V", "myTag", "getMyTag$luggage_wxa_app_input_ext_release", "()Ljava/lang/String;", "secureInputWidgetLogic", "Lcom/tenpay/miniapp/MiniAppSecureEditText;", "getSecureInputWidgetLogic$luggage_wxa_app_input_ext_release", "()Lcom/tenpay/miniapp/MiniAppSecureEditText;", "appendText", "", "text", "", "deleteLast", "dispatchKeyEvent", "", "event", "Landroid/view/KeyEvent;", "ensureInputConnection", "getInputPanel", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel;", "getRealText", "getRealText$luggage_wxa_app_input_ext_release", "onAttachedToPage", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "onCreateContextMenu", "menu", "Landroid/view/ContextMenu;", "onCreateInputConnection", "Landroid/view/inputmethod/InputConnection;", "outAttrs", "Landroid/view/inputmethod/EditorInfo;", "onDetachedFromPage", "onSelectionChanged", "selStart", "", "selEnd", "onSelectionChangedDisable", "onSelectionChangedSync", "onTextContextMenuItem", "id", "readCertPem", "env", "safePasswordCertPath", "readCertPem$luggage_wxa_app_input_ext_release", "realSetSelection", "index", "start", "stop", "saveLastKeyPressed", "code", "", "setInputId", "setLength", "length", "setLength$luggage_wxa_app_input_ext_release", "setLogicSelection", "setText", "type", "Landroid/widget/TextView$BufferType;", "supportsAutoFill", "isKeyCodeLetterOrDigit", "IListener", "luggage-wxa-app-input-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class x
   extends r
 {
-  private a rwp;
-  private final MiniAppSecureEditText rwq;
-  private String rwr;
-  private String rws;
+  private a uHv;
+  private final MiniAppSecureEditText uHw;
+  private String uHx;
+  private String uHy;
   
   public x(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(213963);
-    this.rwq = new MiniAppSecureEditText(paramContext);
+    AppMethodBeat.i(324520);
+    this.uHw = new MiniAppSecureEditText(paramContext);
     setImeOptions(1);
     new av((TextView)this);
-    this.rwq.setText((CharSequence)getText());
-    fi(getSelectionStart(), getSelectionEnd());
-    this.rwq.setOnPasswdInputListener((MiniAppSecureEditText.OnPasswdInputListener)new MiniAppSecureEditText.OnPasswdInputListener()
+    this.uHw.setText((CharSequence)getText());
+    gb(getSelectionStart(), getSelectionEnd());
+    this.uHw.setOnPasswdInputListener(new x..ExternalSyntheticLambda0(this));
+    this.uHw.addTextChangedListener((TextWatcher)new i()
     {
-      public final void onDone()
+      public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(215000);
-        Log.d(this.rwt.getMyTag$luggage_wxa_app_input_ext_release(), "onDone#secureInputWidgetLogic");
-        x.a locala = this.rwt.getListener();
-        if (locala != null)
-        {
-          locala.coR();
-          AppMethodBeat.o(215000);
-          return;
-        }
-        AppMethodBeat.o(215000);
+        AppMethodBeat.i(324482);
+        super.afterTextChanged(paramAnonymousEditable);
+        AppMethodBeat.o(324482);
       }
     });
-    this.rwq.addTextChangedListener((TextWatcher)new x.2(this));
-    AppMethodBeat.o(213963);
+    AppMethodBeat.o(324520);
   }
   
-  private final void fi(int paramInt1, int paramInt2)
+  private static final void a(x paramx)
   {
-    AppMethodBeat.i(213962);
+    AppMethodBeat.i(324527);
+    s.u(paramx, "this$0");
+    Log.d(paramx.getMyTag$luggage_wxa_app_input_ext_release(), "onDone#secureInputWidgetLogic");
+    paramx = paramx.getListener();
+    if (paramx != null) {
+      paramx.cRt();
+    }
+    AppMethodBeat.o(324527);
+  }
+  
+  private static final void a(x paramx, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(324529);
+    s.u(paramx, "this$0");
+    paramx.gb(paramInt1, paramInt2);
+    AppMethodBeat.o(324529);
+  }
+  
+  private final void gb(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(324523);
     if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 <= paramInt2)) {
       try
       {
-        this.rwq.setSelection(paramInt1, paramInt2);
-        AppMethodBeat.o(213962);
+        this.uHw.setSelection(paramInt1, paramInt2);
+        AppMethodBeat.o(324523);
         return;
       }
       catch (Exception localException) {}
     }
-    AppMethodBeat.o(213962);
-  }
-  
-  public final void F(char paramChar)
-  {
-    AppMethodBeat.i(213943);
-    if (Character.isLetterOrDigit(paramChar)) {}
-    for (char c = '*';; c = paramChar)
-    {
-      Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "saveLastKeyPressed, code: " + paramChar + ", savedCode: " + c);
-      super.F(c);
-      AppMethodBeat.o(213943);
-      return;
-    }
-  }
-  
-  public final void G(ad paramad)
-  {
-    AppMethodBeat.i(213956);
-    Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "onAttachedToPage");
-    AppMethodBeat.o(213956);
+    AppMethodBeat.o(324523);
   }
   
   public final void H(ad paramad)
   {
-    AppMethodBeat.i(213957);
+    AppMethodBeat.i(324593);
+    Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "onAttachedToPage");
+    AppMethodBeat.o(324593);
+  }
+  
+  public final void I(ad paramad)
+  {
+    AppMethodBeat.i(324596);
     Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "onDetachedFromPage");
-    AppMethodBeat.o(213957);
+    AppMethodBeat.o(324596);
   }
   
-  public final void N(CharSequence paramCharSequence)
+  public final void R(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(213944);
-    Log.e(getMyTag$luggage_wxa_app_input_ext_release(), "appendText, text: " + paramCharSequence);
-    AppMethodBeat.o(213944);
+    AppMethodBeat.i(324579);
+    Log.e(getMyTag$luggage_wxa_app_input_ext_release(), s.X("appendText, text: ", paramCharSequence));
+    AppMethodBeat.o(324579);
   }
   
-  public final String a(ad paramad, String paramString)
+  public final String b(ad paramad, String paramString)
   {
-    AppMethodBeat.i(213961);
-    p.k(paramad, "env");
-    p.k(paramString, "safePasswordCertPath");
-    if (p.h(paramString, this.rwr))
+    AppMethodBeat.i(324604);
+    s.u(paramad, "env");
+    s.u(paramString, "safePasswordCertPath");
+    if (s.p(paramString, this.uHx))
     {
-      paramad = this.rws;
+      paramad = this.uHy;
       if (paramad == null)
       {
         Log.e(((x)this).getMyTag$luggage_wxa_app_input_ext_release(), "readCertPem, cachedCertPem is null");
-        paramad = (Throwable)new IllegalStateException("certPath is illegal");
-        AppMethodBeat.o(213961);
+        paramad = new IllegalStateException("certPath is illegal");
+        AppMethodBeat.o(324604);
         throw paramad;
       }
-      AppMethodBeat.o(213961);
+      AppMethodBeat.o(324604);
       return paramad;
     }
-    Object localObject = new i();
+    k localk = new k();
     paramad = paramad.getFileSystem();
-    if (paramad != null) {}
-    for (paramad = paramad.b(paramString, (i)localObject); paramad == null; paramad = null)
+    if (paramad == null) {}
+    for (paramad = null; paramad == null; paramad = paramad.b(paramString, localk))
     {
       Log.e(getMyTag$luggage_wxa_app_input_ext_release(), "readCertPem, opResult is null");
-      paramad = (Throwable)new IllegalStateException("env error");
-      AppMethodBeat.o(213961);
+      paramad = new IllegalStateException("env error");
+      AppMethodBeat.o(324604);
       throw paramad;
     }
-    if (m.nMR != paramad)
+    if (com.tencent.mm.plugin.appbrand.appstorage.r.qML != paramad)
     {
-      Log.e(getMyTag$luggage_wxa_app_input_ext_release(), "getEncryptedData, opResult: ".concat(String.valueOf(paramad)));
-      paramad = (Throwable)new IllegalStateException("certPath is illegal");
-      AppMethodBeat.o(213961);
+      Log.e(getMyTag$luggage_wxa_app_input_ext_release(), s.X("getEncryptedData, opResult: ", paramad));
+      paramad = new IllegalStateException("certPath is illegal");
+      AppMethodBeat.o(324604);
       throw paramad;
     }
-    paramad = ((i)localObject).value;
-    p.j(paramad, "byteBufRef.value");
-    paramad = (ByteBuffer)paramad;
-    p.k(paramad, "$this$toArray");
-    localObject = new byte[paramad.remaining()];
-    paramad.get((byte[])localObject);
-    paramad = new String((byte[])localObject, d.UTF_8);
-    this.rws = paramad;
-    this.rwr = paramString;
-    AppMethodBeat.o(213961);
+    paramad = localk.value;
+    s.s(paramad, "byteBufRef.value");
+    paramad = new String(at.F((ByteBuffer)paramad), d.UTF_8);
+    this.uHy = paramad;
+    this.uHx = paramString;
+    AppMethodBeat.o(324604);
     return paramad;
   }
   
-  public final boolean coI()
+  public final boolean cRk()
   {
-    AppMethodBeat.i(213951);
+    AppMethodBeat.i(324589);
     Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "supportsAutoFill");
-    AppMethodBeat.o(213951);
+    AppMethodBeat.o(324589);
     return false;
   }
   
-  protected final void coJ()
+  protected final void cRl()
   {
-    AppMethodBeat.i(213947);
-    if (w.al((View)this))
+    AppMethodBeat.i(324582);
+    if (androidx.core.g.z.ay((View)this))
     {
       z localz = getInputPanel();
-      if (localz != null)
-      {
+      if (localz != null) {
         localz.setInputWidget((EditText)this);
-        AppMethodBeat.o(213947);
-        return;
       }
     }
-    AppMethodBeat.o(213947);
+    AppMethodBeat.o(324582);
   }
   
-  public final void coS()
+  public final void cRu()
   {
-    AppMethodBeat.i(213942);
+    AppMethodBeat.i(324574);
     Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "deleteLast");
     dispatchKeyEvent(new KeyEvent(0, 67));
     dispatchKeyEvent(new KeyEvent(1, 67));
-    AppMethodBeat.o(213942);
+    AppMethodBeat.o(324574);
   }
   
   public final boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(213936);
-    p.k(paramKeyEvent, "event");
+    int j = 0;
+    AppMethodBeat.i(324557);
+    s.u(paramKeyEvent, "event");
     int i = paramKeyEvent.getKeyCode();
-    if ((7 > i) || (16 < i))
-    {
-      i = paramKeyEvent.getKeyCode();
-      if (29 > i)
+    if (7 <= i) {
+      if (i <= 16)
       {
-        i = 0;
-        label43:
-        if (i == 0) {
-          break label169;
+        i = 1;
+        if (i == 0)
+        {
+          i = paramKeyEvent.getKeyCode();
+          if (29 > i) {
+            break label196;
+          }
+          if (i > 54) {
+            break label191;
+          }
+          i = 1;
+          label57:
+          if (i == 0) {}
+        }
+        else
+        {
+          j = 1;
+        }
+        if (j == 0) {
+          break label201;
         }
       }
     }
-    label169:
+    label191:
+    label196:
+    label201:
     for (KeyEvent localKeyEvent = new KeyEvent(paramKeyEvent.getAction(), 155);; localKeyEvent = paramKeyEvent)
     {
       Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "dispatchKeyEvent, event: " + paramKeyEvent + ", dispatchedKeyEvent: " + localKeyEvent);
       boolean bool1 = super.dispatchKeyEvent(localKeyEvent);
-      boolean bool2 = this.rwq.dispatchKeyEvent(paramKeyEvent);
+      boolean bool2 = this.uHw.dispatchKeyEvent(paramKeyEvent);
       Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "dispatchKeyEvent, handled: " + bool1 + ", handled2: " + bool2);
-      AppMethodBeat.o(213936);
+      AppMethodBeat.o(324557);
       return bool1;
-      if (54 < i) {
-        break;
-      }
-      i = 1;
-      break label43;
+      i = 0;
+      break;
+      i = 0;
+      break;
+      i = 0;
+      break label57;
+      i = 0;
+      break label57;
     }
   }
   
   public final z getInputPanel()
   {
-    AppMethodBeat.i(213949);
-    Object localObject = z.rwB;
-    localObject = z.a.dv((View)this);
-    Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "getInputPanel, keyboardPanel: ".concat(String.valueOf(localObject)));
-    AppMethodBeat.o(213949);
+    AppMethodBeat.i(324586);
+    Object localObject = z.uHA;
+    localObject = z.a.ej((View)this);
+    Log.d(getMyTag$luggage_wxa_app_input_ext_release(), s.X("getInputPanel, keyboardPanel: ", localObject));
+    AppMethodBeat.o(324586);
     return localObject;
   }
   
   public final a getListener()
   {
-    return this.rwp;
+    return this.uHv;
   }
   
   public final String getMyTag$luggage_wxa_app_input_ext_release()
   {
-    AppMethodBeat.i(213933);
-    String str = "MicroMsg.AppBrand.AppBrandSecureInputWidget#" + getInputId();
-    AppMethodBeat.o(213933);
+    AppMethodBeat.i(324539);
+    String str = s.X("MicroMsg.AppBrand.AppBrandSecureInputWidget#", Integer.valueOf(getInputId()));
+    AppMethodBeat.o(324539);
     return str;
   }
   
   public final String getRealText$luggage_wxa_app_input_ext_release()
   {
-    AppMethodBeat.i(213959);
-    Object localObject = this.rwq.getText();
-    if (localObject != null)
+    AppMethodBeat.i(324601);
+    Object localObject = this.uHw.getText();
+    if (localObject == null)
     {
-      localObject = localObject.toString();
-      AppMethodBeat.o(213959);
-      return localObject;
+      AppMethodBeat.o(324601);
+      return null;
     }
-    AppMethodBeat.o(213959);
-    return null;
+    localObject = localObject.toString();
+    AppMethodBeat.o(324601);
+    return localObject;
   }
   
   public final MiniAppSecureEditText getSecureInputWidgetLogic$luggage_wxa_app_input_ext_release()
   {
-    return this.rwq;
+    return this.uHw;
   }
   
   protected final void onCreateContextMenu(ContextMenu paramContextMenu)
   {
-    AppMethodBeat.i(213941);
-    if (paramContextMenu != null)
-    {
+    AppMethodBeat.i(324571);
+    if (paramContextMenu != null) {
       paramContextMenu.clearHeader();
-      AppMethodBeat.o(213941);
-      return;
     }
-    AppMethodBeat.o(213941);
+    AppMethodBeat.o(324571);
   }
   
   public final InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    AppMethodBeat.i(213934);
+    AppMethodBeat.i(324551);
     Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "onCreateInputConnection");
-    AppMethodBeat.o(213934);
+    AppMethodBeat.o(324551);
     return null;
   }
   
   protected final void onSelectionChanged(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(213938);
+    AppMethodBeat.i(324567);
     Log.i(getMyTag$luggage_wxa_app_input_ext_release(), "onSelectionChanged, selStart: " + paramInt1 + ", selEnd: " + paramInt2);
     Editable localEditable = getText();
-    if (localEditable != null) {}
-    for (int i = localEditable.length();; i = 0)
+    if (localEditable == null) {}
+    for (int i = 0;; i = localEditable.length())
     {
-      Log.i(getMyTag$luggage_wxa_app_input_ext_release(), "onSelectionChangedDisable, sel: ".concat(String.valueOf(i)));
+      Log.i(getMyTag$luggage_wxa_app_input_ext_release(), s.X("onSelectionChangedDisable, sel: ", Integer.valueOf(i)));
       if ((paramInt1 == i) && (paramInt2 == i)) {
         break;
       }
       setSelection(i, i);
-      AppMethodBeat.o(213938);
+      AppMethodBeat.o(324567);
       return;
     }
     super.onSelectionChanged(paramInt1, paramInt2);
-    post((Runnable)new x.b(this, paramInt1, paramInt2));
-    AppMethodBeat.o(213938);
+    post(new x..ExternalSyntheticLambda1(this, paramInt1, paramInt2));
+    AppMethodBeat.o(324567);
   }
   
   public final boolean onTextContextMenuItem(int paramInt)
@@ -316,28 +325,28 @@ public final class x
   
   public final void setInputId(int paramInt)
   {
-    AppMethodBeat.i(213954);
-    Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "setInputId, id: ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.i(324591);
+    Log.d(getMyTag$luggage_wxa_app_input_ext_release(), s.X("setInputId, id: ", Integer.valueOf(paramInt)));
     super.setInputId(paramInt);
-    AppMethodBeat.o(213954);
+    AppMethodBeat.o(324591);
   }
   
   public final void setLength$luggage_wxa_app_input_ext_release(int paramInt)
   {
-    AppMethodBeat.i(213958);
-    Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "setLength, length: ".concat(String.valueOf(paramInt)));
-    this.rwq.setInputLength(paramInt, paramInt);
-    AppMethodBeat.o(213958);
+    AppMethodBeat.i(324598);
+    Log.d(getMyTag$luggage_wxa_app_input_ext_release(), s.X("setLength, length: ", Integer.valueOf(paramInt)));
+    this.uHw.setInputLength(paramInt, paramInt);
+    AppMethodBeat.o(324598);
   }
   
   public final void setListener(a parama)
   {
-    this.rwp = parama;
+    this.uHv = parama;
   }
   
   public final void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    AppMethodBeat.i(213937);
+    AppMethodBeat.i(324564);
     Object localObject;
     if (paramCharSequence != null)
     {
@@ -357,35 +366,48 @@ public final class x
         }
       }
       localObject = ((StringBuilder)localObject).toString();
-      p.j(localObject, "StringBuilder().apply(builderAction).toString()");
+      s.s(localObject, "StringBuilder().apply(builderAction).toString()");
     }
     for (;;)
     {
-      Log.i("MicroMsg.AppBrand.AppBrandSecureInputWidget", "setText, text: " + paramCharSequence + ", shownText: " + (String)localObject + ", type: " + paramBufferType);
+      Log.i("MicroMsg.AppBrand.AppBrandSecureInputWidget", "setText, text: " + paramCharSequence + ", shownText: " + localObject + ", type: " + paramBufferType);
       super.setText((CharSequence)localObject, paramBufferType);
       try
       {
-        this.rwq.setText(paramCharSequence, paramBufferType);
-        AppMethodBeat.o(213937);
+        this.uHw.setText(paramCharSequence, paramBufferType);
+        AppMethodBeat.o(324564);
         return;
       }
       catch (NullPointerException paramCharSequence)
       {
-        AppMethodBeat.o(213937);
+        AppMethodBeat.o(324564);
       }
       localObject = (String)paramCharSequence;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget$IListener;", "", "onInputDone", "", "luggage-wxa-app-input-ext_release"})
+  public final void y(char paramChar)
+  {
+    AppMethodBeat.i(324578);
+    if (Character.isLetterOrDigit(paramChar)) {}
+    for (char c = '*';; c = paramChar)
+    {
+      Log.d(getMyTag$luggage_wxa_app_input_ext_release(), "saveLastKeyPressed, code: " + paramChar + ", savedCode: " + c);
+      super.y(c);
+      AppMethodBeat.o(324578);
+      return;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget$IListener;", "", "onInputDone", "", "luggage-wxa-app-input-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void coR();
+    public abstract void cRt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.x
  * JD-Core Version:    0.7.0.1
  */

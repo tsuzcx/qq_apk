@@ -12,25 +12,38 @@ import androidx.legacy.content.WakefulBroadcastReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayDeque;
 import java.util.Queue;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class o
 {
-  private static o bJq;
-  @GuardedBy("serviceClassNames")
-  private final g<String, String> bJr;
-  private Boolean bJs;
-  final Queue<Intent> bJt;
-  public final Queue<Intent> bJu;
+  private static o dCY;
+  private final g<String, String> dCZ;
+  private Boolean dDa;
+  final Queue<Intent> dDb;
+  public final Queue<Intent> dDc;
   
   private o()
   {
     AppMethodBeat.i(4181);
-    this.bJr = new g();
-    this.bJs = null;
-    this.bJt = new ArrayDeque();
-    this.bJu = new ArrayDeque();
+    this.dCZ = new g();
+    this.dDa = null;
+    this.dDb = new ArrayDeque();
+    this.dDc = new ArrayDeque();
     AppMethodBeat.o(4181);
+  }
+  
+  public static o Yw()
+  {
+    try
+    {
+      AppMethodBeat.i(4180);
+      if (dCY == null) {
+        dCY = new o();
+      }
+      o localo = dCY;
+      AppMethodBeat.o(4180);
+      return localo;
+    }
+    finally {}
   }
   
   public static PendingIntent a(Context paramContext, int paramInt, Intent paramIntent)
@@ -47,9 +60,9 @@ public final class o
   private final int b(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(4184);
-    synchronized (this.bJr)
+    synchronized (this.dCZ)
     {
-      ??? = (String)this.bJr.get(paramIntent.getAction());
+      ??? = (String)this.dCZ.get(paramIntent.getAction());
       ??? = ???;
       if (??? == null)
       {
@@ -64,17 +77,17 @@ public final class o
     try
     {
       boolean bool;
-      if (this.bJs == null)
+      if (this.dDa == null)
       {
         if (paramContext.checkCallingOrSelfPermission("android.permission.WAKE_LOCK") == 0)
         {
           bool = true;
           label85:
-          this.bJs = Boolean.valueOf(bool);
+          this.dDa = Boolean.valueOf(bool);
         }
       }
       else {
-        if (!this.bJs.booleanValue()) {
+        if (!this.dDa.booleanValue()) {
           break label400;
         }
       }
@@ -111,9 +124,9 @@ public final class o
             }
             ??? = ((String)???).concat((String)???);
           }
-          synchronized (this.bJr)
+          synchronized (this.dCZ)
           {
-            this.bJr.put(paramIntent.getAction(), ???);
+            this.dCZ.put(paramIntent.getAction(), ???);
             if (Log.isLoggable("FirebaseInstanceId", 3))
             {
               ??? = String.valueOf(???);
@@ -151,21 +164,6 @@ public final class o
     return 402;
   }
   
-  public static o yL()
-  {
-    try
-    {
-      AppMethodBeat.i(4180);
-      if (bJq == null) {
-        bJq = new o();
-      }
-      o localo = bJq;
-      AppMethodBeat.o(4180);
-      return localo;
-    }
-    finally {}
-  }
-  
   public final int a(Context paramContext, String paramString, Intent paramIntent)
   {
     AppMethodBeat.i(4183);
@@ -198,7 +196,7 @@ public final class o
       }
       i = 1;
       break;
-      this.bJt.offer(paramIntent);
+      this.dDb.offer(paramIntent);
       for (;;)
       {
         paramString = new Intent(paramString);
@@ -206,7 +204,7 @@ public final class o
         i = b(paramContext, paramString);
         AppMethodBeat.o(4183);
         return i;
-        this.bJu.offer(paramIntent);
+        this.dDc.offer(paramIntent);
       }
       new String("Unknown service action: ");
     }
@@ -214,7 +212,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.o
  * JD-Core Version:    0.7.0.1
  */

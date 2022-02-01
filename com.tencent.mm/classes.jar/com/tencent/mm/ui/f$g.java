@@ -1,17 +1,22 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
 
-public final class f$g
+public abstract interface f$g
 {
-  public static final String VSe;
-  
-  static
+  public static enum a
   {
-    AppMethodBeat.i(141282);
-    VSe = b.aSL() + "switchAccountBg";
-    AppMethodBeat.o(141282);
+    static
+    {
+      AppMethodBeat.i(249349);
+      adwi = new a("SUCCESS", 0);
+      adwj = new a("FAIL", 1);
+      adwk = new a("CANCEL", 2);
+      adwl = new a[] { adwi, adwj, adwk };
+      AppMethodBeat.o(249349);
+    }
+    
+    private a() {}
   }
 }
 

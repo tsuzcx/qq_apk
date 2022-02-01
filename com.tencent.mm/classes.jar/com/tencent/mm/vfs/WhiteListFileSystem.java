@@ -3,200 +3,209 @@ package com.tencent.mm.vfs;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.io.OutputStream;
+import java.nio.channels.WritableByteChannel;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class WhiteListFileSystem
   extends AbstractFileSystem
 {
   public static final Parcelable.Creator<WhiteListFileSystem> CREATOR;
-  final FileSystem YBI;
-  final String[] YFH;
+  private static final Pattern agBp;
+  final String[] agBo;
+  final FileSystem agvG;
   
   static
   {
-    AppMethodBeat.i(196286);
+    AppMethodBeat.i(238468);
+    agBp = Pattern.compile("^[0-9a-f]{32}");
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(196286);
+    AppMethodBeat.o(238468);
   }
   
   WhiteListFileSystem(Parcel paramParcel)
   {
-    AppMethodBeat.i(196276);
-    ad.a(paramParcel, WhiteListFileSystem.class, 1);
-    this.YBI = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
-    this.YFH = paramParcel.createStringArray();
-    AppMethodBeat.o(196276);
+    AppMethodBeat.i(238457);
+    ah.a(paramParcel, WhiteListFileSystem.class, 1);
+    this.agvG = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
+    this.agBo = paramParcel.createStringArray();
+    AppMethodBeat.o(238457);
   }
   
   WhiteListFileSystem(FileSystem paramFileSystem, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(196273);
-    this.YBI = paramFileSystem;
-    this.YFH = new String[paramArrayOfString.length];
+    AppMethodBeat.i(238451);
+    this.agvG = paramFileSystem;
+    this.agBo = new String[paramArrayOfString.length];
     int i = 0;
     if (i < paramArrayOfString.length)
     {
       paramFileSystem = paramArrayOfString[i];
       if ((paramFileSystem == null) || (paramFileSystem.isEmpty())) {
-        this.YFH[i] = null;
+        this.agBo[i] = null;
       }
       for (;;)
       {
         i += 1;
         break;
         if (paramFileSystem.charAt(paramFileSystem.length() - 1) == '*') {
-          this.YFH[i] = (paramFileSystem.substring(0, paramFileSystem.length() - 1) + '\000');
+          this.agBo[i] = (paramFileSystem.substring(0, paramFileSystem.length() - 1) + '\000');
         } else {
-          this.YFH[i] = paramFileSystem;
+          this.agBo[i] = paramFileSystem;
         }
       }
     }
-    AppMethodBeat.o(196273);
-  }
-  
-  public final FileSystem.b cp(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(196281);
-    if ((!BuildInfo.DEBUG) && (!BuildInfo.IS_FLAVOR_RED) && ((BuildInfo.CLIENT_VERSION_INT & 0xFF) >= 48))
-    {
-      paramMap = this.YBI.cp(paramMap);
-      AppMethodBeat.o(196281);
-      return paramMap;
-    }
-    TreeSet localTreeSet = new TreeSet();
-    Object localObject = this.YFH;
-    int j = localObject.length;
-    int i = 0;
-    String str;
-    while (i < j)
-    {
-      str = ad.ad(localObject[i], paramMap);
-      if ((str != null) && (!str.isEmpty()) && (!str.equals(""))) {
-        localTreeSet.add(ad.r(str, true, true));
-      }
-      i += 1;
-    }
-    Iterator localIterator = localTreeSet.iterator();
-    localObject = null;
-    while (localIterator.hasNext())
-    {
-      str = (String)localIterator.next();
-      if ((localObject != null) && (str.startsWith((String)localObject)) && (str.charAt(((String)localObject).length()) == '/')) {
-        localIterator.remove();
-      } else {
-        localObject = str;
-      }
-    }
-    paramMap = new a(this.YBI.cp(paramMap), (String[])localTreeSet.toArray(new String[0]));
-    AppMethodBeat.o(196281);
-    return paramMap;
+    AppMethodBeat.o(238451);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(196285);
-    ad.b(paramParcel, WhiteListFileSystem.class, 1);
-    paramParcel.writeParcelable(this.YBI, paramInt);
-    paramParcel.writeStringArray(this.YFH);
-    AppMethodBeat.o(196285);
+    AppMethodBeat.i(238473);
+    ah.b(paramParcel, WhiteListFileSystem.class, 1);
+    paramParcel.writeParcelable(this.agvG, paramInt);
+    paramParcel.writeStringArray(this.agBo);
+    AppMethodBeat.o(238473);
   }
   
   final class a
-    extends d
+    extends f
   {
-    final FileSystem.b YBJ;
-    final List<FileSystem.b> YCf;
-    final String[] YFH;
+    final String[] agBo;
+    final FileSystem.b agwv;
+    final List<FileSystem.b> agxd;
     
     a(FileSystem.b paramb, String[] paramArrayOfString)
     {
-      AppMethodBeat.i(211146);
-      this.YBJ = paramb;
-      this.YCf = Collections.singletonList(paramb);
-      this.YFH = paramArrayOfString;
-      AppMethodBeat.o(211146);
+      AppMethodBeat.i(238233);
+      this.agwv = paramb;
+      this.agxd = Collections.singletonList(paramb);
+      this.agBo = paramArrayOfString;
+      AppMethodBeat.o(238233);
     }
     
-    public final boolean bBD(String paramString)
+    private boolean eD(String paramString, boolean paramBoolean)
     {
-      int j = 1;
-      AppMethodBeat.i(211150);
-      int i;
-      if (!paramString.isEmpty())
-      {
-        i = Arrays.binarySearch(this.YFH, paramString + '\000');
-        if (i < 0) {
-          break label65;
-        }
-        i = j;
+      AppMethodBeat.i(238240);
+      String str = paramString;
+      if (paramBoolean) {
+        str = ah.bEv(paramString);
       }
-      while (i != 0)
+      if ((str == null) || (str.isEmpty()))
       {
-        boolean bool = super.bBD(paramString);
-        AppMethodBeat.o(211150);
-        return bool;
-        label65:
-        i = -i - 2;
-        if (i >= 0)
+        AppMethodBeat.o(238240);
+        return true;
+      }
+      int i = Arrays.binarySearch(this.agBo, str + '\000');
+      if (i >= 0)
+      {
+        AppMethodBeat.o(238240);
+        return true;
+      }
+      i = -i - 2;
+      if (i < 0)
+      {
+        AppMethodBeat.o(238240);
+        return false;
+      }
+      paramString = this.agBo[i];
+      if (paramString.charAt(paramString.length() - 1) == 0)
+      {
+        if ((str.startsWith(paramString)) && (str.substring(paramString.length()).indexOf('/') == -1))
         {
-          String str = this.YFH[i];
-          if (str.charAt(str.length() - 1) == 0)
-          {
-            if (paramString.startsWith(str))
-            {
-              i = j;
-              if (paramString.substring(str.length()).indexOf('/') == -1) {
-                continue;
-              }
-            }
-            i = 0;
-            continue;
-          }
-          if (paramString.startsWith(str))
-          {
-            i = j;
-            if (paramString.length() == str.length()) {
-              continue;
-            }
-            i = j;
-            if (paramString.charAt(str.length()) == '/') {
-              continue;
-            }
-          }
+          AppMethodBeat.o(238240);
+          return true;
         }
-        i = 0;
+        AppMethodBeat.o(238240);
+        return false;
       }
-      Log.w("VFS.WhiteListFileSystem", "Path not in white list: " + paramString + " -> " + this.YBJ.ieX().toString());
-      AppMethodBeat.o(211150);
+      if ((str.startsWith(paramString)) && ((str.length() == paramString.length()) || (str.charAt(paramString.length()) == '/')))
+      {
+        AppMethodBeat.o(238240);
+        return true;
+      }
+      AppMethodBeat.o(238240);
       return false;
     }
     
-    public final FileSystem.b hX(String paramString, int paramInt)
+    public final boolean bDX(String paramString)
     {
-      return this.YBJ;
+      AppMethodBeat.i(238284);
+      boolean bool;
+      if ((paramString.isEmpty()) || (eD(paramString, false)))
+      {
+        bool = super.bDX(paramString);
+        AppMethodBeat.o(238284);
+        return bool;
+      }
+      if (WhiteListFileSystem.cnN().matcher(paramString).matches())
+      {
+        bool = super.bDX(paramString);
+        AppMethodBeat.o(238284);
+        return bool;
+      }
+      paramString = "Path not in white list: " + paramString + " -> " + this.agwv.jKa().toString();
+      Log.e("VFS.WhiteListFileSystem", paramString);
+      paramString = new AssertionError(paramString);
+      AppMethodBeat.o(238284);
+      throw paramString;
     }
     
-    public final FileSystem ieX()
+    public final WritableByteChannel et(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(238276);
+      if (eD(paramString, true))
+      {
+        paramString = super.et(paramString, paramBoolean);
+        AppMethodBeat.o(238276);
+        return paramString;
+      }
+      paramString = "Path not in white list: " + paramString + " -> " + this.agwv.jKa().toString();
+      Log.e("VFS.WhiteListFileSystem", paramString);
+      paramString = new AssertionError(paramString);
+      AppMethodBeat.o(238276);
+      throw paramString;
+    }
+    
+    public final OutputStream ev(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(238268);
+      if (eD(paramString, true))
+      {
+        paramString = super.ev(paramString, paramBoolean);
+        AppMethodBeat.o(238268);
+        return paramString;
+      }
+      paramString = "Path not in white list: " + paramString + " -> " + this.agwv.jKa().toString();
+      Log.e("VFS.WhiteListFileSystem", paramString);
+      paramString = new AssertionError(paramString);
+      AppMethodBeat.o(238268);
+      throw paramString;
+    }
+    
+    public final FileSystem jKa()
     {
       return WhiteListFileSystem.this;
     }
     
-    public final List<FileSystem.b> ifa()
+    public final List<FileSystem.b> jKf()
     {
-      return this.YCf;
+      return this.agxd;
+    }
+    
+    public final FileSystem.b jk(String paramString, int paramInt)
+    {
+      return this.agwv;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.WhiteListFileSystem
  * JD-Core Version:    0.7.0.1
  */

@@ -103,14 +103,11 @@ public class Apn
       try
       {
         paramContext = (WifiInfo)a.a((WifiManager)paramContext.getSystemService("wifi"), "com/tencent/smtt/utils/Apn", "getWifiSSID", "(Landroid/content/Context;)Ljava/lang/String;", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
-        if (paramContext != null)
-        {
+        if (paramContext != null) {
           paramContext = paramContext.getBSSID();
-          AppMethodBeat.o(54009);
-          return paramContext;
         }
       }
-      catch (Throwable paramContext)
+      finally
       {
         AppMethodBeat.o(54009);
         return "";
@@ -139,7 +136,7 @@ public class Apn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.utils.Apn
  * JD-Core Version:    0.7.0.1
  */

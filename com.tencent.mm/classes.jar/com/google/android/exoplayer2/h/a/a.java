@@ -6,13 +6,15 @@ import java.util.NavigableSet;
 
 public abstract interface a
 {
+  public abstract long Uo();
+  
   public abstract NavigableSet<g> a(String paramString, b paramb);
   
   public abstract void a(g paramg);
   
   public abstract void b(g paramg);
   
-  public abstract long bA(String paramString);
+  public abstract long cS(String paramString);
   
   public abstract g e(String paramString, long paramLong);
   
@@ -24,9 +26,7 @@ public abstract interface a
   
   public abstract void g(String paramString, long paramLong);
   
-  public abstract void r(File paramFile);
-  
-  public abstract long uP();
+  public abstract void x(File paramFile);
   
   public static class a
     extends IOException
@@ -53,7 +53,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.a
  * JD-Core Version:    0.7.0.1
  */

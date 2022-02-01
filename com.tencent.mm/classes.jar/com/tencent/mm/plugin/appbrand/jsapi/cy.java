@@ -1,154 +1,140 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.content.Intent;
+import com.tencent.luggage.l.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.m.i;
-import com.tencent.mm.plugin.appbrand.m.n;
-import com.tencent.mm.plugin.appbrand.m.o;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
+import com.tencent.mm.protocal.protobuf.exv;
+import com.tencent.mm.protocal.protobuf.exw;
 import com.tencent.mm.sdk.platformtools.Log;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSendRedCoverAppMsg;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "()V", "REQUEST_CODE", "", "getREQUEST_CODE", "()I", "TAG", "", "getTAG", "()Ljava/lang/String;", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class cy
+  extends c<k>
 {
-  /* Error */
-  public static String C(String paramString1, String paramString2, int paramInt)
+  @Deprecated
+  public static final int CTRL_INDEX = 990;
+  @Deprecated
+  public static final String NAME = "sendRedCoverAppMsg";
+  private static final a rAB;
+  final int REQUEST_CODE;
+  final String TAG;
+  
+  static
   {
-    // Byte code:
-    //   0: ldc 9
-    //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_1
-    //   6: astore_3
-    //   7: aload_1
-    //   8: invokestatic 21	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   11: ifeq +6 -> 17
-    //   14: ldc 23
-    //   16: astore_3
-    //   17: getstatic 29	java/util/Locale:ENGLISH	Ljava/util/Locale;
-    //   20: astore 4
-    //   22: iload_2
-    //   23: ifne +43 -> 66
-    //   26: ldc 31
-    //   28: astore_1
-    //   29: aload 4
-    //   31: ldc 33
-    //   33: iconst_4
-    //   34: anewarray 4	java/lang/Object
-    //   37: dup
-    //   38: iconst_0
-    //   39: aload_0
-    //   40: aastore
-    //   41: dup
-    //   42: iconst_1
-    //   43: aload_3
-    //   44: aastore
-    //   45: dup
-    //   46: iconst_2
-    //   47: aload_1
-    //   48: aastore
-    //   49: dup
-    //   50: iconst_3
-    //   51: invokestatic 37	com/tencent/mm/plugin/appbrand/jsapi/cy:aGk	()Ljava/lang/String;
-    //   54: aastore
-    //   55: invokestatic 43	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   58: astore_1
-    //   59: ldc 9
-    //   61: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   64: aload_1
-    //   65: areturn
-    //   66: iload_2
-    //   67: invokestatic 50	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   70: astore_1
-    //   71: goto -42 -> 29
-    //   74: astore_1
-    //   75: getstatic 29	java/util/Locale:ENGLISH	Ljava/util/Locale;
-    //   78: ldc 52
-    //   80: iconst_3
-    //   81: anewarray 4	java/lang/Object
-    //   84: dup
-    //   85: iconst_0
-    //   86: aload_1
-    //   87: invokevirtual 55	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   90: aastore
-    //   91: dup
-    //   92: iconst_1
-    //   93: aload_0
-    //   94: aastore
-    //   95: dup
-    //   96: iconst_2
-    //   97: aload_3
-    //   98: invokestatic 59	com/tencent/mm/sdk/platformtools/Util:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
-    //   101: invokevirtual 63	java/lang/String:length	()I
-    //   104: invokestatic 68	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   107: aastore
-    //   108: invokestatic 43	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   111: astore_0
-    //   112: ldc 70
-    //   114: ldc 72
-    //   116: iconst_1
-    //   117: anewarray 4	java/lang/Object
-    //   120: dup
-    //   121: iconst_0
-    //   122: aload_0
-    //   123: aastore
-    //   124: invokestatic 78	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   127: new 8	java/lang/OutOfMemoryError
-    //   130: dup
-    //   131: aload_0
-    //   132: invokespecial 82	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
-    //   135: astore_0
-    //   136: ldc 9
-    //   138: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   141: aload_0
-    //   142: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	143	0	paramString1	String
-    //   0	143	1	paramString2	String
-    //   0	143	2	paramInt	int
-    //   6	92	3	str	String
-    //   20	10	4	localLocale	java.util.Locale
-    // Exception table:
-    //   from	to	target	type
-    //   17	22	74	java/lang/OutOfMemoryError
-    //   29	59	74	java/lang/OutOfMemoryError
+    AppMethodBeat.i(325447);
+    rAB = new a((byte)0);
+    AppMethodBeat.o(325447);
   }
   
-  public static void a(o paramo, String paramString1, String paramString2, int paramInt)
+  public cy()
   {
-    AppMethodBeat.i(210035);
-    if ((paramo instanceof i))
+    AppMethodBeat.i(325444);
+    this.TAG = "MicroMsg.JsApiSendRedCoverAppMsg";
+    this.REQUEST_CODE = com.tencent.luggage.sdk.h.a.ce(this);
+    AppMethodBeat.o(325444);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiSendRedCoverAppMsg$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class a {}
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/JsApiSendRedCoverAppMsg$invoke$1", "Lcom/tencent/luggage/util/LuggageActivityHelper$ActivityResultInterceptCallback;", "onResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements e.c
+  {
+    b(cy paramcy, k paramk, int paramInt, ah.f<String> paramf) {}
+    
+    public final boolean onResult(final int paramInt1, int paramInt2, Intent paramIntent)
     {
-      n localn = (n)((i)paramo).Q(n.class);
-      if (localn != null)
+      AppMethodBeat.i(325709);
+      if (paramInt1 != this.rAC.REQUEST_CODE)
       {
-        localn.subscribeHandler(paramString1, paramString2, paramInt, aGk());
-        AppMethodBeat.o(210035);
-        return;
+        AppMethodBeat.o(325709);
+        return false;
+      }
+      if (paramInt2 == -1) {
+        if (paramIntent != null)
+        {
+          ah.f localf = this.rAE;
+          cy localcy = this.rAC;
+          final k localk = this.rAD;
+          paramInt1 = this.rxe;
+          exv localexv = new exv();
+          localexv.abzw = ((String)localf.aqH);
+          localexv.aavx = paramIntent.getStringExtra("Select_Conv_User");
+          Log.i(localcy.TAG, "do send redcover appmsg: " + localf.aqH + ", " + localexv.aavx);
+          paramIntent = new c.a();
+          paramIntent.funcId = 6446;
+          paramIntent.uri = "/cgi-bin/micromsg-bin/sendsharecovermsg";
+          paramIntent.otE = ((com.tencent.mm.bx.a)localexv);
+          paramIntent.otF = ((com.tencent.mm.bx.a)new exw());
+          IPCRunCgi.a(paramIntent.bEF(), (IPCRunCgi.a)new a(localcy, localk, paramInt1));
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(325709);
+        return true;
+        this.rAD.callback(this.rxe, this.rAC.ZP("fail:cancel"));
       }
     }
-    paramo.evaluateJavascript(C(paramString1, paramString2, paramInt), null);
-    AppMethodBeat.o(210035);
-  }
-  
-  public static String aGk()
-  {
-    AppMethodBeat.i(140650);
-    try
+    
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/JsApiSendRedCoverAppMsg$invoke$1$onResult$1$1", "Lcom/tencent/mm/ipcinvoker/wx_extension/IPCRunCgi$ICGICallback;", "callback", "", "errType", "", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class a
+      implements IPCRunCgi.a
     {
-      String str = new JSONObject().put("nativeTime", System.currentTimeMillis()).toString();
-      AppMethodBeat.o(140650);
-      return str;
+      a(cy paramcy, k paramk, int paramInt) {}
+      
+      public final void callback(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.c paramc)
+      {
+        AppMethodBeat.i(325635);
+        Log.i(this.rAC.TAG, "sendRedCoverAppMsg errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        if ((paramInt1 == 0) && (paramInt2 == 0)) {
+          if (paramc == null) {
+            paramString = null;
+          }
+        }
+        while ((paramString instanceof exw))
+        {
+          paramString = c.c.b(paramc.otC);
+          if (paramString == null)
+          {
+            paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.SendShareCoverMsgResp");
+            AppMethodBeat.o(325635);
+            throw paramString;
+            paramString = c.c.b(paramc.otC);
+          }
+          else
+          {
+            paramString = (exw)paramString;
+            Log.i(this.rAC.TAG, s.X("send result: ", Integer.valueOf(paramString.hAV)));
+            if (paramString.hAV == 0)
+            {
+              localk.callback(paramInt1, this.rAC.ZP("ok"));
+              AppMethodBeat.o(325635);
+              return;
+            }
+            localk.callback(paramInt1, this.rAC.ZP("fail:send fail"));
+            AppMethodBeat.o(325635);
+            return;
+            Log.e(this.rAC.TAG, "send error");
+            localk.callback(paramInt1, this.rAC.ZP("fail:send error"));
+          }
+        }
+        AppMethodBeat.o(325635);
+      }
     }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.JsScriptEvaluator", "makeExtStatJson e = %s", new Object[] { localException });
-      AppMethodBeat.o(140650);
-    }
-    return "{}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.cy
  * JD-Core Version:    0.7.0.1
  */

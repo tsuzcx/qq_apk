@@ -20,7 +20,7 @@ public final class CameraPosition
     AppMethodBeat.i(87571);
     CREATOR = new Parcelable.Creator()
     {
-      public final CameraPosition createFromParcel(Parcel paramAnonymousParcel)
+      public CameraPosition createFromParcel(Parcel paramAnonymousParcel)
       {
         AppMethodBeat.i(87546);
         float f1 = paramAnonymousParcel.readFloat();
@@ -33,7 +33,7 @@ public final class CameraPosition
         return paramAnonymousParcel;
       }
       
-      public final CameraPosition[] newArray(int paramAnonymousInt)
+      public CameraPosition[] newArray(int paramAnonymousInt)
       {
         return new CameraPosition[paramAnonymousInt];
       }
@@ -212,7 +212,7 @@ public final class CameraPosition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.CameraPosition
  * JD-Core Version:    0.7.0.1
  */

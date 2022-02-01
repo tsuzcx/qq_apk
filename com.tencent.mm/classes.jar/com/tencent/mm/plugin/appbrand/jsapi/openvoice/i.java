@@ -2,17 +2,15 @@ package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.page.capsulebar.a;
 import com.tencent.mm.plugin.appbrand.page.capsulebar.a.b;
-import com.tencent.mm.plugin.appbrand.page.capsulebar.i.a;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.m.a;
 import com.tencent.mm.plugin.appbrand.page.u;
 import com.tencent.mm.plugin.appbrand.page.x;
-import com.tencent.mm.plugin.appbrand.permission.r;
-import com.tencent.mm.plugin.appbrand.t;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.plugin.appbrand.permission.s;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.Map;
@@ -21,15 +19,15 @@ import org.json.JSONObject;
 public abstract class i
   extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
-  private static i.a ozW;
-  private ad cvo = null;
+  private static m.a rDP;
+  private ad enm = null;
   
-  protected static void b(Map<String, Object> paramMap, int paramInt)
+  protected static void c(Map<String, Object> paramMap, int paramInt)
   {
     paramMap.put("errCode", Integer.valueOf(paramInt));
   }
   
-  protected static int eC(int paramInt1, int paramInt2)
+  protected static int fw(int paramInt1, int paramInt2)
   {
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
       return 0;
@@ -54,32 +52,32 @@ public abstract class i
   
   public final void b(final com.tencent.mm.plugin.appbrand.service.c paramc, final JSONObject paramJSONObject, final int paramInt)
   {
-    if (paramc.ax(Activity.class) == null)
+    if (paramc.aQ(Activity.class) == null)
     {
       Log.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "hy: no page context");
       return;
     }
-    r.b(paramc.getAppId(), new androidx.core.app.a.a()
+    s.c(paramc.getAppId(), new androidx.core.app.a.a()
     {
       public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
       {
-        AppMethodBeat.i(281372);
+        AppMethodBeat.i(326349);
         if (paramAnonymousInt != 121)
         {
           Log.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestAudioPermission requestCode is not for open voice api");
-          AppMethodBeat.o(281372);
+          AppMethodBeat.o(326349);
           return;
         }
         if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
         {
           Log.i("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestAudioPermission permission is grant for open voice api");
           i.this.b(paramc, paramJSONObject, paramInt);
-          AppMethodBeat.o(281372);
+          AppMethodBeat.o(326349);
           return;
         }
         Log.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestAudioPermission sys perm denied for open voice api");
-        paramc.j(paramInt, i.this.h("fail:system permission denied", null));
-        AppMethodBeat.o(281372);
+        paramc.callback(paramInt, i.this.ZP("fail:system permission denied"));
+        AppMethodBeat.o(326349);
       }
     });
     Object localObject = paramc.getContext();
@@ -87,7 +85,7 @@ public abstract class i
     if ((localObject == null) || (!(localObject instanceof Activity)))
     {
       Log.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "fail, requestAudioPermission pageContext is null");
-      paramc.j(paramInt, h("fail: context is null", null));
+      paramc.callback(paramInt, ZP("fail: context is null"));
       i = 0;
     }
     boolean bool;
@@ -95,68 +93,68 @@ public abstract class i
     {
       Log.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestAudioPermission is fail");
       Log.w("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "hy: no record audio permission");
-      paramc.j(paramInt, h("fail: no record audio permission", null));
+      paramc.callback(paramInt, ZP("fail: no record audio permission"));
       return;
-      bool = b.a((Activity)localObject, "android.permission.RECORD_AUDIO", 121, "", "");
+      bool = com.tencent.luggage.l.i.a((Activity)localObject, paramc, "android.permission.RECORD_AUDIO", 121, "", "");
       i = bool;
       if (bool)
       {
-        r.amk(paramc.getAppId());
+        s.afs(paramc.getAppId());
         i = bool;
       }
     }
-    r.b(paramc.getAppId(), new androidx.core.app.a.a()
+    s.c(paramc.getAppId(), new androidx.core.app.a.a()
     {
       public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
       {
-        AppMethodBeat.i(272387);
+        AppMethodBeat.i(326344);
         if (paramAnonymousInt != 122)
         {
           Log.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestCameraPermission requestCode is not for open voice api");
-          AppMethodBeat.o(272387);
+          AppMethodBeat.o(326344);
           return;
         }
         if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
         {
           Log.i("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestCameraPermission permission is grant for open voice api");
           i.this.b(paramc, paramJSONObject, paramInt);
-          AppMethodBeat.o(272387);
+          AppMethodBeat.o(326344);
           return;
         }
         Log.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestCameraPermission sys perm denied for open voice api");
-        paramc.j(paramInt, i.this.h("fail:system permission denied", null));
-        AppMethodBeat.o(272387);
+        paramc.callback(paramInt, i.this.ZP("fail:system permission denied"));
+        AppMethodBeat.o(326344);
       }
     });
     localObject = paramc.getContext();
     if ((localObject == null) || (!(localObject instanceof Activity)))
     {
       Log.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "fail, requestCameraPermission pageContext is null");
-      paramc.j(paramInt, h("fail: context is null", null));
+      paramc.callback(paramInt, ZP("fail: context is null"));
       i = 0;
     }
     while (i == 0)
     {
       Log.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestCameraPermission is fail");
       Log.w("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "hy: no record video permission");
-      paramc.j(paramInt, h("fail: no record video permission", null));
+      paramc.callback(paramInt, ZP("fail: no record video permission"));
       return;
-      bool = b.a((Activity)localObject, "android.permission.CAMERA", 122, "", "");
+      bool = com.tencent.luggage.l.i.a((Activity)localObject, paramc, "android.permission.CAMERA", 122, "", "");
       i = bool;
       if (bool)
       {
-        r.amk(paramc.getAppId());
+        s.afs(paramc.getAppId());
         i = bool;
       }
     }
-    localObject = paramc.getRuntime().bDz();
+    localObject = paramc.getRuntime().ccN();
     if ((((x)localObject).getCurrentPage() != null) || (((x)localObject).getCurrentPage().getCurrentPageView() != null)) {
-      this.cvo = ((x)localObject).getCurrentPage().getCurrentPageView();
+      this.enm = ((x)localObject).getCurrentPage().getCurrentPageView();
     }
     a(paramc, paramJSONObject, paramInt);
   }
   
-  public final void ib(final boolean paramBoolean)
+  public final void ja(final boolean paramBoolean)
   {
     try
     {
@@ -167,22 +165,22 @@ public abstract class i
           public final void run()
           {
             AppMethodBeat.i(46692);
-            i.this.ib(paramBoolean);
+            i.this.ja(paramBoolean);
             AppMethodBeat.o(46692);
           }
         });
         return;
       }
-      if ((this.cvo != null) && (this.cvo.getRuntime() != null))
+      if ((this.enm != null) && (this.enm.getRuntime() != null))
       {
-        if (ozW != null)
+        if (rDP != null)
         {
-          ozW.dismiss();
-          ozW = null;
+          rDP.dismiss();
+          rDP = null;
         }
         if (paramBoolean)
         {
-          ozW = com.tencent.mm.plugin.appbrand.page.capsulebar.a.a.ah(this.cvo.getRuntime()).a(a.b.qwM);
+          rDP = com.tencent.mm.plugin.appbrand.page.capsulebar.a.a.av(this.enm.getRuntime()).a(a.b.tBL);
           return;
         }
       }
@@ -195,7 +193,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.openvoice.i
  * JD-Core Version:    0.7.0.1
  */

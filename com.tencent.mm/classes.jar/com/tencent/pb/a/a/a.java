@@ -5,41 +5,41 @@ import com.tencent.pb.common.c.f;
 public final class a
 {
   private static String TAG = "AccountEngine";
-  private static int ZiC = 0;
-  private static String ZiD = "";
+  private static int ahhd = 0;
+  private static String ahhe = "";
   
-  public static void aAf(int paramInt)
+  public static void aGS(int paramInt)
   {
-    ZiC = paramInt;
+    ahhd = paramInt;
   }
   
-  public static void bCI(String paramString)
+  public static void bFl(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    ZiD = str;
+    ahhe = str;
   }
   
-  public static String ila()
+  public static String jRr()
   {
-    return ZiD;
+    return ahhe;
   }
   
-  public static boolean ilb()
+  public static boolean jRs()
   {
-    return !f.fK(ZiD);
+    return !f.hm(ahhe);
   }
   
-  public static boolean ilc()
+  public static boolean jRt()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.a.a.a
  * JD-Core Version:    0.7.0.1
  */

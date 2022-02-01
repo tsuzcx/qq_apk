@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dpb;
-import com.tencent.mm.protocal.protobuf.dpc;
+import com.tencent.mm.protocal.protobuf.ehv;
+import com.tencent.mm.protocal.protobuf.ehw;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends q
+  extends p
   implements m
 {
-  private dpb DRr;
-  public dpc DRs;
-  private i callback;
-  private d rr;
+  private ehv JIB;
+  public ehw JIC;
+  private h callback;
+  private c rr;
   
   public b(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
     AppMethodBeat.i(25454);
     this.rr = null;
-    this.DRr = null;
-    this.DRs = null;
-    d.a locala = new d.a();
-    locala.lBU = new dpb();
-    locala.lBV = new dpc();
+    this.JIB = null;
+    this.JIC = null;
+    c.a locala = new c.a();
+    locala.otE = new ehv();
+    locala.otF = new ehw();
     locala.funcId = 807;
     locala.uri = "/cgi-bin/micromsg-bin/pstnchecknumber";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    this.DRr = ((dpb)d.b.b(this.rr.lBR));
-    this.DRr.TWd = paramString1;
-    this.DRr.TWf = paramString2;
-    this.DRr.TWh = paramString3;
-    this.DRr.TWg = paramString4;
-    this.DRr.TWi = paramInt;
+    this.rr = locala.bEF();
+    this.JIB = ((ehv)c.b.b(this.rr.otB));
+    this.JIB.abmS = paramString1;
+    this.JIB.abmU = paramString2;
+    this.JIB.abmW = paramString3;
+    this.JIB.abmV = paramString4;
+    this.JIB.abmX = paramInt;
     Log.i("MicroMsg.NetSceneIPCallCheckNumber", "NetSceneIPCallCheckNumber pureNumber:%s,lastCountry:%s,osCountry:%s,simCountry:%s,dialScene:%d", new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(paramInt) });
     AppMethodBeat.o(25454);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(25455);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25455);
     return i;
@@ -65,7 +65,7 @@ public final class b
   {
     AppMethodBeat.i(25456);
     Log.i("MicroMsg.NetSceneIPCallCheckNumber", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.DRs = ((dpc)d.c.b(((d)params).lBS));
+    this.JIC = ((ehw)c.c.b(((c)params).otC));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

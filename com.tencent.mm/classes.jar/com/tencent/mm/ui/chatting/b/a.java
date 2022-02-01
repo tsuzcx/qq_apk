@@ -1,22 +1,24 @@
 package com.tencent.mm.ui.chatting.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.j;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ay.g;
+import com.tencent.mm.am.i;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.choosemsgfile.compat.b;
 import com.tencent.mm.choosemsgfile.compat.b.a;
 import com.tencent.mm.choosemsgfile.compat.b.b;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.pluginsdk.model.app.ao;
+import com.tencent.mm.plugin.record.model.e;
+import com.tencent.mm.plugin.record.model.g;
+import com.tencent.mm.pluginsdk.model.app.as;
 import com.tencent.mm.pluginsdk.model.app.c;
-import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.pluginsdk.model.app.m.a;
+import com.tencent.mm.pluginsdk.model.app.d;
+import com.tencent.mm.pluginsdk.model.app.n;
+import com.tencent.mm.pluginsdk.model.app.n.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.chatting.gallery.j;
 
 public final class a
   implements b
@@ -30,28 +32,28 @@ public final class a
       AppMethodBeat.o(35060);
       return null;
     }
-    i local2 = new i()
+    com.tencent.mm.am.h local2 = new com.tencent.mm.am.h()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
       {
         AppMethodBeat.i(35052);
-        Log.i("MicroMsg.ChooseMsgFileCompat", "downloadAppAttachDirect errType:%d errCode:%d, errMsg:%s type:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Integer.valueOf(paramAnonymousq.getType()) });
-        if (paramAnonymousq.getType() != 221)
+        Log.i("MicroMsg.ChooseMsgFileCompat", "downloadAppAttachDirect errType:%d errCode:%d, errMsg:%s type:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Integer.valueOf(paramAnonymousp.getType()) });
+        if (paramAnonymousp.getType() != 221)
         {
           AppMethodBeat.o(35052);
           return;
         }
-        paramAnonymousq = (com.tencent.mm.plugin.record.b.f)paramAnonymousq;
-        if (!paramString.equals(paramAnonymousq.getMediaId()))
+        paramAnonymousp = (g)paramAnonymousp;
+        if (!paramString.equals(paramAnonymousp.getMediaId()))
         {
-          Log.w("MicroMsg.ChooseMsgFileCompat", "media:%s is not equal targetMedia:%s", new Object[] { paramString, paramAnonymousq.getMediaId() });
+          Log.w("MicroMsg.ChooseMsgFileCompat", "media:%s is not equal targetMedia:%s", new Object[] { paramString, paramAnonymousp.getMediaId() });
           AppMethodBeat.o(35052);
           return;
         }
-        bh.aGY().b(221, this);
+        bh.aZW().b(221, this);
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          paramAnonymousInt1 = paramAnonymousq.retCode;
+          paramAnonymousInt1 = paramAnonymousp.retCode;
           Log.i("MicroMsg.ChooseMsgFileCompat", "downloadAppAttachDirect retCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt1) });
           if ((paramAnonymousInt1 < 0) && (parama != null)) {
             parama.u(paramAnonymousInt1, "");
@@ -59,8 +61,8 @@ public final class a
           AppMethodBeat.o(35052);
           return;
         }
-        paramAnonymousq = m.p(paramString, paramLong);
-        if ((paramAnonymousq != null) && (paramAnonymousq.field_status == 102L))
+        paramAnonymousp = n.q(paramString, paramLong);
+        if ((paramAnonymousp != null) && (paramAnonymousp.field_status == 102L))
         {
           if (parama != null) {
             parama.u(1, paramAnonymousString);
@@ -74,14 +76,14 @@ public final class a
         AppMethodBeat.o(35052);
       }
     };
-    bh.aGY().a(221, local2);
-    paramString = new com.tencent.mm.plugin.record.b.f(paramLong, paramString, new j()
+    bh.aZW().a(221, local2);
+    paramString = new g(paramLong, paramString, new i()
     {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, q paramAnonymousq)
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, p paramAnonymousp)
       {
         AppMethodBeat.i(35053);
         if (parama != null) {
-          parama.cK(paramAnonymousInt1, paramAnonymousInt2);
+          parama.dA(paramAnonymousInt1, paramAnonymousInt2);
         }
         if ((paramAnonymousInt1 >= paramAnonymousInt2) && (parama != null)) {
           parama.u(0, "");
@@ -89,14 +91,14 @@ public final class a
         AppMethodBeat.o(35053);
       }
     });
-    bh.aGY().a(paramString, 0);
+    bh.aZW().a(paramString, 0);
     paramString = new com.tencent.mm.vending.e.a()
     {
       public final void dead()
       {
         AppMethodBeat.i(35054);
         paramString.a(null);
-        com.tencent.mm.kernel.h.aGY().a(paramString);
+        com.tencent.mm.kernel.h.aZW().a(paramString);
         AppMethodBeat.o(35054);
       }
     };
@@ -104,12 +106,12 @@ public final class a
     return paramString;
   }
   
-  public final String a(ca paramca, g paramg)
+  public final String a(cc paramcc, com.tencent.mm.modelimage.h paramh)
   {
     AppMethodBeat.i(35063);
-    paramca = com.tencent.mm.ui.chatting.gallery.h.a(paramca, paramg);
+    paramcc = j.a(paramcc, paramh);
     AppMethodBeat.o(35063);
-    return paramca;
+    return paramcc;
   }
   
   public final void a(c paramc)
@@ -119,21 +121,21 @@ public final class a
     {
       paramc.field_status = 101L;
       paramc.field_lastModifyTime = Util.nowSecond();
-      ao.ctZ().a(paramc, new String[0]);
+      as.cWJ().a(paramc, new String[0]);
     }
     AppMethodBeat.o(35059);
   }
   
-  public final void a(ca paramca, final b.a parama)
+  public final void a(cc paramcc, final b.a parama)
   {
     AppMethodBeat.i(35065);
-    m.a(paramca, new m.a()
+    n.a(paramcc, new n.a()
     {
-      public final void lT(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void nH(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(35055);
         if (parama != null) {
-          parama.cK(paramAnonymousInt1, paramAnonymousInt2);
+          parama.dA(paramAnonymousInt1, paramAnonymousInt2);
         }
         if ((paramAnonymousInt1 >= paramAnonymousInt2) && (parama != null)) {
           parama.u(0, "");
@@ -144,42 +146,42 @@ public final class a
     AppMethodBeat.o(35065);
   }
   
-  public final boolean a(ca paramca, c paramc)
+  public final boolean a(cc paramcc, c paramc)
   {
     AppMethodBeat.i(35056);
-    boolean bool = m.a(paramca, paramc);
+    boolean bool = n.a(paramcc, paramc);
     AppMethodBeat.o(35056);
     return bool;
   }
   
-  public final boolean a(final String paramString, ca paramca, final b.b paramb)
+  public final boolean a(final String paramString, cc paramcc, final b.b paramb)
   {
     AppMethodBeat.i(35058);
-    if ((Util.isNullOrNil(paramString)) || (paramca == null))
+    if ((Util.isNullOrNil(paramString)) || (paramcc == null))
     {
       Log.e("MicroMsg.ChooseMsgFileCompat", "mediaId:%s or msg is null, err", new Object[] { paramString });
       AppMethodBeat.o(35058);
       return false;
     }
-    i local1 = new i()
+    com.tencent.mm.am.h local1 = new com.tencent.mm.am.h()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
       {
         AppMethodBeat.i(35051);
-        Log.i("MicroMsg.ChooseMsgFileCompat", "tryInitAttachInfo errType:%d errCode:%d, errMsg:%s type:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Integer.valueOf(paramAnonymousq.getType()) });
-        if (paramAnonymousq.getType() != 728)
+        Log.i("MicroMsg.ChooseMsgFileCompat", "tryInitAttachInfo errType:%d errCode:%d, errMsg:%s type:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Integer.valueOf(paramAnonymousp.getType()) });
+        if (paramAnonymousp.getType() != 728)
         {
           AppMethodBeat.o(35051);
           return;
         }
-        paramAnonymousq = (com.tencent.mm.plugin.record.b.d)paramAnonymousq;
-        if (!paramString.equals(paramAnonymousq.getMediaId()))
+        paramAnonymousp = (e)paramAnonymousp;
+        if (!paramString.equals(paramAnonymousp.getMediaId()))
         {
-          Log.w("MicroMsg.ChooseMsgFileCompat", "media:%s is not equal targetMedia:%s", new Object[] { paramString, paramAnonymousq.getMediaId() });
+          Log.w("MicroMsg.ChooseMsgFileCompat", "media:%s is not equal targetMedia:%s", new Object[] { paramString, paramAnonymousp.getMediaId() });
           AppMethodBeat.o(35051);
           return;
         }
-        bh.aGY().b(728, this);
+        bh.aZW().b(728, this);
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
           if (paramb != null)
@@ -194,63 +196,63 @@ public final class a
         AppMethodBeat.o(35051);
       }
     };
-    bh.aGY().a(728, local1);
-    if (!m.e(paramString, paramca)) {}
+    bh.aZW().a(728, local1);
+    if (!n.e(paramString, paramcc)) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0)
       {
         paramb.v(0, "");
-        bh.aGY().b(728, local1);
+        bh.aZW().b(728, local1);
       }
       AppMethodBeat.o(35058);
       return true;
     }
   }
   
-  public final boolean j(ca paramca)
+  public final boolean j(cc paramcc)
   {
     AppMethodBeat.i(35061);
-    boolean bool = com.tencent.mm.ui.chatting.gallery.f.j(paramca);
+    boolean bool = com.tencent.mm.ui.chatting.gallery.h.j(paramcc);
     AppMethodBeat.o(35061);
     return bool;
   }
   
-  public final g k(ca paramca)
+  public final com.tencent.mm.modelimage.h k(cc paramcc)
   {
     AppMethodBeat.i(35062);
-    paramca = com.tencent.mm.ui.chatting.gallery.h.k(paramca);
+    paramcc = j.k(paramcc);
     AppMethodBeat.o(35062);
-    return paramca;
+    return paramcc;
   }
   
-  public final String l(ca paramca)
+  public final String l(cc paramcc)
   {
     AppMethodBeat.i(35064);
-    paramca = com.tencent.mm.ui.chatting.gallery.f.l(paramca);
+    paramcc = com.tencent.mm.ui.chatting.gallery.h.l(paramcc);
     AppMethodBeat.o(35064);
-    return paramca;
+    return paramcc;
   }
   
-  public final boolean m(ca paramca)
+  public final boolean m(cc paramcc)
   {
     AppMethodBeat.i(35066);
-    boolean bool = com.tencent.mm.ui.chatting.gallery.f.m(paramca);
+    boolean bool = com.tencent.mm.ui.chatting.gallery.h.m(paramcc);
     AppMethodBeat.o(35066);
     return bool;
   }
   
-  public final c p(String paramString, long paramLong)
+  public final c q(String paramString, long paramLong)
   {
     AppMethodBeat.i(35057);
-    paramString = m.p(paramString, paramLong);
+    paramString = n.q(paramString, paramLong);
     AppMethodBeat.o(35057);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.b.a
  * JD-Core Version:    0.7.0.1
  */

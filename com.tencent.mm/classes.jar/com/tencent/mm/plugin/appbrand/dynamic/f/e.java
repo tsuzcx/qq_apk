@@ -17,7 +17,7 @@ public final class e
     super("onTap", 325);
   }
   
-  public final JSONObject toJSONObject()
+  public final JSONObject aZh()
   {
     AppMethodBeat.i(121395);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("todo implementation");
@@ -27,7 +27,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.e
  * JD-Core Version:    0.7.0.1
  */

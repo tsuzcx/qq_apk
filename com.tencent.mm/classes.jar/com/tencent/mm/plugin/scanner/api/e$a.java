@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.api;
 
 public final class e$a
 {
-  public String IGF;
+  public String OMN;
 }
 
 

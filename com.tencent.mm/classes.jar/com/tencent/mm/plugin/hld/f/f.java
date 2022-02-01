@@ -3,395 +3,449 @@ package com.tencent.mm.plugin.hld.f;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.c.a;
-import com.tencent.mm.protocal.protobuf.clh;
-import com.tencent.mm.protocal.protobuf.cli;
-import com.tencent.mm.protocal.protobuf.cll;
-import com.tencent.mm.protocal.protobuf.clo;
+import com.tencent.mm.protocal.protobuf.dbp;
+import com.tencent.mm.protocal.protobuf.dbq;
+import com.tencent.mm.protocal.protobuf.dbt;
+import com.tencent.mm.protocal.protobuf.dbw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import com.tencent.wxhld.info.DictInfo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/utils/WxImeDictUtil;", "", "()V", "TAG", "", "filterDictForEngine", "", "dict", "Lcom/tencent/mm/protocal/protobuf/ImeLocalCloudDict;", "finishLocalUserDictGenerator", "", "finishLocalUserDictLoad", "finishPhoneContactLoad", "finish", "getAssetsCacheFile", "context", "Landroid/content/Context;", "fileName", "getWxImeCloudDictPath", "data", "getWxImeLocalDictPath", "getWxImeUserDictPath", "getWximeBaseDictInfos", "", "Lcom/tencent/wxhld/info/DictInfo;", "(Landroid/content/Context;)[Lcom/tencent/wxhld/info/DictInfo;", "getWximeOptionalDictInfos", "()[Lcom/tencent/wxhld/info/DictInfo;", "isFinishLocalUserDictGenerator", "isFinishLocalUserDictLoad", "isFinishPhoneContactDataLoad", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/utils/WxImeDictUtil;", "", "()V", "TAG", "", "filterDictForEngine", "", "dict", "Lcom/tencent/mm/protocal/protobuf/ImeLocalCloudDict;", "finishLocalUserDictGenerator", "", "finishLocalUserDictLoad", "finishPhoneContactLoad", "finish", "getAssetsCacheFile", "context", "Landroid/content/Context;", "fileName", "getWxImeCloudDictPath", "data", "getWxImeLocalDictPath", "getWxImeUserDictPath", "getWximeBaseDictInfos", "", "Lcom/tencent/wxhld/info/DictInfo;", "(Landroid/content/Context;)[Lcom/tencent/wxhld/info/DictInfo;", "getWximeOptionalDictInfos", "()[Lcom/tencent/wxhld/info/DictInfo;", "isFinishLocalUserDictGenerator", "isFinishLocalUserDictLoad", "isFinishPhoneContactDataLoad", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  public static final f DGX;
-  private static final String TAG = "WxIme.WxImeDictUtil";
+  public static final f Jyn;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(213852);
-    DGX = new f();
+    AppMethodBeat.i(311633);
+    Jyn = new f();
     TAG = "WxIme.WxImeDictUtil";
-    AppMethodBeat.o(213852);
+    AppMethodBeat.o(311633);
   }
   
-  public static DictInfo[] eGs()
+  public static DictInfo[] fOf()
   {
-    AppMethodBeat.i(213838);
-    Object localObject1 = e.DGW;
-    localObject1 = a.DvH;
-    Object localObject3 = a.eDb();
-    localObject1 = new ArrayList();
-    Log.i(TAG, "getWximeOptionalDictInfos use commonDicts:" + ((Collection)localObject3).size());
-    Object localObject2 = new ArrayList();
-    localObject3 = ((Iterable)localObject3).iterator();
-    Object localObject6;
-    Object localObject7;
-    while (((Iterator)localObject3).hasNext())
+    Object localObject2 = null;
+    AppMethodBeat.i(311589);
+    Object localObject1 = e.Jym;
+    if (!e.fOc())
     {
-      localObject4 = (clh)((Iterator)localObject3).next();
-      localObject5 = TAG;
-      localObject6 = new StringBuilder("getWximeOptionalDictInfos ");
-      localObject7 = l.DHK;
-      Log.i((String)localObject5, l.k((clh)localObject4));
-      localObject5 = l.DHK;
-      if (!l.j((clh)localObject4))
-      {
-        localObject5 = a.DvH;
-        ((ArrayList)localObject2).add(a.c((clh)localObject4));
-      }
-      else
-      {
-        localObject5 = new DictInfo();
-        ((DictInfo)localObject5).id = ((clh)localObject4).ddx;
-        ((DictInfo)localObject5).path = ((clh)localObject4).path;
-        ((ArrayList)localObject1).add(localObject5);
-        Log.i(TAG, "cloud dict:" + ((clh)localObject4).path + ' ' + u.buc(((clh)localObject4).path));
-      }
-    }
-    Log.i(TAG, "getWximeOptionalDictInfos commonDicts invalidDictList:" + ((ArrayList)localObject2).size());
-    int i;
-    if (!((Collection)localObject2).isEmpty()) {
-      i = 1;
-    }
-    Object localObject8;
-    while (i != 0)
-    {
-      localObject3 = l.DHK;
-      localObject3 = l.getKV();
-      if (localObject3 == null) {
-        break label545;
-      }
-      localObject4 = new cli();
-      localObject5 = ((MultiProcessMMKV)localObject3).decodeBytes("key_current_cloud_dicts");
-      if (localObject5 != null) {
-        ((cli)localObject4).parseFrom((byte[])localObject5);
-      }
-      localObject5 = new ArrayList();
-      localObject6 = ((cli)localObject4).TsR.iterator();
-      for (;;)
-      {
-        if (((Iterator)localObject6).hasNext())
-        {
-          localObject7 = (clh)((Iterator)localObject6).next();
-          localObject8 = a.DvH;
-          p.j(localObject7, "cloudDict");
-          if (((ArrayList)localObject2).contains(a.c((clh)localObject7)))
-          {
-            ((ArrayList)localObject5).add(localObject7);
-            continue;
-            i = 0;
-            break;
-          }
-        }
-      }
-      localObject2 = ((ArrayList)localObject5).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject5 = (clh)((Iterator)localObject2).next();
-        ((cli)localObject4).TsR.remove(localObject5);
-      }
-      ((MultiProcessMMKV)localObject3).encode("key_current_cloud_dicts", ((cli)localObject4).toByteArray());
-      localObject2 = a.DvH;
-      a.eCX();
-    }
-    for (;;)
-    {
-      localObject2 = l.DHK;
-      if (l.biq())
-      {
-        localObject2 = i.DHq;
-        if (!i.eGC()) {
-          break label563;
-        }
-      }
-      localObject2 = new DictInfo[((ArrayList)localObject1).size()];
-      localObject1 = ((Iterable)localObject1).iterator();
-      i = 0;
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2[i] = ((DictInfo)((Iterator)localObject1).next());
-        i += 1;
-      }
-      label545:
-      Log.e(TAG, "getWximeOptionalDictInfos commonDicts getKv is null");
-    }
-    AppMethodBeat.o(213838);
-    return localObject2;
-    label563:
-    localObject2 = a.DvH;
-    Object localObject5 = a.eDa();
-    localObject2 = a.DvH;
-    localObject2 = a.eDc();
-    Log.i(TAG, "getWximeOptionalDictInfos use cloudict:" + ((Collection)localObject5).size() + ", userDicts:" + ((Collection)localObject2).size());
-    if ((((Collection)localObject5).isEmpty()) && (((Collection)localObject2).isEmpty()))
-    {
-      AppMethodBeat.o(213838);
+      AppMethodBeat.o(311589);
       return null;
     }
-    localObject3 = new ArrayList();
-    Object localObject4 = new ArrayList();
-    localObject5 = ((Iterable)localObject5).iterator();
-    Object localObject9;
-    while (((Iterator)localObject5).hasNext())
+    localObject1 = a.JoL;
+    Object localObject4 = a.fLc();
+    Object localObject3 = new ArrayList();
+    Log.i(TAG, s.X("getWximeOptionalDictInfos use commonDicts:", Integer.valueOf(((Collection)localObject4).size())));
+    localObject1 = new ArrayList();
+    localObject4 = ((Collection)localObject4).iterator();
+    Object localObject7;
+    while (((Iterator)localObject4).hasNext())
     {
-      localObject6 = (clh)((Iterator)localObject5).next();
-      localObject7 = TAG;
-      localObject8 = new StringBuilder("getWximeOptionalDictInfos ");
-      localObject9 = l.DHK;
-      Log.i((String)localObject7, l.k((clh)localObject6));
-      localObject7 = l.DHK;
-      if (!l.j((clh)localObject6))
+      localObject5 = (dbp)((Iterator)localObject4).next();
+      localObject6 = TAG;
+      localObject7 = l.JyV;
+      Log.i((String)localObject6, s.X("getWximeOptionalDictInfos ", l.n((dbp)localObject5)));
+      localObject6 = l.JyV;
+      if (!l.m((dbp)localObject5))
       {
-        localObject7 = a.DvH;
-        ((ArrayList)localObject4).add(a.c((clh)localObject6));
+        localObject6 = a.JoL;
+        ((ArrayList)localObject1).add(a.f((dbp)localObject5));
       }
       else
       {
-        localObject7 = new DictInfo();
-        ((DictInfo)localObject7).id = ((clh)localObject6).ddx;
-        ((DictInfo)localObject7).path = ((clh)localObject6).path;
-        ((ArrayList)localObject3).add(localObject7);
-        Log.i(TAG, "cloud dict:" + ((clh)localObject6).path + ' ' + u.buc(((clh)localObject6).path));
+        localObject6 = new DictInfo();
+        ((DictInfo)localObject6).id = ((dbp)localObject5).typeId;
+        ((DictInfo)localObject6).path = ((dbp)localObject5).path;
+        localObject7 = ah.aiuX;
+        ((ArrayList)localObject3).add(localObject6);
+        Log.i(TAG, "cloud dict:" + ((dbp)localObject5).path + ' ' + y.bub(((dbp)localObject5).path));
       }
     }
-    Log.i(TAG, "getWximeOptionalDictInfos invalidDictList:" + ((ArrayList)localObject4).size());
-    if (!((Collection)localObject4).isEmpty()) {
+    Log.i(TAG, s.X("getWximeOptionalDictInfos commonDicts invalidDictList:", Integer.valueOf(((ArrayList)localObject1).size())));
+    int i;
+    if (!((Collection)localObject1).isEmpty())
+    {
       i = 1;
-    }
-    while (i != 0)
-    {
-      localObject5 = l.DHK;
-      localObject5 = l.eHB();
-      if (localObject5 == null) {
-        break label1174;
-      }
-      localObject6 = new clo();
-      localObject7 = ((MultiProcessMMKV)localObject5).decodeBytes("key_current_cloud_dicts");
-      if (localObject7 != null) {
-        ((clo)localObject6).parseFrom((byte[])localObject7);
-      }
-      localObject7 = ((clo)localObject6).Ttb;
-      if (localObject7 != null)
+      if (i != 0)
       {
-        localObject8 = new ArrayList();
-        localObject9 = ((cli)localObject7).TsR.iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject9).hasNext())
-          {
-            clh localclh = (clh)((Iterator)localObject9).next();
-            a locala = a.DvH;
-            p.j(localclh, "cloudDict");
-            if (((ArrayList)localObject4).contains(a.c(localclh)))
-            {
-              ((ArrayList)localObject8).add(localclh);
-              continue;
-              i = 0;
-              break;
-            }
-          }
-        }
-        localObject4 = ((ArrayList)localObject8).iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          localObject8 = (clh)((Iterator)localObject4).next();
-          ((cli)localObject7).TsR.remove(localObject8);
+        localObject4 = l.JyV;
+        localObject4 = l.getKV();
+        if (localObject4 != null) {
+          break label380;
         }
       }
-      ((MultiProcessMMKV)localObject5).encode("key_current_cloud_dicts", ((clo)localObject6).toByteArray());
-      localObject4 = a.DvH;
-      a.eCY();
     }
-    for (;;)
+    label380:
+    Object localObject8;
+    Object localObject9;
+    for (localObject1 = null;; localObject1 = ah.aiuX)
     {
-      localObject4 = new DictInfo[((ArrayList)localObject1).size() + ((ArrayList)localObject3).size() + ((Collection)localObject2).size()];
-      localObject1 = ((Iterable)localObject1).iterator();
+      if (localObject1 == null) {
+        Log.e(TAG, "getWximeOptionalDictInfos commonDicts getKv is null");
+      }
+      localObject1 = l.JyV;
+      if (l.bGa())
+      {
+        localObject1 = i.JyA;
+        if (!i.fOo()) {
+          break label561;
+        }
+      }
+      localObject1 = new DictInfo[((ArrayList)localObject3).size()];
+      localObject2 = ((ArrayList)localObject3).iterator();
       i = 0;
-      int j = 0;
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject1[i] = ((DictInfo)((Iterator)localObject2).next());
+        i += 1;
+      }
+      i = 0;
+      break;
+      localObject5 = new dbq();
+      localObject6 = ((MultiProcessMMKV)localObject4).decodeBytes("key_current_cloud_dicts");
+      if (localObject6 != null) {
+        ((dbq)localObject5).parseFrom((byte[])localObject6);
+      }
+      localObject6 = new ArrayList();
+      localObject7 = ((dbq)localObject5).aaHc.iterator();
+      while (((Iterator)localObject7).hasNext())
+      {
+        localObject8 = (dbp)((Iterator)localObject7).next();
+        localObject9 = a.JoL;
+        s.s(localObject8, "cloudDict");
+        if (((ArrayList)localObject1).contains(a.f((dbp)localObject8))) {
+          ((ArrayList)localObject6).add(localObject8);
+        }
+      }
+      localObject1 = ((ArrayList)localObject6).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject4[j] = ((DictInfo)((Iterator)localObject1).next());
+        localObject6 = (dbp)((Iterator)localObject1).next();
+        ((dbq)localObject5).aaHc.remove(localObject6);
+      }
+      ((MultiProcessMMKV)localObject4).encode("key_current_cloud_dicts", ((dbq)localObject5).toByteArray());
+      localObject1 = a.JoL;
+      a.fKY();
+    }
+    AppMethodBeat.o(311589);
+    return localObject1;
+    label561:
+    localObject1 = a.JoL;
+    Object localObject6 = a.fLb();
+    localObject1 = a.JoL;
+    localObject4 = a.fLd();
+    Log.i(TAG, "getWximeOptionalDictInfos use cloudict:" + ((Collection)localObject6).size() + ", userDicts:" + ((Collection)localObject4).size());
+    if ((((Collection)localObject6).isEmpty()) && (((Collection)localObject4).isEmpty()))
+    {
+      AppMethodBeat.o(311589);
+      return null;
+    }
+    Object localObject5 = new ArrayList();
+    localObject1 = new ArrayList();
+    localObject6 = ((Collection)localObject6).iterator();
+    while (((Iterator)localObject6).hasNext())
+    {
+      localObject7 = (dbp)((Iterator)localObject6).next();
+      localObject8 = TAG;
+      localObject9 = l.JyV;
+      Log.i((String)localObject8, s.X("getWximeOptionalDictInfos ", l.n((dbp)localObject7)));
+      localObject8 = l.JyV;
+      if (!l.m((dbp)localObject7))
+      {
+        localObject8 = a.JoL;
+        ((ArrayList)localObject1).add(a.f((dbp)localObject7));
+      }
+      else
+      {
+        localObject8 = new DictInfo();
+        ((DictInfo)localObject8).id = ((dbp)localObject7).typeId;
+        ((DictInfo)localObject8).path = ((dbp)localObject7).path;
+        localObject9 = ah.aiuX;
+        ((ArrayList)localObject5).add(localObject8);
+        Log.i(TAG, "cloud dict:" + ((dbp)localObject7).path + ' ' + y.bub(((dbp)localObject7).path));
+      }
+    }
+    Log.i(TAG, s.X("getWximeOptionalDictInfos invalidDictList:", Integer.valueOf(((ArrayList)localObject1).size())));
+    if (!((Collection)localObject1).isEmpty())
+    {
+      i = 1;
+      if (i != 0)
+      {
+        localObject6 = l.JyV;
+        localObject6 = l.fPk();
+        if (localObject6 != null) {
+          break label979;
+        }
+      }
+    }
+    for (localObject1 = localObject2;; localObject1 = ah.aiuX)
+    {
+      if (localObject1 == null) {
+        Log.e(TAG, "getWximeOptionalDictInfos getKv is null");
+      }
+      localObject1 = new DictInfo[((ArrayList)localObject3).size() + ((ArrayList)localObject5).size() + ((Collection)localObject4).size()];
+      localObject2 = ((ArrayList)localObject3).iterator();
+      int j = 0;
+      i = 0;
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject1[j] = ((DictInfo)((Iterator)localObject2).next());
         j += 1;
         i += 1;
       }
-      label1174:
-      Log.e(TAG, "getWximeOptionalDictInfos getKv is null");
+      i = 0;
+      break;
+      label979:
+      localObject2 = new dbw();
+      localObject7 = ((MultiProcessMMKV)localObject6).decodeBytes("key_current_cloud_dicts");
+      if (localObject7 != null) {
+        ((dbw)localObject2).parseFrom((byte[])localObject7);
+      }
+      localObject7 = ((dbw)localObject2).aaHm;
+      if (localObject7 != null)
+      {
+        localObject8 = new ArrayList();
+        localObject9 = ((dbq)localObject7).aaHc.iterator();
+        while (((Iterator)localObject9).hasNext())
+        {
+          dbp localdbp = (dbp)((Iterator)localObject9).next();
+          a locala = a.JoL;
+          s.s(localdbp, "cloudDict");
+          if (((ArrayList)localObject1).contains(a.f(localdbp))) {
+            ((ArrayList)localObject8).add(localdbp);
+          }
+        }
+        localObject1 = ((ArrayList)localObject8).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject8 = (dbp)((Iterator)localObject1).next();
+          ((dbq)localObject7).aaHc.remove(localObject8);
+        }
+      }
+      ((MultiProcessMMKV)localObject6).encode("key_current_cloud_dicts", ((dbw)localObject2).toByteArray());
+      localObject1 = a.JoL;
+      a.fKZ();
     }
-    localObject1 = ((ArrayList)localObject3).iterator();
-    while (((Iterator)localObject1).hasNext())
+    localObject2 = ((ArrayList)localObject5).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject4[i] = ((DictInfo)((Iterator)localObject1).next());
+      localObject1[i] = ((DictInfo)((Iterator)localObject2).next());
       i += 1;
     }
-    localObject1 = ((Iterable)localObject2).iterator();
-    while (((Iterator)localObject1).hasNext())
+    localObject2 = ((Collection)localObject4).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject2 = (cll)((Iterator)localObject1).next();
-      localObject3 = new DictInfo();
-      ((DictInfo)localObject3).id = 0;
-      ((DictInfo)localObject3).path = ((cll)localObject2).path;
-      localObject4[i] = localObject3;
+      localObject3 = (dbt)((Iterator)localObject2).next();
+      localObject4 = new DictInfo();
+      ((DictInfo)localObject4).id = 0;
+      ((DictInfo)localObject4).path = ((dbt)localObject3).path;
+      localObject5 = ah.aiuX;
+      localObject1[i] = localObject4;
       i += 1;
-      Log.i(TAG, "getWximeOptionalDictInfos user dict:" + ((cll)localObject2).path + ' ' + u.buc(((cll)localObject2).path));
+      Log.i(TAG, "getWximeOptionalDictInfos user dict:" + ((dbt)localObject3).path + ' ' + y.bub(((dbt)localObject3).path));
     }
-    AppMethodBeat.o(213838);
-    return localObject4;
+    AppMethodBeat.o(311589);
+    return localObject1;
   }
   
-  public static String eGt()
+  public static String fOg()
   {
-    AppMethodBeat.i(213840);
-    Object localObject = new StringBuilder();
-    l locall = l.DHK;
-    localObject = l.eGU() + "/dict/cloud";
-    if (!u.agG((String)localObject)) {
-      u.bBD((String)localObject);
+    AppMethodBeat.i(311596);
+    Object localObject = l.JyV;
+    localObject = s.X(l.fOC(), "/dict/local");
+    if (!y.ZC((String)localObject)) {
+      y.bDX((String)localObject);
     }
-    AppMethodBeat.o(213840);
+    AppMethodBeat.o(311596);
     return localObject;
   }
   
-  public static String eGu()
+  public static String fOh()
   {
-    AppMethodBeat.i(213841);
-    Object localObject1 = l.DHK;
-    String str = l.eGV();
-    if (str != null) {}
-    Object localObject2;
-    for (localObject1 = str + "/userdict";; localObject1 = (String)localObject2 + "/userdict")
+    AppMethodBeat.i(311603);
+    Object localObject = l.JyV;
+    localObject = s.X(l.fOC(), "/dict/cloud");
+    if (!y.ZC((String)localObject)) {
+      y.bDX((String)localObject);
+    }
+    AppMethodBeat.o(311603);
+    return localObject;
+  }
+  
+  public static String fOi()
+  {
+    AppMethodBeat.i(311613);
+    Object localObject = l.JyV;
+    String str1 = l.fOD();
+    if (str1 != null) {}
+    for (localObject = s.X(str1, "/userdict");; localObject = s.X((String)localObject, "/userdict"))
     {
-      if (!u.agG((String)localObject1)) {
-        u.bBD((String)localObject1);
+      if (!y.ZC((String)localObject)) {
+        y.bDX((String)localObject);
       }
-      localObject2 = TAG;
+      String str2 = TAG;
       StringBuilder localStringBuilder = new StringBuilder("getWxImeUserDictPath ");
-      l locall = l.DHK;
-      Log.i((String)localObject2, l.eHw() + ' ' + u.bBQ(str));
-      AppMethodBeat.o(213841);
-      return localObject1;
-      localObject1 = new StringBuilder();
-      localObject2 = l.DHK;
-      localObject2 = l.eGU() + "/common";
-      if (!u.agG((String)localObject2)) {
-        u.bBD((String)localObject2);
+      l locall = l.JyV;
+      Log.i(str2, l.fPf() + ' ' + y.bEl(str1));
+      AppMethodBeat.o(311613);
+      return localObject;
+      localObject = l.JyV;
+      localObject = s.X(l.fOC(), "/common");
+      if (!y.ZC((String)localObject)) {
+        y.bDX((String)localObject);
       }
     }
   }
   
-  public static boolean eGv()
+  public static boolean fOj()
   {
-    AppMethodBeat.i(213843);
-    Object localObject = l.DHK;
-    localObject = l.eHB();
-    if (localObject != null)
+    AppMethodBeat.i(311618);
+    Object localObject = l.JyV;
+    localObject = l.fPk();
+    if (localObject == null)
     {
-      boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_local_user_dict_load_finish", false);
-      AppMethodBeat.o(213843);
-      return bool;
+      AppMethodBeat.o(311618);
+      return false;
     }
-    AppMethodBeat.o(213843);
-    return false;
+    boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_local_user_dict_load_finish", false);
+    AppMethodBeat.o(311618);
+    return bool;
   }
   
-  public static boolean eGw()
+  public static boolean fOk()
   {
-    AppMethodBeat.i(213845);
-    Object localObject = l.DHK;
-    localObject = l.eHB();
-    if (localObject != null)
+    AppMethodBeat.i(311624);
+    Object localObject = l.JyV;
+    localObject = l.fPk();
+    if (localObject == null)
     {
-      boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_phone_contact_data_load_finish", false);
-      AppMethodBeat.o(213845);
-      return bool;
+      AppMethodBeat.o(311624);
+      return false;
     }
-    AppMethodBeat.o(213845);
-    return false;
+    boolean bool = ((MultiProcessMMKV)localObject).getBoolean("ime_phone_contact_data_load_finish", false);
+    AppMethodBeat.o(311624);
+    return bool;
   }
   
-  public static DictInfo[] gS(Context paramContext)
+  public static DictInfo[] io(Context paramContext)
   {
+    Object localObject2 = null;
     int j = 0;
-    AppMethodBeat.i(213832);
-    p.k(paramContext, "context");
-    paramContext = e.DGW;
-    paramContext = a.DvH;
-    paramContext = a.eCZ();
-    Log.i(TAG, "getWximeBaseDictInfos use cloudict:" + paramContext.size());
-    if (paramContext.isEmpty())
-    {
-      paramContext = l.DHK;
-      l.eHh();
-      AppMethodBeat.o(213832);
-      return null;
-    }
-    Object localObject1 = new ArrayList();
-    paramContext = ((Iterable)paramContext).iterator();
+    AppMethodBeat.i(311555);
+    s.u(paramContext, "context");
+    Object localObject1 = e.Jym;
     Object localObject3;
     Object localObject4;
-    Object localObject5;
+    if (!e.fOc())
+    {
+      localObject3 = new DictInfo[2];
+      localObject1 = new DictInfo();
+      ((DictInfo)localObject1).id = 524288;
+      localObject4 = l.JyV;
+      ((DictInfo)localObject1).path = l.L(paramContext, "config/", "static_required_dicts.bin");
+      ((DictInfo)localObject1).version = 0;
+      localObject4 = ah.aiuX;
+      localObject3[0] = localObject1;
+      localObject4 = TAG;
+      localObject1 = localObject3[0];
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        Log.d((String)localObject4, s.X("getWximeBaseDictInfos ", localObject1));
+        localObject1 = new DictInfo();
+        ((DictInfo)localObject1).id = 262144;
+        localObject4 = l.JyV;
+        ((DictInfo)localObject1).path = l.L(paramContext, "config/", "hyper_params.bin");
+        ((DictInfo)localObject1).version = 0;
+        paramContext = ah.aiuX;
+        localObject3[1] = localObject1;
+        localObject1 = TAG;
+        paramContext = localObject3[1];
+        if (paramContext != null) {
+          break label212;
+        }
+      }
+      label212:
+      for (paramContext = (Context)localObject2;; paramContext = paramContext.path)
+      {
+        Log.d((String)localObject1, s.X("getWximeBaseDictInfos ", paramContext));
+        Log.i(TAG, "user local dict");
+        AppMethodBeat.o(311555);
+        return localObject3;
+        localObject1 = ((DictInfo)localObject1).path;
+        break;
+      }
+    }
+    paramContext = a.JoL;
+    paramContext = a.fLa();
+    Log.i(TAG, s.X("getWximeBaseDictInfos use cloudict:", Integer.valueOf(paramContext.size())));
+    if (paramContext.isEmpty())
+    {
+      paramContext = l.JyV;
+      l.fOQ();
+      AppMethodBeat.o(311555);
+      return null;
+    }
+    localObject2 = new ArrayList();
+    paramContext = paramContext.iterator();
     if (paramContext.hasNext())
     {
-      localObject2 = (clh)paramContext.next();
+      localObject1 = (dbp)paramContext.next();
       localObject3 = TAG;
-      localObject4 = new StringBuilder("getWximeBaseDictInfos ");
-      localObject5 = l.DHK;
-      Log.i((String)localObject3, l.k((clh)localObject2));
-      switch (((clh)localObject2).ddx)
+      localObject4 = l.JyV;
+      Log.i((String)localObject3, s.X("getWximeBaseDictInfos ", l.n((dbp)localObject1)));
+      switch (((dbp)localObject1).typeId)
       {
       }
       for (i = 0; i != 0; i = 1)
       {
-        ((ArrayList)localObject1).add(localObject2);
+        ((ArrayList)localObject2).add(localObject1);
         break;
       }
     }
-    Log.i(TAG, "getWximeBaseDictInfos " + ((ArrayList)localObject1).size() + " 2");
-    if (((ArrayList)localObject1).size() != 2)
+    Log.i(TAG, "getWximeBaseDictInfos " + ((ArrayList)localObject2).size() + " 2");
+    if (((ArrayList)localObject2).size() != 2)
     {
-      paramContext = l.DHK;
-      l.eHh();
-      AppMethodBeat.o(213832);
+      paramContext = l.JyV;
+      l.fOQ();
+      AppMethodBeat.o(311555);
       return null;
     }
     paramContext = new ArrayList();
-    Object localObject2 = new DictInfo[2];
-    localObject1 = ((Iterable)localObject1).iterator();
+    localObject1 = new DictInfo[2];
+    localObject2 = ((ArrayList)localObject2).iterator();
     int i = 0;
-    while (((Iterator)localObject1).hasNext())
+    Object localObject5;
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject3 = (clh)((Iterator)localObject1).next();
-      localObject4 = l.DHK;
-      if (!l.j((clh)localObject3))
+      localObject3 = (dbp)((Iterator)localObject2).next();
+      localObject4 = l.JyV;
+      if (!l.m((dbp)localObject3))
       {
-        localObject4 = a.DvH;
-        paramContext.add(a.c((clh)localObject3));
+        localObject4 = a.JoL;
+        paramContext.add(a.f((dbp)localObject3));
       }
       else
       {
         localObject4 = new DictInfo();
-        ((DictInfo)localObject4).id = ((clh)localObject3).ddx;
-        ((DictInfo)localObject4).path = ((clh)localObject3).path;
-        ((DictInfo)localObject4).version = ((clh)localObject3).version;
-        localObject2[i] = localObject4;
+        ((DictInfo)localObject4).id = ((dbp)localObject3).typeId;
+        ((DictInfo)localObject4).path = ((dbp)localObject3).path;
+        ((DictInfo)localObject4).version = ((dbp)localObject3).version;
+        localObject5 = ah.aiuX;
+        localObject1[i] = localObject4;
         i += 1;
-        Log.i(TAG, "getWximeBaseDictInfos cloud dict:" + ((clh)localObject3).path + ' ' + u.buc(((clh)localObject3).path));
+        Log.i(TAG, "getWximeBaseDictInfos cloud dict:" + ((dbp)localObject3).path + ' ' + y.bub(((dbp)localObject3).path));
       }
     }
     i = j;
@@ -400,62 +454,48 @@ public final class f
     }
     if (i != 0)
     {
-      localObject1 = l.DHK;
+      localObject1 = l.JyV;
       localObject1 = l.getKV();
-      if (localObject1 != null)
+      if (localObject1 == null) {}
+      for (paramContext = null;; paramContext = ah.aiuX)
       {
-        localObject2 = new cli();
+        if (paramContext == null) {
+          Log.e(TAG, "getKv is null");
+        }
+        Log.e(TAG, "getWximeBaseDictInfos force get dict");
+        AppMethodBeat.o(311555);
+        return null;
+        localObject2 = new dbq();
         localObject3 = ((MultiProcessMMKV)localObject1).decodeBytes("key_current_cloud_dicts");
         if (localObject3 != null) {
-          ((cli)localObject2).parseFrom((byte[])localObject3);
+          ((dbq)localObject2).parseFrom((byte[])localObject3);
         }
         localObject3 = new ArrayList();
-        localObject4 = ((cli)localObject2).TsR.iterator();
+        localObject4 = ((dbq)localObject2).aaHc.iterator();
         while (((Iterator)localObject4).hasNext())
         {
-          localObject5 = (clh)((Iterator)localObject4).next();
-          a locala = a.DvH;
-          p.j(localObject5, "cloudDict");
-          if (paramContext.contains(a.c((clh)localObject5))) {
+          localObject5 = (dbp)((Iterator)localObject4).next();
+          a locala = a.JoL;
+          s.s(localObject5, "cloudDict");
+          if (paramContext.contains(a.f((dbp)localObject5))) {
             ((ArrayList)localObject3).add(localObject5);
           }
         }
         paramContext = ((ArrayList)localObject3).iterator();
         while (paramContext.hasNext())
         {
-          localObject3 = (clh)paramContext.next();
-          ((cli)localObject2).TsR.remove(localObject3);
+          localObject3 = (dbp)paramContext.next();
+          ((dbq)localObject2).aaHc.remove(localObject3);
         }
-        ((MultiProcessMMKV)localObject1).encode("key_current_cloud_dicts", ((cli)localObject2).toByteArray());
-        paramContext = a.DvH;
-        a.eCX();
-        paramContext = l.DHK;
-        l.eHh();
-      }
-      for (;;)
-      {
-        Log.e(TAG, "getWximeBaseDictInfos force get dict");
-        AppMethodBeat.o(213832);
-        return null;
-        Log.e(TAG, "getKv is null");
+        ((MultiProcessMMKV)localObject1).encode("key_current_cloud_dicts", ((dbq)localObject2).toByteArray());
+        paramContext = a.JoL;
+        a.fKY();
+        paramContext = l.JyV;
+        l.fOQ();
       }
     }
-    AppMethodBeat.o(213832);
-    return localObject2;
-  }
-  
-  public static void tc(boolean paramBoolean)
-  {
-    AppMethodBeat.i(213848);
-    Object localObject = l.DHK;
-    localObject = l.eHB();
-    if (localObject != null)
-    {
-      ((MultiProcessMMKV)localObject).putBoolean("ime_phone_contact_data_load_finish", paramBoolean);
-      AppMethodBeat.o(213848);
-      return;
-    }
-    AppMethodBeat.o(213848);
+    AppMethodBeat.o(311555);
+    return localObject1;
   }
 }
 

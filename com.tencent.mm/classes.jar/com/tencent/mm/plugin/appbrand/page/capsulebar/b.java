@@ -12,117 +12,133 @@ import com.tencent.mm.sdk.system.AndroidContextUtil;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 final class b
-  extends j
+  extends o
   implements a
 {
-  private final AppBrandRuntime nAt;
-  private final i.a qwS;
-  private Drawable qwT;
-  private CharSequence qwU;
-  private int qwV;
+  private final AppBrandRuntime qzz;
+  private final m.a tBR;
+  private Drawable tBS;
+  private CharSequence tBT;
+  private int tBU;
   
-  public b(AppBrandRuntime paramAppBrandRuntime, i.a parama)
+  public b(AppBrandRuntime paramAppBrandRuntime, m.a parama)
   {
-    this.nAt = paramAppBrandRuntime;
-    this.qwS = parama;
+    this.qzz = paramAppBrandRuntime;
+    this.tBR = parama;
   }
   
-  private boolean cfv()
+  private boolean cGg()
   {
-    AppMethodBeat.i(244127);
-    if ((this.nAt == null) || (this.nAt.ntU.get()) || (this.nAt.aol) || (this.nAt.ntG == null))
+    AppMethodBeat.i(325304);
+    if ((this.qzz == null) || (this.qzz.qsE.get()) || (this.qzz.ccV) || (this.qzz.qsp == null))
     {
-      AppMethodBeat.o(244127);
+      AppMethodBeat.o(325304);
       return true;
     }
-    AppMethodBeat.o(244127);
+    AppMethodBeat.o(325304);
     return false;
   }
   
-  protected final void Cw(int paramInt)
+  protected final void CM(int paramInt)
   {
-    AppMethodBeat.i(244135);
-    this.qwV = paramInt;
-    if (cfv())
+    AppMethodBeat.i(325338);
+    this.tBU = paramInt;
+    if (cGg())
     {
-      AppMethodBeat.o(244135);
+      AppMethodBeat.o(325338);
       return;
     }
-    this.qwS.setStatus(paramInt);
-    AppMethodBeat.o(244135);
+    this.tBR.setStatus(paramInt);
+    AppMethodBeat.o(325338);
   }
   
-  protected final void D(Drawable paramDrawable)
+  protected final void M(Drawable paramDrawable)
   {
-    AppMethodBeat.i(244131);
-    this.qwT = paramDrawable;
-    if (cfv())
+    AppMethodBeat.i(325323);
+    this.tBS = paramDrawable;
+    if (cGg())
     {
-      AppMethodBeat.o(244131);
+      AppMethodBeat.o(325323);
       return;
     }
-    this.qwS.setLogo(paramDrawable);
-    AppMethodBeat.o(244131);
+    this.tBR.setLogo(paramDrawable);
+    AppMethodBeat.o(325323);
   }
   
-  protected final void L(CharSequence paramCharSequence)
+  protected final void P(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(244134);
-    this.qwU = paramCharSequence;
-    if (cfv())
+    AppMethodBeat.i(325330);
+    this.tBT = paramCharSequence;
+    if (cGg())
     {
-      AppMethodBeat.o(244134);
+      AppMethodBeat.o(325330);
       return;
     }
-    this.qwS.M(paramCharSequence);
-    AppMethodBeat.o(244134);
+    this.tBR.Q(paramCharSequence);
+    AppMethodBeat.o(325330);
   }
   
-  protected final void P(Runnable paramRunnable)
+  protected final void V(Runnable paramRunnable)
   {
-    AppMethodBeat.i(244129);
-    this.nAt.h(paramRunnable, 0L);
-    AppMethodBeat.o(244129);
+    AppMethodBeat.i(325318);
+    this.qzz.i(paramRunnable, 0L);
+    AppMethodBeat.o(325318);
   }
   
-  public final i.a a(a.b paramb)
+  public final m.a a(a.b paramb)
   {
-    AppMethodBeat.i(244137);
-    int i = paramb.qwP;
-    int j = paramb.qwQ;
-    i.a locala = super.cfE();
+    AppMethodBeat.i(325343);
+    paramb = a(paramb, false, "");
+    AppMethodBeat.o(325343);
+    return paramb;
+  }
+  
+  public final m.a a(a.b paramb, boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(325348);
+    int i = paramb.tBO;
+    int j = paramb.tBP;
+    m.a locala = super.kA(paramBoolean);
+    locala.setTag(paramString);
     locala.setLogo(j);
-    locala.Cy(i);
+    locala.CP(i);
     locala.setStatus(paramb.ordinal());
-    AppMethodBeat.o(244137);
+    AppMethodBeat.o(325348);
     return locala;
   }
   
-  public final int cfu()
+  public final void afa(String paramString)
   {
-    return this.qwV;
+    AppMethodBeat.i(325352);
+    afb(paramString);
+    AppMethodBeat.o(325352);
+  }
+  
+  public final int cGf()
+  {
+    return this.tBU;
   }
   
   protected final Context getContext()
   {
-    AppMethodBeat.i(244128);
+    AppMethodBeat.i(325312);
     try
     {
-      Context localContext = this.nAt.bBX().getCurrentPage().getCurrentPageView().cdY().getContext();
-      AppMethodBeat.o(244128);
+      Context localContext = this.qzz.getPageContainer().getCurrentPage().getCurrentPageView().cEC().getContext();
+      AppMethodBeat.o(325312);
       return localContext;
     }
     catch (NullPointerException localNullPointerException)
     {
-      Activity localActivity = AndroidContextUtil.castActivityOrNull(this.nAt.mContext);
-      AppMethodBeat.o(244128);
+      Activity localActivity = AndroidContextUtil.castActivityOrNull(this.qzz.mContext);
+      AppMethodBeat.o(325312);
       return localActivity;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.capsulebar.b
  * JD-Core Version:    0.7.0.1
  */

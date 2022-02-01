@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/ce" android:paddingRight="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/h_" android:textColor="@color/FG_0" android:gravity="center_vertical" android:id="@id/g6u" android:layout_width="fill_parent" android:layout_height="@dimen/cr" android:text="@string/d4_" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/FG_0" android:id="@id/g6t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/d4s" />
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bw" android:layout_marginBottom="@dimen/ci">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a3b" android:gravity="center" android:id="@id/g6g" android:background="@drawable/xn" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:text="@string/w0" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/foz" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginRight="@dimen/bv" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:id="@id/fp0" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
-</LinearLayout>
+    <ImageView android:layout_gravity="bottom" android:id="@id/c7o" android:background="@color/BW_100_Alpha_0_0_5" style="@style/i7" />
+</FrameLayout>

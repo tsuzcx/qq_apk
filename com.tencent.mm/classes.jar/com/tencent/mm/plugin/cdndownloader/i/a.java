@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.cdndownloader.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.c;
-import com.tencent.mm.i.d;
-import com.tencent.mm.i.g;
-import com.tencent.mm.i.g.a;
+import com.tencent.mm.g.c;
+import com.tencent.mm.g.d;
+import com.tencent.mm.g.g;
+import com.tencent.mm.g.g.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.xweb.downloader.b;
 import java.io.ByteArrayOutputStream;
@@ -14,15 +14,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class a
   implements com.tencent.xweb.downloader.a
 {
-  private static a tLP = null;
-  private g.a tLH;
-  private Map<String, a> tLL;
+  private static a wPe = null;
+  private g.a wOW;
+  private Map<String, a> wPa;
   
   public a()
   {
     AppMethodBeat.i(120825);
-    this.tLL = new ConcurrentHashMap();
-    this.tLH = new g.a()
+    this.wPa = new ConcurrentHashMap();
+    this.wOW = new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
       {
@@ -38,11 +38,11 @@ public final class a
         label92:
         for (String str2 = "null";; str2 = paramAnonymousd.toString())
         {
-          Log.d("FileDownloaderXWEBProxy", "on cdn callback mediaId = %s, startRet = %d, keep_ProgressInfo = %s, keep_SceneResult = %s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), str1, str2 });
+          Log.d("XWeb.MM.FileDownloaderXWEBProxy", "cdnCallback, mediaId:%s, startRet:%d, keep_ProgressInfo:%s, keep_SceneResult:%s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), str1, str2 });
           if (paramAnonymousInt != -21006) {
             break label102;
           }
-          Log.i("FileDownloaderXWEBProxy", "duplicate request, ignore this request, media id is %s", new Object[] { paramAnonymousString });
+          Log.i("XWeb.MM.FileDownloaderXWEBProxy", "duplicate request, ignore this request, mediaId:%s", new Object[] { paramAnonymousString });
           AppMethodBeat.o(120824);
           return 0;
           str1 = paramAnonymousc.toString();
@@ -51,7 +51,7 @@ public final class a
         label102:
         if (paramAnonymousInt != 0)
         {
-          Log.e("FileDownloaderXWEBProxy", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+          Log.e("XWeb.MM.FileDownloaderXWEBProxy", "cdnCallback, start failed:%d, mediaId:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
           a.a(a.this, paramAnonymousString, 4, paramAnonymousInt, false);
           AppMethodBeat.o(120824);
           return 0;
@@ -67,7 +67,7 @@ public final class a
           if (paramAnonymousd.field_retCode == 0) {
             break label243;
           }
-          Log.e("FileDownloaderXWEBProxy", "cdntra clientid:%s sceneResult.retCode:%d sceneResult[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
+          Log.e("XWeb.MM.FileDownloaderXWEBProxy", "cdnCallback, download fail, mediaId:%s, retCode:%d, sceneResult:%s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
           a.a(a.this, paramAnonymousString, 4, paramAnonymousd.field_retCode, paramAnonymousd.field_isResume);
         }
         for (;;)
@@ -75,14 +75,14 @@ public final class a
           AppMethodBeat.o(120824);
           return 0;
           label243:
-          Log.i("FileDownloaderXWEBProxy", "cdn trans suceess, media id : %s", new Object[] { paramAnonymousString });
+          Log.i("XWeb.MM.FileDownloaderXWEBProxy", "cdnCallback, download success, mediaId:%s", new Object[] { paramAnonymousString });
           a.a(a.this, paramAnonymousString, 3, 0, paramAnonymousd.field_isResume);
         }
       }
       
       public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream) {}
       
-      public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
+      public final byte[] h(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
       {
         return new byte[0];
       }
@@ -90,50 +90,50 @@ public final class a
     AppMethodBeat.o(120825);
   }
   
-  public static a cME()
+  public static a dqi()
   {
     try
     {
       AppMethodBeat.i(120826);
-      if (tLP == null) {
-        tLP = new a();
+      if (wPe == null) {
+        wPe = new a();
       }
-      com.tencent.mm.plugin.cdndownloader.c.a.cMu();
-      a locala = tLP;
+      com.tencent.mm.plugin.cdndownloader.c.a.dpY();
+      a locala = wPe;
       AppMethodBeat.o(120826);
       return locala;
     }
     finally {}
   }
   
-  public final int a(String paramString1, String paramString2, b paramb)
+  public final int a(String paramString1, String paramString2, int paramInt, b paramb)
   {
-    AppMethodBeat.i(120827);
-    Log.i("FileDownloaderXWEBProxy", "addDownloadTask: %s filepath:%s", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.i(261599);
+    Log.i("XWeb.MM.FileDownloaderXWEBProxy", "addDownloadTask, url:%s, filepath:%s, bizType:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
     g localg = new g();
     localg.taskName = "task_FileDownloaderXWEBProxy";
     localg.field_mediaId = paramString1;
     localg.field_fullpath = paramString2;
-    localg.iUJ = paramString1;
-    localg.field_fileType = com.tencent.mm.i.a.iUl;
-    localg.iUG = this.tLH;
-    localg.iUK = 60;
-    localg.iUL = 600;
-    localg.iUN = false;
+    localg.lwO = paramString1;
+    localg.field_fileType = com.tencent.mm.g.a.lwq;
+    localg.lwL = this.wOW;
+    localg.lwP = 60;
+    localg.lwQ = 600;
+    localg.lwS = false;
     a locala = new a((byte)0);
-    locala.tLR = paramb;
-    locala.tLO = paramString2;
-    this.tLL.put(paramString1, locala);
-    int i = com.tencent.mm.plugin.cdndownloader.c.a.cMu().h(localg);
-    Log.i("FileDownloaderXWEBProxy", "addDownloadTask: ".concat(String.valueOf(i)));
-    AppMethodBeat.o(120827);
-    return i;
+    locala.wPg = paramb;
+    locala.wPd = paramString2;
+    this.wPa.put(paramString1, locala);
+    paramInt = com.tencent.mm.plugin.cdndownloader.c.a.dpY().i(localg);
+    Log.i("XWeb.MM.FileDownloaderXWEBProxy", "addDownloadTask, result:".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(261599);
+    return paramInt;
   }
   
   final class a
   {
-    public String tLO = null;
-    public b tLR = null;
+    public String wPd = null;
+    public b wPg = null;
     
     private a() {}
   }

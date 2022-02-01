@@ -5,91 +5,76 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.xeffect.effect.IStickerDecoder;
 import com.tencent.mm.xeffect.effect.IStickerDecoderFactory;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/emojidecoder/WechatEmojiDecoderFactory;", "Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "()V", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "getDecoder", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "bytes", "", "path", "", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/emojidecoder/WechatEmojiDecoderFactory;", "Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "()V", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "getDecoder", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "bytes", "", "path", "", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   implements IStickerDecoderFactory
 {
-  public static final a NEB;
+  public static final a UqM;
   private Context context;
   
   static
   {
-    AppMethodBeat.i(226297);
-    NEB = new a((byte)0);
-    AppMethodBeat.o(226297);
+    AppMethodBeat.i(282127);
+    UqM = new a((byte)0);
+    AppMethodBeat.o(282127);
   }
   
   public d()
   {
-    AppMethodBeat.i(226296);
+    AppMethodBeat.i(282120);
     Context localContext = MMApplicationContext.getContext();
-    p.j(localContext, "MMApplicationContext.getContext()");
+    s.s(localContext, "getContext()");
     this.context = localContext;
-    AppMethodBeat.o(226296);
+    AppMethodBeat.o(282120);
   }
   
   public final IStickerDecoder getDecoder(String paramString)
   {
-    AppMethodBeat.i(226295);
-    p.k(paramString, "path");
-    for (;;)
+    AppMethodBeat.i(282149);
+    s.u(paramString, "path");
+    try
     {
-      try
+      String str = new JSONObject(paramString).optString("scheme");
+      if (s.p(str, "text"))
       {
-        str = new JSONObject(paramString).optString("scheme");
-        if (str != null) {
-          continue;
-        }
+        paramString = (IStickerDecoder)new b(this.context, paramString);
+        AppMethodBeat.o(282149);
+        return paramString;
       }
-      catch (Exception paramString)
+      if (s.p(str, "emoji"))
       {
-        String str;
-        continue;
-      }
-      paramString = (IStickerDecoder)new a();
-      AppMethodBeat.o(226295);
-      return paramString;
-      switch (str.hashCode())
-      {
-      case 3556653: 
-        if (str.equals("text"))
-        {
-          paramString = (IStickerDecoder)new b(this.context, paramString);
-          AppMethodBeat.o(226295);
-          return paramString;
-        }
-        break;
-      case 96632902: 
-        if (str.equals("emoji"))
-        {
-          paramString = (IStickerDecoder)new c(paramString);
-          AppMethodBeat.o(226295);
-          return paramString;
-        }
-        break;
+        paramString = (IStickerDecoder)new c(paramString);
+        AppMethodBeat.o(282149);
+        return paramString;
       }
     }
+    catch (Exception paramString)
+    {
+      paramString = (IStickerDecoder)new a();
+      AppMethodBeat.o(282149);
+    }
+    return paramString;
   }
   
   public final IStickerDecoder getDecoder(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(226292);
-    p.k(paramArrayOfByte, "bytes");
+    AppMethodBeat.i(282139);
+    s.u(paramArrayOfByte, "bytes");
     paramArrayOfByte = (IStickerDecoder)new c("test");
-    AppMethodBeat.o(226292);
+    AppMethodBeat.o(282139);
     return paramArrayOfByte;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/emojidecoder/WechatEmojiDecoderFactory$Companion;", "", "()V", "TIMELINE_EDIT_SCHEME", "", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/emojidecoder/WechatEmojiDecoderFactory$Companion;", "", "()V", "TIMELINE_EDIT_SCHEME", "", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.timelineeditor.emojidecoder.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,122 +1,65 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.s;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.downloader.g.a;
-import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.plugin.downloader.model.o.7;
-import com.tencent.mm.plugin.downloader.model.o.8;
-import com.tencent.mm.plugin.downloader.model.o.a;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aq
-  extends br<s>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, final br.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    AppMethodBeat.i(78593);
-    long l;
+    AppMethodBeat.i(296024);
+    Log.d("MicroMsg.JsApiOpenFinderView", "invokeInMM");
     try
     {
       paramString = new JSONObject(paramString);
-      l = paramString.optLong("download_id");
-      if (l <= 0L)
+      if (paramString == null)
       {
-        Log.e("MicroMsg.JsApiPauseDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
-        parama.i("invalid_downloadid", null);
-        AppMethodBeat.o(78593);
+        parama.j("data is null", null);
+        AppMethodBeat.o(296024);
         return;
       }
     }
-    catch (JSONException paramContext)
+    catch (Exception paramString)
     {
-      Log.e("MicroMsg.JsApiPauseDownloadTask", "paras data error: " + paramContext.getMessage());
-      parama.i("fail", null);
-      AppMethodBeat.o(78593);
-      return;
-    }
-    a locala = d.IF(l);
-    if (locala == null)
-    {
-      parama.i(null, null);
-      AppMethodBeat.o(78593);
-      return;
-    }
-    int j = paramString.optInt("scene", 1000);
-    int k = paramString.optInt("uiarea");
-    int m = paramString.optInt("notice_id");
-    int n = paramString.optInt("ssid");
-    if (paramString.optInt("ignoreNetwork", 0) == 1) {}
-    for (int i = 1;; i = 0)
-    {
-      locala.field_scene = j;
-      locala.field_uiarea = k;
-      locala.field_noticeId = m;
-      locala.field_ssid = n;
-      locala.field_downloadInWifi = false;
-      d.e(locala);
-      paramString = new o.a()
+      for (;;)
       {
-        public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
-        {
-          AppMethodBeat.i(265280);
-          parama.i(paramAnonymousString, paramAnonymousJSONObject);
-          AppMethodBeat.o(265280);
-        }
-      };
-      if (!f.cPZ().Iy(l)) {
-        break label374;
+        paramString = null;
       }
-      if (!NetStatusUtil.isWifi(paramContext)) {
-        break;
-      }
-      paramString.i(null, null);
-      AppMethodBeat.o(78593);
-      return;
-    }
-    if (d.IF(l) == null)
-    {
-      paramString.i(null, null);
-      AppMethodBeat.o(78593);
-      return;
-    }
-    if ((i != 0) && (((com.tencent.mm.game.report.a.b)h.ae(com.tencent.mm.game.report.a.b.class)).a(b.a.vul, false))) {}
-    for (i = 1;; i = 0)
-    {
-      if (i != 0)
+      JSONObject localJSONObject = new JSONObject();
+      try
       {
-        parama = new JSONObject();
-        ((com.tencent.mm.plugin.downloader_app.api.b)h.ae(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, new o.7(l, paramString), new o.8(l, paramString, parama));
-        AppMethodBeat.o(78593);
+        localJSONObject.put("extInfo", new JSONObject(paramString.optString("extInfo")));
+        ((cn)h.az(cn.class)).enterFinderUI(paramContext, localJSONObject.toString());
+        parama.j(null, null);
+        AppMethodBeat.o(296024);
         return;
       }
-      paramString.i(null, null);
-      AppMethodBeat.o(78593);
-      return;
-      label374:
-      paramString.i("fail", null);
-      AppMethodBeat.o(78593);
-      return;
+      catch (JSONException paramContext)
+      {
+        parama.j("fail", null);
+        AppMethodBeat.o(296024);
+      }
     }
   }
   
-  public final void b(com.tencent.luggage.d.b<s>.a paramb) {}
+  public final void b(b<g>.a paramb) {}
   
-  public final int cDj()
+  public final int dgI()
   {
     return 2;
   }
   
   public final String name()
   {
-    return "pauseDownloadTask";
+    return "openFinderView";
   }
 }
 

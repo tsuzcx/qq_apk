@@ -1,148 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
-import java.util.LinkedList;
 
 public final class biy
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public aqe SDi;
-  public b SLc;
-  public String finderUsername;
-  public long liveId;
-  public int liveStatus;
-  public long xbk;
+  public boolean ZSH;
+  public String ZSI;
+  public String ZSJ;
+  public String ZsC;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(199962);
+    AppMethodBeat.i(260200);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZsC != null) {
+        paramVarArgs.g(1, this.ZsC);
       }
-      if (this.SDi != null)
-      {
-        paramVarArgs.oE(2, this.SDi.computeSize());
-        this.SDi.writeFields(paramVarArgs);
+      paramVarArgs.di(2, this.ZSH);
+      if (this.ZSI != null) {
+        paramVarArgs.g(3, this.ZSI);
       }
-      paramVarArgs.bm(3, this.liveId);
-      if (this.SLc != null) {
-        paramVarArgs.c(4, this.SLc);
+      if (this.ZSJ != null) {
+        paramVarArgs.g(4, this.ZSJ);
       }
-      paramVarArgs.bm(5, this.xbk);
-      if (this.finderUsername != null) {
-        paramVarArgs.f(6, this.finderUsername);
-      }
-      paramVarArgs.aY(7, this.liveStatus);
-      AppMethodBeat.o(199962);
+      AppMethodBeat.o(260200);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label678;
+      if (this.ZsC == null) {
+        break label374;
       }
     }
-    label678:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label374:
+    for (paramInt = i.a.a.b.b.a.h(1, this.ZsC) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.SDi != null) {
-        i = paramInt + g.a.a.a.oD(2, this.SDi.computeSize());
-      }
-      i += g.a.a.b.b.a.p(3, this.liveId);
+      int i = paramInt + (i.a.a.b.b.a.ko(2) + 1);
       paramInt = i;
-      if (this.SLc != null) {
-        paramInt = i + g.a.a.b.b.a.b(4, this.SLc);
+      if (this.ZSI != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.ZSI);
       }
-      i = paramInt + g.a.a.b.b.a.p(5, this.xbk);
-      paramInt = i;
-      if (this.finderUsername != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.finderUsername);
+      i = paramInt;
+      if (this.ZSJ != null) {
+        i = paramInt + i.a.a.b.b.a.h(4, this.ZSJ);
       }
-      i = g.a.a.b.b.a.bM(7, this.liveStatus);
-      AppMethodBeat.o(199962);
-      return paramInt + i;
+      AppMethodBeat.o(260200);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(199962);
+        AppMethodBeat.o(260200);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         biy localbiy = (biy)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(199962);
+          AppMethodBeat.o(260200);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jg();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jg)localObject2).parseFrom((byte[])localObject1);
-            }
-            localbiy.BaseRequest = ((jg)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(199962);
+          localbiy.ZsC = locala.ajGk.readString();
+          AppMethodBeat.o(260200);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new aqe();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((aqe)localObject2).parseFrom((byte[])localObject1);
-            }
-            localbiy.SDi = ((aqe)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(199962);
+          localbiy.ZSH = locala.ajGk.aai();
+          AppMethodBeat.o(260200);
           return 0;
         case 3: 
-          localbiy.liveId = ((g.a.a.a.a)localObject1).abFh.AN();
-          AppMethodBeat.o(199962);
-          return 0;
-        case 4: 
-          localbiy.SLc = ((g.a.a.a.a)localObject1).abFh.iUw();
-          AppMethodBeat.o(199962);
-          return 0;
-        case 5: 
-          localbiy.xbk = ((g.a.a.a.a)localObject1).abFh.AN();
-          AppMethodBeat.o(199962);
-          return 0;
-        case 6: 
-          localbiy.finderUsername = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(199962);
+          localbiy.ZSI = locala.ajGk.readString();
+          AppMethodBeat.o(260200);
           return 0;
         }
-        localbiy.liveStatus = ((g.a.a.a.a)localObject1).abFh.AK();
-        AppMethodBeat.o(199962);
+        localbiy.ZSJ = locala.ajGk.readString();
+        AppMethodBeat.o(260200);
         return 0;
       }
-      AppMethodBeat.o(199962);
+      AppMethodBeat.o(260200);
       return -1;
     }
   }

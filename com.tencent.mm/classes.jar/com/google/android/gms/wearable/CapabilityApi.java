@@ -5,6 +5,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.Map;
 
 @Deprecated
@@ -37,6 +40,9 @@ public abstract interface CapabilityApi
     extends Result
   {}
   
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface CapabilityFilterType {}
+  
   @Deprecated
   public static abstract interface CapabilityListener
   {
@@ -57,6 +63,9 @@ public abstract interface CapabilityApi
     public abstract CapabilityInfo getCapability();
   }
   
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface NodeFilterType {}
+  
   @Deprecated
   public static abstract interface RemoveLocalCapabilityResult
     extends Result
@@ -64,7 +73,7 @@ public abstract interface CapabilityApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.CapabilityApi
  * JD-Core Version:    0.7.0.1
  */

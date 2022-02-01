@@ -14,8 +14,8 @@ import junit.framework.Assert;
 public class PressImageView
   extends ImageView
 {
-  private MMHandler KBt;
-  private Runnable KBu;
+  private MMHandler Rba;
+  private Runnable Rbb;
   private int a;
   private int b;
   private int g;
@@ -29,17 +29,8 @@ public class PressImageView
     this.r = 0;
     this.g = 0;
     this.b = 0;
-    this.KBt = new MMHandler();
-    this.KBu = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(143211);
-        PressImageView.this.setPressed(false);
-        PressImageView.this.invalidate();
-        AppMethodBeat.o(143211);
-      }
-    };
+    this.Rba = new MMHandler();
+    this.Rbb = new PressImageView.1(this);
     super.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -85,7 +76,7 @@ public class PressImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.tools.PressImageView
  * JD-Core Version:    0.7.0.1
  */

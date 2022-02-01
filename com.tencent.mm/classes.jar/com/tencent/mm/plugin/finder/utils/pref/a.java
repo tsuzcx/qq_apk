@@ -2,66 +2,65 @@ package com.tencent.mm.plugin.finder.utils.pref;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.xw;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.autogen.a.zp;
+import com.tencent.mm.plugin.finder.report.z;
 import com.tencent.mm.ui.base.preference.f;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/pref/PosterCenterAuthPref;", "Lcom/tencent/mm/plugin/finder/utils/pref/PrefComponent;", "name", "", "preferenceScreen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "context", "Landroid/content/Context;", "(Ljava/lang/String;Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "getName", "()Ljava/lang/String;", "getPreferenceScreen", "()Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "getNameTag", "onClick", "", "onCreate", "onDestroy", "onResume", "onStop", "updateView", "isFromSceneEnd", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/pref/PosterCenterAuthPref;", "Lcom/tencent/mm/plugin/finder/utils/pref/PrefComponent;", "name", "", "preferenceScreen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "context", "Landroid/content/Context;", "(Ljava/lang/String;Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "getName", "()Ljava/lang/String;", "getPreferenceScreen", "()Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "getNameTag", "onClick", "", "onCreate", "onDestroy", "onResume", "onStop", "updateView", "isFromSceneEnd", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   implements i
 {
-  private final f AJD;
+  private final f Gmr;
   private final Context context;
   private final String name;
   
   public a(String paramString, f paramf, Context paramContext)
   {
-    AppMethodBeat.i(276058);
+    AppMethodBeat.i(333849);
     this.name = paramString;
-    this.AJD = paramf;
+    this.Gmr = paramf;
     this.context = paramContext;
-    AppMethodBeat.o(276058);
+    AppMethodBeat.o(333849);
   }
   
-  public final String egv()
+  public final String fiv()
   {
     return this.name;
   }
   
-  public final void jq(boolean paramBoolean) {}
+  public final void kD(boolean paramBoolean) {}
   
   public final void onClick()
   {
-    AppMethodBeat.i(276057);
-    Object localObject = new xw();
-    ((xw)localObject).fWN.userName = "gh_4ee148a6ecaa@app";
-    ((xw)localObject).fWN.appId = "wxdfda2588e999a42d";
-    ((xw)localObject).fWN.fWP = "pages/index/index.html";
-    ((xw)localObject).fWN.scene = 1201;
-    EventCenter.instance.publish((IEvent)localObject);
-    localObject = n.zWF;
-    n.b(this.context, 3L, 1L);
-    AppMethodBeat.o(276057);
+    AppMethodBeat.i(333887);
+    Object localObject = new zp();
+    ((zp)localObject).icM.userName = "gh_4ee148a6ecaa@app";
+    ((zp)localObject).icM.appId = "wxdfda2588e999a42d";
+    ((zp)localObject).icM.icO = "pages/index/index.html";
+    ((zp)localObject).icM.scene = 1201;
+    ((zp)localObject).icM.context = this.context;
+    ((zp)localObject).publish();
+    localObject = z.FrZ;
+    z.b(this.context, 3L, 1L);
+    AppMethodBeat.o(333887);
   }
   
   public final void onCreate() {}
   
   public final void onResume()
   {
-    AppMethodBeat.i(276056);
-    n localn = n.zWF;
-    n.b(this.context, 3L, 2L);
-    AppMethodBeat.o(276056);
+    AppMethodBeat.i(333871);
+    z localz = z.FrZ;
+    z.b(this.context, 3L, 2L);
+    AppMethodBeat.o(333871);
   }
   
   public final void onStop() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.pref.a
  * JD-Core Version:    0.7.0.1
  */

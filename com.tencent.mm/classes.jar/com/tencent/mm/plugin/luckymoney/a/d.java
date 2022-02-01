@@ -8,12 +8,12 @@ import java.util.UUID;
 
 public final class d
 {
-  public static boolean BqB = false;
-  public static String EsX;
+  public static String KlE;
+  public static boolean pvv = false;
   public static String sessionId;
   public static long startTime;
   
-  public static void Bv(int paramInt)
+  public static void BI(int paramInt)
   {
     AppMethodBeat.i(168792);
     if (Util.isNullOrNil(sessionId))
@@ -21,38 +21,38 @@ public final class d
       AppMethodBeat.o(168792);
       return;
     }
-    if ((!BqB) && ((paramInt == 9) || (paramInt == 10) || (paramInt == 11)))
+    if ((!pvv) && ((paramInt == 9) || (paramInt == 10) || (paramInt == 11)))
     {
       AppMethodBeat.o(168792);
       return;
     }
     if ((paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
-      BqB = false;
+      pvv = false;
     }
     long l1 = SystemClock.elapsedRealtime() / 1000L;
     long l2 = startTime;
-    h.IzE.a(18889, new Object[] { Integer.valueOf(paramInt), sessionId, Long.valueOf(l1 - l2), EsX });
+    h.OAn.b(18889, new Object[] { Integer.valueOf(paramInt), sessionId, Long.valueOf(l1 - l2), KlE });
     AppMethodBeat.o(168792);
   }
   
-  public static void aNz(String paramString)
+  public static void aKu(String paramString)
   {
-    EsX = paramString;
+    KlE = paramString;
   }
   
-  public static void bRC()
+  public static void aqI()
+  {
+    sessionId = null;
+    KlE = null;
+    startTime = -1L;
+  }
+  
+  public static void dpe()
   {
     AppMethodBeat.i(168791);
     sessionId = UUID.randomUUID().toString();
     startTime = SystemClock.elapsedRealtime() / 1000L;
     AppMethodBeat.o(168791);
-  }
-  
-  public static void resetSession()
-  {
-    sessionId = null;
-    EsX = null;
-    startTime = -1L;
   }
 }
 

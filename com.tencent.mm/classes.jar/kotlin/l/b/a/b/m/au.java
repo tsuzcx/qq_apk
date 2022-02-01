@@ -6,126 +6,95 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import kotlin.a.ae;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.as;
+import kotlin.a.ak;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ba;
 
-public abstract class au
-  extends ay
+public final class au
 {
-  public static final a abqZ = new a((byte)0);
+  public static final a ajqn;
+  final List<az> aiHl;
+  private final au ajqo;
+  final kotlin.l.b.a.b.b.az ajqp;
+  private final Map<ba, az> ajqq;
   
-  public static final ay a(at paramat, List<? extends av> paramList)
+  static
   {
-    return a.a(paramat, paramList);
+    AppMethodBeat.i(191561);
+    ajqn = new a((byte)0);
+    AppMethodBeat.o(191561);
   }
   
-  public static final au cI(Map<at, ? extends av> paramMap)
+  private au(au paramau, kotlin.l.b.a.b.b.az paramaz, List<? extends az> paramList, Map<ba, ? extends az> paramMap)
   {
-    return a.cJ(paramMap);
+    this.ajqo = paramau;
+    this.ajqp = paramaz;
+    this.aiHl = paramList;
+    this.ajqq = paramMap;
   }
   
-  public final av N(ab paramab)
+  public final boolean b(kotlin.l.b.a.b.b.az paramaz)
   {
-    p.k(paramab, "key");
-    return d(paramab.iOU());
+    AppMethodBeat.i(191567);
+    s.u(paramaz, "descriptor");
+    au localau;
+    if (!s.p(this.ajqp, paramaz))
+    {
+      localau = this.ajqo;
+      if (localau != null) {
+        break label44;
+      }
+    }
+    label44:
+    for (boolean bool = false; bool; bool = localau.b(paramaz))
+    {
+      AppMethodBeat.o(191567);
+      return true;
+    }
+    AppMethodBeat.o(191567);
+    return false;
   }
   
-  public abstract av d(at paramat);
+  public final az d(ax paramax)
+  {
+    AppMethodBeat.i(191563);
+    s.u(paramax, "constructor");
+    paramax = paramax.knA();
+    if ((paramax instanceof ba))
+    {
+      paramax = (az)this.ajqq.get(paramax);
+      AppMethodBeat.o(191563);
+      return paramax;
+    }
+    AppMethodBeat.o(191563);
+    return null;
+  }
   
   public static final class a
   {
-    public static ay a(at paramat, List<? extends av> paramList)
+    public static au a(au paramau, kotlin.l.b.a.b.b.az paramaz, List<? extends az> paramList)
     {
-      AppMethodBeat.i(60835);
-      p.k(paramat, "typeConstructor");
-      p.k(paramList, "arguments");
-      Object localObject = paramat.iCb();
-      p.j(localObject, "typeConstructor.parameters");
-      as localas = (as)j.lr((List)localObject);
-      boolean bool;
-      if (localas != null) {
-        bool = localas.iEP();
+      AppMethodBeat.i(191574);
+      s.u(paramaz, "typeAliasDescriptor");
+      s.u(paramList, "arguments");
+      Object localObject1 = paramaz.kmZ().klq();
+      s.s(localObject1, "typeAliasDescriptor.typeConstructor.parameters");
+      Object localObject2 = (Iterable)localObject1;
+      localObject1 = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
+      localObject2 = ((Iterable)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((Collection)localObject1).add(((ba)((Iterator)localObject2).next()).kop());
       }
-      while (bool)
-      {
-        paramat = paramat.iCb();
-        p.j(paramat, "typeConstructor.parameters");
-        localObject = (Iterable)paramat;
-        paramat = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
-        localObject = ((Iterable)localObject).iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject).hasNext())
-          {
-            localas = (as)((Iterator)localObject).next();
-            p.j(localas, "it");
-            paramat.add(localas.iDL());
-            continue;
-            bool = false;
-            break;
-          }
-        }
-        paramat = (ay)cJ(ae.E((Iterable)j.c((Iterable)paramat, (Iterable)paramList)));
-        AppMethodBeat.o(60835);
-        return paramat;
-      }
-      paramat = (ay)new z((List)localObject, paramList);
-      AppMethodBeat.o(60835);
-      return paramat;
-    }
-    
-    public static au cJ(Map<at, ? extends av> paramMap)
-    {
-      AppMethodBeat.i(60833);
-      p.k(paramMap, "map");
-      paramMap = (au)new a(paramMap, false);
-      AppMethodBeat.o(60833);
-      return paramMap;
-    }
-    
-    public final ay ax(ab paramab)
-    {
-      AppMethodBeat.i(60834);
-      p.k(paramab, "kotlinType");
-      paramab = a(paramab.iOU(), paramab.iOR());
-      AppMethodBeat.o(60834);
-      return paramab;
-    }
-    
-    public static final class a
-      extends au
-    {
-      a(Map paramMap, boolean paramBoolean) {}
-      
-      public final av d(at paramat)
-      {
-        AppMethodBeat.i(60831);
-        p.k(paramat, "key");
-        paramat = (av)this.abra.get(paramat);
-        AppMethodBeat.o(60831);
-        return paramat;
-      }
-      
-      public final boolean iPR()
-      {
-        return this.abrb;
-      }
-      
-      public final boolean isEmpty()
-      {
-        AppMethodBeat.i(60832);
-        boolean bool = this.abra.isEmpty();
-        AppMethodBeat.o(60832);
-        return bool;
-      }
+      paramau = new au(paramau, paramaz, paramList, ak.F((Iterable)p.d((Iterable)localObject1, (Iterable)paramList)), (byte)0);
+      AppMethodBeat.o(191574);
+      return paramau;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.au
  * JD-Core Version:    0.7.0.1
  */

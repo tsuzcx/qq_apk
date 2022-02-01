@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/jmr" android:visibility="visible" android:layout_marginTop="@dimen/ih" android:layout_marginBottom="@dimen/ir" style="@style/h1" />
-    <LinearLayout android:orientation="vertical" android:id="@id/jmp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ir">
-        <LinearLayout android:orientation="horizontal" android:id="@id/jmo" android:background="@drawable/o2" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/ir" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="30.0dip">
-            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_weight="1.0">
-                <ImageView android:layout_gravity="center_vertical" android:id="@id/x1" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/bar" android:scaleType="centerCrop" />
-                <TextView android:textSize="15.0dip" android:textColor="@color/x0" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/fz_" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:singleLine="true" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:id="@id/jms" android:background="@drawable/ny" android:paddingLeft="@dimen/k5" android:paddingTop="0.0px" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="150.0dip">
-            <FrameLayout android:id="@id/bh2" android:paddingRight="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bku" />
-            </FrameLayout>
-            <FrameLayout android:id="@id/bh3" android:paddingLeft="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bku" />
-            </FrameLayout>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/ahb" android:paddingLeft="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/d4"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/hn" android:textStyle="bold" android:textColor="@color/m4" android:ellipsize="end" android:id="@id/kd0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <ImageView android:id="@id/kcx" android:visibility="invisible" android:layout_width="@dimen/df" android:layout_height="@dimen/df" android:layout_marginTop="-4.0dip" app:layout_constraintLeft_toRightOf="@id/kd0" app:layout_constraintTop_toTopOf="@id/kd0" style="@style/zi" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kd3" android:visibility="invisible" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_footstep" app:iconColor="@color/BW_0_Alpha_0_2" app:layout_constraintBottom_toBottomOf="@id/kd0" app:layout_constraintLeft_toRightOf="@id/kd0" app:layout_constraintTop_toTopOf="@id/kd0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,14 +9,14 @@ public enum c
   static
   {
     AppMethodBeat.i(174266);
-    abTt = new c("VERBOSE", 0, 2);
-    abTs = new c("DEBUG", 1, 3);
-    abTu = new c("INFO", 2, 4);
-    abTv = new c("WARN", 3, 5);
-    abTw = new c("ERROR", 4, 6);
-    abTx = new c("ALL", 5, -2147483648);
-    abTy = new c("NONE", 6, 2147483647);
-    abTz = new c[] { abTt, abTs, abTu, abTv, abTw, abTx, abTy };
+    ahzE = new c("VERBOSE", 0, 2);
+    ahzD = new c("DEBUG", 1, 3);
+    ahzF = new c("INFO", 2, 4);
+    ahzG = new c("WARN", 3, 5);
+    ahzH = new c("ERROR", 4, 6);
+    ahzI = new c("ALL", 5, -2147483648);
+    ahzJ = new c("NONE", 6, 2147483647);
+    ahzK = new c[] { ahzE, ahzD, ahzF, ahzG, ahzH, ahzI, ahzJ };
     AppMethodBeat.o(174266);
   }
   
@@ -31,8 +31,8 @@ public enum c
     switch (1.a[paramc.ordinal()])
     {
     default: 
-      if (paramc.h < abTt.h) {
-        paramc = "V-" + (abTt.h - paramc.h);
+      if (paramc.h < ahzE.h) {
+        paramc = "V-" + (ahzE.h - paramc.h);
       }
       break;
     }
@@ -50,31 +50,31 @@ public enum c
       continue;
       paramc = "E";
       continue;
-      paramc = "E+" + (paramc.h - abTw.h);
+      paramc = "E+" + (paramc.h - ahzH.h);
     }
   }
   
-  public static c aGq(int paramInt)
+  public static c aHm(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return abTy;
+      return ahzJ;
     case 2: 
-      return abTt;
+      return ahzE;
     case 3: 
-      return abTs;
+      return ahzD;
     case 4: 
-      return abTu;
+      return ahzF;
     case 5: 
-      return abTv;
+      return ahzG;
     }
-    return abTw;
+    return ahzH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tbs.a.c
  * JD-Core Version:    0.7.0.1
  */

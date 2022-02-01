@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a2h" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/bmm" android:background="@color/c" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/hc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hv" android:text="@string/ir4" />
-    <ImageView android:id="@id/duq" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="@dimen/hv" />
-    <EditText android:textSize="@dimen/l" android:gravity="center" android:id="@id/bvj" android:layout_width="fill_parent" android:layout_height="@dimen/im" android:layout_marginTop="@dimen/hs" android:ems="10" android:inputType="number" />
-    <Button android:id="@id/agg" android:layout_width="fill_parent" android:layout_marginTop="@dimen/iy" android:text="@string/x_" style="@style/ou" />
-</LinearLayout>
+    <TextView android:textColor="@color/m4" android:gravity="center" android:id="@id/bml" android:layout_width="fill_parent" android:layout_height="56.0dip" style="@style/zp" />
+</FrameLayout>

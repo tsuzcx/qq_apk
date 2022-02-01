@@ -21,23 +21,23 @@ public final class a
 {
   private int cN = 16;
   private CharSequence cZ;
-  private final int kM;
-  private final int kN;
-  private final int kO;
-  private CharSequence kP;
-  private char kQ;
-  private int kR = 4096;
-  private char kS;
-  private int kT = 4096;
-  private Drawable kU;
-  private int kV = 0;
-  private MenuItem.OnMenuItemClickListener kW;
-  private CharSequence kX;
-  private CharSequence kY;
-  private ColorStateList kZ = null;
-  private PorterDuff.Mode la = null;
-  private boolean lb = false;
-  private boolean lc = false;
+  private final int lI;
+  private final int lJ;
+  private final int lK;
+  private CharSequence lL;
+  private char lM;
+  private int lN = 4096;
+  private char lO;
+  private int lP = 4096;
+  private Drawable lQ;
+  private int lR = 0;
+  private MenuItem.OnMenuItemClickListener lS;
+  private CharSequence lT;
+  private CharSequence lU;
+  private ColorStateList lV = null;
+  private PorterDuff.Mode lW = null;
+  private boolean lX = false;
+  private boolean lY = false;
   private Context mContext;
   private final int mId;
   private Intent mIntent;
@@ -46,52 +46,52 @@ public final class a
   {
     this.mContext = paramContext;
     this.mId = 16908332;
-    this.kM = 0;
-    this.kN = 0;
-    this.kO = 0;
+    this.lI = 0;
+    this.lJ = 0;
+    this.lK = 0;
     this.cZ = paramCharSequence;
   }
   
-  private void bJ()
+  private void cC()
   {
-    AppMethodBeat.i(239080);
-    if ((this.kU != null) && ((this.lb) || (this.lc)))
+    AppMethodBeat.i(201062);
+    if ((this.lQ != null) && ((this.lX) || (this.lY)))
     {
-      this.kU = androidx.core.graphics.drawable.a.p(this.kU);
-      this.kU = this.kU.mutate();
-      if (this.lb) {
-        androidx.core.graphics.drawable.a.a(this.kU, this.kZ);
+      this.lQ = androidx.core.graphics.drawable.a.s(this.lQ);
+      this.lQ = this.lQ.mutate();
+      if (this.lX) {
+        androidx.core.graphics.drawable.a.a(this.lQ, this.lV);
       }
-      if (this.lc) {
-        androidx.core.graphics.drawable.a.a(this.kU, this.la);
+      if (this.lY) {
+        androidx.core.graphics.drawable.a.a(this.lQ, this.lW);
       }
     }
-    AppMethodBeat.o(239080);
+    AppMethodBeat.o(201062);
   }
   
   public final androidx.core.a.a.b a(androidx.core.g.b paramb)
   {
-    AppMethodBeat.i(239068);
+    AppMethodBeat.i(201366);
     paramb = new UnsupportedOperationException();
-    AppMethodBeat.o(239068);
+    AppMethodBeat.o(201366);
     throw paramb;
   }
   
   public final androidx.core.a.a.b b(CharSequence paramCharSequence)
   {
-    this.kX = paramCharSequence;
+    this.lT = paramCharSequence;
     return this;
-  }
-  
-  public final androidx.core.g.b bI()
-  {
-    return null;
   }
   
   public final androidx.core.a.a.b c(CharSequence paramCharSequence)
   {
-    this.kY = paramCharSequence;
+    this.lU = paramCharSequence;
     return this;
+  }
+  
+  public final androidx.core.g.b cB()
+  {
+    return null;
   }
   
   public final boolean collapseActionView()
@@ -106,9 +106,9 @@ public final class a
   
   public final ActionProvider getActionProvider()
   {
-    AppMethodBeat.i(239064);
+    AppMethodBeat.i(201351);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-    AppMethodBeat.o(239064);
+    AppMethodBeat.o(201351);
     throw localUnsupportedOperationException;
   }
   
@@ -119,37 +119,37 @@ public final class a
   
   public final int getAlphabeticModifiers()
   {
-    return this.kT;
+    return this.lP;
   }
   
   public final char getAlphabeticShortcut()
   {
-    return this.kS;
+    return this.lO;
   }
   
   public final CharSequence getContentDescription()
   {
-    return this.kX;
+    return this.lT;
   }
   
   public final int getGroupId()
   {
-    return this.kM;
+    return this.lI;
   }
   
   public final Drawable getIcon()
   {
-    return this.kU;
+    return this.lQ;
   }
   
   public final ColorStateList getIconTintList()
   {
-    return this.kZ;
+    return this.lV;
   }
   
   public final PorterDuff.Mode getIconTintMode()
   {
-    return this.la;
+    return this.lW;
   }
   
   public final Intent getIntent()
@@ -169,17 +169,17 @@ public final class a
   
   public final int getNumericModifiers()
   {
-    return this.kR;
+    return this.lN;
   }
   
   public final char getNumericShortcut()
   {
-    return this.kQ;
+    return this.lM;
   }
   
   public final int getOrder()
   {
-    return this.kO;
+    return this.lK;
   }
   
   public final SubMenu getSubMenu()
@@ -194,15 +194,15 @@ public final class a
   
   public final CharSequence getTitleCondensed()
   {
-    if (this.kP != null) {
-      return this.kP;
+    if (this.lL != null) {
+      return this.lL;
     }
     return this.cZ;
   }
   
   public final CharSequence getTooltipText()
   {
-    return this.kY;
+    return this.lU;
   }
   
   public final boolean hasSubMenu()
@@ -237,26 +237,26 @@ public final class a
   
   public final MenuItem setActionProvider(ActionProvider paramActionProvider)
   {
-    AppMethodBeat.i(239063);
+    AppMethodBeat.i(201342);
     paramActionProvider = new UnsupportedOperationException();
-    AppMethodBeat.o(239063);
+    AppMethodBeat.o(201342);
     throw paramActionProvider;
   }
   
   public final MenuItem setAlphabeticShortcut(char paramChar)
   {
-    AppMethodBeat.i(239049);
-    this.kS = Character.toLowerCase(paramChar);
-    AppMethodBeat.o(239049);
+    AppMethodBeat.i(201185);
+    this.lO = Character.toLowerCase(paramChar);
+    AppMethodBeat.o(201185);
     return this;
   }
   
   public final MenuItem setAlphabeticShortcut(char paramChar, int paramInt)
   {
-    AppMethodBeat.i(239051);
-    this.kS = Character.toLowerCase(paramChar);
-    this.kT = KeyEvent.normalizeMetaState(paramInt);
-    AppMethodBeat.o(239051);
+    AppMethodBeat.i(201195);
+    this.lO = Character.toLowerCase(paramChar);
+    this.lP = KeyEvent.normalizeMetaState(paramInt);
+    AppMethodBeat.o(201195);
     return this;
   }
   
@@ -295,41 +295,41 @@ public final class a
   
   public final MenuItem setIcon(int paramInt)
   {
-    AppMethodBeat.i(239056);
-    this.kV = paramInt;
-    this.kU = androidx.core.content.a.m(this.mContext, paramInt);
-    bJ();
-    AppMethodBeat.o(239056);
+    AppMethodBeat.i(201238);
+    this.lR = paramInt;
+    this.lQ = androidx.core.content.a.m(this.mContext, paramInt);
+    cC();
+    AppMethodBeat.o(201238);
     return this;
   }
   
   public final MenuItem setIcon(Drawable paramDrawable)
   {
-    AppMethodBeat.i(239054);
-    this.kU = paramDrawable;
-    this.kV = 0;
-    bJ();
-    AppMethodBeat.o(239054);
+    AppMethodBeat.i(201227);
+    this.lQ = paramDrawable;
+    this.lR = 0;
+    cC();
+    AppMethodBeat.o(201227);
     return this;
   }
   
   public final MenuItem setIconTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(239076);
-    this.kZ = paramColorStateList;
-    this.lb = true;
-    bJ();
-    AppMethodBeat.o(239076);
+    AppMethodBeat.i(201421);
+    this.lV = paramColorStateList;
+    this.lX = true;
+    cC();
+    AppMethodBeat.o(201421);
     return this;
   }
   
   public final MenuItem setIconTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(239077);
-    this.la = paramMode;
-    this.lc = true;
-    bJ();
-    AppMethodBeat.o(239077);
+    AppMethodBeat.i(201431);
+    this.lW = paramMode;
+    this.lY = true;
+    cC();
+    AppMethodBeat.o(201431);
     return this;
   }
   
@@ -341,50 +341,50 @@ public final class a
   
   public final MenuItem setNumericShortcut(char paramChar)
   {
-    this.kQ = paramChar;
+    this.lM = paramChar;
     return this;
   }
   
   public final MenuItem setNumericShortcut(char paramChar, int paramInt)
   {
-    AppMethodBeat.i(239059);
-    this.kQ = paramChar;
-    this.kR = KeyEvent.normalizeMetaState(paramInt);
-    AppMethodBeat.o(239059);
+    AppMethodBeat.i(201261);
+    this.lM = paramChar;
+    this.lN = KeyEvent.normalizeMetaState(paramInt);
+    AppMethodBeat.o(201261);
     return this;
   }
   
   public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
   {
-    AppMethodBeat.i(239072);
+    AppMethodBeat.i(201390);
     paramOnActionExpandListener = new UnsupportedOperationException();
-    AppMethodBeat.o(239072);
+    AppMethodBeat.o(201390);
     throw paramOnActionExpandListener;
   }
   
   public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.kW = paramOnMenuItemClickListener;
+    this.lS = paramOnMenuItemClickListener;
     return this;
   }
   
   public final MenuItem setShortcut(char paramChar1, char paramChar2)
   {
-    AppMethodBeat.i(239060);
-    this.kQ = paramChar1;
-    this.kS = Character.toLowerCase(paramChar2);
-    AppMethodBeat.o(239060);
+    AppMethodBeat.i(201278);
+    this.lM = paramChar1;
+    this.lO = Character.toLowerCase(paramChar2);
+    AppMethodBeat.o(201278);
     return this;
   }
   
   public final MenuItem setShortcut(char paramChar1, char paramChar2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(239061);
-    this.kQ = paramChar1;
-    this.kR = KeyEvent.normalizeMetaState(paramInt1);
-    this.kS = Character.toLowerCase(paramChar2);
-    this.kT = KeyEvent.normalizeMetaState(paramInt2);
-    AppMethodBeat.o(239061);
+    AppMethodBeat.i(201292);
+    this.lM = paramChar1;
+    this.lN = KeyEvent.normalizeMetaState(paramInt1);
+    this.lO = Character.toLowerCase(paramChar2);
+    this.lP = KeyEvent.normalizeMetaState(paramInt2);
+    AppMethodBeat.o(201292);
     return this;
   }
   
@@ -392,9 +392,9 @@ public final class a
   
   public final MenuItem setTitle(int paramInt)
   {
-    AppMethodBeat.i(239062);
+    AppMethodBeat.i(201306);
     this.cZ = this.mContext.getResources().getString(paramInt);
-    AppMethodBeat.o(239062);
+    AppMethodBeat.o(201306);
     return this;
   }
   
@@ -406,7 +406,7 @@ public final class a
   
   public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
   {
-    this.kP = paramCharSequence;
+    this.lL = paramCharSequence;
     return this;
   }
   
@@ -423,7 +423,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.a
  * JD-Core Version:    0.7.0.1
  */

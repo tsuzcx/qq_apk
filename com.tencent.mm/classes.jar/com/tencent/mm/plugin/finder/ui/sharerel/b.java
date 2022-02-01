@@ -2,57 +2,53 @@ package com.tencent.mm.plugin.finder.ui.sharerel;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.cgi.cd;
-import com.tencent.mm.protocal.protobuf.blp;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.finder.cgi.dc;
+import com.tencent.mm.protocal.protobuf.bzg;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdReporter;", "", "context", "Landroid/app/Activity;", "wxaAdInfo", "Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;", "(Landroid/app/Activity;Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;)V", "TAG", "", "clickAdTimeMs", "", "getContext", "()Landroid/app/Activity;", "expTime", "feedbackGood", "feedbackJsonArray", "Lorg/json/JSONArray;", "feedbackType", "", "isClickAd", "", "getWxaAdInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;", "colletFeedbackInfo", "markClick", "", "reportAvatarClick", "reportCommentClick", "reportExpose", "reportFeedback", "reason", "", "reportFeedbackGood", "reportFirstPlay", "reportFollowClick", "reportForwardClick", "reportLikeClick", "reportNicknameClick", "reportNormalAction", "source", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/sharerel/WxaAdReporter;", "", "context", "Landroid/app/Activity;", "wxaAdInfo", "Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;", "(Landroid/app/Activity;Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;)V", "TAG", "", "clickAdTimeMs", "", "getContext", "()Landroid/app/Activity;", "expTime", "feedbackGood", "feedbackJsonArray", "Lorg/json/JSONArray;", "feedbackType", "", "isClickAd", "", "getWxaAdInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderWxaAdFlowInfo;", "colletFeedbackInfo", "markClick", "", "reportAvatarClick", "reportCommentClick", "reportExpose", "reportFeedback", "reason", "", "reportFeedbackGood", "reportFirstPlay", "reportFollowClick", "reportForwardClick", "reportLikeClick", "reportNicknameClick", "reportNormalAction", "source", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  boolean AyR;
-  long AyS;
-  long AyT;
-  final List<String> AyU;
-  final String AyV;
-  public final JSONArray AyW;
-  final blp AyX;
+  final bzg FYg;
+  boolean FYh;
+  long FYi;
+  long FYj;
+  final List<String> FYk;
+  final String FYl;
+  public final JSONArray FYm;
   final String TAG;
-  private final Activity fDf;
+  private final Activity hHU;
   
-  public b(Activity paramActivity, blp paramblp)
+  public b(Activity paramActivity, bzg parambzg)
   {
-    AppMethodBeat.i(275487);
-    this.fDf = paramActivity;
-    this.AyX = paramblp;
+    AppMethodBeat.i(347827);
+    this.hHU = paramActivity;
+    this.FYg = parambzg;
     this.TAG = "Finder.WxaAdUIC";
-    this.AyU = j.listOf(new String[] { "dismatch", "duplicate", "quality" });
-    this.AyV = "good";
-    this.AyW = new JSONArray();
-    AppMethodBeat.o(275487);
+    this.FYk = kotlin.a.p.listOf(new String[] { "dismatch", "duplicate", "quality" });
+    this.FYl = "good";
+    this.FYm = new JSONArray();
+    AppMethodBeat.o(347827);
   }
   
-  public final void aFi(String paramString)
+  public final void aBh(String paramString)
   {
-    AppMethodBeat.i(275486);
+    AppMethodBeat.i(347873);
     try
     {
-      Object localObject2 = this.AyX.SWG;
+      Object localObject2 = this.FYg.aaiw;
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       int i = new JSONObject((String)localObject1).optInt(paramString, -1);
-      localObject2 = this.AyX.jXW;
+      localObject2 = this.FYg.mxQ;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
@@ -64,56 +60,56 @@ public final class b
         localObject1 = new JSONObject();
       }
       localJSONObject.put("report_type", 2);
-      localJSONObject.put("report_link", this.AyX.SWF);
+      localJSONObject.put("report_link", this.FYg.aaiv);
       localJSONObject.put("press_interval", 0);
       localJSONObject.put("click_pos", i);
       localJSONObject.put("pos_x", 0);
       localJSONObject.put("pos_y", 0);
-      ((JSONObject)localObject1).put("exp_time", this.AyT);
-      ((JSONObject)localObject1).put("clk_time", cm.bfE());
+      ((JSONObject)localObject1).put("exp_time", this.FYj);
+      ((JSONObject)localObject1).put("clk_time", cn.bDw());
       localJSONObject.put("weapp_extra_data", ((JSONObject)localObject1).toString());
-      Log.i(this.TAG, "reportNormalAction ".concat(String.valueOf(paramString)));
+      Log.i(this.TAG, kotlin.g.b.s.X("reportNormalAction ", paramString));
       localObject1 = localJSONObject.toString();
-      p.j(localObject1, "json.toString()");
-      localObject1 = new cd((String)localObject1);
-      h.aGY().b((q)localObject1);
-      AppMethodBeat.o(275486);
+      kotlin.g.b.s.s(localObject1, "json.toString()");
+      localObject1 = new dc((String)localObject1);
+      h.aZW().a((com.tencent.mm.am.p)localObject1, 0);
+      AppMethodBeat.o(347873);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      Log.printErrStackTrace(this.TAG, localThrowable, "reportNormalAction ".concat(String.valueOf(paramString)), new Object[0]);
-      AppMethodBeat.o(275486);
+      Log.printErrStackTrace(this.TAG, localThrowable, kotlin.g.b.s.X("reportNormalAction ", paramString), new Object[0]);
+      AppMethodBeat.o(347873);
     }
   }
   
-  public final void ebR()
+  public final void fcZ()
   {
-    AppMethodBeat.i(275482);
-    ebT();
-    aFi("follow");
-    AppMethodBeat.o(275482);
+    AppMethodBeat.i(347837);
+    fdb();
+    aBh("follow");
+    AppMethodBeat.o(347837);
   }
   
-  public final void ebS()
+  public final void fda()
   {
-    AppMethodBeat.i(275483);
-    ebT();
-    aFi("like");
-    AppMethodBeat.o(275483);
+    AppMethodBeat.i(347849);
+    fdb();
+    aBh("like");
+    AppMethodBeat.o(347849);
   }
   
-  public final void ebT()
+  public final void fdb()
   {
-    AppMethodBeat.i(275485);
-    this.AyR = true;
-    this.AyS = cm.bfE();
-    AppMethodBeat.o(275485);
+    AppMethodBeat.i(347855);
+    this.FYh = true;
+    this.FYi = cn.bDw();
+    AppMethodBeat.o(347855);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.sharerel.b
  * JD-Core Version:    0.7.0.1
  */

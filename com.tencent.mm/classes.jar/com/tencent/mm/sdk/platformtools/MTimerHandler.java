@@ -2,8 +2,8 @@ package com.tencent.mm.sdk.platformtools;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.threadpool.j.a;
 
 public class MTimerHandler
   extends MMHandler
@@ -11,7 +11,7 @@ public class MTimerHandler
   private static final int MAX_TIMERID = 8192;
   private static final String TAG = "MicroMsg.MTimerHandler";
   private static int timerID;
-  private final CallBack mCallBack;
+  private CallBack mCallBack;
   private final boolean mLoop;
   private long mLoopInterval;
   private boolean mStop;
@@ -26,10 +26,24 @@ public class MTimerHandler
     this.mCallBack = paramCallBack;
     this.myTimerID = incTimerID();
     this.mLoop = paramBoolean;
-    if ((Thread.currentThread().getName().equals("initThread")) || ("initThread".equals(a.iqg()))) {
+    if ((Thread.currentThread().getName().equals("initThread")) || ("initThread".equals(a.jZB()))) {
       Log.e("MicroMsg.MTimerHandler", "MTimerHandler can not init handler with initThread, stack %s", new Object[] { Util.getStack() });
     }
     AppMethodBeat.o(157716);
+  }
+  
+  public MTimerHandler(CallBack paramCallBack, boolean paramBoolean)
+  {
+    AppMethodBeat.i(157715);
+    this.mLoopInterval = 0L;
+    this.mStop = false;
+    this.mCallBack = paramCallBack;
+    this.myTimerID = incTimerID();
+    this.mLoop = paramBoolean;
+    if ((Thread.currentThread().getName().equals("initThread")) || ("initThread".equals(a.jZB()))) {
+      Log.e("MicroMsg.MTimerHandler", "MTimerHandler can not init handler with initThread, stack %s", new Object[] { Util.getStack() });
+    }
+    AppMethodBeat.o(157715);
   }
   
   public MTimerHandler(a parama, CallBack paramCallBack, boolean paramBoolean)
@@ -42,20 +56,6 @@ public class MTimerHandler
     this.myTimerID = incTimerID();
     this.mLoop = paramBoolean;
     AppMethodBeat.o(182966);
-  }
-  
-  public MTimerHandler(CallBack paramCallBack, boolean paramBoolean)
-  {
-    AppMethodBeat.i(157715);
-    this.mLoopInterval = 0L;
-    this.mStop = false;
-    this.mCallBack = paramCallBack;
-    this.myTimerID = incTimerID();
-    this.mLoop = paramBoolean;
-    if ((Thread.currentThread().getName().equals("initThread")) || ("initThread".equals(a.iqg()))) {
-      Log.e("MicroMsg.MTimerHandler", "MTimerHandler can not init handler with initThread, stack %s", new Object[] { Util.getStack() });
-    }
-    AppMethodBeat.o(157715);
   }
   
   public MTimerHandler(String paramString, CallBack paramCallBack, boolean paramBoolean)
@@ -93,12 +93,13 @@ public class MTimerHandler
     AppMethodBeat.i(157718);
     if (paramMessage.what == this.myTimerID)
     {
-      if (this.mCallBack == null)
+      paramMessage = this.mCallBack;
+      if (paramMessage == null)
       {
         AppMethodBeat.o(157718);
         return;
       }
-      if (!this.mCallBack.onTimerExpired())
+      if (!paramMessage.onTimerExpired())
       {
         AppMethodBeat.o(157718);
         return;
@@ -108,6 +109,11 @@ public class MTimerHandler
       }
     }
     AppMethodBeat.o(157718);
+  }
+  
+  public void setCallBack(CallBack paramCallBack)
+  {
+    this.mCallBack = paramCallBack;
   }
   
   public void startTimer(long paramLong)
@@ -168,7 +174,7 @@ public class MTimerHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MTimerHandler
  * JD-Core Version:    0.7.0.1
  */

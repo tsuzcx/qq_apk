@@ -16,18 +16,18 @@ import java.lang.reflect.Field;
 public class ShowCommentImageView
   extends ImageView
 {
-  private static Bitmap KJJ;
-  private static Bitmap KJK;
-  private static Field KJL;
-  private static Field KJM;
-  private static boolean KJN = false;
-  private boolean KJI;
+  private static Bitmap Rjl;
+  private static Bitmap Rjm;
+  private static Field Rjn;
+  private static Field Rjo;
+  private static boolean Rjp = false;
+  private boolean Rjk;
   
   public ShowCommentImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98260);
-    this.KJI = false;
+    this.Rjk = false;
     init();
     AppMethodBeat.o(98260);
   }
@@ -36,82 +36,15 @@ public class ShowCommentImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98261);
-    this.KJI = false;
+    this.Rjk = false;
     init();
     AppMethodBeat.o(98261);
   }
   
-  private void aA(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(98265);
-    if (paramBoolean1) {}
-    try
-    {
-      for (Field localField = KJL; paramBoolean2; localField = KJM)
-      {
-        localField.set(this, null);
-        AppMethodBeat.o(98265);
-        return;
-      }
-      Bitmap localBitmap;
-      if (paramBoolean1)
-      {
-        localBitmap = KJK;
-        if (localBitmap != null) {
-          break label103;
-        }
-      }
-      label103:
-      for (paramBoolean2 = true;; paramBoolean2 = false)
-      {
-        Log.d("MicroMsg.ShowCommentImageView", "setDrawingCache, autoScale: %s, cache==null: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-        if (localBitmap != null) {
-          localField.set(this, localBitmap);
-        }
-        AppMethodBeat.o(98265);
-        return;
-        localBitmap = KJJ;
-        break;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.ShowCommentImageView", "setDrawingCache error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(98265);
-    }
-  }
-  
-  private static void init()
-  {
-    AppMethodBeat.i(98262);
-    if ((KJL != null) && (KJM != null))
-    {
-      AppMethodBeat.o(98262);
-      return;
-    }
-    try
-    {
-      KJL = View.class.getDeclaredField("mDrawingCache");
-      KJM = View.class.getDeclaredField("mUnscaledDrawingCache");
-      KJL.setAccessible(true);
-      KJM.setAccessible(true);
-      KJN = true;
-      AppMethodBeat.o(98262);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.ShowCommentImageView", "init error: %s", new Object[] { localException.getMessage() });
-      KJN = false;
-      AppMethodBeat.o(98262);
-    }
-  }
-  
-  private boolean yS(boolean paramBoolean)
+  private boolean Ec(boolean paramBoolean)
   {
     AppMethodBeat.i(98264);
-    if (!KJN)
+    if (!Rjp)
     {
       AppMethodBeat.o(98264);
       return false;
@@ -119,7 +52,7 @@ public class ShowCommentImageView
     if (paramBoolean) {}
     try
     {
-      for (Field localField = KJL; (Bitmap)localField.get(this) != null; localField = KJM)
+      for (Field localField = Rjn; (Bitmap)localField.get(this) != null; localField = Rjo)
       {
         AppMethodBeat.o(98264);
         return true;
@@ -136,18 +69,85 @@ public class ShowCommentImageView
     return false;
   }
   
+  private void aU(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(98265);
+    if (paramBoolean1) {}
+    try
+    {
+      for (Field localField = Rjn; paramBoolean2; localField = Rjo)
+      {
+        localField.set(this, null);
+        AppMethodBeat.o(98265);
+        return;
+      }
+      Bitmap localBitmap;
+      if (paramBoolean1)
+      {
+        localBitmap = Rjm;
+        if (localBitmap != null) {
+          break label103;
+        }
+      }
+      label103:
+      for (paramBoolean2 = true;; paramBoolean2 = false)
+      {
+        Log.d("MicroMsg.ShowCommentImageView", "setDrawingCache, autoScale: %s, cache==null: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+        if (localBitmap != null) {
+          localField.set(this, localBitmap);
+        }
+        AppMethodBeat.o(98265);
+        return;
+        localBitmap = Rjl;
+        break;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.ShowCommentImageView", "setDrawingCache error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(98265);
+    }
+  }
+  
+  private static void init()
+  {
+    AppMethodBeat.i(98262);
+    if ((Rjn != null) && (Rjo != null))
+    {
+      AppMethodBeat.o(98262);
+      return;
+    }
+    try
+    {
+      Rjn = View.class.getDeclaredField("mDrawingCache");
+      Rjo = View.class.getDeclaredField("mUnscaledDrawingCache");
+      Rjn.setAccessible(true);
+      Rjo.setAccessible(true);
+      Rjp = true;
+      AppMethodBeat.o(98262);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.ShowCommentImageView", "init error: %s", new Object[] { localException.getMessage() });
+      Rjp = false;
+      AppMethodBeat.o(98262);
+    }
+  }
+  
   public void buildDrawingCache(boolean paramBoolean)
   {
     AppMethodBeat.i(98263);
     Object localObject;
-    if (KJN) {
-      if (!this.KJI) {
-        if (!yS(paramBoolean))
+    if (Rjp) {
+      if (!this.Rjk) {
+        if (!Ec(paramBoolean))
         {
           if (paramBoolean) {}
-          for (localObject = KJK; (localObject != null) && (!((Bitmap)localObject).isRecycled()); localObject = KJJ)
+          for (localObject = Rjm; (localObject != null) && (!((Bitmap)localObject).isRecycled()); localObject = Rjl)
           {
-            aA(paramBoolean, false);
+            aU(paramBoolean, false);
             AppMethodBeat.o(98263);
             return;
           }
@@ -160,7 +160,7 @@ public class ShowCommentImageView
     {
       try
       {
-        localObject = KJL;
+        localObject = Rjn;
         localObject = (Bitmap)((Field)localObject).get(this);
         if (localObject != null) {
           break label205;
@@ -173,7 +173,7 @@ public class ShowCommentImageView
         if (!paramBoolean) {
           break label167;
         }
-        KJK = (Bitmap)localObject;
+        Rjm = (Bitmap)localObject;
         AppMethodBeat.o(98263);
         return;
       }
@@ -183,17 +183,17 @@ public class ShowCommentImageView
         AppMethodBeat.o(98263);
         return;
       }
-      Field localField = KJM;
+      Field localField = Rjo;
       continue;
       label167:
-      KJJ = localField;
+      Rjl = localField;
       label171:
       AppMethodBeat.o(98263);
       return;
       super.buildDrawingCache(paramBoolean);
       AppMethodBeat.o(98263);
       return;
-      aA(paramBoolean, true);
+      aU(paramBoolean, true);
       super.buildDrawingCache(paramBoolean);
       AppMethodBeat.o(98263);
       return;
@@ -214,8 +214,8 @@ public class ShowCommentImageView
     AppMethodBeat.i(98266);
     try
     {
-      KJL.set(this, null);
-      KJM.set(this, null);
+      Rjn.set(this, null);
+      Rjo.set(this, null);
       super.onDetachedFromWindow();
       AppMethodBeat.o(98266);
       return;
@@ -248,7 +248,7 @@ public class ShowCommentImageView
       boolean bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(98269);
       return bool;
-      this.KJI = true;
+      this.Rjk = true;
     }
   }
   
@@ -261,8 +261,8 @@ public class ShowCommentImageView
       {
         AppMethodBeat.i(98258);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/sns/ui/ShowCommentImageView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/ShowCommentImageView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         ShowCommentImageView.a(ShowCommentImageView.this, true);
         paramOnClickListener.onClick(paramAnonymousView);
         a.a(this, "com/tencent/mm/plugin/sns/ui/ShowCommentImageView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

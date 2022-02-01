@@ -1,93 +1,42 @@
 package com.tencent.mm.ui.contact;
 
-import android.database.Cursor;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.a.f;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.selectcontact.a.f;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/contact/RecentForwardConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/ui/contact/RecentForwardItemConvertData;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "Companion", "ui-selectcontact_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ag
-  extends r
+  extends f<ah>
 {
-  private String XoS;
-  private Cursor mNt;
+  public static final ag.a afhi;
   
-  public ag(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
+  static
   {
-    super(paramMMBaseSelectContactUI, new ArrayList(), false, false);
-    AppMethodBeat.i(102929);
-    this.XoS = paramString;
-    atr();
-    AppMethodBeat.o(102929);
+    AppMethodBeat.i(252802);
+    afhi = new ag.a((byte)0);
+    AppMethodBeat.o(252802);
   }
   
-  private void atr()
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
   {
-    AppMethodBeat.i(187313);
-    h.aHH();
-    this.mNt = ((n)h.ae(n.class)).bbL().f(this.XoS, "", csq());
-    AppMethodBeat.o(187313);
+    AppMethodBeat.i(252805);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    AppMethodBeat.o(252805);
   }
   
-  public final void ate()
+  public final int getLayoutId()
   {
-    AppMethodBeat.i(187314);
-    super.ate();
-    atr();
-    clearCache();
-    notifyDataSetChanged();
-    AppMethodBeat.o(187314);
-  }
-  
-  public final void finish()
-  {
-    AppMethodBeat.i(102932);
-    super.finish();
-    Log.i("MicroMsg.SpecialContactAdapter", "finish!");
-    if (this.mNt != null)
-    {
-      this.mNt.close();
-      this.mNt = null;
-    }
-    AppMethodBeat.o(102932);
-  }
-  
-  public final int getCount()
-  {
-    AppMethodBeat.i(102930);
-    int i = this.mNt.getCount();
-    AppMethodBeat.o(102930);
-    return i;
-  }
-  
-  protected final a ye(int paramInt)
-  {
-    AppMethodBeat.i(102931);
-    f localf = null;
-    if ((paramInt >= 0) && (this.mNt.moveToPosition(paramInt)))
-    {
-      localf = new f(paramInt);
-      as localas = new as();
-      localas.convertFrom(this.mNt);
-      localf.contact = localas;
-      localf.XsX = fJk();
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(102931);
-      return localf;
-      Log.e("MicroMsg.SpecialContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
-    }
+    return a.f.recent_foward_horizontal_list_item;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ag
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class d
   {
     super(paramInt1, paramInt2, paramInt3, 2, paramInt4);
     AppMethodBeat.i(155553);
-    g.qF(hashCode());
+    g.qL(hashCode());
     AppMethodBeat.o(155553);
   }
   
@@ -18,13 +18,13 @@ public final class d
   {
     AppMethodBeat.i(155554);
     super.release();
-    g.qG(hashCode());
+    g.qM(hashCode());
     AppMethodBeat.o(155554);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.b.d
  * JD-Core Version:    0.7.0.1
  */

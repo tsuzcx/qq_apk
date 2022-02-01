@@ -1,20 +1,13 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.protocal.protobuf.db;
-import com.tencent.mm.protocal.protobuf.rq;
-import java.util.List;
+import com.tencent.mm.kernel.c.a;
 
 public abstract interface s
-{
-  public abstract void a(String paramString, i parami, db paramdb);
-  
-  public abstract void a(String paramString, i parami, db paramdb, List<db> paramList);
-  
-  public abstract void a(String paramString, rq paramrq);
-}
+  extends a
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.api.s
  * JD-Core Version:    0.7.0.1
  */

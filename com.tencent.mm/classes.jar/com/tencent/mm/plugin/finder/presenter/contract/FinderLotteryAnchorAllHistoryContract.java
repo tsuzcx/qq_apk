@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.finder.presenter.contract;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLotteryAnchorAllHistoryContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLotteryAnchorAllHistoryContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLotteryAnchorAllHistoryContract
 {
-  public static final FinderLotteryAnchorAllHistoryContract zOn;
+  public static final FinderLotteryAnchorAllHistoryContract EYX;
   
   static
   {
-    AppMethodBeat.i(284956);
-    zOn = new FinderLotteryAnchorAllHistoryContract();
-    AppMethodBeat.o(284956);
+    AppMethodBeat.i(343584);
+    EYX = new FinderLotteryAnchorAllHistoryContract();
+    AppMethodBeat.o(343584);
   }
 }
 

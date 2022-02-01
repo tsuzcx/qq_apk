@@ -4,49 +4,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public static c RrH;
-  public int RrE;
-  public int RrF;
-  public a RrG;
+  public static c YnV;
+  public int YnS;
+  public int YnT;
+  public a YnU;
   
   static
   {
     AppMethodBeat.i(152264);
-    RrH = new c();
+    YnV = new c();
     AppMethodBeat.o(152264);
   }
   
-  public final void brB(String paramString)
+  public final void brp(String paramString)
   {
     AppMethodBeat.i(152262);
-    if (this.RrG == null) {
-      this.RrG = new a((byte)0);
+    if (this.YnU == null) {
+      this.YnU = new a((byte)0);
     }
     char[] arrayOfChar = paramString.toUpperCase().toCharArray();
-    paramString = this.RrG;
+    paramString = this.YnU;
     int i = 0;
     if (i < arrayOfChar.length)
     {
       int j = arrayOfChar[i];
-      this.RrE += 1;
+      this.YnS += 1;
       if (j <= 57) {
         j -= 48;
       }
       for (;;)
       {
-        if (paramString.RrI == null)
+        if (paramString.YnW == null)
         {
-          paramString.RrI = new a[36];
-          this.RrF += 36;
+          paramString.YnW = new a[36];
+          this.YnT += 36;
         }
-        if (paramString.RrI[j] == null)
+        if (paramString.YnW[j] == null)
         {
-          paramString.RrI[j] = new a(0);
-          this.RrF += 1;
+          paramString.YnW[j] = new a(0);
+          this.YnT += 1;
         }
-        paramString = paramString.RrI[j];
+        paramString = paramString.YnW[j];
         if (i == arrayOfChar.length - 1) {
-          paramString.BJo = true;
+          paramString.HtY = true;
         }
         i += 1;
         break;
@@ -56,15 +56,15 @@ public final class c
     AppMethodBeat.o(152262);
   }
   
-  public final boolean brC(String paramString)
+  public final boolean brq(String paramString)
   {
     AppMethodBeat.i(152263);
-    if (this.RrG == null)
+    if (this.YnU == null)
     {
       AppMethodBeat.o(152263);
       return false;
     }
-    a locala = this.RrG;
+    a locala = this.YnU;
     char[] arrayOfChar = paramString.toUpperCase().toCharArray();
     int i = 0;
     paramString = locala;
@@ -74,18 +74,18 @@ public final class c
       if (j <= 57) {
         j -= 48;
       }
-      while ((paramString == null) || (paramString.RrI == null))
+      while ((paramString == null) || (paramString.YnW == null))
       {
         AppMethodBeat.o(152263);
         return false;
         j = j - 65 + 10;
       }
-      paramString = paramString.RrI[j];
+      paramString = paramString.YnW[j];
       i += 1;
     }
     if (paramString != null)
     {
-      boolean bool = paramString.BJo;
+      boolean bool = paramString.HtY;
       AppMethodBeat.o(152263);
       return bool;
     }
@@ -95,15 +95,15 @@ public final class c
   
   final class a
   {
-    boolean BJo;
-    a[] RrI;
+    boolean HtY;
+    a[] YnW;
     
     private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.c
  * JD-Core Version:    0.7.0.1
  */

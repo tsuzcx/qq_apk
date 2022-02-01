@@ -1,13 +1,15 @@
 package com.tencent.mm.plugin.finder.view.manager;
 
 import android.text.Spannable;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "start", "", "end", "nickname", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "start", "", "end", "nickname", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class b$b
-  extends kotlin.g.b.q
-  implements kotlin.g.a.q<Integer, Integer, String, x>
+  extends u
+  implements q<Integer, Integer, String, ah>
 {
   b$b(Spannable paramSpannable)
   {
@@ -16,7 +18,7 @@ final class b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.manager.b.b
  * JD-Core Version:    0.7.0.1
  */

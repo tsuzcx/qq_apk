@@ -2,42 +2,42 @@ package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.fkz;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.ghn;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/model/WebViewSecretMsgReporter;", "", "()V", "secretMsgInfo", "Lcom/tencent/mm/protocal/protobuf/WebPageSecretMsgInfo;", "getSecretMsgInfo", "init", "", "intent", "Landroid/content/Intent;", "reportOpen", "Companion", "SecretMsgLaunchAppResult", "SecretMsgOpType", "SecretMsgScene", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/model/WebViewSecretMsgReporter;", "", "()V", "secretMsgInfo", "Lcom/tencent/mm/protocal/protobuf/WebPageSecretMsgInfo;", "getSecretMsgInfo", "init", "", "intent", "Landroid/content/Intent;", "reportOpen", "Companion", "SecretMsgLaunchAppResult", "SecretMsgOpType", "SecretMsgScene", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class as
 {
-  public static final a PVJ;
-  public fkz PVI;
+  public static final a WMp;
+  public ghn WMq;
   
   static
   {
-    AppMethodBeat.i(266327);
-    PVJ = new a((byte)0);
-    AppMethodBeat.o(266327);
+    AppMethodBeat.i(298198);
+    WMp = new a((byte)0);
+    AppMethodBeat.o(298198);
   }
   
-  public static final void a(fkz paramfkz)
+  public static final void a(ghn paramghn)
   {
-    AppMethodBeat.i(266328);
-    a.a(paramfkz);
-    AppMethodBeat.o(266328);
+    AppMethodBeat.i(298195);
+    a.a(paramghn);
+    AppMethodBeat.o(298195);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/model/WebViewSecretMsgReporter$Companion;", "", "()V", "TAG", "", "report", "", "secretMsgInfo", "Lcom/tencent/mm/protocal/protobuf/WebPageSecretMsgInfo;", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/model/WebViewSecretMsgReporter$Companion;", "", "()V", "TAG", "", "report", "", "secretMsgInfo", "Lcom/tencent/mm/protocal/protobuf/WebPageSecretMsgInfo;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static void a(fkz paramfkz)
+    public static void a(ghn paramghn)
     {
-      AppMethodBeat.i(215881);
-      if (paramfkz == null)
+      AppMethodBeat.i(298308);
+      if (paramghn == null)
       {
-        AppMethodBeat.o(215881);
+        AppMethodBeat.o(298308);
         return;
       }
-      h.IzE.a(23341, new Object[] { Integer.valueOf(paramfkz.fwM), paramfkz.url, Integer.valueOf(paramfkz.opType), paramfkz.appId, Integer.valueOf(paramfkz.scene), paramfkz.UJN, Integer.valueOf(paramfkz.UJO) });
-      AppMethodBeat.o(215881);
+      h.OAn.b(23341, new Object[] { Integer.valueOf(paramghn.hBm), paramghn.url, Integer.valueOf(paramghn.opType), paramghn.appId, Integer.valueOf(paramghn.scene), paramghn.xIc, Integer.valueOf(paramghn.acdV) });
+      AppMethodBeat.o(298308);
     }
   }
 }

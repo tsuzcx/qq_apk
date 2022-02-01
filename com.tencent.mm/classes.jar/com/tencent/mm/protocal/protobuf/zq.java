@@ -3,146 +3,109 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
-public class zq
-  extends dyy
+public final class zq
+  extends erp
 {
-  public int RYL;
-  public com.tencent.mm.cd.b SlV;
-  public com.tencent.mm.cd.b SlW;
-  public com.tencent.mm.cd.b SlX;
-  public com.tencent.mm.cd.b SlY;
-  public int version;
+  public String Zil;
+  public String Zim;
+  public String appid;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(188129);
+    AppMethodBeat.i(257433);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(188129);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.appid != null) {
+        paramVarArgs.g(2, this.appid);
       }
-      if (this.SlV != null) {
-        paramVarArgs.c(2, this.SlV);
+      if (this.Zil != null) {
+        paramVarArgs.g(3, this.Zil);
       }
-      if (this.SlW != null) {
-        paramVarArgs.c(3, this.SlW);
+      if (this.Zim != null) {
+        paramVarArgs.g(4, this.Zim);
       }
-      if (this.SlX != null) {
-        paramVarArgs.c(4, this.SlX);
-      }
-      paramVarArgs.aY(5, this.version);
-      paramVarArgs.aY(6, this.RYL);
-      if (this.SlY != null) {
-        paramVarArgs.c(7, this.SlY);
-      }
-      AppMethodBeat.o(188129);
+      AppMethodBeat.o(257433);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label668;
+      if (this.BaseRequest == null) {
+        break label464;
       }
     }
-    label668:
-    for (int i = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; i = 0)
+    label464:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.SlV != null) {
-        paramInt = i + g.a.a.b.b.a.b(2, this.SlV);
+      if (this.appid != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.appid);
       }
       i = paramInt;
-      if (this.SlW != null) {
-        i = paramInt + g.a.a.b.b.a.b(3, this.SlW);
+      if (this.Zil != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.Zil);
       }
       paramInt = i;
-      if (this.SlX != null) {
-        paramInt = i + g.a.a.b.b.a.b(4, this.SlX);
+      if (this.Zim != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.Zim);
       }
-      i = paramInt + g.a.a.b.b.a.bM(5, this.version) + g.a.a.b.b.a.bM(6, this.RYL);
-      paramInt = i;
-      if (this.SlY != null) {
-        paramInt = i + g.a.a.b.b.a.b(7, this.SlY);
-      }
-      AppMethodBeat.o(188129);
+      AppMethodBeat.o(257433);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(188129);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(188129);
+        AppMethodBeat.o(257433);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         zq localzq = (zq)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(188129);
+          AppMethodBeat.o(257433);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localzq.BaseResponse = localjh;
+            localzq.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(188129);
+          AppMethodBeat.o(257433);
           return 0;
         case 2: 
-          localzq.SlV = ((g.a.a.a.a)localObject).abFh.iUw();
-          AppMethodBeat.o(188129);
+          localzq.appid = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(257433);
           return 0;
         case 3: 
-          localzq.SlW = ((g.a.a.a.a)localObject).abFh.iUw();
-          AppMethodBeat.o(188129);
-          return 0;
-        case 4: 
-          localzq.SlX = ((g.a.a.a.a)localObject).abFh.iUw();
-          AppMethodBeat.o(188129);
-          return 0;
-        case 5: 
-          localzq.version = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(188129);
-          return 0;
-        case 6: 
-          localzq.RYL = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(188129);
+          localzq.Zil = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(257433);
           return 0;
         }
-        localzq.SlY = ((g.a.a.a.a)localObject).abFh.iUw();
-        AppMethodBeat.o(188129);
+        localzq.Zim = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(257433);
         return 0;
       }
-      AppMethodBeat.o(188129);
+      AppMethodBeat.o(257433);
       return -1;
     }
   }

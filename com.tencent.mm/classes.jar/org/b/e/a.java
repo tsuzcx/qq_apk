@@ -14,39 +14,39 @@ import org.b.d.k;
 public final class a
   implements b
 {
-  private org.b.d.a abMb;
-  private org.b.a.a.b abMc;
+  private org.b.d.a ajYV;
+  private org.b.a.a.b ajYW;
   
   public a(org.b.a.a.b paramb, org.b.d.a parama)
   {
-    this.abMc = paramb;
-    this.abMb = parama;
+    this.ajYW = paramb;
+    this.ajYV = parama;
   }
   
   private void a(org.b.d.c paramc, i parami)
   {
     AppMethodBeat.i(40562);
-    paramc.pG("oauth_timestamp", new org.b.f.d().iVx());
-    paramc.pG("oauth_nonce", new org.b.f.d().iVy());
-    paramc.pG("oauth_consumer_key", this.abMb.abLw);
-    paramc.pG("oauth_signature_method", new org.b.f.a().iVw());
-    paramc.pG("oauth_version", "1.0");
-    if (this.abMb.iVj()) {
-      paramc.pG("scope", this.abMb.scope);
+    paramc.rK("oauth_timestamp", new org.b.f.d().kJV());
+    paramc.rK("oauth_nonce", new org.b.f.d().kJW());
+    paramc.rK("oauth_consumer_key", this.ajYV.ajYp);
+    paramc.rK("oauth_signature_method", new org.b.f.a().kJU());
+    paramc.rK("oauth_version", "1.0");
+    if (this.ajYV.kJH()) {
+      paramc.rK("scope", this.ajYV.scope);
     }
-    paramc.pG("oauth_signature", b(paramc, parami));
-    this.abMb.log("appended additional OAuth parameters: " + org.b.g.b.F(paramc.abLF));
+    paramc.rK("oauth_signature", b(paramc, parami));
+    this.ajYV.log("appended additional OAuth parameters: " + org.b.g.b.M(paramc.ajYy));
     AppMethodBeat.o(40562);
   }
   
   private String b(org.b.d.c paramc, i parami)
   {
     AppMethodBeat.i(40566);
-    this.abMb.log("generating signature...");
+    this.ajYV.log("generating signature...");
     paramc = new org.b.c.c().a(paramc);
-    parami = new org.b.f.a().bC(paramc, this.abMb.abLx, parami.TEk);
-    this.abMb.log("base string is: ".concat(String.valueOf(paramc)));
-    this.abMb.log("signature is: ".concat(String.valueOf(parami)));
+    parami = new org.b.f.a().cb(paramc, this.ajYV.ajYq, parami.aaTQ);
+    this.ajYV.log("base string is: ".concat(String.valueOf(paramc)));
+    this.ajYV.log("signature is: ".concat(String.valueOf(parami)));
     AppMethodBeat.o(40566);
     return parami;
   }
@@ -54,23 +54,23 @@ public final class a
   private void b(org.b.d.c paramc)
   {
     AppMethodBeat.i(40567);
-    switch (iVv()[this.abMb.abLA.ordinal()])
+    switch (kJT()[this.ajYV.ajYt.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(40567);
       return;
-      this.abMb.log("using Http Header signature");
-      paramc.pI("Authorization", new e().a(paramc));
+      this.ajYV.log("using Http Header signature");
+      paramc.rM("Authorization", new e().a(paramc));
       AppMethodBeat.o(40567);
       return;
-      this.abMb.log("using Querystring signature");
-      Iterator localIterator = paramc.abLF.entrySet().iterator();
+      this.ajYV.log("using Querystring signature");
+      Iterator localIterator = paramc.ajYy.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        paramc.pH((String)localEntry.getKey(), (String)localEntry.getValue());
+        paramc.rL((String)localEntry.getKey(), (String)localEntry.getValue());
       }
     }
   }
@@ -78,15 +78,15 @@ public final class a
   public final i a(i parami, k paramk)
   {
     AppMethodBeat.i(40563);
-    this.abMb.log("obtaining access token from " + this.abMc.iVi());
-    org.b.d.c localc = new org.b.d.c(j.abLT, this.abMc.iVi());
-    localc.pG("oauth_token", parami.token);
-    localc.pG("oauth_verifier", paramk.value);
-    this.abMb.log("setting token to: " + parami + " and verifier to: " + paramk);
+    this.ajYV.log("obtaining access token from " + this.ajYW.kJG());
+    org.b.d.c localc = new org.b.d.c(j.ajYN, this.ajYW.kJG());
+    localc.rK("oauth_token", parami.token);
+    localc.rK("oauth_verifier", paramk.value);
+    this.ajYV.log("setting token to: " + parami + " and verifier to: " + paramk);
     a(localc, parami);
     b(localc);
-    parami = localc.iVo();
-    parami = new org.b.c.g().bIB(parami.getBody());
+    parami = localc.kJM();
+    parami = new org.b.c.g().bLx(parami.getBody());
     AppMethodBeat.o(40563);
     return parami;
   }
@@ -94,14 +94,14 @@ public final class a
   public final void a(i parami, org.b.d.c paramc)
   {
     AppMethodBeat.i(40564);
-    this.abMb.log("signing request: " + paramc.iVm());
-    if (("".equals(parami.token)) && ("".equals(parami.TEk))) {}
+    this.ajYV.log("signing request: " + paramc.kJK());
+    if (("".equals(parami.token)) && ("".equals(parami.aaTQ))) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        paramc.pG("oauth_token", parami.token);
+        paramc.rK("oauth_token", parami.token);
       }
-      this.abMb.log("setting token to: ".concat(String.valueOf(parami)));
+      this.ajYV.log("setting token to: ".concat(String.valueOf(parami)));
       a(paramc, parami);
       b(paramc);
       AppMethodBeat.o(40564);
@@ -112,33 +112,33 @@ public final class a
   public final String b(i parami)
   {
     AppMethodBeat.i(40565);
-    parami = this.abMc.b(parami);
+    parami = this.ajYW.b(parami);
     AppMethodBeat.o(40565);
     return parami;
   }
   
-  public final i iVu()
+  public final i kJS()
   {
     AppMethodBeat.i(40561);
-    this.abMb.log("obtaining request token from " + this.abMc.iVh());
-    Object localObject = new org.b.d.c(j.abLT, this.abMc.iVh());
-    this.abMb.log("setting oauth_callback to " + this.abMb.abLy);
-    ((org.b.d.c)localObject).pG("oauth_callback", this.abMb.abLy);
-    a((org.b.d.c)localObject, org.b.d.b.abLE);
+    this.ajYV.log("obtaining request token from " + this.ajYW.kJF());
+    Object localObject = new org.b.d.c(j.ajYN, this.ajYW.kJF());
+    this.ajYV.log("setting oauth_callback to " + this.ajYV.ajYr);
+    ((org.b.d.c)localObject).rK("oauth_callback", this.ajYV.ajYr);
+    a((org.b.d.c)localObject, org.b.d.b.ajYx);
     b((org.b.d.c)localObject);
-    this.abMb.log("sending request...");
-    localObject = ((org.b.d.c)localObject).iVo();
+    this.ajYV.log("sending request...");
+    localObject = ((org.b.d.c)localObject).kJM();
     String str = ((org.b.d.g)localObject).getBody();
-    this.abMb.log("response status code: " + ((org.b.d.g)localObject).code);
-    this.abMb.log("response body: ".concat(String.valueOf(str)));
-    localObject = new org.b.c.g().bIB(str);
+    this.ajYV.log("response status code: " + ((org.b.d.g)localObject).code);
+    this.ajYV.log("response body: ".concat(String.valueOf(str)));
+    localObject = new org.b.c.g().bLx(str);
     AppMethodBeat.o(40561);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.e.a
  * JD-Core Version:    0.7.0.1
  */

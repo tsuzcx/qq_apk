@@ -17,7 +17,7 @@ public class PluginHardwareOpt
   public void configure(g paramg)
   {
     AppMethodBeat.i(55548);
-    if (!paramg.aIE())
+    if (!paramg.bbA())
     {
       AppMethodBeat.o(55548);
       return;
@@ -37,7 +37,7 @@ public class PluginHardwareOpt
   public void execute(g paramg)
   {
     AppMethodBeat.i(55549);
-    if (paramg.aIE()) {
+    if (paramg.bbA()) {
       Log.i("MicroMsg.PluginHardwareOpt", "hy: on execute. ");
     }
     AppMethodBeat.o(55549);
@@ -54,7 +54,7 @@ public class PluginHardwareOpt
   {
     AppMethodBeat.i(55550);
     Log.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountInitialized");
-    ((com.tencent.mm.plugin.hardwareopt.a.a.a)h.ae(com.tencent.mm.plugin.hardwareopt.a.a.a.class)).sE(false);
+    ((com.tencent.mm.plugin.hardwareopt.a.a.a)h.ax(com.tencent.mm.plugin.hardwareopt.a.a.a.class)).wK(false);
     AppMethodBeat.o(55550);
   }
   
@@ -67,7 +67,7 @@ public class PluginHardwareOpt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hardwareopt.PluginHardwareOpt
  * JD-Core Version:    0.7.0.1
  */

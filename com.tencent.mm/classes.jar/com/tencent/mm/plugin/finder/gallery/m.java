@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.finder.gallery;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTimelineContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.gallery.m
  * JD-Core Version:    0.7.0.1
  */

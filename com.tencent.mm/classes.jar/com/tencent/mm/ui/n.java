@@ -1,20 +1,30 @@
 package com.tencent.mm.ui;
 
-public abstract interface n
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.KeyEvent;
+import android.widget.AbsListView;
+
+public abstract class n
 {
-  public abstract void hGU();
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public abstract void hGV();
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
   
-  public abstract void hGW();
+  public void onDragBegin() {}
   
-  public abstract void hGX();
+  public void onFinish() {}
   
-  public abstract void hGY();
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    return false;
+  }
   
-  public abstract void hGZ();
+  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
   
-  public abstract void hHa();
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

@@ -12,20 +12,20 @@ import java.util.List;
 
 public final class a
 {
-  private String ZUU;
+  private String ahZt;
   
-  public static List<File> bEb(String paramString)
+  public static List<File> bGA(String paramString)
   {
-    AppMethodBeat.i(207746);
+    AppMethodBeat.i(212110);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(207746);
+      AppMethodBeat.o(212110);
       return null;
     }
-    paramString = bEc(paramString);
+    paramString = bGB(paramString);
     if ((paramString == null) || (paramString.length <= 0))
     {
-      AppMethodBeat.o(207746);
+      AppMethodBeat.o(212110);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
@@ -39,60 +39,60 @@ public final class a
       }
       i += 1;
     }
-    AppMethodBeat.o(207746);
+    AppMethodBeat.o(212110);
     return localArrayList;
   }
   
-  public static File[] bEc(String paramString)
+  public static File[] bGB(String paramString)
   {
-    AppMethodBeat.i(207747);
+    AppMethodBeat.i(212117);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(207747);
+      AppMethodBeat.o(212117);
       return null;
     }
     paramString = new File(paramString);
     if ((!paramString.exists()) && (!paramString.mkdirs()))
     {
-      AppMethodBeat.o(207747);
+      AppMethodBeat.o(212117);
       return null;
     }
     paramString = paramString.listFiles();
-    AppMethodBeat.o(207747);
+    AppMethodBeat.o(212117);
     return paramString;
   }
   
   public static File j(File paramFile, String paramString)
   {
-    AppMethodBeat.i(207743);
+    AppMethodBeat.i(212095);
     if (paramFile == null)
     {
-      AppMethodBeat.o(207743);
+      AppMethodBeat.o(212095);
       return null;
     }
     paramFile = new File(paramFile.getAbsolutePath() + File.separator + paramString);
     if ((!paramFile.exists()) && (!paramFile.mkdirs()))
     {
-      AppMethodBeat.o(207743);
+      AppMethodBeat.o(212095);
       return null;
     }
-    AppMethodBeat.o(207743);
+    AppMethodBeat.o(212095);
     return paramFile;
   }
   
-  public static boolean oN(String paramString1, String paramString2)
+  public static boolean qL(String paramString1, String paramString2)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(207744);
+    AppMethodBeat.i(212106);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      AppMethodBeat.o(207744);
+      AppMethodBeat.o(212106);
       return false;
     }
-    paramString1 = bEc(paramString1);
+    paramString1 = bGB(paramString1);
     if ((paramString1 == null) || (paramString1.length <= 0))
     {
-      AppMethodBeat.o(207744);
+      AppMethodBeat.o(212106);
       return false;
     }
     int j = paramString1.length;
@@ -108,38 +108,38 @@ public final class a
       }
       else
       {
-        AppMethodBeat.o(207744);
+        AppMethodBeat.o(212106);
         return bool1;
       }
       i += 1;
     }
   }
   
-  public final File mt(Context paramContext)
+  public final File oJ(Context paramContext)
   {
-    AppMethodBeat.i(207742);
+    AppMethodBeat.i(212131);
     if (paramContext == null)
     {
-      AppMethodBeat.o(207742);
+      AppMethodBeat.o(212131);
       return null;
     }
-    if (TextUtils.isEmpty(this.ZUU)) {
-      this.ZUU = d.U(d.ZRA);
+    if (TextUtils.isEmpty(this.ahZt)) {
+      this.ahZt = d.W(d.ahVX);
     }
-    if (TextUtils.isEmpty(this.ZUU))
+    if (TextUtils.isEmpty(this.ahZt))
     {
-      AppMethodBeat.o(207742);
+      AppMethodBeat.o(212131);
       return null;
     }
-    i.d("Persistence", "dir : " + this.ZUU);
-    paramContext = paramContext.getDir(this.ZUU, 0);
-    AppMethodBeat.o(207742);
+    i.d("Persistence", "dir : " + this.ahZt);
+    paramContext = paramContext.getDir(this.ahZt, 0);
+    AppMethodBeat.o(212131);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.d.a
  * JD-Core Version:    0.7.0.1
  */

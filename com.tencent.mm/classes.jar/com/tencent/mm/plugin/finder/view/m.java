@@ -1,218 +1,168 @@
 package com.tencent.mm.plugin.finder.view;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.xl;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.live.model.FinderLiveBundle;
-import com.tencent.mm.plugin.finder.live.report.k;
-import com.tencent.mm.plugin.finder.live.report.s.t;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.model.y;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.ui.widget.a.h;
+import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
+import com.tencent.mm.view.recyclerview.WxRecyclerView;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.g;
+import com.tencent.mm.view.recyclerview.i.c;
+import com.tencent.mm.view.recyclerview.j;
+import com.tencent.mm.w.a.a.a.b;
+import com.tencent.mm.w.a.a.a.e;
+import com.tencent.mm.w.a.a.a.f;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderSnsHeaderPresenter;", "", "context", "Landroid/app/Activity;", "viewCallback", "Lcom/tencent/mm/view/IViewActionCallback;", "(Landroid/app/Activity;Lcom/tencent/mm/view/IViewActionCallback;)V", "TAG", "", "getContext", "()Landroid/app/Activity;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "dataLoader", "Lcom/tencent/mm/plugin/finder/feed/model/FinderSnsHeaderLoader;", "snsRefreshListener", "com/tencent/mm/plugin/finder/view/FinderSnsHeaderPresenter$snsRefreshListener$1", "Lcom/tencent/mm/plugin/finder/view/FinderSnsHeaderPresenter$snsRefreshListener$1;", "getViewCallback", "()Lcom/tencent/mm/view/IViewActionCallback;", "clearAll", "", "convertToVisitorData", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveBundle;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveListItem;", "position", "", "getListOfType", "E", "clazz", "Ljava/lang/Class;", "goSetting", "gotoLive", "item", "initData", "loadMore", "refresh", "release", "statsReport", "exposed", "commentScene", "plugin-finder_release"})
-public final class m
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderSingleSelectBottomSheet;", "T", "", "()V", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMCustomHalfBottomDialog;", "getBottomSheet", "()Lcom/tencent/mm/ui/widget/dialog/MMCustomHalfBottomDialog;", "setBottomSheet", "(Lcom/tencent/mm/ui/widget/dialog/MMCustomHalfBottomDialog;)V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/view/FinderSingleSelectBottomSheet$ConditionData;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "forceDarkMode", "", "getForceDarkMode", "()Z", "setForceDarkMode", "(Z)V", "title", "", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "config", "", "defaultSelectIndex", "", "createData", "source", "(Ljava/lang/Object;)Lcom/tencent/mm/plugin/finder/view/FinderSingleSelectBottomSheet$ConditionData;", "createItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "forceDark", "force", "getAdapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "isShowing", "onDismiss", "", "onItemClick", "position", "data", "show", "context", "Landroid/content/Context;", "ConditionData", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class m<T>
 {
-  final com.tencent.mm.plugin.finder.feed.model.l AZS;
-  final a AZT;
-  private final String TAG;
-  final Activity fDf;
-  final ArrayList<bu> mXB;
-  private final com.tencent.mm.view.j xJl;
+  protected h Epc;
+  public boolean FyH;
+  final ArrayList<a<T>> pUj = new ArrayList();
+  private String title = "";
   
-  public m(Activity paramActivity, com.tencent.mm.view.j paramj)
+  private static final void a(m paramm)
   {
-    AppMethodBeat.i(286231);
-    this.fDf = paramActivity;
-    this.xJl = paramj;
-    this.TAG = "Finder.FinderSnsHeaderPresenter";
-    this.mXB = new ArrayList();
-    this.AZS = new com.tencent.mm.plugin.finder.feed.model.l(this.mXB, this.xJl);
-    this.AZT = new a(this);
-    AppMethodBeat.o(286231);
+    s.u(paramm, "this$0");
   }
   
-  public final <E> ArrayList<E> aL(Class<E> paramClass)
+  private static final void a(m paramm, View paramView)
   {
-    AppMethodBeat.i(286230);
-    p.k(paramClass, "clazz");
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((Iterable)this.mXB).iterator();
-    while (localIterator.hasNext())
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramm);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/view/FinderSingleSelectBottomSheet", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramm, "this$0");
+    paramm.getBottomSheet().cyW();
+    a.a(new Object(), "com/tencent/mm/plugin/finder/view/FinderSingleSelectBottomSheet", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+  }
+  
+  public abstract boolean a(a<T> parama);
+  
+  public final m<T> c(String paramString, List<? extends T> paramList, int paramInt)
+  {
+    s.u(paramString, "title");
+    s.u(paramList, "dataList");
+    this.title = paramString;
+    this.pUj.clear();
+    paramString = this.pUj;
+    Object localObject = (Iterable)paramList;
+    paramList = (Collection)new ArrayList(p.a((Iterable)localObject, 10));
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      paramList.add(fH(((Iterator)localObject).next()));
+    }
+    paramString.addAll((Collection)paramList);
+    if ((paramInt >= 0) && (paramInt < this.pUj.size()))
     {
-      bu localbu = (bu)localIterator.next();
-      if (paramClass.isInstance(localbu)) {
-        localArrayList.add((Object)localbu);
+      paramString = (a)p.ae((List)this.pUj, paramInt);
+      if (paramString != null) {
+        paramString.duj = true;
       }
     }
-    AppMethodBeat.o(286230);
-    return localArrayList;
+    return this;
   }
   
-  public final void f(bu parambu)
+  public abstract a<T> fH(T paramT);
+  
+  public abstract f<?> flg();
+  
+  protected final h getBottomSheet()
   {
-    AppMethodBeat.i(286229);
-    p.k(parambu, "item");
-    if ((parambu instanceof y))
-    {
-      Object localObject5;
-      Object localObject3;
-      Object localObject4;
-      if (Util.isEqual(((y)parambu).zAF.username, z.bdh()))
-      {
-        localObject1 = com.tencent.mm.plugin.finder.utils.a.ACH;
-        localObject5 = (Context)this.fDf;
-        long l = ((y)parambu).zAF.id;
-        localObject2 = ((y)parambu).zAF.objectNonceId;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
-        }
-        localObject3 = ((y)parambu).zAF.liveInfo;
-        localObject2 = localObject3;
-        if (localObject3 == null) {
-          localObject2 = new bac();
-        }
-        localObject3 = ((y)parambu).zAF.objectDesc;
-        if (localObject3 != null)
-        {
-          localObject4 = ((FinderObjectDesc)localObject3).description;
-          localObject3 = localObject4;
-          if (localObject4 != null) {}
-        }
-        else
-        {
-          localObject3 = "";
-        }
-        com.tencent.mm.plugin.finder.utils.a.a((Context)localObject5, l, (String)localObject1, (bac)localObject2, null, (String)localObject3, null, null, null, ((y)parambu).zAF.sessionBuffer, null, null, 7088);
-        AppMethodBeat.o(286229);
-        return;
-      }
-      Object localObject2 = aL(y.class);
-      Object localObject1 = (List)localObject2;
-      int i = 0;
-      localObject1 = ((List)localObject1).iterator();
-      int j;
-      if (((Iterator)localObject1).hasNext()) {
-        if (((y)((Iterator)localObject1).next()).zAF.id == parambu.mf())
-        {
-          j = 1;
-          label257:
-          if (j == 0) {
-            break label487;
-          }
-        }
-      }
-      for (;;)
-      {
-        Log.i(this.TAG, "click item position:".concat(String.valueOf(i)));
-        if (i < 0) {
-          break label577;
-        }
-        k.yBj.a((y)parambu, ((y)parambu).zAF.username, i, s.t.yGP, "61");
-        parambu = com.tencent.mm.plugin.finder.utils.a.ACH;
-        localObject3 = (Context)this.fDf;
-        localObject4 = new FinderLiveBundle();
-        ((FinderLiveBundle)localObject4).yeA = i;
-        ((FinderLiveBundle)localObject4).fEH = 0;
-        ((FinderLiveBundle)localObject4).xkX = 61;
-        parambu = (y)kotlin.a.j.M((List)localObject2, i);
-        if (parambu != null)
-        {
-          parambu = parambu.zAF;
-          if (parambu != null)
-          {
-            localObject1 = parambu.nickname;
-            parambu = (bu)localObject1;
-            if (localObject1 != null) {
-              break label393;
-            }
-          }
-        }
-        parambu = "";
-        label393:
-        ((FinderLiveBundle)localObject4).aCa(parambu);
-        localObject1 = (Iterable)localObject2;
-        parambu = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
-        localObject1 = ((Iterable)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject5 = (y)((Iterator)localObject1).next();
-          com.tencent.mm.plugin.finder.live.utils.a locala = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-          parambu.add(com.tencent.mm.plugin.finder.live.utils.a.a(((y)localObject5).zAF, 0, false, 6));
-        }
-        j = 0;
-        break label257;
-        label487:
-        i += 1;
-        break;
-        i = -1;
-      }
-      ((FinderLiveBundle)localObject4).ae(new ArrayList((Collection)parambu));
-      parambu = (y)kotlin.a.j.M((List)localObject2, i);
-      if (parambu != null)
-      {
-        parambu = parambu.zAF;
-        if (parambu != null)
-        {
-          parambu = parambu.liveInfo;
-          if (parambu == null) {}
-        }
-      }
-      for (i = parambu.SLO;; i = 0)
-      {
-        ((FinderLiveBundle)localObject4).extFlag = i;
-        com.tencent.mm.plugin.finder.utils.a.a((Context)localObject3, (FinderLiveBundle)localObject4, null, null, null, 28);
-        label577:
-        AppMethodBeat.o(286229);
-        return;
-      }
+    h localh = this.Epc;
+    if (localh != null) {
+      return localh;
     }
-    Log.i(this.TAG, "click not FinderFeedLiveListItem");
-    AppMethodBeat.o(286229);
+    s.bIx("bottomSheet");
+    return null;
   }
   
-  public final void release()
+  public final void hs(Context paramContext)
   {
-    AppMethodBeat.i(286228);
-    this.AZT.dead();
-    this.AZS.release();
-    AppMethodBeat.o(286228);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderSnsHeaderPresenter$snsRefreshListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/SnsTimelineRefreshEvent;", "callback", "", "event", "plugin-finder_release"})
-  public static final class a
-    extends IListener<xl>
-  {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    b(ArrayList paramArrayList)
+    s.u(paramContext, "context");
+    Object localObject = new h(paramContext);
+    s.u(localObject, "<set-?>");
+    this.Epc = ((h)localObject);
+    h localh = getBottomSheet().aFa(a.f.finder_single_select_bottom_sheet);
+    localh.rootView.setBackground(null);
+    localh.rootView.findViewById(a.e.finder_live_close_btn_group).setOnClickListener(new m..ExternalSyntheticLambda0(this));
+    TextView localTextView = (TextView)localh.rootView.findViewById(a.e.single_select_bottom_sheet_title_tv);
+    localObject = (WxRecyclerView)localh.rootView.findViewById(a.e.single_select_bottom_sheet_rv);
+    if (this.FyH)
     {
-      super();
+      localh.jHO();
+      localTextView.setTextColor(paramContext.getResources().getColor(a.b.BW_100_Alpha_0_8));
     }
+    localTextView.setText((CharSequence)this.title);
+    paramContext = new WxRecyclerAdapter((g)new b(this), this.pUj);
+    paramContext.agOe = ((i.c)new c(this));
+    ((WxRecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+    ((WxRecyclerView)localObject).setAdapter((RecyclerView.a)paramContext);
+    getBottomSheet().agfD = new m..ExternalSyntheticLambda1(this);
+    getBottomSheet().dDn();
+  }
+  
+  public final boolean isShowing()
+  {
+    return getBottomSheet().isShowing();
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderSingleSelectBottomSheet$ConditionData;", "T", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "data", "checked", "", "(Ljava/lang/Object;Z)V", "getChecked", "()Z", "setChecked", "(Z)V", "getData", "()Ljava/lang/Object;", "Ljava/lang/Object;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract class a<T>
+    implements cc
+  {
+    final T cpt;
+    boolean duj;
+    
+    private a(T paramT)
+    {
+      this.cpt = paramT;
+      this.duj = false;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/FinderSingleSelectBottomSheet$getAdapter$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements g
+  {
+    b(m<T> paramm) {}
+    
+    public final f<?> yF(int paramInt)
+    {
+      AppMethodBeat.i(344001);
+      f localf = this.GCd.flg();
+      AppMethodBeat.o(344001);
+      return localf;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/FinderSingleSelectBottomSheet$show$1$2", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements i.c<j>
+  {
+    c(m<T> paramm) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,57 @@
 package com.tencent.mm.plugin.mv.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/MusicMvRecommendListCacheKey;", "", "songInfoBase64", "", "(Ljava/lang/String;)V", "getSongInfoBase64", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/MusicMvRecommendListCacheKey;", "", "songInfoBase64", "", "(Ljava/lang/String;)V", "getSongInfoBase64", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
 {
-  private final String GbY;
+  private final String LXI;
   
   public k(String paramString)
   {
-    AppMethodBeat.i(230152);
-    this.GbY = paramString;
-    AppMethodBeat.o(230152);
+    AppMethodBeat.i(286044);
+    this.LXI = paramString;
+    AppMethodBeat.o(286044);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(230158);
-    if (this != paramObject)
+    AppMethodBeat.i(286058);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof k))
-      {
-        paramObject = (k)paramObject;
-        if (!p.h(this.GbY, paramObject.GbY)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(230158);
+      AppMethodBeat.o(286058);
       return true;
     }
-    AppMethodBeat.o(230158);
-    return false;
+    if (!(paramObject instanceof k))
+    {
+      AppMethodBeat.o(286058);
+      return false;
+    }
+    paramObject = (k)paramObject;
+    if (!s.p(this.LXI, paramObject.LXI))
+    {
+      AppMethodBeat.o(286058);
+      return false;
+    }
+    AppMethodBeat.o(286058);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(230155);
-    String str = this.GbY;
-    if (str != null)
-    {
-      int i = str.hashCode();
-      AppMethodBeat.o(230155);
-      return i;
-    }
-    AppMethodBeat.o(230155);
-    return 0;
+    AppMethodBeat.i(286053);
+    int i = this.LXI.hashCode();
+    AppMethodBeat.o(286053);
+    return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(230153);
-    String str = "MusicMvRecommendListCacheKey(songInfoBase64=" + this.GbY + ")";
-    AppMethodBeat.o(230153);
+    AppMethodBeat.i(286050);
+    String str = "MusicMvRecommendListCacheKey(songInfoBase64=" + this.LXI + ')';
+    AppMethodBeat.o(286050);
     return str;
   }
 }

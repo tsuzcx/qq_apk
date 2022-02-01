@@ -10,17 +10,17 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class g
   implements View.OnTouchListener
 {
-  private long nrW = -1L;
-  private float nrX = -1.0F;
-  private int nrY = 0;
-  a nrZ;
+  private float nwV = -1.0F;
+  private int pointerCount = 0;
+  private long qqD = -1L;
+  public a qqE;
   
-  private float y(MotionEvent paramMotionEvent)
+  private float x(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(89269);
     try
     {
-      if (this.nrY >= 2)
+      if (this.pointerCount >= 2)
       {
         float f3 = paramMotionEvent.getX(0);
         float f1 = paramMotionEvent.getY(0);
@@ -38,11 +38,6 @@ public final class g
       AppMethodBeat.o(89269);
     }
     return 0.0F;
-  }
-  
-  public final void a(a parama)
-  {
-    this.nrZ = parama;
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -63,67 +58,67 @@ public final class g
             AppMethodBeat.o(89268);
             return true;
             Log.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_DOWN");
-            if ((this.nrW > 0L) && (SystemClock.elapsedRealtime() - this.nrW < 400L)) {
-              if (this.nrZ == null) {}
+            if ((this.qqD > 0L) && (SystemClock.elapsedRealtime() - this.qqD < 400L)) {
+              if (this.qqE == null) {}
             }
             for (;;)
             {
-              this.nrW = SystemClock.elapsedRealtime();
-              this.nrX = -1.0F;
-              this.nrY += 1;
+              this.qqD = SystemClock.elapsedRealtime();
+              this.nwV = -1.0F;
+              this.pointerCount += 1;
               break;
-              if (this.nrZ != null) {
-                this.nrZ.J(paramMotionEvent.getX(), paramMotionEvent.getY());
+              if (this.qqE != null) {
+                this.qqE.al(paramMotionEvent.getX(), paramMotionEvent.getY());
               }
             }
             Log.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_POINTER_DOWN");
-            this.nrY += 1;
+            this.pointerCount += 1;
             continue;
             Log.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_POINTER_UP");
-            this.nrY -= 1;
+            this.pointerCount -= 1;
             continue;
             Log.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_UP");
-            this.nrX = -1.0F;
-            this.nrY = 0;
+            this.nwV = -1.0F;
+            this.pointerCount = 0;
           }
-        } while (this.nrY < 2);
-        f = y(paramMotionEvent);
+        } while (this.pointerCount < 2);
+        f = x(paramMotionEvent);
         Log.v("MicroMsg.MMSightRecordViewTouchListener", "distance: %s", new Object[] { Float.valueOf(f) });
       } while (f <= 0.0F);
-      if (this.nrX <= 0.0F) {
+      if (this.nwV <= 0.0F) {
         break;
       }
-    } while (Math.abs(f - this.nrX) <= 15.0F);
-    if (f > this.nrX)
+    } while (Math.abs(f - this.nwV) <= 15.0F);
+    if (f > this.nwV)
     {
       Log.d("MicroMsg.MMSightRecordViewTouchListener", "zoom out");
-      if (this.nrZ != null) {
-        this.nrZ.bBF();
+      if (this.qqE != null) {
+        this.qqE.bof();
       }
     }
     for (;;)
     {
-      this.nrX = f;
+      this.nwV = f;
       break;
       Log.d("MicroMsg.MMSightRecordViewTouchListener", "zoom in");
-      if (this.nrZ != null) {
-        this.nrZ.bBG();
+      if (this.qqE != null) {
+        this.qqE.bog();
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void J(float paramFloat1, float paramFloat2);
+    public abstract void al(float paramFloat1, float paramFloat2);
     
-    public abstract void bBF();
+    public abstract void bof();
     
-    public abstract void bBG();
+    public abstract void bog();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.api.recordView.g
  * JD-Core Version:    0.7.0.1
  */

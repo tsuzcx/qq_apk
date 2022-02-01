@@ -9,31 +9,19 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
-@SafeParcelable.Class(creator="TokenDataCreator")
 public class TokenData
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<TokenData> CREATOR;
-  @SafeParcelable.Field(getter="getExpirationTimeSecs", id=3)
   private final Long zzaa;
-  @SafeParcelable.Field(getter="isCached", id=4)
   private final boolean zzab;
-  @SafeParcelable.Field(getter="isSnowballed", id=5)
   private final boolean zzac;
-  @SafeParcelable.Field(getter="getGrantedScopes", id=6)
   private final List<String> zzad;
-  @SafeParcelable.VersionField(id=1)
   private final int zzy;
-  @SafeParcelable.Field(getter="getToken", id=2)
   private final String zzz;
   
   static
@@ -43,8 +31,7 @@ public class TokenData
     AppMethodBeat.o(10619);
   }
   
-  @SafeParcelable.Constructor
-  TokenData(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) Long paramLong, @SafeParcelable.Param(id=4) boolean paramBoolean1, @SafeParcelable.Param(id=5) boolean paramBoolean2, @SafeParcelable.Param(id=6) List<String> paramList)
+  TokenData(int paramInt, String paramString, Long paramLong, boolean paramBoolean1, boolean paramBoolean2, List<String> paramList)
   {
     AppMethodBeat.i(10615);
     this.zzy = paramInt;
@@ -119,7 +106,7 @@ public class TokenData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.TokenData
  * JD-Core Version:    0.7.0.1
  */

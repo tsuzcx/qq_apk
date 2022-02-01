@@ -1,269 +1,109 @@
 package com.tencent.mm.plugin.fts.ui.b;
 
+import android.content.Context;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.i;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.kernel.b.a;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ck;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.fts.ui.widget.FTSMainUIEducationLayout;
-import com.tencent.mm.plugin.messenger.foundation.a.t;
-import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import kotlin.a.ae;
-import kotlin.g.b.p;
+import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.d.a.a;
+import com.tencent.mm.plugin.fts.a.d.a.a.a;
+import com.tencent.mm.plugin.fts.a.d.a.a.b;
+import com.tencent.mm.plugin.fts.a.f;
+import com.tencent.mm.plugin.fts.ui.b.c;
+import com.tencent.mm.plugin.fts.ui.o;
+import com.tencent.mm.plugin.fts.ui.p.d;
+import com.tencent.mm.plugin.fts.ui.p.e;
+import com.tencent.mm.plugin.fts.ui.p.g;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/fts/ui/logic/FTSRedDotLogic;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "currentFTSRedDot", "Lcom/tencent/mm/plugin/fts/ui/logic/FTSEducationRedDot;", "getCurrentFTSRedDot", "()Lcom/tencent/mm/plugin/fts/ui/logic/FTSEducationRedDot;", "setCurrentFTSRedDot", "(Lcom/tencent/mm/plugin/fts/ui/logic/FTSEducationRedDot;)V", "invaildRedDotsRemoveDelayMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getInvaildRedDotsRemoveDelayMap", "()Ljava/util/HashMap;", "receiver", "Lcom/tencent/mm/plugin/messenger/foundation/api/INewXmlReceived;", "redDotObj", "getRedDotObj", "checkRedValidDot", "", "searchEducationLayout", "Lcom/tencent/mm/plugin/fts/ui/widget/FTSMainUIEducationLayout;", "clickRedDot", "bizType", "", "getCurrRedDotMsgId", "needShowRedDot", "", "onCreate", "onDestroy", "showRedDot", "ui-fts_release"})
 public final class l
+  extends a
 {
-  public static final HashMap<String, g> BQk;
-  public static final HashMap<String, g> BQl;
-  public static g BQm;
-  private static final t BQn;
-  public static final l BQo;
-  public static final String TAG = "MicroMsg.FTS.FTSRedDotLogic";
+  CharSequence HBi;
+  private a.b HBj;
+  a.a HBk;
   
-  static
+  public l(int paramInt)
   {
-    AppMethodBeat.i(194522);
-    BQo = new l();
-    TAG = "MicroMsg.FTS.FTSRedDotLogic";
-    BQk = new HashMap();
-    BQl = new HashMap();
-    BQn = (t)a.BQp;
-    AppMethodBeat.o(194522);
+    super(11, paramInt);
+    AppMethodBeat.i(112095);
+    this.HBj = new b();
+    this.HBk = new a();
+    AppMethodBeat.o(112095);
   }
   
-  public static boolean NH(long paramLong)
+  public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
-    AppMethodBeat.i(194517);
-    Object localObject = String.valueOf(paramLong);
-    if ((BQk.containsKey(localObject)) && (ae.e((Map)BQk, localObject) != null)) {
-      BQm = (g)ae.e((Map)BQk, localObject);
-    }
-    localObject = BQm;
-    if (localObject != null)
-    {
-      boolean bool = ((g)localObject).NH(paramLong);
-      AppMethodBeat.o(194517);
-      return bool;
-    }
-    AppMethodBeat.o(194517);
-    return false;
+    AppMethodBeat.i(112096);
+    parama = TextUtils.ellipsize(this.FWt.Hte, b.c.HwT, 400.0F, TextUtils.TruncateAt.MIDDLE).toString();
+    this.HBi = f.a(paramContext.getString(p.g.search_contact_no_result_pre), paramContext.getString(p.g.search_contact_no_result_post), parama);
+    AppMethodBeat.o(112096);
   }
   
-  public static void NI(long paramLong)
+  public final a.b aXA()
   {
-    AppMethodBeat.i(194519);
-    Object localObject = String.valueOf(paramLong);
-    if ((BQk.containsKey(localObject)) && (ae.e((Map)BQk, localObject) != null)) {
-      BQm = (g)ae.e((Map)BQk, localObject);
-    }
-    localObject = BQm;
-    if (localObject != null)
-    {
-      if ((((g)localObject).NH(paramLong)) && (((g)localObject).BQj == 0L))
-      {
-        ((g)localObject).BQj = cm.bfE();
-        String str = ((g)localObject).erW();
-        f localf = h.aHG();
-        p.j(localf, "MMKernel.storage()");
-        localf.aHp().set(ar.a.VrD, str);
-        Log.i(((g)localObject).TAG, "showRedDot save reddot ".concat(String.valueOf(str)));
-        AppMethodBeat.o(194519);
-        return;
-      }
-      Log.i(((g)localObject).TAG, "showRedDot not save currentBizType:" + ((g)localObject).BQh + " checkBizType:" + paramLong + " exposeTimestamp:" + ((g)localObject).BQj + " redDotAction:" + ((g)localObject).BQi);
-      AppMethodBeat.o(194519);
-      return;
-    }
-    AppMethodBeat.o(194519);
+    return this.HBj;
   }
   
-  public static void a(g paramg)
+  public final class a
+    extends a.a
   {
-    BQm = paramg;
-  }
-  
-  public static void a(FTSMainUIEducationLayout paramFTSMainUIEducationLayout)
-  {
-    AppMethodBeat.i(194516);
-    p.k(paramFTSMainUIEducationLayout, "searchEducationLayout");
-    if (BQl.isEmpty())
-    {
-      AppMethodBeat.o(194516);
-      return;
-    }
-    Iterator localIterator = ((Map)BQl).entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Map.Entry)localIterator.next();
-      String str = (String)((Map.Entry)localObject).getKey();
-      localObject = (g)((Map.Entry)localObject).getValue();
-      if ((!Util.isNullOrNil(str)) && (localObject != null) && (BQk.containsKey(str)) && (((g)localObject).equals(ae.e((Map)BQk, str))))
-      {
-        BQl.remove(str);
-        BQk.remove(str);
-        paramFTSMainUIEducationLayout.aIn(str);
-      }
-    }
-    AppMethodBeat.o(194516);
-  }
-  
-  public static HashMap<String, g> erX()
-  {
-    return BQk;
-  }
-  
-  public static String erY()
-  {
-    Object localObject = BQm;
-    if (localObject != null)
-    {
-      String str = ((g)localObject).msgId;
-      localObject = str;
-      if (str != null) {}
-    }
-    else
-    {
-      localObject = "";
-    }
-    return localObject;
-  }
-  
-  public static String getTAG()
-  {
-    return TAG;
-  }
-  
-  public static void onCreate()
-  {
-    AppMethodBeat.i(194514);
-    Object localObject = h.ag(v.class);
-    p.j(localObject, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((v)localObject).getSysCmdMsgExtension().a("mmsearch_fts_reddot", BQn);
-    localObject = h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    localObject = ((f)localObject).aHp().a(ar.a.VrD, "");
-    int i;
-    if (localObject != null) {
-      if (((CharSequence)localObject).length() > 0) {
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      label84:
-      g localg;
-      if (i != 0)
-      {
-        if (localObject == null) {
-          break label235;
-        }
-        localg = new g();
-        p.k(localObject, "value");
-      }
-      try
-      {
-        i locali = new i((String)localObject);
-        String str = locali.optString("msgId", "");
-        p.j(str, "json.optString(\"msgId\", \"\")");
-        localg.msgId = str;
-        localg.BQf = locali.optLong("h5Version", 0L);
-        localg.BQg = locali.optLong("exposeExpiredTime", 0L);
-        localg.BQh = locali.optLong("bizType", 0L);
-        localg.BQi = locali.optInt("redDotAction", 0);
-        localg.BQj = locali.optLong("exposeTimestamp", 0L);
-        label198:
-        Log.i(TAG, "load from saveStr:".concat(String.valueOf(localObject)));
-        BQm = localg;
-        AppMethodBeat.o(194514);
-        return;
-        i = 0;
-        continue;
-        localObject = null;
-        break label84;
-        label235:
-        AppMethodBeat.o(194514);
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label198;
-      }
-    }
-  }
-  
-  public static void onDestroy()
-  {
-    AppMethodBeat.i(194520);
-    BQm = null;
-    BQk.clear();
-    a locala = h.ag(v.class);
-    p.j(locala, "MMKernel.plugin(IPluginM…erFoundation::class.java)");
-    ((v)locala).getSysCmdMsgExtension().b("mmsearch_fts_reddot", BQn);
-    AppMethodBeat.o(194520);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "subType", "", "kotlin.jvm.PlatformType", "values", "", "", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "onNewXmlReceived"})
-  static final class a
-    implements t
-  {
-    public static final a BQp;
+    public TextView HAL;
+    public View HAy;
     
-    static
+    public a()
     {
-      AppMethodBeat.i(193479);
-      BQp = new a();
-      AppMethodBeat.o(193479);
+      super();
+    }
+  }
+  
+  public final class b
+    extends a.b
+  {
+    public b()
+    {
+      super();
     }
     
-    public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, h.a parama)
+    public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(193477);
-      if (p.h(paramString, "mmsearch_fts_reddot"))
+      AppMethodBeat.i(112093);
+      paramContext = LayoutInflater.from(paramContext).inflate(p.e.fts_info_item, paramViewGroup, false);
+      paramViewGroup = (l.a)l.this.HBk;
+      paramViewGroup.HAL = ((TextView)paramContext.findViewById(p.d.info_tv));
+      paramViewGroup.HAy = paramContext.findViewById(p.d.padding_view);
+      paramContext.setTag(paramViewGroup);
+      AppMethodBeat.o(112093);
+      return paramContext;
+    }
+    
+    public final void a(Context paramContext, a.a parama, a parama1, Object... paramVarArgs)
+    {
+      AppMethodBeat.i(112094);
+      paramContext = (l.a)parama;
+      o.a(l.this.HBi, paramContext.HAL);
+      if (l.this.position == 0)
       {
-        paramString = l.BQo;
-        paramString = new g();
-        if (paramMap != null)
-        {
-          paramString.lZO = Util.safeParseInt((String)paramMap.get(".sysmsg.mmsearch_fts_reddot.android_cli_version"));
-          parama = Util.safeFormatString((String)paramMap.get(".sysmsg.mmsearch_fts_reddot.msgid"), new Object[0]);
-          p.j(parama, "Util.safeFormatString(va…S_MAIN_REDPOINT}.msgid\"])");
-          p.k(parama, "<set-?>");
-          paramString.msgId = parama;
-          paramString.BQf = Util.safeParseLong((String)paramMap.get(".sysmsg.mmsearch_fts_reddot.h5_version"));
-          paramString.BQh = Util.safeParseLong((String)paramMap.get(".sysmsg.mmsearch_fts_reddot.biz_type"));
-          paramString.BQg = Util.safeParseLong((String)paramMap.get(".sysmsg.mmsearch_fts_reddot.expose_expire_time"));
-          paramString.BQi = Util.safeParseInt((String)paramMap.get(".sysmsg.mmsearch_fts_reddot.reddot_action"));
-        }
-        paramMap = l.BQo;
-        l.erX().put(String.valueOf(paramString.BQh), paramString);
-        paramMap = paramString.erW();
-        parama = h.aHG();
-        p.j(parama, "MMKernel.storage()");
-        parama.aHp().set(ar.a.VrD, paramMap);
-        parama = l.BQo;
-        Log.i(l.getTAG(), "receive reddot ".concat(String.valueOf(paramMap)));
-        l.a(paramString);
+        paramContext.HAy.setVisibility(8);
+        AppMethodBeat.o(112094);
+        return;
       }
-      AppMethodBeat.o(193477);
+      paramContext.HAy.setVisibility(0);
+      AppMethodBeat.o(112094);
+    }
+    
+    public final boolean a(Context paramContext, View paramView, a paramVarArgs)
+    {
+      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.b.l
  * JD-Core Version:    0.7.0.1
  */

@@ -13,17 +13,17 @@ import java.util.regex.Pattern;
 public final class a
   extends b
 {
-  private static final Pattern blZ;
-  private final boolean bma;
-  private int bmb;
-  private int bmc;
-  private int bmd;
-  private int bme;
+  private static final Pattern dfU;
+  private final boolean dfV;
+  private int dfW;
+  private int dfX;
+  private int dfY;
+  private int dfZ;
   
   static
   {
     AppMethodBeat.i(92810);
-    blZ = Pattern.compile("(?:(\\d+):)?(\\d+):(\\d+)(?::|\\.)(\\d+)");
+    dfU = Pattern.compile("(?:(\\d+):)?(\\d+):(\\d+)(?::|\\.)(\\d+)");
     AppMethodBeat.o(92810);
   }
   
@@ -38,15 +38,15 @@ public final class a
     AppMethodBeat.i(92804);
     if (paramList != null)
     {
-      this.bma = true;
+      this.dfV = true;
       String str = new String((byte[])paramList.get(0));
       com.google.android.exoplayer2.i.a.checkArgument(str.startsWith("Format: "));
-      bv(str);
+      cN(str);
       B(new m((byte[])paramList.get(1)));
       AppMethodBeat.o(92804);
       return;
     }
-    this.bma = false;
+    this.dfV = false;
     AppMethodBeat.o(92804);
   }
   
@@ -84,24 +84,24 @@ public final class a
             if (localObject == null) {
               break label208;
             }
-            if ((this.bma) || (!((String)localObject).startsWith("Format: "))) {
+            if ((this.dfV) || (!((String)localObject).startsWith("Format: "))) {
               break;
             }
-            bv((String)localObject);
+            cN((String)localObject);
           }
-        } while ((!((String)localObject).startsWith("Dialogue: ")) || (this.bmb == 0));
-        localObject = ((String)localObject).substring(10).split(",", this.bmb);
-        l2 = bw(localObject[this.bmc]);
+        } while ((!((String)localObject).startsWith("Dialogue: ")) || (this.dfW == 0));
+        localObject = ((String)localObject).substring(10).split(",", this.dfW);
+        l2 = cO(localObject[this.dfX]);
       } while (l2 == -9223372036854775807L);
-      String str = localObject[this.bmd];
+      String str = localObject[this.dfY];
       if (str.trim().isEmpty()) {
         break label214;
       }
-      l1 = bw(str);
+      l1 = cO(str);
     } while (l1 == -9223372036854775807L);
     for (;;)
     {
-      paramList.add(new com.google.android.exoplayer2.f.a(localObject[this.bme].replaceAll("\\{.*?\\}", "").replaceAll("\\\\N", "\n").replaceAll("\\\\n", "\n")));
+      paramList.add(new com.google.android.exoplayer2.f.a(localObject[this.dfZ].replaceAll("\\{.*?\\}", "").replaceAll("\\\\N", "\n").replaceAll("\\\\n", "\n")));
       paramh.add(l2);
       if (l1 == -9223372036854775807L) {
         break;
@@ -117,18 +117,18 @@ public final class a
     }
   }
   
-  private void bv(String paramString)
+  private void cN(String paramString)
   {
     AppMethodBeat.i(92807);
     paramString = TextUtils.split(paramString.substring(8), ",");
-    this.bmb = paramString.length;
-    this.bmc = -1;
-    this.bmd = -1;
-    this.bme = -1;
+    this.dfW = paramString.length;
+    this.dfX = -1;
+    this.dfY = -1;
+    this.dfZ = -1;
     int j = 0;
-    if (j < this.bmb)
+    if (j < this.dfW)
     {
-      String str = x.bS(paramString[j].trim());
+      String str = x.ds(paramString[j].trim());
       label100:
       int i;
       switch (str.hashCode())
@@ -160,20 +160,20 @@ public final class a
         }
         i = 2;
         break label102;
-        this.bmc = j;
+        this.dfX = j;
         continue;
-        this.bmd = j;
+        this.dfY = j;
         continue;
-        this.bme = j;
+        this.dfZ = j;
       }
     }
     AppMethodBeat.o(92807);
   }
   
-  private static long bw(String paramString)
+  private static long cO(String paramString)
   {
     AppMethodBeat.i(92808);
-    paramString = blZ.matcher(paramString);
+    paramString = dfU.matcher(paramString);
     if (!paramString.matches())
     {
       AppMethodBeat.o(92808);

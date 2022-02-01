@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.tools;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -14,11 +13,11 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.pluginsdk.ui.tools.t;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.chatting.ChattingUI;
 import com.tencent.mm.ui.transmit.ShareImageSelectorUI;
 import java.util.ArrayList;
@@ -29,16 +28,16 @@ public class ShareImageRedirectUI
 {
   private String imagePath;
   
-  private void euy()
+  private void fBt()
   {
     AppMethodBeat.i(39128);
-    u.d(this, com.tencent.mm.loader.j.b.aSX(), "microMsg." + System.currentTimeMillis() + ".jpg", 0);
+    t.d(this, com.tencent.mm.loader.i.b.bmL(), "microMsg." + System.currentTimeMillis() + ".jpg", 0);
     getWindow().getDecorView().setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(39124);
-        Toast.makeText(ShareImageRedirectUI.this, R.l.eTu, 1).show();
+        Toast.makeText(ShareImageRedirectUI.this, R.l.gWl, 1).show();
         ShareImageRedirectUI.this.finish();
         AppMethodBeat.o(39124);
         return false;
@@ -66,8 +65,8 @@ public class ShareImageRedirectUI
       return;
     case 0: 
       localObject = getApplicationContext();
-      bh.beI();
-      this.imagePath = u.g((Context)localObject, paramIntent, com.tencent.mm.model.c.bbW());
+      bh.bCz();
+      this.imagePath = t.g((Context)localObject, paramIntent, com.tencent.mm.model.c.bzL());
       if (this.imagePath == null)
       {
         AppMethodBeat.o(39130);
@@ -86,9 +85,9 @@ public class ShareImageRedirectUI
     {
       paramIntent = new Intent(this, ChattingUI.class);
       paramIntent.putExtra("Chat_User", (String)((ArrayList)localObject).get(0));
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(this, paramIntent.aFh(), "com/tencent/mm/ui/tools/ShareImageRedirectUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramIntent.sf(0));
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().cG(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramIntent.aYi(), "com/tencent/mm/ui/tools/ShareImageRedirectUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramIntent.sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/tools/ShareImageRedirectUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       finish();
       AppMethodBeat.o(39130);
@@ -103,7 +102,7 @@ public class ShareImageRedirectUI
     paramIntent = new Intent();
     paramIntent.putExtra("Ksnsupload_type", 0);
     paramIntent.putExtra("sns_kemdia_path", this.imagePath);
-    com.tencent.mm.by.c.b(this, "sns", ".ui.SnsUploadUI", paramIntent);
+    com.tencent.mm.br.c.b(this, "sns", ".ui.SnsUploadUI", paramIntent);
     finish();
     AppMethodBeat.o(39130);
   }
@@ -112,14 +111,14 @@ public class ShareImageRedirectUI
   {
     AppMethodBeat.i(39127);
     super.onCreate(paramBundle);
-    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.CAMERA", 16, "", "");
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.CAMERA", 16, "");
     Log.i("MicroMsg.ShareImageRedirectUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this });
     if (!bool)
     {
       AppMethodBeat.o(39127);
       return;
     }
-    euy();
+    fBt();
     AppMethodBeat.o(39127);
   }
   
@@ -142,21 +141,16 @@ public class ShareImageRedirectUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        euy();
+        fBt();
         AppMethodBeat.o(39129);
         return;
       }
-      h.a(this, getString(R.l.permission_camera_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      k.a(this, getString(R.l.permission_camera_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(39125);
-          paramAnonymousDialogInterface = ShareImageRedirectUI.this;
-          Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/tools/ShareImageRedirectUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
-          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousDialogInterface, "com/tencent/mm/ui/tools/ShareImageRedirectUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.pluginsdk.permission.b.lx(ShareImageRedirectUI.this);
           ShareImageRedirectUI.this.finish();
           AppMethodBeat.o(39125);
         }

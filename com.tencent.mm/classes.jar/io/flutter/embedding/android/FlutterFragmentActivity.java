@@ -1,6 +1,6 @@
 package io.flutter.embedding.android;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
@@ -16,38 +16,84 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.FrameLayout;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.e;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.b;
+import io.flutter.Log;
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.embedding.engine.FlutterShellArgs;
+import io.flutter.embedding.engine.plugins.util.GeneratedPluginRegister;
 
 public class FlutterFragmentActivity
   extends FragmentActivity
-  implements f, g, k
+  implements FlutterEngineConfigurator, FlutterEngineProvider, SplashScreenProvider
 {
-  private FlutterFragment aaoO;
+  private static final int FRAGMENT_CONTAINER_ID = 609893468;
+  private static final String TAG = "FlutterFragmentActivity";
+  private static final String TAG_FLUTTER_FRAGMENT = "flutter_fragment";
+  private FlutterFragment flutterFragment;
   
-  private e.a Ns()
+  private void configureStatusBarForFullscreenFlutterExperience()
   {
-    AppMethodBeat.i(254724);
-    if (getIntent().hasExtra("background_mode"))
+    AppMethodBeat.i(190507);
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      locala = e.a.valueOf(getIntent().getStringExtra("background_mode"));
-      AppMethodBeat.o(254724);
-      return locala;
+      Window localWindow = getWindow();
+      localWindow.addFlags(-2147483648);
+      localWindow.setStatusBarColor(1073741824);
+      localWindow.getDecorView().setSystemUiVisibility(1280);
     }
-    e.a locala = e.a.aaoG;
-    AppMethodBeat.o(254724);
-    return locala;
+    AppMethodBeat.o(190507);
   }
   
-  private Drawable Nt()
+  private void configureWindowForTransparency()
   {
-    AppMethodBeat.i(254694);
+    AppMethodBeat.i(190484);
+    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.transparent) {
+      getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    }
+    AppMethodBeat.o(190484);
+  }
+  
+  public static Intent createDefaultIntent(Context paramContext)
+  {
+    AppMethodBeat.i(190440);
+    paramContext = withNewEngine().build(paramContext);
+    AppMethodBeat.o(190440);
+    return paramContext;
+  }
+  
+  private View createFragmentContainer()
+  {
+    AppMethodBeat.i(190488);
+    FrameLayout localFrameLayout = provideRootLayout(this);
+    localFrameLayout.setId(609893468);
+    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    AppMethodBeat.o(190488);
+    return localFrameLayout;
+  }
+  
+  private void ensureFlutterFragmentCreated()
+  {
+    AppMethodBeat.i(190497);
+    FragmentManager localFragmentManager = getSupportFragmentManager();
+    this.flutterFragment = ((FlutterFragment)localFragmentManager.findFragmentByTag("flutter_fragment"));
+    if (this.flutterFragment == null)
+    {
+      this.flutterFragment = createFlutterFragment();
+      localFragmentManager.beginTransaction().a(609893468, this.flutterFragment, "flutter_fragment").FW();
+    }
+    AppMethodBeat.o(190497);
+  }
+  
+  private Drawable getSplashScreenFromManifest()
+  {
+    AppMethodBeat.i(190478);
     for (;;)
     {
       try
       {
-        Object localObject1 = iAs();
+        Object localObject1 = getMetaData();
         if (localObject1 == null) {
           break label93;
         }
@@ -57,339 +103,298 @@ public class FlutterFragmentActivity
           if (Build.VERSION.SDK_INT > 21)
           {
             localObject1 = getResources().getDrawable(((Integer)localObject1).intValue(), getTheme());
-            AppMethodBeat.o(254694);
+            AppMethodBeat.o(190478);
             return localObject1;
           }
           localObject1 = getResources().getDrawable(((Integer)localObject1).intValue());
-          AppMethodBeat.o(254694);
+          AppMethodBeat.o(190478);
           return localObject1;
         }
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        AppMethodBeat.o(254694);
+        AppMethodBeat.o(190478);
         return null;
       }
-      AppMethodBeat.o(254694);
+      AppMethodBeat.o(190478);
       return null;
       label93:
       Object localObject2 = null;
     }
   }
   
-  private String Nw()
+  private boolean isDebuggable()
   {
-    AppMethodBeat.i(254723);
+    AppMethodBeat.i(190514);
+    if ((getApplicationInfo().flags & 0x2) != 0)
+    {
+      AppMethodBeat.o(190514);
+      return true;
+    }
+    AppMethodBeat.o(190514);
+    return false;
+  }
+  
+  private void switchLaunchThemeForNormalTheme()
+  {
+    AppMethodBeat.i(190466);
+    try
+    {
+      Bundle localBundle = getMetaData();
+      if (localBundle != null)
+      {
+        int i = localBundle.getInt("io.flutter.embedding.android.NormalTheme", -1);
+        if (i != -1) {
+          setTheme(i);
+        }
+        AppMethodBeat.o(190466);
+        return;
+      }
+      Log.v("FlutterFragmentActivity", "Using the launch theme as normal theme.");
+      AppMethodBeat.o(190466);
+      return;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      Log.e("FlutterFragmentActivity", "Could not read meta-data for FlutterFragmentActivity. Using the launch theme as normal theme.");
+      AppMethodBeat.o(190466);
+    }
+  }
+  
+  public static FlutterFragmentActivity.CachedEngineIntentBuilder withCachedEngine(String paramString)
+  {
+    AppMethodBeat.i(190459);
+    paramString = new FlutterFragmentActivity.CachedEngineIntentBuilder(FlutterFragmentActivity.class, paramString);
+    AppMethodBeat.o(190459);
+    return paramString;
+  }
+  
+  public static FlutterFragmentActivity.NewEngineIntentBuilder withNewEngine()
+  {
+    AppMethodBeat.i(190450);
+    FlutterFragmentActivity.NewEngineIntentBuilder localNewEngineIntentBuilder = new FlutterFragmentActivity.NewEngineIntentBuilder(FlutterFragmentActivity.class);
+    AppMethodBeat.o(190450);
+    return localNewEngineIntentBuilder;
+  }
+  
+  public void cleanUpFlutterEngine(FlutterEngine paramFlutterEngine) {}
+  
+  public void configureFlutterEngine(FlutterEngine paramFlutterEngine)
+  {
+    AppMethodBeat.i(190637);
+    GeneratedPluginRegister.registerGeneratedPlugins(paramFlutterEngine);
+    AppMethodBeat.o(190637);
+  }
+  
+  protected FlutterFragment createFlutterFragment()
+  {
+    AppMethodBeat.i(190538);
+    FlutterActivityLaunchConfigs.BackgroundMode localBackgroundMode = getBackgroundMode();
+    RenderMode localRenderMode = getRenderMode();
+    if (localBackgroundMode == FlutterActivityLaunchConfigs.BackgroundMode.opaque) {}
+    for (Object localObject = TransparencyMode.opaque; getCachedEngineId() != null; localObject = TransparencyMode.transparent)
+    {
+      Log.v("FlutterFragmentActivity", "Creating FlutterFragment with cached engine:\nCached engine ID: " + getCachedEngineId() + "\nWill destroy engine when Activity is destroyed: " + shouldDestroyEngineWithHost() + "\nBackground transparency mode: " + localBackgroundMode + "\nWill attach FlutterEngine to Activity: " + shouldAttachEngineToActivity());
+      localObject = FlutterFragment.withCachedEngine(getCachedEngineId()).renderMode(localRenderMode).transparencyMode((TransparencyMode)localObject).handleDeeplinking(Boolean.valueOf(shouldHandleDeeplinking())).shouldAttachEngineToActivity(shouldAttachEngineToActivity()).destroyEngineWithFragment(shouldDestroyEngineWithHost()).build();
+      AppMethodBeat.o(190538);
+      return localObject;
+    }
+    Log.v("FlutterFragmentActivity", "Creating FlutterFragment with new engine:\nBackground transparency mode: " + localBackgroundMode + "\nDart entrypoint: " + getDartEntrypointFunctionName() + "\nInitial route: " + getInitialRoute() + "\nApp bundle path: " + getAppBundlePath() + "\nWill attach FlutterEngine to Activity: " + shouldAttachEngineToActivity());
+    localObject = FlutterFragment.withNewEngine().dartEntrypoint(getDartEntrypointFunctionName()).initialRoute(getInitialRoute()).appBundlePath(getAppBundlePath()).flutterShellArgs(FlutterShellArgs.fromIntent(getIntent())).handleDeeplinking(Boolean.valueOf(shouldHandleDeeplinking())).renderMode(localRenderMode).transparencyMode((TransparencyMode)localObject).shouldAttachEngineToActivity(shouldAttachEngineToActivity()).build();
+    AppMethodBeat.o(190538);
+    return localObject;
+  }
+  
+  protected String getAppBundlePath()
+  {
+    AppMethodBeat.i(190649);
+    if ((isDebuggable()) && ("android.intent.action.RUN".equals(getIntent().getAction())))
+    {
+      String str = getIntent().getDataString();
+      if (str != null)
+      {
+        AppMethodBeat.o(190649);
+        return str;
+      }
+    }
+    AppMethodBeat.o(190649);
+    return null;
+  }
+  
+  protected FlutterActivityLaunchConfigs.BackgroundMode getBackgroundMode()
+  {
+    AppMethodBeat.i(190684);
+    if (getIntent().hasExtra("background_mode"))
+    {
+      localBackgroundMode = FlutterActivityLaunchConfigs.BackgroundMode.valueOf(getIntent().getStringExtra("background_mode"));
+      AppMethodBeat.o(190684);
+      return localBackgroundMode;
+    }
+    FlutterActivityLaunchConfigs.BackgroundMode localBackgroundMode = FlutterActivityLaunchConfigs.BackgroundMode.opaque;
+    AppMethodBeat.o(190684);
+    return localBackgroundMode;
+  }
+  
+  protected String getCachedEngineId()
+  {
+    AppMethodBeat.i(190679);
     String str = getIntent().getStringExtra("cached_engine_id");
-    AppMethodBeat.o(254723);
+    AppMethodBeat.o(190679);
     return str;
   }
   
-  private String Nx()
+  public String getDartEntrypointFunctionName()
   {
-    AppMethodBeat.i(254721);
+    AppMethodBeat.i(190667);
     for (;;)
     {
       try
       {
-        Object localObject1 = iAs();
+        Object localObject1 = getMetaData();
         if (localObject1 != null)
         {
           localObject1 = ((Bundle)localObject1).getString("io.flutter.Entrypoint");
           if (localObject1 != null)
           {
-            AppMethodBeat.o(254721);
+            AppMethodBeat.o(190667);
             return localObject1;
           }
-          AppMethodBeat.o(254721);
+          AppMethodBeat.o(190667);
           return "main";
         }
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        AppMethodBeat.o(254721);
+        AppMethodBeat.o(190667);
         return "main";
       }
       Object localObject2 = null;
     }
   }
   
-  private String Ny()
+  protected FlutterEngine getFlutterEngine()
   {
-    AppMethodBeat.i(254716);
-    if ((iAy()) && ("android.intent.action.RUN".equals(getIntent().getAction())))
-    {
-      String str = getIntent().getDataString();
-      if (str != null)
-      {
-        AppMethodBeat.o(254716);
-        return str;
-      }
-    }
-    AppMethodBeat.o(254716);
-    return null;
+    AppMethodBeat.i(190604);
+    FlutterEngine localFlutterEngine = this.flutterFragment.getFlutterEngine();
+    AppMethodBeat.o(190604);
+    return localFlutterEngine;
   }
   
-  private String Nz()
+  protected String getInitialRoute()
   {
-    AppMethodBeat.i(254722);
+    AppMethodBeat.i(190672);
     Object localObject;
     if (getIntent().hasExtra("route"))
     {
       localObject = getIntent().getStringExtra("route");
-      AppMethodBeat.o(254722);
+      AppMethodBeat.o(190672);
       return localObject;
     }
     try
     {
-      localObject = iAs();
+      localObject = getMetaData();
       if (localObject != null)
       {
         localObject = ((Bundle)localObject).getString("io.flutter.InitialRoute");
-        AppMethodBeat.o(254722);
+        AppMethodBeat.o(190672);
         return localObject;
       }
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      AppMethodBeat.o(254722);
+      AppMethodBeat.o(190672);
       return null;
     }
-    AppMethodBeat.o(254722);
+    AppMethodBeat.o(190672);
     return null;
   }
   
-  private boolean iAp()
+  protected Bundle getMetaData()
   {
-    AppMethodBeat.i(254711);
-    boolean bool = getIntent().getBooleanExtra("destroy_engine_with_activity", false);
-    AppMethodBeat.o(254711);
-    return bool;
-  }
-  
-  private Bundle iAs()
-  {
-    AppMethodBeat.i(254719);
+    AppMethodBeat.i(190661);
     Bundle localBundle = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
-    AppMethodBeat.o(254719);
+    AppMethodBeat.o(190661);
     return localBundle;
   }
   
-  private boolean iAu()
+  protected RenderMode getRenderMode()
   {
-    AppMethodBeat.i(254712);
-    try
+    AppMethodBeat.i(190688);
+    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.opaque)
     {
-      Bundle localBundle = iAs();
-      if (localBundle != null)
-      {
-        boolean bool = localBundle.getBoolean("flutter_deeplinking_enabled");
-        AppMethodBeat.o(254712);
-        return bool;
-      }
-      AppMethodBeat.o(254712);
-      return false;
+      localRenderMode = RenderMode.surface;
+      AppMethodBeat.o(190688);
+      return localRenderMode;
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      AppMethodBeat.o(254712);
-    }
-    return false;
+    RenderMode localRenderMode = RenderMode.texture;
+    AppMethodBeat.o(190688);
+    return localRenderMode;
   }
-  
-  private boolean iAy()
-  {
-    AppMethodBeat.i(254727);
-    if ((getApplicationInfo().flags & 0x2) != 0)
-    {
-      AppMethodBeat.o(254727);
-      return true;
-    }
-    AppMethodBeat.o(254727);
-    return false;
-  }
-  
-  public final j NC()
-  {
-    AppMethodBeat.i(254693);
-    Object localObject = Nt();
-    if (localObject != null)
-    {
-      localObject = new DrawableSplashScreen((Drawable)localObject);
-      AppMethodBeat.o(254693);
-      return localObject;
-    }
-    AppMethodBeat.o(254693);
-    return null;
-  }
-  
-  public final io.flutter.embedding.engine.a ND()
-  {
-    return null;
-  }
-  
-  public final void a(io.flutter.embedding.engine.a parama)
-  {
-    AppMethodBeat.i(254713);
-    io.flutter.embedding.engine.plugins.e.a.h(parama);
-    AppMethodBeat.o(254713);
-  }
-  
-  public final void b(io.flutter.embedding.engine.a parama) {}
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(254708);
+    AppMethodBeat.i(190596);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.aaoO.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(254708);
+    this.flutterFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(190596);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(254699);
-    FlutterFragment localFlutterFragment = this.aaoO;
-    if (localFlutterFragment.bGa("onBackPressed")) {
-      localFlutterFragment.aaoB.onBackPressed();
-    }
-    AppMethodBeat.o(254699);
+    AppMethodBeat.i(190557);
+    this.flutterFragment.onBackPressed();
+    AppMethodBeat.o(190557);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(254691);
-    for (;;)
-    {
-      try
-      {
-        localObject1 = iAs();
-        if (localObject1 == null) {
-          continue;
-        }
-        int i = ((Bundle)localObject1).getInt("io.flutter.embedding.android.NormalTheme", -1);
-        if (i != -1) {
-          setTheme(i);
-        }
-      }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException)
-      {
-        Object localObject1;
-        e locale;
-        b.iAh();
-        continue;
-        paramBundle = i.aapN;
-        continue;
-        l locall = l.aapR;
-        continue;
-        new StringBuilder("Creating FlutterFragment with new engine:\nBackground transparency mode: ").append(localObject2).append("\nDart entrypoint: ").append(Nx()).append("\nInitial route: ").append(Nz()).append("\nApp bundle path: ").append(Ny()).append("\nWill attach FlutterEngine to Activity: true");
-        b.iAd();
-        Object localObject2 = FlutterFragment.iAw();
-        ((FlutterFragment.b)localObject2).ZYN = Nx();
-        ((FlutterFragment.b)localObject2).ZYO = Nz();
-        ((FlutterFragment.b)localObject2).aaoM = Ny();
-        ((FlutterFragment.b)localObject2).aaoN = io.flutter.embedding.engine.d.bT(getIntent());
-        ((FlutterFragment.b)localObject2).aaoL = Boolean.valueOf(iAu()).booleanValue();
-        ((FlutterFragment.b)localObject2).cpj = paramBundle;
-        ((FlutterFragment.b)localObject2).cpk = locall;
-        ((FlutterFragment.b)localObject2).cpl = true;
-        paramBundle = ((FlutterFragment.b)localObject2).iAx();
-        continue;
-      }
-      super.onCreate(paramBundle);
-      if (Ns() == e.a.aaoH) {
-        getWindow().setBackgroundDrawable(new ColorDrawable(0));
-      }
-      paramBundle = new FrameLayout(this);
-      paramBundle.setId(609893468);
-      paramBundle.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-      setContentView(paramBundle);
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        paramBundle = getWindow();
-        paramBundle.addFlags(-2147483648);
-        paramBundle.setStatusBarColor(1073741824);
-        paramBundle.getDecorView().setSystemUiVisibility(1280);
-      }
-      locale = getSupportFragmentManager();
-      this.aaoO = ((FlutterFragment)locale.findFragmentByTag("flutter_fragment"));
-      if (this.aaoO == null)
-      {
-        localObject2 = Ns();
-        if (Ns() != e.a.aaoG) {
-          continue;
-        }
-        paramBundle = i.aapM;
-        if (localObject2 != e.a.aaoG) {
-          continue;
-        }
-        localObject1 = l.aapQ;
-        if (Nw() == null) {
-          continue;
-        }
-        new StringBuilder("Creating FlutterFragment with cached engine:\nCached engine ID: ").append(Nw()).append("\nWill destroy engine when Activity is destroyed: ").append(iAp()).append("\nBackground transparency mode: ").append(localObject2).append("\nWill attach FlutterEngine to Activity: true");
-        b.iAd();
-        localObject2 = FlutterFragment.bGb(Nw());
-        ((FlutterFragment.a)localObject2).cpj = paramBundle;
-        ((FlutterFragment.a)localObject2).cpk = ((l)localObject1);
-        ((FlutterFragment.a)localObject2).aaoL = Boolean.valueOf(iAu()).booleanValue();
-        ((FlutterFragment.a)localObject2).cpl = true;
-        ((FlutterFragment.a)localObject2).aaoK = iAp();
-        paramBundle = ((FlutterFragment.a)localObject2).iAx();
-        this.aaoO = paramBundle;
-        locale.beginTransaction().a(609893468, this.aaoO, "flutter_fragment").in();
-      }
-      AppMethodBeat.o(254691);
-      return;
-      b.iAd();
-    }
+    AppMethodBeat.i(190522);
+    switchLaunchThemeForNormalTheme();
+    super.onCreate(paramBundle);
+    configureWindowForTransparency();
+    setContentView(createFragmentContainer());
+    configureStatusBarForFullscreenFlutterExperience();
+    ensureFlutterFragmentCreated();
+    AppMethodBeat.o(190522);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(254698);
-    FlutterFragment localFlutterFragment = this.aaoO;
-    if (localFlutterFragment.bGa("onNewIntent")) {
-      localFlutterFragment.aaoB.onNewIntent(paramIntent);
-    }
+    AppMethodBeat.i(190552);
+    this.flutterFragment.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
-    AppMethodBeat.o(254698);
+    AppMethodBeat.o(190552);
   }
   
   public void onPostResume()
   {
-    AppMethodBeat.i(254696);
+    AppMethodBeat.i(190544);
     super.onPostResume();
-    this.aaoO.aaoB.onPostResume();
-    AppMethodBeat.o(254696);
+    this.flutterFragment.onPostResume();
+    AppMethodBeat.o(190544);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(254701);
+    AppMethodBeat.i(190567);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    this.aaoO.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(254701);
+    this.flutterFragment.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(190567);
   }
   
   public void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(254705);
+    AppMethodBeat.i(190588);
     super.onTrimMemory(paramInt);
-    FlutterFragment localFlutterFragment = this.aaoO;
-    if (localFlutterFragment.bGa("onTrimMemory")) {
-      localFlutterFragment.aaoB.onTrimMemory(paramInt);
-    }
-    AppMethodBeat.o(254705);
+    this.flutterFragment.onTrimMemory(paramInt);
+    AppMethodBeat.o(190588);
   }
   
   public void onUserLeaveHint()
   {
-    AppMethodBeat.i(254703);
-    FlutterFragment localFlutterFragment = this.aaoO;
-    if (localFlutterFragment.bGa("onUserLeaveHint")) {
-      localFlutterFragment.aaoB.onUserLeaveHint();
-    }
-    AppMethodBeat.o(254703);
+    AppMethodBeat.i(190577);
+    this.flutterFragment.onUserLeaveHint();
+    AppMethodBeat.o(190577);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -397,10 +402,72 @@ public class FlutterFragmentActivity
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public FlutterEngine provideFlutterEngine(Context paramContext)
+  {
+    return null;
+  }
+  
+  protected FrameLayout provideRootLayout(Context paramContext)
+  {
+    AppMethodBeat.i(190694);
+    paramContext = new FrameLayout(paramContext);
+    AppMethodBeat.o(190694);
+    return paramContext;
+  }
+  
+  public SplashScreen provideSplashScreen()
+  {
+    AppMethodBeat.i(190528);
+    Object localObject = getSplashScreenFromManifest();
+    if (localObject != null)
+    {
+      localObject = new DrawableSplashScreen((Drawable)localObject);
+      AppMethodBeat.o(190528);
+      return localObject;
+    }
+    AppMethodBeat.o(190528);
+    return null;
+  }
+  
+  protected boolean shouldAttachEngineToActivity()
+  {
+    return true;
+  }
+  
+  public boolean shouldDestroyEngineWithHost()
+  {
+    AppMethodBeat.i(190613);
+    boolean bool = getIntent().getBooleanExtra("destroy_engine_with_activity", false);
+    AppMethodBeat.o(190613);
+    return bool;
+  }
+  
+  protected boolean shouldHandleDeeplinking()
+  {
+    AppMethodBeat.i(190625);
+    try
+    {
+      Bundle localBundle = getMetaData();
+      if (localBundle != null)
+      {
+        boolean bool = localBundle.getBoolean("flutter_deeplinking_enabled");
+        AppMethodBeat.o(190625);
+        return bool;
+      }
+      AppMethodBeat.o(190625);
+      return false;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      AppMethodBeat.o(190625);
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

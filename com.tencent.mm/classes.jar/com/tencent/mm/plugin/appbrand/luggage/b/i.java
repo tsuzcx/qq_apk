@@ -9,18 +9,18 @@ public final class i
 {
   public i(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(243641);
+    AppMethodBeat.i(319874);
     a(new k());
     a(new g());
     a(new h(paramAppBrandRuntime));
     a(new n(paramAppBrandRuntime));
     a(new f(paramAppBrandRuntime));
-    AppMethodBeat.o(243641);
+    AppMethodBeat.o(319874);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.i
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bi_" />
-    <PreferenceSmallCategory />
-    <Preference android:key="contact_info_go_to_sport" android:layout="@layout/b8j" android:title="@string/bbk" />
-    <PreferenceSmallCategory />
-    <Preference android:key="contact_info_go_to_my_profile" android:layout="@layout/b8j" android:title="@string/bbj" />
-    <Preference android:key="contact_info_invite_friend" android:layout="@layout/b8j" android:title="@string/bbs" />
-    <Preference android:key="contact_info_common_problem" android:layout="@layout/b8j" android:title="@string/bab" />
-    <PreferenceSmallCategory />
-    <Preference android:defaultValue="true" android:key="contact_info_record_data" android:layout="@layout/b8j" android:persistent="false" android:title="@string/ben" />
-    <Preference android:key="contact_info_privacy_and_notification" android:layout="@layout/b8j" android:title="@string/bdk" />
-    <CheckBoxPreference android:key="contact_info_top_sport" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bh_" />
-    <CheckBoxPreference android:key="contact_info_not_disturb" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bdd" />
-    <Preference android:key="contact_info_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsq" android:key="contact_info_sport_install" android:title_color="@color/ts" />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsv" android:key="contact_info_sport_uninstall" android:layout="@layout/b2o" android:title_color="@color/a5e" />
-    <PreferenceCategory />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_mobile" android:layout="@layout/bdi" android:title="@string/br6" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_qq" android:layout="@layout/bdi" android:title="@string/br7" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_linkedin" android:layout="@layout/bdi" android:title="@string/br5" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_facebook" android:layout="@layout/bdi" android:title="@string/br2" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_googlecontacts" android:layout="@layout/bdi" android:title="@string/br4" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_weishop" android:layout="@layout/bdi" android:title="@string/br9" />
 </PreferenceScreen>

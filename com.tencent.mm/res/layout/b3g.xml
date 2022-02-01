@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@null" android:paddingTop="29.0dip" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/is" android:textColor="@color/ae7" android:id="@id/ag8" android:paddingTop="1.0dip" android:paddingBottom="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" android:text="@string/eod" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/yv" android:id="@id/ag5" android:paddingTop="1.0dip" android:paddingBottom="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip" android:text="@string/eob" android:includeFontPadding="false" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/afv" android:paddingTop="1.0dip" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="false" />
-</LinearLayout>
+<RelativeLayout android:background="@drawable/aap" android:paddingLeft="24.0dip" android:paddingTop="24.0dip" android:paddingRight="24.0dip" android:paddingBottom="74.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:id="@id/fe6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/feg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f7y" />
+                <LinearLayout android:orientation="vertical" android:id="@id/fed" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fe7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/fe6">
+                <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/fel" android:layout_width="24.0dip" android:layout_height="24.0dip" android:scaleType="fitXY" app:radius="12.0dip" />
+                <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/fe5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/fe3" android:background="@drawable/aao" android:layout_width="52.0dip" android:layout_height="32.0dip" android:text="@string/fxu" android:layout_centerVertical="true" />
+    </LinearLayout>
+</RelativeLayout>

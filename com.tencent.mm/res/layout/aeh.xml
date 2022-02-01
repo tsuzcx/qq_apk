@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="@dimen/bw" android:paddingStart="@dimen/cb"
+<FrameLayout android:id="@id/dd3" android:layout_width="fill_parent" android:layout_height="@dimen/dc"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/etl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/et9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="@dimen/dc">
+        <ProgressBar android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" style="@style/a74" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="center_vertical" android:id="@id/ayq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eau" />
+    </LinearLayout>
+</FrameLayout>

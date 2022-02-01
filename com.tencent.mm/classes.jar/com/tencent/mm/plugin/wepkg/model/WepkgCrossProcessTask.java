@@ -19,14 +19,14 @@ public class WepkgCrossProcessTask
   extends BaseWepkgProcessTask
 {
   public static final Parcelable.Creator<WepkgCrossProcessTask> CREATOR;
-  public WepkgVersion QMA;
-  public List<WepkgVersion> QMB;
-  public WePkgDiffInfo QMC;
-  public WepkgPreloadFile QMD;
-  public List<WepkgPreloadFile> QME;
-  public String QMF;
-  public int Vh;
-  public Runnable otv;
+  public WepkgVersion XFY;
+  public List<WepkgVersion> XFZ;
+  public WePkgDiffInfo XGa;
+  public WepkgPreloadFile XGb;
+  public List<WepkgPreloadFile> XGc;
+  public String XGd;
+  public int bUl;
+  public Runnable rxj;
   
   static
   {
@@ -38,23 +38,41 @@ public class WepkgCrossProcessTask
   public WepkgCrossProcessTask()
   {
     AppMethodBeat.i(110689);
-    this.Vh = -1;
-    this.QMA = new WepkgVersion();
-    this.QMB = new ArrayList();
-    this.QMC = new WePkgDiffInfo();
-    this.QMD = new WepkgPreloadFile();
-    this.QME = new ArrayList();
+    this.bUl = -1;
+    this.XFY = new WepkgVersion();
+    this.XFZ = new ArrayList();
+    this.XGa = new WePkgDiffInfo();
+    this.XGb = new WepkgPreloadFile();
+    this.XGc = new ArrayList();
     AppMethodBeat.o(110689);
   }
   
   private WepkgCrossProcessTask(Parcel paramParcel)
   {
     AppMethodBeat.i(110690);
-    f(paramParcel);
+    h(paramParcel);
     AppMethodBeat.o(110690);
   }
   
-  public final void RW()
+  public final void a(Parcel paramParcel, int paramInt)
+  {
+    AppMethodBeat.i(110694);
+    paramParcel.writeInt(this.bUl);
+    paramParcel.writeParcelable(this.XFY, paramInt);
+    if (this.XFZ == null) {
+      this.XFZ = new ArrayList();
+    }
+    paramParcel.writeList(this.XFZ);
+    paramParcel.writeParcelable(this.XGb, paramInt);
+    if (this.XGc == null) {
+      this.XGc = new ArrayList();
+    }
+    paramParcel.writeList(this.XGc);
+    paramParcel.writeString(this.XGd);
+    AppMethodBeat.o(110694);
+  }
+  
+  public final void asn()
   {
     Object localObject2 = null;
     Object localObject1 = null;
@@ -66,7 +84,7 @@ public class WepkgCrossProcessTask
     AppMethodBeat.i(110691);
     Object localObject3;
     Object localObject4;
-    switch (this.Vh)
+    switch (this.bUl)
     {
     default: 
     case 1001: 
@@ -87,92 +105,92 @@ public class WepkgCrossProcessTask
         {
           for (;;)
           {
-            bPt();
+            cpA();
             AppMethodBeat.o(110691);
             return;
             this.result = true;
             continue;
-            this.result = a.ewd();
+            this.result = a.fDT();
             continue;
-            if (this.QMA != null)
+            if (this.XFY != null)
             {
-              localObject1 = f.hew().bom(this.QMA.jTB);
+              localObject1 = f.iFe().boa(this.XFY.mtT);
               if (localObject1 != null)
               {
-                this.QMA.a((e)localObject1);
+                this.XFY.a((e)localObject1);
                 this.result = true;
               }
               else
               {
-                this.QMA = null;
+                this.XFY = null;
                 continue;
-                if (this.QMA != null)
+                if (this.XFY != null)
                 {
-                  this.result = f.hew().boo(this.QMA.jTB);
+                  this.result = f.iFe().boc(this.XFY.mtT);
                   continue;
-                  if (this.QMA != null)
+                  if (this.XFY != null)
                   {
-                    this.result = f.hew().a(this.QMA.jTB, this.QMA.QNi, this.QMA.QNj, this.QMA.QNk);
+                    this.result = f.iFe().a(this.XFY.mtT, this.XFY.XGG, this.XFY.XGH, this.XFY.XGI);
                     continue;
-                    if (this.QMA != null)
+                    if (this.XFY != null)
                     {
-                      this.result = f.hew().E(this.QMA.jTB, this.QMA.pkgPath, this.QMA.QNo);
+                      this.result = f.iFe().K(this.XFY.mtT, this.XFY.pkgPath, this.XFY.XGM);
                       continue;
-                      if (this.QMA != null)
+                      if (this.XFY != null)
                       {
-                        this.result = f.hew().dj(this.QMA.jTB, this.QMA.QNp);
+                        this.result = f.iFe().dT(this.XFY.mtT, this.XFY.XGN);
                         continue;
-                        if ((this.QMA != null) && (!Util.isNullOrNil(this.QMA.jTB)))
+                        if ((this.XFY != null) && (!Util.isNullOrNil(this.XFY.mtT)))
                         {
-                          localObject1 = f.hew();
-                          localObject2 = this.QMA;
+                          localObject1 = f.iFe();
+                          localObject2 = this.XFY;
                           localObject3 = new e();
-                          ((e)localObject3).field_pkgId = ((WepkgVersion)localObject2).jTB;
+                          ((e)localObject3).field_pkgId = ((WepkgVersion)localObject2).mtT;
                           ((e)localObject3).field_appId = ((WepkgVersion)localObject2).appId;
                           ((e)localObject3).field_version = ((WepkgVersion)localObject2).version;
                           ((e)localObject3).field_pkgPath = ((WepkgVersion)localObject2).pkgPath;
-                          ((e)localObject3).field_disableWvCache = ((WepkgVersion)localObject2).QNi;
-                          ((e)localObject3).field_clearPkgTime = ((WepkgVersion)localObject2).QNj;
-                          ((e)localObject3).field_checkIntervalTime = ((WepkgVersion)localObject2).QNk;
-                          ((e)localObject3).field_packMethod = ((WepkgVersion)localObject2).QNl;
+                          ((e)localObject3).field_disableWvCache = ((WepkgVersion)localObject2).XGG;
+                          ((e)localObject3).field_clearPkgTime = ((WepkgVersion)localObject2).XGH;
+                          ((e)localObject3).field_checkIntervalTime = ((WepkgVersion)localObject2).XGI;
+                          ((e)localObject3).field_packMethod = ((WepkgVersion)localObject2).XGJ;
                           ((e)localObject3).field_domain = ((WepkgVersion)localObject2).domain;
                           ((e)localObject3).field_md5 = ((WepkgVersion)localObject2).md5;
                           ((e)localObject3).field_downloadUrl = ((WepkgVersion)localObject2).downloadUrl;
-                          ((e)localObject3).field_pkgSize = ((WepkgVersion)localObject2).QNm;
-                          ((e)localObject3).field_downloadNetType = ((WepkgVersion)localObject2).QMs;
-                          ((e)localObject3).field_nextCheckTime = ((WepkgVersion)localObject2).QNn;
+                          ((e)localObject3).field_pkgSize = ((WepkgVersion)localObject2).XGK;
+                          ((e)localObject3).field_downloadNetType = ((WepkgVersion)localObject2).XFQ;
+                          ((e)localObject3).field_nextCheckTime = ((WepkgVersion)localObject2).XGL;
                           ((e)localObject3).field_createTime = ((WepkgVersion)localObject2).createTime;
                           ((e)localObject3).field_charset = ((WepkgVersion)localObject2).charset;
-                          ((e)localObject3).field_bigPackageReady = ((WepkgVersion)localObject2).QNo;
-                          ((e)localObject3).field_preloadFilesReady = ((WepkgVersion)localObject2).QNp;
-                          ((e)localObject3).field_preloadFilesAtomic = ((WepkgVersion)localObject2).QNq;
-                          ((e)localObject3).field_totalDownloadCount = ((WepkgVersion)localObject2).QNr;
-                          ((e)localObject3).field_downloadTriggerType = ((WepkgVersion)localObject2).gcA;
-                          ((f)localObject1).a((e)localObject3, this.QMC);
-                          if (!Util.isNullOrNil(this.QME))
+                          ((e)localObject3).field_bigPackageReady = ((WepkgVersion)localObject2).XGM;
+                          ((e)localObject3).field_preloadFilesReady = ((WepkgVersion)localObject2).XGN;
+                          ((e)localObject3).field_preloadFilesAtomic = ((WepkgVersion)localObject2).XGO;
+                          ((e)localObject3).field_totalDownloadCount = ((WepkgVersion)localObject2).XGP;
+                          ((e)localObject3).field_downloadTriggerType = ((WepkgVersion)localObject2).iiM;
+                          ((f)localObject1).a((e)localObject3, this.XGa);
+                          if (!Util.isNullOrNil(this.XGc))
                           {
-                            localObject1 = this.QME.iterator();
+                            localObject1 = this.XGc.iterator();
                             while (((Iterator)localObject1).hasNext())
                             {
                               localObject2 = (WepkgPreloadFile)((Iterator)localObject1).next();
                               if (localObject2 != null)
                               {
-                                localObject3 = com.tencent.mm.plugin.wepkg.b.d.hev();
+                                localObject3 = com.tencent.mm.plugin.wepkg.b.d.iFd();
                                 localObject4 = new c();
                                 ((c)localObject4).field_key = ((WepkgPreloadFile)localObject2).key;
-                                ((c)localObject4).field_pkgId = ((WepkgPreloadFile)localObject2).jTB;
+                                ((c)localObject4).field_pkgId = ((WepkgPreloadFile)localObject2).mtT;
                                 ((c)localObject4).field_version = ((WepkgPreloadFile)localObject2).version;
                                 ((c)localObject4).field_filePath = ((WepkgPreloadFile)localObject2).filePath;
-                                ((c)localObject4).field_rid = ((WepkgPreloadFile)localObject2).QMG;
+                                ((c)localObject4).field_rid = ((WepkgPreloadFile)localObject2).XGe;
                                 ((c)localObject4).field_mimeType = ((WepkgPreloadFile)localObject2).mimeType;
                                 ((c)localObject4).field_md5 = ((WepkgPreloadFile)localObject2).md5;
                                 ((c)localObject4).field_downloadUrl = ((WepkgPreloadFile)localObject2).downloadUrl;
                                 ((c)localObject4).field_size = ((WepkgPreloadFile)localObject2).size;
-                                ((c)localObject4).field_downloadNetType = ((WepkgPreloadFile)localObject2).QMs;
-                                ((c)localObject4).field_completeDownload = ((WepkgPreloadFile)localObject2).QMT;
+                                ((c)localObject4).field_downloadNetType = ((WepkgPreloadFile)localObject2).XFQ;
+                                ((c)localObject4).field_completeDownload = ((WepkgPreloadFile)localObject2).XGr;
                                 ((c)localObject4).field_createTime = ((WepkgPreloadFile)localObject2).createTime;
-                                if (((com.tencent.mm.plugin.wepkg.b.d)localObject3).omY) {
-                                  if (((com.tencent.mm.plugin.wepkg.b.d)localObject3).mR(((c)localObject4).field_pkgId, ((c)localObject4).field_rid) == null)
+                                if (((com.tencent.mm.plugin.wepkg.b.d)localObject3).rqI) {
+                                  if (((com.tencent.mm.plugin.wepkg.b.d)localObject3).oH(((c)localObject4).field_pkgId, ((c)localObject4).field_rid) == null)
                                   {
                                     ((c)localObject4).field_createTime = com.tencent.mm.plugin.wepkg.utils.d.currentTime();
                                     bool1 = ((com.tencent.mm.plugin.wepkg.b.d)localObject3).insert((IAutoDBItem)localObject4);
@@ -196,17 +214,17 @@ public class WepkgCrossProcessTask
               }
             }
           }
-        } while ((this.QMA == null) || (Util.isNullOrNil(this.QMA.jTB)));
+        } while ((this.XFY == null) || (Util.isNullOrNil(this.XFY.mtT)));
         for (;;)
         {
           try
           {
-            localObject2 = com.tencent.mm.plugin.wepkg.b.d.hev();
-            localObject4 = this.QMA.jTB;
-            if ((((com.tencent.mm.plugin.wepkg.b.d)localObject2).omY) || (!Util.isNullOrNil((String)localObject4))) {
+            localObject2 = com.tencent.mm.plugin.wepkg.b.d.iFd();
+            localObject4 = this.XFY.mtT;
+            if ((((com.tencent.mm.plugin.wepkg.b.d)localObject2).rqI) || (!Util.isNullOrNil((String)localObject4))) {
               continue;
             }
-            this.QME = ((List)localObject1);
+            this.XGc = ((List)localObject1);
           }
           catch (Exception localException)
           {
@@ -241,15 +259,15 @@ public class WepkgCrossProcessTask
             ((Cursor)localObject2).close();
             Log.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "no record");
             continue;
-            if (this.QMD == null) {
+            if (this.XGb == null) {
               break;
             }
-            bool1 = com.tencent.mm.plugin.wepkg.b.d.hev().j(this.QMD.jTB, this.QMD.QMG, this.QMD.filePath, this.QMD.QMT);
+            bool1 = com.tencent.mm.plugin.wepkg.b.d.iFd().k(this.XGb.mtT, this.XGb.XGe, this.XGb.filePath, this.XGb.XGr);
           }
         }
-      } while (this.QMA == null);
-      localObject1 = f.hew();
-      if (!((f)localObject1).omY) {
+      } while (this.XFY == null);
+      localObject1 = f.iFe();
+      if (!((f)localObject1).rqI) {
         localObject1 = null;
       }
       label1409:
@@ -258,20 +276,20 @@ public class WepkgCrossProcessTask
         label1384:
         if (Util.isNullOrNil((String)localObject1))
         {
-          localObject3 = com.tencent.mm.plugin.wepkg.b.d.hev();
-          if (!((com.tencent.mm.plugin.wepkg.b.d)localObject3).omY)
+          localObject3 = com.tencent.mm.plugin.wepkg.b.d.iFd();
+          if (!((com.tencent.mm.plugin.wepkg.b.d)localObject3).rqI)
           {
             localObject1 = localObject2;
             if (Util.isNullOrNil((String)localObject1))
             {
-              localObject2 = f.hew();
-              if (((f)localObject2).omY)
+              localObject2 = f.iFe();
+              if (((f)localObject2).rqI)
               {
                 Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgVersionRecord resetAutoDownloadCount ret:%s", new Object[] { Boolean.valueOf(((f)localObject2).execSQL("WepkgVersion", String.format("update %s set %s=0", new Object[] { "WepkgVersion", "autoDownloadCount" }))) });
                 Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgPreloadFilesRecord resetAutoDownloadCount ret:%s", new Object[] { Boolean.valueOf(((f)localObject2).execSQL("WepkgPreloadFiles", String.format("update %s set %s=0", new Object[] { "WepkgPreloadFiles", "autoDownloadCount" }))) });
               }
             }
-            this.QMA.jTB = ((String)localObject1);
+            this.XFY.mtT = ((String)localObject1);
             break;
             localObject3 = ((f)localObject1).rawQuery(String.format("select * from %s where %s=0 and %s=1 and %s<1 and %s<?", new Object[] { "WepkgVersion", "bigPackageReady", "preloadFilesAtomic", "autoDownloadCount", "packageDownloadCount" }), new String[] { "3" });
             if (localObject3 == null)
@@ -300,7 +318,7 @@ public class WepkgCrossProcessTask
       localObject4 = new e();
       ((e)localObject4).convertFrom((Cursor)localObject3);
       ((Cursor)localObject3).close();
-      ((f)localObject1).bop(((e)localObject4).field_pkgId);
+      ((f)localObject1).bod(((e)localObject4).field_pkgId);
       Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "randomNeedDownloadPkgid exist record in DB, pkgid:%s, version:%s, bigPackageReady:false, preloadFilesAtomic:true", new Object[] { ((e)localObject4).field_pkgId, ((e)localObject4).field_version });
       localObject1 = ((e)localObject4).field_pkgId;
       break label1384;
@@ -324,7 +342,7 @@ public class WepkgCrossProcessTask
         localObject4 = new e();
         ((e)localObject4).convertFrom((Cursor)localObject3);
         ((Cursor)localObject3).close();
-        ((f)localObject1).bop(((e)localObject4).field_pkgId);
+        ((f)localObject1).bod(((e)localObject4).field_pkgId);
         Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "randomNeedDownloadPkgid exist record in DB, pkgid:%s, version:%s, bigPackageReady:false, preloadFilesAtomic:false", new Object[] { ((e)localObject4).field_pkgId, ((e)localObject4).field_version });
         localObject1 = ((e)localObject4).field_pkgId;
         break label1384;
@@ -352,7 +370,7 @@ public class WepkgCrossProcessTask
           ((Cursor)localObject4).close();
           localObject2 = ((c)localObject1).field_pkgId;
           localObject4 = ((c)localObject1).field_rid;
-          if ((!((com.tencent.mm.plugin.wepkg.b.d)localObject3).omY) || (Util.isNullOrNil((String)localObject2)) || (Util.isNullOrNil((String)localObject4))) {}
+          if ((!((com.tencent.mm.plugin.wepkg.b.d)localObject3).rqI) || (Util.isNullOrNil((String)localObject2)) || (Util.isNullOrNil((String)localObject4))) {}
           for (;;)
           {
             Log.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "randomNeedDownloadPkgid exist record in DB, pkgid:%s, version:%s, rid:%s", new Object[] { ((c)localObject1).field_pkgId, ((c)localObject1).field_version, ((c)localObject1).field_rid });
@@ -364,52 +382,52 @@ public class WepkgCrossProcessTask
           Log.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "randomNeedDownloadPkgid no download record in DB");
           localObject1 = localObject2;
           break label1409;
-          if (this.QMA == null) {
+          if (this.XFY == null) {
             break;
           }
-          this.QME = com.tencent.mm.plugin.wepkg.b.d.hev().bok(this.QMA.jTB);
+          this.XGc = com.tencent.mm.plugin.wepkg.b.d.iFd().bnY(this.XFY.mtT);
           break label1099;
-          if (this.QMD == null) {
+          if (this.XGb == null) {
             break;
           }
-          localObject1 = com.tencent.mm.plugin.wepkg.b.d.hev().mR(this.QMD.jTB, this.QMD.QMG);
+          localObject1 = com.tencent.mm.plugin.wepkg.b.d.iFd().oH(this.XGb.mtT, this.XGb.XGe);
           if (localObject1 != null)
           {
-            this.QMD.a((c)localObject1);
+            this.XGb.a((c)localObject1);
             break label1099;
           }
-          this.QMD = null;
+          this.XGb = null;
           break;
-          if (this.QMA == null) {
+          if (this.XFY == null) {
             break;
           }
-          bool1 = f.hew().boq(this.QMA.jTB);
+          bool1 = f.iFe().boe(this.XFY.mtT);
           break label1099;
-          if (this.QMA == null) {
+          if (this.XFY == null) {
             break;
           }
-          localObject1 = f.hew().bon(this.QMA.jTB);
+          localObject1 = f.iFe().bob(this.XFY.mtT);
           if (localObject1 != null)
           {
-            this.QMA.a((e)localObject1);
+            this.XFY.a((e)localObject1);
             break label1099;
           }
-          this.QMA = null;
+          this.XFY = null;
           break;
-          this.QMB = f.hew().hey();
+          this.XFZ = f.iFe().iFg();
           break label1099;
-          if (this.QMA == null) {
+          if (this.XFY == null) {
             break;
           }
-          bool1 = f.hew().bor(this.QMA.jTB);
+          bool1 = f.iFe().bof(this.XFY.mtT);
           break label1099;
-          if (this.QMA == null) {
+          if (this.XFY == null) {
             break;
           }
-          localObject1 = f.hew();
-          localObject2 = this.QMA.jTB;
+          localObject1 = f.iFe();
+          localObject2 = this.XFY.mtT;
           bool1 = bool2;
-          if (((f)localObject1).omY) {
+          if (((f)localObject1).rqI) {
             if (!Util.isNullOrNil((String)localObject2)) {
               break label2476;
             }
@@ -420,49 +438,49 @@ public class WepkgCrossProcessTask
             break;
             Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgVersionRecord addTotalDownloadCount ret:%s", new Object[] { Boolean.valueOf(((f)localObject1).execSQL("WepkgVersion", String.format("update %s set %s=%s+1 where %s='%s'", new Object[] { "WepkgVersion", "totalDownloadCount", "totalDownloadCount", "pkgId", localObject2 }))) });
           }
-          if (this.QMA == null) {
+          if (this.XFY == null) {
             break;
           }
-          localObject1 = f.hew();
-          localObject2 = this.QMA.jTB;
-          if ((!((f)localObject1).omY) || (Util.isNullOrNil((String)localObject2))) {}
+          localObject1 = f.iFe();
+          localObject2 = this.XFY.mtT;
+          if ((!((f)localObject1).rqI) || (Util.isNullOrNil((String)localObject2))) {}
           for (bool1 = false;; bool1 = bool3)
           {
             this.result = bool1;
             break;
             Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgVersionRecord addPackageDownloadCount ret:%s", new Object[] { Boolean.valueOf(((f)localObject1).execSQL("WepkgVersion", String.format("update %s set %s=%s+1 where %s='%s'", new Object[] { "WepkgVersion", "packageDownloadCount", "packageDownloadCount", "pkgId", localObject2 }))) });
           }
-          if (this.QMA == null) {
+          if (this.XFY == null) {
             break;
           }
-          localObject1 = f.hew();
-          localObject2 = this.QMA.jTB;
-          if ((!((f)localObject1).omY) || (Util.isNullOrNil((String)localObject2))) {}
+          localObject1 = f.iFe();
+          localObject2 = this.XFY.mtT;
+          if ((!((f)localObject1).rqI) || (Util.isNullOrNil((String)localObject2))) {}
           for (bool1 = false;; bool1 = bool4)
           {
             this.result = bool1;
             break;
             Log.i("MicroMsg.Wepkg.WepkgVersionStorage", "WepkgVersionRecord resetPackageDownloadCount ret:%s", new Object[] { Boolean.valueOf(((f)localObject1).execSQL("WepkgVersion", String.format("update %s set %s=0 where %s='%s'", new Object[] { "WepkgVersion", "packageDownloadCount", "pkgId", localObject2 }))) });
           }
-          if (this.QMD == null) {
+          if (this.XGb == null) {
             break;
           }
-          localObject1 = com.tencent.mm.plugin.wepkg.b.d.hev();
-          localObject2 = this.QMD.jTB;
-          localObject3 = this.QMD.QMG;
-          if ((!((com.tencent.mm.plugin.wepkg.b.d)localObject1).omY) || (Util.isNullOrNil((String)localObject2)) || (Util.isNullOrNil((String)localObject3))) {}
+          localObject1 = com.tencent.mm.plugin.wepkg.b.d.iFd();
+          localObject2 = this.XGb.mtT;
+          localObject3 = this.XGb.XGe;
+          if ((!((com.tencent.mm.plugin.wepkg.b.d)localObject1).rqI) || (Util.isNullOrNil((String)localObject2)) || (Util.isNullOrNil((String)localObject3))) {}
           for (bool1 = false;; bool1 = bool5)
           {
             this.result = bool1;
             break;
             Log.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "WepkgPreloadFilesRecord addFileDownloadCount ret:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.wepkg.b.d)localObject1).execSQL("WepkgPreloadFiles", String.format("update %s set %s=%s+1 where %s='%s' and %s='%s'", new Object[] { "WepkgPreloadFiles", "fileDownloadCount", "fileDownloadCount", "pkgId", localObject2, "rid", localObject3 }))) });
           }
-          if (this.QMD == null) {
+          if (this.XGb == null) {
             break;
           }
-          localObject1 = com.tencent.mm.plugin.wepkg.b.d.hev();
-          localObject2 = this.QMD.jTB;
-          if ((!((com.tencent.mm.plugin.wepkg.b.d)localObject1).omY) || (Util.isNullOrNil((String)localObject2)))
+          localObject1 = com.tencent.mm.plugin.wepkg.b.d.iFd();
+          localObject2 = this.XGb.mtT;
+          if ((!((com.tencent.mm.plugin.wepkg.b.d)localObject1).rqI) || (Util.isNullOrNil((String)localObject2)))
           {
             bool1 = false;
             break label1099;
@@ -475,48 +493,30 @@ public class WepkgCrossProcessTask
     }
   }
   
-  public final void a(Parcel paramParcel, int paramInt)
-  {
-    AppMethodBeat.i(110694);
-    paramParcel.writeInt(this.Vh);
-    paramParcel.writeParcelable(this.QMA, paramInt);
-    if (this.QMB == null) {
-      this.QMB = new ArrayList();
-    }
-    paramParcel.writeList(this.QMB);
-    paramParcel.writeParcelable(this.QMD, paramInt);
-    if (this.QME == null) {
-      this.QME = new ArrayList();
-    }
-    paramParcel.writeList(this.QME);
-    paramParcel.writeString(this.QMF);
-    AppMethodBeat.o(110694);
-  }
-  
-  public final void bsK()
+  public final void bQr()
   {
     AppMethodBeat.i(110692);
-    if (this.otv != null) {
-      this.otv.run();
+    if (this.rxj != null) {
+      this.rxj.run();
     }
     AppMethodBeat.o(110692);
   }
   
-  public final void p(Parcel paramParcel)
+  public final void t(Parcel paramParcel)
   {
     AppMethodBeat.i(110693);
-    this.Vh = paramParcel.readInt();
-    this.QMA = ((WepkgVersion)paramParcel.readParcelable(WepkgVersion.class.getClassLoader()));
-    if (this.QMB == null) {
-      this.QMB = new ArrayList();
+    this.bUl = paramParcel.readInt();
+    this.XFY = ((WepkgVersion)paramParcel.readParcelable(WepkgVersion.class.getClassLoader()));
+    if (this.XFZ == null) {
+      this.XFZ = new ArrayList();
     }
-    paramParcel.readList(this.QMB, WepkgVersion.class.getClassLoader());
-    this.QMD = ((WepkgPreloadFile)paramParcel.readParcelable(WepkgPreloadFile.class.getClassLoader()));
-    if (this.QME == null) {
-      this.QME = new ArrayList();
+    paramParcel.readList(this.XFZ, WepkgVersion.class.getClassLoader());
+    this.XGb = ((WepkgPreloadFile)paramParcel.readParcelable(WepkgPreloadFile.class.getClassLoader()));
+    if (this.XGc == null) {
+      this.XGc = new ArrayList();
     }
-    paramParcel.readList(this.QME, WepkgPreloadFile.class.getClassLoader());
-    this.QMF = paramParcel.readString();
+    paramParcel.readList(this.XGc, WepkgPreloadFile.class.getClassLoader());
+    this.XGd = paramParcel.readString();
     AppMethodBeat.o(110693);
   }
 }

@@ -1,106 +1,207 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class amv
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
-  public com.tencent.mm.cd.b SwU;
+  public String IMg;
+  public String MD5;
+  public int NkN;
+  public int NkO;
+  public String YFJ;
+  public String ZaR;
+  public gol ZtL;
+  public String ZtM;
+  public String ZtN;
+  public String ZtO;
+  public int ZtP;
+  public int vhJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(149127);
+    AppMethodBeat.i(109446);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZtL == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(149127);
+        paramVarArgs = new b("Not all required fields were included: EmojiBuffer");
+        AppMethodBeat.o(109446);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.MD5 != null) {
+        paramVarArgs.g(1, this.MD5);
+      }
+      paramVarArgs.bS(2, this.NkO);
+      paramVarArgs.bS(3, this.NkN);
+      if (this.ZtL != null)
       {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.qD(4, this.ZtL.computeSize());
+        this.ZtL.writeFields(paramVarArgs);
       }
-      if (this.SwU != null) {
-        paramVarArgs.c(2, this.SwU);
+      paramVarArgs.bS(5, this.vhJ);
+      if (this.IMg != null) {
+        paramVarArgs.g(6, this.IMg);
       }
-      AppMethodBeat.o(149127);
+      if (this.ZtM != null) {
+        paramVarArgs.g(7, this.ZtM);
+      }
+      if (this.ZtN != null) {
+        paramVarArgs.g(8, this.ZtN);
+      }
+      if (this.ZtO != null) {
+        paramVarArgs.g(9, this.ZtO);
+      }
+      if (this.YFJ != null) {
+        paramVarArgs.g(10, this.YFJ);
+      }
+      paramVarArgs.bS(11, this.ZtP);
+      if (this.ZaR != null) {
+        paramVarArgs.g(12, this.ZaR);
+      }
+      AppMethodBeat.o(109446);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label396;
+      if (this.MD5 == null) {
+        break label940;
       }
     }
-    label396:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label940:
+    for (paramInt = i.a.a.b.b.a.h(1, this.MD5) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.SwU != null) {
-        i = paramInt + g.a.a.b.b.a.b(2, this.SwU);
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.NkO) + i.a.a.b.b.a.cJ(3, this.NkN);
+      paramInt = i;
+      if (this.ZtL != null) {
+        paramInt = i + i.a.a.a.qC(4, this.ZtL.computeSize());
       }
-      AppMethodBeat.o(149127);
-      return i;
+      i = paramInt + i.a.a.b.b.a.cJ(5, this.vhJ);
+      paramInt = i;
+      if (this.IMg != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.IMg);
+      }
+      i = paramInt;
+      if (this.ZtM != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.ZtM);
+      }
+      paramInt = i;
+      if (this.ZtN != null) {
+        paramInt = i + i.a.a.b.b.a.h(8, this.ZtN);
+      }
+      i = paramInt;
+      if (this.ZtO != null) {
+        i = paramInt + i.a.a.b.b.a.h(9, this.ZtO);
+      }
+      paramInt = i;
+      if (this.YFJ != null) {
+        paramInt = i + i.a.a.b.b.a.h(10, this.YFJ);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(11, this.ZtP);
+      paramInt = i;
+      if (this.ZaR != null) {
+        paramInt = i + i.a.a.b.b.a.h(12, this.ZaR);
+      }
+      AppMethodBeat.o(109446);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.ZtL == null)
         {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(149127);
+          paramVarArgs = new b("Not all required fields were included: EmojiBuffer");
+          AppMethodBeat.o(109446);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(149127);
+        AppMethodBeat.o(109446);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         amv localamv = (amv)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(149127);
+          AppMethodBeat.o(109446);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          localamv.MD5 = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(109446);
+          return 0;
+        case 2: 
+          localamv.NkO = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(109446);
+          return 0;
+        case 3: 
+          localamv.NkN = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(109446);
+          return 0;
+        case 4: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
+            gol localgol = new gol();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
+              localgol.dg((byte[])localObject);
             }
-            localamv.BaseResponse = localjh;
+            localamv.ZtL = localgol;
             paramInt += 1;
           }
-          AppMethodBeat.o(149127);
+          AppMethodBeat.o(109446);
+          return 0;
+        case 5: 
+          localamv.vhJ = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(109446);
+          return 0;
+        case 6: 
+          localamv.IMg = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(109446);
+          return 0;
+        case 7: 
+          localamv.ZtM = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(109446);
+          return 0;
+        case 8: 
+          localamv.ZtN = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(109446);
+          return 0;
+        case 9: 
+          localamv.ZtO = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(109446);
+          return 0;
+        case 10: 
+          localamv.YFJ = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(109446);
+          return 0;
+        case 11: 
+          localamv.ZtP = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(109446);
           return 0;
         }
-        localamv.SwU = ((g.a.a.a.a)localObject).abFh.iUw();
-        AppMethodBeat.o(149127);
+        localamv.ZaR = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(109446);
         return 0;
       }
-      AppMethodBeat.o(149127);
+      AppMethodBeat.o(109446);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.amv
  * JD-Core Version:    0.7.0.1
  */

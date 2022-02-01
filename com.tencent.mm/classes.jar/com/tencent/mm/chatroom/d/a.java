@@ -6,8 +6,8 @@ import java.util.Calendar;
 public final class a
 {
   public int day;
-  private Calendar iVy;
-  public long iWh;
+  private Calendar lxD;
+  public long lyf;
   public int month;
   public long msgId;
   public int year;
@@ -15,7 +15,7 @@ public final class a
   public a()
   {
     AppMethodBeat.i(12447);
-    ER(System.currentTimeMillis());
+    hi(System.currentTimeMillis());
     AppMethodBeat.o(12447);
   }
   
@@ -31,22 +31,22 @@ public final class a
   public a(long paramLong)
   {
     AppMethodBeat.i(12449);
-    this.iWh = paramLong;
-    ER(paramLong);
+    this.lyf = paramLong;
+    hi(paramLong);
     AppMethodBeat.o(12449);
   }
   
-  private void ER(long paramLong)
+  private void hi(long paramLong)
   {
     AppMethodBeat.i(12450);
-    this.iWh = paramLong;
-    if (this.iVy == null) {
-      this.iVy = Calendar.getInstance();
+    this.lyf = paramLong;
+    if (this.lxD == null) {
+      this.lxD = Calendar.getInstance();
     }
-    this.iVy.setTimeInMillis(paramLong);
-    this.month = this.iVy.get(2);
-    this.year = this.iVy.get(1);
-    this.day = this.iVy.get(5);
+    this.lxD.setTimeInMillis(paramLong);
+    this.month = this.lxD.get(2);
+    this.year = this.lxD.get(1);
+    this.day = this.lxD.get(5);
     AppMethodBeat.o(12450);
   }
   
@@ -91,7 +91,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.a
  * JD-Core Version:    0.7.0.1
  */

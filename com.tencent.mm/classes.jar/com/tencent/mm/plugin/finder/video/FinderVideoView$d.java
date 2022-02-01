@@ -3,34 +3,34 @@ package com.tencent.mm.plugin.finder.video;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/video/FinderVideoView$requestAudioFocus$1", "Lcom/tencent/mm/model/AudioHelperTool$AudioRespond;", "gain", "", "loss", "lossTransient", "lossTransientCanDuck", "unKown", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderVideoView$requestAudioFocus$1", "Lcom/tencent/mm/model/AudioHelperTool$AudioRespond;", "gain", "", "loss", "lossTransient", "lossTransientCanDuck", "unKown", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderVideoView$d
   implements d.a
 {
-  public final void bcu()
+  public final void bAi()
   {
     AppMethodBeat.i(168176);
     Log.i("Finder.VideoView", "[audioHelperTool] gain");
     AppMethodBeat.o(168176);
   }
   
-  public final void bcv()
+  public final void bAj()
   {
     AppMethodBeat.i(168178);
     Log.i("Finder.VideoView", "[audioHelperTool] loss");
     AppMethodBeat.o(168178);
   }
   
-  public final void bcw()
+  public final void bAk()
   {
     AppMethodBeat.i(168177);
     Log.i("Finder.VideoView", "[audioHelperTool] lossTransient");
     AppMethodBeat.o(168177);
   }
   
-  public final void bcx()
+  public final void bAl()
   {
     AppMethodBeat.i(168179);
     Log.i("Finder.VideoView", "[audioHelperTool] lossTransientCanDuck");

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/knp" android:background="#99000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="36.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center" android:id="@id/knq" android:background="@drawable/ade" android:layout_width="@dimen/bw" android:layout_height="@dimen/bw" android:layout_marginTop="56.0dip" android:layout_centerHorizontal="true" />
-    <ProgressBar android:id="@id/cu6" android:background="@drawable/ade" android:padding="20.0dip" android:visibility="gone" android:layout_width="@dimen/bw" android:layout_height="@dimen/bw" android:layout_marginTop="56.0dip" android:layout_centerHorizontal="true" style="@style/a62" />
-    <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/knm" android:background="@drawable/add" android:layout_width="@dimen/bu" android:layout_height="@dimen/ci" android:layout_marginTop="132.0dip" android:text="@string/ehz" android:layout_below="@id/knq" android:layout_centerHorizontal="true" />
-</RelativeLayout>

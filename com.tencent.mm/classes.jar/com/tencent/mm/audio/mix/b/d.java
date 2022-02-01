@@ -7,34 +7,34 @@ import java.util.ArrayList;
 
 public final class d
 {
-  private static d fmU;
+  private static d hrf;
   private int count;
-  private ArrayList<e> fmL;
-  private long fmT;
+  private ArrayList<e> hqW;
+  private long hre;
   private Object sLock;
   private int size;
   
   private d()
   {
     AppMethodBeat.i(136731);
-    this.fmL = new ArrayList();
+    this.hqW = new ArrayList();
     this.sLock = new Object();
-    this.fmT = 3000000L;
+    this.hre = 3000000L;
     this.size = 0;
     this.count = 0;
     AppMethodBeat.o(136731);
   }
   
-  public static d ado()
+  public static d aFn()
   {
     AppMethodBeat.i(136732);
-    if (fmU == null) {}
+    if (hrf == null) {}
     try
     {
-      if (fmU == null) {
-        fmU = new d();
+      if (hrf == null) {
+        hrf = new d();
       }
-      d locald = fmU;
+      d locald = hrf;
       AppMethodBeat.o(136732);
       return locald;
     }
@@ -44,18 +44,18 @@ public final class d
     }
   }
   
-  public final e adp()
+  public final e aFo()
   {
     AppMethodBeat.i(136733);
     synchronized (this.sLock)
     {
-      if (this.fmL.size() > 0)
+      if (this.hqW.size() > 0)
       {
-        e locale = (e)this.fmL.remove(this.fmL.size() - 1);
+        e locale = (e)this.hqW.remove(this.hqW.size() - 1);
         AppMethodBeat.o(136733);
         return locale;
       }
-      if (this.size >= this.fmT)
+      if (this.size >= this.hre)
       {
         b.e("MicroMsg.Mix.AudioPcmDataTrackFixedSizePool", "size >= FIX_SIZE, size:%d", new Object[] { Integer.valueOf(this.size) });
         AppMethodBeat.o(136733);
@@ -65,7 +65,7 @@ public final class d
       this.size = (this.count * 3536);
       b.i("MicroMsg.Mix.AudioPcmDataTrackFixedSizePool", "pool tract count:%d", new Object[] { Integer.valueOf(this.count) });
       ??? = new e();
-      ((e)???).fmJ = true;
+      ((e)???).hqU = true;
       AppMethodBeat.o(136733);
       return ???;
     }
@@ -74,12 +74,12 @@ public final class d
   public final void b(e parame)
   {
     AppMethodBeat.i(136734);
-    if ((parame == null) || (parame.fmy == null))
+    if ((parame == null) || (parame.hqJ == null))
     {
       AppMethodBeat.o(136734);
       return;
     }
-    if (!parame.fmJ)
+    if (!parame.hqU)
     {
       AppMethodBeat.o(136734);
       return;
@@ -87,7 +87,7 @@ public final class d
     parame.reset();
     synchronized (this.sLock)
     {
-      this.fmL.add(0, parame);
+      this.hqW.add(0, parame);
       AppMethodBeat.o(136734);
       return;
     }

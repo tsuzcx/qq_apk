@@ -1,98 +1,74 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
 
 public final class fdn
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public long Svv;
-  public int UDA;
-  public int UDB;
-  public b UDC;
-  public int UDy;
-  public int UDz;
-  public long Urf;
+  public String key;
+  public String value;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125501);
+    AppMethodBeat.i(125768);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.Urf);
-      paramVarArgs.bm(2, this.Svv);
-      paramVarArgs.aY(3, this.UDy);
-      paramVarArgs.aY(4, this.UDz);
-      paramVarArgs.aY(5, this.UDA);
-      paramVarArgs.aY(6, this.UDB);
-      if (this.UDC != null) {
-        paramVarArgs.c(7, this.UDC);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.key != null) {
+        paramVarArgs.g(1, this.key);
       }
-      AppMethodBeat.o(125501);
+      if (this.value != null) {
+        paramVarArgs.g(2, this.value);
+      }
+      AppMethodBeat.o(125768);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.p(1, this.Urf) + 0 + g.a.a.b.b.a.p(2, this.Svv) + g.a.a.b.b.a.bM(3, this.UDy) + g.a.a.b.b.a.bM(4, this.UDz) + g.a.a.b.b.a.bM(5, this.UDA) + g.a.a.b.b.a.bM(6, this.UDB);
-      paramInt = i;
-      if (this.UDC != null) {
-        paramInt = i + g.a.a.b.b.a.b(7, this.UDC);
+    if (paramInt == 1) {
+      if (this.key == null) {
+        break label270;
       }
-      AppMethodBeat.o(125501);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.key) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
+      int i = paramInt;
+      if (this.value != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.value);
       }
-      AppMethodBeat.o(125501);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      fdn localfdn = (fdn)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      AppMethodBeat.o(125768);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(125501);
-        return -1;
-      case 1: 
-        localfdn.Urf = locala.abFh.AN();
-        AppMethodBeat.o(125501);
-        return 0;
-      case 2: 
-        localfdn.Svv = locala.abFh.AN();
-        AppMethodBeat.o(125501);
-        return 0;
-      case 3: 
-        localfdn.UDy = locala.abFh.AK();
-        AppMethodBeat.o(125501);
-        return 0;
-      case 4: 
-        localfdn.UDz = locala.abFh.AK();
-        AppMethodBeat.o(125501);
-        return 0;
-      case 5: 
-        localfdn.UDA = locala.abFh.AK();
-        AppMethodBeat.o(125501);
-        return 0;
-      case 6: 
-        localfdn.UDB = locala.abFh.AK();
-        AppMethodBeat.o(125501);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(125768);
         return 0;
       }
-      localfdn.UDC = locala.abFh.iUw();
-      AppMethodBeat.o(125501);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        fdn localfdn = (fdn)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(125768);
+          return -1;
+        case 1: 
+          localfdn.key = locala.ajGk.readString();
+          AppMethodBeat.o(125768);
+          return 0;
+        }
+        localfdn.value = locala.ajGk.readString();
+        AppMethodBeat.o(125768);
+        return 0;
+      }
+      AppMethodBeat.o(125768);
+      return -1;
     }
-    AppMethodBeat.o(125501);
-    return -1;
   }
 }
 

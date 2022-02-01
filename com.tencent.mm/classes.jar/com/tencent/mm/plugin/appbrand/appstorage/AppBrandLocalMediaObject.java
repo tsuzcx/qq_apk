@@ -7,16 +7,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 @Deprecated
 public class AppBrandLocalMediaObject
-  implements Parcelable, r.a
+  implements Parcelable, w.a
 {
   public static final Parcelable.Creator<AppBrandLocalMediaObject> CREATOR;
-  public String fCM;
-  public String jmx;
-  public String lwh;
-  public long mHi;
+  public long fileLength;
+  public String hHB;
+  public String lPJ;
   public String mimeType;
-  public boolean nMi;
-  public long nMj;
+  public String onG;
+  public boolean qMj;
+  public long qMk;
   
   static
   {
@@ -30,24 +30,24 @@ public class AppBrandLocalMediaObject
   protected AppBrandLocalMediaObject(Parcel paramParcel)
   {
     AppMethodBeat.i(134302);
-    this.fCM = paramParcel.readString();
-    this.lwh = paramParcel.readString();
+    this.hHB = paramParcel.readString();
+    this.onG = paramParcel.readString();
     this.mimeType = paramParcel.readString();
-    this.jmx = paramParcel.readString();
+    this.lPJ = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.nMi = bool;
-      this.mHi = paramParcel.readLong();
-      this.nMj = paramParcel.readLong();
+      this.qMj = bool;
+      this.fileLength = paramParcel.readLong();
+      this.qMk = paramParcel.readLong();
       AppMethodBeat.o(134302);
       return;
     }
   }
   
-  public final long bIw()
+  public final long cia()
   {
-    return this.mHi;
+    return this.fileLength;
   }
   
   public int describeContents()
@@ -57,18 +57,18 @@ public class AppBrandLocalMediaObject
   
   public final String getFileName()
   {
-    return this.fCM;
+    return this.hHB;
   }
   
   public final long lastModified()
   {
-    return this.nMj;
+    return this.qMk;
   }
   
   public String toString()
   {
     AppMethodBeat.i(134300);
-    String str = "AppBrandLocalMediaObject{localId='" + this.fCM + '\'' + ", fileFullPath='" + this.lwh + '\'' + ", mimeType='" + this.mimeType + '\'' + ", fileExt='" + this.jmx + '\'' + '}';
+    String str = "AppBrandLocalMediaObject{localId='" + this.hHB + '\'' + ", fileFullPath='" + this.onG + '\'' + ", mimeType='" + this.mimeType + '\'' + ", fileExt='" + this.lPJ + '\'' + '}';
     AppMethodBeat.o(134300);
     return str;
   }
@@ -76,16 +76,16 @@ public class AppBrandLocalMediaObject
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134301);
-    paramParcel.writeString(this.fCM);
-    paramParcel.writeString(this.lwh);
+    paramParcel.writeString(this.hHB);
+    paramParcel.writeString(this.onG);
     paramParcel.writeString(this.mimeType);
-    paramParcel.writeString(this.jmx);
-    if (this.nMi) {}
+    paramParcel.writeString(this.lPJ);
+    if (this.qMj) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeLong(this.mHi);
-      paramParcel.writeLong(this.nMj);
+      paramParcel.writeLong(this.fileLength);
+      paramParcel.writeLong(this.qMk);
       AppMethodBeat.o(134301);
       return;
     }
@@ -93,7 +93,7 @@ public class AppBrandLocalMediaObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObject
  * JD-Core Version:    0.7.0.1
  */

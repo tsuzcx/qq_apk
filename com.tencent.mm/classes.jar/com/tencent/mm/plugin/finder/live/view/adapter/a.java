@@ -1,42 +1,50 @@
 package com.tencent.mm.plugin.finder.live.view.adapter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.live.view.convert.f;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.live.view.convert.k;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/EditData;", "", "productInfo", "Lcom/tencent/mm/plugin/finder/live/view/convert/ShopWindowShelfProductItem;", "select", "", "(Lcom/tencent/mm/plugin/finder/live/view/convert/ShopWindowShelfProductItem;Z)V", "getProductInfo", "()Lcom/tencent/mm/plugin/finder/live/view/convert/ShopWindowShelfProductItem;", "getSelect", "()Z", "setSelect", "(Z)V", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/adapter/EditData;", "", "productInfo", "Lcom/tencent/mm/plugin/finder/live/view/convert/ShopWindowShelfProductItem;", "select", "", "(Lcom/tencent/mm/plugin/finder/live/view/convert/ShopWindowShelfProductItem;Z)V", "getProductInfo", "()Lcom/tencent/mm/plugin/finder/live/view/convert/ShopWindowShelfProductItem;", "getSelect", "()Z", "setSelect", "(Z)V", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public final f yVL;
-  public boolean yip;
+  public boolean CIw;
+  public final k DPG;
   
-  private a(f paramf)
+  private a(k paramk)
   {
-    AppMethodBeat.i(273165);
-    this.yVL = paramf;
-    this.yip = false;
-    AppMethodBeat.o(273165);
+    AppMethodBeat.i(358529);
+    this.DPG = paramk;
+    this.CIw = false;
+    AppMethodBeat.o(358529);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(273168);
-    if (this != paramObject)
+    AppMethodBeat.i(358564);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((!p.h(this.yVL, paramObject.yVL)) || (this.yip != paramObject.yip)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(273168);
+      AppMethodBeat.o(358564);
       return true;
     }
-    AppMethodBeat.o(273168);
-    return false;
+    if (!(paramObject instanceof a))
+    {
+      AppMethodBeat.o(358564);
+      return false;
+    }
+    paramObject = (a)paramObject;
+    if (!s.p(this.DPG, paramObject.DPG))
+    {
+      AppMethodBeat.o(358564);
+      return false;
+    }
+    if (this.CIw != paramObject.CIw)
+    {
+      AppMethodBeat.o(358564);
+      return false;
+    }
+    AppMethodBeat.o(358564);
+    return true;
   }
   
   public final int hashCode()
@@ -46,9 +54,9 @@ public final class a
   
   public final String toString()
   {
-    AppMethodBeat.i(273166);
-    String str = "EditData(productInfo=" + this.yVL + ", select=" + this.yip + ")";
-    AppMethodBeat.o(273166);
+    AppMethodBeat.i(358543);
+    String str = "EditData(productInfo=" + this.DPG + ", select=" + this.CIw + ')';
+    AppMethodBeat.o(358543);
     return str;
   }
 }

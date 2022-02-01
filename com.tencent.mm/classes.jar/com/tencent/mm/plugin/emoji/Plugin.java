@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emoji;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
-import com.tencent.mm.plugin.emoji.model.p;
+import com.tencent.mm.plugin.emoji.model.s;
 import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 
@@ -20,9 +20,9 @@ public class Plugin
   public be createSubCore()
   {
     AppMethodBeat.i(108289);
-    p localp = new p();
+    s locals = new s();
     AppMethodBeat.o(108289);
-    return localp;
+    return locals;
   }
   
   public com.tencent.mm.pluginsdk.c.c getContactWidgetFactory()

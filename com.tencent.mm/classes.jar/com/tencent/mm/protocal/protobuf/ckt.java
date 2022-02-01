@@ -1,84 +1,108 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class ckt
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String CNG;
-  public String GTG;
-  public int Tsk;
+  public cyx YNl;
+  public int aasS;
+  public int aasT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32332);
+    AppMethodBeat.i(82410);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.Tsk);
-      if (this.GTG != null) {
-        paramVarArgs.f(2, this.GTG);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YNl == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Device");
+        AppMethodBeat.o(82410);
+        throw paramVarArgs;
       }
-      if (this.CNG != null) {
-        paramVarArgs.f(3, this.CNG);
+      paramVarArgs.bS(1, this.aasS);
+      paramVarArgs.bS(2, this.aasT);
+      if (this.YNl != null)
+      {
+        paramVarArgs.qD(3, this.YNl.computeSize());
+        this.YNl.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(32332);
+      AppMethodBeat.o(82410);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.Tsk) + 0;
+      i = i.a.a.b.b.a.cJ(1, this.aasS) + 0 + i.a.a.b.b.a.cJ(2, this.aasT);
       paramInt = i;
-      if (this.GTG != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.GTG);
+      if (this.YNl != null) {
+        paramInt = i + i.a.a.a.qC(3, this.YNl.computeSize());
       }
-      i = paramInt;
-      if (this.CNG != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.CNG);
-      }
-      AppMethodBeat.o(32332);
-      return i;
+      AppMethodBeat.o(82410);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(32332);
+      if (this.YNl == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Device");
+        AppMethodBeat.o(82410);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(82410);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       ckt localckt = (ckt)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(32332);
+        AppMethodBeat.o(82410);
         return -1;
       case 1: 
-        localckt.Tsk = locala.abFh.AK();
-        AppMethodBeat.o(32332);
+        localckt.aasS = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(82410);
         return 0;
       case 2: 
-        localckt.GTG = locala.abFh.readString();
-        AppMethodBeat.o(32332);
+        localckt.aasT = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(82410);
         return 0;
       }
-      localckt.CNG = locala.abFh.readString();
-      AppMethodBeat.o(32332);
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        cyx localcyx = new cyx();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localcyx.parseFrom((byte[])localObject);
+        }
+        localckt.YNl = localcyx;
+        paramInt += 1;
+      }
+      AppMethodBeat.o(82410);
       return 0;
     }
-    AppMethodBeat.o(32332);
+    AppMethodBeat.o(82410);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ckt
  * JD-Core Version:    0.7.0.1
  */

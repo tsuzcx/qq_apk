@@ -14,15 +14,15 @@ import android.view.MotionEvent;
 import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ab.f;
-import com.tencent.mm.api.r;
-import com.tencent.mm.bv.a.c;
+import com.tencent.mm.api.t;
+import com.tencent.mm.bo.a.c;
 import com.tencent.mm.c.c.1;
 import com.tencent.mm.c.c.2;
 import com.tencent.mm.cache.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bf;
 import java.lang.ref.WeakReference;
 import java.util.ListIterator;
 import java.util.Stack;
@@ -30,56 +30,56 @@ import java.util.Stack;
 public final class e
   extends b<d>
 {
-  Matrix auf;
-  private boolean flI;
-  private boolean flJ;
-  private volatile boolean flK;
-  private Runnable flL;
-  private Rect flM;
-  private float flN;
-  private float flO;
-  private int flP;
-  private int flQ;
-  private boolean flR;
-  private com.tencent.mm.c.c flS;
-  public com.tencent.mm.ai.a flT;
-  boolean flU;
+  Matrix ciC;
+  private boolean hpV;
+  private boolean hpW;
+  private volatile boolean hpX;
+  private Runnable hpY;
+  private Rect hpZ;
+  private float hqa;
+  private float hqb;
+  private int hqc;
+  private int hqd;
+  private boolean hqe;
+  private com.tencent.mm.c.c hqf;
+  public com.tencent.mm.ai.a hqg;
+  boolean hqh;
   private final Handler mMainHandler;
   
   public e()
   {
     AppMethodBeat.i(9156);
     this.mMainHandler = new Handler(Looper.getMainLooper());
-    this.flK = false;
-    this.flM = new Rect();
-    this.flI = false;
-    this.flJ = false;
-    this.flN = 0.0F;
-    this.flO = 0.0F;
-    this.flP = 0;
-    this.flQ = 0;
-    this.flR = false;
-    this.flS = new com.tencent.mm.c.c(this);
-    this.auf = new Matrix();
-    this.flU = false;
+    this.hpX = false;
+    this.hpZ = new Rect();
+    this.hpV = false;
+    this.hpW = false;
+    this.hqa = 0.0F;
+    this.hqb = 0.0F;
+    this.hqc = 0;
+    this.hqd = 0;
+    this.hqe = false;
+    this.hqf = new com.tencent.mm.c.c(this);
+    this.ciC = new Matrix();
+    this.hqh = false;
     AppMethodBeat.o(9156);
   }
   
-  private com.tencent.mm.ab.c acO()
+  private com.tencent.mm.ab.c aEO()
   {
     Object localObject1 = null;
     AppMethodBeat.i(9162);
-    Object localObject2 = (d)acA();
+    Object localObject2 = (d)aEA();
     if (localObject2 == null)
     {
       AppMethodBeat.o(9162);
       return null;
     }
-    ListIterator localListIterator = ((d)localObject2).arI();
+    ListIterator localListIterator = ((d)localObject2).aLE();
     while (localListIterator.hasPrevious())
     {
       localObject2 = (com.tencent.mm.ab.c)localListIterator.previous();
-      if (((com.tencent.mm.ab.c)localObject2).jaA) {
+      if (((com.tencent.mm.ab.c)localObject2).lCv) {
         localObject1 = localObject2;
       }
       ((com.tencent.mm.ab.c)localObject2).setSelected(false);
@@ -88,46 +88,46 @@ public final class e
     return localObject1;
   }
   
-  private void acP()
+  private void aEP()
   {
     AppMethodBeat.i(9163);
     Log.d("MicroMsg.EmojiAndTextArtist", "[registerFocusTask]");
-    if (this.flL != null) {
+    if (this.hpY != null) {
       this.mMainHandler.removeCallbacksAndMessages(null);
     }
-    if (this.flK)
+    if (this.hpX)
     {
       Log.w("MicroMsg.EmojiAndTextArtist", "[registerFocusTask] isTimerCancel=true");
       AppMethodBeat.o(9163);
       return;
     }
-    this.flL = new a(this);
-    this.mMainHandler.postDelayed(this.flL, 1500L);
+    this.hpY = new a(this);
+    this.mMainHandler.postDelayed(this.hpY, 1500L);
     AppMethodBeat.o(9163);
   }
   
-  private void acQ()
+  private void aEQ()
   {
     AppMethodBeat.i(9164);
     Log.d("MicroMsg.EmojiAndTextArtist", "[unRegisterFocusTask]");
-    if (this.flL != null)
+    if (this.hpY != null)
     {
       this.mMainHandler.removeCallbacksAndMessages(null);
-      this.flL = null;
+      this.hpY = null;
     }
     AppMethodBeat.o(9164);
   }
   
-  private com.tencent.mm.ab.c z(float paramFloat1, float paramFloat2)
+  private com.tencent.mm.ab.c af(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(9161);
-    if (acA() == null)
+    if (aEA() == null)
     {
       Log.e("MicroMsg.EmojiAndTextArtist", "[isContainsItem] getCache is null!");
       AppMethodBeat.o(9161);
       return null;
     }
-    ListIterator localListIterator = ((d)acA()).arI();
+    ListIterator localListIterator = ((d)aEA()).aLE();
     com.tencent.mm.ab.c localc;
     float[] arrayOfFloat;
     do
@@ -136,8 +136,8 @@ public final class e
         break;
       }
       localc = (com.tencent.mm.ab.c)localListIterator.previous();
-      arrayOfFloat = x(paramFloat1, paramFloat2);
-    } while (!localc.B(arrayOfFloat[0], arrayOfFloat[1]));
+      arrayOfFloat = ad(paramFloat1, paramFloat2);
+    } while (!localc.ah(arrayOfFloat[0], arrayOfFloat[1]));
     for (;;)
     {
       AppMethodBeat.o(9161);
@@ -146,113 +146,113 @@ public final class e
     }
   }
   
-  public final void a(SpannableString paramSpannableString, int paramInt1, int paramInt2)
+  public final void a(SpannableString paramSpannableString, int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(9165);
+    AppMethodBeat.i(231884);
     Log.i("MicroMsg.EmojiAndTextArtist", "[addItem] text:%s", new Object[] { paramSpannableString });
     if (Util.isNullOrNil(paramSpannableString))
     {
-      AppMethodBeat.o(9165);
+      AppMethodBeat.o(231884);
       return;
     }
-    d locald = (d)acA();
+    d locald = (d)aEA();
     if (locald == null)
     {
       Log.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
-      AppMethodBeat.o(9165);
+      AppMethodBeat.o(231884);
       return;
     }
-    acQ();
-    acO();
-    dq(false);
-    Object localObject = getBoardRect();
-    paramSpannableString = new f(MMApplicationContext.getContext(), getMainMatrix(), locald.ai(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2);
+    aEQ();
+    aEO();
+    ec(false);
+    Rect localRect = getBoardRect();
+    paramSpannableString = new f(MMApplicationContext.getContext(), getMainMatrix(), locald.aR(true), localRect, paramSpannableString, paramInt1, paramInt2, paramString);
     paramSpannableString.setSelected(true);
-    paramSpannableString.kag = true;
-    localObject = x(((Rect)localObject).centerX(), ((Rect)localObject).centerY());
-    paramSpannableString.a(localObject[0], localObject[1], this.fkE.getInitScale() / this.fkE.getCurScale(), (int)getRotation());
+    paramSpannableString.mAj = true;
+    paramString = ad(localRect.centerX(), localRect.centerY());
+    paramSpannableString.a(paramString[0], paramString[1], this.hoR.getInitScale() / this.hoR.getCurScale(), (int)getRotation());
     locald.a(paramSpannableString);
-    acH();
-    acP();
-    AppMethodBeat.o(9165);
+    aEH();
+    aEP();
+    AppMethodBeat.o(231884);
   }
   
-  public final void a(f paramf, SpannableString paramSpannableString, int paramInt1, int paramInt2)
+  public final void a(f paramf, SpannableString paramSpannableString, int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(9167);
-    d locald = (d)acA();
+    AppMethodBeat.i(231890);
+    d locald = (d)aEA();
     if (locald == null)
     {
       Log.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
-      AppMethodBeat.o(9167);
+      AppMethodBeat.o(231890);
       return;
     }
-    Object localObject = paramf.jZY;
+    Object localObject = paramf.mAb;
     Log.i("MicroMsg.EmojiAndTextCache", "[delete] id:%s", new Object[] { localObject });
     com.tencent.mm.ab.c localc;
-    if ((locald.iTF != null) && (locald.iTF.size() > 0))
+    if ((locald.lvL != null) && (locald.lvL.size() > 0))
     {
-      localc = (com.tencent.mm.ab.c)locald.iTF.peek();
-      if (!localc.jZY.equalsIgnoreCase((String)localObject)) {
-        break label266;
+      localc = (com.tencent.mm.ab.c)locald.lvL.peek();
+      if (!localc.mAb.equalsIgnoreCase((String)localObject)) {
+        break label268;
       }
-      locald.iTF.pop();
+      locald.lvL.pop();
     }
     for (;;)
     {
       paramf.setSelected(true);
-      paramf.kag = true;
-      acQ();
-      acO();
-      dq(true);
+      paramf.mAj = true;
+      aEQ();
+      aEO();
+      ec(true);
       if (!Util.isNullOrNil(paramSpannableString))
       {
         localObject = getBoardRect();
-        paramSpannableString = new f(MMApplicationContext.getContext(), getMainMatrix(), locald.ai(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2);
+        paramSpannableString = new f(MMApplicationContext.getContext(), getMainMatrix(), locald.aR(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2, paramString);
         paramSpannableString.setSelected(true);
-        localObject = paramf.kab;
-        paramSpannableString.a(((PointF)localObject).x, ((PointF)localObject).y, this.fkE.getInitScale() / this.fkE.getCurScale(), paramf.mRotation);
-        paramSpannableString.eYO = paramf.eYO;
+        paramString = paramf.mAe;
+        paramSpannableString.a(paramString.x, paramString.y, this.hoR.getInitScale() / this.hoR.getCurScale(), paramf.mRotation);
+        paramSpannableString.hco = paramf.hco;
         locald.a(paramSpannableString);
       }
-      acH();
-      acP();
-      AppMethodBeat.o(9167);
+      aEH();
+      aEP();
+      AppMethodBeat.o(231890);
       return;
-      label266:
+      label268:
       Log.e("MicroMsg.EmojiAndTextCache", "[delete] id:%s emojiItem:%s", new Object[] { localObject, localc });
     }
   }
   
-  public final a acy()
+  public final a aEy()
   {
-    return a.fkz;
+    return a.hoM;
   }
   
-  public final void acz() {}
+  public final void aEz() {}
   
-  public final void b(r paramr)
+  public final void b(t paramt)
   {
     AppMethodBeat.i(9166);
-    Log.i("MicroMsg.EmojiAndTextArtist", "[addEmojiItem] item:%s", new Object[] { paramr });
-    d locald = (d)acA();
+    Log.i("MicroMsg.EmojiAndTextArtist", "[addEmojiItem] item:%s", new Object[] { paramt });
+    d locald = (d)aEA();
     if (locald == null)
     {
       Log.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
       AppMethodBeat.o(9166);
       return;
     }
-    acQ();
-    acO();
-    dq(false);
+    aEQ();
+    aEO();
+    ec(false);
     Object localObject = getBoardRect();
-    paramr = new com.tencent.mm.ab.c(MMApplicationContext.getContext(), getMainMatrix(), locald.ai(true), paramr, (Rect)localObject);
-    paramr.setSelected(true);
-    localObject = x(((Rect)localObject).centerX(), ((Rect)localObject).centerY());
-    paramr.a(localObject[0], localObject[1], this.fkE.getInitScale() / this.fkE.getCurScale(), (int)getRotation());
-    locald.a(paramr);
-    acH();
-    acP();
+    paramt = new com.tencent.mm.ab.c(MMApplicationContext.getContext(), getMainMatrix(), locald.aR(true), paramt, (Rect)localObject);
+    paramt.setSelected(true);
+    localObject = ad(((Rect)localObject).centerX(), ((Rect)localObject).centerY());
+    paramt.a(localObject[0], localObject[1], this.hoR.getInitScale() / this.hoR.getCurScale(), (int)getRotation());
+    locald.a(paramt);
+    aEH();
+    aEP();
     AppMethodBeat.o(9166);
   }
   
@@ -262,11 +262,11 @@ public final class e
     super.onAlive();
     int i = (int)MMApplicationContext.getResources().getDimension(a.c.rubbish_layout_height);
     int j = (int)MMApplicationContext.getResources().getDimension(a.c.rubbish_layout_width);
-    int k = ax.aB(this.fkE.hou().getContext());
-    this.flM.set((getBoardRect().width() - j) / 2, getBoardRect().height() - i - k, getBoardRect().width() - k, (j + getBoardRect().width()) / 2);
-    if (this.flK)
+    int k = bf.bk(this.hoR.iPo().getContext());
+    this.hpZ.set((getBoardRect().width() - j) / 2, getBoardRect().height() - i - k, getBoardRect().width() - k, (j + getBoardRect().width()) / 2);
+    if (this.hpX)
     {
-      Log.i("MicroMsg.EmojiAndTextArtist", "onAlive: isTimerCancel=%s", new Object[] { Boolean.valueOf(this.flK) });
+      Log.i("MicroMsg.EmojiAndTextArtist", "onAlive: isTimerCancel=%s", new Object[] { Boolean.valueOf(this.hpX) });
       this.mMainHandler.removeCallbacksAndMessages(null);
     }
     AppMethodBeat.o(9157);
@@ -276,28 +276,13 @@ public final class e
   {
     AppMethodBeat.i(9160);
     super.onDestroy();
-    this.flK = true;
-    acQ();
+    this.hpX = true;
+    aEQ();
     this.mMainHandler.removeCallbacksAndMessages(null);
     AppMethodBeat.o(9160);
   }
   
-  public final void onDraw(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(9158);
-    e(paramCanvas);
-    Object localObject = (d)acA();
-    if (localObject != null)
-    {
-      localObject = ((d)localObject).arH();
-      if ((localObject != null) && (((com.tencent.mm.ab.c)localObject).jaA)) {
-        ((com.tencent.mm.ab.c)localObject).draw(paramCanvas);
-      }
-    }
-    AppMethodBeat.o(9158);
-  }
-  
-  public final boolean q(MotionEvent paramMotionEvent)
+  public final boolean onDispatchTouch(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9159);
     boolean bool;
@@ -307,17 +292,17 @@ public final class e
     case 3: 
     case 4: 
     default: 
-      super.q(paramMotionEvent);
-      bool = this.flI;
+      super.onDispatchTouch(paramMotionEvent);
+      bool = this.hpV;
       AppMethodBeat.o(9159);
       return bool;
     case 0: 
-      acQ();
-      localObject1 = z(paramMotionEvent.getX(), paramMotionEvent.getY());
+      aEQ();
+      localObject1 = af(paramMotionEvent.getX(), paramMotionEvent.getY());
       if (localObject1 == null)
       {
-        this.flI = false;
-        if (acA() == null) {
+        this.hpV = false;
+        if (aEA() == null) {
           bool = false;
         }
       }
@@ -325,35 +310,35 @@ public final class e
     }
     while (bool)
     {
-      acO();
-      dq(false);
-      acH();
+      aEO();
+      ec(false);
+      aEH();
       break;
-      localObject1 = ((d)acA()).arH();
+      localObject1 = ((d)aEA()).aLD();
       if (localObject1 != null)
       {
-        bool = ((com.tencent.mm.ab.c)localObject1).jaA;
+        bool = ((com.tencent.mm.ab.c)localObject1).lCv;
         continue;
-        bool = ((com.tencent.mm.ab.c)localObject1).kag;
-        acO();
-        this.flI = true;
+        bool = ((com.tencent.mm.ab.c)localObject1).mAj;
+        aEO();
+        this.hpV = true;
         ((com.tencent.mm.ab.c)localObject1).setSelected(true);
-        ((com.tencent.mm.ab.c)localObject1).kag = bool;
-        ((com.tencent.mm.ab.c)localObject1).kad.set(((com.tencent.mm.ab.c)localObject1).kab);
-        ((d)acA()).b((com.tencent.mm.ab.c)localObject1);
-        dq(true);
-        acH();
+        ((com.tencent.mm.ab.c)localObject1).mAj = bool;
+        ((com.tencent.mm.ab.c)localObject1).mAg.set(((com.tencent.mm.ab.c)localObject1).mAe);
+        ((d)aEA()).b((com.tencent.mm.ab.c)localObject1);
+        ec(true);
+        aEH();
         break;
-        if (this.flI)
+        if (this.hpV)
         {
-          this.flN = r(paramMotionEvent);
-          this.flP = ((int)Math.toDegrees(Math.atan2(s(paramMotionEvent)[0], s(paramMotionEvent)[1])));
-          localObject1 = ((d)acA()).arH();
-          if ((localObject1 == null) || (!((com.tencent.mm.ab.c)localObject1).jaA)) {
+          this.hqa = q(paramMotionEvent);
+          this.hqc = ((int)Math.toDegrees(Math.atan2(r(paramMotionEvent)[0], r(paramMotionEvent)[1])));
+          localObject1 = ((d)aEA()).aLD();
+          if ((localObject1 == null) || (!((com.tencent.mm.ab.c)localObject1).lCv)) {
             break;
           }
-          this.flQ = ((com.tencent.mm.ab.c)localObject1).mRotation;
-          this.flO = ((com.tencent.mm.ab.c)localObject1).eYO;
+          this.hqd = ((com.tencent.mm.ab.c)localObject1).mRotation;
+          this.hqb = ((com.tencent.mm.ab.c)localObject1).hco;
           break;
         }
         localObject1 = new int[2];
@@ -362,65 +347,65 @@ public final class e
           localObject1[0] = ((int)(paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2);
           localObject1[1] = ((int)(paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2);
         }
-        localObject1 = z(localObject1[0], localObject1[1]);
+        localObject1 = af(localObject1[0], localObject1[1]);
         if (localObject1 == null) {
           break;
         }
-        bool = ((com.tencent.mm.ab.c)localObject1).kag;
-        acO();
-        ((com.tencent.mm.ab.c)localObject1).kag = bool;
-        this.flI = true;
+        bool = ((com.tencent.mm.ab.c)localObject1).mAj;
+        aEO();
+        ((com.tencent.mm.ab.c)localObject1).mAj = bool;
+        this.hpV = true;
         ((com.tencent.mm.ab.c)localObject1).setSelected(true);
-        ((d)acA()).b((com.tencent.mm.ab.c)localObject1);
-        this.flN = r(paramMotionEvent);
-        this.flP = ((int)Math.toDegrees(Math.atan2(s(paramMotionEvent)[0], s(paramMotionEvent)[1])));
-        if ((localObject1 != null) && (((com.tencent.mm.ab.c)localObject1).jaA))
+        ((d)aEA()).b((com.tencent.mm.ab.c)localObject1);
+        this.hqa = q(paramMotionEvent);
+        this.hqc = ((int)Math.toDegrees(Math.atan2(r(paramMotionEvent)[0], r(paramMotionEvent)[1])));
+        if ((localObject1 != null) && (((com.tencent.mm.ab.c)localObject1).lCv))
         {
-          this.flQ = ((com.tencent.mm.ab.c)localObject1).mRotation;
-          this.flO = ((com.tencent.mm.ab.c)localObject1).eYO;
+          this.hqd = ((com.tencent.mm.ab.c)localObject1).mRotation;
+          this.hqb = ((com.tencent.mm.ab.c)localObject1).hco;
         }
-        dq(true);
-        acH();
+        ec(true);
+        aEH();
         break;
-        this.flR = true;
+        this.hqe = true;
         break;
-        if (this.flR)
+        if (this.hqe)
         {
-          this.flR = false;
+          this.hqe = false;
           AppMethodBeat.o(9159);
           return true;
         }
-        if ((!this.flI) || (!v(paramMotionEvent))) {
+        if ((!this.hpV) || (!u(paramMotionEvent))) {
           break;
         }
-        if ((!this.flJ) && (this.flT != null)) {
-          this.flT.onShow();
+        if ((!this.hpW) && (this.hqg != null)) {
+          this.hqg.onShow();
         }
-        localObject1 = t(paramMotionEvent);
+        localObject1 = s(paramMotionEvent);
         float f1 = 1.0F;
         int i = 0;
         if (paramMotionEvent.getPointerCount() > 1)
         {
-          if (0.0F != this.flN) {
-            f1 = r(paramMotionEvent) / this.flN;
+          if (0.0F != this.hqa) {
+            f1 = q(paramMotionEvent) / this.hqa;
           }
-          i = this.flP - (int)Math.toDegrees(Math.atan2(s(paramMotionEvent)[0], s(paramMotionEvent)[1]));
+          i = this.hqc - (int)Math.toDegrees(Math.atan2(r(paramMotionEvent)[0], r(paramMotionEvent)[1]));
         }
         for (;;)
         {
           float f2 = localObject1[0];
           float f3 = localObject1[1];
-          float f4 = this.flO;
-          int j = this.flQ;
+          float f4 = this.hqb;
+          int j = this.hqd;
           int k = paramMotionEvent.getPointerCount();
-          localObject1 = ((d)acA()).arH();
+          localObject1 = ((d)aEA()).aLD();
           Object localObject3;
           Object localObject2;
           if (localObject1 != null)
           {
-            this.auf.reset();
-            this.auf.postRotate(-getRotation());
-            localObject3 = this.auf;
+            this.ciC.reset();
+            this.ciC.postRotate(-getRotation());
+            localObject3 = this.ciC;
             localObject2 = new Matrix();
             ((Matrix)localObject3).invert((Matrix)localObject2);
             localObject3 = new float[2];
@@ -432,30 +417,30 @@ public final class e
             }
             ((com.tencent.mm.ab.c)localObject1).b(0.0F, 0.0F, f1 * f4, (i + j) % 360);
             label777:
-            ((com.tencent.mm.ab.c)localObject1).aFR();
-            localObject2 = ((com.tencent.mm.ab.c)localObject1).kab;
-            localObject2 = y(((PointF)localObject2).x, ((PointF)localObject2).y);
-            if (this.flM.top > localObject2[1]) {
+            ((com.tencent.mm.ab.c)localObject1).aYR();
+            localObject2 = ((com.tencent.mm.ab.c)localObject1).mAe;
+            localObject2 = ae(((PointF)localObject2).x, ((PointF)localObject2).y);
+            if (this.hpZ.top > localObject2[1]) {
               break label922;
             }
-            if (this.flT != null) {
-              this.flT.at((localObject2[1] - this.flM.top) / this.flM.height());
+            if (this.hqg != null) {
+              this.hqg.bo((localObject2[1] - this.hpZ.top) / this.hpZ.height());
             }
           }
-          for (this.flU = true;; this.flU = false)
+          for (this.hqh = true;; this.hqh = false)
           {
             if ((localObject1 instanceof f)) {
-              ((com.tencent.mm.ab.c)localObject1).kag = false;
+              ((com.tencent.mm.ab.c)localObject1).mAj = false;
             }
-            this.flJ = true;
-            acH();
+            this.hpW = true;
+            aEH();
             break;
             label890:
             ((com.tencent.mm.ab.c)localObject1).b(localObject3[0] / getScale(), localObject3[1] / getScale(), 0.0F, ((com.tencent.mm.ab.c)localObject1).mRotation);
             break label777;
             label922:
-            if ((this.flT != null) && (this.flU)) {
-              this.flT.aJe();
+            if ((this.hqg != null) && (this.hqh)) {
+              this.hqg.bcb();
             }
           }
           if (!isAlive())
@@ -464,64 +449,64 @@ public final class e
             AppMethodBeat.o(9159);
             return false;
           }
-          if (acA() == null)
+          if (aEA() == null)
           {
             Log.e("MicroMsg.EmojiAndTextArtist", "[getCache] is null!");
             AppMethodBeat.o(9159);
             return false;
           }
-          localObject1 = ((d)acA()).arH();
+          localObject1 = ((d)aEA()).aLD();
           if (localObject1 != null)
           {
-            if (!getAliveRect().contains((int)((com.tencent.mm.ab.c)localObject1).kab.x, (int)((com.tencent.mm.ab.c)localObject1).kab.y))
+            if (!getAliveRect().contains((int)((com.tencent.mm.ab.c)localObject1).mAe.x, (int)((com.tencent.mm.ab.c)localObject1).mAe.y))
             {
-              this.flS.eYG = true;
-              localObject2 = this.flS;
-              ((com.tencent.mm.c.c)localObject2).eYI = ((com.tencent.mm.ab.c)localObject1);
-              ((com.tencent.mm.c.c)localObject2).eYx = (((com.tencent.mm.ab.c)localObject1).kad.x - ((com.tencent.mm.ab.c)localObject1).kab.x);
-              ((com.tencent.mm.c.c)localObject2).eYy = (((com.tencent.mm.ab.c)localObject1).kad.y - ((com.tencent.mm.ab.c)localObject1).kab.y);
-              ((com.tencent.mm.c.c)localObject2).eYJ = ((com.tencent.mm.ab.c)localObject1).jZY;
-              localObject2 = this.flS;
-              if (((com.tencent.mm.c.b)localObject2).eYG)
+              this.hqf.hcg = true;
+              localObject2 = this.hqf;
+              ((com.tencent.mm.c.c)localObject2).hci = ((com.tencent.mm.ab.c)localObject1);
+              ((com.tencent.mm.c.c)localObject2).hbX = (((com.tencent.mm.ab.c)localObject1).mAg.x - ((com.tencent.mm.ab.c)localObject1).mAe.x);
+              ((com.tencent.mm.c.c)localObject2).hbY = (((com.tencent.mm.ab.c)localObject1).mAg.y - ((com.tencent.mm.ab.c)localObject1).mAe.y);
+              ((com.tencent.mm.c.c)localObject2).hcj = ((com.tencent.mm.ab.c)localObject1).mAb;
+              localObject2 = this.hqf;
+              if (((com.tencent.mm.c.b)localObject2).hcg)
               {
-                ((com.tencent.mm.c.c)localObject2).eYu = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, ((com.tencent.mm.c.c)localObject2).eYy }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, ((com.tencent.mm.c.c)localObject2).eYx }) });
-                ((com.tencent.mm.c.c)localObject2).eYu.addUpdateListener(new c.1((com.tencent.mm.c.c)localObject2));
-                ((com.tencent.mm.c.c)localObject2).eYu.addListener(new c.2((com.tencent.mm.c.c)localObject2));
-                ((com.tencent.mm.c.c)localObject2).eYu.setInterpolator(new LinearInterpolator());
-                ((com.tencent.mm.c.c)localObject2).eYu.setDuration(100L);
-                ((com.tencent.mm.c.c)localObject2).eYu.start();
+                ((com.tencent.mm.c.c)localObject2).hbU = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, ((com.tencent.mm.c.c)localObject2).hbY }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, ((com.tencent.mm.c.c)localObject2).hbX }) });
+                ((com.tencent.mm.c.c)localObject2).hbU.addUpdateListener(new c.1((com.tencent.mm.c.c)localObject2));
+                ((com.tencent.mm.c.c)localObject2).hbU.addListener(new c.2((com.tencent.mm.c.c)localObject2));
+                ((com.tencent.mm.c.c)localObject2).hbU.setInterpolator(new LinearInterpolator());
+                ((com.tencent.mm.c.c)localObject2).hbU.setDuration(100L);
+                ((com.tencent.mm.c.c)localObject2).hbU.start();
               }
             }
             if ((localObject1 instanceof f))
             {
               localObject2 = (f)localObject1;
-              if ((!((com.tencent.mm.ab.c)localObject2).jaA) || (!((com.tencent.mm.ab.c)localObject2).kag)) {
+              if ((!((com.tencent.mm.ab.c)localObject2).lCv) || (!((com.tencent.mm.ab.c)localObject2).mAj)) {
                 break label1451;
               }
-              if (this.flT != null) {
-                this.flT.a((f)localObject2);
+              if (this.hqg != null) {
+                this.hqg.a((f)localObject2);
               }
             }
           }
           for (;;)
           {
-            localObject2 = ((com.tencent.mm.ab.c)localObject1).kab;
-            localObject2 = y(((PointF)localObject2).x, ((PointF)localObject2).y);
-            Log.i("MicroMsg.EmojiAndTextArtist", "mRubbishRect:%s pointF:%s", new Object[] { this.flM, Float.valueOf(localObject2[1]) });
-            if ((((com.tencent.mm.ab.c)localObject1).jaA) && (this.flM.top <= localObject2[1]) && (this.flI) && (this.flT != null))
+            localObject2 = ((com.tencent.mm.ab.c)localObject1).mAe;
+            localObject2 = ae(((PointF)localObject2).x, ((PointF)localObject2).y);
+            Log.i("MicroMsg.EmojiAndTextArtist", "mRubbishRect:%s pointF:%s", new Object[] { this.hpZ, Float.valueOf(localObject2[1]) });
+            if ((((com.tencent.mm.ab.c)localObject1).lCv) && (this.hpZ.top <= localObject2[1]) && (this.hpV) && (this.hqg != null))
             {
-              ((d)acA()).arG();
-              acH();
+              ((d)aEA()).aLC();
+              aEH();
             }
-            acP();
-            if ((this.flJ) && (this.flT != null)) {
-              this.flT.onHide();
+            aEP();
+            if ((this.hpW) && (this.hqg != null)) {
+              this.hqg.onHide();
             }
-            this.flJ = false;
+            this.hpW = false;
             break;
             label1451:
-            if (((com.tencent.mm.ab.c)localObject2).jaA) {
-              ((com.tencent.mm.ab.c)localObject2).kag = true;
+            if (((com.tencent.mm.ab.c)localObject2).lCv) {
+              ((com.tencent.mm.ab.c)localObject2).mAj = true;
             }
           }
           f1 = 1.0F;
@@ -531,47 +516,62 @@ public final class e
     }
   }
   
+  public final void onDraw(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(9158);
+    h(paramCanvas);
+    Object localObject = (d)aEA();
+    if (localObject != null)
+    {
+      localObject = ((d)localObject).aLD();
+      if ((localObject != null) && (((com.tencent.mm.ab.c)localObject).lCv)) {
+        ((com.tencent.mm.ab.c)localObject).draw(paramCanvas);
+      }
+    }
+    AppMethodBeat.o(9158);
+  }
+  
   static final class a
     implements Runnable
   {
-    WeakReference<? extends e> flV;
+    WeakReference<? extends e> hqi;
     
     public a(e parame)
     {
-      AppMethodBeat.i(259752);
-      this.flV = new WeakReference(parame);
-      AppMethodBeat.o(259752);
+      AppMethodBeat.i(231838);
+      this.hqi = new WeakReference(parame);
+      AppMethodBeat.o(231838);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(259753);
+      AppMethodBeat.i(231844);
       Log.d("MicroMsg.EmojiAndTextArtist", "cancel focus!");
-      e locale = (e)this.flV.get();
+      e locale = (e)this.hqi.get();
       if (locale == null)
       {
-        AppMethodBeat.o(259753);
+        AppMethodBeat.o(231844);
         return;
       }
-      if (locale.acA() == null)
+      if (locale.aEA() == null)
       {
-        AppMethodBeat.o(259753);
+        AppMethodBeat.o(231844);
         return;
       }
-      com.tencent.mm.ab.c localc = ((d)locale.acA()).arH();
-      if ((localc != null) && (localc.jaA))
+      com.tencent.mm.ab.c localc = ((d)locale.aEA()).aLD();
+      if ((localc != null) && (localc.lCv))
       {
         localc.setSelected(false);
-        locale.dq(false);
-        locale.acH();
+        locale.ec(false);
+        locale.aEH();
       }
-      AppMethodBeat.o(259753);
+      AppMethodBeat.o(231844);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.e.e
  * JD-Core Version:    0.7.0.1
  */

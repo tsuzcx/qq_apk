@@ -6,72 +6,80 @@ import com.tencent.mm.plugin.hld.f.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
-import java.util.Collection;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder;", "symbolTypeList", "", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypeData;", "listener", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder$ISymbolTypesViewListener;", "([Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypeData;Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder$ISymbolTypesViewListener;)V", "currentSelectItem", "", "mListener", "[Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypeData;", "viewHolderList", "Ljava/util/ArrayList;", "getItemCount", "", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "p1", "selectItemByTypeName", "typeName", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder;", "symbolTypeList", "", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypeData;", "listener", "Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder$ISymbolTypesViewListener;", "([Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypeData;Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesViewHolder$ISymbolTypesViewListener;)V", "currentSelectItem", "", "mListener", "[Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypeData;", "viewHolderList", "Ljava/util/ArrayList;", "getItemCount", "", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "p1", "selectItemByTypeName", "typeName", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
   extends RecyclerView.a<h>
 {
-  public static final a DFy;
-  private final ArrayList<h> AXn;
-  private String DFv;
-  private final h.a DFw;
-  private final f[] DFx;
+  public static final g.a Jxc;
+  private final ArrayList<h> GyR;
+  private final f[] Jxd;
+  private String Jxe;
+  private final h.a Jxf;
   
   static
   {
-    AppMethodBeat.i(216635);
-    DFy = new a((byte)0);
-    AppMethodBeat.o(216635);
+    AppMethodBeat.i(312141);
+    Jxc = new g.a((byte)0);
+    AppMethodBeat.o(312141);
   }
   
   public g(f[] paramArrayOff, h.a parama)
   {
-    AppMethodBeat.i(216634);
-    this.DFx = paramArrayOff;
-    paramArrayOff = b.DGL;
-    this.DFv = b.eFU();
-    this.DFw = parama;
-    this.AXn = new ArrayList(this.DFx.length);
-    AppMethodBeat.o(216634);
+    AppMethodBeat.i(312134);
+    this.Jxd = paramArrayOff;
+    paramArrayOff = b.Jyf;
+    this.Jxe = b.fNN();
+    this.Jxf = parama;
+    this.GyR = new ArrayList(this.Jxd.length);
+    AppMethodBeat.o(312134);
   }
   
-  public final void aLC(String paramString)
+  public final void aIu(String paramString)
   {
-    AppMethodBeat.i(216633);
-    p.k(paramString, "typeName");
-    label148:
+    AppMethodBeat.i(312158);
+    s.u(paramString, "typeName");
+    label163:
     for (;;)
     {
       try
       {
-        this.DFv = paramString;
-        int j = ((Collection)this.AXn).size();
-        int i = 0;
-        if (i < j)
+        this.Jxe = paramString;
+        int k = this.GyR.size() - 1;
+        int j;
+        if (k >= 0)
         {
-          h localh = (h)this.AXn.get(i);
-          String str3 = this.DFv;
-          Object localObject = this.DFx[i];
-          if (localObject == null) {
-            break label148;
+          i = 0;
+          j = i + 1;
+          h localh = (h)this.GyR.get(i);
+          String str2 = this.Jxe;
+          Object localObject = this.Jxd[i];
+          if (localObject == null)
+          {
+            localObject = "";
+            localh.wL(Util.isEqual(str2, (String)localObject));
+            if (j <= k) {
+              break label163;
+            }
+            AppMethodBeat.o(312158);
+            return;
           }
-          String str2 = ((f)localObject).typeName;
-          localObject = str2;
-          if (str2 == null) {
-            break label148;
+          String str1 = ((f)localObject).typeName;
+          localObject = str1;
+          if (str1 != null) {
+            continue;
           }
-          localh.sF(Util.isEqual(str3, (String)localObject));
-          i += 1;
+          localObject = "";
+          continue;
         }
-        String str1 = "";
+        int i = j;
       }
       catch (Exception localException)
       {
         Log.e("WxIme.ImeSymbolTypesAdapter", "selectItemByTypeName " + paramString + ' ' + localException.getMessage());
-        AppMethodBeat.o(216633);
+        AppMethodBeat.o(312158);
         return;
       }
     }
@@ -79,11 +87,8 @@ public final class g
   
   public final int getItemCount()
   {
-    return this.DFx.length;
+    return this.Jxd.length;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSymbolTypesAdapter$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
 }
 
 

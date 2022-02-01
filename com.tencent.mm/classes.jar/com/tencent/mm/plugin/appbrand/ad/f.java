@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.appbrand.ad;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -14,7 +13,7 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import com.tencent.luggage.k.j;
+import com.tencent.luggage.l.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.page.capsulebar.e;
@@ -25,31 +24,30 @@ import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
-@SuppressLint({"ViewConstructor"})
 public class f
   extends FrameLayout
 {
-  private AppBrandRuntime nAt;
-  private FrameLayout nAu;
-  private LinearLayout nAv;
-  public a nAw;
-  private a nAx;
+  private FrameLayout qzA;
+  private LinearLayout qzB;
+  public a qzC;
+  private a qzD;
+  private AppBrandRuntime qzz;
   
   public f(Context paramContext, AppBrandRuntime paramAppBrandRuntime)
   {
     super(paramContext);
     AppMethodBeat.i(134634);
-    this.nAt = paramAppBrandRuntime;
-    if (j.cEc.isDarkMode())
+    this.qzz = paramAppBrandRuntime;
+    if (k.exm.isDarkMode())
     {
       setBackgroundColor(-16777216);
       setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-      this.nAu = new FrameLayout(paramContext);
-      addView(this.nAu, new ViewGroup.LayoutParams(-1, -1));
-      this.nAv = new LinearLayout(paramContext);
-      this.nAv.setOrientation(1);
-      addView(this.nAv, new ViewGroup.LayoutParams(-1, -2));
-      if ((this.nAv.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
+      this.qzA = new FrameLayout(paramContext);
+      addView(this.qzA, new ViewGroup.LayoutParams(-1, -1));
+      this.qzB = new LinearLayout(paramContext);
+      this.qzB.setOrientation(1);
+      addView(this.qzB, new ViewGroup.LayoutParams(-1, -2));
+      if ((this.qzB.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
       {
         paramContext = paramAppBrandRuntime.getWindowAndroid().getStatusBar();
         if (paramContext != null) {
@@ -60,7 +58,7 @@ public class f
     label185:
     for (int i = 0;; i = paramContext.height)
     {
-      ((ViewGroup.MarginLayoutParams)this.nAv.getLayoutParams()).topMargin = i;
+      ((ViewGroup.MarginLayoutParams)this.qzB.getLayoutParams()).topMargin = i;
       Log.i("MicroMsg.AppBrandRuntimeAdViewContainer[AppBrandSplashAd]", "fakeActionBarLayout topMargin=%d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(134634);
       return;
@@ -69,43 +67,7 @@ public class f
     }
   }
   
-  private void a(View paramView, int paramInt1, int paramInt2, final Runnable paramRunnable)
-  {
-    AppMethodBeat.i(134648);
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramView = ViewAnimationUtils.createCircularReveal(paramView, paramInt1, paramInt2, (float)Math.hypot(paramInt1, paramInt2), 0.0F);
-      paramView.addListener(new AnimatorListenerAdapter()
-      {
-        public final void onAnimationEnd(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(245680);
-          if (paramRunnable != null) {
-            paramRunnable.run();
-          }
-          AppMethodBeat.o(245680);
-        }
-      });
-      paramView.setDuration(300L).setInterpolator(new DecelerateInterpolator());
-      paramView.start();
-      AppMethodBeat.o(134648);
-      return;
-    }
-    paramRunnable.run();
-    AppMethodBeat.o(134648);
-  }
-  
-  private void ack(String paramString)
-  {
-    AppMethodBeat.i(134647);
-    setVisibility(8);
-    if (this.nAx != null) {
-      this.nAx.acl(paramString);
-    }
-    AppMethodBeat.o(134647);
-  }
-  
-  private void p(boolean paramBoolean, final String paramString)
+  private void C(boolean paramBoolean, final String paramString)
   {
     AppMethodBeat.i(134646);
     Log.i("MicroMsg.AppBrandRuntimeAdViewContainer[AppBrandSplashAd]", "hideOnMainThread, animation:%s, source:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
@@ -115,9 +77,9 @@ public class f
     if (paramBoolean)
     {
       localAppBrandOptionButton = null;
-      if ((this.nAt != null) && (this.nAt.ntG != null))
+      if ((this.qzz != null) && (this.qzz.qsp != null))
       {
-        localAppBrandOptionButton = this.nAt.ntG.bEB();
+        localAppBrandOptionButton = this.qzz.qsp.cdM();
         if (localAppBrandOptionButton == null) {
           break label194;
         }
@@ -145,16 +107,16 @@ public class f
         });
         AppMethodBeat.o(134646);
         return;
-        if (this.nAw == null) {
+        if (this.qzC == null) {
           break;
         }
-        localAppBrandOptionButton = this.nAw.bEB();
+        localAppBrandOptionButton = this.qzC.cdM();
         break;
       }
-      ack(paramString);
+      UK(paramString);
       AppMethodBeat.o(134646);
       return;
-      ack(paramString);
+      UK(paramString);
       AppMethodBeat.o(134646);
       return;
       label194:
@@ -162,30 +124,43 @@ public class f
     }
   }
   
-  public final void bEK()
+  private void UK(String paramString)
   {
-    AppMethodBeat.i(134635);
-    this.nAv.removeAllViews();
-    this.nAw = new a(getContext());
-    this.nAv.addView(this.nAw.getActionView());
-    this.nAw.setFullscreenMode(true);
-    this.nAw.hi(false);
-    this.nAw.hj(false);
-    this.nAw.hk(false);
-    this.nAw.setBackgroundColor(0);
-    AppMethodBeat.o(134635);
-  }
-  
-  public final void bEL()
-  {
-    AppMethodBeat.i(134641);
-    if (this.nAw != null) {
-      this.nAw.hk(true);
+    AppMethodBeat.i(134647);
+    setVisibility(8);
+    if (this.qzD != null) {
+      this.qzD.UL(paramString);
     }
-    AppMethodBeat.o(134641);
+    AppMethodBeat.o(134647);
   }
   
-  public final void bEM()
+  private void a(View paramView, int paramInt1, int paramInt2, final Runnable paramRunnable)
+  {
+    AppMethodBeat.i(134648);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramView = ViewAnimationUtils.createCircularReveal(paramView, paramInt1, paramInt2, (float)Math.hypot(paramInt1, paramInt2), 0.0F);
+      paramView.addListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(321280);
+          if (paramRunnable != null) {
+            paramRunnable.run();
+          }
+          AppMethodBeat.o(321280);
+        }
+      });
+      paramView.setDuration(300L).setInterpolator(new DecelerateInterpolator());
+      paramView.start();
+      AppMethodBeat.o(134648);
+      return;
+    }
+    paramRunnable.run();
+    AppMethodBeat.o(134648);
+  }
+  
+  private void cdX()
   {
     AppMethodBeat.i(134644);
     setVisibility(0);
@@ -193,17 +168,12 @@ public class f
     AppMethodBeat.o(134644);
   }
   
-  public ViewGroup getContentContainer()
-  {
-    return this.nAu;
-  }
-  
-  public final void o(final boolean paramBoolean, final String paramString)
+  public final void B(final boolean paramBoolean, final String paramString)
   {
     AppMethodBeat.i(134645);
     if (MMHandlerThread.isMainThread())
     {
-      p(paramBoolean, paramString);
+      C(paramBoolean, paramString);
       AppMethodBeat.o(134645);
       return;
     }
@@ -219,11 +189,60 @@ public class f
     AppMethodBeat.o(134645);
   }
   
+  public final void cdV()
+  {
+    AppMethodBeat.i(134635);
+    this.qzB.removeAllViews();
+    this.qzC = new a(getContext());
+    this.qzB.addView(this.qzC.getActionView());
+    this.qzC.setFullscreenMode(true);
+    this.qzC.ia(false);
+    this.qzC.ib(false);
+    this.qzC.hZ(false);
+    this.qzC.setBackgroundColor(0);
+    AppMethodBeat.o(134635);
+  }
+  
+  public final void cdW()
+  {
+    AppMethodBeat.i(134641);
+    if (this.qzC != null) {
+      this.qzC.hZ(true);
+    }
+    AppMethodBeat.o(134641);
+  }
+  
+  public final void cdY()
+  {
+    AppMethodBeat.i(321336);
+    if (MMHandlerThread.isMainThread())
+    {
+      setVisibility(8);
+      AppMethodBeat.o(321336);
+      return;
+    }
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(321278);
+        f.this.setVisibility(8);
+        AppMethodBeat.o(321278);
+      }
+    });
+    AppMethodBeat.o(321336);
+  }
+  
+  public ViewGroup getContentContainer()
+  {
+    return this.qzA;
+  }
+  
   public void setActionBarFullscreenMode(boolean paramBoolean)
   {
     AppMethodBeat.i(134636);
-    if (this.nAw != null) {
-      this.nAw.setFullscreenMode(paramBoolean);
+    if (this.qzC != null) {
+      this.qzC.setFullscreenMode(paramBoolean);
     }
     AppMethodBeat.o(134636);
   }
@@ -231,8 +250,8 @@ public class f
   public void setBackButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(134637);
-    if (this.nAw != null) {
-      this.nAw.setBackButtonClickListener(paramOnClickListener);
+    if (this.qzC != null) {
+      this.qzC.setBackButtonClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(134637);
   }
@@ -240,8 +259,8 @@ public class f
   public void setCloseButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(134639);
-    if (this.nAw != null) {
-      this.nAw.setCloseButtonClickListener(paramOnClickListener);
+    if (this.qzC != null) {
+      this.qzC.setCloseButtonClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(134639);
   }
@@ -249,22 +268,22 @@ public class f
   public void setForegroundStyle(boolean paramBoolean)
   {
     AppMethodBeat.i(134642);
-    if (this.nAw != null) {
-      this.nAw.nzU.setForegroundStyle(paramBoolean);
+    if (this.qzC != null) {
+      this.qzC.qyW.setForegroundStyle(paramBoolean);
     }
     AppMethodBeat.o(134642);
   }
   
   public void setOnHideListener(a parama)
   {
-    this.nAx = parama;
+    this.qzD = parama;
   }
   
   public void setOptionButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(134638);
-    if (this.nAw != null) {
-      this.nAw.nzU.setOptionButtonClickListener(paramOnClickListener);
+    if (this.qzC != null) {
+      this.qzC.qyW.setOptionButtonClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(134638);
   }
@@ -272,20 +291,41 @@ public class f
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(134640);
-    if (this.nAw != null) {
-      this.nAw.setMainTitle(paramString);
+    if (this.qzC != null) {
+      this.qzC.setMainTitle(paramString);
     }
     AppMethodBeat.o(134640);
   }
   
+  public final void show()
+  {
+    AppMethodBeat.i(134643);
+    if (MMHandlerThread.isMainThread())
+    {
+      cdX();
+      AppMethodBeat.o(134643);
+      return;
+    }
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(134630);
+        f.a(f.this);
+        AppMethodBeat.o(134630);
+      }
+    });
+    AppMethodBeat.o(134643);
+  }
+  
   public static abstract interface a
   {
-    public abstract void acl(String paramString);
+    public abstract void UL(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.f
  * JD-Core Version:    0.7.0.1
  */

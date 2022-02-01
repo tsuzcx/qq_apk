@@ -8,25 +8,25 @@ import com.tencent.mm.vending.f.a;
 
 public final class d
 {
-  private Looper YzQ;
-  private Handler YzR;
-  private byte[] YzS;
-  a YzT;
+  private Looper aguo;
+  private Handler agup;
+  private byte[] aguq;
+  a agur;
   private Handler mVendingHandler;
   private Looper mVendingLooper;
   
   public d(Looper paramLooper1, Looper paramLooper2)
   {
     AppMethodBeat.i(74945);
-    this.YzS = new byte[0];
-    this.YzQ = paramLooper1;
+    this.aguq = new byte[0];
+    this.aguo = paramLooper1;
     this.mVendingLooper = paramLooper2;
-    this.YzR = new Handler(this.YzQ)
+    this.agup = new Handler(this.aguo)
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(74959);
-        d.this.x(paramAnonymousMessage.what, paramAnonymousMessage.obj);
+        d.this.R(paramAnonymousMessage.what, paramAnonymousMessage.obj);
         AppMethodBeat.o(74959);
       }
     };
@@ -49,28 +49,28 @@ public final class d
     AppMethodBeat.o(74945);
   }
   
-  public final void x(int paramInt, Object paramObject)
+  public final void R(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(74946);
-    if (Looper.myLooper() == this.YzQ)
+    if (Looper.myLooper() == this.aguo)
     {
-      if (this.YzT == null)
+      if (this.agur == null)
       {
         a.w("Vending.VendingSync", "This call is pointless.", new Object[0]);
         AppMethodBeat.o(74946);
         return;
       }
-      this.YzT.iez();
-      synchronized (this.YzS)
+      this.agur.jJG();
+      synchronized (this.aguq)
       {
         this.mVendingHandler.sendMessageAtFrontOfQueue(this.mVendingHandler.obtainMessage(paramInt, paramObject));
       }
     }
     try
     {
-      this.YzS.wait();
+      this.aguq.wait();
       label79:
-      this.YzT.ieA();
+      this.agur.jJH();
       AppMethodBeat.o(74946);
       return;
       paramObject = finally;
@@ -78,7 +78,7 @@ public final class d
       throw paramObject;
       if (Looper.myLooper() == this.mVendingLooper)
       {
-        this.YzR.sendMessageAtFrontOfQueue(this.YzR.obtainMessage(paramInt, paramObject));
+        this.agup.sendMessageAtFrontOfQueue(this.agup.obtainMessage(paramInt, paramObject));
         AppMethodBeat.o(74946);
         return;
       }
@@ -93,16 +93,16 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void ieA();
+    public abstract void jJG();
     
-    public abstract void iez();
+    public abstract void jJH();
     
     public abstract void synchronizing(int paramInt, Object paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.vending.base.d
  * JD-Core Version:    0.7.0.1
  */

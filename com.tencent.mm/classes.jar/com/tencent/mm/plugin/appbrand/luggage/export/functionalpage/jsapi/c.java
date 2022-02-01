@@ -6,20 +6,20 @@ import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.WechatNative
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApiInterceptor;", "", "()V", "APIs", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApi;", "Lkotlin/collections/HashMap;", "TAG", "shouldIntercept", "", "context", "Landroid/content/Context;", "invokeArgs", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "appOpenBundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApiInterceptor;", "", "()V", "APIs", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApi;", "Lkotlin/collections/HashMap;", "TAG", "shouldIntercept", "", "context", "Landroid/content/Context;", "invokeArgs", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "appOpenBundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  private static final HashMap<String, b> qbA;
-  public static final c qbB;
+  public static final c tgA;
+  private static final HashMap<String, b> tgB;
   
   static
   {
     int i = 0;
-    AppMethodBeat.i(268239);
-    qbB = new c();
+    AppMethodBeat.i(320133);
+    tgA = new c();
     HashMap localHashMap = new HashMap();
     b localb1 = (b)new e();
     b localb2 = (b)new f();
@@ -27,34 +27,34 @@ public final class c
     while (i < 3)
     {
       b localb4 = new b[] { localb1, localb2, localb3 }[i];
-      ((Map)localHashMap).put(localb4.cba(), localb4);
+      ((Map)localHashMap).put(localb4.cBt(), localb4);
       i += 1;
     }
-    qbA = localHashMap;
-    AppMethodBeat.o(268239);
+    tgB = localHashMap;
+    AppMethodBeat.o(320133);
   }
   
   public static final boolean a(Context paramContext, WechatNativeExtraDataInvokeFunctionalPage paramWechatNativeExtraDataInvokeFunctionalPage, com.tencent.mm.plugin.appbrand.api.g paramg)
   {
-    AppMethodBeat.i(268236);
-    p.k(paramContext, "context");
-    p.k(paramWechatNativeExtraDataInvokeFunctionalPage, "invokeArgs");
-    p.k(paramg, "appOpenBundle");
-    paramContext = (b)((Map)qbA).get(paramWechatNativeExtraDataInvokeFunctionalPage.qbq);
+    AppMethodBeat.i(320126);
+    s.u(paramContext, "context");
+    s.u(paramWechatNativeExtraDataInvokeFunctionalPage, "invokeArgs");
+    s.u(paramg, "appOpenBundle");
+    paramContext = (b)((Map)tgB).get(paramWechatNativeExtraDataInvokeFunctionalPage.efV);
     if (paramContext == null)
     {
-      AppMethodBeat.o(268236);
+      AppMethodBeat.o(320126);
       return false;
     }
-    Log.i("MicroMsg.AppBrand.FunctionalDirectApiInterceptor", "intercept by directApi[" + paramContext.cba() + ']');
+    Log.i("MicroMsg.AppBrand.FunctionalDirectApiInterceptor", "intercept by directApi[" + paramContext.cBt() + ']');
     paramContext.a(paramWechatNativeExtraDataInvokeFunctionalPage, paramg);
-    AppMethodBeat.o(268236);
+    AppMethodBeat.o(320126);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.c
  * JD-Core Version:    0.7.0.1
  */

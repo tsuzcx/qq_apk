@@ -19,22 +19,22 @@ import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
-import com.tencent.i.a.a;
-import com.tencent.i.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
+import com.tencent.wwapi.a.a;
+import com.tencent.wwapi.a.b;
 
 public class H5Activity
   extends HellActivity
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(233482);
+    AppMethodBeat.i(210598);
     super.onCreate(paramBundle);
     if ((getIntent() == null) || (!getIntent().hasExtra("url")))
     {
       finish();
-      AppMethodBeat.o(233482);
+      AppMethodBeat.o(210598);
       return;
     }
     setContentView(a.b.wwapi_activity_h5_layout);
@@ -42,9 +42,9 @@ public class H5Activity
     {
       public void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(233458);
+        AppMethodBeat.i(210563);
         H5Activity.this.finish();
-        AppMethodBeat.o(233458);
+        AppMethodBeat.o(210563);
       }
     });
     paramBundle = (WebView)findViewById(a.a.web_view);
@@ -70,21 +70,20 @@ public class H5Activity
     {
       public void onDownloadStart(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4, long paramAnonymousLong)
       {
-        AppMethodBeat.i(233463);
+        AppMethodBeat.i(210559);
         try
         {
           paramAnonymousString2 = new Intent("android.intent.action.VIEW", Uri.parse(paramAnonymousString1));
           paramAnonymousString1 = H5Activity.this;
-          paramAnonymousString2 = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousString2);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousString1, paramAnonymousString2.aFh(), "com/tencent/wework/api/view/H5Activity$2", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousString1.startActivity((Intent)paramAnonymousString2.sf(0));
+          paramAnonymousString2 = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousString2);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousString1, paramAnonymousString2.aYi(), "com/tencent/wework/api/view/H5Activity$2", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousString1.startActivity((Intent)paramAnonymousString2.sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousString1, "com/tencent/wework/api/view/H5Activity$2", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          AppMethodBeat.o(233463);
           return;
         }
-        catch (Throwable paramAnonymousString1)
+        finally
         {
-          AppMethodBeat.o(233463);
+          AppMethodBeat.o(210559);
         }
       }
     });
@@ -92,32 +91,32 @@ public class H5Activity
     {
       public boolean onJsPrompt(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, JsPromptResult paramAnonymousJsPromptResult)
       {
-        AppMethodBeat.i(233467);
+        AppMethodBeat.i(210600);
         boolean bool = super.onJsPrompt(paramAnonymousWebView, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, paramAnonymousJsPromptResult);
-        AppMethodBeat.o(233467);
+        AppMethodBeat.o(210600);
         return bool;
       }
       
       public void onProgressChanged(WebView paramAnonymousWebView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(233464);
+        AppMethodBeat.i(210572);
         super.onProgressChanged(paramAnonymousWebView, paramAnonymousInt);
-        AppMethodBeat.o(233464);
+        AppMethodBeat.o(210572);
       }
       
       public void onReceivedIcon(WebView paramAnonymousWebView, Bitmap paramAnonymousBitmap)
       {
-        AppMethodBeat.i(233466);
+        AppMethodBeat.i(210592);
         super.onReceivedIcon(paramAnonymousWebView, paramAnonymousBitmap);
-        AppMethodBeat.o(233466);
+        AppMethodBeat.o(210592);
       }
       
       public void onReceivedTitle(WebView paramAnonymousWebView, String paramAnonymousString)
       {
-        AppMethodBeat.i(233465);
+        AppMethodBeat.i(210585);
         super.onReceivedTitle(paramAnonymousWebView, paramAnonymousString);
         ((TextView)H5Activity.this.findViewById(a.a.title)).setText(paramAnonymousString);
-        AppMethodBeat.o(233465);
+        AppMethodBeat.o(210585);
       }
     });
     paramBundle.setWebViewClient(new WebViewClient()
@@ -126,54 +125,54 @@ public class H5Activity
       
       public void onPageStarted(WebView paramAnonymousWebView, String paramAnonymousString, Bitmap paramAnonymousBitmap)
       {
-        AppMethodBeat.i(233476);
+        AppMethodBeat.i(210577);
         super.onPageStarted(paramAnonymousWebView, paramAnonymousString, paramAnonymousBitmap);
-        AppMethodBeat.o(233476);
+        AppMethodBeat.o(210577);
       }
       
       public void onReceivedError(WebView paramAnonymousWebView, int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(233478);
+        AppMethodBeat.i(210580);
         super.onReceivedError(paramAnonymousWebView, paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(233478);
+        AppMethodBeat.o(210580);
       }
       
       public void onReceivedHttpAuthRequest(WebView paramAnonymousWebView, HttpAuthHandler paramAnonymousHttpAuthHandler, String paramAnonymousString1, String paramAnonymousString2) {}
       
       public void onReceivedSslError(WebView paramAnonymousWebView, SslErrorHandler paramAnonymousSslErrorHandler, SslError paramAnonymousSslError)
       {
-        AppMethodBeat.i(233479);
+        AppMethodBeat.i(210587);
         super.onReceivedSslError(paramAnonymousWebView, paramAnonymousSslErrorHandler, paramAnonymousSslError);
-        AppMethodBeat.o(233479);
+        AppMethodBeat.o(210587);
       }
       
       public boolean shouldOverrideUrlLoading(WebView paramAnonymousWebView, String paramAnonymousString)
       {
-        AppMethodBeat.i(233474);
+        AppMethodBeat.i(210569);
         try
         {
           if (!Uri.parse(paramAnonymousString).getScheme().toLowerCase().contains("http"))
           {
-            Object localObject = new Intent("android.intent.action.VIEW", Uri.parse(paramAnonymousString));
+            Object localObject2 = new Intent("android.intent.action.VIEW", Uri.parse(paramAnonymousString));
             H5Activity localH5Activity = H5Activity.this;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-            com.tencent.mm.hellhoundlib.a.a.b(localH5Activity, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/wework/api/view/H5Activity$4", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            localH5Activity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+            localObject2 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject2);
+            com.tencent.mm.hellhoundlib.a.a.b(localH5Activity, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/wework/api/view/H5Activity$4", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            localH5Activity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0));
             com.tencent.mm.hellhoundlib.a.a.c(localH5Activity, "com/tencent/wework/api/view/H5Activity$4", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            AppMethodBeat.o(233474);
+            AppMethodBeat.o(210569);
             return true;
           }
         }
-        catch (Throwable localThrowable)
+        finally
         {
           boolean bool = super.shouldOverrideUrlLoading(paramAnonymousWebView, paramAnonymousString);
-          AppMethodBeat.o(233474);
+          AppMethodBeat.o(210569);
           return bool;
         }
       }
     });
     paramBundle.loadUrl(getIntent().getStringExtra("url"));
-    AppMethodBeat.o(233482);
+    AppMethodBeat.o(210598);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -184,7 +183,7 @@ public class H5Activity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wework.api.view.H5Activity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,145 @@
 package com.tencent.mm.plugin.appbrand.ab;
 
-import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.luggage.h.a.f;
+import com.tencent.luggage.h.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.n.o;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.af;
+import com.tencent.mm.plugin.appbrand.page.bd;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONObject;
 
-public abstract class c<_Model extends IAutoDBItem,  extends b>
-  extends MAutoStorage<_Model>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/skyline/AppBrandSkylinePageViewWC;", "Lcom/tencent/mm/plugin/appbrand/skyline/AbstractCustomRoutePageViewWC;", "()V", "rendererClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewRenderer;", "(Ljava/lang/Class;)V", "attachCommonConfig", "", "config", "Lorg/json/JSONObject;", "callback", "callbackId", "", "data", "", "forceUseExecutable", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntimeAddonExecutable;", "hide", "isSkyline", "", "onAppRouteDone", "onAttachToContainer", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPage;", "show", "supportInPageCustomRoute", "urlSupportInPageCustomRoute", "url", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class c
+  extends a
 {
-  private final ISQLiteDatabase qQJ;
-  
-  public c(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  public c()
   {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
-    this.qQJ = paramISQLiteDatabase;
+    this(b.class);
   }
   
-  public boolean delete(_Model param_Model, boolean paramBoolean, String... paramVarArgs)
+  public c(Class<? extends af> paramClass)
   {
-    String[] arrayOfString;
-    if (paramVarArgs != null)
-    {
-      arrayOfString = paramVarArgs;
-      if (paramVarArgs.length != 0) {}
-    }
-    else
-    {
-      arrayOfString = ((b)param_Model).getKeys();
-    }
-    return super.delete(param_Model, paramBoolean, arrayOfString);
+    super(paramClass);
   }
   
-  public boolean get(_Model param_Model, String... paramVarArgs)
+  public final void a(int paramInt, String paramString, o paramo)
   {
-    String[] arrayOfString;
-    if (paramVarArgs != null)
-    {
-      arrayOfString = paramVarArgs;
-      if (paramVarArgs.length != 0) {}
-    }
-    else
-    {
-      arrayOfString = ((b)param_Model).getKeys();
-    }
-    return super.get(param_Model, arrayOfString);
+    AppMethodBeat.i(316928);
+    ccO().a(paramInt, paramString, paramo);
+    AppMethodBeat.o(316928);
   }
   
-  public boolean insertNotify(_Model param_Model, boolean paramBoolean)
+  public final boolean asU()
   {
-    super.insertNotify(param_Model, paramBoolean);
-    return get(param_Model, new String[0]);
+    return true;
   }
   
-  public boolean updateNotify(_Model param_Model, boolean paramBoolean, String... paramVarArgs)
+  public final boolean cEI()
   {
-    String[] arrayOfString;
-    if (paramVarArgs != null)
+    return true;
+  }
+  
+  public final boolean cEJ()
+  {
+    return true;
+  }
+  
+  public final void cEb()
+  {
+    AppMethodBeat.i(316943);
+    Object localObject = this.tti;
+    if (localObject == null)
     {
-      arrayOfString = paramVarArgs;
-      if (paramVarArgs.length != 0) {}
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.luggage.skyline.wxa.SkylineViewRenderEngine");
+      AppMethodBeat.o(316943);
+      throw ((Throwable)localObject);
     }
-    else
+    localObject = ((f)localObject).ewr;
+    if (localObject != null)
     {
-      arrayOfString = ((b)param_Model).getKeys();
+      Log.i("SkylineView", "id:" + ((g)localObject).mId + " flutterView:" + ((g)localObject).ewb + " markReady");
+      ((g)localObject).ewf = true;
+      if (!((g)localObject).ewe)
+      {
+        ((g)localObject).ewb = com.tencent.luggage.h.a.evR.asR();
+        ViewGroup localViewGroup = ((g)localObject).ewc;
+        if (localViewGroup != null) {
+          localViewGroup.addView((View)((g)localObject).ewb, (ViewGroup.LayoutParams)((g)localObject).ewd);
+        }
+        ((g)localObject).vX();
+      }
     }
-    return super.updateNotify(param_Model, paramBoolean, arrayOfString);
+    AppMethodBeat.o(316943);
+  }
+  
+  public final void callback(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(316924);
+    ccO().callback(paramInt, paramString);
+    AppMethodBeat.o(316924);
+  }
+  
+  public final void f(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(316921);
+    s.u(paramJSONObject, "config");
+    super.f(paramJSONObject);
+    d(paramJSONObject, "webviewId", Integer.valueOf(getComponentId()));
+    AppMethodBeat.o(316921);
+  }
+  
+  public final void hide()
+  {
+    AppMethodBeat.i(316934);
+    super.hide();
+    this.tti.onBackground();
+    AppMethodBeat.o(316934);
+  }
+  
+  public final void show()
+  {
+    AppMethodBeat.i(316937);
+    super.show();
+    this.tti.onForeground();
+    AppMethodBeat.o(316937);
+  }
+  
+  public final void t(u paramu)
+  {
+    AppMethodBeat.i(316940);
+    s.u(paramu, "page");
+    super.t(paramu);
+    paramu = this.tti;
+    if (paramu == null)
+    {
+      paramu = new NullPointerException("null cannot be cast to non-null type com.tencent.luggage.skyline.wxa.SkylineViewRenderEngine");
+      AppMethodBeat.o(316940);
+      throw paramu;
+    }
+    paramu = ((f)paramu).ewr;
+    if ((paramu != null) && (paramu.ewe))
+    {
+      paramu.ewb = com.tencent.luggage.h.a.evR.asR();
+      ViewGroup localViewGroup = paramu.ewc;
+      if (localViewGroup != null) {
+        localViewGroup.addView((View)paramu.ewb, (ViewGroup.LayoutParams)paramu.ewd);
+      }
+      paramu.vX();
+    }
+    AppMethodBeat.o(316940);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ab.c
  * JD-Core Version:    0.7.0.1
  */

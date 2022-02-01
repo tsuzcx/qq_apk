@@ -14,14 +14,14 @@ final class LoginIndepPass$6
   {
     AppMethodBeat.i(128152);
     Log.d("MicroMsg.LoginIndepPass", "onSceneEnd, in runnable");
-    Object localObject = com.tencent.mm.plugin.account.sdk.a.mIG.bX(this.nes);
+    Object localObject = com.tencent.mm.plugin.account.sdk.a.pFn.cJ(this.qbg);
     ((Intent)localObject).addFlags(67108864);
-    LoginIndepPass localLoginIndepPass = this.nes;
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(localLoginIndepPass, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/account/ui/LoginIndepPass$14", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localLoginIndepPass.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    LoginIndepPass localLoginIndepPass = this.qbg;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localLoginIndepPass, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/account/ui/LoginIndepPass$14", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localLoginIndepPass.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localLoginIndepPass, "com/tencent/mm/plugin/account/ui/LoginIndepPass$14", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.nes.finish();
+    this.qbg.finish();
     AppMethodBeat.o(128152);
   }
 }

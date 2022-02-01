@@ -1,43 +1,45 @@
 package com.tencent.mm.plugin.record;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.re;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.st;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.plugin.record.a.a;
 import com.tencent.mm.plugin.record.a.e;
-import com.tencent.mm.plugin.record.b.i;
-import com.tencent.mm.plugin.record.b.j;
-import com.tencent.mm.plugin.record.b.k;
-import com.tencent.mm.plugin.record.b.l;
-import com.tencent.mm.plugin.record.b.o;
-import com.tencent.mm.plugin.record.b.s;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.record.model.RecordOperationListener;
+import com.tencent.mm.plugin.record.model.j;
+import com.tencent.mm.plugin.record.model.k;
+import com.tencent.mm.plugin.record.model.l;
+import com.tencent.mm.plugin.record.model.m;
+import com.tencent.mm.plugin.record.model.p;
+import com.tencent.mm.plugin.record.model.t;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.ab;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.af;
+import com.tencent.mm.vfs.u;
 
 public class PluginRecord
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c, a
 {
-  private com.tencent.mm.plugin.record.a.h HCm;
-  private e HCn;
-  private s HCo;
-  private j HCp;
-  private l HCq;
-  private com.tencent.mm.plugin.record.b.t HCr;
-  private IListener HCs;
+  private com.tencent.mm.plugin.record.a.h NzP;
+  private e NzQ;
+  private t NzR;
+  private k NzS;
+  private m NzT;
+  private RecordOperationListener NzU;
+  private IListener NzV;
   
   public PluginRecord()
   {
     AppMethodBeat.i(9429);
-    this.HCo = null;
-    this.HCp = null;
-    this.HCq = null;
-    this.HCr = new com.tencent.mm.plugin.record.b.t();
-    this.HCs = new IListener() {};
+    this.NzR = null;
+    this.NzS = null;
+    this.NzT = null;
+    this.NzU = new RecordOperationListener();
+    this.NzV = new IListener(com.tencent.mm.app.f.hfK) {};
     AppMethodBeat.o(9429);
   }
   
@@ -45,67 +47,67 @@ public class PluginRecord
   {
     AppMethodBeat.i(9430);
     Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.h.aHH();
-    localObject = new q(com.tencent.mm.kernel.h.aHG().kcB + "record/");
-    if ((!((q)localObject).ifE()) || (!((q)localObject).isDirectory()))
+    com.tencent.mm.kernel.h.baF();
+    localObject = new u(com.tencent.mm.kernel.h.baE().mCJ + "record/");
+    if ((!((u)localObject).jKS()) || (!((u)localObject).isDirectory()))
     {
       Log.d("MicroMsg.PluginRecord", "record stg dir[%s] not exsit, create it");
-      ((q)localObject).ifL();
+      ((u)localObject).jKY();
     }
     AppMethodBeat.o(9430);
   }
   
   public void configure(g paramg)
   {
-    AppMethodBeat.i(210531);
-    ab.aE("record", "record", 147);
-    AppMethodBeat.o(210531);
+    AppMethodBeat.i(305272);
+    af.aR("record", "record", 147);
+    AppMethodBeat.o(305272);
   }
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(210532);
-    if (!paramg.aIE())
+    AppMethodBeat.i(305274);
+    if (!paramg.bbA())
     {
-      AppMethodBeat.o(210532);
+      AppMethodBeat.o(305274);
       return;
     }
-    com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.record.a.f.class, new l());
-    AppMethodBeat.o(210532);
+    com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.record.a.f.class, new m());
+    AppMethodBeat.o(305274);
   }
   
-  public j getRecordMsgCDNService()
+  public k getRecordMsgCDNService()
   {
     AppMethodBeat.i(9435);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    if (this.HCp == null) {
-      this.HCp = new j();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (this.NzS == null) {
+      this.NzS = new k();
     }
-    j localj = this.HCp;
+    k localk = this.NzS;
     AppMethodBeat.o(9435);
-    return localj;
+    return localk;
   }
   
   public e getRecordMsgCDNStorage()
   {
-    return this.HCn;
+    return this.NzQ;
   }
   
   public com.tencent.mm.plugin.record.a.h getRecordMsgInfoStorage()
   {
-    return this.HCm;
+    return this.NzP;
   }
   
-  public s getRecordMsgService()
+  public t getRecordMsgService()
   {
     AppMethodBeat.i(9434);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    if (this.HCo == null) {
-      this.HCo = new s();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (this.NzR == null) {
+      this.NzR = new t();
     }
-    s locals = this.HCo;
+    t localt = this.NzR;
     AppMethodBeat.o(9434);
-    return locals;
+    return localt;
   }
   
   public com.tencent.mm.plugin.record.a.h getRecordMsgStorage()
@@ -119,11 +121,11 @@ public class PluginRecord
   public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(9431);
-    this.HCm = new o(com.tencent.mm.kernel.h.aHG().kcF);
-    this.HCn = new k(com.tencent.mm.kernel.h.aHG().kcF);
+    this.NzP = new p(com.tencent.mm.kernel.h.baE().mCN);
+    this.NzQ = new l(com.tencent.mm.kernel.h.baE().mCN);
     Log.i("MicroMsg.PluginRecord", "on account post reset");
-    EventCenter.instance.addListener(this.HCr);
-    EventCenter.instance.addListener(this.HCs);
+    this.NzU.alive();
+    this.NzV.alive();
     checkDir();
     getRecordMsgService().a(null, false);
     Log.i("MicroMsg.PluginRecord", "onAccountInitialized start recordMsgSendService");
@@ -134,17 +136,17 @@ public class PluginRecord
   {
     AppMethodBeat.i(9432);
     Log.d("MicroMsg.PluginRecord", "on account post release");
-    EventCenter.instance.removeListener(this.HCr);
-    EventCenter.instance.removeListener(this.HCs);
-    if (this.HCo != null)
+    this.NzU.dead();
+    this.NzV.dead();
+    if (this.NzR != null)
     {
-      s locals = this.HCo;
-      locals.finish();
-      com.tencent.mm.kernel.h.aHF().kcd.b(632, locals);
-      ((a)com.tencent.mm.kernel.h.ag(a.class)).getRecordMsgCDNStorage().b(locals);
+      t localt = this.NzR;
+      localt.finish();
+      com.tencent.mm.kernel.h.baD().mCm.b(632, localt);
+      ((a)com.tencent.mm.kernel.h.az(a.class)).getRecordMsgCDNStorage().b(localt);
     }
-    if (this.HCp != null) {
-      this.HCp.finish();
+    if (this.NzS != null) {
+      this.NzS.finish();
     }
     AppMethodBeat.o(9432);
   }
@@ -153,7 +155,7 @@ public class PluginRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.record.PluginRecord
  * JD-Core Version:    0.7.0.1
  */

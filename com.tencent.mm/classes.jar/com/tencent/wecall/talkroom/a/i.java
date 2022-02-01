@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.d.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.af;
 import com.tencent.pb.common.b.a.a.a.g;
@@ -19,11 +19,11 @@ public final class i
     try
     {
       localg.groupId = paramString;
-      localg.NOc = paramInt1;
-      localg.NOd = paramLong;
-      localg.bnA = paramInt2;
-      aAc(3);
-      aAd(c.iuI().bEi(paramString));
+      localg.UAZ = paramInt1;
+      localg.UBa = paramLong;
+      localg.reason = paramInt2;
+      aGP(3);
+      aGQ(c.ked().bGH(paramString));
       c(181, localg);
       AppMethodBeat.o(62526);
       return;
@@ -37,7 +37,7 @@ public final class i
     }
   }
   
-  public final Object dn(byte[] paramArrayOfByte)
+  public final Object dp(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62527);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -65,14 +65,14 @@ public final class i
     return 207;
   }
   
-  public final String ikF()
+  public final String jQW()
   {
     return "CsCmd.Cmd_V_CSRejectEnterVoiceRoomReq";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.i
  * JD-Core Version:    0.7.0.1
  */

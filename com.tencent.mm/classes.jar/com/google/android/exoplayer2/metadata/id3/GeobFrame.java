@@ -56,7 +56,7 @@ public final class GeobFrame
       return false;
     }
     paramObject = (GeobFrame)paramObject;
-    if ((x.h(this.mimeType, paramObject.mimeType)) && (x.h(this.filename, paramObject.filename)) && (x.h(this.description, paramObject.description)) && (Arrays.equals(this.data, paramObject.data)))
+    if ((x.p(this.mimeType, paramObject.mimeType)) && (x.p(this.filename, paramObject.filename)) && (x.p(this.description, paramObject.description)) && (Arrays.equals(this.data, paramObject.data)))
     {
       AppMethodBeat.o(92428);
       return true;

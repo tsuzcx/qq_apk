@@ -1,13 +1,17 @@
 package com.tencent.mm.plugin.setting;
 
 import android.content.Intent;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.by.c;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.br.c;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.f.o;
 import java.util.Map;
 
 final class d$3
@@ -15,18 +19,34 @@ final class d$3
 {
   d$3(d paramd) {}
   
-  public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, h.a parama)
+  public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, g.a parama)
   {
     AppMethodBeat.i(73748);
     if (paramMap != null)
     {
-      paramString = (String)paramMap.get(".sysmsg.showtrustedfriends.wording");
-      if (!Util.isNullOrNil(paramString))
+      if (!ab.bBX())
       {
-        paramMap = new Intent();
-        paramMap.putExtra(f.o.VSA, paramString);
-        c.b(MMApplicationContext.getContext(), "setting", ".ui.setting.SettingsTrustFriendUI", paramMap);
+        Log.i("MicroMsg.SubCoreSetting", "mWeChatServiceChooseListener, isWeChatUser = no.");
+        AppMethodBeat.o(73748);
+        return;
       }
+      paramString = (String)paramMap.get(".sysmsg.showWCOpenService.deviceid");
+      if (Util.isNullOrNil(paramString))
+      {
+        Log.i("MicroMsg.SubCoreSetting", "mWeChatServiceChooseListener, deviceIdStr = null.");
+        AppMethodBeat.o(73748);
+        return;
+      }
+      paramString = new String(Base64.decode(paramString.getBytes(), 0));
+      paramMap = new String(b.cX(q.aPg().getBytes()).axn(16).Op);
+      if ((!Util.isNullOrNil(paramString)) && (paramString.equals(paramMap)))
+      {
+        paramString = new Intent();
+        c.b(MMApplicationContext.getContext(), "setting", ".ui.setting.SettingsManageFindOtherServiceUI", paramString);
+        AppMethodBeat.o(73748);
+        return;
+      }
+      Log.i("MicroMsg.SubCoreSetting", "mWeChatServiceChooseListener, decodeDeviceId = " + paramString + ", localDeviceId = " + paramMap);
     }
     AppMethodBeat.o(73748);
   }

@@ -17,23 +17,23 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class VoiceHeaderPreference
   extends Preference
 {
-  private MMActivity iXq;
-  private ImageView jmf;
+  private ImageView lPb;
+  private MMActivity lzt;
   private String mTitle;
-  private TextView mrN;
+  private TextView pls;
   private TextView titleTv;
-  private View.OnClickListener wAa;
-  private String wAb;
-  private String wAc;
-  private int wzX;
-  private Button wzY;
-  private View wzZ;
+  private int zWi;
+  private Button zWj;
+  private View zWk;
+  private View.OnClickListener zWl;
+  private String zWm;
+  private String zWn;
   
   public VoiceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(29867);
-    this.iXq = ((MMActivity)paramContext);
+    this.lzt = ((MMActivity)paramContext);
     AppMethodBeat.o(29867);
   }
   
@@ -42,55 +42,55 @@ public final class VoiceHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29868);
     this.mTitle = "";
-    this.wzX = 255;
-    this.wAa = null;
-    this.wAb = "";
-    this.wAc = "";
-    this.iXq = ((MMActivity)paramContext);
-    setLayoutResource(R.i.elS);
+    this.zWi = 255;
+    this.zWl = null;
+    this.zWm = "";
+    this.zWn = "";
+    this.lzt = ((MMActivity)paramContext);
+    setLayoutResource(R.i.goW);
     AppMethodBeat.o(29868);
   }
   
   public final void c(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(29870);
-    this.wAa = paramOnClickListener;
-    if ((this.wzY == null) || (this.wzZ == null))
+    this.zWl = paramOnClickListener;
+    if ((this.zWj == null) || (this.zWk == null))
     {
       AppMethodBeat.o(29870);
       return;
     }
-    if ((this.wzY != null) && (this.wAa != null))
+    if ((this.zWj != null) && (this.zWl != null))
     {
-      this.wzY.setOnClickListener(paramOnClickListener);
-      this.wzY.setVisibility(0);
-      this.wzZ.setVisibility(0);
+      this.zWj.setOnClickListener(paramOnClickListener);
+      this.zWj.setVisibility(0);
+      this.zWk.setVisibility(0);
       AppMethodBeat.o(29870);
       return;
     }
-    this.wzY.setVisibility(8);
-    this.wzZ.setVisibility(8);
+    this.zWj.setVisibility(8);
+    this.zWk.setVisibility(8);
     AppMethodBeat.o(29870);
   }
   
-  public final void gR(String paramString1, String paramString2)
+  public final void hA(String paramString1, String paramString2)
   {
     AppMethodBeat.i(29869);
-    this.wAb = paramString1;
-    this.wAc = paramString2;
+    this.zWm = paramString1;
+    this.zWn = paramString2;
     if (this.titleTv != null)
     {
-      if (Util.isNullOrNil(this.wAb)) {
+      if (Util.isNullOrNil(this.zWm)) {
         break label95;
       }
-      this.titleTv.setText(this.wAb);
+      this.titleTv.setText(this.zWm);
       this.titleTv.setVisibility(0);
     }
-    while (this.mrN != null) {
-      if (!Util.isNullOrNil(this.wAc))
+    while (this.pls != null) {
+      if (!Util.isNullOrNil(this.zWn))
       {
-        this.mrN.setText(this.wAc);
-        this.mrN.setVisibility(0);
+        this.pls.setText(this.zWn);
+        this.pls.setVisibility(0);
         AppMethodBeat.o(29869);
         return;
         label95:
@@ -98,7 +98,7 @@ public final class VoiceHeaderPreference
       }
       else
       {
-        this.mrN.setVisibility(8);
+        this.pls.setVisibility(8);
       }
     }
     AppMethodBeat.o(29869);
@@ -108,39 +108,39 @@ public final class VoiceHeaderPreference
   {
     AppMethodBeat.i(29871);
     super.onBindView(paramView);
-    this.jmf = ((ImageView)paramView.findViewById(R.h.voice_print_sucesss_icon));
-    this.titleTv = ((TextView)paramView.findViewById(R.h.eag));
-    this.mrN = ((TextView)paramView.findViewById(R.h.voice_print_title_tip));
-    this.wzY = ((Button)paramView.findViewById(R.h.right_btn));
-    this.wzZ = paramView.findViewById(R.h.button_ll);
-    if (!Util.isNullOrNil(this.wAb))
+    this.lPb = ((ImageView)paramView.findViewById(R.h.gcU));
+    this.titleTv = ((TextView)paramView.findViewById(R.h.gcV));
+    this.pls = ((TextView)paramView.findViewById(R.h.gcX));
+    this.zWj = ((Button)paramView.findViewById(R.h.right_btn));
+    this.zWk = paramView.findViewById(R.h.button_ll);
+    if (!Util.isNullOrNil(this.zWm))
     {
-      this.titleTv.setText(this.wAb);
+      this.titleTv.setText(this.zWm);
       this.titleTv.setVisibility(0);
-      if (Util.isNullOrNil(this.wAc)) {
+      if (Util.isNullOrNil(this.zWn)) {
         break label196;
       }
-      this.mrN.setText(this.wAc);
-      this.mrN.setVisibility(0);
+      this.pls.setText(this.zWn);
+      this.pls.setVisibility(0);
     }
     for (;;)
     {
-      if ((this.wzY == null) || (this.wAa == null)) {
+      if ((this.zWj == null) || (this.zWl == null)) {
         break label208;
       }
-      this.wzY.setOnClickListener(this.wAa);
-      this.wzY.setVisibility(0);
-      this.wzZ.setVisibility(0);
+      this.zWj.setOnClickListener(this.zWl);
+      this.zWj.setVisibility(0);
+      this.zWk.setVisibility(0);
       AppMethodBeat.o(29871);
       return;
       this.titleTv.setVisibility(8);
       break;
       label196:
-      this.mrN.setVisibility(8);
+      this.pls.setVisibility(8);
     }
     label208:
-    this.wzY.setVisibility(8);
-    this.wzZ.setVisibility(8);
+    this.zWj.setVisibility(8);
+    this.zWk.setVisibility(8);
     AppMethodBeat.o(29871);
   }
 }

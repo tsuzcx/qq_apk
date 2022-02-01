@@ -26,9 +26,9 @@ public class WXLaunchWxaRedirectingPage
     
     public final boolean checkArgs()
     {
-      AppMethodBeat.i(253641);
+      AppMethodBeat.i(243082);
       boolean bool = TextUtils.isEmpty(this.invokeTicket);
-      AppMethodBeat.o(253641);
+      AppMethodBeat.o(243082);
       return bool ^ true;
     }
     
@@ -40,11 +40,11 @@ public class WXLaunchWxaRedirectingPage
     
     public final void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(253642);
+      AppMethodBeat.i(243085);
       super.fromBundle(paramBundle);
       this.invokeTicket = paramBundle.getString("_launch_wx_wxa_redirecting_page_invoke_ticket");
       this.callbackActivity = paramBundle.getString("_launch_wx_wxa_redirecting_page_callback_activity");
-      AppMethodBeat.o(253642);
+      AppMethodBeat.o(243085);
     }
     
     public final int getType()
@@ -59,11 +59,11 @@ public class WXLaunchWxaRedirectingPage
     
     public final void toBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(253644);
+      AppMethodBeat.i(243087);
       super.toBundle(paramBundle);
       paramBundle.putString("_launch_wx_wxa_redirecting_page_invoke_ticket", this.invokeTicket);
       paramBundle.putString("_launch_wx_wxa_redirecting_page_callback_activity", this.callbackActivity);
-      AppMethodBeat.o(253644);
+      AppMethodBeat.o(243087);
     }
   }
   
@@ -76,9 +76,9 @@ public class WXLaunchWxaRedirectingPage
     
     public Resp(Bundle paramBundle)
     {
-      AppMethodBeat.i(255194);
+      AppMethodBeat.i(243029);
       fromBundle(paramBundle);
-      AppMethodBeat.o(255194);
+      AppMethodBeat.o(243029);
     }
     
     public final boolean checkArgs()
@@ -88,11 +88,11 @@ public class WXLaunchWxaRedirectingPage
     
     public final void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(255199);
+      AppMethodBeat.i(243036);
       super.fromBundle(paramBundle);
       this.invokeTicket = paramBundle.getString("_launch_wx_wxa_redirecting_page_invoke_ticket");
       this.callbackActivity = paramBundle.getString("_launch_wx_wxa_redirecting_page_callback_activity");
-      AppMethodBeat.o(255199);
+      AppMethodBeat.o(243036);
     }
     
     public final int getType()
@@ -102,11 +102,11 @@ public class WXLaunchWxaRedirectingPage
     
     public final void toBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(255196);
+      AppMethodBeat.i(243033);
       super.toBundle(paramBundle);
       paramBundle.putString("_launch_wx_wxa_redirecting_page_invoke_ticket", this.invokeTicket);
       paramBundle.putString("_launch_wx_wxa_redirecting_page_callback_activity", this.callbackActivity);
-      AppMethodBeat.o(255196);
+      AppMethodBeat.o(243033);
     }
   }
 }

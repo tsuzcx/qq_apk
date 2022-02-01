@@ -9,72 +9,73 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.l;
 import androidx.recyclerview.widget.RecyclerView.r;
-import androidx.recyclerview.widget.p;
+import androidx.recyclerview.widget.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class i
   extends RecyclerView.l
 {
-  int CL;
-  private int alG;
-  Context mContext;
+  int biT;
+  private int cag;
+  private Context mContext;
   private int mLastState;
-  RecyclerView.r mSmoothScroller;
-  private float pEE;
-  int rFA;
-  private boolean rFC;
-  LinearLayoutManager rFD;
-  private boolean rFE;
-  private int rFF;
-  private boolean rFH;
-  private boolean rFI;
-  private boolean rFJ;
-  int rFw;
-  int rFx;
-  RecyclerView.r rFy;
-  int rFz;
-  BizTimeLineHotListView sKf;
-  private b sKg;
-  a sKh;
+  private RecyclerView.r mSmoothScroller;
+  private float sJP;
+  int uQI;
+  int uQJ;
+  private RecyclerView.r uQK;
+  int uQL;
+  int uQM;
+  private boolean uQO;
+  private LinearLayoutManager uQP;
+  private boolean uQQ;
+  private int uQR;
+  private boolean uQT;
+  private boolean uQU;
+  private boolean uQV;
+  BizTimeLineHotListView vQf;
+  private b vQg;
+  a vQh;
   
   public i(int paramInt)
   {
     AppMethodBeat.i(6143);
-    this.rFx = 0;
-    this.rFz = 0;
-    this.pEE = ViewConfiguration.get(MMApplicationContext.getContext()).getScaledTouchSlop();
-    this.sKg = null;
-    this.alG = -1;
-    this.rFC = false;
-    this.rFE = false;
-    this.rFF = 0;
-    this.sKh = null;
+    this.uQJ = 0;
+    this.uQL = 0;
+    this.sJP = ViewConfiguration.get(MMApplicationContext.getContext()).getScaledTouchSlop();
+    this.vQg = null;
+    this.cag = -1;
+    this.uQO = false;
+    this.uQQ = false;
+    this.uQR = 0;
+    this.vQh = null;
     this.mLastState = 0;
-    this.rFH = false;
-    this.rFI = false;
-    this.rFJ = false;
-    this.rFF = paramInt;
+    this.uQT = false;
+    this.uQU = false;
+    this.uQV = false;
+    this.uQR = paramInt;
     AppMethodBeat.o(6143);
   }
   
-  private int El(int paramInt)
+  private int EL(int paramInt)
   {
     if (paramInt == 0) {
       return 0;
     }
-    return this.rFA * paramInt + this.rFF;
+    return this.uQM * paramInt + this.uQR;
   }
   
-  private int Em(int paramInt)
+  private int EM(int paramInt)
   {
-    if (this.rFF != 0)
+    if (this.uQR != 0)
     {
-      int j = paramInt / this.rFA;
+      int j = paramInt / this.uQM;
       int i = j;
-      if (paramInt % this.rFA == 0)
+      if (paramInt % this.uQM == 0)
       {
         i = j;
         if (paramInt != 0) {
@@ -83,10 +84,10 @@ public final class i
       }
       return i;
     }
-    return paramInt / this.rFA;
+    return paramInt / this.uQM;
   }
   
-  public static int En(int paramInt)
+  public static int EN(int paramInt)
   {
     AppMethodBeat.i(6149);
     if (paramInt == 0)
@@ -94,52 +95,52 @@ public final class i
       AppMethodBeat.o(6149);
       return 0;
     }
-    int i = b.getCompletelyCountPerPage();
+    int i = c.getCompletelyCountPerPage();
     AppMethodBeat.o(6149);
     return i * paramInt + 1;
   }
   
-  public static int GT(int paramInt)
+  public static int Hs(int paramInt)
   {
     AppMethodBeat.i(6150);
-    int i = b.getCompletelyCountPerPage();
+    int i = c.getCompletelyCountPerPage();
     AppMethodBeat.o(6150);
     return (paramInt + 1) * i + 1;
   }
   
-  private void cqj()
+  private void cSQ()
   {
-    this.rFC = false;
-    this.rFE = false;
-    this.sKg = null;
-    this.alG = -1;
+    this.uQO = false;
+    this.uQQ = false;
+    this.vQg = null;
+    this.cag = -1;
   }
   
-  private void cqk()
+  private void cSR()
   {
     AppMethodBeat.i(6146);
-    if (this.rFC)
+    if (this.uQO)
     {
       Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo onScrollAnimationEnd");
-      cqj();
+      cSQ();
     }
     AppMethodBeat.o(6146);
   }
   
-  final int Ek(int paramInt)
+  final int EK(int paramInt)
   {
     AppMethodBeat.i(6147);
-    int i = this.rFz;
-    float f = this.sKf.getWidth();
-    int k = this.rFz;
-    Log.d("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo getOffsetToPosition offset: %d, mTmpOffset: %d, diff: %d, width: %s, mTouchSlop: %s, curPage: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.rFw), Integer.valueOf(paramInt - this.rFw), Float.valueOf(f), Float.valueOf(this.pEE), Integer.valueOf(this.rFz) });
-    if (paramInt - this.rFw >= f / 2.0F)
+    int i = this.uQL;
+    float f = this.vQf.getWidth();
+    int k = this.uQL;
+    Log.d("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo getOffsetToPosition offset: %d, mTmpOffset: %d, diff: %d, width: %s, mTouchSlop: %s, curPage: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.uQI), Integer.valueOf(paramInt - this.uQI), Float.valueOf(f), Float.valueOf(this.sJP), Integer.valueOf(this.uQL) });
+    if (paramInt - this.uQI >= f / 2.0F)
     {
-      i = Em(this.rFD.kL());
-      int m = this.sKf.getAdapter().getItemCount();
-      int j = m / this.rFA;
+      i = EM(this.uQP.Jw());
+      int m = this.vQf.getAdapter().getItemCount();
+      int j = m / this.uQM;
       paramInt = j;
-      if (m % this.rFA != 0) {
+      if (m % this.uQM != 0) {
         paramInt = j + 1;
       }
       i = Math.max(Math.min(i, paramInt - 1), -1);
@@ -150,21 +151,21 @@ public final class i
     }
     for (;;)
     {
-      Log.i("MicroMsg.BizTimeLineViewPagerHelper", "[getOffsetToPosition] lastPage: %d, targetPage: %d targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(En(paramInt)) });
-      paramInt = El(paramInt);
+      Log.i("MicroMsg.BizTimeLineViewPagerHelper", "[getOffsetToPosition] lastPage: %d, targetPage: %d targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(EN(paramInt)) });
+      paramInt = EL(paramInt);
       AppMethodBeat.o(6147);
       return paramInt;
-      if ((paramInt - this.rFw >= 0) && (paramInt - this.rFw < this.pEE))
+      if ((paramInt - this.uQI >= 0) && (paramInt - this.uQI < this.sJP))
       {
-        Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo [getOffsetToPosition] targetPage: %s targetPos: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(El(i)) });
-        paramInt = El(i);
+        Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo [getOffsetToPosition] targetPage: %s targetPos: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(EL(i)) });
+        paramInt = EL(i);
         AppMethodBeat.o(6147);
         return paramInt;
       }
-      if (paramInt - this.rFw > -f / 2.0F) {
+      if (paramInt - this.uQI > -f / 2.0F) {
         break;
       }
-      i = Em(this.rFD.kJ());
+      i = EM(this.uQP.Ju());
       break;
       label331:
       paramInt = i;
@@ -174,136 +175,229 @@ public final class i
     }
   }
   
-  final void W(int paramInt, boolean paramBoolean)
+  public final void a(Context paramContext, BizTimeLineHotListView paramBizTimeLineHotListView, int paramInt)
+  {
+    AppMethodBeat.i(302321);
+    this.mContext = paramContext;
+    this.vQf = paramBizTimeLineHotListView;
+    this.uQM = paramInt;
+    this.vQf.b(this);
+    this.vQf.a(this);
+    this.uQP = ((LinearLayoutManager)this.vQf.getLayoutManager());
+    this.mSmoothScroller = new o(this.vQf.getContext())
+    {
+      public final int JB()
+      {
+        return -1;
+      }
+      
+      public final float c(DisplayMetrics paramAnonymousDisplayMetrics)
+      {
+        return 80.0F / paramAnonymousDisplayMetrics.densityDpi;
+      }
+      
+      public final PointF fM(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(6139);
+        PointF localPointF = ((LinearLayoutManager)i.a(i.this).getLayoutManager()).fM(paramAnonymousInt);
+        AppMethodBeat.o(6139);
+        return localPointF;
+      }
+      
+      public final int fP(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(6138);
+        paramAnonymousInt = super.fP(paramAnonymousInt);
+        AppMethodBeat.o(6138);
+        return paramAnonymousInt;
+      }
+      
+      public final void onStart()
+      {
+        AppMethodBeat.i(302404);
+        super.onStart();
+        AppMethodBeat.o(302404);
+      }
+      
+      public final void onStop()
+      {
+        AppMethodBeat.i(6140);
+        super.onStop();
+        AppMethodBeat.o(6140);
+      }
+    };
+    this.uQK = new o(this.vQf.getContext())
+    {
+      public final int JB()
+      {
+        return -1;
+      }
+      
+      public final float c(DisplayMetrics paramAnonymousDisplayMetrics)
+      {
+        return 40.0F / paramAnonymousDisplayMetrics.densityDpi;
+      }
+      
+      public final PointF fM(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(6141);
+        PointF localPointF = ((LinearLayoutManager)i.a(i.this).getLayoutManager()).fM(paramAnonymousInt);
+        AppMethodBeat.o(6141);
+        return localPointF;
+      }
+      
+      public final void onStart()
+      {
+        AppMethodBeat.i(302379);
+        super.onStart();
+        i.deE();
+        AppMethodBeat.o(302379);
+      }
+      
+      public final void onStop()
+      {
+        AppMethodBeat.i(6142);
+        super.onStop();
+        Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo SmoothScrollerForFling onStop %d", new Object[] { Integer.valueOf(i.a(i.this).getScrollState()) });
+        if (i.a(i.this).getScrollState() == 0) {
+          i.b(i.this);
+        }
+        AppMethodBeat.o(6142);
+      }
+    };
+    AppMethodBeat.o(302321);
+  }
+  
+  final void am(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(6148);
-    if ((this.sKf != null) && ((this.rFI) || (paramBoolean)))
+    if ((this.vQf != null) && ((this.uQU) || (paramBoolean)))
     {
-      this.rFy.alG = paramInt;
-      this.rFJ = true;
-      this.sKf.getLayoutManager().startSmoothScroll(this.rFy);
+      this.uQK.cag = paramInt;
+      this.uQV = true;
+      this.vQf.getLayoutManager().startSmoothScroll(this.uQK);
     }
     AppMethodBeat.o(6148);
   }
   
   public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    AppMethodBeat.i(266885);
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramRecyclerView);
-    localb.sg(paramInt);
-    a.c("com/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+    AppMethodBeat.i(302347);
+    b localb = new b();
+    localb.cH(paramRecyclerView);
+    localb.sc(paramInt);
+    a.c("com/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
     super.onScrollStateChanged(paramRecyclerView, paramInt);
     Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo onScrollStateChanged newState: %d", new Object[] { Integer.valueOf(paramInt) });
     int i;
     if ((paramInt == 0) && (this.mLastState != 2))
     {
-      i = Ek(this.CL);
-      if ((this.sKf != null) && (this.rFI))
+      i = EK(this.biT);
+      if ((this.vQf != null) && (this.uQU))
       {
-        this.mSmoothScroller.alG = i;
-        this.rFJ = true;
-        this.sKf.getLayoutManager().startSmoothScroll(this.mSmoothScroller);
+        this.mSmoothScroller.cag = i;
+        this.uQV = true;
+        this.vQf.getLayoutManager().startSmoothScroll(this.mSmoothScroller);
       }
-      this.rFH = true;
+      this.uQT = true;
     }
     for (;;)
     {
       this.mLastState = paramInt;
       a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-      AppMethodBeat.o(266885);
+      AppMethodBeat.o(302347);
       return;
-      if ((!this.rFH) && (paramInt == 2))
+      if ((!this.uQT) && (paramInt == 2))
       {
-        this.rFH = true;
+        this.uQT = true;
       }
       else if (paramInt == 0)
       {
-        this.rFw = this.CL;
-        this.rFH = false;
-        i = this.rFz;
-        int j = this.rFD.kJ();
+        this.uQI = this.biT;
+        this.uQT = false;
+        i = this.uQL;
+        int j = this.uQP.Ju();
         Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo onScrollStateChanged firstPos: %d", new Object[] { Integer.valueOf(j) });
         boolean bool;
         if (j != -1)
         {
-          this.rFz = (j / this.rFA);
-          Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo onScrollStateChanged mCurPage: %d, firstVisible: %d", new Object[] { Integer.valueOf(this.rFz), Integer.valueOf(j) });
-          if ((i != this.rFz) && (this.sKh != null))
+          this.uQL = (j / this.uQM);
+          Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo onScrollStateChanged mCurPage: %d, firstVisible: %d", new Object[] { Integer.valueOf(this.uQL), Integer.valueOf(j) });
+          if ((i != this.uQL) && (this.vQh != null))
           {
-            paramRecyclerView = this.sKh;
-            i = this.rFz;
-            if (!this.rFI)
+            paramRecyclerView = this.vQh;
+            i = this.uQL;
+            if (!this.uQU)
             {
               bool = true;
-              label310:
-              paramRecyclerView.Z(i, bool);
+              label311:
+              paramRecyclerView.aq(i, bool);
             }
           }
           else
           {
-            label319:
-            this.rFI = false;
-            this.rFx = 0;
-            if (!this.rFE) {
-              break label643;
+            label320:
+            this.uQU = false;
+            this.uQJ = 0;
+            if (!this.uQQ) {
+              break label644;
             }
             Log.d("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo scrollMore");
-            this.sKf.getAdapter().aE(this.sKf.getDataCount(), 5);
-            paramRecyclerView = this.sKg;
-            this.rFE = false;
-            int k = this.sKf.getDataCount();
-            j = k / this.rFA;
+            this.vQf.getAdapter().by(this.vQf.getDataCount(), 5);
+            paramRecyclerView = this.vQg;
+            this.uQQ = false;
+            int k = this.vQf.getDataCount();
+            j = k / this.uQM;
             i = j;
-            if (k % this.rFA == 0) {
+            if (k % this.uQM == 0) {
               i = j + 1;
             }
             int m = i + 1;
-            j = this.rFA * m;
+            j = this.uQM * m;
             i = j;
             if (j <= 0) {
               i = 0;
             }
             Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo smoothScrollToLastPage allCount: %d, lastPage: %d, targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i) });
-            this.sKg = paramRecyclerView;
-            this.rFC = true;
-            j = Em(i);
-            this.alG = En(j);
-            this.rFz = Em(this.rFD.kK());
-            Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo fastScroll curPage: %d, pos: %d, targetPage: %d, targetPos: %d", new Object[] { Integer.valueOf(this.rFz), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.alG) });
-            if (j != this.rFz) {
-              break label631;
+            this.vQg = paramRecyclerView;
+            this.uQO = true;
+            j = EM(i);
+            this.cag = EN(j);
+            this.uQL = EM(this.uQP.Jv());
+            Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo fastScroll curPage: %d, pos: %d, targetPage: %d, targetPos: %d", new Object[] { Integer.valueOf(this.uQL), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.cag) });
+            if (j != this.uQL) {
+              break label632;
             }
-            cqk();
+            cSR();
           }
         }
         for (;;)
         {
-          if (!this.rFJ) {
-            break label648;
+          if (!this.uQV) {
+            break label649;
           }
           Log.i("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo scrollBy x: -1, y: 0");
-          this.rFJ = false;
-          this.sKf.scrollBy(-1, 0);
+          this.uQV = false;
+          this.vQf.scrollBy(-1, 0);
           break;
           bool = false;
-          break label310;
-          Log.e("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo onScrollStateChanged firstPos is -1, invalid, mCurPage: %d", new Object[] { Integer.valueOf(this.rFz) });
-          break label319;
-          label631:
-          W(this.alG, true);
+          break label311;
+          Log.e("MicroMsg.BizTimeLineViewPagerHelper", "alvinluo onScrollStateChanged firstPos is -1, invalid, mCurPage: %d", new Object[] { Integer.valueOf(this.uQL) });
+          break label320;
+          label632:
+          am(this.cag, true);
           continue;
-          label643:
-          cqk();
+          label644:
+          cSR();
         }
       }
       else
       {
-        label648:
+        label649:
         if (paramInt == 1)
         {
           Log.i("MicroMsg.BizTimeLineViewPagerHelper", "SCROLL_STATE_DRAGGING");
-          this.rFI = true;
+          this.uQU = true;
         }
       }
     }
@@ -311,34 +405,34 @@ public final class i
   
   public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(266884);
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramRecyclerView);
-    localb.sg(paramInt1);
-    localb.sg(paramInt2);
-    a.c("com/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+    AppMethodBeat.i(302332);
+    b localb = new b();
+    localb.cH(paramRecyclerView);
+    localb.sc(paramInt1);
+    localb.sc(paramInt2);
+    a.c("com/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
     super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    this.rFx += paramInt1;
-    if ((this.sKh != null) && ((paramInt1 != 0) || (paramInt2 != 0))) {
-      this.sKh.GR(this.rFx);
+    this.uQJ += paramInt1;
+    if ((this.vQh != null) && ((paramInt1 != 0) || (paramInt2 != 0))) {
+      this.vQh.Hr(this.uQJ);
     }
-    this.CL += paramInt1;
+    this.biT += paramInt1;
     a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/offenread/BizTimeLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-    AppMethodBeat.o(266884);
+    AppMethodBeat.o(302332);
   }
   
   public static abstract interface a
   {
-    public abstract void GR(int paramInt);
+    public abstract void Hr(int paramInt);
     
-    public abstract void Z(int paramInt, boolean paramBoolean);
+    public abstract void aq(int paramInt, boolean paramBoolean);
   }
   
   public static abstract interface b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.i
  * JD-Core Version:    0.7.0.1
  */

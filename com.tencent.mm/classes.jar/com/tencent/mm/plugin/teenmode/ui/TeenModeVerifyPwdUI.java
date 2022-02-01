@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.teenmode.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -16,48 +15,53 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.by.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.teenmode.a.a;
 import com.tencent.mm.plugin.teenmode.a.b;
 import com.tencent.mm.plugin.teenmode.a.d;
 import com.tencent.mm.plugin.teenmode.a.e;
 import com.tencent.mm.plugin.teenmode.a.g;
+import com.tencent.mm.plugin.teenmode.a.d;
+import com.tencent.mm.plugin.teenmode.b.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.MMWizardActivity;
+import com.tencent.mm.ui.base.aa;
 import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.widget.InputPanelLinearLayout;
 import com.tencent.mm.ui.widget.c.a;
 
 public class TeenModeVerifyPwdUI
-  extends MMActivity
-  implements com.tencent.mm.an.i, c.a
+  extends MMWizardActivity
+  implements com.tencent.mm.am.h, c.a
 {
-  private Button jbJ;
-  private ScrollView jbL;
-  private InputPanelLinearLayout jbM;
-  private View nkg;
-  private TextView nkh;
-  private EditText nki;
+  private Button lDJ;
+  private ScrollView lDL;
+  private InputPanelLinearLayout lDM;
+  private View qho;
+  private TextView qhp;
+  private EditText qhq;
   private int scene;
-  private s tipDialog;
+  private w tipDialog;
   
-  private void Kz(String paramString)
+  private void Df(String paramString)
   {
-    AppMethodBeat.i(259479);
+    AppMethodBeat.i(279277);
     if (Util.isNullOrNil(paramString))
     {
-      this.nkh.setVisibility(8);
-      AppMethodBeat.o(259479);
+      this.qhp.setVisibility(8);
+      AppMethodBeat.o(279277);
       return;
     }
-    this.nkh.setVisibility(0);
-    this.nkh.setText(paramString);
-    AppMethodBeat.o(259479);
+    this.qhp.setVisibility(0);
+    this.qhp.setText(paramString);
+    AppMethodBeat.o(279277);
   }
   
   public int getForceOrientation()
@@ -67,206 +71,213 @@ public class TeenModeVerifyPwdUI
   
   public int getLayoutId()
   {
-    return a.e.MsJ;
-  }
-  
-  public final void h(boolean paramBoolean, final int paramInt)
-  {
-    AppMethodBeat.i(259482);
-    Log.i("MicroMsg.VerifyPwdUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jbJ.getLayoutParams();
-    if (paramBoolean)
-    {
-      localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(a.b.Edge_8A);
-      localLayoutParams.topMargin = getResources().getDimensionPixelSize(a.b.Edge_5A);
-      this.jbJ.setLayoutParams(localLayoutParams);
-      this.jbM.setPadding(this.jbM.getPaddingLeft(), this.jbM.getPaddingTop(), this.jbM.getPaddingRight(), paramInt);
-      paramInt = this.jbL.getHeight();
-      this.jbM.requestLayout();
-      this.jbM.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(259532);
-          Log.i("MicroMsg.VerifyPwdUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(TeenModeVerifyPwdUI.c(TeenModeVerifyPwdUI.this).getHeight()), Integer.valueOf(paramInt) });
-          if (TeenModeVerifyPwdUI.c(TeenModeVerifyPwdUI.this).getHeight() > paramInt) {
-            TeenModeVerifyPwdUI.d(TeenModeVerifyPwdUI.this).scrollBy(0, TeenModeVerifyPwdUI.c(TeenModeVerifyPwdUI.this).getHeight() - paramInt);
-          }
-          AppMethodBeat.o(259532);
-        }
-      });
-      AppMethodBeat.o(259482);
-      return;
-    }
-    localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(a.b.Edge_12A);
-    localLayoutParams.topMargin = 0;
-    this.jbJ.setLayoutParams(localLayoutParams);
-    this.jbM.setPadding(this.jbM.getPaddingLeft(), this.jbM.getPaddingTop(), this.jbM.getPaddingRight(), 0);
-    this.jbL.scrollBy(0, 0);
-    AppMethodBeat.o(259482);
+    return a.e.SWz;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(259478);
+    AppMethodBeat.i(279329);
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(a.a.white));
-    this.jbL = ((ScrollView)findViewById(a.d.scroll_view));
-    this.jbM = ((InputPanelLinearLayout)findViewById(a.d.input_container));
-    this.jbM.setExternalListener(this);
-    this.nkh = ((TextView)findViewById(a.d.error_tip));
-    this.nkg = findViewById(a.d.forget_pwd_btn);
-    this.nki = ((EditText)findViewById(a.d.pwd_edit));
-    this.nki.requestFocus();
-    this.nki.addTextChangedListener(new TextWatcher()
+    this.lDL = ((ScrollView)findViewById(a.d.scroll_view));
+    this.lDM = ((InputPanelLinearLayout)findViewById(a.d.input_container));
+    this.lDM.setExternalListener(this);
+    this.qhp = ((TextView)findViewById(a.d.error_tip));
+    this.qho = findViewById(a.d.forget_pwd_btn);
+    this.qhq = ((EditText)findViewById(a.d.pwd_edit));
+    this.qhq.requestFocus();
+    this.qhq.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(259462);
+        AppMethodBeat.i(279049);
         if (!Util.isNullOrNil(paramAnonymousEditable.toString()))
         {
           TeenModeVerifyPwdUI.a(TeenModeVerifyPwdUI.this).setEnabled(true);
-          AppMethodBeat.o(259462);
+          AppMethodBeat.o(279049);
           return;
         }
         TeenModeVerifyPwdUI.a(TeenModeVerifyPwdUI.this).setEnabled(false);
         TeenModeVerifyPwdUI.a(TeenModeVerifyPwdUI.this, "");
-        AppMethodBeat.o(259462);
+        AppMethodBeat.o(279049);
       }
       
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.jbJ = ((Button)findViewById(a.d.next_btn));
-    this.jbJ.setOnClickListener(new View.OnClickListener()
+    this.lDJ = ((Button)findViewById(a.d.next_btn));
+    this.lDJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(259340);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/TeenModeVerifyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        AppMethodBeat.i(279043);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/TeenModeVerifyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         TeenModeVerifyPwdUI.a(TeenModeVerifyPwdUI.this, "");
         TeenModeVerifyPwdUI.this.hideVKB();
         TeenModeVerifyPwdUI.b(TeenModeVerifyPwdUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/TeenModeVerifyPwdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(259340);
+        AppMethodBeat.o(279043);
       }
     });
-    this.nkg.setOnClickListener(new View.OnClickListener()
+    this.qho.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(259658);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/TeenModeVerifyPwdUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        AppMethodBeat.i(279095);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/TeenModeVerifyPwdUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         TeenModeVerifyPwdUI.this.hideVKB();
-        c.ad(TeenModeVerifyPwdUI.this, "setting", ".ui.setting.SettingsForgetPwdUI");
+        com.tencent.mm.br.c.ai(TeenModeVerifyPwdUI.this, "setting", ".ui.setting.SettingsForgetPwdUI");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/TeenModeVerifyPwdUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(259658);
+        AppMethodBeat.o(279095);
       }
     });
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(259602);
+        AppMethodBeat.i(279089);
         TeenModeVerifyPwdUI.this.onBackPressed();
-        AppMethodBeat.o(259602);
+        AppMethodBeat.o(279089);
         return true;
       }
     });
-    AppMethodBeat.o(259478);
+    AppMethodBeat.o(279329);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(259481);
+    AppMethodBeat.i(279342);
     super.onBackPressed();
     setResult(0);
-    AppMethodBeat.o(259481);
+    AppMethodBeat.o(279342);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(259477);
+    AppMethodBeat.i(279319);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.h.aGY().a(384, this);
-    ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).rE(7);
+    com.tencent.mm.kernel.h.aZW().a(384, this);
+    ((d)com.tencent.mm.kernel.h.ax(d.class)).rG(7);
     this.scene = getIntent().getIntExtra("key_scenen", 3);
     initView();
-    AppMethodBeat.o(259477);
+    AppMethodBeat.o(279319);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(259480);
+    AppMethodBeat.i(279334);
     super.onDestroy();
-    com.tencent.mm.kernel.h.aGY().b(384, this);
+    com.tencent.mm.kernel.h.aZW().b(384, this);
     hideVKB();
-    AppMethodBeat.o(259480);
+    AppMethodBeat.o(279334);
+  }
+  
+  public void onInputPanelChange(boolean paramBoolean, final int paramInt)
+  {
+    AppMethodBeat.i(279360);
+    Log.i("MicroMsg.VerifyPwdUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.lDJ.getLayoutParams();
+    if (paramBoolean)
+    {
+      localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(a.b.Edge_8A);
+      localLayoutParams.topMargin = getResources().getDimensionPixelSize(a.b.Edge_5A);
+      this.lDJ.setLayoutParams(localLayoutParams);
+      this.lDM.setPadding(this.lDM.getPaddingLeft(), this.lDM.getPaddingTop(), this.lDM.getPaddingRight(), paramInt);
+      paramInt = this.lDL.getHeight();
+      this.lDM.requestLayout();
+      this.lDM.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(279085);
+          Log.i("MicroMsg.VerifyPwdUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(TeenModeVerifyPwdUI.c(TeenModeVerifyPwdUI.this).getHeight()), Integer.valueOf(paramInt) });
+          if (TeenModeVerifyPwdUI.c(TeenModeVerifyPwdUI.this).getHeight() > paramInt) {
+            TeenModeVerifyPwdUI.d(TeenModeVerifyPwdUI.this).scrollBy(0, TeenModeVerifyPwdUI.c(TeenModeVerifyPwdUI.this).getHeight() - paramInt);
+          }
+          AppMethodBeat.o(279085);
+        }
+      });
+      AppMethodBeat.o(279360);
+      return;
+    }
+    localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(a.b.Edge_12A);
+    localLayoutParams.topMargin = 0;
+    this.lDJ.setLayoutParams(localLayoutParams);
+    this.lDM.setPadding(this.lDM.getPaddingLeft(), this.lDM.getPaddingTop(), this.lDM.getPaddingRight(), 0);
+    this.lDL.scrollBy(0, 0);
+    AppMethodBeat.o(279360);
   }
   
   public void onPointerCaptureChanged(boolean paramBoolean) {}
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(259484);
+    AppMethodBeat.i(279368);
     Log.i("MicroMsg.VerifyPwdUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      com.tencent.mm.plugin.teenmode.b.b.gkv().rE(2);
-      w.cR(this, getString(a.g.verify_password_success));
+      j.hEy().rG(2);
+      aa.db(this, getString(a.g.verify_password_success));
       MMHandlerThread.postToMainThreadDelayed(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(259655);
+          AppMethodBeat.i(279079);
           TeenModeVerifyPwdUI.this.hideVKB();
-          c.ad(TeenModeVerifyPwdUI.this, "teenmode", ".ui.SettingsTeenModeMain");
-          com.tencent.e.h.ZvG.p(new Runnable()
+          TeenModeVerifyPwdUI.this.setResult(-1);
+          TeenModeVerifyPwdUI.e(TeenModeVerifyPwdUI.this);
+          if (TeenModeVerifyPwdUI.this.getIntent().getIntExtra("intent_extra_biz_type", 0) != 0)
           {
-            public final void run()
-            {
-              AppMethodBeat.i(259537);
-              TeenModeVerifyPwdUI.this.finish();
-              AppMethodBeat.o(259537);
+            com.tencent.mm.plugin.teenmode.a.e locale = new com.tencent.mm.plugin.teenmode.a.e();
+            locale.field_businessType = TeenModeVerifyPwdUI.this.getIntent().getIntExtra("intent_extra_biz_type", 2147483647);
+            locale.field_businessKey = TeenModeVerifyPwdUI.this.getIntent().getStringExtra("intent_extra_biz_key");
+            Object localObject = ((d)com.tencent.mm.kernel.h.ax(d.class)).hEu();
+            if (localObject != null) {
+              locale.field_guardianUserName = ((az)localObject).field_username;
             }
-          }, 200L);
-          AppMethodBeat.o(259655);
+            locale.field_wardUserName = z.bAM();
+            locale.field_time = cn.bDv();
+            localObject = com.tencent.mm.plugin.teenmode.b.a.e.SZq;
+            com.tencent.mm.plugin.teenmode.b.a.e.hEB().replace(locale);
+            ((d)com.tencent.mm.kernel.h.ax(d.class)).hEs();
+          }
+          AppMethodBeat.o(279079);
         }
       }, 2000L);
-      AppMethodBeat.o(259484);
+      AppMethodBeat.o(279368);
       return;
     }
-    com.tencent.mm.plugin.teenmode.b.b.gkv().rE(6);
+    j.hEy().rG(6);
     if (paramInt1 == 4)
     {
       if (!Util.isNullOrNil(paramString))
       {
-        paramq = com.tencent.mm.h.a.Kb(paramString);
-        if (paramq != null)
+        paramp = com.tencent.mm.broadcast.a.CH(paramString);
+        if (paramp != null)
         {
-          Kz(paramq.desc);
-          AppMethodBeat.o(259484);
+          Df(paramp.desc);
+          AppMethodBeat.o(279368);
           return;
         }
-        Kz(paramString);
-        AppMethodBeat.o(259484);
+        Df(paramString);
+        AppMethodBeat.o(279368);
         return;
       }
-      Kz(getString(a.g.app_err_system_busy_tip));
-      AppMethodBeat.o(259484);
+      Df(getString(a.g.app_err_system_busy_tip));
+      AppMethodBeat.o(279368);
       return;
     }
-    Kz(getString(a.g.app_err_system_busy_tip));
-    AppMethodBeat.o(259484);
+    Df(getString(a.g.app_err_system_busy_tip));
+    AppMethodBeat.o(279368);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -277,7 +288,7 @@ public class TeenModeVerifyPwdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.teenmode.ui.TeenModeVerifyPwdUI
  * JD-Core Version:    0.7.0.1
  */

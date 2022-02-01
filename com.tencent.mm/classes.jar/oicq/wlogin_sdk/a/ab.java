@@ -6,24 +6,24 @@ import oicq.wlogin_sdk.tools.util;
 public final class ab
   extends a
 {
-  public int abGX = 0;
+  public int ajIb = 0;
   
   public ab()
   {
-    this.abFM = 306;
+    this.ajGQ = 306;
   }
   
-  public final Boolean iUK()
+  public final Boolean kGl()
   {
     AppMethodBeat.i(88110);
-    if (this.abGw < 2)
+    if (this.ajHA < 2)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88110);
       return localBoolean;
     }
-    this.abGX = util.ap(this.abFG, this.abGv);
-    if (this.abGX + 2 > this.abGw)
+    this.ajIb = util.aq(this.ajGK, this.ajHz);
+    if (this.ajIb + 2 > this.ajHA)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88110);
@@ -36,7 +36,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.ab
  * JD-Core Version:    0.7.0.1
  */

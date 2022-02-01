@@ -15,15 +15,15 @@ public class TAVGLUtils
   
   public static String convertStreamToString(InputStream paramInputStream)
   {
-    AppMethodBeat.i(193275);
+    AppMethodBeat.i(215973);
     paramInputStream = new Scanner(paramInputStream, "UTF-8").useDelimiter("\\A");
     if (paramInputStream.hasNext())
     {
       paramInputStream = paramInputStream.next();
-      AppMethodBeat.o(193275);
+      AppMethodBeat.o(215973);
       return paramInputStream;
     }
-    AppMethodBeat.o(193275);
+    AppMethodBeat.o(215973);
     return "";
   }
   
@@ -112,7 +112,7 @@ public class TAVGLUtils
   
   public static Bitmap saveBitmap(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(193285);
+    AppMethodBeat.i(215986);
     int[] arrayOfInt = new int[1];
     GLES20.glBindTexture(3553, paramInt1);
     GLES20.glGenFramebuffers(1, arrayOfInt, 0);
@@ -128,13 +128,13 @@ public class TAVGLUtils
     GLES20.glBindFramebuffer(36160, 0);
     GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
     GLES20.glBindTexture(3553, 0);
-    AppMethodBeat.o(193285);
+    AppMethodBeat.o(215986);
     return localBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.player.TAVGLUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -6,35 +6,10 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public static c cQM()
-  {
-    AppMethodBeat.i(8962);
-    if (h.aHE().aGM())
-    {
-      h.aHE();
-      if (!com.tencent.mm.kernel.b.aGE()) {}
-    }
-    else
-    {
-      Log.e("MicroMsg.DownloadTaskItemDbHelp", "no user login");
-      AppMethodBeat.o(8962);
-      return null;
-    }
-    if (h.ae(com.tencent.mm.plugin.downloader.a.d.class) == null)
-    {
-      Log.e("MicroMsg.DownloadTaskItemDbHelp", "service not ready");
-      AppMethodBeat.o(8962);
-      return null;
-    }
-    c localc = ((com.tencent.mm.plugin.downloader_app.api.d)h.ae(com.tencent.mm.plugin.downloader_app.api.d.class)).cQy();
-    AppMethodBeat.o(8962);
-    return localc;
-  }
-  
-  public static boolean dr(String paramString, int paramInt)
+  public static boolean dS(String paramString, int paramInt)
   {
     AppMethodBeat.i(8963);
-    if (cQM() == null)
+    if (dvf() == null)
     {
       AppMethodBeat.o(8963);
       return false;
@@ -43,9 +18,34 @@ public final class b
     locala.field_appId = paramString;
     locala.field_status = paramInt;
     locala.field_modifyTime = System.currentTimeMillis();
-    boolean bool = cQM().a(locala);
+    boolean bool = dvf().a(locala);
     AppMethodBeat.o(8963);
     return bool;
+  }
+  
+  public static c dvf()
+  {
+    AppMethodBeat.i(8962);
+    if (h.baC().aZN())
+    {
+      h.baC();
+      if (!com.tencent.mm.kernel.b.aZG()) {}
+    }
+    else
+    {
+      Log.e("MicroMsg.DownloadTaskItemDbHelp", "no user login");
+      AppMethodBeat.o(8962);
+      return null;
+    }
+    if (h.ax(com.tencent.mm.plugin.downloader.a.d.class) == null)
+    {
+      Log.e("MicroMsg.DownloadTaskItemDbHelp", "service not ready");
+      AppMethodBeat.o(8962);
+      return null;
+    }
+    c localc = ((com.tencent.mm.plugin.downloader_app.api.d)h.ax(com.tencent.mm.plugin.downloader_app.api.d.class)).duR();
+    AppMethodBeat.o(8962);
+    return localc;
   }
 }
 

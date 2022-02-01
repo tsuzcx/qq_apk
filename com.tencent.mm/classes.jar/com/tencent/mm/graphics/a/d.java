@@ -7,10 +7,10 @@ public enum d
   static
   {
     AppMethodBeat.i(136193);
-    jVB = new d("Normal", 0);
-    jVC = new d("Tile", 1);
-    jVD = new d("Auto", 2);
-    jVE = new d[] { jVB, jVC, jVD };
+    mvv = new d("Normal", 0);
+    mvw = new d("Tile", 1);
+    mvx = new d("Auto", 2);
+    mvy = new d[] { mvv, mvw, mvx };
     AppMethodBeat.o(136193);
   }
   

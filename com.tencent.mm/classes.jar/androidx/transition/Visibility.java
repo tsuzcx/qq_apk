@@ -16,7 +16,7 @@ import java.util.Map;
 public abstract class Visibility
   extends Transition
 {
-  private static final String[] apt = { "android:visibility:visibility", "android:visibility:parent" };
+  private static final String[] cec = { "android:visibility:visibility", "android:visibility:parent" };
   private int mMode = 3;
   
   public Visibility() {}
@@ -24,7 +24,7 @@ public abstract class Visibility
   public Visibility(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, q.arm);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, q.cfV);
     int i = g.a(paramContext, (XmlResourceParser)paramAttributeSet, "transitionVisibilityMode", 0, 0);
     paramContext.recycle();
     if (i != 0) {
@@ -45,38 +45,38 @@ public abstract class Visibility
   private static b b(w paramw1, w paramw2)
   {
     b localb = new b();
-    localb.atx = false;
-    localb.aty = false;
+    localb.cig = false;
+    localb.cih = false;
     if ((paramw1 != null) && (paramw1.values.containsKey("android:visibility:visibility")))
     {
-      localb.atz = ((Integer)paramw1.values.get("android:visibility:visibility")).intValue();
-      localb.aqA = ((ViewGroup)paramw1.values.get("android:visibility:parent"));
+      localb.cii = ((Integer)paramw1.values.get("android:visibility:visibility")).intValue();
+      localb.cfj = ((ViewGroup)paramw1.values.get("android:visibility:parent"));
       if ((paramw2 == null) || (!paramw2.values.containsKey("android:visibility:visibility"))) {
         break label177;
       }
-      localb.atA = ((Integer)paramw2.values.get("android:visibility:visibility")).intValue();
-      localb.atB = ((ViewGroup)paramw2.values.get("android:visibility:parent"));
+      localb.cij = ((Integer)paramw2.values.get("android:visibility:visibility")).intValue();
+      localb.cik = ((ViewGroup)paramw2.values.get("android:visibility:parent"));
     }
     for (;;)
     {
       if ((paramw1 != null) && (paramw2 != null))
       {
-        if ((localb.atz == localb.atA) && (localb.aqA == localb.atB))
+        if ((localb.cii == localb.cij) && (localb.cfj == localb.cik))
         {
           return localb;
-          localb.atz = -1;
-          localb.aqA = null;
+          localb.cii = -1;
+          localb.cfj = null;
           break;
           label177:
-          localb.atA = -1;
-          localb.atB = null;
+          localb.cij = -1;
+          localb.cik = null;
           continue;
         }
-        if (localb.atz != localb.atA) {
-          if (localb.atz == 0)
+        if (localb.cii != localb.cij) {
+          if (localb.cii == 0)
           {
-            localb.aty = false;
-            localb.atx = true;
+            localb.cih = false;
+            localb.cig = true;
           }
         }
       }
@@ -84,34 +84,39 @@ public abstract class Visibility
     for (;;)
     {
       return localb;
-      if (localb.atA == 0)
+      if (localb.cij == 0)
       {
-        localb.aty = true;
-        localb.atx = true;
+        localb.cih = true;
+        localb.cig = true;
         continue;
-        if (localb.atB == null)
+        if (localb.cik == null)
         {
-          localb.aty = false;
-          localb.atx = true;
+          localb.cih = false;
+          localb.cig = true;
         }
-        else if (localb.aqA == null)
+        else if (localb.cfj == null)
         {
-          localb.aty = true;
-          localb.atx = true;
+          localb.cih = true;
+          localb.cig = true;
           continue;
-          if ((paramw1 == null) && (localb.atA == 0))
+          if ((paramw1 == null) && (localb.cij == 0))
           {
-            localb.aty = true;
-            localb.atx = true;
+            localb.cih = true;
+            localb.cig = true;
           }
-          else if ((paramw2 == null) && (localb.atz == 0))
+          else if ((paramw2 == null) && (localb.cii == 0))
           {
-            localb.aty = false;
-            localb.atx = true;
+            localb.cih = false;
+            localb.cig = true;
           }
         }
       }
     }
+  }
+  
+  public final String[] LI()
+  {
+    return cec;
   }
   
   public Animator a(ViewGroup paramViewGroup, View paramView, w paramw)
@@ -127,9 +132,9 @@ public abstract class Visibility
   public final Animator a(ViewGroup paramViewGroup, w paramw1, final w paramw2)
   {
     Object localObject1 = b(paramw1, paramw2);
-    if ((((b)localObject1).atx) && ((((b)localObject1).aqA != null) || (((b)localObject1).atB != null)))
+    if ((((b)localObject1).cig) && ((((b)localObject1).cfj != null) || (((b)localObject1).cik != null)))
     {
-      if (!((b)localObject1).aty) {
+      if (!((b)localObject1).cih) {
         break label106;
       }
       if (((this.mMode & 0x1) == 1) && (paramw2 != null)) {
@@ -148,9 +153,9 @@ public abstract class Visibility
           break;
         }
         localObject1 = (View)paramw2.view.getParent();
-      } while (b(i((View)localObject1, false), h((View)localObject1, false)).atx);
+      } while (b(i((View)localObject1, false), h((View)localObject1, false)).cig);
       return a(paramViewGroup, paramw2.view, paramw1, paramw2);
-      i = ((b)localObject1).atA;
+      i = ((b)localObject1).cij;
     } while ((this.mMode & 0x2) != 2);
     label133:
     label142:
@@ -189,12 +194,12 @@ public abstract class Visibility
         {
           paramw2 = new aa(paramViewGroup);
           label263:
-          paramw2.bJ((View)localObject1);
+          paramw2.cd((View)localObject1);
           paramViewGroup = a(paramViewGroup, (View)localObject1, paramw1);
           if (paramViewGroup != null) {
             break label496;
           }
-          paramw2.bK((View)localObject1);
+          paramw2.ce((View)localObject1);
           return paramViewGroup;
           localObject1 = null;
           break label133;
@@ -214,7 +219,7 @@ public abstract class Visibility
             break label582;
           }
           paramw2 = (View)((View)localObject1).getParent();
-          if (!b(h(paramw2, true), i(paramw2, true)).atx)
+          if (!b(h(paramw2, true), i(paramw2, true)).cig)
           {
             localObject1 = v.a(paramViewGroup, (View)localObject1, paramw2);
             paramw2 = null;
@@ -224,7 +229,7 @@ public abstract class Visibility
             break label577;
           }
           j = paramw2.getId();
-          if ((j == -1) || (paramViewGroup.findViewById(j) == null) || (!this.arR)) {
+          if ((j == -1) || (paramViewGroup.findViewById(j) == null) || (!this.cgA)) {
             break label577;
           }
         }
@@ -247,7 +252,7 @@ public abstract class Visibility
           localObject1 = null;
           break label166;
         }
-        if (this.arR)
+        if (this.cgA)
         {
           paramw2 = null;
           break label166;
@@ -255,16 +260,16 @@ public abstract class Visibility
         localObject1 = v.a(paramViewGroup, (View)localObject1, (View)((View)localObject1).getParent());
         paramw2 = null;
         break label166;
-        paramw2 = (z)af.bL(paramViewGroup);
+        paramw2 = (z)af.cf(paramViewGroup);
         break label263;
         label496:
         paramViewGroup.addListener(new AnimatorListenerAdapter()
         {
           public final void onAnimationEnd(Animator paramAnonymousAnimator)
           {
-            AppMethodBeat.i(193334);
-            paramw2.bK(this.att);
-            AppMethodBeat.o(193334);
+            AppMethodBeat.i(201475);
+            paramw2.ce(this.cic);
+            AppMethodBeat.o(201475);
           }
         });
         return paramViewGroup;
@@ -272,7 +277,7 @@ public abstract class Visibility
           break;
         }
         j = paramw2.getVisibility();
-        ai.G(paramw2, 0);
+        ai.K(paramw2, 0);
         paramViewGroup = a(paramViewGroup, paramw2, paramw1);
         if (paramViewGroup != null)
         {
@@ -282,7 +287,7 @@ public abstract class Visibility
           a(paramw1);
           return paramViewGroup;
         }
-        ai.G(paramw2, j);
+        ai.K(paramw2, j);
         return paramViewGroup;
       }
       label582:
@@ -301,7 +306,7 @@ public abstract class Visibility
         return false;
       } while ((paramw1 != null) && (paramw2 != null) && (paramw2.values.containsKey("android:visibility:visibility") != paramw1.values.containsKey("android:visibility:visibility")));
       paramw1 = b(paramw1, paramw2);
-    } while ((!paramw1.atx) || ((paramw1.atz != 0) && (paramw1.atA != 0)));
+    } while ((!paramw1.cig) || ((paramw1.cii != 0) && (paramw1.cij != 0)));
     return true;
   }
   
@@ -320,11 +325,6 @@ public abstract class Visibility
     return this.mMode;
   }
   
-  public final String[] nf()
-  {
-    return apt;
-  }
-  
   public final void setMode(int paramInt)
   {
     if ((paramInt & 0xFFFFFFFC) != 0) {
@@ -337,73 +337,73 @@ public abstract class Visibility
     extends AnimatorListenerAdapter
     implements Transition.d, a.a
   {
-    private final ViewGroup VV;
-    private final boolean atv;
-    private boolean atw;
+    private final ViewGroup bCB;
+    private final boolean cie;
+    private boolean cif;
     boolean mCanceled;
     private final View mView;
-    private final int nL;
+    private final int oK;
     
     a(View paramView, int paramInt)
     {
-      AppMethodBeat.i(193340);
+      AppMethodBeat.i(201395);
       this.mCanceled = false;
       this.mView = paramView;
-      this.nL = paramInt;
-      this.VV = ((ViewGroup)paramView.getParent());
-      this.atv = true;
-      aE(true);
-      AppMethodBeat.o(193340);
+      this.oK = paramInt;
+      this.bCB = ((ViewGroup)paramView.getParent());
+      this.cie = true;
+      bm(true);
+      AppMethodBeat.o(201395);
     }
     
-    private void aE(boolean paramBoolean)
+    private void Md()
     {
-      AppMethodBeat.i(193368);
-      if ((this.atv) && (this.atw != paramBoolean) && (this.VV != null))
-      {
-        this.atw = paramBoolean;
-        ac.c(this.VV, paramBoolean);
-      }
-      AppMethodBeat.o(193368);
-    }
-    
-    private void nA()
-    {
-      AppMethodBeat.i(193365);
+      AppMethodBeat.i(201406);
       if (!this.mCanceled)
       {
-        ai.G(this.mView, this.nL);
-        if (this.VV != null) {
-          this.VV.invalidate();
+        ai.K(this.mView, this.oK);
+        if (this.bCB != null) {
+          this.bCB.invalidate();
         }
       }
-      aE(false);
-      AppMethodBeat.o(193365);
+      bm(false);
+      AppMethodBeat.o(201406);
     }
+    
+    private void bm(boolean paramBoolean)
+    {
+      AppMethodBeat.i(201413);
+      if ((this.cie) && (this.cif != paramBoolean) && (this.bCB != null))
+      {
+        this.cif = paramBoolean;
+        ac.c(this.bCB, paramBoolean);
+      }
+      AppMethodBeat.o(201413);
+    }
+    
+    public final void LJ()
+    {
+      AppMethodBeat.i(201508);
+      bm(false);
+      AppMethodBeat.o(201508);
+    }
+    
+    public final void LK()
+    {
+      AppMethodBeat.i(201520);
+      bm(true);
+      AppMethodBeat.o(201520);
+    }
+    
+    public final void LO() {}
     
     public final void a(Transition paramTransition)
     {
-      AppMethodBeat.i(193354);
-      nA();
+      AppMethodBeat.i(201495);
+      Md();
       paramTransition.b(this);
-      AppMethodBeat.o(193354);
+      AppMethodBeat.o(201495);
     }
-    
-    public final void ng()
-    {
-      AppMethodBeat.i(193356);
-      aE(false);
-      AppMethodBeat.o(193356);
-    }
-    
-    public final void nh()
-    {
-      AppMethodBeat.i(193359);
-      aE(true);
-      AppMethodBeat.o(193359);
-    }
-    
-    public final void nl() {}
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
@@ -412,29 +412,29 @@ public abstract class Visibility
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(193351);
-      nA();
-      AppMethodBeat.o(193351);
+      AppMethodBeat.i(201474);
+      Md();
+      AppMethodBeat.o(201474);
     }
     
     public final void onAnimationPause(Animator paramAnimator)
     {
-      AppMethodBeat.i(193342);
+      AppMethodBeat.i(201423);
       if (!this.mCanceled) {
-        ai.G(this.mView, this.nL);
+        ai.K(this.mView, this.oK);
       }
-      AppMethodBeat.o(193342);
+      AppMethodBeat.o(201423);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
     
     public final void onAnimationResume(Animator paramAnimator)
     {
-      AppMethodBeat.i(193345);
+      AppMethodBeat.i(201434);
       if (!this.mCanceled) {
-        ai.G(this.mView, 0);
+        ai.K(this.mView, 0);
       }
-      AppMethodBeat.o(193345);
+      AppMethodBeat.o(201434);
     }
     
     public final void onAnimationStart(Animator paramAnimator) {}
@@ -442,17 +442,17 @@ public abstract class Visibility
   
   static final class b
   {
-    ViewGroup aqA;
-    int atA;
-    ViewGroup atB;
-    boolean atx;
-    boolean aty;
-    int atz;
+    ViewGroup cfj;
+    boolean cig;
+    boolean cih;
+    int cii;
+    int cij;
+    ViewGroup cik;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.transition.Visibility
  * JD-Core Version:    0.7.0.1
  */

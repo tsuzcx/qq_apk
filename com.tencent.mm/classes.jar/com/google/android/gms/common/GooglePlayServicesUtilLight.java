@@ -1,6 +1,5 @@
 package com.google.android.gms.common;
 
-import android.annotation.TargetApi;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -16,14 +15,12 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserManager;
 import android.util.Log;
-import com.google.android.gms.common.internal.MetadataValueReader;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.util.ClientLibraryUtils;
 import com.google.android.gms.common.util.DeviceProperties;
 import com.google.android.gms.common.util.GmsVersionParser;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.google.android.gms.common.util.UidVerifier;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.common.wrappers.PackageManagerWrapper;
 import com.google.android.gms.common.wrappers.Wrappers;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -45,14 +42,10 @@ public class GooglePlayServicesUtilLight
   public static final boolean HONOR_DEBUG_CERTIFICATES = false;
   public static final String KEY_METADATA_GOOGLE_PLAY_SERVICES_VERSION = "com.google.android.gms.version";
   public static final int MAX_ATTEMPTS_NO_SUCH_ALGORITHM = 2;
-  @VisibleForTesting
   public static boolean sIsTestMode;
-  @VisibleForTesting
   public static boolean sTestIsUserBuild;
   private static boolean zzbr;
-  @VisibleForTesting
   private static boolean zzbs;
-  @VisibleForTesting
   static final AtomicBoolean zzbt;
   private static final AtomicBoolean zzbu;
   
@@ -168,7 +161,6 @@ public class GooglePlayServicesUtilLight
   }
   
   @Deprecated
-  @VisibleForTesting
   public static String getErrorString(int paramInt)
   {
     AppMethodBeat.i(4416);
@@ -192,62 +184,62 @@ public class GooglePlayServicesUtilLight
   {
     // Byte code:
     //   0: sipush 4430
-    //   3: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 203	android/net/Uri$Builder
+    //   3: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 201	android/net/Uri$Builder
     //   9: dup
-    //   10: invokespecial 204	android/net/Uri$Builder:<init>	()V
-    //   13: ldc 206
-    //   15: invokevirtual 210	android/net/Uri$Builder:scheme	(Ljava/lang/String;)Landroid/net/Uri$Builder;
+    //   10: invokespecial 202	android/net/Uri$Builder:<init>	()V
+    //   13: ldc 204
+    //   15: invokevirtual 208	android/net/Uri$Builder:scheme	(Ljava/lang/String;)Landroid/net/Uri$Builder;
     //   18: ldc 14
-    //   20: invokevirtual 213	android/net/Uri$Builder:authority	(Ljava/lang/String;)Landroid/net/Uri$Builder;
-    //   23: ldc 215
-    //   25: invokevirtual 218	android/net/Uri$Builder:appendPath	(Ljava/lang/String;)Landroid/net/Uri$Builder;
-    //   28: ldc 220
-    //   30: invokevirtual 218	android/net/Uri$Builder:appendPath	(Ljava/lang/String;)Landroid/net/Uri$Builder;
-    //   33: invokevirtual 224	android/net/Uri$Builder:build	()Landroid/net/Uri;
+    //   20: invokevirtual 211	android/net/Uri$Builder:authority	(Ljava/lang/String;)Landroid/net/Uri$Builder;
+    //   23: ldc 213
+    //   25: invokevirtual 216	android/net/Uri$Builder:appendPath	(Ljava/lang/String;)Landroid/net/Uri$Builder;
+    //   28: ldc 218
+    //   30: invokevirtual 216	android/net/Uri$Builder:appendPath	(Ljava/lang/String;)Landroid/net/Uri$Builder;
+    //   33: invokevirtual 222	android/net/Uri$Builder:build	()Landroid/net/Uri;
     //   36: astore_1
     //   37: aload_0
-    //   38: invokevirtual 228	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   38: invokevirtual 226	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   41: aload_1
-    //   42: invokevirtual 234	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   42: invokevirtual 232	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
     //   45: astore_0
-    //   46: new 236	java/util/Scanner
+    //   46: new 234	java/util/Scanner
     //   49: dup
     //   50: aload_0
-    //   51: invokespecial 239	java/util/Scanner:<init>	(Ljava/io/InputStream;)V
-    //   54: ldc 241
-    //   56: invokevirtual 245	java/util/Scanner:useDelimiter	(Ljava/lang/String;)Ljava/util/Scanner;
-    //   59: invokevirtual 248	java/util/Scanner:next	()Ljava/lang/String;
+    //   51: invokespecial 237	java/util/Scanner:<init>	(Ljava/io/InputStream;)V
+    //   54: ldc 239
+    //   56: invokevirtual 243	java/util/Scanner:useDelimiter	(Ljava/lang/String;)Ljava/util/Scanner;
+    //   59: invokevirtual 246	java/util/Scanner:next	()Ljava/lang/String;
     //   62: astore_1
     //   63: aload_0
     //   64: ifnull +7 -> 71
     //   67: aload_0
-    //   68: invokevirtual 253	java/io/InputStream:close	()V
+    //   68: invokevirtual 251	java/io/InputStream:close	()V
     //   71: sipush 4430
-    //   74: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   74: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   77: aload_1
     //   78: areturn
     //   79: astore_1
     //   80: aload_0
     //   81: ifnull +7 -> 88
     //   84: aload_0
-    //   85: invokevirtual 253	java/io/InputStream:close	()V
+    //   85: invokevirtual 251	java/io/InputStream:close	()V
     //   88: sipush 4430
-    //   91: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   91: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   94: aconst_null
     //   95: areturn
     //   96: astore_1
     //   97: aload_0
     //   98: ifnull +7 -> 105
     //   101: aload_0
-    //   102: invokevirtual 253	java/io/InputStream:close	()V
+    //   102: invokevirtual 251	java/io/InputStream:close	()V
     //   105: sipush 4430
-    //   108: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   108: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   111: aload_1
     //   112: athrow
     //   113: astore_0
     //   114: sipush 4430
-    //   117: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   120: aconst_null
     //   121: areturn
     // Local variable table:
@@ -320,43 +312,100 @@ public class GooglePlayServicesUtilLight
     return i;
   }
   
+  /* Error */
   @Deprecated
   public static int isGooglePlayServicesAvailable(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(4418);
-    try
-    {
-      paramContext.getResources().getString(R.string.common_google_play_services_unknown_issue);
-      label17:
-      if ((!"com.google.android.gms".equals(paramContext.getPackageName())) && (!zzbu.get()))
-      {
-        int i = MetadataValueReader.getGooglePlayServicesVersion(paramContext);
-        if (i == 0)
-        {
-          paramContext = new IllegalStateException("A required meta-data tag in your app's AndroidManifest.xml does not exist.  You must have the following declaration within the <application> element:     <meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />");
-          AppMethodBeat.o(4418);
-          throw paramContext;
-        }
-        if (i != GOOGLE_PLAY_SERVICES_VERSION_CODE)
-        {
-          paramInt = GOOGLE_PLAY_SERVICES_VERSION_CODE;
-          paramContext = new IllegalStateException(320 + "The meta-data tag in your app's AndroidManifest.xml does not have the right value.  Expected " + paramInt + " but found " + i + ".  You must have the following declaration within the <application> element:     <meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />");
-          AppMethodBeat.o(4418);
-          throw paramContext;
-        }
-      }
-      if ((!DeviceProperties.isWearableWithoutPlayStore(paramContext)) && (!DeviceProperties.isIoT(paramContext))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramInt = zza(paramContext, bool, paramInt);
-        AppMethodBeat.o(4418);
-        return paramInt;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      break label17;
-    }
+    // Byte code:
+    //   0: sipush 4418
+    //   3: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: invokevirtual 277	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   10: getstatic 282	com/google/android/gms/common/R$string:common_google_play_services_unknown_issue	I
+    //   13: invokevirtual 287	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   16: pop
+    //   17: ldc 14
+    //   19: aload_0
+    //   20: invokevirtual 173	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   23: invokevirtual 293	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   26: ifne +106 -> 132
+    //   29: getstatic 69	com/google/android/gms/common/GooglePlayServicesUtilLight:zzbu	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   32: invokevirtual 296	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   35: ifne +97 -> 132
+    //   38: aload_0
+    //   39: invokestatic 301	com/google/android/gms/common/internal/MetadataValueReader:getGooglePlayServicesVersion	(Landroid/content/Context;)I
+    //   42: istore_2
+    //   43: iload_2
+    //   44: ifne +22 -> 66
+    //   47: new 303	java/lang/IllegalStateException
+    //   50: dup
+    //   51: ldc_w 305
+    //   54: invokespecial 308	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   57: astore_0
+    //   58: sipush 4418
+    //   61: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: aload_0
+    //   65: athrow
+    //   66: iload_2
+    //   67: getstatic 52	com/google/android/gms/common/GooglePlayServicesUtilLight:GOOGLE_PLAY_SERVICES_VERSION_CODE	I
+    //   70: if_icmpeq +62 -> 132
+    //   73: getstatic 52	com/google/android/gms/common/GooglePlayServicesUtilLight:GOOGLE_PLAY_SERVICES_VERSION_CODE	I
+    //   76: istore_1
+    //   77: new 303	java/lang/IllegalStateException
+    //   80: dup
+    //   81: new 123	java/lang/StringBuilder
+    //   84: dup
+    //   85: sipush 320
+    //   88: invokespecial 125	java/lang/StringBuilder:<init>	(I)V
+    //   91: ldc_w 310
+    //   94: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: iload_1
+    //   98: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   101: ldc_w 312
+    //   104: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: iload_2
+    //   108: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   111: ldc_w 314
+    //   114: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 317	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokespecial 308	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   123: astore_0
+    //   124: sipush 4418
+    //   127: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   130: aload_0
+    //   131: athrow
+    //   132: aload_0
+    //   133: invokestatic 322	com/google/android/gms/common/util/DeviceProperties:isWearableWithoutPlayStore	(Landroid/content/Context;)Z
+    //   136: ifne +27 -> 163
+    //   139: aload_0
+    //   140: invokestatic 325	com/google/android/gms/common/util/DeviceProperties:isIoT	(Landroid/content/Context;)Z
+    //   143: ifne +20 -> 163
+    //   146: iconst_1
+    //   147: istore_3
+    //   148: aload_0
+    //   149: iload_3
+    //   150: iload_1
+    //   151: invokestatic 328	com/google/android/gms/common/GooglePlayServicesUtilLight:zza	(Landroid/content/Context;ZI)I
+    //   154: istore_1
+    //   155: sipush 4418
+    //   158: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   161: iload_1
+    //   162: ireturn
+    //   163: iconst_0
+    //   164: istore_3
+    //   165: goto -17 -> 148
+    //   168: astore 4
+    //   170: goto -153 -> 17
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	173	0	paramContext	Context
+    //   0	173	1	paramInt	int
+    //   42	66	2	i	int
+    //   147	18	3	bool	boolean
+    //   168	1	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   6	17	168	finally
   }
   
   @Deprecated
@@ -401,7 +450,6 @@ public class GooglePlayServicesUtilLight
     return false;
   }
   
-  @TargetApi(18)
   public static boolean isRestrictedUserProfile(Context paramContext)
   {
     AppMethodBeat.i(4439);
@@ -419,7 +467,6 @@ public class GooglePlayServicesUtilLight
   }
   
   @Deprecated
-  @VisibleForTesting
   public static boolean isSidewinderDevice(Context paramContext)
   {
     AppMethodBeat.i(4435);
@@ -462,7 +509,6 @@ public class GooglePlayServicesUtilLight
     }
   }
   
-  @TargetApi(21)
   static boolean isUninstalledAppPossiblyUpdating(Context paramContext, String paramString)
   {
     AppMethodBeat.i(4438);
@@ -537,7 +583,6 @@ public class GooglePlayServicesUtilLight
   }
   
   @Deprecated
-  @TargetApi(19)
   public static boolean uidHasPackageName(Context paramContext, int paramInt, String paramString)
   {
     AppMethodBeat.i(4423);
@@ -546,7 +591,6 @@ public class GooglePlayServicesUtilLight
     return bool;
   }
   
-  @VisibleForTesting
   private static int zza(Context paramContext, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(4419);
@@ -621,7 +665,7 @@ public class GooglePlayServicesUtilLight
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.GooglePlayServicesUtilLight
  * JD-Core Version:    0.7.0.1
  */

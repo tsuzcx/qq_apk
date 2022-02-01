@@ -11,7 +11,7 @@ final class c$3
 {
   c$3(c paramc) {}
   
-  public final List<String> aHP()
+  public final List<String> baM()
   {
     AppMethodBeat.i(20243);
     LinkedList localLinkedList = new LinkedList();

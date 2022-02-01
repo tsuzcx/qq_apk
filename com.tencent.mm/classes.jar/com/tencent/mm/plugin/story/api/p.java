@@ -8,58 +8,50 @@ import java.util.Map;
 
 public abstract class p
 {
-  public static b LEL;
-  public int LEK;
+  public static b Siw;
+  public int Siv;
   public long key;
   
   public p(long paramLong, int paramInt)
   {
     this.key = paramLong;
-    this.LEK = paramInt;
+    this.Siv = paramInt;
   }
   
   public static final class a
   {
-    private static a LEM;
-    private Map<Long, p> LEN;
+    private static a Six;
+    public Map<Long, p> Siy;
     
     public a()
     {
       AppMethodBeat.i(118428);
-      this.LEN = new HashMap();
+      this.Siy = new HashMap();
       AppMethodBeat.o(118428);
     }
     
-    public static a gbL()
+    public static a hvc()
     {
       AppMethodBeat.i(118429);
-      if (LEM == null) {
-        LEM = new a();
+      if (Six == null) {
+        Six = new a();
       }
-      a locala = LEM;
+      a locala = Six;
       AppMethodBeat.o(118429);
       return locala;
-    }
-    
-    public final p RA(long paramLong)
-    {
-      AppMethodBeat.i(118431);
-      p localp = (p)this.LEN.remove(Long.valueOf(paramLong));
-      AppMethodBeat.o(118431);
-      return localp;
     }
     
     public final void a(long paramLong, p paramp)
     {
       AppMethodBeat.i(118430);
-      this.LEN.put(Long.valueOf(paramLong), paramp);
+      this.Siy.put(Long.valueOf(paramLong), paramp);
       AppMethodBeat.o(118430);
     }
   }
   
   public static abstract interface b
   {
-    public abstract long C(List<String> paramList, int paramInt);
+    public abstract long U(List<String> paramList, int paramInt);
     
     public abstract long a(List<String> paramList, String paramString, int paramInt);
     
@@ -70,7 +62,7 @@ public abstract class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.p
  * JD-Core Version:    0.7.0.1
  */

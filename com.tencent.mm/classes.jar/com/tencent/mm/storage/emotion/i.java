@@ -24,16 +24,16 @@ public final class i
   
   public i(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(paramISQLiteDatabase, h.info, "EmojiSuggestDescInfo", null);
+    this(paramISQLiteDatabase, h.info, "EmojiSuggestDescInfo");
   }
   
-  public i(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  private i(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
   {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
     this.db = paramISQLiteDatabase;
   }
   
-  public final boolean bB(ArrayList<ArrayList<String>> paramArrayList)
+  public final boolean cc(ArrayList<ArrayList<String>> paramArrayList)
   {
     AppMethodBeat.i(105106);
     if (paramArrayList.isEmpty())

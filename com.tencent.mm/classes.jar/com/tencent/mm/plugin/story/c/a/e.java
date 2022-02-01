@@ -2,64 +2,64 @@ package com.tencent.mm.plugin.story.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.story.api.j;
+import com.tencent.mm.plugin.story.c.b;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryNewFeatureElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryNewFeatureElementConfig$StoryNewFeatureConfig;", "Lcom/tencent/mm/plugin/story/api/IStoryNewFeatureConfig;", "()V", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "visitorEnable", "", "StoryNewFeatureConfig", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryNewFeatureElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryNewFeatureElementConfig$StoryNewFeatureConfig;", "Lcom/tencent/mm/plugin/story/api/IStoryNewFeatureConfig;", "()V", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "visitorEnable", "", "StoryNewFeatureConfig", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
-  extends com.tencent.mm.plugin.story.c.b<a>
+  extends b<a>
   implements j
 {
-  public static final e LFp;
+  public static final e Sjb;
   
   static
   {
     AppMethodBeat.i(118610);
-    LFp = new e();
+    Sjb = new e();
     AppMethodBeat.o(118610);
   }
   
-  public final void aTZ()
+  public final void boD()
   {
     AppMethodBeat.i(118608);
     if ((BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG))
     {
-      ((a)aTX()).LFq = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUX, false);
+      ((a)boB()).Sjc = ((c)h.ax(c.class)).a(c.a.znB, false);
       AppMethodBeat.o(118608);
       return;
     }
-    ((a)aTX()).LFq = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUX, false);
+    ((a)boB()).Sjc = ((c)h.ax(c.class)).a(c.a.znB, false);
     AppMethodBeat.o(118608);
   }
   
-  public final boolean gbz()
+  public final boolean huS()
   {
     AppMethodBeat.i(118609);
-    boolean bool = ((a)aUb()).LFq;
+    boolean bool = ((a)boF()).Sjc;
     AppMethodBeat.o(118609);
     return bool;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryNewFeatureElementConfig$StoryNewFeatureConfig;", "", "visitorEnable", "", "(Z)V", "getVisitorEnable", "()Z", "setVisitorEnable", "component1", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryNewFeatureElementConfig$StoryNewFeatureConfig;", "", "visitorEnable", "", "(Z)V", "getVisitorEnable", "()Z", "setVisitorEnable", "component1", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    boolean LFq = false;
+    boolean Sjc = false;
     
     public final boolean equals(Object paramObject)
     {
-      if (this != paramObject)
+      if (this == paramObject) {}
+      do
       {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if (this.LFq != paramObject.LFq) {}
-        }
-      }
-      else {
         return true;
-      }
+        if (!(paramObject instanceof a)) {
+          return false;
+        }
+        paramObject = (a)paramObject;
+      } while (this.Sjc == paramObject.Sjc);
       return false;
     }
     
@@ -71,7 +71,7 @@ public final class e
     public final String toString()
     {
       AppMethodBeat.i(118606);
-      String str = "StoryNewFeatureConfig(visitorEnable=" + this.LFq + ")";
+      String str = "StoryNewFeatureConfig(visitorEnable=" + this.Sjc + ')';
       AppMethodBeat.o(118606);
       return str;
     }

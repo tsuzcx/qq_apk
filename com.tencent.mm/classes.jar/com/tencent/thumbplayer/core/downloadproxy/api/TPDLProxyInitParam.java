@@ -24,17 +24,17 @@ public class TPDLProxyInitParam
   public TPDLProxyInitParam(int paramInt, String paramString1, String paramString2, String paramString3)
   {
     this(paramInt, paramString1, paramString2);
-    AppMethodBeat.i(255481);
+    AppMethodBeat.i(228103);
     if (!TextUtils.isEmpty(paramString3)) {
       this.dataDir = paramString3;
     }
-    AppMethodBeat.o(255481);
+    AppMethodBeat.o(228103);
   }
   
   public TPDLProxyInitParam(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     this(paramInt, paramString1, paramString2, paramString4);
-    AppMethodBeat.i(255484);
+    AppMethodBeat.i(228109);
     if (!TextUtils.isEmpty(paramString3)) {
       this.cacheDir = paramString3;
     }
@@ -44,7 +44,7 @@ public class TPDLProxyInitParam
     if (!TextUtils.isEmpty(paramString5)) {
       this.configStr = paramString5;
     }
-    AppMethodBeat.o(255484);
+    AppMethodBeat.o(228109);
   }
   
   public String getAppVer()
@@ -79,7 +79,7 @@ public class TPDLProxyInitParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDLProxyInitParam
  * JD-Core Version:    0.7.0.1
  */

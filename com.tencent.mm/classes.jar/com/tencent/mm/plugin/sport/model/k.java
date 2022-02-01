@@ -3,54 +3,53 @@ package com.tencent.mm.plugin.sport.model;
 import android.content.Context;
 import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
 import com.tencent.mm.b.e;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.plugin.sport.PluginSport;
-import com.tencent.mm.protocal.protobuf.fis;
+import com.tencent.mm.protocal.protobuf.gff;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.i;
 import java.io.IOException;
 import java.io.InputStream;
-import kotlin.g.b.p;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class k
 {
-  private static long Lyg;
-  private static JSONObject Lyh;
-  private static a Lyi;
-  private static com.tencent.mm.an.i jxB;
+  private static long SbT;
+  private static JSONObject SbU;
+  private static a SbV;
+  private static com.tencent.mm.am.h maV;
   
   static
   {
     AppMethodBeat.i(149325);
-    jxB = new com.tencent.mm.an.i()
+    maV = new com.tencent.mm.am.h()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.p paramAnonymousp)
       {
         int i = 1;
         AppMethodBeat.i(149318);
-        if ((paramAnonymousq instanceof d))
+        if ((paramAnonymousp instanceof d))
         {
-          com.tencent.mm.kernel.h.aGY().b(1947, k.gaU());
+          com.tencent.mm.kernel.h.aZW().b(1947, k.hul());
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            paramAnonymousString = ((d)paramAnonymousq).LxP;
-            Log.i("MicroMsg.Sport.SportConfigLogic", "onSceneEnd config=%s", new Object[] { paramAnonymousString.RJE });
-            k.bcI(paramAnonymousString.RJE);
+            paramAnonymousString = ((d)paramAnonymousp).SbC;
+            Log.i("MicroMsg.Sport.SportConfigLogic", "onSceneEnd config=%s", new Object[] { paramAnonymousString.YGY });
+            k.bbw(paramAnonymousString.YGY);
           }
         }
         for (;;)
         {
           try
           {
-            paramAnonymousString = k.gaS();
-            if (!n.gaC()) {
+            paramAnonymousString = k.huj();
+            if (!p.htT()) {
               continue;
             }
             paramAnonymousInt1 = i;
@@ -60,19 +59,19 @@ public final class k
           {
             continue;
           }
-          paramAnonymousString = k.gaS().toString();
-          paramAnonymousq = m.Lyn;
-          m.ls("KEY_LAST_REQUEST_CONFIG_STRING", paramAnonymousString);
-          ((PluginSport)com.tencent.mm.kernel.h.ag(PluginSport.class)).getDeviceStepManager().bcH(paramAnonymousString);
-          com.tencent.e.h.ZvG.be(new Runnable()
+          paramAnonymousString = k.huj().toString();
+          paramAnonymousp = n.Scc;
+          n.na("KEY_LAST_REQUEST_CONFIG_STRING", paramAnonymousString);
+          ((PluginSport)com.tencent.mm.kernel.h.az(PluginSport.class)).getDeviceStepManager().bbv(paramAnonymousString);
+          com.tencent.threadpool.h.ahAA.bm(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(221392);
-              if (k.gaV() != null) {
-                k.gaV().bWp();
+              AppMethodBeat.i(263942);
+              if (k.hum() != null) {
+                k.hum().cwC();
               }
-              AppMethodBeat.o(221392);
+              AppMethodBeat.o(263942);
             }
           });
           AppMethodBeat.o(149318);
@@ -84,33 +83,52 @@ public final class k
     AppMethodBeat.o(149325);
   }
   
-  public static void a(a parama)
+  public static void EC(boolean paramBoolean)
   {
-    Lyi = parama;
-  }
-  
-  public static void bcI(String paramString)
-  {
-    AppMethodBeat.i(149321);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(149321);
-      return;
+    AppMethodBeat.i(149320);
+    Object localObject = huj();
+    int i;
+    if (paramBoolean) {
+      i = 1;
     }
     try
     {
-      Lyh = new JSONObject(paramString);
-      AppMethodBeat.o(149321);
-      return;
+      for (;;)
+      {
+        ((JSONObject)localObject).put("checkWeSportInstall", i);
+        label23:
+        localObject = ((JSONObject)localObject).toString();
+        n localn = n.Scc;
+        n.na("KEY_LAST_REQUEST_CONFIG_STRING", (String)localObject);
+        ((PluginSport)com.tencent.mm.kernel.h.az(PluginSport.class)).getDeviceStepManager().bbv((String)localObject);
+        com.tencent.threadpool.h.ahAA.bm(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(263927);
+            if (k.hum() != null) {
+              k.hum().cwC();
+            }
+            AppMethodBeat.o(263927);
+          }
+        });
+        AppMethodBeat.o(149320);
+        return;
+        i = 0;
+      }
     }
-    catch (Exception paramString)
+    catch (JSONException localJSONException)
     {
-      Lyh = null;
-      AppMethodBeat.o(149321);
+      break label23;
     }
   }
   
-  private static void bz(JSONObject paramJSONObject)
+  public static void a(a parama)
+  {
+    SbV = parama;
+  }
+  
+  private static void bR(JSONObject paramJSONObject)
   {
     int j = 1;
     AppMethodBeat.i(149323);
@@ -118,12 +136,12 @@ public final class k
     {
       if (MMApplicationContext.isMainProcess())
       {
-        if (!n.gaC()) {
+        if (!p.htT()) {
           break label83;
         }
         i = 1;
         if (paramJSONObject.optInt("checkWeSportInstall", 0) != i) {
-          if (!n.gaC()) {
+          if (!p.htT()) {
             break label88;
           }
         }
@@ -134,9 +152,9 @@ public final class k
       {
         paramJSONObject.put("checkWeSportInstall", i);
         paramJSONObject = paramJSONObject.toString();
-        m localm = m.Lyn;
-        m.ls("KEY_LAST_REQUEST_CONFIG_STRING", paramJSONObject);
-        f.Iyx.idkeyStat(323L, 5L, 1L, false);
+        n localn = n.Scc;
+        n.na("KEY_LAST_REQUEST_CONFIG_STRING", paramJSONObject);
+        f.Ozc.idkeyStat(323L, 5L, 1L, false);
         AppMethodBeat.o(149323);
         return;
         i = 0;
@@ -150,42 +168,63 @@ public final class k
     }
   }
   
-  public static boolean gaR()
+  public static void bbw(String paramString)
+  {
+    AppMethodBeat.i(149321);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(149321);
+      return;
+    }
+    try
+    {
+      SbU = new JSONObject(paramString);
+      AppMethodBeat.o(149321);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      SbU = null;
+      AppMethodBeat.o(149321);
+    }
+  }
+  
+  public static boolean hui()
   {
     AppMethodBeat.i(149319);
-    m localm;
-    if (Lyg == 0L)
+    n localn;
+    if (SbT == 0L)
     {
-      localm = m.Lyn;
-      Lyg = m.bv("KEY_LAST_REQUEST_CONFIG_TIME_LONG", 0L);
+      localn = n.Scc;
+      SbT = n.bH("KEY_LAST_REQUEST_CONFIG_TIME_LONG", 0L);
     }
-    if (System.currentTimeMillis() - Lyg > 86400000L)
+    if (cn.bDw() - SbT > 86400000L)
     {
-      Lyg = System.currentTimeMillis();
-      localm = m.Lyn;
-      m.bw("KEY_LAST_REQUEST_CONFIG_TIME_LONG", Lyg);
+      SbT = cn.bDw();
+      localn = n.Scc;
+      n.bI("KEY_LAST_REQUEST_CONFIG_TIME_LONG", SbT);
       Log.i("MicroMsg.Sport.SportConfigLogic", "start to request sport config");
-      com.tencent.mm.kernel.h.aGY().a(1947, jxB);
-      com.tencent.mm.kernel.h.aGY().a(new d(), 0);
+      com.tencent.mm.kernel.h.aZW().a(1947, maV);
+      com.tencent.mm.kernel.h.aZW().a(new d(), 0);
       AppMethodBeat.o(149319);
       return true;
     }
-    Log.i("MicroMsg.Sport.SportConfigLogic", "last request time is %s", new Object[] { n.GN(Lyg) });
+    Log.i("MicroMsg.Sport.SportConfigLogic", "last request time is %s", new Object[] { p.iY(SbT) });
     AppMethodBeat.o(149319);
     return false;
   }
   
-  public static JSONObject gaS()
+  public static JSONObject huj()
   {
     AppMethodBeat.i(149322);
     String str2;
-    if (Lyh == null)
+    if (SbU == null)
     {
-      localObject1 = m.Lyn;
-      p.k("KEY_LAST_REQUEST_CONFIG_STRING", "key");
-      p.k("", "defaultString");
-      str2 = m.gaY().decodeString("KEY_LAST_REQUEST_CONFIG_STRING", "");
-      p.j(str2, "stepMMKV.decodeString(key, defaultString)");
+      localObject1 = n.Scc;
+      kotlin.g.b.s.u("KEY_LAST_REQUEST_CONFIG_STRING", "key");
+      kotlin.g.b.s.u("", "defaultString");
+      str2 = n.hur().decodeString("KEY_LAST_REQUEST_CONFIG_STRING", "");
+      kotlin.g.b.s.s(str2, "stepMMKV.decodeString(key, defaultString)");
       str1 = "";
       localObject1 = str1;
       if (Util.isNullOrNil(str2)) {}
@@ -193,8 +232,8 @@ public final class k
     try
     {
       localObject1 = new JSONObject(str2);
-      Lyh = (JSONObject)localObject1;
-      bz((JSONObject)localObject1);
+      SbU = (JSONObject)localObject1;
+      bR((JSONObject)localObject1);
       localObject1 = "server config";
     }
     catch (Exception localException)
@@ -204,25 +243,25 @@ public final class k
         Object localObject2 = str1;
       }
     }
-    if (Lyh == null)
+    if (SbU == null)
     {
-      localObject1 = gaT();
-      Lyh = (JSONObject)localObject1;
-      bz((JSONObject)localObject1);
+      localObject1 = huk();
+      SbU = (JSONObject)localObject1;
+      bR((JSONObject)localObject1);
       localObject1 = "asset";
     }
-    if (Lyh == null)
+    if (SbU == null)
     {
-      Lyh = new JSONObject();
+      SbU = new JSONObject();
       localObject1 = "new";
     }
-    Log.i("MicroMsg.Sport.SportConfigLogic", "get sport config from %s: %s", new Object[] { localObject1, Lyh.toString() });
-    Object localObject1 = Lyh;
+    Log.i("MicroMsg.Sport.SportConfigLogic", "get sport config from %s: %s", new Object[] { localObject1, SbU.toString() });
+    Object localObject1 = SbU;
     AppMethodBeat.o(149322);
     return localObject1;
   }
   
-  private static JSONObject gaT()
+  private static JSONObject huk()
   {
     AppMethodBeat.i(149324);
     Object localObject4 = MMApplicationContext.getContext().getAssets();
@@ -279,56 +318,16 @@ public final class k
       }
       catch (IOException localIOException3)
       {
-        break label120;
+        break label122;
       }
     }
     AppMethodBeat.o(149324);
     return localObject3;
   }
   
-  public static void zl(boolean paramBoolean)
-  {
-    AppMethodBeat.i(149320);
-    Object localObject = gaS();
-    int i;
-    if (paramBoolean) {
-      i = 1;
-    }
-    try
-    {
-      for (;;)
-      {
-        ((JSONObject)localObject).put("checkWeSportInstall", i);
-        label24:
-        localObject = ((JSONObject)localObject).toString();
-        m localm = m.Lyn;
-        m.ls("KEY_LAST_REQUEST_CONFIG_STRING", (String)localObject);
-        ((PluginSport)com.tencent.mm.kernel.h.ag(PluginSport.class)).getDeviceStepManager().bcH((String)localObject);
-        com.tencent.e.h.ZvG.be(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(221693);
-            if (k.gaV() != null) {
-              k.gaV().bWp();
-            }
-            AppMethodBeat.o(221693);
-          }
-        });
-        AppMethodBeat.o(149320);
-        return;
-        i = 0;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      break label24;
-    }
-  }
-  
   public static abstract interface a
   {
-    public abstract void bWp();
+    public abstract void cwC();
   }
 }
 

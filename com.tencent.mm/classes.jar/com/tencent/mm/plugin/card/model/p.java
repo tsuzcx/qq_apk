@@ -1,55 +1,54 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.am;
-import com.tencent.mm.protocal.protobuf.an;
-import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.protocal.protobuf.ao;
+import com.tencent.mm.protocal.protobuf.ap;
+import com.tencent.mm.protocal.protobuf.wf;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class p
-  extends q
+  extends com.tencent.mm.am.p
   implements m
 {
-  private i callback;
-  private final d rr;
-  public String tpZ;
-  public int tqa;
-  public String tqb;
+  private h callback;
+  private final c rr;
+  public String wuA;
+  public String wuy;
+  public int wuz;
   
-  public p(LinkedList<uo> paramLinkedList, int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public p(LinkedList<wf> paramLinkedList, int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
     AppMethodBeat.i(112802);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new am();
-    ((d.a)localObject).lBV = new an();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/acceptcardlistfromapp";
-    ((d.a)localObject).funcId = 1049;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (am)d.b.b(this.rr.lBR);
-    ((am)localObject).REB = paramLinkedList;
-    ((am)localObject).fUN = paramInt1;
-    ((am)localObject).REx = paramString1;
-    ((am)localObject).REw = paramString2;
-    ((am)localObject).REy = paramInt2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ao();
+    ((c.a)localObject).otF = new ap();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/acceptcardlistfromapp";
+    ((c.a)localObject).funcId = 1049;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ao)c.b.b(this.rr.otB);
+    ((ao)localObject).YBg = paramLinkedList;
+    ((ao)localObject).iaK = paramInt1;
+    ((ao)localObject).YBc = paramString1;
+    ((ao)localObject).YBb = paramString2;
+    ((ao)localObject).YBd = paramInt2;
     AppMethodBeat.o(112802);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(112803);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(112803);
     return i;
@@ -66,11 +65,11 @@ public final class p
     Log.i("MicroMsg.NetSceneGetCardListFromApp", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (an)d.c.b(this.rr.lBS);
-      this.tpZ = params.tpZ;
-      this.tqa = params.tqa;
-      this.tqb = params.tqb;
-      Log.e("MicroMsg.NetSceneGetCardListFromApp", "onGYNetEnd, ret_code = " + this.tqa + " ret_msg = " + this.tqb);
+      params = (ap)c.c.b(this.rr.otC);
+      this.wuy = params.wuy;
+      this.wuz = params.wuz;
+      this.wuA = params.wuA;
+      Log.e("MicroMsg.NetSceneGetCardListFromApp", "onGYNetEnd, ret_code = " + this.wuz + " ret_msg = " + this.wuA);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112804);

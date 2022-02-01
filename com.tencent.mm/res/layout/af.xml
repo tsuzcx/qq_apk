@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/g8b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-    <ListView android:id="@id/hhi" android:paddingBottom="60.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/g8b" style="@style/np" />
-    <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/bcg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/g8b" />
-    <ImageView android:id="@id/hn9" android:background="@drawable/c5t" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bcg" />
-    <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/hhk" android:visibility="gone" android:layout_width="@dimen/e" android:layout_height="fill_parent" android:layout_below="@id/bcg" android:layout_alignParentRight="true" />
-    <com.tencent.mm.ui.contact.LabelContainerView android:orientation="vertical" android:id="@id/hhh" android:background="@color/c" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/g" android:paddingRight="@dimen/ir" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bcg">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include layout="@layout/bpf" />
-            <com.tencent.mm.ui.base.MMTagPanel android:id="@id/bcb" android:paddingTop="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/k5" flowlayout:verticalSpacing="@dimen/g" />
-        </LinearLayout>
-    </com.tencent.mm.ui.contact.LabelContainerView>
-    <LinearLayout android:gravity="center_horizontal" android:id="@id/g02" android:background="@color/c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bcg">
-        <TextView android:id="@id/g01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/aa" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/is" android:textColor="@color/a2t" android:gravity="center_vertical" android:id="@id/hhg" android:background="@color/a" android:padding="@dimen/ir" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableRight="@raw/list_deletetext_icon" android:drawablePadding="@dimen/ir" android:layout_below="@id/bcg" />
-    <LinearLayout android:gravity="center_vertical" android:background="@color/d" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/irx" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <CheckBox android:layout_gravity="center_vertical" android:id="@id/irw" android:background="@drawable/ahw" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginLeft="@dimen/k5" android:layout_marginRight="@dimen/k5" />
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b0" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/ao" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/b2" />
-    </LinearLayout>
-</RelativeLayout>
+<ScrollView android:id="@id/anw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" style="?dj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.appcompat.widget.ButtonBarLayout android:gravity="bottom" android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingTop="4.0dip" android:paddingRight="12.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layoutDirection="locale">
+        <Button android:id="@android:id/button3" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?dh" />
+        <android.widget.Space android:id="@id/jza" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <Button android:id="@android:id/button2" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?dg" />
+        <Button android:id="@android:id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?di" />
+    </androidx.appcompat.widget.ButtonBarLayout>
+</ScrollView>

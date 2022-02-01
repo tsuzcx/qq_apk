@@ -1,161 +1,160 @@
 package com.tencent.mm.plugin.music.b;
 
 import android.os.Looper;
-import com.tencent.mm.bb.c;
-import com.tencent.mm.f.a.z;
-import com.tencent.mm.plugin.music.f.a.d;
-import com.tencent.mm.plugin.music.f.a.d.a;
-import com.tencent.mm.plugin.music.f.a.e;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.ac;
+import com.tencent.mm.aw.c;
+import com.tencent.mm.plugin.music.e.a.d;
+import com.tencent.mm.plugin.music.e.a.d.a;
+import com.tencent.mm.plugin.music.e.a.e;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class j
   implements k, d
 {
-  protected boolean FOD;
-  protected d.a FOE;
-  protected f FOs = null;
-  
-  public final void YP(int paramInt)
-  {
-    Log.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent with errCode:%d", new Object[] { Integer.valueOf(paramInt) });
-    z localz = new z();
-    localz.fvC.action = 4;
-    localz.fvC.state = "error";
-    localz.fvC.errCode = e.Zx(paramInt);
-    localz.fvC.errMsg = e.BW(paramInt);
-    localz.fvC.fmF = fdh();
-    localz.fvC.appId = getAppId();
-    EventCenter.instance.asyncPublish(localz, Looper.getMainLooper());
-    if (this.FOs != null) {
-      this.FOs.onError(fdh());
-    }
-  }
+  protected f LJo = null;
+  protected boolean LJy;
+  protected d.a LJz;
   
   public final void a(f paramf)
   {
-    this.FOs = paramf;
+    this.LJo = paramf;
   }
   
-  public final boolean bny()
+  public final void adb(int paramInt)
+  {
+    Log.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent with errCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    ac localac = new ac();
+    localac.hzX.action = 4;
+    localac.hzX.state = "error";
+    localac.hzX.errCode = e.adK(paramInt);
+    localac.hzX.errMsg = e.Cl(paramInt);
+    localac.hzX.hqQ = gmk();
+    localac.hzX.appId = getAppId();
+    localac.asyncPublish(Looper.getMainLooper());
+    if (this.LJo != null) {
+      this.LJo.onError(gmk());
+    }
+  }
+  
+  public final boolean bLl()
   {
     return false;
   }
   
-  public final void fde() {}
+  public abstract String getAppId();
   
-  public boolean fdf()
+  public final void gmh() {}
+  
+  public boolean gmi()
   {
     return false;
   }
   
-  public final c fdg()
+  public final c gmj()
   {
     return null;
   }
   
-  public abstract String fdh();
+  public abstract String gmk();
   
-  public final void fdi()
+  public final void gml()
   {
     Log.i("MicroMsg.Audio.BaseAudioPlayer", "onPrepareEvent");
-    z localz = new z();
-    localz.fvC.action = 7;
-    localz.fvC.state = "canplay";
-    localz.fvC.duration = getDuration();
-    localz.fvC.fmF = fdh();
-    localz.fvC.appId = getAppId();
-    EventCenter.instance.asyncPublish(localz, Looper.getMainLooper());
+    ac localac = new ac();
+    localac.hzX.action = 7;
+    localac.hzX.state = "canplay";
+    localac.hzX.duration = getDuration();
+    localac.hzX.hqQ = gmk();
+    localac.hzX.appId = getAppId();
+    localac.asyncPublish(Looper.getMainLooper());
   }
   
-  public final void fdj()
+  public final void gmm()
   {
-    Log.i("MicroMsg.Audio.BaseAudioPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(bnx()) });
-    z localz = new z();
-    localz.fvC.action = 0;
-    localz.fvC.state = "play";
-    localz.fvC.fmF = fdh();
-    localz.fvC.appId = getAppId();
-    EventCenter.instance.asyncPublish(localz, Looper.getMainLooper());
-    if (this.FOs != null) {
-      this.FOs.aRh(fdh());
+    Log.i("MicroMsg.Audio.BaseAudioPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(bLk()) });
+    ac localac = new ac();
+    localac.hzX.action = 0;
+    localac.hzX.state = "play";
+    localac.hzX.hqQ = gmk();
+    localac.hzX.appId = getAppId();
+    localac.asyncPublish(Looper.getMainLooper());
+    if (this.LJo != null) {
+      this.LJo.aNZ(gmk());
     }
   }
   
-  public final void fdk()
+  public final void gmn()
   {
     Log.i("MicroMsg.Audio.BaseAudioPlayer", "onResumeEvent");
-    z localz = new z();
-    localz.fvC.action = 1;
-    localz.fvC.state = "play";
-    localz.fvC.fmF = fdh();
-    localz.fvC.appId = getAppId();
-    EventCenter.instance.asyncPublish(localz, Looper.getMainLooper());
-    if (this.FOs != null) {
-      this.FOs.aRh(fdh());
+    ac localac = new ac();
+    localac.hzX.action = 1;
+    localac.hzX.state = "play";
+    localac.hzX.hqQ = gmk();
+    localac.hzX.appId = getAppId();
+    localac.asyncPublish(Looper.getMainLooper());
+    if (this.LJo != null) {
+      this.LJo.aNZ(gmk());
     }
   }
   
-  public final void fdl()
+  public final void gmo()
   {
     Log.i("MicroMsg.Audio.BaseAudioPlayer", "onPauseEvent");
-    z localz = new z();
-    localz.fvC.action = 2;
-    localz.fvC.state = "pause";
-    localz.fvC.fmF = fdh();
-    localz.fvC.appId = getAppId();
-    EventCenter.instance.asyncPublish(localz, Looper.getMainLooper());
-    if (this.FOs != null) {
-      this.FOs.aRi(fdh());
+    ac localac = new ac();
+    localac.hzX.action = 2;
+    localac.hzX.state = "pause";
+    localac.hzX.hqQ = gmk();
+    localac.hzX.appId = getAppId();
+    localac.asyncPublish(Looper.getMainLooper());
+    if (this.LJo != null) {
+      this.LJo.aOa(gmk());
     }
   }
   
-  public final void fdm()
+  public final void gmp()
   {
     Log.i("MicroMsg.Audio.BaseAudioPlayer", "onStopEvent");
-    z localz = new z();
-    localz.fvC.action = 3;
-    localz.fvC.state = "stop";
-    localz.fvC.fmF = fdh();
-    localz.fvC.appId = getAppId();
-    EventCenter.instance.asyncPublish(localz, Looper.getMainLooper());
-    if (this.FOs != null) {
-      this.FOs.azE(fdh());
+    ac localac = new ac();
+    localac.hzX.action = 3;
+    localac.hzX.state = "stop";
+    localac.hzX.hqQ = gmk();
+    localac.hzX.appId = getAppId();
+    localac.asyncPublish(Looper.getMainLooper());
+    if (this.LJo != null) {
+      this.LJo.atL(gmk());
     }
   }
   
-  public final void fdn()
+  public final void gmq()
   {
     Log.i("MicroMsg.Audio.BaseAudioPlayer", "onSeekToEvent");
-    z localz = new z();
-    localz.fvC.action = 6;
-    localz.fvC.state = "seeked";
-    localz.fvC.fmF = fdh();
-    localz.fvC.appId = getAppId();
-    EventCenter.instance.asyncPublish(localz, Looper.getMainLooper());
+    ac localac = new ac();
+    localac.hzX.action = 6;
+    localac.hzX.state = "seeked";
+    localac.hzX.hqQ = gmk();
+    localac.hzX.appId = getAppId();
+    localac.asyncPublish(Looper.getMainLooper());
   }
   
-  public final void fdo()
+  public final void gmr()
   {
     Log.i("MicroMsg.Audio.BaseAudioPlayer", "onCompleteEvent");
-    z localz = new z();
-    localz.fvC.action = 5;
-    localz.fvC.state = "ended";
-    localz.fvC.fmF = fdh();
-    localz.fvC.appId = getAppId();
-    EventCenter.instance.asyncPublish(localz, Looper.getMainLooper());
-    if (this.FOs != null) {
-      this.FOs.hL(fdh());
+    ac localac = new ac();
+    localac.hzX.action = 5;
+    localac.hzX.state = "ended";
+    localac.hzX.hqQ = gmk();
+    localac.hzX.appId = getAppId();
+    localac.asyncPublish(Looper.getMainLooper());
+    if (this.LJo != null) {
+      this.LJo.jm(gmk());
     }
   }
   
-  public final void fdp()
+  public final void gms()
   {
     Log.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent");
-    YP(-1);
+    adb(-1);
   }
-  
-  public abstract String getAppId();
   
   public final void onPhoneCall(int paramInt)
   {
@@ -167,12 +166,12 @@ public abstract class j
       do
       {
         return;
-      } while (!this.FOD);
-      this.FOD = false;
+      } while (!this.LJy);
+      this.LJy = false;
       resume();
       return;
-    } while (!bnx());
-    this.FOD = true;
+    } while (!bLk());
+    this.LJy = true;
     pause();
   }
 }

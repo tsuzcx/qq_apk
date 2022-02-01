@@ -1,76 +1,64 @@
 package com.tencent.mm.aw;
 
-import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.storage.MStorage;
-import com.tencent.mm.storagebase.h;
 
 public final class b
-  extends MStorage
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS getcontactinfov2 ( username text  PRIMARY KEY , inserttime long  , type int  , lastgettime int  , reserved1 int  , reserved2 int  , reserved3 text  , reserved4 text  ) " };
-  h lvy;
-  
-  public b(h paramh)
+  public static boolean OL(String paramString)
   {
-    this.lvy = paramh;
-  }
-  
-  public final boolean VK(String paramString)
-  {
-    AppMethodBeat.i(20515);
-    if (this.lvy.delete("getcontactinfov2", "username= ?", new String[] { String.valueOf(paramString) }) > 0)
+    AppMethodBeat.i(137007);
+    f localf = a.bLn();
+    if ((localf != null) && (localf.oOB.equals(paramString)))
     {
-      doNotify(paramString);
-      AppMethodBeat.o(20515);
+      AppMethodBeat.o(137007);
       return true;
     }
-    AppMethodBeat.o(20515);
+    AppMethodBeat.o(137007);
     return false;
   }
   
-  public final boolean a(a parama)
+  public static boolean bLp()
   {
-    AppMethodBeat.i(20514);
-    parama.cUP = -1;
-    ContentValues localContentValues = new ContentValues();
-    if ((parama.cUP & 0x1) != 0) {
-      localContentValues.put("username", parama.getUsername());
-    }
-    if ((parama.cUP & 0x2) != 0) {
-      localContentValues.put("inserttime", Long.valueOf(parama.lMC));
-    }
-    if ((parama.cUP & 0x4) != 0) {
-      localContentValues.put("type", Integer.valueOf(parama.type));
-    }
-    if ((parama.cUP & 0x8) != 0) {
-      localContentValues.put("lastgettime", Integer.valueOf(parama.lMD));
-    }
-    if ((parama.cUP & 0x10) != 0) {
-      localContentValues.put("reserved1", Integer.valueOf(parama.lvr));
-    }
-    if ((parama.cUP & 0x20) != 0) {
-      localContentValues.put("reserved2", Integer.valueOf(parama.lME));
-    }
-    if ((parama.cUP & 0x40) != 0) {
-      localContentValues.put("reserved3", parama.blx());
-    }
-    if ((parama.cUP & 0x80) != 0) {
-      localContentValues.put("reserved4", parama.bfh());
-    }
-    if ((int)this.lvy.replace("getcontactinfov2", "username", localContentValues) != -1)
+    AppMethodBeat.i(137004);
+    if ((a.bLm()) && (!a.bLk()))
     {
-      doNotify(parama.getUsername());
-      AppMethodBeat.o(20514);
+      a.bLh();
+      AppMethodBeat.o(137004);
       return true;
     }
-    AppMethodBeat.o(20514);
+    AppMethodBeat.o(137004);
+    return false;
+  }
+  
+  public static boolean bLq()
+  {
+    AppMethodBeat.i(137005);
+    if (a.bLk())
+    {
+      a.bLg();
+      AppMethodBeat.o(137005);
+      return true;
+    }
+    AppMethodBeat.o(137005);
+    return false;
+  }
+  
+  public static boolean bLr()
+  {
+    AppMethodBeat.i(137006);
+    if (a.bLm())
+    {
+      a.bLi();
+      AppMethodBeat.o(137006);
+      return true;
+    }
+    AppMethodBeat.o(137006);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.aw.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,89 +2,113 @@ package kotlin.l.b.a.b.d.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
-import kotlin.a.ae;
-import kotlin.g.b.ab;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.g.b.z;
-import kotlin.l.b.a.b.b.an;
-import kotlin.l.b.a.b.d.a.b.i;
-import kotlin.l.b.a.b.d.a.c.h;
+import kotlin.a.ak;
+import kotlin.a.p;
+import kotlin.g.b.af;
+import kotlin.g.b.ag;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.b.a.b.b.av;
 import kotlin.l.b.a.b.d.a.e.l;
-import kotlin.l.b.a.b.j.b.g;
-import kotlin.l.b.a.b.m.aj;
-import kotlin.l.n;
+import kotlin.l.b.a.b.f.f;
+import kotlin.l.b.a.b.l.m;
+import kotlin.l.b.a.b.m.al;
+import kotlin.l.e;
+import kotlin.l.o;
 
 public class b
-  implements i
+  implements kotlin.l.b.a.b.d.a.b.g
 {
-  final kotlin.l.b.a.b.f.b aaLC;
-  private final an aaLe;
-  private final kotlin.l.b.a.b.l.f aaSJ;
-  final kotlin.l.b.a.b.d.a.e.b aaSK;
-  private final boolean aaSL;
+  private final av aiHP;
+  final kotlin.l.b.a.b.f.c aiIl;
+  private final kotlin.l.b.a.b.l.h aiQP;
+  final kotlin.l.b.a.b.d.a.e.b aiQQ;
+  private final boolean aiQR;
   
   static
   {
     AppMethodBeat.i(57654);
-    cMt = new n[] { (n)ab.a(new z(ab.bO(b.class), "type", "getType()Lorg/jetbrains/kotlin/types/SimpleType;")) };
+    aYe = new o[] { (o)ai.a((af)new ag((e)ai.cz(b.class), "type", "getType()Lorg/jetbrains/kotlin/types/SimpleType;")) };
     AppMethodBeat.o(57654);
   }
   
-  public b(final h paramh, kotlin.l.b.a.b.d.a.e.a parama, kotlin.l.b.a.b.f.b paramb)
+  public b(kotlin.l.b.a.b.d.a.c.h paramh, kotlin.l.b.a.b.d.a.e.a parama, kotlin.l.b.a.b.f.c paramc)
   {
     AppMethodBeat.i(57657);
-    this.aaLC = paramb;
-    if (parama != null)
+    this.aiIl = paramc;
+    if (parama == null)
     {
-      paramb = (an)paramh.aaUp.aaTS.a((l)parama);
-      this.aaLe = paramb;
-      this.aaSJ = paramh.aaUp.aaFH.av((kotlin.g.a.a)new a(this, paramh));
-      if (parama == null) {
-        break label132;
+      paramc = null;
+      if (paramc != null) {
+        break label139;
+      }
+      paramc = av.aiHu;
+      s.s(paramc, "NO_SOURCE");
+      label46:
+      this.aiHP = paramc;
+      this.aiQP = paramh.aiSp.aiBu.cq((kotlin.g.a.a)new a(paramh, this));
+      if (parama != null) {
+        break label147;
+      }
+      paramh = null;
+      label85:
+      this.aiQQ = paramh;
+      if ((parama == null) || (parama.kqt() != true)) {
+        break label177;
       }
     }
-    label132:
-    for (paramh = (kotlin.l.b.a.b.d.a.e.b)kotlin.a.j.f((Iterable)parama.iGU());; paramh = null)
+    label139:
+    label147:
+    label177:
+    for (boolean bool = true;; bool = false)
     {
-      this.aaSK = paramh;
-      this.aaSL = false;
+      this.aiQR = bool;
       AppMethodBeat.o(57657);
       return;
-      paramb = an.aaKE;
-      p.j(paramb, "SourceElement.NO_SOURCE");
+      paramc = paramh.aiSp.aiRS.a((l)parama);
       break;
+      paramc = (av)paramc;
+      break label46;
+      paramh = parama.kqr();
+      if (paramh == null)
+      {
+        paramh = null;
+        break label85;
+      }
+      paramh = (kotlin.l.b.a.b.d.a.e.b)p.f((Iterable)paramh);
+      break label85;
     }
   }
   
-  public final an iDZ()
+  public final av knm()
   {
-    return this.aaLe;
+    return this.aiHP;
   }
   
-  public final kotlin.l.b.a.b.f.b iFy()
+  public final kotlin.l.b.a.b.f.c koY()
   {
-    return this.aaLC;
+    return this.aiIl;
   }
   
-  public Map<kotlin.l.b.a.b.f.f, g<?>> iGd()
+  public Map<f, kotlin.l.b.a.b.j.b.g<?>> kpA()
   {
     AppMethodBeat.i(57656);
-    Map localMap = ae.iBR();
+    Map localMap = ak.kkZ();
     AppMethodBeat.o(57656);
     return localMap;
   }
   
-  public final boolean iHY()
+  public final boolean kqt()
   {
-    return this.aaSL;
+    return this.aiQR;
   }
   
   static final class a
-    extends q
-    implements kotlin.g.a.a<aj>
+    extends u
+    implements kotlin.g.a.a<al>
   {
-    a(b paramb, h paramh)
+    a(kotlin.l.b.a.b.d.a.c.h paramh, b paramb)
     {
       super();
     }
@@ -92,7 +116,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.a.b
  * JD-Core Version:    0.7.0.1
  */

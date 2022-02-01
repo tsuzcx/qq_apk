@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a;
 
 import android.content.Context;
 import com.tencent.mm.plugin.appbrand.jsapi.video.videoview.AbstractVideoTextureView;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/videoview/exo/AppBrandExoVideoTextureView;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/videoview/AbstractVideoTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "createMediaPlayer", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/exo/AppBrandNonSameLayerExoMediaPlayer;", "luggage-commons-jsapi-video-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/videoview/exo/AppBrandExoVideoTextureView;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/videoview/AbstractVideoTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "createMediaPlayer", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/exo/LuggageNonSameLayerExoMediaPlayer;", "luggage-commons-jsapi-video-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends AbstractVideoTextureView
 {

@@ -1,73 +1,73 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.xc;
-import com.tencent.mm.protocal.protobuf.xd;
+import com.tencent.mm.protocal.protobuf.drj;
+import com.tencent.mm.protocal.protobuf.drk;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class ab
-  extends q
-  implements m
+  extends w
 {
-  public xd Imi;
-  private i callback;
-  private d kwO;
+  public drk Ojw;
+  String Ojx;
+  private String Ojy;
+  private h callback;
+  private long ihV;
+  private c nao;
   
-  public ab(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5)
+  public ab(String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(67877);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new xc();
-    ((d.a)localObject).lBV = new xd();
-    ((d.a)localObject).funcId = 1779;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/transferoldpaycheck";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.kwO = ((d.a)localObject).bgN();
-    localObject = (xc)d.b.b(this.kwO.lBR);
-    ((xc)localObject).fHb = paramString1;
-    ((xc)localObject).Inf = paramString2;
-    ((xc)localObject).Ine = paramString3;
-    ((xc)localObject).ImY = paramString4;
-    ((xc)localObject).Ipu = paramLong;
-    ((xc)localObject).SiM = paramString5;
-    Log.i("MicroMsg.NetSceneRemittancePayCheck", "reqKey: %s, transfer: %s, fee: %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong) });
-    AppMethodBeat.o(67877);
+    AppMethodBeat.i(288792);
+    this.ihV = 0L;
+    Log.i("Micromsg.NetSceneRemittanceMsgCheck", "transferID: %s, amount:%s msgCheckStr:%s", new Object[] { paramString1, Long.valueOf(paramLong), paramString2 });
+    this.Ojx = paramString1;
+    this.ihV = paramLong;
+    this.Ojy = paramString2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new drj();
+    ((c.a)localObject).otF = new drk();
+    ((c.a)localObject).funcId = 6230;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/transfermsgcheck";
+    this.nao = ((c.a)localObject).bEF();
+    localObject = (drj)c.b.b(this.nao.otB);
+    ((drj)localObject).Okt = paramString1;
+    ((drj)localObject).ihV = paramLong;
+    ((drj)localObject).aaXg = paramString2;
+    AppMethodBeat.o(288792);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(67878);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
-    AppMethodBeat.o(67878);
+    AppMethodBeat.i(288799);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
+    AppMethodBeat.o(288799);
     return i;
   }
   
   public final int getType()
   {
-    return 1779;
+    return 6230;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(67879);
-    Log.i("MicroMsg.NetSceneRemittancePayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.Imi = ((xd)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneRemittancePayCheck", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.Imi.fwx), this.Imi.tVo });
+    AppMethodBeat.i(288801);
+    Log.i("Micromsg.NetSceneRemittanceMsgCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.Ojw = ((drk)c.c.b(((c)params).otC));
+    Log.i("Micromsg.NetSceneRemittanceMsgCheck", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.Ojw.wuz), this.Ojw.wuA });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(67879);
+    AppMethodBeat.o(288801);
   }
 }
 

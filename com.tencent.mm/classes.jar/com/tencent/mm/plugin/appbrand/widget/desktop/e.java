@@ -1,81 +1,84 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.plugin.appbrand.appusage.ag;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.appusage.af;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.plugin.appbrand.widget.recent.h;
+import com.tencent.mm.plugin.appbrand.widget.recent.j;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.v;
+import kotlin.Metadata;
+import kotlin.a.ab;
+import kotlin.a.p;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandMyDesktopViewModel;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopViewModel;", "()V", "collectionStorage", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "getCollectionStorage", "()Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "getInitialDataList", "", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopView$AppBrandItem;", "getNextPageDataList", "", "callback", "Lkotlin/Function1;", "title", "", "viewType", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandMyDesktopViewModel;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopViewModel;", "()V", "collectionStorage", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "getCollectionStorage", "()Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "getInitialDataList", "", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopView$AppBrandItem;", "getNextPageDataList", "", "callback", "Lkotlin/Function1;", "title", "", "viewType", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends c
 {
-  private ag rqo;
+  private af uAz;
   
-  public final String aBd()
+  public final String aUa()
   {
-    AppMethodBeat.i(275201);
-    String str = a.ba(MMApplicationContext.getContext(), au.i.appbrand_desktop_my);
-    p.j(str, "ResourceHelper.getString…ring.appbrand_desktop_my)");
-    AppMethodBeat.o(275201);
+    AppMethodBeat.i(324203);
+    String str = a.bt(MMApplicationContext.getContext(), ba.i.appbrand_desktop_my);
+    s.s(str, "getString(MMApplicationC…ring.appbrand_desktop_my)");
+    AppMethodBeat.o(324203);
     return str;
   }
   
-  public final int cnA()
+  public final void ab(b<? super List<? extends AppBrandDesktopView.a>, ah> paramb)
+  {
+    AppMethodBeat.i(324224);
+    s.u(paramb, "callback");
+    paramb.invoke((List)ab.aivy);
+    AppMethodBeat.o(324224);
+  }
+  
+  public final int cPD()
   {
     return 2;
   }
   
-  public final List<AppBrandDesktopView.a> cnB()
+  public final List<AppBrandDesktopView.a> cPE()
   {
-    AppMethodBeat.i(275205);
+    AppMethodBeat.i(324219);
     ArrayList localArrayList = new ArrayList();
-    if (this.rqo == null) {
-      this.rqo = ((ag)com.tencent.mm.plugin.appbrand.widget.recent.c.rEB.cqf());
+    if (this.uAz == null) {
+      this.uAz = ((af)com.tencent.mm.plugin.appbrand.widget.recent.c.uPM.cSK());
     }
-    Object localObject = this.rqo;
-    if (localObject != null) {}
-    for (localObject = ((ag)localObject).a(h.rEJ.count, h.rEJ.nQx); localObject != null; localObject = null)
+    Object localObject1 = this.uAz;
+    if (localObject1 == null) {}
+    for (localObject1 = null; localObject1 != null; localObject1 = ((af)localObject1).a(h.uPW.count, h.uPW.qQm))
     {
-      localObject = kotlin.a.j.l((Iterable)localObject);
-      if (localObject == null) {
+      localObject1 = p.l((Iterable)localObject1);
+      if (localObject1 == null) {
         break;
       }
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)((Iterator)localObject).next();
+        Object localObject2 = (LocalUsageInfo)((Iterator)localObject1).next();
         AppBrandDesktopView.a locala = new AppBrandDesktopView.a(2);
-        locala.g(localLocalUsageInfo);
+        locala.uAl = ((LocalUsageInfo)localObject2);
+        localObject2 = ah.aiuX;
         localArrayList.add(locala);
       }
     }
-    localObject = (List)localArrayList;
-    AppMethodBeat.o(275205);
-    return localObject;
-  }
-  
-  public final void z(b<? super List<? extends AppBrandDesktopView.a>, x> paramb)
-  {
-    AppMethodBeat.i(275206);
-    p.k(paramb, "callback");
-    paramb.invoke((List)v.aaAd);
-    AppMethodBeat.o(275206);
+    localObject1 = (List)localArrayList;
+    AppMethodBeat.o(324219);
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.e
  * JD-Core Version:    0.7.0.1
  */

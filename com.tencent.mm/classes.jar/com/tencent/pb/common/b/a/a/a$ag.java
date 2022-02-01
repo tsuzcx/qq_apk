@@ -1,47 +1,47 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$ag
   extends e
 {
-  public long DPJ = 0L;
+  public long Hnt = 0L;
   public int roomId = 0;
   
   public a$ag()
   {
-    this.ccR = -1;
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (this.roomId != 0) {
-      i = j + b.bM(1, this.roomId);
-    }
-    j = i;
-    if (this.DPJ != 0L) {
-      j = i + b.p(2, this.DPJ);
-    }
-    return j;
+    this.dXv = -1;
   }
   
   public final void a(b paramb)
   {
     if (this.roomId != 0) {
-      paramb.bJ(1, this.roomId);
+      paramb.cF(1, this.roomId);
     }
-    if (this.DPJ != 0L) {
-      paramb.r(2, this.DPJ);
+    if (this.Hnt != 0L) {
+      paramb.t(2, this.Hnt);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (this.roomId != 0) {
+      i = j + b.cJ(1, this.roomId);
+    }
+    j = i;
+    if (this.Hnt != 0L) {
+      j = i + b.q(2, this.Hnt);
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ag
  * JD-Core Version:    0.7.0.1
  */

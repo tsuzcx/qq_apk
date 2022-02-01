@@ -23,7 +23,21 @@ public class LatLngBounds
   static
   {
     AppMethodBeat.i(173196);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new Parcelable.Creator()
+    {
+      private static LatLngBounds a(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(218021);
+        paramAnonymousParcel = LatLngBounds.readFromParcel(paramAnonymousParcel);
+        AppMethodBeat.o(218021);
+        return paramAnonymousParcel;
+      }
+      
+      private static LatLngBounds[] a(int paramAnonymousInt)
+      {
+        return new LatLngBounds[paramAnonymousInt];
+      }
+    };
     AppMethodBeat.o(173196);
   }
   
@@ -515,7 +529,7 @@ public class LatLngBounds
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.LatLngBounds
  * JD-Core Version:    0.7.0.1
  */

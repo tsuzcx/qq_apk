@@ -40,7 +40,7 @@ public class WloginSigInfo
   static
   {
     AppMethodBeat.i(88102);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new WloginSigInfo.1();
     AppMethodBeat.o(88102);
   }
   
@@ -334,7 +334,7 @@ public class WloginSigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.sharemem.WloginSigInfo
  * JD-Core Version:    0.7.0.1
  */

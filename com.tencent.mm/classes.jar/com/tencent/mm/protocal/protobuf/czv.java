@@ -3,77 +3,89 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class czv
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String title;
-  public String url;
+  public String businessId = "";
+  public String dataPath;
+  public String value;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91547);
+    AppMethodBeat.i(122514);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.f(1, this.title);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.value != null) {
+        paramVarArgs.g(1, this.value);
       }
-      if (this.url != null) {
-        paramVarArgs.f(2, this.url);
+      if (this.dataPath != null) {
+        paramVarArgs.g(2, this.dataPath);
       }
-      AppMethodBeat.o(91547);
+      if (this.businessId != null) {
+        paramVarArgs.g(3, this.businessId);
+      }
+      AppMethodBeat.o(122514);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label274;
+      if (this.value == null) {
+        break label330;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.g(1, this.title) + 0;; paramInt = 0)
+    label330:
+    for (int i = i.a.a.b.b.a.h(1, this.value) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.url != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.url);
+      paramInt = i;
+      if (this.dataPath != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.dataPath);
       }
-      AppMethodBeat.o(91547);
+      i = paramInt;
+      if (this.businessId != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.businessId);
+      }
+      AppMethodBeat.o(122514);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(91547);
+        AppMethodBeat.o(122514);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         czv localczv = (czv)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91547);
+          AppMethodBeat.o(122514);
           return -1;
         case 1: 
-          localczv.title = locala.abFh.readString();
-          AppMethodBeat.o(91547);
+          localczv.value = locala.ajGk.readString();
+          AppMethodBeat.o(122514);
+          return 0;
+        case 2: 
+          localczv.dataPath = locala.ajGk.readString();
+          AppMethodBeat.o(122514);
           return 0;
         }
-        localczv.url = locala.abFh.readString();
-        AppMethodBeat.o(91547);
+        localczv.businessId = locala.ajGk.readString();
+        AppMethodBeat.o(122514);
         return 0;
       }
-      AppMethodBeat.o(91547);
+      AppMethodBeat.o(122514);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.czv
  * JD-Core Version:    0.7.0.1
  */

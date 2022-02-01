@@ -11,9 +11,9 @@ public final class a
   
   static
   {
-    AppMethodBeat.i(255152);
+    AppMethodBeat.i(242940);
     a = Uri.parse("content://com.tencent.mm.sdk.plugin.provider/sharedpref");
-    AppMethodBeat.o(255152);
+    AppMethodBeat.o(242940);
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.msgquote.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.jm;
+import com.tencent.mm.autogen.mmdata.rpt.ly;
 
 public class b
 {
-  public static void c(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
+  public static void e(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
   {
     AppMethodBeat.i(88802);
-    jm localjm = new jm();
-    localjm.geB = paramLong1;
-    localjm.gLc = paramLong2;
-    localjm.gzn = paramLong3;
-    localjm.gLd = paramLong4;
-    localjm.bpa();
+    ly locally = new ly();
+    locally.ila = paramLong1;
+    locally.iUJ = paramLong2;
+    locally.iLz = paramLong3;
+    locally.jay = paramLong4;
+    locally.bMH();
     AppMethodBeat.o(88802);
   }
 }

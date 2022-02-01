@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.sns.b.o;
+import com.tencent.mm.plugin.sns.c.p;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -14,9 +14,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class FriendSnsPreference
   extends IconPreference
 {
-  private String VVo = null;
-  private Bitmap VVp = null;
-  private long VVq;
+  private String adzM = null;
+  private Bitmap adzN = null;
+  private long adzO;
   private Context context;
   
   public FriendSnsPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -30,28 +30,15 @@ public final class FriendSnsPreference
     this.context = paramContext;
   }
   
-  public final void Vv(long paramLong)
-  {
-    AppMethodBeat.i(33139);
-    this.VVo = null;
-    this.VVp = null;
-    this.VQS = -1;
-    this.VVq = paramLong;
-    if ((this.VVq != 0L) && (this.EPM != null)) {
-      ((o)h.ae(o.class)).a(this.VVq, this.EPM, this.mContext.hashCode());
-    }
-    AppMethodBeat.o(33139);
-  }
-  
-  public final void byl(String paramString)
+  public final void bzH(String paramString)
   {
     AppMethodBeat.i(33138);
-    this.VVp = null;
-    this.VQS = -1;
-    this.VVo = paramString;
-    this.VVq = 0L;
-    if (this.EPM != null) {
-      a.b.c(this.EPM, paramString);
+    this.adzN = null;
+    this.adva = -1;
+    this.adzM = paramString;
+    this.adzO = 0L;
+    if (this.KKj != null) {
+      a.b.g(this.KKj, paramString);
     }
     AppMethodBeat.o(33138);
   }
@@ -60,13 +47,26 @@ public final class FriendSnsPreference
   {
     AppMethodBeat.i(33140);
     super.onBindView(paramView);
-    if ((this.VVo != null) && (h.aHB())) {
-      a.b.c(this.EPM, this.VVo);
+    if ((this.adzM != null) && (h.baz())) {
+      a.b.g(this.KKj, this.adzM);
     }
-    if ((this.VVq != 0L) && (this.EPM != null)) {
-      ((o)h.ae(o.class)).a(this.VVq, this.EPM, this.mContext.hashCode());
+    if ((this.adzO != 0L) && (this.KKj != null)) {
+      ((p)h.ax(p.class)).a(this.adzO, this.KKj, this.mContext.hashCode());
     }
     AppMethodBeat.o(33140);
+  }
+  
+  public final void zD(long paramLong)
+  {
+    AppMethodBeat.i(33139);
+    this.adzM = null;
+    this.adzN = null;
+    this.adva = -1;
+    this.adzO = paramLong;
+    if ((this.adzO != 0L) && (this.KKj != null)) {
+      ((p)h.ax(p.class)).a(this.adzO, this.KKj, this.mContext.hashCode());
+    }
+    AppMethodBeat.o(33139);
   }
 }
 

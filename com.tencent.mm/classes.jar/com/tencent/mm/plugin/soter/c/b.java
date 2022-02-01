@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.soter.c;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,97 +21,97 @@ import com.tencent.mm.plugin.soter.a.a;
 import com.tencent.mm.plugin.soter.a.b;
 import com.tencent.mm.plugin.soter.a.c;
 import com.tencent.mm.plugin.soter.a.f;
-import com.tencent.mm.plugin.soter.d.k;
+import com.tencent.mm.plugin.soter.model.g;
+import com.tencent.mm.plugin.soter.model.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.soter.a.b.e;
 import com.tencent.soter.a.g.b.a;
+import com.tencent.soter.core.c.j;
 import java.lang.ref.WeakReference;
 
 public final class b
   extends c
 {
-  com.tencent.soter.a.d.a Byu;
-  boolean Lwe;
-  d Lwf;
-  ImageView Lwg;
-  private final int Lwh;
-  private int Lwi;
-  private final long Lwj;
-  Animation Lwk;
-  Animation Lwl;
-  Runnable Lwm;
+  com.tencent.soter.a.d.a HfW;
+  boolean RZD;
+  com.tencent.mm.ui.widget.a.e RZE;
+  ImageView RZF;
+  private final int RZG;
+  private int RZH;
+  private final long RZI;
+  Animation RZJ;
+  Animation RZK;
+  Runnable RZL;
   Handler mMainHandler;
-  TextView qph;
+  TextView ttK;
   
-  public b(WeakReference<Activity> paramWeakReference, com.tencent.mm.plugin.soter.d.j paramj, k paramk, Handler paramHandler)
+  public b(WeakReference<Activity> paramWeakReference, g paramg, h paramh, Handler paramHandler)
   {
-    super(paramWeakReference, paramj, paramk, paramHandler);
+    super(paramWeakReference, paramg, paramh, paramHandler);
     AppMethodBeat.i(145958);
-    this.Lwe = false;
-    this.Byu = null;
-    this.Lwf = null;
-    this.Lwg = null;
-    this.qph = null;
-    this.Lwh = 3;
-    this.Lwi = 0;
-    this.Lwj = 500L;
-    this.Lwk = null;
-    this.Lwl = null;
+    this.RZD = false;
+    this.HfW = null;
+    this.RZE = null;
+    this.RZF = null;
+    this.ttK = null;
+    this.RZG = 3;
+    this.RZH = 0;
+    this.RZI = 500L;
+    this.RZJ = null;
+    this.RZK = null;
     this.mMainHandler = new Handler(Looper.getMainLooper());
-    this.Lwm = new Runnable()
+    this.RZL = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(145957);
-        b.this.qph.setTextColor(b.this.qph.getResources().getColor(a.b.hint_color));
-        b.this.qph.setText(b.this.qph.getResources().getString(a.f.soter_mp_fingerprint_hint));
-        b.this.Lwg.setImageResource(a.c.fingerprint_luggage_icon);
+        b.this.ttK.setTextColor(b.this.ttK.getResources().getColor(a.b.hint_color));
+        b.this.ttK.setText(b.this.ttK.getResources().getString(a.f.soter_mp_fingerprint_hint));
+        b.this.RZF.setImageResource(a.c.fingerprint_luggage_icon);
         AppMethodBeat.o(145957);
       }
     };
     AppMethodBeat.o(145958);
   }
   
-  private boolean fZX()
+  private boolean hto()
   {
     AppMethodBeat.i(145960);
-    fZZ();
+    htq();
     Log.i("MicroMsg.SoterControllerFingerprint", "hy: auth key not valid or auth key not valid");
     com.tencent.soter.a.b.b local1 = new com.tencent.soter.a.b.b() {};
     Log.i("MicroMsg.SoterControllerFingerprint", "hy:mscene:" + this.mScene);
-    com.tencent.soter.a.a.a(local1, false, this.mScene, this.Lwu, this.Lwv);
+    com.tencent.soter.a.a.a(local1, false, this.mScene, this.RZT, this.RZU);
     AppMethodBeat.o(145960);
     return false;
   }
   
-  private void fZY()
+  private void htp()
   {
     AppMethodBeat.i(145962);
-    this.Byu = new com.tencent.soter.a.d.a();
+    this.HfW = new com.tencent.soter.a.d.a();
     com.tencent.soter.a.b.b local3 = new com.tencent.soter.a.b.b() {};
     com.tencent.soter.a.d.b local4 = new com.tencent.soter.a.d.b()
     {
-      public final void fZU()
+      public final void htl()
       {
         AppMethodBeat.i(145946);
         Log.v("MicroMsg.SoterControllerFingerprint", "alvinluo mp onStartAuthencation");
-        b.this.Lwe = true;
+        b.this.RZD = true;
         AppMethodBeat.o(145946);
       }
       
-      public final void fZV()
+      public final void htm()
       {
         AppMethodBeat.i(145948);
         Log.i("MicroMsg.SoterControllerFingerprint", "hy: mp on authen success");
-        b.this.Lwe = false;
-        b.this.Byu = null;
+        b.this.RZD = false;
+        b.this.HfW = null;
         b localb = b.this;
-        localb.qph.removeCallbacks(localb.Lwm);
-        localb.Lwg.setImageResource(a.c.fingerprint_luggage_icon_succes);
-        localb.qph.setTextColor(localb.qph.getResources().getColor(a.b.success_color));
-        localb.qph.setText(localb.qph.getResources().getString(a.f.soter_mp_fingerprint_success));
+        localb.ttK.removeCallbacks(localb.RZL);
+        localb.RZF.setImageResource(a.c.fingerprint_luggage_icon_succes);
+        localb.ttK.setTextColor(localb.ttK.getResources().getColor(a.b.success_color));
+        localb.ttK.setText(localb.ttK.getResources().getString(a.f.soter_mp_fingerprint_success));
         AppMethodBeat.o(145948);
       }
       
@@ -120,7 +119,7 @@ public final class b
       {
         AppMethodBeat.i(145950);
         Log.v("MicroMsg.SoterControllerFingerprint", "alvinluo mp onAuthenticationCancelled");
-        b.this.Byu = null;
+        b.this.HfW = null;
         AppMethodBeat.o(145950);
       }
       
@@ -137,21 +136,21 @@ public final class b
         Log.w("MicroMsg.SoterControllerFingerprint", "hy: mp user trying failed");
         b localb = b.this;
         String str = MMApplicationContext.getContext().getString(a.f.soter_fingerprint_unrecognized);
-        if (localb.Lwk == null) {
-          localb.Lwk = b.jdMethod_if(localb.Lwg.getContext());
+        if (localb.RZJ == null) {
+          localb.RZJ = b.jV(localb.RZF.getContext());
         }
-        if (localb.Lwl == null) {
-          localb.Lwl = b.jdMethod_if(localb.Lwg.getContext());
+        if (localb.RZK == null) {
+          localb.RZK = b.jV(localb.RZF.getContext());
         }
-        localb.Lwk.setAnimationListener(new b.8(localb, str));
-        localb.qph.startAnimation(localb.Lwk);
-        localb.Lwg.startAnimation(localb.Lwl);
+        localb.RZJ.setAnimationListener(new b.8(localb, str));
+        localb.ttK.startAnimation(localb.RZJ);
+        localb.RZF.startAnimation(localb.RZK);
         b.this.mMainHandler.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(145945);
-            b.this.Lwe = false;
+            b.this.RZD = false;
             b.a(b.this, true);
             AppMethodBeat.o(145945);
           }
@@ -166,17 +165,17 @@ public final class b
         AppMethodBeat.o(145947);
       }
     };
-    b.a locala = new b.a().aAy(this.mScene).mf(MMApplicationContext.getContext());
-    com.tencent.soter.a.d.a locala1 = this.Byu;
-    locala.Ztz.Byu = locala1;
-    locala = locala.bDg(this.Lws.ByB);
-    locala.Ztz.Ztu = null;
-    locala.Ztz.Ztw = local4;
-    com.tencent.soter.a.a.a(local3, locala.Ztz);
+    b.a locala = new b.a().aHk(this.mScene).os(MMApplicationContext.getContext());
+    com.tencent.soter.a.d.a locala1 = this.HfW;
+    locala.ahys.HfW = locala1;
+    locala = locala.bFL(this.RZR.Hgd);
+    locala.ahys.ahyi = null;
+    locala.ahys.ahyp = local4;
+    com.tencent.soter.a.a.a(local3, locala.ahys);
     AppMethodBeat.o(145962);
   }
   
-  public static Animation jdMethod_if(Context paramContext)
+  public static Animation jV(Context paramContext)
   {
     AppMethodBeat.i(145965);
     if (paramContext == null)
@@ -194,48 +193,46 @@ public final class b
     return paramContext;
   }
   
-  @TargetApi(23)
-  public final void aI()
+  public final void bB()
   {
     AppMethodBeat.i(145959);
-    if (!com.tencent.soter.core.a.mb(MMApplicationContext.getContext()))
+    if (!com.tencent.soter.core.a.oo(MMApplicationContext.getContext()))
     {
-      this.Lwt.errCode = 90011;
-      this.Lwt.errMsg = "no fingerprint enrolled";
-      gad();
+      this.RZS.errCode = 90011;
+      this.RZS.errMsg = "no fingerprint enrolled";
+      htu();
     }
     try
     {
       if (MMApplicationContext.getContext().checkSelfPermission("android.permission.USE_FINGERPRINT") != 0)
       {
-        com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a()).bm(new String[] { "android.permission.USE_FINGERPRINT" });
-        com.tencent.mm.hellhoundlib.a.a.b(this, locala.aFh(), "com/tencent/mm/plugin/soter/controller/SoterControllerFingerprint", "onPostCreate", "(Landroid/os/Bundle;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-        requestPermissions((String[])locala.sf(0), ((Integer)locala.sf(1)).intValue());
+        com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a()).cG(new String[] { "android.permission.USE_FINGERPRINT" });
+        com.tencent.mm.hellhoundlib.a.a.b(this, locala.aYi(), "com/tencent/mm/plugin/soter/controller/SoterControllerFingerprint", "onPostCreate", "(Landroid/os/Bundle;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
+        requestPermissions((String[])locala.sb(0), ((Integer)locala.sb(1)).intValue());
         com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/soter/controller/SoterControllerFingerprint", "onPostCreate", "(Landroid/os/Bundle;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
         AppMethodBeat.o(145959);
         return;
       }
-      this.Lwe = true;
+      this.RZD = true;
       AppMethodBeat.o(145959);
       return;
     }
     catch (NoSuchMethodError localNoSuchMethodError)
     {
       Log.i("MicroMsg.SoterControllerFingerprint", "hy: not implements the checkSelfPermission. permission already given");
-      this.Lwe = true;
+      this.RZD = true;
       AppMethodBeat.o(145959);
     }
   }
   
-  @TargetApi(16)
   public final void onPause()
   {
     AppMethodBeat.i(145964);
-    if ((this.Lwe) && (this.Byu != null)) {
-      this.Byu.Is(true);
+    if ((this.RZD) && (this.HfW != null)) {
+      this.HfW.Ou(true);
     }
-    if ((this.Lwf != null) && (this.Lwf.isShowing())) {
-      this.Lwf.dismiss();
+    if ((this.RZE != null) && (this.RZE.isShowing())) {
+      this.RZE.dismiss();
     }
     AppMethodBeat.o(145964);
   }
@@ -248,15 +245,15 @@ public final class b
       if ((paramArrayOfString.length > 0) && (paramArrayOfInt.length > 0) && ("android.permission.USE_FINGERPRINT".equals(paramArrayOfString[0])) && (paramArrayOfInt[0] == 0))
       {
         Log.i("MicroMsg.SoterControllerFingerprint", "hy: permission granted");
-        fZX();
-        this.Lwe = true;
+        hto();
+        this.RZD = true;
         AppMethodBeat.o(145961);
         return;
       }
       Log.w("MicroMsg.SoterControllerFingerprint", "hy: permission not granted");
-      this.Lwt.errCode = 90002;
-      this.Lwt.errMsg = "user not grant to use fingerprint";
-      gad();
+      this.RZS.errCode = 90002;
+      this.RZS.errMsg = "user not grant to use fingerprint";
+      htu();
     }
     AppMethodBeat.o(145961);
   }
@@ -264,15 +261,15 @@ public final class b
   public final void onResume()
   {
     AppMethodBeat.i(145963);
-    if (this.Lwe) {
-      fZX();
+    if (this.RZD) {
+      hto();
     }
     AppMethodBeat.o(145963);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.c.b
  * JD-Core Version:    0.7.0.1
  */

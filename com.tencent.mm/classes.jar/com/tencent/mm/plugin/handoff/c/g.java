@@ -1,638 +1,369 @@
 package com.tencent.mm.plugin.handoff.c;
 
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.j;
-import com.tencent.mm.ipcinvoker.m;
-import com.tencent.mm.ipcinvoker.type.IPCBoolean;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.appbrand.config.GetOnLineInfoInfoResult;
-import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.plugin.handoff.a.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelsimple.ac;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.handoff.model.HandOff;
-import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.plugin.handoff.model.b;
+import com.tencent.mm.protocal.protobuf.fhq;
+import com.tencent.mm.protocal.protobuf.fhr;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import kotlin.Metadata;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy;", "Lcom/tencent/mm/plugin/handoff/api/IHandOffService;", "()V", "currentWebViewUI", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;", "onlineInfo", "Lcom/tencent/mm/plugin/appbrand/config/GetOnLineInfoInfoResult;", "add", "", "handOff", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "addHandOffFromBall", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "addMultiTask", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "addWindowFromBall", "allList", "cache", "cancelUpload", "id", "", "del", "key", "delAllFloatingWindow", "fixHandOffIfNeed", "getHandOffById", "getHandOffByKey", "isSupportOpenInComputer", "", "mod", "modFromBallInfo", "notifyUserStatusChange", "onAppBackground", "onAppForeground", "onFileCreate", "onFileDestroy", "onQBFileCreate", "onQBFileDestroy", "onQBFileUpdate", "onWebViewCreate", "onWebViewDestroy", "openMultiTask", "processRequest", "message", "registerWebViewUI", "webViewUI", "Lcom/tencent/mm/ui/MMActivity;", "removeMultiTask", "restoreFromBallInfoList", "ballInfoList", "", "restoreFromMultiTaskList", "multiTaskInfoList", "sendOpenRequest", "syncUserStatus", "tryEnterFloatBallInternal", "enterFloatBall", "updateMultiTask", "uploadFail", "arg", "uploadStart", "info", "Lcom/tencent/mm/pluginsdk/model/app/AppAttachInfo;", "uploadSuccess", "appId", "sdkVersion", "", "mediaId", "cdnURL", "aesKey", "uploading", "uploadedSize", "", "upsert", "AddHandOffFromBallTask", "AddTask", "AddWindowFromBallTask", "AllListTask", "CancelUploadTask", "Companion", "DelAllFloatingWindowTask", "DelTask", "FixHandOffTask", "GetCacheTask", "GetHandOffByIdTask", "GetHandOffByKeyTask", "ModFromBallInfoTask", "ModTask", "OnFileCreateTask", "OnFileDestroyTask", "OnWebViewCreateTask", "OnWebViewDestroyTask", "SendOpenRequestTask", "SetCacheTask", "SyncUserStatusTask", "UploadFail", "UploadSuccessCDNTask", "UploadSuccessCGITask", "UploadingTask", "UpsertTask", "plugin-handoff_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/handoff/service/StatusManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "looper", "Landroid/os/Looper;", "(Landroid/os/Looper;)V", "addList", "", "", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "allList", "", "delList", "exists", "", "handOffEnable", "getHandOffEnable", "()Z", "handOffSeq", "", "handler", "com/tencent/mm/plugin/handoff/service/StatusManager$handler$1", "Lcom/tencent/mm/plugin/handoff/service/StatusManager$handler$1;", "ids", "maxRetryCount", "", "modList", "msgQueue", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "networkAvailable", "networkStatus", "nextSeq", "queueWorking", "retryCount", "add", "", "handOff", "handOffList", "apply", "checkMsgQueue", "checkNetworkAvailableMM", "clearStatus", "commit", "del", "incSeq", "init", "launchSendTask", "mod", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "retry", "sendHandOff", "opCode", "msg", "sendOpenRequest", "uploadFail", "uploadSuccess", "uploading", "Companion", "plugin-handoff_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
-  implements a
+  implements com.tencent.mm.am.h
 {
-  public static final g.d Dsy;
-  private GetOnLineInfoInfoResult Dsk;
+  public static final g.a Jmd;
+  final Map<String, HandOff> JlC;
+  final Map<String, HandOff> JlD;
+  final Map<String, Boolean> JlE;
+  private boolean Jme;
+  final ConcurrentLinkedQueue<String> Jmf;
+  private boolean Jmg;
+  private String Jmh;
+  private final int Jmi;
+  final Map<String, HandOff> Jmj;
+  final Map<String, String> Jmk;
+  private Collection<? extends HandOff> Jml;
+  private long Jmm;
+  private long Jmn;
+  private final b Jmo;
+  private int retryCount;
   
   static
   {
-    AppMethodBeat.i(10428);
-    Dsy = new g.d((byte)0);
-    AppMethodBeat.o(10428);
+    AppMethodBeat.i(10447);
+    Jmd = new g.a((byte)0);
+    AppMethodBeat.o(10447);
   }
   
-  public g()
+  public g(final Looper paramLooper)
   {
-    AppMethodBeat.i(248485);
-    this.Dsk = new GetOnLineInfoInfoResult();
-    eCa();
-    AppMethodBeat.o(248485);
+    AppMethodBeat.i(266205);
+    this.Jmf = new ConcurrentLinkedQueue();
+    this.Jmg = true;
+    this.Jmh = "4G";
+    this.Jmi = 3;
+    this.JlC = ((Map)new LinkedHashMap());
+    this.Jmj = ((Map)new LinkedHashMap());
+    this.JlD = ((Map)new LinkedHashMap());
+    this.JlE = ((Map)new LinkedHashMap());
+    this.Jmk = ((Map)new LinkedHashMap());
+    this.Jmo = new b(this, paramLooper);
+    AppMethodBeat.o(266205);
   }
   
-  private final void eCa()
+  private final void aIh(String paramString)
   {
-    AppMethodBeat.i(248460);
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new IPCVoid(), p.class, (f)new ag(this));
-    AppMethodBeat.o(248460);
+    AppMethodBeat.i(10438);
+    if (!z.bBb())
+    {
+      if ((WeChatEnvironment.hasDebugger()) || (fKe()))
+      {
+        for (this.Jmn = this.Jmm; n.a((CharSequence)paramString, (CharSequence)"<![CSEQ]>", false); this.Jmn += 1L)
+        {
+          paramString = n.bW(paramString, "<![CSEQ]>", String.valueOf(this.Jmn));
+          if (this.Jmn == 9223372036854775807L) {
+            this.Jmn = 0L;
+          }
+        }
+        Log.i("HandOff.StatusManager", kotlin.g.b.s.X("send handoff: ", paramString));
+        if (!ac.bO(paramString, "HandOffMaster"))
+        {
+          retry();
+          AppMethodBeat.o(10438);
+        }
+      }
+      else
+      {
+        Log.i("HandOff.StatusManager", "debugger: " + WeChatEnvironment.hasDebugger() + ", handoff enabled: " + fKe() + ", don't send handoff: " + paramString);
+        this.Jmf.poll();
+        fKf();
+        AppMethodBeat.o(10438);
+      }
+    }
+    else
+    {
+      Log.i("HandOff.StatusManager", kotlin.g.b.s.X("device is ex device, don't send handoff: ", paramString));
+      this.Jmf.poll();
+      fKf();
+    }
+    AppMethodBeat.o(10438);
   }
   
-  public final void P(BallInfo paramBallInfo)
+  private final void eKT()
   {
-    AppMethodBeat.i(10412);
-    p.k(paramBallInfo, "ballInfo");
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramBallInfo, a.class, (f)v.Dsz);
-    AppMethodBeat.o(10412);
+    AppMethodBeat.i(10436);
+    this.JlC.clear();
+    this.Jmj.clear();
+    this.JlD.clear();
+    this.JlE.clear();
+    this.Jmk.clear();
+    AppMethodBeat.o(10436);
   }
   
-  public final void a(GetOnLineInfoInfoResult paramGetOnLineInfoInfoResult)
+  private static boolean fKe()
   {
-    AppMethodBeat.i(248474);
-    p.k(paramGetOnLineInfoInfoResult, "onlineInfo");
-    Log.i("HandOffServiceProxy", "notifyUserStatusChange: ".concat(String.valueOf(paramGetOnLineInfoInfoResult)));
-    this.Dsk = paramGetOnLineInfoInfoResult;
-    AppMethodBeat.o(248474);
-  }
-  
-  public final void a(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(10407);
-    p.k(paramHandOff, "handOff");
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramHandOff, l.class, (f)ad.DsH);
-    AppMethodBeat.o(10407);
-  }
-  
-  public final boolean a(String paramString, com.tencent.mm.pluginsdk.model.app.c paramc)
-  {
-    AppMethodBeat.i(10417);
-    p.k(paramString, "id");
-    p.k(paramc, "info");
-    Log.w("HandOffServiceProxy", "uploadStart should only be called in MM process!");
-    AppMethodBeat.o(10417);
-    return false;
-  }
-  
-  public final boolean aA(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(10418);
-    p.k(paramString, "id");
-    paramString = b.ip("id", paramString);
-    p.k("uploadedSize", "$this$bundleTo");
-    paramString = b.a(new c[] { paramString, new c((kotlin.g.a.b)new b.b("uploadedSize", paramLong)) });
-    boolean bool = ((IPCBoolean)j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramString, t.class)).value;
-    AppMethodBeat.o(10418);
+    AppMethodBeat.i(266213);
+    boolean bool = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yVb, false);
+    AppMethodBeat.o(266213);
     return bool;
   }
   
-  public final HandOff aLl(String paramString)
+  private final void fKf()
   {
-    AppMethodBeat.i(248467);
-    p.k(paramString, "key");
-    paramString = (HandOff)j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new IPCString(paramString), i.class);
-    AppMethodBeat.o(248467);
-    return paramString;
-  }
-  
-  public final HandOff aLm(String paramString)
-  {
-    AppMethodBeat.i(10411);
-    p.k(paramString, "id");
-    paramString = (HandOff)j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new IPCString(paramString), h.class);
-    AppMethodBeat.o(10411);
-    return paramString;
-  }
-  
-  public final void aLn(String paramString)
-  {
-    AppMethodBeat.i(248470);
-    p.k(paramString, "key");
-    AppMethodBeat.o(248470);
-  }
-  
-  public final void aLo(String paramString)
-  {
-    AppMethodBeat.i(10422);
-    p.k(paramString, "id");
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new IPCString(paramString), c.class, (f)y.DsC);
-    AppMethodBeat.o(10422);
-  }
-  
-  public final void ap(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(10420);
-    p.k(paramString1, "id");
-    p.k(paramString2, "cdnURL");
-    p.k(paramString3, "aesKey");
-    paramString1 = b.a(new c[] { b.ip("id", paramString1), b.ip("cdnURL", paramString2), b.ip("aesKey", paramString3) });
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramString1, r.class, (f)ai.DsM);
-    AppMethodBeat.o(10420);
-  }
-  
-  public final void b(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(10408);
-    p.k(paramHandOff, "handOff");
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramHandOff, m.class, (f)ae.DsI);
-    AppMethodBeat.o(10408);
-  }
-  
-  public final void c(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(10409);
-    p.k(paramHandOff, "handOff");
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramHandOff, j.class, (f)ab.DsF);
-    AppMethodBeat.o(10409);
-  }
-  
-  public final void d(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(10410);
-    p.k(paramHandOff, "handOff");
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramHandOff, k.class, (f)ac.DsG);
-    AppMethodBeat.o(10410);
-  }
-  
-  public final void d(MultiTaskInfo paramMultiTaskInfo)
-  {
-    AppMethodBeat.i(248468);
-    p.k(paramMultiTaskInfo, "multiTaskInfo");
-    AppMethodBeat.o(248468);
-  }
-  
-  public final void del(String paramString)
-  {
-    AppMethodBeat.i(10415);
-    p.k(paramString, "key");
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new IPCString(paramString), e.class, (f)z.DsD);
-    AppMethodBeat.o(10415);
-  }
-  
-  public final void e(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(10414);
-    p.k(paramHandOff, "handOff");
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramHandOff, u.class, (f)ak.DsO);
-    AppMethodBeat.o(10414);
-  }
-  
-  public final void e(MultiTaskInfo paramMultiTaskInfo)
-  {
-    AppMethodBeat.i(248469);
-    p.k(paramMultiTaskInfo, "multiTaskInfo");
-    AppMethodBeat.o(248469);
-  }
-  
-  public final void e(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    AppMethodBeat.i(10421);
-    p.k(paramString1, "id");
-    p.k(paramString2, "appId");
-    p.k(paramString3, "mediaId");
-    paramString1 = b.ip("id", paramString1);
-    paramString2 = b.ip("appId", paramString2);
-    p.k("sdkVersion", "$this$bundleTo");
-    paramString1 = b.a(new c[] { paramString1, paramString2, new c((kotlin.g.a.b)new b.a("sdkVersion", paramInt)), b.ip("mediaId", paramString3) });
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramString1, s.class, (f)aj.DsN);
-    AppMethodBeat.o(10421);
-  }
-  
-  public final void eBH()
-  {
-    AppMethodBeat.i(10405);
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new IPCVoid(), f.class, (f)aa.DsE);
-    AppMethodBeat.o(10405);
-  }
-  
-  public final void eBI()
-  {
-    AppMethodBeat.i(10416);
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new IPCVoid(), b.class, (f)w.DsA);
-    AppMethodBeat.o(10416);
-  }
-  
-  public final boolean eBJ()
-  {
-    AppMethodBeat.i(248475);
-    if (this.Dsk.lZO == 0) {
-      eCa();
-    }
-    if ((this.Dsk.nwq) && (this.Dsk.lZO >= 1661009920))
+    AppMethodBeat.i(10441);
+    if (this.Jmf.isEmpty())
     {
-      AppMethodBeat.o(248475);
+      Log.i("HandOff.StatusManager", "message queue is empty, set queueWorking = false");
+      this.Jme = false;
+      AppMethodBeat.o(10441);
+      return;
+    }
+    try
+    {
+      String str = (String)kotlin.a.p.e((Iterable)this.Jmf);
+      kotlin.g.b.s.s(str, "msg");
+      aIh(str);
+      AppMethodBeat.o(10441);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("HandOff.StatusManager", (Throwable)localException, "", new Object[0]);
+      this.Jme = false;
+      AppMethodBeat.o(10441);
+    }
+  }
+  
+  private static boolean fzw()
+  {
+    AppMethodBeat.i(266240);
+    int i = com.tencent.mm.kernel.h.aZW().bFQ();
+    if ((i == 4) || (i == 6))
+    {
+      AppMethodBeat.o(266240);
       return true;
     }
-    AppMethodBeat.o(248475);
+    AppMethodBeat.o(266240);
     return false;
   }
   
-  public final HandOff eBK()
+  private final void retry()
   {
-    AppMethodBeat.i(10424);
-    HandOff localHandOff = (HandOff)j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new IPCVoid(), g.class);
-    AppMethodBeat.o(10424);
-    return localHandOff;
-  }
-  
-  public final void f(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(248472);
-    p.k(paramHandOff, "handOff");
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramHandOff, n.class, (f)af.DsJ);
-    AppMethodBeat.o(248472);
-  }
-  
-  public final void fA(List<? extends MultiTaskInfo> paramList)
-  {
-    AppMethodBeat.i(248462);
-    p.k(paramList, "multiTaskInfoList");
-    AppMethodBeat.o(248462);
-  }
-  
-  public final void fz(List<? extends BallInfo> paramList)
-  {
-    AppMethodBeat.i(10406);
-    p.k(paramList, "ballInfoList");
-    AppMethodBeat.o(10406);
-  }
-  
-  public final void g(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(10423);
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramHandOff, o.class, (f)x.DsB);
-    AppMethodBeat.o(10423);
-  }
-  
-  public final void h(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(10425);
-    p.k(paramHandOff, "handOff");
-    AppMethodBeat.o(10425);
-  }
-  
-  public final void i(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(10426);
-    p.k(paramHandOff, "handOff");
-    AppMethodBeat.o(10426);
-  }
-  
-  public final void io(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(10419);
-    p.k(paramString1, "id");
-    p.k(paramString2, "arg");
-    paramString1 = b.a(new c[] { b.ip("id", paramString1), b.ip("arg", paramString2) });
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramString1, q.class, (f)ah.DsL);
-    AppMethodBeat.o(10419);
-  }
-  
-  public final void j(HandOff paramHandOff)
-  {
-    AppMethodBeat.i(10427);
-    p.k(paramHandOff, "handOff");
-    AppMethodBeat.o(10427);
-  }
-  
-  public final void processRequest(String paramString)
-  {
-    AppMethodBeat.i(248484);
-    p.k(paramString, "message");
-    AppMethodBeat.o(248484);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$AddWindowFromBallTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "ballInfo", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class a
-    implements d<BallInfo, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class aa<T>
-    implements f<ResultType>
-  {
-    public static final aa DsE;
-    
-    static
+    AppMethodBeat.i(10444);
+    this.retryCount += 1;
+    if (this.retryCount >= this.Jmi)
     {
-      AppMethodBeat.i(10395);
-      DsE = new aa();
-      AppMethodBeat.o(10395);
+      this.Jmf.poll();
+      this.retryCount = 0;
+    }
+    Log.i("HandOff.StatusManager", kotlin.g.b.s.X("send handoff failed, retry: ", Integer.valueOf(this.retryCount)));
+    boolean bool = fzw();
+    if (!bool)
+    {
+      Log.i("HandOff.StatusManager", "network unavailable, clear message queue and retry after 30s");
+      this.Jmf.clear();
+      this.Jmo.sendEmptyMessageDelayed(2, 30000L);
+    }
+    for (;;)
+    {
+      this.Jmg = bool;
+      AppMethodBeat.o(10444);
+      return;
+      if (!this.Jmg)
+      {
+        Log.i("HandOff.StatusManager", "network become available, send all list");
+        String str = NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext());
+        kotlin.g.b.s.s(str, "getFormatedNetType(getContext())");
+        this.Jmh = str;
+        e.JlJ.fJK();
+      }
+      fKf();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class ab<T>
-    implements f<ResultType>
+  public final void A(Collection<? extends HandOff> paramCollection)
   {
-    public static final ab DsF;
-    
-    static
+    AppMethodBeat.i(10437);
+    kotlin.g.b.s.u(paramCollection, "handOffList");
+    eKT();
+    this.Jml = paramCollection;
+    apply();
+    AppMethodBeat.o(10437);
+  }
+  
+  final void a(int paramInt, Collection<? extends HandOff> paramCollection)
+  {
+    AppMethodBeat.i(10439);
+    paramCollection = new b(paramInt, paramCollection, 0L, 4);
+    String str = q.aPg();
+    kotlin.g.b.s.s(str, "getMMGUID()");
+    paramCollection = paramCollection.ag(str, this.Jmh, a.fJP());
+    this.Jmf.add(paramCollection);
+    fKg();
+    AppMethodBeat.o(10439);
+  }
+  
+  final void apply()
+  {
+    AppMethodBeat.i(10443);
+    if (!this.Jmo.hasMessages(1))
     {
-      AppMethodBeat.i(10397);
-      DsF = new ab();
-      AppMethodBeat.o(10397);
+      Log.d("HandOff.StatusManager", "plan commit task");
+      this.Jmo.sendEmptyMessageDelayed(1, 3000L);
+    }
+    AppMethodBeat.o(10443);
+  }
+  
+  final void fKg()
+  {
+    AppMethodBeat.i(10442);
+    if (!this.Jme)
+    {
+      Log.i("HandOff.StatusManager", "launch queue, set queueWorking = true");
+      this.Jme = true;
+      fKf();
+    }
+    AppMethodBeat.o(10442);
+  }
+  
+  public final void o(HandOff paramHandOff)
+  {
+    AppMethodBeat.i(10440);
+    kotlin.g.b.s.u(paramHandOff, "handOff");
+    a(3, (Collection)kotlin.a.p.listOf(paramHandOff));
+    AppMethodBeat.o(10440);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
+  {
+    AppMethodBeat.i(10445);
+    kotlin.g.b.s.u(paramp, "scene");
+    if ((paramp.getReqResp() instanceof com.tencent.mm.am.c))
+    {
+      paramString = paramp.getReqResp();
+      if (paramString == null)
+      {
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
+        AppMethodBeat.o(10445);
+        throw paramString;
+      }
+      if ((c.b.b(((com.tencent.mm.am.c)paramString).otB) instanceof fhr))
+      {
+        paramString = paramp.getReqResp();
+        if (paramString == null)
+        {
+          paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
+          AppMethodBeat.o(10445);
+          throw paramString;
+        }
+        paramString = c.b.b(((com.tencent.mm.am.c)paramString).otB);
+        if (paramString == null)
+        {
+          paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StatusNotifyRequest");
+          AppMethodBeat.o(10445);
+          throw paramString;
+        }
+        paramString = ((fhr)paramString).abIx;
+        if ((paramString != null) && (kotlin.g.b.s.p(paramString.IGU, "HandOffMaster")))
+        {
+          if ((paramInt1 == 0) && (paramInt2 == 0))
+          {
+            this.Jmf.poll();
+            this.retryCount = 0;
+            this.Jmm = this.Jmn;
+            com.tencent.mm.kernel.h.baE().ban().set(at.a.acZh, Long.valueOf(this.Jmm));
+            Log.i("HandOff.StatusManager", "send handoff succeed, check next message");
+            fKf();
+            AppMethodBeat.o(10445);
+            return;
+          }
+          Log.e("HandOff.StatusManager", "send handoff fail, errType:" + paramInt1 + ", errCode:" + paramInt2);
+          retry();
+        }
+      }
+    }
+    AppMethodBeat.o(10445);
+  }
+  
+  public final void z(Collection<? extends HandOff> paramCollection)
+  {
+    AppMethodBeat.i(10430);
+    kotlin.g.b.s.u(paramCollection, "handOffList");
+    try
+    {
+      paramCollection = NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext());
+      kotlin.g.b.s.s(paramCollection, "getFormatedNetType(getContext())");
+      this.Jmh = paramCollection;
+      this.Jmm = com.tencent.mm.kernel.h.baE().ban().a(at.a.acZh, 0L);
+      com.tencent.mm.kernel.h.baD().mCm.b(251, (com.tencent.mm.am.h)this);
+      com.tencent.mm.kernel.h.baD().mCm.a(251, (com.tencent.mm.am.h)this);
+      e.JlJ.fJK();
+      AppMethodBeat.o(10430);
+      return;
+    }
+    catch (Exception paramCollection)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("HandOff.StatusManager", (Throwable)paramCollection, "restoreFromBallInfoList fail, exp:%s", new Object[] { paramCollection });
+        this.Jmm = 0L;
+      }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class ac<T>
-    implements f<ResultType>
-  {
-    public static final ac DsG;
-    
-    static
-    {
-      AppMethodBeat.i(10398);
-      DsG = new ac();
-      AppMethodBeat.o(10398);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class ad<T>
-    implements f<ResultType>
-  {
-    public static final ad DsH;
-    
-    static
-    {
-      AppMethodBeat.i(10399);
-      DsH = new ad();
-      AppMethodBeat.o(10399);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class ae<T>
-    implements f<ResultType>
-  {
-    public static final ae DsI;
-    
-    static
-    {
-      AppMethodBeat.i(10400);
-      DsI = new ae();
-      AppMethodBeat.o(10400);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class af<T>
-    implements f<ResultType>
-  {
-    public static final af DsJ;
-    
-    static
-    {
-      AppMethodBeat.i(248558);
-      DsJ = new af();
-      AppMethodBeat.o(248558);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onlineInfo", "Lcom/tencent/mm/plugin/appbrand/config/GetOnLineInfoInfoResult;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class ag<T>
-    implements f<ResultType>
-  {
-    ag(g paramg) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class ah<T>
-    implements f<ResultType>
-  {
-    public static final ah DsL;
-    
-    static
-    {
-      AppMethodBeat.i(10401);
-      DsL = new ah();
-      AppMethodBeat.o(10401);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class ai<T>
-    implements f<ResultType>
-  {
-    public static final ai DsM;
-    
-    static
-    {
-      AppMethodBeat.i(10402);
-      DsM = new ai();
-      AppMethodBeat.o(10402);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class aj<T>
-    implements f<ResultType>
-  {
-    public static final aj DsN;
-    
-    static
-    {
-      AppMethodBeat.i(10403);
-      DsN = new aj();
-      AppMethodBeat.o(10403);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class ak<T>
-    implements f<ResultType>
-  {
-    public static final ak DsO;
-    
-    static
-    {
-      AppMethodBeat.i(10404);
-      DsO = new ak();
-      AppMethodBeat.o(10404);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$AllListTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/handoff/service/StatusManager$handler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-handoff_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements d<IPCVoid, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$CancelUploadTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "id", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class c
-    implements d<IPCString, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$DelTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "key", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class e
-    implements d<IPCString, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$FixHandOffTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class f
-    implements d<IPCVoid, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$GetCacheTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "()V", "invoke", "data", "plugin-handoff_release"})
-  public static final class g
-    implements m<IPCVoid, HandOff>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$GetHandOffByIdTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "()V", "invoke", "id", "plugin-handoff_release"})
-  public static final class h
-    implements m<IPCString, HandOff>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$GetHandOffByKeyTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "()V", "invoke", "key", "plugin-handoff_release"})
-  public static final class i
-    implements m<IPCString, HandOff>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnFileCreateTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class j
-    implements d<HandOff, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnFileDestroyTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class k
-    implements d<HandOff, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnWebViewCreateTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class l
-    implements d<HandOff, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$OnWebViewDestroyTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class m
-    implements d<HandOff, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$SendOpenRequestTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class n
-    implements d<HandOff, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$SetCacheTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class o
-    implements d<HandOff, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$SyncUserStatusTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/plugin/appbrand/config/GetOnLineInfoInfoResult;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class p
-    implements d<IPCVoid, GetOnLineInfoInfoResult>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadFail;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class q
-    implements d<Bundle, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadSuccessCDNTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class r
-    implements d<Bundle, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadSuccessCGITask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class s
-    implements d<Bundle, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UploadingTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "data", "plugin-handoff_release"})
-  public static final class t
-    implements m<Bundle, IPCBoolean>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/service/HandOffServiceProxy$UpsertTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "handOff", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-handoff_release"})
-  public static final class u
-    implements d<HandOff, IPCVoid>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class v<T>
-    implements f<ResultType>
+    extends MMHandler
   {
-    public static final v Dsz;
-    
-    static
+    b(g paramg, Looper paramLooper)
     {
-      AppMethodBeat.i(10390);
-      Dsz = new v();
-      AppMethodBeat.o(10390);
+      super();
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class w<T>
-    implements f<ResultType>
-  {
-    public static final w DsA;
     
-    static
+    public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(10391);
-      DsA = new w();
-      AppMethodBeat.o(10391);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class x<T>
-    implements f<ResultType>
-  {
-    public static final x DsB;
-    
-    static
-    {
-      AppMethodBeat.i(10392);
-      DsB = new x();
-      AppMethodBeat.o(10392);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class y<T>
-    implements f<ResultType>
-  {
-    public static final y DsC;
-    
-    static
-    {
-      AppMethodBeat.i(10393);
-      DsC = new y();
-      AppMethodBeat.o(10393);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class z<T>
-    implements f<ResultType>
-  {
-    public static final z DsD;
-    
-    static
-    {
-      AppMethodBeat.i(10394);
-      DsD = new z();
-      AppMethodBeat.o(10394);
+      AppMethodBeat.i(10429);
+      kotlin.g.b.s.u(paramMessage, "msg");
+      switch (paramMessage.what)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(10429);
+        return;
+        Log.i("HandOff.StatusManager", "handle commit message");
+        g.a(this.Jmp);
+        AppMethodBeat.o(10429);
+        return;
+        Log.i("HandOff.StatusManager", "handle retry message");
+        g.b(this.Jmp);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.handoff.c.g
  * JD-Core Version:    0.7.0.1
  */

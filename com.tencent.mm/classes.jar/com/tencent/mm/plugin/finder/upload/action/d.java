@@ -1,68 +1,70 @@
 package com.tencent.mm.plugin.finder.upload.action;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.g.c;
-import com.tencent.mm.loader.g.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.loader.f.c;
+import com.tencent.mm.loader.f.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/upload/action/FavActionTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "(Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "needRetry", "", "getNeedRetry", "()Z", "setNeedRetry", "(Z)V", "call", "", "uniqueId", "", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/upload/action/FavActionTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "(Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "needRetry", "", "getNeedRetry", "()Z", "setNeedRetry", "(Z)V", "call", "", "uniqueId", "", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends c
 {
-  public static final a ABI;
-  boolean ABG;
-  final e ABH;
+  public static final a GcN;
+  boolean Gax;
+  final e GcO;
   
   static
   {
-    AppMethodBeat.i(278979);
-    ABI = new a((byte)0);
-    AppMethodBeat.o(278979);
+    AppMethodBeat.i(343307);
+    GcN = new a((byte)0);
+    AppMethodBeat.o(343307);
   }
   
   public d(e parame)
   {
-    AppMethodBeat.i(278978);
-    this.ABH = parame;
-    AppMethodBeat.o(278978);
+    AppMethodBeat.i(343301);
+    this.GcO = parame;
+    AppMethodBeat.o(343301);
   }
   
-  public final String aBG()
+  public final String aUE()
   {
-    AppMethodBeat.i(278977);
-    String str = this.ABH.aBG();
-    AppMethodBeat.o(278977);
+    AppMethodBeat.i(343318);
+    String str = this.GcO.aUE();
+    AppMethodBeat.o(343318);
     return str;
   }
   
   public final void call()
   {
-    AppMethodBeat.i(278975);
-    this.ABH.a((m.b)new b(this));
-    AppMethodBeat.o(278975);
+    AppMethodBeat.i(343314);
+    this.GcO.a((m.b)new b(this));
+    AppMethodBeat.o(343314);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/upload/action/FavActionTask$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/upload/action/FavActionTask$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/upload/action/FavActionTask$call$1", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "isNeedRetry", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/upload/action/FavActionTask$call$1", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "isNeedRetry", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements m.b
   {
-    public final void a(j paramj, boolean paramBoolean)
+    b(d paramd) {}
+    
+    public final void a(i parami, boolean paramBoolean)
     {
-      AppMethodBeat.i(267935);
-      p.k(paramj, "status");
-      this.ABJ.ABG = paramBoolean;
-      this.ABJ.a(paramj);
-      AppMethodBeat.o(267935);
+      AppMethodBeat.i(343412);
+      s.u(parami, "status");
+      this.GcP.Gax = paramBoolean;
+      this.GcP.a(parami);
+      AppMethodBeat.o(343412);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.upload.action.d
  * JD-Core Version:    0.7.0.1
  */

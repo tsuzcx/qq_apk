@@ -40,11 +40,11 @@ public final class b
     long l9;
     label273:
     int j;
-    if (paramGameWebPerformanceInfo.jTC - paramGameWebPerformanceInfo.startTime > 0L)
+    if (paramGameWebPerformanceInfo.mtU - paramGameWebPerformanceInfo.startTime > 0L)
     {
-      l4 = paramGameWebPerformanceInfo.jTC - paramGameWebPerformanceInfo.startTime;
-      l13 = paramGameWebPerformanceInfo.jTD - paramGameWebPerformanceInfo.startTime;
-      if (paramGameWebPerformanceInfo.jTE <= 0L) {
+      l4 = paramGameWebPerformanceInfo.mtU - paramGameWebPerformanceInfo.startTime;
+      l13 = paramGameWebPerformanceInfo.mtV - paramGameWebPerformanceInfo.startTime;
+      if (paramGameWebPerformanceInfo.mtW <= 0L) {
         break label1041;
       }
       i = 1;
@@ -52,26 +52,26 @@ public final class b
       l5 = 0L;
       if (i == 1)
       {
-        l6 = paramGameWebPerformanceInfo.jTE - paramGameWebPerformanceInfo.startTime;
-        l5 = paramGameWebPerformanceInfo.jTF - paramGameWebPerformanceInfo.startTime;
+        l6 = paramGameWebPerformanceInfo.mtW - paramGameWebPerformanceInfo.startTime;
+        l5 = paramGameWebPerformanceInfo.mtX - paramGameWebPerformanceInfo.startTime;
       }
       l8 = 0L;
       l7 = 0L;
-      if (paramGameWebPerformanceInfo.jTv == 1)
+      if (paramGameWebPerformanceInfo.mtN == 1)
       {
-        l8 = paramGameWebPerformanceInfo.jTG - paramGameWebPerformanceInfo.startTime;
-        l7 = paramGameWebPerformanceInfo.jTH - paramGameWebPerformanceInfo.startTime;
+        l8 = paramGameWebPerformanceInfo.mtY - paramGameWebPerformanceInfo.startTime;
+        l7 = paramGameWebPerformanceInfo.mtZ - paramGameWebPerformanceInfo.startTime;
       }
-      l14 = paramGameWebPerformanceInfo.jTI - paramGameWebPerformanceInfo.startTime;
-      l15 = paramGameWebPerformanceInfo.jTJ - paramGameWebPerformanceInfo.startTime;
-      l16 = paramGameWebPerformanceInfo.jTK - paramGameWebPerformanceInfo.startTime;
-      l17 = paramGameWebPerformanceInfo.jTL - paramGameWebPerformanceInfo.startTime;
+      l14 = paramGameWebPerformanceInfo.mua - paramGameWebPerformanceInfo.startTime;
+      l15 = paramGameWebPerformanceInfo.mub - paramGameWebPerformanceInfo.startTime;
+      l16 = paramGameWebPerformanceInfo.muc - paramGameWebPerformanceInfo.startTime;
+      l17 = paramGameWebPerformanceInfo.mud - paramGameWebPerformanceInfo.startTime;
       l1 = 0L;
-      if (paramGameWebPerformanceInfo.jTM != 0L)
+      if (paramGameWebPerformanceInfo.mue != 0L)
       {
-        l2 = paramGameWebPerformanceInfo.jTM - paramGameWebPerformanceInfo.startTime;
+        l2 = paramGameWebPerformanceInfo.mue - paramGameWebPerformanceInfo.startTime;
         l1 = l2;
-        if (paramGameWebPerformanceInfo.jTv == 0)
+        if (paramGameWebPerformanceInfo.mtN == 0)
         {
           l1 = l2;
           if (l2 < 0L) {
@@ -79,27 +79,27 @@ public final class b
           }
         }
       }
-      l18 = paramGameWebPerformanceInfo.jTN - paramGameWebPerformanceInfo.startTime;
-      l2 = paramGameWebPerformanceInfo.jTO - paramGameWebPerformanceInfo.startTime;
+      l18 = paramGameWebPerformanceInfo.muf - paramGameWebPerformanceInfo.startTime;
+      l2 = paramGameWebPerformanceInfo.mug - paramGameWebPerformanceInfo.startTime;
       l9 = l2;
-      if (paramGameWebPerformanceInfo.jTv == 0)
+      if (paramGameWebPerformanceInfo.mtN == 0)
       {
         if (l2 <= 0L) {
           break label1046;
         }
         l9 = l2;
       }
-      if (paramGameWebPerformanceInfo.jTP <= 0L) {
+      if (paramGameWebPerformanceInfo.muh <= 0L) {
         break label1054;
       }
       j = 1;
       label284:
-      l2 = paramGameWebPerformanceInfo.jTP - paramGameWebPerformanceInfo.startTime;
+      l2 = paramGameWebPerformanceInfo.muh - paramGameWebPerformanceInfo.startTime;
       if (j == 0) {
         break label1059;
       }
       l10 = l2;
-      if (paramGameWebPerformanceInfo.jTv == 0) {
+      if (paramGameWebPerformanceInfo.mtN == 0) {
         if (l2 <= 0L) {
           break label1059;
         }
@@ -113,14 +113,14 @@ public final class b
     {
       long l11 = 0L;
       long l3 = 0L;
-      if (paramGameWebPerformanceInfo.jTx == 0)
+      if (paramGameWebPerformanceInfo.mtP == 0)
       {
-        l3 = paramGameWebPerformanceInfo.jTQ - paramGameWebPerformanceInfo.startTime;
+        l3 = paramGameWebPerformanceInfo.mui - paramGameWebPerformanceInfo.startTime;
         l2 = l3;
         if (l3 <= 0L) {
           l2 = -1L;
         }
-        long l12 = paramGameWebPerformanceInfo.jTR - paramGameWebPerformanceInfo.startTime;
+        long l12 = paramGameWebPerformanceInfo.muj - paramGameWebPerformanceInfo.startTime;
         l11 = l2;
         l3 = l12;
         if (l12 <= 0L)
@@ -129,8 +129,8 @@ public final class b
           l11 = l2;
         }
       }
-      l2 = paramGameWebPerformanceInfo.jTT - paramGameWebPerformanceInfo.startTime;
-      Log.i("MicroMsg.GameReportImpl", "url : %s, pkgId: %s, isLuggage : %d, isWePkg: %d, isPreloadWePkg: %d, isPreloadWebCore: %d, hasLoadFinished: %d, gameCenterUICreate: %d, startWebUI: %d,preloadWePkgBgn: %d, preloadWePkgEnd: %d, preloadWebCoreBgn: %d, preloadWebCoreEnd: %d,webUICreate: %d, webUIOnshowBgn: %d, createViewBgn: %d, createViewEnd: %d, jsbridgeInject: %d, loadUrlBgn: %d, onPageStarted: %d, onPageFinished: %d, getA8keyBgn: %d, getA8keyEnd: %d, webUIInfront: %d,webUIDestroy: %d", new Object[] { paramGameWebPerformanceInfo.url, paramGameWebPerformanceInfo.jTB, Integer.valueOf(paramGameWebPerformanceInfo.jTt), Integer.valueOf(paramGameWebPerformanceInfo.jTu), Integer.valueOf(i), Integer.valueOf(paramGameWebPerformanceInfo.jTv), Integer.valueOf(j), Long.valueOf(l4), Long.valueOf(l13), Long.valueOf(l6), Long.valueOf(l5), Long.valueOf(l8), Long.valueOf(l7), Long.valueOf(l14), Long.valueOf(l15), Long.valueOf(l16), Long.valueOf(l17), Long.valueOf(l1), Long.valueOf(l18), Long.valueOf(l9), Long.valueOf(l10), Long.valueOf(l11), Long.valueOf(l3), Long.valueOf(paramGameWebPerformanceInfo.jTS), Long.valueOf(l2) });
+      l2 = paramGameWebPerformanceInfo.mul - paramGameWebPerformanceInfo.startTime;
+      Log.i("MicroMsg.GameReportImpl", "url : %s, pkgId: %s, isLuggage : %d, isWePkg: %d, isPreloadWePkg: %d, isPreloadWebCore: %d, hasLoadFinished: %d, gameCenterUICreate: %d, startWebUI: %d,preloadWePkgBgn: %d, preloadWePkgEnd: %d, preloadWebCoreBgn: %d, preloadWebCoreEnd: %d,webUICreate: %d, webUIOnshowBgn: %d, createViewBgn: %d, createViewEnd: %d, jsbridgeInject: %d, loadUrlBgn: %d, onPageStarted: %d, onPageFinished: %d, getA8keyBgn: %d, getA8keyEnd: %d, webUIInfront: %d,webUIDestroy: %d", new Object[] { paramGameWebPerformanceInfo.url, paramGameWebPerformanceInfo.mtT, Integer.valueOf(paramGameWebPerformanceInfo.mtL), Integer.valueOf(paramGameWebPerformanceInfo.mtM), Integer.valueOf(i), Integer.valueOf(paramGameWebPerformanceInfo.mtN), Integer.valueOf(j), Long.valueOf(l4), Long.valueOf(l13), Long.valueOf(l6), Long.valueOf(l5), Long.valueOf(l8), Long.valueOf(l7), Long.valueOf(l14), Long.valueOf(l15), Long.valueOf(l16), Long.valueOf(l17), Long.valueOf(l1), Long.valueOf(l18), Long.valueOf(l9), Long.valueOf(l10), Long.valueOf(l11), Long.valueOf(l3), Long.valueOf(paramGameWebPerformanceInfo.muk), Long.valueOf(l2) });
       Object localObject = "";
       try
       {
@@ -141,17 +141,17 @@ public final class b
       {
         break label660;
       }
-      com.tencent.mm.plugin.report.service.h.IzE.a(16141, new Object[] { localObject, Integer.valueOf(paramGameWebPerformanceInfo.jTt), Integer.valueOf(paramGameWebPerformanceInfo.jTu), Integer.valueOf(i), Integer.valueOf(paramGameWebPerformanceInfo.jTv), Long.valueOf(l4), Long.valueOf(l13), Long.valueOf(l6), Long.valueOf(l5), Long.valueOf(l8), Long.valueOf(l7), Long.valueOf(l14), Long.valueOf(l15), Long.valueOf(l16), Long.valueOf(l17), Long.valueOf(l1), Long.valueOf(l18), Long.valueOf(l9), Long.valueOf(l10), Long.valueOf(l11), Long.valueOf(l3), Long.valueOf(paramGameWebPerformanceInfo.jTS), Long.valueOf(l2), Integer.valueOf(j), paramGameWebPerformanceInfo.jTB, Integer.valueOf(paramGameWebPerformanceInfo.jTw), paramGameWebPerformanceInfo.jTs, NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext()), Integer.valueOf(paramGameWebPerformanceInfo.jTz), Integer.valueOf(paramGameWebPerformanceInfo.jTx), Integer.valueOf(paramGameWebPerformanceInfo.jTA), paramGameWebPerformanceInfo.jTW, paramGameWebPerformanceInfo.jTX, paramGameWebPerformanceInfo.jTY });
+      com.tencent.mm.plugin.report.service.h.OAn.b(16141, new Object[] { localObject, Integer.valueOf(paramGameWebPerformanceInfo.mtL), Integer.valueOf(paramGameWebPerformanceInfo.mtM), Integer.valueOf(i), Integer.valueOf(paramGameWebPerformanceInfo.mtN), Long.valueOf(l4), Long.valueOf(l13), Long.valueOf(l6), Long.valueOf(l5), Long.valueOf(l8), Long.valueOf(l7), Long.valueOf(l14), Long.valueOf(l15), Long.valueOf(l16), Long.valueOf(l17), Long.valueOf(l1), Long.valueOf(l18), Long.valueOf(l9), Long.valueOf(l10), Long.valueOf(l11), Long.valueOf(l3), Long.valueOf(paramGameWebPerformanceInfo.muk), Long.valueOf(l2), Integer.valueOf(j), paramGameWebPerformanceInfo.mtT, Integer.valueOf(paramGameWebPerformanceInfo.mtO), paramGameWebPerformanceInfo.mtK, NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext()), Integer.valueOf(paramGameWebPerformanceInfo.mtR), Integer.valueOf(paramGameWebPerformanceInfo.mtP), Integer.valueOf(paramGameWebPerformanceInfo.mtS), paramGameWebPerformanceInfo.muo, paramGameWebPerformanceInfo.mup, paramGameWebPerformanceInfo.muq });
       if (j != 1) {
         break label1067;
       }
-      if (paramGameWebPerformanceInfo.jTz == 0) {
-        com.tencent.mm.plugin.report.service.h.IzE.p(949L, 4L, 1L);
+      if (paramGameWebPerformanceInfo.mtR == 0) {
+        com.tencent.mm.plugin.report.service.h.OAn.p(949L, 4L, 1L);
       }
-      if (paramGameWebPerformanceInfo.jTR != -1L) {
+      if (paramGameWebPerformanceInfo.muj != -1L) {
         break label1107;
       }
-      com.tencent.mm.plugin.report.service.h.IzE.p(949L, 7L, 1L);
+      com.tencent.mm.plugin.report.service.h.OAn.p(949L, 7L, 1L);
       AppMethodBeat.o(108251);
       return;
       l4 = 0L;
@@ -165,13 +165,13 @@ public final class b
     }
     label1041:
     label1067:
-    if (paramGameWebPerformanceInfo.jTu == 1)
+    if (paramGameWebPerformanceInfo.mtM == 1)
     {
-      com.tencent.mm.plugin.report.service.h.IzE.p(949L, 5L, 1L);
+      com.tencent.mm.plugin.report.service.h.OAn.p(949L, 5L, 1L);
       AppMethodBeat.o(108251);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.IzE.p(949L, 6L, 1L);
+    com.tencent.mm.plugin.report.service.h.OAn.p(949L, 6L, 1L);
     label1107:
     AppMethodBeat.o(108251);
   }
@@ -180,15 +180,15 @@ public final class b
   {
     AppMethodBeat.i(184036);
     Log.d("MicroMsg.GameReportImpl", "reportGameCommEvent, opId:%d, params:%s, result:%s, costTime:%d", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2, Long.valueOf(paramLong) });
-    com.tencent.mm.plugin.report.service.h.IzE.a(16171, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt), paramString1, paramString2, Long.valueOf(paramLong) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(16171, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt), paramString1, paramString2, Long.valueOf(paramLong) });
     AppMethodBeat.o(184036);
   }
   
   public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, long paramLong, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(199075);
+    AppMethodBeat.i(240756);
     a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, 0L, paramString5, paramString6, 0);
-    AppMethodBeat.o(199075);
+    AppMethodBeat.o(240756);
   }
   
   public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, long paramLong, String paramString5, String paramString6, int paramInt4)
@@ -205,24 +205,24 @@ public final class b
     if (paramContext == null) {
       localObject = MMApplicationContext.getContext();
     }
-    paramContext = com.tencent.mm.pluginsdk.model.app.h.o(paramString1, false, false);
+    paramContext = com.tencent.mm.pluginsdk.model.app.h.s(paramString1, false, false);
     if (paramContext == null)
     {
       Log.e("MicroMsg.GameReportImpl", "reportMsgClick fail, appinfo is null");
       AppMethodBeat.o(108248);
       return;
     }
-    int j = com.tencent.mm.game.report.e.a.G((Context)localObject, paramString2);
-    paramString2 = com.tencent.mm.game.report.e.a.aED();
-    int k = com.tencent.mm.game.report.e.a.getNetworkType((Context)localObject);
+    int j = com.tencent.mm.game.report.e.a.L((Context)localObject, paramString2);
+    paramString2 = com.tencent.mm.game.report.e.a.aXG();
+    int k = com.tencent.mm.game.report.e.a.dt((Context)localObject);
     localObject = Util.nullAsNil(paramContext.field_packageName);
     String str1 = Util.nullAsNil(paramContext.field_signature);
     String str2 = Long.toString(paramLong);
-    if (paramContext.Qv()) {}
+    if (paramContext.aqJ()) {}
     for (int i = 1;; i = 0)
     {
-      paramContext = com.tencent.mm.game.report.api.b.d(10531, new Object[] { paramString1, Integer.valueOf(j), paramString2, paramString3, Integer.valueOf(paramInt1), paramString4, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(k), localObject, str1, str2, "", paramString5, "", Integer.valueOf(i), paramString6, "", Integer.valueOf(paramInt4) });
-      Log.i("MicroMsg.reportMsgClick", paramContext.jTr);
+      paramContext = com.tencent.mm.game.report.api.b.e(10531, new Object[] { paramString1, Integer.valueOf(j), paramString2, paramString3, Integer.valueOf(paramInt1), paramString4, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(k), localObject, str1, str2, "", paramString5, "", Integer.valueOf(i), paramString6, "", Integer.valueOf(paramInt4) });
+      Log.i("MicroMsg.reportMsgClick", paramContext.mtJ);
       f.a(paramContext);
       AppMethodBeat.o(108248);
       return;
@@ -243,7 +243,7 @@ public final class b
     if (paramContext == null) {
       localContext = MMApplicationContext.getContext();
     }
-    f.a(com.tencent.mm.game.report.api.b.d(10583, new Object[] { paramString1, Integer.valueOf(com.tencent.mm.game.report.e.a.G(localContext, paramString2)), com.tencent.mm.game.report.e.a.aED(), paramString3, Integer.valueOf(paramInt1), paramString4, Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(com.tencent.mm.game.report.e.a.getNetworkType(localContext)) }));
+    f.a(com.tencent.mm.game.report.api.b.e(10583, new Object[] { paramString1, Integer.valueOf(com.tencent.mm.game.report.e.a.L(localContext, paramString2)), com.tencent.mm.game.report.e.a.aXG(), paramString3, Integer.valueOf(paramInt1), paramString4, Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(com.tencent.mm.game.report.e.a.dt(localContext)) }));
     AppMethodBeat.o(108242);
   }
   
@@ -283,7 +283,7 @@ public final class b
       AppMethodBeat.o(108241);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.IzE.a(10546, new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), com.tencent.mm.game.report.e.a.aED(), Integer.valueOf(paramInt2), paramString3, Integer.valueOf(paramInt3) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(10546, new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), com.tencent.mm.game.report.e.a.aXG(), Integer.valueOf(paramInt2), paramString3, Integer.valueOf(paramInt3) });
     AppMethodBeat.o(108241);
   }
   
@@ -297,13 +297,13 @@ public final class b
       AppMethodBeat.o(108243);
       return;
     }
-    String str = com.tencent.mm.game.report.e.a.Fq(paramLong);
+    String str = com.tencent.mm.game.report.e.a.hy(paramLong);
     com.tencent.mm.plugin.report.service.h localh;
     if (paramBoolean)
     {
       i = 1;
       Log.i("MicroMsg.reportReadMsg", "%s,%s,%s,%s,%s,%s,%s,%s,%d", new Object[] { paramString1, str, paramString2, Integer.valueOf(paramInt1), paramString3, Integer.valueOf(paramInt2), Integer.valueOf(i), paramString4, Integer.valueOf(paramInt3) });
-      localh = com.tencent.mm.plugin.report.service.h.IzE;
+      localh = com.tencent.mm.plugin.report.service.h.OAn;
       if (!paramBoolean) {
         break label225;
       }
@@ -311,7 +311,7 @@ public final class b
     label225:
     for (int i = 1;; i = 0)
     {
-      localh.a(10532, new Object[] { paramString1, str, paramString2, Integer.valueOf(paramInt1), paramString3, Integer.valueOf(paramInt2), Integer.valueOf(i), paramString4, Integer.valueOf(paramInt3) });
+      localh.b(10532, new Object[] { paramString1, str, paramString2, Integer.valueOf(paramInt1), paramString3, Integer.valueOf(paramInt2), Integer.valueOf(i), paramString4, Integer.valueOf(paramInt3) });
       AppMethodBeat.o(108243);
       return;
       i = 0;
@@ -322,12 +322,12 @@ public final class b
   public final void c(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
     AppMethodBeat.i(175994);
-    a.aEx();
+    a.aXB();
     a.b(paramString1, paramInt1, paramInt2, paramString2, paramString3);
     AppMethodBeat.o(175994);
   }
   
-  public final void k(Context paramContext, String paramString1, String paramString2)
+  public final void o(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(108246);
     Log.d("MicroMsg.GameReportImpl", "reportRegToWx, appId = " + paramString1 + ", pkgName = " + paramString2);
@@ -337,11 +337,11 @@ public final class b
       AppMethodBeat.o(108246);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.IzE.a(10534, new Object[] { paramString1, Integer.valueOf(com.tencent.mm.game.report.e.a.G(paramContext, paramString2)), com.tencent.mm.game.report.e.a.aED(), Long.valueOf(System.currentTimeMillis() / 1000L) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(10534, new Object[] { paramString1, Integer.valueOf(com.tencent.mm.game.report.e.a.L(paramContext, paramString2)), com.tencent.mm.game.report.e.a.aXG(), Long.valueOf(System.currentTimeMillis() / 1000L) });
     AppMethodBeat.o(108246);
   }
   
-  public final void k(String paramString1, String paramString2, String paramString3)
+  public final void p(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(108245);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -350,11 +350,11 @@ public final class b
       AppMethodBeat.o(108245);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.IzE.a(10738, new Object[] { paramString1, paramString2, paramString1, paramString3 });
+    com.tencent.mm.plugin.report.service.h.OAn.b(10738, new Object[] { paramString1, paramString2, paramString1, paramString3 });
     AppMethodBeat.o(108245);
   }
   
-  public final void n(String paramString, int paramInt1, int paramInt2)
+  public final void q(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(108244);
     Log.d("MicroMsg.GameReportImpl", "reportGameDetail, appId = " + paramString + ", scene = " + paramInt1);
@@ -364,7 +364,7 @@ public final class b
       AppMethodBeat.o(108244);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.IzE.a(10700, new Object[] { paramString, Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(10700, new Object[] { paramString, Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(108244);
   }
   

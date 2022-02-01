@@ -1,145 +1,132 @@
 package com.tencent.mm.ui;
 
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Field;
 
-public final class av
+public final class av<T>
 {
-  private static a Wfp;
-  private static a Wfq;
+  private Field dEn;
+  private String lYr;
+  private boolean lYs;
+  private String lYt;
+  private Object obj;
   
-  static
+  public av(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(159124);
-    a local1 = new a()
+    AppMethodBeat.i(159106);
+    if (paramObject == null)
     {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void e(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void i(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void v(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void w(String paramAnonymousString1, String paramAnonymousString2) {}
-    };
-    Wfp = local1;
-    Wfq = local1;
-    AppMethodBeat.o(159124);
-  }
-  
-  public static void a(a parama)
-  {
-    Wfq = parama;
-  }
-  
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159119);
-    if (Wfq != null)
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      Wfq.d(paramString1, paramString2);
+      paramObject = new IllegalArgumentException("obj cannot be null");
+      AppMethodBeat.o(159106);
+      throw paramObject;
     }
-    AppMethodBeat.o(159119);
+    this.obj = paramObject;
+    this.lYr = paramString;
+    this.lYt = null;
+    AppMethodBeat.o(159106);
   }
   
-  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  private void prepare()
   {
-    AppMethodBeat.i(159122);
-    if (Wfq != null)
+    AppMethodBeat.i(159107);
+    if (this.lYs)
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      Wfq.e(paramString1, paramString2);
+      AppMethodBeat.o(159107);
+      return;
     }
-    AppMethodBeat.o(159122);
+    this.lYs = true;
+    Class localClass = this.obj.getClass();
+    while (localClass != null) {
+      try
+      {
+        Field localField1 = localClass.getDeclaredField(this.lYr);
+        localField1.setAccessible(true);
+        this.dEn = localField1;
+        return;
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          try
+          {
+            if ((this.lYt != null) && (!this.lYt.equals("")))
+            {
+              Field[] arrayOfField = localClass.getDeclaredFields();
+              int j = arrayOfField.length;
+              i = 0;
+              if (i < j)
+              {
+                Field localField2 = arrayOfField[i];
+                if (!localField2.getType().getName().equals(this.lYt)) {
+                  continue;
+                }
+                localField2.setAccessible(true);
+                this.dEn = localField2;
+              }
+            }
+          }
+          catch (Exception localException2)
+          {
+            int i;
+            continue;
+          }
+          localClass = localClass.getSuperclass();
+          break;
+          i += 1;
+        }
+      }
+      finally
+      {
+        localClass.getSuperclass();
+        AppMethodBeat.o(159107);
+      }
+    }
+    AppMethodBeat.o(159107);
   }
   
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  public final T get()
   {
-    AppMethodBeat.i(159120);
-    if (Wfq != null)
+    AppMethodBeat.i(159108);
+    prepare();
+    Object localObject;
+    if (this.dEn == null)
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      Wfq.i(paramString1, paramString2);
+      localObject = new NoSuchFieldException();
+      AppMethodBeat.o(159108);
+      throw ((Throwable)localObject);
     }
-    AppMethodBeat.o(159120);
-  }
-  
-  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159123);
-    if (Wfq != null)
+    try
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      paramThrowable = paramString2 + "  " + Log.getStackTraceString(paramThrowable);
-      Wfq.e(paramString1, paramThrowable);
+      localObject = this.dEn.get(this.obj);
+      AppMethodBeat.o(159108);
+      return localObject;
     }
-    AppMethodBeat.o(159123);
-  }
-  
-  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159118);
-    if (Wfq != null)
+    catch (ClassCastException localClassCastException)
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      Wfq.v(paramString1, paramString2);
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
+      AppMethodBeat.o(159108);
+      throw localIllegalArgumentException;
     }
-    AppMethodBeat.o(159118);
   }
   
-  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
+  public final void set(T paramT)
   {
-    AppMethodBeat.i(159121);
-    if (Wfq != null)
+    AppMethodBeat.i(159109);
+    prepare();
+    if (this.dEn == null)
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      Wfq.w(paramString1, paramString2);
+      paramT = new NoSuchFieldException();
+      AppMethodBeat.o(159109);
+      throw paramT;
     }
-    AppMethodBeat.o(159121);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void d(String paramString1, String paramString2);
-    
-    public abstract void e(String paramString1, String paramString2);
-    
-    public abstract void i(String paramString1, String paramString2);
-    
-    public abstract void v(String paramString1, String paramString2);
-    
-    public abstract void w(String paramString1, String paramString2);
+    this.dEn.set(this.obj, paramT);
+    AppMethodBeat.o(159109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.av
  * JD-Core Version:    0.7.0.1
  */

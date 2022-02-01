@@ -14,115 +14,137 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.widget.TextView.SavedState;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.b;
-import com.tencent.mm.cr.a.d;
+import com.tencent.mm.ck.a.b;
+import com.tencent.mm.ck.a.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aw;
-import com.tencent.mm.ui.h.c.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.ui.i.c.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/MMClearEditText;", "Lcom/tencent/mm/ui/widget/MMEditText;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "imgX", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "getImgX", "()Landroid/graphics/drawable/Drawable;", "setImgX", "(Landroid/graphics/drawable/Drawable;)V", "isClearBtnAlwaysDismiss", "", "mEnableRestoreState", "getMEnableRestoreState", "()Z", "setMEnableRestoreState", "(Z)V", "mOnFocusChangeListener", "Landroid/view/View$OnFocusChangeListener;", "mOnTouchListener", "Landroid/view/View$OnTouchListener;", "addClearButton", "", "getDefaultOnTouchListener", "init", "manageClearButton", "onRestoreInstanceState", "state", "Landroid/os/Parcelable;", "processPaste", "srcString", "", "removeClearButton", "setClearBtnAlwaysDismiss", "setOnFocusChangeListener", "l", "Companion", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/MMClearEditText;", "Lcom/tencent/mm/ui/widget/MMEditText;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "imgX", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "getImgX", "()Landroid/graphics/drawable/Drawable;", "setImgX", "(Landroid/graphics/drawable/Drawable;)V", "isClearBtnAlwaysDismiss", "", "mEnableRestoreState", "getMEnableRestoreState", "()Z", "setMEnableRestoreState", "(Z)V", "mOnFocusChangeListener", "Landroid/view/View$OnFocusChangeListener;", "mOnTouchListener", "Landroid/view/View$OnTouchListener;", "addClearButton", "", "getDefaultOnTouchListener", "init", "manageClearButton", "onRestoreInstanceState", "state", "Landroid/os/Parcelable;", "processPaste", "srcString", "", "removeClearButton", "setClearBtnAlwaysDismiss", "setOnFocusChangeListener", "l", "Companion", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MMClearEditText
   extends MMEditText
 {
-  public static final MMClearEditText.a YaF;
-  private View.OnFocusChangeListener HBD;
-  private boolean RcS;
-  private Drawable RcT;
-  private boolean WiU;
-  private final View.OnTouchListener nan;
+  public static final MMClearEditText.a afSy;
+  private View.OnFocusChangeListener Nzg;
+  private boolean XYY;
+  private Drawable XYZ;
+  private boolean adPX;
+  private final View.OnTouchListener pWX;
   
   static
   {
-    AppMethodBeat.i(194247);
-    YaF = new MMClearEditText.a((byte)0);
-    AppMethodBeat.o(194247);
+    AppMethodBeat.i(251568);
+    afSy = new MMClearEditText.a((byte)0);
+    AppMethodBeat.o(251568);
   }
   
   public MMClearEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(194246);
-    this.RcT = aw.bf(getContext(), a.b.et_clear_selector);
-    this.nan = ((View.OnTouchListener)new d(this));
+    AppMethodBeat.i(251537);
+    this.XYZ = bd.by(getContext(), a.b.et_clear_selector);
+    this.pWX = new MMClearEditText..ExternalSyntheticLambda1(this);
     init();
-    AppMethodBeat.o(194246);
+    AppMethodBeat.o(251537);
   }
   
   public MMClearEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(194245);
-    this.RcT = aw.bf(getContext(), a.b.et_clear_selector);
-    this.nan = ((View.OnTouchListener)new d(this));
+    AppMethodBeat.i(251535);
+    this.XYZ = bd.by(getContext(), a.b.et_clear_selector);
+    this.pWX = new MMClearEditText..ExternalSyntheticLambda1(this);
     init();
-    AppMethodBeat.o(194245);
+    AppMethodBeat.o(251535);
   }
   
-  private final void hjx()
+  private static final void a(MMClearEditText paramMMClearEditText, View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(194241);
-    if ((n.ba((CharSequence)getText().toString())) || (!isFocused()))
+    AppMethodBeat.i(251556);
+    s.u(paramMMClearEditText, "this$0");
+    View.OnFocusChangeListener localOnFocusChangeListener = paramMMClearEditText.Nzg;
+    if (localOnFocusChangeListener != null) {
+      localOnFocusChangeListener.onFocusChange(paramView, paramBoolean);
+    }
+    paramMMClearEditText.iKp();
+    AppMethodBeat.o(251556);
+  }
+  
+  private static final boolean a(MMClearEditText paramMMClearEditText, View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(251561);
+    s.u(paramMMClearEditText, "this$0");
+    if (paramMMClearEditText.getCompoundDrawables()[2] == null)
     {
-      hjz();
-      AppMethodBeat.o(194241);
+      AppMethodBeat.o(251561);
+      return false;
+    }
+    if (paramMotionEvent.getAction() != 1)
+    {
+      AppMethodBeat.o(251561);
+      return false;
+    }
+    if (paramMotionEvent.getX() > paramMMClearEditText.getWidth() - paramMMClearEditText.getPaddingRight() - paramMMClearEditText.getImgX().getIntrinsicWidth())
+    {
+      paramMMClearEditText.setText((CharSequence)"");
+      paramMMClearEditText.iKr();
+    }
+    AppMethodBeat.o(251561);
+    return false;
+  }
+  
+  private final void iKp()
+  {
+    AppMethodBeat.i(251545);
+    if ((n.bp((CharSequence)getText().toString())) || (!isFocused()))
+    {
+      iKr();
+      AppMethodBeat.o(251545);
       return;
     }
-    hjy();
-    AppMethodBeat.o(194241);
+    iKq();
+    AppMethodBeat.o(251545);
   }
   
-  private final void hjy()
+  private final void iKq()
   {
-    AppMethodBeat.i(194242);
-    if (!this.WiU) {
-      setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.RcT, getCompoundDrawables()[3]);
+    AppMethodBeat.i(251549);
+    if (!this.adPX) {
+      setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.XYZ, getCompoundDrawables()[3]);
     }
-    AppMethodBeat.o(194242);
+    AppMethodBeat.o(251549);
   }
   
-  private final void hjz()
+  private final void iKr()
   {
-    AppMethodBeat.i(194243);
+    AppMethodBeat.i(251552);
     setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
-    AppMethodBeat.o(194243);
+    AppMethodBeat.o(251552);
   }
   
   private final void init()
   {
-    AppMethodBeat.i(194239);
-    if (this.RcT == null) {
-      this.RcT = aw.bf(getContext(), a.b.et_clear_selector);
+    AppMethodBeat.i(251542);
+    if (this.XYZ == null) {
+      this.XYZ = bd.by(getContext(), a.b.et_clear_selector);
     }
-    Drawable localDrawable1 = this.RcT;
-    Drawable localDrawable2 = this.RcT;
-    p.j(localDrawable2, "imgX");
-    int i = localDrawable2.getIntrinsicWidth();
-    localDrawable2 = this.RcT;
-    p.j(localDrawable2, "imgX");
-    localDrawable1.setBounds(0, 0, i, localDrawable2.getIntrinsicHeight());
-    localDrawable1 = this.RcT;
-    p.j(localDrawable1, "imgX");
-    i = localDrawable1.getIntrinsicWidth();
-    localDrawable1 = this.RcT;
-    p.j(localDrawable1, "imgX");
-    Log.i("MicroMsg.MMClearEditText", "imgX width %d height %d", new Object[] { Integer.valueOf(i), Integer.valueOf(localDrawable1.getIntrinsicHeight()) });
-    hjx();
-    localDrawable1 = this.RcT;
-    p.j(localDrawable1, "imgX");
-    setHeight(localDrawable1.getIntrinsicHeight() + getResources().getDimensionPixelSize(a.d.OneDPPadding) * 5);
-    setOnTouchListener(this.nan);
+    this.XYZ.setBounds(0, 0, this.XYZ.getIntrinsicWidth(), this.XYZ.getIntrinsicHeight());
+    Log.i("MicroMsg.MMClearEditText", "imgX width %d height %d", new Object[] { Integer.valueOf(this.XYZ.getIntrinsicWidth()), Integer.valueOf(this.XYZ.getIntrinsicHeight()) });
+    iKp();
+    setHeight(this.XYZ.getIntrinsicHeight() + getResources().getDimensionPixelSize(a.d.OneDPPadding) * 5);
+    setOnTouchListener(this.pWX);
     addTextChangedListener((TextWatcher)new b(this));
-    super.setOnFocusChangeListener((View.OnFocusChangeListener)new c(this));
-    AppMethodBeat.o(194239);
+    super.setOnFocusChangeListener(new MMClearEditText..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(251542);
   }
   
-  public final void bqQ(String paramString)
+  public final void bqF(String paramString)
   {
-    AppMethodBeat.i(194240);
-    p.k(paramString, "srcString");
+    AppMethodBeat.i(251585);
+    s.u(paramString, "srcString");
     int i = getSelectionStart();
     setText(b.c(getContext(), (CharSequence)paramString, getTextSize()));
     int j = getText().length() - paramString.length();
@@ -132,150 +154,98 @@ public final class MMClearEditText
       if (i <= getText().length())
       {
         setSelection(i);
-        AppMethodBeat.o(194240);
+        AppMethodBeat.o(251585);
       }
     }
     else
     {
       setSelection(i);
     }
-    AppMethodBeat.o(194240);
+    AppMethodBeat.o(251585);
   }
   
   public final View.OnTouchListener getDefaultOnTouchListener()
   {
-    return this.nan;
+    return this.pWX;
   }
   
   public final Drawable getImgX()
   {
-    return this.RcT;
+    return this.XYZ;
   }
   
   public final boolean getMEnableRestoreState()
   {
-    return this.RcS;
+    return this.XYY;
   }
   
   public final void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(194244);
+    AppMethodBeat.i(251593);
     if (!(paramParcelable instanceof TextView.SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(194244);
+      AppMethodBeat.o(251593);
       return;
     }
-    if (!this.RcS) {
+    if (!this.XYY) {
       paramParcelable = (Parcelable)View.BaseSavedState.EMPTY_STATE;
     }
     for (;;)
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(194244);
+      AppMethodBeat.o(251593);
       return;
     }
   }
   
   public final void setImgX(Drawable paramDrawable)
   {
-    this.RcT = paramDrawable;
+    this.XYZ = paramDrawable;
   }
   
   public final void setMEnableRestoreState(boolean paramBoolean)
   {
-    this.RcS = paramBoolean;
+    this.XYY = paramBoolean;
   }
   
   public final void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.HBD = paramOnFocusChangeListener;
+    this.Nzg = paramOnFocusChangeListener;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/widget/MMClearEditText$init$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "arg0", "Landroid/text/Editable;", "beforeTextChanged", "s", "", "start", "", "count", "after", "onTextChanged", "before", "libmmui_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/ui/widget/MMClearEditText$init$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "arg0", "Landroid/text/Editable;", "beforeTextChanged", "s", "", "start", "", "count", "after", "onTextChanged", "before", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements TextWatcher
   {
+    b(MMClearEditText paramMMClearEditText) {}
+    
     public final void afterTextChanged(Editable paramEditable)
     {
-      AppMethodBeat.i(224044);
-      p.k(paramEditable, "arg0");
-      AppMethodBeat.o(224044);
+      AppMethodBeat.i(251632);
+      s.u(paramEditable, "arg0");
+      AppMethodBeat.o(251632);
     }
     
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(224046);
-      p.k(paramCharSequence, "s");
-      AppMethodBeat.o(224046);
+      AppMethodBeat.i(251637);
+      s.u(paramCharSequence, "s");
+      AppMethodBeat.o(251637);
     }
     
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(224042);
-      p.k(paramCharSequence, "s");
-      MMClearEditText.a(this.YaG);
-      AppMethodBeat.o(224042);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "arg0", "Landroid/view/View;", "kotlin.jvm.PlatformType", "arg1", "", "onFocusChange"})
-  static final class c
-    implements View.OnFocusChangeListener
-  {
-    c(MMClearEditText paramMMClearEditText) {}
-    
-    public final void onFocusChange(View paramView, boolean paramBoolean)
-    {
-      AppMethodBeat.i(223496);
-      View.OnFocusChangeListener localOnFocusChangeListener = MMClearEditText.b(this.YaG);
-      if (localOnFocusChangeListener != null) {
-        localOnFocusChangeListener.onFocusChange(paramView, paramBoolean);
-      }
-      MMClearEditText.a(this.YaG);
-      AppMethodBeat.o(223496);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class d
-    implements View.OnTouchListener
-  {
-    d(MMClearEditText paramMMClearEditText) {}
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(200715);
-      paramView = this.YaG;
-      if (paramView.getCompoundDrawables()[2] == null)
-      {
-        AppMethodBeat.o(200715);
-        return false;
-      }
-      p.j(paramMotionEvent, "event");
-      if (paramMotionEvent.getAction() != 1)
-      {
-        AppMethodBeat.o(200715);
-        return false;
-      }
-      float f = paramMotionEvent.getX();
-      int i = paramView.getWidth();
-      int j = paramView.getPaddingRight();
-      paramMotionEvent = this.YaG.getImgX();
-      p.j(paramMotionEvent, "imgX");
-      if (f > i - j - paramMotionEvent.getIntrinsicWidth())
-      {
-        paramView.setText((CharSequence)"");
-        MMClearEditText.c(this.YaG);
-      }
-      AppMethodBeat.o(200715);
-      return false;
+      AppMethodBeat.i(251625);
+      s.u(paramCharSequence, "s");
+      MMClearEditText.a(this.afSz);
+      AppMethodBeat.o(251625);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMClearEditText
  * JD-Core Version:    0.7.0.1
  */

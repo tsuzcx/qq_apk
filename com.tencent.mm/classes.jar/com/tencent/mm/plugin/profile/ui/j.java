@@ -1,379 +1,231 @@
 package com.tencent.mm.plugin.profile.ui;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.os.Message;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
 import com.tencent.mm.R.o;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.model.ab;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bq.a;
-import com.tencent.mm.model.c;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.account.bind.ui.BindLinkedInUI;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.profile.b;
-import com.tencent.mm.pluginsdk.c.a;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.protocal.protobuf.edx;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.base.preference.CheckBoxPreference;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.v;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.x;
 import junit.framework.Assert;
 
 public final class j
-  implements a, MStorageEx.IOnStorageChange
+  implements com.tencent.mm.pluginsdk.c.a, MStorageEx.IOnStorageChange
 {
-  private static boolean isDeleteCancel = false;
-  private as contact;
+  private HelperHeaderPreference.a MXx;
+  private au contact;
   private Context context;
-  private com.tencent.mm.ui.base.preference.f screen;
+  private f screen;
   
   public j(Context paramContext)
   {
+    AppMethodBeat.i(27154);
     this.context = paramContext;
+    this.MXx = new t(paramContext);
+    AppMethodBeat.o(27154);
   }
   
-  public static void F(final Context paramContext, boolean paramBoolean)
+  public static void M(Context paramContext, final boolean paramBoolean)
   {
-    AppMethodBeat.i(27176);
+    AppMethodBeat.i(27159);
     if (paramBoolean) {}
-    for (Object localObject = paramContext.getString(R.l.settings_plugins_installing);; localObject = paramContext.getString(R.l.settings_plugins_uninstalling))
+    for (String str = paramContext.getString(R.l.settings_plugins_installing);; str = paramContext.getString(R.l.settings_plugins_uninstalling))
     {
       paramContext.getString(R.l.app_tip);
-      localObject = com.tencent.mm.ui.base.h.a(paramContext, (String)localObject, true, null);
-      paramContext = new MMHandler()
+      new MTimerHandler(new MTimerHandler.CallBack()
       {
-        public final void handleMessage(Message paramAnonymousMessage)
+        public final boolean onTimerExpired()
         {
-          AppMethodBeat.i(27166);
-          if (this.uoH) {
-            j.vZ(true);
+          AppMethodBeat.i(27153);
+          if (j.this != null) {
+            j.this.dismiss();
           }
-          int i = z.bdn();
-          if (this.uoH) {
-            i &= 0xFFFFFFEF;
-          }
-          for (;;)
+          int i = z.bBf();
+          edx localedx;
+          if (paramBoolean)
           {
-            bh.beI();
-            c.aHp().i(34, Integer.valueOf(i));
-            bh.beI();
-            c.bbK().d(new com.tencent.mm.bd.l("", "", "", "", "", "", "", "", i, "", ""));
-            if (!this.uoH) {
-              j.access$100(paramContext);
+            i &= 0xFEFFFFFF;
+            bh.bCz();
+            com.tencent.mm.model.c.ban().B(34, Integer.valueOf(i));
+            localedx = new edx();
+            localedx.YBX = 16777216;
+            if (!paramBoolean) {
+              break label176;
             }
-            if (this.ESS != null) {
-              this.ESS.onNotifyChange(null, null);
+          }
+          label176:
+          for (i = 0;; i = 1)
+          {
+            localedx.abiW = i;
+            bh.bCz();
+            com.tencent.mm.model.c.bzz().d(new k.a(39, localedx));
+            if (this.KNw != null) {
+              this.KNw.onNotifyChange(null, null);
             }
-            AppMethodBeat.o(27166);
-            return;
-            i |= 0x10;
+            AppMethodBeat.o(27153);
+            return false;
+            i |= 0x1000000;
+            bh.bCz();
+            com.tencent.mm.model.c.ban().B(286722, "");
+            bh.bCz();
+            com.tencent.mm.model.c.ban().B(286721, "");
+            bh.bCz();
+            com.tencent.mm.model.c.ban().B(286723, "");
+            break;
           }
         }
-      };
-      com.tencent.e.h.ZvG.o(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(27167);
-          if (this.ucj != null)
-          {
-            this.ucj.dismiss();
-            paramContext.sendEmptyMessage(0);
-          }
-          AppMethodBeat.o(27167);
-        }
-      }, 1500L);
-      AppMethodBeat.o(27176);
+      }, false).startTimer(1500L);
+      AppMethodBeat.o(27159);
       return;
     }
   }
   
-  private void cQY()
+  private void dvr()
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(27175);
-    boolean bool3 = isOpen();
-    boolean bool4 = fqp();
-    Object localObject = (HelperHeaderPreference)this.screen.byG("contact_info_header_helper");
-    ((HelperHeaderPreference)localObject).bf(this.contact.field_username, this.contact.ays(), this.context.getString(R.l.eyG));
-    int i;
-    boolean bool1;
-    if (bool3)
+    AppMethodBeat.i(27158);
+    boolean bool = gBE();
+    this.screen.removeAll();
+    this.screen.aBe(R.o.haP);
+    ((HelperHeaderPreference)this.screen.bAi("contact_info_header_helper")).a(this.contact, this.MXx);
+    if (bool)
     {
-      i = 1;
-      ((HelperHeaderPreference)localObject).updateStatus(i);
-      this.screen.dz("contact_info_medianote_install", bool3);
-      localObject = this.screen;
-      if (bool3) {
-        break label252;
-      }
-      bool1 = true;
-      label103:
-      ((com.tencent.mm.ui.base.preference.f)localObject).dz("contact_info_medianote_view", bool1);
-      if ((!bool3) || (z.bdO())) {
-        break label277;
-      }
-      if (Util.getInt(com.tencent.mm.n.h.axc().getValue("BindQQSwitch"), 1) != 1) {
-        break label257;
-      }
-      bool1 = true;
-      label143:
-      Log.i("MicroMsg.ContactWidgetMediaNote", "summerqq BindQQSwitch off");
-    }
-    for (;;)
-    {
-      localObject = this.screen;
-      if (!bool1)
-      {
-        bool1 = true;
-        label162:
-        ((com.tencent.mm.ui.base.preference.f)localObject).dz("contact_info_medianote_sync_to_qqmail", bool1);
-        localObject = this.screen;
-        if (bool3) {
-          break label267;
-        }
-        bool1 = true;
-        label186:
-        ((com.tencent.mm.ui.base.preference.f)localObject).dz("contact_info_medianote_clear_data", bool1);
-        localObject = this.screen;
-        if (bool3) {
-          break label272;
-        }
-      }
-      label257:
-      label267:
-      label272:
-      for (bool1 = bool2;; bool1 = false)
-      {
-        ((com.tencent.mm.ui.base.preference.f)localObject).dz("contact_info_medianote_uninstall", bool1);
-        ((CheckBoxPreference)this.screen.byG("contact_info_medianote_sync_to_qqmail")).setChecked(bool4);
-        AppMethodBeat.o(27175);
-        return;
-        i = 0;
-        break;
-        label252:
-        bool1 = false;
-        break label103;
-        bool1 = false;
-        break label143;
-        bool1 = false;
-        break label162;
-        bool1 = false;
-        break label186;
-      }
-      label277:
-      bool1 = bool3;
-    }
-  }
-  
-  private static boolean fqp()
-  {
-    AppMethodBeat.i(27173);
-    int i = z.bdd();
-    if (!z.bdO())
-    {
-      if ((i & 0x4000) != 0)
-      {
-        bh.beI();
-        c.aHp().i(7, Integer.valueOf(i & 0xFFFFBFFF));
-      }
-      AppMethodBeat.o(27173);
-      return false;
-    }
-    if ((i & 0x4000) != 0)
-    {
-      AppMethodBeat.o(27173);
-      return true;
-    }
-    AppMethodBeat.o(27173);
-    return false;
-  }
-  
-  private static boolean isOpen()
-  {
-    AppMethodBeat.i(27172);
-    if ((z.bdn() & 0x10) == 0)
-    {
-      AppMethodBeat.o(27172);
-      return true;
-    }
-    AppMethodBeat.o(27172);
-    return false;
-  }
-  
-  static void vZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(27179);
-    int i = z.bdd();
-    if (paramBoolean)
-    {
-      i |= 0x4000;
-      bh.beI();
-      c.aHp().i(7, Integer.valueOf(i));
-      if (!paramBoolean) {
-        break label80;
-      }
-    }
-    label80:
-    for (i = 1;; i = 2)
-    {
-      bh.beI();
-      c.bbK().d(new com.tencent.mm.bd.h(13, i));
-      AppMethodBeat.o(27179);
+      this.screen.eh("contact_info_linkedin_account", false);
+      this.screen.bAk("contact_info_linkedin_install");
+      AppMethodBeat.o(27158);
       return;
-      i &= 0xFFFFBFFF;
-      break;
     }
+    this.screen.eh("contact_info_linkedin_account", true);
+    this.screen.bAk("contact_info_linkedin_uninstall");
+    AppMethodBeat.o(27158);
   }
   
-  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, as paramas, boolean paramBoolean, int paramInt)
+  private static boolean gBE()
+  {
+    AppMethodBeat.i(27155);
+    if ((z.bBf() & 0x1000000) == 0)
+    {
+      AppMethodBeat.o(27155);
+      return true;
+    }
+    AppMethodBeat.o(27155);
+    return false;
+  }
+  
+  public final boolean a(f paramf, au paramau, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
-    AppMethodBeat.i(27174);
+    AppMethodBeat.i(27157);
     if (paramf != null) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
       Assert.assertTrue(paramBoolean);
       paramBoolean = bool;
-      if (paramas != null) {
+      if (paramau != null) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(ab.QB(paramas.field_username));
-      bh.beI();
-      c.aHp().add(this);
-      this.contact = paramas;
+      Assert.assertTrue(au.bwl(paramau.field_username));
+      bh.bCz();
+      com.tencent.mm.model.c.ban().add(this);
+      this.contact = paramau;
       this.screen = paramf;
-      paramf.auC(R.o.eXp);
-      cQY();
-      AppMethodBeat.o(27174);
+      dvr();
+      AppMethodBeat.o(27157);
       return true;
     }
   }
   
-  public final boolean atw(String paramString)
+  public final boolean anl(String paramString)
   {
-    AppMethodBeat.i(27171);
-    Log.d("MicroMsg.ContactWidgetMediaNote", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(27156);
+    Log.d("MicroMsg.ContactWidgetLinkedIn", "handleEvent : key = ".concat(String.valueOf(paramString)));
     if (Util.nullAsNil(paramString).length() <= 0)
     {
-      AppMethodBeat.o(27171);
+      AppMethodBeat.o(27156);
       return false;
     }
-    if (paramString.equals("contact_info_medianote_view"))
+    if (paramString.equals("contact_info_linkedin_install"))
     {
-      paramString = new Intent();
-      paramString.putExtra("Chat_User", "medianote");
-      b.mIG.d(paramString, this.context);
-      b.mIH.abC();
-      AppMethodBeat.o(27171);
+      M(this.context, true);
+      AppMethodBeat.o(27156);
       return true;
     }
-    if (paramString.equals("contact_info_medianote_sync_to_qqmail"))
+    if (paramString.equals("contact_info_linkedin_uninstall"))
     {
-      if (!z.bdO())
-      {
-        com.tencent.mm.ui.base.h.a(this.context, R.l.contact_info_medianote_sync_to_qqmail_alert_tip, R.l.eyF, new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(27163);
-            b.mIG.g(new Intent(), j.a(j.this));
-            AppMethodBeat.o(27163);
-          }
-        }, null);
-        cQY();
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(27171);
-        return true;
-        vZ(((CheckBoxPreference)this.screen.byG(paramString)).isChecked());
-      }
-    }
-    if (paramString.equals("contact_info_medianote_clear_data"))
-    {
-      com.tencent.mm.ui.base.h.c(this.context, this.context.getString(R.l.contact_info_clear_data), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+      k.b(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(27164);
-          j.access$100(j.a(j.this));
-          AppMethodBeat.o(27164);
+          AppMethodBeat.i(27152);
+          j.M(j.a(j.this), false);
+          AppMethodBeat.o(27152);
         }
       }, null);
-      AppMethodBeat.o(27171);
+      AppMethodBeat.o(27156);
       return true;
     }
-    if (paramString.equals("contact_info_medianote_install"))
+    if (paramString.equals("contact_info_linkedin_account"))
     {
-      F(this.context, true);
-      AppMethodBeat.o(27171);
-      return true;
+      Intent localIntent = new Intent(this.context, BindLinkedInUI.class);
+      com.tencent.mm.hellhoundlib.a.a.a((Activity)this.context, com.tencent.mm.hellhoundlib.b.c.a(1, new com.tencent.mm.hellhoundlib.b.a()).cG(localIntent).aYi(), "com/tencent/mm/plugin/profile/ui/ContactWidgetLinkedIn", "handleEvent", "(Ljava/lang/String;)Z", "android/app/Activity", "startActivityForResult", "(Landroid/content/Intent;I)V");
     }
-    if (paramString.equals("contact_info_medianote_uninstall"))
-    {
-      com.tencent.mm.ui.base.h.c(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(27165);
-          j.F(j.a(j.this), false);
-          AppMethodBeat.o(27165);
-        }
-      }, null);
-      AppMethodBeat.o(27171);
-      return true;
-    }
-    Log.e("MicroMsg.ContactWidgetMediaNote", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(27171);
+    Log.e("MicroMsg.ContactWidgetLinkedIn", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(27156);
     return false;
   }
   
-  public final boolean cQX()
+  public final boolean dvq()
   {
-    AppMethodBeat.i(27177);
-    bh.beI();
-    c.aHp().remove(this);
-    b.mIH.abC();
-    AppMethodBeat.o(27177);
+    AppMethodBeat.i(27160);
+    bh.bCz();
+    com.tencent.mm.model.c.ban().remove(this);
+    this.screen.bAi("contact_info_header_helper");
+    b.pFo.aDx();
+    AppMethodBeat.o(27160);
     return true;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(27161);
+    if ((paramInt1 == 1) && (paramInt2 == -1)) {
+      dvr();
+    }
+    AppMethodBeat.o(27161);
+  }
   
   public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
-    AppMethodBeat.i(27178);
-    int i = Util.nullAsInt(paramObject, 0);
-    Log.d("MicroMsg.ContactWidgetMediaNote", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramMStorageEx });
-    bh.beI();
-    if ((paramMStorageEx != c.aHp()) || (i <= 0))
+    AppMethodBeat.i(27162);
+    if ((paramObject instanceof Integer))
     {
-      Log.e("MicroMsg.ContactWidgetMediaNote", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramMStorageEx });
-      AppMethodBeat.o(27178);
-      return;
+      paramInt = ((Integer)paramObject).intValue();
+      if ((paramInt == 40) || (paramInt == 34)) {
+        dvr();
+      }
     }
-    if ((i != 40) && (i != 34) && (i != 7))
-    {
-      AppMethodBeat.o(27178);
-      return;
-    }
-    cQY();
-    AppMethodBeat.o(27178);
+    AppMethodBeat.o(27162);
   }
 }
 

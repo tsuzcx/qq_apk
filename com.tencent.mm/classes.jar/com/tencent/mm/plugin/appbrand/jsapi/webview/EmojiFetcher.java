@@ -4,71 +4,72 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.loader.d.i.a;
-import com.tencent.mm.emoji.loader.e;
+import com.tencent.mm.emoji.b.d.h.a;
+import com.tencent.mm.emoji.b.e;
 import com.tencent.mm.ipcinvoker.g;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.memory.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
+import kotlin.Metadata;
 import kotlin.Result;
 import kotlin.Result.Companion;
 import kotlin.ResultKt;
+import kotlin.ah;
 import kotlin.d.a.a;
-import kotlin.d.b.a.j;
-import kotlin.d.d<-Lcom.tencent.mm.storage.emotion.EmojiInfo;>;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.n;
+import kotlin.d.b.a.k;
+import kotlin.g.a.m;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.p;
+import kotlinx.coroutines.q;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher;", "", "()V", "GIF_BYTES_CACHE", "Lcom/tencent/mm/memory/cache/DefaultResource;", "", "", "TAG", "fetchGifBytes", "md5", "encryptUrl", "aesKey", "productId", "designerId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "EmojiArgs", "MMLogic", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher;", "", "()V", "GIF_BYTES_CACHE", "Lcom/tencent/mm/memory/cache/DefaultResource;", "", "", "TAG", "fetchGifBytes", "md5", "encryptUrl", "aesKey", "productId", "designerId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "EmojiArgs", "MMLogic", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class EmojiFetcher
 {
-  private static final c<String, byte[]> pGk;
-  public static final EmojiFetcher pGl;
+  public static final EmojiFetcher sLt;
+  private static final c<String, byte[]> sLu;
   
   static
   {
-    AppMethodBeat.i(253510);
-    pGl = new EmojiFetcher();
-    pGk = new c(10);
-    AppMethodBeat.o(253510);
+    AppMethodBeat.i(327437);
+    sLt = new EmojiFetcher();
+    sLu = new c(10);
+    AppMethodBeat.o(327437);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$EmojiArgs;", "Landroid/os/Parcelable;", "md5", "", "encryptUrl", "aesKey", "productId", "designerId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAesKey", "()Ljava/lang/String;", "getDesignerId", "getEncryptUrl", "getMd5", "getProductId", "component1", "component2", "component3", "component4", "component5", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$EmojiArgs;", "Landroid/os/Parcelable;", "md5", "", "encryptUrl", "aesKey", "productId", "designerId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAesKey", "()Ljava/lang/String;", "getDesignerId", "getEncryptUrl", "getMd5", "getProductId", "component1", "component2", "component3", "component4", "component5", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class EmojiArgs
     implements Parcelable
   {
-    public static final Parcelable.Creator CREATOR;
+    public static final Parcelable.Creator<EmojiArgs> CREATOR;
     final String aesKey;
-    final String fDy;
-    final String fDz;
+    final String hIo;
+    final String hIp;
     final String md5;
     final String productId;
     
     static
     {
-      AppMethodBeat.i(275834);
-      CREATOR = new a();
-      AppMethodBeat.o(275834);
+      AppMethodBeat.i(327436);
+      CREATOR = (Parcelable.Creator)new a();
+      AppMethodBeat.o(327436);
     }
     
     public EmojiArgs(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
     {
-      AppMethodBeat.i(275830);
+      AppMethodBeat.i(327433);
       this.md5 = paramString1;
-      this.fDz = paramString2;
+      this.hIp = paramString2;
       this.aesKey = paramString3;
       this.productId = paramString4;
-      this.fDy = paramString5;
-      AppMethodBeat.o(275830);
+      this.hIo = paramString5;
+      AppMethodBeat.o(327433);
     }
     
     public final int describeContents()
@@ -78,77 +79,94 @@ public final class EmojiFetcher
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(275832);
-      if (this != paramObject)
+      AppMethodBeat.i(327451);
+      if (this == paramObject)
       {
-        if ((paramObject instanceof EmojiArgs))
-        {
-          paramObject = (EmojiArgs)paramObject;
-          if ((!p.h(this.md5, paramObject.md5)) || (!p.h(this.fDz, paramObject.fDz)) || (!p.h(this.aesKey, paramObject.aesKey)) || (!p.h(this.productId, paramObject.productId)) || (!p.h(this.fDy, paramObject.fDy))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(275832);
+        AppMethodBeat.o(327451);
         return true;
       }
-      AppMethodBeat.o(275832);
-      return false;
+      if (!(paramObject instanceof EmojiArgs))
+      {
+        AppMethodBeat.o(327451);
+        return false;
+      }
+      paramObject = (EmojiArgs)paramObject;
+      if (!s.p(this.md5, paramObject.md5))
+      {
+        AppMethodBeat.o(327451);
+        return false;
+      }
+      if (!s.p(this.hIp, paramObject.hIp))
+      {
+        AppMethodBeat.o(327451);
+        return false;
+      }
+      if (!s.p(this.aesKey, paramObject.aesKey))
+      {
+        AppMethodBeat.o(327451);
+        return false;
+      }
+      if (!s.p(this.productId, paramObject.productId))
+      {
+        AppMethodBeat.o(327451);
+        return false;
+      }
+      if (!s.p(this.hIo, paramObject.hIo))
+      {
+        AppMethodBeat.o(327451);
+        return false;
+      }
+      AppMethodBeat.o(327451);
+      return true;
     }
     
     public final int hashCode()
     {
-      int n = 0;
-      AppMethodBeat.i(275831);
-      String str = this.md5;
+      int m = 0;
+      AppMethodBeat.i(327445);
+      int n = this.md5.hashCode();
       int i;
       int j;
-      label42:
+      label35:
       int k;
-      if (str != null)
+      if (this.hIp == null)
       {
-        i = str.hashCode();
-        str = this.fDz;
-        if (str == null) {
-          break label129;
+        i = 0;
+        if (this.aesKey != null) {
+          break label91;
         }
-        j = str.hashCode();
-        str = this.aesKey;
-        if (str == null) {
-          break label134;
+        j = 0;
+        if (this.productId != null) {
+          break label102;
         }
-        k = str.hashCode();
-        label59:
-        str = this.productId;
-        if (str == null) {
-          break label139;
+        k = 0;
+        label44:
+        if (this.hIo != null) {
+          break label113;
         }
       }
-      label129:
-      label134:
-      label139:
-      for (int m = str.hashCode();; m = 0)
+      for (;;)
       {
-        str = this.fDy;
-        if (str != null) {
-          n = str.hashCode();
-        }
-        AppMethodBeat.o(275831);
-        return (m + (k + (j + i * 31) * 31) * 31) * 31 + n;
-        i = 0;
+        AppMethodBeat.o(327445);
+        return (k + (j + (i + n * 31) * 31) * 31) * 31 + m;
+        i = this.hIp.hashCode();
         break;
-        j = 0;
-        break label42;
-        k = 0;
-        break label59;
+        label91:
+        j = this.aesKey.hashCode();
+        break label35;
+        label102:
+        k = this.productId.hashCode();
+        break label44;
+        label113:
+        m = this.hIo.hashCode();
       }
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(275828);
+      AppMethodBeat.i(327441);
       StringBuilder localStringBuilder = new StringBuilder("EmojiArgs(md5='").append(this.md5).append("', encryptUrl=");
-      String str2 = this.fDz;
+      String str2 = this.hIp;
       String str1 = str2;
       if (str2 == null) {
         str1 = "";
@@ -166,72 +184,58 @@ public final class EmojiFetcher
         str1 = "";
       }
       localStringBuilder = localStringBuilder.append(str1).append(", designerId=");
-      str2 = this.fDy;
+      str2 = this.hIo;
       str1 = str2;
       if (str2 == null) {
         str1 = "";
       }
       str1 = str1 + ')';
-      AppMethodBeat.o(275828);
+      AppMethodBeat.o(327441);
       return str1;
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(275833);
-      p.k(paramParcel, "parcel");
+      AppMethodBeat.i(327463);
+      s.u(paramParcel, "out");
       paramParcel.writeString(this.md5);
-      paramParcel.writeString(this.fDz);
+      paramParcel.writeString(this.hIp);
       paramParcel.writeString(this.aesKey);
       paramParcel.writeString(this.productId);
-      paramParcel.writeString(this.fDy);
-      AppMethodBeat.o(275833);
+      paramParcel.writeString(this.hIo);
+      AppMethodBeat.o(327463);
     }
     
-    @l(iBK={1, 1, 16})
+    @Metadata(k=3, mv={1, 5, 1}, xi=48)
     public static final class a
-      implements Parcelable.Creator
-    {
-      public final Object createFromParcel(Parcel paramParcel)
-      {
-        AppMethodBeat.i(268633);
-        p.k(paramParcel, "in");
-        paramParcel = new EmojiFetcher.EmojiArgs(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString());
-        AppMethodBeat.o(268633);
-        return paramParcel;
-      }
-      
-      public final Object[] newArray(int paramInt)
-      {
-        return new EmojiFetcher.EmojiArgs[paramInt];
-      }
-    }
+      implements Parcelable.Creator<EmojiFetcher.EmojiArgs>
+    {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$MMLogic;", "", "()V", "TAG", "", "decodeAsGif", "", "emoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "loadEmoji", "args", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$EmojiArgs;", "(Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$EmojiArgs;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "saveToGifCache", "bytes", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$MMLogic;", "", "()V", "TAG", "", "decodeAsGif", "", "emoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "loadEmoji", "args", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$EmojiArgs;", "(Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$EmojiArgs;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "saveToGifCache", "bytes", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class a
   {
-    public static final a pGm;
+    public static final a sLv;
     
     static
     {
-      AppMethodBeat.i(269118);
-      pGm = new a();
-      AppMethodBeat.o(269118);
+      AppMethodBeat.i(327422);
+      sLv = new a();
+      AppMethodBeat.o(327422);
     }
     
     public static String b(EmojiInfo paramEmojiInfo, byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(269116);
-      p.k(paramEmojiInfo, "emoji");
-      p.k(paramArrayOfByte, "bytes");
-      String str = com.tencent.mm.loader.j.b.aTC();
+      AppMethodBeat.i(327418);
+      s.u(paramEmojiInfo, "emoji");
+      s.u(paramArrayOfByte, "bytes");
+      String str = com.tencent.mm.loader.i.b.bnq();
       paramEmojiInfo = str + paramEmojiInfo.getMd5() + ".data";
       try
       {
-        u.bBD(str);
-        u.H(paramEmojiInfo, paramArrayOfByte);
-        AppMethodBeat.o(269116);
+        y.bDX(str);
+        y.f(paramEmojiInfo, paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(327418);
         return paramEmojiInfo;
       }
       catch (IOException paramEmojiInfo)
@@ -243,184 +247,71 @@ public final class EmojiFetcher
       }
     }
     
-    public final Object a(final EmojiFetcher.EmojiArgs paramEmojiArgs, kotlin.d.d<? super EmojiInfo> paramd)
-    {
-      AppMethodBeat.i(269115);
-      if ((paramd instanceof b))
-      {
-        localObject1 = (b)paramd;
-        if ((((b)localObject1).label & 0x80000000) != 0) {
-          ((b)localObject1).label += -2147483648;
-        }
-      }
-      a locala;
-      for (paramd = (kotlin.d.d<? super EmojiInfo>)localObject1;; paramd = new b(this, paramd))
-      {
-        localObject1 = paramd.result;
-        locala = a.aaAA;
-        switch (paramd.label)
-        {
-        default: 
-          paramEmojiArgs = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-          AppMethodBeat.o(269115);
-          throw paramEmojiArgs;
-        }
-      }
-      ResultKt.throwOnFailure(localObject1);
-      Object localObject1 = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-      p.j(localObject1, "MMKernel.plugin(IPluginEmoji::class.java)");
-      Object localObject2 = ((com.tencent.mm.plugin.emoji.b.d)localObject1).getEmojiMgr();
-      if (localObject2 == null)
-      {
-        Log.e("MicroMsg.AppBrandHTMLWebView.EmojiFetcher.MMLogic", "load with args:" + paramEmojiArgs + ", invalid state, emojiMgr is NULL");
-        AppMethodBeat.o(269115);
-        return null;
-      }
-      localObject1 = new aa.f();
-      ((aa.f)localObject1).aaBC = ((com.tencent.mm.pluginsdk.b.d)localObject2).aud(paramEmojiArgs.md5);
-      Object localObject3;
-      if ((EmojiInfo)((aa.f)localObject1).aaBC == null)
-      {
-        localObject3 = new EmojiInfo();
-        ((EmojiInfo)localObject3).setMd5(paramEmojiArgs.md5);
-        ((EmojiInfo)localObject3).bIR(paramEmojiArgs.productId);
-        ((EmojiInfo)localObject3).field_encrypturl = paramEmojiArgs.fDz;
-        ((EmojiInfo)localObject3).field_aeskey = paramEmojiArgs.aesKey;
-        ((EmojiInfo)localObject3).field_catalog = EmojiInfo.YCx;
-        ((EmojiInfo)localObject3).field_designerID = paramEmojiArgs.fDy;
-        ((EmojiInfo)localObject3).hBA();
-        ((aa.f)localObject1).aaBC = localObject3;
-        localObject3 = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-        p.j(localObject3, "MMKernel.plugin(IPluginEmoji::class.java)");
-        localObject3 = ((com.tencent.mm.plugin.emoji.b.d)localObject3).getEmojiStorageMgr();
-        p.j(localObject3, "MMKernel.plugin(IPluginE…ass.java).emojiStorageMgr");
-        ((bj)localObject3).ctY().K((EmojiInfo)((aa.f)localObject1).aaBC);
-      }
-      if (!((EmojiInfo)((aa.f)localObject1).aaBC).hBr())
-      {
-        paramd.L$0 = this;
-        paramd.oDA = paramEmojiArgs;
-        paramd.pGq = localObject2;
-        paramd.pGr = localObject1;
-        paramd.label = 1;
-        localObject2 = new n(kotlin.d.a.b.k(paramd), 1);
-        ((n)localObject2).iQM();
-        localObject3 = (kotlinx.coroutines.m)localObject2;
-        e locale = e.jGI;
-        e.a((EmojiInfo)((aa.f)localObject1).aaBC, (i.a)new a((kotlinx.coroutines.m)localObject3, (aa.f)localObject1, paramEmojiArgs));
-        localObject1 = ((n)localObject2).getResult();
-        if (localObject1 == a.aaAA) {
-          p.k(paramd, "frame");
-        }
-        paramEmojiArgs = (EmojiFetcher.EmojiArgs)localObject1;
-        if (localObject1 == locala)
-        {
-          AppMethodBeat.o(269115);
-          return locala;
-          ResultKt.throwOnFailure(localObject1);
-          paramEmojiArgs = (EmojiFetcher.EmojiArgs)localObject1;
-        }
-        paramEmojiArgs = (EmojiInfo)paramEmojiArgs;
-        AppMethodBeat.o(269115);
-        return paramEmojiArgs;
-      }
-      Log.i("MicroMsg.AppBrandHTMLWebView.EmojiFetcher.MMLogic", "load with args:" + paramEmojiArgs + ", return cached info");
-      paramEmojiArgs = (EmojiInfo)((aa.f)localObject1).aaBC;
-      AppMethodBeat.o(269115);
-      return paramEmojiArgs;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$MMLogic$loadEmoji$3$1", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "onResult", "", "success", "", "plugin-appbrand-integration_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$MMLogic$loadEmoji$3$1", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "onResult", "", "success", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
-      implements i.a
+      implements h.a
     {
-      a(kotlinx.coroutines.m paramm, aa.f paramf, EmojiFetcher.EmojiArgs paramEmojiArgs) {}
+      a(EmojiFetcher.EmojiArgs paramEmojiArgs, p<? super EmojiInfo> paramp, ah.f<EmojiInfo> paramf) {}
       
-      public final void ep(boolean paramBoolean)
+      public final void onResult(boolean paramBoolean)
       {
-        AppMethodBeat.i(279985);
-        Log.i("MicroMsg.AppBrandHTMLWebView.EmojiFetcher.MMLogic", "load with args:" + paramEmojiArgs + ", async load success:" + paramBoolean);
+        AppMethodBeat.i(327404);
+        Log.i("MicroMsg.AppBrandHTMLWebView.EmojiFetcher.MMLogic", "load with args:" + this.sLw + ", async load success:" + paramBoolean);
         if (paramBoolean)
         {
-          locald = (kotlin.d.d)this.khs;
-          localObject = (EmojiInfo)this.pGn.aaBC;
+          locald = (kotlin.d.d)this.bPy;
+          localObject = this.sLx.aqH;
           Result.Companion localCompanion = Result.Companion;
           locald.resumeWith(Result.constructor-impl(localObject));
-          AppMethodBeat.o(279985);
+          AppMethodBeat.o(327404);
           return;
         }
-        kotlin.d.d locald = (kotlin.d.d)this.khs;
+        kotlin.d.d locald = (kotlin.d.d)this.bPy;
         Object localObject = Result.Companion;
         locald.resumeWith(Result.constructor-impl(null));
-        AppMethodBeat.o(279985);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"loadEmoji", "", "args", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$EmojiArgs;", "continuation", "Lkotlin/coroutines/Continuation;", "Lcom/tencent/mm/storage/emotion/EmojiInfo;"})
-    static final class b
-      extends kotlin.d.b.a.d
-    {
-      Object L$0;
-      int label;
-      Object oDA;
-      Object pGq;
-      Object pGr;
-      
-      b(EmojiFetcher.a parama, kotlin.d.d paramd)
-      {
-        super();
-      }
-      
-      public final Object invokeSuspend(Object paramObject)
-      {
-        AppMethodBeat.i(276571);
-        this.result = paramObject;
-        this.label |= 0x80000000;
-        paramObject = this.pGp.a(null, this);
-        AppMethodBeat.o(276571);
-        return paramObject;
+        AppMethodBeat.o(327404);
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$fetchGifBytes$3$callback$1", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallbackEx;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "onBridgeNotFound", "", "onCallback", "data", "onCaughtInvokeException", "e", "Ljava/lang/Exception;", "Lkotlin/Exception;", "plugin-appbrand-integration_release"})
-  public static final class b
-    implements g<IPCString>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "args", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$EmojiArgs;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b<InputType, ResultType>
+    implements com.tencent.mm.ipcinvoker.d
   {
-    b(EmojiFetcher.EmojiArgs paramEmojiArgs, kotlinx.coroutines.m paramm, String paramString1, String paramString2, String paramString3) {}
-    
-    public final void aFq()
-    {
-      AppMethodBeat.i(269407);
-      Log.e("MicroMsg.AppBrandHTMLWebView.EmojiFetcher", "fetch with args:" + this.pGs + ", onBridgeNotFound()");
-      kotlin.d.d locald = (kotlin.d.d)this.khs;
-      Result.Companion localCompanion = Result.Companion;
-      locald.resumeWith(Result.constructor-impl(null));
-      AppMethodBeat.o(269407);
-    }
-    
-    public final void g(Exception paramException)
-    {
-      AppMethodBeat.i(269408);
-      Log.e("MicroMsg.AppBrandHTMLWebView.EmojiFetcher", "fetch with args:" + this.pGs + ", onCaughtInvokeException(" + paramException + ')');
-      paramException = (kotlin.d.d)this.khs;
-      Result.Companion localCompanion = Result.Companion;
-      paramException.resumeWith(Result.constructor-impl(null));
-      AppMethodBeat.o(269408);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "args", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$EmojiArgs;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "invoke"})
-  static final class c<InputType, ResultType>
-    implements com.tencent.mm.ipcinvoker.d<EmojiFetcher.EmojiArgs, IPCString>
-  {
-    public static final c pGy;
+    public static final b<InputType, ResultType> sLy;
     
     static
     {
-      AppMethodBeat.i(272897);
-      pGy = new c();
-      AppMethodBeat.o(272897);
+      AppMethodBeat.i(327419);
+      sLy = new b();
+      AppMethodBeat.o(327419);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/webview/EmojiFetcher$fetchGifBytes$3$callback$1", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallbackEx;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "onBridgeNotFound", "", "onCallback", "data", "onCaughtInvokeException", "e", "Ljava/lang/Exception;", "Lkotlin/Exception;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements g<IPCString>
+  {
+    c(EmojiFetcher.EmojiArgs paramEmojiArgs, p<? super byte[]> paramp, String paramString) {}
+    
+    public final void aYr()
+    {
+      AppMethodBeat.i(327423);
+      Log.e("MicroMsg.AppBrandHTMLWebView.EmojiFetcher", "fetch with args:" + this.sLw + ", onBridgeNotFound()");
+      kotlin.d.d locald = (kotlin.d.d)this.bPy;
+      Result.Companion localCompanion = Result.Companion;
+      locald.resumeWith(Result.constructor-impl(null));
+      AppMethodBeat.o(327423);
+    }
+    
+    public final void h(Exception paramException)
+    {
+      AppMethodBeat.i(327426);
+      Log.e("MicroMsg.AppBrandHTMLWebView.EmojiFetcher", "fetch with args:" + this.sLw + ", onCaughtInvokeException(" + paramException + ')');
+      paramException = (kotlin.d.d)this.bPy;
+      Result.Companion localCompanion = Result.Companion;
+      paramException.resumeWith(Result.constructor-impl(null));
+      AppMethodBeat.o(327426);
     }
   }
 }

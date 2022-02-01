@@ -2,7 +2,6 @@ package com.google.android.gms.common.api.internal;
 
 import android.os.DeadObjectException;
 import android.os.RemoteException;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.Api.AnyClient;
 import com.google.android.gms.common.api.Api.AnyClientKey;
@@ -12,18 +11,14 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.SimpleClientAdapter;
 
-@KeepForSdk
 public abstract class BaseImplementation$ApiMethodImpl<R extends Result, A extends Api.AnyClient>
   extends BasePendingResult<R>
   implements BaseImplementation.ResultHolder<R>
 {
-  @KeepForSdk
   private final Api<?> mApi;
-  @KeepForSdk
   private final Api.AnyClientKey<A> mClientKey;
   
   @Deprecated
-  @KeepForSdk
   protected BaseImplementation$ApiMethodImpl(Api.AnyClientKey<A> paramAnyClientKey, GoogleApiClient paramGoogleApiClient)
   {
     super((GoogleApiClient)Preconditions.checkNotNull(paramGoogleApiClient, "GoogleApiClient must not be null"));
@@ -31,7 +26,6 @@ public abstract class BaseImplementation$ApiMethodImpl<R extends Result, A exten
     this.mApi = null;
   }
   
-  @KeepForSdk
   protected BaseImplementation$ApiMethodImpl(Api<?> paramApi, GoogleApiClient paramGoogleApiClient)
   {
     super((GoogleApiClient)Preconditions.checkNotNull(paramGoogleApiClient, "GoogleApiClient must not be null"));
@@ -40,7 +34,6 @@ public abstract class BaseImplementation$ApiMethodImpl<R extends Result, A exten
     this.mApi = paramApi;
   }
   
-  @KeepForSdk
   protected BaseImplementation$ApiMethodImpl(BasePendingResult.CallbackHandler<R> paramCallbackHandler)
   {
     super(paramCallbackHandler);
@@ -48,31 +41,25 @@ public abstract class BaseImplementation$ApiMethodImpl<R extends Result, A exten
     this.mApi = null;
   }
   
-  @KeepForSdk
   private void setFailedResult(RemoteException paramRemoteException)
   {
     setFailedResult(new Status(8, paramRemoteException.getLocalizedMessage(), null));
   }
   
-  @KeepForSdk
   protected abstract void doExecute(A paramA);
   
-  @KeepForSdk
   public final Api<?> getApi()
   {
     return this.mApi;
   }
   
-  @KeepForSdk
   public final Api.AnyClientKey<A> getClientKey()
   {
     return this.mClientKey;
   }
   
-  @KeepForSdk
   protected void onSetFailedResult(R paramR) {}
   
-  @KeepForSdk
   public final void run(A paramA)
   {
     Object localObject = paramA;
@@ -95,7 +82,6 @@ public abstract class BaseImplementation$ApiMethodImpl<R extends Result, A exten
     }
   }
   
-  @KeepForSdk
   public final void setFailedResult(Status paramStatus)
   {
     if (!paramStatus.isSuccess()) {}
@@ -111,7 +97,7 @@ public abstract class BaseImplementation$ApiMethodImpl<R extends Result, A exten
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl
  * JD-Core Version:    0.7.0.1
  */

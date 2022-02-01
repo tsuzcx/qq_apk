@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceSmallCategory android:key="join_rank_empty" />
-    <CheckBoxPreference android:defaultValue="true" android:key="join_rank" android:persistent="false" android:title="@string/c20" />
-    <PreferenceSmallCategory android:key="join_rank_empty_bottom" />
-    <CheckBoxPreference android:defaultValue="true" android:key="notify_rank" android:layout="@layout/b8j" android:persistent="false" android:title="@string/c22" />
-    <CheckBoxPreference android:defaultValue="true" android:key="notify_like" android:persistent="false" android:title="@string/c21" />
-    <PreferenceSmallCategory android:key="notify_like_empty" />
-    <PreferenceSmallCategory android:key="black_contact_list_empty" />
-    <Preference android:key="black_contact_list" android:layout="@layout/b8j" android:title="@string/c15" />
+    <com.tencent.mm.ui.base.preference.HeadImgNewPreference android:key="settings_avatar" android:layout="@layout/bdi" android:title="@string/d1o" />
+    <Preference android:key="settings_nickname" android:layout="@layout/bdi" android:title="@string/eee" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_sex" android:layout="@layout/bdi" android:title="@string/iyn" />
+    <Preference android:key="settings_district" android:layout="@layout/bdi" android:title="@string/d6w" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_signature" android:layout="@layout/bdi" android:title="@string/epr" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_profile_cover" android:layout="@layout/bdi" android:title="@string/ens" />
 </PreferenceScreen>

@@ -11,72 +11,70 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.live.b.e;
 import com.tencent.mm.live.b.f;
-import com.tencent.mm.live.b.a.d;
-import com.tencent.mm.live.b.u;
+import com.tencent.mm.live.model.a.d;
+import com.tencent.mm.live.model.u;
 import com.tencent.mm.live.view.a.b;
-import com.tencent.mm.live.view.a.g;
+import com.tencent.mm.live.view.a.f;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.l;
-import kotlin.o;
+import kotlin.Metadata;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/LiveAfterStateView;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter;", "backBtn", "Landroid/widget/ImageView;", "loadingView", "Landroid/widget/ProgressBar;", "onlineCountGroup", "Landroid/view/ViewGroup;", "onlineCountTv", "Landroid/widget/TextView;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "retryTip", "roomCountGroup", "roomCountTv", "subTitleTv", "titleTv", "finish", "", "getLayoutId", "initViews", "loadMembers", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showDataView", "showLoadingView", "showRetryView", "start", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/view/LiveAfterStateView;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter;", "backBtn", "Landroid/widget/ImageView;", "loadingView", "Landroid/widget/ProgressBar;", "onlineCountGroup", "Landroid/view/ViewGroup;", "onlineCountTv", "Landroid/widget/TextView;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "retryTip", "roomCountGroup", "roomCountTv", "subTitleTv", "titleTv", "finish", "", "getLayoutId", "initViews", "loadMembers", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showDataView", "showLoadingView", "showRetryView", "start", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class LiveAfterStateView
   extends RelativeLayout
-  implements i
+  implements h
 {
-  private RecyclerView jLl;
-  private ProgressBar jMF;
-  private TextView kGi;
-  private TextView kIA;
-  private TextView kIB;
-  private final b kIC;
-  private ViewGroup kIx;
-  private ViewGroup kIy;
-  private TextView kIz;
+  private RecyclerView mkw;
+  private ProgressBar mlF;
+  private TextView njg;
+  private ViewGroup nla;
+  private ViewGroup nlb;
+  private TextView nlc;
+  private TextView nld;
+  private TextView nle;
+  private final b nlf;
   
   public LiveAfterStateView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(188667);
-    AppMethodBeat.o(188667);
+    AppMethodBeat.i(246184);
+    AppMethodBeat.o(246184);
   }
   
   public LiveAfterStateView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(188665);
-    this.kIC = new b();
+    AppMethodBeat.i(246177);
+    this.nlf = new b();
     View.inflate(paramContext, getLayoutId(), (ViewGroup)this);
-    this.kIx = ((ViewGroup)findViewById(b.e.live_after_members_states_online_total_group));
-    this.kIy = ((ViewGroup)findViewById(b.e.live_after_members_states_total_group));
-    this.jLl = ((RecyclerView)findViewById(b.e.live_after_members_states_content_view));
-    this.kIz = ((TextView)findViewById(b.e.live_after_members_states_sub_title));
-    this.kIA = ((TextView)findViewById(b.e.live_after_members_states_online_total_number));
-    this.kIB = ((TextView)findViewById(b.e.live_after_members_states_total_number));
-    this.jMF = ((ProgressBar)findViewById(b.e.live_after_members_states_loading));
-    this.kGi = ((TextView)findViewById(b.e.live_after_members_states_retry_tip));
-    paramContext = this.jLl;
+    this.nla = ((ViewGroup)findViewById(b.e.live_after_members_states_online_total_group));
+    this.nlb = ((ViewGroup)findViewById(b.e.live_after_members_states_total_group));
+    this.mkw = ((RecyclerView)findViewById(b.e.live_after_members_states_content_view));
+    this.nlc = ((TextView)findViewById(b.e.live_after_members_states_sub_title));
+    this.nld = ((TextView)findViewById(b.e.live_after_members_states_online_total_number));
+    this.nle = ((TextView)findViewById(b.e.live_after_members_states_total_number));
+    this.mlF = ((ProgressBar)findViewById(b.e.live_after_members_states_loading));
+    this.njg = ((TextView)findViewById(b.e.live_after_members_states_retry_tip));
+    paramContext = this.mkw;
     if (paramContext != null)
     {
       getContext();
       paramContext.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
     }
-    paramContext = this.jLl;
-    if (paramContext != null)
-    {
-      paramContext.setAdapter((RecyclerView.a)this.kIC);
-      AppMethodBeat.o(188665);
-      return;
+    paramContext = this.mkw;
+    if (paramContext != null) {
+      paramContext.setAdapter((RecyclerView.a)this.nlf);
     }
-    AppMethodBeat.o(188665);
+    AppMethodBeat.o(246177);
   }
   
   public final int getLayoutId()
@@ -84,63 +82,60 @@ public final class LiveAfterStateView
     return b.f.live_after_members_states_ui;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(188661);
-    if ((paramq instanceof d))
+    AppMethodBeat.i(246199);
+    if ((paramp instanceof d))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = this.jMF;
+        paramString = this.mlF;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.kGi;
+        paramString = this.njg;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.jLl;
+        paramString = this.mkw;
         if (paramString != null) {
           paramString.setVisibility(0);
         }
-        paramString = u.kwz;
-        paramString = u.aOo();
-        paramq = u.kwz;
-        paramString = (o)paramString.get(u.aOm());
-        if (paramString != null) {}
-        for (paramString = (ArrayList)paramString.Mx;; paramString = null)
+        paramString = u.mZl;
+        paramString = u.bib();
+        paramp = u.mZl;
+        paramString = (r)paramString.get(u.bhZ());
+        if (paramString == null) {}
+        for (paramString = null;; paramString = (ArrayList)paramString.bsC)
         {
-          paramq = new ArrayList();
+          paramp = new ArrayList();
           if (paramString == null) {
             break;
           }
           paramString = ((Iterable)paramString).iterator();
           while (paramString.hasNext()) {
-            paramq.add(new g((String)paramString.next()));
+            paramp.add(new f((String)paramString.next()));
           }
         }
-        this.kIC.ag((List)paramq);
-        this.kIC.notifyDataSetChanged();
-        AppMethodBeat.o(188661);
+        this.nlf.bH((List)paramp);
+        this.nlf.bZE.notifyChanged();
+        AppMethodBeat.o(246199);
         return;
       }
-      paramString = this.jMF;
+      paramString = this.mlF;
       if (paramString != null) {
         paramString.setVisibility(8);
       }
-      paramString = this.kGi;
+      paramString = this.njg;
       if (paramString != null) {
         paramString.setVisibility(0);
       }
-      paramString = this.jLl;
-      if (paramString != null)
-      {
+      paramString = this.mkw;
+      if (paramString != null) {
         paramString.setVisibility(8);
-        AppMethodBeat.o(188661);
-        return;
       }
     }
-    AppMethodBeat.o(188661);
+    AppMethodBeat.o(246199);
   }
 }
 

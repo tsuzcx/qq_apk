@@ -37,18 +37,18 @@ class SegmentDecoderThread
   
   SegmentDecoderThread(CachedVideoDecoderTrack paramCachedVideoDecoderTrack, IDecoderTrack paramIDecoderTrack)
   {
-    AppMethodBeat.i(192016);
+    AppMethodBeat.i(216422);
     this.cancel = false;
     this.started = false;
     this.cachedVideoDecoderTrack = paramCachedVideoDecoderTrack;
     this.decoderTrack = paramIDecoderTrack;
     this.texturePool = new TexturePool();
-    AppMethodBeat.o(192016);
+    AppMethodBeat.o(216422);
   }
   
   private void decoder(DecoderFrameMsg paramDecoderFrameMsg)
   {
-    AppMethodBeat.i(192057);
+    AppMethodBeat.i(216477);
     ??? = paramDecoderFrameMsg.time;
     if (this.cachedVideoDecoderTrack.revert) {
       ??? = this.decoderTrack.getDuration().sub(paramDecoderFrameMsg.time);
@@ -84,7 +84,7 @@ class SegmentDecoderThread
       synchronized (paramDecoderFrameMsg.finishWait)
       {
         paramDecoderFrameMsg.finishWait.countDown();
-        AppMethodBeat.o(192057);
+        AppMethodBeat.o(216477);
         return;
         label286:
         ??? = this.texturePool.popTexture(3553, ((RenderContext)???).width(), ((RenderContext)???).height());
@@ -94,7 +94,7 @@ class SegmentDecoderThread
   
   private void decoder(DecoderSegmentMsg paramDecoderSegmentMsg)
   {
-    AppMethodBeat.i(192042);
+    AppMethodBeat.i(216470);
     label786:
     label792:
     label798:
@@ -171,13 +171,13 @@ class SegmentDecoderThread
       {
         paramDecoderSegmentMsg.callbackObject.setFinish(true);
         paramDecoderSegmentMsg.callbackObject.notifyAll();
-        AppMethodBeat.o(192042);
+        AppMethodBeat.o(216470);
         return;
         paramDecoderSegmentMsg = finally;
-        AppMethodBeat.o(192042);
+        AppMethodBeat.o(216470);
         throw paramDecoderSegmentMsg;
       }
-      AppMethodBeat.o(192042);
+      AppMethodBeat.o(216470);
       return;
       ??? = localObject3;
     }
@@ -185,7 +185,7 @@ class SegmentDecoderThread
   
   private void quit()
   {
-    AppMethodBeat.i(192030);
+    AppMethodBeat.i(216453);
     if ((this.seekSampleBuffer != null) && (this.seekSampleBuffer.getTextureInfo() != null)) {
       this.seekSampleBuffer.getTextureInfo().release();
     }
@@ -195,56 +195,56 @@ class SegmentDecoderThread
     this.context.release();
     this.decoderHandler.removeCallbacksAndMessages(null);
     this.decoderThread.quit();
-    AppMethodBeat.o(192030);
+    AppMethodBeat.o(216453);
   }
   
   private void start()
   {
-    AppMethodBeat.i(192018);
+    AppMethodBeat.i(216427);
     this.decoderThread = new HandlerThread("SegmentDecoder");
     this.decoderThread.start();
     this.decoderHandler = new Handler(this.decoderThread.getLooper(), this);
-    AppMethodBeat.o(192018);
+    AppMethodBeat.o(216427);
   }
   
   private void startDecoder()
   {
-    AppMethodBeat.i(192025);
+    AppMethodBeat.i(216441);
     this.context = new RenderContext(this.cachedVideoDecoderTrack.renderContext.width(), this.cachedVideoDecoderTrack.renderContext.height(), null, this.cachedVideoDecoderTrack.renderContext.eglContext());
     this.decoderTrack.start(this.context, this.cachedVideoDecoderTrack.validTimeRange);
     this.started = true;
     this.context.makeCurrent();
     this.filter = new CopyFilter();
-    AppMethodBeat.o(192025);
+    AppMethodBeat.o(216441);
   }
   
   void decoderSegment(CMTime paramCMTime, CountDownLatch paramCountDownLatch)
   {
-    AppMethodBeat.i(192023);
+    AppMethodBeat.i(216491);
     this.cancel = true;
     this.decoderHandler.removeCallbacksAndMessages(null);
     this.decoderHandler.obtainMessage(3, new DecoderFrameMsg(paramCMTime, paramCountDownLatch)).sendToTarget();
-    AppMethodBeat.o(192023);
+    AppMethodBeat.o(216491);
   }
   
   void decoderSegment(CacheSegment paramCacheSegment, RequestStatus paramRequestStatus)
   {
-    AppMethodBeat.i(192019);
+    AppMethodBeat.i(216486);
     this.cancel = true;
     this.decoderHandler.removeCallbacksAndMessages(null);
     this.decoderHandler.obtainMessage(2, new DecoderSegmentMsg(paramCacheSegment, paramRequestStatus)).sendToTarget();
-    AppMethodBeat.o(192019);
+    AppMethodBeat.o(216486);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(192064);
+    AppMethodBeat.i(216511);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(192064);
+      AppMethodBeat.o(216511);
       return false;
       startDecoder();
       continue;
@@ -258,19 +258,19 @@ class SegmentDecoderThread
   
   void release()
   {
-    AppMethodBeat.i(192066);
+    AppMethodBeat.i(216523);
     this.cancel = true;
     if (this.decoderThread != null)
     {
       this.decoderHandler.removeCallbacksAndMessages(null);
       this.decoderHandler.sendEmptyMessage(1000);
     }
-    AppMethodBeat.o(192066);
+    AppMethodBeat.o(216523);
   }
   
   void startForReady()
   {
-    AppMethodBeat.i(192060);
+    AppMethodBeat.i(216500);
     start();
     this.decoderHandler.sendEmptyMessage(1);
     while (!this.started) {
@@ -280,7 +280,7 @@ class SegmentDecoderThread
       }
       catch (InterruptedException localInterruptedException) {}
     }
-    AppMethodBeat.o(192060);
+    AppMethodBeat.o(216500);
   }
 }
 

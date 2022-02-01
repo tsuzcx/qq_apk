@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/a05"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textColor="@color/uj" android:id="@id/g_y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/iom" />
-    <LinearLayout style="@style/a0y">
-        <com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionView android:id="@id/g_x" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" app:hint="@string/iok" app:tipmsg="@string/iol" />
-        <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/g_w" android:singleLine="false" android:imeOptions="actionNext" app:contentHint="@string/ioi" app:titleText="@string/ioj" style="@style/a11" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cc9" android:layout_width="fill_parent" android:layout_height="@dimen/d0" android:layout_alignParentBottom="true">
+        <RelativeLayout android:gravity="center" android:id="@id/cbn" android:visibility="gone" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:layout_marginStart="@dimen/cp">
+            <ImageView android:layout_gravity="center" android:id="@id/cbl" android:padding="10.0dip" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:contentDescription="@string/au1" />
+            <ImageView android:id="@id/cbm" android:paddingBottom="@dimen/df" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_alignBottom="@id/cbl" android:paddingEnd="@dimen/df" android:layout_alignEnd="@id/cbl" />
+        </RelativeLayout>
+        <ImageView android:id="@id/cbr" android:padding="@dimen/df" android:visibility="gone" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:contentDescription="@string/au0" android:layout_marginStart="@dimen/cp" />
+        <ImageView android:id="@id/cc1" android:padding="@dimen/df" android:visibility="visible" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:contentDescription="@string/au3" android:layout_marginStart="@dimen/cp" />
+        <ImageView android:id="@id/cc0" android:padding="@dimen/df" android:visibility="gone" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:contentDescription="@string/au2" android:layout_marginStart="@dimen/cp" />
+        <ImageView android:id="@id/cca" android:padding="@dimen/df" android:visibility="gone" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:contentDescription="@string/atz" android:layout_marginStart="@dimen/cp" />
+        <ImageView android:id="@id/cby" android:padding="@dimen/df" android:visibility="gone" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:layout_marginStart="@dimen/cp" />
+        <RelativeLayout android:gravity="center" android:id="@id/cbp" android:visibility="gone" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:layout_marginStart="@dimen/cp">
+            <ImageView android:layout_gravity="center" android:id="@id/cbo" android:padding="@dimen/df" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:contentDescription="@string/aty" />
+            <ImageView android:id="@id/cbq" android:paddingBottom="@dimen/df" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_alignBottom="@id/cbo" android:paddingEnd="@dimen/df" android:layout_alignEnd="@id/cbo" />
+        </RelativeLayout>
     </LinearLayout>
-    <Button android:id="@id/g_v" android:layout_marginTop="@dimen/hs" android:text="@string/ioe" style="@style/a0u" />
-</LinearLayout>
+    <Button android:textColor="@color/ahw" android:id="@id/cco" android:background="@color/Orange" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:text="@string/z9" android:layout_alignParentBottom="true" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" android:layout_marginEnd="@dimen/cv" android:layout_alignParentEnd="true" style="@style/oi" />
+</RelativeLayout>

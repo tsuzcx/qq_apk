@@ -6,11 +6,11 @@ public enum b$b
 {
   static
   {
-    AppMethodBeat.i(224148);
-    ZOe = new b("CreateByName", 0);
-    ZOf = new b("CreateByType", 1);
-    ZOg = new b[] { ZOe, ZOf };
-    AppMethodBeat.o(224148);
+    AppMethodBeat.i(210861);
+    ahTf = new b("CreateByName", 0);
+    ahTg = new b("CreateByType", 1);
+    ahTh = new b[] { ahTf, ahTg };
+    AppMethodBeat.o(210861);
   }
   
   private b$b() {}

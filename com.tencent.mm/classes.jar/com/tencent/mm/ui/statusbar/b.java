@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.statusbar;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.MutableContextWrapper;
@@ -20,31 +19,31 @@ public class b
   extends FrameLayout
   implements c.a
 {
-  protected static final boolean XMo = c.XMC;
-  private final Runnable XMn;
-  private c XMp;
-  private int XMq;
-  private int XMr;
-  private boolean XMs;
-  private boolean XMt;
-  private boolean XMu;
-  private boolean XMv;
-  private final int[] XMw;
-  private int XMx;
-  private boolean aki;
+  protected static final boolean afCC = c.afCQ;
+  private final Runnable afCB;
+  private c afCD;
+  private int afCE;
+  private int afCF;
+  private boolean afCG;
+  private boolean afCH;
+  private boolean afCI;
+  private boolean afCJ;
+  private final int[] afCK;
+  private int afCL;
+  private boolean bYK;
   private Activity mActivity;
   private Paint mPaint;
   private volatile int mStatusBarHeight;
   
   public b(Context paramContext)
   {
-    super(a.ly(paramContext));
+    super(a.nC(paramContext));
     AppMethodBeat.i(133806);
-    this.XMn = new Runnable()
+    this.afCB = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(237513);
+        AppMethodBeat.i(249903);
         if (b.a(b.this))
         {
           if (b.b(b.this) != null)
@@ -54,61 +53,61 @@ public class b
           }
           b.d(b.this);
           b.e(b.this);
-          AppMethodBeat.o(237513);
+          AppMethodBeat.o(249903);
           return;
         }
-        b.this.cfw();
-        AppMethodBeat.o(237513);
+        b.this.cGh();
+        AppMethodBeat.o(249903);
       }
     };
-    this.XMq = 0;
-    this.XMr = 0;
-    this.XMs = false;
-    this.aki = false;
-    this.XMt = false;
-    this.XMu = false;
-    this.XMv = false;
-    this.XMw = new int[2];
-    this.XMx = 0;
+    this.afCE = 0;
+    this.afCF = 0;
+    this.afCG = false;
+    this.bYK = false;
+    this.afCH = false;
+    this.afCI = false;
+    this.afCJ = false;
+    this.afCK = new int[2];
+    this.afCL = 0;
     if (Looper.getMainLooper() != Looper.myLooper())
     {
       paramContext = new RuntimeException("Should be called on main-thread");
       AppMethodBeat.o(133806);
       throw paramContext;
     }
-    cfw();
+    cGh();
     if ((getContext() instanceof a)) {
-      ((a)getContext()).XMB = new b.a.a()
+      ((a)getContext()).afCP = new b.a.a()
       {
-        public final void hXW()
+        public final void jCG()
         {
-          AppMethodBeat.i(237610);
+          AppMethodBeat.i(249901);
           if (Looper.getMainLooper() != Looper.myLooper())
           {
             b.this.post(b.f(b.this));
-            AppMethodBeat.o(237610);
+            AppMethodBeat.o(249901);
             return;
           }
           b.f(b.this).run();
-          AppMethodBeat.o(237610);
+          AppMethodBeat.o(249901);
         }
       };
     }
     AppMethodBeat.o(133806);
   }
   
-  private void axs(int paramInt)
+  private void aEb(int paramInt)
   {
     AppMethodBeat.i(133808);
-    getLocationInWindow(this.XMw);
-    this.XMx = this.XMw[1];
+    getLocationInWindow(this.afCK);
+    this.afCL = this.afCK[1];
     if (Log.getLogLevel() <= 1) {
-      Log.d("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight height[%d] mFrozen[%b] mLocationInWindow[%d.%d]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.aki), Integer.valueOf(this.XMw[0]), Integer.valueOf(this.XMw[1]) });
+      Log.d("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight height[%d] mFrozen[%b] mLocationInWindow[%d.%d]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.bYK), Integer.valueOf(this.afCK[0]), Integer.valueOf(this.afCK[1]) });
     }
-    this.mStatusBarHeight = Math.max(0, paramInt - this.XMw[1]);
-    if (this.aki)
+    this.mStatusBarHeight = Math.max(0, paramInt - this.afCK[1]);
+    if (this.bYK)
     {
-      this.XMu = true;
+      this.afCI = true;
       AppMethodBeat.o(133808);
       return;
     }
@@ -116,7 +115,7 @@ public class b
     {
       try
       {
-        if (!this.XMs) {
+        if (!this.afCG) {
           continue;
         }
         paramInt = 0;
@@ -128,7 +127,7 @@ public class b
         continue;
       }
       if (isLayoutRequested()) {
-        hXT();
+        jCD();
       }
       AppMethodBeat.o(133808);
       return;
@@ -136,22 +135,22 @@ public class b
     }
   }
   
-  private void hXS()
+  private void jCC()
   {
     AppMethodBeat.i(175985);
-    if (this.XMp == null)
+    if (this.afCD == null)
     {
       AppMethodBeat.o(175985);
       return;
     }
-    BF(this.XMp.XMF);
+    onStatusBarHeightChange(this.afCD.afCS);
     AppMethodBeat.o(175985);
   }
   
-  private void hXT()
+  private void jCD()
   {
     AppMethodBeat.i(133809);
-    if (hXV())
+    if (jCF())
     {
       invalidate();
       AppMethodBeat.o(133809);
@@ -161,7 +160,7 @@ public class b
     AppMethodBeat.o(133809);
   }
   
-  private static boolean hXV()
+  private static boolean jCF()
   {
     AppMethodBeat.i(175988);
     if (Looper.getMainLooper() == Looper.myLooper())
@@ -173,32 +172,25 @@ public class b
     return false;
   }
   
-  public void BF(int paramInt)
-  {
-    AppMethodBeat.i(133804);
-    axs(paramInt);
-    AppMethodBeat.o(133804);
-  }
-  
-  public final void GZ(boolean paramBoolean)
+  public final void MU(boolean paramBoolean)
   {
     AppMethodBeat.i(133805);
-    this.XMs = paramBoolean;
-    axs(this.mStatusBarHeight);
+    this.afCG = paramBoolean;
+    aEb(this.mStatusBarHeight);
     AppMethodBeat.o(133805);
   }
   
-  public void T(int paramInt, boolean paramBoolean)
+  public void aj(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(133812);
-    o(paramInt, paramBoolean, true);
+    u(paramInt, paramBoolean, true);
     AppMethodBeat.o(133812);
   }
   
-  protected void cfw()
+  protected void cGh()
   {
     AppMethodBeat.i(133807);
-    if (!XMo)
+    if (!afCC)
     {
       this.mActivity = null;
       this.mPaint = null;
@@ -207,8 +199,8 @@ public class b
     }
     setPadding(0, 0, 0, 0);
     this.mStatusBarHeight = 0;
-    if (this.XMp != null) {
-      this.XMp.b(this);
+    if (this.afCD != null) {
+      this.afCD.b(this);
     }
     this.mActivity = AndroidContextUtil.castActivityOrNull(getContext());
     if (this.mActivity == null)
@@ -218,8 +210,8 @@ public class b
       AppMethodBeat.o(133807);
       return;
     }
-    c localc = c.bA(this.mActivity);
-    this.XMp = localc;
+    c localc = c.ch(this.mActivity);
+    this.afCD = localc;
     localc.a(this);
     this.mPaint = new Paint(0);
     this.mPaint.setStyle(Paint.Style.FILL);
@@ -230,11 +222,11 @@ public class b
   protected void dispatchDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(133814);
-    if ((this.mStatusBarHeight <= 0) || (!XMo) || (this.XMs) || (willNotDraw())) {}
+    if ((this.mStatusBarHeight <= 0) || (!afCC) || (this.afCG) || (willNotDraw())) {}
     for (;;)
     {
       super.dispatchDraw(paramCanvas);
-      if ((this.mStatusBarHeight > 0) && (XMo) && (this.XMs) && (!willNotDraw())) {
+      if ((this.mStatusBarHeight > 0) && (afCC) && (this.afCG) && (!willNotDraw())) {
         break;
       }
       AppMethodBeat.o(133814);
@@ -245,7 +237,7 @@ public class b
       }
       else
       {
-        this.mPaint.setColor(this.XMq);
+        this.mPaint.setColor(this.afCE);
         paramCanvas.drawRect(0.0F, 0.0F, getWidth(), this.mStatusBarHeight, this.mPaint);
       }
     }
@@ -255,7 +247,7 @@ public class b
       AppMethodBeat.o(133814);
       return;
     }
-    this.mPaint.setColor(this.XMr);
+    this.mPaint.setColor(this.afCF);
     paramCanvas.drawRect(0.0F, 0.0F, getWidth(), this.mStatusBarHeight, this.mPaint);
     AppMethodBeat.o(133814);
   }
@@ -264,7 +256,7 @@ public class b
   {
     AppMethodBeat.i(175986);
     super.dispatchSystemUiVisibilityChanged(paramInt);
-    hXS();
+    jCC();
     AppMethodBeat.o(175986);
   }
   
@@ -276,102 +268,47 @@ public class b
     return i;
   }
   
-  public final boolean hXU()
+  public final boolean jCE()
   {
-    return this.aki;
-  }
-  
-  public final void o(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(133813);
-    int j = this.XMq;
-    int k = this.XMr;
-    this.XMq = paramInt;
-    if ((!XMo) || (this.mActivity == null))
-    {
-      AppMethodBeat.o(133813);
-      return;
-    }
-    Object localObject = this.mActivity.getWindow();
-    d.e((Window)localObject);
-    if (paramBoolean2)
-    {
-      if (!d.d((Window)localObject, paramBoolean1)) {
-        break label122;
-      }
-      this.XMq = paramInt;
-    }
-    label168:
-    label202:
-    for (;;)
-    {
-      paramInt = 0;
-      for (localObject = this;; localObject = this)
-      {
-        ((b)localObject).XMr = paramInt;
-        label122:
-        do
-        {
-          if ((this.XMq != 0) || (this.XMr != 0)) {
-            break label168;
-          }
-          super.setWillNotDraw(true);
-          hXT();
-          AppMethodBeat.o(133813);
-          return;
-          if (d.hHz()) {
-            break;
-          }
-        } while (Build.VERSION.SDK_INT < 21);
-        int i = paramInt;
-        if (paramBoolean1) {
-          i = d.aor(paramInt);
-        }
-        this.XMq = i;
-        if (!paramBoolean1) {
-          break label202;
-        }
-        paramInt = Color.argb(51, 0, 0, 0);
-      }
-      if ((j != this.XMq) || (k != this.XMr))
-      {
-        super.setWillNotDraw(false);
-        hXT();
-      }
-      AppMethodBeat.o(133813);
-      return;
-    }
+    return this.bYK;
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(175987);
     super.onAttachedToWindow();
-    hXS();
+    jCC();
     AppMethodBeat.o(175987);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(237756);
+    AppMethodBeat.i(250007);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.XMp != null) && (!this.aki))
+    if ((this.afCD != null) && (!this.bYK))
     {
-      getLocationInWindow(this.XMw);
-      if (this.XMx != this.XMw[1]) {
-        this.XMp.hXX();
+      getLocationInWindow(this.afCK);
+      if (this.afCL != this.afCK[1]) {
+        this.afCD.jCH();
       }
-      this.XMx = this.XMw[1];
+      this.afCL = this.afCK[1];
     }
-    AppMethodBeat.o(237756);
+    AppMethodBeat.o(250007);
+  }
+  
+  public void onStatusBarHeightChange(int paramInt)
+  {
+    AppMethodBeat.i(133804);
+    aEb(paramInt);
+    AppMethodBeat.o(133804);
   }
   
   public void requestLayout()
   {
     AppMethodBeat.i(133810);
-    if (this.aki)
+    if (this.bYK)
     {
-      this.XMv = true;
+      this.afCJ = true;
       AppMethodBeat.o(133810);
       return;
     }
@@ -379,42 +316,41 @@ public class b
     AppMethodBeat.o(133810);
   }
   
-  @SuppressLint({"WrongThread"})
   public final void setLayoutFrozen(final boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(133815);
-    if (!hXV())
+    if (!jCF())
     {
       post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(237739);
+          AppMethodBeat.i(249899);
           b.this.setLayoutFrozen(paramBoolean);
-          AppMethodBeat.o(237739);
+          AppMethodBeat.o(249899);
         }
       });
       AppMethodBeat.o(133815);
       return;
     }
-    Log.d("MicroMsg.DrawStatusBarFrameLayout", "setLayoutFrozen frozen[%b], mFrozen[%b], mDeferLayout[%b], mDeferInvalidate[%b], mReInitializeDeferred[%b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.aki), Boolean.valueOf(this.XMv), Boolean.valueOf(this.XMu), Boolean.valueOf(this.XMt) });
-    if (paramBoolean != this.aki) {}
+    Log.d("MicroMsg.DrawStatusBarFrameLayout", "setLayoutFrozen frozen[%b], mFrozen[%b], mDeferLayout[%b], mDeferInvalidate[%b], mReInitializeDeferred[%b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.bYK), Boolean.valueOf(this.afCJ), Boolean.valueOf(this.afCI), Boolean.valueOf(this.afCH) });
+    if (paramBoolean != this.bYK) {}
     for (;;)
     {
-      this.aki = paramBoolean;
+      this.bYK = paramBoolean;
       if ((i != 0) && (!paramBoolean))
       {
-        if (this.XMt)
+        if (this.afCH)
         {
-          cfw();
-          this.XMt = false;
+          cGh();
+          this.afCH = false;
         }
-        if ((this.XMv) || (this.XMu))
+        if ((this.afCJ) || (this.afCI))
         {
-          axs(this.mStatusBarHeight);
-          this.XMv = false;
-          this.XMu = false;
+          aEb(this.mStatusBarHeight);
+          this.afCJ = false;
+          this.afCI = false;
         }
       }
       AppMethodBeat.o(133815);
@@ -426,22 +362,84 @@ public class b
   public void setStatusBarColor(int paramInt)
   {
     AppMethodBeat.i(133811);
-    if (!XMo)
+    if (!afCC)
     {
       AppMethodBeat.o(133811);
       return;
     }
     Activity localActivity = this.mActivity;
     if (localActivity == null) {}
-    for (boolean bool = false;; bool = d.f(localActivity.getWindow()))
+    for (boolean bool = false;; bool = d.h(localActivity.getWindow()))
     {
-      T(paramInt, bool);
+      aj(paramInt, bool);
       AppMethodBeat.o(133811);
       return;
     }
   }
   
   public final void setWillNotDraw(boolean paramBoolean) {}
+  
+  public final void u(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(133813);
+    int j = this.afCE;
+    int k = this.afCF;
+    this.afCE = paramInt;
+    if ((!afCC) || (this.mActivity == null))
+    {
+      AppMethodBeat.o(133813);
+      return;
+    }
+    Object localObject = this.mActivity.getWindow();
+    d.g((Window)localObject);
+    if (paramBoolean2)
+    {
+      if (!d.c((Window)localObject, paramBoolean1)) {
+        break label122;
+      }
+      this.afCE = paramInt;
+    }
+    label168:
+    label202:
+    for (;;)
+    {
+      paramInt = 0;
+      for (localObject = this;; localObject = this)
+      {
+        ((b)localObject).afCF = paramInt;
+        label122:
+        do
+        {
+          if ((this.afCE != 0) || (this.afCF != 0)) {
+            break label168;
+          }
+          super.setWillNotDraw(true);
+          jCD();
+          AppMethodBeat.o(133813);
+          return;
+          if (d.jjJ()) {
+            break;
+          }
+        } while (Build.VERSION.SDK_INT < 21);
+        int i = paramInt;
+        if (paramBoolean1) {
+          i = d.auk(paramInt);
+        }
+        this.afCE = i;
+        if (!paramBoolean1) {
+          break label202;
+        }
+        paramInt = Color.argb(51, 0, 0, 0);
+      }
+      if ((j != this.afCE) || (k != this.afCF))
+      {
+        super.setWillNotDraw(false);
+        jCD();
+      }
+      AppMethodBeat.o(133813);
+      return;
+    }
+  }
   
   public final boolean willNotDraw()
   {
@@ -454,15 +452,15 @@ public class b
   static final class a
     extends MutableContextWrapper
   {
-    private boolean XMA = true;
-    a XMB;
+    private boolean afCO = true;
+    a afCP;
     
     private a(MutableContextWrapper paramMutableContextWrapper)
     {
       super();
     }
     
-    public static Context ly(Context paramContext)
+    public static Context nC(Context paramContext)
     {
       AppMethodBeat.i(133803);
       if ((paramContext instanceof MutableContextWrapper))
@@ -478,7 +476,7 @@ public class b
     public final void setBaseContext(Context paramContext)
     {
       AppMethodBeat.i(133802);
-      if (this.XMA)
+      if (this.afCO)
       {
         if (paramContext == getBaseContext())
         {
@@ -486,9 +484,9 @@ public class b
           return;
         }
         ((MutableContextWrapper)getBaseContext()).setBaseContext(paramContext);
-        if (this.XMB != null)
+        if (this.afCP != null)
         {
-          this.XMB.hXW();
+          this.afCP.jCG();
           AppMethodBeat.o(133802);
         }
       }
@@ -501,13 +499,13 @@ public class b
     
     static abstract interface a
     {
-      public abstract void hXW();
+      public abstract void jCG();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.statusbar.b
  * JD-Core Version:    0.7.0.1
  */

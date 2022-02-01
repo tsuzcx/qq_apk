@@ -1,103 +1,85 @@
 package com.tencent.mm.plugin.finder.live.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.aza;
-import com.tencent.mm.protocal.protobuf.bbd;
-import kotlin.l;
+import com.tencent.mm.b.h;
+import com.tencent.mm.plugin.finder.live.report.j;
+import com.tencent.mm.plugin.finder.live.report.q.s;
+import com.tencent.mm.plugin.finder.live.report.q.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveTextMsg;", "Lcom/tencent/mm/plugin/finder/live/model/IFinderLiveMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;)V", "getMsg", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "setMsg", "getContent", "", "getFromContact", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "getFromUserName", "getFromUserNickName", "getLocalClientMsgId", "getPayLoadContent", "", "getSeq", "", "getToContact", "getToUserName", "getToUserNickName", "getType", "", "plugin-finder-base_release"})
-public class ak
-  implements ao
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveShowFollowBtnLogic;", "", "()V", "TAG", "", "hadTriggerShowFollowBtnCache", "Lcom/tencent/mm/algorithm/MMLRUMap;", "", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveShowFollowBtnLogic$ShowBtnContext;", "checkTriggerShow", "", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "liveId", "scene", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveShowFollowBtnLogic$TriggerActionScene;", "shakeBtn", "", "hadCacheTriggerShow", "reportFollowBtnClick", "reportFollowBtnInitShow", "ShowBtnContext", "TriggerActionScene", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class ak
 {
-  public bbd yig;
+  public static final ak CHI;
+  private static final h<Long, ak.a> CHJ;
   
-  public ak(bbd parambbd)
+  static
   {
-    AppMethodBeat.i(259868);
-    this.yig = parambbd;
-    AppMethodBeat.o(259868);
+    AppMethodBeat.i(359222);
+    CHI = new ak();
+    CHJ = new h(10);
+    AppMethodBeat.o(359222);
   }
   
-  public final String cGy()
+  public static boolean oh(long paramLong)
   {
-    Object localObject = this.yig.zeL;
-    if (localObject != null)
+    AppMethodBeat.i(359199);
+    boolean bool = CHJ.check(Long.valueOf(paramLong));
+    Log.i("Finder.FinderLiveShowFollowBtnLogic", s.X("hadTriggerShow ", Boolean.valueOf(bool)));
+    AppMethodBeat.o(359199);
+    return bool;
+  }
+  
+  public static void oi(long paramLong)
+  {
+    AppMethodBeat.i(359208);
+    if (!CHJ.check(Long.valueOf(paramLong)))
     {
-      localObject = ((aza)localObject).contact;
-      if (localObject != null) {
-        return ((FinderContact)localObject).username;
-      }
+      AppMethodBeat.o(359208);
+      return;
     }
-    return null;
-  }
-  
-  public final long cYY()
-  {
-    return this.yig.seq;
-  }
-  
-  public final String dyd()
-  {
-    Object localObject = this.yig.zeL;
-    if (localObject != null)
+    Object localObject = (ak.a)CHJ.get(Long.valueOf(paramLong));
+    if (localObject == null)
     {
-      localObject = ((aza)localObject).contact;
-      if (localObject != null) {
-        return ((FinderContact)localObject).nickname;
-      }
+      AppMethodBeat.o(359208);
+      return;
     }
-    return null;
+    j localj = j.Dob;
+    q.s locals = q.s.Duj;
+    Map localMap = (Map)new LinkedHashMap();
+    localMap.put("follow_icon_expose_condition_sessionid", ((ak.a)localObject).sessionId);
+    localObject = ah.aiuX;
+    localj.a(locals, localMap);
+    AppMethodBeat.o(359208);
   }
   
-  public final aza dye()
+  public static void oj(long paramLong)
   {
-    return this.yig.zeL;
-  }
-  
-  public final aza dyf()
-  {
-    return this.yig.SMO;
-  }
-  
-  public final String dyg()
-  {
-    return "";
-  }
-  
-  public final String dyh()
-  {
-    return "";
-  }
-  
-  public final String dyi()
-  {
-    String str2 = this.yig.SMN;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    AppMethodBeat.i(359215);
+    if (!CHJ.check(Long.valueOf(paramLong)))
+    {
+      AppMethodBeat.o(359215);
+      return;
     }
-    return str1;
-  }
-  
-  public final Object dyn()
-  {
-    return null;
-  }
-  
-  public final bbd dzS()
-  {
-    return this.yig;
-  }
-  
-  public final String getContent()
-  {
-    return this.yig.content;
-  }
-  
-  public final int getType()
-  {
-    return this.yig.type;
+    Object localObject = (ak.a)CHJ.get(Long.valueOf(paramLong));
+    if (localObject == null)
+    {
+      AppMethodBeat.o(359215);
+      return;
+    }
+    j localj = j.Dob;
+    q.t localt = q.t.Dvr;
+    Map localMap = (Map)new LinkedHashMap();
+    localMap.put("follow_icon_expose_condition", String.valueOf(((ak.a)localObject).CHK.ordinal()));
+    localMap.put("follow_icon_expose_condition_sessionid", ((ak.a)localObject).sessionId);
+    localObject = ah.aiuX;
+    localj.a(localt, localMap);
+    AppMethodBeat.o(359215);
   }
 }
 

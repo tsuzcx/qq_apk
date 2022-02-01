@@ -14,8 +14,9 @@ public class a
   extends ImageSpan
   implements com.tencent.mm.ui.base.span.a
 {
-  public int Yal = 0;
+  public int afSg = 0;
   public boolean isPressed = false;
+  public int padding = 0;
   
   public a(Drawable paramDrawable, int paramInt)
   {
@@ -25,12 +26,13 @@ public class a
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
     AppMethodBeat.i(143319);
+    float f = this.padding;
     paramCharSequence = getDrawable();
     paramCanvas.save();
     Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
     paramInt1 = localFontMetricsInt.descent;
     paramInt2 = localFontMetricsInt.ascent;
-    paramCanvas.translate(paramFloat, localFontMetricsInt.descent + paramInt4 - (paramInt1 - paramInt2) / 2 - (paramCharSequence.getBounds().bottom - paramCharSequence.getBounds().top) / 2);
+    paramCanvas.translate(f + paramFloat, localFontMetricsInt.descent + paramInt4 - (paramInt1 - paramInt2) / 2 - (paramCharSequence.getBounds().bottom - paramCharSequence.getBounds().top) / 2);
     paramInt1 = paramPaint.getAlpha();
     paramInt2 = paramCharSequence.getAlpha();
     if ((paramInt1 == 0) && (paramInt2 != paramInt1)) {
@@ -59,15 +61,16 @@ public class a
       paramFontMetricsInt.descent = paramFontMetricsInt.bottom;
     }
     paramInt1 = paramCharSequence.right;
+    paramInt2 = this.padding;
     AppMethodBeat.o(143318);
-    return paramInt1;
+    return paramInt1 + paramInt2;
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(203776);
+    AppMethodBeat.i(251580);
     Log.i("MicroMsg.FixImageSpan", "onClick view:%d", new Object[] { Integer.valueOf(paramView.hashCode()) });
-    AppMethodBeat.o(203776);
+    AppMethodBeat.o(251580);
   }
 }
 

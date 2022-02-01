@@ -14,17 +14,17 @@ final class TopStoryFSVideoUI$14
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(126349);
-    if (this.NbZ.NbT.getVisibility() == 0)
+    if (this.TOI.TOC.getVisibility() == 0)
     {
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      if (TopStoryFSVideoUI.j(this.NbZ.NbV, f1, f2))
+      if (TopStoryFSVideoUI.i(this.TOI.TOE, f1, f2))
       {
         Log.i("MicroMsg.TopStory.TopStoryFSVideoUI", "touch in mContentViewNotFull");
         AppMethodBeat.o(126349);
         return false;
       }
-      this.NbZ.NbT.setVisibility(8);
+      this.TOI.TOC.setVisibility(8);
     }
     AppMethodBeat.o(126349);
     return false;
@@ -32,7 +32,7 @@ final class TopStoryFSVideoUI$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.TopStoryFSVideoUI.14
  * JD-Core Version:    0.7.0.1
  */

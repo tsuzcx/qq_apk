@@ -6,100 +6,100 @@ import android.view.MotionEvent;
 import androidx.core.widget.NestedScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/emoji/TextStatusEmojiGridScrollView;", "Landroidx/core/widget/NestedScrollView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "lastY", "getLastY", "()I", "setLastY", "(I)V", "onInterceptTouchEvent", "", "event", "Landroid/view/MotionEvent;", "Companion", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/emoji/TextStatusEmojiGridScrollView;", "Landroidx/core/widget/NestedScrollView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "lastY", "getLastY", "()I", "setLastY", "(I)V", "onInterceptTouchEvent", "", "event", "Landroid/view/MotionEvent;", "Companion", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TextStatusEmojiGridScrollView
   extends NestedScrollView
 {
-  public static final a MBi;
-  private int zDE;
+  public static final a TkO;
+  private int EHM;
   
   static
   {
-    AppMethodBeat.i(232583);
-    MBi = new a((byte)0);
-    AppMethodBeat.o(232583);
+    AppMethodBeat.i(290820);
+    TkO = new a((byte)0);
+    AppMethodBeat.o(290820);
   }
   
   public TextStatusEmojiGridScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(232577);
-    AppMethodBeat.o(232577);
+    AppMethodBeat.i(290807);
+    AppMethodBeat.o(290807);
   }
   
   public TextStatusEmojiGridScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(232581);
-    AppMethodBeat.o(232581);
+    AppMethodBeat.i(290812);
+    AppMethodBeat.o(290812);
   }
   
   public final int getLastY()
   {
-    return this.zDE;
+    return this.EHM;
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(232574);
-    Integer localInteger;
-    Object localObject;
-    label31:
+    AppMethodBeat.i(290836);
+    Object localObject1;
+    Object localObject2;
+    label22:
     int i;
-    if (paramMotionEvent != null)
+    if (paramMotionEvent == null)
     {
-      localInteger = Integer.valueOf(paramMotionEvent.getActionMasked());
-      if (paramMotionEvent == null) {
-        break label104;
+      localObject1 = null;
+      if (paramMotionEvent != null) {
+        break label101;
       }
-      localObject = Float.valueOf(paramMotionEvent.getRawY());
-      i = (int)((Float)localObject).floatValue();
-      Log.v("WxIme.ImeEmojiGridScrollView", "action " + localInteger + ' ' + getX());
-      if (localInteger != null) {
+      localObject2 = Double.valueOf(0.0D);
+      i = (int)((Float)localObject2).floatValue();
+      Log.v("WxIme.ImeEmojiGridScrollView", "action " + localObject1 + ' ' + getX());
+      if (localObject1 != null) {
         break label113;
       }
-      label80:
-      if (localInteger != null) {
+      label71:
+      if (localObject1 != null) {
         break label129;
       }
     }
-    label104:
+    label101:
     label113:
-    while ((localInteger.intValue() != 2) || (Math.abs(this.zDE - i) <= 20)) {
+    while ((((Integer)localObject1).intValue() != 2) || (Math.abs(this.EHM - i) <= 20)) {
       for (;;)
       {
         boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(232574);
+        AppMethodBeat.o(290836);
         return bool;
-        localInteger = null;
+        localObject1 = Integer.valueOf(paramMotionEvent.getActionMasked());
         break;
-        localObject = Double.valueOf(0.0D);
-        break label31;
-        if (localInteger.intValue() != 0) {
-          break label80;
+        localObject2 = Float.valueOf(paramMotionEvent.getRawY());
+        break label22;
+        if (((Integer)localObject1).intValue() != 0) {
+          break label71;
         }
-        this.zDE = i;
+        this.EHM = i;
       }
     }
     label129:
     Log.i("WxIme.ImeEmojiGridScrollView", "ImeEmojiGridScrollView onInterceptTouchEvent");
-    AppMethodBeat.o(232574);
+    AppMethodBeat.o(290836);
     return true;
   }
   
   public final void setLastY(int paramInt)
   {
-    this.zDE = paramInt;
+    this.EHM = paramInt;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/emoji/TextStatusEmojiGridScrollView$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/emoji/TextStatusEmojiGridScrollView$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.emoji.TextStatusEmojiGridScrollView
  * JD-Core Version:    0.7.0.1
  */

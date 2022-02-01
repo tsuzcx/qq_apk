@@ -8,6 +8,15 @@ import com.tencent.mm.opensdk.utils.Log;
 
 public class SendMessageToWX
 {
+  public static abstract interface IWXMusicVipObject
+  {
+    public abstract boolean checkArgs();
+    
+    public abstract void serialize(Bundle paramBundle);
+    
+    public abstract void unserialize(Bundle paramBundle);
+  }
+  
   public static abstract interface IWXSceneDataObject
   {
     public abstract boolean checkArgs();

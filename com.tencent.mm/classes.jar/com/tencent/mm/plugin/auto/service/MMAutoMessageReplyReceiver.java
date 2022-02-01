@@ -11,8 +11,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.plugin.auto.a.a;
-import com.tencent.mm.plugin.auto.a.b;
+import com.tencent.mm.plugin.auto.model.a;
+import com.tencent.mm.plugin.auto.model.b;
 import com.tencent.mm.plugin.messenger.a.d;
 import com.tencent.mm.plugin.messenger.a.g;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
@@ -74,33 +74,33 @@ public class MMAutoMessageReplyReceiver
       break;
     }
     label176:
-    if (!a.crO())
+    if (!a.cUy())
     {
       AppMethodBeat.o(21162);
       return;
     }
-    if (!a.crP())
+    if (!a.cUz())
     {
       Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "not open car mode");
       AppMethodBeat.o(21162);
       return;
     }
-    if (!a.crQ())
+    if (!a.cUA())
     {
       Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "not install auto app");
       AppMethodBeat.o(21162);
       return;
     }
-    paramIntent = b.rKw;
-    b.HG(1L);
+    paramIntent = b.uVJ;
+    b.jX(1L);
     Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
-    g.eRW().ai(str, paramContext.toString(), ab.QZ(str));
+    g.gaI().ap(str, paramContext.toString(), ab.IX(str));
     AppMethodBeat.o(21162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.auto.service.MMAutoMessageReplyReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,7 @@ import android.text.InputFilter.LengthFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.ContextMenu;
 import android.view.MotionEvent;
@@ -56,32 +57,32 @@ public final class MiniAppSecureEditText
   public MiniAppSecureEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(231294);
+    AppMethodBeat.i(208602);
     this.minInputLength = DEFAULT_PASSWD_LENGTH;
     this.maxInputLength = DEFAULT_PASSWD_LENGTH;
     this.isFixedInputLength = true;
     init(paramContext, paramAttributeSet);
-    AppMethodBeat.o(231294);
+    AppMethodBeat.o(208602);
   }
   
   public MiniAppSecureEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(231296);
+    AppMethodBeat.i(208610);
     this.minInputLength = DEFAULT_PASSWD_LENGTH;
     this.maxInputLength = DEFAULT_PASSWD_LENGTH;
     this.isFixedInputLength = true;
     init(paramContext, paramAttributeSet);
-    AppMethodBeat.o(231296);
+    AppMethodBeat.o(208610);
   }
   
   private static String bytesToHex(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(231328);
+    AppMethodBeat.i(208647);
     StringBuilder localStringBuilder = new StringBuilder("");
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
     {
-      AppMethodBeat.o(231328);
+      AppMethodBeat.o(208647);
       return null;
     }
     int i = 0;
@@ -95,13 +96,13 @@ public final class MiniAppSecureEditText
       i += 1;
     }
     paramArrayOfByte = localStringBuilder.toString();
-    AppMethodBeat.o(231328);
+    AppMethodBeat.o(208647);
     return paramArrayOfByte;
   }
   
   private void drawPasswdDot(Canvas paramCanvas)
   {
-    AppMethodBeat.i(231307);
+    AppMethodBeat.i(208641);
     int i = getWidth();
     int j = getHeight();
     int k = i / this.maxInputLength;
@@ -112,20 +113,20 @@ public final class MiniAppSecureEditText
       paramCanvas.drawCircle(k / 2 + i * k, j / 2, PASSWD_BLACK_DOT_SIZE * this.mDensity, this.mPaintBackground);
       i += 1;
     }
-    AppMethodBeat.o(231307);
+    AppMethodBeat.o(208641);
   }
   
   private String getInputText()
   {
-    AppMethodBeat.i(231313);
+    AppMethodBeat.i(208644);
     String str = super.getText().toString().trim();
-    AppMethodBeat.o(231313);
+    AppMethodBeat.o(208644);
     return str;
   }
   
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(231297);
+    AppMethodBeat.i(208616);
     this.mDensity = getResources().getDisplayMetrics().density;
     setIsPasswordFormat(true);
     addTextChangedListener(new TextWatcher()
@@ -139,7 +140,7 @@ public final class MiniAppSecureEditText
     if (Build.VERSION.SDK_INT >= 14) {
       setAccessibilityDelegate(new TenpayAccessibilityDelegate());
     }
-    AppMethodBeat.o(231297);
+    AppMethodBeat.o(208616);
   }
   
   private boolean isValidChar(char paramChar)
@@ -193,7 +194,7 @@ public final class MiniAppSecureEditText
   
   private void setClearBtnDrawableId(int paramInt)
   {
-    AppMethodBeat.i(231298);
+    AppMethodBeat.i(208621);
     try
     {
       this.mClearBtnImg = getResources().getDrawable(paramInt);
@@ -204,11 +205,11 @@ public final class MiniAppSecureEditText
         {
           public void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
           {
-            AppMethodBeat.i(231289);
+            AppMethodBeat.i(208577);
             if (!paramAnonymousBoolean) {
               MiniAppSecureEditText.this.setCompoundDrawables(MiniAppSecureEditText.this.getCompoundDrawables()[0], MiniAppSecureEditText.this.getCompoundDrawables()[1], null, MiniAppSecureEditText.this.getCompoundDrawables()[3]);
             }
-            AppMethodBeat.o(231289);
+            AppMethodBeat.o(208577);
           }
         });
         setOnTouchListener(new View.OnTouchListener()
@@ -218,7 +219,7 @@ public final class MiniAppSecureEditText
             return false;
           }
         });
-        AppMethodBeat.o(231298);
+        AppMethodBeat.o(208621);
         return;
       }
     }
@@ -239,13 +240,13 @@ public final class MiniAppSecureEditText
           return false;
         }
       });
-      AppMethodBeat.o(231298);
+      AppMethodBeat.o(208621);
     }
   }
   
   private void setIsPasswordFormat(boolean paramBoolean)
   {
-    AppMethodBeat.i(231300);
+    AppMethodBeat.i(208627);
     if (paramBoolean)
     {
       setPadding(PASSWD_LEFT_PADDING, getPaddingTop(), getPaddingRight(), getPaddingBottom());
@@ -254,11 +255,11 @@ public final class MiniAppSecureEditText
       this.mPaintBackground.setColor(-16777216);
       setInputType(2);
       setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.maxInputLength) });
-      AppMethodBeat.o(231300);
+      AppMethodBeat.o(208627);
       return;
     }
     this.mPaintBackground = null;
-    AppMethodBeat.o(231300);
+    AppMethodBeat.o(208627);
   }
   
   private void setWhiteListChar(char[] paramArrayOfChar)
@@ -268,178 +269,198 @@ public final class MiniAppSecureEditText
   
   public final void beginCustomHash()
   {
-    AppMethodBeat.i(231331);
+    AppMethodBeat.i(208690);
     if (TextUtils.isEmpty(getInputText()))
     {
-      AppMethodBeat.o(231331);
+      AppMethodBeat.o(208690);
       return;
     }
     this.customHash = getInputText().getBytes();
-    AppMethodBeat.o(231331);
+    AppMethodBeat.o(208690);
   }
   
   public final void customAppendSalt(String paramString)
   {
-    AppMethodBeat.i(231347);
+    AppMethodBeat.i(208699);
     if (TextUtils.isEmpty(getInputText()))
     {
-      AppMethodBeat.o(231347);
+      AppMethodBeat.o(208699);
       return;
     }
     byte[] arrayOfByte = new byte[this.customHash.length + paramString.length()];
     System.arraycopy(this.customHash, 0, arrayOfByte, 0, this.customHash.length);
     System.arraycopy(paramString.getBytes(), 0, arrayOfByte, this.customHash.length, paramString.length());
     this.customHash = arrayOfByte;
-    AppMethodBeat.o(231347);
+    AppMethodBeat.o(208699);
   }
   
   public final void customInsertSalt(String paramString)
   {
-    AppMethodBeat.i(231345);
+    AppMethodBeat.i(208698);
     if (TextUtils.isEmpty(getInputText()))
     {
-      AppMethodBeat.o(231345);
+      AppMethodBeat.o(208698);
       return;
     }
     byte[] arrayOfByte = new byte[this.customHash.length + paramString.length()];
     System.arraycopy(paramString.getBytes(), 0, arrayOfByte, 0, paramString.length());
     System.arraycopy(this.customHash, 0, arrayOfByte, paramString.length(), this.customHash.length);
     this.customHash = arrayOfByte;
-    AppMethodBeat.o(231345);
+    AppMethodBeat.o(208698);
+  }
+  
+  public final void customPasswdEncode(EEncodeType paramEEncodeType)
+  {
+    AppMethodBeat.i(208697);
+    if (TextUtils.isEmpty(getInputText()))
+    {
+      AppMethodBeat.o(208697);
+      return;
+    }
+    switch (6.$SwitchMap$com$tenpay$miniapp$MiniAppSecureEditText$EEncodeType[paramEEncodeType.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(208697);
+      return;
+      this.customHash = Base64.encode(this.customHash, 0);
+      AppMethodBeat.o(208697);
+      return;
+      this.customHash = bytesToHex(this.customHash).getBytes();
+      AppMethodBeat.o(208697);
+      return;
+      this.customHash = bytesToHex(this.customHash).toUpperCase().getBytes();
+    }
   }
   
   public final void customPasswdMd5()
   {
-    AppMethodBeat.i(231342);
+    AppMethodBeat.i(208696);
     if (TextUtils.isEmpty(getInputText()))
     {
-      AppMethodBeat.o(231342);
+      AppMethodBeat.o(208696);
       return;
     }
     this.customHash = this.fitScUtil.md5(this.customHash);
-    AppMethodBeat.o(231342);
+    AppMethodBeat.o(208696);
   }
   
   public final void customPasswdSha1()
   {
-    AppMethodBeat.i(231339);
+    AppMethodBeat.i(208695);
     if (TextUtils.isEmpty(getInputText()))
     {
-      AppMethodBeat.o(231339);
+      AppMethodBeat.o(208695);
       return;
     }
     this.customHash = this.fitScUtil.sha1(this.customHash);
-    AppMethodBeat.o(231339);
+    AppMethodBeat.o(208695);
   }
   
   public final void customPasswdSha256()
   {
-    AppMethodBeat.i(231338);
+    AppMethodBeat.i(208693);
     if (TextUtils.isEmpty(getInputText()))
     {
-      AppMethodBeat.o(231338);
+      AppMethodBeat.o(208693);
       return;
     }
     this.customHash = this.fitScUtil.sha256(this.customHash);
-    AppMethodBeat.o(231338);
+    AppMethodBeat.o(208693);
   }
   
   public final void customPasswdSm3()
   {
-    AppMethodBeat.i(231334);
+    AppMethodBeat.i(208691);
     if (TextUtils.isEmpty(getInputText()))
     {
-      AppMethodBeat.o(231334);
+      AppMethodBeat.o(208691);
       return;
     }
     this.customHash = this.fitScUtil.sm3(this.customHash);
-    AppMethodBeat.o(231334);
+    AppMethodBeat.o(208691);
   }
   
   public final String endCustomHashAndEncrypt(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(231349);
+    AppMethodBeat.i(208703);
     String str = getInputText();
     if ((TextUtils.isEmpty(str)) || (str.length() < this.minInputLength) || (this.fitScUtil == null) || (this.customHash == null) || (paramLong1 == 0L) || (paramLong2 == 0L))
     {
-      AppMethodBeat.o(231349);
+      AppMethodBeat.o(208703);
       return null;
     }
     str = bytesToHex(this.customHash);
-    str = this.fitScUtil.encryptPass(this.certPem, str.getBytes(), null, paramLong1, paramLong2, 0);
+    str = this.fitScUtil.encryptPass(this.certPem, str.getBytes(), null, paramLong1, String.valueOf(paramLong2), 0);
     this.customHash = null;
-    AppMethodBeat.o(231349);
+    AppMethodBeat.o(208703);
     return str;
   }
   
   public final String getEncryptedData()
   {
-    AppMethodBeat.i(231324);
+    AppMethodBeat.i(208689);
     String str = getInputText();
     if ((TextUtils.isEmpty(str)) || (str.length() < this.minInputLength) || (this.salt == null) || (this.timeStamp == 0L) || (this.nonce == 0L))
     {
-      AppMethodBeat.o(231324);
+      AppMethodBeat.o(208689);
       return null;
     }
-    new StringBuilder("certPem = ").append(this.certPem);
-    new StringBuilder("certPem.length() = ").append(this.certPem.length());
-    new StringBuilder("salt = ").append(this.salt);
-    new StringBuilder("timeStamp = ").append(this.timeStamp);
-    new StringBuilder("nonce = ").append(this.nonce);
-    str = this.fitScUtil.encryptPass(this.certPem, str.getBytes(), this.salt.getBytes(), this.timeStamp, this.nonce, 7);
-    AppMethodBeat.o(231324);
+    str = this.fitScUtil.encryptPass(this.certPem, str.getBytes(), this.salt.getBytes(), this.timeStamp, String.valueOf(this.nonce), 7);
+    AppMethodBeat.o(208689);
     return str;
   }
   
   public final int getLastError()
   {
-    AppMethodBeat.i(231322);
+    AppMethodBeat.i(208681);
     int i = this.fitScUtil.getLastError();
-    AppMethodBeat.o(231322);
+    AppMethodBeat.o(208681);
     return i;
   }
   
   public final String getVersion()
   {
-    AppMethodBeat.i(231321);
+    AppMethodBeat.i(208677);
     String str = this.fitScUtil.getVersion();
-    AppMethodBeat.o(231321);
+    AppMethodBeat.o(208677);
     return str;
   }
   
   protected final void onCreateContextMenu(ContextMenu paramContextMenu)
   {
-    AppMethodBeat.i(231311);
+    AppMethodBeat.i(208664);
     if ((getInputType() & 0x80) <= 0) {
       super.onCreateContextMenu(paramContextMenu);
     }
-    AppMethodBeat.o(231311);
+    AppMethodBeat.o(208664);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(231317);
+    AppMethodBeat.i(208671);
     if (this.fitScUtil != null) {
       this.fitScUtil.release();
     }
     super.onDetachedFromWindow();
-    AppMethodBeat.o(231317);
+    AppMethodBeat.o(208671);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(231306);
+    AppMethodBeat.i(208659);
     drawPasswdDot(paramCanvas);
-    AppMethodBeat.o(231306);
+    AppMethodBeat.o(208659);
   }
   
   protected final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(231316);
+    AppMethodBeat.i(208667);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     if (TextUtils.isEmpty(paramCharSequence))
     {
-      AppMethodBeat.o(231316);
+      AppMethodBeat.o(208667);
       return;
     }
     paramInt2 = paramInt1;
@@ -450,7 +471,7 @@ public final class MiniAppSecureEditText
         paramCharSequence = paramCharSequence.toString();
         setText(paramCharSequence.substring(0, paramInt2) + paramCharSequence.substring(paramInt2 + 1));
         setSelection(paramInt2);
-        AppMethodBeat.o(231316);
+        AppMethodBeat.o(208667);
         return;
       }
       paramInt2 += 1;
@@ -458,36 +479,36 @@ public final class MiniAppSecureEditText
     if ((this.isFixedInputLength) && (paramCharSequence.length() == this.maxInputLength) && (this.mPasswdListener != null)) {
       this.mPasswdListener.onDone();
     }
-    AppMethodBeat.o(231316);
+    AppMethodBeat.o(208667);
   }
   
   public final boolean onTextContextMenuItem(int paramInt)
   {
-    AppMethodBeat.i(231309);
+    AppMethodBeat.i(208662);
     if ((getInputType() & 0x80) > 0)
     {
-      AppMethodBeat.o(231309);
+      AppMethodBeat.o(208662);
       return true;
     }
     boolean bool = super.onTextContextMenuItem(paramInt);
-    AppMethodBeat.o(231309);
+    AppMethodBeat.o(208662);
     return bool;
   }
   
   public final boolean setCertContext(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(231319);
+    AppMethodBeat.i(208675);
     this.fitScUtil = new FitScUtil();
     this.certPem = paramString1;
     boolean bool = this.fitScUtil.init(paramString2, paramString3, null, null);
-    AppMethodBeat.o(231319);
+    AppMethodBeat.o(208675);
     return bool;
   }
   
   public final void setInputLength(int paramInt1, int paramInt2)
   {
     boolean bool = true;
-    AppMethodBeat.i(231301);
+    AppMethodBeat.i(208656);
     this.minInputLength = paramInt1;
     this.maxInputLength = paramInt2;
     setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt2) });
@@ -495,7 +516,7 @@ public final class MiniAppSecureEditText
     for (;;)
     {
       this.isFixedInputLength = bool;
-      AppMethodBeat.o(231301);
+      AppMethodBeat.o(208656);
       return;
       bool = false;
     }
@@ -521,6 +542,21 @@ public final class MiniAppSecureEditText
     this.timeStamp = paramLong;
   }
   
+  public static enum EEncodeType
+  {
+    static
+    {
+      AppMethodBeat.i(208587);
+      THexLowerCase = new EEncodeType("THexLowerCase", 0);
+      THexUpperCase = new EEncodeType("THexUpperCase", 1);
+      TBase64 = new EEncodeType("TBase64", 2);
+      $VALUES = new EEncodeType[] { THexLowerCase, THexUpperCase, TBase64 };
+      AppMethodBeat.o(208587);
+    }
+    
+    private EEncodeType() {}
+  }
+  
   public static abstract interface OnPasswdInputListener
   {
     public abstract void onDone();
@@ -528,7 +564,7 @@ public final class MiniAppSecureEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tenpay.miniapp.MiniAppSecureEditText
  * JD-Core Version:    0.7.0.1
  */

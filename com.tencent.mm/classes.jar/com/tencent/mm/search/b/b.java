@@ -2,16 +2,14 @@ package com.tencent.mm.search.b;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.emoji.b.b.ae;
-import com.tencent.mm.emoji.b.b.aj;
-import com.tencent.mm.emoji.panel.a.e;
+import com.tencent.mm.br.c;
+import com.tencent.mm.emoji.c.b.ae;
+import com.tencent.mm.emoji.c.b.aj;
 import com.tencent.mm.plugin.m.a.j;
 import com.tencent.mm.pluginsdk.ui.chat.j;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -19,26 +17,26 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
 import com.tencent.mm.search.c.a;
 import com.tencent.mm.search.data.SimilarEmojiQueryModel;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.ui.widget.a.d.a;
-import com.tencent.mm.ui.x;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.a;
+import com.tencent.mm.ui.z;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/search/logic/SimilarEmojiPanelClickListener;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelClickListener;", "scene", "", "(I)V", "jumpData", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "getJumpData", "()Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "setJumpData", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;)V", "handlePayEmoji", "", "context", "Landroid/content/Context;", "emoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "onClick", "view", "Landroid/view/View;", "position", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Companion", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/search/logic/SimilarEmojiPanelClickListener;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelClickListener;", "scene", "", "(I)V", "jumpData", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "getJumpData", "()Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "setJumpData", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;)V", "handlePayEmoji", "", "context", "Landroid/content/Context;", "emoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "onClick", "view", "Landroid/view/View;", "position", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Companion", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends e
+  extends com.tencent.mm.emoji.panel.a.d
 {
-  public static final a UWU;
-  public SimilarEmojiQueryModel jQa;
+  public static final b.a acsg;
+  public SimilarEmojiQueryModel moX;
   
   static
   {
     AppMethodBeat.i(105838);
-    UWU = new a((byte)0);
+    acsg = new b.a((byte)0);
     AppMethodBeat.o(105838);
   }
   
@@ -47,69 +45,71 @@ public final class b
     super(paramInt);
   }
   
-  public final void a(View paramView, final Context paramContext, int paramInt, ae paramae)
+  private static final void b(EmojiInfo paramEmojiInfo, Context paramContext, DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(229129);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(236851);
+    s.u(paramEmojiInfo, "$emoji");
+    s.u(paramContext, "$context");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("extra_id", paramEmojiInfo.field_groupId);
+    localIntent.putExtra("preceding_scence", 20);
+    c.b(((z)paramContext).getBaseContext(), "emoji", ".ui.EmojiStoreDetailUI", localIntent);
+    paramDialogInterface.cancel();
+    AppMethodBeat.o(236851);
+  }
+  
+  public final void a(View paramView, Context paramContext, int paramInt, ae paramae)
+  {
+    AppMethodBeat.i(236857);
+    s.u(paramContext, "context");
     if (paramae == null)
     {
-      AppMethodBeat.o(229129);
+      AppMethodBeat.o(236857);
       return;
     }
     if (!WeChatBrands.Business.Entries.ContextSearch.checkAvailable(paramContext))
     {
-      AppMethodBeat.o(229129);
+      AppMethodBeat.o(236857);
       return;
     }
-    if ((paramae instanceof com.tencent.mm.emoji.b.b.h)) {}
-    for (paramView = ((com.tencent.mm.emoji.b.b.h)paramae).jHh.field_md5;; paramView = "")
+    if ((paramae instanceof com.tencent.mm.emoji.c.b.h)) {}
+    for (paramView = ((com.tencent.mm.emoji.c.b.h)paramae).mgK.field_md5;; paramView = "")
     {
       Log.i("MicroMsg.SimilarEmoji", "onClick: " + paramInt + ", md5 :" + paramView);
-      if ((!(paramae instanceof com.tencent.mm.emoji.b.b.h)) || (((com.tencent.mm.emoji.b.b.h)paramae).jJc != 102)) {
-        break label426;
+      if ((!(paramae instanceof com.tencent.mm.emoji.c.b.h)) || (((com.tencent.mm.emoji.c.b.h)paramae).miu != 102)) {
+        break label386;
       }
-      paramView = a.UWW;
-      a.hts();
-      paramView = com.tencent.mm.search.c.b.UWY;
-      com.tencent.mm.search.c.b.b(((com.tencent.mm.emoji.b.b.h)paramae).jHh, paramInt);
-      if (((com.tencent.mm.emoji.b.b.h)paramae).jHh.ZuO == 1)
+      paramView = a.acsi;
+      a.iTz();
+      paramView = com.tencent.mm.search.c.b.acsj;
+      com.tencent.mm.search.c.b.b(((com.tencent.mm.emoji.c.b.h)paramae).mgK, paramInt);
+      if (((com.tencent.mm.emoji.c.b.h)paramae).mgK.pay == 1)
       {
-        if (Util.isNullOrNil(((com.tencent.mm.emoji.b.b.h)paramae).jHh.aCt())) {
-          break;
-        }
-        paramView = com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-        p.j(paramView, "MMKernel.plugin(IPluginEmoji::class.java)");
-        if (!((com.tencent.mm.plugin.emoji.b.d)paramView).getEmojiMgr().aui(((com.tencent.mm.emoji.b.b.h)paramae).jHh.aCt())) {
+        if ((Util.isNullOrNil(((com.tencent.mm.emoji.c.b.h)paramae).mgK.field_groupId)) || (!((com.tencent.mm.plugin.emoji.c.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().aoj(((com.tencent.mm.emoji.c.b.h)paramae).mgK.field_groupId))) {
           break;
         }
         Log.i("MicroMsg.SimilarEmoji", "buy and resend emoji");
       }
-      paramView = ((com.tencent.mm.emoji.b.b.h)paramae).jHh;
-      paramContext = bj.hyV();
-      p.j(paramContext, "EmojiStorageMgr.getInstance()");
-      if (paramContext.ctY().bxK(paramView.field_md5) == null)
-      {
-        paramContext = bj.hyV();
-        p.j(paramContext, "EmojiStorageMgr.getInstance()");
-        paramContext.ctY().L(paramView);
+      paramView = ((com.tencent.mm.emoji.c.b.h)paramae).mgK;
+      if (bl.jba().adju.bza(paramView.field_md5) == null) {
+        bl.jba().adju.L(paramView);
       }
-      paramContext = this.jLH;
+      paramContext = this.mkP;
       if (paramContext == null) {
-        break label420;
+        break label478;
       }
       paramContext.o(paramView);
-      AppMethodBeat.o(229129);
+      AppMethodBeat.o(236857);
       return;
     }
-    paramView = ((com.tencent.mm.emoji.b.b.h)paramae).jHh;
-    paramae = new d.a(paramContext);
-    paramae.bBc("");
-    paramae.bBd(paramContext.getString(a.j.similar_emoji_pay_dialog_title));
-    paramae.HG(true);
-    paramae.ayj(a.j.emoji_add_fialed_non_purchase_goto).c((DialogInterface.OnClickListener)new b(paramView, paramContext));
-    paramae.ayk(a.j.app_cancel);
-    paramView = paramae.icu();
-    p.j(paramView, "alert");
+    paramView = ((com.tencent.mm.emoji.c.b.h)paramae).mgK;
+    paramae = new e.a(paramContext);
+    paramae.bDv("");
+    paramae.bDw(paramContext.getString(a.j.similar_emoji_pay_dialog_title));
+    paramae.NC(true);
+    paramae.aER(a.j.emoji_add_fialed_non_purchase_goto).c(new b..ExternalSyntheticLambda0(paramView, paramContext));
+    paramae.aES(a.j.app_cancel);
+    paramView = paramae.jHH();
     paramContext = paramView.getWindow();
     if (paramContext != null)
     {
@@ -117,60 +117,30 @@ public final class b
       paramContext.setFlags(131072, 131072);
     }
     paramView.show();
-    AppMethodBeat.o(229129);
+    AppMethodBeat.o(236857);
     return;
-    label420:
-    AppMethodBeat.o(229129);
-    return;
-    label426:
-    if (((paramae instanceof aj)) && (((aj)paramae).jJc == 101))
+    label386:
+    if (((paramae instanceof aj)) && (((aj)paramae).miu == 101))
     {
-      if (this.jQa == null)
+      if (this.moX == null)
       {
         Log.i("MicroMsg.SimilarEmoji", "can not jump for null data!");
-        AppMethodBeat.o(229129);
+        AppMethodBeat.o(236857);
         return;
       }
-      paramView = com.tencent.mm.search.c.b.UWY;
-      com.tencent.mm.search.c.b.htw();
+      paramView = com.tencent.mm.search.c.b.acsj;
+      com.tencent.mm.search.c.b.iTD();
       paramView = new Intent();
-      paramView.putExtra("KEY_NET_PARAM", (Parcelable)this.jQa);
-      c.b(((x)paramContext).getBaseContext(), "webview", ".emojistore.ui.SosSimilarUI", paramView, 229);
+      paramView.putExtra("KEY_NET_PARAM", (Parcelable)this.moX);
+      c.b(((z)paramContext).getBaseContext(), "webview", ".emojistore.ui.SosSimilarUI", paramView, 229);
     }
-    AppMethodBeat.o(229129);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/search/logic/SimilarEmojiPanelClickListener$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-  static final class b
-    implements DialogInterface.OnClickListener
-  {
-    b(EmojiInfo paramEmojiInfo, Context paramContext) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(105836);
-      Intent localIntent = new Intent();
-      localIntent.putExtra("extra_id", this.jLK.field_groupId);
-      localIntent.putExtra("preceding_scence", 20);
-      Context localContext = paramContext;
-      if (localContext == null)
-      {
-        paramDialogInterface = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMContextThemeWrapper");
-        AppMethodBeat.o(105836);
-        throw paramDialogInterface;
-      }
-      c.b(((x)localContext).getBaseContext(), "emoji", ".ui.EmojiStoreDetailUI", localIntent);
-      paramDialogInterface.cancel();
-      AppMethodBeat.o(105836);
-    }
+    label478:
+    AppMethodBeat.o(236857);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.search.b.b
  * JD-Core Version:    0.7.0.1
  */

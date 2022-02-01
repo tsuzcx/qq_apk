@@ -9,28 +9,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.luggage.l.a.d;
-import com.tencent.luggage.l.a.e;
+import com.tencent.luggage.m.a.d;
+import com.tencent.luggage.m.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.widget.dialog.l;
-import com.tencent.mm.protocal.protobuf.hb;
+import com.tencent.mm.plugin.appbrand.widget.dialog.r;
+import com.tencent.mm.protocal.protobuf.hx;
 import com.tencent.mm.sdk.platformtools.Log;
 
 final class h$1
   implements Runnable
 {
-  h$1(h paramh, ad paramad, int paramInt, hb paramhb, String paramString) {}
+  h$1(h paramh, ad paramad, int paramInt, hx paramhx, String paramString) {}
   
   public final void run()
   {
     AppMethodBeat.i(147154);
-    h localh = this.oEU;
-    Object localObject1 = this.oEt;
-    int j = this.cuf;
-    hb localhb = this.oES;
-    Object localObject2 = this.oET;
+    h localh = this.rHX;
+    Object localObject1 = this.rHC;
+    int j = this.elZ;
+    hx localhx = this.rHV;
+    Object localObject2 = this.rHW;
     View localView = ((LayoutInflater)((ad)localObject1).getContext().getSystemService("layout_inflater")).inflate(a.e.app_brand_auth_user_auto_fill_data_new, null);
     TextView localTextView = (TextView)localView.findViewById(a.d.auto_fill_request_dialog_content);
     Button localButton1 = (Button)localView.findViewById(a.d.auto_fill_request_dialog_accept);
@@ -51,23 +51,23 @@ final class h$1
     }
     localTextView.setText((CharSequence)localObject2);
     localTextView.setMovementMethod(new h.3(localh, (ad)localObject1));
-    localButton1.setOnClickListener(new h.4(localh, localhb, (ad)localObject1, j));
-    localButton2.setOnClickListener(new h.5(localh, localhb, (ad)localObject1, j));
+    localButton1.setOnClickListener(new h.4(localh, localhx, (ad)localObject1, j));
+    localButton2.setOnClickListener(new h.5(localh, localhx, (ad)localObject1, j));
     Log.i("MicroMsg.JsApiRequestAuthUserAutoFillData", "showAlertImplNew, show the new bottom dialog!");
-    localh.oER = new k(((ad)localObject1).getContext());
-    localh.oER.setContentView(localView);
-    localh.oER.setCancelable(false);
-    localh.oER.setCanceledOnTouchOutside(false);
-    localObject1 = ((ad)localObject1).getRuntime().ntE;
+    localh.rHU = new l(((ad)localObject1).getContext());
+    localh.rHU.setContentView(localView);
+    localh.rHU.setCancelable(false);
+    localh.rHU.setCanceledOnTouchOutside(false);
+    localObject1 = ((ad)localObject1).getRuntime().qsn;
     if (localObject1 != null) {
-      ((l)localObject1).a(localh.oER);
+      ((r)localObject1).b(localh.rHU);
     }
     AppMethodBeat.o(147154);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.autofill.h.1
  * JD-Core Version:    0.7.0.1
  */

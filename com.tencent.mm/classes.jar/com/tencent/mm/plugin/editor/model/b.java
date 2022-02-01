@@ -1,45 +1,29 @@
 package com.tencent.mm.plugin.editor.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.ht;
+import com.tencent.mm.autogen.a.ht.b;
 import com.tencent.mm.b.g;
-import com.tencent.mm.f.a.hi;
-import com.tencent.mm.f.a.hi.b;
 import com.tencent.mm.plugin.editor.model.a.a;
 import com.tencent.mm.plugin.editor.model.a.i;
 import com.tencent.mm.plugin.editor.model.a.j;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.protocal.protobuf.arf;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b
 {
-  public static float GW(long paramLong)
-  {
-    float f1 = 1.0F;
-    AppMethodBeat.i(181669);
-    float f2 = (float)paramLong / 1000.0F;
-    if (f2 < 1.0F) {}
-    for (;;)
-    {
-      f1 = Math.round(f1);
-      AppMethodBeat.o(181669);
-      return f1;
-      f1 = f2;
-    }
-  }
-  
-  public static String a(anm paramanm)
+  public static String a(arf paramarf)
   {
     AppMethodBeat.i(181671);
-    hi localhi = new hi();
-    localhi.fEb.type = 27;
-    localhi.fEb.fEd = paramanm;
-    EventCenter.instance.publish(localhi);
-    paramanm = localhi.fEc.thumbPath;
+    ht localht = new ht();
+    localht.hIR.type = 27;
+    localht.hIR.hIT = paramarf;
+    localht.publish();
+    paramarf = localht.hIS.thumbPath;
     AppMethodBeat.o(181671);
-    return paramanm;
+    return paramarf;
   }
   
   public static ArrayList<a> a(Object paramObject, List<String> paramList)
@@ -68,8 +52,8 @@ public final class b
       if (((String)localObject1).trim().equals("<ThisisNoteNodeHrObj>"))
       {
         localObject1 = new i();
-        ((i)localObject1).urG = false;
-        ((i)localObject1).urM = false;
+        ((i)localObject1).xyb = false;
+        ((i)localObject1).xyh = false;
         if (i < localArrayList.size()) {
           localArrayList.add(i, localObject1);
         }
@@ -84,9 +68,9 @@ public final class b
         {
           localObject2 = new j();
           ((j)localObject2).content = ((String)localObject1);
-          ((j)localObject2).urG = false;
-          ((j)localObject2).urM = false;
-          ((j)localObject2).fEa = atK(localObject2.toString());
+          ((j)localObject2).xyb = false;
+          ((j)localObject2).xyh = false;
+          ((j)localObject2).hIQ = anz(localObject2.toString());
           if (i < localArrayList.size()) {
             localArrayList.add(i, localObject2);
           } else {
@@ -101,7 +85,7 @@ public final class b
     return localArrayList;
   }
   
-  public static String atK(String paramString)
+  public static String anz(String paramString)
   {
     AppMethodBeat.i(181670);
     paramString = g.getMessageDigest((paramString + 18 + System.currentTimeMillis()).getBytes());
@@ -109,21 +93,36 @@ public final class b
     return paramString;
   }
   
-  public static String b(anm paramanm)
+  public static String b(arf paramarf)
   {
     AppMethodBeat.i(181672);
-    hi localhi = new hi();
-    localhi.fEb.type = 27;
-    localhi.fEb.fEd = paramanm;
-    EventCenter.instance.publish(localhi);
-    paramanm = localhi.fEc.path;
+    ht localht = new ht();
+    localht.hIR.type = 27;
+    localht.hIR.hIT = paramarf;
+    localht.publish();
+    paramarf = localht.hIS.path;
     AppMethodBeat.o(181672);
-    return paramanm;
+    return paramarf;
+  }
+  
+  public static float jh(long paramLong)
+  {
+    float f1 = 1.0F;
+    AppMethodBeat.i(181669);
+    float f2 = (float)paramLong / 1000.0F;
+    if (f2 < 1.0F) {}
+    for (;;)
+    {
+      f1 = Math.round(f1);
+      AppMethodBeat.o(181669);
+      return f1;
+      f1 = f2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.b
  * JD-Core Version:    0.7.0.1
  */

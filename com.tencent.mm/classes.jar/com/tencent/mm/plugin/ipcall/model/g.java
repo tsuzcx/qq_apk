@@ -3,34 +3,33 @@ package com.tencent.mm.plugin.ipcall.model;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.network.p;
 import com.tencent.mm.network.p.a;
-import com.tencent.mm.platformtools.z;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.plugin.ipcall.model.b.a.a;
 import com.tencent.mm.plugin.ipcall.model.b.b.a;
 import com.tencent.mm.plugin.ipcall.model.d.b;
 import com.tencent.mm.plugin.ipcall.model.e.k;
 import com.tencent.mm.plugin.ipcall.model.e.n;
 import com.tencent.mm.plugin.ipcall.model.e.o;
+import com.tencent.mm.plugin.ipcall.model.g.e;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.protocal.protobuf.doz;
-import com.tencent.mm.protocal.protobuf.dpd;
-import com.tencent.mm.protocal.protobuf.dpf;
-import com.tencent.mm.protocal.protobuf.dpg;
-import com.tencent.mm.protocal.protobuf.dph;
-import com.tencent.mm.protocal.protobuf.dpi;
-import com.tencent.mm.protocal.protobuf.dpj;
-import com.tencent.mm.protocal.protobuf.dpm;
-import com.tencent.mm.protocal.protobuf.dpo;
-import com.tencent.mm.protocal.protobuf.dpp;
-import com.tencent.mm.protocal.protobuf.dpq;
-import com.tencent.mm.protocal.protobuf.dwc;
-import com.tencent.mm.protocal.protobuf.dwd;
-import com.tencent.mm.protocal.protobuf.fdc;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.eht;
+import com.tencent.mm.protocal.protobuf.ehx;
+import com.tencent.mm.protocal.protobuf.ehz;
+import com.tencent.mm.protocal.protobuf.eia;
+import com.tencent.mm.protocal.protobuf.eib;
+import com.tencent.mm.protocal.protobuf.eic;
+import com.tencent.mm.protocal.protobuf.eid;
+import com.tencent.mm.protocal.protobuf.eig;
+import com.tencent.mm.protocal.protobuf.eii;
+import com.tencent.mm.protocal.protobuf.eij;
+import com.tencent.mm.protocal.protobuf.eik;
+import com.tencent.mm.protocal.protobuf.epe;
+import com.tencent.mm.protocal.protobuf.epf;
+import com.tencent.mm.protocal.protobuf.fzo;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -40,92 +39,92 @@ import java.util.LinkedList;
 public final class g
   implements a.a, b.a
 {
-  public int DOK;
-  public int DOL;
-  public int DOM;
-  public boolean DON;
-  public boolean DOO;
-  public a DOP;
-  public com.tencent.mm.plugin.ipcall.model.g.d DOQ;
-  com.tencent.mm.plugin.ipcall.model.g.i DOR;
-  com.tencent.mm.plugin.ipcall.model.g.a DOS;
-  com.tencent.mm.plugin.ipcall.model.g.h DOT;
-  com.tencent.mm.plugin.ipcall.model.g.c DOU;
-  public com.tencent.mm.plugin.ipcall.model.g.e DOV;
-  com.tencent.mm.plugin.ipcall.model.g.g DOW;
-  com.tencent.mm.plugin.ipcall.model.g.f DOX;
-  public com.tencent.mm.plugin.ipcall.model.b.c DOY;
-  public boolean DOZ;
-  public boolean DPa;
-  p DPb;
-  public boolean fQy;
+  public int JFZ;
+  public int JGa;
+  public int JGb;
+  public boolean JGc;
+  public boolean JGd;
+  public a JGe;
+  public com.tencent.mm.plugin.ipcall.model.g.d JGf;
+  com.tencent.mm.plugin.ipcall.model.g.i JGg;
+  com.tencent.mm.plugin.ipcall.model.g.a JGh;
+  com.tencent.mm.plugin.ipcall.model.g.h JGi;
+  com.tencent.mm.plugin.ipcall.model.g.c JGj;
+  public e JGk;
+  com.tencent.mm.plugin.ipcall.model.g.g JGl;
+  com.tencent.mm.plugin.ipcall.model.g.f JGm;
+  public com.tencent.mm.plugin.ipcall.model.b.c JGn;
+  public boolean JGo;
+  public boolean JGp;
+  com.tencent.mm.network.p JGq;
+  public boolean hWt;
   
   public g()
   {
     AppMethodBeat.i(25364);
-    this.DOK = 0;
-    this.DOL = 0;
-    this.DOM = 0;
-    this.DON = false;
-    this.DOO = false;
-    this.DOZ = false;
-    this.fQy = false;
-    this.DPa = false;
-    this.DPb = new p.a()
+    this.JFZ = 0;
+    this.JGa = 0;
+    this.JGb = 0;
+    this.JGc = false;
+    this.JGd = false;
+    this.JGo = false;
+    this.hWt = false;
+    this.JGp = false;
+    this.JGq = new p.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
         int i = 0;
         AppMethodBeat.i(25363);
         Log.i("MicroMsg.IPCallSvrLogic", "onNetworkChange, st: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        if (i.eJr().DQK)
+        if (h.fRr().JHU)
         {
-          f localf = i.eJu();
-          if ((localf.pzp == 4) || (localf.pzp == 5)) {
+          f localf = h.fRu();
+          if ((localf.sEu == 4) || (localf.sEu == 5)) {
             i = 1;
           }
-          if ((i != 0) && (paramAnonymousInt == 4) && (g.this.DOX != null)) {
-            g.this.DOX.a(g.this.DOY);
+          if ((i != 0) && (paramAnonymousInt == 4) && (g.this.JGm != null)) {
+            g.this.JGm.a(g.this.JGn);
           }
         }
         AppMethodBeat.o(25363);
       }
     };
-    this.DOQ = new com.tencent.mm.plugin.ipcall.model.g.d();
-    this.DOR = new com.tencent.mm.plugin.ipcall.model.g.i();
-    this.DOS = new com.tencent.mm.plugin.ipcall.model.g.a();
-    this.DOT = new com.tencent.mm.plugin.ipcall.model.g.h();
-    this.DOU = new com.tencent.mm.plugin.ipcall.model.g.c();
-    this.DOV = new com.tencent.mm.plugin.ipcall.model.g.e();
-    this.DOW = new com.tencent.mm.plugin.ipcall.model.g.g();
-    this.DOX = new com.tencent.mm.plugin.ipcall.model.g.f();
+    this.JGf = new com.tencent.mm.plugin.ipcall.model.g.d();
+    this.JGg = new com.tencent.mm.plugin.ipcall.model.g.i();
+    this.JGh = new com.tencent.mm.plugin.ipcall.model.g.a();
+    this.JGi = new com.tencent.mm.plugin.ipcall.model.g.h();
+    this.JGj = new com.tencent.mm.plugin.ipcall.model.g.c();
+    this.JGk = new e();
+    this.JGl = new com.tencent.mm.plugin.ipcall.model.g.g();
+    this.JGm = new com.tencent.mm.plugin.ipcall.model.g.f();
     AppMethodBeat.o(25364);
   }
   
-  private void X(boolean paramBoolean, int paramInt)
+  private void Z(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(25369);
     Log.i("MicroMsg.IPCallSvrLogic", "handleCancel, success: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((!paramBoolean) && (paramInt < 0) && (this.DOM <= 0))
+    if ((!paramBoolean) && (paramInt < 0) && (this.JGb <= 0))
     {
-      this.DOM += 1;
-      Log.i("MicroMsg.IPCallSvrLogic", "cancel failed, retry count: %d", new Object[] { Integer.valueOf(this.DOM) });
-      this.DOS.a(this.DOY);
+      this.JGb += 1;
+      Log.i("MicroMsg.IPCallSvrLogic", "cancel failed, retry count: %d", new Object[] { Integer.valueOf(this.JGb) });
+      this.JGh.a(this.JGn);
       AppMethodBeat.o(25369);
       return;
     }
     AppMethodBeat.o(25369);
   }
   
-  private void Y(boolean paramBoolean, int paramInt)
+  private void aa(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(25370);
-    Log.i("MicroMsg.IPCallSvrLogic", "handleUserSelfShutdown, success: %b, isFromNotify: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.DOT.DSC) });
-    if ((!paramBoolean) && (paramInt < 0) && (this.DOL <= 0))
+    Log.i("MicroMsg.IPCallSvrLogic", "handleUserSelfShutdown, success: %b, isFromNotify: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.JGi.JJM) });
+    if ((!paramBoolean) && (paramInt < 0) && (this.JGa <= 0))
     {
-      this.DOL += 1;
-      Log.i("MicroMsg.IPCallSvrLogic", "shutdown failed, retry count: %d, isFromNotify: %b", new Object[] { Integer.valueOf(this.DOL), Boolean.valueOf(this.DOT.DSC) });
-      this.DOT.a(this.DOY);
+      this.JGa += 1;
+      Log.i("MicroMsg.IPCallSvrLogic", "shutdown failed, retry count: %d, isFromNotify: %b", new Object[] { Integer.valueOf(this.JGa), Boolean.valueOf(this.JGi.JJM) });
+      this.JGi.a(this.JGn);
       AppMethodBeat.o(25370);
       return;
     }
@@ -135,7 +134,7 @@ public final class g
   private boolean c(int paramInt1, Object paramObject, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(25379);
-    if ((this.DOY == null) || (paramObject == null))
+    if ((this.JGn == null) || (paramObject == null))
     {
       Log.e("MicroMsg.IPCallSvrLogic", "callInfo = null or result = null");
       AppMethodBeat.o(25379);
@@ -168,104 +167,104 @@ public final class g
             return true;
           }
           paramObject = (com.tencent.mm.plugin.ipcall.model.e.i)paramObject;
-          localObject1 = paramObject.DRH;
-          if (this.DOY.DPL != paramObject.DRG.TWa)
+          localObject1 = paramObject.JIR;
+          if (this.JGn.JGW != paramObject.JIQ.abmP)
           {
-            Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo invited finished but invite id not the same, now room inviteId:%d, before room inviteId:%d", new Object[] { Integer.valueOf(this.DOY.DPL), Integer.valueOf(paramObject.DRG.TWa) });
+            Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo invited finished but invite id not the same, now room inviteId:%d, before room inviteId:%d", new Object[] { Integer.valueOf(this.JGn.JGW), Integer.valueOf(paramObject.JIQ.abmP) });
             AppMethodBeat.o(25379);
             return true;
           }
-          Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo invited finished invite id:%d", new Object[] { Integer.valueOf(this.DOY.DPL) });
-          i.eJs().hU(this.DOY.DPL, paramInt3);
+          Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo invited finished invite id:%d", new Object[] { Integer.valueOf(this.JGn.JGW) });
+          h.fRs().jy(this.JGn.JGW, paramInt3);
           if ((paramInt2 == 0) && (paramInt3 == 0))
           {
-            if (this.DOY != null)
+            if (this.JGn != null)
             {
-              this.DOY.roomId = ((dpg)localObject1).Svu;
-              this.DOY.DPJ = ((dpg)localObject1).Svv;
-              this.DOY.DPK = ((dpg)localObject1).TWc;
-              this.DOY.DPQ = ((dpg)localObject1).TWl;
-              this.DOY.DPS = (((dpg)localObject1).TWm * 1000);
-              this.DOY.DPZ = ((dpg)localObject1).DPZ;
-              this.DOY.DQa = ((dpg)localObject1).DQa;
-              this.DOY.rOm = ((dpg)localObject1).RNx;
-              this.DOY.DQg = ((dpg)localObject1).TWn;
-              this.DOY.DQl = ((dpg)localObject1).TWo;
-              if (((dpg)localObject1).DQh > 0) {
-                this.DOY.DQh = ((dpg)localObject1).DQh;
+              this.JGn.roomId = ((eia)localObject1).Zvz;
+              this.JGn.Hnt = ((eia)localObject1).ZvA;
+              this.JGn.JGV = ((eia)localObject1).abmR;
+              this.JGn.JHb = ((eia)localObject1).abna;
+              this.JGn.JHd = (((eia)localObject1).abnb * 1000);
+              this.JGn.JHk = ((eia)localObject1).JHk;
+              this.JGn.JHl = ((eia)localObject1).JHl;
+              this.JGn.uZA = ((eia)localObject1).YKL;
+              this.JGn.JHr = ((eia)localObject1).abnc;
+              this.JGn.JHw = ((eia)localObject1).abnd;
+              if (((eia)localObject1).JHs > 0) {
+                this.JGn.JHs = ((eia)localObject1).JHs;
               }
-              this.DOY.DQb = ((dpg)localObject1).DQb;
-              this.DOY.DQc = ((dpg)localObject1).DQc;
-              this.DOY.DPY = ((dpg)localObject1).TWq;
-              if (((dpg)localObject1).DQe > 0)
+              this.JGn.JHm = ((eia)localObject1).JHm;
+              this.JGn.JHn = ((eia)localObject1).JHn;
+              this.JGn.JHj = ((eia)localObject1).abnf;
+              if (((eia)localObject1).JHp > 0)
               {
-                this.DOY.DQe = (((dpg)localObject1).DQe - 1);
-                Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo zhengxue[ENCRYPT] got encryptStrategy[" + this.DOY.DQe + "] from Invite resp");
-                this.DOY.DQf = ((dpg)localObject1).TWp;
-                Log.d("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo NextInvite:%d", new Object[] { Integer.valueOf(((dpg)localObject1).DPT) });
-                if (((dpg)localObject1).DPT <= 0) {
+                this.JGn.JHp = (((eia)localObject1).JHp - 1);
+                Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo zhengxue[ENCRYPT] got encryptStrategy[" + this.JGn.JHp + "] from Invite resp");
+                this.JGn.JHq = ((eia)localObject1).abne;
+                Log.d("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo NextInvite:%d", new Object[] { Integer.valueOf(((eia)localObject1).JHe) });
+                if (((eia)localObject1).JHe <= 0) {
                   break label613;
                 }
-                this.DOY.DPX = false;
+                this.JGn.JHi = false;
               }
-              for (this.DOY.DPT = ((dpg)localObject1).DPT;; this.DOY.DPT = 0)
+              for (this.JGn.JHe = ((eia)localObject1).JHe;; this.JGn.JHe = 0)
               {
-                this.DOY.DPP = ((dpg)localObject1).DPP;
-                this.DOY.DPO = ((dpg)localObject1).DPO;
-                this.DOY.vht = paramInt3;
-                this.DOY.vhu = Util.nullAsNil(z.a(((dpg)localObject1).BaseResponse.Tef));
+                this.JGn.JHa = ((eia)localObject1).JHa;
+                this.JGn.JGZ = ((eia)localObject1).JGZ;
+                this.JGn.ytv = paramInt3;
+                this.JGn.ytw = Util.nullAsNil(w.a(((eia)localObject1).BaseResponse.akjO));
                 break;
                 Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo zhengxue[ENCRYPT] got no encryptStrategy from Invite resp");
-                this.DOY.DQe = 2;
+                this.JGn.JHp = 2;
                 break label474;
-                this.DOY.DPX = true;
+                this.JGn.JHi = true;
               }
             }
           }
           else
           {
             Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo invite failed");
-            if (((dpg)localObject1).BaseResponse != null)
+            if (((eia)localObject1).BaseResponse != null)
             {
               if (paramInt3 == 433)
               {
                 Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo account overdue");
-                this.DOY.DPU = true;
-                if (((dpg)localObject1).DPT <= 0) {
+                this.JGn.JHf = true;
+                if (((eia)localObject1).JHe <= 0) {
                   break label860;
                 }
-                this.DOY.DPX = false;
+                this.JGn.JHi = false;
               }
-              for (this.DOY.DPT = ((dpg)localObject1).DPT;; this.DOY.DPT = 0)
+              for (this.JGn.JHe = ((eia)localObject1).JHe;; this.JGn.JHe = 0)
               {
-                this.DOY.DPP = ((dpg)localObject1).DPP;
-                this.DOY.DPO = ((dpg)localObject1).DPO;
-                this.DOY.vht = paramInt3;
-                if (((dpg)localObject1).getBaseResponse() == null) {
+                this.JGn.JHa = ((eia)localObject1).JHa;
+                this.JGn.JGZ = ((eia)localObject1).JGZ;
+                this.JGn.ytv = paramInt3;
+                if (((eia)localObject1).getBaseResponse() == null) {
                   break;
                 }
-                this.DOY.vhu = Util.nullAsNil(z.a(((dpg)localObject1).BaseResponse.Tef));
-                Log.d("MicroMsg.IPCallSvrLogic", "ErrLevel:%d,ErrCode:%d,ErrMsg:%s", new Object[] { Integer.valueOf(((dpg)localObject1).DPO), Integer.valueOf(paramInt3), this.DOY.vhu });
+                this.JGn.ytw = Util.nullAsNil(w.a(((eia)localObject1).BaseResponse.akjO));
+                Log.d("MicroMsg.IPCallSvrLogic", "ErrLevel:%d,ErrCode:%d,ErrMsg:%s", new Object[] { Integer.valueOf(((eia)localObject1).JGZ), Integer.valueOf(paramInt3), this.JGn.ytw });
                 break;
                 if (paramInt3 == 434)
                 {
                   Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo restrict call");
-                  this.DOY.DPV = true;
+                  this.JGn.JHg = true;
                   break label672;
                 }
                 if (paramInt3 != 435) {
                   break label672;
                 }
                 Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo phonenumber invalid");
-                this.DOY.DPW = true;
+                this.JGn.JHh = true;
                 break label672;
-                this.DOY.DPX = true;
+                this.JGn.JHi = true;
               }
             }
-            this.DOY.DPP = "";
-            this.DOY.DPO = 2;
-            this.DOY.vhu = MMApplicationContext.getContext().getString(R.l.etF);
-            this.DOY.vht = paramInt3;
+            this.JGn.JHa = "";
+            this.JGn.JGZ = 2;
+            this.JGn.ytw = MMApplicationContext.getContext().getString(R.l.gwb);
+            this.JGn.ytv = paramInt3;
             continue;
             if (!(paramObject instanceof com.tencent.mm.plugin.ipcall.model.e.a))
             {
@@ -275,9 +274,9 @@ public final class g
             }
             Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo cancel finished errType:%d,errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
             paramObject = (com.tencent.mm.plugin.ipcall.model.e.a)paramObject;
-            if (this.DOY.DPL != paramObject.DRp.TWa)
+            if (this.JGn.JGW != paramObject.JIz.abmP)
             {
-              Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo cancel finished but invite id not the same, now room inviteId:%d, before room inviteId:%d", new Object[] { Integer.valueOf(this.DOY.DPL), Integer.valueOf(paramObject.DRp.TWa) });
+              Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo cancel finished but invite id not the same, now room inviteId:%d, before room inviteId:%d", new Object[] { Integer.valueOf(this.JGn.JGW), Integer.valueOf(paramObject.JIz.abmP) });
               AppMethodBeat.o(25379);
               return true;
               if (!(paramObject instanceof n))
@@ -287,16 +286,16 @@ public final class g
                 return true;
               }
               paramObject = (n)paramObject;
-              if (this.DOY.roomId != paramObject.DRQ.Svu)
+              if (this.JGn.roomId != paramObject.JJa.Zvz)
               {
-                Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo shutdown finished but room id not the same, now room roomId:%d, before room roomId:%d", new Object[] { Integer.valueOf(this.DOY.roomId), Integer.valueOf(paramObject.DRQ.Svu) });
+                Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo shutdown finished but room id not the same, now room roomId:%d, before room roomId:%d", new Object[] { Integer.valueOf(this.JGn.roomId), Integer.valueOf(paramObject.JJa.Zvz) });
                 AppMethodBeat.o(25379);
                 return true;
               }
               if ((paramInt2 == 0) && (paramInt3 == 0))
               {
                 Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo shutdown success!");
-                this.DOY.oLS = 5;
+                this.JGn.rPN = 5;
               }
               else
               {
@@ -305,65 +304,65 @@ public final class g
             }
           }
         }
-        if (!(paramObject instanceof dph))
+        if (!(paramObject instanceof eib))
         {
           Log.e("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo notify result error");
           AppMethodBeat.o(25379);
           return true;
         }
         Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo notify finished");
-        paramObject = (dph)paramObject;
-        if (this.DOY.roomId != paramObject.Svu)
+        paramObject = (eib)paramObject;
+        if (this.JGn.roomId != paramObject.Zvz)
         {
-          Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo shutdown finished but room id not the same, now room roomId:%d, before room roomId:%d", new Object[] { Integer.valueOf(this.DOY.roomId), Integer.valueOf(paramObject.Svu) });
+          Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo shutdown finished but room id not the same, now room roomId:%d, before room roomId:%d", new Object[] { Integer.valueOf(this.JGn.roomId), Integer.valueOf(paramObject.Zvz) });
           AppMethodBeat.o(25379);
           return true;
         }
       } while ((paramInt2 != 0) || (paramInt3 != 0));
-      this.DOY.DQd = paramObject.DQd;
-      Log.d("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo updateNotifyCallInfo, UserStatuslist.size: %d", new Object[] { Integer.valueOf(paramObject.TWr.size()) });
-      paramObject = paramObject.TWr.iterator();
+      this.JGn.JHo = paramObject.JHo;
+      Log.d("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo updateNotifyCallInfo, UserStatuslist.size: %d", new Object[] { Integer.valueOf(paramObject.abng.size()) });
+      paramObject = paramObject.abng.iterator();
       while (paramObject.hasNext())
       {
-        localObject1 = (dpq)paramObject.next();
-        if (this.DOY.DPQ != ((dpq)localObject1).TWA) {
+        localObject1 = (eik)paramObject.next();
+        if (this.JGn.JHb != ((eik)localObject1).abnp) {
           break label1537;
         }
-        Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo update self userStatus, memberId: %d, status: %d, syncKey: %d", new Object[] { Integer.valueOf(this.DOY.DPQ), Integer.valueOf(((dpq)localObject1).TWB), Integer.valueOf(((dpq)localObject1).TWC) });
-        if (((dpq)localObject1).TWC > this.DOY.DPR)
+        Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo update self userStatus, memberId: %d, status: %d, syncKey: %d", new Object[] { Integer.valueOf(this.JGn.JHb), Integer.valueOf(((eik)localObject1).abnq), Integer.valueOf(((eik)localObject1).abnr) });
+        if (((eik)localObject1).abnr > this.JGn.JHc)
         {
-          this.DOY.DPR = ((dpq)localObject1).TWC;
-          if (((dpq)localObject1).TWB != 0) {
-            this.DOY.oLS = ((dpq)localObject1).TWB;
+          this.JGn.JHc = ((eik)localObject1).abnr;
+          if (((eik)localObject1).abnq != 0) {
+            this.JGn.rPN = ((eik)localObject1).abnq;
           }
         }
         label1448:
-        if ((((dpq)localObject1).vht == 404) || (((dpq)localObject1).vht == 484))
+        if ((((eik)localObject1).ytv == 404) || (((eik)localObject1).ytv == 484))
         {
           Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo notify phonenumber invalid");
-          this.DOY.DPW = true;
+          this.JGn.JHh = true;
         }
-        this.DOY.vhu = ((dpq)localObject1).vhu;
-        this.DOY.vht = ((dpq)localObject1).vht;
-        this.DOY.DPO = ((dpq)localObject1).DPO;
-        this.DOY.DPP = ((dpq)localObject1).DPP;
+        this.JGn.ytw = ((eik)localObject1).ytw;
+        this.JGn.ytv = ((eik)localObject1).ytv;
+        this.JGn.JGZ = ((eik)localObject1).JGZ;
+        this.JGn.JHa = ((eik)localObject1).JHa;
       }
       label1537:
-      Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo update others userStatus, memberId: %d, status: %d, syncKey: %d", new Object[] { Integer.valueOf(((dpq)localObject1).TWA), Integer.valueOf(((dpq)localObject1).TWB), Integer.valueOf(((dpq)localObject1).TWC) });
+      Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo update others userStatus, memberId: %d, status: %d, syncKey: %d", new Object[] { Integer.valueOf(((eik)localObject1).abnp), Integer.valueOf(((eik)localObject1).abnq), Integer.valueOf(((eik)localObject1).abnr) });
       paramInt1 = 0;
-      localObject2 = this.DOY.DQi.iterator();
+      localObject2 = this.JGn.JHt.iterator();
       label1596:
       if (((Iterator)localObject2).hasNext())
       {
         com.tencent.mm.plugin.ipcall.model.b.d locald = (com.tencent.mm.plugin.ipcall.model.b.d)((Iterator)localObject2).next();
-        if (locald.tQm != ((dpq)localObject1).TWA) {
+        if (locald.wTC != ((eik)localObject1).abnp) {
           break label2539;
         }
-        if (((dpq)localObject1).TWC > locald.DPR)
+        if (((eik)localObject1).abnr > locald.JHc)
         {
-          locald.DPR = ((dpq)localObject1).TWC;
-          if (((dpq)localObject1).TWB != 0) {
-            locald.kbN = ((dpq)localObject1).TWB;
+          locald.JHc = ((eik)localObject1).abnr;
+          if (((eik)localObject1).abnq != 0) {
+            locald.mBT = ((eik)localObject1).abnq;
           }
         }
         paramInt1 = 1;
@@ -380,10 +379,10 @@ public final class g
         break label1448;
       }
       localObject2 = new com.tencent.mm.plugin.ipcall.model.b.d();
-      ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).tQm = ((dpq)localObject1).TWA;
-      ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).kbN = ((dpq)localObject1).TWB;
-      ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).DPR = ((dpq)localObject1).TWC;
-      this.DOY.DQi.add(localObject2);
+      ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).wTC = ((eik)localObject1).abnp;
+      ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).mBT = ((eik)localObject1).abnq;
+      ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).JHc = ((eik)localObject1).abnr;
+      this.JGn.JHt.add(localObject2);
       break label1448;
       if (!(paramObject instanceof k))
       {
@@ -392,18 +391,18 @@ public final class g
         return true;
       }
       paramObject = (k)paramObject;
-      localObject1 = paramObject.DRL;
-      if (this.DOY.roomId != paramObject.DRK.Svu)
+      localObject1 = paramObject.JIV;
+      if (this.JGn.roomId != paramObject.JIU.Zvz)
       {
-        Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo redirect finished but room id not the same, now room roomId:%d, before room roomId:%d", new Object[] { Integer.valueOf(this.DOY.roomId), Integer.valueOf(paramObject.DRK.Svu) });
+        Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo redirect finished but room id not the same, now room roomId:%d, before room roomId:%d", new Object[] { Integer.valueOf(this.JGn.roomId), Integer.valueOf(paramObject.JIU.Zvz) });
         AppMethodBeat.o(25379);
         return true;
       }
       if ((paramInt2 == 0) && (paramInt3 == 0))
       {
         Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo redirect success");
-        this.DOY.rOm = ((dpj)localObject1).RNx;
-        this.DOY.DQg = ((dpj)localObject1).TWn;
+        this.JGn.uZA = ((eid)localObject1).YKL;
+        this.JGn.JHr = ((eid)localObject1).abnc;
         break;
       }
       Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo redirect failed");
@@ -416,60 +415,60 @@ public final class g
       }
       Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo sync finished errType:%d,errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
       localObject1 = (o)paramObject;
-      paramObject = ((o)localObject1).DRT;
-      if (this.DOY.roomId != ((o)localObject1).DRS.Svu)
+      paramObject = ((o)localObject1).JJd;
+      if (this.JGn.roomId != ((o)localObject1).JJc.Zvz)
       {
-        Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo sync finished but room id not the same, now room roomId:%d, before room roomId:%d", new Object[] { Integer.valueOf(this.DOY.roomId), Integer.valueOf(((o)localObject1).DRS.Svu) });
+        Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo sync finished but room id not the same, now room roomId:%d, before room roomId:%d", new Object[] { Integer.valueOf(this.JGn.roomId), Integer.valueOf(((o)localObject1).JJc.Zvz) });
         AppMethodBeat.o(25379);
         return true;
       }
       if ((paramInt2 != 0) || (paramInt3 != 0)) {
         break;
       }
-      Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo sync roomId: %d, status: %d, memberId: %d, syncKey: %d", new Object[] { Integer.valueOf(paramObject.Svu), Integer.valueOf(paramObject.TWz), Integer.valueOf(paramObject.TWA), Integer.valueOf(paramObject.TWx) });
-      if ((paramObject.Svu != this.DOY.roomId) || (paramObject.Svv != this.DOY.DPJ)) {
+      Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo sync roomId: %d, status: %d, memberId: %d, syncKey: %d", new Object[] { Integer.valueOf(paramObject.Zvz), Integer.valueOf(paramObject.abno), Integer.valueOf(paramObject.abnp), Integer.valueOf(paramObject.abnm) });
+      if ((paramObject.Zvz != this.JGn.roomId) || (paramObject.ZvA != this.JGn.Hnt)) {
         break;
       }
-      if (paramObject.TWA == this.DOY.DPQ)
+      if (paramObject.abnp == this.JGn.JHb)
       {
         Log.d("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo sync update self status");
-        if (paramObject.TWx > this.DOY.DPR)
+        if (paramObject.abnm > this.JGn.JHc)
         {
-          this.DOY.DPR = paramObject.TWx;
-          if (paramObject.TWz != 0) {
-            this.DOY.oLS = paramObject.TWz;
+          this.JGn.JHc = paramObject.abnm;
+          if (paramObject.abno != 0) {
+            this.JGn.rPN = paramObject.abno;
           }
         }
       }
       for (;;)
       {
         label2170:
-        if ((paramObject.vht == 404) || (paramObject.vht == 484))
+        if ((paramObject.ytv == 404) || (paramObject.ytv == 484))
         {
           Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo sync phonenumber invalid");
-          this.DOY.DPW = true;
+          this.JGn.JHh = true;
         }
-        this.DOY.vhu = paramObject.vhu;
-        this.DOY.vht = paramObject.vht;
-        this.DOY.DPO = paramObject.DPO;
-        this.DOY.DPP = paramObject.DPP;
-        this.DOY.DQd = paramObject.DQd;
+        this.JGn.ytw = paramObject.ytw;
+        this.JGn.ytv = paramObject.ytv;
+        this.JGn.JGZ = paramObject.JGZ;
+        this.JGn.JHa = paramObject.JHa;
+        this.JGn.JHo = paramObject.JHo;
         break;
         Log.d("MicroMsg.IPCallSvrLogic", " handleServiceResultCallInfosync update others status");
-        localObject1 = this.DOY.DQi.iterator();
+        localObject1 = this.JGn.JHt.iterator();
         paramInt1 = 0;
         label2286:
         if (((Iterator)localObject1).hasNext())
         {
           localObject2 = (com.tencent.mm.plugin.ipcall.model.b.d)((Iterator)localObject1).next();
-          if (((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).tQm != paramObject.TWA) {
+          if (((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).wTC != paramObject.abnp) {
             break label2536;
           }
-          if (paramObject.TWx > ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).DPR)
+          if (paramObject.abnm > ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).JHc)
           {
-            ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).DPR = paramObject.TWx;
-            if (paramObject.TWz != 0) {
-              ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).kbN = paramObject.TWz;
+            ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).JHc = paramObject.abnm;
+            if (paramObject.abno != 0) {
+              ((com.tencent.mm.plugin.ipcall.model.b.d)localObject2).mBT = paramObject.abno;
             }
           }
           paramInt1 = 1;
@@ -481,10 +480,10 @@ public final class g
             break label2537;
           }
           localObject1 = new com.tencent.mm.plugin.ipcall.model.b.d();
-          ((com.tencent.mm.plugin.ipcall.model.b.d)localObject1).tQm = paramObject.TWA;
-          ((com.tencent.mm.plugin.ipcall.model.b.d)localObject1).kbN = paramObject.TWz;
-          ((com.tencent.mm.plugin.ipcall.model.b.d)localObject1).DPR = paramObject.TWx;
-          this.DOY.DQi.add(localObject1);
+          ((com.tencent.mm.plugin.ipcall.model.b.d)localObject1).wTC = paramObject.abnp;
+          ((com.tencent.mm.plugin.ipcall.model.b.d)localObject1).mBT = paramObject.abno;
+          ((com.tencent.mm.plugin.ipcall.model.b.d)localObject1).JHc = paramObject.abnm;
+          this.JGn.JHt.add(localObject1);
           break label2170;
           if (!(paramObject instanceof com.tencent.mm.plugin.ipcall.model.e.h))
           {
@@ -494,10 +493,10 @@ public final class g
           }
           Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo heartbeat finished errType:%d,errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
           paramObject = (com.tencent.mm.plugin.ipcall.model.e.h)paramObject;
-          if (this.DOY.roomId == paramObject.DRE.Svu) {
+          if (this.JGn.roomId == paramObject.JIO.Zvz) {
             break;
           }
-          Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo heartbeat finished but room id not the same, now room roomId:%d, before room roomId:%d", new Object[] { Integer.valueOf(this.DOY.roomId), Integer.valueOf(paramObject.DRE.Svu) });
+          Log.i("MicroMsg.IPCallSvrLogic", "handleServiceResultCallInfo heartbeat finished but room id not the same, now room roomId:%d, before room roomId:%d", new Object[] { Integer.valueOf(this.JGn.roomId), Integer.valueOf(paramObject.JIO.Zvz) });
           AppMethodBeat.o(25379);
           return true;
         }
@@ -505,11 +504,11 @@ public final class g
     }
   }
   
-  private void tr(boolean paramBoolean)
+  private void xC(boolean paramBoolean)
   {
     AppMethodBeat.i(25367);
-    Log.i("MicroMsg.IPCallSvrLogic", "handleInvite, success: %b, isLaunchCancel: %b, isLaunchShutdown: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.DON), Boolean.valueOf(this.DOO) });
-    if ((this.DON) || (this.DOO))
+    Log.i("MicroMsg.IPCallSvrLogic", "handleInvite, success: %b, isLaunchCancel: %b, isLaunchShutdown: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.JGc), Boolean.valueOf(this.JGd) });
+    if ((this.JGc) || (this.JGd))
     {
       Log.i("MicroMsg.IPCallSvrLogic", "handleInvite, ignore this");
       AppMethodBeat.o(25367);
@@ -517,128 +516,128 @@ public final class g
     }
     if (paramBoolean)
     {
-      if (this.DOP != null)
+      if (this.JGe != null)
       {
-        if (this.DOY.DPX) {
+        if (this.JGn.JHi) {
           break label130;
         }
-        this.DOP.eIK();
+        this.JGe.fQK();
       }
       for (;;)
       {
         Log.i("MicroMsg.IPCallSvrLogic", "start sync");
-        this.DOR.a(this.DOY);
+        this.JGg.a(this.JGn);
         AppMethodBeat.o(25367);
         return;
         label130:
-        this.DOP.eIF();
+        this.JGe.fQG();
       }
     }
-    if (this.DOP != null)
+    if (this.JGe != null)
     {
-      if (this.DOY.DPU)
+      if (this.JGn.JHf)
       {
-        this.DOP.ac(this.DOY.DPP, this.DOY.vhu, this.DOY.DPO);
+        this.JGe.aj(this.JGn.JHa, this.JGn.ytw, this.JGn.JGZ);
         AppMethodBeat.o(25367);
         return;
       }
-      if (this.DOY.DPV)
+      if (this.JGn.JHg)
       {
-        this.DOP.ad(this.DOY.DPP, this.DOY.vhu, this.DOY.DPO);
+        this.JGe.ak(this.JGn.JHa, this.JGn.ytw, this.JGn.JGZ);
         AppMethodBeat.o(25367);
         return;
       }
-      if (this.DOY.DPW)
+      if (this.JGn.JHh)
       {
-        this.DOP.ae(this.DOY.DPP, this.DOY.vhu, this.DOY.DPO);
+        this.JGe.al(this.JGn.JHa, this.JGn.ytw, this.JGn.JGZ);
         AppMethodBeat.o(25367);
         return;
       }
-      if (!this.DOY.DPX)
+      if (!this.JGn.JHi)
       {
-        this.DOP.eIK();
+        this.JGe.fQK();
         AppMethodBeat.o(25367);
         return;
       }
-      this.DOP.ab(this.DOY.DPP, this.DOY.vhu, this.DOY.DPO);
+      this.JGe.ai(this.JGn.JHa, this.JGn.ytw, this.JGn.JGZ);
     }
     AppMethodBeat.o(25367);
   }
   
-  private void ts(boolean paramBoolean)
+  private void xD(boolean paramBoolean)
   {
     AppMethodBeat.i(25368);
     Log.i("MicroMsg.IPCallSvrLogic", "handleHeartbeat, success: %b", new Object[] { Boolean.valueOf(paramBoolean) });
     if (!paramBoolean)
     {
-      this.DOK += 1;
-      if (this.DOK >= 2)
+      this.JFZ += 1;
+      if (this.JFZ >= 2)
       {
         Log.e("MicroMsg.IPCallSvrLogic", "heartbeat failed twice!");
-        this.DOU.stop();
-        if ((i.eJu().eJm()) && (this.DOP != null))
+        this.JGj.stop();
+        if ((h.fRu().fRm()) && (this.JGe != null))
         {
-          this.DOP.eIJ();
+          this.JGe.fQJ();
           AppMethodBeat.o(25368);
         }
       }
     }
     else
     {
-      this.DOK = 0;
+      this.JFZ = 0;
     }
     AppMethodBeat.o(25368);
   }
   
-  private void tt(boolean paramBoolean)
+  private void xE(boolean paramBoolean)
   {
     int i = 1;
     AppMethodBeat.i(25371);
     Log.i("MicroMsg.IPCallSvrLogic", "handleSync, success: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((paramBoolean) && (i.eJr().DQK)) {
-      i.eJr().Vm(this.DOY.DQd);
+    if ((paramBoolean) && (h.fRr().JHU)) {
+      h.fRr().Zh(this.JGn.JHo);
     }
     if (!paramBoolean)
     {
       Log.e("MicroMsg.IPCallSvrLogic", "sync failed!");
-      this.DOR.stop();
-      if (i.eJu().pzp == 3) {}
+      this.JGg.stop();
+      if (h.fRu().sEu == 3) {}
       for (;;)
       {
-        if ((i != 0) && (this.DOP != null)) {
-          this.DOP.eR(this.DOY.vhu, this.DOY.DPO);
+        if ((i != 0) && (this.JGe != null)) {
+          this.JGe.fJ(this.JGn.ytw, this.JGn.JGZ);
         }
         AppMethodBeat.o(25371);
         return;
         i = 0;
       }
     }
-    if ((this.DOY != null) && (paramBoolean)) {
-      Vl(this.DOY.eJH());
+    if ((this.JGn != null) && (paramBoolean)) {
+      Zg(this.JGn.fRI());
     }
     AppMethodBeat.o(25371);
   }
   
-  private void tu(boolean paramBoolean)
+  private void xF(boolean paramBoolean)
   {
     AppMethodBeat.i(25372);
     Log.i("MicroMsg.IPCallSvrLogic", "handleNotify, success: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((paramBoolean) && (i.eJr().DQK)) {
-      i.eJr().Vm(this.DOY.DQd);
+    if ((paramBoolean) && (h.fRr().JHU)) {
+      h.fRr().Zh(this.JGn.JHo);
     }
-    if ((this.DOY != null) && (paramBoolean))
+    if ((this.JGn != null) && (paramBoolean))
     {
-      int i = this.DOY.eJH();
+      int i = this.JGn.fRI();
       if ((i == 2) || (i == 1))
       {
-        if (!this.DPa)
+        if (!this.JGp)
         {
-          o localo = new o(this.DOY.roomId, this.DOY.DPJ, this.DOY.eJG(), this.DOY.DPK, false);
-          bh.aGY().a(localo, 0);
+          o localo = new o(this.JGn.roomId, this.JGn.Hnt, this.JGn.fRH(), this.JGn.JGV, false);
+          bh.aZW().a(localo, 0);
         }
       }
       else {
-        Vl(this.DOY.eJH());
+        Zg(this.JGn.fRI());
       }
     }
     else
@@ -650,7 +649,7 @@ public final class g
     AppMethodBeat.o(25372);
   }
   
-  private void tv(boolean paramBoolean)
+  private void xG(boolean paramBoolean)
   {
     AppMethodBeat.i(25374);
     Log.i("MicroMsg.IPCallSvrLogic", "handleRedirect, isSuccess: %b", new Object[] { Boolean.valueOf(paramBoolean) });
@@ -659,38 +658,38 @@ public final class g
     Object localObject2;
     if (paramBoolean)
     {
-      locala = i.eJr();
-      localObject1 = this.DOY;
+      locala = h.fRr();
+      localObject1 = this.JGn;
       Log.i("MicroMsg.IPCallEngineManager", "redirectSvrAddr");
-      if ((localObject1 != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).rOm != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).rOm.size() > 0)) {
-        com.tencent.mm.plugin.ipcall.a.c.bv(((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).rOm);
+      if ((localObject1 != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).uZA != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).uZA.size() > 0)) {
+        com.tencent.mm.plugin.ipcall.a.c.bC(((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).uZA);
       }
-      if ((localObject1 != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).DQg != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).DQg.size() > 0)) {
-        com.tencent.mm.plugin.ipcall.a.c.bv(((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).DQg);
+      if ((localObject1 != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).JHr != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).JHr.size() > 0)) {
+        com.tencent.mm.plugin.ipcall.a.c.bC(((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).JHr);
       }
-      localObject2 = new dwd();
-      dwc localdwc = new dwc();
-      localdwc.Ssu = 0;
-      localdwc.Ssv = "";
-      localdwc.Ssw = "";
-      localdwc.Ssx = 4;
-      localdwc.Ssy = 4;
-      localdwc.Ssz = 2;
-      localdwc.Ucb = new fdc();
-      localdwc.Ucc = new fdc();
-      if ((localObject1 != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).rOm != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).rOm.size() > 0)) {
-        localdwc.Ucb = com.tencent.mm.plugin.ipcall.a.c.bv(((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).rOm);
+      localObject2 = new epf();
+      epe localepe = new epe();
+      localepe.ZrC = 0;
+      localepe.ZrD = "";
+      localepe.ZrE = "";
+      localepe.ZrF = 4;
+      localepe.ZrG = 4;
+      localepe.ZrH = 2;
+      localepe.abto = new fzo();
+      localepe.abtp = new fzo();
+      if ((localObject1 != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).uZA != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).uZA.size() > 0)) {
+        localepe.abto = com.tencent.mm.plugin.ipcall.a.c.bC(((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).uZA);
       }
-      if ((localObject1 != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).DQg != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).DQg.size() > 0)) {
-        localdwc.Ucc = com.tencent.mm.plugin.ipcall.a.c.bv(((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).DQg);
+      if ((localObject1 != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).JHr != null) && (((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).JHr.size() > 0)) {
+        localepe.abtp = com.tencent.mm.plugin.ipcall.a.c.bC(((com.tencent.mm.plugin.ipcall.model.b.c)localObject1).JHr);
       }
-      ((dwd)localObject2).Uce.add(localdwc);
-      ((dwd)localObject2).Ucd = 1;
+      ((epf)localObject2).abtr.add(localepe);
+      ((epf)localObject2).abtq = 1;
       localObject1 = null;
     }
     try
     {
-      localObject2 = ((dwd)localObject2).toByteArray();
+      localObject2 = ((epf)localObject2).toByteArray();
       localObject1 = localObject2;
     }
     catch (Exception localException)
@@ -703,32 +702,32 @@ public final class g
     }
     if (localObject1 != null)
     {
-      i = locala.DQH.AddNewRelayConns((byte[])localObject1, localObject1.length, 1);
+      i = locala.JHR.AddNewRelayConns((byte[])localObject1, localObject1.length, 1);
       if (i != 0) {
-        com.tencent.mm.plugin.voip.c.e.Loge("MicroMsg.IPCallEngineManager", "redirect relay conns fail ret:".concat(String.valueOf(i)));
+        com.tencent.mm.plugin.voip.f.g.Loge("MicroMsg.IPCallEngineManager", "redirect relay conns fail ret:".concat(String.valueOf(i)));
       }
     }
     AppMethodBeat.o(25374);
   }
   
-  public final void Vk(int paramInt)
+  public final void Zf(int paramInt)
   {
     AppMethodBeat.i(25366);
-    if (!this.DOY.DQm) {
+    if (!this.JGn.JHx) {
       Log.e("MicroMsg.IPCallSvrLogic", "shutdownIPCall, user not accept");
     }
-    Log.i("MicroMsg.IPCallSvrLogic", "shutdownIPCall, roomId: %d, inviteId: %d", new Object[] { Integer.valueOf(this.DOY.roomId), Integer.valueOf(this.DOY.DPL) });
-    this.DOO = true;
-    this.DOU.stop();
-    this.DOR.stop();
-    this.DOT.DSC = false;
-    this.DOT.DSB = paramInt;
-    this.DOT.a(this.DOY);
-    this.DOW.a(this.DOY);
+    Log.i("MicroMsg.IPCallSvrLogic", "shutdownIPCall, roomId: %d, inviteId: %d", new Object[] { Integer.valueOf(this.JGn.roomId), Integer.valueOf(this.JGn.JGW) });
+    this.JGd = true;
+    this.JGj.stop();
+    this.JGg.stop();
+    this.JGi.JJM = false;
+    this.JGi.JJL = paramInt;
+    this.JGi.a(this.JGn);
+    this.JGl.a(this.JGn);
     AppMethodBeat.o(25366);
   }
   
-  public final boolean Vl(int paramInt)
+  public final boolean Zg(int paramInt)
   {
     AppMethodBeat.i(25373);
     switch (paramInt)
@@ -738,50 +737,50 @@ public final class g
       AppMethodBeat.o(25373);
       return false;
     case 2: 
-      Log.i("MicroMsg.IPCallSvrLogic", "handleSyncStatus, user accept, isLaunchCancel: %b, isLaunchShutdown: %b", new Object[] { Boolean.valueOf(this.DON), Boolean.valueOf(this.DOO) });
-      if ((this.DON) || (this.DOO))
+      Log.i("MicroMsg.IPCallSvrLogic", "handleSyncStatus, user accept, isLaunchCancel: %b, isLaunchShutdown: %b", new Object[] { Boolean.valueOf(this.JGc), Boolean.valueOf(this.JGd) });
+      if ((this.JGc) || (this.JGd))
       {
         AppMethodBeat.o(25373);
         return true;
       }
-      this.DOR.stop();
-      if (!this.fQy)
+      this.JGg.stop();
+      if (!this.hWt)
       {
-        this.fQy = true;
-        if (this.DOY != null) {
-          this.DOY.DQm = true;
+        this.hWt = true;
+        if (this.JGn != null) {
+          this.JGn.JHx = true;
         }
-        if (this.DOP != null) {
-          this.DOP.eIH();
+        if (this.JGe != null) {
+          this.JGe.fwj();
         }
-        this.DOU.a(this.DOY);
+        this.JGj.a(this.JGn);
       }
       AppMethodBeat.o(25373);
       return true;
     case 3: 
       Log.i("MicroMsg.IPCallSvrLogic", "handleSyncStatus, user busy");
-      this.DOR.stop();
-      this.DOU.stop();
-      if (this.DOP != null) {
-        this.DOP.eQ(this.DOY.vhu, this.DOY.DPO);
+      this.JGg.stop();
+      this.JGj.stop();
+      if (this.JGe != null) {
+        this.JGe.fI(this.JGn.ytw, this.JGn.JGZ);
       }
       AppMethodBeat.o(25373);
       return true;
     case 1: 
       Log.i("MicroMsg.IPCallSvrLogic", "handleSyncStatus, user ringing");
-      if (!this.DOZ)
+      if (!this.JGo)
       {
-        this.DOZ = true;
-        if (this.DOP != null) {
-          this.DOP.eIG();
+        this.JGo = true;
+        if (this.JGe != null) {
+          this.JGe.fQH();
         }
       }
       AppMethodBeat.o(25373);
       return true;
     case 5: 
       Log.i("MicroMsg.IPCallSvrLogic", "handleSyncStatus, other side user shutdown");
-      if (this.DOP != null) {
-        this.DOP.eII();
+      if (this.JGe != null) {
+        this.JGe.fQI();
       }
       AppMethodBeat.o(25373);
       return true;
@@ -789,33 +788,33 @@ public final class g
     case 7: 
     case 8: 
       Log.i("MicroMsg.IPCallSvrLogic", "handleSyncStatus, user unavailable");
-      if (this.DOY.DPW) {
-        if (this.DOP != null) {
-          this.DOP.ae(this.DOY.DPP, this.DOY.vhu, this.DOY.DPO);
+      if (this.JGn.JHh) {
+        if (this.JGe != null) {
+          this.JGe.al(this.JGn.JHa, this.JGn.ytw, this.JGn.JGZ);
         }
       }
       for (;;)
       {
         AppMethodBeat.o(25373);
         return true;
-        if (this.DOP != null) {
-          this.DOP.eP(this.DOY.vhu, this.DOY.DPO);
+        if (this.JGe != null) {
+          this.JGe.fH(this.JGn.ytw, this.JGn.JGZ);
         }
       }
     }
     Log.i("MicroMsg.IPCallSvrLogic", "handleSyncStatus, shutdown overdue");
-    this.DOY.DPU = true;
-    if (this.DOP != null) {
-      this.DOP.ac(this.DOY.DPP, this.DOY.vhu, this.DOY.DPO);
+    this.JGn.JHf = true;
+    if (this.JGe != null) {
+      this.JGe.aj(this.JGn.JHa, this.JGn.ytw, this.JGn.JGZ);
     }
     AppMethodBeat.o(25373);
     return true;
   }
   
-  public final void a(int paramInt1, q paramq, int paramInt2, int paramInt3)
+  public final void a(int paramInt1, com.tencent.mm.am.p paramp, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(25377);
-    if (c(paramInt1, paramq, paramInt2, paramInt3))
+    if (c(paramInt1, paramp, paramInt2, paramInt3))
     {
       Log.i("MicroMsg.IPCallSvrLogic", "onTimerSuccess different room ignore");
       AppMethodBeat.o(25377);
@@ -828,10 +827,10 @@ public final class g
     {
       AppMethodBeat.o(25377);
       return;
-      tt(true);
+      xE(true);
       AppMethodBeat.o(25377);
       return;
-      ts(true);
+      xD(true);
     }
   }
   
@@ -851,26 +850,26 @@ public final class g
     {
       AppMethodBeat.o(25375);
       return;
-      tr(true);
+      xC(true);
       AppMethodBeat.o(25375);
       return;
-      X(true, paramInt3);
+      Z(true, paramInt3);
       AppMethodBeat.o(25375);
       return;
-      Y(true, paramInt3);
+      aa(true, paramInt3);
       AppMethodBeat.o(25375);
       return;
-      tu(true);
+      xF(true);
       AppMethodBeat.o(25375);
       return;
-      tv(true);
+      xG(true);
     }
   }
   
-  public final void b(int paramInt1, q paramq, int paramInt2, int paramInt3)
+  public final void b(int paramInt1, com.tencent.mm.am.p paramp, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(25378);
-    if (c(paramInt1, paramq, paramInt2, paramInt3))
+    if (c(paramInt1, paramp, paramInt2, paramInt3))
     {
       Log.i("MicroMsg.IPCallSvrLogic", "onTimerFailed different room ignore");
       AppMethodBeat.o(25378);
@@ -883,10 +882,10 @@ public final class g
     {
       AppMethodBeat.o(25378);
       return;
-      tt(false);
+      xE(false);
       AppMethodBeat.o(25378);
       return;
-      ts(false);
+      xD(false);
     }
   }
   
@@ -906,69 +905,69 @@ public final class g
     {
       AppMethodBeat.o(25376);
       return;
-      tr(false);
+      xC(false);
       AppMethodBeat.o(25376);
       return;
-      X(false, paramInt3);
+      Z(false, paramInt3);
       AppMethodBeat.o(25376);
       return;
-      Y(false, paramInt3);
+      aa(false, paramInt3);
       AppMethodBeat.o(25376);
       return;
-      tu(false);
+      xF(false);
       AppMethodBeat.o(25376);
       return;
-      tv(false);
+      xG(false);
     }
   }
   
-  public final void eJn()
+  public final void fRn()
   {
     AppMethodBeat.i(25365);
-    if (this.DOY.DQm) {
+    if (this.JGn.JHx) {
       Log.e("MicroMsg.IPCallSvrLogic", "cancelIPCall, already accept");
     }
-    this.DON = true;
-    Log.i("MicroMsg.IPCallSvrLogic", "cancelIPCall, roomId: %d, inviteId: %d", new Object[] { Integer.valueOf(this.DOY.roomId), Integer.valueOf(this.DOY.DPL) });
-    this.DOU.stop();
-    this.DOR.stop();
-    this.DOS.a(this.DOY);
-    this.DOW.a(this.DOY);
+    this.JGc = true;
+    Log.i("MicroMsg.IPCallSvrLogic", "cancelIPCall, roomId: %d, inviteId: %d", new Object[] { Integer.valueOf(this.JGn.roomId), Integer.valueOf(this.JGn.JGW) });
+    this.JGj.stop();
+    this.JGg.stop();
+    this.JGh.a(this.JGn);
+    this.JGl.a(this.JGn);
     AppMethodBeat.o(25365);
   }
   
   public static abstract interface a
   {
-    public abstract void ab(String paramString1, String paramString2, int paramInt);
+    public abstract void ai(String paramString1, String paramString2, int paramInt);
     
-    public abstract void ac(String paramString1, String paramString2, int paramInt);
+    public abstract void aj(String paramString1, String paramString2, int paramInt);
     
-    public abstract void ad(String paramString1, String paramString2, int paramInt);
+    public abstract void ak(String paramString1, String paramString2, int paramInt);
     
-    public abstract void ae(String paramString1, String paramString2, int paramInt);
+    public abstract void al(String paramString1, String paramString2, int paramInt);
     
-    public abstract void eIF();
+    public abstract void fH(String paramString, int paramInt);
     
-    public abstract void eIG();
+    public abstract void fI(String paramString, int paramInt);
     
-    public abstract void eIH();
+    public abstract void fJ(String paramString, int paramInt);
     
-    public abstract void eII();
+    public abstract void fQG();
     
-    public abstract void eIJ();
+    public abstract void fQH();
     
-    public abstract void eIK();
+    public abstract void fQI();
     
-    public abstract void eP(String paramString, int paramInt);
+    public abstract void fQJ();
     
-    public abstract void eQ(String paramString, int paramInt);
+    public abstract void fQK();
     
-    public abstract void eR(String paramString, int paramInt);
+    public abstract void fwj();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.g
  * JD-Core Version:    0.7.0.1
  */

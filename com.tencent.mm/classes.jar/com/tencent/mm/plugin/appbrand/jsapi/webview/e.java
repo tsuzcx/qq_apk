@@ -1,116 +1,170 @@
 package com.tencent.mm.plugin.appbrand.jsapi.webview;
 
 import android.os.Bundle;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.luggage.sdk.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.w;
 import com.tencent.mm.plugin.scanner.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandWebViewQRCodeReportHelper;", "", "()V", "appendParamsForPreviewImg", "", "result", "Landroid/os/Bundle;", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "reportQrCode", "isShowEntry", "", "codeType", "", "codeStr", "", "isWebView", "isClick", "url", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandWebViewQRCodeReportHelper;", "", "()V", "appendParamsForPreviewImg", "", "result", "Landroid/os/Bundle;", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "reportQrCode", "isShowEntry", "", "codeType", "", "codeStr", "", "isWebView", "isClick", "url", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  public static final e pGh;
+  public static final e sLq;
   
   static
   {
-    AppMethodBeat.i(269275);
-    pGh = new e();
-    AppMethodBeat.o(269275);
+    AppMethodBeat.i(327486);
+    sLq = new e();
+    AppMethodBeat.o(327486);
   }
   
   public static void a(Bundle paramBundle, ad paramad)
   {
-    AppMethodBeat.i(269274);
-    p.k(paramBundle, "result");
+    AppMethodBeat.i(327480);
+    s.u(paramBundle, "result");
     if (paramad == null)
     {
-      AppMethodBeat.o(269274);
+      AppMethodBeat.o(327480);
       return;
     }
-    paramBundle.putString("wxappPathWithQuery", paramad.cec());
-    AppBrandRuntime localAppBrandRuntime = paramad.getRuntime();
-    Object localObject = localAppBrandRuntime;
-    if (!(localAppBrandRuntime instanceof t)) {
+    paramBundle.putString("wxappPathWithQuery", paramad.cEE());
+    Object localObject;
+    if (paramad == null)
+    {
       localObject = null;
-    }
-    localObject = (t)localObject;
-    if (localObject != null)
-    {
-      localObject = ((t)localObject).bDy();
-      if (localObject != null)
-      {
-        localObject = ((AppBrandInitConfigWC)localObject).Qw();
-        if (localObject != null) {
-          break label138;
-        }
+      if (!(localObject instanceof w)) {
+        break label108;
+      }
+      localObject = (w)localObject;
+      label49:
+      if (localObject != null) {
+        break label113;
+      }
+      localObject = "";
+      label56:
+      if (paramad != null) {
+        break label146;
+      }
+      paramad = null;
+      label62:
+      if (!(paramad instanceof w)) {
+        break label154;
+      }
+      paramad = (w)paramad;
+      label74:
+      if (paramad != null) {
+        break label159;
       }
     }
-    localObject = "";
-    label138:
-    for (;;)
+    label146:
+    label154:
+    label159:
+    for (int i = 0;; i = paramad.asA().epn.scene)
     {
-      localAppBrandRuntime = paramad.getRuntime();
-      paramad = localAppBrandRuntime;
-      if (!(localAppBrandRuntime instanceof t)) {
-        paramad = null;
-      }
-      paramad = (t)paramad;
-      if (paramad != null) {}
-      for (int i = paramad.bDC();; i = 0)
+      paramBundle.putString("wxappSessionId", (String)localObject);
+      paramBundle.putInt("wxappScene", i);
+      AppMethodBeat.o(327480);
+      return;
+      localObject = paramad.getRuntime();
+      break;
+      label108:
+      localObject = null;
+      break label49;
+      label113:
+      localObject = ((w)localObject).getInitConfig();
+      if (localObject == null)
       {
-        paramBundle.putString("wxappSessionId", (String)localObject);
-        paramBundle.putInt("wxappScene", i);
-        AppMethodBeat.o(269274);
-        return;
+        localObject = "";
+        break label56;
       }
+      localObject = ((AppBrandInitConfigLU)localObject).eoP;
+      if (localObject == null)
+      {
+        localObject = "";
+        break label56;
+      }
+      break label56;
+      paramad = paramad.getRuntime();
+      break label62;
+      paramad = null;
+      break label74;
     }
   }
   
   public static void a(ad paramad, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2)
   {
-    AppMethodBeat.i(269273);
+    AppMethodBeat.i(327474);
     if (paramad == null)
     {
-      AppMethodBeat.o(269273);
+      AppMethodBeat.o(327474);
       return;
     }
-    Object localObject2 = paramad.getRuntime();
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof t)) {
-      localObject1 = null;
-    }
-    localObject1 = (t)localObject1;
-    if (localObject1 != null)
+    Object localObject1;
+    label37:
+    label46:
+    Object localObject2;
+    if (paramad == null)
     {
-      localObject1 = ((t)localObject1).bDy();
-      if (localObject1 != null)
-      {
-        localObject2 = ((AppBrandInitConfigWC)localObject1).Qw();
-        localObject1 = localObject2;
-        if (localObject2 != null) {
-          break label80;
-        }
+      localObject1 = null;
+      if (!(localObject1 instanceof w)) {
+        break label119;
+      }
+      localObject1 = (w)localObject1;
+      if (localObject1 != null) {
+        break label125;
+      }
+      localObject1 = "";
+      if (paramad != null) {
+        break label167;
+      }
+      localObject2 = null;
+      label53:
+      if (!(localObject2 instanceof w)) {
+        break label176;
+      }
+      localObject2 = (w)localObject2;
+      label68:
+      if (localObject2 != null) {
+        break label182;
       }
     }
-    localObject1 = "";
-    label80:
-    AppBrandRuntime localAppBrandRuntime = paramad.getRuntime();
-    localObject2 = localAppBrandRuntime;
-    if (!(localAppBrandRuntime instanceof t)) {
-      localObject2 = null;
-    }
-    localObject2 = (t)localObject2;
-    if (localObject2 != null) {}
-    for (int i = ((t)localObject2).bDC();; i = 0)
+    label167:
+    label176:
+    label182:
+    for (int i = 0;; i = ((d)localObject2).asA().epn.scene)
     {
-      localObject2 = a.IAB;
-      a.a((String)localObject1, i, paramad.getAppId(), true, paramad.cec(), paramInt, paramString1, paramBoolean1, paramBoolean2, paramString2);
-      AppMethodBeat.o(269273);
+      localObject2 = a.OGI;
+      a.a((String)localObject1, i, paramad.getAppId(), true, paramad.cEE(), paramInt, paramString1, paramBoolean1, paramBoolean2, paramString2);
+      AppMethodBeat.o(327474);
       return;
+      localObject1 = paramad.getRuntime();
+      break;
+      label119:
+      localObject1 = null;
+      break label37;
+      label125:
+      localObject1 = ((w)localObject1).getInitConfig();
+      if (localObject1 == null)
+      {
+        localObject1 = "";
+        break label46;
+      }
+      localObject2 = ((AppBrandInitConfigLU)localObject1).eoP;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label46;
+      }
+      localObject1 = "";
+      break label46;
+      localObject2 = paramad.getRuntime();
+      break label53;
+      localObject2 = null;
+      break label68;
     }
   }
 }

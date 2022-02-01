@@ -1,116 +1,119 @@
 package com.tencent.mm.plugin.appbrand.widget.g;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.content.Context;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewPropertyAnimator;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.luggage.wxa.a.d;
-import com.tencent.luggage.wxa.a.e;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
-  extends FrameLayout
-  implements View.OnClickListener, f
+  extends Drawable
 {
-  private final MMHandler mHandler;
-  private TextView rEb;
-  private final Runnable rEc;
-  private ViewPropertyAnimator rEd;
-  ViewPropertyAnimator rEe;
+  float borderRadius;
+  private int borderWidth;
+  private final RectF ekW;
+  private Paint paint;
+  private Paint uMn;
+  private Path uMo;
+  private Path uMp;
+  private int uMq;
+  private int uMr;
   
-  public a(Context paramContext)
+  public a()
   {
-    super(paramContext);
-    AppMethodBeat.i(135488);
-    this.rEc = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(135483);
-        a locala = a.this;
-        if ((locala.getAlpha() == 0.0F) || (locala.rEe != null))
-        {
-          AppMethodBeat.o(135483);
-          return;
-        }
-        locala.animate().cancel();
-        ViewPropertyAnimator localViewPropertyAnimator = locala.animate();
-        locala.rEe = localViewPropertyAnimator;
-        localViewPropertyAnimator.alpha(0.0F).setListener(new a.3(locala)).start();
-        AppMethodBeat.o(135483);
-      }
-    };
-    this.mHandler = new MMHandler(Looper.getMainLooper());
-    LayoutInflater.from(paramContext).inflate(a.e.app_brand_show_no_icon_toast, this, true);
-    this.rEb = ((TextView)findViewById(a.d.title));
-    setOnClickListener(this);
-    AppMethodBeat.o(135488);
+    AppMethodBeat.i(146565);
+    this.ekW = new RectF();
+    this.borderRadius = 0.0F;
+    this.borderWidth = 0;
+    this.uMq = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 3);
+    this.uMr = this.uMq;
+    this.paint = new Paint(1);
+    this.paint.setStyle(Paint.Style.FILL);
+    this.uMn = new Paint(1);
+    this.uMn.setStyle(Paint.Style.FILL);
+    this.uMo = new Path();
+    this.uMp = new Path();
+    AppMethodBeat.o(146565);
   }
   
-  public final void anL(String paramString)
+  public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(135489);
-    this.rEb.setText(paramString);
-    this.mHandler.removeCallbacks(this.rEc);
-    this.mHandler.postDelayed(this.rEc, rEo);
-    if ((getAlpha() == 1.0F) || (this.rEd != null))
-    {
-      AppMethodBeat.o(135489);
-      return;
-    }
-    setVisibility(0);
-    animate().cancel();
-    paramString = animate();
-    this.rEd = paramString;
-    paramString.alpha(1.0F).setListener(new AnimatorListenerAdapter()
-    {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(135485);
-        a.a(a.this);
-        AppMethodBeat.o(135485);
-      }
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(135484);
-        a.a(a.this);
-        AppMethodBeat.o(135484);
-      }
-    }).start();
-    setVisibility(0);
-    AppMethodBeat.o(135489);
+    AppMethodBeat.i(146566);
+    float f5 = this.ekW.width();
+    float f6 = this.ekW.height();
+    float f1 = this.ekW.left;
+    float f2 = this.ekW.top;
+    float f3 = this.ekW.right;
+    float f4 = this.ekW.bottom;
+    f5 = Math.min(this.borderRadius, Math.min(f5, f6) * 0.5F);
+    paramCanvas.drawRoundRect(new RectF(this.uMr + f1, this.uMr + f2, f3 - this.uMr, f4 - this.uMr), f5, f5, this.uMn);
+    paramCanvas.drawPath(this.uMp, this.uMn);
+    paramCanvas.drawRoundRect(new RectF(f1 + this.uMr + this.borderWidth, f2 + this.uMr + this.borderWidth, f3 - this.uMr - this.borderWidth, f4 - this.uMr - this.borderWidth), f5, f5, this.paint);
+    paramCanvas.drawPath(this.uMo, this.paint);
+    AppMethodBeat.o(146566);
   }
   
-  public final void c(FrameLayout paramFrameLayout)
+  public final void ge(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(135490);
-    paramFrameLayout.addView(this, new FrameLayout.LayoutParams(-2, -2, 17));
-    AppMethodBeat.o(135490);
+    AppMethodBeat.i(146571);
+    this.borderWidth = paramInt1;
+    this.uMr = (paramInt1 / 3 + this.uMq);
+    this.uMn.setColor(paramInt2);
+    AppMethodBeat.o(146571);
   }
   
-  public final void onClick(View paramView)
+  public final int getOpacity()
   {
-    AppMethodBeat.i(135491);
-    b localb = new b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/widget/prompt/AppBrandNewBanAlert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/prompt/AppBrandNewBanAlert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(135491);
+    return -3;
+  }
+  
+  public final void setAlpha(int paramInt)
+  {
+    AppMethodBeat.i(146568);
+    this.paint.setAlpha(paramInt);
+    this.uMn.setAlpha(paramInt);
+    AppMethodBeat.o(146568);
+  }
+  
+  public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(146567);
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.ekW.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    float f = (paramInt1 + paramInt3) / 2.0F;
+    this.uMp.moveTo(f, paramInt4);
+    this.uMp.lineTo(f - this.uMr, paramInt4 - this.uMr);
+    this.uMp.lineTo(this.uMr + f, paramInt4 - this.uMr);
+    this.uMp.close();
+    this.uMo.moveTo(f, paramInt4 - this.borderWidth);
+    this.uMo.lineTo(f - this.uMr, paramInt4 - this.uMr - this.borderWidth);
+    this.uMo.lineTo(f + this.uMr, paramInt4 - this.uMr - this.borderWidth);
+    this.uMo.close();
+    AppMethodBeat.o(146567);
+  }
+  
+  public final void setColor(int paramInt)
+  {
+    AppMethodBeat.i(146570);
+    this.paint.setColor(paramInt);
+    AppMethodBeat.o(146570);
+  }
+  
+  public final void setColorFilter(ColorFilter paramColorFilter)
+  {
+    AppMethodBeat.i(146569);
+    this.paint.setColorFilter(paramColorFilter);
+    this.uMn.setColorFilter(paramColorFilter);
+    AppMethodBeat.o(146569);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.g.a
  * JD-Core Version:    0.7.0.1
  */

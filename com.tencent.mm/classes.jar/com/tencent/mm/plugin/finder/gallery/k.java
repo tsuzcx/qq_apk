@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.finder.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.bu;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.model.cc;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "galleryTabData", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabData;", "(Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabData;)V", "getGalleryTabData", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabData;", "selected", "", "getSelected", "()Z", "setSelected", "(Z)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "galleryTabData", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabData;", "(Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabData;)V", "getGalleryTabData", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabData;", "selected", "", "getSelected", "()Z", "setSelected", "(Z)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
-  implements bu
+  implements cc
 {
-  boolean xUg;
-  public final j xUh;
+  public final j Bvc;
+  boolean Bvd;
   
   public k(j paramj)
   {
-    AppMethodBeat.i(274538);
-    this.xUh = paramj;
-    AppMethodBeat.o(274538);
+    AppMethodBeat.i(334270);
+    this.Bvc = paramj;
+    AppMethodBeat.o(334270);
   }
   
   public final int a(com.tencent.mm.plugin.finder.feed.model.internal.k paramk)
   {
-    AppMethodBeat.i(274536);
-    p.k(paramk, "obj");
-    if (((paramk instanceof k)) && (((k)paramk).xUh.fXY == this.xUh.fXY))
+    AppMethodBeat.i(334317);
+    s.u(paramk, "obj");
+    if (((paramk instanceof k)) && (((k)paramk).Bvc.idY == this.Bvc.idY))
     {
-      AppMethodBeat.o(274536);
+      AppMethodBeat.o(334317);
       return 0;
     }
-    AppMethodBeat.o(274536);
+    AppMethodBeat.o(334317);
     return -1;
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    return 1;
+    return this.Bvc.idY;
   }
   
-  public final long mf()
+  public final int bZB()
   {
-    return this.xUh.fXY;
+    return 1;
   }
 }
 

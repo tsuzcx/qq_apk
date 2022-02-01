@@ -1,86 +1,104 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cpp
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public String Sba;
-  public boolean TwU;
-  public int type;
-  public String url;
+  public bi Zbi;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91530);
+    AppMethodBeat.i(91502);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.type);
-      if (this.url != null) {
-        paramVarArgs.f(2, this.url);
-      }
-      if (this.Sba != null) {
-        paramVarArgs.f(3, this.Sba);
-      }
-      paramVarArgs.co(4, this.TwU);
-      AppMethodBeat.o(91530);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bM(1, this.type) + 0;
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.url);
-      }
-      i = paramInt;
-      if (this.Sba != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.Sba);
-      }
-      paramInt = g.a.a.b.b.a.gL(4);
-      AppMethodBeat.o(91530);
-      return i + (paramInt + 1);
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(91530);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      cpp localcpp = (cpp)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(91530);
-        return -1;
-      case 1: 
-        localcpp.type = locala.abFh.AK();
-        AppMethodBeat.o(91530);
-        return 0;
-      case 2: 
-        localcpp.url = locala.abFh.readString();
-        AppMethodBeat.o(91530);
-        return 0;
-      case 3: 
-        localcpp.Sba = locala.abFh.readString();
-        AppMethodBeat.o(91530);
-        return 0;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      localcpp.TwU = locala.abFh.AB();
-      AppMethodBeat.o(91530);
+      if (this.Zbi != null)
+      {
+        paramVarArgs.qD(2, this.Zbi.computeSize());
+        this.Zbi.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(91502);
       return 0;
     }
-    AppMethodBeat.o(91530);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label418;
+      }
+    }
+    label418:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.Zbi != null) {
+        i = paramInt + i.a.a.a.qC(2, this.Zbi.computeSize());
+      }
+      AppMethodBeat.o(91502);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(91502);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+        cpp localcpp = (cpp)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(91502);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcpp.BaseRequest = ((kc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91502);
+          return 0;
+        }
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new bi();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((bi)localObject2).parseFrom((byte[])localObject1);
+          }
+          localcpp.Zbi = ((bi)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(91502);
+        return 0;
+      }
+      AppMethodBeat.o(91502);
+      return -1;
+    }
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.webview.luggage.ipc;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
@@ -24,15 +23,15 @@ public class IpcProxyUI
     AppMethodBeat.i(78490);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.IpcProxyUI", "onCreate");
-    if (d.qV(21)) {
+    if (d.rb(21)) {
       getWindow().setStatusBarColor(0);
     }
-    paramBundle = (c)r.b(getIntent().getStringExtra("task_class_name"), c.class);
+    paramBundle = (c)r.f(getIntent().getStringExtra("task_class_name"), c.class);
     if (paramBundle != null)
     {
       paramBundle.a(this, getIntent().getBundleExtra("input_data"), new a()
       {
-        public final void C(Bundle paramAnonymousBundle)
+        public final void J(Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(78489);
           Intent localIntent = new Intent();
@@ -40,6 +39,17 @@ public class IpcProxyUI
           IpcProxyUI.this.setResult(-1, localIntent);
           IpcProxyUI.this.finish();
           AppMethodBeat.o(78489);
+        }
+        
+        public final void bn(Bundle paramAnonymousBundle)
+        {
+          AppMethodBeat.i(295983);
+          Intent localIntent = new Intent();
+          localIntent.putExtra("input_data", paramAnonymousBundle);
+          localIntent.putExtra("event_type", true);
+          IpcProxyUI.this.setResult(-1, localIntent);
+          IpcProxyUI.this.finish();
+          AppMethodBeat.o(295983);
         }
       });
       AppMethodBeat.o(78490);

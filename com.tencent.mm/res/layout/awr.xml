@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/e1c" android:padding="10.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
-        <ImageView android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b_" />
-    </FrameLayout>
-    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="54.0dip" android:layout_marginRight="54.0dip">
-        <RelativeLayout android:id="@id/e1h" android:layout_width="wrap_content" android:layout_height="@dimen/a9f">
-            <TextView android:textSize="30.0dip" android:textColor="@color/a2x" android:gravity="center" android:id="@id/e1i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="@dimen/a9f" android:maxLines="3" android:layout_alignParentBottom="true" android:layout_centerInParent="true" android:fontFamily="sans-serif-light" />
+    <com.tencent.mm.plugin.game.ui.GameFeedQipaiView android:orientation="vertical" android:id="@id/ekl" android:padding="@dimen/gm" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/gw" android:textColor="@color/w3" android:id="@id/ko8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/gz_" android:layout_width="6.0dip" android:layout_height="12.0dip" android:layout_marginLeft="@dimen/gx" android:src="@drawable/bah" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/gw" android:textColor="@color/w1" android:id="@id/gzm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/gz_" android:layout_centerVertical="true" />
         </RelativeLayout>
-        <RelativeLayout android:id="@id/e1d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/e1h">
-            <TextView android:textSize="16.0dip" android:textColor="@color/a2x" android:gravity="center" android:id="@id/e1e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:layout_gravity="center" android:id="@id/e1g" android:layout_width="140.0dip" android:layout_height="140.0dip" android:layout_marginTop="@dimen/a9g" android:layout_below="@id/e1d" android:layout_centerHorizontal="true" />
-        <Button android:gravity="center" android:id="@id/e1f" android:layout_marginBottom="@dimen/a9e" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/qt" />
-    </RelativeLayout>
-</RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/eln" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.plugin.game.ui.GameFeedQipaiView>
+</FrameLayout>

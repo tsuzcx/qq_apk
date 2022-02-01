@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.wallet_core.ui.CustomerScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/az" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/ab6" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView android:gravity="center" android:id="@id/ab7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <androidx.recyclerview.widget.RecyclerView android:gravity="center" android:id="@id/ab8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" />
-        <Space android:layout_width="fill_parent" android:layout_height="26.0dip" />
-        <LinearLayout android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/guf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="26.0dip">
-            <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/gud" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce">
-                <CheckBox android:id="@id/gue" android:background="@drawable/ai1" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" />
-            </LinearLayout>
-            <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:gravity="center" android:layout_gravity="center" android:id="@id/gug" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j2n" />
-        </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/art" android:background="@drawable/km" android:padding="@dimen/j6" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/j7" android:textColor="@color/al9" android:ellipsize="end" android:layout_gravity="center" android:id="@id/ark" android:background="@drawable/j8" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="@dimen/j6" android:layout_marginRight="@dimen/j6" android:minWidth="168.0dip" android:text="@string/aw1" android:singleLine="true" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a78" android:ellipsize="end" android:gravity="center" android:id="@id/arr" android:focusable="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i9" android:layout_marginTop="@dimen/j6" android:layout_marginRight="@dimen/i9" android:singleLine="true" />
     </LinearLayout>
-</com.tencent.mm.wallet_core.ui.CustomerScrollView>
+    <View android:id="@id/c8e" android:background="@color/abn" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layerType="software" />
+    <CheckBox android:textSize="@dimen/hq" android:textColor="@color/a78" android:id="@id/au_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/iq" android:layout_marginBottom="@dimen/iq" android:checked="false" android:drawablePadding="5.0dip" style="@style/ov" />
+</LinearLayout>

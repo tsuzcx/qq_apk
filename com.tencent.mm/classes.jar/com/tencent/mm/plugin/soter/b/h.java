@@ -5,17 +5,17 @@ import com.tencent.soter.a.b.c;
 
 public final class h
 {
-  a LvZ;
-  int Lwa = -3201;
+  a RZy;
+  int RZz = -3201;
   
   public h(a parama)
   {
-    this.LvZ = parama;
+    this.RZy = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.h
  * JD-Core Version:    0.7.0.1
  */

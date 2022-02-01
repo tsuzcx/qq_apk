@@ -3,45 +3,40 @@ package com.tencent.mm.ui.contact;
 public abstract class p
   extends q
 {
-  public a XsV;
+  public p.a afew;
   
   public p(o paramo, boolean paramBoolean, int paramInt)
   {
     super(paramo, paramBoolean, paramInt);
   }
   
-  public void a(a parama)
+  public void a(p.a parama)
   {
-    this.XsV = parama;
+    this.afew = parama;
   }
   
   public abstract void a(String paramString, int[] paramArrayOfInt);
   
-  public int bzR(String paramString)
+  public int aJM(String paramString)
   {
     return -1;
   }
   
-  public int bzZ(String paramString)
+  public int bBO(String paramString)
   {
     return -1;
   }
   
   public abstract void clearData();
   
-  public boolean hUK()
+  public boolean jyB()
   {
     return false;
   }
   
-  public String hUL()
+  public String jyC()
   {
     return null;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void g(String paramString, int paramInt, boolean paramBoolean);
   }
 }
 

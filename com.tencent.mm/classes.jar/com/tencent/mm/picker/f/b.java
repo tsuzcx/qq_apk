@@ -13,13 +13,13 @@ public final class b<T>
   implements View.OnClickListener
 {
   private Context context;
-  public d mCM;
+  public d pzu;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(175345);
-    this.mCM = new d();
+    this.pzu = new d();
     this.context = paramContext;
     AppMethodBeat.o(175345);
   }
@@ -27,94 +27,94 @@ public final class b<T>
   public final void a(com.tencent.mm.picker.c.a parama)
   {
     AppMethodBeat.i(175346);
-    this.mBU = parama;
+    this.pyC = parama;
     Object localObject = this.context;
-    buT();
-    buQ();
-    buR();
-    parama = this.mCM;
+    bTc();
+    bSZ();
+    bTa();
+    parama = this.pzu;
     localObject = new WheelView((Context)localObject);
-    parama.mCb = this.mBU.mCb;
-    if (parama.mCQ == null) {
-      parama.mCQ = ((WheelView)localObject);
+    parama.pyJ = this.pyC.pyJ;
+    if (parama.pzy == null) {
+      parama.pzy = ((WheelView)localObject);
     }
-    parama.mCR = parama.mCQ;
-    if (this.mBU.mBZ != null) {
-      this.mCM.mBZ = this.mBU.mBZ;
+    parama.pzz = parama.pzy;
+    if (this.pyC.pyH != null) {
+      this.pzu.pyH = this.pyC.pyH;
     }
-    parama = this.mCM;
-    localObject = this.mBU.label;
+    parama = this.pzu;
+    localObject = this.pyC.label;
     if (localObject != null) {
-      parama.mCR.setLabel((String)localObject);
+      parama.pzz.setLabel((String)localObject);
     }
-    parama = this.mCM;
-    boolean bool = this.mBU.mCa;
-    parama.mCR.setCyclic(bool);
-    gP(this.mBU.bxO);
-    this.mCM.setDividerColor(this.mBU.mBx);
-    this.mCM.mCA = this.mBU.mCA;
-    this.mCM.mCy = this.mBU.mCy;
-    parama = this.mCM;
-    bool = this.mBU.mBq;
-    parama.mCR.mBq = bool;
-    this.mCM.xU(this.mBU.bwU);
-    this.mCM.setDividerColor(this.mBU.mBx);
+    parama = this.pzu;
+    boolean bool = this.pyC.pyI;
+    parama.pzz.setCyclic(bool);
+    hE(this.pyC.dqR);
+    this.pzu.setDividerColor(this.pyC.pyf);
+    this.pzu.pzh = this.pyC.pzh;
+    this.pzu.bbg = this.pyC.bbg;
+    parama = this.pzu;
+    bool = this.pyC.pxZ;
+    parama.pzz.pxZ = bool;
+    this.pzu.xZ(this.pyC.dpX);
+    this.pzu.setDividerColor(this.pyC.pyf);
     AppMethodBeat.o(175346);
   }
   
-  public final void aM(List<T> paramList)
+  public final boolean bTd()
   {
-    AppMethodBeat.i(175347);
-    d locald = this.mCM;
-    locald.mCS = paramList;
-    locald.mCR.setAdapter(new com.tencent.mm.picker.a.a(locald.mCS));
-    locald.mCR.setCurrentItem(0);
-    locald.mCR.setIsOptions(true);
-    d.1 local1 = new d.1(locald);
-    if ((paramList != null) && (locald.mCT)) {
-      locald.mCR.setOnItemSelectedListener(local1);
-    }
-    if (this.mCM != null) {
-      this.mCM.xU(this.mBU.option);
-    }
-    AppMethodBeat.o(175347);
+    return this.pyC.pzg;
   }
   
-  public final boolean buU()
-  {
-    return this.mBU.mCz;
-  }
-  
-  public final void buV()
+  public final void bTe()
   {
     AppMethodBeat.i(175349);
-    if (this.mBU.mBW != null)
+    if (this.pyC.pyE != null)
     {
-      int[] arrayOfInt = this.mCM.bva();
-      this.mBU.mBW.xT(arrayOfInt[0]);
+      int[] arrayOfInt = this.pzu.bTj();
+      this.pyC.pyE.xY(arrayOfInt[0]);
     }
     AppMethodBeat.o(175349);
   }
   
-  public final WheelView buW()
+  public final WheelView bTf()
   {
     AppMethodBeat.i(175350);
-    if (this.mCM.mCQ == null) {
-      this.mCM.mCQ = new WheelView(this.context);
+    if (this.pzu.pzy == null) {
+      this.pzu.pzy = new WheelView(this.context);
     }
-    WheelView localWheelView = this.mCM.mCQ;
+    WheelView localWheelView = this.pzu.pzy;
     AppMethodBeat.o(175350);
     return localWheelView;
+  }
+  
+  public final void cr(List<T> paramList)
+  {
+    AppMethodBeat.i(175347);
+    d locald = this.pzu;
+    locald.pzA = paramList;
+    locald.pzz.setAdapter(new com.tencent.mm.picker.a.a(locald.pzA));
+    locald.pzz.setCurrentItem(0);
+    locald.pzz.setIsOptions(true);
+    d.1 local1 = new d.1(locald);
+    if ((paramList != null) && (locald.pzB)) {
+      locald.pzz.setOnItemSelectedListener(local1);
+    }
+    if (this.pzu != null) {
+      this.pzu.xZ(this.pyC.option);
+    }
+    AppMethodBeat.o(175347);
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(175348);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/picker/view/OptionsPickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/picker/view/OptionsPickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     if (((String)paramView.getTag()).equals("submit")) {
-      buV();
+      bTe();
     }
     dismiss();
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/picker/view/OptionsPickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -124,19 +124,19 @@ public final class b<T>
   public final void setDividerHeight(float paramFloat)
   {
     AppMethodBeat.i(175351);
-    this.mCM.mCR.setDividerHeight(paramFloat);
+    this.pzu.pzz.setDividerHeight(paramFloat);
     AppMethodBeat.o(175351);
   }
   
-  public final void setOnValueChangedListener(com.tencent.mm.picker.d.b paramb)
+  public final void setOnValueChangedListener(c paramc)
   {
-    this.mBU.mBZ = paramb;
-    this.mCM.mBZ = this.mBU.mBZ;
+    this.pyC.pyH = paramc;
+    this.pzu.pyH = this.pyC.pyH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.picker.f.b
  * JD-Core Version:    0.7.0.1
  */

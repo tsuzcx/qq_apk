@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.exdevice.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.exdevice.b.b;
-import com.tencent.mm.plugin.exdevice.model.ae;
-import com.tencent.mm.protocal.protobuf.afv;
-import com.tencent.mm.protocal.protobuf.afw;
+import com.tencent.mm.plugin.exdevice.model.ah;
+import com.tencent.mm.protocal.protobuf.aii;
+import com.tencent.mm.protocal.protobuf.aij;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 
 public final class h
-  extends com.tencent.mm.plugin.exdevice.b.a<afv, afw>
+  extends com.tencent.mm.plugin.exdevice.b.a<aii, aij>
 {
   String username;
-  private final WeakReference<b<h>> vdw;
+  private final WeakReference<b<h>> ypi;
   
   public h(String paramString, b<h> paramb)
   {
     AppMethodBeat.i(23518);
     this.username = paramString;
-    this.vdw = new WeakReference(paramb);
+    this.ypi = new WeakReference(paramb);
     AppMethodBeat.o(23518);
   }
   
@@ -39,18 +39,18 @@ public final class h
     Log.d("MicroMsg.NetSceneDelFollow", "hy: del follow end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      ae.cZA().avD(this.username);
+      ah.dFT().apD(this.username);
     }
-    params = (b)this.vdw.get();
+    params = (b)this.ypi.get();
     if (params != null) {
-      params.a(paramInt2, paramInt3, paramString, this);
+      params.onNetSceneEndCallback(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(23519);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.a.h
  * JD-Core Version:    0.7.0.1
  */

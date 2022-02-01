@@ -1,48 +1,46 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cgz;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.autogen.b.r;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-public class l
+public final class l
+  extends r
 {
-  private static volatile l nOS;
-  private final Object mLock;
-  private final Set<Object> nOT;
-  private volatile cgz nOU;
+  public static final IAutoDBItem.MAutoDBInfo DB_INFO;
+  public static final String[] qDJ;
   
-  public l()
+  static
   {
-    AppMethodBeat.i(44498);
-    this.mLock = new Object();
-    this.nOT = new HashSet();
-    this.nOU = null;
-    AppMethodBeat.o(44498);
+    int i = 0;
+    AppMethodBeat.i(44503);
+    qDJ = new String[] { "username", "versionType" };
+    DB_INFO = aJm();
+    String str = " PRIMARY KEY ( ";
+    Object localObject1 = qDJ;
+    int j = localObject1.length;
+    while (i < j)
+    {
+      localObject2 = localObject1[i];
+      str = str + ", " + (String)localObject2;
+      i += 1;
+    }
+    str = str.replaceFirst(",", "");
+    str = str + " )";
+    localObject1 = new StringBuilder();
+    Object localObject2 = DB_INFO;
+    ((IAutoDBItem.MAutoDBInfo)localObject2).sql = (((IAutoDBItem.MAutoDBInfo)localObject2).sql + "," + str);
+    AppMethodBeat.o(44503);
   }
   
-  public static l bJj()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(44499);
-    if (nOS == null) {}
-    try
-    {
-      if (nOS == null) {
-        nOS = new l();
-      }
-      l locall = nOS;
-      AppMethodBeat.o(44499);
-      return locall;
-    }
-    finally
-    {
-      AppMethodBeat.o(44499);
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.l
  * JD-Core Version:    0.7.0.1
  */

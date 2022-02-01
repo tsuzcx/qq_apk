@@ -11,9 +11,9 @@ public class PushProcessIPCService
   
   static
   {
-    AppMethodBeat.i(205362);
+    AppMethodBeat.i(235719);
     PROCESS_NAME = MMApplicationContext.getApplicationId() + ":push";
-    AppMethodBeat.o(205362);
+    AppMethodBeat.o(235719);
   }
   
   public final String getProcessName()

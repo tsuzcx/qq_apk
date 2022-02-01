@@ -62,17 +62,17 @@ public class APPluginReportManager
   
   private APPluginReportManager()
   {
-    AppMethodBeat.i(253254);
+    AppMethodBeat.i(216997);
     this.initDataReport = null;
     this.payDataReport = null;
     this.initDataReport = new ArrayList();
     this.payDataReport = new ArrayList();
-    AppMethodBeat.o(253254);
+    AppMethodBeat.o(216997);
   }
   
   private String constructTimeReport(String paramString, long paramLong)
   {
-    AppMethodBeat.i(253270);
+    AppMethodBeat.i(217056);
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("name=");
     localStringBuffer.append(paramString);
@@ -81,17 +81,17 @@ public class APPluginReportManager
     localStringBuffer.append(paramLong);
     localStringBuffer.append("&");
     paramString = localStringBuffer.toString();
-    AppMethodBeat.o(253270);
+    AppMethodBeat.o(217056);
     return paramString;
   }
   
   private String getAllReportRecord(ArrayList<APClickStreamParams> paramArrayList)
   {
-    AppMethodBeat.i(253267);
+    AppMethodBeat.i(217043);
     int k = paramArrayList.size();
     if (k <= 0)
     {
-      AppMethodBeat.o(253267);
+      AppMethodBeat.o(217043);
       return null;
     }
     StringBuffer localStringBuffer = new StringBuffer();
@@ -115,38 +115,38 @@ public class APPluginReportManager
     paramArrayList.append(localStringBuffer.toString());
     localStringBuffer.setLength(0);
     paramArrayList = paramArrayList.toString();
-    AppMethodBeat.o(253267);
+    AppMethodBeat.o(217043);
     return paramArrayList;
   }
   
   public static APPluginReportManager getInstance()
   {
-    AppMethodBeat.i(253255);
+    AppMethodBeat.i(217004);
     APPluginReportManager localAPPluginReportManager = SingletonHolder.instance;
-    AppMethodBeat.o(253255);
+    AppMethodBeat.o(217004);
     return localAPPluginReportManager;
   }
   
   public static void initDataRelease()
   {
-    AppMethodBeat.i(253256);
+    AppMethodBeat.i(217008);
     try
     {
       if (getInstance() != null) {
         getInstance().initDataReport.clear();
       }
-      AppMethodBeat.o(253256);
+      AppMethodBeat.o(217008);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(253256);
+      AppMethodBeat.o(217008);
     }
   }
   
   private void insertOneRecord(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(253266);
+    AppMethodBeat.i(217033);
     APClickStreamParams localAPClickStreamParams = new APClickStreamParams();
     localAPClickStreamParams.device = ("android_v" + APMidasPayAPI.getMidasPluginVersion());
     localAPClickStreamParams.openid = APPluginDataInterface.singleton().getOpenId();
@@ -174,7 +174,7 @@ public class APPluginReportManager
       localAPClickStreamParams.dataId = APInitData.getInitdataCount();
       localAPClickStreamParams.VipFlags = APInitData.singleton().getInitGUID();
       this.initDataReport.add(localAPClickStreamParams);
-      AppMethodBeat.o(253266);
+      AppMethodBeat.o(217033);
       return;
       localAPClickStreamParams.savetype = "game";
       continue;
@@ -192,13 +192,13 @@ public class APPluginReportManager
       localAPClickStreamParams.VipFlags = paramString1.getGuid();
     }
     this.payDataReport.add(localAPClickStreamParams);
-    AppMethodBeat.o(253266);
+    AppMethodBeat.o(217033);
   }
   
   private void invokeAPKReportManager(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     Object localObject4 = null;
-    AppMethodBeat.i(253271);
+    AppMethodBeat.i(217073);
     try
     {
       Object localObject5 = Class.forName("com.pay.data.report.APDataReportManager");
@@ -231,7 +231,7 @@ public class APPluginReportManager
               try
               {
                 localObject4.invoke(localObject1, new Object[] { paramString1, Integer.valueOf(paramInt), paramString2, paramString3, paramString4, paramString5 });
-                AppMethodBeat.o(253271);
+                AppMethodBeat.o(217073);
                 return;
               }
               catch (Exception paramString1)
@@ -253,37 +253,42 @@ public class APPluginReportManager
           }
         }
       }
-      AppMethodBeat.o(253271);
+      AppMethodBeat.o(217073);
     }
     catch (Exception paramString1)
     {
       APLog.i("APPluginReportManager", "invokeAPKReportManager error:" + paramString1.toString());
-      AppMethodBeat.o(253271);
+      AppMethodBeat.o(217073);
       return;
     }
   }
   
   public static void payDataRelease()
   {
-    AppMethodBeat.i(253257);
+    AppMethodBeat.i(217012);
     try
     {
       if (getInstance() != null) {
         getInstance().payDataReport.clear();
       }
-      AppMethodBeat.o(253257);
+      AppMethodBeat.o(217012);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(253257);
+      AppMethodBeat.o(217012);
     }
   }
   
   private StringBuffer reportParams2Str(APClickStreamParams paramAPClickStreamParams)
   {
-    AppMethodBeat.i(253260);
+    AppMethodBeat.i(217024);
     StringBuffer localStringBuffer = new StringBuffer();
+    if (paramAPClickStreamParams == null)
+    {
+      AppMethodBeat.o(217024);
+      return localStringBuffer;
+    }
     localStringBuffer.append("3=" + paramAPClickStreamParams.openid);
     localStringBuffer.append("|7=0");
     localStringBuffer.append("|13=" + paramAPClickStreamParams.dataId);
@@ -322,7 +327,7 @@ public class APPluginReportManager
     if (!TextUtils.isEmpty(paramAPClickStreamParams.VipFlags)) {
       localStringBuffer.append("|53=" + paramAPClickStreamParams.VipFlags);
     }
-    AppMethodBeat.o(253260);
+    AppMethodBeat.o(217024);
     return localStringBuffer;
   }
   
@@ -386,32 +391,32 @@ public class APPluginReportManager
   
   public void initInterfaceInit(String paramString, APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(253258);
+    AppMethodBeat.i(217095);
     APInitData.init();
     APInitData.singleton().setInitGUID(APMidasTools.getUUID());
     APInitData.singleton().setInitInterfaceTime(System.currentTimeMillis());
     APPluginDataInterface.init();
     APPluginDataInterface.singleton().setLaunchInterface(paramString);
     APMidasAnalyzeParams.getInstance().AnalyzeParams(paramAPMidasBaseRequest);
-    AppMethodBeat.o(253258);
+    AppMethodBeat.o(217095);
   }
   
   public void insertData(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(253265);
+    AppMethodBeat.i(217128);
     APLog.i("insertTimeData interfaceName=", paramString1 + " format=" + paramString2 + " action=" + paramString3 + " extend=" + paramString4);
     insertOneRecord(paramString1, paramString2, paramString3, paramString4);
-    AppMethodBeat.o(253265);
+    AppMethodBeat.o(217128);
   }
   
   public void insertTimeData(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253261);
+    AppMethodBeat.i(217112);
     APLog.i("insertTimeData interfaceName=", paramString1);
     APLog.i("insertTimeData timeName=", paramString2);
     if (TextUtils.isEmpty(APPluginDataInterface.singleton().getOfferId()))
     {
-      AppMethodBeat.o(253261);
+      AppMethodBeat.o(217112);
       return;
     }
     if (paramString1 == "init")
@@ -419,7 +424,7 @@ public class APPluginReportManager
       l = System.currentTimeMillis() - APInitData.singleton().getInitInterfaceTime();
       APLog.i("时耗", "insertTimeData timeName=" + paramString2 + ",initTime:" + l);
       insertOneRecord(paramString1, "sdk.plugin.time", "", constructTimeReport(paramString2, l));
-      AppMethodBeat.o(253261);
+      AppMethodBeat.o(217112);
       return;
     }
     APMultiProcessData localAPMultiProcessData = APPluginDataInterface.singleton().getProcessData();
@@ -431,34 +436,34 @@ public class APPluginReportManager
     }
     APLog.i("时耗", "insertTimeData timeName=" + paramString2 + ",payTime:" + l);
     insertOneRecord(paramString1, "sdk.plugin.time", "", constructTimeReport(paramString2, l));
-    AppMethodBeat.o(253261);
+    AppMethodBeat.o(217112);
   }
   
   public void insertTimeData(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(253262);
+    AppMethodBeat.i(217117);
     APLog.d("insertTimeData interfaceName=", paramString1 + " timeName=" + paramString2 + " time=" + String.valueOf(paramLong));
     if (TextUtils.isEmpty(APPluginDataInterface.singleton().getOfferId()))
     {
-      AppMethodBeat.o(253262);
+      AppMethodBeat.o(217117);
       return;
     }
     insertOneRecord(paramString1, "sdk.plugin.time", "", constructTimeReport(paramString2, paramLong));
-    AppMethodBeat.o(253262);
+    AppMethodBeat.o(217117);
   }
   
   public void insertTimeDataEx(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(253263);
+    AppMethodBeat.i(217123);
     paramLong = APMidasTools.getTimeInterval(paramLong, System.currentTimeMillis());
     APLog.d("insertTimeDataEx", "timeName:" + paramString2 + ",time" + paramLong);
     insertTimeData(paramString1, paramString2, paramLong);
-    AppMethodBeat.o(253263);
+    AppMethodBeat.o(217123);
   }
   
   public void payInterfaceInit(APMidasBaseRequest paramAPMidasBaseRequest, String paramString)
   {
-    AppMethodBeat.i(253259);
+    AppMethodBeat.i(217104);
     APPluginDataInterface.init();
     APPluginDataInterface.singleton().setLaunchInterface(paramString);
     paramString = new APMultiProcessData();
@@ -474,7 +479,7 @@ public class APPluginReportManager
       APPluginDataInterface.singleton().setProcessData(paramString);
       APMidasAnalyzeParams.getInstance().setSaveType(paramAPMidasBaseRequest);
       APMidasAnalyzeParams.getInstance().AnalyzeParams(paramAPMidasBaseRequest);
-      AppMethodBeat.o(253259);
+      AppMethodBeat.o(217104);
       return;
       paramString.setIntervalTime((int)(System.currentTimeMillis() - APInitData.singleton().getInitInterfaceTime()));
     }
@@ -482,7 +487,7 @@ public class APPluginReportManager
   
   public void reportImmediatelyOneRecord(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(253268);
+    AppMethodBeat.i(217138);
     APClickStreamParams localAPClickStreamParams = new APClickStreamParams();
     localAPClickStreamParams.device = ("android_v" + APMidasPayAPI.getMidasPluginVersion());
     localAPClickStreamParams.openid = APPluginDataInterface.singleton().getOpenId();
@@ -516,7 +521,7 @@ public class APPluginReportManager
       if (!TextUtils.isEmpty(paramString1)) {
         break label341;
       }
-      AppMethodBeat.o(253268);
+      AppMethodBeat.o(217138);
       return;
       localAPClickStreamParams.savetype = "game";
       break;
@@ -543,7 +548,7 @@ public class APPluginReportManager
       
       public void onStop(APBaseHttpAns paramAnonymousAPBaseHttpAns) {}
     });
-    AppMethodBeat.o(253268);
+    AppMethodBeat.o(217138);
   }
   
   static class SingletonHolder
@@ -552,15 +557,15 @@ public class APPluginReportManager
     
     static
     {
-      AppMethodBeat.i(253223);
+      AppMethodBeat.i(217013);
       instance = new APPluginReportManager(null);
-      AppMethodBeat.o(253223);
+      AppMethodBeat.o(217013);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.data.APPluginReportManager
  * JD-Core Version:    0.7.0.1
  */

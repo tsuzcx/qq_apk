@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/bis" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
+<LinearLayout android:orientation="vertical" android:padding="@dimen/i6" android:layout_width="255.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.tools.CropImageView android:gravity="center" android:layout_gravity="center" android:id="@id/bj1" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:scaleType="matrix" />
-    <View android:gravity="center" android:layout_gravity="center" android:id="@id/bit" android:layout_width="312.0dip" android:layout_height="312.0dip" />
-    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/biy" android:background="@drawable/bhw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
-    <LinearLayout android:orientation="vertical" android:id="@id/bj0" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/bil" android:paddingLeft="8.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:id="@id/bj2" style="@style/t7" />
-            <View android:layout_width="8.0dip" style="@style/p7" />
-            <Button android:id="@id/bj4" style="@style/a55" />
-            <Button android:id="@id/bj3" style="@style/a54" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/biu" android:background="@drawable/ck7" android:padding="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:layout_gravity="center_vertical" android:id="@id/biv" android:minWidth="@dimen/in" android:text="@string/bju" style="@style/ow" />
-        </LinearLayout>
-    </LinearLayout>
-    <com.tencent.mm.ui.tools.FilterImageView android:id="@id/biq" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:layout_width="200.0dip" android:layout_height="118.0dip" android:src="@drawable/c3h" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/bwr" />
+</LinearLayout>

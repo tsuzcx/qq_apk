@@ -1,164 +1,56 @@
 package com.tencent.mm.ui;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.e;
 import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.m;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.MMStack;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.accessibility.type.ViewType;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.a.p;
 
-final class q
-  extends i
-  implements DialogInterface
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/LauncherServiceNoticeAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class q
+  extends MMBaseAccessibilityConfig
 {
-  private LinearLayout UWb;
-  TextView UWd;
-  private TextView UWf;
-  LinearLayout UWl;
-  private LinearLayout UWn;
-  private boolean bxO;
-  private Context mContext;
-  private TextView mLH;
-  private View roq;
-  Button xPd;
-  
-  public q(Context paramContext)
+  public q(AppCompatActivity paramAppCompatActivity)
   {
-    super(paramContext, R.m.mmalertdialog);
-    AppMethodBeat.i(33393);
-    this.mContext = paramContext;
-    this.UWb = ((LinearLayout)ad.kS(this.mContext).inflate(R.i.mm_alert_comfirm_lite_dependency, null));
-    this.xPd = ((Button)this.UWb.findViewById(R.h.mm_alert_ok_btn));
-    this.mLH = ((TextView)this.UWb.findViewById(R.h.mm_alert_title));
-    this.UWd = ((TextView)this.UWb.findViewById(R.h.mm_alert_msg));
-    this.UWf = ((TextView)this.UWb.findViewById(R.h.mm_alert_msg_subtitle));
-    this.roq = this.UWb.findViewById(R.h.mm_alert_title_area);
-    this.UWl = ((LinearLayout)this.UWb.findViewById(R.h.mm_alert_msg_area));
-    this.UWn = ((LinearLayout)this.UWb.findViewById(R.h.mm_alert_custom_area));
-    setCanceledOnTouchOutside(true);
-    AppMethodBeat.o(33393);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(249205);
+    AppMethodBeat.o(249205);
   }
   
-  private void asb(int paramInt)
+  public final void initConfig()
   {
-    AppMethodBeat.i(287888);
-    if (this.UWd != null) {
-      this.UWd.setTextColor(this.UWd.getContext().getResources().getColor(paramInt));
+    AppMethodBeat.i(249212);
+    MMBaseAccessibilityConfig.ConfigHelper localConfigHelper = root(R.h.fQd);
+    localConfigHelper.view(R.h.fQd).descFormat(R.l.talkback_placehodler_4).valueByView(R.h.fQA).valueByView(R.h.fPz).valueByView(R.h.fQz).valueByView(R.h.fQb).type(ViewType.Button);
+    localConfigHelper.view(R.h.fQi).desc(R.l.chatting_more).type(ViewType.Button);
+    Iterator localIterator = ((Iterable)p.listOf(new Integer[] { Integer.valueOf(R.h.fQA), Integer.valueOf(R.h.fPz), Integer.valueOf(R.h.fQz), Integer.valueOf(R.h.fQb), Integer.valueOf(R.h.fPv) })).iterator();
+    while (localIterator.hasNext()) {
+      localConfigHelper.disable(((Number)localIterator.next()).intValue());
     }
-    AppMethodBeat.o(287888);
-  }
-  
-  public final void dismiss()
-  {
-    AppMethodBeat.i(33402);
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      MMHandlerThread.postToMainThread(new q.2(this));
-      Log.e("MicroMsg.LiteDependDialog", Util.getStack().toString());
-      AppMethodBeat.o(33402);
-      return;
-    }
-    try
-    {
-      super.dismiss();
-      AppMethodBeat.o(33402);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.LiteDependDialog", "dismiss exception, e = " + localException.getMessage());
-      AppMethodBeat.o(33402);
-    }
-  }
-  
-  public final void hHm()
-  {
-    AppMethodBeat.i(33400);
-    super.setCancelable(false);
-    AppMethodBeat.o(33400);
-  }
-  
-  protected final void onCreate(Bundle paramBundle)
-  {
-    AppMethodBeat.i(33394);
-    super.onCreate(paramBundle);
-    setContentView(this.UWb);
-    AppMethodBeat.o(33394);
-  }
-  
-  public final void setCancelable(boolean paramBoolean)
-  {
-    AppMethodBeat.i(33399);
-    super.setCancelable(paramBoolean);
-    this.bxO = paramBoolean;
-    setCanceledOnTouchOutside(this.bxO);
-    AppMethodBeat.o(33399);
-  }
-  
-  public final void setMessage(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(33398);
-    this.UWl.setVisibility(0);
-    this.UWd.setVisibility(0);
-    this.UWd.setText(paramCharSequence);
-    AppMethodBeat.o(33398);
-  }
-  
-  public final void setTitle(int paramInt)
-  {
-    AppMethodBeat.i(33396);
-    this.roq.setVisibility(0);
-    this.mLH.setVisibility(0);
-    this.mLH.setMaxLines(2);
-    this.mLH.setText(paramInt);
-    asb(R.e.dialog_msg_color);
-    AppMethodBeat.o(33396);
-  }
-  
-  public final void setTitle(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(33395);
-    this.roq.setVisibility(0);
-    this.mLH.setVisibility(0);
-    this.mLH.setMaxLines(2);
-    this.mLH.setText(paramCharSequence);
-    asb(R.e.dialog_msg_color);
-    AppMethodBeat.o(33395);
-  }
-  
-  public final void show()
-  {
-    AppMethodBeat.i(33401);
-    try
-    {
-      super.show();
-      AppMethodBeat.o(33401);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.printErrStackTrace("MicroMsg.LiteDependDialog", localException, "", new Object[0]);
-      AppMethodBeat.o(33401);
-    }
+    root(R.h.fPA).view(R.h.fPA).desc(R.h.fPv);
+    localConfigHelper = root(R.h.fuP);
+    localConfigHelper.view(R.h.fPC).descFormat(R.l.talkback_placehodler).valueByView(R.h.fPE).disableChildren().type(ViewType.Button);
+    localConfigHelper.view(R.h.fPF).descFormat(R.l.talkback_placehodler).valueByView(R.h.fPH).disableChildren().type(ViewType.Button);
+    localConfigHelper.view(R.h.fQo).descFormat(R.l.talkback_placehodler_2).valueByView(R.h.fQr).valueByView(R.h.fQq).type(ViewType.Button);
+    root(R.h.fJG).view(R.h.fJG).desc(R.h.fAr).type(ViewType.Button);
+    root(R.h.fJG).view(R.h.fxl).disable();
+    root(R.h.fOz).view(R.h.fOz).desc(R.l.chatting_more).type(ViewType.Button);
+    root(R.h.fGs).view(R.h.fGs).desc(R.h.fPv);
+    root(R.h.fyC).view(R.h.fEZ).desc(R.l.gWE).type(ViewType.Button);
+    root(R.h.fQe).view(R.h.fQj).desc(R.l.chatting_more).type(ViewType.Button);
+    root(R.h.fzK).view(R.h.fTt).disable();
+    AppMethodBeat.o(249212);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.q
  * JD-Core Version:    0.7.0.1
  */

@@ -10,33 +10,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends ClickableSpan
 {
-  private final int Oq;
-  private final d Os;
-  private final int Ot;
+  private final int buK;
+  private final d buL;
+  private final int buM;
   
   public a(int paramInt1, d paramd, int paramInt2)
   {
-    this.Oq = paramInt1;
-    this.Os = paramd;
-    this.Ot = paramInt2;
+    this.buK = paramInt1;
+    this.buL = paramd;
+    this.buM = paramInt2;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(252011);
+    AppMethodBeat.i(195978);
     paramView = new Bundle();
-    paramView.putInt("ACCESSIBILITY_CLICKABLE_SPAN_ID", this.Oq);
-    d locald = this.Os;
-    int i = this.Ot;
+    paramView.putInt("ACCESSIBILITY_CLICKABLE_SPAN_ID", this.buK);
+    d locald = this.buL;
+    int i = this.buM;
     if (Build.VERSION.SDK_INT >= 16) {
-      locald.Ov.performAction(i, paramView);
+      locald.buO.performAction(i, paramView);
     }
-    AppMethodBeat.o(252011);
+    AppMethodBeat.o(195978);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.core.g.a.a
  * JD-Core Version:    0.7.0.1
  */

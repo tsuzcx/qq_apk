@@ -1,186 +1,182 @@
 package com.tencent.mm.ui.report;
 
 import android.text.TextUtils;
-import com.tencent.c.a.b.a.d;
-import com.tencent.c.a.b.a.e;
+import com.tencent.d.a.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.as;
-import com.tencent.mm.f.b.a.en;
+import com.tencent.mm.autogen.mmdata.rpt.be;
+import com.tencent.mm.autogen.mmdata.rpt.ga;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.expt.b.c;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.finder.utils.av;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/report/FindMoreFriendsReporter;", "", "()V", "TAG", "", "discoverNearbyDotExpose", "", "finderLiveSquareEntranceContextId", "nearbyEntranceContextId", "getFinderLiveContextId", "getNearbyEntranceContextId", "report20411", "", "action", "", "showInfoCount", "", "redDotShowInfoType", "reportDiscoverNearbyDotExpose", "reportFinderLiveEntranceClick", "reportFinderLiveEntranceExpose", "reportNearByEntranceV3Click", "reportNearByEntranceV3Expose", "reportNearByLiveFriends", "entranceType", "contextId", "reportNearByLiveFriendsClick", "reportNearByLiveFriendsExpose", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/report/FindMoreFriendsReporter;", "", "()V", "TAG", "", "discoverNearbyDotExpose", "", "finderLiveSquareEntranceContextId", "nearbyEntranceContextId", "getFinderLiveContextId", "getNearbyEntranceContextId", "report20411", "", "action", "", "showInfoCount", "", "redDotShowInfoType", "reportDiscoverNearbyDotExpose", "reportFinderLiveEntranceExpose", "reportFinderLiveOldEntranceClick", "reportNearByEntranceV3Click", "reportNearByEntranceV3Expose", "reportNearByLiveFriends", "entranceType", "contextId", "reportNearByLiveFriendsClick", "reportNearByLiveFriendsExpose", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static String XLI;
-  private static String XLJ;
-  private static boolean XLK;
-  public static final a XLL;
+  public static final a afBO;
+  private static String afBP;
+  private static String afBQ;
+  private static boolean afBR;
   
   static
   {
-    AppMethodBeat.i(285620);
-    XLL = new a();
-    XLI = "";
-    XLJ = "";
-    AppMethodBeat.o(285620);
+    AppMethodBeat.i(249567);
+    afBO = new a();
+    afBP = "";
+    afBQ = "";
+    AppMethodBeat.o(249567);
   }
   
-  public static final void Wl(long paramLong)
+  public static final void Ax(long paramLong)
   {
     long l2 = 1L;
-    AppMethodBeat.i(285615);
+    AppMethodBeat.i(249558);
     if (paramLong != 0L) {}
     for (long l1 = 2L;; l1 = 1L)
     {
-      en localen = new en();
-      localen.sy("1");
-      localen.sB(Util.nullAsNil(((c)h.ae(c.class)).dbr()));
-      localen.sz(hXI());
-      localen.lL(1011L);
-      localen.st("FinderLocal_" + (float)cm.bfE() * 1.0F / 100000.0F);
-      localen.su("NearbyEntrance");
-      localen.sv("Discovery");
-      localen.lM(l1);
-      localen.lN(paramLong);
-      localen.sw("");
-      localen.sx("");
-      localen.lO(1L);
-      localen.sA("1011-" + cm.bfE());
-      localen.lP(1L);
-      localen.lQ(1L);
-      localen.lR(1L);
-      localen.akc();
-      localen.lS(cm.bfE() / 1000L);
-      localen.sC("");
-      localen.lT(1L);
-      aj localaj = aj.AGc;
-      if (aj.edY()) {}
+      ga localga = new ga();
+      localga.qx("1");
+      localga.qA(Util.nullAsNil(((com.tencent.mm.plugin.expt.b.d)h.ax(com.tencent.mm.plugin.expt.b.d.class)).dHN()));
+      localga.qy(jCp());
+      localga.iJM = 1011L;
+      localga.qs(s.X("FinderLocal_", Float.valueOf((float)com.tencent.mm.model.cn.bDw() * 1.0F / 100000.0F)));
+      localga.qt("NearbyEntrance");
+      localga.qu("Discovery");
+      localga.iJP = l1;
+      localga.iJQ = paramLong;
+      localga.qv("");
+      localga.qw("");
+      localga.iJS = 1L;
+      localga.qz(s.X("1011-", Long.valueOf(com.tencent.mm.model.cn.bDw())));
+      localga.iGr = 1L;
+      localga.iJV = 1L;
+      localga.iJW = 1L;
+      localga.iJX = 1L;
+      localga.iJY = (com.tencent.mm.model.cn.bDw() / 1000L);
+      localga.qB("");
+      localga.iKa = 1L;
+      av localav = av.GiL;
+      if (av.ffR()) {}
       for (paramLong = l2;; paramLong = 2L)
       {
-        localen.lU(paramLong);
-        localen.bpa();
-        XLK = true;
-        AppMethodBeat.o(285615);
+        localga.iKb = paramLong;
+        localga.bMH();
+        afBR = true;
+        AppMethodBeat.o(249558);
         return;
       }
     }
   }
   
-  private static void c(long paramLong1, long paramLong2, String paramString)
+  private static void d(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(285614);
-    as localas = new as();
-    localas.cF(cm.bfE());
-    localas.cG(paramLong1);
-    localas.js(paramString);
-    localas.jr(Util.nullAsNil(((c)h.ae(c.class)).dbr()));
-    localas.cH(paramLong2);
-    localas.bpa();
-    Log.i("FindMoreFriendsReporter", "report " + localas.agI());
-    AppMethodBeat.o(285614);
+    AppMethodBeat.i(249552);
+    be localbe = new be();
+    localbe.iqN = com.tencent.mm.model.cn.bDw();
+    localbe.ila = paramLong1;
+    localbe.kY(paramString);
+    localbe.kX(Util.nullAsNil(((com.tencent.mm.plugin.expt.b.d)h.ax(com.tencent.mm.plugin.expt.b.d.class)).dHN()));
+    localbe.iqQ = paramLong2;
+    localbe.bMH();
+    Log.i("FindMoreFriendsReporter", s.X("report ", localbe.aIF()));
+    AppMethodBeat.o(249552);
   }
   
-  public static final void hXC()
+  public static final void jCj()
   {
-    AppMethodBeat.i(285608);
-    XLI = "";
-    XLJ = "";
-    c(1L, 0L, hXI());
-    AppMethodBeat.o(285608);
+    AppMethodBeat.i(249528);
+    afBP = "";
+    afBQ = "";
+    d(1L, 0L, jCp());
+    AppMethodBeat.o(249528);
   }
   
-  public static final void hXD()
+  public static final void jCk()
   {
-    AppMethodBeat.i(285609);
-    c(2L, 0L, hXI());
-    AppMethodBeat.o(285609);
+    AppMethodBeat.i(249532);
+    d(2L, 0L, jCp());
+    AppMethodBeat.o(249532);
   }
   
-  public static final void hXE()
+  public static final void jCl()
   {
-    AppMethodBeat.i(285610);
-    XLI = "";
-    XLJ = "";
-    c(1L, 2L, hXI());
-    AppMethodBeat.o(285610);
+    AppMethodBeat.i(249535);
+    afBP = "";
+    afBQ = "";
+    d(1L, 2L, jCp());
+    AppMethodBeat.o(249535);
   }
   
-  public static final void hXF()
+  public static final void jCm()
   {
-    AppMethodBeat.i(285611);
-    c(2L, 2L, hXI());
-    AppMethodBeat.o(285611);
+    AppMethodBeat.i(249539);
+    d(2L, 2L, jCp());
+    AppMethodBeat.o(249539);
   }
   
-  public static final void hXG()
+  public static final void jCn()
   {
-    AppMethodBeat.i(285612);
-    com.tencent.mm.plugin.finder.nearby.abtest.a locala = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
-    if (com.tencent.mm.plugin.finder.nearby.abtest.a.cFx()) {}
+    AppMethodBeat.i(249545);
+    com.tencent.mm.plugin.finder.nearby.abtest.a locala = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+    if (com.tencent.mm.plugin.finder.nearby.abtest.a.eEl()) {}
     for (long l = 3L;; l = 1L)
     {
-      c(1L, l, hXJ());
-      AppMethodBeat.o(285612);
+      d(1L, l, jCq());
+      AppMethodBeat.o(249545);
       return;
     }
   }
   
-  public static final void hXH()
+  public static final void jCo()
   {
-    AppMethodBeat.i(285613);
-    com.tencent.mm.plugin.finder.nearby.abtest.a locala = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
-    if (com.tencent.mm.plugin.finder.nearby.abtest.a.cFx()) {}
+    AppMethodBeat.i(249548);
+    com.tencent.mm.plugin.finder.nearby.abtest.a locala = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+    if (com.tencent.mm.plugin.finder.nearby.abtest.a.eEl()) {}
     for (long l = 3L;; l = 1L)
     {
-      c(2L, l, hXJ());
-      AppMethodBeat.o(285613);
+      d(2L, l, jCq());
+      AppMethodBeat.o(249548);
       return;
     }
   }
   
-  public static final String hXI()
+  public static final String jCp()
   {
-    AppMethodBeat.i(285616);
-    if (TextUtils.isEmpty((CharSequence)XLI))
+    AppMethodBeat.i(249563);
+    if (TextUtils.isEmpty((CharSequence)afBP))
     {
-      localObject = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
-      com.tencent.mm.plugin.finder.nearby.abtest.a.dLo();
-      int i = ((e)h.ag(e.class)).get3TabTargetTabCommentScene();
-      localObject = ((ak)h.ag(ak.class)).genContextId(12, 2, i);
-      p.j(localObject, "MMKernel.plugin(IPluginF…            commentScene)");
-      XLI = (String)localObject;
+      localObject = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+      com.tencent.mm.plugin.finder.nearby.abtest.a.eEi();
+      int i = ((e)h.az(e.class)).get3TabTargetTabCommentScene();
+      localObject = ((com.tencent.mm.plugin.findersdk.a.cn)h.az(com.tencent.mm.plugin.findersdk.a.cn.class)).genContextId(12, 2, i);
+      s.s(localObject, "plugin(IPluginFinder::cl…            commentScene)");
+      afBP = (String)localObject;
     }
-    Object localObject = XLI;
-    AppMethodBeat.o(285616);
+    Object localObject = afBP;
+    AppMethodBeat.o(249563);
     return localObject;
   }
   
-  public static final String hXJ()
+  public static final String jCq()
   {
-    AppMethodBeat.i(285617);
-    if (TextUtils.isEmpty((CharSequence)XLJ))
+    AppMethodBeat.i(249565);
+    if (TextUtils.isEmpty((CharSequence)afBQ))
     {
-      int i = ((d)h.ag(d.class)).getTargetCommentScene(94);
-      str = ((ak)h.ag(ak.class)).genContextId(23, 2, i);
-      p.j(str, "MMKernel.plugin(IPluginF…            commentScene)");
-      XLJ = str;
+      int i = ((com.tencent.d.a.b.a.d)h.az(com.tencent.d.a.b.a.d.class)).getTargetCommentScene(94);
+      str = ((com.tencent.mm.plugin.findersdk.a.cn)h.az(com.tencent.mm.plugin.findersdk.a.cn.class)).genContextId(23, 2, i);
+      s.s(str, "plugin(IPluginFinder::cl…            commentScene)");
+      afBQ = str;
     }
-    String str = XLJ;
-    AppMethodBeat.o(285617);
+    String str = afBQ;
+    AppMethodBeat.o(249565);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.report.a
  * JD-Core Version:    0.7.0.1
  */

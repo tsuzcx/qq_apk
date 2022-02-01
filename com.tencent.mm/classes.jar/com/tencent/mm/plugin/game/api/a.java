@@ -6,56 +6,56 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private static LinkedList<h> Cqn;
+  private static LinkedList<i> Icw;
   
   static
   {
     AppMethodBeat.i(89655);
-    Cqn = new LinkedList();
+    Icw = new LinkedList();
     AppMethodBeat.o(89655);
   }
   
-  public static void a(h paramh)
+  public static void a(i parami)
   {
     AppMethodBeat.i(89651);
-    if (paramh != null) {
-      Cqn.add(paramh);
+    if (parami != null) {
+      Icw.add(parami);
     }
     AppMethodBeat.o(89651);
   }
   
-  public static void b(h paramh)
+  public static void b(i parami)
   {
     AppMethodBeat.i(89652);
-    if (paramh != null) {
-      Cqn.remove(paramh);
+    if (parami != null) {
+      Icw.remove(parami);
     }
     AppMethodBeat.o(89652);
   }
   
-  public static void ex(String paramString, int paramInt)
+  public static void fm(String paramString, int paramInt)
   {
     AppMethodBeat.i(89653);
-    Iterator localIterator = Cqn.iterator();
+    Iterator localIterator = Icw.iterator();
     while (localIterator.hasNext())
     {
-      h localh = (h)localIterator.next();
-      if (localh != null) {
-        localh.ey(paramString, paramInt);
+      i locali = (i)localIterator.next();
+      if (locali != null) {
+        locali.fn(paramString, paramInt);
       }
     }
     AppMethodBeat.o(89653);
   }
   
-  public static void f(String paramString, float paramFloat)
+  public static void g(String paramString, float paramFloat)
   {
     AppMethodBeat.i(89654);
-    Iterator localIterator = Cqn.iterator();
+    Iterator localIterator = Icw.iterator();
     while (localIterator.hasNext())
     {
-      h localh = (h)localIterator.next();
-      if (localh != null) {
-        localh.g(paramString, paramFloat);
+      i locali = (i)localIterator.next();
+      if (locali != null) {
+        locali.h(paramString, paramFloat);
       }
     }
     AppMethodBeat.o(89654);

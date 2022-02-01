@@ -26,6 +26,22 @@ public class XWalkHttpAuthHandler
     AppMethodBeat.o(154745);
   }
   
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154749);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154749);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.proceedStringStringMethod.init(this.bridge, null, "proceedSuper", new Class[] { String.class, String.class });
+    this.cancelMethod.init(this.bridge, null, "cancelSuper", new Class[0]);
+    this.isFirstAttemptMethod.init(this.bridge, null, "isFirstAttemptSuper", new Class[0]);
+    AppMethodBeat.o(154749);
+  }
+  
   public void cancel()
   {
     AppMethodBeat.i(154747);
@@ -99,27 +115,10 @@ public class XWalkHttpAuthHandler
       AppMethodBeat.o(154746);
     }
   }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154749);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154749);
-      return;
-    }
-    this.proceedStringStringMethod.init(this.bridge, null, "proceedSuper", new Class[] { String.class, String.class });
-    this.cancelMethod.init(this.bridge, null, "cancelSuper", new Class[0]);
-    this.isFirstAttemptMethod.init(this.bridge, null, "isFirstAttemptSuper", new Class[0]);
-    AppMethodBeat.o(154749);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkHttpAuthHandler
  * JD-Core Version:    0.7.0.1
  */

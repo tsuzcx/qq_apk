@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/g8z" android:paddingLeft="@dimen/hv" android:paddingRight="@dimen/hv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
-    <TextView android:textSize="@dimen/bd" android:textColor="@color/x3" android:id="@id/d7f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i2" android:layout_marginBottom="@dimen/i2" android:text="@string/hye" android:layout_below="@id/g8z" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/b4d" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ViewStub android:id="@id/l9z" android:layout="@layout/qp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l_1" android:layout="@layout/qt" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l9x" android:layout="@layout/qr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l_2" android:layout="@layout/qu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l9w" android:layout="@layout/qq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l_0" android:layout="@layout/qs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i6">
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <TextView android:id="@id/b2v" android:layout_marginRight="@dimen/g" android:text="@string/b7d" style="@style/gr" />
+    </LinearLayout>
+</LinearLayout>

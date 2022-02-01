@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eqr;
-import com.tencent.mm.protocal.protobuf.eqs;
+import com.tencent.mm.protocal.protobuf.flv;
+import com.tencent.mm.protocal.protobuf.flw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
   extends f
 {
-  private final String Enu;
-  private i callback;
-  private final d rr;
+  private final String Kgc;
+  private h callback;
+  private final c rr;
   private int sceneType;
   
   public e(String paramString, int paramInt1, long paramLong, int paramInt2)
@@ -25,28 +25,28 @@ public final class e
     AppMethodBeat.i(29564);
     this.sceneType = 0;
     this.sceneType = paramInt2;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new eqr();
-    ((d.a)localObject).lBV = new eqs();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/talknoop";
-    ((d.a)localObject).funcId = 335;
-    ((d.a)localObject).lBW = 149;
-    ((d.a)localObject).respCmdId = 1000000149;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (eqr)d.b.b(this.rr.lBR);
-    ((eqr)localObject).Svu = paramInt1;
-    ((eqr)localObject).Svv = paramLong;
-    ((eqr)localObject).RIt = ((int)Util.nowSecond());
-    this.Enu = paramString;
-    ((eqr)localObject).CPw = paramInt2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new flv();
+    ((c.a)localObject).otF = new flw();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/talknoop";
+    ((c.a)localObject).funcId = 335;
+    ((c.a)localObject).otG = 149;
+    ((c.a)localObject).respCmdId = 1000000149;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (flv)c.b.b(this.rr.otB);
+    ((flv)localObject).Zvz = paramInt1;
+    ((flv)localObject).ZvA = paramLong;
+    ((flv)localObject).YFv = ((int)Util.nowSecond());
+    this.Kgc = paramString;
+    ((flv)localObject).IJG = paramInt2;
     AppMethodBeat.o(29564);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(29565);
     Log.d("MicroMsg.NetSceneTalkNoop", "doScene");
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(29565);
     return i;
@@ -57,12 +57,12 @@ public final class e
     return 335;
   }
   
-  public final String giK()
+  public final String hCL()
   {
-    return this.Enu;
+    return this.Kgc;
   }
   
-  public final int giL()
+  public final int hCM()
   {
     return this.sceneType;
   }

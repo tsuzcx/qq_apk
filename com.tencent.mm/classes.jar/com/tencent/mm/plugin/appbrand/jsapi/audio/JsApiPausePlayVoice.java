@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.c.b;
+import com.tencent.mm.plugin.appbrand.d.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class JsApiPausePlayVoice
-  extends c<v>
+  extends c<y>
 {
   public static final int CTRL_INDEX = 34;
   public static final String NAME = "pauseVoice";
-  private PausePlayVoice oAh;
+  private PausePlayVoice rEa;
   
   static class PausePlayVoice
     extends MainProcessTask
@@ -27,7 +27,7 @@ public final class JsApiPausePlayVoice
       AppMethodBeat.o(45948);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(45947);
       MMHandlerThread.postToMainThread(new Runnable()
@@ -35,7 +35,7 @@ public final class JsApiPausePlayVoice
         public final void run()
         {
           AppMethodBeat.i(45945);
-          b localb = b.nVC;
+          b localb = b.qVm;
           b.pause();
           AppMethodBeat.o(45945);
         }

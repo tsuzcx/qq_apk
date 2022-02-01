@@ -4,15 +4,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.cpd;
-import com.tencent.mm.protocal.protobuf.dhu;
+import com.tencent.mm.protocal.protobuf.dfx;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class c
 {
-  public static void aa(Bundle paramBundle)
+  public static void al(Bundle paramBundle)
   {
     AppMethodBeat.i(121992);
     if (paramBundle == null)
@@ -24,26 +24,26 @@ public final class c
     if (!TextUtils.isEmpty(paramBundle))
     {
       Log.d("HABBYGE-MALI.FragmentBundleDao", "FragmentBundleDao, putBundle: %s", new Object[] { paramBundle });
-      gC("Chat_User", paramBundle);
+      hj("Chat_User", paramBundle);
     }
     AppMethodBeat.o(121992);
   }
   
-  public static dhu dcP()
+  public static eae dJr()
   {
     AppMethodBeat.i(121994);
-    byte[] arrayOfByte = b.awZ("hell_fgm_bun_mmkv_key");
+    byte[] arrayOfByte = b.ard("hell_fgm_bun_mmkv_key");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
       AppMethodBeat.o(121994);
       return null;
     }
-    dhu localdhu = new dhu();
+    eae localeae = new eae();
     try
     {
-      localdhu.parseFrom(arrayOfByte);
+      localeae.parseFrom(arrayOfByte);
       AppMethodBeat.o(121994);
-      return localdhu;
+      return localeae;
     }
     catch (Exception localException)
     {
@@ -55,30 +55,30 @@ public final class c
     }
   }
   
-  static void gC(String paramString1, String paramString2)
+  static void hj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121993);
-    dhu localdhu = dcP();
-    if (localdhu == null) {
-      localdhu = new dhu();
+    eae localeae = dJr();
+    if (localeae == null) {
+      localeae = new eae();
     }
     for (;;)
     {
-      Object localObject = localdhu.TOQ.iterator();
+      Object localObject = localeae.abfm.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        cpd localcpd = (cpd)((Iterator)localObject).next();
-        if ((localcpd != null) && (paramString1.equals(localcpd.key))) {
-          localdhu.TOQ.remove(localcpd);
+        dfx localdfx = (dfx)((Iterator)localObject).next();
+        if ((localdfx != null) && (paramString1.equals(localdfx.key))) {
+          localeae.abfm.remove(localdfx);
         }
       }
-      localObject = new cpd();
-      ((cpd)localObject).key = paramString1;
-      ((cpd)localObject).value = paramString2;
-      localdhu.TOQ.add(localObject);
+      localObject = new dfx();
+      ((dfx)localObject).key = paramString1;
+      ((dfx)localObject).value = paramString2;
+      localeae.abfm.add(localObject);
       try
       {
-        b.r("hell_fgm_bun_mmkv_key", localdhu.toByteArray());
+        b.u("hell_fgm_bun_mmkv_key", localeae.toByteArray());
         AppMethodBeat.o(121993);
         return;
       }
@@ -93,7 +93,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.b.c
  * JD-Core Version:    0.7.0.1
  */

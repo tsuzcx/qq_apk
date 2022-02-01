@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.exdevice.i;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ds;
+import com.tencent.mm.autogen.b.ee;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -34,7 +34,7 @@ public final class c
     AppMethodBeat.o(23780);
   }
   
-  public static boolean avJ(String paramString)
+  public static boolean apJ(String paramString)
   {
     AppMethodBeat.i(23785);
     if (Util.isNullOrNil(paramString))
@@ -52,31 +52,7 @@ public final class c
     return false;
   }
   
-  public final b Jw(long paramLong)
-  {
-    b localb = null;
-    AppMethodBeat.i(23782);
-    Cursor localCursor = this.db.query("HardDeviceInfo", null, "mac=?", new String[] { String.valueOf(paramLong) }, null, null, null);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(23782);
-      return null;
-    }
-    if (localCursor.moveToFirst())
-    {
-      localb = new b();
-      localb.convertFrom(localCursor);
-    }
-    for (;;)
-    {
-      localCursor.close();
-      AppMethodBeat.o(23782);
-      return localb;
-      Log.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with mac:".concat(String.valueOf(paramLong)));
-    }
-  }
-  
-  public final b avH(String paramString)
+  public final b apH(String paramString)
   {
     AppMethodBeat.i(23781);
     if (Util.isNullOrNil(paramString))
@@ -104,7 +80,7 @@ public final class c
     return paramString;
   }
   
-  public final b avI(String paramString)
+  public final b apI(String paramString)
   {
     AppMethodBeat.i(23783);
     if (Util.isNullOrNil(paramString))
@@ -132,7 +108,7 @@ public final class c
     return paramString;
   }
   
-  public final LinkedList<b> avK(String paramString)
+  public final LinkedList<b> apK(String paramString)
   {
     AppMethodBeat.i(23789);
     if (Util.isNullOrNil(paramString))
@@ -161,7 +137,7 @@ public final class c
     return localLinkedList;
   }
   
-  public final List<b> dan()
+  public final List<b> dGG()
   {
     AppMethodBeat.i(23786);
     LinkedList localLinkedList = new LinkedList();
@@ -171,8 +147,8 @@ public final class c
       {
         b localb = new b();
         localb.convertFrom(localCursor);
-        String str = localb.idZ;
-        if ((str != null) && (avJ(str))) {
+        String str = localb.kDj;
+        if ((str != null) && (apJ(str))) {
           localLinkedList.add(localb);
         }
       } while (localCursor.moveToNext());
@@ -184,7 +160,7 @@ public final class c
     return localLinkedList;
   }
   
-  public final List<b> dao()
+  public final List<b> dGH()
   {
     AppMethodBeat.i(23787);
     LinkedList localLinkedList = new LinkedList();
@@ -194,9 +170,9 @@ public final class c
       {
         b localb = new b();
         localb.convertFrom(localCursor);
-        String str1 = localb.idU;
+        String str1 = localb.kDe;
         String str2 = localb.iconUrl;
-        String str3 = localb.idV;
+        String str3 = localb.kDf;
         String str4 = localb.field_brandName;
         if ((!Util.isNullOrNil(str3)) && (!str3.equals("1")) && (!str3.equals("0")) && (!Util.isNullOrNil(str4)) && (!Util.isNullOrNil(str1)) && (!Util.isNullOrNil(str2))) {
           localLinkedList.add(localb);
@@ -210,7 +186,7 @@ public final class c
     return localLinkedList;
   }
   
-  public final LinkedList<b> dap()
+  public final LinkedList<b> dGI()
   {
     AppMethodBeat.i(23790);
     LinkedList localLinkedList = new LinkedList();
@@ -247,7 +223,7 @@ public final class c
     }
   }
   
-  public final b gq(String paramString1, String paramString2)
+  public final b gU(String paramString1, String paramString2)
   {
     AppMethodBeat.i(23784);
     if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString1)))
@@ -276,7 +252,7 @@ public final class c
     return paramString1;
   }
   
-  public final b gr(String paramString1, String paramString2)
+  public final b gV(String paramString1, String paramString2)
   {
     AppMethodBeat.i(23788);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -305,7 +281,7 @@ public final class c
     return paramString1;
   }
   
-  public final boolean gs(String paramString1, String paramString2)
+  public final boolean gW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(23791);
     if (Util.isNullOrNil(paramString1))
@@ -323,10 +299,34 @@ public final class c
     AppMethodBeat.o(23791);
     return true;
   }
+  
+  public final b lM(long paramLong)
+  {
+    b localb = null;
+    AppMethodBeat.i(23782);
+    Cursor localCursor = this.db.query("HardDeviceInfo", null, "mac=?", new String[] { String.valueOf(paramLong) }, null, null, null);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(23782);
+      return null;
+    }
+    if (localCursor.moveToFirst())
+    {
+      localb = new b();
+      localb.convertFrom(localCursor);
+    }
+    for (;;)
+    {
+      localCursor.close();
+      AppMethodBeat.o(23782);
+      return localb;
+      Log.w("MicroMsg.exdevice.HardDeviceInfoStorage", "get null with mac:".concat(String.valueOf(paramLong)));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.i.c
  * JD-Core Version:    0.7.0.1
  */

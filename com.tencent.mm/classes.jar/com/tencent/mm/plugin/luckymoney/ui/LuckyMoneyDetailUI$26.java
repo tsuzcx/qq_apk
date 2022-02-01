@@ -1,20 +1,26 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.app.Dialog;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet.balance.model.lqt.x;
-import com.tencent.mm.protocal.protobuf.dri;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vending.c.a;
+import com.tencent.mm.wallet_core.ui.k;
 
 final class LuckyMoneyDetailUI$26
-  implements a<Void, dri>
+  extends k
 {
-  LuckyMoneyDetailUI$26(LuckyMoneyDetailUI paramLuckyMoneyDetailUI, x paramx, Dialog paramDialog, String paramString) {}
+  LuckyMoneyDetailUI$26(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
+  
+  public final void dr(View paramView)
+  {
+    AppMethodBeat.i(284384);
+    Log.d("MicroMsg.LuckyMoneyDetailUI", "click tips icon");
+    LuckyMoneyDetailUI.Y(this.KBZ);
+    AppMethodBeat.o(284384);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI.26
  * JD-Core Version:    0.7.0.1
  */

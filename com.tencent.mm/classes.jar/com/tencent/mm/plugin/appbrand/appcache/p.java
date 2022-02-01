@@ -4,17 +4,21 @@ import java.io.InputStream;
 
 public abstract interface p
 {
-  public abstract InputStream acB(String paramString);
+  public abstract InputStream Lh(String paramString);
   
-  public abstract String bGk();
+  public abstract String UW(String paramString);
   
-  public abstract boolean bGl();
+  public abstract String cfD();
   
-  public abstract WxaPkg.Info openReadPartialInfo(String paramString);
+  public abstract String cfE();
+  
+  public abstract int cfG();
+  
+  public abstract IPkgInfo cfI();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.p
  * JD-Core Version:    0.7.0.1
  */

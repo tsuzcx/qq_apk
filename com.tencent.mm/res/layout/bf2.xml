@@ -1,26 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:background="@drawable/asu" android:paddingLeft="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fu3" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" />
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/b9w" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" style="@style/nr">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="5.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:textColor="@color/a2x" android:id="@id/fu9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/mp" />
-                <TextView android:textColor="@color/tw" android:id="@id/fu6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fa1" style="@style/mo" />
-                <ImageView android:id="@id/fua" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <ImageView android:id="@id/fud" android:paddingLeft="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:textColor="@color/ww" android:id="@id/fu4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" style="@style/mo" />
-                <ImageView android:id="@id/fuc" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="8.0dip" android:src="@raw/find_more_friend_photograph_icon" />
-                <ImageView android:id="@id/fu0" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="8.0dip" />
-                <ImageView android:id="@id/fu1" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="8.0dip" />
-                <ImageView android:id="@id/fu2" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="8.0dip" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:id="@id/h7i" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <TextView android:layout_gravity="center_vertical" android:id="@id/fub" android:maxWidth="100.0dip" android:text="{signature}" style="@style/hn" />
-            <ImageView android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/b46" android:padding="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/azu" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:gravity="center" android:id="@android:id/title" android:paddingLeft="20.0dip" android:paddingTop="64.0dip" android:paddingRight="20.0dip" android:paddingBottom="24.0dip" android:clickable="true" style="@style/lk" />
 </LinearLayout>

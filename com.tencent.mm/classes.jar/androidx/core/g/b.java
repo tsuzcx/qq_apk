@@ -7,8 +7,8 @@ import android.view.View;
 
 public abstract class b
 {
-  public a MD;
-  public b MF;
+  private a bsH;
+  private b.b bsI;
   private final Context mContext;
   
   public b(Context paramContext)
@@ -16,36 +16,41 @@ public abstract class b
     this.mContext = paramContext;
   }
   
-  public final void X(boolean paramBoolean)
+  public final void a(a parama)
   {
-    if (this.MD != null) {
-      this.MD.N(paramBoolean);
-    }
+    this.bsH = parama;
   }
   
-  public void a(b paramb)
+  public void a(b.b paramb)
   {
-    if (this.MF != null) {
+    if (this.bsI != null) {
       new StringBuilder("setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this ").append(getClass().getSimpleName()).append(" instance while it is still in use somewhere else?");
     }
-    this.MF = paramb;
+    this.bsI = paramb;
+  }
+  
+  public final void aD(boolean paramBoolean)
+  {
+    if (this.bsH != null) {
+      this.bsH.R(paramBoolean);
+    }
   }
   
   public void b(SubMenu paramSubMenu) {}
   
   public View c(MenuItem paramMenuItem)
   {
-    return cw();
+    return dp();
   }
   
-  public abstract View cw();
+  public abstract View dp();
   
-  public boolean cx()
+  public boolean dq()
   {
     return false;
   }
   
-  public boolean cy()
+  public boolean dr()
   {
     return false;
   }
@@ -60,19 +65,20 @@ public abstract class b
     return true;
   }
   
-  public static abstract interface a
+  public final void reset()
   {
-    public abstract void N(boolean paramBoolean);
+    this.bsI = null;
+    this.bsH = null;
   }
   
-  public static abstract interface b
+  public static abstract interface a
   {
-    public abstract void cv();
+    public abstract void R(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.g.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.box.webview;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.qm;
+import com.tencent.mm.protocal.protobuf.rx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ad;
+import com.tencent.xweb.ag;
 
 public final class c
-  extends ad
+  extends ag
 {
-  private qm sog;
-  private e soo;
+  private rx vAe;
+  private e vAm;
   
-  public c(qm paramqm, e parame)
+  public c(rx paramrx, e parame)
   {
-    this.sog = paramqm;
-    this.soo = parame;
+    this.vAe = paramrx;
+    this.vAm = parame;
   }
   
   public final boolean a(WebView paramWebView, String paramString)

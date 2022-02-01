@@ -3,63 +3,67 @@ package com.tencent.mm.emoji.a;
 import android.graphics.RectF;
 import android.text.Spannable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cl.e;
+import com.tencent.mm.smiley.k;
 import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.neattextview.textview.layout.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/egg/ChattingViewProvider$Companion;", "", "()V", "getEmojiCenter", "Landroid/graphics/PointF;", "textView", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "getEmojiRect", "Landroid/graphics/RectF;", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/egg/ChattingViewProvider$Companion;", "", "()V", "getEmojiCenter", "Landroid/graphics/PointF;", "textView", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "getEmojiRect", "Landroid/graphics/RectF;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$a
 {
   static
   {
-    AppMethodBeat.i(225554);
-    jFK = new a();
-    AppMethodBeat.o(225554);
+    AppMethodBeat.i(242330);
+    mfx = new a();
+    AppMethodBeat.o(242330);
   }
   
   public static RectF a(MMNeat7extView paramMMNeat7extView)
   {
-    Object localObject1 = null;
-    AppMethodBeat.i(225552);
-    p.k(paramMMNeat7extView, "textView");
-    a locala = paramMMNeat7extView.getLayout();
-    Object localObject2 = paramMMNeat7extView.ikC();
-    paramMMNeat7extView = (MMNeat7extView)localObject2;
-    if (!(localObject2 instanceof Spannable)) {
-      paramMMNeat7extView = null;
-    }
-    paramMMNeat7extView = (Spannable)paramMMNeat7extView;
-    if ((locala != null) && (paramMMNeat7extView != null))
+    AppMethodBeat.i(242321);
+    s.u(paramMMNeat7extView, "textView");
+    Object localObject = paramMMNeat7extView.getLayout();
+    paramMMNeat7extView = paramMMNeat7extView.jPy();
+    int i;
+    if ((paramMMNeat7extView instanceof Spannable))
     {
-      paramMMNeat7extView = paramMMNeat7extView.getSpans(0, paramMMNeat7extView.length(), e.class);
-      p.j(paramMMNeat7extView, "ss.getSpans(0, ss.length, EmojiSpan::class.java)");
-      localObject2 = (e[])paramMMNeat7extView;
-      int j = localObject2.length;
-      int i = 0;
-      for (;;)
-      {
-        paramMMNeat7extView = localObject1;
-        if (i < j)
-        {
-          paramMMNeat7extView = localObject2[i];
-          if (!paramMMNeat7extView.UYu) {}
-        }
-        else
-        {
-          if (paramMMNeat7extView == null) {
-            break;
-          }
-          paramMMNeat7extView = paramMMNeat7extView.HXh;
-          AppMethodBeat.o(225552);
-          return paramMMNeat7extView;
-        }
-        i += 1;
+      paramMMNeat7extView = (Spannable)paramMMNeat7extView;
+      if ((localObject == null) || (paramMMNeat7extView == null)) {
+        break label122;
+      }
+      paramMMNeat7extView = paramMMNeat7extView.getSpans(0, paramMMNeat7extView.length(), k.class);
+      s.s(paramMMNeat7extView, "ss.getSpans(0, ss.length, EmojiSpan::class.java)");
+      localObject = (k[])paramMMNeat7extView;
+      int j = localObject.length;
+      i = 0;
+      label73:
+      if (i >= j) {
+        break label117;
+      }
+      paramMMNeat7extView = localObject[i];
+      if (!paramMMNeat7extView.acyj) {
+        break label110;
       }
     }
+    for (;;)
+    {
+      if (paramMMNeat7extView == null) {
+        break label122;
+      }
+      paramMMNeat7extView = paramMMNeat7extView.NTS;
+      AppMethodBeat.o(242321);
+      return paramMMNeat7extView;
+      paramMMNeat7extView = null;
+      break;
+      label110:
+      i += 1;
+      break label73;
+      label117:
+      paramMMNeat7extView = null;
+    }
+    label122:
     paramMMNeat7extView = new RectF();
-    AppMethodBeat.o(225552);
+    AppMethodBeat.o(242321);
     return paramMMNeat7extView;
   }
 }

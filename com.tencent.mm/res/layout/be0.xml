@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bb0" android:layout_width="fill_parent" android:layout_height="@dimen/cc"
+<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/kuu" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <SeekBar android:gravity="center" android:layout_gravity="center" android:id="@id/hgm" android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="@dimen/kb" android:max="100" android:progressDrawable="@drawable/al2" android:minHeight="@dimen/kb" android:thumb="@drawable/al3" android:thumbOffset="0.0dip" android:layout_weight="1.0" android:layout_marginStart="@dimen/bt" android:layout_marginEnd="@dimen/bt" />
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/kut" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:id="@android:id/title" android:layout_width="73.0dip" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:singleLine="true" style="@style/m4" />
+    <RadioGroup android:orientation="horizontal" android:id="@id/er7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

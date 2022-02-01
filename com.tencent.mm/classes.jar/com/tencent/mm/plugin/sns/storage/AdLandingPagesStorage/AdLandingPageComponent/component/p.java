@@ -1,137 +1,181 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.AnimatorSet.Builder;
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.mm.ad.i;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.sns.b.a;
+import com.tencent.mm.plugin.sns.b.e;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.data.m;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q;
+import com.tencent.mm.plugin.sns.storage.ai;
+import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class p
-  extends m
+public final class p
+  extends n
 {
-  protected g.a KqQ;
-  int clickCount = 0;
+  private TextView QPh;
+  private int QPi;
+  public int QPj;
+  AnimatorSet cis;
+  private ImageView fN;
   
-  public p(Context paramContext, aa paramaa, ViewGroup paramViewGroup)
+  public p(Context paramContext, q paramq, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramaa, paramViewGroup);
-    Object localObject = fRp();
-    paramContext = Util.nullAsNil(((ai)localObject).uxInfo);
-    int i = ((ai)localObject).Knp;
-    int j = ((ai)localObject).source;
-    long l = Util.safeParseLong(((ai)localObject).owd);
-    int k = paramaa.subType;
-    paramViewGroup = Util.nullAsNil(((ai)localObject).getViewId());
-    localObject = Util.nullAsNil(((ai)localObject).fQF());
-    String str = Util.nullAsNil(paramaa.KmB);
-    paramaa = Util.nullAsNil(paramaa.KmP);
-    this.KqQ = new g.a(paramContext, j, i, l, k, paramViewGroup, (String)localObject);
-    kP(str, paramaa);
+    super(paramContext, paramq, paramViewGroup);
+    AppMethodBeat.i(307161);
+    this.QPi = 0;
+    paramq.QKJ = 2.147484E+009F;
+    this.QPj = a.fromDPToPix(paramContext, 130);
+    AppMethodBeat.o(307161);
   }
   
-  private void kP(String paramString1, String paramString2)
+  public final void Gs()
   {
-    if (this.KqQ != null)
+    AppMethodBeat.i(307169);
+    this.fN = ((ImageView)this.contentView.findViewById(b.f.swip_icon));
+    this.QPh = ((TextView)this.contentView.findViewById(b.f.swip_txt));
+    Object localObject = this.fN;
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(localObject, "translationY", new float[] { 0.0F, -a.fromDPToPix(this.context, 12) });
+    localObjectAnimator1.setDuration(1000L);
+    localObjectAnimator1.setInterpolator(new AccelerateDecelerateInterpolator());
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(localObject, "alpha", new float[] { 0.0F, 0.8F });
+    localObjectAnimator2.setDuration(1000L);
+    localObject = ObjectAnimator.ofFloat(localObject, "alpha", new float[] { 0.8F, 0.0F });
+    ((ObjectAnimator)localObject).setDuration(500L);
+    this.cis = new AnimatorSet();
+    this.cis.play(localObjectAnimator1).with(localObjectAnimator2);
+    this.cis.play((Animator)localObject).after(localObjectAnimator1);
+    this.cis.addListener(new p.2(this));
+    this.cis.start();
+    if (((q)this.QOV).QKK)
     {
-      this.KqQ.kQ("cid", paramString1);
-      this.KqQ.kQ("jumpExtInfo", paramString2);
+      this.QPh.setTextColor(Color.parseColor("#CC000000"));
+      this.fN.setImageResource(b.e.ad_landing_pages_bottom_swipe_black_icon);
     }
-  }
-  
-  public final void a(aa paramaa, ai paramai)
-  {
-    if ((paramai == null) || (paramaa == null) || (this.KqQ == null)) {
+    for (;;)
+    {
+      this.contentView.findViewById(b.f.click_area).setOnClickListener(new p.1(this));
+      AppMethodBeat.o(307169);
       return;
-    }
-    String str1 = Util.nullAsNil(paramai.uxInfo);
-    int i = paramai.Knp;
-    int j = paramai.source;
-    long l = Util.safeParseLong(paramai.owd);
-    int k = paramaa.subType;
-    String str2 = Util.nullAsNil(paramai.getViewId());
-    String str3 = Util.nullAsNil(paramai.fQF());
-    paramai = Util.nullAsNil(paramaa.KmB);
-    paramaa = Util.nullAsNil(paramaa.KmP);
-    g.a locala = this.KqQ;
-    try
-    {
-      locala.Kqa.g("uxinfo", str1);
-      locala.Kqa.al("scene", j);
-      locala.Kqa.al("originScene", i);
-      locala.Kqa.s("canvasId", l);
-      locala.Kqa.al("type", 21);
-      locala.Kqa.al("subType", k);
-      locala.Kqa.al("action", 1);
-      if (!Util.isNullOrNil(new String[] { str2, str3 }))
-      {
-        locala.Kqa.g("viewid", str2);
-        locala.Kqa.g("commInfo", str3);
-      }
-      kP(paramai, paramaa);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.e("NetSceneAdLadingPageClick", "updateRetInfo exp=" + localException.toString());
-      }
+      this.QPh.setTextColor(Color.parseColor("#CCFFFFFF"));
+      this.fN.setImageResource(b.e.ad_landing_pages_bottom_swipe_white_icon);
     }
   }
   
-  public final boolean by(JSONObject paramJSONObject)
+  public final boolean bP(JSONObject paramJSONObject)
   {
-    if (!super.by(paramJSONObject)) {
+    AppMethodBeat.i(307193);
+    if (!super.bP(paramJSONObject))
+    {
+      Log.e("AdLandingPageBottomSwipeComponet", "setComponentKVReportData super failed");
+      AppMethodBeat.o(307193);
       return false;
     }
     try
     {
-      paramJSONObject.put("clickCount", this.clickCount);
-      aa localaa = this.KqB;
-      if (localaa != null) {}
-      for (int i = localaa.subType;; i = 0)
-      {
-        paramJSONObject.putOpt("subType", Integer.valueOf(i));
-        return true;
-      }
-      return false;
+      paramJSONObject.put("jumpCount", this.QPi);
+      Log.i("AdLandingPageBottomSwipeComponet", "setComponentKVReportData json=" + paramJSONObject.toString());
+      AppMethodBeat.o(307193);
+      return true;
     }
-    catch (JSONException paramJSONObject)
+    catch (Exception paramJSONObject)
     {
-      Log.printErrStackTrace("MicroMsg.Sns.AdLandingPageBtnBaseComp", paramJSONObject, "", new Object[0]);
+      Log.e("AdLandingPageBottomSwipeComponet", "setComponentKVReportData exp=" + paramJSONObject.toString());
+      AppMethodBeat.o(307193);
     }
+    return false;
   }
   
-  protected final void fKi()
+  protected final int getLayout()
   {
-    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.KqB.paddingLeft, (int)this.KqB.paddingTop, (int)this.KqB.paddingRight, (int)this.KqB.paddingBottom);
+    return b.g.sns_ad_native_landing_pages_item_bottom_swipe;
+  }
+  
+  protected final void had()
+  {
+    AppMethodBeat.i(307178);
+    if ((this.QPh == null) || (this.fN == null) || ((q)this.QOV == null))
+    {
+      AppMethodBeat.o(307178);
+      return;
     }
-    this.contentView.setLayoutParams(localLayoutParams);
+    if (!TextUtils.isEmpty(((q)this.QOV).QJM)) {
+      this.QPh.setText(((q)this.QOV).QJM);
+    }
+    AppMethodBeat.o(307178);
   }
   
-  protected void fRc()
+  protected final void hal()
   {
-    this.KqQ.report("13387");
+    AppMethodBeat.i(307174);
+    Object localObject = this.contentView.getLayoutParams();
+    if ((localObject instanceof ViewGroup.MarginLayoutParams))
+    {
+      localObject = (ViewGroup.MarginLayoutParams)localObject;
+      ((ViewGroup.MarginLayoutParams)localObject).setMargins((int)((q)this.QOV).paddingLeft, (int)((q)this.QOV).paddingTop, (int)((q)this.QOV).paddingRight, (int)((q)this.QOV).paddingBottom);
+      this.contentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    AppMethodBeat.o(307174);
   }
   
-  protected final void fRt()
+  public final void has()
   {
-    this.clickCount += 1;
+    AppMethodBeat.i(307189);
+    super.has();
+    this.cis.removeAllListeners();
+    AppMethodBeat.o(307189);
+  }
+  
+  public final void hjq()
+  {
+    AppMethodBeat.i(307184);
+    this.QPi += 1;
+    if ((this.context instanceof SnsAdNativeLandingPagesUI)) {
+      try
+      {
+        int i = ((q)this.QOV).QJN;
+        Log.i("AdLandingPageBottomSwipeComponet", "doJump, swipCount=" + this.QPi + ", actionType=" + i);
+        if (i == 0)
+        {
+          SnsAdNativeLandingPagesUI localSnsAdNativeLandingPagesUI = (SnsAdNativeLandingPagesUI)this.context;
+          long l = ai.aXe(localSnsAdNativeLandingPagesUI.getIntent().getStringExtra("sns_landing_pages_share_sns_id"));
+          i = localSnsAdNativeLandingPagesUI.getIntent().getIntExtra("sns_landig_pages_from_source", 0);
+          String str = ((q)this.QOV).jumpUrl;
+          m.a(this.context, str, hjn(), i, l, ((q)this.QOV).QKG);
+          localSnsAdNativeLandingPagesUI.overridePendingTransition(b.a.push_up_in, b.a.anim_not_change);
+        }
+        AppMethodBeat.o(307184);
+        return;
+      }
+      finally
+      {
+        Log.e("AdLandingPageBottomSwipeComponet", "doJump exp=" + localObject.toString());
+      }
+    }
+    AppMethodBeat.o(307184);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.p
  * JD-Core Version:    0.7.0.1
  */

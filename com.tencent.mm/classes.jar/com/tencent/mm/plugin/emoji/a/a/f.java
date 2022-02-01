@@ -2,41 +2,43 @@ package com.tencent.mm.plugin.emoji.a.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ajw;
-import com.tencent.mm.protocal.protobuf.akh;
+import com.tencent.mm.protocal.protobuf.anj;
+import com.tencent.mm.protocal.protobuf.aoi;
+import com.tencent.mm.protocal.protobuf.cjb;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bj;
 
 public final class f
 {
-  public int IB;
+  public int boE;
   public int mStatus;
-  public a uAZ;
-  public akh uBa;
-  public ajw uBb;
-  public int uBc;
-  public String uBd;
-  public boolean uBe;
-  public boolean uBf = true;
-  public boolean uBg = false;
+  public f.a xHD;
+  public cjb xHE;
+  public anj xHF;
+  public aoi xHG;
+  public int xHH;
+  public String xHI;
+  public boolean xHJ;
+  public boolean xHK = true;
+  public boolean xHL = false;
   
-  public f(ajw paramajw)
+  public f(anj paramanj)
   {
-    this.uBb = paramajw;
-    this.uAZ = a.uBi;
+    this.xHF = paramanj;
+    this.xHD = f.a.xHN;
   }
   
-  public f(akh paramakh)
+  public f(cjb paramcjb)
   {
-    this.uBa = paramakh;
-    this.uAZ = a.uBh;
+    this.xHE = paramcjb;
+    this.xHD = f.a.xHM;
   }
   
-  public final void a(boolean paramBoolean1, bh parambh, boolean paramBoolean2)
+  public final void a(boolean paramBoolean1, bj parambj, boolean paramBoolean2)
   {
     AppMethodBeat.i(108382);
-    akh localakh = this.uBa;
-    if (localakh == null)
+    cjb localcjb = this.xHE;
+    if (localcjb == null)
     {
       AppMethodBeat.o(108382);
       return;
@@ -47,45 +49,55 @@ public final class f
       AppMethodBeat.o(108382);
       return;
     }
-    paramBoolean2 = e.a(localakh);
-    boolean bool1 = e.b(localakh);
-    boolean bool2 = e.e(localakh);
-    boolean bool3 = TextUtils.isEmpty(localakh.Tex);
+    paramBoolean2 = e.a(localcjb);
+    boolean bool1 = e.b(localcjb);
+    boolean bool2 = e.e(localcjb);
+    boolean bool3 = TextUtils.isEmpty(localcjb.akkc);
+    boolean bool4 = e.gO(localcjb.akke, 128);
+    boolean bool5 = e.g(localcjb);
     if ((bool2) && (bool1)) {
       setStatus(8);
     }
     for (;;)
     {
-      if ((paramBoolean1) && (parambh != null) && (!Util.isNullOrNil(parambh.VFu)))
+      if ((paramBoolean1) && (parambj != null) && (!Util.isNullOrNil(parambj.adjh)))
       {
-        this.uBa.Tex = parambh.VFu;
-        this.uBa.VHC = parambh.VFt;
-        this.uBa.SuH = parambh.VFs;
+        this.xHE.akkc = parambj.adjh;
+        this.xHE.akkj = parambj.adjg;
+        this.xHE.Zuw = parambj.adjf;
       }
       AppMethodBeat.o(108382);
       return;
-      if (paramBoolean2)
+      if (bool5)
+      {
+        setStatus(-2);
+      }
+      else if (paramBoolean2)
       {
         setStatus(3);
         if ((bool1) || ((!paramBoolean1) && (bool3))) {
-          this.uBc = 0;
+          this.xHH = 0;
         } else {
-          this.uBc = 1;
+          this.xHH = 1;
         }
+      }
+      else if (bool4)
+      {
+        setStatus(20);
       }
       else if ((bool1) || ((!paramBoolean1) && (bool3)))
       {
         setStatus(3);
-        this.uBc = 0;
+        this.xHH = 0;
       }
       else
       {
-        this.uBc = 1;
-        if ((paramBoolean1) && (parambh != null)) {}
-        switch (parambh.VFq)
+        this.xHH = 1;
+        if ((paramBoolean1) && (parambj != null)) {}
+        switch (parambj.adjd)
         {
         default: 
-          if ((parambh.VFo != 7) && (parambh.VFo != 6) && (parambh.VFo != 3)) {
+          if ((parambj.adjb != 7) && (parambj.adjb != 6) && (parambj.adjb != 3)) {
             setStatus(10);
           }
           break;
@@ -108,24 +120,10 @@ public final class f
   
   public final void setStatus(int paramInt)
   {
-    if ((paramInt == 7) && (this.mStatus == 6) && (this.uBf)) {
-      this.uBe = true;
+    if ((paramInt == 7) && (this.mStatus == 6) && (this.xHK)) {
+      this.xHJ = true;
     }
     this.mStatus = paramInt;
-  }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(108381);
-      uBh = new a("summary", 0);
-      uBi = new a("cellset", 1);
-      uBj = new a[] { uBh, uBi };
-      AppMethodBeat.o(108381);
-    }
-    
-    private a() {}
   }
 }
 

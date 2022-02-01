@@ -3,14 +3,17 @@ package com.tencent.mm.plugin.location.model;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.autogen.b.fi;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelimage.j;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.pluginsdk.location.c;
 import com.tencent.mm.pluginsdk.location.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.storage.ca.b;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.storage.cc.c;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -18,26 +21,26 @@ import java.util.HashSet;
 public final class l
   implements c
 {
-  HashMap<Long, WeakReference<ImageView>> EjO;
-  HashMap<Long, ca.b> EjP;
-  HashMap<Long, WeakReference<ProgressBar>> EjQ;
-  HashMap<Long, WeakReference<ImageView>> EjR;
-  HashMap<ca.b, ca> EjS;
-  HashMap<Long, Integer> EjT;
-  HashSet<Long> EjU;
+  HashMap<Long, WeakReference<ImageView>> KcA;
+  HashMap<cc.c, cc> KcB;
+  HashMap<Long, Integer> KcC;
+  HashSet<Long> KcD;
+  HashMap<Long, WeakReference<ImageView>> Kcx;
+  HashMap<Long, cc.c> Kcy;
+  HashMap<Long, WeakReference<ProgressBar>> Kcz;
   int h;
   int w;
   
   public l()
   {
     AppMethodBeat.i(55708);
-    this.EjO = new HashMap();
-    this.EjP = new HashMap();
-    this.EjQ = new HashMap();
-    this.EjR = new HashMap();
-    this.EjS = new HashMap();
-    this.EjT = new HashMap();
-    this.EjU = new HashSet();
+    this.Kcx = new HashMap();
+    this.Kcy = new HashMap();
+    this.Kcz = new HashMap();
+    this.KcA = new HashMap();
+    this.KcB = new HashMap();
+    this.KcC = new HashMap();
+    this.KcD = new HashSet();
     this.w = 300;
     this.h = 300;
     start();
@@ -52,27 +55,27 @@ public final class l
       AppMethodBeat.o(55711);
       return;
     }
-    if (!this.EjP.containsKey(Long.valueOf(paramd.QSA)))
+    if (!this.Kcy.containsKey(Long.valueOf(paramd.itemId)))
     {
       AppMethodBeat.o(55711);
       return;
     }
-    paramd = (ca.b)this.EjP.get(Long.valueOf(paramd.QSA));
-    paramd = (ca)this.EjS.remove(paramd);
+    paramd = (cc.c)this.Kcy.get(Long.valueOf(paramd.itemId));
+    paramd = (cc)this.KcB.remove(paramd);
     if (paramd == null)
     {
       AppMethodBeat.o(55711);
       return;
     }
-    this.EjO.get(Long.valueOf(paramd.field_msgId));
-    if ((paramd != null) && ((paramd.iln < 0) || (paramd.iln > 5)))
+    this.Kcx.get(Long.valueOf(paramd.field_msgId));
+    if ((paramd != null) && ((paramd.kLm < 0) || (paramd.kLm > 5)))
     {
       paramd.pZ(0);
-      paramd.pZ(paramd.iln + 1);
-      if (h.aHB())
+      paramd.pZ(paramd.kLm + 1);
+      if (h.baz())
       {
-        ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().a(paramd.field_msgId, paramd);
-        Log.i("MicroMsg.StaticMapMsgLogic", "on error count %d", new Object[] { Integer.valueOf(paramd.iln) });
+        ((n)h.ax(n.class)).gaZ().a(paramd.field_msgId, paramd);
+        Log.i("MicroMsg.StaticMapMsgLogic", "on error count %d", new Object[] { Integer.valueOf(paramd.kLm) });
       }
     }
     AppMethodBeat.o(55711);
@@ -86,39 +89,39 @@ public final class l
       AppMethodBeat.o(55710);
       return;
     }
-    if (!this.EjP.containsKey(Long.valueOf(paramd.QSA)))
+    if (!this.Kcy.containsKey(Long.valueOf(paramd.itemId)))
     {
       AppMethodBeat.o(55710);
       return;
     }
-    paramd = (ca.b)this.EjP.get(Long.valueOf(paramd.QSA));
-    paramd = (ca)this.EjS.remove(paramd);
+    paramd = (cc.c)this.Kcy.get(Long.valueOf(paramd.itemId));
+    paramd = (cc)this.KcB.remove(paramd);
     if (paramd == null)
     {
       AppMethodBeat.o(55710);
       return;
     }
-    WeakReference localWeakReference = (WeakReference)this.EjO.get(Long.valueOf(paramd.field_msgId));
+    WeakReference localWeakReference = (WeakReference)this.Kcx.get(Long.valueOf(paramd.field_msgId));
     if ((localWeakReference == null) || (localWeakReference.get() == null))
     {
       AppMethodBeat.o(55710);
       return;
     }
-    if (!this.EjT.containsKey(Long.valueOf(paramd.field_msgId)))
+    if (!this.KcC.containsKey(Long.valueOf(paramd.field_msgId)))
     {
       AppMethodBeat.o(55710);
       return;
     }
-    int i = ((Integer)this.EjT.remove(Long.valueOf(paramd.field_msgId))).intValue();
+    int i = ((Integer)this.KcC.remove(Long.valueOf(paramd.field_msgId))).intValue();
     if (paramd.field_isSend == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ((ImageView)localWeakReference.get()).setImageBitmap(q.bmh().a(paramd.field_msgId, paramString, i, this.w, this.h, bool));
-      paramString = (WeakReference)this.EjQ.remove(Long.valueOf(paramd.field_msgId));
+      ((ImageView)localWeakReference.get()).setImageBitmap(r.bKa().a(paramd.field_msgId, paramString, i, this.w, this.h, bool));
+      paramString = (WeakReference)this.Kcz.remove(Long.valueOf(paramd.field_msgId));
       if ((paramString != null) && (paramString.get() != null)) {
         ((ProgressBar)paramString.get()).setVisibility(8);
       }
-      paramString = (WeakReference)this.EjR.remove(Long.valueOf(paramd.field_msgId));
+      paramString = (WeakReference)this.KcA.remove(Long.valueOf(paramd.field_msgId));
       if ((paramString != null) && (paramString.get() != null)) {
         ((ImageView)paramString.get()).setVisibility(0);
       }
@@ -130,7 +133,7 @@ public final class l
   final void start()
   {
     AppMethodBeat.i(55709);
-    n.eMh().a(this);
+    SubCoreLocation.fUz().a(this);
     AppMethodBeat.o(55709);
   }
 }

@@ -1,85 +1,79 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
 
 public final class euq
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int Uwk;
-  public b Uwl;
-  public b Uwm;
+  public String title;
+  public String wording;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(196330);
+    AppMethodBeat.i(123644);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.Uwk);
-      if (this.Uwl != null) {
-        paramVarArgs.c(2, this.Uwl);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.wording != null) {
+        paramVarArgs.g(1, this.wording);
       }
-      if (this.Uwm != null) {
-        paramVarArgs.c(3, this.Uwm);
+      if (this.title != null) {
+        paramVarArgs.g(2, this.title);
       }
-      AppMethodBeat.o(196330);
+      AppMethodBeat.o(123644);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.wording == null) {
+        break label270;
+      }
+    }
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.wording) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(1, this.Uwk) + 0;
-      paramInt = i;
-      if (this.Uwl != null) {
-        paramInt = i + g.a.a.b.b.a.b(2, this.Uwl);
+      int i = paramInt;
+      if (this.title != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.title);
       }
-      i = paramInt;
-      if (this.Uwm != null) {
-        i = paramInt + g.a.a.b.b.a.b(3, this.Uwm);
-      }
-      AppMethodBeat.o(196330);
+      AppMethodBeat.o(123644);
       return i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(196330);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      euq localeuq = (euq)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(196330);
-        return -1;
-      case 1: 
-        localeuq.Uwk = locala.abFh.AK();
-        AppMethodBeat.o(196330);
-        return 0;
-      case 2: 
-        localeuq.Uwl = locala.abFh.iUw();
-        AppMethodBeat.o(196330);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(123644);
         return 0;
       }
-      localeuq.Uwm = locala.abFh.iUw();
-      AppMethodBeat.o(196330);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        euq localeuq = (euq)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(123644);
+          return -1;
+        case 1: 
+          localeuq.wording = locala.ajGk.readString();
+          AppMethodBeat.o(123644);
+          return 0;
+        }
+        localeuq.title = locala.ajGk.readString();
+        AppMethodBeat.o(123644);
+        return 0;
+      }
+      AppMethodBeat.o(123644);
+      return -1;
     }
-    AppMethodBeat.o(196330);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.euq
  * JD-Core Version:    0.7.0.1
  */

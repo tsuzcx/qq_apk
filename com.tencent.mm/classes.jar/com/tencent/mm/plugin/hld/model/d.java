@@ -1,24 +1,21 @@
 package com.tencent.mm.plugin.hld.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/ImeDataType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "General", "Dicts", "Emoji", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/ImeDataType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "General", "Dicts", "Emoji", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum d
 {
   public final int value;
   
   static
   {
-    AppMethodBeat.i(210922);
-    d locald1 = new d("General", 0, 0);
-    DBA = locald1;
-    d locald2 = new d("Dicts", 1, 1);
-    DBB = locald2;
-    d locald3 = new d("Emoji", 2, 2);
-    DBC = locald3;
-    DBD = new d[] { locald1, locald2, locald3 };
-    AppMethodBeat.o(210922);
+    AppMethodBeat.i(311895);
+    Juz = new d("General", 0, 0);
+    JuA = new d("Dicts", 1, 1);
+    JuB = new d("Emoji", 2, 2);
+    JuC = new d[] { Juz, JuA, JuB };
+    AppMethodBeat.o(311895);
   }
   
   private d(int paramInt)

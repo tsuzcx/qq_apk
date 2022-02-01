@@ -1,35 +1,18 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFoldedFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "id", "", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;J)V", "getFeedObject", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderFeedTextCard;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ag
-  implements bu
+  extends v
 {
-  public final int a(k paramk)
+  public ag(FinderItem paramFinderItem)
   {
-    AppMethodBeat.i(280746);
-    p.k(paramk, "obj");
-    if ((paramk instanceof ag))
-    {
-      AppMethodBeat.o(280746);
-      throw null;
-    }
-    AppMethodBeat.o(280746);
-    return -1;
-  }
-  
-  public final int bAQ()
-  {
-    return 2017;
-  }
-  
-  public final long mf()
-  {
-    throw null;
+    super(paramFinderItem);
+    AppMethodBeat.i(166387);
+    AppMethodBeat.o(166387);
   }
 }
 

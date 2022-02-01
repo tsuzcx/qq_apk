@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="oval">
-            <solid android:color="@color/a5r" />
-            <size android:height="16.0dip" android:width="16.0dip" />
-        </shape>
-    </item>
-    <item android:gravity="center" android:height="15.0dip" android:width="15.0dip" android:drawable="@raw/icons_filled_live_checkbox" />
-</layer-list>
+    <gradient android:startColor="@color/ad9" android:endColor="@color/ad7" android:angle="270.0" android:type="linear" />
+    <corners android:radius="2.0dip" />
+</shape>

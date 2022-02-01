@@ -1,61 +1,67 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
 
 public final class crp
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int key;
-  public int value;
+  public int Tps;
+  public b ZQU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(229732);
+    AppMethodBeat.i(258723);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.key);
-      paramVarArgs.aY(2, this.value);
-      AppMethodBeat.o(229732);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.Tps);
+      if (this.ZQU != null) {
+        paramVarArgs.d(2, this.ZQU);
+      }
+      AppMethodBeat.o(258723);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bM(1, this.key);
-      int i = g.a.a.b.b.a.bM(2, this.value);
-      AppMethodBeat.o(229732);
-      return paramInt + 0 + i;
+      int i = i.a.a.b.b.a.cJ(1, this.Tps) + 0;
+      paramInt = i;
+      if (this.ZQU != null) {
+        paramInt = i + i.a.a.b.b.a.c(2, this.ZQU);
+      }
+      AppMethodBeat.o(258723);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(229732);
+      AppMethodBeat.o(258723);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       crp localcrp = (crp)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(229732);
+        AppMethodBeat.o(258723);
         return -1;
       case 1: 
-        localcrp.key = locala.abFh.AK();
-        AppMethodBeat.o(229732);
+        localcrp.Tps = locala.ajGk.aar();
+        AppMethodBeat.o(258723);
         return 0;
       }
-      localcrp.value = locala.abFh.AK();
-      AppMethodBeat.o(229732);
+      localcrp.ZQU = locala.ajGk.kFX();
+      AppMethodBeat.o(258723);
       return 0;
     }
-    AppMethodBeat.o(229732);
+    AppMethodBeat.o(258723);
     return -1;
   }
 }

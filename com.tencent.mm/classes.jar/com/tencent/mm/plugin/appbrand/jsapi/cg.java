@@ -1,18 +1,38 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
 import android.content.Intent;
-import com.tencent.luggage.k.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.wallet.e;
 import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONObject;
 
-public final class cg
-  extends c<j>
+final class cg
+  extends c
 {
-  public static final int CTRL_INDEX = 617;
-  public static final String NAME = "openWCPayLQTSave";
+  public static final int CTRL_INDEX = 982;
+  public static final String NAME = "openWCExDeviceList";
+  
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  {
+    AppMethodBeat.i(325532);
+    Log.i("MicroMsg.JsApiOpenWCExDeviceList", "invoke JsApiOpenWCExDeviceList!");
+    if (paramf == null)
+    {
+      Log.e("MicroMsg.JsApiOpenWCExDeviceList", "fail:component is null");
+      AppMethodBeat.o(325532);
+      return;
+    }
+    if (paramf.getContext() == null)
+    {
+      Log.e("MicroMsg.JsApiOpenWCExDeviceList", "fail:context is null");
+      paramf.callback(paramInt, ZP("fail"));
+      AppMethodBeat.o(325532);
+      return;
+    }
+    paramJSONObject = new Intent();
+    com.tencent.mm.br.c.b(paramf.getContext(), "exdevice", ".ui.ExdeviceManageDeviceUI", paramJSONObject);
+    paramf.callback(paramInt, ZP("ok"));
+    AppMethodBeat.o(325532);
+  }
 }
 
 

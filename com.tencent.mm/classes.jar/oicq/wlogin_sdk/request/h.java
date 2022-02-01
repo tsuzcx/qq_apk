@@ -10,44 +10,44 @@ public final class h
 {
   public h(i parami)
   {
-    this.abFM = 2064;
-    this.abFN = 3;
-    this.abFP = parami;
+    this.ajGQ = 2064;
+    this.ajGR = 3;
+    this.ajGT = parami;
   }
   
-  public final int ad(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int ab(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88076);
     f localf = new f();
     g localg = new g();
-    paramInt2 = super.al(paramArrayOfByte, paramInt1 + 2);
-    super.iUG();
+    paramInt2 = super.am(paramArrayOfByte, paramInt1 + 2);
+    super.kGh();
     int j = paramInt1 + 5;
     switch (paramInt2)
     {
     case 3: 
     case 4: 
     default: 
-      ac(paramArrayOfByte, j, this.abFB - j - 1);
+      aa(paramArrayOfByte, j, this.ajGF - j - 1);
       paramInt1 = paramInt2;
     }
     for (;;)
     {
       AppMethodBeat.o(88076);
       return paramInt1;
-      int i = localf.ag(paramArrayOfByte, j, this.abFB - j);
+      int i = localf.ae(paramArrayOfByte, j, this.ajGF - j);
       paramInt1 = i;
       if (i >= 0)
       {
-        this.abFP.abFU = localf;
-        i = localg.ag(paramArrayOfByte, j, this.abFB - j);
+        this.ajGT.ajGY = localf;
+        i = localg.ae(paramArrayOfByte, j, this.ajGF - j);
         paramInt1 = i;
         if (i >= 0)
         {
-          this.abFP.abFV = localg;
+          this.ajGT.ajGZ = localg;
           paramInt1 = paramInt2;
           continue;
-          super.ac(paramArrayOfByte, j, this.abFB - j - 1);
+          super.aa(paramArrayOfByte, j, this.ajGF - j - 1);
           paramInt1 = paramInt2;
         }
       }
@@ -56,7 +56,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.request.h
  * JD-Core Version:    0.7.0.1
  */

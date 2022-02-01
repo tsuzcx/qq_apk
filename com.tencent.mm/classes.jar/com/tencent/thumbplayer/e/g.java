@@ -19,66 +19,66 @@ import java.util.Iterator;
 public final class g
   implements TPNetworkChangeMonitor.b, e.a
 {
-  private HashMap<Integer, b> ZCA;
-  private int ZCx;
-  private String ZCy;
-  private int ZCz;
+  private int ahHA;
+  private String ahHB;
+  private int ahHC;
+  private HashMap<Integer, b> ahHD;
   
   private g()
   {
-    AppMethodBeat.i(220560);
-    this.ZCx = 0;
-    this.ZCy = "";
-    this.ZCz = 0;
-    if (this.ZCA == null) {
-      this.ZCA = new HashMap();
+    AppMethodBeat.i(227028);
+    this.ahHA = 0;
+    this.ahHB = "";
+    this.ahHC = 0;
+    if (this.ahHD == null) {
+      this.ahHD = new HashMap();
     }
     e.a(this);
-    TPNetworkChangeMonitor.irQ().a(this);
-    AppMethodBeat.o(220560);
+    TPNetworkChangeMonitor.kbq().a(this);
+    AppMethodBeat.o(227028);
   }
   
-  private void aBi(int paramInt)
+  private void aHV(int paramInt)
   {
-    AppMethodBeat.i(220569);
-    Iterator localIterator = this.ZCA.values().iterator();
+    AppMethodBeat.i(227032);
+    Iterator localIterator = this.ahHD.values().iterator();
     while (localIterator.hasNext()) {
       ((b)localIterator.next()).pushEvent(paramInt);
     }
-    AppMethodBeat.o(220569);
+    AppMethodBeat.o(227032);
   }
   
-  private void ip(String paramString, int paramInt)
+  private void jC(String paramString, int paramInt)
   {
-    AppMethodBeat.i(220571);
-    this.ZCy = paramString;
-    this.ZCz = paramInt;
-    Iterator localIterator = this.ZCA.values().iterator();
+    AppMethodBeat.i(227037);
+    this.ahHB = paramString;
+    this.ahHC = paramInt;
+    Iterator localIterator = this.ahHD.values().iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      localb.iqY().setUserData("carrier_pesudo_code", paramString);
-      localb.iqY().setUserData("carrier_pesudo_state", Integer.valueOf(paramInt));
+      localb.kau().setUserData("carrier_pesudo_code", paramString);
+      localb.kau().setUserData("carrier_pesudo_state", Integer.valueOf(paramInt));
     }
-    AppMethodBeat.o(220571);
+    AppMethodBeat.o(227037);
   }
   
-  public final b aBh(int paramInt)
+  public final b aHU(int paramInt)
   {
-    AppMethodBeat.i(220564);
+    AppMethodBeat.i(227051);
     if (paramInt < 0)
     {
-      AppMethodBeat.o(220564);
+      AppMethodBeat.o(227051);
       return null;
     }
-    if (this.ZCA.containsKey(Integer.valueOf(paramInt)))
+    if (this.ahHD.containsKey(Integer.valueOf(paramInt)))
     {
-      localObject = (b)this.ZCA.get(Integer.valueOf(paramInt));
-      AppMethodBeat.o(220564);
-      return localObject;
+      localObject1 = (b)this.ahHD.get(Integer.valueOf(paramInt));
+      AppMethodBeat.o(227051);
+      return localObject1;
     }
-    Object localObject = TPDownloadProxyFactory.getTPDownloadProxy(paramInt);
-    if (localObject != null) {}
+    Object localObject1 = TPDownloadProxyFactory.getTPDownloadProxy(paramInt);
+    if (localObject1 != null) {}
     for (;;)
     {
       int i;
@@ -86,144 +86,144 @@ public final class g
       {
         Context localContext1 = TPPlayerMgr.getAppContext();
         Context localContext2 = TPPlayerMgr.getAppContext();
-        if (((ITPDownloadProxy)localObject).init(localContext1, new TPDLProxyInitParam(a.getPlatform(), a.getAppVersionName(localContext2), a.getGuid(), a.iqL(), a.iqM(), a.iqN())) < 0)
+        if (((ITPDownloadProxy)localObject1).init(localContext1, new TPDLProxyInitParam(a.getPlatform(), a.getAppVersionName(localContext2), a.getGuid(), a.kah(), a.kai(), a.kaj())) < 0)
         {
-          com.tencent.thumbplayer.utils.g.i("TPProxyGlobalManager", "downloadProxy init failed with status:".concat(String.valueOf(localObject)));
-          AppMethodBeat.o(220564);
+          com.tencent.thumbplayer.utils.g.i("TPProxyGlobalManager", "downloadProxy init failed with status:".concat(String.valueOf(localObject1)));
+          AppMethodBeat.o(227051);
           return null;
         }
-        ((ITPDownloadProxy)localObject).setLogListener(new ITPDLProxyLogListener()
+        ((ITPDownloadProxy)localObject1).setLogListener(new ITPDLProxyLogListener()
         {
           public final int d(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, String paramAnonymousString3)
           {
-            AppMethodBeat.i(220546);
+            AppMethodBeat.i(227040);
             com.tencent.thumbplayer.utils.g.d(paramAnonymousString2, "[" + paramAnonymousString1 + ":" + paramAnonymousInt + "] " + paramAnonymousString3);
-            AppMethodBeat.o(220546);
+            AppMethodBeat.o(227040);
             return 0;
           }
           
           public final int e(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, String paramAnonymousString3)
           {
-            AppMethodBeat.i(220552);
+            AppMethodBeat.i(227062);
             com.tencent.thumbplayer.utils.g.e(paramAnonymousString2, "[" + paramAnonymousString1 + ":" + paramAnonymousInt + "] " + paramAnonymousString3);
-            AppMethodBeat.o(220552);
+            AppMethodBeat.o(227062);
             return 0;
           }
           
           public final int i(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, String paramAnonymousString3)
           {
-            AppMethodBeat.i(220549);
+            AppMethodBeat.i(227049);
             com.tencent.thumbplayer.utils.g.i(paramAnonymousString2, "[" + paramAnonymousString1 + ":" + paramAnonymousInt + "] " + paramAnonymousString3);
-            AppMethodBeat.o(220549);
+            AppMethodBeat.o(227049);
             return 0;
           }
           
           public final int w(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, String paramAnonymousString3)
           {
-            AppMethodBeat.i(220550);
+            AppMethodBeat.i(227053);
             com.tencent.thumbplayer.utils.g.w(paramAnonymousString2, "[" + paramAnonymousString1 + ":" + paramAnonymousInt + "] " + paramAnonymousString3);
-            AppMethodBeat.o(220550);
+            AppMethodBeat.o(227053);
             return 0;
           }
         });
-        i = TPNetworkChangeMonitor.bih();
+        i = TPNetworkChangeMonitor.bFQ();
         if (i == 1)
         {
-          ((ITPDownloadProxy)localObject).pushEvent(1);
-          ((ITPDownloadProxy)localObject).pushEvent(10);
-          ((ITPDownloadProxy)localObject).pushEvent(this.ZCx);
-          ((ITPDownloadProxy)localObject).setUserData("carrier_pesudo_code", this.ZCy);
-          ((ITPDownloadProxy)localObject).setUserData("carrier_pesudo_state", Integer.valueOf(this.ZCz));
-          localObject = new h((ITPDownloadProxy)localObject);
-          this.ZCA.put(Integer.valueOf(paramInt), localObject);
-          AppMethodBeat.o(220564);
-          return localObject;
+          ((ITPDownloadProxy)localObject1).pushEvent(1);
+          ((ITPDownloadProxy)localObject1).pushEvent(10);
+          ((ITPDownloadProxy)localObject1).pushEvent(this.ahHA);
+          ((ITPDownloadProxy)localObject1).setUserData("carrier_pesudo_code", this.ahHB);
+          ((ITPDownloadProxy)localObject1).setUserData("carrier_pesudo_state", Integer.valueOf(this.ahHC));
+          localObject1 = new h((ITPDownloadProxy)localObject1);
+          this.ahHD.put(Integer.valueOf(paramInt), localObject1);
+          AppMethodBeat.o(227051);
+          return localObject1;
         }
         if (i != 2) {
           break label279;
         }
-        ((ITPDownloadProxy)localObject).pushEvent(2);
-        ((ITPDownloadProxy)localObject).pushEvent(9);
+        ((ITPDownloadProxy)localObject1).pushEvent(2);
+        ((ITPDownloadProxy)localObject1).pushEvent(9);
         continue;
-        AppMethodBeat.o(220564);
+        AppMethodBeat.o(227051);
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        com.tencent.thumbplayer.utils.g.i("TPProxyGlobalManager", "init proxy failed:".concat(String.valueOf(localThrowable)));
+        com.tencent.thumbplayer.utils.g.i("TPProxyGlobalManager", "init proxy failed:".concat(String.valueOf(localObject2)));
       }
       return null;
       label279:
       if (i == 3)
       {
-        localThrowable.pushEvent(2);
-        localThrowable.pushEvent(10);
+        localObject2.pushEvent(2);
+        localObject2.pushEvent(10);
       }
     }
   }
   
   public final void d(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    AppMethodBeat.i(220565);
+    AppMethodBeat.i(227060);
     com.tencent.thumbplayer.utils.g.i("TPProxyGlobalManager", "onEvent eventId: " + paramInt1 + ", arg1: " + paramInt2 + ", arg2: " + paramInt3 + ", object" + paramObject);
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(220565);
+      AppMethodBeat.o(227060);
       return;
-      this.ZCx = 13;
-      aBi(13);
-      AppMethodBeat.o(220565);
+      this.ahHA = 13;
+      aHV(13);
+      AppMethodBeat.o(227060);
       return;
-      this.ZCx = 14;
-      aBi(14);
-      AppMethodBeat.o(220565);
+      this.ahHA = 14;
+      aHV(14);
+      AppMethodBeat.o(227060);
       return;
-      ip((String)paramObject, paramInt2);
+      jC((String)paramObject, paramInt2);
     }
   }
   
-  public final void nP(int paramInt1, int paramInt2)
+  public final void pM(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(220567);
+    AppMethodBeat.i(227069);
     if (paramInt2 == 1)
     {
-      aBi(1);
-      aBi(10);
-      AppMethodBeat.o(220567);
+      aHV(1);
+      aHV(10);
+      AppMethodBeat.o(227069);
       return;
     }
     if (paramInt2 == 2)
     {
-      aBi(2);
-      aBi(9);
-      AppMethodBeat.o(220567);
+      aHV(2);
+      aHV(9);
+      AppMethodBeat.o(227069);
       return;
     }
     if (paramInt2 == 3)
     {
-      aBi(2);
-      aBi(10);
+      aHV(2);
+      aHV(10);
     }
-    AppMethodBeat.o(220567);
+    AppMethodBeat.o(227069);
   }
   
   static final class a
   {
-    private static g ZCC;
+    private static g ahHF;
     
     static
     {
-      AppMethodBeat.i(220556);
-      ZCC = new g((byte)0);
-      AppMethodBeat.o(220556);
+      AppMethodBeat.i(226968);
+      ahHF = new g((byte)0);
+      AppMethodBeat.o(226968);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.e.g
  * JD-Core Version:    0.7.0.1
  */

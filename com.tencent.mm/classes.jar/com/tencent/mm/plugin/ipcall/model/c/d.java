@@ -13,20 +13,20 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class d
   implements SensorController.SensorEventCallBack
 {
-  public a DQE;
+  public a JHO;
   long lastShakeTime;
-  private boolean uwu;
-  public ShakeManager uwv;
-  public SensorController uww;
+  private boolean xCT;
+  public ShakeManager xCU;
+  public SensorController xCV;
   
   public d()
   {
     AppMethodBeat.i(25435);
     this.lastShakeTime = -1L;
-    this.uwu = false;
-    this.DQE = null;
-    this.uww = new SensorController(MMApplicationContext.getContext());
-    this.uwv = new ShakeManager(MMApplicationContext.getContext());
+    this.xCT = false;
+    this.JHO = null;
+    this.xCV = new SensorController(MMApplicationContext.getContext());
+    this.xCU = new ShakeManager(MMApplicationContext.getContext());
     AppMethodBeat.o(25435);
   }
   
@@ -34,24 +34,24 @@ public final class d
   {
     boolean bool = true;
     AppMethodBeat.i(25436);
-    Log.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isON:" + paramBoolean + "  hasSkip:" + this.uwu + " tick:" + Util.ticksToNow(this.lastShakeTime) + "  lt:" + this.lastShakeTime);
-    if (this.uwu)
+    Log.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isON:" + paramBoolean + "  hasSkip:" + this.xCT + " tick:" + Util.ticksToNow(this.lastShakeTime) + "  lt:" + this.lastShakeTime);
+    if (this.xCT)
     {
       if (!paramBoolean) {}
       for (paramBoolean = bool;; paramBoolean = false)
       {
-        this.uwu = paramBoolean;
+        this.xCT = paramBoolean;
         AppMethodBeat.o(25436);
         return;
       }
     }
     if ((!paramBoolean) && (this.lastShakeTime != -1L) && (Util.ticksToNow(this.lastShakeTime) > 400L))
     {
-      this.uwu = true;
+      this.xCT = true;
       AppMethodBeat.o(25436);
       return;
     }
-    this.uwu = false;
+    this.xCT = false;
     Log.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isNeedOffScreen: %b", new Object[] { Boolean.valueOf(paramBoolean) });
     new MTimerHandler(new MTimerHandler.CallBack()
     {
@@ -62,7 +62,7 @@ public final class d
         {
           Log.i("MicroMsg.IPCallSensorManager", "off screen");
           if (d.a(d.this) != null) {
-            d.a(d.this).tz(true);
+            d.a(d.this).xK(true);
           }
         }
         for (;;)
@@ -71,7 +71,7 @@ public final class d
           return false;
           Log.i("MicroMsg.IPCallSensorManager", "light screen");
           if (d.a(d.this) != null) {
-            d.a(d.this).tz(false);
+            d.a(d.this).xK(false);
           }
         }
       }
@@ -81,12 +81,12 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void tz(boolean paramBoolean);
+    public abstract void xK(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.c.d
  * JD-Core Version:    0.7.0.1
  */

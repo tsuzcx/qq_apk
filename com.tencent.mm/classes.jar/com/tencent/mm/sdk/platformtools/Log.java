@@ -23,97 +23,69 @@ public class Log
   public static final int LEVEL_NONE = 6;
   public static final int LEVEL_VERBOSE = 0;
   public static final int LEVEL_WARNING = 3;
-  private static final String SYS_INFO;
+  private static String SYS_INFO;
   private static final String TAG = "MicroMsg.SDK.Log";
   private static LogImp debugLog;
   private static int level = 6;
   private static LogImp logImp;
-  private static Map<String, LogInstance> sLogInstanceMap;
+  private static Map<String, LogInstance> sLogInstanceMap = new HashMap();
   
   static
   {
-    Object localObject = new LogImp()
+    LogImp local1 = new LogImp()
     {
       private Handler handler = new Handler(Looper.getMainLooper());
       
-      public final void appenderClose() {}
+      public void appenderClose() {}
       
-      public final void appenderFlush(long paramAnonymousLong, boolean paramAnonymousBoolean) {}
+      public void appenderFlush(long paramAnonymousLong, boolean paramAnonymousBoolean) {}
       
-      public final void appenderOpen(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt3) {}
+      public void appenderOpen(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt3) {}
       
-      public final int getLogLevel(long paramAnonymousLong)
+      public int getLogLevel(long paramAnonymousLong)
       {
         return Log.level;
       }
       
-      public final long getXlogInstance(String paramAnonymousString)
+      public long getXlogInstance(String paramAnonymousString)
       {
         return 0L;
       }
       
-      public final void logD(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4) {}
+      public void logD(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4) {}
       
-      public final void logE(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4) {}
+      public void logE(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4) {}
       
-      public final void logF(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4)
+      public void logF(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4)
       {
         if (Log.level > 5) {}
       }
       
-      public final void logI(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4) {}
+      public void logI(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4) {}
       
-      public final void logV(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4) {}
+      public void logV(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4) {}
       
-      public final void logW(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4) {}
+      public void logW(long paramAnonymousLong1, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong2, long paramAnonymousLong3, String paramAnonymousString4) {}
       
-      public final void moveLogsFromCacheDirToLogDir() {}
+      public void moveLogsFromCacheDirToLogDir() {}
       
-      public final long openLogInstance(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt3)
+      public long openLogInstance(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt3)
       {
         return 0L;
       }
       
-      public final void releaseXlogInstance(String paramAnonymousString) {}
+      public void releaseXlogInstance(String paramAnonymousString) {}
       
-      public final void setAppenderMode(long paramAnonymousLong, int paramAnonymousInt) {}
+      public void setAppenderMode(long paramAnonymousLong, int paramAnonymousInt) {}
       
-      public final void setConsoleLogOpen(long paramAnonymousLong, boolean paramAnonymousBoolean) {}
+      public void setConsoleLogOpen(long paramAnonymousLong, boolean paramAnonymousBoolean) {}
       
-      public final void setMaxAliveTime(long paramAnonymousLong1, long paramAnonymousLong2) {}
+      public void setMaxAliveTime(long paramAnonymousLong1, long paramAnonymousLong2) {}
       
-      public final void setMaxFileSize(long paramAnonymousLong1, long paramAnonymousLong2) {}
+      public void setMaxFileSize(long paramAnonymousLong1, long paramAnonymousLong2) {}
     };
-    debugLog = (LogImp)localObject;
-    logImp = (LogImp)localObject;
-    localObject = new StringBuilder();
-    try
-    {
-      ((StringBuilder)localObject).append("VERSION.RELEASE:[" + Build.VERSION.RELEASE);
-      ((StringBuilder)localObject).append("] VERSION.CODENAME:[" + Build.VERSION.CODENAME);
-      ((StringBuilder)localObject).append("] VERSION.INCREMENTAL:[" + Build.VERSION.INCREMENTAL);
-      ((StringBuilder)localObject).append("] BOARD:[" + Build.BOARD);
-      ((StringBuilder)localObject).append("] DEVICE:[" + Build.DEVICE);
-      ((StringBuilder)localObject).append("] DISPLAY:[" + Build.DISPLAY);
-      ((StringBuilder)localObject).append("] FINGERPRINT:[" + Build.FINGERPRINT);
-      ((StringBuilder)localObject).append("] HOST:[" + Build.HOST);
-      ((StringBuilder)localObject).append("] MANUFACTURER:[" + Build.MANUFACTURER);
-      ((StringBuilder)localObject).append("] MODEL:[" + Build.MODEL);
-      ((StringBuilder)localObject).append("] PRODUCT:[" + Build.PRODUCT);
-      ((StringBuilder)localObject).append("] TAGS:[" + Build.TAGS);
-      ((StringBuilder)localObject).append("] TYPE:[" + Build.TYPE);
-      ((StringBuilder)localObject).append("] USER:[" + Build.USER + "]");
-      SYS_INFO = ((StringBuilder)localObject).toString();
-      sLogInstanceMap = new HashMap();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        printErrStackTrace("MicroMsg.SDK.Log", localThrowable, "", new Object[0]);
-      }
-    }
+    debugLog = local1;
+    logImp = local1;
   }
   
   public static void appenderClose()
@@ -125,7 +97,7 @@ public class Log
       Object localObject = new ArrayList();
       Iterator localIterator = sLogInstanceMap.entrySet().iterator();
       while (localIterator.hasNext()) {
-        ((List)localObject).add(((Map.Entry)localIterator.next()).getKey());
+        ((List)localObject).add((String)((Map.Entry)localIterator.next()).getKey());
       }
       localObject = ((List)localObject).listIterator();
       while (((ListIterator)localObject).hasNext()) {
@@ -273,7 +245,36 @@ public class Log
   
   public static String getSysInfo()
   {
-    return SYS_INFO;
+    StringBuilder localStringBuilder;
+    if (SYS_INFO == null) {
+      localStringBuilder = new StringBuilder();
+    }
+    try
+    {
+      localStringBuilder.append("VERSION.RELEASE:[" + Build.VERSION.RELEASE);
+      localStringBuilder.append("] VERSION.CODENAME:[" + Build.VERSION.CODENAME);
+      localStringBuilder.append("] VERSION.INCREMENTAL:[" + Build.VERSION.INCREMENTAL);
+      localStringBuilder.append("] BOARD:[" + Build.BOARD);
+      localStringBuilder.append("] DEVICE:[" + Build.DEVICE);
+      localStringBuilder.append("] DISPLAY:[" + Build.DISPLAY);
+      localStringBuilder.append("] FINGERPRINT:[" + Build.FINGERPRINT);
+      localStringBuilder.append("] HOST:[" + Build.HOST);
+      localStringBuilder.append("] MANUFACTURER:[" + Build.MANUFACTURER);
+      localStringBuilder.append("] MODEL:[" + Build.MODEL);
+      localStringBuilder.append("] PRODUCT:[" + Build.PRODUCT);
+      localStringBuilder.append("] TAGS:[" + Build.TAGS);
+      localStringBuilder.append("] TYPE:[" + Build.TYPE);
+      localStringBuilder.append("] USER:[" + Build.USER + "]");
+      SYS_INFO = localStringBuilder.toString();
+      return SYS_INFO;
+    }
+    finally
+    {
+      for (;;)
+      {
+        printErrStackTrace("MicroMsg.SDK.Log", localThrowable, "", new Object[0]);
+      }
+    }
   }
   
   public static void i(String paramString1, String paramString2)
@@ -734,7 +735,7 @@ public class Log
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.Log
  * JD-Core Version:    0.7.0.1
  */

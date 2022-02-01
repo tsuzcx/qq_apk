@@ -21,7 +21,6 @@ import com.google.android.gms.common.Feature;
 import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -32,7 +31,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.concurrent.GuardedBy;
 
 public abstract class BaseGmsClient<T extends IInterface>
 {
@@ -46,10 +44,8 @@ public abstract class BaseGmsClient<T extends IInterface>
   public static final String[] GOOGLE_PLUS_REQUIRED_FEATURES = { "service_esmobile", "service_googleme" };
   public static final String KEY_PENDING_INTENT = "pendingIntent";
   private static final Feature[] zzqz = new Feature[0];
-  @VisibleForTesting
   protected ConnectionProgressReportCallbacks mConnectionProgressReportCallbacks;
   private final Context mContext;
-  @VisibleForTesting
   protected AtomicInteger mDisconnectCount = new AtomicInteger(0);
   final Handler mHandler;
   private final Object mLock = new Object();
@@ -60,18 +56,13 @@ public abstract class BaseGmsClient<T extends IInterface>
   private long zzrc;
   private int zzrd;
   private long zzre;
-  @VisibleForTesting
   private GmsServiceEndpoint zzrf;
   private final GmsClientSupervisor zzrg;
   private final Object zzrh = new Object();
-  @GuardedBy("mServiceBrokerLock")
   private IGmsServiceBroker zzri;
-  @GuardedBy("mLock")
   private T zzrj;
   private final ArrayList<BaseGmsClient<T>.CallbackProxy<?>> zzrk = new ArrayList();
-  @GuardedBy("mLock")
   private BaseGmsClient<T>.GmsServiceConnection zzrl;
-  @GuardedBy("mLock")
   private int zzrm = 1;
   private final BaseConnectionCallbacks zzrn;
   private final BaseOnConnectionFailedListener zzro;
@@ -81,7 +72,6 @@ public abstract class BaseGmsClient<T extends IInterface>
   private boolean zzrs = false;
   private volatile ConnectionInfo zzrt = null;
   
-  @VisibleForTesting
   protected BaseGmsClient(Context paramContext, Handler paramHandler, GmsClientSupervisor paramGmsClientSupervisor, GoogleApiAvailabilityLight paramGoogleApiAvailabilityLight, int paramInt, BaseConnectionCallbacks paramBaseConnectionCallbacks, BaseOnConnectionFailedListener paramBaseOnConnectionFailedListener)
   {
     this.mContext = ((Context)Preconditions.checkNotNull(paramContext, "Context must not be null"));
@@ -100,7 +90,6 @@ public abstract class BaseGmsClient<T extends IInterface>
     this(paramContext, paramLooper, GmsClientSupervisor.getInstance(paramContext), GoogleApiAvailabilityLight.getInstance(), paramInt, (BaseConnectionCallbacks)Preconditions.checkNotNull(paramBaseConnectionCallbacks), (BaseOnConnectionFailedListener)Preconditions.checkNotNull(paramBaseOnConnectionFailedListener), paramString);
   }
   
-  @VisibleForTesting
   protected BaseGmsClient(Context paramContext, Looper paramLooper, GmsClientSupervisor paramGmsClientSupervisor, GoogleApiAvailabilityLight paramGoogleApiAvailabilityLight, int paramInt, BaseConnectionCallbacks paramBaseConnectionCallbacks, BaseOnConnectionFailedListener paramBaseOnConnectionFailedListener, String paramString)
   {
     this.mContext = ((Context)Preconditions.checkNotNull(paramContext, "Context must not be null"));
@@ -449,7 +438,6 @@ public abstract class BaseGmsClient<T extends IInterface>
     return new Bundle();
   }
   
-  @VisibleForTesting
   public final Handler getHandlerForTesting()
   {
     return this.mHandler;
@@ -483,75 +471,75 @@ public abstract class BaseGmsClient<T extends IInterface>
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 618	com/google/android/gms/common/internal/BaseGmsClient:getGetServiceRequestExtraArgs	()Landroid/os/Bundle;
+    //   1: invokevirtual 613	com/google/android/gms/common/internal/BaseGmsClient:getGetServiceRequestExtraArgs	()Landroid/os/Bundle;
     //   4: astore_3
-    //   5: new 620	com/google/android/gms/common/internal/GetServiceRequest
+    //   5: new 615	com/google/android/gms/common/internal/GetServiceRequest
     //   8: dup
     //   9: aload_0
-    //   10: getfield 198	com/google/android/gms/common/internal/BaseGmsClient:zzrp	I
-    //   13: invokespecial 621	com/google/android/gms/common/internal/GetServiceRequest:<init>	(I)V
+    //   10: getfield 194	com/google/android/gms/common/internal/BaseGmsClient:zzrp	I
+    //   13: invokespecial 616	com/google/android/gms/common/internal/GetServiceRequest:<init>	(I)V
     //   16: aload_0
-    //   17: getfield 172	com/google/android/gms/common/internal/BaseGmsClient:mContext	Landroid/content/Context;
-    //   20: invokevirtual 300	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   23: invokevirtual 625	com/google/android/gms/common/internal/GetServiceRequest:setCallingPackage	(Ljava/lang/String;)Lcom/google/android/gms/common/internal/GetServiceRequest;
+    //   17: getfield 168	com/google/android/gms/common/internal/BaseGmsClient:mContext	Landroid/content/Context;
+    //   20: invokevirtual 295	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   23: invokevirtual 620	com/google/android/gms/common/internal/GetServiceRequest:setCallingPackage	(Ljava/lang/String;)Lcom/google/android/gms/common/internal/GetServiceRequest;
     //   26: aload_3
-    //   27: invokevirtual 629	com/google/android/gms/common/internal/GetServiceRequest:setExtraArgs	(Landroid/os/Bundle;)Lcom/google/android/gms/common/internal/GetServiceRequest;
+    //   27: invokevirtual 624	com/google/android/gms/common/internal/GetServiceRequest:setExtraArgs	(Landroid/os/Bundle;)Lcom/google/android/gms/common/internal/GetServiceRequest;
     //   30: astore_3
     //   31: aload_2
     //   32: ifnull +9 -> 41
     //   35: aload_3
     //   36: aload_2
-    //   37: invokevirtual 633	com/google/android/gms/common/internal/GetServiceRequest:setScopes	(Ljava/util/Collection;)Lcom/google/android/gms/common/internal/GetServiceRequest;
+    //   37: invokevirtual 628	com/google/android/gms/common/internal/GetServiceRequest:setScopes	(Ljava/util/Collection;)Lcom/google/android/gms/common/internal/GetServiceRequest;
     //   40: pop
     //   41: aload_0
-    //   42: invokevirtual 636	com/google/android/gms/common/internal/BaseGmsClient:requiresSignIn	()Z
+    //   42: invokevirtual 631	com/google/android/gms/common/internal/BaseGmsClient:requiresSignIn	()Z
     //   45: ifeq +76 -> 121
     //   48: aload_3
     //   49: aload_0
-    //   50: invokevirtual 638	com/google/android/gms/common/internal/BaseGmsClient:getAccountOrDefault	()Landroid/accounts/Account;
-    //   53: invokevirtual 642	com/google/android/gms/common/internal/GetServiceRequest:setClientRequestedAccount	(Landroid/accounts/Account;)Lcom/google/android/gms/common/internal/GetServiceRequest;
+    //   50: invokevirtual 633	com/google/android/gms/common/internal/BaseGmsClient:getAccountOrDefault	()Landroid/accounts/Account;
+    //   53: invokevirtual 637	com/google/android/gms/common/internal/GetServiceRequest:setClientRequestedAccount	(Landroid/accounts/Account;)Lcom/google/android/gms/common/internal/GetServiceRequest;
     //   56: aload_1
-    //   57: invokevirtual 646	com/google/android/gms/common/internal/GetServiceRequest:setAuthenticatedAccount	(Lcom/google/android/gms/common/internal/IAccountAccessor;)Lcom/google/android/gms/common/internal/GetServiceRequest;
+    //   57: invokevirtual 641	com/google/android/gms/common/internal/GetServiceRequest:setAuthenticatedAccount	(Lcom/google/android/gms/common/internal/IAccountAccessor;)Lcom/google/android/gms/common/internal/GetServiceRequest;
     //   60: pop
     //   61: aload_3
     //   62: aload_0
-    //   63: invokevirtual 649	com/google/android/gms/common/internal/BaseGmsClient:getRequiredFeatures	()[Lcom/google/android/gms/common/Feature;
-    //   66: invokevirtual 653	com/google/android/gms/common/internal/GetServiceRequest:setClientRequiredFeatures	([Lcom/google/android/gms/common/Feature;)Lcom/google/android/gms/common/internal/GetServiceRequest;
+    //   63: invokevirtual 644	com/google/android/gms/common/internal/BaseGmsClient:getRequiredFeatures	()[Lcom/google/android/gms/common/Feature;
+    //   66: invokevirtual 648	com/google/android/gms/common/internal/GetServiceRequest:setClientRequiredFeatures	([Lcom/google/android/gms/common/Feature;)Lcom/google/android/gms/common/internal/GetServiceRequest;
     //   69: pop
     //   70: aload_3
     //   71: aload_0
-    //   72: invokevirtual 655	com/google/android/gms/common/internal/BaseGmsClient:getApiFeatures	()[Lcom/google/android/gms/common/Feature;
-    //   75: invokevirtual 658	com/google/android/gms/common/internal/GetServiceRequest:setClientApiFeatures	([Lcom/google/android/gms/common/Feature;)Lcom/google/android/gms/common/internal/GetServiceRequest;
+    //   72: invokevirtual 650	com/google/android/gms/common/internal/BaseGmsClient:getApiFeatures	()[Lcom/google/android/gms/common/Feature;
+    //   75: invokevirtual 653	com/google/android/gms/common/internal/GetServiceRequest:setClientApiFeatures	([Lcom/google/android/gms/common/Feature;)Lcom/google/android/gms/common/internal/GetServiceRequest;
     //   78: pop
     //   79: aload_0
-    //   80: getfield 140	com/google/android/gms/common/internal/BaseGmsClient:zzrh	Ljava/lang/Object;
+    //   80: getfield 136	com/google/android/gms/common/internal/BaseGmsClient:zzrh	Ljava/lang/Object;
     //   83: astore_1
     //   84: aload_1
     //   85: monitorenter
     //   86: aload_0
-    //   87: getfield 230	com/google/android/gms/common/internal/BaseGmsClient:zzri	Lcom/google/android/gms/common/internal/IGmsServiceBroker;
+    //   87: getfield 225	com/google/android/gms/common/internal/BaseGmsClient:zzri	Lcom/google/android/gms/common/internal/IGmsServiceBroker;
     //   90: ifnull +28 -> 118
     //   93: aload_0
-    //   94: getfield 230	com/google/android/gms/common/internal/BaseGmsClient:zzri	Lcom/google/android/gms/common/internal/IGmsServiceBroker;
+    //   94: getfield 225	com/google/android/gms/common/internal/BaseGmsClient:zzri	Lcom/google/android/gms/common/internal/IGmsServiceBroker;
     //   97: new 19	com/google/android/gms/common/internal/BaseGmsClient$GmsCallbacks
     //   100: dup
     //   101: aload_0
     //   102: aload_0
-    //   103: getfield 160	com/google/android/gms/common/internal/BaseGmsClient:mDisconnectCount	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   106: invokevirtual 289	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   109: invokespecial 659	com/google/android/gms/common/internal/BaseGmsClient$GmsCallbacks:<init>	(Lcom/google/android/gms/common/internal/BaseGmsClient;I)V
+    //   103: getfield 156	com/google/android/gms/common/internal/BaseGmsClient:mDisconnectCount	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   106: invokevirtual 284	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   109: invokespecial 654	com/google/android/gms/common/internal/BaseGmsClient$GmsCallbacks:<init>	(Lcom/google/android/gms/common/internal/BaseGmsClient;I)V
     //   112: aload_3
-    //   113: invokeinterface 663 3 0
+    //   113: invokeinterface 658 3 0
     //   118: aload_1
     //   119: monitorexit
     //   120: return
     //   121: aload_0
-    //   122: invokevirtual 666	com/google/android/gms/common/internal/BaseGmsClient:requiresAccount	()Z
+    //   122: invokevirtual 661	com/google/android/gms/common/internal/BaseGmsClient:requiresAccount	()Z
     //   125: ifeq -64 -> 61
     //   128: aload_3
     //   129: aload_0
-    //   130: invokevirtual 570	com/google/android/gms/common/internal/BaseGmsClient:getAccount	()Landroid/accounts/Account;
-    //   133: invokevirtual 642	com/google/android/gms/common/internal/GetServiceRequest:setClientRequestedAccount	(Landroid/accounts/Account;)Lcom/google/android/gms/common/internal/GetServiceRequest;
+    //   130: invokevirtual 565	com/google/android/gms/common/internal/BaseGmsClient:getAccount	()Landroid/accounts/Account;
+    //   133: invokevirtual 637	com/google/android/gms/common/internal/GetServiceRequest:setClientRequestedAccount	(Landroid/accounts/Account;)Lcom/google/android/gms/common/internal/GetServiceRequest;
     //   136: pop
     //   137: goto -76 -> 61
     //   140: astore_2
@@ -562,7 +550,7 @@ public abstract class BaseGmsClient<T extends IInterface>
     //   145: astore_1
     //   146: aload_0
     //   147: iconst_1
-    //   148: invokevirtual 669	com/google/android/gms/common/internal/BaseGmsClient:triggerConnectionSuspended	(I)V
+    //   148: invokevirtual 664	com/google/android/gms/common/internal/BaseGmsClient:triggerConnectionSuspended	(I)V
     //   151: return
     //   152: astore_1
     //   153: aload_1
@@ -573,9 +561,9 @@ public abstract class BaseGmsClient<T extends IInterface>
     //   159: aconst_null
     //   160: aconst_null
     //   161: aload_0
-    //   162: getfield 160	com/google/android/gms/common/internal/BaseGmsClient:mDisconnectCount	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   165: invokevirtual 289	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   168: invokevirtual 673	com/google/android/gms/common/internal/BaseGmsClient:onPostInitHandler	(ILandroid/os/IBinder;Landroid/os/Bundle;I)V
+    //   162: getfield 156	com/google/android/gms/common/internal/BaseGmsClient:mDisconnectCount	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   165: invokevirtual 284	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   168: invokevirtual 668	com/google/android/gms/common/internal/BaseGmsClient:onPostInitHandler	(ILandroid/os/IBinder;Landroid/os/Bundle;I)V
     //   171: return
     //   172: astore_1
     //   173: goto -17 -> 156
@@ -643,7 +631,6 @@ public abstract class BaseGmsClient<T extends IInterface>
     }
   }
   
-  @VisibleForTesting
   public final IGmsServiceBroker getServiceBrokerForTesting()
   {
     synchronized (this.zzrh)
@@ -757,13 +744,11 @@ public abstract class BaseGmsClient<T extends IInterface>
     return false;
   }
   
-  @VisibleForTesting
   public void setConnectionInfoForTesting(ConnectionInfo paramConnectionInfo)
   {
     this.zzrt = paramConnectionInfo;
   }
   
-  @VisibleForTesting
   public final void setServiceBrokerForTesting(IGmsServiceBroker paramIGmsServiceBroker)
   {
     synchronized (this.zzrh)
@@ -773,7 +758,6 @@ public abstract class BaseGmsClient<T extends IInterface>
     }
   }
   
-  @VisibleForTesting
   public final void setServiceForTesting(T paramT)
   {
     if (paramT != null) {}
@@ -789,7 +773,6 @@ public abstract class BaseGmsClient<T extends IInterface>
     this.mHandler.sendMessage(this.mHandler.obtainMessage(6, this.mDisconnectCount.get(), paramInt));
   }
   
-  @VisibleForTesting
   protected void triggerNotAvailable(ConnectionProgressReportCallbacks paramConnectionProgressReportCallbacks, int paramInt, PendingIntent paramPendingIntent)
   {
     this.mConnectionProgressReportCallbacks = ((ConnectionProgressReportCallbacks)Preconditions.checkNotNull(paramConnectionProgressReportCallbacks, "Connection progress callbacks cannot be null."));
@@ -894,7 +877,6 @@ public abstract class BaseGmsClient<T extends IInterface>
     public abstract void onReportServiceBinding(ConnectionResult paramConnectionResult);
   }
   
-  @VisibleForTesting
   public static final class GmsCallbacks
     extends IGmsCallbacks.Stub
   {
@@ -934,7 +916,6 @@ public abstract class BaseGmsClient<T extends IInterface>
     }
   }
   
-  @VisibleForTesting
   public final class GmsServiceConnection
     implements ServiceConnection
   {
@@ -1242,7 +1223,7 @@ public abstract class BaseGmsClient<T extends IInterface>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.BaseGmsClient
  * JD-Core Version:    0.7.0.1
  */

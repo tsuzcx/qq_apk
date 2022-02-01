@@ -1,198 +1,142 @@
 package com.tencent.mm.plugin.webview.k;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.ay.a.a;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.webview.model.j;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.a;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.n.d;
+import kotlin.n.n;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/util/WebViewLanguageCheckTask;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "charset", "Ljava/nio/charset/Charset;", "checkRes", "", "getCheckRes", "()I", "setCheckRes", "(I)V", "ratio", "", "getRatio", "()D", "setRatio", "(D)V", "checkWordsNeedTransByCGI", "", "squeezedList", "", "onGetCheckResult", "Lkotlin/Function0;", "isNeedTrans", "sampleArray", "", "targetLanguage", "([Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V", "isStringLegal", "", "needCheckStr", "squeezeList", "clearedList", "cellMaxLength", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class p
 {
-  private static Pattern QAD = null;
-  private static String QAE = null;
-  private static Boolean QAF = null;
+  private final String TAG = "MicroMsg.WebViewLanguageCheckTask";
+  public final Charset Xto = d.UTF_8;
+  public double Xtp;
+  public int Xtq = 1;
   
-  public static boolean bno(String paramString)
+  public static boolean bmZ(String paramString)
   {
-    AppMethodBeat.i(205901);
-    if ((WebView.isX5()) && (bnp(paramString)) && (!"true".equals(a.oO("disable_apk_hook", "tools"))))
+    AppMethodBeat.i(295697);
+    int i = 0;
+    while (i < 7)
     {
-      AppMethodBeat.o(205901);
-      return true;
+      String str = new String[] { "@", "＠", "¥", "©", "{{", "<%", "http" }[i];
+      if (n.a((CharSequence)paramString, (CharSequence)str, true))
+      {
+        AppMethodBeat.o(295697);
+        return true;
+      }
+      i += 1;
     }
-    AppMethodBeat.o(205901);
+    AppMethodBeat.o(295697);
     return false;
   }
   
-  private static boolean bnp(String paramString)
+  public final void b(List<String> paramList, kotlin.g.a.a<ah> parama)
   {
-    AppMethodBeat.i(82385);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(82385);
-      return false;
+    AppMethodBeat.i(295716);
+    if (paramList.size() > 1) {
+      kotlin.a.p.a(paramList, (Comparator)new a());
     }
-    try
-    {
-      paramString = Uri.parse(paramString).getPathSegments();
-      if (paramString != null)
-      {
-        int i = paramString.size();
-        if (i > 0) {}
-      }
-      else
-      {
-        AppMethodBeat.o(82385);
-        return false;
-      }
-      paramString = (String)paramString.get(paramString.size() - 1);
-      if (paramString != null)
-      {
-        boolean bool = paramString.toLowerCase().trim().endsWith(".apk");
-        if (bool)
-        {
-          AppMethodBeat.o(82385);
-          return true;
-        }
-      }
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(82385);
-    }
-    return false;
-  }
-  
-  public static boolean bnq(String paramString)
-  {
-    AppMethodBeat.i(82386);
-    boolean bool;
-    if ((QAF != null) && (Util.isEqual(paramString, QAE)))
-    {
-      bool = QAF.booleanValue();
-      AppMethodBeat.o(82386);
-      return bool;
-    }
-    QAE = paramString;
-    if (Pattern.compile("^(http|https)://" + WeChatHosts.domainString(a.a.host_mp_weixin_qq_com) + "/(s|mp/author|mp/appmsg/show)", 2).matcher(paramString).find()) {
-      bool = true;
+    if (((Collection)paramList).size() > 10) {
+      paramList = paramList.subList(0, 10);
     }
     for (;;)
     {
-      paramString = Boolean.valueOf(bool);
-      QAF = paramString;
-      bool = paramString.booleanValue();
-      AppMethodBeat.o(82386);
-      return bool;
-      if (Pattern.compile("^(http|https)://(sh.|hk.|sz.)?" + WeChatHosts.domainString(a.a.host_open_weixin_qq_com) + "/connect/(confirm|oauth2/(authorize|explorer_authorize))", 2).matcher(paramString).find())
+      LinkedList localLinkedList = new LinkedList();
+      paramList = ((Iterable)paramList).iterator();
+      while (paramList.hasNext()) {
+        localLinkedList.add((String)paramList.next());
+      }
+      this.Xtq = new j().h(localLinkedList, LocaleUtil.getApplicationLanguage());
+      if (this.Xtq == 0) {}
+      for (double d = 1.0D;; d = 0.0D)
       {
-        bool = true;
+        this.Xtp = d;
+        Log.i(this.TAG, s.X("check ratio = ", Double.valueOf(this.Xtp)));
+        parama.invoke();
+        AppMethodBeat.o(295716);
+        return;
+      }
+    }
+  }
+  
+  public final List<String> ml(List<String> paramList)
+  {
+    AppMethodBeat.i(295706);
+    List localList = (List)new ArrayList();
+    String str = "";
+    Iterator localIterator = paramList.iterator();
+    paramList = str;
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      Object localObject = this.Xto;
+      if (str == null)
+      {
+        paramList = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(295706);
+        throw paramList;
+      }
+      localObject = str.getBytes((Charset)localObject);
+      s.s(localObject, "(this as java.lang.String).getBytes(charset)");
+      if (localObject.length > 100)
+      {
+        localList.add(str);
       }
       else
       {
-        if (QAD == null)
+        str = paramList + ' ' + str;
+        paramList = this.Xto;
+        if (str == null)
         {
-          String str = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzn, "^(http|https)://" + WeChatHosts.domainString(a.a.host_mp_weixin_qq_com) + "/mp/(readtemplate\\?t=scanlogin/index_tmpl|scanlogin\\?action=index|relatedarticle\\?action=page|aboutbiz|infringement|qa|appmsgalbum)");
-          Log.i("MicroMsg.WebViewUIUtil", "mpHosts=:%s", new Object[] { str });
-          QAD = Pattern.compile(str);
+          paramList = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(295706);
+          throw paramList;
         }
-        if ((QAD != null) && (QAD.matcher(paramString).find())) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-      }
-    }
-  }
-  
-  public static void h(MMWebView paramMMWebView)
-  {
-    AppMethodBeat.i(205900);
-    if (paramMMWebView == null)
-    {
-      AppMethodBeat.o(205900);
-      return;
-    }
-    if (paramMMWebView.getIsX5Kernel())
-    {
-      AppMethodBeat.o(205900);
-      return;
-    }
-    if (d.qV(19))
-    {
-      AppMethodBeat.o(205900);
-      return;
-    }
-    try
-    {
-      paramMMWebView = new com.tencent.mm.compatible.loader.b(paramMMWebView, "mSysWebView", null).get();
-      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { paramMMWebView });
-      paramMMWebView = new com.tencent.mm.compatible.loader.b(paramMMWebView, "mProvider", null).get();
-      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { paramMMWebView });
-      paramMMWebView = new com.tencent.mm.compatible.loader.b(paramMMWebView, "mWebViewCore", null).get();
-      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { paramMMWebView });
-      paramMMWebView = new com.tencent.mm.compatible.loader.b(paramMMWebView, "sWebCoreHandler", null).get();
-      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { paramMMWebView });
-      paramMMWebView = new com.tencent.mm.compatible.loader.b(paramMMWebView, "mLooper", null).get();
-      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { paramMMWebView });
-      paramMMWebView = new com.tencent.mm.compatible.loader.b(paramMMWebView, "mThread", null).get();
-      Log.d("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { paramMMWebView });
-      if ((paramMMWebView instanceof Thread))
-      {
-        paramMMWebView = (Thread)paramMMWebView;
-        Log.i("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, webCoreThread.getState = %s", new Object[] { paramMMWebView.getState() });
-        if (paramMMWebView.getState() == Thread.State.WAITING) {
-          paramMMWebView.interrupt();
+        localObject = str.getBytes(paramList);
+        s.s(localObject, "(this as java.lang.String).getBytes(charset)");
+        paramList = str;
+        if (localObject.length > 100)
+        {
+          localList.add(str);
+          paramList = "";
         }
       }
-      AppMethodBeat.o(205900);
-      return;
     }
-    catch (Exception paramMMWebView)
+    if (((CharSequence)paramList).length() > 0) {}
+    for (int i = 1;; i = 0)
     {
-      Log.e("MicroMsg.WebViewUIUtil", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { paramMMWebView });
-      AppMethodBeat.o(205900);
+      if (i != 0) {
+        localList.add(paramList);
+      }
+      AppMethodBeat.o(295706);
+      return localList;
     }
   }
   
-  public static String jh(Context paramContext)
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"}, k=3, mv={1, 5, 1})
+  public static final class a<T>
+    implements Comparator
   {
-    AppMethodBeat.i(205898);
-    paramContext = paramContext.getSharedPreferences("webview_url_prefs", 4).getString("url", null);
-    AppMethodBeat.o(205898);
-    return paramContext;
-  }
-  
-  public static void ji(Context paramContext)
-  {
-    AppMethodBeat.i(205899);
-    paramContext = paramContext.getSharedPreferences("webview_url_prefs", 4).edit();
-    paramContext.remove("url");
-    paramContext.apply();
-    AppMethodBeat.o(205899);
-  }
-  
-  public static void l(String paramString, Context paramContext)
-  {
-    AppMethodBeat.i(82384);
-    paramContext = paramContext.getSharedPreferences("webview_url_prefs", 4).edit();
-    paramContext.putString("url", paramString);
-    paramContext.apply();
-    AppMethodBeat.o(82384);
+    public final int compare(T paramT1, T paramT2)
+    {
+      AppMethodBeat.i(295739);
+      int i = kotlin.b.a.b((Comparable)Integer.valueOf(((String)paramT2).length()), (Comparable)Integer.valueOf(((String)paramT1).length()));
+      AppMethodBeat.o(295739);
+      return i;
+    }
   }
 }
 

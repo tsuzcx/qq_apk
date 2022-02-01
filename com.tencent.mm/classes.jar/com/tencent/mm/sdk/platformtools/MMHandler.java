@@ -1,27 +1,26 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Printer;
-import com.tencent.e.d.b;
-import com.tencent.e.j.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.threadpool.d.b;
+import com.tencent.threadpool.j.c;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MMHandler
-  implements com.tencent.e.d.a
+  implements com.tencent.threadpool.d.a
 {
   private static final long SLOW_DURATION = 5000L;
   private static final long SLOW_UI_DURATION = 300L;
   private static final Handler UIHandler;
   private final Object lock;
   private TaskWatch mTaskWatch;
-  private final com.tencent.e.d.a realHandler;
+  private final com.tencent.threadpool.d.a realHandler;
   private volatile Message runningMsg;
   
   static
@@ -35,7 +34,7 @@ public class MMHandler
   {
     AppMethodBeat.i(157623);
     this.lock = new Object();
-    this.realHandler = createHandler(Looper.myLooper(), com.tencent.e.j.a.iqf(), null);
+    this.realHandler = createHandler(Looper.myLooper(), com.tencent.threadpool.j.a.jZA(), null);
     AppMethodBeat.o(157623);
   }
   
@@ -57,7 +56,15 @@ public class MMHandler
     AppMethodBeat.o(157626);
   }
   
-  public MMHandler(com.tencent.e.j.a parama)
+  public MMHandler(MMHandler.Callback paramCallback)
+  {
+    AppMethodBeat.i(157625);
+    this.lock = new Object();
+    this.realHandler = createHandler(Looper.myLooper(), com.tencent.threadpool.j.a.jZA(), paramCallback);
+    AppMethodBeat.o(157625);
+  }
+  
+  public MMHandler(com.tencent.threadpool.j.a parama)
   {
     AppMethodBeat.i(182942);
     this.lock = new Object();
@@ -66,7 +73,7 @@ public class MMHandler
     AppMethodBeat.o(182942);
   }
   
-  public MMHandler(com.tencent.e.j.a parama, MMHandler.Callback paramCallback)
+  public MMHandler(com.tencent.threadpool.j.a parama, MMHandler.Callback paramCallback)
   {
     AppMethodBeat.i(182943);
     this.lock = new Object();
@@ -75,19 +82,11 @@ public class MMHandler
     AppMethodBeat.o(182943);
   }
   
-  public MMHandler(MMHandler.Callback paramCallback)
-  {
-    AppMethodBeat.i(157625);
-    this.lock = new Object();
-    this.realHandler = createHandler(Looper.myLooper(), com.tencent.e.j.a.iqf(), paramCallback);
-    AppMethodBeat.o(157625);
-  }
-  
   public MMHandler(String paramString)
   {
     AppMethodBeat.i(157628);
     this.lock = new Object();
-    this.realHandler = createHandler(null, com.tencent.e.j.a.bDn(paramString), null);
+    this.realHandler = createHandler(null, com.tencent.threadpool.j.a.bFV(paramString), null);
     AppMethodBeat.o(157628);
   }
   
@@ -96,11 +95,10 @@ public class MMHandler
     AppMethodBeat.i(157627);
     this.lock = new Object();
     Objects.requireNonNull(paramString);
-    this.realHandler = createHandler(null, com.tencent.e.j.a.bDn(paramString), paramCallback);
+    this.realHandler = createHandler(null, com.tencent.threadpool.j.a.bFV(paramString), paramCallback);
     AppMethodBeat.o(157627);
   }
   
-  @MMHandler.Specially
   public static Handler createFreeHandler(Looper paramLooper)
   {
     AppMethodBeat.i(182957);
@@ -109,10 +107,10 @@ public class MMHandler
     return paramLooper;
   }
   
-  private com.tencent.e.d.a createHandler(Looper paramLooper, com.tencent.e.j.a parama, MMHandler.Callback paramCallback)
+  private com.tencent.threadpool.d.a createHandler(Looper paramLooper, com.tencent.threadpool.j.a parama, MMHandler.Callback paramCallback)
   {
     AppMethodBeat.i(182958);
-    if ((paramLooper == Looper.getMainLooper()) || (parama == com.tencent.e.j.a.iqe()))
+    if ((paramLooper == Looper.getMainLooper()) || (parama == com.tencent.threadpool.j.a.jZz()))
     {
       paramLooper = createLooperHandler(Looper.getMainLooper(), paramCallback);
       AppMethodBeat.o(182958);
@@ -135,7 +133,7 @@ public class MMHandler
     throw paramLooper;
   }
   
-  private com.tencent.e.d.a createLooperHandler(Looper paramLooper, MMHandler.Callback paramCallback)
+  private com.tencent.threadpool.d.a createLooperHandler(Looper paramLooper, MMHandler.Callback paramCallback)
   {
     AppMethodBeat.i(182959);
     paramLooper = new b(new Handler(paramLooper, paramCallback)
@@ -174,8 +172,7 @@ public class MMHandler
     return paramLooper;
   }
   
-  @SuppressLint({"HandlerLeak"})
-  private com.tencent.e.d.a createSerialHandler(com.tencent.e.j.a parama, MMHandler.Callback paramCallback)
+  private com.tencent.threadpool.d.a createSerialHandler(com.tencent.threadpool.j.a parama, MMHandler.Callback paramCallback)
   {
     AppMethodBeat.i(182960);
     parama = new c(parama, paramCallback)
@@ -265,10 +262,10 @@ public class MMHandler
     return localHandler;
   }
   
-  public com.tencent.e.j.a getSerial()
+  public com.tencent.threadpool.j.a getSerial()
   {
     AppMethodBeat.i(182948);
-    com.tencent.e.j.a locala = this.realHandler.getSerial();
+    com.tencent.threadpool.j.a locala = this.realHandler.getSerial();
     AppMethodBeat.o(182948);
     return locala;
   }
@@ -632,20 +629,20 @@ public class MMHandler
   
   public void setHasDefaultLooper(boolean paramBoolean)
   {
-    AppMethodBeat.i(187402);
+    AppMethodBeat.i(243730);
     if ((this.realHandler instanceof c)) {
       ((c)this.realHandler).setHasDefaultLooper(paramBoolean);
     }
-    AppMethodBeat.o(187402);
+    AppMethodBeat.o(243730);
   }
   
   public void setLogging(boolean paramBoolean)
   {
-    AppMethodBeat.i(187408);
+    AppMethodBeat.i(243735);
     if ((this.realHandler instanceof c)) {
       ((c)this.realHandler).setLogging(paramBoolean);
     }
-    AppMethodBeat.o(187408);
+    AppMethodBeat.o(243735);
   }
   
   public void setTaskWatch(TaskWatch paramTaskWatch)
@@ -677,9 +674,9 @@ public class MMHandler
     
     static
     {
-      AppMethodBeat.i(189908);
+      AppMethodBeat.i(243972);
       sTraces = new ConcurrentHashMap();
-      AppMethodBeat.o(189908);
+      AppMethodBeat.o(243972);
     }
     
     private TaskWrapper(Runnable paramRunnable, MMHandler.TaskWatch paramTaskWatch)
@@ -690,35 +687,35 @@ public class MMHandler
     
     static TaskWrapper remove(Runnable paramRunnable)
     {
-      AppMethodBeat.i(189898);
+      AppMethodBeat.i(243963);
       paramRunnable = (TaskWrapper)sTraces.remove(paramRunnable);
-      AppMethodBeat.o(189898);
+      AppMethodBeat.o(243963);
       return paramRunnable;
     }
     
     static TaskWrapper wrap(Runnable paramRunnable, MMHandler.TaskWatch paramTaskWatch)
     {
-      AppMethodBeat.i(189894);
+      AppMethodBeat.i(243956);
       paramTaskWatch = new TaskWrapper(paramRunnable, paramTaskWatch);
       sTraces.put(paramRunnable, paramTaskWatch);
-      AppMethodBeat.o(189894);
+      AppMethodBeat.o(243956);
       return paramTaskWatch;
     }
     
     public void run()
     {
-      AppMethodBeat.i(189905);
+      AppMethodBeat.i(243978);
       this.mTaskWatch.onTaskStart(this.mTask);
       this.mTask.run();
       this.mTaskWatch.onTaskFinish(this.mTask);
       remove(this.mTask);
-      AppMethodBeat.o(189905);
+      AppMethodBeat.o(243978);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMHandler
  * JD-Core Version:    0.7.0.1
  */

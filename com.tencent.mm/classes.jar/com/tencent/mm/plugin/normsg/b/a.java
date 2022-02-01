@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.normsg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.q.b;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
@@ -12,40 +12,40 @@ import com.tencent.mm.protocal.r.a;
 import com.tencent.mm.protocal.r.b;
 
 public final class a
-  extends q
+  extends p
   implements m
 {
-  private boolean GxN;
-  private int GxO;
+  private boolean MtT;
+  private int MtU;
   private final String TAG;
-  private i callback;
-  private final s lCW;
+  private h callback;
+  private final s ouH;
   
   public a(boolean paramBoolean, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(149008);
-    this.GxN = true;
-    this.GxO = 0;
+    this.MtT = true;
+    this.MtU = 0;
     this.TAG = "NetSceneFPFresh";
-    this.GxN = paramBoolean;
-    this.lCW = new r.a(this.GxN);
-    ((r.b)this.lCW.getReqObj()).RBM.SwU = b.cU(paramArrayOfByte);
+    this.MtT = paramBoolean;
+    this.ouH = new r.a(this.MtT);
+    ((r.b)this.ouH.getReqObj()).Yyp.ZxE = b.cX(paramArrayOfByte);
     AppMethodBeat.o(149008);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(149009);
-    this.callback = parami;
-    this.GxO += 1;
-    int i = dispatch(paramg, this.lCW, this);
+    this.callback = paramh;
+    this.MtU += 1;
+    int i = dispatch(paramg, this.ouH, this);
     AppMethodBeat.o(149009);
     return i;
   }
   
   public final int getType()
   {
-    if (this.GxN) {
+    if (this.MtT) {
       return 3944;
     }
     return 836;
@@ -63,7 +63,7 @@ public final class a
       AppMethodBeat.o(149010);
       return;
     }
-    if (this.GxO < 2)
+    if (this.MtU < 2)
     {
       if (doScene(dispatcher(), this.callback) < 0)
       {
@@ -85,14 +85,14 @@ public final class a
     return 3;
   }
   
-  public final q.b securityVerificationChecked(s params)
+  public final p.b securityVerificationChecked(s params)
   {
-    return q.b.lCx;
+    return p.b.ouh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.b.a
  * JD-Core Version:    0.7.0.1
  */

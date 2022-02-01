@@ -1,42 +1,22 @@
 package com.tencent.mm.plugin.finder.webview;
 
-import android.content.Context;
-import android.view.Window;
-import com.tencent.mm.plugin.scanner.MultiCodeMaskView;
-import com.tencent.mm.plugin.webview.core.BaseWebViewController;
-import com.tencent.mm.plugin.webview.f.g;
-import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.ui.widget.MMWebView;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/webview/IFinderWebViewHelper;", "", "addWebViewStateListener", "", "listener", "Lcom/tencent/mm/plugin/finder/webview/IFinderWebViewHelper$IWebViewStateListener;", "clearWebViewStateListener", "getWithInitWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "release", "reload", "removeWebViewStateListener", "IWebViewStateListener", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface l
 {
-  public abstract e elT();
+  public abstract void a(l.a parama);
   
-  public abstract g elU();
+  public abstract MMWebView fpU();
   
-  public abstract Float elV();
+  public abstract void release();
   
-  public abstract Float elW();
-  
-  public abstract boolean elX();
-  
-  public abstract String elY();
-  
-  public abstract int elZ();
-  
-  public abstract MultiCodeMaskView ema();
-  
-  public abstract Context getContext();
-  
-  public abstract BaseWebViewController getController();
-  
-  public abstract MMWebView getWebView();
-  
-  public abstract Window getWindow();
+  public abstract void reload();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.webview.l
  * JD-Core Version:    0.7.0.1
  */

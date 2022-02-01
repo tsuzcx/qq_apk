@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
@@ -15,8 +15,8 @@ public final class ae
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
     AppMethodBeat.i(144968);
-    paramd.nTx.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
-    paramd.nTw.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.qTj.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.qTi.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
     AppMethodBeat.o(144968);
     return true;
   }
@@ -30,7 +30,7 @@ public final class ae
       AppMethodBeat.o(144969);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.nUa, paramCanvas.color);
+    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.qTL, paramCanvas.color);
     AppMethodBeat.o(144969);
     return bool;
   }
@@ -43,21 +43,21 @@ public final class ae
       AppMethodBeat.o(144967);
       return false;
     }
-    float f1 = g.f(paramJSONArray, 0);
-    float f2 = g.f(paramJSONArray, 1);
-    float f3 = g.f(paramJSONArray, 2);
+    float f1 = i.f(paramJSONArray, 0);
+    float f2 = i.f(paramJSONArray, 1);
+    float f3 = i.f(paramJSONArray, 2);
     paramCanvas = paramJSONArray.optJSONArray(3);
     if ((paramCanvas == null) || (paramCanvas.length() < 4))
     {
       AppMethodBeat.o(144967);
       return false;
     }
-    boolean bool = a(paramd, f1, f2, f3, g.r(paramCanvas));
+    boolean bool = a(paramd, f1, f2, f3, i.u(paramCanvas));
     AppMethodBeat.o(144967);
     return bool;
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144966);
     SetShadowActionArg localSetShadowActionArg = new SetShadowActionArg();
@@ -72,7 +72,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ae
  * JD-Core Version:    0.7.0.1
  */

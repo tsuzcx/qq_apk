@@ -1,132 +1,95 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
+import android.app.Activity;
+import com.tencent.luggage.l.e;
+import com.tencent.luggage.l.e.f;
+import com.tencent.luggage.l.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
-import com.tencent.mm.plugin.appbrand.jsapi.p.b;
-import com.tencent.mm.plugin.appbrand.p.a.b;
-import com.tencent.mm.plugin.appbrand.p.a.d;
-import com.tencent.mm.plugin.appbrand.s.c;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
 
-public final class a
-  extends b
+abstract class a<CONTEXT extends f>
+  extends c<CONTEXT>
 {
-  public static final int CTRL_INDEX = 467;
-  public static final String NAME = "createLoadSubPackageTask";
+  boolean rZS;
   
-  private static void a(e parame, String paramString1, String paramString2)
+  static boolean u(CONTEXT paramCONTEXT)
   {
-    AppMethodBeat.i(199240);
-    a.a.a(parame, paramString1, "fail", paramString2);
-    AppMethodBeat.o(199240);
+    return i.a(paramCONTEXT.getContext(), paramCONTEXT, "android.permission.ACCESS_FINE_LOCATION");
   }
   
-  public final void a(final e parame, final JSONObject paramJSONObject, final String paramString)
+  public void a(final CONTEXT paramCONTEXT, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(182227);
-    final j localj = (j)parame;
-    parame = parame.getAppId();
-    paramJSONObject = paramJSONObject.optString("moduleName");
-    if (Util.isNullOrNil(paramJSONObject))
+    Activity localActivity;
+    boolean bool;
+    if ((paramCONTEXT.getContext() instanceof Activity))
     {
-      Log.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: null or nil moduleName");
-      a(localj, paramString, paramJSONObject);
-      AppMethodBeat.o(182227);
-      return;
+      localActivity = (Activity)paramCONTEXT.getContext();
+      if (localActivity != null) {
+        break label81;
+      }
+      Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "operateRecorder, pageContext is null");
+      paramCONTEXT.callback(paramInt, ZP("fail:internal error invalid android context"));
+      bool = false;
     }
-    Object localObject = localj.getRuntime();
-    if ((localObject == null) || (((AppBrandRuntime)localObject).ntU.get()))
+    for (;;)
     {
-      Log.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: runtime is not in valid state!");
-      a(localj, paramString, paramJSONObject);
-      AppMethodBeat.o(182227);
+      if (bool) {
+        break label147;
+      }
+      Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s requestPermission fail", new Object[] { getName() });
       return;
-    }
-    localObject = ((AppBrandRuntime)localObject).ntS;
-    if (localObject == null)
-    {
-      Log.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: modularizingHelper null!");
-      a(localj, paramString, paramJSONObject);
-      AppMethodBeat.o(182227);
-      return;
-    }
-    if ((!((com.tencent.mm.plugin.appbrand.p.a)localObject).cbE()) && (!paramJSONObject.equals("__APP__")))
-    {
-      Log.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: not support modularizing but still called JsApiCreateLoadSubPackageTask");
-      a(localj, paramString, paramJSONObject);
-      AppMethodBeat.o(182227);
-      return;
-    }
-    try
-    {
-      ((com.tencent.mm.plugin.appbrand.p.a)localObject).a(paramJSONObject, new a.b()new com.tencent.mm.plugin.appbrand.p.a.a
+      localActivity = null;
+      break;
+      label81:
+      if (u(paramCONTEXT))
       {
-        public final void a(a.d paramAnonymousd)
-        {
-          AppMethodBeat.i(139888);
-          Log.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: loadResult: %s, with appId[%s] moduleName[%s]", new Object[] { paramAnonymousd.toString(), parame, paramJSONObject });
-          switch (a.3.pdA[paramAnonymousd.ordinal()])
-          {
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(139888);
-            return;
-            a.a.a(localj, paramString, "success", paramJSONObject);
-            AppMethodBeat.o(139888);
-            return;
-            a.a.a(localj, paramString, "fail", paramJSONObject);
-            AppMethodBeat.o(139888);
-            return;
-            Log.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: should not happen cancel!!");
-            a.a.a(localj, paramString, "fail", paramJSONObject);
-          }
-        }
-      }, new com.tencent.mm.plugin.appbrand.p.a.a()
+        bool = true;
+      }
+      else if (this.rZS)
       {
-        public final void b(WxaPkgLoadProgress paramAnonymousWxaPkgLoadProgress)
+        paramCONTEXT.callback(paramInt, ZP("fail:system permission denied"));
+        bool = false;
+      }
+      else
+      {
+        bool = e.bt(localActivity).a(paramCONTEXT, "android.permission.ACCESS_FINE_LOCATION", new e.f()
         {
-          AppMethodBeat.i(199122);
-          Log.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: module name: %s progress: %s", new Object[] { paramJSONObject, paramAnonymousWxaPkgLoadProgress.toString() });
-          a.a.a(localj, paramString, "progressUpdate", paramJSONObject, paramAnonymousWxaPkgLoadProgress.progress, paramAnonymousWxaPkgLoadProgress.nHs, paramAnonymousWxaPkgLoadProgress.nHt);
-          AppMethodBeat.o(199122);
-        }
-      });
-      AppMethodBeat.o(182227);
+          public final void onResult(String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
+          {
+            AppMethodBeat.i(329209);
+            if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
+            {
+              Log.i("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "PERMISSION_GRANTED, do invoke again");
+              a.this.a(paramCONTEXT, paramJSONObject, paramInt);
+              AppMethodBeat.o(329209);
+              return;
+            }
+            Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "SYS_PERM_DENIED");
+            a.this.rZS = true;
+            paramCONTEXT.callback(paramInt, a.this.ZP("fail:system permission denied"));
+            AppMethodBeat.o(329209);
+          }
+        });
+      }
+    }
+    label147:
+    if (paramJSONObject == null)
+    {
+      Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s invalid data", new Object[] { getName() });
+      paramCONTEXT.callback(paramInt, ZP("fail:invalid data"));
       return;
     }
-    catch (IllegalAccessError parame)
-    {
-      Log.printErrStackTrace("MicroMsg.JsApiCreateLoadSubPackageTask", parame, "loadModule(%s)", new Object[] { paramJSONObject });
-      a(localj, paramString, paramJSONObject);
-      AppMethodBeat.o(182227);
-    }
+    d(paramCONTEXT, paramJSONObject, paramInt);
   }
   
-  public final String aBF()
-  {
-    return "loadTaskId";
-  }
-  
-  public final String bsL()
-  {
-    AppMethodBeat.i(139893);
-    Object localObject = new StringBuilder();
-    c.cbO();
-    localObject = c.cbN();
-    AppMethodBeat.o(139893);
-    return localObject;
-  }
+  protected abstract void d(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.m.a
  * JD-Core Version:    0.7.0.1
  */

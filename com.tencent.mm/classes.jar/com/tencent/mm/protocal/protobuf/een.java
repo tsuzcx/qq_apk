@@ -1,89 +1,69 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class een
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
+  public float ZaG;
+  public float ZaH;
+  public int Zyl;
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(260053);
+    AppMethodBeat.i(259981);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(260053);
-        throw paramVarArgs;
-      }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(260053);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.l(1, this.ZaG);
+      paramVarArgs.l(2, this.ZaH);
+      paramVarArgs.bS(3, this.Zyl);
+      AppMethodBeat.o(259981);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label336;
-      }
-    }
-    label336:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(260053);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(260053);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(260053);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        een localeen = (een)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(260053);
-          return -1;
-        }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          jh localjh = new jh();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localjh.parseFrom((byte[])localObject);
-          }
-          localeen.BaseResponse = localjh;
-          paramInt += 1;
-        }
-        AppMethodBeat.o(260053);
-        return 0;
-      }
-      AppMethodBeat.o(260053);
-      return -1;
+      paramInt = i.a.a.b.b.a.ko(1);
+      int i = i.a.a.b.b.a.ko(2);
+      int j = i.a.a.b.b.a.cJ(3, this.Zyl);
+      AppMethodBeat.o(259981);
+      return paramInt + 4 + 0 + (i + 4) + j;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(259981);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      een localeen = (een)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(259981);
+        return -1;
+      case 1: 
+        localeen.ZaG = Float.intBitsToFloat(locala.ajGk.aax());
+        AppMethodBeat.o(259981);
+        return 0;
+      case 2: 
+        localeen.ZaH = Float.intBitsToFloat(locala.ajGk.aax());
+        AppMethodBeat.o(259981);
+        return 0;
+      }
+      localeen.Zyl = locala.ajGk.aar();
+      AppMethodBeat.o(259981);
+      return 0;
+    }
+    AppMethodBeat.o(259981);
+    return -1;
   }
 }
 

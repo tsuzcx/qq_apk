@@ -2,683 +2,108 @@ package com.tencent.mm.plugin.repairer.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dwp;
-import com.tencent.mm.util.b.a;
-import java.util.Collection;
-import java.util.LinkedList;
-import kotlin.a.j;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.ball.service.FloatBallHelper;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.statecenter.UIStateCenter;
+import java.util.HashSet;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/repairer/ui/RepairerMainUI;", "Lcom/tencent/mm/plugin/repairer/ui/BaseRepairerPrefUI;", "()V", "floatBallHelper", "Lcom/tencent/mm/plugin/repairer/ui/floatball/RepairerFloatBallHelper;", "getFloatBallHelper", "()Lcom/tencent/mm/plugin/repairer/ui/floatball/RepairerFloatBallHelper;", "floatBallHelper$delegate", "Lkotlin/Lazy;", "createDemoRepairerItem", "Lcom/tencent/mm/protocal/protobuf/RepairerItem;", "createGlobalRepairerItem", "createLoginRepairerItem", "createMvRepairerItem", "createMvvmRepairerItem", "createRepairerItem", "createSnsRepairerItem", "createTextStatusRepairerItem", "createTopStoryRepairerItem", "createUpdaterRepairerItem", "createVideoRepairerItem", "createWeSportRepairerItem", "createWebSearchRepairerItem", "createWxPayKindaItem", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onSearchIconLongClick", "view", "Landroid/view/View;", "ui-repairer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/repairer/ui/RepairerMainUI;", "Lcom/tencent/mm/plugin/repairer/ui/BaseRepairerPrefUI;", "()V", "floatBallHelper", "Lcom/tencent/mm/plugin/repairer/ui/floatball/RepairerFloatBallHelper;", "getFloatBallHelper", "()Lcom/tencent/mm/plugin/repairer/ui/floatball/RepairerFloatBallHelper;", "floatBallHelper$delegate", "Lkotlin/Lazy;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "ui-repairer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RepairerMainUI
   extends BaseRepairerPrefUI
 {
-  private final f IwY;
+  public static final a Owo;
+  private static final HashSet<Activity> Owq;
+  private final j Owp;
+  
+  static
+  {
+    AppMethodBeat.i(277919);
+    Owo = new a((byte)0);
+    Owq = new HashSet();
+    AppMethodBeat.o(277919);
+  }
   
   public RepairerMainUI()
   {
-    AppMethodBeat.i(227178);
-    this.IwY = g.ar((kotlin.g.a.a)new RepairerMainUI.a(this));
-    AppMethodBeat.o(227178);
+    AppMethodBeat.i(277890);
+    this.Owp = k.cm((kotlin.g.a.a)new RepairerMainUI.b(this));
+    AppMethodBeat.o(277890);
   }
   
-  private com.tencent.mm.plugin.repairer.ui.a.a fBf()
+  private static final void a(RepairerMainUI paramRepairerMainUI)
   {
-    AppMethodBeat.i(227094);
-    com.tencent.mm.plugin.repairer.ui.a.a locala = (com.tencent.mm.plugin.repairer.ui.a.a)this.IwY.getValue();
-    AppMethodBeat.o(227094);
+    AppMethodBeat.i(277909);
+    s.u(paramRepairerMainUI, "this$0");
+    paramRepairerMainUI.gNd().B(true, 2);
+    AppMethodBeat.o(277909);
+  }
+  
+  private com.tencent.mm.plugin.repairer.ui.b.a gNd()
+  {
+    AppMethodBeat.i(277900);
+    com.tencent.mm.plugin.repairer.ui.b.a locala = (com.tencent.mm.plugin.repairer.ui.b.a)this.Owp.getValue();
+    AppMethodBeat.o(277900);
     return locala;
   }
   
-  public final dwp fBe()
-  {
-    AppMethodBeat.i(227177);
-    dwp localdwp1 = new dwp();
-    localdwp1.key = "";
-    localdwp1.name = "微信维修厂";
-    localdwp1.type = 1;
-    LinkedList localLinkedList1 = localdwp1.Ucr;
-    dwp localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxc.name();
-    localdwp2.name = "Config配置";
-    localdwp2.type = 2;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerResetConfigUI");
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxd.name();
-    localdwp2.name = "微信推送NewXml";
-    localdwp2.type = 2;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerNewXmlUI");
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxe.name();
-    localdwp2.name = "微信发送消息";
-    localdwp2.type = 2;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerSendMsgUI");
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxg.name();
-    localdwp2.name = "全局配置";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    LinkedList localLinkedList2 = localdwp2.Ucr;
-    dwp localdwp3 = new dwp();
-    localdwp3.key = b.a.YxG.name();
-    localdwp3.name = "复制消息Xml";
-    localdwp3.type = 3;
-    LinkedList localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxH.name();
-    localdwp3.name = "快捷菜单";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxI.name();
-    localdwp3.name = "应用文件资源";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxJ.name();
-    localdwp3.name = "启用系统输入框";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxK.name();
-    localdwp3.name = "查看Activity的类名";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyu.name();
-    localdwp3.name = "Actionbar标题居中";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxL.name();
-    localdwp3.name = "@人采用Dialog";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxM.name();
-    localdwp3.name = "使用Camera2";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxQ.name();
-    localdwp3.name = "使用ContactInfo";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxP.name();
-    localdwp3.name = "全局回弹参数设置开关";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxO.name();
-    localdwp3.name = "全局回弹log开关";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxN.name();
-    localdwp3.name = "全局回弹总开关";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxf.name();
-    localdwp2.name = "视频号配置";
-    localdwp2.type = 2;
-    localdwp2.TDA.add("com.tencent.mm.plugin.finder.ui.FinderSettingsUI");
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxh.name();
-    localdwp2.name = "搜索配置";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxR.name();
-    localdwp3.name = "搜一搜WebView预加载";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxi.name();
-    localdwp2.name = "Mv配置";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxS.name();
-    localdwp3.name = "聊天室";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxT.name();
-    localdwp3.name = "音乐卡片降级";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxU.name();
-    localdwp3.name = "支持QQ音乐播放器";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxV.name();
-    localdwp3.name = "不使用缓存播放音乐";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxW.name();
-    localdwp3.name = "启动自由裁剪模式";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxj.name();
-    localdwp2.name = "文字状态配置";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxX.name();
-    localdwp3.name = "NewTips红点";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxY.name();
-    localdwp3.name = "开启下拉星球";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxZ.name();
-    localdwp3.name = "开启朋友圈feeds icon";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyb.name();
-    localdwp3.name = "开启朋友圈点赞/评论icon";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yya.name();
-    localdwp3.name = "开启朋友圈福feeds icon";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyc.name();
-    localdwp3.name = "开启朋友圈消息提醒列表icon";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyd.name();
-    localdwp3.name = "开启无状态时tab查看好友状态";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yye.name();
-    localdwp3.name = "开启我发表状态话题词可点";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyf.name();
-    localdwp3.name = "开启朋友发表状态话题词可点";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyg.name();
-    localdwp3.name = "开启打开体验版小程序";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyh.name();
-    localdwp3.name = "使用旧版icon加载方案";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localdwp3.Ucq = 1;
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyi.name();
-    localdwp3.name = "打开视频号发表开关";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxk.name();
-    localdwp2.name = "更新配置";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyn.name();
-    localdwp3.name = "关闭自动更新Patch";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyo.name();
-    localdwp3.name = "打开新版更新";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyp.name();
-    localdwp3.name = "设置TinkerBaseId";
-    localdwp3.type = 3;
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxl.name();
-    localdwp2.name = "看一看配置";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyq.name();
-    localdwp3.name = "拷贝视频文件到SDCard";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxm.name();
-    localdwp2.name = "微信运动配置";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.sport.ui.SportExptSettingUI");
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxn.name();
-    localdwp2.name = "朋友圈配置";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.sns.ui.SnsSettingUI");
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxo.name();
-    localdwp2.name = "视频拍摄编辑";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyj.name();
-    localdwp3.name = "c2c/sns拍摄开启hevc(0:Default/1:软编/2:硬编)";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1", "2" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyk.name();
-    localdwp3.name = "c2c/sns重编码开启hevc(不包括c2c相册选视频)(0:Default/1:软编/2:硬编)";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1", "2" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyl.name();
-    localdwp3.name = "c2c相册选视频开启hevc(0:Default/1:软编)";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1", "2" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yym.name();
-    localdwp3.name = "c2c相册选视频发送使用video_composition转码";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxp.name();
-    localdwp2.name = "列出文件夹";
-    localdwp2.type = 2;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerListFolderUI");
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxr.name();
-    localdwp2.name = "XLog工具集";
-    localdwp2.type = 2;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerXLogUI");
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxq.name();
-    localdwp2.name = "登录逻辑配置";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yys.name();
-    localdwp3.name = "副设备登录反垃圾链接";
-    localdwp3.type = 3;
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxs.name();
-    localdwp2.name = "MVVM";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyr.name();
-    localdwp3.name = "总开关";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.Yxl.name();
-    localdwp2.name = "Demo";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yxu.name();
-    localdwp3.name = "键盘高度调整Demo";
-    localdwp3.type = 2;
-    localdwp3.TDA.add("com.tencent.mm.plugin.repairer.ui.demo.RepairerKeyboardChangeDemoUI");
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yxw.name();
-    localdwp3.name = "第三方设置状态Demo";
-    localdwp3.type = 2;
-    localdwp3.TDA.add("com.tencent.mm.plugin.repairer.ui.demo.RepairerSetTextStatusDemoUI");
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yxx.name();
-    localdwp3.name = "下拉背景Demo";
-    localdwp3.type = 2;
-    localdwp3.TDA.add("com.tencent.mm.plugin.repairer.ui.demo.RepairerPullDownWidgetDemoUI");
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yxy.name();
-    localdwp3.name = "动画组件";
-    localdwp3.type = 2;
-    localdwp3.TDA.add("com.tencent.mm.plugin.repairer.ui.demo.RepairerAnimationDemoUI");
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yxz.name();
-    localdwp3.name = "DB组件";
-    localdwp3.type = 2;
-    localdwp3.TDA.add("com.tencent.mm.plugin.repairer.ui.demo.RepairerDBDemoUI");
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxA.name();
-    localdwp3.name = "滑动组件";
-    localdwp3.type = 2;
-    localdwp3.TDA.add("com.tencent.mm.plugin.repairer.ui.demo.RepairerDragComponentDemoUI");
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yxv.name();
-    localdwp3.name = "表情输入Demo";
-    localdwp3.type = 2;
-    localdwp3.TDA.add("com.tencent.mm.plugin.repairer.ui.demo.RepairerKeyboardEmojiInputDemoUI");
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxB.name();
-    localdwp3.name = "LiveDBDemo";
-    localdwp3.type = 2;
-    localdwp3.TDA.add("com.tencent.mm.plugin.repairer.ui.demo.RepairerLiveDBDemoUI");
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxC.name();
-    localdwp3.name = "LiveMainDBDemo";
-    localdwp3.type = 2;
-    localdwp3.TDA.add("com.tencent.mm.plugin.repairer.ui.demo.RepairerLiveMainDBDemoUI");
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    localLinkedList1 = localdwp1.Ucr;
-    localdwp2 = new dwp();
-    localdwp2.key = b.a.YxD.name();
-    localdwp2.name = "微信支付调试";
-    localdwp2.type = 1;
-    localdwp2.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.Yyv.name();
-    localdwp3.name = "跨平台本地开关（0：默认、1：开启、2：关闭）";
-    localdwp3.type = 3;
-    localLinkedList3 = localdwp3.TDA;
-    p.j(localLinkedList3, "it.values");
-    j.a((Collection)localLinkedList3, new String[] { "0", "1", "2" });
-    localLinkedList2.add(localdwp3);
-    localLinkedList2 = localdwp2.Ucr;
-    localdwp3 = new dwp();
-    localdwp3.key = b.a.YxE.name();
-    localdwp3.name = "红包调试";
-    localdwp3.type = 1;
-    localdwp3.TDA.add("com.tencent.mm.plugin.repairer.ui.RepairerGroupUI");
-    localLinkedList3 = localdwp3.Ucr;
-    dwp localdwp4 = new dwp();
-    localdwp4.key = b.a.Yyw.name();
-    localdwp4.name = "红包封面教育动画（0：默认、1：开启、2：关闭）";
-    localdwp4.type = 3;
-    LinkedList localLinkedList4 = localdwp4.TDA;
-    p.j(localLinkedList4, "it.values");
-    j.a((Collection)localLinkedList4, new String[] { "0", "1", "2" });
-    localLinkedList3.add(localdwp4);
-    localLinkedList3 = localdwp3.Ucr;
-    localdwp4 = new dwp();
-    localdwp4.key = b.a.Yyx.name();
-    localdwp4.name = "红包封面自动预览视频（0：默认、1：开启、2：关闭）";
-    localdwp4.type = 3;
-    localLinkedList4 = localdwp4.TDA;
-    p.j(localLinkedList4, "it.values");
-    j.a((Collection)localLinkedList4, new String[] { "0", "1", "2" });
-    localLinkedList3.add(localdwp4);
-    localLinkedList2.add(localdwp3);
-    localLinkedList1.add(localdwp2);
-    AppMethodBeat.o(227177);
-    return localdwp1;
-  }
+  private static final void gNe() {}
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(227116);
-    if (!fBf().zH(2)) {
+    AppMethodBeat.i(277964);
+    if (!gNd().zX(2)) {
       finish();
     }
-    AppMethodBeat.o(227116);
+    AppMethodBeat.o(277964);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(227097);
+    AppMethodBeat.i(277938);
     super.onCreate(paramBundle);
-    fBf().I(25, "Repairer");
-    fBf().aoy("微信维修厂");
-    AppMethodBeat.o(227097);
+    if ((CrashReportFactory.hasDebuger()) && (CrashReportFactory.isMonkeyEnv())) {
+      Owq.add(this);
+    }
+    paramBundle = getStateCenter();
+    if (paramBundle != null) {
+      paramBundle.process((q)this, (kotlin.g.a.b)c.Ows);
+    }
+    setTitleBarClickListener(new RepairerMainUI..ExternalSyntheticLambda0(this), RepairerMainUI..ExternalSyntheticLambda1.INSTANCE);
+    gNd().J(25, "Repairer");
+    gNd().ahU("微信维修厂");
+    AppMethodBeat.o(277938);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(227112);
+    AppMethodBeat.i(277960);
     super.onDestroy();
-    fBf().onDestroy();
-    AppMethodBeat.o(227112);
+    gNd().onDestroy();
+    AppMethodBeat.o(277960);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(227106);
+    AppMethodBeat.i(277951);
     super.onPause();
-    fBf().aOj();
-    AppMethodBeat.o(227106);
+    gNd().bhW();
+    AppMethodBeat.o(277951);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(227103);
+    AppMethodBeat.i(277943);
     super.onResume();
-    fBf().bNV();
-    AppMethodBeat.o(227103);
-  }
-  
-  public final void onSearchIconLongClick(View paramView)
-  {
-    AppMethodBeat.i(227099);
-    p.k(paramView, "view");
-    fBf().cvv();
-    AppMethodBeat.o(227099);
+    gNd().coi();
+    AppMethodBeat.o(277943);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -686,10 +111,33 @@ public final class RepairerMainUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/repairer/ui/RepairerMainUI$Companion;", "", "()V", "sUILeaksRoutineEnsuranceRef", "Ljava/util/HashSet;", "Landroid/app/Activity;", "getSUILeaksRoutineEnsuranceRef$annotations", "ui-repairer_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "state", "Lcom/tencent/mm/plugin/repairer/ui/state/RepairerState;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.b<com.tencent.mm.plugin.repairer.ui.d.b, ah>
+  {
+    public static final c Ows;
+    
+    static
+    {
+      AppMethodBeat.i(277928);
+      Ows = new c();
+      AppMethodBeat.o(277928);
+    }
+    
+    c()
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.repairer.ui.RepairerMainUI
  * JD-Core Version:    0.7.0.1
  */

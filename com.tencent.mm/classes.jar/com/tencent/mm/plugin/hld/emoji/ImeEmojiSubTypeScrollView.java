@@ -15,59 +15,61 @@ import com.tencent.mm.view.recyclerview.WxLinearLayoutManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView;", "Landroidx/recyclerview/widget/RecyclerView;", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeViewHolder$IAlternativePyViewListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mIEmojiSubTypeSelectListener", "Lcom/tencent/mm/plugin/hld/emoji/IEmojiSubTypeSelectListener;", "typeName", "", "initView", "", "onSubTypeClick", "position", "itemView", "Landroid/view/View;", "setIEmojiSubTypeSelectListener", "listener", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView;", "Landroidx/recyclerview/widget/RecyclerView;", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeViewHolder$IAlternativePyViewListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mIEmojiSubTypeSelectListener", "Lcom/tencent/mm/plugin/hld/emoji/IEmojiSubTypeSelectListener;", "typeName", "", "initView", "", "onSubTypeClick", "position", "itemView", "Landroid/view/View;", "setIEmojiSubTypeSelectListener", "listener", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ImeEmojiSubTypeScrollView
   extends RecyclerView
   implements l.a
 {
-  public static final a Dws;
-  private b Dwr;
+  public static final ImeEmojiSubTypeScrollView.a Jpx;
+  private b Jpy;
   private String typeName;
   
   static
   {
-    AppMethodBeat.i(216571);
-    Dws = new a((byte)0);
-    AppMethodBeat.o(216571);
+    AppMethodBeat.i(312739);
+    Jpx = new ImeEmojiSubTypeScrollView.a((byte)0);
+    AppMethodBeat.o(312739);
   }
   
   public ImeEmojiSubTypeScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(216569);
-    AppMethodBeat.o(216569);
+    AppMethodBeat.i(312717);
+    AppMethodBeat.o(312717);
   }
   
   public ImeEmojiSubTypeScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(216570);
+    AppMethodBeat.i(312730);
     this.typeName = "emoji";
-    switch (paramContext.obtainStyledAttributes(paramAttributeSet, a.l.ImeEmojiSubTypeScrollView, paramInt, 0).getInt(a.l.ImeEmojiSubTypeScrollView_emoji_type, 1))
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.l.ImeEmojiSubTypeScrollView, paramInt, 0);
+    s.s(paramContext, "context!!.obtainStyledAt…eScrollView, defStyle, 0)");
+    switch (paramContext.getInt(a.l.ImeEmojiSubTypeScrollView_emoji_type, 1))
     {
     default: 
       Log.d("WxIme.ImeEmojiSubTypeScrollView", "initView");
       paramContext = new WxLinearLayoutManager(getContext());
       paramContext.setOrientation(0);
-      paramAttributeSet = g.DHh;
+      paramAttributeSet = g.Jyo;
       paramAttributeSet = getContext();
-      p.j(paramAttributeSet, "context");
-      paramContext.cC(g.be(paramAttributeSet, this.typeName).size());
+      s.s(paramAttributeSet, "context");
+      paramContext.bXK = g.bg(paramAttributeSet, this.typeName).size();
       paramContext.setItemPrefetchEnabled(true);
       setLayoutManager((RecyclerView.LayoutManager)paramContext);
-      paramContext = g.DHh;
-      paramContext = g.aLG(this.typeName);
-      paramAttributeSet = g.DHh;
+      paramContext = g.Jyo;
+      paramContext = g.aIz(this.typeName);
+      paramAttributeSet = g.Jyo;
       paramAttributeSet = getContext();
-      p.j(paramAttributeSet, "context");
-      paramAttributeSet = ((List)g.be(paramAttributeSet, this.typeName)).iterator();
+      s.s(paramAttributeSet, "context");
+      paramAttributeSet = ((List)g.bg(paramAttributeSet, this.typeName)).iterator();
       paramInt = i;
-      label182:
+      label190:
       if (paramAttributeSet.hasNext()) {
-        if (!p.h(((k)paramAttributeSet.next()).typeName, paramContext)) {
+        if (!s.p(((k)paramAttributeSet.next()).typeName, paramContext)) {
           break;
         }
       }
@@ -76,52 +78,46 @@ public final class ImeEmojiSubTypeScrollView
     for (;;)
     {
       paramAttributeSet = this.typeName;
-      Object localObject = g.DHh;
+      Object localObject = g.Jyo;
       localObject = getContext();
-      p.j(localObject, "context");
-      setAdapter((RecyclerView.a)new j(paramAttributeSet, g.be((Context)localObject, this.typeName), paramInt, (l.a)this));
-      paramAttributeSet = g.DHh;
+      s.s(localObject, "context");
+      setAdapter((RecyclerView.a)new j(paramAttributeSet, g.bg((Context)localObject, this.typeName), paramInt, (l.a)this));
+      paramAttributeSet = g.Jyo;
       paramAttributeSet = getContext();
-      p.j(paramAttributeSet, "context");
-      setItemViewCacheSize(g.be(paramAttributeSet, this.typeName).size());
+      s.s(paramAttributeSet, "context");
+      setItemViewCacheSize(g.bg(paramAttributeSet, this.typeName).size());
       Log.d("WxIme.ImeEmojiSubTypeScrollView", "init " + this.typeName + ' ' + paramContext + ' ' + paramInt);
-      AppMethodBeat.o(216570);
+      AppMethodBeat.o(312730);
       return;
       this.typeName = "emoji";
       break;
       this.typeName = "kaoemoji";
       break;
       paramInt += 1;
-      break label182;
+      break label190;
       paramInt = -1;
     }
   }
   
-  public final void k(int paramInt, View paramView)
+  public final void r(int paramInt, View paramView)
   {
-    AppMethodBeat.i(216568);
-    p.k(paramView, "itemView");
-    Log.d("WxIme.ImeEmojiSubTypeScrollView", "onSubTypeClick ".concat(String.valueOf(paramInt)));
-    b localb = this.Dwr;
-    if (localb != null)
-    {
-      localb.j(paramInt, paramView);
-      AppMethodBeat.o(216568);
-      return;
+    AppMethodBeat.i(312748);
+    s.u(paramView, "itemView");
+    Log.d("WxIme.ImeEmojiSubTypeScrollView", s.X("onSubTypeClick ", Integer.valueOf(paramInt)));
+    b localb = this.Jpy;
+    if (localb != null) {
+      localb.q(paramInt, paramView);
     }
-    AppMethodBeat.o(216568);
+    AppMethodBeat.o(312748);
   }
   
   public final void setIEmojiSubTypeSelectListener(b paramb)
   {
-    AppMethodBeat.i(216567);
-    p.k(paramb, "listener");
-    this.Dwr = paramb;
-    AppMethodBeat.o(216567);
+    AppMethodBeat.i(312745);
+    s.u(paramb, "listener");
+    this.Jpy = paramb;
+    AppMethodBeat.o(312745);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
 }
 
 

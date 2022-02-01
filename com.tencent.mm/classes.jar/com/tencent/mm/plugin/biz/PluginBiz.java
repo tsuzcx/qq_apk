@@ -3,28 +3,25 @@ package com.tencent.mm.plugin.biz;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.ad;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.ao.m;
-import com.tencent.mm.api.n;
 import com.tencent.mm.api.o;
+import com.tencent.mm.api.p;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.c.e;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.message.ReportAppMsgInsertEventListener;
 import com.tencent.mm.model.i;
+import com.tencent.mm.model.k;
 import com.tencent.mm.model.y;
 import com.tencent.mm.msgsubscription.api.ISubscribeMsgService;
 import com.tencent.mm.msgsubscription.ui.BizSubscribeMsgManagerUI;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.pluginsdk.ui.applet.d;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.ag;
 import com.tencent.mm.storage.t;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.vfs.ab;
 import java.util.HashMap;
 
 public class PluginBiz
@@ -48,14 +45,14 @@ public class PluginBiz
     {
       public final String[] getSQLs()
       {
-        return aa.SQL_CREATE;
+        return ac.SQL_CREATE;
       }
     });
     localHashMap.put(Integer.valueOf("BIZ_TIME_LINE_SINGLE_MSG_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return ae.SQL_CREATE;
+        return ag.SQL_CREATE;
       }
     });
     AppMethodBeat.o(124342);
@@ -65,38 +62,38 @@ public class PluginBiz
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(124340);
-    if (paramg.aIE())
+    if (paramg.bbA())
     {
-      h.a(com.tencent.mm.ao.q.class, new e(new m()));
+      h.a(com.tencent.mm.an.q.class, new e(new com.tencent.mm.an.m()));
       h.b(com.tencent.mm.plugin.biz.a.a.class, new a());
-      paramg = com.tencent.mm.msgsubscription.api.b.moG;
-      com.tencent.mm.msgsubscription.api.b.a("name_biz", new com.tencent.mm.msgsubscription.b.a(com.tencent.mm.msgsubscription.d.c.mqn)
+      paramg = com.tencent.mm.msgsubscription.api.b.piw;
+      com.tencent.mm.msgsubscription.api.b.a("name_biz", new com.tencent.mm.msgsubscription.b.a(com.tencent.mm.msgsubscription.d.c.pjX)
       {
         public final void a(Context paramAnonymousContext, int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
         {
-          AppMethodBeat.i(206553);
+          AppMethodBeat.i(260668);
           Intent localIntent = new Intent(paramAnonymousContext, BizSubscribeMsgManagerUI.class);
           localIntent.putExtra("key_biz_username", paramAnonymousString1);
           localIntent.putExtra("key_biz_nickname", paramAnonymousString2);
-          localIntent.putExtra("key_biz_presenter_class", com.tencent.mm.ao.b.a.class.getName());
+          localIntent.putExtra("key_biz_presenter_class", com.tencent.mm.an.b.a.class.getName());
           localIntent.putExtra("key_need_update", true);
           localIntent.putExtra("key_need_load_from_remote", true);
           localIntent.putExtra("key_enter_scene", paramAnonymousInt);
-          com.tencent.mm.by.c.f(paramAnonymousContext, "com.tencent.mm.msgsubscription.ui.BizSubscribeMsgManagerUI", localIntent);
-          AppMethodBeat.o(206553);
+          com.tencent.mm.br.c.g(paramAnonymousContext, "com.tencent.mm.msgsubscription.ui.BizSubscribeMsgManagerUI", localIntent);
+          AppMethodBeat.o(260668);
         }
       });
-      ab.a("bizimg/", "bizimg/", 536870912L, 604800000L, 73);
+      com.tencent.mm.vfs.af.b("bizimg/", "bizimg/", 536870912L, 604800000L, 73);
       Log.i("VFS.Debug", "bizimg FS registered");
-      ab.a("brandicon/", "brandicon/", 7776000000L, 1);
-      ab.a("bizcache/", "bizcache/", 2592000000L, 65);
-      ab.a("webcanvascache/", "webcanvascache/", 2592000000L, 65);
-      ab.aE("openapi/", "openapi/", 1);
-      ab.a("openapi_cache/", "openapi_cache/", 7776000000L, 65);
-      ab.a("share_img_tmp/", "share_img_tmp/", 86400000L, 65);
-      EventCenter.instance.add(new ad());
+      com.tencent.mm.vfs.af.a("brandicon/", "brandicon/", 7776000000L, 1);
+      com.tencent.mm.vfs.af.a("bizcache/", "bizcache/", 2592000000L, 65);
+      com.tencent.mm.vfs.af.a("webcanvascache/", "webcanvascache/", 2592000000L, 65);
+      com.tencent.mm.vfs.af.aR("openapi/", "openapi/", 1);
+      com.tencent.mm.vfs.af.a("openapi_cache/", "openapi_cache/", 7776000000L, 65);
+      com.tencent.mm.vfs.af.a("share_img_tmp/", "share_img_tmp/", 86400000L, 65);
+      new ReportAppMsgInsertEventListener().alive();
     }
-    com.tencent.mm.pluginsdk.ui.applet.x.a.RgS = new d();
+    com.tencent.mm.pluginsdk.ui.applet.x.a.YcW = new d();
     AppMethodBeat.o(124340);
   }
   
@@ -104,25 +101,25 @@ public class PluginBiz
   {
     AppMethodBeat.i(124339);
     dependsOn(v.class);
-    dependsOn(com.tencent.mm.plugin.teenmode.a.a.class);
+    dependsOn(com.tencent.mm.plugin.teenmode.a.c.class);
     AppMethodBeat.o(124339);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(124341);
-    if (paramg.aIE())
+    if (paramg.bbA())
     {
-      pin(new y(af.class));
-      h.b(com.tencent.mm.api.k.class, new com.tencent.mm.model.g());
-      h.b(com.tencent.mm.api.l.class, new i());
-      h.b(n.class, new com.tencent.mm.model.k());
-      h.a(o.class, new e(new com.tencent.mm.model.l()));
+      pin(new y(com.tencent.mm.an.af.class));
+      h.b(com.tencent.mm.api.l.class, new com.tencent.mm.model.g());
+      h.b(com.tencent.mm.api.m.class, new i());
+      h.b(o.class, new k());
+      h.a(p.class, new e(new com.tencent.mm.model.l()));
     }
-    if ((!paramg.MY(":tools")) && (!paramg.MY(":toolsmp"))) {
-      paramg.MZ(":appbrand");
+    if ((!paramg.FH(":tools")) && (!paramg.FH(":toolsmp"))) {
+      paramg.FI(":appbrand");
     }
-    if ((paramg.MY(":tools")) || (paramg.MY(":toolsmp"))) {
+    if ((paramg.FH(":tools")) || (paramg.FH(":toolsmp"))) {
       h.b(ISubscribeMsgService.class, new com.tencent.mm.msgsubscription.b.a.b());
     }
     startTime = System.currentTimeMillis();
@@ -138,18 +135,18 @@ public class PluginBiz
   
   public void onAccountInitialized(f.c paramc)
   {
-    AppMethodBeat.i(208782);
-    paramc = com.tencent.mm.model.q.lsl;
+    AppMethodBeat.i(260671);
+    paramc = com.tencent.mm.model.q.ojI;
     com.tencent.mm.model.q.init();
-    AppMethodBeat.o(208782);
+    AppMethodBeat.o(260671);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(208784);
-    com.tencent.mm.model.q localq = com.tencent.mm.model.q.lsl;
+    AppMethodBeat.i(260673);
+    com.tencent.mm.model.q localq = com.tencent.mm.model.q.ojI;
     com.tencent.mm.model.q.release();
-    AppMethodBeat.o(208784);
+    AppMethodBeat.o(260673);
   }
 }
 

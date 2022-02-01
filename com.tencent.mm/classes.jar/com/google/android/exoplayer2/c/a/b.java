@@ -12,28 +12,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements com.google.android.exoplayer2.c.e, l
 {
-  public static final h aRP;
-  private static final int aRQ;
-  private final m aRR;
-  private final m aRS;
-  private final m aRT;
-  private final m aRU;
-  private g aRV;
-  private int aRW;
-  private int aRX;
-  public int aRY;
-  public int aRZ;
-  public long aSa;
-  private a aSb;
-  private e aSc;
-  private c aSd;
+  public static final h cLL;
+  private static final int cLM;
+  private final m cLN;
+  private final m cLO;
+  private final m cLP;
+  private final m cLQ;
+  private g cLR;
+  private int cLS;
+  private int cLT;
+  public int cLU;
+  public int cLV;
+  public long cLW;
+  private a cLX;
+  private e cLY;
+  private c cLZ;
   
   static
   {
     AppMethodBeat.i(91983);
-    aRP = new h()
+    cLL = new h()
     {
-      public final com.google.android.exoplayer2.c.e[] ss()
+      public final com.google.android.exoplayer2.c.e[] RV()
       {
         AppMethodBeat.i(91978);
         b localb = new b();
@@ -41,41 +41,47 @@ public final class b
         return new com.google.android.exoplayer2.c.e[] { localb };
       }
     };
-    aRQ = x.bU("FLV");
+    cLM = x.du("FLV");
     AppMethodBeat.o(91983);
   }
   
   public b()
   {
     AppMethodBeat.i(91979);
-    this.aRR = new m(4);
-    this.aRS = new m(9);
-    this.aRT = new m(11);
-    this.aRU = new m();
-    this.aRW = 1;
+    this.cLN = new m(4);
+    this.cLO = new m(9);
+    this.cLP = new m(11);
+    this.cLQ = new m();
+    this.cLS = 1;
     AppMethodBeat.o(91979);
   }
   
   private m b(f paramf)
   {
     AppMethodBeat.i(91982);
-    if (this.aRZ > this.aRU.vh()) {
-      this.aRU.n(new byte[Math.max(this.aRU.vh() * 2, this.aRZ)], 0);
+    if (this.cLV > this.cLQ.UG()) {
+      this.cLQ.n(new byte[Math.max(this.cLQ.UG() * 2, this.cLV)], 0);
     }
     for (;;)
     {
-      this.aRU.ft(this.aRZ);
-      paramf.readFully(this.aRU.data, 0, this.aRZ);
-      paramf = this.aRU;
+      this.cLQ.iG(this.cLV);
+      paramf.readFully(this.cLQ.data, 0, this.cLV);
+      paramf = this.cLQ;
       AppMethodBeat.o(91982);
       return paramf;
-      this.aRU.setPosition(0);
+      this.cLQ.setPosition(0);
     }
   }
   
-  public final long O(long paramLong)
+  public final void C(long paramLong1, long paramLong2)
   {
-    return 0L;
+    this.cLS = 1;
+    this.cLT = 0;
+  }
+  
+  public final boolean RR()
+  {
+    return false;
   }
   
   public final int a(f paramf, k paramk)
@@ -83,12 +89,12 @@ public final class b
     AppMethodBeat.i(91981);
     for (;;)
     {
-      switch (this.aRW)
+      switch (this.cLS)
       {
       default: 
         break;
       case 1: 
-        if (!paramf.a(this.aRS.data, 0, 9, true))
+        if (!paramf.a(this.cLO.data, 0, 9, true))
         {
           i = 0;
           if (i == 0)
@@ -99,9 +105,9 @@ public final class b
         }
         else
         {
-          this.aRS.setPosition(0);
-          this.aRS.fu(4);
-          int j = this.aRS.readUnsignedByte();
+          this.cLO.setPosition(0);
+          this.cLO.iH(4);
+          int j = this.cLO.readUnsignedByte();
           if ((j & 0x4) != 0)
           {
             i = 1;
@@ -111,19 +117,19 @@ public final class b
           }
           for (j = 1;; j = 0)
           {
-            if ((i != 0) && (this.aSb == null)) {
-              this.aSb = new a(this.aRV.ej(8));
+            if ((i != 0) && (this.cLX == null)) {
+              this.cLX = new a(this.cLR.hz(8));
             }
-            if ((j != 0) && (this.aSc == null)) {
-              this.aSc = new e(this.aRV.ej(9));
+            if ((j != 0) && (this.cLY == null)) {
+              this.cLY = new e(this.cLR.hz(9));
             }
-            if (this.aSd == null) {
-              this.aSd = new c();
+            if (this.cLZ == null) {
+              this.cLZ = new c();
             }
-            this.aRV.st();
-            this.aRV.a(this);
-            this.aRX = (this.aRS.readInt() - 9 + 4);
-            this.aRW = 2;
+            this.cLR.RW();
+            this.cLR.a(this);
+            this.cLT = (this.cLO.readInt() - 9 + 4);
+            this.cLS = 2;
             i = 1;
             break;
             i = 0;
@@ -134,51 +140,51 @@ public final class b
       case 2: 
         label110:
         label255:
-        paramf.ed(this.aRX);
-        this.aRX = 0;
-        this.aRW = 3;
+        paramf.eP(this.cLT);
+        this.cLT = 0;
+        this.cLS = 3;
       }
     }
-    if (!paramf.a(this.aRT.data, 0, 11, true)) {}
+    if (!paramf.a(this.cLP.data, 0, 11, true)) {}
     for (int i = 0; i == 0; i = 1)
     {
       AppMethodBeat.o(91981);
       return -1;
-      this.aRT.setPosition(0);
-      this.aRY = this.aRT.readUnsignedByte();
-      this.aRZ = this.aRT.vj();
-      this.aSa = this.aRT.vj();
-      this.aSa = ((this.aRT.readUnsignedByte() << 24 | this.aSa) * 1000L);
-      this.aRT.fu(3);
-      this.aRW = 4;
+      this.cLP.setPosition(0);
+      this.cLU = this.cLP.readUnsignedByte();
+      this.cLV = this.cLP.UI();
+      this.cLW = this.cLP.UI();
+      this.cLW = ((this.cLP.readUnsignedByte() << 24 | this.cLW) * 1000L);
+      this.cLP.iH(3);
+      this.cLS = 4;
     }
-    if ((this.aRY == 8) && (this.aSb != null))
+    if ((this.cLU == 8) && (this.cLX != null))
     {
-      this.aSb.b(b(paramf), this.aSa);
+      this.cLX.b(b(paramf), this.cLW);
       i = 1;
     }
     for (;;)
     {
-      this.aRX = 4;
-      this.aRW = 2;
+      this.cLT = 4;
+      this.cLS = 2;
       if (i == 0) {
         break;
       }
       AppMethodBeat.o(91981);
       return 0;
-      if ((this.aRY == 9) && (this.aSc != null))
+      if ((this.cLU == 9) && (this.cLY != null))
       {
-        this.aSc.b(b(paramf), this.aSa);
+        this.cLY.b(b(paramf), this.cLW);
         i = 1;
       }
-      else if ((this.aRY == 18) && (this.aSd != null))
+      else if ((this.cLU == 18) && (this.cLZ != null))
       {
-        this.aSd.b(b(paramf), this.aSa);
+        this.cLZ.b(b(paramf), this.cLW);
         i = 1;
       }
       else
       {
-        paramf.ed(this.aRZ);
+        paramf.eP(this.cLV);
         i = 0;
       }
     }
@@ -186,34 +192,34 @@ public final class b
   
   public final void a(g paramg)
   {
-    this.aRV = paramg;
+    this.cLR = paramg;
   }
   
   public final boolean a(f paramf)
   {
     AppMethodBeat.i(91980);
-    paramf.b(this.aRR.data, 0, 3);
-    this.aRR.setPosition(0);
-    if (this.aRR.vj() != aRQ)
+    paramf.b(this.cLN.data, 0, 3);
+    this.cLN.setPosition(0);
+    if (this.cLN.UI() != cLM)
     {
       AppMethodBeat.o(91980);
       return false;
     }
-    paramf.b(this.aRR.data, 0, 2);
-    this.aRR.setPosition(0);
-    if ((this.aRR.readUnsignedShort() & 0xFA) != 0)
+    paramf.b(this.cLN.data, 0, 2);
+    this.cLN.setPosition(0);
+    if ((this.cLN.readUnsignedShort() & 0xFA) != 0)
     {
       AppMethodBeat.o(91980);
       return false;
     }
-    paramf.b(this.aRR.data, 0, 4);
-    this.aRR.setPosition(0);
-    int i = this.aRR.readInt();
-    paramf.sp();
-    paramf.ee(i);
-    paramf.b(this.aRR.data, 0, 4);
-    this.aRR.setPosition(0);
-    if (this.aRR.readInt() == 0)
+    paramf.b(this.cLN.data, 0, 4);
+    this.cLN.setPosition(0);
+    int i = this.cLN.readInt();
+    paramf.RS();
+    paramf.hu(i);
+    paramf.b(this.cLN.data, 0, 4);
+    this.cLN.setPosition(0);
+    if (this.cLN.readInt() == 0)
     {
       AppMethodBeat.o(91980);
       return true;
@@ -222,25 +228,19 @@ public final class b
     return false;
   }
   
-  public final void g(long paramLong1, long paramLong2)
+  public final long cc(long paramLong)
   {
-    this.aRW = 1;
-    this.aRX = 0;
+    return 0L;
   }
   
   public final long getDurationUs()
   {
-    return this.aSd.aNk;
-  }
-  
-  public final boolean so()
-  {
-    return false;
+    return this.cLZ.cHg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.a.b
  * JD-Core Version:    0.7.0.1
  */

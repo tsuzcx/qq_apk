@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.appbrand.media.record;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.aap;
-import com.tencent.mm.f.a.aap.a;
-import com.tencent.mm.f.a.aaq;
-import com.tencent.mm.f.a.fu;
+import com.tencent.mm.autogen.a.acm;
+import com.tencent.mm.autogen.a.acm.a;
+import com.tencent.mm.autogen.a.acn;
+import com.tencent.mm.autogen.a.gf;
+import com.tencent.mm.n.a;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.q.a;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.event.IListener;
@@ -20,53 +21,53 @@ public final class AudioRecordVoIPInterruptListener
   implements f
 {
   private boolean isStart = false;
-  private e qdX;
-  private CheckInterruptTask qei;
-  private StartInterruptEventListenTask qej;
-  private StopInterruptEventListenTask qek;
+  private e tiM;
+  private CheckInterruptTask tiX;
+  private StartInterruptEventListenTask tiY;
+  private StopInterruptEventListenTask tiZ;
   
   public final void a(e parame)
   {
-    this.qdX = parame;
+    this.tiM = parame;
   }
   
-  public final boolean cbn()
+  public final boolean cBH()
   {
     AppMethodBeat.i(47610);
-    if (this.qdX == null)
+    if (this.tiM == null)
     {
       Log.e("MicroMsg.Record.AudioRecordVoIPInterruptListener", "callback is invalid");
       AppMethodBeat.o(47610);
       return false;
     }
-    if (this.qei == null) {
-      this.qei = new CheckInterruptTask(this.qdX);
+    if (this.tiX == null) {
+      this.tiX = new CheckInterruptTask(this.tiM);
     }
-    this.qei.bPu();
-    Log.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "isInterrupted:%b", new Object[] { Boolean.valueOf(CheckInterruptTask.a(this.qei)) });
-    boolean bool = CheckInterruptTask.a(this.qei);
+    this.tiX.cpB();
+    Log.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "isInterrupted:%b", new Object[] { Boolean.valueOf(CheckInterruptTask.a(this.tiX)) });
+    boolean bool = CheckInterruptTask.a(this.tiX);
     AppMethodBeat.o(47610);
     return bool;
   }
   
-  public final void cbo()
+  public final void cBI()
   {
     AppMethodBeat.i(47611);
-    if (this.qdX == null)
+    if (this.tiM == null)
     {
       Log.e("MicroMsg.Record.AudioRecordVoIPInterruptListener", "callback is invalid");
       AppMethodBeat.o(47611);
       return;
     }
-    if (this.qej == null) {
-      this.qej = new StartInterruptEventListenTask(this.qdX);
+    if (this.tiY == null) {
+      this.tiY = new StartInterruptEventListenTask(this.tiM);
     }
     this.isStart = true;
-    this.qej.bsM();
+    this.tiY.bQt();
     AppMethodBeat.o(47611);
   }
   
-  public final void cbp()
+  public final void cBJ()
   {
     AppMethodBeat.i(47612);
     if (!this.isStart)
@@ -76,10 +77,10 @@ public final class AudioRecordVoIPInterruptListener
       return;
     }
     this.isStart = false;
-    if (this.qek == null) {
-      this.qek = new StopInterruptEventListenTask();
+    if (this.tiZ == null) {
+      this.tiZ = new StopInterruptEventListenTask();
     }
-    this.qek.bPu();
+    this.tiZ.cpB();
     AppMethodBeat.o(47612);
   }
   
@@ -87,8 +88,8 @@ public final class AudioRecordVoIPInterruptListener
     extends MainProcessTask
   {
     public static final Parcelable.Creator<CheckInterruptTask> CREATOR;
-    private boolean qdT;
-    private e qdX;
+    private boolean tiI;
+    private e tiM;
     
     static
     {
@@ -100,43 +101,43 @@ public final class AudioRecordVoIPInterruptListener
     public CheckInterruptTask(Parcel paramParcel)
     {
       AppMethodBeat.i(47585);
-      this.qdT = false;
-      f(paramParcel);
+      this.tiI = false;
+      h(paramParcel);
       AppMethodBeat.o(47585);
     }
     
     public CheckInterruptTask(e parame)
     {
-      this.qdT = false;
-      this.qdX = parame;
+      this.tiI = false;
+      this.tiM = parame;
     }
     
-    public final void RW()
+    public final void asn()
     {
       boolean bool1 = false;
       AppMethodBeat.i(47586);
-      this.qdT = false;
-      aap localaap = new aap();
-      EventCenter.instance.publish(localaap);
-      boolean bool3 = localaap.fZK.fvp;
-      boolean bool2 = a.aAj();
-      Log.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "isVoipUsing:%b, isMultiTalkUsing:%b, isAppBrandVoiceUsing:%b", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool2), Boolean.valueOf(a.aAm()) });
+      this.tiI = false;
+      acm localacm = new acm();
+      localacm.publish();
+      boolean bool3 = localacm.ifS.hzK;
+      boolean bool2 = a.aTe();
+      Log.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "isVoipUsing:%b, isMultiTalkUsing:%b, isAppBrandVoiceUsing:%b", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool2), Boolean.valueOf(a.aTh()) });
       if ((bool3) || (bool2)) {
         bool1 = true;
       }
-      this.qdT = bool1;
-      bPt();
+      this.tiI = bool1;
+      cpA();
       AppMethodBeat.o(47586);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       boolean bool = true;
       AppMethodBeat.i(47587);
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.qdT = bool;
+        this.tiI = bool;
         AppMethodBeat.o(47587);
         return;
         bool = false;
@@ -146,7 +147,7 @@ public final class AudioRecordVoIPInterruptListener
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(47588);
-      if (this.qdT) {}
+      if (this.tiI) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
@@ -160,10 +161,10 @@ public final class AudioRecordVoIPInterruptListener
     extends MainProcessTask
   {
     public static final Parcelable.Creator<StartInterruptEventListenTask> CREATOR;
-    private e qdX;
-    private int qen;
-    private final IListener qeo;
-    private final IListener qep;
+    private e tiM;
+    private int tjc;
+    private final IListener tjd;
+    private final IListener tje;
     
     static
     {
@@ -175,78 +176,78 @@ public final class AudioRecordVoIPInterruptListener
     public StartInterruptEventListenTask(Parcel paramParcel)
     {
       AppMethodBeat.i(47597);
-      this.qen = -1;
-      this.qeo = new IListener() {};
-      this.qep = new IListener() {};
-      f(paramParcel);
+      this.tjc = -1;
+      this.tjd = new IListener(com.tencent.mm.app.f.hfK) {};
+      this.tje = new IListener(com.tencent.mm.app.f.hfK) {};
+      h(paramParcel);
       AppMethodBeat.o(47597);
     }
     
     public StartInterruptEventListenTask(e parame)
     {
       AppMethodBeat.i(47596);
-      this.qen = -1;
-      this.qeo = new IListener() {};
-      this.qep = new IListener() {};
-      this.qdX = parame;
+      this.tjc = -1;
+      this.tjd = new IListener(com.tencent.mm.app.f.hfK) {};
+      this.tje = new IListener(com.tencent.mm.app.f.hfK) {};
+      this.tiM = parame;
       AppMethodBeat.o(47596);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(47598);
       Log.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "addListener");
-      if (!EventCenter.instance.hadListened(this.qeo))
+      if (!EventCenter.instance.hadListened(this.tjd))
       {
-        EventCenter.instance.addListener(this.qeo);
-        AudioRecordVoIPInterruptListener.a.cbx();
-        AudioRecordVoIPInterruptListener.a.a(this.qeo);
+        this.tjd.alive();
+        AudioRecordVoIPInterruptListener.a.cBR();
+        AudioRecordVoIPInterruptListener.a.a(this.tjd);
       }
-      if (!EventCenter.instance.hadListened(this.qep))
+      if (!EventCenter.instance.hadListened(this.tje))
       {
-        EventCenter.instance.addListener(this.qep);
-        AudioRecordVoIPInterruptListener.a.cbx();
-        AudioRecordVoIPInterruptListener.a.a(this.qep);
+        this.tje.alive();
+        AudioRecordVoIPInterruptListener.a.cBR();
+        AudioRecordVoIPInterruptListener.a.a(this.tje);
       }
       AppMethodBeat.o(47598);
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(47599);
-      if (this.qdX != null)
+      if (this.tiM != null)
       {
-        if (this.qen != 11) {
+        if (this.tjc != 11) {
           break label48;
         }
         Log.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "onInterruptEnd");
-        this.qdX.cbm();
+        this.tiM.cBG();
       }
       for (;;)
       {
-        this.qen = -1;
+        this.tjc = -1;
         AppMethodBeat.o(47599);
         return;
         label48:
-        if (this.qen == 3)
+        if (this.tjc == 3)
         {
           Log.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "onInterruptBegin");
-          this.qdX.cbl();
+          this.tiM.cBF();
         }
       }
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(47600);
-      this.qen = paramParcel.readInt();
+      this.tjc = paramParcel.readInt();
       AppMethodBeat.o(47600);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(47601);
-      paramParcel.writeInt(this.qen);
+      paramParcel.writeInt(this.tjc);
       AppMethodBeat.o(47601);
     }
   }
@@ -268,24 +269,22 @@ public final class AudioRecordVoIPInterruptListener
     public StopInterruptEventListenTask(Parcel paramParcel)
     {
       AppMethodBeat.i(47607);
-      f(paramParcel);
+      h(paramParcel);
       AppMethodBeat.o(47607);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(47608);
       Log.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "removeListener");
-      AudioRecordVoIPInterruptListener.a locala = AudioRecordVoIPInterruptListener.a.cbx();
+      AudioRecordVoIPInterruptListener.a locala = AudioRecordVoIPInterruptListener.a.cBR();
       try
       {
-        Iterator localIterator = locala.qem.iterator();
-        while (localIterator.hasNext())
-        {
-          IListener localIListener = (IListener)localIterator.next();
-          EventCenter.instance.removeListener(localIListener);
+        Iterator localIterator = locala.tjb.iterator();
+        while (localIterator.hasNext()) {
+          ((IListener)localIterator.next()).dead();
         }
-        localObject.qem.clear();
+        localObject.tjb.clear();
       }
       finally
       {
@@ -297,13 +296,13 @@ public final class AudioRecordVoIPInterruptListener
   
   static class a
   {
-    private static a qel;
-    LinkedList<IListener<IEvent>> qem;
+    private static a tja;
+    LinkedList<IListener<IEvent>> tjb;
     
     private a()
     {
       AppMethodBeat.i(47590);
-      this.qem = new LinkedList();
+      this.tjb = new LinkedList();
       AppMethodBeat.o(47590);
     }
     
@@ -312,7 +311,7 @@ public final class AudioRecordVoIPInterruptListener
       AppMethodBeat.i(47592);
       try
       {
-        cbx().qem.add(paramIListener);
+        cBR().tjb.add(paramIListener);
         return;
       }
       finally
@@ -321,16 +320,16 @@ public final class AudioRecordVoIPInterruptListener
       }
     }
     
-    public static a cbx()
+    public static a cBR()
     {
       AppMethodBeat.i(47591);
-      if (qel == null) {}
+      if (tja == null) {}
       try
       {
-        if (qel == null) {
-          qel = new a();
+        if (tja == null) {
+          tja = new a();
         }
-        a locala = qel;
+        a locala = tja;
         AppMethodBeat.o(47591);
         return locala;
       }
@@ -343,7 +342,7 @@ public final class AudioRecordVoIPInterruptListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.AudioRecordVoIPInterruptListener
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.gallery.model;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.gallery.b.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -17,24 +18,24 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class c
 {
-  public d BUa;
-  int BUb;
-  public h<String> BUc;
-  public HashMap<String, c> BUd;
-  int BUe;
-  private h<b> BUf;
-  h<b> BUg;
+  private i<b> HGA;
+  i<b> HGB;
+  public d HGv;
+  int HGw;
+  public i<String> HGx;
+  public HashMap<String, c> HGy;
+  int HGz;
   
   public c()
   {
     AppMethodBeat.i(111240);
-    this.BUa = new d();
-    this.BUb = g.DEFAULT_CORE_POOL_SIZE;
-    this.BUc = new h();
-    this.BUd = new HashMap();
-    this.BUe = (g.DEFAULT_CORE_POOL_SIZE / 2);
-    this.BUf = new h();
-    this.BUg = new h();
+    this.HGv = new d();
+    this.HGw = g.HHl;
+    this.HGx = new i();
+    this.HGy = new HashMap();
+    this.HGz = (g.HHl / 2);
+    this.HGA = new i();
+    this.HGB = new i();
     AppMethodBeat.o(111240);
   }
   
@@ -46,7 +47,7 @@ public final class c
     return paramString1;
   }
   
-  public final Bitmap a(String paramString1, int paramInt1, String paramString2, long paramLong1, s.e parame, int paramInt2, long paramLong2)
+  public final Bitmap a(String paramString1, int paramInt1, String paramString2, long paramLong1, t.e parame, int paramInt2, long paramLong2)
   {
     AppMethodBeat.i(179445);
     if (Util.isNullOrNil(paramString1))
@@ -55,33 +56,33 @@ public final class c
       AppMethodBeat.o(179445);
       return null;
     }
-    String str = com.tencent.mm.plugin.gallery.a.e.a(paramString1, parame, paramInt2);
-    Object localObject = com.tencent.mm.plugin.gallery.a.e.a(paramString1, parame, paramLong2);
-    localObject = this.BUa.JL((String)localObject);
+    String str = h.a(paramString1, parame, paramInt2);
+    Object localObject = h.a(paramString1, parame, paramLong2);
+    localObject = this.HGv.Cr((String)localObject);
     if (localObject != null)
     {
       Log.v("MicroMsg.CacheService", "get bitmap from cache: %s.", new Object[] { paramString1 });
       AppMethodBeat.o(179445);
       return localObject;
     }
-    Log.d("MicroMsg.CacheService", "waitingDecodeTask size is : [%d].", new Object[] { Integer.valueOf(this.BUd.size()) });
-    if (this.BUd.containsKey(str))
+    Log.d("MicroMsg.CacheService", "waitingDecodeTask size is : [%d].", new Object[] { Integer.valueOf(this.HGy.size()) });
+    if (this.HGy.containsKey(str))
     {
       Log.w("MicroMsg.CacheService", "%s has already getting bitmap from file, %s.", new Object[] { str, paramString1 });
       AppMethodBeat.o(179445);
       return null;
     }
-    this.BUc.add(str);
+    this.HGx.add(str);
     paramString1 = new c(paramString1, paramInt1, paramString2, paramLong1, parame, paramInt2, paramLong2);
-    this.BUd.put(str, paramString1);
+    this.HGy.put(str, paramString1);
     Log.d("MicroMsg.CacheService", "add task: %s.", new Object[] { str });
-    Log.d("MicroMsg.CacheService", "filePathInService size: %s, waitingDecodeTask size: %s.", new Object[] { Integer.valueOf(this.BUc.size()), Integer.valueOf(this.BUd.size()) });
-    esZ();
+    Log.d("MicroMsg.CacheService", "filePathInService size: %s, waitingDecodeTask size: %s.", new Object[] { Integer.valueOf(this.HGx.size()), Integer.valueOf(this.HGy.size()) });
+    fAb();
     AppMethodBeat.o(179445);
     return null;
   }
   
-  public final Bitmap a(String paramString1, String paramString2, s.e parame, long paramLong)
+  public final Bitmap a(String paramString1, String paramString2, t.e parame, long paramLong)
   {
     AppMethodBeat.i(179446);
     if (Util.isNullOrNil(paramString1)) {}
@@ -92,7 +93,7 @@ public final class c
       return null;
       paramString2 = paramString1;
     }
-    paramString1 = this.BUa.JL(com.tencent.mm.plugin.gallery.a.e.a(paramString2, parame, paramLong));
+    paramString1 = this.HGv.Cr(h.a(paramString2, parame, paramLong));
     if (paramString1 != null)
     {
       Log.v("MicroMsg.CacheService", "get bitmap from cache: %s.", new Object[] { paramString2 });
@@ -106,60 +107,60 @@ public final class c
   public final void a(d.b paramb)
   {
     AppMethodBeat.i(111245);
-    d locald = this.BUa;
+    d locald = this.HGv;
     Log.d("MicroMsg.GalleryCache", "try add listener[%s].", new Object[] { paramb });
-    if (locald.BUq.size() > 256)
+    if (locald.HGL.size() > 256)
     {
-      Log.d("MicroMsg.GalleryCache", "start clear logic: %s.", new Object[] { Integer.valueOf(locald.BUq.size()) });
+      Log.d("MicroMsg.GalleryCache", "start clear logic: %s.", new Object[] { Integer.valueOf(locald.HGL.size()) });
       int i = 0;
       while (i < 128)
       {
-        String str = (String)locald.BUq.get(i);
+        String str = (String)locald.HGL.get(i);
         if (!Util.isNullOrNil(str)) {
-          locald.BUr.remove(str);
+          locald.HGM.remove(str);
         }
         i += 1;
       }
-      locald.BUq.subList(0, 128).clear();
-      Log.d("MicroMsg.GalleryCache", "finish clear logic: %s.", new Object[] { Integer.valueOf(locald.BUq.size()) });
+      locald.HGL.subList(0, 128).clear();
+      Log.d("MicroMsg.GalleryCache", "finish clear logic: %s.", new Object[] { Integer.valueOf(locald.HGL.size()) });
     }
-    if (Util.isNullOrNil(paramb.eth()))
+    if (Util.isNullOrNil(paramb.fAj()))
     {
       Log.e("MicroMsg.GalleryCache", "error! fileKey is invalid!!!");
       AppMethodBeat.o(111245);
       return;
     }
-    if (locald.BUr.containsKey(paramb.eth()))
+    if (locald.HGM.containsKey(paramb.fAj()))
     {
       Log.d("MicroMsg.GalleryCache", "listener already exist!!! %s, update!!!.", new Object[] { paramb });
-      locald.BUq.remove(paramb.eth());
-      locald.BUq.add(paramb.eth());
-      locald.BUr.put(paramb.eth(), paramb);
+      locald.HGL.remove(paramb.fAj());
+      locald.HGL.add(paramb.fAj());
+      locald.HGM.put(paramb.fAj(), paramb);
       AppMethodBeat.o(111245);
       return;
     }
     Log.d("MicroMsg.GalleryCache", "add listener[%s] ok.", new Object[] { paramb });
-    locald.BUq.add(paramb.eth());
-    locald.BUr.put(paramb.eth(), paramb);
+    locald.HGL.add(paramb.fAj());
+    locald.HGM.put(paramb.fAj(), paramb);
     AppMethodBeat.o(111245);
   }
   
   public final void b(d.b paramb)
   {
     AppMethodBeat.i(111246);
-    d locald = this.BUa;
+    d locald = this.HGv;
     if (paramb == null)
     {
-      locald.etg();
-      locald.lAD.removeAll();
+      locald.fAi();
+      locald.ose.removeAll();
       AppMethodBeat.o(111246);
       return;
     }
-    String str = paramb.eth();
-    if (locald.BUr.containsKey(paramb.eth()))
+    String str = paramb.fAj();
+    if (locald.HGM.containsKey(paramb.fAj()))
     {
-      locald.BUr.remove(str);
-      locald.BUq.remove(str);
+      locald.HGM.remove(str);
+      locald.HGL.remove(str);
     }
     AppMethodBeat.o(111246);
   }
@@ -173,9 +174,9 @@ public final class c
       AppMethodBeat.o(179447);
       return;
     }
-    String str = com.tencent.mm.plugin.gallery.a.e.a(paramString1, null, -1);
-    Object localObject = com.tencent.mm.plugin.gallery.a.e.a(paramString1, null, paramLong2);
-    localObject = this.BUa.JL((String)localObject);
+    String str = h.a(paramString1, null, -1);
+    Object localObject = h.a(paramString1, null, paramLong2);
+    localObject = this.HGv.Cr((String)localObject);
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
       Log.v("MicroMsg.CacheService", "trySubmitPreDecodeTask, no need decode.");
@@ -183,54 +184,54 @@ public final class c
       return;
     }
     Log.d("MicroMsg.CacheService", "pre decode info: %s %s stack %s.", new Object[] { str, paramString1, Util.getStack() });
-    if (this.BUf.size() > 82) {
-      Log.d("MicroMsg.CacheService", "remove task: %s.", new Object[] { b.a((b)this.BUf.etN()) });
+    if (this.HGA.size() > 82) {
+      Log.d("MicroMsg.CacheService", "remove task: %s.", new Object[] { b.a((b)this.HGA.fAN()) });
     }
     paramString1 = new b(paramString1, paramInt, paramString2, paramLong1, paramLong2);
-    this.BUf.add(paramString1);
-    ete();
+    this.HGA.add(paramString1);
+    fAg();
     AppMethodBeat.o(179447);
   }
   
-  final void esZ()
+  final void fAb()
   {
     AppMethodBeat.i(111244);
-    e.etm().a(this.BUc, this.BUd);
+    e.fAo().a(this.HGx, this.HGy);
     AppMethodBeat.o(111244);
   }
   
-  final boolean eta()
+  final boolean fAc()
   {
-    return this.BUb > 0;
+    return this.HGw > 0;
   }
   
-  final void etb()
+  final void fAd()
   {
-    this.BUb -= 1;
+    this.HGw -= 1;
   }
   
-  final boolean etc()
+  final boolean fAe()
   {
-    return this.BUe > 0;
+    return this.HGz > 0;
   }
   
-  final void etd()
+  final void fAf()
   {
-    this.BUe -= 1;
+    this.HGz -= 1;
   }
   
-  public final void ete()
+  public final void fAg()
   {
     AppMethodBeat.i(111249);
-    Log.d("MicroMsg.CacheService", "tryStartPreDecode: %s %s.", new Object[] { Integer.valueOf(this.BUf.size()), Integer.valueOf(this.BUg.size()) });
-    e.etm().a(this.BUf, this.BUg);
+    Log.d("MicroMsg.CacheService", "tryStartPreDecode: %s %s.", new Object[] { Integer.valueOf(this.HGA.size()), Integer.valueOf(this.HGB.size()) });
+    e.fAo().a(this.HGA, this.HGB);
     AppMethodBeat.o(111249);
   }
   
-  public final void etf()
+  public final void fAh()
   {
     AppMethodBeat.i(111250);
-    Iterator localIterator = this.BUg.iterator();
+    Iterator localIterator = this.HGB.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
@@ -238,18 +239,18 @@ public final class c
         localb.mCancel = true;
       }
     }
-    this.BUg.clear();
-    this.BUf.clear();
+    this.HGB.clear();
+    this.HGA.clear();
     AppMethodBeat.o(111250);
   }
   
-  public final void fj(List<String> paramList)
+  public final void hZ(List<String> paramList)
   {
     AppMethodBeat.i(111247);
-    if ((this.BUd != null) && (!this.BUd.isEmpty()))
+    if ((this.HGy != null) && (!this.HGy.isEmpty()))
     {
       Object localObject = new ArrayList();
-      Iterator localIterator = this.BUd.entrySet().iterator();
+      Iterator localIterator = this.HGy.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -260,7 +261,7 @@ public final class c
             localc.mCancel = true;
           }
           Log.d("MicroMsg.CacheService", "cancelTask, success : %s.", new Object[] { localEntry.getKey() });
-          ((ArrayList)localObject).add(localEntry.getKey());
+          ((ArrayList)localObject).add((String)localEntry.getKey());
         }
       }
       Log.d("MicroMsg.CacheService", "cancelTask, counter: %s.", new Object[] { Integer.valueOf(((ArrayList)localObject).size()) });
@@ -268,8 +269,8 @@ public final class c
       while (paramList.hasNext())
       {
         localObject = (String)paramList.next();
-        this.BUc.dv(localObject);
-        this.BUd.remove(localObject);
+        this.HGx.fK(localObject);
+        this.HGy.remove(localObject);
       }
     }
     AppMethodBeat.o(111247);
@@ -289,10 +290,10 @@ public final class c
   public final class b
     extends c.a
   {
-    private String BUi;
-    private long BUj;
-    int BUk;
-    long BUl;
+    private String HGD;
+    private long HGE;
+    int HGF;
+    long HGG;
     Bitmap bitmap;
     volatile boolean mCancel;
     String mFilePath;
@@ -303,10 +304,10 @@ public final class c
       super();
       this.mFilePath = paramString1;
       this.mediaType = paramInt;
-      this.BUi = paramString2;
-      this.BUj = paramLong1;
-      this.BUk = 12288;
-      this.BUl = paramLong2;
+      this.HGD = paramString2;
+      this.HGE = paramLong1;
+      this.HGF = 12288;
+      this.HGG = paramLong2;
     }
     
     public final boolean doInBackground()
@@ -318,7 +319,7 @@ public final class c
         AppMethodBeat.o(111235);
         return false;
       }
-      this.bitmap = c.this.BUa.b(this.mFilePath, this.BUi, null, this.BUl);
+      this.bitmap = c.this.HGv.b(this.mFilePath, this.HGD, null, this.HGG);
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
         Log.d("MicroMsg.PreDecodeFile", "get bmp from disk cache ok, filePath[%s].", new Object[] { this.mFilePath });
@@ -330,11 +331,11 @@ public final class c
         AppMethodBeat.o(111235);
         return false;
       }
-      this.bitmap = n.a(this.BUj, this.mediaType, this.mFilePath, this.BUi);
+      this.bitmap = p.a(this.HGE, this.mediaType, this.mFilePath, this.HGD);
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
         Log.d("MicroMsg.PreDecodeFile", "get bmp from file ok, filePath[%s].", new Object[] { this.mFilePath });
-        c.this.BUa.a(this.mFilePath, this.BUi, this.bitmap, null, this.BUl);
+        c.this.HGv.a(this.mFilePath, this.HGD, this.bitmap, null, this.HGG);
         AppMethodBeat.o(111235);
         return true;
       }
@@ -346,52 +347,52 @@ public final class c
   public final class c
     extends c.a
   {
-    private String BUi;
-    private long BUj;
-    int BUk;
-    long BUl;
-    s.e BUm;
-    String BUn;
+    private String HGD;
+    private long HGE;
+    int HGF;
+    long HGG;
+    t.e HGH;
+    String HGI;
     Bitmap bitmap;
     public volatile boolean mCancel;
     String mFilePath;
     int mPosition;
     private int mediaType;
     
-    c(String paramString1, int paramInt1, String paramString2, long paramLong1, s.e parame, int paramInt2, long paramLong2)
+    c(String paramString1, int paramInt1, String paramString2, long paramLong1, t.e parame, int paramInt2, long paramLong2)
     {
       this(paramString1, paramInt1, paramString2, paramLong1, parame, paramInt2, paramLong2, (byte)0);
     }
     
-    private c(String paramString1, int paramInt1, String paramString2, long paramLong1, s.e parame, int paramInt2, long paramLong2, byte paramByte)
+    private c(String paramString1, int paramInt1, String paramString2, long paramLong1, t.e parame, int paramInt2, long paramLong2, byte paramByte)
     {
       super();
       AppMethodBeat.i(179443);
       this.mFilePath = paramString1;
       this.mediaType = paramInt1;
-      this.BUi = paramString2;
-      this.BUj = paramLong1;
-      this.BUk = 12288;
-      this.BUm = parame;
+      this.HGD = paramString2;
+      this.HGE = paramLong1;
+      this.HGF = 12288;
+      this.HGH = parame;
       this.mPosition = paramInt2;
-      this.BUl = paramLong2;
-      this.BUn = com.tencent.mm.plugin.gallery.a.e.a(paramString1, parame, paramInt2);
+      this.HGG = paramLong2;
+      this.HGI = h.a(paramString1, parame, paramInt2);
       AppMethodBeat.o(179443);
     }
     
     public final boolean doInBackground()
     {
       AppMethodBeat.i(111237);
-      Log.d("MicroMsg.CacheService", "task execute, mDecodeTaskKey: %s, filePath: %s, isCancel: %s.", new Object[] { this.BUn, this.mFilePath, Boolean.valueOf(this.mCancel) });
+      Log.d("MicroMsg.CacheService", "task execute, mDecodeTaskKey: %s, filePath: %s, isCancel: %s.", new Object[] { this.HGI, this.mFilePath, Boolean.valueOf(this.mCancel) });
       if (this.mCancel)
       {
         AppMethodBeat.o(111237);
         return false;
       }
-      this.bitmap = c.this.BUa.b(this.mFilePath, this.BUi, this.BUm, this.BUl);
+      this.bitmap = c.this.HGv.b(this.mFilePath, this.HGD, this.HGH, this.HGG);
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
-        Log.d("MicroMsg.CacheService", "get bmp from disk cache ok, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.BUn, this.mFilePath });
+        Log.d("MicroMsg.CacheService", "get bmp from disk cache ok, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.HGI, this.mFilePath });
         AppMethodBeat.o(111237);
         return true;
       }
@@ -400,26 +401,26 @@ public final class c
         AppMethodBeat.o(111237);
         return false;
       }
-      if (this.BUm != null)
+      if (this.HGH != null)
       {
-        this.bitmap = n.a(this.mFilePath, this.BUm);
+        this.bitmap = p.a(this.mFilePath, this.HGH);
         if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
         {
-          Log.d("MicroMsg.CacheService", "getPortraitBitmap ok, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.BUn, this.mFilePath });
+          Log.d("MicroMsg.CacheService", "getPortraitBitmap ok, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.HGI, this.mFilePath });
           AppMethodBeat.o(111237);
           return true;
         }
-        Log.d("MicroMsg.CacheService", "getPortraitBitmap err, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.BUn, this.mFilePath });
+        Log.d("MicroMsg.CacheService", "getPortraitBitmap err, mDecodeTaskKey[%s] filePath[%s].", new Object[] { this.HGI, this.mFilePath });
       }
       if (this.mCancel)
       {
         AppMethodBeat.o(111237);
         return false;
       }
-      this.bitmap = n.a(this.BUj, this.mediaType, this.mFilePath, this.BUi);
+      this.bitmap = p.a(this.HGE, this.mediaType, this.mFilePath, this.HGD);
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
-        c.this.BUa.a(this.mFilePath, this.BUi, this.bitmap, this.BUm, this.BUl);
+        c.this.HGv.a(this.mFilePath, this.HGD, this.bitmap, this.HGH, this.HGG);
         AppMethodBeat.o(111237);
         return true;
       }
@@ -462,7 +463,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.c
  * JD-Core Version:    0.7.0.1
  */

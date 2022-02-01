@@ -1,25 +1,26 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eqp;
-import com.tencent.mm.protocal.protobuf.eqq;
+import com.tencent.mm.protocal.protobuf.flt;
+import com.tencent.mm.protocal.protobuf.flu;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
   extends f
 {
-  private final String Enu;
-  public int Mkx;
+  private final String Kgc;
+  public int SNS;
   public int actionType;
-  private i callback;
-  private final com.tencent.mm.an.d rr;
+  private h callback;
+  private final c rr;
   private int sceneType;
   
   public d(int paramInt1, long paramLong, int paramInt2, String paramString, int paramInt3)
@@ -27,30 +28,30 @@ public final class d
     AppMethodBeat.i(29561);
     this.sceneType = 0;
     this.sceneType = paramInt3;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new eqp();
-    ((d.a)localObject).lBV = new eqq();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/talkmicaction";
-    ((d.a)localObject).funcId = 334;
-    ((d.a)localObject).lBW = 146;
-    ((d.a)localObject).respCmdId = 1000000146;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (eqp)d.b.b(this.rr.lBR);
-    ((eqp)localObject).Svu = paramInt1;
-    ((eqp)localObject).Svv = paramLong;
-    ((eqp)localObject).RXp = paramInt2;
-    ((eqp)localObject).RIt = ((int)Util.nowSecond());
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new flt();
+    ((c.a)localObject).otF = new flu();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/talkmicaction";
+    ((c.a)localObject).funcId = 334;
+    ((c.a)localObject).otG = 146;
+    ((c.a)localObject).respCmdId = 1000000146;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (flt)c.b.b(this.rr.otB);
+    ((flt)localObject).Zvz = paramInt1;
+    ((flt)localObject).ZvA = paramLong;
+    ((flt)localObject).YVh = paramInt2;
+    ((flt)localObject).YFv = ((int)Util.nowSecond());
     this.actionType = paramInt2;
-    this.Enu = paramString;
-    ((eqp)localObject).CPw = paramInt3;
+    this.Kgc = paramString;
+    ((flt)localObject).IJG = paramInt3;
     AppMethodBeat.o(29561);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(29562);
     Log.d("MicroMsg.NetSceneTalkMicAction", "doScene");
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(29562);
     return i;
@@ -61,12 +62,12 @@ public final class d
     return 334;
   }
   
-  public final String giK()
+  public final String hCL()
   {
-    return this.Enu;
+    return this.Kgc;
   }
   
-  public final int giL()
+  public final int hCM()
   {
     return this.sceneType;
   }
@@ -81,7 +82,7 @@ public final class d
       AppMethodBeat.o(29563);
       return;
     }
-    this.Mkx = ((eqq)d.c.b(this.rr.lBS)).Svw;
+    this.SNS = ((flu)c.c.b(this.rr.otC)).ZvB;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(29563);
   }

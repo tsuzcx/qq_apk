@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.scanner.ui.widget;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnClickListener;", "", "onTabClick", "", "tabId", "", "view", "Landroid/view/View;", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnClickListener;", "", "onTabClick", "", "tabId", "", "view", "Landroid/view/View;", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface c {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.c
  * JD-Core Version:    0.7.0.1
  */

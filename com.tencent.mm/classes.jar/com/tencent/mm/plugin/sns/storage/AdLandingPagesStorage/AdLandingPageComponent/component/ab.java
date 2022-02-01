@@ -3,141 +3,98 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.e;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n;
-import com.tencent.mm.plugin.sns.ui.SnsAdProxyUI;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b.h.a;
+import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.base.w;
-import java.io.Serializable;
-import org.json.JSONObject;
 
 public final class ab
-  extends q
-  implements Serializable
+  extends r
 {
-  protected AdLandingPagesProxy.e KrT;
-  protected n KsG;
-  protected String KsH;
-  protected String iSn;
-  protected s jhZ;
-  
-  public ab(Context paramContext, n paramn, ViewGroup paramViewGroup)
+  public ab(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r paramr, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramn, paramViewGroup);
-    AppMethodBeat.i(201174);
-    this.KrT = new AdLandingPagesProxy.e()
+    super(paramContext, paramr, paramViewGroup);
+    AppMethodBeat.i(96657);
+    paramContext = h.s(paramr.QJQ, true, false);
+    paramViewGroup = this.QPl;
+    if (paramContext == null) {}
+    for (paramContext = "";; paramContext = paramContext.field_packageName)
     {
-      public final void aH(Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(239466);
-        if ((paramAnonymousObject instanceof String)) {
-          try
-          {
-            paramAnonymousObject = new JSONObject((String)paramAnonymousObject);
-            ab.this.iSn = paramAnonymousObject.optString("username");
-            ab.this.KsH = paramAnonymousObject.optString("aliasname");
-            AppMethodBeat.o(239466);
-            return;
-          }
-          catch (Exception paramAnonymousObject)
-          {
-            Log.e("MicroMsg.AdLandingPagePersonalProfileBtnComp", "parse username exp=" + paramAnonymousObject.toString());
-          }
-        }
-        AppMethodBeat.o(239466);
-      }
-      
-      public final void i(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(239465);
-        Log.i("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onCallback, errType=" + paramAnonymousInt1 + ", errNo=" + paramAnonymousInt2);
-        if (((ab.this.context instanceof Activity)) && (((Activity)ab.this.context).isFinishing()))
-        {
-          Log.i("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onCallback, isFinishing return");
-          AppMethodBeat.o(239465);
-          return;
-        }
-        MMHandlerThread.postToMainThread(new ab.2(ab.this));
-        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (!(paramAnonymousObject instanceof byte[])))
-        {
-          MMHandlerThread.postToMainThread(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(209176);
-              w.makeText(ab.this.context, i.j.sns_ad_open_service_chat_failed, 0).show();
-              AppMethodBeat.o(209176);
-            }
-          });
-          AppMethodBeat.o(239465);
-          return;
-        }
-        Object localObject = new Intent(ab.this.context, SnsAdProxyUI.class);
-        ((Intent)localObject).putExtra("action_type", 3);
-        ((Intent)localObject).putExtra("searchContactResponseByte", (byte[])paramAnonymousObject);
-        ((Intent)localObject).putExtra("searchWord", Util.nullAsNil(ab.this.KsH));
-        paramAnonymousObject = ab.this.context;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousObject, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPagePersonalProfileBtnComp$1", "onCallback", "(IILjava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousObject.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
-        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousObject, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPagePersonalProfileBtnComp$1", "onCallback", "(IILjava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(239465);
-      }
-    };
-    this.KsG = paramn;
-    this.KqQ.kQ("wxGroupInfo", paramn.KlB);
-    AppMethodBeat.o(201174);
+      paramViewGroup.mx("pkg", paramContext);
+      this.QPl.mx("appid", paramr.QJQ);
+      AppMethodBeat.o(96657);
+      return;
+    }
   }
   
-  protected final void fRb()
+  private boolean Q(Context paramContext, final String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(201178);
-    String str = Util.nullAsNil(fRp().uxInfo);
-    if (!TextUtils.isEmpty(this.KsG.KlB))
+    AppMethodBeat.i(96659);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)))
     {
-      Log.i("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onBtnClick, btnInfo=" + this.KsG + ", uxinfo=" + str);
-      try
+      AppMethodBeat.o(96659);
+      return false;
+    }
+    try
+    {
+      final Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1);
+      if (localIntent != null)
       {
-        if (this.jhZ == null) {
-          this.jhZ = h.a(this.context, this.context.getString(i.j.loading_tips), true, null);
+        paramString1 = paramContext;
+        if (!(paramContext instanceof Activity)) {
+          paramString1 = this.context;
         }
-        if (!this.jhZ.isShowing()) {
-          this.jhZ.show();
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
+        a.post(new Runnable()
         {
-          Log.e("MicroMsg.AdLandingPagePersonalProfileBtnComp", "showLoading exp=" + localThrowable.toString());
-        }
+          public final void run()
+          {
+            AppMethodBeat.i(96656);
+            h.b(paramString1, localIntent, paramString2);
+            AppMethodBeat.o(96656);
+          }
+        });
+        AppMethodBeat.o(96659);
+        return true;
       }
-      AdLandingPagesProxy.getInstance().getBtnPersonalWxUserName(str, this.KsG.KlB, this.KrT);
     }
-    for (;;)
+    catch (Exception paramContext)
     {
-      fRc();
-      AppMethodBeat.o(201178);
-      return;
-      Log.e("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onBtnClick, wxGroupInfo==null");
+      Log.e("AdLandingPageOpenAppBtnComp", Util.stackTraceToString(paramContext));
+      AppMethodBeat.o(96659);
     }
+    return false;
+  }
+  
+  protected final void hiZ()
+  {
+    AppMethodBeat.i(96658);
+    Object localObject = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r)this.QOV;
+    if (h.y(this.context, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r)localObject).QJQ))
+    {
+      localObject = h.s(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r)localObject).QJQ, true, false);
+      if ((localObject != null) && (!TextUtils.isEmpty(((g)localObject).field_packageName)) && (Q(this.context, ((g)localObject).field_packageName, h.a(this.context, (g)localObject, null))))
+      {
+        hja();
+        AppMethodBeat.o(96658);
+        return;
+      }
+      super.hiZ();
+      AppMethodBeat.o(96658);
+      return;
+    }
+    super.hiZ();
+    AppMethodBeat.o(96658);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ab
  * JD-Core Version:    0.7.0.1
  */

@@ -12,11 +12,10 @@ public class TPNativeLog
   private static final String TAG = "PlayerCore";
   private static ITPNativeLogCallback mLogCallback = null;
   
-  @TPMethodCalledByNative
   private static void onPrintLog(int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
   {
     int i = 0;
-    AppMethodBeat.i(222976);
+    AppMethodBeat.i(227624);
     for (;;)
     {
       try
@@ -28,14 +27,14 @@ public class TPNativeLog
         {
         case 4: 
           printLog(paramInt2, paramArrayOfByte1, paramArrayOfByte2);
-          AppMethodBeat.o(222976);
+          AppMethodBeat.o(227624);
           return;
         }
       }
       catch (Exception paramArrayOfByte1)
       {
         printLog(4, paramArrayOfByte1.getMessage());
-        AppMethodBeat.o(222976);
+        AppMethodBeat.o(227624);
         return;
       }
       paramInt2 = 4;
@@ -52,22 +51,22 @@ public class TPNativeLog
   
   public static void printLog(int paramInt, String paramString)
   {
-    AppMethodBeat.i(222970);
+    AppMethodBeat.i(227584);
     printLog(paramInt, "PlayerCore", paramString);
-    AppMethodBeat.o(222970);
+    AppMethodBeat.o(227584);
   }
   
   public static void printLog(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(222973);
+    AppMethodBeat.i(227597);
     if (mLogCallback != null)
     {
       mLogCallback.onPrintLog(paramInt, paramString1, paramString2);
-      AppMethodBeat.o(222973);
+      AppMethodBeat.o(227597);
       return;
     }
     printLogDefault(paramInt, paramString1, paramString2);
-    AppMethodBeat.o(222973);
+    AppMethodBeat.o(227597);
   }
   
   public static void printLogDefault(int paramInt, String paramString1, String paramString2) {}
@@ -79,7 +78,7 @@ public class TPNativeLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPNativeLog
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ public abstract interface a
 {
   public abstract void a(Object paramObject, Parcel paramParcel);
   
-  public abstract boolean bp(Object paramObject);
+  public abstract boolean cJ(Object paramObject);
   
-  public abstract Object d(Parcel paramParcel);
+  public abstract Object f(Parcel paramParcel);
 }
 
 

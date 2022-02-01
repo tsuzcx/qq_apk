@@ -1,22 +1,21 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WebviewMpUI
   extends WebViewUI
 {
-  public final boolean cDX()
+  public final boolean dhz()
   {
     return true;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(231415);
+    AppMethodBeat.i(296196);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(231415);
+    AppMethodBeat.o(296196);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

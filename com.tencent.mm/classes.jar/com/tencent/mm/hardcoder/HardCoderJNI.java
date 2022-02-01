@@ -91,11 +91,16 @@ public class HardCoderJNI
   private static volatile Class<?> sSystemPropertiesClazz;
   public static c.d sceneReportCallback;
   public static int tickRate;
+  private byte _hellAccFlag_;
   
   static
   {
     AppMethodBeat.i(62473);
-    System.loadLibrary("hardcoder");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("hardcoder");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/hardcoder/HardCoderJNI", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/hardcoder/HardCoderJNI", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     tickRate = 100;
     connect = false;
     lock = new byte[0];
@@ -144,7 +149,7 @@ public class HardCoderJNI
   
   private static native int initHardCoder(String paramString1, int paramInt, String paramString2);
   
-  public static int initHardCoder(String paramString1, int paramInt, String paramString2, HCPerfManagerThread paramHCPerfManagerThread, c.a parama)
+  public static int initHardCoder(String paramString1, int paramInt, String paramString2, HardCoderJNI.HCPerfManagerThread paramHCPerfManagerThread, c.a parama)
   {
     boolean bool = true;
     AppMethodBeat.i(62462);
@@ -164,18 +169,9 @@ public class HardCoderJNI
       {
         Object localObject = paramHCPerfManagerThread;
         if (paramHCPerfManagerThread == null) {
-          localObject = new HCPerfManagerThread()
-          {
-            public final Thread newThread(Runnable paramAnonymousRunnable, String paramAnonymousString, int paramAnonymousInt)
-            {
-              AppMethodBeat.i(62459);
-              paramAnonymousRunnable = new Thread(paramAnonymousRunnable, paramAnonymousString);
-              AppMethodBeat.o(62459);
-              return paramAnonymousRunnable;
-            }
-          };
+          localObject = new HardCoderJNI.1();
         }
-        hcPerfManager = new a((HCPerfManagerThread)localObject);
+        hcPerfManager = new a((HardCoderJNI.HCPerfManagerThread)localObject);
       }
       tickRate = getTickRate();
       connectStatusCallback = parama;
@@ -232,13 +228,13 @@ public class HardCoderJNI
         connect = true;
         if (connectStatusCallback != null)
         {
-          connectStatusCallback.eK(connect);
+          connectStatusCallback.fu(connect);
           AppMethodBeat.o(62467);
           return;
           connect = false;
           if (connectStatusCallback != null)
           {
-            connectStatusCallback.eK(connect);
+            connectStatusCallback.fu(connect);
             AppMethodBeat.o(62467);
             return;
             connect = true;
@@ -337,7 +333,7 @@ public class HardCoderJNI
       }
       return "";
     }
-    catch (Throwable localThrowable)
+    finally
     {
       d.printErrStackTrace("Hardcoder.HardCoderJNI", localThrowable, "readServerAddr", new Object[0]);
       AppMethodBeat.o(62468);
@@ -457,10 +453,10 @@ public class HardCoderJNI
     }
     a locala = hcPerfManager;
     a.c localc = new a.c();
-    localc.jWJ = System.currentTimeMillis();
-    localc.aNf = paramInt;
+    localc.mwD = System.currentTimeMillis();
+    localc.cHb = paramInt;
     if (paramInt != 0) {}
-    for (boolean bool = locala.jWH.offer(localc);; bool = false)
+    for (boolean bool = locala.mwB.offer(localc);; bool = false)
     {
       d.d("Hardcoder.HCPerfManager", String.format("stop ret:%b, hashcode:%x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
       d.i("Hardcoder.HardCoderJNI", String.format("stopPerformance:%d, ret:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
@@ -487,15 +483,10 @@ public class HardCoderJNI
   {
     public abstract void onANR(byte[] paramArrayOfByte);
   }
-  
-  public static abstract interface HCPerfManagerThread
-  {
-    public abstract Thread newThread(Runnable paramRunnable, String paramString, int paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderJNI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,12 @@
 package com.tencent.mm.ui.component;
 
-import androidx.lifecycle.ab;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/component/IModel;", "Landroidx/lifecycle/ViewModelStoreOwner;", "plugin-uic_release"})
-public abstract interface c
-  extends ab
-{}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/component/ApiUIC;", "", "plugin-uic-annotation"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface c {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.component.c
  * JD-Core Version:    0.7.0.1
  */

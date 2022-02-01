@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
-import android.annotation.TargetApi;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import com.tencent.mm.compatible.i.c;
@@ -8,32 +7,31 @@ import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-@TargetApi(16)
 public abstract class a
   implements f
 {
-  private long cuE;
-  private String jHQ;
-  private boolean lsn = false;
-  private c mjc;
-  private List<a> mjf = new ArrayList();
-  private List<a> mjg = new ArrayList();
-  private String mjh;
-  private String mji;
-  private VideoTransPara mjj;
-  private long mjk;
-  private int mjl = -1;
-  private int mjm = -1;
+  private long emw;
+  private String mhx;
+  private boolean ojM = false;
+  private List<a> pcC = new ArrayList();
+  private List<a> pcD = new ArrayList();
+  private String pcE;
+  private String pcF;
+  private VideoTransPara pcG;
+  private long pcH;
+  private int pcI = -1;
+  private int pcJ = -1;
+  private c pcz;
   
   private void b(c paramc)
   {
-    int j = paramc.jvU.getTrackCount();
+    int j = paramc.lZm.getTrackCount();
     int i = 0;
     if (i < j)
     {
@@ -46,7 +44,7 @@ public abstract class a
         if (!str.startsWith("audio/")) {
           break label108;
         }
-        this.mjg.add(new a(localMediaFormat, i));
+        this.pcD.add(new a(localMediaFormat, i));
       }
       for (;;)
       {
@@ -54,25 +52,25 @@ public abstract class a
         break;
         label108:
         if (str.startsWith("video/")) {
-          this.mjf.add(new a(localMediaFormat, i));
+          this.pcC.add(new a(localMediaFormat, i));
         }
       }
     }
-    Log.i("BaseMediaCodecClipper", "findMediaFormat mAudioSelectedTrackList.size() = %d, mVideoSelectedTrackList.size() = %d", new Object[] { Integer.valueOf(this.mjg.size()), Integer.valueOf(this.mjf.size()) });
+    Log.i("BaseMediaCodecClipper", "findMediaFormat mAudioSelectedTrackList.size() = %d, mVideoSelectedTrackList.size() = %d", new Object[] { Integer.valueOf(this.pcD.size()), Integer.valueOf(this.pcC.size()) });
   }
   
-  private int brl()
+  private int bOR()
   {
     int j = -1;
     int i = j;
     Iterator localIterator;
     a locala;
-    if (this.mjg != null)
+    if (this.pcD != null)
     {
       i = j;
-      if (this.mjg.size() != 0)
+      if (this.pcD.size() != 0)
       {
-        localIterator = this.mjg.iterator();
+        localIterator = this.pcD.iterator();
         i = -1;
         if (localIterator.hasNext())
         {
@@ -90,12 +88,12 @@ public abstract class a
     {
       break;
       j = i;
-      if (this.mjf != null)
+      if (this.pcC != null)
       {
         j = i;
-        if (this.mjf.size() != 0)
+        if (this.pcC.size() != 0)
         {
-          localIterator = this.mjf.iterator();
+          localIterator = this.pcC.iterator();
           if (localIterator.hasNext())
           {
             locala = (a)localIterator.next();
@@ -115,16 +113,16 @@ public abstract class a
     }
   }
   
-  public abstract int Yw(String paramString);
+  public abstract int QB(String paramString);
   
   protected int a(c paramc, List<a> paramList1, List<a> paramList2)
   {
     return 0;
   }
   
-  public int aj(long paramLong1, long paramLong2)
+  public int aS(long paramLong1, long paramLong2)
   {
-    if (!this.lsn)
+    if (!this.ojM)
     {
       Log.e("BaseMediaCodecClipper", "checkTimeParameter has not been initialized.");
       throw new IllegalStateException("Please init this component first.");
@@ -133,8 +131,8 @@ public abstract class a
     if (paramLong1 < 0L) {
       l = 0L;
     }
-    this.cuE = l;
-    MediaFormat localMediaFormat = ((a)this.mjf.get(0)).mediaFormat;
+    this.emw = l;
+    MediaFormat localMediaFormat = ((a)this.pcC.get(0)).mediaFormat;
     if (!localMediaFormat.containsKey("durationUs")) {
       throw new p("Can not find duration.");
     }
@@ -147,8 +145,8 @@ public abstract class a
     {
       paramLong1 = localMediaFormat.getLong("durationUs") / 1000L;
     }
-    this.mjk = paramLong1;
-    return a(this.mjc, this.mjg, this.mjf);
+    this.pcH = paramLong1;
+    return a(this.pcz, this.pcD, this.pcC);
   }
   
   public void b(String paramString1, String paramString2, VideoTransPara paramVideoTransPara)
@@ -158,74 +156,74 @@ public abstract class a
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)) || (paramVideoTransPara == null)) {
       throw new IllegalArgumentException(String.format(Locale.CHINA, "Argument's null or nil. src = %s; dst = %s; param = %s", new Object[] { paramString1, paramString2, paramVideoTransPara }));
     }
-    q localq = new q(paramString1);
-    new q(paramString2);
-    if ((!localq.ifC()) || (localq.length() == 0L)) {
+    u localu = new u(paramString1);
+    new u(paramString2);
+    if ((!localu.jKQ()) || (localu.length() == 0L)) {
       throw new IllegalArgumentException(String.format(Locale.CHINA, "Argument src video file can not be read or empty %s", new Object[] { paramString1 }));
     }
-    this.mjh = paramString1;
-    this.mji = paramString2;
-    this.mjj = paramVideoTransPara;
-    this.mjc = new c();
-    this.mjc.setDataSource(paramString1);
-    b(this.mjc);
-    if ((this.mjf == null) || (this.mjf.size() == 0)) {
+    this.pcE = paramString1;
+    this.pcF = paramString2;
+    this.pcG = paramVideoTransPara;
+    this.pcz = new c();
+    this.pcz.setDataSource(paramString1);
+    b(this.pcz);
+    if ((this.pcC == null) || (this.pcC.size() == 0)) {
       throw new p("Can not find video or audio track in this video file.");
     }
-    this.mjl = brl();
-    this.mjm = Yw(paramString1);
-    this.lsn = true;
+    this.pcI = bOR();
+    this.pcJ = QB(paramString1);
+    this.ojM = true;
     Log.e("BaseMediaCodecClipper", "init cost time %dms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
   }
   
-  protected final String brm()
+  protected final String bOS()
   {
-    if (this.jHQ == null) {
-      this.jHQ = (CaptureMMProxy.getInstance().getAccVideoPath() + "vsg_clip_temp.mp4");
+    if (this.mhx == null) {
+      this.mhx = (CaptureMMProxy.getInstance().getAccVideoPath() + "vsg_clip_temp.mp4");
     }
-    return this.jHQ;
+    return this.mhx;
   }
   
-  protected final VideoTransPara eTQ()
+  protected final VideoTransPara gcI()
   {
-    return this.mjj;
+    return this.pcG;
   }
   
-  public final String eTR()
+  public final String gcJ()
   {
-    return this.mji;
+    return this.pcF;
   }
   
-  public final String eTS()
+  public final String gcK()
   {
-    return this.mjh;
+    return this.pcE;
   }
   
-  public final int eTT()
+  public final int gcL()
   {
-    return this.mjl;
+    return this.pcI;
   }
   
-  public final int eTU()
+  public final int gcM()
   {
-    return this.mjm;
+    return this.pcJ;
   }
   
   public final long getEndTimeMs()
   {
-    return this.mjk;
+    return this.pcH;
   }
   
   public final long getStartTimeMs()
   {
-    return this.cuE;
+    return this.emw;
   }
   
   public final void release()
   {
-    this.lsn = false;
-    if (this.mjc != null) {
-      this.mjc.jvU.release();
+    this.ojM = false;
+    if (this.pcz != null) {
+      this.pcz.lZm.release();
     }
   }
   

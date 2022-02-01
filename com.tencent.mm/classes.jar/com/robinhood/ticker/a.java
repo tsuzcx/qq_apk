@@ -33,7 +33,7 @@ public final class a
     int j = Math.max(paramInt2, paramInt4);
     if (paramInt2 == paramInt4)
     {
-      c(paramList, j, 0);
+      i(paramList, j, 0);
       AppMethodBeat.o(39841);
       return;
     }
@@ -139,7 +139,7 @@ public final class a
           if (k == 0) {
             break label127;
           }
-          c(localArrayList, paramArrayOfChar2.length - j, 1);
+          i(localArrayList, paramArrayOfChar2.length - j, 1);
         }
       }
       for (;;)
@@ -160,7 +160,7 @@ public final class a
         if (m == 0) {
           break label145;
         }
-        c(localArrayList, paramArrayOfChar1.length - i, 2);
+        i(localArrayList, paramArrayOfChar1.length - i, 2);
       }
       label145:
       boolean bool1 = paramSet.contains(Character.valueOf(paramArrayOfChar1[i]));
@@ -194,7 +194,7 @@ public final class a
     return paramArrayOfChar1;
   }
   
-  private static void c(List<Integer> paramList, int paramInt1, int paramInt2)
+  private static void i(List<Integer> paramList, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(39840);
     int i = 0;

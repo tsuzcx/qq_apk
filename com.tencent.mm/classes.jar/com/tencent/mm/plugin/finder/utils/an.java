@@ -1,116 +1,149 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.media.ExifInterface;
+import android.content.Context;
+import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Collection;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.k;
-import kotlin.t;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.event.a;
+import com.tencent.mm.plugin.finder.event.a.b;
+import com.tencent.mm.plugin.finder.live.report.q.c;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.model.ca;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.findersdk.a.bn;
+import com.tencent.mm.plugin.findersdk.a.ce;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.ui.MMFragmentActivity;
+import com.tencent.mm.ui.MMFragmentActivity.c;
+import com.tencent.mm.ui.component.k.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "", "exif", "Landroid/media/ExifInterface;", "(Landroid/media/ExifInterface;)V", "Latitude", "", "getLatitude", "()Ljava/lang/Float;", "setLatitude", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "Longitude", "getLongitude", "setLongitude", "TAG", "", "isValid", "", "()Z", "setValid", "(Z)V", "convertToDegree", "stringDMS", "(Ljava/lang/String;)Ljava/lang/Float;", "toString", "plugin-finder_release"})
-public final class an
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/FinderShareUtil;", "", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface an
 {
-  Float AGS;
-  Float AGT;
-  private final String TAG;
-  private boolean cSY;
+  public static final an.a GhR = an.a.GhS;
   
-  public an(ExifInterface paramExifInterface)
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/utils/FinderShareUtil$Companion$shareLiveToSnsTimeLineInternal$1", "Lcom/tencent/mm/ui/MMFragmentActivity$IMMOnFragmentActivityResult;", "mmOnActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a$a
+    implements MMFragmentActivity.c
   {
-    AppMethodBeat.i(167973);
-    this.TAG = "Finder.GeoDegree";
-    Object localObject = paramExifInterface.getAttribute("GPSLatitude");
-    String str2 = paramExifInterface.getAttribute("GPSLatitudeRef");
-    String str1 = paramExifInterface.getAttribute("GPSLongitude");
-    paramExifInterface = paramExifInterface.getAttribute("GPSLongitudeRef");
-    if ((localObject != null) && (str2 != null) && (str1 != null) && (paramExifInterface != null))
+    a$a(AppCompatActivity paramAppCompatActivity, BaseFinderFeed paramBaseFinderFeed) {}
+    
+    public final void mmOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
     {
-      this.cSY = true;
-      if (p.h(str2, "N")) {}
-      for (this.AGS = aFZ((String)localObject); p.h(paramExifInterface, "E"); this.AGS = Float.valueOf(0.0F - ((Float)localObject).floatValue()))
+      AppMethodBeat.i(333332);
+      BaseFinderFeed localBaseFinderFeed;
+      if (paramInt2 == -1)
       {
-        this.AGT = aFZ(str1);
-        AppMethodBeat.o(167973);
+        com.tencent.mm.ui.base.k.cZ((Context)this.AIx, this.AIx.getString(e.h.app_shared));
+        paramIntent = com.tencent.mm.ui.component.k.aeZF;
+        paramIntent = com.tencent.mm.ui.component.k.d(this.AIx).q(as.class);
+        s.s(paramIntent, "UICProvider.of(context).…rReporterUIC::class.java)");
+        paramIntent = ((bn)paramIntent).foy();
+        if (paramIntent != null)
+        {
+          localBaseFinderFeed = this.$feed;
+          paramIntent.dYj().mV(localBaseFinderFeed.bZA());
+        }
+        paramIntent = new JSONObject();
+        paramIntent.put("type", "2");
+        ((ce)h.ax(ce.class)).a(q.c.Drl, paramIntent.toString());
+        paramIntent = an.a.GhS;
+        an.a.n(this.$feed);
+        AppMethodBeat.o(333332);
         return;
-        localObject = aFZ((String)localObject);
-        if (localObject == null) {
-          p.iCn();
+      }
+      paramIntent = com.tencent.mm.ui.component.k.aeZF;
+      paramIntent = com.tencent.mm.ui.component.k.d(this.AIx).q(as.class);
+      s.s(paramIntent, "UICProvider.of(context).…rReporterUIC::class.java)");
+      paramIntent = ((bn)paramIntent).foy();
+      if (paramIntent != null)
+      {
+        localBaseFinderFeed = this.$feed;
+        paramIntent.dYj().mX(localBaseFinderFeed.bZA());
+      }
+      paramIntent = new JSONObject();
+      paramIntent.put("type", "4");
+      ((ce)h.ax(ce.class)).a(q.c.Drl, paramIntent.toString());
+      AppMethodBeat.o(333332);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/utils/FinderShareUtil$Companion$sharePoiFeedToSnsTimeLine$1", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "mmOnActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a$b
+    implements MMActivity.a
+  {
+    a$b(MMActivity paramMMActivity) {}
+    
+    public final void mmOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+    {
+      AppMethodBeat.i(333320);
+      if (paramInt2 == -1) {
+        com.tencent.mm.ui.base.k.cZ((Context)this.AXj, this.AXj.getString(e.h.app_shared));
+      }
+      AppMethodBeat.o(333320);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/utils/FinderShareUtil$Companion$shareToSnsTimeLineInternal$2", "Lcom/tencent/mm/ui/MMFragmentActivity$IMMOnFragmentActivityResult;", "mmOnActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a$d
+    implements MMFragmentActivity.c
+  {
+    a$d(MMFragmentActivity paramMMFragmentActivity, BaseFinderFeed paramBaseFinderFeed, int paramInt, bui parambui) {}
+    
+    public final void mmOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+    {
+      AppMethodBeat.i(333343);
+      BaseFinderFeed localBaseFinderFeed;
+      if (paramInt2 == -1)
+      {
+        com.tencent.mm.ui.base.k.cZ((Context)this.GhU, this.GhU.getString(e.h.app_shared));
+        paramIntent = com.tencent.mm.ui.component.k.aeZF;
+        paramIntent = com.tencent.mm.ui.component.k.d((AppCompatActivity)this.GhU).q(as.class);
+        s.s(paramIntent, "UICProvider.of(context).…rReporterUIC::class.java)");
+        paramIntent = ((bn)paramIntent).foy();
+        if (paramIntent != null)
+        {
+          localBaseFinderFeed = this.$feed;
+          paramIntent.dYj().mV(localBaseFinderFeed.bZA());
+        }
+        if (paramInt2 != -1) {
+          break label218;
         }
       }
-      paramExifInterface = aFZ(str1);
-      if (paramExifInterface == null) {
-        p.iCn();
-      }
-      this.AGT = Float.valueOf(0.0F - paramExifInterface.floatValue());
-    }
-    AppMethodBeat.o(167973);
-  }
-  
-  private final Float aFZ(String paramString)
-  {
-    AppMethodBeat.i(167971);
-    try
-    {
-      paramString = (CharSequence)paramString;
-      paramString = ((Collection)new k(",").u(paramString, 3)).toArray(new String[0]);
-      if (paramString == null)
+      label218:
+      for (long l = 1L;; l = 2L)
       {
-        paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
-        AppMethodBeat.o(167971);
-        throw paramString;
+        if (this.$feed.feedObject.getFromType() != 32768) {
+          break label226;
+        }
+        z.a(z.FrZ, new ca(this.$feed.feedObject.getFeedObject()), this.GhV, l, "", this.$contextObj);
+        AppMethodBeat.o(333343);
+        return;
+        paramIntent = com.tencent.mm.ui.component.k.aeZF;
+        paramIntent = com.tencent.mm.ui.component.k.d((AppCompatActivity)this.GhU).q(as.class);
+        s.s(paramIntent, "UICProvider.of(context).…rReporterUIC::class.java)");
+        paramIntent = ((bn)paramIntent).foy();
+        if (paramIntent == null) {
+          break;
+        }
+        localBaseFinderFeed = this.$feed;
+        paramIntent.dYj().mX(localBaseFinderFeed.bZA());
+        break;
       }
+      label226:
+      paramIntent = z.FrZ;
+      z.a(this.$feed.feedObject.getId(), this.GhV, l, "", this.$contextObj, 0L, this.$feed.feedObject, 32);
+      AppMethodBeat.o(333343);
     }
-    catch (Throwable paramString)
-    {
-      Log.printErrStackTrace(this.TAG, paramString, "convertToDegree", new Object[0]);
-      AppMethodBeat.o(167971);
-      return null;
-    }
-    paramString = (String[])paramString;
-    Object localObject = (CharSequence)paramString[0];
-    localObject = ((Collection)new k("/").u((CharSequence)localObject, 2)).toArray(new String[0]);
-    if (localObject == null)
-    {
-      paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(167971);
-      throw paramString;
-    }
-    localObject = (String[])localObject;
-    double d1 = Double.parseDouble(localObject[0]) / Double.parseDouble(localObject[1]);
-    localObject = (CharSequence)paramString[1];
-    localObject = ((Collection)new k("/").u((CharSequence)localObject, 2)).toArray(new String[0]);
-    if (localObject == null)
-    {
-      paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(167971);
-      throw paramString;
-    }
-    localObject = (String[])localObject;
-    double d3 = Double.parseDouble(localObject[0]) / Double.parseDouble(localObject[1]);
-    paramString = (CharSequence)paramString[2];
-    paramString = ((Collection)new k("/").u(paramString, 2)).toArray(new String[0]);
-    if (paramString == null)
-    {
-      paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(167971);
-      throw paramString;
-    }
-    paramString = (String[])paramString;
-    double d2 = Double.parseDouble(paramString[0]) / Double.parseDouble(paramString[1]);
-    d3 /= 60.0D;
-    float f = (float)(d2 / 3600.0D + (d1 + d3));
-    AppMethodBeat.o(167971);
-    return Float.valueOf(f);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(167972);
-    String str = String.valueOf(this.AGS) + ", " + String.valueOf(this.AGT);
-    AppMethodBeat.o(167972);
-    return str;
   }
 }
 

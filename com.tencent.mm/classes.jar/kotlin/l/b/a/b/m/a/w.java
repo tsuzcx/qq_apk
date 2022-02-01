@@ -1,489 +1,299 @@
 package kotlin.l.b.a.b.m.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.j.d.a;
-import kotlin.l.b.a.b.m.ab;
+import java.util.List<+Lkotlin.l.b.a.b.m.al;>;
+import java.util.Set;
+import kotlin.a.p;
+import kotlin.ak;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.j.b.n;
+import kotlin.l.b.a.b.j.b.n.a;
+import kotlin.l.b.a.b.m.aa;
+import kotlin.l.b.a.b.m.ac;
 import kotlin.l.b.a.b.m.ad;
-import kotlin.l.b.a.b.m.at;
-import kotlin.l.b.a.b.m.av;
-import kotlin.l.b.a.b.m.bc;
-import kotlin.l.b.a.b.m.bh;
-import kotlin.l.b.a.b.m.y;
+import kotlin.l.b.a.b.m.al;
+import kotlin.l.b.a.b.m.ao;
+import kotlin.l.b.a.b.m.as;
+import kotlin.l.b.a.b.m.ax;
+import kotlin.l.b.a.b.m.bk;
 
-public class w
+public final class w
 {
-  private final x abrX;
+  public static final w ajrt;
   
   static
   {
-    AppMethodBeat.i(61174);
-    if (!w.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      AppMethodBeat.o(61174);
-      return;
-    }
+    AppMethodBeat.i(61187);
+    ajrt = new w();
+    AppMethodBeat.o(61187);
   }
   
-  public w(x paramx)
+  private static Collection<al> a(Collection<? extends al> paramCollection, kotlin.g.a.m<? super al, ? super al, Boolean> paramm)
   {
-    this.abrX = paramx;
-  }
-  
-  private static ab a(kotlin.l.b.a.b.b.as paramas, av paramav)
-  {
-    AppMethodBeat.i(61165);
-    if (paramas == null) {
-      aDG(5);
-    }
-    if (paramav == null) {
-      aDG(6);
-    }
-    int i;
-    if ((paramav.iQa() == bh.abrq) || (paramas.iEW() == bh.abrq))
+    AppMethodBeat.i(61186);
+    paramCollection = new ArrayList(paramCollection);
+    Iterator localIterator = paramCollection.iterator();
+    s.s(localIterator, "filteredTypes.iterator()");
+    label137:
+    label159:
+    label164:
+    while (localIterator.hasNext())
     {
-      i = 1;
-      if (i == 0) {
-        break label81;
-      }
-    }
-    label81:
-    for (paramas = a.G(paramas).iDv();; paramas = paramav.iFN())
-    {
-      if (paramas == null) {
-        aDG(7);
-      }
-      AppMethodBeat.o(61165);
-      return paramas;
-      i = 0;
-      break;
-    }
-  }
-  
-  private static ab a(ab paramab1, ab paramab2, x paramx)
-  {
-    AppMethodBeat.i(61164);
-    if (paramab1 == null) {
-      aDG(2);
-    }
-    if (paramab2 == null) {
-      aDG(3);
-    }
-    if (paramx == null) {
-      aDG(4);
-    }
-    paramab1 = z.a(paramab1, paramab2, paramx);
-    AppMethodBeat.o(61164);
-    return paramab1;
-  }
-  
-  private boolean a(av paramav1, av paramav2, kotlin.l.b.a.b.b.as paramas)
-  {
-    AppMethodBeat.i(61173);
-    if (paramav1 == null) {
-      aDG(19);
-    }
-    if (paramav2 == null) {
-      aDG(20);
-    }
-    if (paramas == null) {
-      aDG(21);
-    }
-    if (paramas.iEW() != bh.abrp)
-    {
-      AppMethodBeat.o(61173);
-      return false;
-    }
-    if ((paramav1.iQa() != bh.abrp) && (paramav2.iQa() == bh.abrp))
-    {
-      boolean bool = this.abrX.a(paramav2.iFN(), paramav1);
-      AppMethodBeat.o(61173);
-      return bool;
-    }
-    AppMethodBeat.o(61173);
-    return false;
-  }
-  
-  private static ab b(kotlin.l.b.a.b.b.as paramas, av paramav)
-  {
-    AppMethodBeat.i(61166);
-    if (paramas == null) {
-      aDG(8);
-    }
-    if (paramav == null) {
-      aDG(9);
-    }
-    int i;
-    if ((paramav.iQa() == bh.abrr) || (paramas.iEW() == bh.abrr))
-    {
-      i = 1;
-      if (i == 0) {
-        break label82;
-      }
-    }
-    label82:
-    for (paramas = a.G(paramas).iDt();; paramas = paramav.iFN())
-    {
-      if (paramas == null) {
-        aDG(10);
-      }
-      AppMethodBeat.o(61166);
-      return paramas;
-      i = 0;
-      break;
-    }
-  }
-  
-  private static a c(kotlin.l.b.a.b.b.as paramas, av paramav)
-  {
-    AppMethodBeat.i(61169);
-    if (paramas == null) {
-      aDG(13);
-    }
-    if (paramav == null) {
-      aDG(14);
-    }
-    paramas = paramas.iEW();
-    paramav = paramav.iQa();
-    if (paramav == bh.abrp) {}
-    for (;;)
-    {
-      if ((paramav == bh.abrq) && (paramas == bh.abrr))
+      al localal1 = (al)localIterator.next();
+      Object localObject = (Iterable)paramCollection;
+      if (!((Collection)localObject).isEmpty())
       {
-        paramas = a.absc;
-        AppMethodBeat.o(61169);
-        return paramas;
-      }
-      if ((paramav == bh.abrr) && (paramas == bh.abrq))
-      {
-        paramas = a.absc;
-        AppMethodBeat.o(61169);
-        return paramas;
-      }
-      paramas = a.b(paramas);
-      AppMethodBeat.o(61169);
-      return paramas;
-      kotlin.l.b.a.b.b.as localas = paramas;
-      paramas = paramav;
-      paramav = localas;
-    }
-  }
-  
-  public static ab f(ab paramab1, ab paramab2)
-  {
-    AppMethodBeat.i(61163);
-    if (paramab1 == null) {
-      aDG(0);
-    }
-    if (paramab2 == null) {
-      aDG(1);
-    }
-    paramab1 = a(paramab1, paramab2, new v());
-    AppMethodBeat.o(61163);
-    return paramab1;
-  }
-  
-  private boolean g(ab paramab1, ab paramab2)
-  {
-    AppMethodBeat.i(61168);
-    if ((!$assertionsDisabled) && (y.al(paramab1)))
-    {
-      paramab1 = new AssertionError("Only inflexible types are allowed here: ".concat(String.valueOf(paramab1)));
-      AppMethodBeat.o(61168);
-      throw paramab1;
-    }
-    if ((c(y.am(paramab2).abqv, paramab1)) && (c(paramab1, y.am(paramab2).abqw)))
-    {
-      AppMethodBeat.o(61168);
-      return true;
-    }
-    AppMethodBeat.o(61168);
-    return false;
-  }
-  
-  private boolean h(ab paramab1, ab paramab2)
-  {
-    AppMethodBeat.i(61171);
-    if ((ad.ap(paramab1)) || (ad.ap(paramab2)))
-    {
-      AppMethodBeat.o(61171);
-      return true;
-    }
-    if ((!paramab2.iIu()) && (paramab1.iIu()))
-    {
-      AppMethodBeat.o(61171);
-      return false;
-    }
-    if (g.y(paramab1))
-    {
-      AppMethodBeat.o(61171);
-      return true;
-    }
-    ab localab = a(paramab1, paramab2, this.abrX);
-    if (localab == null)
-    {
-      bool = this.abrX.e(paramab1, paramab2);
-      AppMethodBeat.o(61171);
-      return bool;
-    }
-    if ((!paramab2.iIu()) && (localab.iIu()))
-    {
-      AppMethodBeat.o(61171);
-      return false;
-    }
-    boolean bool = i(localab, paramab2);
-    AppMethodBeat.o(61171);
-    return bool;
-  }
-  
-  private boolean i(ab paramab1, ab paramab2)
-  {
-    AppMethodBeat.i(61172);
-    if (paramab1 == null) {
-      aDG(17);
-    }
-    if (paramab2 == null) {
-      aDG(18);
-    }
-    Object localObject1 = paramab1.iOU();
-    paramab1 = paramab1.iOR();
-    paramab2 = paramab2.iOR();
-    if (paramab1.size() != paramab2.size())
-    {
-      AppMethodBeat.o(61172);
-      return false;
-    }
-    localObject1 = ((at)localObject1).iCb();
-    int i = 0;
-    while (i < ((List)localObject1).size())
-    {
-      Object localObject2 = (kotlin.l.b.a.b.b.as)((List)localObject1).get(i);
-      av localav1 = (av)paramab2.get(i);
-      av localav2 = (av)paramab1.get(i);
-      if ((!localav1.iPZ()) && (!a(localav2, localav1, (kotlin.l.b.a.b.b.as)localObject2)))
-      {
-        if ((ad.ap(localav2.iFN())) || (ad.ap(localav1.iFN()))) {}
-        for (int j = 1; (j == 0) && (((kotlin.l.b.a.b.b.as)localObject2).iEW() == bh.abrp) && (localav2.iQa() == bh.abrp) && (localav1.iQa() == bh.abrp); j = 0)
+        localObject = ((Iterable)localObject).iterator();
+        label73:
+        if (((Iterator)localObject).hasNext())
         {
-          if (this.abrX.a(localav2.iFN(), localav1.iFN(), this)) {
-            break label385;
-          }
-          AppMethodBeat.o(61172);
-          return false;
-        }
-        ab localab1 = a((kotlin.l.b.a.b.b.as)localObject2, localav1);
-        ab localab2 = a((kotlin.l.b.a.b.b.as)localObject2, localav2);
-        if (!this.abrX.b(localab2, localab1, this))
-        {
-          AppMethodBeat.o(61172);
-          return false;
-        }
-        localab1 = b((kotlin.l.b.a.b.b.as)localObject2, localav1);
-        localObject2 = b((kotlin.l.b.a.b.b.as)localObject2, localav2);
-        if (localav1.iQa() != bh.abrr)
-        {
-          if (!this.abrX.b(localab1, (ab)localObject2, this))
+          al localal2 = (al)((Iterator)localObject).next();
+          if (localal2 != localal1)
           {
-            AppMethodBeat.o(61172);
-            return false;
+            s.s(localal2, "lower");
+            s.s(localal1, "upper");
+            if (((Boolean)paramm.invoke(localal2, localal1)).booleanValue())
+            {
+              i = 1;
+              if (i == 0) {
+                break label159;
+              }
+            }
           }
         }
-        else if ((!$assertionsDisabled) && (!g.x(localab1)))
-        {
-          paramab1 = new AssertionError("In component must be Nothing for out-projection");
-          AppMethodBeat.o(61172);
-          throw paramab1;
-        }
       }
-      label385:
-      i += 1;
-    }
-    AppMethodBeat.o(61172);
-    return true;
-  }
-  
-  public final boolean c(ab paramab1, ab paramab2)
-  {
-    AppMethodBeat.i(61170);
-    for (;;)
-    {
-      if (paramab1 == null) {
-        aDG(15);
-      }
-      if (paramab2 == null) {
-        aDG(16);
-      }
-      if (kotlin.l.b.a.b.m.as.b(paramab1, paramab2))
+      for (int i = 1;; i = 0)
       {
-        if ((!paramab1.iIu()) || (paramab2.iIu()))
-        {
-          AppMethodBeat.o(61170);
-          return true;
+        if (i == 0) {
+          break label164;
         }
-        AppMethodBeat.o(61170);
-        return false;
-      }
-      ab localab1 = kotlin.l.b.a.b.m.as.av(paramab1);
-      ab localab2 = kotlin.l.b.a.b.m.as.aw(paramab2);
-      if ((localab1 == paramab1) && (localab2 == paramab2)) {
+        localIterator.remove();
         break;
+        i = 0;
+        break label137;
+        break label73;
       }
-      paramab2 = localab2;
-      paramab1 = localab1;
     }
-    boolean bool = h(paramab1, paramab2);
-    AppMethodBeat.o(61170);
-    return bool;
+    paramCollection = (Collection)paramCollection;
+    AppMethodBeat.o(61186);
+    return paramCollection;
   }
   
-  public final boolean d(ab paramab1, ab paramab2)
+  public final al ph(List<? extends al> paramList)
   {
-    AppMethodBeat.i(61167);
-    if (paramab1 == null) {
-      aDG(11);
-    }
-    if (paramab2 == null) {
-      aDG(12);
-    }
-    if (paramab1 == paramab2)
+    int j = 1;
+    AppMethodBeat.i(61185);
+    s.u(paramList, "types");
+    if (paramList.size() > 1) {}
+    for (int i = 1; (ak.aiuY) && (i == 0); i = 0)
     {
-      AppMethodBeat.o(61167);
-      return true;
+      paramList = (Throwable)new AssertionError(s.X("Size should be at least 2, but it is ", Integer.valueOf(paramList.size())));
+      AppMethodBeat.o(61185);
+      throw paramList;
     }
-    boolean bool;
-    if (y.al(paramab1))
+    Object localObject2 = new ArrayList();
+    Object localObject3 = paramList.iterator();
+    while (((Iterator)localObject3).hasNext())
     {
-      if (y.al(paramab2))
+      localObject4 = (al)((Iterator)localObject3).next();
+      if ((((al)localObject4).kzm() instanceof ac))
       {
-        if ((!ad.ap(paramab1)) && (!ad.ap(paramab2)) && (c(paramab1, paramab2)) && (c(paramab2, paramab1)))
+        paramList = ((al)localObject4).kzm().kpG();
+        s.s(paramList, "type.constructor.supertypes");
+        paramList = (Iterable)paramList;
+        Collection localCollection = (Collection)new ArrayList(p.a(paramList, 10));
+        Iterator localIterator = paramList.iterator();
+        while (localIterator.hasNext())
         {
-          AppMethodBeat.o(61167);
-          return true;
+          paramList = (ad)localIterator.next();
+          s.s(paramList, "it");
+          localObject1 = aa.af(paramList);
+          paramList = (List<? extends al>)localObject1;
+          if (((al)localObject4).ksB()) {
+            paramList = ((al)localObject1).Pq(true);
+          }
+          localCollection.add(paramList);
         }
-        AppMethodBeat.o(61167);
-        return false;
+        ((ArrayList)localObject2).addAll((Collection)localCollection);
       }
-      bool = g(paramab2, paramab1);
-      AppMethodBeat.o(61167);
-      return bool;
-    }
-    if (y.al(paramab2))
-    {
-      bool = g(paramab1, paramab2);
-      AppMethodBeat.o(61167);
-      return bool;
-    }
-    if (paramab1.iIu() != paramab2.iIu())
-    {
-      AppMethodBeat.o(61167);
-      return false;
-    }
-    if (paramab1.iIu())
-    {
-      bool = this.abrX.a(bc.aD(paramab1), bc.aD(paramab2), this);
-      AppMethodBeat.o(61167);
-      return bool;
-    }
-    at localat1 = paramab1.iOU();
-    at localat2 = paramab2.iOU();
-    if (!this.abrX.b(localat1, localat2))
-    {
-      AppMethodBeat.o(61167);
-      return false;
-    }
-    paramab1 = paramab1.iOR();
-    paramab2 = paramab2.iOR();
-    if (paramab1.size() != paramab2.size())
-    {
-      AppMethodBeat.o(61167);
-      return false;
-    }
-    int i = 0;
-    while (i < paramab1.size())
-    {
-      av localav1 = (av)paramab1.get(i);
-      av localav2 = (av)paramab2.get(i);
-      if ((!localav1.iPZ()) || (!localav2.iPZ()))
+      else
       {
-        kotlin.l.b.a.b.b.as localas1 = (kotlin.l.b.a.b.b.as)localat1.iCb().get(i);
-        kotlin.l.b.a.b.b.as localas2 = (kotlin.l.b.a.b.b.as)localat2.iCb().get(i);
-        if (!a(localav1, localav2, localas1))
-        {
-          if (c(localas1, localav1) != c(localas2, localav2))
-          {
-            AppMethodBeat.o(61167);
-            return false;
-          }
-          if (!this.abrX.a(localav1.iFN(), localav2.iFN(), this))
-          {
-            AppMethodBeat.o(61167);
-            return false;
-          }
-        }
+        ((ArrayList)localObject2).add(localObject4);
       }
-      i += 1;
     }
-    AppMethodBeat.o(61167);
-    return true;
+    Object localObject1 = (Iterable)localObject2;
+    paramList = a.ajru;
+    localObject1 = ((Iterable)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      paramList = paramList.d((bk)((Iterator)localObject1).next());
+    }
+    localObject1 = (Iterable)localObject2;
+    localObject3 = (Collection)new LinkedHashSet();
+    Object localObject4 = ((Iterable)localObject1).iterator();
+    while (((Iterator)localObject4).hasNext())
+    {
+      localObject1 = (al)((Iterator)localObject4).next();
+      localObject2 = localObject1;
+      if (paramList == a.ajrx)
+      {
+        localObject2 = localObject1;
+        if ((localObject1 instanceof i))
+        {
+          localObject1 = (i)localObject1;
+          s.u(localObject1, "<this>");
+          localObject2 = (al)new i(((i)localObject1).ajrc, ((i)localObject1).ajrd, ((i)localObject1).ajre, ((i)localObject1).knl(), ((i)localObject1).ksB(), true);
+        }
+        localObject2 = ao.a((al)localObject2, false);
+      }
+      ((Collection)localObject3).add(localObject2);
+    }
+    paramList = (Set)localObject3;
+    if (paramList.size() == 1)
+    {
+      paramList = (al)p.i((Iterable)paramList);
+      AppMethodBeat.o(61185);
+      return paramList;
+    }
+    localObject1 = (a)new w.b(paramList);
+    localObject2 = a((Collection)paramList, (kotlin.g.a.m)new w.c(this));
+    if (!((Collection)localObject2).isEmpty()) {}
+    for (i = 1; (ak.aiuY) && (i == 0); i = 0)
+    {
+      paramList = (Throwable)new AssertionError(((a)localObject1).invoke());
+      AppMethodBeat.o(61185);
+      throw paramList;
+    }
+    localObject3 = n.ajjK;
+    localObject3 = n.a.P((Collection)localObject2);
+    if (localObject3 != null)
+    {
+      AppMethodBeat.o(61185);
+      return localObject3;
+    }
+    localObject3 = l.ajrl;
+    localObject2 = a((Collection)localObject2, (kotlin.g.a.m)new w.d(l.a.kAV()));
+    if (!((Collection)localObject2).isEmpty()) {}
+    for (i = j; (ak.aiuY) && (i == 0); i = 0)
+    {
+      paramList = (Throwable)new AssertionError(((a)localObject1).invoke());
+      AppMethodBeat.o(61185);
+      throw paramList;
+    }
+    if (((Collection)localObject2).size() < 2)
+    {
+      paramList = (al)p.i((Iterable)localObject2);
+      AppMethodBeat.o(61185);
+      return paramList;
+    }
+    paramList = new ac((Collection)paramList).kAJ();
+    AppMethodBeat.o(61185);
+    return paramList;
   }
   
-  public static enum a
+  static abstract enum a
   {
-    static
-    {
-      AppMethodBeat.i(61161);
-      abrZ = new a("IN", 0);
-      absa = new a("OUT", 1);
-      absb = new a("INV", 2);
-      absc = new a("STAR", 3);
-      absd = new a[] { abrZ, absa, absb, absc };
-      AppMethodBeat.o(61161);
-    }
-    
     private a() {}
     
-    public static a b(bh parambh)
+    protected static a e(bk parambk)
     {
-      AppMethodBeat.i(61160);
-      if (parambh == null) {
-        aDG(0);
+      s.u(parambk, "<this>");
+      if (parambk.ksB()) {
+        return ajrv;
       }
-      switch (w.1.abrY[parambh.ordinal()])
+      if (((parambk instanceof kotlin.l.b.a.b.m.m)) && ((((kotlin.l.b.a.b.m.m)parambk).ajpp instanceof as))) {
+        return ajrx;
+      }
+      if (!(parambk instanceof as))
       {
-      default: 
-        parambh = new IllegalStateException("Unknown variance");
-        AppMethodBeat.o(61160);
-        throw parambh;
-      case 1: 
-        parambh = absb;
-        if (parambh == null) {
-          aDG(1);
+        o localo = o.ajrp;
+        if (o.c(parambk)) {
+          return ajrx;
         }
-        AppMethodBeat.o(61160);
-        return parambh;
-      case 2: 
-        parambh = abrZ;
-        if (parambh == null) {
-          aDG(2);
+      }
+      return ajrw;
+    }
+    
+    public abstract a d(bk parambk);
+    
+    static final class a
+      extends w.a
+    {
+      a()
+      {
+        super(1, (byte)0);
+      }
+      
+      public final w.a d(bk parambk)
+      {
+        AppMethodBeat.i(61176);
+        s.u(parambk, "nextType");
+        parambk = e(parambk);
+        AppMethodBeat.o(61176);
+        return parambk;
+      }
+    }
+    
+    static final class b
+      extends w.a
+    {
+      b()
+      {
+        super(3, (byte)0);
+      }
+    }
+    
+    static final class c
+      extends w.a
+    {
+      c()
+      {
+        super(0, (byte)0);
+      }
+      
+      public final w.a d(bk parambk)
+      {
+        AppMethodBeat.i(61178);
+        s.u(parambk, "nextType");
+        parambk = e(parambk);
+        AppMethodBeat.o(61178);
+        return parambk;
+      }
+    }
+    
+    static final class d
+      extends w.a
+    {
+      d()
+      {
+        super(2, (byte)0);
+      }
+      
+      public final w.a d(bk parambk)
+      {
+        AppMethodBeat.i(61179);
+        s.u(parambk, "nextType");
+        parambk = e(parambk);
+        if (parambk == w.a.ajrv)
+        {
+          parambk = (w.a)this;
+          AppMethodBeat.o(61179);
+          return parambk;
         }
-        AppMethodBeat.o(61160);
-        return parambh;
+        AppMethodBeat.o(61179);
+        return parambk;
       }
-      parambh = absa;
-      if (parambh == null) {
-        aDG(3);
-      }
-      AppMethodBeat.o(61160);
-      return parambh;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.a.w
  * JD-Core Version:    0.7.0.1
  */

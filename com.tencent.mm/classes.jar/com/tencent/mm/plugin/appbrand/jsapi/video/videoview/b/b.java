@@ -12,18 +12,18 @@ public final class b
     super(paramContext);
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a dY(Context paramContext)
+  public final com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a eS(Context paramContext)
   {
-    AppMethodBeat.i(227919);
-    this.pDV = 0;
+    AppMethodBeat.i(328881);
+    this.sJh = 0;
     paramContext = new a(paramContext);
-    AppMethodBeat.o(227919);
+    AppMethodBeat.o(328881);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.videoview.b.b
  * JD-Core Version:    0.7.0.1
  */

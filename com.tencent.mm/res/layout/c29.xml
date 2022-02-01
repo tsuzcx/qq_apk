@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ikn" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/e4w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/e_a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <FrameLayout android:id="@id/kfe" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <FrameLayout android:id="@id/kfd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kfb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/ce">
-        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kf_" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_filled_max_window" app:iconColor="@color/am" />
-        </LinearLayout>
+<ScrollView android:id="@id/fpj" android:background="@color/act" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/jr5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/jr6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="share to a friend" />
     </LinearLayout>
-    <ImageView android:id="@id/e4t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/fm" android:alpha="0.3" />
-</RelativeLayout>
+</ScrollView>

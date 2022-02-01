@@ -19,78 +19,78 @@ final class v
   
   public final void clearHeader()
   {
-    AppMethodBeat.i(239952);
-    ((c)this.lv).clearHeader();
-    AppMethodBeat.o(239952);
+    AppMethodBeat.i(200892);
+    ((c)this.mr).clearHeader();
+    AppMethodBeat.o(200892);
   }
   
   public final MenuItem getItem()
   {
-    AppMethodBeat.i(239959);
-    MenuItem localMenuItem = b(((c)this.lv).getItem());
-    AppMethodBeat.o(239959);
+    AppMethodBeat.i(200917);
+    MenuItem localMenuItem = b(((c)this.mr).getItem());
+    AppMethodBeat.o(200917);
     return localMenuItem;
   }
   
   public final SubMenu setHeaderIcon(int paramInt)
   {
-    AppMethodBeat.i(239944);
-    ((c)this.lv).setHeaderIcon(paramInt);
-    AppMethodBeat.o(239944);
+    AppMethodBeat.i(200866);
+    ((c)this.mr).setHeaderIcon(paramInt);
+    AppMethodBeat.o(200866);
     return this;
   }
   
   public final SubMenu setHeaderIcon(Drawable paramDrawable)
   {
-    AppMethodBeat.i(239947);
-    ((c)this.lv).setHeaderIcon(paramDrawable);
-    AppMethodBeat.o(239947);
+    AppMethodBeat.i(200875);
+    ((c)this.mr).setHeaderIcon(paramDrawable);
+    AppMethodBeat.o(200875);
     return this;
   }
   
   public final SubMenu setHeaderTitle(int paramInt)
   {
-    AppMethodBeat.i(239940);
-    ((c)this.lv).setHeaderTitle(paramInt);
-    AppMethodBeat.o(239940);
+    AppMethodBeat.i(200849);
+    ((c)this.mr).setHeaderTitle(paramInt);
+    AppMethodBeat.o(200849);
     return this;
   }
   
   public final SubMenu setHeaderTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(239941);
-    ((c)this.lv).setHeaderTitle(paramCharSequence);
-    AppMethodBeat.o(239941);
+    AppMethodBeat.i(200859);
+    ((c)this.mr).setHeaderTitle(paramCharSequence);
+    AppMethodBeat.o(200859);
     return this;
   }
   
   public final SubMenu setHeaderView(View paramView)
   {
-    AppMethodBeat.i(239949);
-    ((c)this.lv).setHeaderView(paramView);
-    AppMethodBeat.o(239949);
+    AppMethodBeat.i(200884);
+    ((c)this.mr).setHeaderView(paramView);
+    AppMethodBeat.o(200884);
     return this;
   }
   
   public final SubMenu setIcon(int paramInt)
   {
-    AppMethodBeat.i(239954);
-    ((c)this.lv).setIcon(paramInt);
-    AppMethodBeat.o(239954);
+    AppMethodBeat.i(200899);
+    ((c)this.mr).setIcon(paramInt);
+    AppMethodBeat.o(200899);
     return this;
   }
   
   public final SubMenu setIcon(Drawable paramDrawable)
   {
-    AppMethodBeat.i(239957);
-    ((c)this.lv).setIcon(paramDrawable);
-    AppMethodBeat.o(239957);
+    AppMethodBeat.i(200909);
+    ((c)this.mr).setIcon(paramDrawable);
+    AppMethodBeat.o(200909);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     androidx.appcompat.view.menu.v
  * JD-Core Version:    0.7.0.1
  */

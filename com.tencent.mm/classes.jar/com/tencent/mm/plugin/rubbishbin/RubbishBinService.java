@@ -8,7 +8,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.loader.j.a;
+import com.tencent.mm.loader.i.a;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -20,26 +20,26 @@ public abstract class RubbishBinService
   extends Service
   implements Runnable
 {
-  private int CKR = 7;
-  int DSE = 1000;
-  private boolean IAq = false;
-  private b IAr = null;
-  private String IAs = "";
-  private IBinder IAt = null;
-  private int IAu = 0;
-  private int IAv = 8;
-  private String IAw = null;
-  private int aLK = 1;
+  private int IEZ = 7;
+  int JJO = 1000;
+  private IBinder OGA = null;
+  private int OGB = 0;
+  private int OGC = 8;
+  private String OGD = null;
+  private boolean OGx = false;
+  private b OGy = null;
+  private String OGz = "";
+  private int cFH = 1;
   private Context context = this;
-  Thread qkF;
+  Thread tpF;
   
-  public abstract void aXa(String paramString);
+  public abstract void aUB(String paramString);
   
   public IBinder onBind(Intent paramIntent)
   {
-    this.IAt = new a.a()
+    this.OGA = new a.a()
     {
-      public final void G(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
+      public final void M(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
       {
         AppMethodBeat.i(146674);
         RubbishBinService.a(RubbishBinService.this, paramAnonymousInt2);
@@ -62,19 +62,19 @@ public abstract class RubbishBinService
         }
       }
     };
-    return this.IAt;
+    return this.OGA;
   }
   
   public void onCreate()
   {
     super.onCreate();
     this.context = this;
-    if (this.IAr == null) {
-      this.IAr = new b(this);
+    if (this.OGy == null) {
+      this.OGy = new b(this);
     }
-    Thread.setDefaultUncaughtExceptionHandler(this.IAr);
-    this.qkF = new Thread(this);
-    JNIExceptionHandlerImpl.initJNIExceptionHandler(this, this.IAw);
+    Thread.setDefaultUncaughtExceptionHandler(this.OGy);
+    this.tpF = new Thread(this);
+    JNIExceptionHandlerImpl.initJNIExceptionHandler(this, this.OGD);
     JNIExceptionHandler.init();
   }
   
@@ -82,59 +82,59 @@ public abstract class RubbishBinService
   {
     if (paramIntent != null)
     {
-      this.IAu = paramIntent.getIntExtra("exec_time", 0);
-      this.DSE = paramIntent.getIntExtra("interval", -1);
-      this.IAw = paramIntent.getStringExtra("exec_tag");
+      this.OGB = paramIntent.getIntExtra("exec_time", 0);
+      this.JJO = paramIntent.getIntExtra("interval", -1);
+      this.OGD = paramIntent.getStringExtra("exec_tag");
     }
-    if (this.IAw == null) {
-      this.IAw = "Default";
+    if (this.OGD == null) {
+      this.OGD = "Default";
     }
-    this.qkF.setName("rubbish_executor");
-    JNIExceptionHandler.INSTANCE.setReportExecutionTag(this.IAw);
-    switch (this.IAu)
+    this.tpF.setName("rubbish_executor");
+    JNIExceptionHandler.INSTANCE.setReportExecutionTag(this.OGD);
+    switch (this.OGB)
     {
     }
-    for (this.aLK = 1; this.DSE == -1; this.aLK = this.IAu)
+    for (this.cFH = 1; this.JJO == -1; this.cFH = this.OGB)
     {
       stopSelf();
       return super.onStartCommand(paramIntent, paramInt1, paramInt2);
     }
-    if (!this.qkF.isAlive())
+    if (!this.tpF.isAlive())
     {
-      this.qkF = new Thread(this);
-      this.qkF.setName("rubbish_executor");
-      this.qkF.start();
+      this.tpF = new Thread(this);
+      this.tpF.setName("rubbish_executor");
+      this.tpF.start();
     }
     return super.onStartCommand(paramIntent, paramInt1, paramInt2);
   }
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = getSharedPreferences("system_config_prefs", g.avK());
+    SharedPreferences localSharedPreferences = getSharedPreferences("system_config_prefs", g.aQe());
     Object localObject = Calendar.getInstance().getTime();
     localObject = new SimpleDateFormat("yyyyMMdd").format((Date)localObject);
-    localSharedPreferences.edit().putInt("RubbishCount", this.IAu).apply();
-    localSharedPreferences.edit().putString("RubbishTag", this.IAw).apply();
-    this.IAu = localSharedPreferences.getInt("RubbishCount", this.IAu);
-    Log.i("RubbishBinService", "[sunny]dt:%s,cnt:%d,t:%s", new Object[] { localObject, Integer.valueOf(this.IAu), this.IAw });
+    localSharedPreferences.edit().putInt("RubbishCount", this.OGB).apply();
+    localSharedPreferences.edit().putString("RubbishTag", this.OGD).apply();
+    this.OGB = localSharedPreferences.getInt("RubbishCount", this.OGB);
+    Log.i("RubbishBinService", "[sunny]dt:%s,cnt:%d,t:%s", new Object[] { localObject, Integer.valueOf(this.OGB), this.OGD });
     for (;;)
     {
-      if (this.aLK == 0) {
+      if (this.cFH == 0) {
         stopSelf();
       }
       do
       {
         stopSelf();
         return;
-        this.IAu -= 1;
-        localSharedPreferences.edit().putInt("RubbishCount", this.IAu).apply();
+        this.OGB -= 1;
+        localSharedPreferences.edit().putInt("RubbishCount", this.OGB).apply();
         Log.i("RubbishBinService", "e!");
-        aXa(this.IAw);
-        h.IzE.a(17910, new Object[] { a.CLIENT_VERSION, BuildInfo.CLIENT_VERSION, this.IAw, Integer.valueOf(1), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(System.nanoTime()) });
-      } while ((this.IAu == 0) && (this.aLK != -1));
+        aUB(this.OGD);
+        h.OAn.b(17910, new Object[] { a.CLIENT_VERSION, BuildInfo.CLIENT_VERSION, this.OGD, Integer.valueOf(1), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(System.nanoTime()) });
+      } while ((this.OGB == 0) && (this.cFH != -1));
       try
       {
-        Thread.sleep(this.DSE);
+        Thread.sleep(this.JJO);
       }
       catch (InterruptedException localInterruptedException) {}
     }
@@ -142,7 +142,7 @@ public abstract class RubbishBinService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.rubbishbin.RubbishBinService
  * JD-Core Version:    0.7.0.1
  */

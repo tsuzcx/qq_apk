@@ -1,6 +1,5 @@
 package com.tencent.kinda.framework.widget.base;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.Editable;
@@ -26,8 +25,9 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.aw;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.wallet_core.ui.i;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 public class KindaSecureEditTextImpl
@@ -35,43 +35,69 @@ public class KindaSecureEditTextImpl
   implements KSecureEditText
 {
   private ClearButtonMode clearButtonMode = ClearButtonMode.WHILEEDITING;
+  private String defaultValue;
   private TenpaySecureEditText editText;
+  private float expandSize = 24.0F;
+  private boolean iconHadShow = false;
   private WalletIconImageView iconImageView;
   private BaseFrActivity mContext;
   private KeyboardType mKeyboardType;
   private int m_maxLength = 2147483647;
   private KSecureEditTextOnTextChangedCallback onTextChangedCallback;
   
+  private void setIconVisibility(int paramInt)
+  {
+    AppMethodBeat.i(226636);
+    this.iconImageView.setVisibility(paramInt);
+    if ((!this.iconHadShow) && (paramInt == 0))
+    {
+      MMKViewUtil.setExpandSize(this.iconImageView, this.expandSize, this.expandSize);
+      this.iconHadShow = true;
+    }
+    AppMethodBeat.o(226636);
+  }
+  
   private void setregExFilterInput(KeyboardType paramKeyboardType)
   {
-    AppMethodBeat.i(264320);
+    AppMethodBeat.i(226633);
     if ((paramKeyboardType == KeyboardType.ID) || (paramKeyboardType == KeyboardType.CRETAIL))
     {
       this.editText.setregExFilterInput("[^a-zA-Z0-9]");
-      AppMethodBeat.o(264320);
+      AppMethodBeat.o(226633);
       return;
     }
     if (paramKeyboardType == KeyboardType.NUMBER) {
       this.editText.setregExFilterInput("[^0-9]");
     }
-    AppMethodBeat.o(264320);
+    AppMethodBeat.o(226633);
   }
   
   public LinearLayout createView(Context paramContext)
   {
     AppMethodBeat.i(18949);
-    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    final LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setGravity(16);
     this.editText = new TenpaySecureEditText(paramContext);
-    this.editText.setSingleLine();
+    this.editText.setSingleLine(true);
     this.editText.setBackground(null);
-    this.editText.setTextSize(0, MMKViewUtil.dpToPx(MMApplicationContext.getContext(), 17.0F));
-    TenpaySecureEditText.setSalt(g.ijw());
+    this.editText.setTextSize(1, 17.0F * MMKViewUtil.getScaleSize(paramContext));
+    TenpaySecureEditText.setSalt(i.jPu());
     this.editText.setPadding(0, 0, 0, 0);
     this.editText.setCursorStyle(R.drawable.green_cursor);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2);
     localLayoutParams.weight = 1.0F;
     localLinearLayout.addView(this.editText, localLayoutParams);
+    localLinearLayout.post(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(226648);
+        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)KindaSecureEditTextImpl.this.editText.getLayoutParams();
+        localLayoutParams.height = localLinearLayout.getHeight();
+        KindaSecureEditTextImpl.this.editText.setLayoutParams(localLayoutParams);
+        AppMethodBeat.o(226648);
+      }
+    });
     if ((paramContext instanceof BaseFrActivity))
     {
       this.mContext = ((BaseFrActivity)paramContext);
@@ -91,48 +117,50 @@ public class KindaSecureEditTextImpl
       
       public void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(18946);
+        AppMethodBeat.i(226647);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/kinda/framework/widget/base/KindaSecureEditTextImpl$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        KindaSecureEditTextImpl.this.editText.setText("");
-        a.a(this, "com/tencent/kinda/framework/widget/base/KindaSecureEditTextImpl$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(18946);
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/kinda/framework/widget/base/KindaSecureEditTextImpl$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (KindaSecureEditTextImpl.this.iconImageView.getVisibility() == 0) {
+          KindaSecureEditTextImpl.this.editText.setText("");
+        }
+        a.a(this, "com/tencent/kinda/framework/widget/base/KindaSecureEditTextImpl$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(226647);
       }
     });
-    this.iconImageView.setVisibility(4);
-    localLayoutParams = new LinearLayout.LayoutParams(aw.fromDPToPix(paramContext, 16), aw.fromDPToPix(paramContext, 16));
-    localLayoutParams.setMargins(0, 0, aw.fromDPToPix(paramContext, 4), 0);
+    setIconVisibility(4);
+    localLayoutParams = new LinearLayout.LayoutParams(bd.fromDPToPix(paramContext, 16), bd.fromDPToPix(paramContext, 16));
+    localLayoutParams.setMargins(0, 0, bd.fromDPToPix(paramContext, 4), 0);
     localLinearLayout.addView(this.iconImageView, localLayoutParams);
     this.editText.addTextChangedListener(new TextWatcher()
     {
       public void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(18948);
+        AppMethodBeat.i(226653);
         if ((KindaSecureEditTextImpl.this.onTextChangedCallback != null) && (paramAnonymousEditable != null)) {
           KindaSecureEditTextImpl.this.onTextChangedCallback.onTextChanged(paramAnonymousEditable.toString());
         }
-        AppMethodBeat.o(18948);
+        AppMethodBeat.o(226653);
       }
       
       public void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(18947);
+        AppMethodBeat.i(226650);
         if (KindaSecureEditTextImpl.this.clearButtonMode == ClearButtonMode.NEVER)
         {
-          AppMethodBeat.o(18947);
+          AppMethodBeat.o(226650);
           return;
         }
         if ((paramAnonymousCharSequence.length() > 0) && (KindaSecureEditTextImpl.this.clearButtonMode == ClearButtonMode.WHILEEDITING))
         {
-          KindaSecureEditTextImpl.this.iconImageView.setVisibility(0);
-          AppMethodBeat.o(18947);
+          KindaSecureEditTextImpl.access$300(KindaSecureEditTextImpl.this, 0);
+          AppMethodBeat.o(226650);
           return;
         }
-        KindaSecureEditTextImpl.this.iconImageView.setVisibility(4);
-        AppMethodBeat.o(18947);
+        KindaSecureEditTextImpl.access$300(KindaSecureEditTextImpl.this, 4);
+        AppMethodBeat.o(226650);
       }
     });
     AppMethodBeat.o(18949);
@@ -146,6 +174,14 @@ public class KindaSecureEditTextImpl
   
   public String getDefaultValue()
   {
+    AppMethodBeat.i(226670);
+    if (!Util.isNullOrNil(this.defaultValue))
+    {
+      String str = this.defaultValue;
+      AppMethodBeat.o(226670);
+      return str;
+    }
+    AppMethodBeat.o(226670);
     return "";
   }
   
@@ -218,7 +254,7 @@ public class KindaSecureEditTextImpl
     this.clearButtonMode = paramClearButtonMode;
     if (paramClearButtonMode == ClearButtonMode.NEVER)
     {
-      this.iconImageView.setVisibility(8);
+      setIconVisibility(8);
       AppMethodBeat.o(18956);
       return;
     }
@@ -226,16 +262,22 @@ public class KindaSecureEditTextImpl
     {
       if (paramClearButtonMode == ClearButtonMode.ALWAYS)
       {
-        this.iconImageView.setVisibility(0);
+        setIconVisibility(0);
         AppMethodBeat.o(18956);
         return;
       }
-      this.iconImageView.setVisibility(4);
+      setIconVisibility(4);
     }
     AppMethodBeat.o(18956);
   }
   
-  public void setDefaultValue(String paramString) {}
+  public void setDefaultValue(String paramString)
+  {
+    AppMethodBeat.i(226667);
+    this.defaultValue = paramString;
+    this.editText.setText(paramString);
+    AppMethodBeat.o(226667);
+  }
   
   public void setEnabled(boolean paramBoolean)
   {
@@ -309,17 +351,31 @@ public class KindaSecureEditTextImpl
     AppMethodBeat.o(18957);
   }
   
+  public void setTextSize(float paramFloat)
+  {
+    AppMethodBeat.i(226652);
+    if (paramFloat > 0.0F)
+    {
+      float f = 1.0F;
+      if (getSupportDynamicSize()) {
+        f = MMKViewUtil.getScaleSize(MMApplicationContext.getContext());
+      }
+      this.editText.setTextSize(1, f * paramFloat);
+      notifyChanged();
+    }
+    AppMethodBeat.o(226652);
+  }
+  
   public void setTintColor(DynamicColor paramDynamicColor) {}
   
-  @SuppressLint({"ResourceType"})
   public void setViewId(String paramString)
   {
-    AppMethodBeat.i(264318);
+    AppMethodBeat.i(226676);
     super.setViewId(paramString);
     if (this.iconImageView != null) {
       MMKViewUtil.setId4KindaImplView(this.mContext, paramString + "_btn", this.iconImageView);
     }
-    AppMethodBeat.o(264318);
+    AppMethodBeat.o(226676);
   }
   
   public void setVisibleClearIcon(boolean paramBoolean)
@@ -327,17 +383,17 @@ public class KindaSecureEditTextImpl
     AppMethodBeat.i(170117);
     if (paramBoolean)
     {
-      this.iconImageView.setVisibility(0);
+      setIconVisibility(0);
       AppMethodBeat.o(170117);
       return;
     }
-    this.iconImageView.setVisibility(4);
+    setIconVisibility(4);
     AppMethodBeat.o(170117);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaSecureEditTextImpl
  * JD-Core Version:    0.7.0.1
  */

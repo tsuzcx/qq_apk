@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.net.http.SslError;
@@ -9,12 +8,12 @@ import android.os.Looper;
 import android.os.Message;
 import android.webkit.JavascriptInterface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.mmdata.rpt.ca;
 import com.tencent.mm.b.e;
-import com.tencent.mm.f.b.a.be;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.webview.core.f;
-import com.tencent.mm.plugin.webview.core.i;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.webview.core.h;
 import com.tencent.mm.plugin.webview.core.k;
+import com.tencent.mm.plugin.webview.core.m;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -22,35 +21,35 @@ import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.r;
+import com.tencent.xweb.t;
 import java.lang.ref.WeakReference;
 
 public class SosWebViewUI
   extends WebViewUI
 {
-  private boolean QmH;
-  private int QmI;
-  private String QmJ;
-  private be QmK;
-  private boolean QmL;
-  private int QmM;
-  private MMHandler QmN;
-  private a QmO;
-  private int ptD;
+  private boolean XeX;
+  private int XeY;
+  private String XeZ;
+  private ca Xfa;
+  private boolean Xfb;
+  private int Xfc;
+  private MMHandler Xfd;
+  private a Xfe;
   private int subType;
+  private int syO;
   
   public SosWebViewUI()
   {
     AppMethodBeat.i(80773);
-    this.QmH = false;
-    this.ptD = 0;
+    this.XeX = false;
+    this.syO = 0;
     this.subType = 0;
-    this.QmI = 0;
-    this.QmJ = "";
-    this.QmK = new be();
-    this.QmL = false;
-    this.QmM = 0;
-    this.QmN = new MMHandler(Looper.getMainLooper())
+    this.XeY = 0;
+    this.XeZ = "";
+    this.Xfa = new ca();
+    this.Xfb = false;
+    this.Xfc = 0;
+    this.Xfd = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -62,7 +61,7 @@ public class SosWebViewUI
             AppMethodBeat.o(80766);
             return;
           }
-          catch (Throwable paramAnonymousMessage)
+          finally
           {
             Log.printErrStackTrace("MicroMsg.WebSearch.SosWebViewUI", paramAnonymousMessage, "pageHandler", new Object[0]);
           }
@@ -70,32 +69,32 @@ public class SosWebViewUI
         AppMethodBeat.o(80766);
       }
     };
-    this.QmO = new a();
+    this.Xfe = new a();
     AppMethodBeat.o(80773);
   }
   
   public final void b(WebView paramWebView, String paramString)
   {
-    AppMethodBeat.i(268324);
+    AppMethodBeat.i(296844);
     super.b(paramWebView, paramString);
-    if (this.QmL) {
-      this.QmM += 1;
+    if (this.Xfb) {
+      this.Xfc += 1;
     }
-    AppMethodBeat.o(268324);
+    AppMethodBeat.o(296844);
   }
   
-  public final i cDV()
+  public final k dhx()
   {
-    AppMethodBeat.i(268325);
-    i locali = super.cDV();
-    if (locali != null) {
-      locali.a(this.QmO);
+    AppMethodBeat.i(296853);
+    k localk = super.dhx();
+    if (localk != null) {
+      localk.a(this.Xfe);
     }
-    AppMethodBeat.o(268325);
-    return locali;
+    AppMethodBeat.o(296853);
+    return localk;
   }
   
-  public final boolean cDX()
+  public final boolean dhz()
   {
     AppMethodBeat.i(175839);
     if (!getIntent().getBooleanExtra("disable_minimize", false))
@@ -112,21 +111,21 @@ public class SosWebViewUI
     boolean bool = false;
     AppMethodBeat.i(80774);
     super.onCreate(paramBundle);
-    this.pHS.addJavascriptInterface(new b(this), "SosJSApi");
-    this.ptD = getIntent().getIntExtra("from_scence", 0);
+    this.sMP.addJavascriptInterface(new b(this), "SosJSApi");
+    this.syO = getIntent().getIntExtra("from_scence", 0);
     this.subType = getIntent().getIntExtra("subtype", 0);
-    this.QmJ = getIntent().getStringExtra("rawUrl");
+    this.XeZ = getIntent().getStringExtra("rawUrl");
     paramBundle = getIntent().getStringExtra("key_init_url");
     if (paramBundle != null) {
       bool = true;
     }
-    this.QmL = bool;
-    be localbe;
-    if (this.QmL)
+    this.Xfb = bool;
+    ca localca;
+    if (this.Xfb)
     {
-      this.QmK.glw = cm.bfE();
-      localbe = this.QmK;
-      localbe.glO = localbe.z("InitUrl", paramBundle.replace(",", "!"), true);
+      this.Xfa.iuE = cn.bDw();
+      localca = this.Xfa;
+      localca.iuS = localca.F("InitUrl", paramBundle.replace(",", "!"), true);
       paramBundle = getIntent().getStringExtra("key_search_query");
       if (paramBundle != null) {
         break label177;
@@ -135,8 +134,8 @@ public class SosWebViewUI
     label177:
     for (paramBundle = "";; paramBundle = paramBundle.replace(",", "!"))
     {
-      localbe = this.QmK;
-      localbe.glM = localbe.z("Query", paramBundle, true);
+      localca = this.Xfa;
+      localca.iuQ = localca.F("Query", paramBundle, true);
       AppMethodBeat.o(80774);
       return;
     }
@@ -145,15 +144,15 @@ public class SosWebViewUI
   public void onDestroy()
   {
     AppMethodBeat.i(80775);
-    this.pHS.removeJavascriptInterface("SosJSApi");
-    this.PIQ.b(this.QmO);
-    this.PIQ.b(this.QmO.QmQ);
-    if (this.QmL)
+    this.sMP.removeJavascriptInterface("SosJSApi");
+    this.Wzl.b(this.Xfe);
+    this.Wzl.b(this.Xfe.Xfg);
+    if (this.Xfb)
     {
-      this.QmK.glN = getActivityBrowseTimeMs();
-      this.QmK.glP = this.QmM;
-      this.QmK.bpa();
-      Log.i("MicroMsg.WebSearch.SosWebViewUI", "FTSRelatedSugH5ReportStruct.report url : %s, enterTime : %d, stayTime : %d, getQuery : %s ,id : %d, pageChangeCount : %d.", new Object[] { this.QmK.glO, Long.valueOf(this.QmK.glw), Long.valueOf(this.QmK.glN), this.QmK.glM, Integer.valueOf(22251), Integer.valueOf(this.QmM) });
+      this.Xfa.iuR = getActivityBrowseTimeMs();
+      this.Xfa.iuT = this.Xfc;
+      this.Xfa.bMH();
+      Log.i("MicroMsg.WebSearch.SosWebViewUI", "FTSRelatedSugH5ReportStruct.report url : %s, enterTime : %d, stayTime : %d, getQuery : %s ,id : %d, pageChangeCount : %d.", new Object[] { this.Xfa.iuS, Long.valueOf(this.Xfa.iuE), Long.valueOf(this.Xfa.iuR), this.Xfa.iuQ, Integer.valueOf(22251), Integer.valueOf(this.Xfc) });
     }
     super.onDestroy();
     AppMethodBeat.o(80775);
@@ -166,25 +165,25 @@ public class SosWebViewUI
   }
   
   final class a
-    extends k
+    extends m
   {
-    a QmQ;
+    a Xfg;
     
     a()
     {
-      AppMethodBeat.i(218657);
-      this.QmQ = new a();
-      AppMethodBeat.o(218657);
+      AppMethodBeat.i(296896);
+      this.Xfg = new a();
+      AppMethodBeat.o(296896);
     }
     
     final class a
-      extends f
+      extends h
     {
       a() {}
       
       public final void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
       {
-        AppMethodBeat.i(264020);
+        AppMethodBeat.i(296842);
         super.a(paramWebView, paramInt, paramString1, paramString2);
         if ((SosWebViewUI.d(SosWebViewUI.this) != null) && (SosWebViewUI.d(SosWebViewUI.this).equals(paramString2)))
         {
@@ -192,12 +191,12 @@ public class SosWebViewUI
           SosWebViewUI.a(SosWebViewUI.this, paramInt);
           SosWebViewUI.b(SosWebViewUI.this, "");
         }
-        AppMethodBeat.o(264020);
+        AppMethodBeat.o(296842);
       }
       
       public final void a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse)
       {
-        AppMethodBeat.i(264022);
+        AppMethodBeat.i(296846);
         super.a(paramWebView, paramWebResourceRequest, paramWebResourceResponse);
         if ((SosWebViewUI.d(SosWebViewUI.this) != null) && (SosWebViewUI.d(SosWebViewUI.this).equals(paramWebResourceRequest.getUrl().toString())))
         {
@@ -205,7 +204,7 @@ public class SosWebViewUI
           if ((SosWebViewUI.e(SosWebViewUI.this) < 400) || (SosWebViewUI.e(SosWebViewUI.this) >= 600))
           {
             Log.i("MicroMsg.WebSearch.SosWebViewUI", "onReceivedHttpError not report %s %d", new Object[] { paramWebResourceRequest.getUrl().toString(), Integer.valueOf(SosWebViewUI.e(SosWebViewUI.this)) });
-            AppMethodBeat.o(264022);
+            AppMethodBeat.o(296846);
             return;
           }
         }
@@ -214,10 +213,10 @@ public class SosWebViewUI
           paramWebView = new String(e.readFromStream(paramWebResourceResponse.mInputStream));
           Log.i("MicroMsg.WebSearch.SosWebViewUI", "onReceivedHttpError %s %d %s", new Object[] { paramWebResourceRequest.getUrl().toString(), Integer.valueOf(SosWebViewUI.e(SosWebViewUI.this)), paramWebView });
           SosWebViewUI.b(SosWebViewUI.this, paramWebView);
-          AppMethodBeat.o(264022);
+          AppMethodBeat.o(296846);
           return;
         }
-        catch (Throwable paramWebView)
+        finally
         {
           for (;;)
           {
@@ -226,63 +225,63 @@ public class SosWebViewUI
         }
       }
       
-      public final void a(WebView paramWebView, r paramr, SslError paramSslError)
+      public final void a(WebView paramWebView, t paramt, SslError paramSslError)
       {
-        AppMethodBeat.i(264023);
-        super.a(paramWebView, paramr, paramSslError);
+        AppMethodBeat.i(296852);
+        super.a(paramWebView, paramt, paramSslError);
         if ((SosWebViewUI.d(SosWebViewUI.this) != null) && (SosWebViewUI.d(SosWebViewUI.this).equals(paramSslError.getUrl())))
         {
           Log.i("MicroMsg.WebSearch.SosWebViewUI", "onReceivedSslError");
           SosWebViewUI.a(SosWebViewUI.this, -1);
           SosWebViewUI.b(SosWebViewUI.this, "");
         }
-        AppMethodBeat.o(264023);
+        AppMethodBeat.o(296852);
       }
       
       public final void b(WebView paramWebView, String paramString)
       {
-        AppMethodBeat.i(264019);
+        AppMethodBeat.i(296837);
         super.b(paramWebView, paramString);
         SosWebViewUI.b(SosWebViewUI.this).removeMessages(0);
         if (!SosWebViewUI.c(SosWebViewUI.this)) {
           SosWebViewUI.b(SosWebViewUI.this).sendEmptyMessageDelayed(0, 1000L);
         }
-        AppMethodBeat.o(264019);
+        AppMethodBeat.o(296837);
       }
       
       public final void h(WebView paramWebView, String paramString)
       {
-        AppMethodBeat.i(264018);
+        AppMethodBeat.i(296834);
         SosWebViewUI.a(SosWebViewUI.this, paramString);
         SosWebViewUI.b(SosWebViewUI.this).removeMessages(0);
-        AppMethodBeat.o(264018);
+        AppMethodBeat.o(296834);
       }
     }
   }
   
   static final class b
   {
-    WeakReference<SosWebViewUI> QmS;
+    WeakReference<SosWebViewUI> Xfi;
     
     public b(SosWebViewUI paramSosWebViewUI)
     {
-      AppMethodBeat.i(224785);
-      this.QmS = null;
-      this.QmS = new WeakReference(paramSosWebViewUI);
-      AppMethodBeat.o(224785);
+      AppMethodBeat.i(296899);
+      this.Xfi = null;
+      this.Xfi = new WeakReference(paramSosWebViewUI);
+      AppMethodBeat.o(296899);
     }
     
     @JavascriptInterface
     public final void onHtmlContentReport(String paramString)
     {
       AppMethodBeat.i(80772);
-      if (this.QmS == null)
+      if (this.Xfi == null)
       {
         Log.i("MicroMsg.WebSearch.SosWebViewUI", "onHtmlContentReport webViewUIWeakReference is null.");
         AppMethodBeat.o(80772);
         return;
       }
-      SosWebViewUI localSosWebViewUI = (SosWebViewUI)this.QmS.get();
+      SosWebViewUI localSosWebViewUI = (SosWebViewUI)this.Xfi.get();
       if (localSosWebViewUI != null)
       {
         SosWebViewUI.b(localSosWebViewUI, paramString);

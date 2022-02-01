@@ -1,27 +1,27 @@
 package kotlin.l.b.a.b.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
+import kotlin.g.b.s;
 import kotlin.n.k;
 
 public final class g
 {
-  private static final k abfO;
-  public static final g abfP;
+  public static final g ajeH;
+  private static final k ajeI;
   
   static
   {
     AppMethodBeat.i(59333);
-    abfP = new g();
-    abfO = new k("[^\\p{L}\\p{Digit}]");
+    ajeH = new g();
+    ajeI = new k("[^\\p{L}\\p{Digit}]");
     AppMethodBeat.o(59333);
   }
   
-  public static final String bHf(String paramString)
+  public static final String bJi(String paramString)
   {
     AppMethodBeat.i(59332);
-    p.k(paramString, "name");
-    paramString = abfO.e((CharSequence)paramString, "_");
+    s.u(paramString, "name");
+    paramString = ajeI.e((CharSequence)paramString, "_");
     AppMethodBeat.o(59332);
     return paramString;
   }

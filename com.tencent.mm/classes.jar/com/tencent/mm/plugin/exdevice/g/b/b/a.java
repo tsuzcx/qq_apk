@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.g.b.a.c;
 import com.tencent.mm.plugin.exdevice.g.b.b;
-import com.tencent.mm.protocal.protobuf.blw;
+import com.tencent.mm.protocal.protobuf.bzo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -36,7 +36,7 @@ public final class a
     AppMethodBeat.o(23558);
   }
   
-  private boolean V(String paramString1, String paramString2, String paramString3)
+  private boolean Y(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(23561);
     String str = String.format("select * from %s where %s=? and %s=? and %s=? limit 1", new Object[] { "HardDeviceRankFollowInfo", "rankID", "appusername", "username" });
@@ -54,7 +54,7 @@ public final class a
     return bool;
   }
   
-  private boolean W(String paramString1, String paramString2, String paramString3)
+  private boolean Z(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(23567);
     paramString1 = a(new b(paramString1, paramString2, paramString3));
@@ -77,9 +77,13 @@ public final class a
       AppMethodBeat.o(23565);
       return true;
     }
-    c(paramc);
+    if (c(paramc))
+    {
+      AppMethodBeat.o(23565);
+      return true;
+    }
     AppMethodBeat.o(23565);
-    return true;
+    return false;
   }
   
   private boolean b(c paramc)
@@ -121,7 +125,7 @@ public final class a
   {
     AppMethodBeat.i(23559);
     Object localObject = String.format("select *, rowid from %s where %s = ? and %s = ? and %s = ? limit 1", new Object[] { "HardDeviceRankFollowInfo", "rankID", "username", "appusername" });
-    localObject = this.db.rawQuery((String)localObject, new String[] { Util.nullAs(paramb.vil, ""), Util.nullAs(paramb.username, ""), Util.nullAs(paramb.appName, "") }, 2);
+    localObject = this.db.rawQuery((String)localObject, new String[] { Util.nullAs(paramb.yuk, ""), Util.nullAs(paramb.username, ""), Util.nullAs(paramb.appName, "") }, 2);
     if (localObject == null)
     {
       Log.e("MicroMsg.ExdeviceFollowInfoStg", "ap: Get no follow in DB");
@@ -143,7 +147,7 @@ public final class a
     }
   }
   
-  public final void a(ArrayList<blw> paramArrayList, String paramString1, String paramString2)
+  public final void a(ArrayList<bzo> paramArrayList, String paramString1, String paramString2)
   {
     AppMethodBeat.i(23563);
     if (paramArrayList != null)
@@ -151,11 +155,11 @@ public final class a
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
-        blw localblw = (blw)paramArrayList.next();
+        bzo localbzo = (bzo)paramArrayList.next();
         c localc = new c();
         localc.field_rankID = paramString1;
-        localc.field_step = localblw.oxQ;
-        localc.field_username = localblw.username;
+        localc.field_step = localbzo.rBp;
+        localc.field_username = localbzo.username;
         localc.field_appusername = paramString2;
         a(localc);
       }
@@ -163,23 +167,23 @@ public final class a
     AppMethodBeat.o(23563);
   }
   
-  public final boolean avC(String paramString)
+  public final boolean apC(String paramString)
   {
     AppMethodBeat.i(23560);
-    boolean bool = V("hardcode_rank_id", "hardcode_app_name", paramString);
+    boolean bool = Y("hardcode_rank_id", "hardcode_app_name", paramString);
     AppMethodBeat.o(23560);
     return bool;
   }
   
-  public final boolean avD(String paramString)
+  public final boolean apD(String paramString)
   {
     AppMethodBeat.i(23566);
-    boolean bool = W("hardcode_rank_id", "hardcode_app_name", paramString);
+    boolean bool = Z("hardcode_rank_id", "hardcode_app_name", paramString);
     AppMethodBeat.o(23566);
     return bool;
   }
   
-  public final ArrayList<c> cZM()
+  public final ArrayList<c> dGf()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(23562);
@@ -212,7 +216,7 @@ public final class a
     }
   }
   
-  public final void jdMethod_do(List<c> paramList)
+  public final void fl(List<c> paramList)
   {
     AppMethodBeat.i(23564);
     if ((Util.isNullOrNil("hardcode_rank_id")) || (Util.isNullOrNil("hardcode_app_name"))) {
@@ -235,7 +239,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.b.a
  * JD-Core Version:    0.7.0.1
  */

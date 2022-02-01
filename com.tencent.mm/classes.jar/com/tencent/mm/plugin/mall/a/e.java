@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import org.json.JSONObject;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public final class e
   extends m
 {
-  public d EOC;
+  public d KJb;
   
   public e()
   {
@@ -43,9 +43,9 @@ public final class e
     }
     try
     {
-      this.EOC = new d(paramJSONObject.toString());
-      h.aHH();
-      h.aHG().aHp().set(ar.a.Vvr, paramJSONObject.toString());
+      this.KJb = new d(paramJSONObject.toString());
+      h.baF();
+      h.baE().ban().set(at.a.acXa, paramJSONObject.toString());
       AppMethodBeat.o(65992);
       return;
     }

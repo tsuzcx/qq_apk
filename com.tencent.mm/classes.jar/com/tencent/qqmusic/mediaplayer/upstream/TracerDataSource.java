@@ -24,11 +24,10 @@ public class TracerDataSource
       AppMethodBeat.o(76517);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Logger.e("TracerDataSource", "[close] failed!", localThrowable);
       AppMethodBeat.o(76517);
-      throw localThrowable;
     }
   }
   
@@ -49,11 +48,10 @@ public class TracerDataSource
       AppMethodBeat.o(76516);
       return localAudioType;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Logger.e("TracerDataSource", "[getAudioType] failed!", localThrowable);
       AppMethodBeat.o(76516);
-      throw localThrowable;
     }
   }
   
@@ -66,11 +64,10 @@ public class TracerDataSource
       AppMethodBeat.o(76515);
       return l;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Logger.e("TracerDataSource", "[getSize] failed!", localThrowable);
       AppMethodBeat.o(76515);
-      throw localThrowable;
     }
   }
   
@@ -91,11 +88,10 @@ public class TracerDataSource
       AppMethodBeat.o(76513);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Logger.e("TracerDataSource", "[open] failed!", localThrowable);
       AppMethodBeat.o(76513);
-      throw localThrowable;
     }
   }
   
@@ -108,11 +104,10 @@ public class TracerDataSource
       AppMethodBeat.o(76514);
       return i;
     }
-    catch (Throwable paramArrayOfByte)
+    finally
     {
       Logger.e("TracerDataSource", "[readAt] failed! pos = " + paramLong + ", offset = " + paramInt1 + ", size = " + paramInt2, paramArrayOfByte);
       AppMethodBeat.o(76514);
-      throw paramArrayOfByte;
     }
   }
   
@@ -126,7 +121,7 @@ public class TracerDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.TracerDataSource
  * JD-Core Version:    0.7.0.1
  */

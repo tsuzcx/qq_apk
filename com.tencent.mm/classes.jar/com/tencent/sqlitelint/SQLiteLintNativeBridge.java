@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class SQLiteLintNativeBridge
 {
   private static final String TAG = "SQLiteLint.SQLiteLintNativeBridge";
+  private byte _hellAccFlag_;
   
   private void doExecSqlCallback(long paramLong1, long paramLong2, String paramString, Cursor paramCursor)
   {
@@ -60,7 +61,11 @@ public class SQLiteLintNativeBridge
   public static void loadLibrary()
   {
     AppMethodBeat.i(52863);
-    System.loadLibrary("SqliteLint-lib");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("SqliteLint-lib");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/sqlitelint/SQLiteLintNativeBridge", "loadLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/sqlitelint/SQLiteLintNativeBridge", "loadLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     SLog.nativeSetLogger(2);
     AppMethodBeat.o(52863);
   }
@@ -84,7 +89,7 @@ public class SQLiteLintNativeBridge
       AppMethodBeat.o(52864);
       return;
     }
-    catch (Throwable paramString)
+    finally
     {
       SLog.e("SQLiteLint.SQLiteLintNativeBridge", "onPublishIssue ex ", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(52864);
@@ -117,7 +122,7 @@ public class SQLiteLintNativeBridge
           continue;
         }
       }
-      catch (Throwable paramString1)
+      finally
       {
         ISQLiteExecutionDelegate localISQLiteExecutionDelegate;
         SLog.e("SQLiteLint.SQLiteLintNativeBridge", "sqliteLintExecSql ex ", new Object[] { paramString1.getMessage() });
@@ -161,7 +166,7 @@ public class SQLiteLintNativeBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLintNativeBridge
  * JD-Core Version:    0.7.0.1
  */

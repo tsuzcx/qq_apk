@@ -9,64 +9,67 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.textstatus.b.j;
+import com.tencent.mm.plugin.textstatus.a.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/emoji/TextStatusEmojiSubTypeScrollView;", "Landroidx/recyclerview/widget/RecyclerView;", "Lcom/tencent/mm/plugin/textstatus/emoji/ImeEmojiSubTypeViewHolder$IAlternativePyViewListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mIEmojiSubTypeSelectListener", "Lcom/tencent/mm/plugin/textstatus/emoji/IEmojiSubTypeSelectListener;", "typeName", "", "initView", "", "onSubTypeClick", "position", "itemView", "Landroid/view/View;", "setIEmojiSubTypeSelectListener", "listener", "Companion", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/emoji/TextStatusEmojiSubTypeScrollView;", "Landroidx/recyclerview/widget/RecyclerView;", "Lcom/tencent/mm/plugin/textstatus/emoji/ImeEmojiSubTypeViewHolder$IAlternativePyViewListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mIEmojiSubTypeSelectListener", "Lcom/tencent/mm/plugin/textstatus/emoji/IEmojiSubTypeSelectListener;", "typeName", "", "initView", "", "onSubTypeClick", "position", "itemView", "Landroid/view/View;", "setIEmojiSubTypeSelectListener", "listener", "Companion", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TextStatusEmojiSubTypeScrollView
   extends RecyclerView
   implements g.a
 {
-  public static final a MBo;
-  private b MBn;
+  public static final TextStatusEmojiSubTypeScrollView.a TkT;
+  private b TkU;
   private String typeName;
   
   static
   {
-    AppMethodBeat.i(233740);
-    MBo = new a((byte)0);
-    AppMethodBeat.o(233740);
+    AppMethodBeat.i(290752);
+    TkT = new TextStatusEmojiSubTypeScrollView.a((byte)0);
+    AppMethodBeat.o(290752);
   }
   
   public TextStatusEmojiSubTypeScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(233734);
-    AppMethodBeat.o(233734);
+    AppMethodBeat.i(290730);
+    AppMethodBeat.o(290730);
   }
   
   public TextStatusEmojiSubTypeScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(233738);
+    AppMethodBeat.i(290744);
     this.typeName = "emoji";
-    switch (paramContext.obtainStyledAttributes(paramAttributeSet, b.j.ImeEmojiSubTypeScrollView, paramInt, 0).getInt(b.j.ImeEmojiSubTypeScrollView_emoji_type, 1))
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.ImeEmojiSubTypeScrollView, paramInt, 0);
+    s.s(paramContext, "context!!.obtainStyledAt…eScrollView, defStyle, 0)");
+    switch (paramContext.getInt(a.j.ImeEmojiSubTypeScrollView_emoji_type, 1))
     {
     default: 
       Log.d("WxIme.ImeEmojiSubTypeScrollView", "initView");
       getContext();
       paramContext = new LinearLayoutManager();
       paramContext.setOrientation(0);
-      paramAttributeSet = m.MBp;
+      paramAttributeSet = m.TkV;
       paramAttributeSet = getContext();
-      p.j(paramAttributeSet, "context");
-      paramContext.cC(m.be(paramAttributeSet, this.typeName).size());
+      s.s(paramAttributeSet, "context");
+      paramContext.bXK = m.bg(paramAttributeSet, this.typeName).size();
       paramContext.setItemPrefetchEnabled(true);
       setLayoutManager((RecyclerView.LayoutManager)paramContext);
-      paramContext = m.MBp;
-      paramContext = m.aLG(this.typeName);
-      paramAttributeSet = m.MBp;
+      paramContext = m.TkV;
+      paramContext = m.aIz(this.typeName);
+      paramAttributeSet = m.TkV;
       paramAttributeSet = getContext();
-      p.j(paramAttributeSet, "context");
-      paramAttributeSet = ((List)m.be(paramAttributeSet, this.typeName)).iterator();
+      s.s(paramAttributeSet, "context");
+      paramAttributeSet = ((List)m.bg(paramAttributeSet, this.typeName)).iterator();
       paramInt = i;
-      label183:
+      label191:
       if (paramAttributeSet.hasNext()) {
-        if (!p.h(((f)paramAttributeSet.next()).typeName, paramContext)) {
+        if (!s.p(((f)paramAttributeSet.next()).typeName, paramContext)) {
           break;
         }
       }
@@ -75,52 +78,46 @@ public final class TextStatusEmojiSubTypeScrollView
     for (;;)
     {
       paramAttributeSet = this.typeName;
-      Object localObject = m.MBp;
+      Object localObject = m.TkV;
       localObject = getContext();
-      p.j(localObject, "context");
-      setAdapter((RecyclerView.a)new l(paramAttributeSet, m.be((Context)localObject, this.typeName), paramInt, (g.a)this));
-      paramAttributeSet = m.MBp;
+      s.s(localObject, "context");
+      setAdapter((RecyclerView.a)new l(paramAttributeSet, m.bg((Context)localObject, this.typeName), paramInt, (g.a)this));
+      paramAttributeSet = m.TkV;
       paramAttributeSet = getContext();
-      p.j(paramAttributeSet, "context");
-      setItemViewCacheSize(m.be(paramAttributeSet, this.typeName).size());
+      s.s(paramAttributeSet, "context");
+      setItemViewCacheSize(m.bg(paramAttributeSet, this.typeName).size());
       Log.d("WxIme.ImeEmojiSubTypeScrollView", "init " + this.typeName + ' ' + paramContext + ' ' + paramInt);
-      AppMethodBeat.o(233738);
+      AppMethodBeat.o(290744);
       return;
       this.typeName = "emoji";
       break;
       this.typeName = "kaoemoji";
       break;
       paramInt += 1;
-      break label183;
+      break label191;
       paramInt = -1;
     }
   }
   
-  public final void k(int paramInt, View paramView)
+  public final void r(int paramInt, View paramView)
   {
-    AppMethodBeat.i(233731);
-    p.k(paramView, "itemView");
-    Log.d("WxIme.ImeEmojiSubTypeScrollView", "onSubTypeClick ".concat(String.valueOf(paramInt)));
-    b localb = this.MBn;
-    if (localb != null)
-    {
-      localb.j(paramInt, paramView);
-      AppMethodBeat.o(233731);
-      return;
+    AppMethodBeat.i(290772);
+    s.u(paramView, "itemView");
+    Log.d("WxIme.ImeEmojiSubTypeScrollView", s.X("onSubTypeClick ", Integer.valueOf(paramInt)));
+    b localb = this.TkU;
+    if (localb != null) {
+      localb.q(paramInt, paramView);
     }
-    AppMethodBeat.o(233731);
+    AppMethodBeat.o(290772);
   }
   
   public final void setIEmojiSubTypeSelectListener(b paramb)
   {
-    AppMethodBeat.i(233730);
-    p.k(paramb, "listener");
-    this.MBn = paramb;
-    AppMethodBeat.o(233730);
+    AppMethodBeat.i(290762);
+    s.u(paramb, "listener");
+    this.TkU = paramb;
+    AppMethodBeat.o(290762);
   }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/emoji/TextStatusEmojiSubTypeScrollView$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"})
-  public static final class a {}
 }
 
 

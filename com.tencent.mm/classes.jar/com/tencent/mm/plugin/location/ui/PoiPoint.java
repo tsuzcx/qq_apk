@@ -12,45 +12,45 @@ import android.view.View;
 import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.map.a.b;
-import com.tencent.mm.plugin.q.d;
+import com.tencent.mm.plugin.p.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMarkerClickListener;
 
 public class PoiPoint
   extends View
 {
-  d ElD;
-  boolean ElF;
-  private Paint ElU;
-  private int ElV;
-  private Paint ElW;
-  private int ElX;
-  private Paint ElY;
-  private int ElZ;
-  private Paint Ema;
-  private int Emb;
-  private ValueAnimator Emc;
-  private ValueAnimator Emd;
-  private ValueAnimator Eme;
-  private double Emf;
-  private double Emg;
-  private int Emh;
-  private float Emi;
-  PoiPoint.b Emj;
-  a Emk;
+  private int AMY;
+  private Paint KeD;
+  private int KeE;
+  private Paint KeF;
+  private int KeG;
+  private Paint KeH;
+  private int KeI;
+  private Paint KeJ;
+  private int KeK;
+  private ValueAnimator KeL;
+  private ValueAnimator KeM;
+  private ValueAnimator KeN;
+  private double KeO;
+  private double KeP;
+  private int KeQ;
+  private float KeR;
+  PoiPoint.b KeS;
+  a KeT;
+  d Kem;
+  boolean Keo;
   private Context context;
-  RectF ctb;
+  RectF ekW;
   private int position;
-  private int xpS;
   
   public PoiPoint(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55862);
-    this.ElF = false;
-    this.ctb = new RectF();
-    this.Emj = PoiPoint.b.Emn;
+    this.Keo = false;
+    this.ekW = new RectF();
+    this.KeS = PoiPoint.b.KeW;
     init(paramContext);
     AppMethodBeat.o(55862);
   }
@@ -59,9 +59,9 @@ public class PoiPoint
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(55863);
-    this.ElF = false;
-    this.ctb = new RectF();
-    this.Emj = PoiPoint.b.Emn;
+    this.Keo = false;
+    this.ekW = new RectF();
+    this.KeS = PoiPoint.b.KeW;
     init(paramContext);
     AppMethodBeat.o(55863);
   }
@@ -70,10 +70,10 @@ public class PoiPoint
   {
     super(paramContext);
     AppMethodBeat.i(55864);
-    this.ElF = false;
-    this.ctb = new RectF();
-    this.Emj = PoiPoint.b.Emn;
-    this.ElD = paramd;
+    this.Keo = false;
+    this.ekW = new RectF();
+    this.KeS = PoiPoint.b.KeW;
+    this.Kem = paramd;
     init(paramContext);
     AppMethodBeat.o(55864);
   }
@@ -83,22 +83,22 @@ public class PoiPoint
     AppMethodBeat.i(55865);
     setLayerType(1, null);
     this.context = paramContext;
-    this.ElU = new Paint(1);
-    this.ElU.setColor(-1);
-    this.ElV = aw.fromDPToPix(paramContext, 12);
-    this.ElW = new Paint(1);
-    this.ElW.setColor(paramContext.getResources().getColor(a.b.wechat_green));
-    int i = aw.fromDPToPix(paramContext, 8);
-    int j = aw.fromDPToPix(paramContext, 16);
-    this.ElX = i;
-    this.ElY = new Paint(1);
-    this.ElY.setColor(-1);
-    int k = aw.fromDPToPix(paramContext, 7);
-    this.ElZ = 0;
-    this.Ema = new Paint(1);
-    this.Ema.setColor(paramContext.getResources().getColor(a.b.wechat_green));
-    this.Ema.setStrokeWidth(aw.fromDPToPix(paramContext, 4));
-    int m = aw.fromDPToPix(paramContext, 20);
+    this.KeD = new Paint(1);
+    this.KeD.setColor(-1);
+    this.KeE = bd.fromDPToPix(paramContext, 12);
+    this.KeF = new Paint(1);
+    this.KeF.setColor(paramContext.getResources().getColor(a.b.wechat_green));
+    int i = bd.fromDPToPix(paramContext, 8);
+    int j = bd.fromDPToPix(paramContext, 16);
+    this.KeG = i;
+    this.KeH = new Paint(1);
+    this.KeH.setColor(-1);
+    int k = bd.fromDPToPix(paramContext, 7);
+    this.KeI = 0;
+    this.KeJ = new Paint(1);
+    this.KeJ.setColor(paramContext.getResources().getColor(a.b.wechat_green));
+    this.KeJ.setStrokeWidth(bd.fromDPToPix(paramContext, 4));
+    int m = bd.fromDPToPix(paramContext, 20);
     ValueAnimator.AnimatorUpdateListener local1 = new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
@@ -114,8 +114,8 @@ public class PoiPoint
         for (;;)
         {
           paramAnonymousValueAnimator = PoiPoint.this;
-          if (paramAnonymousValueAnimator.ElF) {
-            paramAnonymousValueAnimator.ElD.updateMarkerView(paramAnonymousValueAnimator);
+          if (paramAnonymousValueAnimator.Keo) {
+            paramAnonymousValueAnimator.Kem.updateMarkerView(paramAnonymousValueAnimator);
           }
           AppMethodBeat.o(55857);
           return;
@@ -134,40 +134,40 @@ public class PoiPoint
         }
       }
     };
-    this.Emc = ValueAnimator.ofInt(new int[] { i, j });
-    this.Emc.setDuration(300L);
-    this.Emc.addUpdateListener(local1);
-    this.Emd = ValueAnimator.ofInt(new int[] { 0, k });
-    this.Emd.setDuration(300L);
-    this.Emd.addUpdateListener(local1);
-    this.Eme = ValueAnimator.ofInt(new int[] { 0, m });
-    this.Eme.setDuration(300L);
-    this.Eme.addUpdateListener(local1);
-    this.Eme.setStartDelay(100L);
-    this.Emh = aw.fromDPToPix(paramContext, 1);
-    this.xpS = aw.fromDPToPix(paramContext, 4);
-    this.Emi = (aw.getDensity(paramContext) * 2.5F);
+    this.KeL = ValueAnimator.ofInt(new int[] { i, j });
+    this.KeL.setDuration(300L);
+    this.KeL.addUpdateListener(local1);
+    this.KeM = ValueAnimator.ofInt(new int[] { 0, k });
+    this.KeM.setDuration(300L);
+    this.KeM.addUpdateListener(local1);
+    this.KeN = ValueAnimator.ofInt(new int[] { 0, m });
+    this.KeN.setDuration(300L);
+    this.KeN.addUpdateListener(local1);
+    this.KeN.setStartDelay(100L);
+    this.KeQ = bd.fromDPToPix(paramContext, 1);
+    this.AMY = bd.fromDPToPix(paramContext, 4);
+    this.KeR = (bd.getDensity(paramContext) * 2.5F);
     AppMethodBeat.o(55865);
   }
   
-  public final void c(double paramDouble1, double paramDouble2, boolean paramBoolean)
+  public final void d(double paramDouble1, double paramDouble2, boolean paramBoolean)
   {
     AppMethodBeat.i(55870);
-    if (!this.ElF)
+    if (!this.Keo)
     {
-      this.ElF = true;
-      this.Emf = paramDouble1;
-      this.Emg = paramDouble2;
-      this.ElD.addPinView(this, paramDouble1, paramDouble2);
-      this.ElD.setMarkerClickListener(this, new TencentMap.OnMarkerClickListener()
+      this.Keo = true;
+      this.KeO = paramDouble1;
+      this.KeP = paramDouble2;
+      this.Kem.addPinView(this, paramDouble1, paramDouble2);
+      this.Kem.setMarkerClickListener(this, new TencentMap.OnMarkerClickListener()
       {
         public final boolean onMarkerClick(Marker paramAnonymousMarker)
         {
           AppMethodBeat.i(55858);
           Log.i("MicroMsg.PoiPoint", "onClick.");
-          if (PoiPoint.this.Emk != null)
+          if (PoiPoint.this.KeT != null)
           {
-            PoiPoint.this.Emk.a(PoiPoint.this.Emj, PoiPoint.this);
+            PoiPoint.this.KeT.a(PoiPoint.this.KeS, PoiPoint.this);
             AppMethodBeat.o(55858);
             return true;
           }
@@ -176,46 +176,46 @@ public class PoiPoint
         }
       });
       if (paramBoolean) {
-        eMC();
+        fUV();
       }
     }
     AppMethodBeat.o(55870);
   }
   
-  public final void eMB()
+  public final void fUU()
   {
     AppMethodBeat.i(55868);
-    if (PoiPoint.b.Emm == this.Emj)
+    if (PoiPoint.b.KeV == this.KeS)
     {
-      this.Emj = PoiPoint.b.Emn;
-      this.Emc.reverse();
-      this.Emd.reverse();
-      this.Eme.reverse();
+      this.KeS = PoiPoint.b.KeW;
+      this.KeL.reverse();
+      this.KeM.reverse();
+      this.KeN.reverse();
     }
     AppMethodBeat.o(55868);
   }
   
-  public final void eMC()
+  public final void fUV()
   {
     AppMethodBeat.i(55869);
-    if (PoiPoint.b.Emn == this.Emj)
+    if (PoiPoint.b.KeW == this.KeS)
     {
-      this.Emj = PoiPoint.b.Emm;
-      this.Emc.start();
-      this.Emd.start();
-      this.Eme.start();
+      this.KeS = PoiPoint.b.KeV;
+      this.KeL.start();
+      this.KeM.start();
+      this.KeN.start();
     }
     AppMethodBeat.o(55869);
   }
   
   public double getLat()
   {
-    return this.Emf;
+    return this.KeO;
   }
   
   public double getLng()
   {
-    return this.Emg;
+    return this.KeP;
   }
   
   public int getPosition()
@@ -227,19 +227,19 @@ public class PoiPoint
   {
     AppMethodBeat.i(55867);
     super.onDraw(paramCanvas);
-    Log.d("MicroMsg.PoiPoint", "onDraw, greenCircleRadius: %s.", new Object[] { Integer.valueOf(this.ElX) });
+    Log.d("MicroMsg.PoiPoint", "onDraw, greenCircleRadius: %s.", new Object[] { Integer.valueOf(this.KeG) });
     int i = getWidth() / 2;
-    float f = getHeight() - getWidth() / 2 - this.Emb;
-    if ((PoiPoint.b.Emn == this.Emj) && (0.0F == this.Emc.getAnimatedFraction()))
+    float f = getHeight() - getWidth() / 2 - this.KeK;
+    if ((PoiPoint.b.KeW == this.KeS) && (0.0F == this.KeL.getAnimatedFraction()))
     {
       Log.i("MicroMsg.PoiPoint", "draw shade.");
-      this.ElU.setShadowLayer(aw.fromDPToPix(this.context, 1), 0.0F, this.Emh, this.context.getResources().getColor(a.b.BW_0_Alpha_0_1));
+      this.KeD.setShadowLayer(bd.fromDPToPix(this.context, 1), 0.0F, this.KeQ, this.context.getResources().getColor(a.b.BW_0_Alpha_0_1));
     }
-    paramCanvas.drawCircle(i, f, this.ElV, this.ElU);
-    paramCanvas.drawCircle(i, f, this.ElX, this.ElW);
-    paramCanvas.drawCircle(i, f, this.ElZ, this.ElY);
-    this.ctb.set(i - this.xpS / 2.0F, this.ElX + f - this.Emi, i + this.xpS / 2.0F, f + this.ElX + this.Emb);
-    paramCanvas.drawRoundRect(this.ctb, this.Emi, this.Emi, this.Ema);
+    paramCanvas.drawCircle(i, f, this.KeE, this.KeD);
+    paramCanvas.drawCircle(i, f, this.KeG, this.KeF);
+    paramCanvas.drawCircle(i, f, this.KeI, this.KeH);
+    this.ekW.set(i - this.AMY / 2.0F, this.KeG + f - this.KeR, i + this.AMY / 2.0F, f + this.KeG + this.KeK);
+    paramCanvas.drawRoundRect(this.ekW, this.KeR, this.KeR, this.KeJ);
     AppMethodBeat.o(55867);
   }
   
@@ -247,8 +247,8 @@ public class PoiPoint
   {
     AppMethodBeat.i(55866);
     super.onMeasure(paramInt1, paramInt2);
-    paramInt1 = aw.fromDPToPix(this.context, 32);
-    paramInt2 = aw.fromDPToPix(this.context, 52);
+    paramInt1 = bd.fromDPToPix(this.context, 32);
+    paramInt2 = bd.fromDPToPix(this.context, 52);
     Log.d("MicroMsg.PoiPoint", "point size: %s*%s.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     setMeasuredDimension(paramInt1, paramInt2);
     AppMethodBeat.o(55866);
@@ -257,16 +257,16 @@ public class PoiPoint
   public final void remove()
   {
     AppMethodBeat.i(55871);
-    if (this.ElF) {
-      this.ElD.removeView(this);
+    if (this.Keo) {
+      this.Kem.removeView(this);
     }
-    this.ElF = false;
+    this.Keo = false;
     AppMethodBeat.o(55871);
   }
   
   public void setOnPointClick(a parama)
   {
-    this.Emk = parama;
+    this.KeT = parama;
   }
   
   public void setPosition(int paramInt)
@@ -281,7 +281,7 @@ public class PoiPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.PoiPoint
  * JD-Core Version:    0.7.0.1
  */

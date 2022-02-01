@@ -1,24 +1,18 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import kotlinx.coroutines.internal.v;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"RESUMED", "", "RESUME_TOKEN", "Lkotlinx/coroutines/internal/Symbol;", "RESUME_TOKEN$annotations", "()V", "SUSPENDED", "UNDECIDED", "kotlinx-coroutines-core"})
-public final class o
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CancelHandlerBase;", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "()V", "invoke", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class o
+  implements b<Throwable, ah>
 {
-  public static final v abwj;
-  
-  static
-  {
-    AppMethodBeat.i(204320);
-    abwj = new v("RESUME_TOKEN");
-    AppMethodBeat.o(204320);
-  }
+  public abstract void N(Throwable paramThrowable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.o
  * JD-Core Version:    0.7.0.1
  */

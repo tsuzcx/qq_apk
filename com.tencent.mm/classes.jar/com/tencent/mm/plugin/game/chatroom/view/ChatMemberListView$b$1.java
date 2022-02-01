@@ -1,49 +1,29 @@
 package com.tencent.mm.plugin.game.chatroom.view;
 
-import androidx.recyclerview.widget.s;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
 
-public final class ChatMemberListView$b$1
-  implements s
+final class ChatMemberListView$b$1
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ChatMemberListView$b$1(ChatMemberListView.b paramb) {}
+  ChatMemberListView$b$1(ChatMemberListView.b paramb, View paramView) {}
   
-  public final void W(int paramInt1, int paramInt2)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(211780);
-    Log.d("GameChatRoom.ChatMemberListView", "onInserted, position:%d, count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.CwN.aG(paramInt1, paramInt2);
-    AppMethodBeat.o(211780);
-  }
-  
-  public final void ac(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(211781);
-    Log.d("GameChatRoom.ChatMemberListView", "onRemoved, position:%d, count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.CwN.aH(paramInt1, paramInt2);
-    AppMethodBeat.o(211781);
-  }
-  
-  public final void ad(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(211782);
-    Log.d("GameChatRoom.ChatMemberListView", "onMoved, fromPosition:%d, toPosition:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.CwN.aF(paramInt1, paramInt2);
-    AppMethodBeat.o(211782);
-  }
-  
-  public final void c(int paramInt1, int paramInt2, Object paramObject)
-  {
-    AppMethodBeat.i(211783);
-    Log.d("GameChatRoom.ChatMemberListView", "onChanged, position:%d, count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.CwN.aE(paramInt1, paramInt2);
-    AppMethodBeat.o(211783);
+    AppMethodBeat.i(276260);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (LinearLayout.LayoutParams)this.Iop.getLayoutParams();
+    paramValueAnimator.width = i;
+    this.Iop.setLayoutParams(paramValueAnimator);
+    AppMethodBeat.o(276260);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.chatroom.view.ChatMemberListView.b.1
  * JD-Core Version:    0.7.0.1
  */

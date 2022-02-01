@@ -6,6 +6,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaLink
   extends WWMediaMessage.WWMediaObject
 {
+  public boolean aicY;
+  public String state;
   public String thumbUrl;
   public String webpageUrl;
   
@@ -28,11 +30,13 @@ public class WWMediaLink
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(233394);
+    AppMethodBeat.i(210613);
     this.thumbUrl = paramBundle.getString("_wwwebpageobject_thumbUrl");
     this.webpageUrl = paramBundle.getString("_wwwebpageobject_webpageUrl");
+    this.aicY = paramBundle.getBoolean("_withshareticket");
+    this.state = paramBundle.getString("_state");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(233394);
+    AppMethodBeat.o(210613);
   }
   
   public final void toBundle(Bundle paramBundle)
@@ -40,6 +44,8 @@ public class WWMediaLink
     AppMethodBeat.i(106543);
     paramBundle.putString("_wwwebpageobject_thumbUrl", this.thumbUrl);
     paramBundle.putString("_wwwebpageobject_webpageUrl", this.webpageUrl);
+    paramBundle.putBoolean("_withshareticket", this.aicY);
+    paramBundle.putString("_state", this.state);
     super.toBundle(paramBundle);
     AppMethodBeat.o(106543);
   }

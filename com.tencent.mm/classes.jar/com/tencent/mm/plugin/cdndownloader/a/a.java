@@ -12,27 +12,27 @@ import com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskState;
 public abstract interface a
   extends IInterface
 {
-  public abstract void Is(int paramInt);
+  public abstract void IV(int paramInt);
   
   public abstract int a(CDNTaskInfo paramCDNTaskInfo);
   
   public abstract void a(b paramb);
   
-  public abstract boolean asf(String paramString);
+  public abstract boolean alJ(String paramString);
   
-  public abstract boolean asg(String paramString);
+  public abstract boolean alK(String paramString);
   
-  public abstract CDNTaskState ash(String paramString);
+  public abstract CDNTaskState alL(String paramString);
   
   public abstract int b(CDNTaskInfo paramCDNTaskInfo);
   
   public abstract void b(b paramb);
   
-  public abstract void cMp();
+  public abstract void dpT();
   
-  public abstract void cMq();
+  public abstract void dpU();
   
-  public abstract void cMr();
+  public abstract void dpV();
   
   public static abstract class a
     extends Binder
@@ -43,12 +43,7 @@ public abstract interface a
       attachInterface(this, "com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
     }
     
-    public static a cMs()
-    {
-      return a.tLf;
-    }
-    
-    public static a x(IBinder paramIBinder)
+    public static a A(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -58,6 +53,11 @@ public abstract interface a
         return (a)localIInterface;
       }
       return new a(paramIBinder);
+    }
+    
+    public static a dpW()
+    {
+      return a.wOu;
     }
     
     public IBinder asBinder()
@@ -99,7 +99,7 @@ public abstract interface a
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        bool = asf(paramParcel1.readString());
+        bool = alJ(paramParcel1.readString());
         paramParcel2.writeNoException();
         if (bool) {}
         for (paramInt1 = 1;; paramInt1 = 0)
@@ -109,7 +109,7 @@ public abstract interface a
         }
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        bool = asg(paramParcel1.readString());
+        bool = alK(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -119,7 +119,7 @@ public abstract interface a
         return true;
       case 5: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        paramParcel1 = ash(paramParcel1.readString());
+        paramParcel1 = alL(paramParcel1.readString());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -131,32 +131,32 @@ public abstract interface a
         return true;
       case 6: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        a(b.a.y(paramParcel1.readStrongBinder()));
+        a(b.a.B(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         return true;
       case 7: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        b(b.a.y(paramParcel1.readStrongBinder()));
+        b(b.a.B(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        Is(paramParcel1.readInt());
+        IV(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        cMp();
+        dpT();
         paramParcel2.writeNoException();
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        cMq();
+        dpU();
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-      cMr();
+      dpV();
       paramParcel2.writeNoException();
       return true;
     }
@@ -164,7 +164,7 @@ public abstract interface a
     static final class a
       implements a
     {
-      public static a tLf;
+      public static a wOu;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -172,7 +172,7 @@ public abstract interface a
         this.mRemote = paramIBinder;
       }
       
-      public final void Is(int paramInt)
+      public final void IV(int paramInt)
       {
         AppMethodBeat.i(120700);
         Parcel localParcel1 = Parcel.obtain();
@@ -181,9 +181,9 @@ public abstract interface a
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
           localParcel1.writeInt(paramInt);
-          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (a.a.cMs() != null))
+          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (a.a.dpW() != null))
           {
-            a.a.cMs().Is(paramInt);
+            a.a.dpW().IV(paramInt);
             return;
           }
           localParcel2.readException();
@@ -210,9 +210,9 @@ public abstract interface a
             localParcel1.writeInt(1);
             paramCDNTaskInfo.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.cMs() != null))
+          while ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.dpW() != null))
           {
-            i = a.a.cMs().a(paramCDNTaskInfo);
+            i = a.a.dpW().a(paramCDNTaskInfo);
             return i;
             localParcel1.writeInt(0);
           }
@@ -243,10 +243,10 @@ public abstract interface a
           for (IBinder localIBinder = paramb.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(6, localParcel1, localParcel2, 0)) || (a.a.cMs() == null)) {
+            if ((this.mRemote.transact(6, localParcel1, localParcel2, 0)) || (a.a.dpW() == null)) {
               break;
             }
-            a.a.cMs().a(paramb);
+            a.a.dpW().a(paramb);
             return;
           }
           localParcel2.readException();
@@ -260,12 +260,7 @@ public abstract interface a
         }
       }
       
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
-      public final boolean asf(String paramString)
+      public final boolean alJ(String paramString)
       {
         boolean bool = false;
         AppMethodBeat.i(120695);
@@ -275,9 +270,9 @@ public abstract interface a
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
           localParcel1.writeString(paramString);
-          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (a.a.cMs() != null))
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (a.a.dpW() != null))
           {
-            bool = a.a.cMs().asf(paramString);
+            bool = a.a.dpW().alJ(paramString);
             return bool;
           }
           localParcel2.readException();
@@ -295,7 +290,7 @@ public abstract interface a
         }
       }
       
-      public final boolean asg(String paramString)
+      public final boolean alK(String paramString)
       {
         boolean bool = false;
         AppMethodBeat.i(120696);
@@ -305,9 +300,9 @@ public abstract interface a
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
           localParcel1.writeString(paramString);
-          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (a.a.cMs() != null))
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (a.a.dpW() != null))
           {
-            bool = a.a.cMs().asg(paramString);
+            bool = a.a.dpW().alK(paramString);
             return bool;
           }
           localParcel2.readException();
@@ -326,7 +321,7 @@ public abstract interface a
       }
       
       /* Error */
-      public final CDNTaskState ash(String paramString)
+      public final CDNTaskState alL(String paramString)
       {
         // Byte code:
         //   0: ldc 107
@@ -349,9 +344,9 @@ public abstract interface a
         //   31: iconst_0
         //   32: invokeinterface 50 5 0
         //   37: ifne +34 -> 71
-        //   40: invokestatic 54	com/tencent/mm/plugin/cdndownloader/a/a$a:cMs	()Lcom/tencent/mm/plugin/cdndownloader/a/a;
+        //   40: invokestatic 54	com/tencent/mm/plugin/cdndownloader/a/a$a:dpW	()Lcom/tencent/mm/plugin/cdndownloader/a/a;
         //   43: ifnull +28 -> 71
-        //   46: invokestatic 54	com/tencent/mm/plugin/cdndownloader/a/a$a:cMs	()Lcom/tencent/mm/plugin/cdndownloader/a/a;
+        //   46: invokestatic 54	com/tencent/mm/plugin/cdndownloader/a/a$a:dpW	()Lcom/tencent/mm/plugin/cdndownloader/a/a;
         //   49: aload_1
         //   50: invokeinterface 109 2 0
         //   55: astore_1
@@ -405,6 +400,11 @@ public abstract interface a
         //   71	95	115	finally
       }
       
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
+      }
+      
       public final int b(CDNTaskInfo paramCDNTaskInfo)
       {
         AppMethodBeat.i(120694);
@@ -418,9 +418,9 @@ public abstract interface a
             localParcel1.writeInt(1);
             paramCDNTaskInfo.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (a.a.cMs() != null))
+          while ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (a.a.dpW() != null))
           {
-            i = a.a.cMs().b(paramCDNTaskInfo);
+            i = a.a.dpW().b(paramCDNTaskInfo);
             return i;
             localParcel1.writeInt(0);
           }
@@ -451,10 +451,10 @@ public abstract interface a
           for (IBinder localIBinder = paramb.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(7, localParcel1, localParcel2, 0)) || (a.a.cMs() == null)) {
+            if ((this.mRemote.transact(7, localParcel1, localParcel2, 0)) || (a.a.dpW() == null)) {
               break;
             }
-            a.a.cMs().b(paramb);
+            a.a.dpW().b(paramb);
             return;
           }
           localParcel2.readException();
@@ -468,7 +468,7 @@ public abstract interface a
         }
       }
       
-      public final void cMp()
+      public final void dpT()
       {
         AppMethodBeat.i(120701);
         Parcel localParcel1 = Parcel.obtain();
@@ -476,9 +476,9 @@ public abstract interface a
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-          if ((!this.mRemote.transact(9, localParcel1, localParcel2, 0)) && (a.a.cMs() != null))
+          if ((!this.mRemote.transact(9, localParcel1, localParcel2, 0)) && (a.a.dpW() != null))
           {
-            a.a.cMs().cMp();
+            a.a.dpW().dpT();
             return;
           }
           localParcel2.readException();
@@ -492,7 +492,7 @@ public abstract interface a
         }
       }
       
-      public final void cMq()
+      public final void dpU()
       {
         AppMethodBeat.i(120702);
         Parcel localParcel1 = Parcel.obtain();
@@ -500,9 +500,9 @@ public abstract interface a
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-          if ((!this.mRemote.transact(10, localParcel1, localParcel2, 0)) && (a.a.cMs() != null))
+          if ((!this.mRemote.transact(10, localParcel1, localParcel2, 0)) && (a.a.dpW() != null))
           {
-            a.a.cMs().cMq();
+            a.a.dpW().dpU();
             return;
           }
           localParcel2.readException();
@@ -516,7 +516,7 @@ public abstract interface a
         }
       }
       
-      public final void cMr()
+      public final void dpV()
       {
         AppMethodBeat.i(120703);
         Parcel localParcel1 = Parcel.obtain();
@@ -524,9 +524,9 @@ public abstract interface a
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-          if ((!this.mRemote.transact(11, localParcel1, localParcel2, 0)) && (a.a.cMs() != null))
+          if ((!this.mRemote.transact(11, localParcel1, localParcel2, 0)) && (a.a.dpW() != null))
           {
-            a.a.cMs().cMr();
+            a.a.dpW().dpV();
             return;
           }
           localParcel2.readException();

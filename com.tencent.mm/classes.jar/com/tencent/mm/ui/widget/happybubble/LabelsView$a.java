@@ -4,7 +4,7 @@ import android.widget.TextView;
 
 public abstract interface LabelsView$a<T>
 {
-  public abstract CharSequence a(TextView paramTextView, int paramInt, T paramT);
+  public abstract CharSequence getLabelText(TextView paramTextView, int paramInt, T paramT);
 }
 
 

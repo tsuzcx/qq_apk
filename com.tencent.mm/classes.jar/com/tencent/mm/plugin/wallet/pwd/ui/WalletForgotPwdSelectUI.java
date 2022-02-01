@@ -1,31 +1,28 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.wallet_core.e;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.wallet_core.ui.k;
 
 public class WalletForgotPwdSelectUI
   extends WalletBaseUI
 {
-  private View OBq;
-  private View OBr;
+  private View VqE;
+  private View VqF;
   
-  private void gHJ()
+  private void igO()
   {
     AppMethodBeat.i(69647);
     Log.i("MicroMsg.WalletForgotPwdSelectUI", "goToBankcard");
@@ -66,8 +63,8 @@ public class WalletForgotPwdSelectUI
           paramIntent = localIntent.getExtras().getString("token");
           if ((getProcess() != null) && (!Util.isNullOrNil(paramIntent)))
           {
-            h.IzE.a(15774, new Object[] { Integer.valueOf(getProcess().fKb.getInt("key_forgot_scene", 1)), Integer.valueOf(4) });
-            h.IzE.a(15711, new Object[] { Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(k), Long.valueOf(l), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(i) });
+            h.OAn.b(15774, new Object[] { Integer.valueOf(getProcess().hPH.getInt("key_forgot_scene", 1)), Integer.valueOf(4) });
+            h.OAn.b(15711, new Object[] { Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(k), Long.valueOf(l), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(i) });
           }
           getInput().putString("key_face_action_result_token", paramIntent);
           getInput().putBoolean("key_is_set_pwd_after_face_action", true);
@@ -80,11 +77,11 @@ public class WalletForgotPwdSelectUI
       {
         paramIntent = localIntent.getExtras().getString("click_other_verify_btn");
         if ((Util.isNullOrNil(paramIntent)) || (!paramIntent.equalsIgnoreCase("yes"))) {
-          break label703;
+          break label702;
         }
       }
     }
-    label703:
+    label702:
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       Log.i("MicroMsg.WalletForgotPwdSelectUI", "isClickOtherVerify: %s", new Object[] { paramIntent });
@@ -93,18 +90,18 @@ public class WalletForgotPwdSelectUI
         Log.i("MicroMsg.WalletForgotPwdSelectUI", "check face failed, click other verify");
         if (getProcess() != null)
         {
-          h.IzE.a(15774, new Object[] { Integer.valueOf(getProcess().fKb.getInt("key_forgot_scene", 1)), Integer.valueOf(5) });
-          h.IzE.a(15711, new Object[] { Integer.valueOf(j), Integer.valueOf(3), Integer.valueOf(k), Long.valueOf(l), Integer.valueOf(1), Integer.valueOf(m), Integer.valueOf(i) });
+          h.OAn.b(15774, new Object[] { Integer.valueOf(getProcess().hPH.getInt("key_forgot_scene", 1)), Integer.valueOf(5) });
+          h.OAn.b(15711, new Object[] { Integer.valueOf(j), Integer.valueOf(3), Integer.valueOf(k), Long.valueOf(l), Integer.valueOf(1), Integer.valueOf(m), Integer.valueOf(i) });
         }
-        gHJ();
+        igO();
       }
       if (paramInt2 == 0)
       {
         Log.i("MicroMsg.WalletForgotPwdSelectUI", "resultCode：RESULT_CANCELED");
         if (getProcess() != null)
         {
-          h.IzE.a(15774, new Object[] { Integer.valueOf(getProcess().fKb.getInt("key_forgot_scene", 1)), Integer.valueOf(6) });
-          h.IzE.a(15711, new Object[] { Integer.valueOf(j), Integer.valueOf(2), Integer.valueOf(k), Long.valueOf(l), Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(i) });
+          h.OAn.b(15774, new Object[] { Integer.valueOf(getProcess().hPH.getInt("key_forgot_scene", 1)), Integer.valueOf(6) });
+          h.OAn.b(15711, new Object[] { Integer.valueOf(j), Integer.valueOf(2), Integer.valueOf(k), Long.valueOf(l), Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(i) });
         }
       }
       AppMethodBeat.o(69648);
@@ -119,41 +116,33 @@ public class WalletForgotPwdSelectUI
     setActionbarColor(getResources().getColor(a.c.white));
     hideActionbarLine();
     setMMTitleVisibility(8);
-    this.OBq = findViewById(a.f.face_check_entry);
-    this.OBr = findViewById(a.f.bankcard_entry);
-    this.OBq.setOnClickListener(new View.OnClickListener()
+    this.VqE = findViewById(a.f.face_check_entry);
+    this.VqF = findViewById(a.f.bankcard_entry);
+    this.VqE.setOnClickListener(new k()
     {
-      public final void onClick(View paramAnonymousView)
+      public final void dr(View paramAnonymousView)
       {
-        AppMethodBeat.i(69644);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdSelectUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        AppMethodBeat.i(315644);
         WalletForgotPwdSelectUI.a(WalletForgotPwdSelectUI.this);
-        a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdSelectUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(69644);
+        AppMethodBeat.o(315644);
       }
     });
-    this.OBr.setOnClickListener(new View.OnClickListener()
+    this.VqF.setOnClickListener(new k()
     {
-      public final void onClick(View paramAnonymousView)
+      public final void dr(View paramAnonymousView)
       {
-        AppMethodBeat.i(69645);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdSelectUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        AppMethodBeat.i(315645);
         if (WalletForgotPwdSelectUI.this.getProcess() != null) {
-          h.IzE.a(15774, new Object[] { Integer.valueOf(WalletForgotPwdSelectUI.this.getProcess().fKb.getInt("key_forgot_scene", 1)), Integer.valueOf(3) });
+          h.OAn.b(15774, new Object[] { Integer.valueOf(WalletForgotPwdSelectUI.this.getProcess().hPH.getInt("key_forgot_scene", 1)), Integer.valueOf(3) });
         }
         WalletForgotPwdSelectUI.b(WalletForgotPwdSelectUI.this);
-        a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdSelectUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(69645);
+        AppMethodBeat.o(315645);
       }
     });
     AppMethodBeat.o(69646);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -166,7 +155,7 @@ public class WalletForgotPwdSelectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletForgotPwdSelectUI
  * JD-Core Version:    0.7.0.1
  */

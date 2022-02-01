@@ -8,28 +8,28 @@ import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.appbrand.au.i;
-import com.tencent.mm.plugin.appbrand.utils.e.a;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.utils.g.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.snackbar.b;
 
 final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$10
-  implements e.a
+  implements g.a
 {
   JsApiShowImageOperateSheet$BottomSheetLogicHelper$10(JsApiShowImageOperateSheet.BottomSheetLogicHelper paramBottomSheetLogicHelper) {}
   
-  public final void dR(String paramString)
+  public final void onLoad(String paramString)
   {
-    AppMethodBeat.i(259114);
+    AppMethodBeat.i(325445);
     Log.i("MicroMsg.JsApiShowImageOperateSheet", "fav localPath:%s", new Object[] { paramString });
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(259114);
+      AppMethodBeat.o(325445);
       return;
     }
     j.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), JsApiShowImageOperateSheet.BottomSheetLogicHelper.a.class, new f() {});
-    AppMethodBeat.o(259114);
+    AppMethodBeat.o(325445);
   }
 }
 

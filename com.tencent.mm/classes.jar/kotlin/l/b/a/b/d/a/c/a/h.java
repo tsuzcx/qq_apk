@@ -4,85 +4,87 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import kotlin.a.v;
-import kotlin.g.b.ab;
-import kotlin.g.b.z;
+import kotlin.a.ab;
+import kotlin.g.b.af;
+import kotlin.g.b.ag;
+import kotlin.g.b.ai;
+import kotlin.g.b.u;
 import kotlin.l.b.a.b.b.a.g.a;
-import kotlin.l.b.a.b.b.an;
+import kotlin.l.b.a.b.b.av;
 import kotlin.l.b.a.b.b.c.y;
-import kotlin.l.b.a.b.b.e;
+import kotlin.l.b.a.b.d.a.c.f;
 import kotlin.l.b.a.b.d.a.e.t;
-import kotlin.l.b.a.b.j.e.c;
-import kotlin.l.b.a.b.l.i;
-import kotlin.l.n;
+import kotlin.l.b.a.b.d.b.p;
+import kotlin.l.b.a.b.l.l;
+import kotlin.l.b.a.b.l.m;
 
 public final class h
   extends y
 {
-  private final kotlin.l.b.a.b.b.a.g aaLb;
-  private final kotlin.l.b.a.b.d.a.c.h aaUh;
-  private final kotlin.l.b.a.b.l.f aaVl;
-  private final d aaVm;
-  public final kotlin.l.b.a.b.l.f<List<kotlin.l.b.a.b.f.b>> aaVn;
-  private final kotlin.l.b.a.b.l.f aaVo;
-  private final t aaVp;
+  private final kotlin.l.b.a.b.b.a.g aiHM;
+  private final kotlin.l.b.a.b.d.a.c.h aiSh;
+  private final t aiTn;
+  private final kotlin.l.b.a.b.l.h aiTo;
+  private final d aiTp;
+  public final kotlin.l.b.a.b.l.h<List<kotlin.l.b.a.b.f.c>> aiTq;
+  private final kotlin.l.b.a.b.l.h aiTr;
   
   static
   {
     AppMethodBeat.i(57885);
-    cMt = new n[] { (n)ab.a(new z(ab.bO(h.class), "binaryClasses", "getBinaryClasses$descriptors_jvm()Ljava/util/Map;")), (n)ab.a(new z(ab.bO(h.class), "partToFacade", "getPartToFacade()Ljava/util/HashMap;")) };
+    aYe = new kotlin.l.o[] { (kotlin.l.o)ai.a((af)new ag((kotlin.l.e)ai.cz(h.class), "binaryClasses", "getBinaryClasses$descriptors_jvm()Ljava/util/Map;")), (kotlin.l.o)ai.a((af)new ag((kotlin.l.e)ai.cz(h.class), "partToFacade", "getPartToFacade()Ljava/util/HashMap;")) };
     AppMethodBeat.o(57885);
   }
   
   public h(kotlin.l.b.a.b.d.a.c.h paramh, t paramt)
   {
-    super(paramh.aaUp.aaIj, paramt.iFy());
+    super(paramh.aiSp.aiEx, paramt.koY());
     AppMethodBeat.i(57890);
-    this.aaVp = paramt;
-    this.aaUh = kotlin.l.b.a.b.d.a.c.a.a(paramh, (kotlin.l.b.a.b.b.g)this, null, 6);
-    this.aaVl = this.aaUh.aaUp.aaFH.av((kotlin.g.a.a)new a(this));
-    this.aaVm = new d(this.aaUh, this.aaVp, this);
-    this.aaVn = this.aaUh.aaUp.aaFH.a((kotlin.g.a.a)new c(this), (List)v.aaAd);
-    if (this.aaUh.aaUp.aaTX.Dlq) {
-      paramh = kotlin.l.b.a.b.b.a.g.aaLw;
+    this.aiTn = paramt;
+    this.aiSh = kotlin.l.b.a.b.d.a.c.a.a(paramh, (kotlin.l.b.a.b.b.g)this, null, 6);
+    this.aiTo = this.aiSh.aiSp.aiBu.cq((kotlin.g.a.a)new a(this));
+    this.aiTp = new d(this.aiSh, this.aiTn, this);
+    this.aiTq = this.aiSh.aiSp.aiBu.a((kotlin.g.a.a)new c(this), (List)ab.aivy);
+    if (this.aiSh.aiSp.aiOo.aiPg) {
+      paramh = kotlin.l.b.a.b.b.a.g.aiIh;
     }
-    for (paramh = g.a.iGe();; paramh = kotlin.l.b.a.b.d.a.c.f.a(this.aaUh, (kotlin.l.b.a.b.d.a.e.d)this.aaVp))
+    for (paramh = g.a.kpB();; paramh = f.a(this.aiSh, (kotlin.l.b.a.b.d.a.e.d)this.aiTn))
     {
-      this.aaLb = paramh;
-      this.aaVo = this.aaUh.aaUp.aaFH.av((kotlin.g.a.a)new b(this));
+      this.aiHM = paramh;
+      this.aiTr = this.aiSh.aiSp.aiBu.cq((kotlin.g.a.a)new b(this));
       AppMethodBeat.o(57890);
       return;
     }
   }
   
-  public final e d(kotlin.l.b.a.b.d.a.e.g paramg)
+  public final kotlin.l.b.a.b.b.e d(kotlin.l.b.a.b.d.a.e.g paramg)
   {
     AppMethodBeat.i(57887);
-    kotlin.g.b.p.k(paramg, "jClass");
-    j localj = this.aaVm.aaUG;
-    kotlin.g.b.p.k(paramg, "javaClass");
-    paramg = localj.a(paramg.iEU(), paramg);
+    kotlin.g.b.s.u(paramg, "jClass");
+    i locali = this.aiTp.aiSI;
+    kotlin.g.b.s.u(paramg, "javaClass");
+    paramg = locali.a(paramg.kok(), paramg);
     AppMethodBeat.o(57887);
     return paramg;
   }
   
-  public final kotlin.l.b.a.b.b.a.g iDY()
+  public final kotlin.l.b.a.b.b.a.g knl()
   {
-    return this.aaLb;
+    return this.aiHM;
   }
   
-  public final an iDZ()
+  public final av knm()
   {
     AppMethodBeat.i(57889);
-    an localan = (an)new kotlin.l.b.a.b.d.b.q(this);
+    av localav = (av)new p(this);
     AppMethodBeat.o(57889);
-    return localan;
+    return localav;
   }
   
-  public final Map<String, kotlin.l.b.a.b.d.b.p> iIm()
+  public final Map<String, kotlin.l.b.a.b.d.b.o> ksu()
   {
     AppMethodBeat.i(57886);
-    Map localMap = (Map)i.a(this.aaVl, cMt[0]);
+    Map localMap = (Map)l.a(this.aiTo, aYe[0]);
     AppMethodBeat.o(57886);
     return localMap;
   }
@@ -90,14 +92,14 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(57888);
-    String str = "Lazy Java package fragment: " + this.aaLC;
+    String str = "Lazy Java package fragment: " + this.aiIl + " of module " + this.aiSh.aiSp.aiEx;
     AppMethodBeat.o(57888);
     return str;
   }
   
   static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<Map<String, ? extends kotlin.l.b.a.b.d.b.p>>
+    extends u
+    implements kotlin.g.a.a<Map<String, ? extends kotlin.l.b.a.b.d.b.o>>
   {
     a(h paramh)
     {
@@ -106,8 +108,8 @@ public final class h
   }
   
   static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<HashMap<c, c>>
+    extends u
+    implements kotlin.g.a.a<HashMap<kotlin.l.b.a.b.j.e.d, kotlin.l.b.a.b.j.e.d>>
   {
     b(h paramh)
     {
@@ -116,8 +118,8 @@ public final class h
   }
   
   static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<List<? extends kotlin.l.b.a.b.f.b>>
+    extends u
+    implements kotlin.g.a.a<List<? extends kotlin.l.b.a.b.f.c>>
   {
     c(h paramh)
     {
@@ -127,7 +129,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.a.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,33 @@
 package com.tencent.luggage.sdk.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/jsruntime/JsEngineName;", "", "()V", "Companion", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/sdk/jsruntime/JsEngineName;", "", "()V", "Companion", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static String cAQ;
-  private static String cAR;
-  private static String cAS;
-  private static String cAT;
-  private static String cAU;
-  public static final a.a cAV;
+  public static final a.a etm;
+  private static String etn;
+  private static String eto;
+  private static String etp;
+  private static String etq;
+  private static String etr;
   
   static
   {
-    AppMethodBeat.i(238089);
-    cAV = new a.a((byte)0);
-    cAQ = "WebView-Package";
-    cAR = "XWEB-Package";
-    cAS = "J2V8-Package";
-    cAT = "NodeJS";
-    cAU = "unknown";
-    AppMethodBeat.o(238089);
+    AppMethodBeat.i(220205);
+    etm = new a.a((byte)0);
+    etn = "WebView-Package";
+    eto = "XWEB-Package";
+    etp = "J2V8-Package";
+    etq = "NodeJS";
+    etr = "unknown";
+    AppMethodBeat.o(220205);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.sdk.c.a
  * JD-Core Version:    0.7.0.1
  */

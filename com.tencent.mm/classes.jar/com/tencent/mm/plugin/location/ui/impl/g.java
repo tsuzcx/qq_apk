@@ -5,22 +5,22 @@ import com.tencent.mm.plugin.report.service.h;
 
 public final class g
 {
-  int EqY;
+  int KjE;
   private int enterScene;
-  private int iQS;
+  private int lsO;
   private int selectType;
   
   private g()
   {
     AppMethodBeat.i(56107);
-    this.selectType = b.Eri.ordinal();
+    this.selectType = b.KjO.ordinal();
     AppMethodBeat.o(56107);
   }
   
   private void report()
   {
     AppMethodBeat.i(56111);
-    h.IzE.a(17993, new Object[] { Integer.valueOf(this.iQS), Integer.valueOf(this.enterScene), Integer.valueOf(this.selectType), Integer.valueOf(this.EqY) });
+    h.OAn.b(17993, new Object[] { Integer.valueOf(this.lsO), Integer.valueOf(this.enterScene), Integer.valueOf(this.selectType), Integer.valueOf(this.KjE) });
     reset();
     AppMethodBeat.o(56111);
   }
@@ -29,16 +29,16 @@ public final class g
   {
     AppMethodBeat.i(56110);
     this.enterScene = 0;
-    this.selectType = b.Eri.ordinal();
-    this.EqY = 0;
-    this.iQS = 0;
+    this.selectType = b.KjO.ordinal();
+    this.KjE = 0;
+    this.lsO = 0;
     AppMethodBeat.o(56110);
   }
   
   public final void a(g.a parama)
   {
     AppMethodBeat.i(56109);
-    this.iQS = parama.ordinal();
+    this.lsO = parama.ordinal();
     report();
     AppMethodBeat.o(56109);
   }
@@ -73,13 +73,13 @@ public final class g
     static
     {
       AppMethodBeat.i(56105);
-      Erd = new b("UNKNOWN", 0);
-      Ere = new b("SEARCH_LIST", 1);
-      Erf = new b("SEARCH_MAP", 2);
-      Erg = new b("DRAG_MAP", 3);
-      Erh = new b("LIST", 4);
-      Eri = new b("DIRECT", 5);
-      Erj = new b[] { Erd, Ere, Erf, Erg, Erh, Eri };
+      KjJ = new b("UNKNOWN", 0);
+      KjK = new b("SEARCH_LIST", 1);
+      KjL = new b("SEARCH_MAP", 2);
+      KjM = new b("DRAG_MAP", 3);
+      KjN = new b("LIST", 4);
+      KjO = new b("DIRECT", 5);
+      KjP = new b[] { KjJ, KjK, KjL, KjM, KjN, KjO };
       AppMethodBeat.o(56105);
     }
     
@@ -88,19 +88,19 @@ public final class g
   
   static final class c
   {
-    static g Erk;
+    static g KjQ;
     
     static
     {
       AppMethodBeat.i(56106);
-      Erk = new g((byte)0);
+      KjQ = new g((byte)0);
       AppMethodBeat.o(56106);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.g
  * JD-Core Version:    0.7.0.1
  */

@@ -15,22 +15,22 @@ public class c
   
   public c(String paramString, int paramInt)
   {
-    AppMethodBeat.i(240083);
+    AppMethodBeat.i(230094);
     this.a = paramString;
     this.b = ((int)Math.max(paramInt, TimeUnit.SECONDS.toMillis(1L)));
     b();
-    AppMethodBeat.o(240083);
+    AppMethodBeat.o(230094);
   }
   
   public void a()
   {
-    AppMethodBeat.i(240086);
+    AppMethodBeat.i(230099);
     this.c += 1;
     long l = SystemClock.elapsedRealtime();
     if (this.e == 0L)
     {
       this.e = SystemClock.elapsedRealtime();
-      AppMethodBeat.o(240086);
+      AppMethodBeat.o(230099);
       return;
     }
     if (l - this.e >= this.b)
@@ -40,7 +40,7 @@ public class c
       this.e = l;
       this.d = this.c;
     }
-    AppMethodBeat.o(240086);
+    AppMethodBeat.o(230099);
   }
   
   public void b()
@@ -52,7 +52,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.util.c
  * JD-Core Version:    0.7.0.1
  */

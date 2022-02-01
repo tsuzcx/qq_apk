@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:bottomLeftRadius="8.0dip" android:bottomRightRadius="8.0dip" />
-    <solid android:color="#14000000" />
-</shape>
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@raw/sns_shoot_keyboard_icon_pressed" />
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@raw/sns_shoot_keyboard_icon_pressed" />
+    <item android:state_focused="false" android:drawable="@raw/sns_shoot_keyboard_icon_normal" />
+</selector>

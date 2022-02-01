@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.finder.live.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,160 +11,165 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.l;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.j;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.ui.aw;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveTextIndicator;", "Landroid/widget/RelativeLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "line", "Landroid/view/View;", "onTabSelectedListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "index", "", "getOnTabSelectedListener", "()Lkotlin/jvm/functions/Function1;", "setOnTabSelectedListener", "(Lkotlin/jvm/functions/Function1;)V", "tab1Group", "tab1RedDot", "value", "", "tab1Text", "getTab1Text", "()Ljava/lang/String;", "setTab1Text", "(Ljava/lang/String;)V", "tab1Tv", "Landroid/widget/TextView;", "tab2Group", "tab2RedDot", "tab2Text", "getTab2Text", "setTab2Text", "tab2Tv", "onAttachedToWindow", "onClick", "v", "onScroll", "dx", "dy", "totalX", "totalY", "runLineAnimation", "runTabColorAnimation", "showTab1RedDot", "show", "", "showTab2RedDot", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveTextIndicator;", "Landroid/widget/RelativeLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "line", "Landroid/view/View;", "onTabSelectedListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "index", "", "getOnTabSelectedListener", "()Lkotlin/jvm/functions/Function1;", "setOnTabSelectedListener", "(Lkotlin/jvm/functions/Function1;)V", "tab1Group", "tab1RedDot", "value", "", "tab1Text", "getTab1Text", "()Ljava/lang/String;", "setTab1Text", "(Ljava/lang/String;)V", "tab1Tv", "Landroid/widget/TextView;", "tab2Group", "tab2RedDot", "tab2Text", "getTab2Text", "setTab2Text", "tab2Tv", "onAttachedToWindow", "onClick", "v", "onScroll", "dx", "dy", "totalX", "totalY", "runLineAnimation", "runTabColorAnimation", "setFixedTextSize", "showTab1RedDot", "show", "", "showTab2RedDot", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveTextIndicator
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private static final String TAG = "Finder.FinderLiveTextIndicator";
-  public static final a yVJ;
-  public final TextView yUG;
-  public final View yUH;
-  public final TextView yUI;
-  private final View yUJ;
-  private final View yUK;
-  public final View yUL;
-  public final View yVH;
-  private kotlin.g.a.b<? super Integer, x> yVI;
+  public static final FinderLiveTextIndicator.a DPB;
+  private static final String TAG;
+  public final TextView DNZ;
+  public final View DOa;
+  public final TextView DOb;
+  private final View DOc;
+  private final View DOd;
+  public final View DOe;
+  public final View DPC;
+  private kotlin.g.a.b<? super Integer, ah> DPD;
   
   static
   {
-    AppMethodBeat.i(287905);
-    yVJ = new a((byte)0);
+    AppMethodBeat.i(357871);
+    DPB = new FinderLiveTextIndicator.a((byte)0);
     TAG = "Finder.FinderLiveTextIndicator";
-    AppMethodBeat.o(287905);
+    AppMethodBeat.o(357871);
   }
   
   public FinderLiveTextIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(287904);
-    AppMethodBeat.o(287904);
+    AppMethodBeat.i(357857);
+    AppMethodBeat.o(357857);
   }
   
   public FinderLiveTextIndicator(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(287903);
-    View.inflate(paramContext, b.g.finder_live_text_indicator_ui, (ViewGroup)this);
-    View localView = findViewById(b.f.finder_live_text_indicator_tab1);
-    p.j(localView, "findViewById(R.id.finder_live_text_indicator_tab1)");
-    this.yUG = ((TextView)localView);
-    localView = findViewById(b.f.finder_live_text_indicator_tab2);
-    p.j(localView, "findViewById(R.id.finder_live_text_indicator_tab2)");
-    this.yUI = ((TextView)localView);
-    localView = findViewById(b.f.finder_live_text_indicator_tab1_red_dot);
-    p.j(localView, "findViewById(R.id.finder…t_indicator_tab1_red_dot)");
-    this.yUH = localView;
-    localView = findViewById(b.f.finder_live_text_indicator_tab2_red_dot);
-    p.j(localView, "findViewById(R.id.finder…t_indicator_tab2_red_dot)");
-    this.yUJ = localView;
-    localView = findViewById(b.f.finder_live_text_indicator_tab1_group);
-    p.j(localView, "findViewById(R.id.finder…ext_indicator_tab1_group)");
-    this.yUK = localView;
-    localView = findViewById(b.f.finder_live_text_indicator_tab2_group);
-    p.j(localView, "findViewById(R.id.finder…ext_indicator_tab2_group)");
-    this.yUL = localView;
-    localView = findViewById(b.f.finder_live_text_indicator_line);
-    p.j(localView, "findViewById(R.id.finder_live_text_indicator_line)");
-    this.yVH = localView;
+    AppMethodBeat.i(357851);
+    View.inflate(paramContext, p.f.CfT, (ViewGroup)this);
+    View localView = findViewById(p.e.BTh);
+    s.s(localView, "findViewById(R.id.finder_live_text_indicator_tab1)");
+    this.DNZ = ((TextView)localView);
+    localView = findViewById(p.e.BTk);
+    s.s(localView, "findViewById(R.id.finder_live_text_indicator_tab2)");
+    this.DOb = ((TextView)localView);
+    localView = findViewById(p.e.BTj);
+    s.s(localView, "findViewById(R.id.finder…t_indicator_tab1_red_dot)");
+    this.DOa = localView;
+    localView = findViewById(p.e.BTm);
+    s.s(localView, "findViewById(R.id.finder…t_indicator_tab2_red_dot)");
+    this.DOc = localView;
+    localView = findViewById(p.e.BTi);
+    s.s(localView, "findViewById(R.id.finder…ext_indicator_tab1_group)");
+    this.DOd = localView;
+    localView = findViewById(p.e.BTl);
+    s.s(localView, "findViewById(R.id.finder…ext_indicator_tab2_group)");
+    this.DOe = localView;
+    localView = findViewById(p.e.BTg);
+    s.s(localView, "findViewById(R.id.finder_live_text_indicator_line)");
+    this.DPC = localView;
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, b.l.FinderLiveTextIndicator);
-      p.j(paramContext, "context.obtainStyledAttr….FinderLiveTextIndicator)");
-      this.yUG.setText((CharSequence)paramContext.getString(b.l.FinderLiveTextIndicator_tab1_text));
-      this.yUI.setText((CharSequence)paramContext.getString(b.l.FinderLiveTextIndicator_tab2_text));
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.j.hae);
+      s.s(paramContext, "context.obtainStyledAttr….FinderLiveTextIndicator)");
+      this.DNZ.setText((CharSequence)paramContext.getString(p.j.CuF));
+      this.DOb.setText((CharSequence)paramContext.getString(p.j.CuG));
       paramContext.recycle();
     }
-    this.yUG.setAlpha(0.8F);
-    this.yUG.setOnClickListener((View.OnClickListener)this);
-    this.yUI.setOnClickListener((View.OnClickListener)this);
-    this.yVH.post((Runnable)new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(278947);
-        Log.i(FinderLiveTextIndicator.access$getTAG$cp(), "post tab1Tv.measuredWidth:" + FinderLiveTextIndicator.a(this.yVK).getMeasuredWidth());
-        FinderLiveTextIndicator.b(this.yVK).getLayoutParams().width = FinderLiveTextIndicator.a(this.yVK).getMeasuredWidth();
-        AppMethodBeat.o(278947);
-      }
-    });
-    AppMethodBeat.o(287903);
+    this.DNZ.setAlpha(0.8F);
+    this.DNZ.setOnClickListener((View.OnClickListener)this);
+    this.DOb.setOnClickListener((View.OnClickListener)this);
+    this.DPC.post(new FinderLiveTextIndicator..ExternalSyntheticLambda0(this));
+    aw.a((Paint)this.DNZ.getPaint(), 0.8F);
+    aw.a((Paint)this.DOb.getPaint(), 0.8F);
+    AppMethodBeat.o(357851);
   }
   
-  public final kotlin.g.a.b<Integer, x> getOnTabSelectedListener()
+  private static final void a(FinderLiveTextIndicator paramFinderLiveTextIndicator)
   {
-    return this.yVI;
+    AppMethodBeat.i(357866);
+    s.u(paramFinderLiveTextIndicator, "this$0");
+    Log.i(TAG, s.X("post tab1Tv.measuredWidth:", Integer.valueOf(paramFinderLiveTextIndicator.DNZ.getMeasuredWidth())));
+    paramFinderLiveTextIndicator.DPC.getLayoutParams().width = paramFinderLiveTextIndicator.DNZ.getMeasuredWidth();
+    AppMethodBeat.o(357866);
+  }
+  
+  public final kotlin.g.a.b<Integer, ah> getOnTabSelectedListener()
+  {
+    return this.DPD;
   }
   
   public final String getTab1Text()
   {
-    AppMethodBeat.i(287895);
-    Object localObject = this.yUG.getText();
-    if (localObject != null)
+    AppMethodBeat.i(357885);
+    Object localObject = this.DNZ.getText();
+    if (localObject == null)
     {
-      String str = localObject.toString();
-      localObject = str;
-      if (str != null) {}
+      AppMethodBeat.o(357885);
+      return "";
     }
-    else
+    localObject = localObject.toString();
+    if (localObject == null)
     {
-      localObject = "";
+      AppMethodBeat.o(357885);
+      return "";
     }
-    AppMethodBeat.o(287895);
+    AppMethodBeat.o(357885);
     return localObject;
   }
   
   public final String getTab2Text()
   {
-    AppMethodBeat.i(287897);
-    Object localObject = this.yUI.getText();
-    if (localObject != null)
+    AppMethodBeat.i(357898);
+    Object localObject = this.DOb.getText();
+    if (localObject == null)
     {
-      String str = localObject.toString();
-      localObject = str;
-      if (str != null) {}
+      AppMethodBeat.o(357898);
+      return "";
     }
-    else
+    localObject = localObject.toString();
+    if (localObject == null)
     {
-      localObject = "";
+      AppMethodBeat.o(357898);
+      return "";
     }
-    AppMethodBeat.o(287897);
+    AppMethodBeat.o(357898);
     return localObject;
   }
   
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(287901);
+    AppMethodBeat.i(357936);
     super.onAttachedToWindow();
-    Log.i(TAG, "onAttachedToWindow tab1Tv.measuredWidth:" + this.yUG.getMeasuredWidth());
-    AppMethodBeat.o(287901);
+    Log.i(TAG, s.X("onAttachedToWindow tab1Tv.measuredWidth:", Integer.valueOf(this.DNZ.getMeasuredWidth())));
+    AppMethodBeat.o(357936);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(287902);
+    AppMethodBeat.i(357946);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveTextIndicator", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveTextIndicator", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     int i;
-    if (paramView != null)
+    if (paramView == null)
     {
-      paramView = Integer.valueOf(paramView.getId());
-      i = b.f.finder_live_text_indicator_tab1;
+      paramView = null;
+      i = p.e.BTh;
       if (paramView != null) {
         break label95;
       }
-      label59:
-      i = b.f.finder_live_text_indicator_tab2;
+      label53:
+      i = p.e.BTk;
       if (paramView != null) {
         break label126;
       }
@@ -171,15 +177,15 @@ public final class FinderLiveTextIndicator
     for (;;)
     {
       a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveTextIndicator", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(287902);
+      AppMethodBeat.o(357946);
       return;
-      paramView = null;
+      paramView = Integer.valueOf(paramView.getId());
       break;
       label95:
       if (paramView.intValue() != i) {
-        break label59;
+        break label53;
       }
-      paramView = this.yVI;
+      paramView = this.DPD;
       if (paramView != null)
       {
         paramView.invoke(Integer.valueOf(0));
@@ -187,7 +193,7 @@ public final class FinderLiveTextIndicator
         label126:
         if (paramView.intValue() == i)
         {
-          paramView = this.yVI;
+          paramView = this.DPD;
           if (paramView != null) {
             paramView.invoke(Integer.valueOf(1));
           }
@@ -196,55 +202,52 @@ public final class FinderLiveTextIndicator
     }
   }
   
-  public final void pw(boolean paramBoolean)
+  public final void sa(boolean paramBoolean)
   {
-    AppMethodBeat.i(287899);
-    View localView = this.yUH;
+    AppMethodBeat.i(357922);
+    View localView = this.DOa;
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
       localView.setVisibility(i);
-      AppMethodBeat.o(287899);
+      AppMethodBeat.o(357922);
       return;
     }
   }
   
-  public final void px(boolean paramBoolean)
+  public final void sb(boolean paramBoolean)
   {
-    AppMethodBeat.i(287900);
-    View localView = this.yUJ;
+    AppMethodBeat.i(357932);
+    View localView = this.DOc;
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
       localView.setVisibility(i);
-      AppMethodBeat.o(287900);
+      AppMethodBeat.o(357932);
       return;
     }
   }
   
-  public final void setOnTabSelectedListener(kotlin.g.a.b<? super Integer, x> paramb)
+  public final void setOnTabSelectedListener(kotlin.g.a.b<? super Integer, ah> paramb)
   {
-    this.yVI = paramb;
+    this.DPD = paramb;
   }
   
   public final void setTab1Text(String paramString)
   {
-    AppMethodBeat.i(287896);
-    p.k(paramString, "value");
-    this.yUG.setText((CharSequence)paramString);
-    AppMethodBeat.o(287896);
+    AppMethodBeat.i(357892);
+    s.u(paramString, "value");
+    this.DNZ.setText((CharSequence)paramString);
+    AppMethodBeat.o(357892);
   }
   
   public final void setTab2Text(String paramString)
   {
-    AppMethodBeat.i(287898);
-    p.k(paramString, "value");
-    this.yUI.setText((CharSequence)paramString);
-    AppMethodBeat.o(287898);
+    AppMethodBeat.i(357906);
+    s.u(paramString, "value");
+    this.DOb.setText((CharSequence)paramString);
+    AppMethodBeat.o(357906);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveTextIndicator$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 

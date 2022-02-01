@@ -1,145 +1,187 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class be
+final class be
 {
-  public boolean VEZ;
-  public String VFa;
-  public String md5;
-  private String mhK;
-  public boolean mhL;
-  public long time;
+  protected final long SECONDS_OF_DAY;
+  private bd adiL;
   
-  public be(String paramString)
+  public be()
   {
-    AppMethodBeat.i(104954);
-    this.md5 = "-1";
-    this.VFa = "";
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. content is null.");
-      AppMethodBeat.o(104954);
-      return;
-    }
-    for (;;)
-    {
+    AppMethodBeat.i(117134);
+    this.SECONDS_OF_DAY = 86400L;
+    this.adiL = new bd();
+    Object localObject = new StringBuilder();
+    h.baF();
+    localObject = y.bi(h.baE().cachePath + "checkmsgid.ini", 0, -1);
+    if (!Util.isNullOrNil((byte[])localObject)) {
       try
       {
-        Object localObject;
-        if (paramString.endsWith("\n"))
-        {
-          localObject = paramString.substring(0, paramString.length() - 1);
-          localObject = ((String)localObject).split(":", 6);
-          if ((localObject.length == 4) && (as.PY(localObject[0])))
-          {
-            i = 1;
-            if (localObject.length > i) {
-              this.mhK = localObject[i];
-            }
-            if (localObject.length > i + 1) {
-              this.time = Util.getLong(localObject[(i + 1)], 0L);
-            }
-            if (localObject.length > i + 2) {
-              this.mhL = localObject[(i + 2)].equals("1");
-            }
-            if (localObject.length > i + 3) {
-              this.md5 = localObject[(i + 3)];
-            }
-            if (localObject.length > i + 4) {
-              this.VFa = localObject[(i + 4)].replace("*#*", ":");
-            }
-            if (localObject.length > i + 5) {
-              this.VEZ = localObject[(i + 5)].equals("1");
-            }
-            AppMethodBeat.o(104954);
-          }
+        this.adiL.parseFrom((byte[])localObject);
+        if (jaW()) {
+          jaV();
         }
-        else
-        {
-          this.VFa = paramString.replace(":", "*#*");
-          localObject = paramString;
-          continue;
-        }
-        int i = 0;
+        AppMethodBeat.o(117134);
+        return;
       }
       catch (Exception localException)
       {
-        this.time = 0L;
-        Log.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. Content:%s Excpetion:%s", new Object[] { paramString, Util.stackTraceToString(localException) });
-        AppMethodBeat.o(104954);
+        Log.w("MicroMsg.DelSvrIdMgr", "DelSvrIDs parse Error");
+        Log.e("MicroMsg.DelSvrIdMgr", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      }
+    }
+    AppMethodBeat.o(117134);
+  }
+  
+  private void jaV()
+  {
+    AppMethodBeat.i(117135);
+    Log.i("MicroMsg.DelSvrIdMgr", "summerdel toFile tid[%d] [%d, %d ,%d] stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.adiL.adiI.size()), Integer.valueOf(this.adiL.adiJ.size()), Integer.valueOf(this.adiL.adiK.size()), Util.getStack() });
+    try
+    {
+      this.adiL.adiH.clear();
+      this.adiL.adiG.clear();
+      this.adiL.adiF.clear();
+      bd localbd = new bd();
+      localbd.adiI.addAll(this.adiL.adiI);
+      localbd.adiJ.addAll(this.adiL.adiJ);
+      localbd.adiK.addAll(this.adiL.adiK);
+      byte[] arrayOfByte = localbd.toByteArray();
+      StringBuilder localStringBuilder = new StringBuilder();
+      h.baF();
+      y.f(h.baE().cachePath + "checkmsgid.ini", arrayOfByte, arrayOfByte.length);
+      int j = localbd.adiI.size();
+      int k = localbd.adiJ.size();
+      int m = localbd.adiK.size();
+      if (arrayOfByte == null) {}
+      for (int i = -1;; i = arrayOfByte.length)
+      {
+        Log.i("MicroMsg.DelSvrIdMgr", "summerdel toFile done [%d, %d, %d] data len[%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i) });
+        AppMethodBeat.o(117135);
         return;
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(111L, 168L, 1L, false);
+      Log.printErrStackTrace("MicroMsg.DelSvrIdMgr", localException, "summerdel ", new Object[0]);
+      AppMethodBeat.o(117135);
     }
   }
   
-  public static String a(String paramString1, long paramLong, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3)
+  private boolean jaW()
   {
-    int j = 1;
-    AppMethodBeat.i(104952);
-    paramString3 = paramString3.replace(":", "*#*");
-    paramString1 = new StringBuilder().append(paramString1).append(":").append(paramLong).append(":");
-    if (paramBoolean1)
+    AppMethodBeat.i(117140);
+    Log.v("MicroMsg.DelSvrIdMgr", "checkOldData todayIndex:%d, t0Size:%d, t1Size:%d, t2Size:%d", new Object[] { Integer.valueOf(this.adiL.adiE), Integer.valueOf(this.adiL.adiI.size()), Integer.valueOf(this.adiL.adiJ.size()), Integer.valueOf(this.adiL.adiK.size()) });
+    int i = (int)(Util.nowSecond() / 86400L);
+    int j = this.adiL.adiE;
+    this.adiL.adiE = i;
+    switch (i - j)
     {
-      i = 1;
-      paramString1 = paramString1.append(i).append(":").append(paramString2).append(":").append(paramString3).append(":");
-      if (!paramBoolean2) {
-        break label121;
+    default: 
+      this.adiL.adiK.clear();
+      this.adiL.adiJ.clear();
+      this.adiL.adiI.clear();
+      AppMethodBeat.o(117140);
+      return true;
+    case 0: 
+      AppMethodBeat.o(117140);
+      return false;
+    case 1: 
+      this.adiL.adiK = this.adiL.adiJ;
+      this.adiL.adiJ = this.adiL.adiI;
+      this.adiL.adiI.clear();
+      AppMethodBeat.o(117140);
+      return true;
+    }
+    this.adiL.adiK = this.adiL.adiI;
+    this.adiL.adiJ.clear();
+    this.adiL.adiI.clear();
+    AppMethodBeat.o(117140);
+    return true;
+  }
+  
+  protected final void U(List<Integer> paramList, List<Long> paramList1)
+  {
+    AppMethodBeat.i(117139);
+    Log.i("MicroMsg.DelSvrIdMgr", "add size:%d", new Object[] { Integer.valueOf(paramList.size()) });
+    jaW();
+    int j = (int)(Util.nowSecond() / 86400L);
+    int i = 0;
+    while (i < paramList.size())
+    {
+      b(j, ((Integer)paramList.get(i)).intValue(), ((Long)paramList1.get(i)).longValue(), false);
+      i += 1;
+    }
+    jaV();
+    AppMethodBeat.o(117139);
+  }
+  
+  protected final void b(int paramInt, long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(117138);
+    if (paramLong1 == 0L)
+    {
+      AppMethodBeat.o(117138);
+      return;
+    }
+    if (paramBoolean) {
+      jaW();
+    }
+    paramInt -= (int)(paramLong2 / 86400L);
+    switch (paramInt)
+    {
+    default: 
+      Log.e("MicroMsg.DelSvrIdMgr", "should not add to thease lists, dayIndex:%d", new Object[] { Integer.valueOf(paramInt) });
+    }
+    for (;;)
+    {
+      if (paramBoolean) {
+        jaV();
       }
-    }
-    label121:
-    for (int i = j;; i = 0)
-    {
-      paramString1 = i + "\n";
-      AppMethodBeat.o(104952);
-      return paramString1;
-      i = 0;
-      break;
+      AppMethodBeat.o(117138);
+      return;
+      this.adiL.adiI.add(Long.valueOf(paramLong1));
+      continue;
+      this.adiL.adiJ.add(Long.valueOf(paramLong1));
+      continue;
+      this.adiL.adiK.add(Long.valueOf(paramLong1));
     }
   }
   
-  public static be bwQ(String paramString)
+  protected final boolean qe(long paramLong)
   {
-    AppMethodBeat.i(104955);
-    paramString = new be(paramString);
-    AppMethodBeat.o(104955);
-    return paramString;
+    AppMethodBeat.i(117136);
+    if (jaW()) {
+      jaV();
+    }
+    if ((this.adiL.adiI.contains(Long.valueOf(paramLong))) || (this.adiL.adiJ.contains(Long.valueOf(paramLong))) || (this.adiL.adiK.contains(Long.valueOf(paramLong))))
+    {
+      AppMethodBeat.o(117136);
+      return true;
+    }
+    AppMethodBeat.o(117136);
+    return false;
   }
   
-  public final String bqK()
+  protected final void x(int paramInt, long paramLong1, long paramLong2)
   {
-    return this.mhK;
-  }
-  
-  public final String brC()
-  {
-    int j = 1;
-    AppMethodBeat.i(104953);
-    Object localObject = new StringBuilder().append(this.mhK).append(":").append(this.time).append(":");
-    if (this.mhL)
-    {
-      i = 1;
-      localObject = ((StringBuilder)localObject).append(i).append(":").append(this.md5).append(":").append(this.VFa).append(":");
-      if (!this.VEZ) {
-        break label118;
-      }
-    }
-    label118:
-    for (int i = j;; i = 0)
-    {
-      localObject = i + "\n";
-      AppMethodBeat.o(104953);
-      return localObject;
-      i = 0;
-      break;
-    }
+    AppMethodBeat.i(117137);
+    b(paramInt, paramLong1, paramLong2, true);
+    AppMethodBeat.o(117137);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.be
  * JD-Core Version:    0.7.0.1
  */

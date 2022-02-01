@@ -11,33 +11,33 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class k
 {
-  private static a GzD;
-  private static boolean kpg = false;
+  private static a MvL;
+  private static boolean mST = false;
   
   public static boolean isConnected()
   {
-    return kpg;
+    return mST;
   }
   
   public static void start()
   {
     AppMethodBeat.i(149110);
-    if (GzD == null) {
-      GzD = new a((byte)0);
+    if (MvL == null) {
+      MvL = new a((byte)0);
     }
     IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction(d.GxJ.aTf(""));
-    MMApplicationContext.getContext().registerReceiver(GzD, localIntentFilter);
+    localIntentFilter.addAction(d.MtP.aQf(""));
+    MMApplicationContext.getContext().registerReceiver(MvL, localIntentFilter);
     AppMethodBeat.o(149110);
   }
   
   public static void stop()
   {
     AppMethodBeat.i(149111);
-    if (GzD != null) {
-      MMApplicationContext.getContext().unregisterReceiver(GzD);
+    if (MvL != null) {
+      MMApplicationContext.getContext().unregisterReceiver(MvL);
     }
-    GzD = null;
+    MvL = null;
     AppMethodBeat.o(149111);
   }
   
@@ -52,7 +52,7 @@ public final class k
         AppMethodBeat.o(149109);
         return;
       }
-      k.access$002(paramIntent.getExtras().getBoolean(d.GxJ.aTf("3<<;14\"<<")));
+      k.access$002(paramIntent.getExtras().getBoolean(d.MtP.aQf("3<<;14\"<<")));
       AppMethodBeat.o(149109);
     }
   }

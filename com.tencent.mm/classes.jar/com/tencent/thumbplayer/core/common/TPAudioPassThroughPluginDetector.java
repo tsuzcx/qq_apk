@@ -28,7 +28,7 @@ public class TPAudioPassThroughPluginDetector
   
   static
   {
-    AppMethodBeat.i(222442);
+    AppMethodBeat.i(227905);
     isInitted = false;
     hasRegisterReceiver = false;
     mContextRef = null;
@@ -36,12 +36,12 @@ public class TPAudioPassThroughPluginDetector
     listeners = new LinkedList();
     mIsAudioPassThroughPlugin = false;
     mAudioPassThroughCapabilities = null;
-    AppMethodBeat.o(222442);
+    AppMethodBeat.o(227905);
   }
   
   public static void addListener(AudioPassThroughPluginListener paramAudioPassThroughPluginListener)
   {
-    AppMethodBeat.i(222412);
+    AppMethodBeat.i(227824);
     try
     {
       if ((listeners.add(paramAudioPassThroughPluginListener)) && (!hasRegisterReceiver))
@@ -53,13 +53,13 @@ public class TPAudioPassThroughPluginDetector
     }
     finally
     {
-      AppMethodBeat.o(222412);
+      AppMethodBeat.o(227824);
     }
   }
   
   public static void deinit()
   {
-    AppMethodBeat.i(222409);
+    AppMethodBeat.i(227815);
     try
     {
       if ((!isInitted) || (mContextRef == null)) {
@@ -72,27 +72,27 @@ public class TPAudioPassThroughPluginDetector
     }
     finally
     {
-      AppMethodBeat.o(222409);
+      AppMethodBeat.o(227815);
     }
   }
   
   private static Looper getLooper()
   {
-    AppMethodBeat.i(222400);
+    AppMethodBeat.i(227804);
     Looper localLooper = Looper.myLooper();
     if (localLooper != null)
     {
-      AppMethodBeat.o(222400);
+      AppMethodBeat.o(227804);
       return localLooper;
     }
     localLooper = Looper.getMainLooper();
-    AppMethodBeat.o(222400);
+    AppMethodBeat.o(227804);
     return localLooper;
   }
   
   public static void init(Context paramContext)
   {
-    AppMethodBeat.i(222407);
+    AppMethodBeat.i(227808);
     try
     {
       TPNativeLog.printLog(2, "TPAudioPassThroughPluginDetector", "TPAudioPassThroughPluginDetector init enter!");
@@ -109,7 +109,7 @@ public class TPAudioPassThroughPluginDetector
     }
     finally
     {
-      AppMethodBeat.o(222407);
+      AppMethodBeat.o(227808);
     }
   }
   
@@ -129,32 +129,32 @@ public class TPAudioPassThroughPluginDetector
   
   public static boolean isAudioPassThroughSupport(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(222417);
+    AppMethodBeat.i(227838);
     if (mAudioPassThroughCapabilities != null)
     {
       if ((mAudioPassThroughCapabilities.supportsEncoding(paramInt1)) && (paramInt2 <= mAudioPassThroughCapabilities.getMaxChannelCount()))
       {
-        AppMethodBeat.o(222417);
+        AppMethodBeat.o(227838);
         return true;
       }
-      AppMethodBeat.o(222417);
+      AppMethodBeat.o(227838);
       return false;
     }
     TPNativeLog.printLog(4, "TPAudioPassThroughPluginDetector", "isAudioPassThroughSupport failed, mAudioPassThroughCapabilities is not init yet!");
-    AppMethodBeat.o(222417);
+    AppMethodBeat.o(227838);
     return false;
   }
   
   private static void notifyAudioPassThroughStateChange(boolean paramBoolean)
   {
-    AppMethodBeat.i(222435);
+    AppMethodBeat.i(227878);
     int i = 1;
     if (mIsAudioPassThroughPlugin == paramBoolean) {
       i = 0;
     }
     if (i == 0)
     {
-      AppMethodBeat.o(222435);
+      AppMethodBeat.o(227878);
       return;
     }
     mIsAudioPassThroughPlugin = paramBoolean;
@@ -167,36 +167,36 @@ public class TPAudioPassThroughPluginDetector
     }
     finally
     {
-      AppMethodBeat.o(222435);
+      AppMethodBeat.o(227878);
     }
-    AppMethodBeat.o(222435);
+    AppMethodBeat.o(227878);
   }
   
   private static void onUpdateAudioCapabilities(TPAudioPassThroughCapabilities paramTPAudioPassThroughCapabilities)
   {
-    AppMethodBeat.i(222429);
+    AppMethodBeat.i(227865);
     if (!paramTPAudioPassThroughCapabilities.equals(mAudioPassThroughCapabilities))
     {
       mAudioPassThroughCapabilities = paramTPAudioPassThroughCapabilities;
       TPNativeLog.printLog(2, "TPAudioPassThroughPluginDetector", "onUpdateAudioCapabilities AudioCapabilities:" + mAudioPassThroughCapabilities.toString());
     }
-    AppMethodBeat.o(222429);
+    AppMethodBeat.o(227865);
   }
   
   private static void registerReceiver()
   {
     Object localObject = null;
-    AppMethodBeat.i(222425);
+    AppMethodBeat.i(227847);
     TPNativeLog.printLog(2, "TPAudioPassThroughPluginDetector", "registerReceiver enter");
     if (Build.VERSION.SDK_INT < 24)
     {
-      AppMethodBeat.o(222425);
+      AppMethodBeat.o(227847);
       return;
     }
     if ((!isInitted) || (mContextRef == null))
     {
       TPNativeLog.printLog(4, "TPAudioPassThroughPluginDetector", "registerReceiver failed, TPAudioPassThroughPluginDetector is not init yet!");
-      AppMethodBeat.o(222425);
+      AppMethodBeat.o(227847);
       return;
     }
     if (mReceiver == null) {
@@ -206,7 +206,7 @@ public class TPAudioPassThroughPluginDetector
     if (localContext == null)
     {
       TPNativeLog.printLog(4, "TPAudioPassThroughPluginDetector", "registerReceiver failed, context is null, maybe is invalid!");
-      AppMethodBeat.o(222425);
+      AppMethodBeat.o(227847);
       return;
     }
     if (mReceiver != null)
@@ -217,12 +217,12 @@ public class TPAudioPassThroughPluginDetector
     }
     mAudioPassThroughCapabilities = TPAudioPassThroughCapabilities.getCapabilities(localContext, (Intent)localObject);
     TPNativeLog.printLog(2, "TPAudioPassThroughPluginDetector", "registerReceiver leave");
-    AppMethodBeat.o(222425);
+    AppMethodBeat.o(227847);
   }
   
   public static void removeListener(AudioPassThroughPluginListener paramAudioPassThroughPluginListener)
   {
-    AppMethodBeat.i(222414);
+    AppMethodBeat.i(227832);
     try
     {
       listeners.remove(paramAudioPassThroughPluginListener);
@@ -235,28 +235,28 @@ public class TPAudioPassThroughPluginDetector
     }
     finally
     {
-      AppMethodBeat.o(222414);
+      AppMethodBeat.o(227832);
     }
   }
   
   private static void unregisterReceiver()
   {
-    AppMethodBeat.i(222427);
+    AppMethodBeat.i(227856);
     if ((!isInitted) || (mContextRef == null))
     {
       TPNativeLog.printLog(4, "TPAudioPassThroughPluginDetector", "registerReceiver failed, TPAudioPassThroughPluginDetector is not init yet!");
-      AppMethodBeat.o(222427);
+      AppMethodBeat.o(227856);
       return;
     }
     Context localContext = (Context)mContextRef.get();
     if (localContext == null)
     {
       TPNativeLog.printLog(4, "TPAudioPassThroughPluginDetector", "registerReceiver failed, context is null, maybe is invalid!");
-      AppMethodBeat.o(222427);
+      AppMethodBeat.o(227856);
       return;
     }
     localContext.unregisterReceiver(mReceiver);
-    AppMethodBeat.o(222427);
+    AppMethodBeat.o(227856);
   }
   
   static abstract interface AudioPassThroughPluginListener
@@ -270,7 +270,7 @@ public class TPAudioPassThroughPluginDetector
     public void onReceive(Context paramContext, Intent paramIntent)
     {
       boolean bool = false;
-      AppMethodBeat.i(222393);
+      AppMethodBeat.i(227747);
       TPNativeLog.printLog(2, "TPAudioPassThroughPluginDetector", "HdmiAudioPlugBroadcastReceiver onReceive: " + paramIntent.getAction());
       int i;
       if (paramIntent != null)
@@ -285,7 +285,7 @@ public class TPAudioPassThroughPluginDetector
         TPNativeLog.printLog(2, "TPAudioPassThroughPluginDetector", "HdmiAudioPlugBroadcastReceiver audioPassThroughState:" + i + " bPlugin:" + bool);
         TPAudioPassThroughPluginDetector.access$100(new TPAudioPassThroughCapabilities(paramIntent.getIntArrayExtra("android.media.extra.ENCODINGS"), paramIntent.getIntExtra("android.media.extra.MAX_CHANNEL_COUNT", 8)));
         TPAudioPassThroughPluginDetector.access$200(bool);
-        AppMethodBeat.o(222393);
+        AppMethodBeat.o(227747);
         return;
         label116:
         if (i == 1) {
@@ -297,7 +297,7 @@ public class TPAudioPassThroughPluginDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPAudioPassThroughPluginDetector
  * JD-Core Version:    0.7.0.1
  */

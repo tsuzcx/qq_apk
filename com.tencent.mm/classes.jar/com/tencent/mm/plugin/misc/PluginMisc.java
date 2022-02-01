@@ -22,7 +22,7 @@ public class PluginMisc
   {
     AppMethodBeat.i(127604);
     h.b(com.tencent.mm.plugin.misc.a.a.class, new b());
-    pin(com.tencent.mm.plugin.misc.b.a.eSC());
+    pin(com.tencent.mm.plugin.misc.b.a.gbw());
     AppMethodBeat.o(127604);
   }
   

@@ -1,6 +1,5 @@
 package com.tencent.mm.chatroom.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -27,64 +26,72 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.v;
-import androidx.recyclerview.widget.l;
-import androidx.recyclerview.widget.l.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.chatroom.d.ab;
+import com.tencent.mm.am.p;
+import com.tencent.mm.chatroom.d.ae;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
 import com.tencent.mm.chatroom.storage.GroupToolItem;
 import com.tencent.mm.chatroom.storage.e;
 import com.tencent.mm.chatroom.storage.f;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.modelimage.loader.a.c;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.service.q.a;
+import com.tencent.mm.plugin.appbrand.service.s.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.aa;
 import com.tencent.mm.ui.base.w;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.y.b;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class GroupToolsManagereUI
   extends MMActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private LinkedList<GroupToolItem> iXJ;
-  private LinearLayout iZJ;
-  private RecyclerView iZK;
-  private LinearLayout iZL;
-  private RecyclerView iZM;
-  private LinearLayoutManager iZN;
-  private e iZO;
-  private l iZP;
-  private GroupToolsManagereUI.f iZQ;
-  private LinearLayoutManager iZR;
-  private e iZS;
-  private e iZT;
-  private String iZU;
-  private boolean iZV;
-  private int iZW;
-  private c iZX;
-  private s tipDialog;
+  private LinearLayout lBF;
+  private RecyclerView lBG;
+  private LinearLayout lBH;
+  private RecyclerView lBI;
+  private LinearLayoutManager lBJ;
+  private e lBK;
+  private androidx.recyclerview.widget.k lBL;
+  private GroupToolsManagereUI.f lBM;
+  private LinearLayoutManager lBN;
+  private e lBO;
+  private e lBP;
+  private String lBQ;
+  private boolean lBR;
+  private int lBS;
+  private c lBT;
+  private LinkedList<GroupToolItem> lzF;
+  private w tipDialog;
   
   public GroupToolsManagereUI()
   {
     AppMethodBeat.i(182194);
     this.tipDialog = null;
-    this.iZT = null;
-    this.iXJ = new LinkedList();
-    this.iZV = false;
-    this.iZW = 0;
-    this.iZX = new c()
+    this.lBP = null;
+    this.lzF = new LinkedList();
+    this.lBR = false;
+    this.lBS = 0;
+    this.lBT = new c()
     {
-      public final void L(View paramAnonymousView, int paramAnonymousInt)
+      public final void L(RecyclerView.v paramAnonymousv)
+      {
+        AppMethodBeat.i(241498);
+        GroupToolsManagereUI.h(GroupToolsManagereUI.this).f(paramAnonymousv);
+        AppMethodBeat.o(241498);
+      }
+      
+      public final void Q(View paramAnonymousView, int paramAnonymousInt)
       {
         AppMethodBeat.i(184789);
         Object localObject = paramAnonymousView.getTag();
@@ -95,16 +102,16 @@ public class GroupToolsManagereUI
           Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "iRecentUseToolsCallback click stick:%s", new Object[] { Boolean.valueOf(bool) });
           if (bool)
           {
-            paramAnonymousView.coZ = cm.bfD();
-            GroupToolsManagereUI.a(GroupToolsManagereUI.this).iXI.remove(paramAnonymousView);
+            paramAnonymousView.egK = cn.bDv();
+            GroupToolsManagereUI.a(GroupToolsManagereUI.this).lzE.remove(paramAnonymousView);
             GroupToolsManagereUI.b(GroupToolsManagereUI.this).addFirst(paramAnonymousView);
-            GroupToolsManagereUI.c(GroupToolsManagereUI.this).cN(paramAnonymousInt);
-            GroupToolsManagereUI.d(GroupToolsManagereUI.this).cM(0);
-            if ((!bool) || (GroupToolsManagereUI.a(GroupToolsManagereUI.this).asp())) {
+            GroupToolsManagereUI.c(GroupToolsManagereUI.this).fX(paramAnonymousInt);
+            GroupToolsManagereUI.d(GroupToolsManagereUI.this).fW(0);
+            if ((!bool) || (GroupToolsManagereUI.a(GroupToolsManagereUI.this).aMj())) {
               break label304;
             }
-            GroupToolsManagereUI.d(GroupToolsManagereUI.this).jam = true;
-            GroupToolsManagereUI.d(GroupToolsManagereUI.this).alc.notifyChanged();
+            GroupToolsManagereUI.d(GroupToolsManagereUI.this).lCh = true;
+            GroupToolsManagereUI.d(GroupToolsManagereUI.this).bZE.notifyChanged();
           }
           for (;;)
           {
@@ -113,57 +120,43 @@ public class GroupToolsManagereUI
             GroupToolsManagereUI.g(GroupToolsManagereUI.this);
             AppMethodBeat.o(184789);
             return;
-            if (GroupToolsManagereUI.a(GroupToolsManagereUI.this).asp())
+            if (GroupToolsManagereUI.a(GroupToolsManagereUI.this).aMj())
             {
-              com.tencent.mm.ui.base.h.a(GroupToolsManagereUI.this, GroupToolsManagereUI.this.getString(a.i.jfi), "", GroupToolsManagereUI.this.getString(a.i.app_i_know), false, null);
+              com.tencent.mm.ui.base.k.a(GroupToolsManagereUI.this, GroupToolsManagereUI.this.getString(a.i.lHt), "", GroupToolsManagereUI.this.getString(a.i.app_i_know), false, null);
               AppMethodBeat.o(184789);
               return;
             }
-            GroupToolsManagereUI.a(GroupToolsManagereUI.this).iXI.addLast(paramAnonymousView);
+            GroupToolsManagereUI.a(GroupToolsManagereUI.this).lzE.addLast(paramAnonymousView);
             GroupToolsManagereUI.b(GroupToolsManagereUI.this).remove(paramAnonymousView);
-            GroupToolsManagereUI.c(GroupToolsManagereUI.this).cM(GroupToolsManagereUI.a(GroupToolsManagereUI.this).iXI.size() - 1);
-            GroupToolsManagereUI.d(GroupToolsManagereUI.this).cN(paramAnonymousInt);
+            GroupToolsManagereUI.c(GroupToolsManagereUI.this).fW(GroupToolsManagereUI.a(GroupToolsManagereUI.this).lzE.size() - 1);
+            GroupToolsManagereUI.d(GroupToolsManagereUI.this).fX(paramAnonymousInt);
             break;
             label304:
-            if ((!bool) && (GroupToolsManagereUI.a(GroupToolsManagereUI.this).asp()))
+            if ((!bool) && (GroupToolsManagereUI.a(GroupToolsManagereUI.this).aMj()))
             {
-              GroupToolsManagereUI.d(GroupToolsManagereUI.this).jam = false;
-              GroupToolsManagereUI.d(GroupToolsManagereUI.this).alc.notifyChanged();
+              GroupToolsManagereUI.d(GroupToolsManagereUI.this).lCh = false;
+              GroupToolsManagereUI.d(GroupToolsManagereUI.this).bZE.notifyChanged();
             }
           }
         }
         Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "iRecentUseToolsCallback click");
         AppMethodBeat.o(184789);
       }
-      
-      public final void O(RecyclerView.v paramAnonymousv)
-      {
-        AppMethodBeat.i(189390);
-        l locall = GroupToolsManagereUI.h(GroupToolsManagereUI.this);
-        if ((locall.aib.c(locall.mRecyclerView, paramAnonymousv)) && (paramAnonymousv.amk.getParent() == locall.mRecyclerView))
-        {
-          locall.kx();
-          locall.ahY = 0.0F;
-          locall.ahX = 0.0F;
-          locall.a(paramAnonymousv, 2);
-        }
-        AppMethodBeat.o(189390);
-      }
     };
     AppMethodBeat.o(182194);
   }
   
-  private boolean asJ()
+  private boolean aML()
   {
     AppMethodBeat.i(182200);
-    if (this.iZV) {
-      com.tencent.mm.ui.base.h.a(this, getString(a.i.jfd), "", getString(a.i.jff), getString(a.i.jfe), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    if (this.lBR) {
+      com.tencent.mm.ui.base.k.a(this, getString(a.i.lHo), "", getString(a.i.lHq), getString(a.i.lHp), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(182171);
           Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "back_dialot ok");
-          ab.c(GroupToolsManagereUI.j(GroupToolsManagereUI.this), 2, GroupToolsManagereUI.k(GroupToolsManagereUI.this), GroupToolsManagereUI.a(GroupToolsManagereUI.this).iXI.size());
+          ae.c(GroupToolsManagereUI.j(GroupToolsManagereUI.this), 2, GroupToolsManagereUI.k(GroupToolsManagereUI.this), GroupToolsManagereUI.a(GroupToolsManagereUI.this).lzE.size());
           GroupToolsManagereUI.this.finish();
           AppMethodBeat.o(182171);
         }
@@ -181,15 +174,15 @@ public class GroupToolsManagereUI
     {
       AppMethodBeat.o(182200);
       return true;
-      ab.c(this.iZU, 1, this.iZW, this.iZT.iXI.size());
+      ae.c(this.lBQ, 1, this.lBS, this.lBP.lzE.size());
       finish();
     }
   }
   
-  private void asK()
+  private void aMM()
   {
     AppMethodBeat.i(182201);
-    if (this.iZV)
+    if (this.lBR)
     {
       enableOptionMenu(0, true);
       AppMethodBeat.o(182201);
@@ -199,26 +192,26 @@ public class GroupToolsManagereUI
     AppMethodBeat.o(182201);
   }
   
-  private void asL()
+  private void aMN()
   {
     AppMethodBeat.i(182202);
-    if (this.iZT.iXI.size() > 0) {
-      this.iZJ.setVisibility(0);
+    if (this.lBP.lzE.size() > 0) {
+      this.lBF.setVisibility(0);
     }
-    while (this.iXJ.size() > 0)
+    while (this.lzF.size() > 0)
     {
-      this.iZL.setVisibility(0);
+      this.lBH.setVisibility(0);
       AppMethodBeat.o(182202);
       return;
-      this.iZJ.setVisibility(8);
+      this.lBF.setVisibility(8);
     }
-    this.iZL.setVisibility(8);
+    this.lBH.setVisibility(8);
     AppMethodBeat.o(182202);
   }
   
   public int getLayoutId()
   {
-    return a.f.jdY;
+    return a.f.lGh;
   }
   
   public void initView()
@@ -239,32 +232,44 @@ public class GroupToolsManagereUI
         return true;
       }
     });
-    addTextOptionMenu(0, getString(a.i.jfg), new GroupToolsManagereUI.6(this), null, w.b.Wao);
-    asK();
-    this.iZJ = ((LinearLayout)findViewById(a.e.jcT));
-    this.iZK = ((RecyclerView)findViewById(a.e.jcU));
-    this.iZL = ((LinearLayout)findViewById(a.e.jcR));
-    this.iZM = ((RecyclerView)findViewById(a.e.jcS));
-    this.iZQ = new GroupToolsManagereUI.f(getContext());
-    this.iZN = new LinearLayoutManager();
-    this.iZK.setLayoutManager(this.iZN);
-    this.iZK.a(this.iZQ);
-    this.iZO = new e(getContext(), true, this.iZT.iXI, this.iZX);
-    this.iZK.setAdapter(this.iZO);
-    this.iZO.alc.notifyChanged();
-    this.iZR = new LinearLayoutManager();
-    this.iZM.setLayoutManager(this.iZR);
-    this.iZM.a(this.iZQ);
-    this.iZS = new e(getContext(), false, this.iXJ, this.iZX);
-    if (this.iZT.asp()) {
-      this.iZS.jam = false;
-    }
-    this.iZM.setAdapter(this.iZS);
-    this.iZS.alc.notifyChanged();
-    asL();
-    this.iZP = new l(new GroupToolsManagereUI.a(this.iZT.iXI, new GroupToolsManagereUI.b()
+    addTextOptionMenu(0, getString(a.i.lHr), new MenuItem.OnMenuItemClickListener()
     {
-      public final void asM()
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(182173);
+        Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "menu click");
+        paramAnonymousMenuItem = GroupToolsManagereUI.a(GroupToolsManagereUI.this);
+        paramAnonymousMenuItem.field_stickToollist = e.bt(paramAnonymousMenuItem.lzE);
+        GroupToolsManagereUI.l(GroupToolsManagereUI.this);
+        AppMethodBeat.o(182173);
+        return true;
+      }
+    }, null, y.b.adEJ);
+    aMM();
+    this.lBF = ((LinearLayout)findViewById(a.e.lFa));
+    this.lBG = ((RecyclerView)findViewById(a.e.lFb));
+    this.lBH = ((LinearLayout)findViewById(a.e.lEY));
+    this.lBI = ((RecyclerView)findViewById(a.e.lEZ));
+    this.lBM = new GroupToolsManagereUI.f(getContext());
+    this.lBJ = new LinearLayoutManager();
+    this.lBG.setLayoutManager(this.lBJ);
+    this.lBG.a(this.lBM);
+    this.lBK = new e(getContext(), true, this.lBP.lzE, this.lBT);
+    this.lBG.setAdapter(this.lBK);
+    this.lBK.bZE.notifyChanged();
+    this.lBN = new LinearLayoutManager();
+    this.lBI.setLayoutManager(this.lBN);
+    this.lBI.a(this.lBM);
+    this.lBO = new e(getContext(), false, this.lzF, this.lBT);
+    if (this.lBP.aMj()) {
+      this.lBO.lCh = false;
+    }
+    this.lBI.setAdapter(this.lBO);
+    this.lBO.bZE.notifyChanged();
+    aMN();
+    this.lBL = new androidx.recyclerview.widget.k(new GroupToolsManagereUI.a(this.lBP.lzE, new b()
+    {
+      public final void onAlert()
       {
         AppMethodBeat.i(182170);
         GroupToolsManagereUI.e(GroupToolsManagereUI.this);
@@ -272,7 +277,7 @@ public class GroupToolsManagereUI
         AppMethodBeat.o(182170);
       }
     }));
-    this.iZP.a(this.iZK);
+    this.lBL.a(this.lBG);
     AppMethodBeat.o(182197);
   }
   
@@ -281,8 +286,8 @@ public class GroupToolsManagereUI
     AppMethodBeat.i(182195);
     super.onCreate(paramBundle);
     getWindow().setSoftInputMode(32);
-    this.iZU = getIntent().getStringExtra("key_chatroomname");
-    if (Util.isNullOrNil(this.iZU))
+    this.lBQ = getIntent().getStringExtra("key_chatroomname");
+    if (Util.isNullOrNil(this.lBQ))
     {
       Log.e("MicroMsg.roomtools.GroupToolsManagereUI", "mChatRoomName is null");
       finish();
@@ -290,11 +295,11 @@ public class GroupToolsManagereUI
     for (;;)
     {
       initView();
-      com.tencent.mm.kernel.h.aGY().a(3546, this);
+      com.tencent.mm.kernel.h.aZW().a(3546, this);
       AppMethodBeat.o(182195);
       return;
-      this.iZT = ((PluginChatroomUI)com.tencent.mm.kernel.h.ag(PluginChatroomUI.class)).getGroupToolsStorage().Kv(this.iZU);
-      if (this.iZT == null)
+      this.lBP = ((PluginChatroomUI)com.tencent.mm.kernel.h.az(PluginChatroomUI.class)).getGroupToolsStorage().Db(this.lBQ);
+      if (this.lBP == null)
       {
         Log.e("MicroMsg.roomtools.GroupToolsManagereUI", "tools is null");
         finish();
@@ -303,22 +308,22 @@ public class GroupToolsManagereUI
       {
         paramBundle = getIntent().getParcelableArrayListExtra("key_recent_use_tools");
         if (paramBundle == null) {
-          this.iXJ = new LinkedList();
+          this.lzF = new LinkedList();
         }
         for (;;)
         {
-          paramBundle = this.iZT.iXI.iterator();
+          paramBundle = this.lBP.lzE.iterator();
           while (paramBundle.hasNext())
           {
             GroupToolItem localGroupToolItem = (GroupToolItem)paramBundle.next();
-            if (this.iXJ.contains(localGroupToolItem)) {
-              this.iXJ.remove(localGroupToolItem);
+            if (this.lzF.contains(localGroupToolItem)) {
+              this.lzF.remove(localGroupToolItem);
             }
           }
-          this.iXJ.addAll(paramBundle);
+          this.lzF.addAll(paramBundle);
         }
-        this.iZW = this.iZT.iXI.size();
-        Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "mChatRoomName is %s, recentUseToolItemList:%s", new Object[] { this.iZU, Integer.valueOf(this.iXJ.size()) });
+        this.lBS = this.lBP.lzE.size();
+        Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "mChatRoomName is %s, recentUseToolItemList:%s", new Object[] { this.lBQ, Integer.valueOf(this.lzF.size()) });
       }
     }
   }
@@ -326,7 +331,7 @@ public class GroupToolsManagereUI
   public void onDestroy()
   {
     AppMethodBeat.i(182199);
-    com.tencent.mm.kernel.h.aGY().b(3546, this);
+    com.tencent.mm.kernel.h.aZW().b(3546, this);
     super.onDestroy();
     AppMethodBeat.o(182199);
   }
@@ -336,7 +341,7 @@ public class GroupToolsManagereUI
     AppMethodBeat.i(182198);
     if (paramInt == 4)
     {
-      asJ();
+      aML();
       AppMethodBeat.o(182198);
       return true;
     }
@@ -345,27 +350,27 @@ public class GroupToolsManagereUI
     return bool;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(182196);
-    Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "onSceneEnd errType = %d, errCode = %d, errMsg = %s, scenetype:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramq.getType()) });
+    Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "onSceneEnd errType = %d, errCode = %d, errMsg = %s, scenetype:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramp.getType()) });
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "onSceneEnd result:%s", new Object[] { Boolean.valueOf(((PluginChatroomUI)com.tencent.mm.kernel.h.ag(PluginChatroomUI.class)).getGroupToolsStorage().a(this.iZT, new String[0])) });
-      ab.c(this.iZU, 3, this.iZW, this.iZT.iXI.size());
+      Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "onSceneEnd result:%s", new Object[] { Boolean.valueOf(((PluginChatroomUI)com.tencent.mm.kernel.h.az(PluginChatroomUI.class)).getGroupToolsStorage().a(this.lBP, new String[0])) });
+      ae.c(this.lBQ, 3, this.lBS, this.lBP.lzE.size());
       finish();
       AppMethodBeat.o(182196);
       return;
     }
     AppCompatActivity localAppCompatActivity = getContext();
-    paramq = paramString;
+    paramp = paramString;
     if (Util.isNullOrNil(paramString)) {
-      paramq = getString(a.i.jhf);
+      paramp = getString(a.i.lJv);
     }
-    w.makeText(localAppCompatActivity, paramq, 0).show();
+    aa.makeText(localAppCompatActivity, paramp, 0).show();
     AppMethodBeat.o(182196);
   }
   
@@ -375,40 +380,87 @@ public class GroupToolsManagereUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
+  public static abstract interface b
+  {
+    public abstract void onAlert();
+  }
+  
   public static abstract interface c
   {
-    public abstract void L(View paramView, int paramInt);
+    public abstract void L(RecyclerView.v paramv);
     
-    public abstract void O(RecyclerView.v paramv);
+    public abstract void Q(View paramView, int paramInt);
+  }
+  
+  public static final class d
+    extends RecyclerView.v
+  {
+    static final c lCf;
+    View lBX;
+    RelativeLayout lBY;
+    ImageView lBZ;
+    ImageView lCa;
+    ImageView lCb;
+    TextView lCc;
+    RelativeLayout lCd;
+    ImageView lCe;
+    
+    static
+    {
+      AppMethodBeat.i(182181);
+      c.a locala1 = new c.a();
+      locala1.oKB = a.h.app_brand_app_default_icon_for_tail;
+      c.a locala2 = locala1.eG(com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 20), com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 20));
+      locala2.nrc = true;
+      locala2.oKp = true;
+      locala2.oKn = true;
+      lCf = locala1.bKx();
+      AppMethodBeat.o(182181);
+    }
+    
+    public d(View paramView)
+    {
+      super();
+      AppMethodBeat.i(182180);
+      this.lBX = paramView;
+      this.lBY = ((RelativeLayout)paramView.findViewById(a.e.lFG));
+      this.lBZ = ((ImageView)paramView.findViewById(a.e.lFC));
+      this.lCa = ((ImageView)paramView.findViewById(a.e.lFD));
+      this.lCb = ((ImageView)paramView.findViewById(a.e.frk));
+      this.lCc = ((TextView)paramView.findViewById(a.e.lFH));
+      this.lCd = ((RelativeLayout)paramView.findViewById(a.e.lFF));
+      this.lCe = ((ImageView)paramView.findViewById(a.e.lFE));
+      AppMethodBeat.o(182180);
+    }
   }
   
   public static final class e
     extends RecyclerView.a
   {
     private Context context;
-    private boolean jal;
-    boolean jam = true;
-    private List<GroupToolItem> jan;
-    private GroupToolsManagereUI.c jao;
+    private boolean lCg;
+    boolean lCh = true;
+    private List<GroupToolItem> lCi;
+    private GroupToolsManagereUI.c lCj;
     
     public e(Context paramContext, boolean paramBoolean, List<GroupToolItem> paramList, GroupToolsManagereUI.c paramc)
     {
       this.context = paramContext;
-      this.jal = paramBoolean;
-      this.jan = paramList;
-      this.jao = paramc;
+      this.lCg = paramBoolean;
+      this.lCi = paramList;
+      this.lCj = paramc;
     }
     
     private static void a(GroupToolsManagereUI.d paramd, WxaAttributes paramWxaAttributes)
     {
       AppMethodBeat.i(182188);
-      com.tencent.mm.ay.a.a locala = com.tencent.mm.ay.q.bml();
+      com.tencent.mm.modelimage.loader.a locala = r.bKe();
       Object localObject;
       if (paramWxaAttributes != null)
       {
         localObject = paramWxaAttributes.field_smallHeadURL;
-        locala.a((String)localObject, paramd.jag, GroupToolsManagereUI.d.jak);
-        localObject = paramd.jah;
+        locala.a((String)localObject, paramd.lCb, GroupToolsManagereUI.d.lCf);
+        localObject = paramd.lCc;
         if (paramWxaAttributes == null) {
           break label61;
         }
@@ -426,93 +478,93 @@ public class GroupToolsManagereUI
     
     public final RecyclerView.v b(ViewGroup paramViewGroup, int paramInt)
     {
-      AppMethodBeat.i(193938);
-      paramViewGroup = new GroupToolsManagereUI.d(LayoutInflater.from(paramViewGroup.getContext()).inflate(a.f.jdZ, paramViewGroup, false));
-      AppMethodBeat.o(193938);
+      AppMethodBeat.i(241555);
+      paramViewGroup = new GroupToolsManagereUI.d(LayoutInflater.from(paramViewGroup.getContext()).inflate(a.f.lGi, paramViewGroup, false));
+      AppMethodBeat.o(241555);
       return paramViewGroup;
     }
     
     public final void d(final RecyclerView.v paramv, int paramInt)
     {
-      AppMethodBeat.i(193944);
-      if ((this.jan != null) && (paramInt >= 0) && (paramInt < this.jan.size()))
+      AppMethodBeat.i(241571);
+      if ((this.lCi != null) && (paramInt >= 0) && (paramInt < this.lCi.size()))
       {
         paramv = (GroupToolsManagereUI.d)paramv;
-        GroupToolItem localGroupToolItem = (GroupToolItem)this.jan.get(paramInt);
+        GroupToolItem localGroupToolItem = (GroupToolItem)this.lCi.get(paramInt);
         Log.d("MicroMsg.roomtools.GroupToolsManagereUI", "onBindViewHolder() i:%s", new Object[] { Integer.valueOf(paramInt) });
-        paramv.jac.setVisibility(0);
-        if (this.jal)
+        paramv.lBX.setVisibility(0);
+        if (this.lCg)
         {
-          paramv.jae.setVisibility(8);
-          paramv.jaf.setVisibility(0);
-          paramv.jai.setVisibility(0);
-          if (!localGroupToolItem.asn()) {
+          paramv.lBZ.setVisibility(8);
+          paramv.lCa.setVisibility(0);
+          paramv.lCd.setVisibility(0);
+          if (!localGroupToolItem.aMh()) {
             break label249;
           }
-          paramv.jag.setImageResource(a.d.group_tool_aa_pay);
-          paramv.jah.setText(a.i.jfh);
+          paramv.lCb.setImageResource(a.d.group_tool_aa_pay);
+          paramv.lCc.setText(a.i.lHs);
           label133:
-          if (!this.jam) {
+          if (!this.lCh) {
             break label350;
           }
-          paramv.jac.setAlpha(1.0F);
+          paramv.lBX.setAlpha(1.0F);
         }
         for (;;)
         {
-          ((ViewGroup)paramv.jad.getParent()).setTag(Boolean.valueOf(this.jal));
-          paramv.jad.setTag(localGroupToolItem);
-          paramv.jad.setOnClickListener(new View.OnClickListener()
+          ((ViewGroup)paramv.lBY.getParent()).setTag(Boolean.valueOf(this.lCg));
+          paramv.lBY.setTag(localGroupToolItem);
+          paramv.lBY.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(182184);
               b localb = new b();
-              localb.bn(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/chatroom/ui/GroupToolsManagereUI$ToolAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+              localb.cH(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/chatroom/ui/GroupToolsManagereUI$ToolAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
               if (GroupToolsManagereUI.e.a(GroupToolsManagereUI.e.this) != null) {
-                GroupToolsManagereUI.e.a(GroupToolsManagereUI.e.this).L(paramAnonymousView, paramv.md());
+                GroupToolsManagereUI.e.a(GroupToolsManagereUI.e.this).Q(paramAnonymousView, paramv.KJ());
               }
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/GroupToolsManagereUI$ToolAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(182184);
             }
           });
-          if (!this.jal) {
+          if (!this.lCg) {
             break label363;
           }
-          paramv.jai.setOnLongClickListener(new View.OnLongClickListener()
+          paramv.lCd.setOnLongClickListener(new View.OnLongClickListener()
           {
             public final boolean onLongClick(View paramAnonymousView)
             {
               AppMethodBeat.i(182185);
               b localb = new b();
-              localb.bn(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/chatroom/ui/GroupToolsManagereUI$ToolAdapter$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-              GroupToolsManagereUI.e.a(GroupToolsManagereUI.e.this).O(paramv);
-              paramv.jai.performHapticFeedback(0, 2);
+              localb.cH(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/chatroom/ui/GroupToolsManagereUI$ToolAdapter$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+              GroupToolsManagereUI.e.a(GroupToolsManagereUI.e.this).L(paramv);
+              paramv.lCd.performHapticFeedback(0, 2);
               com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/chatroom/ui/GroupToolsManagereUI$ToolAdapter$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
               AppMethodBeat.o(182185);
               return true;
             }
           });
-          AppMethodBeat.o(193944);
+          AppMethodBeat.o(241571);
           return;
-          paramv.jae.setVisibility(0);
-          paramv.jaf.setVisibility(8);
-          paramv.jai.setVisibility(4);
+          paramv.lBZ.setVisibility(0);
+          paramv.lCa.setVisibility(8);
+          paramv.lCd.setVisibility(4);
           break;
           label249:
-          if (localGroupToolItem.aso())
+          if (localGroupToolItem.aMi())
           {
-            paramv.jag.setImageDrawable(com.tencent.mm.ci.a.m(this.context, a.d.group_tool_live));
-            paramv.jah.setText(a.i.app_field_live);
+            paramv.lCb.setImageDrawable(com.tencent.mm.cd.a.m(this.context, a.d.group_tool_live));
+            paramv.lCc.setText(a.i.app_field_live);
             break label133;
           }
-          WxaAttributes localWxaAttributes = ((com.tencent.mm.plugin.appbrand.service.q)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.appbrand.service.q.class)).aeW(localGroupToolItem.username);
+          WxaAttributes localWxaAttributes = ((com.tencent.mm.plugin.appbrand.service.s)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.appbrand.service.s.class)).Xy(localGroupToolItem.username);
           if (localWxaAttributes == null)
           {
-            ((com.tencent.mm.plugin.appbrand.service.q)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.appbrand.service.q.class)).a(localGroupToolItem.username, new q.a()
+            ((com.tencent.mm.plugin.appbrand.service.s)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.appbrand.service.s.class)).a(localGroupToolItem.username, new s.a()
             {
-              public final void b(final WxaAttributes paramAnonymousWxaAttributes)
+              public final void onGetWeAppInfo(final WxaAttributes paramAnonymousWxaAttributes)
               {
                 AppMethodBeat.i(182183);
                 MMHandlerThread.postToMainThread(new Runnable()
@@ -520,7 +572,7 @@ public class GroupToolsManagereUI
                   public final void run()
                   {
                     AppMethodBeat.i(182182);
-                    GroupToolsManagereUI.e.b(GroupToolsManagereUI.e.1.this.jap, paramAnonymousWxaAttributes);
+                    GroupToolsManagereUI.e.b(GroupToolsManagereUI.e.1.this.lCk, paramAnonymousWxaAttributes);
                     AppMethodBeat.o(182182);
                   }
                 });
@@ -532,18 +584,18 @@ public class GroupToolsManagereUI
           a(paramv, localWxaAttributes);
           break label133;
           label350:
-          paramv.jac.setAlpha(0.3F);
+          paramv.lBX.setAlpha(0.3F);
         }
         label363:
-        paramv.jai.setOnLongClickListener(null);
+        paramv.lCd.setOnLongClickListener(null);
       }
-      AppMethodBeat.o(193944);
+      AppMethodBeat.o(241571);
     }
     
     public final int getItemCount()
     {
       AppMethodBeat.i(182189);
-      int i = this.jan.size();
+      int i = this.lCi.size();
       AppMethodBeat.o(182189);
       return i;
     }
@@ -556,7 +608,7 @@ public class GroupToolsManagereUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.GroupToolsManagereUI
  * JD-Core Version:    0.7.0.1
  */

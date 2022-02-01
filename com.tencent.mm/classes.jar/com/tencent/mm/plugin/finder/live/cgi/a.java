@@ -1,53 +1,63 @@
 package com.tencent.mm.plugin.finder.live.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
+import com.tencent.mm.am.c.a;
 import com.tencent.mm.plugin.findersdk.b.c;
-import com.tencent.mm.protocal.protobuf.apy;
-import com.tencent.mm.protocal.protobuf.apz;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.ats;
+import com.tencent.mm.protocal.protobuf.att;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderAudienceReserveLive;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderAudienceReserveLiveResponse;", "userName", "", "noticeId", "optype", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "getNoticeId", "()Ljava/lang/String;", "getOptype", "()I", "request", "Lcom/tencent/mm/protocal/protobuf/FinderAudienceReserveLiveRequest;", "getUserName", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderAudienceReserveLive;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderAudienceReserveLiveResponse;", "userName", "", "noticeId", "optype", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "scene", "(Ljava/lang/String;Ljava/lang/String;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Ljava/lang/Integer;)V", "TAG", "getNoticeId", "()Ljava/lang/String;", "getOptype", "()I", "request", "Lcom/tencent/mm/protocal/protobuf/FinderAudienceReserveLiveRequest;", "getScene", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "getUserName", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends c<apz>
+  extends c<att>
 {
+  private final Integer AAE;
+  private ats CuS;
   private final String TAG;
-  private final int fSo;
-  private final String fwt;
+  private final String hAR;
+  private final int hYl;
   private final String userName;
-  private apy xXM;
   
-  public a(String paramString1, String paramString2)
+  public a(String paramString1, String paramString2, int paramInt, Integer paramInteger)
   {
     super(null);
-    AppMethodBeat.i(277580);
+    AppMethodBeat.i(351112);
     this.userName = paramString1;
-    this.fwt = paramString2;
-    this.fSo = 1;
+    this.hAR = paramString2;
+    this.hYl = paramInt;
+    this.AAE = paramInteger;
     this.TAG = "Finder.CgiFinderAudienceReserveLive";
-    this.xXM = new apy();
-    this.xXM.SDn = this.userName;
-    this.xXM.fwt = this.fwt;
-    this.xXM.opType = this.fSo;
-    paramString1 = new d.a();
-    paramString1.c((com.tencent.mm.cd.a)this.xXM);
-    paramString2 = new apz();
-    paramString2.setBaseResponse(new jh());
-    paramString2.getBaseResponse().Tef = new eaf();
-    paramString1.d((com.tencent.mm.cd.a)paramString2);
-    paramString1.TW("/cgi-bin/micromsg-bin/finderaudiencereservelive");
-    paramString1.vD(6276);
-    c(paramString1.bgN());
-    Log.i(this.TAG, "init userName:" + this.userName + ", noticeId:" + this.fwt + " ,optype:" + this.fSo + ' ');
-    AppMethodBeat.o(277580);
+    this.CuS = new ats();
+    this.CuS.Azl = this.userName;
+    this.CuS.hAR = this.hAR;
+    this.CuS.opType = this.hYl;
+    paramString1 = this.CuS;
+    paramString2 = this.AAE;
+    if (paramString2 == null) {}
+    for (paramInt = 0;; paramInt = paramString2.intValue())
+    {
+      paramString1.scene = paramInt;
+      paramString1 = new c.a();
+      paramString1.otE = ((com.tencent.mm.bx.a)this.CuS);
+      paramString2 = new att();
+      paramString2.setBaseResponse(new kd());
+      paramString2.getBaseResponse().akjO = new etl();
+      paramString1.otF = ((com.tencent.mm.bx.a)paramString2);
+      paramString1.uri = "/cgi-bin/micromsg-bin/finderaudiencereservelive";
+      paramString1.funcId = 6276;
+      c(paramString1.bEF());
+      Log.i(this.TAG, "init userName:" + this.userName + ", noticeId:" + this.hAR + " ,optype:" + this.hYl + ' ');
+      AppMethodBeat.o(351112);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.cgi.a
  * JD-Core Version:    0.7.0.1
  */

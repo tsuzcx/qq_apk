@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
 import android.content.Intent;
-import com.tencent.luggage.k.f.c;
+import com.tencent.luggage.l.e.c;
 import com.tencent.luggage.sdk.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class cd
-  extends c<j>
+  extends c<k>
 {
-  public static final int CTRL_INDEX = 618;
-  public static final String NAME = "openWCPayLQTDepositPlan";
-  final int owq;
+  public static final int CTRL_INDEX = 403;
+  public static final String NAME = "openOfflinePayView";
+  final int rzK;
   
   public cd()
   {
-    AppMethodBeat.i(174761);
-    this.owq = a.aI(this);
-    AppMethodBeat.o(174761);
+    AppMethodBeat.i(174758);
+    this.rzK = a.ce(this);
+    AppMethodBeat.o(174758);
   }
 }
 

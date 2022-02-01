@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.hld.a.c;
@@ -29,51 +30,51 @@ import com.tencent.mm.plugin.hld.emoji.ImeKaoEmojiContentScrollView;
 import com.tencent.mm.plugin.hld.emoji.e;
 import com.tencent.mm.plugin.hld.emoji.i;
 import com.tencent.mm.plugin.hld.emoji.i.a;
-import com.tencent.mm.plugin.hld.emoji.j;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.view.ImeKeyButton;
 import com.tencent.mm.plugin.hld.view.ImeKeyRelativeLayout;
-import com.tencent.mm.protocal.protobuf.fmv;
+import com.tencent.mm.plugin.hld.view.f;
+import com.tencent.mm.protocal.protobuf.gjn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard;", "Lcom/tencent/mm/plugin/hld/keyboard/ImeKeyboard;", "Lcom/tencent/mm/plugin/hld/emoji/IEmojiSubTypeSelectListener;", "Landroid/view/View$OnClickListener;", "Landroid/view/View$OnTouchListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "closeKeyboardRl", "Landroid/widget/RelativeLayout;", "getCloseKeyboardRl", "()Landroid/widget/RelativeLayout;", "closeKeyboardRl$delegate", "Lkotlin/Lazy;", "currentEmojiType", "", "deleteBt", "Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "getDeleteBt", "()Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "deleteBt$delegate", "emojiContentContainerRv", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiContentScrollView;", "getEmojiContentContainerRv", "()Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiContentScrollView;", "emojiContentContainerRv$delegate", "emojiKeyContainer", "Landroidx/constraintlayout/widget/ConstraintLayout;", "getEmojiKeyContainer", "()Landroidx/constraintlayout/widget/ConstraintLayout;", "emojiKeyContainer$delegate", "emojiSubTypeContainerRv", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView;", "getEmojiSubTypeContainerRv", "()Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView;", "emojiSubTypeContainerRv$delegate", "emojiTypeRl", "getEmojiTypeRl", "emojiTypeRl$delegate", "hideRect", "Landroid/graphics/Rect;", "imeEmojiPagerScrllHelper", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiPagerScrollHelper;", "kaoemojiContentContainerRv", "Lcom/tencent/mm/plugin/hld/emoji/ImeKaoEmojiContentScrollView;", "getKaoemojiContentContainerRv", "()Lcom/tencent/mm/plugin/hld/emoji/ImeKaoEmojiContentScrollView;", "kaoemojiContentContainerRv$delegate", "kaoemojiLine", "Landroid/widget/ImageView;", "getKaoemojiLine", "()Landroid/widget/ImageView;", "kaoemojiLine$delegate", "kaoemojiSubTypeContainerRv", "getKaoemojiSubTypeContainerRv", "kaoemojiSubTypeContainerRv$delegate", "kaoemojiTypeRl", "getKaoemojiTypeRl", "kaoemojiTypeRl$delegate", "keyboardSwLl", "Landroid/widget/LinearLayout;", "getKeyboardSwLl", "()Landroid/widget/LinearLayout;", "keyboardSwLl$delegate", "pageSelectedListener", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiPagerScrollHelper$OnPageSelectedListener;", "recentSelectedListener", "Lcom/tencent/mm/plugin/hld/keyboard/OnEmojiRecentSelectedListener;", "sendBt", "getSendBt", "sendBt$delegate", "sendBtVisible", "", "getContentSize", "getKeyboardType", "Lcom/tencent/mm/plugin/hld/keyboard/KeyboardType;", "onClick", "", "v", "Landroid/view/View;", "onCreate", "onEmojiSubTypeClick", "position", "itemView", "onReset", "onResume", "listener", "Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouch", "event", "Landroid/view/MotionEvent;", "setTabSelected", "groupIndex", "updateEnterKey", "actionStr", "actionMode", "updateView", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard;", "Lcom/tencent/mm/plugin/hld/keyboard/ImeKeyboard;", "Lcom/tencent/mm/plugin/hld/emoji/IEmojiSubTypeSelectListener;", "Landroid/view/View$OnClickListener;", "Landroid/view/View$OnTouchListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "closeKeyboardRl", "Landroid/widget/RelativeLayout;", "getCloseKeyboardRl", "()Landroid/widget/RelativeLayout;", "closeKeyboardRl$delegate", "Lkotlin/Lazy;", "currentEmojiType", "", "deleteBt", "Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "getDeleteBt", "()Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "deleteBt$delegate", "emojiContentContainerRv", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiContentScrollView;", "getEmojiContentContainerRv", "()Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiContentScrollView;", "emojiContentContainerRv$delegate", "emojiKeyContainer", "Landroidx/constraintlayout/widget/ConstraintLayout;", "getEmojiKeyContainer", "()Landroidx/constraintlayout/widget/ConstraintLayout;", "emojiKeyContainer$delegate", "emojiSubTypeContainerRv", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView;", "getEmojiSubTypeContainerRv", "()Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView;", "emojiSubTypeContainerRv$delegate", "emojiTypeRl", "getEmojiTypeRl", "emojiTypeRl$delegate", "hideRect", "Landroid/graphics/Rect;", "imeEmojiPagerScrllHelper", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiPagerScrollHelper;", "kaoemojiContentContainerRv", "Lcom/tencent/mm/plugin/hld/emoji/ImeKaoEmojiContentScrollView;", "getKaoemojiContentContainerRv", "()Lcom/tencent/mm/plugin/hld/emoji/ImeKaoEmojiContentScrollView;", "kaoemojiContentContainerRv$delegate", "kaoemojiLine", "Landroid/widget/ImageView;", "getKaoemojiLine", "()Landroid/widget/ImageView;", "kaoemojiLine$delegate", "kaoemojiSubTypeContainerRv", "getKaoemojiSubTypeContainerRv", "kaoemojiSubTypeContainerRv$delegate", "kaoemojiTypeRl", "getKaoemojiTypeRl", "kaoemojiTypeRl$delegate", "keyboardSwLl", "Landroid/widget/LinearLayout;", "getKeyboardSwLl", "()Landroid/widget/LinearLayout;", "keyboardSwLl$delegate", "pageSelectedListener", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiPagerScrollHelper$OnPageSelectedListener;", "recentSelectedListener", "Lcom/tencent/mm/plugin/hld/keyboard/OnEmojiRecentSelectedListener;", "sendBt", "getSendBt", "sendBt$delegate", "sendBtVisible", "", "getContentSize", "getKeyboardType", "Lcom/tencent/mm/plugin/hld/keyboard/KeyboardType;", "onClick", "", "v", "Landroid/view/View;", "onCreate", "onEmojiSubTypeClick", "position", "itemView", "onReset", "onResume", "listener", "Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouch", "event", "Landroid/view/MotionEvent;", "setTabSelected", "groupIndex", "updateEnterKey", "actionStr", "actionMode", "updateView", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class S7EmojiKeyboard
   extends ImeKeyboard
   implements View.OnClickListener, View.OnTouchListener, com.tencent.mm.plugin.hld.emoji.b
 {
-  public static final a Dzo;
-  private final d DvX;
-  private String Dwu;
-  private final f Dwv;
-  private final f Dww;
-  private final i Dwx;
-  private final i.a Dwy;
-  private final f Dzd;
-  private final f Dze;
-  private final f Dzf;
-  private final f Dzg;
-  private final f Dzh;
-  private final f Dzi;
-  private final f Dzj;
-  private final f Dzk;
-  private final f Dzl;
-  private final f Dzm;
-  private boolean Dzn;
-  private final Rect jLp;
+  public static final S7EmojiKeyboard.a Jsf;
+  private String JpB;
+  private final kotlin.j JpC;
+  private final kotlin.j JpD;
+  private final i JpE;
+  private final i.a JpF;
+  private final d Jpe;
+  private final kotlin.j Jsg;
+  private final kotlin.j Jsh;
+  private final kotlin.j Jsi;
+  private final kotlin.j Jsj;
+  private final kotlin.j Jsk;
+  private final kotlin.j Jsl;
+  private final kotlin.j Jsm;
+  private final kotlin.j Jsn;
+  private final kotlin.j Jso;
+  private final kotlin.j Jsp;
+  private boolean Jsq;
+  private final Rect mkA;
   
   static
   {
-    AppMethodBeat.i(216073);
-    Dzo = new a((byte)0);
-    AppMethodBeat.o(216073);
+    AppMethodBeat.i(313242);
+    Jsf = new S7EmojiKeyboard.a((byte)0);
+    AppMethodBeat.o(313242);
   }
   
   public S7EmojiKeyboard(Context paramContext, AttributeSet paramAttributeSet)
@@ -89,122 +90,171 @@ public final class S7EmojiKeyboard
   private S7EmojiKeyboard(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(216071);
-    paramContext = com.tencent.mm.plugin.hld.f.g.DHh;
-    this.Dwu = com.tencent.mm.plugin.hld.f.g.eGz();
-    this.Dwx = new i();
-    this.Dwv = kotlin.g.ar((kotlin.g.a.a)new f(this));
-    this.Dzd = kotlin.g.ar((kotlin.g.a.a)new j(this));
-    this.Dww = kotlin.g.ar((kotlin.g.a.a)new d(this));
-    this.Dze = kotlin.g.ar((kotlin.g.a.a)new h(this));
-    this.Dzf = kotlin.g.ar((kotlin.g.a.a)new e(this));
-    this.Dzg = kotlin.g.ar((kotlin.g.a.a)new g(this));
-    this.Dzh = kotlin.g.ar((kotlin.g.a.a)new k(this));
-    this.Dzi = kotlin.g.ar((kotlin.g.a.a)new l(this));
-    this.Dzj = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    this.Dzk = kotlin.g.ar((kotlin.g.a.a)new i(this));
-    this.Dzl = kotlin.g.ar((kotlin.g.a.a)new c(this));
-    this.Dzm = kotlin.g.ar((kotlin.g.a.a)new p(this));
-    this.jLp = new Rect();
-    this.Dzn = true;
-    this.Dwy = ((i.a)new n(this));
-    this.DvX = ((d)new o(this));
-    AppMethodBeat.o(216071);
+    AppMethodBeat.i(313212);
+    paramContext = com.tencent.mm.plugin.hld.f.g.Jyo;
+    this.JpB = com.tencent.mm.plugin.hld.f.g.fOn();
+    this.JpE = new i();
+    this.JpC = kotlin.k.cm((kotlin.g.a.a)new f(this));
+    this.Jsg = kotlin.k.cm((kotlin.g.a.a)new j(this));
+    this.JpD = kotlin.k.cm((kotlin.g.a.a)new d(this));
+    this.Jsh = kotlin.k.cm((kotlin.g.a.a)new h(this));
+    this.Jsi = kotlin.k.cm((kotlin.g.a.a)new e(this));
+    this.Jsj = kotlin.k.cm((kotlin.g.a.a)new g(this));
+    this.Jsk = kotlin.k.cm((kotlin.g.a.a)new k(this));
+    this.Jsl = kotlin.k.cm((kotlin.g.a.a)new l(this));
+    this.Jsm = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.Jsn = kotlin.k.cm((kotlin.g.a.a)new i(this));
+    this.Jso = kotlin.k.cm((kotlin.g.a.a)new c(this));
+    this.Jsp = kotlin.k.cm((kotlin.g.a.a)new o(this));
+    this.mkA = new Rect();
+    this.Jsq = true;
+    this.JpF = ((i.a)new m(this));
+    this.Jpe = ((d)new n(this));
+    AppMethodBeat.o(313212);
+  }
+  
+  private static final void a(S7EmojiKeyboard paramS7EmojiKeyboard)
+  {
+    AppMethodBeat.i(313229);
+    s.u(paramS7EmojiKeyboard, "this$0");
+    paramS7EmojiKeyboard.mkA.setEmpty();
+    paramS7EmojiKeyboard.mkA.union(paramS7EmojiKeyboard.getDeleteBt().getLeft(), paramS7EmojiKeyboard.getDeleteBt().getTop(), paramS7EmojiKeyboard.getDeleteBt().getRight(), paramS7EmojiKeyboard.getDeleteBt().getBottom());
+    paramS7EmojiKeyboard.mkA.union(paramS7EmojiKeyboard.getSendBt().getLeft(), paramS7EmojiKeyboard.getSendBt().getTop(), paramS7EmojiKeyboard.getSendBt().getRight(), paramS7EmojiKeyboard.getSendBt().getBottom());
+    if (s.p(paramS7EmojiKeyboard.JpB, "emoji"))
+    {
+      Object localObject1 = paramS7EmojiKeyboard.getEmojiContentContainerRv();
+      paramS7EmojiKeyboard = paramS7EmojiKeyboard.mkA;
+      s.u(paramS7EmojiKeyboard, "rect");
+      Object localObject2 = com.tencent.mm.plugin.hld.f.g.Jyo;
+      localObject2 = com.tencent.mm.plugin.hld.f.g.aIz("emoji");
+      Object localObject3 = (List)((ImeEmojiContentScrollView)localObject1).Jpd;
+      int i = 0;
+      localObject3 = ((List)localObject3).iterator();
+      if (((Iterator)localObject3).hasNext()) {
+        if (!s.p(((com.tencent.mm.plugin.hld.emoji.k)((Iterator)localObject3).next()).typeName, localObject2)) {}
+      }
+      for (;;)
+      {
+        localObject2 = ((ImeEmojiContentScrollView)localObject1).fU(i);
+        if ((!(localObject2 instanceof e)) || (!(((e)localObject2).Jph.getLayoutManager() instanceof EmojiLayoutManager))) {
+          break label347;
+        }
+        localObject2 = ((e)localObject2).Jph.getLayoutManager();
+        if (localObject2 != null) {
+          break label256;
+        }
+        paramS7EmojiKeyboard = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.hld.emoji.EmojiLayoutManager");
+        AppMethodBeat.o(313229);
+        throw paramS7EmojiKeyboard;
+        i += 1;
+        break;
+        i = -1;
+      }
+      label256:
+      localObject2 = (EmojiLayoutManager)localObject2;
+      localObject1 = ((ImeEmojiContentScrollView)localObject1).getContext();
+      s.s(localObject1, "context");
+      s.u(paramS7EmojiKeyboard, "rect");
+      s.u(localObject1, "context");
+      ((EmojiLayoutManager)localObject2).mkA.set(paramS7EmojiKeyboard);
+      EmojiLayoutManager.a((EmojiLayoutManager)localObject2);
+      Log.i("WxIme.EmojiLayoutManager", s.X("updateHideArea ", paramS7EmojiKeyboard));
+      if (((EmojiLayoutManager)localObject2).maxHeight == 0)
+      {
+        ((EmojiLayoutManager)localObject2).maxHeight = ((Context)localObject1).getResources().getDimensionPixelSize(a.d.Edge_A);
+        ((EmojiLayoutManager)localObject2).JoY = ((Context)localObject1).getResources().getDimensionPixelSize(a.d.ime_emoji_top_bottom_margin);
+      }
+    }
+    label347:
+    AppMethodBeat.o(313229);
   }
   
   private final int getContentSize()
   {
-    AppMethodBeat.i(216066);
-    String str = this.Dwu;
-    switch (str.hashCode())
+    AppMethodBeat.i(313221);
+    String str = this.JpB;
+    int i;
+    if (s.p(str, "emoji"))
     {
-    }
-    do
-    {
-      do
-      {
-        AppMethodBeat.o(216066);
-        return 0;
-      } while (!str.equals("emoji"));
       i = getEmojiContentContainerRv().getEmojiList().size();
-      AppMethodBeat.o(216066);
+      AppMethodBeat.o(313221);
       return i;
-    } while (!str.equals("kaoemoji"));
-    int i = getKaoemojiContentContainerRv().getKaoemojiList().size();
-    AppMethodBeat.o(216066);
-    return i;
+    }
+    if (s.p(str, "kaoemoji"))
+    {
+      i = getKaoemojiContentContainerRv().getKaoemojiList().size();
+      AppMethodBeat.o(313221);
+      return i;
+    }
+    AppMethodBeat.o(313221);
+    return 0;
   }
   
   private final void updateView()
   {
-    AppMethodBeat.i(216061);
-    String str = this.Dwu;
-    switch (str.hashCode())
+    AppMethodBeat.i(313218);
+    String str = this.JpB;
+    if (s.p(str, "emoji"))
     {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(216061);
+      getEmojiTypeRl().setBackground(com.tencent.mm.cd.a.m(getContext(), a.e.ime_s8_emoji_type_bg_selected));
+      getKaoemojiTypeRl().setBackground(null);
+      getEmojiKeyContainer().setVisibility(0);
+      getEmojiContentContainerRv().setVisibility(0);
+      getKaoemojiContentContainerRv().setVisibility(8);
+      getEmojiSubTypeContainerRv().setVisibility(0);
+      getKaoemojiSubTypeContainerRv().setVisibility(8);
+      this.JpE.a((RecyclerView)getEmojiContentContainerRv());
+      getKaoemojiLine().setVisibility(8);
+      AppMethodBeat.o(313218);
       return;
-      if (str.equals("emoji"))
-      {
-        getEmojiTypeRl().setBackground(com.tencent.mm.ci.a.m(getContext(), a.e.ime_s8_emoji_type_bg_selected));
-        getKaoemojiTypeRl().setBackground(null);
-        getEmojiKeyContainer().setVisibility(0);
-        getEmojiContentContainerRv().setVisibility(0);
-        getKaoemojiContentContainerRv().setVisibility(8);
-        getEmojiSubTypeContainerRv().setVisibility(0);
-        getKaoemojiSubTypeContainerRv().setVisibility(8);
-        this.Dwx.a((RecyclerView)getEmojiContentContainerRv());
-        getKaoemojiLine().setVisibility(8);
-        AppMethodBeat.o(216061);
-        return;
-        if (str.equals("kaoemoji"))
-        {
-          getEmojiTypeRl().setBackground(null);
-          getKaoemojiTypeRl().setBackground(com.tencent.mm.ci.a.m(getContext(), a.e.ime_s8_emoji_type_bg_selected));
-          getEmojiKeyContainer().setVisibility(8);
-          getEmojiContentContainerRv().setVisibility(8);
-          getKaoemojiContentContainerRv().setVisibility(0);
-          getEmojiSubTypeContainerRv().setVisibility(8);
-          getKaoemojiSubTypeContainerRv().setVisibility(0);
-          this.Dwx.a((RecyclerView)getKaoemojiContentContainerRv());
-          getKaoemojiLine().setVisibility(0);
-        }
-      }
     }
+    if (s.p(str, "kaoemoji"))
+    {
+      getEmojiTypeRl().setBackground(null);
+      getKaoemojiTypeRl().setBackground(com.tencent.mm.cd.a.m(getContext(), a.e.ime_s8_emoji_type_bg_selected));
+      getEmojiKeyContainer().setVisibility(8);
+      getEmojiContentContainerRv().setVisibility(8);
+      getKaoemojiContentContainerRv().setVisibility(0);
+      getEmojiSubTypeContainerRv().setVisibility(8);
+      getKaoemojiSubTypeContainerRv().setVisibility(0);
+      this.JpE.a((RecyclerView)getKaoemojiContentContainerRv());
+      getKaoemojiLine().setVisibility(0);
+    }
+    AppMethodBeat.o(313218);
   }
   
   public final void b(com.tencent.mm.plugin.hld.a.c paramc)
   {
-    AppMethodBeat.i(216046);
+    AppMethodBeat.i(313292);
     super.b(paramc);
     updateView();
-    AppMethodBeat.o(216046);
+    AppMethodBeat.o(313292);
   }
   
-  public final void eO(String paramString, int paramInt)
+  public final void fG(String paramString, int paramInt)
   {
-    AppMethodBeat.i(216054);
-    p.k(paramString, "actionStr");
-    boolean bool = this.Dzn;
+    AppMethodBeat.i(313331);
+    s.u(paramString, "actionStr");
+    boolean bool = this.Jsq;
     ImeKeyButton localImeKeyButton = getSendBt();
     if (Util.isEqual(paramString, getContext().getString(a.j.key_action_send)))
     {
-      this.Dzn = true;
+      this.Jsq = true;
       localImeKeyButton.setVisibility(0);
       switch (paramInt)
       {
       }
     }
-    while (bool != this.Dzn)
+    for (;;)
     {
-      paramString = getEmojiContentContainerRv().getAdapter();
-      if (paramString == null) {
-        break;
+      if (bool != this.Jsq)
+      {
+        paramString = getEmojiContentContainerRv().getAdapter();
+        if (paramString != null) {
+          paramString.bZE.notifyChanged();
+        }
       }
-      paramString.notifyDataSetChanged();
-      AppMethodBeat.o(216054);
+      AppMethodBeat.o(313331);
       return;
       localImeKeyButton.setClickable(true);
       localImeKeyButton.setEnabled(true);
@@ -214,194 +264,168 @@ public final class S7EmojiKeyboard
       continue;
       localImeKeyButton.setClickable(false);
       localImeKeyButton.setEnabled(false);
-      localImeKeyButton.UO(a.c.S2_text_invalid_color);
+      localImeKeyButton.YM(a.c.S2_text_invalid_color);
       continue;
-      this.Dzn = false;
+      this.Jsq = false;
       localImeKeyButton.setVisibility(8);
     }
-    AppMethodBeat.o(216054);
   }
   
   public final RelativeLayout getCloseKeyboardRl()
   {
-    AppMethodBeat.i(216036);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.Dzj.getValue();
-    AppMethodBeat.o(216036);
-    return localRelativeLayout;
+    AppMethodBeat.i(313276);
+    Object localObject = this.Jsm.getValue();
+    s.s(localObject, "<get-closeKeyboardRl>(...)");
+    localObject = (RelativeLayout)localObject;
+    AppMethodBeat.o(313276);
+    return localObject;
   }
   
   public final ImeKeyButton getDeleteBt()
   {
-    AppMethodBeat.i(216039);
-    ImeKeyButton localImeKeyButton = (ImeKeyButton)this.Dzl.getValue();
-    AppMethodBeat.o(216039);
-    return localImeKeyButton;
+    AppMethodBeat.i(313280);
+    Object localObject = this.Jso.getValue();
+    s.s(localObject, "<get-deleteBt>(...)");
+    localObject = (ImeKeyButton)localObject;
+    AppMethodBeat.o(313280);
+    return localObject;
   }
   
   public final ImeEmojiContentScrollView getEmojiContentContainerRv()
   {
-    AppMethodBeat.i(216030);
-    ImeEmojiContentScrollView localImeEmojiContentScrollView = (ImeEmojiContentScrollView)this.Dww.getValue();
-    AppMethodBeat.o(216030);
-    return localImeEmojiContentScrollView;
+    AppMethodBeat.i(313262);
+    Object localObject = this.JpD.getValue();
+    s.s(localObject, "<get-emojiContentContainerRv>(...)");
+    localObject = (ImeEmojiContentScrollView)localObject;
+    AppMethodBeat.o(313262);
+    return localObject;
   }
   
   public final ConstraintLayout getEmojiKeyContainer()
   {
-    AppMethodBeat.i(216032);
-    ConstraintLayout localConstraintLayout = (ConstraintLayout)this.Dzf.getValue();
-    AppMethodBeat.o(216032);
-    return localConstraintLayout;
+    AppMethodBeat.i(313268);
+    Object localObject = this.Jsi.getValue();
+    s.s(localObject, "<get-emojiKeyContainer>(...)");
+    localObject = (ConstraintLayout)localObject;
+    AppMethodBeat.o(313268);
+    return localObject;
   }
   
   public final ImeEmojiSubTypeScrollView getEmojiSubTypeContainerRv()
   {
-    AppMethodBeat.i(216028);
-    ImeEmojiSubTypeScrollView localImeEmojiSubTypeScrollView = (ImeEmojiSubTypeScrollView)this.Dwv.getValue();
-    AppMethodBeat.o(216028);
-    return localImeEmojiSubTypeScrollView;
+    AppMethodBeat.i(313250);
+    Object localObject = this.JpC.getValue();
+    s.s(localObject, "<get-emojiSubTypeContainerRv>(...)");
+    localObject = (ImeEmojiSubTypeScrollView)localObject;
+    AppMethodBeat.o(313250);
+    return localObject;
   }
   
   public final RelativeLayout getEmojiTypeRl()
   {
-    AppMethodBeat.i(216033);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.Dzg.getValue();
-    AppMethodBeat.o(216033);
-    return localRelativeLayout;
+    AppMethodBeat.i(313271);
+    Object localObject = this.Jsj.getValue();
+    s.s(localObject, "<get-emojiTypeRl>(...)");
+    localObject = (RelativeLayout)localObject;
+    AppMethodBeat.o(313271);
+    return localObject;
   }
   
   public final ImeKaoEmojiContentScrollView getKaoemojiContentContainerRv()
   {
-    AppMethodBeat.i(216031);
-    ImeKaoEmojiContentScrollView localImeKaoEmojiContentScrollView = (ImeKaoEmojiContentScrollView)this.Dze.getValue();
-    AppMethodBeat.o(216031);
-    return localImeKaoEmojiContentScrollView;
+    AppMethodBeat.i(313265);
+    Object localObject = this.Jsh.getValue();
+    s.s(localObject, "<get-kaoemojiContentContainerRv>(...)");
+    localObject = (ImeKaoEmojiContentScrollView)localObject;
+    AppMethodBeat.o(313265);
+    return localObject;
   }
   
   public final ImageView getKaoemojiLine()
   {
-    AppMethodBeat.i(216038);
-    ImageView localImageView = (ImageView)this.Dzk.getValue();
-    AppMethodBeat.o(216038);
-    return localImageView;
+    AppMethodBeat.i(313279);
+    Object localObject = this.Jsn.getValue();
+    s.s(localObject, "<get-kaoemojiLine>(...)");
+    localObject = (ImageView)localObject;
+    AppMethodBeat.o(313279);
+    return localObject;
   }
   
   public final ImeEmojiSubTypeScrollView getKaoemojiSubTypeContainerRv()
   {
-    AppMethodBeat.i(216029);
-    ImeEmojiSubTypeScrollView localImeEmojiSubTypeScrollView = (ImeEmojiSubTypeScrollView)this.Dzd.getValue();
-    AppMethodBeat.o(216029);
-    return localImeEmojiSubTypeScrollView;
+    AppMethodBeat.i(313257);
+    Object localObject = this.Jsg.getValue();
+    s.s(localObject, "<get-kaoemojiSubTypeContainerRv>(...)");
+    localObject = (ImeEmojiSubTypeScrollView)localObject;
+    AppMethodBeat.o(313257);
+    return localObject;
   }
   
   public final RelativeLayout getKaoemojiTypeRl()
   {
-    AppMethodBeat.i(216034);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.Dzh.getValue();
-    AppMethodBeat.o(216034);
-    return localRelativeLayout;
+    AppMethodBeat.i(313272);
+    Object localObject = this.Jsk.getValue();
+    s.s(localObject, "<get-kaoemojiTypeRl>(...)");
+    localObject = (RelativeLayout)localObject;
+    AppMethodBeat.o(313272);
+    return localObject;
   }
   
   public final LinearLayout getKeyboardSwLl()
   {
-    AppMethodBeat.i(216035);
-    LinearLayout localLinearLayout = (LinearLayout)this.Dzi.getValue();
-    AppMethodBeat.o(216035);
-    return localLinearLayout;
+    AppMethodBeat.i(313274);
+    Object localObject = this.Jsl.getValue();
+    s.s(localObject, "<get-keyboardSwLl>(...)");
+    localObject = (LinearLayout)localObject;
+    AppMethodBeat.o(313274);
+    return localObject;
   }
   
   public final c getKeyboardType()
   {
-    return c.Dyr;
+    return c.Jrv;
   }
   
   public final ImeKeyButton getSendBt()
   {
-    AppMethodBeat.i(216041);
-    ImeKeyButton localImeKeyButton = (ImeKeyButton)this.Dzm.getValue();
-    AppMethodBeat.o(216041);
-    return localImeKeyButton;
-  }
-  
-  public final void j(int paramInt, View paramView)
-  {
-    AppMethodBeat.i(216050);
-    p.k(paramView, "itemView");
-    setTabSelected(paramInt);
-    paramView = com.tencent.mm.plugin.hld.f.g.DHh;
-    paramView = getRootView();
-    p.j(paramView, "rootView");
-    paramView = paramView.getContext();
-    p.j(paramView, "rootView.context");
-    if (com.tencent.mm.plugin.hld.f.g.K(paramView, this.Dwu, "recent").MGI.isEmpty()) {}
-    for (int i = paramInt - 1;; i = paramInt)
-    {
-      paramView = this.Dwu;
-      switch (paramView.hashCode())
-      {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(216050);
-        return;
-        if (paramView.equals("emoji"))
-        {
-          paramView = getEmojiContentContainerRv();
-          com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(i, new com.tencent.mm.hellhoundlib.b.a());
-          com.tencent.mm.hellhoundlib.a.a.b(paramView, locala.aFh(), "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "onEmojiSubTypeClick", "(ILandroid/view/View;)V", "Undefined", "scrollToPosition", "(I)V");
-          paramView.scrollToPosition(((Integer)locala.sf(0)).intValue());
-          com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "onEmojiSubTypeClick", "(ILandroid/view/View;)V", "Undefined", "scrollToPosition", "(I)V");
-          paramView = com.tencent.mm.plugin.hld.model.k.DDb;
-          paramView = com.tencent.mm.plugin.hld.f.g.DHh;
-          com.tencent.mm.plugin.hld.model.k.n(4, com.tencent.mm.plugin.hld.f.g.UH(paramInt), 1);
-          AppMethodBeat.o(216050);
-          return;
-          if (paramView.equals("kaoemoji"))
-          {
-            paramView = getKaoemojiContentContainerRv();
-            locala = com.tencent.mm.hellhoundlib.b.c.a(i, new com.tencent.mm.hellhoundlib.b.a());
-            com.tencent.mm.hellhoundlib.a.a.b(paramView, locala.aFh(), "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "onEmojiSubTypeClick", "(ILandroid/view/View;)V", "Undefined", "scrollToPosition", "(I)V");
-            paramView.scrollToPosition(((Integer)locala.sf(0)).intValue());
-            com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "onEmojiSubTypeClick", "(ILandroid/view/View;)V", "Undefined", "scrollToPosition", "(I)V");
-            paramView = com.tencent.mm.plugin.hld.model.k.DDb;
-            paramView = com.tencent.mm.plugin.hld.f.g.DHh;
-            com.tencent.mm.plugin.hld.model.k.n(5, com.tencent.mm.plugin.hld.f.g.UI(paramInt), 2);
-          }
-        }
-      }
-    }
+    AppMethodBeat.i(313284);
+    Object localObject = this.Jsp.getValue();
+    s.s(localObject, "<get-sendBt>(...)");
+    localObject = (ImeKeyButton)localObject;
+    AppMethodBeat.o(313284);
+    return localObject;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(216053);
+    AppMethodBeat.i(313326);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
     int i;
-    if (paramView != null)
+    if (paramView == null)
     {
-      localObject = Integer.valueOf(paramView.getId());
+      localObject = null;
       i = a.f.emoji_type_rl;
       if (localObject != null) {
         break label119;
       }
-      label59:
+      label53:
       i = a.f.kaoemoji_type_rl;
       if (localObject != null) {
         break label184;
       }
-      label67:
+      label61:
       i = a.f.s8_key_send;
       if (localObject != null) {
         break label249;
       }
-      label75:
+      label69:
       i = a.f.keyboard_container_ll;
       if (localObject != null) {
         break label289;
       }
-      label83:
+      label77:
       i = a.f.right_container_ll;
       if (localObject != null) {
         break label349;
@@ -410,73 +434,73 @@ public final class S7EmojiKeyboard
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(216053);
+      AppMethodBeat.o(313326);
       return;
-      localObject = null;
+      localObject = Integer.valueOf(paramView.getId());
       break;
       label119:
       if (((Integer)localObject).intValue() != i) {
-        break label59;
+        break label53;
       }
-      if (!Util.isEqual(this.Dwu, "emoji"))
+      if (!Util.isEqual(this.JpB, "emoji"))
       {
-        this.Dwu = "emoji";
-        paramView = com.tencent.mm.plugin.hld.f.g.DHh;
-        com.tencent.mm.plugin.hld.f.g.aLH(this.Dwu);
+        this.JpB = "emoji";
+        paramView = com.tencent.mm.plugin.hld.f.g.Jyo;
+        com.tencent.mm.plugin.hld.f.g.aIA(this.JpB);
         updateView();
-        paramView = com.tencent.mm.plugin.hld.model.k.DDb;
-        paramView = com.tencent.mm.plugin.hld.f.g.DHh;
-        com.tencent.mm.plugin.hld.model.k.n(2, com.tencent.mm.plugin.hld.f.g.aLG("emoji"), 1);
+        paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+        paramView = com.tencent.mm.plugin.hld.f.g.Jyo;
+        com.tencent.mm.plugin.hld.model.k.r(2, com.tencent.mm.plugin.hld.f.g.aIz("emoji"), 1);
         continue;
         label184:
         if (((Integer)localObject).intValue() != i) {
-          break label67;
+          break label61;
         }
-        if (!Util.isEqual(this.Dwu, "kaoemoji"))
+        if (!Util.isEqual(this.JpB, "kaoemoji"))
         {
-          this.Dwu = "kaoemoji";
-          paramView = com.tencent.mm.plugin.hld.f.g.DHh;
-          com.tencent.mm.plugin.hld.f.g.aLH(this.Dwu);
+          this.JpB = "kaoemoji";
+          paramView = com.tencent.mm.plugin.hld.f.g.Jyo;
+          com.tencent.mm.plugin.hld.f.g.aIA(this.JpB);
           updateView();
-          paramView = com.tencent.mm.plugin.hld.model.k.DDb;
-          paramView = com.tencent.mm.plugin.hld.f.g.DHh;
-          com.tencent.mm.plugin.hld.model.k.n(3, com.tencent.mm.plugin.hld.f.g.aLG("kaoemoji"), 2);
+          paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+          paramView = com.tencent.mm.plugin.hld.f.g.Jyo;
+          com.tencent.mm.plugin.hld.model.k.r(3, com.tencent.mm.plugin.hld.f.g.aIz("kaoemoji"), 2);
           continue;
           label249:
           if (((Integer)localObject).intValue() != i) {
-            break label75;
+            break label69;
           }
           if ((paramView instanceof ImeKeyRelativeLayout))
           {
             localObject = getMKeyboardActionListener();
             if (localObject != null)
             {
-              ((com.tencent.mm.plugin.hld.a.c)localObject).Up(((ImeKeyRelativeLayout)paramView).getFunctionCode());
+              ((com.tencent.mm.plugin.hld.a.c)localObject).Yl(((ImeKeyRelativeLayout)paramView).getFunctionCode());
               continue;
               label289:
               if (((Integer)localObject).intValue() != i) {
-                break label83;
+                break label77;
               }
-              paramView = com.tencent.mm.plugin.hld.model.g.DCm;
-              if (com.tencent.mm.plugin.hld.model.g.eEm() != c.Dyr.ordinal())
+              paramView = com.tencent.mm.plugin.hld.model.g.JuL;
+              if (com.tencent.mm.plugin.hld.model.g.fMo() != c.Jrv.ordinal())
               {
-                paramView.a(c.Dyr);
-                paramView = com.tencent.mm.plugin.hld.model.k.DDb;
-                com.tencent.mm.plugin.hld.model.k.UC(0);
+                paramView.a(c.Jrv);
+                paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+                com.tencent.mm.plugin.hld.model.k.Yz(0);
               }
               else
               {
-                paramView.Ux(com.tencent.mm.plugin.hld.model.g.eEo());
-                paramView = com.tencent.mm.plugin.hld.model.k.DDb;
-                com.tencent.mm.plugin.hld.model.k.UC(1);
+                paramView.Yu(com.tencent.mm.plugin.hld.model.g.fMq());
+                paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+                com.tencent.mm.plugin.hld.model.k.Yz(1);
                 continue;
                 label349:
                 if (((Integer)localObject).intValue() == i)
                 {
-                  paramView = (com.tencent.mm.plugin.hld.a.d)h.ae(com.tencent.mm.plugin.hld.a.d.class);
+                  paramView = (com.tencent.mm.plugin.hld.a.d)h.ax(com.tencent.mm.plugin.hld.a.d.class);
                   if (paramView != null)
                   {
-                    paramView = paramView.eCD();
+                    paramView = paramView.fKG();
                     if (paramView != null) {
                       paramView.requestHideSelf(0);
                     }
@@ -492,130 +516,155 @@ public final class S7EmojiKeyboard
   
   public final void onCreate()
   {
-    AppMethodBeat.i(216045);
+    AppMethodBeat.i(313290);
     super.onCreate();
     getEmojiSubTypeContainerRv().setIEmojiSubTypeSelectListener((com.tencent.mm.plugin.hld.emoji.b)this);
     getKaoemojiSubTypeContainerRv().setIEmojiSubTypeSelectListener((com.tencent.mm.plugin.hld.emoji.b)this);
-    getEmojiContentContainerRv().setRecentSelectedListener(this.DvX);
-    getKaoemojiContentContainerRv().setRecentSelectedListener(this.DvX);
-    this.Dwx.Dwl = this.Dwy;
-    com.tencent.mm.plugin.hld.view.g localg = com.tencent.mm.plugin.hld.view.g.DIP;
-    com.tencent.mm.plugin.hld.view.g.a((View)getEmojiTypeRl(), (View.OnClickListener)this);
-    localg = com.tencent.mm.plugin.hld.view.g.DIP;
-    com.tencent.mm.plugin.hld.view.g.a((View)getKaoemojiTypeRl(), (View.OnClickListener)this);
-    localg = com.tencent.mm.plugin.hld.view.g.DIP;
-    com.tencent.mm.plugin.hld.view.g.a((View)getKeyboardSwLl(), (View.OnClickListener)this);
-    localg = com.tencent.mm.plugin.hld.view.g.DIP;
-    com.tencent.mm.plugin.hld.view.g.a((View)getCloseKeyboardRl(), (View.OnClickListener)this);
-    localg = com.tencent.mm.plugin.hld.view.g.DIP;
-    com.tencent.mm.plugin.hld.view.g.a((View)getSendBt(), (View.OnClickListener)this);
+    getEmojiContentContainerRv().setRecentSelectedListener(this.Jpe);
+    getKaoemojiContentContainerRv().setRecentSelectedListener(this.Jpe);
+    this.JpE.Jpr = this.JpF;
+    f.JzR.a((View)getEmojiTypeRl(), (View.OnClickListener)this);
+    f.JzR.a((View)getKaoemojiTypeRl(), (View.OnClickListener)this);
+    f.JzR.a((View)getKeyboardSwLl(), (View.OnClickListener)this);
+    f.JzR.a((View)getCloseKeyboardRl(), (View.OnClickListener)this);
+    f.JzR.a((View)getSendBt(), (View.OnClickListener)this);
     getDeleteBt().setOnTouchListener((View.OnTouchListener)this);
-    AppMethodBeat.o(216045);
+    AppMethodBeat.o(313290);
   }
   
   public final void onReset()
   {
-    AppMethodBeat.i(216048);
+    AppMethodBeat.i(313305);
     super.onReset();
     getEmojiContentContainerRv();
     getKaoemojiContentContainerRv();
-    AppMethodBeat.o(216048);
+    AppMethodBeat.o(313305);
   }
   
   protected final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(216063);
+    AppMethodBeat.i(313348);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     Log.d("WxIme.S7EmojiKeyboard", "onSizeChanged " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3 + ' ' + paramInt4);
-    post((Runnable)new m(this));
-    AppMethodBeat.o(216063);
+    post(new S7EmojiKeyboard..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(313348);
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(216056);
+    AppMethodBeat.i(313336);
     if ((paramView instanceof ImeKeyRelativeLayout))
     {
-      com.tencent.mm.plugin.hld.f.l locall = com.tencent.mm.plugin.hld.f.l.DHK;
-      if (com.tencent.mm.plugin.hld.f.l.e((ImeKeyRelativeLayout)paramView)) {
-        ImeKeyboard.a(this, (ImeKeyRelativeLayout)paramView, paramMotionEvent);
+      l locall = l.JyV;
+      if (l.e((ImeKeyRelativeLayout)paramView)) {
+        ImeKeyboard.a((ImeKeyboard)this, (ImeKeyRelativeLayout)paramView, paramMotionEvent);
       }
     }
-    AppMethodBeat.o(216056);
+    AppMethodBeat.o(313336);
     return false;
+  }
+  
+  public final void q(int paramInt, View paramView)
+  {
+    AppMethodBeat.i(313316);
+    s.u(paramView, "itemView");
+    setTabSelected(paramInt);
+    paramView = com.tencent.mm.plugin.hld.f.g.Jyo;
+    paramView = getRootView().getContext();
+    s.s(paramView, "rootView.context");
+    if (com.tencent.mm.plugin.hld.f.g.K(paramView, this.JpB, "recent").Trs.isEmpty()) {}
+    for (int i = paramInt - 1;; i = paramInt)
+    {
+      paramView = this.JpB;
+      com.tencent.mm.hellhoundlib.b.a locala;
+      if (s.p(paramView, "emoji"))
+      {
+        paramView = getEmojiContentContainerRv();
+        locala = com.tencent.mm.hellhoundlib.b.c.a(i, new com.tencent.mm.hellhoundlib.b.a());
+        com.tencent.mm.hellhoundlib.a.a.b(paramView, locala.aYi(), "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "onEmojiSubTypeClick", "(ILandroid/view/View;)V", "Undefined", "scrollToPosition", "(I)V");
+        paramView.scrollToPosition(((Integer)locala.sb(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "onEmojiSubTypeClick", "(ILandroid/view/View;)V", "Undefined", "scrollToPosition", "(I)V");
+        paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+        paramView = com.tencent.mm.plugin.hld.f.g.Jyo;
+        com.tencent.mm.plugin.hld.model.k.r(4, com.tencent.mm.plugin.hld.f.g.YF(paramInt), 1);
+        AppMethodBeat.o(313316);
+        return;
+      }
+      if (s.p(paramView, "kaoemoji"))
+      {
+        paramView = getKaoemojiContentContainerRv();
+        locala = com.tencent.mm.hellhoundlib.b.c.a(i, new com.tencent.mm.hellhoundlib.b.a());
+        com.tencent.mm.hellhoundlib.a.a.b(paramView, locala.aYi(), "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "onEmojiSubTypeClick", "(ILandroid/view/View;)V", "Undefined", "scrollToPosition", "(I)V");
+        paramView.scrollToPosition(((Integer)locala.sb(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "onEmojiSubTypeClick", "(ILandroid/view/View;)V", "Undefined", "scrollToPosition", "(I)V");
+        paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+        paramView = com.tencent.mm.plugin.hld.f.g.Jyo;
+        com.tencent.mm.plugin.hld.model.k.r(5, com.tencent.mm.plugin.hld.f.g.YG(paramInt), 2);
+      }
+      AppMethodBeat.o(313316);
+      return;
+    }
   }
   
   public final void setTabSelected(int paramInt)
   {
-    AppMethodBeat.i(216058);
+    AppMethodBeat.i(313345);
     Log.i("WxIme.S7EmojiKeyboard", "setTabSelected: %s", new Object[] { Integer.valueOf(paramInt) });
-    Object localObject1 = com.tencent.mm.plugin.hld.f.g.DHh;
+    Object localObject1 = com.tencent.mm.plugin.hld.f.g.Jyo;
     localObject1 = getContext();
-    p.j(localObject1, "context");
-    localObject1 = com.tencent.mm.plugin.hld.f.g.be((Context)localObject1, this.Dwu);
+    s.s(localObject1, "context");
+    localObject1 = com.tencent.mm.plugin.hld.f.g.bg((Context)localObject1, this.JpB);
     if ((paramInt >= 0) && (paramInt < ((ArrayList)localObject1).size()))
     {
-      localObject1 = this.Dwu;
-      switch (((String)localObject1).hashCode())
-      {
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(216058);
-      return;
-      if (((String)localObject1).equals("emoji"))
+      localObject1 = this.JpB;
+      Object localObject2;
+      if (s.p(localObject1, "emoji"))
       {
         localObject1 = getEmojiSubTypeContainerRv().getAdapter();
         if (localObject1 == null)
         {
-          localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.hld.emoji.ImeEmojiSubTypeAdapter");
-          AppMethodBeat.o(216058);
+          localObject1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.hld.emoji.ImeEmojiSubTypeAdapter");
+          AppMethodBeat.o(313345);
           throw ((Throwable)localObject1);
-          if (!((String)localObject1).equals("kaoemoji")) {
-            continue;
-          }
-          localObject1 = getKaoemojiSubTypeContainerRv().getAdapter();
-          if (localObject1 == null)
-          {
-            localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.hld.emoji.ImeEmojiSubTypeAdapter");
-            AppMethodBeat.o(216058);
-            throw ((Throwable)localObject1);
-          }
         }
-        else
+        localObject1 = (com.tencent.mm.plugin.hld.emoji.j)localObject1;
+        localObject2 = getContext();
+        s.s(localObject2, "context");
+        ((com.tencent.mm.plugin.hld.emoji.j)localObject1).aH((Context)localObject2, paramInt);
+        localObject1 = getEmojiSubTypeContainerRv();
+        localObject2 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
+        com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "setTabSelected", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
+        ((ImeEmojiSubTypeScrollView)localObject1).smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "setTabSelected", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
+        AppMethodBeat.o(313345);
+        return;
+      }
+      if (s.p(localObject1, "kaoemoji"))
+      {
+        localObject1 = getKaoemojiSubTypeContainerRv().getAdapter();
+        if (localObject1 == null)
         {
-          localObject1 = (j)localObject1;
-          localObject2 = getContext();
-          p.j(localObject2, "context");
-          ((j)localObject1).au((Context)localObject2, paramInt);
-          localObject1 = getEmojiSubTypeContainerRv();
-          localObject2 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-          com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "setTabSelected", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-          ((ImeEmojiSubTypeScrollView)localObject1).smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0)).intValue());
-          com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "setTabSelected", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-          AppMethodBeat.o(216058);
-          return;
+          localObject1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.hld.emoji.ImeEmojiSubTypeAdapter");
+          AppMethodBeat.o(313345);
+          throw ((Throwable)localObject1);
         }
-        localObject1 = (j)localObject1;
-        Object localObject2 = getContext();
-        p.j(localObject2, "context");
-        ((j)localObject1).au((Context)localObject2, paramInt);
+        localObject1 = (com.tencent.mm.plugin.hld.emoji.j)localObject1;
+        localObject2 = getContext();
+        s.s(localObject2, "context");
+        ((com.tencent.mm.plugin.hld.emoji.j)localObject1).aH((Context)localObject2, paramInt);
         localObject1 = getKaoemojiSubTypeContainerRv();
         localObject2 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "setTabSelected", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-        ((ImeEmojiSubTypeScrollView)localObject1).smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "setTabSelected", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
+        ((ImeEmojiSubTypeScrollView)localObject1).smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard", "setTabSelected", "(I)V", "Undefined", "smoothScrollToPosition", "(I)V");
       }
     }
+    AppMethodBeat.o(313345);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<RelativeLayout>
   {
     b(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -624,9 +673,9 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<ImeKeyButton>
   {
     c(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -635,9 +684,9 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiContentScrollView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiContentScrollView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
+    extends u
     implements kotlin.g.a.a<ImeEmojiContentScrollView>
   {
     d(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -646,9 +695,9 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroidx/constraintlayout/widget/ConstraintLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroidx/constraintlayout/widget/ConstraintLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
+    extends u
     implements kotlin.g.a.a<ConstraintLayout>
   {
     e(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -657,9 +706,9 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
+    extends u
     implements kotlin.g.a.a<ImeEmojiSubTypeScrollView>
   {
     f(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -668,9 +717,9 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
+    extends u
     implements kotlin.g.a.a<RelativeLayout>
   {
     g(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -679,9 +728,9 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/emoji/ImeKaoEmojiContentScrollView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/emoji/ImeKaoEmojiContentScrollView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
+    extends u
     implements kotlin.g.a.a<ImeKaoEmojiContentScrollView>
   {
     h(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -690,9 +739,9 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class i
-    extends q
+    extends u
     implements kotlin.g.a.a<ImageView>
   {
     i(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -701,9 +750,9 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiSubTypeScrollView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class j
-    extends q
+    extends u
     implements kotlin.g.a.a<ImeEmojiSubTypeScrollView>
   {
     j(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -712,9 +761,9 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class k
-    extends q
+    extends u
     implements kotlin.g.a.a<RelativeLayout>
   {
     k(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -723,9 +772,9 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class l
-    extends q
+    extends u
     implements kotlin.g.a.a<LinearLayout>
   {
     l(S7EmojiKeyboard paramS7EmojiKeyboard)
@@ -734,159 +783,84 @@ public final class S7EmojiKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class m
-    implements Runnable
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard$pageSelectedListener$1", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiPagerScrollHelper$OnPageSelectedListener;", "onPageSelected", "", "position", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class m
+    implements i.a
   {
     m(S7EmojiKeyboard paramS7EmojiKeyboard) {}
     
-    public final void run()
-    {
-      AppMethodBeat.i(209778);
-      S7EmojiKeyboard.a(this.Dzp).setEmpty();
-      S7EmojiKeyboard.a(this.Dzp).union(this.Dzp.getDeleteBt().getLeft(), this.Dzp.getDeleteBt().getTop(), this.Dzp.getDeleteBt().getRight(), this.Dzp.getDeleteBt().getBottom());
-      S7EmojiKeyboard.a(this.Dzp).union(this.Dzp.getSendBt().getLeft(), this.Dzp.getSendBt().getTop(), this.Dzp.getSendBt().getRight(), this.Dzp.getSendBt().getBottom());
-      if (p.h(S7EmojiKeyboard.b(this.Dzp), "emoji"))
-      {
-        Object localObject2 = this.Dzp.getEmojiContentContainerRv();
-        Object localObject1 = S7EmojiKeyboard.a(this.Dzp);
-        p.k(localObject1, "rect");
-        Object localObject3 = com.tencent.mm.plugin.hld.f.g.DHh;
-        localObject3 = com.tencent.mm.plugin.hld.f.g.aLG("emoji");
-        Object localObject4 = (List)((ImeEmojiContentScrollView)localObject2).DvW;
-        int i = 0;
-        localObject4 = ((List)localObject4).iterator();
-        if (((Iterator)localObject4).hasNext()) {
-          if (!p.h(((com.tencent.mm.plugin.hld.emoji.k)((Iterator)localObject4).next()).typeName, localObject3)) {}
-        }
-        for (;;)
-        {
-          localObject3 = ((ImeEmojiContentScrollView)localObject2).cK(i);
-          if ((!(localObject3 instanceof e)) || (!(((e)localObject3).Dwa.getLayoutManager() instanceof EmojiLayoutManager))) {
-            break label390;
-          }
-          localObject3 = ((e)localObject3).Dwa.getLayoutManager();
-          if (localObject3 != null) {
-            break label294;
-          }
-          localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.hld.emoji.EmojiLayoutManager");
-          AppMethodBeat.o(209778);
-          throw ((Throwable)localObject1);
-          i += 1;
-          break;
-          i = -1;
-        }
-        label294:
-        localObject3 = (EmojiLayoutManager)localObject3;
-        localObject2 = ((ImeEmojiContentScrollView)localObject2).getContext();
-        p.j(localObject2, "context");
-        p.k(localObject1, "rect");
-        p.k(localObject2, "context");
-        ((EmojiLayoutManager)localObject3).jLp.set((Rect)localObject1);
-        EmojiLayoutManager.a((EmojiLayoutManager)localObject3);
-        Log.i("WxIme.EmojiLayoutManager", "updateHideArea ".concat(String.valueOf(localObject1)));
-        if (((EmojiLayoutManager)localObject3).maxHeight == 0)
-        {
-          ((EmojiLayoutManager)localObject3).maxHeight = ((Context)localObject2).getResources().getDimensionPixelSize(a.d.Edge_A);
-          ((EmojiLayoutManager)localObject3).DvR = ((Context)localObject2).getResources().getDimensionPixelSize(a.d.ime_emoji_top_bottom_margin);
-        }
-      }
-      label390:
-      AppMethodBeat.o(209778);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard$pageSelectedListener$1", "Lcom/tencent/mm/plugin/hld/emoji/ImeEmojiPagerScrollHelper$OnPageSelectedListener;", "onPageSelected", "", "position", "", "plugin-hld_release"})
-  public static final class n
-    implements i.a
-  {
     public final void onPageSelected(int paramInt)
     {
-      AppMethodBeat.i(210709);
-      if ((paramInt < 0) || (paramInt >= S7EmojiKeyboard.c(this.Dzp)))
+      AppMethodBeat.i(312951);
+      if ((paramInt < 0) || (paramInt >= S7EmojiKeyboard.b(this.Jsr)))
       {
-        AppMethodBeat.o(210709);
+        AppMethodBeat.o(312951);
         return;
       }
-      Object localObject = com.tencent.mm.plugin.hld.f.g.DHh;
-      localObject = this.Dzp.getRootView();
-      p.j(localObject, "rootView");
-      localObject = ((View)localObject).getContext();
-      p.j(localObject, "rootView.context");
-      if (com.tencent.mm.plugin.hld.f.g.K((Context)localObject, S7EmojiKeyboard.b(this.Dzp), "recent").MGI.isEmpty()) {}
+      Object localObject = com.tencent.mm.plugin.hld.f.g.Jyo;
+      localObject = this.Jsr.getRootView().getContext();
+      s.s(localObject, "rootView.context");
+      if (com.tencent.mm.plugin.hld.f.g.K((Context)localObject, S7EmojiKeyboard.c(this.Jsr), "recent").Trs.isEmpty()) {}
       for (int i = paramInt + 1;; i = paramInt)
       {
-        this.Dzp.setTabSelected(i);
-        localObject = S7EmojiKeyboard.b(this.Dzp);
-        switch (((String)localObject).hashCode())
+        this.Jsr.setTabSelected(i);
+        localObject = S7EmojiKeyboard.c(this.Jsr);
+        if (s.p(localObject, "emoji"))
         {
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(210709);
+          localObject = com.tencent.mm.plugin.hld.model.k.JvH;
+          localObject = com.tencent.mm.plugin.hld.f.g.Jyo;
+          com.tencent.mm.plugin.hld.model.k.r(8, com.tencent.mm.plugin.hld.f.g.YF(paramInt), 1);
+          AppMethodBeat.o(312951);
           return;
-          if (((String)localObject).equals("emoji"))
-          {
-            localObject = com.tencent.mm.plugin.hld.model.k.DDb;
-            localObject = com.tencent.mm.plugin.hld.f.g.DHh;
-            com.tencent.mm.plugin.hld.model.k.n(8, com.tencent.mm.plugin.hld.f.g.UH(paramInt), 1);
-            AppMethodBeat.o(210709);
-            return;
-            if (((String)localObject).equals("kaoemoji"))
-            {
-              localObject = com.tencent.mm.plugin.hld.model.k.DDb;
-              localObject = com.tencent.mm.plugin.hld.f.g.DHh;
-              com.tencent.mm.plugin.hld.model.k.n(8, com.tencent.mm.plugin.hld.f.g.UI(paramInt), 2);
-            }
-          }
         }
+        if (s.p(localObject, "kaoemoji"))
+        {
+          localObject = com.tencent.mm.plugin.hld.model.k.JvH;
+          localObject = com.tencent.mm.plugin.hld.f.g.Jyo;
+          com.tencent.mm.plugin.hld.model.k.r(8, com.tencent.mm.plugin.hld.f.g.YG(paramInt), 2);
+        }
+        AppMethodBeat.o(312951);
+        return;
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard$recentSelectedListener$1", "Lcom/tencent/mm/plugin/hld/keyboard/OnEmojiRecentSelectedListener;", "onSelecte", "", "typeName", "", "plugin-hld_release"})
-  public static final class o
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/keyboard/S7EmojiKeyboard$recentSelectedListener$1", "Lcom/tencent/mm/plugin/hld/keyboard/OnEmojiRecentSelectedListener;", "onSelecte", "", "typeName", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class n
     implements d
   {
-    public final void aLt(String paramString)
+    n(S7EmojiKeyboard paramS7EmojiKeyboard) {}
+    
+    public final void aIk(String paramString)
     {
-      AppMethodBeat.i(212680);
-      p.k(paramString, "typeName");
-      switch (paramString.hashCode())
+      AppMethodBeat.i(312953);
+      s.u(paramString, "typeName");
+      if (s.p(paramString, "emoji"))
       {
-      }
-      do
-      {
-        do
+        paramString = this.Jsr.getEmojiSubTypeContainerRv().getAdapter();
+        if (paramString != null)
         {
-          do
-          {
-            AppMethodBeat.o(212680);
-            return;
-          } while (!paramString.equals("emoji"));
-          paramString = this.Dzp.getEmojiSubTypeContainerRv().getAdapter();
-          if (paramString == null) {
-            break;
-          }
-          paramString.cL(0);
-          AppMethodBeat.o(212680);
-          return;
-        } while (!paramString.equals("kaoemoji"));
-        paramString = this.Dzp.getKaoemojiSubTypeContainerRv().getAdapter();
-      } while (paramString == null);
-      paramString.cL(0);
-      AppMethodBeat.o(212680);
-      return;
-      AppMethodBeat.o(212680);
+          paramString.fV(0);
+          AppMethodBeat.o(312953);
+        }
+      }
+      else if (s.p(paramString, "kaoemoji"))
+      {
+        paramString = this.Jsr.getKaoemojiSubTypeContainerRv().getAdapter();
+        if (paramString != null) {
+          paramString.fV(0);
+        }
+      }
+      AppMethodBeat.o(312953);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class p
-    extends q
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class o
+    extends u
     implements kotlin.g.a.a<ImeKeyButton>
   {
-    p(S7EmojiKeyboard paramS7EmojiKeyboard)
+    o(S7EmojiKeyboard paramS7EmojiKeyboard)
     {
       super();
     }

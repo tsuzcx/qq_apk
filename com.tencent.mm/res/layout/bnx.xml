@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/amm" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingBottom="@dimen/cp" android:layout_width="@dimen/d_" android:layout_height="wrap_content" android:minHeight="@dimen/dc">
+        <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/f1c" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/cp" app:iconColor="@color/a8k" />
+        <TextView android:textSize="@dimen/fa" android:textColor="@color/a8k" android:gravity="center_horizontal" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="{title}" android:maxLines="1" android:includeFontPadding="false" />
+        <TextView android:textSize="11.0dip" android:textColor="@color/a8k" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/exq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="{hotword}" android:maxLines="1" />
+    </LinearLayout>
+</LinearLayout>

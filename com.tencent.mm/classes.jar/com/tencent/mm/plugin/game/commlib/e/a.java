@@ -7,30 +7,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static boolean Czo;
-  public static a Czp;
+  public static boolean Itd;
+  public static a Ite;
   
   public static final class a
     extends BroadcastReceiver
   {
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      AppMethodBeat.i(188548);
+      AppMethodBeat.i(275347);
       if (paramIntent == null)
       {
-        AppMethodBeat.o(188548);
+        AppMethodBeat.o(275347);
         return;
       }
       if ("android.intent.action.BATTERY_OKAY".equals(paramIntent.getAction()))
       {
-        a.Czo = false;
-        AppMethodBeat.o(188548);
+        a.Itd = false;
+        AppMethodBeat.o(275347);
         return;
       }
       if ("android.intent.action.BATTERY_LOW".equals(paramIntent.getAction())) {
-        a.Czo = true;
+        a.Itd = true;
       }
-      AppMethodBeat.o(188548);
+      AppMethodBeat.o(275347);
     }
   }
 }

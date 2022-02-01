@@ -1,7 +1,9 @@
 package com.tencent.mm.storage;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -15,56 +17,61 @@ public final class cw
   
   static
   {
-    AppMethodBeat.i(148677);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(cv.info, "VoiceTransText") };
-    AppMethodBeat.o(148677);
+    AppMethodBeat.i(32891);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(cv.info, "UserOpenIdInApp") };
+    AppMethodBeat.o(32891);
   }
   
   public cw(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(paramISQLiteDatabase, cv.info, "VoiceTransText", null);
-  }
-  
-  public cw(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
-  {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+    super(paramISQLiteDatabase, cv.info, "UserOpenIdInApp", null);
+    AppMethodBeat.i(32887);
     this.db = paramISQLiteDatabase;
+    paramISQLiteDatabase.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppAppIdUsernameIndex ON UserOpenIdInApp ( appId,username )");
+    paramISQLiteDatabase.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppOpenIdIndex ON UserOpenIdInApp ( openId )");
+    AppMethodBeat.o(32887);
   }
   
-  public final boolean b(cv paramcv)
+  public final boolean a(cv paramcv)
   {
-    AppMethodBeat.i(148674);
-    if (paramcv == null)
+    AppMethodBeat.i(32889);
+    if ((paramcv == null) || (Util.isNullOrNil(paramcv.field_appId)) || (Util.isNullOrNil(paramcv.field_openId)) || (Util.isNullOrNil(paramcv.field_username)))
     {
-      AppMethodBeat.o(148674);
+      Log.w("MicroMsg.scanner.UserOpenIdInAppStorage", "wrong argument");
+      AppMethodBeat.o(32889);
       return false;
     }
-    paramcv = paramcv.convertTo();
-    if (this.db.replace("VoiceTransText", "msgId", paramcv) >= 0L)
+    ContentValues localContentValues = paramcv.convertTo();
+    if (this.db.replace("UserOpenIdInApp", cv.info.primaryKey, localContentValues) > 0L) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(148674);
-      return true;
+      Log.d("MicroMsg.scanner.UserOpenIdInAppStorage", "replace: appId=%s, username=%s, ret=%s ", new Object[] { paramcv.field_appId, paramcv.field_username, Boolean.valueOf(bool) });
+      AppMethodBeat.o(32889);
+      return bool;
     }
-    AppMethodBeat.o(148674);
-    return false;
   }
   
-  public final cv bxz(String paramString)
+  public final cv byP(String paramString)
   {
-    AppMethodBeat.i(148675);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(32888);
+    if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(148675);
+      AppMethodBeat.o(32888);
       return null;
     }
-    cv localcv = new cv();
-    paramString = this.db.query("VoiceTransText", null, "cmsgId=?", new String[] { String.valueOf(paramString) }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localcv.convertFrom(paramString);
+    Cursor localCursor = this.db.query("UserOpenIdInApp", null, "openId=?", new String[] { Util.escapeSqlValue(paramString) }, null, null, null, 2);
+    if (!localCursor.moveToFirst())
+    {
+      Log.w("MicroMsg.scanner.UserOpenIdInAppStorage", "get null with openId:".concat(String.valueOf(paramString)));
+      localCursor.close();
+      AppMethodBeat.o(32888);
+      return null;
     }
-    paramString.close();
-    AppMethodBeat.o(148675);
-    return localcv;
+    paramString = new cv();
+    paramString.convertFrom(localCursor);
+    localCursor.close();
+    AppMethodBeat.o(32888);
+    return paramString;
   }
 }
 

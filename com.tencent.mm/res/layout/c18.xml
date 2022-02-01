@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckBox android:id="@id/b0m" android:background="@drawable/ay0" android:focusable="false" android:clickable="false" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:button="@null" android:layout_centerVertical="true" style="@style/m6"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/iwl" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/c_n" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <Button android:textSize="18.0sp" android:layout_gravity="center_vertical" android:id="@id/c9n" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="download" style="@style/a69" />
+        <com.tencent.mm.plugin.sns.ui.widget.SnsTextProgressBar android:layout_gravity="center_vertical" android:id="@id/c_a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:max="100" android:progress="50" custom:textSize="18.0dip" style="@style/a6_" />
+    </FrameLayout>
+</RelativeLayout>

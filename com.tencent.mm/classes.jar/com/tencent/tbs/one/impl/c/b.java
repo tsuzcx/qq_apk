@@ -306,29 +306,28 @@ public final class b
   
   private static ClassLoader c()
   {
-    AppMethodBeat.i(190120);
+    AppMethodBeat.i(219255);
     try
     {
-      Object localObject = Class.forName("dalvik.system.VMStack").getMethod("getCallingClassLoader", new Class[0]);
-      ((Method)localObject).setAccessible(true);
-      localObject = ((Method)localObject).invoke(null, new Object[0]);
-      if ((localObject instanceof ClassLoader))
+      Object localObject1 = Class.forName("dalvik.system.VMStack").getMethod("getCallingClassLoader", new Class[0]);
+      ((Method)localObject1).setAccessible(true);
+      localObject1 = ((Method)localObject1).invoke(null, new Object[0]);
+      if ((localObject1 instanceof ClassLoader))
       {
-        localObject = (ClassLoader)localObject;
-        AppMethodBeat.o(190120);
-        return localObject;
+        localObject1 = (ClassLoader)localObject1;
+        return localObject1;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(190120);
+      AppMethodBeat.o(219255);
     }
     return null;
   }
   
   private Set<String> d()
   {
-    AppMethodBeat.i(190129);
+    AppMethodBeat.i(219257);
     HashSet localHashSet = new HashSet();
     localHashSet.add(this.k.getAbsolutePath());
     String[] arrayOfString = this.f.f;
@@ -343,7 +342,7 @@ public final class b
         i1 += 1;
       }
     }
-    AppMethodBeat.o(190129);
+    AppMethodBeat.o(219257);
     return localHashSet;
   }
   
@@ -451,13 +450,13 @@ public final class b
   
   public final void a(final Bundle paramBundle)
   {
-    AppMethodBeat.i(190073);
+    AppMethodBeat.i(219265);
     Object localObject1 = this.b.b;
     Object localObject2 = this.a;
     if (this.e)
     {
       com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Have started loading component", new Object[] { localObject1, localObject2 });
-      AppMethodBeat.o(190073);
+      AppMethodBeat.o(219265);
       return;
     }
     com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Loading DEPS", new Object[] { localObject1, localObject2 });
@@ -485,19 +484,19 @@ public final class b
     {
       com.tencent.tbs.one.impl.a.f.a("[%s] Loaded DEPS#%d", new Object[] { str, Integer.valueOf(((com.tencent.tbs.one.impl.e.h)localObject1).h.a) });
       ((l)localObject2).a(((com.tencent.tbs.one.impl.e.h)localObject1).h);
-      AppMethodBeat.o(190073);
+      AppMethodBeat.o(219265);
       return;
     }
     if (((com.tencent.tbs.one.impl.e.h)localObject1).i == null) {
       ((com.tencent.tbs.one.impl.e.h)localObject1).i = new h.1((com.tencent.tbs.one.impl.e.h)localObject1, paramBundle);
     }
     ((com.tencent.tbs.one.impl.e.h)localObject1).i.a((l)localObject2);
-    AppMethodBeat.o(190073);
+    AppMethodBeat.o(219265);
   }
   
   public final void a(Bundle paramBundle, TBSOneCallback<File> paramTBSOneCallback)
   {
-    AppMethodBeat.i(190069);
+    AppMethodBeat.i(219262);
     if (this.k != null)
     {
       com.tencent.tbs.one.impl.a.f.a("[%s] {%s} Installed component at %s", new Object[] { this.b.b, this.a, this.k });
@@ -506,7 +505,7 @@ public final class b
         paramTBSOneCallback.onProgressChanged(0, 100);
         paramTBSOneCallback.onCompleted(this.k);
       }
-      AppMethodBeat.o(190069);
+      AppMethodBeat.o(219262);
       return;
     }
     if (paramTBSOneCallback != null)
@@ -515,14 +514,14 @@ public final class b
       this.c.add(paramTBSOneCallback);
     }
     a(paramBundle);
-    AppMethodBeat.o(190069);
+    AppMethodBeat.o(219262);
   }
   
   /* Error */
   public final void b()
   {
     // Byte code:
-    //   0: ldc_w 519
+    //   0: ldc_w 517
     //   3: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 75	com/tencent/tbs/one/impl/c/b:b	Lcom/tencent/tbs/one/impl/e/h;
@@ -535,7 +534,7 @@ public final class b
     //   22: getfield 93	com/tencent/tbs/one/impl/c/b:f	Lcom/tencent/tbs/one/impl/common/d$a;
     //   25: getfield 97	com/tencent/tbs/one/impl/common/d$a:c	I
     //   28: istore_2
-    //   29: ldc_w 521
+    //   29: ldc_w 519
     //   32: iconst_2
     //   33: anewarray 4	java/lang/Object
     //   36: dup
@@ -547,25 +546,25 @@ public final class b
     //   43: aload 8
     //   45: aastore
     //   46: invokestatic 154	com/tencent/tbs/one/impl/a/f:a	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   49: new 523	com/tencent/tbs/one/impl/c/a
+    //   49: new 521	com/tencent/tbs/one/impl/c/a
     //   52: dup
     //   53: aload 8
     //   55: aload_0
     //   56: getfield 93	com/tencent/tbs/one/impl/c/b:f	Lcom/tencent/tbs/one/impl/common/d$a;
-    //   59: getfield 524	com/tencent/tbs/one/impl/common/d$a:b	Ljava/lang/String;
+    //   59: getfield 522	com/tencent/tbs/one/impl/common/d$a:b	Ljava/lang/String;
     //   62: iload_2
     //   63: aload_0
     //   64: getfield 121	com/tencent/tbs/one/impl/c/b:k	Ljava/io/File;
-    //   67: invokespecial 527	com/tencent/tbs/one/impl/c/a:<init>	(Ljava/lang/String;Ljava/lang/String;ILjava/io/File;)V
+    //   67: invokespecial 525	com/tencent/tbs/one/impl/c/a:<init>	(Ljava/lang/String;Ljava/lang/String;ILjava/io/File;)V
     //   70: astore 6
     //   72: aload_0
-    //   73: ldc_w 529
+    //   73: ldc_w 527
     //   76: invokespecial 156	com/tencent/tbs/one/impl/c/b:a	(Ljava/lang/String;)Ljava/io/File;
     //   79: astore 4
     //   81: aload 4
     //   83: invokevirtual 127	java/io/File:exists	()Z
     //   86: ifeq +950 -> 1036
-    //   89: ldc_w 531
+    //   89: ldc_w 529
     //   92: iconst_3
     //   93: anewarray 4	java/lang/Object
     //   96: dup
@@ -584,15 +583,15 @@ public final class b
     //   114: invokestatic 154	com/tencent/tbs/one/impl/a/f:a	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   117: aload_0
     //   118: aload 4
-    //   120: invokestatic 534	com/tencent/tbs/one/impl/common/e:a	(Ljava/io/File;)Lcom/tencent/tbs/one/impl/common/e;
+    //   120: invokestatic 532	com/tencent/tbs/one/impl/common/e:a	(Ljava/io/File;)Lcom/tencent/tbs/one/impl/common/e;
     //   123: putfield 177	com/tencent/tbs/one/impl/c/b:m	Lcom/tencent/tbs/one/impl/common/e;
     //   126: aload_0
     //   127: getfield 177	com/tencent/tbs/one/impl/c/b:m	Lcom/tencent/tbs/one/impl/common/e;
-    //   130: getfield 537	com/tencent/tbs/one/impl/common/e:f	[Landroid/util/Pair;
+    //   130: getfield 535	com/tencent/tbs/one/impl/common/e:f	[Landroid/util/Pair;
     //   133: astore 9
     //   135: aload 9
     //   137: ifnull +180 -> 317
-    //   140: ldc_w 539
+    //   140: ldc_w 537
     //   143: iconst_3
     //   144: anewarray 4	java/lang/Object
     //   147: dup
@@ -623,25 +622,25 @@ public final class b
     //   182: aload_0
     //   183: getfield 75	com/tencent/tbs/one/impl/c/b:b	Lcom/tencent/tbs/one/impl/e/h;
     //   186: astore 10
-    //   188: new 541	com/tencent/tbs/one/impl/common/g
+    //   188: new 539	com/tencent/tbs/one/impl/common/g
     //   191: dup
     //   192: aload 8
     //   194: aload 4
-    //   196: getfield 547	android/util/Pair:second	Ljava/lang/Object;
+    //   196: getfield 545	android/util/Pair:second	Ljava/lang/Object;
     //   199: checkcast 293	java/lang/String
     //   202: aload 4
-    //   204: getfield 550	android/util/Pair:first	Ljava/lang/Object;
+    //   204: getfield 548	android/util/Pair:first	Ljava/lang/Object;
     //   207: checkcast 293	java/lang/String
-    //   210: invokespecial 553	com/tencent/tbs/one/impl/common/g:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   210: invokespecial 551	com/tencent/tbs/one/impl/common/g:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   213: astore 11
     //   215: aload 11
-    //   217: getfield 554	com/tencent/tbs/one/impl/common/g:c	Ljava/lang/String;
+    //   217: getfield 552	com/tencent/tbs/one/impl/common/g:c	Ljava/lang/String;
     //   220: astore 12
     //   222: aload 10
-    //   224: getfield 556	com/tencent/tbs/one/impl/e/h:k	Ljava/util/Map;
+    //   224: getfield 554	com/tencent/tbs/one/impl/e/h:k	Ljava/util/Map;
     //   227: aload 12
     //   229: invokeinterface 148 2 0
-    //   234: checkcast 558	java/util/List
+    //   234: checkcast 556	java/util/List
     //   237: astore 5
     //   239: aload 5
     //   241: astore 4
@@ -652,14 +651,14 @@ public final class b
     //   252: invokespecial 67	java/util/ArrayList:<init>	()V
     //   255: astore 4
     //   257: aload 10
-    //   259: getfield 556	com/tencent/tbs/one/impl/e/h:k	Ljava/util/Map;
+    //   259: getfield 554	com/tencent/tbs/one/impl/e/h:k	Ljava/util/Map;
     //   262: aload 12
     //   264: aload 4
     //   266: invokeinterface 272 3 0
     //   271: pop
     //   272: aload 4
     //   274: aload 11
-    //   276: invokeinterface 559 2 0
+    //   276: invokeinterface 557 2 0
     //   281: pop
     //   282: iload_1
     //   283: iconst_1
@@ -669,16 +668,16 @@ public final class b
     //   289: astore 4
     //   291: aload_0
     //   292: aload 4
-    //   294: invokevirtual 563	com/tencent/tbs/one/TBSOneException:getErrorCode	()I
+    //   294: invokevirtual 561	com/tencent/tbs/one/TBSOneException:getErrorCode	()I
     //   297: aload 4
-    //   299: invokevirtual 566	com/tencent/tbs/one/TBSOneException:getMessage	()Ljava/lang/String;
+    //   299: invokevirtual 564	com/tencent/tbs/one/TBSOneException:getMessage	()Ljava/lang/String;
     //   302: aload 4
-    //   304: invokevirtual 570	com/tencent/tbs/one/TBSOneException:getCause	()Ljava/lang/Throwable;
-    //   307: invokevirtual 572	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   310: ldc_w 519
+    //   304: invokevirtual 568	com/tencent/tbs/one/TBSOneException:getCause	()Ljava/lang/Throwable;
+    //   307: invokevirtual 570	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   310: ldc_w 517
     //   313: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   316: return
-    //   317: ldc_w 574
+    //   317: ldc_w 572
     //   320: iconst_2
     //   321: anewarray 4	java/lang/Object
     //   324: dup
@@ -696,7 +695,7 @@ public final class b
     //   344: astore 5
     //   346: aload_0
     //   347: getfield 177	com/tencent/tbs/one/impl/c/b:m	Lcom/tencent/tbs/one/impl/common/e;
-    //   350: getfield 575	com/tencent/tbs/one/impl/common/e:b	Ljava/lang/String;
+    //   350: getfield 573	com/tencent/tbs/one/impl/common/e:b	Ljava/lang/String;
     //   353: astore 9
     //   355: aconst_null
     //   356: astore 4
@@ -707,7 +706,7 @@ public final class b
     //   367: aload 9
     //   369: invokespecial 156	com/tencent/tbs/one/impl/c/b:a	(Ljava/lang/String;)Ljava/io/File;
     //   372: astore 4
-    //   374: ldc_w 577
+    //   374: ldc_w 575
     //   377: iconst_4
     //   378: anewarray 4	java/lang/Object
     //   381: dup
@@ -735,30 +734,30 @@ public final class b
     //   416: bipush 105
     //   418: new 160	java/lang/StringBuilder
     //   421: dup
-    //   422: ldc_w 579
+    //   422: ldc_w 577
     //   425: invokespecial 163	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   428: aload 4
     //   430: invokevirtual 133	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   433: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   436: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   439: aconst_null
-    //   440: invokevirtual 572	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   443: ldc_w 519
+    //   440: invokevirtual 570	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   443: ldc_w 517
     //   446: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   449: return
-    //   450: new 581	com/tencent/tbs/one/impl/c/b/b
+    //   450: new 579	com/tencent/tbs/one/impl/c/b/b
     //   453: dup
     //   454: aload 5
     //   456: aload 4
     //   458: invokevirtual 133	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   461: invokespecial 584	com/tencent/tbs/one/impl/c/b/b:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   461: invokespecial 582	com/tencent/tbs/one/impl/c/b/b:<init>	(Landroid/content/Context;Ljava/lang/String;)V
     //   464: astore 4
     //   466: aload 6
     //   468: aload 4
-    //   470: putfield 585	com/tencent/tbs/one/impl/c/a:a	Landroid/content/Context;
+    //   470: putfield 583	com/tencent/tbs/one/impl/c/a:a	Landroid/content/Context;
     //   473: aload_0
     //   474: getfield 177	com/tencent/tbs/one/impl/c/b:m	Lcom/tencent/tbs/one/impl/common/e;
-    //   477: getfield 586	com/tencent/tbs/one/impl/common/e:c	Ljava/lang/String;
+    //   477: getfield 584	com/tencent/tbs/one/impl/common/e:c	Ljava/lang/String;
     //   480: astore 9
     //   482: aload 9
     //   484: invokestatic 186	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -770,15 +769,15 @@ public final class b
     //   498: astore 11
     //   500: aload 6
     //   502: aload 11
-    //   504: putfield 589	com/tencent/tbs/one/impl/c/a:b	Ljava/lang/ClassLoader;
+    //   504: putfield 587	com/tencent/tbs/one/impl/c/a:b	Ljava/lang/ClassLoader;
     //   507: aload_0
     //   508: getfield 177	com/tencent/tbs/one/impl/c/b:m	Lcom/tencent/tbs/one/impl/common/e;
-    //   511: getfield 591	com/tencent/tbs/one/impl/common/e:d	Ljava/lang/String;
+    //   511: getfield 589	com/tencent/tbs/one/impl/common/e:d	Ljava/lang/String;
     //   514: astore 10
     //   516: aload 10
     //   518: invokestatic 186	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   521: ifne +469 -> 990
-    //   524: ldc_w 593
+    //   524: ldc_w 591
     //   527: iconst_3
     //   528: anewarray 4	java/lang/Object
     //   531: dup
@@ -799,91 +798,91 @@ public final class b
     //   553: invokespecial 268	java/util/HashMap:<init>	()V
     //   556: astore 7
     //   558: aload 7
-    //   560: ldc_w 595
+    //   560: ldc_w 593
     //   563: aload 5
     //   565: invokeinterface 272 3 0
     //   570: pop
     //   571: aload 4
     //   573: ifnull +26 -> 599
     //   576: aload 4
-    //   578: getfield 598	com/tencent/tbs/one/impl/c/b/b:a	Lcom/tencent/tbs/one/impl/c/b/a;
+    //   578: getfield 596	com/tencent/tbs/one/impl/c/b/b:a	Lcom/tencent/tbs/one/impl/c/b/a;
     //   581: aload 11
-    //   583: putfield 602	com/tencent/tbs/one/impl/c/b/a:a	Ljava/lang/ClassLoader;
+    //   583: putfield 600	com/tencent/tbs/one/impl/c/b/a:a	Ljava/lang/ClassLoader;
     //   586: aload 7
-    //   588: ldc_w 604
+    //   588: ldc_w 602
     //   591: aload 4
     //   593: invokeinterface 272 3 0
     //   598: pop
     //   599: aload 7
-    //   601: ldc_w 606
+    //   601: ldc_w 604
     //   604: aload 11
     //   606: invokeinterface 272 3 0
     //   611: pop
     //   612: aload 7
-    //   614: ldc_w 608
+    //   614: ldc_w 606
     //   617: aload_0
     //   618: getfield 121	com/tencent/tbs/one/impl/c/b:k	Ljava/io/File;
     //   621: invokeinterface 272 3 0
     //   626: pop
     //   627: aload 7
-    //   629: ldc_w 610
+    //   629: ldc_w 608
     //   632: aload_0
     //   633: getfield 121	com/tencent/tbs/one/impl/c/b:k	Ljava/io/File;
     //   636: invokeinterface 272 3 0
     //   641: pop
     //   642: aload 7
-    //   644: ldc_w 612
+    //   644: ldc_w 610
     //   647: aload_0
     //   648: aload 9
     //   650: invokespecial 192	com/tencent/tbs/one/impl/c/b:b	(Ljava/lang/String;)Ljava/lang/String;
     //   653: invokeinterface 272 3 0
     //   658: pop
     //   659: aload 7
-    //   661: ldc_w 614
+    //   661: ldc_w 612
     //   664: aload_0
     //   665: getfield 93	com/tencent/tbs/one/impl/c/b:f	Lcom/tencent/tbs/one/impl/common/d$a;
-    //   668: getfield 524	com/tencent/tbs/one/impl/common/d$a:b	Ljava/lang/String;
+    //   668: getfield 522	com/tencent/tbs/one/impl/common/d$a:b	Ljava/lang/String;
     //   671: invokeinterface 272 3 0
     //   676: pop
     //   677: aload 7
-    //   679: ldc_w 616
+    //   679: ldc_w 614
     //   682: iload_2
     //   683: invokestatic 230	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   686: invokeinterface 272 3 0
     //   691: pop
     //   692: aload 7
-    //   694: ldc_w 618
+    //   694: ldc_w 616
     //   697: aload_0
     //   698: getfield 75	com/tencent/tbs/one/impl/c/b:b	Lcom/tencent/tbs/one/impl/e/h;
-    //   701: getfield 621	com/tencent/tbs/one/impl/e/h:l	Lcom/tencent/tbs/one/impl/e/b;
+    //   701: getfield 619	com/tencent/tbs/one/impl/e/h:l	Lcom/tencent/tbs/one/impl/e/b;
     //   704: invokeinterface 272 3 0
     //   709: pop
     //   710: aload 6
     //   712: aload 11
     //   714: aload 10
-    //   716: invokevirtual 624	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   716: invokevirtual 622	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
     //   719: iconst_1
-    //   720: anewarray 408	java/lang/Class
+    //   720: anewarray 406	java/lang/Class
     //   723: dup
     //   724: iconst_0
     //   725: ldc 144
     //   727: aastore
-    //   728: invokevirtual 628	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   728: invokevirtual 626	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
     //   731: iconst_1
     //   732: anewarray 4	java/lang/Object
     //   735: dup
     //   736: iconst_0
     //   737: aload 7
     //   739: aastore
-    //   740: invokevirtual 634	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   743: putfield 636	com/tencent/tbs/one/impl/c/a:c	Ljava/lang/Object;
+    //   740: invokevirtual 632	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   743: putfield 634	com/tencent/tbs/one/impl/c/a:c	Ljava/lang/Object;
     //   746: aload_0
     //   747: aload 6
-    //   749: invokespecial 638	com/tencent/tbs/one/impl/c/b:a	(Lcom/tencent/tbs/one/impl/c/a;)V
-    //   752: ldc_w 519
+    //   749: invokespecial 636	com/tencent/tbs/one/impl/c/b:a	(Lcom/tencent/tbs/one/impl/c/a;)V
+    //   752: ldc_w 517
     //   755: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   758: return
-    //   759: ldc_w 640
+    //   759: ldc_w 638
     //   762: iconst_2
     //   763: anewarray 4	java/lang/Object
     //   766: dup
@@ -899,13 +898,13 @@ public final class b
     //   782: astore 4
     //   784: aload_0
     //   785: aload 4
-    //   787: invokevirtual 563	com/tencent/tbs/one/TBSOneException:getErrorCode	()I
+    //   787: invokevirtual 561	com/tencent/tbs/one/TBSOneException:getErrorCode	()I
     //   790: aload 4
-    //   792: invokevirtual 566	com/tencent/tbs/one/TBSOneException:getMessage	()Ljava/lang/String;
+    //   792: invokevirtual 564	com/tencent/tbs/one/TBSOneException:getMessage	()Ljava/lang/String;
     //   795: aload 4
-    //   797: invokevirtual 570	com/tencent/tbs/one/TBSOneException:getCause	()Ljava/lang/Throwable;
-    //   800: invokevirtual 572	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   803: ldc_w 519
+    //   797: invokevirtual 568	com/tencent/tbs/one/TBSOneException:getCause	()Ljava/lang/Throwable;
+    //   800: invokevirtual 570	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   803: ldc_w 517
     //   806: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   809: return
     //   810: astore 4
@@ -913,23 +912,23 @@ public final class b
     //   813: sipush 405
     //   816: new 160	java/lang/StringBuilder
     //   819: dup
-    //   820: ldc_w 642
+    //   820: ldc_w 640
     //   823: invokespecial 163	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   826: aload 10
     //   828: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   831: ldc_w 644
+    //   831: ldc_w 642
     //   834: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   837: aload 9
     //   839: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   842: ldc_w 646
+    //   842: ldc_w 644
     //   845: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   848: aload 4
-    //   850: invokestatic 652	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   850: invokestatic 650	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   853: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   856: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   859: aconst_null
-    //   860: invokevirtual 572	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   863: ldc_w 519
+    //   860: invokevirtual 570	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   863: ldc_w 517
     //   866: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   869: return
     //   870: astore 4
@@ -937,23 +936,23 @@ public final class b
     //   873: sipush 406
     //   876: new 160	java/lang/StringBuilder
     //   879: dup
-    //   880: ldc_w 654
+    //   880: ldc_w 652
     //   883: invokespecial 163	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   886: aload 10
     //   888: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   891: ldc_w 656
+    //   891: ldc_w 654
     //   894: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   897: aload 9
     //   899: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   902: ldc_w 646
+    //   902: ldc_w 644
     //   905: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   908: aload 4
-    //   910: invokestatic 652	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   910: invokestatic 650	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   913: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   916: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   919: aconst_null
-    //   920: invokevirtual 572	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   923: ldc_w 519
+    //   920: invokevirtual 570	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   923: ldc_w 517
     //   926: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   929: return
     //   930: astore 4
@@ -961,26 +960,26 @@ public final class b
     //   933: sipush 407
     //   936: new 160	java/lang/StringBuilder
     //   939: dup
-    //   940: ldc_w 658
+    //   940: ldc_w 656
     //   943: invokespecial 163	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   946: aload 10
     //   948: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   951: ldc_w 644
+    //   951: ldc_w 642
     //   954: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   957: aload 9
     //   959: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   962: ldc_w 646
+    //   962: ldc_w 644
     //   965: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   968: aload 4
-    //   970: invokestatic 652	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   970: invokestatic 650	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   973: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   976: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   979: aconst_null
-    //   980: invokevirtual 572	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   983: ldc_w 519
+    //   980: invokevirtual 570	com/tencent/tbs/one/impl/c/b:b	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   983: ldc_w 517
     //   986: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   989: return
-    //   990: ldc_w 660
+    //   990: ldc_w 658
     //   993: iconst_2
     //   994: anewarray 4	java/lang/Object
     //   997: dup
@@ -993,7 +992,7 @@ public final class b
     //   1006: aastore
     //   1007: invokestatic 154	com/tencent/tbs/one/impl/a/f:a	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   1010: goto -264 -> 746
-    //   1013: ldc_w 662
+    //   1013: ldc_w 660
     //   1016: iconst_2
     //   1017: anewarray 4	java/lang/Object
     //   1020: dup
@@ -1006,7 +1005,7 @@ public final class b
     //   1029: aastore
     //   1030: invokestatic 154	com/tencent/tbs/one/impl/a/f:a	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   1033: goto -287 -> 746
-    //   1036: ldc_w 664
+    //   1036: ldc_w 662
     //   1039: iconst_2
     //   1040: anewarray 4	java/lang/Object
     //   1043: dup
@@ -1096,7 +1095,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.b
  * JD-Core Version:    0.7.0.1
  */

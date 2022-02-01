@@ -14,66 +14,70 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.g;
-import com.tencent.mm.plugin.appbrand.au.c;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.g;
-import com.tencent.mm.plugin.appbrand.au.i;
-import com.tencent.mm.protocal.protobuf.eie;
-import com.tencent.mm.protocal.protobuf.hj;
+import com.tencent.mm.plugin.appbrand.ba.c;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.g;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.protocal.protobuf.fcg;
+import com.tencent.mm.protocal.protobuf.ie;
+import com.tencent.mm.protocal.protobuf.if;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 import java.util.LinkedList;
+import java.util.List;
 
 public class AppBrandIDCardShowFrag
   extends MMFragment
 {
-  private RecyclerView jLl;
-  private ImageView jmf;
-  private LinearLayout jmn;
-  private TextView kEs;
+  private TextView descTv;
+  private ImageView lPb;
+  private LinearLayout lPl;
   private com.tencent.mm.ui.b mActionBarHelper;
-  AppBrandIDCardUI.a raQ;
-  private View raR;
-  private TextView raS;
-  private Button raT;
-  private CheckBox raU;
-  private TextView raV;
-  private LinearLayout raW;
-  private View raX;
-  private TextView raY;
-  private TextView raZ;
+  private RecyclerView mkw;
+  AppBrandIDCardUI.a ugH;
+  private View ugI;
+  private TextView ugJ;
+  private Button ugK;
+  private CheckBox ugL;
+  private TextView ugM;
+  private LinearLayout ugN;
+  private View ugO;
+  private TextView ugP;
+  private TextView ugQ;
   
   public void dealContentView(final View paramView)
   {
     AppMethodBeat.i(48920);
-    if ((this.raQ == null) || (this.raQ.ckF() == null))
+    if ((this.ugH == null) || (this.ugH.cLT() == null))
     {
       Log.e("MicroMsg.AppBrandIDCardShowFrag", "idCardUILogic or idCardUILogic.getIDCardShowInfo() is null, err");
       AppMethodBeat.o(48920);
       return;
     }
-    this.jmn = ((LinearLayout)paramView.findViewById(au.f.app_brand_idcard_show_layout));
-    this.jmf = ((ImageView)paramView.findViewById(au.f.app_brand_idcard_show_icon));
-    this.kEs = ((TextView)paramView.findViewById(au.f.app_brand_idcard_show_desc));
-    this.jLl = ((RecyclerView)paramView.findViewById(au.f.app_brand_idcard_show_list));
-    this.raS = ((TextView)paramView.findViewById(au.f.app_brand_idcard_show_busi_desc));
-    this.raT = ((Button)paramView.findViewById(au.f.app_brand_idcard_show_confirm));
-    this.raU = ((CheckBox)paramView.findViewById(au.f.app_brand_idcard_show_checkbox));
-    this.raV = ((TextView)paramView.findViewById(au.f.app_brand_show_protocal));
-    this.raW = ((LinearLayout)paramView.findViewById(au.f.app_brand_idcard_show_bottom_layout));
-    this.raX = paramView.findViewById(au.f.app_brand_idcard_show_url_line);
-    this.raY = ((TextView)paramView.findViewById(au.f.app_brand_idcard_show_url_1));
-    this.raZ = ((TextView)paramView.findViewById(au.f.app_brand_idcard_show_url_2));
-    this.raR = ad.kS(getContext()).inflate(au.g.actionbar_custom_area, null);
-    this.raR.setBackgroundColor(getResources().getColor(au.c.normal_actionbar_color));
-    this.mActionBarHelper = new com.tencent.mm.ui.b(this.raR);
-    paramView = new LinearLayout.LayoutParams(-1, com.tencent.mm.plugin.appbrand.widget.b.ew(getActivity()));
-    this.jmn.addView(this.raR, 0, paramView);
-    paramView = this.raQ.ckF();
+    this.lPl = ((LinearLayout)paramView.findViewById(ba.f.app_brand_idcard_show_layout));
+    this.lPb = ((ImageView)paramView.findViewById(ba.f.app_brand_idcard_show_icon));
+    this.descTv = ((TextView)paramView.findViewById(ba.f.app_brand_idcard_show_desc));
+    this.mkw = ((RecyclerView)paramView.findViewById(ba.f.app_brand_idcard_show_list));
+    this.ugJ = ((TextView)paramView.findViewById(ba.f.app_brand_idcard_show_busi_desc));
+    this.ugK = ((Button)paramView.findViewById(ba.f.app_brand_idcard_show_confirm));
+    this.ugL = ((CheckBox)paramView.findViewById(ba.f.app_brand_idcard_show_checkbox));
+    this.ugM = ((TextView)paramView.findViewById(ba.f.app_brand_show_protocal));
+    this.ugN = ((LinearLayout)paramView.findViewById(ba.f.app_brand_idcard_show_bottom_layout));
+    this.ugO = paramView.findViewById(ba.f.app_brand_idcard_show_url_line);
+    this.ugP = ((TextView)paramView.findViewById(ba.f.app_brand_idcard_show_url_1));
+    this.ugQ = ((TextView)paramView.findViewById(ba.f.app_brand_idcard_show_url_2));
+    this.ugI = af.mU(getContext()).inflate(ba.g.actionbar_custom_area, null);
+    this.ugI.setBackgroundColor(getResources().getColor(ba.c.normal_actionbar_color));
+    this.mActionBarHelper = new com.tencent.mm.ui.b(this.ugI);
+    paramView = new LinearLayout.LayoutParams(-1, com.tencent.mm.plugin.appbrand.widget.b.fs(getActivity()));
+    this.lPl.addView(this.ugI, 0, paramView);
+    paramView = this.ugH.cLT();
     this.mActionBarHelper.setTitle(paramView.title);
     this.mActionBarHelper.setClickListener(new View.OnClickListener()
     {
@@ -81,41 +85,41 @@ public class AppBrandIDCardShowFrag
       {
         AppMethodBeat.i(48909);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
-          AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).ckA();
+          AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).cLO();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(48909);
       }
     });
-    com.tencent.mm.modelappbrand.a.b.bhh().a(this.jmf, paramView.TKZ, com.tencent.mm.modelappbrand.a.a.bhg(), g.lzF);
-    this.kEs.setText(paramView.lnp + " " + paramView.UfT);
-    if (paramView.Ukd != null)
+    com.tencent.mm.modelappbrand.a.b.bEY().a(this.lPb, paramView.abaT, com.tencent.mm.modelappbrand.a.a.bEX(), g.org);
+    this.descTv.setText(paramView.nSt + " " + paramView.YJg);
+    if (paramView.abBM != null)
     {
-      this.jLl.setVisibility(0);
-      RecyclerView localRecyclerView = this.jLl;
+      this.mkw.setVisibility(0);
+      RecyclerView localRecyclerView = this.mkw;
       getContext();
       localRecyclerView.setLayoutManager(new LinearLayoutManager());
-      this.jLl.setAdapter(new AppBrandIDCardShowFrag.a(paramView.Ukd));
-      this.raS.setText(paramView.Uke);
-      if (Util.isNullOrNil(paramView.Ukf)) {
+      this.mkw.setAdapter(new a(paramView.abBM));
+      this.ugJ.setText(paramView.abBN);
+      if (Util.isNullOrNil(paramView.abBO)) {
         break label670;
       }
-      this.raT.setText(paramView.Ukf);
+      this.ugK.setText(paramView.abBO);
       label461:
-      Log.i("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.auth_checked:%b", new Object[] { Boolean.valueOf(paramView.Ukj) });
-      this.raU.setChecked(paramView.Ukj);
-      this.raT.setEnabled(paramView.Ukj);
-      if (Util.isNullOrNil(paramView.Ukk)) {
+      Log.i("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.auth_checked:%b", new Object[] { Boolean.valueOf(paramView.abBS) });
+      this.ugL.setChecked(paramView.abBS);
+      this.ugK.setEnabled(paramView.abBS);
+      if (Util.isNullOrNil(paramView.abBT)) {
         break label687;
       }
-      this.raU.setText(paramView.Ukk);
+      this.ugL.setText(paramView.abBT);
     }
     for (;;)
     {
-      this.raU.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+      this.ugL.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
       {
         public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
         {
@@ -126,79 +130,79 @@ public class AppBrandIDCardShowFrag
           AppMethodBeat.o(48910);
         }
       });
-      this.raT.setOnClickListener(new View.OnClickListener()
+      this.ugK.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(48911);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           Log.i("MicroMsg.AppBrandIDCardShowFrag", "verifyPayPassword click");
           if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
-            AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).ckD();
+            AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).cLR();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(48911);
         }
       });
-      if (paramView.Ukg != null)
+      if (paramView.abBP != null)
       {
-        this.raV.setText(paramView.Ukg.name);
-        this.raV.setOnClickListener(new View.OnClickListener()
+        this.ugM.setText(paramView.abBP.name);
+        this.ugM.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(48912);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
-              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).amV(paramView.Ukg.url);
+              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).agj(paramView.abBP.url);
             }
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(48912);
           }
         });
       }
-      if (paramView.Ukh == null) {
+      if (paramView.abBQ == null) {
         break label915;
       }
-      Log.d("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.jump_list size:%d", new Object[] { Integer.valueOf(paramView.Ukh.size()) });
-      if (paramView.Ukh.size() != 0) {
+      Log.d("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.jump_list size:%d", new Object[] { Integer.valueOf(paramView.abBQ.size()) });
+      if (paramView.abBQ.size() != 0) {
         break label704;
       }
-      this.raW.setVisibility(8);
+      this.ugN.setVisibility(8);
       AppMethodBeat.o(48920);
       return;
       Log.e("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.user_id_list is null");
-      this.jLl.setVisibility(8);
+      this.mkw.setVisibility(8);
       break;
       label670:
-      this.raT.setText(getString(au.i.app_brand_idcard_show_default_confirm_text));
+      this.ugK.setText(getString(ba.i.app_brand_idcard_show_default_confirm_text));
       break label461;
       label687:
-      this.raU.setText(getString(au.i.app_brand_idcard_show_legal_agreement_prefix));
+      this.ugL.setText(getString(ba.i.app_brand_idcard_show_legal_agreement_prefix));
     }
     label704:
-    if (paramView.Ukh.size() == 1)
+    if (paramView.abBQ.size() == 1)
     {
-      this.raW.setVisibility(0);
-      this.raX.setVisibility(8);
-      this.raZ.setVisibility(8);
-      if (paramView.Ukh.get(0) != null)
+      this.ugN.setVisibility(0);
+      this.ugO.setVisibility(8);
+      this.ugQ.setVisibility(8);
+      if (paramView.abBQ.get(0) != null)
       {
-        this.raY.setText(((hj)paramView.Ukh.get(0)).name);
-        this.raY.setOnClickListener(new View.OnClickListener()
+        this.ugP.setText(((if)paramView.abBQ.get(0)).name);
+        this.ugP.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(48913);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
-              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).amW(((hj)paramView.Ukh.get(0)).url);
+              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).agk(((if)paramView.abBQ.get(0)).url);
             }
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(48913);
@@ -209,42 +213,42 @@ public class AppBrandIDCardShowFrag
     }
     else
     {
-      this.raW.setVisibility(0);
-      this.raX.setVisibility(0);
-      this.raZ.setVisibility(0);
-      if (paramView.Ukh.get(0) != null)
+      this.ugN.setVisibility(0);
+      this.ugO.setVisibility(0);
+      this.ugQ.setVisibility(0);
+      if (paramView.abBQ.get(0) != null)
       {
-        this.raY.setText(((hj)paramView.Ukh.get(0)).name);
-        this.raY.setOnClickListener(new View.OnClickListener()
+        this.ugP.setText(((if)paramView.abBQ.get(0)).name);
+        this.ugP.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(48914);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             Log.i("MicroMsg.AppBrandIDCardShowFrag", "urlJump click");
             if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
-              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).amW(((hj)paramView.Ukh.get(0)).url);
+              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).agk(((if)paramView.abBQ.get(0)).url);
             }
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(48914);
           }
         });
       }
-      if (paramView.Ukh.get(1) != null)
+      if (paramView.abBQ.get(1) != null)
       {
-        this.raZ.setText(((hj)paramView.Ukh.get(1)).name);
-        this.raZ.setOnClickListener(new View.OnClickListener()
+        this.ugQ.setText(((if)paramView.abBQ.get(1)).name);
+        this.ugQ.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(48915);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
-              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).amX(((hj)paramView.Ukh.get(1)).url);
+              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).agl(((if)paramView.abBQ.get(1)).url);
             }
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardShowFrag$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(48915);
@@ -258,7 +262,7 @@ public class AppBrandIDCardShowFrag
   
   public int getLayoutId()
   {
-    return au.g.app_brand_idcard_show_ui;
+    return ba.g.app_brand_idcard_show_ui;
   }
   
   public boolean noActionBar()
@@ -269,8 +273,8 @@ public class AppBrandIDCardShowFrag
   public void onSwipeBack()
   {
     AppMethodBeat.i(48921);
-    if (this.raQ != null) {
-      this.raQ.onSwipeBack();
+    if (this.ugH != null) {
+      this.ugH.onSwipeBack();
     }
     AppMethodBeat.o(48921);
   }
@@ -279,10 +283,50 @@ public class AppBrandIDCardShowFrag
   {
     return false;
   }
+  
+  public static final class a
+    extends RecyclerView.a<a>
+  {
+    private List<ie> eXW;
+    
+    public a(List<ie> paramList)
+    {
+      this.eXW = paramList;
+    }
+    
+    public final int getItemCount()
+    {
+      AppMethodBeat.i(48917);
+      if (this.eXW == null)
+      {
+        AppMethodBeat.o(48917);
+        return 0;
+      }
+      int i = this.eXW.size();
+      AppMethodBeat.o(48917);
+      return i;
+    }
+    
+    public static final class a
+      extends RecyclerView.v
+    {
+      public TextView lDF;
+      public TextView tug;
+      
+      public a(View paramView)
+      {
+        super();
+        AppMethodBeat.i(48916);
+        this.lDF = ((TextView)paramView.findViewById(ba.f.app_brand_idcard_show_item_name));
+        this.tug = ((TextView)paramView.findViewById(ba.f.app_brand_idcard_show_item_value));
+        AppMethodBeat.o(48916);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.autofill.AppBrandIDCardShowFrag
  * JD-Core Version:    0.7.0.1
  */

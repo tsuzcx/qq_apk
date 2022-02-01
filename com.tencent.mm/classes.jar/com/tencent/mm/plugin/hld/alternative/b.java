@@ -9,107 +9,101 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyViewHolder;", "syllableList", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Syllable;", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyViewHolder$IAlternativePyViewListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyViewHolder$IAlternativePyViewListener;)V", "currentSelectItem", "mListener", "viewHolderMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getItemCount", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "p1", "reset", "selectItemByPy", "syllable", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyViewHolder;", "syllableList", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Syllable;", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyViewHolder$IAlternativePyViewListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyViewHolder$IAlternativePyViewListener;)V", "currentSelectItem", "mListener", "viewHolderMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getItemCount", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "p1", "reset", "selectItemByPy", "syllable", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends RecyclerView.a<c>
 {
-  public static final a DtL;
-  Syllable DtH;
-  private final c.a DtI;
-  final HashMap<Integer, c> DtJ;
-  private final ArrayList<Syllable> DtK;
+  public static final b.a Jni;
+  private final ArrayList<Syllable> Jnj;
+  Syllable Jnk;
+  private final c.a Jnl;
+  final HashMap<Integer, c> Jnm;
   
   static
   {
-    AppMethodBeat.i(213297);
-    DtL = new a((byte)0);
-    AppMethodBeat.o(213297);
+    AppMethodBeat.i(311684);
+    Jni = new b.a((byte)0);
+    AppMethodBeat.o(311684);
   }
   
   public b(ArrayList<Syllable> paramArrayList, c.a parama)
   {
-    AppMethodBeat.i(213293);
-    this.DtK = paramArrayList;
-    this.DtI = parama;
-    this.DtJ = new HashMap();
-    AppMethodBeat.o(213293);
+    AppMethodBeat.i(311674);
+    this.Jnj = paramArrayList;
+    this.Jnl = parama;
+    this.Jnm = new HashMap();
+    AppMethodBeat.o(311674);
   }
   
   public final void a(Syllable paramSyllable)
   {
-    AppMethodBeat.i(213289);
-    this.DtH = paramSyllable;
-    for (;;)
+    AppMethodBeat.i(311712);
+    this.Jnk = paramSyllable;
+    Object localObject3;
+    Object localObject1;
+    try
     {
-      Object localObject1;
-      try
+      localObject3 = this.Jnm.keySet().iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        Object localObject3 = this.DtJ.keySet().iterator();
-        if (((Iterator)localObject3).hasNext())
-        {
-          localObject1 = (Integer)((Iterator)localObject3).next();
-          if (this.DtH != null) {
-            break label138;
-          }
-          localObject1 = (c)this.DtJ.get(localObject1);
-          if (localObject1 == null) {
-            continue;
-          }
-          ((c)localObject1).sF(false);
+        localObject1 = (Integer)((Iterator)localObject3).next();
+        if (this.Jnk != null) {
+          break label127;
         }
-        localc = (c)this.DtJ.get(localObject1);
-      }
-      catch (Exception localException)
-      {
-        localObject3 = new StringBuilder("selectItemByPy ");
-        if (paramSyllable != null)
+        localObject1 = (c)this.Jnm.get(localObject1);
+        if (localObject1 != null)
         {
-          localObject1 = paramSyllable.syllable;
-          paramSyllable = (Syllable)localObject1;
-          if (localObject1 != null) {}
-        }
-        else
-        {
+          ((c)localObject1).wL(false);
+          continue;
           paramSyllable = "";
         }
-        Log.e("WxIme.ImeAlternativePyAdapter", paramSyllable + ' ' + localException.getMessage());
-        AppMethodBeat.o(213289);
-        return;
       }
-      label138:
-      c localc;
-      if (localc != null)
-      {
-        Object localObject2 = this.DtH;
-        if (localObject2 == null) {
-          p.iCn();
-        }
-        String str = ((Syllable)localObject2).syllable;
-        localObject2 = this.DtK;
-        p.j(localObject1, "i");
-        localObject2 = ((Syllable)((ArrayList)localObject2).get(((Integer)localObject1).intValue())).syllable;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
-        }
-        localc.sF(Util.isEqual(str, (String)localObject1));
+    }
+    catch (Exception localException)
+    {
+      localObject3 = new StringBuilder("selectItemByPy ");
+      if (paramSyllable != null) {}
+    }
+    for (;;)
+    {
+      Log.e("WxIme.ImeAlternativePyAdapter", paramSyllable + ' ' + localException.getMessage());
+      AppMethodBeat.o(311712);
+      return;
+      label127:
+      c localc = (c)this.Jnm.get(localObject1);
+      if (localc == null) {
+        break;
+      }
+      Object localObject2 = this.Jnk;
+      s.checkNotNull(localObject2);
+      String str = ((Syllable)localObject2).syllable;
+      localObject2 = this.Jnj;
+      s.s(localObject1, "i");
+      localObject2 = ((Syllable)((ArrayList)localObject2).get(((Integer)localObject1).intValue())).syllable;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      localc.wL(Util.isEqual(str, (String)localObject1));
+      break;
+      localObject1 = paramSyllable.syllable;
+      paramSyllable = (Syllable)localObject1;
+      if (localObject1 == null) {
+        paramSyllable = "";
       }
     }
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(213284);
-    int i = this.DtK.size();
-    AppMethodBeat.o(213284);
+    AppMethodBeat.i(311696);
+    int i = this.Jnj.size();
+    AppMethodBeat.o(311696);
     return i;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativePyAdapter$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
 }
 
 

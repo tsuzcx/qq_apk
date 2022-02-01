@@ -1,10 +1,10 @@
 package kotlin.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
+import kotlin.g.b.s;
 import kotlin.l.b.a.b.b.a.c;
-import kotlin.l.b.a.b.b.y;
-import kotlin.l.b.a.b.m.ab;
+import kotlin.l.b.a.b.b.ae;
+import kotlin.l.b.a.b.m.ad;
 
 public final class a
   extends g<c>
@@ -16,18 +16,18 @@ public final class a
     AppMethodBeat.o(60039);
   }
   
-  public final ab b(y paramy)
+  public final ad c(ae paramae)
   {
     AppMethodBeat.i(60038);
-    p.k(paramy, "module");
-    paramy = ((c)getValue()).iFN();
+    s.u(paramae, "module");
+    paramae = ((c)getValue()).koG();
     AppMethodBeat.o(60038);
-    return paramy;
+    return paramae;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.a
  * JD-Core Version:    0.7.0.1
  */

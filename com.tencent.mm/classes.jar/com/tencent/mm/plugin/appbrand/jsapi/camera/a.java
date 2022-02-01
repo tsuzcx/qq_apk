@@ -7,33 +7,36 @@ import java.lang.ref.WeakReference;
 
 public final class a
 {
-  public boolean oLp;
-  public boolean oLq;
-  SparseArray<WeakReference<f>> oLr;
+  private boolean rPj;
+  public boolean rPk;
+  boolean rPl;
+  boolean rPm;
+  SparseArray<WeakReference<f>> rPn;
   
   private a()
   {
     AppMethodBeat.i(137464);
-    this.oLp = true;
-    this.oLq = true;
-    this.oLr = new SparseArray();
+    this.rPj = true;
+    this.rPk = true;
+    this.rPl = true;
+    this.rPm = false;
+    this.rPn = new SparseArray();
     AppMethodBeat.o(137464);
   }
   
-  public static a bRo()
+  public final void a(int paramInt, f paramf)
   {
-    AppMethodBeat.i(207214);
-    a locala = a.bRr();
-    AppMethodBeat.o(207214);
-    return locala;
+    AppMethodBeat.i(137465);
+    this.rPn.put(paramInt, new WeakReference(paramf));
+    AppMethodBeat.o(137465);
   }
   
-  public final boolean O(int paramInt, boolean paramBoolean)
+  public final boolean ad(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(137466);
-    if (this.oLr.indexOfKey(paramInt) >= 0)
+    if (this.rPn.indexOfKey(paramInt) >= 0)
     {
-      Object localObject = (WeakReference)this.oLr.get(paramInt);
+      Object localObject = (WeakReference)this.rPn.get(paramInt);
       if (localObject != null)
       {
         localObject = (f)((WeakReference)localObject).get();
@@ -44,7 +47,7 @@ public final class a
       for (;;)
       {
         if (paramBoolean) {
-          this.oLr.remove(paramInt);
+          this.rPn.remove(paramInt);
         }
         AppMethodBeat.o(137466);
         return true;
@@ -57,58 +60,70 @@ public final class a
     return false;
   }
   
-  public final void a(int paramInt, f paramf)
-  {
-    AppMethodBeat.i(137465);
-    this.oLr.put(paramInt, new WeakReference(paramf));
-    AppMethodBeat.o(137465);
-  }
-  
-  public final int[] bRp()
+  public final int[] crw()
   {
     int i = 0;
     AppMethodBeat.i(137467);
-    if ((this.oLr == null) || (this.oLr.size() == 0))
+    if ((this.rPn == null) || (this.rPn.size() == 0))
     {
       AppMethodBeat.o(137467);
       return new int[0];
     }
-    int[] arrayOfInt = new int[this.oLr.size()];
-    while (i < this.oLr.size())
+    int[] arrayOfInt = new int[this.rPn.size()];
+    while (i < this.rPn.size())
     {
-      arrayOfInt[i] = this.oLr.keyAt(i);
+      arrayOfInt[i] = this.rPn.keyAt(i);
       i += 1;
     }
     AppMethodBeat.o(137467);
     return arrayOfInt;
   }
   
-  public final boolean bRq()
+  public final boolean crx()
+  {
+    AppMethodBeat.i(325991);
+    if (!this.rPj) {
+      Log.i("MicroMsg.AppBrandCameraMrg", "no external storage permission");
+    }
+    boolean bool = this.rPj;
+    AppMethodBeat.o(325991);
+    return bool;
+  }
+  
+  public final boolean hasCameraPermission()
   {
     AppMethodBeat.i(137468);
-    if (!this.oLp) {
+    if (!this.rPk) {
       Log.i("MicroMsg.AppBrandCameraMrg", "no camera permission");
     }
-    boolean bool = this.oLp;
+    boolean bool = this.rPk;
     AppMethodBeat.o(137468);
     return bool;
   }
   
+  public final void jk(boolean paramBoolean)
+  {
+    AppMethodBeat.i(325995);
+    Log.i("MicroMsg.AppBrandCameraMrg", "has external storage permission: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.rPj = paramBoolean;
+    AppMethodBeat.o(325995);
+  }
+  
   public static final class a
   {
-    private static a oLs;
+    private static a rPo;
     
     static
     {
       AppMethodBeat.i(137463);
-      oLs = new a((byte)0);
+      rPo = new a((byte)0);
       AppMethodBeat.o(137463);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,35 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.os.FileObserver;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ResolveInfo;
 
-public final class z
-  extends FileObserver
+public abstract class z
 {
-  private String Jfj;
-  private a QVS;
-  
-  public z(String paramString, a parama)
+  public boolean aO(Context paramContext, Intent paramIntent)
   {
-    super(paramString);
-    AppMethodBeat.i(151647);
-    Log.i("MicroMsg.ScreenshotObserver", "observer  ".concat(String.valueOf(paramString)));
-    this.QVS = parama;
-    AppMethodBeat.o(151647);
+    return false;
   }
   
-  public final void onEvent(int paramInt, String paramString)
+  public abstract String bTD();
+  
+  public abstract boolean bpt(String paramString);
+  
+  public String c(Context paramContext, ResolveInfo paramResolveInfo)
   {
-    AppMethodBeat.i(151648);
-    if ((paramString != null) && (paramInt == 8) && ((this.Jfj == null) || (!paramString.equalsIgnoreCase(this.Jfj))))
-    {
-      this.Jfj = paramString;
-      this.QVS.fok();
-      Log.i("MicroMsg.ScreenshotObserver", "Send event to listener. ".concat(String.valueOf(paramString)));
-    }
-    AppMethodBeat.o(151648);
+    return paramResolveInfo.activityInfo.loadLabel(paramContext.getPackageManager()).toString();
   }
   
-  public final void start()
-  {
-    AppMethodBeat.i(151649);
-    super.startWatching();
-    AppMethodBeat.o(151649);
-  }
+  public abstract String getPackageName();
   
-  public final void stop()
-  {
-    AppMethodBeat.i(151650);
-    super.stopWatching();
-    AppMethodBeat.o(151650);
-  }
+  public abstract String iHM();
   
-  public static abstract interface a
-  {
-    public abstract void fok();
-  }
+  public abstract String iHN();
+  
+  public abstract aa.a iHO();
+  
+  public abstract boolean ln(Context paramContext);
 }
 
 

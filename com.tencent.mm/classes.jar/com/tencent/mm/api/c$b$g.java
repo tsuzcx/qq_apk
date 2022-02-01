@@ -11,10 +11,10 @@ import org.json.JSONObject;
 public final class c$b$g
 {
   public String description;
-  public String faf;
+  public String hdG;
   public String iconUrl;
   
-  public static List<g> d(JSONArray paramJSONArray)
+  public static List<g> g(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(116363);
     localLinkedList = new LinkedList();
@@ -33,7 +33,7 @@ public final class c$b$g
         JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
         localg.iconUrl = localJSONObject.optString("icon");
         localg.description = localJSONObject.optString("description");
-        localg.faf = localJSONObject.optString("description_key");
+        localg.hdG = localJSONObject.optString("description_key");
         localLinkedList.add(localg);
         i += 1;
       }

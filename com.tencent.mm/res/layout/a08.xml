@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/i0" android:paddingStart="@dimen/cb"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/e2f" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" />
-    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="@dimen/cb">
-        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginEnd="@dimen/cb">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/e38" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="聊天中的文件" android:maxLines="1" android:layout_weight="1.0" />
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hiz" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_done" app:iconColor="@color/afp" />
-        </LinearLayout>
-        <View android:id="@id/e2u" android:layout_height="0.5dip" android:layout_alignParentBottom="true" style="@style/hx" />
-    </RelativeLayout>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:background="@drawable/b4i" android:layout_width="4.0dip" android:layout_height="4.0dip" android:layout_marginLeft="4.0dip" android:baselineAlignBottom="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/a7b" android:id="@id/cdr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="" />
 </LinearLayout>

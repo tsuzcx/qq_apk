@@ -1,50 +1,69 @@
 package com.tencent.mm.plugin.vlog.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.dv;
+import com.tencent.mm.autogen.mmdata.rpt.ff;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/report/FinderReport21874;", "", "()V", "FinderBackStep", "", "FinderDefaultStep", "FinderNextStep", "FinderPageIn", "FinderPageOut", "TAG", "", "report", "", "scene", "eventCode", "stayTime", "", "nextStep", "FinderActionCode", "FinderEventCode", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/report/FinderReport21874;", "", "()V", "FinderBackStep", "", "FinderDefaultStep", "FinderNextStep", "FinderPageIn", "FinderPageOut", "TAG", "", "report", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "eventCode", "stayTime", "", "udf_kv", "scene", "nextStep", "udfContent", "Lorg/json/JSONObject;", "jumpId", "FinderActionCode", "FinderEventCode", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a NqV;
+  public static final a UeF;
   
   static
   {
-    AppMethodBeat.i(249605);
-    NqV = new a();
-    AppMethodBeat.o(249605);
+    AppMethodBeat.i(281305);
+    UeF = new a();
+    AppMethodBeat.o(281305);
   }
   
-  public static void c(int paramInt1, int paramInt2, long paramLong, int paramInt3)
+  public static void a(int paramInt1, int paramInt2, long paramLong, int paramInt3, JSONObject paramJSONObject, String paramString)
   {
-    AppMethodBeat.i(249599);
-    dv localdv = new dv();
-    localdv.qT(((c)h.ae(c.class)).dbr());
-    localdv.qU(String.valueOf(paramInt1));
-    localdv.lM(paramInt2);
-    localdv.qV(String.valueOf(System.currentTimeMillis()));
-    localdv.qW(z.bdh());
-    localdv.jV(paramLong);
-    if ((paramInt3 != -1) && (paramInt2 == 1))
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("nextstep", paramInt3);
-      localdv.qX(localJSONObject.toString());
+    AppMethodBeat.i(281293);
+    ff localff = new ff();
+    localff.pF(((d)h.ax(d.class)).dHN());
+    localff.pH(String.valueOf(paramInt1));
+    localff.iGK = paramInt2;
+    localff.pI(String.valueOf(System.currentTimeMillis()));
+    localff.pJ(z.bAW());
+    localff.iGM = paramLong;
+    if (paramString == null) {
+      paramString = "";
     }
-    localdv.bpa();
-    Log.i("MicroMsg.FinderReport21874", "FinderReport21874 report scene:" + paramInt1 + " eventCode:" + paramInt2);
-    AppMethodBeat.o(249599);
+    for (;;)
+    {
+      localff.pN(paramString);
+      paramString = paramJSONObject;
+      if (paramJSONObject == null) {
+        paramString = new JSONObject();
+      }
+      if ((paramInt3 != -1) && (paramInt2 == 1)) {
+        paramString.put("nextstep", paramInt3);
+      }
+      paramJSONObject = paramString.toString();
+      s.s(paramJSONObject, "udfJson.toString()");
+      localff.pK(n.bV(paramJSONObject, ",", ";"));
+      localff.bMH();
+      Log.i("MicroMsg.FinderReport21874", "FinderReport21874 report scene:" + paramInt1 + " eventCode:" + paramInt2);
+      AppMethodBeat.o(281293);
+      return;
+      String str = n.m(paramString, ",", ";", false);
+      paramString = str;
+      if (str == null) {
+        paramString = "";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.report.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ao;
+import com.tencent.mm.app.f;
 import com.tencent.mm.model.ap;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.model.aq;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -14,20 +14,20 @@ import java.util.Iterator;
 import java.util.List;
 
 public class a
-  implements ao
+  implements ap
 {
-  private static volatile a iPf;
-  private List<ap> callbacks;
-  private PhoneStatusWatcher iPd;
-  private PhoneStatusWatcher.PhoneCallListener iPe;
-  private IListener iPg;
+  private static volatile a lrb;
+  private List<aq> bPE;
+  private PhoneStatusWatcher lqZ;
+  private PhoneStatusWatcher.PhoneCallListener lra;
+  private IListener lrc;
   
   private a()
   {
     AppMethodBeat.i(149955);
-    this.callbacks = new ArrayList();
-    this.iPd = new PhoneStatusWatcher();
-    this.iPe = new PhoneStatusWatcher.PhoneCallListener()
+    this.bPE = new ArrayList();
+    this.lqZ = new PhoneStatusWatcher();
+    this.lra = new PhoneStatusWatcher.PhoneCallListener()
     {
       public final void onPhoneCall(int paramAnonymousInt)
       {
@@ -40,33 +40,33 @@ public class a
           AppMethodBeat.o(149953);
           return;
           Log.v("MicroMsg.BackgroundPlayer", "call end");
-          a.this.aqm();
+          a.this.aKk();
           AppMethodBeat.o(149953);
           return;
           Log.v("MicroMsg.BackgroundPlayer", "call start");
-          a.this.aqn();
+          a.this.aKl();
         }
       }
     };
-    this.iPd.addPhoneCallListener(this.iPe);
-    this.iPd.begin(MMApplicationContext.getContext());
-    if (this.iPg == null) {
-      this.iPg = new a.2(this);
+    this.lqZ.addPhoneCallListener(this.lra);
+    this.lqZ.begin(MMApplicationContext.getContext());
+    if (this.lrc == null) {
+      this.lrc = new BackgroundPlayer.2(this, f.hfK);
     }
-    EventCenter.instance.addListener(this.iPg);
+    this.lrc.alive();
     AppMethodBeat.o(149955);
   }
   
-  public static a aql()
+  public static a aKj()
   {
     AppMethodBeat.i(149956);
-    if (iPf == null) {}
+    if (lrb == null) {}
     try
     {
-      if (iPf == null) {
-        iPf = new a();
+      if (lrb == null) {
+        lrb = new a();
       }
-      a locala = iPf;
+      a locala = lrb;
       AppMethodBeat.o(149956);
       return locala;
     }
@@ -76,54 +76,54 @@ public class a
     }
   }
   
-  public final void a(ap paramap)
+  public final void a(aq paramaq)
   {
     AppMethodBeat.i(149957);
-    Log.d("MicroMsg.BackgroundPlayer", "add callback : %s", new Object[] { paramap.toString() });
-    this.callbacks.add(paramap);
+    Log.d("MicroMsg.BackgroundPlayer", "add callback : %s", new Object[] { paramaq.toString() });
+    this.bPE.add(paramaq);
     AppMethodBeat.o(149957);
   }
   
-  public final void aqm()
+  public final void aKk()
   {
     AppMethodBeat.i(149959);
-    if (this.callbacks == null)
+    if (this.bPE == null)
     {
       AppMethodBeat.o(149959);
       return;
     }
-    Iterator localIterator = this.callbacks.iterator();
+    Iterator localIterator = this.bPE.iterator();
     while (localIterator.hasNext()) {
-      ((ap)localIterator.next()).beo();
+      ((aq)localIterator.next()).bCh();
     }
     AppMethodBeat.o(149959);
   }
   
-  public final void aqn()
+  public final void aKl()
   {
     AppMethodBeat.i(149960);
-    if (this.callbacks == null)
+    if (this.bPE == null)
     {
       AppMethodBeat.o(149960);
       return;
     }
-    Iterator localIterator = this.callbacks.iterator();
+    Iterator localIterator = this.bPE.iterator();
     while (localIterator.hasNext()) {
-      ((ap)localIterator.next()).bep();
+      ((aq)localIterator.next()).bCi();
     }
     AppMethodBeat.o(149960);
   }
   
-  public final void b(ap paramap)
+  public final void b(aq paramaq)
   {
     AppMethodBeat.i(149958);
-    this.callbacks.remove(paramap);
+    this.bPE.remove(paramaq);
     AppMethodBeat.o(149958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.booter.a
  * JD-Core Version:    0.7.0.1
  */

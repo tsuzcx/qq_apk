@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.multitask.ui;
 
 import android.view.View;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.protocal.protobuf.dal;
-import com.tencent.mm.ui.component.d;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.drt;
+import com.tencent.mm.ui.component.g;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/IMultiTaskUIComponent;", "Lcom/tencent/mm/ui/component/IUIComponent;", "getMultiTaskMode", "Lcom/tencent/mm/plugin/multitask/ui/IMultiTaskUIComponent$MultiTaskMode;", "onMultiTaskChange", "", "event", "Lcom/tencent/mm/sdk/storage/observer/StorageObserverEvent;", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "onMultiTaskInit", "obj", "", "onMultiTaskItemClick", "view", "Landroid/view/View;", "info", "animateData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskAnimData;", "callback", "onMultiTaskItemDelete", "onMultiTaskPageDestroy", "onMultiTaskPagePause", "onMultiTaskPageResume", "onTaskBarItemExposed", "supportMultiTaskType", "", "multiTaskType", "", "MultiTaskMode", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/ui/IMultiTaskUIComponent;", "Lcom/tencent/mm/ui/component/IUIComponent;", "getMultiTaskMode", "Lcom/tencent/mm/plugin/multitask/ui/IMultiTaskUIComponent$MultiTaskMode;", "onMultiTaskChange", "", "event", "Lcom/tencent/mm/sdk/storage/observer/StorageObserverEvent;", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "onMultiTaskInit", "obj", "", "onMultiTaskItemClick", "view", "Landroid/view/View;", "info", "animateData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskAnimData;", "callback", "onMultiTaskItemDelete", "onMultiTaskPageDestroy", "onMultiTaskPagePause", "onMultiTaskPageResume", "onTaskBarItemExposed", "supportMultiTaskType", "", "multiTaskType", "", "MultiTaskMode", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
-  extends d
+  extends g
 {
-  public abstract void a(View paramView, MultiTaskInfo paramMultiTaskInfo, dal paramdal, Object paramObject);
+  public abstract void a(View paramView, MultiTaskInfo paramMultiTaskInfo, drt paramdrt, Object paramObject);
   
-  public abstract a.b dKp();
+  public abstract a.b eDe();
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.a
  * JD-Core Version:    0.7.0.1
  */

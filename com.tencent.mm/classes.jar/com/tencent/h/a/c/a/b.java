@@ -19,30 +19,30 @@ import java.util.Set;
 public final class b
   extends a
 {
-  private List<com.tencent.h.a.c.c.a.e> ZTk;
-  private com.tencent.h.a.c.c.a.e ZTl;
+  private List<com.tencent.h.a.c.c.a.e> ahXK;
+  private com.tencent.h.a.c.c.a.e ahXL;
   
   public b(com.tencent.h.a.a.c paramc, com.tencent.h.a.b.a parama)
   {
     super(paramc, parama);
-    AppMethodBeat.i(207630);
-    this.ZTk = new ArrayList();
-    AppMethodBeat.o(207630);
+    AppMethodBeat.i(212155);
+    this.ahXK = new ArrayList();
+    AppMethodBeat.o(212155);
   }
   
   private void a(com.tencent.h.a.c.d.b paramb)
   {
     int i = 0;
-    AppMethodBeat.i(207646);
+    AppMethodBeat.i(212185);
     com.tencent.h.a.c.b.a locala;
     StringBuilder localStringBuilder;
     if (paramb != null)
     {
       locala = null;
-      if (this.ZTk.size() > 0)
+      if (this.ahXK.size() > 0)
       {
-        com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: callBackWhenStop size] " + this.ZTk.size());
-        locala = iug();
+        com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: callBackWhenStop size] " + this.ahXK.size());
+        locala = kdC();
       }
       localStringBuilder = new StringBuilder("[method: callBackWhenStop ] ");
       if (locala == null) {
@@ -57,48 +57,48 @@ public final class b
         i = 107;
       }
       a(i, locala, paramb);
-      AppMethodBeat.o(207646);
+      AppMethodBeat.o(212185);
       return;
     }
   }
   
   private static com.tencent.h.a.c.c.a.e d(com.tencent.h.a.c.b.a parama)
   {
-    AppMethodBeat.i(207639);
+    AppMethodBeat.i(212162);
     parama = new com.tencent.h.a.c.c.a.e(parama);
-    AppMethodBeat.o(207639);
+    AppMethodBeat.o(212162);
     return parama;
   }
   
-  private com.tencent.h.a.c.b.a iug()
+  private com.tencent.h.a.c.b.a kdC()
   {
     int j = 1;
-    AppMethodBeat.i(207643);
-    com.tencent.h.a.c.b.a locala = ((com.tencent.h.a.c.c.a.e)this.ZTk.get(0)).ZUr;
+    AppMethodBeat.i(212173);
+    com.tencent.h.a.c.b.a locala = ((com.tencent.h.a.c.c.a.e)this.ahXK.get(0)).ahYR;
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject1 = (f)locala.ZTq.get(0);
+    Object localObject1 = (f)locala.ahXQ.get(0);
     Object localObject2 = new com.tencent.h.a.c.b.e();
-    ((com.tencent.h.a.c.b.e)localObject2).JCu = com.tencent.g.c.c.i(this.ZSp.mAppContext, com.tencent.g.c.c.getScreenWidth(this.ZSp.mAppContext));
-    ((com.tencent.h.a.c.b.e)localObject2).JCv = com.tencent.g.c.c.i(this.ZSp.mAppContext, com.tencent.g.c.c.getScreenHeight(this.ZSp.mAppContext));
-    int i = com.tencent.g.c.c.getScreenOrientation(this.ZSp.mAppContext);
+    ((com.tencent.h.a.c.b.e)localObject2).PSS = com.tencent.g.c.c.j(this.ahWN.mAppContext, com.tencent.g.c.c.getScreenWidth(this.ahWN.mAppContext));
+    ((com.tencent.h.a.c.b.e)localObject2).PST = com.tencent.g.c.c.j(this.ahWN.mAppContext, com.tencent.g.c.c.getScreenHeight(this.ahWN.mAppContext));
+    int i = com.tencent.g.c.c.getScreenOrientation(this.ahWN.mAppContext);
     if (i == 0) {
       i = 3;
     }
     for (;;)
     {
-      ((com.tencent.h.a.c.b.e)localObject2).PJe = i;
-      ((f)localObject1).ZTS = ((com.tencent.h.a.c.b.e)localObject2);
-      localStringBuilder.append(((com.tencent.h.a.c.b.i)((f)localObject1).ZTQ.get(0)).ZTZ / 1000.0D);
+      ((com.tencent.h.a.c.b.e)localObject2).Wzx = i;
+      ((f)localObject1).ahYs = ((com.tencent.h.a.c.b.e)localObject2);
+      localStringBuilder.append(((com.tencent.h.a.c.b.i)((f)localObject1).ahYq.get(0)).ahYz / 1000.0D);
       i = j;
       for (;;)
       {
-        if (i < this.ZTk.size())
+        if (i < this.ahXK.size())
         {
-          localObject2 = (f)((com.tencent.h.a.c.c.a.e)this.ZTk.get(i)).ZUr.ZTq.get(0);
+          localObject2 = (f)((com.tencent.h.a.c.c.a.e)this.ahXK.get(i)).ahYR.ahXQ.get(0);
           com.tencent.h.a.a.b.a.a((f)localObject1, (f)localObject2);
           com.tencent.h.a.a.b.a.b((f)localObject1, (f)localObject2);
           localStringBuilder.append("-");
-          localStringBuilder.append(((com.tencent.h.a.c.b.i)((f)localObject2).ZTQ.get(0)).ZTZ / 1000.0D);
+          localStringBuilder.append(((com.tencent.h.a.c.b.i)((f)localObject2).ahYq.get(0)).ahYz / 1000.0D);
           i += 1;
           continue;
           if (i != 1) {
@@ -108,42 +108,42 @@ public final class b
           break;
         }
       }
-      if (locala.ZTt == null) {
-        locala.ZTt = new ArrayList();
+      if (locala.ahXT == null) {
+        locala.ahXT = new ArrayList();
       }
       localObject1 = new d();
-      ((d)localObject1).ZTM = "splitingPoints";
-      ((d)localObject1).ZTN = localStringBuilder.toString();
-      locala.ZTt.add(localObject1);
-      iuh();
-      AppMethodBeat.o(207643);
+      ((d)localObject1).ahYm = "splitingPoints";
+      ((d)localObject1).ahYn = localStringBuilder.toString();
+      locala.ahXT.add(localObject1);
+      kdD();
+      AppMethodBeat.o(212173);
       return locala;
       label337:
       i = 0;
     }
   }
   
-  private void iuh()
+  private void kdD()
   {
-    AppMethodBeat.i(207645);
-    this.ZTk.clear();
-    AppMethodBeat.o(207645);
+    AppMethodBeat.i(212177);
+    this.ahXK.clear();
+    AppMethodBeat.o(212177);
   }
   
   public final void a(HashMap<Integer, List<g>> paramHashMap, List<com.tencent.h.a.c.b.i> paramList, List<h> paramList1, com.tencent.h.a.c.d.b paramb)
   {
-    AppMethodBeat.i(207635);
+    AppMethodBeat.i(212206);
     if (b(paramHashMap, paramList))
     {
-      if (this.ZTh.adI()) {
+      if (this.ahXH.aFG()) {
         a(paramb);
       }
       com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: add2SlicedList ] --data exception, delete this req");
-      AppMethodBeat.o(207635);
+      AppMethodBeat.o(212206);
       return;
     }
     com.tencent.h.a.c.b.c localc = new com.tencent.h.a.c.b.c();
-    int j = com.tencent.g.c.c.mq(this.ZSp.mAppContext);
+    int j = com.tencent.g.c.c.oG(this.ahWN.mAppContext);
     if (j == 0)
     {
       i = 0;
@@ -152,7 +152,7 @@ public final class b
       }
       j = 2;
       label79:
-      localc.ZpO = j;
+      localc.ahuw = j;
       if (i != 0) {
         break label210;
       }
@@ -162,7 +162,7 @@ public final class b
     label210:
     for (int i = 1;; i = 2)
     {
-      localc.ZpP = i;
+      localc.ahux = i;
       if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
         break label216;
       }
@@ -179,7 +179,7 @@ public final class b
           ((List)localObject).addAll(paramHashMap);
         }
       }
-      i = com.tencent.g.c.c.mp(this.ZSp.mAppContext);
+      i = com.tencent.g.c.c.oF(this.ahWN.mAppContext);
       break;
       j = 1;
       break label79;
@@ -188,21 +188,21 @@ public final class b
     paramHashMap = null;
     if ((paramHashMap != null) && (!paramHashMap.isEmpty()))
     {
-      localc.Zqh = ((g)paramHashMap.get(0)).Zqg;
-      localc.ZTI = new ArrayList(paramHashMap);
+      localc.ahuO = ((g)paramHashMap.get(0)).ahuN;
+      localc.ahYi = new ArrayList(paramHashMap);
       if ((paramList != null) && (!paramList.isEmpty())) {
         break label449;
       }
       label275:
       paramHashMap = a(localc, paramList, paramList1);
-      if (this.ZTl != null) {
+      if (this.ahXL != null) {
         break label464;
       }
-      this.ZTl = d(paramHashMap);
-      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: add2SlicedList ] --create sliced when tmpSliced is null : " + this.ZTl.ZUs);
+      this.ahXL = d(paramHashMap);
+      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: add2SlicedList ] --create sliced when tmpSliced is null : " + this.ahXL.ahYS);
       label327:
-      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: handleData ] sliced size : " + this.ZTk.size());
-      if (this.ZTk.size() >= 3) {
+      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: handleData ] sliced size : " + this.ahXK.size());
+      if (this.ahXK.size() >= 3) {
         break label904;
       }
       paramHashMap = null;
@@ -219,14 +219,14 @@ public final class b
     }
     for (;;)
     {
-      if (this.ZTh.adI())
+      if (this.ahXH.aFG())
       {
         com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: handleData ] clear all cache when pause");
-        iuh();
+        kdD();
       }
-      AppMethodBeat.o(207635);
+      AppMethodBeat.o(212206);
       return;
-      localc.Zqh = SystemClock.uptimeMillis();
+      localc.ahuO = SystemClock.uptimeMillis();
       break;
       label449:
       Collections.sort(paramList, new Comparator() {});
@@ -235,11 +235,11 @@ public final class b
       long l1;
       label480:
       long l2;
-      if (this.ZTl != null)
+      if (this.ahXL != null)
       {
-        l1 = this.ZTl.ZUs;
+        l1 = this.ahXL.ahYS;
         long l3 = com.tencent.h.a.a.b.a.a(paramHashMap);
-        paramList = this.ZTl.ZUr;
+        paramList = this.ahXL.ahYR;
         if ((com.tencent.h.a.a.b.a.b(paramList)) && (com.tencent.h.a.a.b.a.c(paramList)) && (com.tencent.h.a.a.b.a.b(paramHashMap)) && (com.tencent.h.a.a.b.a.c(paramHashMap))) {
           break label666;
         }
@@ -254,7 +254,7 @@ public final class b
         if (i == 0) {
           break label815;
         }
-        if (this.ZTl.ZUs >= 600L) {
+        if (this.ahXL.ahYS >= 600L) {
           break label756;
         }
       }
@@ -266,37 +266,37 @@ public final class b
         if (i == 0) {
           break label762;
         }
-        this.ZTl = d(paramHashMap);
-        com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: add2SlicedList ] --cover the last sliced : " + this.ZTl.ZUs);
+        this.ahXL = d(paramHashMap);
+        com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: add2SlicedList ] --cover the last sliced : " + this.ahXL.ahYS);
         break;
         l1 = 0L;
         break label480;
-        paramList = ((com.tencent.h.a.c.b.c)((f)paramList.ZTq.get(0)).mXB.get(0)).ZTI;
-        l2 = Math.abs(((g)((com.tencent.h.a.c.b.c)((f)paramHashMap.ZTq.get(0)).mXB.get(0)).ZTI.get(0)).Zqg - ((g)paramList.get(paramList.size() - 1)).Zqg);
+        paramList = ((com.tencent.h.a.c.b.c)((f)paramList.ahXQ.get(0)).pUj.get(0)).ahYi;
+        l2 = Math.abs(((g)((com.tencent.h.a.c.b.c)((f)paramHashMap.ahXQ.get(0)).pUj.get(0)).ahYi.get(0)).ahuN - ((g)paramList.get(paramList.size() - 1)).ahuN);
         break label525;
         i = 0;
         break label594;
       }
       label762:
-      this.ZTk.add(this.ZTl);
-      this.ZTl = d(paramHashMap);
-      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: add2SlicedList ] --add and create a new sliced : " + this.ZTl.ZUs);
+      this.ahXK.add(this.ahXL);
+      this.ahXL = d(paramHashMap);
+      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: add2SlicedList ] --add and create a new sliced : " + this.ahXL.ahYS);
       break label327;
       label815:
-      paramList = this.ZTl;
-      paramList1 = (f)paramList.ZUr.ZTq.get(0);
-      localObject = (f)paramHashMap.ZTq.get(0);
+      paramList = this.ahXL;
+      paramList1 = (f)paramList.ahYR.ahXQ.get(0);
+      localObject = (f)paramHashMap.ahXQ.get(0);
       com.tencent.h.a.a.b.a.a(paramList1, (f)localObject);
       com.tencent.h.a.a.b.a.b(paramList1, (f)localObject);
-      paramList.ZUs += com.tencent.h.a.a.b.a.a(paramHashMap);
-      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: add2SlicedList ] --merge sliced : " + this.ZTl.ZUs);
+      paramList.ahYS += com.tencent.h.a.a.b.a.a(paramHashMap);
+      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: add2SlicedList ] --merge sliced : " + this.ahXL.ahYS);
       break label327;
       label904:
-      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: getMergeSlicedList ] callback all sliced from list & mSlicedList getPointerSize : " + this.ZTk.size());
-      paramHashMap = iug();
+      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: getMergeSlicedList ] callback all sliced from list & mSlicedList getPointerSize : " + this.ahXK.size());
+      paramHashMap = kdC();
       break label372;
       label942:
-      if (this.ZTh.adI())
+      if (this.ahXH.aFG())
       {
         com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: handleData ] call back when stop");
         a(paramb);
@@ -304,20 +304,20 @@ public final class b
     }
   }
   
-  public final void esN()
+  public final void fzH()
   {
-    AppMethodBeat.i(207637);
-    if (this.ZTk != null)
+    AppMethodBeat.i(212212);
+    if (this.ahXK != null)
     {
-      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: doStop ] " + this.ZTk.size());
-      this.ZTk.clear();
+      com.tencent.g.c.i.i("sensor_MultiDataHandle", "[method: doStop ] " + this.ahXK.size());
+      this.ahXK.clear();
     }
-    AppMethodBeat.o(207637);
+    AppMethodBeat.o(212212);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.c.a.b
  * JD-Core Version:    0.7.0.1
  */

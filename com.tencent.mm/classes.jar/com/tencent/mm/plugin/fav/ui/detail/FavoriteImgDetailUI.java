@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,49 +24,43 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.cv;
-import com.tencent.mm.f.a.rz;
+import com.tencent.mm.autogen.a.df;
+import com.tencent.mm.autogen.a.to;
 import com.tencent.mm.model.ad;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.platformtools.p;
-import com.tencent.mm.platformtools.p.a;
-import com.tencent.mm.platformtools.v;
-import com.tencent.mm.plugin.fav.a.ag;
+import com.tencent.mm.platformtools.ExportFileUtil;
+import com.tencent.mm.platformtools.ExportFileUtil.a;
+import com.tencent.mm.plugin.fav.a.ah;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.h.a;
-import com.tencent.mm.plugin.fav.a.k;
-import com.tencent.mm.plugin.fav.a.q;
 import com.tencent.mm.plugin.fav.a.r;
-import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.plugin.fav.ui.FavoriteImageServer;
 import com.tencent.mm.plugin.fav.ui.j;
 import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.plugin.fav.ui.s.c;
-import com.tencent.mm.plugin.fav.ui.s.e;
-import com.tencent.mm.plugin.fav.ui.s.f;
-import com.tencent.mm.plugin.fav.ui.s.h;
-import com.tencent.mm.plugin.fav.ui.s.i;
+import com.tencent.mm.plugin.fav.ui.q.c;
+import com.tencent.mm.plugin.fav.ui.q.e;
+import com.tencent.mm.plugin.fav.ui.q.f;
+import com.tencent.mm.plugin.fav.ui.q.h;
+import com.tencent.mm.plugin.fav.ui.q.i;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic.b;
-import com.tencent.mm.plugin.scanner.util.n;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.scanner.util.p;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arv;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.ImgUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.system.AndroidMediaUtil;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.widget.MMLoadScrollView;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.widget.a.e.b;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.widget.a.f.b;
+import com.tencent.threadpool.i;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -77,55 +70,55 @@ import java.util.Set;
 
 public class FavoriteImgDetailUI
   extends BaseFavDetailReportUI
-  implements q
+  implements com.tencent.mm.plugin.fav.a.q
 {
-  private View.OnClickListener dig;
+  private g Afv;
+  private IListener Ahp;
+  private View.OnLongClickListener AkV;
+  private LinearLayout Ali;
+  private HashMap<String, a> Alj;
+  private Bitmap Alk;
+  private boolean Alm;
   private int displayWidth;
-  private ScanCodeSheetItemLogic oxq;
-  private g wJa;
-  private IListener wKS;
-  private LinearLayout wOG;
-  private HashMap<String, a> wOH;
-  private Bitmap wOI;
-  private boolean wOJ;
-  private View.OnLongClickListener wOt;
+  private View.OnClickListener fhU;
+  private ScanCodeSheetItemLogic rAP;
   
   public FavoriteImgDetailUI()
   {
     AppMethodBeat.i(107190);
     this.displayWidth = 0;
-    this.wOH = new HashMap();
-    this.wOJ = true;
-    this.dig = new View.OnClickListener()
+    this.Alj = new HashMap();
+    this.Alm = true;
+    this.fhU = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(107184);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fav/ui/detail/FavoriteImgDetailUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fav/ui/detail/FavoriteImgDetailUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
         localObject = new Intent();
         ((Intent)localObject).putExtra("key_detail_info_id", FavoriteImgDetailUI.b(FavoriteImgDetailUI.this).field_localId);
-        ((Intent)localObject).putExtra("key_detail_data_id", ((anm)paramAnonymousView.getTag()).fEa);
+        ((Intent)localObject).putExtra("key_detail_data_id", ((arf)paramAnonymousView.getTag()).hIQ);
         com.tencent.mm.plugin.fav.a.b.b(FavoriteImgDetailUI.this.getContext(), ".ui.FavImgGalleryUI", (Intent)localObject);
-        paramAnonymousView = FavoriteImgDetailUI.this.wNU;
-        paramAnonymousView.wGt += 1;
+        paramAnonymousView = FavoriteImgDetailUI.this.Akw;
+        paramAnonymousView.AcC += 1;
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/detail/FavoriteImgDetailUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(107184);
       }
     };
-    this.wOt = new View.OnLongClickListener()
+    this.AkV = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(107185);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fav/ui/detail/FavoriteImgDetailUI$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-        paramAnonymousView = (anm)paramAnonymousView.getTag();
-        paramAnonymousView = (FavoriteImgDetailUI.a)FavoriteImgDetailUI.c(FavoriteImgDetailUI.this).get(paramAnonymousView.fEa);
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fav/ui/detail/FavoriteImgDetailUI$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+        paramAnonymousView = (arf)paramAnonymousView.getTag();
+        paramAnonymousView = (FavoriteImgDetailUI.a)FavoriteImgDetailUI.c(FavoriteImgDetailUI.this).get(paramAnonymousView.hIQ);
         FavoriteImgDetailUI.a(FavoriteImgDetailUI.this, paramAnonymousView);
-        if (!paramAnonymousView.wOX) {
+        if (!paramAnonymousView.AlA) {
           FavoriteImgDetailUI.b(paramAnonymousView);
         }
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/fav/ui/detail/FavoriteImgDetailUI$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
@@ -133,31 +126,31 @@ public class FavoriteImgDetailUI
         return true;
       }
     };
-    this.wKS = new IListener() {};
+    this.Ahp = new IListener(com.tencent.mm.app.f.hfK) {};
     AppMethodBeat.o(107190);
   }
   
   private void a(final a parama)
   {
     AppMethodBeat.i(107197);
-    com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
+    com.tencent.mm.kernel.h.baH().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(107183);
-        Bitmap localBitmap2 = com.tencent.mm.plugin.fav.ui.o.a(parama.fDI, FavoriteImgDetailUI.b(FavoriteImgDetailUI.this), false);
+        Bitmap localBitmap2 = FavoriteImageServer.a(parama.hIy, FavoriteImgDetailUI.b(FavoriteImgDetailUI.this), false);
         final Bitmap localBitmap1 = localBitmap2;
         if (localBitmap2 == null)
         {
           Log.d("MicroMsg.FavoriteImgDetailUI", "get big img fail");
-          localBitmap1 = FavoriteImgDetailUI.a(FavoriteImgDetailUI.this, parama.fDI);
+          localBitmap1 = FavoriteImgDetailUI.a(FavoriteImgDetailUI.this, parama.hIy);
         }
         MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(107181);
-            FavoriteImgDetailUI.a(FavoriteImgDetailUI.this, FavoriteImgDetailUI.9.this.wOL, localBitmap1);
+            FavoriteImgDetailUI.a(FavoriteImgDetailUI.this, FavoriteImgDetailUI.8.this.Alo, localBitmap1);
             AppMethodBeat.o(107181);
           }
           
@@ -184,73 +177,79 @@ public class FavoriteImgDetailUI
       AppMethodBeat.o(164100);
       return;
     }
-    p.a(paramContext, paramString1, new p.a()
+    ExportFileUtil.a(paramContext, paramString1, new ExportFileUtil.a()
     {
-      public final void bT(String paramAnonymousString1, final String paramAnonymousString2)
+      public final void cg(String paramAnonymousString1, final String paramAnonymousString2)
       {
-        AppMethodBeat.i(231208);
-        Toast.makeText(this.val$context, this.val$context.getString(s.i.cropimage_saved, new Object[] { AndroidMediaUtil.getFriendlySdcardPath(paramAnonymousString2) }), 1).show();
-        com.tencent.e.h.ZvG.be(new Runnable()
+        AppMethodBeat.i(274462);
+        Toast.makeText(FavoriteImgDetailUI.this, FavoriteImgDetailUI.this.getString(q.i.cropimage_saved, new Object[] { AndroidMediaUtil.getFriendlySdcardPath(paramAnonymousString2) }), 1).show();
+        com.tencent.threadpool.h.ahAA.bm(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(230472);
-            String str = u.buc(paramAnonymousString2);
-            v localv = v.mEG;
-            v.bV(str, FavoriteImgDetailUI.3.this.wKZ);
-            AppMethodBeat.o(230472);
+            AppMethodBeat.i(274454);
+            String str = com.tencent.mm.vfs.y.bub(paramAnonymousString2);
+            com.tencent.mm.platformtools.s locals = com.tencent.mm.platformtools.s.pBi;
+            com.tencent.mm.platformtools.s.ci(str, FavoriteImgDetailUI.3.this.Ahw);
+            AppMethodBeat.o(274454);
           }
         });
-        AppMethodBeat.o(231208);
+        AppMethodBeat.o(274462);
       }
       
-      public final void bU(String paramAnonymousString1, String paramAnonymousString2)
+      public final void ch(String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(231210);
-        Toast.makeText(this.val$context, paramString2, 1).show();
-        AppMethodBeat.o(231210);
+        AppMethodBeat.i(274463);
+        Toast.makeText(FavoriteImgDetailUI.this, paramString2, 1).show();
+        AppMethodBeat.o(274463);
       }
     });
     AppMethodBeat.o(164100);
   }
   
-  private void dlJ()
+  private void dSz()
   {
     AppMethodBeat.i(107195);
-    this.displayWidth = (ar.au(getContext()).x - getResources().getDimensionPixelOffset(s.c.FavDetailPadding) * 2);
-    this.displayWidth = Math.max(this.displayWidth, 0);
-    Log.d("MicroMsg.FavoriteImgDetailUI", "update display width %d", new Object[] { Integer.valueOf(this.displayWidth) });
-    AppMethodBeat.o(107195);
+    Point localPoint = aw.bf(getContext());
+    if (localPoint != null) {}
+    for (int i = localPoint.x;; i = com.tencent.mm.cd.a.ms(getContext()))
+    {
+      this.displayWidth = (i - getResources().getDimensionPixelOffset(q.c.FavDetailPadding) * 2);
+      this.displayWidth = Math.max(this.displayWidth, 0);
+      Log.d("MicroMsg.FavoriteImgDetailUI", "update display width %d", new Object[] { Integer.valueOf(this.displayWidth) });
+      AppMethodBeat.o(107195);
+      return;
+    }
   }
   
-  private Bitmap n(anm paramanm)
+  private Bitmap n(arf paramarf)
   {
     boolean bool = true;
     AppMethodBeat.i(107199);
-    paramanm = com.tencent.mm.plugin.fav.ui.o.a(paramanm, this.wJa);
-    if (paramanm != null) {}
+    paramarf = FavoriteImageServer.a(paramarf, this.Afv);
+    if (paramarf != null) {}
     for (;;)
     {
       Log.d("MicroMsg.FavoriteImgDetailUI", "get thumb ok ? %B", new Object[] { Boolean.valueOf(bool) });
-      if (paramanm == null) {
+      if (paramarf == null) {
         break;
       }
       AppMethodBeat.o(107199);
-      return paramanm;
+      return paramarf;
       bool = false;
     }
-    if (this.wOI == null) {
-      this.wOI = com.tencent.mm.compatible.f.a.decodeResource(getResources(), s.h.fav_list_img_default);
+    if (this.Alk == null) {
+      this.Alk = com.tencent.mm.compatible.f.a.decodeResource(getResources(), q.h.fav_list_img_default);
     }
-    paramanm = this.wOI;
+    paramarf = this.Alk;
     AppMethodBeat.o(107199);
-    return paramanm;
+    return paramarf;
   }
   
-  protected final MMLoadScrollView dly()
+  protected final MMLoadScrollView dSo()
   {
     AppMethodBeat.i(107191);
-    MMLoadScrollView localMMLoadScrollView = (MMLoadScrollView)findViewById(s.e.scroll_view);
+    MMLoadScrollView localMMLoadScrollView = (MMLoadScrollView)findViewById(q.e.scroll_view);
     AppMethodBeat.o(107191);
     return localMMLoadScrollView;
   }
@@ -264,7 +263,7 @@ public class FavoriteImgDetailUI
       return;
     }
     Log.d("MicroMsg.FavoriteImgDetailUI", "on cdn status change, dataid[%s]", new Object[] { paramc.field_dataId });
-    paramc = (a)this.wOH.get(paramc.field_dataId);
+    paramc = (a)this.Alj.get(paramc.field_dataId);
     if (paramc != null) {
       a(paramc);
     }
@@ -273,7 +272,7 @@ public class FavoriteImgDetailUI
   
   public int getLayoutId()
   {
-    return s.f.favorite_img_detail_ui;
+    return q.f.favorite_img_detail_ui;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -286,24 +285,24 @@ public class FavoriteImgDetailUI
         AppMethodBeat.o(107201);
         return;
       }
-      new k();
-      if (k.v(this.wJa))
+      new com.tencent.mm.plugin.fav.a.k();
+      if (com.tencent.mm.plugin.fav.a.k.v(this.Afv))
       {
-        com.tencent.mm.ui.base.h.cO(getContext(), getString(s.i.Fav_NotDownload_CannotForward));
+        com.tencent.mm.ui.base.k.cZ(getContext(), getString(q.i.Fav_NotDownload_CannotForward));
         AppMethodBeat.o(107201);
         return;
       }
       String str1 = paramIntent.getStringExtra("Select_Conv_User");
       String str2 = paramIntent.getStringExtra("custom_send_text");
       Log.d("MicroMsg.FavoriteImgDetailUI", "select %s for sending", new Object[] { str1 });
-      final s locals = com.tencent.mm.ui.base.h.a(getContext(), getString(s.i.favorite_forward_tips), false, null);
-      l.a(getContext(), str1, str2, this.wJa, new Runnable()
+      final w localw = com.tencent.mm.ui.base.k.a(getContext(), getString(q.i.favorite_forward_tips), false, null);
+      l.a(getContext(), str1, str2, this.Afv, new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(164097);
-          locals.dismiss();
-          com.tencent.mm.ui.widget.snackbar.b.r(FavoriteImgDetailUI.this, FavoriteImgDetailUI.this.getString(s.i.fav_finish_sent));
+          localw.dismiss();
+          com.tencent.mm.ui.widget.snackbar.b.u(FavoriteImgDetailUI.this, FavoriteImgDetailUI.this.getString(q.i.fav_finish_sent));
           AppMethodBeat.o(164097);
         }
       });
@@ -316,8 +315,8 @@ public class FavoriteImgDetailUI
   {
     AppMethodBeat.i(107196);
     super.onConfigurationChanged(paramConfiguration);
-    dlJ();
-    paramConfiguration = this.wOH.entrySet().iterator();
+    dSz();
+    paramConfiguration = this.Alj.entrySet().iterator();
     while (paramConfiguration.hasNext()) {
       a((a)((Map.Entry)paramConfiguration.next()).getValue());
     }
@@ -327,43 +326,43 @@ public class FavoriteImgDetailUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(107192);
-    com.tencent.mm.pluginsdk.h.r(this);
+    com.tencent.mm.pluginsdk.h.w(this);
     super.onCreate(paramBundle);
-    dlJ();
-    this.wOG = ((LinearLayout)findViewById(s.e.fav_img_container));
+    dSz();
+    this.Ali = ((LinearLayout)findViewById(q.e.fav_img_container));
     final long l = getIntent().getLongExtra("key_detail_info_id", -1L);
-    this.wJa = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().Km(l);
-    if (this.wJa == null)
+    this.Afv = ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavItemInfoStorage().mK(l);
+    if (this.Afv == null)
     {
       finish();
       AppMethodBeat.o(107192);
       return;
     }
-    H(this.wJa);
-    paramBundle = this.wJa.field_favProto.syG.iterator();
+    H(this.Afv);
+    paramBundle = this.Afv.field_favProto.vEn.iterator();
     int i = 0;
     while (paramBundle.hasNext())
     {
-      final anm localanm = (anm)paramBundle.next();
-      Log.d("MicroMsg.FavoriteImgDetailUI", "index[%d], dataid[%s]", new Object[] { Integer.valueOf(i), localanm.fEa });
+      final arf localarf = (arf)paramBundle.next();
+      Log.d("MicroMsg.FavoriteImgDetailUI", "index[%d], dataid[%s]", new Object[] { Integer.valueOf(i), localarf.hIQ });
       a locala = new a((byte)0);
-      locala.fDI = localanm;
+      locala.hIy = localarf;
       final ImageView localImageView = new ImageView(getContext());
-      final int j = getResources().getDimensionPixelSize(s.c.SmallPadding);
+      final int j = getResources().getDimensionPixelSize(q.c.SmallPadding);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
       if (i > 0) {
         localLayoutParams.topMargin = j;
       }
-      this.wOG.addView(localImageView, localLayoutParams);
-      localImageView.setTag(localanm);
+      this.Ali.addView(localImageView, localLayoutParams);
+      localImageView.setTag(localarf);
       j /= 2;
       localImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       localImageView.setPadding(j, j, j, j);
-      localImageView.setMinimumWidth(com.tencent.mm.ci.a.fromDPToPix(getContext(), 50));
-      localImageView.setMinimumHeight(com.tencent.mm.ci.a.fromDPToPix(getContext(), 50));
-      localImageView.setImageResource(s.h.fav_list_img_default);
-      localImageView.setOnClickListener(this.dig);
-      localImageView.setOnLongClickListener(this.wOt);
+      localImageView.setMinimumWidth(com.tencent.mm.cd.a.fromDPToPix(getContext(), 50));
+      localImageView.setMinimumHeight(com.tencent.mm.cd.a.fromDPToPix(getContext(), 50));
+      localImageView.setImageResource(q.h.fav_list_img_default);
+      localImageView.setOnClickListener(this.fhU);
+      localImageView.setOnLongClickListener(this.AkV);
       localImageView.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -378,35 +377,35 @@ public class FavoriteImgDetailUI
             return false;
             Object localObject = new int[2];
             paramAnonymousView.getLocationInWindow((int[])localObject);
-            paramAnonymousView = (FavoriteImgDetailUI.a)FavoriteImgDetailUI.c(FavoriteImgDetailUI.this).get(localanm.fEa);
-            Log.i("MicroMsg.FavoriteImgDetailUI", "alvinluo scanImage locationInWindow: %s, %s, imageWidth: %s, imageHeight: %s, touch: %s, %s", new Object[] { Integer.valueOf(localObject[0]), Integer.valueOf(localObject[1]), Integer.valueOf(paramAnonymousView.wPb), Integer.valueOf(paramAnonymousView.wPc), Float.valueOf(paramAnonymousMotionEvent.getRawX()), Float.valueOf(paramAnonymousMotionEvent.getRawY()) });
-            paramAnonymousView = n.a(localImageView, paramAnonymousMotionEvent.getRawX() - localObject[0] - j, paramAnonymousMotionEvent.getRawY() - localObject[1] - j, paramAnonymousView.wPb, paramAnonymousView.wPc);
-            localObject = ad.beh().I("basescanui@datacenter", true);
+            paramAnonymousView = (FavoriteImgDetailUI.a)FavoriteImgDetailUI.c(FavoriteImgDetailUI.this).get(localarf.hIQ);
+            Log.i("MicroMsg.FavoriteImgDetailUI", "alvinluo scanImage locationInWindow: %s, %s, imageWidth: %s, imageHeight: %s, touch: %s, %s", new Object[] { Integer.valueOf(localObject[0]), Integer.valueOf(localObject[1]), Integer.valueOf(paramAnonymousView.AlD), Integer.valueOf(paramAnonymousView.AlE), Float.valueOf(paramAnonymousMotionEvent.getRawX()), Float.valueOf(paramAnonymousMotionEvent.getRawY()) });
+            paramAnonymousView = p.a(localImageView, paramAnonymousMotionEvent.getRawX() - localObject[0] - j, paramAnonymousMotionEvent.getRawY() - localObject[1] - j, paramAnonymousView.AlD, paramAnonymousView.AlE);
+            localObject = ad.bCb().M("basescanui@datacenter", true);
             if (paramAnonymousView != null)
             {
-              ((ad.b)localObject).k("key_basescanui_touch_normalize_x", Float.valueOf(paramAnonymousView.x));
-              ((ad.b)localObject).k("key_basescanui_touch_normalize_y", Float.valueOf(paramAnonymousView.y));
+              ((ad.b)localObject).q("key_basescanui_touch_normalize_x", Float.valueOf(paramAnonymousView.x));
+              ((ad.b)localObject).q("key_basescanui_touch_normalize_y", Float.valueOf(paramAnonymousView.y));
             }
             else
             {
               Log.e("MicroMsg.FavoriteImgDetailUI", "alvinluo get touchCoordinate is invalid");
-              ((ad.b)localObject).k("key_basescanui_screen_position", Boolean.TRUE);
-              ((ad.b)localObject).k("key_basescanui_screen_x", Float.valueOf(paramAnonymousMotionEvent.getRawX()));
-              ((ad.b)localObject).k("key_basescanui_screen_y", Float.valueOf(paramAnonymousMotionEvent.getRawY()));
+              ((ad.b)localObject).q("key_basescanui_screen_position", Boolean.TRUE);
+              ((ad.b)localObject).q("key_basescanui_screen_x", Float.valueOf(paramAnonymousMotionEvent.getRawX()));
+              ((ad.b)localObject).q("key_basescanui_screen_y", Float.valueOf(paramAnonymousMotionEvent.getRawY()));
             }
           }
         }
       });
-      locala.fDJ = localImageView;
-      this.wOH.put(localanm.fEa, locala);
+      locala.hIz = localImageView;
+      this.Alj.put(localarf.hIQ, locala);
       a(locala);
-      if (localanm.SyU != 0) {
-        this.wOJ = false;
+      if (localarf.ZzM != 0) {
+        this.Alm = false;
       }
       i += 1;
     }
-    setMMTitle(getString(s.i.favorite_detail));
-    a.a(this, this.wJa);
+    setMMTitle(getString(q.i.favorite_detail));
+    a.a(this, this.Afv);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -417,27 +416,27 @@ public class FavoriteImgDetailUI
         return true;
       }
     });
-    addIconOptionMenu(0, s.i.top_item_desc_more, s.h.actionbar_icon_dark_more, new MenuItem.OnMenuItemClickListener()
+    addIconOptionMenu(0, q.i.top_item_desc_more, q.h.actionbar_icon_dark_more, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(107179);
-        paramAnonymousMenuItem = new e(FavoriteImgDetailUI.this.getContext(), 1, false);
-        paramAnonymousMenuItem.ODT = new q.f()
+        paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.f(FavoriteImgDetailUI.this.getContext(), 1, false);
+        paramAnonymousMenuItem.Vtg = new u.g()
         {
-          public final void onCreateMMMenu(com.tencent.mm.ui.base.o paramAnonymous2o)
+          public final void onCreateMMMenu(com.tencent.mm.ui.base.s paramAnonymous2s)
           {
             AppMethodBeat.i(107175);
             if (FavoriteImgDetailUI.a(FavoriteImgDetailUI.this)) {
-              paramAnonymous2o.d(2, FavoriteImgDetailUI.this.getString(s.i.favorite_share_with_friend));
+              paramAnonymous2s.c(2, FavoriteImgDetailUI.this.getString(q.i.favorite_share_with_friend));
             }
-            paramAnonymous2o.d(3, FavoriteImgDetailUI.this.getString(s.i.favorite_save_as_note));
-            paramAnonymous2o.d(0, FavoriteImgDetailUI.this.getString(s.i.favorite_edit_tag_tips));
-            paramAnonymous2o.d(1, FavoriteImgDetailUI.this.getContext().getString(s.i.app_delete));
+            paramAnonymous2s.c(3, FavoriteImgDetailUI.this.getString(q.i.favorite_save_as_note));
+            paramAnonymous2s.c(0, FavoriteImgDetailUI.this.getString(q.i.favorite_edit_tag_tips));
+            paramAnonymous2s.c(1, FavoriteImgDetailUI.this.getContext().getString(q.i.app_delete));
             AppMethodBeat.o(107175);
           }
         };
-        paramAnonymousMenuItem.ODU = new q.g()
+        paramAnonymousMenuItem.GAC = new u.i()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -453,22 +452,22 @@ public class FavoriteImgDetailUI
               paramAnonymous2MenuItem.putExtra("key_fav_scene", 2);
               paramAnonymous2MenuItem.putExtra("key_fav_item_id", FavoriteImgDetailUI.b(FavoriteImgDetailUI.this).field_localId);
               com.tencent.mm.plugin.fav.a.b.b(FavoriteImgDetailUI.this.getContext(), ".ui.FavTagEditUI", paramAnonymous2MenuItem);
-              paramAnonymous2MenuItem = FavoriteImgDetailUI.this.wNU;
-              paramAnonymous2MenuItem.wGx += 1;
+              paramAnonymous2MenuItem = FavoriteImgDetailUI.this.Akw;
+              paramAnonymous2MenuItem.AcG += 1;
               AppMethodBeat.o(107178);
               return;
-              com.tencent.mm.ui.base.h.a(FavoriteImgDetailUI.this.getContext(), FavoriteImgDetailUI.this.getString(s.i.app_delete_tips), "", new DialogInterface.OnClickListener()
+              com.tencent.mm.ui.base.k.a(FavoriteImgDetailUI.this.getContext(), FavoriteImgDetailUI.this.getString(q.i.app_delete_tips), "", new DialogInterface.OnClickListener()
               {
                 public final void onClick(final DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                 {
                   AppMethodBeat.i(107177);
-                  paramAnonymous3DialogInterface = com.tencent.mm.ui.base.h.a(FavoriteImgDetailUI.this.getContext(), FavoriteImgDetailUI.this.getString(s.i.app_delete_tips), false, null);
+                  paramAnonymous3DialogInterface = com.tencent.mm.ui.base.k.a(FavoriteImgDetailUI.this.getContext(), FavoriteImgDetailUI.this.getString(q.i.app_delete_tips), false, null);
                   com.tencent.mm.plugin.fav.a.b.b(FavoriteImgDetailUI.b(FavoriteImgDetailUI.this).field_localId, new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(107176);
-                      FavoriteImgDetailUI.this.wNU.wGy = true;
+                      FavoriteImgDetailUI.this.Akw.AcH = true;
                       paramAnonymous3DialogInterface.dismiss();
                       Log.d("MicroMsg.FavoriteImgDetailUI", "do del, local id %d", new Object[] { Long.valueOf(FavoriteImgDetailUI.b(FavoriteImgDetailUI.this).field_localId) });
                       FavoriteImgDetailUI.this.finish();
@@ -485,27 +484,27 @@ public class FavoriteImgDetailUI
               paramAnonymous2MenuItem.putExtra("scene_from", 1);
               paramAnonymous2MenuItem.putExtra("mutil_select_is_ret", true);
               paramAnonymous2MenuItem.putExtra("select_fav_local_id", FavoriteImgDetailUI.b(FavoriteImgDetailUI.this).field_localId);
-              com.tencent.mm.by.c.d(FavoriteImgDetailUI.this, ".ui.transmit.SelectConversationUI", paramAnonymous2MenuItem, 1);
-              com.tencent.mm.plugin.fav.a.h.y(FavoriteImgDetailUI.b(FavoriteImgDetailUI.this).field_localId, 1);
-              paramAnonymous2MenuItem = FavoriteImgDetailUI.this.wNU;
-              paramAnonymous2MenuItem.wGu += 1;
+              com.tencent.mm.br.c.d(FavoriteImgDetailUI.this, ".ui.transmit.SelectConversationUI", paramAnonymous2MenuItem, 1);
+              com.tencent.mm.plugin.fav.a.h.I(FavoriteImgDetailUI.b(FavoriteImgDetailUI.this).field_localId, 1);
+              paramAnonymous2MenuItem = FavoriteImgDetailUI.this.Akw;
+              paramAnonymous2MenuItem.AcD += 1;
               AppMethodBeat.o(107178);
               return;
-              j.a(FavoriteImgDetailUI.this, FavoriteImgDetailUI.7.this.wOP, FavoriteImgDetailUI.this.wNU);
+              j.a(FavoriteImgDetailUI.this, FavoriteImgDetailUI.6.this.Als, FavoriteImgDetailUI.this.Akw);
             }
           }
         };
-        paramAnonymousMenuItem.eik();
+        paramAnonymousMenuItem.dDn();
         AppMethodBeat.o(107179);
         return true;
       }
     });
-    com.tencent.mm.pluginsdk.h.s(this);
-    ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavCdnStorage().a(this);
-    EventCenter.instance.addListener(this.wKS);
-    this.oxq = new ScanCodeSheetItemLogic(this, new ScanCodeSheetItemLogic.b()
+    com.tencent.mm.pluginsdk.h.x(this);
+    ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavCdnStorage().a(this);
+    this.Ahp.alive();
+    this.rAP = new ScanCodeSheetItemLogic(this, new ScanCodeSheetItemLogic.b()
     {
-      public final void aAx(String paramAnonymousString)
+      public final void auF(String paramAnonymousString)
       {
         AppMethodBeat.i(107180);
         Log.i("MicroMsg.FavoriteImgDetailUI", "alvinluo onFetchedCodeInfo codeStr: %s", new Object[] { paramAnonymousString });
@@ -514,7 +513,7 @@ public class FavoriteImgDetailUI
         if (localIterator.hasNext())
         {
           FavoriteImgDetailUI.a locala = (FavoriteImgDetailUI.a)localIterator.next();
-          if (!paramAnonymousString.equals(locala.wOY)) {
+          if (!paramAnonymousString.equals(locala.hHY)) {
             break label117;
           }
           localObject = locala;
@@ -528,7 +527,7 @@ public class FavoriteImgDetailUI
             AppMethodBeat.o(107180);
             return;
           }
-          if ((localObject.wOW != null) && (localObject.wOW.isShowing())) {
+          if ((localObject.Alz != null) && (localObject.Alz.isShowing())) {
             FavoriteImgDetailUI.a(FavoriteImgDetailUI.this, localObject);
           }
           AppMethodBeat.o(107180);
@@ -542,8 +541,8 @@ public class FavoriteImgDetailUI
   public void onDestroy()
   {
     AppMethodBeat.i(107194);
-    ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavCdnStorage().b(this);
-    EventCenter.instance.removeListener(this.wKS);
+    ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavCdnStorage().b(this);
+    this.Ahp.dead();
     super.onDestroy();
     AppMethodBeat.o(107194);
   }
@@ -552,7 +551,7 @@ public class FavoriteImgDetailUI
   {
     AppMethodBeat.i(107193);
     super.onResume();
-    Iterator localIterator = this.wOH.entrySet().iterator();
+    Iterator localIterator = this.Alj.entrySet().iterator();
     while (localIterator.hasNext()) {
       a((a)((Map.Entry)localIterator.next()).getValue());
     }
@@ -567,36 +566,36 @@ public class FavoriteImgDetailUI
   
   final class a
   {
-    anm fDI;
-    ImageView fDJ;
-    int fys;
-    int fyt;
-    e wOW;
-    boolean wOX;
-    String wOY;
-    boolean wOZ;
-    boolean wPa;
-    int wPb;
-    int wPc;
+    boolean AlA;
+    boolean AlB;
+    boolean AlC;
+    int AlD;
+    int AlE;
+    com.tencent.mm.ui.widget.a.f Alz;
+    int hDb;
+    int hDc;
+    String hHY;
+    arf hIy;
+    ImageView hIz;
     
     private a()
     {
       AppMethodBeat.i(107189);
-      this.wOW = new e(FavoriteImgDetailUI.this.getContext(), 1, false);
-      this.wOX = false;
-      this.wOY = null;
-      this.fys = 0;
-      this.fyt = 0;
-      this.wOZ = false;
-      this.wPb = 0;
-      this.wPc = 0;
+      this.Alz = new com.tencent.mm.ui.widget.a.f(FavoriteImgDetailUI.this.getContext(), 1, false);
+      this.AlA = false;
+      this.hHY = null;
+      this.hDb = 0;
+      this.hDc = 0;
+      this.AlB = false;
+      this.AlD = 0;
+      this.AlE = 0;
       AppMethodBeat.o(107189);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.FavoriteImgDetailUI
  * JD-Core Version:    0.7.0.1
  */

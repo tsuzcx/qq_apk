@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.k;
+import com.tencent.mm.message.k;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ public final class l
   extends MAutoStorage<k>
 {
   public static final String[] SQL_CREATE;
-  private final a QWA;
+  public final a XSx;
   
   static
   {
@@ -24,17 +24,17 @@ public final class l
   public l(ISQLiteDatabase paramISQLiteDatabase)
   {
     super(paramISQLiteDatabase, k.info, "AppMessage", null);
-    AppMethodBeat.i(225207);
-    this.QWA = new a((byte)0);
-    AppMethodBeat.o(225207);
+    AppMethodBeat.i(244879);
+    this.XSx = new a((byte)0);
+    AppMethodBeat.o(244879);
   }
   
-  public final k NR(long paramLong)
+  public final k rI(long paramLong)
   {
     AppMethodBeat.i(151752);
-    if (this.QWA.NS(paramLong))
+    if (this.XSx.rJ(paramLong))
     {
-      localk = this.QWA.NR(paramLong);
+      localk = this.XSx.rI(paramLong);
       AppMethodBeat.o(151752);
       return localk;
     }
@@ -49,141 +49,122 @@ public final class l
     return null;
   }
   
-  public final void a(b paramb)
-  {
-    AppMethodBeat.i(225211);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(225211);
-      return;
-    }
-    this.QWA.QWB.put(paramb, new Object());
-    AppMethodBeat.o(225211);
-  }
-  
-  public final void b(b paramb)
-  {
-    AppMethodBeat.i(225212);
-    this.QWA.QWB.remove(paramb);
-    AppMethodBeat.o(225212);
-  }
-  
-  static final class a
+  public static final class a
     implements l.b
   {
-    ConcurrentHashMap<l.b, Object> QWB;
+    public ConcurrentHashMap<l.b, Object> XSy;
     
     private a()
     {
-      AppMethodBeat.i(217279);
-      this.QWB = new ConcurrentHashMap();
-      AppMethodBeat.o(217279);
-    }
-    
-    public final k NR(long paramLong)
-    {
-      AppMethodBeat.i(217281);
-      Object localObject = this.QWB.keySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        l.b localb = (l.b)((Iterator)localObject).next();
-        if (localb.NS(paramLong))
-        {
-          localObject = localb.NR(paramLong);
-          AppMethodBeat.o(217281);
-          return localObject;
-        }
-      }
-      AppMethodBeat.o(217281);
-      return null;
-    }
-    
-    public final boolean NS(long paramLong)
-    {
-      AppMethodBeat.i(217280);
-      Iterator localIterator = this.QWB.keySet().iterator();
-      while (localIterator.hasNext()) {
-        if (((l.b)localIterator.next()).NS(paramLong))
-        {
-          AppMethodBeat.o(217280);
-          return true;
-        }
-      }
-      AppMethodBeat.o(217280);
-      return false;
+      AppMethodBeat.i(244839);
+      this.XSy = new ConcurrentHashMap();
+      AppMethodBeat.o(244839);
     }
     
     public final boolean a(k paramk, boolean paramBoolean)
     {
-      AppMethodBeat.i(217285);
-      Iterator localIterator = this.QWB.keySet().iterator();
+      AppMethodBeat.i(244852);
+      Iterator localIterator = this.XSy.keySet().iterator();
       while (localIterator.hasNext())
       {
         l.b localb = (l.b)localIterator.next();
-        if (localb.NS(paramk.field_msgId))
+        if (localb.rJ(paramk.field_msgId))
         {
           paramBoolean = localb.a(paramk, paramBoolean);
-          AppMethodBeat.o(217285);
+          AppMethodBeat.o(244852);
           return paramBoolean;
         }
       }
-      AppMethodBeat.o(217285);
+      AppMethodBeat.o(244852);
       return false;
     }
     
     public final boolean a(k paramk, boolean paramBoolean, String... paramVarArgs)
     {
-      AppMethodBeat.i(217286);
-      Iterator localIterator = this.QWB.keySet().iterator();
+      AppMethodBeat.i(244853);
+      Iterator localIterator = this.XSy.keySet().iterator();
       while (localIterator.hasNext())
       {
         l.b localb = (l.b)localIterator.next();
-        if (localb.NS(paramk.field_msgId))
+        if (localb.rJ(paramk.field_msgId))
         {
           paramBoolean = localb.a(paramk, paramBoolean, paramVarArgs);
-          AppMethodBeat.o(217286);
+          AppMethodBeat.o(244853);
           return paramBoolean;
         }
       }
-      AppMethodBeat.o(217286);
+      AppMethodBeat.o(244853);
       return false;
     }
     
     public final boolean b(k paramk, boolean paramBoolean)
     {
-      AppMethodBeat.i(217284);
-      Iterator localIterator = this.QWB.keySet().iterator();
+      AppMethodBeat.i(244847);
+      Iterator localIterator = this.XSy.keySet().iterator();
       while (localIterator.hasNext())
       {
         l.b localb = (l.b)localIterator.next();
-        if (localb.NS(paramk.field_msgId))
+        if (localb.rJ(paramk.field_msgId))
         {
           paramBoolean = localb.b(paramk, paramBoolean);
-          AppMethodBeat.o(217284);
+          AppMethodBeat.o(244847);
           return paramBoolean;
         }
       }
-      AppMethodBeat.o(217284);
+      AppMethodBeat.o(244847);
+      return false;
+    }
+    
+    public final k rI(long paramLong)
+    {
+      AppMethodBeat.i(244844);
+      Object localObject = this.XSy.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        l.b localb = (l.b)((Iterator)localObject).next();
+        if (localb.rJ(paramLong))
+        {
+          localObject = localb.rI(paramLong);
+          AppMethodBeat.o(244844);
+          return localObject;
+        }
+      }
+      AppMethodBeat.o(244844);
+      return null;
+    }
+    
+    public final boolean rJ(long paramLong)
+    {
+      AppMethodBeat.i(244842);
+      Iterator localIterator = this.XSy.keySet().iterator();
+      while (localIterator.hasNext()) {
+        if (((l.b)localIterator.next()).rJ(paramLong))
+        {
+          AppMethodBeat.o(244842);
+          return true;
+        }
+      }
+      AppMethodBeat.o(244842);
       return false;
     }
   }
   
   public static abstract interface b
   {
-    public abstract k NR(long paramLong);
-    
-    public abstract boolean NS(long paramLong);
-    
     public abstract boolean a(k paramk, boolean paramBoolean);
     
     public abstract boolean a(k paramk, boolean paramBoolean, String... paramVarArgs);
     
     public abstract boolean b(k paramk, boolean paramBoolean);
+    
+    public abstract k rI(long paramLong);
+    
+    public abstract boolean rJ(long paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.l
  * JD-Core Version:    0.7.0.1
  */

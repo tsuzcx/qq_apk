@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/k" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/a7d" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71"
-      xmlns:android="http://schemas.android.com/apk/res/android" />
-</LinearLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:orientation="vertical" android:id="@id/ac6" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/ac7" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="@id/ac4" />
+    <View android:id="@id/ac4" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/if" app:layout_constraintBottom_toBottomOf="@id/ac3" app:layout_constraintLeft_toLeftOf="hr_" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/al6" android:id="@id/biz_slot_show_desc_tv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginBottom="@dimen/bv" app:layout_constraintBottom_toTopOf="@id/biz_slot_title_neat_tv" app:layout_constraintLeft_toLeftOf="hr_" app:layout_goneMarginBottom="@dimen/df" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/al6" android:ellipsize="end" android:id="@id/biz_slot_title_neat_tv" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="@dimen/df" android:maxLines="2" android:lineSpacingExtra="2.0dip" app:layout_constraintBottom_toBottomOf="@id/ac7" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" />
+</merge>

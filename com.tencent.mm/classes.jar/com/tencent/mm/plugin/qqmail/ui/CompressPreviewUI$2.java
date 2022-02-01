@@ -12,7 +12,7 @@ final class CompressPreviewUI$2
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(122964);
-    this.Hpz.onKeyDown(4, null);
+    this.Nnn.onKeyDown(4, null);
     AppMethodBeat.o(122964);
     return true;
   }

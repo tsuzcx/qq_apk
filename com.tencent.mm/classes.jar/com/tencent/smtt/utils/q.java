@@ -16,7 +16,7 @@ public class q
   
   private boolean a(b paramb1, b paramb2)
   {
-    AppMethodBeat.i(200682);
+    AppMethodBeat.i(219364);
     TbsLog.d("TbsCopyVerify", "equal");
     if ((paramb1 != null) && (paramb1.a() != null) && (paramb2 != null) && (paramb2.a() != null))
     {
@@ -33,55 +33,55 @@ public class q
           localObject1 = (a)paramb1.get(localObject1);
           if ((((a)localObject2).a() != ((a)localObject1).a()) || (((a)localObject2).b() != ((a)localObject1).b()))
           {
-            AppMethodBeat.o(200682);
+            AppMethodBeat.o(219364);
             return false;
           }
         }
         else
         {
-          AppMethodBeat.o(200682);
+          AppMethodBeat.o(219364);
           return false;
         }
       }
-      AppMethodBeat.o(200682);
+      AppMethodBeat.o(219364);
       return true;
     }
-    AppMethodBeat.o(200682);
+    AppMethodBeat.o(219364);
     return false;
   }
   
   public void a(File paramFile)
   {
-    AppMethodBeat.i(200676);
+    AppMethodBeat.i(219367);
     this.a = new b(paramFile);
-    AppMethodBeat.o(200676);
+    AppMethodBeat.o(219367);
   }
   
   public boolean a()
   {
-    AppMethodBeat.i(200679);
+    AppMethodBeat.i(219374);
     TbsLog.d("TbsCopyVerify", "verify");
     if ((this.b == null) || (this.a == null))
     {
-      AppMethodBeat.o(200679);
+      AppMethodBeat.o(219374);
       return false;
     }
     if ((this.b.a().size() == this.a.a().size()) && (a(this.a, this.b)))
     {
       TbsLog.d("TbsCopyVerify", "verify Yes!");
-      AppMethodBeat.o(200679);
+      AppMethodBeat.o(219374);
       return true;
     }
     TbsLog.d("TbsCopyVerify", "verify No!");
-    AppMethodBeat.o(200679);
+    AppMethodBeat.o(219374);
     return false;
   }
   
   public void b(File paramFile)
   {
-    AppMethodBeat.i(200678);
+    AppMethodBeat.i(219369);
     this.b = new b(paramFile);
-    AppMethodBeat.o(200678);
+    AppMethodBeat.o(219369);
   }
   
   class a
@@ -114,22 +114,22 @@ public class q
     
     b(File paramFile)
     {
-      AppMethodBeat.i(199743);
+      AppMethodBeat.i(219355);
       this.b = new HashMap();
       this.b.clear();
       a(paramFile);
-      AppMethodBeat.o(199743);
+      AppMethodBeat.o(219355);
     }
     
     private void a(File paramFile)
     {
-      AppMethodBeat.i(199747);
+      AppMethodBeat.i(219359);
       if (paramFile.isDirectory())
       {
         paramFile = paramFile.listFiles();
         if ((paramFile == null) && (Build.VERSION.SDK_INT >= 26))
         {
-          AppMethodBeat.o(199747);
+          AppMethodBeat.o(219359);
           return;
         }
         TbsLog.d("TbsCopyVerify", "generateFileInfo len=" + paramFile.length);
@@ -139,18 +139,18 @@ public class q
           a(paramFile[i]);
           i += 1;
         }
-        AppMethodBeat.o(199747);
+        AppMethodBeat.o(219359);
         return;
       }
       if (paramFile.isFile()) {
         a(paramFile.getName(), paramFile.length(), paramFile.lastModified());
       }
-      AppMethodBeat.o(199747);
+      AppMethodBeat.o(219359);
     }
     
     private void a(String paramString, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(199752);
+      AppMethodBeat.i(219362);
       TbsLog.d("TbsCopyVerify", "generateFileInfo name=" + paramString + ",fileSize=" + paramLong1 + ",lastModify=" + paramLong2);
       if ((paramString != null) && (paramString.length() > 0) && (paramLong1 > 0L) && (paramLong2 > 0L))
       {
@@ -159,7 +159,7 @@ public class q
           this.b.put(paramString, locala);
         }
       }
-      AppMethodBeat.o(199752);
+      AppMethodBeat.o(219362);
     }
     
     Map<String, q.a> a()
@@ -170,7 +170,7 @@ public class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.utils.q
  * JD-Core Version:    0.7.0.1
  */

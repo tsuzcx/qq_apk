@@ -1,40 +1,36 @@
 package androidx.c.a;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.Executor;
 
-public abstract class c
-  extends a
+public enum c
+  implements Executor
 {
-  private int QY;
-  private int QZ;
-  private LayoutInflater mInflater;
-  
-  @Deprecated
-  public c(Context paramContext, int paramInt)
+  static
   {
-    super(paramContext);
-    this.QZ = paramInt;
-    this.QY = paramInt;
-    this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    AppMethodBeat.i(195292);
+    bgb = new c("INSTANCE");
+    bgc = new c[] { bgb };
+    AppMethodBeat.o(195292);
   }
   
-  public final View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  private c() {}
+  
+  public final void execute(Runnable paramRunnable)
   {
-    return this.mInflater.inflate(this.QZ, paramViewGroup, false);
+    AppMethodBeat.i(195298);
+    paramRunnable.run();
+    AppMethodBeat.o(195298);
   }
   
-  public View newView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  public final String toString()
   {
-    return this.mInflater.inflate(this.QY, paramViewGroup, false);
+    return "DirectExecutor";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     androidx.c.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -10,18 +10,22 @@ import android.util.Pair;
 import com.tencent.luggage.sdk.processes.LuggageServiceType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbiz.WXLaunchWxaRedirectingPage.Req;
-import com.tencent.mm.plugin.appbrand.api.g;
-import com.tencent.mm.plugin.appbrand.appstorage.h.a;
-import com.tencent.mm.plugin.appbrand.appstorage.h.a.a;
-import com.tencent.mm.plugin.appbrand.au.e;
+import com.tencent.mm.plugin.appbrand.ac;
+import com.tencent.mm.plugin.appbrand.appcache.e;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.plugin.appbrand.appstorage.m.a;
+import com.tencent.mm.plugin.appbrand.ba.e;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
+import com.tencent.mm.plugin.appbrand.ipc.a;
 import com.tencent.mm.plugin.appbrand.j;
+import com.tencent.mm.plugin.appbrand.jsapi.JsApiOnWebPageUrlExposed;
+import com.tencent.mm.plugin.appbrand.jsapi.bizvideochannel.JsApiOpenWebViewUseFastLoad;
 import com.tencent.mm.plugin.appbrand.jsapi.file.OpenFileRequest;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.WechatNativeExtraDataInvokeFunctionalPage;
 import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.service.f;
-import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.appbrand.ui.recommend.d;
+import com.tencent.mm.plugin.appbrand.service.ab;
+import com.tencent.mm.plugin.appbrand.service.t;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Objects;
@@ -29,16 +33,24 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class AppBrandMixExportLogicService
-  implements f
+  implements com.tencent.mm.plugin.appbrand.service.g
 {
+  public final String UC(String paramString)
+  {
+    AppMethodBeat.i(317816);
+    paramString = ac.UC(paramString);
+    AppMethodBeat.o(317816);
+    return paramString;
+  }
+  
   public final Pair<Integer, String> a(Context paramContext, WXLaunchWxaRedirectingPage.Req paramReq, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(283808);
+    AppMethodBeat.i(317831);
     paramString2 = Uri.parse(paramString2);
     String str3 = paramString2.getQueryParameter("host_appid");
     int i = Util.getInt(paramString2.getQueryParameter("wxa_scene"), 1);
     AppBrandLaunchReferrer localAppBrandLaunchReferrer = new AppBrandLaunchReferrer();
-    localAppBrandLaunchReferrer.nYB = 7;
+    localAppBrandLaunchReferrer.qYE = 7;
     localAppBrandLaunchReferrer.appId = str3;
     try
     {
@@ -50,7 +62,7 @@ public final class AppBrandMixExportLogicService
       paramString2.put("packageName", paramString1);
       paramString2.put("callbackActivity", paramReq.callbackActivity);
       localWechatNativeExtraDataInvokeFunctionalPage = new WechatNativeExtraDataInvokeFunctionalPage(paramString2);
-      paramString2 = localWechatNativeExtraDataInvokeFunctionalPage.qbq;
+      paramString2 = localWechatNativeExtraDataInvokeFunctionalPage.efV;
       paramString1 = str2;
       paramReq = str1;
     }
@@ -65,35 +77,35 @@ public final class AppBrandMixExportLogicService
         localWechatNativeExtraDataInvokeFunctionalPage = null;
         paramReq = "__wx__/open-api-redirecting-page";
       }
-      paramString3 = new g();
+      paramString3 = new com.tencent.mm.plugin.appbrand.api.g();
       paramString3.appId = paramString1;
-      paramString3.nBq = paramReq;
+      paramString3.qAF = paramReq;
       paramString3.scene = 1111;
-      paramString3.fvd = (str3 + ":" + paramString2);
-      paramString3.nBz = localAppBrandLaunchReferrer;
-      paramString3.nBr = localWechatNativeExtraDataInvokeFunctionalPage;
-      paramString3.cBU = localWechatNativeExtraDataInvokeFunctionalPage.qbu;
+      paramString3.hzx = (str3 + ":" + paramString2);
+      paramString3.qAO = localAppBrandLaunchReferrer;
+      paramString3.qAG = localWechatNativeExtraDataInvokeFunctionalPage;
+      paramString3.euz = localWechatNativeExtraDataInvokeFunctionalPage.tgv;
       if (!com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.c.a(paramContext, localWechatNativeExtraDataInvokeFunctionalPage, paramString3)) {
         break label372;
       }
       paramContext = Pair.create(Integer.valueOf(0), "OK");
-      AppMethodBeat.o(283808);
+      AppMethodBeat.o(317831);
       return paramContext;
       label372:
       if (!((String)Objects.requireNonNull(paramString2)).endsWith("openUrl")) {
         break label393;
       }
-      com.tencent.mm.xwebutil.c.bCD("com.tencent.mm.intent.ACTION_START_TOOLS_PROCESS");
+      com.tencent.mm.xwebutil.c.bFh("com.tencent.mm.intent.ACTION_START_TOOLS_PROCESS");
       label393:
-      ((r)com.tencent.mm.kernel.h.ae(r.class)).a(paramContext, paramString3);
+      ((t)com.tencent.mm.kernel.h.ax(t.class)).a(paramContext, paramString3);
       paramContext = Pair.create(Integer.valueOf(0), "OK");
-      AppMethodBeat.o(283808);
+      AppMethodBeat.o(317831);
     }
     if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1)) || (localWechatNativeExtraDataInvokeFunctionalPage == null))
     {
       Log.e("MicroMsg.AppBrandMixExportLogicService", "openWeappFunctionalPageByDeepLink invalid apiName(%s) miniprogramAppID(%s) transferBuffer(%s)", new Object[] { paramString2, paramString1, paramString3 });
       paramContext = Pair.create(Integer.valueOf(-1), "Invalid transferJson");
-      AppMethodBeat.o(283808);
+      AppMethodBeat.o(317831);
       return paramContext;
     }
     return paramContext;
@@ -104,88 +116,98 @@ public final class AppBrandMixExportLogicService
     AppMethodBeat.i(174698);
     OpenFileRequest localOpenFileRequest = new OpenFileRequest();
     localOpenFileRequest.filePath = paramString1;
-    localOpenFileRequest.jmx = paramString2;
+    localOpenFileRequest.lPJ = paramString2;
     localOpenFileRequest.appId = paramString3;
-    localOpenFileRequest.orn = paramBoolean;
-    com.tencent.mm.plugin.appbrand.ipc.a.a(paramContext, localOpenFileRequest, paramString4);
+    localOpenFileRequest.rvh = paramBoolean;
+    a.a(paramContext, localOpenFileRequest, paramString4);
     AppMethodBeat.o(174698);
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.service.z paramz)
+  public final void a(ab paramab)
   {
-    AppMethodBeat.i(283801);
-    com.tencent.mm.plugin.appbrand.task.i.cjb().a(LuggageServiceType.cBP, paramz);
-    AppMethodBeat.o(283801);
+    AppMethodBeat.i(317789);
+    com.tencent.mm.plugin.appbrand.task.i.cJV().a(LuggageServiceType.euv, paramab);
+    AppMethodBeat.o(317789);
   }
   
   public final <T extends Parcelable> void a(String paramString, T paramT)
   {
     AppMethodBeat.i(174695);
-    com.tencent.mm.plugin.appbrand.ipc.e.b(paramString, paramT);
+    com.tencent.mm.plugin.appbrand.ipc.f.b(paramString, paramT);
     AppMethodBeat.o(174695);
   }
   
-  public final String aca(String paramString)
+  public final void b(ab paramab)
   {
-    AppMethodBeat.i(283806);
-    paramString = com.tencent.mm.plugin.appbrand.z.aca(paramString);
-    AppMethodBeat.o(283806);
-    return paramString;
+    AppMethodBeat.i(317790);
+    com.tencent.mm.plugin.appbrand.task.i.cJV().a(LuggageServiceType.euv, paramab);
+    AppMethodBeat.o(317790);
   }
   
-  public final void b(com.tencent.mm.plugin.appbrand.service.z paramz)
+  public final void c(ab paramab)
   {
-    AppMethodBeat.i(283802);
-    com.tencent.mm.plugin.appbrand.task.i.cjb().a(LuggageServiceType.cBP, paramz);
-    AppMethodBeat.o(283802);
+    AppMethodBeat.i(317791);
+    com.tencent.mm.plugin.appbrand.task.i.cJV().a(LuggageServiceType.euw, paramab);
+    AppMethodBeat.o(317791);
   }
   
-  public final void bFi()
+  public final void cew()
   {
     AppMethodBeat.i(44097);
-    if ((com.tencent.mm.plugin.appbrand.ui.recommend.c.clA()) && (com.tencent.mm.plugin.appbrand.ui.recommend.c.clB())) {
-      a(com.tencent.mm.plugin.appbrand.service.z.qPd);
+    if ((com.tencent.mm.plugin.appbrand.ui.recommend.c.cMX()) && (com.tencent.mm.plugin.appbrand.ui.recommend.c.cMY())) {
+      a(ab.tTU);
     }
-    com.tencent.e.h.ZvG.be(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(44089);
-        d.rgQ.clE();
-        AppMethodBeat.o(44089);
-      }
-    });
+    com.tencent.threadpool.h.ahAA.bm(new AppBrandMixExportLogicService.1(this));
     AppMethodBeat.o(44097);
   }
   
-  public final void bFj()
+  public final void cex()
   {
-    AppMethodBeat.i(283804);
-    o.bBS();
-    h.a locala = com.tencent.mm.plugin.appbrand.appstorage.h.nMI;
-    com.tencent.e.h.ZvG.be((Runnable)new com.tencent.mm.plugin.appbrand.utils.a((Runnable)h.a.a.nMK));
-    AppMethodBeat.o(283804);
+    AppMethodBeat.i(317797);
+    o.cbp();
+    m.a locala = m.qMD;
+    m.a.cig();
+    AppMethodBeat.o(317797);
   }
   
-  public final void bFk()
+  public final void cey()
   {
-    AppMethodBeat.i(283805);
+    AppMethodBeat.i(317801);
     j.clean();
-    AppMethodBeat.o(283805);
+    AppMethodBeat.o(317801);
   }
   
-  public final void c(com.tencent.mm.plugin.appbrand.service.z paramz)
+  public final p zk(int paramInt)
   {
-    AppMethodBeat.i(283803);
-    com.tencent.mm.plugin.appbrand.task.i.cjb().a(LuggageServiceType.cBQ, paramz);
-    AppMethodBeat.o(283803);
+    AppMethodBeat.i(317806);
+    Object localObject;
+    if (paramInt == 968)
+    {
+      localObject = new com.tencent.mm.plugin.appbrand.jsapi.channels.f();
+      AppMethodBeat.o(317806);
+      return localObject;
+    }
+    if (paramInt == 764)
+    {
+      localObject = new JsApiOpenWebViewUseFastLoad();
+      AppMethodBeat.o(317806);
+      return localObject;
+    }
+    if (paramInt == 865)
+    {
+      localObject = new JsApiOnWebPageUrlExposed();
+      AppMethodBeat.o(317806);
+      return localObject;
+    }
+    AppMethodBeat.o(317806);
+    return null;
   }
   
-  public final Pair<String, Integer> yY(int paramInt)
+  public final Pair<String, Integer> zl(int paramInt)
   {
-    AppMethodBeat.i(283807);
-    Pair localPair = new Pair(com.tencent.mm.plugin.appbrand.appcache.e.yZ(paramInt), Integer.valueOf(au.e.app_brand_recents_item_type_tag));
-    AppMethodBeat.o(283807);
+    AppMethodBeat.i(317819);
+    Pair localPair = new Pair(e.zm(paramInt), Integer.valueOf(ba.e.app_brand_recents_item_type_tag));
+    AppMethodBeat.o(317819);
     return localPair;
   }
   
@@ -226,7 +248,7 @@ public final class AppBrandMixExportLogicService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.AppBrandMixExportLogicService
  * JD-Core Version:    0.7.0.1
  */

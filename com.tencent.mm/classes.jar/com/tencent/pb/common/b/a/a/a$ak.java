@@ -1,56 +1,139 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
-import com.google.b.a.g;
+import com.google.d.a.b;
+import com.google.d.a.e;
+import com.google.d.a.g;
 
 public final class a$ak
   extends e
 {
-  public int NOc = 0;
-  public long NOd = 0L;
-  public a.ay ZeS = null;
-  public a.ax ZfE = null;
-  public a.ba[] ZfK = a.ba.ikV();
-  public a.ba[] Zgp = a.ba.ikV();
-  public a.q[] Zgq = a.q.ikN();
-  public a.bb[] Zgr = a.bb.ikW();
-  public int Zgs = 0;
-  public int[] Zgt = g.bZR;
+  public int UAZ = 0;
+  public long UBa = 0L;
+  public a.ay ahdv = null;
+  public a.ba[] aheQ = a.ba.jRm();
+  public a.q[] aheR = a.q.jRe();
+  public a.bb[] aheS = a.bb.jRn();
+  public int aheT = 0;
+  public int[] aheU = g.dTZ;
+  public a.ax aheh = null;
+  public a.ba[] ahen = a.ba.jRm();
   public String groupId = "";
   
   public a$ak()
   {
-    this.ccR = -1;
+    this.dXv = -1;
   }
   
-  public final int JG()
+  public final void a(b paramb)
+  {
+    int j = 0;
+    if (!this.groupId.equals("")) {
+      paramb.g(1, this.groupId);
+    }
+    if (this.UAZ != 0) {
+      paramb.cF(2, this.UAZ);
+    }
+    if (this.UBa != 0L) {
+      paramb.t(3, this.UBa);
+    }
+    int i;
+    Object localObject;
+    if ((this.aheR != null) && (this.aheR.length > 0))
+    {
+      i = 0;
+      while (i < this.aheR.length)
+      {
+        localObject = this.aheR[i];
+        if (localObject != null) {
+          paramb.a(4, (e)localObject);
+        }
+        i += 1;
+      }
+    }
+    if (this.aheh != null) {
+      paramb.a(5, this.aheh);
+    }
+    if (this.aheT != 0) {
+      paramb.cF(6, this.aheT);
+    }
+    if ((this.aheU != null) && (this.aheU.length > 0))
+    {
+      i = 0;
+      while (i < this.aheU.length)
+      {
+        paramb.cF(7, this.aheU[i]);
+        i += 1;
+      }
+    }
+    if ((this.aheQ != null) && (this.aheQ.length > 0))
+    {
+      i = 0;
+      while (i < this.aheQ.length)
+      {
+        localObject = this.aheQ[i];
+        if (localObject != null) {
+          paramb.a(200, (e)localObject);
+        }
+        i += 1;
+      }
+    }
+    if ((this.aheS != null) && (this.aheS.length > 0))
+    {
+      i = 0;
+      while (i < this.aheS.length)
+      {
+        localObject = this.aheS[i];
+        if (localObject != null) {
+          paramb.a(201, (e)localObject);
+        }
+        i += 1;
+      }
+    }
+    if (this.ahdv != null) {
+      paramb.a(202, this.ahdv);
+    }
+    if ((this.ahen != null) && (this.ahen.length > 0))
+    {
+      i = j;
+      while (i < this.ahen.length)
+      {
+        localObject = this.ahen[i];
+        if (localObject != null) {
+          paramb.a(203, (e)localObject);
+        }
+        i += 1;
+      }
+    }
+    super.a(paramb);
+  }
+  
+  public final int akc()
   {
     int m = 0;
-    int j = super.JG();
+    int j = super.akc();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.g(1, this.groupId);
+      i = j + b.h(1, this.groupId);
     }
     j = i;
-    if (this.NOc != 0) {
-      j = i + b.bM(2, this.NOc);
+    if (this.UAZ != 0) {
+      j = i + b.cJ(2, this.UAZ);
     }
     i = j;
-    if (this.NOd != 0L) {
-      i = j + b.p(3, this.NOd);
+    if (this.UBa != 0L) {
+      i = j + b.q(3, this.UBa);
     }
     j = i;
     Object localObject;
-    if (this.Zgq != null)
+    if (this.aheR != null)
     {
       j = i;
-      if (this.Zgq.length > 0)
+      if (this.aheR.length > 0)
       {
         j = 0;
-        while (j < this.Zgq.length)
+        while (j < this.aheR.length)
         {
-          localObject = this.Zgq[j];
+          localObject = this.aheR[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(4, (e)localObject);
@@ -62,39 +145,39 @@ public final class a$ak
       }
     }
     i = j;
-    if (this.ZfE != null) {
-      i = j + b.b(5, this.ZfE);
+    if (this.aheh != null) {
+      i = j + b.b(5, this.aheh);
     }
     j = i;
-    if (this.Zgs != 0) {
-      j = i + b.bM(6, this.Zgs);
+    if (this.aheT != 0) {
+      j = i + b.cJ(6, this.aheT);
     }
     i = j;
-    if (this.Zgt != null)
+    if (this.aheU != null)
     {
       i = j;
-      if (this.Zgt.length > 0)
+      if (this.aheU.length > 0)
       {
         i = 0;
         k = 0;
-        while (i < this.Zgt.length)
+        while (i < this.aheU.length)
         {
-          k += b.gM(this.Zgt[i]);
+          k += b.kp(this.aheU[i]);
           i += 1;
         }
-        i = j + k + this.Zgt.length * 1;
+        i = j + k + this.aheU.length * 1;
       }
     }
     j = i;
-    if (this.Zgp != null)
+    if (this.aheQ != null)
     {
       j = i;
-      if (this.Zgp.length > 0)
+      if (this.aheQ.length > 0)
       {
         j = 0;
-        while (j < this.Zgp.length)
+        while (j < this.aheQ.length)
         {
-          localObject = this.Zgp[j];
+          localObject = this.aheQ[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(200, (e)localObject);
@@ -106,17 +189,17 @@ public final class a$ak
       }
     }
     int k = j;
-    if (this.Zgr != null)
+    if (this.aheS != null)
     {
       k = j;
-      if (this.Zgr.length > 0)
+      if (this.aheS.length > 0)
       {
         k = 0;
         i = j;
         j = k;
-        while (j < this.Zgr.length)
+        while (j < this.aheS.length)
         {
-          localObject = this.Zgr[j];
+          localObject = this.aheS[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(201, (e)localObject);
@@ -128,23 +211,23 @@ public final class a$ak
       }
     }
     i = k;
-    if (this.ZeS != null) {
-      i = k + b.b(202, this.ZeS);
+    if (this.ahdv != null) {
+      i = k + b.b(202, this.ahdv);
     }
     k = i;
-    if (this.ZfK != null)
+    if (this.ahen != null)
     {
       k = i;
-      if (this.ZfK.length > 0)
+      if (this.ahen.length > 0)
       {
         j = m;
         for (;;)
         {
           k = i;
-          if (j >= this.ZfK.length) {
+          if (j >= this.ahen.length) {
             break;
           }
-          localObject = this.ZfK[j];
+          localObject = this.ahen[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(203, (e)localObject);
@@ -156,93 +239,10 @@ public final class a$ak
     }
     return k;
   }
-  
-  public final void a(b paramb)
-  {
-    int j = 0;
-    if (!this.groupId.equals("")) {
-      paramb.f(1, this.groupId);
-    }
-    if (this.NOc != 0) {
-      paramb.bJ(2, this.NOc);
-    }
-    if (this.NOd != 0L) {
-      paramb.r(3, this.NOd);
-    }
-    int i;
-    Object localObject;
-    if ((this.Zgq != null) && (this.Zgq.length > 0))
-    {
-      i = 0;
-      while (i < this.Zgq.length)
-      {
-        localObject = this.Zgq[i];
-        if (localObject != null) {
-          paramb.a(4, (e)localObject);
-        }
-        i += 1;
-      }
-    }
-    if (this.ZfE != null) {
-      paramb.a(5, this.ZfE);
-    }
-    if (this.Zgs != 0) {
-      paramb.bJ(6, this.Zgs);
-    }
-    if ((this.Zgt != null) && (this.Zgt.length > 0))
-    {
-      i = 0;
-      while (i < this.Zgt.length)
-      {
-        paramb.bJ(7, this.Zgt[i]);
-        i += 1;
-      }
-    }
-    if ((this.Zgp != null) && (this.Zgp.length > 0))
-    {
-      i = 0;
-      while (i < this.Zgp.length)
-      {
-        localObject = this.Zgp[i];
-        if (localObject != null) {
-          paramb.a(200, (e)localObject);
-        }
-        i += 1;
-      }
-    }
-    if ((this.Zgr != null) && (this.Zgr.length > 0))
-    {
-      i = 0;
-      while (i < this.Zgr.length)
-      {
-        localObject = this.Zgr[i];
-        if (localObject != null) {
-          paramb.a(201, (e)localObject);
-        }
-        i += 1;
-      }
-    }
-    if (this.ZeS != null) {
-      paramb.a(202, this.ZeS);
-    }
-    if ((this.ZfK != null) && (this.ZfK.length > 0))
-    {
-      i = j;
-      while (i < this.ZfK.length)
-      {
-        localObject = this.ZfK[i];
-        if (localObject != null) {
-          paramb.a(203, (e)localObject);
-        }
-        i += 1;
-      }
-    }
-    super.a(paramb);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.ipcall;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.k.f;
+import com.tencent.mm.k.i;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class d
 {
-  public static boolean eIU()
+  public static boolean fQV()
   {
     AppMethodBeat.i(25325);
-    if (bh.aHB())
+    if (bh.baz())
     {
-      if (h.axc().getInt("WCOEntranceSwitch", 0) > 0)
+      if (i.aRC().getInt("WCOEntranceSwitch", 0) > 0)
       {
-        bh.beI();
-        c.aHp().set(ar.a.Vjr, Boolean.TRUE);
+        bh.bCz();
+        c.ban().set(at.a.acKL, Boolean.TRUE);
         AppMethodBeat.o(25325);
         return true;
       }
-      bh.beI();
-      c.aHp().set(ar.a.Vjr, Boolean.FALSE);
+      bh.bCz();
+      c.ban().set(at.a.acKL, Boolean.FALSE);
       AppMethodBeat.o(25325);
       return false;
     }

@@ -3,137 +3,130 @@ package com.tencent.mm.plugin.appbrand.widget.recent;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.plugin.appbrand.appusage.ag;
-import com.tencent.mm.plugin.appbrand.appusage.ag.a;
+import com.tencent.mm.plugin.appbrand.appusage.af;
+import com.tencent.mm.plugin.appbrand.appusage.af.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageLoaded;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/recent/AppBrandCollectionStorageWithCache;", "Lcom/tencent/mm/plugin/appbrand/widget/recent/AbsAppBrandDesktopViewStorageWithCache;", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "delegate", "(Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;)V", "add", "", "p0", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "kotlin.jvm.PlatformType", "p1", "Landroid/os/Looper;", "listener", "Lcom/tencent/threadpool/serial/Serial;", "", "addCollection", "", "username", "versionType", "addLoadedListener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageLoaded;", "addStorageChangedListenerToDelegate", "doNotify", "p2", "", "getCount", "getCountLimit", "isCollection", "", "lock", "lockCount", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "count", "order", "queryByDelegate", "args", "", "([Ljava/lang/Object;)Ljava/util/List;", "refreshOnPullDownOpen", "refreshOnPullDownOpenAnimationEnd", "remove", "removeCollection", "removeLoadedListener", "reorder", "unlock", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/recent/AppBrandCollectionStorageWithCache;", "Lcom/tencent/mm/plugin/appbrand/widget/recent/AbsAppBrandDesktopViewStorageWithCache;", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "delegate", "(Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;)V", "add", "", "p0", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "kotlin.jvm.PlatformType", "p1", "Landroid/os/Looper;", "listener", "Lcom/tencent/threadpool/serial/Serial;", "", "addCollection", "", "username", "versionType", "addLoadedListener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageLoaded;", "addStorageChangedListenerToDelegate", "doNotify", "p2", "", "getCount", "getCountLimit", "isCollection", "", "isCollectionForAppId", "lock", "lockCount", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "count", "order", "queryByDelegate", "args", "", "([Ljava/lang/Object;)Ljava/util/List;", "remove", "removeCollection", "removeLoadedListener", "reorder", "unlock", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends a<List<? extends LocalUsageInfo>, ag>
-  implements ag
+  extends a<List<? extends LocalUsageInfo>, af>
+  implements af
 {
-  public static final b.a rEx;
+  public static final b.a uPK;
   
   static
   {
-    AppMethodBeat.i(270357);
-    rEx = new b.a((byte)0);
-    AppMethodBeat.o(270357);
+    AppMethodBeat.i(324066);
+    uPK = new b.a((byte)0);
+    AppMethodBeat.o(324066);
   }
   
-  public b(ag paramag)
+  public b(af paramaf)
   {
-    super(paramag);
-    AppMethodBeat.i(270356);
-    this.rEy = paramag;
-    AppMethodBeat.o(270356);
+    super(paramaf);
+    AppMethodBeat.i(324060);
+    this.uPL = paramaf;
+    AppMethodBeat.o(324060);
   }
   
-  public final List<LocalUsageInfo> a(int paramInt, ag.a parama)
+  public final List<LocalUsageInfo> a(int paramInt, af.a parama)
   {
-    AppMethodBeat.i(270349);
-    parama = (List)l(new Object[] { Integer.valueOf(paramInt), parama });
-    AppMethodBeat.o(270349);
+    AppMethodBeat.i(324141);
+    parama = (List)n(new Object[] { Integer.valueOf(paramInt), parama });
+    AppMethodBeat.o(324141);
     return parama;
   }
   
-  public final List<LocalUsageInfo> a(int paramInt1, ag.a parama, int paramInt2)
+  public final List<LocalUsageInfo> a(int paramInt1, af.a parama, int paramInt2)
   {
-    AppMethodBeat.i(270376);
-    parama = this.rEy.a(paramInt1, parama, paramInt2);
-    AppMethodBeat.o(270376);
+    AppMethodBeat.i(324071);
+    parama = this.uPL.a(paramInt1, parama, paramInt2);
+    AppMethodBeat.o(324071);
     return parama;
-  }
-  
-  public final void add(com.tencent.e.j.a parama, MStorage.IOnStorageChange paramIOnStorageChange)
-  {
-    AppMethodBeat.i(270362);
-    this.rEy.add(parama, paramIOnStorageChange);
-    AppMethodBeat.o(270362);
   }
   
   public final void add(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(270354);
+    AppMethodBeat.i(324151);
     if (paramIOnStorageChange != null) {
       e(paramIOnStorageChange);
     }
-    AppMethodBeat.o(270354);
+    AppMethodBeat.o(324151);
   }
   
   public final void add(MStorage.IOnStorageChange paramIOnStorageChange, Looper paramLooper)
   {
-    AppMethodBeat.i(270359);
-    this.rEy.add(paramIOnStorageChange, paramLooper);
-    AppMethodBeat.o(270359);
+    AppMethodBeat.i(324075);
+    this.uPL.add(paramIOnStorageChange, paramLooper);
+    AppMethodBeat.o(324075);
+  }
+  
+  public final void add(com.tencent.threadpool.j.a parama, MStorage.IOnStorageChange paramIOnStorageChange)
+  {
+    AppMethodBeat.i(324081);
+    this.uPL.add(parama, paramIOnStorageChange);
+    AppMethodBeat.o(324081);
   }
   
   public final void add(String paramString, MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(270364);
-    this.rEy.add(paramString, paramIOnStorageChange);
-    AppMethodBeat.o(270364);
+    AppMethodBeat.i(324085);
+    this.uPL.add(paramString, paramIOnStorageChange);
+    AppMethodBeat.o(324085);
   }
   
   public final void addLoadedListener(MStorage.IOnStorageLoaded paramIOnStorageLoaded)
   {
-    AppMethodBeat.i(270365);
-    this.rEy.addLoadedListener(paramIOnStorageLoaded);
-    AppMethodBeat.o(270365);
+    AppMethodBeat.i(324090);
+    this.uPL.addLoadedListener(paramIOnStorageLoaded);
+    AppMethodBeat.o(324090);
   }
   
-  public final boolean bA(String paramString, int paramInt)
+  public final boolean bP(String paramString, int paramInt)
   {
-    AppMethodBeat.i(270377);
-    boolean bool = this.rEy.bA(paramString, paramInt);
-    AppMethodBeat.o(270377);
+    AppMethodBeat.i(324112);
+    boolean bool = this.uPL.bP(paramString, paramInt);
+    AppMethodBeat.o(324112);
     return bool;
   }
   
-  public final int bIW()
+  public final boolean bQ(String paramString, int paramInt)
   {
-    AppMethodBeat.i(270371);
-    int i = this.rEy.bIW();
-    AppMethodBeat.o(270371);
-    return i;
-  }
-  
-  public final boolean by(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(270373);
-    boolean bool = this.rEy.by(paramString, paramInt);
-    AppMethodBeat.o(270373);
+    AppMethodBeat.i(324115);
+    boolean bool = this.uPL.bQ(paramString, paramInt);
+    AppMethodBeat.o(324115);
     return bool;
   }
   
-  public final int bz(String paramString, int paramInt)
+  public final int bR(String paramString, int paramInt)
   {
-    AppMethodBeat.i(270347);
+    AppMethodBeat.i(324139);
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(270347);
+      AppMethodBeat.o(324139);
       return -1;
     }
-    if (by(paramString, paramInt))
+    if (bP(paramString, paramInt))
     {
       Log.i("MicroMsg.AppBrandCollectionStorageWithCache", "isCollection reorder");
-      localObject = kotlin.a.j.t((Collection)a(h.rEJ.count, h.rEJ.nQx));
+      localObject = p.J((Collection)a(h.uPW.count, h.uPW.qQm));
       Iterator localIterator = ((List)localObject).iterator();
       i = 0;
       int j;
       if (localIterator.hasNext())
       {
         LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)localIterator.next();
-        if ((p.h(localLocalUsageInfo.username, paramString)) && (localLocalUsageInfo.cBU == paramInt))
+        if ((s.p(localLocalUsageInfo.username, paramString)) && (localLocalUsageInfo.euz == paramInt))
         {
           j = 1;
           label141:
@@ -147,7 +140,7 @@ public final class b
         if (i >= 0) {
           break label175;
         }
-        AppMethodBeat.o(270347);
+        AppMethodBeat.o(324139);
         return -1;
         j = 0;
         break label141;
@@ -158,106 +151,122 @@ public final class b
       }
       label175:
       Log.i("MicroMsg.AppBrandCollectionStorageWithCache", "addCollection exist, remove and insert: " + paramString + " atPos:" + i);
-      ((List)localObject).add(0, (LocalUsageInfo)((List)localObject).remove(i));
-      if (g((List)localObject, 0))
+      ((List)localObject).add((LocalUsageInfo)((List)localObject).remove(i));
+      if (p((List)localObject, 0))
       {
-        AppMethodBeat.o(270347);
+        AppMethodBeat.o(324139);
         return 0;
       }
-      AppMethodBeat.o(270347);
+      AppMethodBeat.o(324139);
       return -1;
     }
-    paramInt = ((ag)cqd()).bz(paramString, paramInt);
-    AppMethodBeat.o(270347);
+    paramInt = ((af)cSI()).bR(paramString, paramInt);
+    AppMethodBeat.o(324139);
     return paramInt;
+  }
+  
+  public final boolean bS(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(324124);
+    boolean bool = this.uPL.bS(paramString, paramInt);
+    AppMethodBeat.o(324124);
+    return bool;
+  }
+  
+  public final int ciA()
+  {
+    AppMethodBeat.i(324109);
+    int i = this.uPL.ciA();
+    AppMethodBeat.o(324109);
+    return i;
   }
   
   public final void doNotify()
   {
-    AppMethodBeat.i(270366);
-    this.rEy.doNotify();
-    AppMethodBeat.o(270366);
+    AppMethodBeat.i(324093);
+    this.uPL.doNotify();
+    AppMethodBeat.o(324093);
   }
   
   public final void doNotify(String paramString)
   {
-    AppMethodBeat.i(270367);
-    this.rEy.doNotify(paramString);
-    AppMethodBeat.o(270367);
+    AppMethodBeat.i(324097);
+    this.uPL.doNotify(paramString);
+    AppMethodBeat.o(324097);
   }
   
   public final void doNotify(String paramString, int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(270368);
-    this.rEy.doNotify(paramString, paramInt, paramObject);
-    AppMethodBeat.o(270368);
+    AppMethodBeat.i(324101);
+    this.uPL.doNotify(paramString, paramInt, paramObject);
+    AppMethodBeat.o(324101);
   }
   
   protected final void g(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(270351);
-    p.k(paramIOnStorageChange, "listener");
-    ((ag)cqd()).add(paramIOnStorageChange);
-    AppMethodBeat.o(270351);
-  }
-  
-  public final boolean g(List<LocalUsageInfo> paramList, int paramInt)
-  {
-    AppMethodBeat.i(270379);
-    boolean bool = this.rEy.g(paramList, paramInt);
-    AppMethodBeat.o(270379);
-    return bool;
+    AppMethodBeat.i(324145);
+    s.u(paramIOnStorageChange, "listener");
+    ((af)cSI()).add(paramIOnStorageChange);
+    AppMethodBeat.o(324145);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(270369);
-    int i = this.rEy.getCount();
-    AppMethodBeat.o(270369);
+    AppMethodBeat.i(324106);
+    int i = this.uPL.getCount();
+    AppMethodBeat.o(324106);
     return i;
   }
   
   public final void lock()
   {
-    AppMethodBeat.i(270374);
-    this.rEy.lock();
-    AppMethodBeat.o(270374);
+    AppMethodBeat.i(324119);
+    this.uPL.lock();
+    AppMethodBeat.o(324119);
   }
   
   public final int lockCount()
   {
-    AppMethodBeat.i(270375);
-    int i = this.rEy.lockCount();
-    AppMethodBeat.o(270375);
+    AppMethodBeat.i(324120);
+    int i = this.uPL.lockCount();
+    AppMethodBeat.o(324120);
     return i;
+  }
+  
+  public final boolean p(List<LocalUsageInfo> paramList, int paramInt)
+  {
+    AppMethodBeat.i(324131);
+    boolean bool = this.uPL.p(paramList, paramInt);
+    AppMethodBeat.o(324131);
+    return bool;
   }
   
   public final void remove(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(270353);
+    AppMethodBeat.i(324147);
     if (paramIOnStorageChange != null) {
       f(paramIOnStorageChange);
     }
-    AppMethodBeat.o(270353);
+    AppMethodBeat.o(324147);
   }
   
   public final void removeLoadedListener(MStorage.IOnStorageLoaded paramIOnStorageLoaded)
   {
-    AppMethodBeat.i(270378);
-    this.rEy.removeLoadedListener(paramIOnStorageLoaded);
-    AppMethodBeat.o(270378);
+    AppMethodBeat.i(324130);
+    this.uPL.removeLoadedListener(paramIOnStorageLoaded);
+    AppMethodBeat.o(324130);
   }
   
   public final void unlock()
   {
-    AppMethodBeat.i(270380);
-    this.rEy.unlock();
-    AppMethodBeat.o(270380);
+    AppMethodBeat.i(324133);
+    this.uPL.unlock();
+    AppMethodBeat.o(324133);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recent.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ public class APCommMethod
 {
   public static void transformStrToList(String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(253777);
+    AppMethodBeat.i(207467);
     int i = paramString.indexOf("[");
     int j = paramString.indexOf("]");
     paramList.clear();
@@ -26,12 +26,12 @@ public class APCommMethod
         }
       }
     }
-    AppMethodBeat.o(253777);
+    AppMethodBeat.o(207467);
   }
   
   public static void transformStrToMpInfoList(String paramString, List<String> paramList1, List<String> paramList2)
   {
-    AppMethodBeat.i(253776);
+    AppMethodBeat.i(207461);
     int i = paramString.indexOf("[");
     int j = paramString.indexOf("]");
     if ((i != -1) && (j != -1) && (j > i))
@@ -41,7 +41,7 @@ public class APCommMethod
       {
         paramList1.clear();
         paramList2.clear();
-        AppMethodBeat.o(253776);
+        AppMethodBeat.o(207461);
         return;
       }
       paramString = paramString.split(",");
@@ -61,7 +61,7 @@ public class APCommMethod
         }
       }
     }
-    AppMethodBeat.o(253776);
+    AppMethodBeat.o(207461);
   }
 }
 

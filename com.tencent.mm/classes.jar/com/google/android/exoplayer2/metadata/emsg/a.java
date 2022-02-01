@@ -14,15 +14,15 @@ public final class a
   public final Metadata a(d paramd)
   {
     AppMethodBeat.i(92395);
-    Object localObject = paramd.aQU;
+    Object localObject = paramd.cKQ;
     paramd = ((ByteBuffer)localObject).array();
     int i = ((ByteBuffer)localObject).limit();
     localObject = new m(paramd, i);
-    String str1 = ((m)localObject).vr();
-    String str2 = ((m)localObject).vr();
-    long l = ((m)localObject).ii();
-    ((m)localObject).fu(4);
-    paramd = new Metadata(new Metadata.Entry[] { new EventMessage(str1, str2, ((m)localObject).ii() * 1000L / l, ((m)localObject).ii(), Arrays.copyOfRange(paramd, ((m)localObject).position, i)) });
+    String str1 = ((m)localObject).UQ();
+    String str2 = ((m)localObject).UQ();
+    long l = ((m)localObject).FT();
+    ((m)localObject).iH(4);
+    paramd = new Metadata(new Metadata.Entry[] { new EventMessage(str1, str2, ((m)localObject).FT() * 1000L / l, ((m)localObject).FT(), Arrays.copyOfRange(paramd, ((m)localObject).position, i)) });
     AppMethodBeat.o(92395);
     return paramd;
   }

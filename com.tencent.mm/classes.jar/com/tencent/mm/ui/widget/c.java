@@ -8,40 +8,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 
 public class c
 {
-  private Rect FLS;
-  public boolean Goq;
-  private a Yao;
-  private boolean Yap;
-  private int Yaq;
-  private int Yar;
-  private Runnable Yas;
-  private Runnable Yat;
+  private Rect LGX;
+  public boolean Mik;
+  private a afSj;
+  private boolean afSk;
+  private int afSl;
+  private int afSm;
+  private Runnable afSn;
+  private Runnable afSo;
+  private int afd;
   private int maxHeight;
-  private int pIk;
+  private int sNb;
   private View view;
-  private int zPP;
   
   public c(View paramView, a parama)
   {
     AppMethodBeat.i(143328);
-    this.FLS = new Rect();
-    this.Yap = false;
-    this.Goq = false;
+    this.LGX = new Rect();
+    this.afSk = false;
+    this.Mik = false;
     this.view = paramView;
-    this.Yao = parama;
-    this.Yar = (ar.aB(paramView.getContext()) * 2);
-    this.pIk = KeyBoardUtil.getKeyBordHeightPx(paramView.getContext(), true);
+    this.afSj = parama;
+    this.afSm = (aw.bk(paramView.getContext()) * 2);
+    this.sNb = KeyBoardUtil.getKeyBordHeightPx(paramView.getContext(), true);
     AppMethodBeat.o(143328);
   }
   
-  private boolean bCZ()
+  private boolean ccm()
   {
     AppMethodBeat.i(143333);
-    if ((d.qV(24)) && ((this.view.getContext() instanceof Activity)))
+    if ((d.rb(24)) && ((this.view.getContext() instanceof Activity)))
     {
       boolean bool = ((Activity)this.view.getContext()).isInMultiWindowMode();
       AppMethodBeat.o(143333);
@@ -51,7 +51,7 @@ public class c
     return false;
   }
   
-  private boolean hZq()
+  private boolean jEz()
   {
     AppMethodBeat.i(143332);
     boolean bool = KeyBoardUtil.isPortOrientation(this.view.getContext());
@@ -59,11 +59,92 @@ public class c
     return bool;
   }
   
-  public final void aW(Runnable paramRunnable)
+  public final void aEm(int paramInt)
+  {
+    AppMethodBeat.i(143329);
+    if ((!jEz()) || (ccm()))
+    {
+      Log.i("MicroMsg.InputPanelHelper", "onMeasure: delay call runnable");
+      AppMethodBeat.o(143329);
+      return;
+    }
+    int i = this.afd;
+    int j = this.LGX.bottom;
+    this.afd = View.MeasureSpec.getSize(paramInt);
+    this.view.getWindowVisibleDisplayFrame(this.LGX);
+    boolean bool;
+    if (!this.afSk)
+    {
+      if (j != this.LGX.bottom)
+      {
+        bool = true;
+        this.afSk = bool;
+      }
+    }
+    else
+    {
+      this.afSl = this.LGX.bottom;
+      if (this.afSl > this.maxHeight - this.afSm) {
+        this.maxHeight = this.afSl;
+      }
+      paramInt = this.maxHeight - this.afSl;
+      if (paramInt <= this.afSm) {
+        break label298;
+      }
+      bool = true;
+      label147:
+      if (bool) {
+        this.sNb = paramInt;
+      }
+      if ((this.afSk) && (bool != this.Mik))
+      {
+        if (paramInt != this.afSm) {
+          break label304;
+        }
+        this.afSj.onInputPanelChange(false, this.sNb - paramInt);
+      }
+    }
+    for (;;)
+    {
+      this.Mik = bool;
+      if (((!this.afSk) || (i <= this.afd + this.afSm)) && (i >= this.afd - this.afSm)) {
+        break label343;
+      }
+      Log.i("MicroMsg.InputPanelHelper", "onMeasure: run, %s", new Object[] { Boolean.valueOf(bool) });
+      this.afSk = false;
+      if (!bool) {
+        break label322;
+      }
+      if (this.afSn == null) {
+        break label343;
+      }
+      this.afSn.run();
+      this.afSn = null;
+      AppMethodBeat.o(143329);
+      return;
+      bool = false;
+      break;
+      label298:
+      bool = false;
+      break label147;
+      label304:
+      this.afSj.onInputPanelChange(bool, this.sNb);
+    }
+    label322:
+    if (this.afSo != null)
+    {
+      this.afSo.run();
+      this.afSo = null;
+    }
+    label343:
+    AppMethodBeat.o(143329);
+  }
+  
+  public final void be(Runnable paramRunnable)
   {
     AppMethodBeat.i(143330);
-    this.Yas = paramRunnable;
-    this.Yat = null;
+    this.afSn = paramRunnable;
+    this.afSo = null;
     this.view.postDelayed(new Runnable()
     {
       public final void run()
@@ -81,11 +162,11 @@ public class c
     AppMethodBeat.o(143330);
   }
   
-  public final void aX(Runnable paramRunnable)
+  public final void bf(Runnable paramRunnable)
   {
     AppMethodBeat.i(143331);
-    this.Yat = paramRunnable;
-    this.Yas = null;
+    this.afSo = paramRunnable;
+    this.afSn = null;
     this.view.postDelayed(new Runnable()
     {
       public final void run()
@@ -103,95 +184,14 @@ public class c
     AppMethodBeat.o(143331);
   }
   
-  public final void axC(int paramInt)
-  {
-    AppMethodBeat.i(143329);
-    if ((!hZq()) || (bCZ()))
-    {
-      Log.i("MicroMsg.InputPanelHelper", "onMeasure: delay call runnable");
-      AppMethodBeat.o(143329);
-      return;
-    }
-    int i = this.zPP;
-    int j = this.FLS.bottom;
-    this.zPP = View.MeasureSpec.getSize(paramInt);
-    this.view.getWindowVisibleDisplayFrame(this.FLS);
-    boolean bool;
-    if (!this.Yap)
-    {
-      if (j != this.FLS.bottom)
-      {
-        bool = true;
-        this.Yap = bool;
-      }
-    }
-    else
-    {
-      this.Yaq = this.FLS.bottom;
-      if (this.Yaq > this.maxHeight - this.Yar) {
-        this.maxHeight = this.Yaq;
-      }
-      paramInt = this.maxHeight - this.Yaq;
-      if (paramInt <= this.Yar) {
-        break label298;
-      }
-      bool = true;
-      label147:
-      if (bool) {
-        this.pIk = paramInt;
-      }
-      if ((this.Yap) && (bool != this.Goq))
-      {
-        if (paramInt != this.Yar) {
-          break label304;
-        }
-        this.Yao.h(false, this.pIk - paramInt);
-      }
-    }
-    for (;;)
-    {
-      this.Goq = bool;
-      if (((!this.Yap) || (i <= this.zPP + this.Yar)) && (i >= this.zPP - this.Yar)) {
-        break label343;
-      }
-      Log.i("MicroMsg.InputPanelHelper", "onMeasure: run, %s", new Object[] { Boolean.valueOf(bool) });
-      this.Yap = false;
-      if (!bool) {
-        break label322;
-      }
-      if (this.Yas == null) {
-        break label343;
-      }
-      this.Yas.run();
-      this.Yas = null;
-      AppMethodBeat.o(143329);
-      return;
-      bool = false;
-      break;
-      label298:
-      bool = false;
-      break label147;
-      label304:
-      this.Yao.h(bool, this.pIk);
-    }
-    label322:
-    if (this.Yat != null)
-    {
-      this.Yat.run();
-      this.Yat = null;
-    }
-    label343:
-    AppMethodBeat.o(143329);
-  }
-  
   public static abstract interface a
   {
-    public abstract void h(boolean paramBoolean, int paramInt);
+    public abstract void onInputPanelChange(boolean paramBoolean, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.widget.c
  * JD-Core Version:    0.7.0.1
  */

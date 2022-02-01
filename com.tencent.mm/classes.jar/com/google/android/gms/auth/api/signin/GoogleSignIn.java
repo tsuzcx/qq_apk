@@ -14,6 +14,7 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.c;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -135,26 +136,27 @@ public final class GoogleSignIn
     AppMethodBeat.i(88277);
     Preconditions.checkNotNull(paramActivity, "Please provide a non-null Activity");
     Preconditions.checkNotNull(paramVarArgs, "Please provide at least one scope");
-    paramActivity.startActivityForResult(zzd(paramActivity, paramGoogleSignInAccount, paramVarArgs), paramInt);
+    paramGoogleSignInAccount = zzd(paramActivity, paramGoogleSignInAccount, paramVarArgs);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a()).cG(paramGoogleSignInAccount).aYi(), "com/google/android/gms/auth/api/signin/GoogleSignIn", "requestPermissions", "(Landroid/app/Activity;ILcom/google/android/gms/auth/api/signin/GoogleSignInAccount;[Lcom/google/android/gms/common/api/Scope;)V", "android/app/Activity", "startActivityForResult", "(Landroid/content/Intent;I)V");
     AppMethodBeat.o(88277);
   }
   
   public static void requestPermissions(Fragment paramFragment, int paramInt, GoogleSignInAccount paramGoogleSignInAccount, GoogleSignInOptionsExtension paramGoogleSignInOptionsExtension)
   {
-    AppMethodBeat.i(204135);
+    AppMethodBeat.i(210370);
     Preconditions.checkNotNull(paramFragment, "Please provide a non-null Fragment");
     Preconditions.checkNotNull(paramGoogleSignInOptionsExtension, "Please provide a non-null GoogleSignInOptionsExtension");
     requestPermissions(paramFragment, paramInt, paramGoogleSignInAccount, zzd(paramGoogleSignInOptionsExtension.getImpliedScopes()));
-    AppMethodBeat.o(204135);
+    AppMethodBeat.o(210370);
   }
   
   public static void requestPermissions(Fragment paramFragment, int paramInt, GoogleSignInAccount paramGoogleSignInAccount, Scope... paramVarArgs)
   {
-    AppMethodBeat.i(204136);
+    AppMethodBeat.i(210372);
     Preconditions.checkNotNull(paramFragment, "Please provide a non-null Fragment");
     Preconditions.checkNotNull(paramVarArgs, "Please provide at least one scope");
     paramFragment.startActivityForResult(zzd(paramFragment.getActivity(), paramGoogleSignInAccount, paramVarArgs), paramInt);
-    AppMethodBeat.o(204136);
+    AppMethodBeat.o(210372);
   }
   
   private static Intent zzd(Activity paramActivity, GoogleSignInAccount paramGoogleSignInAccount, Scope... paramVarArgs)
@@ -187,7 +189,7 @@ public final class GoogleSignIn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.GoogleSignIn
  * JD-Core Version:    0.7.0.1
  */

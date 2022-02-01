@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval" android:useLevel="false"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#aae0e0e0" />
-    <corners android:radius="9.5dip" />
-    <padding android:left="2.0dip" android:right="2.0dip" />
-    <size android:height="15.0dip" android:width="15.0dip" />
-</shape>
+    <item>
+        <shape>
+            <solid android:color="#ffd8d8d8" />
+        </shape>
+    </item>
+    <item android:top="1.0px">
+        <shape>
+            <solid android:color="@color/al2" />
+        </shape>
+    </item>
+</layer-list>

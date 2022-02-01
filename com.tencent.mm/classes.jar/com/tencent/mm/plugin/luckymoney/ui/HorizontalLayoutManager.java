@@ -5,22 +5,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.n;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/luckymoney/ui/HorizontalLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "canScrollHorizontal", "getCanScrollHorizontal", "()Z", "setCanScrollHorizontal", "(Z)V", "extraLayoutSpace", "scrollState", "scroller", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "canScrollHorizontally", "canScrollVertically", "getExtraLayoutSpace", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "onScrollStateChanged", "scrollHorizontallyBy", "dx", "scrollToPosition", "position", "scrollToPositionWithOffset", "offset", "scrollVerticallyBy", "dy", "setExtraLayoutSpace", "setScrollVerticallyEnable", "enable", "smoothScrollToPosition", "recyclerView", "Companion", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/luckymoney/ui/HorizontalLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "canScrollHorizontal", "getCanScrollHorizontal", "()Z", "setCanScrollHorizontal", "(Z)V", "extraLayoutSpace", "scrollState", "scroller", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "canScrollHorizontally", "canScrollVertically", "getExtraLayoutSpace", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "onScrollStateChanged", "scrollHorizontallyBy", "dx", "scrollToPosition", "position", "scrollToPositionWithOffset", "offset", "scrollVerticallyBy", "dy", "setExtraLayoutSpace", "setScrollVerticallyEnable", "enable", "smoothScrollToPosition", "recyclerView", "Companion", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class HorizontalLayoutManager
   extends LinearLayoutManager
 {
-  public static final a EFO;
-  private boolean EFN;
-  private int bFP;
-  public int uqm;
+  public static final HorizontalLayoutManager.a KyW;
+  private boolean KyX;
+  private int dyP;
+  public int xwJ;
   
   static
   {
     AppMethodBeat.i(163899);
-    EFO = new a((byte)0);
+    KyW = new HorizontalLayoutManager.a((byte)0);
     AppMethodBeat.o(163899);
   }
   
@@ -29,37 +29,37 @@ public final class HorizontalLayoutManager
     AppMethodBeat.i(163898);
     setOrientation(0);
     setItemPrefetchEnabled(true);
-    cC(4);
-    this.EFN = true;
+    this.bXK = 4;
+    this.KyX = true;
     AppMethodBeat.o(163898);
-  }
-  
-  public final void au(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(163891);
-    super.au(paramInt1, paramInt2);
-    AppMethodBeat.o(163891);
   }
   
   public final int b(RecyclerView.s params)
   {
-    AppMethodBeat.i(270259);
-    p.k(params, "state");
-    if (this.uqm > 0)
+    AppMethodBeat.i(284474);
+    s.u(params, "state");
+    if (this.xwJ > 0)
     {
-      i = this.uqm;
-      AppMethodBeat.o(270259);
+      i = this.xwJ;
+      AppMethodBeat.o(284474);
       return i;
     }
     int i = super.b(params);
-    AppMethodBeat.o(270259);
+    AppMethodBeat.o(284474);
     return i;
+  }
+  
+  public final void bo(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(163891);
+    super.bo(paramInt1, paramInt2);
+    AppMethodBeat.o(163891);
   }
   
   public final boolean canScrollHorizontally()
   {
     AppMethodBeat.i(163896);
-    if (this.EFN)
+    if (this.KyX)
     {
       AppMethodBeat.o(163896);
       return true;
@@ -76,24 +76,24 @@ public final class HorizontalLayoutManager
   
   public final void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(270256);
+    AppMethodBeat.i(284457);
     super.onLayoutChildren(paramn, params);
-    AppMethodBeat.o(270256);
+    AppMethodBeat.o(284457);
   }
   
   public final void onScrollStateChanged(int paramInt)
   {
     AppMethodBeat.i(163894);
     super.onScrollStateChanged(paramInt);
-    this.bFP = paramInt;
+    this.dyP = paramInt;
     AppMethodBeat.o(163894);
   }
   
   public final int scrollHorizontallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(270255);
+    AppMethodBeat.i(284453);
     paramInt = super.scrollHorizontallyBy(paramInt, paramn, params);
-    AppMethodBeat.o(270255);
+    AppMethodBeat.o(284453);
     return paramInt;
   }
   
@@ -106,16 +106,13 @@ public final class HorizontalLayoutManager
   
   public final int scrollVerticallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(270257);
+    AppMethodBeat.i(284463);
     paramInt = super.scrollVerticallyBy(paramInt, paramn, params);
-    AppMethodBeat.o(270257);
+    AppMethodBeat.o(284463);
     return paramInt;
   }
   
   public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt) {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/luckymoney/ui/HorizontalLayoutManager$Companion;", "", "()V", "TAG", "", "plugin-wxpay_release"})
-  public static final class a {}
 }
 
 

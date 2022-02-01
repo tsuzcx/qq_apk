@@ -2,44 +2,39 @@ package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.plugin.finder.storage.aj;
-import com.tencent.mm.view.recyclerview.h.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.awt;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderBlockSubTitleData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "config", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "(Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;)V", "getConfig", "()Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "setConfig", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderActivityInfoFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "eventInfo", "Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;)V", "getEventInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
-  extends h.b
-  implements k
+  implements cc
 {
-  public aj zAg;
+  public final awt AtP;
   
-  public m(aj paramaj)
+  public m(awt paramawt)
   {
-    AppMethodBeat.i(279807);
-    this.zAg = paramaj;
-    AppMethodBeat.o(279807);
+    AppMethodBeat.i(332196);
+    this.AtP = paramawt;
+    AppMethodBeat.o(332196);
   }
   
   public final int a(k paramk)
   {
-    AppMethodBeat.i(279805);
-    p.k(paramk, "obj");
-    AppMethodBeat.o(279805);
-    return 2147483647;
+    AppMethodBeat.i(332225);
+    s.u(paramk, "obj");
+    AppMethodBeat.o(332225);
+    return -1;
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    return -8;
+    return 0L;
   }
   
-  public final long mf()
+  public final int bZB()
   {
-    AppMethodBeat.i(279806);
-    long l = hashCode();
-    AppMethodBeat.o(279806);
-    return l;
+    return 1;
   }
 }
 

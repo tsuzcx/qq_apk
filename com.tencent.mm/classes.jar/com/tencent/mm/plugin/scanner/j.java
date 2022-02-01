@@ -5,71 +5,84 @@ import com.tencent.mm.plugin.report.service.h;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ImageMultiCodeReport;", "", "()V", "getCodeListString", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/ImageQBarDataBean;", "Lkotlin/collections/ArrayList;", "getPriorityLevelListString", "getTypeNameListString", "scanMultiCodeReport", "", "sessionId", "", "opType", "", "clickData", "costTime", "fromScanCodeButton", "", "expoFrom", "showReport", "allIconNum", "recIconNum", "scene", "url", "OPTYPE", "SCENE", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/ImageMultiCodeReport;", "", "()V", "getCodeListString", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/ImageQBarDataBean;", "Lkotlin/collections/ArrayList;", "getPriorityLevelListString", "getTypeNameListString", "scanMultiCodeReport", "", "sessionId", "", "opType", "", "clickData", "costTime", "fromScanCodeButton", "", "expoFrom", "showReport", "allIconNum", "recIconNum", "scene", "url", "OPTYPE", "SCENE", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
-  public static final j IAG;
+  public static final j OGP;
   
   static
   {
-    AppMethodBeat.i(227152);
-    IAG = new j();
-    AppMethodBeat.o(227152);
+    AppMethodBeat.i(313364);
+    OGP = new j();
+    AppMethodBeat.o(313364);
   }
   
   public static void a(long paramLong1, int paramInt1, ArrayList<ImageQBarDataBean> paramArrayList, ImageQBarDataBean paramImageQBarDataBean, long paramLong2, int paramInt2)
   {
-    AppMethodBeat.i(227136);
-    p.k(paramArrayList, "dataList");
-    h localh = h.IzE;
-    int i = paramArrayList.size();
-    String str3 = aV(paramArrayList);
-    String str4 = aX(paramArrayList);
-    String str1;
-    if (paramImageQBarDataBean != null)
+    AppMethodBeat.i(313346);
+    s.u(paramArrayList, "dataList");
+    h localh = h.OAn;
+    int j = paramArrayList.size();
+    String str2 = bt(paramArrayList);
+    String str3 = bv(paramArrayList);
+    Object localObject;
+    if (paramImageQBarDataBean == null)
     {
-      String str2 = paramImageQBarDataBean.IAH;
-      str1 = str2;
-      if (str2 != null) {}
+      localObject = "";
+      if (paramImageQBarDataBean != null) {
+        break label197;
+      }
     }
-    else
+    label197:
+    for (int i = 0;; i = paramImageQBarDataBean.priorityLevel)
     {
-      str1 = "";
-    }
-    if (paramImageQBarDataBean != null) {}
-    for (paramImageQBarDataBean = Integer.valueOf(paramImageQBarDataBean.priorityLevel);; paramImageQBarDataBean = Integer.valueOf(0))
-    {
-      localh.a(19332, new Object[] { Long.valueOf(paramLong1), Integer.valueOf(i), str3, str4, Integer.valueOf(paramInt1), str1, paramImageQBarDataBean, Long.valueOf(paramLong2), "", aW(paramArrayList), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(227136);
+      localh.b(19332, new Object[] { Long.valueOf(paramLong1), Integer.valueOf(j), str2, str3, Integer.valueOf(paramInt1), localObject, Integer.valueOf(i), Long.valueOf(paramLong2), "", bu(paramArrayList), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(0) });
+      AppMethodBeat.o(313346);
       return;
+      String str1 = paramImageQBarDataBean.OGQ;
+      localObject = str1;
+      if (str1 != null) {
+        break;
+      }
+      localObject = "";
+      break;
     }
   }
   
   public static void a(long paramLong1, int paramInt, ArrayList<ImageQBarDataBean> paramArrayList, ImageQBarDataBean paramImageQBarDataBean, long paramLong2, boolean paramBoolean)
   {
-    AppMethodBeat.i(227126);
-    p.k(paramArrayList, "dataList");
+    AppMethodBeat.i(313338);
+    s.u(paramArrayList, "dataList");
     if (paramBoolean) {}
     for (int i = 2;; i = 1)
     {
       a(paramLong1, paramInt, paramArrayList, paramImageQBarDataBean, paramLong2, i);
-      AppMethodBeat.o(227126);
+      AppMethodBeat.o(313338);
       return;
     }
   }
   
-  private static String aV(ArrayList<ImageQBarDataBean> paramArrayList)
+  public static void b(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    AppMethodBeat.i(313333);
+    s.u(paramString, "url");
+    h.OAn.b(23040, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.o(313333);
+  }
+  
+  private static String bt(ArrayList<ImageQBarDataBean> paramArrayList)
   {
     int j = 0;
-    AppMethodBeat.i(227140);
+    AppMethodBeat.i(313352);
     Object localObject1 = (Collection)paramArrayList;
     if ((localObject1 == null) || (((Collection)localObject1).isEmpty())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(227140);
+      AppMethodBeat.o(313352);
       return "";
     }
     localObject1 = new StringBuilder();
@@ -79,30 +92,30 @@ public final class j
     {
       Object localObject2 = paramArrayList.next();
       if (i < 0) {
-        kotlin.a.j.iBO();
+        p.kkW();
       }
       localObject2 = (ImageQBarDataBean)localObject2;
       if (i != 0) {
         ((StringBuilder)localObject1).append("#");
       }
-      ((StringBuilder)localObject1).append(((ImageQBarDataBean)localObject2).IAH);
+      ((StringBuilder)localObject1).append(((ImageQBarDataBean)localObject2).OGQ);
       i += 1;
     }
     paramArrayList = ((StringBuilder)localObject1).toString();
-    p.j(paramArrayList, "sb.toString()");
-    AppMethodBeat.o(227140);
+    s.s(paramArrayList, "sb.toString()");
+    AppMethodBeat.o(313352);
     return paramArrayList;
   }
   
-  private static String aW(ArrayList<ImageQBarDataBean> paramArrayList)
+  private static String bu(ArrayList<ImageQBarDataBean> paramArrayList)
   {
     int j = 0;
-    AppMethodBeat.i(227141);
+    AppMethodBeat.i(313356);
     Object localObject1 = (Collection)paramArrayList;
     if ((localObject1 == null) || (((Collection)localObject1).isEmpty())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(227141);
+      AppMethodBeat.o(313356);
       return "";
     }
     localObject1 = new StringBuilder();
@@ -112,7 +125,7 @@ public final class j
     {
       Object localObject2 = paramArrayList.next();
       if (i < 0) {
-        kotlin.a.j.iBO();
+        p.kkW();
       }
       localObject2 = (ImageQBarDataBean)localObject2;
       if (i != 0) {
@@ -122,20 +135,20 @@ public final class j
       i += 1;
     }
     paramArrayList = ((StringBuilder)localObject1).toString();
-    p.j(paramArrayList, "sb.toString()");
-    AppMethodBeat.o(227141);
+    s.s(paramArrayList, "sb.toString()");
+    AppMethodBeat.o(313356);
     return paramArrayList;
   }
   
-  private static String aX(ArrayList<ImageQBarDataBean> paramArrayList)
+  private static String bv(ArrayList<ImageQBarDataBean> paramArrayList)
   {
     int j = 0;
-    AppMethodBeat.i(227149);
+    AppMethodBeat.i(313360);
     Object localObject1 = (Collection)paramArrayList;
     if ((localObject1 == null) || (((Collection)localObject1).isEmpty())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(227149);
+      AppMethodBeat.o(313360);
       return "";
     }
     localObject1 = new StringBuilder();
@@ -145,7 +158,7 @@ public final class j
     {
       Object localObject2 = paramArrayList.next();
       if (i < 0) {
-        kotlin.a.j.iBO();
+        p.kkW();
       }
       localObject2 = (ImageQBarDataBean)localObject2;
       if (i != 0) {
@@ -155,17 +168,9 @@ public final class j
       i += 1;
     }
     paramArrayList = ((StringBuilder)localObject1).toString();
-    p.j(paramArrayList, "sb.toString()");
-    AppMethodBeat.o(227149);
+    s.s(paramArrayList, "sb.toString()");
+    AppMethodBeat.o(313360);
     return paramArrayList;
-  }
-  
-  public static void b(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    AppMethodBeat.i(227120);
-    p.k(paramString, "url");
-    h.IzE.a(23040, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    AppMethodBeat.o(227120);
   }
 }
 

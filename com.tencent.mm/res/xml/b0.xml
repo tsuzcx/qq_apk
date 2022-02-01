@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory />
+    <com.tencent.mm.plugin.setting.ui.setting.SettingsAboutMMHeaderPreference android:key="fix_tools_micromsg_header" android:layout="@layout/bxm" />
+    <PreferenceCategory />
+    <PreferenceTitleCategory android:key="fix_tools_wording" android:title="@string/evd" />
+    <Preference android:key="fix_tools_fts" android:layout="@layout/bdi" android:title="@string/eux" />
+    <Preference android:key="fix_tools_websearch" android:layout="@layout/bdi" android:title="@string/evc" />
+    <Preference android:key="fix_tools_topstory" android:layout="@layout/bdi" android:title="@string/ev3" />
+    <PreferenceCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="fix_tools_fts_info" android:layout="@layout/bdi" android:title="@string/euy" />
+</PreferenceScreen>

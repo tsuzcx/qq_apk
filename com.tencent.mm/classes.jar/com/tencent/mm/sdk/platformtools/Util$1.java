@@ -5,10 +5,10 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class Util$1
+class Util$1
   implements View.OnTouchListener
 {
-  public final boolean onTouch(final View paramView, MotionEvent paramMotionEvent)
+  public boolean onTouch(final View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(157853);
     switch (paramMotionEvent.getAction())
@@ -34,7 +34,7 @@ final class Util$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.Util.1
  * JD-Core Version:    0.7.0.1
  */

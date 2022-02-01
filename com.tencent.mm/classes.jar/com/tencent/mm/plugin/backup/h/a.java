@@ -4,7 +4,7 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.az.a;
 import com.tencent.mm.model.az.b;
-import com.tencent.mm.pluginsdk.model.app.ao;
+import com.tencent.mm.pluginsdk.model.app.as;
 import com.tencent.mm.pluginsdk.model.app.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -14,20 +14,20 @@ import java.util.LinkedList;
 public final class a
 {
   public MMHandler handler;
-  LinkedList<a> rSq;
+  LinkedList<a> vdG;
   
   public a()
   {
     AppMethodBeat.i(21743);
-    this.rSq = new LinkedList();
+    this.vdG = new LinkedList();
     this.handler = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(21743);
   }
   
-  public final void l(int paramInt, Object paramObject)
+  public final void E(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(21744);
-    this.rSq.add(new a(paramInt, paramObject));
+    this.vdG.add(new a(paramInt, paramObject));
     AppMethodBeat.o(21744);
   }
   
@@ -45,7 +45,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.h.a
  * JD-Core Version:    0.7.0.1
  */

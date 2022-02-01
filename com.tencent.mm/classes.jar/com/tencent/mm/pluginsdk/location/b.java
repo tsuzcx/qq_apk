@@ -2,13 +2,13 @@ package com.tencent.mm.pluginsdk.location;
 
 public abstract interface b
 {
-  public abstract void NM(int paramInt);
+  public abstract void Px(int paramInt);
   
-  public abstract void dFc();
+  public abstract void dUm();
   
-  public abstract void dFd();
+  public abstract void dUn();
   
-  public abstract void hd(String paramString1, String paramString2);
+  public abstract void hT(String paramString1, String paramString2);
   
   public abstract void setDefaultLoadingPBarColor(int paramInt);
   
@@ -22,11 +22,16 @@ public abstract interface b
   
   public abstract void setLocationName(String paramString);
   
-  public abstract void setOnClickLocationListener(b.a parama);
+  public abstract void setOnClickLocationListener(a parama);
   
   public abstract void setSuggestView(String paramString);
   
   public abstract void setTextColor(int paramInt);
+  
+  public static abstract interface a
+  {
+    public abstract void onClickLocationView();
+  }
 }
 
 

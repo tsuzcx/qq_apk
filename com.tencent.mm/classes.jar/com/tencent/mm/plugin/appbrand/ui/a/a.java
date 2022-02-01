@@ -1,61 +1,29 @@
 package com.tencent.mm.plugin.appbrand.ui.a;
 
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.au.i;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.hu;
+import com.tencent.mm.sdk.event.IEvent;
+import java.util.List;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/authrize/WxaAuthorizeUIHelper;", "", "()V", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/authrize/OnWxaAuthorizeScopeModifyEvent;", "Lcom/tencent/mm/sdk/event/IEvent;", "username", "", "authorizeInfoList", "", "Lcom/tencent/mm/protocal/protobuf/AuthItem;", "(Ljava/lang/String;Ljava/util/List;)V", "getAuthorizeInfoList", "()Ljava/util/List;", "getUsername", "()Ljava/lang/String;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
+  extends IEvent
 {
-  public static final a raP;
+  public final List<hu> ugF;
+  public final String username;
   
-  static
+  public a(String paramString, List<? extends hu> paramList)
   {
-    AppMethodBeat.i(180690);
-    raP = new a((byte)0);
-    AppMethodBeat.o(180690);
-  }
-  
-  public static final void a(Context paramContext, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    AppMethodBeat.i(180691);
-    a.a(paramContext, paramOnClickListener1, paramOnClickListener2, paramOnCancelListener);
-    AppMethodBeat.o(180691);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/authrize/WxaAuthorizeUIHelper$Companion;", "", "()V", "showCloseAuthorizeAlert", "", "cxt", "Landroid/content/Context;", "onPositiveClick", "Landroid/content/DialogInterface$OnClickListener;", "onNegativeCLick", "onCancelCLick", "Landroid/content/DialogInterface$OnCancelListener;", "plugin-appbrand-integration_release"})
-  public static final class a
-  {
-    public static void a(Context paramContext, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
-    {
-      AppMethodBeat.i(180689);
-      p.k(paramContext, "cxt");
-      p.k(paramOnClickListener1, "onPositiveClick");
-      p.k(paramOnClickListener2, "onNegativeCLick");
-      p.k(paramOnCancelListener, "onCancelCLick");
-      d.a locala = new d.a(paramContext);
-      locala.bBd(paramContext.getString(au.i.app_brand_auth_close_tips));
-      locala.bBj(paramContext.getString(au.i.app_brand_auth_close_auth));
-      locala.c(paramOnClickListener1);
-      locala.bBk(paramContext.getString(au.i.app_cancel));
-      locala.d(paramOnClickListener2);
-      locala.f(paramOnCancelListener);
-      paramContext = locala.icu();
-      paramContext.setCanceledOnTouchOutside(false);
-      paramContext.show();
-      AppMethodBeat.o(180689);
-    }
+    AppMethodBeat.i(322189);
+    this.username = paramString;
+    this.ugF = paramList;
+    AppMethodBeat.o(322189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

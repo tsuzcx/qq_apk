@@ -4,93 +4,151 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bzm
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public LinkedList<String> Tin;
-  public String app_id;
-  public String language;
-  
-  public bzm()
-  {
-    AppMethodBeat.i(152582);
-    this.Tin = new LinkedList();
-    AppMethodBeat.o(152582);
-  }
+  public String MFB;
+  public String Njp;
+  public String YOc;
+  public String aaiH;
+  public String aaiI;
+  public String aaiJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152583);
+    AppMethodBeat.i(91466);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.language != null) {
-        paramVarArgs.f(1, this.language);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.app_id != null) {
-        paramVarArgs.f(2, this.app_id);
+      if (this.aaiH != null) {
+        paramVarArgs.g(2, this.aaiH);
       }
-      paramVarArgs.e(3, 1, this.Tin);
-      AppMethodBeat.o(152583);
+      if (this.YOc != null) {
+        paramVarArgs.g(3, this.YOc);
+      }
+      if (this.MFB != null) {
+        paramVarArgs.g(4, this.MFB);
+      }
+      if (this.aaiI != null) {
+        paramVarArgs.g(5, this.aaiI);
+      }
+      if (this.aaiJ != null) {
+        paramVarArgs.g(6, this.aaiJ);
+      }
+      if (this.Njp != null) {
+        paramVarArgs.g(7, this.Njp);
+      }
+      AppMethodBeat.o(91466);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.language == null) {
-        break label334;
+      if (this.BaseRequest == null) {
+        break label648;
       }
     }
-    label334:
-    for (paramInt = g.a.a.b.b.a.g(1, this.language) + 0;; paramInt = 0)
+    label648:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.app_id != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.app_id);
+      paramInt = i;
+      if (this.aaiH != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.aaiH);
       }
-      paramInt = g.a.a.a.c(3, 1, this.Tin);
-      AppMethodBeat.o(152583);
-      return i + paramInt;
+      i = paramInt;
+      if (this.YOc != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YOc);
+      }
+      paramInt = i;
+      if (this.MFB != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.MFB);
+      }
+      i = paramInt;
+      if (this.aaiI != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.aaiI);
+      }
+      paramInt = i;
+      if (this.aaiJ != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.aaiJ);
+      }
+      i = paramInt;
+      if (this.Njp != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.Njp);
+      }
+      AppMethodBeat.o(91466);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.Tin.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(152583);
+        AppMethodBeat.o(91466);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         bzm localbzm = (bzm)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152583);
+          AppMethodBeat.o(91466);
           return -1;
         case 1: 
-          localbzm.language = locala.abFh.readString();
-          AppMethodBeat.o(152583);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localbzm.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91466);
           return 0;
         case 2: 
-          localbzm.app_id = locala.abFh.readString();
-          AppMethodBeat.o(152583);
+          localbzm.aaiH = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(91466);
+          return 0;
+        case 3: 
+          localbzm.YOc = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(91466);
+          return 0;
+        case 4: 
+          localbzm.MFB = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(91466);
+          return 0;
+        case 5: 
+          localbzm.aaiI = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(91466);
+          return 0;
+        case 6: 
+          localbzm.aaiJ = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(91466);
           return 0;
         }
-        localbzm.Tin.add(locala.abFh.readString());
-        AppMethodBeat.o(152583);
+        localbzm.Njp = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(91466);
         return 0;
       }
-      AppMethodBeat.o(152583);
+      AppMethodBeat.o(91466);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bzm
  * JD-Core Version:    0.7.0.1
  */

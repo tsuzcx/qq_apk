@@ -3,30 +3,27 @@ package com.tencent.luggage.wxa.storage;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/wxa/storage/CriticalAuthorityResolver;", "", "()V", "resolveAuthority", "", "data-storage_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/wxa/storage/CriticalAuthorityResolver;", "", "()V", "resolveAuthority", "", "data-storage_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b cEm;
+  public static final b exx;
   
   static
   {
     AppMethodBeat.i(146074);
-    cEm = new b();
+    exx = new b();
     AppMethodBeat.o(146074);
   }
   
-  public static final String SM()
+  public static final String atr()
   {
     AppMethodBeat.i(146073);
-    Object localObject = new StringBuilder();
-    Context localContext = MMApplicationContext.getContext();
-    p.j(localContext, "MMApplicationContext.getContext()");
-    localObject = localContext.getPackageName() + ".wxa_critical_content";
+    String str = s.X(MMApplicationContext.getContext().getPackageName(), ".wxa_critical_content");
     AppMethodBeat.o(146073);
-    return localObject;
+    return str;
   }
 }
 

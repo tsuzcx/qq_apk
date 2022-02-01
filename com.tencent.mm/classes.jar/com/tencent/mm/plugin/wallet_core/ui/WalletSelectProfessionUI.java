@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -36,7 +35,7 @@ public class WalletSelectProfessionUI
     paramBundle = new PreferenceTitleCategory(getContext());
     paramBundle.setTitle(getString(a.i.wallet_select_profession_tips));
     paramBundle.setKey("title_category");
-    this.screen.b(paramBundle);
+    this.screen.c(paramBundle);
     paramBundle = getIntent().getParcelableArrayExtra("key_profession_list");
     int i;
     if ((paramBundle != null) && (paramBundle.length > 0))
@@ -58,12 +57,12 @@ public class WalletSelectProfessionUI
       while (i < k)
       {
         Object localObject = paramBundle[i];
-        if ((localObject != null) && (!Util.isNullOrNil(localObject.OLY)))
+        if ((localObject != null) && (!Util.isNullOrNil(localObject.VBJ)))
         {
           Preference localPreference = new Preference(getContext());
-          localPreference.setTitle(localObject.OLY);
+          localPreference.setTitle(localObject.VBJ);
           localPreference.setKey("index_".concat(String.valueOf(j)));
-          this.screen.b(localPreference);
+          this.screen.c(localPreference);
         }
         j += 1;
         i += 1;
@@ -117,7 +116,7 @@ public class WalletSelectProfessionUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletSelectProfessionUI
  * JD-Core Version:    0.7.0.1
  */

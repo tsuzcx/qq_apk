@@ -10,7 +10,7 @@ public class GroupToolItem
   implements Parcelable
 {
   public static final Parcelable.Creator<GroupToolItem> CREATOR;
-  public long coZ;
+  public long egK;
   public String path;
   public String username;
   
@@ -25,7 +25,7 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.coZ = 0L;
+    this.egK = 0L;
   }
   
   protected GroupToolItem(Parcel paramParcel)
@@ -33,10 +33,10 @@ public class GroupToolItem
     AppMethodBeat.i(182152);
     this.username = "";
     this.path = "";
-    this.coZ = 0L;
+    this.egK = 0L;
     this.username = paramParcel.readString();
     this.path = paramParcel.readString();
-    this.coZ = paramParcel.readLong();
+    this.egK = paramParcel.readLong();
     AppMethodBeat.o(182152);
   }
   
@@ -44,7 +44,7 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.coZ = 0L;
+    this.egK = 0L;
     this.username = paramString1;
     this.path = paramString2;
   }
@@ -53,13 +53,13 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.coZ = 0L;
+    this.egK = 0L;
     this.username = paramString1;
     this.path = paramString2;
-    this.coZ = paramLong;
+    this.egK = paramLong;
   }
   
-  public final boolean asn()
+  public final boolean aMh()
   {
     AppMethodBeat.i(182150);
     boolean bool = Util.isEqual(this.username, "roomaa@app.origin");
@@ -67,11 +67,11 @@ public class GroupToolItem
     return bool;
   }
   
-  public final boolean aso()
+  public final boolean aMi()
   {
-    AppMethodBeat.i(191089);
+    AppMethodBeat.i(241397);
     boolean bool = Util.isEqual(this.username, "roomlive@app.origin");
-    AppMethodBeat.o(191089);
+    AppMethodBeat.o(241397);
     return bool;
   }
   
@@ -100,7 +100,7 @@ public class GroupToolItem
   public String toString()
   {
     AppMethodBeat.i(182148);
-    String str = "GroupToolItem{username='" + this.username + '\'' + ", path='" + this.path + '\'' + ", updateTime=" + this.coZ + '}';
+    String str = "GroupToolItem{username='" + this.username + '\'' + ", path='" + this.path + '\'' + ", updateTime=" + this.egK + '}';
     AppMethodBeat.o(182148);
     return str;
   }
@@ -110,7 +110,7 @@ public class GroupToolItem
     AppMethodBeat.i(182151);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.path);
-    paramParcel.writeLong(this.coZ);
+    paramParcel.writeLong(this.egK);
     AppMethodBeat.o(182151);
   }
 }

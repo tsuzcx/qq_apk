@@ -1,76 +1,127 @@
 package com.tencent.mm.plugin.eggspring.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
 import com.tencent.mm.app.AppForegroundDelegate;
-import com.tencent.mm.app.o;
-import com.tencent.mm.by.c;
+import com.tencent.mm.app.q;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.eggspring.d.a;
-import com.tencent.mm.plugin.eggspring.d.b;
-import com.tencent.mm.plugin.eggspring.d.e;
-import com.tencent.mm.plugin.eggspring.d.f;
-import com.tencent.mm.plugin.eggspring.d.g;
-import com.tencent.mm.plugin.eggspring.d.h;
+import com.tencent.mm.plugin.eggspring.e.a;
+import com.tencent.mm.plugin.eggspring.e.b;
+import com.tencent.mm.plugin.eggspring.e.e;
+import com.tencent.mm.plugin.eggspring.e.f;
+import com.tencent.mm.plugin.eggspring.e.g;
+import com.tencent.mm.plugin.eggspring.e.h;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.base.s;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.bb;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/ui/SpringCardActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "appForegroundLis", "Lcom/tencent/mm/app/IAppForegroundListener;", "clicked", "", "delayShowLoading", "Ljava/lang/Runnable;", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "luckyBagLoadingImg", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "luckyBagLoop", "rootLayout", "Landroid/view/ViewGroup;", "uiHandler", "Landroid/os/Handler;", "adjustCloseBtnColor", "", "color", "", "boundView", "finish", "getForceOrientation", "getLayoutId", "initBar", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "onStop", "Companion", "plugin-eggspring_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/eggspring/ui/SpringCardActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "appForegroundLis", "Lcom/tencent/mm/app/IAppForegroundListener;", "clicked", "", "delayShowLoading", "Ljava/lang/Runnable;", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "luckyBagLoadingImg", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "luckyBagLoop", "rootLayout", "Landroid/view/ViewGroup;", "uiHandler", "Landroid/os/Handler;", "adjustCloseBtnColor", "", "color", "", "boundView", "finish", "getForceOrientation", "getLayoutId", "initBar", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "onStop", "Companion", "plugin-eggspring_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SpringCardActivity
   extends MMActivity
 {
-  public static final SpringCardActivity.a uyc;
-  private Handler cQo;
-  private boolean jLv;
-  private ViewGroup uxW;
-  private MMAnimateView uxX;
-  private MMAnimateView uxY;
-  private o uxZ;
-  private s uya;
-  private final Runnable uyb;
+  public static final SpringCardActivity.a xEH;
+  private Handler eLs;
+  private boolean mkG;
+  private MMAnimateView xEI;
+  private MMAnimateView xEJ;
+  private q xEK;
+  private w xEL;
+  private final Runnable xEM;
+  private ViewGroup xcW;
   
   static
   {
     AppMethodBeat.i(108208);
-    uyc = new SpringCardActivity.a((byte)0);
+    xEH = new SpringCardActivity.a((byte)0);
     AppMethodBeat.o(108208);
   }
   
   public SpringCardActivity()
   {
     AppMethodBeat.i(108207);
-    this.uyb = ((Runnable)new c(this));
+    this.xEM = new SpringCardActivity..ExternalSyntheticLambda2(this);
     AppMethodBeat.o(108207);
+  }
+  
+  private static final void a(SpringCardActivity paramSpringCardActivity)
+  {
+    AppMethodBeat.i(266571);
+    s.u(paramSpringCardActivity, "this$0");
+    w localw = paramSpringCardActivity.xEL;
+    if (localw != null) {
+      localw.dismiss();
+    }
+    paramSpringCardActivity.xEL = w.a((Context)paramSpringCardActivity, (CharSequence)paramSpringCardActivity.getString(e.h.xEg), true, 0, null);
+    AppMethodBeat.o(266571);
+  }
+  
+  private static final void a(SpringCardActivity paramSpringCardActivity, View paramView)
+  {
+    AppMethodBeat.i(266586);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramSpringCardActivity);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/eggspring/ui/SpringCardActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramSpringCardActivity, "this$0");
+    Log.i("MicroMsg.SpringCardActivity", s.X("onClick: ", Boolean.valueOf(paramSpringCardActivity.mkG)));
+    if (paramSpringCardActivity.mkG)
+    {
+      a.a(new Object(), "com/tencent/mm/plugin/eggspring/ui/SpringCardActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(266586);
+      return;
+    }
+    paramSpringCardActivity.mkG = true;
+    d.H(paramSpringCardActivity.xEM);
+    d.a(1000L, paramSpringCardActivity.xEM);
+    int i = paramSpringCardActivity.getContext().getResources().getColor(e.b.xDu);
+    paramView = new Intent();
+    paramView.putExtra("customize_status_bar_color", i);
+    paramView.putExtra("webview_bg_color_rsID", e.b.xDu);
+    paramView.putExtra("from_shortcut", true);
+    paramView.putExtra("disable_minimize", true);
+    paramView.putExtra("MMActivity.OverrideEnterAnimation", e.a.anim_not_change);
+    paramView.putExtra("MMActivity.OverrideExitAnimation", e.a.push_down_out);
+    c.b((Context)paramSpringCardActivity, "webview", ".ui.tools.WebViewUI", paramView, 1001);
+    paramSpringCardActivity.overridePendingTransition(e.a.push_up_in, e.a.anim_not_change);
+    a.a(new Object(), "com/tencent/mm/plugin/eggspring/ui/SpringCardActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(266586);
+  }
+  
+  private static final boolean a(SpringCardActivity paramSpringCardActivity, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(266580);
+    s.u(paramSpringCardActivity, "this$0");
+    paramSpringCardActivity.finish();
+    AppMethodBeat.o(266580);
+    return true;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(249453);
-    s locals = this.uya;
-    if (locals != null) {
-      locals.dismiss();
+    AppMethodBeat.i(266644);
+    w localw = this.xEL;
+    if (localw != null) {
+      localw.dismiss();
     }
     super.finish();
-    AppMethodBeat.o(249453);
+    AppMethodBeat.o(266644);
   }
   
   public final int getForceOrientation()
@@ -80,73 +131,80 @@ public final class SpringCardActivity
   
   public final int getLayoutId()
   {
-    return d.f.uxu;
+    return e.f.xEa;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(249448);
+    AppMethodBeat.i(266631);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 1001) {
       finish();
     }
-    AppMethodBeat.o(249448);
+    AppMethodBeat.o(266631);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
+    Object localObject1 = null;
     AppMethodBeat.i(108179);
     super.onCreate(paramBundle);
     getWindow().addFlags(2097280);
-    this.cQo = new Handler(getMainLooper());
+    this.eLs = new Handler(getMainLooper());
     setMMTitle("");
-    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this), d.g.icons_outlined_close);
-    paramBundle = getContext();
-    p.j(paramBundle, "context");
-    int i = paramBundle.getResources().getColor(d.b.uwQ);
+    setBackBtn(new SpringCardActivity..ExternalSyntheticLambda0(this), e.g.icons_outlined_close);
+    int i = getContext().getResources().getColor(e.b.xDu);
     setActionbarColor(i);
-    if (au.auk(i)) {
-      updateBackBtn(au.o((Context)this, d.g.icons_outlined_close, -1));
+    Object localObject2;
+    if (bb.aAF(i))
+    {
+      updateBackBtn(bb.m((Context)this, e.g.icons_outlined_close, -1));
+      hideActionbarLine();
+      getWindow().getDecorView().setSystemUiVisibility(2050);
+      supportLightStatusBar();
+      paramBundle = findViewById(e.e.root_layout);
+      s.s(paramBundle, "findViewById(R.id.root_layout)");
+      this.xcW = ((ViewGroup)paramBundle);
+      paramBundle = findViewById(e.e.xDW);
+      s.s(paramBundle, "findViewById(R.id.lucky_bag_loading_img)");
+      this.xEI = ((MMAnimateView)paramBundle);
+      paramBundle = findViewById(e.e.xDX);
+      s.s(paramBundle, "findViewById(R.id.lucky_bag_loading_loop)");
+      this.xEJ = ((MMAnimateView)paramBundle);
+      SpringCardActivity..ExternalSyntheticLambda1 localExternalSyntheticLambda1 = new SpringCardActivity..ExternalSyntheticLambda1(this);
+      localObject2 = this.xEI;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        s.bIx("luckyBagLoadingImg");
+        paramBundle = null;
+      }
+      paramBundle.setOnClickListener(localExternalSyntheticLambda1);
+      localObject2 = this.xEJ;
+      paramBundle = (Bundle)localObject2;
+      if (localObject2 == null)
+      {
+        s.bIx("luckyBagLoop");
+        paramBundle = null;
+      }
+      paramBundle.setOnClickListener(localExternalSyntheticLambda1);
+      this.xEK = ((q)new SpringCardActivity.b());
+      localObject2 = AppForegroundDelegate.heY;
+      paramBundle = this.xEK;
+      if (paramBundle != null) {
+        break label326;
+      }
+      s.bIx("appForegroundLis");
+      paramBundle = localObject1;
     }
+    label326:
     for (;;)
     {
-      hideActionbarLine();
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle = paramBundle.getDecorView();
-      p.j(paramBundle, "window.decorView");
-      paramBundle.setSystemUiVisibility(2050);
-      supportLightStatusBar();
-      paramBundle = findViewById(d.e.root_layout);
-      p.j(paramBundle, "findViewById(R.id.root_layout)");
-      this.uxW = ((ViewGroup)paramBundle);
-      paramBundle = findViewById(d.e.uxq);
-      p.j(paramBundle, "findViewById(R.id.lucky_bag_loading_img)");
-      this.uxX = ((MMAnimateView)paramBundle);
-      paramBundle = findViewById(d.e.uxr);
-      p.j(paramBundle, "findViewById(R.id.lucky_bag_loading_loop)");
-      this.uxY = ((MMAnimateView)paramBundle);
-      paramBundle = (View.OnClickListener)new b(this);
-      Object localObject = this.uxX;
-      if (localObject == null) {
-        p.bGy("luckyBagLoadingImg");
-      }
-      ((MMAnimateView)localObject).setOnClickListener(paramBundle);
-      localObject = this.uxY;
-      if (localObject == null) {
-        p.bGy("luckyBagLoop");
-      }
-      ((MMAnimateView)localObject).setOnClickListener(paramBundle);
-      this.uxZ = ((o)new e());
-      paramBundle = AppForegroundDelegate.fby;
-      localObject = this.uxZ;
-      if (localObject == null) {
-        p.bGy("appForegroundLis");
-      }
-      paramBundle.a((o)localObject);
+      ((AppForegroundDelegate)localObject2).a(paramBundle);
       AppMethodBeat.o(108179);
       return;
-      updateBackBtn(au.o((Context)this, d.g.icons_outlined_close, -16777216));
+      updateBackBtn(bb.m((Context)this, e.g.icons_outlined_close, -16777216));
+      break;
     }
   }
   
@@ -155,12 +213,15 @@ public final class SpringCardActivity
     AppMethodBeat.i(108183);
     super.onDestroy();
     Log.i("MicroMsg.SpringCardActivity", "onDestroy: ");
-    AppForegroundDelegate localAppForegroundDelegate = AppForegroundDelegate.fby;
-    o localo = this.uxZ;
-    if (localo == null) {
-      p.bGy("appForegroundLis");
+    AppForegroundDelegate localAppForegroundDelegate = AppForegroundDelegate.heY;
+    q localq2 = this.xEK;
+    q localq1 = localq2;
+    if (localq2 == null)
+    {
+      s.bIx("appForegroundLis");
+      localq1 = null;
     }
-    localAppForegroundDelegate.b(localo);
+    localAppForegroundDelegate.b(localq1);
     AppMethodBeat.o(108183);
   }
   
@@ -174,13 +235,13 @@ public final class SpringCardActivity
   
   public final void onStop()
   {
-    AppMethodBeat.i(249452);
+    AppMethodBeat.i(266639);
     super.onStop();
-    Log.i("MicroMsg.SpringCardActivity", "onStop: " + this.jLv);
-    if (this.jLv) {
+    Log.i("MicroMsg.SpringCardActivity", s.X("onStop: ", Boolean.valueOf(this.mkG)));
+    if (this.mkG) {
       finish();
     }
-    AppMethodBeat.o(249452);
+    AppMethodBeat.o(266639);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -188,101 +249,10 @@ public final class SpringCardActivity
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(SpringCardActivity paramSpringCardActivity) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(249368);
-      b localb = new b();
-      localb.bn(paramView);
-      a.c("com/tencent/mm/plugin/eggspring/ui/SpringCardActivity$boundView$clickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      Log.i("MicroMsg.SpringCardActivity", "onClick: " + SpringCardActivity.a(this.uyd));
-      if (SpringCardActivity.a(this.uyd))
-      {
-        a.a(this, "com/tencent/mm/plugin/eggspring/ui/SpringCardActivity$boundView$clickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(249368);
-        return;
-      }
-      SpringCardActivity.b(this.uyd);
-      d.C(SpringCardActivity.c(this.uyd));
-      d.a(1000L, SpringCardActivity.c(this.uyd));
-      paramView = this.uyd.getContext();
-      p.j(paramView, "context");
-      int i = paramView.getResources().getColor(d.b.uwQ);
-      paramView = new Intent();
-      paramView.putExtra("customize_status_bar_color", i);
-      paramView.putExtra("webview_bg_color_rsID", d.b.uwQ);
-      paramView.putExtra("from_shortcut", true);
-      paramView.putExtra("disable_minimize", true);
-      paramView.putExtra("MMActivity.OverrideEnterAnimation", d.a.anim_not_change);
-      paramView.putExtra("MMActivity.OverrideExitAnimation", d.a.push_down_out);
-      c.b((Context)this.uyd, "webview", ".ui.tools.WebViewUI", paramView, 1001);
-      this.uyd.overridePendingTransition(d.a.push_up_in, d.a.anim_not_change);
-      a.a(this, "com/tencent/mm/plugin/eggspring/ui/SpringCardActivity$boundView$clickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(249368);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(SpringCardActivity paramSpringCardActivity) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(249594);
-      s locals = SpringCardActivity.d(this.uyd);
-      if (locals != null) {
-        locals.dismiss();
-      }
-      SpringCardActivity.a(this.uyd, s.a((Context)this.uyd, (CharSequence)this.uyd.getString(d.h.uxw), true, 0, null));
-      AppMethodBeat.o(249594);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class d
-    implements MenuItem.OnMenuItemClickListener
-  {
-    d(SpringCardActivity paramSpringCardActivity) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(162211);
-      this.uyd.finish();
-      AppMethodBeat.o(162211);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/eggspring/ui/SpringCardActivity$onCreate$1", "Lcom/tencent/mm/app/IAppForegroundListener;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-eggspring_release"})
-  public static final class e
-    implements o
-  {
-    public final void onAppBackground(String paramString)
-    {
-      AppMethodBeat.i(249316);
-      Log.d("MicroMsg.SpringCardActivity", "onAppBackground");
-      AppMethodBeat.o(249316);
-    }
-    
-    public final void onAppForeground(String paramString)
-    {
-      AppMethodBeat.i(249315);
-      Log.d("MicroMsg.SpringCardActivity", "onAppForeground");
-      AppMethodBeat.o(249315);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.ui.SpringCardActivity
  * JD-Core Version:    0.7.0.1
  */

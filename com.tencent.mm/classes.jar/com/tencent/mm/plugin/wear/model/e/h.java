@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.d;
-import com.tencent.mm.protocal.protobuf.fji;
-import com.tencent.mm.protocal.protobuf.fjj;
+import com.tencent.mm.protocal.protobuf.gfw;
+import com.tencent.mm.protocal.protobuf.gfx;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 public final class h
   extends a
 {
-  public final List<Integer> gON()
+  public final List<Integer> iob()
   {
     AppMethodBeat.i(30083);
     ArrayList localArrayList = new ArrayList();
@@ -24,12 +24,12 @@ public final class h
     return localArrayList;
   }
   
-  public final boolean gOO()
+  public final boolean ioc()
   {
     return false;
   }
   
-  protected final byte[] t(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] u(int paramInt, byte[] paramArrayOfByte)
   {
     int i = 0;
     AppMethodBeat.i(30084);
@@ -40,7 +40,7 @@ public final class h
       paramArrayOfByte = "";
       try
       {
-        localObject = u.bBS(str2);
+        localObject = y.bEn(str2);
         paramArrayOfByte = (byte[])localObject;
       }
       catch (IOException localIOException1)
@@ -53,9 +53,9 @@ public final class h
         if (localIOException1.size() <= 0) {
           break label151;
         }
-        com.tencent.mm.plugin.report.service.h.IzE.B("WearCrash", localIOException1);
+        com.tencent.mm.plugin.report.service.h.OAn.F("WearCrash", localIOException1);
         localIOException1.clear();
-        u.deleteFile(str2);
+        y.deleteFile(str2);
       }
       paramArrayOfByte = paramArrayOfByte.split("​​");
       localObject = new ArrayList();
@@ -65,7 +65,7 @@ public final class h
         ((List)localObject).add(paramArrayOfByte[paramInt]);
         if (paramInt % 50 == 9)
         {
-          com.tencent.mm.plugin.report.service.h.IzE.B("WearCrash", (List)localObject);
+          com.tencent.mm.plugin.report.service.h.OAn.F("WearCrash", (List)localObject);
           ((List)localObject).clear();
         }
         paramInt += 1;
@@ -82,7 +82,7 @@ public final class h
         paramArrayOfByte = "";
         try
         {
-          String str1 = u.bBS(str2);
+          String str1 = y.bEn(str2);
           paramArrayOfByte = str1;
         }
         catch (IOException localIOException2)
@@ -92,7 +92,7 @@ public final class h
             int j;
             Log.printErrStackTrace("MicroMsg.Wear.HttpLogServer", localIOException2, "handleData", new Object[0]);
           }
-          u.deleteFile(str2);
+          y.deleteFile(str2);
         }
         paramArrayOfByte = paramArrayOfByte.split("​​");
         j = paramArrayOfByte.length;
@@ -107,17 +107,17 @@ public final class h
       if (paramInt != 11035) {
         continue;
       }
-      fji localfji = new fji();
+      gfw localgfw = new gfw();
       try
       {
-        localfji.parseFrom(paramArrayOfByte);
+        localgfw.parseFrom(paramArrayOfByte);
         label279:
-        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.gOt().PrM.Psx;
+        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.inI().Wiz.Wjk;
         if (paramArrayOfByte == null) {
           continue;
         }
-        Log.v("MicroMsg.Wear.HttpLogServer", "report kv id=%d %s %s %s %s data=%s", new Object[] { Integer.valueOf(localfji.CRP), paramArrayOfByte.rVH, paramArrayOfByte.UIz, Integer.valueOf(paramArrayOfByte.RJP), paramArrayOfByte.UIA, localfji.RXT });
-        com.tencent.mm.plugin.report.service.h.IzE.a(localfji.CRP, new Object[] { paramArrayOfByte.rVH, paramArrayOfByte.UIz, Integer.valueOf(paramArrayOfByte.RJP), paramArrayOfByte.UIA, localfji.RXT });
+        Log.v("MicroMsg.Wear.HttpLogServer", "report kv id=%d %s %s %s %s data=%s", new Object[] { Integer.valueOf(localgfw.IMf), paramArrayOfByte.vgX, paramArrayOfByte.accI, Integer.valueOf(paramArrayOfByte.YHj), paramArrayOfByte.accJ, localgfw.YVP });
+        com.tencent.mm.plugin.report.service.h.OAn.b(localgfw.IMf, new Object[] { paramArrayOfByte.vgX, paramArrayOfByte.accI, Integer.valueOf(paramArrayOfByte.YHj), paramArrayOfByte.accJ, localgfw.YVP });
       }
       catch (IOException paramArrayOfByte)
       {
@@ -128,7 +128,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.h
  * JD-Core Version:    0.7.0.1
  */

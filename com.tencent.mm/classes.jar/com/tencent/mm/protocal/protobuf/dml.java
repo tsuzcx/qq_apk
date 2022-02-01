@@ -4,131 +4,105 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dml
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public int CreateTime;
-  public String RUd;
-  public int TTM;
-  public String TTP;
-  public String TTQ;
-  public int TTR;
-  public LinkedList<dme> TTc;
-  
-  public dml()
-  {
-    AppMethodBeat.i(205450);
-    this.TTc = new LinkedList();
-    AppMethodBeat.o(205450);
-  }
+  public int aaSy;
+  public int aaSz;
+  public String iaI;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(205451);
+    AppMethodBeat.i(114044);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.TTP != null) {
-        paramVarArgs.f(1, this.TTP);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.RUd != null) {
-        paramVarArgs.f(2, this.RUd);
+      if (this.iaI != null) {
+        paramVarArgs.g(2, this.iaI);
       }
-      paramVarArgs.aY(3, this.CreateTime);
-      paramVarArgs.e(4, 8, this.TTc);
-      if (this.TTQ != null) {
-        paramVarArgs.f(5, this.TTQ);
-      }
-      paramVarArgs.aY(6, this.TTM);
-      paramVarArgs.aY(7, this.TTR);
-      AppMethodBeat.o(205451);
+      paramVarArgs.bS(3, this.aaSy);
+      paramVarArgs.bS(4, this.aaSz);
+      paramVarArgs.bS(5, this.scene);
+      AppMethodBeat.o(114044);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.TTP == null) {
-        break label592;
+      if (this.BaseRequest == null) {
+        break label480;
       }
     }
-    label592:
-    for (paramInt = g.a.a.b.b.a.g(1, this.TTP) + 0;; paramInt = 0)
+    label480:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.RUd != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.RUd);
+      if (this.iaI != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.iaI);
       }
-      i = i + g.a.a.b.b.a.bM(3, this.CreateTime) + g.a.a.a.c(4, 8, this.TTc);
-      paramInt = i;
-      if (this.TTQ != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.TTQ);
-      }
-      i = g.a.a.b.b.a.bM(6, this.TTM);
-      int j = g.a.a.b.b.a.bM(7, this.TTR);
-      AppMethodBeat.o(205451);
-      return paramInt + i + j;
+      paramInt = i.a.a.b.b.a.cJ(3, this.aaSy);
+      int j = i.a.a.b.b.a.cJ(4, this.aaSz);
+      int k = i.a.a.b.b.a.cJ(5, this.scene);
+      AppMethodBeat.o(114044);
+      return i + paramInt + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.TTc.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(205451);
+        AppMethodBeat.o(114044);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         dml localdml = (dml)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(205451);
+          AppMethodBeat.o(114044);
           return -1;
         case 1: 
-          localdml.TTP = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(205451);
-          return 0;
-        case 2: 
-          localdml.RUd = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(205451);
-          return 0;
-        case 3: 
-          localdml.CreateTime = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(205451);
-          return 0;
-        case 4: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            dme localdme = new dme();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localdme.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localdml.TTc.add(localdme);
+            localdml.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(205451);
+          AppMethodBeat.o(114044);
           return 0;
-        case 5: 
-          localdml.TTQ = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(205451);
+        case 2: 
+          localdml.iaI = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(114044);
           return 0;
-        case 6: 
-          localdml.TTM = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(205451);
+        case 3: 
+          localdml.aaSy = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(114044);
+          return 0;
+        case 4: 
+          localdml.aaSz = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(114044);
           return 0;
         }
-        localdml.TTR = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(205451);
+        localdml.scene = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(114044);
         return 0;
       }
-      AppMethodBeat.o(205451);
+      AppMethodBeat.o(114044);
       return -1;
     }
   }

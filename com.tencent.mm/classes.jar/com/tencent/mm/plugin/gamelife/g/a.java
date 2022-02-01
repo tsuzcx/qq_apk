@@ -1,41 +1,52 @@
 package com.tencent.mm.plugin.gamelife.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.dc;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.loader.g.a.c;
+import com.tencent.mm.plugin.gamelife.PluginGameLife;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessage;", "Lcom/tencent/mm/autogen/table/BaseGameLifeAppMessage;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "toWxAppMessage", "Lcom/tencent/mm/message/AppMessage;", "Companion", "plugin-gamelife_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "url", "", "(Ljava/lang/String;)V", "md5", "kotlin.jvm.PlatformType", "getMd5", "()Ljava/lang/String;", "getUrl", "getPath", "isLegal", "", "uniqueValue", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends dc
+  implements c
 {
-  public static final a DhN;
-  private static final IAutoDBItem.MAutoDBInfo info;
+  private final String md5;
+  final String url;
   
-  static
+  public a(String paramString)
   {
-    AppMethodBeat.i(202683);
-    DhN = new a((byte)0);
-    info = dc.aoY();
-    AppMethodBeat.o(202683);
+    AppMethodBeat.i(268153);
+    this.url = paramString;
+    String str = this.url;
+    paramString = str;
+    if (str == null) {
+      paramString = "";
+    }
+    this.md5 = MD5Util.getMD5String(paramString);
+    AppMethodBeat.o(268153);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public final String aUt()
   {
-    AppMethodBeat.i(202682);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
-    p.j(localMAutoDBInfo, "info");
-    AppMethodBeat.o(202682);
-    return localMAutoDBInfo;
+    AppMethodBeat.i(268165);
+    String str = s.X("gamelife_avatar_", this.md5);
+    AppMethodBeat.o(268165);
+    return str;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessage$Companion;", "", "()V", "TABLE_NAME", "", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-gamelife_release"})
-  public static final class a {}
+  public final String getPath()
+  {
+    AppMethodBeat.i(268175);
+    String str = s.X(((PluginGameLife)h.az(PluginGameLife.class)).getAvatarPath(), aUt());
+    AppMethodBeat.o(268175);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.g.a
  * JD-Core Version:    0.7.0.1
  */

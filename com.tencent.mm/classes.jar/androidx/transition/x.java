@@ -8,24 +8,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class x
 {
-  final d<View> asA;
-  final a<String, View> asB;
-  final a<View, w> asy;
-  final SparseArray<View> asz;
+  final a<View, w> chh;
+  final SparseArray<View> chi;
+  final d<View> chj;
+  final a<String, View> chk;
   
   x()
   {
-    AppMethodBeat.i(193061);
-    this.asy = new a();
-    this.asz = new SparseArray();
-    this.asA = new d();
-    this.asB = new a();
-    AppMethodBeat.o(193061);
+    AppMethodBeat.i(201476);
+    this.chh = new a();
+    this.chi = new SparseArray();
+    this.chj = new d();
+    this.chk = new a();
+    AppMethodBeat.o(201476);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.transition.x
  * JD-Core Version:    0.7.0.1
  */

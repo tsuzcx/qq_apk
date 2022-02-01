@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FinderMediaExtra
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public String text;
   
@@ -12,29 +12,29 @@ public class FinderMediaExtra
     AppMethodBeat.i(169006);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.text != null) {
-        paramVarArgs.f(1, this.text);
+        paramVarArgs.g(1, this.text);
       }
       AppMethodBeat.o(169006);
       return 0;
     }
     if (paramInt == 1) {
       if (this.text == null) {
-        break label213;
+        break label209;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.g(1, this.text) + 0;; paramInt = 0)
+    label209:
+    for (paramInt = i.a.a.b.b.a.h(1, this.text) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(169006);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
         AppMethodBeat.o(169006);
@@ -42,7 +42,7 @@ public class FinderMediaExtra
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         FinderMediaExtra localFinderMediaExtra = (FinderMediaExtra)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -50,7 +50,7 @@ public class FinderMediaExtra
           AppMethodBeat.o(169006);
           return -1;
         }
-        localFinderMediaExtra.text = locala.abFh.readString();
+        localFinderMediaExtra.text = locala.ajGk.readString();
         AppMethodBeat.o(169006);
         return 0;
       }

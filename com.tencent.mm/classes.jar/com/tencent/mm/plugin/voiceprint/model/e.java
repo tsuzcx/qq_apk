@@ -1,49 +1,51 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.q.a;
-import com.tencent.mm.an.q.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.a;
+import com.tencent.mm.am.p.b;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.bm.a;
-import com.tencent.mm.model.bm.b;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bn.a;
+import com.tencent.mm.model.bn.b;
+import com.tencent.mm.modelsimple.o;
 import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.cfl;
+import com.tencent.mm.protocal.protobuf.cvo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class e
-  extends q
-  implements com.tencent.mm.network.m
+  extends p
+  implements m
 {
-  private i callback;
-  String jaS;
-  private int lCA;
-  private final s lCW;
+  private h callback;
+  String lCS;
+  private final s ouH;
+  private int ouk;
   
   public e(String paramString)
   {
     AppMethodBeat.i(29764);
-    this.jaS = "";
-    this.lCA = 2;
-    this.lCW = new b();
-    bm.a locala = (bm.a)this.lCW.getReqObj();
-    locala.ltV.UserName = paramString;
-    locala.ltV.TmP = 1;
+    this.lCS = "";
+    this.ouk = 2;
+    this.ouH = new b();
+    bn.a locala = (bn.a)this.ouH.getReqObj();
+    locala.olu.UserName = paramString;
+    locala.olu.aaAV = 1;
     Log.i("MicroMsg.NetSceneGetVoiceprintTicketRsa", "sceneType %d %s", new Object[] { Integer.valueOf(1), paramString });
     AppMethodBeat.o(29764);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(29765);
-    this.callback = parami;
-    int i = dispatch(paramg, this.lCW, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.ouH, this);
     AppMethodBeat.o(29765);
     return i;
   }
@@ -56,14 +58,14 @@ public final class e
   public final void onGYNetEnd(final int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29766);
-    paramArrayOfByte = (bm.b)params.getRespObj();
-    this.jaS = paramArrayOfByte.ltW.TmQ;
-    Log.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " mTicket: " + this.jaS);
+    paramArrayOfByte = (bn.b)params.getRespObj();
+    this.lCS = paramArrayOfByte.olv.aaAW;
+    Log.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " mTicket: " + this.lCS);
     if ((paramInt2 == 4) && (paramInt3 == -301))
     {
-      bi.a(true, paramArrayOfByte.ltW.RRi, paramArrayOfByte.ltW.RRj, paramArrayOfByte.ltW.RRh, true, 0);
-      this.lCA -= 1;
-      if (this.lCA <= 0)
+      bj.a(true, paramArrayOfByte.olv.YOA, paramArrayOfByte.olv.YOB, paramArrayOfByte.olv.YOz, true, 0);
+      this.ouk -= 1;
+      if (this.ouk <= 0)
       {
         Log.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "reach redirect limit, invoke callback");
         this.callback.onSceneEnd(3, -1, "", this);
@@ -79,17 +81,17 @@ public final class e
     {
       paramInt1 = params.getReqObj().getRsaInfo().ver;
       Log.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      bh.aHJ().postToWorker(new Runnable()
+      bh.baH().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(29763);
-          new com.tencent.mm.modelsimple.m().doScene(e.a(e.this), new i()
+          new o().doScene(e.a(e.this), new h()
           {
-            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, q paramAnonymous2q)
+            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, p paramAnonymous2p)
             {
               AppMethodBeat.i(29762);
-              Log.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2q.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              Log.d("MicroMsg.NetSceneGetVoiceprintTicketRsa", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2p.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
               if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
               {
                 e.b(e.this).onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", e.this);
@@ -121,16 +123,16 @@ public final class e
     return 3;
   }
   
-  public final q.b securityVerificationChecked(s params)
+  public final p.b securityVerificationChecked(s params)
   {
-    return q.b.lCx;
+    return p.b.ouh;
   }
   
-  public final void setSecurityCheckError(q.a parama) {}
+  public final void setSecurityCheckError(p.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.e
  * JD-Core Version:    0.7.0.1
  */

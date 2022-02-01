@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -16,12 +15,10 @@ import android.view.View.OnTouchListener;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.ao.o.a;
-import com.tencent.mm.plugin.brandservice.b.k;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.an.af;
+import com.tencent.mm.an.o.a;
 import com.tencent.mm.plugin.brandservice.d.b;
 import com.tencent.mm.plugin.brandservice.d.e;
 import com.tencent.mm.plugin.brandservice.d.f;
@@ -39,51 +36,51 @@ public class SearchOrRecommendBizUI
   extends MMActivity
   implements BizSearchResultItemContainer.b
 {
-  private int jaR = 0;
-  private BizSearchResultItemContainer swY;
-  private ProgressDialog syZ = null;
-  private int sza = 0;
-  private SearchViewNotRealTimeHelper szb;
+  private int lCR = 0;
+  private BizSearchResultItemContainer vCF;
+  private ProgressDialog vEG = null;
+  private int vEH = 0;
+  private SearchViewNotRealTimeHelper vEI;
   
-  public final void czA()
+  public final void dcs()
   {
     AppMethodBeat.i(5790);
     AppCompatActivity localAppCompatActivity = getContext();
     getString(d.i.app_tip);
-    this.syZ = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(d.i.svg), true, new DialogInterface.OnCancelListener()
+    this.vEG = com.tencent.mm.ui.base.k.a(localAppCompatActivity, getString(d.i.contact_search_recommend_biz_searching), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(5786);
         paramAnonymousDialogInterface = SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this);
-        com.tencent.mm.kernel.h.aGY().a(paramAnonymousDialogInterface.sxu);
-        paramAnonymousDialogInterface.sxs.sxF = false;
+        com.tencent.mm.kernel.h.aZW().a(paramAnonymousDialogInterface.vDb);
+        paramAnonymousDialogInterface.vCZ.vDm = false;
         AppMethodBeat.o(5786);
       }
     });
     AppMethodBeat.o(5790);
   }
   
-  public final void czB()
+  public final void dct()
   {
     AppMethodBeat.i(5791);
-    if (this.syZ != null)
+    if (this.vEG != null)
     {
-      this.syZ.dismiss();
-      this.syZ = null;
+      this.vEG.dismiss();
+      this.vEG = null;
     }
     AppMethodBeat.o(5791);
   }
   
   public int getLayoutId()
   {
-    return d.f.suh;
+    return d.f.contact_search_recommend_biz;
   }
   
   public void initView()
   {
     AppMethodBeat.i(5789);
-    setMMTitle(d.i.svh);
+    setMMTitle(d.i.contact_search_recommend_biz_title);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -95,45 +92,45 @@ public class SearchOrRecommendBizUI
         return true;
       }
     });
-    this.szb = ((SearchViewNotRealTimeHelper)findViewById(d.e.dTs));
-    this.szb.setSearchColor(getResources().getColor(d.b.normal_text_color));
-    this.szb.setSearchHint(getString(d.i.svh));
-    this.szb.setSearchHintColor(getResources().getColor(d.b.hint_color_white_bg));
-    this.szb.setSearchIcon(0);
-    this.szb.setShowBackIcon(false);
-    this.szb.setCallBack(new SearchViewNotRealTimeHelper.a()
+    this.vEI = ((SearchViewNotRealTimeHelper)findViewById(d.e.search_view));
+    this.vEI.setSearchColor(getResources().getColor(d.b.normal_text_color));
+    this.vEI.setSearchHint(getString(d.i.contact_search_recommend_biz_title));
+    this.vEI.setSearchHintColor(getResources().getColor(d.b.hint_color_white_bg));
+    this.vEI.setSearchIcon(0);
+    this.vEI.setShowBackIcon(false);
+    this.vEI.setCallBack(new SearchViewNotRealTimeHelper.a()
     {
-      public final boolean aat(String paramAnonymousString)
+      public final boolean SN(String paramAnonymousString)
       {
         AppMethodBeat.i(5783);
-        apz(paramAnonymousString);
+        aiU(paramAnonymousString);
         AppMethodBeat.o(5783);
         return true;
       }
       
-      public final void apz(String paramAnonymousString)
+      public final void aiU(String paramAnonymousString)
       {
         AppMethodBeat.i(5784);
         if (!Util.isNullOrNil(paramAnonymousString))
         {
           SearchOrRecommendBizUI.this.hideVKB();
-          SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this).dc(paramAnonymousString, 0);
+          SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this).dE(paramAnonymousString, 0);
           AppMethodBeat.o(5784);
           return;
         }
-        com.tencent.mm.ui.base.h.cO(SearchOrRecommendBizUI.this.getContext(), SearchOrRecommendBizUI.this.getString(d.i.svf));
+        com.tencent.mm.ui.base.k.cZ(SearchOrRecommendBizUI.this.getContext(), SearchOrRecommendBizUI.this.getString(d.i.contact_search_recommend_biz_notext));
         AppMethodBeat.o(5784);
       }
       
-      public final void czL()
+      public final void dcD()
       {
         AppMethodBeat.i(5785);
         SearchOrRecommendBizUI.this.showVKB();
         AppMethodBeat.o(5785);
       }
     });
-    this.swY = ((BizSearchResultItemContainer)findViewById(d.e.ssQ));
-    this.swY.setOnTouchListener(new View.OnTouchListener()
+    this.vCF = ((BizSearchResultItemContainer)findViewById(d.e.searchResultItemContainer));
+    this.vCF.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -144,14 +141,14 @@ public class SearchOrRecommendBizUI
         return false;
       }
     });
-    g localg = new g(this);
-    localg.syV = k.czu();
-    this.swY.setAdapter(localg);
-    this.swY.setBusinessTypes(new long[] { 1L });
-    this.swY.lx(false);
-    this.swY.setMode(1);
-    this.swY.setScene(this.jaR);
-    this.swY.setIOnSearchStateChangedListener(this);
+    h localh = new h(this);
+    localh.vEC = com.tencent.mm.plugin.brandservice.model.k.dcm();
+    this.vCF.setAdapter(localh);
+    this.vCF.setBusinessTypes(new long[] { 1L });
+    this.vCF.mP(false);
+    this.vCF.setMode(1);
+    this.vCF.setScene(this.lCR);
+    this.vCF.setIOnSearchStateChangedListener(this);
     AppMethodBeat.o(5789);
   }
   
@@ -159,48 +156,48 @@ public class SearchOrRecommendBizUI
   {
     AppMethodBeat.i(5787);
     super.onCreate(paramBundle);
-    this.sza = getIntent().getIntExtra("intent_extra_entry_flag", 0);
-    this.jaR = getIntent().getIntExtra("fromScene", 0);
+    this.vEH = getIntent().getIntExtra("intent_extra_entry_flag", 0);
+    this.lCR = getIntent().getIntExtra("fromScene", 0);
     initView();
-    if (k.czt())
+    if (com.tencent.mm.plugin.brandservice.model.k.dcl())
     {
-      com.tencent.mm.kernel.h.aGY().a(456, new i()
+      com.tencent.mm.kernel.h.aZW().a(456, new com.tencent.mm.am.h()
       {
-        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, q paramAnonymousq)
+        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(5779);
-          if (paramAnonymousq == null)
+          if (paramAnonymousp == null)
           {
             Log.e("MicroMsg.BrandService.SearchOrRecommendBizUI", "NetScene is null.");
             AppMethodBeat.o(5779);
             return;
           }
-          if (paramAnonymousq.getType() != 456)
+          if (paramAnonymousp.getType() != 456)
           {
             Log.e("MicroMsg.BrandService.SearchOrRecommendBizUI", "The NetScene is not a RecommendGroupNetScene.");
             AppMethodBeat.o(5779);
             return;
           }
-          com.tencent.mm.kernel.h.aGY().b(456, this);
+          com.tencent.mm.kernel.h.aZW().b(456, this);
           Log.i("MicroMsg.BrandService.SearchOrRecommendBizUI", "errType(%d) , errCode(%d) , errMsg(%s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            paramAnonymousq = k.czu();
+            paramAnonymousp = com.tencent.mm.plugin.brandservice.model.k.dcm();
             if (SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this) != null) {
               break label169;
             }
             paramAnonymousString = null;
-            if ((paramAnonymousString != null) && (paramAnonymousq != null) && (paramAnonymousq.size() > 0)) {
+            if ((paramAnonymousString != null) && (paramAnonymousp != null) && (paramAnonymousp.size() > 0)) {
               if (paramAnonymousString.getCount() != 0) {
-                break label189;
+                break label186;
               }
             }
           }
           label169:
-          label189:
+          label186:
           for (paramAnonymousInt1 = 1;; paramAnonymousInt1 = 0)
           {
-            paramAnonymousString.syV = paramAnonymousq;
+            paramAnonymousString.vEC = paramAnonymousp;
             if (paramAnonymousInt1 != 0) {
               MMHandlerThread.postToMainThread(new Runnable()
               {
@@ -215,12 +212,12 @@ public class SearchOrRecommendBizUI
             }
             AppMethodBeat.o(5779);
             return;
-            paramAnonymousString = (g)SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this).getAdapter();
+            paramAnonymousString = (h)SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this).getAdapter();
             break;
           }
         }
       });
-      com.tencent.mm.kernel.h.aGY().a(new k(), 0);
+      com.tencent.mm.kernel.h.aZW().a(new com.tencent.mm.plugin.brandservice.model.k(), 0);
     }
     paramBundle = getIntent().getStringExtra("Search_Str");
     if (!Util.isNullOrNil(paramBundle)) {
@@ -230,7 +227,7 @@ public class SearchOrRecommendBizUI
         {
           AppMethodBeat.i(5780);
           SearchOrRecommendBizUI.b(SearchOrRecommendBizUI.this).setSearchContent(paramBundle);
-          SearchOrRecommendBizUI.b(SearchOrRecommendBizUI.this).XUA.performClick();
+          SearchOrRecommendBizUI.b(SearchOrRecommendBizUI.this).afKP.performClick();
           AppMethodBeat.o(5780);
         }
       });
@@ -242,7 +239,7 @@ public class SearchOrRecommendBizUI
   {
     AppMethodBeat.i(5788);
     super.onDestroy();
-    af.bjG().bjm();
+    af.bHr().bGW();
     AppMethodBeat.o(5788);
   }
   
@@ -254,7 +251,7 @@ public class SearchOrRecommendBizUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.SearchOrRecommendBizUI
  * JD-Core Version:    0.7.0.1
  */

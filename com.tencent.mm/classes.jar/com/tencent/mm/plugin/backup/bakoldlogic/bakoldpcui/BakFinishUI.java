@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
@@ -23,8 +22,8 @@ public class BakFinishUI
   implements e.e
 {
   private MMHandler handler;
-  private TextView jMw;
-  private int rUy;
+  private TextView mlA;
+  private int vfN;
   
   public BakFinishUI()
   {
@@ -33,7 +32,7 @@ public class BakFinishUI
     AppMethodBeat.o(21980);
   }
   
-  public final void cuA()
+  public final void cXk()
   {
     AppMethodBeat.i(21985);
     this.handler.post(new Runnable()
@@ -41,7 +40,7 @@ public class BakFinishUI
       public final void run()
       {
         AppMethodBeat.i(21978);
-        a.cuk().cul().rTR = -1;
+        a.cWU().cWV().vfh = -1;
         BakFinishUI.b(BakFinishUI.this);
         AppMethodBeat.o(21978);
       }
@@ -51,16 +50,16 @@ public class BakFinishUI
   
   public int getLayoutId()
   {
-    return R.i.ebW;
+    return R.i.geE;
   }
   
   public void initView()
   {
     AppMethodBeat.i(21982);
-    setMMTitle(R.l.esv);
-    this.jMw = ((TextView)findViewById(R.h.dsQ));
-    if (6 == this.rUy) {
-      this.jMw.setText(getString(R.l.esu));
+    setMMTitle(R.l.gvw);
+    this.mlA = ((TextView)findViewById(R.h.fth));
+    if (6 == this.vfN) {
+      this.mlA.setText(getString(R.l.gvv));
     }
     for (;;)
     {
@@ -69,7 +68,7 @@ public class BakFinishUI
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(21977);
-          a.cuk().cul().rTR = -1;
+          a.cWU().cWV().vfh = -1;
           BakFinishUI.a(BakFinishUI.this);
           AppMethodBeat.o(21977);
           return true;
@@ -77,13 +76,13 @@ public class BakFinishUI
       });
       AppMethodBeat.o(21982);
       return;
-      if (1 == this.rUy) {
-        this.jMw.setText(getString(R.l.esn));
+      if (1 == this.vfN) {
+        this.mlA.setText(getString(R.l.gvo));
       }
     }
   }
   
-  public final void kv(int paramInt)
+  public final void oc(int paramInt)
   {
     AppMethodBeat.i(21986);
     this.handler.post(new Runnable()
@@ -93,7 +92,7 @@ public class BakFinishUI
         AppMethodBeat.i(21979);
         Log.d("MicroMsg.BakFinishUI", "BakFinishUI onCloseSocket");
         Intent localIntent = new Intent(BakFinishUI.this, BakConnErrorUI.class);
-        MMWizardActivity.aH(BakFinishUI.this, localIntent);
+        MMWizardActivity.aQ(BakFinishUI.this, localIntent);
         AppMethodBeat.o(21979);
       }
     });
@@ -109,10 +108,10 @@ public class BakFinishUI
       AppMethodBeat.o(21981);
       return;
     }
-    this.rUy = getIntent().getIntExtra("cmd", -1);
-    Log.i("MicroMsg.BakFinishUI", "BakFinishUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.rUy) });
+    this.vfN = getIntent().getIntExtra("cmd", -1);
+    Log.i("MicroMsg.BakFinishUI", "BakFinishUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.vfN) });
     initView();
-    a.cuk().cul().rTJ = this;
+    a.cWU().cWV().veZ = this;
     AppMethodBeat.o(21981);
   }
   
@@ -120,8 +119,8 @@ public class BakFinishUI
   {
     AppMethodBeat.i(21983);
     super.onDestroy();
-    a.cuk().cul().rTJ = null;
-    Log.i("MicroMsg.BakFinishUI", "BakFinishUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.rUy) });
+    a.cWU().cWV().veZ = null;
+    Log.i("MicroMsg.BakFinishUI", "BakFinishUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.vfN) });
     AppMethodBeat.o(21983);
   }
   
@@ -130,8 +129,8 @@ public class BakFinishUI
     AppMethodBeat.i(21984);
     if (paramInt == 4)
     {
-      a.cuk().cul().rTR = -1;
-      atX(1);
+      a.cWU().cWV().vfh = -1;
+      aAp(1);
       AppMethodBeat.o(21984);
       return true;
     }
@@ -148,7 +147,7 @@ public class BakFinishUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakFinishUI
  * JD-Core Version:    0.7.0.1
  */

@@ -14,29 +14,29 @@ import java.util.WeakHashMap;
 public final class a
   implements Application.ActivityLifecycleCallbacks
 {
-  private static final WeakHashMap<Activity, Integer> khx;
+  private static final WeakHashMap<Activity, Integer> mHV;
   
   static
   {
     AppMethodBeat.i(125087);
-    khx = new WeakHashMap();
+    mHV = new WeakHashMap();
     AppMethodBeat.o(125087);
   }
   
-  public static String aJc()
+  public static String bbZ()
   {
     AppMethodBeat.i(125080);
     StringBuilder localStringBuilder;
     Object localObject2;
-    synchronized (khx)
+    synchronized (mHV)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(khx.size());
+      localStringBuilder.append(mHV.size());
       localObject2 = new ArrayList();
     }
     try
     {
-      ((List)localObject2).addAll(khx.keySet());
+      ((List)localObject2).addAll(mHV.keySet());
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -46,7 +46,7 @@ public final class a
           localStringBuilder.append("|");
           localStringBuilder.append(localActivity.getClass().getSimpleName());
           localStringBuilder.append(":");
-          localStringBuilder.append(khx.get(localActivity));
+          localStringBuilder.append(mHV.get(localActivity));
         }
       }
       localObject1 = finally;
@@ -69,9 +69,9 @@ public final class a
   public final void onActivityCreated(Activity paramActivity, Bundle arg2)
   {
     AppMethodBeat.i(125081);
-    synchronized (khx)
+    synchronized (mHV)
     {
-      khx.put(paramActivity, Integer.valueOf(0));
+      mHV.put(paramActivity, Integer.valueOf(0));
       AppMethodBeat.o(125081);
       return;
     }
@@ -80,9 +80,9 @@ public final class a
   public final void onActivityDestroyed(Activity paramActivity)
   {
     AppMethodBeat.i(125082);
-    synchronized (khx)
+    synchronized (mHV)
     {
-      khx.put(paramActivity, Integer.valueOf(5));
+      mHV.put(paramActivity, Integer.valueOf(5));
       AppMethodBeat.o(125082);
       return;
     }
@@ -91,9 +91,9 @@ public final class a
   public final void onActivityPaused(Activity paramActivity)
   {
     AppMethodBeat.i(125085);
-    synchronized (khx)
+    synchronized (mHV)
     {
-      khx.put(paramActivity, Integer.valueOf(3));
+      mHV.put(paramActivity, Integer.valueOf(3));
       AppMethodBeat.o(125085);
       return;
     }
@@ -102,9 +102,9 @@ public final class a
   public final void onActivityResumed(Activity paramActivity)
   {
     AppMethodBeat.i(125084);
-    synchronized (khx)
+    synchronized (mHV)
     {
-      khx.put(paramActivity, Integer.valueOf(2));
+      mHV.put(paramActivity, Integer.valueOf(2));
       AppMethodBeat.o(125084);
       return;
     }
@@ -115,9 +115,9 @@ public final class a
   public final void onActivityStarted(Activity paramActivity)
   {
     AppMethodBeat.i(125083);
-    synchronized (khx)
+    synchronized (mHV)
     {
-      khx.put(paramActivity, Integer.valueOf(1));
+      mHV.put(paramActivity, Integer.valueOf(1));
       AppMethodBeat.o(125083);
       return;
     }
@@ -126,9 +126,9 @@ public final class a
   public final void onActivityStopped(Activity paramActivity)
   {
     AppMethodBeat.i(125086);
-    synchronized (khx)
+    synchronized (mHV)
     {
-      khx.put(paramActivity, Integer.valueOf(4));
+      mHV.put(paramActivity, Integer.valueOf(4));
       AppMethodBeat.o(125086);
       return;
     }
@@ -136,7 +136,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ag.a
  * JD-Core Version:    0.7.0.1
  */

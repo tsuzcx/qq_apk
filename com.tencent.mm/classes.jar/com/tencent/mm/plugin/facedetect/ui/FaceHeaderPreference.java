@@ -17,22 +17,22 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class FaceHeaderPreference
   extends Preference
 {
-  private MMActivity iXq;
-  private ImageView jmf;
+  private ImageView lPb;
+  private MMActivity lzt;
   private String mTitle;
   private TextView titleTv;
-  private View.OnClickListener wAa;
-  private String wAb;
-  private String wAc;
-  private int wzX;
-  private Button wzY;
-  private View wzZ;
+  private int zWi;
+  private Button zWj;
+  private View zWk;
+  private View.OnClickListener zWl;
+  private String zWm;
+  private String zWn;
   
   public FaceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(104019);
-    this.iXq = ((MMActivity)paramContext);
+    this.lzt = ((MMActivity)paramContext);
     AppMethodBeat.o(104019);
   }
   
@@ -41,11 +41,11 @@ public final class FaceHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104020);
     this.mTitle = "";
-    this.wzX = 255;
-    this.wAa = null;
-    this.wAb = "";
-    this.wAc = "";
-    this.iXq = ((MMActivity)paramContext);
+    this.zWi = 255;
+    this.zWl = null;
+    this.zWm = "";
+    this.zWn = "";
+    this.lzt = ((MMActivity)paramContext);
     setLayoutResource(a.g.face_print_pref_header);
     AppMethodBeat.o(104020);
   }
@@ -53,35 +53,35 @@ public final class FaceHeaderPreference
   public final void c(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(104022);
-    this.wAa = paramOnClickListener;
-    if ((this.wzY == null) || (this.wzZ == null))
+    this.zWl = paramOnClickListener;
+    if ((this.zWj == null) || (this.zWk == null))
     {
       AppMethodBeat.o(104022);
       return;
     }
-    if ((this.wzY != null) && (this.wAa != null))
+    if ((this.zWj != null) && (this.zWl != null))
     {
-      this.wzY.setOnClickListener(paramOnClickListener);
-      this.wzY.setVisibility(0);
-      this.wzZ.setVisibility(0);
+      this.zWj.setOnClickListener(paramOnClickListener);
+      this.zWj.setVisibility(0);
+      this.zWk.setVisibility(0);
       AppMethodBeat.o(104022);
       return;
     }
-    this.wzY.setVisibility(8);
-    this.wzZ.setVisibility(8);
+    this.zWj.setVisibility(8);
+    this.zWk.setVisibility(8);
     AppMethodBeat.o(104022);
   }
   
-  public final void gR(String paramString1, String paramString2)
+  public final void hA(String paramString1, String paramString2)
   {
     AppMethodBeat.i(104021);
-    this.wAb = paramString1;
-    this.wAc = paramString2;
+    this.zWm = paramString1;
+    this.zWn = paramString2;
     if (this.titleTv != null)
     {
-      if (!Util.isNullOrNil(this.wAb))
+      if (!Util.isNullOrNil(this.zWm))
       {
-        this.titleTv.setText(this.wAb);
+        this.titleTv.setText(this.zWm);
         this.titleTv.setVisibility(0);
         AppMethodBeat.o(104021);
         return;
@@ -95,34 +95,34 @@ public final class FaceHeaderPreference
   {
     AppMethodBeat.i(104023);
     super.onBindView(paramView);
-    this.jmf = ((ImageView)paramView.findViewById(a.e.face_print_sucesss_icon));
+    this.lPb = ((ImageView)paramView.findViewById(a.e.face_print_sucesss_icon));
     this.titleTv = ((TextView)paramView.findViewById(a.e.face_print_title));
-    this.wzY = ((Button)paramView.findViewById(a.e.right_btn));
-    this.wzZ = paramView.findViewById(a.e.button_ll);
-    if (!Util.isNullOrNil(this.wAb))
+    this.zWj = ((Button)paramView.findViewById(a.e.right_btn));
+    this.zWk = paramView.findViewById(a.e.button_ll);
+    if (!Util.isNullOrNil(this.zWm))
     {
-      this.titleTv.setText(this.wAb);
+      this.titleTv.setText(this.zWm);
       this.titleTv.setVisibility(0);
     }
-    while ((this.wzY != null) && (this.wAa != null))
+    while ((this.zWj != null) && (this.zWl != null))
     {
-      this.wzY.setOnClickListener(this.wAa);
-      this.wzY.setVisibility(0);
-      this.wzZ.setVisibility(0);
+      this.zWj.setOnClickListener(this.zWl);
+      this.zWj.setVisibility(0);
+      this.zWk.setVisibility(0);
       AppMethodBeat.o(104023);
       return;
       this.titleTv.setVisibility(8);
     }
-    if (this.wzY != null) {
-      this.wzY.setVisibility(8);
+    if (this.zWj != null) {
+      this.zWj.setVisibility(8);
     }
-    this.wzZ.setVisibility(8);
+    this.zWk.setVisibility(8);
     AppMethodBeat.o(104023);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.FaceHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

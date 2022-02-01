@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.TouchMediaPreviewLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/gka" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </com.tencent.mm.view.RefreshLoadMoreLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</com.tencent.mm.ui.widget.TouchMediaPreviewLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:paddingBottom="@dimen/cg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/dvm" android:background="@drawable/a15" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cr" android:layout_centerVertical="true" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/BW_100_Alpha_0_8" />
+    </FrameLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/dvp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/dxv" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <View android:id="@id/dvo" android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/de" android:layout_marginRight="@dimen/cv" app:layout_constraintTop_toTopOf="hr_" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dvn" android:layout_width="fill_parent" android:layout_height="@dimen/db" android:layout_marginLeft="@dimen/cv" android:layout_marginRight="@dimen/cv" app:layout_constraintTop_toTopOf="@id/dvo">
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/dxw" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/kb6" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" app:on_color="@color/s8" />
+    </LinearLayout>
+    <View android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cv" android:layout_marginRight="@dimen/cv" app:layout_constraintTop_toBottomOf="@id/dvn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

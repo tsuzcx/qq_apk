@@ -2,40 +2,20 @@ package com.tencent.mm.plugin.emojicapture.ui.editor.text;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "", "drawLine", "", "canvas", "Landroid/graphics/Canvas;", "lineStart", "", "lineEnd", "x", "", "y", "paint", "Landroid/graphics/Paint;", "withEllipsis", "", "refresh", "setText", "text", "", "switchFont", "fontPath", "", "Companion", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "", "drawLine", "", "canvas", "Landroid/graphics/Canvas;", "lineStart", "", "lineEnd", "x", "", "y", "paint", "Landroid/graphics/Paint;", "withEllipsis", "", "refresh", "setText", "text", "", "switchFont", "fontPath", "", "Companion", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface c
 {
-  public static final a vbs = a.vbu;
+  public static final c.a ynn = c.a.yno;
   
   public abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, Paint paramPaint, boolean paramBoolean);
   
-  public abstract void avq(String paramString);
+  public abstract void apq(String paramString);
   
-  public abstract void bfU();
+  public abstract void bDL();
   
   public abstract void setText(CharSequence paramCharSequence);
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer$Companion;", "", "()V", "ellipsisText", "", "getEllipsisText", "()Ljava/lang/String;", "plugin-emojicapture_release"})
-  public static final class a
-  {
-    private static final String vbt = "...";
-    
-    static
-    {
-      AppMethodBeat.i(827);
-      vbu = new a();
-      vbt = "...";
-      AppMethodBeat.o(827);
-    }
-    
-    public static String cYC()
-    {
-      return vbt;
-    }
-  }
 }
 
 

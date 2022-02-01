@@ -7,38 +7,38 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static a cNq;
+  private static a eIL;
   private static boolean sLibraryLoaded;
   
   static
   {
     AppMethodBeat.i(139960);
     sLibraryLoaded = false;
-    cNq = new b.1();
+    eIL = new b.1();
     AppMethodBeat.o(139960);
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(139957);
-    cNq = parama;
+    eIL = parama;
     a.a(new a.a()
     {
       public final void loadLibrary(String paramAnonymousString)
       {
         AppMethodBeat.i(139956);
-        this.cNr.loadLibrary(paramAnonymousString);
+        b.this.loadLibrary(paramAnonymousString);
         AppMethodBeat.o(139956);
       }
     });
     AppMethodBeat.o(139957);
   }
   
-  public static String eA(String paramString)
+  public static String fX(String paramString)
   {
-    AppMethodBeat.i(203620);
-    paramString = cNq.eA(paramString);
-    AppMethodBeat.o(203620);
+    AppMethodBeat.i(228943);
+    paramString = eIL.fX(paramString);
+    AppMethodBeat.o(228943);
     return paramString;
   }
   
@@ -54,9 +54,9 @@ public final class b
     long l1 = i.currentTicks();
     c.c.i("MagicBrush", "start loadLibraries", new Object[0]);
     long l2 = i.currentTicks();
-    cNq.loadLibrary("mmv8");
+    eIL.loadLibrary("mmv8");
     long l3 = i.currentTicks();
-    cNq.loadLibrary("magicbrush");
+    eIL.loadLibrary("magicbrush");
     sLibraryLoaded = true;
     c.c.i("MagicBrush", "total[%d]ms load mmv8 cost [%d]ms, load magicbrush cost [%d]ms", new Object[] { Long.valueOf(i.ticksToNow(l1)), Long.valueOf(l3 - l2), Long.valueOf(i.ticksToNow(l3)) });
     AppMethodBeat.o(139959);
@@ -65,20 +65,20 @@ public final class b
   public static void loadLibrary(String paramString)
   {
     AppMethodBeat.i(139958);
-    cNq.loadLibrary(paramString);
+    eIL.loadLibrary(paramString);
     AppMethodBeat.o(139958);
   }
   
   public static abstract interface a
   {
-    public abstract String eA(String paramString);
+    public abstract String fX(String paramString);
     
     public abstract void loadLibrary(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.a.b
  * JD-Core Version:    0.7.0.1
  */

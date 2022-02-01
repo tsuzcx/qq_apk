@@ -27,21 +27,31 @@ import java.util.Random;
 public class e
   implements com.tencent.pb.talkroom.sdk.d
 {
-  private static e ZVo = null;
+  private static e ahZN = null;
   private final String TAG;
-  private com.tencent.pb.talkroom.sdk.a ZVn;
-  private ConnectReceiver ZVp;
-  private g.a ZVq;
+  private com.tencent.pb.talkroom.sdk.a ahZM;
+  private ConnectReceiver ahZO;
+  private g.a ahZP;
   
   private e()
   {
     AppMethodBeat.i(62610);
     this.TAG = "TalkRoomSdkApi";
-    this.ZVn = null;
-    this.ZVp = new ConnectReceiver();
-    this.ZVq = new g.a()
+    this.ahZM = null;
+    this.ahZO = new ConnectReceiver();
+    this.ahZP = new g.a()
     {
-      public final void K(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
+      public final void L(int paramAnonymousInt, Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(62667);
+        com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "onErr errCode: ", Integer.valueOf(paramAnonymousInt), " data: ", paramAnonymousObject });
+        if (e.a(e.this) != null) {
+          e.a(e.this).L(paramAnonymousInt, paramAnonymousObject);
+        }
+        AppMethodBeat.o(62667);
+      }
+      
+      public final void N(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
       {
         int i = 0;
         AppMethodBeat.i(62679);
@@ -58,26 +68,6 @@ public class e
         }
       }
       
-      public final void Xr(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(208893);
-        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSwitchVideoScreenSharingRsp switch_ret: ", Integer.valueOf(paramAnonymousInt) });
-        if (e.a(e.this) != null) {
-          e.a(e.this).Xr(paramAnonymousInt);
-        }
-        AppMethodBeat.o(208893);
-      }
-      
-      public final void Xw(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(62683);
-        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onNotifyLargeVideoSubscribersChange largeVideoSubscribersCnt: ", Integer.valueOf(paramAnonymousInt) });
-        if (e.a(e.this) != null) {
-          e.a(e.this).Xw(paramAnonymousInt);
-        }
-        AppMethodBeat.o(62683);
-      }
-      
       public final void a(int paramAnonymousInt, MultiTalkGroup paramAnonymousMultiTalkGroup)
       {
         AppMethodBeat.i(62676);
@@ -85,38 +75,58 @@ public class e
         if (e.a(e.this) != null)
         {
           e.a(e.this).c(paramAnonymousMultiTalkGroup);
-          if (com.tencent.pb.common.a.a.ZdL) {
-            Toast.makeText(com.tencent.pb.common.c.c.NYh, "onMisscMultiTalk ".concat(String.valueOf(paramAnonymousMultiTalkGroup)), 0).show();
+          if (com.tencent.pb.common.a.a.ahcp) {
+            Toast.makeText(com.tencent.pb.common.c.c.UMe, "onMisscMultiTalk ".concat(String.valueOf(paramAnonymousMultiTalkGroup)), 0).show();
           }
         }
         AppMethodBeat.o(62676);
       }
       
-      public final void aCu(int paramAnonymousInt)
+      public final void aF(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(212304);
+        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onDoScreenSharingSecurityCheck ret: ", Integer.valueOf(paramAnonymousInt1), " checkRet: ", Integer.valueOf(paramAnonymousInt2) });
+        if (e.a(e.this) != null) {
+          e.a(e.this).aF(paramAnonymousString, paramAnonymousInt1, paramAnonymousInt2);
+        }
+        AppMethodBeat.o(212304);
+      }
+      
+      public final void aJh(int paramAnonymousInt)
       {
         AppMethodBeat.i(62664);
         com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onOpeningChannel", Integer.valueOf(paramAnonymousInt) });
         AppMethodBeat.o(62664);
       }
       
-      public final void aCv(int paramAnonymousInt)
+      public final void aJi(int paramAnonymousInt)
       {
         AppMethodBeat.i(62680);
         com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSwitchMultiTalkVideoSuss bitRate: ", Integer.valueOf(paramAnonymousInt) });
         if (e.a(e.this) != null) {
-          e.a(e.this).eXv();
+          e.a(e.this).ggl();
         }
         AppMethodBeat.o(62680);
       }
       
-      public final void ay(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void abC(int paramAnonymousInt)
       {
-        AppMethodBeat.i(208894);
-        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onDoScreenSharingSecurityCheck ret: ", Integer.valueOf(paramAnonymousInt1), " checkRet: ", Integer.valueOf(paramAnonymousInt2) });
+        AppMethodBeat.i(212303);
+        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSwitchVideoScreenSharingRsp switch_ret: ", Integer.valueOf(paramAnonymousInt) });
         if (e.a(e.this) != null) {
-          e.a(e.this).ay(paramAnonymousString, paramAnonymousInt1, paramAnonymousInt2);
+          e.a(e.this).abC(paramAnonymousInt);
         }
-        AppMethodBeat.o(208894);
+        AppMethodBeat.o(212303);
+      }
+      
+      public final void abH(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(62683);
+        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onNotifyLargeVideoSubscribersChange largeVideoSubscribersCnt: ", Integer.valueOf(paramAnonymousInt) });
+        if (e.a(e.this) != null) {
+          e.a(e.this).abH(paramAnonymousInt);
+        }
+        AppMethodBeat.o(62683);
       }
       
       public final void b(MultiTalkGroup paramAnonymousMultiTalkGroup)
@@ -126,85 +136,82 @@ public class e
         if (e.a(e.this) != null)
         {
           e.a(e.this).b(paramAnonymousMultiTalkGroup);
-          if (com.tencent.pb.common.a.a.ZdL) {
-            Toast.makeText(com.tencent.pb.common.c.c.NYh, "onInviteMultiTalk ".concat(String.valueOf(paramAnonymousMultiTalkGroup)), 0).show();
+          if (com.tencent.pb.common.a.a.ahcp) {
+            Toast.makeText(com.tencent.pb.common.c.c.UMe, "onInviteMultiTalk ".concat(String.valueOf(paramAnonymousMultiTalkGroup)), 0).show();
           }
         }
         AppMethodBeat.o(62675);
       }
       
-      public final void bpP()
+      public final void bNv()
       {
         AppMethodBeat.i(62665);
         com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "onInitSeccess" });
-        if (com.tencent.pb.common.a.a.ZdL) {
-          Toast.makeText(com.tencent.pb.common.c.c.NYh, "onInitSeccess ", 0).show();
+        if (com.tencent.pb.common.a.a.ahcp) {
+          Toast.makeText(com.tencent.pb.common.c.c.UMe, "onInitSeccess ", 0).show();
         }
         if (e.a(e.this) != null) {
-          e.a(e.this).eXu();
+          e.a(e.this).ggk();
         }
         AppMethodBeat.o(62665);
       }
       
-      public final void dT(String paramAnonymousString, boolean paramAnonymousBoolean)
+      public final void c(MultiTalkGroup paramAnonymousMultiTalkGroup, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(212281);
+        com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "onCreateRoom", paramAnonymousMultiTalkGroup });
+        if (com.tencent.pb.common.a.a.ahcp) {
+          Toast.makeText(com.tencent.pb.common.c.c.UMe, "onCreateRoom ".concat(String.valueOf(paramAnonymousMultiTalkGroup)), 0).show();
+        }
+        if (e.a(e.this) != null) {
+          e.a(e.this).a(paramAnonymousMultiTalkGroup, paramAnonymousLong);
+        }
+        AppMethodBeat.o(212281);
+      }
+      
+      public final void d(MultiTalkGroup paramAnonymousMultiTalkGroup, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(212285);
+        com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "onEnterRoom", paramAnonymousMultiTalkGroup });
+        if (e.a(e.this) != null)
+        {
+          e.a(e.this).b(paramAnonymousMultiTalkGroup, paramAnonymousLong);
+          if (com.tencent.pb.common.a.a.ahcp) {
+            Toast.makeText(com.tencent.pb.common.c.c.UMe, "onEnterRoom ".concat(String.valueOf(paramAnonymousMultiTalkGroup)), 0).show();
+          }
+        }
+        AppMethodBeat.o(212285);
+      }
+      
+      public final void eI(String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(62669);
-        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onExitRoom", paramAnonymousString, a.iut().CSB, Boolean.valueOf(paramAnonymousBoolean) });
+        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onExitRoom", paramAnonymousString, a.kdP().IMR, Boolean.valueOf(paramAnonymousBoolean) });
         AppMethodBeat.o(62669);
-      }
-      
-      public final void eXw()
-      {
-        AppMethodBeat.i(62681);
-        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSubscribeLargeVideoSuss" });
-        if (e.a(e.this) != null) {
-          e.a(e.this).eXw();
-        }
-        AppMethodBeat.o(62681);
-      }
-      
-      public final void eXx()
-      {
-        AppMethodBeat.i(183717);
-        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSubscribeGeneralVideoSuss" });
-        if (e.a(e.this) != null) {
-          e.a(e.this).eXx();
-        }
-        AppMethodBeat.o(183717);
-      }
-      
-      public final void eXy()
-      {
-        AppMethodBeat.i(208898);
-        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSubscribeScreenSharingVideoSuss" });
-        if (e.a(e.this) != null) {
-          e.a(e.this).eXy();
-        }
-        AppMethodBeat.o(208898);
       }
       
       public final void f(MultiTalkGroup paramAnonymousMultiTalkGroup)
       {
         AppMethodBeat.i(62666);
-        Object localObject = a.iut().CSB;
+        Object localObject = a.kdP().IMR;
         String str = null;
         if (paramAnonymousMultiTalkGroup != null) {
-          str = paramAnonymousMultiTalkGroup.FmO;
+          str = paramAnonymousMultiTalkGroup.LiU;
         }
         com.tencent.pb.common.c.b.i("TalkRoomSdkApi", new Object[] { "onMemberChange mGroupId: ", localObject, " groupId: ", str, paramAnonymousMultiTalkGroup });
-        if (com.tencent.pb.common.a.a.ZdL) {
-          Toast.makeText(com.tencent.pb.common.c.c.NYh, "onMemberChange ".concat(String.valueOf(paramAnonymousMultiTalkGroup)), 0).show();
+        if (com.tencent.pb.common.a.a.ahcp) {
+          Toast.makeText(com.tencent.pb.common.c.c.UMe, "onMemberChange ".concat(String.valueOf(paramAnonymousMultiTalkGroup)), 0).show();
         }
         int k;
         int j;
         int i;
-        if (com.tencent.pb.common.c.f.oB(str, (String)localObject))
+        if (com.tencent.pb.common.c.f.qz(str, (String)localObject))
         {
-          c.iuI();
-          if ((c.bEk((String)localObject)) && (a.iut().state != 3))
+          c.ked();
+          if ((c.bGJ((String)localObject)) && (a.kdP().state != 3))
           {
-            c.iuI();
-            k = c.bEl((String)localObject);
+            c.ked();
+            k = c.bGK((String)localObject);
             if (k != 104) {
               break label275;
             }
@@ -215,12 +222,12 @@ public class e
         for (;;)
         {
           com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "onMemberChange isMySelfExit finish ", "stopstatus", Integer.valueOf(j), Integer.valueOf(i), str, " reason: ", Integer.valueOf(k) });
-          h.aCy(j);
-          a.iut().ZVU.aCC(i);
-          localObject = a.iut();
-          i = a.iut().DVO;
-          long l = a.iut().NXM;
-          a.iut();
+          h.aJl(j);
+          a.kdP().aiat.aJp(i);
+          localObject = a.kdP();
+          i = a.kdP().JMX;
+          long l = a.kdP().UGt;
+          a.kdP();
           ((f)localObject).a(str, i, l, false, false, false);
           if (e.a(e.this) != null) {
             e.a(e.this).f(paramAnonymousMultiTalkGroup);
@@ -241,58 +248,65 @@ public class e
         }
       }
       
-      public final void gb(List<a.ar> paramAnonymousList)
+      public final void ggm()
+      {
+        AppMethodBeat.i(62681);
+        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSubscribeLargeVideoSuss" });
+        if (e.a(e.this) != null) {
+          e.a(e.this).ggm();
+        }
+        AppMethodBeat.o(62681);
+      }
+      
+      public final void ggn()
+      {
+        AppMethodBeat.i(183717);
+        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSubscribeGeneralVideoSuss" });
+        if (e.a(e.this) != null) {
+          e.a(e.this).ggn();
+        }
+        AppMethodBeat.o(183717);
+      }
+      
+      public final void ggo()
+      {
+        AppMethodBeat.i(212307);
+        com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSubscribeScreenSharingVideoSuss" });
+        if (e.a(e.this) != null) {
+          e.a(e.this).ggo();
+        }
+        AppMethodBeat.o(212307);
+      }
+      
+      public final void iY(List<a.ar> paramAnonymousList)
       {
         AppMethodBeat.i(62682);
         com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onVideoGroupMemberChange videoUserNames: ", paramAnonymousList });
         if (e.a(e.this) != null) {
-          e.a(e.this).gb(paramAnonymousList);
+          e.a(e.this).iY(paramAnonymousList);
         }
         AppMethodBeat.o(62682);
       }
       
-      public final void it(String paramAnonymousString, int paramAnonymousInt)
+      public final void jF(String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(62673);
         com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onModifyGroupInfo", paramAnonymousString, Integer.valueOf(paramAnonymousInt) });
         AppMethodBeat.o(62673);
       }
       
-      public final void iuM()
+      public final void keh()
       {
         AppMethodBeat.i(62671);
         com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSelfHoldOnBegin" });
         AppMethodBeat.o(62671);
       }
       
-      public final void iuN()
+      public final void kei()
       {
         AppMethodBeat.i(62672);
         com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "onSelfHoldOnEnd" });
         AppMethodBeat.o(62672);
-      }
-      
-      public final void lc(List<MultiTalkGroup> paramAnonymousList)
-      {
-        AppMethodBeat.i(62677);
-        com.tencent.pb.common.c.b.i("TalkRoomSdkApi", new Object[] { "onActiveMultiTalkList ", paramAnonymousList });
-        if (e.a(e.this) != null) {
-          e.a(e.this);
-        }
-        AppMethodBeat.o(62677);
-      }
-      
-      public final void o(MultiTalkGroup paramAnonymousMultiTalkGroup)
-      {
-        AppMethodBeat.i(62663);
-        com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "onCreateRoom", paramAnonymousMultiTalkGroup });
-        if (com.tencent.pb.common.a.a.ZdL) {
-          Toast.makeText(com.tencent.pb.common.c.c.NYh, "onCreateRoom ".concat(String.valueOf(paramAnonymousMultiTalkGroup)), 0).show();
-        }
-        if (e.a(e.this) != null) {
-          e.a(e.this).d(paramAnonymousMultiTalkGroup);
-        }
-        AppMethodBeat.o(62663);
       }
       
       public final void onStateChanged(int paramAnonymousInt)
@@ -302,36 +316,22 @@ public class e
         AppMethodBeat.o(62670);
       }
       
-      public final void p(MultiTalkGroup paramAnonymousMultiTalkGroup)
+      public final void oz(List<MultiTalkGroup> paramAnonymousList)
       {
-        AppMethodBeat.i(62668);
-        com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "onEnterRoom", paramAnonymousMultiTalkGroup });
-        if (e.a(e.this) != null)
-        {
-          e.a(e.this).e(paramAnonymousMultiTalkGroup);
-          if (com.tencent.pb.common.a.a.ZdL) {
-            Toast.makeText(com.tencent.pb.common.c.c.NYh, "onEnterRoom ".concat(String.valueOf(paramAnonymousMultiTalkGroup)), 0).show();
-          }
-        }
-        AppMethodBeat.o(62668);
-      }
-      
-      public final void r(int paramAnonymousInt, Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(62667);
-        com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "onErr errCode: ", Integer.valueOf(paramAnonymousInt), " data: ", paramAnonymousObject });
+        AppMethodBeat.i(62677);
+        com.tencent.pb.common.c.b.i("TalkRoomSdkApi", new Object[] { "onActiveMultiTalkList ", paramAnonymousList });
         if (e.a(e.this) != null) {
-          e.a(e.this).r(paramAnonymousInt, paramAnonymousObject);
+          e.a(e.this);
         }
-        AppMethodBeat.o(62667);
+        AppMethodBeat.o(62677);
       }
       
-      public final void uy(boolean paramAnonymousBoolean)
+      public final void yN(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(62674);
         com.tencent.pb.common.c.b.i("TalkRoomSdkApi", new Object[] { "onMuteStateChange", Boolean.valueOf(paramAnonymousBoolean) });
         if (e.a(e.this) != null) {
-          e.a(e.this).uy(paramAnonymousBoolean);
+          e.a(e.this).yN(paramAnonymousBoolean);
         }
         AppMethodBeat.o(62674);
       }
@@ -339,16 +339,16 @@ public class e
     AppMethodBeat.o(62610);
   }
   
-  public static e iuL()
+  public static e keg()
   {
     AppMethodBeat.i(62609);
-    if (ZVo == null) {}
+    if (ahZN == null) {}
     try
     {
-      if (ZVo == null) {
-        ZVo = new e();
+      if (ahZN == null) {
+        ahZN = new e();
       }
-      e locale = ZVo;
+      e locale = ahZN;
       AppMethodBeat.o(62609);
       return locale;
     }
@@ -358,48 +358,48 @@ public class e
     }
   }
   
-  public static void mu(Context paramContext)
+  public static void oK(Context paramContext)
   {
     AppMethodBeat.i(62611);
-    com.tencent.pb.common.c.c.NYh = paramContext;
-    com.tencent.f.i.mo(paramContext);
+    com.tencent.pb.common.c.c.UMe = paramContext;
+    com.tencent.f.i.oE(paramContext);
     AppMethodBeat.o(62611);
   }
   
-  public final boolean In(boolean paramBoolean)
+  public final boolean Op(boolean paramBoolean)
   {
     AppMethodBeat.i(62624);
     com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "holadMultiTalk isHold", Boolean.valueOf(paramBoolean) });
     f localf;
     if (paramBoolean)
     {
-      localf = a.iut();
+      localf = a.kdP();
       com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "syscall", "startHoldOn" });
-      localf.ZWq = true;
-      localf.ux(false);
-      com.tencent.pb.common.c.g.runOnMainThread(new g.14(localf.ZWc));
+      localf.aiaP = true;
+      localf.yL(false);
+      com.tencent.pb.common.c.g.runOnMainThread(new g.14(localf.aiaB));
     }
     for (;;)
     {
       AppMethodBeat.o(62624);
       return true;
-      localf = a.iut();
+      localf = a.kdP();
       com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "syscall", "endHoldOn" });
-      localf.ZWq = false;
-      localf.iuQ();
-      if ((localf.gyH()) && (localf.EmI))
+      localf.aiaP = false;
+      localf.kel();
+      if ((localf.hWB()) && (localf.Kfr))
       {
-        localf.ux(true);
-        com.tencent.pb.common.c.g.runOnMainThread(new g.15(localf.ZWc));
+        localf.yL(true);
+        com.tencent.pb.common.c.g.runOnMainThread(new g.15(localf.aiaB));
       }
     }
   }
   
-  public final com.tencent.pb.talkroom.sdk.f Q(int[] paramArrayOfInt)
+  public final com.tencent.pb.talkroom.sdk.f S(int[] paramArrayOfInt)
   {
     int i = 0;
     AppMethodBeat.i(62630);
-    com.tencent.pb.talkroom.sdk.f localf = a.iut().Q(paramArrayOfInt);
+    com.tencent.pb.talkroom.sdk.f localf = a.kdP().S(paramArrayOfInt);
     if (paramArrayOfInt == null) {}
     for (;;)
     {
@@ -410,25 +410,25 @@ public class e
     }
   }
   
-  public final boolean Q(String paramString, List<String> paramList)
+  public final boolean X(String paramString, List<String> paramList)
   {
     AppMethodBeat.i(62619);
-    if (!com.tencent.pb.common.c.f.oB(paramString, a.iut().CSB))
+    if (!com.tencent.pb.common.c.f.qz(paramString, a.kdP().IMR))
     {
-      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "addMultiTalkMember groupid is not same; multiTalkGroupid: ", paramString, a.iut().CSB });
+      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "addMultiTalkMember groupid is not same; multiTalkGroupid: ", paramString, a.kdP().IMR });
       AppMethodBeat.o(62619);
       return false;
     }
-    f localf = a.iut();
-    int j = localf.DVO;
-    long l = localf.NXM;
+    f localf = a.kdP();
+    int j = localf.JMX;
+    long l = localf.UGt;
     int i;
     boolean bool;
     if (paramList == null)
     {
       i = 0;
       com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "addrTalkRoomMember", paramString, Integer.valueOf(j), Long.valueOf(l), " users length: ", Integer.valueOf(i) });
-      localf.ZWi = false;
+      localf.aiaH = false;
       if ((!TextUtils.isEmpty(paramString)) && (paramList != null)) {
         break label184;
       }
@@ -449,17 +449,17 @@ public class e
       }
       else
       {
-        paramList = f.ld(paramList);
-        if (paramList.length <= 0)
+        paramList = f.oA(paramList);
+        if ((paramList == null) || (paramList.length <= 0))
         {
           com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "addTalkRoomMember users is null" });
           bool = false;
         }
         else
         {
-          paramString = new com.tencent.wecall.talkroom.a.b(paramString, localf.DVO, localf.NXM, paramList);
-          bool = com.tencent.pb.common.b.e.ikG().b(paramString);
-          localf.ZVU.ag(new String[] { "add", "req", String.valueOf(bool), String.valueOf(localf.state) });
+          paramString = new com.tencent.wecall.talkroom.a.b(paramString, localf.JMX, localf.UGt, paramList);
+          bool = com.tencent.pb.common.b.e.jQX().b(paramString);
+          localf.aiat.ai(new String[] { "add", "req", String.valueOf(bool), String.valueOf(localf.state) });
         }
       }
     }
@@ -468,13 +468,13 @@ public class e
   public final com.tencent.pb.talkroom.sdk.f a(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt)
   {
     int i = 0;
-    AppMethodBeat.i(208933);
-    paramArrayOfInt = a.iut().a(paramArrayOfByte, paramArrayOfInt, paramInt);
+    AppMethodBeat.i(212311);
+    paramArrayOfInt = a.kdP().a(paramArrayOfByte, paramArrayOfInt, paramInt);
     if (paramArrayOfByte == null) {}
     for (paramInt = i;; paramInt = paramArrayOfByte.length)
     {
       com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "receiveScreen imgBuffer size: ", Integer.valueOf(paramInt), " MultiTalkVideoDecodeInfo: ", paramArrayOfInt });
-      AppMethodBeat.o(208933);
+      AppMethodBeat.o(212311);
       return paramArrayOfInt;
     }
   }
@@ -482,26 +482,26 @@ public class e
   public final boolean a(com.tencent.pb.talkroom.sdk.a parama, com.tencent.pb.talkroom.sdk.e parame)
   {
     AppMethodBeat.i(62612);
-    if (com.tencent.pb.common.c.c.NYh == null)
+    if (com.tencent.pb.common.c.c.UMe == null)
     {
-      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "init fail context: ", com.tencent.pb.common.c.c.NYh });
+      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "init fail context: ", com.tencent.pb.common.c.c.UMe });
       AppMethodBeat.o(62612);
       return false;
     }
     try
     {
-      this.ZVn = parama;
+      this.ahZM = parama;
       f.a(parame);
-      parama = a.iut();
-      g.a locala = this.ZVq;
-      parama.ZWc.a(locala);
-      com.tencent.pb.common.b.f.ikJ().Zex = parame;
-      a.ius();
-      a.iuu();
+      parama = a.kdP();
+      g.a locala = this.ahZP;
+      parama.aiaB.a(locala);
+      com.tencent.pb.common.b.f.jRa().ahda = parame;
+      a.kdO();
+      a.kdQ();
       parama = new IntentFilter();
       parama.setPriority(2147483647);
       parama.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-      com.tencent.pb.common.c.c.NYh.registerReceiver(this.ZVp, parama);
+      com.tencent.pb.common.c.c.UMe.registerReceiver(this.ahZO, parama);
       com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "init" });
       AppMethodBeat.o(62612);
       return true;
@@ -516,61 +516,70 @@ public class e
   
   public final boolean a(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(208919);
-    paramString3 = a.iut().a(paramString1, paramInt1, paramLong, paramInt2, 100, paramString2, paramString3);
+    AppMethodBeat.i(212290);
+    paramString3 = a.kdP().a(paramString1, paramInt1, paramLong, paramInt2, 100, paramString2, paramString3);
     com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "enterMultiTalk multiTalkGroupid:", paramString1, " roomId: ", Integer.valueOf(paramInt1), " roomKey: ", Long.valueOf(paramLong), " routId: ", Integer.valueOf(paramInt2), " wxGroupId: ", paramString2, " ret: ", paramString3 });
-    if (paramString3 == f.b.ZWV)
+    if (paramString3 == f.b.aibu)
     {
-      AppMethodBeat.o(208919);
+      AppMethodBeat.o(212290);
       return true;
     }
-    AppMethodBeat.o(208919);
+    AppMethodBeat.o(212290);
     return false;
   }
   
   public final boolean a(String paramString1, String paramString2, List<String> paramList, String paramString3)
   {
-    AppMethodBeat.i(208916);
-    f localf = a.iut();
-    localf.ZVL = paramString3;
-    paramString3 = f.ld(paramList);
+    AppMethodBeat.i(212287);
+    f localf = a.kdP();
+    localf.aiak = paramString3;
+    paramString3 = f.oA(paramList);
     int i;
+    label53:
+    int j;
     if (paramString3.length > 0)
     {
       if (TextUtils.isEmpty(null)) {
-        break label309;
+        break label316;
       }
       throw new NullPointerException();
-      com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "createTalkRoom cliendId: ", paramString1, " voiceSingle2MultiInfo: ", null, " memeberUuids size: ", Integer.valueOf(paramString3.length), "routeId", Integer.valueOf(i), " context: ", null, " type: ", Integer.valueOf(0), " playId: ", Long.valueOf(0L), " sdkKey: ", null });
-      if (com.tencent.pb.a.a.a.ilb()) {
-        break label338;
+      if (paramString3 != null) {
+        break label345;
       }
-      com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "createTalkRoom isAuthed: ", Boolean.valueOf(com.tencent.pb.a.a.a.ilb()), " isBindMobile: ", Boolean.valueOf(com.tencent.pb.a.a.a.ilc()) });
+      i = 0;
+      com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "createTalkRoom cliendId: ", paramString1, " voiceSingle2MultiInfo: ", null, " memeberUuids size: ", Integer.valueOf(i), "routeId", Integer.valueOf(j), " context: ", null, " type: ", Integer.valueOf(0), " playId: ", Long.valueOf(0L), " sdkKey: ", null });
+      if (com.tencent.pb.a.a.a.jRs()) {
+        break label353;
+      }
+      com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "createTalkRoom isAuthed: ", Boolean.valueOf(com.tencent.pb.a.a.a.jRs()), " isBindMobile: ", Boolean.valueOf(com.tencent.pb.a.a.a.jRt()) });
       h.a("", paramString1, 0, 0L, new String[] { "create", "req", "false", "noAuth" });
     }
     for (;;)
     {
       paramString1 = null;
-      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "createTalkRoom clientId is: ", paramString1, "wXgroupId: ", paramString2, " creatorUsrName: ", com.tencent.pb.a.a.a.ila(), " usrnameList: ", paramList });
+      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "createTalkRoom clientId is: ", paramString1, "wXgroupId: ", paramString2, " creatorUsrName: ", com.tencent.pb.a.a.a.jRr(), " usrnameList: ", paramList });
       if (paramString1 == null) {
-        break label1006;
+        break label1083;
       }
-      AppMethodBeat.o(208916);
+      AppMethodBeat.o(212287);
       return true;
-      label309:
-      i = new Random().nextInt() << 16 | com.tencent.pb.a.a.a.ila().hashCode() & 0xFFFF;
+      label316:
+      j = new Random().nextInt() << 16 | com.tencent.pb.a.a.a.jRr().hashCode() & 0xFFFF;
       break;
-      label338:
+      label345:
+      i = paramString3.length;
+      break label53;
+      label353:
       if (!com.tencent.pb.common.b.h.isNetworkConnected())
       {
         com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "createTalkRoom isNetworkConnected is false" });
-        h.aCA(-4003);
+        h.aJn(-4003);
         h.a("", paramString1, 0, 0L, new String[] { "create", "req", "false", "noNetwork" });
       }
-      else if (localf.gyH())
+      else if (localf.hWB())
       {
-        if (localf.gyH()) {
-          h.aCA(-4002);
+        if (localf.hWB()) {
+          h.aJn(-4002);
         }
         h.a("", paramString1, 0, 0L, new String[] { "create", "req", "false", "isBusy" });
       }
@@ -579,59 +588,67 @@ public class e
         com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "createTalkRoom cliendId is null" });
         h.a("", paramString1, 0, 0L, new String[] { "create", "req", "false", "cliendIdnull" });
       }
-      else if (!i.bEt(paramString1))
+      else if (!i.bGS(paramString1))
       {
         com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "createTalkRoom groupId is not cliend id: ", paramString1 });
         h.a("", paramString1, 0, 0L, new String[] { "create", "req", "false", "isnotcliendId" });
       }
       else
       {
-        if (c.iuI().bEf(paramString1) == null) {
-          c.iuI().f(paramString1, paramString2, paramString3);
+        if (c.ked().bGE(paramString1) == null) {
+          c.ked().f(paramString1, paramString2, paramString3);
         }
-        localf.ZVU.reset();
-        localf.IJ(false);
-        localf.iuP();
-        if (localf.giH()) {
-          break label700;
+        localf.aiat.reset();
+        localf.OL(false);
+        if (!localf.kek())
+        {
+          com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "createTalkRoom initService fail" });
+          h.a("", paramString1, 0, 0L, new String[] { "create", "req", "false", "initServicefail" });
+          localf.OL(false);
         }
-        com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "createTalkRoom initEngine fail" });
-        h.a("", paramString1, 0, 0L, new String[] { "create", "req", "false", "initEnginefail" });
-        localf.IJ(false);
+        else
+        {
+          if (localf.hCI()) {
+            break label777;
+          }
+          com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "createTalkRoom initEngine fail" });
+          h.a("", paramString1, 0, 0L, new String[] { "create", "req", "false", "initEnginefail" });
+          localf.OL(false);
+        }
       }
     }
-    label700:
-    localf.ZVU.ive();
-    localf.CSB = paramString1;
-    localf.ZWg = paramString1;
-    localf.Zel = i;
-    localf.ZVD = paramString1;
+    label777:
+    localf.aiat.keA();
+    localf.IMR = paramString1;
+    localf.aiaF = paramString1;
+    localf.ahcO = j;
+    localf.aiac = paramString1;
     localf.setState(1);
-    localf.NKr = true;
+    localf.Uxb = true;
     Object localObject = new f.a(localf);
-    ((f.a)localObject).groupId = localf.CSB;
-    ((f.a)localObject).ZWP = paramString3;
-    ((f.a)localObject).ZWQ = null;
-    ((f.a)localObject).ZeV = i;
+    ((f.a)localObject).groupId = localf.IMR;
+    ((f.a)localObject).aibo = paramString3;
+    ((f.a)localObject).aibp = null;
+    ((f.a)localObject).ahdy = j;
     ((f.a)localObject).type = 0;
-    ((f.a)localObject).ZWR = 0L;
-    ((f.a)localObject).ZWS = null;
-    ((f.a)localObject).ZWT = false;
-    ((f.a)localObject).ZWU = paramString2;
+    ((f.a)localObject).aibq = 0L;
+    ((f.a)localObject).aibr = null;
+    ((f.a)localObject).aibs = false;
+    ((f.a)localObject).aibt = paramString2;
     paramString3 = Message.obtain();
     paramString3.what = 2;
     paramString3.obj = localObject;
     localf.mHandler.removeMessages(2);
-    localObject = c.iuI().bEf(localf.CSB);
+    localObject = c.ked().bGE(localf.IMR);
     if (localObject == null) {
       com.tencent.pb.common.c.b.w("TalkRoomManager", new Object[] { "isOnlyMySelfInGroup talkroom is null" });
     }
     for (;;)
     {
       localf.mHandler.sendMessage(paramString3);
-      localf.ZWi = true;
+      localf.aiaH = true;
       break;
-      localObject = ((TalkRoom)localObject).iuz();
+      localObject = ((TalkRoom)localObject).kdV();
       if ((localObject == null) || (((List)localObject).size() != 1))
       {
         com.tencent.pb.common.c.b.w("TalkRoomManager", new Object[] { "isOnlyMySelfInGroup TalkRoomMember list is not match" });
@@ -646,48 +663,23 @@ public class e
         }
       }
     }
-    label1006:
-    AppMethodBeat.o(208916);
+    label1083:
+    AppMethodBeat.o(212287);
     return false;
   }
   
-  public final boolean aAg(int paramInt)
-  {
-    AppMethodBeat.i(62627);
-    if (!a.iut().gyH())
-    {
-      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "switchMultiTalkVideo isWorking is false" });
-      AppMethodBeat.o(62627);
-      return false;
-    }
-    com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "switchMultiTalkVideo action: ", Integer.valueOf(paramInt) });
-    Object localObject = a.iut();
-    if (TextUtils.isEmpty(((f)localObject).CSB))
-    {
-      com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "switchMultiTalkVideo mGroupId is null" });
-      AppMethodBeat.o(62627);
-      return false;
-    }
-    ((f)localObject).ZVM = paramInt;
-    localObject = new m(((f)localObject).CSB, ((f)localObject).DVO, ((f)localObject).NXM, paramInt, ((f)localObject).ZVC, 0, null, null);
-    boolean bool = com.tencent.pb.common.b.e.ikG().b((com.tencent.pb.common.b.d)localObject);
-    com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "switchMultiTalkVideo ret: ", Boolean.valueOf(bool) });
-    AppMethodBeat.o(62627);
-    return bool;
-  }
-  
-  public final boolean aPY(String paramString)
+  public final boolean aMT(String paramString)
   {
     AppMethodBeat.i(62620);
-    if (!com.tencent.pb.common.c.f.oB(paramString, a.iut().CSB))
+    if (!com.tencent.pb.common.c.f.qz(paramString, a.kdP().IMR))
     {
-      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "exitMultiTalk groupid is not same; multiTalkGroupid: ", paramString, a.iut().CSB });
+      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "exitMultiTalk groupid is not same; multiTalkGroupid: ", paramString, a.kdP().IMR });
       f.e locale;
       f localf;
-      if (a.iut().bEo(paramString))
+      if (a.kdP().bGN(paramString))
       {
-        locale = a.iut().bEn(paramString);
-        localf = a.iut();
+        locale = a.kdP().bGM(paramString);
+        localf = a.kdP();
         if (locale != null) {
           break label103;
         }
@@ -698,7 +690,7 @@ public class e
       }
       label103:
       label112:
-      for (l = 0L;; l = locale.DPJ)
+      for (l = 0L;; l = locale.Hnt)
       {
         localf.c(paramString, i, l, 1);
         AppMethodBeat.o(62620);
@@ -707,35 +699,60 @@ public class e
         break;
       }
     }
-    int i = a.iut().DVO;
-    long l = a.iut().NXM;
-    boolean bool = a.iut().ba(paramString, 1, 100);
+    int i = a.kdP().JMX;
+    long l = a.kdP().UGt;
+    boolean bool = a.kdP().bk(paramString, 1, 100);
     com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "exitMultiTalk groupId: ", paramString, " roomId: ", Integer.valueOf(i), " roomKey: ", Long.valueOf(l) });
     AppMethodBeat.o(62620);
     return bool;
   }
   
-  public final boolean aQs(String paramString)
+  public final boolean aNl(String paramString)
   {
     AppMethodBeat.i(62628);
-    if (!a.iut().gyH())
+    if (!a.kdP().hWB())
     {
       com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "subscribeLargeVideo isWorking is false" });
       AppMethodBeat.o(62628);
       return false;
     }
     com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "subscribeLargeVideo ownerUserName: ", paramString });
-    f localf = a.iut();
-    if (TextUtils.isEmpty(localf.CSB))
+    f localf = a.kdP();
+    if (TextUtils.isEmpty(localf.IMR))
     {
       com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "subscribeLargeVideo mGroupId null " });
       AppMethodBeat.o(62628);
       return false;
     }
-    paramString = new k(localf.CSB, localf.DVO, localf.NXM, paramString);
-    boolean bool = com.tencent.pb.common.b.e.ikG().b(paramString);
+    paramString = new k(localf.IMR, localf.JMX, localf.UGt, paramString);
+    boolean bool = com.tencent.pb.common.b.e.jQX().b(paramString);
     com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "subscribeLargeVideo ret: ", Boolean.valueOf(bool) });
     AppMethodBeat.o(62628);
+    return bool;
+  }
+  
+  public final boolean abI(int paramInt)
+  {
+    AppMethodBeat.i(62627);
+    if (!a.kdP().hWB())
+    {
+      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "switchMultiTalkVideo isWorking is false" });
+      AppMethodBeat.o(62627);
+      return false;
+    }
+    com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "switchMultiTalkVideo action: ", Integer.valueOf(paramInt) });
+    Object localObject = a.kdP();
+    if (TextUtils.isEmpty(((f)localObject).IMR))
+    {
+      com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "switchMultiTalkVideo mGroupId is null" });
+      AppMethodBeat.o(62627);
+      return false;
+    }
+    ((f)localObject).aial = paramInt;
+    localObject = new m(((f)localObject).IMR, ((f)localObject).JMX, ((f)localObject).UGt, paramInt, ((f)localObject).aiab, 0, null, null);
+    boolean bool = com.tencent.pb.common.b.e.jQX().b((com.tencent.pb.common.b.d)localObject);
+    com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "switchMultiTalkVideo ret: ", Boolean.valueOf(bool) });
+    AppMethodBeat.o(62627);
     return bool;
   }
   
@@ -743,7 +760,7 @@ public class e
   {
     int j = 0;
     AppMethodBeat.i(62631);
-    com.tencent.pb.talkroom.sdk.g localg = a.iut().b(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt);
+    com.tencent.pb.talkroom.sdk.g localg = a.kdP().b(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt);
     int i;
     if (paramArrayOfByte == null)
     {
@@ -764,27 +781,33 @@ public class e
     }
   }
   
-  public final List<String> bCJ(String paramString)
+  public final List<String> bFm(String paramString)
   {
     AppMethodBeat.i(62621);
-    if (!com.tencent.pb.common.c.f.oB(paramString, a.iut().CSB))
+    if (!com.tencent.pb.common.c.f.qz(paramString, a.kdP().IMR))
     {
-      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "getTalkingMember groupid is not same; multiTalkGroupid: ", paramString, a.iut().CSB });
+      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "getTalkingMember groupid is not same; multiTalkGroupid: ", paramString, a.kdP().IMR });
       AppMethodBeat.o(62621);
       return null;
     }
-    Object localObject1 = c.iuI().bEf(paramString);
+    Object localObject1 = c.ked().bGE(paramString);
     if (localObject1 == null)
     {
       com.tencent.pb.common.c.b.w("TalkRoomManager", new Object[] { "getTalkingMember talkroom is null: groupId: ", paramString });
       AppMethodBeat.o(62621);
       return null;
     }
-    localObject1 = ((TalkRoom)localObject1).iuA();
+    localObject1 = ((TalkRoom)localObject1).kdW();
+    if (localObject1 == null)
+    {
+      com.tencent.pb.common.c.b.w("TalkRoomManager", new Object[] { "getTalkingMember mems is null: groupId: ", paramString });
+      AppMethodBeat.o(62621);
+      return null;
+    }
     paramString = new ArrayList();
     localObject1 = ((List)localObject1).iterator();
-    label231:
-    label234:
+    label263:
+    label266:
     for (;;)
     {
       d locald;
@@ -796,24 +819,24 @@ public class e
         if (locald == null) {
           continue;
         }
-        localObject2 = a.iut();
+        localObject2 = a.kdP();
         i = locald.getMemberId();
-        if (((f)localObject2).ZVV == null) {
-          break label231;
+        if (((f)localObject2).aiau == null) {
+          break label263;
         }
-        localObject2 = ((f)localObject2).ZVV;
-        if ((!com.tencent.pb.common.a.a.ZdM) || (((b)localObject2).ZVf == null)) {
+        localObject2 = ((f)localObject2).aiau;
+        if ((!com.tencent.pb.common.a.a.ahcq) || (((b)localObject2).ahZE == null)) {
           i = 0;
         }
       }
       for (;;)
       {
         if (i == 0) {
-          break label234;
+          break label266;
         }
-        paramString.add(locald.iuK());
+        paramString.add(locald.kef());
         break;
-        if (((b)localObject2).ZVf.GetVoiceActivity(i) > 0)
+        if (((b)localObject2).ahZE.GetVoiceActivity(i) > 0)
         {
           i = 1;
         }
@@ -829,102 +852,95 @@ public class e
     }
   }
   
-  public final Map<String, Integer> bCK(String paramString)
+  public final Map<String, Integer> bFn(String paramString)
   {
-    AppMethodBeat.i(208923);
-    if (!com.tencent.pb.common.c.f.oB(paramString, a.iut().CSB))
+    AppMethodBeat.i(212301);
+    if (!com.tencent.pb.common.c.f.qz(paramString, a.kdP().IMR))
     {
-      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "getTalkingEnergyMember groupid is not same; multiTalkGroupid: ", paramString, a.iut().CSB });
-      AppMethodBeat.o(208923);
+      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "getTalkingEnergyMember groupid is not same; multiTalkGroupid: ", paramString, a.kdP().IMR });
+      AppMethodBeat.o(212301);
       return null;
     }
-    Object localObject = c.iuI().bEf(paramString);
-    if (localObject == null)
+    Object localObject1 = c.ked().bGE(paramString);
+    if (localObject1 == null)
     {
       com.tencent.pb.common.c.b.w("TalkRoomManager", new Object[] { "getTalkingMember talkroom is null: groupId: ", paramString });
-      AppMethodBeat.o(208923);
+      AppMethodBeat.o(212301);
       return null;
     }
-    paramString = ((TalkRoom)localObject).iuA();
-    localObject = new HashMap();
-    Iterator localIterator = paramString.iterator();
-    while (localIterator.hasNext())
+    Object localObject2 = ((TalkRoom)localObject1).kdW();
+    if (localObject2 == null)
     {
-      d locald = (d)localIterator.next();
+      com.tencent.pb.common.c.b.w("TalkRoomManager", new Object[] { "getTalkingMember mems is null: groupId: ", paramString });
+      AppMethodBeat.o(212301);
+      return null;
+    }
+    localObject1 = new HashMap();
+    localObject2 = ((List)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      d locald = (d)((Iterator)localObject2).next();
       if (locald != null)
       {
-        f localf = a.iut();
+        f localf = a.kdP();
         int i = locald.getMemberId();
         paramString = Integer.valueOf(0);
-        if (localf.ZVV != null)
+        if (localf.aiau != null)
         {
-          paramString = localf.ZVV;
-          if ((com.tencent.pb.common.a.a.ZdM) && (paramString.ZVf != null)) {
-            break label219;
+          paramString = localf.aiau;
+          if ((com.tencent.pb.common.a.a.ahcq) && (paramString.ahZE != null)) {
+            break label254;
           }
         }
-        label219:
-        for (paramString = Integer.valueOf(0);; paramString = Integer.valueOf(paramString.ZVf.GetVoiceActivity(i)))
+        label254:
+        for (paramString = Integer.valueOf(0);; paramString = Integer.valueOf(paramString.ahZE.GetVoiceActivity(i)))
         {
           i = paramString.intValue();
           if (i <= 0) {
             break;
           }
-          ((Map)localObject).put(locald.iuK(), Integer.valueOf(i));
+          ((Map)localObject1).put(locald.kef(), Integer.valueOf(i));
           break;
         }
       }
     }
-    AppMethodBeat.o(208923);
-    return localObject;
+    AppMethodBeat.o(212301);
+    return localObject1;
   }
   
-  public final boolean bCL(String paramString)
+  public final boolean bFo(String paramString)
   {
-    AppMethodBeat.i(208925);
-    if (!a.iut().gyH())
+    AppMethodBeat.i(212306);
+    if (!a.kdP().hWB())
     {
       com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "DoScreenSharingSecurityCheck isWorking is false" });
-      AppMethodBeat.o(208925);
+      AppMethodBeat.o(212306);
       return false;
     }
     com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "DoScreenSharingSecurityCheck fileMd5: ", paramString, " fileId: ", null });
-    f localf = a.iut();
-    if (TextUtils.isEmpty(localf.CSB))
+    f localf = a.kdP();
+    if (TextUtils.isEmpty(localf.IMR))
     {
       com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "DoScreenSharingSecurityCheck mGroupId is null" });
-      AppMethodBeat.o(208925);
+      AppMethodBeat.o(212306);
       return false;
     }
-    paramString = new m(localf.CSB, localf.DVO, localf.NXM, 103, localf.ZVC, 0, paramString, null);
-    boolean bool = com.tencent.pb.common.b.e.ikG().b(paramString);
+    paramString = new m(localf.IMR, localf.JMX, localf.UGt, 103, localf.aiab, 0, paramString, null);
+    boolean bool = com.tencent.pb.common.b.e.jQX().b(paramString);
     com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "DoScreenSharingSecurityCheck ret: ", Boolean.valueOf(bool) });
-    AppMethodBeat.o(208925);
+    AppMethodBeat.o(212306);
     return bool;
   }
   
-  public final int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public final int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(208931);
-    int j = a.iut().c(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
-    if (paramArrayOfByte == null) {}
-    for (int i = 0;; i = paramArrayOfByte.length)
-    {
-      com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "sendVideo buffer size: ", Integer.valueOf(i), " len: ", Integer.valueOf(paramInt1), " w: ", Integer.valueOf(paramInt2), " h: ", Integer.valueOf(paramInt3), " format: ", Integer.valueOf(paramInt4), " mode: ", Integer.valueOf(paramInt5) });
-      AppMethodBeat.o(208931);
-      return j;
-    }
-  }
-  
-  public final int d(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(208932);
+    AppMethodBeat.i(212310);
     int j;
     if (paramArrayOfByte == null)
     {
       i = 0;
       com.tencent.pb.common.c.b.i("TalkRoomSdkApi", new Object[] { "sendScreen buffer size: ", Integer.valueOf(i), " len: ", Integer.valueOf(paramInt1), " w: ", Integer.valueOf(paramInt2), " h: ", Integer.valueOf(paramInt3), " format: ", Integer.valueOf(paramInt4) });
-      j = a.iut().d(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4);
+      j = a.kdP().c(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4);
       if (paramArrayOfByte != null) {
         break label231;
       }
@@ -933,10 +949,23 @@ public class e
     for (int i = 0;; i = paramArrayOfByte.length)
     {
       com.tencent.pb.common.c.b.i("TalkRoomSdkApi", new Object[] { "sendScreen buffer size: ", Integer.valueOf(i), " len: ", Integer.valueOf(paramInt1), " w: ", Integer.valueOf(paramInt2), " h: ", Integer.valueOf(paramInt3), " format: ", Integer.valueOf(paramInt4), " ret: ", Integer.valueOf(j) });
-      AppMethodBeat.o(208932);
+      AppMethodBeat.o(212310);
       return j;
       i = paramArrayOfByte.length;
       break;
+    }
+  }
+  
+  public final int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    AppMethodBeat.i(212309);
+    int j = a.kdP().c(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+    if (paramArrayOfByte == null) {}
+    for (int i = 0;; i = paramArrayOfByte.length)
+    {
+      com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "sendVideo buffer size: ", Integer.valueOf(i), " len: ", Integer.valueOf(paramInt1), " w: ", Integer.valueOf(paramInt2), " h: ", Integer.valueOf(paramInt3), " format: ", Integer.valueOf(paramInt4), " mode: ", Integer.valueOf(paramInt5) });
+      AppMethodBeat.o(212309);
+      return j;
     }
   }
   
@@ -951,7 +980,7 @@ public class e
       if (paramInt1 != 0) {
         break label109;
       }
-      com.tencent.pb.common.b.f.ikJ().v(paramInt2, paramArrayOfByte);
+      com.tencent.pb.common.b.f.jRa().w(paramInt2, paramArrayOfByte);
     }
     for (;;)
     {
@@ -960,21 +989,21 @@ public class e
       i = paramArrayOfByte.length;
       break;
       label109:
-      paramArrayOfByte = com.tencent.pb.common.b.f.ikJ();
-      com.tencent.pb.common.b.f.a locala = paramArrayOfByte.aAe(paramInt2);
+      paramArrayOfByte = com.tencent.pb.common.b.f.jRa();
+      com.tencent.pb.common.b.f.a locala = paramArrayOfByte.aGR(paramInt2);
       if (locala != null)
       {
-        com.tencent.pb.common.c.b.w("NETCMD", new Object[] { "CLTRCV FAIL", Integer.valueOf(paramInt2), locala.ZeA, Integer.valueOf(1), Integer.valueOf(paramInt1) });
+        com.tencent.pb.common.c.b.w("NETCMD", new Object[] { "CLTRCV FAIL", Integer.valueOf(paramInt2), locala.ahdd, Integer.valueOf(1), Integer.valueOf(paramInt1) });
         paramArrayOfByte.a(locala, -1, null);
       }
     }
   }
   
-  public final boolean dq(byte[] paramArrayOfByte)
+  public final boolean ds(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62623);
-    com.tencent.pb.common.b.f.ikJ();
-    int i = com.tencent.pb.common.b.f.dp(paramArrayOfByte);
+    com.tencent.pb.common.b.f.jRa();
+    int i = com.tencent.pb.common.b.f.dr(paramArrayOfByte);
     com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "handleMultiTalkNotify ret: ", Integer.valueOf(i) });
     if (i == 0)
     {
@@ -985,63 +1014,39 @@ public class e
     return false;
   }
   
-  public final void ds(int paramInt, String paramString)
+  public final void em(int paramInt, String paramString)
   {
     AppMethodBeat.i(62626);
-    com.tencent.pb.a.a.a.aAf(paramInt);
-    com.tencent.pb.a.a.a.bCI(paramString);
+    com.tencent.pb.a.a.a.aGS(paramInt);
+    com.tencent.pb.a.a.a.bFl(paramString);
     com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "setWxUinAndUsrName uin: ", Integer.valueOf(paramInt), " usrname: ", paramString });
     AppMethodBeat.o(62626);
   }
   
-  public final boolean gd(List<a.aq> paramList)
-  {
-    AppMethodBeat.i(183716);
-    if (!a.iut().gyH())
-    {
-      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "subscribeGeneralVideo isWorking is false" });
-      AppMethodBeat.o(183716);
-      return false;
-    }
-    com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "subscribeGeneralVideo memberListInfo: ", paramList });
-    f localf = a.iut();
-    if (TextUtils.isEmpty(localf.CSB))
-    {
-      com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "subscribeGeneralVideo mGroupId null " });
-      AppMethodBeat.o(183716);
-      return false;
-    }
-    paramList = new j(localf.CSB, localf.DVO, localf.NXM, paramList);
-    boolean bool = com.tencent.pb.common.b.e.ikG().b(paramList);
-    com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "subscribeGeneralVideo ret: ", Boolean.valueOf(bool) });
-    AppMethodBeat.o(183716);
-    return bool;
-  }
-  
-  public final boolean ild()
+  public final boolean jRu()
   {
     AppMethodBeat.i(62615);
     try
     {
-      com.tencent.pb.common.c.b.ikY();
+      com.tencent.pb.common.c.b.jRp();
       com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "setOpenLog: isOpenSdkLog", Boolean.TRUE, " level: ", Integer.valueOf(0) });
       AppMethodBeat.o(62615);
       return true;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "setOpenLog: ", localThrowable });
+      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "setOpenLog: ", localObject });
       AppMethodBeat.o(62615);
     }
     return false;
   }
   
-  public final String ile()
+  public final String jRv()
   {
     AppMethodBeat.i(62625);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("client_");
-    ((StringBuilder)localObject).append(com.tencent.pb.a.a.a.ila());
+    ((StringBuilder)localObject).append(com.tencent.pb.a.a.a.jRr());
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(System.currentTimeMillis());
     localObject = ((StringBuilder)localObject).toString();
@@ -1050,51 +1055,75 @@ public class e
     return localObject;
   }
   
-  public final boolean kW(List<a.ap> paramList)
+  public final boolean ja(List<a.aq> paramList)
   {
-    AppMethodBeat.i(208929);
-    if (!a.iut().gyH())
+    AppMethodBeat.i(183716);
+    if (!a.kdP().hWB())
     {
-      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "subscribeScreenSharingVideoForUserList isWorking is false" });
-      AppMethodBeat.o(208929);
+      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "subscribeGeneralVideo isWorking is false" });
+      AppMethodBeat.o(183716);
       return false;
     }
-    com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "subscribeScreenSharingVideoForUserList memberListInfo: ", paramList });
-    f localf = a.iut();
-    if (TextUtils.isEmpty(localf.CSB))
+    com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "subscribeGeneralVideo memberListInfo: ", paramList });
+    f localf = a.kdP();
+    if (TextUtils.isEmpty(localf.IMR))
     {
-      com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "subscribeScreenSharingVideo mGroupId null " });
-      AppMethodBeat.o(208929);
+      com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "subscribeGeneralVideo mGroupId null " });
+      AppMethodBeat.o(183716);
       return false;
     }
-    paramList = new l(localf.CSB, localf.DVO, localf.NXM, paramList);
-    boolean bool = com.tencent.pb.common.b.e.ikG().b(paramList);
-    com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "subscribeScreenSharingVideo ret: ", Boolean.valueOf(bool) });
-    AppMethodBeat.o(208929);
+    paramList = new j(localf.IMR, localf.JMX, localf.UGt, paramList);
+    boolean bool = com.tencent.pb.common.b.e.jQX().b(paramList);
+    com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "subscribeGeneralVideo ret: ", Boolean.valueOf(bool) });
+    AppMethodBeat.o(183716);
     return bool;
   }
   
-  public final boolean o(String paramString1, int paramInt, String paramString2, String paramString3)
+  public final boolean n(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(208917);
-    f localf = a.iut();
-    localf.ZVL = paramString3;
-    paramString2 = localf.a(paramString1, localf.DVO, localf.NXM, paramInt, 1, paramString2, paramString3);
+    AppMethodBeat.i(212288);
+    f localf = a.kdP();
+    localf.aiak = paramString3;
+    paramString2 = localf.a(paramString1, localf.JMX, localf.UGt, paramInt, 1, paramString2, paramString3);
     com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "enterMultiTalk multiTalkGroupid:", paramString1, " isAccept: ", Boolean.TRUE, " routId: ", Integer.valueOf(paramInt), " ret: ", paramString2 });
-    if (paramString2 == f.b.ZWV)
+    if (paramString2 == f.b.aibu)
     {
-      AppMethodBeat.o(208917);
+      AppMethodBeat.o(212288);
       return true;
     }
-    AppMethodBeat.o(208917);
+    AppMethodBeat.o(212288);
     return false;
+  }
+  
+  public final boolean ot(List<a.ap> paramList)
+  {
+    AppMethodBeat.i(212308);
+    if (!a.kdP().hWB())
+    {
+      com.tencent.pb.common.c.b.w("TalkRoomSdkApi", new Object[] { "subscribeScreenSharingVideoForUserList isWorking is false" });
+      AppMethodBeat.o(212308);
+      return false;
+    }
+    com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "subscribeScreenSharingVideoForUserList memberListInfo: ", paramList });
+    f localf = a.kdP();
+    if (TextUtils.isEmpty(localf.IMR))
+    {
+      com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "subscribeScreenSharingVideo mGroupId null " });
+      AppMethodBeat.o(212308);
+      return false;
+    }
+    paramList = new l(localf.IMR, localf.JMX, localf.UGt, paramList);
+    boolean bool = com.tencent.pb.common.b.e.jQX().b(paramList);
+    com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "subscribeScreenSharingVideo ret: ", Boolean.valueOf(bool) });
+    AppMethodBeat.o(212308);
+    return bool;
   }
   
   public final int screenTrans(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2, int paramInt4, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(208934);
-    paramInt1 = a.iut().screenTrans(paramArrayOfByte1, paramInt1, paramInt2, paramInt3, paramArrayOfByte2, paramInt4, paramInt5, paramInt6);
-    AppMethodBeat.o(208934);
+    AppMethodBeat.i(212313);
+    paramInt1 = a.kdP().screenTrans(paramArrayOfByte1, paramInt1, paramInt2, paramInt3, paramArrayOfByte2, paramInt4, paramInt5, paramInt6);
+    AppMethodBeat.o(212313);
     return paramInt1;
   }
   
@@ -1102,8 +1131,8 @@ public class e
   {
     int i = -1;
     AppMethodBeat.i(62632);
-    Object localObject = a.iut();
-    if (((f)localObject).ZVV == null) {
+    Object localObject = a.kdP();
+    if (((f)localObject).aiau == null) {
       com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "setAppCmd type: ", Integer.valueOf(paramInt1), " engine is null" });
     }
     for (;;)
@@ -1111,42 +1140,42 @@ public class e
       com.tencent.pb.common.c.b.d("TalkRoomSdkApi", new Object[] { "setAppCmd type: ", Integer.valueOf(paramInt1), " paramLen: ", Integer.valueOf(paramInt2), " ret: ", Integer.valueOf(i) });
       AppMethodBeat.o(62632);
       return i;
-      localObject = ((f)localObject).ZVV;
-      if ((paramArrayOfByte == null) || (((b)localObject).ZVf == null)) {
-        com.tencent.pb.common.c.b.w("simon:TalkRoomContext", new Object[] { "steve:setAppCmd null, params:", paramArrayOfByte, ", engine:", ((b)localObject).ZVf });
+      localObject = ((f)localObject).aiau;
+      if ((paramArrayOfByte == null) || (((b)localObject).ahZE == null)) {
+        com.tencent.pb.common.c.b.w("simon:TalkRoomContext", new Object[] { "steve:setAppCmd null, params:", paramArrayOfByte, ", engine:", ((b)localObject).ahZE });
       } else {
-        i = ((b)localObject).ZVf.setAppCmd(paramInt1, paramArrayOfByte, paramInt2);
+        i = ((b)localObject).ahZE.setAppCmd(paramInt1, paramArrayOfByte, paramInt2);
       }
     }
   }
   
-  public final void uM(boolean paramBoolean)
+  public final void zb(boolean paramBoolean)
   {
     AppMethodBeat.i(62614);
-    a.iut();
-    com.tencent.pb.talkroom.sdk.e locale = f.ivc();
+    a.kdP();
+    com.tencent.pb.talkroom.sdk.e locale = f.kex();
     if (locale != null) {}
-    for (boolean bool = locale.uE(paramBoolean);; bool = false)
+    for (boolean bool = locale.yT(paramBoolean);; bool = false)
     {
-      com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "switchSpeakerPhone", Boolean.valueOf(paramBoolean), " ret: ", Boolean.valueOf(bool), " realret: ", Boolean.valueOf(f.ivb()), " wxCallBack: ", locale });
+      com.tencent.pb.common.c.b.d("TalkRoomService", new Object[] { "switchSpeakerPhone", Boolean.valueOf(paramBoolean), " ret: ", Boolean.valueOf(bool), " realret: ", Boolean.valueOf(f.kew()), " wxCallBack: ", locale });
       AppMethodBeat.o(62614);
       return;
     }
   }
   
-  public final void uN(boolean paramBoolean)
+  public final void zc(boolean paramBoolean)
   {
     AppMethodBeat.i(62613);
-    f localf = a.iut();
+    f localf = a.kdP();
     com.tencent.pb.common.c.b.w("TalkRoomService", new Object[] { "setMute isMute: ", Boolean.valueOf(paramBoolean) });
     localf.mIsMute = paramBoolean;
-    com.tencent.pb.common.c.g.runOnMainThread(new g.17(localf.ZWc, paramBoolean));
+    com.tencent.pb.common.c.g.runOnMainThread(new g.17(localf.aiaB, paramBoolean));
     AppMethodBeat.o(62613);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.e
  * JD-Core Version:    0.7.0.1
  */

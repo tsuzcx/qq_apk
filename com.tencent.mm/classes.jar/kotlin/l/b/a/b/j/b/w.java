@@ -1,61 +1,53 @@
 package kotlin.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.a.g.a;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.a.k.a;
+import kotlin.l.b.a.b.b.ae;
 import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.b.s;
-import kotlin.l.b.a.b.b.y;
-import kotlin.l.b.a.b.f.a;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.l.b.a.b.m.u;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.b.a.b.m.v;
 
 public final class w
-  extends aa<Byte>
+  extends z<Integer>
 {
-  public w(byte paramByte)
+  public w(int paramInt)
   {
-    super(Byte.valueOf(paramByte));
-    AppMethodBeat.i(60119);
-    AppMethodBeat.o(60119);
+    super(Integer.valueOf(paramInt));
+    AppMethodBeat.i(60122);
+    AppMethodBeat.o(60122);
   }
   
-  public final ab b(y paramy)
+  public final ad c(ae paramae)
   {
-    AppMethodBeat.i(60117);
-    p.k(paramy, "module");
-    a locala = g.aaFI.aaHd;
-    p.j(locala, "KotlinBuiltIns.FQ_NAMES.uByte");
-    paramy = s.b(paramy, locala);
-    if (paramy != null)
+    AppMethodBeat.i(60120);
+    s.u(paramae, "module");
+    paramae = kotlin.l.b.a.b.b.w.b(paramae, k.a.aiDS);
+    if (paramae == null) {}
+    for (paramae = null; paramae == null; paramae = paramae.koj())
     {
-      paramy = paramy.iET();
-      if (paramy != null)
-      {
-        paramy = (ab)paramy;
-        AppMethodBeat.o(60117);
-        return paramy;
-      }
+      paramae = v.bJt("Unsigned type UInt not found");
+      s.s(paramae, "createErrorType(\"Unsigned type UInt not found\")");
+      paramae = (ad)paramae;
+      AppMethodBeat.o(60120);
+      return paramae;
     }
-    paramy = u.bHp("Unsigned type UByte not found");
-    p.j(paramy, "ErrorUtils.createErrorTy…ed type UByte not found\")");
-    paramy = (ab)paramy;
-    AppMethodBeat.o(60117);
-    return paramy;
+    paramae = (ad)paramae;
+    AppMethodBeat.o(60120);
+    return paramae;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(60118);
-    String str = ((Number)getValue()).byteValue() + ".toUByte()";
-    AppMethodBeat.o(60118);
+    AppMethodBeat.i(60121);
+    String str = ((Number)getValue()).intValue() + ".toUInt()";
+    AppMethodBeat.o(60121);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.w
  * JD-Core Version:    0.7.0.1
  */

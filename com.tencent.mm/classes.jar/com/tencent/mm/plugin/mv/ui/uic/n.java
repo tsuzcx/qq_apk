@@ -1,1009 +1,818 @@
 package com.tencent.mm.plugin.mv.ui.uic;
 
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
-import android.os.Parcelable.Creator;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.r;
-import androidx.lifecycle.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gallery.model.GalleryItem.ImageMediaItem;
-import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
-import com.tencent.mm.plugin.gallery.model.GalleryItem.VideoMediaItem;
-import com.tencent.mm.plugin.livelist.h;
-import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.plugin.mv.model.flex.MusicMvFlexLiveList;
-import com.tencent.mm.plugin.mv.model.flex.a.a;
-import com.tencent.mm.plugin.mv.model.flex.a.c;
-import com.tencent.mm.plugin.mv.model.flex.b.a;
+import com.tencent.mm.modelimage.loader.a.c;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.loader.b.h;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.mv.b.e;
+import com.tencent.mm.plugin.mv.model.b.a;
+import com.tencent.mm.plugin.sight.base.SightVideoJNI;
+import com.tencent.mm.plugin.thumbplayer.view.MultiMediaEffectVideoLayout;
 import com.tencent.mm.protocal.protobuf.FinderMedia;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.bdp;
-import com.tencent.mm.protocal.protobuf.bdt;
-import com.tencent.mm.protocal.protobuf.bfj;
-import com.tencent.mm.protocal.protobuf.dav;
-import com.tencent.mm.protocal.protobuf.daw;
-import com.tencent.mm.protocal.protobuf.dbo;
-import com.tencent.mm.protocal.protobuf.dog;
-import com.tencent.mm.protocal.protobuf.doi;
-import com.tencent.mm.protocal.protobuf.edf;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.protocal.protobuf.bol;
+import com.tencent.mm.protocal.protobuf.boq;
+import com.tencent.mm.protocal.protobuf.dtf;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g.a;
-import com.tencent.mm.view.recyclerview.WxLinearLayoutManager;
-import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import com.tencent.mm.view.recyclerview.e;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import kotlin.Metadata;
 import kotlin.ResultKt;
+import kotlin.a.p;
+import kotlin.d.f;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.t;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.b.c;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.br;
-import kotlinx.coroutines.by;
+import kotlin.g.b.s;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bg;
+import kotlinx.coroutines.bu;
+import kotlinx.coroutines.l;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFlexEditUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "_albumPreviewActionLiveData", "Landroidx/lifecycle/MutableLiveData;", "", "_takePhotoActionLiveData", "adapter", "Lcom/tencent/mm/plugin/livelist/MMLiveRecyclerAdapter;", "Lcom/tencent/mm/plugin/mv/model/flex/MusicMVFlexVideoLiveItem;", "getAdapter", "()Lcom/tencent/mm/plugin/livelist/MMLiveRecyclerAdapter;", "adapter$delegate", "Lkotlin/Lazy;", "albumPreviewActionLiveData", "Landroidx/lifecycle/LiveData;", "getAlbumPreviewActionLiveData", "()Landroidx/lifecycle/LiveData;", "arrangementReqJob", "Lkotlinx/coroutines/Job;", "dataSource", "Lcom/tencent/mm/plugin/livelist/datasource/BaseDataSource;", "getDataSource", "()Lcom/tencent/mm/plugin/livelist/datasource/BaseDataSource;", "dataSource$delegate", "delListener", "Lcom/tencent/mm/plugin/mv/model/flex/MusicMvFlexVideoItemConvert$IOnDelBtnClickedListener;", "getDelListener", "()Lcom/tencent/mm/plugin/mv/model/flex/MusicMvFlexVideoItemConvert$IOnDelBtnClickedListener;", "setDelListener", "(Lcom/tencent/mm/plugin/mv/model/flex/MusicMvFlexVideoItemConvert$IOnDelBtnClickedListener;)V", "flexMvCardRV", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "kotlin.jvm.PlatformType", "getFlexMvCardRV", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "flexMvCardRV$delegate", "fromScene", "isEdit", "", "()Z", "setEdit", "(Z)V", "layoutManager", "Lcom/tencent/mm/view/recyclerview/WxLinearLayoutManager;", "getLayoutManager", "()Lcom/tencent/mm/view/recyclerview/WxLinearLayoutManager;", "layoutManager$delegate", "listener", "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFlexEditUIC$listener$1", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFlexEditUIC$listener$1;", "liveList", "Lcom/tencent/mm/plugin/mv/model/flex/MusicMvFlexLiveList;", "getLiveList", "()Lcom/tencent/mm/plugin/mv/model/flex/MusicMvFlexLiveList;", "liveList$delegate", "takePhotoActionLiveData", "getTakePhotoActionLiveData", "tipDialog", "Landroid/app/ProgressDialog;", "arrangementTrack", "", "buildItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "createMvData", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "originTrackData", "resultList", "", "Lcom/tencent/mm/protocal/protobuf/FinderMvMediaInfoResult;", "clientItemMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "handleArrangementResp", "postData", "initDraftSelectItem", "trackData", "initEditUI", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onNextBtnClicked", "onSwitchIn", "onSwitchOut", "reportWhenChecked", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvTabFragment$MusicFeedsItemData;", "takePhoto", "isFixMode", "minRecordDurationMs", "maxRecordDurationMs", "takePhotoFinished", "result", "Companion", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvPreviewBgUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "firstTimePlay", "", "getFirstTimePlay", "()Z", "setFirstTimePlay", "(Z)V", "isOnActivityPause", "setOnActivityPause", "mediaInfoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/thumbplayer/model/TPMediaSEInfo;", "progressCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "timeMs", "total", "", "getProgressCallback", "()Lkotlin/jvm/functions/Function2;", "setProgressCallback", "(Lkotlin/jvm/functions/Function2;)V", "rawProgressCallback", "Lkotlin/Function1;", "getRawProgressCallback", "()Lkotlin/jvm/functions/Function1;", "setRawProgressCallback", "(Lkotlin/jvm/functions/Function1;)V", "thumbPath", "getThumbPath", "setThumbPath", "(Ljava/lang/String;)V", "thumbUrl", "getThumbUrl", "setThumbUrl", "trackData", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "getTrackData", "()Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "setTrackData", "(Lcom/tencent/mm/protocal/protobuf/MusicMvData;)V", "videoLayout", "Lcom/tencent/mm/plugin/thumbplayer/view/MultiMediaEffectVideoLayout;", "getVideoLayout", "()Lcom/tencent/mm/plugin/thumbplayer/view/MultiMediaEffectVideoLayout;", "setVideoLayout", "(Lcom/tencent/mm/plugin/thumbplayer/view/MultiMediaEffectVideoLayout;)V", "applyTransition", "index", "", "pagInfo", "Lcom/tencent/mm/plugin/mv/model/DefaultPagInfo;", "checkSyncMvPositionWithMusic", "collectBgVideoInfo", "delete", "initBgCover", "listener", "Lcom/tencent/mm/plugin/mv/ui/uic/OnBackgroundBitmapReadyListener;", "initBgVideo", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "move", "fromPosition", "toPosition", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "Landroid/content/Intent;", "onPause", "onResume", "onStart", "onStop", "refreshOffsets", "fillingDuration", "seekToTime", "selectMedia", "updateMediaInfo", "startTime", "endTime", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
   extends UIComponent
 {
-  public static final n.a Gld;
-  public final kotlin.f BiY;
-  private final r<Integer> GkT;
-  public final LiveData<Integer> GkU;
-  private final r<Integer> GkV;
-  public final LiveData<Integer> GkW;
-  final kotlin.f GkX;
-  private final kotlin.f GkY;
-  private final kotlin.f GkZ;
-  public b.a Gla;
-  private final i Glb;
-  private by Glc;
-  public int fromScene;
-  public ProgressDialog iXX;
-  public boolean wNB;
-  private final kotlin.f zQC;
+  public dtf LZM;
+  public MultiMediaEffectVideoLayout Mci;
+  public m<? super Long, ? super Long, kotlin.ah> Mgs;
+  public kotlin.g.a.b<? super Long, kotlin.ah> Mgt;
+  private boolean Mgu;
+  private boolean Mgv;
+  final String TAG;
+  public String thumbPath;
+  public String thumbUrl;
+  public final LinkedList<com.tencent.mm.plugin.thumbplayer.d.d> vaX;
   
-  static
-  {
-    AppMethodBeat.i(227070);
-    Gld = new n.a((byte)0);
-    AppMethodBeat.o(227070);
-  }
-  
-  public n(final AppCompatActivity paramAppCompatActivity)
+  public n(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(227067);
-    this.GkT = new r();
-    r localr = this.GkT;
-    if (localr == null)
-    {
-      paramAppCompatActivity = new t("null cannot be cast to non-null type androidx.lifecycle.LiveData<kotlin.Int>");
-      AppMethodBeat.o(227067);
-      throw paramAppCompatActivity;
-    }
-    this.GkU = ((LiveData)localr);
-    this.GkV = new r();
-    localr = this.GkV;
-    if (localr == null)
-    {
-      paramAppCompatActivity = new t("null cannot be cast to non-null type androidx.lifecycle.LiveData<kotlin.Int>");
-      AppMethodBeat.o(227067);
-      throw paramAppCompatActivity;
-    }
-    this.GkW = ((LiveData)localr);
-    this.GkX = kotlin.g.ar((kotlin.g.a.a)e.Gll);
-    this.GkY = kotlin.g.ar((kotlin.g.a.a)new j(this, paramAppCompatActivity));
-    this.BiY = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    this.GkZ = kotlin.g.ar((kotlin.g.a.a)new f(this));
-    this.zQC = kotlin.g.ar((kotlin.g.a.a)new h(this));
-    this.Glb = new i(this);
-    AppMethodBeat.o(227067);
+    AppMethodBeat.i(287805);
+    this.TAG = "MicroMsg.Mv.MusicMvPreviewBgUIC";
+    this.vaX = new LinkedList();
+    this.Mgu = true;
+    AppMethodBeat.o(287805);
   }
   
-  private static dbo a(dbo paramdbo, List<? extends bfj> paramList, HashMap<String, com.tencent.mm.plugin.mv.model.flex.a> paramHashMap)
+  public final void a(int paramInt, com.tencent.mm.plugin.mv.model.a parama)
   {
-    AppMethodBeat.i(227039);
-    dbo localdbo = new dbo();
-    paramdbo = paramdbo.toByteArray();
-    if (paramdbo != null) {}
-    try
+    Object localObject2 = null;
+    AppMethodBeat.i(287931);
+    Object localObject1 = this.vaX.get(paramInt);
+    s.s(localObject1, "mediaInfoList[index]");
+    com.tencent.mm.plugin.thumbplayer.d.d locald = (com.tencent.mm.plugin.thumbplayer.d.d)localObject1;
+    if (parama == null)
     {
-      localdbo.parseFrom(paramdbo);
-      paramdbo = localdbo.TIV;
-      if (paramdbo != null)
+      localObject1 = null;
+      locald.TEX = ((String)localObject1);
+      if (parama != null) {
+        break label90;
+      }
+      localObject1 = null;
+      label47:
+      locald.TEW = ((String)localObject1);
+      localObject1 = this.Mci;
+      if (localObject1 != null) {
+        if (parama != null) {
+          break label98;
+        }
+      }
+    }
+    label90:
+    label98:
+    for (parama = localObject2;; parama = parama.LWN)
+    {
+      ((MultiMediaEffectVideoLayout)localObject1).a(locald, parama);
+      AppMethodBeat.o(287931);
+      return;
+      localObject1 = parama.LWN;
+      break;
+      localObject1 = parama.id;
+      break label47;
+    }
+  }
+  
+  public final void a(u paramu)
+  {
+    AppMethodBeat.i(287847);
+    ImageView localImageView = (ImageView)getActivity().findViewById(b.e.LRQ);
+    n.a locala = new n.a(this, localImageView, paramu);
+    paramu = this.thumbPath;
+    if (paramu == null) {}
+    for (paramu = null;; paramu = kotlin.ah.aiuX)
+    {
+      if (paramu == null)
       {
-        paramdbo = paramdbo.objectDesc;
-        if (paramdbo != null)
+        localObject1 = (n)this;
+        paramu = ((n)localObject1).thumbUrl;
+        if (paramu != null)
         {
-          paramdbo = paramdbo.mvInfo;
-          if (paramdbo != null) {
-            paramdbo.SOF = 1;
+          Object localObject2 = com.tencent.mm.plugin.mv.ui.a.Maz;
+          localObject2 = com.tencent.mm.plugin.mv.ui.a.aPB(paramu);
+          Log.i(((n)localObject1).TAG, "initBgCover url:" + paramu + " fullPath:" + (String)localObject2);
+          localObject1 = new c.a();
+          ((c.a)localObject1).fullPath = ((String)localObject2);
+          ((c.a)localObject1).oKp = true;
+          ((c.a)localObject1).oKn = true;
+          r.bKe().a(paramu, localImageView, ((c.a)localObject1).bKx(), (h)locala);
+        }
+      }
+      AppMethodBeat.o(287847);
+      return;
+      Log.i(this.TAG, s.X("initBgCover thumbPath:", this.thumbPath));
+      Object localObject1 = new c.a();
+      ((c.a)localObject1).oKn = true;
+      ((c.a)localObject1).oKs = 1;
+      localObject1 = ((c.a)localObject1).bKx();
+      s.s(localObject1, "Builder().setCacheInMemo…ns.LoadFrom.FILE).build()");
+      r.bKe().a(paramu, localImageView, (c)localObject1, (h)locala);
+    }
+  }
+  
+  public final void a(final com.tencent.mm.plugin.thumbplayer.view.d paramd)
+  {
+    AppMethodBeat.i(287889);
+    s.u(paramd, "listener");
+    final FrameLayout localFrameLayout = (FrameLayout)getActivity().findViewById(b.e.LRP);
+    kotlinx.coroutines.j.a((aq)bu.ajwo, (f)bg.kCh(), null, (m)new b(this, localFrameLayout, paramd, null), 2);
+    AppMethodBeat.o(287889);
+  }
+  
+  public final void aej(int paramInt)
+  {
+    AppMethodBeat.i(287948);
+    if (paramInt == -1)
+    {
+      AppMethodBeat.o(287948);
+      return;
+    }
+    this.vaX.remove(paramInt);
+    sJ(((com.tencent.mm.plugin.thumbplayer.d.d)this.vaX.getLast()).TBN);
+    MultiMediaEffectVideoLayout localMultiMediaEffectVideoLayout = this.Mci;
+    if (localMultiMediaEffectVideoLayout != null)
+    {
+      Object localObject1 = (Iterable)this.vaX;
+      Collection localCollection = (Collection)new ArrayList();
+      localObject1 = ((Iterable)localObject1).iterator();
+      label135:
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = ((Iterator)localObject1).next();
+        if (((com.tencent.mm.plugin.thumbplayer.d.d)localObject2).TBN > 0L) {}
+        for (paramInt = 1;; paramInt = 0)
+        {
+          if (paramInt == 0) {
+            break label135;
           }
+          localCollection.add(localObject2);
+          break;
         }
       }
-      paramdbo = localdbo.TIV;
-      if (paramdbo != null)
-      {
-        paramdbo = paramdbo.objectDesc;
-        if (paramdbo != null)
-        {
-          paramdbo = paramdbo.mvInfo;
-          if (paramdbo != null)
-          {
-            paramdbo = paramdbo.SOB;
-            if (paramdbo != null)
-            {
-              paramdbo = ((Iterable)paramdbo).iterator();
-              while (paramdbo.hasNext())
-              {
-                localObject1 = (bdt)paramdbo.next();
-                ((bdt)localObject1).SOS = "";
-                ((bdt)localObject1).refObjectId = 0L;
-              }
-            }
-          }
-        }
-      }
+      localMultiMediaEffectVideoLayout.setMediaList((List)localCollection);
     }
-    catch (Exception paramdbo)
+    localMultiMediaEffectVideoLayout = this.Mci;
+    if (localMultiMediaEffectVideoLayout != null) {
+      localMultiMediaEffectVideoLayout.start();
+    }
+    AppMethodBeat.o(287948);
+  }
+  
+  public final void b(int paramInt, long paramLong1, long paramLong2, long paramLong3)
+  {
+    AppMethodBeat.i(287943);
+    Log.i(this.TAG, "updateMediaInfo: index=" + paramInt + ", startTime=" + paramLong1 + ", endTime=" + paramLong2 + ", fillingDuration=" + paramLong3);
+    Object localObject1 = this.vaX.get(paramInt);
+    s.s(localObject1, "mediaInfoList[index]");
+    localObject1 = (com.tencent.mm.plugin.thumbplayer.d.d)localObject1;
+    ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBN = (paramLong2 - paramLong1);
+    ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBO = paramLong1;
+    sJ(paramLong3);
+    localObject1 = this.Mci;
+    if (localObject1 != null)
     {
-      Object localObject1;
-      for (;;)
+      Object localObject2 = (Iterable)this.vaX;
+      Collection localCollection = (Collection)new ArrayList();
+      localObject2 = ((Iterable)localObject2).iterator();
+      label202:
+      while (((Iterator)localObject2).hasNext())
       {
-        Log.printErrStackTrace("MicroMsg.Mv.MusicMvMakerFlexEditUIC", (Throwable)paramdbo, "mvFeedObj", new Object[0]);
-        paramdbo = x.aazN;
-      }
-      localdbo.SGC.clear();
-      paramdbo = localdbo.TIV;
-      if (paramdbo != null)
-      {
-        paramdbo = paramdbo.objectDesc;
-        if (paramdbo != null)
+        Object localObject3 = ((Iterator)localObject2).next();
+        if (((com.tencent.mm.plugin.thumbplayer.d.d)localObject3).TBN > 0L) {}
+        for (paramInt = 1;; paramInt = 0)
         {
-          paramdbo = paramdbo.mvInfo;
-          if (paramdbo != null)
-          {
-            paramdbo = paramdbo.SOE;
-            if (paramdbo != null) {
-              paramdbo.clear();
-            }
+          if (paramInt == 0) {
+            break label202;
           }
+          localCollection.add(localObject3);
+          break;
         }
       }
-      HashSet localHashSet = new HashSet();
-      paramdbo = (Iterable)paramList;
-      int i = 0;
-      Iterator localIterator = paramdbo.iterator();
-      long l1 = 0L;
-      while (localIterator.hasNext())
-      {
-        paramdbo = localIterator.next();
-        int j = i + 1;
-        if (i < 0) {
-          kotlin.a.j.iBO();
-        }
-        paramdbo = (bfj)paramdbo;
-        Object localObject2 = (com.tencent.mm.plugin.mv.model.flex.a)((Map)paramHashMap).get(paramdbo.mbB);
-        if (localObject2 != null)
-        {
-          bdt localbdt = new bdt();
-          localbdt.MSG = paramdbo.SQb;
-          localbdt.SOR = paramdbo.SQc;
-          localbdt.MSE = l1;
-          long l2 = l1 + paramdbo.SQc;
-          label409:
-          label434:
-          label458:
-          label492:
-          Object localObject3;
-          switch (((com.tencent.mm.plugin.mv.model.flex.a)localObject2).type)
-          {
-          default: 
-            i = j;
-            l1 = l2;
-            break;
-          case 2: 
-            paramdbo = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).GcH;
-            if (paramdbo != null)
-            {
-              paramdbo = paramdbo.Gbc;
-              paramList = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).GcH;
-              if (paramList == null) {
-                break label863;
-              }
-              paramList = paramList.Gbc;
-              if (paramList == null) {
-                break label863;
-              }
-              l1 = paramList.id;
-              paramList = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).GcH;
-              if (paramList == null) {
-                break label869;
-              }
-              paramList = paramList.Gbc;
-              if (paramList == null) {
-                break label869;
-              }
-              paramList = paramList.objectNonceId;
-              localbdt.SOY = new LinkedList();
-              localObject1 = localbdt.SOY;
-              if (localObject1 == null) {
-                break label874;
-              }
-              ((LinkedList)localObject1).add(Integer.valueOf(0));
-              localbdt.refObjectId = l1;
-              localbdt.SOS = paramList;
-              if ((localHashSet.add(paramList)) && (paramdbo != null))
-              {
-                localObject1 = paramdbo.objectDesc;
-                if (localObject1 != null)
-                {
-                  localObject1 = ((FinderObjectDesc)localObject1).mvInfo;
-                  if (localObject1 != null)
-                  {
-                    localObject1 = ((bdp)localObject1).SOE;
-                    if (localObject1 != null) {
-                      ((LinkedList)localObject1).add(localbdt);
-                    }
-                  }
-                }
-                localObject1 = paramdbo.objectDesc;
-                if (localObject1 == null) {
-                  break label1306;
-                }
-                localObject1 = ((FinderObjectDesc)localObject1).media;
-                if (localObject1 == null) {
-                  break label1306;
-                }
-                localObject1 = (FinderMedia)kotlin.a.j.lp((List)localObject1);
-                localObject3 = new StringBuilder("ref object media size:");
-                localObject2 = paramdbo.objectDesc;
-                if (localObject2 == null) {
-                  break label1312;
-                }
-                localObject2 = ((FinderObjectDesc)localObject2).media;
-                if (localObject2 == null) {
-                  break label1312;
-                }
-                localObject2 = Integer.valueOf(((LinkedList)localObject2).size());
-                localObject3 = ((StringBuilder)localObject3).append(localObject2).append(", ");
-                if (localObject1 == null) {
-                  break label1318;
-                }
-                localObject2 = ((FinderMedia)localObject1).url;
-                localObject3 = ((StringBuilder)localObject3).append((String)localObject2).append(", [");
-                if (localObject1 == null) {
-                  break label1324;
-                }
-                localObject2 = Float.valueOf(((FinderMedia)localObject1).width);
-                localObject2 = ((StringBuilder)localObject3).append(localObject2).append(' ');
-                if (localObject1 == null) {
-                  break label1330;
-                }
-              }
-            }
-          case 1: 
-          case 3: 
-            label597:
-            for (localObject1 = Float.valueOf(((FinderMedia)localObject1).height);; localObject1 = null)
-            {
-              Log.i("MicroMsg.Mv.MusicMvMakerFlexEditUIC", localObject1 + ']');
-              localdbo.SGC.add(paramdbo);
-              if ((l1 == 0L) && (paramList != null) && (kotlin.n.n.M(paramList, "local_", false) == true))
-              {
-                localbdt.SOT = 1;
-                Log.i("MicroMsg.Mv.MusicMvMakerFlexEditUIC", "createMvData isFirstUpload ".concat(String.valueOf(paramList)));
-              }
-              paramdbo = localdbo.TIV;
-              if (paramdbo == null) {
-                break label1336;
-              }
-              paramdbo = paramdbo.objectDesc;
-              if (paramdbo == null) {
-                break label1336;
-              }
-              paramdbo = paramdbo.mvInfo;
-              if (paramdbo == null) {
-                break label1336;
-              }
-              paramdbo = paramdbo.SOE;
-              if (paramdbo == null) {
-                break label1336;
-              }
-              paramdbo.add(localbdt);
-              i = j;
-              l1 = l2;
-              break;
-              paramdbo = null;
-              break label409;
-              label863:
-              l1 = 0L;
-              break label434;
-              label869:
-              paramList = null;
-              break label458;
-              label874:
-              break label492;
-              paramList = new FinderObject();
-              l1 = 0L;
-              paramdbo = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).id;
-              localObject3 = new FinderMedia();
-              localObject1 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).GcG;
-              label1001:
-              int k;
-              if (localObject1 != null)
-              {
-                localObject1 = ((a.a)localObject1).thumbPath;
-                ((FinderMedia)localObject3).url = ((String)localObject1);
-                localObject1 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).GcG;
-                if (localObject1 == null) {
-                  break label1240;
-                }
-                i = ((a.a)localObject1).width;
-                ((FinderMedia)localObject3).width = i;
-                localObject1 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).GcG;
-                if (localObject1 == null) {
-                  break label1245;
-                }
-                i = ((a.a)localObject1).height;
-                ((FinderMedia)localObject3).height = i;
-                localObject1 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).GcG;
-                if (localObject1 == null) {
-                  break label1250;
-                }
-                localObject1 = String.valueOf(((a.a)localObject1).GcL);
-                ((FinderMedia)localObject3).decodeKey = ((String)localObject1);
-                ((FinderMedia)localObject3).videoDuration = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).videoDuration;
-                paramList.objectNonceId = paramdbo;
-                localObject1 = new FinderObjectDesc();
-                ((FinderObjectDesc)localObject1).media.add(localObject3);
-                paramList.objectDesc = ((FinderObjectDesc)localObject1);
-                localbdt.SOY = new LinkedList();
-                localObject1 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).GcG;
-                if (localObject1 == null) {
-                  break label1256;
-                }
-                localObject1 = ((a.a)localObject1).BVd;
-                if ((localObject1 instanceof GalleryItem.VideoMediaItem)) {
-                  ((FinderMedia)localObject3).bitrate = ((GalleryItem.VideoMediaItem)localObject1).kWG;
-                }
-                localObject1 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject2).GcG;
-                if (localObject1 == null) {
-                  break label1262;
-                }
-                localObject1 = ((a.a)localObject1).BVd;
-                if ((localObject1 == null) || (((GalleryItem.MediaItem)localObject1).getType() != 2)) {
-                  break label1262;
-                }
-                k = 0;
-              }
-              for (i = 4;; i = 2)
-              {
-                localObject1 = paramList.objectDesc;
-                if (localObject1 != null) {
-                  ((FinderObjectDesc)localObject1).mediaType = i;
-                }
-                localObject1 = paramList.objectDesc;
-                if (localObject1 != null)
-                {
-                  localObject1 = ((FinderObjectDesc)localObject1).media;
-                  if (localObject1 != null)
-                  {
-                    localObject1 = (FinderMedia)((LinkedList)localObject1).getFirst();
-                    if (localObject1 != null) {
-                      ((FinderMedia)localObject1).mediaType = i;
-                    }
-                  }
-                }
-                localObject1 = localbdt.SOY;
-                if (localObject1 == null) {
-                  break label1295;
-                }
-                ((LinkedList)localObject1).add(Integer.valueOf(k));
-                localObject1 = paramList;
-                paramList = paramdbo;
-                paramdbo = (dbo)localObject1;
-                break;
-                localObject1 = null;
-                break label922;
-                label1240:
-                i = 0;
-                break label947;
-                label1245:
-                i = 0;
-                break label972;
-                label1250:
-                localObject1 = null;
-                break label1001;
-                label1256:
-                localObject1 = null;
-                break label1080;
-                label1262:
-                k = 1;
-                localObject1 = com.tencent.mm.plugin.thumbplayer.d.a.MPX;
-                localbdt.SOZ = com.tencent.mm.plugin.thumbplayer.d.a.kt((int)((FinderMedia)localObject3).width, (int)((FinderMedia)localObject3).height);
-              }
-              localObject1 = paramList;
-              paramList = paramdbo;
-              paramdbo = (dbo)localObject1;
-              break label492;
-              localObject1 = null;
-              break label597;
-              localObject2 = null;
-              break label642;
-              localObject2 = null;
-              break label669;
-              localObject2 = null;
-              break label699;
-            }
-            label642:
-            label669:
-            label699:
-            label972:
-            i = j;
-            label922:
-            label947:
-            label1080:
-            l1 = l2;
-            label1295:
-            label1306:
-            label1312:
-            label1318:
-            label1324:
-            label1330:
-            label1336:
-            break;
-          }
-        }
-        else
-        {
-          i = j;
-        }
-      }
-      AppMethodBeat.o(227039);
+      ((MultiMediaEffectVideoLayout)localObject1).setMediaList((List)localCollection);
     }
-    return localdbo;
-  }
-  
-  public final MusicMvFlexLiveList fhj()
-  {
-    AppMethodBeat.i(227007);
-    MusicMvFlexLiveList localMusicMvFlexLiveList = (MusicMvFlexLiveList)this.GkY.getValue();
-    AppMethodBeat.o(227007);
-    return localMusicMvFlexLiveList;
-  }
-  
-  public final WxRecyclerView fhk()
-  {
-    AppMethodBeat.i(227010);
-    WxRecyclerView localWxRecyclerView = (WxRecyclerView)this.GkZ.getValue();
-    AppMethodBeat.o(227010);
-    return localWxRecyclerView;
-  }
-  
-  public final WxLinearLayoutManager fhl()
-  {
-    AppMethodBeat.i(227011);
-    WxLinearLayoutManager localWxLinearLayoutManager = (WxLinearLayoutManager)this.zQC.getValue();
-    AppMethodBeat.o(227011);
-    return localWxLinearLayoutManager;
-  }
-  
-  public final void onActivityResult(int paramInt1, final int paramInt2, final Intent paramIntent)
-  {
-    AppMethodBeat.i(227062);
-    switch (paramInt1)
-    {
+    localObject1 = this.Mci;
+    if (localObject1 != null) {
+      ((MultiMediaEffectVideoLayout)localObject1).start();
     }
+    AppMethodBeat.o(287943);
+  }
+  
+  public final LinkedList<com.tencent.mm.plugin.thumbplayer.d.d> grd()
+  {
     for (;;)
     {
-      AppMethodBeat.o(227062);
-      return;
-      Object localObject1 = k.fet();
-      p.j(localObject1, "MusicPlayerManager.Instance()");
-      ((k)localObject1).feg().resume();
-      kotlinx.coroutines.g.b((ak)br.abxo, (kotlin.d.f)bc.iRs(), (m)new k(this, paramIntent, paramInt2, null), 2);
-      AppMethodBeat.o(227062);
-      return;
-      Log.i("MicroMsg.Mv.MusicMvMakerFlexEditUIC", "album preview callback");
-      ArrayList localArrayList;
-      long l2;
-      label220:
+      Object localObject4;
+      int k;
       int i;
-      Object localObject2;
-      if (paramIntent != null)
+      try
       {
-        paramInt2 = paramIntent.getIntExtra("PreviewItemObjCallbackAction", 0);
-        localObject1 = new doi();
-        if (paramIntent != null)
+        AppMethodBeat.i(287882);
+        Object localObject1;
+        if (this.vaX.isEmpty())
         {
-          paramIntent = paramIntent.getByteArrayExtra("PreviewItemObjCallback");
-          if (paramIntent != null) {
-            ((doi)localObject1).parseFrom(paramIntent);
+          long l2 = Util.currentTicks();
+          LinkedList localLinkedList1 = new LinkedList();
+          localObject4 = this.LZM;
+          if (localObject4 != null)
+          {
+            localObject1 = ((dtf)localObject4).aaYK;
+            boq localboq;
+            Object localObject5;
+            Object localObject6;
+            if (localObject1 == null)
+            {
+              localObject1 = null;
+              break label1805;
+              localObject1 = ((dtf)localObject4).aaYK;
+              if (localObject1 == null)
+              {
+                localObject1 = null;
+                LinkedList localLinkedList2 = ((dtf)localObject4).ZJp;
+                if (localObject1 == null) {
+                  continue;
+                }
+                Iterator localIterator = ((Iterable)localObject1).iterator();
+                k = 0;
+                if (!localIterator.hasNext()) {
+                  continue;
+                }
+                localObject1 = localIterator.next();
+                if (k < 0) {
+                  p.kkW();
+                }
+                localboq = (boq)localObject1;
+                if (localboq.refObjectId == 0L) {
+                  break label1800;
+                }
+                localObject5 = (n)this;
+                s.s(localLinkedList2, "refObjectList");
+                localObject1 = ((Iterable)localLinkedList2).iterator();
+                if (!((Iterator)localObject1).hasNext()) {
+                  break label1795;
+                }
+                localObject6 = (FinderObject)((Iterator)localObject1).next();
+                if (((FinderObject)localObject6).id != localboq.refObjectId) {
+                  continue;
+                }
+                localObject1 = ((FinderObject)localObject6).objectDesc;
+                if (localObject1 != null) {
+                  continue;
+                }
+                localObject1 = null;
+                i = 0;
+                j = i;
+                if (localObject1 == null)
+                {
+                  Log.i(((n)localObject5).TAG, "not find ref object media " + k + ' ' + localboq.refObjectId + ' ' + localboq.ZWZ);
+                  localObject1 = kotlin.ah.aiuX;
+                  j = i;
+                }
+                localObject1 = kotlin.ah.aiuX;
+                if (j != 0) {
+                  break label1834;
+                }
+                Log.i(this.TAG, s.X("not find ref obj Id:", Long.valueOf(localboq.refObjectId)));
+                if (localboq == null) {
+                  break label1789;
+                }
+                localObject4 = localboq.ZWZ;
+                if (localObject4 == null) {
+                  break label1789;
+                }
+                if (((CharSequence)localObject4).length() <= 0) {
+                  break label1823;
+                }
+                i = 1;
+                break label1813;
+                if ((localObject4 == null) || (localLinkedList2 == null)) {
+                  break label1789;
+                }
+                localObject6 = ((Iterable)localLinkedList2).iterator();
+                localObject1 = null;
+                label379:
+                if (!((Iterator)localObject6).hasNext()) {
+                  continue;
+                }
+                localObject7 = (FinderObject)((Iterator)localObject6).next();
+                if (!s.p(localObject4, ((FinderObject)localObject7).objectNonceId)) {
+                  break label1786;
+                }
+                localObject5 = ((FinderObject)localObject7).objectDesc;
+                if (localObject5 == null) {
+                  break label1786;
+                }
+                localObject5 = ((FinderObjectDesc)localObject5).media;
+                if (localObject5 == null) {
+                  break label1786;
+                }
+                localFinderMedia = (FinderMedia)p.oL((List)localObject5);
+                if (localFinderMedia == null) {
+                  break label1786;
+                }
+                str = "video_" + ((FinderObject)localObject7).objectNonceId + '_' + k;
+                localObject5 = localFinderMedia.url;
+                localObject1 = localObject5;
+                if (localObject5 == null) {
+                  localObject1 = "";
+                }
+                localObject1 = new com.tencent.mm.plugin.thumbplayer.d.d(str, (String)localObject1, "", kotlin.h.a.eH(localFinderMedia.width), kotlin.h.a.eH(localFinderMedia.height));
+                ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).vYw = localFinderMedia.videoDuration;
+                localObject5 = kotlin.ah.aiuX;
+                ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBP = localObject7;
+                ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).hJv = true;
+                localObject5 = kotlin.ah.aiuX;
+                localObject5 = kotlin.ah.aiuX;
+                break label1820;
+              }
+            }
+            else
+            {
+              localObject1 = ((FinderObject)localObject1).objectDesc;
+              if (localObject1 == null)
+              {
+                localObject1 = null;
+                break label1805;
+              }
+              localObject1 = ((FinderObjectDesc)localObject1).mvInfo;
+              if (localObject1 == null)
+              {
+                localObject1 = null;
+                break label1805;
+              }
+              localObject1 = Integer.valueOf(((bol)localObject1).ZWM);
+              break label1805;
+              if (((Integer)localObject1).intValue() != 1) {
+                continue;
+              }
+              localObject1 = ((dtf)localObject4).aaYK;
+              if (localObject1 == null)
+              {
+                localObject1 = null;
+                continue;
+              }
+              localObject1 = ((FinderObject)localObject1).objectDesc;
+              if (localObject1 == null)
+              {
+                localObject1 = null;
+                continue;
+              }
+              localObject1 = ((FinderObjectDesc)localObject1).mvInfo;
+              if (localObject1 == null)
+              {
+                localObject1 = null;
+                continue;
+              }
+              localObject1 = ((bol)localObject1).ZWL;
+              continue;
+            }
+            localObject1 = ((FinderObject)localObject1).objectDesc;
+            if (localObject1 == null)
+            {
+              localObject1 = null;
+              continue;
+            }
+            localObject1 = ((FinderObjectDesc)localObject1).mvInfo;
+            if (localObject1 == null)
+            {
+              localObject1 = null;
+              continue;
+            }
+            localObject1 = ((bol)localObject1).ZWI;
+            continue;
+            localObject1 = ((FinderObjectDesc)localObject1).media;
+            if (localObject1 == null)
+            {
+              localObject1 = null;
+              i = 0;
+              continue;
+            }
+            FinderMedia localFinderMedia = (FinderMedia)p.oL((List)localObject1);
+            if (localFinderMedia == null)
+            {
+              localObject1 = null;
+              i = 0;
+              continue;
+            }
+            Object localObject7 = "video_" + ((FinderObject)localObject6).id + '_' + k;
+            localObject1 = com.tencent.mm.plugin.mv.ui.a.Maz;
+            String str = com.tencent.mm.plugin.mv.ui.a.aPC((String)localObject7);
+            localObject4 = localFinderMedia.url;
+            localObject1 = localObject4;
+            if (localObject4 == null) {
+              localObject1 = "";
+            }
+            localObject7 = new com.tencent.mm.plugin.thumbplayer.d.d((String)localObject7, str, (String)localObject1, kotlin.h.a.eH(localFinderMedia.width), kotlin.h.a.eH(localFinderMedia.height));
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TBJ = 2;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).hVy = "xV2";
+            localObject4 = localFinderMedia.url_token;
+            localObject1 = localObject4;
+            if (localObject4 == null) {
+              localObject1 = "";
+            }
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).msf = ((String)localObject1);
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).decodeKey = localFinderMedia.decodeKey;
+            localObject4 = localFinderMedia.thumbUrl;
+            localObject1 = localObject4;
+            if (localObject4 == null) {
+              localObject1 = "";
+            }
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).thumbUrl = ((String)localObject1);
+            localObject4 = localFinderMedia.thumb_url_token;
+            localObject1 = localObject4;
+            if (localObject4 == null) {
+              localObject1 = "";
+            }
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).msh = ((String)localObject1);
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TBN = localboq.ZWY;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TBM = localboq.TBM;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TBO = localboq.TBO;
+            localObject1 = ((FinderObject)localObject6).objectDesc;
+            if (localObject1 == null)
+            {
+              l1 = 0L;
+              ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).vYw = (l1 * 1000L);
+              ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).nDl = 2;
+              ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).hJv = false;
+              ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TBP = localObject6;
+              ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TEV = localboq.ZXd;
+              ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TEW = localboq.ZXe;
+              localObject1 = com.tencent.mm.plugin.mv.model.a.LWK;
+              localObject1 = (com.tencent.mm.plugin.mv.model.a)((Map)com.tencent.mm.plugin.mv.model.a.gpt()).get(localboq.ZXe);
+              if (localObject1 != null) {
+                ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TEX = ((com.tencent.mm.plugin.mv.model.a)localObject1).LWN;
+              }
+              localLinkedList1.add(localObject7);
+              Log.i(((n)localObject5).TAG, "add mediaTrack network id:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).mediaId + " path:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).path + " width:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).width + " height:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).height + " timeOffsetInClipMs:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TBO + " timeOffsetInMvMs:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TBM + " timeLengthInMvMs:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject7).TBN);
+              localObject1 = kotlin.ah.aiuX;
+              localObject1 = kotlin.ah.aiuX;
+              i = 1;
+              continue;
+            }
+            localObject1 = ((FinderObjectDesc)localObject1).media;
+            if (localObject1 == null)
+            {
+              l1 = 0L;
+              continue;
+            }
+            localObject1 = (FinderMedia)p.oK((List)localObject1);
+            if (localObject1 == null)
+            {
+              l1 = 0L;
+              continue;
+            }
+            long l1 = ((FinderMedia)localObject1).videoDuration;
+            continue;
+            localObject4 = kotlin.ah.aiuX;
+            if (localObject1 != null) {
+              break label1783;
+            }
+            localObject1 = com.tencent.mm.plugin.mv.model.b.LWQ;
+            localObject4 = b.a.gpv();
+            localObject1 = new com.tencent.mm.plugin.thumbplayer.d.d("video_" + ((com.tencent.mm.plugin.mv.model.b)localObject4).name + '_' + k, ((com.tencent.mm.plugin.mv.model.b)localObject4).getFilePath(), "", ((com.tencent.mm.plugin.mv.model.b)localObject4).width, ((com.tencent.mm.plugin.mv.model.b)localObject4).height);
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).vYw = ((com.tencent.mm.plugin.mv.model.b)localObject4).durationMs;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).loop = true;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBL = true;
+            localObject4 = kotlin.ah.aiuX;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).hJv = true;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TEZ = localboq.ZXg;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TEY.addAll((Collection)localboq.ZXf);
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBN = localboq.ZWY;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBM = localboq.TBM;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBO = localboq.TBO;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).hJv = true;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).nDl = 2;
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).hYK = SightVideoJNI.getMp4RotateVFS(((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).path);
+            if (((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).hLc()) {
+              ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).vYw = 5000L;
+            }
+            ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TEW = localboq.ZXe;
+            localObject4 = com.tencent.mm.plugin.mv.model.a.LWK;
+            localObject4 = (com.tencent.mm.plugin.mv.model.a)((Map)com.tencent.mm.plugin.mv.model.a.gpt()).get(localboq.ZXe);
+            if (localObject4 != null) {
+              ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TEX = ((com.tencent.mm.plugin.mv.model.a)localObject4).LWN;
+            }
+            localLinkedList1.add(localObject1);
+            Log.i(this.TAG, "add mediaTrack local id:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).mediaId + " path:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).path + " width:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).width + " height:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).height + " timeOffsetInClipMs:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBO + " timeOffsetInMvMs:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBM + " timeLengthInMvMs:" + ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBN);
+            localObject1 = kotlin.ah.aiuX;
+            localObject1 = kotlin.ah.aiuX;
+            break label1834;
+            localObject1 = kotlin.ah.aiuX;
           }
-        }
-        localArrayList = new ArrayList();
-        l2 = System.currentTimeMillis();
-        localArrayList.add(new com.tencent.mm.plugin.mv.model.flex.a("", 0, 2L * l2, -1));
-        paramIntent = ((doi)localObject1).TVz;
-        p.j(paramIntent, "previewItemObj.selectItemList");
-        paramIntent = (Iterable)paramIntent;
-        paramInt1 = 0;
-        Iterator localIterator = paramIntent.iterator();
-        if (!localIterator.hasNext()) {
-          break label1070;
-        }
-        paramIntent = localIterator.next();
-        i = paramInt1 + 1;
-        if (paramInt1 < 0) {
-          kotlin.a.j.iBO();
-        }
-        localObject2 = (edf)paramIntent;
-        paramIntent = ((edf)localObject2).UhH;
-        if ((paramIntent == null) || (paramIntent.type != 3)) {
-          break label574;
-        }
-        paramIntent = ((edf)localObject2).UhH;
-        if (paramIntent != null)
-        {
-          localObject1 = paramIntent.id;
-          paramIntent = (Intent)localObject1;
-          if (localObject1 != null) {}
+          Log.i(this.TAG, s.X("collectBgVideoInfo cost:", Long.valueOf(Util.ticksToNow(l2))));
+          this.vaX.addAll((Collection)localLinkedList1);
         }
         else
         {
-          paramIntent = "";
+          localObject1 = this.vaX;
+          AppMethodBeat.o(287882);
+          return localObject1;
         }
-        l1 = paramInt1;
-        localObject1 = ((edf)localObject2).GdS;
-        if (localObject1 == null) {
-          break label564;
-        }
-        paramInt1 = Integer.parseInt((String)localObject1);
-        label324:
-        paramIntent = new com.tencent.mm.plugin.mv.model.flex.a(paramIntent, 2, l1 + l2, paramInt1);
-        localObject1 = ((edf)localObject2).UhH;
-        if (localObject1 != null)
+      }
+      finally {}
+      label1783:
+      continue;
+      label1786:
+      break label1820;
+      label1789:
+      Object localObject3 = null;
+      continue;
+      label1795:
+      int j = 0;
+      continue;
+      label1800:
+      j = 0;
+      continue;
+      label1805:
+      if (localObject3 == null)
+      {
+        continue;
+        for (;;)
         {
-          localObject1 = ((dog)localObject1).Gbc;
-          if (localObject1 != null)
-          {
-            paramIntent.GcH = new a.c((byte)0);
-            localObject2 = paramIntent.GcH;
-            if (localObject2 != null) {
-              ((a.c)localObject2).Gbc = ((FinderObject)localObject1);
-            }
-            localObject2 = ((FinderObject)localObject1).objectDesc;
-            if (localObject2 == null) {
-              break label569;
-            }
-            localObject2 = ((FinderObjectDesc)localObject2).media;
-            if (localObject2 == null) {
-              break label569;
-            }
-            localObject2 = (FinderMedia)kotlin.a.j.M((List)localObject2, 0);
-            if (localObject2 == null) {
-              break label569;
-            }
+          label1813:
+          if (i == 0) {
+            break label1828;
           }
+          break;
+          label1820:
+          break label379;
+          label1823:
+          i = 0;
         }
-      }
-      label564:
-      label569:
-      for (paramInt1 = ((FinderMedia)localObject2).videoDuration * 1000;; paramInt1 = 0)
-      {
-        paramIntent.videoDuration = paramInt1;
-        localObject1 = ((FinderObject)localObject1).objectDesc;
-        if (localObject1 != null)
-        {
-          localObject1 = ((FinderObjectDesc)localObject1).media;
-          if (localObject1 != null)
-          {
-            localObject1 = (FinderMedia)kotlin.a.j.lp((List)localObject1);
-            if (localObject1 != null)
-            {
-              localObject2 = paramIntent.GcH;
-              if (localObject2 != null) {
-                ((a.c)localObject2).thumbUrl = (((FinderMedia)localObject1).thumbUrl + ((FinderMedia)localObject1).thumb_url_token);
-              }
-              localObject1 = x.aazN;
-            }
-          }
-        }
-        localObject1 = x.aazN;
-        localArrayList.add(paramIntent);
-        paramInt1 = i;
-        break label220;
-        paramInt2 = 0;
-        break;
-        paramInt1 = 0;
-        break label324;
-      }
-      label574:
-      paramIntent = ((edf)localObject2).UhH;
-      if (paramIntent != null)
-      {
-        localObject1 = paramIntent.id;
-        paramIntent = (Intent)localObject1;
-        if (localObject1 != null) {}
-      }
-      else
-      {
-        paramIntent = "";
-      }
-      long l1 = paramInt1;
-      localObject1 = ((edf)localObject2).GdS;
-      label624:
-      Object localObject3;
-      if (localObject1 != null)
-      {
-        paramInt1 = Integer.parseInt((String)localObject1);
-        localObject1 = new com.tencent.mm.plugin.mv.model.flex.a(paramIntent, 1, l1 + l2, paramInt1);
-        paramIntent = ((edf)localObject2).UhH;
-        if (paramIntent != null)
-        {
-          paramIntent = paramIntent.TVy;
-          if (paramIntent != null)
-          {
-            paramIntent = paramIntent.toByteArray();
-            ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG = new a.a((byte)0);
-            localObject3 = ((edf)localObject2).UhH;
-            if ((localObject3 == null) || (((dog)localObject3).type != 1)) {
-              break label990;
-            }
-            localObject2 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-            if (localObject2 != null)
-            {
-              localObject3 = GalleryItem.ImageMediaItem.CREATOR;
-              p.j(localObject3, "GalleryItem.ImageMediaItem.CREATOR");
-              ((a.a)localObject2).BVd = ((GalleryItem.MediaItem)com.tencent.mm.ae.d.a(paramIntent, (Parcelable.Creator)localObject3));
-            }
-            paramIntent = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-            if (paramIntent == null) {
-              break label975;
-            }
-            paramIntent = paramIntent.thumbPath;
-            label753:
-            paramIntent = BitmapUtil.getPictureSize(paramIntent);
-            localObject2 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-            if (localObject2 != null)
-            {
-              if (paramIntent == null) {
-                break label980;
-              }
-              paramInt1 = paramIntent.x;
-              label779:
-              ((a.a)localObject2).width = paramInt1;
-            }
-            localObject2 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-            if (localObject2 != null)
-            {
-              if (paramIntent == null) {
-                break label985;
-              }
-              paramInt1 = paramIntent.y;
-              label806:
-              ((a.a)localObject2).height = paramInt1;
-            }
-            label812:
-            paramIntent = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-            if (paramIntent != null)
-            {
-              localObject2 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-              if (localObject2 == null) {
-                break label1053;
-              }
-              localObject2 = ((a.a)localObject2).BVd;
-              if (localObject2 == null) {
-                break label1053;
-              }
-              l1 = ((GalleryItem.MediaItem)localObject2).BVl;
-              label853:
-              paramIntent.BVl = l1;
-            }
-            localObject2 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-            if (localObject2 != null)
-            {
-              paramIntent = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-              if (paramIntent == null) {
-                break label1059;
-              }
-              paramIntent = paramIntent.BVd;
-              if (paramIntent == null) {
-                break label1059;
-              }
-              paramIntent = paramIntent.aZe();
-              label895:
-              ((a.a)localObject2).thumbPath = paramIntent;
-            }
-            paramIntent = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-            if (paramIntent != null)
-            {
-              localObject2 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-              if (localObject2 == null) {
-                break label1064;
-              }
-              localObject2 = ((a.a)localObject2).BVd;
-              if (localObject2 == null) {
-                break label1064;
-              }
-            }
-          }
-        }
-      }
-      label1053:
-      label1059:
-      label1064:
-      for (l1 = ((GalleryItem.MediaItem)localObject2).BVm;; l1 = 0L)
-      {
-        paramIntent.GcL = l1;
-        paramIntent = x.aazN;
-        paramIntent = x.aazN;
-        localArrayList.add(localObject1);
-        paramInt1 = i;
-        break;
-        paramInt1 = 0;
-        break label624;
-        label975:
-        paramIntent = null;
-        break label753;
-        label980:
-        paramInt1 = 0;
-        break label779;
-        label985:
-        paramInt1 = 0;
-        break label806;
-        label990:
-        localObject2 = ((edf)localObject2).UhH;
-        if ((localObject2 == null) || (((dog)localObject2).type != 2)) {
-          break label812;
-        }
-        localObject2 = ((com.tencent.mm.plugin.mv.model.flex.a)localObject1).GcG;
-        if (localObject2 == null) {
-          break label812;
-        }
-        localObject3 = GalleryItem.VideoMediaItem.CREATOR;
-        p.j(localObject3, "GalleryItem.VideoMediaItem.CREATOR");
-        ((a.a)localObject2).BVd = ((GalleryItem.MediaItem)com.tencent.mm.ae.d.a(paramIntent, (Parcelable.Creator)localObject3));
-        break label812;
-        l1 = 0L;
-        break label853;
-        paramIntent = null;
-        break label895;
-      }
-      label1070:
-      this.wNB = true;
-      fhj().fK((List)localArrayList);
-      fhj().fgm();
-      if ((localArrayList.size() > 0) && (paramInt2 == 1)) {
-        this.GkT.L(Integer.valueOf(1));
+        label1828:
+        localObject4 = null;
+        continue;
+        label1834:
+        k += 1;
       }
     }
   }
   
-  public final boolean onBackPressed()
+  public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(227064);
-    Object localObject = com.tencent.mm.ui.component.g.Xox;
-    localObject = com.tencent.mm.ui.component.g.b(getActivity()).i(l.class);
-    p.j(localObject, "UICProvider.of(activity)…MakerDataUIC::class.java)");
-    localObject = (l)localObject;
-    Integer localInteger = (Integer)((l)localObject).fhe().getValue();
-    if (localInteger == null) {}
-    while (localInteger.intValue() != 1)
-    {
-      AppMethodBeat.o(227064);
-      return false;
+    AppMethodBeat.i(287822);
+    if (getIntent().getBooleanExtra("key_seek_to_start", false)) {
+      com.tencent.mm.plugin.music.logic.j.gnw().gnj().wH(0);
     }
-    fhj().U((kotlin.g.a.b)new l(this, (l)localObject));
-    AppMethodBeat.o(227064);
-    return true;
+    AppMethodBeat.o(287822);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/livelist/MMLiveRecyclerAdapter;", "Lcom/tencent/mm/plugin/mv/model/flex/MusicMVFlexVideoLiveItem;", "invoke"})
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(287835);
+    MultiMediaEffectVideoLayout localMultiMediaEffectVideoLayout = this.Mci;
+    if (localMultiMediaEffectVideoLayout != null) {
+      localMultiMediaEffectVideoLayout.TGY.release();
+    }
+    AppMethodBeat.o(287835);
+  }
+  
+  public final void onNewIntent(Intent paramIntent)
+  {
+    AppMethodBeat.i(287830);
+    super.onNewIntent(paramIntent);
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_seek_to_start", false))) {
+      com.tencent.mm.plugin.music.logic.j.gnw().gnj().wH(0);
+    }
+    AppMethodBeat.o(287830);
+  }
+  
+  public final void onPause()
+  {
+    AppMethodBeat.i(287916);
+    this.Mgv = true;
+    MultiMediaEffectVideoLayout localMultiMediaEffectVideoLayout = this.Mci;
+    if (localMultiMediaEffectVideoLayout != null) {
+      localMultiMediaEffectVideoLayout.pause();
+    }
+    AppMethodBeat.o(287916);
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(287910);
+    if (this.Mgv)
+    {
+      MultiMediaEffectVideoLayout localMultiMediaEffectVideoLayout = this.Mci;
+      if (localMultiMediaEffectVideoLayout != null) {
+        localMultiMediaEffectVideoLayout.start();
+      }
+      this.Mgv = false;
+    }
+    AppMethodBeat.o(287910);
+  }
+  
+  public final void onStart()
+  {
+    AppMethodBeat.i(287923);
+    super.onStart();
+    MultiMediaEffectVideoLayout localMultiMediaEffectVideoLayout = this.Mci;
+    if (localMultiMediaEffectVideoLayout != null) {
+      localMultiMediaEffectVideoLayout.start();
+    }
+    AppMethodBeat.o(287923);
+  }
+  
+  public final void onStop()
+  {
+    AppMethodBeat.i(287927);
+    super.onStop();
+    MultiMediaEffectVideoLayout localMultiMediaEffectVideoLayout = this.Mci;
+    if (localMultiMediaEffectVideoLayout != null) {
+      localMultiMediaEffectVideoLayout.TGY.stop();
+    }
+    AppMethodBeat.o(287927);
+  }
+  
+  public final void sJ(long paramLong)
+  {
+    AppMethodBeat.i(287953);
+    Object localObject3 = (Iterable)kotlin.k.k.qt(0, this.vaX.size() - 1);
+    Object localObject1 = this.vaX;
+    Object localObject2 = (Collection)new ArrayList(p.a((Iterable)localObject3, 10));
+    localObject3 = ((Iterable)localObject3).iterator();
+    while (((Iterator)localObject3).hasNext()) {
+      ((Collection)localObject2).add((com.tencent.mm.plugin.thumbplayer.d.d)((LinkedList)localObject1).get(((kotlin.a.ah)localObject3).Zo()));
+    }
+    localObject1 = ((Iterable)localObject2).iterator();
+    for (long l = 0L; ((Iterator)localObject1).hasNext(); l = ((com.tencent.mm.plugin.thumbplayer.d.d)localObject2).TBN + l)
+    {
+      localObject2 = (com.tencent.mm.plugin.thumbplayer.d.d)((Iterator)localObject1).next();
+      ((com.tencent.mm.plugin.thumbplayer.d.d)localObject2).TBM = l;
+    }
+    localObject1 = (com.tencent.mm.plugin.thumbplayer.d.d)this.vaX.getLast();
+    ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBM = l;
+    ((com.tencent.mm.plugin.thumbplayer.d.d)localObject1).TBN = paramLong;
+    AppMethodBeat.o(287953);
+  }
+  
+  public final void sM(long paramLong)
+  {
+    AppMethodBeat.i(287902);
+    Log.i(this.TAG, s.X("seekToTime: ", Long.valueOf(paramLong)));
+    MultiMediaEffectVideoLayout localMultiMediaEffectVideoLayout = this.Mci;
+    if (localMultiMediaEffectVideoLayout != null) {
+      localMultiMediaEffectVideoLayout.seekTo(paramLong);
+    }
+    AppMethodBeat.o(287902);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements kotlin.g.a.a<h<com.tencent.mm.plugin.mv.model.flex.a>>
-  {
-    b(n paramn)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "Lcom/tencent/mm/plugin/mv/model/flex/MusicMVFlexVideoLiveItem;", "invoke"})
-  public static final class c
-    extends q
-    implements kotlin.g.a.b<List<? extends com.tencent.mm.plugin.mv.model.flex.a>, x>
-  {
-    public c(n paramn, dav paramdav, com.tencent.mm.plugin.livebase.a.a parama, l paraml)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFlexEditUIC$buildItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-mv_release"})
-  public static final class d
-    implements com.tencent.mm.view.recyclerview.f
-  {
-    public final e<?> yx(int paramInt)
-    {
-      AppMethodBeat.i(243952);
-      e locale = (e)new com.tencent.mm.plugin.mv.model.flex.b((b.a)n.a(this.Gle));
-      AppMethodBeat.o(243952);
-      return locale;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFlexEditUIC$dataSource$2$1", "invoke", "()Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFlexEditUIC$dataSource$2$1;"})
-  static final class e
-    extends q
-    implements kotlin.g.a.a<1>
-  {
-    public static final e Gll;
-    
-    static
-    {
-      AppMethodBeat.i(231282);
-      Gll = new e();
-      AppMethodBeat.o(231282);
-    }
-    
-    e()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class f
-    extends q
-    implements kotlin.g.a.a<WxRecyclerView>
-  {
-    f(n paramn)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "Lcom/tencent/mm/plugin/mv/model/flex/MusicMVFlexVideoLiveItem;", "kotlin.jvm.PlatformType", "onChanged"})
-  public static final class g<T>
-    implements s<List<? extends com.tencent.mm.plugin.mv.model.flex.a>>
-  {
-    public g(n paramn) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/view/recyclerview/WxLinearLayoutManager;", "invoke"})
-  static final class h
-    extends q
-    implements kotlin.g.a.a<WxLinearLayoutManager>
-  {
-    h(n paramn)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFlexEditUIC$listener$1", "Lcom/tencent/mm/plugin/mv/model/flex/MusicMvFlexVideoItemConvert$IOnDelBtnClickedListener;", "onClicked", "", "pos", "", "item", "Lcom/tencent/mm/plugin/mv/model/flex/MusicMVFlexVideoLiveItem;", "plugin-mv_release"})
-  public static final class i
-    implements b.a
-  {
-    public final void a(int paramInt, com.tencent.mm.plugin.mv.model.flex.a parama)
-    {
-      AppMethodBeat.i(230063);
-      p.k(parama, "item");
-      Log.i("MicroMsg.Mv.MusicMvMakerFlexEditUIC", "OnDelBtnClicked, pos:" + paramInt + ", type:" + parama.type);
-      b.a locala = this.Gle.Gla;
-      if (locala != null) {
-        locala.a(paramInt, parama);
-      }
-      this.Gle.fhj().d((com.tencent.mm.plugin.livelist.b)parama);
-      this.Gle.fhj().fgm();
-      AppMethodBeat.o(230063);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/mv/model/flex/MusicMvFlexLiveList;", "invoke"})
-  static final class j
-    extends q
-    implements kotlin.g.a.a<MusicMvFlexLiveList>
-  {
-    j(n paramn, AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-  static final class k
-    extends kotlin.d.b.a.j
-    implements m<ak, kotlin.d.d<? super x>, Object>
+    extends kotlin.d.b.a.k
+    implements m<aq, kotlin.d.d<? super kotlin.ah>, Object>
   {
     int label;
-    private ak p$;
     
-    k(n paramn, Intent paramIntent, int paramInt, kotlin.d.d paramd)
+    b(n paramn, FrameLayout paramFrameLayout, com.tencent.mm.plugin.thumbplayer.view.d paramd, kotlin.d.d<? super b> paramd1)
     {
-      super(paramd);
+      super(paramd1);
     }
     
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+    public final kotlin.d.d<kotlin.ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(236811);
-      p.k(paramd, "completion");
-      paramd = new k(this.Gle, paramIntent, paramInt2, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(236811);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(236813);
-      paramObject1 = ((k)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(236813);
-      return paramObject1;
+      AppMethodBeat.i(287985);
+      paramObject = (kotlin.d.d)new b(this.Mgw, localFrameLayout, paramd, paramd);
+      AppMethodBeat.o(287985);
+      return paramObject;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(236809);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+      AppMethodBeat.i(287980);
+      Object localObject2 = kotlin.d.a.a.aiwj;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(236809);
+        AppMethodBeat.o(287980);
         throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = (f)bg.kCi();
+        localObject1 = (m)new n.b.d(this.Mgw, null);
+        localObject3 = (kotlin.d.d)this;
+        this.label = 1;
+        localObject1 = l.a(paramObject, (m)localObject1, (kotlin.d.d)localObject3);
+        paramObject = localObject1;
+        if (localObject1 == localObject2)
+        {
+          AppMethodBeat.o(287980);
+          return localObject2;
+        }
+        break;
+      case 1: 
+        ResultKt.throwOnFailure(paramObject);
       }
-      ResultKt.throwOnFailure(paramObject);
-      n.a(this.Gle, paramIntent, paramInt2);
-      paramObject = x.aazN;
-      AppMethodBeat.o(236809);
+      Object localObject3 = (LinkedList)paramObject;
+      Log.i(this.Mgw.TAG, s.X("init mediaInfoList:", Integer.valueOf(((LinkedList)localObject3).size())));
+      if (((LinkedList)localObject3).isEmpty())
+      {
+        paramObject = kotlin.ah.aiuX;
+        AppMethodBeat.o(287980);
+        return paramObject;
+      }
+      localFrameLayout.setAlpha(0.0F);
+      paramObject = new MultiMediaEffectVideoLayout((Context)this.Mgw.getActivity());
+      Object localObject4 = paramd;
+      Object localObject1 = localFrameLayout;
+      localObject2 = this.Mgw;
+      paramObject.setId(b.e.music_video_layout);
+      paramObject.setMediaChangeListener((com.tencent.mm.plugin.thumbplayer.view.d)localObject4);
+      paramObject.setMvMusicProxy((com.tencent.mm.plugin.thumbplayer.view.b)new a());
+      localObject4 = new FrameLayout.LayoutParams(-1, -1);
+      ((FrameLayout)localObject1).removeAllViews();
+      ((FrameLayout)localObject1).addView((View)paramObject, (ViewGroup.LayoutParams)localObject4);
+      paramObject.setMute(true);
+      paramObject.setLoop(true);
+      localObject4 = (Iterable)localObject3;
+      localObject3 = (Collection)new ArrayList();
+      localObject4 = ((Iterable)localObject4).iterator();
+      label357:
+      while (((Iterator)localObject4).hasNext())
+      {
+        Object localObject5 = ((Iterator)localObject4).next();
+        if (((com.tencent.mm.plugin.thumbplayer.d.d)localObject5).TBN > 0L) {}
+        for (int i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label357;
+          }
+          ((Collection)localObject3).add(localObject5);
+          break;
+        }
+      }
+      paramObject.setMediaList((List)localObject3);
+      Log.i(paramObject.TAG, "startIgnoreMusicPosition");
+      paramObject.TGY.start();
+      paramObject.TGZ = -1L;
+      n.a((n)localObject2);
+      paramObject.setOnProgressCallback((m)new n.b.b((n)localObject2));
+      paramObject.setFirstFrameRenderCallback((kotlin.g.a.a)new n.b.c((FrameLayout)localObject1));
+      paramObject.setKeepScreenOn(true);
+      ((n)localObject2).Mci = paramObject;
+      paramObject = kotlin.ah.aiuX;
+      AppMethodBeat.o(287980);
       return paramObject;
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "liveList", "", "Lcom/tencent/mm/plugin/mv/model/flex/MusicMVFlexVideoLiveItem;", "invoke"})
-  static final class l
-    extends q
-    implements kotlin.g.a.b<List<? extends com.tencent.mm.plugin.mv.model.flex.a>, x>
-  {
-    l(n paramn, l paraml)
-    {
-      super();
-    }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFlexEditUIC$onBackPressed$1$2$2"})
-    static final class a
-      extends q
-      implements kotlin.g.a.a<x>
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/uic/MusicMvPreviewBgUIC$initBgVideo$1$1$1", "Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "getCurrentPosition", "", "getTotalDuration", "seekMusic", "", "position", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class a
+      implements com.tencent.mm.plugin.thumbplayer.view.b
     {
-      a(dbo paramdbo, n.l paraml, List paramList, LinkedList paramLinkedList, HashMap paramHashMap)
+      public final void aea(int paramInt)
       {
-        super();
+        AppMethodBeat.i(287996);
+        com.tencent.mm.plugin.music.logic.j.gnw().gnj().wH(paramInt);
+        AppMethodBeat.o(287996);
+      }
+      
+      public final long getCurrentPosition()
+      {
+        AppMethodBeat.i(287988);
+        long l = com.tencent.mm.plugin.music.logic.j.gnw().gnj().gmA();
+        AppMethodBeat.o(287988);
+        return l;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.uic.n
  * JD-Core Version:    0.7.0.1
  */

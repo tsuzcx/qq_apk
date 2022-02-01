@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.multitask.a;
 
 import android.view.MotionEvent;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter$IMultiTaskSwipeBackListener;", "", "canInterceptTouchEvent", "", "enableSwipeBack", "getSwipeBackTouchState", "", "onDispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "onEdgeDragStarted", "edgeFlags", "pointerId", "onPositionChange", "scrollPercent", "", "onSwipeReleased", "willSwipeBack", "shouldInterceptTouchEvent", "ev", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter$IMultiTaskSwipeBackListener;", "", "canInterceptTouchEvent", "", "enableSwipeBack", "getSwipeBackTouchState", "", "onDispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "onEdgeDragStarted", "edgeFlags", "pointerId", "onPositionChange", "scrollPercent", "", "onSwipeReleased", "willSwipeBack", "shouldInterceptTouchEvent", "ev", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a$a
 {
-  public abstract void XV(int paramInt);
+  public abstract void aci(int paramInt);
   
-  public abstract void by(float paramFloat);
+  public abstract void cC(float paramFloat);
   
-  public abstract boolean fat();
+  public abstract boolean gjA();
   
-  public abstract int fau();
+  public abstract boolean gjy();
   
-  public abstract boolean fav();
+  public abstract int gjz();
   
   public abstract boolean i(MotionEvent paramMotionEvent);
   
   public abstract void n(MotionEvent paramMotionEvent);
   
-  public abstract int vm(boolean paramBoolean);
+  public abstract int zE(boolean paramBoolean);
 }
 
 

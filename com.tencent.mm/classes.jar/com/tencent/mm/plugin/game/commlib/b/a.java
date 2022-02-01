@@ -1,45 +1,40 @@
 package com.tencent.mm.plugin.game.commlib.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.fk;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.storagebase.h;
+import com.tencent.wcdb.database.SQLiteStatement;
+import java.util.Iterator;
 
-public final class a
-  extends fk
+public abstract class a<T>
+  extends d
 {
-  protected static IAutoDBItem.MAutoDBInfo info;
-  
-  static
+  public a(h paramh)
   {
-    AppMethodBeat.i(89949);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[2];
-    localMAutoDBInfo.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "key";
-    localMAutoDBInfo.colsMap.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "key";
-    localMAutoDBInfo.columns[1] = "value";
-    localMAutoDBInfo.colsMap.put("value", "BLOB");
-    localStringBuilder.append(" value BLOB");
-    localMAutoDBInfo.columns[2] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    AppMethodBeat.o(89949);
+    super(paramh);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  protected abstract void a(SQLiteStatement paramSQLiteStatement, T paramT);
+  
+  public final void b(Iterable<? extends T> paramIterable)
   {
-    return info;
+    SQLiteStatement localSQLiteStatement = fEe();
+    try
+    {
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
+      {
+        a(localSQLiteStatement, paramIterable.next());
+        localSQLiteStatement.executeInsert();
+      }
+    }
+    finally
+    {
+      a(localSQLiteStatement);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.b.a
  * JD-Core Version:    0.7.0.1
  */

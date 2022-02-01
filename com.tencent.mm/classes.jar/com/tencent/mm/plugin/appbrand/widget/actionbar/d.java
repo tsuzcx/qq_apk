@@ -2,22 +2,23 @@ package com.tencent.mm.plugin.appbrand.widget.actionbar;
 
 import android.content.Context;
 import android.content.MutableContextWrapper;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.h.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.statusbar.b;
 
 public class d
   extends b
-  implements h.b
+  implements i.b
 {
-  private boolean qqK = true;
-  private boolean roP = false;
-  private int roQ;
-  private Integer roR = null;
-  private int rou = 0;
+  private boolean tvn = true;
+  private int uyB = 0;
+  private boolean uyV = false;
+  private int uyW;
+  private Integer uyX = null;
   
   public d(Context paramContext)
   {
@@ -26,64 +27,50 @@ public class d
   
   private f getActionBar()
   {
-    AppMethodBeat.i(245754);
+    AppMethodBeat.i(324154);
     if (getChildCount() <= 0)
     {
-      AppMethodBeat.o(245754);
+      AppMethodBeat.o(324154);
       return null;
     }
     f localf = (f)getChildAt(0);
-    AppMethodBeat.o(245754);
+    AppMethodBeat.o(324154);
     return localf;
   }
   
-  public final void BF(int paramInt)
-  {
-    AppMethodBeat.i(135456);
-    Log.i("Luggage.WXA.AppBrandActionBarContainer", "onStatusBarHeightChange: newHeight = ".concat(String.valueOf(paramInt)));
-    if (this.roR != null)
-    {
-      paramInt = this.roR.intValue();
-      this.roQ = paramInt;
-      super.BF(paramInt);
-      AppMethodBeat.o(135456);
-      return;
-    }
-    this.roQ = paramInt;
-    if (hXU())
-    {
-      AppMethodBeat.o(135456);
-      return;
-    }
-    super.BF(paramInt);
-    AppMethodBeat.o(135456);
-  }
-  
-  public final void T(int paramInt, boolean paramBoolean)
+  public final void aj(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(135452);
-    this.rou = paramInt;
-    this.roP = paramBoolean;
-    if (!this.qqK)
+    this.uyB = paramInt;
+    this.uyV = paramBoolean;
+    if (!this.tvn)
     {
-      super.o(paramInt, paramBoolean, false);
+      super.u(paramInt, paramBoolean, false);
       AppMethodBeat.o(135452);
       return;
     }
-    super.o(paramInt, paramBoolean, true);
+    super.u(paramInt, paramBoolean, true);
     AppMethodBeat.o(135452);
   }
   
-  public final void aD(Context paramContext)
+  public final void bm(Context paramContext)
   {
     AppMethodBeat.i(135458);
     if ((getContext() instanceof MutableContextWrapper)) {
       ((MutableContextWrapper)getContext()).setBaseContext(paramContext);
     }
-    if (this.roR != null) {
-      BF(0);
+    if (this.uyX != null) {
+      onStatusBarHeightChange(0);
     }
     AppMethodBeat.o(135458);
+  }
+  
+  public final void cOY()
+  {
+    AppMethodBeat.i(135453);
+    Log.d("Luggage.WXA.AppBrandActionBarContainer", "resetStatusBarForegroundStyle hash[%d] color[%d] foregroundDark[%b] mActuallyVisible[%b] isLayoutFrozen[%b]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.uyB), Boolean.valueOf(this.uyV), Boolean.valueOf(this.tvn), Boolean.valueOf(jCE()) });
+    aj(this.uyB, this.uyV);
+    AppMethodBeat.o(135453);
   }
   
   protected boolean canAnimate()
@@ -91,22 +78,14 @@ public class d
     return false;
   }
   
-  public final void cnf()
-  {
-    AppMethodBeat.i(135453);
-    Log.d("Luggage.WXA.AppBrandActionBarContainer", "resetStatusBarForegroundStyle hash[%d] color[%d] foregroundDark[%b] mActuallyVisible[%b] isLayoutFrozen[%b]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.rou), Boolean.valueOf(this.roP), Boolean.valueOf(this.qqK), Boolean.valueOf(hXU()) });
-    T(this.rou, this.roP);
-    AppMethodBeat.o(135453);
-  }
-  
   public void dispatchSystemUiVisibilityChanged(int paramInt)
   {
     AppMethodBeat.i(135449);
     super.dispatchSystemUiVisibilityChanged(paramInt);
-    if ((this.qqK) && (w.al(this)) && (XMo) && ((getWindowSystemUiVisibility() & 0x4) == 0))
+    if ((this.tvn) && (z.ay(this)) && (afCC) && ((getWindowSystemUiVisibility() & 0x4) == 0))
     {
       Log.d("Luggage.WXA.AppBrandActionBarContainer", "dispatchSystemUiVisibilityChanged resetStatusBarForegroundStyle, hash[%d]", new Object[] { Integer.valueOf(hashCode()) });
-      cnf();
+      cOY();
     }
     AppMethodBeat.o(135449);
   }
@@ -116,11 +95,33 @@ public class d
     return false;
   }
   
-  public final void onBackground()
+  public void onBackground()
   {
-    AppMethodBeat.i(245765);
+    AppMethodBeat.i(324194);
     setActuallyVisible(false);
-    AppMethodBeat.o(245765);
+    AppMethodBeat.o(324194);
+  }
+  
+  public void onStatusBarHeightChange(int paramInt)
+  {
+    AppMethodBeat.i(135456);
+    Log.i("Luggage.WXA.AppBrandActionBarContainer", "onStatusBarHeightChange: newHeight = ".concat(String.valueOf(paramInt)));
+    if (this.uyX != null)
+    {
+      paramInt = this.uyX.intValue();
+      this.uyW = paramInt;
+      super.onStatusBarHeightChange(paramInt);
+      AppMethodBeat.o(135456);
+      return;
+    }
+    this.uyW = paramInt;
+    if (jCE())
+    {
+      AppMethodBeat.o(135456);
+      return;
+    }
+    super.onStatusBarHeightChange(paramInt);
+    AppMethodBeat.o(135456);
   }
   
   public void onViewAdded(View paramView)
@@ -133,21 +134,21 @@ public class d
       AppMethodBeat.o(135447);
       throw paramView;
     }
-    paramView.setBackground(new d.a(this));
+    paramView.setBackground(new a());
     AppMethodBeat.o(135447);
   }
   
   public void setActuallyVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(135454);
-    if (paramBoolean != this.qqK) {}
+    if (paramBoolean != this.tvn) {}
     for (int i = 1;; i = 0)
     {
-      this.qqK = paramBoolean;
+      this.tvn = paramBoolean;
       if ((i != 0) && (paramBoolean))
       {
         setDeferStatusBarHeightChange(false);
-        cnf();
+        cOY();
         setWillNotDraw(false);
       }
       if ((i != 0) && (!paramBoolean)) {
@@ -168,14 +169,14 @@ public class d
   public void setForceTopInsetsHeight(int paramInt)
   {
     AppMethodBeat.i(135457);
-    this.roR = Integer.valueOf(paramInt);
+    this.uyX = Integer.valueOf(paramInt);
     AppMethodBeat.o(135457);
   }
   
   public void setStatusBarColor(int paramInt)
   {
     AppMethodBeat.i(135451);
-    T(paramInt, this.roP);
+    aj(paramInt, this.uyV);
     AppMethodBeat.o(135451);
   }
   
@@ -187,13 +188,45 @@ public class d
       AppMethodBeat.o(135450);
       return;
     }
-    T(getActionBar().getBackgroundColor(), paramBoolean);
+    aj(getActionBar().getBackgroundColor(), paramBoolean);
     AppMethodBeat.o(135450);
+  }
+  
+  final class a
+    extends ColorDrawable
+  {
+    a()
+    {
+      super();
+    }
+    
+    private void cOZ()
+    {
+      AppMethodBeat.i(135446);
+      d.this.setStatusBarColor(getColor());
+      AppMethodBeat.o(135446);
+    }
+    
+    public final void setAlpha(int paramInt)
+    {
+      AppMethodBeat.i(135445);
+      super.setAlpha(paramInt);
+      cOZ();
+      AppMethodBeat.o(135445);
+    }
+    
+    public final void setColor(int paramInt)
+    {
+      AppMethodBeat.i(135444);
+      super.setColor(paramInt);
+      cOZ();
+      AppMethodBeat.o(135444);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.d
  * JD-Core Version:    0.7.0.1
  */

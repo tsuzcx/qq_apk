@@ -1,64 +1,63 @@
 package com.tencent.luggage.game.e;
 
-import android.util.SparseIntArray;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.luggage.a.e;
 import com.tencent.magicbrush.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.k;
 import com.tencent.mm.plugin.appbrand.k.c;
 import com.tencent.mm.plugin.appbrand.k.d;
-import com.tencent.mm.plugin.appbrand.w.b;
+import com.tencent.mm.plugin.appbrand.x.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class a
 {
-  private static a cwk;
+  private static a eoj;
   public String appId;
-  public ArrayList<String> csC;
-  public int csG;
-  private int cwb;
-  public long cwc;
-  public long cwd;
-  boolean cwe;
-  public d cwf;
-  public int cwg;
-  private float cwh;
-  public CopyOnWriteArrayList<Long> cwi;
-  private final a cwj;
-  public k.c cwl;
+  public int ekA;
+  public ArrayList<String> ekw;
+  private int enZ;
+  public long eoa;
+  public long eob;
+  boolean eoc;
+  public d eod;
+  public int eoe;
+  private float eog;
+  public CopyOnWriteArrayList<Long> eoh;
+  private final a.a eoi;
+  public k.c eok;
   
   public a()
   {
     AppMethodBeat.i(130697);
-    this.cwb = 0;
-    this.cwc = 0L;
-    this.cwd = 0L;
+    this.enZ = 0;
+    this.eoa = 0L;
+    this.eob = 0L;
     this.appId = "";
-    this.cwe = false;
-    this.cwg = -1;
-    this.cwh = -1.0F;
-    this.csG = 1004;
-    this.cwi = new CopyOnWriteArrayList();
-    this.cwj = new a((byte)0);
-    this.cwl = new k.c()
+    this.eoc = false;
+    this.eoe = -1;
+    this.eog = -1.0F;
+    this.ekA = 1004;
+    this.eoh = new CopyOnWriteArrayList();
+    this.eoi = new a.a((byte)0);
+    this.eok = new k.c()
     {
       public final void a(k.d paramAnonymousd)
       {
         AppMethodBeat.i(130691);
         Log.i("MicroMsg.MBNiReporter", "hy: onPause");
         paramAnonymousd = a.this;
-        if (paramAnonymousd.cwe)
+        if (paramAnonymousd.eoc)
         {
           Log.i("MicroMsg.MBNiReporter", "hy: hasReported!");
           AppMethodBeat.o(130691);
           return;
         }
-        h.ZvG.be(new a.5(paramAnonymousd));
+        h.ahAA.bm(new a.5(paramAnonymousd));
         AppMethodBeat.o(130691);
       }
       
@@ -76,7 +75,7 @@ public class a
         Log.i("MicroMsg.MBNiReporter", "hy: onDestroy");
         a locala = a.this;
         Log.i("MicroMsg.MBNiReporter", "hy: release!");
-        k.b(locala.appId, locala.cwl);
+        k.b(locala.appId, locala.eok);
         AppMethodBeat.o(130692);
       }
       
@@ -90,16 +89,16 @@ public class a
     AppMethodBeat.o(130697);
   }
   
-  public static a Qf()
+  public static a aqp()
   {
     AppMethodBeat.i(130698);
-    if (cwk == null) {}
+    if (eoj == null) {}
     try
     {
-      if (cwk == null) {
-        cwk = new a();
+      if (eoj == null) {
+        eoj = new a();
       }
-      a locala = cwk;
+      a locala = eoj;
       AppMethodBeat.o(130698);
       return locala;
     }
@@ -109,43 +108,27 @@ public class a
     }
   }
   
-  static final class a
-    extends SparseIntArray
-  {
-    final boolean iM(int paramInt)
-    {
-      AppMethodBeat.i(130696);
-      if (super.indexOfKey(paramInt) >= 0)
-      {
-        AppMethodBeat.o(130696);
-        return true;
-      }
-      AppMethodBeat.o(130696);
-      return false;
-    }
-  }
-  
   final class b
   {
-    int cwo;
-    long cwp;
-    double cwq;
+    int eon;
+    long eoo;
+    double eop;
     
     b() {}
   }
   
   final class c
   {
-    int cwo;
-    long cwp;
-    double cwq;
+    int eon;
+    long eoo;
+    double eop;
     
     c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.e.a
  * JD-Core Version:    0.7.0.1
  */

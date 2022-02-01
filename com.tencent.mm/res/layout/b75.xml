@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/iua" android:layout_width="fill_parent" android:layout_height="fill_parent" android:soundEffectsEnabled="false" />
-    <FrameLayout android:layout_gravity="bottom" android:id="@id/fdk" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:layout_gravity="right" android:id="@id/fdm" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/d6">
+        <TextView android:textSize="14.0dip" android:textColor="@color/a1o" android:gravity="center" android:id="@id/fsg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="bottom" android:id="@id/c7o" android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

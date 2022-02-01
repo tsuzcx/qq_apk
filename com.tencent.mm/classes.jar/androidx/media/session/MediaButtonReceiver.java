@@ -22,9 +22,9 @@ import java.util.List;
 public class MediaButtonReceiver
   extends BroadcastReceiver
 {
-  private static ComponentName g(Context paramContext, String paramString)
+  private static ComponentName j(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(242868);
+    AppMethodBeat.i(193089);
     PackageManager localPackageManager = paramContext.getPackageManager();
     Intent localIntent = new Intent(paramString);
     localIntent.setPackage(paramContext.getPackageName());
@@ -33,64 +33,64 @@ public class MediaButtonReceiver
     {
       paramContext = (ResolveInfo)paramContext.get(0);
       paramContext = new ComponentName(paramContext.serviceInfo.packageName, paramContext.serviceInfo.name);
-      AppMethodBeat.o(242868);
+      AppMethodBeat.o(193089);
       return paramContext;
     }
     if (paramContext.isEmpty())
     {
-      AppMethodBeat.o(242868);
+      AppMethodBeat.o(193089);
       return null;
     }
     paramContext = new IllegalStateException("Expected 1 service that handles " + paramString + ", found " + paramContext.size());
-    AppMethodBeat.o(242868);
+    AppMethodBeat.o(193089);
     throw paramContext;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(242865);
+    AppMethodBeat.i(193102);
     if ((paramIntent == null) || (!"android.intent.action.MEDIA_BUTTON".equals(paramIntent.getAction())) || (!paramIntent.hasExtra("android.intent.extra.KEY_EVENT")))
     {
       new StringBuilder("Ignore unsupported intent: ").append(paramIntent);
-      AppMethodBeat.o(242865);
+      AppMethodBeat.o(193102);
       return;
     }
-    ComponentName localComponentName = g(paramContext, "android.intent.action.MEDIA_BUTTON");
+    ComponentName localComponentName = j(paramContext, "android.intent.action.MEDIA_BUTTON");
     if (localComponentName != null)
     {
       paramIntent.setComponent(localComponentName);
       if (Build.VERSION.SDK_INT >= 26)
       {
         paramContext.startForegroundService(paramIntent);
-        AppMethodBeat.o(242865);
+        AppMethodBeat.o(193102);
         return;
       }
       paramContext.startService(paramIntent);
-      AppMethodBeat.o(242865);
+      AppMethodBeat.o(193102);
       return;
     }
-    localComponentName = g(paramContext, "android.media.browse.MediaBrowserService");
+    localComponentName = j(paramContext, "android.media.browse.MediaBrowserService");
     if (localComponentName != null)
     {
       BroadcastReceiver.PendingResult localPendingResult = goAsync();
       paramContext = paramContext.getApplicationContext();
       paramIntent = new a(paramContext, paramIntent, localPendingResult);
       paramContext = new MediaBrowserCompat(paramContext, localComponentName, paramIntent);
-      paramIntent.acz = paramContext;
+      paramIntent.bKi = paramContext;
       paramContext.cp.connect();
-      AppMethodBeat.o(242865);
+      AppMethodBeat.o(193102);
       return;
     }
     paramContext = new IllegalStateException("Could not find any Service that handles android.intent.action.MEDIA_BUTTON or implements a media browser service.");
-    AppMethodBeat.o(242865);
+    AppMethodBeat.o(193102);
     throw paramContext;
   }
   
   static final class a
     extends MediaBrowserCompat.b
   {
-    private final BroadcastReceiver.PendingResult acy;
-    MediaBrowserCompat acz;
+    private final BroadcastReceiver.PendingResult bKh;
+    MediaBrowserCompat bKi;
     private final Context mContext;
     private final Intent mIntent;
     
@@ -98,29 +98,29 @@ public class MediaButtonReceiver
     {
       this.mContext = paramContext;
       this.mIntent = paramIntent;
-      this.acy = paramPendingResult;
+      this.bKh = paramPendingResult;
     }
     
     private void finish()
     {
-      AppMethodBeat.i(242853);
-      this.acz.disconnect();
-      this.acy.finish();
-      AppMethodBeat.o(242853);
+      AppMethodBeat.i(193074);
+      this.bKi.disconnect();
+      this.bKh.finish();
+      AppMethodBeat.o(193074);
     }
     
     public final void onConnected()
     {
-      AppMethodBeat.i(242849);
+      AppMethodBeat.i(193082);
       KeyEvent localKeyEvent;
       try
       {
-        Object localObject = new MediaControllerCompat(this.mContext, this.acz.cp.W());
+        Object localObject = new MediaControllerCompat(this.mContext, this.bKi.cp.aO());
         localKeyEvent = (KeyEvent)this.mIntent.getParcelableExtra("android.intent.extra.KEY_EVENT");
         if (localKeyEvent == null)
         {
           localObject = new IllegalArgumentException("KeyEvent may not be null");
-          AppMethodBeat.o(242849);
+          AppMethodBeat.o(193082);
           throw ((Throwable)localObject);
         }
       }
@@ -128,7 +128,7 @@ public class MediaButtonReceiver
       for (;;)
       {
         finish();
-        AppMethodBeat.o(242849);
+        AppMethodBeat.o(193082);
         return;
         localRemoteException.dp.b(localKeyEvent);
       }
@@ -136,22 +136,22 @@ public class MediaButtonReceiver
     
     public final void onConnectionFailed()
     {
-      AppMethodBeat.i(242851);
+      AppMethodBeat.i(193098);
       finish();
-      AppMethodBeat.o(242851);
+      AppMethodBeat.o(193098);
     }
     
     public final void onConnectionSuspended()
     {
-      AppMethodBeat.i(242850);
+      AppMethodBeat.i(193091);
       finish();
-      AppMethodBeat.o(242850);
+      AppMethodBeat.o(193091);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.media.session.MediaButtonReceiver
  * JD-Core Version:    0.7.0.1
  */

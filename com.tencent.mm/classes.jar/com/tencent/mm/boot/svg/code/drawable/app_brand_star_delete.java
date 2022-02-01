@@ -44,7 +44,7 @@ public class app_brand_star_delete
       ((Paint)localObject).setPathEffect(null);
       c.instancePaint((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
       localPaint = c.instancePaint(localPaint, paramVarArgs);
-      localPaint.setColor(-772816);
+      localPaint.setColor(-372399);
       localCanvas.save();
       localPaint = c.instancePaint(localPaint, paramVarArgs);
       localObject = c.instancePath(paramVarArgs);
@@ -73,7 +73,7 @@ public class app_brand_star_delete
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.app_brand_star_delete
  * JD-Core Version:    0.7.0.1
  */

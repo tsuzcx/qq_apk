@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
@@ -38,7 +37,7 @@ public class ShortCutPermissionDetailUI
     {
       String str = localIntent.getStringExtra("extra_app_id");
       int i = localIntent.getIntExtra("extra_permission_and_jump_status", 0);
-      h.IzE.a(15786, new Object[] { Long.valueOf(System.currentTimeMillis() - this.mStartTime), Integer.valueOf(i), Integer.valueOf(0), str });
+      h.OAn.b(15786, new Object[] { Long.valueOf(System.currentTimeMillis() - this.mStartTime), Integer.valueOf(i), Integer.valueOf(0), str });
     }
     this.mStartTime = 0L;
     AppMethodBeat.o(21151);

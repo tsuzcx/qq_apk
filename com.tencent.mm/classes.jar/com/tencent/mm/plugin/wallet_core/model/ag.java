@@ -1,264 +1,149 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.model.cl.a;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.dl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.wallet_core.ui.i;
+import com.tencent.mm.wallet_core.ui.i.a;
+import com.tencent.mm.wallet_core.ui.i.c;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
 
 public final class ag
 {
-  public static ArrayList<Bankcard> Cc(boolean paramBoolean)
+  private static ag VJC = null;
+  static ArrayList<l> zTV = null;
+  cl.a wXR;
+  
+  private ag()
   {
-    AppMethodBeat.i(70433);
-    Log.i("MicroMsg.WalletPayOrderMgr", "sort bankcard isPos: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (paramBoolean) {}
-    for (ArrayList localArrayList1 = u.gJo().gKo();; localArrayList1 = u.gJo().Ce(true))
+    AppMethodBeat.i(70439);
+    this.wXR = new cl.a()
     {
-      localObject = u.gJo().gKl();
-      if (localObject != null) {
-        break;
-      }
-      Log.w("MicroMsg.WalletPayOrderMgr", "empty bankinfo list");
-      AppMethodBeat.o(70433);
-      return localArrayList1;
-    }
-    ArrayList localArrayList2 = new ArrayList();
-    Object localObject = ((List)localObject).iterator();
-    for (;;)
-    {
-      if (!((Iterator)localObject).hasNext()) {
-        break label166;
-      }
-      c localc = (c)((Iterator)localObject).next();
-      Iterator localIterator = localArrayList1.iterator();
-      if (localIterator.hasNext())
+      public final void a(g.a paramAnonymousa)
       {
-        Bankcard localBankcard = (Bankcard)localIterator.next();
-        if (!localBankcard.field_bindSerial.equals(localc.GGC)) {
-          break;
+        AppMethodBeat.i(70436);
+        paramAnonymousa = w.a(paramAnonymousa.mpN.YFG);
+        Log.d("MicroMsg.WalletPushNotifyManager", "PayMsg:".concat(String.valueOf(paramAnonymousa)));
+        Map localMap = XmlParser.parseXml(paramAnonymousa, "sysmsg", null);
+        int i = Util.getInt((String)localMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+        Object[] arrayOfObject = new Object[1];
+        if (!ag.a(ag.this, i, localMap, paramAnonymousa, arrayOfObject)) {
+          ag.a(i, localMap, arrayOfObject);
         }
-        localArrayList1.remove(localBankcard);
-        localArrayList2.add(localBankcard);
+        AppMethodBeat.o(70436);
       }
-    }
-    label166:
-    if (!localArrayList1.isEmpty())
-    {
-      Log.w("MicroMsg.WalletPayOrderMgr", "has unsort bankcard");
-      localArrayList2.addAll(localArrayList1);
-    }
-    AppMethodBeat.o(70433);
-    return localArrayList2;
+      
+      public final void a(g.c paramAnonymousc) {}
+    };
+    AppMethodBeat.o(70439);
   }
   
-  public static Bankcard Cd(boolean paramBoolean)
+  private boolean a(int paramInt, final Map<String, String> paramMap, String paramString, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(270446);
-    u.gJo();
-    Object localObject = ao.gKw();
-    Log.i("MicroMsg.WalletPayOrderMgr", " defaultLocalOfflineBankcard：%s，needJudgeDefaultCardState：%s", new Object[] { localObject, Boolean.valueOf(paramBoolean) });
-    ArrayList localArrayList = u.gJo().gKn();
-    if (localArrayList == null) {
-      localArrayList = u.gJo().Ce(true);
-    }
-    for (;;)
+    AppMethodBeat.i(70441);
+    if (paramMap == null)
     {
-      Log.i("MicroMsg.WalletPayOrderMgr", "way1：getLastBankcard");
-      int i = 0;
-      boolean bool;
-      while ((!TextUtils.isEmpty((CharSequence)localObject)) && (localArrayList != null) && (i < localArrayList.size()))
-      {
-        Bankcard localBankcard = (Bankcard)localArrayList.get(i);
-        if (localBankcard != null) {
-          Log.i("MicroMsg.WalletPayOrderMgr", "compared bankcard: %s status：%s", new Object[] { localBankcard.field_bindSerial, Integer.valueOf(localBankcard.field_defaultCardState) });
-        }
-        if ((localBankcard != null) && (((String)localObject).equals(localBankcard.field_bindSerial)))
-        {
-          Log.i("MicroMsg.WalletPayOrderMgr", "find bindSerial:%s，micropay: %s, forbidword: %s，defaultCardState：%s", new Object[] { localBankcard.field_bindSerial, Boolean.valueOf(localBankcard.field_support_micropay), localBankcard.field_forbidWord, Integer.valueOf(localBankcard.field_defaultCardState) });
-          bool = g(localBankcard);
-          if (localBankcard.field_support_micropay) {
-            if (paramBoolean)
-            {
-              if (bool)
-              {
-                Log.i("MicroMsg.WalletPayOrderMgr", " final get LastBankcard（needJudgeDefaultCardState）");
-                AppMethodBeat.o(270446);
-                return localBankcard;
-              }
-            }
-            else
-            {
-              Log.i("MicroMsg.WalletPayOrderMgr", " final get LastBankcard");
-              AppMethodBeat.o(270446);
-              return localBankcard;
-            }
-          }
-        }
-        i += 1;
-      }
-      Log.i("MicroMsg.WalletPayOrderMgr", "clear default bindserial");
-      u.gJo();
-      ao.bgZ("");
-      Log.i("MicroMsg.WalletPayOrderMgr", "way2：mainBankcard");
-      u.gJo();
-      localObject = ao.gKC();
-      if ((localObject != null) && (Util.isNullOrNil(((Bankcard)localObject).field_forbidWord)))
-      {
-        Log.i("MicroMsg.WalletPayOrderMgr", "mainBankcard bindSerial：%s, type：%s，defaultCardState：%s", new Object[] { ((Bankcard)localObject).field_bindSerial, ((Bankcard)localObject).field_bankcardType, Integer.valueOf(((Bankcard)localObject).field_defaultCardState) });
-        bool = g((Bankcard)localObject);
-        if (paramBoolean)
-        {
-          if (bool)
-          {
-            Log.i("MicroMsg.WalletPayOrderMgr", " final get mainBankcard（needJudgeDefaultCardState）");
-            AppMethodBeat.o(270446);
-            return localObject;
-          }
-        }
-        else
-        {
-          Log.i("MicroMsg.WalletPayOrderMgr", "final get mainBankcard");
-          AppMethodBeat.o(270446);
-          return localObject;
-        }
-      }
-      Log.i("MicroMsg.WalletPayOrderMgr", "way3：get balance");
-      localObject = u.gJo().OnP;
-      if ((localObject != null) && (((Bankcard)localObject).field_support_micropay))
-      {
-        Log.i("MicroMsg.WalletPayOrderMgr", "get balance：%s，type：%s，defaultCardState：%s", new Object[] { ((Bankcard)localObject).field_bindSerial, ((Bankcard)localObject).field_bankcardType, Integer.valueOf(((Bankcard)localObject).field_defaultCardState) });
-        bool = g((Bankcard)localObject);
-        if (paramBoolean)
-        {
-          if (bool)
-          {
-            Log.i("MicroMsg.WalletPayOrderMgr", " final get balance（needJudgeDefaultCardState）");
-            AppMethodBeat.o(270446);
-            return localObject;
-          }
-        }
-        else
-        {
-          Log.i("MicroMsg.WalletPayOrderMgr", " final get balance");
-          AppMethodBeat.o(270446);
-          return localObject;
-        }
-      }
-      Log.i("MicroMsg.WalletPayOrderMgr", "way4：get first card");
-      i = 0;
-      while ((localArrayList != null) && (i < localArrayList.size()))
-      {
-        localObject = (Bankcard)localArrayList.get(i);
-        if ((localObject != null) && (((Bankcard)localObject).field_support_micropay) && (!((Bankcard)localObject).gIH()))
-        {
-          Log.i("MicroMsg.WalletPayOrderMgr", "get first card:%s，type：%s，defaultCardState：%s", new Object[] { ((Bankcard)localObject).field_bindSerial, ((Bankcard)localObject).field_bankcardType, Integer.valueOf(((Bankcard)localObject).field_defaultCardState) });
-          bool = g((Bankcard)localObject);
-          if (paramBoolean)
-          {
-            if (bool)
-            {
-              Log.i("MicroMsg.WalletPayOrderMgr", " final get first card（needJudgeDefaultCardState）");
-              AppMethodBeat.o(270446);
-              return localObject;
-            }
-          }
-          else
-          {
-            Log.i("MicroMsg.WalletPayOrderMgr", " final get first card");
-            AppMethodBeat.o(270446);
-            return localObject;
-          }
-        }
-        i += 1;
-      }
-      Log.i("MicroMsg.WalletPayOrderMgr", "way5：get lqt ");
-      localObject = u.gJo().OUc;
-      if ((localObject != null) && (((Bankcard)localObject).field_support_micropay) && (Util.isNullOrNil(((Bankcard)localObject).field_forbidWord)))
-      {
-        Log.i("MicroMsg.WalletPayOrderMgr", " get lqt : %s，type：%s，defaultCardState：%s", new Object[] { Integer.valueOf(((Bankcard)localObject).field_defaultCardState), ((Bankcard)localObject).field_bankcardType, Integer.valueOf(((Bankcard)localObject).field_defaultCardState) });
-        bool = g((Bankcard)localObject);
-        if (paramBoolean)
-        {
-          if (bool)
-          {
-            Log.i("MicroMsg.WalletPayOrderMgr", " final get lqt（needJudgeDefaultCardState）");
-            AppMethodBeat.o(270446);
-            return localObject;
-          }
-        }
-        else
-        {
-          Log.i("MicroMsg.WalletPayOrderMgr", " final get lqt");
-          AppMethodBeat.o(270446);
-          return localObject;
-        }
-      }
-      if (paramBoolean)
-      {
-        Log.i("MicroMsg.WalletPayOrderMgr", "final way");
-        i = 0;
-        while ((localArrayList != null) && (i < localArrayList.size()))
-        {
-          localObject = (Bankcard)localArrayList.get(i);
-          if ((localObject != null) && (((Bankcard)localObject).field_support_micropay))
-          {
-            Log.i("MicroMsg.WalletPayOrderMgr", "final get card：%s，type：%s", new Object[] { ((Bankcard)localObject).field_bindSerial, ((Bankcard)localObject).field_bankcardType });
-            AppMethodBeat.o(270446);
-            return localObject;
-          }
-          i += 1;
-        }
-      }
-      Log.i("MicroMsg.WalletPayOrderMgr", " do not get any card");
-      AppMethodBeat.o(270446);
-      return null;
+      Log.w("MicroMsg.WalletPushNotifyManager", "hy: log is null. handle failed");
+      AppMethodBeat.o(70441);
+      return true;
     }
+    if (paramInt < 0)
+    {
+      Log.w("MicroMsg.WalletPushNotifyManager", "hy: paymsgtype error. maybe not found in xml");
+      AppMethodBeat.o(70441);
+      return true;
+    }
+    Log.i("MicroMsg.WalletPushNotifyManager", "handle paymsg type: %s", new Object[] { Integer.valueOf(paramInt) });
+    if (paramInt == 12)
+    {
+      final int i = Util.getInt((String)paramMap.get(".sysmsg.paymsg.avail_balance"), -1);
+      long l = Util.getLong((String)paramMap.get(".sysmsg.paymsg.balance_version"), -1L);
+      paramMap = new i.a()
+      {
+        public final void bm(Map<String, Object> paramAnonymousMap)
+        {
+          AppMethodBeat.i(70438);
+          if (paramAnonymousMap != null)
+          {
+            long l1 = Util.nullAs((Long)paramAnonymousMap.get("wallet_balance_version"), -1L);
+            long l2 = Util.nullAs((Long)paramAnonymousMap.get("wallet_balance_last_update_time"), -1L);
+            if ((l2 < 0L) || (l1 < 0L) || (l2 + this.VJF > Util.currentTicks()) || (i >= l1))
+            {
+              i.a(new i.c[] { new i.c("wallet_balance_version", Long.valueOf(i)), new i.c("wallet_balance_last_update_time", Long.valueOf(Util.currentTicks())), new i.c("wallet_balance", Double.valueOf(paramMap / 100.0D)) });
+              ag.a(this.VJH, this.tyZ, null);
+              AppMethodBeat.o(70438);
+              return;
+            }
+            Log.w("MicroMsg.WalletPushNotifyManager", "hy: new balance comes but last msg is not timeout and balance version is smaller than before");
+          }
+          AppMethodBeat.o(70438);
+        }
+      };
+      i.a(new String[] { "wallet_balance_version", "wallet_balance_last_update_time", "wallet_balance" }, paramMap);
+      AppMethodBeat.o(70441);
+      return true;
+    }
+    if (paramInt == 43)
+    {
+      paramMap = x.bl(paramMap);
+      if (paramMap != null) {
+        paramArrayOfObject[0] = paramMap;
+      }
+      x.bgy(paramString);
+      AppMethodBeat.o(70441);
+      return false;
+    }
+    AppMethodBeat.o(70441);
+    return false;
   }
   
-  public static boolean g(Bankcard paramBankcard)
+  public static boolean a(l paraml)
   {
-    AppMethodBeat.i(270447);
-    if (paramBankcard == null)
-    {
-      Log.i("MicroMsg.WalletPayOrderMgr", "canSetAsOfflinePayDefaultCard bankcard is null");
-      AppMethodBeat.o(270447);
-      return false;
+    AppMethodBeat.i(70442);
+    if (zTV == null) {
+      zTV = new ArrayList();
     }
-    int i = paramBankcard.field_defaultCardState;
-    if (paramBankcard.gIM())
-    {
-      Log.i("MicroMsg.WalletPayOrderMgr", "canSetAsOfflinePayDefaultCard bankcard is fqf");
-      if (i == 2)
-      {
-        AppMethodBeat.o(270447);
-        return true;
-      }
-      AppMethodBeat.o(270447);
-      return false;
-    }
-    if (i == 1)
-    {
-      AppMethodBeat.o(270447);
-      return false;
-    }
-    AppMethodBeat.o(270447);
+    zTV.add(paraml);
+    AppMethodBeat.o(70442);
     return true;
   }
   
-  public static List<Bankcard> gJz()
+  public static boolean b(l paraml)
   {
-    AppMethodBeat.i(293280);
-    ArrayList localArrayList = Cc(false);
-    AppMethodBeat.o(293280);
-    return localArrayList;
+    AppMethodBeat.i(70443);
+    if (zTV == null)
+    {
+      Log.e("MicroMsg.WalletPushNotifyManager", "hy: callback pool is null. release failed");
+      AppMethodBeat.o(70443);
+      return false;
+    }
+    zTV.remove(paraml);
+    AppMethodBeat.o(70443);
+    return true;
+  }
+  
+  public static ag iiO()
+  {
+    AppMethodBeat.i(70440);
+    if (VJC == null) {
+      VJC = new ag();
+    }
+    ag localag = VJC;
+    AppMethodBeat.o(70440);
+    return localag;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ag
  * JD-Core Version:    0.7.0.1
  */

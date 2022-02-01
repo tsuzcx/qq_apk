@@ -7,26 +7,26 @@ import java.util.Set;
 
 public class b
 {
-  private static volatile b Lrr;
-  public Set<a> Lrs;
+  private static volatile b RUw;
+  public Set<a> RUx;
   
   private b()
   {
     AppMethodBeat.i(176434);
-    this.Lrs = new HashSet();
+    this.RUx = new HashSet();
     AppMethodBeat.o(176434);
   }
   
-  public static b fYX()
+  public static b hsi()
   {
     AppMethodBeat.i(176435);
-    if (Lrr == null) {}
+    if (RUw == null) {}
     try
     {
-      if (Lrr == null) {
-        Lrr = new b();
+      if (RUw == null) {
+        RUw = new b();
       }
-      b localb = Lrr;
+      b localb = RUw;
       AppMethodBeat.o(176435);
       return localb;
     }
@@ -39,8 +39,8 @@ public class b
   public final void a(a parama)
   {
     AppMethodBeat.i(176436);
-    this.Lrs.add(parama);
-    Iterator localIterator = this.Lrs.iterator();
+    this.RUx.add(parama);
+    Iterator localIterator = this.RUx.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
@@ -54,7 +54,7 @@ public class b
   public final void pause()
   {
     AppMethodBeat.i(176437);
-    Iterator localIterator = this.Lrs.iterator();
+    Iterator localIterator = this.RUx.iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).pause();
     }
@@ -63,7 +63,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.video.b
  * JD-Core Version:    0.7.0.1
  */

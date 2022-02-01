@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 
 public final class a
 {
-  public static void e(Field paramField)
+  public static void f(Field paramField)
   {
     AppMethodBeat.i(145624);
     try
@@ -26,7 +26,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -33,6 +33,22 @@ public class XWalkHitTestResult
     return paramtype;
   }
   
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154744);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154744);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.enumtypeClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkHitTestResultInternal$type"), "valueOf", new Class[] { String.class });
+    this.getTypeMethod.init(this.bridge, null, "getTypeSuper", new Class[0]);
+    this.getExtraMethod.init(this.bridge, null, "getExtraSuper", new Class[0]);
+    AppMethodBeat.o(154744);
+  }
+  
   protected Object getBridge()
   {
     return this.bridge;
@@ -86,23 +102,6 @@ public class XWalkHitTestResult
     return null;
   }
   
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154744);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154744);
-      return;
-    }
-    this.enumtypeClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkHitTestResultInternal$type"), "valueOf", new Class[] { String.class });
-    this.getTypeMethod.init(this.bridge, null, "getTypeSuper", new Class[0]);
-    this.getExtraMethod.init(this.bridge, null, "getExtraSuper", new Class[0]);
-    AppMethodBeat.o(154744);
-  }
-  
   public static enum type
   {
     static
@@ -127,7 +126,7 @@ public class XWalkHitTestResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkHitTestResult
  * JD-Core Version:    0.7.0.1
  */

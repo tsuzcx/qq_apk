@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
 import com.tencent.mm.plugin.appbrand.page.ah;
 
@@ -10,21 +9,14 @@ public final class n
 {
   public n()
   {
-    super(w.qgh.ordinal());
-    AppMethodBeat.i(283445);
-    AppMethodBeat.o(283445);
-  }
-  
-  public static final class a
-    extends r
-  {
-    private static final int CTRL_INDEX = 904;
-    public static final String NAME = "onStartHandoff";
+    super(x.tkL.ordinal());
+    AppMethodBeat.i(323835);
+    AppMethodBeat.o(323835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.n
  * JD-Core Version:    0.7.0.1
  */

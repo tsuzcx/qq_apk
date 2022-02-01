@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <CheckBoxPreference android:defaultValue="false" android:key="follow_system" android:summary="@string/imu" android:title="@string/zy" />
+    <PreferenceTitleCategory android:key="manual_title" android:title="@string/imv" />
+    <SelectPreference android:key="normal_mode" android:title="@string/inj" />
+    <SelectPreference android:key="dark_mode" android:title="@string/iri" />
+</PreferenceScreen>

@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(48636);
-    qVu = new a("WebSearch", 0);
-    qVv = new a("More", 1);
-    qVw = new a("StarList", 2);
-    qVx = new a[] { qVu, qVv, qVw };
+    uba = new a("WebSearch", 0);
+    ubb = new a("More", 1);
+    ubc = new a("StarList", 2);
+    ubd = new a[] { uba, ubb, ubc };
     AppMethodBeat.o(48636);
   }
   

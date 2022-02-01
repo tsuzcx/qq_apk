@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.ext.voicecontrol;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.gb;
-import com.tencent.mm.protocal.protobuf.gc;
-import com.tencent.mm.protocal.protobuf.gd;
-import com.tencent.mm.protocal.protobuf.gh;
+import com.tencent.mm.protocal.protobuf.gu;
+import com.tencent.mm.protocal.protobuf.gv;
+import com.tencent.mm.protocal.protobuf.gw;
+import com.tencent.mm.protocal.protobuf.ha;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
-  extends q
+  extends p
   implements m
 {
   public String appId;
-  public int bPt;
-  private i callback;
+  private h callback;
+  public int dIY;
   public int dQ;
-  public int fCN;
-  public int lAW;
-  d rr;
-  public gb wuA;
-  int wuB;
-  long wuC;
-  public int wuw;
-  public b wux;
-  public String wuy;
-  public gh wuz;
+  public int hHC;
+  public int osy;
+  c rr;
+  public int zQC;
+  public b zQD;
+  public String zQE;
+  public ha zQF;
+  public gu zQG;
+  int zQH;
+  long zQI;
   
-  public a(int paramInt1, String paramString1, int paramInt2, String paramString2, gh paramgh)
+  public a(int paramInt1, String paramString1, int paramInt2, String paramString2, ha paramha)
   {
     AppMethodBeat.i(24534);
-    this.wuB = 5000;
-    this.wuC = 0L;
-    this.fCN = 1;
+    this.zQH = 5000;
+    this.zQI = 0L;
+    this.hHC = 1;
     this.appId = paramString1;
-    this.wuw = paramInt1;
+    this.zQC = paramInt1;
     this.dQ = 1;
-    this.lAW = paramInt2;
-    this.wuz = paramgh;
-    this.wuA = null;
-    this.wuy = paramString2;
-    if (paramgh != null) {}
+    this.osy = paramInt2;
+    this.zQF = paramha;
+    this.zQG = null;
+    this.zQE = paramString2;
+    if (paramha != null) {}
     for (;;)
     {
       Log.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] new NetSceneAppVoiceControl, opCode=%s, appId=%s, voiceId=%s, totalLen=%s, controlType=%s, %s, %s", new Object[] { Integer.valueOf(1), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(1), Boolean.valueOf(bool), Boolean.FALSE });
@@ -59,55 +59,55 @@ public final class a
     }
   }
   
-  public a(int paramInt, String paramString, gb paramgb, long paramLong)
+  public a(int paramInt, String paramString, gu paramgu, long paramLong)
   {
     AppMethodBeat.i(24535);
-    this.wuB = 5000;
-    this.wuC = 0L;
-    this.fCN = 2;
+    this.zQH = 5000;
+    this.zQI = 0L;
+    this.hHC = 2;
     this.appId = paramString;
-    this.wuw = paramInt;
+    this.zQC = paramInt;
     this.dQ = 1;
-    this.wuz = null;
-    this.wuA = paramgb;
-    this.wuC = paramLong;
+    this.zQF = null;
+    this.zQG = paramgu;
+    this.zQI = paramLong;
     Log.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] new NetSceneAppVoiceControl, opCode=%s, appId=%s, voiceId=%s, controlType=%s, %s, %s", new Object[] { Integer.valueOf(2), paramString, Integer.valueOf(paramInt), Integer.valueOf(1), Boolean.FALSE, Boolean.TRUE });
     AppMethodBeat.o(24535);
   }
   
-  public static int dhI()
+  public static int dOt()
   {
-    AppMethodBeat.i(269502);
+    AppMethodBeat.i(274322);
     int i = Util.nowMilliSecond().hashCode();
     if (i != -2147483648)
     {
       i = Math.abs(i);
-      AppMethodBeat.o(269502);
+      AppMethodBeat.o(274322);
       return i;
     }
-    AppMethodBeat.o(269502);
+    AppMethodBeat.o(274322);
     return -2147483648;
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(24537);
-    this.callback = parami;
-    parami = new d.a();
-    parami.funcId = 985;
-    parami.uri = "/cgi-bin/micromsg-bin/appvoicecontrol";
-    parami.lBU = new gc();
-    parami.lBV = new gd();
-    parami.lBW = 0;
-    parami.respCmdId = 0;
-    this.rr = parami.bgN();
-    parami = (gc)d.b.b(this.rr.lBR);
-    parami.RLe = this.fCN;
-    parami.lVG = this.appId;
-    parami.RLf = this.wuw;
-    parami.RLg = this.dQ;
-    parami.RLh = this.wuz;
-    parami.RLi = this.wuA;
+    this.callback = paramh;
+    paramh = new c.a();
+    paramh.funcId = 985;
+    paramh.uri = "/cgi-bin/micromsg-bin/appvoicecontrol";
+    paramh.otE = new gv();
+    paramh.otF = new gw();
+    paramh.otG = 0;
+    paramh.respCmdId = 0;
+    this.rr = paramh.bEF();
+    paramh = (gv)c.b.b(this.rr.otB);
+    paramh.YIq = this.hHC;
+    paramh.oOI = this.appId;
+    paramh.YIr = this.zQC;
+    paramh.YIs = this.dQ;
+    paramh.YIt = this.zQF;
+    paramh.YIu = this.zQG;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(24537);
     return i;
@@ -137,7 +137,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.voicecontrol.a
  * JD-Core Version:    0.7.0.1
  */

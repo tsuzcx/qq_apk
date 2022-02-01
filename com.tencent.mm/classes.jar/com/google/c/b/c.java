@@ -1,106 +1,316 @@
 package com.google.c.b;
 
+import com.google.c.b.b.b;
+import com.google.c.c.a;
+import com.google.c.f;
+import com.google.c.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentNavigableMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 
-public enum c
+public final class c
 {
-  private static final Map<Integer, c> ceE;
-  private static final Map<String, c> ceF;
-  public final int[] ceG;
-  private final String[] ceH;
+  private final Map<Type, f<?>> dED;
+  private final b dFi;
   
-  static
+  public c(Map<Type, f<?>> paramMap)
   {
-    AppMethodBeat.i(12210);
-    ced = new c("Cp437", 0, new int[] { 0, 2 }, new String[0]);
-    cee = new c("ISO8859_1", 1, new int[] { 1, 3 }, new String[] { "ISO-8859-1" });
-    cef = new c("ISO8859_2", 2, 4, new String[] { "ISO-8859-2" });
-    ceg = new c("ISO8859_3", 3, 5, new String[] { "ISO-8859-3" });
-    ceh = new c("ISO8859_4", 4, 6, new String[] { "ISO-8859-4" });
-    cei = new c("ISO8859_5", 5, 7, new String[] { "ISO-8859-5" });
-    cej = new c("ISO8859_6", 6, 8, new String[] { "ISO-8859-6" });
-    cek = new c("ISO8859_7", 7, 9, new String[] { "ISO-8859-7" });
-    cel = new c("ISO8859_8", 8, 10, new String[] { "ISO-8859-8" });
-    cem = new c("ISO8859_9", 9, 11, new String[] { "ISO-8859-9" });
-    cen = new c("ISO8859_10", 10, 12, new String[] { "ISO-8859-10" });
-    ceo = new c("ISO8859_11", 11, 13, new String[] { "ISO-8859-11" });
-    cep = new c("ISO8859_13", 12, 15, new String[] { "ISO-8859-13" });
-    ceq = new c("ISO8859_14", 13, 16, new String[] { "ISO-8859-14" });
-    cer = new c("ISO8859_15", 14, 17, new String[] { "ISO-8859-15" });
-    ces = new c("ISO8859_16", 15, 18, new String[] { "ISO-8859-16" });
-    cet = new c("SJIS", 16, 20, new String[] { "Shift_JIS" });
-    ceu = new c("Cp1250", 17, 21, new String[] { "windows-1250" });
-    cev = new c("Cp1251", 18, 22, new String[] { "windows-1251" });
-    cew = new c("Cp1252", 19, 23, new String[] { "windows-1252" });
-    cex = new c("Cp1256", 20, 24, new String[] { "windows-1256" });
-    cey = new c("UnicodeBigUnmarked", 21, 25, new String[] { "UTF-16BE", "UnicodeBig" });
-    cez = new c("UTF8", 22, 26, new String[] { "UTF-8" });
-    ceA = new c("ASCII", 23, new int[] { 27, 170 }, new String[] { "US-ASCII" });
-    ceB = new c("Big5");
-    ceC = new c("GB18030", 25, 29, new String[] { "GB2312", "EUC_CN", "GBK" });
-    ceD = new c("EUC_KR", 26, 30, new String[] { "EUC-KR" });
-    ceI = new c[] { ced, cee, cef, ceg, ceh, cei, cej, cek, cel, cem, cen, ceo, cep, ceq, cer, ces, cet, ceu, cev, cew, cex, cey, cez, ceA, ceB, ceC, ceD };
-    ceE = new HashMap();
-    ceF = new HashMap();
-    c[] arrayOfc = values();
-    int k = arrayOfc.length;
-    int i = 0;
-    while (i < k)
+    AppMethodBeat.i(107906);
+    this.dFi = b.Zw();
+    this.dED = paramMap;
+    AppMethodBeat.o(107906);
+  }
+  
+  private <T> i<T> A(final Class<? super T> paramClass)
+  {
+    AppMethodBeat.i(107908);
+    try
     {
-      c localc = arrayOfc[i];
-      Object localObject1 = localc.ceG;
-      int m = localObject1.length;
-      int j = 0;
-      while (j < m)
-      {
-        int n = localObject1[j];
-        ceE.put(Integer.valueOf(n), localc);
-        j += 1;
+      paramClass = paramClass.getDeclaredConstructor(new Class[0]);
+      if (!paramClass.isAccessible()) {
+        this.dFi.a(paramClass);
       }
-      ceF.put(localc.name(), localc);
-      localObject1 = localc.ceH;
-      m = localObject1.length;
-      j = 0;
-      while (j < m)
+      paramClass = new i()
       {
-        Object localObject2 = localObject1[j];
-        ceF.put(localObject2, localc);
-        j += 1;
-      }
-      i += 1;
+        public final T YW()
+        {
+          AppMethodBeat.i(107888);
+          try
+          {
+            Object localObject = paramClass.newInstance(null);
+            AppMethodBeat.o(107888);
+            return localObject;
+          }
+          catch (InstantiationException localInstantiationException)
+          {
+            RuntimeException localRuntimeException1 = new RuntimeException("Failed to invoke " + paramClass + " with no args", localInstantiationException);
+            AppMethodBeat.o(107888);
+            throw localRuntimeException1;
+          }
+          catch (InvocationTargetException localInvocationTargetException)
+          {
+            RuntimeException localRuntimeException2 = new RuntimeException("Failed to invoke " + paramClass + " with no args", localInvocationTargetException.getTargetException());
+            AppMethodBeat.o(107888);
+            throw localRuntimeException2;
+          }
+          catch (IllegalAccessException localIllegalAccessException)
+          {
+            AssertionError localAssertionError = new AssertionError(localIllegalAccessException);
+            AppMethodBeat.o(107888);
+            throw localAssertionError;
+          }
+        }
+      };
+      AppMethodBeat.o(107908);
+      return paramClass;
     }
-    AppMethodBeat.o(12210);
+    catch (NoSuchMethodException paramClass)
+    {
+      AppMethodBeat.o(107908);
+    }
+    return null;
   }
   
-  private c()
+  public final <T> i<T> b(final a<T> parama)
   {
-    this(new int[] { 28 }, new String[0]);
-    AppMethodBeat.i(12207);
-    AppMethodBeat.o(12207);
+    AppMethodBeat.i(107907);
+    final Type localType = parama.dGJ;
+    final Class localClass = parama.dIb;
+    parama = (f)this.dED.get(localType);
+    if (parama != null)
+    {
+      parama = new i()
+      {
+        public final T YW()
+        {
+          AppMethodBeat.i(107887);
+          Object localObject = parama.YJ();
+          AppMethodBeat.o(107887);
+          return localObject;
+        }
+      };
+      AppMethodBeat.o(107907);
+      return parama;
+    }
+    parama = (f)this.dED.get(localClass);
+    if (parama != null)
+    {
+      parama = new i()
+      {
+        public final T YW()
+        {
+          AppMethodBeat.i(107910);
+          Object localObject = parama.YJ();
+          AppMethodBeat.o(107910);
+          return localObject;
+        }
+      };
+      AppMethodBeat.o(107907);
+      return parama;
+    }
+    parama = A(localClass);
+    if (parama != null)
+    {
+      AppMethodBeat.o(107907);
+      return parama;
+    }
+    if (Collection.class.isAssignableFrom(localClass)) {
+      if (SortedSet.class.isAssignableFrom(localClass)) {
+        parama = new i()
+        {
+          public final T YW()
+          {
+            AppMethodBeat.i(107933);
+            TreeSet localTreeSet = new TreeSet();
+            AppMethodBeat.o(107933);
+            return localTreeSet;
+          }
+        };
+      }
+    }
+    while (parama != null)
+    {
+      AppMethodBeat.o(107907);
+      return parama;
+      if (EnumSet.class.isAssignableFrom(localClass))
+      {
+        parama = new i()
+        {
+          public final T YW()
+          {
+            AppMethodBeat.i(107891);
+            if ((localType instanceof ParameterizedType))
+            {
+              localObject = ((ParameterizedType)localType).getActualTypeArguments()[0];
+              if ((localObject instanceof Class))
+              {
+                localObject = EnumSet.noneOf((Class)localObject);
+                AppMethodBeat.o(107891);
+                return localObject;
+              }
+              localObject = new j("Invalid EnumSet type: " + localType.toString());
+              AppMethodBeat.o(107891);
+              throw ((Throwable)localObject);
+            }
+            Object localObject = new j("Invalid EnumSet type: " + localType.toString());
+            AppMethodBeat.o(107891);
+            throw ((Throwable)localObject);
+          }
+        };
+      }
+      else if (Set.class.isAssignableFrom(localClass))
+      {
+        parama = new i()
+        {
+          public final T YW()
+          {
+            AppMethodBeat.i(107939);
+            LinkedHashSet localLinkedHashSet = new LinkedHashSet();
+            AppMethodBeat.o(107939);
+            return localLinkedHashSet;
+          }
+        };
+      }
+      else if (Queue.class.isAssignableFrom(localClass))
+      {
+        parama = new i()
+        {
+          public final T YW()
+          {
+            AppMethodBeat.i(107889);
+            ArrayDeque localArrayDeque = new ArrayDeque();
+            AppMethodBeat.o(107889);
+            return localArrayDeque;
+          }
+        };
+      }
+      else
+      {
+        parama = new i()
+        {
+          public final T YW()
+          {
+            AppMethodBeat.i(107949);
+            ArrayList localArrayList = new ArrayList();
+            AppMethodBeat.o(107949);
+            return localArrayList;
+          }
+        };
+        continue;
+        if (Map.class.isAssignableFrom(localClass))
+        {
+          if (ConcurrentNavigableMap.class.isAssignableFrom(localClass)) {
+            parama = new i()
+            {
+              public final T YW()
+              {
+                AppMethodBeat.i(107980);
+                ConcurrentSkipListMap localConcurrentSkipListMap = new ConcurrentSkipListMap();
+                AppMethodBeat.o(107980);
+                return localConcurrentSkipListMap;
+              }
+            };
+          } else if (ConcurrentMap.class.isAssignableFrom(localClass)) {
+            parama = new i()
+            {
+              public final T YW()
+              {
+                AppMethodBeat.i(107942);
+                ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+                AppMethodBeat.o(107942);
+                return localConcurrentHashMap;
+              }
+            };
+          } else if (SortedMap.class.isAssignableFrom(localClass)) {
+            parama = new i()
+            {
+              public final T YW()
+              {
+                AppMethodBeat.i(107975);
+                TreeMap localTreeMap = new TreeMap();
+                AppMethodBeat.o(107975);
+                return localTreeMap;
+              }
+            };
+          } else if (((localType instanceof ParameterizedType)) && (!String.class.isAssignableFrom(a.h(((ParameterizedType)localType).getActualTypeArguments()[0]).dIb))) {
+            parama = new i()
+            {
+              public final T YW()
+              {
+                AppMethodBeat.i(107941);
+                LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+                AppMethodBeat.o(107941);
+                return localLinkedHashMap;
+              }
+            };
+          } else {
+            parama = new i()
+            {
+              public final T YW()
+              {
+                AppMethodBeat.i(107985);
+                h localh = new h();
+                AppMethodBeat.o(107985);
+                return localh;
+              }
+            };
+          }
+        }
+        else {
+          parama = null;
+        }
+      }
+    }
+    parama = new i()
+    {
+      private final l dFm;
+      
+      public final T YW()
+      {
+        AppMethodBeat.i(107951);
+        try
+        {
+          Object localObject = this.dFm.G(localClass);
+          AppMethodBeat.o(107951);
+          return localObject;
+        }
+        catch (Exception localException)
+        {
+          RuntimeException localRuntimeException = new RuntimeException("Unable to invoke no-args constructor for " + localType + ". Registering an InstanceCreator with Gson for this type may fix this problem.", localException);
+          AppMethodBeat.o(107951);
+          throw localRuntimeException;
+        }
+      }
+    };
+    AppMethodBeat.o(107907);
+    return parama;
   }
   
-  private c(int paramInt, String... paramVarArgs)
+  public final String toString()
   {
-    AppMethodBeat.i(12208);
-    this.ceG = new int[] { paramInt };
-    this.ceH = paramVarArgs;
-    AppMethodBeat.o(12208);
-  }
-  
-  private c(int[] paramArrayOfInt, String... paramVarArgs)
-  {
-    this.ceG = paramArrayOfInt;
-    this.ceH = paramVarArgs;
-  }
-  
-  public static c cL(String paramString)
-  {
-    AppMethodBeat.i(12209);
-    paramString = (c)ceF.get(paramString);
-    AppMethodBeat.o(12209);
-    return paramString;
+    AppMethodBeat.i(107909);
+    String str = this.dED.toString();
+    AppMethodBeat.o(107909);
+    return str;
   }
 }
 

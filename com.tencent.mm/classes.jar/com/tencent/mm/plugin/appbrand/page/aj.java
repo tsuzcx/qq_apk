@@ -18,52 +18,52 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class aj
   extends FrameLayout
 {
-  private int asF;
+  private boolean cCE;
+  private int cho;
   public boolean mDisabled;
   private int mTouchSlop;
-  private FrameLayout qoa;
-  private boolean qtA;
-  private boolean qtB;
-  private int qtC;
-  private int qtD;
-  private boolean qtE;
-  private ObjectAnimator qtF;
-  private View qtw;
-  private FrameLayout qtx;
-  private boolean qty;
-  private boolean qtz;
+  private FrameLayout tsH;
+  private View tyc;
+  private FrameLayout tyd;
+  private boolean tye;
+  private boolean tyf;
+  private boolean tyg;
+  private int tyh;
+  private int tyi;
+  private boolean tyj;
+  private ObjectAnimator tyk;
   
   public aj(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(135211);
     this.mDisabled = true;
-    this.qty = false;
-    this.qtz = false;
-    this.qtA = false;
-    this.qtB = false;
-    this.qtE = false;
-    this.qtF = null;
+    this.tye = false;
+    this.tyf = false;
+    this.tyg = false;
+    this.cCE = false;
+    this.tyj = false;
+    this.tyk = null;
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     AppMethodBeat.o(135211);
   }
   
-  private void Cr(int paramInt)
+  private void CH(int paramInt)
   {
     AppMethodBeat.i(135220);
-    int i = (int)this.qoa.getTranslationY();
+    int i = (int)this.tsH.getTranslationY();
     if (i == paramInt)
     {
       AppMethodBeat.o(135220);
       return;
     }
     Log.i("MicroMsg.AppBrandPullDownView", "fastScrollTo from = %s, to = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
-    if (this.qtF != null) {
-      this.qtF.cancel();
+    if (this.tyk != null) {
+      this.tyk.cancel();
     }
     long l = (Math.abs(i - paramInt) / getStayHeight() * 250.0F);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.qoa, "translationY", new float[] { i, paramInt });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.tsH, "translationY", new float[] { i, paramInt });
     localObjectAnimator.setDuration(Math.min(l, 250L));
     localObjectAnimator.setInterpolator(new DecelerateInterpolator());
     localObjectAnimator.start();
@@ -73,11 +73,11 @@ public class aj
       {
         AppMethodBeat.i(135210);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        aj.this.Cq((int)f);
+        aj.this.CG((int)f);
         AppMethodBeat.o(135210);
       }
     });
-    this.qtF = localObjectAnimator;
+    this.tyk = localObjectAnimator;
     AppMethodBeat.o(135220);
   }
   
@@ -89,47 +89,47 @@ public class aj
     return i;
   }
   
-  protected void Cq(int paramInt) {}
+  protected void CG(int paramInt) {}
   
-  protected boolean PF()
+  protected boolean apP()
   {
     return false;
   }
   
-  protected final void ceM()
+  protected final void cFp()
   {
     AppMethodBeat.i(135214);
-    Cr(getStayHeight());
-    if (!this.qtz) {
-      ceO();
+    CH(getStayHeight());
+    if (!this.tyf) {
+      cFr();
     }
-    this.qtA = true;
-    this.qtz = true;
-    this.qtB = true;
+    this.tyg = true;
+    this.tyf = true;
+    this.cCE = true;
     AppMethodBeat.o(135214);
   }
   
-  protected final void ceN()
+  protected final void cFq()
   {
     AppMethodBeat.i(135215);
-    Cr(0);
-    if (this.qtz) {
-      ceP();
+    CH(0);
+    if (this.tyf) {
+      cFs();
     }
-    this.qtA = false;
-    this.qtz = false;
-    this.qtB = false;
+    this.tyg = false;
+    this.tyf = false;
+    this.cCE = false;
     AppMethodBeat.o(135215);
   }
   
-  protected void ceO() {}
+  protected void cFr() {}
   
-  protected void ceP() {}
+  protected void cFs() {}
   
   protected int getOpenHeight()
   {
     AppMethodBeat.i(135218);
-    int i = this.qtw.getHeight();
+    int i = this.tyc.getHeight();
     AppMethodBeat.o(135218);
     return i;
   }
@@ -137,7 +137,7 @@ public class aj
   public int getPullDownBackgroundColor()
   {
     AppMethodBeat.i(178618);
-    Drawable localDrawable = this.qtx.getBackground();
+    Drawable localDrawable = this.tyd.getBackground();
     if ((localDrawable instanceof ColorDrawable))
     {
       int i = ((ColorDrawable)localDrawable).getColor();
@@ -151,24 +151,24 @@ public class aj
   protected int getStayHeight()
   {
     AppMethodBeat.i(135219);
-    int i = this.qtw.getHeight();
+    int i = this.tyc.getHeight();
     AppMethodBeat.o(135219);
     return i;
   }
   
   public final void h(View paramView1, View paramView2)
   {
-    AppMethodBeat.i(243545);
-    this.qtw = paramView1;
-    this.qtx = new FrameLayout(getContext());
-    this.qtx.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.qtx.addView(paramView1);
-    this.qoa = new FrameLayout(getContext());
-    this.qoa.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.qoa.addView(paramView2);
-    addView(this.qtx);
-    addView(this.qoa);
-    AppMethodBeat.o(243545);
+    AppMethodBeat.i(325214);
+    this.tyc = paramView1;
+    this.tyd = new FrameLayout(getContext());
+    this.tyd.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.tyd.addView(paramView1);
+    this.tsH = new FrameLayout(getContext());
+    this.tsH.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.tsH.addView(paramView2);
+    addView(this.tyd);
+    addView(this.tsH);
+    AppMethodBeat.o(325214);
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -176,19 +176,19 @@ public class aj
     AppMethodBeat.i(135212);
     if (this.mDisabled)
     {
-      boolean bool = this.qtB;
+      boolean bool = this.cCE;
       AppMethodBeat.o(135212);
       return bool;
     }
     int i = paramMotionEvent.getAction();
     if ((i == 3) || (i == 1))
     {
-      this.qtA = false;
-      this.qtE = false;
+      this.tyg = false;
+      this.tyj = false;
       AppMethodBeat.o(135212);
       return false;
     }
-    if ((i == 2) && (this.qtA))
+    if ((i == 2) && (this.tyg))
     {
       AppMethodBeat.o(135212);
       return true;
@@ -196,40 +196,40 @@ public class aj
     switch (i)
     {
     }
-    while ((this.qtA) || (this.qtB))
+    while ((this.tyg) || (this.cCE))
     {
       AppMethodBeat.o(135212);
       return true;
-      if (PF())
+      if (apP())
       {
-        this.qtC = ((int)paramMotionEvent.getX());
-        this.qtD = ((int)paramMotionEvent.getY());
-        this.asF = ((int)paramMotionEvent.getY());
-        this.qtA = false;
-        this.qtE = true;
+        this.tyh = ((int)paramMotionEvent.getX());
+        this.tyi = ((int)paramMotionEvent.getY());
+        this.cho = ((int)paramMotionEvent.getY());
+        this.tyg = false;
+        this.tyj = true;
         continue;
-        if (PF())
+        if (apP())
         {
-          if (!this.qtE)
+          if (!this.tyj)
           {
-            this.qtC = ((int)paramMotionEvent.getX());
-            this.qtD = ((int)paramMotionEvent.getY());
-            this.asF = ((int)paramMotionEvent.getY());
-            this.qtA = false;
-            this.qtE = true;
+            this.tyh = ((int)paramMotionEvent.getX());
+            this.tyi = ((int)paramMotionEvent.getY());
+            this.cho = ((int)paramMotionEvent.getY());
+            this.tyg = false;
+            this.tyj = true;
             AppMethodBeat.o(135212);
             return false;
           }
           i = (int)paramMotionEvent.getX();
           int j = (int)paramMotionEvent.getY();
-          int k = this.qtC;
-          int m = j - this.qtD;
+          int k = this.tyh;
+          int m = j - this.tyi;
           if ((Math.abs(m) > this.mTouchSlop) && (Math.abs(m) > Math.abs(i - k)) && (m > 0))
           {
-            this.qtC = i;
-            this.qtD = j;
-            this.qtA = true;
-            this.qtE = false;
+            this.tyh = i;
+            this.tyi = j;
+            this.tyg = true;
+            this.tyj = false;
             AppMethodBeat.o(135212);
             return true;
           }
@@ -245,10 +245,10 @@ public class aj
     AppMethodBeat.i(135213);
     if (this.mDisabled)
     {
-      if (this.qtB) {
-        ceN();
+      if (this.cCE) {
+        cFq();
       }
-      boolean bool = this.qtB;
+      boolean bool = this.cCE;
       AppMethodBeat.o(135213);
       return bool;
     }
@@ -268,24 +268,24 @@ public class aj
         {
           AppMethodBeat.o(135213);
           return false;
-        } while ((!PF()) && (!this.qtB));
-        this.qtD = ((int)paramMotionEvent.getY());
-        this.qtC = ((int)paramMotionEvent.getX());
-        this.asF = ((int)paramMotionEvent.getY());
-        this.qtE = true;
+        } while ((!apP()) && (!this.cCE));
+        this.tyi = ((int)paramMotionEvent.getY());
+        this.tyh = ((int)paramMotionEvent.getX());
+        this.cho = ((int)paramMotionEvent.getY());
+        this.tyj = true;
         AppMethodBeat.o(135213);
         return true;
-      } while ((!this.qtA) && (!this.qtB));
-      if (!this.qtE)
+      } while ((!this.tyg) && (!this.cCE));
+      if (!this.tyj)
       {
-        this.qtD = ((int)paramMotionEvent.getY());
-        this.qtC = ((int)paramMotionEvent.getX());
-        this.asF = ((int)paramMotionEvent.getY());
-        this.qtE = true;
+        this.tyi = ((int)paramMotionEvent.getY());
+        this.tyh = ((int)paramMotionEvent.getX());
+        this.cho = ((int)paramMotionEvent.getY());
+        this.tyj = true;
         AppMethodBeat.o(135213);
         return true;
       }
-      int k = (int)paramMotionEvent.getY() - this.asF;
+      int k = (int)paramMotionEvent.getY() - this.cho;
       int i = k >> 1;
       int j = getMaxOverScrollDistance();
       if (i > j) {
@@ -294,39 +294,39 @@ public class aj
       for (;;)
       {
         j = i;
-        if (this.qtz) {
+        if (this.tyf) {
           j = i + getStayHeight();
         }
         i = Math.max(j, 0);
         Log.d("MicroMsg.AppBrandPullDownView", "real diff: %d, calc diff: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
         j = Math.min(getMaxOverScrollDistance(), i);
-        this.qoa.setTranslationY(j);
-        Cq(i);
+        this.tsH.setTranslationY(j);
+        CG(i);
         AppMethodBeat.o(135213);
         return true;
       }
-      this.qtE = false;
-      if ((this.qoa.getTranslationY() > getOpenHeight()) && (this.qty))
+      this.tyj = false;
+      if ((this.tsH.getTranslationY() > getOpenHeight()) && (this.tye))
       {
-        ceM();
+        cFp();
         AppMethodBeat.o(135213);
         return true;
       }
-    } while ((!this.qtA) && (!this.qtB));
-    ceN();
+    } while ((!this.tyg) && (!this.cCE));
+    cFq();
     AppMethodBeat.o(135213);
     return true;
   }
   
   public void setNeedStay(boolean paramBoolean)
   {
-    this.qty = paramBoolean;
+    this.tye = paramBoolean;
   }
   
   public void setPullDownBackgroundColor(int paramInt)
   {
     AppMethodBeat.i(135216);
-    this.qtx.setBackgroundColor(paramInt);
+    this.tyd.setBackgroundColor(paramInt);
     AppMethodBeat.o(135216);
   }
   
@@ -342,7 +342,7 @@ public class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.aj
  * JD-Core Version:    0.7.0.1
  */

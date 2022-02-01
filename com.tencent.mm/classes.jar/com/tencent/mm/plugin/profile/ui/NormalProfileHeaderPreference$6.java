@@ -15,16 +15,15 @@ final class NormalProfileHeaderPreference$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(285059);
-    Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalProfileHeaderPreference$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    AppMethodBeat.i(305464);
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalProfileHeaderPreference$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     paramView = new Intent();
-    paramView.putExtra("finder_username", NormalProfileHeaderPreference.f(this.Haj).username);
-    localObject = com.tencent.mm.plugin.finder.utils.a.ACH;
-    com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI(this.Haj.mContext, paramView);
+    paramView.putExtra("finder_username", NormalProfileHeaderPreference.f(this.MYq).username);
+    com.tencent.mm.plugin.finder.utils.a.GfO.enterFinderProfileUI(this.MYq.mContext, paramView);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalProfileHeaderPreference$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(285059);
+    AppMethodBeat.o(305464);
   }
 }
 

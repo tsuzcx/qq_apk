@@ -1,3 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.vlog.ui.thumb.FrameListView android:id="@id/d9v" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textStyle="bold" android:textColor="@color/a7b" android:gravity="center_vertical" android:id="@id/k2j" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="@string/jmv" />
+    <View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <LinearLayout android:id="@id/k2n" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <TextView android:textColor="@color/a7b" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/jmw" />
+    </LinearLayout>
+    <View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <LinearLayout android:id="@id/k2p" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <TextView android:textColor="@color/a7b" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/jmy" />
+    </LinearLayout>
+    <View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <LinearLayout android:id="@id/k2o" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <TextView android:textColor="@color/a7b" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/jmx" />
+    </LinearLayout>
+    <View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+</LinearLayout>

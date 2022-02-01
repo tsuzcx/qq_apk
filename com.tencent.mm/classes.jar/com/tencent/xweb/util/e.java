@@ -1,190 +1,66 @@
 package com.tencent.xweb.util;
 
-import android.text.TextUtils;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Calendar;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.spec.KeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import org.xwalk.core.Log;
 
 public final class e
 {
-  public static double Xf(long paramLong)
+  public static boolean bR(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(196965);
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong);
-    int i = localCalendar.get(11);
-    double d2 = localCalendar.get(12);
-    double d1 = i;
-    d2 /= 60.0D;
-    AppMethodBeat.o(196965);
-    return d1 + d2;
+    AppMethodBeat.i(156990);
+    boolean bool = new a(paramString1, paramString2, paramString3, "SHA1withECDSA").verify();
+    AppMethodBeat.o(156990);
+    return bool;
   }
   
-  public static a bFB(String paramString)
+  static final class a
   {
-    AppMethodBeat.i(196952);
-    a locala = new a();
-    try
-    {
-      locala.aafQ = Double.valueOf(Double.parseDouble(paramString));
-      locala.aafP = true;
-      AppMethodBeat.o(196952);
-      return locala;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        Log.e("NumberUtil", "safeGetDouble failed : " + paramString.getMessage());
-      }
-    }
-  }
-  
-  public static a bFC(String paramString)
-  {
-    AppMethodBeat.i(196957);
-    a locala = new a();
-    try
-    {
-      for (paramString = paramString.trim(); (paramString.startsWith("0")) && (paramString.length() > 1); paramString = paramString.substring(1)) {}
-      locala.aafQ = Integer.valueOf(Integer.parseInt(paramString));
-      locala.aafP = true;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        Log.e("NumberUtil", "safeParseInt failed : " + paramString.getMessage());
-      }
-    }
-    AppMethodBeat.o(196957);
-    return locala;
-  }
-  
-  public static double bFD(String paramString)
-  {
-    AppMethodBeat.i(196970);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(196970);
-      return -1.0D;
-    }
-    paramString = paramString.split(":");
-    if ((paramString == null) || (paramString.length == 0))
-    {
-      AppMethodBeat.o(196970);
-      return -1.0D;
-    }
-    a locala = bFB(paramString[0]);
-    if (!locala.aafP)
-    {
-      AppMethodBeat.o(196970);
-      return -1.0D;
-    }
-    double d2 = locala.doubleValue();
-    double d1 = d2;
-    if (paramString.length == 2)
-    {
-      int i = bFC(paramString[1]).intValue();
-      if ((i < 0) || (i >= 60))
-      {
-        AppMethodBeat.o(196970);
-        return -1.0D;
-      }
-      d1 = d2 + i * 1.0D / 60.0D;
-    }
-    if ((d1 < 0.0D) || (d1 > 24.0D))
-    {
-      AppMethodBeat.o(196970);
-      return -1.0D;
-    }
-    AppMethodBeat.o(196970);
-    return d1;
-  }
-  
-  public static long c(Calendar paramCalendar)
-  {
-    AppMethodBeat.i(196963);
-    int i = paramCalendar.get(11);
-    int j = paramCalendar.get(12);
-    int k = paramCalendar.get(13);
-    long l1 = 24 - i;
-    long l2 = j;
-    long l3 = k * 1000;
-    AppMethodBeat.o(196963);
-    return l1 * 3600000L - l2 * 60000L - l3;
-  }
-  
-  public static double d(Calendar paramCalendar)
-  {
-    AppMethodBeat.i(196968);
-    int i = paramCalendar.get(11);
-    double d2 = paramCalendar.get(12);
-    double d1 = i;
-    d2 /= 60.0D;
-    AppMethodBeat.o(196968);
-    return d1 + d2;
-  }
-  
-  public static long ixA()
-  {
-    AppMethodBeat.i(196959);
-    Calendar localCalendar = Calendar.getInstance();
-    int i = localCalendar.get(11);
-    int j = localCalendar.get(12);
-    long l1 = 24 - i;
-    long l2 = j;
-    AppMethodBeat.o(196959);
-    return l1 * 3600000L - l2 * 60000L;
-  }
-  
-  public static double ixB()
-  {
-    AppMethodBeat.i(196967);
-    Calendar localCalendar = Calendar.getInstance();
-    int i = localCalendar.get(11);
-    double d2 = localCalendar.get(12);
-    double d1 = i;
-    d2 /= 60.0D;
-    AppMethodBeat.o(196967);
-    return d1 + d2;
-  }
-  
-  public static final class a
-  {
-    public boolean aafP = false;
-    public Object aafQ;
+    String aimA;
+    String aimB;
+    String aimC;
+    String aimz;
     
-    public final double doubleValue()
+    public a(String paramString1, String paramString2, String paramString3, String paramString4)
     {
-      AppMethodBeat.i(197019);
-      if (this.aafQ == null)
-      {
-        AppMethodBeat.o(197019);
-        return 0.0D;
-      }
-      double d = ((Double)this.aafQ).doubleValue();
-      AppMethodBeat.o(197019);
-      return d;
+      this.aimz = paramString1;
+      this.aimA = paramString2;
+      this.aimB = paramString3;
+      this.aimC = paramString4;
     }
     
-    public final int intValue()
+    public final boolean verify()
     {
-      AppMethodBeat.i(197021);
-      if (this.aafQ == null)
+      AppMethodBeat.i(156989);
+      try
       {
-        AppMethodBeat.o(197021);
-        return 0;
+        Object localObject1 = new X509EncodedKeySpec(Base64.decode(this.aimB, 0));
+        Object localObject3 = KeyFactory.getInstance("EC").generatePublic((KeySpec)localObject1);
+        localObject1 = Signature.getInstance(this.aimC);
+        ((Signature)localObject1).initVerify((PublicKey)localObject3);
+        localObject3 = Base64.decode(this.aimA, 0);
+        ((Signature)localObject1).update(this.aimz.getBytes());
+        boolean bool = ((Signature)localObject1).verify((byte[])localObject3);
+        AppMethodBeat.o(156989);
+        return bool;
       }
-      int i = ((Integer)this.aafQ).intValue();
-      AppMethodBeat.o(197021);
-      return i;
+      finally
+      {
+        Log.e("ECCUtil", "verify failed " + localObject2.getMessage());
+        AppMethodBeat.o(156989);
+      }
+      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.util.e
  * JD-Core Version:    0.7.0.1
  */

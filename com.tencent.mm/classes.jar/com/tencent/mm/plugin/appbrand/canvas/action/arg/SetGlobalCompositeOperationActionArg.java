@@ -64,10 +64,10 @@ public class SetGlobalCompositeOperationActionArg
     return i;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145183);
-    super.i(paramParcel);
+    super.k(paramParcel);
     this.type = paramParcel.readString();
     AppMethodBeat.o(145183);
   }
@@ -90,7 +90,7 @@ public class SetGlobalCompositeOperationActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetGlobalCompositeOperationActionArg
  * JD-Core Version:    0.7.0.1
  */

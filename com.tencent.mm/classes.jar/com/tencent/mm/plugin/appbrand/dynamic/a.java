@@ -1,14 +1,13 @@
 package com.tencent.mm.plugin.appbrand.dynamic;
 
 import android.os.Bundle;
-import com.tencent.luggage.k.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.jw;
+import com.tencent.mm.autogen.mmdata.rpt.mn;
 import com.tencent.mm.ipcinvoker.j;
-import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.collector.CollectSession;
+import com.tencent.mm.plugin.appbrand.dynamic.f.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
@@ -18,19 +17,19 @@ import junit.framework.Assert;
 
 public final class a
 {
-  public String jsP;
-  public String ogh;
-  h ogi;
+  public String lWh;
+  public String rjL;
+  h rjM;
   
   public a(h paramh)
   {
-    this.ogi = paramh;
+    this.rjM = paramh;
   }
   
-  public final void bZ(String paramString, int paramInt)
+  public final void cw(String paramString, int paramInt)
   {
     AppMethodBeat.i(121136);
-    if ((this.jsP == null) || (this.jsP.length() == 0))
+    if ((this.lWh == null) || (this.lWh.length() == 0))
     {
       AppMethodBeat.o(121136);
       return;
@@ -38,7 +37,7 @@ public final class a
     Bundle localBundle = new Bundle();
     localBundle.putString("id", paramString);
     localBundle.putInt("widgetState", paramInt);
-    j.a(i.bNh().agb(paramString), localBundle, f.a.class, null);
+    j.a(i.cnw().YX(paramString), localBundle, f.a.class, null);
     AppMethodBeat.o(121136);
   }
   
@@ -63,7 +62,7 @@ public final class a
   {}
   
   public static class f
-    implements m<Bundle, IPCBoolean>
+    implements com.tencent.mm.ipcinvoker.m<Bundle, IPCBoolean>
   {}
   
   public static class g
@@ -72,7 +71,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.a
  * JD-Core Version:    0.7.0.1
  */

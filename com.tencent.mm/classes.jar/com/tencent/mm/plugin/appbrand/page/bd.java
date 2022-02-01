@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.appbrand.page;
 
 import android.content.Context;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.n.i;
 import com.tencent.mm.plugin.appbrand.platform.window.d;
 import java.util.Map;
 
 public abstract interface bd
-  extends i, cc
+  extends i, cg
 {
-  public abstract void B(String paramString1, String paramString2);
+  public abstract void G(String paramString1, String paramString2);
   
-  public abstract void PE();
+  public abstract void apO();
   
-  public abstract boolean PF();
+  public abstract boolean apP();
   
-  public abstract boolean PG();
+  public abstract boolean apQ();
   
-  public abstract void aD(Context paramContext);
+  public abstract void bm(Context paramContext);
   
-  public abstract void cl(int paramInt1, int paramInt2);
+  public abstract void cZ(int paramInt1, int paramInt2);
   
   public abstract void destroy();
   
@@ -41,13 +41,11 @@ public abstract interface bd
   
   public abstract View getWrapperView();
   
-  public abstract void i(Runnable paramRunnable);
+  public abstract void k(Runnable paramRunnable);
   
   public abstract void onBackground();
   
   public abstract void onForeground();
-  
-  public abstract void s(int paramInt, long paramLong);
   
   public abstract void setAppBrandInfo(Map<String, String> paramMap);
   
@@ -64,10 +62,12 @@ public abstract interface bd
   public abstract void setWebViewLayoutListener(aq paramaq);
   
   public abstract void setXWebKeyboardImpl(aw paramaw);
+  
+  public abstract void w(int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bd
  * JD-Core Version:    0.7.0.1
  */

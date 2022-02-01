@@ -2,9 +2,11 @@ package com.tencent.mm.plugin.patmsg.a;
 
 public abstract interface d
 {
-  public abstract void aUj(String paramString);
+  public abstract void ao(CharSequence paramCharSequence);
   
-  public abstract void fmW();
+  public abstract float getTipTextSize();
+  
+  public abstract void gxK();
 }
 
 

@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.a.d;
 import com.tencent.mm.plugin.story.a.e;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/StoryBubbleListView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bubbleRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/view/StoryBubbleListView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bubbleRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class StoryBubbleListView
   extends RelativeLayout
 {
-  private final RecyclerView LVG;
+  private final RecyclerView Sxz;
   
   public StoryBubbleListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,10 +29,10 @@ public final class StoryBubbleListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120087);
-    View.inflate(paramContext, a.e.LDg, (ViewGroup)this);
-    paramContext = findViewById(a.d.LCh);
-    p.j(paramContext, "findViewById(R.id.story_msg_recycler_view)");
-    this.LVG = ((RecyclerView)paramContext);
+    View.inflate(paramContext, a.e.SgR, (ViewGroup)this);
+    paramContext = findViewById(a.d.SfS);
+    s.s(paramContext, "findViewById(R.id.story_msg_recycler_view)");
+    this.Sxz = ((RecyclerView)paramContext);
     AppMethodBeat.o(120087);
   }
 }

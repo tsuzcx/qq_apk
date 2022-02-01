@@ -19,37 +19,37 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class e
 {
-  private static volatile e jYs;
-  Map<String, Class<?>> jYt;
-  final Map<String, a> jYu;
-  private volatile boolean jYv;
-  final Map<String, Set<p>> jYw;
-  final Map<String, Set<q>> jYx;
-  final Map<String, Set<o>> jYy;
+  private static volatile e mym;
   private Handler mHandler;
+  Map<String, Class<?>> myn;
+  final Map<String, a> myo;
+  private volatile boolean myp;
+  final Map<String, Set<p>> myq;
+  final Map<String, Set<q>> myr;
+  final Map<String, Set<o>> mys;
   
   private e()
   {
     AppMethodBeat.i(158722);
-    this.jYt = new HashMap();
-    this.jYu = new ConcurrentHashMap();
-    this.mHandler = n.aFu();
-    this.jYw = new HashMap();
-    this.jYy = new HashMap();
-    this.jYx = new HashMap();
+    this.myn = new HashMap();
+    this.myo = new ConcurrentHashMap();
+    this.mHandler = n.aYv();
+    this.myq = new HashMap();
+    this.mys = new HashMap();
+    this.myr = new HashMap();
     AppMethodBeat.o(158722);
   }
   
-  public static e aFo()
+  public static e aYp()
   {
     AppMethodBeat.i(158721);
-    if (jYs == null) {}
+    if (mym == null) {}
     try
     {
-      if (jYs == null) {
-        jYs = new e();
+      if (mym == null) {
+        mym = new e();
       }
-      e locale = jYs;
+      e locale = mym;
       AppMethodBeat.o(158721);
       return locale;
     }
@@ -60,13 +60,13 @@ public class e
   }
   
   /* Error */
-  public final com.tencent.mm.ipcinvoker.b.a Mk(final String paramString)
+  public final com.tencent.mm.ipcinvoker.b.a ES(final String paramString)
   {
     // Byte code:
     //   0: ldc 131
     //   2: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 55	com/tencent/mm/ipcinvoker/e:jYu	Ljava/util/Map;
+    //   6: getfield 55	com/tencent/mm/ipcinvoker/e:myo	Ljava/util/Map;
     //   9: aload_1
     //   10: invokeinterface 82 2 0
     //   15: checkcast 16	com/tencent/mm/ipcinvoker/e$a
@@ -83,7 +83,7 @@ public class e
     //   39: aastore
     //   40: dup
     //   41: iconst_1
-    //   42: invokestatic 157	com/tencent/mm/ipcinvoker/i:aFr	()Ljava/lang/String;
+    //   42: invokestatic 157	com/tencent/mm/ipcinvoker/i:aYs	()Ljava/lang/String;
     //   45: aastore
     //   46: dup
     //   47: iconst_2
@@ -93,7 +93,7 @@ public class e
     //   53: aload 5
     //   55: ifnonnull +557 -> 612
     //   58: aload_0
-    //   59: getfield 164	com/tencent/mm/ipcinvoker/e:jYv	Z
+    //   59: getfield 164	com/tencent/mm/ipcinvoker/e:myp	Z
     //   62: ifeq +25 -> 87
     //   65: ldc 133
     //   67: ldc 166
@@ -130,10 +130,10 @@ public class e
     //   127: aload_1
     //   128: invokestatic 190	com/tencent/mm/ipcinvoker/i:getContext	()Landroid/content/Context;
     //   131: invokevirtual 195	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   134: invokestatic 201	com/tencent/mm/ipcinvoker/h/d:av	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   134: invokestatic 201	com/tencent/mm/ipcinvoker/h/d:aD	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   137: astore 5
     //   139: aload_0
-    //   140: getfield 50	com/tencent/mm/ipcinvoker/e:jYt	Ljava/util/Map;
+    //   140: getfield 50	com/tencent/mm/ipcinvoker/e:myn	Ljava/util/Map;
     //   143: new 203	java/lang/StringBuilder
     //   146: dup
     //   147: invokespecial 204	java/lang/StringBuilder:<init>	()V
@@ -168,12 +168,12 @@ public class e
     //   209: invokespecial 221	com/tencent/mm/ipcinvoker/e$a:<init>	(B)V
     //   212: astore 4
     //   214: aload_0
-    //   215: getfield 55	com/tencent/mm/ipcinvoker/e:jYu	Ljava/util/Map;
+    //   215: getfield 55	com/tencent/mm/ipcinvoker/e:myo	Ljava/util/Map;
     //   218: astore 7
     //   220: aload 7
     //   222: monitorenter
     //   223: aload_0
-    //   224: getfield 55	com/tencent/mm/ipcinvoker/e:jYu	Ljava/util/Map;
+    //   224: getfield 55	com/tencent/mm/ipcinvoker/e:myo	Ljava/util/Map;
     //   227: aload_1
     //   228: aload 4
     //   230: invokeinterface 225 3 0
@@ -184,7 +184,7 @@ public class e
     //   241: monitorenter
     //   242: aload 4
     //   244: iconst_1
-    //   245: putfield 228	com/tencent/mm/ipcinvoker/e$a:jYF	Z
+    //   245: putfield 228	com/tencent/mm/ipcinvoker/e$a:myA	Z
     //   248: aload 4
     //   250: monitorexit
     //   251: invokestatic 190	com/tencent/mm/ipcinvoker/i:getContext	()Landroid/content/Context;
@@ -197,7 +197,7 @@ public class e
     //   264: aload 4
     //   266: aload 7
     //   268: invokespecial 231	com/tencent/mm/ipcinvoker/e$2:<init>	(Lcom/tencent/mm/ipcinvoker/e;Ljava/lang/String;Lcom/tencent/mm/ipcinvoker/e$a;Landroid/content/Context;)V
-    //   271: putfield 235	com/tencent/mm/ipcinvoker/e$a:serviceConnection	Landroid/content/ServiceConnection;
+    //   271: putfield 235	com/tencent/mm/ipcinvoker/e$a:myz	Landroid/content/ServiceConnection;
     //   274: new 237	android/content/Intent
     //   277: dup
     //   278: invokespecial 238	android/content/Intent:<init>	()V
@@ -230,7 +230,7 @@ public class e
     //   332: aload 7
     //   334: aload 5
     //   336: aload 4
-    //   338: getfield 235	com/tencent/mm/ipcinvoker/e$a:serviceConnection	Landroid/content/ServiceConnection;
+    //   338: getfield 235	com/tencent/mm/ipcinvoker/e$a:myz	Landroid/content/ServiceConnection;
     //   341: bipush 33
     //   343: invokevirtual 260	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
     //   346: pop
@@ -241,12 +241,12 @@ public class e
     //   354: aload 4
     //   356: aload_1
     //   357: invokespecial 263	com/tencent/mm/ipcinvoker/e$3:<init>	(Lcom/tencent/mm/ipcinvoker/e;Lcom/tencent/mm/ipcinvoker/e$a;Ljava/lang/String;)V
-    //   360: putfield 267	com/tencent/mm/ipcinvoker/e$a:jYG	Ljava/lang/Runnable;
+    //   360: putfield 267	com/tencent/mm/ipcinvoker/e$a:myB	Ljava/lang/Runnable;
     //   363: aload_0
     //   364: getfield 63	com/tencent/mm/ipcinvoker/e:mHandler	Landroid/os/Handler;
     //   367: astore 5
     //   369: aload 4
-    //   371: getfield 267	com/tencent/mm/ipcinvoker/e$a:jYG	Ljava/lang/Runnable;
+    //   371: getfield 267	com/tencent/mm/ipcinvoker/e$a:myB	Ljava/lang/Runnable;
     //   374: astore 6
     //   376: invokestatic 175	android/os/Looper:myLooper	()Landroid/os/Looper;
     //   379: invokestatic 172	android/os/Looper:getMainLooper	()Landroid/os/Looper;
@@ -261,7 +261,7 @@ public class e
     //   398: aload 4
     //   400: monitorenter
     //   401: aload 4
-    //   403: getfield 228	com/tencent/mm/ipcinvoker/e$a:jYF	Z
+    //   403: getfield 228	com/tencent/mm/ipcinvoker/e$a:myA	Z
     //   406: ifeq +8 -> 414
     //   409: aload 4
     //   411: invokevirtual 278	java/lang/Object:wait	()V
@@ -271,11 +271,11 @@ public class e
     //   419: monitorenter
     //   420: aload 4
     //   422: iconst_0
-    //   423: putfield 228	com/tencent/mm/ipcinvoker/e$a:jYF	Z
+    //   423: putfield 228	com/tencent/mm/ipcinvoker/e$a:myA	Z
     //   426: aload 4
     //   428: monitorexit
     //   429: aload 4
-    //   431: getfield 282	com/tencent/mm/ipcinvoker/e$a:jYE	Lcom/tencent/mm/ipcinvoker/b/a;
+    //   431: getfield 282	com/tencent/mm/ipcinvoker/e$a:myy	Lcom/tencent/mm/ipcinvoker/b/a;
     //   434: astore_1
     //   435: ldc 131
     //   437: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -317,12 +317,12 @@ public class e
     //   502: aastore
     //   503: invokestatic 295	com/tencent/mm/ipcinvoker/h/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   506: aload_0
-    //   507: getfield 55	com/tencent/mm/ipcinvoker/e:jYu	Ljava/util/Map;
+    //   507: getfield 55	com/tencent/mm/ipcinvoker/e:myo	Ljava/util/Map;
     //   510: astore 5
     //   512: aload 5
     //   514: monitorenter
     //   515: aload_0
-    //   516: getfield 55	com/tencent/mm/ipcinvoker/e:jYu	Ljava/util/Map;
+    //   516: getfield 55	com/tencent/mm/ipcinvoker/e:myo	Ljava/util/Map;
     //   519: aload_1
     //   520: invokeinterface 298 2 0
     //   525: pop
@@ -332,7 +332,7 @@ public class e
     //   531: monitorenter
     //   532: aload 4
     //   534: iconst_0
-    //   535: putfield 228	com/tencent/mm/ipcinvoker/e$a:jYF	Z
+    //   535: putfield 228	com/tencent/mm/ipcinvoker/e$a:myA	Z
     //   538: aload 4
     //   540: monitorexit
     //   541: ldc 131
@@ -358,7 +358,7 @@ public class e
     //   573: monitorenter
     //   574: aload 4
     //   576: iconst_0
-    //   577: putfield 228	com/tencent/mm/ipcinvoker/e$a:jYF	Z
+    //   577: putfield 228	com/tencent/mm/ipcinvoker/e$a:myA	Z
     //   580: aload 4
     //   582: monitorexit
     //   583: ldc 131
@@ -382,7 +382,7 @@ public class e
     //   612: aload 5
     //   614: astore 4
     //   616: aload 5
-    //   618: getfield 228	com/tencent/mm/ipcinvoker/e$a:jYF	Z
+    //   618: getfield 228	com/tencent/mm/ipcinvoker/e$a:myA	Z
     //   621: ifeq -192 -> 429
     //   624: ldc 133
     //   626: ldc_w 300
@@ -411,7 +411,7 @@ public class e
     //   677: aload 5
     //   679: monitorenter
     //   680: aload 5
-    //   682: getfield 228	com/tencent/mm/ipcinvoker/e$a:jYF	Z
+    //   682: getfield 228	com/tencent/mm/ipcinvoker/e$a:myA	Z
     //   685: ifeq +8 -> 693
     //   688: aload 5
     //   690: invokevirtual 278	java/lang/Object:wait	()V
@@ -475,15 +475,15 @@ public class e
     //   704	714	714	java/lang/InterruptedException
   }
   
-  public final boolean Ml(String paramString)
+  public final boolean ET(String paramString)
   {
     AppMethodBeat.i(158724);
-    if (i.Mo(paramString))
+    if (i.EW(paramString))
     {
       AppMethodBeat.o(158724);
       return false;
     }
-    if (this.jYu.get(paramString) != null)
+    if (this.myo.get(paramString) != null)
     {
       AppMethodBeat.o(158724);
       return true;
@@ -492,37 +492,37 @@ public class e
     return false;
   }
   
-  public final boolean Mm(String paramString)
+  public final boolean EU(String paramString)
   {
-    AppMethodBeat.i(214691);
-    if (!Ml(paramString))
+    AppMethodBeat.i(235692);
+    if (!ET(paramString))
     {
-      AppMethodBeat.o(214691);
+      AppMethodBeat.o(235692);
       return false;
     }
-    paramString = (a)this.jYu.get(paramString);
-    if ((paramString == null) || (paramString.jYF))
+    paramString = (a)this.myo.get(paramString);
+    if ((paramString == null) || (paramString.myA))
     {
-      AppMethodBeat.o(214691);
+      AppMethodBeat.o(235692);
       return false;
     }
-    if ((paramString.serviceConnection != null) && (paramString.jYE != null))
+    if ((paramString.myz != null) && (paramString.myy != null))
     {
-      AppMethodBeat.o(214691);
+      AppMethodBeat.o(235692);
       return true;
     }
-    AppMethodBeat.o(214691);
+    AppMethodBeat.o(235692);
     return false;
   }
   
   /* Error */
-  public final void Mn(String paramString)
+  public final void EV(String paramString)
   {
     // Byte code:
     //   0: ldc_w 318
     //   3: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokestatic 311	com/tencent/mm/ipcinvoker/i:Mo	(Ljava/lang/String;)Z
+    //   7: invokestatic 311	com/tencent/mm/ipcinvoker/i:EW	(Ljava/lang/String;)Z
     //   10: ifeq +26 -> 36
     //   13: ldc 133
     //   15: ldc_w 320
@@ -537,12 +537,12 @@ public class e
     //   32: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: return
     //   36: aload_0
-    //   37: getfield 55	com/tencent/mm/ipcinvoker/e:jYu	Ljava/util/Map;
+    //   37: getfield 55	com/tencent/mm/ipcinvoker/e:myo	Ljava/util/Map;
     //   40: astore_3
     //   41: aload_3
     //   42: monitorenter
     //   43: aload_0
-    //   44: getfield 55	com/tencent/mm/ipcinvoker/e:jYu	Ljava/util/Map;
+    //   44: getfield 55	com/tencent/mm/ipcinvoker/e:myo	Ljava/util/Map;
     //   47: aload_1
     //   48: invokeinterface 82 2 0
     //   53: checkcast 16	com/tencent/mm/ipcinvoker/e$a
@@ -571,19 +571,19 @@ public class e
     //   95: aload_1
     //   96: athrow
     //   97: aload_2
-    //   98: getfield 228	com/tencent/mm/ipcinvoker/e$a:jYF	Z
+    //   98: getfield 228	com/tencent/mm/ipcinvoker/e$a:myA	Z
     //   101: ifeq +16 -> 117
     //   104: aload_2
     //   105: monitorenter
     //   106: aload_2
     //   107: iconst_0
-    //   108: putfield 228	com/tencent/mm/ipcinvoker/e$a:jYF	Z
+    //   108: putfield 228	com/tencent/mm/ipcinvoker/e$a:myA	Z
     //   111: aload_2
     //   112: invokevirtual 325	java/lang/Object:notifyAll	()V
     //   115: aload_2
     //   116: monitorexit
     //   117: aload_2
-    //   118: getfield 235	com/tencent/mm/ipcinvoker/e$a:serviceConnection	Landroid/content/ServiceConnection;
+    //   118: getfield 235	com/tencent/mm/ipcinvoker/e$a:myz	Landroid/content/ServiceConnection;
     //   121: ifnonnull +37 -> 158
     //   124: ldc 133
     //   126: ldc_w 327
@@ -605,18 +605,18 @@ public class e
     //   156: aload_1
     //   157: athrow
     //   158: aload_2
-    //   159: getfield 235	com/tencent/mm/ipcinvoker/e$a:serviceConnection	Landroid/content/ServiceConnection;
+    //   159: getfield 235	com/tencent/mm/ipcinvoker/e$a:myz	Landroid/content/ServiceConnection;
     //   162: astore_3
     //   163: invokestatic 190	com/tencent/mm/ipcinvoker/i:getContext	()Landroid/content/Context;
     //   166: aload_3
     //   167: invokevirtual 331	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
     //   170: aload_0
-    //   171: getfield 55	com/tencent/mm/ipcinvoker/e:jYu	Ljava/util/Map;
+    //   171: getfield 55	com/tencent/mm/ipcinvoker/e:myo	Ljava/util/Map;
     //   174: astore_3
     //   175: aload_3
     //   176: monitorenter
     //   177: aload_0
-    //   178: getfield 55	com/tencent/mm/ipcinvoker/e:jYu	Ljava/util/Map;
+    //   178: getfield 55	com/tencent/mm/ipcinvoker/e:myo	Ljava/util/Map;
     //   181: aload_1
     //   182: invokeinterface 298 2 0
     //   187: pop
@@ -626,13 +626,13 @@ public class e
     //   191: monitorenter
     //   192: aload_2
     //   193: aconst_null
-    //   194: putfield 282	com/tencent/mm/ipcinvoker/e$a:jYE	Lcom/tencent/mm/ipcinvoker/b/a;
+    //   194: putfield 282	com/tencent/mm/ipcinvoker/e$a:myy	Lcom/tencent/mm/ipcinvoker/b/a;
     //   197: aload_2
     //   198: iconst_0
-    //   199: putfield 228	com/tencent/mm/ipcinvoker/e$a:jYF	Z
+    //   199: putfield 228	com/tencent/mm/ipcinvoker/e$a:myA	Z
     //   202: aload_2
     //   203: aconst_null
-    //   204: putfield 235	com/tencent/mm/ipcinvoker/e$a:serviceConnection	Landroid/content/ServiceConnection;
+    //   204: putfield 235	com/tencent/mm/ipcinvoker/e$a:myz	Landroid/content/ServiceConnection;
     //   207: aload_2
     //   208: monitorexit
     //   209: ldc_w 318
@@ -685,75 +685,75 @@ public class e
   
   public final boolean a(String paramString, o paramo)
   {
-    AppMethodBeat.i(214683);
+    AppMethodBeat.i(235687);
     if (paramo == null)
     {
-      AppMethodBeat.o(214683);
+      AppMethodBeat.o(235687);
       return false;
     }
-    synchronized (this.jYy)
+    synchronized (this.mys)
     {
-      paramString = (Set)this.jYy.get(paramString);
+      paramString = (Set)this.mys.get(paramString);
       if (paramString != null)
       {
         boolean bool = paramString.remove(paramo);
-        AppMethodBeat.o(214683);
+        AppMethodBeat.o(235687);
         return bool;
       }
-      AppMethodBeat.o(214683);
+      AppMethodBeat.o(235687);
       return false;
     }
   }
   
   public final boolean a(String paramString, p paramp)
   {
-    AppMethodBeat.i(214686);
+    AppMethodBeat.i(235690);
     if (paramp == null)
     {
-      AppMethodBeat.o(214686);
+      AppMethodBeat.o(235690);
       return false;
     }
-    synchronized (this.jYw)
+    synchronized (this.myq)
     {
-      paramString = (Set)this.jYw.get(paramString);
+      paramString = (Set)this.myq.get(paramString);
       if (paramString != null)
       {
         boolean bool = paramString.remove(paramp);
-        AppMethodBeat.o(214686);
+        AppMethodBeat.o(235690);
         return bool;
       }
-      AppMethodBeat.o(214686);
+      AppMethodBeat.o(235690);
       return false;
     }
   }
   
   public final boolean a(String paramString, q paramq)
   {
-    AppMethodBeat.i(214684);
+    AppMethodBeat.i(235689);
     if (paramq == null)
     {
-      AppMethodBeat.o(214684);
+      AppMethodBeat.o(235689);
       return false;
     }
-    synchronized (this.jYx)
+    synchronized (this.myr)
     {
-      paramString = (Set)this.jYx.get(paramString);
+      paramString = (Set)this.myr.get(paramString);
       if (paramString != null)
       {
         boolean bool = paramString.remove(paramq);
-        AppMethodBeat.o(214684);
+        AppMethodBeat.o(235689);
         return bool;
       }
-      AppMethodBeat.o(214684);
+      AppMethodBeat.o(235689);
       return false;
     }
   }
   
-  public final void aFp()
+  public final void aYq()
   {
     try
     {
-      this.jYv = true;
+      this.myp = true;
       return;
     }
     finally
@@ -765,10 +765,10 @@ public class e
   
   static final class a
   {
-    com.tencent.mm.ipcinvoker.b.a jYE;
-    volatile boolean jYF;
-    Runnable jYG;
-    ServiceConnection serviceConnection;
+    volatile boolean myA;
+    Runnable myB;
+    com.tencent.mm.ipcinvoker.b.a myy;
+    ServiceConnection myz;
   }
 }
 

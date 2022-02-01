@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.statusbar;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -20,14 +19,13 @@ import java.util.WeakHashMap;
 
 public class c
 {
-  private static final WeakHashMap<Activity, c> Wfk;
-  public static final boolean XMC;
-  @SuppressLint({"StaticFieldLeak"})
-  private static final c XMH;
-  private final Set<WeakReference<a>> XMD;
-  private boolean XME;
-  int XMF;
-  private WeakReference<View> XMG;
+  private static final WeakHashMap<Activity, c> adKT;
+  public static final boolean afCQ;
+  private static final c afCU;
+  private final Set<WeakReference<a>> Ap;
+  private boolean afCR;
+  int afCS;
+  private WeakReference<View> afCT;
   private final WeakReference<Activity> mActivityRef;
   
   static
@@ -36,14 +34,14 @@ public class c
     if ((Build.VERSION.SDK_INT >= 21) && (!Meizu.hasSmartBar())) {}
     for (boolean bool = true;; bool = false)
     {
-      XMC = bool;
-      XMH = new c()
+      afCQ = bool;
+      afCU = new c()
       {
         public final void a(c.a paramAnonymousa) {}
         
         public final void b(c.a paramAnonymousa) {}
       };
-      Wfk = new WeakHashMap();
+      adKT = new WeakHashMap();
       AppMethodBeat.o(133824);
       return;
     }
@@ -52,28 +50,28 @@ public class c
   private c(Activity paramActivity)
   {
     AppMethodBeat.i(133819);
-    this.XMD = new HashSet();
-    this.XME = false;
-    this.XMF = 0;
+    this.Ap = new HashSet();
+    this.afCR = false;
+    this.afCS = 0;
     this.mActivityRef = new WeakReference(paramActivity);
     AppMethodBeat.o(133819);
   }
   
-  public static c bA(Activity paramActivity)
+  public static c ch(Activity paramActivity)
   {
     AppMethodBeat.i(133822);
-    if ((!XMC) || (paramActivity == null))
+    if ((!afCQ) || (paramActivity == null))
     {
-      paramActivity = XMH;
+      paramActivity = afCU;
       AppMethodBeat.o(133822);
       return paramActivity;
     }
-    c localc2 = (c)Wfk.get(paramActivity);
+    c localc2 = (c)adKT.get(paramActivity);
     c localc1 = localc2;
     if (localc2 == null)
     {
       localc1 = new c(paramActivity);
-      Wfk.put(paramActivity, localc1);
+      adKT.put(paramActivity, localc1);
     }
     AppMethodBeat.o(133822);
     return localc1;
@@ -83,9 +81,9 @@ public class c
   {
     AppMethodBeat.i(133820);
     Object localObject1;
-    if (!this.XME)
+    if (!this.afCR)
     {
-      this.XME = true;
+      this.afCR = true;
       localObject1 = (Activity)this.mActivityRef.get();
       if ((localObject1 != null) && (((Activity)localObject1).getWindow() != null)) {}
     }
@@ -93,9 +91,9 @@ public class c
     {
       if (parama != null)
       {
-        this.XMD.add(new WeakReference(parama));
-        if (this.XMF > 0) {
-          parama.BF(this.XMF);
+        this.Ap.add(new WeakReference(parama));
+        if (this.afCS > 0) {
+          parama.onStatusBarHeightChange(this.afCS);
         }
       }
       AppMethodBeat.o(133820);
@@ -119,7 +117,7 @@ public class c
       }
       catch (Exception localException)
       {
-        this.XME = false;
+        this.afCR = false;
         Log.e("MicroMsg.StatusBarHeightWatcher", "setOnApplyWindowInsetsListener e=%s", new Object[] { localException });
       }
       ((View)localObject3).setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
@@ -137,7 +135,7 @@ public class c
         }
       });
       ((View)localObject3).requestApplyInsets();
-      this.XMG = new WeakReference(localObject3);
+      this.afCT = new WeakReference(localObject3);
       break;
       break;
       label201:
@@ -157,35 +155,35 @@ public class c
     AppMethodBeat.i(133821);
     if (parama != null)
     {
-      Iterator localIterator = new LinkedList(this.XMD).iterator();
+      Iterator localIterator = new LinkedList(this.Ap).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if ((parama == localWeakReference.get()) || (localWeakReference.get() == null)) {
-          this.XMD.remove(localWeakReference);
+          this.Ap.remove(localWeakReference);
         }
       }
     }
     AppMethodBeat.o(133821);
   }
   
-  public final void hXX()
+  public final void jCH()
   {
-    AppMethodBeat.i(237484);
-    if ((this.XMG != null) && (this.XMG.get() != null)) {
-      ((View)this.XMG.get()).requestApplyInsets();
+    AppMethodBeat.i(249916);
+    if ((this.afCT != null) && (this.afCT.get() != null)) {
+      ((View)this.afCT.get()).requestApplyInsets();
     }
-    AppMethodBeat.o(237484);
+    AppMethodBeat.o(249916);
   }
   
   public static abstract interface a
   {
-    public abstract void BF(int paramInt);
+    public abstract void onStatusBarHeightChange(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.statusbar.c
  * JD-Core Version:    0.7.0.1
  */

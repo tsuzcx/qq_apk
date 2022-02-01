@@ -1,9 +1,5 @@
 package com.tencent.map.lib.models;
 
-import androidx.annotation.Keep;
-import com.tencent.tencentmap.mapsdk.maps.model.OverlayLevel;
-
-@Keep
 public class CircleInfo
 {
   public int borderColor;
@@ -14,13 +10,13 @@ public class CircleInfo
   public boolean drawFill = true;
   public int fillColor;
   public boolean isVisible = true;
-  public int level = OverlayLevel.OverlayLevelAboveLabels;
+  public int level = 2;
   public float radius;
   public int zIndex = 0;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.map.lib.models.CircleInfo
  * JD-Core Version:    0.7.0.1
  */

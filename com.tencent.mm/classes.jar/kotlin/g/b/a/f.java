@@ -1,10 +1,7 @@
 package kotlin.g.b.a;
 
-import kotlin.l;
-
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/jvm/internal/markers/KMutableMap;", "Lkotlin/jvm/internal/markers/KMappedMarker;", "Entry", "kotlin-stdlib"})
 public abstract interface f
-  extends a
+  extends d
 {}
 
 

@@ -1,6 +1,5 @@
 package io.flutter.plugin.platform;
 
-import android.annotation.TargetApi;
 import android.app.Presentation;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -13,34 +12,30 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.FrameLayout;
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.view.AccessibilityViewEmbedder;
 
-@TargetApi(17)
-@Keep
 class SingleViewPresentation
   extends Presentation
 {
-  private final a accessibilityEventsDelegate;
+  private final AccessibilityEventsDelegate accessibilityEventsDelegate;
   private FrameLayout container;
   private Object createParams;
   private final View.OnFocusChangeListener focusChangeListener;
   private final Context outerContext;
-  private a rootView;
+  private AccessibilityDelegatingFrameLayout rootView;
   private boolean startFocused;
-  private e state;
-  private final d viewFactory;
+  private PresentationState state;
+  private final PlatformViewFactory viewFactory;
   private int viewId;
   
-  public SingleViewPresentation(Context paramContext, Display paramDisplay, a parama, e parame, View.OnFocusChangeListener paramOnFocusChangeListener, boolean paramBoolean)
+  public SingleViewPresentation(Context paramContext, Display paramDisplay, AccessibilityEventsDelegate paramAccessibilityEventsDelegate, PresentationState paramPresentationState, View.OnFocusChangeListener paramOnFocusChangeListener, boolean paramBoolean)
   {
-    super(new SingleViewPresentation.c(paramContext), paramDisplay);
+    super(new SingleViewPresentation.ImmContext(paramContext), paramDisplay);
     AppMethodBeat.i(9919);
     this.startFocused = false;
-    this.accessibilityEventsDelegate = parama;
+    this.accessibilityEventsDelegate = paramAccessibilityEventsDelegate;
     this.viewFactory = null;
-    this.state = parame;
+    this.state = paramPresentationState;
     this.focusChangeListener = paramOnFocusChangeListener;
     this.outerContext = paramContext;
     getWindow().setFlags(8, 8);
@@ -48,18 +43,18 @@ class SingleViewPresentation
     AppMethodBeat.o(9919);
   }
   
-  public SingleViewPresentation(Context paramContext, Display paramDisplay, d paramd, a parama, int paramInt, Object paramObject, View.OnFocusChangeListener paramOnFocusChangeListener)
+  public SingleViewPresentation(Context paramContext, Display paramDisplay, PlatformViewFactory paramPlatformViewFactory, AccessibilityEventsDelegate paramAccessibilityEventsDelegate, int paramInt, Object paramObject, View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    super(new SingleViewPresentation.c(paramContext), paramDisplay);
+    super(new SingleViewPresentation.ImmContext(paramContext), paramDisplay);
     AppMethodBeat.i(9918);
     this.startFocused = false;
-    this.viewFactory = paramd;
-    this.accessibilityEventsDelegate = parama;
+    this.viewFactory = paramPlatformViewFactory;
+    this.accessibilityEventsDelegate = paramAccessibilityEventsDelegate;
     this.viewId = paramInt;
     this.createParams = paramObject;
     this.focusChangeListener = paramOnFocusChangeListener;
     this.outerContext = paramContext;
-    this.state = new e();
+    this.state = new PresentationState();
     getWindow().setFlags(8, 8);
     if (Build.VERSION.SDK_INT >= 19) {
       getWindow().setType(2030);
@@ -67,27 +62,27 @@ class SingleViewPresentation
     AppMethodBeat.o(9918);
   }
   
-  public e detachState()
+  public PresentationState detachState()
   {
     AppMethodBeat.i(9921);
     this.container.removeAllViews();
     this.rootView.removeAllViews();
-    e locale = this.state;
+    PresentationState localPresentationState = this.state;
     AppMethodBeat.o(9921);
-    return locale;
+    return localPresentationState;
   }
   
-  public c getView()
+  public PlatformView getView()
   {
-    AppMethodBeat.i(255611);
-    if (e.c(this.state) == null)
+    AppMethodBeat.i(189932);
+    if (this.state.platformView == null)
     {
-      AppMethodBeat.o(255611);
+      AppMethodBeat.o(189932);
       return null;
     }
-    c localc = e.c(this.state);
-    AppMethodBeat.o(255611);
-    return localc;
+    PlatformView localPlatformView = this.state.platformView;
+    AppMethodBeat.o(189932);
+    return localPlatformView;
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -95,24 +90,24 @@ class SingleViewPresentation
     AppMethodBeat.i(9920);
     super.onCreate(paramBundle);
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    if (e.a(this.state) == null) {
-      e.a(this.state, new SingleViewPresentation.b(getContext()));
+    if (this.state.fakeWindowViewGroup == null) {
+      PresentationState.access$002(this.state, new SingleViewPresentation.FakeWindowViewGroup(getContext()));
     }
-    if (e.b(this.state) == null)
+    if (this.state.windowManagerHandler == null)
     {
       paramBundle = (WindowManager)getContext().getSystemService("window");
-      e.a(this.state, new SingleViewPresentation.f(paramBundle, e.a(this.state)));
+      PresentationState.access$102(this.state, new SingleViewPresentation.WindowManagerHandler(paramBundle, this.state.fakeWindowViewGroup));
     }
     this.container = new FrameLayout(getContext());
-    new SingleViewPresentation.d(getContext(), e.b(this.state), this.outerContext);
-    if (e.c(this.state) == null) {
-      e.a(this.state, this.viewFactory.iBt());
+    paramBundle = new SingleViewPresentation.PresentationContext(getContext(), this.state.windowManagerHandler, this.outerContext);
+    if (this.state.platformView == null) {
+      PresentationState.access$202(this.state, this.viewFactory.create(paramBundle, this.viewId, this.createParams));
     }
-    paramBundle = e.c(this.state).getView();
+    paramBundle = this.state.platformView.getView();
     this.container.addView(paramBundle);
-    this.rootView = new a(getContext(), this.accessibilityEventsDelegate, paramBundle);
+    this.rootView = new AccessibilityDelegatingFrameLayout(getContext(), this.accessibilityEventsDelegate, paramBundle);
     this.rootView.addView(this.container);
-    this.rootView.addView(e.a(this.state));
+    this.rootView.addView(this.state.fakeWindowViewGroup);
     paramBundle.setOnFocusChangeListener(this.focusChangeListener);
     this.rootView.setFocusableInTouchMode(true);
     if (this.startFocused) {
@@ -127,72 +122,38 @@ class SingleViewPresentation
     }
   }
   
-  static class a
+  static class AccessibilityDelegatingFrameLayout
     extends FrameLayout
   {
-    private final View aawn;
-    private final a accessibilityEventsDelegate;
+    private final AccessibilityEventsDelegate accessibilityEventsDelegate;
+    private final View embeddedView;
     
-    public a(Context paramContext, a parama, View paramView)
+    public AccessibilityDelegatingFrameLayout(Context paramContext, AccessibilityEventsDelegate paramAccessibilityEventsDelegate, View paramView)
     {
       super();
-      this.accessibilityEventsDelegate = parama;
-      this.aawn = paramView;
+      this.accessibilityEventsDelegate = paramAccessibilityEventsDelegate;
+      this.embeddedView = paramView;
     }
     
     public boolean requestSendAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
     {
       AppMethodBeat.i(9888);
-      Object localObject = this.accessibilityEventsDelegate;
-      View localView = this.aawn;
-      if (((a)localObject).aapq == null)
-      {
-        AppMethodBeat.o(9888);
-        return false;
-      }
-      localObject = ((a)localObject).aapq;
-      if (!((io.flutter.view.a)localObject).aawF.requestSendAccessibilityEvent(localView, paramView, paramAccessibilityEvent))
-      {
-        AppMethodBeat.o(9888);
-        return false;
-      }
-      paramView = ((io.flutter.view.a)localObject).aawF.getRecordFlutterId(localView, paramAccessibilityEvent);
-      if (paramView == null)
-      {
-        AppMethodBeat.o(9888);
-        return false;
-      }
-      switch (paramAccessibilityEvent.getEventType())
-      {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(9888);
-        return true;
-        ((io.flutter.view.a)localObject).aawQ = null;
-        continue;
-        ((io.flutter.view.a)localObject).aawL = paramView;
-        ((io.flutter.view.a)localObject).aawK = null;
-        continue;
-        ((io.flutter.view.a)localObject).aawM = null;
-        ((io.flutter.view.a)localObject).aawL = null;
-        continue;
-        ((io.flutter.view.a)localObject).aawM = paramView;
-        ((io.flutter.view.a)localObject).aawO = null;
-      }
+      boolean bool = this.accessibilityEventsDelegate.requestSendAccessibilityEvent(this.embeddedView, paramView, paramAccessibilityEvent);
+      AppMethodBeat.o(9888);
+      return bool;
     }
   }
   
-  static class e
+  static class PresentationState
   {
-    private SingleViewPresentation.f aawp;
-    private c aawr;
-    private SingleViewPresentation.b aaws;
+    private SingleViewPresentation.FakeWindowViewGroup fakeWindowViewGroup;
+    private PlatformView platformView;
+    private SingleViewPresentation.WindowManagerHandler windowManagerHandler;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation
  * JD-Core Version:    0.7.0.1
  */

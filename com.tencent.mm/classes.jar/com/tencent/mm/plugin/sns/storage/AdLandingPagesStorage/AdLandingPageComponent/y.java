@@ -7,28 +7,28 @@ import java.util.List;
 public final class y
   extends aa
 {
-  public int Kmw;
-  public int Kmx;
-  public int Kmy;
-  public int Kmz;
-  public List<aa> ayS;
+  public int QKB;
+  public int QKC;
+  public int QKD;
+  public int QKE;
+  public List<aa> aAO;
   public int cornerRadius;
   
   public y()
   {
     AppMethodBeat.i(96320);
-    this.ayS = new ArrayList();
+    this.aAO = new ArrayList();
     AppMethodBeat.o(96320);
   }
   
-  public final List<aa> fKw()
+  public final List<aa> haE()
   {
-    return this.ayS;
+    return this.aAO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y
  * JD-Core Version:    0.7.0.1
  */

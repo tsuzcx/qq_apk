@@ -11,14 +11,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.platformtools.u;
-import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.platformtools.r;
+import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.scanner.l.d;
 import com.tencent.mm.plugin.scanner.l.f;
 import com.tencent.mm.plugin.scanner.l.g;
-import com.tencent.mm.plugin.scanner.util.q;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.plugin.scanner.util.s;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -28,31 +28,31 @@ import java.io.IOException;
 
 public final class c
   extends Preference
-  implements u.a
+  implements r.a
 {
-  private TextView IPM;
-  String IPN;
+  private TextView OYJ;
+  String OYK;
   String mContent;
   private View mView;
-  private TextView pPT;
+  private TextView sUt;
   private f screen;
-  String tMB;
-  private ImageView tXu;
+  String wPR;
+  private ImageView xaN;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(51785);
     this.mView = null;
-    this.tXu = null;
-    this.pPT = null;
-    this.IPM = null;
-    setLayoutResource(l.g.IEk);
-    u.a(this);
+    this.xaN = null;
+    this.sUt = null;
+    this.OYJ = null;
+    setLayoutResource(l.g.OKn);
+    r.a(this);
     AppMethodBeat.o(51785);
   }
   
-  public final View c(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(51786);
     if (this.mView == null) {
@@ -67,10 +67,10 @@ public final class c
   public final void k(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(51788);
-    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.IPN)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.OYK)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.tXu.setImageBitmap(paramBitmap);
-      this.tXu.setBackgroundColor(0);
+      this.xaN.setImageBitmap(paramBitmap);
+      this.xaN.setBackgroundColor(0);
       if (this.screen != null) {
         this.screen.notifyDataSetChanged();
       }
@@ -82,37 +82,37 @@ public final class c
   {
     AppMethodBeat.i(51787);
     super.onBindView(paramView);
-    this.tXu = ((ImageView)paramView.findViewById(l.f.ICx));
-    this.pPT = ((TextView)paramView.findViewById(l.f.ICy));
-    this.IPM = ((TextView)paramView.findViewById(l.f.comment_content));
+    this.xaN = ((ImageView)paramView.findViewById(l.f.OIy));
+    this.sUt = ((TextView)paramView.findViewById(l.f.OIz));
+    this.OYJ = ((TextView)paramView.findViewById(l.f.comment_content));
     Object localObject;
-    if (!Util.isNullOrNil(this.IPN))
+    if (!Util.isNullOrNil(this.OYK))
     {
-      localObject = u.a(new q(this.IPN));
+      localObject = r.a(new s(this.OYK));
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        this.tXu.setImageBitmap((Bitmap)localObject);
-        this.tXu.setBackgroundColor(0);
-        if (Util.isNullOrNil(this.tMB)) {
+        this.xaN.setImageBitmap((Bitmap)localObject);
+        this.xaN.setBackgroundColor(0);
+        if (Util.isNullOrNil(this.wPR)) {
           break label294;
         }
-        this.pPT.setText(l.b(this.mContext, this.tMB, this.pPT.getTextSize()));
+        this.sUt.setText(p.b(this.mContext, this.wPR, this.sUt.getTextSize()));
         label139:
         if (Util.isNullOrNil(this.mContent)) {
           break label306;
         }
-        this.IPM.setText(this.mContent);
+        this.OYJ.setText(this.mContent);
       }
     }
     for (;;)
     {
       for (;;)
       {
-        if ((Util.isNullOrNil(this.tMB)) && (Util.isNullOrNil(this.IPN)))
+        if ((Util.isNullOrNil(this.wPR)) && (Util.isNullOrNil(this.OYK)))
         {
           paramView = (LinearLayout)paramView.findViewById(l.f.comment_container);
           localObject = paramView.getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject).height = this.mContext.getResources().getDimensionPixelSize(l.d.IBY);
+          ((ViewGroup.LayoutParams)localObject).height = this.mContext.getResources().getDimensionPixelSize(l.d.OIa);
           paramView.setPadding(BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 9.0F), 0, 0, 0);
           paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
@@ -121,21 +121,21 @@ public final class c
         try
         {
           localObject = BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
-          this.tXu.setImageBitmap((Bitmap)localObject);
+          this.xaN.setImageBitmap((Bitmap)localObject);
         }
         catch (IOException localIOException)
         {
-          this.tXu.setImageBitmap(null);
+          this.xaN.setImageBitmap(null);
         }
       }
       break;
-      this.tXu.setVisibility(8);
+      this.xaN.setVisibility(8);
       break;
       label294:
-      this.pPT.setVisibility(8);
+      this.sUt.setVisibility(8);
       break label139;
       label306:
-      this.IPM.setVisibility(8);
+      this.OYJ.setVisibility(8);
     }
   }
 }

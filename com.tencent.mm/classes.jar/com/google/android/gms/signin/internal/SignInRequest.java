@@ -5,21 +5,13 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.ResolveAccountRequest;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="SignInRequestCreator")
 public class SignInRequest
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<SignInRequest> CREATOR;
-  @SafeParcelable.Field(getter="getResolveAccountRequest", id=2)
   private final ResolveAccountRequest zzadt;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
   
   static
@@ -29,8 +21,7 @@ public class SignInRequest
     AppMethodBeat.o(12190);
   }
   
-  @SafeParcelable.Constructor
-  SignInRequest(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) ResolveAccountRequest paramResolveAccountRequest)
+  SignInRequest(int paramInt, ResolveAccountRequest paramResolveAccountRequest)
   {
     this.zzal = paramInt;
     this.zzadt = paramResolveAccountRequest;
@@ -58,7 +49,7 @@ public class SignInRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.signin.internal.SignInRequest
  * JD-Core Version:    0.7.0.1
  */

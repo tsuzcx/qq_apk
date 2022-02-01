@@ -1,127 +1,127 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$aj
   extends e
 {
-  public long DPJ = 0L;
-  public int SKL = 0;
-  public int ZgE = 0;
-  public int ZgF = 0;
-  public int ZgG = 0;
-  public int ZgH = 0;
-  public int ZgI = 0;
-  public int ZgJ = -1;
-  public int ZgK = 0;
-  public int ZgL = 0;
-  public int ZgM = 0;
+  public long Hnt = 0L;
+  public int ZPI = 0;
+  public int ahff = 0;
+  public int ahfg = 0;
+  public int ahfh = 0;
+  public int ahfi = 0;
+  public int ahfj = 0;
+  public int ahfk = -1;
+  public int ahfl = 0;
+  public int ahfm = 0;
+  public int ahfn = 0;
   public int roomId = 0;
   
   public a$aj()
   {
-    this.ccR = -1;
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (this.SKL != 0) {
-      i = j + b.bN(1, this.SKL);
-    }
-    j = i;
-    if (this.roomId != 0) {
-      j = i + b.bM(2, this.roomId);
-    }
-    i = j;
-    if (this.DPJ != 0L) {
-      i = j + b.p(3, this.DPJ);
-    }
-    j = i;
-    if (this.ZgE != 0) {
-      j = i + b.bN(4, this.ZgE);
-    }
-    i = j;
-    if (this.ZgF != 0) {
-      i = j + b.bN(5, this.ZgF);
-    }
-    j = i;
-    if (this.ZgG != 0) {
-      j = i + b.bN(6, this.ZgG);
-    }
-    i = j;
-    if (this.ZgH != 0) {
-      i = j + b.bN(7, this.ZgH);
-    }
-    j = i;
-    if (this.ZgI != 0) {
-      j = i + b.bN(8, this.ZgI);
-    }
-    i = j;
-    if (this.ZgJ != -1) {
-      i = j + b.bM(9, this.ZgJ);
-    }
-    j = i;
-    if (this.ZgK != 0) {
-      j = i + b.bM(10, this.ZgK);
-    }
-    i = j;
-    if (this.ZgL != 0) {
-      i = j + b.bM(11, this.ZgL);
-    }
-    j = i;
-    if (this.ZgM != 0) {
-      j = i + b.bM(12, this.ZgM);
-    }
-    return j;
+    this.dXv = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.SKL != 0) {
-      paramb.bK(1, this.SKL);
+    if (this.ZPI != 0) {
+      paramb.cG(1, this.ZPI);
     }
     if (this.roomId != 0) {
-      paramb.bJ(2, this.roomId);
+      paramb.cF(2, this.roomId);
     }
-    if (this.DPJ != 0L) {
-      paramb.r(3, this.DPJ);
+    if (this.Hnt != 0L) {
+      paramb.t(3, this.Hnt);
     }
-    if (this.ZgE != 0) {
-      paramb.bK(4, this.ZgE);
+    if (this.ahff != 0) {
+      paramb.cG(4, this.ahff);
     }
-    if (this.ZgF != 0) {
-      paramb.bK(5, this.ZgF);
+    if (this.ahfg != 0) {
+      paramb.cG(5, this.ahfg);
     }
-    if (this.ZgG != 0) {
-      paramb.bK(6, this.ZgG);
+    if (this.ahfh != 0) {
+      paramb.cG(6, this.ahfh);
     }
-    if (this.ZgH != 0) {
-      paramb.bK(7, this.ZgH);
+    if (this.ahfi != 0) {
+      paramb.cG(7, this.ahfi);
     }
-    if (this.ZgI != 0) {
-      paramb.bK(8, this.ZgI);
+    if (this.ahfj != 0) {
+      paramb.cG(8, this.ahfj);
     }
-    if (this.ZgJ != -1) {
-      paramb.bJ(9, this.ZgJ);
+    if (this.ahfk != -1) {
+      paramb.cF(9, this.ahfk);
     }
-    if (this.ZgK != 0) {
-      paramb.bJ(10, this.ZgK);
+    if (this.ahfl != 0) {
+      paramb.cF(10, this.ahfl);
     }
-    if (this.ZgL != 0) {
-      paramb.bJ(11, this.ZgL);
+    if (this.ahfm != 0) {
+      paramb.cF(11, this.ahfm);
     }
-    if (this.ZgM != 0) {
-      paramb.bJ(12, this.ZgM);
+    if (this.ahfn != 0) {
+      paramb.cF(12, this.ahfn);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (this.ZPI != 0) {
+      i = j + b.cK(1, this.ZPI);
+    }
+    j = i;
+    if (this.roomId != 0) {
+      j = i + b.cJ(2, this.roomId);
+    }
+    i = j;
+    if (this.Hnt != 0L) {
+      i = j + b.q(3, this.Hnt);
+    }
+    j = i;
+    if (this.ahff != 0) {
+      j = i + b.cK(4, this.ahff);
+    }
+    i = j;
+    if (this.ahfg != 0) {
+      i = j + b.cK(5, this.ahfg);
+    }
+    j = i;
+    if (this.ahfh != 0) {
+      j = i + b.cK(6, this.ahfh);
+    }
+    i = j;
+    if (this.ahfi != 0) {
+      i = j + b.cK(7, this.ahfi);
+    }
+    j = i;
+    if (this.ahfj != 0) {
+      j = i + b.cK(8, this.ahfj);
+    }
+    i = j;
+    if (this.ahfk != -1) {
+      i = j + b.cJ(9, this.ahfk);
+    }
+    j = i;
+    if (this.ahfl != 0) {
+      j = i + b.cJ(10, this.ahfl);
+    }
+    i = j;
+    if (this.ahfm != 0) {
+      i = j + b.cJ(11, this.ahfm);
+    }
+    j = i;
+    if (this.ahfn != 0) {
+      j = i + b.cJ(12, this.ahfn);
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.aj
  * JD-Core Version:    0.7.0.1
  */

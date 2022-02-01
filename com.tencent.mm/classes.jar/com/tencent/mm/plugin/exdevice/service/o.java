@@ -9,15 +9,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface o
   extends IInterface
 {
-  public abstract long cZX();
+  public abstract long dGq();
   
-  public abstract byte[] cZY();
+  public abstract byte[] dGr();
   
-  public abstract int cZZ();
+  public abstract int dGs();
   
-  public abstract int daa();
+  public abstract int dGt();
   
-  public abstract int dab();
+  public abstract int dGu();
   
   public static abstract class a
     extends Binder
@@ -28,7 +28,7 @@ public abstract interface o
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
     }
     
-    public static o E(IBinder paramIBinder)
+    public static o J(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -40,9 +40,9 @@ public abstract interface o
       return new a(paramIBinder);
     }
     
-    public static o dac()
+    public static o dGv()
     {
-      return a.vjx;
+      return a.yvv;
     }
     
     public IBinder asBinder()
@@ -61,31 +61,31 @@ public abstract interface o
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-        long l = cZX();
+        long l = dGq();
         paramParcel2.writeNoException();
         paramParcel2.writeLong(l);
         return true;
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-        paramParcel1 = cZY();
+        paramParcel1 = dGr();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-        paramInt1 = cZZ();
+        paramInt1 = dGs();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-        paramInt1 = daa();
+        paramInt1 = dGt();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramInt1 = dab();
+      paramInt1 = dGu();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -94,7 +94,7 @@ public abstract interface o
     static final class a
       implements o
     {
-      public static o vjx;
+      public static o yvv;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -107,7 +107,7 @@ public abstract interface o
         return this.mRemote;
       }
       
-      public final long cZX()
+      public final long dGq()
       {
         AppMethodBeat.i(23684);
         Parcel localParcel1 = Parcel.obtain();
@@ -115,9 +115,9 @@ public abstract interface o
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (o.a.dac() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (o.a.dGv() != null))
           {
-            l = o.a.dac().cZX();
+            l = o.a.dGv().dGq();
             return l;
           }
           localParcel2.readException();
@@ -132,7 +132,7 @@ public abstract interface o
         }
       }
       
-      public final byte[] cZY()
+      public final byte[] dGr()
       {
         AppMethodBeat.i(23685);
         Parcel localParcel1 = Parcel.obtain();
@@ -140,9 +140,9 @@ public abstract interface o
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (o.a.dac() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (o.a.dGv() != null))
           {
-            arrayOfByte = o.a.dac().cZY();
+            arrayOfByte = o.a.dGv().dGr();
             return arrayOfByte;
           }
           localParcel2.readException();
@@ -157,7 +157,7 @@ public abstract interface o
         }
       }
       
-      public final int cZZ()
+      public final int dGs()
       {
         AppMethodBeat.i(23686);
         Parcel localParcel1 = Parcel.obtain();
@@ -165,9 +165,9 @@ public abstract interface o
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (o.a.dac() != null))
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (o.a.dGv() != null))
           {
-            i = o.a.dac().cZZ();
+            i = o.a.dGv().dGs();
             return i;
           }
           localParcel2.readException();
@@ -182,7 +182,7 @@ public abstract interface o
         }
       }
       
-      public final int daa()
+      public final int dGt()
       {
         AppMethodBeat.i(23687);
         Parcel localParcel1 = Parcel.obtain();
@@ -190,9 +190,9 @@ public abstract interface o
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (o.a.dac() != null))
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (o.a.dGv() != null))
           {
-            i = o.a.dac().daa();
+            i = o.a.dGv().dGt();
             return i;
           }
           localParcel2.readException();
@@ -207,7 +207,7 @@ public abstract interface o
         }
       }
       
-      public final int dab()
+      public final int dGu()
       {
         AppMethodBeat.i(23688);
         Parcel localParcel1 = Parcel.obtain();
@@ -215,9 +215,9 @@ public abstract interface o
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (o.a.dac() != null))
+          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (o.a.dGv() != null))
           {
-            i = o.a.dac().dab();
+            i = o.a.dGv().dGu();
             return i;
           }
           localParcel2.readException();
@@ -236,7 +236,7 @@ public abstract interface o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.o
  * JD-Core Version:    0.7.0.1
  */

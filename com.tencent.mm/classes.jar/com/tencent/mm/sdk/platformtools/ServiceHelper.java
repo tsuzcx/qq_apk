@@ -9,15 +9,15 @@ public class ServiceHelper
 {
   public static void startService(Intent paramIntent)
   {
-    AppMethodBeat.i(261391);
+    AppMethodBeat.i(243845);
     if (Build.VERSION.SDK_INT >= 26)
     {
       MMApplicationContext.getContext().startForegroundService(paramIntent);
-      AppMethodBeat.o(261391);
+      AppMethodBeat.o(243845);
       return;
     }
     MMApplicationContext.getContext().startService(paramIntent);
-    AppMethodBeat.o(261391);
+    AppMethodBeat.o(243845);
   }
 }
 

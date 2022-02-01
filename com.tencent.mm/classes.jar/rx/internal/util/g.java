@@ -8,22 +8,13 @@ public final class g
   extends AtomicLong
   implements ThreadFactory
 {
-  public static final ThreadFactory abQM;
+  public static final ThreadFactory akdE;
   final String prefix;
   
   static
   {
     AppMethodBeat.i(90207);
-    abQM = new ThreadFactory()
-    {
-      public final Thread newThread(Runnable paramAnonymousRunnable)
-      {
-        AppMethodBeat.i(90205);
-        paramAnonymousRunnable = new AssertionError("No threads allowed.");
-        AppMethodBeat.o(90205);
-        throw paramAnonymousRunnable;
-      }
-    };
+    akdE = new g.1();
     AppMethodBeat.o(90207);
   }
   
@@ -43,7 +34,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     rx.internal.util.g
  * JD-Core Version:    0.7.0.1
  */

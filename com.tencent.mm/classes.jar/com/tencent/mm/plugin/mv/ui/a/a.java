@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.mv.ui.a;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,156 +8,140 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.mv.b.e;
 import com.tencent.mm.plugin.mv.b.f;
-import com.tencent.mm.plugin.mv.ui.uic.m.b;
-import com.tencent.mm.plugin.mv.ui.uic.m.c;
+import com.tencent.mm.plugin.mv.model.e;
+import com.tencent.mm.plugin.mv.ui.uic.k.b;
+import com.tencent.mm.plugin.mv.ui.uic.k.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "sizeResolver", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;", "actionCallback", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVEditItemAction;", "(Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVEditItemAction;)V", "TAG", "", "getActionCallback", "()Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVEditItemAction;", "itemWidth", "", "getSizeResolver", "()Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "Companion", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "sizeResolver", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;", "actionCallback", "Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVEditItemAction;", "(Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVEditItemAction;)V", "TAG", "", "getActionCallback", "()Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVEditItemAction;", "itemWidth", "", "getSizeResolver", "()Lcom/tencent/mm/plugin/mv/ui/uic/MusicMvMakerFixEditUIC$IMVItemSizeResolver;", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "Companion", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends com.tencent.mm.view.recyclerview.e<com.tencent.mm.plugin.mv.model.e>
+  extends f<e>
 {
-  public static final a GfF;
-  private final m.c GfD;
-  final m.b GfE;
+  public static final a MaU;
+  private final k.c MaV;
+  private final k.b MaW;
   private final String TAG;
-  private final int tHY;
+  private final int wLI;
   
   static
   {
-    AppMethodBeat.i(229622);
-    GfF = new a((byte)0);
-    AppMethodBeat.o(229622);
+    AppMethodBeat.i(288217);
+    MaU = new a((byte)0);
+    AppMethodBeat.o(288217);
   }
   
-  public a(m.c paramc, m.b paramb)
+  public a(k.c paramc, k.b paramb)
   {
-    AppMethodBeat.i(229621);
-    this.GfD = paramc;
-    this.GfE = paramb;
+    AppMethodBeat.i(288186);
+    this.MaV = paramc;
+    this.MaW = paramb;
     this.TAG = "MicroMsg.MusicMVVideoItemConverter";
-    this.tHY = this.GfD.getItemWidth();
-    AppMethodBeat.o(229621);
+    this.wLI = this.MaV.getItemWidth();
+    AppMethodBeat.o(288186);
   }
   
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  private static final void a(a parama, int paramInt, e parame, j paramj, View paramView)
   {
-    AppMethodBeat.i(229619);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    paramRecyclerView = (LinearLayout)parami.RD(b.e.FXX);
-    Log.d(this.TAG, "onCreateViewHolder, itemWidth:" + this.tHY);
-    p.j(paramRecyclerView, "root");
-    paramRecyclerView.getLayoutParams().width = this.tHY;
+    AppMethodBeat.i(288194);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parama);
+    localb.sc(paramInt);
+    localb.cH(parame);
+    localb.cH(paramj);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    s.u(parame, "$item");
+    s.u(paramj, "$holder");
+    parama = parama.MaW;
+    paramj = paramj.caK;
+    s.s(paramj, "holder.itemView");
+    parama.a(paramInt, parame, paramj);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(288194);
+  }
+  
+  private static final void b(a parama, int paramInt, e parame, j paramj, View paramView)
+  {
+    AppMethodBeat.i(288208);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parama);
+    localb.sc(paramInt);
+    localb.cH(parame);
+    localb.cH(paramj);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    s.u(parame, "$item");
+    s.u(paramj, "$holder");
+    parama = parama.MaW;
+    paramj = paramj.caK;
+    s.s(paramj, "holder.itemView");
+    parama.b(paramInt, parame, paramj);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(288208);
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
+  {
+    AppMethodBeat.i(288247);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    paramRecyclerView = (LinearLayout)paramj.UH(b.e.LTy);
+    Log.d(this.TAG, s.X("onCreateViewHolder, itemWidth:", Integer.valueOf(this.wLI)));
+    paramRecyclerView.getLayoutParams().width = this.wLI;
     paramRecyclerView.getLayoutParams().height = -1;
-    AppMethodBeat.o(229619);
+    AppMethodBeat.o(288247);
   }
   
   public final int getLayoutId()
   {
-    return b.f.FZN;
+    return b.f.LVK;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter$Companion;", "", "()V", "handleSelection", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter$Companion;", "", "()V", "handleSelection", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static void a(i parami, com.tencent.mm.plugin.mv.model.e parame)
+    public static void a(j paramj, e parame)
     {
-      AppMethodBeat.i(229348);
-      p.k(parami, "holder");
-      p.k(parame, "item");
-      View localView = parami.amk;
-      p.j(localView, "holder.itemView");
-      localView.setSelected(parame.xUg);
-      localView = parami.RD(b.e.FXK);
-      if (parame.xUg)
+      AppMethodBeat.i(288146);
+      s.u(paramj, "holder");
+      s.u(parame, "item");
+      paramj.caK.setSelected(parame.Bvd);
+      View localView = paramj.UH(b.e.LTl);
+      if (parame.Bvd)
       {
         if (parame.type != 0)
         {
-          parame = parami.amk.findViewById(b.e.FXW);
-          p.j(parame, "holder.itemView.findView…Id<View>(R.id.mvItemMask)");
-          parame.setVisibility(8);
-          p.j(localView, "actionRoot");
+          paramj.caK.findViewById(b.e.LTx).setVisibility(8);
           localView.setVisibility(0);
         }
         for (;;)
         {
-          parami = parami.RD(b.e.FXV);
-          p.j(parami, "holder.getView<View>(R.id.mvItemLyricRoot)");
-          parami.setVisibility(0);
-          AppMethodBeat.o(229348);
+          paramj.UH(b.e.LTw).setVisibility(0);
+          AppMethodBeat.o(288146);
           return;
-          parame = parami.amk.findViewById(b.e.FXW);
-          p.j(parame, "holder.itemView.findView…Id<View>(R.id.mvItemMask)");
-          parame.setVisibility(0);
-          p.j(localView, "actionRoot");
+          paramj.caK.findViewById(b.e.LTx).setVisibility(0);
           localView.setVisibility(8);
         }
       }
-      ((ProgressBar)parami.amk.findViewById(b.e.FYL)).setProgress(0);
-      parame = parami.amk.findViewById(b.e.FXW);
-      p.j(parame, "holder.itemView.findView…Id<View>(R.id.mvItemMask)");
-      parame.setVisibility(0);
-      p.j(localView, "actionRoot");
+      ((ProgressBar)paramj.caK.findViewById(b.e.LUr)).setProgress(0);
+      paramj.caK.findViewById(b.e.LTx).setVisibility(0);
       localView.setVisibility(8);
-      parami = parami.RD(b.e.FXV);
-      p.j(parami, "holder.getView<View>(R.id.mvItemLyricRoot)");
-      parami.setVisibility(8);
-      AppMethodBeat.o(229348);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(a parama, int paramInt, com.tencent.mm.plugin.mv.model.e parame, i parami) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(231161);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      paramView = this.GfG.GfE;
-      int i = this.jEN;
-      localObject = this.GfH;
-      View localView = this.tDl.amk;
-      p.j(localView, "holder.itemView");
-      paramView.a(i, (com.tencent.mm.plugin.mv.model.e)localObject, localView);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(231161);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(a parama, int paramInt, com.tencent.mm.plugin.mv.model.e parame, i parami) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(232912);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      paramView = this.GfG.GfE;
-      int i = this.jEN;
-      localObject = this.GfH;
-      View localView = this.tDl.amk;
-      p.j(localView, "holder.itemView");
-      paramView.b(i, (com.tencent.mm.plugin.mv.model.e)localObject, localView);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/convert/MusicMVVideoItemConverter$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(232912);
+      paramj.UH(b.e.LTw).setVisibility(8);
+      AppMethodBeat.o(288146);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

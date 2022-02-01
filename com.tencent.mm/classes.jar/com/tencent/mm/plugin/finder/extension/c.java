@@ -4,24 +4,27 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.api.g;
-import com.tencent.mm.plugin.finder.api.g.a;
-import com.tencent.mm.plugin.finder.cgi.cm;
+import com.tencent.mm.am.p;
+import com.tencent.mm.model.z;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.plugin.finder.api.j;
+import com.tencent.mm.plugin.finder.api.j.a;
+import com.tencent.mm.plugin.finder.api.k;
+import com.tencent.mm.plugin.finder.cgi.dn;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
 import com.tencent.mm.protocal.ad;
-import com.tencent.mm.protocal.protobuf.aqt;
-import com.tencent.mm.protocal.protobuf.bhw;
-import com.tencent.mm.protocal.protobuf.bkb;
-import com.tencent.mm.protocal.protobuf.bkc;
+import com.tencent.mm.protocal.protobuf.auw;
+import com.tencent.mm.protocal.protobuf.btw;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.bxe;
+import com.tencent.mm.protocal.protobuf.bxf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -29,760 +32,556 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import kotlin.g.b.p;
-import kotlin.o;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.r;
-import kotlin.x;
+import kotlin.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncExtension;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MSG_SYNC_NEXT", "", "SYNC_FAIL_MAX_COUNT", "curSelector", "syncHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "syncTask", "Ljava/lang/Runnable;", "sync_fail_count", "waitLinkedQueue", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lkotlin/Triple;", "Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension$SyncArgs;", "addSyncHandler", "", "cmdId", "handler", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "checkLoop", "doNextSync", "doSync", "selector", "scene", "mergeSyncKey", "", "reqKey", "", "respKey", "onSceneEnd", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/modelbase/NetSceneBase;", "register", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "removeSyncHandler", "selector2String", "unregister", "Companion", "SyncArgs", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncExtension;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MSG_SYNC_NEXT", "", "SYNC_FAIL_MAX_COUNT", "bypRedDotNotifyEventListener", "com/tencent/mm/plugin/finder/extension/FinderSyncExtension$bypRedDotNotifyEventListener$1", "Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension$bypRedDotNotifyEventListener$1;", "curSelector", "syncHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "syncTask", "Ljava/lang/Runnable;", "sync_fail_count", "waitLinkedQueue", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lkotlin/Triple;", "Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension$SyncArgs;", "addSyncHandler", "", "cmdId", "handler", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "checkLoop", "doNextSync", "doSync", "selector", "scene", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "mergeSyncKey", "", "reqKey", "", "respKey", "onSceneEnd", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/modelbase/NetSceneBase;", "register", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "removeSyncHandler", "selector2String", "unregister", "BypFinderCmdScene", "Companion", "SyncArgs", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  implements i, g
+  implements com.tencent.mm.am.h, j
 {
-  private static final String TAG = "Finder.SyncExtension";
-  private static final SparseArray<HashSet<com.tencent.mm.plugin.finder.api.h>> xsc;
-  private static final d xsd;
-  private static HashSet<Integer> xse;
-  public static final a xsf;
-  private final ConcurrentLinkedQueue<r<Integer, Integer, b>> xrV;
-  private int xrW;
-  private int xrX;
-  private final int xrY;
-  private final int xrZ;
-  private final MMHandler xsa;
-  private final Runnable xsb;
+  public static final b APc;
+  private static final SparseArray<HashSet<k>> APl;
+  private static final d APm;
+  private static HashSet<Integer> APn;
+  private static final String TAG;
+  private final FinderSyncExtension.bypRedDotNotifyEventListener.1 APd;
+  private final ConcurrentLinkedQueue<u<Integer, Integer, c>> APe;
+  private int APf;
+  private int APg;
+  private final int APh;
+  private final int APi;
+  private final MMHandler APj;
+  private final Runnable APk;
   
   static
   {
     AppMethodBeat.i(165595);
-    xsf = new a((byte)0);
+    APc = new b((byte)0);
     TAG = "Finder.SyncExtension";
-    xsc = new SparseArray();
-    xsd = new d();
-    xse = new HashSet();
+    APl = new SparseArray();
+    APm = new d();
+    APn = new HashSet();
     AppMethodBeat.o(165595);
   }
   
   public c()
   {
     AppMethodBeat.i(165594);
-    this.xrV = new ConcurrentLinkedQueue();
-    this.xrY = 3;
-    this.xrZ = 666;
-    this.xsa = new MMHandler("finder_sync_thread", (MMHandler.Callback)new c(this));
-    this.xsb = ((Runnable)new d(this));
+    this.APd = new FinderSyncExtension.bypRedDotNotifyEventListener.1(this, com.tencent.mm.app.f.hfK);
+    this.APd.alive();
+    this.APe = new ConcurrentLinkedQueue();
+    this.APh = 3;
+    this.APi = 666;
+    this.APj = new MMHandler("finder_sync_thread", new c..ExternalSyntheticLambda0(this));
+    this.APk = new c..ExternalSyntheticLambda1(this);
     AppMethodBeat.o(165594);
   }
   
-  private static String Ml(int paramInt)
+  private static String Nq(int paramInt)
   {
     AppMethodBeat.i(165587);
     Object localObject = new StringBuffer();
-    o[] arrayOfo = g.a.dnm();
-    int j = arrayOfo.length;
+    r[] arrayOfr = j.a.dUp();
+    int j = arrayOfr.length;
     int i = 0;
     while (i < j)
     {
-      o localo = arrayOfo[i];
-      if ((((Number)localo.Mx).intValue() & paramInt) != 0) {
-        ((StringBuffer)localObject).append((String)localo.My + " ,");
+      r localr = arrayOfr[i];
+      if ((((Number)localr.bsC).intValue() & paramInt) != 0) {
+        ((StringBuffer)localObject).append(kotlin.g.b.s.X((String)localr.bsD, " ,"));
       }
       i += 1;
     }
     localObject = ((StringBuffer)localObject).toString();
-    p.j(localObject, "buf.toString()");
+    kotlin.g.b.s.s(localObject, "buf.toString()");
     AppMethodBeat.o(165587);
     return localObject;
   }
   
-  private final void dqq()
+  private static final void a(c paramc)
   {
-    AppMethodBeat.i(290216);
-    this.xsa.sendEmptyMessage(this.xrZ);
-    AppMethodBeat.o(290216);
+    AppMethodBeat.i(366677);
+    kotlin.g.b.s.u(paramc, "this$0");
+    paramc.a(113149, 2, null);
+    paramc.dYW();
+    AppMethodBeat.o(366677);
   }
   
-  private final void dqr()
+  private static final boolean a(c paramc, Message paramMessage)
+  {
+    AppMethodBeat.i(366668);
+    kotlin.g.b.s.u(paramc, "this$0");
+    kotlin.g.b.s.u(paramMessage, "it");
+    if ((paramMessage.what == paramc.APi) && (paramc.APf == 0))
+    {
+      int i;
+      if (!((Collection)paramc.APe).isEmpty()) {
+        i = 1;
+      }
+      while (i != 0)
+      {
+        paramMessage = (u)paramc.APe.peek();
+        if (paramMessage != null)
+        {
+          paramc.APf = ((Number)paramMessage.bsC).intValue();
+          i = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.adcr, 0);
+          Object localObject = com.tencent.mm.plugin.finder.storage.d.FAy;
+          int j = ((Number)com.tencent.mm.plugin.finder.storage.d.eXS().bmg()).intValue();
+          if (j > i)
+          {
+            Log.w(TAG, "clean keybuf. svrCleanVersion=" + j + " cleanVersion=" + i);
+            com.tencent.mm.kernel.h.baE().ban().set(at.a.adbu, "");
+            com.tencent.mm.kernel.h.baE().ban().set(at.a.adcr, Integer.valueOf(j));
+            com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1292L, 30L, 1L, true);
+          }
+          localObject = com.tencent.mm.kernel.h.baE().ban().get(at.a.adbu, "");
+          if (localObject == null)
+          {
+            paramc = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+            AppMethodBeat.o(366668);
+            throw paramc;
+            i = 0;
+          }
+          else
+          {
+            localObject = Util.decodeHexString((String)localObject);
+            paramc = new dn(z.bAW(), (byte[])localObject, paramc.APf, ((Number)paramMessage.bsD).intValue(), (c)paramMessage.aiuN);
+            com.tencent.mm.kernel.h.aZW().a((p)paramc, 0);
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(366668);
+    return false;
+  }
+  
+  private final void dYV()
+  {
+    AppMethodBeat.i(366653);
+    this.APj.sendEmptyMessage(this.APi);
+    AppMethodBeat.o(366653);
+  }
+  
+  private final void dYW()
   {
     AppMethodBeat.i(165591);
-    if (this.xrX >= this.xrY) {
-      Log.i(TAG, "checkLoop finderAliveUI " + xse.size() + " sync_fail_count " + this.xrX + " so ignore checkloop");
+    if (this.APg >= this.APh) {
+      Log.i(TAG, "checkLoop finderAliveUI " + APn.size() + " sync_fail_count " + this.APg + " so ignore checkloop");
     }
-    if (xse.size() > 0)
+    if (APn.size() > 0)
     {
-      this.xsa.removeCallbacks(this.xsb);
-      MMHandler localMMHandler = this.xsa;
-      Runnable localRunnable = this.xsb;
-      com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.AjH;
-      localMMHandler.postDelayed(localRunnable, com.tencent.mm.plugin.finder.storage.d.dSq());
+      this.APj.removeCallbacks(this.APk);
+      MMHandler localMMHandler = this.APj;
+      Runnable localRunnable = this.APk;
+      com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+      localMMHandler.postDelayed(localRunnable, com.tencent.mm.plugin.finder.storage.d.eQE());
     }
     AppMethodBeat.o(165591);
   }
   
-  public final void a(int paramInt, com.tencent.mm.plugin.finder.api.h paramh)
+  private static boolean j(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    AppMethodBeat.i(366642);
+    int i;
+    label19:
+    byte[] arrayOfByte2;
+    if (paramArrayOfByte2.length == 0)
+    {
+      i = 1;
+      if (i != 0) {
+        break label149;
+      }
+      i = 1;
+      if (i == 0) {
+        break label168;
+      }
+      arrayOfByte2 = ad.o(paramArrayOfByte1, paramArrayOfByte2);
+      Log.i(TAG, "processFinderSyncKey, req " + Util.encodeHexString(paramArrayOfByte1) + " resp " + Util.encodeHexString(paramArrayOfByte2) + " merge " + Util.encodeHexString(arrayOfByte2));
+      arrayOfByte1 = paramArrayOfByte2;
+      if (arrayOfByte2 != null)
+      {
+        if (arrayOfByte2.length != 0) {
+          break label154;
+        }
+        i = 1;
+        label98:
+        if (i == 0) {
+          break label176;
+        }
+      }
+    }
+    label149:
+    label154:
+    label168:
+    label176:
+    for (byte[] arrayOfByte1 = paramArrayOfByte2;; arrayOfByte1 = arrayOfByte2)
+    {
+      paramArrayOfByte2 = w.a(w.aN(arrayOfByte1));
+      if (!Arrays.equals(paramArrayOfByte1, paramArrayOfByte2))
+      {
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.adbu, Util.encodeHexString(paramArrayOfByte2));
+        AppMethodBeat.o(366642);
+        return true;
+        i = 0;
+        break;
+        i = 0;
+        break label19;
+        i = 0;
+        break label98;
+      }
+      Log.i(TAG, "processFinderSyncKey, Sync Key Not change, not save");
+      AppMethodBeat.o(366642);
+      return false;
+    }
+  }
+  
+  public final void a(int paramInt1, int paramInt2, bui parambui)
+  {
+    AppMethodBeat.i(366715);
+    String str = z.bAW();
+    com.tencent.mm.plugin.report.service.h.OAn.b(19122, new Object[] { Integer.valueOf(paramInt2), Util.getStack() });
+    com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1292L, 1L, 1L, false);
+    com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1292L, paramInt2 + 10, 1L, false);
+    c localc = new c();
+    localc.Auc = parambui;
+    if (((paramInt2 == 3) || (paramInt2 == 11)) && (!((cn)com.tencent.mm.kernel.h.az(cn.class)).showFinderEntry()))
+    {
+      Log.e(TAG, "ignore this notify to sync[" + paramInt2 + "].");
+      AppMethodBeat.o(366715);
+      return;
+    }
+    Log.i(TAG, "sync selector[" + paramInt1 + '=' + Nq(paramInt1) + "] myFinderUser[" + str + "] waitLinkedQueue=" + this.APe.size());
+    this.APe.add(new u(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localc));
+    dYV();
+    AppMethodBeat.o(366715);
+  }
+  
+  public final void a(int paramInt, k paramk)
   {
     AppMethodBeat.i(165589);
-    p.k(paramh, "handler");
-    if ((HashSet)xsc.get(paramInt) == null)
-    {
-      xsc.append(paramInt, new HashSet());
-      x localx = x.aazN;
+    kotlin.g.b.s.u(paramk, "handler");
+    if ((HashSet)APl.get(paramInt) == null) {
+      APl.append(paramInt, new HashSet());
     }
-    ((HashSet)xsc.get(paramInt)).add(paramh);
+    ((HashSet)APl.get(paramInt)).add(paramk);
     AppMethodBeat.o(165589);
   }
   
-  public final void a(MMFinderUI paramMMFinderUI)
-  {
-    AppMethodBeat.i(165592);
-    p.k(paramMMFinderUI, "activity");
-    if (!xse.contains(Integer.valueOf(paramMMFinderUI.hashCode())))
-    {
-      xse.add(Integer.valueOf(paramMMFinderUI.hashCode()));
-      paramMMFinderUI = TAG;
-      StringBuilder localStringBuilder = new StringBuilder("Start msg Looper ");
-      com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.AjH;
-      Log.i(paramMMFinderUI, com.tencent.mm.plugin.finder.storage.d.dSq() + " size: " + xse.size() + ' ' + this.xrX);
-      this.xrX = 0;
-      dqr();
-    }
-    AppMethodBeat.o(165592);
-  }
-  
-  public final void b(int paramInt, com.tencent.mm.plugin.finder.api.h paramh)
+  public final void b(int paramInt, k paramk)
   {
     AppMethodBeat.i(165590);
-    p.k(paramh, "handler");
-    HashSet localHashSet = (HashSet)xsc.get(paramInt);
-    if (localHashSet != null)
-    {
-      localHashSet.remove(paramh);
-      AppMethodBeat.o(165590);
-      return;
+    kotlin.g.b.s.u(paramk, "handler");
+    HashSet localHashSet = (HashSet)APl.get(paramInt);
+    if (localHashSet != null) {
+      localHashSet.remove(paramk);
     }
     AppMethodBeat.o(165590);
   }
   
-  public final void b(MMFinderUI paramMMFinderUI)
+  public final void c(MMFinderUI paramMMFinderUI)
+  {
+    AppMethodBeat.i(165592);
+    kotlin.g.b.s.u(paramMMFinderUI, "activity");
+    if (!APn.contains(Integer.valueOf(paramMMFinderUI.hashCode())))
+    {
+      APn.add(Integer.valueOf(paramMMFinderUI.hashCode()));
+      paramMMFinderUI = TAG;
+      StringBuilder localStringBuilder = new StringBuilder("Start msg Looper ");
+      com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+      Log.i(paramMMFinderUI, com.tencent.mm.plugin.finder.storage.d.eQE() + " size: " + APn.size() + ' ' + this.APg);
+      this.APg = 0;
+      dYW();
+    }
+    AppMethodBeat.o(165592);
+  }
+  
+  public final void d(MMFinderUI paramMMFinderUI)
   {
     AppMethodBeat.i(165593);
-    p.k(paramMMFinderUI, "activity");
-    xse.remove(Integer.valueOf(paramMMFinderUI.hashCode()));
+    kotlin.g.b.s.u(paramMMFinderUI, "activity");
+    APn.remove(Integer.valueOf(paramMMFinderUI.hashCode()));
     paramMMFinderUI = TAG;
     StringBuilder localStringBuilder = new StringBuilder("unregister Looper ");
-    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.AjH;
-    Log.i(paramMMFinderUI, com.tencent.mm.plugin.finder.storage.d.dSq() + " size: " + xse.size() + ' ' + this.xrX);
+    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+    Log.i(paramMMFinderUI, com.tencent.mm.plugin.finder.storage.d.eQE() + " size: " + APn.size() + ' ' + this.APg);
     AppMethodBeat.o(165593);
   }
   
-  public final void gu(int paramInt1, int paramInt2)
+  public final void ho(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(165588);
-    String str = com.tencent.mm.model.z.bdh();
-    com.tencent.mm.plugin.report.service.h.IzE.a(19122, new Object[] { Integer.valueOf(paramInt2), Util.getStack() });
-    com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1292L, 1L, 1L, false);
-    com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1292L, paramInt2 + 10, 1L, false);
-    b localb = new b();
-    Object localObject1 = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-    p.j(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
-    Object localObject3 = ((PluginFinder)localObject1).getRedDotManager();
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("FinderEntrance");
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo;
-      if (localObject1 != null)
-      {
-        localObject2 = ((bhw)localObject1).SQm;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
-        }
-        localb.aBa((String)localObject1);
-      }
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("FinderEntrance");
-    if (localObject1 != null) {
-      localb.xsh.add(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo);
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("TLFollow");
-    int i;
-    bhw localbhw;
-    if (localObject1 != null)
-    {
-      localObject2 = (List)localb.xsh;
-      i = 0;
-      localObject2 = ((List)localObject2).iterator();
-      if (!((Iterator)localObject2).hasNext()) {
-        break label1106;
-      }
-      localbhw = (bhw)((Iterator)localObject2).next();
-      if (!p.h(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_tipsId, localbhw.SQm)) {
-        break label1099;
-      }
-      label258:
-      if (i < 0) {
-        localb.xsh.add(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo);
-      }
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("TLRecommendTab");
-    if (localObject1 != null)
-    {
-      localObject2 = (List)localb.xsh;
-      i = 0;
-      localObject2 = ((List)localObject2).iterator();
-      label312:
-      if (!((Iterator)localObject2).hasNext()) {
-        break label1118;
-      }
-      localbhw = (bhw)((Iterator)localObject2).next();
-      if (!p.h(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_tipsId, localbhw.SQm)) {
-        break label1111;
-      }
-      label350:
-      if (i < 0) {
-        localb.xsh.add(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo);
-      }
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("finder_tl_hot_tab");
-    if (localObject1 != null)
-    {
-      localObject2 = (List)localb.xsh;
-      i = 0;
-      localObject2 = ((List)localObject2).iterator();
-      label404:
-      if (!((Iterator)localObject2).hasNext()) {
-        break label1130;
-      }
-      localbhw = (bhw)((Iterator)localObject2).next();
-      if (!p.h(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_tipsId, localbhw.SQm)) {
-        break label1123;
-      }
-      label442:
-      if (i < 0) {
-        localb.xsh.add(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo);
-      }
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("finder_tl_nearby_tab");
-    if (localObject1 != null)
-    {
-      localObject2 = (List)localb.xsh;
-      i = 0;
-      localObject2 = ((List)localObject2).iterator();
-      label496:
-      if (!((Iterator)localObject2).hasNext()) {
-        break label1142;
-      }
-      localbhw = (bhw)((Iterator)localObject2).next();
-      if (!p.h(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_tipsId, localbhw.SQm)) {
-        break label1135;
-      }
-      label534:
-      if (i < 0) {
-        localb.xsh.add(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo);
-      }
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("NearbyEntrance");
-    if (localObject1 != null)
-    {
-      localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo;
-      if (localObject1 != null)
-      {
-        localObject2 = ((bhw)localObject1).SQm;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
-        }
-        localb.aBb((String)localObject1);
-      }
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("FinderLiveEntrance");
-    if (localObject1 != null)
-    {
-      localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo;
-      if (localObject1 != null)
-      {
-        localObject2 = ((bhw)localObject1).SQm;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
-        }
-        localb.aBb((String)localObject1);
-      }
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("NearbyEntrance");
-    if (localObject1 != null) {
-      localb.xsj.add(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo);
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("NearbyFeedTab");
-    if (localObject1 != null)
-    {
-      localObject2 = (List)localb.xsj;
-      i = 0;
-      localObject2 = ((List)localObject2).iterator();
-      label727:
-      if (!((Iterator)localObject2).hasNext()) {
-        break label1154;
-      }
-      localbhw = (bhw)((Iterator)localObject2).next();
-      if (!p.h(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_tipsId, localbhw.SQm)) {
-        break label1147;
-      }
-      label765:
-      if (i < 0) {
-        localb.xsj.add(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo);
-      }
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("NearbyLiveTab");
-    if (localObject1 != null)
-    {
-      localObject2 = (List)localb.xsj;
-      i = 0;
-      localObject2 = ((List)localObject2).iterator();
-      label819:
-      if (!((Iterator)localObject2).hasNext()) {
-        break label1166;
-      }
-      localbhw = (bhw)((Iterator)localObject2).next();
-      if (!p.h(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_tipsId, localbhw.SQm)) {
-        break label1159;
-      }
-      label857:
-      if (i < 0) {
-        localb.xsj.add(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo);
-      }
-    }
-    localObject1 = ((com.tencent.mm.plugin.finder.extension.reddot.f)localObject3).aBf("NearbyPeopleTab");
-    if (localObject1 != null)
-    {
-      localObject2 = (List)localb.xsj;
-      i = 0;
-      localObject2 = ((List)localObject2).iterator();
-      label911:
-      if (!((Iterator)localObject2).hasNext()) {
-        break label1178;
-      }
-      localObject3 = (bhw)((Iterator)localObject2).next();
-      if (!p.h(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_tipsId, ((bhw)localObject3).SQm)) {
-        break label1171;
-      }
-    }
-    for (;;)
-    {
-      if (i < 0) {
-        localb.xsj.add(((com.tencent.mm.plugin.finder.extension.reddot.l)localObject1).field_ctrInfo);
-      }
-      Log.i(TAG, "sync selector[" + paramInt1 + '=' + Ml(paramInt1) + "] finderCtrlInfoList=" + localb.xsh.size() + " nearbyCtrlInfoList=" + localb.xsj.size() + "myFinderUser[" + str + "] waitLinkedQueue=" + this.xrV.size());
-      this.xrV.add(new r(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localb));
-      dqq();
-      AppMethodBeat.o(165588);
-      return;
-      label1099:
-      i += 1;
-      break;
-      label1106:
-      i = -1;
-      break label258;
-      label1111:
-      i += 1;
-      break label312;
-      label1118:
-      i = -1;
-      break label350;
-      label1123:
-      i += 1;
-      break label404;
-      label1130:
-      i = -1;
-      break label442;
-      label1135:
-      i += 1;
-      break label496;
-      label1142:
-      i = -1;
-      break label534;
-      label1147:
-      i += 1;
-      break label727;
-      label1154:
-      i = -1;
-      break label765;
-      label1159:
-      i += 1;
-      break label819;
-      label1166:
-      i = -1;
-      break label857;
-      label1171:
-      i += 1;
-      break label911;
-      label1178:
-      i = -1;
-    }
+    AppMethodBeat.i(371845);
+    a(paramInt1, paramInt2, null);
+    AppMethodBeat.o(371845);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(165586);
     long l = SystemClock.uptimeMillis();
-    if (paramq == null)
+    if (paramp == null)
     {
-      paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderSync");
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderSync");
       AppMethodBeat.o(165586);
       throw paramString;
     }
-    Object localObject1 = ((cm)paramq).rr.bhX();
+    Object localObject1 = com.tencent.mm.am.c.b.b(((dn)paramp).rr.otB);
     if (localObject1 == null)
     {
-      paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSyncRequest");
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSyncRequest");
       AppMethodBeat.o(165586);
       throw paramString;
     }
-    int i = ((bkb)localObject1).fFT;
-    Log.i(TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString + ", cmdList=" + ((cm)paramq).doX().size() + ", (curSelector,selector) (" + this.xrW + ',' + i + "), continueFlag " + ((cm)paramq).doo());
-    this.xrW = 0;
-    r localr = (r)this.xrV.poll();
-    Object localObject3;
+    int i = ((bxe)localObject1).selector;
+    Log.i(TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString + ", cmdList=" + ((dn)paramp).dWx().size() + ", (curSelector,selector) (" + this.APf + ',' + i + "), continueFlag " + ((dn)paramp).dVZ());
+    this.APf = 0;
+    paramString = this.APe.poll();
+    Object localObject2;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.xrX = 0;
-      paramInt1 = ((cm)paramq).doW();
-      ??? = ((cm)paramq).doX();
-      Log.i(TAG, "onSceneEnd " + paramInt1 + " continueFlag " + ((cm)paramq).doo() + " cmdList " + ((List)???).size());
+      this.APg = 0;
+      paramInt1 = ((dn)paramp).dWw();
+      localObject1 = ((dn)paramp).dWx();
+      Log.i(TAG, "onSceneEnd " + paramInt1 + " continueFlag " + ((dn)paramp).dVZ() + " cmdList " + ((List)localObject1).size());
       if (paramInt1 > 0)
       {
-        paramString = com.tencent.mm.plugin.finder.storage.d.AjH;
-        com.tencent.mm.plugin.finder.storage.d.Qa(((cm)paramq).doW() * 1000);
+        localObject2 = com.tencent.mm.plugin.finder.storage.d.FAy;
+        com.tencent.mm.plugin.finder.storage.d.Tk(((dn)paramp).dWw() * 1000);
       }
-      paramString = ((cm)paramq).rr.bhX();
-      if (paramString == null)
+      localObject2 = com.tencent.mm.am.c.b.b(((dn)paramp).rr.otB);
+      if (localObject2 == null)
       {
-        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSyncRequest");
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSyncRequest");
         AppMethodBeat.o(165586);
         throw paramString;
       }
-      localObject3 = com.tencent.mm.platformtools.z.a(((bkb)paramString).SUZ);
-      paramString = ((cm)paramq).rr.bhY();
-      if (paramString == null)
+      localObject2 = w.a(((bxe)localObject2).aafS);
+      ??? = com.tencent.mm.am.c.c.b(((dn)paramp).rr.otC);
+      if (??? == null)
       {
-        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSyncResponse");
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSyncResponse");
         AppMethodBeat.o(165586);
         throw paramString;
       }
-      localObject1 = com.tencent.mm.platformtools.z.a(((bkc)paramString).SUZ);
-      if (localObject1 == null) {
-        break label986;
+      ??? = w.a(((bxf)???).aafS);
+      if (??? == null) {
+        break label881;
       }
-      p.j(localObject3, "reqKey");
-      if (localObject1.length == 0)
-      {
-        paramInt1 = 1;
-        if (paramInt1 != 0) {
-          break label830;
-        }
-        paramInt1 = 1;
-        label436:
-        if (paramInt1 == 0) {
-          break label849;
-        }
-        paramString = ad.n((byte[])localObject3, (byte[])localObject1);
-        Log.i(TAG, "processFinderSyncKey, req " + Util.encodeHexString((byte[])localObject3) + " resp " + Util.encodeHexString((byte[])localObject1) + " merge " + Util.encodeHexString(paramString));
-        if (paramString != null)
-        {
-          if (paramString.length != 0) {
-            break label835;
-          }
-          paramInt1 = 1;
-          label513:
-          if (paramInt1 == 0) {}
-        }
-        else
-        {
-          paramString = (String)localObject1;
-        }
-        paramString = com.tencent.mm.platformtools.z.a(com.tencent.mm.platformtools.z.aN(paramString));
-        if (Arrays.equals((byte[])localObject3, paramString)) {
-          break label840;
-        }
-        localObject1 = com.tencent.mm.kernel.h.aHG();
-        p.j(localObject1, "MMKernel.storage()");
-        ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.Vzp, Util.encodeHexString(paramString));
-        paramInt1 = 1;
-        label567:
-        if ((paramInt1 == 0) || (((cm)paramq).doo() == 0)) {
-          break label986;
-        }
+      kotlin.g.b.s.s(localObject2, "reqKey");
+      kotlin.g.b.s.s(???, "respKey");
+      if ((!j((byte[])localObject2, (byte[])???)) || (((dn)paramp).dVZ() == 0)) {
+        break label881;
       }
     }
-    label646:
-    label673:
-    label830:
-    label835:
-    label840:
-    label849:
-    label986:
-    for (paramInt1 = 1;; paramInt1 = 0)
+    label531:
+    label683:
+    label712:
+    label741:
+    label881:
+    for (i = 1;; i = 0)
     {
-      paramString = ((Iterable)???).iterator();
-      for (;;)
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        if (!paramString.hasNext()) {
-          break label887;
-        }
-        localObject1 = (aqt)paramString.next();
-        ??? = xsd;
-        if (localr != null)
+        localObject2 = (auw)((Iterator)localObject1).next();
+        ??? = APm;
+        Object localObject4 = (u)paramString;
+        if (localObject4 == null)
         {
-          localObject3 = (Integer)localr.Mx;
-          if (localObject3 != null)
-          {
-            paramInt2 = ((Integer)localObject3).intValue();
-            if (localr == null) {
-              break label859;
-            }
-            localObject3 = (Integer)localr.My;
-            if (localObject3 == null) {
-              break label859;
-            }
-            i = ((Integer)localObject3).intValue();
-            ((d)???).a((aqt)localObject1, paramInt2, i);
-            ??? = (HashSet)xsc.get(((aqt)localObject1).cmdId);
-            if (??? == null) {
-              continue;
-            }
+          paramInt1 = 0;
+          localObject4 = (u)paramString;
+          if (localObject4 != null) {
+            break label683;
+          }
+          paramInt2 = 0;
+          ((d)???).a((auw)localObject2, paramInt1, paramInt2);
+          ??? = (HashSet)APl.get(((auw)localObject2).cmdId);
+          if (??? == null) {
+            continue;
           }
         }
         for (;;)
         {
           synchronized ((Iterable)???)
           {
-            localObject3 = ((Iterable)???).iterator();
-            if (!((Iterator)localObject3).hasNext()) {
-              break label876;
+            localObject4 = ((Iterable)???).iterator();
+            if (!((Iterator)localObject4).hasNext()) {
+              break label770;
             }
-            com.tencent.mm.plugin.finder.api.h localh = (com.tencent.mm.plugin.finder.api.h)((Iterator)localObject3).next();
-            if (localr == null) {
-              break label865;
+            k localk = (k)((Iterator)localObject4).next();
+            localObject5 = (u)paramString;
+            if (localObject5 != null) {
+              break label712;
             }
-            Integer localInteger = (Integer)localr.Mx;
-            if (localInteger == null) {
-              break label865;
+            paramInt1 = 0;
+            localObject5 = (u)paramString;
+            if (localObject5 != null) {
+              break label741;
             }
-            paramInt2 = localInteger.intValue();
-            if (localr == null) {
-              break label870;
-            }
-            localInteger = (Integer)localr.My;
-            if (localInteger == null) {
-              break label870;
-            }
-            i = localInteger.intValue();
-            localh.a((aqt)localObject1, paramInt2, i);
+            paramInt2 = 0;
+            localk.a((auw)localObject2, paramInt1, paramInt2);
           }
-          paramInt1 = 0;
+          localObject4 = (Integer)((u)localObject4).bsC;
+          if (localObject4 == null)
+          {
+            paramInt1 = 0;
+            break;
+          }
+          paramInt1 = ((Integer)localObject4).intValue();
           break;
-          paramInt1 = 0;
-          break label436;
-          paramInt1 = 0;
-          break label513;
-          Log.i(TAG, "processFinderSyncKey, Sync Key Not change, not save");
-          paramInt1 = 0;
-          break label567;
-          paramInt2 = 0;
-          break label646;
-          label859:
-          i = 0;
-          break label673;
-          label865:
-          paramInt2 = 0;
-          continue;
-          label870:
-          i = 0;
+          localObject4 = (Integer)((u)localObject4).bsD;
+          if (localObject4 == null)
+          {
+            paramInt2 = 0;
+            break label531;
+          }
+          paramInt2 = ((Integer)localObject4).intValue();
+          break label531;
+          Object localObject5 = (Integer)((u)localObject5).bsC;
+          if (localObject5 == null)
+          {
+            paramInt1 = 0;
+          }
+          else
+          {
+            paramInt1 = ((Integer)localObject5).intValue();
+            continue;
+            localObject5 = (Integer)((u)localObject5).bsD;
+            if (localObject5 == null) {
+              paramInt2 = 0;
+            } else {
+              paramInt2 = ((Integer)localObject5).intValue();
+            }
+          }
         }
-        label876:
-        localObject1 = x.aazN;
+        localObject2 = ah.aiuX;
       }
-      label887:
-      if (paramInt1 != 0) {
-        this.xrV.add(new r(Integer.valueOf(((cm)paramq).doo()), Integer.valueOf(4), new b()));
+      if (i != 0) {
+        this.APe.add(new u(Integer.valueOf(((dn)paramp).dVZ()), Integer.valueOf(4), new c()));
       }
       for (;;)
       {
-        dqq();
+        dYV();
         Log.i(TAG, "[onSceneEnd] cost=" + (SystemClock.uptimeMillis() - l) + "ms");
         AppMethodBeat.o(165586);
         return;
-        this.xrX += 1;
+        this.APg += 1;
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension$Companion;", "", "()V", "TAG", "", "alives", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "defaultHandlers", "Lcom/tencent/mm/plugin/finder/extension/FinderSyncHandler;", "syncHandlers", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "plugin-finder_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension$SyncArgs;", "", "finderEntranceTipsId", "", "finderCtrlInfoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderRedDotCtrlInfo;", "nearbyEntranceTipsId", "nearbyCtrlInfoList", "(Ljava/lang/String;Ljava/util/LinkedList;Ljava/lang/String;Ljava/util/LinkedList;)V", "getFinderCtrlInfoList", "()Ljava/util/LinkedList;", "getFinderEntranceTipsId", "()Ljava/lang/String;", "setFinderEntranceTipsId", "(Ljava/lang/String;)V", "getNearbyCtrlInfoList", "getNearbyEntranceTipsId", "setNearbyEntranceTipsId", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-finder_release"})
-  public static final class b
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension$BypFinderCmdScene;", "", "()V", "BYP_FINDER_CMD_SCENE_FINDERSYNC", "", "getBYP_FINDER_CMD_SCENE_FINDERSYNC", "()I", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    public String xsg;
-    public final LinkedList<bhw> xsh;
-    public String xsi;
-    public final LinkedList<bhw> xsj;
+    public static final a APo;
+    private static final int APp;
     
-    private b(String paramString1, LinkedList<bhw> paramLinkedList1, String paramString2, LinkedList<bhw> paramLinkedList2)
+    static
     {
-      AppMethodBeat.i(279835);
-      this.xsg = paramString1;
-      this.xsh = paramLinkedList1;
-      this.xsi = paramString2;
-      this.xsj = paramLinkedList2;
-      AppMethodBeat.o(279835);
+      AppMethodBeat.i(366626);
+      APo = new a();
+      APp = 1;
+      AppMethodBeat.o(366626);
     }
     
-    public final void aBa(String paramString)
+    public static int dYX()
     {
-      AppMethodBeat.i(279833);
-      p.k(paramString, "<set-?>");
-      this.xsg = paramString;
-      AppMethodBeat.o(279833);
+      return APp;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension$Companion;", "", "()V", "TAG", "", "alives", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "defaultHandlers", "Lcom/tencent/mm/plugin/finder/extension/FinderSyncHandler;", "syncHandlers", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b {}
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension$SyncArgs;", "", "finderEntranceTipsId", "", "finderCtrlInfoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderRedDotCtrlInfo;", "nearbyEntranceTipsId", "nearbyCtrlInfoList", "(Ljava/lang/String;Ljava/util/LinkedList;Ljava/lang/String;Ljava/util/LinkedList;)V", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "setContextObj", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getFinderCtrlInfoList", "()Ljava/util/LinkedList;", "getFinderEntranceTipsId", "()Ljava/lang/String;", "setFinderEntranceTipsId", "(Ljava/lang/String;)V", "getNearbyCtrlInfoList", "getNearbyEntranceTipsId", "setNearbyEntranceTipsId", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+  {
+    public String APq;
+    public final LinkedList<btw> APr;
+    public String APs;
+    public final LinkedList<btw> APt;
+    public bui Auc;
+    
+    private c(String paramString1, LinkedList<btw> paramLinkedList1, String paramString2, LinkedList<btw> paramLinkedList2)
+    {
+      AppMethodBeat.i(366622);
+      this.APq = paramString1;
+      this.APr = paramLinkedList1;
+      this.APs = paramString2;
+      this.APt = paramLinkedList2;
+      AppMethodBeat.o(366622);
     }
     
-    public final void aBb(String paramString)
+    public final void avn(String paramString)
     {
-      AppMethodBeat.i(279834);
-      p.k(paramString, "<set-?>");
-      this.xsi = paramString;
-      AppMethodBeat.o(279834);
+      AppMethodBeat.i(366634);
+      kotlin.g.b.s.u(paramString, "<set-?>");
+      this.APs = paramString;
+      AppMethodBeat.o(366634);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(279839);
-      if (this != paramObject)
+      AppMethodBeat.i(366650);
+      if (this == paramObject)
       {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((!p.h(this.xsg, paramObject.xsg)) || (!p.h(this.xsh, paramObject.xsh)) || (!p.h(this.xsi, paramObject.xsi)) || (!p.h(this.xsj, paramObject.xsj))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(279839);
+        AppMethodBeat.o(366650);
         return true;
       }
-      AppMethodBeat.o(279839);
-      return false;
+      if (!(paramObject instanceof c))
+      {
+        AppMethodBeat.o(366650);
+        return false;
+      }
+      paramObject = (c)paramObject;
+      if (!kotlin.g.b.s.p(this.APq, paramObject.APq))
+      {
+        AppMethodBeat.o(366650);
+        return false;
+      }
+      if (!kotlin.g.b.s.p(this.APr, paramObject.APr))
+      {
+        AppMethodBeat.o(366650);
+        return false;
+      }
+      if (!kotlin.g.b.s.p(this.APs, paramObject.APs))
+      {
+        AppMethodBeat.o(366650);
+        return false;
+      }
+      if (!kotlin.g.b.s.p(this.APt, paramObject.APt))
+      {
+        AppMethodBeat.o(366650);
+        return false;
+      }
+      AppMethodBeat.o(366650);
+      return true;
     }
     
     public final int hashCode()
     {
-      int m = 0;
-      AppMethodBeat.i(279838);
-      Object localObject = this.xsg;
-      int i;
-      int j;
-      if (localObject != null)
-      {
-        i = localObject.hashCode();
-        localObject = this.xsh;
-        if (localObject == null) {
-          break label105;
-        }
-        j = localObject.hashCode();
-        label42:
-        localObject = this.xsi;
-        if (localObject == null) {
-          break label110;
-        }
-      }
-      label105:
-      label110:
-      for (int k = localObject.hashCode();; k = 0)
-      {
-        localObject = this.xsj;
-        if (localObject != null) {
-          m = localObject.hashCode();
-        }
-        AppMethodBeat.o(279838);
-        return (k + (j + i * 31) * 31) * 31 + m;
-        i = 0;
-        break;
-        j = 0;
-        break label42;
-      }
+      AppMethodBeat.i(366645);
+      int i = this.APq.hashCode();
+      int j = this.APr.hashCode();
+      int k = this.APs.hashCode();
+      int m = this.APt.hashCode();
+      AppMethodBeat.o(366645);
+      return ((i * 31 + j) * 31 + k) * 31 + m;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(279837);
-      String str = "SyncArgs(finderEntranceTipsId=" + this.xsg + ", finderCtrlInfoList=" + this.xsh + ", nearbyEntranceTipsId=" + this.xsi + ", nearbyCtrlInfoList=" + this.xsj + ")";
-      AppMethodBeat.o(279837);
+      AppMethodBeat.i(366640);
+      String str = "SyncArgs(finderEntranceTipsId=" + this.APq + ", finderCtrlInfoList=" + this.APr + ", nearbyEntranceTipsId=" + this.APs + ", nearbyCtrlInfoList=" + this.APt + ')';
+      AppMethodBeat.o(366640);
       return str;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
-  static final class c
-    implements MMHandler.Callback
-  {
-    c(c paramc) {}
-    
-    public final boolean handleMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(165584);
-      if ((paramMessage != null) && (paramMessage.what == c.a(this.xsk)) && (c.b(this.xsk) == 0))
-      {
-        int i;
-        if (!((Collection)c.c(this.xsk)).isEmpty()) {
-          i = 1;
-        }
-        while (i != 0)
-        {
-          paramMessage = (r)c.c(this.xsk).peek();
-          if (paramMessage != null)
-          {
-            c.a(this.xsk, ((Number)paramMessage.Mx).intValue());
-            Object localObject = com.tencent.mm.kernel.h.aHG();
-            p.j(localObject, "MMKernel.storage()");
-            localObject = ((com.tencent.mm.kernel.f)localObject).aHp().get(ar.a.Vzp, "");
-            if (localObject == null)
-            {
-              paramMessage = new kotlin.t("null cannot be cast to non-null type kotlin.String");
-              AppMethodBeat.o(165584);
-              throw paramMessage;
-              i = 0;
-            }
-            else
-            {
-              localObject = Util.decodeHexString((String)localObject);
-              paramMessage = new cm(com.tencent.mm.model.z.bdh(), (byte[])localObject, c.b(this.xsk), ((Number)paramMessage.My).intValue(), (c.b)paramMessage.aazK);
-              com.tencent.mm.kernel.h.aGY().b((q)paramMessage);
-            }
-          }
-        }
-      }
-      AppMethodBeat.o(165584);
-      return false;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(c paramc) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(165585);
-      this.xsk.gu(113149, 2);
-      c.d(this.xsk);
-      AppMethodBeat.o(165585);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.c
  * JD-Core Version:    0.7.0.1
  */

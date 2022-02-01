@@ -1,16 +1,13 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import android.content.Context;
+import com.tencent.mm.kernel.c.a;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/IFinderAgreeSavePhoneService;", "Lcom/tencent/mm/kernel/service/IService;", "modOverSeaAgreeSavePhone", "", "isReset", "", "(Ljava/lang/Boolean;)V", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface x
+  extends a
 {
-  public abstract void D(Context paramContext, String paramString1, String paramString2);
-  
-  public abstract void b(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4);
-  
-  public abstract void f(Context paramContext, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void v(String paramString1, String paramString2, String paramString3, String paramString4);
+  public abstract void r(Boolean paramBoolean);
 }
 
 

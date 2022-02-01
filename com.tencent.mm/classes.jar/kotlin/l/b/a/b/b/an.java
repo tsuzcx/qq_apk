@@ -1,36 +1,27 @@
 package kotlin.l.b.a.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
+import kotlin.l.b.a.b.m.az;
 
-public abstract interface an
+public final class an
 {
-  public static final an aaKE = new an()
-  {
-    public final ao iFJ()
-    {
-      AppMethodBeat.i(56884);
-      Object localObject = ao.aaKF;
-      if (localObject == null)
-      {
-        localObject = new IllegalStateException(String.format("@NotNull method %s.%s must not return null", new Object[] { "kotlin/reflect/jvm/internal/impl/descriptors/SourceElement$1", "getContainingFile" }));
-        AppMethodBeat.o(56884);
-        throw ((Throwable)localObject);
-      }
-      AppMethodBeat.o(56884);
-      return localObject;
-    }
-    
-    public final String toString()
-    {
-      return "NO_SOURCE";
-    }
-  };
+  public final i aiHk;
+  public final List<az> aiHl;
+  public final an aiHm;
   
-  public abstract ao iFJ();
+  public an(i parami, List<? extends az> paramList, an paraman)
+  {
+    AppMethodBeat.i(56878);
+    this.aiHk = parami;
+    this.aiHl = paramList;
+    this.aiHm = paraman;
+    AppMethodBeat.o(56878);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.an
  * JD-Core Version:    0.7.0.1
  */

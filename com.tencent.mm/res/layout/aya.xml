@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="@dimen/l_" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center|right" android:id="@id/jf4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textCursorDrawable="@drawable/r9" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/elo" style="@style/oa">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/elr" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="8.0dip" />
+        <TextView android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/elt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ll" android:text="{tip}" style="@style/ma" />
     </LinearLayout>
-</merge>
+</FrameLayout>

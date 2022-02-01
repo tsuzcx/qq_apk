@@ -10,130 +10,125 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.page.bd;
-import com.tencent.mm.ui.ay;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.ui.bg;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/view/AppBrandWebViewFixedSizeWrapper;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "enableFixSize", "", "getEnableFixSize", "()Z", "setEnableFixSize", "(Z)V", "addView", "", "child", "Landroid/view/View;", "params", "Landroid/view/ViewGroup$LayoutParams;", "index", "", "measureChild", "parentWidthMeasureSpec", "parentHeightMeasureSpec", "measureChildWithMargins", "widthUsed", "heightUsed", "onLayout", "changed", "left", "top", "right", "bottom", "setDescendantFocusability", "focusability", "setFocusable", "focusable", "setFocusableInTouchMode", "focusableInTouchMode", "Companion", "luggage-wxa-app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/view/AppBrandWebViewFixedSizeWrapper;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "enableFixSize", "", "getEnableFixSize", "()Z", "setEnableFixSize", "(Z)V", "addView", "", "child", "Landroid/view/View;", "params", "Landroid/view/ViewGroup$LayoutParams;", "index", "", "measureChild", "parentWidthMeasureSpec", "parentHeightMeasureSpec", "measureChildWithMargins", "widthUsed", "heightUsed", "onLayout", "changed", "left", "top", "right", "bottom", "setDescendantFocusability", "focusability", "setFocusable", "focusable", "setFocusableInTouchMode", "focusableInTouchMode", "Companion", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends FrameLayout
 {
-  public static final a qyf;
-  private boolean qye;
+  public static final a.a tDe;
+  private boolean tDf;
   
   static
   {
-    AppMethodBeat.i(243436);
-    qyf = new a((byte)0);
-    AppMethodBeat.o(243436);
+    AppMethodBeat.i(325130);
+    tDe = new a.a((byte)0);
+    AppMethodBeat.o(325130);
   }
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(243435);
+    AppMethodBeat.i(325128);
     super.setDescendantFocusability(262144);
-    AppMethodBeat.o(243435);
+    AppMethodBeat.o(325128);
   }
   
   public final void addView(View paramView)
   {
-    AppMethodBeat.i(243428);
+    AppMethodBeat.i(325149);
     if (getChildCount() <= 0) {}
     for (int i = 1; i == 0; i = 0)
     {
       paramView = (Throwable)new IllegalStateException("can host only one child".toString());
-      AppMethodBeat.o(243428);
+      AppMethodBeat.o(325149);
       throw paramView;
     }
     super.addView(paramView);
-    AppMethodBeat.o(243428);
+    AppMethodBeat.o(325149);
   }
   
   public final void addView(View paramView, int paramInt)
   {
-    AppMethodBeat.i(243429);
+    AppMethodBeat.i(325154);
     if (getChildCount() <= 0) {}
     for (int i = 1; i == 0; i = 0)
     {
       paramView = (Throwable)new IllegalStateException("can host only one  child".toString());
-      AppMethodBeat.o(243429);
+      AppMethodBeat.o(325154);
       throw paramView;
     }
     super.addView(paramView, paramInt);
-    AppMethodBeat.o(243429);
+    AppMethodBeat.o(325154);
   }
   
   public final void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(243431);
+    AppMethodBeat.i(325160);
     if (getChildCount() <= 0) {}
     for (int i = 1; i == 0; i = 0)
     {
       paramView = (Throwable)new IllegalStateException("can host only one child".toString());
-      AppMethodBeat.o(243431);
+      AppMethodBeat.o(325160);
       throw paramView;
     }
     super.addView(paramView, paramInt, paramLayoutParams);
-    AppMethodBeat.o(243431);
+    AppMethodBeat.o(325160);
   }
   
   public final void addView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(243430);
+    AppMethodBeat.i(325158);
     if (getChildCount() <= 0) {}
     for (int i = 1; i == 0; i = 0)
     {
       paramView = (Throwable)new IllegalStateException("can host only one child".toString());
-      AppMethodBeat.o(243430);
+      AppMethodBeat.o(325158);
       throw paramView;
     }
     super.addView(paramView, paramLayoutParams);
-    AppMethodBeat.o(243430);
+    AppMethodBeat.o(325158);
   }
   
   public final boolean getEnableFixSize()
   {
-    return this.qye;
+    return this.tDf;
   }
   
   protected final void measureChild(View paramView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(243423);
-    if (!this.qye)
+    AppMethodBeat.i(325140);
+    if (!this.tDf)
     {
       super.measureChild(paramView, paramInt1, paramInt2);
-      AppMethodBeat.o(243423);
+      AppMethodBeat.o(325140);
       return;
     }
-    if (paramView == null) {
-      p.iCn();
-    }
+    s.checkNotNull(paramView);
     Object localObject = paramView.getLayoutParams();
     paramInt1 = ViewGroup.getChildMeasureSpec(paramInt1, getPaddingLeft() + getPaddingRight(), ((ViewGroup.LayoutParams)localObject).width);
-    localObject = ay.au(getContext());
+    localObject = bg.bf(getContext());
     paramView.measure(paramInt1, ViewGroup.getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(0, 0), getPaddingTop() + getPaddingBottom(), ((Point)localObject).y));
-    AppMethodBeat.o(243423);
+    AppMethodBeat.o(325140);
   }
   
   protected final void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(243425);
-    if (!this.qye)
+    AppMethodBeat.i(325143);
+    if (!this.tDf)
     {
       super.measureChildWithMargins(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-      AppMethodBeat.o(243425);
+      AppMethodBeat.o(325143);
       return;
     }
-    if (paramView == null) {
-      p.iCn();
-    }
+    s.checkNotNull(paramView);
     Object localObject = paramView.getLayoutParams();
     if (localObject == null)
     {
-      paramView = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(243425);
+      paramView = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+      AppMethodBeat.o(325143);
       throw paramView;
     }
     localObject = (ViewGroup.MarginLayoutParams)localObject;
@@ -142,18 +137,18 @@ public final class a
     paramInt3 = getPaddingBottom();
     int i = ((ViewGroup.MarginLayoutParams)localObject).topMargin;
     int j = ((ViewGroup.MarginLayoutParams)localObject).bottomMargin;
-    localObject = ay.au(getContext());
+    localObject = bg.bf(getContext());
     paramView.measure(paramInt1, ViewGroup.getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(0, 0), j + (paramInt2 + paramInt3 + i) + paramInt4, ((Point)localObject).y));
-    AppMethodBeat.o(243425);
+    AppMethodBeat.o(325143);
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(243426);
+    AppMethodBeat.i(325146);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (!this.qye)
+    if (!this.tDf)
     {
-      AppMethodBeat.o(243426);
+      AppMethodBeat.o(325146);
       return;
     }
     if ((getChildAt(0) instanceof bd))
@@ -161,77 +156,74 @@ public final class a
       Object localObject = getChildAt(0);
       if (localObject == null)
       {
-        localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.page.IAppBrandWebView");
-        AppMethodBeat.o(243426);
+        localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.page.IAppBrandWebView");
+        AppMethodBeat.o(325146);
         throw ((Throwable)localObject);
       }
-      ((bd)localObject).cl(paramInt3 - paramInt1, paramInt4 - paramInt2);
+      ((bd)localObject).cZ(paramInt3 - paramInt1, paramInt4 - paramInt2);
     }
-    AppMethodBeat.o(243426);
+    AppMethodBeat.o(325146);
   }
   
   public final void setDescendantFocusability(int paramInt)
   {
-    AppMethodBeat.i(243432);
+    AppMethodBeat.i(325162);
     if ((getChildAt(0) instanceof ViewGroup))
     {
       Object localObject = getChildAt(0);
       if (localObject == null)
       {
-        localObject = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(243432);
+        localObject = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(325162);
         throw ((Throwable)localObject);
       }
       ((ViewGroup)localObject).setDescendantFocusability(paramInt);
     }
-    AppMethodBeat.o(243432);
+    AppMethodBeat.o(325162);
   }
   
   public final void setEnableFixSize(boolean paramBoolean)
   {
-    this.qye = paramBoolean;
+    this.tDf = paramBoolean;
   }
   
   public final void setFocusable(boolean paramBoolean)
   {
-    AppMethodBeat.i(243434);
+    AppMethodBeat.i(325167);
     if ((getChildAt(0) instanceof ViewGroup))
     {
       Object localObject = getChildAt(0);
       if (localObject == null)
       {
-        localObject = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(243434);
+        localObject = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(325167);
         throw ((Throwable)localObject);
       }
       ((ViewGroup)localObject).setFocusable(paramBoolean);
     }
-    AppMethodBeat.o(243434);
+    AppMethodBeat.o(325167);
   }
   
   public final void setFocusableInTouchMode(boolean paramBoolean)
   {
-    AppMethodBeat.i(243433);
+    AppMethodBeat.i(325165);
     if ((getChildAt(0) instanceof ViewGroup))
     {
       Object localObject = getChildAt(0);
       if (localObject == null)
       {
-        localObject = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(243433);
+        localObject = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(325165);
         throw ((Throwable)localObject);
       }
       ((ViewGroup)localObject).setFocusableInTouchMode(paramBoolean);
     }
-    AppMethodBeat.o(243433);
+    AppMethodBeat.o(325165);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/view/AppBrandWebViewFixedSizeWrapper$Companion;", "", "()V", "TAG", "", "luggage-wxa-app_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.d.a
  * JD-Core Version:    0.7.0.1
  */

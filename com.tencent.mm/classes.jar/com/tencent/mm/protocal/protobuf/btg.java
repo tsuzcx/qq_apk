@@ -4,93 +4,101 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class btg
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public long Tdn;
-  public long Tdo;
-  public int scene;
+  public LinkedList<bfl> ZKa;
+  public long aabc;
+  public long aabd;
+  public String username;
+  
+  public btg()
+  {
+    AppMethodBeat.i(259495);
+    this.ZKa = new LinkedList();
+    AppMethodBeat.o(259495);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(244320);
+    AppMethodBeat.i(259502);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.username != null) {
+        paramVarArgs.g(1, this.username);
       }
-      paramVarArgs.bm(2, this.Tdn);
-      paramVarArgs.bm(3, this.Tdo);
-      paramVarArgs.aY(4, this.scene);
-      AppMethodBeat.o(244320);
+      paramVarArgs.e(2, 8, this.ZKa);
+      paramVarArgs.bv(3, this.aabc);
+      paramVarArgs.bv(4, this.aabd);
+      AppMethodBeat.o(259502);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
+      if (this.username == null) {
         break label424;
       }
     }
     label424:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = i.a.a.b.b.a.h(1, this.username) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.p(2, this.Tdn);
-      int j = g.a.a.b.b.a.p(3, this.Tdo);
-      int k = g.a.a.b.b.a.bM(4, this.scene);
-      AppMethodBeat.o(244320);
+      int i = i.a.a.a.c(2, 8, this.ZKa);
+      int j = i.a.a.b.b.a.q(3, this.aabc);
+      int k = i.a.a.b.b.a.q(4, this.aabd);
+      AppMethodBeat.o(259502);
       return paramInt + i + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.ZKa.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(244320);
+        AppMethodBeat.o(259502);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         btg localbtg = (btg)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(244320);
+          AppMethodBeat.o(259502);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          localbtg.username = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(259502);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
+            bfl localbfl = new bfl();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
+              localbfl.parseFrom((byte[])localObject);
             }
-            localbtg.BaseRequest = localjg;
+            localbtg.ZKa.add(localbfl);
             paramInt += 1;
           }
-          AppMethodBeat.o(244320);
-          return 0;
-        case 2: 
-          localbtg.Tdn = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(244320);
+          AppMethodBeat.o(259502);
           return 0;
         case 3: 
-          localbtg.Tdo = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(244320);
+          localbtg.aabc = ((i.a.a.a.a)localObject).ajGk.aaw();
+          AppMethodBeat.o(259502);
           return 0;
         }
-        localbtg.scene = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(244320);
+        localbtg.aabd = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(259502);
         return 0;
       }
-      AppMethodBeat.o(244320);
+      AppMethodBeat.o(259502);
       return -1;
     }
   }

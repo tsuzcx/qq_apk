@@ -10,7 +10,7 @@ public class TVKThreadUtil
   
   public static ScheduledExecutorService getScheduledExecutorServiceInstance()
   {
-    AppMethodBeat.i(256253);
+    AppMethodBeat.i(227920);
     if (mScheduler == null) {}
     try
     {
@@ -18,18 +18,18 @@ public class TVKThreadUtil
         mScheduler = Executors.newScheduledThreadPool(4);
       }
       ScheduledExecutorService localScheduledExecutorService = mScheduler;
-      AppMethodBeat.o(256253);
+      AppMethodBeat.o(227920);
       return localScheduledExecutorService;
     }
     finally
     {
-      AppMethodBeat.o(256253);
+      AppMethodBeat.o(227920);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.utils.TVKThreadUtil
  * JD-Core Version:    0.7.0.1
  */

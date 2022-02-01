@@ -3,76 +3,81 @@ package com.tencent.gpudetector;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 import java.util.HashMap;
-import kotlin.a.ae;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
-import kotlin.s;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
+import kotlin.r;
+import kotlin.v;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/gpudetector/JniGPUDetector;", "", "()V", "gpuArchInfo", "", "getGpuArchInfo", "()Ljava/lang/String;", "gpuCodeInfo", "", "getGpuCodeInfo", "()I", "gpuCoreSumInfo", "getGpuCoreSumInfo", "gpuInfo", "", "getGpuInfo", "()[I", "gpuPerfScoreInfo", "getGpuPerfScoreInfo", "GetGPUDeviceModel", "", "deviceModel", "Lcom/tencent/gpudetector/JniGPUDetector$GpuDeviceModel;", "Companion", "GpuDeviceModel", "gpudetector_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gpudetector/JniGPUDetector;", "", "()V", "gpuArchInfo", "", "getGpuArchInfo", "()Ljava/lang/String;", "gpuCodeInfo", "", "getGpuCodeInfo", "()I", "gpuCoreSumInfo", "getGpuCoreSumInfo", "gpuInfo", "", "getGpuInfo", "()[I", "gpuPerfScoreInfo", "getGpuPerfScoreInfo", "GetGPUDeviceModel", "", "deviceModel", "Lcom/tencent/gpudetector/JniGPUDetector$GpuDeviceModel;", "Companion", "GpuDeviceModel", "gpudetector_release"}, k=1, mv={1, 1, 16})
 public final class JniGPUDetector
 {
   public static final Companion Companion;
   private static final HashMap<Integer, String> gpuDetailList;
+  private byte _hellAccFlag_;
   
   static
   {
-    AppMethodBeat.i(218368);
+    AppMethodBeat.i(210389);
     Companion = new Companion(null);
-    gpuDetailList = ae.g(new o[] { s.M(Integer.valueOf(-1), "GpuDeviceArchUnknown"), s.M(Integer.valueOf(0), "GpuDeviceArchAMDGeneric"), s.M(Integer.valueOf(1), "GpuDeviceArchAppleGeneric"), s.M(Integer.valueOf(2), "GpuDeviceArchAppleA"), s.M(Integer.valueOf(3), "GpuDeviceArchARMGeneric"), s.M(Integer.valueOf(4), "GpuDeviceArchMaliMidgardT"), s.M(Integer.valueOf(5), "GpuDeviceArchMaliBifrostG"), s.M(Integer.valueOf(6), "GpuDeviceArchMaliValhallG"), s.M(Integer.valueOf(7), "GpuDeviceArchImaginationGeneric"), s.M(Integer.valueOf(8), "GpuDeviceArchPowerVRSGX"), s.M(Integer.valueOf(9), "GpuDeviceArchPowerVRRogueGeneric"), s.M(Integer.valueOf(10), "GpuDeviceArchPowerVRRogueG"), s.M(Integer.valueOf(11), "GpuDeviceArchPowerVRRogueGX"), s.M(Integer.valueOf(12), "GpuDeviceArchPowerVRRogueGT"), s.M(Integer.valueOf(13), "GpuDeviceArchPowerVRRogueGE"), s.M(Integer.valueOf(14), "GpuDeviceArchPowerVRRogueGM"), s.M(Integer.valueOf(15), "GpuDeviceArchPowerVRFurianBegin"), s.M(Integer.valueOf(16), "GpuDeviceArchPowerVRFurianGT"), s.M(Integer.valueOf(17), "GpuDeviceArchImgAlbiorixGeneric"), s.M(Integer.valueOf(18), "GpuDeviceArchImgAlbiorixAXE"), s.M(Integer.valueOf(19), "GpuDeviceArchImgAlbiorixAXM"), s.M(Integer.valueOf(20), "GpuDeviceArchImgAlbiorixAXT"), s.M(Integer.valueOf(21), "GpuDeviceArchIntelGeneric"), s.M(Integer.valueOf(22), "GpuDeviceArchNVIDIAGeneric"), s.M(Integer.valueOf(23), "GpuDeviceArchQualcommGeneric"), s.M(Integer.valueOf(24), "GpuDeviceArchAdreno3XX"), s.M(Integer.valueOf(25), "GpuDeviceArchAdreno4XX"), s.M(Integer.valueOf(26), "GpuDeviceArchAdreno5XX"), s.M(Integer.valueOf(27), "GpuDeviceArchAdreno6XX") });
-    System.loadLibrary("GPUDetector");
-    AppMethodBeat.o(218368);
+    gpuDetailList = ak.g(new r[] { v.Y(Integer.valueOf(-1), "GpuDeviceArchUnknown"), v.Y(Integer.valueOf(0), "GpuDeviceArchAMDGeneric"), v.Y(Integer.valueOf(1), "GpuDeviceArchAppleGeneric"), v.Y(Integer.valueOf(2), "GpuDeviceArchAppleA"), v.Y(Integer.valueOf(3), "GpuDeviceArchARMGeneric"), v.Y(Integer.valueOf(4), "GpuDeviceArchMaliMidgardT"), v.Y(Integer.valueOf(5), "GpuDeviceArchMaliBifrostG"), v.Y(Integer.valueOf(6), "GpuDeviceArchMaliValhallG"), v.Y(Integer.valueOf(7), "GpuDeviceArchImaginationGeneric"), v.Y(Integer.valueOf(8), "GpuDeviceArchPowerVRSGX"), v.Y(Integer.valueOf(9), "GpuDeviceArchPowerVRRogueGeneric"), v.Y(Integer.valueOf(10), "GpuDeviceArchPowerVRRogueG"), v.Y(Integer.valueOf(11), "GpuDeviceArchPowerVRRogueGX"), v.Y(Integer.valueOf(12), "GpuDeviceArchPowerVRRogueGT"), v.Y(Integer.valueOf(13), "GpuDeviceArchPowerVRRogueGE"), v.Y(Integer.valueOf(14), "GpuDeviceArchPowerVRRogueGM"), v.Y(Integer.valueOf(15), "GpuDeviceArchPowerVRFurianBegin"), v.Y(Integer.valueOf(16), "GpuDeviceArchPowerVRFurianGT"), v.Y(Integer.valueOf(17), "GpuDeviceArchImgAlbiorixGeneric"), v.Y(Integer.valueOf(18), "GpuDeviceArchImgAlbiorixAXE"), v.Y(Integer.valueOf(19), "GpuDeviceArchImgAlbiorixAXM"), v.Y(Integer.valueOf(20), "GpuDeviceArchImgAlbiorixAXT"), v.Y(Integer.valueOf(21), "GpuDeviceArchIntelGeneric"), v.Y(Integer.valueOf(22), "GpuDeviceArchNVIDIAGeneric"), v.Y(Integer.valueOf(23), "GpuDeviceArchQualcommGeneric"), v.Y(Integer.valueOf(24), "GpuDeviceArchAdreno3XX"), v.Y(Integer.valueOf(25), "GpuDeviceArchAdreno4XX"), v.Y(Integer.valueOf(26), "GpuDeviceArchAdreno5XX"), v.Y(Integer.valueOf(27), "GpuDeviceArchAdreno6XX") });
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("GPUDetector");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/gpudetector/JniGPUDetector", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/gpudetector/JniGPUDetector", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    AppMethodBeat.o(210389);
   }
   
   public final native boolean GetGPUDeviceModel(GpuDeviceModel paramGpuDeviceModel);
   
   public final String getGpuArchInfo()
   {
-    AppMethodBeat.i(218355);
+    AppMethodBeat.i(210393);
     Object localObject = new GpuDeviceModel();
     if (new JniGPUDetector().GetGPUDeviceModel((GpuDeviceModel)localObject))
     {
       localObject = Companion.getArchNameDetail(((GpuDeviceModel)localObject).getArch());
-      AppMethodBeat.o(218355);
+      AppMethodBeat.o(210393);
       return localObject;
     }
     localObject = Companion.getArchNameDetail(-1);
-    AppMethodBeat.o(218355);
+    AppMethodBeat.o(210393);
     return localObject;
   }
   
   public final int getGpuCodeInfo()
   {
-    AppMethodBeat.i(218356);
+    AppMethodBeat.i(210395);
     GpuDeviceModel localGpuDeviceModel = new GpuDeviceModel();
     if (new JniGPUDetector().GetGPUDeviceModel(localGpuDeviceModel))
     {
       int i = localGpuDeviceModel.getCode();
-      AppMethodBeat.o(218356);
+      AppMethodBeat.o(210395);
       return i;
     }
-    AppMethodBeat.o(218356);
+    AppMethodBeat.o(210395);
     return -1;
   }
   
   public final int getGpuCoreSumInfo()
   {
-    AppMethodBeat.i(218360);
+    AppMethodBeat.i(210397);
     GpuDeviceModel localGpuDeviceModel = new GpuDeviceModel();
     if (new JniGPUDetector().GetGPUDeviceModel(localGpuDeviceModel))
     {
       int i = localGpuDeviceModel.getNumCores();
-      AppMethodBeat.o(218360);
+      AppMethodBeat.o(210397);
       return i;
     }
-    AppMethodBeat.o(218360);
+    AppMethodBeat.o(210397);
     return -1;
   }
   
   public final int[] getGpuInfo()
   {
-    AppMethodBeat.i(218365);
+    AppMethodBeat.i(210400);
     GpuDeviceModel localGpuDeviceModel = new GpuDeviceModel();
     if (new JniGPUDetector().GetGPUDeviceModel(localGpuDeviceModel))
     {
@@ -80,66 +85,66 @@ public final class JniGPUDetector
       localGpuDeviceModel.getCode();
       localGpuDeviceModel.getNumCores();
     }
-    AppMethodBeat.o(218365);
+    AppMethodBeat.o(210400);
     return null;
   }
   
   public final int getGpuPerfScoreInfo()
   {
-    AppMethodBeat.i(218363);
+    AppMethodBeat.i(210398);
     GpuDeviceModel localGpuDeviceModel = new GpuDeviceModel();
     if (new JniGPUDetector().GetGPUDeviceModel(localGpuDeviceModel))
     {
       int i = localGpuDeviceModel.getPerfScore();
-      AppMethodBeat.o(218363);
+      AppMethodBeat.o(210398);
       return i;
     }
-    AppMethodBeat.o(218363);
+    AppMethodBeat.o(210398);
     return -1;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/gpudetector/JniGPUDetector$Companion;", "", "()V", "gpuDetailList", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "getGpuDetailList", "()Ljava/util/HashMap;", "getArchNameDetail", "arch", "getVersion", "showGpuDeviceModel", "gpudetector_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gpudetector/JniGPUDetector$Companion;", "", "()V", "gpuDetailList", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "getGpuDetailList", "()Ljava/util/HashMap;", "getArchNameDetail", "arch", "getVersion", "showGpuDeviceModel", "gpudetector_release"}, k=1, mv={1, 1, 16})
   public static final class Companion
   {
     public final String getArchNameDetail(int paramInt)
     {
-      AppMethodBeat.i(218326);
+      AppMethodBeat.i(210391);
       String str = paramInt + '(' + (String)((Companion)this).getGpuDetailList().get(Integer.valueOf(paramInt)) + ')';
-      AppMethodBeat.o(218326);
+      AppMethodBeat.o(210391);
       return str;
     }
     
     public final HashMap<Integer, String> getGpuDetailList()
     {
-      AppMethodBeat.i(218322);
+      AppMethodBeat.i(210388);
       HashMap localHashMap = JniGPUDetector.access$getGpuDetailList$cp();
-      AppMethodBeat.o(218322);
+      AppMethodBeat.o(210388);
       return localHashMap;
     }
     
     public final String getVersion()
     {
-      return "1.0.0-23";
+      return "1.0.0-26";
     }
     
     public final String showGpuDeviceModel()
     {
-      AppMethodBeat.i(218325);
+      AppMethodBeat.i(210390);
       Object localObject = new JniGPUDetector.GpuDeviceModel();
       if (new JniGPUDetector().GetGPUDeviceModel((JniGPUDetector.GpuDeviceModel)localObject))
       {
-        af localaf = af.aaBG;
+        am localam = am.aixg;
         localObject = String.format("GPU arch: %s\n, code: %d, numCores: %d, perfScore: %d\nvendor: %s\nname: %s\nversion: %s\n", Arrays.copyOf(new Object[] { ((Companion)this).getArchNameDetail(((JniGPUDetector.GpuDeviceModel)localObject).getArch()), Integer.valueOf(((JniGPUDetector.GpuDeviceModel)localObject).getCode()), Integer.valueOf(((JniGPUDetector.GpuDeviceModel)localObject).getNumCores()), Integer.valueOf(((JniGPUDetector.GpuDeviceModel)localObject).getPerfScore()), ((JniGPUDetector.GpuDeviceModel)localObject).getVendor(), ((JniGPUDetector.GpuDeviceModel)localObject).getName(), ((JniGPUDetector.GpuDeviceModel)localObject).getVersion() }, 7));
-        p.j(localObject, "java.lang.String.format(format, *args)");
-        AppMethodBeat.o(218325);
+        s.r(localObject, "java.lang.String.format(format, *args)");
+        AppMethodBeat.o(210390);
         return localObject;
       }
-      AppMethodBeat.o(218325);
+      AppMethodBeat.o(210390);
       return "Failed to detect GPU";
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/gpudetector/JniGPUDetector$GpuDeviceModel;", "", "()V", "arch", "", "getArch", "()I", "setArch", "(I)V", "code", "getCode", "setCode", "name", "", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "numCores", "getNumCores", "setNumCores", "perfScore", "getPerfScore", "setPerfScore", "vendor", "getVendor", "setVendor", "version", "getVersion", "setVersion", "gpudetector_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gpudetector/JniGPUDetector$GpuDeviceModel;", "", "()V", "arch", "", "getArch", "()I", "setArch", "(I)V", "code", "getCode", "setCode", "name", "", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "numCores", "getNumCores", "setNumCores", "perfScore", "getPerfScore", "setPerfScore", "vendor", "getVendor", "setVendor", "version", "getVersion", "setVersion", "gpudetector_release"}, k=1, mv={1, 1, 16})
   public static final class GpuDeviceModel
   {
     private int arch;
@@ -197,10 +202,10 @@ public final class JniGPUDetector
     
     public final void setName(String paramString)
     {
-      AppMethodBeat.i(218347);
-      p.k(paramString, "<set-?>");
+      AppMethodBeat.i(210418);
+      s.t(paramString, "<set-?>");
       this.name = paramString;
-      AppMethodBeat.o(218347);
+      AppMethodBeat.o(210418);
     }
     
     public final void setNumCores(int paramInt)
@@ -215,24 +220,24 @@ public final class JniGPUDetector
     
     public final void setVendor(String paramString)
     {
-      AppMethodBeat.i(218344);
-      p.k(paramString, "<set-?>");
+      AppMethodBeat.i(210411);
+      s.t(paramString, "<set-?>");
       this.vendor = paramString;
-      AppMethodBeat.o(218344);
+      AppMethodBeat.o(210411);
     }
     
     public final void setVersion(String paramString)
     {
-      AppMethodBeat.i(218349);
-      p.k(paramString, "<set-?>");
+      AppMethodBeat.i(210427);
+      s.t(paramString, "<set-?>");
       this.version = paramString;
-      AppMethodBeat.o(218349);
+      AppMethodBeat.o(210427);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.gpudetector.JniGPUDetector
  * JD-Core Version:    0.7.0.1
  */

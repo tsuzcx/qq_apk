@@ -5,19 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a cNp;
+  private static a.a eIK;
   
   static
   {
     AppMethodBeat.i(139954);
-    cNp = new a()
+    eIK = new a.a()
     {
-      public final int A(String paramAnonymousString, int paramAnonymousInt)
+      public final int I(String paramAnonymousString, int paramAnonymousInt)
       {
         return 0;
       }
       
-      public final Drawable B(String paramAnonymousString, int paramAnonymousInt)
+      public final Drawable J(String paramAnonymousString, int paramAnonymousInt)
       {
         return null;
       }
@@ -25,21 +25,14 @@ public final class a
     AppMethodBeat.o(139954);
   }
   
-  public static a Vd()
+  public static void a(a.a parama)
   {
-    return cNp;
+    eIK = parama;
   }
   
-  public static void a(a parama)
+  public static a.a avG()
   {
-    cNp = parama;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract int A(String paramString, int paramInt);
-    
-    public abstract Drawable B(String paramString, int paramInt);
+    return eIK;
   }
 }
 

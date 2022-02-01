@@ -1,26 +1,23 @@
 package com.tencent.mm.plugin.findersdk.a;
 
+import com.tencent.mm.kernel.c.a;
+
 public abstract interface z
+  extends a
 {
-  public abstract void aBd(String paramString);
+  public abstract void aAr(String paramString);
   
-  public abstract void dqB();
+  public abstract int aAs(String paramString);
   
-  public abstract boolean dqI();
+  public abstract boolean aAt(String paramString);
   
-  public abstract boolean dqJ();
+  public abstract String aAu(String paramString);
   
-  public abstract boolean dqK();
-  
-  public abstract void ok(boolean paramBoolean);
-  
-  public abstract void ol(boolean paramBoolean);
-  
-  public abstract void om(boolean paramBoolean);
+  public abstract boolean ie(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.findersdk.a.z
  * JD-Core Version:    0.7.0.1
  */

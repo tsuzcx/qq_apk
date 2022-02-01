@@ -12,39 +12,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class Barrier
   extends ConstraintHelper
 {
-  private int Ex;
-  private int Ey;
-  b Ez;
+  private int bkF;
+  private int bkG;
+  b bkH;
   
   public Barrier(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(194556);
+    AppMethodBeat.i(194139);
     super.setVisibility(8);
-    AppMethodBeat.o(194556);
+    AppMethodBeat.o(194139);
   }
   
   public Barrier(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(194558);
+    AppMethodBeat.i(194146);
     super.setVisibility(8);
-    AppMethodBeat.o(194558);
+    AppMethodBeat.o(194146);
   }
   
   public Barrier(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(194559);
+    AppMethodBeat.i(194152);
     super.setVisibility(8);
-    AppMethodBeat.o(194559);
+    AppMethodBeat.o(194152);
   }
   
   protected final void f(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(194571);
+    AppMethodBeat.i(194177);
     super.f(paramAttributeSet);
-    this.Ez = new b();
+    this.bkH = new b();
     if (paramAttributeSet != null)
     {
       paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.ConstraintLayout_Layout);
@@ -61,44 +61,44 @@ public class Barrier
           i += 1;
           break;
           if (k == R.styleable.ConstraintLayout_Layout_barrierAllowsGoneWidgets) {
-            this.Ez.Bc = paramAttributeSet.getBoolean(k, true);
+            this.bkH.bhk = paramAttributeSet.getBoolean(k, true);
           }
         }
       }
     }
-    this.EC = this.Ez;
-    fY();
-    AppMethodBeat.o(194571);
+    this.bkK = this.bkH;
+    Dh();
+    AppMethodBeat.o(194177);
   }
   
   public int getType()
   {
-    return this.Ex;
+    return this.bkF;
   }
   
   public void setAllowsGoneWidget(boolean paramBoolean)
   {
-    this.Ez.Bc = paramBoolean;
+    this.bkH.bhk = paramBoolean;
   }
   
   public void setType(int paramInt)
   {
-    AppMethodBeat.i(194565);
-    this.Ex = paramInt;
-    this.Ey = paramInt;
+    AppMethodBeat.i(194165);
+    this.bkF = paramInt;
+    this.bkG = paramInt;
     if (Build.VERSION.SDK_INT < 17) {
-      if (this.Ex == 5) {
-        this.Ey = 0;
+      if (this.bkF == 5) {
+        this.bkG = 0;
       }
     }
     for (;;)
     {
-      this.Ez.Ba = this.Ey;
-      AppMethodBeat.o(194565);
+      this.bkH.bhi = this.bkG;
+      AppMethodBeat.o(194165);
       return;
-      if (this.Ex == 6)
+      if (this.bkF == 6)
       {
-        this.Ey = 1;
+        this.bkG = 1;
         continue;
         if (1 == getResources().getConfiguration().getLayoutDirection()) {
           paramInt = 1;
@@ -107,24 +107,24 @@ public class Barrier
         {
           if (paramInt != 0)
           {
-            if (this.Ex == 5)
+            if (this.bkF == 5)
             {
-              this.Ey = 1;
+              this.bkG = 1;
               break;
               paramInt = 0;
               continue;
             }
-            if (this.Ex != 6) {
+            if (this.bkF != 6) {
               break;
             }
-            this.Ey = 0;
+            this.bkG = 0;
             break;
           }
         }
-        if (this.Ex == 5) {
-          this.Ey = 0;
-        } else if (this.Ex == 6) {
-          this.Ey = 1;
+        if (this.bkF == 5) {
+          this.bkG = 0;
+        } else if (this.bkF == 6) {
+          this.bkG = 1;
         }
       }
     }
@@ -132,7 +132,7 @@ public class Barrier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.widget.Barrier
  * JD-Core Version:    0.7.0.1
  */

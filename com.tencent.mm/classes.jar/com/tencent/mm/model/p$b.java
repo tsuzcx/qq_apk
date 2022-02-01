@@ -2,22 +2,22 @@ package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
 final class p$b
-  extends q
+  extends u
   implements a<MultiProcessMMKV>
 {
-  public static final b lrM;
+  public static final b ojm;
   
   static
   {
-    AppMethodBeat.i(206801);
-    lrM = new b();
-    AppMethodBeat.o(206801);
+    AppMethodBeat.i(242065);
+    ojm = new b();
+    AppMethodBeat.o(242065);
   }
   
   p$b()

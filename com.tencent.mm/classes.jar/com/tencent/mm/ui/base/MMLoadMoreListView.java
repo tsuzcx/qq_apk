@@ -16,20 +16,20 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class MMLoadMoreListView
   extends ListView
 {
-  private a WkL;
-  private boolean WkM;
-  private boolean WkN;
-  private View uIP;
-  private TextView ynb;
+  private TextView CVT;
+  private a adRS;
+  private boolean adRT;
+  private boolean adRU;
+  private View xRF;
   
   public MMLoadMoreListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142039);
-    this.uIP = null;
-    this.WkL = null;
-    this.WkM = false;
-    this.WkN = false;
+    this.xRF = null;
+    this.adRS = null;
+    this.adRT = false;
+    this.adRU = false;
     init();
     AppMethodBeat.o(142039);
   }
@@ -38,45 +38,45 @@ public class MMLoadMoreListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142040);
-    this.uIP = null;
-    this.WkL = null;
-    this.WkM = false;
-    this.WkN = false;
+    this.xRF = null;
+    this.adRS = null;
+    this.adRT = false;
+    this.adRU = false;
     init();
     AppMethodBeat.o(142040);
-  }
-  
-  private void hJJ()
-  {
-    AppMethodBeat.i(142041);
-    this.uIP = View.inflate(getContext(), a.h.mm_footerview, null);
-    this.ynb = ((TextView)this.uIP.findViewById(a.g.footer_tips));
-    this.uIP.setVisibility(8);
-    AppMethodBeat.o(142041);
   }
   
   private void init()
   {
     AppMethodBeat.i(142042);
-    if (this.uIP == null)
+    if (this.xRF == null)
     {
-      hJJ();
-      addFooterView(this.uIP);
-      this.uIP.setVisibility(8);
+      jmr();
+      addFooterView(this.xRF);
+      this.xRF.setVisibility(8);
     }
     AppMethodBeat.o(142042);
   }
   
-  public final void cnx()
+  private void jmr()
+  {
+    AppMethodBeat.i(142041);
+    this.xRF = View.inflate(getContext(), a.h.mm_footerview, null);
+    this.CVT = ((TextView)this.xRF.findViewById(a.g.footer_tips));
+    this.xRF.setVisibility(8);
+    AppMethodBeat.o(142041);
+  }
+  
+  public final void cPA()
   {
     AppMethodBeat.i(142043);
-    if (this.uIP == null) {
-      hJJ();
+    if (this.xRF == null) {
+      jmr();
     }
     try
     {
-      removeFooterView(this.uIP);
-      addFooterView(this.uIP);
+      removeFooterView(this.xRF);
+      addFooterView(this.xRF);
       AppMethodBeat.o(142043);
       return;
     }
@@ -98,10 +98,10 @@ public class MMLoadMoreListView
     return false;
   }
   
-  public final void hJK()
+  public final void jms()
   {
     AppMethodBeat.i(142044);
-    this.WkM = true;
+    this.adRT = true;
     setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
@@ -131,52 +131,52 @@ public class MMLoadMoreListView
     AppMethodBeat.o(142044);
   }
   
-  public final void hJL()
+  public final void jmt()
   {
     AppMethodBeat.i(142048);
-    if (this.uIP != null)
+    if (this.xRF != null)
     {
-      this.ynb.setVisibility(8);
-      this.uIP.setVisibility(8);
+      this.CVT.setVisibility(8);
+      this.xRF.setVisibility(8);
     }
     AppMethodBeat.o(142048);
   }
   
-  public final void hJM()
+  public final void jmu()
   {
     AppMethodBeat.i(142049);
-    if (this.uIP.getParent() == null) {
-      cnx();
+    if (this.xRF.getParent() == null) {
+      cPA();
     }
-    this.ynb.setVisibility(0);
-    this.uIP.setVisibility(0);
+    this.CVT.setVisibility(0);
+    this.xRF.setVisibility(0);
     AppMethodBeat.o(142049);
   }
   
-  public final void hJN()
+  public final void jmv()
   {
     AppMethodBeat.i(142050);
-    removeFooterView(this.uIP);
+    removeFooterView(this.xRF);
     AppMethodBeat.o(142050);
   }
   
   public void setFooterTips(String paramString)
   {
     AppMethodBeat.i(142047);
-    this.ynb.setText(paramString);
+    this.CVT.setText(paramString);
     AppMethodBeat.o(142047);
   }
   
   public void setOnFootrClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(142046);
-    this.ynb.setOnClickListener(paramOnClickListener);
+    this.CVT.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(142046);
   }
   
   public void setOnLoadMoreListener(a parama)
   {
-    this.WkL = parama;
+    this.adRS = parama;
   }
   
   public static abstract interface a
@@ -186,7 +186,7 @@ public class MMLoadMoreListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMLoadMoreListView
  * JD-Core Version:    0.7.0.1
  */

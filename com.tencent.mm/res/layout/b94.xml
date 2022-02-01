@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
+<RelativeLayout android:orientation="vertical" android:id="@id/h2_" android:background="@drawable/bbn" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@android:id/title" android:layout_width="73.0dip" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:singleLine="true" style="@style/mi" />
-    <RadioGroup android:orientation="horizontal" android:id="@id/dl9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <Button android:gravity="center" android:id="@id/fgn" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="120.0dip" android:layout_marginBottom="40.0dip" android:text="@string/lkh" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/og" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/al6" android:gravity="center" android:id="@id/h2v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:text="@string/jeh" android:layout_above="@id/fgn" android:layout_centerHorizontal="true" />
+</RelativeLayout>

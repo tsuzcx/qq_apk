@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/ux" android:layout_width="fill_parent" android:layout_height="47.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:id="@id/hze" android:background="@drawable/a57" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip">
-        <ImageView android:id="@id/hzg" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/awi" android:scaleType="fitCenter" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/hzl" android:paddingLeft="8.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h9k" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <TextView android:ellipsize="middle" android:layout_gravity="center_vertical" android:id="@id/kpx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{header}" android:singleLine="true" android:layout_weight="1.0" android:layout_marginStart="@dimen/i6" style="@style/ma" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/m4" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/h0c" android:background="@drawable/arl" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/e7" android:drawablePadding="6.0dip" android:drawableEnd="@drawable/bk0" android:paddingStart="@dimen/m2" android:paddingEnd="@dimen/i6" />
     </LinearLayout>
+    <View android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:layout_marginStart="@dimen/ej" />
 </LinearLayout>

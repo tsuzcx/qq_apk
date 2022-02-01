@@ -1,248 +1,161 @@
 package com.tencent.matrix.resource.processor;
 
-import android.app.Notification;
-import android.app.Notification.BigTextStyle;
-import android.app.Notification.Builder;
-import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
 import android.os.Handler;
-import com.tencent.matrix.e.d;
-import com.tencent.matrix.report.e;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+import com.tencent.matrix.e.c;
+import com.tencent.matrix.report.f;
 import com.tencent.matrix.resource.analyzer.model.DestroyedActivityInfo;
-import com.tencent.matrix.resource.b.a;
-import com.tencent.matrix.resource.b.c;
 import com.tencent.matrix.resource.b.a.b;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 public final class ManualDumpProcessor
   extends b
 {
-  private final NotificationManager Jv;
-  private final String dcF;
-  private final List<DestroyedActivityInfo> ddR = new ArrayList();
-  public boolean ddS;
+  private final NotificationManager bpy;
+  private final String fbf;
+  private final List<DestroyedActivityInfo> fcB = new ArrayList();
+  public boolean fcC;
   
   public ManualDumpProcessor(com.tencent.matrix.resource.f.b paramb, String paramString)
   {
     super(paramb);
-    this.dcF = paramString;
-    this.Jv = ((NotificationManager)paramb.mContext.getSystemService("notification"));
-    ManualDumpProcessorHelper.a(paramb.mContext, this);
+    this.fbf = paramString;
+    this.bpy = ((NotificationManager)paramb.mContext.getSystemService("notification"));
   }
   
-  public final boolean a(DestroyedActivityInfo paramDestroyedActivityInfo)
+  private ManualDumpData X(String paramString1, String paramString2)
   {
-    Context localContext = this.daQ.mContext;
-    com.tencent.matrix.resource.f.b.XT();
-    if (paramDestroyedActivityInfo.mActivityRef.get() == null)
-    {
-      com.tencent.matrix.e.c.v("Matrix.LeakProcessor.ManualDump", "activity with key [%s] was already recycled.", new Object[] { paramDestroyedActivityInfo.mKey });
-      return true;
+    long l1 = System.currentTimeMillis();
+    azu();
+    com.tencent.matrix.resource.f.b.azx();
+    Object localObject = azr().azo();
+    if (localObject != null) {
+      com.tencent.matrix.memorydump.a.gQ(((File)localObject).getPath());
     }
-    this.ddR.add(paramDestroyedActivityInfo);
-    com.tencent.matrix.e.c.i("Matrix.LeakProcessor.ManualDump", "show notification for activity leak. %s", new Object[] { paramDestroyedActivityInfo.mActivityName });
-    if (this.ddS)
+    if ((localObject == null) || (((File)localObject).length() <= 0L))
     {
-      com.tencent.matrix.e.c.i("Matrix.LeakProcessor.ManualDump", "is muted, won't show notification util process reboot", new Object[0]);
-      return true;
-    }
-    Object localObject = new Intent();
-    ((Intent)localObject).setClassName(this.daQ.mContext, this.dcF);
-    ((Intent)localObject).putExtra("activity", paramDestroyedActivityInfo.mActivityName);
-    ((Intent)localObject).putExtra("ref_key", paramDestroyedActivityInfo.mKey);
-    ((Intent)localObject).putExtra("leak_process", d.getProcessName(localContext));
-    PendingIntent localPendingIntent = PendingIntent.getActivity(localContext, 0, (Intent)localObject, 134217728);
-    String str1 = localContext.getString(b.c.resource_canary_leak_tip);
-    localObject = this.daQ.ded.daP;
-    String str2 = String.format(Locale.getDefault(), "[%s] has leaked for [%s]min!!!", new Object[] { paramDestroyedActivityInfo.mActivityName, Long.valueOf(TimeUnit.MILLISECONDS.toMinutes(((com.tencent.matrix.resource.b.a)localObject).XE() * ((com.tencent.matrix.resource.b.a)localObject).XG())) });
-    if (Build.VERSION.SDK_INT >= 26) {
-      if (Build.VERSION.SDK_INT >= 26)
-      {
-        localObject = (NotificationManager)localContext.getSystemService("notification");
-        if (((NotificationManager)localObject).getNotificationChannel("com.tencent.matrix.resource.processor.ManualDumpProcessor") == null)
-        {
-          com.tencent.matrix.e.c.v("Matrix.LeakProcessor.ManualDump", "create channel", new Object[0]);
-          ((NotificationManager)localObject).createNotificationChannel(new NotificationChannel("com.tencent.matrix.resource.processor.ManualDumpProcessor", "com.tencent.matrix.resource.processor.ManualDumpProcessor", 4));
-        }
-        localObject = "com.tencent.matrix.resource.processor.ManualDumpProcessor";
-      }
-    }
-    for (localObject = new Notification.Builder(localContext, (String)localObject);; localObject = new Notification.Builder(localContext))
-    {
-      ((Notification.Builder)localObject).setContentTitle(str1).setPriority(0).setStyle(new Notification.BigTextStyle().bigText(str2)).setContentIntent(localPendingIntent).setAutoCancel(true).setSmallIcon(b.a.ic_launcher).setWhen(System.currentTimeMillis());
-      localObject = ((Notification.Builder)localObject).build();
-      this.Jv.notify(paramDestroyedActivityInfo.mKey.hashCode() + 272, (Notification)localObject);
-      localObject = paramDestroyedActivityInfo.mActivityName;
-      paramDestroyedActivityInfo = paramDestroyedActivityInfo.mKey;
-      a(0, a.b.dcK, (String)localObject, paramDestroyedActivityInfo, "manual_dump", "0");
-      com.tencent.matrix.e.c.i("Matrix.LeakProcessor.ManualDump", "shown notification!!!3", new Object[0]);
-      return true;
-      localObject = null;
-      break;
-    }
-  }
-  
-  final b fJ(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    com.tencent.matrix.resource.f.b.XT();
-    File localFile = XL().db(false);
-    if ((localFile == null) || (localFile.length() <= 0L))
-    {
-      com.tencent.matrix.e.c.e("Matrix.LeakProcessor.ManualDump", "file is null!", new Object[0]);
+      a(2, a.b.fbl, paramString1, paramString2, "FileNull", "0");
+      c.e("Matrix.LeakProcessor.ManualDump", "file is null!", new Object[0]);
       return null;
     }
-    com.tencent.matrix.e.c.i("Matrix.LeakProcessor.ManualDump", String.format("dump cost=%sms refString=%s path=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramString, localFile.getAbsolutePath() }), new Object[0]);
-    l = System.currentTimeMillis();
+    c.i("Matrix.LeakProcessor.ManualDump", String.format("dump cost=%sms refString=%s path=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l1), paramString2, ((File)localObject).getAbsolutePath() }), new Object[0]);
+    long l2 = System.currentTimeMillis();
     try
     {
-      com.tencent.matrix.resource.analyzer.model.a locala = g(localFile, paramString);
-      com.tencent.matrix.e.c.i("Matrix.LeakProcessor.ManualDump", String.format("analyze cost=%sms refString=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramString }), new Object[0]);
-      paramString = locala.toString();
-      if (locala.daT)
+      com.tencent.matrix.resource.analyzer.model.a locala = g((File)localObject, paramString2);
+      c.i("Matrix.LeakProcessor.ManualDump", String.format("analyze cost=%sms refString=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2), paramString2 }), new Object[0]);
+      String str = locala.toString();
+      if (locala.eZt)
       {
-        com.tencent.matrix.e.c.i("Matrix.LeakProcessor.ManualDump", "leakFound,refcChain = %s", new Object[] { paramString });
-        paramString = new b(localFile.getAbsolutePath(), paramString);
-        return paramString;
+        c.i("Matrix.LeakProcessor.ManualDump", "leakFound,refcChain = %s", new Object[] { str });
+        a(0, a.b.fbl, paramString1, paramString2, str, String.valueOf(System.currentTimeMillis() - l1));
+        localObject = new ManualDumpData(((File)localObject).getAbsolutePath(), str);
+        return localObject;
       }
     }
-    catch (OutOfMemoryError paramString)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      com.tencent.matrix.e.c.printErrStackTrace("Matrix.LeakProcessor.ManualDump", paramString.getCause(), "", new Object[0]);
+      a(3, a.b.fbl, paramString1, paramString2, "OutOfMemoryError", "0");
+      c.printErrStackTrace("Matrix.LeakProcessor.ManualDump", localOutOfMemoryError.getCause(), "", new Object[0]);
       return null;
     }
-    com.tencent.matrix.e.c.i("Matrix.LeakProcessor.ManualDump", "leak not found", new Object[0]);
-    paramString = new b(localFile.getAbsolutePath(), null);
-    return paramString;
+    c.i("Matrix.LeakProcessor.ManualDump", "leak not found", new Object[0]);
+    ManualDumpData localManualDumpData = new ManualDumpData(localOutOfMemoryError.getAbsolutePath(), null);
+    return localManualDumpData;
   }
   
-  public static class ManualDumpProcessorHelper
-    extends BroadcastReceiver
+  public final boolean a(final DestroyedActivityInfo paramDestroyedActivityInfo)
   {
-    private static boolean ddV;
-    private static ManualDumpProcessor ddW;
-    private static ManualDumpProcessor.a ddX;
-    
-    public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, ManualDumpProcessor.a parama)
+    azu();
+    com.tencent.matrix.resource.f.b.azx();
+    if (paramDestroyedActivityInfo.mActivityRef.get() == null)
     {
-      if (!ddV) {
-        throw new IllegalStateException("ManualDumpProcessorHelper was not installed yet!!! maybe your target activity is not running in right process.");
-      }
-      String str = d.getProcessName(paramContext);
-      if (str.equalsIgnoreCase(paramString1))
+      c.v("Matrix.LeakProcessor.ManualDump", "activity with key [%s] was already recycled.", new Object[] { paramDestroyedActivityInfo.mKey });
+      return true;
+    }
+    this.fcB.add(paramDestroyedActivityInfo);
+    c.i("Matrix.LeakProcessor.ManualDump", "show notification for activity leak. %s", new Object[] { paramDestroyedActivityInfo.mActivityName });
+    if (this.fcC)
+    {
+      c.i("Matrix.LeakProcessor.ManualDump", "is muted, won't show notification util process reboot", new Object[0]);
+      return true;
+    }
+    final String str1 = paramDestroyedActivityInfo.mActivityName;
+    final String str2 = paramDestroyedActivityInfo.mKey;
+    paramDestroyedActivityInfo = new a()
+    {
+      public final void a(ManualDumpProcessor.ManualDumpData paramAnonymousManualDumpData)
       {
-        paramContext = ddW.fJ(paramString3);
-        if (paramContext == null)
+        if (paramAnonymousManualDumpData != null)
         {
-          parama.XN();
+          if (!ManualDumpProcessor.a(ManualDumpProcessor.this))
+          {
+            c.i("Matrix.LeakProcessor.ManualDump", "shown notification!!!3", new Object[0]);
+            ManualDumpProcessor.a(ManualDumpProcessor.this, paramDestroyedActivityInfo, paramAnonymousManualDumpData);
+          }
+        }
+        else {
           return;
         }
-        parama.R(paramContext.ddT, paramContext.ddU);
-        return;
+        c.i("Matrix.LeakProcessor.ManualDump", "mute mode, notification will not be shown.", new Object[0]);
       }
-      ddX = parama;
-      com.tencent.matrix.e.c.v("Matrix.LeakProcessor.ManualDump", "[%s] send broadcast with permission: %s", new Object[] { str, paramContext.getPackageName() + ".manual.dump" });
-      parama = new Intent("com.tencent.matrix.manual.dump");
-      parama.putExtra("leak_process", paramString1);
-      parama.putExtra("leak_activity", paramString2);
-      parama.putExtra("leak_refkey", paramString3);
-      parama.putExtra("result_process", str);
-      paramContext.sendBroadcast(parama, paramContext.getPackageName() + ".manual.dump");
+    };
+    com.tencent.matrix.e.b.aAp().postAtFrontOfQueue(new Runnable()
+    {
+      public final void run()
+      {
+        paramDestroyedActivityInfo.a(ManualDumpProcessor.a(ManualDumpProcessor.this, str1, str2));
+      }
+    });
+    return true;
+  }
+  
+  public static class ManualDumpData
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<ManualDumpData> CREATOR = new Parcelable.Creator() {};
+    public final String fcI;
+    public final String fcJ;
+    
+    protected ManualDumpData(Parcel paramParcel)
+    {
+      this.fcI = paramParcel.readString();
+      this.fcJ = paramParcel.readString();
     }
     
-    public void onReceive(final Context paramContext, final Intent paramIntent)
+    public ManualDumpData(String paramString1, String paramString2)
     {
-      if (paramIntent == null)
-      {
-        com.tencent.matrix.e.c.e("Matrix.LeakProcessor.ManualDump", "intent is null", new Object[0]);
-        return;
-      }
-      com.tencent.matrix.e.b.Yu().postAtFrontOfQueue(new Runnable()
-      {
-        public final void run()
-        {
-          if ("com.tencent.matrix.manual.dump".equals(paramIntent.getAction()))
-          {
-            localObject1 = paramIntent.getStringExtra("leak_process");
-            localObject2 = d.getProcessName(paramContext);
-            if (!((String)localObject2).equals(localObject1)) {
-              com.tencent.matrix.e.c.v("Matrix.LeakProcessor.ManualDump", "ACTION_DUMP: current process [%s] is NOT leaked process [%s]", new Object[] { localObject2, localObject1 });
-            }
-          }
-          while (!"com.tencent.matrix.manual.result".equals(paramIntent.getAction()))
-          {
-            return;
-            com.tencent.matrix.e.c.v("Matrix.LeakProcessor.ManualDump", "ACTION_DUMP: current process [%s] is leaked process [%s]", new Object[] { localObject2, localObject1 });
-            paramIntent.getStringExtra("leak_activity");
-            localObject1 = paramIntent.getStringExtra("leak_refkey");
-            localObject1 = ManualDumpProcessor.ManualDumpProcessorHelper.XO().fJ((String)localObject1);
-            localObject2 = new Intent("com.tencent.matrix.manual.result");
-            if (localObject1 != null)
-            {
-              ((Intent)localObject2).putExtra("hprof_path", ((ManualDumpProcessor.b)localObject1).ddT);
-              ((Intent)localObject2).putExtra("ref_chain", ((ManualDumpProcessor.b)localObject1).ddU);
-            }
-            ((Intent)localObject2).putExtra("result_process", paramIntent.getStringExtra("result_process"));
-            paramContext.sendBroadcast((Intent)localObject2, paramContext.getPackageName() + ".manual.dump");
-            return;
-          }
-          Object localObject1 = paramIntent.getStringExtra("result_process");
-          Object localObject2 = d.getProcessName(paramContext);
-          if (!((String)localObject2).equals(localObject1))
-          {
-            com.tencent.matrix.e.c.v("Matrix.LeakProcessor.ManualDump", "ACTION_RESULT: current process [%s] is NOT result process [%s]", new Object[] { localObject2, localObject1 });
-            return;
-          }
-          com.tencent.matrix.e.c.v("Matrix.LeakProcessor.ManualDump", "ACTION_RESULT: current process [%s] is result process [%s]", new Object[] { localObject2, localObject1 });
-          if (ManualDumpProcessor.ManualDumpProcessorHelper.XP() == null) {
-            throw new NullPointerException("result listener is null!!!");
-          }
-          localObject1 = paramIntent.getStringExtra("hprof_path");
-          if (localObject1 == null)
-          {
-            ManualDumpProcessor.ManualDumpProcessorHelper.XP().XN();
-            return;
-          }
-          localObject2 = paramIntent.getStringExtra("ref_chain");
-          ManualDumpProcessor.ManualDumpProcessorHelper.XP().R((String)localObject1, (String)localObject2);
-          ManualDumpProcessor.ManualDumpProcessorHelper.XQ();
-        }
-      });
+      this.fcI = paramString1;
+      this.fcJ = paramString2;
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      paramParcel.writeString(this.fcI);
+      paramParcel.writeString(this.fcJ);
     }
   }
   
-  public static abstract interface a
+  static abstract interface a
   {
-    public abstract void R(String paramString1, String paramString2);
-    
-    public abstract void XN();
-  }
-  
-  public static final class b
-  {
-    public final String ddT;
-    public final String ddU;
-    
-    public b(String paramString1, String paramString2)
-    {
-      this.ddT = paramString1;
-      this.ddU = paramString2;
-    }
+    public abstract void a(ManualDumpProcessor.ManualDumpData paramManualDumpData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.resource.processor.ManualDumpProcessor
  * JD-Core Version:    0.7.0.1
  */
